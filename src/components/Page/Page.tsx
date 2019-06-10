@@ -123,9 +123,6 @@ class Page extends React.PureComponent<ComposedProps, never> {
       breadcrumbs,
     } = this.props;
 
-    // TODO: Why are we doing all of this?
-    // `title` is the only required prop for `Header`, it should be as simple as checking:
-    // `title && title.length > 0`
     return (
       (title != null && title !== '') ||
       primaryAction != null ||

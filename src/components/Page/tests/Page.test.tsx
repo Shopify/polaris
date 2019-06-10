@@ -3,6 +3,7 @@ import {
   Button as AppBridgeButton,
   TitleBar as AppBridgeTitleBar,
 } from '@shopify/app-bridge/actions';
+import {animationFrame} from '@shopify/jest-dom-mocks';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 
 import {Card} from 'components';
@@ -11,17 +12,29 @@ import {LinkAction} from '../../../types';
 
 import Page, {Props} from '../Page';
 
+window.matchMedia =
+  window.matchMedia ||
+  function() {
+    return {
+      matches: window.innerWidth <= 769,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
+const defaultWindowWidth = window.innerWidth;
+
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
   ...require.requireActual('../../../utilities/app-bridge-transformers'),
   generateRedirect: jest.fn((...args) => args),
   transformActions: jest.fn((...args) => args),
 }));
 
-const mockProps: Props = {
-  title: 'Test',
-};
-
 describe('<Page />', () => {
+  const mockProps: Props = {
+    title: 'Test',
+  };
+
   function mockTitleBarCreate() {
     const titleBarMock = {
       set: jest.fn(),
@@ -39,6 +52,19 @@ describe('<Page />', () => {
       },
     };
   }
+
+  beforeEach(() => {
+    animationFrame.mock();
+  });
+
+  afterEach(() => {
+    animationFrame.restore();
+    Object.defineProperty(window, 'innerWidth', {
+      configurable: true,
+      writable: true,
+      value: defaultWindowWidth,
+    });
+  });
 
   describe('forceRender renders children in page', () => {
     const {

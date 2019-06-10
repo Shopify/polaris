@@ -1,27 +1,58 @@
 import * as React from 'react';
-import {SaveMinor} from '@shopify/polaris-icons';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {animationFrame} from '@shopify/jest-dom-mocks';
+import {mountWithAppProvider} from 'test-utilities';
 
 import {
   Breadcrumbs,
   buttonsFrom,
+  EventListener,
   Pagination,
-  PlainAction,
-  PlainActionGroup,
-  PlainActionGroupDescriptor,
-  RollupActions,
-  RollupActionsProps,
+  Menu,
 } from 'components';
 
-import {LinkAction, ActionListItemDescriptor} from '../../../../../types';
+import {LinkAction} from '../../../../../types';
 
 import Header, {Props} from '../Header';
 import {HeaderPrimaryAction} from '../types';
+
+window.matchMedia =
+  window.matchMedia ||
+  function() {
+    return {
+      matches: window.innerWidth <= 769,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
+const defaultWindowWidth = window.innerWidth;
 
 describe('<Header />', () => {
   const mockProps: Props = {
     title: 'mock title',
   };
+
+  beforeEach(() => {
+    animationFrame.mock();
+  });
+
+  afterEach(() => {
+    animationFrame.restore();
+    Object.defineProperty(window, 'innerWidth', {
+      configurable: true,
+      writable: true,
+      value: defaultWindowWidth,
+    });
+  });
+
+  it('renders resize <EventListener />', () => {
+    const wrapper = mountWithAppProvider(<Header {...mockProps} />);
+    const resizeEventListener = wrapper
+      .find(EventListener)
+      .filterWhere((component) => component.prop('event') === 'resize');
+
+    expect(resizeEventListener).toHaveLength(1);
+  });
 
   describe('title', () => {
     it('is displayed in the header', () => {
@@ -72,83 +103,6 @@ describe('<Header />', () => {
     });
   });
 
-  describe('secondaryActions', () => {
-    const mockSecondaryActions: RollupActionsProps['items'] = [
-      {
-        content: 'content 1',
-        url: 'https://www.google.com',
-        target: 'REMOTE',
-      },
-      {
-        content: 'content 2',
-        url: 'https://shopify.ca',
-      },
-    ];
-
-    it('get rendered as <PlainAction /> on desktop', () => {
-      const header = mountWithAppProvider(
-        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
-      );
-      expect(header.find(PlainAction)).toHaveLength(
-        mockSecondaryActions.length,
-      );
-    });
-
-    // TODO: This should be using `matchMedia` to put the test env in a mobile width
-    it('get rendered as <RollupActions /> `items` on mobile', () => {
-      const header = mountWithAppProvider(
-        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
-      );
-      expect(header.find(RollupActions).prop('items')).toBe(
-        mockSecondaryActions,
-      );
-    });
-  });
-
-  describe('actionGroups', () => {
-    const mockSecondaryActions: RollupActionsProps['items'] = [
-      {
-        content: 'content 1',
-        url: 'https://www.google.com',
-        target: 'REMOTE',
-      },
-      {
-        content: 'content 2',
-        url: 'https://shopify.ca',
-      },
-    ];
-    const mockActionGroups: Props['actionGroups'] = [
-      {
-        title: 'First group',
-        actions: [...mockSecondaryActions],
-      },
-      {
-        title: 'Second group',
-        actions: [...mockSecondaryActions],
-      },
-    ];
-
-    it('get rendered as <PlainActionGroup /> on desktop', () => {
-      const header = mountWithAppProvider(
-        <Header {...mockProps} actionGroups={mockActionGroups} />,
-      );
-
-      expect(header.find(PlainActionGroup)).toHaveLength(
-        mockActionGroups.length,
-      );
-    });
-
-    // TODO: This should be using `matchMedia` to put the test env in a mobile width
-    it('get rendered as <RollupActions /> `sections` on mobile', () => {
-      const header = mountWithAppProvider(
-        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
-      );
-      expect(header.find(RollupActions).prop('items')).toBe(
-        mockSecondaryActions,
-      );
-    });
-  });
-
   describe('primaryAction', () => {
     it('renders a button based on the given action', () => {
       const primaryAction: HeaderPrimaryAction = {
@@ -180,90 +134,71 @@ describe('<Header />', () => {
     });
   });
 
-  describe('<PlainActionGroup />', () => {
-    const mockAction: ActionListItemDescriptor = {
-      content: 'Products',
-      url: 'https://www.google.com',
-      target: 'REMOTE',
-    };
+  describe('secondaryActions', () => {
+    const mockSecondaryActions: Props['secondaryActions'] = [
+      {content: 'mock content 1'},
+      {content: 'mock content 2'},
+    ];
 
-    function fillActionGroup(
-      partialPlainActionGroup?: Partial<PlainActionGroupDescriptor>,
-    ) {
-      return {
-        title: 'Group',
-        actions: [mockAction],
-        ...partialPlainActionGroup,
-      };
-    }
-
-    it('receives the group’s title', () => {
-      const title = 'First group';
-      const actionGroups = [fillActionGroup({title})];
-      const header = mountWithAppProvider(
-        <Header {...mockProps} actionGroups={actionGroups} />,
+    it('passes to <Menu />', () => {
+      const wrapper = mountWithAppProvider(
+        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
       );
-      expect(header.find(PlainActionGroup).prop('title')).toBe(title);
+
+      expect(wrapper.find(Menu).prop('actions')).toBe(mockSecondaryActions);
+    });
+  });
+
+  describe('actionGroups', () => {
+    const mockSecondaryActions: Props['secondaryActions'] = [
+      {content: 'mock content 1'},
+      {content: 'mock content 2'},
+    ];
+    const mockActionGroups: Props['actionGroups'] = [
+      {
+        title: 'First group',
+        actions: [...mockSecondaryActions],
+      },
+      {
+        title: 'Second group',
+        actions: [...mockSecondaryActions],
+      },
+    ];
+
+    it('passes to <Menu />', () => {
+      const wrapper = mountWithAppProvider(
+        <Header {...mockProps} actionGroups={mockActionGroups} />,
+      );
+
+      expect(wrapper.find(Menu).prop('groups')).toBe(mockActionGroups);
+    });
+  });
+
+  describe('<Menu />', () => {
+    const mockSecondaryActions: Props['secondaryActions'] = [
+      {content: 'mock content 1'},
+    ];
+
+    it('renders with `rollup` as `false` when on desktop', () => {
+      const wrapper = mountWithAppProvider(
+        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
+      );
+
+      expect(wrapper.find(Menu).prop('rollup')).toBe(false);
     });
 
-    it('receives the group’s icon', () => {
-      const icon = SaveMinor;
-      const actionGroups = [fillActionGroup({icon})];
-      const header = mountWithAppProvider(
-        <Header {...mockProps} actionGroups={actionGroups} />,
-      );
-      expect(header.find(PlainActionGroup).prop('icon')).toBe(icon);
-    });
+    it('renders with `rollup` as `true` when on mobile', () => {
+      Object.defineProperty(window, 'innerWidth', {
+        configurable: true,
+        writable: true,
+        value: 500,
+      });
 
-    it('receives the group’s actions', () => {
-      const actions = [mockAction];
-      const actionGroups = [fillActionGroup({actions})];
-      const header = mountWithAppProvider(
-        <Header {...mockProps} actionGroups={actionGroups} />,
+      const wrapper = mountWithAppProvider(
+        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
       );
-      expect(header.find(PlainActionGroup).prop('actions')).toStrictEqual(
-        actions,
-      );
-    });
 
-    it('receives the group’s details', () => {
-      const details = 'Some details.';
-      const actionGroups = [fillActionGroup({details})];
-      const header = mountWithAppProvider(
-        <Header {...mockProps} actionGroups={actionGroups} />,
-      );
-      expect(header.find(PlainActionGroup).prop('details')).toStrictEqual(
-        details,
-      );
-    });
-
-    it('is inactive by default', () => {
-      const actionGroups = [fillActionGroup()];
-      const header = mountWithAppProvider(
-        <Header {...mockProps} actionGroups={actionGroups} />,
-      );
-      expect(header.find(PlainActionGroup).prop('active')).toBeFalsy();
-    });
-
-    it('becomes active when opened', () => {
-      const title = 'First group';
-      const actionGroups = [fillActionGroup({title})];
-      const header = mountWithAppProvider(
-        <Header {...mockProps} actionGroups={actionGroups} />,
-      );
-      trigger(header.find(PlainActionGroup), 'onOpen', title);
-      expect(header.find(PlainActionGroup).prop('active')).toBeTruthy();
-    });
-
-    it('becomes inactive when closed', () => {
-      const title = 'First group';
-      const actionGroups = [fillActionGroup({title})];
-      const header = mountWithAppProvider(
-        <Header {...mockProps} actionGroups={actionGroups} />,
-      );
-      trigger(header.find(PlainActionGroup), 'onOpen', title);
-      trigger(header.find(PlainActionGroup), 'onClose', title);
-      expect(header.find(PlainActionGroup).prop('active')).toBeFalsy();
+      expect(wrapper.find(Menu).prop('rollup')).toBe(true);
     });
   });
 });

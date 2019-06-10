@@ -1,18 +1,15 @@
+@import '../../tokens';
+
 $difference-between-touch-area-and-backdrop: control-height() -
   control-slim-height();
-$action-horizontal-padding: (1.5 * spacing(tight));
 
-.PlainAction {
+.MenuAction {
   @include unstyled-button;
   @include text-style-body;
   position: relative;
   display: inline-flex;
   align-items: center;
-  // Negative margin vertically for the amount that is not covered by
-  // the focus overlay
-  margin-top: -0.5 * $difference-between-touch-area-and-backdrop;
-  margin-bottom: -0.5 * $difference-between-touch-area-and-backdrop;
-  padding: 0 $action-horizontal-padding;
+  padding: 0 $menu-action-padding-x;
   min-height: control-height();
   text-decoration: none;
   color: color('ink', 'light');

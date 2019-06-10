@@ -9,7 +9,7 @@ import {Button, Popover} from 'components';
 import {
   Item as ActionListItem,
   Section as ActionListSection,
-} from '../../ActionList/components';
+} from '../../../../ActionList/components';
 
 import RollupActions, {Props} from '../RollupActions';
 
@@ -49,7 +49,7 @@ describe('<RollupActions />', () => {
       expect(wrapper.find(ActionListItem)).toHaveLength(mockItems.length);
     });
 
-    it('closes the <Popover /> on click of any item', () => {
+    it('<ActionList /> closes the <Popover /> when `onActionAnyItem` is called', () => {
       const wrapper = mountWithAppProvider(
         <RollupActions {...mockProps} items={mockItems} />,
       );

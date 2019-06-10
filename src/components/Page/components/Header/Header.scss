@@ -1,147 +1,93 @@
 $individual-action-padding-x: (1.5 * spacing(tight));
+$menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
 
 .Header {
   @include page-header-layout;
+  position: relative;
 }
 
-.Header-hasPagination,
-.Header-hasBreadcrumbs,
-.Header-hasRollupActions {
-  @include page-header-has-navigation;
-}
-
-.Header-hasSecondaryActions {
-  @include page-header-has-secondary-actions;
-}
-
-.Header-hasSeparator {
+.separator {
   padding-bottom: spacing();
   border-bottom: border();
-
-  + .Content {
-    margin-top: spacing(loose);
-  }
 }
 
-.Header-hasRollupActions {
-  // TODO: We shouldn't render these components at all when at "mobile" width.
-  // We should have a function similar to `navigationBarCollapsed`
-  // that matches the `$not-condensed-content` width.
-  .SecondaryActions {
-    display: none;
-  }
-
-  .IndividualActions {
-    display: none;
-  }
-
-  .PaginationWrapper {
-    display: none;
-  }
-
-  @include page-content-when-not-partially-condensed {
-    // TODO: Like above, we shouldn't render this component at "desktop" width.
-    .RollupActionsWrapper {
-      display: none;
-    }
-
-    .SecondaryActions {
-      display: flex;
-    }
-
-    .IndividualActions {
-      display: flex;
-    }
-
-    .PaginationWrapper {
-      display: flex;
-    }
-  }
-}
-
-.Title-hidden {
+.titleHidden {
   @include visually-hidden;
 }
 
-.PrimaryAction {
-  display: flex;
-  align-items: center;
-
-  .MainContent > & {
-    display: none;
-    margin-left: spacing(loose);
-  }
-
-  @include page-content-when-not-partially-condensed {
-    display: none;
-
-    .MainContent > & {
-      display: flex;
-    }
-  }
-}
-
-.RollupActionsWrapper {
-  margin-top: spacing(extra-tight);
-}
-
-.PaginationWrapper {
-  margin-left: auto;
-  line-height: 1;
-}
-
-.Actions {
-  @include page-actions-layout;
-}
+///
+/// Navigation
 
 .Navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: spacing(extra-tight);
-}
 
-.MainContent {
-  display: flex;
-  align-items: center;
-}
-
-.TitleAndRollup {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-
-  .RollupActionsWrapper {
-    @include page-header-without-navigation;
+  // stylelint-disable-next-line selector-max-class
+  .hasMenu.mobileView & {
+    padding-right: $menu-rollup-computed-width;
   }
 }
 
-.TitleAndActions {
-  flex: 1 1 0%;
+.BreadcrumbWrapper {
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+
+.PaginationWrapper {
+  flex: 0 0 auto;
+  margin-left: auto;
+  line-height: 1;
+}
+
+///
+/// Main content
+
+.MainContent {
+  .Header:not(.mobileView) & {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.TitleMenuWrapper {
+  flex: 1 1 auto;
+
+  .Header:not(.mobileView) & {
+    padding-right: spacing(loose);
+  }
+
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity
+  .hasMenu.mobileView:not(.hasNavigation) & {
+    padding-right: $menu-rollup-computed-width;
+  }
 }
 
 .Title {
   @include page-title-layout;
 }
 
-.SecondaryActions {
-  flex: 1;
+.PrimaryActionWrapper {
+  .mobileView & {
+    margin-top: spacing();
+  }
 }
 
-.IndividualActions {
-  display: flex;
-  align-items: center;
+.MenuWrapper {
+  // stylelint-disable-next-line selector-max-class
+  .mobileView & {
+    position: absolute;
+    top: spacing(loose) + (control-height() / 4);
+    right: 0;
 
-  > .IndividualAction {
-    display: inline-flex;
-
-    &:first-child {
-      // Compensates for the fact that we push the icon slightly to the left
-      margin-left: -$individual-action-padding-x;
+    @include page-content-when-not-fully-condensed {
+      right: -(spacing(tight));
     }
+  }
 
-    &:last-child {
-      margin-right: -$individual-action-padding-x;
-    }
+  // stylelint-disable-next-line selector-max-class
+  .mobileView.hasNavigation & {
+    top: control-height() / 2;
   }
 }

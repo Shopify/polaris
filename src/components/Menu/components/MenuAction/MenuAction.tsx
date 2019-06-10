@@ -2,20 +2,20 @@ import * as React from 'react';
 import classNames from 'classnames';
 import {CaretDownMinor} from '@shopify/polaris-icons';
 
-import {handleMouseUpByBlurring} from '../../utilities/focus';
-import {IconableAction, DisableableAction} from '../../types';
+import {handleMouseUpByBlurring} from '../../../../utilities/focus';
+import {IconableAction, DisableableAction} from '../../../../types';
 
-import Icon from '../Icon';
-import UnstyledLink from '../UnstyledLink';
+import Icon from '../../../Icon';
+import UnstyledLink from '../../../UnstyledLink';
 
-import styles from './PlainAction.scss';
+import styles from './MenuAction.scss';
 
 export interface Props extends IconableAction, DisableableAction {
   /** Displays the button with a disclosure icon */
   disclosure?: boolean;
 }
 
-export default function PlainAction({
+export default function MenuAction({
   content,
   accessibilityLabel,
   url,
@@ -48,8 +48,8 @@ export default function PlainAction({
       content
     );
 
-  const actionClassNames = classNames(
-    styles.PlainAction,
+  const menuActionClassNames = classNames(
+    styles.MenuAction,
     disabled && styles.disabled,
     icon && content == null && styles.iconOnly,
   );
@@ -57,8 +57,7 @@ export default function PlainAction({
   if (url) {
     return (
       <UnstyledLink
-        key={content}
-        className={actionClassNames}
+        className={menuActionClassNames}
         url={url}
         external={external}
         aria-label={accessibilityLabel}
@@ -72,10 +71,9 @@ export default function PlainAction({
   return (
     <button
       type="button"
-      key={content}
-      className={actionClassNames}
-      aria-label={accessibilityLabel}
+      className={menuActionClassNames}
       disabled={disabled}
+      aria-label={accessibilityLabel}
       onClick={onAction}
       onMouseUp={handleMouseUpByBlurring}
     >

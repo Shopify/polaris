@@ -1,27 +1,29 @@
 ---
-name: Rollup Actions
+name: Menu
 category: Actions
 platforms:
   - android
   - ios
   - web
 keywords:
-  - RollupActions
-  - action
-  - choices
-  - decision
-  - call-to-action
+  - MenuAction
   - CTA
-  - grouped actions
-  - set of buttons
-  - set of actions
-  - horizontal arrangement of buttons
-  - stacked
+  - call to action
+  - call-to-action
+  - action
+  - basic button
+  - outline
+  - plain
+  - disabled state
+  - disabled
+  - button
+  - link
+  - click
   - ios
   - android
 ---
 
-# RollupActions
+# Menu
 
 TODO: Write "Summary"
 
@@ -41,25 +43,25 @@ TODO: Write "Guidelines"
 
 ## Examples
 
-### Default RollupActions
+### Default Menu
 
 TODO: Write "Example"
 
 ```jsx
-<RollupActions items={[{content: 'Duplicate'}, {content: 'Another one'}]} />
+<Menu actions={[{content: 'Duplicate'}, {content: 'Another one'}]} />
 ```
 
-### With both items and sections
+### With both actions and groups
 
 TODO: Write "Example"
 
 ```jsx
-<RollupActions
-  items={[{content: 'Duplicate'}, {content: 'Another one'}]}
-  sections={[
+<Menu
+  actions={[{content: 'Duplicate'}, {content: 'Another one'}]}
+  groups={[
     {
       title: 'First action group',
-      items: [
+      actions: [
         {content: 'Share on Facebook'},
         {
           content: 'Share on Twitter',
@@ -71,7 +73,7 @@ TODO: Write "Example"
     },
     {
       title: 'Promote',
-      items: [
+      actions: [
         {content: 'Content one'},
         {content: 'Content two'},
         {
@@ -82,6 +84,14 @@ TODO: Write "Example"
     },
   ]}
 />
+```
+
+### Rollup actions
+
+TODO: Write "Example"
+
+```jsx
+<Menu actions={[{content: 'Duplicate'}, {content: 'Another one'}]} rollup />
 ```
 
 ---

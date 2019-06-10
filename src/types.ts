@@ -133,6 +133,19 @@ export interface ComplexAction
     IconableAction,
     LoadableAction {}
 
+export interface MenuGroupDescriptor extends BadgeAction {
+  /** Menu group title */
+  title: string;
+  /** List of actions */
+  actions: ActionListItemDescriptor[];
+  /** Icon to display */
+  icon?: IconableAction['icon'];
+  /** Action details */
+  details?: React.ReactNode;
+  /** Callback when any action takes place */
+  onActionAnyItem?: ActionListItemDescriptor['onAction'];
+}
+
 export enum Key {
   Backspace = 8,
   Tab = 9,

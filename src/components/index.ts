@@ -168,6 +168,8 @@ export {default as List, Props as ListProps} from './List';
 
 export {default as Loading, Props as LoadingProps} from './Loading';
 
+export {default as Menu, Props as MenuProps} from './Menu';
+
 export {default as Modal, Props as ModalProps} from './Modal';
 
 export {default as OptionList} from './OptionList';
@@ -186,14 +188,6 @@ export {default as Page, Props as PageProps} from './Page';
 export {default as PageActions, Props as PageActionsProps} from './PageActions';
 
 export {default as Pagination, Props as PaginationProps} from './Pagination';
-
-export {default as PlainAction, Props as PlainActionProps} from './PlainAction';
-
-export {
-  default as PlainActionGroup,
-  Props as PlainActionGroupProps,
-  PlainActionGroupDescriptor,
-} from './PlainActionGroup';
 
 export {
   default as Popover,
@@ -223,11 +217,6 @@ export {
   default as ResourcePicker,
   Props as ResourcePickerProps,
 } from './ResourcePicker';
-
-export {
-  default as RollupActions,
-  Props as RollupActionsProps,
-} from './RollupActions';
 
 export {default as Scrollable, Props as ScrollableProps} from './Scrollable';
 
