@@ -91,7 +91,7 @@ const APP_BRIDGE_PROPS: (keyof Props)[] = [
   'secondaryActions',
 ];
 
-export class Modal extends React.Component<CombinedProps, State> {
+class Modal extends React.Component<CombinedProps, State> {
   static childContextTypes = contentContextTypes;
 
   static Dialog = Dialog;

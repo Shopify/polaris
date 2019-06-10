@@ -74,11 +74,11 @@ export interface Props {
   idForItem?(item: any, index: number): string;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('Select');
 
-export class ResourceList extends React.Component<CombinedProps, State> {
+class ResourceList extends React.Component<CombinedProps, State> {
   static Item: typeof Item = Item;
   static FilterControl: typeof FilterControl = FilterControl;
 

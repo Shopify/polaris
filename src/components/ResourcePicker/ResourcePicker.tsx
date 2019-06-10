@@ -37,9 +37,9 @@ export interface Props {
   onCancel?(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
-export class ResourcePicker extends React.PureComponent<CombinedProps, never> {
+class ResourcePicker extends React.PureComponent<CombinedProps, never> {
   private focusReturnPoint: HTMLElement | null = null;
   private appBridgeResourcePicker:
     | AppBridgeResourcePicker.ResourcePicker

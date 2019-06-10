@@ -19,7 +19,7 @@ export interface Props {
 
 type CombinedProps = Props & WithAppProviderProps;
 
-export class Day extends React.PureComponent<CombinedProps, never> {
+class Day extends React.PureComponent<CombinedProps, never> {
   private dayNode: HTMLElement | null = null;
 
   componentDidUpdate(prevProps: CombinedProps) {

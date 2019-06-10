@@ -34,7 +34,7 @@ interface State {
   initialConsumerFilterKey?: string;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 export enum DateFilterOption {
   PastWeek = 'past_week',

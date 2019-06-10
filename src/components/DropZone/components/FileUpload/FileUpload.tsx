@@ -37,7 +37,7 @@ type CombinedProps = Props &
   WithAppProviderProps &
   WithContextTypes<DropZoneContext>;
 
-export class FileUpload extends React.Component<CombinedProps, State> {
+class FileUpload extends React.Component<CombinedProps, State> {
   static getDerivedStateFromProps(
     {
       actionTitle: nextActionTitle,

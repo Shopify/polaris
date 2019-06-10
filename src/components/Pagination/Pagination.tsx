@@ -42,7 +42,7 @@ export interface Props extends PaginationDescriptor {
   plain?: boolean;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 function Pagination({
   hasNext,

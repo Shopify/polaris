@@ -56,7 +56,7 @@ export interface State {
   focusDate?: Date;
 }
 
-export class DatePicker extends React.PureComponent<CombinedProps, State> {
+class DatePicker extends React.PureComponent<CombinedProps, State> {
   state: State = {
     hoverDate: undefined,
     focusDate: undefined,

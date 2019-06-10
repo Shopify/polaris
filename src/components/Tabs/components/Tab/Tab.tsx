@@ -23,7 +23,7 @@ export interface Props {
 
 type CombinedProps = Props & WithAppProviderProps;
 
-export class Tab extends React.PureComponent<CombinedProps, never> {
+class Tab extends React.PureComponent<CombinedProps, never> {
   private node: HTMLElement | null = null;
 
   // A tab can start selected when it is moved from the disclosure dropdown

@@ -4,9 +4,9 @@ import {FrameContext, frameContextTypes} from '../Frame';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 export interface Props {}
-export type ComposedProps = Props & WithAppProviderProps;
+type ComposedProps = Props & WithAppProviderProps;
 
-export class Loading extends React.PureComponent<ComposedProps, never> {
+class Loading extends React.PureComponent<ComposedProps, never> {
   static contextTypes = frameContextTypes;
   context: FrameContext;
   private appBridgeLoading: AppBridgeLoading.Loading | undefined;

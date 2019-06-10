@@ -62,7 +62,7 @@ export interface State {
   selected: boolean;
 }
 
-export type CombinedProps =
+type CombinedProps =
   | PropsWithUrl & WithAppProviderProps & WithContextTypes<ResourceListContext>
   | PropsWithClick &
       WithAppProviderProps &
@@ -71,7 +71,7 @@ export type CombinedProps =
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 const getUniqueOverlayID = createUniqueIDFactory('ResourceListItemOverlay');
 
-export class Item extends React.Component<CombinedProps, State> {
+class Item extends React.Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
     const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
 

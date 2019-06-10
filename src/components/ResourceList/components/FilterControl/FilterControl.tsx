@@ -29,11 +29,11 @@ export interface Props {
   onFiltersChange?(appliedFilters: AppliedFilter[]): void;
 }
 
-export type CombinedProps = Props &
+type CombinedProps = Props &
   WithAppProviderProps &
   WithContextTypes<ResourceListContext>;
 
-export class FilterControl extends React.Component<CombinedProps> {
+class FilterControl extends React.Component<CombinedProps> {
   render() {
     const {
       searchValue,

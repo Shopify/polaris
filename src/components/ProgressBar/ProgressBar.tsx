@@ -18,7 +18,7 @@ export interface Props {
   size?: Size;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 function ProgressBar({
   progress = 0,
