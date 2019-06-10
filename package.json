@@ -156,7 +156,7 @@
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
     "svgo": "^1.2.2",
-    "typescript": "~3.2.4",
+    "typescript": "~3.5.1",
     "yargs": "^13.2.2"
   },
   "peerDependencies": {
@@ -164,7 +164,7 @@
     "react-dom": "^16.3.1"
   },
   "resolutions": {
-    "typescript-eslint-parser": "22.0.0"
+    "typescript-eslint-parser": "npm:@typescript-eslint/parser@1.10.2"
   },
   "files": [
     "esnext",
