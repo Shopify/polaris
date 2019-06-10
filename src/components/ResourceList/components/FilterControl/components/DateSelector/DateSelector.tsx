@@ -7,7 +7,7 @@ import Icon from '../../../../../Icon';
 import {
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../../AppProvider';
+} from '../../../../../../utilities/with-app-provider';
 
 import styles from './DateSelector.scss';
 

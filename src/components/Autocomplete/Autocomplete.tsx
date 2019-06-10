@@ -1,7 +1,10 @@
 import React from 'react';
 
 import {ActionListItemDescriptor} from '../../types';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import {PreferredPosition} from '../PositionedOverlay';
 import {OptionDescriptor} from '../OptionList';
 import Spinner from '../Spinner';

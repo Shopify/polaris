@@ -13,7 +13,10 @@ import {
   getNewRange,
 } from '@shopify/javascript-utilities/dates';
 import {classNames} from '../../../../utilities/css';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import styles from '../../DatePicker.scss';
 import Day from '../Day';
 import Weekday from '../Weekday';

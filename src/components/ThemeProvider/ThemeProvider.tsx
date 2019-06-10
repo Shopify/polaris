@@ -1,15 +1,15 @@
 import React from 'react';
 import isEqual from 'lodash/isEqual';
-import {setColors} from './utils';
-import {Theme} from './types';
-import ThemeProviderContext from './context';
+import {ThemeProviderContext} from '../../utilities/theme';
+import {Theme} from '../../utilities/theme/types';
+import {setColors} from '../../utilities/theme/utils';
 
-export interface State {
+interface State {
   theme: Theme;
   colors: string[][] | undefined;
 }
 
-export interface Props {
+interface Props {
   /** Custom logos and colors provided to select components */
   theme: Theme;
   /** The content to display */

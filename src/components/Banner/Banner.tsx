@@ -10,12 +10,17 @@ import {
 
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames, variationName} from '../../utilities/css';
-import {Action, DisableableAction, LoadableAction} from '../../types';
+import {
+  Action,
+  DisableableAction,
+  LoadableAction,
+  IconProps,
+} from '../../types';
 import Button, {buttonFrom} from '../Button';
 import Heading from '../Heading';
 import ButtonGroup from '../ButtonGroup';
 import UnstyledLink from '../UnstyledLink';
-import Icon, {Props as IconProps} from '../Icon';
+import Icon from '../Icon';
 
 import WithinContentContext from '../WithinContentContext';
 

@@ -13,10 +13,11 @@ import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
 import NavigationContext from '../../context';
 import Badge from '../../../Badge';
-import Icon, {Props as IconProps} from '../../../Icon';
+import Icon from '../../../Icon';
+import {IconProps} from '../../../../types';
 import Indicator from '../../../Indicator';
 import UnstyledLink from '../../../UnstyledLink';
-import {usePolaris} from '../../../../hooks';
+import {useI18n} from '../../../../utilities/i18n';
 
 import styles from '../../Navigation.scss';
 
@@ -86,7 +87,7 @@ export default function Item({
   matchPaths,
   excludePaths,
 }: Props) {
-  const {intl} = usePolaris();
+  const intl = useI18n();
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const [expanded, setExpanded] = useState(false);
 

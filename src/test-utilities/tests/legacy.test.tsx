@@ -32,10 +32,7 @@ describe('mountWithAppProvider', () => {
 
 Learn more about this warning here:
 https://fb.me/react-strict-mode-warnings`,
-      `
-    in StrictMode (at legacy.tsx:86)
-    in TestProvider (created by WrapperComponent)
-    in WrapperComponent`,
+      expect.any(String),
       'componentWillReceiveProps: Please update the following components to use static getDerivedStateFromProps instead: Child',
     );
   });

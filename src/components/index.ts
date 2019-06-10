@@ -7,15 +7,7 @@ export {default as ActionList, Props as ActionListProps} from './ActionList';
 
 export {default as ActionMenu, Props as ActionMenuProps} from './ActionMenu';
 
-export {
-  default as AppProvider,
-  Props as AppProviderProps,
-  createAppProviderContext,
-  AppProviderContext,
-  createPolarisContext,
-  withAppProvider,
-  WithAppProviderProps,
-} from './AppProvider';
+export {default as AppProvider, Props as AppProviderProps} from './AppProvider';
 
 export {
   default as Autocomplete,
@@ -142,7 +134,7 @@ export {
 
 export {default as Heading, Props as HeadingProps} from './Heading';
 
-export {default as Icon, Props as IconProps} from './Icon';
+export {default as Icon} from './Icon';
 
 export {default as Image, Props as ImageProps} from './Image';
 
@@ -280,14 +272,6 @@ export {default as TextField, Props as TextFieldProps} from './TextField';
 
 export {default as TextStyle, Props as TextStyleProps} from './TextStyle';
 
-export {
-  default as ThemeProvider,
-  Props as ThemeProviderProps,
-  ThemeProviderContextType,
-  ThemeProviderContext,
-  createThemeContext,
-} from './ThemeProvider';
-
 export {default as Thumbnail, Props as ThumbnailProps} from './Thumbnail';
 
 export {default as Toast} from './Toast';
@@ -300,13 +284,7 @@ export {default as TrapFocus, Props as TrapFocusProps} from './TrapFocus';
 
 export {default as Truncate, Props as TruncateProps} from './Truncate';
 
-export {PolarisContext} from './types';
-
-export {
-  default as UnstyledLink,
-  Props as UnstyledLinkProps,
-  LinkLikeComponent,
-} from './UnstyledLink';
+export {default as UnstyledLink} from './UnstyledLink';
 
 export {
   default as VisuallyHidden,

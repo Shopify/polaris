@@ -3,7 +3,10 @@ import React from 'react';
 import {getWidth} from '../../../../utilities/get-width';
 
 import {ContextualSaveBarProps as Props} from '../../types';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import Button from '../../../Button';
 import Image from '../../../Image';
 import Stack from '../../../Stack';

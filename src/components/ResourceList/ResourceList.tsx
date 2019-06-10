@@ -9,7 +9,10 @@ import Button from '../Button';
 import EventListener from '../EventListener';
 import Sticky from '../Sticky';
 import Spinner from '../Spinner';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Select, {SelectOption} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
 

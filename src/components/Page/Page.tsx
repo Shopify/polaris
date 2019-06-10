@@ -11,7 +11,10 @@ import {
   generateRedirect,
 } from '../../utilities/app-bridge-transformers';
 import {pick} from '../../utilities/pick';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 
 import {Header, HeaderProps} from './components';
 import styles from './Page.scss';

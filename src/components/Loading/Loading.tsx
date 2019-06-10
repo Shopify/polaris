@@ -1,13 +1,13 @@
 import React, {useContext, useEffect, useRef} from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
 import {FrameContext} from '../Frame';
-import {usePolaris} from '../../hooks';
+import {useAppBridge} from '../../utilities/app-bridge';
 
 export interface Props {}
 
 function Loading() {
   const appBridgeLoading = useRef<AppBridgeLoading.Loading>();
-  const {appBridge} = usePolaris();
+  const appBridge = useAppBridge();
   const frame = useContext(FrameContext);
 
   useEffect(

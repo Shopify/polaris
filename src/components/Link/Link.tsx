@@ -3,7 +3,10 @@ import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import UnstyledLink from '../UnstyledLink';
 import Icon from '../Icon';
 

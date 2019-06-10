@@ -2,10 +2,14 @@ import React from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
 import {classNames, variationName} from '../../utilities/css';
 
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import UnstyledLink from '../UnstyledLink';
-import Icon, {Props as IconProps} from '../Icon';
+import Icon from '../Icon';
+import {IconProps} from '../../types';
 import Spinner from '../Spinner';
 import styles from './Button.scss';
 

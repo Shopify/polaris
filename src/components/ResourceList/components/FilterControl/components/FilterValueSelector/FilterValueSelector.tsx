@@ -5,7 +5,7 @@ import TextField from '../../../../../TextField';
 import {
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../../AppProvider';
+} from '../../../../../../utilities/with-app-provider';
 import DateSelector from '../DateSelector';
 import {Filter, AppliedFilter, FilterType, Operator} from '../../types';
 

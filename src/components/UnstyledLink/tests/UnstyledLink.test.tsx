@@ -1,14 +1,12 @@
 import React from 'react';
-import Link from 'components/AppProvider/utilities/Link';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import UnstyledLink from '../UnstyledLink';
+import UnstyledLink from 'components/UnstyledLink';
 
 describe('<UnstyledLink />', () => {
   describe('custom link component', () => {
     it('uses a custom link component instead of an anchor', () => {
       const CustomLinkComponent = () => <div />;
-      const link = new Link(CustomLinkComponent);
-      const mockContext = {context: {polaris: {link}}};
+      const mockContext = {context: {link: CustomLinkComponent}};
       const anchorElement = mountWithAppProvider(
         <UnstyledLink external url="https://shopify.com" />,
         mockContext,
@@ -19,8 +17,7 @@ describe('<UnstyledLink />', () => {
 
     it('doesn’t have polaris prop', () => {
       const CustomLinkComponent = () => <div />;
-      const link = new Link(CustomLinkComponent);
-      const mockContext = {context: {polaris: {link}}};
+      const mockContext = {context: {link: CustomLinkComponent}};
       const anchorElement = mountWithAppProvider(
         <UnstyledLink external url="https://shopify.com" />,
         mockContext,

@@ -336,7 +336,7 @@ describe('<Modal>', () => {
         },
       ];
 
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Modal
           title="Hello world!"
           open
@@ -348,12 +348,12 @@ describe('<Modal>', () => {
       );
 
       expect(AppBridgeModalCreate).toHaveBeenCalledTimes(1);
-      expect(AppBridgeModalCreate).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeModalCreate).toHaveBeenCalledWith(appBridge, {
         title: 'Hello world!',
         message: 'Body content',
         size: undefined,
         footer: {
-          buttons: [polaris.appBridge, {primaryAction, secondaryActions}],
+          buttons: [appBridge, {primaryAction, secondaryActions}],
         },
       });
       expect(appBridgeModalMock.subscribe).toHaveBeenCalledTimes(1);
@@ -374,63 +374,63 @@ describe('<Modal>', () => {
     });
 
     it('accepts an undefined title', () => {
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Modal title={undefined} open onClose={noop} />,
       );
 
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
         title: undefined,
         message: undefined,
         size: undefined,
         footer: {
-          buttons: [polaris.appBridge, {}],
+          buttons: [appBridge, {}],
         },
       });
     });
 
     it('accepts a size prop', () => {
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Modal size="Large" open onClose={noop} />,
       );
 
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
         title: undefined,
         message: undefined,
         size: AppBridgeModal.Size.Large,
         footer: {
-          buttons: [polaris.appBridge, {}],
+          buttons: [appBridge, {}],
         },
       });
     });
 
     it('converts a src prop to a url prop', () => {
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Modal src="https://shopify.com" open onClose={noop} />,
       );
 
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
         title: undefined,
         message: undefined,
         size: undefined,
         url: 'https://shopify.com',
         footer: {
-          buttons: [polaris.appBridge, {}],
+          buttons: [appBridge, {}],
         },
       });
     });
 
     it('converts a src prop to a path prop', () => {
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Modal src="/test" open onClose={noop} />,
       );
 
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
         title: undefined,
         message: undefined,
         size: undefined,
         path: '/test',
         footer: {
-          buttons: [polaris.appBridge, {}],
+          buttons: [appBridge, {}],
         },
       });
     });
@@ -487,12 +487,11 @@ describe('<Modal>', () => {
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
-  const polaris = {appBridge};
   const modal = mountWithAppProvider(element, {
-    context: {polaris},
+    context: {appBridge},
   });
 
-  return {modal, polaris};
+  return {modal, appBridge};
 }
 
 function noop() {}

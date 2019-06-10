@@ -1,6 +1,9 @@
 import React from 'react';
 import {getRectForNode} from '@shopify/javascript-utilities/geometry';
-import {WithAppProviderProps, withAppProvider} from '../AppProvider';
+import {
+  WithAppProviderProps,
+  withAppProvider,
+} from '../../utilities/with-app-provider';
 
 export interface State {
   isSticky: boolean;

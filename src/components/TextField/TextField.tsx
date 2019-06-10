@@ -9,7 +9,10 @@ import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
 import {Error, Key} from '../../types';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Icon from '../Icon';
 import {Resizer, Spinner} from './components';
 import styles from './TextField.scss';

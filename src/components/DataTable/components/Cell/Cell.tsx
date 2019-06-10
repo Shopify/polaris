@@ -3,7 +3,10 @@ import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {headerCell} from '../../../shared';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import Icon from '../../../Icon';
 import {SortDirection} from '../../types';
 

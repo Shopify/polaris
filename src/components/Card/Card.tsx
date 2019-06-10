@@ -8,7 +8,10 @@ import ActionList from '../ActionList';
 import Button, {buttonFrom} from '../Button';
 import Popover from '../Popover';
 
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 
 import {Header, Section, Subsection} from './components';
 import styles from './Card.scss';

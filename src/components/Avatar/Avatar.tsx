@@ -2,7 +2,10 @@ import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import {isServer} from '../../utilities/target';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Image from '../Image';
 
 import styles from './Avatar.scss';

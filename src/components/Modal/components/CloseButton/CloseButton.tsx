@@ -1,6 +1,9 @@
 import React from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import {classNames} from '../../../../utilities/css';
 
 import Icon from '../../../Icon';

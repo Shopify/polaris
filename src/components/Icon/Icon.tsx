@@ -1,46 +1,12 @@
 import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
+import {IconProps} from '../../types';
 
 import styles from './Icon.scss';
-
-export type Color =
-  | 'white'
-  | 'black'
-  | 'skyLighter'
-  | 'skyLight'
-  | 'sky'
-  | 'skyDark'
-  | 'inkLightest'
-  | 'inkLighter'
-  | 'inkLight'
-  | 'ink'
-  | 'blueLighter'
-  | 'blueLight'
-  | 'blue'
-  | 'blueDark'
-  | 'blueDarker'
-  | 'indigoLighter'
-  | 'indigoLight'
-  | 'indigo'
-  | 'indigoDark'
-  | 'indigoDarker'
-  | 'tealLighter'
-  | 'tealLight'
-  | 'teal'
-  | 'tealDark'
-  | 'tealDarker'
-  | 'greenLighter'
-  | 'green'
-  | 'greenDark'
-  | 'yellowLighter'
-  | 'yellow'
-  | 'yellowDark'
-  | 'orange'
-  | 'redLighter'
-  | 'red'
-  | 'redDark'
-  | 'purple';
 
 const COLORS_WITH_BACKDROPS = [
   'teal',
@@ -52,21 +18,9 @@ const COLORS_WITH_BACKDROPS = [
   'inkLighter',
 ];
 
-export type IconSource =
-  | React.SFC<React.SVGProps<SVGSVGElement>>
-  | 'placeholder'
-  | string;
-
-export interface Props {
-  /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
-  source: IconSource;
-  /** Set the color for the SVG fill */
-  color?: Color;
-  /** Show a backdrop behind the icon */
-  backdrop?: boolean;
-  /** Descriptive text to be read to screenreaders */
-  accessibilityLabel?: string;
-}
+// This is needed for the polaris
+// styleguide to generate the props explorer
+interface Props extends IconProps {}
 
 type CombinedProps = Props & WithAppProviderProps;
 

@@ -1,25 +1,29 @@
 import {ReactWrapper, CommonWrapper, mount} from 'enzyme';
 import React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
+import {ClientApplication} from '@shopify/app-bridge';
+import {I18n, I18nContext, TranslationDictionary} from '../utilities/i18n';
 import {get} from '../utilities/get';
 import {merge} from '../utilities/merge';
 import {PolarisContext} from '../components/types';
 import {DeepPartial} from '../types';
 import translations from '../../locales/en.json';
 
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {
-  createPolarisContext,
-  AppProviderContext,
-} from '../components/AppProvider';
+import {createPolarisContext} from '../utilities/create-polaris-context';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {FrameContext, FrameContextType} from '../components/Frame';
-// eslint-disable-next-line shopify/strict-component-boundaries
 import {
   createThemeContext,
   ThemeProviderContextType,
   ThemeProviderContext,
-} from '../components/ThemeProvider';
+} from '../utilities/theme';
+import {
+  ScrollLockManager,
+  ScrollLockManagerContext,
+} from '../utilities/scroll-lock-manager';
+import {StickyManager, StickyManagerContext} from '../utilities/sticky-manager';
+import {AppBridgeContext} from '../utilities/app-bridge';
+import {Link, LinkContext, LinkLikeComponent} from '../utilities/link';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -83,8 +87,13 @@ function updateRoot(wrapper: AnyWrapper) {
 
 type AppContext = {
   polaris: PolarisContext;
+  intl: I18n;
+  scrollLockManager: ScrollLockManager;
+  stickyManager: StickyManager;
+  appBridge: ClientApplication<{}> | {} | null;
   themeProvider: ThemeProviderContextType;
   frame: FrameContextType;
+  link: Link;
 };
 
 interface AppContextOptions {
@@ -96,6 +105,11 @@ interface MountWithAppProviderOptions {
     polaris?: DeepPartial<PolarisContext>;
     themeProvider?: DeepPartial<ThemeProviderContextType>;
     frame?: DeepPartial<FrameContextType>;
+    intl?: TranslationDictionary | TranslationDictionary[];
+    scrollLockManager?: ScrollLockManager;
+    stickyManager?: StickyManager;
+    appBridge?: ClientApplication<{}> | {};
+    link?: LinkLikeComponent;
   };
 }
 
@@ -108,6 +122,14 @@ export function mountWithAppProvider<P>(
   const polarisDefault = createPolarisContext({i18n: translations});
   const polaris =
     (ctx.polaris && merge(polarisDefault, ctx.polaris)) || polarisDefault;
+
+  const intlTranslations =
+    (ctx.intl && merge(translations, ctx.intl)) || translations;
+  const intl = new I18n(intlTranslations);
+
+  const scrollLockManager = ctx.scrollLockManager || new ScrollLockManager();
+
+  const stickyManager = ctx.stickyManager || new StickyManager();
 
   const themeproviderDefault = createThemeContext();
   const themeProvider =
@@ -124,10 +146,19 @@ export function mountWithAppProvider<P>(
   };
   const frame = (ctx.frame && merge(frameDefault, ctx.frame)) || frameDefault;
 
+  const link = new Link(ctx.link);
+
+  const appBridge = ctx.appBridge || null;
+
   const context: AppContext = {
     polaris,
     themeProvider,
     frame,
+    intl,
+    scrollLockManager,
+    stickyManager,
+    appBridge,
+    link,
   };
 
   const wrapper = polarisContextReactWrapper(node, {
@@ -152,13 +183,21 @@ export function polarisContextReactWrapper<P, S>(
 
     return (
       <React.StrictMode>
-        <AppProviderContext.Provider value={app.polaris}>
-          <ThemeProviderContext.Provider value={app.themeProvider}>
-            <FrameContext.Provider value={app.frame}>
-              {content}
-            </FrameContext.Provider>
-          </ThemeProviderContext.Provider>
-        </AppProviderContext.Provider>
+        <I18nContext.Provider value={app.intl}>
+          <ScrollLockManagerContext.Provider value={app.scrollLockManager}>
+            <StickyManagerContext.Provider value={app.stickyManager}>
+              <ThemeProviderContext.Provider value={app.themeProvider}>
+                <AppBridgeContext.Provider value={app.appBridge as any}>
+                  <LinkContext.Provider value={app.link}>
+                    <FrameContext.Provider value={app.frame}>
+                      {content}
+                    </FrameContext.Provider>
+                  </LinkContext.Provider>
+                </AppBridgeContext.Provider>
+              </ThemeProviderContext.Provider>
+            </StickyManagerContext.Provider>
+          </ScrollLockManagerContext.Provider>
+        </I18nContext.Provider>
       </React.StrictMode>
     );
   }

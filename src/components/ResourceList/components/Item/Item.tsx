@@ -12,7 +12,10 @@ import {Props as ThumbnailProps} from '../../../Thumbnail';
 import ButtonGroup from '../../../ButtonGroup';
 import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 
 import {SELECT_ALL_ITEMS, SelectedItems} from '../../types';
 import ResourceListContext, {ResourceListContextType} from '../../context';

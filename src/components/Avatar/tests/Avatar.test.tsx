@@ -38,10 +38,15 @@ describe('<Avatar />', () => {
       }));
 
       const Avatar = require('../Avatar').default;
+      const AppProvider = require('../../AppProvider').default;
       const Image = require('components').Image;
 
       const src = 'image/path/';
-      const avatar = mountWithAppProvider(<Avatar source={src} />);
+      const avatar = mountWithAppProvider(
+        <AppProvider i18n={{}}>
+          <Avatar source={src} />
+        </AppProvider>,
+      );
       expect(avatar.find(Image)).toHaveLength(0);
     });
   });

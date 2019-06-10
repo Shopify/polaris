@@ -55,12 +55,12 @@ describe('<Toast />', () => {
 
     it('shows app bridge toast notice content on mount and unmounts safely', () => {
       const content = 'Message sent';
-      const {toast, polaris} = mountWithAppBridge(
+      const {toast, appBridge} = mountWithAppBridge(
         <Toast content={content} duration={1000} onDismiss={noop} />,
       );
       toast.unmount();
 
-      expect(AppBridgeToast.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeToast.create).toHaveBeenCalledWith(appBridge, {
         duration: 1000,
         isError: undefined,
         message: 'Message sent',
@@ -74,11 +74,11 @@ describe('<Toast />', () => {
 
     it('shows app bridge toast error content on mount', () => {
       const content = 'Message sent';
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Toast content={content} duration={1000} onDismiss={noop} error />,
       );
 
-      expect(AppBridgeToast.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeToast.create).toHaveBeenCalledWith(appBridge, {
         duration: 1000,
         isError: true,
         message: 'Message sent',
@@ -115,10 +115,9 @@ function noop() {}
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
-  const polaris = {appBridge};
   const toast = mountWithAppProvider(element, {
-    context: {frame: {}, polaris},
+    context: {frame: {}, appBridge},
   });
 
-  return {toast, polaris};
+  return {toast, appBridge};
 }

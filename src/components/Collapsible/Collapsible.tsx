@@ -5,7 +5,7 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {classNames} from '../../utilities/css';
-import {withAppProvider} from '../AppProvider';
+import {withAppProvider} from '../../utilities/with-app-provider';
 
 import styles from './Collapsible.scss';
 

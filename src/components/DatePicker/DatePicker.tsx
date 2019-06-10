@@ -14,7 +14,10 @@ import {
   isSameDay,
 } from '@shopify/javascript-utilities/dates';
 
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Button from '../Button';
 import {monthName} from './utilities';
 

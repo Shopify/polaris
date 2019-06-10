@@ -237,9 +237,9 @@ describe('<Page />', () => {
       };
 
       const {buttonMock, restore: restoreButtonCreateMock} = mockButtonCreate();
-      const {
-        polaris: {appBridge},
-      } = mountWithAppBridge(<Page title="Test" breadcrumbs={[breadcrumb]} />);
+      const {appBridge} = mountWithAppBridge(
+        <Page title="Test" breadcrumbs={[breadcrumb]} />,
+      );
 
       expect(buttonMock.subscribe).toHaveBeenCalledTimes(1);
       expect(buttonMock.subscribe).toHaveBeenCalledWith(
@@ -316,9 +316,7 @@ describe('<Page />', () => {
         restore: restoreTitleBarCreateMock,
       } = mockTitleBarCreate();
 
-      const {
-        polaris: {appBridge},
-      } = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Page
           title="Test"
           primaryAction={primaryAction}
@@ -426,9 +424,8 @@ function noop() {}
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
-  const polaris = {appBridge};
   const page = mountWithAppProvider(element, {
-    context: {polaris},
+    context: {appBridge},
   });
-  return {page, polaris};
+  return {page, appBridge};
 }

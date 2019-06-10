@@ -3,7 +3,8 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 
 import {DEFAULT_TOAST_DURATION, FrameContext, ToastProps} from '../Frame';
-import {usePolaris, useDeepCompare} from '../../hooks';
+import {useDeepCompare} from '../../utilities/use-deep-compare';
+import {useAppBridge} from '../../utilities/app-bridge';
 
 const createId = createUniqueIDFactory('Toast');
 
@@ -17,7 +18,7 @@ function Toast(props: Props) {
   const id = useRef(createId());
   const appBridgeToast = useRef<AppBridgeToast.Toast>();
   const frame = useContext(FrameContext);
-  const {appBridge} = usePolaris();
+  const appBridge = useAppBridge();
 
   useDeepCompare(
     () => {
