@@ -24,6 +24,9 @@ $individual-action-padding-x: (1.5 * spacing(tight));
 }
 
 .Header-hasRollupActions {
+  // TODO: We shouldn't render these components at all when at "mobile" width.
+  // We should have a function similar to `navigationBarCollapsed`
+  // that matches the `$not-condensed-content` width.
   .SecondaryActions {
     display: none;
   }
@@ -37,8 +40,7 @@ $individual-action-padding-x: (1.5 * spacing(tight));
   }
 
   @include page-content-when-not-partially-condensed {
-    // TODO: We really should probably not render the component at this width...
-    // is there a matchMedia I can utilize for this?
+    // TODO: Like above, we shouldn't render this component at "desktop" width.
     .RollupActionsWrapper {
       display: none;
     }
@@ -135,11 +137,11 @@ $individual-action-padding-x: (1.5 * spacing(tight));
 
     &:first-child {
       // Compensates for the fact that we push the icon slightly to the left
-      margin-left: -1 * $individual-action-padding-x;
+      margin-left: -$individual-action-padding-x;
     }
 
     &:last-child {
-      margin-right: -1 * $individual-action-padding-x;
+      margin-right: -$individual-action-padding-x;
     }
   }
 }

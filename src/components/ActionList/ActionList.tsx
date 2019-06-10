@@ -38,9 +38,9 @@ export default function ActionList({
       <Section
         key={section.title || index}
         section={section}
-        onActionAnyItem={onActionAnyItem}
         hasMultipleSections={hasMultipleSections}
         actionRole={actionRole}
+        onActionAnyItem={onActionAnyItem}
       />
     ) : null;
   });

@@ -13,9 +13,9 @@ export interface Props {
   sections?: ActionListProps['sections'];
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
-export interface State {
+interface State {
   rollupOpen: boolean;
 }
 
@@ -39,10 +39,10 @@ class RollupActions extends React.PureComponent<CombinedProps, State> {
           <Button
             plain
             icon={HorizontalDotsMinor}
-            onClick={this.handleRollupToggle}
             accessibilityLabel={intl.translate(
               'Polaris.Page.RollupActions.rollupButton',
             )}
+            onClick={this.handleRollupToggle}
           />
         }
         onClose={this.handleRollupToggle}

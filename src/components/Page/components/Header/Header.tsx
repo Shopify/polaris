@@ -43,7 +43,7 @@ export interface Props {
   pagination?: PaginationDescriptor;
 }
 
-export interface State {
+interface State {
   openActionGroup?: string;
 }
 
@@ -224,6 +224,13 @@ class Header extends React.PureComponent<CombinedProps, State> {
   };
 }
 
+function convertActionGroupToActionListSection({
+  title,
+  actions,
+}: PlainActionGroupDescriptor) {
+  return {title, items: actions};
+}
+
 function secondaryActionsFrom(
   items: RollupActionsProps['items'],
 ): React.ReactNode {
@@ -239,13 +246,6 @@ function secondaryActionsFrom(
       <PlainAction {...item} content={content} />
     </div>
   ));
-}
-
-function convertActionGroupToActionListSection({
-  title,
-  actions,
-}: PlainActionGroupDescriptor) {
-  return {title, items: actions};
 }
 
 export default withAppProvider<Props>()(Header);
