@@ -32,7 +32,7 @@ export interface Props extends HeaderProps {
   forceRender?: boolean;
 }
 
-export type ComposedProps = Props & WithAppProviderProps;
+type ComposedProps = Props & WithAppProviderProps;
 
 const APP_BRIDGE_PROPS: (keyof Props)[] = [
   'title',
@@ -42,7 +42,7 @@ const APP_BRIDGE_PROPS: (keyof Props)[] = [
   'primaryAction',
 ];
 
-export class Page extends React.PureComponent<ComposedProps, never> {
+class Page extends React.PureComponent<ComposedProps, never> {
   private titlebar: AppBridgeTitleBar.TitleBar | undefined;
 
   componentDidMount() {

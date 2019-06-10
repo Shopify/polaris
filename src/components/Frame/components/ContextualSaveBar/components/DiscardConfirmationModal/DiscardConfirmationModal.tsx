@@ -12,7 +12,7 @@ export interface Props {
   onCancel(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 function DiscardConfirmationModal({
   open,

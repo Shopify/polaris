@@ -53,9 +53,9 @@ const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
-export class Frame extends React.PureComponent<CombinedProps, State> {
+class Frame extends React.PureComponent<CombinedProps, State> {
   static childContextTypes = frameContextTypes;
 
   state: State = {

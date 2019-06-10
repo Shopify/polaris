@@ -15,7 +15,7 @@ export interface Props {
   onRemove?(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 function Tag({
   children,

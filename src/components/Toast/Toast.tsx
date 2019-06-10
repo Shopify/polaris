@@ -20,7 +20,7 @@ interface Props extends ToastProps {}
 
 export type ComposedProps = Props & WithAppProviderProps;
 
-export class Toast extends React.PureComponent<ComposedProps, never> {
+class Toast extends React.PureComponent<ComposedProps, never> {
   static contextTypes = frameContextTypes;
   context: FrameContext;
 

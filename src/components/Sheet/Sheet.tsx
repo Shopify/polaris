@@ -41,13 +41,13 @@ export interface Props {
   onClose(): void;
 }
 
-export type ComposedProps = Props & WithAppProviderProps;
+type ComposedProps = Props & WithAppProviderProps;
 
 export interface State {
   mobile: boolean;
 }
 
-export class Sheet extends React.Component<ComposedProps, State> {
+class Sheet extends React.Component<ComposedProps, State> {
   static contextTypes = frameContextTypes;
   context: FrameContext;
 

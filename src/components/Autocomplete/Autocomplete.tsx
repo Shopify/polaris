@@ -39,13 +39,13 @@ export interface Props {
   onLoadMoreResults?(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 function TextField(props: TextFieldProps) {
   return <ComboBox.TextField {...props} />;
 }
 
-export class Autocomplete extends React.PureComponent<CombinedProps, never> {
+class Autocomplete extends React.PureComponent<CombinedProps, never> {
   static TextField = TextField;
   static ComboBox = ComboBox;
 

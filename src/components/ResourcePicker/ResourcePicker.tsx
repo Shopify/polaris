@@ -37,10 +37,10 @@ export interface Props {
   onCancel?(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 /** @deprecated Use `ResourcePicker` from `@shopify/app-bridge-react` instead. */
-export class ResourcePicker extends React.PureComponent<CombinedProps, never> {
+class ResourcePicker extends React.PureComponent<CombinedProps, never> {
   private focusReturnPoint: HTMLElement | null = null;
   private appBridgeResourcePicker:
     | AppBridgeResourcePicker.ResourcePicker

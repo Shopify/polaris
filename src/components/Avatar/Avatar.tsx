@@ -41,9 +41,9 @@ export interface State {
   prevSource?: string;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
-export class Avatar extends React.PureComponent<CombinedProps, State> {
+class Avatar extends React.PureComponent<CombinedProps, State> {
   static getDerivedStateFromProps(props: Props, state: State) {
     if (props.source !== state.prevSource) {
       return {

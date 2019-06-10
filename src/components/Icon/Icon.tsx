@@ -194,7 +194,7 @@ export interface Props {
   untrusted?: boolean;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 function Icon({
   source,
