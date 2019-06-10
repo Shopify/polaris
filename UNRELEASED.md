@@ -24,6 +24,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed transition on tag button hover state [#1337](https://github.com/Shopify/polaris-react/pull/1337)
 - Added `textAlign` prop to Button ([#1576](https://github.com/Shopify/polaris-react/pull/1576))
 - Made `Button` red when given both the `plain` and `destructive` props ([#1603](https://github.com/Shopify/polaris-react/pull/1603))
+- Added support for disabled, destructive, and loading actions in `Card` and `Card.Section` ([#1622](https://github.com/Shopify/polaris-react/1622))
 
 ### Bug fixes
 
@@ -43,10 +44,12 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed an accessibility issue in the `Collapsible` component example ([#1591](https://github.com/Shopify/polaris-react/pull/1591))
 - Added accessibility documentation for the `RangeSlider` component ([#1630](https://github.com/Shopify/polaris-react/pull/1630))
 - Added accessibility documentation for the `Collapsible` component ([#1631](https://github.com/Shopify/polaris-react/pull/1631))
+- Added accessibility documentation for the `DescriptionList` component ([#1634](https://github.com/Shopify/polaris-react/pull/1634))
 - Added accessibility documentation for the `Form` component ([#1636](https://github.com/Shopify/polaris-react/pull/1636))
 - Added accessibility documentation for the `ExceptionList` component ([#1635](https://github.com/Shopify/polaris-react/pull/1635))
 - Added accessibility documentation for the `KeyboardKey` component ([#1640](https://github.com/Shopify/polaris-react/pull/1640))
 - Added accessibility documentation for the `Tag` component ([#1647](https://github.com/Shopify/polaris-react/pull/1647))
+- Added accessibility documentation for the `Modal` component ([#1648](https://github.com/Shopify/polaris-react/pull/1648))
 
 ### Development workflow
 

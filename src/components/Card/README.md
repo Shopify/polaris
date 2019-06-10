@@ -260,14 +260,14 @@ Use for less important card actions, or actions merchants may do before reviewin
 
 <!-- content-for: web -->
 
-Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, merchants should review the contents of a shipment before important actions like canceling or adding tracking information.
+Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, merchants should review the contents of a shipment before an important action like adding tracking information.
 
 <!-- /content-for -->
 
 ```jsx
 <Card
   title="Shipment 1234"
-  secondaryFooterAction={{content: 'Cancel shipment'}}
+  secondaryFooterAction={{content: 'Edit shipment'}}
   primaryFooterAction={{content: 'Add tracking number'}}
 >
   <Card.Section title="Items">
@@ -299,6 +299,25 @@ Use footer actions for a card’s most important actions, or actions merchants s
 ![Card featuring footer actions: add variant, edit options](/public_images/components/Card/ios/footer-actions@2x.png)
 
 <!-- /content-for -->
+
+### Card with destructive footer action
+
+Use when a card action will delete merchant data or be otherwise difficult to recover from.
+
+```jsx
+<Card
+  title="Shipment 1234"
+  secondaryFooterAction={{content: 'Cancel shipment', destructive: true}}
+  primaryFooterAction={{content: 'Add tracking number'}}
+>
+  <Card.Section title="Items">
+    <List>
+      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
+      <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
+    </List>
+  </Card.Section>
+</Card>
+```
 
 ### Card with multiple sections
 
@@ -350,7 +369,7 @@ Use when you have two related but distinct pieces of information to communicate 
 </Card>
 ```
 
-### Card with sections that have title actions
+### Card section with action
 
 Use when your card section has actions that apply only to that section.
 
@@ -394,6 +413,28 @@ Use when your card sections need further categorization.
     <Card.Subsection>
       A single subsection without a sibling has no visual appearance
     </Card.Subsection>
+  </Card.Section>
+</Card>
+```
+
+### Card section with destructive action
+
+<!-- content-for: web -->
+
+Use when a card action applies only to one section and will delete merchant data or be otherwise difficult to recover from.
+
+<!-- /content-for -->
+
+```jsx
+<Card title="Customer">
+  <Card.Section>
+    <p>John Smith</p>
+  </Card.Section>
+  <Card.Section
+    title="Contact Information"
+    actions={[{content: 'Delete', destructive: true}, {content: 'Edit'}]}
+  >
+    <p>john.smith@example.com</p>
   </Card.Section>
 </Card>
 ```

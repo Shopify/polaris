@@ -85,7 +85,7 @@
         "actionTitleFile": "添加文件",
         "actionTitleImage": "添加图片",
         "actionHintFile": "或拖放上传",
-        "actionHintImage": "或拖放图片以上传",
+        "actionHintImage": "或拖放上传",
         "label": "上传文件"
       }
     },
