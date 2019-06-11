@@ -46,7 +46,7 @@ class RollupActions extends React.PureComponent<ComposedProps, State> {
           plain
           icon={HorizontalDotsMinor}
           accessibilityLabel={intl.translate(
-            'Polaris.Page.RollupActions.rollupButton',
+            'Polaris.Menu.RollupActions.rollupButton',
           )}
           onClick={this.handleRollupToggle}
         />

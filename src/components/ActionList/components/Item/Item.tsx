@@ -16,6 +16,7 @@ export default function Item({
   id,
   badge,
   content,
+  accessibilityLabel,
   helpText,
   url,
   onAction,
@@ -90,19 +91,21 @@ export default function Item({
     <UnstyledLink
       id={id}
       url={url}
-      onClick={onAction}
       className={className}
       external={external}
+      aria-label={accessibilityLabel}
+      onClick={onAction}
     >
       {contentElement}
     </UnstyledLink>
   ) : (
     <button
       id={id}
-      onClick={onAction}
+      type="button"
       className={className}
       disabled={disabled}
-      type="button"
+      aria-label={accessibilityLabel}
+      onClick={onAction}
     >
       {contentElement}
     </button>

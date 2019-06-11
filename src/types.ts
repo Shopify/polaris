@@ -106,6 +106,8 @@ export interface ActionListItemDescriptor
     BadgeAction,
     DestructableAction,
     AppBridgeAction {
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
   /** Additional hint text to display with item */
   helpText?: string;
   /** Image source */

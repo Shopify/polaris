@@ -9,19 +9,32 @@ import MenuAction from '../MenuAction';
 import styles from './MenuGroup.scss';
 
 export interface Props extends MenuGroupDescriptor {
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
+  /** Show or hide the MenuGroup */
   active?: boolean;
+  /** Callback for opening the MenuGroup by title */
   onOpen(title: string): void;
+  /** Callback for closing the MenuGroup by title */
   onClose(title: string): void;
 }
 
 export default class MenuGroup extends React.Component<Props, never> {
   render() {
-    const {actions, details, title, icon, active} = this.props;
+    const {
+      accessibilityLabel,
+      active,
+      actions,
+      details,
+      title,
+      icon,
+    } = this.props;
 
     const popoverActivator = (
       <MenuAction
         content={title}
         icon={icon}
+        accessibilityLabel={accessibilityLabel}
         disclosure
         onAction={this.handleOpen}
       />

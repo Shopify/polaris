@@ -42,4 +42,29 @@ describe('<Item />', () => {
     const item = mountWithAppProvider(<Item helpText="Foo" />);
     expect(item.find(TextStyle).text()).toBe('Foo');
   });
+
+  it('passes `accessibilityLabel` to `<button />`', () => {
+    const mockAccessibilityLabel = 'mock label';
+    const item = mountWithAppProvider(
+      <Item accessibilityLabel={mockAccessibilityLabel} onAction={noop} />,
+    );
+
+    expect(item.find('button').prop('aria-label')).toBe(mockAccessibilityLabel);
+  });
+
+  it('passes `accessibilityLabel` to `<UnstyledLink />`', () => {
+    const mockAccessibilityLabel = 'mock label';
+    const item = mountWithAppProvider(
+      <Item
+        accessibilityLabel={mockAccessibilityLabel}
+        url="https://www.shopify.com"
+      />,
+    );
+
+    expect(item.find(UnstyledLink).prop('aria-label')).toBe(
+      mockAccessibilityLabel,
+    );
+  });
 });
+
+function noop() {}

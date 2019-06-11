@@ -16,8 +16,8 @@ describe('<MenuGroup />', () => {
     onClose: noop,
   };
 
-  describe('title', () => {
-    it('is used as the content for the <Popover /> activator', () => {
+  describe('<MenuAction />', () => {
+    it('passes `title` as the `content` for the <Popover /> activator', () => {
       const mockTitle = 'mock title';
       const wrapper = mountWithAppProvider(
         <MenuGroup {...mockProps} title={mockTitle} />,
@@ -25,10 +25,22 @@ describe('<MenuGroup />', () => {
 
       expect(wrapper.find(MenuAction).prop('content')).toBe(mockTitle);
     });
-  });
 
-  describe('icon', () => {
-    it('gets passed into <MenuAction />', () => {
+    it('passes `accessibilityLabel`', () => {
+      const mockAccessibilityLabel = 'mock a11y';
+      const wrapper = mountWithAppProvider(
+        <MenuGroup
+          {...mockProps}
+          accessibilityLabel={mockAccessibilityLabel}
+        />,
+      );
+
+      expect(wrapper.find(MenuAction).prop('accessibilityLabel')).toBe(
+        mockAccessibilityLabel,
+      );
+    });
+
+    it('passes `icon`', () => {
       const mockIcon = SaveMinor;
       const wrapper = mountWithAppProvider(
         <MenuGroup {...mockProps} icon={mockIcon} />,
@@ -36,10 +48,22 @@ describe('<MenuGroup />', () => {
 
       expect(wrapper.find(MenuAction).prop('icon')).toBe(mockIcon);
     });
+
+    it('passes `title` when `onOpen` triggers after an action', () => {
+      const mockTitle = 'mock title';
+      const onOpenSpy = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <MenuGroup {...mockProps} title={mockTitle} onOpen={onOpenSpy} />,
+      );
+
+      trigger(wrapper.find(MenuAction), 'onAction');
+
+      expect(onOpenSpy).toHaveBeenCalledWith(mockTitle);
+    });
   });
 
-  describe('details', () => {
-    it('get rendered in the <Popover />', () => {
+  describe('<Popover />', () => {
+    it('passes `details`', () => {
       const mockDetails = 'mock details';
       const wrapper = mountWithAppProvider(
         <MenuGroup {...mockProps} details={mockDetails} />,
@@ -48,10 +72,14 @@ describe('<MenuGroup />', () => {
 
       expect(popoverContents.text()).toContain(mockDetails);
     });
-  });
 
-  describe('actions', () => {
-    it('get passed into the <ActionList />', () => {
+    it('passes `active`', () => {
+      const wrapper = mountWithAppProvider(<MenuGroup {...mockProps} active />);
+
+      expect(wrapper.find(Popover).prop('active')).toBeTruthy();
+    });
+
+    it('passes `actions` into the <ActionList />', () => {
       const mockActions: Props['actions'] = [
         {content: 'mock content 1'},
         {content: 'mock content 2'},
@@ -65,32 +93,8 @@ describe('<MenuGroup />', () => {
         mockActions,
       );
     });
-  });
 
-  describe('active', () => {
-    it('gets passed into the <Popover />', () => {
-      const wrapper = mountWithAppProvider(<MenuGroup {...mockProps} active />);
-
-      expect(wrapper.find(Popover).prop('active')).toBeTruthy();
-    });
-  });
-
-  describe('onOpen()', () => {
-    it('passes in the title when it triggers after an action', () => {
-      const mockTitle = 'mock title';
-      const onOpenSpy = jest.fn();
-      const wrapper = mountWithAppProvider(
-        <MenuGroup {...mockProps} title={mockTitle} onOpen={onOpenSpy} />,
-      );
-
-      trigger(wrapper.find(MenuAction), 'onAction');
-
-      expect(onOpenSpy).toHaveBeenCalledWith(mockTitle);
-    });
-  });
-
-  describe('onClose()', () => {
-    it('passes in the title when it triggers after the <Popover /> closes', () => {
+    it('passes `title` when `onClose` triggers after the <Popover /> closes', () => {
       const mockTitle = 'mock title';
       const onCloseSpy = jest.fn();
       const wrapper = mountWithAppProvider(
@@ -102,7 +106,7 @@ describe('<MenuGroup />', () => {
       expect(onCloseSpy).toHaveBeenCalledWith(mockTitle);
     });
 
-    it('passes in the title when it triggers after an action ', () => {
+    it('passes `title` when `onClose` triggers after an action ', () => {
       const mockTitle = 'mock title';
       const onCloseSpy = jest.fn();
       const wrapper = mountWithAppProvider(

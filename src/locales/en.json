@@ -116,6 +116,12 @@
       "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
     },
 
+    "Menu": {
+      "RollupActions": {
+        "rollupButton": "Actions"
+      }
+    },
+
     "Modal": {
       "iFrameTitle": "body markup",
       "modalWarning": "These required properties are missing from Modal: {missingProps}"
@@ -123,8 +129,7 @@
 
     "Page": {
       "Header": {
-        "iconWarningMessage": "The icon prop has been removed from Page. Upload an application icon in the Shopify Partners Dashboard 'App setup' section instead.",
-        "rollupButton": "Actions"
+        "iconWarningMessage": "The icon prop has been removed from Page. Upload an application icon in the Shopify Partners Dashboard 'App setup' section instead."
       }
     },
 
@@ -215,10 +220,6 @@
           "on_or_after": "after {date}"
         }
       }
-    },
-
-    "RollupActions": {
-      "rollupButton": "Actions"
     },
 
     "Sheet": {

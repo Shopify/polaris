@@ -67,14 +67,12 @@ export default class Menu extends React.PureComponent<Props, State> {
 
     const groupsMarkup =
       groups.length > 0
-        ? groups.map(({title, actions, icon, details}, index) => (
+        ? groups.map(({title, ...rest}, index) => (
             <MenuGroup
               key={`MenuGroup-${title || index}`}
               title={title}
-              icon={icon}
-              actions={actions}
-              details={details}
               active={title === activeMenuGroup}
+              {...rest}
               onOpen={this.handleMenuGroupOpen}
               onClose={this.handleMenuGroupClose}
             />

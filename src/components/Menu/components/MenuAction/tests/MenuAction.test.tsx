@@ -17,27 +17,18 @@ describe('<MenuAction />', () => {
     });
   });
 
-  describe('url', () => {
-    it('renders a link', () => {
-      const wrapper = mountWithAppProvider(
-        <MenuAction url="http://google.com" />,
-      );
+  describe('<UnstyledLink />', () => {
+    const mockUrl = 'http://google.com';
 
-      expect(wrapper.find(UnstyledLink).exists()).toBeTruthy();
+    it('renders when passed a `url`', () => {
+      const wrapper = mountWithAppProvider(<MenuAction url={mockUrl} />);
+
+      expect(wrapper.find(UnstyledLink).prop('url')).toBe(mockUrl);
     });
 
-    it('passes the url into the link', () => {
-      const url = 'http://google.com';
-      const wrapper = mountWithAppProvider(<MenuAction url={url} />);
-
-      expect(wrapper.find(UnstyledLink).prop('url')).toBe(url);
-    });
-  });
-
-  describe('external', () => {
-    it('gets passed into the link', () => {
+    it('passes `external` prop', () => {
       const wrapper = mountWithAppProvider(
-        <MenuAction url="http://google.com" external />,
+        <MenuAction url={mockUrl} external />,
       );
 
       expect(wrapper.find(UnstyledLink).prop('external')).toBeTruthy();
