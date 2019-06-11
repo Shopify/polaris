@@ -24,6 +24,7 @@ export interface Props {
 
 export default class TabMeasurer extends React.PureComponent<Props, never> {
   private containerNode: HTMLElement | null = null;
+  private animationFrame: number | null = null;
 
   componentDidMount() {
     this.handleMeasurement();
@@ -83,25 +84,31 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
   };
 
   private handleMeasurement = () => {
-    if (this.containerNode == null) {
-      return;
+    if (this.animationFrame) {
+      cancelAnimationFrame(this.animationFrame);
     }
 
-    const {handleMeasurement} = this.props;
-    const containerWidth = this.containerNode.offsetWidth;
-    const tabMeasurerNode = findDOMNode(this);
-    const hiddenTabNodes =
-      tabMeasurerNode instanceof Element && tabMeasurerNode.children;
-    const hiddenTabNodesArray: HTMLElement[] = [].slice.call(hiddenTabNodes);
-    const hiddenTabWidths = hiddenTabNodesArray.map((node) => {
-      return node.getBoundingClientRect().width;
-    });
-    const disclosureWidth = hiddenTabWidths.pop() as number;
+    this.animationFrame = requestAnimationFrame(() => {
+      if (this.containerNode == null) {
+        return;
+      }
 
-    handleMeasurement({
-      containerWidth,
-      disclosureWidth,
-      hiddenTabWidths,
+      const {handleMeasurement} = this.props;
+      const containerWidth = this.containerNode.offsetWidth;
+      const tabMeasurerNode = findDOMNode(this);
+      const hiddenTabNodes =
+        tabMeasurerNode instanceof Element && tabMeasurerNode.children;
+      const hiddenTabNodesArray: HTMLElement[] = [].slice.call(hiddenTabNodes);
+      const hiddenTabWidths = hiddenTabNodesArray.map((node) => {
+        return node.getBoundingClientRect().width;
+      });
+      const disclosureWidth = hiddenTabWidths.pop() as number;
+
+      handleMeasurement({
+        containerWidth,
+        disclosureWidth,
+        hiddenTabWidths,
+      });
     });
   };
 }
