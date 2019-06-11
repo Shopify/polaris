@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {animationFrame} from '@shopify/jest-dom-mocks';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities';
 
 import {
@@ -10,22 +10,10 @@ import {
   Menu,
 } from 'components';
 
+import {HeaderPrimaryAction} from '../../../types';
 import {LinkAction} from '../../../../../types';
 
 import Header, {Props} from '../Header';
-import {HeaderPrimaryAction} from '../types';
-
-window.matchMedia =
-  window.matchMedia ||
-  function() {
-    return {
-      matches: window.innerWidth <= 769,
-      addListener() {},
-      removeListener() {},
-    };
-  };
-
-const defaultWindowWidth = window.innerWidth;
 
 describe('<Header />', () => {
   const mockProps: Props = {
@@ -33,16 +21,11 @@ describe('<Header />', () => {
   };
 
   beforeEach(() => {
-    animationFrame.mock();
+    matchMedia.mock();
   });
 
   afterEach(() => {
-    animationFrame.restore();
-    Object.defineProperty(window, 'innerWidth', {
-      configurable: true,
-      writable: true,
-      value: defaultWindowWidth,
-    });
+    matchMedia.restore();
   });
 
   it('renders resize <EventListener />', () => {
@@ -188,11 +171,7 @@ describe('<Header />', () => {
     });
 
     it('renders with `rollup` as `true` when on mobile', () => {
-      Object.defineProperty(window, 'innerWidth', {
-        configurable: true,
-        writable: true,
-        value: 500,
-      });
+      matchMedia.setMedia(() => ({matches: true}));
 
       const wrapper = mountWithAppProvider(
         <Header {...mockProps} secondaryActions={mockSecondaryActions} />,

@@ -44,6 +44,7 @@ export default class MenuGroup extends React.Component<Props, never> {
       <Popover
         active={Boolean(active)}
         activator={popoverActivator}
+        preferredAlignment="left"
         onClose={this.handleClose}
       >
         <ActionList items={actions} onActionAnyItem={this.handleClose} />

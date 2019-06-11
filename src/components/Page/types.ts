@@ -3,7 +3,7 @@ import {
   DestructableAction,
   DisableableAction,
   LoadableAction,
-} from '../../../../types';
+} from '../../types';
 
 export interface HeaderPrimaryAction
   extends DestructableAction,

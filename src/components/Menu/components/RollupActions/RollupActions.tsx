@@ -57,6 +57,7 @@ class RollupActions extends React.PureComponent<ComposedProps, State> {
       <Popover
         active={rollupOpen}
         activator={activatorMarkup}
+        preferredAlignment="right"
         onClose={this.handleRollupToggle}
       >
         <ActionList

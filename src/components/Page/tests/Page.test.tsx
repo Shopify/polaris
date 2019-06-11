@@ -7,9 +7,10 @@ import {animationFrame} from '@shopify/jest-dom-mocks';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 
 import {Card} from 'components';
-import {Header, HeaderPrimaryAction} from '../components';
+import {Header} from '../components';
 import {LinkAction} from '../../../types';
 
+import {HeaderPrimaryAction} from '../types';
 import Page, {Props} from '../Page';
 
 window.matchMedia =

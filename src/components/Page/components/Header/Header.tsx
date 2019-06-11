@@ -14,7 +14,7 @@ import DisplayText from '../../../DisplayText';
 import Pagination, {PaginationDescriptor} from '../../../Pagination';
 import Menu from '../../../Menu';
 
-import {HeaderPrimaryAction} from './types';
+import {HeaderPrimaryAction} from '../../types';
 import styles from './Header.scss';
 
 export interface Props {
@@ -68,6 +68,17 @@ class Header extends React.PureComponent<ComposedProps, State> {
     40,
     {leading: true, trailing: true, maxWait: 40},
   );
+
+  componentDidMount() {
+    const {
+      state: {mobileView},
+      handleToggleMobile,
+    } = this;
+
+    if (mobileView !== isMobileView()) {
+      handleToggleMobile();
+    }
+  }
 
   render() {
     const {
