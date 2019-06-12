@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useRef, useState, useEffect, useCallback} from 'react';
 import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
-import {read} from '@shopify/javascript-utilities/fastdom';
+import {durationBase} from '@shopify/polaris-tokens';
 import {classNames} from '../../utilities/css';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {withAppProvider} from '../AppProvider';
 
 import styles from './Collapsible.scss';
 
@@ -18,143 +18,64 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+const CSS_VAR_COLLAPSIBLE_HEIGHT = '--polaris-collapsible-height';
+const CSS_VAR_COLLAPSIBLE_TRANSITION_DURATION =
+  '--polaris-collapsible-transition-duration';
 
-export type AnimationState =
-  | 'idle'
-  | 'measuring'
-  | 'closingStart'
-  | 'closing'
-  | 'openingStart'
-  | 'opening';
-
-export interface State {
-  height?: number | null;
-  animationState: AnimationState;
+function duration(height: number) {
+  return Math.max((height / 300) * durationBase, durationBase);
 }
 
-export class Collapsible extends React.Component<CombinedProps, State> {
-  state: State = {
-    height: null,
-    animationState: 'idle',
-  };
+export function Collapsible({id, open, children}: Props) {
+  const [height, setHeight] = useState<number | null>(null);
+  const node = useRef<HTMLDivElement>(null);
 
-  private node: HTMLElement | null = null;
-  private heightNode: HTMLElement | null = null;
+  const handleResize = useCallback(() => {
+    if (node.current == null) return;
 
-  componentWillReceiveProps({open: willOpen}: Props) {
-    const {open} = this.props;
+    setHeight(node.current.scrollHeight);
+  }, []);
 
-    if (open !== willOpen) {
-      this.setState({animationState: 'measuring'});
-    }
-  }
+  useEffect(
+    () => {
+      const ref = node.current;
+      if (ref == null) return;
 
-  componentDidUpdate({open: wasOpen}: Props) {
-    const {animationState} = this.state;
+      setHeight(ref.scrollHeight);
+      addEventListener(ref, 'resize', handleResize);
 
-    read(() => {
-      switch (animationState) {
-        case 'idle':
-          break;
-        case 'measuring':
-          this.setState({
-            animationState: wasOpen ? 'closingStart' : 'openingStart',
-            height:
-              wasOpen && this.heightNode ? this.heightNode.scrollHeight : 0,
-          });
-          break;
-        case 'closingStart':
-          this.setState({
-            animationState: 'closing',
-            height: 0,
-          });
-          break;
-        case 'openingStart':
-          this.setState({
-            animationState: 'opening',
-            height: this.heightNode ? this.heightNode.scrollHeight : 0,
-          });
-      }
-    });
-  }
+      return () => {
+        if (ref == null) return;
 
-  componentDidMount() {
-    if (this.node == null) {
-      return;
-    }
+        removeEventListener(ref, 'resize', handleResize);
+      };
+    },
+    [handleResize, open],
+  );
 
-    addEventListener(this.node, 'transitionend', this.handleTransitionEnd);
-  }
+  useEffect(
+    () => {
+      if (!node.current) return;
 
-  componentWillUnmount() {
-    if (this.node == null) {
-      return;
-    }
+      node.current.style.setProperty(
+        CSS_VAR_COLLAPSIBLE_HEIGHT,
+        `${height || 0}px`,
+      );
+      node.current.style.setProperty(
+        CSS_VAR_COLLAPSIBLE_TRANSITION_DURATION,
+        `${duration(height || 0)}ms`,
+      );
+    },
+    [height],
+  );
 
-    removeEventListener(this.node, 'transitionend', this.handleTransitionEnd);
-  }
+  const wrapperClassName = classNames(styles.Collapsible, open && styles.open);
 
-  render() {
-    const {id, open, children} = this.props;
-    const {animationState, height} = this.state;
-
-    const animating = animationState !== 'idle';
-
-    const wrapperClassName = classNames(
-      styles.Collapsible,
-      open && styles.open,
-      animating && styles.animating,
-      !animating && open && styles.fullyOpen,
-    );
-
-    const displayHeight = collapsibleHeight(open, animationState, height);
-
-    const content = animating || open ? children : null;
-
-    return (
-      <div
-        id={id}
-        aria-hidden={!open}
-        style={{height: displayHeight}}
-        className={wrapperClassName}
-        ref={this.bindNode}
-      >
-        <div ref={this.bindHeightNode}>{content}</div>
-      </div>
-    );
-  }
-
-  private bindNode = (node: HTMLElement | null) => {
-    this.node = node;
-  };
-
-  private bindHeightNode = (node: HTMLElement | null) => {
-    this.heightNode = node;
-  };
-
-  private handleTransitionEnd = (event: TransitionEvent) => {
-    const {target} = event;
-    if (target === this.node) {
-      this.setState({animationState: 'idle', height: null});
-    }
-  };
-}
-
-function collapsibleHeight(
-  open: boolean,
-  animationState: AnimationState,
-  height?: number | null,
-) {
-  if (animationState === 'idle' && open) {
-    return open ? 'auto' : undefined;
-  }
-
-  if (animationState === 'measuring') {
-    return open ? undefined : 'auto';
-  }
-
-  return `${height || 0}px`;
+  return (
+    <div id={id} aria-hidden={!open} className={wrapperClassName} ref={node}>
+      <div>{children}</div>
+    </div>
+  );
 }
 
 export default withAppProvider<Props>()(Collapsible);
