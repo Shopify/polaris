@@ -164,6 +164,49 @@ describe('<Header />', () => {
       {content: 'mock content 1'},
     ];
 
+    it('does not render without either `secondaryActions` or `actionGroups`', () => {
+      const wrapper = mountWithAppProvider(<Header {...mockProps} />);
+
+      expect(wrapper.find(ActionMenu).exists()).toBe(false);
+    });
+
+    it('does not render if `secondaryActions` is missing both `content` and `icon`', () => {
+      const mockSecondaryActions: Props['secondaryActions'] = [
+        {helpText: 'help text 1'},
+        {accessibilityLabel: 'a11y 2'},
+      ];
+      const wrapper = mountWithAppProvider(
+        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
+      );
+
+      expect(wrapper.find(ActionMenu).exists()).toBe(false);
+    });
+
+    it('renders with atleast valid `secondaryActions`', () => {
+      const mockSecondaryActions: Props['secondaryActions'] = [
+        {content: 'mock content'},
+      ];
+      const wrapper = mountWithAppProvider(
+        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
+      );
+
+      expect(wrapper.find(ActionMenu).exists()).toBe(true);
+    });
+
+    it('renders with atleast `actionGroups`', () => {
+      const mockActionGroups: Props['actionGroups'] = [
+        {
+          title: 'mock title',
+          actions: [{content: 'mock content 1'}],
+        },
+      ];
+      const wrapper = mountWithAppProvider(
+        <Header {...mockProps} actionGroups={mockActionGroups} />,
+      );
+
+      expect(wrapper.find(ActionMenu).exists()).toBe(true);
+    });
+
     it('renders with `rollup` as `false` when on desktop', () => {
       const wrapper = mountWithAppProvider(
         <Header {...mockProps} secondaryActions={mockSecondaryActions} />,

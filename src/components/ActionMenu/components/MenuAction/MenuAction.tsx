@@ -25,6 +25,10 @@ export default function MenuAction({
   disabled,
   onAction,
 }: Props) {
+  if (icon == null && content == null) {
+    return null;
+  }
+
   const iconMarkup = icon && (
     <span className={styles.IconWrapper}>
       <Icon source={icon} />

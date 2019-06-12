@@ -12,7 +12,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### New components
 
-- Introduced the `ActionMenu` component, along with `MenuAction`, `MenuGroup`, and `RollupActions` sub-components ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
+- `ActionMenu`: Use for display of actions and action groups within the context of a header ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
 
 ### Enhancements
 

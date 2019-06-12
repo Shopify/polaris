@@ -1,15 +1,47 @@
 import * as React from 'react';
-import {SaveMinor} from '@shopify/polaris-icons';
+import {CaretDownMinor, SaveMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 
 import Icon from '../../../../Icon';
 import UnstyledLink from '../../../../UnstyledLink';
 
-import MenuAction from '../MenuAction';
+import MenuAction, {Props} from '../MenuAction';
 
 describe('<MenuAction />', () => {
+  const mockProps: Props = {
+    content: 'content',
+  };
+
+  it('does not render without `content` or `icon`', () => {
+    const wrapper = mountWithAppProvider(<MenuAction />);
+
+    expect(wrapper.find(UnstyledLink).exists()).toBe(false);
+    expect(wrapper.find('button').exists()).toBe(false);
+  });
+
+  describe('content', () => {
+    const mockContent = 'mock content';
+
+    it('renders when provided only `content`', () => {
+      const wrapper = mountWithAppProvider(
+        <MenuAction content={mockContent} />,
+      );
+
+      expect(wrapper.contains(mockContent)).toBeTruthy();
+    });
+
+    it('renders both `content` and `icon`', () => {
+      const wrapper = mountWithAppProvider(
+        <MenuAction content={mockContent} icon={SaveMinor} />,
+      );
+
+      expect(wrapper.contains(mockContent)).toBeTruthy();
+      expect(wrapper.prop('icon')).toBe(SaveMinor);
+    });
+  });
+
   describe('icon', () => {
-    it('renders the given icon', () => {
+    it('renders when provided only `icon`', () => {
       const icon = SaveMinor;
       const wrapper = mountWithAppProvider(<MenuAction icon={icon} />);
 
@@ -21,14 +53,16 @@ describe('<MenuAction />', () => {
     const mockUrl = 'http://google.com';
 
     it('renders when passed a `url`', () => {
-      const wrapper = mountWithAppProvider(<MenuAction url={mockUrl} />);
+      const wrapper = mountWithAppProvider(
+        <MenuAction {...mockProps} url={mockUrl} />,
+      );
 
       expect(wrapper.find(UnstyledLink).prop('url')).toBe(mockUrl);
     });
 
     it('passes `external` prop', () => {
       const wrapper = mountWithAppProvider(
-        <MenuAction url={mockUrl} external />,
+        <MenuAction {...mockProps} url={mockUrl} external />,
       );
 
       expect(wrapper.find(UnstyledLink).prop('external')).toBeTruthy();
@@ -40,6 +74,7 @@ describe('<MenuAction />', () => {
       const accessibilityLabel = 'Go to Google';
       const wrapper = mountWithAppProvider(
         <MenuAction
+          {...mockProps}
           url="http://google.com"
           accessibilityLabel={accessibilityLabel}
         />,
@@ -53,7 +88,7 @@ describe('<MenuAction />', () => {
     it('gets passed into the button', () => {
       const accessibilityLabel = 'Go to Google';
       const wrapper = mountWithAppProvider(
-        <MenuAction accessibilityLabel={accessibilityLabel} />,
+        <MenuAction {...mockProps} accessibilityLabel={accessibilityLabel} />,
       );
 
       expect(wrapper.find('button').prop('aria-label')).toBe(
@@ -62,38 +97,26 @@ describe('<MenuAction />', () => {
     });
   });
 
-  describe('disabled', () => {
-    it('gets passed into the button', () => {
-      const wrapper = mountWithAppProvider(<MenuAction disabled />);
+  describe('disclosure', () => {
+    it('renders with `disclosure` icon', () => {
+      const wrapper = mountWithAppProvider(
+        <MenuAction {...mockProps} disclosure />,
+      );
+      const disclosureIcon = wrapper
+        .find(Icon)
+        .filterWhere((icon) => icon.prop('source') === CaretDownMinor);
 
-      expect(wrapper.find('button').prop('disabled')).toBeTruthy();
+      expect(disclosureIcon).toHaveLength(1);
     });
   });
 
-  describe('children', () => {
-    it('gets rendered when an icon is present', () => {
-      const content = 'Click me!';
+  describe('disabled', () => {
+    it('gets passed into the button', () => {
       const wrapper = mountWithAppProvider(
-        <MenuAction content={content} icon={SaveMinor} />,
+        <MenuAction {...mockProps} disabled />,
       );
 
-      expect(wrapper.contains(content)).toBeTruthy();
-    });
-
-    it('gets rendered when disclosure is truthy', () => {
-      const content = 'Click me!';
-      const wrapper = mountWithAppProvider(
-        <MenuAction content={content} disclosure />,
-      );
-
-      expect(wrapper.contains(content)).toBeTruthy();
-    });
-
-    it('gets rendered when neither one is present', () => {
-      const content = 'Click me!';
-      const wrapper = mountWithAppProvider(<MenuAction content={content} />);
-
-      expect(wrapper.contains(content)).toBeTruthy();
+      expect(wrapper.find('button').prop('disabled')).toBeTruthy();
     });
   });
 
@@ -101,7 +124,7 @@ describe('<MenuAction />', () => {
     it('triggers when the button gets clicked', () => {
       const onActionSpy = jest.fn();
       const wrapper = mountWithAppProvider(
-        <MenuAction onAction={onActionSpy} />,
+        <MenuAction {...mockProps} onAction={onActionSpy} />,
       );
 
       trigger(wrapper.find('button'), 'onClick');

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {SaveMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 
 import {ActionListItemDescriptor, MenuGroupDescriptor} from '../../../types';
@@ -23,18 +24,18 @@ describe('<ActionMenu />', () => {
       {content: 'mock content 2'},
     ];
 
+    it('does not render <MenuAction /> when there are no actions', () => {
+      const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
+
+      expect(wrapper.find(MenuAction)).toHaveLength(0);
+    });
+
     it('renders as <MenuAction /> when `rollup` is `false`', () => {
       const wrapper = mountWithAppProvider(
         <ActionMenu {...mockProps} actions={mockActions} />,
       );
 
       expect(wrapper.find(MenuAction)).toHaveLength(mockActions.length);
-    });
-
-    it('does not render <MenuAction /> when there are no actions', () => {
-      const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
-
-      expect(wrapper.find(MenuAction)).toHaveLength(0);
     });
 
     it('renders as <RollupActions /> `items` when `rollup` is `true`', () => {
@@ -89,6 +90,44 @@ describe('<ActionMenu />', () => {
       expect(wrapper.find(RollupActions).prop('sections')).toStrictEqual(
         convertedSections,
       );
+    });
+  });
+
+  describe('<MenuAction />', () => {
+    it('does not render when there is no `content` or `icon`', () => {
+      const mockActions: Props['actions'] = [
+        {helpText: 'help text 1'},
+        {helpText: 'help text 2'},
+      ];
+      const wrapper = mountWithAppProvider(
+        <ActionMenu {...mockProps} actions={mockActions} />,
+      );
+
+      expect(wrapper.find(MenuAction)).toHaveLength(0);
+    });
+
+    it('renders only actions that have atleast `content`', () => {
+      const mockActions: Props['actions'] = [
+        {content: 'mock content', helpText: 'help text 1'},
+        {helpText: 'help text 2'},
+      ];
+      const wrapper = mountWithAppProvider(
+        <ActionMenu {...mockProps} actions={mockActions} />,
+      );
+
+      expect(wrapper.find(MenuAction)).toHaveLength(1);
+    });
+
+    it('renders only actions that have atleast `icon`', () => {
+      const mockActions: Props['actions'] = [
+        {helpText: 'help text 1'},
+        {icon: SaveMinor, helpText: 'help text 2'},
+      ];
+      const wrapper = mountWithAppProvider(
+        <ActionMenu {...mockProps} actions={mockActions} />,
+      );
+
+      expect(wrapper.find(MenuAction)).toHaveLength(1);
     });
   });
 

@@ -59,13 +59,20 @@ export default class ActionMenu extends React.PureComponent<Props, State> {
 
     const actionsMarkup =
       actions.length > 0
-        ? actions.map(({content, ...action}, index) => (
-            <MenuAction
-              key={`MenuAction-${content || index}`}
-              content={content}
-              {...action}
-            />
-          ))
+        ? actions.map(({content, icon, ...action}, index) => {
+            if (content == null && icon == null) {
+              return;
+            }
+
+            return (
+              <MenuAction
+                key={`MenuAction-${content || index}`}
+                content={content}
+                icon={icon}
+                {...action}
+              />
+            );
+          })
         : null;
 
     const groupsMarkup =

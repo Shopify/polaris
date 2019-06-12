@@ -146,7 +146,7 @@ class Header extends React.PureComponent<ComposedProps, State> {
     ) : null;
 
     const actionMenuMarkup =
-      secondaryActions.length > 0 || actionGroups.length > 0 ? (
+      hasSecondaryActions(secondaryActions) || actionGroups.length > 0 ? (
         <div className={styles.ActionMenuWrapper}>
           <ActionMenu
             actions={secondaryActions}
@@ -187,6 +187,14 @@ class Header extends React.PureComponent<ComposedProps, State> {
     const {mobileView} = this.state;
     this.setState({mobileView: !mobileView});
   };
+}
+
+function hasSecondaryActions(
+  secondaryActions: Props['secondaryActions'] = [],
+): boolean {
+  return secondaryActions.length === 0
+    ? false
+    : secondaryActions.some((action) => action.content || action.icon);
 }
 
 // TODO: Can we instead get this from the <Frame />?

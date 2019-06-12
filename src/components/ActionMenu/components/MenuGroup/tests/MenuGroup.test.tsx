@@ -9,9 +9,9 @@ import MenuGroup, {Props} from '../MenuGroup';
 
 describe('<MenuGroup />', () => {
   const mockProps: Props = {
-    title: '',
+    title: 'title',
     actions: [],
-    active: false,
+    active: undefined,
     onOpen: noop,
     onClose: noop,
   };
