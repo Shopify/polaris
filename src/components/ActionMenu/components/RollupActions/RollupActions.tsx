@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
-import {ActionListItemDescriptor, ActionListSection} from '../../../../types';
+import {MenuActionDescriptor, ActionListSection} from '../../../../types';
 
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import ActionList from '../../../ActionList';
@@ -12,7 +12,7 @@ import styles from './RollupActions.scss';
 
 export interface Props {
   /** Collection of actions for the list */
-  items?: ActionListItemDescriptor[];
+  items?: MenuActionDescriptor[];
   /** Collection of sectioned action items */
   sections?: ActionListSection[];
 }

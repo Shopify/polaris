@@ -4,7 +4,7 @@ import debounce from 'lodash/debounce';
 
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
-import {ActionListItemDescriptor, MenuGroupDescriptor} from '../../../../types';
+import {MenuActionDescriptor, MenuGroupDescriptor} from '../../../../types';
 
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import EventListener from '../../../EventListener';
@@ -12,7 +12,7 @@ import {buttonsFrom} from '../../../Button';
 import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
 import DisplayText from '../../../DisplayText';
 import Pagination, {PaginationDescriptor} from '../../../Pagination';
-import ActionMenu from '../../../ActionMenu';
+import ActionMenu, {hasGroupsWithActions} from '../../../ActionMenu';
 
 import {HeaderPrimaryAction} from '../../types';
 import styles from './Header.scss';
@@ -38,7 +38,7 @@ export interface Props {
   /** Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
   /** Collection of secondary page-level actions */
-  secondaryActions?: ActionListItemDescriptor[];
+  secondaryActions?: MenuActionDescriptor[];
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
 }
@@ -146,7 +146,7 @@ class Header extends React.PureComponent<ComposedProps, State> {
     ) : null;
 
     const actionMenuMarkup =
-      hasSecondaryActions(secondaryActions) || actionGroups.length > 0 ? (
+      secondaryActions.length > 0 || hasGroupsWithActions(actionGroups) ? (
         <div className={styles.ActionMenuWrapper}>
           <ActionMenu
             actions={secondaryActions}
@@ -187,14 +187,6 @@ class Header extends React.PureComponent<ComposedProps, State> {
     const {mobileView} = this.state;
     this.setState({mobileView: !mobileView});
   };
-}
-
-function hasSecondaryActions(
-  secondaryActions: Props['secondaryActions'] = [],
-): boolean {
-  return secondaryActions.length === 0
-    ? false
-    : secondaryActions.some((action) => action.content || action.icon);
 }
 
 // TODO: Can we instead get this from the <Frame />?

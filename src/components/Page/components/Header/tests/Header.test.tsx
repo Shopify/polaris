@@ -170,13 +170,15 @@ describe('<Header />', () => {
       expect(wrapper.find(ActionMenu).exists()).toBe(false);
     });
 
-    it('does not render if `secondaryActions` is missing both `content` and `icon`', () => {
-      const mockSecondaryActions: Props['secondaryActions'] = [
-        {helpText: 'help text 1'},
-        {accessibilityLabel: 'a11y 2'},
+    it('does not render if `actionGroups` has no `actions', () => {
+      const mockActionGroups: Props['actionGroups'] = [
+        {
+          title: 'mock title',
+          actions: [],
+        },
       ];
       const wrapper = mountWithAppProvider(
-        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
+        <Header {...mockProps} actionGroups={mockActionGroups} />,
       );
 
       expect(wrapper.find(ActionMenu).exists()).toBe(false);
@@ -193,7 +195,7 @@ describe('<Header />', () => {
       expect(wrapper.find(ActionMenu).exists()).toBe(true);
     });
 
-    it('renders with atleast `actionGroups`', () => {
+    it('renders with atleast valid `actionGroups`', () => {
       const mockActionGroups: Props['actionGroups'] = [
         {
           title: 'mock title',

@@ -135,11 +135,18 @@ export interface ComplexAction
     IconableAction,
     LoadableAction {}
 
+export interface MenuActionDescriptor extends ActionListItemDescriptor {
+  /** Menu action content */
+  content: ActionListItemDescriptor['content'];
+  /** Displays the button with a disclosure icon */
+  disclosure?: boolean;
+}
+
 export interface MenuGroupDescriptor extends BadgeAction {
   /** Menu group title */
   title: string;
   /** List of actions */
-  actions: ActionListItemDescriptor[];
+  actions: MenuActionDescriptor[];
   /** Icon to display */
   icon?: IconableAction['icon'];
   /** Action details */

@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {SaveMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 
-import {ActionListItemDescriptor, MenuGroupDescriptor} from '../../../types';
+import {MenuActionDescriptor, MenuGroupDescriptor} from '../../../types';
 import {MenuAction, MenuGroup, RollupActions} from '../components';
 import ActionMenu, {Props, convertGroupToSection} from '../ActionMenu';
 
@@ -23,12 +22,6 @@ describe('<ActionMenu />', () => {
       {content: 'mock content 1'},
       {content: 'mock content 2'},
     ];
-
-    it('does not render <MenuAction /> when there are no actions', () => {
-      const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
-
-      expect(wrapper.find(MenuAction)).toHaveLength(0);
-    });
 
     it('renders as <MenuAction /> when `rollup` is `false`', () => {
       const wrapper = mountWithAppProvider(
@@ -73,12 +66,6 @@ describe('<ActionMenu />', () => {
       expect(wrapper.find(MenuGroup)).toHaveLength(mockGroups.length);
     });
 
-    it('does not render <MenuGroup /> when there are no actions', () => {
-      const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
-
-      expect(wrapper.find(MenuGroup)).toHaveLength(0);
-    });
-
     it('renders as <RollupActions /> `sections` when `rollup` is `true`', () => {
       const convertedSections = mockGroups.map((group) =>
         convertGroupToSection(group),
@@ -94,44 +81,51 @@ describe('<ActionMenu />', () => {
   });
 
   describe('<MenuAction />', () => {
-    it('does not render when there is no `content` or `icon`', () => {
-      const mockActions: Props['actions'] = [
-        {helpText: 'help text 1'},
-        {helpText: 'help text 2'},
-      ];
-      const wrapper = mountWithAppProvider(
-        <ActionMenu {...mockProps} actions={mockActions} />,
-      );
+    const mockActions: Props['actions'] = [
+      {content: 'mock content 1'},
+      {content: 'mock content 2'},
+    ];
+
+    it('does not render <MenuAction /> when there are no `actions`', () => {
+      const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
 
       expect(wrapper.find(MenuAction)).toHaveLength(0);
     });
 
-    it('renders only actions that have atleast `content`', () => {
-      const mockActions: Props['actions'] = [
-        {content: 'mock content', helpText: 'help text 1'},
-        {helpText: 'help text 2'},
-      ];
+    it('renders `actions`', () => {
       const wrapper = mountWithAppProvider(
         <ActionMenu {...mockProps} actions={mockActions} />,
       );
 
-      expect(wrapper.find(MenuAction)).toHaveLength(1);
-    });
-
-    it('renders only actions that have atleast `icon`', () => {
-      const mockActions: Props['actions'] = [
-        {helpText: 'help text 1'},
-        {icon: SaveMinor, helpText: 'help text 2'},
-      ];
-      const wrapper = mountWithAppProvider(
-        <ActionMenu {...mockProps} actions={mockActions} />,
-      );
-
-      expect(wrapper.find(MenuAction)).toHaveLength(1);
+      expect(wrapper.find(MenuAction)).toHaveLength(2);
     });
   });
 
   describe('<MenuGroup />', () => {
+    it('does not render when there are no `groups`', () => {
+      const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
+
+      expect(wrapper.find(MenuGroup)).toHaveLength(0);
+    });
+
+    it('does not render when there are `groups` with no `actions`', () => {
+      const mockGroupsWithoutActions: Props['groups'] = [
+        {
+          title: 'First group',
+          actions: [],
+        },
+        {
+          title: 'Second group',
+          actions: [],
+        },
+      ];
+      const wrapper = mountWithAppProvider(
+        <ActionMenu {...mockProps} groups={mockGroupsWithoutActions} />,
+      );
+
+      expect(wrapper.find(MenuGroup)).toHaveLength(0);
+    });
+
     it('is inactive by default', () => {
       const mockGroups = [fillMenuGroup()];
       const wrapper = mountWithAppProvider(
@@ -169,7 +163,7 @@ describe('<ActionMenu />', () => {
 });
 
 function fillMenuGroup(partialMenuGroup?: Partial<MenuGroupDescriptor>) {
-  const mockAction: ActionListItemDescriptor = {
+  const mockAction: MenuActionDescriptor = {
     content: 'mock content',
     url: 'https://shopify.ca',
     target: 'REMOTE',

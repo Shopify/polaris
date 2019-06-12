@@ -12,13 +12,6 @@ describe('<MenuAction />', () => {
     content: 'content',
   };
 
-  it('does not render without `content` or `icon`', () => {
-    const wrapper = mountWithAppProvider(<MenuAction />);
-
-    expect(wrapper.find(UnstyledLink).exists()).toBe(false);
-    expect(wrapper.find('button').exists()).toBe(false);
-  });
-
   describe('content', () => {
     const mockContent = 'mock content';
 
@@ -29,21 +22,14 @@ describe('<MenuAction />', () => {
 
       expect(wrapper.contains(mockContent)).toBeTruthy();
     });
-
-    it('renders both `content` and `icon`', () => {
-      const wrapper = mountWithAppProvider(
-        <MenuAction content={mockContent} icon={SaveMinor} />,
-      );
-
-      expect(wrapper.contains(mockContent)).toBeTruthy();
-      expect(wrapper.prop('icon')).toBe(SaveMinor);
-    });
   });
 
   describe('icon', () => {
-    it('renders when provided only `icon`', () => {
+    it('renders when provided `icon`', () => {
       const icon = SaveMinor;
-      const wrapper = mountWithAppProvider(<MenuAction icon={icon} />);
+      const wrapper = mountWithAppProvider(
+        <MenuAction {...mockProps} icon={icon} />,
+      );
 
       expect(wrapper.find(Icon).prop('source')).toBe(icon);
     });

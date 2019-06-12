@@ -1,1 +1,1 @@
-export {default, Props} from './ActionMenu';
+export {default, Props, hasGroupsWithActions} from './ActionMenu';

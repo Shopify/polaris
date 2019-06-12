@@ -8,6 +8,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Breaking changes
 
+- `Page > Header` now must pass `content` to the `actions` within `secondaryActions` and `actionGroups` ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
+
 ### Deprecations
 
 ### New components
