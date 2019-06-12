@@ -31,7 +31,8 @@
       "newWindowAccessibilityHint": "(opent een nieuw venster)",
       "clear": "Wissen",
       "close": "Sluiten",
-      "submit": "Indienen"
+      "submit": "Indienen",
+      "more": "Meer"
     },
     "ContextualSaveBar": {
       "save": "Opslaan",

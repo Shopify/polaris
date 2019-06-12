@@ -31,7 +31,8 @@
       "newWindowAccessibilityHint": "（打开新窗口）",
       "clear": "清除",
       "close": "关闭",
-      "submit": "提交"
+      "submit": "提交",
+      "more": "更多"
     },
     "ContextualSaveBar": {
       "save": "保存",

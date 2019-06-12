@@ -31,7 +31,8 @@
       "newWindowAccessibilityHint": "(apre una nuova finestra)",
       "clear": "Cancella",
       "close": "Chiudi",
-      "submit": "Invia"
+      "submit": "Invia",
+      "more": "Altro"
     },
     "ContextualSaveBar": {
       "save": "Salva",

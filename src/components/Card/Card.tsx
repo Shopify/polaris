@@ -6,8 +6,12 @@ import {
   ComplexAction,
   contentContextTypes,
 } from '../../types';
-import {buttonFrom} from '../Button';
+import ActionList from '../ActionList';
+import Button, {buttonFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
+import Popover from '../Popover';
+
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import {Header, Section, Subsection} from './components';
 import styles from './Card.scss';
@@ -25,15 +29,29 @@ export interface Props {
   actions?: DisableableAction[];
   /** Primary action in the card footer */
   primaryFooterAction?: ComplexAction;
-  /** Secondary action in the card footer */
+  /** @deprecated Secondary action in the card footer */
   secondaryFooterAction?: ComplexAction;
+  /** Secondary actions in the card footer */
+  secondaryFooterActions?: ComplexAction[];
+  /** The content of the disclosure button rendered when there is more than one secondary footer action */
+  secondaryFooterActionsDisclosureText?: string;
 }
 
-export default class Card extends React.PureComponent<Props, never> {
+export type CombinedProps = Props & WithAppProviderProps;
+
+export interface State {
+  secondaryFooterActionsPopoverOpen: boolean;
+}
+
+class Card extends React.PureComponent<CombinedProps, State> {
   static Section = Section;
   static Header = Header;
   static Subsection = Subsection;
   static childContextTypes = contentContextTypes;
+
+  state: State = {
+    secondaryFooterActionsPopoverOpen: false,
+  };
 
   getChildContext() {
     return {
@@ -50,6 +68,9 @@ export default class Card extends React.PureComponent<Props, never> {
       actions,
       primaryFooterAction,
       secondaryFooterAction,
+      secondaryFooterActions,
+      secondaryFooterActionsDisclosureText,
+      polaris: {intl},
     } = this.props;
 
     const className = classNames(styles.Card, subdued && styles.subdued);
@@ -63,15 +84,48 @@ export default class Card extends React.PureComponent<Props, never> {
       ? buttonFrom(primaryFooterAction, {primary: true})
       : null;
 
+    if (secondaryFooterAction) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: The secondaryFooterAction prop on Card has been deprecated. Pass an array of secondary actions to the secondaryFooterActions prop instead.',
+      );
+    }
+
     const secondaryFooterActionMarkup = secondaryFooterAction
       ? buttonFrom(secondaryFooterAction)
       : null;
 
+    let secondaryFooterActionsMarkup = null;
+    if (secondaryFooterActions && secondaryFooterActions.length) {
+      if (secondaryFooterActions.length === 1) {
+        secondaryFooterActionsMarkup = buttonFrom(secondaryFooterActions[0]);
+      } else {
+        secondaryFooterActionsMarkup = (
+          <React.Fragment>
+            <Popover
+              active={this.state.secondaryFooterActionsPopoverOpen}
+              activator={
+                <Button disclosure onClick={this.toggleSecondaryActionsPopover}>
+                  {secondaryFooterActionsDisclosureText ||
+                    intl.translate('Polaris.Common.more')}
+                </Button>
+              }
+              onClose={this.toggleSecondaryActionsPopover}
+            >
+              <ActionList items={secondaryFooterActions} />
+            </Popover>
+          </React.Fragment>
+        );
+      }
+    }
+
     const footerMarkup =
-      primaryFooterActionMarkup || secondaryFooterActionMarkup ? (
+      primaryFooterActionMarkup ||
+      secondaryFooterActionMarkup ||
+      secondaryFooterActionsMarkup ? (
         <div className={styles.Footer}>
           <ButtonGroup>
-            {secondaryFooterActionMarkup}
+            {secondaryFooterActionsMarkup || secondaryFooterActionMarkup}
             {primaryFooterActionMarkup}
           </ButtonGroup>
         </div>
@@ -85,4 +139,14 @@ export default class Card extends React.PureComponent<Props, never> {
       </div>
     );
   }
+
+  private toggleSecondaryActionsPopover = () => {
+    this.setState(({secondaryFooterActionsPopoverOpen}) => {
+      return {
+        secondaryFooterActionsPopoverOpen: !secondaryFooterActionsPopoverOpen,
+      };
+    });
+  };
 }
+
+export default withAppProvider<Props>()(Card);
