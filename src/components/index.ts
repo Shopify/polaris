@@ -5,6 +5,8 @@ export {
 
 export {default as ActionList, Props as ActionListProps} from './ActionList';
 
+export {default as ActionMenu, Props as ActionMenuProps} from './ActionMenu';
+
 export {
   default as AppProvider,
   Props as AppProviderProps,
@@ -167,8 +169,6 @@ export {default as Link, Props as LinkProps} from './Link';
 export {default as List, Props as ListProps} from './List';
 
 export {default as Loading, Props as LoadingProps} from './Loading';
-
-export {default as Menu, Props as MenuProps} from './Menu';
 
 export {default as Modal, Props as ModalProps} from './Modal';
 

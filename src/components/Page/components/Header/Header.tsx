@@ -12,7 +12,7 @@ import {buttonsFrom} from '../../../Button';
 import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
 import DisplayText from '../../../DisplayText';
 import Pagination, {PaginationDescriptor} from '../../../Pagination';
-import Menu from '../../../Menu';
+import ActionMenu from '../../../ActionMenu';
 
 import {HeaderPrimaryAction} from '../../types';
 import styles from './Header.scss';
@@ -145,10 +145,10 @@ class Header extends React.PureComponent<ComposedProps, State> {
       </div>
     ) : null;
 
-    const menuMarkup =
+    const actionMenuMarkup =
       secondaryActions.length > 0 || actionGroups.length > 0 ? (
-        <div className={styles.MenuWrapper}>
-          <Menu
+        <div className={styles.ActionMenuWrapper}>
+          <ActionMenu
             actions={secondaryActions}
             groups={actionGroups}
             rollup={mobileView}
@@ -161,7 +161,7 @@ class Header extends React.PureComponent<ComposedProps, State> {
       titleHidden && styles.titleHidden,
       separator && styles.separator,
       navigationMarkup && styles.hasNavigation,
-      menuMarkup && styles.hasMenu,
+      actionMenuMarkup && styles.hasActionMenu,
       mobileView && styles.mobileView,
     );
 
@@ -170,9 +170,9 @@ class Header extends React.PureComponent<ComposedProps, State> {
         {navigationMarkup}
 
         <div className={styles.MainContent}>
-          <div className={styles.TitleMenuWrapper}>
+          <div className={styles.TitleActionMenuWrapper}>
             {titleMarkup}
-            {menuMarkup}
+            {actionMenuMarkup}
           </div>
 
           {primaryActionMarkup}

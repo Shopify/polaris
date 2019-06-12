@@ -1,5 +1,5 @@
 $individual-action-padding-x: (1.5 * spacing(tight));
-$menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
+$action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
 
 .Header {
   @include page-header-layout;
@@ -25,8 +25,8 @@ $menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
   margin-bottom: spacing(extra-tight);
 
   // stylelint-disable-next-line selector-max-class
-  .hasMenu.mobileView & {
-    padding-right: $menu-rollup-computed-width;
+  .hasActionMenu.mobileView & {
+    padding-right: $action-menu-rollup-computed-width;
   }
 }
 
@@ -51,7 +51,7 @@ $menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
   }
 }
 
-.TitleMenuWrapper {
+.TitleActionMenuWrapper {
   flex: 1 1 auto;
 
   .Header:not(.mobileView) & {
@@ -59,8 +59,8 @@ $menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
   }
 
   // stylelint-disable-next-line selector-max-class, selector-max-specificity
-  .hasMenu.mobileView:not(.hasNavigation) & {
-    padding-right: $menu-rollup-computed-width;
+  .hasActionMenu.mobileView:not(.hasNavigation) & {
+    padding-right: $action-menu-rollup-computed-width;
   }
 }
 
@@ -74,7 +74,7 @@ $menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
   }
 }
 
-.MenuWrapper {
+.ActionMenuWrapper {
   // stylelint-disable-next-line selector-max-class
   .mobileView & {
     position: absolute;

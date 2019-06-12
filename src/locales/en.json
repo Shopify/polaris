@@ -116,7 +116,7 @@
       "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
     },
 
-    "Menu": {
+    "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Actions"
       }

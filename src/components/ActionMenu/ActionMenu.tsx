@@ -9,7 +9,7 @@ import {
 
 import {MenuAction, MenuGroup, RollupActions} from './components';
 
-import styles from './Menu.scss';
+import styles from './ActionMenu.scss';
 
 export interface Props {
   /** Collection of page-level actions */
@@ -24,7 +24,7 @@ interface State {
   activeMenuGroup?: string;
 }
 
-export default class Menu extends React.PureComponent<Props, State> {
+export default class ActionMenu extends React.PureComponent<Props, State> {
   state: State = {
     activeMenuGroup: undefined,
   };
@@ -36,11 +36,14 @@ export default class Menu extends React.PureComponent<Props, State> {
       return null;
     }
 
-    const menuClassNames = classNames(styles.Menu, rollup && styles.rollup);
+    const actionMenuClassNames = classNames(
+      styles.ActionMenu,
+      rollup && styles.rollup,
+    );
     const rollupSections = groups.map((group) => convertGroupToSection(group));
 
     return (
-      <div className={menuClassNames}>
+      <div className={actionMenuClassNames}>
         {rollup ? (
           <RollupActions items={actions} sections={rollupSections} />
         ) : (

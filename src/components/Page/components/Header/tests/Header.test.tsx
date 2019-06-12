@@ -3,11 +3,11 @@ import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities';
 
 import {
+  ActionMenu,
   Breadcrumbs,
   buttonsFrom,
   EventListener,
   Pagination,
-  Menu,
 } from 'components';
 
 import {HeaderPrimaryAction} from '../../../types';
@@ -123,12 +123,14 @@ describe('<Header />', () => {
       {content: 'mock content 2'},
     ];
 
-    it('passes to <Menu />', () => {
+    it('passes to <ActionMenu />', () => {
       const wrapper = mountWithAppProvider(
         <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
       );
 
-      expect(wrapper.find(Menu).prop('actions')).toBe(mockSecondaryActions);
+      expect(wrapper.find(ActionMenu).prop('actions')).toBe(
+        mockSecondaryActions,
+      );
     });
   });
 
@@ -148,16 +150,16 @@ describe('<Header />', () => {
       },
     ];
 
-    it('passes to <Menu />', () => {
+    it('passes to <ActionMenu />', () => {
       const wrapper = mountWithAppProvider(
         <Header {...mockProps} actionGroups={mockActionGroups} />,
       );
 
-      expect(wrapper.find(Menu).prop('groups')).toBe(mockActionGroups);
+      expect(wrapper.find(ActionMenu).prop('groups')).toBe(mockActionGroups);
     });
   });
 
-  describe('<Menu />', () => {
+  describe('<ActionMenu />', () => {
     const mockSecondaryActions: Props['secondaryActions'] = [
       {content: 'mock content 1'},
     ];
@@ -167,7 +169,7 @@ describe('<Header />', () => {
         <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
       );
 
-      expect(wrapper.find(Menu).prop('rollup')).toBe(false);
+      expect(wrapper.find(ActionMenu).prop('rollup')).toBe(false);
     });
 
     it('renders with `rollup` as `true` when on mobile', () => {
@@ -177,7 +179,7 @@ describe('<Header />', () => {
         <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
       );
 
-      expect(wrapper.find(Menu).prop('rollup')).toBe(true);
+      expect(wrapper.find(ActionMenu).prop('rollup')).toBe(true);
     });
   });
 });

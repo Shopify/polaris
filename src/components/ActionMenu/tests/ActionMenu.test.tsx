@@ -3,9 +3,9 @@ import {mountWithAppProvider, trigger} from 'test-utilities';
 
 import {ActionListItemDescriptor, MenuGroupDescriptor} from '../../../types';
 import {MenuAction, MenuGroup, RollupActions} from '../components';
-import Menu, {Props, convertGroupToSection} from '../Menu';
+import ActionMenu, {Props, convertGroupToSection} from '../ActionMenu';
 
-describe('<Menu />', () => {
+describe('<ActionMenu />', () => {
   const mockProps: Props = {
     actions: undefined,
     groups: undefined,
@@ -13,7 +13,7 @@ describe('<Menu />', () => {
   };
 
   it('does not render when there are no `actions` or `groups`', () => {
-    const wrapper = mountWithAppProvider(<Menu {...mockProps} />);
+    const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
     expect(wrapper.find('div').exists()).toBe(false);
   });
 
@@ -25,21 +25,21 @@ describe('<Menu />', () => {
 
     it('renders as <MenuAction /> when `rollup` is `false`', () => {
       const wrapper = mountWithAppProvider(
-        <Menu {...mockProps} actions={mockActions} />,
+        <ActionMenu {...mockProps} actions={mockActions} />,
       );
 
       expect(wrapper.find(MenuAction)).toHaveLength(mockActions.length);
     });
 
     it('does not render <MenuAction /> when there are no actions', () => {
-      const wrapper = mountWithAppProvider(<Menu {...mockProps} />);
+      const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
 
       expect(wrapper.find(MenuAction)).toHaveLength(0);
     });
 
     it('renders as <RollupActions /> `items` when `rollup` is `true`', () => {
       const wrapper = mountWithAppProvider(
-        <Menu {...mockProps} actions={mockActions} rollup />,
+        <ActionMenu {...mockProps} actions={mockActions} rollup />,
       );
 
       expect(wrapper.find(RollupActions).prop('items')).toStrictEqual(
@@ -66,14 +66,14 @@ describe('<Menu />', () => {
 
     it('renders as <MenuGroup /> when `rollup` is `false`', () => {
       const wrapper = mountWithAppProvider(
-        <Menu {...mockProps} groups={mockGroups} />,
+        <ActionMenu {...mockProps} groups={mockGroups} />,
       );
 
       expect(wrapper.find(MenuGroup)).toHaveLength(mockGroups.length);
     });
 
     it('does not render <MenuGroup /> when there are no actions', () => {
-      const wrapper = mountWithAppProvider(<Menu {...mockProps} />);
+      const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
 
       expect(wrapper.find(MenuGroup)).toHaveLength(0);
     });
@@ -83,7 +83,7 @@ describe('<Menu />', () => {
         convertGroupToSection(group),
       );
       const wrapper = mountWithAppProvider(
-        <Menu {...mockProps} groups={mockGroups} rollup />,
+        <ActionMenu {...mockProps} groups={mockGroups} rollup />,
       );
 
       expect(wrapper.find(RollupActions).prop('sections')).toStrictEqual(
@@ -96,7 +96,7 @@ describe('<Menu />', () => {
     it('is inactive by default', () => {
       const mockGroups = [fillMenuGroup()];
       const wrapper = mountWithAppProvider(
-        <Menu {...mockProps} groups={mockGroups} />,
+        <ActionMenu {...mockProps} groups={mockGroups} />,
       );
 
       expect(wrapper.find(MenuGroup).prop('active')).toBeFalsy();
@@ -106,7 +106,7 @@ describe('<Menu />', () => {
       const mockTitle = 'mock title';
       const mockGroups = [fillMenuGroup({title: mockTitle})];
       const wrapper = mountWithAppProvider(
-        <Menu {...mockProps} groups={mockGroups} />,
+        <ActionMenu {...mockProps} groups={mockGroups} />,
       );
 
       trigger(wrapper.find(MenuGroup), 'onOpen', mockTitle);
@@ -118,7 +118,7 @@ describe('<Menu />', () => {
       const mockTitle = 'mock title';
       const mockGroups = [fillMenuGroup({title: mockTitle})];
       const wrapper = mountWithAppProvider(
-        <Menu {...mockProps} groups={mockGroups} />,
+        <ActionMenu {...mockProps} groups={mockGroups} />,
       );
 
       trigger(wrapper.find(MenuGroup), 'onOpen', mockTitle);
