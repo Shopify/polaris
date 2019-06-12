@@ -204,7 +204,7 @@
       "toggleTabsLabel": "Menu toggle"
     },
     "Tag": {
-      "ariaLabel": "Retirer {children}"
+      "ariaLabel": "Supprimer {children}"
     },
     "TextField": {
       "characterCount": "{count} personnages",
