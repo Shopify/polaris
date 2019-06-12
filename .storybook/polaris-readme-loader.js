@@ -2,6 +2,9 @@
 const chalk = require('chalk');
 const grayMatter = require('gray-matter');
 const MdParser = require('./md-parser');
+const React = require('react');
+
+const HOOK_PREFIX = 'use';
 
 /**
  * A Webpack loader, that expects a Polaris README file, and returns metadata,
@@ -68,8 +71,12 @@ module.exports = function loader(source) {
     return eval(`(${fnString})`).apply(null, Object.values(scope));
   };
 
+  const hooks = Object.keys(React)
+    .filter((key) => key.startsWith(HOOK_PREFIX))
+    .join(', ');
+
   return `
-import React, {useState} from 'react';
+import React, {${hooks}} from 'react';
 import * as Polaris from '@shopify/polaris';
 import {
   PlusMinor,
