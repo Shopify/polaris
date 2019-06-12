@@ -175,13 +175,9 @@ Use to allow merchants to provide text input when the expected input is short. F
 ```jsx
 function TextFieldExample() {
   const [value, setValue] = useState('Jaded Pixel');
-  return (
-    <TextField
-      label="Store name"
-      value={value}
-      onChange={(newValue) => setValue(newValue)}
-    />
-  );
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  return <TextField label="Store name" value={value} onChange={handleChange} />;
 }
 ```
 
@@ -204,12 +200,14 @@ Use when input text should be a number.
 ```jsx
 function NumberFieldExample() {
   const [value, setValue] = useState('1');
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
   return (
     <TextField
       label="Quantity"
       type="number"
       value={value}
-      onChange={(newValue) => setValue(newValue)}
+      onChange={handleChange}
     />
   );
 }
@@ -238,12 +236,14 @@ Use when the text input should be an email address.
 ```jsx
 function EmailFieldExample() {
   const [value, setValue] = useState('bernadette.lapresse@jadedpixel.com');
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
   return (
     <TextField
       label="Email"
       type="email"
       value={value}
-      onChange={(newValue) => setValue(newValue)}
+      onChange={handleChange}
     />
   );
 }
@@ -272,11 +272,13 @@ Use when the expected input could be more than one line. The field will automati
 ```jsx
 function MultilineFieldExample() {
   const [value, setValue] = useState('1776 Barnes Street\nOrlando, FL 32801');
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
   return (
     <TextField
       label="Shipping address"
       value={value}
-      onChange={(newValue) => setValue(newValue)}
+      onChange={handleChange}
       multiline
     />
   );
@@ -305,6 +307,12 @@ Use to visually hide the label when the text field’s purpose is clear from con
 function HiddenLabelExample() {
   const [value, setValue] = useState('12');
   const [selected, setSelected] = useState('yes');
+  const handleTextChange = useCallback((newValue) => setValue(newValue), []);
+  const handleChoiceChange = useCallback(
+    (selections) => setSelected(selections[0]),
+    [],
+  );
+
   return (
     <FormLayout>
       <ChoiceList
@@ -314,7 +322,7 @@ function HiddenLabelExample() {
           {label: 'Gift cards expire', value: 'yes'},
         ]}
         selected={[selected]}
-        onChange={(selections) => setSelected(selections[0])}
+        onChange={handleChoiceChange}
       />
       <TextField
         label="Gift cards expire after"
@@ -322,7 +330,7 @@ function HiddenLabelExample() {
         labelHidden
         value={value}
         disabled={selected === 'no'}
-        onChange={(newValue) => setValue(newValue)}
+        onChange={handleTextChange}
         connectedRight={
           <Select
             label="Unit of time"
