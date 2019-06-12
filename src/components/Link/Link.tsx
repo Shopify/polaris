@@ -1,6 +1,7 @@
 import React from 'react';
 import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
+import BannerContext from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import UnstyledLink from '../UnstyledLink';
@@ -35,7 +36,6 @@ function Link({
   monochrome,
   polaris,
 }: CombinedProps) {
-  const className = classNames(styles.Link, monochrome && styles.monochrome);
   let childrenMarkup = children;
 
   if (external && typeof children === 'string') {
@@ -55,21 +55,34 @@ function Link({
     );
   }
 
-  return url ? (
-    <UnstyledLink
-      onClick={onClick}
-      className={className}
-      url={url}
-      external={external}
-      id={id}
-      polaris={polaris}
-    >
-      {childrenMarkup}
-    </UnstyledLink>
-  ) : (
-    <button type="button" onClick={onClick} className={className} id={id}>
-      {childrenMarkup}
-    </button>
+  return (
+    <BannerContext.Consumer>
+      {(BannerContext) => {
+        const shouldBeMonochrome = monochrome || BannerContext;
+
+        const className = classNames(
+          styles.Link,
+          shouldBeMonochrome && styles.monochrome,
+        );
+
+        return url ? (
+          <UnstyledLink
+            onClick={onClick}
+            className={className}
+            url={url}
+            external={external}
+            id={id}
+            polaris={polaris}
+          >
+            {childrenMarkup}
+          </UnstyledLink>
+        ) : (
+          <button type="button" onClick={onClick} className={className} id={id}>
+            {childrenMarkup}
+          </button>
+        );
+      }}
+    </BannerContext.Consumer>
   );
 }
 

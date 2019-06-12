@@ -8,6 +8,7 @@ import {
   CircleInformationMajorTwotone,
 } from '@shopify/polaris-icons';
 
+import BannerContext from '../../utilities/banner-context';
 import {classNames, variationName} from '../../utilities/css';
 import {Action, DisableableAction, LoadableAction} from '../../types';
 import Button, {buttonFrom} from '../Button';
@@ -15,6 +16,7 @@ import Heading from '../Heading';
 import ButtonGroup from '../ButtonGroup';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
+
 import WithinContentContext from '../WithinContentContext';
 
 import styles from './Banner.scss';
@@ -47,133 +49,135 @@ export default class Banner extends React.PureComponent<Props, never> {
 
   render() {
     return (
-      <WithinContentContext.Consumer>
-        {(withinContentContainer) => {
-          const {
-            icon,
-            action,
-            secondaryAction,
-            title,
-            children,
-            status,
-            onDismiss,
-          } = this.props;
-          let color: IconProps['color'];
-          let defaultIcon: IconProps['source'];
-          let ariaRoleType = 'status';
+      <BannerContext.Provider value>
+        <WithinContentContext.Consumer>
+          {(withinContentContainer) => {
+            const {
+              icon,
+              action,
+              secondaryAction,
+              title,
+              children,
+              status,
+              onDismiss,
+            } = this.props;
+            let color: IconProps['color'];
+            let defaultIcon: IconProps['source'];
+            let ariaRoleType = 'status';
 
-          switch (status) {
-            case 'success':
-              color = 'greenDark';
-              defaultIcon = CircleTickMajorTwotone;
-              break;
-            case 'info':
-              color = 'tealDark';
-              defaultIcon = CircleInformationMajorTwotone;
-              break;
-            case 'warning':
-              color = 'yellowDark';
-              defaultIcon = CircleAlertMajorTwotone;
-              ariaRoleType = 'alert';
-              break;
-            case 'critical':
-              color = 'redDark';
-              defaultIcon = CircleDisabledMajorTwotone;
-              ariaRoleType = 'alert';
-              break;
-            default:
-              color = 'inkLighter';
-              defaultIcon = FlagMajorTwotone;
-          }
-          const className = classNames(
-            styles.Banner,
-            status && styles[variationName('status', status)],
-            onDismiss && styles.hasDismiss,
-            withinContentContainer
-              ? styles.withinContentContainer
-              : styles.withinPage,
-          );
-
-          const id = uniqueID();
-          const iconName = icon || defaultIcon;
-
-          let headingMarkup: React.ReactNode = null;
-          let headingID: string | undefined;
-
-          if (title) {
-            headingID = `${id}Heading`;
-            headingMarkup = (
-              <div className={styles.Heading} id={headingID}>
-                <Heading element="p">{title}</Heading>
-              </div>
+            switch (status) {
+              case 'success':
+                color = 'greenDark';
+                defaultIcon = CircleTickMajorTwotone;
+                break;
+              case 'info':
+                color = 'tealDark';
+                defaultIcon = CircleInformationMajorTwotone;
+                break;
+              case 'warning':
+                color = 'yellowDark';
+                defaultIcon = CircleAlertMajorTwotone;
+                ariaRoleType = 'alert';
+                break;
+              case 'critical':
+                color = 'redDark';
+                defaultIcon = CircleDisabledMajorTwotone;
+                ariaRoleType = 'alert';
+                break;
+              default:
+                color = 'inkLighter';
+                defaultIcon = FlagMajorTwotone;
+            }
+            const className = classNames(
+              styles.Banner,
+              status && styles[variationName('status', status)],
+              onDismiss && styles.hasDismiss,
+              withinContentContainer
+                ? styles.withinContentContainer
+                : styles.withinPage,
             );
-          }
 
-          const buttonSizeValue = withinContentContainer ? 'slim' : undefined;
+            const id = uniqueID();
+            const iconName = icon || defaultIcon;
 
-          const secondaryActionMarkup = secondaryAction
-            ? secondaryActionFrom(secondaryAction)
-            : null;
+            let headingMarkup: React.ReactNode = null;
+            let headingID: string | undefined;
 
-          const actionMarkup = action ? (
-            <div className={styles.Actions}>
-              <ButtonGroup>
-                <div className={styles.PrimaryAction}>
-                  {buttonFrom(action, {outline: true, size: buttonSizeValue})}
+            if (title) {
+              headingID = `${id}Heading`;
+              headingMarkup = (
+                <div className={styles.Heading} id={headingID}>
+                  <Heading element="p">{title}</Heading>
                 </div>
-                {secondaryActionMarkup}
-              </ButtonGroup>
-            </div>
-          ) : null;
+              );
+            }
 
-          let contentMarkup = null;
-          let contentID: string | undefined;
+            const buttonSizeValue = withinContentContainer ? 'slim' : undefined;
 
-          if (children || actionMarkup) {
-            contentID = `${id}Content`;
-            contentMarkup = (
-              <div className={styles.Content} id={contentID}>
-                {children}
-                {actionMarkup}
+            const secondaryActionMarkup = secondaryAction
+              ? secondaryActionFrom(secondaryAction)
+              : null;
+
+            const actionMarkup = action ? (
+              <div className={styles.Actions}>
+                <ButtonGroup>
+                  <div className={styles.PrimaryAction}>
+                    {buttonFrom(action, {outline: true, size: buttonSizeValue})}
+                  </div>
+                  {secondaryActionMarkup}
+                </ButtonGroup>
+              </div>
+            ) : null;
+
+            let contentMarkup = null;
+            let contentID: string | undefined;
+
+            if (children || actionMarkup) {
+              contentID = `${id}Content`;
+              contentMarkup = (
+                <div className={styles.Content} id={contentID}>
+                  {children}
+                  {actionMarkup}
+                </div>
+              );
+            }
+
+            const dismissButton = onDismiss ? (
+              <div className={styles.Dismiss}>
+                <Button
+                  plain
+                  icon={CancelSmallMinor}
+                  onClick={onDismiss}
+                  accessibilityLabel="Dismiss notification"
+                />
+              </div>
+            ) : null;
+
+            return (
+              <div
+                className={className}
+                // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                tabIndex={0}
+                ref={this.wrapper}
+                role={ariaRoleType}
+                aria-live="polite"
+                onMouseUp={handleMouseUp}
+                aria-labelledby={headingID}
+                aria-describedby={contentID}
+              >
+                {dismissButton}
+                <div className={styles.Ribbon}>
+                  <Icon source={iconName} color={color} backdrop />
+                </div>
+                <div>
+                  {headingMarkup}
+                  {contentMarkup}
+                </div>
               </div>
             );
-          }
-
-          const dismissButton = onDismiss ? (
-            <div className={styles.Dismiss}>
-              <Button
-                plain
-                icon={CancelSmallMinor}
-                onClick={onDismiss}
-                accessibilityLabel="Dismiss notification"
-              />
-            </div>
-          ) : null;
-
-          return (
-            <div
-              className={className}
-              // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-              tabIndex={0}
-              ref={this.wrapper}
-              role={ariaRoleType}
-              aria-live="polite"
-              onMouseUp={handleMouseUp}
-              aria-labelledby={headingID}
-              aria-describedby={contentID}
-            >
-              {dismissButton}
-              <div className={styles.Ribbon}>
-                <Icon source={iconName} color={color} backdrop />
-              </div>
-              <div>
-                {headingMarkup}
-                {contentMarkup}
-              </div>
-            </div>
-          );
-        }}
-      </WithinContentContext.Consumer>
+          }}
+        </WithinContentContext.Consumer>
+      </BannerContext.Provider>
     );
   }
 }
