@@ -106,6 +106,8 @@ export interface ActionListItemDescriptor
     BadgeAction,
     DestructableAction,
     AppBridgeAction {
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
   /** Additional hint text to display with item */
   helpText?: string;
   /** Image source */
@@ -132,6 +134,24 @@ export interface ComplexAction
     AppBridgeAction,
     IconableAction,
     LoadableAction {}
+
+export interface MenuActionDescriptor extends ActionListItemDescriptor {
+  /** Displays the button with a disclosure icon */
+  disclosure?: boolean;
+}
+
+export interface MenuGroupDescriptor extends BadgeAction {
+  /** Menu group title */
+  title: string;
+  /** List of actions */
+  actions: MenuActionDescriptor[];
+  /** Icon to display */
+  icon?: IconableAction['icon'];
+  /** Action details */
+  details?: React.ReactNode;
+  /** Callback when any action takes place */
+  onActionAnyItem?: ActionListItemDescriptor['onAction'];
+}
 
 export enum Key {
   Backspace = 8,

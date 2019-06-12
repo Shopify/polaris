@@ -65,6 +65,7 @@ $stacking-order: (
 }
 
 .Content {
+  @include truncate;
   position: relative;
   z-index: z-index(content, $stacking-order);
 }

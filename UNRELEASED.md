@@ -8,12 +8,19 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Breaking changes
 
+- `Page > Header` now must pass `content` to the `actions` within `secondaryActions` and `actionGroups` ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
+
 ### Deprecations
 
 ### New components
 
+- `ActionMenu`: Use for display of actions and action groups within the context of a header ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
+
 ### Enhancements
 
+- `ActionList` can now pass a unique `accessibilityLabel` to each `Item` ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
+- Greatly reduced complexity of `Page > Header` ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
+- Long `Page > Header` breadcrumb labels will now truncate instead of breaking layout ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
 - Improves performance of `TabMeasure` component ([#1544](https://github.com/Shopify/polaris-react/pull/1544))
 - Added `secondaryFooterActions` prop to `Card` which adds an action list of secondary actions to the footer [#1625](https://github.com/Shopify/polaris-react/pull/1625)
 

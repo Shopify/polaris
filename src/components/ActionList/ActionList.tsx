@@ -34,15 +34,15 @@ export default function ActionList({
   // see https://github.com/Microsoft/TypeScript/issues/28768
   const Element: any = hasMultipleSections ? 'ul' : 'div';
   const sectionMarkup = finalSections.map((section, index) => {
-    return (
+    return section.items.length > 0 ? (
       <Section
         key={section.title || index}
         section={section}
-        onActionAnyItem={onActionAnyItem}
         hasMultipleSections={hasMultipleSections}
         actionRole={actionRole}
+        onActionAnyItem={onActionAnyItem}
       />
-    );
+    ) : null;
   });
 
   return <Element className={styles.ActionList}>{sectionMarkup}</Element>;

@@ -186,12 +186,33 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
 <Page
   breadcrumbs={[{content: 'Products', url: '/products'}]}
   title="Jar With Lock-Lid"
+  titleMetadata={<Badge>Draft</Badge>}
   primaryAction={{content: 'Save', disabled: true}}
-  secondaryActions={[{content: 'Duplicate'}, {content: 'View on your store'}]}
+  secondaryActions={[
+    {
+      content: 'Duplicate',
+      accessibilityLabel: 'Secondary action label',
+    },
+    {content: 'View on your store'},
+  ]}
+  actionGroups={[
+    {
+      title: 'Promote',
+      accessibilityLabel: 'Action group label',
+      actions: [
+        {
+          content: 'Share on Facebook',
+          accessibilityLabel: 'Individual action label',
+          onAction: () => {},
+        },
+      ],
+    },
+  ]}
   pagination={{
     hasPrevious: true,
     hasNext: true,
   }}
+  separator
 >
   <p>Page content</p>
 </Page>
@@ -345,7 +366,12 @@ Use action groups for sets of actions that relate to one another, particularly w
   actionGroups={[
     {
       title: 'Promote',
-      actions: [{content: 'Share on Facebook', onAction: () => {}}],
+      actions: [
+        {
+          content: 'Share on Facebook',
+          onAction: () => {},
+        },
+      ],
     },
   ]}
 >

@@ -1,11 +1,11 @@
 import {ClientApplication} from '@shopify/app-bridge';
 import {Redirect, Button, ButtonGroup} from '@shopify/app-bridge/actions';
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {ActionGroupDescriptor} from '../components/Page/components/Header/components/ActionGroup';
+
 import {
   AppBridgeTarget,
   ComplexAction,
   ActionListItemDescriptor,
+  MenuGroupDescriptor,
 } from '../types';
 
 export function generateRedirect(
@@ -68,7 +68,7 @@ export function transformActions(
   }: {
     primaryAction?: ComplexAction;
     secondaryActions?: ComplexAction[];
-    actionGroups?: ActionGroupDescriptor[];
+    actionGroups?: MenuGroupDescriptor[];
   },
 ): {
   primary?: Button.Button;
@@ -83,7 +83,7 @@ export function transformActions(
   }: {
     primaryAction?: ComplexAction;
     secondaryActions?: ComplexAction[];
-    actionGroups?: ActionGroupDescriptor[];
+    actionGroups?: MenuGroupDescriptor[];
   },
 ): {
   primary?: Button.Button;
@@ -159,10 +159,10 @@ function transformSecondaryActions(
 
 function transformActionGroups(
   appBridge: ClientApplication<{}>,
-  actionGroups: ActionGroupDescriptor[] = [],
+  actionGroups: MenuGroupDescriptor[] = [],
 ) {
   const buttonGroups = [
-    ...actionGroups.map((group: ActionGroupDescriptor) => {
+    ...actionGroups.map((group: MenuGroupDescriptor) => {
       const buttons = group.actions.map(
         (groupAction: ActionListItemDescriptor) => {
           return transformAction(appBridge, groupAction);
