@@ -53,7 +53,7 @@ export interface Props {
   bulkActions?: BulkActionsProps['actions'];
   /** Collection of IDs for the currently selected items */
   selectedItems?: SelectedItems;
-  /** Display header "Select All" button and checkboxes in front of every list item **/
+  /** Renders a Select All button at the top of the list and checkboxes in front of each list item. For use when bulkActions aren't provided. **/
   selectable?: boolean;
   /** If there are more items than currently in the list */
   hasMoreItems?: boolean;

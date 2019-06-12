@@ -88,7 +88,7 @@ A resource list with simple items and no bulk actions, sorting, or filtering. Se
 </Card>
 ```
 
-### Resoure List with selection
+### Resource List with selection and no bulk actions
 
 A resource list with simple items and selection. See the [case study below](#study) for implementation details.
 

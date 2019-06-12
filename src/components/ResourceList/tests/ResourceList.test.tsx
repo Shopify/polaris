@@ -65,7 +65,7 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(BulkActions).exists()).toBe(false);
     });
 
-    it('does not render checkable button if the selected prop is provided', () => {
+    it('does not render a `CheckableButton` if the `selectable` prop is not provided', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
@@ -94,7 +94,7 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(BulkActions).exists()).toBe(true);
     });
 
-    it('renders checkable button if the selected prop is provided', () => {
+    it('renders a `CheckableButton` if the `selectable` prop is true', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList selectable items={itemsWithID} renderItem={renderItem} />,
       );
