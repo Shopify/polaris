@@ -1,5 +1,5 @@
 import {documentHasStyle} from 'test-utilities';
-import {setRootProperty} from '../setRootProperty';
+import {setRootProperty} from '../set-root-property';
 
 describe('setRootProperty', () => {
   // JSDOM 11.12.0 does not support setting/reading custom properties so we are

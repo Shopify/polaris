@@ -1,4 +1,4 @@
-import {pluckDeep} from '../pluckDeep';
+import {pluckDeep} from '../pluck-deep';
 
 describe('pluckDeep', () => {
   it('will return a value from a flat object', () => {

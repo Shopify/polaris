@@ -1,7 +1,7 @@
 import React from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
-import isInputFocused from '../../utilities/isInputFocused';
+import isInputFocused from '../../utilities/is-input-focused';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
