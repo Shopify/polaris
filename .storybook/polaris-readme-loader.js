@@ -69,7 +69,7 @@ module.exports = function loader(source) {
   };
 
   return `
-import React from 'react';
+import React, {useState} from 'react';
 import * as Polaris from '@shopify/polaris';
 import {
   PlusMinor,
@@ -278,13 +278,15 @@ function filterMarkdownForPlatform(markdown, platform) {
 
 function wrapExample(code) {
   const classPattern = /class (\w+) extends React.Component/g;
-  const classMatch = classPattern.exec(code);
+  const functionPattern = /^function (\w+)/g;
+  const fullComponentDefinitionMatch =
+    classPattern.exec(code) || functionPattern.exec(code);
 
   let wrappedCode = '';
 
-  if (classMatch) {
+  if (fullComponentDefinitionMatch) {
     wrappedCode = `${code}
-return ${classMatch[1]};
+return ${fullComponentDefinitionMatch[1]};
 `;
   } else {
     wrappedCode = `return function() {

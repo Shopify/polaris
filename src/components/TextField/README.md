@@ -173,24 +173,15 @@ You didn’t enter a store name.
 Use to allow merchants to provide text input when the expected input is short. For longer input, use the auto grow or multiline options.
 
 ```jsx
-class TextFieldExample extends React.Component {
-  state = {
-    value: 'Jaded Pixel',
-  };
-
-  handleChange = (value) => {
-    this.setState({value});
-  };
-
-  render() {
-    return (
-      <TextField
-        label="Store name"
-        value={this.state.value}
-        onChange={this.handleChange}
-      />
-    );
-  }
+function TextFieldExample() {
+  const [value, setValue] = useState('Jaded Pixel');
+  return (
+    <TextField
+      label="Store name"
+      value={value}
+      onChange={(newValue) => setValue(newValue)}
+    />
+  );
 }
 ```
 
@@ -211,25 +202,16 @@ class TextFieldExample extends React.Component {
 Use when input text should be a number.
 
 ```jsx
-class NumberFieldExample extends React.Component {
-  state = {
-    value: '1',
-  };
-
-  handleChange = (value) => {
-    this.setState({value});
-  };
-
-  render() {
-    return (
-      <TextField
-        label="Quantity"
-        type="number"
-        value={this.state.value}
-        onChange={this.handleChange}
-      />
-    );
-  }
+function NumberFieldExample() {
+  const [value, setValue] = useState('1');
+  return (
+    <TextField
+      label="Quantity"
+      type="number"
+      value={value}
+      onChange={(newValue) => setValue(newValue)}
+    />
+  );
 }
 ```
 
@@ -254,25 +236,16 @@ This will display the right keyboard on mobile devices.
 Use when the text input should be an email address.
 
 ```jsx
-class EmailFieldExample extends React.Component {
-  state = {
-    value: 'bernadette.lapresse@jadedpixel.com',
-  };
-
-  handleChange = (value) => {
-    this.setState({value});
-  };
-
-  render() {
-    return (
-      <TextField
-        label="Email"
-        type="email"
-        value={this.state.value}
-        onChange={this.handleChange}
-      />
-    );
-  }
+function EmailFieldExample() {
+  const [value, setValue] = useState('bernadette.lapresse@jadedpixel.com');
+  return (
+    <TextField
+      label="Email"
+      type="email"
+      value={value}
+      onChange={(newValue) => setValue(newValue)}
+    />
+  );
 }
 ```
 
@@ -297,25 +270,16 @@ This will display the right keyboard on mobile devices.
 Use when the expected input could be more than one line. The field will automatically grow to accommodate additional text.
 
 ```jsx
-class MultilineFieldExample extends React.Component {
-  state = {
-    value: '1776 Barnes Street\nOrlando, FL 32801',
-  };
-
-  handleChange = (value) => {
-    this.setState({value});
-  };
-
-  render() {
-    return (
-      <TextField
-        label="Shipping address"
-        value={this.state.value}
-        onChange={this.handleChange}
-        multiline
-      />
-    );
-  }
+function MultilineFieldExample() {
+  const [value, setValue] = useState('1776 Barnes Street\nOrlando, FL 32801');
+  return (
+    <TextField
+      label="Shipping address"
+      value={value}
+      onChange={(newValue) => setValue(newValue)}
+      multiline
+    />
+  );
 }
 ```
 
@@ -338,57 +302,37 @@ class MultilineFieldExample extends React.Component {
 Use to visually hide the label when the text field’s purpose is clear from context. The label will remain available to screen readers. Use this option with care. In almost all cases, show the label.
 
 ```jsx
-class HiddenLabelExample extends React.Component {
-  state = {
-    value: '12',
-    selected: 'yes',
-    selectValue: 'months after purchase',
-  };
-
-  handleValueChange = (value) => {
-    this.setState({value});
-  };
-
-  handleSelectChange = (selectValue) => {
-    this.setState({selectValue});
-  };
-
-  handleSelectionChange = (selected) => {
-    this.setState({selected: selected[0]});
-  };
-
-  render() {
-    return (
-      <FormLayout>
-        <ChoiceList
-          title="Gift card auto-expiration"
-          choices={[
-            {label: 'Gift cards never expire', value: 'no'},
-            {label: 'Gift cards expire', value: 'yes'},
-          ]}
-          selected={[this.state.selected]}
-          onChange={this.handleSelectionChange}
-        />
-        <TextField
-          label="Gift cards expire after"
-          type="number"
-          labelHidden
-          value={this.state.value}
-          disabled={this.state.selected === 'no'}
-          onChange={this.handleValueChange}
-          connectedRight={
-            <Select
-              value={this.state.selectValue}
-              onChange={this.handleSelectChange}
-              label="Unit of time"
-              labelHidden
-              options={['months after purchase']}
-            />
-          }
-        />
-      </FormLayout>
-    );
-  }
+function HiddenLabelExample() {
+  const [value, setValue] = useState('12');
+  const [selected, setSelected] = useState('yes');
+  return (
+    <FormLayout>
+      <ChoiceList
+        title="Gift card auto-expiration"
+        choices={[
+          {label: 'Gift cards never expire', value: 'no'},
+          {label: 'Gift cards expire', value: 'yes'},
+        ]}
+        selected={[selected]}
+        onChange={(selections) => setSelected(selections[0])}
+      />
+      <TextField
+        label="Gift cards expire after"
+        type="number"
+        labelHidden
+        value={value}
+        disabled={selected === 'no'}
+        onChange={(newValue) => setValue(newValue)}
+        connectedRight={
+          <Select
+            label="Unit of time"
+            labelHidden
+            options={['months after purchase']}
+          />
+        }
+      />
+    </FormLayout>
+  );
 }
 ```
 
