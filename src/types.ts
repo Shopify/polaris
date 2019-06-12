@@ -136,8 +136,6 @@ export interface ComplexAction
     LoadableAction {}
 
 export interface MenuActionDescriptor extends ActionListItemDescriptor {
-  /** Menu action content */
-  content: ActionListItemDescriptor['content'];
   /** Displays the button with a disclosure icon */
   disclosure?: boolean;
 }
