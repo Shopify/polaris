@@ -1,4 +1,4 @@
-import {isObject} from './isObject';
+import {isObject} from './is-object';
 
 export function pluckDeep(obj: {[key: string]: any} | null, key: string): any {
   if (!obj) {

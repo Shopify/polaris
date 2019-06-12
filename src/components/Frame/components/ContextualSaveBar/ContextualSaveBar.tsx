@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {getWidth} from '../../../../utilities/getWidth';
+import {getWidth} from '../../../../utilities/get-width';
 
 import {ContextualSaveBarProps as Props} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';

@@ -1,4 +1,4 @@
-import {pluckDeep} from './pluckDeep';
+import {pluckDeep} from './pluck-deep';
 
 export function getWidth(
   value: {[key: string]: any} | number | null | undefined = {},

@@ -1,4 +1,4 @@
-import {getWidth} from '../getWidth';
+import {getWidth} from '../get-width';
 
 describe('getWidth', () => {
   it('will return a pixel value', () => {
