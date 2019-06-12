@@ -3,7 +3,7 @@ import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
-import {durationBase} from '@shopify/polaris-tokens';
+import {durationSlow} from '@shopify/polaris-tokens';
 import {classNames} from '../../utilities/css';
 import {withAppProvider} from '../AppProvider';
 
@@ -21,10 +21,6 @@ export interface Props {
 const CSS_VAR_COLLAPSIBLE_HEIGHT = '--polaris-collapsible-height';
 const CSS_VAR_COLLAPSIBLE_TRANSITION_DURATION =
   '--polaris-collapsible-transition-duration';
-
-function duration(height: number) {
-  return Math.max((height / 300) * durationBase, durationBase);
-}
 
 export function Collapsible({id, open, children}: Props) {
   const [height, setHeight] = useState<number | null>(null);
@@ -63,7 +59,7 @@ export function Collapsible({id, open, children}: Props) {
       );
       node.current.style.setProperty(
         CSS_VAR_COLLAPSIBLE_TRANSITION_DURATION,
-        `${duration(height || 0)}ms`,
+        `${durationSlow}ms`,
       );
     },
     [height],
