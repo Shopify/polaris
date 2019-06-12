@@ -31,6 +31,12 @@ describe('<Menu />', () => {
       expect(wrapper.find(MenuAction)).toHaveLength(mockActions.length);
     });
 
+    it('does not render <MenuAction /> when there are no actions', () => {
+      const wrapper = mountWithAppProvider(<Menu {...mockProps} />);
+
+      expect(wrapper.find(MenuAction)).toHaveLength(0);
+    });
+
     it('renders as <RollupActions /> `items` when `rollup` is `true`', () => {
       const wrapper = mountWithAppProvider(
         <Menu {...mockProps} actions={mockActions} rollup />,
@@ -64,6 +70,12 @@ describe('<Menu />', () => {
       );
 
       expect(wrapper.find(MenuGroup)).toHaveLength(mockGroups.length);
+    });
+
+    it('does not render <MenuGroup /> when there are no actions', () => {
+      const wrapper = mountWithAppProvider(<Menu {...mockProps} />);
+
+      expect(wrapper.find(MenuGroup)).toHaveLength(0);
     });
 
     it('renders as <RollupActions /> `sections` when `rollup` is `true`', () => {

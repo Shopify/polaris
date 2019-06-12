@@ -140,8 +140,7 @@ class Header extends React.PureComponent<ComposedProps, State> {
     const primaryActionMarkup = primaryAction ? (
       <div className={styles.PrimaryActionWrapper}>
         {buttonsFrom(primaryAction, {
-          primary:
-            primaryAction.primary === undefined ? true : primaryAction.primary,
+          primary: true,
         })}
       </div>
     ) : null;

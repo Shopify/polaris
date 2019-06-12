@@ -94,7 +94,7 @@ describe('<MenuGroup />', () => {
       );
     });
 
-    it('passes `title` when `onClose` triggers after the <Popover /> closes', () => {
+    it('triggers `onClose` after the <Popover /> closes', () => {
       const mockTitle = 'mock title';
       const onCloseSpy = jest.fn();
       const wrapper = mountWithAppProvider(
@@ -103,10 +103,10 @@ describe('<MenuGroup />', () => {
 
       trigger(wrapper.find(Popover), 'onClose');
 
-      expect(onCloseSpy).toHaveBeenCalledWith(mockTitle);
+      expect(onCloseSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('passes `title` when `onClose` triggers after an action ', () => {
+    it('triggers `onClose` after an action ', () => {
       const mockTitle = 'mock title';
       const onCloseSpy = jest.fn();
       const wrapper = mountWithAppProvider(
@@ -120,7 +120,7 @@ describe('<MenuGroup />', () => {
 
       trigger(wrapper.find(ActionList), 'onActionAnyItem');
 
-      expect(onCloseSpy).toHaveBeenCalledWith(mockTitle);
+      expect(onCloseSpy).toHaveBeenCalledTimes(1);
     });
   });
 });

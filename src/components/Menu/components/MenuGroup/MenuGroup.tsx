@@ -16,7 +16,7 @@ export interface Props extends MenuGroupDescriptor {
   /** Callback for opening the MenuGroup by title */
   onOpen(title: string): void;
   /** Callback for closing the MenuGroup by title */
-  onClose(title: string): void;
+  onClose(): void;
 }
 
 export default class MenuGroup extends React.Component<Props, never> {
@@ -55,8 +55,8 @@ export default class MenuGroup extends React.Component<Props, never> {
   }
 
   private handleClose = () => {
-    const {title, onClose} = this.props;
-    onClose(title);
+    const {onClose} = this.props;
+    onClose();
   };
 
   private handleOpen = () => {
