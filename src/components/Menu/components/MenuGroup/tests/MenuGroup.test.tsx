@@ -95,10 +95,9 @@ describe('<MenuGroup />', () => {
     });
 
     it('triggers `onClose` after the <Popover /> closes', () => {
-      const mockTitle = 'mock title';
       const onCloseSpy = jest.fn();
       const wrapper = mountWithAppProvider(
-        <MenuGroup {...mockProps} title={mockTitle} onClose={onCloseSpy} />,
+        <MenuGroup {...mockProps} onClose={onCloseSpy} />,
       );
 
       trigger(wrapper.find(Popover), 'onClose');

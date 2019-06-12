@@ -87,12 +87,12 @@ export default class Menu extends React.PureComponent<Props, State> {
     ) : null;
   };
 
-  private handleMenuGroupClose = () => {
-    this.setState({activeMenuGroup: undefined});
-  };
-
   private handleMenuGroupOpen = (group: string) => {
     this.setState({activeMenuGroup: group});
+  };
+
+  private handleMenuGroupClose = () => {
+    this.setState({activeMenuGroup: undefined});
   };
 }
 
