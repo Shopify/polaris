@@ -279,28 +279,6 @@ Use footer actions for a card’s most important actions, or actions merchants s
 </Card>
 ```
 
-### Card with multiple footer actions
-
-When multiple secondary footer actions are provided, they will render in an action list popover activated by a disclosure button. The disclosure button text can be customized with the `secondaryFooterActionsDisclosureText` prop.
-
-```jsx
-<Card
-  title="Shipment 1234"
-  secondaryFooterActions={[
-    {content: 'Cancel shipment', destructive: true},
-    {content: 'Add another shipment', disabled: true},
-  ]}
-  primaryFooterAction={{content: 'Add tracking number'}}
->
-  <Card.Section title="Items">
-    <List>
-      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
-      <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
-    </List>
-  </Card.Section>
-</Card>
-```
-
 <!-- content-for: android, ios -->
 
 Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card.
@@ -322,7 +300,33 @@ Use footer actions for a card’s most important actions, or actions merchants s
 
 <!-- /content-for -->
 
+### Card with multiple footer actions
+
+<!-- example-for: web -->
+
+When multiple secondary footer actions are provided, they will render in an action list popover activated by a disclosure button. The disclosure button text can be customized with the `secondaryFooterActionsDisclosureText` prop.
+
+```jsx
+<Card
+  title="Shipment 1234"
+  secondaryFooterActions={[
+    {content: 'Cancel shipment', destructive: true},
+    {content: 'Add another shipment', disabled: true},
+  ]}
+  primaryFooterAction={{content: 'Add tracking number'}}
+>
+  <Card.Section title="Items">
+    <List>
+      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
+      <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
+    </List>
+  </Card.Section>
+</Card>
+```
+
 ### Card with destructive footer action
+
+<!-- example-for: web -->
 
 Use when a card action will delete merchant data or be otherwise difficult to recover from.
 
@@ -374,6 +378,8 @@ Use when you have two related but distinct pieces of information to communicate 
 
 ### Card with multiple titled sections
 
+<!-- example-for: web -->
+
 Use when you have two related but distinct pieces of information to communicate to merchants that are complex enough to require a title to introduce them.
 
 ```jsx
@@ -393,6 +399,8 @@ Use when you have two related but distinct pieces of information to communicate 
 
 ### Card section with action
 
+<!-- example-for: web -->
+
 Use when your card section has actions that apply only to that section.
 
 ```jsx
@@ -407,6 +415,8 @@ Use when your card section has actions that apply only to that section.
 ```
 
 ### Card with subsection
+
+<!-- example-for: web -->
 
 Use when your card sections need further categorization.
 
