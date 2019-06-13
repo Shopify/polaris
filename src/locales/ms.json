@@ -102,14 +102,18 @@
     "Icon": {
       "backdropWarning": "Ikon {color} tidak menerima latar belakang. Warna ikon yang mempunyai latar belakang adalah: {colorsWithBackDrops}"
     },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Tindakan"
+      }
+    },
     "Modal": {
       "iFrameTitle": "penanda badan",
       "modalWarning": "Ciri-ciri yang diperlukan ini hilang daripada Modal: {missingProps}"
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "Alatan ikon telah dialih keluar dari Halaman. Sebaliknya, muat naik ikon app di bahagian 'Persediaan app' Papan pemuka Shopify Partners.",
-        "rollupButton": "Tindakan"
+        "iconWarningMessage": "Alatan ikon telah dialih keluar dari Halaman. Sebaliknya, muat naik ikon app di bahagian 'Persediaan app' Papan pemuka Shopify Partners."
       }
     },
     "Pagination": {
