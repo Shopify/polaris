@@ -151,7 +151,7 @@ class SheetExample extends React.Component {
       : null;
 
     return (
-      <div style={{maxHeight: '640px', overflow: 'visible'}}>
+      <div style={{maxHeight: '40rem', overflow: 'visible'}}>
         <AppProvider
           theme={theme}
           i18n={{
@@ -205,7 +205,7 @@ class SheetExample extends React.Component {
                       borderBottom: '1px solid #DFE3E8',
                       display: 'flex',
                       justifyContent: 'space-between',
-                      padding: '1.6rem',
+                      padding: '1rem',
                       width: '100%',
                     }}
                   >
@@ -217,7 +217,7 @@ class SheetExample extends React.Component {
                       plain
                     />
                   </div>
-                  <Scrollable style={{padding: '1.6rem', height: '100%'}}>
+                  <Scrollable style={{padding: '1rem', height: '100%'}}>
                     <ChoiceList
                       title="Select a sales channel"
                       name="salesChannelsList"
@@ -234,7 +234,7 @@ class SheetExample extends React.Component {
                       borderTop: '1px solid #DFE3E8',
                       display: 'flex',
                       justifyContent: 'space-between',
-                      padding: '1.6rem',
+                      padding: '1rem',
                       width: '100%',
                     }}
                   >
