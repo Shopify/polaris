@@ -102,14 +102,18 @@
     "Icon": {
       "backdropWarning": "{color} 图标不能用于背景。可用于背景的图标颜色：{colorsWithBackDrops}"
     },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "编辑"
+      }
+    },
     "Modal": {
       "iFrameTitle": "正文标记",
       "modalWarning": "模态缺少这些必需的属性：{missingProps}"
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "已从页面删除该图标道具。请改为在 Shopify 合作伙伴控制面板“应用设置”部分上传应用程序图标。",
-        "rollupButton": "编辑"
+        "iconWarningMessage": "已从页面删除该图标道具。请改为在 Shopify 合作伙伴控制面板“应用设置”部分上传应用程序图标。"
       }
     },
     "Pagination": {
