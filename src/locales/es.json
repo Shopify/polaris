@@ -102,14 +102,18 @@
     "Icon": {
       "backdropWarning": "El ícono {color} no acepta fondos. Los colores de los íconos que tienen fondos son: {colorsWithBackDrops}"
     },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Acciones"
+      }
+    },
     "Modal": {
       "iFrameTitle": "etiqueta body",
       "modalWarning": "Estas propiedades necesarias faltan en Modal: {missingProps}"
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "El ícono de apoyo se ha eliminado de la página. Sube el ícono de una aplicación en la sección 'Configuración de la aplicación' del Tablero de Shopify Partners.",
-        "rollupButton": "Acciones"
+        "iconWarningMessage": "El ícono de apoyo se ha eliminado de la página. Sube el ícono de una aplicación en la sección 'Configuración de la aplicación' del Tablero de Shopify Partners."
       }
     },
     "Pagination": {
