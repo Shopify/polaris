@@ -102,14 +102,18 @@
     "Icon": {
       "backdropWarning": "{color} आइकन बैकड्रॉप स्वीकार नहीं करता है. आइकन के वे रंग जिनमें बैकड्रॉप होते हैं: {colorsWithBackDrops}"
     },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "कार्रवाई"
+      }
+    },
     "Modal": {
       "iFrameTitle": "बॉडी मार्कअप",
       "modalWarning": "मॉडल में ये आवश्यक विशेषताएं नहीं हैं: {missingProps}"
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "आइकन प्रोप पेज से हटा दिया गया है. इसके बजाय Shopify Partners के डैशबोर्ड 'ऐप सेटअप करें' सेक्शन में ऐप्लिकेशन आइकन अपलोड करें.",
-        "rollupButton": "कार्रवाई"
+        "iconWarningMessage": "आइकन प्रोप पेज से हटा दिया गया है. इसके बजाय Shopify Partners के डैशबोर्ड 'ऐप सेटअप करें' सेक्शन में ऐप्लिकेशन आइकन अपलोड करें."
       }
     },
     "Pagination": {
