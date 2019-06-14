@@ -293,21 +293,11 @@ $spinner-size: rem(20px);
   }
 
   &.plain {
+    // stylelint-disable selector-max-class, max-nesting-depth
     .Text {
-      @include underlined-link;
+      text-decoration: underline;
     }
-
-    &:hover,
-    &:focus,
-    &:active {
-      // stylelint-disable selector-max-class, max-nesting-depth
-      .Text {
-        &::after {
-          opacity: 0.4;
-        }
-      }
-      // stylelint-enable selector-max-class, max-nesting-depth
-    }
+    // stylelint-enable selector-max-class, max-nesting-depth
   }
 
   &.outline {
