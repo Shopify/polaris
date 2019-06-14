@@ -131,7 +131,7 @@
       "defaultItemPlural": "itens",
       "showing": "Exibindo {itemsCount} {resource}",
       "loading": "Carregando {resource}",
-      "selected": "{selectedItemsCount} selecionado(s)",
+      "selected": "{selectedItemsCount} na seleção",
       "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} da sua loja estão selecionados.",
       "selectAllItems": "Selecionar todos os {itemsLength}+ {resourceNamePlural} da sua loja",
       "emptySearchResultTitle": "Nenhum {resourceNamePlural} encontrado",
