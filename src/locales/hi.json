@@ -140,7 +140,7 @@
       "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} का चयन रद्द करें",
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} चुनें",
       "a11yCheckboxDeselectAllMultiple": "सभी {itemsLength} {resourceNamePlural} का चयन रद्द करें",
-      "a11yCheckboxSelectAllMultiple": "सभी {itemsLength} {resourceNamePlural} का चयन करें",
+      "a11yCheckboxSelectAllMultiple": "सभी {itemsLength} {resourceNamePlural} को चुनें",
       "ariaLiveSingular": "{itemsLength} आइटम",
       "ariaLivePlural": "{itemsLength} आइटम",
       "Item": {
