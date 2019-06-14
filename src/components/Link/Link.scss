@@ -36,7 +36,7 @@
 
 .monochrome {
   color: inherit;
-  @include underlined-link;
+  text-decoration: underline;
 
   &:hover,
   &:focus,
