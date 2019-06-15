@@ -172,19 +172,15 @@ Use for less important or less commonly used actions since they’re less promin
 
 <!-- example-for: web -->
 
-Use to render a buttons that look like links where matching the surrounding text color is visually more appropriate. For example in the InlineError component.
+Use for less important or less commonly used actions where matching the current text color is desired. For example in the InlineError component.
 
 ```jsx
-<InlineError
-  message={
-    <React.Fragment>
-      An error occurred. &nbsp;
-      <Button plain monochrome>
-        Try again
-      </Button>
-    </React.Fragment>
-  }
-/>
+<div style={{color: '#bf0711'}}>
+  Could not retrieve data.{' '}
+  <Button plain monochrome>
+    Try again
+  </Button>
+</div>
 ```
 
 ### Plain destructive button
