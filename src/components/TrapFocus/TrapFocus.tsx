@@ -43,7 +43,7 @@ export default class TrapFocus extends React.PureComponent<Props, State> {
     const {children} = this.props;
 
     return (
-      <Focus disabled={this.shouldDisable}>
+      <Focus disabled={this.shouldDisable} root={this.focusTrapWrapper}>
         <div ref={this.setFocusTrapWrapper}>
           <EventListener event="focusout" handler={this.handleBlur} />
           {children}

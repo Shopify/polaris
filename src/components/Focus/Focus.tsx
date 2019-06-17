@@ -1,11 +1,11 @@
 import React from 'react';
-import {findDOMNode} from 'react-dom';
 import isEqual from 'lodash/isEqual';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 export interface Props {
   children?: React.ReactNode;
   disabled?: boolean;
+  root: HTMLElement | null;
 }
 
 export default class Focus extends React.PureComponent<Props, never> {
@@ -24,11 +24,11 @@ export default class Focus extends React.PureComponent<Props, never> {
   }
 
   handleSelfFocus() {
-    if (this.props.disabled) {
+    const {disabled, root} = this.props;
+    if (disabled) {
       return;
     }
 
-    const root = findDOMNode(this) as HTMLElement | null;
     if (root) {
       if (!root.querySelector('[autofocus]')) {
         focusFirstFocusableNode(root, false);
