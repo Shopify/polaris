@@ -44,6 +44,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Enabled react/no-unsafe with checkAliases ([#1695](https://github.com/Shopify/polaris-react/pull/1695))
 - Added hooks to storybooks scope ([#1672](https://github.com/Shopify/polaris-react/pull/1672))
 - Simplified `WithinContentContainer` context type ([#1602](https://github.com/Shopify/polaris-react/pull/1602))
 - Updated `Collapsible` to no longer use `componentWillReceiveProps`([#1670](https://github.com/Shopify/polaris-react/pull/1670))
