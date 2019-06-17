@@ -163,8 +163,8 @@ export default class PositionedOverlay extends React.PureComponent<
     this.observer.disconnect();
 
     this.setState(
-      ({left, top}) => ({
-        left,
+      ({top}) => ({
+        left: 0,
         top,
         height: 0,
         positioning: 'below',
