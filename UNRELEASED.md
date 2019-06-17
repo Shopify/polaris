@@ -15,6 +15,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixes PositionOverlay incorrectly calculating the left value for right aligned components with scroll bars ([#1692](https://github.com/Shopify/polaris-react/pull/1692))
+
 ### Documentation
 
 ### Development workflow
