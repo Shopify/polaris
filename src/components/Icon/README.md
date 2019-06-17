@@ -19,6 +19,8 @@ keywords:
 
 Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
 
+To learn about implementing Polaris icons with [Polaris React](https://github.com/Shopify/polaris-react) in your projects, see the [`@shopify/polaris-icons` documentation](https://github.com/Shopify/polaris-icons/tree/master/packages/polaris-icons).
+
 ---
 
 ## Examples

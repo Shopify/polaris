@@ -30,6 +30,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Mentioned Polaris icons in the Icon component documentation ([#1693](https://github.com/Shopify/polaris-react/pull/1693))
+
 ### Development workflow
 
 - Updated Storybook to `v5.1.3` ([#1666](https://github.com/Shopify/polaris-react/pull/1666))
