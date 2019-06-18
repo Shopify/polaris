@@ -10,7 +10,6 @@ import {SortDirection} from '../../types';
 import styles from '../../DataTable.scss';
 
 export interface Props {
-  testID?: string;
   content?: React.ReactNode;
   contentType?: string;
   firstColumn?: boolean;
@@ -36,7 +35,7 @@ function Cell({
   sorted,
   sortable,
   sortDirection,
-  defaultSortDirection,
+  defaultSortDirection = 'ascending',
   polaris: {
     intl: {translate},
   },
@@ -61,7 +60,7 @@ function Cell({
 
   const iconClassName = classNames(sortable && styles.Icon);
   const direction = sorted ? sortDirection : defaultSortDirection;
-  const source = direction === 'ascending' ? CaretUpMinor : CaretDownMinor;
+  const source = direction === 'descending' ? CaretDownMinor : CaretUpMinor;
   const oppositeDirection =
     sortDirection === 'ascending' ? 'descending' : 'ascending';
 

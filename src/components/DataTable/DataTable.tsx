@@ -105,23 +105,10 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   }
 
   render() {
-    const {
-      columnContentTypes,
-      headings,
-      totals,
-      rows,
-      truncate,
-      footerContent,
-      sortable,
-      defaultSortDirection = 'ascending',
-      initialSortColumnIndex = 0,
-    } = this.props;
-
+    const {headings, totals, rows, footerContent} = this.props;
     const {
       condensed,
       columnVisibilityData,
-      sortedColumnIndex = initialSortColumnIndex,
-      sortDirection = defaultSortDirection,
       isScrolledFarthestLeft,
       isScrolledFarthestRight,
     } = this.state;
@@ -129,7 +116,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     const className = classNames(
       styles.DataTable,
       condensed && styles.condensed,
-      footerContent && styles.hasFooter,
     );
 
     const wrapperClassName = classNames(
@@ -137,41 +123,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       condensed && styles.condensed,
     );
 
-    const headingMarkup = (
-      <tr>
-        {headings.map((heading, headingIndex) => {
-          let sortableHeadingProps;
-          const id = `heading-cell-${headingIndex}`;
-
-          if (sortable) {
-            const isSortable = sortable[headingIndex];
-            const isSorted = sortedColumnIndex === headingIndex;
-            const direction = isSorted ? sortDirection : 'none';
-
-            sortableHeadingProps = {
-              defaultSortDirection,
-              sorted: isSorted,
-              sortable: isSortable,
-              sortDirection: direction,
-              onSort: this.defaultOnSort(headingIndex),
-            };
-          }
-
-          return (
-            <Cell
-              header
-              key={id}
-              testID={id}
-              content={heading}
-              contentType={columnContentTypes[headingIndex]}
-              firstColumn={headingIndex === 0}
-              truncate={truncate}
-              {...sortableHeadingProps}
-            />
-          );
-        })}
-      </tr>
-    );
+    const headingMarkup = <tr>{headings.map(this.renderHeadings)}</tr>;
 
     const totalsMarkup = totals ? (
       <tr>{totals.map(this.renderTotals)}</tr>
@@ -291,6 +243,50 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     return handleScroll;
   };
 
+  private renderHeadings = (heading: string, headingIndex: number) => {
+    const {
+      sortable,
+      truncate = false,
+      columnContentTypes,
+      defaultSortDirection,
+      initialSortColumnIndex = 0,
+    } = this.props;
+
+    const {
+      sortDirection = defaultSortDirection,
+      sortedColumnIndex = initialSortColumnIndex,
+    } = this.state;
+
+    let sortableHeadingProps;
+    const id = `heading-cell-${headingIndex}`;
+
+    if (sortable) {
+      const isSortable = sortable[headingIndex];
+      const isSorted = isSortable && sortedColumnIndex === headingIndex;
+      const direction = isSorted ? sortDirection : 'none';
+
+      sortableHeadingProps = {
+        defaultSortDirection,
+        sorted: isSorted,
+        sortable: isSortable,
+        sortDirection: direction,
+        onSort: this.defaultOnSort(headingIndex),
+      };
+    }
+
+    return (
+      <Cell
+        header
+        key={id}
+        content={heading}
+        contentType={columnContentTypes[headingIndex]}
+        firstColumn={headingIndex === 0}
+        truncate={truncate}
+        {...sortableHeadingProps}
+      />
+    );
+  };
+
   private renderTotals = (total: TableData, index: number) => {
     const id = `totals-cell-${index}`;
     const {truncate = false} = this.props;
@@ -311,7 +307,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       <Cell
         total
         firstColumn={index === 0}
-        testID={id}
         key={id}
         content={content}
         contentType={contentType}
@@ -332,7 +327,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
           return (
             <Cell
               key={id}
-              testID={id}
               content={content}
               contentType={columnContentTypes[cellIndex]}
               firstColumn={cellIndex === 0}
@@ -347,7 +341,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   private defaultOnSort = (headingIndex: number) => {
     const {
       onSort,
-      truncate,
       defaultSortDirection = 'ascending',
       initialSortColumnIndex,
     } = this.props;
@@ -373,10 +366,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
         () => {
           if (onSort) {
             onSort(headingIndex, newSortDirection);
-
-            if (!truncate && this.scrollContainer.current) {
-              this.handleResize();
-            }
           }
         },
       );
