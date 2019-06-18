@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {unstyled} from '../shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider/utilities';
 import compose from '../../utilities/react-compose';
 import withRef from '../WithRef';
@@ -26,15 +25,13 @@ export class UnstyledLink extends React.PureComponent<CombinedProps, never> {
       const LinkComponent = polaris.link.getLinkComponent();
       if (LinkComponent) {
         const {polaris, ...rest} = this.props;
-        return <LinkComponent {...unstyled.props} {...rest} />;
+        return <LinkComponent {...rest} />;
       }
     }
 
     const target = external ? '_blank' : undefined;
     const rel = external ? 'noopener noreferrer' : undefined;
-    return (
-      <a target={target} {...rest} href={url} rel={rel} {...unstyled.props} />
-    );
+    return <a target={target} {...rest} href={url} rel={rel} />;
   }
 }
 

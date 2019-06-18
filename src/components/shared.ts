@@ -13,11 +13,6 @@ export const layer = {
   selector: '[data-polaris-layer]',
 };
 
-export const unstyled = {
-  props: {'data-polaris-unstyled': true},
-  selector: '[data-polaris-unstyled]',
-};
-
 export const dataPolarisTopBar = {
   props: {'data-polaris-top-bar': true},
   selector: '[data-polaris-top-bar]',

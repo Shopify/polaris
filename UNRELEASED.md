@@ -41,6 +41,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Code quality
 
 - Updated `PositionedOverlay` to no longer use `componentWillReceiveProps`([#1621](https://github.com/Shopify/polaris-react/pull/1621))
+- Remove unused `data-polaris-unstyled` from `UnstyledLink` ([#1190](https://github.com/Shopify/polaris-react/issues/1190))
 
 ### Deprecations
 
