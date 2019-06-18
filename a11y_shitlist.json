@@ -2,7 +2,7 @@
   "all-components-app-provider--with-i18n-object": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
-      "context": "<a aria-describedby=\"341\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay1\" href=\"customers/341\" data-polaris-unstyled=\"true\"></a>",
+      "context": "<a aria-describedby=\"341\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay1\" href=\"customers/341\"></a>",
       "message": "Anchor element found with a valid href attribute, but no link content has been supplied.",
       "type": "error",
       "typeCode": 1,
@@ -10,7 +10,7 @@
     },
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
-      "context": "<a aria-describedby=\"256\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay2\" href=\"customers/256\" data-polaris-unstyled=\"true\"></a>",
+      "context": "<a aria-describedby=\"256\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay2\" href=\"customers/256\"></a>",
       "message": "Anchor element found with a valid href attribute, but no link content has been supplied.",
       "type": "error",
       "typeCode": 1,
@@ -20,7 +20,7 @@
   "all-components-app-provider--default": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
-      "context": "<a aria-describedby=\"341\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay1\" href=\"customers/341\" data-polaris-unstyled=\"true\"></a>",
+      "context": "<a aria-describedby=\"341\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay1\" href=\"customers/341\"></a>",
       "message": "Anchor element found with a valid href attribute, but no link content has been supplied.",
       "type": "error",
       "typeCode": 1,
@@ -28,7 +28,7 @@
     },
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
-      "context": "<a aria-describedby=\"256\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay2\" href=\"customers/256\" data-polaris-unstyled=\"true\"></a>",
+      "context": "<a aria-describedby=\"256\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay2\" href=\"customers/256\"></a>",
       "message": "Anchor element found with a valid href attribute, but no link content has been supplied.",
       "type": "error",
       "typeCode": 1,
@@ -98,7 +98,7 @@
   "all-components-resource-list--resource-list-with-filtering": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
-      "context": "<a aria-describedby=\"341\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay1\" href=\"customers/341\" data-polaris-unstyled=\"true\"></a>",
+      "context": "<a aria-describedby=\"341\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay1\" href=\"customers/341\"></a>",
       "message": "Anchor element found with a valid href attribute, but no link content has been supplied.",
       "type": "error",
       "typeCode": 1,
@@ -106,7 +106,7 @@
     },
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
-      "context": "<a aria-describedby=\"256\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay2\" href=\"customers/256\" data-polaris-unstyled=\"true\"></a>",
+      "context": "<a aria-describedby=\"256\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay2\" href=\"customers/256\"></a>",
       "message": "Anchor element found with a valid href attribute, but no link content has been supplied.",
       "type": "error",
       "typeCode": 1,
