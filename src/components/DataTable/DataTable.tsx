@@ -137,18 +137,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       condensed && styles.condensed,
     );
 
-    const footerClassName = classNames(footerContent && styles.TableFoot);
-
-    const footerMarkup = footerContent ? (
-      <tfoot className={footerClassName}>
-        <tr>{this.renderFooter()}</tr>
-      </tfoot>
-    ) : null;
-
-    const totalsMarkup = totals ? (
-      <tr>{totals.map(this.renderTotals)}</tr>
-    ) : null;
-
     const headingMarkup = (
       <tr>
         {headings.map((heading, headingIndex) => {
@@ -185,7 +173,15 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       </tr>
     );
 
+    const totalsMarkup = totals ? (
+      <tr>{totals.map(this.renderTotals)}</tr>
+    ) : null;
+
     const bodyMarkup = rows.map(this.defaultRenderRow);
+
+    const footerMarkup = footerContent ? (
+      <div className={styles.Footer}>{footerContent}</div>
+    ) : null;
 
     return (
       <div className={wrapperClassName}>
@@ -210,9 +206,9 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
                 {totalsMarkup}
               </thead>
               <tbody>{bodyMarkup}</tbody>
-              {footerMarkup}
             </table>
           </div>
+          {footerMarkup}
         </div>
       </div>
     );
@@ -345,17 +341,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
           );
         })}
       </tr>
-    );
-  };
-
-  private renderFooter = () => {
-    return (
-      <Cell
-        footer
-        testID="footer-cell"
-        content={this.props.footerContent}
-        truncate={this.props.truncate}
-      />
     );
   };
 

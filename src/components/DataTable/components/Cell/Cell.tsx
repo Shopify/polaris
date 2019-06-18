@@ -11,14 +11,12 @@ import styles from '../../DataTable.scss';
 
 export interface Props {
   testID?: string;
-  height?: number;
   content?: React.ReactNode;
   contentType?: string;
   firstColumn?: boolean;
   truncate?: boolean;
   header?: boolean;
   total?: boolean;
-  footer?: boolean;
   sorted?: boolean;
   sortable?: boolean;
   sortDirection?: SortDirection;
@@ -29,14 +27,12 @@ export interface Props {
 type CombinedProps = Props & WithAppProviderProps;
 
 function Cell({
-  height,
   content,
   contentType,
   firstColumn,
   truncate,
   header,
   total,
-  footer,
   sorted,
   sortable,
   sortDirection,
@@ -47,14 +43,12 @@ function Cell({
   onSort,
 }: CombinedProps) {
   const numeric = contentType === 'numeric';
-
   const className = classNames(
     styles.Cell,
     firstColumn && styles['Cell-firstColumn'],
     firstColumn && truncate && styles['Cell-truncated'],
     header && styles['Cell-header'],
     total && styles['Cell-total'],
-    footer && styles['Cell-footer'],
     numeric && styles['Cell-numeric'],
     sortable && styles['Cell-sortable'],
     sorted && styles['Cell-sorted'],
@@ -66,11 +60,6 @@ function Cell({
   );
 
   const iconClassName = classNames(sortable && styles.Icon);
-
-  const style = {
-    height: height ? `${height}px` : undefined,
-  };
-
   const direction = sorted ? sortDirection : defaultSortDirection;
   const source = direction === 'ascending' ? CaretUpMinor : CaretDownMinor;
   const oppositeDirection =
@@ -102,12 +91,11 @@ function Cell({
       className={className}
       scope="col"
       aria-sort={sortDirection}
-      style={style}
     >
       {columnHeadingContent}
     </th>
   ) : (
-    <th className={className} scope="row" style={style}>
+    <th className={className} scope="row">
       {content}
     </th>
   );
@@ -116,9 +104,7 @@ function Cell({
     header || firstColumn ? (
       headingMarkup
     ) : (
-      <td className={className} style={style}>
-        {content}
-      </td>
+      <td className={className}>{content}</td>
     );
 
   return cellMarkup;

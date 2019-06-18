@@ -20,12 +20,6 @@ $breakpoint: 768px;
   }
 }
 
-.hasFooter {
-  .ScrollContainer {
-    margin-bottom: rem(52px);
-  }
-}
-
 .Navigation {
   display: none;
 }
@@ -61,10 +55,6 @@ $breakpoint: 768px;
       background: color('sky', 'lighter');
     }
   }
-}
-
-.TableFoot {
-  border-bottom: 0;
 }
 
 .Cell {
@@ -148,16 +138,9 @@ $breakpoint: 768px;
   border-bottom: border();
 }
 
-.Cell-footer {
-  @include text-emphasis-normal;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  border-bottom: 0;
+.Footer {
+  padding: spacing();
   background: color('sky', 'light');
   color: color('ink', 'lighter');
-  white-space: unset;
   text-align: center;
-  backface-visibility: hidden; // stop painting on scroll (due to positioning)
 }
