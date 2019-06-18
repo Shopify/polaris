@@ -31,6 +31,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Mentioned Polaris icons in the Icon component documentation ([#1693](https://github.com/Shopify/polaris-react/pull/1693))
+- Added an example to `Card` for custom action layout with a secondary action and a plain button ([#1705](https://github.com/Shopify/polaris-react/pull/1705))
 
 ### Development workflow
 

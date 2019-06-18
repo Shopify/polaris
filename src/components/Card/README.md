@@ -324,6 +324,30 @@ When multiple secondary footer actions are provided, they will render in an acti
 </Card>
 ```
 
+### Card with custom footer actions
+
+<!-- example-for: web -->
+
+Use to present actionable content that is optional or not the primary purpose of the page.
+
+```jsx
+<Card title="Secure your account with 2-step authentication">
+  <Card.Section>
+    <Stack spacing="loose" vertical>
+      <p>
+        Two-step authentication adds an extra layer of security when logging in
+        to your account. A special code will be required each time you log in,
+        ensuring only you can access your account.
+      </p>
+      <ButtonGroup>
+        <Button>Enable two-step authentication</Button>
+        <Button plain>Learn more</Button>
+      </ButtonGroup>
+    </Stack>
+  </Card.Section>
+</Card>
+```
+
 ### Card with destructive footer action
 
 <!-- example-for: web -->
