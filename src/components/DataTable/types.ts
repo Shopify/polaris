@@ -6,11 +6,6 @@ export interface ColumnVisibilityData {
   isVisible?: boolean;
 }
 
-interface ScrollPosition {
-  left?: number;
-  top?: number;
-}
-
 export interface DataTableState {
   condensed: boolean;
   columnVisibilityData: ColumnVisibilityData[];
@@ -18,9 +13,6 @@ export interface DataTableState {
   currentColumn?: ColumnVisibilityData;
   sortedColumnIndex?: number;
   sortDirection?: SortDirection;
-  heights: number[];
-  fixedColumnWidth?: number;
-  preservedScrollPosition: ScrollPosition;
   isScrolledFarthestLeft?: boolean;
   isScrolledFarthestRight?: boolean;
 }

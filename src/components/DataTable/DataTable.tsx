@@ -53,8 +53,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   state: DataTableState = {
     condensed: false,
     columnVisibilityData: [],
-    heights: [],
-    preservedScrollPosition: {},
     isScrolledFarthestLeft: true,
     isScrolledFarthestRight: false,
   };
@@ -65,7 +63,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   private totalsRowHeading: string;
 
   private handleResize = debounce(() => {
-    const {footerContent, truncate} = this.props;
     const {
       table: {current: table},
       scrollContainer: {current: scrollContainer},
@@ -75,21 +72,12 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
 
     if (table && scrollContainer) {
       condensed = table.scrollWidth > scrollContainer.clientWidth;
-      scrollContainer.scrollLeft = 0;
     }
 
-    this.setState(
-      {
-        condensed,
-        heights: [],
-        ...this.calculateColumnVisibilityData(condensed),
-      },
-      () => {
-        if (footerContent || !truncate) {
-          this.setHeightsAndScrollPosition();
-        }
-      },
-    );
+    this.setState({
+      condensed,
+      ...this.calculateColumnVisibilityData(condensed),
+    });
   });
 
   constructor(props: CombinedProps) {
@@ -132,7 +120,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     const {
       condensed,
       columnVisibilityData,
-      heights,
       sortedColumnIndex = initialSortColumnIndex,
       sortDirection = defaultSortDirection,
       isScrolledFarthestLeft,
@@ -182,14 +169,11 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
             };
           }
 
-          const height = !truncate ? heights[0] : undefined;
-
           return (
             <Cell
               header
               key={id}
               testID={id}
-              height={height}
               content={heading}
               contentType={columnContentTypes[headingIndex]}
               firstColumn={headingIndex === 0}
@@ -202,9 +186,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     );
 
     const bodyMarkup = rows.map(this.defaultRenderRow);
-    const style = footerContent
-      ? {marginBottom: `${heights[heights.length - 1]}px`}
-      : undefined;
 
     return (
       <div className={wrapperClassName}>
@@ -216,11 +197,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
           navigateTableRight={this.navigateTable('right')}
         />
         <div className={className} ref={this.dataTable}>
-          <div
-            className={styles.ScrollContainer}
-            ref={this.scrollContainer}
-            style={style}
-          >
+          <div className={styles.ScrollContainer} ref={this.scrollContainer}>
             <EventListener event="resize" handler={this.handleResize} />
             <EventListener
               capture
@@ -240,55 +217,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       </div>
     );
   }
-
-  private tallestCellHeights = () => {
-    const {footerContent, truncate} = this.props;
-    const {
-      table: {current: table},
-    } = this;
-    let {heights} = this.state;
-    if (table) {
-      const rows = Array.from(table.getElementsByTagName('tr'));
-
-      if (!truncate) {
-        return (heights = rows.map((row) => {
-          const firstCell = (row.childNodes as NodeListOf<HTMLElement>)[0];
-          return Math.max(row.clientHeight, firstCell.clientHeight);
-        }));
-      }
-
-      if (footerContent) {
-        const footerCellHeight = (rows[rows.length - 1]
-          .childNodes as NodeListOf<HTMLElement>)[0].clientHeight;
-        heights = [footerCellHeight];
-      }
-    }
-
-    return heights;
-  };
-
-  private resetScrollPosition = () => {
-    const {current: scrollContainer} = this.scrollContainer;
-
-    if (scrollContainer) {
-      const {left, top} = this.state.preservedScrollPosition;
-
-      if (left) {
-        scrollContainer.scrollLeft = left;
-      }
-
-      if (top) {
-        window.scrollTo(0, top);
-      }
-    }
-  };
-
-  private setHeightsAndScrollPosition = () => {
-    this.setState(
-      {heights: this.tallestCellHeights()},
-      this.resetScrollPosition,
-    );
-  };
 
   private calculateColumnVisibilityData = (condensed: boolean) => {
     const {
@@ -369,7 +297,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
 
   private renderTotals = (total: TableData, index: number) => {
     const id = `totals-cell-${index}`;
-    const {heights} = this.state;
     const {truncate = false} = this.props;
 
     let content;
@@ -390,7 +317,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
         firstColumn={index === 0}
         testID={id}
         key={id}
-        height={heights[1]}
         content={content}
         contentType={contentType}
         truncate={truncate}
@@ -400,18 +326,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
 
   private defaultRenderRow = (row: TableData[], index: number) => {
     const className = classNames(styles.TableRow);
-    const {
-      columnContentTypes,
-      totals,
-      footerContent,
-      truncate = false,
-    } = this.props;
-    const {heights} = this.state;
-    const bodyCellHeights = totals ? heights.slice(2) : heights.slice(1);
-
-    if (footerContent) {
-      bodyCellHeights.pop();
-    }
+    const {columnContentTypes, truncate = false} = this.props;
 
     return (
       <tr key={`row-${index}`} className={className}>
@@ -422,7 +337,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
             <Cell
               key={id}
               testID={id}
-              height={bodyCellHeights[index]}
               content={content}
               contentType={columnContentTypes[cellIndex]}
               firstColumn={cellIndex === 0}
@@ -435,14 +349,10 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   };
 
   private renderFooter = () => {
-    const {heights} = this.state;
-    const footerCellHeight = heights[heights.length - 1];
-
     return (
       <Cell
         footer
         testID="footer-cell"
-        height={footerCellHeight}
         content={this.props.footerContent}
         truncate={this.props.truncate}
       />
@@ -480,12 +390,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
             onSort(headingIndex, newSortDirection);
 
             if (!truncate && this.scrollContainer.current) {
-              const preservedScrollPosition = {
-                left: this.scrollContainer.current.scrollLeft,
-                top: window.scrollY,
-              };
-
-              this.setState({preservedScrollPosition});
               this.handleResize();
             }
           }
