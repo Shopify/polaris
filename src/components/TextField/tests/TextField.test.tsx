@@ -465,6 +465,28 @@ describe('<TextField />', () => {
 
       expect(characterCount.text()).toBe('4/10');
     });
+
+    it('announces updated character count only when input field is in focus', () => {
+      const textField = mountWithAppProvider(
+        <TextField
+          value="test"
+          showCharacterCount
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+        />,
+      );
+
+      expect(
+        textField.find('#MyFieldCharacterCounter').prop<string>('aria-live'),
+      ).toBe('off');
+
+      textField.find('input').simulate('focus');
+
+      expect(
+        textField.find('#MyFieldCharacterCounter').prop<string>('aria-live'),
+      ).toBe('polite');
+    });
   });
 
   describe('type', () => {
