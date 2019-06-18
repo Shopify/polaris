@@ -94,6 +94,15 @@ class Item extends React.Component<CombinedProps, State> {
   private checkboxId = getUniqueCheckboxID();
   private overlayId = getUniqueOverlayID();
   private buttonOverlay = React.createRef<HTMLButtonElement>();
+  private shiftKeyWatcher = new KeyWatcher('Shift');
+
+  componentDidMount() {
+    this.shiftKeyWatcher.attach();
+  }
+
+  componentWillUnmount() {
+    this.shiftKeyWatcher.teardown();
+  }
 
   shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
     const {
@@ -159,7 +168,7 @@ class Item extends React.Component<CombinedProps, State> {
           testID="LargerSelectionArea"
         >
           <div onClick={stopPropagation} className={styles.CheckboxWrapper}>
-            <div onChange={this.handleLargerSelectionArea}>
+            <div>
               <Checkbox
                 testID="Checkbox"
                 id={this.checkboxId}
@@ -167,6 +176,9 @@ class Item extends React.Component<CombinedProps, State> {
                 labelHidden
                 checked={selected}
                 disabled={loading}
+                onChange={() => {
+                  this.handleLargerSelectionArea();
+                }}
               />
             </div>
           </div>
@@ -327,9 +339,13 @@ class Item extends React.Component<CombinedProps, State> {
     this.setState({focused: false, focusedInner: false});
   };
 
-  private handleLargerSelectionArea = (event: React.MouseEvent<any>) => {
-    stopPropagation(event);
-    this.handleSelection(!this.state.selected, event.nativeEvent.shiftKey);
+  private handleLargerSelectionArea = (event?: React.MouseEvent<any>) => {
+    if (event) stopPropagation(event);
+
+    this.handleSelection(
+      !this.state.selected,
+      this.shiftKeyWatcher.isPressed(),
+    );
   };
 
   private handleSelection = (value: boolean, shiftKey: boolean) => {
@@ -417,6 +433,41 @@ function isSelected(id: string, selectedItems?: SelectedItems) {
       ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||
         selectedItems === SELECT_ALL_ITEMS),
   );
+}
+
+class KeyWatcher {
+  private pressed = false;
+
+  constructor(readonly key: string) {
+    this.handleKeydown = this.handleKeydown.bind(this);
+    this.handleKeyup = this.handleKeyup.bind(this);
+  }
+
+  attach() {
+    document.body.addEventListener('keydown', this.handleKeydown);
+    document.body.addEventListener('keyup', this.handleKeyup);
+  }
+
+  teardown() {
+    document.body.removeEventListener('keydown', this.handleKeydown);
+    document.body.removeEventListener('keyup', this.handleKeyup);
+  }
+
+  isPressed(): boolean {
+    return this.pressed;
+  }
+
+  private handleKeydown(event: KeyboardEvent) {
+    if (event.key === this.key) {
+      this.pressed = true;
+    }
+  }
+
+  private handleKeyup(event: KeyboardEvent) {
+    if (event.key === this.key) {
+      this.pressed = false;
+    }
+  }
 }
 
 export default compose<Props>(
