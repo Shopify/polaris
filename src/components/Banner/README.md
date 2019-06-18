@@ -611,6 +611,7 @@ Banners provide context and assist workflows for merchants with disabilities.
 
 - Critical and warning banners have a `role=”alert”` and are announced by assistive technologies when they appear.
 - All other banners have a `role=”status”` and are read after any critical announcements.
+- All banners have an `aria-live` attribute and are announced by assistive technologies when their content is updated. These announcements can be disabled by using the prop `stopAnnouncements`.
 - Banners use `aria-describedby` to describe their purpose to assistive technologies when they’re announced or receive focus. If a banner has a `title`, then the title content is used for the `aria-describedby`. If the banner doesn’t have a `title`, then all of the banner content is used for the `aria-describedby`.
 - Banner containers have a `tabindex=”0”` and display a visible keyboard focus indicator. Because of this, merchants can discover banners while tabbing through forms or other interactions, and developers can programmatically move focus to banners.
 - Banners use a combination of [icons](/design/icons) and [colors](/design/colors) to show their meaning and level of importance to merchants.
