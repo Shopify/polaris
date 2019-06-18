@@ -51,7 +51,7 @@ export interface Props {
 
 class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   state: DataTableState = {
-    collapsed: false,
+    condensed: false,
     columnVisibilityData: [],
     heights: [],
     preservedScrollPosition: {},
@@ -71,18 +71,18 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       scrollContainer: {current: scrollContainer},
     } = this;
 
-    let collapsed = false;
+    let condensed = false;
 
     if (table && scrollContainer) {
-      collapsed = table.scrollWidth > scrollContainer.clientWidth;
+      condensed = table.scrollWidth > scrollContainer.clientWidth;
       scrollContainer.scrollLeft = 0;
     }
 
     this.setState(
       {
-        collapsed,
+        condensed,
         heights: [],
-        ...this.calculateColumnVisibilityData(collapsed),
+        ...this.calculateColumnVisibilityData(condensed),
       },
       () => {
         if (footerContent || !truncate) {
@@ -130,7 +130,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     } = this.props;
 
     const {
-      collapsed,
+      condensed,
       columnVisibilityData,
       heights,
       sortedColumnIndex = initialSortColumnIndex,
@@ -141,13 +141,13 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
 
     const className = classNames(
       styles.DataTable,
-      collapsed && styles.collapsed,
+      condensed && styles.condensed,
       footerContent && styles.hasFooter,
     );
 
     const wrapperClassName = classNames(
       styles.TableWrapper,
-      collapsed && styles.collapsed,
+      condensed && styles.condensed,
     );
 
     const footerClassName = classNames(footerContent && styles.TableFoot);
@@ -290,14 +290,14 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     );
   };
 
-  private calculateColumnVisibilityData = (collapsed: boolean) => {
+  private calculateColumnVisibilityData = (condensed: boolean) => {
     const {
       table: {current: table},
       scrollContainer: {current: scrollContainer},
       dataTable: {current: dataTable},
     } = this;
 
-    if (collapsed && table && scrollContainer && dataTable) {
+    if (condensed && table && scrollContainer && dataTable) {
       const headerCells = table.querySelectorAll(
         headerCell.selector,
       ) as NodeListOf<HTMLElement>;
@@ -337,7 +337,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
 
   private scrollListener = () => {
     this.setState((prevState) => ({
-      ...this.calculateColumnVisibilityData(prevState.collapsed),
+      ...this.calculateColumnVisibilityData(prevState.condensed),
     }));
   };
 
@@ -358,7 +358,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
 
         requestAnimationFrame(() => {
           this.setState((prevState) => ({
-            ...this.calculateColumnVisibilityData(prevState.collapsed),
+            ...this.calculateColumnVisibilityData(prevState.condensed),
           }));
         });
       }

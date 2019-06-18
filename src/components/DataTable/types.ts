@@ -12,7 +12,7 @@ interface ScrollPosition {
 }
 
 export interface DataTableState {
-  collapsed: boolean;
+  condensed: boolean;
   columnVisibilityData: ColumnVisibilityData[];
   previousColumn?: ColumnVisibilityData;
   currentColumn?: ColumnVisibilityData;

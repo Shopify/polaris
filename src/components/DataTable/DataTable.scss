@@ -6,7 +6,7 @@ $breakpoint: 768px;
   max-width: 100vw;
 }
 
-.collapsed {
+.condensed {
   .Navigation {
     display: flex;
     align-items: center;
@@ -78,7 +78,6 @@ $breakpoint: 768px;
 
 .Cell-firstColumn {
   @include text-emphasis-normal;
-  @include text-breakword;
   text-align: left;
   white-space: normal;
 }
