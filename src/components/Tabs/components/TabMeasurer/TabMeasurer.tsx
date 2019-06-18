@@ -1,5 +1,4 @@
 import React from 'react';
-import {findDOMNode} from 'react-dom';
 import {classNames} from '../../../../utilities/css';
 import EventListener from '../../../EventListener';
 
@@ -89,9 +88,9 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
 
     const {handleMeasurement} = this.props;
     const containerWidth = this.containerNode.offsetWidth;
-    const tabMeasurerNode = findDOMNode(this);
+
     const hiddenTabNodes =
-      tabMeasurerNode instanceof Element && tabMeasurerNode.children;
+      this.containerNode instanceof Element && this.containerNode.children;
     const hiddenTabNodesArray: HTMLElement[] = [].slice.call(hiddenTabNodes);
     const hiddenTabWidths = hiddenTabNodesArray.map((node) => {
       return node.getBoundingClientRect().width;

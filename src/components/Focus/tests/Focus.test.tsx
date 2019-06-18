@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Focus from '../Focus';
+import Focus, {Props} from '../Focus';
+import {Discard} from '../../../types';
 
 describe('<Focus />', () => {
   let requestAnimationFrameSpy: jest.SpyInstance;
@@ -15,22 +16,16 @@ describe('<Focus />', () => {
   });
 
   it('mounts', () => {
-    const focus = mountWithAppProvider(
-      <Focus>
-        <div />
-      </Focus>,
-    );
+    const focus = mountWithAppProvider(<FocusTestWrapper />);
 
     expect(focus.exists()).toBe(true);
   });
 
   it('will not focus any element if none are natively focusable', () => {
     mountWithAppProvider(
-      <Focus>
-        <div>
-          <span />
-        </div>
-      </Focus>,
+      <FocusTestWrapper>
+        <span />
+      </FocusTestWrapper>,
     );
 
     expect(document.body).toBe(document.activeElement);
@@ -38,11 +33,9 @@ describe('<Focus />', () => {
 
   it('will focus first focusable node', () => {
     const focus = mountWithAppProvider(
-      <Focus>
-        <div>
-          <input />
-        </div>
-      </Focus>,
+      <FocusTestWrapper>
+        <input />
+      </FocusTestWrapper>,
     );
 
     const input = focus.find('input').getDOMNode();
@@ -51,14 +44,27 @@ describe('<Focus />', () => {
 
   it('will not focus the first focusable node is the `disabled` is true', () => {
     const focus = mountWithAppProvider(
-      <Focus disabled>
-        <div>
-          <input />
-        </div>
-      </Focus>,
+      <FocusTestWrapper disabled>
+        <input />
+      </FocusTestWrapper>,
     );
 
     const input = focus.find('input').getDOMNode();
     expect(input).not.toBe(document.activeElement);
   });
 });
+
+function FocusTestWrapper({children, ...props}: Discard<Props, 'root'>) {
+  const root = useRef<HTMLDivElement>(null);
+  const [, setMount] = useState(false);
+
+  useEffect(() => {
+    setMount(true);
+  }, []);
+
+  return (
+    <Focus {...props} root={root.current}>
+      <div ref={root}>{children}</div>
+    </Focus>
+  );
+}

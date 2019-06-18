@@ -258,3 +258,5 @@ export type DeepPartial<T> = {
       ? ReadonlyArray<DeepPartial<U>>
       : DeepPartial<T[P]>
 };
+
+export type Discard<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
