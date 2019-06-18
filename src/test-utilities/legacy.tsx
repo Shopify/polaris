@@ -151,13 +151,15 @@ export function polarisContextReactWrapper<P, S>(
     }
 
     return (
-      <AppProviderContext.Provider value={app.polaris}>
-        <ThemeProviderContext.Provider value={app.themeProvider}>
-          <FrameContext.Provider value={app.frame}>
-            {content}
-          </FrameContext.Provider>
-        </ThemeProviderContext.Provider>
-      </AppProviderContext.Provider>
+      <React.StrictMode>
+        <AppProviderContext.Provider value={app.polaris}>
+          <ThemeProviderContext.Provider value={app.themeProvider}>
+            <FrameContext.Provider value={app.frame}>
+              {content}
+            </FrameContext.Provider>
+          </ThemeProviderContext.Provider>
+        </AppProviderContext.Provider>
+      </React.StrictMode>
     );
   }
 

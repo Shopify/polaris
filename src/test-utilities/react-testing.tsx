@@ -30,7 +30,7 @@ interface Props extends Providers {
 
 function noop() {}
 
-function TestProvider({
+export function TestProvider({
   children,
   polaris,
   themeProvider,
@@ -43,13 +43,15 @@ function TestProvider({
       : children;
 
   return (
-    <AppProviderContext.Provider value={polaris}>
-      <ThemeProviderContext.Provider value={themeProvider}>
-        <FrameContext.Provider value={frame}>
-          {childWithProps}
-        </FrameContext.Provider>
-      </ThemeProviderContext.Provider>
-    </AppProviderContext.Provider>
+    <React.StrictMode>
+      <AppProviderContext.Provider value={polaris}>
+        <ThemeProviderContext.Provider value={themeProvider}>
+          <FrameContext.Provider value={frame}>
+            {childWithProps}
+          </FrameContext.Provider>
+        </ThemeProviderContext.Provider>
+      </AppProviderContext.Provider>
+    </React.StrictMode>
   );
 }
 

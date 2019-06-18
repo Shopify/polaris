@@ -34,7 +34,7 @@ describe('<Header />', () => {
       const warnSpy = jest.spyOn(console, 'warn');
       mountWithAppProvider(<Header {...mockProps} icon="foo" />);
 
-      expect(warnSpy).toHaveBeenCalledTimes(1);
+      expect(warnSpy).toHaveBeenCalled();
       expect(warnSpy).toHaveBeenCalledWith(
         "The icon prop has been removed from Page. Upload an application icon in the Shopify Partners Dashboard 'App setup' section instead.",
       );
