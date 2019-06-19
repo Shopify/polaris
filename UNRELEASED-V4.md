@@ -48,6 +48,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added hooks to storybooks scope ([#1672](https://github.com/Shopify/polaris-react/pull/1672))
 - Removed all uses of `ReactDOM.findDOMNode` ([#1696](https://github.com/Shopify/polaris-react/pull/1696))
 - Simplified `WithinContentContainer` context type ([#1602](https://github.com/Shopify/polaris-react/pull/1602))
+- Removed test errors and non-deprecation warnings ([#1715](https://github.com/Shopify/polaris-react/pull/1715))
 - Updated `Collapsible` to no longer use `componentWillReceiveProps`([#1670](https://github.com/Shopify/polaris-react/pull/1670))
 - Remove `withRef` and `withContext` from `DropZone.FileUpload` ([#1491](https://github.com/Shopify/polaris-react/pull/1491))
 - Updated `PositionedOverlay` to no longer use `componentWillReceiveProps`([#1621](https://github.com/Shopify/polaris-react/pull/1621))
