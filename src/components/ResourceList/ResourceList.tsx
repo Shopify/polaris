@@ -117,6 +117,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       plural: intl.translate('Polaris.ResourceList.defaultItemPlural'),
     };
 
+    // eslint-disable-next-line react/state-in-constructor
     this.state = {
       selectMode: Boolean(selectedItems && selectedItems.length > 0),
       loadingPosition: 0,

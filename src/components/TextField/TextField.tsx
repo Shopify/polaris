@@ -143,6 +143,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
   constructor(props: CombinedProps) {
     super(props);
 
+    // eslint-disable-next-line react/state-in-constructor
     this.state = {
       height: null,
       focus: props.focused || false,

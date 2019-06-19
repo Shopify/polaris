@@ -17,6 +17,7 @@ import {
 // crashing if we write `AppProvider extends React.Component<AppProviderProps>`
 interface Props extends AppProviderProps {}
 
+// eslint-disable-next-line react/no-unsafe
 export default class AppProvider extends React.Component<Props> {
   static childContextTypes = polarisAppProviderContextTypes;
   public polarisContext: Context;

@@ -30,8 +30,10 @@ describe('<Scrollable />', () => {
   });
 
   it('provides scrollToPosition callback to children', () => {
-    const Child: React.SFC<{}> = (_props, context) =>
-      context.scrollToPosition ? <div /> : null;
+    const Child: React.SFC = (_props, context) => {
+      // eslint-disable-next-line shopify/jest/no-if
+      return context.scrollToPosition ? <div /> : null;
+    };
     Child.contextTypes = contextTypes;
 
     const scrollableContainer = mountWithAppProvider(

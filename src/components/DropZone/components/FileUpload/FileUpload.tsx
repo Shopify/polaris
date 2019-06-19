@@ -81,6 +81,7 @@ class FileUpload extends React.Component<CombinedProps, State> {
     } = props;
     const suffix = capitalize(type);
 
+    // eslint-disable-next-line react/state-in-constructor
     this.state = {
       actionTitle: translate(
         `Polaris.DropZone.FileUpload.actionTitle${suffix}`,
