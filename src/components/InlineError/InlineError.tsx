@@ -13,7 +13,7 @@ export interface Props {
   fieldID: string;
 }
 
-function InlineError({message, fieldID}: Props) {
+export default function InlineError({message, fieldID}: Props) {
   if (!message) {
     return null;
   }
@@ -27,5 +27,3 @@ function InlineError({message, fieldID}: Props) {
     </div>
   );
 }
-
-export default InlineError;
