@@ -137,6 +137,8 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 
   private input: HTMLElement;
   private buttonPressTimer: number;
+  private prefix = React.createRef<HTMLDivElement>();
+  private suffix = React.createRef<HTMLDivElement>();
 
   constructor(props: CombinedProps) {
     super(props);
@@ -224,13 +226,13 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     const inputType = type === 'currency' ? 'text' : type;
 
     const prefixMarkup = prefix ? (
-      <div className={styles.Prefix} id={`${id}Prefix`}>
+      <div className={styles.Prefix} id={`${id}Prefix`} ref={this.prefix}>
         {prefix}
       </div>
     ) : null;
 
     const suffixMarkup = suffix ? (
-      <div className={styles.Suffix} id={`${id}Suffix`}>
+      <div className={styles.Suffix} id={`${id}Suffix`} ref={this.suffix}>
         {suffix}
       </div>
     ) : null;
@@ -311,9 +313,11 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     }
 
     const labelledBy: string[] = [];
+
     if (prefix) {
       labelledBy.push(`${id}Prefix`);
     }
+
     if (suffix) {
       labelledBy.push(`${id}Suffix`);
     }
@@ -458,7 +462,11 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     onChange && onChange(event.currentTarget.value, this.state.id);
   };
 
-  private handleFocus = () => {
+  private handleFocus = ({target}: React.FocusEvent) => {
+    if (this.containsAffix(target)) {
+      return;
+    }
+
     this.setState({focus: true});
   };
 
@@ -466,9 +474,21 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     this.setState({focus: false});
   };
 
-  private handleClick = () => {
+  private handleClick = ({target}: React.MouseEvent) => {
+    if (this.containsAffix(target)) {
+      return;
+    }
+
     this.input.focus();
   };
+
+  private containsAffix(target: HTMLElement | EventTarget) {
+    return (
+      target instanceof HTMLElement &&
+      ((this.prefix.current && this.prefix.current.contains(target)) ||
+        (this.suffix.current && this.suffix.current.contains(target)))
+    );
+  }
 
   private handleButtonPress = (onChange: Function) => {
     const minInterval = 50;
