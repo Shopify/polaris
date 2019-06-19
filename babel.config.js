@@ -6,8 +6,8 @@ module.exports = function(api) {
   });
 
   const runtimePreset = isWeb
-    ? ['babel-preset-shopify/web', {modules: false, useBuiltIns: 'entry'}]
-    : ['babel-preset-shopify/node', {modules: 'commonjs'}];
+    ? ['babel-preset-shopify/web', {modules: false, typescript: true}]
+    : ['babel-preset-shopify/node', {modules: 'commonjs', typescript: true}];
 
   // babel-preset-shopify/react only uses HMR if hot is true and the env is
   // development or test
