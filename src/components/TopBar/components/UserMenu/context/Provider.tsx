@@ -23,6 +23,7 @@ class Provider extends React.Component<Props, UserMenuContextTypes> {
     super(props);
     this.setMobileUserMenuProps = this.setMobileUserMenuProps.bind(this);
 
+    // eslint-disable-next-line react/state-in-constructor
     this.state = {
       // eslint-disable-next-line react/no-unused-state
       mobileView: props.mobileView,

@@ -16,6 +16,7 @@ const defaultTheme = {
   '--top-bar-background-lighter': '#1d9ba4',
 };
 
+// eslint-disable-next-line react/no-unsafe
 export default class ThemeProvider extends React.Component<Props> {
   static childContextTypes = THEME_CONTEXT_TYPES;
   public themeContext: ThemeProviderContext;

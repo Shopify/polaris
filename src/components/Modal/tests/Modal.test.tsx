@@ -22,8 +22,10 @@ describe('<Modal>', () => {
   });
 
   it('has a child with contentContext', () => {
-    const Child: React.SFC<{}> = (_props, context) =>
-      context.withinContentContainer ? <div /> : null;
+    const Child: React.SFC = (_props, context) => {
+      // eslint-disable-next-line shopify/jest/no-if
+      return context.withinContentContainer ? <div /> : null;
+    };
     Child.contextTypes = contentContextTypes;
 
     const containedChild = mountWithAppProvider(

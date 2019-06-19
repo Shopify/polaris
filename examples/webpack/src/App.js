@@ -15,16 +15,13 @@ import {
 } from '@shopify/polaris';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      first: '',
-      last: '',
-      email: '',
-      checkboxes: [],
-      connected: false,
-    };
-  }
+  state = {
+    first: '',
+    last: '',
+    email: '',
+    checkboxes: [],
+    connected: false,
+  };
 
   render() {
     const breadcrumbs = [{content: 'Example apps'}, {content: 'webpack'}];

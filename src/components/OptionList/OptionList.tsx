@@ -61,6 +61,7 @@ export interface State {
 
 type CombinedProps = Props & WithAppProviderProps;
 
+// eslint-disable-next-line react/no-unsafe
 export class OptionList extends React.Component<CombinedProps, State> {
   state: State = {
     normalizedOptions: createNormalizedOptions(

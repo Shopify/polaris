@@ -14,8 +14,10 @@ describe('<Navigation />', () => {
 
   describe('context', () => {
     it('passes location context', () => {
-      const Child: React.SFC<{}> = (_props, context) =>
-        context.location ? <div /> : null;
+      const Child: React.SFC = (_props, context) => {
+        // eslint-disable-next-line shopify/jest/no-if
+        return context.location ? <div /> : null;
+      };
       Child.contextTypes = childContextTypes;
 
       const navigation = mountWithAppProvider(
@@ -33,8 +35,10 @@ describe('<Navigation />', () => {
     });
 
     it('has a child with contentContext', () => {
-      const Child: React.SFC<{}> = (_props, context) =>
-        context.withinContentContainer ? <div /> : null;
+      const Child: React.SFC = (_props, context) => {
+        // eslint-disable-next-line shopify/jest/no-if
+        return context.withinContentContainer ? <div /> : null;
+      };
       Child.contextTypes = childContextTypes;
 
       const navigation = mountWithAppProvider(
