@@ -12,7 +12,10 @@ import {
 // crashing if we write `ContextualSaveBar extends React.Component<ContextualSaveBarProps>`
 interface Props extends ContextualSaveBarProps {}
 
-class ContextualSaveBar extends React.PureComponent<Props, never> {
+export default class ContextualSaveBar extends React.PureComponent<
+  Props,
+  never
+> {
   static contextTypes = frameContextTypes;
   context: FrameContext;
 
@@ -49,5 +52,3 @@ function contextualSaveBarHasChanged(
       !isEqual(discardAction, oldDiscardAction),
   );
 }
-
-export default ContextualSaveBar;

@@ -15,7 +15,7 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export default class ContentList extends React.PureComponent<Props, never> {
+export default class List extends React.PureComponent<Props, never> {
   static Item = Item;
 
   render() {
