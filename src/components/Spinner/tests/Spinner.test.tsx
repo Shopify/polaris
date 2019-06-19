@@ -46,19 +46,23 @@ describe('<Spinner />', () => {
 
   describe('console.warn', () => {
     const oldEnv = process.env;
+    let warnSpy: jest.SpyInstance;
 
     beforeEach(() => {
       jest.resetModules();
       process.env = {...oldEnv};
       delete process.env.NODE_ENV;
+
+      warnSpy = jest.spyOn(console, 'warn');
+      warnSpy.mockImplementation(() => {});
     });
 
     afterEach(() => {
       process.env = oldEnv;
+      warnSpy.mockRestore();
     });
 
     it('a large spinner with an unavailable color warns in development', () => {
-      const warnSpy = jest.spyOn(console, 'warn');
       process.env.NODE_ENV = 'development';
 
       const color = 'black' as Color;

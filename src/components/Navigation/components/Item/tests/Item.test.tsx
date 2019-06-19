@@ -61,6 +61,7 @@ describe('<Nav.Item />', () => {
     const item = itemForLocation('/admin/orders');
 
     matchMedia.setMedia(() => ({matches: true}));
+    // Likely cause for error - https://github.com/airbnb/enzyme/issues/2073
     trigger(item.find(UnstyledLink).first(), 'onClick', {
       preventDefault: jest.fn(),
       currentTarget: {

@@ -14,12 +14,18 @@ jest.mock('../../../utilities/app-bridge-transformers', () => ({
 }));
 
 describe('<Modal>', () => {
+  let scrollSpy: jest.SpyInstance;
+
   beforeEach(() => {
+    scrollSpy = jest.spyOn(window, 'scroll');
+    scrollSpy.mockImplementation(() => {});
+
     animationFrame.mock();
   });
 
   afterEach(() => {
     animationFrame.restore();
+    scrollSpy.mockRestore();
   });
 
   it('has a child with contentContext', () => {
