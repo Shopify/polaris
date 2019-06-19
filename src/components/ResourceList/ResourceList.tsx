@@ -53,6 +53,8 @@ export interface Props {
   bulkActions?: BulkActionsProps['actions'];
   /** Collection of IDs for the currently selected items */
   selectedItems?: SelectedItems;
+  /** Renders a Select All button at the top of the list and checkboxes in front of each list item. For use when bulkActions aren't provided. **/
+  selectable?: boolean;
   /** If there are more items than currently in the list */
   hasMoreItems?: boolean;
   /** Overlays item list with a spinner while a background action is being performed */
@@ -123,10 +125,12 @@ class ResourceList extends React.Component<CombinedProps, State> {
   }
 
   private get selectable() {
-    const {promotedBulkActions, bulkActions} = this.props;
+    const {promotedBulkActions, bulkActions, selectable} = this.props;
+
     return Boolean(
       (promotedBulkActions && promotedBulkActions.length > 0) ||
-        (bulkActions && bulkActions.length > 0),
+        (bulkActions && bulkActions.length > 0) ||
+        selectable,
     );
   }
 
