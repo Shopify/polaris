@@ -32,6 +32,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Mention that the Contextual Save Bar is now available for embedded apps through App Bridge directly [#1721](https://github.com/Shopify/polaris-react/pull/1721)
 - Mentioned Polaris icons in the Icon component documentation ([#1693](https://github.com/Shopify/polaris-react/pull/1693))
 
 ### Development workflow
