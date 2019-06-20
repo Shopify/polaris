@@ -14,6 +14,7 @@ import ButtonGroup from '../../../ButtonGroup';
 import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import EventListener from '../../../EventListener';
 
 import {
   ResourceListContext,
@@ -94,15 +95,7 @@ class Item extends React.Component<CombinedProps, State> {
   private checkboxId = getUniqueCheckboxID();
   private overlayId = getUniqueOverlayID();
   private buttonOverlay = React.createRef<HTMLButtonElement>();
-  private shiftKeyWatcher = new KeyWatcher('Shift');
-
-  componentDidMount() {
-    this.shiftKeyWatcher.attach();
-  }
-
-  componentWillUnmount() {
-    this.shiftKeyWatcher.teardown();
-  }
+  private shiftKeyPressed = false;
 
   shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
     const {
@@ -305,6 +298,7 @@ class Item extends React.Component<CombinedProps, State> {
         testID="Item-Wrapper"
         data-href={url}
       >
+        {this.renderKeyboardEventListeners()}
         {accessibleMarkup}
         {containerMarkup}
       </div>
@@ -341,11 +335,7 @@ class Item extends React.Component<CombinedProps, State> {
 
   private handleLargerSelectionArea = (event?: React.MouseEvent<any>) => {
     if (event) stopPropagation(event);
-
-    this.handleSelection(
-      !this.state.selected,
-      this.shiftKeyWatcher.isPressed(),
-    );
+    this.handleSelection(!this.state.selected, this.shiftKeyPressed);
   };
 
   private handleSelection = (value: boolean, shiftKey: boolean) => {
@@ -410,6 +400,28 @@ class Item extends React.Component<CombinedProps, State> {
     }
   };
 
+  private renderKeyboardEventListeners(): JSX.Element {
+    return (
+      <>
+        <EventListener event="keydown" handler={this.handleShiftKey} />
+        <EventListener event="keyup" handler={this.handleShiftKey} />
+      </>
+    );
+  }
+
+  private handleShiftKey = (event: KeyboardEvent) => {
+    if (event.key !== 'Shift') return;
+
+    switch (event.type) {
+      case 'keydown':
+        this.shiftKeyPressed = true;
+        break;
+      case 'keyup':
+        this.shiftKeyPressed = false;
+        break;
+    }
+  };
+
   private handleActionsClick = () => {
     this.setState(({actionsMenuVisible}) => ({
       actionsMenuVisible: !actionsMenuVisible,
@@ -433,41 +445,6 @@ function isSelected(id: string, selectedItems?: SelectedItems) {
       ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||
         selectedItems === SELECT_ALL_ITEMS),
   );
-}
-
-class KeyWatcher {
-  private pressed = false;
-
-  constructor(readonly key: string) {
-    this.handleKeydown = this.handleKeydown.bind(this);
-    this.handleKeyup = this.handleKeyup.bind(this);
-  }
-
-  attach() {
-    document.body.addEventListener('keydown', this.handleKeydown);
-    document.body.addEventListener('keyup', this.handleKeyup);
-  }
-
-  teardown() {
-    document.body.removeEventListener('keydown', this.handleKeydown);
-    document.body.removeEventListener('keyup', this.handleKeyup);
-  }
-
-  isPressed(): boolean {
-    return this.pressed;
-  }
-
-  private handleKeydown(event: KeyboardEvent) {
-    if (event.key === this.key) {
-      this.pressed = true;
-    }
-  }
-
-  private handleKeyup(event: KeyboardEvent) {
-    if (event.key === this.key) {
-      this.pressed = false;
-    }
-  }
 }
 
 export default compose<Props>(
