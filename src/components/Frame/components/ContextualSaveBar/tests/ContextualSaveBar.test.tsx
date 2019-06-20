@@ -3,7 +3,7 @@ import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Button, Image, Modal} from 'components';
 import ContextualSaveBar from '../ContextualSaveBar';
 import {ThemeProviderContextType} from '../../../../ThemeProvider';
-import merge from '../../../../../utilities/merge';
+import {merge} from '../../../../../utilities/merge';
 
 describe('<ContextualSaveBar />', () => {
   describe('discardAction', () => {

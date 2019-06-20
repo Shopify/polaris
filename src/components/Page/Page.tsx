@@ -10,7 +10,7 @@ import {
   transformActions,
   generateRedirect,
 } from '../../utilities/app-bridge-transformers';
-import pick from '../../utilities/pick';
+import {pick} from '../../utilities/pick';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import {Header, HeaderProps} from './components';

@@ -1,6 +1,6 @@
 import React from 'react';
 import {classNames} from '../../../../utilities/css';
-import clamp from '../../../../utilities/clamp';
+import {clamp} from '../../../../utilities/clamp';
 import Labelled, {helpTextID} from '../../../Labelled';
 
 import {invertNumber, CSS_VAR_PREFIX} from '../../utilities';

@@ -5,7 +5,7 @@ export enum EditableTarget {
   ContentEditable = 'contenteditable',
 }
 
-function isInputFocused() {
+export function isInputFocused() {
   if (document == null || document.activeElement == null) {
     return false;
   }
@@ -18,5 +18,3 @@ function isInputFocused() {
     document.activeElement.hasAttribute(EditableTarget.ContentEditable)
   );
 }
-
-export default isInputFocused;
