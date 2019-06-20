@@ -161,19 +161,17 @@ class Item extends React.Component<CombinedProps, State> {
           testID="LargerSelectionArea"
         >
           <div onClick={stopPropagation} className={styles.CheckboxWrapper}>
-            <div>
-              <Checkbox
-                testID="Checkbox"
-                id={this.checkboxId}
-                label={label}
-                labelHidden
-                checked={selected}
-                disabled={loading}
-                onChange={() => {
-                  this.handleLargerSelectionArea();
-                }}
-              />
-            </div>
+            <Checkbox
+              testID="Checkbox"
+              id={this.checkboxId}
+              label={label}
+              labelHidden
+              checked={selected}
+              disabled={loading}
+              onChange={() => {
+                this.handleLargerSelectionArea();
+              }}
+            />
           </div>
         </div>
       );
