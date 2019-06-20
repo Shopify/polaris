@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {DragDropMajorMonotone} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
-import capitalize from '../../../../utilities/capitalize';
+import {capitalize} from '../../../../utilities/capitalize';
 
 import Link from '../../../Link';
 import Icon from '../../../Icon';

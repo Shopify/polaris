@@ -4,7 +4,7 @@ import {Image, UnstyledLink} from 'components';
 import {ThemeProviderContextType} from '../../ThemeProvider';
 import TopBar from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
-import merge from '../../../utilities/merge';
+import {merge} from '../../../utilities/merge';
 
 const actions = [
   {

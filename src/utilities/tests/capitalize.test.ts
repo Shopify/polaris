@@ -1,4 +1,4 @@
-import capitalize from '../capitalize';
+import {capitalize} from '../capitalize';
 
 describe('capitalize', () => {
   it('capitalizes a word', () => {

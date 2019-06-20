@@ -15,7 +15,7 @@ import {
 } from '../components/ThemeProvider';
 import {PolarisContext} from '../components/types';
 import {DeepPartial} from '../types';
-import merge from '../utilities/merge';
+import {merge} from '../utilities/merge';
 
 interface Providers {
   polaris: PolarisContext;

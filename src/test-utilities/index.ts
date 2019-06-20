@@ -1,2 +1,2 @@
 export * from './react-testing';
-export {default as documentHasStyle} from './document-has-style';
+export {documentHasStyle} from './document-has-style';

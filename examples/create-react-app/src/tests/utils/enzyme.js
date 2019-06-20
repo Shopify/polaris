@@ -1,4 +1,4 @@
-import merge from 'lodash/merge';
+import {merge} from 'lodash/merge';
 import {shallow, mount} from 'enzyme';
 import {createPolarisContext, polarisContextTypes} from '@shopify/polaris';
 

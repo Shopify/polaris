@@ -9,7 +9,7 @@ import WithinContentContext from '../WithinContentContext';
 import {wrapWithComponent} from '../../utilities/components';
 
 import {transformActions} from '../../utilities/app-bridge-transformers';
-import pick from '../../utilities/pick';
+import {pick} from '../../utilities/pick';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Backdrop from '../Backdrop';

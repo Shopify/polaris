@@ -1,7 +1,7 @@
 import React from 'react';
 import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
-import BannerContext from '../../utilities/banner-context';
+import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import UnstyledLink from '../UnstyledLink';

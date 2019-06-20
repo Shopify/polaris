@@ -11,7 +11,7 @@ import {
 } from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import capitalize from '../../utilities/capitalize';
+import {capitalize} from '../../utilities/capitalize';
 import Icon from '../Icon';
 import Stack from '../Stack';
 import Caption from '../Caption';

@@ -8,7 +8,7 @@ import {
   CircleInformationMajorTwotone,
 } from '@shopify/polaris-icons';
 
-import BannerContext from '../../utilities/banner-context';
+import {BannerContext} from '../../utilities/banner-context';
 import {classNames, variationName} from '../../utilities/css';
 import {Action, DisableableAction, LoadableAction} from '../../types';
 import Button, {buttonFrom} from '../Button';

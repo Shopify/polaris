@@ -1,5 +1,5 @@
 import {get} from '../../../../utilities/get';
-import merge from '../../../../utilities/merge';
+import {merge} from '../../../../utilities/merge';
 import {
   TranslationDictionary,
   PrimitiveReplacementDictionary,

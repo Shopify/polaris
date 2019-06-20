@@ -2,7 +2,7 @@ import {ReactWrapper, CommonWrapper, mount} from 'enzyme';
 import React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {get} from '../utilities/get';
-import merge from '../utilities/merge';
+import {merge} from '../utilities/merge';
 import {PolarisContext} from '../components/types';
 import {DeepPartial} from '../types';
 import translations from '../../locales/en.json';
