@@ -16,6 +16,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added the `stopAnnouncements` prop to `Banner`, which disables screen reader announcements when content changes ([#1719](https://github.com/Shopify/polaris-react/pull/1719))
 - Add `selectable` prop to `ResourceList` component ([#1614](https://github.com/Shopify/polaris-react/pull/1614))
 - Allow `Link` and `Button` interactions when rendered as `prefix/suffix` within `<TextField />` ([#1394](https://github.com/Shopify/polaris-react/pull/1394))
 - Improve `TextField` so that character count is only announced on focus. ([#1720](https://github.com/Shopify/polaris-react/pull/1720))
