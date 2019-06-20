@@ -5,9 +5,8 @@ import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {PreferredPosition} from '../PositionedOverlay';
 import {OptionDescriptor} from '../OptionList';
 import Spinner from '../Spinner';
-import {Props as TextFieldProps} from '../TextField';
 
-import {ComboBox} from './components';
+import {TextField, ComboBox} from './components';
 import styles from './Autocomplete.scss';
 
 export interface Props {
@@ -40,10 +39,6 @@ export interface Props {
 }
 
 type CombinedProps = Props & WithAppProviderProps;
-
-function TextField(props: TextFieldProps) {
-  return <ComboBox.TextField {...props} />;
-}
 
 class Autocomplete extends React.PureComponent<CombinedProps, never> {
   static TextField = TextField;
