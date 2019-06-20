@@ -4,6 +4,8 @@ $horizontal-spacing: spacing(extra-loose) * 2;
 $height-limit: 600px;
 $small-width: rem(620px);
 $large-width: rem(980px);
+$viewport-height: 100vh;
+$viewport-width: 100vw;
 
 .Container {
   position: fixed;
@@ -64,6 +66,18 @@ $large-width: rem(980px);
 
     @include breakpoint-after($large-width + $horizontal-spacing) {
       max-width: $large-width;
+    }
+  }
+
+  &.fullScreen {
+    height: $viewport-height;
+    width: $viewport-width;
+    max-height: $viewport-height;
+    max-width: $viewport-width;
+    border-radius: 0;
+
+    iframe {
+      height: 100%;
     }
   }
 }

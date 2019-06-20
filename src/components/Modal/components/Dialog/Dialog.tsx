@@ -15,6 +15,9 @@ export interface DialogProps {
   instant?: boolean;
   children?: React.ReactNode;
   limitHeight?: boolean;
+  fullScreen?: boolean;
+  width?: string;
+  height?: string;
   large?: boolean;
   onClose(): void;
   onEntered?(): void;
@@ -40,12 +43,16 @@ export default function Dialog({
   onEntered,
   large,
   limitHeight,
+  width,
+  height,
+  fullScreen,
   ...props
 }: Props) {
   const classes = classNames(
     styles.Modal,
     large && styles.sizeLarge,
     limitHeight && styles.limitHeight,
+    fullScreen && styles.fullScreen,
   );
   const TransitionChild = instant ? Transition : FadeUp;
 
@@ -64,6 +71,7 @@ export default function Dialog({
             className={classes}
             role="dialog"
             aria-labelledby={labelledBy}
+            style={{width, height}}
             tabIndex={-1}
           >
             <KeypressListener

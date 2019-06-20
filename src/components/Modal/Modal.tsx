@@ -60,6 +60,7 @@ export interface Props extends FooterProps {
    * @embeddedAppOnly
    */
   size?: Size;
+  fullScreen?: boolean;
   /**
    * Message to display inside modal
    * @embeddedAppOnly
@@ -217,6 +218,7 @@ class Modal extends React.Component<CombinedProps, State> {
       secondaryActions,
       polaris: {intl},
       onScrolledToBottom,
+      fullScreen,
     } = this.props;
 
     const {iframeHeight} = this.state;
@@ -288,6 +290,9 @@ class Modal extends React.Component<CombinedProps, State> {
           onExited={this.handleExited}
           large={large}
           limitHeight={limitHeight}
+          fullScreen={fullScreen}
+          width={this.dialogWidth}
+          height={this.dialogHeight}
         >
           {headerMarkup}
           <div className={styles.BodyWrapper}>{bodyMarkup}</div>
@@ -295,7 +300,7 @@ class Modal extends React.Component<CombinedProps, State> {
         </Dialog>
       );
 
-      backdrop = <Backdrop />;
+      backdrop = fullScreen ? null : <Backdrop />;
     }
 
     const animated = !instant;
@@ -377,6 +382,18 @@ class Modal extends React.Component<CombinedProps, State> {
         }),
       },
     };
+  }
+
+  private get dialogWidth() {
+    if (this.props.fullScreen) {
+      return `${window.innerWidth}`;
+    }
+  }
+
+  private get dialogHeight() {
+    if (this.props.fullScreen) {
+      return `${window.innerHeight}`;
+    }
   }
 }
 
