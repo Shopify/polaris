@@ -25,7 +25,7 @@ The contextual save bar component must be wrapped in the [frame](/components/str
 
 ## Use in an embedded application
 
-Use of the contextual save bar component in an embedded application is not currently supported. If this is a feature you would like to see supported by Shopify App Bridge, let us know in the [forums](https://ecommerce.shopify.com/c/shopify-apis-and-technology).
+To use the contextual save bar component in an embedded application, you must use App Bridge (version 1.6.0 and up) directly. See the [documentation](https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/contextualSaveBar) for more information.
 
 ---
 
