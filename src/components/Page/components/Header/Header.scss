@@ -75,11 +75,14 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
 }
 
 .ActionMenuWrapper {
+  margin-top: spacing(tight);
+
   // stylelint-disable-next-line selector-max-class
   .mobileView & {
     position: absolute;
     top: spacing(loose) + (control-height() / 4);
     right: 0;
+    margin-top: 0;
 
     @include page-content-when-not-fully-condensed {
       right: -(spacing(tight));

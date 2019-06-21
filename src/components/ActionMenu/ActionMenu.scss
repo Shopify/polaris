@@ -2,7 +2,6 @@
 
 .ActionMenu {
   &:not(.rollup) {
-    margin-top: spacing(tight);
     margin-left: -$menu-action-padding-x;
   }
 }
