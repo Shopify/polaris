@@ -1,10 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
-import {
-  isEdgeVisible,
-  getPrevAndCurrentColumns,
-  measureColumn,
-} from '../utilities';
+import {isEdgeVisible, getPrevAndCurrentColumns} from '../utilities';
 import {Cell, Navigation} from '../components';
 import DataTable, {Props} from '../DataTable';
 
@@ -184,40 +180,6 @@ describe('<DataTable />', () => {
         currentColumn: {leftEdge: 474, rightEdge: 601, isVisible: true},
       };
       expect(actualMeasurement).toStrictEqual(expectedMeasurement);
-    });
-  });
-
-  describe('measureColumn()', () => {
-    it('returns the calculated measurements', () => {
-      const tableData = {
-        fixedColumnWidth: 145,
-        firstVisibleColumnIndex: 0,
-        tableLeftVisibleEdge: 145,
-        tableRightVisibleEdge: 444,
-      };
-
-      const measurementFunction = measureColumn(tableData);
-
-      [
-        [
-          {offsetLeft: 0, offsetWidth: 91},
-          {leftEdge: 145, rightEdge: 236, isVisible: true},
-        ],
-        [
-          {offsetLeft: 91, offsetWidth: 121},
-          {leftEdge: 236, rightEdge: 357, isVisible: true},
-        ],
-        [
-          {offsetLeft: 212, offsetWidth: 117},
-          {leftEdge: 357, rightEdge: 474, isVisible: true},
-        ],
-        [
-          {offsetLeft: 329, offsetWidth: 124},
-          {leftEdge: 474, rightEdge: 598, isVisible: false},
-        ],
-      ].forEach((tuple, index) =>
-        expect(measurementFunction(tuple[0], index)).toStrictEqual(tuple[1]),
-      );
     });
   });
 });
