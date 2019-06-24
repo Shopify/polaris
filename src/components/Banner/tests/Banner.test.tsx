@@ -157,7 +157,10 @@ describe('<Banner />', () => {
       const Child: React.SFC<{}> = (_props) => {
         return (
           <BannerContext.Consumer>
-            {(BannerContext) => (BannerContext ? <div /> : null)}
+            {(BannerContext) => {
+              // eslint-disable-next-line shopify/jest/no-if
+              return BannerContext ? <div /> : null;
+            }}
           </BannerContext.Consumer>
         );
       };

@@ -13,7 +13,7 @@ const createId = createUniqueIDFactory('Toast');
 // crashing if we write `ComposedProps = ToastProps & WithAppProviderProps`
 interface Props extends ToastProps {}
 
-export default React.memo(function Toast(props: Props) {
+function Toast(props: Props) {
   const id = useRef(createId());
   const appBridgeToast = useRef<AppBridgeToast.Toast>();
   const frame = useContext(FrameContext);
@@ -65,4 +65,6 @@ export default React.memo(function Toast(props: Props) {
   );
 
   return null;
-});
+}
+
+export default React.memo(Toast);

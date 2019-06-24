@@ -17,9 +17,10 @@ describe('<ThemeProvider />', () => {
     const Child: React.SFC<{}> = (_props) => {
       return (
         <ThemeProviderContext.Consumer>
-          {(polarisTheme) =>
-            polarisTheme && polarisTheme.logo ? <div /> : null
-          }
+          {(polarisTheme) => {
+            // eslint-disable-next-line shopify/jest/no-if
+            return polarisTheme && polarisTheme.logo ? <div /> : null;
+          }}
         </ThemeProviderContext.Consumer>
       );
     };

@@ -1,7 +1,11 @@
 import React from 'react';
-import WithinContentContext from '../../WithinContentContext';
-import {mountWithAppProvider, trigger, findByTestID} from 'test-utilities/legacy';
+import {
+  mountWithAppProvider,
+  trigger,
+  findByTestID,
+} from 'test-utilities/legacy';
 import {Card, Badge, Button, Popover, ActionList} from 'components';
+import WithinContentContext from '../../WithinContentContext';
 import {Section} from '../components';
 
 describe('<Card />', () => {

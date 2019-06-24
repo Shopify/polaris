@@ -15,7 +15,10 @@ describe('<Navigation />', () => {
       const Child: React.SFC<{}> = (_props) => {
         return (
           <NavigationContext.Consumer>
-            {({location}) => (location ? <div /> : null)}
+            {({location}) => {
+              // eslint-disable-next-line shopify/jest/no-if
+              return location ? <div /> : null;
+            }}
           </NavigationContext.Consumer>
         );
       };
@@ -40,9 +43,10 @@ describe('<Navigation />', () => {
       const Child: React.SFC<{}> = (_props) => {
         return (
           <WithinContentContext.Consumer>
-            {(withinContentContainer) =>
-              withinContentContainer ? <div /> : null
-            }
+            {(withinContentContainer) => {
+              // eslint-disable-next-line shopify/jest/no-if
+              return withinContentContainer ? <div /> : null;
+            }}
           </WithinContentContext.Consumer>
         );
       };

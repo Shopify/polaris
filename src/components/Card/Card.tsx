@@ -3,10 +3,7 @@ import {classNames} from '../../utilities/css';
 
 import ButtonGroup from '../ButtonGroup';
 import WithinContentContext from '../WithinContentContext';
-import {
-  DisableableAction,
-  ComplexAction,
-} from '../../types';
+import {DisableableAction, ComplexAction} from '../../types';
 import ActionList from '../ActionList';
 import Button, {buttonFrom} from '../Button';
 import Popover from '../Popover';

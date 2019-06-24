@@ -7,7 +7,7 @@ import {ContextualSaveBarProps, FrameContext} from '../Frame';
 // crashing if we write `ContextualSaveBar extends React.Component<ContextualSaveBarProps>`
 interface Props extends ContextualSaveBarProps {}
 
-export default React.memo(function ContextualSaveBar({
+function ContextualSaveBar({
   message,
   saveAction,
   discardAction,
@@ -42,4 +42,6 @@ export default React.memo(function ContextualSaveBar({
   );
 
   return null;
-});
+}
+
+export default React.memo(ContextualSaveBar);

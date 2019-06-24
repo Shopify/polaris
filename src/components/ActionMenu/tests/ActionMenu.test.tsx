@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
 import {MenuActionDescriptor, MenuGroupDescriptor} from '../../../types';
 import {MenuAction, MenuGroup, RollupActions} from '../components';

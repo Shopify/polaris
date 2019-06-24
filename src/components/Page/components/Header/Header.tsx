@@ -1,7 +1,7 @@
 import React from 'react';
+import debounce from 'lodash/debounce';
 import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
-import debounce from 'lodash/debounce';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 import EventListener from '../../../EventListener';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';

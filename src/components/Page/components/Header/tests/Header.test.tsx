@@ -1,7 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider} from 'test-utilities/legacy';
-import {LinkAction} from '../../../../../types';
-import {HeaderPrimaryAction} from '../../../types';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 import {
   ActionMenu,
   Breadcrumbs,
@@ -9,12 +7,10 @@ import {
   EventListener,
   Pagination,
 } from 'components';
+import {mountWithAppProvider} from 'test-utilities/legacy';
+import {LinkAction} from '../../../../../types';
+import {HeaderPrimaryAction} from '../../../types';
 import Header, {Props} from '../Header';
-import {matchMedia} from '@shopify/jest-dom-mocks';
-
-
-
-
 
 describe('<Header />', () => {
   const mockProps: Props = {
