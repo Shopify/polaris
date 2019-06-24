@@ -190,7 +190,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
         tableRightVisibleEdge,
       };
 
-      const columnVisibilityData = Array.from(headerCells).map(
+      const columnVisibilityData = [...headerCells].map(
         measureColumn(tableData),
       );
 
