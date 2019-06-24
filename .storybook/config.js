@@ -1,4 +1,5 @@
-import {configure, addParameters} from '@storybook/react';
+import React from 'react';
+import {configure, addParameters, addDecorator} from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
 import {create} from '@storybook/theming';
 import tokens from '@shopify/polaris-tokens';
@@ -34,6 +35,11 @@ addParameters({
     widths: [375, 1280],
   },
 });
+
+const StrictModeDecorator = (story) => (
+  <React.StrictMode>{story()}</React.StrictMode>
+);
+addDecorator(StrictModeDecorator);
 
 // addon-console
 setConsoleOptions((opts) => {
