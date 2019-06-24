@@ -75,6 +75,28 @@ describe('<ResourcePicker />', () => {
       expect(onSelection).toHaveBeenCalledWith(selectionPayload);
     });
 
+    it('calls the new selection callback when changed', () => {
+      const onSelection = jest.fn();
+      const selectionPayload = {selection: []};
+      const {resourcePicker} = mountWithAppBridge(
+        <ResourcePicker resourceType="Product" open />,
+      );
+
+      resourcePicker.setProps({onSelection});
+
+      expect(appBridgeResourcePickerMock.unsubscribe).toHaveBeenCalledTimes(1);
+      expect(appBridgeResourcePickerMock.subscribe).toHaveBeenCalledTimes(1);
+
+      const [
+        firstArg,
+        secondArg,
+      ] = appBridgeResourcePickerMock.subscribe.mock.calls[0];
+      expect(firstArg).toBe(AppBridgeResourcePicker.Action.SELECT);
+      secondArg(selectionPayload);
+      expect(onSelection).toHaveBeenCalledTimes(1);
+      expect(onSelection).toHaveBeenCalledWith(selectionPayload);
+    });
+
     it('subscribes the cancel callback', () => {
       mountWithAppBridge(
         <ResourcePicker resourceType="Product" open onCancel={noop} />,
@@ -85,6 +107,26 @@ describe('<ResourcePicker />', () => {
         'CANCEL',
         noop,
       );
+    });
+
+    it('calls the new cancel callback when changed', () => {
+      const onCancel = jest.fn();
+      const {resourcePicker} = mountWithAppBridge(
+        <ResourcePicker resourceType="Product" open />,
+      );
+
+      resourcePicker.setProps({onCancel});
+
+      expect(appBridgeResourcePickerMock.unsubscribe).toHaveBeenCalledTimes(1);
+      expect(appBridgeResourcePickerMock.subscribe).toHaveBeenCalledTimes(1);
+
+      const [
+        firstArg,
+        secondArg,
+      ] = appBridgeResourcePickerMock.subscribe.mock.calls[0];
+      expect(firstArg).toBe(AppBridgeResourcePicker.Action.CANCEL);
+      secondArg();
+      expect(onCancel).toHaveBeenCalledTimes(1);
     });
 
     it('dispatches an open action on mount', () => {

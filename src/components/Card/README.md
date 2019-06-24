@@ -13,9 +13,11 @@ keywords:
   - panel
   - card with call to action in the footer
   - card with call to action in the heading
+  - card with call to action in a section
   - card with button in the footer
   - card with button in the heading
   - card with multiple sections
+  - card with subsections
   - sectioned card
   - card with a subdued section
   - subdued card for secondary content
@@ -258,14 +260,14 @@ Use for less important card actions, or actions merchants may do before reviewin
 
 <!-- content-for: web -->
 
-Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, merchants should review the contents of a shipment before important actions like canceling or adding tracking information.
+Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, merchants should review the contents of a shipment before an important action like adding tracking information.
 
 <!-- /content-for -->
 
 ```jsx
 <Card
   title="Shipment 1234"
-  secondaryFooterAction={{content: 'Cancel shipment'}}
+  secondaryFooterActions={[{content: 'Edit shipment'}]}
   primaryFooterAction={{content: 'Add tracking number'}}
 >
   <Card.Section title="Items">
@@ -297,6 +299,75 @@ Use footer actions for a card’s most important actions, or actions merchants s
 ![Card featuring footer actions: add variant, edit options](/public_images/components/Card/ios/footer-actions@2x.png)
 
 <!-- /content-for -->
+
+### Card with multiple footer actions
+
+<!-- example-for: web -->
+
+When multiple secondary footer actions are provided, they will render in an action list popover activated by a disclosure button. The disclosure button text can be customized with the `secondaryFooterActionsDisclosureText` prop.
+
+```jsx
+<Card
+  title="Shipment 1234"
+  secondaryFooterActions={[
+    {content: 'Cancel shipment', destructive: true},
+    {content: 'Add another shipment', disabled: true},
+  ]}
+  primaryFooterAction={{content: 'Add tracking number'}}
+>
+  <Card.Section title="Items">
+    <List>
+      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
+      <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
+    </List>
+  </Card.Section>
+</Card>
+```
+
+### Card with custom footer actions
+
+<!-- example-for: web -->
+
+Use to present actionable content that is optional or not the primary purpose of the page.
+
+```jsx
+<Card title="Secure your account with 2-step authentication">
+  <Card.Section>
+    <Stack spacing="loose" vertical>
+      <p>
+        Two-step authentication adds an extra layer of security when logging in
+        to your account. A special code will be required each time you log in,
+        ensuring only you can access your account.
+      </p>
+      <ButtonGroup>
+        <Button>Enable two-step authentication</Button>
+        <Button plain>Learn more</Button>
+      </ButtonGroup>
+    </Stack>
+  </Card.Section>
+</Card>
+```
+
+### Card with destructive footer action
+
+<!-- example-for: web -->
+
+Use when a card action will delete merchant data or be otherwise difficult to recover from.
+
+```jsx
+<Card
+  title="Shipment 1234"
+  secondaryFooterAction={{content: 'Cancel shipment', destructive: true}}
+  primaryFooterAction={{content: 'Add tracking number'}}
+>
+  <Card.Section title="Items">
+    <List>
+      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
+      <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
+    </List>
+  </Card.Section>
+</Card>
+```
 
 ### Card with multiple sections
 
@@ -331,6 +402,8 @@ Use when you have two related but distinct pieces of information to communicate 
 
 ### Card with multiple titled sections
 
+<!-- example-for: web -->
+
 Use when you have two related but distinct pieces of information to communicate to merchants that are complex enough to require a title to introduce them.
 
 ```jsx
@@ -344,6 +417,80 @@ Use when you have two related but distinct pieces of information to communicate 
       View a summary of your online store’s performance, including sales,
       visitors, top products, and referrals.
     </p>
+  </Card.Section>
+</Card>
+```
+
+### Card section with action
+
+<!-- example-for: web -->
+
+Use when your card section has actions that apply only to that section.
+
+```jsx
+<Card title="Customer">
+  <Card.Section>
+    <p>John Smith</p>
+  </Card.Section>
+  <Card.Section title="Contact Information" actions={[{content: 'Edit'}]}>
+    <p>john.smith@example.com</p>
+  </Card.Section>
+</Card>
+```
+
+### Card with subsection
+
+<!-- example-for: web -->
+
+Use when your card sections need further categorization.
+
+```jsx
+<Card title="Customer">
+  <Card.Section>
+    <p>John Smith</p>
+  </Card.Section>
+  <Card.Section title="Addresses">
+    <Card.Subsection>
+      123 First St
+      <br />
+      Somewhere
+      <br />
+      The Universe
+    </Card.Subsection>
+    <Card.Subsection>
+      123 Second St
+      <br />
+      Somewhere
+      <br />
+      The Universe
+    </Card.Subsection>
+  </Card.Section>
+  <Card.Section>
+    <Card.Subsection>
+      A single subsection without a sibling has no visual appearance
+    </Card.Subsection>
+  </Card.Section>
+</Card>
+```
+
+### Card section with destructive action
+
+<!-- content-for: web -->
+
+Use when a card action applies only to one section and will delete merchant data or be otherwise difficult to recover from.
+
+<!-- /content-for -->
+
+```jsx
+<Card title="Customer">
+  <Card.Section>
+    <p>John Smith</p>
+  </Card.Section>
+  <Card.Section
+    title="Contact Information"
+    actions={[{content: 'Delete', destructive: true}, {content: 'Edit'}]}
+  >
+    <p>john.smith@example.com</p>
   </Card.Section>
 </Card>
 ```
@@ -468,7 +615,7 @@ Use as a broad example that includes most props available to card.
 
 ```jsx
 <Card
-  secondaryFooterAction={{content: 'Dismiss'}}
+  secondaryFooterActions={[{content: 'Dismiss'}]}
   primaryFooterAction={{content: 'Export Report'}}
 >
   <Card.Header

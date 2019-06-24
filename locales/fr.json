@@ -31,7 +31,8 @@
       "newWindowAccessibilityHint": "(ouvre une nouvelle fenêtre)",
       "clear": "Effacer",
       "close": "Fermer",
-      "submit": "Envoyer"
+      "submit": "Envoyer",
+      "more": "Plus"
     },
     "ContextualSaveBar": {
       "save": "Enregistrer",
@@ -101,14 +102,18 @@
     "Icon": {
       "backdropWarning": "L'icône {color} n'accepte pas les fonds. Les couleurs des icônes qui possèdent un fond sont : {colorsWithBackDrops}"
     },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Actions"
+      }
+    },
     "Modal": {
       "iFrameTitle": "balisage du corps",
       "modalWarning": "Ces propriétés obligatoires manquent dans la fenêtre modale : {missingProps}"
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "L'icône propriétaire a été retirée de la page. Mettez en ligne une icône d'application dans la section « Configuration de l'application » du tableau de bord des partenaires Shopify.",
-        "rollupButton": "Actions"
+        "iconWarningMessage": "L'icône propriétaire a été retirée de la page. Mettez en ligne une icône d'application dans la section « Configuration de l'application » du tableau de bord des partenaires Shopify."
       }
     },
     "Pagination": {
@@ -204,7 +209,7 @@
       "toggleTabsLabel": "Menu toggle"
     },
     "Tag": {
-      "ariaLabel": "Retirer {children}"
+      "ariaLabel": "Supprimer {children}"
     },
     "TextField": {
       "characterCount": "{count} personnages",

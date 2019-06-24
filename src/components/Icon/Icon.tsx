@@ -68,7 +68,7 @@ export interface Props {
   accessibilityLabel?: string;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 function Icon({
   source,

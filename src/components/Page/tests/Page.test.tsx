@@ -3,14 +3,24 @@ import {
   Button as AppBridgeButton,
   TitleBar as AppBridgeTitleBar,
 } from '@shopify/app-bridge/actions';
+import {animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {Page, Card} from 'components';
-import {LinkAction} from '../../../types';
+import {Page, PageProps as Props, Card} from 'components';
 import {Header} from '../components';
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {SecondaryAction, PrimaryActionProps} from '../components/Header/Header';
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {ActionGroupDescriptor} from '../components/Header/components';
+import {LinkAction} from '../../../types';
+import {HeaderPrimaryAction} from '../types';
+
+window.matchMedia =
+  window.matchMedia ||
+  function() {
+    return {
+      matches: window.innerWidth <= 769,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
+const defaultWindowWidth = window.innerWidth;
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
   ...require.requireActual('../../../utilities/app-bridge-transformers'),
@@ -18,11 +28,11 @@ jest.mock('../../../utilities/app-bridge-transformers', () => ({
   transformActions: jest.fn((...args) => args),
 }));
 
-const mockProps = {
-  title: 'Test',
-};
-
 describe('<Page />', () => {
+  const mockProps: Props = {
+    title: 'Test',
+  };
+
   function mockTitleBarCreate() {
     const titleBarMock = {
       set: jest.fn(),
@@ -40,6 +50,19 @@ describe('<Page />', () => {
       },
     };
   }
+
+  beforeEach(() => {
+    animationFrame.mock();
+  });
+
+  afterEach(() => {
+    animationFrame.restore();
+    Object.defineProperty(window, 'innerWidth', {
+      configurable: true,
+      writable: true,
+      value: defaultWindowWidth,
+    });
+  });
 
   describe('forceRender renders children in page', () => {
     const {
@@ -163,7 +186,7 @@ describe('<Page />', () => {
 
   describe('breadcrumbs', () => {
     function mockButtonCreate() {
-      const buttonMock = {
+      const buttonMock: any = {
         set: jest.fn(),
         subscribe: jest.fn(),
       };
@@ -271,17 +294,17 @@ describe('<Page />', () => {
     });
 
     it('receives neccesary transformed props', () => {
-      const primaryAction: PrimaryActionProps = {
+      const primaryAction: HeaderPrimaryAction = {
         content: 'Foo',
         url: '/foo',
         target: 'APP',
       };
 
-      const secondaryActions: SecondaryAction[] = [
+      const secondaryActions: Props['secondaryActions'] = [
         {content: 'Bar', url: '/bar', target: 'ADMIN_PATH'},
       ];
 
-      const actionGroups: ActionGroupDescriptor[] = [
+      const actionGroups: Props['actionGroups'] = [
         {
           title: 'Baz',
           actions: [{content: 'Qux', url: 'https://qux.com', target: 'REMOTE'}],

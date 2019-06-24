@@ -15,7 +15,8 @@ export interface Props {
   disabled?: boolean;
   onToggleAll?(): void;
 }
-export type CombinedProps = Props & WithAppProviderProps;
+
+type CombinedProps = Props & WithAppProviderProps;
 
 function CheckableButton({
   accessibilityLabel,

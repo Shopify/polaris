@@ -62,14 +62,6 @@ module.exports = ({config, mode}) => {
             cacheDirectory: `${cacheDir}/typescript`,
           },
         },
-        {
-          loader: 'ts-loader',
-          options: {
-            silent: true,
-            transpileOnly: true,
-            experimentalFileCaching: true,
-          },
-        },
       ],
     },
     {

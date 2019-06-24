@@ -7,7 +7,7 @@ function noop() {}
 describe('app bridge transformers', () => {
   const appBridge = {} as ClientApplication<{}>;
   const dispatch = jest.fn();
-  jest.spyOn(Redirect, 'create').mockReturnValue({dispatch});
+  jest.spyOn(Redirect, 'create').mockReturnValue({dispatch} as any);
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -74,7 +74,7 @@ describe('app bridge transformers', () => {
       onAction: noop,
     };
 
-    const buttonMock = {
+    const buttonMock: any = {
       set: jest.fn(),
       subscribe: jest.fn(),
     };

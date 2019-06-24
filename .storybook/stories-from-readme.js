@@ -12,7 +12,7 @@ import en from '../locales/en.json';
  * overlay each other as it stops the test being useful.
  */
 function percyShouldTestIndividualExamples(readmeName) {
-  return ['Modal'].includes(readmeName);
+  return ['Modal', 'Card'].includes(readmeName);
 }
 
 export function generateStories(readme, readmeModule) {

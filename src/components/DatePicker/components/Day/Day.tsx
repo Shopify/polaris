@@ -17,9 +17,9 @@ export interface Props {
   onFocus?(day: Date): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
-export class Day extends React.PureComponent<CombinedProps, never> {
+class Day extends React.PureComponent<CombinedProps, never> {
   private dayNode: HTMLElement | null = null;
 
   componentDidUpdate(prevProps: CombinedProps) {

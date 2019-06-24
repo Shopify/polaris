@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "3.16.0",
+  "version": "3.17.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -96,7 +96,7 @@
     "@shopify/jest-dom-mocks": "^2.1.1",
     "@shopify/js-uploader": "github:shopify/js-uploader",
     "@shopify/react-testing": "^1.5.3",
-    "@shopify/sewing-kit": "0.83.1",
+    "@shopify/sewing-kit": "0.88.0",
     "@storybook/addon-a11y": "5.1.0-rc.0",
     "@storybook/addon-actions": "5.1.0-rc.0",
     "@storybook/addon-backgrounds": "5.1.0-rc.0",
@@ -113,7 +113,7 @@
     "aws-sdk": "^2.58.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.0.5",
-    "babel-preset-shopify": "^18.1.1",
+    "babel-preset-shopify": "^20.0.0",
     "chalk": "^2.4.2",
     "change-case": "^3.1.0",
     "codecov": "^3.3.0",
@@ -157,7 +157,7 @@
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
     "svgo": "^1.2.2",
-    "typescript": "~3.2.4",
+    "typescript": "~3.5.1",
     "yargs": "^13.2.2"
   },
   "peerDependencies": {
@@ -165,7 +165,7 @@
     "react-dom": "^16.8.6"
   },
   "resolutions": {
-    "typescript-eslint-parser": "22.0.0"
+    "typescript-eslint-parser": "npm:@typescript-eslint/parser@1.10.2"
   },
   "files": [
     "esnext",
@@ -183,7 +183,16 @@
     "@shopify/app-bridge": "^1.3.0",
     "@shopify/javascript-utilities": "^2.2.1",
     "@shopify/polaris-icons": "^3.3.0",
-    "@shopify/polaris-tokens": "^2.5.0",
+    "@shopify/polaris-tokens": "^2.6.0",
+    "@shopify/react-compose": "^1.0.0",
+    "@shopify/useful-types": "^1.2.4",
+    "@storybook/addon-a11y": "^5.1.3",
+    "@storybook/addon-actions": "^5.1.3",
+    "@storybook/addon-backgrounds": "^5.1.3",
+    "@storybook/addon-notes": "^5.1.3",
+    "@storybook/addon-viewport": "^5.1.3",
+    "@storybook/react": "^5.1.3",
+    "@storybook/theming": "^5.1.3",
     "@types/react": "^16.8.15",
     "@types/react-dom": "^16.8.4",
     "@types/react-transition-group": "^2.0.7",

@@ -17,9 +17,9 @@ export interface Props {
   onFilterKeyChange(filterKey: string): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
-export class FilterValueSelector extends React.PureComponent<CombinedProps> {
+class FilterValueSelector extends React.PureComponent<CombinedProps> {
   componentDidMount() {
     const {
       filter: {operatorText, type},

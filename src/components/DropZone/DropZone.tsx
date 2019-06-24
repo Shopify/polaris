@@ -107,11 +107,11 @@ export interface Props {
   onFileDialogClose?(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('DropZone');
 
-export class DropZone extends React.Component<CombinedProps, State> {
+class DropZone extends React.Component<CombinedProps, State> {
   public static FileUpload: typeof FileUpload = FileUpload;
   public static defaultProps: Partial<CombinedProps> = {
     type: 'file',
@@ -191,6 +191,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
     } = props;
     const suffix = capitalize(type);
 
+    // eslint-disable-next-line react/state-in-constructor
     this.state = {
       type,
       id: props.id || getUniqueID(),

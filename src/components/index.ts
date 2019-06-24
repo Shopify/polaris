@@ -5,6 +5,8 @@ export {
 
 export {default as ActionList, Props as ActionListProps} from './ActionList';
 
+export {default as ActionMenu, Props as ActionMenuProps} from './ActionMenu';
+
 export {
   default as AppProvider,
   Props as AppProviderProps,

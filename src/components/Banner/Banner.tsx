@@ -38,6 +38,8 @@ export interface Props {
   secondaryAction?: Action;
   /** Callback when banner is dismissed */
   onDismiss?(): void;
+  /** Disables screen reader announcements when changing the content of the banner */
+  stopAnnouncements?: boolean;
 }
 
 export default class Banner extends React.PureComponent<Props, never> {
@@ -60,6 +62,7 @@ export default class Banner extends React.PureComponent<Props, never> {
               children,
               status,
               onDismiss,
+              stopAnnouncements,
             } = this.props;
             let color: IconProps['color'];
             let defaultIcon: IconProps['source'];
@@ -160,7 +163,7 @@ export default class Banner extends React.PureComponent<Props, never> {
                 tabIndex={0}
                 ref={this.wrapper}
                 role={ariaRoleType}
-                aria-live="polite"
+                aria-live={stopAnnouncements ? 'off' : 'polite'}
                 onMouseUp={handleMouseUp}
                 aria-labelledby={headingID}
                 aria-describedby={contentID}

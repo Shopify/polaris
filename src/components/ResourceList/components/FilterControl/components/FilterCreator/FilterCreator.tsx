@@ -22,7 +22,7 @@ export interface Props {
   onAddFilter?(newFilter: AppliedFilter): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 export interface State {
   popoverActive: boolean;
@@ -31,7 +31,7 @@ export interface State {
   selectedFilterValue?: AppliedFilter['value'];
 }
 
-export class FilterCreator extends React.PureComponent<CombinedProps, State> {
+class FilterCreator extends React.PureComponent<CombinedProps, State> {
   state: State = {
     popoverActive: false,
   };

@@ -7,7 +7,7 @@ import {PreferredPosition} from '../../../PositionedOverlay';
 import {ActionListItemDescriptor, Key} from '../../../../types';
 import KeypressListener from '../../../KeypressListener';
 import ComboBoxContext from './context';
-import {TextField} from './components';
+import TextField from '../TextField';
 
 import styles from './ComboBox.scss';
 

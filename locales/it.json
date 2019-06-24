@@ -31,7 +31,8 @@
       "newWindowAccessibilityHint": "(apre una nuova finestra)",
       "clear": "Cancella",
       "close": "Chiudi",
-      "submit": "Invia"
+      "submit": "Invia",
+      "more": "Altro"
     },
     "ContextualSaveBar": {
       "save": "Salva",
@@ -90,7 +91,7 @@
       }
     },
     "EmptySearchResult": {
-      "altText": "Risultati di ricerca assenti"
+      "altText": "Risultati della ricerca assenti"
     },
     "Frame": {
       "skipToContent": "Vai direttamente al contenuto",
@@ -101,14 +102,18 @@
     "Icon": {
       "backdropWarning": "L'icona {color} non accetta gli sfondi. I colori dell'icona con sfondi sono i seguenti: {colorsWithBackDrops}"
     },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Azioni"
+      }
+    },
     "Modal": {
       "iFrameTitle": "markup del testo",
       "modalWarning": "Le seguenti proprietà necessarie mancano da Modal: {missingProps}"
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "Le proprietà dell'icona sono state rimosse dalla Pagina. Carica un'icona dell'applicazione nella sezione 'Configurazione app' della dashboard Shopify Partners.",
-        "rollupButton": "Azioni"
+        "iconWarningMessage": "Le proprietà dell'icona sono state rimosse dalla Pagina. Carica un'icona dell'applicazione nella sezione 'Configurazione app' della dashboard Shopify Partners."
       }
     },
     "Pagination": {

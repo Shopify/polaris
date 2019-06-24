@@ -88,6 +88,76 @@ A resource list with simple items and no bulk actions, sorting, or filtering. Se
 </Card>
 ```
 
+### Resource List with selection and no bulk actions
+
+A resource list with simple items and selection. See the [case study below](#study) for implementation details.
+
+```jsx
+class ResourceListExample extends React.Component {
+  state = {
+    selectedItems: [],
+  };
+
+  handleSelectionChange = (selectedItems) => {
+    this.setState({selectedItems});
+  };
+
+  renderItem = (item) => {
+    const {id, url, name, location} = item;
+    const media = <Avatar customer size="medium" name={name} />;
+
+    return (
+      <ResourceList.Item
+        id={id}
+        url={url}
+        media={media}
+        accessibilityLabel={`View details for ${name}`}
+      >
+        <h3>
+          <TextStyle variation="strong">{name}</TextStyle>
+        </h3>
+        <div>{location}</div>
+      </ResourceList.Item>
+    );
+  };
+
+  render() {
+    const resourceName = {
+      singular: 'customer',
+      plural: 'customers',
+    };
+
+    const items = [
+      {
+        id: 341,
+        url: 'customers/341',
+        name: 'Mae Jemison',
+        location: 'Decatur, USA',
+      },
+      {
+        id: 256,
+        url: 'customers/256',
+        name: 'Ellen Ochoa',
+        location: 'Los Angeles, USA',
+      },
+    ];
+
+    return (
+      <Card>
+        <ResourceList
+          resourceName={resourceName}
+          items={items}
+          renderItem={this.renderItem}
+          selectedItems={this.state.selectedItems}
+          onSelectionChange={this.handleSelectionChange}
+          selectable
+        />
+      </Card>
+    );
+  }
+}
+```
+
 ### Resource list with bulk actions
 
 Allows merchants to select items and perform an action on the selection. See [the bulk actions section of the case study](#study-bulk-actions) for implementation details.

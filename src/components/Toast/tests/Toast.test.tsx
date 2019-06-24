@@ -46,7 +46,7 @@ describe('<Toast />', () => {
   });
 
   describe('with app bridge', () => {
-    const appBridgeToastMock = {
+    const appBridgeToastMock: any = {
       dispatch: jest.fn(),
       subscribe: jest.fn(),
       unsubscribe: jest.fn(),

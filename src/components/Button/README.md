@@ -172,19 +172,27 @@ Use for less important or less commonly used actions since they’re less promin
 
 <!-- example-for: web -->
 
-Use to render a buttons that look like links where matching the surrounding text color is visually more appropriate. For example in the InlineError component.
+Use for less important or less commonly used actions where matching the current text color is desired. For example in the InlineError component.
 
 ```jsx
-<InlineError
-  message={
-    <React.Fragment>
-      An error occurred. &nbsp;
-      <Button plain monochrome>
-        Try again
-      </Button>
-    </React.Fragment>
-  }
-/>
+<div style={{color: '#bf0711'}}>
+  Could not retrieve data.{' '}
+  <Button plain monochrome>
+    Try again
+  </Button>
+</div>
+```
+
+### Plain destructive button
+
+<!-- example-for: online-store-ui -->
+
+Use for actions that will delete merchant data or be otherwise difficult to recover from. Since they’re less prominent, use for less important or less commonly used destructive actions. For example, plain buttons are used as actions in cards.
+
+```jsx
+<Button plain destructive>
+  Remove
+</Button>
 ```
 
 ### Primary button
@@ -255,6 +263,20 @@ Use for buttons placed in a narrow column (especially when stacking multiple but
 
 ```jsx
 <Button fullWidth>Add customer</Button>
+```
+
+### Text-aligned button
+
+<!-- example-for: web -->
+
+Use for plain or monochrome buttons that could have a long length and should be aligned when they potentially overflow onto the next line.
+
+```jsx
+<Button plain textAlign="left">
+  This is a really long string of text that overflows onto the next line we need
+  to put in a lot of words now you can see the alignment. It is very long but a
+  customer could potentially name something this long.
+</Button>
 ```
 
 ### Disabled state

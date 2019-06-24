@@ -42,6 +42,7 @@ export interface State {
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
+
 class Scrollable extends React.Component<CombinedProps, State> {
   static ScrollTo = ScrollTo;
   static forNode(node: HTMLElement): HTMLElement | Document {

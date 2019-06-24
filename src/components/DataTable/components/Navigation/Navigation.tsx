@@ -17,7 +17,7 @@ export interface Props {
   navigateTableRight?(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 function Navigation({
   columnVisibilityData,

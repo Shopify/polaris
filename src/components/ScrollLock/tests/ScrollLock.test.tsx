@@ -28,6 +28,7 @@ describe('ScrollLock', () => {
       render() {
         const {showScrollLock} = this.state;
 
+        // eslint-disable-next-line shopify/jest/no-if
         const scrollLockMarkup = showScrollLock ? <ScrollLock /> : null;
 
         return (

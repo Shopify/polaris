@@ -22,7 +22,7 @@ const CSS_VAR_COLLAPSIBLE_HEIGHT = '--polaris-collapsible-height';
 const CSS_VAR_COLLAPSIBLE_TRANSITION_DURATION =
   '--polaris-collapsible-transition-duration';
 
-export function Collapsible({id, open, children}: Props) {
+function Collapsible({id, open, children}: Props) {
   const [height, setHeight] = useState<number | null>(null);
   const node = useRef<HTMLDivElement>(null);
 

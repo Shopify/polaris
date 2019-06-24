@@ -46,7 +46,7 @@ export interface State {
   mobile: boolean;
 }
 
-export function Sheet({children, open, onClose}: Props) {
+function Sheet({children, open, onClose}: Props) {
   const [mobile, setMobile] = useState(false);
   const frame = useContext(FrameContext);
   const {intl} = usePolaris();

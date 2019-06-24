@@ -1,143 +1,96 @@
-$action-horizontal-padding: (1.5 * spacing(tight));
+$individual-action-padding-x: (1.5 * spacing(tight));
+$action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
 
 .Header {
   @include page-header-layout;
+  position: relative;
 }
 
-.Header-hasPagination,
-.Header-hasBreadcrumbs,
-.Header-hasRollup {
-  @include page-header-has-navigation;
-}
-
-.Header-hasSecondaryActions {
-  @include page-header-has-secondary-actions;
-}
-
-.Header-hasSeparator {
+.separator {
   padding-bottom: spacing();
   border-bottom: border();
-
-  + .Content {
-    margin-top: spacing(loose);
-  }
 }
 
-.Header-hasRollup {
-  .SecondaryActions {
-    display: none;
-  }
-
-  .IndividualActions {
-    display: none;
-  }
-
-  .Pagination {
-    display: none;
-  }
-
-  @include page-content-when-not-partially-condensed {
-    .Rollup {
-      display: none;
-    }
-
-    .SecondaryActions {
-      display: flex;
-    }
-
-    .IndividualActions {
-      display: flex;
-    }
-
-    .Pagination {
-      display: flex;
-    }
-  }
-}
-
-.Title-hidden {
+.titleHidden {
   @include visually-hidden;
 }
 
-.PrimaryAction {
-  display: flex;
-  align-items: center;
-
-  .MainContent > & {
-    display: none;
-    margin-left: spacing(loose);
-  }
-
-  @include page-content-when-not-partially-condensed {
-    display: none;
-
-    .MainContent > & {
-      display: flex;
-    }
-  }
-}
-
-.Rollup {
-  margin-top: spacing(extra-tight);
-}
-
-.Pagination {
-  margin-left: auto;
-  line-height: 1;
-}
-
-.Actions {
-  @include page-actions-layout;
-}
+///
+/// Navigation
 
 .Navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: spacing(extra-tight);
-}
 
-.MainContent {
-  display: flex;
-  align-items: center;
-}
-
-.TitleAndRollup {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-
-  .Rollup {
-    @include page-header-without-navigation;
+  // stylelint-disable-next-line selector-max-class
+  .hasActionMenu.mobileView & {
+    padding-right: $action-menu-rollup-computed-width;
   }
 }
 
-.TitleAndActions {
-  flex: 1 1 0%;
+.BreadcrumbWrapper {
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+
+.PaginationWrapper {
+  flex: 0 0 auto;
+  margin-left: auto;
+  line-height: 1;
+}
+
+///
+/// Main content
+
+.MainContent {
+  .Header:not(.mobileView) & {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.TitleActionMenuWrapper {
+  flex: 1 1 auto;
+
+  .Header:not(.mobileView) & {
+    padding-right: spacing(loose);
+  }
+
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity
+  .hasActionMenu.mobileView:not(.hasNavigation) & {
+    padding-right: $action-menu-rollup-computed-width;
+  }
 }
 
 .Title {
   @include page-title-layout;
 }
 
-.SecondaryActions {
-  flex: 1;
+.PrimaryActionWrapper {
+  .mobileView & {
+    margin-top: spacing();
+  }
 }
 
-.IndividualActions {
-  display: flex;
-  align-items: center;
+.ActionMenuWrapper {
+  margin-top: spacing(tight);
 
-  > .IndividualAction {
-    display: inline-flex;
+  // stylelint-disable-next-line selector-max-class
+  .mobileView & {
+    position: absolute;
+    top: spacing(loose) + (control-height() / 4);
+    right: 0;
+    margin-top: 0;
 
-    &:first-child {
-      // Compensates for the fact that we push the icon slightly to the left
-      margin-left: -1 * $action-horizontal-padding;
+    @include page-content-when-not-fully-condensed {
+      right: -(spacing(tight));
     }
+  }
 
-    &:last-child {
-      margin-right: -1 * $action-horizontal-padding;
-    }
+  // stylelint-disable-next-line selector-max-class
+  .mobileView.hasNavigation & {
+    top: control-height() / 2;
   }
 }

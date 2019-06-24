@@ -60,9 +60,9 @@ const slideClasses = {
   exit: classNames(styles.Slide, styles['Slide-exit']),
 };
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
-export class BulkActions extends React.PureComponent<CombinedProps, State> {
+class BulkActions extends React.PureComponent<CombinedProps, State> {
   state: State = {
     smallScreenPopoverVisible: false,
     largeScreenPopoverVisible: false,

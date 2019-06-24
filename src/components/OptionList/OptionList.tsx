@@ -62,8 +62,6 @@ export interface State {
   normalizedOptions: SectionDescriptor[];
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
-
 export default function OptionList({
   options,
   sections,

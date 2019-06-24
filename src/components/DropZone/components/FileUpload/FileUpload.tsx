@@ -23,7 +23,7 @@ export interface Props {
   actionHint?: string;
 }
 
-function FileUpload(props: Props) {
+export default function FileUpload(props: Props) {
   const {
     intl: {translate},
   } = usePolaris();
@@ -95,5 +95,3 @@ function FileUpload(props: Props) {
     </div>
   );
 }
-
-export default FileUpload;

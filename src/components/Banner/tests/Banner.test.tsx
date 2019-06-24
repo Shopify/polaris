@@ -50,6 +50,22 @@ describe('<Banner />', () => {
     expect(banner.find(Icon).prop('color')).toBe('yellowDark');
   });
 
+  it('disables aria-live when stopAnnouncements is enabled', () => {
+    const politeBanner = mountWithAppProvider(<Banner />)
+      .find('div')
+      .filterWhere(
+        (element: ReactWrapper) => element.prop('aria-live') === 'polite',
+      );
+    expect(politeBanner).toBeTruthy();
+
+    const quietBanner = mountWithAppProvider(<Banner stopAnnouncements />)
+      .find('div')
+      .filterWhere(
+        (element: ReactWrapper) => element.prop('aria-live') === 'off',
+      );
+    expect(quietBanner).toBeTruthy();
+  });
+
   it('uses a redDark circleBarred if status is critical', () => {
     const banner = mountWithAppProvider(<Banner status="critical" />);
     expect(banner.find(Icon).prop('source')).toBe(CircleDisabledMajorTwotone);

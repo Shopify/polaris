@@ -26,7 +26,7 @@ export interface Props {
   onSort?(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 function Cell({
   height,
