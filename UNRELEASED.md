@@ -44,6 +44,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Moved Storybook to devDependcies ([#1727](https://github.com/Shopify/polaris-react/pull/1727))
 - Updated `PositionedOverlay` to no longer use `componentWillReceiveProps`([#1621](https://github.com/Shopify/polaris-react/pull/1621))
 
 ### Deprecations
