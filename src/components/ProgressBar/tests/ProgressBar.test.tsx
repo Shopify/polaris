@@ -31,19 +31,23 @@ describe('<ProgressBar />', () => {
 
   describe('console.warn', () => {
     const oldEnv = process.env;
+    let warnSpy: jest.SpyInstance;
 
     beforeEach(() => {
       jest.resetModules();
       process.env = {...oldEnv};
       delete process.env.NODE_ENV;
+
+      warnSpy = jest.spyOn(console, 'warn');
+      warnSpy.mockImplementation(() => {});
     });
 
     afterEach(() => {
       process.env = oldEnv;
+      warnSpy.mockRestore();
     });
 
     it('warns when a negative number is passed to progress in development', () => {
-      const warnSpy = jest.spyOn(console, 'warn');
       process.env.NODE_ENV = 'development';
 
       mountWithAppProvider(<ProgressBar progress={-1}>test</ProgressBar>);
@@ -54,7 +58,6 @@ describe('<ProgressBar />', () => {
     });
 
     it('warns when a number larger than 100 is passed to progress in development', () => {
-      const warnSpy = jest.spyOn(console, 'warn');
       process.env.NODE_ENV = 'development';
 
       mountWithAppProvider(<ProgressBar progress={101}>test</ProgressBar>);

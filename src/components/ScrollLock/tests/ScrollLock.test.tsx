@@ -4,6 +4,17 @@ import {SCROLL_LOCKING_ATTRIBUTE} from '../../AppProvider';
 import ScrollLock from '../ScrollLock';
 
 describe('ScrollLock', () => {
+  let scrollSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    scrollSpy = jest.spyOn(window, 'scroll');
+    scrollSpy.mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    scrollSpy.mockRestore();
+  });
+
   it('does not remove the data attribute from the body when two scrolllocks are mounted and one unmounts', () => {
     class DummyFrame extends React.Component {
       state = {

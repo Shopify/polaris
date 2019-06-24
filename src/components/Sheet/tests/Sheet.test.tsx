@@ -68,6 +68,7 @@ describe('<Sheet />', () => {
 
   it('warns when not mounted inside of the Frame component', () => {
     const warnSpy = jest.spyOn(console, 'warn');
+    warnSpy.mockImplementation(() => {});
     mount(
       <AppProvider i18n={en}>
         <Sheet {...mockProps}>
@@ -80,6 +81,7 @@ describe('<Sheet />', () => {
     expect(warnSpy).toHaveBeenCalledWith(
       'The Sheet component must be used within the Frame component.',
     );
+    warnSpy.mockRestore();
   });
 });
 

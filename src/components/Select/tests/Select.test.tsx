@@ -25,7 +25,9 @@ describe('<Select />', () => {
   describe('onFocus()', () => {
     it('is called when the select is focused', () => {
       const spy = jest.fn();
-      mountWithAppProvider(<Select label="Select" options={[]} onFocus={spy} />)
+      mountWithAppProvider(
+        <Select label="Select" options={[]} onFocus={spy} onChange={noop} />,
+      )
         .find('select')
         .simulate('focus');
       expect(spy).toHaveBeenCalled();
@@ -36,7 +38,7 @@ describe('<Select />', () => {
     it('is called when the select is blurred', () => {
       const spy = jest.fn();
       const element = mountWithAppProvider(
-        <Select label="Select" options={[]} onBlur={spy} />,
+        <Select label="Select" options={[]} onBlur={spy} onChange={noop} />,
       );
       element.find('select').simulate('focus');
       element.find('select').simulate('blur');
@@ -48,7 +50,7 @@ describe('<Select />', () => {
     it('translates an array of strings into options', () => {
       const options = ['one', 'two'];
       const optionElements = mountWithAppProvider(
-        <Select label="Select" options={options} />,
+        <Select label="Select" options={options} onChange={noop} />,
       ).find('option');
 
       options.forEach((option, index) => {
@@ -65,7 +67,7 @@ describe('<Select />', () => {
         {value: 'two', label: 'Two'},
       ];
       const optionElements = mountWithAppProvider(
-        <Select label="Select" options={options} />,
+        <Select label="Select" options={options} onChange={noop} />,
       ).find('option');
 
       options.forEach(({value, label}, index) => {
@@ -83,7 +85,7 @@ describe('<Select />', () => {
         {value: 'three', label: 'Three', disabled: false},
       ];
       const optionElements = mountWithAppProvider(
-        <Select label="Select" options={options} />,
+        <Select label="Select" options={options} onChange={noop} />,
       ).find('option');
 
       options.forEach(({disabled}, index) => {
@@ -129,7 +131,7 @@ describe('<Select />', () => {
     // eslint-disable-next-line jest/expect-expect
     it('translates grouped options into optgroup tags', () => {
       const optionOrOptgroupElements = mountWithAppProvider(
-        <Select label="Select" options={optionsAndGroups} />,
+        <Select label="Select" options={optionsAndGroups} onChange={noop} />,
       )
         .find('select')
         .children();
@@ -144,7 +146,7 @@ describe('<Select />', () => {
     // eslint-disable-next-line jest/expect-expect
     it('translates legacy groups into optgroup tags', () => {
       const optionOrOptgroupElements = mountWithAppProvider(
-        <Select label="Select" groups={optionsAndGroups} />,
+        <Select label="Select" groups={optionsAndGroups} onChange={noop} />,
       )
         .find('select')
         .children();
@@ -175,7 +177,7 @@ describe('<Select />', () => {
   describe('id', () => {
     it('sets the id on the input', () => {
       const id = mountWithAppProvider(
-        <Select label="Select" id="MySelect" options={[]} />,
+        <Select label="Select" id="MySelect" options={[]} onChange={noop} />,
       )
         .find('select')
         .prop('id');
@@ -183,7 +185,9 @@ describe('<Select />', () => {
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = mountWithAppProvider(<Select label="Select" options={[]} />)
+      const id = mountWithAppProvider(
+        <Select label="Select" options={[]} onChange={noop} />,
+      )
         .find('select')
         .prop('id');
       expect(typeof id).toBe('string');
@@ -194,17 +198,19 @@ describe('<Select />', () => {
   describe('disabled', () => {
     it('sets the disabled attribute on the select', () => {
       const select = mountWithAppProvider(
-        <Select label="Select" disabled options={[]} />,
+        <Select label="Select" disabled options={[]} onChange={noop} />,
       );
       expect(select.find('select').prop('disabled')).toBe(true);
     });
 
     it('is only disabled when disabled is explicitly set to true', () => {
-      let select = mountWithAppProvider(<Select label="Select" options={[]} />);
+      let select = mountWithAppProvider(
+        <Select label="Select" options={[]} onChange={noop} />,
+      );
       expect(select.find('select').prop('disabled')).toBeFalsy();
 
       select = mountWithAppProvider(
-        <Select label="Select" disabled={false} options={[]} />,
+        <Select label="Select" disabled={false} options={[]} onChange={noop} />,
       );
       expect(select.find('select').prop('disabled')).toBeFalsy();
     });
@@ -213,7 +219,12 @@ describe('<Select />', () => {
   describe('helpText', () => {
     it('connects the select to the help text', () => {
       const select = mountWithAppProvider(
-        <Select label="Select" options={[]} helpText="Some help" />,
+        <Select
+          label="Select"
+          options={[]}
+          helpText="Some help"
+          onChange={noop}
+        />,
       );
       const helpTextID = select.find('select').prop<string>('aria-describedby');
       expect(typeof helpTextID).toBe('string');
@@ -225,7 +236,12 @@ describe('<Select />', () => {
     it('renders the placeholder as the initially selected option', () => {
       const placeholderValue = '';
       const select = mountWithAppProvider(
-        <Select label="Select" placeholder="Choose something" options={[]} />,
+        <Select
+          label="Select"
+          placeholder="Choose something"
+          options={[]}
+          onChange={noop}
+        />,
       ).find('select');
       const placeholderOption = select.find('option').first();
 

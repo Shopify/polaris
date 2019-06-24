@@ -94,14 +94,16 @@ describe('<Toast />', () => {
     });
 
     it('warns that a duration of 10000ms is recommended with action if duration is lower than 10000', () => {
-      const warnSpy = jest.spyOn(console, 'log');
+      const logSpy = jest.spyOn(console, 'log');
+      logSpy.mockImplementation(() => {});
       mountWithAppProvider(
         <Toast {...mockProps} action={mockAction} duration={9000} />,
       );
 
-      expect(warnSpy).toHaveBeenCalledWith(
+      expect(logSpy).toHaveBeenCalledWith(
         'Toast with action should persist for at least 10,000 milliseconds to give the merchant enough time to act on it.',
       );
+      logSpy.mockRestore();
     });
   });
 

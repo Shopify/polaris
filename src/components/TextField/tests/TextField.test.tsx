@@ -815,10 +815,20 @@ describe('<TextField />', () => {
   describe('Connected', () => {
     it('passes props to Connected', () => {
       const connectedLeft = (
-        <Select label="Currency unit" labelHidden options={['$', '€']} />
+        <Select
+          label="Currency unit"
+          labelHidden
+          options={['$', '€']}
+          onChange={noop}
+        />
       );
       const connectedRight = (
-        <Select label="Weight unit" labelHidden options={['kg', 'lb']} />
+        <Select
+          label="Weight unit"
+          labelHidden
+          options={['kg', 'lb']}
+          onChange={noop}
+        />
       );
       const textField = mountWithAppProvider(
         <TextField

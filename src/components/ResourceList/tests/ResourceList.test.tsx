@@ -327,6 +327,7 @@ describe('<ResourceList />', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           sortOptions={sortOptions}
+          onSortChange={noop}
           items={itemsWithID}
           renderItem={renderItem}
         />,
@@ -482,6 +483,7 @@ describe('<ResourceList />', () => {
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
+          onSortChange={noop}
           renderItem={renderItem}
         />,
       );
@@ -494,6 +496,7 @@ describe('<ResourceList />', () => {
           items={itemsWithID}
           renderItem={renderItem}
           sortOptions={sortOptions}
+          onSortChange={noop}
           alternateTool={alternateTool}
         />,
       );
@@ -506,6 +509,7 @@ describe('<ResourceList />', () => {
           <ResourceList
             items={itemsWithID}
             sortOptions={sortOptions}
+            onSortChange={noop}
             renderItem={renderItem}
           />,
         );
@@ -590,6 +594,7 @@ describe('<ResourceList />', () => {
             items={itemsWithID}
             sortOptions={sortOptions}
             renderItem={renderItem}
+            onSortChange={noop}
           />,
         );
         expect(resourceList.find(Select).props()).toHaveProperty(
@@ -641,6 +646,7 @@ describe('<ResourceList />', () => {
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
+          onSortChange={noop}
           renderItem={renderItem}
           loading
         />,
@@ -654,6 +660,7 @@ describe('<ResourceList />', () => {
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
+          onSortChange={noop}
           renderItem={renderItem}
         />,
       );
@@ -667,6 +674,7 @@ describe('<ResourceList />', () => {
         <ResourceList
           items={[]}
           sortOptions={sortOptions}
+          onSortChange={noop}
           renderItem={renderItem}
           loading
         />,
@@ -840,6 +848,8 @@ describe('<ResourceList />', () => {
     });
   });
 });
+
+function noop() {}
 
 function idForItem(item: any) {
   return JSON.stringify(item);
