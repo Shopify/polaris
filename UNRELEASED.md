@@ -29,6 +29,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Bug fixes
 
 - Fixes `monochrome` variant of `Link` and `Button` components to support multi-line link text ([#1686](https://github.com/Shopify/polaris-react/pull/1686))
+- Fixed the first column of `DataTable` not rendering in iOS Safari (([#1605](https://github.com/Shopify/polaris-react/pull/1605))
 
 ### Documentation
 

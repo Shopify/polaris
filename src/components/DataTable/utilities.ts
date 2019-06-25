@@ -1,7 +1,6 @@
 import {DataTableState} from './types';
 
 interface TableMeasurements {
-  fixedColumnWidth: number;
   firstVisibleColumnIndex: number;
   tableLeftVisibleEdge: number;
   tableRightVisibleEdge: number;
@@ -13,10 +12,9 @@ export function measureColumn(tableData: TableMeasurements) {
       firstVisibleColumnIndex,
       tableLeftVisibleEdge: tableStart,
       tableRightVisibleEdge: tableEnd,
-      fixedColumnWidth,
     } = tableData;
 
-    const leftEdge = column.offsetLeft + fixedColumnWidth;
+    const leftEdge = column.offsetLeft;
     const rightEdge = leftEdge + column.offsetWidth;
     const isVisibleLeft = isEdgeVisible(leftEdge, tableStart, tableEnd);
     const isVisibleRight = isEdgeVisible(rightEdge, tableStart, tableEnd);
