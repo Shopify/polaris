@@ -21,6 +21,8 @@ keywords:
   - list secondary actions
   - secondary actions in a list
   - list of resources
+  - filter
+  - sort
 ---
 
 # Resource list
@@ -1491,6 +1493,8 @@ The content that represents applied filter tags should use short, clear, non-tec
 <a name="study"></a>
 
 ## Case study
+
+<!-- keywords: filter, sort, filtering, sorting, bulk actions, bulk action -->
 
 To cover the resource list component in depth, we’ll create a customer list as an example. We’ll start by implementing a basic resoure list step by step. Then we’ll customize the built-in resource list item to better display our customers. Finally, we’ll add features to make the list more useful to merchants.
 
