@@ -9,6 +9,8 @@ import Icon, {Props as IconProps} from '../Icon';
 import Spinner from '../Spinner';
 import styles from './Button.scss';
 
+import theme from './theme';
+
 export type Size = 'slim' | 'medium' | 'large';
 
 export type TextAlign = 'left' | 'right' | 'center';
@@ -129,6 +131,24 @@ function Button({
     icon && children == null && styles.iconOnly,
   );
 
+  let appliedTheme: React.CSSProperties;
+
+  if (outline && destructive) {
+    appliedTheme = theme.outlineDestructive;
+  } else if (plain && destructive) {
+    appliedTheme = theme.plainDestructive;
+  } else if (primary) {
+    appliedTheme = theme.primary;
+  } else if (destructive) {
+    appliedTheme = theme.destructive;
+  } else if (outline) {
+    appliedTheme = theme.outline;
+  } else if (plain) {
+    appliedTheme = theme.plain;
+  } else {
+    appliedTheme = theme.base;
+  }
+
   const disclosureIconMarkup = disclosure ? (
     <IconWrapper>
       <Icon source={loading ? 'placeholder' : CaretDownMinor} />
@@ -186,7 +206,12 @@ function Button({
       // Render an `<a>` so toggling disabled/enabled state changes only the
       // `href` attribute instead of replacing the whole element.
       // eslint-disable-next-line jsx-a11y/anchor-is-valid
-      <a id={id} className={className} aria-label={accessibilityLabel}>
+      <a
+        id={id}
+        className={className}
+        aria-label={accessibilityLabel}
+        style={appliedTheme}
+      >
         {content}
       </a>
     ) : (
@@ -201,6 +226,7 @@ function Button({
         onMouseUp={handleMouseUpByBlurring}
         className={className}
         aria-label={accessibilityLabel}
+        style={appliedTheme}
       >
         {content}
       </UnstyledLink>
@@ -226,6 +252,7 @@ function Button({
       aria-pressed={ariaPressed}
       role={loading ? 'alert' : undefined}
       aria-busy={loading ? true : undefined}
+      style={appliedTheme}
     >
       {content}
     </button>
