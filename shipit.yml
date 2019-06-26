@@ -4,6 +4,8 @@ ci:
     - 'ci/circleci: percy'
     - percy/polaris-react
     - codecov/patch
+    - 'Add new issues to project'
+    - 'Move assigned issue to column'
   require:
     - 'ci/circleci: check'
   allow_failures:
