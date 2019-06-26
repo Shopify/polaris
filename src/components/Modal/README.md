@@ -672,7 +672,7 @@ class ModalExample extends React.Component {
       <div style={{height: '500px'}}>
         <Button onClick={this.handleChange}>Open</Button>
         <Modal
-          open
+          open={active}
           title="Scrollable content"
           onClose={this.toggleModalVisibility}
           onScrolledToBottom={() => alert('Scrolled to bottom')}
