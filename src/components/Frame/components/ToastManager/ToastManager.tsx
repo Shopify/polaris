@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {createRef, memo} from 'react';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
 import {classNames} from '../../../../utilities/css';
 import EventListener from '../../../EventListener';
 import Portal from '../../../Portal';
 import {ToastPropsWithID} from '../../types';
 import Toast from '../Toast';
+import useDeepCompare from '../../../../hooks/use-deep-compare';
+import {useDeepCallback} from '../../../../utilities/use-deep-callback';
 
 import styles from './ToastManager.scss';
 
@@ -12,62 +14,61 @@ export interface Props {
   toastMessages: (ToastPropsWithID)[];
 }
 
-export default class ToastManager extends React.PureComponent<Props, never> {
-  private toastNodes: React.RefObject<HTMLDivElement>[] = [];
+function ToastManager({toastMessages}: Props) {
+  const toastNodes: React.RefObject<HTMLDivElement>[] = [];
 
-  componentDidUpdate() {
-    this.updateToasts();
-  }
-
-  render() {
-    const {toastMessages} = this.props;
-
-    const toastsMarkup = toastMessages.map((toast, index) => {
-      this.toastNodes[index] = React.createRef();
-
-      return (
-        <CSSTransition
-          key={toast.id}
-          timeout={{enter: 0, exit: 400}}
-          classNames={toastClasses}
-        >
-          <div ref={this.toastNodes[index]} aria-live="polite">
-            <Toast {...toast} />
-          </div>
-        </CSSTransition>
-      );
-    });
-
-    return (
-      <Portal idPrefix="toast-manager">
-        <EventListener event="resize" handler={this.updateToasts} />
-        <div className={styles.ToastManager}>
-          <TransitionGroup component={null}>{toastsMarkup}</TransitionGroup>
-        </div>
-      </Portal>
-    );
-  }
-
-  updateToasts = () => {
-    const {toastMessages} = this.props;
-
-    let targetInPos = 0;
-
-    toastMessages.forEach((_toast, i) => {
-      const currentToast = this.toastNodes[i].current;
-      if (currentToast) {
-        targetInPos += currentToast.clientHeight;
-        currentToast.style.setProperty(
+  const updateToasts = useDeepCallback(
+    () => {
+      let targetInPos = 0;
+      toastMessages.forEach((_, index) => {
+        const currentToast = toastNodes[index];
+        if (!currentToast.current) return;
+        targetInPos += currentToast.current.clientHeight;
+        currentToast.current.style.setProperty(
           '--toast-translate-y-in',
           `-${targetInPos}px`,
         );
-        currentToast.style.setProperty(
+        currentToast.current.style.setProperty(
           '--toast-translate-y-out',
           `${-targetInPos + 150}px`,
         );
-      }
-    });
-  };
+      });
+    },
+    [toastMessages, toastNodes],
+  );
+
+  useDeepCompare(
+    () => {
+      updateToasts();
+    },
+    [toastMessages],
+  );
+
+  const toastsMarkup = toastMessages.map((toast, index) => {
+    const toastNode = createRef<HTMLDivElement>();
+    toastNodes[index] = toastNode;
+
+    return (
+      <CSSTransition
+        key={toast.id}
+        timeout={{enter: 0, exit: 400}}
+        classNames={toastClasses}
+      >
+        <div ref={toastNode} aria-live="polite">
+          <Toast {...toast} />
+        </div>
+      </CSSTransition>
+    );
+  });
+
+  return (
+    <Portal idPrefix="toast-manager">
+      <EventListener event="resize" handler={updateToasts} />
+      <div className={styles.ToastManager}>
+        <TransitionGroup component={null}>{toastsMarkup}</TransitionGroup>
+      </div>
+    </Portal>
+  );
 }
 
 const toastClasses = {
@@ -75,3 +76,5 @@ const toastClasses = {
   enterDone: classNames(styles.ToastWrapper, styles['ToastWrapper-enter-done']),
   exit: classNames(styles.ToastWrapper, styles['ToastWrapper-exit']),
 };
+
+export default memo(ToastManager);

@@ -61,7 +61,8 @@ export default React.memo(function Toast(props: Props) {
         }
       };
     },
-    [appBridge, frame, props],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [appBridge, props],
   );
 
   return null;
