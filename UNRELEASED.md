@@ -18,6 +18,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Renamed `yarn run ts` to `yarn run type-check` to match most other Shopify projects
+
 ### Dependency upgrades
 
 ### Code quality

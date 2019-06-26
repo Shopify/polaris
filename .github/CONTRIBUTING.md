@@ -75,7 +75,7 @@ We’ll review your pull request and either merge it, request changes to it, or 
 1. If your pull request modifies any SVG files run `yarn optimize`
 1. Format your code with `yarn format`
 1. Make sure your code lints with `yarn lint`
-1. Run the TypeScript compiler with `yarn ts`
+1. Run the TypeScript compiler with `yarn type-check`
 1. [Tophat 🎩](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting.md) your changes locally with `yarn dev`
 1. If you haven’t already, [sign a CLA](https://cla.shopify.com/)
 
