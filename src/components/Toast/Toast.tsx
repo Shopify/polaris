@@ -1,9 +1,9 @@
-import React, {useContext, useEffect, useRef} from 'react';
+import React, {useContext, useRef} from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 
 import {DEFAULT_TOAST_DURATION, FrameContext, ToastProps} from '../Frame';
-import {usePolaris} from '../../hooks';
+import {usePolaris, useDeepCompare} from '../../hooks';
 
 const createId = createUniqueIDFactory('Toast');
 
@@ -19,7 +19,7 @@ export default React.memo(function Toast(props: Props) {
   const frame = useContext(FrameContext);
   const {appBridge} = usePolaris();
 
-  useEffect(
+  useDeepCompare(
     () => {
       const {
         error,
@@ -61,7 +61,6 @@ export default React.memo(function Toast(props: Props) {
         }
       };
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [appBridge, props],
   );
 
