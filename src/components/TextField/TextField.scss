@@ -289,7 +289,6 @@ $stacking-order: (
   );
   border: none;
   border-left: border(dark);
-  will-change: background, box-shadow;
   transition: background duration(fast) easing(),
     box-shadow duration(fast) easing();
 
