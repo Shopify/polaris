@@ -29,7 +29,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 ### Bug fixes
 
 - Fixes `monochrome` variant of `Link` and `Button` components to support multi-line link text ([#1686](https://github.com/Shopify/polaris-react/pull/1686))
-- Fixed the first column of `DataTable` not rendering in iOS Safari (([#1605](https://github.com/Shopify/polaris-react/pull/1605))
+- Fixed the first column of `DataTable` not rendering in iOS Safari ([#1605](https://github.com/Shopify/polaris-react/pull/1605))
 - Fixed paint loss on scroll of `TextField` `Spinner` ([#1740](https://github.com/Shopify/polaris-react/pull/1740))
 
 ### Documentation
