@@ -107,6 +107,16 @@
         "rollupButton": "Tindakan"
       }
     },
+    "Filters": {
+      "moreFilters": "Lebih banyak penapis",
+      "filter": "Penapis {resourceName}",
+      "noFiltersApplied": "Tiada penapis yang digunakan",
+      "cancel": "Batalkan",
+      "done": "Selesai",
+      "clearAllFilters": "Kosongkan semua penapis",
+      "clear": "Kosongkan",
+      "clearLabel": "Kosongkan {filterName}"
+    },
     "Modal": {
       "iFrameTitle": "penanda badan",
       "modalWarning": "Ciri-ciri yang diperlukan ini hilang daripada Modal: {missingProps}"
@@ -218,16 +228,6 @@
         "clearButtonLabel": "Kosongkan",
         "search": "Carian"
       }
-    },
-    "Filters": {
-      "moreFilters": "Lebih banyak penapis",
-      "filter": "Penapis {resourceName}",
-      "noFiltersApplied": "Tiada penapis yang digunakan",
-      "cancel": "Batalkan",
-      "done": "Selesai",
-      "clearAllFilters": "Kosongkan semua penapis",
-      "clear": "Kosongkan",
-      "clearLabel": "Kosongkan {filterName}"
     }
   }
 }
