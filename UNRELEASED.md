@@ -21,6 +21,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Development workflow
 
 - Renamed `yarn run ts` to `yarn run type-check` to match most other Shopify projects
+- Fixed deprecation notice in build ([#1754](https://github.com/Shopify/polaris-react/pull/1754))
 
 ### Dependency upgrades
 
