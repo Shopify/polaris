@@ -196,9 +196,6 @@
         }
       }
     },
-    "Sheet": {
-      "warningMessage": "O componente Planilha deve ser usado dentro do componente Quadro."
-    },
     "SkeletonPage": {
       "loadingLabel": "Página carregando"
     },
@@ -221,6 +218,16 @@
         "clearButtonLabel": "Limpar",
         "search": "Pesquisar"
       }
+    },
+    "Filters": {
+      "moreFilters": "Mais filtros",
+      "filter": "Filtrar {resourceName}",
+      "noFiltersApplied": "Nenhum filtro aplicado",
+      "cancel": "Cancelar",
+      "done": "Pronto",
+      "clearAllFilters": "Limpar todos os filtros",
+      "clear": "Limpar",
+      "clearLabel": "Limpar {filterName}"
     }
   }
 }

@@ -196,9 +196,6 @@
         }
       }
     },
-    "Sheet": {
-      "warningMessage": "Il componente Scheda deve essere utilizzato all'interno del componente Cornice."
-    },
     "SkeletonPage": {
       "loadingLabel": "Caricamento della pagina"
     },
@@ -221,6 +218,16 @@
         "clearButtonLabel": "Cancella",
         "search": "Cerca"
       }
+    },
+    "Filters": {
+      "moreFilters": "Più filtri",
+      "filter": "Filtra {resourceName}",
+      "noFiltersApplied": "Nessun filtro applicato",
+      "cancel": "Annulla",
+      "done": "Fatto",
+      "clearAllFilters": "Cancella tutti i filtri",
+      "clear": "Cancella",
+      "clearLabel": "Cancella {filterName}"
     }
   }
 }

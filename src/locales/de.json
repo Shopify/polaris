@@ -196,9 +196,6 @@
         }
       }
     },
-    "Sheet": {
-      "warningMessage": "Die Sheet-Komponente muss innerhalb der Frame-Komponente verwendet werden."
-    },
     "SkeletonPage": {
       "loadingLabel": "Seite wird geladen"
     },
@@ -221,6 +218,16 @@
         "clearButtonLabel": "Löschen",
         "search": "Suchen"
       }
+    },
+    "Filters": {
+      "moreFilters": "Weitere Filter",
+      "filter": "{resourceName} filtern",
+      "noFiltersApplied": "Keine Filter angewendet",
+      "cancel": "Abbrechen",
+      "done": "Fertig",
+      "clearAllFilters": "Alle Filter löschen",
+      "clear": "Löschen",
+      "clearLabel": "{filterName} löschen"
     }
   }
 }

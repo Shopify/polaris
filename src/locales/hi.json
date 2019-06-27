@@ -196,9 +196,6 @@
         }
       }
     },
-    "Sheet": {
-      "warningMessage": "शीट कंपोंनेंट का उपयोग फ़्रेम कंपोंनेंट के भीतर किया जाना चाहिए."
-    },
     "SkeletonPage": {
       "loadingLabel": "पेज लोड हो रहा है"
     },
@@ -221,6 +218,16 @@
         "clearButtonLabel": "मिटाएं",
         "search": "खोजें"
       }
+    },
+    "Filters": {
+      "moreFilters": "अधिक फ़िल्टर",
+      "filter": "फ़िल्टर {resourceName}",
+      "noFiltersApplied": "कोई फ़िल्टर लागू नहीं किए गए",
+      "cancel": "रद्द करें",
+      "done": "पूरा हुआ",
+      "clearAllFilters": "सभी फ़िल्टर मिटाएं",
+      "clear": "मिटाएं",
+      "clearLabel": "{filterName} मिटाएं"
     }
   }
 }

@@ -122,6 +122,17 @@
       }
     },
 
+    "Filters": {
+      "moreFilters": "More filters",
+      "filter": "Filter {resourceName}",
+      "noFiltersApplied": "No filters applied",
+      "cancel": "Cancel",
+      "done": "Done",
+      "clearAllFilters": "Clear all filters",
+      "clear": "Clear",
+      "clearLabel": "Clear {filterName}"
+    },
+
     "Modal": {
       "iFrameTitle": "body markup",
       "modalWarning": "These required properties are missing from Modal: {missingProps}"
@@ -220,10 +231,6 @@
           "on_or_after": "after {date}"
         }
       }
-    },
-
-    "Sheet": {
-      "warningMessage": "The Sheet component must be used within the Frame component."
     },
 
     "SkeletonPage": {

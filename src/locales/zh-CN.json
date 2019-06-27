@@ -196,9 +196,6 @@
         }
       }
     },
-    "Sheet": {
-      "warningMessage": "必须在 Frame 内使用 Sheet 组件。"
-    },
     "SkeletonPage": {
       "loadingLabel": "页面加载"
     },
@@ -221,6 +218,16 @@
         "clearButtonLabel": "清除",
         "search": "搜索"
       }
+    },
+    "Filters": {
+      "moreFilters": "更多筛选器",
+      "filter": "筛选 {resourceName}",
+      "noFiltersApplied": "未应用筛选器",
+      "cancel": "取消",
+      "done": "已完成",
+      "clearAllFilters": "清除所有筛选条件",
+      "clear": "清除",
+      "clearLabel": "清除 {filterName}"
     }
   }
 }

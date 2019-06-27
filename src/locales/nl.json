@@ -196,9 +196,6 @@
         }
       }
     },
-    "Sheet": {
-      "warningMessage": "De Blad-component moet binnen de Frame-component worden gebruikt."
-    },
     "SkeletonPage": {
       "loadingLabel": "Pagina is aan het laden"
     },
@@ -221,6 +218,16 @@
         "clearButtonLabel": "Wissen",
         "search": "Zoeken"
       }
+    },
+    "Filters": {
+      "moreFilters": "Meer filters",
+      "filter": "Filter {resourceName}",
+      "noFiltersApplied": "Geen filters toegepast",
+      "cancel": "Annuleren",
+      "done": "Gereed",
+      "clearAllFilters": "Alle filters wissen",
+      "clear": "Wissen",
+      "clearLabel": "{filterName} wissen"
     }
   }
 }
