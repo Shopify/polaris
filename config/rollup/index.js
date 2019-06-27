@@ -33,9 +33,7 @@ module.exports = function createRollupConfig({entry, cssPath}) {
     plugins: [
       json(),
       nodeResolve({
-        module: true,
-        jsnext: true,
-        main: true,
+        mainFields: ['module', 'jsnext:main', 'main'],
         customResolveOptions: {
           moduleDirectory: ['../build-intermediate', 'node_modules'],
         },
