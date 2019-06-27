@@ -9,8 +9,6 @@ const {dependencies, peerDependencies} = require('../../package.json');
 const styles = require('./plugins/styles');
 const image = require('./plugins/image');
 
-const getNamespacedClassName = require('./namespaced-classname');
-
 const project = resolve(__dirname, '../..');
 const buildRoot = resolve(project, './build-intermediate');
 const styleRoot = resolve(buildRoot, './styles');
@@ -53,7 +51,6 @@ module.exports = function createRollupConfig({entry, cssPath}) {
         output: cssPath,
         includePaths: [styleRoot],
         includeAlways: sassResources,
-        generateScopedName: getNamespacedClassName,
       }),
       image({
         exclude: ['node_modules/**'],

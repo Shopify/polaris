@@ -1,7 +1,7 @@
 const {resolve: resolvePath, dirname} = require('path');
 const postcss = require('postcss');
-const {readFileSync, ensureDirSync, writeFile} = require('fs-extra');
-const {render} = require('node-sass');
+const {readFileSync, outputFileSync} = require('fs-extra');
+const {renderSync} = require('node-sass');
 const {createFilter} = require('rollup-pluginutils');
 const cssnano = require('cssnano');
 
@@ -11,31 +11,17 @@ const cssModulesScope = require('postcss-modules-scope');
 const cssModulesValues = require('postcss-modules-values');
 const Parser = require('postcss-modules-parser');
 const postcssShopify = require('postcss-shopify');
-const genericNames = require('generic-names');
+
+const generateScopedName = require('../namespaced-classname');
 
 module.exports = function styles(options = {}) {
   const filter = createFilter(
     options.include || ['**/*.css', '**/*.scss'],
     options.exclude,
   );
-  const {
-    output,
-    includePaths = [],
-    includeAlways = [],
-    generateScopedName: userGenerateScopedName,
-  } = options;
-  const cssAndTokensByFile = {};
 
-  const generateScopedName =
-    typeof userGenerateScopedName === 'function'
-      ? userGenerateScopedName
-      : genericNames(
-          userGenerateScopedName ||
-            '[path]___[name]___[local]___[hash:base64:5]',
-          {
-            context: process.cwd(),
-          },
-        );
+  const {output, includePaths = [], includeAlways = []} = options;
+  const cssAndTokensByFile = {};
 
   const includeAlwaysSource = includeAlways
     .map((resource) => readFileSync(resource, 'utf8'))
@@ -65,53 +51,21 @@ module.exports = function styles(options = {}) {
         return null;
       }
 
-      return new Promise((resolve, reject) => {
-        render(
-          {
-            data: `${includeAlwaysSource}\n${source}`,
-            includePaths: includePaths.concat(dirname(id)),
-          },
-          (error, result) => {
-            if (error) {
-              reject(error);
-              return;
-            }
+      const sassOutput = renderSync({
+        data: `${includeAlwaysSource}\n${source}`,
+        includePaths: includePaths.concat(dirname(id)),
+      }).css.toString();
+      const postCssOutput = getPostCSSOutput(processor, sassOutput, id);
 
-            const sassOutput = result.css.toString();
-            resolve(getPostCSSOutput(processor, sassOutput, id));
-          },
-        );
-      }).then((postCssOutput) => {
-        cssAndTokensByFile[id] = postCssOutput;
+      cssAndTokensByFile[id] = postCssOutput;
 
-        const properties = Object.keys(postCssOutput.tokens)
-          .map(
-            (className) =>
-              `  ${JSON.stringify(className)}: ${JSON.stringify(
-                postCssOutput.tokens[className],
-              )},`,
-          )
-          .join('\n');
-
-        return `export default {\n${properties}\n};`;
-      });
+      const properties = JSON.stringify(postCssOutput.tokens, null, 2);
+      return `export default ${properties};`;
     },
-    generateBundle(generateOptions, bundles) {
-      if (output === false) {
+    async generateBundle(generateOptions, bundles) {
+      if (typeof output !== 'string') {
         return null;
       }
-
-      const jsDestination = generateOptions.dest || 'bundle.js';
-      let cssDestination = typeof output === 'string' ? output : null;
-
-      if (cssDestination == null) {
-        cssDestination = jsDestination.endsWith('.js')
-          ? `${jsDestination.slice(0, -3)}.css`
-          : `${jsDestination}.css`;
-      }
-
-      const minifiedCSSDestination = `${cssDestination.slice(0, -4)}.min.css`;
-      const tokensDestination = `${cssDestination.slice(0, -4)}.tokens.json`;
 
       // Items are added to cssAndTokensByFile in an unspecified order as
       // whatever transform gets resolved first appears first. The contents of
@@ -138,39 +92,19 @@ module.exports = function styles(options = {}) {
         {cssArray: [], tokensByFile: {}},
       );
       const css = cssArray.join('\n\n');
+      const tokens = `${JSON.stringify(tokensByFile, null, 2)}\n`;
+      const minifiedCss = (await cssnano.process(css, {
+        from: generateOptions.file,
+      })).css;
 
-      ensureDirSync(dirname(cssDestination));
-
-      return Promise.all([
-        write(cssDestination, css),
-        write(tokensDestination, `${JSON.stringify(tokensByFile, null, 2)}\n`),
-        cssnano
-          .process(css, {from: generateOptions.file})
-          .then((result) => write(minifiedCSSDestination, result.css)),
-      ]);
+      outputFileSync(output, css);
+      outputFileSync(`${output.slice(0, -4)}.min.css`, minifiedCss);
+      outputFileSync(`${output.slice(0, -4)}.tokens.json`, tokens);
     },
   };
 };
 
-function write(file, content) {
-  return new Promise((resolve, reject) => {
-    writeFile(file, content, (error) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve();
-      }
-    });
-  });
-}
-
 function getPostCSSOutput(processor, source, path) {
-  return processor
-    .process(source, {
-      from: path,
-    })
-    .then(({css, root: {tokens}}) => ({
-      css,
-      tokens,
-    }));
+  const result = processor.process(source, {from: path});
+  return {path, css: result.css, tokens: result.root.tokens};
 }
