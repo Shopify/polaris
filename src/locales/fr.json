@@ -107,6 +107,16 @@
         "rollupButton": "Actions"
       }
     },
+    "Filters": {
+      "moreFilters": "Plus de filtres",
+      "filter": "Filtre {resourceName}",
+      "noFiltersApplied": "Aucun filtre appliqué",
+      "cancel": "Annuler",
+      "done": "Terminé",
+      "clearAllFilters": "Effacer tous les filtres",
+      "clear": "Effacer",
+      "clearLabel": "Effacer {filterName}"
+    },
     "Modal": {
       "iFrameTitle": "balisage du corps",
       "modalWarning": "Ces propriétés obligatoires manquent dans la fenêtre modale : {missingProps}"
@@ -218,16 +228,6 @@
         "clearButtonLabel": "Effacer",
         "search": "Recherche"
       }
-    },
-    "Filters": {
-      "moreFilters": "Plus de filtres",
-      "filter": "Filtre {resourceName}",
-      "noFiltersApplied": "Aucun filtre appliqué",
-      "cancel": "Annuler",
-      "done": "Terminé",
-      "clearAllFilters": "Effacer tous les filtres",
-      "clear": "Effacer",
-      "clearLabel": "Effacer {filterName}"
     }
   }
 }

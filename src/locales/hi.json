@@ -107,6 +107,16 @@
         "rollupButton": "कार्रवाई"
       }
     },
+    "Filters": {
+      "moreFilters": "अधिक फ़िल्टर",
+      "filter": "फ़िल्टर {resourceName}",
+      "noFiltersApplied": "कोई फ़िल्टर लागू नहीं किए गए",
+      "cancel": "रद्द करें",
+      "done": "पूरा हुआ",
+      "clearAllFilters": "सभी फ़िल्टर मिटाएं",
+      "clear": "मिटाएं",
+      "clearLabel": "{filterName} मिटाएं"
+    },
     "Modal": {
       "iFrameTitle": "बॉडी मार्कअप",
       "modalWarning": "मॉडल में ये आवश्यक विशेषताएं नहीं हैं: {missingProps}"
@@ -218,16 +228,6 @@
         "clearButtonLabel": "मिटाएं",
         "search": "खोजें"
       }
-    },
-    "Filters": {
-      "moreFilters": "अधिक फ़िल्टर",
-      "filter": "फ़िल्टर {resourceName}",
-      "noFiltersApplied": "कोई फ़िल्टर लागू नहीं किए गए",
-      "cancel": "रद्द करें",
-      "done": "पूरा हुआ",
-      "clearAllFilters": "सभी फ़िल्टर मिटाएं",
-      "clear": "मिटाएं",
-      "clearLabel": "{filterName} मिटाएं"
     }
   }
 }

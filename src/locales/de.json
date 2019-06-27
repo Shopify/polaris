@@ -107,6 +107,16 @@
         "rollupButton": "Aktionen"
       }
     },
+    "Filters": {
+      "moreFilters": "Weitere Filter",
+      "filter": "{resourceName} filtern",
+      "noFiltersApplied": "Keine Filter angewendet",
+      "cancel": "Abbrechen",
+      "done": "Fertig",
+      "clearAllFilters": "Alle Filter löschen",
+      "clear": "Löschen",
+      "clearLabel": "{filterName} löschen"
+    },
     "Modal": {
       "iFrameTitle": "Text-Markup",
       "modalWarning": "Diese erforderlichen Eigenschaften fehlen im Modus: {missingProps}"
@@ -218,16 +228,6 @@
         "clearButtonLabel": "Löschen",
         "search": "Suchen"
       }
-    },
-    "Filters": {
-      "moreFilters": "Weitere Filter",
-      "filter": "{resourceName} filtern",
-      "noFiltersApplied": "Keine Filter angewendet",
-      "cancel": "Abbrechen",
-      "done": "Fertig",
-      "clearAllFilters": "Alle Filter löschen",
-      "clear": "Löschen",
-      "clearLabel": "{filterName} löschen"
     }
   }
 }

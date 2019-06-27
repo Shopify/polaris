@@ -107,6 +107,16 @@
         "rollupButton": "アクション"
       }
     },
+    "Filters": {
+      "moreFilters": "細かい絞り込み",
+      "filter": "フィルター{resourceName}",
+      "noFiltersApplied": "絞り込みが適用されていません",
+      "cancel": "キャンセルする",
+      "done": "完了",
+      "clearAllFilters": "すべての絞り込みをクリアする",
+      "clear": "クリア",
+      "clearLabel": "{filterName}をクリアする"
+    },
     "Modal": {
       "iFrameTitle": "ボディのマークアップ",
       "modalWarning": "これらの必要なプロパティがモーダルにありません: {missingProps}"
@@ -218,16 +228,6 @@
         "clearButtonLabel": "クリア",
         "search": "検索"
       }
-    },
-    "Filters": {
-      "moreFilters": "細かい絞り込み",
-      "filter": "フィルター{resourceName}",
-      "noFiltersApplied": "絞り込みが適用されていません",
-      "cancel": "キャンセルする",
-      "done": "完了",
-      "clearAllFilters": "すべての絞り込みをクリアする",
-      "clear": "クリア",
-      "clearLabel": "{filterName}をクリアする"
     }
   }
 }

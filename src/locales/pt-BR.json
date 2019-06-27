@@ -107,6 +107,16 @@
         "rollupButton": "Ações"
       }
     },
+    "Filters": {
+      "moreFilters": "Mais filtros",
+      "filter": "Filtrar {resourceName}",
+      "noFiltersApplied": "Nenhum filtro aplicado",
+      "cancel": "Cancelar",
+      "done": "Pronto",
+      "clearAllFilters": "Limpar todos os filtros",
+      "clear": "Limpar",
+      "clearLabel": "Limpar {filterName}"
+    },
     "Modal": {
       "iFrameTitle": "marcação de corpo",
       "modalWarning": "Essas propriedades obrigatórias estão faltando no Modal: {missingProps}"
@@ -218,16 +228,6 @@
         "clearButtonLabel": "Limpar",
         "search": "Pesquisar"
       }
-    },
-    "Filters": {
-      "moreFilters": "Mais filtros",
-      "filter": "Filtrar {resourceName}",
-      "noFiltersApplied": "Nenhum filtro aplicado",
-      "cancel": "Cancelar",
-      "done": "Pronto",
-      "clearAllFilters": "Limpar todos os filtros",
-      "clear": "Limpar",
-      "clearLabel": "Limpar {filterName}"
     }
   }
 }

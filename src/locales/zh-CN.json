@@ -107,6 +107,16 @@
         "rollupButton": "编辑"
       }
     },
+    "Filters": {
+      "moreFilters": "更多筛选器",
+      "filter": "筛选 {resourceName}",
+      "noFiltersApplied": "未应用筛选器",
+      "cancel": "取消",
+      "done": "已完成",
+      "clearAllFilters": "清除所有筛选条件",
+      "clear": "清除",
+      "clearLabel": "清除 {filterName}"
+    },
     "Modal": {
       "iFrameTitle": "正文标记",
       "modalWarning": "模态缺少这些必需的属性：{missingProps}"
@@ -218,16 +228,6 @@
         "clearButtonLabel": "清除",
         "search": "搜索"
       }
-    },
-    "Filters": {
-      "moreFilters": "更多筛选器",
-      "filter": "筛选 {resourceName}",
-      "noFiltersApplied": "未应用筛选器",
-      "cancel": "取消",
-      "done": "已完成",
-      "clearAllFilters": "清除所有筛选条件",
-      "clear": "清除",
-      "clearLabel": "清除 {filterName}"
     }
   }
 }
