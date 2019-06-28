@@ -64,9 +64,10 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
   private contentNode = createRef<HTMLDivElement>();
 
   changeTransitionStatus(transitionStatus: TransitionStatus, cb?: () => void) {
-    requestAnimationFrame(() => {
-      this.setState({transitionStatus}, cb);
-    });
+    this.setState({transitionStatus}, cb);
+    // Forcing a reflow to enable the animation
+    this.contentNode.current &&
+      this.contentNode.current.getBoundingClientRect();
   }
 
   componentDidMount() {
