@@ -58,6 +58,16 @@ describe('<FilterCreator />', () => {
     },
     disabled: false,
   };
+  let requestAnimationFrameSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    requestAnimationFrameSpy = jest.spyOn(window, 'requestAnimationFrame');
+    requestAnimationFrameSpy.mockImplementation((cb) => cb());
+  });
+
+  afterEach(() => {
+    requestAnimationFrameSpy.mockRestore();
+  });
 
   it('renders just a button by default', () => {
     const wrapper = mountWithAppProvider(
