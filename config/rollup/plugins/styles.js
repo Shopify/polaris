@@ -1,7 +1,8 @@
+const {promisify} = require('util');
 const {resolve: resolvePath, dirname} = require('path');
 const postcss = require('postcss');
-const {readFileSync, outputFileSync} = require('fs-extra');
-const {renderSync} = require('node-sass');
+const {ensureDir, readFileSync, writeFile} = require('fs-extra');
+const nodeSass = require('node-sass');
 const {createFilter} = require('rollup-pluginutils');
 const cssnano = require('cssnano');
 
@@ -14,6 +15,7 @@ const postcssShopify = require('postcss-shopify');
 
 const generateScopedName = require('../namespaced-classname');
 
+const renderSass = promisify(nodeSass.render);
 module.exports = function styles(options = {}) {
   const filter = createFilter(
     options.include || ['**/*.css', '**/*.scss'],
@@ -46,22 +48,24 @@ module.exports = function styles(options = {}) {
   return {
     name: 'shopify-styles',
 
-    transform(source, id) {
+    async transform(source, id) {
       if (!filter(id)) {
         return null;
       }
 
-      const sassOutput = renderSync({
+      const sassOutput = await renderSass({
         data: `${includeAlwaysSource}\n${source}`,
         includePaths: includePaths.concat(dirname(id)),
-      }).css.toString();
-      const postCssOutput = getPostCSSOutput(processor, sassOutput, id);
+      }).then((result) => result.css.toString());
+
+      const postCssOutput = await getPostCSSOutput(processor, sassOutput, id);
 
       cssAndTokensByFile[id] = postCssOutput;
 
       const properties = JSON.stringify(postCssOutput.tokens, null, 2);
       return `export default ${properties};`;
     },
+
     async generateBundle(generateOptions, bundles) {
       if (typeof output !== 'string') {
         return null;
@@ -97,14 +101,18 @@ module.exports = function styles(options = {}) {
         from: generateOptions.file,
       })).css;
 
-      outputFileSync(output, css);
-      outputFileSync(`${output.slice(0, -4)}.min.css`, minifiedCss);
-      outputFileSync(`${output.slice(0, -4)}.tokens.json`, tokens);
+      await ensureDir(dirname(output));
+      await Promise.all([
+        writeFile(output, css),
+        writeFile(`${output.slice(0, -4)}.min.css`, minifiedCss),
+        writeFile(`${output.slice(0, -4)}.tokens.json`, tokens),
+      ]);
     },
   };
 };
 
 function getPostCSSOutput(processor, source, path) {
-  const result = processor.process(source, {from: path});
-  return {path, css: result.css, tokens: result.root.tokens};
+  return processor
+    .process(source, {from: path})
+    .then(({css, root: {tokens}}) => ({css, tokens}));
 }
