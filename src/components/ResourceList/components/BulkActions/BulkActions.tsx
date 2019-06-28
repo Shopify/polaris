@@ -1,7 +1,7 @@
-import React from 'react';
-import {CSSTransition, Transition} from 'react-transition-group';
+import React, {createRef} from 'react';
 import debounce from 'lodash/debounce';
 import {durationBase} from '@shopify/polaris-tokens';
+import {CSSTransition, Transition} from '@material-ui/react-transition-group';
 import {classNames} from '../../../../utilities/css';
 import {DisableableAction, Action, ActionListSection} from '../../../../types';
 import ActionList from '../../../ActionList';
@@ -76,6 +76,9 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
   private containerNode: HTMLElement | null;
   private largeScreenButtonsNode: HTMLElement | null;
   private moreActionsNode: HTMLElement | null;
+  private checkableWrapperNode = createRef<HTMLDivElement>();
+  private largeScreenGroupNode = createRef<HTMLDivElement>();
+  private smallScreenGroupNode = createRef<HTMLDivElement>();
   private promotedActionsWidths: number[] = [];
   private bulkActionsWidth = 0;
   private addedMoreActionsWidthForMeasuring = 0;
@@ -360,7 +363,12 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     };
 
     const smallScreenGroup = (
-      <Transition timeout={0} in={selectMode} key="smallGroup">
+      <Transition
+        timeout={0}
+        in={selectMode}
+        key="smallGroup"
+        findDOMNode={this.findSmallScreenGroupNode}
+      >
         {(status: TransitionStatus) => {
           const smallScreenGroupClassName = classNames(
             styles.Group,
@@ -368,15 +376,24 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
             styles[`Group-${status}`],
           );
           return (
-            <div className={smallScreenGroupClassName}>
+            <div
+              className={smallScreenGroupClassName}
+              ref={this.smallScreenGroupNode}
+            >
               <div className={styles.ButtonGroup}>
                 <CSSTransition
+                  findDOMNode={this.findCheckableWrapperNode}
                   in={selectMode}
                   timeout={durationBase}
                   classNames={slideClasses}
                   appear
                 >
-                  <CheckableButton {...checkableButtonProps} />
+                  <div
+                    className={styles.CheckableContainer}
+                    ref={this.checkableWrapperNode}
+                  >
+                    <CheckableButton {...checkableButtonProps} />
+                  </div>
                 </CSSTransition>
                 {allActionsPopover}
                 {cancelButton}
@@ -389,7 +406,12 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     );
 
     const largeScreenGroup = (
-      <Transition timeout={0} in={selectMode} key="largeGroup">
+      <Transition
+        timeout={0}
+        in={selectMode}
+        key="largeGroup"
+        findDOMNode={this.findLargeScreenGroupNode}
+      >
         {(status: TransitionStatus) => {
           const largeScreenGroupClassName = classNames(
             styles.Group,
@@ -398,7 +420,10 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
             measuring && styles['Group-measuring'],
           );
           return (
-            <div className={largeScreenGroupClassName}>
+            <div
+              className={largeScreenGroupClassName}
+              ref={this.largeScreenGroupNode}
+            >
               <EventListener event="resize" handler={this.handleResize} />
               <div
                 className={styles.ButtonGroup}
@@ -459,6 +484,18 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     if (measuring) {
       this.promotedActionsWidths.push(width);
     }
+  };
+
+  private findLargeScreenGroupNode = () => {
+    return this.largeScreenGroupNode.current;
+  };
+
+  private findCheckableWrapperNode = () => {
+    return this.checkableWrapperNode.current;
+  };
+
+  private findSmallScreenGroupNode = () => {
+    return this.smallScreenGroupNode.current;
   };
 }
 
