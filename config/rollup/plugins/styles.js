@@ -16,6 +16,7 @@ const postcssShopify = require('postcss-shopify');
 const generateScopedName = require('../namespaced-classname');
 
 const renderSass = promisify(nodeSass.render);
+
 module.exports = function styles(options = {}) {
   const filter = createFilter(
     options.include || ['**/*.css', '**/*.scss'],
@@ -67,8 +68,15 @@ module.exports = function styles(options = {}) {
     },
 
     async generateBundle(generateOptions, bundles) {
+      // generateBundle gets called once per call to bundle.write(). We call
+      // that twice - one for the cjs build (polaris.js), one for the esm build
+      // (polaris.es.js). We only want to do perform this logic once though
+      if (generateOptions.file.endsWith('/polaris.js')) {
+        return;
+      }
+
       if (typeof output !== 'string') {
-        return null;
+        return;
       }
 
       // Items are added to cssAndTokensByFile in an unspecified order as
