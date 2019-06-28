@@ -1,7 +1,8 @@
+const {promisify} = require('util');
 const {resolve: resolvePath, dirname} = require('path');
 const postcss = require('postcss');
-const {readFileSync, ensureDirSync, writeFile} = require('fs-extra');
-const {render} = require('node-sass');
+const {ensureDir, readFileSync, writeFile} = require('fs-extra');
+const nodeSass = require('node-sass');
 const {createFilter} = require('rollup-pluginutils');
 const cssnano = require('cssnano');
 
@@ -11,31 +12,19 @@ const cssModulesScope = require('postcss-modules-scope');
 const cssModulesValues = require('postcss-modules-values');
 const Parser = require('postcss-modules-parser');
 const postcssShopify = require('postcss-shopify');
-const genericNames = require('generic-names');
+
+const generateScopedName = require('../namespaced-classname');
+
+const renderSass = promisify(nodeSass.render);
 
 module.exports = function styles(options = {}) {
   const filter = createFilter(
     options.include || ['**/*.css', '**/*.scss'],
     options.exclude,
   );
-  const {
-    output,
-    includePaths = [],
-    includeAlways = [],
-    generateScopedName: userGenerateScopedName,
-  } = options;
-  const cssAndTokensByFile = {};
 
-  const generateScopedName =
-    typeof userGenerateScopedName === 'function'
-      ? userGenerateScopedName
-      : genericNames(
-          userGenerateScopedName ||
-            '[path]___[name]___[local]___[hash:base64:5]',
-          {
-            context: process.cwd(),
-          },
-        );
+  const {output, includePaths = [], includeAlways = []} = options;
+  const cssAndTokensByFile = {};
 
   const includeAlwaysSource = includeAlways
     .map((resource) => readFileSync(resource, 'utf8'))
@@ -60,58 +49,35 @@ module.exports = function styles(options = {}) {
   return {
     name: 'shopify-styles',
 
-    transform(source, id) {
+    async transform(source, id) {
       if (!filter(id)) {
         return null;
       }
 
-      return new Promise((resolve, reject) => {
-        render(
-          {
-            data: `${includeAlwaysSource}\n${source}`,
-            includePaths: includePaths.concat(dirname(id)),
-          },
-          (error, result) => {
-            if (error) {
-              reject(error);
-              return;
-            }
+      const sassOutput = await renderSass({
+        data: `${includeAlwaysSource}\n${source}`,
+        includePaths: includePaths.concat(dirname(id)),
+      }).then((result) => result.css.toString());
 
-            const sassOutput = result.css.toString();
-            resolve(getPostCSSOutput(processor, sassOutput, id));
-          },
-        );
-      }).then((postCssOutput) => {
-        cssAndTokensByFile[id] = postCssOutput;
+      const postCssOutput = await getPostCSSOutput(processor, sassOutput, id);
 
-        const properties = Object.keys(postCssOutput.tokens)
-          .map(
-            (className) =>
-              `  ${JSON.stringify(className)}: ${JSON.stringify(
-                postCssOutput.tokens[className],
-              )},`,
-          )
-          .join('\n');
+      cssAndTokensByFile[id] = postCssOutput;
 
-        return `export default {\n${properties}\n};`;
-      });
+      const properties = JSON.stringify(postCssOutput.tokens, null, 2);
+      return `export default ${properties};`;
     },
-    generateBundle(generateOptions, bundles) {
-      if (output === false) {
-        return null;
+
+    async generateBundle(generateOptions, bundles) {
+      // generateBundle gets called once per call to bundle.write(). We call
+      // that twice - one for the cjs build (polaris.js), one for the esm build
+      // (polaris.es.js). We only want to do perform this logic once though
+      if (generateOptions.file.endsWith('/polaris.js')) {
+        return;
       }
 
-      const jsDestination = generateOptions.dest || 'bundle.js';
-      let cssDestination = typeof output === 'string' ? output : null;
-
-      if (cssDestination == null) {
-        cssDestination = jsDestination.endsWith('.js')
-          ? `${jsDestination.slice(0, -3)}.css`
-          : `${jsDestination}.css`;
+      if (typeof output !== 'string') {
+        return;
       }
-
-      const minifiedCSSDestination = `${cssDestination.slice(0, -4)}.min.css`;
-      const tokensDestination = `${cssDestination.slice(0, -4)}.tokens.json`;
 
       // Items are added to cssAndTokensByFile in an unspecified order as
       // whatever transform gets resolved first appears first. The contents of
@@ -138,39 +104,23 @@ module.exports = function styles(options = {}) {
         {cssArray: [], tokensByFile: {}},
       );
       const css = cssArray.join('\n\n');
+      const tokens = `${JSON.stringify(tokensByFile, null, 2)}\n`;
+      const minifiedCss = (await cssnano.process(css, {
+        from: generateOptions.file,
+      })).css;
 
-      ensureDirSync(dirname(cssDestination));
-
-      return Promise.all([
-        write(cssDestination, css),
-        write(tokensDestination, `${JSON.stringify(tokensByFile, null, 2)}\n`),
-        cssnano
-          .process(css, {from: generateOptions.file})
-          .then((result) => write(minifiedCSSDestination, result.css)),
+      await ensureDir(dirname(output));
+      await Promise.all([
+        writeFile(output, css),
+        writeFile(`${output.slice(0, -4)}.min.css`, minifiedCss),
+        writeFile(`${output.slice(0, -4)}.tokens.json`, tokens),
       ]);
     },
   };
 };
 
-function write(file, content) {
-  return new Promise((resolve, reject) => {
-    writeFile(file, content, (error) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve();
-      }
-    });
-  });
-}
-
 function getPostCSSOutput(processor, source, path) {
   return processor
-    .process(source, {
-      from: path,
-    })
-    .then(({css, root: {tokens}}) => ({
-      css,
-      tokens,
-    }));
+    .process(source, {from: path})
+    .then(({css, root: {tokens}}) => ({css, tokens}));
 }
