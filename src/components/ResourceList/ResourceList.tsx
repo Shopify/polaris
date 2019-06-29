@@ -1,7 +1,6 @@
 import React from 'react';
 
 import debounce from 'lodash/debounce';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -13,19 +12,21 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
+import {
+  ResourceListContext,
+  SelectedItems,
+  SELECT_ALL_ITEMS,
+} from '../../utilities/resource-list';
 import Select, {SelectOption} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
+import ResourceItem from '../ResourceItem';
 
 import {
   BulkActions,
   BulkActionsProps,
   CheckableButton,
   FilterControl,
-  Item,
 } from './components';
-import {ResourceListContext} from './context';
-
-import {SelectedItems, SELECT_ALL_ITEMS} from './types';
 
 import styles from './ResourceList.scss';
 
@@ -84,11 +85,9 @@ export interface Props {
 
 type CombinedProps = Props & WithAppProviderProps;
 
-const getUniqueID = createUniqueIDFactory('Select');
-
 class ResourceList extends React.Component<CombinedProps, State> {
-  static Item: typeof Item = Item;
-  static FilterControl: typeof FilterControl = FilterControl;
+  static Item = ResourceItem;
+  static FilterControl = FilterControl;
 
   private defaultResourceName: {singular: string; plural: string};
   private listRef: React.RefObject<HTMLUListElement> = React.createRef();
@@ -387,21 +386,12 @@ class ResourceList extends React.Component<CombinedProps, State> {
       </div>
     ) : null;
 
-    const selectId = getUniqueID();
-
-    const sortingLabelMarkup = (
-      <label className={styles.SortLabel} htmlFor={selectId}>
-        {intl.translate('Polaris.ResourceList.sortingLabel')}
-      </label>
-    );
-
     const sortingSelectMarkup =
       sortOptions && sortOptions.length > 0 && !alternateTool ? (
         <div className={styles.SortWrapper}>
-          {sortingLabelMarkup}
           <Select
             label={intl.translate('Polaris.ResourceList.sortingLabel')}
-            labelHidden
+            labelInline
             options={sortOptions}
             onChange={onSortChange}
             value={sortValue}

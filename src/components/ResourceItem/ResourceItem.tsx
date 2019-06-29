@@ -2,24 +2,27 @@ import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
-import {classNames} from '../../../../utilities/css';
-import {DisableableAction} from '../../../../types';
-import ActionList from '../../../ActionList';
-import Popover from '../../../Popover';
-import {Props as AvatarProps} from '../../../Avatar';
-import UnstyledLink from '../../../UnstyledLink';
-import {Props as ThumbnailProps} from '../../../Thumbnail';
-import ButtonGroup from '../../../ButtonGroup';
-import Checkbox from '../../../Checkbox';
-import Button, {buttonsFrom} from '../../../Button';
+import {classNames} from '../../utilities/css';
+import {DisableableAction} from '../../types';
+import ActionList from '../ActionList';
+import Popover from '../Popover';
+import {Props as AvatarProps} from '../Avatar';
+import UnstyledLink from '../UnstyledLink';
+import {Props as ThumbnailProps} from '../Thumbnail';
+import ButtonGroup from '../ButtonGroup';
+import Checkbox from '../Checkbox';
+import Button, {buttonsFrom} from '../Button';
 import {
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../utilities/with-app-provider';
+} from '../../utilities/with-app-provider';
 
-import {SELECT_ALL_ITEMS, SelectedItems} from '../../types';
-import {ResourceListContext} from '../../context';
-import styles from './Item.scss';
+import {
+  ResourceListContext,
+  SELECT_ALL_ITEMS,
+  SelectedItems,
+} from '../../utilities/resource-list';
+import styles from './ResourceItem.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';
@@ -29,7 +32,7 @@ interface WithContextTypes<IJ> {
   context: IJ;
 }
 
-export interface BaseProps {
+export interface Props {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Id of the element the item onClick controls */
@@ -38,24 +41,33 @@ export interface BaseProps {
   ariaExpanded?: boolean;
   /** Unique identifier for the item */
   id: string;
+  /** Content for the media area at the left of the item, usually an Avatar or Thumbnail */
   media?: React.ReactElement<AvatarProps | ThumbnailProps>;
+  /** Makes the shortcut actions always visible */
   persistActions?: boolean;
+  /** 1 or 2 shortcut actions; must be available on the page linked to by url */
   shortcutActions?: DisableableAction[];
+  /** The order the item is rendered */
   sortOrder?: number;
+  /** URL for the resource’s details page (required unless onClick is provided) */
+  url?: string;
+  /** Callback when clicked (required if url is omitted) */
+  onClick?(id?: string): void;
+  /** Content for the details area */
   children?: React.ReactNode;
 }
 
-export interface PropsWithUrl extends BaseProps {
+export interface PropsWithUrl extends Props {
   url: string;
   onClick?(id?: string): void;
 }
 
-export interface PropsWithClick extends BaseProps {
+export interface PropsWithClick extends Props {
   url?: string;
   onClick(id?: string): void;
 }
 
-export type Props = PropsWithUrl | PropsWithClick;
+export type ConditionalProps = PropsWithUrl | PropsWithClick;
 
 interface State {
   actionsMenuVisible: boolean;
@@ -75,7 +87,7 @@ export type CombinedProps =
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 const getUniqueOverlayID = createUniqueIDFactory('ResourceListItemOverlay');
 
-export class BaseItem extends React.Component<CombinedProps, State> {
+class BaseResourceItem extends React.Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
     const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
 
@@ -187,7 +199,7 @@ export class BaseItem extends React.Component<CombinedProps, State> {
     }
 
     const className = classNames(
-      styles.Item,
+      styles.ResourceItem,
       focused && styles.focused,
       selectable && styles.selectable,
       selected && styles.selected,
@@ -422,12 +434,12 @@ function isSelected(id: string, selectedItems?: SelectedItems) {
   );
 }
 
-function Item(props: CombinedProps) {
+function ResourceItem(props: CombinedProps) {
   return (
     <ResourceListContext.Consumer>
-      {(context) => <BaseItem {...props} context={context} />}
+      {(context) => <BaseResourceItem {...props} context={context} />}
     </ResourceListContext.Consumer>
   );
 }
 
-export default withAppProvider<Props>()(Item);
+export default withAppProvider<Props>()(ResourceItem);

@@ -12,7 +12,7 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import {ResourceListContext} from '../ResourceList';
+import {ResourceListContext} from '../../utilities/resource-list';
 import Button from '../Button';
 import DisplayText from '../DisplayText';
 import Collapsible from '../Collapsible';

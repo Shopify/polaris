@@ -33,6 +33,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Improved color contrast of links inside `Banner` ([#1651](https://github.com/Shopify/polaris-react/pull/1651))
 - Add underline to Links and Plain button on hover, so it doesn't rely on color alone for accessibility ([#1885](https://github.com/Shopify/polaris-react/pull/1885))
 - Add `onQueryFocus` callback prop to the `Filters` component ([#1948](https://github.com/Shopify/polaris-react/pull/1948))
+- Moved `ResourceItem` to its own component ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
+- Updated `ResourceList` sort to show an inline label ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
 
 ### Bug fixes
 
@@ -51,6 +53,9 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Updated example section to include new examples and remove old ones ([#1979](https://github.com/Shopify/polaris-react/pull/1979))
 - Updated `AppProvider` app bridge example to use our `AppBridgeContext`([#1877](https://github.com/Shopify/polaris-react/pull/1877))
 - Updated example for the `ResourceList.Item` persistent actions accessibility labels ([#1973](https://github.com/Shopify/polaris-react/pull/1973))
+- Removed `FilterControl` documentation and case studies from `ResourceList` documentation ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
+- Updated `ResourceList` examples to use `Filters` ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
+- Added an example to `Filters` showing the use of `children` ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
 
 ### Development workflow
 
@@ -120,4 +125,5 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Deprecations
 
-- Renamed `singleColumn`on`Page`to`narrowWidth` ([#1606](https://github.com/Shopify/polaris-react/pull/1606)).
+- Renamed `singleColumn` on `Page` to `narrowWidth` ([#1606](https://github.com/Shopify/polaris-react/pull/1606))
+- Deprecated `FilterControl`. Use `Filters` instead ([#1774](https://github.com/Shopify/polaris-react/pull/1774))

@@ -118,6 +118,13 @@ export {
   Props as ExceptionListProps,
 } from './ExceptionList';
 
+export {
+  default as Filters,
+  Props as FiltersProps,
+  AppliedFilter as AppliedFilterInterface,
+  Filter as FilterInterface,
+} from './Filters';
+
 export {default as Focus, Props as FocusProps} from './Focus';
 
 export {default as FooterHelp, Props as FooterHelpProps} from './FooterHelp';
@@ -164,13 +171,6 @@ export {default as Link, Props as LinkProps} from './Link';
 
 export {default as List, Props as ListProps} from './List';
 
-export {
-  default as Filters,
-  Props as FiltersProps,
-  AppliedFilter as AppliedFilterInterface,
-  Filter as FilterInterface,
-} from './Filters';
-
 export {default as Loading, Props as LoadingProps} from './Loading';
 
 export {default as Modal, Props as ModalProps} from './Modal';
@@ -212,9 +212,13 @@ export {default as RadioButton, Props as RadioButtonProps} from './RadioButton';
 export {default as RangeSlider, RangeSliderProps} from './RangeSlider';
 
 export {
+  default as ResourceItem,
+  Props as ResourceItemProps,
+} from './ResourceItem';
+
+export {
   default as ResourceList,
   Props as ResourceListProps,
-  SelectedItems as ResourceListSelectedItems,
   FilterControlProps,
   Filter,
   AppliedFilter,
@@ -222,6 +226,10 @@ export {
   FilterSelect,
   FilterTextField,
 } from './ResourceList';
+
+export {
+  SelectedItems as ResourceListSelectedItems,
+} from '../utilities/resource-list';
 
 export {
   default as ResourcePicker,

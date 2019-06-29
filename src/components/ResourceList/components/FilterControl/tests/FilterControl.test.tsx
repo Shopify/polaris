@@ -1,7 +1,7 @@
 import React from 'react';
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
 import {TextField, Tag, Button} from 'components';
-import {ResourceListContext} from '../../../context';
+import {ResourceListContext} from '../../../../../utilities/resource-list';
 import {
   Filter,
   FilterType,
@@ -9,6 +9,7 @@ import {
   FilterTextField,
   FilterDateSelector,
 } from '../types';
+// eslint-disable-next-line import/no-deprecated
 import FilterControl, {Props} from '../FilterControl';
 import {FilterCreator, DateFilterOption} from '../components';
 
