@@ -31,7 +31,7 @@ describe('build', () => {
   });
 
   it('generates a ./styles/foundation dir with spacing.scss', () => {
-    expect(fs.existsSync('./styles/foundation/spacing.scss')).toBe(true);
+    expect(fs.existsSync('./styles/foundation/_spacing.scss')).toBe(true);
   });
 
   it('generates sass entries files in ./styles dir', () => {
