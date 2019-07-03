@@ -22,6 +22,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Added links to App Bridge React component documentation in deprecation notices for embedded components ([#1765](https://github.com/Shopify/polaris-react/pull/1765))
+
 ### Development workflow
 
 - Renamed `yarn run ts` to `yarn run type-check` to match most other Shopify projects
