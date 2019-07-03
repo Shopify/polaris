@@ -24,6 +24,8 @@ import {ToastManager, Loading, ContextualSaveBar} from './components';
 import styles from './Frame.scss';
 
 export interface Props {
+  /** The content to display inside the frame. */
+  children?: React.ReactNode;
   /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */
   topBar?: React.ReactNode;
   /** Accepts a navigation component that will be rendered in the left sidebar of an application frame */
