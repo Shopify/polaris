@@ -74,6 +74,12 @@ $disabled-fade: 0.6;
 
 .Badge {
   margin-left: spacing(tight);
+  display: inline-flex;
+  margin-top: spacing(base-tight);
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    margin-top: spacing(tight);
+  }
 }
 
 .Icon {
