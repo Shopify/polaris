@@ -52,7 +52,7 @@ class Page extends React.PureComponent<ComposedProps, never> {
 
     // eslint-disable-next-line no-console
     console.warn(
-      "Deprecation: Using `Page` to render an embedded app title bar is deprecated and will be removed in v5.0. Use `TitleBar` from `@shopify/app-bridge-react` instead. For example, `import {TitleBar} from '@shopify/app-bridge-react';`",
+      'Deprecation: Using `Page` to render an embedded app title bar is deprecated and will be removed in v5.0. Use `TitleBar` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/titlebar',
     );
 
     this.titlebar = AppBridgeTitleBar.create(

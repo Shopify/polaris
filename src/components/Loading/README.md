@@ -56,7 +56,7 @@ class EmbeddedAppLoadingExample extends React.Component {
 
 #### Deprecation rationale
 
-As of v3.17.0, using `Loading` in an embedded app is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. More information can be found [here](https://github.com/Shopify/polaris-react/issues/814). Use `Loading` from `@shopify/app-bridge-react` instead. For example, `import {Loading} from '@shopify/app-bridge-react';`.
+As of v3.17.0, using `Loading` in an embedded app is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. More information about the deprecation rationale can be found [here](https://github.com/Shopify/polaris-react/issues/814). Use [`Loading`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/loading) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) instead.
 
 ---
 
