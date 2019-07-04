@@ -110,7 +110,7 @@
     "Filters": {
       "moreFilters": "更多筛选器",
       "filter": "筛选 {resourceName}",
-      "noFiltersApplied": "未应用筛选器",
+      "noFiltersApplied": "未应用筛选条件",
       "cancel": "取消",
       "done": "已完成",
       "clearAllFilters": "清除所有筛选条件",
