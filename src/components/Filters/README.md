@@ -174,6 +174,19 @@ class FiltersExample extends React.Component {
         shortcut: true,
       },
       {
+        key: 'taggedWith',
+        label: 'Tagged with',
+        filter: (
+          <TextField
+            label="Tagged with"
+            value={taggedWith}
+            onChange={this.handleChange('taggedWith')}
+            labelHidden
+          />
+        ),
+        shortcut: true,
+      },
+      {
         key: 'moneySpent',
         label: 'Money spent',
         filter: (
@@ -189,20 +202,6 @@ class FiltersExample extends React.Component {
             onChange={this.handleChange('moneySpent')}
           />
         ),
-        shortcut: true,
-      },
-      {
-        key: 'taggedWith',
-        label: 'Tagged with',
-        filter: (
-          <TextField
-            label="Tagged with"
-            value={taggedWith}
-            onChange={this.handleChange('taggedWith')}
-            labelHidden
-          />
-        ),
-        shortcut: true,
       },
     ];
 
