@@ -9,6 +9,7 @@ describe('<ChoiceList />', () => {
     label: string;
     value: string;
     helpText?: React.ReactNode;
+    disabled?: boolean;
     renderChildren?(): React.ReactNode;
   })[];
 
@@ -364,6 +365,30 @@ describe('<ChoiceList />', () => {
       );
 
       expect(element.find(InlineError)).toHaveLength(0);
+    });
+  });
+
+  describe('disabled', () => {
+    it('disables choices', () => {
+      const choiceElements = shallowWithAppProvider(
+        <ChoiceList selected={[]} choices={choices} disabled />,
+      ).find(RadioButton);
+
+      choiceElements.forEach((choiceElement) => {
+        expect(choiceElement.prop('disabled')).toBe(true);
+      });
+    });
+
+    it('preserves disabled choices', () => {
+      choices = [choices[0], choices[1], {...choices[2], disabled: true}];
+
+      const choiceElements = shallowWithAppProvider(
+        <ChoiceList selected={[]} choices={choices} disabled />,
+      ).find(RadioButton);
+
+      choiceElements.forEach((choiceElement) => {
+        expect(choiceElement.prop('disabled')).toBe(true);
+      });
     });
   });
 });

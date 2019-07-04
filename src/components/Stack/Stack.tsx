@@ -17,7 +17,7 @@ export type Distribution =
 
 export interface Props {
   /** Elements to display inside stack */
-  children?: any;
+  children?: React.ReactNode;
   /** Wrap stack elements to additional rows as needed on small screens (Defaults to true) */
   wrap?: boolean;
   /** Stack the elements vertically */
