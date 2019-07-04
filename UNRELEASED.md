@@ -14,6 +14,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added the rollover and Windows high contrast mode to `Disclosure` button on `Tabs`. ([#1755](https://github.com/Shopify/polaris-react/pull/1755))
+
 - Added support for disabling all choices in `ChoiceList` ([#1758](https://github.com/Shopify/polaris-react/pull/1758))
 
 ### Bug fixes

@@ -179,6 +179,13 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   border: none;
   outline: none;
   text-align: center;
+  &:hover {
+    @include recolor-icon(color('ink'));
+    @media (-ms-high-contrast: active) {
+      @include recolor-icon(color('black'));
+      @include state(active, hover);
+    }
+  }
 }
 
 .TabMeasurer {
