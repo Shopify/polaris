@@ -43,6 +43,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
 
   private id = getUniqueID();
   private activatorContainer: HTMLElement | null;
+  private mouseEntered = false;
 
   componentDidMount() {
     this.setAccessibilityAttributes();
@@ -87,8 +88,8 @@ export default class Tooltip extends React.PureComponent<Props, State> {
         testID="WrapperComponent"
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
+        onMouseOver={this.handleMouseEnterFix}
         ref={this.setActivator}
       >
         {children}
@@ -121,7 +122,17 @@ export default class Tooltip extends React.PureComponent<Props, State> {
   };
 
   private handleMouseLeave = () => {
+    this.mouseEntered = false;
     this.setState({active: false});
+  };
+
+  // https://github.com/facebook/react/issues/10109
+  // Mouseenter event not triggered when cursor moves from disabled button
+  private handleMouseEnterFix = () => {
+    if (!this.mouseEntered) {
+      this.mouseEntered = true;
+      this.handleMouseEnter();
+    }
   };
 
   private setAccessibilityAttributes() {
