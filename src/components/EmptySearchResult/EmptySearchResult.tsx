@@ -15,12 +15,9 @@ export interface Props {
   withIllustration?: boolean;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
-export class EmptySearchResult extends React.PureComponent<
-  CombinedProps,
-  never
-> {
+class EmptySearchResult extends React.PureComponent<CombinedProps, never> {
   render() {
     const {
       title,

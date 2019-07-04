@@ -5,7 +5,7 @@ import {usePolaris} from '../../hooks';
 
 export interface Props {}
 
-export default React.memo(function Loading() {
+function Loading() {
   const appBridgeLoading = useRef<AppBridgeLoading.Loading>();
   const {appBridge} = usePolaris();
   const frame = useContext(FrameContext);
@@ -36,4 +36,6 @@ export default React.memo(function Loading() {
   );
 
   return null;
-});
+}
+
+export default React.memo(Loading);

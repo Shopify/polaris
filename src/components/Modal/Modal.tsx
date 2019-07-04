@@ -74,7 +74,7 @@ export interface Props extends FooterProps {
   /** Callback when the bottom of the modal content is reached */
   onScrolledToBottom?(): void;
 }
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 export interface State {
   iframeHeight: number;
@@ -91,7 +91,7 @@ const APP_BRIDGE_PROPS: (keyof Props)[] = [
   'secondaryActions',
 ];
 
-export class Modal extends React.Component<CombinedProps, State> {
+class Modal extends React.Component<CombinedProps, State> {
   static Dialog = Dialog;
   static Section = Section;
   focusReturnPointNode: HTMLElement;

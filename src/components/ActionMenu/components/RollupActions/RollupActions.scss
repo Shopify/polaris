@@ -1,0 +1,7 @@
+.RollupActivator {
+  // Override `.iconOnly` negative margins
+  // stylelint-disable-next-line selector-no-qualifying-type
+  button[type='button'] {
+    margin: 0;
+  }
+}

@@ -7,7 +7,10 @@ describe('<AppProvider />', () => {
   it('updates polaris context when props change', () => {
     const Child: React.SFC<{}> = (_props) => (
       <AppProviderContext.Consumer>
-        {({link}) => (link.getLinkComponent() ? <div id="child" /> : null)}
+        {({link}) => {
+          // eslint-disable-next-line shopify/jest/no-if
+          return link.getLinkComponent() ? <div id="child" /> : null;
+        }}
       </AppProviderContext.Consumer>
     );
     const LinkComponent = () => <div />;

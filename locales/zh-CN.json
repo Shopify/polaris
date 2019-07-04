@@ -31,7 +31,8 @@
       "newWindowAccessibilityHint": "（打开新窗口）",
       "clear": "清除",
       "close": "关闭",
-      "submit": "提交"
+      "submit": "提交",
+      "more": "更多"
     },
     "ContextualSaveBar": {
       "save": "保存",
@@ -85,7 +86,7 @@
         "actionTitleFile": "添加文件",
         "actionTitleImage": "添加图片",
         "actionHintFile": "或拖放上传",
-        "actionHintImage": "或拖放图片以上传",
+        "actionHintImage": "或拖放上传",
         "label": "上传文件"
       }
     },
@@ -101,14 +102,18 @@
     "Icon": {
       "backdropWarning": "{color} 图标不能用于背景。可用于背景的图标颜色：{colorsWithBackDrops}"
     },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "编辑"
+      }
+    },
     "Modal": {
       "iFrameTitle": "正文标记",
       "modalWarning": "模态缺少这些必需的属性：{missingProps}"
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "已从页面删除该图标道具。请改为在 Shopify 合作伙伴控制面板“应用设置”部分上传应用程序图标。",
-        "rollupButton": "编辑"
+        "iconWarningMessage": "已从页面删除该图标道具。请改为在 Shopify 合作伙伴控制面板“应用设置”部分上传应用程序图标。"
       }
     },
     "Pagination": {

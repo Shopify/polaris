@@ -126,7 +126,7 @@ export type Props = NonMutuallyExclusiveProps &
     | {disabled: true}
     | {onChange(value: string, id: string): void});
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('TextField');
 
@@ -137,10 +137,13 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 
   private input: HTMLElement;
   private buttonPressTimer: number;
+  private prefix = React.createRef<HTMLDivElement>();
+  private suffix = React.createRef<HTMLDivElement>();
 
   constructor(props: CombinedProps) {
     super(props);
 
+    // eslint-disable-next-line react/state-in-constructor
     this.state = {
       height: null,
       focus: props.focused || false,
@@ -209,7 +212,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 
     const normalizedValue = value != null ? value : '';
 
-    const {height} = this.state;
+    const {height, focus} = this.state;
 
     const className = classNames(
       styles.TextField,
@@ -224,13 +227,13 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     const inputType = type === 'currency' ? 'text' : type;
 
     const prefixMarkup = prefix ? (
-      <div className={styles.Prefix} id={`${id}Prefix`}>
+      <div className={styles.Prefix} id={`${id}Prefix`} ref={this.prefix}>
         {prefix}
       </div>
     ) : null;
 
     const suffixMarkup = suffix ? (
-      <div className={styles.Suffix} id={`${id}Suffix`}>
+      <div className={styles.Suffix} id={`${id}Suffix`} ref={this.suffix}>
         {suffix}
       </div>
     ) : null;
@@ -257,7 +260,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
         id={`${id}CharacterCounter`}
         className={characterCountClassName}
         aria-label={characterCountLabel}
-        aria-live="polite"
+        aria-live={focus ? 'polite' : 'off'}
         aria-atomic="true"
       >
         {characterCountText}
@@ -310,12 +313,18 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       describedBy.push(`${id}CharacterCounter`);
     }
 
-    const labelledBy = [labelID(id)];
+    const labelledBy: string[] = [];
+
     if (prefix) {
       labelledBy.push(`${id}Prefix`);
     }
+
     if (suffix) {
       labelledBy.push(`${id}Suffix`);
+    }
+
+    if (labelledBy.length) {
+      labelledBy.unshift(labelID(id));
     }
 
     const inputClassName = classNames(
@@ -353,8 +362,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       'aria-describedby': describedBy.length
         ? describedBy.join(' ')
         : undefined,
-      'aria-label': label,
-      'aria-labelledby': labelledBy.join(' '),
+      'aria-labelledby': labelledBy.length ? labelledBy.join(' ') : undefined,
       'aria-invalid': Boolean(error),
       'aria-owns': ariaOwns,
       'aria-activedescendant': ariaActiveDescendant,
@@ -455,7 +463,11 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     onChange && onChange(event.currentTarget.value, this.state.id);
   };
 
-  private handleFocus = () => {
+  private handleFocus = ({target}: React.FocusEvent) => {
+    if (this.containsAffix(target)) {
+      return;
+    }
+
     this.setState({focus: true});
   };
 
@@ -463,9 +475,21 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     this.setState({focus: false});
   };
 
-  private handleClick = () => {
+  private handleClick = ({target}: React.MouseEvent) => {
+    if (this.containsAffix(target)) {
+      return;
+    }
+
     this.input.focus();
   };
+
+  private containsAffix(target: HTMLElement | EventTarget) {
+    return (
+      target instanceof HTMLElement &&
+      ((this.prefix.current && this.prefix.current.contains(target)) ||
+        (this.suffix.current && this.suffix.current.contains(target)))
+    );
+  }
 
   private handleButtonPress = (onChange: Function) => {
     const minInterval = 50;

@@ -38,7 +38,7 @@ export interface State {
   focused: boolean;
 }
 
-export class TopBar extends React.PureComponent<ComposedProps, State> {
+class TopBar extends React.PureComponent<ComposedProps, State> {
   static UserMenu = UserMenu;
   static SearchField = SearchField;
   static Menu = Menu;

@@ -2,7 +2,6 @@ import React, {useState, useRef, useCallback} from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {arraysAreEqual} from '../../utilities/arrays';
-import {WithAppProviderProps} from '../AppProvider';
 import {Props as IconProps} from '../Icon';
 import {Props as AvatarProps} from '../Avatar';
 import {Props as ThumbnailProps} from '../Thumbnail';
@@ -61,8 +60,6 @@ export interface Props {
 export interface State {
   normalizedOptions: SectionDescriptor[];
 }
-
-export type CombinedProps = Props & WithAppProviderProps;
 
 export default function OptionList({
   options,

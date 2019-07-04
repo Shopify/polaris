@@ -8,6 +8,7 @@ import useAppBridge from '../use-app-bridge';
 describe('useApp', () => {
   it('returns context', () => {
     function Component() {
+      // eslint-disable-next-line shopify/jest/no-if
       return isEqual(useAppBridge(), createPolarisContext().appBridge) ? (
         <div />
       ) : null;

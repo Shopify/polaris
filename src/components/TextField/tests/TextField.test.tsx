@@ -325,6 +325,49 @@ describe('<TextField />', () => {
       expect(textField.find(`#${labels[1]}`).text()).toBe('$');
       expect(textField.find(`#${labels[2]}`).text()).toBe('.00');
     });
+
+    it('does not set focus `onClick` for the <input /> if the `target` is the `prefix`', () => {
+      const onClickSpy = jest.fn();
+      const mockButtonId = 'MockPrefix';
+      const mockPrefixButton = (
+        <button id={mockButtonId} onClick={onClickSpy} />
+      );
+      const textField = mountWithAppProvider(
+        <TextField
+          label="TextField"
+          prefix={mockPrefixButton}
+          onChange={noop}
+        />,
+      );
+
+      textField.find(`#${mockButtonId}`).simulate('click');
+
+      expect(onClickSpy).toHaveBeenCalled();
+      expect(textField.getDOMNode().querySelector('input')).not.toBe(
+        document.activeElement,
+      );
+    });
+
+    it('does not set focus `onFocus` for the <input /> if the `target` is the `prefix`', () => {
+      const mockButtonId = 'MockPrefix';
+      const mockPrefixButton = <button id={mockButtonId} onClick={noop} />;
+      const textField = mountWithAppProvider(
+        <TextField
+          label="TextField"
+          prefix={mockPrefixButton}
+          onChange={noop}
+        />,
+      );
+
+      textField.find(`#${mockButtonId}`).simulate('focus');
+
+      const connectedInteriorWrapper = textField
+        .find(Connected)
+        .find('div')
+        .first();
+
+      expect(connectedInteriorWrapper.hasClass('focus')).toBe(false);
+    });
   });
 
   describe('suffix', () => {
@@ -339,6 +382,49 @@ describe('<TextField />', () => {
       expect(labels).toHaveLength(2);
       expect(textField.find(`#${labels[0]}`).text()).toBe('TextField');
       expect(textField.find(`#${labels[1]}`).text()).toBe('kg');
+    });
+
+    it('does not set focus `onClick` for the <input /> if the `target` is the `suffix`', () => {
+      const onClickSpy = jest.fn();
+      const mockButtonId = 'MockSuffix';
+      const mockSuffixButton = (
+        <button id={mockButtonId} onClick={onClickSpy} />
+      );
+      const textField = mountWithAppProvider(
+        <TextField
+          label="TextField"
+          suffix={mockSuffixButton}
+          onChange={noop}
+        />,
+      );
+
+      textField.find(`#${mockButtonId}`).simulate('click');
+
+      expect(onClickSpy).toHaveBeenCalled();
+      expect(textField.getDOMNode().querySelector('input')).not.toBe(
+        document.activeElement,
+      );
+    });
+
+    it('does not set focus `onFocus` for the <input /> if the `target` is the `suffix`', () => {
+      const mockButtonId = 'MockSuffix';
+      const mockSuffixButton = <button id={mockButtonId} onClick={noop} />;
+      const textField = mountWithAppProvider(
+        <TextField
+          label="TextField"
+          suffix={mockSuffixButton}
+          onChange={noop}
+        />,
+      );
+
+      textField.find(`#${mockButtonId}`).simulate('focus');
+
+      const connectedInteriorWrapper = textField
+        .find(Connected)
+        .find('div')
+        .first();
+
+      expect(connectedInteriorWrapper.hasClass('focus')).toBe(false);
     });
   });
 
@@ -374,6 +460,28 @@ describe('<TextField />', () => {
       const characterCount = textField.find('#MyFieldCharacterCounter');
 
       expect(characterCount.text()).toBe('4/10');
+    });
+
+    it('announces updated character count only when input field is in focus', () => {
+      const textField = mountWithAppProvider(
+        <TextField
+          value="test"
+          showCharacterCount
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+        />,
+      );
+
+      expect(
+        textField.find('#MyFieldCharacterCounter').prop<string>('aria-live'),
+      ).toBe('off');
+
+      textField.find('input').simulate('focus');
+
+      expect(
+        textField.find('#MyFieldCharacterCounter').prop<string>('aria-live'),
+      ).toBe('polite');
     });
   });
 
@@ -848,6 +956,41 @@ describe('<TextField />', () => {
       expect(textField.find(Connected).prop('right')).toStrictEqual(
         connectedRight,
       );
+    });
+
+    it('sets focus to the <input /> `onClick`', () => {
+      const textField = mountWithAppProvider(
+        <TextField label="TextField" onChange={noop} />,
+      );
+      const connectedChild = textField
+        .find(Connected)
+        .find('div')
+        .first();
+
+      connectedChild.simulate('click');
+
+      expect(textField.getDOMNode().querySelector('input')).toBe(
+        document.activeElement,
+      );
+    });
+
+    it('applies focus variant style `onFocus`', () => {
+      const textField = mountWithAppProvider(
+        <TextField label="TextField" onChange={noop} />,
+      );
+      let connectedInteriorWrapper = textField
+        .find(Connected)
+        .find('div')
+        .first();
+
+      connectedInteriorWrapper.simulate('focus');
+
+      connectedInteriorWrapper = textField
+        .find(Connected)
+        .find('div')
+        .first();
+
+      expect(connectedInteriorWrapper.hasClass('focus')).toBe(true);
     });
   });
 

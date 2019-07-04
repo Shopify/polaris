@@ -12,7 +12,7 @@ import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 import {DataTableState, SortDirection} from './types';
 import styles from './DataTable.scss';
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 export type TableRow = Props['headings'] | Props['rows'] | Props['totals'];
 export type TableData = string | number | React.ReactNode;
 
@@ -49,10 +49,7 @@ export interface Props {
   onSort?(headingIndex: number, direction: SortDirection): void;
 }
 
-export class DataTable extends React.PureComponent<
-  CombinedProps,
-  DataTableState
-> {
+class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   state: DataTableState = {
     collapsed: false,
     columnVisibilityData: [],

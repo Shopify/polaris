@@ -8,7 +8,7 @@ export interface AppProviderContextType {
   link: Link;
   stickyManager: StickyManager;
   scrollLockManager: ScrollLockManager;
-  appBridge?: ClientApplication<{}>;
+  appBridge?: ClientApplication<unknown>;
 }
 
 const AppProviderContext = React.createContext<AppProviderContextType>(

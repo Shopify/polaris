@@ -28,6 +28,7 @@ export default class AppProvider extends React.Component<Props, State> {
     this.scrollLockManager = new ScrollLockManager();
     const {theme, children, ...rest} = this.props;
 
+    // eslint-disable-next-line react/state-in-constructor
     this.state = {
       context: createAppProviderContext({
         ...rest,

@@ -22,7 +22,7 @@ export interface Props {
   size?: Size;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 export const PROGRESS_LABELS: {[key in Progress]: Progress} = {
   incomplete: 'incomplete',

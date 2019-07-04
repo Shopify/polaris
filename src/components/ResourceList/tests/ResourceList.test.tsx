@@ -5,7 +5,7 @@ import {
   mountWithAppProvider,
   trigger,
 } from 'test-utilities/legacy';
-import {BulkActions, Item} from '../components';
+import {BulkActions, Item, CheckableButton} from '../components';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
@@ -64,6 +64,13 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(BulkActions).exists()).toBe(false);
     });
 
+    it('does not render a `CheckableButton` if the `selectable` prop is not provided', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList items={itemsWithID} renderItem={renderItem} />,
+      );
+      expect(resourceList.find(CheckableButton).exists()).toBe(false);
+    });
+
     it('does render bulk actions if the promotedBulkActions prop is provided', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
@@ -84,6 +91,13 @@ describe('<ResourceList />', () => {
         />,
       );
       expect(resourceList.find(BulkActions).exists()).toBe(true);
+    });
+
+    it('renders a `CheckableButton` if the `selectable` prop is true', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList selectable items={itemsWithID} renderItem={renderItem} />,
+      );
+      expect(resourceList.find(CheckableButton).exists()).toBe(true);
     });
   });
 

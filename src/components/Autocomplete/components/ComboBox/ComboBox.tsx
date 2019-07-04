@@ -6,8 +6,8 @@ import Popover from '../../../Popover';
 import {PreferredPosition} from '../../../PositionedOverlay';
 import {ActionListItemDescriptor, Key} from '../../../../types';
 import KeypressListener from '../../../KeypressListener';
+import TextField from '../TextField';
 import ComboBoxContext from './context';
-import {TextField} from './components';
 
 import styles from './ComboBox.scss';
 

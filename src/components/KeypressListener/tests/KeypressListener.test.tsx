@@ -3,10 +3,8 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Key} from '../../../types';
 import KeypressListener from '../KeypressListener';
 
-type EventCb = (event: any) => void;
-
 interface HandlerMap {
-  [eventName: string]: EventCb;
+  [eventName: string]: any;
 }
 
 const listenerMap: HandlerMap = {};

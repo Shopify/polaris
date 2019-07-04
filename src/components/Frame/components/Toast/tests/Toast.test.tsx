@@ -10,10 +10,8 @@ import {ToastProps as Props} from '../../../types';
 import Toast from '../Toast';
 import {Key} from '../../../../../types';
 
-type EventCb = (event: any) => void;
-
 interface HandlerMap {
-  [eventName: string]: EventCb;
+  [eventName: string]: any;
 }
 
 describe('<Toast />', () => {

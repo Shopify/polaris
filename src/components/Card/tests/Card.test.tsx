@@ -1,7 +1,10 @@
 import React from 'react';
-import {mountWithAppProvider} from 'test-utilities/legacy';
-import {Card, Badge, Button} from 'components';
-
+import {
+  mountWithAppProvider,
+  trigger,
+  findByTestID,
+} from 'test-utilities/legacy';
+import {Card, Badge, Button, Popover, ActionList} from 'components';
 import WithinContentContext from '../../WithinContentContext';
 import {Section} from '../components';
 
@@ -95,6 +98,110 @@ describe('<Card />', () => {
 
     expect(secondaryAction).toHaveLength(1);
     expect(secondaryAction.text()).toBe('test action');
+  });
+
+  describe('secondaryFooterActions', () => {
+    it('renders a single secondary footer action button when only 1 is supplied', () => {
+      const card = mountWithAppProvider(
+        <Card secondaryFooterActions={[{content: 'test action'}]}>
+          <p>Some card content.</p>
+        </Card>,
+      );
+
+      const secondaryAction = card.find(Button).first();
+      expect(secondaryAction).toHaveLength(1);
+      expect(secondaryAction.text()).toBe('test action');
+      expect(card.find(Popover).first()).toHaveLength(0);
+    });
+
+    it('renders popover when >1 are supplied', () => {
+      const card = mountWithAppProvider(
+        <Card
+          secondaryFooterActions={[
+            {content: 'Most important action'},
+            {content: 'Second most important action'},
+          ]}
+        >
+          <p>Some card content.</p>
+        </Card>,
+      );
+
+      const disclosureButton = card.find(Button).first();
+      expect(disclosureButton).toHaveLength(1);
+      expect(disclosureButton.text()).toBe('More');
+
+      const popover = card.find(Popover).first();
+      expect(popover).toHaveLength(1);
+    });
+
+    it('activates popover when disclosure button is clicked', () => {
+      const footerActions = [
+        {content: 'Most important action'},
+        {content: 'Second most important action'},
+      ];
+      const card = mountWithAppProvider(
+        <Card secondaryFooterActions={footerActions}>
+          <p>Some card content.</p>
+        </Card>,
+      );
+
+      const disclosureButton = card.find(Button).first();
+      expect(disclosureButton).toHaveLength(1);
+      expect(disclosureButton.text()).toBe('More');
+
+      const popover = card.find(Popover).first();
+      expect(popover).toHaveLength(1);
+      expect(popover.prop('active')).toBe(false);
+
+      trigger(disclosureButton, 'onClick');
+
+      expect(
+        card
+          .find(Popover)
+          .first()
+          .prop('active'),
+      ).toBe(true);
+
+      const overlay = findByTestID(card, 'popoverOverlay');
+      expect(overlay).toHaveLength(1);
+
+      const actionList = overlay.find(ActionList).first();
+      expect(actionList).toHaveLength(1);
+      expect(actionList.prop('items')).toBe(footerActions);
+    });
+
+    it('sets the disclosure button content to the value set on secondaryFooterActionsDisclosureText', () => {
+      const card = mountWithAppProvider(
+        <Card
+          secondaryFooterActions={[
+            {content: 'Most important action'},
+            {content: 'Second most important action'},
+          ]}
+          secondaryFooterActionsDisclosureText="Show more"
+        >
+          <p>Some card content.</p>
+        </Card>,
+      );
+
+      const disclosureButton = card.find(Button).first();
+      expect(disclosureButton).toHaveLength(1);
+      expect(disclosureButton.text()).toBe('Show more');
+    });
+
+    it('will prefer secondaryFooterActions to secondaryFooterAction if both are provided', () => {
+      const card = mountWithAppProvider(
+        <Card
+          secondaryFooterActions={[{content: 'a'}]}
+          secondaryFooterAction={{content: 'b'}}
+        >
+          <p>Some card content.</p>
+        </Card>,
+      );
+
+      const button = card.find(Button).first();
+      expect(button).toHaveLength(1);
+      expect(button.text()).toBe('a');
+    });
   });
 
   it('renders a section when sectioned', () => {

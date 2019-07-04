@@ -16,7 +16,7 @@ export interface Props extends React.HTMLProps<HTMLAnchorElement> {
 
 export type LinkLikeComponent = React.ComponentType<Props> | undefined;
 
-export default React.memo(function UnstyledLink(props: Props) {
+function UnstyledLink(props: Props) {
   const polaris = usePolaris();
   if (polaris && polaris.link) {
     const LinkComponent = polaris.link.getLinkComponent();
@@ -31,4 +31,6 @@ export default React.memo(function UnstyledLink(props: Props) {
   return (
     <a target={target} {...rest} href={url} rel={rel} {...unstyled.props} />
   );
-});
+}
+
+export default React.memo(UnstyledLink);

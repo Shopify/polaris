@@ -31,7 +31,8 @@
       "newWindowAccessibilityHint": "(opent een nieuw venster)",
       "clear": "Wissen",
       "close": "Sluiten",
-      "submit": "Indienen"
+      "submit": "Indienen",
+      "more": "Meer"
     },
     "ContextualSaveBar": {
       "save": "Opslaan",
@@ -101,14 +102,18 @@
     "Icon": {
       "backdropWarning": "Het pictogram {color} accepteert geen achtergronden. De pictogramkleuren met achtergronden zijn: {colorsWithBackDrops}"
     },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Acties"
+      }
+    },
     "Modal": {
       "iFrameTitle": "opmaak platte tekst",
       "modalWarning": "Deze verplichte onderdelen ontbreken op Modal: {missingProps}"
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "De pictograminstelling is van de Pagina verwijderd. Upload in plaats daarvan een toepassingspictogram in het gedeelte 'App-instellingen' van Shopify Partners Dashboard.",
-        "rollupButton": "Acties"
+        "iconWarningMessage": "De pictograminstelling is van de Pagina verwijderd. Upload in plaats daarvan een toepassingspictogram in het gedeelte 'App-instellingen' van Shopify Partners Dashboard."
       }
     },
     "Pagination": {

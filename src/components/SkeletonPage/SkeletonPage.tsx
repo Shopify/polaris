@@ -33,7 +33,7 @@ interface DeprecatedProps {
 
 export type CombinedProps = Props & DeprecatedProps & WithAppProviderProps;
 
-export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
+class SkeletonPage extends React.PureComponent<CombinedProps, never> {
   render() {
     const {
       children,

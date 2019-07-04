@@ -98,3 +98,13 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 <!-- end -->
 
 <!-- /content-for -->
+
+---
+
+## Related guidelines
+
+- To learn about implementing Polaris icons with [Polaris React](https://github.com/Shopify/polaris-react) in your projects, see the [`@shopify/polaris-icons` documentation](https://github.com/Shopify/polaris-icons/tree/master/packages/polaris-icons)
+
+- To learn about the best practices for designing and using icons in your projects, see the [icon design guidelines](/design/icons)
+
+- To learn how to name icons, see the [icon naming guidelines](/content/naming#section-icons)

@@ -35,7 +35,8 @@
       "newWindowAccessibilityHint": "(opens a new window)",
       "clear": "Clear",
       "close": "Close",
-      "submit": "Submit"
+      "submit": "Submit",
+      "more": "More"
     },
 
     "ContextualSaveBar": {
@@ -115,6 +116,12 @@
       "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
     },
 
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Actions"
+      }
+    },
+
     "Modal": {
       "iFrameTitle": "body markup",
       "modalWarning": "These required properties are missing from Modal: {missingProps}"
@@ -122,8 +129,7 @@
 
     "Page": {
       "Header": {
-        "iconWarningMessage": "The icon prop has been removed from Page. Upload an application icon in the Shopify Partners Dashboard 'App setup' section instead.",
-        "rollupButton": "Actions"
+        "iconWarningMessage": "The icon prop has been removed from Page. Upload an application icon in the Shopify Partners Dashboard 'App setup' section instead."
       }
     },
 

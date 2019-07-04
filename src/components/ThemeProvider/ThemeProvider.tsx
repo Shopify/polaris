@@ -23,15 +23,10 @@ const defaultTheme = {
 };
 
 export default class ThemeProvider extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    const {theme} = this.props;
-    this.state = {
-      theme: setThemeContext(theme),
-      colors: setColors(theme),
-    };
-  }
+  state: State = {
+    theme: setThemeContext(this.props.theme),
+    colors: setColors(this.props.theme),
+  };
 
   componentDidUpdate({theme: prevTheme}: Props) {
     const {theme} = this.props;

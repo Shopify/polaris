@@ -31,7 +31,8 @@
       "newWindowAccessibilityHint": "(新しいウィンドウを開く)",
       "clear": "クリア",
       "close": "閉じる",
-      "submit": "送信する"
+      "submit": "送信する",
+      "more": "さらに"
     },
     "ContextualSaveBar": {
       "save": "保存する",
@@ -101,14 +102,18 @@
     "Icon": {
       "backdropWarning": "{color}のアイコンは、背景を受け付けません。背景を持つアイコンの色は次のとおりです: {colorsWithBackDrops}"
     },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "アクション"
+      }
+    },
     "Modal": {
       "iFrameTitle": "ボディのマークアップ",
       "modalWarning": "これらの必要なプロパティがモーダルにありません: {missingProps}"
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "アイコンプロップはページから削除されました。代わりに、Shopifyパートナーダッシュボードの「アプリ設定」セクションにアプリケーションアイコンをアップロードします。",
-        "rollupButton": "アクション"
+        "iconWarningMessage": "アイコンプロップはページから削除されました。代わりに、Shopifyパートナーダッシュボードの「アプリ設定」セクションにアプリケーションアイコンをアップロードします。"
       }
     },
     "Pagination": {
