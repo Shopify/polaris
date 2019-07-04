@@ -45,7 +45,7 @@ class Toast extends React.PureComponent<ComposedProps, never> {
     } else {
       // eslint-disable-next-line no-console
       console.warn(
-        "Deprecation: Using `Toast` in an embedded app is deprecated and will be removed in v5.0. Use `Toast` from `@shopify/app-bridge-react` instead. For example, `import {Toast} from '@shopify/app-bridge-react';`",
+        'Deprecation: Using `Toast` in an embedded app is deprecated and will be removed in v5.0. Use `Toast` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/toast',
       );
 
       this.appBridgeToast = AppBridgeToast.create(appBridge, {

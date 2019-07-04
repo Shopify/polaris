@@ -391,39 +391,7 @@ ReactDOM.render(
 
 #### Deprecation rationale
 
-As of v3.17.0, using `apiKey` and `shopOrigin` on `AppProvider` to initialize the Shopify App Bridge is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. More information can be found [here](https://github.com/Shopify/polaris-react/issues/814). Use `Provider` from `@shopify/app-bridge-react` instead. For example:
-
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {Provider, TitleBar} from '@shopify/app-bridge-react';
-
-function MyApp() {
-  const config = {apiKey: 'YOUR_API_KEY', shopOrigin: 'SHOP_ORIGIN'};
-  return (
-    <Provider config={config}>
-      <TitleBar
-        title="Hello world!"
-        primaryAction={{
-          content: 'Foo',
-          url: '/foo',
-        }}
-        secondaryActions={[{content: 'Bar', url: '/bar'}]}
-        actionGroups={[
-          {
-            title: 'Baz',
-            actions: [{content: 'Baz', url: '/baz'}],
-          },
-        ]}
-      />
-    </Provider>
-  );
-}
-
-const root = document.createElement('div');
-document.body.appendChild(root);
-ReactDOM.render(<MyApp />, root);
-```
+As of v3.17.0, using `apiKey` and `shopOrigin` on `AppProvider` to initialize the Shopify App Bridge is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. More information about the deprecation rationale can be found [here](https://github.com/Shopify/polaris-react/issues/814). Use [`Provider`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/provider) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) instead.
 
 ---
 
