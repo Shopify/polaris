@@ -132,7 +132,7 @@ function getPostCSSOutput(processor, source, fromPath) {
 }
 
 /**
- * Generate a minified css file next to the inout file
+ * Generate a minified css file next to the input file
  */
 function generateMinifiedCss(sourceFilePath, css) {
   const outputPath = `${sourceFilePath.slice(0, -4)}.min.css`;
@@ -144,16 +144,17 @@ function generateMinifiedCss(sourceFilePath, css) {
 
 /**
  * The Sass build - the styles folder.
- * We precompile our source Sass to avoid possibility that people may
+ * We precompile our source Sass to avoid the possibility that people may
  * accidentally overwrite some of our Sass variables / mixins / functions.
  * The only Sass feature we use in the built output is the importing of partials
  * to generate fewer entrypoints.
  *
- * - global.scss: Standard css that must be included by all applications. Per
- *   component styles relies on these base styles.
- * - components.scss and the components folder: A suite of the compiled css for
+ * - global.scss: standard css that must be included by all applications.
+ *   per-ccomponent styles (e.g. Button.scss) rely on the typography defined in
+ *   this base file.
+ * - components.scss and the components folder: a suite of the compiled css for
  *  every component
- * - foundation.scss, shared.scss and the foundation and shared folders: Our
+ * - foundation.scss, shared.scss and the foundation and shared folders: our
  *   public Sass API.
  */
 async function generateSass(inputFolder, outputFolder, cssByFile) {
@@ -172,7 +173,7 @@ async function generateSass(inputFolder, outputFolder, cssByFile) {
     }),
   );
 
-  // For each file that was referened in the build, create a copy of the compiled
+  // For each file that was referenced in the build, create a copy of the compiled
   // ouput
   const componentsCssFilenames = [];
   cssByFile.forEach(async (compiledCss, filename) => {
