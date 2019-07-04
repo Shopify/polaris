@@ -31,6 +31,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Updated `Checkbox` example with hooks (#[1737](https://github.com/Shopify/polaris-react/pull/1737))
+
 ### Development workflow
 
 - Created `toBeDisabled`, `mountWithContext` and added custom testing matchers ([#1596](https://github.com/Shopify/polaris-react/pull/1596))
