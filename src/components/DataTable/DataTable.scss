@@ -63,7 +63,6 @@ $breakpoint: 768px;
   white-space: nowrap;
   text-align: left;
   transition: background-color 0.2s ease-in-out;
-  vertical-align: top;
 }
 
 .Cell-firstColumn {
@@ -91,6 +90,22 @@ $breakpoint: 768px;
 
 .Cell-sortable {
   padding: 0;
+}
+
+.Cell-verticalAlignTop {
+  vertical-align: top;
+}
+
+.Cell-verticalAlignBottom {
+  vertical-align: bottom;
+}
+
+.Cell-verticalAlignMiddle {
+  vertical-align: middle;
+}
+
+.Cell-verticalAlignBaseline {
+  vertical-align: baseline;
 }
 
 .Icon {
