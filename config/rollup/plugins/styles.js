@@ -159,8 +159,9 @@ async function generateSass(inputFolder, outputFolder, cssByFile) {
   // We need to transform the contents of the files as some of them contain
   // `:global` css modules definitions that we want to strip out
   const stripGlobalRegex = /:global\s*\(([^)]+)\)|:global\s*{\s*([^}]+)\s*}\s*/g;
+  const globOptions = {cwd: inputFolder, ignore: 'styles/_common.scss'};
   await Promise.all(
-    glob.sync(`styles/**/*.scss`, {cwd: inputFolder}).map((filePath) => {
+    glob.sync(`styles/**/*.scss`, globOptions).map((filePath) => {
       const file = readFileSync(`${inputFolder}/${filePath}`, 'utf8').replace(
         stripGlobalRegex,
         '$1$2',
