@@ -118,6 +118,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
   };
 
   private handleMouseEnter = () => {
+    this.mouseEntered = true;
     this.setState({active: true});
   };
 
@@ -129,10 +130,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
   // https://github.com/facebook/react/issues/10109
   // Mouseenter event not triggered when cursor moves from disabled button
   private handleMouseEnterFix = () => {
-    if (!this.mouseEntered) {
-      this.mouseEntered = true;
-      this.handleMouseEnter();
-    }
+    !this.mouseEntered && this.handleMouseEnter();
   };
 
   private setAccessibilityAttributes() {
