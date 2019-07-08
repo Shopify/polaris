@@ -5,7 +5,10 @@ import {classNames} from '../../../../utilities/css';
 
 import Icon from '../../../Icon';
 import VisuallyHidden from '../../../VisuallyHidden';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 
 import styles from './SearchField.scss';
 

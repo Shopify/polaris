@@ -6,7 +6,7 @@ import Icon from '../../../Icon';
 import FormLayout from '../../../FormLayout';
 import TextField from '../../../TextField';
 import Tag from '../../../Tag';
-import {usePolaris} from '../../../../hooks';
+import {useI18n} from '../../../../utilities/i18n';
 import ResourceListContext from '../../context';
 
 import {FilterCreator} from './components';
@@ -36,7 +36,7 @@ export default function FilterControl({
   onSearchChange,
   onFiltersChange,
 }: Props) {
-  const {intl} = usePolaris();
+  const intl = useI18n();
   const {selectMode, resourceName} = React.useContext(ResourceListContext);
 
   const filterResourceName = resourceName || {

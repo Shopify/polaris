@@ -1,30 +1,58 @@
 import React from 'react';
 import {createMount} from '@shopify/react-testing';
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {
-  createPolarisContext,
-  AppProviderContext,
-} from '../components/AppProvider';
+import {ClientApplication} from '@shopify/app-bridge';
+import {createPolarisContext} from '../utilities/create-polaris-context';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {FrameContext, FrameContextType} from '../components/Frame';
-// eslint-disable-next-line shopify/strict-component-boundaries
 import {
   createThemeContext,
   ThemeProviderContextType,
   ThemeProviderContext,
-} from '../components/ThemeProvider';
+} from '../utilities/theme';
+import {
+  ScrollLockManager,
+  ScrollLockManagerContext,
+} from '../utilities/scroll-lock-manager';
+import {StickyManager, StickyManagerContext} from '../utilities/sticky-manager';
+import {
+  createAppBridge,
+  AppBridgeContext,
+  AppBridgeOptions,
+} from '../utilities/app-bridge';
+import {I18n, I18nContext, TranslationDictionary} from '../utilities/i18n';
+import translations from '../../locales/en.json';
 import {PolarisContext} from '../components/types';
 import {DeepPartial} from '../types';
 import {merge} from '../utilities/merge';
+import {Link, LinkContext, LinkLikeComponent} from '../utilities/link';
 
-interface Providers {
+interface ComplexProviders {
   polaris: PolarisContext;
   themeProvider: ThemeProviderContextType;
   frame: FrameContextType;
 }
-type Options = DeepPartial<Providers>;
-type Context = Providers;
-interface Props extends Providers {
+
+interface SimpleProvidersWithSameReturn {
+  scrollLockManager: ScrollLockManager;
+  stickyManager: StickyManager;
+}
+interface SimpleProvidersWithAltReturn {
+  intl: TranslationDictionary | TranslationDictionary[];
+  appBridge: AppBridgeOptions;
+  link: LinkLikeComponent;
+}
+type SimpleProviders = SimpleProvidersWithSameReturn &
+  SimpleProvidersWithAltReturn;
+
+type ReturnedContext = ComplexProviders &
+  SimpleProvidersWithSameReturn & {
+    intl: I18n;
+    appBridge: ClientApplication<{}> | null;
+    link: Link;
+  };
+type Options = DeepPartial<ComplexProviders> & Partial<SimpleProviders>;
+type Context = ReturnedContext;
+interface Props extends ReturnedContext {
   children: React.ReactElement<any>;
 }
 
@@ -35,6 +63,11 @@ export function TestProvider({
   polaris,
   themeProvider,
   frame,
+  intl,
+  scrollLockManager,
+  stickyManager,
+  appBridge,
+  link,
   ...props
 }: Props) {
   const childWithProps =
@@ -44,23 +77,49 @@ export function TestProvider({
 
   return (
     <React.StrictMode>
-      <AppProviderContext.Provider value={polaris}>
-        <ThemeProviderContext.Provider value={themeProvider}>
-          <FrameContext.Provider value={frame}>
-            {childWithProps}
-          </FrameContext.Provider>
-        </ThemeProviderContext.Provider>
-      </AppProviderContext.Provider>
+      <I18nContext.Provider value={intl}>
+        <ScrollLockManagerContext.Provider value={scrollLockManager}>
+          <StickyManagerContext.Provider value={stickyManager}>
+            <ThemeProviderContext.Provider value={themeProvider}>
+              <AppBridgeContext.Provider value={appBridge}>
+                <LinkContext.Provider value={link}>
+                  <FrameContext.Provider value={frame}>
+                    {childWithProps}
+                  </FrameContext.Provider>
+                </LinkContext.Provider>
+              </AppBridgeContext.Provider>
+            </ThemeProviderContext.Provider>
+          </StickyManagerContext.Provider>
+        </ScrollLockManagerContext.Provider>
+      </I18nContext.Provider>
     </React.StrictMode>
   );
 }
 
 export const mountWithContext = createMount<Options, Context>({
-  context({polaris, themeProvider, frame}) {
+  context({
+    polaris,
+    themeProvider,
+    frame,
+    intl,
+    scrollLockManager,
+    stickyManager,
+    appBridge,
+    link,
+  }) {
     const polarisContextDefault = createPolarisContext();
     const polarisContext =
       (polaris && merge(polarisContextDefault, polaris)) ||
       polarisContextDefault;
+
+    const intlTranslations =
+      (intl && merge(translations, intl)) || translations;
+    const intlContext = new I18n(intlTranslations);
+
+    const scrollLockManagerContext =
+      scrollLockManager || new ScrollLockManager();
+
+    const stickyManagerContext = stickyManager || new StickyManager();
 
     const themeproviderContextDefault = createThemeContext();
     const themeProviderContext =
@@ -78,18 +137,52 @@ export const mountWithContext = createMount<Options, Context>({
     const frameContext =
       (frame && merge(frameContextDefault, frame)) || frameContextDefault;
 
+    let appBridgeContext: ClientApplication<{}> | null = null;
+    if (appBridge) {
+      const {shopOrigin, apiKey, forceRedirect} = appBridge;
+      appBridgeContext = createAppBridge({
+        shopOrigin,
+        apiKey,
+        forceRedirect,
+      });
+    }
+
+    const linkContext = new Link(link);
+
     return {
       polaris: polarisContext,
       themeProvider: themeProviderContext,
       frame: frameContext,
+      intl: intlContext,
+      scrollLockManager: scrollLockManagerContext,
+      stickyManager: stickyManagerContext,
+      appBridge: appBridgeContext,
+      link: linkContext,
     };
   },
-  render(element, {polaris, themeProvider, frame}) {
+  render(
+    element,
+    {
+      polaris,
+      themeProvider,
+      frame,
+      intl,
+      scrollLockManager,
+      stickyManager,
+      appBridge,
+      link,
+    },
+  ) {
     return (
       <TestProvider
         polaris={polaris}
+        intl={intl}
+        scrollLockManager={scrollLockManager}
+        stickyManager={stickyManager}
         themeProvider={themeProvider}
         frame={frame}
+        appBridge={appBridge}
+        link={link}
       >
         {element}
       </TestProvider>

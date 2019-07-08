@@ -6,7 +6,10 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {classNames} from '../../utilities/css';
-import {WithAppProviderProps, withAppProvider} from '../AppProvider';
+import {
+  WithAppProviderProps,
+  withAppProvider,
+} from '../../utilities/with-app-provider';
 import {scrollable} from '../shared';
 
 import {ScrollTo} from './components';

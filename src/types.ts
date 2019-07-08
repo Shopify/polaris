@@ -1,5 +1,56 @@
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {Props as IconProps} from './components/Icon';
+export type Color =
+  | 'white'
+  | 'black'
+  | 'skyLighter'
+  | 'skyLight'
+  | 'sky'
+  | 'skyDark'
+  | 'inkLightest'
+  | 'inkLighter'
+  | 'inkLight'
+  | 'ink'
+  | 'blueLighter'
+  | 'blueLight'
+  | 'blue'
+  | 'blueDark'
+  | 'blueDarker'
+  | 'indigoLighter'
+  | 'indigoLight'
+  | 'indigo'
+  | 'indigoDark'
+  | 'indigoDarker'
+  | 'tealLighter'
+  | 'tealLight'
+  | 'teal'
+  | 'tealDark'
+  | 'tealDarker'
+  | 'greenLighter'
+  | 'green'
+  | 'greenDark'
+  | 'yellowLighter'
+  | 'yellow'
+  | 'yellowDark'
+  | 'orange'
+  | 'redLighter'
+  | 'red'
+  | 'redDark'
+  | 'purple';
+
+export type IconSource =
+  | React.SFC<React.SVGProps<SVGSVGElement>>
+  | 'placeholder'
+  | string;
+
+export interface IconProps {
+  /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
+  source: IconSource;
+  /** Set the color for the SVG fill */
+  color?: Color;
+  /** Show a backdrop behind the icon */
+  backdrop?: boolean;
+  /** Descriptive text to be read to screenreaders */
+  accessibilityLabel?: string;
+}
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 export type AppBridgeTarget = 'ADMIN_PATH' | 'REMOTE' | 'APP';

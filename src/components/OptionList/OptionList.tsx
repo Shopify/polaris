@@ -2,10 +2,10 @@ import React, {useState, useRef, useCallback} from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {arraysAreEqual} from '../../utilities/arrays';
-import {Props as IconProps} from '../Icon';
+import {IconProps} from '../../types';
 import {Props as AvatarProps} from '../Avatar';
 import {Props as ThumbnailProps} from '../Thumbnail';
-import {useDeepCompare} from '../../hooks';
+import {useDeepCompare} from '../../utilities/use-deep-compare';
 
 import {Option} from './components';
 import styles from './OptionList.scss';

@@ -11,7 +11,10 @@ import {wrapWithComponent} from '../../utilities/components';
 import {transformActions} from '../../utilities/app-bridge-transformers';
 import {pick} from '../../utilities/pick';
 
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Backdrop from '../Backdrop';
 import Scrollable from '../Scrollable';
 import Spinner from '../Spinner';

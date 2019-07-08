@@ -3,7 +3,10 @@ import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import {MenuActionDescriptor, ActionListSection} from '../../../../types';
 
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import ActionList from '../../../ActionList';
 import Button from '../../../Button';
 import Popover from '../../../Popover';

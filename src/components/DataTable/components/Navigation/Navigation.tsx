@@ -2,7 +2,10 @@ import React from 'react';
 import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import Button from '../../../Button';
 
 import {ColumnVisibilityData} from '../../types';

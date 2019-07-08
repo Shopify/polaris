@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {SCROLL_LOCKING_ATTRIBUTE} from '../../AppProvider';
+import {SCROLL_LOCKING_ATTRIBUTE} from '../../../utilities/scroll-lock-manager';
 import ScrollLock from '../ScrollLock';
 
 describe('ScrollLock', () => {

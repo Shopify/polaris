@@ -1,6 +1,9 @@
 import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import VisuallyHidden from '../VisuallyHidden';
 import styles from './Badge.scss';
 

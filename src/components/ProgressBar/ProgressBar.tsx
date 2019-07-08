@@ -1,6 +1,9 @@
 import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import styles from './ProgressBar.scss';
 
 export type Size = 'small' | 'medium' | 'large';

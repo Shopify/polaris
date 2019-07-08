@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Button, Image, Modal} from 'components';
 import ContextualSaveBar from '../ContextualSaveBar';
-import {ThemeProviderContextType} from '../../../../ThemeProvider';
+import {ThemeProviderContextType} from '../../../../../utilities/theme';
 import {merge} from '../../../../../utilities/merge';
 
 describe('<ContextualSaveBar />', () => {

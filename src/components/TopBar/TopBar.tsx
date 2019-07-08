@@ -3,7 +3,10 @@ import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 
 import {getWidth} from '../../utilities/get-width';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Icon from '../Icon';
 import Image from '../Image';
 import UnstyledLink from '../UnstyledLink';

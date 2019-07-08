@@ -4,7 +4,10 @@ import DisplayText from '../DisplayText';
 import SkeletonDisplayText from '../SkeletonDisplayText';
 import SkeletonBodyText from '../SkeletonBodyText';
 
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import styles from './SkeletonPage.scss';
 
 export interface Props {

@@ -5,7 +5,10 @@ import {classNames} from '../../utilities/css';
 import Icon from '../Icon';
 import Popover from '../Popover';
 
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 

@@ -18,7 +18,10 @@ import Caption from '../Caption';
 import DisplayText from '../DisplayText';
 import VisuallyHidden from '../VisuallyHidden';
 import Labelled, {Action} from '../Labelled';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 
 import {FileUpload} from './components';
 import DropZoneContext from './context';

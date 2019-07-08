@@ -4,7 +4,10 @@ import debounce from 'lodash/debounce';
 
 import {classNames} from '../../utilities/css';
 import {headerCell} from '../shared';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import EventListener from '../EventListener';
 import {Cell, CellProps, Navigation} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';

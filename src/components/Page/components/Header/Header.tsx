@@ -4,7 +4,10 @@ import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 import EventListener from '../../../EventListener';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import {MenuActionDescriptor, MenuGroupDescriptor} from '../../../../types';
 import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
 import DisplayText from '../../../DisplayText';

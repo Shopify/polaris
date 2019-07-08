@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {Props as IconProps} from '../../../Icon';
+import {IconProps} from '../../../../types';
 import {Props as ThumbnailProps} from '../../../Thumbnail';
 import {Props as AvatarProps} from '../../../Avatar';
 import Scrollable from '../../../Scrollable';

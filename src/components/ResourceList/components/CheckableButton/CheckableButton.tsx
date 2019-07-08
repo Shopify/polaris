@@ -1,7 +1,10 @@
 import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import Checkbox from '../../../Checkbox';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 
 import styles from './CheckableButton.scss';
 

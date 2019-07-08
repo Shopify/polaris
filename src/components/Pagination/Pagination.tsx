@@ -2,7 +2,10 @@ import React from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {isInputFocused} from '../../utilities/is-input-focused';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
 import Tooltip from '../Tooltip';

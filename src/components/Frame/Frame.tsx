@@ -7,7 +7,10 @@ import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import Button from '../Button';
 import Icon from '../Icon';
 import EventListener from '../EventListener';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
 import {dataPolarisTopBar, layer} from '../shared';

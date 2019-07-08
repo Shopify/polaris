@@ -2,7 +2,10 @@ import React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {classNames} from '../../utilities/css';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioButton';
 import InlineError from '../InlineError';

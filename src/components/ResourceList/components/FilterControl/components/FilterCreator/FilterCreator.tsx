@@ -7,7 +7,7 @@ import Form from '../../../../../Form';
 import {
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../../AppProvider';
+} from '../../../../../../utilities/with-app-provider';
 
 import FilterValueSelector from '../FilterValueSelector';
 import {AppliedFilter, Filter, Operator} from '../../types';

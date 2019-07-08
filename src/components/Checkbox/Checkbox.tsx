@@ -3,7 +3,10 @@ import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {classNames} from '../../utilities/css';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Choice, {helpTextID} from '../Choice';
 import Icon from '../Icon';
 import {Error, Key} from '../../types';

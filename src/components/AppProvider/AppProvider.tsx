@@ -1,22 +1,37 @@
 import React from 'react';
+import {ClientApplication} from '@shopify/app-bridge';
+import {Theme} from '../../utilities/theme';
 import ThemeProvider from '../ThemeProvider';
+import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
+import {
+  ScrollLockManager,
+  ScrollLockManagerContext,
+} from '../../utilities/scroll-lock-manager';
+import {
+  createAppBridge,
+  AppBridgeContext,
+  AppBridgeOptions,
+} from '../../utilities/app-bridge';
 import {
   StickyManager,
-  ScrollLockManager,
-  createAppProviderContext,
-} from './utilities';
-import AppProviderContext, {AppProviderContextType} from './context';
-import {AppProviderProps} from './types';
+  StickyManagerContext,
+} from '../../utilities/sticky-manager';
+import {Link, LinkContext, LinkLikeComponent} from '../../utilities/link';
 
 interface State {
-  context: AppProviderContextType;
+  intl: I18n;
+  appBridge: ClientApplication<{}> | null;
+  link: Link;
 }
 
-// The script in the styleguide that generates the Props Explorer data expects
-// a component's props to be found in the Props interface. This silly workaround
-// ensures that the Props Explorer table is generated correctly, instead of
-// crashing if we write `AppProvider extends React.Component<AppProviderProps>`
-interface Props extends AppProviderProps {}
+export interface Props extends AppBridgeOptions {
+  /** A locale object or array of locale objects that overrides default translations */
+  i18n: TranslationDictionary | TranslationDictionary[];
+  /** A custom component to use for all links used by Polaris components */
+  linkComponent?: LinkLikeComponent;
+  /** Custom logos and colors provided to select components */
+  theme?: Theme;
+}
 
 export default class AppProvider extends React.Component<Props, State> {
   private stickyManager: StickyManager;
@@ -26,15 +41,13 @@ export default class AppProvider extends React.Component<Props, State> {
     super(props);
     this.stickyManager = new StickyManager();
     this.scrollLockManager = new ScrollLockManager();
-    const {theme, children, ...rest} = this.props;
+    const {i18n, apiKey, shopOrigin, forceRedirect, linkComponent} = this.props;
 
     // eslint-disable-next-line react/state-in-constructor
     this.state = {
-      context: createAppProviderContext({
-        ...rest,
-        stickyManager: this.stickyManager,
-        scrollLockManager: this.scrollLockManager,
-      }),
+      link: new Link(linkComponent),
+      intl: new I18n(i18n),
+      appBridge: createAppBridge({shopOrigin, apiKey, forceRedirect}),
     };
   }
 
@@ -65,27 +78,30 @@ export default class AppProvider extends React.Component<Props, State> {
 
     // eslint-disable-next-line react/no-did-update-set-state
     this.setState({
-      context: createAppProviderContext({
-        i18n,
-        linkComponent,
-        apiKey,
-        shopOrigin,
-        forceRedirect,
-        stickyManager: this.stickyManager,
-      }),
+      link: new Link(linkComponent),
+      intl: new I18n(i18n),
+      appBridge: createAppBridge({shopOrigin, apiKey, forceRedirect}),
     });
   }
 
   render() {
     const {theme = {logo: null}, children} = this.props;
-    const {context} = this.state;
+    const {intl, appBridge, link} = this.state;
 
     return (
-      <AppProviderContext.Provider value={context}>
-        <ThemeProvider theme={theme}>
-          {React.Children.only(children)}
-        </ThemeProvider>
-      </AppProviderContext.Provider>
+      <I18nContext.Provider value={intl}>
+        <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
+          <StickyManagerContext.Provider value={this.stickyManager}>
+            <AppBridgeContext.Provider value={appBridge}>
+              <LinkContext.Provider value={link}>
+                <ThemeProvider theme={theme}>
+                  {React.Children.only(children)}
+                </ThemeProvider>
+              </LinkContext.Provider>
+            </AppBridgeContext.Provider>
+          </StickyManagerContext.Provider>
+        </ScrollLockManagerContext.Provider>
+      </I18nContext.Provider>
     );
   }
 }

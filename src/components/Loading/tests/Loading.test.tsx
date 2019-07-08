@@ -47,10 +47,10 @@ describe('<Loading />', () => {
     });
 
     it('starts loading on mount', () => {
-      const {polaris} = mountWithAppBridge(<Loading />);
+      const {appBridge} = mountWithAppBridge(<Loading />);
 
       expect(AppBridgeLoading.create).toHaveBeenCalledTimes(1);
-      expect(AppBridgeLoading.create).toHaveBeenCalledWith(polaris.appBridge);
+      expect(AppBridgeLoading.create).toHaveBeenCalledWith(appBridge);
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(AppBridgeLoading.Action.START);
     });
@@ -76,10 +76,9 @@ describe('<Loading />', () => {
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
-  const polaris = {appBridge};
   const loading = mountWithAppProvider(element, {
-    context: {frame: {}, polaris},
+    context: {frame: {}, appBridge},
   });
 
-  return {loading, polaris};
+  return {loading, appBridge};
 }

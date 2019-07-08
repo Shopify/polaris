@@ -8,7 +8,10 @@ import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import Button from '../../../Button';
 import EventListener from '../../../EventListener';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import CheckableButton from '../CheckableButton';
 import {BulkActionButton} from './components';
 import styles from './BulkActions.scss';

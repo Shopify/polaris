@@ -1,17 +1,17 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import AppProviderContext from '../context';
+import {LinkContext} from '../../../utilities/link';
 import AppProvider from '../AppProvider';
 
 describe('<AppProvider />', () => {
-  it('updates polaris context when props change', () => {
+  it('updates context when props change', () => {
     const Child: React.SFC<{}> = (_props) => (
-      <AppProviderContext.Consumer>
-        {({link}) => {
+      <LinkContext.Consumer>
+        {(link) => {
           // eslint-disable-next-line shopify/jest/no-if
-          return link.getLinkComponent() ? <div id="child" /> : null;
+          return link && link.getLinkComponent() ? <div id="child" /> : null;
         }}
-      </AppProviderContext.Consumer>
+      </LinkContext.Consumer>
     );
     const LinkComponent = () => <div />;
 

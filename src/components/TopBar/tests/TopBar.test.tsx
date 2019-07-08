@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Image, UnstyledLink} from 'components';
-import {ThemeProviderContextType} from '../../ThemeProvider';
+import {ThemeProviderContextType} from '../../../utilities/theme';
 import TopBar from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
 import {merge} from '../../../utilities/merge';

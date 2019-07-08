@@ -3,7 +3,7 @@ import React from 'react';
 import {
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../../AppProvider';
+} from '../../../../../../utilities/with-app-provider';
 import Modal from '../../../../../Modal';
 
 export interface Props {
