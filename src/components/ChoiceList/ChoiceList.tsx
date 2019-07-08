@@ -43,6 +43,8 @@ export interface BaseProps {
   titleHidden?: boolean;
   /** Display an error message */
   error?: Error;
+  /** Disable all choices **/
+  disabled?: boolean;
   /** Callback when the selected choices change */
   onChange?(selected: string[], name: string): void;
 }
@@ -60,6 +62,7 @@ function ChoiceList({
   selected,
   onChange = noop,
   error,
+  disabled = false,
   name = getUniqueID(),
 }: CombinedProps) {
   // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
@@ -78,7 +81,7 @@ function ChoiceList({
   ) : null;
 
   const choicesMarkup = choices.map((choice) => {
-    const {value, label, helpText, disabled} = choice;
+    const {value, label, helpText, disabled: choiceDisabled} = choice;
 
     function handleChange(checked: boolean) {
       onChange(
@@ -101,7 +104,7 @@ function ChoiceList({
           name={finalName}
           value={value}
           label={label}
-          disabled={disabled}
+          disabled={choiceDisabled || disabled}
           checked={choiceIsSelected(choice, selected)}
           helpText={helpText}
           onChange={handleChange}

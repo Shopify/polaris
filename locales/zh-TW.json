@@ -107,6 +107,16 @@
         "rollupButton": "動作"
       }
     },
+    "Filters": {
+      "moreFilters": "更多篩選條件",
+      "filter": "篩選 {resourceName}",
+      "noFiltersApplied": "未套用篩選條件",
+      "cancel": "取消",
+      "done": "完成",
+      "clearAllFilters": "清除所有篩選條件",
+      "clear": "清除",
+      "clearLabel": "清除 {filterName}"
+    },
     "Modal": {
       "iFrameTitle": "本文標記",
       "modalWarning": "互動視窗內缺少以下必要屬性：{missingProps}"
@@ -195,9 +205,6 @@
           "on_or_after": "{date} 之後"
         }
       }
-    },
-    "Sheet": {
-      "warningMessage": "Sheet組件必須在Frame組件中使用。"
     },
     "SkeletonPage": {
       "loadingLabel": "頁面載入中"

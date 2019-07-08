@@ -40,16 +40,18 @@ export interface Props {
   children: React.ReactNode;
   /** Callback when the backdrop is clicked or `ESC` is pressed */
   onClose(): void;
+  /** Callback when the sheet has completed entering */
+  onEntered?(): void;
+  /** Callback when the sheet has started to exit */
+  onExit?(): void;
 }
 
 export interface State {
   mobile: boolean;
 }
 
-function Sheet({children, open, onClose}: Props) {
+function Sheet({children, open, onClose, onEntered, onExit}: Props) {
   const [mobile, setMobile] = useState(false);
-  const frame = useContext(FrameContext);
-  const intl = useI18n();
 
   const handleResize = useCallback(
     debounce(
@@ -64,23 +66,9 @@ function Sheet({children, open, onClose}: Props) {
     [mobile],
   );
 
-  useEffect(
-    () => {
-      if (frame == null) {
-        // eslint-disable-next-line no-console
-        console.warn(intl.translate('Polaris.Sheet.warningMessage'));
-      }
-
-      if (mobile !== isMobile()) {
-        handleToggleMobile();
-      }
-    },
-    [frame, intl, mobile],
-  );
-
-  if (frame == null) {
-    return null;
-  }
+  useEffect(() => {
+      handleResize()
+    }, []);
 
   return (
     <Portal idPrefix="sheet">
@@ -90,6 +78,8 @@ function Sheet({children, open, onClose}: Props) {
         in={open}
         mountOnEnter
         unmountOnExit
+        onEntered={onEntered}
+        onExit={onExit}
       >
         <Container open={open}>{children}</Container>
       </CSSTransition>

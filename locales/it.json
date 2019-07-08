@@ -107,6 +107,16 @@
         "rollupButton": "Azioni"
       }
     },
+    "Filters": {
+      "moreFilters": "Più filtri",
+      "filter": "Filtra {resourceName}",
+      "noFiltersApplied": "Nessun filtro applicato",
+      "cancel": "Annulla",
+      "done": "Fatto",
+      "clearAllFilters": "Cancella tutti i filtri",
+      "clear": "Cancella",
+      "clearLabel": "Cancella {filterName}"
+    },
     "Modal": {
       "iFrameTitle": "markup del testo",
       "modalWarning": "Le seguenti proprietà necessarie mancano da Modal: {missingProps}"
@@ -195,9 +205,6 @@
           "on_or_after": "dopo il {date}"
         }
       }
-    },
-    "Sheet": {
-      "warningMessage": "Il componente Scheda deve essere utilizzato all'interno del componente Cornice."
     },
     "SkeletonPage": {
       "loadingLabel": "Caricamento della pagina"

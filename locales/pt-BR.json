@@ -107,6 +107,16 @@
         "rollupButton": "Ações"
       }
     },
+    "Filters": {
+      "moreFilters": "Mais filtros",
+      "filter": "Filtrar {resourceName}",
+      "noFiltersApplied": "Nenhum filtro aplicado",
+      "cancel": "Cancelar",
+      "done": "Pronto",
+      "clearAllFilters": "Limpar todos os filtros",
+      "clear": "Limpar",
+      "clearLabel": "Limpar {filterName}"
+    },
     "Modal": {
       "iFrameTitle": "marcação de corpo",
       "modalWarning": "Essas propriedades obrigatórias estão faltando no Modal: {missingProps}"
@@ -195,9 +205,6 @@
           "on_or_after": "depois de {date}"
         }
       }
-    },
-    "Sheet": {
-      "warningMessage": "O componente Planilha deve ser usado dentro do componente Quadro."
     },
     "SkeletonPage": {
       "loadingLabel": "Página carregando"

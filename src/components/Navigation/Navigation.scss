@@ -73,8 +73,13 @@ $disabled-fade: 0.6;
 }
 
 .Badge {
-  margin-right: spacing(extra-tight);
   margin-left: spacing(tight);
+  display: inline-flex;
+  margin-top: spacing(base-tight);
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    margin-top: spacing(tight);
+  }
 }
 
 .Icon {
@@ -89,7 +94,12 @@ $disabled-fade: 0.6;
   max-width: calc(
     100% - #{nav(icon-size) + spacing() * 2 + spacing(extra-tight)}
   );
-  padding-right: 0;
+}
+
+.ItemWrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .Text {

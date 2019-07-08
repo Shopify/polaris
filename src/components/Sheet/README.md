@@ -21,18 +21,6 @@ A sheet is a large container that enters from the edge of the screen when trigge
 
 ---
 
-## Required components
-
-The sheet component must be wrapped in the [frame](/components/structure/frame) component.
-
----
-
-## Use in an embedded application
-
-Use of the sheet component in an embedded application is not currently supported. If this is a feature you would like to see supported by Shopify App Bridge, let us know in the [forums](https://community.shopify.com/c/Shopify-APIs-SDKs/bd-p/shopify-apis-and-technology).
-
----
-
 ## Accessibility
 
 Sheets provide an opportunity to let merchants dig into more detail on their current task, or access information for their current task in a different way. Although merchants may be able to see content in the sheet and the main page content at the same time, they should only be expected to interact with one or the other at any given time.
