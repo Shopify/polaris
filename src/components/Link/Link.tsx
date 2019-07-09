@@ -3,16 +3,13 @@ import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
+import {useI18n} from '../../utilities/i18n';
 import UnstyledLink from '../UnstyledLink';
 import Icon from '../Icon';
 
 import styles from './Link.scss';
 
-export interface BaseProps {
+export interface Props {
   /** ID for the link */
   id?: string;
   /** The url to link to */
@@ -27,22 +24,19 @@ export interface BaseProps {
   onClick?(): void;
 }
 
-export interface Props extends BaseProps {}
-type CombinedProps = Props & WithAppProviderProps;
-
-function Link({
+export default function Link({
   url,
   children,
   onClick,
   external,
   id,
   monochrome,
-  polaris,
-}: CombinedProps) {
+}: Props) {
+  const intl = useI18n();
   let childrenMarkup = children;
 
   if (external && typeof children === 'string') {
-    const iconLabel = polaris.intl.translate(
+    const iconLabel = intl.translate(
       'Polaris.Common.newWindowAccessibilityHint',
     );
 
@@ -75,7 +69,6 @@ function Link({
             url={url}
             external={external}
             id={id}
-            polaris={polaris}
           >
             {childrenMarkup}
           </UnstyledLink>
@@ -88,5 +81,3 @@ function Link({
     </BannerContext.Consumer>
   );
 }
-
-export default withAppProvider<Props>()(Link);
