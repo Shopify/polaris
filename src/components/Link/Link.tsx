@@ -34,13 +34,13 @@ function Link({
   external,
   id,
   monochrome,
-  polaris,
+  polaris: {intl},
 }: CombinedProps) {
   const className = classNames(styles.Link, monochrome && styles.monochrome);
   let childrenMarkup = children;
 
   if (external && typeof children === 'string') {
-    const iconLabel = polaris.intl.translate(
+    const iconLabel = intl.translate(
       'Polaris.Common.newWindowAccessibilityHint',
     );
 
@@ -63,7 +63,6 @@ function Link({
       url={url}
       external={external}
       id={id}
-      polaris={polaris}
     >
       {childrenMarkup}
     </UnstyledLink>
