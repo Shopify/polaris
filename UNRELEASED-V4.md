@@ -78,6 +78,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Refactored `Frame` and its subcomponents to use the `createContext` API instead of legacy context ([#803](https://github.com/Shopify/polaris-react/pull/803))
 - Removed `withContext` from `Toast` ([#1494](https://github.com/Shopify/polaris-react/pull/1494))
 - Update React imports to use the default imports intead of `import * as` ([1523](https://github.com/Shopify/polaris-react/pull/1523))
+- Updated several components to use hooks instead of `withAppProvider` ([#1797](https://github.com/Shopify/polaris-react/pull/1797))
 
 ### Deprecations
 

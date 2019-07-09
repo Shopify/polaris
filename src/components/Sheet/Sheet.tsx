@@ -7,7 +7,6 @@ import {classNames} from '../../utilities/css';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Key} from '../../types';
 import {layer, overlay, Duration} from '../shared';
-import {withAppProvider} from '../../utilities/with-app-provider';
 
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
@@ -48,7 +47,13 @@ export interface State {
   mobile: boolean;
 }
 
-function Sheet({children, open, onClose, onEntered, onExit}: Props) {
+export default function Sheet({
+  children,
+  open,
+  onClose,
+  onEntered,
+  onExit,
+}: Props) {
   const container = useRef<HTMLDivElement>(null);
   const [mobile, setMobile] = useState(false);
 
@@ -116,5 +121,3 @@ function Sheet({children, open, onClose, onEntered, onExit}: Props) {
 function isMobile(): boolean {
   return navigationBarCollapsed().matches;
 }
-
-export default withAppProvider<Props>()(Sheet);
