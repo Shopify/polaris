@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 $min-height: control-height();
 $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
 $difference-between-touch-area-and-backdrop: control-height() -
