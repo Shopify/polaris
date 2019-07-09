@@ -124,6 +124,10 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   }
 }
 
+.CheckableContainer {
+  flex: 1 1 0;
+}
+
 .Popover {
   max-height: resource-list(button-min-height);
   margin-left: -1px;

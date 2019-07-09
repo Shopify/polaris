@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import {CSSTransition} from 'react-transition-group';
+import {CSSTransition} from '@material-ui/react-transition-group';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 

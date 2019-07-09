@@ -182,23 +182,21 @@ export function polarisContextReactWrapper<P, S>(
     }
 
     return (
-      <React.StrictMode>
-        <I18nContext.Provider value={app.intl}>
-          <ScrollLockManagerContext.Provider value={app.scrollLockManager}>
-            <StickyManagerContext.Provider value={app.stickyManager}>
-              <ThemeProviderContext.Provider value={app.themeProvider}>
-                <AppBridgeContext.Provider value={app.appBridge as any}>
-                  <LinkContext.Provider value={app.link}>
-                    <FrameContext.Provider value={app.frame}>
-                      {content}
-                    </FrameContext.Provider>
-                  </LinkContext.Provider>
-                </AppBridgeContext.Provider>
-              </ThemeProviderContext.Provider>
-            </StickyManagerContext.Provider>
-          </ScrollLockManagerContext.Provider>
-        </I18nContext.Provider>
-      </React.StrictMode>
+      <I18nContext.Provider value={app.intl}>
+        <ScrollLockManagerContext.Provider value={app.scrollLockManager}>
+          <StickyManagerContext.Provider value={app.stickyManager}>
+            <ThemeProviderContext.Provider value={app.themeProvider}>
+              <AppBridgeContext.Provider value={app.appBridge as any}>
+                <LinkContext.Provider value={app.link}>
+                  <FrameContext.Provider value={app.frame}>
+                    {content}
+                  </FrameContext.Provider>
+                </LinkContext.Provider>
+              </AppBridgeContext.Provider>
+            </ThemeProviderContext.Provider>
+          </StickyManagerContext.Provider>
+        </ScrollLockManagerContext.Provider>
+      </I18nContext.Provider>
     );
   }
 

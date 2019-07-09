@@ -1,6 +1,6 @@
-import React from 'react';
-import {Transition, CSSTransition} from 'react-transition-group';
+import React, {useRef, useCallback} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
+import {Transition, CSSTransition} from '@material-ui/react-transition-group';
 import {classNames} from '../../../../utilities/css';
 
 import {AnimationProps, Key} from '../../../../types';
@@ -23,14 +23,6 @@ export interface DialogProps {
 
 export type Props = DialogProps & AnimationProps;
 
-function DialogContainer(props: {children: React.ReactNode}) {
-  return (
-    <div className={styles.Container} data-polaris-layer data-polaris-overlay>
-      {props.children}
-    </div>
-  );
-}
-
 export default function Dialog({
   instant,
   labelledBy,
@@ -42,6 +34,8 @@ export default function Dialog({
   limitHeight,
   ...props
 }: Props) {
+  const containerNode = useRef<HTMLDivElement>(null);
+  const findDOMNode = useCallback(() => containerNode.current, []);
   const classes = classNames(
     styles.Modal,
     large && styles.sizeLarge,
@@ -52,13 +46,19 @@ export default function Dialog({
   return (
     <TransitionChild
       {...props}
+      findDOMNode={findDOMNode}
       mountOnEnter
       unmountOnExit
       timeout={durationBase}
       onEntered={onEntered}
       onExited={onExited}
     >
-      <DialogContainer>
+      <div
+        className={styles.Container}
+        data-polaris-layer
+        data-polaris-overlay
+        ref={containerNode}
+      >
         <TrapFocus>
           <div
             className={classes}
@@ -74,7 +74,7 @@ export default function Dialog({
             {children}
           </div>
         </TrapFocus>
-      </DialogContainer>
+      </div>
     </TransitionChild>
   );
 }

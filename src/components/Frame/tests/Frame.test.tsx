@@ -1,5 +1,5 @@
 import React from 'react';
-import {CSSTransition} from 'react-transition-group';
+import {CSSTransition} from '@material-ui/react-transition-group';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {documentHasStyle} from 'test-utilities';
 import {mountWithAppProvider} from 'test-utilities/legacy';
