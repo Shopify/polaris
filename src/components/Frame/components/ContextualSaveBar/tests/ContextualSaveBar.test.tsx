@@ -2,7 +2,8 @@ import * as React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {polarisAppProviderContextTypes} from 'components/AppProvider';
 import {createThemeContext, ThemeContext} from 'components/ThemeProvider';
-import {createAppProviderContext, Button, Image, Modal} from 'components';
+import {createAppProviderContext, Button, Image} from 'components';
+import {DiscardConfirmationModal} from '../components';
 import ContextualSaveBar from '../ContextualSaveBar';
 
 describe('<ContextualSaveBar />', () => {
@@ -22,50 +23,145 @@ describe('<ContextualSaveBar />', () => {
       expect(button.prop('children')).toBe(discardAction.content);
     });
 
-    it('calls the discardAction when discardConfirmationModal is false', () => {
-      const discardAction = {
-        content: 'Discard',
-        onAction: jest.fn(),
-        discardConfirmationModal: false,
-      };
+    describe('discardConfirmationModal is false', () => {
+      it('calls the discardAction when the discard button is clicked', () => {
+        const discardAction = {
+          content: 'Discard',
+          onAction: jest.fn(),
+          discardConfirmationModal: false,
+        };
 
-      const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar discardAction={discardAction} />,
-      );
+        const contextualSaveBar = mountWithAppProvider(
+          <ContextualSaveBar discardAction={discardAction} />,
+        );
 
-      contextualSaveBar.find(Button).simulate('click');
-      expect(discardAction.onAction).toHaveBeenCalled();
+        contextualSaveBar.find(Button).simulate('click');
+        expect(discardAction.onAction).toHaveBeenCalled();
+      });
+
+      it('does not render a DiscardConfirmationModal', () => {
+        const discardAction = {
+          content: 'Discard',
+          onAction: noop,
+          discardConfirmationModal: false,
+        };
+
+        const contextualSaveBar = mountWithAppProvider(
+          <ContextualSaveBar discardAction={discardAction} />,
+        );
+
+        expect(contextualSaveBar.find(DiscardConfirmationModal)).toHaveLength(
+          0,
+        );
+      });
     });
 
-    it('does not call the discardAction when discardConfirmationModal is true', () => {
-      const discardAction = {
-        content: 'Discard',
-        onAction: jest.fn(),
-        discardConfirmationModal: true,
-      };
+    describe('discardConfirmationModal is true', () => {
+      it('does not call the discardAction when the discard button is clicked', () => {
+        const discardAction = {
+          content: 'Discard',
+          onAction: jest.fn(),
+          discardConfirmationModal: true,
+        };
 
-      const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar discardAction={discardAction} />,
-      );
+        const contextualSaveBar = mountWithAppProvider(
+          <ContextualSaveBar discardAction={discardAction} />,
+        );
 
-      contextualSaveBar.find(Button).simulate('click');
-      expect(discardAction.onAction).not.toHaveBeenCalled();
-    });
+        contextualSaveBar.find(Button).simulate('click');
+        expect(discardAction.onAction).not.toHaveBeenCalled();
+      });
 
-    it('opens a modal with the discardAction when discardConfirmationModal is true', () => {
-      const discardAction = {
-        content: 'Discard',
-        onAction: jest.fn(),
-        discardConfirmationModal: true,
-      };
+      it('renders a DiscardConfirmationModal with an `open` prop set to false', () => {
+        const discardAction = {
+          content: 'Discard',
+          onAction: noop,
+          discardConfirmationModal: true,
+        };
 
-      const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar discardAction={discardAction} />,
-      );
+        const discardConfirmationModal = mountWithAppProvider(
+          <ContextualSaveBar discardAction={discardAction} />,
+        ).find(DiscardConfirmationModal);
 
-      contextualSaveBar.find(Button).simulate('click');
-      trigger(contextualSaveBar.find(Modal), 'primaryAction.onAction');
-      expect(discardAction.onAction).toHaveBeenCalled();
+        expect(discardConfirmationModal.prop('open')).toBe(false);
+      });
+
+      it('sets the DiscardConfirmationModal `open` prop to true when the discard button is clicked', () => {
+        const discardAction = {
+          content: 'Discard',
+          onAction: noop,
+          discardConfirmationModal: true,
+        };
+
+        const contextualSaveBar = mountWithAppProvider(
+          <ContextualSaveBar discardAction={discardAction} />,
+        );
+
+        contextualSaveBar.find(Button).simulate('click');
+        const discardConfirmationModal = contextualSaveBar.find(
+          DiscardConfirmationModal,
+        );
+        expect(discardConfirmationModal).toHaveLength(1);
+        expect(discardConfirmationModal.prop('open')).toBe(true);
+      });
+
+      it("sets the DiscardConfirmationModal `open` prop to false when it's `onCancel` handler is triggered", () => {
+        const discardAction = {
+          content: 'Discard',
+          onAction: noop,
+          discardConfirmationModal: true,
+        };
+
+        const contextualSaveBar = mountWithAppProvider(
+          <ContextualSaveBar discardAction={discardAction} />,
+        );
+
+        const discardConfirmationModal = contextualSaveBar.find(
+          DiscardConfirmationModal,
+        );
+        trigger(discardConfirmationModal, 'onCancel');
+
+        expect(discardConfirmationModal.prop('open')).toBe(false);
+      });
+
+      it("calls the discardAction prop when it's `onDiscard` handler is triggered", () => {
+        const discardAction = {
+          content: 'Discard',
+          onAction: jest.fn(),
+          discardConfirmationModal: true,
+        };
+
+        const contextualSaveBar = mountWithAppProvider(
+          <ContextualSaveBar discardAction={discardAction} />,
+        );
+
+        contextualSaveBar.find(Button).simulate('click');
+        const discardConfirmationModal = contextualSaveBar.find(
+          DiscardConfirmationModal,
+        );
+
+        trigger(discardConfirmationModal, 'onDiscard');
+        expect(discardAction.onAction).toHaveBeenCalled();
+      });
+
+      it("sets the DiscardConfirmationModal `open` prop to false when it's `onDiscard` handler is triggered", () => {
+        const discardAction = {
+          content: 'Discard',
+          onAction: noop,
+          discardConfirmationModal: true,
+        };
+
+        const contextualSaveBar = mountWithAppProvider(
+          <ContextualSaveBar discardAction={discardAction} />,
+        );
+
+        const discardConfirmationModal = contextualSaveBar.find(
+          DiscardConfirmationModal,
+        );
+        trigger(discardConfirmationModal, 'onDiscard');
+
+        expect(discardConfirmationModal.prop('open')).toBe(false);
+      });
     });
   });
 
@@ -197,3 +293,5 @@ function addPolarisContext(logo: ThemeContext) {
     childContextTypes: polarisAppProviderContextTypes,
   };
 }
+
+function noop() {}

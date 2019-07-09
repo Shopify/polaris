@@ -1,15 +1,31 @@
 import * as React from 'react';
 
-import {shallowWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities';
 
 import {Modal} from 'components';
 
 import DiscardConfirmationModal from '../DiscardConfirmationModal';
 
 describe('<DiscardConfirmationModal />', () => {
+  it('passes its open prop value to the Modal', () => {
+    const discardConfirmationModalOpen = mountWithAppProvider(
+      <DiscardConfirmationModal open onDiscard={noop} onCancel={noop} />,
+    );
+    expect(discardConfirmationModalOpen.find(Modal).prop('open')).toBe(true);
+
+    const discardConfirmationModalClosed = mountWithAppProvider(
+      <DiscardConfirmationModal
+        open={false}
+        onDiscard={noop}
+        onCancel={noop}
+      />,
+    );
+    expect(discardConfirmationModalClosed.find(Modal).prop('open')).toBe(false);
+  });
+
   it('calls onDiscard when primaryAction is triggered', () => {
     const spy = jest.fn();
-    const discardConfirmationModal = shallowWithAppProvider(
+    const discardConfirmationModal = mountWithAppProvider(
       <DiscardConfirmationModal open onDiscard={spy} onCancel={noop} />,
     );
 
@@ -19,7 +35,7 @@ describe('<DiscardConfirmationModal />', () => {
 
   it('calls onCancel when secondaryAction is triggered', () => {
     const spy = jest.fn();
-    const discardConfirmationModal = shallowWithAppProvider(
+    const discardConfirmationModal = mountWithAppProvider(
       <DiscardConfirmationModal open onDiscard={noop} onCancel={spy} />,
     );
 

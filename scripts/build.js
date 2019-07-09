@@ -9,7 +9,6 @@ const copyfiles = require('copyfiles');
 
 const createRollupConfig = require('../config/rollup');
 const packageJSON = require('../package.json');
-const generateSassBuild = require('./sass-build');
 
 const root = resolvePath(__dirname, '..');
 const build = resolvePath(root, 'build');
@@ -46,7 +45,7 @@ copy(['./src/**/*.md', docs], {up: 1}).catch((error) => {
 copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
   .then(() => {
     [
-      resolvePath(intermediateBuild, './styles/global/elements.scss'),
+      resolvePath(intermediateBuild, './styles/global.scss'),
       resolvePath(intermediateBuild, './configure.js'),
     ].forEach((file) => {
       writeFileSync(
@@ -77,13 +76,10 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
       cp('build/polaris.js', './index.js'),
       cp('build/polaris.es.js', './index.es.js'),
       cp('build/polaris.css', './styles.css'),
+      cp('build/styles.scss', './styles.scss'),
+      cp('-r', 'build/styles', './styles'),
     ]),
   )
-  // Main Sass build that includes the full CSS class names
-  .then(() => generateSassBuild(build))
-  .then(() => {
-    cp('-r', resolvePath(build, 'sass', '*'), root);
-  })
   .catch((error) => {
     console.error(error);
     process.exit(1);
