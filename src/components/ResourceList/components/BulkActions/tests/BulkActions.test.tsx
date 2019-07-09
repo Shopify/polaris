@@ -1,5 +1,5 @@
 import React from 'react';
-import {Transition, CSSTransition} from 'react-transition-group';
+import {Transition, CSSTransition} from '@material-ui/react-transition-group';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Popover} from 'components';
 import CheckableButton from '../../CheckableButton';

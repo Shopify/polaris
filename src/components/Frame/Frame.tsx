@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
-import {CSSTransition} from 'react-transition-group';
+import {CSSTransition} from '@material-ui/react-transition-group';
 import {classNames} from '../../utilities/css';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import Icon from '../Icon';
@@ -67,6 +67,8 @@ class Frame extends React.PureComponent<CombinedProps, State> {
   private contextualSaveBar: ContextualSaveBarProps | null;
   private globalRibbonContainer: HTMLDivElement | null = null;
   private mainContentNode = React.createRef<HTMLDivElement>();
+  private navigationNode = createRef<HTMLDivElement>();
+  private contextualSaveBarNode = createRef<HTMLDivElement>();
 
   componentDidMount() {
     this.handleResize();
@@ -111,6 +113,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     const navigationMarkup = navigation ? (
       <TrapFocus trapping={mobileNavShowing}>
         <CSSTransition
+          findDOMNode={this.findNavigationNode}
           appear={mobileView}
           exit={mobileView}
           in={showMobileNavigation}
@@ -118,6 +121,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
           classNames={navTransitionClasses}
         >
           <div
+            ref={this.navigationNode}
             className={navClassName}
             onKeyDown={this.handleNavKeydown}
             id={APP_FRAME_NAV}
@@ -153,6 +157,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
 
     const contextualSaveBarMarkup = (
       <CSSTransition
+        findDOMNode={this.findContextualSaveBarNode}
         appear
         exit
         in={showContextualSaveBar}
@@ -161,7 +166,10 @@ class Frame extends React.PureComponent<CombinedProps, State> {
         mountOnEnter
         unmountOnExit
       >
-        <div className={styles.ContextualSaveBar}>
+        <div
+          className={styles.ContextualSaveBar}
+          ref={this.contextualSaveBarNode}
+        >
           <ContextualSaveBar {...this.contextualSaveBar} />
         </div>
       </CSSTransition>
@@ -378,6 +386,14 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     if (key === 'Escape') {
       this.handleNavigationDismiss();
     }
+  };
+
+  private findNavigationNode = () => {
+    return this.navigationNode.current;
+  };
+
+  private findContextualSaveBarNode = () => {
+    return this.contextualSaveBarNode.current;
   };
 }
 
