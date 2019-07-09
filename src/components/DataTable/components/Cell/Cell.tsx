@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
+import {classNames, variationName} from '@shopify/css-utilities';
 
 import {headerCell} from '../../../shared';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Icon from '../../../Icon';
-import {SortDirection} from '../../types';
+import {SortDirection, VerticalAlign} from '../../types';
 
 import styles from '../../DataTable.scss';
 
@@ -20,6 +20,7 @@ export interface Props {
   sortable?: boolean;
   sortDirection?: SortDirection;
   defaultSortDirection?: SortDirection;
+  verticalAlign?: VerticalAlign;
   onSort?(): void;
 }
 
@@ -35,6 +36,7 @@ function Cell({
   sorted,
   sortable,
   sortDirection,
+  verticalAlign = 'top',
   defaultSortDirection = 'ascending',
   polaris: {
     intl: {translate},
@@ -44,6 +46,7 @@ function Cell({
   const numeric = contentType === 'numeric';
   const className = classNames(
     styles.Cell,
+    styles[`Cell-${variationName('verticalAlign', verticalAlign)}`],
     firstColumn && styles['Cell-firstColumn'],
     firstColumn && truncate && styles['Cell-truncated'],
     header && styles['Cell-header'],
