@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
 import {CSSTransition} from 'react-transition-group';
 import debounce from 'lodash/debounce';
@@ -7,9 +7,7 @@ import {classNames} from '../../utilities/css';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Key} from '../../types';
 import {layer, overlay, Duration} from '../shared';
-import {FrameContext} from '../Frame';
 import {withAppProvider} from '../../utilities/with-app-provider';
-import {useI18n} from '../../utilities/i18n';
 
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
@@ -66,9 +64,13 @@ function Sheet({children, open, onClose, onEntered, onExit}: Props) {
     [mobile],
   );
 
-  useEffect(() => {
-      handleResize()
-    }, []);
+  useEffect(
+    () => {
+      handleResize();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
 
   return (
     <Portal idPrefix="sheet">

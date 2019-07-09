@@ -1,7 +1,5 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import debounce from 'lodash/debounce';
-import compose from '@shopify/react-compose';
-import {classNames} from '@shopify/css-utilities';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {
   SearchMinor,
@@ -9,8 +7,12 @@ import {
   ChevronDownMinor,
   CancelSmallMinor,
 } from '@shopify/polaris-icons';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {Consumer, ResourceListContext} from '../ResourceList';
+import {classNames} from '../../utilities/css';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
+import {ResourceListContext, ResourceListContextType} from '../ResourceList';
 import Button from '../Button';
 import DisplayText from '../DisplayText';
 import Collapsible from '../Collapsible';
@@ -25,7 +27,6 @@ import Badge from '../Badge';
 import Focus from '../Focus';
 import Sheet from '../Sheet';
 import Stack from '../Stack';
-import withContext from '../WithContext';
 import {Key, WithContextTypes} from '../../types';
 
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
@@ -79,7 +80,7 @@ export interface Props {
 
 type ComposedProps = Props &
   WithAppProviderProps &
-  WithContextTypes<ResourceListContext>;
+  WithContextTypes<ResourceListContextType>;
 
 interface State {
   open: boolean;
@@ -94,13 +95,16 @@ enum Suffix {
 }
 
 class Filters extends React.Component<ComposedProps, State> {
+  static contextType = ResourceListContext;
+
   state: State = {
     open: false,
     mobile: false,
     readyForFocus: false,
   };
 
-  private moreFiltersButtonContainer = React.createRef<HTMLDivElement>();
+  private moreFiltersButtonContainer = createRef<HTMLDivElement>();
+  private focusNode = createRef<HTMLDivElement>();
 
   private get hasAppliedFilters(): boolean {
     const {appliedFilters, queryValue} = this.props;
@@ -137,9 +141,9 @@ class Filters extends React.Component<ComposedProps, State> {
       polaris: {intl},
       onQueryClear,
       queryPlaceholder,
-      context: {resourceName},
       children,
     } = this.props;
+    const {resourceName} = this.context;
     const {open, mobile, readyForFocus} = this.state;
 
     const backdropMarkup = open ? (
@@ -194,7 +198,10 @@ class Filters extends React.Component<ComposedProps, State> {
           </button>
           <Collapsible id={collapsibleID} open={filterIsOpen}>
             <div className={styles.FilterNodeContainer}>
-              <Focus disabled={!filterIsOpen || !readyForFocus || !open}>
+              <Focus
+                disabled={!filterIsOpen || !readyForFocus || !open}
+                root={this.focusNode.current}
+              >
                 {this.generateFilterMarkup(filter)}
               </Focus>
             </div>
@@ -211,6 +218,11 @@ class Filters extends React.Component<ComposedProps, State> {
       </div>
     );
 
+    const filterResourceName = resourceName || {
+      singular: intl.translate('Polaris.ResourceList.defaultItemSingular'),
+      plural: intl.translate('Polaris.ResourceList.defaultItemPlural'),
+    };
+
     const filtersControlMarkup = (
       <ConnectedFilterControl
         rightPopoverableActions={this.transformFilters(filters)}
@@ -221,7 +233,7 @@ class Filters extends React.Component<ComposedProps, State> {
           placeholder={
             queryPlaceholder ||
             intl.translate('Polaris.Filters.filter', {
-              resourceName: resourceName.plural,
+              resourceName: filterResourceName.plural,
             })
           }
           onChange={onQueryChange}
@@ -231,7 +243,7 @@ class Filters extends React.Component<ComposedProps, State> {
           label={
             queryPlaceholder ||
             intl.translate('Polaris.Filters.filter', {
-              resourceName: resourceName.plural,
+              resourceName: filterResourceName.plural,
             })
           }
           labelHidden
@@ -471,19 +483,21 @@ class Filters extends React.Component<ComposedProps, State> {
             removeCallback(filter.key);
           };
     return (
-      <Stack vertical spacing="tight">
-        {filter.filter}
-        <Button
-          plain
-          disabled={removeHandler == null}
-          onClick={removeHandler}
-          accessibilityLabel={intl.translate('Polaris.Filters.clearLabel', {
-            filterName: filter.label,
-          })}
-        >
-          {intl.translate('Polaris.Filters.clear')}
-        </Button>
-      </Stack>
+      <div ref={this.focusNode}>
+        <Stack vertical spacing="tight">
+          {filter.filter}
+          <Button
+            plain
+            disabled={removeHandler == null}
+            onClick={removeHandler}
+            accessibilityLabel={intl.translate('Polaris.Filters.clearLabel', {
+              filterName: filter.label,
+            })}
+          >
+            {intl.translate('Polaris.Filters.clear')}
+          </Button>
+        </Stack>
+      </div>
     );
   }
 }
@@ -496,7 +510,4 @@ function getShortcutFilters(filters: Filter[]) {
   return filters.filter((filter) => filter.shortcut === true);
 }
 
-export default compose<Props>(
-  withAppProvider<Props>(),
-  withContext<Props, WithAppProviderProps, ResourceListContext>(Consumer),
-)(Filters);
+export default withAppProvider<Props>()(Filters);

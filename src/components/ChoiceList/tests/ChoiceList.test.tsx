@@ -435,8 +435,8 @@ describe('<ChoiceList />', () => {
 
   describe('disabled', () => {
     it('disables choices', () => {
-      const choiceElements = shallowWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} disabled />,
+      const choiceElements = mountWithAppProvider(
+        <ChoiceList selected={[]} choices={choices} disabled title="title" />,
       ).find(RadioButton);
 
       choiceElements.forEach((choiceElement) => {
@@ -447,8 +447,8 @@ describe('<ChoiceList />', () => {
     it('preserves disabled choices', () => {
       choices = [choices[0], choices[1], {...choices[2], disabled: true}];
 
-      const choiceElements = shallowWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} disabled />,
+      const choiceElements = mountWithAppProvider(
+        <ChoiceList selected={[]} choices={choices} disabled title="title" />,
       ).find(RadioButton);
 
       choiceElements.forEach((choiceElement) => {

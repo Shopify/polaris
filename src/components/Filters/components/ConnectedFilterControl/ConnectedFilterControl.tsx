@@ -1,6 +1,6 @@
 import React from 'react';
 import debounce from 'lodash/debounce';
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../../../utilities/css';
 
 import {Action, BaseAction} from '../../../../types';
 import Popover from '../../../Popover';

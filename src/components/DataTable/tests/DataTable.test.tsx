@@ -111,9 +111,9 @@ describe('<DataTable />', () => {
 
       expect(dataTable.find('thead tr')).toHaveLength(2);
 
-      const expectedTotalsHeadingContent = dataTable
-        .instance()
-        .context.polaris.intl.translate('Polaris.DataTable.totalsRowHeading');
+      const expectedTotalsHeadingContent = dataTable.app.intl.translate(
+        'Polaris.DataTable.totalsRowHeading',
+      );
 
       const firstTotalCell = dataTable
         .find(Cell)

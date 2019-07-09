@@ -3,7 +3,11 @@ import {ReactWrapper} from 'enzyme';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Button, Popover, Sheet, Tag} from 'components';
 
-import {mountWithAppProvider, trigger, findByTestID} from 'test-utilities';
+import {
+  mountWithAppProvider,
+  trigger,
+  findByTestID,
+} from 'test-utilities/legacy';
 
 import Filters, {Props} from '../Filters';
 import {ConnectedFilterControl} from '../components';
