@@ -1,9 +1,6 @@
 import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
+import {useI18n} from '../../utilities/i18n';
 import {IconProps} from '../../types';
 
 import styles from './Icon.scss';
@@ -22,15 +19,14 @@ const COLORS_WITH_BACKDROPS = [
 // styleguide to generate the props explorer
 interface Props extends IconProps {}
 
-type CombinedProps = Props & WithAppProviderProps;
-
-function Icon({
+export default function Icon({
   source,
   color,
   backdrop,
   accessibilityLabel,
-  polaris: {intl},
-}: CombinedProps) {
+}: Props) {
+  const intl = useI18n();
+
   if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {
     // eslint-disable-next-line no-console
     console.warn(
@@ -77,5 +73,3 @@ function Icon({
     </span>
   );
 }
-
-export default withAppProvider<Props>()(Icon);

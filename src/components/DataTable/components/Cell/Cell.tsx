@@ -2,11 +2,8 @@ import React from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
+import {useI18n} from '../../../../utilities/i18n';
 import {headerCell} from '../../../shared';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../../../utilities/with-app-provider';
 import Icon from '../../../Icon';
 import {SortDirection} from '../../types';
 
@@ -29,9 +26,7 @@ export interface Props {
   onSort?(): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
-
-function Cell({
+export default function Cell({
   height,
   content,
   contentType,
@@ -44,11 +39,9 @@ function Cell({
   sortable,
   sortDirection,
   defaultSortDirection,
-  polaris: {
-    intl: {translate},
-  },
   onSort,
-}: CombinedProps) {
+}: Props) {
+  const {translate} = useI18n();
   const numeric = contentType === 'numeric';
 
   const className = classNames(
@@ -126,5 +119,3 @@ function Cell({
 
   return cellMarkup;
 }
-
-export default withAppProvider<Props>()(Cell);

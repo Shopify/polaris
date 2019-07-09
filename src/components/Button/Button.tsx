@@ -1,12 +1,8 @@
 import React from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
 import {classNames, variationName} from '../../utilities/css';
-
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
+import {useI18n} from '../../utilities/i18n';
 import UnstyledLink from '../UnstyledLink';
 import Icon from '../Icon';
 import {IconProps} from '../../types';
@@ -81,11 +77,9 @@ export interface Props {
   onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
-
 const DEFAULT_SIZE = 'medium';
 
-function Button({
+export default function Button({
   id,
   url,
   disabled,
@@ -114,8 +108,9 @@ function Button({
   size = DEFAULT_SIZE,
   textAlign,
   fullWidth,
-  polaris: {intl},
-}: CombinedProps) {
+}: Props) {
+  const intl = useI18n();
+
   const isDisabled = disabled || loading;
 
   const className = classNames(
@@ -247,5 +242,3 @@ function isIconSource(x: any): x is IconSource {
     typeof x === 'function'
   );
 }
-
-export default withAppProvider<Props>()(Button);
