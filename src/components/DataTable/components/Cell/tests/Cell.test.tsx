@@ -131,14 +131,9 @@ describe('<Cell />', () => {
           <Cell header firstColumn sortable sorted sortDirection="ascending" />,
         );
 
-        const expectedLabel = cell.app.intl.translate(
-          'Polaris.DataTable.sortAccessibilityLabel',
-          {
-            direction: 'descending',
-          },
+        expect(cell.find(Icon).prop('accessibilityLabel')).toBe(
+          'sort descending by',
         );
-
-        expect(cell.find(Icon).prop('accessibilityLabel')).toBe(expectedLabel);
       });
     });
 
@@ -168,14 +163,9 @@ describe('<Cell />', () => {
           />,
         );
 
-        const expectedLabel = cell.app.intl.translate(
-          'Polaris.DataTable.sortAccessibilityLabel',
-          {
-            direction: 'ascending',
-          },
+        expect(cell.find(Icon).prop('accessibilityLabel')).toBe(
+          'sort ascending by',
         );
-
-        expect(cell.find(Icon).prop('accessibilityLabel')).toBe(expectedLabel);
       });
     });
   });

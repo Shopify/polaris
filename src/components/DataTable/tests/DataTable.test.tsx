@@ -111,16 +111,12 @@ describe('<DataTable />', () => {
 
       expect(dataTable.find('thead tr')).toHaveLength(2);
 
-      const expectedTotalsHeadingContent = dataTable.app.intl.translate(
-        'Polaris.DataTable.totalsRowHeading',
-      );
-
       const firstTotalCell = dataTable
         .find(Cell)
         .filterWhere((cell) => cell.prop('total') === true)
         .first();
 
-      expect(firstTotalCell.prop('content')).toBe(expectedTotalsHeadingContent);
+      expect(firstTotalCell.prop('content')).toBe('Totals');
     });
 
     it('sets the contentType of non-empty total Cells to numeric', () => {
