@@ -486,7 +486,7 @@ class PlaceholderExample extends React.Component {
 
 ### Text field with help text
 
-Use to show short instructional content below the text field. Use especially when incorrect formatting will result in an error and merchants don’t know what format is required (e.g. to explain the correct format for dates, or requirements for a password). If more explanation is needed, link to the Shopify Help Center.
+Use to show short instructional content below the text field. Help text works to help merchants understand how to fix errors that result from incorrect formatting (such as dates or passwords with specific character requirements). If more explanation is needed, link to the Shopify Help Center.
 
 ```jsx
 class HelpTextExample extends React.Component {
@@ -528,8 +528,8 @@ class HelpTextExample extends React.Component {
 
 Use as a special form of help text that works best inline.
 
-- Use a prefix for things like currency symbols (e.g. “\$”, “¥”, “£”).
-- Use suffix for things like units of measure (e.g. “in”, “cm”).
+- Use a prefix for things like currency symbols (“\$”, “¥”, “£”).
+- Use suffix for things like units of measure (“in”, “cm”).
 
 ```jsx
 class PrefixExample extends React.Component {
@@ -605,7 +605,7 @@ class ConnectedFieldsExample extends React.Component {
 
 <!-- content-for: android -->
 
-If inputting weight as a number and a separate unit of measurement, use a text field with a selector (e.g. “kg”, “lb”) as a connected field.
+If inputting weight as a number and a separate unit of measurement, use a text field with a selector (like “kg” or “lb”) as a connected field.
 
 ![Text field with connected selector](/public_images/components/TextField/android/connected-fields@2x.png)
 
@@ -613,7 +613,7 @@ If inputting weight as a number and a separate unit of measurement, use a text f
 
 <!-- content-for: ios -->
 
-If inputting weight as a number and a separate unit of measurement, use a text field with a selector (e.g. “kg”, “lb”) as a connected field.
+If inputting weight as a number and a separate unit of measurement, use a text field with a selector (like “kg” or “lb”) as a connected field.
 
 ![Text field with connected selector](/public_images/components/TextField/ios/connected-fields@2x.png)
 
