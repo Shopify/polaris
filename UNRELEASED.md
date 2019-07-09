@@ -25,6 +25,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Added links to App Bridge React component documentation in deprecation notices for embedded components ([#1765](https://github.com/Shopify/polaris-react/pull/1765))
+- Improved link text for App Bridge deprecation notices. [#1802](https://github.com/Shopify/polaris-react/pull/1802)
 
 ### Development workflow
 
