@@ -5,7 +5,6 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {classNames} from '../../utilities/css';
-import {withAppProvider} from '../../utilities/with-app-provider';
 
 import styles from './Collapsible.scss';
 
@@ -22,7 +21,7 @@ const CSS_VAR_COLLAPSIBLE_HEIGHT = '--polaris-collapsible-height';
 const CSS_VAR_COLLAPSIBLE_TRANSITION_DURATION =
   '--polaris-collapsible-transition-duration';
 
-function Collapsible({id, open, children}: Props) {
+export default function Collapsible({id, open, children}: Props) {
   const [height, setHeight] = useState<number | null>(null);
   const node = useRef<HTMLDivElement>(null);
 
@@ -73,5 +72,3 @@ function Collapsible({id, open, children}: Props) {
     </div>
   );
 }
-
-export default withAppProvider<Props>()(Collapsible);
