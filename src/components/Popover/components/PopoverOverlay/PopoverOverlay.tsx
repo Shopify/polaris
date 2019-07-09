@@ -115,19 +115,18 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
     );
 
     return (
-      <div className={className}>
-        <PositionedOverlay
-          testID="positionedOverlay"
-          fullWidth={fullWidth}
-          active={active}
-          activator={activator}
-          preferredPosition={preferredPosition}
-          preferredAlignment={preferredAlignment}
-          render={this.renderPopover.bind(this)}
-          fixed={fixed}
-          onScrollOut={this.handleScrollOut}
-        />
-      </div>
+      <PositionedOverlay
+        testID="positionedOverlay"
+        fullWidth={fullWidth}
+        active={active}
+        activator={activator}
+        preferredPosition={preferredPosition}
+        preferredAlignment={preferredAlignment}
+        render={this.renderPopover.bind(this)}
+        fixed={fixed}
+        onScrollOut={this.handleScrollOut}
+        classNames={className}
+      />
     );
   }
 
