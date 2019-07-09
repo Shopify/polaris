@@ -16,6 +16,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed the `SearchInput` clear button which was overflowing the search bar in Firefox 65+ ([#1795](https://github.com/Shopify/polaris-react/pull/1795)).
+
 - Fixed a bug preventing the display of `Tooltip` when cursor enters from a disabled element ([#1783](https://github.com/Shopify/polaris-react/pull/1783)).
 
 ### Documentation
