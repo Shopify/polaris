@@ -9,6 +9,7 @@ describe('<ChoiceList />', () => {
     label: string;
     value: string;
     helpText?: React.ReactNode;
+    disabled?: boolean;
     renderChildren?(): React.ReactNode;
   })[];
 
@@ -429,6 +430,30 @@ describe('<ChoiceList />', () => {
       );
 
       expect(element.find(InlineError)).toHaveLength(0);
+    });
+  });
+
+  describe('disabled', () => {
+    it('disables choices', () => {
+      const choiceElements = mountWithAppProvider(
+        <ChoiceList selected={[]} choices={choices} disabled title="title" />,
+      ).find(RadioButton);
+
+      choiceElements.forEach((choiceElement) => {
+        expect(choiceElement.prop('disabled')).toBe(true);
+      });
+    });
+
+    it('preserves disabled choices', () => {
+      choices = [choices[0], choices[1], {...choices[2], disabled: true}];
+
+      const choiceElements = mountWithAppProvider(
+        <ChoiceList selected={[]} choices={choices} disabled title="title" />,
+      ).find(RadioButton);
+
+      choiceElements.forEach((choiceElement) => {
+        expect(choiceElement.prop('disabled')).toBe(true);
+      });
     });
   });
 });

@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-  useRef,
-} from 'react';
+import React, {useCallback, useEffect, useState, useRef} from 'react';
 
 import {CSSTransition} from '@material-ui/react-transition-group';
 import debounce from 'lodash/debounce';
@@ -13,8 +7,6 @@ import {classNames} from '../../utilities/css';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Key} from '../../types';
 import {layer, overlay, Duration} from '../shared';
-import {FrameContext} from '../Frame';
-import {useI18n} from '../../utilities/i18n';
 
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
@@ -45,17 +37,25 @@ export interface Props {
   children: React.ReactNode;
   /** Callback when the backdrop is clicked or `ESC` is pressed */
   onClose(): void;
+  /** Callback when the sheet has completed entering */
+  onEntered?(): void;
+  /** Callback when the sheet has started to exit */
+  onExit?(): void;
 }
 
 export interface State {
   mobile: boolean;
 }
 
-export default function Sheet({children, open, onClose}: Props) {
+export default function Sheet({
+  children,
+  open,
+  onClose,
+  onEntered,
+  onExit,
+}: Props) {
   const container = useRef<HTMLDivElement>(null);
   const [mobile, setMobile] = useState(false);
-  const frame = useContext(FrameContext);
-  const intl = useI18n();
 
   const findDOMNode = useCallback(() => {
     return container.current;
@@ -76,21 +76,11 @@ export default function Sheet({children, open, onClose}: Props) {
 
   useEffect(
     () => {
-      if (frame == null) {
-        // eslint-disable-next-line no-console
-        console.warn(intl.translate('Polaris.Sheet.warningMessage'));
-      }
-
-      if (mobile !== isMobile()) {
-        handleToggleMobile();
-      }
+      handleResize();
     },
-    [frame, intl, mobile],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   );
-
-  if (frame == null) {
-    return null;
-  }
 
   return (
     <Portal idPrefix="sheet">
@@ -101,6 +91,8 @@ export default function Sheet({children, open, onClose}: Props) {
         in={open}
         mountOnEnter
         unmountOnExit
+        onEntered={onEntered}
+        onExit={onExit}
       >
         <div
           className={styles.Container}

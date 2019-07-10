@@ -52,7 +52,7 @@ class ResourcePicker extends React.PureComponent<CombinedProps, never> {
   componentDidMount() {
     // eslint-disable-next-line no-console
     console.warn(
-      "Deprecation: `ResourcePicker` is deprecated and will be removed in v5.0. Use `ResourcePicker` from `@shopify/app-bridge-react` instead. For example, `import {ResourcePicker} from '@shopify/app-bridge-react';`",
+      'Deprecation: `ResourcePicker` is deprecated and will be removed in v5.0. Use `ResourcePicker` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/resourcepicker',
     );
 
     if (this.props.polaris.appBridge == null) {

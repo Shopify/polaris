@@ -107,6 +107,16 @@
         "rollupButton": "Acties"
       }
     },
+    "Filters": {
+      "moreFilters": "Meer filters",
+      "filter": "Filter {resourceName}",
+      "noFiltersApplied": "Geen filters toegepast",
+      "cancel": "Annuleren",
+      "done": "Gereed",
+      "clearAllFilters": "Alle filters wissen",
+      "clear": "Wissen",
+      "clearLabel": "{filterName} wissen"
+    },
     "Modal": {
       "iFrameTitle": "opmaak platte tekst",
       "modalWarning": "Deze verplichte onderdelen ontbreken op Modal: {missingProps}"
@@ -195,9 +205,6 @@
           "on_or_after": "na {date}"
         }
       }
-    },
-    "Sheet": {
-      "warningMessage": "De Blad-component moet binnen de Frame-component worden gebruikt."
     },
     "SkeletonPage": {
       "loadingLabel": "Pagina is aan het laden"

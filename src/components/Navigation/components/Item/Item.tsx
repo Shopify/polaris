@@ -270,17 +270,19 @@ export default function Item({
 
   return (
     <li className={className}>
-      <UnstyledLink
-        url={url}
-        className={itemClassName}
-        tabIndex={tabIndex}
-        aria-disabled={disabled}
-        aria-label={accessibilityLabel}
-        onClick={getClickHandler(onClick)}
-      >
-        {itemContentMarkup}
-      </UnstyledLink>
-      {secondaryActionMarkup}
+      <div className={styles.ItemWrapper}>
+        <UnstyledLink
+          url={url}
+          className={itemClassName}
+          tabIndex={tabIndex}
+          aria-disabled={disabled}
+          aria-label={accessibilityLabel}
+          onClick={getClickHandler(onClick)}
+        >
+          {itemContentMarkup}
+        </UnstyledLink>
+        {secondaryActionMarkup}
+      </div>
       {secondaryNavigationMarkup}
     </li>
   );

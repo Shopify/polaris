@@ -17,7 +17,7 @@ function Loading() {
       } else if (appBridge != null) {
         // eslint-disable-next-line no-console
         console.warn(
-          "Deprecation: Using `Loading` in an embedded app is deprecated and will be removed in v5.0. Use `Loading` from `@shopify/app-bridge-react` instead. For example, `import {Loading} from '@shopify/app-bridge-react';`",
+          'Deprecation: Using `Loading` in an embedded app is deprecated and will be removed in v5.0. Use `Loading` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/loading',
         );
 
         appBridgeLoading.current = AppBridgeLoading.create(appBridge);

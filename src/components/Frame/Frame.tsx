@@ -4,7 +4,6 @@ import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from '@material-ui/react-transition-group';
 import {classNames} from '../../utilities/css';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
-import Button from '../Button';
 import Icon from '../Icon';
 import EventListener from '../EventListener';
 import {
@@ -22,6 +21,8 @@ import {ToastManager, Loading, ContextualSaveBar} from './components';
 import styles from './Frame.scss';
 
 export interface Props {
+  /** The content to display inside the frame. */
+  children?: React.ReactNode;
   /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */
   topBar?: React.ReactNode;
   /** Accepts a navigation component that will be rendered in the left sidebar of an application frame */
@@ -64,8 +65,8 @@ class Frame extends React.PureComponent<CombinedProps, State> {
   };
 
   private contextualSaveBar: ContextualSaveBarProps | null;
-
   private globalRibbonContainer: HTMLDivElement | null = null;
+  private mainContentNode = React.createRef<HTMLDivElement>();
   private navigationNode = createRef<HTMLDivElement>();
   private contextualSaveBarNode = createRef<HTMLDivElement>();
 
@@ -201,13 +202,15 @@ class Frame extends React.PureComponent<CombinedProps, State> {
 
     const skipMarkup = (
       <div className={skipClassName}>
-        <Button
-          onClick={this.handleClick}
+        <a
+          href={`#${APP_FRAME_MAIN}`}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
+          onClick={this.handleClick}
+          className={styles.SkipAnchor}
         >
           {intl.translate('Polaris.Frame.skipToContent')}
-        </Button>
+        </a>
       </div>
     );
 
@@ -258,6 +261,8 @@ class Frame extends React.PureComponent<CombinedProps, State> {
             className={styles.Main}
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
+            ref={this.mainContentNode}
+            tabIndex={-1}
           >
             <div className={styles.Content}>{children}</div>
           </main>
@@ -349,16 +354,19 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     }
   };
 
-  private handleClick = () => {
-    focusAppFrameMain();
-  };
-
   private handleFocus = () => {
     this.setState({skipFocused: true});
   };
 
   private handleBlur = () => {
     this.setState({skipFocused: false});
+  };
+
+  private handleClick = () => {
+    if (this.mainContentNode.current == null) {
+      return;
+    }
+    this.mainContentNode.current.focus();
   };
 
   private handleNavigationDismiss = () => {
@@ -404,10 +412,6 @@ const contextualSaveBarTransitionClasses = {
   exit: classNames(styles['ContextualSaveBar-exit']),
   exitActive: classNames(styles['ContextualSaveBar-exitActive']),
 };
-
-function focusAppFrameMain() {
-  window.location.assign(`${window.location.pathname}#${APP_FRAME_MAIN}`);
-}
 
 function isMobileView() {
   return navigationBarCollapsed().matches;

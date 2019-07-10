@@ -107,6 +107,16 @@
         "rollupButton": "Acciones"
       }
     },
+    "Filters": {
+      "moreFilters": "Más filtros",
+      "filter": "Filtrar {resourceName}",
+      "noFiltersApplied": "No se aplicaron filtros",
+      "cancel": "Cancelar",
+      "done": "Listo",
+      "clearAllFilters": "Borrar todos los filtros",
+      "clear": "Borrar",
+      "clearLabel": "Borrar {filterName}"
+    },
     "Modal": {
       "iFrameTitle": "etiqueta body",
       "modalWarning": "Estas propiedades necesarias faltan en Modal: {missingProps}"
@@ -195,9 +205,6 @@
           "on_or_after": "después de {date}"
         }
       }
-    },
-    "Sheet": {
-      "warningMessage": "El componente Hoja de cálculo debe usarse dentro del componente Frame."
     },
     "SkeletonPage": {
       "loadingLabel": "Cargando página"

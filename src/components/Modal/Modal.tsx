@@ -116,7 +116,7 @@ class Modal extends React.Component<CombinedProps, State> {
 
     // eslint-disable-next-line no-console
     console.warn(
-      "Deprecation: Using `Modal` in an embedded app is deprecated and will be removed in v5.0. Use `Modal` from `@shopify/app-bridge-react` instead. For example, `import {Modal} from '@shopify/app-bridge-react';`",
+      'Deprecation: Using `Modal` in an embedded app is deprecated and will be removed in v5.0. Use `Modal` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/modal',
     );
 
     const transformProps = this.transformProps();
