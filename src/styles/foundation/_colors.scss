@@ -14,15 +14,15 @@ $color-palette-data: map-extend(
   $color-palette-data,
   (
     'state': (
-      'hover': rgba(223, 227, 232, 0.3),
-      'focused': rgba(223, 227, 232, 0.3),
-      'active': rgba(179, 188, 245, 0.1),
-      'selected': rgba(179, 188, 245, 0.15),
-      'subdued': rgba(249, 250, 251, 1),
-      'disabled': rgba(249, 250, 251, 1),
-      'hover-destructive': rgba(251, 234, 229, 0.4),
-      'focused-destructive': rgba(251, 234, 229, 0.4),
-      'active-destructive': rgba(220, 56, 37, 0.03),
+      'hover': hsla(200, 16%, 89%, 0.3),
+      'focused': hsla(200, 16%, 89%, 0.3),
+      'active': hsla(200, 77%, 83%, 0.1),
+      'selected': hsla(200, 77%, 83%, 0.15),
+      'subdued': hsl(200, 20%, 98%),
+      'disabled': hsl(200, 20%, 98%),
+      'hover-destructive': hsla(14, 73%, 94%, 0.4),
+      'focused-destructive': hsla(14, 73%, 94%, 0.4),
+      'active-destructive': hsla(6, 72%, 50%, 0.03),
     ),
   )
 );
