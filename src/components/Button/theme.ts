@@ -1,29 +1,16 @@
-import {CSSProperties} from 'react';
-
-type StateProperties = 'default' | 'hover' | 'focus' | 'active' | 'disabled';
-type StyleProperties =
-  | 'text'
-  | 'icon'
-  | 'background'
-  | 'border'
-  | 'gradient'
-  | 'shadow';
-
-type ComponentThemeProperties = {
-  [Theme in StateProperties]?: {[Style in StyleProperties]?: string | string[]}
-};
+import {reduceTheme, ComponentThemeProperties} from '../ThemeProvider';
 
 const baseComponentTheme: ComponentThemeProperties = {
   default: {
     text: '--polaris-surface-28',
     icon: '--polaris-surface-27',
-    background: '--polaris-surface-0',
-    gradient: ['--polaris-surface-0', '--polaris-surface-1'],
+    background: '--polaris-surface-3',
+    gradient: ['--polaris-surface-3', '--polaris-surface-4'],
     border: '--polaris-surface-8',
   },
   hover: {
-    background: '--polaris-surface-1',
-    gradient: ['--polaris-surface-1', '--polaris-surface-2'],
+    background: '--polaris-surface-4',
+    gradient: ['--polaris-surface-4', '--polaris-surface-5'],
     border: '--polaris-surface-8',
   },
   focus: {
@@ -49,7 +36,7 @@ const baseComponentTheme: ComponentThemeProperties = {
 
 const primaryComponentTheme: ComponentThemeProperties = {
   default: {
-    text: '--polaris-surface-0',
+    text: '--polaris-surface-onDark',
     icon: '--polaris-surface-27',
     background: '--polaris-brand-lightened1',
     gradient: ['--polaris-brand-lightened1', '--polaris-brand-darkened1'],
@@ -60,7 +47,7 @@ const primaryComponentTheme: ComponentThemeProperties = {
     background: '--polaris-brand',
     gradient: ['--polaris-brand', '--polaris-brand-darkened1'],
     border: '--polaris-brand-darkened2',
-    text: '--polaris-surface-0',
+    text: '--polaris-surface-onDark',
   },
   focus: {
     border: '--polaris-brand-darkened5',
@@ -73,8 +60,8 @@ const primaryComponentTheme: ComponentThemeProperties = {
     shadow: '--polaris-brand-darkened3',
   },
   disabled: {
-    text: '--polaris-surface-0',
-    icon: '--polaris-surface-0',
+    text: 'polaris-surface-onDark',
+    icon: 'polaris-surface-onDark',
     background: '--polaris-brand-lightened5',
     gradient: ['--polaris-brand-lightened5', '--polaris-brand-lightened5'],
     border: '--polaris-brand-lightened4',
@@ -83,8 +70,8 @@ const primaryComponentTheme: ComponentThemeProperties = {
 
 const destructiveComponentTheme: ComponentThemeProperties = {
   default: {
-    text: '--polaris-surface-0',
-    icon: '--polaris-surface-27',
+    text: '--polaris-surface-onDark',
+    icon: 'polaris-surface-onDark',
     background: '--polaris-negative-lightened1',
     gradient: ['--polaris-negative-lightened1', '--polaris-negative-darkened1'],
     border: '--polaris-negative-darkened2',
@@ -94,7 +81,7 @@ const destructiveComponentTheme: ComponentThemeProperties = {
     background: '--polaris-negative',
     gradient: ['--polaris-negative', '--polaris-negative-darkened1'],
     border: '--polaris-negative-darkened2',
-    text: '--polaris-surface-0',
+    text: 'polaris-surface-onDark',
   },
   focus: {
     border: '--polaris-negative-darkened5',
@@ -107,8 +94,8 @@ const destructiveComponentTheme: ComponentThemeProperties = {
     shadow: '--polaris-negative-darkened3',
   },
   disabled: {
-    text: '--polaris-surface-0',
-    icon: '--polaris-surface-0',
+    text: 'polaris-surface-onDark',
+    icon: 'polaris-surface-onDark',
     background: '--polaris-negative-lightened5',
     gradient: [
       '--polaris-negative-lightened5',
@@ -186,50 +173,6 @@ const plainDestructiveComponentTheme: ComponentThemeProperties = {
     icon: '--polaris-negative-darkened5',
   },
 };
-
-function reduceTheme(theme: ComponentThemeProperties): CSSProperties {
-  return Object.entries(theme)
-    .reduce((childAccumulator, childCurrent) => {
-      const maybeChildCurrent = childCurrent[1] != null ? childCurrent[1] : [];
-      return [
-        ...childAccumulator,
-        ...Object.entries(maybeChildCurrent).reduce(
-          (propertyAccumulator, propertyCurrent) => {
-            if (typeof propertyCurrent[1] === 'string') {
-              return [
-                ...propertyAccumulator,
-                ...[
-                  {
-                    [`--${childCurrent[0]}-${propertyCurrent[0]}`]: `var(${
-                      propertyCurrent[1]
-                    })`,
-                  },
-                ],
-              ];
-            } else {
-              const maybePropertyCurrent =
-                propertyCurrent[1] != null ? propertyCurrent[1] : [];
-              return [
-                ...propertyAccumulator,
-                ...[
-                  ...maybePropertyCurrent.map((property, index) => {
-                    return {
-                      [`--${childCurrent[0]}-${propertyCurrent[0]}-${index +
-                        1}`]: `var(${property})`,
-                    };
-                  }),
-                ],
-              ];
-            }
-          },
-          [],
-        ),
-      ];
-    }, [])
-    .reduce((accumulator, current) => {
-      return {...accumulator, ...current};
-    }, {});
-}
 
 const theme = {
   base: reduceTheme(baseComponentTheme),

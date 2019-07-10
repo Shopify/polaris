@@ -25,6 +25,7 @@ import {
   ThemeColors,
   ThemeContext,
   ThemeProviderContext,
+  ComponentThemeProperties,
 } from '../types';
 
 export function setColors(theme: Theme | undefined): string[][] | undefined {
@@ -212,7 +213,7 @@ export function createSurfaceRange(
 
   const config = {
     stops: 29,
-    increment: 3,
+    increment: 3.4482758621,
   };
 
   let greyRange: CSSProperties;
@@ -251,11 +252,26 @@ export function createSurfaceRange(
     {suffix: 'opposingOpacified'},
   );
 
+  const on = isLight(rgbBaseColor)
+    ? {
+        [constructColorName(NAMESPACE, colorRole, 'onDark')]: baseColor,
+        [constructColorName(
+          NAMESPACE,
+          colorRole,
+          'onLight',
+        )]: opposingBaseColor,
+      }
+    : {
+        [constructColorName(NAMESPACE, colorRole, 'onDark')]: opposingBaseColor,
+        [constructColorName(NAMESPACE, colorRole, 'onLight')]: baseColor,
+      };
+
   return {
     ...base,
     ...greyRange,
     ...baseOpacified,
     ...opposingBaseOpacified,
+    ...on,
   };
 }
 
@@ -340,4 +356,48 @@ function createOpaqueRange(
 
 function isHex(color: string): boolean {
   return RegExp(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/gim).test(color);
+}
+
+export function reduceTheme(theme: ComponentThemeProperties): CSSProperties {
+  return Object.entries(theme)
+    .reduce((childAccumulator, childCurrent) => {
+      const maybeChildCurrent = childCurrent[1] != null ? childCurrent[1] : [];
+      return [
+        ...childAccumulator,
+        ...Object.entries(maybeChildCurrent).reduce(
+          (propertyAccumulator, propertyCurrent) => {
+            if (typeof propertyCurrent[1] === 'string') {
+              return [
+                ...propertyAccumulator,
+                ...[
+                  {
+                    [`--${childCurrent[0]}-${propertyCurrent[0]}`]: `var(${
+                      propertyCurrent[1]
+                    })`,
+                  },
+                ],
+              ];
+            } else {
+              const maybePropertyCurrent =
+                propertyCurrent[1] != null ? propertyCurrent[1] : [];
+              return [
+                ...propertyAccumulator,
+                ...[
+                  ...maybePropertyCurrent.map((property, index) => {
+                    return {
+                      [`--${childCurrent[0]}-${propertyCurrent[0]}-${index +
+                        1}`]: `var(${property})`,
+                    };
+                  }),
+                ],
+              ];
+            }
+          },
+          [],
+        ),
+      ];
+    }, [])
+    .reduce((accumulator, current) => {
+      return {...accumulator, ...current};
+    }, {});
 }

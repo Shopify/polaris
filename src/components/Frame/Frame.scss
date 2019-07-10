@@ -5,7 +5,7 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   min-height: 100vh;
   display: flex;
-  background-color: color('sky', 'light');
+  background-color: var(--default-background);
 
   @include when-printing {
     background-color: none;
@@ -86,7 +86,7 @@ $skip-vertical-offset: rem(10px);
 
   &:focus {
     border-radius: border-radius();
-    background-color: rgba(color('white'), 0.16);
+    background-color: var(--polaris-surface-opacified2);
     outline: none;
   }
 

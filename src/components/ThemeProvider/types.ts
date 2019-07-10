@@ -47,3 +47,24 @@ export interface ThemeProviderContext {
 export type ThemeVariant = 'light' | 'dark';
 
 export const THEME_CONTEXT_TYPES = {polarisTheme: PropTypes.any};
+
+type StateProperties = 'default' | 'hover' | 'focus' | 'active' | 'disabled';
+type StyleProperties =
+  | 'text'
+  | 'textOnDark'
+  | 'textOnLight'
+  | 'textSubdued'
+  | 'textSubduedOnDark'
+  | 'textSubduedOnLight'
+  | 'icon'
+  | 'iconOnDark'
+  | 'iconOnLight'
+  | 'background'
+  | 'backgroundSubdued'
+  | 'border'
+  | 'gradient'
+  | 'shadow';
+
+export type ComponentThemeProperties = {
+  [Theme in StateProperties]?: {[Style in StyleProperties]?: string | string[]}
+};

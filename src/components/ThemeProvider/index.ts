@@ -8,6 +8,7 @@ export {
   ThemeVariant,
   ThemeColors,
   THEME_CONTEXT_TYPES,
+  ComponentThemeProperties,
 } from './types';
 export {
   setColors,
@@ -15,6 +16,7 @@ export {
   setTextColor,
   createThemeContext,
   setTheme,
+  reduceTheme,
 } from './utils';
 export {Props} from './ThemeProvider';
 export default ThemeProvider;

@@ -12,6 +12,7 @@ import ButtonGroup from '../ButtonGroup';
 import Popover from '../Popover';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import cardTheme from './theme';
 
 import {Header, Section, Subsection} from './components';
 import styles from './Card.scss';
@@ -132,7 +133,7 @@ class Card extends React.PureComponent<CombinedProps, State> {
       ) : null;
 
     return (
-      <div className={className}>
+      <div className={className} style={cardTheme}>
         {headerMarkup}
         {content}
         {footerMarkup}
