@@ -23,4 +23,4 @@ function UnstyledLink(props: Props) {
   );
 }
 
-export default React.memo(UnstyledLink);
+export default UnstyledLink;

@@ -1,6 +1,6 @@
-import {createContext} from 'react';
+import React from 'react';
 import {ScrollLockManager} from './scroll-lock-manager';
 
-export const ScrollLockManagerContext = createContext<ScrollLockManager | null>(
+export const ScrollLockManagerContext = React.createContext<ScrollLockManager | null>(
   null,
 );

@@ -12,7 +12,7 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 import {BannerContext} from 'utilities/banner-context';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
 import Banner from '..';
-import WithinContentContext from '../../WithinContentContext';
+import {WithinContentContext} from '../../../utilities/within-content-context';
 
 describe('<Banner />', () => {
   it('renders a title', () => {

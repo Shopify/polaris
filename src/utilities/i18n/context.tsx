@@ -1,4 +1,4 @@
-import {createContext} from 'react';
+import React from 'react';
 import {I18n} from './I18n';
 
-export const I18nContext = createContext(new I18n({}));
+export const I18nContext = React.createContext(new I18n({}));

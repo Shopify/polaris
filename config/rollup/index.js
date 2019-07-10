@@ -50,7 +50,11 @@ module.exports = function createRollupConfig({entry, cssPath}) {
         exclude: 'node_modules/**',
         runtimeHelpers: true,
       }),
-      commonjs(),
+      commonjs({
+        namedExports: {
+          'node_modules/@shopify/react-testing/dist/index.js': ['createMount'],
+        },
+      }),
       styles({
         output: cssPath,
         includePaths: [styleRoot],

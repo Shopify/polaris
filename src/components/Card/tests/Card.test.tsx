@@ -5,7 +5,7 @@ import {
   findByTestID,
 } from 'test-utilities/legacy';
 import {Card, Badge, Button, Popover, ActionList} from 'components';
-import WithinContentContext from '../../WithinContentContext';
+import {WithinContentContext} from '../../../utilities/within-content-context';
 import {Section} from '../components';
 
 describe('<Card />', () => {

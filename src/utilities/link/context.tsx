@@ -1,4 +1,4 @@
-import {createContext} from 'react';
+import React from 'react';
 import {Link} from './link';
 
-export const LinkContext = createContext(new Link());
+export const LinkContext = React.createContext(new Link());
