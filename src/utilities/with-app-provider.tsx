@@ -1,16 +1,17 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import {ClientApplication} from '@shopify/app-bridge';
 import {PolarisContext} from '../components/types';
-import {I18n, I18nContext} from './i18n';
-import {Link, LinkContext} from './link';
+import {I18n, useI18n} from './i18n';
+import {Link, useLink} from './link';
+import {ScrollLockManager, useScrollLockManager} from './scroll-lock-manager';
+import {ThemeProviderContextType, useTheme} from './theme';
 import {
-  ScrollLockManager,
-  ScrollLockManagerContext,
-} from './scroll-lock-manager';
-import {ThemeProviderContextType, ThemeProviderContext} from './theme';
-import {StickyManager, StickyManagerContext} from './sticky-manager';
-import {AppBridgeContext} from './app-bridge';
+  StickyManager,
+  StickyManagerContext,
+  useStickyManager,
+} from './sticky-manager';
+import {useAppBridge} from './app-bridge';
 
 export type ReactComponent<P, C> =
   | React.ComponentClass<P> & C
@@ -53,12 +54,12 @@ export function withAppProvider<OwnProps>({withinScrollable}: Options = {}) {
     WrappedComponent: ReactComponent<OwnProps & WithAppProviderProps, C>,
   ): React.ComponentClass<OwnProps> & C {
     const WithProvider: React.FunctionComponent = (props: OwnProps) => {
-      const link = useContext(LinkContext);
-      const theme = useContext(ThemeProviderContext);
-      const intl = useContext(I18nContext);
-      const scrollLockManager = useContext(ScrollLockManagerContext);
-      const stickyManager = useContext(StickyManagerContext);
-      const appBridge = useContext(AppBridgeContext);
+      const link = useLink();
+      const theme = useTheme();
+      const intl = useI18n();
+      const scrollLockManager = useScrollLockManager();
+      const stickyManager = useStickyManager();
+      const appBridge = useAppBridge();
 
       const polarisContext: PolarisContext = {
         link,
