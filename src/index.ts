@@ -13,4 +13,4 @@ export {
   WithinContentContext as __UNSAFE_SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT,
 } from './utilities/within-content-context';
 
-export {TestProvider} from './test-utilities';
+export {TestProvider} from './test-utilities/TestProvider';

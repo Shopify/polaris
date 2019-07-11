@@ -1,107 +1,20 @@
 import React from 'react';
 import {createMount} from '@shopify/react-testing';
 import {ClientApplication} from '@shopify/app-bridge';
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {FrameContext, FrameContextType} from '../components/Frame';
-import {
-  createThemeContext,
-  ThemeProviderContextType,
-  ThemeProviderContext,
-} from '../utilities/theme';
-import {
-  ScrollLockManager,
-  ScrollLockManagerContext,
-} from '../utilities/scroll-lock-manager';
-import {StickyManager, StickyManagerContext} from '../utilities/sticky-manager';
-import {
-  createAppBridge,
-  AppBridgeContext,
-  AppBridgeOptions,
-} from '../utilities/app-bridge';
-import {I18n, I18nContext, TranslationDictionary} from '../utilities/i18n';
+import {createThemeContext} from '../utilities/theme';
+import {ScrollLockManager} from '../utilities/scroll-lock-manager';
+import {StickyManager} from '../utilities/sticky-manager';
+import {createAppBridge} from '../utilities/app-bridge';
+import {I18n} from '../utilities/i18n';
 import translations from '../../locales/en.json';
 import {DeepPartial} from '../types';
 import {merge} from '../utilities/merge';
-import {Link, LinkContext, LinkLikeComponent} from '../utilities/link';
+import {Link} from '../utilities/link';
+import {TestProvider} from './TestProvider';
+import {ComplexProviders, SimpleProviders, ReturnedContext} from './types';
 
-interface ComplexProviders {
-  themeProvider: ThemeProviderContextType;
-  frame: FrameContextType;
-}
-
-interface SimpleProvidersWithSameReturn {
-  scrollLockManager: ScrollLockManager;
-  stickyManager: StickyManager;
-}
-interface SimpleProvidersWithAltReturn {
-  intl: TranslationDictionary | TranslationDictionary[];
-  appBridge: AppBridgeOptions;
-  link: LinkLikeComponent;
-}
-type SimpleProviders = SimpleProvidersWithSameReturn &
-  SimpleProvidersWithAltReturn;
-
-type ReturnedContext = ComplexProviders &
-  SimpleProvidersWithSameReturn & {
-    intl: I18n;
-    appBridge: ClientApplication<{}> | null;
-    link: Link;
-  };
 type Options = DeepPartial<ComplexProviders> & Partial<SimpleProviders>;
 type Context = ReturnedContext;
-interface Props extends Partial<ReturnedContext> {
-  children: React.ReactElement<any>;
-  strict?: boolean;
-}
-
-function noop() {}
-
-export function TestProvider({
-  strict,
-  children,
-  themeProvider = createThemeContext(),
-  frame = {
-    showToast: noop,
-    hideToast: noop,
-    setContextualSaveBar: noop,
-    removeContextualSaveBar: noop,
-    startLoading: noop,
-    stopLoading: noop,
-  },
-  intl = new I18n(translations),
-  scrollLockManager = new ScrollLockManager(),
-  stickyManager = new StickyManager(),
-  appBridge = null,
-  link = new Link(undefined),
-  ...props
-}: Props) {
-  const childWithProps =
-    Object.keys(props).length > 0
-      ? React.cloneElement(children, props)
-      : children;
-
-  const Wrapper = strict ? React.StrictMode : React.Fragment;
-
-  return (
-    <Wrapper>
-      <I18nContext.Provider value={intl}>
-        <ScrollLockManagerContext.Provider value={scrollLockManager}>
-          <StickyManagerContext.Provider value={stickyManager}>
-            <ThemeProviderContext.Provider value={themeProvider}>
-              <AppBridgeContext.Provider value={appBridge}>
-                <LinkContext.Provider value={link}>
-                  <FrameContext.Provider value={frame}>
-                    {childWithProps}
-                  </FrameContext.Provider>
-                </LinkContext.Provider>
-              </AppBridgeContext.Provider>
-            </ThemeProviderContext.Provider>
-          </StickyManagerContext.Provider>
-        </ScrollLockManagerContext.Provider>
-      </I18nContext.Provider>
-    </Wrapper>
-  );
-}
 
 export const mountWithContext = createMount<Options, Context>({
   context({
@@ -187,3 +100,5 @@ export const mountWithContext = createMount<Options, Context>({
     );
   },
 });
+
+function noop() {}

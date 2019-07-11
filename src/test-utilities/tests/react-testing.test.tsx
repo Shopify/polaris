@@ -1,16 +1,13 @@
 import React from 'react';
 import {mount} from '@shopify/react-testing';
-import {createThemeContext} from 'utilities/theme';
-import {ScrollLockManager} from 'utilities/scroll-lock-manager';
-import {StickyManager} from 'utilities/sticky-manager';
-import {I18n} from 'utilities/i18n';
-import {Link} from 'utilities/link';
-import {TestProvider} from '../react-testing';
+import {TestProvider} from '../TestProvider';
 
 describe('TestProvider', () => {
   it("doesn't renders in strict mode by default", () => {
     const testProvider = mount(
-      <TestProvider />,
+      <TestProvider>
+        <div>Hello</div>
+      </TestProvider>,
     );
 
     expect(testProvider).not.toContainReactComponent(React.StrictMode);
@@ -18,11 +15,11 @@ describe('TestProvider', () => {
 
   it('renders in strict mode with strict', () => {
     const testProvider = mount(
-      <TestProvider strict />,
+      <TestProvider strict>
+        <div>Hello</div>
+      </TestProvider>,
     );
 
     expect(testProvider).toContainReactComponent(React.StrictMode);
   });
 });
-
-function noop() {}
