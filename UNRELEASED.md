@@ -18,6 +18,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Fixed a bug preventing the display of `Tooltip` when cursor enters from a disabled element ([#1783](https://github.com/Shopify/polaris-react/pull/1783)).
 - Fixed React imports in the `Filters` component to use `import * as React` for projects that don't use `esModuleInterop` ([#1820](https://github.com/Shopify/polaris-react/pull/1820))
+- Fixed `tabIndex` on `main` element causing event delegation issues ([#1821](https://github.com/Shopify/polaris-react/pull/1821))
 
 ### Documentation
 
