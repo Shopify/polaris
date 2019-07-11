@@ -13,6 +13,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Added a `verticalAlign` prop to `DataTable` ([#1790](https://github.com/Shopify/polaris-react/pull/1790))
+- Improved focus and hover states for `Navigation` ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
 
 ### Bug fixes
 
