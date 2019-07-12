@@ -130,12 +130,12 @@ $disabled-fade: 0.6;
   &:focus,
   &:active {
     @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
+    @include state(hover);
   }
 
   &:focus,
   &:active {
     outline: none;
-    background-color: rgba(color('sky'), 0.5);
   }
 }
 
