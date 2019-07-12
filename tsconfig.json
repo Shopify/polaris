@@ -1,29 +1,19 @@
 {
+  "extends": "@shopify/typescript-configs/library.json",
   "compilerOptions": {
     "baseUrl": "./src",
     "rootDir": "./",
-    "target": "es2017",
     "module": "es2015",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "declaration": true,
     "declarationDir": "types",
+    "declarationMap": false,
     "jsx": "react-native",
+    "strict": false,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "experimentalDecorators": true,
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
-    "noUnusedParameters": true,
-    "noUnusedLocals": true,
-    "noEmitHelpers": true,
     "importHelpers": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "es2017",
-      "esnext.asynciterable",
-      "scripthost"
-    ]
+    "skipLibCheck": false
   },
   "include": ["./config/typescript/**/*", "./src/**/*"]
 }
