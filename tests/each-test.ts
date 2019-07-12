@@ -1,5 +1,6 @@
 import {destroyAll} from '@shopify/react-testing';
-import '../src/test-utilities/matchers';
+import '@shopify/react-testing/matchers';
+import './matchers';
 
 afterEach(() => {
   destroyAll();
