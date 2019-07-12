@@ -18,7 +18,7 @@ export interface Props extends Partial<ReturnedContext> {
   strict?: boolean;
 }
 
-export function TestProvider({
+export function PolarisTestProvider({
   strict,
   children,
   themeProvider = createThemeContext(),

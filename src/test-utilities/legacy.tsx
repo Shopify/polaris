@@ -2,28 +2,20 @@ import {ReactWrapper, CommonWrapper, mount} from 'enzyme';
 import React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {ClientApplication} from '@shopify/app-bridge';
-import {I18n, I18nContext, TranslationDictionary} from '../utilities/i18n';
+import {I18n, TranslationDictionary} from '../utilities/i18n';
 import {get} from '../utilities/get';
 import {merge} from '../utilities/merge';
 import {PolarisContext} from '../components/types';
 import {DeepPartial} from '../types';
 import translations from '../../locales/en.json';
 
-import {createPolarisContext} from '../utilities/create-polaris-context';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {FrameContext, FrameContextType} from '../components/Frame';
-import {
-  createThemeContext,
-  ThemeProviderContextType,
-  ThemeProviderContext,
-} from '../utilities/theme';
-import {
-  ScrollLockManager,
-  ScrollLockManagerContext,
-} from '../utilities/scroll-lock-manager';
-import {StickyManager, StickyManagerContext} from '../utilities/sticky-manager';
-import {AppBridgeContext} from '../utilities/app-bridge';
-import {Link, LinkContext, LinkLikeComponent} from '../utilities/link';
+import {FrameContextType} from '../components/Frame';
+import {createThemeContext, ThemeProviderContextType} from '../utilities/theme';
+import {ScrollLockManager} from '../utilities/scroll-lock-manager';
+import {StickyManager} from '../utilities/sticky-manager';
+import {Link, LinkLikeComponent} from '../utilities/link';
+import {PolarisTestProvider} from './PolarisTestProvider';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -86,7 +78,6 @@ function updateRoot(wrapper: AnyWrapper) {
 }
 
 type AppContext = {
-  polaris: PolarisContext;
   intl: I18n;
   scrollLockManager: ScrollLockManager;
   stickyManager: StickyManager;
@@ -119,10 +110,6 @@ export function mountWithAppProvider<P>(
 ): PolarisContextReactWrapper<P, any> {
   const {context: ctx = {}} = options;
 
-  const polarisDefault = createPolarisContext({i18n: translations});
-  const polaris =
-    (ctx.polaris && merge(polarisDefault, ctx.polaris)) || polarisDefault;
-
   const intlTranslations =
     (ctx.intl && merge(translations, ctx.intl)) || translations;
   const intl = new I18n(intlTranslations);
@@ -151,7 +138,6 @@ export function mountWithAppProvider<P>(
   const appBridge = ctx.appBridge || null;
 
   const context: AppContext = {
-    polaris,
     themeProvider,
     frame,
     intl,
@@ -174,40 +160,13 @@ export function polarisContextReactWrapper<P, S>(
   element: React.ReactElement<P>,
   {app}: AppContextOptions,
 ): PolarisContextReactWrapper<P, S> {
-  function TestProvider<P>(props: P) {
-    let content: React.ReactNode = element;
+  const appBridge: any = app.appBridge;
 
-    if (Object.keys(props).length > 0) {
-      content = React.cloneElement(React.Children.only(element), props);
-    }
-
-    return (
-      <I18nContext.Provider value={app.intl}>
-        <ScrollLockManagerContext.Provider value={app.scrollLockManager}>
-          <StickyManagerContext.Provider value={app.stickyManager}>
-            <ThemeProviderContext.Provider value={app.themeProvider}>
-              <AppBridgeContext.Provider value={app.appBridge as any}>
-                <LinkContext.Provider value={app.link}>
-                  <FrameContext.Provider value={app.frame}>
-                    {content}
-                  </FrameContext.Provider>
-                </LinkContext.Provider>
-              </AppBridgeContext.Provider>
-            </ThemeProviderContext.Provider>
-          </StickyManagerContext.Provider>
-        </ScrollLockManagerContext.Provider>
-      </I18nContext.Provider>
-    );
-  }
-
-  const wrapper = mount<P, S>(<TestProvider />);
-
-  Object.defineProperty(wrapper, 'app', {
-    enumerable: true,
-    writable: false,
-    configurable: false,
-    value: app,
-  });
+  const wrapper = mount<P, S>(
+    <PolarisTestProvider {...app} appBridge={appBridge}>
+      {element}
+    </PolarisTestProvider>,
+  );
 
   return wrapper as PolarisContextReactWrapper<P, S>;
 }

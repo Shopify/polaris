@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const WithinContentContext = React.createContext<boolean>(false);
+export const WithinContentContext = React.createContext(false);

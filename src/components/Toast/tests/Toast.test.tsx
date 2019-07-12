@@ -2,7 +2,7 @@ import React from 'react';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import Toast from '../Toast';
-import {FrameContext, createFrameContext} from '../../Frame';
+import {createFrameContext} from '../../Frame';
 
 describe('<Toast />', () => {
   beforeEach(() => {
@@ -15,11 +15,9 @@ describe('<Toast />', () => {
     });
 
     const props = {content: 'Image uploaded', onDismiss: noop};
-    mountWithAppProvider(
-      <FrameContext.Provider value={mockFrameContext}>
-        <Toast {...props} />
-      </FrameContext.Provider>,
-    );
+    mountWithAppProvider(<Toast {...props} />, {
+      context: {frame: mockFrameContext},
+    });
 
     expect(mockFrameContext.showToast).toHaveBeenCalledWith(
       expect.objectContaining({id: expect.any(String), ...props}),
@@ -32,9 +30,8 @@ describe('<Toast />', () => {
     });
 
     const frame = mountWithAppProvider(
-      <FrameContext.Provider value={mockFrameContext}>
-        <Toast content="Message sent" onDismiss={noop} />
-      </FrameContext.Provider>,
+      <Toast content="Message sent" onDismiss={noop} />,
+      {context: {frame: mockFrameContext}},
     );
 
     expect(mockFrameContext.hideToast).not.toHaveBeenCalled();

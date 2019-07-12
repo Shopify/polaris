@@ -303,13 +303,9 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const expectedLocalizedLabel = filterControl.app.polaris.intl.translate(
-        'Polaris.ResourceList.DateSelector.FilterLabelForValue.past_week',
-      );
-
       const firstTag = filterControl.find(Tag).at(0);
       expect(firstTag.text()).toBe(
-        `${filter.label} ${filter.operatorText} ${expectedLocalizedLabel}`,
+        `${filter.label} ${filter.operatorText} in the last week`,
       );
     });
 
@@ -338,15 +334,8 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const expectedLocalizedLabel = filterControl.app.polaris.intl.translate(
-        'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_after',
-        {
-          date: new Date(selectedDate.replace(/-/g, '/')).toLocaleDateString(),
-        },
-      );
-
       const firstTag = filterControl.find(Tag).at(0);
-      expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
+      expect(firstTag.text()).toBe(`${filter.label} after 9/16/2018`);
     });
 
     it('renders the provided localized applied filter string when filter is a FilterDateSelector with maximum date predicate (on or before)', () => {
@@ -373,15 +362,8 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const expectedLocalizedLabel = filterControl.app.polaris.intl.translate(
-        'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
-        {
-          date: new Date(selectedDate.replace(/-/g, '/')).toLocaleDateString(),
-        },
-      );
-
       const firstTag = filterControl.find(Tag).at(0);
-      expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
+      expect(firstTag.text()).toBe(`${filter.label} before 9/16/2018`);
     });
 
     it('renders applied filter value when filter is a FilterDateSelector with invalid date predicate', () => {
@@ -408,15 +390,8 @@ describe('<FilterControl />', () => {
         </ResourceListContext.Provider>,
       );
 
-      const expectedLocalizedLabel = filterControl.app.polaris.intl.translate(
-        'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
-        {
-          date: selectedDate,
-        },
-      );
-
       const firstTag = filterControl.find(Tag).at(0);
-      expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
+      expect(firstTag.text()).toBe(`${filter.label} before INVALID`);
     });
 
     it('renders the provided applied filter string when filter uses operators with filter label', () => {

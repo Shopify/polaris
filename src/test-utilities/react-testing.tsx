@@ -10,7 +10,7 @@ import translations from '../../locales/en.json';
 import {DeepPartial} from '../types';
 import {merge} from '../utilities/merge';
 import {Link} from '../utilities/link';
-import {TestProvider} from './TestProvider';
+import {PolarisTestProvider} from './PolarisTestProvider';
 import {ComplexProviders, SimpleProviders, ReturnedContext} from './types';
 
 type Options = DeepPartial<ComplexProviders> & Partial<SimpleProviders>;
@@ -86,7 +86,7 @@ export const mountWithContext = createMount<Options, Context>({
     },
   ) {
     return (
-      <TestProvider
+      <PolarisTestProvider
         intl={intl}
         scrollLockManager={scrollLockManager}
         stickyManager={stickyManager}
@@ -96,7 +96,7 @@ export const mountWithContext = createMount<Options, Context>({
         link={link}
       >
         {element}
-      </TestProvider>
+      </PolarisTestProvider>
     );
   },
 });
