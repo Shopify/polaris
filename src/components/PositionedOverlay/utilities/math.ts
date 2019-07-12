@@ -9,6 +9,9 @@ export interface Margins {
   horizontal: number;
 }
 
+const SCROLLBAR_WIDTH = 17;
+const BOX_SHADOW_NUDGE = 1;
+
 export function calculateVerticalPosition(
   activatorRect: Rect,
   overlayRect: Rect,
@@ -94,16 +97,24 @@ export function calculateHorizontalPosition(
   if (preferredAlignment === 'left') {
     return Math.min(
       maximum,
-      Math.max(0, activatorRect.left - overlayMargins.horizontal),
+      Math.max(
+        0,
+        activatorRect.left - overlayMargins.horizontal + BOX_SHADOW_NUDGE,
+      ),
     );
   } else if (preferredAlignment === 'right') {
     const activatorRight = activatorRect.left + activatorRect.width;
-    return Math.min(
-      maximum,
+
+    return (
+      maximum -
       Math.max(
         0,
-        activatorRight - overlayRect.width + overlayMargins.horizontal,
-      ),
+        activatorRight -
+          (overlayRect.width +
+            overlayMargins.horizontal +
+            BOX_SHADOW_NUDGE * 2 -
+            SCROLLBAR_WIDTH),
+      )
     );
   }
 
