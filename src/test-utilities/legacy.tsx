@@ -5,7 +5,6 @@ import {ClientApplication} from '@shopify/app-bridge';
 import {I18n, TranslationDictionary} from '../utilities/i18n';
 import {get} from '../utilities/get';
 import {merge} from '../utilities/merge';
-import {PolarisContext} from '../components/types';
 import {DeepPartial} from '../types';
 import translations from '../../locales/en.json';
 
@@ -93,7 +92,6 @@ interface AppContextOptions {
 
 interface MountWithAppProviderOptions {
   context?: {
-    polaris?: DeepPartial<PolarisContext>;
     themeProvider?: DeepPartial<ThemeProviderContextType>;
     frame?: DeepPartial<FrameContextType>;
     intl?: TranslationDictionary | TranslationDictionary[];

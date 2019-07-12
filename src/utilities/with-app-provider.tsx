@@ -1,6 +1,5 @@
 import React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
-import {PolarisContext} from '../components/types';
 import {useI18n} from './i18n';
 import {useLink} from './link';
 import {useScrollLockManager} from './scroll-lock-manager';
@@ -58,7 +57,7 @@ export function withAppProvider<OwnProps>({withinScrollable}: Options = {}) {
       const stickyManager = useStickyManager();
       const appBridge = useAppBridge();
 
-      const polarisContext: PolarisContext = {
+      const polaris: WithAppProviderProps['polaris'] = {
         link,
         intl,
         scrollLockManager,
@@ -73,7 +72,7 @@ export function withAppProvider<OwnProps>({withinScrollable}: Options = {}) {
         );
       }
 
-      return <WrappedComponent {...props as any} polaris={polarisContext} />;
+      return <WrappedComponent {...props as any} polaris={polaris} />;
     };
     WithProvider.contextTypes = WrappedComponent.contextTypes;
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import {createMount} from '@shopify/react-testing';
-import {ClientApplication} from '@shopify/app-bridge';
 import {createThemeContext} from '../utilities/theme';
 import {ScrollLockManager} from '../utilities/scroll-lock-manager';
 import {StickyManager} from '../utilities/sticky-manager';
@@ -51,7 +50,7 @@ export const mountWithContext = createMount<Options, Context>({
     const frameContext =
       (frame && merge(frameContextDefault, frame)) || frameContextDefault;
 
-    let appBridgeContext: ClientApplication<{}> | undefined;
+    let appBridgeContext: ReturnType<typeof createAppBridge>;
     if (appBridge) {
       const {shopOrigin, apiKey, forceRedirect} = appBridge;
       appBridgeContext = createAppBridge({
