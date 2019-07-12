@@ -1,17 +1,17 @@
-import {ClientApplication} from '@shopify/app-bridge';
-import {I18n} from '../utilities/i18n';
-import {ThemeProviderContextType} from '../utilities/theme';
-import {ScrollLockManager} from '../utilities/scroll-lock-manager';
-import {StickyManager} from '../utilities/sticky-manager';
-import {Link} from '../utilities/link';
+import {I18nContext} from '../utilities/i18n';
+import {ThemeProviderContext} from '../utilities/theme';
+import {ScrollLockManagerContext} from '../utilities/scroll-lock-manager';
+import {StickyManagerContext} from '../utilities/sticky-manager';
+import {AppBridgeContext} from '../utilities/app-bridge';
+import {LinkContext} from '../utilities/link';
 
 export interface PolarisContext {
-  intl: I18n;
-  scrollLockManager: ScrollLockManager | null;
-  stickyManager: StickyManager | null;
-  theme: ThemeProviderContextType;
-  appBridge: ClientApplication<{}> | null;
-  link: Link;
+  intl: React.ContextType<typeof I18nContext>;
+  scrollLockManager: React.ContextType<typeof ScrollLockManagerContext>;
+  stickyManager: React.ContextType<typeof StickyManagerContext>;
+  theme: React.ContextType<typeof ThemeProviderContext>;
+  appBridge: React.ContextType<typeof AppBridgeContext>;
+  link: React.ContextType<typeof LinkContext>;
 }
 
 export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';

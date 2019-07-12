@@ -28,6 +28,6 @@ export type SimpleProviders = SimpleProvidersWithSameReturn &
 export type ReturnedContext = ComplexProviders &
   SimpleProvidersWithSameReturn & {
     intl: I18n;
-    appBridge: ClientApplication<{}> | null;
+    appBridge: ClientApplication<{}> | undefined;
     link: Link;
   };

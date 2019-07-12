@@ -38,7 +38,7 @@ export function createPolarisContext(context: Context = {}): PolarisContext {
   const stickyManager = new StickyManager();
   const link = new Link(linkComponent);
 
-  let appBridge: ClientApplication<{}> | null = null;
+  let appBridge: ClientApplication<{}> | undefined;
   if (appBridgeOptions) {
     const {apiKey, shopOrigin, forceRedirect} = appBridgeOptions;
     appBridge = createAppBridge({apiKey, shopOrigin, forceRedirect});

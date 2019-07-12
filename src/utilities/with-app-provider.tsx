@@ -1,11 +1,10 @@
 import React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
-import {ClientApplication} from '@shopify/app-bridge';
 import {PolarisContext} from '../components/types';
-import {I18n, useI18n} from './i18n';
-import {Link, useLink} from './link';
-import {ScrollLockManager, useScrollLockManager} from './scroll-lock-manager';
-import {ThemeProviderContextType, useTheme} from './theme';
+import {useI18n} from './i18n';
+import {useLink} from './link';
+import {useScrollLockManager} from './scroll-lock-manager';
+import {useTheme} from './theme';
 import {
   StickyManager,
   StickyManagerContext,
@@ -13,18 +12,16 @@ import {
 } from './sticky-manager';
 import {useAppBridge} from './app-bridge';
 
-export type ReactComponent<P, C> =
-  | React.ComponentClass<P> & C
-  | React.SFC<P> & C;
+type ReactComponent<P, C> = React.ComponentType<P> & C;
 
 export interface WithAppProviderProps {
   polaris: {
-    intl: I18n;
-    link: Link;
-    stickyManager: StickyManager;
-    scrollLockManager: ScrollLockManager | null;
-    theme?: ThemeProviderContextType;
-    appBridge?: ClientApplication<{}>;
+    intl: ReturnType<typeof useI18n>;
+    scrollLockManager: ReturnType<typeof useScrollLockManager>;
+    stickyManager: ReturnType<typeof useStickyManager>;
+    theme: ReturnType<typeof useTheme>;
+    appBridge: ReturnType<typeof useAppBridge>;
+    link: ReturnType<typeof useLink>;
   };
 }
 

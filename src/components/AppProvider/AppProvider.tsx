@@ -20,7 +20,7 @@ import {Link, LinkContext, LinkLikeComponent} from '../../utilities/link';
 
 interface State {
   intl: I18n;
-  appBridge: ClientApplication<{}> | null;
+  appBridge: ClientApplication<{}> | undefined;
   link: Link;
 }
 

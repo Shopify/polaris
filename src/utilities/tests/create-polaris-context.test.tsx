@@ -30,7 +30,7 @@ describe('createPolarisContext()', () => {
       link: expect.any(Link),
       stickyManager: expect.any(StickyManager),
       scrollLockManager: expect.any(ScrollLockManager),
-      appBridge: null,
+      appBridge: undefined,
       theme: {
         logo: null,
       },
@@ -77,7 +77,7 @@ describe('createPolarisContext()', () => {
       link: new Link(CustomLinkComponent),
       stickyManager,
       scrollLockManager,
-      appBridge: null,
+      appBridge: undefined,
       theme: {
         logo: {
           topBarSource: 'logo',
