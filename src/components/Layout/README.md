@@ -154,7 +154,7 @@ Section titles should be:
 
 Links should be:
 
-- Used for secondary or persistent actions: links are for lower priority actions than buttons, or persistent actions that merchants may take at any time (e.g. a persistent Edit link).
+- Used for secondary or persistent actions: links are for lower priority actions than buttons, or persistent actions (such as an Edit link) that merchants can take at any time.
 - Clearly labeled: merchants should not need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
 - Similar to buttons: follow the same content guidelines as when you’re writing buttons.
 
@@ -196,7 +196,7 @@ Use to have a single section on its own in a full-width container. Use for simpl
 
 ### Two columns with primary and secondary widths
 
-Use to follow a normal section with a secondary section to create a 2/3 + 1/3 layout on detail pages (e.g. individual product or order pages). Can also be used on any page that needs to structure a lot of content. This layout will stack the columns on small screens.
+Use to follow a normal section with a secondary section to create a 2/3 + 1/3 layout on detail pages (such as individual product or order pages). Can also be used on any page that needs to structure a lot of content. This layout stacks the columns on small screens.
 
 ```jsx
 <Layout>

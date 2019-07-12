@@ -29,7 +29,7 @@ Settings toggles should:
 
 - Include different body content for the enabled and disabled states
 - Clearly indicate whether the setting is enabled or disabled and explain the
-  implications of the state of the setting to merchants (e.g. “Automatic messages
+  implications of the state of the setting to merchants (“Automatic messages
   are disabled. Your customers won’t receive automatic shipping updates.”)
 - Clearly state when a setting or feature is not available and why. Provide
   actionable steps for merchants to unlock the functionality.
@@ -44,7 +44,7 @@ Toggle descriptions should:
 
 - Clearly indicate whether the setting is enabled or disabled
 - Explain the implications of the state of the setting to merchants
-  (e.g. “Automatic messages are disabled. Your customers won’t receive automatic
+  (“Automatic messages are disabled. Your customers won’t receive automatic
   shipping updates.”)
 
 ### Primary button
