@@ -9,7 +9,8 @@ export interface Margins {
   horizontal: number;
 }
 
-const SCROLLBAR_WIDTH = 17;
+// scrollbar-width()
+const SCROLLBAR_WIDTH = 16;
 const BOX_SHADOW_NUDGE = 1;
 
 export function calculateVerticalPosition(
@@ -112,7 +113,7 @@ export function calculateHorizontalPosition(
         activatorRight -
           (overlayRect.width +
             overlayMargins.horizontal +
-            BOX_SHADOW_NUDGE * 2 -
+            BOX_SHADOW_NUDGE -
             SCROLLBAR_WIDTH),
       )
     );
