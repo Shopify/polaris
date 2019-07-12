@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 $item-min-height: rem(16px);
 $item-min-width: rem(50px);
 $item-vertical-padding: $item-min-height / 2;
@@ -179,6 +181,13 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   border: none;
   outline: none;
   text-align: center;
+  &:hover {
+    @include recolor-icon(color('ink'));
+    @media (-ms-high-contrast: active) {
+      @include recolor-icon(color('black'));
+      @include state(active, hover);
+    }
+  }
 }
 
 .TabMeasurer {

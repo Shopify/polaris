@@ -32,7 +32,7 @@ $nav-animation-variables: (
   line-height: nav(item-line-height);
   display: flex;
   flex-grow: 1;
-  align-items: center;
+  align-items: flex-start;
   max-width: 100%;
   padding: 0 spacing(tight);
   margin: 0 spacing(tight);
@@ -41,22 +41,11 @@ $nav-animation-variables: (
   text-decoration: none;
   text-align: left;
 
-  &:hover {
-    @include state(hover);
-    color: color('ink');
-    text-decoration: none;
-
-    .Icon {
-      @include recolor-icon(
-        color('ink', 'lighter'),
-        color('white'),
-        filter('ink', 'lighter')
-      );
-    }
-  }
-
+  &:hover,
   &:focus {
+    @include state(hover);
     color: color('indigo', 'dark');
+    text-decoration: none;
 
     .Icon {
       @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
@@ -125,6 +114,7 @@ $nav-animation-variables: (
   margin-top: nav(mobile-spacing);
   margin-bottom: nav(mobile-spacing);
   line-height: $text-line-height;
+
   @include breakpoint-after(nav-min-window-corrected()) {
     margin-top: nav(desktop-spacing);
     margin-bottom: nav(desktop-spacing);

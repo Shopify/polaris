@@ -1,27 +1,9 @@
 import * as React from 'react';
-import {mountWithAppProvider, findByTestID} from 'test-utilities';
-import {isEdgeVisible, getPrevAndCurrentColumns} from '../utilities';
-import {Cell, Navigation} from '../components';
+import {mountWithAppProvider, trigger} from 'test-utilities';
+import {Cell} from '../components';
 import DataTable, {Props} from '../DataTable';
 
-interface DataTableTestProps {
-  sortable?: Props['sortable'];
-  defaultSortDirection?: Props['defaultSortDirection'];
-  initialSortColumnIndex?: Props['initialSortColumnIndex'];
-  onSort?: Props['onSort'];
-}
-
-const sortable = [false, true, false, false, true, false];
-const columnContentTypes: Props['columnContentTypes'] = [
-  'text',
-  'numeric',
-  'numeric',
-  'numeric',
-  'numeric',
-];
-const spyOnSort = jest.fn();
-
-function setup(propOverrides?: DataTableTestProps) {
+describe('<DataTable />', () => {
   const headings = ['Product', 'Price', 'Order Number', 'Quantity', 'Subtotal'];
   const rows = [
     [
@@ -34,152 +16,340 @@ function setup(propOverrides?: DataTableTestProps) {
     ['Emerald Silk Gown', '$230.00', 124689, 32, '$19,090.00'],
     ['Mauve Cashmere Scarf', '$445.00', 124533, 140, '$14,240.00'],
   ];
-  const summary = ['', '', '', 255, '$155,830.00'];
 
-  const props = {
-    columnContentTypes,
-    headings,
-    rows,
-    summary,
-    ...propOverrides,
-  };
-  const dataTable = mountWithAppProvider(<DataTable {...props} />);
+  const columnContentTypes: Props['columnContentTypes'] = [
+    'text',
+    'numeric',
+    'numeric',
+    'numeric',
+    'numeric',
+  ];
 
-  return {
-    ...props,
-    dataTable,
-    twoClicks: true,
-  };
-}
+  const defaultProps: Props = {columnContentTypes, headings, rows};
 
-describe('<DataTable />', () => {
-  it('renders a table, thead and table body rows', () => {
-    const {dataTable} = setup();
-
-    expect(dataTable.find('table')).toHaveLength(1);
-    expect(dataTable.find('thead')).toHaveLength(1);
-    expect(dataTable.find('thead th')).toHaveLength(5);
-    expect(dataTable.find('tbody tr')).toHaveLength(3);
-  });
-
-  it('defaults to non-sorting column headings', () => {
-    const {dataTable} = setup();
-    const sortableHeadings = dataTable.find(Cell).filter({sortable: true});
-
-    expect(sortableHeadings).toHaveLength(0);
-  });
-
-  it('initial sort column defaults to first column if not specified', () => {
-    const firstColumnSortable = [true, true, false, false, true, false];
-    const {dataTable} = setup({
-      sortable: firstColumnSortable,
-      onSort: spyOnSort,
-    });
-    const firstHeadingCell = findByTestID(dataTable, `heading-cell-${0}`);
-
-    expect(firstHeadingCell.props().sorted).toBe(true);
-  });
-
-  it('sets specified initial sort column', () => {
-    const {dataTable} = setup({
-      sortable,
-      onSort: spyOnSort,
-      initialSortColumnIndex: 4,
-    });
-    const fifthHeadingCell = findByTestID(dataTable, `heading-cell-${4}`);
-
-    expect(fifthHeadingCell.props().sorted).toBe(true);
-  });
-
-  describe('<Cell />', () => {
-    const {dataTable} = setup();
-    it('passes props', () => {
-      expect(
-        dataTable
-          .find(Cell)
-          .first()
-          .prop('header'),
-      ).toBe(true);
-      expect(
-        dataTable
-          .find(Cell)
-          .first()
-          .prop('content'),
-      ).toStrictEqual('Product');
-      expect(
-        dataTable
-          .find(Cell)
-          .first()
-          .prop('contentType'),
-      ).toStrictEqual('text');
-    });
-  });
-
-  describe('<Navigation />', () => {
-    const {dataTable} = setup();
-    it('passes scroll props', () => {
-      expect(
-        dataTable
-          .find(Navigation)
-          .first()
-          .prop('isScrolledFarthestLeft'),
-      ).toBe(true);
-      expect(
-        dataTable
-          .find(Navigation)
-          .first()
-          .prop('isScrolledFarthestRight'),
-      ).toBe(false);
-    });
-  });
-
-  describe('isEdgeVisible()', () => {
-    it('returns true if there is enough room', () => {
-      const position = 175;
-      const tableStart = 145;
-      const tableEnd = 205;
-
-      const isVisible = isEdgeVisible(position, tableStart, tableEnd);
-
-      expect(isVisible).toBe(true);
-    });
-
-    it('returns false if there is not enough room', () => {
-      const position = 175;
-      const tableStart = 145;
-      const tableEnd = 200;
-
-      const isVisible = isEdgeVisible(position, tableStart, tableEnd);
-
-      expect(isVisible).toBe(false);
-    });
-  });
-
-  describe('getPrevAndCurrentColumns()', () => {
-    it('returns the calculated measurements', () => {
-      const columnVisibilityData = [
-        {leftEdge: 145, rightEdge: 236, isVisible: true},
-        {leftEdge: 236, rightEdge: 357, isVisible: true},
-        {leftEdge: 357, rightEdge: 474, isVisible: true},
-        {leftEdge: 474, rightEdge: 601, isVisible: true},
+  describe('columnContentTypes', () => {
+    it('sets the provided contentType of Cells in each column', () => {
+      const headings = ['Column 1', 'Column 2'];
+      const rows = [['Cell 1', '2']];
+      const columnContentTypes: Props['columnContentTypes'] = [
+        'text',
+        'numeric',
       ];
-
-      const tableData = {
-        fixedColumnWidth: 145,
-        firstVisibleColumnIndex: 3,
-        tableLeftVisibleEdge: 145,
-        tableRightVisibleEdge: 551,
-      };
-
-      const actualMeasurement = getPrevAndCurrentColumns(
-        tableData,
-        columnVisibilityData,
+      const dataTable = mountWithAppProvider(
+        <DataTable
+          {...defaultProps}
+          columnContentTypes={columnContentTypes}
+          headings={headings}
+          rows={rows}
+        />,
       );
-      const expectedMeasurement = {
-        previousColumn: {leftEdge: 357, rightEdge: 474, isVisible: true},
-        currentColumn: {leftEdge: 474, rightEdge: 601, isVisible: true},
-      };
-      expect(actualMeasurement).toStrictEqual(expectedMeasurement);
+
+      const cells = dataTable.find(Cell);
+      const firstColumnCells = cells.filterWhere(
+        (cell) => cell.prop('firstColumn') === true,
+      );
+
+      const secondColumnCells = cells.filterWhere(
+        (cell) => cell.prop('firstColumn') !== true,
+      );
+
+      expect(cells).toHaveLength(4);
+
+      firstColumnCells.forEach((cell) =>
+        expect(cell.prop('contentType')).toBe('text'),
+      );
+
+      secondColumnCells.forEach((cell) =>
+        expect(cell.prop('contentType')).toBe('numeric'),
+      );
+    });
+  });
+
+  describe('headings', () => {
+    it('renders a single table header row', () => {
+      const headings = ['Heading 1', 'Heading 2', 'Heading 3'];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} headings={headings} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(1);
+    });
+
+    it('renders each header Cell with the content provided', () => {
+      const headings = ['Heading 1', 'Heading 2', 'Heading 3'];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} headings={headings} />,
+      );
+
+      const headingCells = dataTable.find('thead tr').find(Cell);
+
+      headingCells.forEach((headingCell, headingCellIndex) =>
+        expect(headingCell.text()).toBe(headings[headingCellIndex]),
+      );
+    });
+  });
+
+  describe('totals', () => {
+    it('renders a second table header row with totals', () => {
+      const totals = ['', '$20.00', ''];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(2);
+
+      const totalsRow = dataTable.find('thead tr').at(1);
+
+      expect(totalsRow.text()).toContain(totals.join(''));
+    });
+
+    it('sets the content of the first total Cell to the totals row heading', () => {
+      const totals = ['', '', ''];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(2);
+
+      const expectedTotalsHeadingContent = dataTable
+        .instance()
+        .context.polaris.intl.translate('Polaris.DataTable.totalsRowHeading');
+
+      const firstTotalCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('total') === true)
+        .first();
+
+      expect(firstTotalCell.prop('content')).toBe(expectedTotalsHeadingContent);
+    });
+
+    it('sets the contentType of non-empty total Cells to numeric', () => {
+      const totals = ['', '$20.00', ''];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} />,
+      );
+      const totalsCells = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('total') === true);
+
+      const nonEmptyTotalCells = totalsCells.filterWhere(
+        (cell) => cell.prop('contentType') === 'numeric',
+      );
+
+      const secondTotalsCell = totalsCells.at(1);
+
+      expect(nonEmptyTotalCells).toHaveLength(1);
+      expect(secondTotalsCell.prop('contentType')).toBe('numeric');
+    });
+
+    it('renders an empty Cell for falsey total values', () => {
+      const totals = ['', '', ''];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(2);
+
+      const totalsCells = dataTable
+        .find(Cell)
+        .filterWhere(
+          (cell) =>
+            cell.prop('total') === true && cell.prop('firstColumn') !== true,
+        );
+
+      totalsCells.forEach((total) => expect(total.text()).toBe(''));
+    });
+  });
+
+  describe('rows', () => {
+    it('renders a table body row for each list of table data provided', () => {
+      const rows = [['First row'], ['Second row'], ['Third row']];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} rows={rows} />,
+      );
+
+      expect(dataTable.find('tbody tr')).toHaveLength(3);
+    });
+  });
+
+  describe('truncate', () => {
+    it('defaults to false', () => {
+      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
+
+      const firstColumnCells = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('firstColumn') === true);
+
+      firstColumnCells.forEach((cell) =>
+        expect(cell.prop('truncate')).toBe(false),
+      );
+    });
+
+    it('passes the value provided to its cells', () => {
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} truncate />,
+      );
+
+      const firstColumnCells = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('firstColumn') === true);
+
+      firstColumnCells.forEach((cell) =>
+        expect(cell.prop('truncate')).toBe(true),
+      );
+    });
+  });
+
+  describe('verticalAlign', () => {
+    it('defaults to undefined', () => {
+      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
+
+      const cells = dataTable.find(Cell);
+
+      cells.forEach((cell) =>
+        expect(cell.prop('verticalAlign')).toBeUndefined(),
+      );
+    });
+
+    it('passes the value provided to its cells', () => {
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} verticalAlign="middle" />,
+      );
+
+      const cells = dataTable.find(Cell);
+
+      cells.forEach((cell) =>
+        expect(cell.prop('verticalAlign')).toBe('middle'),
+      );
+    });
+  });
+
+  describe('footerContent', () => {
+    it('renders string footer content when provided', () => {
+      const footerContent = 'Footer text';
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} footerContent={footerContent} />,
+      );
+
+      expect(dataTable.text()).toContain(footerContent);
+    });
+
+    it('renders JSX footer content when provided', () => {
+      const footerContent = <div>Footer text</div>;
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} footerContent={footerContent} />,
+      );
+
+      expect(dataTable.containsMatchingElement(footerContent)).toBe(true);
+    });
+  });
+
+  describe('sortable', () => {
+    it('defaults to a non-sortable table', () => {
+      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
+      const cells = dataTable.find(Cell);
+
+      cells.forEach((cell) => expect(cell.find('button')).toHaveLength(0));
+    });
+
+    it('renders a sortable header Cell for each true index', () => {
+      const sortable = [false, true, false, false, true];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} sortable={sortable} />,
+      );
+
+      const sortableCells = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('sortable') === true);
+
+      expect(sortableCells).toHaveLength(2);
+    });
+
+    it('renders a plain header Cell for each false index', () => {
+      const sortable = [false, true, false, false, true];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} sortable={sortable} />,
+      );
+
+      const nonSortableCells = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('sortable') === false);
+
+      expect(nonSortableCells).toHaveLength(3);
+    });
+  });
+
+  describe('defaultSortDirection', () => {
+    it('passes the value down to the Cell', () => {
+      const sortable = [false, true, false, false, true];
+      const dataTable = mountWithAppProvider(
+        <DataTable
+          {...defaultProps}
+          sortable={sortable}
+          defaultSortDirection="ascending"
+        />,
+      );
+
+      const firstHeadingCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.props().header === true)
+        .first();
+
+      expect(firstHeadingCell.prop('defaultSortDirection')).toBe('ascending');
+    });
+  });
+
+  describe('initialSortColumnIndex', () => {
+    it('defaults to first column if not specified', () => {
+      const sortable = [true, true, false, false, true, false];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} sortable={sortable} />,
+      );
+
+      const firstHeadingCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.props().header === true)
+        .first();
+
+      expect(firstHeadingCell.props().sorted).toBe(true);
+    });
+
+    it('sets specified initial sort column', () => {
+      const sortable = [true, true, false, false, true, false];
+      const initialSortColumnIndex = 4;
+      const dataTable = mountWithAppProvider(
+        <DataTable
+          {...defaultProps}
+          sortable={sortable}
+          initialSortColumnIndex={initialSortColumnIndex}
+        />,
+      );
+
+      const fifthHeadingCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.props().header === true)
+        .at(initialSortColumnIndex);
+
+      expect(fifthHeadingCell.props().sorted).toBe(true);
+    });
+  });
+
+  describe('onSort', () => {
+    it('gets called when sortable column heading is clicked', () => {
+      const spyOnSort = jest.fn();
+      const sortable = [true, false, false, false, false];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} sortable={sortable} onSort={spyOnSort} />,
+      );
+
+      const firstHeadingCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.props().header === true)
+        .first();
+
+      trigger(firstHeadingCell, 'onSort');
+
+      expect(spyOnSort).toHaveBeenCalledTimes(1);
     });
   });
 });

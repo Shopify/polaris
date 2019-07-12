@@ -1,14 +1,18 @@
-@import 'shared/accessibility';
-@import 'shared/breakpoints';
-@import 'shared/buttons';
-@import 'shared/controls';
-@import 'shared/forms';
-@import 'shared/icons';
-@import 'shared/layout';
-@import 'shared/links';
-@import 'shared/lists';
-@import 'shared/page';
-@import 'shared/typography';
-@import 'shared/skeleton';
-@import 'shared/interaction-state';
-@import 'shared/printing';
+// This file is part of Polaris's public Sass API.
+// Sewing Kit prepends every Component scss file with this file, making these
+// functions and mixins implicitly available.
+
+@import './shared/accessibility';
+@import './shared/breakpoints';
+@import './shared/buttons';
+@import './shared/controls';
+@import './shared/forms';
+@import './shared/icons';
+@import './shared/layout';
+@import './shared/links';
+@import './shared/lists';
+@import './shared/page';
+@import './shared/typography';
+@import './shared/skeleton';
+@import './shared/interaction-state';
+@import './shared/printing';

@@ -107,6 +107,16 @@
         "rollupButton": "Aktionen"
       }
     },
+    "Filters": {
+      "moreFilters": "Weitere Filter",
+      "filter": "{resourceName} filtern",
+      "noFiltersApplied": "Keine Filter angewendet",
+      "cancel": "Abbrechen",
+      "done": "Fertig",
+      "clearAllFilters": "Alle Filter löschen",
+      "clear": "Löschen",
+      "clearLabel": "{filterName} löschen"
+    },
     "Modal": {
       "iFrameTitle": "Text-Markup",
       "modalWarning": "Diese erforderlichen Eigenschaften fehlen im Modus: {missingProps}"
@@ -195,9 +205,6 @@
           "on_or_after": "nach {date}"
         }
       }
-    },
-    "Sheet": {
-      "warningMessage": "Die Sheet-Komponente muss innerhalb der Frame-Komponente verwendet werden."
     },
     "SkeletonPage": {
       "loadingLabel": "Seite wird geladen"

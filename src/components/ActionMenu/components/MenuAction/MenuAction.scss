@@ -1,4 +1,5 @@
-@import '../../tokens';
+@import '../../../../styles/common';
+@import '../../variables';
 
 $difference-between-touch-area-and-backdrop: control-height() -
   control-slim-height();

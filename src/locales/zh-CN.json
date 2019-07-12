@@ -62,13 +62,13 @@
         "december": "十二月"
       },
       "daysAbbreviated": {
-        "monday": "周一",
-        "tuesday": "周二",
-        "wednesday": "周三",
-        "thursday": "周四",
+        "monday": "星期一",
+        "tuesday": "星期二",
+        "wednesday": "星期三",
+        "thursday": "星期四",
         "friday": "周五",
-        "saturday": "周六",
-        "sunday": "周日"
+        "saturday": "星期六",
+        "sunday": "星期日"
       }
     },
     "DiscardConfirmationModal": {
@@ -106,6 +106,16 @@
       "RollupActions": {
         "rollupButton": "编辑"
       }
+    },
+    "Filters": {
+      "moreFilters": "更多筛选器",
+      "filter": "筛选 {resourceName}",
+      "noFiltersApplied": "未应用筛选条件",
+      "cancel": "取消",
+      "done": "已完成",
+      "clearAllFilters": "清除所有筛选条件",
+      "clear": "清除",
+      "clearLabel": "清除 {filterName}"
     },
     "Modal": {
       "iFrameTitle": "正文标记",
@@ -195,9 +205,6 @@
           "on_or_after": "{date} 之后"
         }
       }
-    },
-    "Sheet": {
-      "warningMessage": "必须在 Frame 内使用 Sheet 组件。"
     },
     "SkeletonPage": {
       "loadingLabel": "页面加载"

@@ -39,7 +39,7 @@ Buttons are used to make common actions immediately visible and easy to perform 
 Buttons should:
 
 - Be clearly and accurately labeled.
-- Lead with strong, actionable verbs.
+- Lead with a strong, actionable verb.
 - Use established button colors appropriately. For example, only use a red
   button for an action that’s difficult or impossible to undo.
 - Prioritize the most important actions. Too many calls to action can cause
@@ -50,55 +50,7 @@ Buttons should:
 
 ## Content guidelines
 
-Buttons should be clear and predictable—merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
-
-Read the [actionable language guidelines](/content/actionable-language) to learn what to label buttons for different states in web, iOS, and Android.
-
-<!-- usagelist -->
-
-#### Do
-
-- Create order
-- Buy shipping label
-
-#### Don’t
-
-- New order
-- Buy
-
-<!-- end -->
-
-Buttons should always lead with a strong verb that encourages
-action. To provide enough context to merchants use the {verb}+{noun} format on
-buttons except in the case of common actions like Save, Close, Cancel, or OK.
-
-<!-- usagelist -->
-
-#### Do
-
-- Activate Apple Pay
-- View shipping settings
-
-#### Don’t
-
-- Try Apple Pay
-- View your settings
-
-<!-- end -->
-
-Buttons should be scannable—avoid unnecessary words and articles such as the, an, or a.
-
-<!-- usagelist -->
-
-#### Do
-
-Add menu item
-
-#### Don’t
-
-Add a menu item
-
-<!-- end -->
+Learn about the [content guidelines](https://polaris.shopify.com/content/actionable-language#section-buttons) for buttons.
 
 ---
 

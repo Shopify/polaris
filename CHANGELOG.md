@@ -8,6 +8,77 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 3.19.0 - 2019-07-09
+
+### New components
+
+- `Filters`: Use to filter the items of a list or table ([#1718](https://github.com/Shopify/polaris-react/pull/1718))
+
+### Enhancements
+
+- Added the rollover and Windows high contrast mode to `Disclosure` button on `Tabs` ([#1755](https://github.com/Shopify/polaris-react/pull/1755))
+- Added support for disabling all choices in `ChoiceList` ([#1758](https://github.com/Shopify/polaris-react/pull/1758))
+- Components in our sass build (the `styles` folder) are now precompiled to avoid the chance of accidentally overwriting any of our global variables, mixins and functions ([#1764](https://github.com/Shopify/polaris-react/pull/1764))
+- Changed `Skip to content` to render an anchor instead of a button to meet accessiblity level A guidelines ([#1785](https://github.com/Shopify/polaris-react/pull/1785))
+
+### Bug fixes
+
+- Fixed a regression introduced in [#1247](https://github.com/Shopify/polaris-react/pull/1247), where icons inside of `Link` would always be recolored to match the text color ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
+- Fixed the `DiscardConfirmationModal` not closing when the discard button is clicked ([#1784](https://github.com/Shopify/polaris-react/pull/1784))
+- Fixed `Navigation.Item` `secondaryAction` wrapping when content wraps ([#1678](https://github.com/Shopify/polaris-react/pull/1678))
+
+### Documentation
+
+- Added links to App Bridge React component documentation in deprecation notices for embedded components ([#1765](https://github.com/Shopify/polaris-react/pull/1765))
+
+### Development workflow
+
+- Renamed `yarn run ts` to `yarn run type-check` to match most other Shopify projects ([#1745](https://github.com/Shopify/polaris-react/pull/1745))
+- Fixed deprecation notice in build ([#1754](https://github.com/Shopify/polaris-react/pull/1754))
+- Simplified our rollup plugin for sass compilation while retaining identical behaviour ([#1753](https://github.com/Shopify/polaris-react/pull/1753))
+
+## 3.18.0 - 2019-06-26
+
+### New components
+
+- `ActionMenu`: Use for display of actions and action groups within the context of a header ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
+
+### Enhancements
+
+- Added the `stopAnnouncements` prop to `Banner`, which disables screen reader announcements when content changes ([#1719](https://github.com/Shopify/polaris-react/pull/1719))
+- Add `selectable` prop to `ResourceList` component (thanks to [@vict-shevchenko](https://github.com/vict-shevchenko) for the [pull request](https://github.com/Shopify/polaris-react/pull/1614))
+- Allow `Link` and `Button` interactions when rendered as `prefix/suffix` within `<TextField />` ([#1394](https://github.com/Shopify/polaris-react/pull/1394))
+- Improve `TextField` so that character count is only announced on focus. ([#1720](https://github.com/Shopify/polaris-react/pull/1720))
+- `ActionList` can now pass a unique `accessibilityLabel` to each `Item` ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
+- Greatly reduced complexity of `Page > Header` ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
+- Long `Page > Header` breadcrumb labels will now truncate instead of breaking layout ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
+- Improves performance of `TabMeasure` component ([#1544](https://github.com/Shopify/polaris-react/pull/1544))
+- Added `secondaryFooterActions` prop to `Card` which adds an action list of secondary actions to the footer [#1625](https://github.com/Shopify/polaris-react/pull/1625)
+
+### Bug fixes
+
+- Fixes `monochrome` variant of `Link` and `Button` components to support multi-line link text ([#1686](https://github.com/Shopify/polaris-react/pull/1686))
+- Fixed the first column of `DataTable` not rendering in iOS Safari ([#1605](https://github.com/Shopify/polaris-react/pull/1605))
+- Fixed paint loss on scroll of `TextField` `Spinner` ([#1740](https://github.com/Shopify/polaris-react/pull/1740))
+
+### Documentation
+
+- Mentioned that the Contextual Save Bar is now available for embedded apps through App Bridge directly [#1721](https://github.com/Shopify/polaris-react/pull/1721)
+- Mentioned [Polaris icons](https://polaris-icons.shopify.com) in the Icon component documentation ([#1693](https://github.com/Shopify/polaris-react/pull/1693))
+- Added an example to `Card` for custom action layout with a secondary action and a plain button (thanks to [@sharoonthomas](https://github.com/sharoonthomas) for the [pull request](https://github.com/Shopify/polaris-react/pull/1705))
+
+### Development workflow
+
+- Updated Storybook to `v5.1.9` ([#1728](https://github.com/Shopify/polaris-react/pull/1728))
+
+### Code quality
+
+- Updated `PositionedOverlay` to no longer use `componentWillReceiveProps`([#1621](https://github.com/Shopify/polaris-react/pull/1621))
+
+### Deprecations
+
+- `Card` `secondaryFooterAction` is now deprecated. Set an array of secondary actions on the `secondaryFooterActions` prop instead [#1625](https://github.com/Shopify/polaris-react/pull/1625)
+
 ## 3.17.0 - 2019-06-11
 
 ### Deprecations

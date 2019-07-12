@@ -1,0 +1,84 @@
+@import '../../../../styles/common';
+
+// stylelint-disable declaration-no-important
+// stylelint-disable selector-max-class
+// stylelint-disable selector-max-combinators
+// stylelint-disable selector-max-specificity
+// stylelint-disable selector-max-compound-selectors
+// 🐦🐀
+$stacking-order: (
+  item: 10,
+  focused: 20,
+);
+
+.Item {
+  position: relative;
+  z-index: z-index(item, $stacking-order);
+}
+
+.Item-focused {
+  z-index: z-index(focused, $stacking-order);
+}
+
+.ProxyButtonContainer {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 0;
+  visibility: hidden;
+
+  > * {
+    flex-shrink: 0;
+  }
+}
+
+.ConnectedFilterControl {
+  display: flex;
+  flex-grow: 1;
+
+  .CenterContainer {
+    flex: 1 1 auto;
+    min-width: rem(100px);
+  }
+
+  &.right {
+    .CenterContainer * {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+  }
+}
+
+.RightContainer {
+  display: flex;
+
+  .Item > * > * {
+    margin-left: -1px;
+    border-radius: 0 !important;
+  }
+
+  .Item {
+    flex-shrink: 0;
+  }
+}
+
+.MoreFiltersButtonContainer * {
+  margin-left: -1px;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.Wrapper {
+  display: flex;
+}
+
+.AuxiliaryContainer {
+  flex-grow: 0;
+}
+// stylelint-enable selector-max-specificity
+// stylelint-enable selector-max-combinators
+// stylelint-enable selector-max-class
+// stylelint-enable declaration-no-important
+// stylelint-enable selector-max-compound-selectors

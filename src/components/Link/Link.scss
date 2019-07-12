@@ -1,5 +1,6 @@
+@import '../../styles/common';
+
 .Link {
-  @include recolor-icon(currentColor);
   appearance: none;
   display: inline;
   text-align: inherit;
@@ -18,6 +19,7 @@
 }
 
 .IconLockup {
+  @include recolor-icon(currentColor);
   display: inline;
   white-space: nowrap;
 

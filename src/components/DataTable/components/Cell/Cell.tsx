@@ -1,60 +1,56 @@
 import * as React from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
+import {classNames, variationName} from '@shopify/css-utilities';
 
 import {headerCell} from '../../../shared';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Icon from '../../../Icon';
-import {SortDirection} from '../../types';
+import {SortDirection, VerticalAlign} from '../../types';
 
 import styles from '../../DataTable.scss';
 
 export interface Props {
-  testID?: string;
-  height?: number;
   content?: React.ReactNode;
   contentType?: string;
-  fixed?: boolean;
+  firstColumn?: boolean;
   truncate?: boolean;
   header?: boolean;
   total?: boolean;
-  footer?: boolean;
   sorted?: boolean;
   sortable?: boolean;
   sortDirection?: SortDirection;
   defaultSortDirection?: SortDirection;
+  verticalAlign?: VerticalAlign;
   onSort?(): void;
 }
 
 type CombinedProps = Props & WithAppProviderProps;
 
 function Cell({
-  height,
   content,
   contentType,
-  fixed,
+  firstColumn,
   truncate,
   header,
   total,
-  footer,
   sorted,
   sortable,
   sortDirection,
-  defaultSortDirection,
+  verticalAlign = 'top',
+  defaultSortDirection = 'ascending',
   polaris: {
     intl: {translate},
   },
   onSort,
 }: CombinedProps) {
   const numeric = contentType === 'numeric';
-
   const className = classNames(
     styles.Cell,
-    fixed && styles['Cell-fixed'],
-    fixed && truncate && styles['Cell-truncated'],
+    styles[`Cell-${variationName('verticalAlign', verticalAlign)}`],
+    firstColumn && styles['Cell-firstColumn'],
+    firstColumn && truncate && styles['Cell-truncated'],
     header && styles['Cell-header'],
     total && styles['Cell-total'],
-    footer && styles['Cell-footer'],
     numeric && styles['Cell-numeric'],
     sortable && styles['Cell-sortable'],
     sorted && styles['Cell-sorted'],
@@ -66,13 +62,8 @@ function Cell({
   );
 
   const iconClassName = classNames(sortable && styles.Icon);
-
-  const style = {
-    height: height ? `${height}px` : undefined,
-  };
-
   const direction = sorted ? sortDirection : defaultSortDirection;
-  const source = direction === 'ascending' ? CaretUpMinor : CaretDownMinor;
+  const source = direction === 'descending' ? CaretDownMinor : CaretUpMinor;
   const oppositeDirection =
     sortDirection === 'ascending' ? 'descending' : 'ascending';
 
@@ -102,23 +93,20 @@ function Cell({
       className={className}
       scope="col"
       aria-sort={sortDirection}
-      style={style}
     >
       {columnHeadingContent}
     </th>
   ) : (
-    <th className={className} scope="row" style={style}>
+    <th className={className} scope="row">
       {content}
     </th>
   );
 
   const cellMarkup =
-    header || fixed ? (
+    header || firstColumn ? (
       headingMarkup
     ) : (
-      <td className={className} style={style}>
-        {content}
-      </td>
+      <td className={className}>{content}</td>
     );
 
   return cellMarkup;

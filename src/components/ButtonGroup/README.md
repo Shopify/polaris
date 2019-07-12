@@ -48,8 +48,7 @@ Button groups should:
 
 ## Content guidelines
 
-Follow the [content guidelines](/components/actions/button#content-guidelines)
-outlined in the button component.
+Button groups should follow the [content guidelines](https://polaris.shopify.com/content/actionable-language#section-buttons) for buttons.
 
 ---
 

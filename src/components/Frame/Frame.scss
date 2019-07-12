@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 $button-size: rem(32px);
 $skip-vertical-offset: rem(10px);
 
@@ -207,4 +209,8 @@ $skip-vertical-offset: rem(10px);
     pointer-events: all;
     opacity: 1;
   }
+}
+
+.SkipAnchor {
+  @include button-base;
 }

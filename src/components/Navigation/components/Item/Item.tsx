@@ -262,17 +262,19 @@ export class BaseItem extends React.Component<CombinedProps, State> {
 
     return (
       <li className={className}>
-        <UnstyledLink
-          url={url}
-          className={itemClassName}
-          tabIndex={tabIndex}
-          aria-disabled={disabled}
-          aria-label={accessibilityLabel}
-          onClick={this.getClickHandler(onClick)}
-        >
-          {itemContentMarkup}
-        </UnstyledLink>
-        {secondaryActionMarkup}
+        <div className={styles.ItemWrapper}>
+          <UnstyledLink
+            url={url}
+            className={itemClassName}
+            tabIndex={tabIndex}
+            aria-disabled={disabled}
+            aria-label={accessibilityLabel}
+            onClick={this.getClickHandler(onClick)}
+          >
+            {itemContentMarkup}
+          </UnstyledLink>
+          {secondaryActionMarkup}
+        </div>
         {secondaryNavigationMarkup}
       </li>
     );

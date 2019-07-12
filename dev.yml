@@ -19,4 +19,4 @@ commands:
   server: yarn run dev
   style: yarn run lint
   test: yarn run test
-  type-check: yarn run ts
+  type-check: yarn run type-check

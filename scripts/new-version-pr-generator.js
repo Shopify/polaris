@@ -46,6 +46,24 @@ See what’s new: https://github.com/Shopify/polaris-react/releases/tag/${versio
 
 ---
 
+### How to [tophat](https://development.shopify.io/engineering/developing_at_Shopify/write-code/tophatting)
+
+<!-- Tophatting instructions, and/ or what you want reviewers to concentrate on. -->
+
+⚠️ This PR must be tophatted with [production assets](https://github.com/Shopify/web/blob/master/documentation/guides/assets.md) because it updates a key dependency (Polaris React).
+
+### Before you deploy
+
+- [ ] This PR is [safe to rollback](https://development.shopify.io/guides/shipping/safe_to_merge#Signs_your_PR_is_safe_to_rollback). ⚠️ This field is required.
+
+  <!-- If it is not safe, please detail what would need to happen to make it safe. For example, if this PR removes a GraphQL field that will then be removed from the schema, link to the Shopify Core PR that removes the field. -->
+
+- [ ] I [tophatted](https://development.shopify.io/engineering/developing_at_Shopify/write-code/tophatting) this change with production assets.
+
+  <!-- If you are having difficulties running the production build, please ask in #shopify-web. -->
+
+---
+
 <details>
 <summary>🚨 What to do if you see “Your tests failed on CircleCI”?</summary>
 

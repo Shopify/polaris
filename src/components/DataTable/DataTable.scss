@@ -1,4 +1,6 @@
-$fixed-column-width: rem(145px);
+@import '../../styles/common';
+
+$first-column-width: rem(145px);
 $breakpoint: 768px;
 
 .DataTable {
@@ -6,13 +8,7 @@ $breakpoint: 768px;
   max-width: 100vw;
 }
 
-.collapsed {
-  .Table {
-    &::after {
-      display: block;
-    }
-  }
-
+.condensed {
   .Navigation {
     display: flex;
     align-items: center;
@@ -23,16 +19,6 @@ $breakpoint: 768px;
     @include breakpoint-after($breakpoint, inclusive) {
       justify-content: flex-end;
     }
-  }
-
-  .ScrollContainer {
-    margin-left: rem($fixed-column-width);
-  }
-}
-
-.hasFooter {
-  .ScrollContainer {
-    margin-bottom: rem(52px);
   }
 }
 
@@ -57,29 +43,12 @@ $breakpoint: 768px;
 
 .ScrollContainer {
   overflow-x: auto;
-  // account for a mysterious gap in Safari when not collapsed
-  margin-left: rem(140px);
   -webkit-overflow-scrolling: touch;
 }
 
 .Table {
   width: 100%;
   border-spacing: 0;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: $fixed-column-width;
-    display: none;
-    width: rem(6px);
-    background: linear-gradient(
-      to right,
-      rgba(color('black'), 0.12),
-      rgba(color('black'), 0)
-    );
-  }
 }
 
 .TableRow {
@@ -90,39 +59,29 @@ $breakpoint: 768px;
   }
 }
 
-.TableFoot {
-  border-bottom: 0;
-}
-
 .Cell {
   padding: spacing();
   border-bottom: border-width() solid color('sky', 'light');
   white-space: nowrap;
   text-align: left;
   transition: background-color 0.2s ease-in-out;
-  vertical-align: top;
+}
+
+.Cell-firstColumn {
+  @include text-emphasis-normal;
+  text-align: left;
+  white-space: normal;
 }
 
 .Cell-numeric {
   text-align: right;
 }
 
-.Cell-fixed {
-  @include text-emphasis-normal;
-  @include text-breakword;
-  position: absolute;
-  top: auto;
-  left: 0;
-  width: $fixed-column-width;
-  white-space: unset;
-  text-align: left;
-  backface-visibility: hidden; // stops painting on scroll (due to positioning)
-}
-
 .Cell-truncated {
   white-space: nowrap;
   overflow-x: hidden;
   text-overflow: ellipsis;
+  max-width: $first-column-width;
 }
 
 .Cell-header {
@@ -133,6 +92,22 @@ $breakpoint: 768px;
 
 .Cell-sortable {
   padding: 0;
+}
+
+.Cell-verticalAlignTop {
+  vertical-align: top;
+}
+
+.Cell-verticalAlignBottom {
+  vertical-align: bottom;
+}
+
+.Cell-verticalAlignMiddle {
+  vertical-align: middle;
+}
+
+.Cell-verticalAlignBaseline {
+  vertical-align: baseline;
 }
 
 .Icon {
@@ -180,16 +155,9 @@ $breakpoint: 768px;
   border-bottom: border();
 }
 
-.Cell-footer {
-  @include text-emphasis-normal;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  border-bottom: 0;
+.Footer {
+  padding: spacing();
   background: color('sky', 'light');
   color: color('ink', 'lighter');
-  white-space: unset;
   text-align: center;
-  backface-visibility: hidden; // stop painting on scroll (due to positioning)
 }

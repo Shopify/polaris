@@ -28,11 +28,11 @@ Badges are used to inform merchants of the status of an object or of an action t
 
 ## Best practices
 
-Great badges benefit merchants by:
+Badges benefit merchants by:
 
 - Using established color patterns so that merchants can quickly identify their status or importance level
 - Being clearly labeled with short, scannable text
-- Being positioned to clearly identify the object they’re informing or labelling (e.g. an order)
+- Being positioned to clearly identify the object they’re informing or labelling
 
 ---
 

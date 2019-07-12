@@ -107,6 +107,16 @@
         "rollupButton": "アクション"
       }
     },
+    "Filters": {
+      "moreFilters": "細かい絞り込み",
+      "filter": "フィルター{resourceName}",
+      "noFiltersApplied": "絞り込みが適用されていません",
+      "cancel": "キャンセルする",
+      "done": "完了",
+      "clearAllFilters": "すべての絞り込みをクリアする",
+      "clear": "クリア",
+      "clearLabel": "{filterName}をクリアする"
+    },
     "Modal": {
       "iFrameTitle": "ボディのマークアップ",
       "modalWarning": "これらの必要なプロパティがモーダルにありません: {missingProps}"
@@ -195,9 +205,6 @@
           "on_or_after": "{date}以後"
         }
       }
-    },
-    "Sheet": {
-      "warningMessage": "シートコンポーネントはフレームコンポーネント内で使用する必要があります。"
     },
     "SkeletonPage": {
       "loadingLabel": "ページの読み込み中"
