@@ -50,6 +50,7 @@ export interface State {
 
 export const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
 export const APP_FRAME_MAIN = 'AppFrameMain';
+export const APP_FRAME_MAIN_ANCHOR_TARGET = 'AppFrameMainContent';
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
@@ -72,7 +73,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
 
   private globalRibbonContainer: HTMLDivElement | null = null;
 
-  private mainContentNode = React.createRef<HTMLDivElement>();
+  private skipoToMainContentTargetNode = React.createRef<HTMLAnchorElement>();
 
   getChildContext(): FrameContext {
     return {
@@ -214,7 +215,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     const skipMarkup = (
       <div className={skipClassName}>
         <a
-          href={`#${APP_FRAME_MAIN}`}
+          href={`#${APP_FRAME_MAIN_ANCHOR_TARGET}`}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
@@ -246,6 +247,15 @@ class Frame extends React.PureComponent<CombinedProps, State> {
         />
       ) : null;
 
+    const skipToMainContentTarget = (
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <a
+        id={APP_FRAME_MAIN_ANCHOR_TARGET}
+        ref={this.skipoToMainContentTargetNode}
+        tabIndex={-1}
+      />
+    );
+
     return (
       <div
         className={frameClassName}
@@ -264,9 +274,8 @@ class Frame extends React.PureComponent<CombinedProps, State> {
           className={styles.Main}
           id={APP_FRAME_MAIN}
           data-has-global-ribbon={Boolean(globalRibbon)}
-          ref={this.mainContentNode}
-          tabIndex={-1}
         >
+          {skipToMainContentTarget}
           <div className={styles.Content}>{children}</div>
         </main>
         <ToastManager toastMessages={toastMessages} />
@@ -365,10 +374,10 @@ class Frame extends React.PureComponent<CombinedProps, State> {
   };
 
   private handleClick = () => {
-    if (this.mainContentNode.current == null) {
+    if (this.skipoToMainContentTargetNode.current == null) {
       return;
     }
-    this.mainContentNode.current.focus();
+    this.skipoToMainContentTargetNode.current.focus();
   };
 
   private handleNavigationDismiss = () => {

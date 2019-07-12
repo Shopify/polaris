@@ -143,16 +143,17 @@ describe('<Frame />', () => {
   it('renders a skip to content link with the proper text', () => {
     const skipToContentLinkText = mountWithAppProvider(<Frame />)
       .find('a')
+      .at(0)
       .text();
 
     expect(skipToContentLinkText).toStrictEqual('Skip to content');
   });
 
-  it('sets focus to the <main> element when the skip to content link is clicked', () => {
+  it('sets focus to the main content target anchor element when the skip to content link is clicked', () => {
     const frame = mountWithAppProvider(<Frame />);
-    const mainEl = frame.find('main');
-    trigger(frame.find('a'), 'onClick');
-    expect(mainEl.getDOMNode()).toBe(document.activeElement);
+    const mainAnchor = frame.find('main').find('a');
+    trigger(frame.find('a').at(0), 'onClick');
+    expect(mainAnchor.getDOMNode()).toBe(document.activeElement);
   });
 
   it('renders with a has nav data attribute when nav is passed', () => {
