@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ActionList, {Props as ActionListProps} from '../../../ActionList';
-import Popover from '../../../Popover';
+import Popover, {Props as PopoverProps} from '../../../Popover';
 
 import {Message, MessageProps} from './components';
 import styles from './Menu.scss';
@@ -15,6 +15,8 @@ export interface Props {
   message?: MessageProps;
   /** A boolean property indicating whether the menu is currently open */
   open: boolean;
+  /** The preferred alignment of the popover relative to its activator */
+  preferredAlignment?: PopoverProps['preferredAlignment'];
   /** A callback function to handle opening the menu popover */
   onOpen(): void;
   /** A callback function to handle closing the menu popover */
@@ -22,7 +24,15 @@ export interface Props {
 }
 
 export default function Menu(props: Props) {
-  const {actions, onOpen, onClose, open, activatorContent, message} = props;
+  const {
+    actions,
+    onOpen,
+    onClose,
+    open,
+    activatorContent,
+    message,
+    preferredAlignment,
+  } = props;
 
   const badgeProps = message &&
     message.badge && {
@@ -46,6 +56,7 @@ export default function Menu(props: Props) {
 
   return (
     <Popover
+      preferredAlignment={preferredAlignment}
       activator={
         <div className={styles.ActivatorWrapper}>
           <button type="button" className={styles.Activator} onClick={onOpen}>
