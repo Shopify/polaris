@@ -1,6 +1,8 @@
 @import '../../styles/common';
 
 $sheet-desktop-width: rem(380px);
+$sheet-large-desktop-width: calc(100vw - #{rem(50px)});
+$sheet-large-max-desktop-width: rem(1200px);
 
 .Sheet {
   position: fixed;
@@ -22,6 +24,13 @@ $sheet-desktop-width: rem(380px);
   &:focus {
     outline: 0;
   }
+
+  &.sizeLarge {
+    @include frame-when-nav-displayed {
+      width: $sheet-large-desktop-width;
+      max-width: $sheet-large-max-desktop-width;
+    }
+  }
 }
 
 .Container {
@@ -35,6 +44,13 @@ $sheet-desktop-width: rem(380px);
   @include frame-when-nav-displayed {
     left: auto;
     width: $sheet-desktop-width;
+  }
+
+  &.sizeLarge {
+    @include frame-when-nav-displayed {
+      width: $sheet-large-desktop-width;
+      max-width: $sheet-large-max-desktop-width;
+    }
   }
 }
 

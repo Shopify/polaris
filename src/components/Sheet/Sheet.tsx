@@ -42,6 +42,8 @@ export interface Props {
   onEntered?(): void;
   /** Callback when the sheet has started to exit */
   onExit?(): void;
+  /** Show a larger sheet */
+  large?: boolean;
 }
 
 type ComposedProps = Props & WithAppProviderProps;
@@ -76,7 +78,7 @@ class Sheet extends React.Component<ComposedProps, State> {
 
   render() {
     const {
-      props: {children, open, onClose, onEntered, onExit},
+      props: {children, open, onClose, onEntered, onExit, large = true},
       state: {mobile},
       handleResize,
     } = this;
@@ -92,7 +94,9 @@ class Sheet extends React.Component<ComposedProps, State> {
           onEntered={onEntered}
           onExit={onExit}
         >
-          <Container open={open}>{children}</Container>
+          <Container open={open} large={large}>
+            {children}
+          </Container>
         </CSSTransition>
         <KeypressListener keyCode={Key.Escape} handler={onClose} />
         <EventListener event="resize" handler={handleResize} />
@@ -111,11 +115,24 @@ function isMobile(): boolean {
   return navigationBarCollapsed().matches;
 }
 
-function Container(props: {children: React.ReactNode; open: boolean}) {
+function Container(props: {
+  children: React.ReactNode;
+  large: boolean | undefined;
+  open: boolean;
+}) {
+  const containerClasses = classNames(
+    styles.Container,
+    props.large && styles.sizeLarge,
+  );
+  const dialogClasses = classNames(
+    styles.Sheet,
+    props.large && styles.sizeLarge,
+  );
+
   return (
-    <div className={styles.Container} {...layer.props} {...overlay.props}>
+    <div className={containerClasses} {...layer.props} {...overlay.props}>
       <TrapFocus trapping={props.open}>
-        <div role="dialog" tabIndex={-1} className={styles.Sheet}>
+        <div role="dialog" tabIndex={-1} className={dialogClasses}>
           {props.children}
         </div>
       </TrapFocus>
