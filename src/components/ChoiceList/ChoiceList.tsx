@@ -5,7 +5,8 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioButton';
-import InlineError from '../InlineError';
+import InlineError, {errorTextID} from '../InlineError';
+
 import {Error} from '../../types';
 
 import styles from './ChoiceList.scss';
@@ -19,6 +20,8 @@ export interface ChoiceDescriptor {
   disabled?: boolean;
   /** Additional text to aide in use */
   helpText?: React.ReactNode;
+  /** Indicates that the choice is aria-describedBy the error message*/
+  describedByError?: boolean;
   /**  Method to render children with a choice */
   renderChildren?(isSelected: boolean): React.ReactNode | false;
 }
@@ -78,7 +81,13 @@ function ChoiceList({
   ) : null;
 
   const choicesMarkup = choices.map((choice) => {
-    const {value, label, helpText, disabled: choiceDisabled} = choice;
+    const {
+      value,
+      label,
+      helpText,
+      disabled: choiceDisabled,
+      describedByError,
+    } = choice;
 
     function handleChange(checked: boolean) {
       onChange(
@@ -105,6 +114,9 @@ function ChoiceList({
           checked={choiceIsSelected(choice, selected)}
           helpText={helpText}
           onChange={handleChange}
+          ariaDescribedBy={
+            error && describedByError ? errorTextID(finalName) : null
+          }
         />
         {children}
       </li>
@@ -118,12 +130,7 @@ function ChoiceList({
   );
 
   return (
-    <fieldset
-      className={className}
-      id={finalName}
-      aria-invalid={error != null}
-      aria-describedby={`${finalName}Error`}
-    >
+    <fieldset className={className} id={finalName} aria-invalid={error != null}>
       {titleMarkup}
       <ul className={styles.Choices}>{choicesMarkup}</ul>
       {errorMarkup}

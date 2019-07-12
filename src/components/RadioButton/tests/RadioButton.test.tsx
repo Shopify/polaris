@@ -132,4 +132,17 @@ describe('<RadioButton />', () => {
       expect(textField.find(`#${helpTextID}`).text()).toBe('Some help');
     });
   });
+
+  describe('ariaDescribedBy', () => {
+    it('sets the aria-describedBy attribute on the input', () => {
+      const radioButton = mountWithAppProvider(
+        <RadioButton label="RadioButton" ariaDescribedBy="SomeId" />,
+      );
+      const ariaDescribedBy = radioButton
+        .find('input')
+        .prop('aria-describedby');
+
+      expect(ariaDescribedBy).toBe('SomeId');
+    });
+  });
 });
