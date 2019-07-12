@@ -1,7 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Image} from 'components';
-
 import Avatar from '../Avatar';
 
 describe('<Avatar />', () => {
@@ -26,28 +25,6 @@ describe('<Avatar />', () => {
       expect(() => {
         avatar.setProps({source: 'image/new/path'});
       }).not.toThrow();
-    });
-
-    it('does not render an Image on the server', () => {
-      jest.resetModules();
-      jest.mock('../../../utilities/target', () => ({
-        ...require.requireActual('../../../utilities/target'),
-        isServer: () => {
-          return true;
-        },
-      }));
-
-      const Avatar = require('../Avatar').default;
-      const AppProvider = require('../../AppProvider').default;
-      const Image = require('components').Image;
-
-      const src = 'image/path/';
-      const avatar = mountWithAppProvider(
-        <AppProvider i18n={{}}>
-          <Avatar source={src} />
-        </AppProvider>,
-      );
-      expect(avatar.find(Image)).toHaveLength(0);
     });
   });
 

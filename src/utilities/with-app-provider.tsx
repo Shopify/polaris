@@ -2,15 +2,16 @@ import React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import {ClientApplication} from '@shopify/app-bridge';
 import {PolarisContext} from '../components/types';
-import {I18n, I18nContext} from './i18n';
-import {Link, LinkContext} from './link';
+import {I18n, useI18n} from './i18n';
+import {Link, useLink} from './link';
+import {ScrollLockManager, useScrollLockManager} from './scroll-lock-manager';
+import {ThemeProviderContextType, useTheme} from './theme';
 import {
-  ScrollLockManager,
-  ScrollLockManagerContext,
-} from './scroll-lock-manager';
-import {ThemeProviderContextType, ThemeProviderContext} from './theme';
-import {StickyManager, StickyManagerContext} from './sticky-manager';
-import {AppBridgeContext} from './app-bridge';
+  StickyManager,
+  StickyManagerContext,
+  useStickyManager,
+} from './sticky-manager';
+import {useAppBridge} from './app-bridge';
 
 export type ReactComponent<P, C> =
   | React.ComponentClass<P> & C
@@ -52,66 +53,32 @@ export function withAppProvider<OwnProps>({withinScrollable}: Options = {}) {
   return function addProvider<C>(
     WrappedComponent: ReactComponent<OwnProps & WithAppProviderProps, C>,
   ): React.ComponentClass<OwnProps> & C {
-    // eslint-disable-next-line react/prefer-stateless-function
-    class WithProvider extends React.Component<OwnProps, never> {
-      static contextTypes = WrappedComponent.contextTypes;
+    const WithProvider: React.FunctionComponent = (props: OwnProps) => {
+      const link = useLink();
+      const theme = useTheme();
+      const intl = useI18n();
+      const scrollLockManager = useScrollLockManager();
+      const stickyManager = useStickyManager();
+      const appBridge = useAppBridge();
 
-      render() {
-        return (
-          <LinkContext.Consumer>
-            {(link) => (
-              <ThemeProviderContext.Consumer>
-                {(theme) => (
-                  <I18nContext.Consumer>
-                    {(intl) => (
-                      <ScrollLockManagerContext.Consumer>
-                        {(scrollLockManager) => (
-                          <StickyManagerContext.Consumer>
-                            {(stickyManager) => (
-                              <AppBridgeContext.Consumer>
-                                {(appBridge) => {
-                                  const polarisContext: PolarisContext = {
-                                    link,
-                                    intl,
-                                    scrollLockManager,
-                                    stickyManager,
-                                    theme,
-                                    appBridge,
-                                  };
+      const polarisContext: PolarisContext = {
+        link,
+        intl,
+        scrollLockManager,
+        stickyManager,
+        theme,
+        appBridge,
+      };
 
-                                  if (
-                                    !intl ||
-                                    !scrollLockManager ||
-                                    !stickyManager ||
-                                    !link ||
-                                    !theme
-                                  ) {
-                                    throw new Error(
-                                      `The <AppProvider> component is required as of v2.0 of Polaris React. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.`,
-                                    );
-                                  }
-
-                                  return (
-                                    <WrappedComponent
-                                      {...this.props as any}
-                                      polaris={polarisContext}
-                                    />
-                                  );
-                                }}
-                              </AppBridgeContext.Consumer>
-                            )}
-                          </StickyManagerContext.Consumer>
-                        )}
-                      </ScrollLockManagerContext.Consumer>
-                    )}
-                  </I18nContext.Consumer>
-                )}
-              </ThemeProviderContext.Consumer>
-            )}
-          </LinkContext.Consumer>
+      if (!intl || !scrollLockManager || !stickyManager || !link || !theme) {
+        throw new Error(
+          `The <AppProvider> component is required as of v2.0 of Polaris React. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.`,
         );
       }
-    }
+
+      return <WrappedComponent {...props as any} polaris={polarisContext} />;
+    };
+    WithProvider.contextTypes = WrappedComponent.contextTypes;
 
     let WithScrollable: React.ComponentClass<any> | undefined;
     if (withinScrollable) {
