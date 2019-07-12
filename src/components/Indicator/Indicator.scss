@@ -8,7 +8,6 @@ $base-position: rem(-4px);
   &::after {
     content: '';
     position: absolute;
-    background-color: color('teal');
     right: $base-position;
     top: $base-position;
     width: $size;
@@ -17,15 +16,36 @@ $base-position: rem(-4px);
   }
 }
 
-.pulseIndicator::before {
+.Indicator-pulse::before {
   z-index: 1;
   animation: bounce 5s ease infinite;
 }
 
-.pulseIndicator::after {
+.Indicator-pulse::after {
   right: $base-position;
   top: $base-position;
   animation: pulse 5s ease infinite;
+}
+
+.Indicator-positive {
+  &::before,
+  &::after {
+    background-color: color('teal');
+  }
+}
+
+.Indicator-neutral {
+  &::before,
+  &::after {
+    background-color: color('sky', 'dark');
+  }
+}
+
+.Indicator-negative {
+  &::before,
+  &::after {
+    background-color: color('red');
+  }
 }
 
 $pip-animation: (

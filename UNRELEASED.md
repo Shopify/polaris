@@ -12,6 +12,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Removed default pulse prop on `Indicator` as well as added a tone prop and two other variations [1825](https://github.com/Shopify/polaris-react/pull/1825)
 - Added a `verticalAlign` prop to `DataTable` ([#1790](https://github.com/Shopify/polaris-react/pull/1790))
 
 ### Bug fixes
