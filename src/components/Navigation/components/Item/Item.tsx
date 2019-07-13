@@ -47,8 +47,6 @@ interface SecondaryAction {
 
 export interface Props extends ItemURLDetails {
   icon?: IconProps['source'];
-  /** @deprecated The iconBody prop is deprecated and will be removed. Pass a string into the icon prop instead */
-  iconBody?: string;
   badge?: ReactNode;
   label: string;
   disabled?: boolean;
@@ -78,7 +76,6 @@ export default function Item({
   disabled,
   onClick,
   accessibilityLabel,
-  iconBody,
   selected: selectedOverride,
   badge,
   new: isNew,
@@ -122,17 +119,9 @@ export default function Item({
     </span>
   ) : null;
 
-  if (iconBody) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The iconBody prop is deprecated. Pass a string into the icon prop instead',
-    );
-  }
-
-  const iconBodyOrIcon = iconBody || icon;
-  const iconMarkup = iconBodyOrIcon ? (
+  const iconMarkup = icon ? (
     <div className={styles.Icon}>
-      <Icon source={iconBodyOrIcon} />
+      <Icon source={icon} />
     </div>
   ) : null;
 
