@@ -16,6 +16,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed support for passing a React Element into `<Icon source>`. You must pass in a React Component that returns an SVG element instead. ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
 - Removed support for `<Icon untrusted>`. Passing a string into `source` will now always load an untrusted icon, you don't need that additional property. ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
 - Now `i18n` is a required prop on `AppProvider`. [Usage instructions](https://polaris.shopify.com/components/structure/app-provider#using-translations) are included in the `AppProvider` docs ([#1530](https://github.com/Shopify/polaris-react/pull/1530))
+- Removed `Autocomplete.ComboBox.TextField` and `Autocomplete.ComboBox.OptionList`. You should use the `Autocomplete.TextField` and `OptionList` components instead. ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
 
 ### New components
 
