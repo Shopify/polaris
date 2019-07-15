@@ -1,5 +1,4 @@
 import React from 'react';
-import {ClientApplication} from '@shopify/app-bridge';
 import {Theme} from '../../utilities/theme';
 import ThemeProvider from '../ThemeProvider';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
@@ -20,7 +19,7 @@ import {Link, LinkContext, LinkLikeComponent} from '../../utilities/link';
 
 interface State {
   intl: I18n;
-  appBridge: ClientApplication<{}> | null;
+  appBridge: ReturnType<typeof createAppBridge>;
   link: Link;
 }
 

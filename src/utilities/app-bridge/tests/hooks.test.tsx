@@ -1,7 +1,5 @@
 import React from 'react';
-import isEqual from 'lodash/isEqual';
-import {mountWithAppProvider} from 'test-utilities/legacy';
-import {createPolarisContext} from '../../create-polaris-context';
+import {mountWithContext} from 'test-utilities';
 
 import {useAppBridge} from '../hooks';
 
@@ -9,12 +7,16 @@ describe('useAppBridge', () => {
   it('returns context', () => {
     function Component() {
       // eslint-disable-next-line shopify/jest/no-if
-      return isEqual(useAppBridge(), createPolarisContext().appBridge) ? (
-        <div />
-      ) : null;
+      return useAppBridge() ? <div /> : null;
     }
 
-    const component = mountWithAppProvider(<Component />);
-    expect(component.find('div')).toHaveLength(1);
+    const component = mountWithContext(<Component />, {
+      appBridge: {
+        apiKey: 'abc123',
+        shopOrigin: 'fake.example.com',
+        forceRedirect: false,
+      },
+    });
+    expect(component).toContainReactComponent('div');
   });
 });

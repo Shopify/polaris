@@ -71,11 +71,11 @@ class Scrollable extends React.Component<CombinedProps, State> {
   );
 
   componentDidMount() {
-    const {polaris} = this.props;
-    if (this.scrollArea == null) {
+    const {stickyManager} = this.props.polaris;
+    if (!stickyManager || this.scrollArea == null) {
       return;
     }
-    polaris.stickyManager.setContainer(this.scrollArea);
+    stickyManager.setContainer(this.scrollArea);
     addEventListener(this.scrollArea, 'scroll', () => {
       window.requestAnimationFrame(this.handleScroll);
     });
@@ -89,13 +89,13 @@ class Scrollable extends React.Component<CombinedProps, State> {
   }
 
   componentWillUnmount() {
-    const {polaris} = this.props;
-    if (this.scrollArea == null) {
+    const {stickyManager} = this.props.polaris;
+    if (!stickyManager || this.scrollArea == null) {
       return;
     }
     removeEventListener(this.scrollArea, 'scroll', this.handleScroll);
     removeEventListener(window, 'resize', this.handleResize);
-    polaris.stickyManager.removeScrollListener();
+    stickyManager.removeScrollListener();
   }
 
   componentDidUpdate() {

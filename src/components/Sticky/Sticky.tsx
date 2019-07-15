@@ -40,7 +40,7 @@ class Sticky extends React.Component<CombinedProps, State> {
       polaris: {stickyManager},
     } = this.props;
 
-    if (!this.stickyNode || !this.placeHolderNode) return;
+    if (!stickyManager || !this.stickyNode || !this.placeHolderNode) return;
 
     stickyManager.registerStickyItem({
       stickyNode: this.stickyNode,
@@ -53,8 +53,8 @@ class Sticky extends React.Component<CombinedProps, State> {
   }
 
   componentWillUnmount() {
-    if (!this.stickyNode) return;
     const {stickyManager} = this.props.polaris;
+    if (!stickyManager || !this.stickyNode) return;
     stickyManager.unregisterStickyItem(this.stickyNode);
   }
 

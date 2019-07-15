@@ -9,7 +9,7 @@ describe('createAppBridge()', () => {
   });
 
   it('returns null without an apiKey', () => {
-    expect(createAppBridge({})).toBeNull();
+    expect(createAppBridge({})).toBeUndefined();
   });
 
   it('returns a app bridge instance', () => {

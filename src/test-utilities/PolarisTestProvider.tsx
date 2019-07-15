@@ -33,7 +33,7 @@ export function PolarisTestProvider({
   intl = new I18n(translations),
   scrollLockManager = new ScrollLockManager(),
   stickyManager = new StickyManager(),
-  appBridge = null,
+  appBridge = undefined,
   link = new Link(undefined),
   ...props
 }: Props) {
