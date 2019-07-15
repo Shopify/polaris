@@ -22,7 +22,7 @@ import ButtonGroup from '../ButtonGroup';
 import UnstyledLink from '../UnstyledLink';
 import Icon from '../Icon';
 
-import WithinContentContext from '../WithinContentContext';
+import {WithinContentContext} from '../../utilities/within-content-context';
 
 import styles from './Banner.scss';
 

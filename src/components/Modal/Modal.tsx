@@ -5,7 +5,7 @@ import {write} from '@shopify/javascript-utilities/fastdom';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
-import WithinContentContext from '../WithinContentContext';
+import {WithinContentContext} from '../../utilities/within-content-context';
 import {wrapWithComponent} from '../../utilities/components';
 
 import {transformActions} from '../../utilities/app-bridge-transformers';

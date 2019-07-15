@@ -2,7 +2,7 @@ import React from 'react';
 import {mount} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import ContextualSaveBar from '../ContextualSaveBar';
-import {FrameContext, createFrameContext} from '../../Frame';
+import {createFrameContext} from '../../Frame';
 
 describe('<ContextualSaveBar />', () => {
   const props = {
@@ -17,11 +17,9 @@ describe('<ContextualSaveBar />', () => {
       removeContextualSaveBar: jest.fn(),
     });
 
-    mountWithAppProvider(
-      <FrameContext.Provider value={mockFrameContext}>
-        <ContextualSaveBar {...props} />
-      </FrameContext.Provider>,
-    );
+    mountWithAppProvider(<ContextualSaveBar {...props} />, {
+      context: {frame: mockFrameContext},
+    });
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledWith({
       ...props,
     });
@@ -33,11 +31,9 @@ describe('<ContextualSaveBar />', () => {
       removeContextualSaveBar: jest.fn(),
     });
 
-    const frame = mountWithAppProvider(
-      <FrameContext.Provider value={mockFrameContext}>
-        <ContextualSaveBar {...props} />
-      </FrameContext.Provider>,
-    );
+    const frame = mountWithAppProvider(<ContextualSaveBar {...props} />, {
+      context: {frame: mockFrameContext},
+    });
     expect(mockFrameContext.removeContextualSaveBar).not.toHaveBeenCalled();
     frame.unmount();
     expect(mockFrameContext.removeContextualSaveBar).toHaveBeenCalled();
@@ -49,11 +45,9 @@ describe('<ContextualSaveBar />', () => {
       removeContextualSaveBar: jest.fn(),
     });
 
-    const frame = mountWithAppProvider(
-      <FrameContext.Provider value={mockFrameContext}>
-        <ContextualSaveBar {...props} />
-      </FrameContext.Provider>,
-    );
+    const frame = mountWithAppProvider(<ContextualSaveBar {...props} />, {
+      context: {frame: mockFrameContext},
+    });
     const newProps = {
       saveAction: {content: 'Save', onAction: noop, loading: true},
       discardAction: {content: 'Discard', onAction: noop},
@@ -74,11 +68,9 @@ describe('<ContextualSaveBar />', () => {
       removeContextualSaveBar: jest.fn(),
     });
 
-    const frame = mountWithAppProvider(
-      <FrameContext.Provider value={mockFrameContext}>
-        <ContextualSaveBar {...props} />
-      </FrameContext.Provider>,
-    );
+    const frame = mountWithAppProvider(<ContextualSaveBar {...props} />, {
+      context: {frame: mockFrameContext},
+    });
 
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);
     const newProps = {...props};

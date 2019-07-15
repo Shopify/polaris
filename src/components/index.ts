@@ -274,6 +274,8 @@ export {default as TextField, Props as TextFieldProps} from './TextField';
 
 export {default as TextStyle, Props as TextStyleProps} from './TextStyle';
 
+export {default as ThemeProvider} from './ThemeProvider';
+
 export {default as Thumbnail, Props as ThumbnailProps} from './Thumbnail';
 
 export {default as Toast} from './Toast';
@@ -292,5 +294,3 @@ export {
   default as VisuallyHidden,
   Props as VisuallyHiddenProps,
 } from './VisuallyHidden';
-
-export {default as WithinContentContext} from './WithinContentContext';

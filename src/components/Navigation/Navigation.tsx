@@ -2,7 +2,7 @@ import React from 'react';
 
 import Scrollable from '../Scrollable';
 
-import WithinContentContext from '../WithinContentContext';
+import {WithinContentContext} from '../../utilities/within-content-context';
 import NavigationContext from './context';
 import {Section, Item} from './components';
 import {SectionType} from './types';

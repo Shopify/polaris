@@ -102,18 +102,4 @@ describe('<FileUpload />', () => {
     fileUpload.setProps({children: <FileUpload />});
     expect(fileUpload.find(TextStyle).text()).toBe('or drop files to upload');
   });
-
-  it('does not use default action title and hint when props are changed', () => {
-    const actionTitle = 'Add file title';
-    const actionHint = 'or drop files to upload hint';
-    const fileUpload = mountWithAppProvider(
-      <DropZoneContext.Provider value={{size: 'large', type: 'file'}}>
-        <FileUpload actionTitle={actionTitle} actionHint={actionHint} />
-      </DropZoneContext.Provider>,
-    );
-
-    fileUpload.setProps({actionTitle, actionHint});
-
-    expect(fileUpload.props()).toStrictEqual({actionTitle, actionHint});
-  });
 });

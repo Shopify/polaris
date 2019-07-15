@@ -1,7 +1,7 @@
 import React from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {FrameContext, createFrameContext} from '../../Frame';
+import {createFrameContext} from '../../Frame';
 
 import Loading from '../Loading';
 
@@ -15,11 +15,7 @@ describe('<Loading />', () => {
       startLoading: jest.fn(),
     });
 
-    mountWithAppProvider(
-      <FrameContext.Provider value={mockFrameContext}>
-        <Loading />
-      </FrameContext.Provider>,
-    );
+    mountWithAppProvider(<Loading />, {context: {frame: mockFrameContext}});
     expect(mockFrameContext.startLoading).toHaveBeenCalled();
   });
 
@@ -27,11 +23,9 @@ describe('<Loading />', () => {
     const mockFrameContext = createFrameContext({
       stopLoading: jest.fn(),
     });
-    const frame = mountWithAppProvider(
-      <FrameContext.Provider value={mockFrameContext}>
-        <Loading />
-      </FrameContext.Provider>,
-    );
+    const frame = mountWithAppProvider(<Loading />, {
+      context: {frame: mockFrameContext},
+    });
     expect(mockFrameContext.stopLoading).not.toHaveBeenCalled();
 
     frame.unmount();

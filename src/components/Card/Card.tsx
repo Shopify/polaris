@@ -2,7 +2,7 @@ import React from 'react';
 import {classNames} from '../../utilities/css';
 
 import ButtonGroup from '../ButtonGroup';
-import WithinContentContext from '../WithinContentContext';
+import {WithinContentContext} from '../../utilities/within-content-context';
 import {DisableableAction, ComplexAction} from '../../types';
 import ActionList from '../ActionList';
 import Button, {buttonFrom} from '../Button';
