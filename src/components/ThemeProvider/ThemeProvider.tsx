@@ -1,6 +1,6 @@
 import React from 'react';
 import isEqual from 'lodash/isEqual';
-import {ThemeProviderContext} from '../../utilities/theme';
+import {ThemeContext} from '../../utilities/theme';
 import {Theme} from '../../utilities/theme/types';
 import {setColors} from '../../utilities/theme/utils';
 
@@ -48,15 +48,15 @@ export default class ThemeProvider extends React.Component<Props, State> {
     const {children} = this.props;
     const styles = this.createStyles() || defaultTheme;
 
-    const context = {
+    const theme = {
       ...rest,
       logo,
     };
 
     return (
-      <ThemeProviderContext.Provider value={context}>
+      <ThemeContext.Provider value={theme}>
         <div style={styles}>{React.Children.only(children)}</div>
-      </ThemeProviderContext.Provider>
+      </ThemeContext.Provider>
     );
   }
 

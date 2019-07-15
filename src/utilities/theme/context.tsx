@@ -5,6 +5,6 @@ export interface ThemeContextType {
   logo: Theme['logo'] | null;
 }
 
-export const ThemeProviderContext = React.createContext<ThemeContextType>({
+export const ThemeContext = React.createContext<ThemeContextType>({
   logo: null,
 });

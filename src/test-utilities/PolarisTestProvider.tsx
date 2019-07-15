@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {FrameContext} from '../components/Frame';
-import {createThemeContext, ThemeProviderContext} from '../utilities/theme';
+import {createThemeContext, ThemeContext} from '../utilities/theme';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -49,7 +49,7 @@ export function PolarisTestProvider({
       <I18nContext.Provider value={intl}>
         <ScrollLockManagerContext.Provider value={scrollLockManager}>
           <StickyManagerContext.Provider value={stickyManager}>
-            <ThemeProviderContext.Provider value={themeProvider}>
+            <ThemeContext.Provider value={themeProvider}>
               <AppBridgeContext.Provider value={appBridge}>
                 <LinkContext.Provider value={link}>
                   <FrameContext.Provider value={frame}>
@@ -57,7 +57,7 @@ export function PolarisTestProvider({
                   </FrameContext.Provider>
                 </LinkContext.Provider>
               </AppBridgeContext.Provider>
-            </ThemeProviderContext.Provider>
+            </ThemeContext.Provider>
           </StickyManagerContext.Provider>
         </ScrollLockManagerContext.Provider>
       </I18nContext.Provider>
