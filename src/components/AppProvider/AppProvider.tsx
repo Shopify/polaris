@@ -38,6 +38,7 @@ export default class AppProvider extends React.Component<Props> {
       unsubscribe: this.unsubscribe,
     });
 
+    // eslint-disable-next-line no-console
     console.warn(
       'Notice: In v4 polaris will remove some internal types/components that were included in our exports or are not needed anymore as we migrate away from deprecated react features; ThemeProviderProps, ThemeProviderContext, IconProps, WithAppProviderProps, polarisContextTypes, AppProviderContext, createPolarisContext, withAppProvider, createAppProviderContext, WithRef, and WithContext.',
     );
