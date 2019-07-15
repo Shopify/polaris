@@ -36,9 +36,9 @@ business in the interface.
 
 Avatars should be one of 3 sizes:
 
-- Small (32 x 32 px): use when the medium size is too big for the layout, or when the avatar has less importance
-- Medium (40 x 40 px): use as the default size
-- Large (60 x 60 px): use when an avatar is a focal point, such as on a single customer card
+- Small (32 × 32 px): use when the medium size is too big for the layout, or when the avatar has less importance
+- Medium (40 × 40 px): use as the default size
+- Large (60 × 60 px): use when an avatar is a focal point, such as on a single customer card
 
 ---
 
