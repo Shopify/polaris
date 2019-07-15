@@ -25,5 +25,5 @@
       "scripthost"
     ]
   },
-  "include": ["./config/typescript/**/*", "./src/**/*"]
+  "include": ["./config/typescript/**/*", "./src/**/*", "./tests/**/*"]
 }

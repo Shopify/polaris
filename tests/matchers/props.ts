@@ -1,15 +1,7 @@
 import chalk from 'chalk';
-import {Node} from './types';
+import {Node} from '@shopify/react-testing';
 
-declare global {
-  namespace jest {
-    interface Matchers<R> {
-      toBeDisabled(): void;
-    }
-  }
-}
-
-function toBeDisabled(received: Node<any>) {
+export function toBeDisabled(received: Node<any>) {
   const pass = received.prop('disabled') === true;
 
   return {
@@ -21,5 +13,3 @@ function toBeDisabled(received: Node<any>) {
     },
   };
 }
-
-expect.extend({toBeDisabled});
