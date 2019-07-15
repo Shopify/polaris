@@ -2,8 +2,6 @@ import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Button, Image, Modal} from 'components';
 import ContextualSaveBar from '../ContextualSaveBar';
-import {ThemeProviderContextType} from '../../../../../utilities/theme';
-import {merge} from '../../../../../utilities/merge';
 
 describe('<ContextualSaveBar />', () => {
   describe('discardAction', () => {
@@ -116,30 +114,28 @@ describe('<ContextualSaveBar />', () => {
 
   describe('logo', () => {
     it('will render an image with the contextual save bar source', () => {
-      const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar />,
-        mergeThemeProviderContext({
+      const contextualSaveBar = mountWithAppProvider(<ContextualSaveBar />, {
+        themeProvider: {
           logo: {
             width: 200,
             contextualSaveBarSource: './assets/monochrome_shopify.svg',
           },
-        }),
-      );
+        },
+      });
       expect(contextualSaveBar.find(Image).prop('source')).toBe(
         './assets/monochrome_shopify.svg',
       );
     });
 
     it('will render an image with the width provided', () => {
-      const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar />,
-        mergeThemeProviderContext({
+      const contextualSaveBar = mountWithAppProvider(<ContextualSaveBar />, {
+        themeProvider: {
           logo: {
             width: 200,
             contextualSaveBarSource: './assets/monochrome_shopify.svg',
           },
-        }),
-      );
+        },
+      });
       expect(contextualSaveBar.find(Image).get(0).props.style).toHaveProperty(
         'width',
         '200px',
@@ -147,15 +143,14 @@ describe('<ContextualSaveBar />', () => {
     });
 
     it('will render the image with a default width if 0 is provided', () => {
-      const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar />,
-        mergeThemeProviderContext({
+      const contextualSaveBar = mountWithAppProvider(<ContextualSaveBar />, {
+        themeProvider: {
           logo: {
             contextualSaveBarSource: './assets/monochrome_shopify.svg',
             width: 0,
           },
-        }),
-      );
+        },
+      });
       expect(contextualSaveBar.find(Image).get(0).props.style).toHaveProperty(
         'width',
         '104px',
@@ -165,23 +160,17 @@ describe('<ContextualSaveBar />', () => {
     it('will not render the logo when content is aligned flush left', () => {
       const contextualSaveBar = mountWithAppProvider(
         <ContextualSaveBar alignContentFlush />,
-        mergeThemeProviderContext({
-          logo: {
-            contextualSaveBarSource: './assets/monochrome_shopify.svg',
-            width: 200,
+        {
+          themeProvider: {
+            logo: {
+              contextualSaveBarSource: './assets/monochrome_shopify.svg',
+              width: 200,
+            },
           },
-        }),
+        },
       );
 
       expect(contextualSaveBar.find(Image).exists()).toBeFalsy();
     });
   });
 });
-
-function mergeThemeProviderContext(
-  providedThemeContext: ThemeProviderContextType,
-) {
-  return {
-    themeProvider: merge({logo: null}, providedThemeContext),
-  };
-}

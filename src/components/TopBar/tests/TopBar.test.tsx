@@ -1,10 +1,8 @@
 import React from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Image, UnstyledLink} from 'components';
-import {ThemeProviderContextType} from '../../../utilities/theme';
 import TopBar from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
-import {merge} from '../../../utilities/merge';
 
 const actions = [
   {
@@ -143,52 +141,47 @@ describe('<TopBar />', () => {
 
   describe('logo', () => {
     it('will render an image with the logo top bar source', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        mergeThemeProviderContext({
+      const topBar = mountWithAppProvider(<TopBar />, {
+        themeProvider: {
           logo: {
             topBarSource: './assets/shopify.svg',
           },
-        }),
-      );
+        },
+      });
       expect(topBar.find(Image).prop('source')).toBe('./assets/shopify.svg');
     });
 
     it('will render an image with the logo accessibility label', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        mergeThemeProviderContext({
+      const topBar = mountWithAppProvider(<TopBar />, {
+        themeProvider: {
           logo: {
             accessibilityLabel: 'Shopify',
           },
-        }),
-      );
+        },
+      });
       expect(topBar.find(Image).prop('alt')).toBe('Shopify');
     });
 
     it('will render an unstyled link with the logo URL', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        mergeThemeProviderContext({logo: {url: 'https://shopify.com'}}),
-      );
+      const topBar = mountWithAppProvider(<TopBar />, {
+        themeProvider: {logo: {url: 'https://shopify.com'}},
+      });
       expect(topBar.find(UnstyledLink).prop('url')).toBe('https://shopify.com');
     });
 
     it('will render an unstyled link with the logo width', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        mergeThemeProviderContext({logo: {width: 124}}),
-      );
+      const topBar = mountWithAppProvider(<TopBar />, {
+        themeProvider: {logo: {width: 124}},
+      });
       expect(topBar.find(UnstyledLink).prop('style')).toStrictEqual({
         width: '124px',
       });
     });
 
     it('will render an unstyled link with a default width', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        mergeThemeProviderContext({logo: {}}),
-      );
+      const topBar = mountWithAppProvider(<TopBar />, {
+        themeProvider: {logo: {}},
+      });
       expect(topBar.find(UnstyledLink).prop('style')).toStrictEqual({
         width: '104px',
       });
@@ -217,11 +210,11 @@ describe('<TopBar />', () => {
     it('doesn’t render a logo when defined', () => {
       const topBar = mountWithAppProvider(
         <TopBar contextControl={mockContextControl} />,
-        mergeThemeProviderContext({
-          logo: {
-            topBarSource: './assets/shopify.svg',
+        {
+          themeProvider: {
+            logo: {topBarSource: './assets/shopify.svg'},
           },
-        }),
+        },
       );
       expect(topBar.find(Image).exists()).toBe(false);
     });
@@ -234,11 +227,3 @@ describe('<TopBar />', () => {
 });
 
 function noop() {}
-
-function mergeThemeProviderContext(
-  providedThemeContext: ThemeProviderContextType,
-) {
-  return {
-    themeProvider: merge({logo: null}, providedThemeContext),
-  };
-}

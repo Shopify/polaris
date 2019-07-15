@@ -1,12 +1,10 @@
 import React from 'react';
 import {Theme} from './types';
 
-export interface ThemeProviderContextType {
+export interface ThemeContextType {
   logo: Theme['logo'] | null;
 }
 
-export const ThemeProviderContext = React.createContext<
-  ThemeProviderContextType
->({
+export const ThemeProviderContext = React.createContext<ThemeContextType>({
   logo: null,
 });

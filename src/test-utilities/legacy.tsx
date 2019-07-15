@@ -10,7 +10,7 @@ import translations from '../../locales/en.json';
 
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {FrameContextType} from '../components/Frame';
-import {createThemeContext, ThemeProviderContextType} from '../utilities/theme';
+import {createThemeContext} from '../utilities/theme';
 import {ScrollLockManager} from '../utilities/scroll-lock-manager';
 import {StickyManager} from '../utilities/sticky-manager';
 import {Link, LinkLikeComponent} from '../utilities/link';
@@ -81,7 +81,7 @@ type AppContext = {
   scrollLockManager: ScrollLockManager;
   stickyManager: StickyManager;
   appBridge: ClientApplication<{}> | {} | null;
-  themeProvider: ThemeProviderContextType;
+  themeProvider: ReturnType<typeof createThemeContext>;
   frame: FrameContextType;
   link: Link;
 };
@@ -90,8 +90,8 @@ interface AppContextOptions {
   app: AppContext;
 }
 
-interface MountWithAppProviderOptions {
-  themeProvider?: DeepPartial<ThemeProviderContextType>;
+interface MountWithAppProviderContext {
+  themeProvider?: DeepPartial<ReturnType<typeof createThemeContext>>;
   frame?: DeepPartial<FrameContextType>;
   intl?: TranslationDictionary | TranslationDictionary[];
   scrollLockManager?: ScrollLockManager;
@@ -102,7 +102,7 @@ interface MountWithAppProviderOptions {
 
 export function mountWithAppProvider<P>(
   node: React.ReactElement<P>,
-  ctx: MountWithAppProviderOptions = {},
+  ctx: MountWithAppProviderContext = {},
 ): PolarisContextReactWrapper<P, any> {
   const intlTranslations =
     (ctx.intl && merge(translations, ctx.intl)) || translations;
