@@ -487,9 +487,7 @@ describe('<Modal>', () => {
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
-  const modal = mountWithAppProvider(element, {
-    context: {appBridge},
-  });
+  const modal = mountWithAppProvider(element, {appBridge});
 
   return {modal, appBridge};
 }

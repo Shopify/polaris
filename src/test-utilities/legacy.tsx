@@ -91,23 +91,19 @@ interface AppContextOptions {
 }
 
 interface MountWithAppProviderOptions {
-  context?: {
-    themeProvider?: DeepPartial<ThemeProviderContextType>;
-    frame?: DeepPartial<FrameContextType>;
-    intl?: TranslationDictionary | TranslationDictionary[];
-    scrollLockManager?: ScrollLockManager;
-    stickyManager?: StickyManager;
-    appBridge?: ClientApplication<{}> | {};
-    link?: LinkLikeComponent;
-  };
+  themeProvider?: DeepPartial<ThemeProviderContextType>;
+  frame?: DeepPartial<FrameContextType>;
+  intl?: TranslationDictionary | TranslationDictionary[];
+  scrollLockManager?: ScrollLockManager;
+  stickyManager?: StickyManager;
+  appBridge?: ClientApplication<{}> | {};
+  link?: LinkLikeComponent;
 }
 
 export function mountWithAppProvider<P>(
   node: React.ReactElement<P>,
-  options: MountWithAppProviderOptions = {},
+  ctx: MountWithAppProviderOptions = {},
 ): PolarisContextReactWrapper<P, any> {
-  const {context: ctx = {}} = options;
-
   const intlTranslations =
     (ctx.intl && merge(translations, ctx.intl)) || translations;
   const intl = new I18n(intlTranslations);

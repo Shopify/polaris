@@ -16,7 +16,7 @@ describe('<Toast />', () => {
 
     const props = {content: 'Image uploaded', onDismiss: noop};
     mountWithAppProvider(<Toast {...props} />, {
-      context: {frame: mockFrameContext},
+      frame: mockFrameContext,
     });
 
     expect(mockFrameContext.showToast).toHaveBeenCalledWith(
@@ -31,7 +31,7 @@ describe('<Toast />', () => {
 
     const frame = mountWithAppProvider(
       <Toast content="Message sent" onDismiss={noop} />,
-      {context: {frame: mockFrameContext}},
+      {frame: mockFrameContext},
     );
 
     expect(mockFrameContext.hideToast).not.toHaveBeenCalled();
@@ -113,7 +113,8 @@ function noop() {}
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
   const toast = mountWithAppProvider(element, {
-    context: {frame: {}, appBridge},
+    frame: {},
+    appBridge,
   });
 
   return {toast, appBridge};

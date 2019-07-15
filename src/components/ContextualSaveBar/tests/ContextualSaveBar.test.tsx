@@ -18,7 +18,7 @@ describe('<ContextualSaveBar />', () => {
     });
 
     mountWithAppProvider(<ContextualSaveBar {...props} />, {
-      context: {frame: mockFrameContext},
+      frame: mockFrameContext,
     });
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledWith({
       ...props,
@@ -32,7 +32,7 @@ describe('<ContextualSaveBar />', () => {
     });
 
     const frame = mountWithAppProvider(<ContextualSaveBar {...props} />, {
-      context: {frame: mockFrameContext},
+      frame: mockFrameContext,
     });
     expect(mockFrameContext.removeContextualSaveBar).not.toHaveBeenCalled();
     frame.unmount();
@@ -46,7 +46,7 @@ describe('<ContextualSaveBar />', () => {
     });
 
     const frame = mountWithAppProvider(<ContextualSaveBar {...props} />, {
-      context: {frame: mockFrameContext},
+      frame: mockFrameContext,
     });
     const newProps = {
       saveAction: {content: 'Save', onAction: noop, loading: true},
@@ -69,7 +69,7 @@ describe('<ContextualSaveBar />', () => {
     });
 
     const frame = mountWithAppProvider(<ContextualSaveBar {...props} />, {
-      context: {frame: mockFrameContext},
+      frame: mockFrameContext,
     });
 
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);

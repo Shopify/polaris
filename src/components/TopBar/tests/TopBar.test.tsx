@@ -239,8 +239,6 @@ function mergeThemeProviderContext(
   providedThemeContext: ThemeProviderContextType,
 ) {
   return {
-    context: {
-      themeProvider: merge({logo: null}, providedThemeContext),
-    },
+    themeProvider: merge({logo: null}, providedThemeContext),
   };
 }

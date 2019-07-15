@@ -229,9 +229,7 @@ function noop() {}
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
-  const resourcePicker = mountWithAppProvider(element, {
-    context: {appBridge},
-  });
+  const resourcePicker = mountWithAppProvider(element, {appBridge});
 
   return {resourcePicker, appBridge};
 }
