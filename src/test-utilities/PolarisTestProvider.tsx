@@ -11,9 +11,9 @@ import {AppBridgeContext} from '../utilities/app-bridge';
 import {I18n, I18nContext} from '../utilities/i18n';
 import translations from '../../locales/en.json';
 import {Link, LinkContext} from '../utilities/link';
-import {ReturnedContext} from './types';
+import {WithProvidersContext} from './types';
 
-export interface Props extends Partial<ReturnedContext> {
+export interface Props extends Partial<WithProvidersContext> {
   children: React.ReactElement<any>;
   strict?: boolean;
 }

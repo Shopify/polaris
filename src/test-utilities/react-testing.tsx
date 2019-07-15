@@ -6,16 +6,15 @@ import {StickyManager} from '../utilities/sticky-manager';
 import {createAppBridge} from '../utilities/app-bridge';
 import {I18n} from '../utilities/i18n';
 import translations from '../../locales/en.json';
-import {DeepPartial} from '../types';
 import {merge} from '../utilities/merge';
 import {Link} from '../utilities/link';
 import {PolarisTestProvider} from './PolarisTestProvider';
-import {ComplexProviders, SimpleProviders, ReturnedContext} from './types';
+import {WithProvidersOptions, WithProvidersContext} from './types';
 
-type Options = DeepPartial<ComplexProviders> & Partial<SimpleProviders>;
-type Context = ReturnedContext;
-
-export const mountWithContext = createMount<Options, Context>({
+export const mountWithContext = createMount<
+  WithProvidersOptions,
+  WithProvidersContext
+>({
   context({
     themeProvider,
     frame,
