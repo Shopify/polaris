@@ -19,7 +19,7 @@ import styles from './Header.scss';
 
 export interface Props {
   /** Page title, in large type */
-  title: string;
+  title: React.ReactNode;
   /** Important and non-interactive status information shown immediately after the title. (stand-alone app use only) */
   titleMetadata?: React.ReactNode;
   /** Visually hide the title (stand-alone app use only) */
@@ -125,11 +125,15 @@ class Header extends React.PureComponent<ComposedProps, State> {
 
     const titleMarkup = (
       <div className={styles.Title}>
-        <div className={styles.DisplayTextWrapper}>
-          <DisplayText size="large" element="h1">
-            {title}
-          </DisplayText>
-        </div>
+        {typeof title === 'string' ? (
+          <div className={styles.DisplayTextWrapper}>
+            <DisplayText size="large" element="h1">
+              {title}
+            </DisplayText>
+          </div>
+        ) : (
+          title
+        )}
 
         {titleMetadata && (
           <div className={styles.TitleMetadataWrapper}>{titleMetadata}</div>
