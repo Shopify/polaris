@@ -141,21 +141,6 @@ describe('<Select />', () => {
         testOptions(optionOrGroup, optionOrOptgroupElement);
       });
     });
-
-    // Expectations are ran within the call to testOptions()
-    // eslint-disable-next-line jest/expect-expect
-    it('translates legacy groups into optgroup tags', () => {
-      const optionOrOptgroupElements = mountWithAppProvider(
-        <Select label="Select" groups={optionsAndGroups} onChange={noop} />,
-      )
-        .find('select')
-        .children();
-
-      optionsAndGroups.forEach((optionOrGroup, index) => {
-        const optionOrOptgroupElement = optionOrOptgroupElements.at(index);
-        testOptions(optionOrGroup, optionOrOptgroupElement);
-      });
-    });
   });
 
   describe('value', () => {

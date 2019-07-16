@@ -87,19 +87,6 @@ describe('<Card />', () => {
     expect(primaryAction.text()).toBe('test action');
   });
 
-  it('renders a secondary footer action', () => {
-    const card = mountWithAppProvider(
-      <Card secondaryFooterAction={{content: 'test action'}}>
-        <p>Some card content.</p>
-      </Card>,
-    );
-
-    const secondaryAction = card.find(Button).first();
-
-    expect(secondaryAction).toHaveLength(1);
-    expect(secondaryAction.text()).toBe('test action');
-  });
-
   describe('secondaryFooterActions', () => {
     it('renders a single secondary footer action button when only 1 is supplied', () => {
       const card = mountWithAppProvider(
@@ -186,21 +173,6 @@ describe('<Card />', () => {
       const disclosureButton = card.find(Button).first();
       expect(disclosureButton).toHaveLength(1);
       expect(disclosureButton.text()).toBe('Show more');
-    });
-
-    it('will prefer secondaryFooterActions to secondaryFooterAction if both are provided', () => {
-      const card = mountWithAppProvider(
-        <Card
-          secondaryFooterActions={[{content: 'a'}]}
-          secondaryFooterAction={{content: 'b'}}
-        >
-          <p>Some card content.</p>
-        </Card>,
-      );
-
-      const button = card.find(Button).first();
-      expect(button).toHaveLength(1);
-      expect(button.text()).toBe('a');
     });
   });
 

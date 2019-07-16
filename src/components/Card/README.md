@@ -357,7 +357,7 @@ Use when a card action will delete merchant data or be otherwise difficult to re
 ```jsx
 <Card
   title="Shipment 1234"
-  secondaryFooterAction={{content: 'Cancel shipment', destructive: true}}
+  secondaryFooterActions={[{content: 'Cancel shipment', destructive: true}]}
   primaryFooterAction={{content: 'Add tracking number'}}
 >
   <Card.Section title="Items">
