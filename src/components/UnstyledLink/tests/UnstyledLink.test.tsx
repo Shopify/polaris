@@ -6,10 +6,9 @@ describe('<UnstyledLink />', () => {
   describe('custom link component', () => {
     it('uses a custom link component instead of an anchor', () => {
       const CustomLinkComponent = () => <div />;
-      const mockContext = {context: {link: CustomLinkComponent}};
       const anchorElement = mountWithAppProvider(
         <UnstyledLink external url="https://shopify.com" />,
-        mockContext,
+        {link: CustomLinkComponent},
       ).find(CustomLinkComponent);
 
       expect(anchorElement).toHaveLength(1);
@@ -17,10 +16,9 @@ describe('<UnstyledLink />', () => {
 
     it('doesn’t have polaris prop', () => {
       const CustomLinkComponent = () => <div />;
-      const mockContext = {context: {link: CustomLinkComponent}};
       const anchorElement = mountWithAppProvider(
         <UnstyledLink external url="https://shopify.com" />,
-        mockContext,
+        {link: CustomLinkComponent},
       ).find(CustomLinkComponent);
 
       expect(anchorElement.prop('polaris')).not.toBeDefined();

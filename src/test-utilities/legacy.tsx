@@ -1,20 +1,17 @@
 import {ReactWrapper, CommonWrapper, mount} from 'enzyme';
 import React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {ClientApplication} from '@shopify/app-bridge';
-import {I18n, TranslationDictionary} from '../utilities/i18n';
+import {I18n} from '../utilities/i18n';
 import {get} from '../utilities/get';
 import {merge} from '../utilities/merge';
-import {DeepPartial} from '../types';
 import translations from '../../locales/en.json';
 
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {FrameContextType} from '../components/Frame';
-import {createThemeContext, ThemeProviderContextType} from '../utilities/theme';
+import {createThemeContext} from '../utilities/theme';
 import {ScrollLockManager} from '../utilities/scroll-lock-manager';
 import {StickyManager} from '../utilities/sticky-manager';
-import {Link, LinkLikeComponent} from '../utilities/link';
+import {Link} from '../utilities/link';
 import {PolarisTestProvider} from './PolarisTestProvider';
+import {WithProvidersContext, WithProvidersOptions} from './types';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -76,38 +73,10 @@ function updateRoot(wrapper: AnyWrapper) {
   (wrapper as any).root().update();
 }
 
-type AppContext = {
-  intl: I18n;
-  scrollLockManager: ScrollLockManager;
-  stickyManager: StickyManager;
-  appBridge: ClientApplication<{}> | {} | null;
-  themeProvider: ThemeProviderContextType;
-  frame: FrameContextType;
-  link: Link;
-};
-
-interface AppContextOptions {
-  app: AppContext;
-}
-
-interface MountWithAppProviderOptions {
-  context?: {
-    themeProvider?: DeepPartial<ThemeProviderContextType>;
-    frame?: DeepPartial<FrameContextType>;
-    intl?: TranslationDictionary | TranslationDictionary[];
-    scrollLockManager?: ScrollLockManager;
-    stickyManager?: StickyManager;
-    appBridge?: ClientApplication<{}> | {};
-    link?: LinkLikeComponent;
-  };
-}
-
 export function mountWithAppProvider<P>(
   node: React.ReactElement<P>,
-  options: MountWithAppProviderOptions = {},
-): PolarisContextReactWrapper<P, any> {
-  const {context: ctx = {}} = options;
-
+  ctx: WithProvidersOptions = {},
+) {
   const intlTranslations =
     (ctx.intl && merge(translations, ctx.intl)) || translations;
   const intl = new I18n(intlTranslations);
@@ -133,9 +102,10 @@ export function mountWithAppProvider<P>(
 
   const link = new Link(ctx.link);
 
-  const appBridge = ctx.appBridge || null;
+  // Yes this is bad typing, we'll fix it later
+  const appBridge: any = ctx.appBridge;
 
-  const context: AppContext = {
+  const context: WithProvidersContext = {
     themeProvider,
     frame,
     intl,
@@ -145,26 +115,7 @@ export function mountWithAppProvider<P>(
     link,
   };
 
-  const wrapper = polarisContextReactWrapper(node, {
-    app: context,
-  });
-
-  return wrapper;
-}
-
-type PolarisContextReactWrapper<P, S> = ReactWrapper<P, S> & AppContextOptions;
-
-export function polarisContextReactWrapper<P, S>(
-  element: React.ReactElement<P>,
-  {app}: AppContextOptions,
-): PolarisContextReactWrapper<P, S> {
-  const appBridge: any = app.appBridge;
-
-  const wrapper = mount<P, S>(
-    <PolarisTestProvider {...app} appBridge={appBridge}>
-      {element}
-    </PolarisTestProvider>,
+  return mount<P>(
+    <PolarisTestProvider {...context}>{node}</PolarisTestProvider>,
   );
-
-  return wrapper as PolarisContextReactWrapper<P, S>;
 }

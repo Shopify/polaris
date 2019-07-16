@@ -424,8 +424,6 @@ function noop() {}
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
-  const page = mountWithAppProvider(element, {
-    context: {appBridge},
-  });
+  const page = mountWithAppProvider(element, {appBridge});
   return {page, appBridge};
 }

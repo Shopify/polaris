@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import ThemeProvider from '../ThemeProvider';
-import {ThemeProviderContext} from '../../../utilities/theme';
+import {ThemeContext} from '../../../utilities/theme';
 
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
@@ -16,12 +16,12 @@ describe('<ThemeProvider />', () => {
   it('passes context', () => {
     const Child: React.SFC<{}> = (_props) => {
       return (
-        <ThemeProviderContext.Consumer>
+        <ThemeContext.Consumer>
           {(polarisTheme) => {
             // eslint-disable-next-line shopify/jest/no-if
             return polarisTheme && polarisTheme.logo ? <div /> : null;
           }}
-        </ThemeProviderContext.Consumer>
+        </ThemeContext.Consumer>
       );
     };
 

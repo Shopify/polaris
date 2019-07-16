@@ -15,7 +15,7 @@ describe('<Loading />', () => {
       startLoading: jest.fn(),
     });
 
-    mountWithAppProvider(<Loading />, {context: {frame: mockFrameContext}});
+    mountWithAppProvider(<Loading />, {frame: mockFrameContext});
     expect(mockFrameContext.startLoading).toHaveBeenCalled();
   });
 
@@ -23,9 +23,7 @@ describe('<Loading />', () => {
     const mockFrameContext = createFrameContext({
       stopLoading: jest.fn(),
     });
-    const frame = mountWithAppProvider(<Loading />, {
-      context: {frame: mockFrameContext},
-    });
+    const frame = mountWithAppProvider(<Loading />, {frame: mockFrameContext});
     expect(mockFrameContext.stopLoading).not.toHaveBeenCalled();
 
     frame.unmount();
@@ -71,7 +69,8 @@ describe('<Loading />', () => {
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
   const loading = mountWithAppProvider(element, {
-    context: {frame: {}, appBridge},
+    frame: {},
+    appBridge,
   });
 
   return {loading, appBridge};
