@@ -6,7 +6,6 @@ import Popover from '../../../Popover';
 import {PreferredPosition} from '../../../PositionedOverlay';
 import {ActionListItemDescriptor, Key} from '../../../../types';
 import KeypressListener from '../../../KeypressListener';
-import TextField from '../TextField';
 import ComboBoxContext from './context';
 
 import styles from './ComboBox.scss';
@@ -55,9 +54,6 @@ export interface Props {
 }
 
 export default class ComboBox extends React.PureComponent<Props, State> {
-  static TextField = TextField;
-  static OptionList = OptionList;
-
   static getDerivedStateFromProps(
     {
       options: nextOptions,
