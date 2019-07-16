@@ -6,7 +6,7 @@
   opacity: 0;
   will-change: opacity, height;
   transition-property: opacity, height;
-  transition-duration: var(--polaris-collapsible-transition-duration);
+  transition-duration: duration(slow);
   transition-timing-function: easing(out);
 }
 
