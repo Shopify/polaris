@@ -52,7 +52,7 @@ Use React components in most cases, especially if you’re building a highly int
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/4.0.0-alpha.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/4.0.0-beta.0/polaris.min.css"
 />
 ```
 
@@ -73,7 +73,7 @@ Include the CSS in your HTML:
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/4.0.0-alpha.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/4.0.0-beta.0/polaris.min.css"
 />
 ```
 
@@ -106,7 +106,7 @@ Include the CSS stylesheet in your HTML:
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/4.0.0-alpha.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/4.0.0-beta.0/polaris.min.css"
 />
 ```
 
