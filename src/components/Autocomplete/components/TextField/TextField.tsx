@@ -17,10 +17,11 @@ export default class TextField extends React.PureComponent<
   render() {
     const {selectedOptionId, comboBoxId} = this.context;
 
+    // autoComplete should be overridable by the user, but not the other values
     return (
       <BaseTextField
-        {...this.props}
         autoComplete={false}
+        {...this.props}
         ariaAutocomplete="list"
         ariaActiveDescendant={selectedOptionId}
         ariaControls={comboBoxId}
