@@ -11,6 +11,7 @@ import EventListener from '../../../EventListener';
 import {buttonsFrom} from '../../../Button';
 import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
 import DisplayText from '../../../DisplayText';
+import Heading from '../../../Heading';
 import Pagination, {PaginationDescriptor} from '../../../Pagination';
 import ActionMenu, {hasGroupsWithActions} from '../../../ActionMenu';
 
@@ -20,6 +21,8 @@ import styles from './Header.scss';
 export interface Props {
   /** Page title, in large type */
   title: string;
+  /** Page subtitle, in medium type (stand-alone app use only) */
+  subtitle?: string;
   /** Important and non-interactive status information shown immediately after the title. (stand-alone app use only) */
   titleMetadata?: React.ReactNode;
   /** Visually hide the title (stand-alone app use only) */
@@ -83,6 +86,7 @@ class Header extends React.PureComponent<ComposedProps, State> {
   render() {
     const {
       title,
+      subtitle,
       titleMetadata,
       titleHidden = false,
       icon,
@@ -94,6 +98,7 @@ class Header extends React.PureComponent<ComposedProps, State> {
       actionGroups = [],
       polaris: {intl},
     } = this.props;
+
     const {mobileView} = this.state;
 
     if (icon) {
@@ -123,17 +128,33 @@ class Header extends React.PureComponent<ComposedProps, State> {
         </div>
       ) : null;
 
-    const titleMarkup = (
-      <div className={styles.Title}>
-        <div className={styles.DisplayTextWrapper}>
-          <DisplayText size="large" element="h1">
-            {title}
-          </DisplayText>
-        </div>
+    const titleMetadataMarkup = titleMetadata ? (
+      <div className={styles.TitleMetadata}>{titleMetadata}</div>
+    ) : null;
 
-        {titleMetadata && (
-          <div className={styles.TitleMetadataWrapper}>{titleMetadata}</div>
-        )}
+    const subtitleMarkup = subtitle ? (
+      <Heading element="h2">{subtitle}</Heading>
+    ) : null;
+
+    const titleSecondaryContent =
+      subtitle || titleMetadata ? (
+        <div className={styles.TitleSecondaryContent}>
+          {subtitleMarkup}
+          {titleMetadataMarkup}
+        </div>
+      ) : null;
+
+    const titleClassName = classNames(
+      styles.Title,
+      subtitle && styles.hasSubtitle,
+    );
+
+    const titleMarkup = (
+      <div className={titleClassName}>
+        <DisplayText size="large" element="h1">
+          {title}
+        </DisplayText>
+        {titleSecondaryContent}
       </div>
     );
 

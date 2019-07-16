@@ -271,6 +271,23 @@ Use when a primary action functions better as part of the page content instead o
 </Page>
 ```
 
+### Page with subtitle
+
+<!-- example-for: web -->
+
+Use when the page title benefits from secondary content.
+
+```jsx
+<Page
+  breadcrumbs={[{content: 'Products', url: '/products'}]}
+  title="Invoice"
+  subtitle="Statement period: May 3, 2019 to June 2, 2019"
+  secondaryActions={[{content: 'Download', icon: PageDownMajorMonotone}]}
+>
+  <p>Page content</p>
+</Page>
+```
+
 ### Page with external link
 
 <!-- example-for: web -->

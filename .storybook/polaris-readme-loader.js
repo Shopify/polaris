@@ -115,6 +115,7 @@ import {
   NotificationMajorMonotone,
   OnlineStoreMajorTwotone,
   OrdersMajorTwotone,
+  PageDownMajorMonotone,
   PrintMinor,
   ProductsMajorTwotone,
   ProfileMinor,

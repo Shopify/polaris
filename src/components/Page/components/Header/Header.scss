@@ -70,6 +70,16 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
   @include page-title-layout;
 }
 
+.hasSubtitle {
+  flex-direction: column;
+}
+
+.TitleSecondaryContent {
+  @include page-title-layout;
+  margin-top: 0;
+  margin-left: 0;
+}
+
 .PrimaryActionWrapper {
   .mobileView & {
     margin-top: spacing();

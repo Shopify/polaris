@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added a `subtitle` prop to `Page` ([#1851](https://github.com/Shopify/polaris-react/pull/1851))
+
 ### Bug fixes
 
 ### Documentation

@@ -45,6 +45,16 @@ describe('<Header />', () => {
     });
   });
 
+  describe('subtitle', () => {
+    it('is displayed in the header', () => {
+      const mockSubtitle = 'mock subtitle';
+      const header = mountWithAppProvider(
+        <Header title="title" subtitle={mockSubtitle} />,
+      );
+      expect(header.text()).toContain(mockSubtitle);
+    });
+  });
+
   describe('titleMetadata', () => {
     it('is displayed in the header', () => {
       const metaData = <div />;
