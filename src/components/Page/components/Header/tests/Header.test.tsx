@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities';
+import Title from '..';
 
 import {
   ActionMenu,
@@ -8,6 +9,8 @@ import {
   buttonsFrom,
   EventListener,
   Pagination,
+  Badge,
+  Avatar,
 } from 'components';
 
 import {HeaderPrimaryAction} from '../../../types';
@@ -37,21 +40,34 @@ describe('<Header />', () => {
     expect(resizeEventListener).toHaveLength(1);
   });
 
-  describe('title', () => {
-    it('is displayed in the header', () => {
-      const mockTitle = 'mock title';
-      const header = mountWithAppProvider(<Header title={mockTitle} />);
-      expect(header.text()).toContain(mockTitle);
-    });
-  });
+  describe('Title', () => {
+    const mockProps = {
+      title: 'title',
+      subtitle: 'subtitle',
+      titleMetadata: <Badge>Sold</Badge>,
+      thumbnail: <Avatar customer />,
+    };
 
-  describe('titleMetadata', () => {
-    it('is displayed in the header', () => {
-      const metaData = <div />;
-      const header = mountWithAppProvider(
-        <Header {...mockProps} titleMetadata={metaData} />,
+    it('sets the title on the Title', () => {
+      const header = mountWithAppProvider(<Header {...mockProps} />);
+      expect(header.find(Title).prop('title')).toBe(mockProps.title);
+    });
+
+    it('sets the subtitle on the Title', () => {
+      const header = mountWithAppProvider(<Header {...mockProps} />);
+      expect(header.find(Title).prop('subtitle')).toBe(mockProps.subtitle);
+    });
+
+    it('sets the thumbnail on the Title', () => {
+      const header = mountWithAppProvider(<Header {...mockProps} />);
+      expect(header.find(Title).prop('thumbnail')).toBe(mockProps.thumbnail);
+    });
+
+    it('sets the titleMetadata on the Title', () => {
+      const header = mountWithAppProvider(<Header {...mockProps} />);
+      expect(header.find(Title).prop('titleMetadata')).toBe(
+        mockProps.titleMetadata,
       );
-      expect(header.contains(metaData)).toBeTruthy();
     });
   });
 
