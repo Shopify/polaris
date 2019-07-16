@@ -25,8 +25,6 @@ enum TransitionStatus {
 }
 
 const CSS_VAR_COLLAPSIBLE_HEIGHT = '--polaris-collapsible-height';
-const CSS_VAR_COLLAPSIBLE_TRANSITION_DURATION =
-  '--polaris-collapsible-transition-duration';
 
 export default function Collapsible({id, open, children}: Props) {
   const [height, setHeight] = useState<number | null>(null);
@@ -89,10 +87,6 @@ export default function Collapsible({id, open, children}: Props) {
       node.current.style.setProperty(
         CSS_VAR_COLLAPSIBLE_HEIGHT,
         `${height || 0}px`,
-      );
-      node.current.style.setProperty(
-        CSS_VAR_COLLAPSIBLE_TRANSITION_DURATION,
-        `${durationSlow}ms`,
       );
     },
     [height],
