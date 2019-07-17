@@ -74,7 +74,6 @@ export function withAppProvider<OwnProps>({withinScrollable}: Options = {}) {
 
       return <WrappedComponent {...props as any} polaris={polaris} />;
     };
-    WithProvider.contextTypes = WrappedComponent.contextTypes;
 
     let WithScrollable: React.ComponentClass<any> | undefined;
     if (withinScrollable) {
