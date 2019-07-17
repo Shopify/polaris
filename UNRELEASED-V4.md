@@ -31,8 +31,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Fixed `ToastManager` from not working correctly in `React.StrictMode` ([#1741](https://github.com/Shopify/polaris-react/pull/1741))
 - Updated translation.yml with the new locales path ([#1649](https://github.com/Shopify/polaris-react/pull/1649))
-- Fixed a bug that affected sizing and spacing of elements in some writing systems (notably Chinese, Japanese, and Korean) ([#1590](https://github.com/Shopify/polaris-react/pull/1590))
-- Fixed a bug when converting `em` units to `rem` units ([#1590](https://github.com/Shopify/polaris-react/pull/1590))
 
 ### Documentation
 
