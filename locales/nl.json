@@ -121,11 +121,6 @@
       "iFrameTitle": "opmaak platte tekst",
       "modalWarning": "Deze verplichte onderdelen ontbreken op Modal: {missingProps}"
     },
-    "Page": {
-      "Header": {
-        "iconWarningMessage": "De pictograminstelling is van de Pagina verwijderd. Upload in plaats daarvan een toepassingspictogram in het gedeelte 'App-instellingen' van Shopify Partners Dashboard."
-      }
-    },
     "Pagination": {
       "previous": "Vorige",
       "next": "Volgende",

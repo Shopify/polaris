@@ -121,11 +121,6 @@
       "iFrameTitle": "बॉडी मार्कअप",
       "modalWarning": "मॉडल में ये आवश्यक विशेषताएं नहीं हैं: {missingProps}"
     },
-    "Page": {
-      "Header": {
-        "iconWarningMessage": "आइकन प्रोप पेज से हटा दिया गया है. इसके बजाय Shopify Partners के डैशबोर्ड 'ऐप सेटअप करें' सेक्शन में ऐप्लिकेशन आइकन अपलोड करें."
-      }
-    },
     "Pagination": {
       "previous": "पिछला",
       "next": "अगला",

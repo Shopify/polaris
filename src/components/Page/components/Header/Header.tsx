@@ -4,10 +4,6 @@ import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 import EventListener from '../../../EventListener';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../../../utilities/with-app-provider';
 import {MenuActionDescriptor, MenuGroupDescriptor} from '../../../../types';
 import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
 import DisplayText from '../../../DisplayText';
@@ -24,11 +20,6 @@ export interface Props {
   titleMetadata?: React.ReactNode;
   /** Visually hide the title (stand-alone app use only) */
   titleHidden?: boolean;
-  /**
-   * Application icon for identifying embedded applications
-   * @embeddedAppOnly
-   */
-  icon?: string;
   /** Adds a border to the bottom of the page header (stand-alone app use only) */
   separator?: boolean;
   /** Primary page-level action */
@@ -47,9 +38,7 @@ interface State {
   mobileView?: boolean;
 }
 
-type ComposedProps = Props & WithAppProviderProps;
-
-class Header extends React.PureComponent<ComposedProps, State> {
+export default class Header extends React.PureComponent<Props, State> {
   state: State = {
     mobileView: isMobileView(),
   };
@@ -85,21 +74,14 @@ class Header extends React.PureComponent<ComposedProps, State> {
       title,
       titleMetadata,
       titleHidden = false,
-      icon,
       separator,
       primaryAction,
       pagination,
       breadcrumbs = [],
       secondaryActions = [],
       actionGroups = [],
-      polaris: {intl},
     } = this.props;
     const {mobileView} = this.state;
-
-    if (icon) {
-      // eslint-disable-next-line no-console
-      console.warn(intl.translate('Polaris.Page.Header.iconWarningMessage'));
-    }
 
     const breadcrumbMarkup =
       breadcrumbs.length > 0 ? (
@@ -194,5 +176,3 @@ class Header extends React.PureComponent<ComposedProps, State> {
 function isMobileView(): boolean {
   return navigationBarCollapsed().matches;
 }
-
-export default withAppProvider<Props>()(Header);

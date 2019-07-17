@@ -121,11 +121,6 @@
       "iFrameTitle": "Text-Markup",
       "modalWarning": "Diese erforderlichen Eigenschaften fehlen im Modus: {missingProps}"
     },
-    "Page": {
-      "Header": {
-        "iconWarningMessage": "Das Symbol-Prop wurde von der Seite entfernt. Laden Sie stattdessen ein Anwendungssymbol im Abschnitt \"App-Setup\" Partners Dashboard von Shopify hoch."
-      }
-    },
     "Pagination": {
       "previous": "Zurück",
       "next": "Nächste",

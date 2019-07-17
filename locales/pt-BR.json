@@ -121,11 +121,6 @@
       "iFrameTitle": "marcação de corpo",
       "modalWarning": "Essas propriedades obrigatórias estão faltando no Modal: {missingProps}"
     },
-    "Page": {
-      "Header": {
-        "iconWarningMessage": "O prop do ícone foi removido da página. Como alternativa, carregue um ícone de aplicativo na seção \"Configuração do aplicativo\" do painel do Programa de Parcerias da Shopify."
-      }
-    },
     "Pagination": {
       "previous": "Anterior",
       "next": "Próximo",

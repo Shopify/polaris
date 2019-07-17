@@ -121,11 +121,6 @@
       "iFrameTitle": "ボディのマークアップ",
       "modalWarning": "これらの必要なプロパティがモーダルにありません: {missingProps}"
     },
-    "Page": {
-      "Header": {
-        "iconWarningMessage": "アイコンプロップはページから削除されました。代わりに、Shopifyパートナーダッシュボードの「アプリ設定」セクションにアプリケーションアイコンをアップロードします。"
-      }
-    },
     "Pagination": {
       "previous": "前へ",
       "next": "次へ",

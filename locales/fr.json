@@ -121,11 +121,6 @@
       "iFrameTitle": "balisage du corps",
       "modalWarning": "Ces propriétés obligatoires manquent dans la fenêtre modale : {missingProps}"
     },
-    "Page": {
-      "Header": {
-        "iconWarningMessage": "L'icône propriétaire a été retirée de la page. Mettez en ligne une icône d'application dans la section « Configuration de l'application » du tableau de bord des partenaires Shopify."
-      }
-    },
     "Pagination": {
       "previous": "Précédent",
       "next": "Suivant",
