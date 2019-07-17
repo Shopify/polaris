@@ -292,7 +292,10 @@ export {default as TrapFocus, Props as TrapFocusProps} from './TrapFocus';
 
 export {default as Truncate, Props as TruncateProps} from './Truncate';
 
-export {default as UnstyledLink} from './UnstyledLink';
+export {
+  default as UnstyledLink,
+  Props as UnstyledLinkProps,
+} from './UnstyledLink';
 
 export {
   default as VisuallyHidden,

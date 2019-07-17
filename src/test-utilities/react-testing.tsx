@@ -7,7 +7,6 @@ import {createAppBridge} from '../utilities/app-bridge';
 import {I18n} from '../utilities/i18n';
 import translations from '../../locales/en.json';
 import {merge} from '../utilities/merge';
-import {Link} from '../utilities/link';
 import {PolarisTestProvider} from './PolarisTestProvider';
 import {WithProvidersOptions, WithProvidersContext} from './types';
 
@@ -61,7 +60,7 @@ export const mountWithContext = createMount<
       });
     }
 
-    const linkContext = new Link(link);
+    const linkContext = link;
 
     return {
       themeProvider: themeProviderContext,

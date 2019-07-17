@@ -1,6 +1,6 @@
-import {useContext} from 'react';
+import React from 'react';
 import {LinkContext} from './context';
 
 export function useLink() {
-  return useContext(LinkContext);
+  return React.useContext(LinkContext);
 }

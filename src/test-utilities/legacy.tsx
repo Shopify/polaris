@@ -9,7 +9,6 @@ import translations from '../../locales/en.json';
 import {createThemeContext} from '../utilities/theme';
 import {ScrollLockManager} from '../utilities/scroll-lock-manager';
 import {StickyManager} from '../utilities/sticky-manager';
-import {Link} from '../utilities/link';
 import {PolarisTestProvider} from './PolarisTestProvider';
 import {WithProvidersContext, WithProvidersOptions} from './types';
 
@@ -100,7 +99,7 @@ export function mountWithAppProvider<P>(
   };
   const frame = (ctx.frame && merge(frameDefault, ctx.frame)) || frameDefault;
 
-  const link = new Link(ctx.link);
+  const link = ctx.link;
 
   // Yes this is bad typing, we'll fix it later
   const appBridge: any = ctx.appBridge;

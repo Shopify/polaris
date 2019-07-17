@@ -6,7 +6,7 @@ import {ScrollLockManager} from '../utilities/scroll-lock-manager';
 import {StickyManager} from '../utilities/sticky-manager';
 import {AppBridgeOptions} from '../utilities/app-bridge';
 import {I18n, TranslationDictionary} from '../utilities/i18n';
-import {Link, LinkLikeComponent} from '../utilities/link';
+import {LinkLikeComponent} from '../utilities/link';
 import {DeepPartial} from '../types';
 
 /**
@@ -34,7 +34,7 @@ export type WithProvidersContext = {
   stickyManager: StickyManager;
   appBridge: ClientApplication<{}> | undefined;
   themeProvider: React.ContextType<typeof ThemeContext>;
-  link: Link;
+  link: LinkLikeComponent | undefined;
   // Contets provided by Frame
   frame: FrameContextType;
 };

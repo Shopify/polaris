@@ -1,14 +1,14 @@
 import React from 'react';
 import {unstyled} from '../shared';
-import {useLink, UnstyledLinkProps} from '../../utilities/link';
+import {useLink, LinkLikeComponentProps} from '../../utilities/link';
 
-// Every components needs a `Props` interface
-// for our styleguide to build the props explorer
-interface Props extends UnstyledLinkProps {}
+// Every component needs a `Props` interface for our styleguide to build the props explorer
+// It'd be great if we could do `type Props = React.ComponentProps<LinkLikeComponent>`
+// but the props explorer isn't smart enough to work that out
+export interface Props extends LinkLikeComponentProps {}
 
 function UnstyledLink(props: Props) {
-  const link = useLink();
-  const LinkComponent = link.getLinkComponent();
+  const LinkComponent = useLink();
   if (LinkComponent) {
     return <LinkComponent {...unstyled.props} {...props} />;
   }

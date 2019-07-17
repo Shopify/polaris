@@ -15,12 +15,12 @@ import {
   StickyManager,
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
-import {Link, LinkContext, LinkLikeComponent} from '../../utilities/link';
+import {LinkContext, LinkLikeComponent} from '../../utilities/link';
 
 interface State {
   intl: I18n;
   appBridge: ReturnType<typeof createAppBridge>;
-  link: Link;
+  link: LinkLikeComponent | undefined;
 }
 
 export interface Props extends AppBridgeOptions {
@@ -44,7 +44,7 @@ export default class AppProvider extends React.Component<Props, State> {
 
     // eslint-disable-next-line react/state-in-constructor
     this.state = {
-      link: new Link(linkComponent),
+      link: linkComponent,
       intl: new I18n(i18n),
       appBridge: createAppBridge({shopOrigin, apiKey, forceRedirect}),
     };
@@ -77,7 +77,7 @@ export default class AppProvider extends React.Component<Props, State> {
 
     // eslint-disable-next-line react/no-did-update-set-state
     this.setState({
-      link: new Link(linkComponent),
+      link: linkComponent,
       intl: new I18n(i18n),
       appBridge: createAppBridge({shopOrigin, apiKey, forceRedirect}),
     });
