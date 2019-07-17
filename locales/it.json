@@ -121,11 +121,6 @@
       "iFrameTitle": "markup del testo",
       "modalWarning": "Le seguenti proprietà necessarie mancano da Modal: {missingProps}"
     },
-    "Page": {
-      "Header": {
-        "iconWarningMessage": "Le proprietà dell'icona sono state rimosse dalla Pagina. Carica un'icona dell'applicazione nella sezione 'Configurazione app' della dashboard Shopify Partners."
-      }
-    },
     "Pagination": {
       "previous": "Indietro",
       "next": "Avanti",

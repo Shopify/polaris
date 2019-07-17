@@ -138,12 +138,6 @@
       "modalWarning": "These required properties are missing from Modal: {missingProps}"
     },
 
-    "Page": {
-      "Header": {
-        "iconWarningMessage": "The icon prop has been removed from Page. Upload an application icon in the Shopify Partners Dashboard 'App setup' section instead."
-      }
-    },
-
     "Pagination": {
       "previous": "Previous",
       "next": "Next",

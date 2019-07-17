@@ -121,11 +121,6 @@
       "iFrameTitle": "penanda badan",
       "modalWarning": "Ciri-ciri yang diperlukan ini hilang daripada Modal: {missingProps}"
     },
-    "Page": {
-      "Header": {
-        "iconWarningMessage": "Alatan ikon telah dialih keluar dari Halaman. Sebaliknya, muat naik ikon aplikasi di bahagian 'Persediaan app' Papan pemuka Shopify Partners."
-      }
-    },
     "Pagination": {
       "previous": "Sebelumnya",
       "next": "Seterusnya",
