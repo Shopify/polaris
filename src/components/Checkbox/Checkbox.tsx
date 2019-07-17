@@ -5,12 +5,15 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Choice, {helpTextID} from '../Choice';
+import {errorTextID} from '../InlineError';
 import Icon from '../Icon';
 import {Error, Key} from '../../types';
 
 import styles from './Checkbox.scss';
 
 export interface BaseProps {
+  /** Indicates the ID of the element that describes the checkbox*/
+  ariaDescribedBy?: string;
   /** Label for the checkbox */
   label: React.ReactNode;
   /** Visually hide the label */
@@ -65,6 +68,7 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
 
   render() {
     const {
+      ariaDescribedBy: ariaDescribedByProp,
       id = getUniqueID(),
       label,
       labelHidden,
@@ -78,11 +82,14 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
       value,
     } = this.props;
     const describedBy: string[] = [];
-    if (error) {
-      describedBy.push(`${id}Error`);
+    if (error && typeof error !== 'boolean') {
+      describedBy.push(errorTextID(id));
     }
     if (helpText) {
       describedBy.push(helpTextID(id));
+    }
+    if (ariaDescribedByProp) {
+      describedBy.push(ariaDescribedByProp);
     }
     const ariaDescribedBy = describedBy.length
       ? describedBy.join(' ')

@@ -189,30 +189,27 @@ describe('<Checkbox />', () => {
       const checkbox = shallowWithAppProvider(
         <Checkbox error={<span>Error</span>} label="Checkbox" />,
       );
-      expect(checkbox.find('input').prop<string>('aria-invalid')).toBe(true);
+      expect(checkbox.find('input').prop('aria-invalid')).toBe(true);
 
       checkbox.setProps({error: 'Some error'});
-      expect(checkbox.find('input').prop<string>('aria-invalid')).toBe(true);
+      expect(checkbox.find('input').prop('aria-invalid')).toBe(true);
     });
 
-    it('connects the input to the error', () => {
+    it('connects the input to the error if the error is not boolean', () => {
       const checkbox = mountWithAppProvider(
         <Checkbox label="Checkbox" error="Some error" />,
       );
-      const errorID = checkbox.find('input').prop<string>('aria-describedby');
+      const errorID = checkbox.find('input').prop('aria-describedby');
       expect(typeof errorID).toBe('string');
       expect(checkbox.find(`#${errorID}`).text()).toBe('Some error');
     });
 
-    it('marks the input as invalid but avoids rendering an error message when provided a boolean', () => {
+    it('does not connect the input to the error if the error is boolean', () => {
       const checkbox = mountWithAppProvider(
-        <Checkbox error={Boolean(true)} label="Checkbox" />,
+        <Checkbox label="Checkbox" error />,
       );
-      const errorID = checkbox.find('input').prop<string>('aria-describedby');
-
-      expect(checkbox.find('input').prop<string>('aria-invalid')).toBe(true);
-      expect(typeof errorID).toBe('string');
-      expect(checkbox.find(`#${errorID}`)).toHaveLength(0);
+      const errorID = checkbox.find('input').prop('aria-describedby');
+      expect(errorID).toBeUndefined();
     });
 
     it('connects the input to both an error and help text', () => {
@@ -234,21 +231,32 @@ describe('<Checkbox />', () => {
       const checkbox = shallowWithAppProvider(
         <Checkbox label="Checkbox" checked="indeterminate" />,
       );
-      expect(checkbox.find('input').prop<string>('indeterminate')).toBe('true');
+      expect(checkbox.find('input').prop('indeterminate')).toBe('true');
     });
 
     it('sets the aria-checked attribute on the input as mixed when checked is "indeterminate"', () => {
       const checkbox = shallowWithAppProvider(
         <Checkbox label="Checkbox" checked="indeterminate" />,
       );
-      expect(checkbox.find('input').prop<string>('aria-checked')).toBe('mixed');
+      expect(checkbox.find('input').prop('aria-checked')).toBe('mixed');
     });
 
     it('sets the checked attribute on the input to false when checked is "indeterminate"', () => {
       const checkbox = shallowWithAppProvider(
         <Checkbox label="Checkbox" checked="indeterminate" />,
       );
-      expect(checkbox.find('input').prop<string>('checked')).toBe(false);
+      expect(checkbox.find('input').prop('checked')).toBe(false);
+    });
+  });
+
+  describe('ariaDescribedBy', () => {
+    it('sets the aria-describedBy attribute on the input', () => {
+      const checkBox = mountWithAppProvider(
+        <Checkbox label="checkbox" ariaDescribedBy="SomeId" />,
+      );
+      const ariaDescribedBy = checkBox.find('input').prop('aria-describedby');
+
+      expect(ariaDescribedBy).toBe('SomeId');
     });
   });
 });
