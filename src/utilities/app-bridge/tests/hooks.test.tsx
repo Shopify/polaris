@@ -1,15 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {mountWithContext} from 'test-utilities';
-
 import {useAppBridge} from '../hooks';
+import {AppBridgeContext} from '../context';
+
+function Component() {
+  return useAppBridge() === useContext(AppBridgeContext) ? <div /> : null;
+}
 
 describe('useAppBridge', () => {
   it('returns context', () => {
-    function Component() {
-      // eslint-disable-next-line shopify/jest/no-if
-      return useAppBridge() ? <div /> : null;
-    }
-
     const component = mountWithContext(<Component />, {
       appBridge: {
         apiKey: 'abc123',

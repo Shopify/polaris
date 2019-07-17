@@ -15,12 +15,12 @@ type ReactComponent<P, C> = React.ComponentType<P> & C;
 
 export interface WithAppProviderProps {
   polaris: {
+    link: ReturnType<typeof useLink>;
+    theme: ReturnType<typeof useTheme>;
     intl: ReturnType<typeof useI18n>;
     scrollLockManager: ReturnType<typeof useScrollLockManager>;
     stickyManager: ReturnType<typeof useStickyManager>;
-    theme: ReturnType<typeof useTheme>;
     appBridge: ReturnType<typeof useAppBridge>;
-    link: ReturnType<typeof useLink>;
   };
 }
 
@@ -59,18 +59,12 @@ export function withAppProvider<OwnProps>({withinScrollable}: Options = {}) {
 
       const polaris: WithAppProviderProps['polaris'] = {
         link,
+        theme,
         intl,
         scrollLockManager,
         stickyManager,
-        theme,
         appBridge,
       };
-
-      if (!intl || !scrollLockManager || !stickyManager || !link || !theme) {
-        throw new Error(
-          `The <AppProvider> component is required as of v2.0 of Polaris React. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.`,
-        );
-      }
 
       return <WrappedComponent {...props as any} polaris={polaris} />;
     };

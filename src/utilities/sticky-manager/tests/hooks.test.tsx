@@ -1,15 +1,17 @@
 import React, {useContext} from 'react';
 import {mount, mountWithContext} from 'test-utilities';
-import {useI18n} from '../hooks';
-import {I18nContext} from '../context';
+import {useStickyManager} from '../hooks';
+import {StickyManagerContext} from '../context';
 
 let consoleErrorSpy: jest.SpyInstance;
 
 function Component() {
-  return useI18n() === useContext(I18nContext) ? <div /> : null;
+  return useStickyManager() === useContext(StickyManagerContext) ? (
+    <div />
+  ) : null;
 }
 
-describe('useI18n', () => {
+describe('useStickyManager', () => {
   beforeEach(() => {
     consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
   });
@@ -26,7 +28,7 @@ describe('useI18n', () => {
   it('throws an error if context is not set', () => {
     const attemptMount = () => mount(<Component />);
     expect(attemptMount).toThrow(
-      'No i18n was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.',
+      'No StickyManager was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.',
     );
   });
 });

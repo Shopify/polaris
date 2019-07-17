@@ -8,11 +8,9 @@ interface Props extends UnstyledLinkProps {}
 
 function UnstyledLink(props: Props) {
   const link = useLink();
-  if (link) {
-    const LinkComponent = link.getLinkComponent();
-    if (LinkComponent) {
-      return <LinkComponent {...unstyled.props} {...props} />;
-    }
+  const LinkComponent = link.getLinkComponent();
+  if (LinkComponent) {
+    return <LinkComponent {...unstyled.props} {...props} />;
   }
 
   const {external, url, ...rest} = props;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {createMount} from '@shopify/react-testing';
+import {createMount, mount} from '@shopify/react-testing';
 import {createThemeContext} from '../utilities/theme';
 import {ScrollLockManager} from '../utilities/scroll-lock-manager';
 import {StickyManager} from '../utilities/sticky-manager';
@@ -10,6 +10,8 @@ import {merge} from '../utilities/merge';
 import {Link} from '../utilities/link';
 import {PolarisTestProvider} from './PolarisTestProvider';
 import {WithProvidersOptions, WithProvidersContext} from './types';
+
+export {mount};
 
 export const mountWithContext = createMount<
   WithProvidersOptions,

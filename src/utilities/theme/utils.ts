@@ -7,7 +7,6 @@ import {createLightColor} from '../color-manipulation';
 import {compose} from '../compose';
 
 import {Theme, ColorsToParse, ThemeVariant, ThemeColors} from './types';
-import {ThemeContextType} from './context';
 import {needsVariantList} from './config';
 
 export function setColors(theme: Theme | undefined): string[][] | undefined {
@@ -115,7 +114,7 @@ function parseColors([baseName, colors]: [string, ColorsToParse]): string[][] {
   return colorPairs;
 }
 
-export function createThemeContext(theme?: ThemeContextType): ThemeContextType {
+export function createThemeContext(theme?: Theme): Theme {
   if (!theme) {
     return {logo: null};
   }
