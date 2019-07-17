@@ -19,6 +19,7 @@ button {
 
 html {
   position: relative;
+  overflow-y: scroll;
   font-size: ($base-font-size / $default-browser-font-size) * 100%;
   -webkit-font-smoothing: antialiased;
 

@@ -1,6 +1,5 @@
 import {isServer} from '../target';
 
-export const SCROLL_LOCKING_ATTRIBUTE = 'data-lock-scrolling';
 export const SCROLL_LOCKING_WRAPPER_ATTRIBUTE = 'data-lock-scrolling-wrapper';
 export const SCROLL_LOCKING_CUSTOM_PROPERTY = '--scroll-lock-body-padding';
 
@@ -24,11 +23,9 @@ export class ScrollLockManager {
     if (isServer) return;
 
     const {scrollLocks} = this;
-    const {body} = document;
-    const wrapper = body.firstElementChild;
+    const wrapper = document.body.firstElementChild;
 
     if (scrollLocks === 0) {
-      body.removeAttribute(SCROLL_LOCKING_ATTRIBUTE);
       if (wrapper) {
         wrapper.removeAttribute(SCROLL_LOCKING_WRAPPER_ATTRIBUTE);
       }
@@ -36,7 +33,6 @@ export class ScrollLockManager {
       this.locked = false;
     } else if (scrollLocks > 0 && !this.locked) {
       scrollPosition = window.pageYOffset;
-      body.setAttribute(SCROLL_LOCKING_ATTRIBUTE, '');
 
       if (wrapper) {
         wrapper.setAttribute(SCROLL_LOCKING_WRAPPER_ATTRIBUTE, '');
