@@ -48,6 +48,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Removed unused type definitions ([#1862](https://github.com/Shopify/polaris-react/pull/1862))
 - Enabled react/no-unsafe with checkAliases ([#1695](https://github.com/Shopify/polaris-react/pull/1695))
 - Added hooks to storybooks scope ([#1672](https://github.com/Shopify/polaris-react/pull/1672))
 - Removed all uses of `ReactDOM.findDOMNode` ([#1696](https://github.com/Shopify/polaris-react/pull/1696))
