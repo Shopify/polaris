@@ -19,11 +19,15 @@ export default function InlineError({message, fieldID}: Props) {
   }
 
   return (
-    <div id={`${fieldID}Error`} className={styles.InlineError}>
+    <div id={errorTextID(fieldID)} className={styles.InlineError}>
       <div className={styles.Icon}>
         <Icon source={AlertMinor} />
       </div>
       {message}
     </div>
   );
+}
+
+export function errorTextID(id: string) {
+  return `${id}Error`;
 }

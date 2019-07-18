@@ -77,6 +77,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   }
 
   &.destructive {
+    @include recolor-icon(color('red', 'dark'));
     color: color('red', 'dark');
 
     &:active {

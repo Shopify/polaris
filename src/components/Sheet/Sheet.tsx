@@ -44,6 +44,8 @@ export interface Props {
   onExit?(): void;
   /** Show a larger sheet */
   large?: boolean;
+  /** Show a transparent backdrop */
+  transparentBackdrop?: boolean;
 }
 
 type ComposedProps = Props & WithAppProviderProps;
@@ -78,7 +80,15 @@ class Sheet extends React.Component<ComposedProps, State> {
 
   render() {
     const {
-      props: {children, open, onClose, onEntered, onExit, large = true},
+      props: {
+        children,
+        open,
+        onClose,
+        onEntered,
+        onExit,
+        transparentBackdrop = true,
+        large = true,
+      },
       state: {mobile},
       handleResize,
     } = this;
@@ -100,7 +110,9 @@ class Sheet extends React.Component<ComposedProps, State> {
         </CSSTransition>
         <KeypressListener keyCode={Key.Escape} handler={onClose} />
         <EventListener event="resize" handler={handleResize} />
-        {open && <Backdrop transparent onClick={onClose} />}
+        {open && (
+          <Backdrop transparent={transparentBackdrop} onClick={onClose} />
+        )}
       </Portal>
     );
   }

@@ -218,6 +218,40 @@ class ChoiceListExample extends React.Component {
 
 <!-- /content-for -->
 
+### Single choice list with error
+
+Allows for accessible error handling by connecting the error message to the field with the error.
+
+```jsx
+class ChoiceListExample extends React.Component {
+  state = {
+    selected: ['hidden'],
+  };
+
+  render() {
+    const {selected} = this.state;
+
+    return (
+      <ChoiceList
+        title="Company name"
+        choices={[
+          {label: 'Hidden', value: 'hidden', describedByError: true},
+          {label: 'Optional', value: 'optional'},
+          {label: 'Required', value: 'required'},
+        ]}
+        selected={selected}
+        onChange={this.handleChange}
+        error="Company name cannot be hidden at this time"
+      />
+    );
+  }
+
+  handleChange = (value) => {
+    this.setState({selected: value});
+  };
+}
+```
+
 ### Multi-choice list
 
 Allows merchants to select multiple options from a list.
