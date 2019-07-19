@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {SCROLL_LOCKING_WRAPPER_ATTRIBUTE} from '../../../utilities/scroll-lock-manager';
+import {SCROLL_LOCK_ATTRIBUTE} from '../../../utilities/scroll-lock-manager';
 import ScrollLock from '../ScrollLock';
 
 describe('ScrollLock', () => {
@@ -45,9 +45,7 @@ describe('ScrollLock', () => {
 
     scrollLockContainer.find('button').simulate('click');
 
-    const lockedWrapper = document.querySelector(
-      `[${SCROLL_LOCKING_WRAPPER_ATTRIBUTE}]`,
-    );
+    const lockedWrapper = document.querySelector(`[${SCROLL_LOCK_ATTRIBUTE}]`);
 
     expect(lockedWrapper).toBeTruthy();
   });
@@ -55,9 +53,7 @@ describe('ScrollLock', () => {
   it('adds data attribute to the first child element of the body when it mounts', () => {
     document.body.appendChild(document.createElement('div'));
     mountWithAppProvider(<ScrollLock />);
-    const lockedWrapper = document.querySelector(
-      `[${SCROLL_LOCKING_WRAPPER_ATTRIBUTE}]`,
-    );
+    const lockedWrapper = document.querySelector(`[${SCROLL_LOCK_ATTRIBUTE}]`);
     expect(lockedWrapper).toBeTruthy();
   });
 
@@ -65,9 +61,7 @@ describe('ScrollLock', () => {
     document.body.appendChild(document.createElement('div'));
     const scrollLock = mountWithAppProvider(<ScrollLock />);
     scrollLock.unmount();
-    const lockedWrapper = document.querySelector(
-      `[${SCROLL_LOCKING_WRAPPER_ATTRIBUTE}]`,
-    );
+    const lockedWrapper = document.querySelector(`[${SCROLL_LOCK_ATTRIBUTE}]`);
     expect(lockedWrapper).toBeFalsy();
   });
 });

@@ -20,7 +20,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed `secondaryFooterAction` prop on `Card`. Pass an array of secondary actions to the `secondaryFooterActions` prop instead. ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
 - Removed `iconBody` prop on `Navigation`. Pass a string into the `icon` prop instead. ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
 - Removed `groups` prop on `Select`. Pass groups to the `options` prop instead. ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
-- Removed `SCROLL_LOCKING_ATTRIBUTE` and applied scroll locking at the root (`html`) level instead of the `body` ([#1854](https://github.com/Shopify/polaris-react/pull/1854))
+- Applied scroll locking at the root (`html`) level instead of the `body`, which could impact non-Polaris modals and overlays in consuming apps ([#1854](https://github.com/Shopify/polaris-react/pull/1854))
 
 ### New components
 
