@@ -1,3 +1,4 @@
+import 'storybook-chroma';
 import {configure, addParameters} from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
 import {create} from '@storybook/theming';

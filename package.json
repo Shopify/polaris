@@ -63,7 +63,8 @@
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
-    "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static"
+    "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static",
+    "storybook:chroma": "chroma publish --build-script-name='storybook:build'"
   },
   "stylelint": {
     "extends": [
@@ -155,6 +156,7 @@
     "serve": "^11.0.0",
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
+    "storybook-chroma": "^2.0.0",
     "svgo": "^1.2.2",
     "typescript": "~3.5.1",
     "yargs": "^13.2.2"

@@ -29,6 +29,7 @@ export function generateStories(readme, readmeModule) {
       .addDecorator(withA11y)
       .addParameters({
         percy: {skip: false},
+        chromatic: {disable: true},
       })
       .add('All Examples', () => AllExamplesStoryForReadme(readme));
   }
@@ -59,6 +60,9 @@ export function hydrateExecutableExamples(readme) {
 export function addPlaygroundStory(playgroundModule) {
   storiesOf('Playground|Playground', playgroundModule)
     .addDecorator(AppProviderDecorator)
+    .addParameters({
+      chromatic: {disable: true},
+    })
     .add('Playground', () => <Playground />);
 }
 
