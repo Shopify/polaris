@@ -196,6 +196,30 @@ describe('<DataTable />', () => {
     });
   });
 
+  describe('verticalAlign', () => {
+    it('defaults to undefined', () => {
+      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
+
+      const cells = dataTable.find(Cell);
+
+      cells.forEach((cell) =>
+        expect(cell.prop('verticalAlign')).toBeUndefined(),
+      );
+    });
+
+    it('passes the value provided to its cells', () => {
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} verticalAlign="middle" />,
+      );
+
+      const cells = dataTable.find(Cell);
+
+      cells.forEach((cell) =>
+        expect(cell.prop('verticalAlign')).toBe('middle'),
+      );
+    });
+  });
+
   describe('footerContent', () => {
     it('renders string footer content when provided', () => {
       const footerContent = 'Footer text';

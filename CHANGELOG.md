@@ -8,6 +8,60 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 3.20.0 - 2019-07-16
+
+### Enhancements
+
+- Added a `verticalAlign` prop to `DataTable` ([#1790](https://github.com/Shopify/polaris-react/pull/1790))
+- Improved focus and hover states for `Navigation` ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
+
+### Bug fixes
+
+- Fixed the `SearchInput` clear button which was overflowing the search bar in Firefox 65+ ([#1795](https://github.com/Shopify/polaris-react/pull/1795))
+- Fixed a bug preventing the display of `Tooltip` when cursor enters from a disabled element ([#1783](https://github.com/Shopify/polaris-react/pull/1783))
+- Fixed React imports in the `Filters` component to use `import * as React` for projects that don't use `esModuleInterop` ([#1820](https://github.com/Shopify/polaris-react/pull/1820))
+- Fixed `tabIndex` on `main` element causing event delegation issues ([#1821](https://github.com/Shopify/polaris-react/pull/1821))
+- Fixed icon color for destructive ActionList items ([#1836](https://github.com/Shopify/polaris-react/pull/1836))
+- Fixed not being able to explictly set `autoComplete` prop on`Autocomplete.TextField` ([#1839](https://github.com/Shopify/polaris-react/pull/1839))
+
+### Documentation
+
+- Added links to App Bridge React component documentation in deprecation notices for embedded components ([#1765](https://github.com/Shopify/polaris-react/pull/1765))
+- Improved link text for App Bridge deprecation notices [#1802](https://github.com/Shopify/polaris-react/pull/1802)
+
+### Development workflow
+
+- Use explicit imports for our base sass mixins instead of having them implictly defined at build-time. This simplifes our build config and other tooling that wants to build us from source [[#1680](https://github.com/Shopify/polaris-react/pull/1680)]
+
+## 3.19.0 - 2019-07-09
+
+### New components
+
+- `Filters`: Use to filter the items of a list or table ([#1718](https://github.com/Shopify/polaris-react/pull/1718))
+
+### Enhancements
+
+- Added the rollover and Windows high contrast mode to `Disclosure` button on `Tabs` ([#1755](https://github.com/Shopify/polaris-react/pull/1755))
+- Added support for disabling all choices in `ChoiceList` ([#1758](https://github.com/Shopify/polaris-react/pull/1758))
+- Components in our sass build (the `styles` folder) are now precompiled to avoid the chance of accidentally overwriting any of our global variables, mixins and functions ([#1764](https://github.com/Shopify/polaris-react/pull/1764))
+- Changed `Skip to content` to render an anchor instead of a button to meet accessiblity level A guidelines ([#1785](https://github.com/Shopify/polaris-react/pull/1785))
+
+### Bug fixes
+
+- Fixed a regression introduced in [#1247](https://github.com/Shopify/polaris-react/pull/1247), where icons inside of `Link` would always be recolored to match the text color ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
+- Fixed the `DiscardConfirmationModal` not closing when the discard button is clicked ([#1784](https://github.com/Shopify/polaris-react/pull/1784))
+- Fixed `Navigation.Item` `secondaryAction` wrapping when content wraps ([#1678](https://github.com/Shopify/polaris-react/pull/1678))
+
+### Documentation
+
+- Added links to App Bridge React component documentation in deprecation notices for embedded components ([#1765](https://github.com/Shopify/polaris-react/pull/1765))
+
+### Development workflow
+
+- Renamed `yarn run ts` to `yarn run type-check` to match most other Shopify projects ([#1745](https://github.com/Shopify/polaris-react/pull/1745))
+- Fixed deprecation notice in build ([#1754](https://github.com/Shopify/polaris-react/pull/1754))
+- Simplified our rollup plugin for sass compilation while retaining identical behaviour ([#1753](https://github.com/Shopify/polaris-react/pull/1753))
+
 ## 3.18.0 - 2019-06-26
 
 ### New components

@@ -117,7 +117,7 @@ Connect to app
 
 ### Default account connection
 
-Use to let merchants connect or disconnect their store to their third-party accounts (e.g. Facebook).
+Use to let merchants connect or disconnect their store to their third-party accounts, like Facebook.
 
 ```jsx
 class AccountConnectionExample extends React.Component {

@@ -140,7 +140,11 @@ export {default as Image, Props as ImageProps} from './Image';
 
 export {default as Indicator, Props as IndicatorProps} from './Indicator';
 
-export {default as InlineError, Props as InlineErrorProps} from './InlineError';
+export {
+  default as InlineError,
+  Props as InlineErrorProps,
+  errorTextID,
+} from './InlineError';
 
 export {default as KeyboardKey, Props as KeyboardKeyProps} from './KeyboardKey';
 
