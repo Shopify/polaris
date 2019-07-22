@@ -236,14 +236,14 @@ class Frame extends React.PureComponent<CombinedProps, State> {
         />
       ) : null;
 
-      const skipToMainContentTarget = (
-        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-        <a
-          id={APP_FRAME_MAIN_ANCHOR_TARGET}
-          ref={this.skipToMainContentTargetNode}
-          tabIndex={-1}
-        />
-      );
+    const skipToMainContentTarget = (
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <a
+        id={APP_FRAME_MAIN_ANCHOR_TARGET}
+        ref={this.skipToMainContentTargetNode}
+        tabIndex={-1}
+      />
+    );
 
     const context = {
       showToast: this.showToast,
@@ -272,8 +272,8 @@ class Frame extends React.PureComponent<CombinedProps, State> {
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
           >
-          {skipToMainContentTarget}
-          <div className={styles.Content}>{children}</div>
+            {skipToMainContentTarget}
+            <div className={styles.Content}>{children}</div>
           </main>
           <ToastManager toastMessages={toastMessages} />
           {globalRibbonMarkup}

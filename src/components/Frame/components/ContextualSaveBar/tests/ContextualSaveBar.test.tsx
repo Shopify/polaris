@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import {Button, Image, Modal} from 'components';
+import {Button, Image} from 'components';
 import ContextualSaveBar from '../ContextualSaveBar';
 import {DiscardConfirmationModal} from '../components';
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import {Popover, Button} from 'components';
 import {mountWithAppProvider} from 'test-utilities/legacy';

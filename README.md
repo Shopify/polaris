@@ -40,13 +40,13 @@ yarn add @shopify/polaris
 > Note: you can import the CSS directly into your project if your asset packager supports it:
 >
 > ```javascript
-> import "@shopify/polaris/styles.css";
+> import '@shopify/polaris/styles.css';
 > ```
 
 2.  Include any of the provided components in your project:
 
 ```javascript
-import { AppProvider, Page, Card, Button } from "@shopify/polaris";
+import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 ```
 
 3.  Tell React to render the element in the DOM:
@@ -56,11 +56,11 @@ ReactDOM.render(
   <AppProvider i18n={{}}>
     <Page title="Example app">
       <Card sectioned>
-        <Button onClick={() => alert("Button clicked!")}>Example button</Button>
+        <Button onClick={() => alert('Button clicked!')}>Example button</Button>
       </Card>
     </Page>
   </AppProvider>,
-  document.querySelector("#app")
+  document.querySelector('#app'),
 );
 ```
 

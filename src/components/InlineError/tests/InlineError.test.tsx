@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import InlineError, {errorTextID}from '../InlineError';
+import InlineError, {errorTextID} from '../InlineError';
 
 describe('<InlineError />', () => {
   describe('fieldID', () => {
