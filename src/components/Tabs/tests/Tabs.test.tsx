@@ -168,7 +168,26 @@ describe('<Tabs />', () => {
     });
   });
 
-  describe('children', () => {
+  describe('panel', () => {
+    it('renders a Panel for each of the Tabs', () => {
+      const content = <p>Tab content</p>;
+      const wrapper = mountWithAppProvider(
+        <Tabs {...mockProps}>{content}</Tabs>,
+      );
+      const panel = wrapper.find(Panel);
+      expect(panel).toHaveLength(2);
+    });
+
+    it('renders a Panel with a hidden prop for the non selected tabs', () => {
+      const content = <p>Tab content</p>;
+      const wrapper = mountWithAppProvider(
+        <Tabs {...mockProps}>{content}</Tabs>,
+      );
+
+      const nonSelectedPanel = wrapper.find(Panel).at(1);
+      expect(nonSelectedPanel.prop('hidden')).toBe(true);
+    });
+
     it('wraps the children in a Panel with matching aria attributes to the tab', () => {
       const content = <p>Tab content</p>;
       const wrapper = mountWithAppProvider(
@@ -176,7 +195,7 @@ describe('<Tabs />', () => {
       );
 
       const selectedTab = wrapper.find(Tab).at(0);
-      const panel = wrapper.find(Panel);
+      const panel = wrapper.find(Panel).at(0);
       expect(panel.exists()).toBe(true);
       expect(panel.contains(content)).toBe(true);
       expect(panel.prop('id')).toBeTruthy();
@@ -195,7 +214,7 @@ describe('<Tabs />', () => {
         </Tabs>,
       );
 
-      const panel = wrapper.find(Panel);
+      const panel = wrapper.find(Panel).at(0);
       const selectedTab = wrapper.find(Tab).at(0);
       expect(panel.prop('id')).toBe(selectedTab.prop('panelID'));
     });
