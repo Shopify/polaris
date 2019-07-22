@@ -12,7 +12,7 @@ import EventListener from '../EventListener';
 import {Cell, CellProps, Navigation} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 
-import {DataTableState, SortDirection} from './types';
+import {DataTableState, SortDirection, VerticalAlign} from './types';
 import styles from './DataTable.scss';
 
 type CombinedProps = Props & WithAppProviderProps;
@@ -34,6 +34,10 @@ export interface Props {
    * @default false
    */
   truncate?: boolean;
+  /** Vertical alignment of content in the cells.
+   * @default 'top'
+   */
+  verticalAlign?: VerticalAlign;
   /** Content centered in the full width cell of the table footer row. */
   footerContent?: TableData;
   /** List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.  */
@@ -253,6 +257,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       columnContentTypes,
       defaultSortDirection,
       initialSortColumnIndex = 0,
+      verticalAlign,
     } = this.props;
 
     const {
@@ -286,13 +291,14 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
         firstColumn={headingIndex === 0}
         truncate={truncate}
         {...sortableHeadingProps}
+        verticalAlign={verticalAlign}
       />
     );
   };
 
   private renderTotals = (total: TableData, index: number) => {
     const id = `totals-cell-${index}`;
-    const {truncate = false} = this.props;
+    const {truncate = false, verticalAlign} = this.props;
 
     let content;
     let contentType;
@@ -314,13 +320,14 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
         content={content}
         contentType={contentType}
         truncate={truncate}
+        verticalAlign={verticalAlign}
       />
     );
   };
 
   private defaultRenderRow = (row: TableData[], index: number) => {
     const className = classNames(styles.TableRow);
-    const {columnContentTypes, truncate = false} = this.props;
+    const {columnContentTypes, truncate = false, verticalAlign} = this.props;
 
     return (
       <tr key={`row-${index}`} className={className}>
@@ -334,6 +341,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
               contentType={columnContentTypes[cellIndex]}
               firstColumn={cellIndex === 0}
               truncate={truncate}
+              verticalAlign={verticalAlign}
             />
           );
         })}

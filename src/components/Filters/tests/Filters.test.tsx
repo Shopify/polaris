@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Button, Popover, Sheet, Tag} from 'components';

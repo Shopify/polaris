@@ -1,15 +1,18 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import InlineError from '../InlineError';
+import InlineError, {errorTextID}from '../InlineError';
 
 describe('<InlineError />', () => {
   describe('fieldID', () => {
     it('renders with an ID generated from the fieldID', () => {
+      const fieldId = 'ProductTitle';
+      const expectedId = `#${errorTextID(fieldId)}`;
+
       const error = mountWithAppProvider(
-        <InlineError message="Title can’t be blank" fieldID="ProductTitle" />,
+        <InlineError message="Title can’t be blank" fieldID={fieldId} />,
       );
 
-      expect(error.find('#ProductTitleError')).toHaveLength(1);
+      expect(error.find(expectedId)).toHaveLength(1);
     });
   });
 

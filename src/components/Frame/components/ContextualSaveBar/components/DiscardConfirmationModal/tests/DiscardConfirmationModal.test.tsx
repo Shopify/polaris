@@ -7,6 +7,22 @@ import {Modal} from 'components';
 import DiscardConfirmationModal from '../DiscardConfirmationModal';
 
 describe('<DiscardConfirmationModal />', () => {
+  it('passes its open prop value to the Modal', () => {
+    const discardConfirmationModalOpen = mountWithAppProvider(
+      <DiscardConfirmationModal open onDiscard={noop} onCancel={noop} />,
+    );
+    expect(discardConfirmationModalOpen.find(Modal).prop('open')).toBe(true);
+
+    const discardConfirmationModalClosed = mountWithAppProvider(
+      <DiscardConfirmationModal
+        open={false}
+        onDiscard={noop}
+        onCancel={noop}
+      />,
+    );
+    expect(discardConfirmationModalClosed.find(Modal).prop('open')).toBe(false);
+  });
+
   it('calls onDiscard when primaryAction is triggered', () => {
     const spy = jest.fn();
     const discardConfirmationModal = mountWithAppProvider(

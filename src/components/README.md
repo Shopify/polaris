@@ -80,7 +80,7 @@ Include the CSS in your HTML:
 First, import the component into your project:
 
 ```javascript
-import {AppProvider, Button} from '@shopify/polaris';
+import { AppProvider, Button } from "@shopify/polaris";
 ```
 
 Create an element using the Polaris React `AppProvider` component. The `AppProvider` component must wrap your entire app because Polaris React components will not function without it:
@@ -88,7 +88,7 @@ Create an element using the Polaris React `AppProvider` component. The `AppProvi
 ```javascript
 const app = (
   <AppProvider i18n={{}}>
-    <Button onClick={() => alert('Button clicked!')}>Example button</Button>
+    <Button onClick={() => alert("Button clicked!")}>Example button</Button>
   </AppProvider>
 );
 ```

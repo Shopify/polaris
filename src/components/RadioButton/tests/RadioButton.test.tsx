@@ -139,4 +139,17 @@ describe('<RadioButton />', () => {
       ).toHaveLength(1);
     });
   });
+
+  describe('ariaDescribedBy', () => {
+    it('sets the aria-describedBy attribute on the input', () => {
+      const radioButton = mountWithAppProvider(
+        <RadioButton label="RadioButton" ariaDescribedBy="SomeId" />,
+      );
+      const ariaDescribedBy = radioButton
+        .find('input')
+        .prop('aria-describedby');
+
+      expect(ariaDescribedBy).toBe('SomeId');
+    });
+  });
 });

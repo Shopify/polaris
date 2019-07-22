@@ -1,17 +1,11 @@
 import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {RadioButton, Checkbox, InlineError} from 'components';
-import ChoiceList from '../ChoiceList';
+import {RadioButton, Checkbox, InlineError, errorTextID} from 'components';
+import ChoiceList, {ChoiceDescriptor}from '../ChoiceList';
 
 describe('<ChoiceList />', () => {
-  let choices: ({
-    label: string;
-    value: string;
-    helpText?: React.ReactNode;
-    disabled?: boolean;
-    renderChildren?(): React.ReactNode;
-  })[];
+  let choices: ChoiceDescriptor[];
 
   beforeEach(() => {
     choices = [
@@ -377,6 +371,13 @@ describe('<ChoiceList />', () => {
   });
 
   describe('error', () => {
+    beforeEach(() => {
+      choices = [
+        ...choices,
+        {label: 'Choice with error', value: 'Four', describedByError: true},
+      ];
+    });
+
     it('marks the fieldset as invalid', () => {
       const element = mountWithAppProvider(
         <ChoiceList
@@ -386,26 +387,10 @@ describe('<ChoiceList />', () => {
           error="Error message"
         />,
       );
-
       expect(element.find('fieldset').prop<string>('aria-invalid')).toBe(true);
     });
 
-    it('connects the fieldset to the error', () => {
-      const element = mountWithAppProvider(
-        <ChoiceList
-          title="Choose a number"
-          selected={[]}
-          choices={choices}
-          error="Error message"
-        />,
-      );
-
-      const errorID = element.find('fieldset').prop<string>('aria-describedby');
-      expect(typeof errorID).toBe('string');
-      expect(element.find(`#${errorID}`).text()).toBe('Error message');
-    });
-
-    it('renders error markup when truthy', () => {
+    it('renders an InlineError markup when truthy', () => {
       const element = mountWithAppProvider(
         <ChoiceList
           title="Choose a number"
@@ -419,7 +404,41 @@ describe('<ChoiceList />', () => {
       expect(error.prop('message')).toBe('Error message');
     });
 
-    it('renders no error markup when falsy', () => {
+    it("connects the InlineError to the choice, with the describedByError key's, ariaDescribedBy prop", () => {
+      const element = mountWithAppProvider(
+        <ChoiceList
+          title="Choose a number"
+          selected={[]}
+          choices={choices}
+          error="Error message"
+        />,
+      );
+
+      const fieldId = element.find(InlineError).prop('fieldID');
+      const expectedErrorFieldId = errorTextID(fieldId);
+
+      const radioButtonDescribeBy = element
+        .find(RadioButton)
+        .last()
+        .prop('ariaDescribedBy');
+
+      expect(radioButtonDescribeBy).toBe(expectedErrorFieldId);
+    });
+
+    it('does not provide the choice, with the describedByError key, with ariaDescribedBy prop if no error is provided', () => {
+      const element = mountWithAppProvider(
+        <ChoiceList title="Title" selected={[]} choices={choices} />,
+      );
+
+      const radioButtonDescribeBy = element
+        .find(RadioButton)
+        .last()
+        .prop('ariaDescribedBy');
+
+      expect(radioButtonDescribeBy).toBeNull();
+    });
+
+    it('does not render an InlineError when falsy', () => {
       const element = mountWithAppProvider(
         <ChoiceList
           title="Choose a number"

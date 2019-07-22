@@ -4,6 +4,8 @@ import Choice, {helpTextID} from '../Choice';
 import styles from './RadioButton.scss';
 
 export interface BaseProps {
+  /** Indicates the ID of the element that describes the the radio button*/
+  ariaDescribedBy?: string;
   /** Label for the radio button */
   label: React.ReactNode;
   /** Visually hide the label */
@@ -33,6 +35,7 @@ export interface Props extends BaseProps {}
 const getUniqueID = createUniqueIDFactory('RadioButton');
 
 export default function RadioButton({
+  ariaDescribedBy: ariaDescribedByProp,
   label,
   labelHidden,
   helpText,
@@ -49,7 +52,16 @@ export default function RadioButton({
     onChange && onChange(currentTarget.checked, id);
   }
 
-  const describedBy = helpText ? helpTextID(id) : undefined;
+  const describedBy: string[] = [];
+  if (helpText) {
+    describedBy.push(helpTextID(id));
+  }
+  if (ariaDescribedByProp) {
+    describedBy.push(ariaDescribedByProp);
+  }
+  const ariaDescribedBy = describedBy.length
+    ? describedBy.join(' ')
+    : undefined;
 
   return (
     <Choice
@@ -71,7 +83,7 @@ export default function RadioButton({
           onChange={handleChange}
           onFocus={onFocus}
           onBlur={onBlur}
-          aria-describedby={describedBy}
+          aria-describedby={ariaDescribedBy}
         />
         <span className={styles.Backdrop} />
         <span className={styles.Icon} />

@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@shopify/polaris": "^3.9.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-scripts": "2.1.5"
