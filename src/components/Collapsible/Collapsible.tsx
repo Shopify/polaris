@@ -98,7 +98,11 @@ export default function Collapsible({id, open, children}: Props) {
     isMounted.current = true;
   }, []);
 
-  const wrapperClassName = classNames(styles.Collapsible, open && styles.open);
+  const wrapperClassName = classNames(
+    styles.Collapsible,
+    open && styles.open,
+    transitionStatus === TransitionStatus.Entered && styles.fullyOpen,
+  );
 
   const content =
     transitionStatus === TransitionStatus.Exited && !open ? null : children;
