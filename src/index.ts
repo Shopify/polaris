@@ -11,5 +11,6 @@ export {
 export {
   WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT,
 } from './utilities/within-content-context';
+export {AppBridgeContext} from './utilities/app-bridge';
 
 export {PolarisTestProvider} from './test-utilities/PolarisTestProvider';
