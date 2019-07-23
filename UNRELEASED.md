@@ -16,6 +16,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Fixed accessibility issue with ChoiceList errors not being correctly connected to the inputs ([#1824](https://github.com/Shopify/polaris-react/pull/1824));
 - Fixed `Tab` `aria-controls` pointing to a non-existent `Panel` `id` ([#1869](https://github.com/Shopify/polaris-react/pull/1869))
+- Fixed `Toast` accessibility issue by moving `aria-live` prop to `ToastManager` ([#1873](https://github.com/Shopify/polaris-react/pull/1873))
 
 ### Documentation
 
