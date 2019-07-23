@@ -95,7 +95,7 @@
     "@percy/storybook": "^3.0.2",
     "@shopify/jest-dom-mocks": "^2.1.1",
     "@shopify/js-uploader": "github:shopify/js-uploader",
-    "@shopify/sewing-kit": "0.88.0",
+    "@shopify/sewing-kit": "^0.92.3",
     "@storybook/addon-a11y": "^5.1.9",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-backgrounds": "^5.1.9",
