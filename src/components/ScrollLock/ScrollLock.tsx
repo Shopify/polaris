@@ -11,13 +11,11 @@ type CombinedProps = Props & WithAppProviderProps;
 class ScrollLock extends React.Component<CombinedProps, never> {
   componentDidMount() {
     const {scrollLockManager} = this.props.polaris;
-    if (!scrollLockManager) return;
     scrollLockManager.registerScrollLock();
   }
 
   componentWillUnmount() {
     const {scrollLockManager} = this.props.polaris;
-    if (!scrollLockManager) return;
     scrollLockManager.unregisterScrollLock();
   }
 

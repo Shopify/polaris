@@ -1,5 +1,5 @@
 import React from 'react';
-import {createMount} from '@shopify/react-testing';
+import {createMount, mount} from '@shopify/react-testing';
 import {createThemeContext} from '../utilities/theme';
 import {ScrollLockManager} from '../utilities/scroll-lock-manager';
 import {StickyManager} from '../utilities/sticky-manager';
@@ -7,9 +7,10 @@ import {createAppBridge} from '../utilities/app-bridge';
 import {I18n} from '../utilities/i18n';
 import translations from '../../locales/en.json';
 import {merge} from '../utilities/merge';
-import {Link} from '../utilities/link';
 import {PolarisTestProvider} from './PolarisTestProvider';
 import {WithProvidersOptions, WithProvidersContext} from './types';
+
+export {mount};
 
 export const mountWithContext = createMount<
   WithProvidersOptions,
@@ -59,7 +60,7 @@ export const mountWithContext = createMount<
       });
     }
 
-    const linkContext = new Link(link);
+    const linkContext = link;
 
     return {
       themeProvider: themeProviderContext,

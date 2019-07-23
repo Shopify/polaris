@@ -10,7 +10,7 @@ import {StickyManager, StickyManagerContext} from '../utilities/sticky-manager';
 import {AppBridgeContext} from '../utilities/app-bridge';
 import {I18n, I18nContext} from '../utilities/i18n';
 import translations from '../../locales/en.json';
-import {Link, LinkContext} from '../utilities/link';
+import {LinkContext} from '../utilities/link';
 import {WithProvidersContext} from './types';
 
 export interface Props extends Partial<WithProvidersContext> {
@@ -34,7 +34,7 @@ export function PolarisTestProvider({
   scrollLockManager = new ScrollLockManager(),
   stickyManager = new StickyManager(),
   appBridge = undefined,
-  link = new Link(undefined),
+  link = undefined,
   ...props
 }: Props) {
   const childWithProps =
