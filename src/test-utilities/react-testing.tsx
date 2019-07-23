@@ -12,7 +12,7 @@ import {WithProvidersOptions, WithProvidersContext} from './types';
 
 export {mount};
 
-export const mountWithContext = createMount<
+export const mountWithApp = createMount<
   WithProvidersOptions,
   WithProvidersContext
 >({

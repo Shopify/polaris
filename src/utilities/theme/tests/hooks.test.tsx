@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {mount, mountWithContext} from 'test-utilities';
+import {mount, mountWithApp} from 'test-utilities';
 import {useTheme} from '../hooks';
 import {ThemeContext} from '../context';
 
@@ -19,7 +19,7 @@ describe('useTheme', () => {
   });
 
   it('returns context', () => {
-    const component = mountWithContext(<Component />);
+    const component = mountWithApp(<Component />);
     expect(component).toContainReactComponent('div');
   });
 
