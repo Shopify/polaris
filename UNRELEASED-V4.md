@@ -1,4 +1,4 @@
-# Unreleased changes for version 4.0.0
+# Unreleased changes for version 4.0.0 🎊
 
 Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to format new entries. 💜
 
