@@ -25,4 +25,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Use `@shopify/typescript-configs` as the base of `tsconfig.json` for the project ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
+
 ### Deprecations
