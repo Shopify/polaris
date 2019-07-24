@@ -2,7 +2,6 @@ import React from 'react';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import Toast from '../Toast';
-import {createFrameContext} from '../../Frame';
 
 describe('<Toast />', () => {
   beforeEach(() => {
@@ -10,9 +9,9 @@ describe('<Toast />', () => {
   });
 
   it('shows the toast with a unique ID on mount', () => {
-    const mockFrameContext = createFrameContext({
+    const mockFrameContext = {
       showToast: jest.fn(),
-    });
+    };
 
     const props = {content: 'Image uploaded', onDismiss: noop};
     mountWithAppProvider(<Toast {...props} />, {
@@ -25,9 +24,9 @@ describe('<Toast />', () => {
   });
 
   it('hides the toast based on ID on unmount', () => {
-    const mockFrameContext = createFrameContext({
+    const mockFrameContext = {
       hideToast: jest.fn(),
-    });
+    };
 
     const frame = mountWithAppProvider(
       <Toast content="Message sent" onDismiss={noop} />,
@@ -112,10 +111,7 @@ function noop() {}
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
-  const toast = mountWithAppProvider(element, {
-    frame: {},
-    appBridge,
-  });
+  const toast = mountWithAppProvider(element, {appBridge});
 
   return {toast, appBridge};
 }

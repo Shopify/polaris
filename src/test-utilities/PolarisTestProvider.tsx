@@ -1,63 +1,75 @@
 import React from 'react';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {FrameContext} from '../components/Frame';
-import {createThemeContext, ThemeContext} from '../utilities/theme';
+import {FrameContext, FrameContextType} from '../components/Frame';
+import {Theme, ThemeContext} from '../utilities/theme';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
 } from '../utilities/scroll-lock-manager';
 import {StickyManager, StickyManagerContext} from '../utilities/sticky-manager';
-import {AppBridgeContext} from '../utilities/app-bridge';
-import {I18n, I18nContext} from '../utilities/i18n';
-import translations from '../../locales/en.json';
-import {LinkContext} from '../utilities/link';
-import {WithProvidersContext} from './types';
+import {AppBridgeContext, AppBridgeOptions} from '../utilities/app-bridge';
+import {I18n, I18nContext, TranslationDictionary} from '../utilities/i18n';
+import {LinkContext, LinkLikeComponent} from '../utilities/link';
 
-export interface Props extends Partial<WithProvidersContext> {
-  children: React.ReactElement<any>;
+/**
+ * When writing a custom mounting function `mountWithAppContext(node, options)`
+ * this is the type of the options object. These values are customizable when
+ * you call the app
+ */
+export type WithPolarisTestProviderOptions = {
+  // Contexts provided by AppProvider
+  i18n?: TranslationDictionary | TranslationDictionary[];
+  appBridge?: AppBridgeOptions;
+  link?: LinkLikeComponent;
+  theme?: Partial<Theme>;
+  // Contexts provided by Frame
+  frame?: Partial<FrameContextType>;
+};
+
+export interface Props extends WithPolarisTestProviderOptions {
+  children: React.ReactElement;
   strict?: boolean;
 }
 
 export function PolarisTestProvider({
   strict,
   children,
-  themeProvider = createThemeContext(),
-  frame = {
-    showToast: noop,
-    hideToast: noop,
-    setContextualSaveBar: noop,
-    removeContextualSaveBar: noop,
-    startLoading: noop,
-    stopLoading: noop,
-  },
-  intl = new I18n(translations),
-  scrollLockManager = new ScrollLockManager(),
-  stickyManager = new StickyManager(),
-  appBridge = undefined,
-  link = undefined,
-  ...props
+  i18n,
+  appBridge,
+  link,
+  theme,
+  frame,
 }: Props) {
-  const childWithProps =
-    Object.keys(props).length > 0
-      ? React.cloneElement(children, props)
-      : children;
-
   const Wrapper = strict ? React.StrictMode : React.Fragment;
+
+  const intl = new I18n(i18n || {});
+
+  const scrollLockManager = new ScrollLockManager();
+
+  const stickyManager = new StickyManager();
+
+  // This typing is odd, but as appBridge is deprecated and going away in v5
+  // I'm not that worried about it
+  const appBridgeApp = appBridge as React.ContextType<typeof AppBridgeContext>;
+
+  const mergedTheme = createThemeContext(theme);
+
+  const mergedFrame = createFrameContext(frame);
 
   return (
     <Wrapper>
       <I18nContext.Provider value={intl}>
         <ScrollLockManagerContext.Provider value={scrollLockManager}>
           <StickyManagerContext.Provider value={stickyManager}>
-            <ThemeContext.Provider value={themeProvider}>
-              <AppBridgeContext.Provider value={appBridge}>
-                <LinkContext.Provider value={link}>
-                  <FrameContext.Provider value={frame}>
-                    {childWithProps}
+            <AppBridgeContext.Provider value={appBridgeApp}>
+              <LinkContext.Provider value={link}>
+                <ThemeContext.Provider value={mergedTheme}>
+                  <FrameContext.Provider value={mergedFrame}>
+                    {children}
                   </FrameContext.Provider>
-                </LinkContext.Provider>
-              </AppBridgeContext.Provider>
-            </ThemeContext.Provider>
+                </ThemeContext.Provider>
+              </LinkContext.Provider>
+            </AppBridgeContext.Provider>
           </StickyManagerContext.Provider>
         </ScrollLockManagerContext.Provider>
       </I18nContext.Provider>
@@ -66,3 +78,26 @@ export function PolarisTestProvider({
 }
 
 function noop() {}
+
+function createThemeContext(theme: Partial<Theme> = {}): Theme {
+  const {logo = null} = theme;
+  return {logo};
+}
+
+function createFrameContext({
+  showToast = noop,
+  hideToast = noop,
+  setContextualSaveBar = noop,
+  removeContextualSaveBar = noop,
+  startLoading = noop,
+  stopLoading = noop,
+}: Partial<FrameContextType> = {}): FrameContextType {
+  return {
+    showToast,
+    hideToast,
+    setContextualSaveBar,
+    removeContextualSaveBar,
+    startLoading,
+    stopLoading,
+  };
+}

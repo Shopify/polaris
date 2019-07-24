@@ -142,7 +142,7 @@ describe('<TopBar />', () => {
   describe('logo', () => {
     it('will render an image with the logo top bar source', () => {
       const topBar = mountWithAppProvider(<TopBar />, {
-        themeProvider: {
+        theme: {
           logo: {
             topBarSource: './assets/shopify.svg',
           },
@@ -153,7 +153,7 @@ describe('<TopBar />', () => {
 
     it('will render an image with the logo accessibility label', () => {
       const topBar = mountWithAppProvider(<TopBar />, {
-        themeProvider: {
+        theme: {
           logo: {
             accessibilityLabel: 'Shopify',
           },
@@ -164,14 +164,14 @@ describe('<TopBar />', () => {
 
     it('will render an unstyled link with the logo URL', () => {
       const topBar = mountWithAppProvider(<TopBar />, {
-        themeProvider: {logo: {url: 'https://shopify.com'}},
+        theme: {logo: {url: 'https://shopify.com'}},
       });
       expect(topBar.find(UnstyledLink).prop('url')).toBe('https://shopify.com');
     });
 
     it('will render an unstyled link with the logo width', () => {
       const topBar = mountWithAppProvider(<TopBar />, {
-        themeProvider: {logo: {width: 124}},
+        theme: {logo: {width: 124}},
       });
       expect(topBar.find(UnstyledLink).prop('style')).toStrictEqual({
         width: '124px',
@@ -180,7 +180,7 @@ describe('<TopBar />', () => {
 
     it('will render an unstyled link with a default width', () => {
       const topBar = mountWithAppProvider(<TopBar />, {
-        themeProvider: {logo: {}},
+        theme: {logo: {}},
       });
       expect(topBar.find(UnstyledLink).prop('style')).toStrictEqual({
         width: '104px',
@@ -211,7 +211,7 @@ describe('<TopBar />', () => {
       const topBar = mountWithAppProvider(
         <TopBar contextControl={mockContextControl} />,
         {
-          themeProvider: {
+          theme: {
             logo: {topBarSource: './assets/shopify.svg'},
           },
         },

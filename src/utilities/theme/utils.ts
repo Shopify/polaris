@@ -113,12 +113,3 @@ function parseColors([baseName, colors]: [string, ColorsToParse]): string[][] {
 
   return colorPairs;
 }
-
-export function createThemeContext(theme?: Theme): Theme {
-  if (!theme) {
-    return {logo: null};
-  }
-
-  const {logo = null} = theme;
-  return {logo};
-}
