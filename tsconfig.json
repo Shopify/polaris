@@ -1,5 +1,5 @@
 {
-  "extends": "@shopify/typescript-configs/library.json",
+  "extends": "@shopify/typescript-configs/library",
   "compilerOptions": {
     "baseUrl": "./src",
     "rootDir": "./",
