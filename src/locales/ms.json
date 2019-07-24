@@ -73,7 +73,7 @@
     },
     "DiscardConfirmationModal": {
       "title": "Buang semua perubahan yang tidak disimpan",
-      "message": "Jika anda membuang perubahan, anda akan memadamkan apa-apa pengeditan yang anda buat sejak kali terakhir disimpan anda.",
+      "message": "Jika anda membuang perubahan ini, anda anda akan memadamkan semua pengeditan yang telah dibuat sejak kali terakhir ia disimpan.",
       "primaryAction": "Membuang perubahan",
       "secondaryAction": "Teruskan mengedit"
     },
