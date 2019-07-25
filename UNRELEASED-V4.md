@@ -44,6 +44,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Added support for React hooks in Storybook ([#1665](https://github.com/Shopify/polaris-react/pull/1665))
 - Created `toBeDisabled`, `mountWithContext` and added custom testing matchers ([#1596](https://github.com/Shopify/polaris-react/pull/1596))
+- Enabled strict mode in TypeScript ([#1883](https://github.com/Shopify/polaris-react/pull/1883))
 
 ### Dependency upgrades
 
