@@ -72,7 +72,7 @@ class Scrollable extends React.Component<CombinedProps, State> {
 
   componentDidMount() {
     const {stickyManager} = this.props.polaris;
-    if (!stickyManager || this.scrollArea == null) {
+    if (this.scrollArea == null) {
       return;
     }
     stickyManager.setContainer(this.scrollArea);
@@ -90,7 +90,7 @@ class Scrollable extends React.Component<CombinedProps, State> {
 
   componentWillUnmount() {
     const {stickyManager} = this.props.polaris;
-    if (!stickyManager || this.scrollArea == null) {
+    if (this.scrollArea == null) {
       return;
     }
     removeEventListener(this.scrollArea, 'scroll', this.handleScroll);

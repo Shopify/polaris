@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ContextualSaveBarProps, FrameContext} from '../Frame';
 
 // The script in the styleguide that generates the Props Explorer data expects

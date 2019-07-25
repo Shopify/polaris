@@ -1,4 +1,5 @@
 export type SortDirection = 'ascending' | 'descending' | 'none';
+export type VerticalAlign = 'top' | 'bottom' | 'middle' | 'baseline';
 
 export interface ColumnVisibilityData {
   leftEdge: number;

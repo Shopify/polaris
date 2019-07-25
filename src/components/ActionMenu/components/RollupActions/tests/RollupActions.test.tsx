@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';

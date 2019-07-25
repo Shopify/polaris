@@ -1,8 +1,8 @@
 import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import isEqual from 'lodash/isEqual';
 import {classNames} from '../../../../utilities/css';
+import {isObjectsEqual} from '../../../../utilities/is-objects-equal';
 import {DisableableAction, WithContextTypes} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
@@ -106,11 +106,11 @@ export class BaseItem extends React.Component<CombinedProps, State> {
 
     const nextSelectMode = nextProps.context.selectMode;
     return (
-      !isEqual(this.state, nextState) ||
+      !isObjectsEqual(this.state, nextState) ||
       this.props.context.selectMode !== nextSelectMode ||
       (!nextProps.context.selectMode &&
-        (!isEqual(restProps, restNextProps) ||
-          !isEqual(restContext, restNextContext)))
+        (!isObjectsEqual(restProps, restNextProps) ||
+          !isObjectsEqual(restContext, restNextContext)))
     );
   }
 

@@ -86,7 +86,7 @@ Buttons should be:
 
 ### Default page actions
 
-Used on a resource page (e.g. individual order or product page) to let merchants take key actions at the bottom of the page. Usually, the primary action is Save and the secondary action is Delete.
+Used on a resource page (such as an individual order or product page) to let merchants take key actions at the bottom of the page. Usually, the primary action is Save and the secondary action is Delete.
 
 ```jsx
 <PageActions

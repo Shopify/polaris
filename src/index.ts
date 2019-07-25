@@ -4,7 +4,6 @@ import './configure';
 export * from './types';
 export * from './components';
 
-export {UnstyledLinkProps, LinkLikeComponent} from './utilities/link';
 export {
   ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT,
 } from './utilities/scroll-lock-manager';

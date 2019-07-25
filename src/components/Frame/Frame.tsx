@@ -48,6 +48,7 @@ export interface State {
 
 export const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
 export const APP_FRAME_MAIN = 'AppFrameMain';
+export const APP_FRAME_MAIN_ANCHOR_TARGET = 'AppFrameMainContent';
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
@@ -66,9 +67,9 @@ class Frame extends React.PureComponent<CombinedProps, State> {
 
   private contextualSaveBar: ContextualSaveBarProps | null;
   private globalRibbonContainer: HTMLDivElement | null = null;
-  private mainContentNode = React.createRef<HTMLDivElement>();
   private navigationNode = createRef<HTMLDivElement>();
   private contextualSaveBarNode = createRef<HTMLDivElement>();
+  private skipToMainContentTargetNode = React.createRef<HTMLAnchorElement>();
 
   componentDidMount() {
     this.handleResize();
@@ -203,7 +204,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     const skipMarkup = (
       <div className={skipClassName}>
         <a
-          href={`#${APP_FRAME_MAIN}`}
+          href={`#${APP_FRAME_MAIN_ANCHOR_TARGET}`}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
@@ -235,6 +236,15 @@ class Frame extends React.PureComponent<CombinedProps, State> {
         />
       ) : null;
 
+    const skipToMainContentTarget = (
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <a
+        id={APP_FRAME_MAIN_ANCHOR_TARGET}
+        ref={this.skipToMainContentTargetNode}
+        tabIndex={-1}
+      />
+    );
+
     const context = {
       showToast: this.showToast,
       hideToast: this.hideToast,
@@ -261,9 +271,8 @@ class Frame extends React.PureComponent<CombinedProps, State> {
             className={styles.Main}
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
-            ref={this.mainContentNode}
-            tabIndex={-1}
           >
+            {skipToMainContentTarget}
             <div className={styles.Content}>{children}</div>
           </main>
           <ToastManager toastMessages={toastMessages} />
@@ -363,10 +372,10 @@ class Frame extends React.PureComponent<CombinedProps, State> {
   };
 
   private handleClick = () => {
-    if (this.mainContentNode.current == null) {
+    if (this.skipToMainContentTargetNode.current == null) {
       return;
     }
-    this.mainContentNode.current.focus();
+    this.skipToMainContentTargetNode.current.focus();
   };
 
   private handleNavigationDismiss = () => {

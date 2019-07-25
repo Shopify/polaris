@@ -1,17 +1,12 @@
 import {ReactWrapper, CommonWrapper, mount} from 'enzyme';
 import React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
-import {I18n} from '../utilities/i18n';
 import {get} from '../utilities/get';
-import {merge} from '../utilities/merge';
 import translations from '../../locales/en.json';
 
-import {createThemeContext} from '../utilities/theme';
-import {ScrollLockManager} from '../utilities/scroll-lock-manager';
-import {StickyManager} from '../utilities/sticky-manager';
-import {Link} from '../utilities/link';
-import {PolarisTestProvider} from './PolarisTestProvider';
-import {WithProvidersContext, WithProvidersOptions} from './types';
+import {
+  PolarisTestProvider,
+  WithPolarisTestProviderOptions,
+} from './PolarisTestProvider';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -75,47 +70,10 @@ function updateRoot(wrapper: AnyWrapper) {
 
 export function mountWithAppProvider<P>(
   node: React.ReactElement<P>,
-  ctx: WithProvidersOptions = {},
+  context: WithPolarisTestProviderOptions = {},
 ) {
-  const intlTranslations =
-    (ctx.intl && merge(translations, ctx.intl)) || translations;
-  const intl = new I18n(intlTranslations);
-
-  const scrollLockManager = ctx.scrollLockManager || new ScrollLockManager();
-
-  const stickyManager = ctx.stickyManager || new StickyManager();
-
-  const themeproviderDefault = createThemeContext();
-  const themeProvider =
-    (ctx.themeProvider && merge(themeproviderDefault, ctx.themeProvider)) ||
-    themeproviderDefault;
-
-  const frameDefault = {
-    showToast: noop,
-    hideToast: noop,
-    setContextualSaveBar: noop,
-    removeContextualSaveBar: noop,
-    startLoading: noop,
-    stopLoading: noop,
-  };
-  const frame = (ctx.frame && merge(frameDefault, ctx.frame)) || frameDefault;
-
-  const link = new Link(ctx.link);
-
-  // Yes this is bad typing, we'll fix it later
-  const appBridge: any = ctx.appBridge;
-
-  const context: WithProvidersContext = {
-    themeProvider,
-    frame,
-    intl,
-    scrollLockManager,
-    stickyManager,
-    appBridge,
-    link,
-  };
-
-  return mount<P>(
-    <PolarisTestProvider {...context}>{node}</PolarisTestProvider>,
-  );
+  return mount<P>(node, {
+    wrappingComponent: PolarisTestProvider,
+    wrappingComponentProps: {i18n: translations, ...context},
+  });
 }

@@ -1,11 +1,11 @@
 import React from 'react';
-import {mountWithContext} from 'test-utilities/react-testing';
+import {mountWithApp} from 'test-utilities/react-testing';
 import RadioButton from '../RadioButton';
 
 describe('<RadioButton />', () => {
   describe('checked', () => {
     it('gets passed to the input', () => {
-      const input = mountWithContext(
+      const input = mountWithApp(
         <RadioButton
           label="RadioButton"
           checked
@@ -21,7 +21,7 @@ describe('<RadioButton />', () => {
   describe('name', () => {
     it('gets passed to the input', () => {
       const name = 'RadioButton';
-      const input = mountWithContext(
+      const input = mountWithApp(
         <RadioButton
           label="RadioButton"
           checked
@@ -37,7 +37,7 @@ describe('<RadioButton />', () => {
   describe('value', () => {
     it('gets passed to the input', () => {
       const value = 'Some value';
-      const input = mountWithContext(
+      const input = mountWithApp(
         <RadioButton
           label="RadioButton"
           checked
@@ -53,7 +53,7 @@ describe('<RadioButton />', () => {
   describe('onChange()', () => {
     it('is called with the new checked value of the input on change', () => {
       const spy = jest.fn();
-      const element = mountWithContext(
+      const element = mountWithApp(
         <RadioButton id="MyRadioButton" label="RadioButton" onChange={spy} />,
       );
       (element.find('input')!.domNode as HTMLInputElement).checked = true;
@@ -67,7 +67,7 @@ describe('<RadioButton />', () => {
   describe('onFocus()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      const element = mountWithContext(
+      const element = mountWithApp(
         <RadioButton label="RadioButton" onFocus={spy} />,
       );
       element.find('input')!.trigger('onFocus');
@@ -78,7 +78,7 @@ describe('<RadioButton />', () => {
   describe('onBlur()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      const element = mountWithContext(
+      const element = mountWithApp(
         <RadioButton label="RadioButton" onBlur={spy} />,
       );
       element.find('input')!.trigger('onBlur');
@@ -89,14 +89,14 @@ describe('<RadioButton />', () => {
   describe('id', () => {
     it('sets the id on the input', () => {
       const id = 'MyRadioButton';
-      const button = mountWithContext(
+      const button = mountWithApp(
         <RadioButton id={id} label="RadioButton" />,
       ).find('input');
       expect(button).toHaveReactProps({id});
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = mountWithContext(<RadioButton label="RadioButton" />)
+      const id = mountWithApp(<RadioButton label="RadioButton" />)
         .find('input')!
         .prop('id');
       expect(typeof id).toBe('string');
@@ -106,17 +106,15 @@ describe('<RadioButton />', () => {
 
   describe('disabled', () => {
     it('sets the disabled attribute on the input', () => {
-      const button = mountWithContext(
-        <RadioButton label="RadioButton" disabled />,
-      );
+      const button = mountWithApp(<RadioButton label="RadioButton" disabled />);
       expect(button.find('input')).toBeDisabled();
     });
 
     it('is only disabled when disabled is explicitly set to true', () => {
-      let element = mountWithContext(<RadioButton label="RadioButton" />);
+      let element = mountWithApp(<RadioButton label="RadioButton" />);
       expect(element.find('input')).not.toBeDisabled();
 
-      element = mountWithContext(
+      element = mountWithApp(
         <RadioButton label="RadioButton" disabled={false} />,
       );
       expect(element.find('input')).not.toBeDisabled();
@@ -125,7 +123,7 @@ describe('<RadioButton />', () => {
 
   describe('helpText', () => {
     it('connects the input to the help text', () => {
-      const textField = mountWithContext(
+      const textField = mountWithApp(
         <RadioButton label="RadioButton" helpText="Some help" />,
       );
       expect(typeof textField.find('input')!.prop('aria-describedby')).toBe(
@@ -137,6 +135,19 @@ describe('<RadioButton />', () => {
           return describedby && describedby.includes('HelpText');
         }),
       ).toHaveLength(1);
+    });
+  });
+
+  describe('ariaDescribedBy', () => {
+    it('sets the aria-describedBy attribute on the input', () => {
+      const radioButton = mountWithApp(
+        <RadioButton label="RadioButton" ariaDescribedBy="SomeId" />,
+      );
+      const ariaDescribedBy = radioButton.find('input');
+
+      expect(ariaDescribedBy).toHaveReactProps({
+        'aria-describedby': 'SomeId',
+      });
     });
   });
 });

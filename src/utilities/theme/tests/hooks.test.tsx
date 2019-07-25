@@ -1,31 +1,32 @@
-import React from 'react';
-import isEqual from 'lodash/isEqual';
-import {mountWithContext} from 'test-utilities';
-
+import React, {useContext} from 'react';
+import {mount, mountWithApp} from 'test-utilities';
 import {useTheme} from '../hooks';
+import {ThemeContext} from '../context';
+
+let consoleErrorSpy: jest.SpyInstance;
+
+function Component() {
+  return useTheme() === useContext(ThemeContext) ? <div /> : null;
+}
 
 describe('useTheme', () => {
+  beforeEach(() => {
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    consoleErrorSpy.mockRestore();
+  });
+
   it('returns context', () => {
-    const themeProvider = {
-      logo: {
-        topBarSource: 'source',
-      },
-    };
-
-    function Component() {
-      // eslint-disable-next-line shopify/jest/no-if
-      return isEqual(useTheme(), {
-        logo: {
-          topBarSource: 'source',
-        },
-      }) ? (
-        <div />
-      ) : null;
-    }
-
-    const component = mountWithContext(<Component />, {
-      themeProvider,
-    });
+    const component = mountWithApp(<Component />);
     expect(component).toContainReactComponent('div');
+  });
+
+  it('throws an error if context is not set', () => {
+    const attemptMount = () => mount(<Component />);
+    expect(attemptMount).toThrow(
+      'No Theme was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.',
+    );
   });
 });

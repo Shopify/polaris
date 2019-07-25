@@ -1,4 +1,3 @@
-export {UnstyledLinkProps, LinkLikeComponent} from './types';
-export {Link} from './link';
+export {LinkLikeComponentProps, LinkLikeComponent} from './types';
 export {useLink} from './hooks';
 export {LinkContext} from './context';

@@ -6,26 +6,32 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Breaking changes
 
-- Increased peer-dependencies on `react` and `react-dom` to 16.8.6 to enable the use of hooks ([#1525](https://github.com/Shopify/polaris-react/pull/1525))
-- We now use default imports for React. Applications that consume polaris using sewing-kit shall need to enable [`esModuleInterop`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#support-for-import-d-from-cjs-from-commonjs-modules-with---esmoduleinterop) in their `tsconfig.json` files. ([#1523](https://github.com/Shopify/polaris-react/pull/1523))
-- `ChoiceList` `title` is required for accessibility. It can be hidden with `titleHidden`. ([#1575](https://github.com/Shopify/polaris-react/pull/1575))
-- Remove the WithRef component. This was never documented and was intended for internal use only but was part of our public API ([#1610](https://github.com/Shopify/polaris-react/pull/1610)).
-- Remove the WithContext component. This was never documented and was intended for internal use only but was part of our public API ([#1641](https://github.com/Shopify/polaris-react/pull/1641)).
+- Removed `groups` prop on `Select`. Pass groups to the `options` prop instead. ([#1831](https://github.com/Shopify/polaris-react/pull/1831))
+- Removed `Autocomplete.ComboBox.TextField` and `Autocomplete.ComboBox.OptionList`. You should use the `Autocomplete.TextField` and `OptionList` components instead. ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
+- Removed `secondaryFooterAction` prop on `Card`. Pass an array of secondary actions to the `secondaryFooterActions` prop instead. ([#1831](https://github.com/Shopify/polaris-react/pull/1831))
+- Removed `iconBody` prop on `Navigation`. Pass a string to the `icon` prop instead. ([#1831](https://github.com/Shopify/polaris-react/pull/1831))
+- Removed the `WithContext` component, as it was an undocumented part of the public API meant for internal use only ([#1641](https://github.com/Shopify/polaris-react/pull/1641))
+- Removed the `WithRef` component, as it was an undocumented part of the public API meant for internal use only ([#1610](https://github.com/Shopify/polaris-react/pull/1610))
 - Removed support for passing a string into `<Icon source>` to load a bundled icon. You must load the required icon directly from `@shopify/polaris-icons` instead ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
-- Removed support for passing a "SvgSource" shaped object into `<Icon source>` to load an icon imported using Shopify's legacy icon loader. You must update sewing-kit to at least v0.82.0 which replaced the legacy loader with using SVGR ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
+- Removed support for passing an `SvgSource` shaped object into `<Icon source>` to load an icon imported using Shopify’s legacy icon loader. You must update sewing-kit to at least v0.82.0 which replaced the legacy loader with using SVGR ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
 - Removed support for passing a React Element into `<Icon source>`. You must pass in a React Component that returns an SVG element instead. ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
 - Removed support for `<Icon untrusted>`. Passing a string into `source` will now always load an untrusted icon, you don't need that additional property. ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
-- Now `i18n` is a required prop on `AppProvider`. [Usage instructions](https://polaris.shopify.com/components/structure/app-provider#using-translations) are included in the `AppProvider` docs ([#1530](https://github.com/Shopify/polaris-react/pull/1530))
-- Removed `Autocomplete.ComboBox.TextField` and `Autocomplete.ComboBox.OptionList`. You should use the `Autocomplete.TextField` and `OptionList` components instead. ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
-- Removed `secondaryFooterAction` prop on `Card`. Pass an array of secondary actions to the `secondaryFooterActions` prop instead. ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
-- Removed `iconBody` prop on `Navigation`. Pass a string into the `icon` prop instead. ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
-- Removed `groups` prop on `Select`. Pass groups to the `options` prop instead. ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
+- Removed `Navigation.UserMenu`. Use `TopBar.UserMenu` instead ([#1599](https://github.com/Shopify/polaris-react/pull/1599))
+- Made `ChoiceList`’s `title` prop required to improve accessibility. It can be hidden with `titleHidden`. ([#1575](https://github.com/Shopify/polaris-react/pull/1575))
+- Made `AppProvider`’s `i18n` prop required. [Usage instructions](https://polaris.shopify.com/components/structure/app-provider#using-translations) are included in the `AppProvider` docs ([#1530](https://github.com/Shopify/polaris-react/pull/1530))
+- Increased peer-dependencies on `react` and `react-dom` to 16.8.6 to enable the use of hooks ([#1525](https://github.com/Shopify/polaris-react/pull/1525))
+- Changed the import method for React to use default imports. Applications consuming Polaris using TypeScript must enable [`esModuleInterop`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#support-for-import-d-from-cjs-from-commonjs-modules-with---esmoduleinterop) in `tsconfig.json`. ([#1523](https://github.com/Shopify/polaris-react/pull/1523))
+- Removed `LinkLikeComponent` type export. Use `AppProviderProps['linkComponent']` instead. ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
 - Applied scroll locking at the root (`html`) level instead of the `body`, which could impact non-Polaris modals and overlays in consuming apps ([#1854](https://github.com/Shopify/polaris-react/pull/1854))
+
 
 ### New components
 
+- `PolarisTestProvider`: Use for Polaris context in tests, see [polaris examples](https://github.com/Shopify/polaris-react/tree/master/examples) for usage ([#1810](https://github.com/Shopify/polaris-react/pull/1810))
+
 ### Enhancements
 
+- Improved color contrast of links inside `Banner` ([#1651](https://github.com/Shopify/polaris-react/pull/1651))
 - Improved performance in browsers that display scrollbars ([#1854](https://github.com/Shopify/polaris-react/pull/1854))
 
 ### Design updates
@@ -39,6 +45,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Added support for React hooks in Storybook ([#1665](https://github.com/Shopify/polaris-react/pull/1665))
 - Created `toBeDisabled`, `mountWithContext` and added custom testing matchers ([#1596](https://github.com/Shopify/polaris-react/pull/1596))
 
 ### Dependency upgrades
@@ -51,39 +58,49 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
-- Enabled react/no-unsafe with checkAliases ([#1695](https://github.com/Shopify/polaris-react/pull/1695))
-- Added hooks to storybooks scope ([#1672](https://github.com/Shopify/polaris-react/pull/1672))
-- Removed all uses of `ReactDOM.findDOMNode` ([#1696](https://github.com/Shopify/polaris-react/pull/1696))
-- Simplified `WithinContentContainer` context type ([#1602](https://github.com/Shopify/polaris-react/pull/1602))
-- Removed test errors and non-deprecation warnings ([#1715](https://github.com/Shopify/polaris-react/pull/1715))
-- Removed `CSSTransition` from `PopoverOverlay` ([#1756](https://github.com/Shopify/polaris-react/pull/1756))
-- Enabled `React.StrictMode` in our test components and story book ([#1709](https://github.com/Shopify/polaris-react/pull/1709))
-- Updated `Collapsible` to no longer use `componentWillReceiveProps`([#1670](https://github.com/Shopify/polaris-react/pull/1670))
-- Remove `withRef` and `withContext` from `DropZone.FileUpload` ([#1491](https://github.com/Shopify/polaris-react/pull/1491))
-- Updated exports in `src/utilities` and `src/test-utilities` to named exports ([#1717](https://github.com/Shopify/polaris-react/pull/1717))
-- Updated `PositionedOverlay` to no longer use `componentWillReceiveProps`([#1621](https://github.com/Shopify/polaris-react/pull/1621))
-- Updated `OptionList` to no longer use `componentWillReceiveProps`([#1557](https://github.com/Shopify/polaris-react/pull/1557))
-- Updated all our context files to export react context rather than a provider and consumer ([#1459](https://github.com/Shopify/polaris-react/pull/1459))
-- Upgraded the `Autocomplete` component from legacy context API to use createContext ([#1403](https://github.com/Shopify/polaris-react/pull/1403))
-- Removed `withContext` from `Navigation.Item` ([#1502](https://github.com/Shopify/polaris-react/pull/1502))
-- Alphabetized component export order and kebab-case files ([#1674](https://github.com/Shopify/polaris-react/pull/1674))
-- Removed testID warning in tests ([#1447](https://github.com/Shopify/polaris-react/pull/1447))
-- Updated `ThemeProvider` to use the new context api ([#1396](https://github.com/Shopify/polaris-react/pull/1396))
-- Removed `withContext` from `ResourceList.Item` ([#1503](https://github.com/Shopify/polaris-react/pull/1503))
-- Updated `AppProvider` to no longer use `componentWillReceiveProps`([#1255](https://github.com/Shopify/polaris-react/pull/1255))
-- Removed `withContext` from `Scrollable.ScrollTo` and added a test to boost coverage ([#1499](https://github.com/Shopify/polaris-react/pull/1499))
-- Removed `withContext` from `ResourceList.FilterControl` ([#1500](https://github.com/Shopify/polaris-react/pull/1500))
-- Upgraded the `Navigation` component from legacy context API to use createContext ([#1402](https://github.com/Shopify/polaris-react/pull/1402))
-- Updated `ThemeProvider` to no longer use `componentWillReceiveProps`([#1254](https://github.com/Shopify/polaris-react/pull/1254))
-- Removed `withContext` and `withAppProvider` from `ContextualSaveBar` ([#1498](https://github.com/Shopify/polaris-react/pull/1498))
-- Removed unused context from `Scrollable` ([#1253](https://github.com/Shopify/polaris-react/pull/1253))
-- Removed `withContext` from `Loading` ([#1497](https://github.com/Shopify/polaris-react/pull/1497))
-- Removed `withRef` from `UnstyledLink` ([#1501](https://github.com/Shopify/polaris-react/pull/1501))
-- Upgraded the `Banner`, `Card`, and `Modal` components from legacy context API to use createContext ([#786](https://github.com/Shopify/polaris-react/pull/786))
-- Refactored `Frame` and its subcomponents to use the `createContext` API instead of legacy context ([#803](https://github.com/Shopify/polaris-react/pull/803))
-- Removed `withContext` from `Toast` ([#1494](https://github.com/Shopify/polaris-react/pull/1494))
-- Update React imports to use the default imports intead of `import * as` ([1523](https://github.com/Shopify/polaris-react/pull/1523))
+- Removed unused type definitions ([#1862](https://github.com/Shopify/polaris-react/pull/1862))
+- Ignored deprecation warnings related to Shopify App Bridge in tests ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
+- Updated `withAppProvider` to use a functional component rather than a class component ([#1813](https://github.com/Shopify/polaris-react/pull/1813))
+- Updated `Link` to use `useI18n` rather than `withAppProvider` ([#1806](https://github.com/Shopify/polaris-react/pull/1806))
 - Updated several components to use hooks instead of `withAppProvider` ([#1797](https://github.com/Shopify/polaris-react/pull/1797))
+- Removed `CSSTransition` from `PopoverOverlay` ([#1756](https://github.com/Shopify/polaris-react/pull/1756))
+- Updated exports in `src/utilities` and `src/test-utilities` to named exports ([#1717](https://github.com/Shopify/polaris-react/pull/1717))
+- Removed test errors and non-deprecation warnings ([#1715](https://github.com/Shopify/polaris-react/pull/1715))
+- Enabled `React.StrictMode` in test components and Storybook ([#1709](https://github.com/Shopify/polaris-react/pull/1709))
+- Removed all uses of `ReactDOM.findDOMNode` ([#1696](https://github.com/Shopify/polaris-react/pull/1696))
+- Enabled `react/no-unsafe` ESLint rule with `checkAliases` ([#1695](https://github.com/Shopify/polaris-react/pull/1695))
+- Alphabetized component export order and kebab-case files ([#1674](https://github.com/Shopify/polaris-react/pull/1674))
+- Updated `Collapsible` to no longer use `componentWillReceiveProps`([#1670](https://github.com/Shopify/polaris-react/pull/1670))
+- Restructured context structure to be more modular ([#1664](https://github.com/Shopify/polaris-react/pull/1664))
+- Updated `PositionedOverlay` to no longer use `componentWillReceiveProps`([#1621](https://github.com/Shopify/polaris-react/pull/1621))
+- Simplified `WithinContentContainer` context type ([#1602](https://github.com/Shopify/polaris-react/pull/1602))
+- Replaced all occurrences of `_.isEqual` with a custom isObjectsEqual function ([#1580](https://github.com/Shopify/polaris-react/pull/1580))
+- Updated `OptionList` to no longer use `componentWillReceiveProps`([#1557](https://github.com/Shopify/polaris-react/pull/1557))
+- Refactored `DualThumb` tests ([#1548](https://github.com/Shopify/polaris-react/pull/1548))
+- Converted `Sheet` to a functional component ([#1548](https://github.com/Shopify/polaris-react/pull/1548))
+- Removed `withContext` from `ResourceList.Item` ([#1503](https://github.com/Shopify/polaris-react/pull/1503))
+- Removed `withContext` from `Navigation.Item` ([#1502](https://github.com/Shopify/polaris-react/pull/1502))
+- Removed `withRef` from `UnstyledLink` ([#1501](https://github.com/Shopify/polaris-react/pull/1501))
+- Removed `withContext` from `ResourceList.FilterControl` ([#1500](https://github.com/Shopify/polaris-react/pull/1500))
+- Removed `withContext` from `Scrollable.ScrollTo` and added a test to boost coverage ([#1499](https://github.com/Shopify/polaris-react/pull/1499))
+- Removed `withContext` from `Loading` ([#1497](https://github.com/Shopify/polaris-react/pull/1497))
+- Removed `withContext` and `withAppProvider` from `ContextualSaveBar` ([#1498](https://github.com/Shopify/polaris-react/pull/1498))
+- Removed `withContext` from `Toast` ([#1494](https://github.com/Shopify/polaris-react/pull/1494))
+- Removed `withRef` and `withContext` from `DropZone.FileUpload` ([#1491](https://github.com/Shopify/polaris-react/pull/1491))
+- Created `useAppBridge` hook ([#1482](https://github.com/Shopify/polaris-react/pull/1482))
+- Removed testID warning in tests ([#1447](https://github.com/Shopify/polaris-react/pull/1447))
+- Updated `AppProvider` to use the new context API and refactored other instances to follow a new pattern and refactor test utilities ([#1424](https://github.com/Shopify/polaris-react/pull/1424))
+- Updated all context files to export react context rather than a provider and consumer ([#1424](https://github.com/Shopify/polaris-react/pull/1424))
+- Deleted `withSticky` ([#1424](https://github.com/Shopify/polaris-react/pull/1424))
+- Upgraded the `Autocomplete` component from legacy context API to use createContext ([#1403](https://github.com/Shopify/polaris-react/pull/1403))
+- Upgraded the `Navigation` component from legacy context API to use createContext ([#1402](https://github.com/Shopify/polaris-react/pull/1402))
+- Updated `ThemeProvider` to use the new context api ([#1396](https://github.com/Shopify/polaris-react/pull/1396))
+- Updated `AppProvider` to no longer use `componentWillReceiveProps`([#1255](https://github.com/Shopify/polaris-react/pull/1255))
+- Removed unused context from `Scrollable` ([#1253](https://github.com/Shopify/polaris-react/pull/1253))
+- Updated `ThemeProvider` to no longer use `componentWillReceiveProps` ([#1254](https://github.com/Shopify/polaris-react/pull/1254))
+- Removed context from `Collapsible` ([#1114](https://github.com/Shopify/polaris-react/pull/1114))
+- Refactored `Frame` and its subcomponents to use the `createContext` API instead of legacy context ([#803](https://github.com/Shopify/polaris-react/pull/803))
+- Upgraded the `Banner`, `Card`, and `Modal` components from legacy context API to use `createContext` ([#786](https://github.com/Shopify/polaris-react/pull/786))
 
 ### Deprecations
 

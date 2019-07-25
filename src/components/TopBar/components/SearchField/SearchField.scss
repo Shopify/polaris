@@ -1,7 +1,9 @@
-@import '../../styles/variables';
+@import '../../../../styles/common';
+@import '../../variables';
 
 $icon-size: rem(20px);
 $input-height: rem(34px);
+$clear-button-width: $icon-size + spacing();
 
 $stacking-order: (
   backdrop: 1,
@@ -58,9 +60,9 @@ $stacking-order: (
 .Input {
   @include text-style-input;
   z-index: z-index(input, $stacking-order);
-  width: 100%;
+  width: calc(100% - #{$clear-button-width});
   height: $input-height;
-  padding: 0 0 0 $icon-size + spacing();
+  padding: 0 0 0 $clear-button-width;
   border: none;
   background-color: transparent;
   outline: none;
@@ -99,6 +101,7 @@ $stacking-order: (
   border: none;
   appearance: none;
   background: transparent;
+  width: $clear-button-width;
 
   &:focus,
   &:hover {

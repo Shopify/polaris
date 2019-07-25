@@ -17,7 +17,7 @@ describe('withAppProvider', () => {
       consoleSpy.mockRestore();
     };
     expect(fn).toThrow(
-      `The <AppProvider> component is required as of v2.0 of Polaris React. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.`,
+      `No Theme was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.`,
     );
   });
 });

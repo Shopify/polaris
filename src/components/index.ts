@@ -140,7 +140,11 @@ export {default as Image, Props as ImageProps} from './Image';
 
 export {default as Indicator, Props as IndicatorProps} from './Indicator';
 
-export {default as InlineError, Props as InlineErrorProps} from './InlineError';
+export {
+  default as InlineError,
+  Props as InlineErrorProps,
+  errorTextID,
+} from './InlineError';
 
 export {default as KeyboardKey, Props as KeyboardKeyProps} from './KeyboardKey';
 
@@ -288,7 +292,10 @@ export {default as TrapFocus, Props as TrapFocusProps} from './TrapFocus';
 
 export {default as Truncate, Props as TruncateProps} from './Truncate';
 
-export {default as UnstyledLink} from './UnstyledLink';
+export {
+  default as UnstyledLink,
+  Props as UnstyledLinkProps,
+} from './UnstyledLink';
 
 export {
   default as VisuallyHidden,

@@ -31,8 +31,8 @@ describe('<Tooltip />', () => {
     );
   });
 
-  it('renders on mouseEnter', () => {
-    wrapperComponent.simulate('mouseEnter');
+  it('renders on mouseOver', () => {
+    wrapperComponent.simulate('mouseOver');
     expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(true);
   });
 

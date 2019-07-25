@@ -133,7 +133,7 @@ class ActionListExample extends React.Component {
 
 ### Action list with icons or image
 
-Use when the items benefit from an associated action or image (e.g. a list of products).
+Use when the items benefit from an associated action or image, such as a list of products.
 
 ```jsx
 class ActionListExample extends React.Component {

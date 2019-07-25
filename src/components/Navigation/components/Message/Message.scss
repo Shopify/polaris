@@ -1,3 +1,5 @@
+@import '../../../../styles/common';
+
 // Message styles
 $message-min-height: rem(40px);
 $message-vertical-padding: ($message-min-height - line-height(body)) / 2;

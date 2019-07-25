@@ -1,4 +1,5 @@
-export interface UnstyledLinkProps extends React.HTMLProps<HTMLAnchorElement> {
+export interface LinkLikeComponentProps
+  extends React.HTMLProps<HTMLAnchorElement> {
   /** A destination to link to */
   url: string;
   /** Forces url to open in a new tab */
@@ -10,6 +11,4 @@ export interface UnstyledLinkProps extends React.HTMLProps<HTMLAnchorElement> {
   [key: string]: any;
 }
 
-export type LinkLikeComponent =
-  | React.ComponentType<UnstyledLinkProps>
-  | undefined;
+export type LinkLikeComponent = React.ComponentType<LinkLikeComponentProps>;

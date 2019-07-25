@@ -56,7 +56,7 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
         <DiscardConfirmationModal
           open={discardConfirmationModalVisible}
           onCancel={this.toggleDiscardConfirmationModal}
-          onDiscard={discardAction.onAction}
+          onDiscard={this.handleDiscardAction}
         />
       );
 
@@ -122,6 +122,14 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
       </React.Fragment>
     );
   }
+
+  private handleDiscardAction = () => {
+    const {discardAction} = this.props;
+    if (discardAction && discardAction.onAction) {
+      discardAction.onAction();
+    }
+    this.setState({discardConfirmationModalVisible: false});
+  };
 
   private toggleDiscardConfirmationModal = () => {
     this.setState((prevState) => ({

@@ -9,8 +9,6 @@ export {
 
 export {ContextualSaveBarProps, ToastProps} from './types';
 
-export {createFrameContext} from './utilities';
-
 export {default as FrameContext, FrameContextType} from './context';
 
 export default Frame;
