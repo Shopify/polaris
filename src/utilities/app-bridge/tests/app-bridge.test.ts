@@ -63,7 +63,8 @@ describe('createAppBridge()', () => {
     const next = jest.fn((args) => args);
     const baseAction = {type: 'actionType'};
 
-    expect(setClientInterfaceHook.call({}, next)(baseAction)).toStrictEqual({
+    const hookResult = setClientInterfaceHook.call({}, next) as any;
+    expect(hookResult(baseAction)).toStrictEqual({
       type: 'actionType',
       clientInterface: {
         name: '@shopify/polaris',

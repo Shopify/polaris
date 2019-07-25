@@ -134,7 +134,7 @@ describe('<Autocomplete/>', () => {
     return <Autocomplete.TextField label="" onChange={noop} />;
   }
 
-  function handleOnSelect(updatedSelection: string[]) {
+  function handleOnSelect(this: any, updatedSelection: string[]) {
     const selectedText = updatedSelection.map((selectedItem: string) => {
       const matchedOption = this.options.filter((option: any) => {
         return option.value.match(selectedItem);
