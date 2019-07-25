@@ -8,7 +8,6 @@ describe('ScrollLock', () => {
 
   beforeEach(() => {
     scrollSpy = jest.spyOn(window, 'scroll');
-    scrollSpy.mockImplementation(() => {});
   });
 
   afterEach(() => {

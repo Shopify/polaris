@@ -18,8 +18,6 @@ describe('<Modal>', () => {
 
   beforeEach(() => {
     scrollSpy = jest.spyOn(window, 'scroll');
-    scrollSpy.mockImplementation(() => {});
-
     animationFrame.mock();
   });
 

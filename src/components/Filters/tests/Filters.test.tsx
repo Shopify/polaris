@@ -39,7 +39,6 @@ const mockProps: Props = {
 
 describe('<Filters />', () => {
   beforeAll(() => {
-    (window.scroll as any) = jest.fn();
     jest.useFakeTimers();
   });
 

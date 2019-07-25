@@ -4,6 +4,9 @@ import 'mutationobserver-shim';
 
 configure({adapter: new Adapter()});
 
+// Mocks for scrolling
+window.scroll = () => {};
+
 const IGNORE_ERROR_REGEXES = [
   /React does not recognize the `%s` prop on a DOM element/,
   /Accessing PropTypes via the main React package is deprecated/,
