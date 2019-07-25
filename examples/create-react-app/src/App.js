@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   Layout,
   Page,
@@ -12,168 +12,152 @@ import {
   ChoiceList,
   SettingToggle,
 } from '@shopify/polaris';
+import {ImportMinor} from '@shopify/polaris-icons';
 
-class App extends Component {
-  state = {
-    first: '',
-    last: '',
-    email: '',
-    checkboxes: [],
-    connected: false,
-  };
+export default function App() {
+  const [first, setFirst] = useState('');
+  const [last, setLast] = useState('');
+  const [email, setEmail] = useState('');
+  const [checkboxes, setCheckboxes] = useState([]);
+  const [connected, setConnected] = useState(false);
 
-  render() {
-    const breadcrumbs = [
-      {content: 'Sample apps'},
-      {content: 'Create React App'},
-    ];
-    const primaryAction = {content: 'New product'};
-    const secondaryActions = [{content: 'Import', icon: 'import'}];
+  const handleFirstChange = useCallback((value) => setFirst(value), []);
+  const handleLastChange = useCallback((value) => setLast(value), []);
+  const handleEmailChange = useCallback((value) => setEmail(value), []);
+  const handleCheckboxesChange = useCallback(
+    (value) => setCheckboxes(value),
+    [],
+  );
 
-    const choiceListItems = [
-      {label: 'I accept the Terms of Service', value: 'false'},
-      {label: 'I consent to receiving emails', value: 'false2'},
-    ];
+  const toggleConnection = useCallback(
+    () => {
+      setConnected(!connected);
+    },
+    [connected],
+  );
 
-    const accountMarkup = this.state.connected
-      ? this.disconnectAccountMarkup()
-      : this.connectAccountMarkup();
+  const breadcrumbs = [{content: 'Sample apps'}, {content: 'Create React App'}];
+  const primaryAction = {content: 'New product'};
+  const secondaryActions = [{content: 'Import', icon: ImportMinor}];
 
-    return (
-      <Page
-        title="Polaris"
-        breadcrumbs={breadcrumbs}
-        primaryAction={primaryAction}
-        secondaryActions={secondaryActions}
-      >
-        <Layout>
-          <Layout.AnnotatedSection
-            title="Style"
-            description="Customize the style of your checkout"
+  const choiceListItems = [
+    {label: 'I accept the Terms of Service', value: 'false'},
+    {label: 'I consent to receiving emails', value: 'false2'},
+  ];
+
+  const accountSectionDescription = connected
+    ? 'Disconnect your account from your Shopify store.'
+    : 'Connect your account to your Shopify store.';
+
+  const accountMarkup = connected ? (
+    <DisconnectAccount onAction={toggleConnection} />
+  ) : (
+    <ConnectAccount onAction={toggleConnection} />
+  );
+
+  return (
+    <Page
+      title="Polaris"
+      breadcrumbs={breadcrumbs}
+      primaryAction={primaryAction}
+      secondaryActions={secondaryActions}
+    >
+      <Layout>
+        <Layout.AnnotatedSection
+          title="Style"
+          description="Customize the style of your checkout"
+        >
+          <SettingToggle
+            action={{
+              content: 'Customize Checkout',
+            }}
           >
-            <SettingToggle
-              action={{
-                content: 'Customize Checkout',
-              }}
-            >
-              Upload your store’s logo, change colors and fonts, and more.
-            </SettingToggle>
-          </Layout.AnnotatedSection>
+            Upload your store’s logo, change colors and fonts, and more.
+          </SettingToggle>
+        </Layout.AnnotatedSection>
 
+        <Layout.AnnotatedSection
+          title="Account"
+          description={accountSectionDescription}
+        >
           {accountMarkup}
+        </Layout.AnnotatedSection>
 
-          <Layout.AnnotatedSection
-            title="Form"
-            description="A sample form using Polaris components."
-          >
-            <Card sectioned>
-              <FormLayout>
-                <FormLayout.Group>
-                  <TextField
-                    value={this.state.first}
-                    label="First Name"
-                    placeholder="Tom"
-                    onChange={this.valueUpdater('first')}
-                  />
-                  <TextField
-                    value={this.state.last}
-                    label="Last Name"
-                    placeholder="Ford"
-                    onChange={this.valueUpdater('last')}
-                  />
-                </FormLayout.Group>
-
+        <Layout.AnnotatedSection
+          title="Form"
+          description="A sample form using Polaris components."
+        >
+          <Card sectioned>
+            <FormLayout>
+              <FormLayout.Group>
                 <TextField
-                  value={this.state.email}
-                  label="Email"
-                  placeholder="example@email.com"
-                  onChange={this.valueUpdater('email')}
+                  value={first}
+                  label="First name"
+                  placeholder="Tom"
+                  onChange={handleFirstChange}
                 />
-
                 <TextField
-                  multiline
-                  label="How did you hear about us?"
-                  placeholder="Website, ads, email, etc."
-                  value={this.state.autoGrow}
-                  onChange={this.valueUpdater('autoGrow')}
+                  value={last}
+                  label="Last name"
+                  placeholder="Ford"
+                  onChange={handleLastChange}
                 />
+              </FormLayout.Group>
 
-                <ChoiceList
-                  allowMultiple
-                  choices={choiceListItems}
-                  selected={this.state.checkboxes}
-                  onChange={this.valueUpdater('checkboxes')}
-                />
+              <TextField
+                value={email}
+                label="Email"
+                placeholder="example@email.com"
+                onChange={handleEmailChange}
+              />
 
-                <Button primary>Submit</Button>
-              </FormLayout>
-            </Card>
-          </Layout.AnnotatedSection>
+              <ChoiceList
+                allowMultiple
+                choices={choiceListItems}
+                selected={checkboxes}
+                onChange={handleCheckboxesChange}
+              />
 
-          <Layout.Section>
-            <FooterHelp>
-              For more details on Polaris, visit our{' '}
-              <Link url="https://polaris.shopify.com">style guide</Link>.
-            </FooterHelp>
-          </Layout.Section>
-        </Layout>
-      </Page>
-    );
-  }
+              <Button primary>Submit</Button>
+            </FormLayout>
+          </Card>
+        </Layout.AnnotatedSection>
 
-  valueUpdater(field) {
-    return (value) => this.setState({[field]: value});
-  }
-
-  toggleConnection() {
-    this.setState(({connected}) => ({connected: !connected}));
-  }
-
-  connectAccountMarkup() {
-    return (
-      <Layout.AnnotatedSection
-        title="Account"
-        description="Connect your account to your Shopify store."
-      >
-        <AccountConnection
-          action={{
-            content: 'Connect',
-            onAction: this.toggleConnection.bind(this, this.state),
-          }}
-          details="No account connected"
-          termsOfService={
-            <p>
-              By clicking Connect, you are accepting Sample’s{' '}
-              <Link url="https://polaris.shopify.com">
-                Terms and Conditions
-              </Link>
-              , including a commission rate of 15% on sales.
-            </p>
-          }
-        />
-      </Layout.AnnotatedSection>
-    );
-  }
-
-  disconnectAccountMarkup() {
-    return (
-      <Layout.AnnotatedSection
-        title="Account"
-        description="Disconnect your account from your Shopify store."
-      >
-        <AccountConnection
-          connected
-          action={{
-            content: 'Disconnect',
-            onAction: this.toggleConnection.bind(this, this.state),
-          }}
-          accountName="Tom Ford"
-          title={<Link url="http://google.com">Tom Ford</Link>}
-          details="Account id: d587647ae4"
-        />
-      </Layout.AnnotatedSection>
-    );
-  }
+        <Layout.Section>
+          <FooterHelp>
+            For more details on Polaris, visit our{' '}
+            <Link url="https://polaris.shopify.com">style guide</Link>.
+          </FooterHelp>
+        </Layout.Section>
+      </Layout>
+    </Page>
+  );
 }
 
-export default App;
+function ConnectAccount({onAction}) {
+  return (
+    <AccountConnection
+      action={{content: 'Connect', onAction}}
+      details="No account connected"
+      termsOfService={
+        <p>
+          By clicking Connect, you are accepting Sample’s{' '}
+          <Link url="https://polaris.shopify.com">Terms and Conditions</Link>,
+          including a commission rate of 15% on sales.
+        </p>
+      }
+    />
+  );
+}
+
+function DisconnectAccount({onAction}) {
+  return (
+    <AccountConnection
+      connected
+      action={{content: 'Disconnect', onAction}}
+      accountName="Tom Ford"
+      title={<Link url="http://google.com">Tom Ford</Link>}
+      details="Account id: d587647ae4"
+    />
+  );
+}
