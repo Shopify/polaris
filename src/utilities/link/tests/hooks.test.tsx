@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {mountWithContext} from 'test-utilities';
+import {mountWithApp} from 'test-utilities';
 import {useLink} from '../hooks';
 import {LinkContext} from '../context';
 
@@ -19,7 +19,7 @@ describe('useLink', () => {
   });
 
   it('returns context', () => {
-    const component = mountWithContext(<Component />);
+    const component = mountWithApp(<Component />);
     expect(component).toContainReactComponent('div');
   });
 });

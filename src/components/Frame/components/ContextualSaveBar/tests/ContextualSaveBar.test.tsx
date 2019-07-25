@@ -211,7 +211,7 @@ describe('<ContextualSaveBar />', () => {
   describe('logo', () => {
     it('will render an image with the contextual save bar source', () => {
       const contextualSaveBar = mountWithAppProvider(<ContextualSaveBar />, {
-        themeProvider: {
+        theme: {
           logo: {
             width: 200,
             contextualSaveBarSource: './assets/monochrome_shopify.svg',
@@ -225,7 +225,7 @@ describe('<ContextualSaveBar />', () => {
 
     it('will render an image with the width provided', () => {
       const contextualSaveBar = mountWithAppProvider(<ContextualSaveBar />, {
-        themeProvider: {
+        theme: {
           logo: {
             width: 200,
             contextualSaveBarSource: './assets/monochrome_shopify.svg',
@@ -240,7 +240,7 @@ describe('<ContextualSaveBar />', () => {
 
     it('will render the image with a default width if 0 is provided', () => {
       const contextualSaveBar = mountWithAppProvider(<ContextualSaveBar />, {
-        themeProvider: {
+        theme: {
           logo: {
             contextualSaveBarSource: './assets/monochrome_shopify.svg',
             width: 0,
@@ -257,7 +257,7 @@ describe('<ContextualSaveBar />', () => {
       const contextualSaveBar = mountWithAppProvider(
         <ContextualSaveBar alignContentFlush />,
         {
-          themeProvider: {
+          theme: {
             logo: {
               contextualSaveBarSource: './assets/monochrome_shopify.svg',
               width: 200,

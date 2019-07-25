@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {mount, mountWithContext} from 'test-utilities';
+import {mount, mountWithApp} from 'test-utilities';
 import {useStickyManager} from '../hooks';
 import {StickyManagerContext} from '../context';
 
@@ -21,7 +21,7 @@ describe('useStickyManager', () => {
   });
 
   it('returns context', () => {
-    const component = mountWithContext(<Component />);
+    const component = mountWithApp(<Component />);
     expect(component).toContainReactComponent('div');
   });
 
