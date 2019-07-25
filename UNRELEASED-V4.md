@@ -24,7 +24,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed `LinkLikeComponent` type export. Use `AppProviderProps['linkComponent']` instead. ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
 - Applied scroll locking at the root (`html`) level instead of the `body`, which could impact non-Polaris modals and overlays in consuming apps ([#1854](https://github.com/Shopify/polaris-react/pull/1854))
 
-
 ### New components
 
 - `PolarisTestProvider`: Use for Polaris context in tests, see [polaris examples](https://github.com/Shopify/polaris-react/tree/master/examples) for usage ([#1810](https://github.com/Shopify/polaris-react/pull/1810))
