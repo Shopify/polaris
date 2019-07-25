@@ -2365,7 +2365,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.0.2", "@types/react@^16.8.15":
+"@types/react@*", "@types/react@^16.0.2", "@types/react@>=16.4.0", "@types/react@^16.8.15":
   version "16.8.15"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.15.tgz#a76515fed5aa3e996603056f54427fec5f2a5122"
   integrity sha512-dMhzw1rWK+wwJWvPp5Pk12ksSrm/z/C/+lOQbMZ7YfDQYnJ02bc0wtg4EJD9qrFhuxFrf/ywNgwTboucobJqQg==
