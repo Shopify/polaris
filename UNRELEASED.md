@@ -15,6 +15,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Bug fixes
 
 - Fixed accessibility issue with ChoiceList errors not being correctly connected to the inputs ([#1824](https://github.com/Shopify/polaris-react/pull/1824));
+- Fixed `Tab` `aria-controls` pointing to a non-existent `Panel` `id` ([#1869](https://github.com/Shopify/polaris-react/pull/1869))
 
 ### Documentation
 
@@ -23,5 +24,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Dependency upgrades
 
 ### Code quality
+
+- Use `@shopify/typescript-configs` as the base of `tsconfig.json` for the project ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
 
 ### Deprecations

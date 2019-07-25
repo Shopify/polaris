@@ -1332,20 +1332,22 @@
   resolved "https://registry.yarnpkg.com/@shopify/app-bridge/-/app-bridge-1.3.0.tgz#1c3dfb1b3e10041a3d639a219bc7010051f5fa97"
   integrity sha512-h4/RGKsLUej4gE6/XVXoOa3lG7xRUfwYvV+xfFkyoI7xZWNa8RmfKtgnzPBIxRBIWkeQBoms7hWuYuqO9RENLw==
 
-"@shopify/async@^1.2.1":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@shopify/async/-/async-1.3.2.tgz#a376702f3fc583d5479aa7d8f257ccc77360e4f4"
-  integrity sha512-bha3CgRCgCBfStVowGqPcR0jP+z4a5FM6RojZGlWBlq6YhQCXD3IDfwvwAgzDJwXY5972wY2ZOcJB3q2GPaohQ==
+"@shopify/async@>1.2.0 <3.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/async/-/async-2.0.0.tgz#8d3f4e96a0f8e1e2bc9b4a873885fbee6c22124a"
+  integrity sha512-lYPqlMv+Nk3MwRDUAEe9f7KU1KguL4KuVUYEOXHpD538TG/vWmda+E6Djjg/ow1U/1HtYf6LiusxBVkyuBSnIA==
 
 "@shopify/browserslist-config@^1.0.0":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@shopify/browserslist-config/-/browserslist-config-1.0.3.tgz#c7172d9c5673f6beaf51ad1a51fefa82b0f06392"
   integrity sha512-PkoBUAy/NKFbngX3ehw9FYUdraU+++IZceAnU0G+g7ukuVfT1I6+aOVRXZQzhasdTV9i71j9ocI8VMQxh1itaA==
 
-"@shopify/build-targets@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@shopify/build-targets/-/build-targets-1.0.1.tgz#c7d827a8bffb75b7f4914804ec645f12635a7a01"
-  integrity sha512-TyVhoBA0ZD0SEpia6U41ox1wI+ZCa5pXPJHmhpU0olTYhP3agq1/qJZnbxhbUWC0xhejQ0elpWnAXmQoffStWA==
+"@shopify/build-targets@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@shopify/build-targets/-/build-targets-1.1.0.tgz#a56549f3ecf01fbd740ec2402634f70d398be204"
+  integrity sha512-0yJa1kzByk7WmASqAiRkRqI0fyIzxJzfmyXNr3UjbxXhFP/Z9UQBSe1snD6feZ0Xd56JOQIG9gstcYQC88dmhw==
+  dependencies:
+    browserslist "^4.6.3"
 
 "@shopify/fail-on-unexpected-module-shaking-plugin@^1.0.6":
   version "1.0.6"
@@ -1357,10 +1359,10 @@
   resolved "https://registry.yarnpkg.com/@shopify/find-duplicate-dependencies-plugin/-/find-duplicate-dependencies-plugin-1.1.3.tgz#59f8646345aa225e8ec33de1dd58efd380ce7fa0"
   integrity sha512-KQU8DVU382ZW7tB7AypdF/NlUOZOcZjKTxceFZdvKOr8h6T6zxHqIHg7XKPEPIEwdDZXqVqcEJQhYn2qSeeu0w==
 
-"@shopify/images@^1.1.4":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@shopify/images/-/images-1.1.5.tgz#f7ae5d5801b4550085480825ceda66420d9ff700"
-  integrity sha512-DIPOT6ACpmsqYwvh0TQ48PgmZFceuoV8imrxfmCK6HD+zWcE6TWfunKaGEo0DkkdsS+6guGd/aJXe9m+dyBvdQ==
+"@shopify/images@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/images/-/images-2.0.0.tgz#0bb2f1a4b7022eac90469050cefa2ee44bdd8a00"
+  integrity sha512-eEkeih5GM4MJKNAY6vGMpsej/yefRyfqBqCHz/LM+RNlJTDo+BaUCLkO2mL/FXzuFfv4fVPkCgKmARsqMrjc3g==
 
 "@shopify/integrity-sha-utils@^1.0.2":
   version "1.0.2"
@@ -1440,20 +1442,21 @@
     jest-matcher-utils "^24.5.0"
     react-reconciler "^0.20.2"
 
-"@shopify/sewing-kit@0.88.0":
-  version "0.88.0"
-  resolved "https://registry.yarnpkg.com/@shopify/sewing-kit/-/sewing-kit-0.88.0.tgz#abe7e17a86495e39f707d03338509f6f6e1d1ad6"
-  integrity sha512-hptted9RG9riQjG4pflm6DKHMYoh3hJDn59pw+b71qLOd3GwdbBykyNbEFclnspsqCCC3AvZn3fV9gy9xV0VCw==
+"@shopify/sewing-kit@^0.92.3":
+  version "0.92.3"
+  resolved "https://registry.yarnpkg.com/@shopify/sewing-kit/-/sewing-kit-0.92.3.tgz#c43ad5337d2109d8886fa12fc3262970b4ed9543"
+  integrity sha512-+yhIwuJjZIq5+T79mcaUGIxKG4GF5pWAGctaSwd4EwU/oeb7TfOE/69rnoN+nf61hoPHP6AJy6NFjYrm1T89ig==
   dependencies:
     "@babel/core" "^7.4.4"
-    "@shopify/async" "^1.2.1"
+    "@shopify/async" ">1.2.0 <3.0.0"
     "@shopify/browserslist-config" "^1.0.0"
-    "@shopify/build-targets" "^1.0.1"
+    "@shopify/build-targets" "^1.1.0"
     "@shopify/fail-on-unexpected-module-shaking-plugin" "^1.0.6"
     "@shopify/find-duplicate-dependencies-plugin" "^1.1.3"
-    "@shopify/images" "^1.1.4"
+    "@shopify/images" "^2.0.0"
     "@shopify/polyfills" "^0.0.10"
-    "@shopify/webpack-asset-metadata-plugin" "^1.1.1"
+    "@shopify/typescript-configs" "^1.0.1"
+    "@shopify/webpack-asset-metadata-plugin" "^1.2.0"
     "@shopify/webpack-ignore-typescript-export-warnings-plugin" "^1.0.1"
     "@shopify/webpack-no-react-jsx-loader" "^1.0.2"
     "@shopify/webpack-no-typescript-ts-loader" "^1.0.2"
@@ -1470,6 +1473,7 @@
     babel-loader "^8.0.5"
     babel-plugin-lodash "^3.3.4"
     babel-preset-shopify "^20.0.0"
+    browserslist "^4.6.3"
     cache-loader "^1.2.5"
     case-sensitive-paths-webpack-plugin "^2.1.2"
     chalk "^2.3.2"
@@ -1545,6 +1549,11 @@
     whatwg-url "^6.1.0"
     yargs "^12.0.2"
 
+"@shopify/typescript-configs@^1.0.1":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@shopify/typescript-configs/-/typescript-configs-1.0.2.tgz#e035e4b73cd7e9e15a11395d26c4677c18e1737b"
+  integrity sha512-4XCjstBEjvxIhTOJVXza6EdBvdLwqpyOzF6ZJJucslWp7xuW24aJVYP0SywF17uGb7LtEFiomzicVHtrFvBgkA==
+
 "@shopify/useful-types@^1.2.4", "@shopify/useful-types@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@shopify/useful-types/-/useful-types-1.3.0.tgz#79cfb6722d2cc192c05f14e55789bcfe2b40a6de"
@@ -1553,12 +1562,12 @@
     "@types/react" ">=16.4.0"
     tslib "^1.9.3"
 
-"@shopify/webpack-asset-metadata-plugin@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@shopify/webpack-asset-metadata-plugin/-/webpack-asset-metadata-plugin-1.1.1.tgz#71e058b18d38f2d75e6172d4e45da7b677abcf1e"
-  integrity sha512-SuWmUDS49LMfS9SqYawD6GTZ6wMP0y83pyY9LBE8opqgLSicF7eOg3G17y0BcJLEkXobNUjxCRHtLesU0nQJiw==
+"@shopify/webpack-asset-metadata-plugin@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@shopify/webpack-asset-metadata-plugin/-/webpack-asset-metadata-plugin-1.2.0.tgz#fb2b7e26cc04871eb5659290ef89ee1f00104fab"
+  integrity sha512-7NF+5GOz17TgZ+xWSzJ8F7FRCxajoWE3CGD1BbDRecPPAeuWBXSYjtdCSMZt2DTdjdfo+ZJ7HexxZwjAim+IiA==
   dependencies:
-    "@shopify/build-targets" "^1.0.1"
+    "@shopify/build-targets" "^1.1.0"
     "@shopify/integrity-sha-utils" "^1.0.2"
 
 "@shopify/webpack-ignore-typescript-export-warnings-plugin@^1.0.1":
@@ -2360,14 +2369,6 @@
   version "16.8.15"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.15.tgz#a76515fed5aa3e996603056f54427fec5f2a5122"
   integrity sha512-dMhzw1rWK+wwJWvPp5Pk12ksSrm/z/C/+lOQbMZ7YfDQYnJ02bc0wtg4EJD9qrFhuxFrf/ywNgwTboucobJqQg==
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^2.2.0"
-
-"@types/react@>=16.4.0":
-  version "16.8.19"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.19.tgz#629154ef05e2e1985cdde94477deefd823ad9be3"
-  integrity sha512-QzEzjrd1zFzY9cDlbIiFvdr+YUmefuuRYrPxmkwG0UQv5XF35gFIi7a95m1bNVcFU0VimxSZ5QVGSiBmlggQXQ==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -4388,41 +4389,14 @@ browserslist@4.5.4:
     electron-to-chromium "^1.3.122"
     node-releases "^1.1.13"
 
-browserslist@^4.0.0, browserslist@^4.3.3:
-  version "4.5.5"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.5.5.tgz#fe1a352330d2490d5735574c149a85bc18ef9b82"
-  integrity sha512-0QFO1r/2c792Ohkit5XI8Cm8pDtZxgNl2H6HU4mHrpYz7314pEYcsAVVatM0l/YmxPnEzh9VygXouj4gkFUTKA==
+browserslist@^4.0.0, browserslist@^4.3.3, browserslist@^4.3.7, browserslist@^4.5.2, browserslist@^4.6.0, browserslist@^4.6.1, browserslist@^4.6.2, browserslist@^4.6.3:
+  version "4.6.6"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.6.6.tgz#6e4bf467cde520bc9dbdf3747dafa03531cec453"
+  integrity sha512-D2Nk3W9JL9Fp/gIcWei8LrERCS+eXu9AM5cfXA8WEZ84lFks+ARnZ0q/R69m2SV3Wjma83QDDPxsNKXUwdIsyA==
   dependencies:
-    caniuse-lite "^1.0.30000960"
-    electron-to-chromium "^1.3.124"
-    node-releases "^1.1.14"
-
-browserslist@^4.3.7:
-  version "4.3.7"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.3.7.tgz#f1de479a6466ea47a0a26dcc725e7504817e624a"
-  integrity sha512-pWQv51Ynb0MNk9JGMCZ8VkM785/4MQNXiFYtPqI7EEP0TJO+/d/NqRVn1uiAN0DNbnlUSpL2sh16Kspasv3pUQ==
-  dependencies:
-    caniuse-lite "^1.0.30000925"
-    electron-to-chromium "^1.3.96"
-    node-releases "^1.1.3"
-
-browserslist@^4.5.2, browserslist@^4.6.1, browserslist@^4.6.2:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.6.3.tgz#0530cbc6ab0c1f3fc8c819c72377ba55cf647f05"
-  integrity sha512-CNBqTCq22RKM8wKJNowcqihHJ4SkI8CGeK7KOR9tPboXUuS5Zk5lQgzzTbs4oxD8x+6HUshZUa2OyNI9lR93bQ==
-  dependencies:
-    caniuse-lite "^1.0.30000975"
-    electron-to-chromium "^1.3.164"
-    node-releases "^1.1.23"
-
-browserslist@^4.6.0:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.6.1.tgz#ee5059b1aec18cbec9d055d6cb5e24ae50343a9b"
-  integrity sha512-1MC18ooMPRG2UuVFJTHFIAkk6mpByJfxCrnUyvSlu/hyQSFHMrlhM02SzNuCV+quTP4CKmqtOMAIjrifrpBJXQ==
-  dependencies:
-    caniuse-lite "^1.0.30000971"
-    electron-to-chromium "^1.3.137"
-    node-releases "^1.1.21"
+    caniuse-lite "^1.0.30000984"
+    electron-to-chromium "^1.3.191"
+    node-releases "^1.1.25"
 
 bser@^2.0.0:
   version "2.0.0"
@@ -4711,7 +4685,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000898, caniuse-lite@^1.0.30000925, caniuse-lite@^1.0.30000960:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000898:
   version "1.0.30000963"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000963.tgz#5be481d5292f22aff5ee0db4a6c049b65b5798b1"
   integrity sha512-n4HUiullc7Lw0LyzpeLa2ffP8KxFBGdxqD/8G3bSL6oB758hZ2UE2CVK+tQN958tJIi0/tfpjAc67aAtoHgnrQ==
@@ -4721,7 +4695,7 @@ caniuse-lite@^1.0.30000884, caniuse-lite@^1.0.30000926:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000927.tgz#114a9de4ff1e01f5790fe578ecd93421c7524665"
   integrity sha512-ogq4NbUWf1uG/j66k0AmiO3GjqJAlQyF8n4w8a954cbCyFKmYGvRtgz6qkq2fWuduTXHibX7GyYL5Pg58Aks2g==
 
-caniuse-lite@^1.0.30000955, caniuse-lite@^1.0.30000975:
+caniuse-lite@^1.0.30000955:
   version "1.0.30000976"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000976.tgz#d30fe12662cb2a21e130d307db9907513ca830a2"
   integrity sha512-tleNB1IwPRqZiod6nUNum63xQCMN96BUO2JTeiwuRM7p9d616EHsMBjBWJMudX39qCaPuWY8KEWzMZq7A9XQMQ==
@@ -4730,6 +4704,11 @@ caniuse-lite@^1.0.30000971:
   version "1.0.30000971"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000971.tgz#d1000e4546486a6977756547352bc96a4cfd2b13"
   integrity sha512-TQFYFhRS0O5rdsmSbF1Wn+16latXYsQJat66f7S7lizXW1PVpWJeZw9wqqVLIjuxDRz7s7xRUj13QCfd8hKn6g==
+
+caniuse-lite@^1.0.30000984:
+  version "1.0.30000985"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000985.tgz#0eb40f6c8a8c219155cbe43c4975c0efb4a0f77f"
+  integrity sha512-1ngiwkgqAYPG0JSSUp3PUDGPKKY59EK7NrGGX+VOxaKCNzRbNc7uXMny+c3VJfZxtoK3wSImTvG9T9sXiTw2+w==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -6606,20 +6585,15 @@ ejs@^2.6.1:
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
   integrity sha512-0xy4A/twfrRCnkhfk8ErDi5DqdAsAqeGxht4xkCUrsvhhbQNs7E+4jV0CN7+NKIY0aHE72+XvqtBIXzD31ZbXQ==
 
-electron-to-chromium@^1.3.122, electron-to-chromium@^1.3.164:
+electron-to-chromium@^1.3.122:
   version "1.3.172"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.172.tgz#1eafb3afdc47bcb9c2a2249b2736be352016da4b"
   integrity sha512-bHgFvYeHBiQNNuY/WvoX37zLosPgMbR8nKU1r4mylHptLvuMMny/KG/L28DTIlcoOCJjMAhEimy3DHDgDayPbg==
 
-electron-to-chromium@^1.3.124, electron-to-chromium@^1.3.96:
-  version "1.3.127"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.127.tgz#9b34d3d63ee0f3747967205b953b25fe7feb0e10"
-  integrity sha512-1o25iFRf/dbgauTWalEzmD1EmRN3a2CzP/K7UVpYLEBduk96LF0FyUdCcf4Ry2mAWJ1VxyblFjC93q6qlLwA2A==
-
-electron-to-chromium@^1.3.137:
-  version "1.3.143"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.143.tgz#8b2a631ab75157aa53d0c2933275643b99ef580b"
-  integrity sha512-J9jOpxIljQZlV6GIP2fwAWq0T69syawU0sH3EW3O2Bgxquiy+veeIT5mBDRz+i3oHUSL1tvVgRKH3/4QiQh9Pg==
+electron-to-chromium@^1.3.191:
+  version "1.3.199"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.199.tgz#f9a62a74cda77854310a2abffde8b75591ea09a1"
+  integrity sha512-gachlDdHSK47s0N2e58GH9HMC6Z4ip0SfmYUa5iEbE50AKaOUXysaJnXMfKj0xB245jWbYcyFSH+th3rqsF8hA==
 
 electron-to-chromium@^1.3.62:
   version "1.3.66"
@@ -12326,24 +12300,17 @@ node-releases@^1.0.0-alpha.11:
   dependencies:
     semver "^5.3.0"
 
-node-releases@^1.1.13, node-releases@^1.1.23:
+node-releases@^1.1.13:
   version "1.1.23"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.23.tgz#de7409f72de044a2fa59c097f436ba89c39997f0"
   integrity sha512-uq1iL79YjfYC0WXoHbC/z28q/9pOl8kSHaXdWmAAc8No+bDwqkZbzIJz55g/MUsPgSGm9LZ7QSUbzTcH5tz47w==
   dependencies:
     semver "^5.3.0"
 
-node-releases@^1.1.14, node-releases@^1.1.3:
-  version "1.1.17"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.17.tgz#71ea4631f0a97d5cd4f65f7d04ecf9072eac711a"
-  integrity sha512-/SCjetyta1m7YXLgtACZGDYJdCSIBAWorDWkGCGZlydP2Ll7J48l7j/JxNYZ+xsgSPbWfdulVS/aY+GdjUsQ7Q==
-  dependencies:
-    semver "^5.3.0"
-
-node-releases@^1.1.21:
-  version "1.1.22"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.22.tgz#d90cd5adc59ab9b0f377d4f532b09656399c88bf"
-  integrity sha512-O6XpteBuntW1j86mw6LlovBIwTe+sO2+7vi9avQffNeIW4upgnaCVm6xrBWH+KATz7mNNRNNeEpuWB7dT6Cr3w==
+node-releases@^1.1.25:
+  version "1.1.25"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.25.tgz#0c2d7dbc7fed30fbe02a9ee3007b8c90bf0133d3"
+  integrity sha512-fI5BXuk83lKEoZDdH3gRhtsNgh05/wZacuXkgbiYkceE7+QIMXOg98n9ZV7mz27B+kFHnqHcUpscZZlGRSmTpQ==
   dependencies:
     semver "^5.3.0"
 
