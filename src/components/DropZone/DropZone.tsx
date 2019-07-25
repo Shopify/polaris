@@ -244,7 +244,6 @@ class DropZone extends React.Component<CombinedProps, State> {
       disabled,
       type: 'file',
       multiple: allowMultiple,
-      name: id,
       ref: this.fileInputNode,
       onChange: this.handleDrop,
       autoComplete: 'off',
@@ -314,39 +313,31 @@ class DropZone extends React.Component<CombinedProps, State> {
       ? label
       : intl.translate('Polaris.DropZone.FileUpload.label');
     const labelHiddenValue = label ? labelHidden : true;
-    const dropZoneMarkup = (
-      <div ref={this.node} className={styles.DropZoneWrapper}>
-        <div
-          className={classes}
-          aria-disabled={disabled}
-          onClick={this.handleClick}
-          onDragStart={handleDragStart}
-        >
-          {dragOverlay}
-          {dragErrorOverlay}
-          <div className={styles.Container}>{children}</div>
-          <VisuallyHidden>
-            <input {...inputAttributes} />
-          </VisuallyHidden>
-        </div>
-      </div>
-    );
-
-    const labelledDropzoneMarkup = label ? (
-      <Labelled
-        id={id}
-        label={labelValue}
-        action={labelAction}
-        labelHidden={labelHiddenValue}
-      >
-        {dropZoneMarkup}
-      </Labelled>
-    ) : (
-      dropZoneMarkup
-    );
 
     return (
-      <Provider value={this.getContext}>{labelledDropzoneMarkup}</Provider>
+      <Provider value={this.getContext}>
+        <Labelled
+          id={id}
+          label={labelValue}
+          action={labelAction}
+          labelHidden={labelHiddenValue}
+        >
+          <div
+            ref={this.node}
+            className={classes}
+            aria-disabled={disabled}
+            onClick={this.handleClick}
+            onDragStart={handleDragStart}
+          >
+            {dragOverlay}
+            {dragErrorOverlay}
+            <div className={styles.Container}>{children}</div>
+            <VisuallyHidden>
+              <input {...inputAttributes} />
+            </VisuallyHidden>
+          </div>
+        </Labelled>
+      </Provider>
     );
   }
 

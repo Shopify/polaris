@@ -16,7 +16,7 @@
     "**/node_modules": true,
     ".{dev,shadowenv.d}": true,
     "build-intermediate/": true,
-    "build/": true,
+    "build/": false,
     "docs/": true,
     "esnext/": true,
     "index.*": true,
