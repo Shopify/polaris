@@ -31,7 +31,7 @@ export default class ToastManager extends React.PureComponent<Props, never> {
           timeout={{enter: 0, exit: 400}}
           classNames={toastClasses}
         >
-          <div ref={this.toastNodes[index]} aria-live="polite">
+          <div ref={this.toastNodes[index]}>
             <Toast {...toast} />
           </div>
         </CSSTransition>
@@ -41,7 +41,7 @@ export default class ToastManager extends React.PureComponent<Props, never> {
     return (
       <Portal idPrefix="toast-manager">
         <EventListener event="resize" handler={this.updateToasts} />
-        <div className={styles.ToastManager}>
+        <div className={styles.ToastManager} aria-live="polite">
           <TransitionGroup component={null}>{toastsMarkup}</TransitionGroup>
         </div>
       </Portal>
