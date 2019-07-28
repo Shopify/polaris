@@ -46,6 +46,10 @@
   padding: spacing(loose) spacing(none);
 }
 
+.Section-flush {
+  padding: spacing(none);
+}
+
 .Section-subdued {
   background-color: color('sky', 'lighter');
 

@@ -15,6 +15,7 @@ export interface Props {
   subdued?: boolean;
   fullWidth?: boolean;
   actions?: ComplexAction[];
+  flush?: boolean;
 }
 
 export default function Section({
@@ -23,11 +24,13 @@ export default function Section({
   subdued,
   fullWidth,
   actions,
+  flush,
 }: Props) {
   const className = classNames(
     styles.Section,
     subdued && styles['Section-subdued'],
     fullWidth && styles['Section-fullWidth'],
+    flush && styles['Section-flush'],
   );
 
   const actionMarkup = actions ? (
