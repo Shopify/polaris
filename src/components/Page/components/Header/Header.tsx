@@ -4,7 +4,7 @@ import debounce from 'lodash/debounce';
 
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
-import {MenuActionDescriptor, MenuGroupDescriptor} from '../../../../types';
+import {ComplexAction, MenuGroupDescriptor} from '../../../../types';
 
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import EventListener from '../../../EventListener';
@@ -35,7 +35,7 @@ export interface Props extends TitleProps {
   /** Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
   /** Collection of secondary page-level actions */
-  secondaryActions?: MenuActionDescriptor[];
+  secondaryActions?: ComplexAction[];
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
 }

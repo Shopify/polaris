@@ -3,7 +3,7 @@ import {classNames} from '@shopify/css-utilities';
 
 import {
   ActionListSection,
-  MenuActionDescriptor,
+  ComplexAction,
   MenuGroupDescriptor,
 } from '../../types';
 
@@ -12,9 +12,9 @@ import {MenuAction, MenuGroup, RollupActions} from './components';
 import styles from './ActionMenu.scss';
 
 export interface Props {
-  /** Collection of page-level actions */
-  actions?: MenuActionDescriptor[];
-  /** Collection of page-level groups of secondary actions */
+  /** Collection of page-level secondary actions */
+  actions?: ComplexAction[];
+  /** Collection of page-level action groups */
   groups?: MenuGroupDescriptor[];
   /** Roll up all actions into a Popover > ActionList */
   rollup?: boolean;
