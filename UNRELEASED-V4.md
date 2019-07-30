@@ -40,6 +40,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Updated `AppProvider` app bridge example to use our `AppBridgeContext`([#1877](https://github.com/Shopify/polaris-react/pull/1877))
+
 ### Development workflow
 
 - Added support for React hooks in Storybook ([#1665](https://github.com/Shopify/polaris-react/pull/1665))
