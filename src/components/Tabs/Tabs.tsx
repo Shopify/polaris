@@ -42,8 +42,6 @@ export interface State {
 }
 
 class Tabs extends React.PureComponent<CombinedProps, State> {
-  static Panel = Panel;
-
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     const {disclosureWidth, tabWidths, containerWidth} = prevState;
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(

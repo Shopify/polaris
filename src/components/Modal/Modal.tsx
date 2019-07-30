@@ -95,7 +95,6 @@ const APP_BRIDGE_PROPS: (keyof Props)[] = [
 ];
 
 class Modal extends React.Component<CombinedProps, State> {
-  static Dialog = Dialog;
   static Section = Section;
   focusReturnPointNode: HTMLElement;
 
