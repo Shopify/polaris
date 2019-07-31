@@ -15,7 +15,6 @@ import {HeaderPrimaryAction} from '../../../types';
 import Header, {Props} from '../Header';
 import Title from '..';
 
-
 describe('<Header />', () => {
   const mockProps: Props = {
     title: 'mock title',
