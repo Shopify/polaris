@@ -1,0 +1,38 @@
+@import '../../../../../../styles/common';
+
+.Title {
+  @include text-breakword;
+}
+
+.SubTitle {
+  margin-top: spacing(tight);
+}
+
+.hasThumbnail {
+  display: grid;
+  grid-gap: spacing();
+  grid-template-columns: auto 1fr;
+
+  .TitleAndSubtitleWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.TitleWithMetadataWrapper {
+  .Title {
+    display: inline;
+    margin-right: spacing(tight);
+
+    // stylelint-disable-next-line selector-max-combinators
+    > * {
+      display: inline;
+    }
+  }
+
+  .TitleMetadata {
+    margin-top: spacing(tight);
+    display: inline-block;
+  }
+}

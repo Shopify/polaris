@@ -6,11 +6,14 @@ import {
   buttonsFrom,
   EventListener,
   Pagination,
+  Badge,
+  Avatar,
 } from 'components';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {LinkAction} from '../../../../../types';
 import {HeaderPrimaryAction} from '../../../types';
 import Header, {Props} from '../Header';
+import Title from '..';
 
 describe('<Header />', () => {
   const mockProps: Props = {
@@ -34,21 +37,34 @@ describe('<Header />', () => {
     expect(resizeEventListener).toHaveLength(1);
   });
 
-  describe('title', () => {
-    it('is displayed in the header', () => {
-      const mockTitle = 'mock title';
-      const header = mountWithAppProvider(<Header title={mockTitle} />);
-      expect(header.text()).toContain(mockTitle);
-    });
-  });
+  describe('Title', () => {
+    const mockProps = {
+      title: 'title',
+      subtitle: 'subtitle',
+      titleMetadata: <Badge>Sold</Badge>,
+      thumbnail: <Avatar customer />,
+    };
 
-  describe('titleMetadata', () => {
-    it('is displayed in the header', () => {
-      const metaData = <div />;
-      const header = mountWithAppProvider(
-        <Header {...mockProps} titleMetadata={metaData} />,
+    it('sets the title on the Title', () => {
+      const header = mountWithAppProvider(<Header {...mockProps} />);
+      expect(header.find(Title).prop('title')).toBe(mockProps.title);
+    });
+
+    it('sets the subtitle on the Title', () => {
+      const header = mountWithAppProvider(<Header {...mockProps} />);
+      expect(header.find(Title).prop('subtitle')).toBe(mockProps.subtitle);
+    });
+
+    it('sets the thumbnail on the Title', () => {
+      const header = mountWithAppProvider(<Header {...mockProps} />);
+      expect(header.find(Title).prop('thumbnail')).toBe(mockProps.thumbnail);
+    });
+
+    it('sets the titleMetadata on the Title', () => {
+      const header = mountWithAppProvider(<Header {...mockProps} />);
+      expect(header.find(Title).prop('titleMetadata')).toBe(
+        mockProps.titleMetadata,
       );
-      expect(header.contains(metaData)).toBeTruthy();
     });
   });
 

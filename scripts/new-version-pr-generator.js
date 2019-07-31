@@ -39,13 +39,10 @@ const polarisBotToken = secrets.github['shopify-polaris'];
 const shopifyPolarisBotGitOverride = `GIT_COMMITTER_NAME='${polarisBotName}' GIT_COMMITTER_EMAIL='${polarisBotEmail}'`;
 
 function pullRequestTemplate(repository, version) {
-  return `
-## Version ${version} of @shopify/polaris just got published!
+  let prodAssetChecklist = '';
 
-See what’s new: https://github.com/Shopify/polaris-react/releases/tag/${version}
-
----
-
+  if (repository === 'web') {
+    prodAssetChecklist = `
 ### How to [tophat](https://development.shopify.io/engineering/developing_at_Shopify/write-code/tophatting)
 
 <!-- Tophatting instructions, and/ or what you want reviewers to concentrate on. -->
@@ -56,11 +53,20 @@ See what’s new: https://github.com/Shopify/polaris-react/releases/tag/${versio
 
 - [ ] This PR is [safe to rollback](https://development.shopify.io/guides/shipping/safe_to_merge#Signs_your_PR_is_safe_to_rollback). ⚠️ This field is required.
 
-  <!-- If it is not safe, please detail what would need to happen to make it safe. For example, if this PR removes a GraphQL field that will then be removed from the schema, link to the Shopify Core PR that removes the field. -->
+<!-- If it is not safe, please detail what would need to happen to make it safe. For example, if this PR removes a GraphQL field that will then be removed from the schema, link to the Shopify Core PR that removes the field. -->
 
 - [ ] I [tophatted](https://development.shopify.io/engineering/developing_at_Shopify/write-code/tophatting) this change with production assets.
 
-  <!-- If you are having difficulties running the production build, please ask in #shopify-web. -->
+<!-- If you are having difficulties running the production build, please ask in #shopify-web. -->
+    `;
+  }
+
+  return `
+## Version ${version} of @shopify/polaris just got published!
+
+See what’s new: https://github.com/Shopify/polaris-react/releases/tag/${version}
+
+${prodAssetChecklist}
 
 ---
 

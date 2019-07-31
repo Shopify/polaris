@@ -6,18 +6,15 @@ import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 import EventListener from '../../../EventListener';
 import {MenuActionDescriptor, MenuGroupDescriptor} from '../../../../types';
 import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
-import DisplayText from '../../../DisplayText';
+
 import Pagination, {PaginationDescriptor} from '../../../Pagination';
 import ActionMenu, {hasGroupsWithActions} from '../../../ActionMenu';
 
 import {HeaderPrimaryAction} from '../../types';
+import {Title, TitleProps} from './components';
 import styles from './Header.scss';
 
-export interface Props {
-  /** Page title, in large type */
-  title: string;
-  /** Important and non-interactive status information shown immediately after the title. (stand-alone app use only) */
-  titleMetadata?: React.ReactNode;
+export interface Props extends TitleProps {
   /** Visually hide the title (stand-alone app use only) */
   titleHidden?: boolean;
   /** Adds a border to the bottom of the page header (stand-alone app use only) */
@@ -72,7 +69,9 @@ export default class Header extends React.PureComponent<Props, State> {
   render() {
     const {
       title,
+      subtitle,
       titleMetadata,
+      thumbnail,
       titleHidden = false,
       separator,
       primaryAction,
@@ -81,6 +80,7 @@ export default class Header extends React.PureComponent<Props, State> {
       secondaryActions = [],
       actionGroups = [],
     } = this.props;
+
     const {mobileView} = this.state;
 
     const breadcrumbMarkup =
@@ -105,18 +105,13 @@ export default class Header extends React.PureComponent<Props, State> {
         </div>
       ) : null;
 
-    const titleMarkup = (
-      <div className={styles.Title}>
-        <div className={styles.DisplayTextWrapper}>
-          <DisplayText size="large" element="h1">
-            {title}
-          </DisplayText>
-        </div>
-
-        {titleMetadata && (
-          <div className={styles.TitleMetadataWrapper}>{titleMetadata}</div>
-        )}
-      </div>
+    const pageTitleMarkup = (
+      <Title
+        title={title}
+        subtitle={subtitle}
+        titleMetadata={titleMetadata}
+        thumbnail={thumbnail}
+      />
     );
 
     const primaryActionMarkup = primaryAction ? (
@@ -153,7 +148,7 @@ export default class Header extends React.PureComponent<Props, State> {
 
         <div className={styles.MainContent}>
           <div className={styles.TitleActionMenuWrapper}>
-            {titleMarkup}
+            {pageTitleMarkup}
             {actionMenuMarkup}
           </div>
 
