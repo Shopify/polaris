@@ -2,7 +2,7 @@ import React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
-import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
+import {act, trigger, mountWithAppProvider} from 'test-utilities/legacy';
 import NavigationContext, {NavigationContextType} from '../../../context';
 
 import Item, {Props as ItemProps} from '../Item';
@@ -61,12 +61,13 @@ describe('<Nav.Item />', () => {
     const item = itemForLocation('/admin/orders');
 
     matchMedia.setMedia(() => ({matches: true}));
-    // Likely cause for error - https://github.com/airbnb/enzyme/issues/2073
-    trigger(item.find(UnstyledLink).first(), 'onClick', {
-      preventDefault: jest.fn(),
-      currentTarget: {
-        getAttribute: () => '/admin/orders',
-      },
+    act(() => {
+      trigger(item.find(UnstyledLink).first(), 'onClick', {
+        preventDefault: jest.fn(),
+        currentTarget: {
+          getAttribute: () => '/admin/orders',
+        },
+      });
     });
 
     expect(item.find(Secondary).prop('expanded')).toBe(true);

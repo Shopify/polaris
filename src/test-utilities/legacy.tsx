@@ -1,5 +1,6 @@
 import {ReactWrapper, CommonWrapper, mount} from 'enzyme';
 import React from 'react';
+import {act} from 'react-dom/test-utils';
 import {get} from '../utilities/get';
 import translations from '../../locales/en.json';
 
@@ -7,6 +8,8 @@ import {
   PolarisTestProvider,
   WithPolarisTestProviderOptions,
 } from './PolarisTestProvider';
+
+export {act};
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
