@@ -13,7 +13,7 @@ import {
 import {scrollable} from '../shared';
 
 import {ScrollTo} from './components';
-import ScrollableContext from './context';
+import {ScrollableContext} from './context';
 
 import styles from './Scrollable.scss';
 
@@ -125,12 +125,8 @@ export default class Scrollable extends React.Component<Props, State> {
       bottomShadow && styles.hasBottomShadow,
     );
 
-    const scrollableContext = {
-      scrollToPosition: this.scrollToPosition,
-    };
-
     return (
-      <ScrollableContext.Provider value={scrollableContext}>
+      <ScrollableContext.Provider value={this.scrollToPosition}>
         <StickyManagerContext.Provider value={this.stickyManager}>
           <div
             className={finalClassName}
