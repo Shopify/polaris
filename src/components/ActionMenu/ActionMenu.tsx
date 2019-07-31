@@ -75,7 +75,7 @@ export default class ActionMenu extends React.PureComponent<Props, State> {
             title={title}
             active={title === activeMenuGroup}
             {...rest}
-            onOpen={this.handleMenuGroupOpen}
+            onOpen={this.handleMenuGroupToggle.bind(this)}
             onClose={this.handleMenuGroupClose}
           />
         ))
@@ -89,8 +89,9 @@ export default class ActionMenu extends React.PureComponent<Props, State> {
     ) : null;
   };
 
-  private handleMenuGroupOpen = (group: string) => {
-    this.setState({activeMenuGroup: group});
+  private handleMenuGroupToggle = (group: string) => {
+    const {activeMenuGroup} = this.state;
+    this.setState({activeMenuGroup: activeMenuGroup ? undefined : group});
   };
 
   private handleMenuGroupClose = () => {
