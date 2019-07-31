@@ -263,7 +263,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal.find(Modal.Dialog).prop('limitHeight')).toBeTruthy();
+      expect(modal.find(Dialog).prop('limitHeight')).toBeTruthy();
     });
   });
 
