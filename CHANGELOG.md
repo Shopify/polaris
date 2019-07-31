@@ -39,7 +39,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Fixed `tabIndex` on `main` element causing event delegation issues ([#1821](https://github.com/Shopify/polaris-react/pull/1821))
 - Fixed icon color for destructive ActionList items ([#1836](https://github.com/Shopify/polaris-react/pull/1836))
 - Fixed not being able to explictly set `autoComplete` prop on`Autocomplete.TextField` ([#1839](https://github.com/Shopify/polaris-react/pull/1839))
-- Fixed not being able to close popover in secondary actions by clicking trigger [#1905](https://github.com/Shopify/polaris-react/pull/1905)
 
 ### Documentation
 
