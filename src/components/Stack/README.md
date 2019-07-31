@@ -28,18 +28,12 @@ children. Options provide control of the wrapping, spacing, and relative size of
 
 ## Best practices
 
-Stacks should:
+Stack should:
 
 - Be used for small-scale layout tasks when you want a row of components that should wrap on small screen widths
 - Be used to vertically center two elements
 - Not be used for complex or unique arrangements of components
 - Not be used for large-scale page layout
-
----
-
-## Content guidelines
-
-There are no content elements that are specific to stack.
 
 ---
 

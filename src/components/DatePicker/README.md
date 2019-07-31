@@ -37,13 +37,7 @@ Date pickers should:
 - Set the start date on first click or tap and the end date on second click or tap if a range
   is required
 - Not be used to enter a date that is many years in the future or the past
-
----
-
-## Content guidelines
-
-There are no content elements that are specific to the date picker.
-Learn how to [format dates and numbers](/content/grammar-and-mechanics#dates-and-numbers) in your interface content.
+- Follow [date format guidelines](https://polaris.shopify.com/content/grammar-and-mechanics#section-dates-numbers-and-addresses)
 
 ---
 
