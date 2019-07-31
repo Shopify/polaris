@@ -58,7 +58,7 @@ function ToastManager({toastMessages}: Props) {
         timeout={{enter: 0, exit: 400}}
         classNames={toastClasses}
       >
-        <div ref={toastNode} aria-live="polite">
+        <div ref={toastNode}>
           <Toast {...toast} />
         </div>
       </CSSTransition>
@@ -68,7 +68,7 @@ function ToastManager({toastMessages}: Props) {
   return (
     <Portal idPrefix="toast-manager">
       <EventListener event="resize" handler={updateToasts} />
-      <div className={styles.ToastManager}>
+      <div className={styles.ToastManager} aria-live="polite">
         <TransitionGroup component={null}>{toastsMarkup}</TransitionGroup>
       </div>
     </Portal>

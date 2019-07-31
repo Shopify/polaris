@@ -185,8 +185,15 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
 ```jsx
 <Page
   breadcrumbs={[{content: 'Products', url: '/products'}]}
-  title="Jar With Lock-Lid"
-  titleMetadata={<Badge>Draft</Badge>}
+  title="3/4 inch Leather pet collar"
+  titleMetadata={<Badge status="success">Paid</Badge>}
+  subtitle="Perfect for any pet"
+  thumbnail={
+    <Thumbnail
+      source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+      alt="Black leather pet collar"
+    />
+  }
   primaryAction={{content: 'Save', disabled: true}}
   secondaryActions={[
     {
@@ -268,6 +275,69 @@ Use when a primary action functions better as part of the page content instead o
       <Button primary>Continue</Button>
     </Stack>
   </Card>
+</Page>
+```
+
+### Page with subtitle
+
+<!-- example-for: web -->
+
+Use when the page title benefits from secondary content.
+
+```jsx
+<Page
+  breadcrumbs={[{content: 'Products', url: '/products'}]}
+  title="Invoice"
+  subtitle="Statement period: May 3, 2019 to June 2, 2019"
+  secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
+>
+  <p>Page content</p>
+</Page>
+```
+
+### Page with title thumbnail
+
+<!-- example-for: web -->
+
+Use when an image will help merchants identify the purpose of the page.
+
+```jsx
+<Page
+  breadcrumbs={[{content: 'Products', url: '/products/31'}]}
+  title="3/4 inch Leather pet collar"
+  titleMetadata={<Badge status="success">Paid</Badge>}
+  thumbnail={
+    <Thumbnail
+      source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+      alt="Black leather pet collar"
+    />
+  }
+  secondaryActions={[
+    {
+      content: 'Duplicate',
+      icon: DuplicateMinor,
+    },
+    {
+      content: 'View',
+      icon: ViewMinor,
+    },
+  ]}
+  actionGroups={[
+    {
+      title: 'Promote',
+      actions: [{content: 'Share on Facebook'}],
+    },
+    {
+      title: 'More actions',
+      actions: [{content: 'Embed on a website'}],
+    },
+  ]}
+  pagination={{
+    hasPrevious: true,
+    hasNext: true,
+  }}
+>
+  <p>Page content</p>
 </Page>
 ```
 
