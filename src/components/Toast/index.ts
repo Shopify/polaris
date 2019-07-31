@@ -1,3 +1,1 @@
-import Toast from './Toast';
-
-export default Toast;
+export {default, Props} from './Toast';

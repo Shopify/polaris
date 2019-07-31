@@ -6,7 +6,7 @@ import {
 import {classNames} from '../../../../utilities/css';
 import EventListener from '../../../EventListener';
 import Portal from '../../../Portal';
-import {ToastPropsWithID} from '../../types';
+import {ToastPropsWithID} from '../../../../utilities/frame';
 import Toast from '../Toast';
 import {useDeepCompare} from '../../../../utilities/use-deep-compare';
 import {useDeepCallback} from '../../../../utilities/use-deep-callback';

@@ -1,6 +1,6 @@
-import React, {useContext, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
-import {FrameContext} from '../Frame';
+import {useFrame} from '../../utilities/frame';
 import {useAppBridge} from '../../utilities/app-bridge';
 
 export interface Props {}
@@ -8,13 +8,13 @@ export interface Props {}
 function Loading() {
   const appBridgeLoading = useRef<AppBridgeLoading.Loading>();
   const appBridge = useAppBridge();
-  const frame = useContext(FrameContext);
+  const {startLoading, stopLoading} = useFrame();
 
   useEffect(
     () => {
-      if (appBridge == null && frame) {
-        frame.startLoading();
-      } else if (appBridge != null) {
+      if (appBridge == null) {
+        startLoading();
+      } else {
         // eslint-disable-next-line no-console
         console.warn(
           'Deprecation: Using `Loading` in an embedded app is deprecated and will be removed in v5.0. Use `Loading` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/loading',
@@ -25,14 +25,14 @@ function Loading() {
       }
 
       return () => {
-        if (appBridge == null && frame) {
-          frame.stopLoading();
+        if (appBridge == null) {
+          stopLoading();
         } else if (appBridgeLoading.current != null) {
           appBridgeLoading.current.dispatch(AppBridgeLoading.Action.STOP);
         }
       };
     },
-    [appBridge, frame],
+    [appBridge, startLoading, stopLoading],
   );
 
   return null;

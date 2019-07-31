@@ -6,7 +6,7 @@ import {
   findByTestID,
 } from 'test-utilities/legacy';
 import Button from '../../../../Button';
-import {ToastProps as Props} from '../../../types';
+import {ToastProps as Props} from '../../../../../utilities/frame';
 import Toast from '../Toast';
 import {Key} from '../../../../../types';
 
