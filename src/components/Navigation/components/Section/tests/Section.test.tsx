@@ -8,14 +8,14 @@ import {
 } from 'test-utilities/legacy';
 
 import Collapsible from '../../../../Collapsible';
-import NavigationContext, {NavigationContextType} from '../../../context';
+import {NavigationContext} from '../../../context';
 import Item from '../../Item';
 import Section from '../Section';
 
 import channelResults from './fixtures/AdminNavQuery/multiple-channels.json';
 
 describe('<Navigation.Section />', () => {
-  let context: NavigationContextType;
+  let context: React.ContextType<typeof NavigationContext>;
 
   beforeEach(() => {
     matchMedia.mock();
@@ -258,7 +258,7 @@ describe('<Navigation.Section />', () => {
 
 function mountWithNavigationProvider(
   node: React.ReactElement<any>,
-  context: NavigationContextType = {location: ''},
+  context: React.ContextType<typeof NavigationContext> = {location: ''},
 ) {
   return mountWithAppProvider(
     <NavigationContext.Provider value={context}>

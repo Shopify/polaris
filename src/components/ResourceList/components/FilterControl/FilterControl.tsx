@@ -7,7 +7,7 @@ import FormLayout from '../../../FormLayout';
 import TextField from '../../../TextField';
 import Tag from '../../../Tag';
 import {useI18n} from '../../../../utilities/i18n';
-import ResourceListContext from '../../context';
+import {ResourceListContext} from '../../context';
 
 import {FilterCreator} from './components';
 import {AppliedFilter, Filter, FilterType, Operator} from './types';

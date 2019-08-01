@@ -1,10 +1,8 @@
 import React from 'react';
 
-export interface ComboBoxContextType {
+interface ComboBoxContextType {
   comboBoxId?: string;
   selectedOptionId?: string;
 }
 
-const ComboBoxContext = React.createContext<ComboBoxContextType>({});
-
-export default ComboBoxContext;
+export const ComboBoxContext = React.createContext<ComboBoxContextType>({});

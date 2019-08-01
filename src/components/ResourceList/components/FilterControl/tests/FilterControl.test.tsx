@@ -1,7 +1,7 @@
 import React from 'react';
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
 import {TextField, Tag, Button} from 'components';
-import ResourceListContext from '../../../context';
+import {ResourceListContext} from '../../../context';
 import {
   Filter,
   FilterType,

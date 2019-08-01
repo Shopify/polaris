@@ -4,4 +4,4 @@ export enum RangeSliderDefault {
   Max = 100,
   Step = 1,
 }
-export {default as invertNumber} from './invertNumber';
+export {invertNumber} from './invertNumber';
