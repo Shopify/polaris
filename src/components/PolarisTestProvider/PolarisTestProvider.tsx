@@ -1,15 +1,17 @@
 import React from 'react';
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {FrameContext, FrameContextType} from '../components/Frame';
-import {Theme, ThemeContext} from '../utilities/theme';
+import {FrameContext, FrameContextType} from '../Frame';
+import {Theme, ThemeContext} from '../../utilities/theme';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
-} from '../utilities/scroll-lock-manager';
-import {StickyManager, StickyManagerContext} from '../utilities/sticky-manager';
-import {AppBridgeContext, AppBridgeOptions} from '../utilities/app-bridge';
-import {I18n, I18nContext, TranslationDictionary} from '../utilities/i18n';
-import {LinkContext, LinkLikeComponent} from '../utilities/link';
+} from '../../utilities/scroll-lock-manager';
+import {
+  StickyManager,
+  StickyManagerContext,
+} from '../../utilities/sticky-manager';
+import {AppBridgeContext, AppBridgeOptions} from '../../utilities/app-bridge';
+import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
+import {LinkContext, LinkLikeComponent} from '../../utilities/link';
 
 /**
  * When writing a custom mounting function `mountWithAppContext(node, options)`
@@ -31,7 +33,7 @@ export interface Props extends WithPolarisTestProviderOptions {
   strict?: boolean;
 }
 
-export function PolarisTestProvider({
+export default function PolarisTestProvider({
   strict,
   children,
   i18n,
