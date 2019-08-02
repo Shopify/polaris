@@ -187,6 +187,11 @@ export {default as PageActions, Props as PageActionsProps} from './PageActions';
 export {default as Pagination, Props as PaginationProps} from './Pagination';
 
 export {
+  default as PolarisTestProvider,
+  WithPolarisTestProviderOptions,
+} from './PolarisTestProvider';
+
+export {
   default as Popover,
   Props as PopoverProps,
   CloseSource as PopoverCloseSource,

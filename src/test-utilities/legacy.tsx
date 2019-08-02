@@ -7,7 +7,7 @@ import translations from '../../locales/en.json';
 import {
   PolarisTestProvider,
   WithPolarisTestProviderOptions,
-} from './PolarisTestProvider';
+} from '../components';
 
 export {act};
 
