@@ -26,10 +26,6 @@ describe('build', () => {
     expect(fs.existsSync('./styles.css')).toBe(true);
   });
 
-  it('generates a ./styles/components dir with Icon.scss', () => {
-    expect(fs.existsSync('./styles/components/Icon/Icon.scss')).toBe(true);
-  });
-
   it('generates a ./styles/foundation dir with spacing.scss', () => {
     expect(fs.existsSync('./styles/foundation/_spacing.scss')).toBe(true);
   });
@@ -45,27 +41,16 @@ describe('build', () => {
     expect(fs.existsSync('./styles.scss')).toBe(true);
   });
 
-  it('copies over subcomponent stylesheets', () => {
-    expect(
-      fs.existsSync(
-        './styles/components/ResourceList/components/BulkActions/BulkActions.scss',
-      ),
-    ).toBe(true);
-  });
-
   it('generates fully namespaced CSS for root components', () => {
-    expect(
-      fs.readFileSync('./styles/components/Button/Button.scss', 'utf8'),
-    ).toMatch('.Polaris-Button{');
+    expect(fs.readFileSync('./styles/components.scss', 'utf8')).toMatch(
+      '.Polaris-Button{',
+    );
   });
 
   it('generates fully namespaced CSS for nested components', () => {
-    expect(
-      fs.readFileSync(
-        './styles/components/ResourceList/components/Item/Item.scss',
-        'utf8',
-      ),
-    ).toMatch('.Polaris-ResourceList-Item{');
+    expect(fs.readFileSync('./styles/components.scss', 'utf8')).toMatch(
+      '.Polaris-ResourceList-Item{',
+    );
   });
 
   it('generates a zip of ./build/sass', () => {
