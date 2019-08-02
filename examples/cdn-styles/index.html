@@ -6,35 +6,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Polaris CDN Styles</title>
-  <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/latest/polaris.css" />
+  <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.20.0/polaris.min.css" />
 </head>
 
 <body>
+  <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-lighter:#1d9ba4;">
   <div class="Polaris-Page">
-    <div class="Polaris-Page__Header Polaris-Page__Header--hasBreadcrumbs Polaris-Page__Header--hasSecondaryActions Polaris-Page__Header--hasSeparator">
-      <div class="Polaris-Page__Navigation">
-        <nav role="navigation"><a class="Polaris-Breadcrumbs__Breadcrumb" data-polaris-unstyled="true"><span class="Polaris-Breadcrumbs__Icon"><span
-                class="Polaris-Icon"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20"><path d="M12 16a.997.997 0 0 1-.707-.293l-5-5a.999.999 0 0 1 0-1.414l5-5a.999.999 0 1 1 1.414 1.414L8.414 10l4.293 4.293A.999.999 0 0 1 12 16"
-                    fill-rule="evenodd"></path></svg></span></span><span class="Polaris-Breadcrumbs__Content">Polaris</span></a></nav>
+    <div class="Polaris-Page-Header Polaris-Page-Header--hasNavigation Polaris-Page-Header--hasActionMenu">
+      <div class="Polaris-Page-Header__Navigation">
+        <div class="Polaris-Page-Header__BreadcrumbWrapper">
+          <nav role="navigation"><button class="Polaris-Breadcrumbs__Breadcrumb" type="button"><span class="Polaris-Breadcrumbs__Icon"><span class="Polaris-Icon"><svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                    <path d="M12 16a.997.997 0 0 1-.707-.293l-5-5a.999.999 0 0 1 0-1.414l5-5a.999.999 0 1 1 1.414 1.414L8.414 10l4.293 4.293A.999.999 0 0 1 12 16" fill-rule="evenodd"></path>
+                  </svg></span></span><span class="Polaris-Breadcrumbs__Content">CDN Styles</span></button></nav>
+        </div>
       </div>
-      <div class="Polaris-Page__MainContent">
-        <div class="Polaris-Page__TitleAndActions">
-          <div class="Polaris-Page__Title">
-            <h1 class="Polaris-DisplayText Polaris-DisplayText--sizeLarge">Polaris</h1>
+      <div class="Polaris-Page-Header__MainContent">
+        <div class="Polaris-Page-Header__TitleActionMenuWrapper">
+          <div class="Polaris-Page-Header__Title">
+            <div>
+              <h1 class="Polaris-DisplayText Polaris-DisplayText--sizeLarge">Polaris</h1>
+            </div>
           </div>
-          <div class="Polaris-Page__Actions">
-            <div class="Polaris-Page__PrimaryAction"><button type="button" class="Polaris-Button Polaris-Button--primary Polaris-Button--disabled"
-                disabled=""><span class="Polaris-Button__Content"><span>Save</span></span></button></div>
-            <div class="Polaris-Page__SecondaryActions">
-              <div class="Polaris-Page__IndividualActions"><button class="Polaris-Page__Action" type="button"><span class="Polaris-Page__ActionContent"><span
-                      class="Polaris-Page__ActionIcon"><span class="Polaris-Icon"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20"><path
-                            d="M13.707 10.707a.997.997 0 0 1-1.414 0L11 9.414V17a1 1 0 1 1-2 0V9.414l-1.293 1.293a.999.999 0 1 1-1.414-1.414l3-3a.999.999 0 0 1 1.414 0l3 3a.999.999 0 0 1 0 1.414zM17 2a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-3a1 1 0 1 1 0-2h2V4H4v9h2a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h14z"
-                            fill-rule="evenodd"></path></svg></span></span><span>Import</span></span></button></div>
+          <div class="Polaris-Page-Header__ActionMenuWrapper">
+            <div class="Polaris-ActionMenu">
+              <div class="Polaris-ActionMenu__ActionsLayout"><button type="button" class="Polaris-ActionMenu-MenuAction"><span class="Polaris-ActionMenu-MenuAction__ContentWrapper"><span class="Polaris-ActionMenu-MenuAction__IconWrapper"><span class="Polaris-Icon"><svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                          <path d="M9.293 13.707l-3-3a.999.999 0 1 1 1.414-1.414L9 10.586V3a1 1 0 1 1 2 0v7.586l1.293-1.293a.999.999 0 1 1 1.414 1.414l-3 3a.999.999 0 0 1-1.414 0zM17 16a1 1 0 1 1 0 2H3a1 1 0 1 1 0-2h14z"></path>
+                        </svg></span></span><span>Import</span></span></button></div>
             </div>
           </div>
         </div>
-        <div class="Polaris-Page__PrimaryAction"><button type="button" class="Polaris-Button Polaris-Button--primary Polaris-Button--disabled"
-            disabled=""><span class="Polaris-Button__Content"><span>Save</span></span></button></div>
+        <div class="Polaris-Page-Header__PrimaryActionWrapper"><button type="button" class="Polaris-Button Polaris-Button--primary"><span class="Polaris-Button__Content"><span class="Polaris-Button__Text">New product</span></span></button></div>
       </div>
     </div>
     <div class="Polaris-Page__Content">
@@ -247,6 +248,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </body>
 
