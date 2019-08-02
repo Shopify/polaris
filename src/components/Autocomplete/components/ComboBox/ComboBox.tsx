@@ -283,19 +283,21 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   };
 
   private handleEnter = (event: KeyboardEvent) => {
-    if (event.keyCode === Key.Enter) {
-      const {selectedOption} = this.state;
-      if (this.state.popoverActive && selectedOption) {
-        if (isOption(selectedOption)) {
-          event.preventDefault();
-          this.handleSelection(selectedOption.value);
-        } else {
-          selectedOption.onAction && selectedOption.onAction();
-        }
-      }
-
-      this.handlePopoverOpen;
+    if (event.keyCode !== Key.Enter) {
+      return;
     }
+
+    const {selectedOption} = this.state;
+    if (this.state.popoverActive && selectedOption) {
+      if (isOption(selectedOption)) {
+        event.preventDefault();
+        this.handleSelection(selectedOption.value);
+      } else {
+        selectedOption.onAction && selectedOption.onAction();
+      }
+    }
+
+    this.handlePopoverOpen;
   };
 
   private handleFocus = () => {

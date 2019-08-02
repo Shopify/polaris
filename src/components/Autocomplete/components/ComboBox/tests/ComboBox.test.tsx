@@ -408,6 +408,36 @@ describe('<ComboBox/>', () => {
   });
 
   describe('keypress events', () => {
+    it('handles key events when there are no previous options', () => {
+      const spy = jest.fn();
+      const options: {value: string; label: string}[] = [];
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={spy}
+        />,
+      );
+      comboBox.find(TextField).simulate('click');
+      dispatchKeyup(Key.DownArrow);
+      dispatchKeydown(Key.Enter);
+      expect(spy).not.toHaveBeenCalled();
+
+      comboBox.setProps({
+        options: [
+          {value: 'cheese_pizza', label: 'Cheese Pizza'},
+          {value: 'macaroni_pizza', label: 'Macaroni Pizza'},
+          {value: 'pepperoni_pizza', label: 'Pepperoni Pizza'},
+        ],
+      });
+      comboBox.update();
+      comboBox.find(TextField).simulate('click');
+      dispatchKeyup(Key.DownArrow);
+      dispatchKeydown(Key.Enter);
+      expect(spy).toHaveBeenCalledWith(['cheese_pizza']);
+    });
+
     it('adds to selected options when the down arrow and enter keys are pressed', () => {
       const spy = jest.fn();
       const comboBox = mountWithAppProvider(
