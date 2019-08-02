@@ -23,7 +23,7 @@ import {
   FilterControl,
   Item,
 } from './components';
-import ResourceListContext from './context';
+import {ResourceListContext} from './context';
 
 import {SelectedItems, SELECT_ALL_ITEMS} from './types';
 

@@ -6,7 +6,7 @@ import Popover from '../../../Popover';
 import {PreferredPosition} from '../../../PositionedOverlay';
 import {ActionListItemDescriptor, Key} from '../../../../types';
 import KeypressListener from '../../../KeypressListener';
-import ComboBoxContext from './context';
+import {ComboBoxContext} from './context';
 
 import styles from './ComboBox.scss';
 

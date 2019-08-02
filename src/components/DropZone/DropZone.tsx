@@ -24,7 +24,7 @@ import {
 } from '../../utilities/with-app-provider';
 
 import {FileUpload} from './components';
-import DropZoneContext from './context';
+import {DropZoneContext} from './context';
 
 import {fileAccepted, getDataTransferFiles} from './utils';
 

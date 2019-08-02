@@ -11,7 +11,7 @@ import {
   Thumbnail,
   UnstyledLink,
 } from 'components';
-import ResourceListContext from '../../../context';
+import {ResourceListContext} from '../../../context';
 import Item from '../Item';
 
 describe('<Item />', () => {

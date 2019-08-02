@@ -18,6 +18,6 @@ export interface ResourceListContextType {
   ): void;
 }
 
-const ResourceListContext = React.createContext<ResourceListContextType>({});
-
-export default ResourceListContext;
+export const ResourceListContext = React.createContext<ResourceListContextType>(
+  {},
+);

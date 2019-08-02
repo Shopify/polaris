@@ -12,7 +12,7 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import {ResourceListContext, ResourceListContextType} from '../ResourceList';
+import {ResourceListContext} from '../ResourceList';
 import Button from '../Button';
 import DisplayText from '../DisplayText';
 import Collapsible from '../Collapsible';
@@ -27,7 +27,7 @@ import Badge from '../Badge';
 import Focus from '../Focus';
 import Sheet from '../Sheet';
 import Stack from '../Stack';
-import {Key, WithContextTypes} from '../../types';
+import {Key} from '../../types';
 
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import KeypressListener from '../KeypressListener';
@@ -78,9 +78,7 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-type ComposedProps = Props &
-  WithAppProviderProps &
-  WithContextTypes<ResourceListContextType>;
+type ComposedProps = Props & WithAppProviderProps;
 
 interface State {
   open: boolean;

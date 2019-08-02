@@ -3,7 +3,7 @@ import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '../../../../utilities/css';
 import {isObjectsEqual} from '../../../../utilities/is-objects-equal';
-import {DisableableAction, WithContextTypes} from '../../../../types';
+import {DisableableAction} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import {Props as AvatarProps} from '../../../Avatar';
@@ -18,12 +18,16 @@ import {
 } from '../../../../utilities/with-app-provider';
 
 import {SELECT_ALL_ITEMS, SelectedItems} from '../../types';
-import ResourceListContext, {ResourceListContextType} from '../../context';
+import {ResourceListContext} from '../../context';
 import styles from './Item.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
+
+interface WithContextTypes<IJ> {
+  context: IJ;
+}
 
 export interface BaseProps {
   /** Visually hidden text for screen readers */
@@ -63,10 +67,10 @@ export interface State {
 export type CombinedProps =
   | PropsWithUrl &
       WithAppProviderProps &
-      WithContextTypes<ResourceListContextType>
+      WithContextTypes<React.ContextType<typeof ResourceListContext>>
   | PropsWithClick &
       WithAppProviderProps &
-      WithContextTypes<ResourceListContextType>;
+      WithContextTypes<React.ContextType<typeof ResourceListContext>>;
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 const getUniqueOverlayID = createUniqueIDFactory('ResourceListItemOverlay');

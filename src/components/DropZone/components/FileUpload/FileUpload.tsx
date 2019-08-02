@@ -13,7 +13,7 @@ import TextStyle from '../../../TextStyle';
 
 import {fileUpload, imageUpload} from '../../images';
 
-import DropZoneContext from '../../context';
+import {DropZoneContext} from '../../context';
 import {useI18n} from '../../../../utilities/i18n';
 
 import styles from './FileUpload.scss';

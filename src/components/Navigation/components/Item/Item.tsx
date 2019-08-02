@@ -11,7 +11,7 @@ import React, {
 import {classNames} from '../../../../utilities/css';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
-import NavigationContext from '../../context';
+import {NavigationContext} from '../../context';
 import Badge from '../../../Badge';
 import Icon from '../../../Icon';
 import {IconProps} from '../../../../types';

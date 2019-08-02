@@ -3,7 +3,7 @@ import {PlusMinor} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
 import {act, trigger, mountWithAppProvider} from 'test-utilities/legacy';
-import NavigationContext, {NavigationContextType} from '../../../context';
+import {NavigationContext} from '../../../context';
 
 import Item, {Props as ItemProps} from '../Item';
 import {Secondary} from '../components';
@@ -466,7 +466,7 @@ function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {
 
 function mountWithNavigationProvider(
   node: React.ReactElement<any>,
-  context: NavigationContextType = {location: ''},
+  context: React.ContextType<typeof NavigationContext> = {location: ''},
 ) {
   return mountWithAppProvider(
     <NavigationContext.Provider value={context}>

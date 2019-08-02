@@ -304,10 +304,6 @@ export enum Key {
   SingleQuote = 222,
 }
 
-export interface WithContextTypes<IJ> {
-  context: IJ;
-}
-
 export enum TypeOf {
   Undefined = 'undefined',
   Object = 'object',
