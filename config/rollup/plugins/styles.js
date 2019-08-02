@@ -170,35 +170,26 @@ async function generateSass(inputFolder, outputFolder, cssByFile) {
     }),
   );
 
-  // For each file that was referenced in the build, create a copy of the compiled
-  // ouput
-  const componentsCssFilenames = [];
-  cssByFile.forEach(async (compiledCss, filename) => {
+  const writeStylesFolderFilesPromises = [];
+  const componentFilesContent = [];
+  cssByFile.forEach((compiledCss, filename) => {
+    // Promises to copy the files referenced that live in the styles folder
     if (filename.startsWith(`${inputFolder}/styles`)) {
-      await outputFile(
-        filename.replace(inputFolder, outputFolder),
-        compiledCss,
+      writeStylesFolderFilesPromises.push(
+        outputFile(filename.replace(inputFolder, outputFolder), compiledCss),
       );
     }
 
     // For every referenced file that lives in the components folder:
-    // - copy it into the `styles/components` folder
-    // - make a note of the filename to use as an import
+    // - make a note of the contents to use in styles/components.scss
     if (filename.startsWith(`${inputFolder}/components`)) {
-      componentsCssFilenames.push(filename.replace(inputFolder, '.'));
-
-      await outputFile(
-        filename.replace(inputFolder, `${outputFolder}/styles`),
-        compiledCss,
-      );
+      componentFilesContent.push(compiledCss);
     }
   });
 
   // Generate styles/components.scss
-  // Contains imports for all the individual components that we collected above
-  const componentsScssContents = componentsCssFilenames
-    .map((filename) => `@import "${filename.replace(/\.scss$/, '')}";`)
-    .join('\n');
+  // Contains contents for all the individual components that we collected above
+  const componentsScssContents = componentFilesContent.join('\n\n');
 
   // Generate polaris.scss
   const polarisScssContent = `@import 'styles/foundation';
@@ -208,6 +199,7 @@ async function generateSass(inputFolder, outputFolder, cssByFile) {
 `;
 
   await Promise.all([
+    ...writeStylesFolderFilesPromises,
     outputFile(
       `${outputFolder}/styles/components.scss`,
       componentsScssContents,
