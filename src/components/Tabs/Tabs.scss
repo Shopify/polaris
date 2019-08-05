@@ -116,6 +116,10 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   }
 }
 
+.Panel-hidden {
+  display: none;
+}
+
 .List {
   list-style: none;
   margin: 0;

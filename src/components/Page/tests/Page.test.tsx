@@ -6,7 +6,7 @@ import {
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 
-import {Card} from 'components';
+import {Card, Badge, Avatar} from 'components';
 import {Header} from '../components';
 import {LinkAction} from '../../../types';
 
@@ -100,6 +100,36 @@ describe('<Page />', () => {
       const title = 'Products';
       const page = mountWithAppProvider(<Page {...mockProps} title={title} />);
       expect(page.find(Header).prop('title')).toBe(title);
+    });
+  });
+
+  describe('subtitle', () => {
+    it('gets passed into the <Header />', () => {
+      const subtitle = 'Subtitle';
+      const page = mountWithAppProvider(
+        <Page {...mockProps} subtitle={subtitle} />,
+      );
+      expect(page.find(Header).prop('subtitle')).toBe(subtitle);
+    });
+  });
+
+  describe('titleMetadata', () => {
+    it('gets passed into the <Header />', () => {
+      const titleMetadata = <Badge>Sold</Badge>;
+      const page = mountWithAppProvider(
+        <Page {...mockProps} titleMetadata={titleMetadata} />,
+      );
+      expect(page.find(Header).prop('titleMetadata')).toBe(titleMetadata);
+    });
+  });
+
+  describe('thumbnail', () => {
+    it('gets passed into the <Header />', () => {
+      const thumbnail = <Avatar customer />;
+      const page = mountWithAppProvider(
+        <Page {...mockProps} thumbnail={thumbnail} />,
+      );
+      expect(page.find(Header).prop('thumbnail')).toBe(thumbnail);
     });
   });
 

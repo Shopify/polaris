@@ -5,9 +5,12 @@ import {AppProvider} from '@shopify/polaris';
 
 import App from './App';
 
-ReactDOM.render(
-  <AppProvider>
-    <App />
-  </AppProvider>,
-  document.getElementById('root'),
-);
+function WrappedApp() {
+  return (
+    <AppProvider>
+      <App />
+    </AppProvider>
+  );
+}
+
+ReactDOM.render(<WrappedApp />, document.getElementById('root'));

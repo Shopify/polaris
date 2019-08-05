@@ -10,18 +10,15 @@ import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import EventListener from '../../../EventListener';
 import {buttonsFrom} from '../../../Button';
 import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
-import DisplayText from '../../../DisplayText';
+
 import Pagination, {PaginationDescriptor} from '../../../Pagination';
 import ActionMenu, {hasGroupsWithActions} from '../../../ActionMenu';
 
 import {HeaderPrimaryAction} from '../../types';
+import {Title, TitleProps} from './components';
 import styles from './Header.scss';
 
-export interface Props {
-  /** Page title, in large type */
-  title: string;
-  /** Important and non-interactive status information shown immediately after the title. (stand-alone app use only) */
-  titleMetadata?: React.ReactNode;
+export interface Props extends TitleProps {
   /** Visually hide the title (stand-alone app use only) */
   titleHidden?: boolean;
   /**
@@ -83,7 +80,9 @@ class Header extends React.PureComponent<ComposedProps, State> {
   render() {
     const {
       title,
+      subtitle,
       titleMetadata,
+      thumbnail,
       titleHidden = false,
       icon,
       separator,
@@ -94,6 +93,7 @@ class Header extends React.PureComponent<ComposedProps, State> {
       actionGroups = [],
       polaris: {intl},
     } = this.props;
+
     const {mobileView} = this.state;
 
     if (icon) {
@@ -123,18 +123,13 @@ class Header extends React.PureComponent<ComposedProps, State> {
         </div>
       ) : null;
 
-    const titleMarkup = (
-      <div className={styles.Title}>
-        <div className={styles.DisplayTextWrapper}>
-          <DisplayText size="large" element="h1">
-            {title}
-          </DisplayText>
-        </div>
-
-        {titleMetadata && (
-          <div className={styles.TitleMetadataWrapper}>{titleMetadata}</div>
-        )}
-      </div>
+    const pageTitleMarkup = (
+      <Title
+        title={title}
+        subtitle={subtitle}
+        titleMetadata={titleMetadata}
+        thumbnail={thumbnail}
+      />
     );
 
     const primaryActionMarkup = primaryAction ? (
@@ -171,7 +166,7 @@ class Header extends React.PureComponent<ComposedProps, State> {
 
         <div className={styles.MainContent}>
           <div className={styles.TitleActionMenuWrapper}>
-            {titleMarkup}
+            {pageTitleMarkup}
             {actionMenuMarkup}
           </div>
 

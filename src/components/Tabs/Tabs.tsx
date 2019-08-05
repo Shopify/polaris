@@ -79,14 +79,26 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
 
-    const panelMarkup = children ? (
-      <Panel
-        id={tabs[selected].panelID || `${tabs[selected].id}-panel`}
-        tabID={tabs[selected].id}
-      >
-        {children}
-      </Panel>
-    ) : null;
+    const panelMarkup = children
+      ? tabs.map((_tab, index) => {
+          return selected === index ? (
+            <Panel
+              id={tabs[index].panelID || `${tabs[index].id}-panel`}
+              tabID={tabs[index].id}
+              key={tabs[index].id}
+            >
+              {children}
+            </Panel>
+          ) : (
+            <Panel
+              id={tabs[index].panelID || `${tabs[index].id}-panel`}
+              tabID={tabs[index].id}
+              key={tabs[index].id}
+              hidden
+            />
+          );
+        })
+      : null;
 
     const tabsMarkup = visibleTabs
       .sort((tabA, tabB) => tabA - tabB)

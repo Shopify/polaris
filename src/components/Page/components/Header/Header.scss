@@ -66,10 +66,6 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
   }
 }
 
-.Title {
-  @include page-title-layout;
-}
-
 .PrimaryActionWrapper {
   .mobileView & {
     margin-top: spacing();

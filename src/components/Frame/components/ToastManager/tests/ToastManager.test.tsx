@@ -29,6 +29,21 @@ describe('<ToastManager />', () => {
       });
     }).not.toThrow();
   });
+
+  it('has and aria-live attribute of polite', () => {
+    const toastManager = mountWithAppProvider(
+      <ToastManager
+        toastMessages={[{id: '1', content: 'Hello', onDismiss: noop}]}
+      />,
+    );
+
+    expect(
+      toastManager
+        .find('div')
+        .at(0)
+        .prop('aria-live'),
+    ).toBe('polite');
+  });
 });
 
 describe('<Toast />', () => {

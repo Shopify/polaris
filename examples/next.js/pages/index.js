@@ -36,7 +36,7 @@ export default function App() {
     [connected],
   );
 
-  const breadcrumbs = [{content: 'Sample apps'}, {content: 'webpack'}];
+  const breadcrumbs = [{content: 'Sample apps'}, {content: 'next.js'}];
   const primaryAction = {content: 'New product'};
   const secondaryActions = [{content: 'Import', icon: ImportMinor}];
 
