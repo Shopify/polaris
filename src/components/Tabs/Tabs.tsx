@@ -125,7 +125,9 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
         onClick={this.handleDisclosureActivatorClick}
         aria-label={intl.translate('Polaris.Tabs.toggleTabsLabel')}
       >
-        <Icon source={HorizontalDotsMinor} />
+        <span className={styles.Title}>
+          <Icon source={HorizontalDotsMinor} />
+        </span>
       </button>
     );
 
