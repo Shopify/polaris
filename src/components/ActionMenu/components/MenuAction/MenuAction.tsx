@@ -3,14 +3,17 @@ import classNames from 'classnames';
 import {CaretDownMinor} from '@shopify/polaris-icons';
 
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
-import {MenuActionDescriptor} from '../../../../types';
+import {ComplexAction} from '../../../../types';
 
 import Icon from '../../../Icon';
 import UnstyledLink from '../../../UnstyledLink';
 
 import styles from './MenuAction.scss';
 
-export interface Props extends MenuActionDescriptor {}
+export interface Props extends ComplexAction {
+  /** Whether or not the action discloses a menu group */
+  disclosure?: boolean;
+}
 
 export default function MenuAction({
   content,
