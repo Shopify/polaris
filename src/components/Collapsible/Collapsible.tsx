@@ -69,12 +69,12 @@ export default function Collapsible({id, open, children}: Props) {
       if (ref == null) return;
 
       setHeight(ref.scrollHeight);
-      addEventListener(ref, 'resize', handleResize);
+      addEventListener(window, 'resize', handleResize);
 
       return () => {
         if (ref == null) return;
 
-        removeEventListener(ref, 'resize', handleResize);
+        removeEventListener(window, 'resize', handleResize);
       };
     },
     [handleResize, open],
