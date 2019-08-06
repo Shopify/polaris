@@ -64,7 +64,7 @@ export default class Item extends React.PureComponent<Props, never> {
       </button>
     );
 
-    return <li role="presentation">{markup}</li>;
+    return <li>{markup}</li>;
   }
 
   private setFocusedNode = (

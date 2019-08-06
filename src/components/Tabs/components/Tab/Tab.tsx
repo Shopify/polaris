@@ -131,11 +131,7 @@ class Tab extends React.PureComponent<CombinedProps, never> {
     );
 
     return (
-      <li
-        role="presentation"
-        className={styles.TabContainer}
-        ref={this.setNode}
-      >
+      <li className={styles.TabContainer} ref={this.setNode}>
         {markup}
       </li>
     );
