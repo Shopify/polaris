@@ -8,7 +8,6 @@ action "Add new issues to project" {
   args = ["🌌 Polaris backlog", "👀 Triage"]
   secrets = [
     "GITHUB_TOKEN",
-    "GH_PAT",
   ]
 }
 
@@ -22,5 +21,6 @@ action "Move assigned issue to column" {
   args = ["🌌 Polaris backlog", "🚀 In progress"]
   secrets = [
     "GITHUB_TOKEN",
+    "GH_PAT",
   ]
 }
