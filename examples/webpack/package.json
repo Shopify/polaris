@@ -1,31 +1,31 @@
 {
-  "name": "polaris-webpack-example",
+  "name": "polaris-example-webpack",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A Polaris example application using webpack",
-  "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server",
     "prebuild": "rimraf ./build",
     "build": "webpack"
   },
   "dependencies": {
-    "@shopify/polaris": "^3.10.0",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "@shopify/polaris": "^3.20.0",
+    "@shopify/polaris-icons": "^3.4.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5",
-    "css-loader": "^2.1.1",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.1.0",
     "html-webpack-plugin": "^3.2.0",
     "rimraf": "^2.6.3",
     "style-loader": "^0.23.1",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1"
-  },
-  "license": "MIT"
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  }
 }

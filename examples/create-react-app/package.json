@@ -1,23 +1,26 @@
 {
-  "name": "create-react-app",
-  "version": "0.1.0",
+  "name": "polaris-example-create-react-app",
   "private": true,
-  "dependencies": {
-    "@shopify/polaris": "^3.9.0",
-    "lodash": "^4.17.13",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
-  },
+  "version": "0.1.0",
+  "description": "A Polaris example application using create-react-app",
+  "license": "MIT",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "dependencies": {
+    "@shopify/polaris": "^3.20.0",
+    "@shopify/polaris-icons": "^3.4.0",
+    "lodash": "^4.17.15",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1"
+  },
   "devDependencies": {
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.1.1"
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0"
   },
   "browserslist": [
     "last 3 chrome versions",

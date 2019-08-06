@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
-import {MenuActionDescriptor, MenuGroupDescriptor} from '../../../types';
+import {MenuGroupDescriptor, ActionListItemDescriptor} from '../../../types';
 import {MenuAction, MenuGroup, RollupActions} from '../components';
 import ActionMenu, {Props, convertGroupToSection} from '../ActionMenu';
 
@@ -163,7 +163,7 @@ describe('<ActionMenu />', () => {
 });
 
 function fillMenuGroup(partialMenuGroup?: Partial<MenuGroupDescriptor>) {
-  const mockAction: MenuActionDescriptor = {
+  const mockAction: ActionListItemDescriptor = {
     content: 'mock content',
     url: 'https://shopify.ca',
     target: 'REMOTE',
