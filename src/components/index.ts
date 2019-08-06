@@ -70,7 +70,10 @@ export {
 
 export {default as Connected, Props as ConnectedProps} from './Connected';
 
-export {default as ContextualSaveBar} from './ContextualSaveBar';
+export {
+  default as ContextualSaveBar,
+  Props as ContextualSaveBarProps,
+} from './ContextualSaveBar';
 
 export {
   default as DataTable,
@@ -126,8 +129,6 @@ export {default as FormLayout, Props as FormLayoutProps} from './FormLayout';
 export {
   default as Frame,
   Props as FrameProps,
-  ContextualSaveBarProps,
-  ToastProps,
   DEFAULT_TOAST_DURATION,
   DEFAULT_TOAST_DURATION_WITH_ACTION,
 } from './Frame';
@@ -287,7 +288,7 @@ export {default as ThemeProvider} from './ThemeProvider';
 
 export {default as Thumbnail, Props as ThumbnailProps} from './Thumbnail';
 
-export {default as Toast} from './Toast';
+export {default as Toast, Props as ToastProps} from './Toast';
 
 export {default as Tooltip, Props as TooltipProps} from './Tooltip';
 

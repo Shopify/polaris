@@ -1,8 +1,9 @@
-import React, {useContext, useRef} from 'react';
+import React, {useRef} from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 
-import {DEFAULT_TOAST_DURATION, FrameContext, ToastProps} from '../Frame';
+import {DEFAULT_TOAST_DURATION} from '../Frame';
+import {ToastProps, useFrame} from '../../utilities/frame';
 import {useDeepCompare} from '../../utilities/use-deep-compare';
 import {useAppBridge} from '../../utilities/app-bridge';
 
@@ -12,12 +13,12 @@ const createId = createUniqueIDFactory('Toast');
 // a component's props to be found in the Props interface. This silly workaround
 // ensures that the Props Explorer table is generated correctly, instead of
 // crashing if we write `ComposedProps = ToastProps & WithAppProviderProps`
-interface Props extends ToastProps {}
+export interface Props extends ToastProps {}
 
 function Toast(props: Props) {
   const id = useRef(createId());
   const appBridgeToast = useRef<AppBridgeToast.Toast>();
-  const frame = useContext(FrameContext);
+  const {showToast, hideToast} = useFrame();
   const appBridge = useAppBridge();
 
   useDeepCompare(
@@ -30,12 +31,12 @@ function Toast(props: Props) {
       } = props;
       const toastId = id.current;
 
-      if (appBridge == null && frame) {
-        frame.showToast({
+      if (appBridge == null) {
+        showToast({
           id: id.current,
           ...props,
         });
-      } else if (appBridge != null) {
+      } else {
         // eslint-disable-next-line no-console
         console.warn(
           'Deprecation: Using `Toast` in an embedded app is deprecated and will be removed in v5.0. Use `Toast` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/toast',
@@ -55,8 +56,8 @@ function Toast(props: Props) {
       }
 
       return () => {
-        if (appBridge == null && frame) {
-          frame.hideToast({id: toastId});
+        if (appBridge == null) {
+          hideToast({id: toastId});
         } else if (appBridgeToast.current != null) {
           appBridgeToast.current.unsubscribe();
         }

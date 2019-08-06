@@ -7,7 +7,7 @@ import Button from '../../../Button';
 
 import Icon from '../../../Icon';
 import KeypressListener from '../../../KeypressListener';
-import {ToastProps as Props} from '../../types';
+import {ToastProps as Props} from '../../../../utilities/frame';
 
 import styles from './Toast.scss';
 

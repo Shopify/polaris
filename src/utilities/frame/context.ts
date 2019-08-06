@@ -10,6 +10,6 @@ export interface FrameContextType {
   stopLoading(): void;
 }
 
-const FrameContext = React.createContext<FrameContextType | null>(null);
-
-export default FrameContext;
+export const FrameContext = React.createContext<FrameContextType | undefined>(
+  undefined,
+);

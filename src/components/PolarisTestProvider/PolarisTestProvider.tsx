@@ -1,5 +1,5 @@
 import React from 'react';
-import {FrameContext, FrameContextType} from '../Frame';
+import {FrameContext} from '../../utilities/frame';
 import {Theme, ThemeContext} from '../../utilities/theme';
 import {
   ScrollLockManager,
@@ -12,6 +12,8 @@ import {
 import {AppBridgeContext, AppBridgeOptions} from '../../utilities/app-bridge';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
+
+type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
 
 /**
  * When writing a custom mounting function `mountWithAppContext(node, options)`

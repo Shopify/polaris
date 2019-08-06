@@ -76,21 +76,28 @@ describe('<ContextualSaveBar />', () => {
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);
   });
 
-  it("doesn't call setContextualSave when frame is not defined", () => {
-    function fn() {
-      mount(<ContextualSaveBar {...props} />);
-    }
+  describe('frame errors', () => {
+    let consoleErrorSpy: jest.SpyInstance;
 
-    expect(fn).not.toThrow();
-  });
+    beforeEach(() => {
+      consoleErrorSpy = jest
+        .spyOn(console, 'error')
+        .mockImplementation(() => {});
+    });
 
-  it("doesn't call removeContextualSave when frame is not defined", () => {
-    function fn() {
-      const contextualSavebar = mount(<ContextualSaveBar {...props} />);
-      contextualSavebar.unmount();
-    }
+    afterEach(() => {
+      consoleErrorSpy.mockRestore();
+    });
 
-    expect(fn).not.toThrow();
+    it('throws when no Frame or appBridge is provided', () => {
+      function fn() {
+        mount(<ContextualSaveBar {...props} />);
+      }
+
+      expect(fn).toThrow(
+        'No Frame context was provided. Your component must be wrapped in a <Frame> component, or be used within an embedded application by setting the apiKey and shopOrigin properties on <AppProvider>. See https://polaris.shopify.com/components/structure/frame for implementation instructions.',
+      );
+    });
   });
 });
 
