@@ -4,7 +4,7 @@ import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 import EventListener from '../../../EventListener';
-import {MenuGroupDescriptor} from '../../../../types';
+import {ComplexAction, MenuGroupDescriptor} from '../../../../types';
 import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
 
 import Pagination, {PaginationDescriptor} from '../../../Pagination';
