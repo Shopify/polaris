@@ -8,6 +8,7 @@ action "Add new issues to project" {
   args = ["🌌 Polaris backlog", "👀 Triage"]
   secrets = [
     "GITHUB_TOKEN",
+    "GH_PAT",
   ]
 }
 
