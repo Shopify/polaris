@@ -90,7 +90,9 @@ export default class ActionMenu extends React.PureComponent<Props, State> {
   };
 
   private handleMenuGroupToggle = (group: string) => {
-    this.setState(({activeMenuGroup}) => ({activeMenuGroup: activeMenuGroup ? undefined : group}));
+    this.setState(({activeMenuGroup}) => ({
+      activeMenuGroup: activeMenuGroup ? undefined : group,
+    }));
   };
 
   private handleMenuGroupClose = () => {
