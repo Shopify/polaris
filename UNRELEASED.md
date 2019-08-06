@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Exported `AppliedFilterInterface` and `FilterInterface` from `Filters` ([#1924](https://github.com/Shopify/polaris-react/pull/1924))
+
 ### Bug fixes
 
 - Fixed types merge of `ActionMenu` `MenuAction` and `MenuGroup.actions` ([#1895](https://github.com/Shopify/polaris-react/pull/1895))
