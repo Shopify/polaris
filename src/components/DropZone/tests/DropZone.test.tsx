@@ -3,7 +3,9 @@ import {ReactWrapper} from 'enzyme';
 import {clock} from '@shopify/jest-dom-mocks';
 import {Label, Labelled, DisplayText, Caption} from 'components';
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import DropZone from '../DropZone';
+import {DropZoneContext} from '../context';
 
 const files = [
   {
@@ -307,6 +309,26 @@ describe('<DropZone />', () => {
       fireEvent({element: dropZone, eventType: 'dragenter'});
       const displayText = dropZone.find(DisplayText);
       expect(displayText.contains(errorOverlayText)).toBe(true);
+    });
+
+    it('sets type from props on context', () => {
+      const type = 'image';
+
+      function Component() {
+        return (
+          <DropZone type="image">
+            <DropZoneContext.Consumer>
+              {(ctx) => {
+                // eslint-disable-next-line shopify/jest/no-if
+                return type === ctx.type ? <div /> : null;
+              }}
+            </DropZoneContext.Consumer>
+          </DropZone>
+        );
+      }
+
+      const component = mountWithApp(<Component />);
+      expect(component).toContainReactComponent('div');
     });
   });
 

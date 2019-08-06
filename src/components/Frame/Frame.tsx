@@ -376,10 +376,8 @@ class Frame extends React.PureComponent<CombinedProps, State> {
   };
 
   private handleClick = () => {
-    if (this.skipToMainContentTargetNode.current == null) {
-      return;
-    }
-    this.skipToMainContentTargetNode.current.focus();
+    this.skipToMainContentTargetNode.current &&
+      this.skipToMainContentTargetNode.current.focus();
   };
 
   private handleNavigationDismiss = () => {

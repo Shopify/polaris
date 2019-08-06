@@ -27,8 +27,9 @@ function Loading() {
       return () => {
         if (appBridge == null) {
           stopLoading();
-        } else if (appBridgeLoading.current != null) {
-          appBridgeLoading.current.dispatch(AppBridgeLoading.Action.STOP);
+        } else {
+          appBridgeLoading.current &&
+            appBridgeLoading.current.dispatch(AppBridgeLoading.Action.STOP);
         }
       };
     },
