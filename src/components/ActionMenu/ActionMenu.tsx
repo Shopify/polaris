@@ -75,7 +75,7 @@ export default class ActionMenu extends React.PureComponent<Props, State> {
             title={title}
             active={title === activeMenuGroup}
             {...rest}
-            onOpen={this.handleMenuGroupToggle.bind(this)}
+            onOpen={this.handleMenuGroupToggle}
             onClose={this.handleMenuGroupClose}
           />
         ))
