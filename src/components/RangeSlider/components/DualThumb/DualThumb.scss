@@ -14,6 +14,7 @@ $range-thumb-border-error: rem(2px) solid color('red');
 $range-thumb-shadow: (0 0 0 rem(1px) rgba(black, 0.2), shadow(faint));
 $range-thumb-shadow-hover: (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint));
 $range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
+$range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 
 .Wrapper {
   position: relative;
@@ -94,20 +95,25 @@ $range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
     border-color: color('sky', 'dark');
   }
 
-  .error & {
-    border-color: color('red');
-    box-shadow: $range-thumb-shadow-error;
-
-    &:hover,
-    &:focus {
-      border-color: color('red');
-      box-shadow: $range-thumb-shadow-error;
-    }
-  }
-
   &:hover {
     background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
     box-shadow: $range-thumb-shadow-hover;
+  }
+
+  .error & {
+    border-color: color('red');
+    box-shadow: $range-thumb-shadow-error;
+  }
+
+  &:focus {
+    outline: 0;
+    background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
+    border-color: color('indigo');
+    box-shadow: $range-thumb-shadow-focus;
+
+    @media (-ms-high-contrast: active) {
+      outline: 1px solid ms-high-contrast-color('text');
+    }
   }
 }
 
