@@ -62,28 +62,39 @@ $pip-spacing: ($height - $pip-size) / 2;
   border: none;
 }
 
-.progressIncomplete .Pip {
-  background: transparent;
-}
-
-.progressPartiallyComplete .Pip {
-  background: linear-gradient(
-    to top,
-    currentColor,
-    currentColor 50%,
-    transparent 50%,
-    transparent
-  );
-}
-
-.progressComplete .Pip {
-  background: currentColor;
-}
-
 .Pip {
   height: $pip-size;
   width: $pip-size;
   margin: 0 spacing(extra-tight) 0 ($pip-spacing - $horizontal-padding);
   border: border-width(thick) solid currentColor;
   border-radius: 50%;
+}
+
+.progressIncomplete {
+  .Pip {
+    background: transparent;
+  }
+}
+
+.progressPartiallyComplete {
+  .Pip {
+    background: linear-gradient(
+      to top,
+      currentColor,
+      currentColor 50%,
+      transparent 50%,
+      transparent
+    );
+  }
+}
+
+.progressComplete {
+  .Pip {
+    background: linear-gradient(
+      to top,
+      currentColor,
+      currentColor 50%,
+      currentColor 50%
+    );
+  }
 }
