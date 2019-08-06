@@ -172,7 +172,12 @@ export {default as Link, Props as LinkProps} from './Link';
 
 export {default as List, Props as ListProps} from './List';
 
-export {default as Filters, Props as FiltersProps} from './Filters';
+export {
+  default as Filters,
+  Props as FiltersProps,
+  AppliedFilter as AppliedFilterInterface,
+  Filter as FilterInterface,
+} from './Filters';
 
 export {default as Loading, Props as LoadingProps} from './Loading';
 
