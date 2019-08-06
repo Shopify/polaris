@@ -56,7 +56,7 @@ export default function Icon({
     );
   } else if (source === 'placeholder') {
     contentMarkup = <div className={styles.Placeholder} />;
-  } else if (typeof source === 'string') {
+  } else {
     contentMarkup = (
       <img
         className={styles.Img}
