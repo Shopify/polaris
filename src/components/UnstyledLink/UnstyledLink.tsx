@@ -7,7 +7,7 @@ import {useLink, LinkLikeComponentProps} from '../../utilities/link';
 // but the props explorer isn't smart enough to work that out
 export interface Props extends LinkLikeComponentProps {}
 
-function UnstyledLink(props: Props) {
+function UnstyledLink(props: Props, _ref: React.RefObject<unknown>) {
   const LinkComponent = useLink();
   if (LinkComponent) {
     return <LinkComponent {...unstyled.props} {...props} />;
@@ -21,4 +21,4 @@ function UnstyledLink(props: Props) {
   );
 }
 
-export default React.memo(UnstyledLink);
+export default React.memo(React.forwardRef(UnstyledLink));
