@@ -5,7 +5,7 @@ import {arraysAreEqual} from '../../utilities/arrays';
 import {IconProps} from '../../types';
 import {Props as AvatarProps} from '../Avatar';
 import {Props as ThumbnailProps} from '../Thumbnail';
-import {useDeepCompare} from '../../utilities/use-deep-compare';
+import {useDeepCompare} from '../../utilities/use-deep-effect';
 
 import {Option} from './components';
 import styles from './OptionList.scss';
