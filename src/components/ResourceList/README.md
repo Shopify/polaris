@@ -1407,6 +1407,7 @@ Filter control showing a state with applied filters and an additional action (op
 | appliedFilters  | AppliedFilter[]                                 | Collection of currently applied filters         |
 | focused         | boolean                                         | Whether the search term field is focused        |
 | filters         | Filter[]                                        | Available filters                               |
+| placeholder     | string                                          | Placeholder text for the search input           |
 | onSearchBlur    | function(): void                                | Callback when the search term field is blurred  |
 | onSearchChange  | function(searchvalue: string, id: string): void | Callback when the search term field is changed  |
 | onFiltersChange | function(appliedFilters: AppliedFilter[]): void | Callback when the applied filters are changed   |
