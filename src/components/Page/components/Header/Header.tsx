@@ -4,7 +4,7 @@ import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 import EventListener from '../../../EventListener';
-import {MenuActionDescriptor, MenuGroupDescriptor} from '../../../../types';
+import {ComplexAction, MenuGroupDescriptor} from '../../../../types';
 import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
 
 import Pagination, {PaginationDescriptor} from '../../../Pagination';
@@ -26,7 +26,7 @@ export interface Props extends TitleProps {
   /** Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
   /** Collection of secondary page-level actions */
-  secondaryActions?: MenuActionDescriptor[];
+  secondaryActions?: ComplexAction[];
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
 }
