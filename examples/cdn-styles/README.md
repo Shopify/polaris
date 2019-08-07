@@ -11,7 +11,7 @@ The CDN hosted CSS file needs to be included in your HTML document. Replace the 
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.20.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/4.0.0-rc.2/polaris.min.css"
 />
 ```
 

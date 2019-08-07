@@ -10,7 +10,7 @@
     "server": "next start"
   },
   "dependencies": {
-    "@shopify/polaris": "^3.20.0",
+    "@shopify/polaris": "^4.0.0-rc.2",
     "@shopify/polaris-icons": "^3.4.0",
     "@zeit/next-css": "^1.0.1",
     "next": "^9.0.2",
