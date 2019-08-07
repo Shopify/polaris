@@ -1,14 +1,8 @@
-import * as React from 'react';
-import {
-  mountWithAppProvider,
-  shallowWithAppProvider,
-  findByTestID,
-} from 'test-utilities';
-import {createAppProviderContext, Image, UnstyledLink} from 'components';
+import React from 'react';
+import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+import {Image, UnstyledLink} from 'components';
 import TopBar from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
-import {createThemeContext, ThemeContext} from '../../ThemeProvider';
-import {polarisAppProviderContextTypes} from '../../AppProvider';
 
 const actions = [
   {
@@ -86,21 +80,6 @@ describe('<TopBar />', () => {
       topBar.find('[aria-label="Toggle menu"]').simulate('click');
       expect(spy).toHaveBeenCalledTimes(1);
     });
-
-    it('sets focused state to true when the navigation button is focused', () => {
-      const topBar = shallowWithAppProvider(<TopBar showNavigationToggle />);
-
-      topBar.find('[aria-label="Toggle menu"]').simulate('focus');
-      expect(topBar.state('focused')).toBe(true);
-    });
-
-    it('sets focused state to false when the navigation button is blurred', () => {
-      const topBar = shallowWithAppProvider(<TopBar showNavigationToggle />);
-
-      topBar.find('[aria-label="Toggle menu"]').simulate('focus');
-      topBar.find('[aria-label="Toggle menu"]').simulate('blur');
-      expect(topBar.state('focused')).toBe(false);
-    });
   });
 
   describe('search content', () => {
@@ -162,72 +141,47 @@ describe('<TopBar />', () => {
 
   describe('logo', () => {
     it('will render an image with the logo top bar source', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        addPolarisContext({
+      const topBar = mountWithAppProvider(<TopBar />, {
+        theme: {
           logo: {
             topBarSource: './assets/shopify.svg',
           },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+        },
+      });
       expect(topBar.find(Image).prop('source')).toBe('./assets/shopify.svg');
     });
 
     it('will render an image with the logo accessibility label', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        addPolarisContext({
+      const topBar = mountWithAppProvider(<TopBar />, {
+        theme: {
           logo: {
             accessibilityLabel: 'Shopify',
           },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+        },
+      });
       expect(topBar.find(Image).prop('alt')).toBe('Shopify');
     });
 
     it('will render an unstyled link with the logo URL', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        addPolarisContext({
-          logo: {
-            url: 'https://shopify.com',
-          },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+      const topBar = mountWithAppProvider(<TopBar />, {
+        theme: {logo: {url: 'https://shopify.com'}},
+      });
       expect(topBar.find(UnstyledLink).prop('url')).toBe('https://shopify.com');
     });
 
     it('will render an unstyled link with the logo width', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        addPolarisContext({
-          logo: {
-            width: 124,
-          },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+      const topBar = mountWithAppProvider(<TopBar />, {
+        theme: {logo: {width: 124}},
+      });
       expect(topBar.find(UnstyledLink).prop('style')).toStrictEqual({
         width: '124px',
       });
     });
 
     it('will render an unstyled link with a default width', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        addPolarisContext({
-          logo: {},
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+      const topBar = mountWithAppProvider(<TopBar />, {
+        theme: {logo: {}},
+      });
       expect(topBar.find(UnstyledLink).prop('style')).toStrictEqual({
         width: '104px',
       });
@@ -254,15 +208,13 @@ describe('<TopBar />', () => {
     });
 
     it('doesn’t render a logo when defined', () => {
-      const topBar = shallowWithAppProvider(
+      const topBar = mountWithAppProvider(
         <TopBar contextControl={mockContextControl} />,
-        addPolarisContext({
-          logo: {
-            topBarSource: './assets/shopify.svg',
+        {
+          theme: {
+            logo: {topBarSource: './assets/shopify.svg'},
           },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
+        },
       );
       expect(topBar.find(Image).exists()).toBe(false);
     });
@@ -275,15 +227,3 @@ describe('<TopBar />', () => {
 });
 
 function noop() {}
-
-function addPolarisContext(logo: ThemeContext) {
-  const context = {
-    ...createAppProviderContext(),
-    ...createThemeContext(logo),
-  };
-
-  return {
-    context,
-    childContextTypes: polarisAppProviderContextTypes,
-  };
-}

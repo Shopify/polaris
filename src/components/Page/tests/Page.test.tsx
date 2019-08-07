@@ -1,17 +1,14 @@
-import * as React from 'react';
+import React from 'react';
 import {
   Button as AppBridgeButton,
   TitleBar as AppBridgeTitleBar,
 } from '@shopify/app-bridge/actions';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
-
-import {Card, Badge, Avatar} from 'components';
+import {mountWithAppProvider} from 'test-utilities/legacy';
+import {Page, PageProps as Props, Card, Avatar, Badge} from 'components';
 import {Header} from '../components';
 import {LinkAction} from '../../../types';
-
 import {HeaderPrimaryAction} from '../types';
-import Page, {Props} from '../Page';
 
 window.matchMedia =
   window.matchMedia ||
@@ -270,9 +267,9 @@ describe('<Page />', () => {
       };
 
       const {buttonMock, restore: restoreButtonCreateMock} = mockButtonCreate();
-      const {
-        polaris: {appBridge},
-      } = mountWithAppBridge(<Page title="Test" breadcrumbs={[breadcrumb]} />);
+      const {appBridge} = mountWithAppBridge(
+        <Page title="Test" breadcrumbs={[breadcrumb]} />,
+      );
 
       expect(buttonMock.subscribe).toHaveBeenCalledTimes(1);
       expect(buttonMock.subscribe).toHaveBeenCalledWith(
@@ -310,7 +307,7 @@ describe('<Page />', () => {
 
   describe('<Header />', () => {
     it('is not rendered when there is no header content', () => {
-      const page = shallowWithAppProvider(<Page title="" />);
+      const page = mountWithAppProvider(<Page title="" />);
       expect(page.find(Header).exists()).toBeFalsy();
     });
   });
@@ -349,9 +346,7 @@ describe('<Page />', () => {
         restore: restoreTitleBarCreateMock,
       } = mockTitleBarCreate();
 
-      const {
-        polaris: {appBridge},
-      } = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Page
           title="Test"
           primaryAction={primaryAction}
@@ -439,15 +434,26 @@ describe('<Page />', () => {
       restoreTitleBarCreateMock();
     });
   });
+
+  describe('deprecations', () => {
+    it('warns the singleColumn prop has been renamed', () => {
+      const warningSpy = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(() => {});
+      mountWithAppProvider(<Page title="title" singleColumn />);
+
+      expect(warningSpy).toHaveBeenCalledWith(
+        'Deprecation: The singleColumn prop has been renamed to narrowWidth to better represents its use and will be removed in v5.0.',
+      );
+      warningSpy.mockRestore();
+    });
+  });
 });
 
 function noop() {}
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
-  const polaris = {appBridge};
-  const page = mountWithAppProvider(element, {
-    context: {polaris},
-  });
-  return {page, polaris};
+  const page = mountWithAppProvider(element, {appBridge});
+  return {page, appBridge};
 }

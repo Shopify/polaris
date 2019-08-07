@@ -10,28 +10,25 @@ $content-max-width: rem(400px);
   margin: $visible-portion-of-arrow spacing(tight) spacing();
   box-shadow: shadow(deep);
   border-radius: border-radius();
-  will-change: opacity, left, top;
+  will-change: left, top;
 }
 
-.entering {
+.PopoverOverlay {
+  will-change: opacity;
   opacity: 0;
-}
-
-.entered {
-  opacity: 1;
   transition: opacity duration() easing(in);
 }
 
-.exiting {
+.PopoverOverlay-open {
   opacity: 1;
 }
 
-.exited {
+.PopoverOverlay-exiting {
   opacity: 0;
-  transition: opacity duration() easing(out);
+  transition-timing-function: easing(out);
 }
 
-.measuring:not(.exiting) {
+.measuring:not(.PopoverOverlay-exiting) {
   opacity: 0;
 }
 

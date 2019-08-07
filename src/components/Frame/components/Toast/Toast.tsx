@@ -1,13 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 
+import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
 import Button from '../../../Button';
 
 import Icon from '../../../Icon';
 import KeypressListener from '../../../KeypressListener';
-import {ToastProps as Props} from '../../types';
+import {ToastProps as Props} from '../../../../utilities/frame';
 
 import styles from './Toast.scss';
 

@@ -1,7 +1,6 @@
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
+import React from 'react';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import Toast from '../Toast';
 
 describe('<Toast />', () => {
@@ -10,22 +9,36 @@ describe('<Toast />', () => {
   });
 
   it('shows the toast with a unique ID on mount', () => {
+    const mockFrameContext = {
+      showToast: jest.fn(),
+    };
+
     const props = {content: 'Image uploaded', onDismiss: noop};
-    const {frame} = mountWithContext(<Toast {...props} />);
-    expect(frame.showToast).toHaveBeenCalledWith(
+    mountWithAppProvider(<Toast {...props} />, {
+      frame: mockFrameContext,
+    });
+
+    expect(mockFrameContext.showToast).toHaveBeenCalledWith(
       expect.objectContaining({id: expect.any(String), ...props}),
     );
   });
 
   it('hides the toast based on ID on unmount', () => {
-    const {toast, frame} = mountWithContext(
-      <Toast content="Message sent" onDismiss={noop} />,
-    );
-    expect(frame.hideToast).not.toHaveBeenCalled();
-    toast.unmount();
+    const mockFrameContext = {
+      hideToast: jest.fn(),
+    };
 
-    const {id} = frame.showToast.mock.calls[0][0];
-    expect(frame.hideToast).toHaveBeenCalledWith({id});
+    const frame = mountWithAppProvider(
+      <Toast content="Message sent" onDismiss={noop} />,
+      {frame: mockFrameContext},
+    );
+
+    expect(mockFrameContext.hideToast).not.toHaveBeenCalled();
+    frame.unmount();
+
+    const mockHideToast = mockFrameContext.hideToast as jest.Mock;
+    const {id} = mockHideToast.mock.calls[0][0];
+    expect(mockFrameContext.hideToast).toHaveBeenCalledWith({id});
   });
 
   describe('with app bridge', () => {
@@ -38,12 +51,12 @@ describe('<Toast />', () => {
 
     it('shows app bridge toast notice content on mount and unmounts safely', () => {
       const content = 'Message sent';
-      const {toast, polaris} = mountWithAppBridge(
+      const {toast, appBridge} = mountWithAppBridge(
         <Toast content={content} duration={1000} onDismiss={noop} />,
       );
       toast.unmount();
 
-      expect(AppBridgeToast.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeToast.create).toHaveBeenCalledWith(appBridge, {
         duration: 1000,
         isError: undefined,
         message: 'Message sent',
@@ -57,11 +70,11 @@ describe('<Toast />', () => {
 
     it('shows app bridge toast error content on mount', () => {
       const content = 'Message sent';
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Toast content={content} duration={1000} onDismiss={noop} error />,
       );
 
-      expect(AppBridgeToast.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeToast.create).toHaveBeenCalledWith(appBridge, {
         duration: 1000,
         isError: true,
         message: 'Message sent',
@@ -96,23 +109,9 @@ describe('<Toast />', () => {
 
 function noop() {}
 
-function mountWithContext(element: React.ReactElement<any>) {
-  const frame = {showToast: jest.fn(), hideToast: jest.fn()};
-  const toast = mountWithAppProvider(element, {
-    context: {frame},
-    childContextTypes: {frame: PropTypes.any},
-  });
-
-  return {toast, frame};
-}
-
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
-  const polaris = {appBridge};
-  const toast = mountWithAppProvider(element, {
-    context: {frame: {}, polaris},
-    childContextTypes: {frame: PropTypes.any},
-  });
+  const toast = mountWithAppProvider(element, {appBridge});
 
-  return {toast, polaris};
+  return {toast, appBridge};
 }

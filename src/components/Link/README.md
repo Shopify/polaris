@@ -92,6 +92,15 @@ Use for text links that are the same color as the surrounding text.
 </Link>
 ```
 
+Monochrome styles will be applied to links rendered within a `Banner`
+
+```jsx
+<Banner>
+  Learn more about{' '}
+  <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+</Banner>
+```
+
 ### External link
 
 Use for text links that point to a different website. They will open in a new browser tab or window.

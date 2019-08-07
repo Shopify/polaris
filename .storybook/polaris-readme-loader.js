@@ -2,6 +2,9 @@
 const chalk = require('chalk');
 const grayMatter = require('gray-matter');
 const MdParser = require('./md-parser');
+const React = require('react');
+
+const HOOK_PREFIX = 'use';
 
 /**
  * A Webpack loader, that expects a Polaris README file, and returns metadata,
@@ -68,8 +71,12 @@ module.exports = function loader(source) {
     return eval(`(${fnString})`).apply(null, Object.values(scope));
   };
 
+  const hooks = Object.keys(React)
+    .filter((key) => key.startsWith(HOOK_PREFIX))
+    .join(', ');
+
   return `
-import React from 'react';
+import React, {${hooks}} from 'react';
 import * as Polaris from '@shopify/polaris';
 import {
   PlusMinor,
@@ -278,13 +285,15 @@ function filterMarkdownForPlatform(markdown, platform) {
 
 function wrapExample(code) {
   const classPattern = /class (\w+) extends React.Component/g;
-  const classMatch = classPattern.exec(code);
+  const functionPattern = /^function (\w+)/g;
+  const fullComponentDefinitionMatch =
+    classPattern.exec(code) || functionPattern.exec(code);
 
   let wrappedCode = '';
 
-  if (classMatch) {
+  if (fullComponentDefinitionMatch) {
     wrappedCode = `${code}
-return ${classMatch[1]};
+return ${fullComponentDefinitionMatch[1]};
 `;
   } else {
     wrappedCode = `return function() {

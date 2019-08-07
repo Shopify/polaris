@@ -1,44 +1,42 @@
-import * as React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
-import {FrameContext, frameContextTypes} from '../Frame';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {useFrame} from '../../utilities/frame';
+import {useAppBridge} from '../../utilities/app-bridge';
 
 export interface Props {}
-type ComposedProps = Props & WithAppProviderProps;
 
-class Loading extends React.PureComponent<ComposedProps, never> {
-  static contextTypes = frameContextTypes;
-  context: FrameContext;
-  private appBridgeLoading: AppBridgeLoading.Loading | undefined;
+function Loading() {
+  const appBridgeLoading = useRef<AppBridgeLoading.Loading>();
+  const appBridge = useAppBridge();
+  const {startLoading, stopLoading} = useFrame();
 
-  componentDidMount() {
-    const {appBridge} = this.props.polaris;
+  useEffect(
+    () => {
+      if (appBridge == null) {
+        startLoading();
+      } else {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'Deprecation: Using `Loading` in an embedded app is deprecated and will be removed in v5.0. Use `Loading` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/loading',
+        );
 
-    if (appBridge == null) {
-      this.context.frame.startLoading();
-    } else {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'Deprecation: Using `Loading` in an embedded app is deprecated and will be removed in v5.0. Use `Loading` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/loading',
-      );
-      this.appBridgeLoading = AppBridgeLoading.create(appBridge);
-      this.appBridgeLoading.dispatch(AppBridgeLoading.Action.START);
-    }
-  }
+        appBridgeLoading.current = AppBridgeLoading.create(appBridge);
+        appBridgeLoading.current.dispatch(AppBridgeLoading.Action.START);
+      }
 
-  componentWillUnmount() {
-    const {appBridge} = this.props.polaris;
+      return () => {
+        if (appBridge == null) {
+          stopLoading();
+        } else {
+          appBridgeLoading.current &&
+            appBridgeLoading.current.dispatch(AppBridgeLoading.Action.STOP);
+        }
+      };
+    },
+    [appBridge, startLoading, stopLoading],
+  );
 
-    if (appBridge == null) {
-      this.context.frame.stopLoading();
-    } else if (this.appBridgeLoading != null) {
-      this.appBridgeLoading.dispatch(AppBridgeLoading.Action.STOP);
-    }
-  }
-
-  render() {
-    return null;
-  }
+  return null;
 }
 
-export default withAppProvider<Props>()(Loading);
+export default React.memo(Loading);

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 
 import DisplayText from '../DisplayText';
 
@@ -28,12 +28,5 @@ describe('<DisplayText />', () => {
       <DisplayText size="extraLarge">Important text.</DisplayText>,
     );
     expect(displayText.find('p')).toHaveLength(1);
-  });
-
-  it('renders the specified size', () => {
-    const displayText = mountWithAppProvider(
-      <DisplayText size="extraLarge">Important text.</DisplayText>,
-    );
-    expect(displayText.prop('size')).toBe('extraLarge');
   });
 });

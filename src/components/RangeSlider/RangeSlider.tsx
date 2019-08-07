@@ -1,6 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import {RangeSliderProps, RangeSliderValue, DualValue} from './types';
 import {RangeSliderDefault} from './utilities';
 

@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import {
   findByTestID,
   matchByTestID,
   mountWithAppProvider,
-} from 'test-utilities';
+} from 'test-utilities/legacy';
 import {Section} from '../components';
 import Layout from '../Layout';
 
@@ -28,32 +28,6 @@ describe('<Layout />', () => {
 
     expect(section.exists()).toBe(true);
     expect(section.find(MyComponent).exists()).toBe(true);
-  });
-
-  describe('<Layout.Section />', () => {
-    it('renders a full width section', () => {
-      const section = mountWithAppProvider(<Layout.Section fullWidth />);
-
-      expect(section.prop('fullWidth')).toBe(true);
-    });
-
-    it('renders a secondary section', () => {
-      const section = mountWithAppProvider(<Layout.Section secondary />);
-
-      expect(section.prop('secondary')).toBe(true);
-    });
-
-    it('renders a half width section', () => {
-      const section = mountWithAppProvider(<Layout.Section oneHalf />);
-
-      expect(section.prop('oneHalf')).toBe(true);
-    });
-
-    it('renders a third width section', () => {
-      const section = mountWithAppProvider(<Layout.Section oneThird />);
-
-      expect(section.prop('oneThird')).toBe(true);
-    });
   });
 
   describe('<Layout.AnnotatedSection />', () => {

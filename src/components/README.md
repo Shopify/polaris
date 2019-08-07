@@ -52,7 +52,7 @@ Use React components in most cases, especially if you’re building a highly int
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.21.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/4.0.0-rc.2/polaris.min.css"
 />
 ```
 
@@ -73,7 +73,7 @@ Include the CSS in your HTML:
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.21.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/4.0.0-rc.2/polaris.min.css"
 />
 ```
 
@@ -87,7 +87,7 @@ Create an element using the Polaris React `AppProvider` component. The `AppProvi
 
 ```javascript
 const app = (
-  <AppProvider>
+  <AppProvider i18n={{}}>
     <Button onClick={() => alert('Button clicked!')}>Example button</Button>
   </AppProvider>
 );
@@ -106,7 +106,7 @@ Include the CSS stylesheet in your HTML:
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.21.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/4.0.0-rc.2/polaris.min.css"
 />
 ```
 

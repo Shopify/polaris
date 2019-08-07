@@ -1,13 +1,12 @@
-import * as React from 'react';
+import React, {useCallback, useEffect, useState, useRef} from 'react';
 
-import {CSSTransition} from 'react-transition-group';
+import {CSSTransition} from '@material-ui/react-transition-group';
 import debounce from 'lodash/debounce';
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../utilities/css';
 
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Key} from '../../types';
 import {layer, overlay, Duration} from '../shared';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
@@ -44,83 +43,81 @@ export interface Props {
   onExit?(): void;
 }
 
-type ComposedProps = Props & WithAppProviderProps;
-
 export interface State {
   mobile: boolean;
 }
 
-class Sheet extends React.Component<ComposedProps, State> {
-  state: State = {
-    mobile: false,
-  };
+export default function Sheet({
+  children,
+  open,
+  onClose,
+  onEntered,
+  onExit,
+}: Props) {
+  const container = useRef<HTMLDivElement>(null);
+  const [mobile, setMobile] = useState(false);
 
-  private handleResize = debounce(
-    () => {
-      const {
-        state: {mobile},
-        handleToggleMobile,
-      } = this;
+  const findDOMNode = useCallback(() => {
+    return container.current;
+  }, []);
 
-      if (mobile !== isMobile()) {
-        handleToggleMobile();
-      }
-    },
-    40,
-    {leading: true, trailing: true, maxWait: 40},
+  const handleResize = useCallback(
+    debounce(
+      () => {
+        if (mobile !== isMobile()) {
+          handleToggleMobile();
+        }
+      },
+      40,
+      {leading: true, trailing: true, maxWait: 40},
+    ),
+    [mobile],
   );
 
-  componentDidMount() {
-    this.handleResize();
-  }
+  useEffect(
+    () => {
+      handleResize();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
 
-  render() {
-    const {
-      props: {children, open, onClose, onEntered, onExit},
-      state: {mobile},
-      handleResize,
-    } = this;
-
-    return (
-      <Portal idPrefix="sheet">
-        <CSSTransition
-          classNames={mobile ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES}
-          timeout={Duration.Slow}
-          in={open}
-          mountOnEnter
-          unmountOnExit
-          onEntered={onEntered}
-          onExit={onExit}
+  return (
+    <Portal idPrefix="sheet">
+      <CSSTransition
+        findDOMNode={findDOMNode}
+        classNames={mobile ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES}
+        timeout={Duration.Slow}
+        in={open}
+        mountOnEnter
+        unmountOnExit
+        onEntered={onEntered}
+        onExit={onExit}
+      >
+        <div
+          className={styles.Container}
+          {...layer.props}
+          {...overlay.props}
+          ref={container}
         >
-          <Container open={open}>{children}</Container>
-        </CSSTransition>
-        <KeypressListener keyCode={Key.Escape} handler={onClose} />
-        <EventListener event="resize" handler={handleResize} />
-        {open && <Backdrop transparent onClick={onClose} />}
-      </Portal>
-    );
-  }
+          <TrapFocus trapping={open}>
+            <div role="dialog" tabIndex={-1} className={styles.Sheet}>
+              {children}
+            </div>
+          </TrapFocus>
+        </div>
+      </CSSTransition>
+      <KeypressListener keyCode={Key.Escape} handler={onClose} />
+      <EventListener event="resize" handler={handleResize} />
+      {open && <Backdrop transparent onClick={onClose} />}
+    </Portal>
+  );
 
-  private handleToggleMobile = () => {
-    const {mobile} = this.state;
-    this.setState({mobile: !mobile});
-  };
+  function handleToggleMobile() {
+    setMobile((mobile) => !mobile);
+  }
 }
 
 function isMobile(): boolean {
   return navigationBarCollapsed().matches;
 }
-
-function Container(props: {children: React.ReactNode; open: boolean}) {
-  return (
-    <div className={styles.Container} {...layer.props} {...overlay.props}>
-      <TrapFocus trapping={props.open}>
-        <div role="dialog" tabIndex={-1} className={styles.Sheet}>
-          {props.children}
-        </div>
-      </TrapFocus>
-    </div>
-  );
-}
-
-export default withAppProvider<Props>()(Sheet);

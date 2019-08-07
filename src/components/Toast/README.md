@@ -57,7 +57,11 @@ class EmbeddedAppToastExample extends React.Component {
       />
     );
 
-    return <AppProvider apiKey="YOUR_API_KEY">{toastMarkup}</AppProvider>;
+    return (
+      <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
+        {toastMarkup}
+      </AppProvider>
+    );
   }
 }
 ```

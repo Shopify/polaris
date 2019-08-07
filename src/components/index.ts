@@ -7,16 +7,7 @@ export {default as ActionList, Props as ActionListProps} from './ActionList';
 
 export {default as ActionMenu, Props as ActionMenuProps} from './ActionMenu';
 
-export {
-  default as AppProvider,
-  Props as AppProviderProps,
-  Context as AppProviderContext,
-  polarisAppProviderContextTypes as polarisContextTypes,
-  createAppProviderContext,
-  createPolarisContext,
-  withAppProvider,
-  WithAppProviderProps,
-} from './AppProvider';
+export {default as AppProvider, Props as AppProviderProps} from './AppProvider';
 
 export {
   default as Autocomplete,
@@ -25,6 +16,8 @@ export {
 
 export {default as Avatar, Props as AvatarProps} from './Avatar';
 
+export {default as Backdrop, BackdropProps} from './Backdrop';
+
 export {default as Badge, Props as BadgeProps} from './Badge';
 
 export {
@@ -32,8 +25,6 @@ export {
   Props as BannerProps,
   Status as BannerStatus,
 } from './Banner';
-
-export {default as Backdrop, BackdropProps} from './Backdrop';
 
 export {default as Breadcrumbs, Props as BreadcrumbsProps} from './Breadcrumbs';
 
@@ -79,7 +70,10 @@ export {
 
 export {default as Connected, Props as ConnectedProps} from './Connected';
 
-export {default as ContextualSaveBar} from './ContextualSaveBar';
+export {
+  default as ContextualSaveBar,
+  Props as ContextualSaveBarProps,
+} from './ContextualSaveBar';
 
 export {
   default as DataTable,
@@ -126,8 +120,6 @@ export {
 
 export {default as Focus, Props as FocusProps} from './Focus';
 
-export {default as TrapFocus, Props as TrapFocusProps} from './TrapFocus';
-
 export {default as FooterHelp, Props as FooterHelpProps} from './FooterHelp';
 
 export {default as Form, Props as FormProps} from './Form';
@@ -137,17 +129,17 @@ export {default as FormLayout, Props as FormLayoutProps} from './FormLayout';
 export {
   default as Frame,
   Props as FrameProps,
-  ContextualSaveBarProps,
-  ToastProps,
   DEFAULT_TOAST_DURATION,
   DEFAULT_TOAST_DURATION_WITH_ACTION,
 } from './Frame';
 
 export {default as Heading, Props as HeadingProps} from './Heading';
 
-export {default as Icon, Props as IconProps} from './Icon';
+export {default as Icon} from './Icon';
 
 export {default as Image, Props as ImageProps} from './Image';
+
+export {default as Indicator, Props as IndicatorProps} from './Indicator';
 
 export {
   default as InlineError,
@@ -183,8 +175,6 @@ export {default as Loading, Props as LoadingProps} from './Loading';
 
 export {default as Modal, Props as ModalProps} from './Modal';
 
-export {default as OptionList} from './OptionList';
-
 export {
   default as Navigation,
   Props as NavigationProps,
@@ -194,11 +184,18 @@ export {
   isNavigationItemActive,
 } from './Navigation';
 
+export {default as OptionList} from './OptionList';
+
 export {default as Page, Props as PageProps} from './Page';
 
 export {default as PageActions, Props as PageActionsProps} from './PageActions';
 
 export {default as Pagination, Props as PaginationProps} from './Pagination';
+
+export {
+  default as PolarisTestProvider,
+  WithPolarisTestProviderOptions,
+} from './PolarisTestProvider';
 
 export {
   default as Popover,
@@ -207,6 +204,8 @@ export {
 } from './Popover';
 
 export {default as Portal, Props as PortalProps} from './Portal';
+
+export {default as ProgressBar, Props as ProgressBarProps} from './ProgressBar';
 
 export {default as RadioButton, Props as RadioButtonProps} from './RadioButton';
 
@@ -245,7 +244,29 @@ export {
   Props as SettingToggleProps,
 } from './SettingToggle';
 
+export {DATA_ATTRIBUTE} from './shared';
+
 export {default as Sheet} from './Sheet';
+
+export {
+  default as SkeletonBodyText,
+  Props as SkeletonBodyTextProps,
+} from './SkeletonBodyText';
+
+export {
+  default as SkeletonDisplayText,
+  Props as SkeletonDisplayTextProps,
+} from './SkeletonDisplayText';
+
+export {
+  default as SkeletonPage,
+  Props as SkeletonPageProps,
+} from './SkeletonPage';
+
+export {
+  default as SkeletonThumbnail,
+  Props as SkeletonThumbnailProps,
+} from './SkeletonThumbnail';
 
 export {default as Spinner, Props as SpinnerProps} from './Spinner';
 
@@ -268,59 +289,26 @@ export {default as TextField, Props as TextFieldProps} from './TextField';
 
 export {default as TextStyle, Props as TextStyleProps} from './TextStyle';
 
+export {default as ThemeProvider} from './ThemeProvider';
+
 export {default as Thumbnail, Props as ThumbnailProps} from './Thumbnail';
 
-export {
-  default as ThemeProvider,
-  Props as ThemeProviderProps,
-  Context as ThemeProviderContext,
-} from './ThemeProvider';
-
-export {default as Toast} from './Toast';
+export {default as Toast, Props as ToastProps} from './Toast';
 
 export {default as Tooltip, Props as TooltipProps} from './Tooltip';
 
 export {default as TopBar, Props as TopBarProps} from './TopBar';
+
+export {default as TrapFocus, Props as TrapFocusProps} from './TrapFocus';
 
 export {default as Truncate, Props as TruncateProps} from './Truncate';
 
 export {
   default as UnstyledLink,
   Props as UnstyledLinkProps,
-  LinkLikeComponent,
 } from './UnstyledLink';
 
 export {
   default as VisuallyHidden,
   Props as VisuallyHiddenProps,
 } from './VisuallyHidden';
-
-export {
-  default as SkeletonPage,
-  Props as SkeletonPageProps,
-} from './SkeletonPage';
-
-export {
-  default as SkeletonBodyText,
-  Props as SkeletonBodyTextProps,
-} from './SkeletonBodyText';
-
-export {
-  default as SkeletonDisplayText,
-  Props as SkeletonDisplayTextProps,
-} from './SkeletonDisplayText';
-
-export {
-  default as SkeletonThumbnail,
-  Props as SkeletonThumbnailProps,
-} from './SkeletonThumbnail';
-
-export {default as ProgressBar, Props as ProgressBarProps} from './ProgressBar';
-
-export {default as Indicator, Props as IndicatorProps} from './Indicator';
-
-export {default as withContext} from './WithContext';
-
-export {default as withRef, WithRef} from './WithRef';
-
-export {DATA_ATTRIBUTE} from './shared';

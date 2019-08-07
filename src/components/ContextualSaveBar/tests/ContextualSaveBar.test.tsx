@@ -1,6 +1,6 @@
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import {mountWithAppProvider} from 'test-utilities';
+import React from 'react';
+import {mount} from 'enzyme';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import ContextualSaveBar from '../ContextualSaveBar';
 
 describe('<ContextualSaveBar />', () => {
@@ -10,61 +10,95 @@ describe('<ContextualSaveBar />', () => {
     message: 'Unsaved changes',
   };
 
-  it('calls the contextual save bar on mount with provided values', () => {
-    const {frame} = mountWithContext(<ContextualSaveBar {...props} />);
-    expect(frame.setContextualSaveBar).toHaveBeenCalledWith({
+  it('calls the contextual save bar on mount with values', () => {
+    const mockFrameContext = {
+      setContextualSaveBar: jest.fn(),
+      removeContextualSaveBar: jest.fn(),
+    };
+
+    mountWithAppProvider(<ContextualSaveBar {...props} />, {
+      frame: mockFrameContext,
+    });
+    expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledWith({
       ...props,
     });
   });
 
   it('removes the contextual save bar on unmount', () => {
-    const {contextualSaveBar, frame} = mountWithContext(
-      <ContextualSaveBar {...props} />,
-    );
-    expect(frame.removeContextualSaveBar).not.toHaveBeenCalled();
-    contextualSaveBar.unmount();
-    expect(frame.removeContextualSaveBar).toHaveBeenCalled();
+    const mockFrameContext = {
+      setContextualSaveBar: jest.fn(),
+      removeContextualSaveBar: jest.fn(),
+    };
+
+    const frame = mountWithAppProvider(<ContextualSaveBar {...props} />, {
+      frame: mockFrameContext,
+    });
+    expect(mockFrameContext.removeContextualSaveBar).not.toHaveBeenCalled();
+    frame.unmount();
+    expect(mockFrameContext.removeContextualSaveBar).toHaveBeenCalled();
   });
 
-  it('calls the contextual save bar with new values if its props change after it mounted', () => {
-    const {frame, contextualSaveBar} = mountWithContext(
+  it('calls the contextual save bar with values if its props change after it mounted', () => {
+    const mockFrameContext = {
+      setContextualSaveBar: jest.fn(),
+      removeContextualSaveBar: jest.fn(),
+    };
+
+    const contextualSaveBar = mountWithAppProvider(
       <ContextualSaveBar {...props} />,
+      {frame: mockFrameContext},
     );
-    expect(frame.setContextualSaveBar).toHaveBeenCalledTimes(1);
     const newProps = {
       saveAction: {content: 'Save', onAction: noop, loading: true},
       discardAction: {content: 'Discard', onAction: noop},
       message: 'Unsaved changes',
     };
-    contextualSaveBar.setProps({...newProps});
-    expect(frame.setContextualSaveBar).toHaveBeenCalledWith({
-      ...newProps,
-    });
-    expect(frame.setContextualSaveBar).toHaveBeenCalledTimes(2);
+    contextualSaveBar.setProps(newProps);
+    expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledWith(
+      newProps,
+    );
+    expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(2);
   });
 
   it('doesnt call the contextual save bar if its props remain unchanged after it mounted', () => {
-    const {frame, contextualSaveBar} = mountWithContext(
+    const mockFrameContext = {
+      setContextualSaveBar: jest.fn(),
+      removeContextualSaveBar: jest.fn(),
+    };
+
+    const contextualSaveBar = mountWithAppProvider(
       <ContextualSaveBar {...props} />,
+      {frame: mockFrameContext},
     );
-    expect(frame.setContextualSaveBar).toHaveBeenCalledTimes(1);
-    const newProps = {...props};
-    contextualSaveBar.setProps({...newProps});
-    expect(frame.setContextualSaveBar).toHaveBeenCalledTimes(1);
+
+    expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);
+    contextualSaveBar.setProps({...props});
+    expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);
+  });
+
+  describe('frame errors', () => {
+    let consoleErrorSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      consoleErrorSpy = jest
+        .spyOn(console, 'error')
+        .mockImplementation(() => {});
+    });
+
+    afterEach(() => {
+      consoleErrorSpy.mockRestore();
+    });
+
+    it('throws when no Frame or appBridge is provided', () => {
+      function fn() {
+        mount(<ContextualSaveBar {...props} />);
+      }
+
+      expect(fn).toThrow(
+        'No Frame context was provided. Your component must be wrapped in a <Frame> component, or be used within an embedded application by setting the apiKey and shopOrigin properties on <AppProvider>. See https://polaris.shopify.com/components/structure/frame for implementation instructions.',
+      );
+    });
   });
 });
 
 function noop() {}
-
-function mountWithContext(element: React.ReactElement<any>) {
-  const frame = {
-    setContextualSaveBar: jest.fn(),
-    removeContextualSaveBar: jest.fn(),
-  };
-  const contextualSaveBar = mountWithAppProvider(element, {
-    context: {frame},
-    childContextTypes: {frame: PropTypes.any},
-  });
-
-  return {contextualSaveBar, frame};
-}

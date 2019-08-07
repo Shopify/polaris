@@ -1,28 +1,34 @@
-import * as React from 'react';
-import {mountWithAppProvider, trigger, findByTestID} from 'test-utilities';
+import React from 'react';
+import {
+  mountWithAppProvider,
+  trigger,
+  findByTestID,
+} from 'test-utilities/legacy';
 import {Card, Badge, Button, Popover, ActionList} from 'components';
+import {WithinContentContext} from '../../../utilities/within-content-context';
 import {Section} from '../components';
-import {contentContextTypes} from '../../../types';
 
 describe('<Card />', () => {
-  it('has a child with contentContext', () => {
-    const Child: React.SFC = (_props, context) => {
-      // eslint-disable-next-line shopify/jest/no-if
-      return context.withinContentContainer ? <div /> : null;
-    };
-    Child.contextTypes = contentContextTypes;
+  it('has a child with prop withinContentContainer set to true', () => {
+    function TestComponent(_: {withinContentContainer: any}) {
+      return null;
+    }
 
-    const containedChild = mountWithAppProvider(
+    const component = mountWithAppProvider(
       <Card>
-        <Child />
+        <WithinContentContext.Consumer>
+          {(withinContentContext) => {
+            return (
+              <TestComponent withinContentContainer={withinContentContext} />
+            );
+          }}
+        </WithinContentContext.Consumer>
       </Card>,
     );
 
-    const div = containedChild
-      .find(Child)
-      .find('div')
-      .first();
-    expect(div.exists()).toBe(true);
+    expect(component.find(TestComponent).prop('withinContentContainer')).toBe(
+      true,
+    );
   });
 
   it('has a header tag when the title is a string', () => {
@@ -79,19 +85,6 @@ describe('<Card />', () => {
 
     expect(primaryAction).toHaveLength(1);
     expect(primaryAction.text()).toBe('test action');
-  });
-
-  it('renders a secondary footer action', () => {
-    const card = mountWithAppProvider(
-      <Card secondaryFooterAction={{content: 'test action'}}>
-        <p>Some card content.</p>
-      </Card>,
-    );
-
-    const secondaryAction = card.find(Button).first();
-
-    expect(secondaryAction).toHaveLength(1);
-    expect(secondaryAction.text()).toBe('test action');
   });
 
   describe('secondaryFooterActions', () => {
@@ -180,21 +173,6 @@ describe('<Card />', () => {
       const disclosureButton = card.find(Button).first();
       expect(disclosureButton).toHaveLength(1);
       expect(disclosureButton.text()).toBe('Show more');
-    });
-
-    it('will prefer secondaryFooterActions to secondaryFooterAction if both are provided', () => {
-      const card = mountWithAppProvider(
-        <Card
-          secondaryFooterActions={[{content: 'a'}]}
-          secondaryFooterAction={{content: 'b'}}
-        >
-          <p>Some card content.</p>
-        </Card>,
-      );
-
-      const button = card.find(Button).first();
-      expect(button).toHaveLength(1);
-      expect(button.text()).toBe('a');
     });
   });
 

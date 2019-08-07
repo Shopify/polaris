@@ -7,15 +7,13 @@
   padding-bottom: 0;
   opacity: 0;
   will-change: opacity, height;
-}
-
-.animating {
   transition-property: opacity, height;
   transition-duration: duration(slow);
   transition-timing-function: easing(out);
 }
 
 .open {
+  height: var(--polaris-collapsible-height);
   opacity: 1;
 }
 

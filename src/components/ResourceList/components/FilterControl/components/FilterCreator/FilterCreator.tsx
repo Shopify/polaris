@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Button from '../../../../../Button';
 import Popover from '../../../../../Popover';
 import Select from '../../../../../Select';
@@ -7,7 +7,7 @@ import Form from '../../../../../Form';
 import {
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../../AppProvider';
+} from '../../../../../../utilities/with-app-provider';
 
 import FilterValueSelector from '../FilterValueSelector';
 import {AppliedFilter, Filter, Operator} from '../../types';
@@ -18,7 +18,7 @@ export interface Props {
     singular: string;
     plural: string;
   };
-  disabled: boolean;
+  disabled?: boolean;
   onAddFilter?(newFilter: AppliedFilter): void;
 }
 

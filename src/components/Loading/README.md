@@ -49,7 +49,11 @@ class EmbeddedAppLoadingExample extends React.Component {
   render() {
     const loadingMarkup = this.state.loading && <Loading />;
 
-    return <AppProvider apiKey="YOUR_API_KEY">{loadingMarkup}</AppProvider>;
+    return (
+      <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
+        {loadingMarkup}
+      </AppProvider>
+    );
   }
 }
 ```

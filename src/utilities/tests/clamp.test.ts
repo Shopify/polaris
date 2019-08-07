@@ -1,4 +1,4 @@
-import clamp from '../clamp';
+import {clamp} from '../clamp';
 
 describe('clamp', () => {
   it('adjusts the given number to be at least the min', () => {

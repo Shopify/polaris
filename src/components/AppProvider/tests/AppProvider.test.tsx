@@ -1,53 +1,25 @@
-import * as React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import {createThemeContext} from '../../ThemeProvider';
-import {StickyManager, createAppProviderContext} from '../utilities';
-import {polarisAppProviderContextTypes} from '../types';
+import React, {useContext} from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
+import {LinkContext} from '../../../utilities/link';
 import AppProvider from '../AppProvider';
 
 describe('<AppProvider />', () => {
-  it('passes i18n and withComponent properties to context', () => {
-    const i18n = {
-      Polaris: {
-        Common: {
-          undo: 'Custom Undo',
-        },
-      },
+  it('updates context when props change', () => {
+    const Child: React.SFC<{}> = () => {
+      // eslint-disable-next-line shopify/jest/no-if
+      return useContext(LinkContext) ? <div id="child" /> : null;
     };
-    const CustomLinkComponent = () => {
-      return <a href="test">Custom Link Component</a>;
-    };
-    const stickyManager = new StickyManager(document);
-    const context = {
-      ...createAppProviderContext({
-        i18n,
-        linkComponent: CustomLinkComponent,
-        stickyManager,
-      }),
-      ...createThemeContext(),
-    };
+    const LinkComponent = () => <div />;
 
-    // eslint-disable-next-line react/prefer-stateless-function
-    class Child extends React.Component {
-      static contextTypes = polarisAppProviderContextTypes;
-
-      render() {
-        return <div />;
-      }
-    }
-
-    const wrapper: unknown = TestUtils.renderIntoDocument(
-      <AppProvider i18n={i18n} linkComponent={CustomLinkComponent}>
+    const wrapper = mountWithAppProvider(
+      <AppProvider i18n={{}}>
         <Child />
       </AppProvider>,
     );
 
-    const child = TestUtils.findRenderedComponentWithType(
-      wrapper as React.Component,
-      Child,
-    );
-
-    // https://github.com/facebook/jest/issues/1772
-    expect(JSON.stringify(child.context)).toBe(JSON.stringify(context));
+    expect(wrapper.find('#child')).toHaveLength(0);
+    wrapper.setProps({linkComponent: LinkComponent});
+    wrapper.update();
+    expect(wrapper.find('#child')).toHaveLength(1);
   });
 });

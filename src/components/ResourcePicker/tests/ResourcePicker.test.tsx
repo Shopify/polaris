@@ -1,10 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import {ResourcePicker as AppBridgeResourcePicker} from '@shopify/app-bridge/actions';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import ResourcePicker from '../ResourcePicker';
 
 describe('<ResourcePicker />', () => {
   describe('with app bridge', () => {
+    let appBridgeResourcePickerCreate: jest.SpyInstance;
     const appBridgeResourcePickerMock = {
       subscribe: jest.fn(),
       dispatch: jest.fn(),
@@ -12,11 +13,17 @@ describe('<ResourcePicker />', () => {
       unsubscribe: jest.fn(),
     };
 
-    (AppBridgeResourcePicker.create as jest.Mock) = jest
-      .fn()
-      .mockReturnValue(appBridgeResourcePickerMock);
-
     beforeEach(() => {
+      appBridgeResourcePickerCreate = jest.spyOn(
+        AppBridgeResourcePicker,
+        'create',
+      );
+      appBridgeResourcePickerCreate.mockReturnValue(
+        appBridgeResourcePickerMock,
+      );
+    });
+
+    afterEach(() => {
       jest.clearAllMocks();
     });
 
@@ -27,23 +34,20 @@ describe('<ResourcePicker />', () => {
     });
 
     it('creates an instance of resource picker', () => {
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <ResourcePicker resourceType="Product" open />,
       );
 
       expect(AppBridgeResourcePicker.create).toHaveBeenCalledTimes(1);
-      expect(AppBridgeResourcePicker.create).toHaveBeenCalledWith(
-        polaris.appBridge,
-        {
-          resourceType: AppBridgeResourcePicker.ResourceType.Product,
-          options: {
-            initialQuery: undefined,
-            showHidden: true,
-            selectMultiple: true,
-            showVariants: true,
-          },
+      expect(AppBridgeResourcePicker.create).toHaveBeenCalledWith(appBridge, {
+        resourceType: AppBridgeResourcePicker.ResourceType.Product,
+        options: {
+          initialQuery: undefined,
+          showHidden: true,
+          selectMultiple: true,
+          showVariants: true,
         },
-      );
+      });
     });
 
     it('subscribes the selection callback', () => {
@@ -225,10 +229,7 @@ function noop() {}
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
-  const polaris = {appBridge};
-  const resourcePicker = mountWithAppProvider(element, {
-    context: {polaris},
-  });
+  const resourcePicker = mountWithAppProvider(element, {appBridge});
 
-  return {resourcePicker, polaris};
+  return {resourcePicker, appBridge};
 }

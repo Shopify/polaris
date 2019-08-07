@@ -1,6 +1,4 @@
-import * as React from 'react';
-import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider} from 'test-utilities';
+import React from 'react';
 import {
   CirclePlusMinor,
   CircleAlertMajorTwotone,
@@ -9,9 +7,12 @@ import {
   CircleInformationMajorTwotone,
   FlagMajorTwotone,
 } from '@shopify/polaris-icons';
-
+import {ReactWrapper} from 'enzyme';
+import {mountWithAppProvider} from 'test-utilities/legacy';
+import {BannerContext} from 'utilities/banner-context';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
 import Banner from '..';
+import {WithinContentContext} from '../../../utilities/within-content-context';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -112,19 +113,16 @@ describe('<Banner />', () => {
     expect(unstyledLink.prop('rel')).toBe('noopener noreferrer');
   });
 
-  const mockContext = {
-    withinContentContainer: true,
-  };
-
   const bannerWithContentContext = mountWithAppProvider(
-    <Banner
-      action={{
-        content: 'Primary action',
-      }}
-    >
-      Some content
-    </Banner>,
-    {context: mockContext},
+    <WithinContentContext.Provider value>
+      <Banner
+        action={{
+          content: 'Primary action',
+        }}
+      >
+        Some content
+      </Banner>
+    </WithinContentContext.Provider>,
   );
 
   it('renders a slim button with contentContext', () => {
@@ -151,6 +149,34 @@ describe('<Banner />', () => {
         .filterWhere((element: ReactWrapper) => element.prop('tabIndex') === 0);
 
       expect(div.getDOMNode()).toBe(document.activeElement);
+    });
+  });
+
+  describe('context', () => {
+    it('passes the within banner context', () => {
+      const Child: React.SFC<{}> = (_props) => {
+        return (
+          <BannerContext.Consumer>
+            {(BannerContext) => {
+              // eslint-disable-next-line shopify/jest/no-if
+              return BannerContext ? <div /> : null;
+            }}
+          </BannerContext.Consumer>
+        );
+      };
+
+      const banner = mountWithAppProvider(
+        <Banner>
+          <Child />
+        </Banner>,
+      );
+
+      const div = banner
+        .find(Child)
+        .find('div')
+        .first();
+
+      expect(div.exists()).toBe(true);
     });
   });
 });

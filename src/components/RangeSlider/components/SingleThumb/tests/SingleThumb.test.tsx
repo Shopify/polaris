@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {SingleThumb} from '../..';
 
 const mockProps = {
@@ -14,7 +14,7 @@ const mockProps = {
 
 describe('<SingleThumb />', () => {
   it('allows specific props to pass through properties on the input', () => {
-    const input = shallowWithAppProvider(
+    const input = mountWithAppProvider(
       <SingleThumb disabled {...mockProps} />,
     ).find('input');
 
@@ -55,9 +55,7 @@ describe('<SingleThumb />', () => {
   describe('onFocus()', () => {
     it('is called when the input is focused', () => {
       const onFocusSpy = jest.fn();
-      shallowWithAppProvider(
-        <SingleThumb {...mockProps} onFocus={onFocusSpy} />,
-      )
+      mountWithAppProvider(<SingleThumb {...mockProps} onFocus={onFocusSpy} />)
         .find('input')
         .simulate('focus');
       expect(onFocusSpy).toHaveBeenCalledTimes(1);
@@ -67,7 +65,7 @@ describe('<SingleThumb />', () => {
   describe('onBlur()', () => {
     it('is called when the input is blurred', () => {
       const onBlurSpy = jest.fn();
-      const element = shallowWithAppProvider(
+      const element = mountWithAppProvider(
         <SingleThumb {...mockProps} onBlur={onBlurSpy} />,
       );
 
@@ -80,7 +78,7 @@ describe('<SingleThumb />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallowWithAppProvider(<SingleThumb {...mockProps} />)
+      const id = mountWithAppProvider(<SingleThumb {...mockProps} />)
         .find('input')
         .prop('id');
 
@@ -123,7 +121,7 @@ describe('<SingleThumb />', () => {
 
   describe('error', () => {
     it('marks the input as invalid', () => {
-      const element = shallowWithAppProvider(
+      const element = mountWithAppProvider(
         <SingleThumb error={<span>Invalid</span>} {...mockProps} />,
       );
       expect(element.find('input').prop<string>('aria-invalid')).toBe(true);

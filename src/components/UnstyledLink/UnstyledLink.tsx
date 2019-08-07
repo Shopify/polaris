@@ -1,44 +1,24 @@
-import * as React from 'react';
+import React from 'react';
 import {unstyled} from '../shared';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider/utilities';
-import compose from '../../utilities/react-compose';
-import withRef from '../WithRef';
+import {useLink, LinkLikeComponentProps} from '../../utilities/link';
 
-export interface Props extends React.HTMLProps<HTMLAnchorElement> {
-  /** A destination to link to */
-  url: string;
-  /** Forces url to open in a new tab */
-  external?: boolean;
-  /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value. */
-  download?: string | boolean;
-  /**	Content to display inside the link */
-  children?: React.ReactNode;
-  [key: string]: any;
-}
+// Every component needs a `Props` interface for our styleguide to build the props explorer
+// It'd be great if we could do `type Props = React.ComponentProps<LinkLikeComponent>`
+// but the props explorer isn't smart enough to work that out
+export interface Props extends LinkLikeComponentProps {}
 
-export type LinkLikeComponent = React.ComponentType<Props> | undefined;
-type CombinedProps = Props & WithAppProviderProps;
-
-export class UnstyledLink extends React.PureComponent<CombinedProps, never> {
-  render() {
-    const {polaris, external, url, ...rest} = this.props;
-    if (polaris && polaris.link) {
-      const LinkComponent = polaris.link.getLinkComponent();
-      if (LinkComponent) {
-        const {polaris, ...rest} = this.props;
-        return <LinkComponent {...unstyled.props} {...rest} />;
-      }
-    }
-
-    const target = external ? '_blank' : undefined;
-    const rel = external ? 'noopener noreferrer' : undefined;
-    return (
-      <a target={target} {...rest} href={url} rel={rel} {...unstyled.props} />
-    );
+function UnstyledLink(props: Props, _ref: React.RefObject<unknown>) {
+  const LinkComponent = useLink();
+  if (LinkComponent) {
+    return <LinkComponent {...unstyled.props} {...props} />;
   }
+
+  const {external, url, ...rest} = props;
+  const target = external ? '_blank' : undefined;
+  const rel = external ? 'noopener noreferrer' : undefined;
+  return (
+    <a target={target} {...rest} href={url} rel={rel} {...unstyled.props} />
+  );
 }
 
-export default compose<Props>(
-  withAppProvider<Props>(),
-  withRef<Props>(),
-)(UnstyledLink);
+export default React.memo(React.forwardRef(UnstyledLink));

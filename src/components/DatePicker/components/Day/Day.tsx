@@ -1,7 +1,10 @@
-import * as React from 'react';
-import {classNames} from '@shopify/css-utilities';
+import React from 'react';
 import {Months, isSameDay} from '@shopify/javascript-utilities/dates';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {classNames} from '../../../../utilities/css';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 
 import styles from '../../DatePicker.scss';
 

@@ -1,26 +1,21 @@
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
+import React from 'react';
 
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
-import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
+import {
+  findByTestID,
+  trigger,
+  mountWithAppProvider,
+} from 'test-utilities/legacy';
 
+import Collapsible from '../../../../Collapsible';
+import {NavigationContext} from '../../../context';
 import Item from '../../Item';
 import Section from '../Section';
 
 import channelResults from './fixtures/AdminNavQuery/multiple-channels.json';
 
-interface Context {
-  location?: string;
-  onNavigationDismiss?(): void;
-}
-
-const childContextTypes = {
-  location: PropTypes.string,
-  onNavigationDismiss: PropTypes.func,
-};
-
 describe('<Navigation.Section />', () => {
-  let context: Context;
+  let context: React.ContextType<typeof NavigationContext>;
 
   beforeEach(() => {
     matchMedia.mock();
@@ -37,7 +32,7 @@ describe('<Navigation.Section />', () => {
   });
 
   it('passes the right accessibilityLabel to its Button', () => {
-    const mountedSection = mountWithAppProvider(
+    const mountedSection = mountWithNavigationProvider(
       <Section
         title="test"
         items={[
@@ -53,7 +48,7 @@ describe('<Navigation.Section />', () => {
           onClick: noop,
         }}
       />,
-      {context, childContextTypes},
+      {...context},
     );
 
     expect(
@@ -64,7 +59,7 @@ describe('<Navigation.Section />', () => {
   it('calls iconButton.onClick when icon is clicked', () => {
     const spy = jest.fn();
 
-    const section = mountWithAppProvider(
+    const section = mountWithNavigationProvider(
       <Section
         title="test"
         items={[
@@ -80,7 +75,7 @@ describe('<Navigation.Section />', () => {
           onClick: spy,
         }}
       />,
-      {context, childContextTypes},
+      {...context},
     );
 
     section.find('button').simulate('click');
@@ -88,19 +83,23 @@ describe('<Navigation.Section />', () => {
   });
 
   it('renders an array of items from props', () => {
-    const section = mountWithAppProvider(<Section items={channelResults} />, {
-      context,
-      childContextTypes,
-    });
+    const section = mountWithNavigationProvider(
+      <Section items={channelResults} />,
+      {
+        ...context,
+      },
+    );
 
     expect(section.find('li').length === channelResults.length).toBe(true);
   });
 
   it('calls onNavigationDismiss from context on sub item click', () => {
-    const channels = mountWithAppProvider(<Section items={channelResults} />, {
-      context,
-      childContextTypes,
-    });
+    const channels = mountWithNavigationProvider(
+      <Section items={channelResults} />,
+      {
+        ...context,
+      },
+    );
 
     channels
       .find('a')
@@ -112,11 +111,16 @@ describe('<Navigation.Section />', () => {
   });
 
   it('sets expanded to false on item click', () => {
-    const channels = mountWithAppProvider(<Section items={channelResults} />, {
-      context,
-    });
-
-    channels.setState({expanded: true});
+    const channels = mountWithNavigationProvider(
+      <Section
+        items={channelResults}
+        rollup={{after: 0, view: 'test', hide: 'test', activePath: '/'}}
+      />,
+      {
+        ...context,
+      },
+    );
+    findByTestID(channels, 'ToggleViewAll').simulate('click');
 
     channels
       .find('a')
@@ -124,13 +128,13 @@ describe('<Navigation.Section />', () => {
       .simulate('click');
 
     animationFrame.runFrame();
-
-    expect(channels.state('expanded')).toBe(false);
+    channels.update();
+    expect(channels.find(Collapsible).prop('open')).toBe(false);
   });
 
   it('does not set expanded to false on item click when it has a sub nav and on the mobile breakpoint', () => {
     matchMedia.setMedia(() => ({matches: true}));
-    const withSubNav = mountWithAppProvider(
+    const withSubNav = mountWithNavigationProvider(
       <Section
         rollup={{
           after: 1,
@@ -156,12 +160,11 @@ describe('<Navigation.Section />', () => {
         ]}
       />,
       {
-        context,
-        childContextTypes,
+        ...context,
       },
     );
 
-    withSubNav.setState({expanded: true});
+    findByTestID(withSubNav, 'ToggleViewAll').simulate('click');
 
     withSubNav
       .find('a[href="/other"]')
@@ -170,11 +173,16 @@ describe('<Navigation.Section />', () => {
 
     animationFrame.runFrame();
 
-    expect(withSubNav.state('expanded')).toBe(true);
+    expect(
+      withSubNav
+        .find(Collapsible)
+        .first()
+        .prop('open'),
+    ).toBe(true);
   });
 
   it('adds a toggle button if rollupAfter has a value', () => {
-    const channels = mountWithAppProvider(
+    const channels = mountWithNavigationProvider(
       <Section
         rollup={{
           after: 3,
@@ -184,14 +192,14 @@ describe('<Navigation.Section />', () => {
         }}
         items={channelResults}
       />,
-      {context, childContextTypes},
+      {...context},
     );
 
     expect(findByTestID(channels, 'ToggleViewAll').exists()).toBe(true);
   });
 
   it('passes the props to Item', () => {
-    const section = mountWithAppProvider(
+    const section = mountWithNavigationProvider(
       <Section
         title="test"
         items={[
@@ -208,7 +216,7 @@ describe('<Navigation.Section />', () => {
         }}
         separator
       />,
-      {context, childContextTypes},
+      {...context},
     );
 
     expect(section.find(Item).props()).toMatchObject({
@@ -220,7 +228,7 @@ describe('<Navigation.Section />', () => {
 
   it('calls onClick callback when onClick on Item is triggered', () => {
     const onClickSpy = jest.fn();
-    const section = mountWithAppProvider(
+    const section = mountWithNavigationProvider(
       <Section
         title="test"
         items={[
@@ -238,7 +246,7 @@ describe('<Navigation.Section />', () => {
         }}
         separator
       />,
-      {context, childContextTypes},
+      {...context},
     );
 
     trigger(section.find(Item), 'onClick');
@@ -247,5 +255,16 @@ describe('<Navigation.Section />', () => {
     expect(onClickSpy).toHaveBeenCalledTimes(1);
   });
 });
+
+function mountWithNavigationProvider(
+  node: React.ReactElement<any>,
+  context: React.ContextType<typeof NavigationContext> = {location: ''},
+) {
+  return mountWithAppProvider(
+    <NavigationContext.Provider value={context}>
+      {node}
+    </NavigationContext.Provider>,
+  );
+}
 
 function noop() {}

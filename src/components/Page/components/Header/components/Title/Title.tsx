@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../../../../../utilities/css';
 import {Props as AvatarProps} from '../../../../../Avatar';
 import {Props as ThumbnailProps} from '../../../../../Thumbnail';
 import DisplayText from '../../../../../DisplayText';

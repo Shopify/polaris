@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
-import isInputFocused from '../../utilities/isInputFocused';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {classNames} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
+import {isInputFocused} from '../../utilities/is-input-focused';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
 import Tooltip from '../Tooltip';
@@ -42,9 +42,7 @@ export interface Props extends PaginationDescriptor {
   plain?: boolean;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
-
-function Pagination({
+export default function Pagination({
   hasNext,
   hasPrevious,
   nextURL,
@@ -57,8 +55,9 @@ function Pagination({
   previousKeys,
   plain,
   accessibilityLabel,
-  polaris: {intl},
-}: CombinedProps) {
+}: Props) {
+  const intl = useI18n();
+
   const node: React.RefObject<HTMLElement> = React.createRef();
   let label: string;
 
@@ -194,5 +193,3 @@ function handleCallback(fn: () => void) {
     fn();
   };
 }
-
-export default withAppProvider<Props>()(Pagination);

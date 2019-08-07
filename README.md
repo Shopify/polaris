@@ -33,7 +33,7 @@ yarn add @shopify/polaris
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.21.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/4.0.0-rc.2/polaris.min.css"
 />
 ```
 
@@ -53,7 +53,7 @@ import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 
 ```javascript
 ReactDOM.render(
-  <AppProvider>
+  <AppProvider i18n={{}}>
     <Page title="Example app">
       <Card sectioned>
         <Button onClick={() => alert('Button clicked!')}>Example button</Button>
@@ -81,7 +81,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.21.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/4.0.0-rc.2/polaris.min.css"
 />
 ```
 

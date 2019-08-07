@@ -1,9 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../utilities/css';
 
-import {getWidth} from '../../utilities/getWidth';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {getWidth} from '../../utilities/get-width';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Icon from '../Icon';
 import Image from '../Image';
 import UnstyledLink from '../UnstyledLink';
@@ -58,12 +61,9 @@ class TopBar extends React.PureComponent<ComposedProps, State> {
       onNavigationToggle,
       onSearchResultsDismiss,
       contextControl,
-      polaris: {
-        intl,
-        theme: {logo},
-      },
+      polaris: {intl, theme},
     } = this.props;
-
+    const logo = theme && theme.logo;
     const {focused} = this.state;
 
     const className = classNames(

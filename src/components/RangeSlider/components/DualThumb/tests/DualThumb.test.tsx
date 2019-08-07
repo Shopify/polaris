@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider, findByTestID} from 'test-utilities';
+import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Key} from 'types';
 import DualThumb, {Props as DualThumbProps} from '../DualThumb';
 
@@ -475,6 +475,7 @@ describe('<DualThumb />', () => {
   });
 
   describe('mouse interface', () => {
+    let getBoundingClientRectSpy: jest.SpyInstance;
     type EventCallback = (mockEventData?: {[key: string]: any}) => void;
 
     const eventMap: {[eventType: string]: EventCallback} = {};
@@ -486,10 +487,23 @@ describe('<DualThumb />', () => {
         .mockImplementation((eventType: string, callback: EventCallback) => {
           eventMap[eventType] = callback;
         });
+      getBoundingClientRectSpy = jest
+        .spyOn(Element.prototype, 'getBoundingClientRect')
+        .mockImplementation(() => {
+          return {
+            width: 124,
+            height: 0,
+            top: 0,
+            left: -12,
+            bottom: 0,
+            right: 0,
+          };
+        });
     });
 
     afterAll(() => {
       document.addEventListener = origialAddEventListener;
+      getBoundingClientRectSpy.mockRestore();
     });
 
     it('moving the lower thumb sets the lower value', () => {
@@ -644,9 +658,8 @@ describe('<DualThumb />', () => {
       const trackWidth = 100;
       const clientX = trackWidth * percentageOfTrackX;
 
-      component.setState({trackLeft: 0, trackWidth}, () => {
-        findTrack(component).simulate('mouseDown', {button, clientX});
-      });
+      window.dispatchEvent(new Event('resize'));
+      findTrack(component).simulate('mouseDown', {button, clientX});
     }
 
     function moveLowerThumb(
@@ -656,10 +669,9 @@ describe('<DualThumb />', () => {
     ) {
       const trackWidth = 100;
 
-      component.setState({trackLeft: 0, trackWidth}, () => {
-        findThumbLower(component).simulate('mouseDown', {button});
-        eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
-      });
+      window.dispatchEvent(new Event('resize'));
+      findThumbLower(component).simulate('mouseDown', {button});
+      eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
     }
 
     function moveUpperThumb(
@@ -669,14 +681,14 @@ describe('<DualThumb />', () => {
     ) {
       const trackWidth = 100;
 
-      component.setState({trackLeft: 0, trackWidth}, () => {
-        findThumbUpper(component).simulate('mouseDown', {button});
-        eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
-      });
+      window.dispatchEvent(new Event('resize'));
+      findThumbUpper(component).simulate('mouseDown', {button});
+      eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
     }
   });
 
   describe('touch interface', () => {
+    let getBoundingClientRectSpy: jest.SpyInstance;
     type EventCallback = (mockEventData?: {[key: string]: any}) => void;
 
     const eventMap: {[eventType: string]: EventCallback} = {};
@@ -688,10 +700,23 @@ describe('<DualThumb />', () => {
         .mockImplementation((eventType: string, callback: EventCallback) => {
           eventMap[eventType] = callback;
         });
+      getBoundingClientRectSpy = jest
+        .spyOn(Element.prototype, 'getBoundingClientRect')
+        .mockImplementation(() => {
+          return {
+            width: 124,
+            height: 0,
+            top: 0,
+            left: -12,
+            bottom: 0,
+            right: 0,
+          };
+        });
     });
 
     afterAll(() => {
       document.addEventListener = origialAddEventListener;
+      getBoundingClientRectSpy.mockRestore();
     });
 
     it('touchmove the lower thumb sets the lower value', () => {
@@ -864,17 +889,16 @@ describe('<DualThumb />', () => {
       const trackWidth = 100;
       const clientX = trackWidth * percentageOfTrackX;
 
-      component.setState({trackLeft: 0, trackWidth}, () => {
-        const touch = {clientX};
-        const event = new TouchEvent('touchstart', {
-          touches: [touch],
-        } as TouchEventInit);
-        Object.assign(event, {preventDefault: noop});
+      window.dispatchEvent(new Event('resize'));
+      const touch = {clientX};
+      const event = new TouchEvent('touchstart', {
+        touches: [touch],
+      } as TouchEventInit);
+      Object.assign(event, {preventDefault: noop});
 
-        findTrack(component)
-          .getDOMNode()
-          .dispatchEvent(event);
-      });
+      findTrack(component)
+        .getDOMNode()
+        .dispatchEvent(event);
     }
 
     function moveLowerThumb(
@@ -884,13 +908,11 @@ describe('<DualThumb />', () => {
     ) {
       const trackWidth = 100;
 
-      component.setState({trackLeft: 0, trackWidth}, () => {
-        if (simulateTouchStart)
-          findThumbLower(component).simulate('touchStart');
-        eventMap.touchmove({
-          touches: [{clientX: trackWidth * percentageOfTrackX}],
-          preventDefault: noop,
-        });
+      window.dispatchEvent(new Event('resize'));
+      if (simulateTouchStart) findThumbLower(component).simulate('touchStart');
+      eventMap.touchmove({
+        touches: [{clientX: trackWidth * percentageOfTrackX}],
+        preventDefault: noop,
       });
     }
 
@@ -901,13 +923,12 @@ describe('<DualThumb />', () => {
     ) {
       const trackWidth = 100;
 
-      component.setState({trackLeft: 0, trackWidth}, () => {
-        if (simulateTouchStart)
-          findThumbUpper(component).simulate('touchStart');
-        eventMap.touchmove({
-          touches: [{clientX: trackWidth * percentageOfTrackX}],
-          preventDefault: noop,
-        });
+      window.dispatchEvent(new Event('resize'));
+
+      if (simulateTouchStart) findThumbUpper(component).simulate('touchStart');
+      eventMap.touchmove({
+        touches: [{clientX: trackWidth * percentageOfTrackX}],
+        preventDefault: noop,
       });
     }
   });

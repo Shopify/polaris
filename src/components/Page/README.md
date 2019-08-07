@@ -17,7 +17,7 @@ keywords:
   - page without primary action in header
   - page without pagination
   - full-width page
-  - single-column page
+  - narrow-width page
   - page with action groups
   - page with separator
   - outer wrapper
@@ -46,7 +46,7 @@ Note in the props table that a number of properties are only available in stand-
 
 ```jsx
 ReactDOM.render(
-  <AppProvider apiKey="YOUR_API_KEY">
+  <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
     <Page
       breadcrumbs={[{content: 'Products'}]}
       title="Product reviews"
@@ -401,15 +401,15 @@ Use for layouts that benefit from more screen width, such as wide tables or list
 </Page>
 ```
 
-### Single-column page
+### Narrow width page
 
 <!-- example-for: web -->
 
-Use a single column layout if the page supports a single unified task. When merchants must review the entire page contents to complete their goal, this layout helps focus their attention in a single path from top to bottom.
+Use a narrow width layout if the page supports a single unified task. When merchants must review the entire page contents to complete their goal, this layout helps focus their attention in a single path from top to bottom.
 
 ```jsx
 <Page
-  singleColumn
+  narrowWidth
   breadcrumbs={[{content: 'Orders', url: '/orders'}]}
   title="Add payment method"
   primaryAction={{content: 'Save', disabled: true}}

@@ -173,24 +173,11 @@ You didn’t enter a store name.
 Use to allow merchants to provide text input when the expected input is short. For longer input, use the auto grow or multiline options.
 
 ```jsx
-class TextFieldExample extends React.Component {
-  state = {
-    value: 'Jaded Pixel',
-  };
+function TextFieldExample() {
+  const [value, setValue] = useState('Jaded Pixel');
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
 
-  handleChange = (value) => {
-    this.setState({value});
-  };
-
-  render() {
-    return (
-      <TextField
-        label="Store name"
-        value={this.state.value}
-        onChange={this.handleChange}
-      />
-    );
-  }
+  return <TextField label="Store name" value={value} onChange={handleChange} />;
 }
 ```
 
@@ -211,25 +198,18 @@ class TextFieldExample extends React.Component {
 Use when input text should be a number.
 
 ```jsx
-class NumberFieldExample extends React.Component {
-  state = {
-    value: '1',
-  };
+function NumberFieldExample() {
+  const [value, setValue] = useState('1');
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
 
-  handleChange = (value) => {
-    this.setState({value});
-  };
-
-  render() {
-    return (
-      <TextField
-        label="Quantity"
-        type="number"
-        value={this.state.value}
-        onChange={this.handleChange}
-      />
-    );
-  }
+  return (
+    <TextField
+      label="Quantity"
+      type="number"
+      value={value}
+      onChange={handleChange}
+    />
+  );
 }
 ```
 
@@ -254,25 +234,18 @@ This will display the right keyboard on mobile devices.
 Use when the text input should be an email address.
 
 ```jsx
-class EmailFieldExample extends React.Component {
-  state = {
-    value: 'bernadette.lapresse@jadedpixel.com',
-  };
+function EmailFieldExample() {
+  const [value, setValue] = useState('bernadette.lapresse@jadedpixel.com');
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
 
-  handleChange = (value) => {
-    this.setState({value});
-  };
-
-  render() {
-    return (
-      <TextField
-        label="Email"
-        type="email"
-        value={this.state.value}
-        onChange={this.handleChange}
-      />
-    );
-  }
+  return (
+    <TextField
+      label="Email"
+      type="email"
+      value={value}
+      onChange={handleChange}
+    />
+  );
 }
 ```
 
@@ -297,25 +270,18 @@ This will display the right keyboard on mobile devices.
 Use when the expected input could be more than one line. The field will automatically grow to accommodate additional text.
 
 ```jsx
-class MultilineFieldExample extends React.Component {
-  state = {
-    value: '1776 Barnes Street\nOrlando, FL 32801',
-  };
+function MultilineFieldExample() {
+  const [value, setValue] = useState('1776 Barnes Street\nOrlando, FL 32801');
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
 
-  handleChange = (value) => {
-    this.setState({value});
-  };
-
-  render() {
-    return (
-      <TextField
-        label="Shipping address"
-        value={this.state.value}
-        onChange={this.handleChange}
-        multiline
-      />
-    );
-  }
+  return (
+    <TextField
+      label="Shipping address"
+      value={value}
+      onChange={handleChange}
+      multiline
+    />
+  );
 }
 ```
 
@@ -338,50 +304,43 @@ class MultilineFieldExample extends React.Component {
 Use to visually hide the label when the text field’s purpose is clear from context. The label will remain available to screen readers. Use this option with care. In almost all cases, show the label.
 
 ```jsx
-class HiddenLabelExample extends React.Component {
-  state = {
-    value: '12',
-    selected: 'yes',
-  };
+function HiddenLabelExample() {
+  const [value, setValue] = useState('12');
+  const [selected, setSelected] = useState('yes');
+  const handleTextChange = useCallback((newValue) => setValue(newValue), []);
+  const handleChoiceChange = useCallback(
+    (selections) => setSelected(selections[0]),
+    [],
+  );
 
-  handleValueChange = (value) => {
-    this.setState({value});
-  };
-
-  handleSelectionChange = (selected) => {
-    this.setState({selected: selected[0]});
-  };
-
-  render() {
-    return (
-      <FormLayout>
-        <ChoiceList
-          title="Gift card auto-expiration"
-          choices={[
-            {label: 'Gift cards never expire', value: 'no'},
-            {label: 'Gift cards expire', value: 'yes'},
-          ]}
-          selected={[this.state.selected]}
-          onChange={this.handleSelectionChange}
-        />
-        <TextField
-          label="Gift cards expire after"
-          type="number"
-          labelHidden
-          value={this.state.value}
-          disabled={this.state.selected === 'no'}
-          onChange={this.handleValueChange}
-          connectedRight={
-            <Select
-              label="Unit of time"
-              labelHidden
-              options={['months after purchase']}
-            />
-          }
-        />
-      </FormLayout>
-    );
-  }
+  return (
+    <FormLayout>
+      <ChoiceList
+        title="Gift card auto-expiration"
+        choices={[
+          {label: 'Gift cards never expire', value: 'no'},
+          {label: 'Gift cards expire', value: 'yes'},
+        ]}
+        selected={[selected]}
+        onChange={handleChoiceChange}
+      />
+      <TextField
+        label="Gift cards expire after"
+        type="number"
+        labelHidden
+        value={value}
+        disabled={selected === 'no'}
+        onChange={handleTextChange}
+        connectedRight={
+          <Select
+            label="Unit of time"
+            labelHidden
+            options={['months after purchase']}
+          />
+        }
+      />
+    </FormLayout>
+  );
 }
 ```
 
@@ -581,10 +540,15 @@ If inputting weight as a number and a separate unit of measurement, use a text f
 class ConnectedFieldsExample extends React.Component {
   state = {
     value: '10.6',
+    selectValue: 'kg',
   };
 
   handleChange = (value) => {
     this.setState({value});
+  };
+
+  handleSelectChange = (selectValue) => {
+    this.setState({selectValue});
   };
 
   render() {
@@ -595,7 +559,13 @@ class ConnectedFieldsExample extends React.Component {
         value={this.state.value}
         onChange={this.handleChange}
         connectedRight={
-          <Select label="Weight unit" labelHidden options={['kg', 'lb']} />
+          <Select
+            value={this.state.selectValue}
+            label="Weight unit"
+            onChange={this.handleSelectChange}
+            labelHidden
+            options={['kg', 'lb']}
+          />
         }
       />
     );
@@ -696,6 +666,16 @@ To render an invalid text field and its validation error separately:
 class SeparateValidationErrorExample extends React.Component {
   state = {
     content: '',
+    selectTypeValue: 'Product type',
+    selectConditionValue: 'is equal to',
+  };
+
+  handleSelectCollectionTypeChange = (selectTypeValue) => {
+    this.setState({selectTypeValue});
+  };
+
+  handleSelectCollectionConditionChange = (selectConditionValue) => {
+    this.setState({selectConditionValue});
   };
 
   render() {
@@ -714,11 +694,15 @@ class SeparateValidationErrorExample extends React.Component {
               labelHidden
               label="Collection rule type"
               options={['Product type']}
+              value={this.state.selectTypeValue}
+              onChange={this.handleSelectCollectionTypeChange}
             />
             <Select
               labelHidden
               label="Collection rule condition"
               options={['is equal to']}
+              value={this.state.selectConditionValue}
+              onChange={this.handleSelectCollectionConditionChange}
             />
             <TextField
               labelHidden

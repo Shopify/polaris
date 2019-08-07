@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Tab, Panel, TabMeasurer, List} from '../components';
 import Tabs, {Props} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
@@ -139,17 +139,17 @@ describe('<Tabs />', () => {
   });
 
   describe('selected', () => {
+    let getElementById: jest.SpyInstance;
     let panelStub: {focus: jest.Mock<any>};
 
     beforeEach(() => {
       panelStub = {focus: jest.fn()};
-      jest
-        .spyOn(document, 'getElementById')
-        .mockImplementation(() => panelStub as any);
+      getElementById = jest.spyOn(document, 'getElementById');
+      getElementById.mockReturnValue(panelStub);
     });
 
     afterEach(() => {
-      (document.getElementById as jest.Mock).mockRestore();
+      jest.clearAllMocks();
     });
 
     it('focuses the panel when a tab becomes selected', () => {
@@ -384,17 +384,6 @@ describe('<Tabs />', () => {
   });
 
   describe('<Popover />', () => {
-    it('renders a Popover when there are hiddenTabs', () => {
-      const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
-      tabs.setState({
-        tabWidths: [82, 160, 150, 100, 80, 120],
-        containerWidth: 300,
-      });
-
-      const popover = tabs.find(Popover);
-      expect(popover).toHaveLength(1);
-    });
-
     it('passes preferredPosition below to the Popover', () => {
       const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
       const tabMeasurer = tabs.find(TabMeasurer);

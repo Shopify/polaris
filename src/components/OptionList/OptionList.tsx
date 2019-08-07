@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React, {useState, useRef, useCallback} from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {arraysAreEqual} from '../../utilities/arrays';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {Props as IconProps} from '../Icon';
+import {IconProps} from '../../types';
 import {Props as AvatarProps} from '../Avatar';
 import {Props as ThumbnailProps} from '../Thumbnail';
+import {useDeepCompare} from '../../utilities/use-deep-compare';
 
 import {Option} from './components';
 import styles from './OptionList.scss';
@@ -31,6 +31,8 @@ export interface SectionDescriptor {
   /** Section title */
   title?: string;
 }
+
+type Descriptor = OptionDescriptor | SectionDescriptor;
 
 const getUniqueId = createUniqueIDFactory('OptionList');
 
@@ -59,132 +61,109 @@ export interface State {
   normalizedOptions: SectionDescriptor[];
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+export default function OptionList({
+  options,
+  sections,
+  title,
+  selected,
+  allowMultiple,
+  role,
+  optionRole,
+  onChange,
+  id: propId,
+}: Props) {
+  const [normalizedOptions, setNormalizedOptions] = useState(
+    createNormalizedOptions(options, sections, title),
+  );
+  const id = useRef(propId || getUniqueId());
 
-// eslint-disable-next-line react/no-unsafe
-export class OptionList extends React.Component<CombinedProps, State> {
-  state: State = {
-    normalizedOptions: createNormalizedOptions(
-      this.props.options,
-      this.props.sections,
-      this.props.title,
-    ),
-  };
-
-  private id = this.props.id || getUniqueId();
-
-  componentWillReceiveProps({
-    options: nextOptions = [],
-    sections: nextSections = [],
-    id: nextID,
-    title: nextTitle,
-  }: Props) {
-    const {options = [], sections = [], id, title} = this.props;
-
-    if (id !== nextID) {
-      this.id = nextID || this.id;
-    }
-
-    const optionsChanged = !arraysAreEqual<OptionDescriptor>(
-      nextOptions,
-      options,
-    );
-
-    const sectionsChanged = !arraysAreEqual<SectionDescriptor>(
-      nextSections,
-      sections,
-      testSectionsPropEquality,
-    );
-
-    const titleChanged = title !== nextTitle;
-
-    if (optionsChanged || sectionsChanged || titleChanged) {
-      this.setState({
-        normalizedOptions: createNormalizedOptions(
-          nextOptions,
-          nextSections,
-          nextTitle,
-        ),
-      });
-    }
+  if (id.current !== propId) {
+    id.current = propId || id.current;
   }
 
-  render() {
-    const {normalizedOptions} = this.state;
-    const {selected, allowMultiple, role, optionRole} = this.props;
-    const optionsExist = normalizedOptions.length > 0;
+  useDeepCompare(
+    () => {
+      setNormalizedOptions(
+        createNormalizedOptions(options || [], sections || [], title),
+      );
+    },
+    [options, sections, title],
+    optionArraysAreEqual,
+  );
 
-    const optionsMarkup = optionsExist
-      ? normalizedOptions.map(({title, options}, sectionIndex) => {
-          const titleMarkup = title ? (
-            <p className={styles.Title} role={role}>
-              {title}
-            </p>
-          ) : null;
-          const optionsMarkup =
-            options &&
-            options.map((option, optionIndex) => {
-              const isSelected = selected.includes(option.value);
-              const id =
-                option.id || `${this.id}-${sectionIndex}-${optionIndex}`;
+  const handleClick = useCallback(
+    (sectionIndex: number, optionIndex: number) => {
+      const selectedValue =
+        normalizedOptions[sectionIndex].options[optionIndex].value;
+      const foundIndex = selected.indexOf(selectedValue);
+      if (allowMultiple) {
+        const newSelection =
+          foundIndex === -1
+            ? [selectedValue, ...selected]
+            : [
+                ...selected.slice(0, foundIndex),
+                ...selected.slice(foundIndex + 1, selected.length),
+              ];
+        onChange(newSelection);
+        return;
+      }
+      onChange([selectedValue]);
+    },
+    [normalizedOptions, selected, allowMultiple, onChange],
+  );
 
-              return (
-                <Option
-                  {...option}
-                  key={id}
-                  id={id}
-                  section={sectionIndex}
-                  index={optionIndex}
-                  onClick={this.handleClick}
-                  select={isSelected}
-                  allowMultiple={allowMultiple}
-                  role={optionRole}
-                />
-              );
-            });
+  const optionsExist = normalizedOptions.length > 0;
 
-          return (
-            <li key={title || `noTitle-${sectionIndex}`}>
-              {titleMarkup}
-              <ul
-                className={styles.Options}
-                id={`${this.id}-${sectionIndex}`}
-                role={role}
-                aria-multiselectable={allowMultiple}
-              >
-                {optionsMarkup}
-              </ul>
-            </li>
-          );
-        })
-      : null;
+  const optionsMarkup = optionsExist
+    ? normalizedOptions.map(({title, options}, sectionIndex) => {
+        const titleMarkup = title ? (
+          <p className={styles.Title} role={role}>
+            {title}
+          </p>
+        ) : null;
+        const optionsMarkup =
+          options &&
+          options.map((option, optionIndex) => {
+            const isSelected = selected.includes(option.value);
+            const optionId =
+              option.id || `${id.current}-${sectionIndex}-${optionIndex}`;
 
-    return (
-      <ul className={styles.OptionList} role={role}>
-        {optionsMarkup}
-      </ul>
-    );
-  }
+            return (
+              <Option
+                {...option}
+                key={optionId}
+                id={optionId}
+                section={sectionIndex}
+                index={optionIndex}
+                onClick={handleClick}
+                select={isSelected}
+                allowMultiple={allowMultiple}
+                role={optionRole}
+              />
+            );
+          });
 
-  private handleClick = (sectionIndex: number, optionIndex: number) => {
-    const {selected, onChange, allowMultiple} = this.props;
-    const selectedValue = this.state.normalizedOptions[sectionIndex].options[
-      optionIndex
-    ].value;
-    const foundIndex = selected.indexOf(selectedValue);
-    if (allowMultiple) {
-      const newSelection =
-        foundIndex === -1
-          ? [selectedValue, ...selected]
-          : [
-              ...selected.slice(0, foundIndex),
-              ...selected.slice(foundIndex + 1, selected.length),
-            ];
-      onChange(newSelection);
-      return;
-    }
-    onChange([selectedValue]);
-  };
+        return (
+          <li key={title || `noTitle-${sectionIndex}`}>
+            {titleMarkup}
+            <ul
+              className={styles.Options}
+              id={`${id.current}-${sectionIndex}`}
+              role={role}
+              aria-multiselectable={allowMultiple}
+            >
+              {optionsMarkup}
+            </ul>
+          </li>
+        );
+      })
+    : null;
+
+  return (
+    <ul className={styles.OptionList} role={role}>
+      {optionsMarkup}
+    </ul>
+  );
 }
 
 function createNormalizedOptions(
@@ -213,6 +192,25 @@ function createNormalizedOptions(
   ];
 }
 
+function isSection(arr: Descriptor[]): arr is SectionDescriptor[] {
+  return typeof arr[0] === 'object' && arr[0].hasOwnProperty('options');
+}
+
+function optionArraysAreEqual(
+  firstArray: Descriptor[],
+  secondArray: Descriptor[],
+) {
+  if (isSection(firstArray) && isSection(secondArray)) {
+    return arraysAreEqual<SectionDescriptor>(
+      firstArray,
+      secondArray,
+      testSectionsPropEquality,
+    );
+  }
+
+  return arraysAreEqual(firstArray, secondArray);
+}
+
 function testSectionsPropEquality(
   previousSection: SectionDescriptor,
   currentSection: SectionDescriptor,
@@ -223,5 +221,3 @@ function testSectionsPropEquality(
   const titlesAreEqual = previousSection.title === currentSection.title;
   return optionsAreEqual && titlesAreEqual;
 }
-
-export default withAppProvider<Props>()(OptionList);

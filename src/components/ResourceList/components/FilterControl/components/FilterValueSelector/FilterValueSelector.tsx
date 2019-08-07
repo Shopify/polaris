@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import Select from '../../../../../Select';
 import Stack from '../../../../../Stack';
 import TextField from '../../../../../TextField';
 import {
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../../AppProvider';
+} from '../../../../../../utilities/with-app-provider';
 import DateSelector from '../DateSelector';
 import {Filter, AppliedFilter, FilterType, Operator} from '../../types';
 

@@ -1,23 +1,25 @@
-import * as React from 'react';
+import React, {createRef} from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 import {durationSlow} from '@shopify/polaris-tokens';
-import {CSSTransition} from 'react-transition-group';
+import {CSSTransition} from '@material-ui/react-transition-group';
+import {classNames} from '../../utilities/css';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import Icon from '../Icon';
 import EventListener from '../EventListener';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
-import {UserMenuProvider} from '../TopBar';
 import {dataPolarisTopBar, layer} from '../shared';
-import {setRootProperty} from '../../utilities/setRootProperty';
+import {setRootProperty} from '../../utilities/set-root-property';
 import {
-  ContextualSaveBarProps,
   FrameContext,
-  frameContextTypes,
-  ToastProps,
-} from './types';
+  ContextualSaveBarProps,
+  ToastID,
+  ToastPropsWithID,
+} from '../../utilities/frame';
 import {ToastManager, Loading, ContextualSaveBar} from './components';
 
 import styles from './Frame.scss';
@@ -44,7 +46,7 @@ export interface State {
   skipFocused?: boolean;
   globalRibbonHeight: number;
   loadingStack: number;
-  toastMessages: (ToastProps & {id: string})[];
+  toastMessages: (ToastPropsWithID)[];
   showContextualSaveBar: boolean;
 }
 
@@ -58,8 +60,6 @@ const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 type CombinedProps = Props & WithAppProviderProps;
 
 class Frame extends React.PureComponent<CombinedProps, State> {
-  static childContextTypes = frameContextTypes;
-
   state: State = {
     skipFocused: false,
     globalRibbonHeight: 0,
@@ -70,23 +70,10 @@ class Frame extends React.PureComponent<CombinedProps, State> {
   };
 
   private contextualSaveBar: ContextualSaveBarProps | null;
-
   private globalRibbonContainer: HTMLDivElement | null = null;
-
-  private skipoToMainContentTargetNode = React.createRef<HTMLAnchorElement>();
-
-  getChildContext(): FrameContext {
-    return {
-      frame: {
-        showToast: this.showToast,
-        hideToast: this.hideToast,
-        startLoading: this.startLoading,
-        stopLoading: this.stopLoading,
-        setContextualSaveBar: this.setContextualSaveBar,
-        removeContextualSaveBar: this.removeContextualSaveBar,
-      },
-    };
-  }
+  private navigationNode = createRef<HTMLDivElement>();
+  private contextualSaveBarNode = createRef<HTMLDivElement>();
+  private skipToMainContentTargetNode = React.createRef<HTMLAnchorElement>();
 
   componentDidMount() {
     this.handleResize();
@@ -131,6 +118,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     const navigationMarkup = navigation ? (
       <TrapFocus trapping={mobileNavShowing}>
         <CSSTransition
+          findDOMNode={this.findNavigationNode}
           appear={mobileView}
           exit={mobileView}
           in={showMobileNavigation}
@@ -138,6 +126,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
           classNames={navTransitionClasses}
         >
           <div
+            ref={this.navigationNode}
             className={navClassName}
             onKeyDown={this.handleNavKeydown}
             id={APP_FRAME_NAV}
@@ -173,6 +162,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
 
     const contextualSaveBarMarkup = (
       <CSSTransition
+        findDOMNode={this.findContextualSaveBarNode}
         appear
         exit
         in={showContextualSaveBar}
@@ -181,7 +171,10 @@ class Frame extends React.PureComponent<CombinedProps, State> {
         mountOnEnter
         unmountOnExit
       >
-        <div className={styles.ContextualSaveBar}>
+        <div
+          className={styles.ContextualSaveBar}
+          ref={this.contextualSaveBarNode}
+        >
           <ContextualSaveBar {...this.contextualSaveBar} />
         </div>
       </CSSTransition>
@@ -251,37 +244,46 @@ class Frame extends React.PureComponent<CombinedProps, State> {
       // eslint-disable-next-line jsx-a11y/anchor-is-valid
       <a
         id={APP_FRAME_MAIN_ANCHOR_TARGET}
-        ref={this.skipoToMainContentTargetNode}
+        ref={this.skipToMainContentTargetNode}
         tabIndex={-1}
       />
     );
 
+    const context = {
+      showToast: this.showToast,
+      hideToast: this.hideToast,
+      startLoading: this.startLoading,
+      stopLoading: this.stopLoading,
+      setContextualSaveBar: this.setContextualSaveBar,
+      removeContextualSaveBar: this.removeContextualSaveBar,
+    };
+
     return (
-      <div
-        className={frameClassName}
-        {...layer.props}
-        {...navigationAttributes}
-      >
-        {skipMarkup}
-        <UserMenuProvider mobileView={mobileView || false}>
+      <FrameContext.Provider value={context}>
+        <div
+          className={frameClassName}
+          {...layer.props}
+          {...navigationAttributes}
+        >
+          {skipMarkup}
           {topBarMarkup}
           {navigationMarkup}
-        </UserMenuProvider>
-        {contextualSaveBarMarkup}
-        {loadingMarkup}
-        {navigationOverlayMarkup}
-        <main
-          className={styles.Main}
-          id={APP_FRAME_MAIN}
-          data-has-global-ribbon={Boolean(globalRibbon)}
-        >
-          {skipToMainContentTarget}
-          <div className={styles.Content}>{children}</div>
-        </main>
-        <ToastManager toastMessages={toastMessages} />
-        {globalRibbonMarkup}
-        <EventListener event="resize" handler={this.handleResize} />
-      </div>
+          {contextualSaveBarMarkup}
+          {loadingMarkup}
+          {navigationOverlayMarkup}
+          <main
+            className={styles.Main}
+            id={APP_FRAME_MAIN}
+            data-has-global-ribbon={Boolean(globalRibbon)}
+          >
+            {skipToMainContentTarget}
+            <div className={styles.Content}>{children}</div>
+          </main>
+          <ToastManager toastMessages={toastMessages} />
+          {globalRibbonMarkup}
+          <EventListener event="resize" handler={this.handleResize} />
+        </div>
+      </FrameContext.Provider>
     );
   }
 
@@ -306,7 +308,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     );
   };
 
-  private showToast = (toast: {id: string} & ToastProps) => {
+  private showToast = (toast: ToastPropsWithID) => {
     this.setState(({toastMessages}: State) => {
       const hasToastById =
         toastMessages.find(({id}) => id === toast.id) != null;
@@ -316,7 +318,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     });
   };
 
-  private hideToast = ({id}: {id: string}) => {
+  private hideToast = ({id}: ToastID) => {
     this.setState(({toastMessages}: State) => {
       return {
         toastMessages: toastMessages.filter(({id: toastId}) => id !== toastId),
@@ -374,10 +376,8 @@ class Frame extends React.PureComponent<CombinedProps, State> {
   };
 
   private handleClick = () => {
-    if (this.skipoToMainContentTargetNode.current == null) {
-      return;
-    }
-    this.skipoToMainContentTargetNode.current.focus();
+    this.skipToMainContentTargetNode.current &&
+      this.skipToMainContentTargetNode.current.focus();
   };
 
   private handleNavigationDismiss = () => {
@@ -397,6 +397,14 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     if (key === 'Escape') {
       this.handleNavigationDismiss();
     }
+  };
+
+  private findNavigationNode = () => {
+    return this.navigationNode.current;
+  };
+
+  private findContextualSaveBarNode = () => {
+    return this.contextualSaveBarNode.current;
   };
 }
 

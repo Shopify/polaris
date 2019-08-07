@@ -1,11 +1,4 @@
-import * as PropTypes from 'prop-types';
-import {Props as IconProps} from '../Icon';
-import {contentContextTypes} from '../../types';
-
-export interface Context {
-  location: string;
-  onNavigationDismiss?(): void;
-}
+import {IconProps} from '../../types';
 
 export interface ItemType {
   label: string;
@@ -18,9 +11,3 @@ export interface SectionType {
   fill?: boolean;
   items?: ItemType[];
 }
-
-export const contextTypes = {
-  location: PropTypes.string,
-  onNavigationDismiss: PropTypes.func,
-  ...contentContextTypes,
-};

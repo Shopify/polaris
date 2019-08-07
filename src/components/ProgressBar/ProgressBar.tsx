@@ -1,6 +1,6 @@
-import * as React from 'react';
-import {classNames, variationName} from '@shopify/css-utilities';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import React from 'react';
+import {classNames, variationName} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
 import styles from './ProgressBar.scss';
 
 export type Size = 'small' | 'medium' | 'large';
@@ -18,13 +18,9 @@ export interface Props {
   size?: Size;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+export default function ProgressBar({progress = 0, size = 'medium'}: Props) {
+  const intl = useI18n();
 
-function ProgressBar({
-  progress = 0,
-  size = 'medium',
-  polaris: {intl},
-}: CombinedProps) {
   const className = classNames(
     styles.ProgressBar,
     size && styles[variationName('size', size)],
@@ -67,5 +63,3 @@ function parseProgress(progress: number, warningMessage: string) {
   }
   return progressWidth;
 }
-
-export default withAppProvider<Props>()(ProgressBar);

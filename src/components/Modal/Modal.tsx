@@ -1,17 +1,20 @@
-import * as React from 'react';
-import isEqual from 'lodash/isEqual';
-import {TransitionGroup} from 'react-transition-group';
+import React from 'react';
+import {TransitionGroup} from '@material-ui/react-transition-group';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
+import {WithinContentContext} from '../../utilities/within-content-context';
+import {isObjectsEqual} from '../../utilities/is-objects-equal';
 import {wrapWithComponent} from '../../utilities/components';
 
-import {contentContextTypes} from '../../types';
 import {transformActions} from '../../utilities/app-bridge-transformers';
-import pick from '../../utilities/pick';
+import {pick} from '../../utilities/pick';
 
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Backdrop from '../Backdrop';
 import Scrollable from '../Scrollable';
 import Spinner from '../Spinner';
@@ -92,9 +95,6 @@ const APP_BRIDGE_PROPS: (keyof Props)[] = [
 ];
 
 class Modal extends React.Component<CombinedProps, State> {
-  static childContextTypes = contentContextTypes;
-
-  static Dialog = Dialog;
   static Section = Section;
   focusReturnPointNode: HTMLElement;
 
@@ -108,12 +108,6 @@ class Modal extends React.Component<CombinedProps, State> {
     | AppBridgeModal.ModalIframe
     | undefined;
 
-  getChildContext() {
-    return {
-      withinContentContainer: true,
-    };
-  }
-
   componentDidMount() {
     if (this.props.polaris.appBridge == null) {
       return;
@@ -124,21 +118,27 @@ class Modal extends React.Component<CombinedProps, State> {
       'Deprecation: Using `Modal` in an embedded app is deprecated and will be removed in v5.0. Use `Modal` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/modal',
     );
 
-    this.appBridgeModal = AppBridgeModal.create(
-      this.props.polaris.appBridge,
-      this.transformProps(),
-    );
+    const transformProps = this.transformProps();
+    if (transformProps) {
+      this.appBridgeModal = AppBridgeModal.create(
+        this.props.polaris.appBridge,
+        transformProps,
+      );
+    }
 
-    this.appBridgeModal.subscribe(
-      AppBridgeModal.Action.CLOSE,
-      this.props.onClose,
-    );
+    if (this.appBridgeModal) {
+      this.appBridgeModal.subscribe(
+        AppBridgeModal.Action.CLOSE,
+        this.props.onClose,
+      );
+    }
 
     const {open} = this.props;
 
     if (open) {
       this.focusReturnPointNode = document.activeElement as HTMLElement;
-      this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
+      this.appBridgeModal &&
+        this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
     }
   }
 
@@ -154,7 +154,10 @@ class Modal extends React.Component<CombinedProps, State> {
     const prevAppBridgeProps = pick(prevProps, APP_BRIDGE_PROPS);
     const currentAppBridgeProps = pick(this.props, APP_BRIDGE_PROPS);
 
-    if (!isEqual(prevAppBridgeProps, currentAppBridgeProps)) {
+    if (
+      !isObjectsEqual(prevAppBridgeProps, currentAppBridgeProps) &&
+      transformedProps
+    ) {
       if (isIframeModal(transformedProps)) {
         (this.appBridgeModal as AppBridgeModal.ModalIframe).set(
           transformedProps,
@@ -301,12 +304,14 @@ class Modal extends React.Component<CombinedProps, State> {
     const animated = !instant;
 
     return (
-      <Portal idPrefix="modal">
-        <TransitionGroup appear={animated} enter={animated} exit={animated}>
-          {dialog}
-        </TransitionGroup>
-        {backdrop}
-      </Portal>
+      <WithinContentContext.Provider value>
+        <Portal idPrefix="modal">
+          <TransitionGroup appear={animated} enter={animated} exit={animated}>
+            {dialog}
+          </TransitionGroup>
+          {backdrop}
+        </Portal>
+      </WithinContentContext.Provider>
     );
   }
 
@@ -353,6 +358,9 @@ class Modal extends React.Component<CombinedProps, State> {
       polaris,
     } = this.props;
     const {appBridge} = polaris;
+
+    if (!appBridge) return;
+
     const safeTitle = typeof title === 'string' ? title : undefined;
     const safeSize = size != null ? AppBridgeModal.Size[size] : undefined;
     const srcPayload: {url?: string; path?: string} = {};

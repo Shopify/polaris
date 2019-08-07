@@ -1,6 +1,6 @@
-import * as React from 'react';
-import {classNames, variationName} from '@shopify/css-utilities';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import React from 'react';
+import {classNames, variationName} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
 import Image from '../Image';
 import styles from './Spinner.scss';
 import {spinnerLarge, spinnerSmall} from './images';
@@ -26,14 +26,13 @@ export interface Props {
   accessibilityLabel?: string;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
-
-function Spinner({
+export default function Spinner({
   size = 'large',
   color = 'teal',
   accessibilityLabel,
-  polaris: {intl},
-}: CombinedProps) {
+}: Props) {
+  const intl = useI18n();
+
   if (size === 'large' && COLORS_FOR_LARGE_SPINNER.indexOf(color) < 0) {
     if (process.env.NODE_ENV === 'development') {
       // eslint-disable-next-line no-console
@@ -69,5 +68,3 @@ function Spinner({
     />
   );
 }
-
-export default withAppProvider<Props>()(Spinner);

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Checkbox} from 'components';
 import CheckableButton from '../CheckableButton';
 import {Key} from '../../../../../types';
@@ -16,7 +16,7 @@ describe('<CheckableButton />', () => {
   describe('select', () => {
     it('is passed down to Checkbox', () => {
       const {selected} = CheckableButtonProps;
-      const element = shallowWithAppProvider(
+      const element = mountWithAppProvider(
         <CheckableButton {...CheckableButtonProps} />,
       );
       expect(element.find(Checkbox).prop('checked')).toStrictEqual(selected);
@@ -26,17 +26,22 @@ describe('<CheckableButton />', () => {
   describe('label', () => {
     it('is passed down to span', () => {
       const {label} = CheckableButtonProps;
-      const element = shallowWithAppProvider(
+      const element = mountWithAppProvider(
         <CheckableButton {...CheckableButtonProps} />,
       );
-      expect(element.find('span').text()).toStrictEqual(label);
+      expect(
+        element
+          .find('span')
+          .last()
+          .text(),
+      ).toStrictEqual(label);
     });
   });
 
   describe('accessibilityLabel', () => {
     it('sets the label on the Checkbox', () => {
       const {accessibilityLabel} = CheckableButtonProps;
-      const element = shallowWithAppProvider(
+      const element = mountWithAppProvider(
         <CheckableButton {...CheckableButtonProps} />,
       );
       expect(
@@ -50,7 +55,7 @@ describe('<CheckableButton />', () => {
     describe('disabled', () => {
       it('is passed down to checkbox', () => {
         const {disabled} = CheckableButtonProps;
-        const element = shallowWithAppProvider(
+        const element = mountWithAppProvider(
           <CheckableButton {...CheckableButtonProps} />,
         );
         expect(

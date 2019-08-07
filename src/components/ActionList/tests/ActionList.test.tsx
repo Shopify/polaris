@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import {ImportMinor, ExportMinor} from '@shopify/polaris-icons';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import ActionList from '../ActionList';
 import Badge from '../../Badge';
 import {Item, Section} from '../components';

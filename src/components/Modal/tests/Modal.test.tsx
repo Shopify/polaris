@@ -1,11 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
+import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
-import {contentContextTypes} from '../../../types';
 import {Footer, Dialog} from '../components';
 import Modal from '../Modal';
+
+import {WithinContentContext} from '../../../utilities/within-content-context';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
   ...require.requireActual('../../../utilities/app-bridge-transformers'),
@@ -13,32 +14,38 @@ jest.mock('../../../utilities/app-bridge-transformers', () => ({
 }));
 
 describe('<Modal>', () => {
+  let scrollSpy: jest.SpyInstance;
+
   beforeEach(() => {
+    scrollSpy = jest.spyOn(window, 'scroll');
     animationFrame.mock();
   });
 
   afterEach(() => {
     animationFrame.restore();
+    scrollSpy.mockRestore();
   });
 
   it('has a child with contentContext', () => {
-    const Child: React.SFC = (_props, context) => {
-      // eslint-disable-next-line shopify/jest/no-if
-      return context.withinContentContainer ? <div /> : null;
-    };
-    Child.contextTypes = contentContextTypes;
+    function TestComponent(_: {withinContentContainer: any}) {
+      return null;
+    }
 
-    const containedChild = mountWithAppProvider(
-      <Modal open onClose={jest.fn()}>
-        <Child />
+    const component = mountWithAppProvider(
+      <Modal onClose={jest.fn()} open>
+        <WithinContentContext.Consumer>
+          {(withinContentContext) => {
+            return (
+              <TestComponent withinContentContainer={withinContentContext} />
+            );
+          }}
+        </WithinContentContext.Consumer>
       </Modal>,
     );
 
-    const div = containedChild
-      .find(Child)
-      .find('div')
-      .first();
-    expect(div.exists()).toBe(true);
+    expect(component.find(TestComponent).prop('withinContentContainer')).toBe(
+      true,
+    );
   });
 
   describe('src', () => {
@@ -184,33 +191,6 @@ describe('<Modal>', () => {
 
       expect(modal.find(Badge).exists()).toBe(false);
     });
-
-    it('triggers an onTransitionEnd prop', () => {
-      const modal = mountWithAppProvider(
-        <Modal
-          onClose={jest.fn()}
-          open
-          secondaryActions={[{content: 'Discard', onAction: jest.fn()}]}
-          onTransitionEnd={jest.fn()}
-        />,
-      );
-
-      trigger(modal, 'onTransitionEnd');
-      expect(modal.prop('onTransitionEnd')).toHaveBeenCalledTimes(1);
-    });
-
-    it('triggers onTransitionEnd from Dialog', () => {
-      const modal = mountWithAppProvider(
-        <Modal
-          open
-          onClose={jest.fn()}
-          secondaryActions={[{content: 'Discard', onAction: jest.fn()}]}
-          onTransitionEnd={jest.fn()}
-        />,
-      );
-      trigger(modal.find(Modal.Dialog), 'onEntered');
-      expect(modal.prop('onTransitionEnd')).toHaveBeenCalledTimes(1);
-    });
   });
 
   describe('header', () => {
@@ -283,7 +263,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal.find(Modal.Dialog).prop('limitHeight')).toBeTruthy();
+      expect(modal.find(Dialog).prop('limitHeight')).toBeTruthy();
     });
   });
 
@@ -324,6 +304,7 @@ describe('<Modal>', () => {
   });
 
   describe('with app bridge', () => {
+    let AppBridgeModalCreate: jest.SpyInstance;
     const appBridgeModalMock = {
       set: jest.fn(),
       subscribe: jest.fn(),
@@ -331,11 +312,12 @@ describe('<Modal>', () => {
       dispatch: jest.fn(),
     };
 
-    (AppBridgeModal.create as jest.Mock) = jest
-      .fn()
-      .mockReturnValue(appBridgeModalMock);
-
     beforeEach(() => {
+      AppBridgeModalCreate = jest.spyOn(AppBridgeModal, 'create');
+      AppBridgeModalCreate.mockReturnValue(appBridgeModalMock);
+    });
+
+    afterEach(() => {
       jest.clearAllMocks();
     });
 
@@ -352,7 +334,7 @@ describe('<Modal>', () => {
         },
       ];
 
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Modal
           title="Hello world!"
           open
@@ -363,13 +345,13 @@ describe('<Modal>', () => {
         />,
       );
 
-      expect(AppBridgeModal.create).toHaveBeenCalledTimes(1);
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeModalCreate).toHaveBeenCalledTimes(1);
+      expect(AppBridgeModalCreate).toHaveBeenCalledWith(appBridge, {
         title: 'Hello world!',
         message: 'Body content',
         size: undefined,
         footer: {
-          buttons: [polaris.appBridge, {primaryAction, secondaryActions}],
+          buttons: [appBridge, {primaryAction, secondaryActions}],
         },
       });
       expect(appBridgeModalMock.subscribe).toHaveBeenCalledTimes(1);
@@ -390,63 +372,63 @@ describe('<Modal>', () => {
     });
 
     it('accepts an undefined title', () => {
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Modal title={undefined} open onClose={noop} />,
       );
 
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
         title: undefined,
         message: undefined,
         size: undefined,
         footer: {
-          buttons: [polaris.appBridge, {}],
+          buttons: [appBridge, {}],
         },
       });
     });
 
     it('accepts a size prop', () => {
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Modal size="Large" open onClose={noop} />,
       );
 
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
         title: undefined,
         message: undefined,
         size: AppBridgeModal.Size.Large,
         footer: {
-          buttons: [polaris.appBridge, {}],
+          buttons: [appBridge, {}],
         },
       });
     });
 
     it('converts a src prop to a url prop', () => {
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Modal src="https://shopify.com" open onClose={noop} />,
       );
 
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
         title: undefined,
         message: undefined,
         size: undefined,
         url: 'https://shopify.com',
         footer: {
-          buttons: [polaris.appBridge, {}],
+          buttons: [appBridge, {}],
         },
       });
     });
 
     it('converts a src prop to a path prop', () => {
-      const {polaris} = mountWithAppBridge(
+      const {appBridge} = mountWithAppBridge(
         <Modal src="/test" open onClose={noop} />,
       );
 
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
         title: undefined,
         message: undefined,
         size: undefined,
         path: '/test',
         footer: {
-          buttons: [polaris.appBridge, {}],
+          buttons: [appBridge, {}],
         },
       });
     });
@@ -503,12 +485,9 @@ describe('<Modal>', () => {
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
-  const polaris = {appBridge};
-  const modal = mountWithAppProvider(element, {
-    context: {polaris},
-  });
+  const modal = mountWithAppProvider(element, {appBridge});
 
-  return {modal, polaris};
+  return {modal, appBridge};
 }
 
 function noop() {}

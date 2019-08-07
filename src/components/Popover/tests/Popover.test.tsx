@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {mountWithAppProvider, findByTestID} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import Popover from '../Popover';
 
 describe('<Popover />', () => {

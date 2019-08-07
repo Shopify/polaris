@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {CalendarMinor} from '@shopify/polaris-icons';
 import DatePicker, {Months, Year, Range} from '../../../../../DatePicker';
 import Select from '../../../../../Select';
@@ -7,7 +7,7 @@ import Icon from '../../../../../Icon';
 import {
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../../AppProvider';
+} from '../../../../../../utilities/with-app-provider';
 
 import styles from './DateSelector.scss';
 

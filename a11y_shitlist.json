@@ -1,5 +1,5 @@
 {
-  "all-components-app-provider--with-i18n-object": [
+  "all-components-app-provider--with-i18n": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
       "context": "<a aria-describedby=\"341\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay1\" href=\"customers/341\" data-polaris-unstyled=\"true\"></a>",

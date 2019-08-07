@@ -1,11 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import {ResourceList, Select, Spinner, EmptySearchResult} from 'components';
 import {
   findByTestID,
-  shallowWithAppProvider,
   mountWithAppProvider,
   trigger,
-} from 'test-utilities';
+} from 'test-utilities/legacy';
 import {BulkActions, Item, CheckableButton} from '../components';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
@@ -37,14 +36,14 @@ const alternateTool = <div id="AlternateTool">Alternate Tool</div>;
 describe('<ResourceList />', () => {
   describe('renderItem', () => {
     it('renders list items', () => {
-      const resourceList = shallowWithAppProvider(
-        <ResourceList items={itemsWithID} renderItem={shallowRenderItem} />,
+      const resourceList = mountWithAppProvider(
+        <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
       expect(resourceList.find('li')).toHaveLength(3);
     });
 
     it('renders custom markup', () => {
-      const resourceList = shallowWithAppProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderCustomMarkup} />,
       );
       expect(
@@ -261,8 +260,8 @@ describe('<ResourceList />', () => {
 
   describe('idForItem()', () => {
     it('generates a key using the index if there’s no idForItem prop and no ID in data', () => {
-      const resourceList = shallowWithAppProvider(
-        <ResourceList items={itemsNoID} renderItem={shallowRenderItem} />,
+      const resourceList = mountWithAppProvider(
+        <ResourceList items={itemsNoID} renderItem={renderItem} />,
       );
       expect(
         resourceList
@@ -273,8 +272,8 @@ describe('<ResourceList />', () => {
     });
 
     it('generates a key using the ID if there’s no idForItem prop but there and ID key in the data', () => {
-      const resourceList = shallowWithAppProvider(
-        <ResourceList items={itemsWithID} renderItem={shallowRenderItem} />,
+      const resourceList = mountWithAppProvider(
+        <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
       expect(
         resourceList
@@ -285,11 +284,11 @@ describe('<ResourceList />', () => {
     });
 
     it('generates a key using the idForItem prop callback when one is provided', () => {
-      const resourceList = shallowWithAppProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           idForItem={idForItem}
           items={itemsWithID}
-          renderItem={shallowRenderItem}
+          renderItem={renderItem}
         />,
       );
       expect(
@@ -342,6 +341,7 @@ describe('<ResourceList />', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           sortOptions={sortOptions}
+          onSortChange={noop}
           items={itemsWithID}
           renderItem={renderItem}
         />,
@@ -430,10 +430,10 @@ describe('<ResourceList />', () => {
 
   describe('filterControl', () => {
     it('renders when exist', () => {
-      const resourceList = shallowWithAppProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsNoID}
-          renderItem={shallowRenderItem}
+          renderItem={renderItem}
           filterControl={<div id="test123">Test</div>}
         />,
       );
@@ -443,10 +443,10 @@ describe('<ResourceList />', () => {
 
   describe('emptySearchResult', () => {
     it('renders when filterControl exists and items is empty', () => {
-      const resourceList = shallowWithAppProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           items={[]}
-          renderItem={shallowRenderItem}
+          renderItem={renderItem}
           filterControl={<div>fake filterControl</div>}
         />,
       );
@@ -454,17 +454,17 @@ describe('<ResourceList />', () => {
     });
 
     it('does not render when filterControl does not exist', () => {
-      const resourceList = shallowWithAppProvider(
-        <ResourceList items={[]} renderItem={shallowRenderItem} />,
+      const resourceList = mountWithAppProvider(
+        <ResourceList items={[]} renderItem={renderItem} />,
       );
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
     });
 
     it('does not render when items is not empty', () => {
-      const resourceList = shallowWithAppProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsNoID}
-          renderItem={shallowRenderItem}
+          renderItem={renderItem}
           filterControl={<div id="test123">Test</div>}
         />,
       );
@@ -472,10 +472,10 @@ describe('<ResourceList />', () => {
     });
 
     it('does not render when filterControl exists, items is empty, and loading is true', () => {
-      const resourceList = shallowWithAppProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           items={[]}
-          renderItem={shallowRenderItem}
+          renderItem={renderItem}
           filterControl={<div>fake filterControl</div>}
           loading
         />,
@@ -497,6 +497,7 @@ describe('<ResourceList />', () => {
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
+          onSortChange={noop}
           renderItem={renderItem}
         />,
       );
@@ -509,6 +510,7 @@ describe('<ResourceList />', () => {
           items={itemsWithID}
           renderItem={renderItem}
           sortOptions={sortOptions}
+          onSortChange={noop}
           alternateTool={alternateTool}
         />,
       );
@@ -521,6 +523,7 @@ describe('<ResourceList />', () => {
           <ResourceList
             items={itemsWithID}
             sortOptions={sortOptions}
+            onSortChange={noop}
             renderItem={renderItem}
           />,
         );
@@ -605,6 +608,7 @@ describe('<ResourceList />', () => {
             items={itemsWithID}
             sortOptions={sortOptions}
             renderItem={renderItem}
+            onSortChange={noop}
           />,
         );
         expect(resourceList.find(Select).props()).toHaveProperty(
@@ -656,6 +660,7 @@ describe('<ResourceList />', () => {
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
+          onSortChange={noop}
           renderItem={renderItem}
           loading
         />,
@@ -669,6 +674,7 @@ describe('<ResourceList />', () => {
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
+          onSortChange={noop}
           renderItem={renderItem}
         />,
       );
@@ -682,6 +688,7 @@ describe('<ResourceList />', () => {
         <ResourceList
           items={[]}
           sortOptions={sortOptions}
+          onSortChange={noop}
           renderItem={renderItem}
           loading
         />,
@@ -856,12 +863,10 @@ describe('<ResourceList />', () => {
   });
 });
 
+function noop() {}
+
 function idForItem(item: any) {
   return JSON.stringify(item);
-}
-
-function shallowRenderItem(item: any) {
-  return item;
 }
 
 function renderCustomMarkup(item: any) {

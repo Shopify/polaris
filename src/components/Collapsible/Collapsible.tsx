@@ -1,12 +1,10 @@
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import {classNames} from '@shopify/css-utilities';
+import React, {useRef, useState, useEffect, useCallback} from 'react';
 import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
-import {read} from '@shopify/javascript-utilities/fastdom';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {durationSlow} from '@shopify/polaris-tokens';
+import {classNames} from '../../utilities/css';
 
 import styles from './Collapsible.scss';
 
@@ -19,178 +17,106 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
-
-export type AnimationState =
-  | 'idle'
-  | 'measuring'
-  | 'closingStart'
-  | 'closing'
-  | 'openingStart'
-  | 'opening';
-
-export interface State {
-  height?: number | null;
-  animationState: AnimationState;
+enum TransitionStatus {
+  Entering = 'entering',
+  Entered = 'entered',
+  Exiting = 'exiting',
+  Exited = 'exited',
 }
 
-export interface Context {
-  parentCollapsibleExpanding: boolean;
+const CSS_VAR_COLLAPSIBLE_HEIGHT = '--polaris-collapsible-height';
+
+export default function Collapsible({id, open, children}: Props) {
+  const [height, setHeight] = useState<number | null>(null);
+  const [transitionStatus, setTransitionStatus] = useState(
+    open ? TransitionStatus.Entering : TransitionStatus.Exited,
+  );
+  const isMounted = useRef(false);
+  const node = useRef<HTMLDivElement>(null);
+
+  const handleResize = useCallback(() => {
+    if (node.current == null) return;
+
+    setHeight(node.current.scrollHeight);
+  }, []);
+
+  useEffect(
+    () => {
+      if (!isMounted.current) return;
+      transitionStatus === TransitionStatus.Entering &&
+        changeTransitionStatus(TransitionStatus.Entered);
+
+      transitionStatus === TransitionStatus.Exiting &&
+        setTimeout(() => {
+          changeTransitionStatus(TransitionStatus.Exited);
+        }, durationSlow);
+    },
+    [transitionStatus],
+  );
+
+  useEffect(
+    () => {
+      if (!isMounted.current) return;
+      open && changeTransitionStatus(TransitionStatus.Entered);
+      !open && changeTransitionStatus(TransitionStatus.Exiting);
+    },
+    [open],
+  );
+
+  useEffect(
+    () => {
+      const ref = node.current;
+      if (ref == null) return;
+
+      setHeight(ref.scrollHeight);
+      addEventListener(window, 'resize', handleResize);
+
+      return () => {
+        if (ref == null) return;
+
+        removeEventListener(window, 'resize', handleResize);
+      };
+    },
+    [handleResize, open],
+  );
+
+  useEffect(
+    () => {
+      if (!node.current) return;
+
+      node.current.style.setProperty(
+        CSS_VAR_COLLAPSIBLE_HEIGHT,
+        `${height || 0}px`,
+      );
+    },
+    [height],
+  );
+
+  // Hooks always execute in the same sequence. It's
+  // important this hooks runs after the animation effects
+  useEffect(() => {
+    isMounted.current = true;
+  }, []);
+
+  const wrapperClassName = classNames(
+    styles.Collapsible,
+    open && styles.open,
+    transitionStatus === TransitionStatus.Entered && styles.fullyOpen,
+  );
+
+  const content =
+    transitionStatus === TransitionStatus.Exited && !open ? null : children;
+
+  return (
+    <div id={id} aria-hidden={!open} className={wrapperClassName} ref={node}>
+      <div>{content}</div>
+    </div>
+  );
+
+  function changeTransitionStatus(transitionStatus: TransitionStatus) {
+    setTransitionStatus(transitionStatus);
+    // Forcing a reflow to enable the animation
+    if (transitionStatus === TransitionStatus.Entering)
+      node.current && node.current.getBoundingClientRect();
+  }
 }
-
-const CONTEXT_TYPES = {
-  parentCollapsibleExpanding: PropTypes.bool,
-};
-
-// eslint-disable-next-line react/no-unsafe
-class Collapsible extends React.Component<CombinedProps, State> {
-  static contextTypes = CONTEXT_TYPES;
-  static childContextTypes = CONTEXT_TYPES;
-
-  context: Partial<Context>;
-
-  state: State = {
-    height: null,
-    animationState: 'idle',
-  };
-
-  private node: HTMLElement | null = null;
-  private heightNode: HTMLElement | null = null;
-
-  getChildContext(): Context {
-    const {open} = this.props;
-    const {animationState} = this.state;
-    const {parentCollapsibleExpanding} = this.context;
-
-    return {
-      parentCollapsibleExpanding:
-        parentCollapsibleExpanding || (open && animationState !== 'idle'),
-    };
-  }
-
-  componentWillReceiveProps({open: willOpen}: Props) {
-    const {open} = this.props;
-
-    if (open !== willOpen) {
-      this.setState({animationState: 'measuring'});
-    }
-  }
-
-  componentDidUpdate({open: wasOpen}: Props) {
-    const {animationState} = this.state;
-    const {parentCollapsibleExpanding} = this.context;
-
-    if (parentCollapsibleExpanding && animationState !== 'idle') {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        animationState: 'idle',
-      });
-
-      return;
-    }
-
-    read(() => {
-      switch (animationState) {
-        case 'idle':
-          break;
-        case 'measuring':
-          this.setState({
-            animationState: wasOpen ? 'closingStart' : 'openingStart',
-            height:
-              wasOpen && this.heightNode ? this.heightNode.scrollHeight : 0,
-          });
-          break;
-        case 'closingStart':
-          this.setState({
-            animationState: 'closing',
-            height: 0,
-          });
-          break;
-        case 'openingStart':
-          this.setState({
-            animationState: 'opening',
-            height: this.heightNode ? this.heightNode.scrollHeight : 0,
-          });
-      }
-    });
-  }
-
-  componentDidMount() {
-    if (this.node == null) {
-      return;
-    }
-
-    addEventListener(this.node, 'transitionend', this.handleTransitionEnd);
-  }
-
-  componentWillUnmount() {
-    if (this.node == null) {
-      return;
-    }
-
-    removeEventListener(this.node, 'transitionend', this.handleTransitionEnd);
-  }
-
-  render() {
-    const {id, open, children} = this.props;
-    const {animationState, height} = this.state;
-
-    const animating = animationState !== 'idle';
-
-    const wrapperClassName = classNames(
-      styles.Collapsible,
-      open && styles.open,
-      animating && styles.animating,
-      !animating && open && styles.fullyOpen,
-    );
-
-    const displayHeight = collapsibleHeight(open, animationState, height);
-
-    const content = animating || open ? children : null;
-
-    return (
-      <div
-        id={id}
-        aria-hidden={!open}
-        style={{height: displayHeight}}
-        className={wrapperClassName}
-        ref={this.bindNode}
-      >
-        <div ref={this.bindHeightNode}>{content}</div>
-      </div>
-    );
-  }
-
-  private bindNode = (node: HTMLElement | null) => {
-    this.node = node;
-  };
-
-  private bindHeightNode = (node: HTMLElement | null) => {
-    this.heightNode = node;
-  };
-
-  private handleTransitionEnd = (event: TransitionEvent) => {
-    const {target} = event;
-    if (target === this.node) {
-      this.setState({animationState: 'idle', height: null});
-    }
-  };
-}
-
-function collapsibleHeight(
-  open: boolean,
-  animationState: AnimationState,
-  height?: number | null,
-) {
-  if (animationState === 'idle' && open) {
-    return open ? 'auto' : undefined;
-  }
-
-  if (animationState === 'measuring') {
-    return open ? undefined : 'auto';
-  }
-
-  return `${height || 0}px`;
-}
-
-export default withAppProvider<Props>()(Collapsible);

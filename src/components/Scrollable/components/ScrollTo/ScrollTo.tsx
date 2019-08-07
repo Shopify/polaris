@@ -1,24 +1,23 @@
-import * as React from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {contextTypes} from '../../types';
+import {ScrollableContext} from '../../context';
 
-export default class ScrollTo extends React.Component<{}, never> {
-  static contextTypes = contextTypes;
-  private ref: React.RefObject<HTMLAnchorElement> = React.createRef();
+export default function ScrollTo() {
+  const anchorNode = useRef<HTMLAnchorElement>(null);
+  const scrollToPosition = useContext(ScrollableContext);
 
-  componentDidMount() {
-    const {scrollToPosition} = this.context;
+  useEffect(
+    () => {
+      if (!scrollToPosition || !anchorNode.current) {
+        return;
+      }
 
-    if (!scrollToPosition || !this.ref.current) {
-      return;
-    }
+      scrollToPosition(anchorNode.current.offsetTop);
+    },
+    [scrollToPosition],
+  );
 
-    scrollToPosition(this.ref.current.offsetTop);
-  }
-
-  render() {
-    const getUniqueId = createUniqueIDFactory(`ScrollTo`);
-    // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    return <a id={getUniqueId()} ref={this.ref} />;
-  }
+  const getUniqueId = createUniqueIDFactory(`ScrollTo`);
+  // eslint-disable-next-line jsx-a11y/anchor-is-valid
+  return <a id={getUniqueId()} ref={anchorNode} />;
 }

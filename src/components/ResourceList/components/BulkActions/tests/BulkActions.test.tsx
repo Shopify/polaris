@@ -1,6 +1,6 @@
-import * as React from 'react';
-import {Transition, CSSTransition} from 'react-transition-group';
-import {mountWithAppProvider, findByTestID} from 'test-utilities';
+import React from 'react';
+import {Transition, CSSTransition} from '@material-ui/react-transition-group';
+import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Popover} from 'components';
 import CheckableButton from '../../CheckableButton';
 import {BulkActionButton} from '../components';
@@ -228,6 +228,8 @@ describe('<BulkActions />', () => {
 
     describe('promotedActions', () => {
       it('renders a BulkActionButton for actions and one for each item in promotedActions', () => {
+        const warnSpy = jest.spyOn(console, 'warn');
+        warnSpy.mockImplementation(() => {});
         const bulkActionProps: Props = {
           bulkActions: [],
           promotedActions: [
@@ -252,6 +254,7 @@ describe('<BulkActions />', () => {
         );
         const bulkActionButtons = bulkActions.find(BulkActionButton);
         expect(bulkActionButtons).toHaveLength(4);
+        warnSpy.mockRestore();
       });
     });
 

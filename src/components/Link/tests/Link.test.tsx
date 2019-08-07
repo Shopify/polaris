@@ -1,14 +1,14 @@
-import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
-import {UnstyledLink, Icon} from 'components';
-import en from '../../../locales/en.json';
+import React from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
+import {Banner, UnstyledLink, Icon} from 'components';
+import en from '../../../../locales/en.json';
 import Link from '../Link';
 
 describe('<Link />', () => {
   it('calls onClick when clicking', () => {
     const spy = jest.fn();
     const link = mountWithAppProvider(<Link url="MyThing" onClick={spy} />);
-    link.simulate('click');
+    link.find('a').simulate('click');
     expect(spy).toHaveBeenCalled();
   });
 
@@ -79,6 +79,44 @@ describe('<Link />', () => {
         </Link>,
       );
       expect(link.find(Icon).exists()).toBe(false);
+    });
+  });
+
+  describe('monochrome link', () => {
+    it('outputs a monochrome unstyled link if rendered within a banner', () => {
+      const link = mountWithAppProvider(
+        <Banner>
+          <Link url="https://examp.le">Some content</Link>
+        </Banner>,
+      ).find(UnstyledLink);
+
+      expect(link.hasClass('monochrome')).toBe(true);
+    });
+
+    it('does not output a monochrome unstyled link if it is not rendered within a banner', () => {
+      const link = mountWithAppProvider(
+        <Link url="https://examp.le">Some content</Link>,
+      ).find(UnstyledLink);
+
+      expect(link.hasClass('monochrome')).toBe(false);
+    });
+
+    it('outputs a monochrome button if rendered within a banner', () => {
+      const button = mountWithAppProvider(
+        <Banner>
+          <Link>Some content</Link>
+        </Banner>,
+      ).find('button');
+
+      expect(button.hasClass('monochrome')).toBe(true);
+    });
+
+    it('does not output a monochrome button if it is not rendered within a banner', () => {
+      const button = mountWithAppProvider(<Link>Some content</Link>).find(
+        'button',
+      );
+
+      expect(button.hasClass('monochrome')).toBe(false);
     });
   });
 });

@@ -1,11 +1,11 @@
-import * as React from 'react';
-import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
+import React from 'react';
+import {mountWithApp} from 'test-utilities/react-testing';
 import RadioButton from '../RadioButton';
 
 describe('<RadioButton />', () => {
   describe('checked', () => {
     it('gets passed to the input', () => {
-      const input = shallowWithAppProvider(
+      const input = mountWithApp(
         <RadioButton
           label="RadioButton"
           checked
@@ -14,48 +14,52 @@ describe('<RadioButton />', () => {
         />,
       ).find('input');
 
-      expect(input.prop('checked')).toBe(true);
+      expect(input).toHaveReactProps({checked: true});
     });
   });
 
   describe('name', () => {
     it('gets passed to the input', () => {
-      const input = shallowWithAppProvider(
+      const name = 'RadioButton';
+      const input = mountWithApp(
         <RadioButton
           label="RadioButton"
           checked
-          name="RadioButton"
+          name={name}
           value="Some value"
         />,
       ).find('input');
 
-      expect(input.prop('name')).toBe('RadioButton');
+      expect(input).toHaveReactProps({name});
     });
   });
 
   describe('value', () => {
     it('gets passed to the input', () => {
-      const input = shallowWithAppProvider(
+      const value = 'Some value';
+      const input = mountWithApp(
         <RadioButton
           label="RadioButton"
           checked
           name="RadioButton"
-          value="Some value"
+          value={value}
         />,
       ).find('input');
 
-      expect(input.prop('value')).toBe('Some value');
+      expect(input).toHaveReactProps({value});
     });
   });
 
   describe('onChange()', () => {
     it('is called with the new checked value of the input on change', () => {
       const spy = jest.fn();
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <RadioButton id="MyRadioButton" label="RadioButton" onChange={spy} />,
       );
-      (element.find('input') as any).instance().checked = true;
-      element.find('input').simulate('change');
+      (element.find('input')!.domNode as HTMLInputElement).checked = true;
+      element
+        .find('input')!
+        .trigger('onChange', {currentTarget: {checked: true}});
       expect(spy).toHaveBeenCalledWith(true, 'MyRadioButton');
     });
   });
@@ -63,10 +67,10 @@ describe('<RadioButton />', () => {
   describe('onFocus()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <RadioButton label="RadioButton" onFocus={spy} />,
       );
-      element.find('input').simulate('focus');
+      element.find('input')!.trigger('onFocus');
       expect(spy).toHaveBeenCalled();
     });
   });
@@ -74,27 +78,26 @@ describe('<RadioButton />', () => {
   describe('onBlur()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <RadioButton label="RadioButton" onBlur={spy} />,
       );
-      element.find('input').simulate('blur');
+      element.find('input')!.trigger('onBlur');
       expect(spy).toHaveBeenCalled();
     });
   });
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallowWithAppProvider(
-        <RadioButton id="MyRadioButton" label="RadioButton" />,
-      )
-        .find('input')
-        .prop('id');
-      expect(id).toBe('MyRadioButton');
+      const id = 'MyRadioButton';
+      const button = mountWithApp(
+        <RadioButton id={id} label="RadioButton" />,
+      ).find('input');
+      expect(button).toHaveReactProps({id});
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallowWithAppProvider(<RadioButton label="RadioButton" />)
-        .find('input')
+      const id = mountWithApp(<RadioButton label="RadioButton" />)
+        .find('input')!
         .prop('id');
       expect(typeof id).toBe('string');
       expect(id).toBeTruthy();
@@ -103,46 +106,48 @@ describe('<RadioButton />', () => {
 
   describe('disabled', () => {
     it('sets the disabled attribute on the input', () => {
-      const button = shallowWithAppProvider(
-        <RadioButton label="RadioButton" disabled />,
-      );
-      expect(button.find('input').prop('disabled')).toBe(true);
+      const button = mountWithApp(<RadioButton label="RadioButton" disabled />);
+      expect(button.find('input')).toBeDisabled();
     });
 
     it('is only disabled when disabled is explicitly set to true', () => {
-      let element = shallowWithAppProvider(<RadioButton label="RadioButton" />);
-      expect(element.find('input').prop('disabled')).toBeFalsy();
+      let element = mountWithApp(<RadioButton label="RadioButton" />);
+      expect(element.find('input')).not.toBeDisabled();
 
-      element = shallowWithAppProvider(
+      element = mountWithApp(
         <RadioButton label="RadioButton" disabled={false} />,
       );
-      expect(element.find('input').prop('disabled')).toBeFalsy();
+      expect(element.find('input')).not.toBeDisabled();
     });
   });
 
   describe('helpText', () => {
     it('connects the input to the help text', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <RadioButton label="RadioButton" helpText="Some help" />,
       );
-      const helpTextID = textField
-        .find('input')
-        .prop<string>('aria-describedby');
-      expect(typeof helpTextID).toBe('string');
-      expect(textField.find(`#${helpTextID}`).text()).toBe('Some help');
+      expect(typeof textField.find('input')!.prop('aria-describedby')).toBe(
+        'string',
+      );
+      expect(
+        textField.findAllWhere((element) => {
+          const describedby = (element as any).prop('aria-describedby');
+          return describedby && describedby.includes('HelpText');
+        }),
+      ).toHaveLength(1);
     });
   });
 
   describe('ariaDescribedBy', () => {
     it('sets the aria-describedBy attribute on the input', () => {
-      const radioButton = mountWithAppProvider(
+      const radioButton = mountWithApp(
         <RadioButton label="RadioButton" ariaDescribedBy="SomeId" />,
       );
-      const ariaDescribedBy = radioButton
-        .find('input')
-        .prop('aria-describedby');
+      const ariaDescribedBy = radioButton.find('input');
 
-      expect(ariaDescribedBy).toBe('SomeId');
+      expect(ariaDescribedBy).toHaveReactProps({
+        'aria-describedby': 'SomeId',
+      });
     });
   });
 });

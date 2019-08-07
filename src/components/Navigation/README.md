@@ -123,7 +123,6 @@ The content of the navigation component consists of navigation items. Each item 
 | matchPaths         | string[]            | A string property providing a collection of additional paths for the navigation item to respond to                                         |
 | excludePaths       | string[]            | A string property providing an explicit collection of paths the navigation item should not respond to                                      |
 | icon               | IconProps['source'] | An icon to be displayed next to the navigation item                                                                                        |
-| iconBody           | string              | (deprecated) Pass a string representing an `SVG` element into the `icon` prop instead                                                      |
 | badge              | string \| null      | A string property allowing content to be displayed in a badge next to the navigation item                                                  |
 | label              | string              | A string property allowing content to be displayed as link text in the navigation item                                                     |
 | disabled           | boolean             | A boolean property indicating whether the navigation item is disabled                                                                      |
@@ -162,18 +161,6 @@ Action allows a complementary icon-only action to render next to the section tit
 | icon               | IconProps['source'] | An icon to be displayed as the content of the action                               |
 | accessibilityLabel | string              | A visually hidden label for screen readers to understand the content of the action |
 | onClick()          | function            | A callback function to handle clicking on the action                               |
-
----
-
-<a name="subcomponent-usermenu"></a>
-
-## Navigation user menu
-
-The user menu component displays the current user’s avatar and name, and actions that are related to the current logged in user. The menu is displayed at the top of the navigation sidebar at small screen sizes. The user menu can display any messages that the current user has available to read.
-
-### Deprecation rationale
-
-As of release 3.6.0 `Navigation.UserMenu` is deprecated in favor of [`TopBar.UserMenu`](https://polaris.shopify.com/components/structure/top-bar#top-bar-menu) which will stay visible on mobile.
 
 ---
 

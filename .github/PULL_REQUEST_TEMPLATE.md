@@ -38,20 +38,17 @@ Fixes #0000 <!-- link to issue if one exists -->
 <summary>Copy-paste this code in <code>playground/Playground.tsx</code>:</summary>
 
 ```jsx
-import * as React from 'react';
-import {Page} from '@shopify/polaris';
+import React from 'react';
+import {Page} from '../src';
 
-interface State {}
-
-export default class Playground extends React.Component<never, State> {
-  render() {
-    return (
-      <Page title="Playground">
-        {/* Add the code you want to test here */}
-      </Page>
-    );
-  }
+export default function Playground() {
+  return (
+    <Page title="Playground">
+      {/* Add the code you want to test in here */}
+    </Page>
+  );
 }
+
 ```
 
 </details>

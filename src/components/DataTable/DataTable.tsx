@@ -1,10 +1,14 @@
-import * as React from 'react';
-import {classNames} from '@shopify/css-utilities';
-import isEqual from 'lodash/isEqual';
+import React from 'react';
 import debounce from 'lodash/debounce';
 
+import {classNames} from '../../utilities/css';
+
+import {isObjectsEqual} from '../../utilities/is-objects-equal';
 import {headerCell} from '../shared';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import EventListener from '../EventListener';
 import {Cell, CellProps, Navigation} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
@@ -102,7 +106,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (isEqual(prevProps, this.props)) {
+    if (isObjectsEqual(prevProps, this.props)) {
       return;
     }
     this.handleResize();

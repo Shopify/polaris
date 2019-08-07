@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Spinner} from 'components';
 import Autocomplete from '..';
 import {ComboBox} from '../components';
@@ -134,7 +134,7 @@ describe('<Autocomplete/>', () => {
     return <Autocomplete.TextField label="" onChange={noop} />;
   }
 
-  function handleOnSelect(updatedSelection: string[]) {
+  function handleOnSelect(this: any, updatedSelection: string[]) {
     const selectedText = updatedSelection.map((selectedItem: string) => {
       const matchedOption = this.options.filter((option: any) => {
         return option.value.match(selectedItem);

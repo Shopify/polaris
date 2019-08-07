@@ -33,6 +33,7 @@
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
     "react/jsx-fragments": ["error", "element"],
+    "react/no-unsafe": ["error", {"checkAliases": true}],
     "shopify/jsx-no-complex-expressions": "off",
     "shopify/jsx-prefer-fragment-wrappers": "off",
     "shopify/no-ancestor-directory-import": "error",

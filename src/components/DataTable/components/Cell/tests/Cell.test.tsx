@@ -1,10 +1,6 @@
-import * as React from 'react';
+import React, {ReactElement} from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
-import {
-  mountWithAppProvider,
-  shallowWithAppProvider,
-  trigger,
-} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
 import {Icon} from '../../../..';
 import Cell from '../Cell';
@@ -13,7 +9,7 @@ describe('<Cell />', () => {
   describe('content', () => {
     it('sets text content when provided', () => {
       const cellContent = 'Data';
-      const cell = shallowWithAppProvider(<Cell content={cellContent} />);
+      const cell = mountWithTable(<Cell content={cellContent} />);
 
       expect(cell.text()).toBe(cellContent);
     });
@@ -21,7 +17,7 @@ describe('<Cell />', () => {
     it('sets markup content when provided', () => {
       const cellContent = 'Data';
       const cellMarkup = <p>{cellContent}</p>;
-      const cell = shallowWithAppProvider(<Cell content={cellMarkup} />);
+      const cell = mountWithTable(<Cell content={cellMarkup} />);
 
       expect(cell.find('p')).toHaveLength(1);
       expect(cell.text()).toBe(cellContent);
@@ -30,7 +26,7 @@ describe('<Cell />', () => {
 
   describe('firstColumn', () => {
     it('renders a table heading element when true', () => {
-      const cell = shallowWithAppProvider(<Cell firstColumn />);
+      const cell = mountWithTable(<Cell firstColumn />);
 
       expect(cell.find('th')).toHaveLength(1);
     });
@@ -38,7 +34,7 @@ describe('<Cell />', () => {
 
   describe('header', () => {
     it('renders a table heading element when true', () => {
-      const cell = shallowWithAppProvider(<Cell header />);
+      const cell = mountWithTable(<Cell header />);
 
       expect(cell.find('th')).toHaveLength(1);
     });
@@ -47,7 +43,7 @@ describe('<Cell />', () => {
   describe('sorted', () => {
     it('sets the aria-sort attribute to the sortDirection when the table is currently sorted by that column', () => {
       const sortDirection = 'ascending';
-      const cell = shallowWithAppProvider(
+      const cell = mountWithTable(
         <Cell
           header
           firstColumn
@@ -57,12 +53,12 @@ describe('<Cell />', () => {
         />,
       );
 
-      expect(cell.prop('aria-sort')).toBe(sortDirection);
+      expect(cell.find('th').prop('aria-sort')).toBe(sortDirection);
     });
 
     it('sets the aria-sort attribute to none when the table is not currently sorted by that column', () => {
       const sortDirection = 'none';
-      const cell = shallowWithAppProvider(
+      const cell = mountWithTable(
         <Cell
           header
           firstColumn
@@ -72,21 +68,19 @@ describe('<Cell />', () => {
         />,
       );
 
-      expect(cell.prop('aria-sort')).toBe('none');
+      expect(cell.find('th').prop('aria-sort')).toBe('none');
     });
   });
 
   describe('sortable', () => {
     it('renders an Icon when table is sortable by that column', () => {
-      const cell = shallowWithAppProvider(<Cell header firstColumn sortable />);
+      const cell = mountWithTable(<Cell header firstColumn sortable />);
 
       expect(cell.find(Icon)).toHaveLength(1);
     });
 
     it('renders no Icon when table is not sortable by that column', () => {
-      const cell = shallowWithAppProvider(
-        <Cell header firstColumn sortable={false} />,
-      );
+      const cell = mountWithTable(<Cell header firstColumn sortable={false} />);
 
       expect(cell.find(Icon)).not.toHaveLength(1);
     });
@@ -95,7 +89,7 @@ describe('<Cell />', () => {
   describe('sortDirection', () => {
     describe('when set to none', () => {
       it('renders a down caret Icon when defaultSortDirection is descending', () => {
-        const cell = shallowWithAppProvider(
+        const cell = mountWithTable(
           <Cell
             header
             firstColumn
@@ -109,7 +103,7 @@ describe('<Cell />', () => {
       });
 
       it('renders an up caret Icon when defaultSortDirection is ascending', () => {
-        const cell = shallowWithAppProvider(
+        const cell = mountWithTable(
           <Cell
             header
             firstColumn
@@ -125,7 +119,7 @@ describe('<Cell />', () => {
 
     describe('when set to ascending', () => {
       it('renders an up caret Icon when table is currently sorted by that column', () => {
-        const cell = shallowWithAppProvider(
+        const cell = mountWithTable(
           <Cell header firstColumn sortable sorted sortDirection="ascending" />,
         );
 
@@ -133,26 +127,19 @@ describe('<Cell />', () => {
       });
 
       it('renders an Icon with an accessibility label indicating the next sort direction is descending', () => {
-        const cell = mountWithAppProvider(
+        const cell = mountWithTable(
           <Cell header firstColumn sortable sorted sortDirection="ascending" />,
         );
 
-        const expectedLabel = cell
-          .instance()
-          .context.polaris.intl.translate(
-            'Polaris.DataTable.sortAccessibilityLabel',
-            {
-              direction: 'descending',
-            },
-          );
-
-        expect(cell.find(Icon).prop('accessibilityLabel')).toBe(expectedLabel);
+        expect(cell.find(Icon).prop('accessibilityLabel')).toBe(
+          'sort descending by',
+        );
       });
     });
 
     describe('when set to descending', () => {
       it('renders a down caret Icon when table is currently sorted by that column', () => {
-        const cell = shallowWithAppProvider(
+        const cell = mountWithTable(
           <Cell
             header
             firstColumn
@@ -166,7 +153,7 @@ describe('<Cell />', () => {
       });
 
       it('renders an Icon with an accessibility label indicating the next sort direction is ascending', () => {
-        const cell = mountWithAppProvider(
+        const cell = mountWithTable(
           <Cell
             header
             firstColumn
@@ -176,16 +163,9 @@ describe('<Cell />', () => {
           />,
         );
 
-        const expectedLabel = cell
-          .instance()
-          .context.polaris.intl.translate(
-            'Polaris.DataTable.sortAccessibilityLabel',
-            {
-              direction: 'ascending',
-            },
-          );
-
-        expect(cell.find(Icon).prop('accessibilityLabel')).toBe(expectedLabel);
+        expect(cell.find(Icon).prop('accessibilityLabel')).toBe(
+          'sort ascending by',
+        );
       });
     });
   });
@@ -193,7 +173,7 @@ describe('<Cell />', () => {
   describe('defaultSortDirection', () => {
     describe('when set to none', () => {
       it('renders an up caret Icon when table is not currently sorted by that column', () => {
-        const cell = shallowWithAppProvider(
+        const cell = mountWithTable(
           <Cell
             header
             firstColumn
@@ -209,7 +189,7 @@ describe('<Cell />', () => {
     });
     describe('when set to ascending', () => {
       it('renders an up caret Icon when table is not currently sorted by that column', () => {
-        const cell = shallowWithAppProvider(
+        const cell = mountWithTable(
           <Cell
             header
             firstColumn
@@ -225,7 +205,7 @@ describe('<Cell />', () => {
 
     describe('when set to descending', () => {
       it('renders a down caret Icon when table is not currently sorted by that column', () => {
-        const cell = shallowWithAppProvider(
+        const cell = mountWithTable(
           <Cell
             header
             firstColumn
@@ -243,7 +223,7 @@ describe('<Cell />', () => {
   describe('onSort', () => {
     it('gets called when a sortable cell heading is clicked', () => {
       const sortSpy = jest.fn();
-      const cell = shallowWithAppProvider(
+      const cell = mountWithTable(
         <Cell
           header
           firstColumn
@@ -261,3 +241,14 @@ describe('<Cell />', () => {
     });
   });
 });
+
+function mountWithTable<P>(node: ReactElement) {
+  return mountWithAppProvider<P>(
+    <table>
+      <thead />
+      <tbody>
+        <tr>{node}</tr>
+      </tbody>
+    </table>,
+  );
+}
