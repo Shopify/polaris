@@ -143,11 +143,11 @@ describe('<Header />', () => {
     const mockActionGroups: Props['actionGroups'] = [
       {
         title: 'First group',
-        actions: [...mockSecondaryActions],
+        actions: mockSecondaryActions,
       },
       {
         title: 'Second group',
-        actions: [...mockSecondaryActions],
+        actions: mockSecondaryActions,
       },
     ];
 
