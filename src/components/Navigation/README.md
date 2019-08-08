@@ -193,44 +193,6 @@ Use to present a navigation menu in the [frame](/components/structure/frame).
 </Navigation>
 ```
 
-### Navigation with sections and a separator
-
-Use to divide groups of items with a horizontal divider.
-
-```jsx
-<Navigation location="/">
-  <Navigation.Section
-    items={[
-      {
-        url: '/path/to/place',
-        label: 'Home',
-        icon: HomeMajorMonotone,
-      },
-      {
-        url: '/path/to/place',
-        label: 'Orders',
-        icon: OrdersMajorTwotone,
-      },
-      {
-        url: '/path/to/place',
-        label: 'Products',
-        icon: ProductsMajorTwotone,
-      },
-    ]}
-  />
-  <Navigation.Section
-    items={[
-      {
-        url: '/path/to/place',
-        label: 'Online Store',
-        icon: OnlineStoreMajorTwotone,
-      },
-    ]}
-    separator
-  />
-</Navigation>
-```
-
 ### Navigation with a secondary action for a section and a section title
 
 Use to present a secondary action, related to a section and to title the section.
@@ -343,7 +305,7 @@ Use to show a limited number of items in a section with an option to expand the 
 
 ### Navigation with section separator
 
-Use to add a horizontal line between sections.
+Use to add a horizontal line below the section.
 
 ```jsx
 <Navigation location="/">
