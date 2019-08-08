@@ -229,6 +229,8 @@ class RangeSliderExample extends React.Component {
 
 ### Dual thumb range slider
 
+<!-- example-for: web -->
+
 Use a dual thumb range slider when merchants need to select a range of values.
 
 ```jsx

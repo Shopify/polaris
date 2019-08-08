@@ -137,7 +137,7 @@ Use for less important or less commonly used actions where matching the current 
 
 ### Plain destructive button
 
-<!-- example-for: online-store-ui -->
+<!-- example-for: web -->
 
 Use for actions that will delete merchant data or be otherwise difficult to recover from. Since they’re less prominent, use for less important or less commonly used destructive actions. For example, plain buttons are used as actions in cards.
 

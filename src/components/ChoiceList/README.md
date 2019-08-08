@@ -220,6 +220,8 @@ class ChoiceListExample extends React.Component {
 
 ### Single choice list with error
 
+<!-- example-for: web -->
+
 Allows for accessible error handling by connecting the error message to the field with the error.
 
 ```jsx
