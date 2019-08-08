@@ -1,5 +1,5 @@
 node_modules
-/examples/*/build
+/examples
 /build
 /build-intermediate
 /docs

@@ -32,6 +32,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added a new create-react-app example in typescript demonstrating polaris and react-testing ([#1937](https://github.com/Shopify/polaris-react/pull/1937))
 - Exported `AppliedFilterInterface` and `FilterInterface` from `Filters` ([#1924](https://github.com/Shopify/polaris-react/pull/1924))
 - Improved color contrast of links inside `Banner` ([#1651](https://github.com/Shopify/polaris-react/pull/1651))
 
@@ -56,6 +57,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Dependency upgrades
 
+- Updated `@shopify/polaris` in all examples to 4.0.0-rc.2 ([#1937](https://github.com/Shopify/polaris-react/pull/1937))
 - Added `@material-ui/react-transition-group` and removed `react-transition-group` to support `React.StrictMode` ([#1759](https://github.com/Shopify/polaris-react/pull/1759))
 - Added `@shopify/react-testing` ([#1596](https://github.com/Shopify/polaris-react/pull/1596))
 - Removed`@shopify/css-utilities` ([#1586](https://github.com/Shopify/polaris-react/pull/1586))
