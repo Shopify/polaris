@@ -195,7 +195,6 @@ Use to present a navigation menu in the [frame](/components/structure/frame).
 </Navigation>
 ```
 
-
 ### Navigation with a secondary action for a section and a section title
 
 Use to present a secondary action, related to a section and to title the section.
