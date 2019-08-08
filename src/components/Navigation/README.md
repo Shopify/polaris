@@ -307,7 +307,7 @@ Use to show a limited number of items in a section with an option to expand the 
 
 ### Navigation with section separator
 
-Use to add a horizontal line below each section.
+Use to add a horizontal line below the section.
 
 ```jsx
 <Navigation location="/">
