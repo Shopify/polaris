@@ -4,7 +4,7 @@ import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 
 import {DEFAULT_TOAST_DURATION} from '../Frame';
 import {ToastProps, useFrame} from '../../utilities/frame';
-import {useDeepCompare} from '../../utilities/use-deep-compare';
+import {useDeepCompare} from '../../utilities/use-deep-effect';
 import {useAppBridge} from '../../utilities/app-bridge';
 
 const createId = createUniqueIDFactory('Toast');

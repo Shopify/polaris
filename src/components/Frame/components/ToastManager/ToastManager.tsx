@@ -8,7 +8,7 @@ import EventListener from '../../../EventListener';
 import Portal from '../../../Portal';
 import {ToastPropsWithID} from '../../../../utilities/frame';
 import Toast from '../Toast';
-import {useDeepCompare} from '../../../../utilities/use-deep-compare';
+import {useDeepCompare} from '../../../../utilities/use-deep-effect';
 import {useDeepCallback} from '../../../../utilities/use-deep-callback';
 
 import styles from './ToastManager.scss';
