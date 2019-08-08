@@ -27,7 +27,7 @@
     "Common": {
       "checkbox": "チェックボックス",
       "undo": "元に戻す",
-      "cancel": "キャンセル",
+      "cancel": "キャンセルする",
       "newWindowAccessibilityHint": "(新しいウィンドウを開く)",
       "clear": "クリア",
       "close": "閉じる",
