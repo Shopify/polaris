@@ -26,8 +26,6 @@ The navigation component must be passed to the [frame](/components/structure/fra
 
 ## Best practices
 
-The navigation component must be used within the [frame](/components/structure/frame) component.
-
 The navigation component should:
 
 - Contain primary navigation items that perform an action when clicked. Each action should navigate to a URL or trigger another action like a modal overlay.
