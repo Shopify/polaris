@@ -306,6 +306,7 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
       containerWidth,
       disclosureWidth,
     } = measurements;
+
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
       tabs,
       selected,
