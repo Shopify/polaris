@@ -36,6 +36,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Exported `AppliedFilterInterface` and `FilterInterface` from `Filters` ([#1924](https://github.com/Shopify/polaris-react/pull/1924))
 - Improved color contrast of links inside `Banner` ([#1651](https://github.com/Shopify/polaris-react/pull/1651))
 - Add underline to Links and Plain button on hover, so it doesn't rely on color alone for accessibility ([#1885](https://github.com/Shopify/polaris-react/pull/1885))
+- Add `onQueryFocus` callback prop to the `Filters` component ([#1948](https://github.com/Shopify/polaris-react/pull/1948))
 
 ### Bug fixes
 

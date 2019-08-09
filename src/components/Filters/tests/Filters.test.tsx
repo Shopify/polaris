@@ -1,7 +1,7 @@
 import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {Button, Popover, Sheet, Tag} from 'components';
+import {Button, Popover, Sheet, Tag, TextField} from 'components';
 
 import {
   mountWithAppProvider,
@@ -48,6 +48,17 @@ describe('<Filters />', () => {
 
   afterEach(() => {
     matchMedia.restore();
+  });
+
+  it('calls the onQueryFocus callback when the query field is focused', () => {
+    const onQueryFocus = jest.fn();
+    const filters = mountWithAppProvider(
+      <Filters {...mockProps} onQueryFocus={onQueryFocus} />,
+    );
+
+    trigger(filters.find(TextField), 'onFocus');
+
+    expect(onQueryFocus).toHaveBeenCalledTimes(1);
   });
 
   describe('toggleFilters()', () => {
