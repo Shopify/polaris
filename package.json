@@ -38,8 +38,8 @@
     "test:ci": "yarn test --coverage",
     "check": "npm-run-all lint type-check test",
     "check:ci": "npm-run-all lint type-check test:ci",
-    "clean": "rimraf build esnext styles types docs \"build-intermediate\" \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,scss}\"",
-    "clean:build": "rimraf \"build/!(cache|coverage|storybook)\" esnext styles types docs \"build-intermediate\" \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,scss}\"",
+    "clean": "rimraf build esnext styles types docs \"build-intermediate\" \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,min.css,scss}\"",
+    "clean:build": "rimraf \"build/!(cache|coverage|storybook)\" esnext styles types docs \"build-intermediate\" \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,min.css,scss}\"",
     "optimize": "sewing-kit optimize",
     "prebuild": "npm-run-all clean:build optimize copy-polaris-tokens",
     "build": "node ./scripts/build.js",
@@ -177,6 +177,7 @@
     "index.js",
     "index.es.js",
     "styles.css",
+    "styles.min.css",
     "styles.scss"
   ],
   "dependencies": {
