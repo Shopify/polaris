@@ -4,7 +4,7 @@ import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 
 import {DEFAULT_TOAST_DURATION} from '../Frame';
 import {ToastProps, useFrame} from '../../utilities/frame';
-import {useDeepCompare} from '../../utilities/use-deep-effect';
+import {useDeepEffect} from '../../utilities/use-deep-effect';
 import {useAppBridge} from '../../utilities/app-bridge';
 
 const createId = createUniqueIDFactory('Toast');
@@ -21,7 +21,7 @@ function Toast(props: Props) {
   const {showToast, hideToast} = useFrame();
   const appBridge = useAppBridge();
 
-  useDeepCompare(
+  useDeepEffect(
     () => {
       const {
         error,
