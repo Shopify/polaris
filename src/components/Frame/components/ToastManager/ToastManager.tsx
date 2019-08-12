@@ -8,7 +8,7 @@ import EventListener from '../../../EventListener';
 import Portal from '../../../Portal';
 import {ToastPropsWithID} from '../../../../utilities/frame';
 import Toast from '../Toast';
-import {useDeepCompare} from '../../../../utilities/use-deep-effect';
+import {useDeepEffect} from '../../../../utilities/use-deep-effect';
 import {useDeepCallback} from '../../../../utilities/use-deep-callback';
 
 import styles from './ToastManager.scss';
@@ -40,7 +40,7 @@ function ToastManager({toastMessages}: Props) {
     [toastMessages, toastNodes],
   );
 
-  useDeepCompare(
+  useDeepEffect(
     () => {
       updateToasts();
     },
