@@ -74,6 +74,8 @@ export interface Props {
   onClearAll(): void;
   /** Callback when the query field is blurred */
   onQueryBlur?(): void;
+  /** Callback when the query field is focused */
+  onQueryFocus?(): void;
   /** The content to display inline with the controls */
   children?: React.ReactNode;
 }
@@ -133,6 +135,7 @@ class Filters extends React.Component<ComposedProps, State> {
       queryValue,
       onQueryBlur,
       onQueryChange,
+      onQueryFocus,
       focused,
       onClearAll,
       appliedFilters,
@@ -236,6 +239,7 @@ class Filters extends React.Component<ComposedProps, State> {
           }
           onChange={onQueryChange}
           onBlur={onQueryBlur}
+          onFocus={onQueryFocus}
           value={queryValue}
           focused={focused}
           label={
