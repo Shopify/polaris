@@ -1,5 +1,6 @@
 import React from 'react';
 import {ContextualSaveBarProps, useFrame} from '../../utilities/frame';
+import {useDeepEffect} from '../../utilities/use-deep-effect';
 
 // The script in the styleguide that generates the Props Explorer data expects
 // a component's props to be found in the Props interface. This silly workaround
@@ -15,7 +16,7 @@ function ContextualSaveBar({
 }: Props) {
   const {setContextualSaveBar, removeContextualSaveBar} = useFrame();
 
-  React.useEffect(
+  useDeepEffect(
     () => {
       setContextualSaveBar({
         message,
