@@ -154,15 +154,15 @@ class FittedTabsExample extends React.Component {
 
     const tabs = [
       {
-        id: 'all-customers',
+        id: 'all-customers-fitted',
         content: 'All',
         accessibilityLabel: 'All customers',
-        panelID: 'all-customers-content',
+        panelID: 'all-customers-fitted-content',
       },
       {
-        id: 'accepts-marketing',
+        id: 'accepts-marketing-fitted',
         content: 'Accepts marketing',
-        panelID: 'accepts-marketing-content',
+        panelID: 'accepts-marketing-fitted-Ccontent',
       },
     ];
 
