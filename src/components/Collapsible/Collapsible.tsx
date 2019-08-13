@@ -27,10 +27,10 @@ export interface State {
   open: boolean;
 }
 
-const CollapsibleContext = createContext(false);
+const ParentCollapsibleExpandingContext = createContext(false);
 
 class Collapsible extends React.Component<Props, State> {
-  static contextType = CollapsibleContext;
+  static contextType = ParentCollapsibleExpandingContext;
   static getDerivedStateFromProps(
     {open: willOpen}: Props,
     {open, animationState: prevAnimationState}: State,
@@ -114,7 +114,7 @@ class Collapsible extends React.Component<Props, State> {
     const content = animating || open ? children : null;
 
     return (
-      <CollapsibleContext.Provider
+      <ParentCollapsibleExpandingContext.Provider
         value={
           parentCollapsibleExpanding || (open && animationState !== 'idle')
         }
@@ -129,7 +129,7 @@ class Collapsible extends React.Component<Props, State> {
         >
           <div ref={this.heightNode}>{content}</div>
         </div>
-      </CollapsibleContext.Provider>
+      </ParentCollapsibleExpandingContext.Provider>
     );
   }
 
