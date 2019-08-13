@@ -140,7 +140,7 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
           onKeyUp={this.handleKeyPress}
         >
           {tabsMarkup}
-          <li role="presentation" className={disclosureTabClassName}>
+          <li className={disclosureTabClassName}>
             <Popover
               preferredPosition="below"
               activator={activator}
