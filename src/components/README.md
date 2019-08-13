@@ -39,22 +39,15 @@ There are two options for installing and implementing our components, React or C
 
 Use React components in most cases, especially if you’re building a highly interactive experience. This can be done with or without a build system.
 
-- [Implementation instructions](https://github.com/Shopify/polaris-react) (requires HTML, React, a JS build tool)
+- [Implementation instructions](https://github.com/Shopify/polaris-react#using-the-react-components) (requires HTML, React, a JS build tool)
 
 - Have a look at the [React component examples](https://github.com/Shopify/polaris-react/tree/master/examples) to see how it’s done
 
 ### CSS components
 
-- Use CSS components if you don’t have or want a build system for your project
+Use CSS components if you don’t have or want a build system for your project.
 
-- Include the CSS in your HTML to implement:
-
-```html
-<link
-  rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/4.0.0-rc.4/polaris.min.css"
-/>
-```
+- [Implementation instructions](https://github.com/Shopify/polaris-react#using-the-css-components)
 
 - Have a look at the [CSS examples](https://github.com/Shopify/polaris-react/tree/master/examples/cdn-styles) to see how it’s done
 
@@ -68,24 +61,24 @@ Here are some basic instructions to help you get started for both React and CSS-
 
 ### React components (Recommended)
 
-Include the CSS in your HTML:
+Include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
 
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/4.0.0-rc.4/polaris.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.0.0-rc.4/styles.min.css"
 />
 ```
 
 First, import the component into your project:
 
-```javascript
+```js
 import {AppProvider, Button} from '@shopify/polaris';
 ```
 
 Create an element using the Polaris React `AppProvider` component. The `AppProvider` component must wrap your entire app because Polaris React components will not function without it:
 
-```javascript
+```js
 const app = (
   <AppProvider i18n={{}}>
     <Button onClick={() => alert('Button clicked!')}>Example button</Button>
@@ -95,18 +88,18 @@ const app = (
 
 Tell React to render that element in the DOM:
 
-```javascript
+```js
 ReactDOM.render(app, domContainerNode);
 ```
 
 ### CSS components
 
-Include the CSS stylesheet in your HTML:
+Include the CSS stylesheet in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
 
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/4.0.0-rc.4/polaris.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.0.0-rc.4/styles.min.css"
 />
 ```
 
