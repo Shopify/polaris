@@ -24,6 +24,7 @@ describe('build', () => {
     expect(fs.existsSync('./index.js')).toBe(true);
     expect(fs.existsSync('./index.es.js')).toBe(true);
     expect(fs.existsSync('./styles.css')).toBe(true);
+    expect(fs.existsSync('./styles.min.css')).toBe(true);
   });
 
   it('generates a ./styles/foundation dir with spacing.scss', () => {

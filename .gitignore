@@ -7,6 +7,7 @@ node_modules
 /types
 /index.*
 /styles.css
+/styles.min.css
 /styles.scss
 /styles
 /sandbox
