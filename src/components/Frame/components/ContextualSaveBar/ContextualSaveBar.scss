@@ -37,6 +37,7 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex: 1 1 auto;
   align-items: center;
+  justify-content: space-between;
   min-width: 1px;
   max-width: layout-width(primary, max) + layout-width(secondary, max) +
     layout-width(inner-spacing);
@@ -57,7 +58,10 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   @include truncate;
   @include text-style-heading;
   @include text-emphasis-subdued;
-  flex-grow: 1;
+}
+
+.ActionContainer {
+  flex-shrink: 0;
 }
 
 .Action {
