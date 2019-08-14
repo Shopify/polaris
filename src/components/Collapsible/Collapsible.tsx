@@ -1,4 +1,9 @@
-import React, {createContext, createRef, TransitionEvent} from 'react';
+import React, {
+  createContext,
+  createRef,
+  TransitionEvent,
+  ComponentClass,
+} from 'react';
 import {read} from '@shopify/javascript-utilities/fastdom';
 import {classNames} from '../../utilities/css';
 
@@ -157,4 +162,4 @@ function collapsibleHeight(
   return `${height || 0}px`;
 }
 
-export default Collapsible;
+export default Collapsible as ComponentClass<Props> & typeof Collapsible;
