@@ -1,9 +1,9 @@
 import React from 'react';
 import debounce from 'lodash/debounce';
+import isEqual from 'lodash/isEqual';
 
 import {classNames} from '../../utilities/css';
 
-import {isObjectsEqual} from '../../utilities/is-objects-equal';
 import {headerCell} from '../shared';
 import {
   withAppProvider,
@@ -106,7 +106,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (isObjectsEqual(prevProps, this.props)) {
+    if (isEqual(prevProps, this.props)) {
       return;
     }
     this.handleResize();

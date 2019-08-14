@@ -38,10 +38,6 @@ Before requesting a feature, search the [existing feature requests](https://gith
 
 Otherwise, [request a feature](https://github.com/Shopify/polaris-react/issues/new?template=FEATURE_REQUEST.md).
 
-## How to get in touch
-
-- Slack: [#polaris on Shopify Partners Slack](https://shopifypartners.slack.com/messages/C8PTBMWNR/)
-
 ## Proposing a change
 
 If you intend to build a new component, change a public API, make design improvements, or any other non-trivial changes, [we recommend filing an issue](https://github.com/Shopify/polaris-react/issues/new?template=FEATURE_REQUEST.md). This lets us all discuss and reach an agreement on the proposal before you put in significant time and effort.

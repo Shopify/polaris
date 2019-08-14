@@ -1,4 +1,9 @@
-import React, {createContext, createRef, TransitionEvent} from 'react';
+import React, {
+  createContext,
+  createRef,
+  TransitionEvent,
+  ComponentClass,
+} from 'react';
 import {read} from '@shopify/javascript-utilities/fastdom';
 import {classNames} from '../../utilities/css';
 
@@ -31,6 +36,7 @@ const ParentCollapsibleExpandingContext = createContext(false);
 
 class Collapsible extends React.Component<Props, State> {
   static contextType = ParentCollapsibleExpandingContext;
+
   static getDerivedStateFromProps(
     {open: willOpen}: Props,
     {open, animationState: prevAnimationState}: State,
@@ -46,6 +52,8 @@ class Collapsible extends React.Component<Props, State> {
     };
   }
 
+  context!: React.ContextType<typeof ParentCollapsibleExpandingContext>;
+
   state: State = {
     height: null,
     animationState: 'idle',
@@ -58,7 +66,7 @@ class Collapsible extends React.Component<Props, State> {
 
   componentDidUpdate({open: wasOpen}: Props) {
     const {animationState} = this.state;
-    const {parentCollapsibleExpanding} = this.context;
+    const parentCollapsibleExpanding = this.context;
 
     if (parentCollapsibleExpanding && animationState !== 'idle') {
       // eslint-disable-next-line react/no-did-update-set-state
@@ -157,4 +165,4 @@ function collapsibleHeight(
   return `${height || 0}px`;
 }
 
-export default Collapsible;
+export default Collapsible as ComponentClass<Props> & typeof Collapsible;

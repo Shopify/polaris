@@ -4,8 +4,8 @@ import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
+import isEqual from 'lodash/isEqual';
 import {classNames} from '../../../../utilities/css';
-import {isObjectsEqual} from '../../../../utilities/is-objects-equal';
 import {CSS_VAR_PREFIX} from '../../utilities';
 import {RangeSliderProps, DualValue} from '../../types';
 import Labelled, {labelID} from '../../../Labelled';
@@ -45,13 +45,13 @@ export default class DualThumb extends React.Component<Props, State> {
     const {min, step, max, value, onChange, id} = props;
     const {prevValue} = state;
 
-    if (isObjectsEqual(prevValue, value)) {
+    if (isEqual(prevValue, value)) {
       return null;
     }
 
     const sanitizedValue = sanitizeValue(value, min, max, step);
 
-    if (!isObjectsEqual(value, sanitizedValue)) {
+    if (!isEqual(value, sanitizedValue)) {
       onChange(sanitizedValue, id);
     }
 
@@ -446,7 +446,7 @@ export default class DualThumb extends React.Component<Props, State> {
 
     const sanitizedValue = sanitizeValue(dirtyValue, min, max, step, control);
 
-    if (isObjectsEqual(sanitizedValue, value) === false) {
+    if (isEqual(sanitizedValue, value) === false) {
       this.setState(
         {
           value: sanitizedValue,

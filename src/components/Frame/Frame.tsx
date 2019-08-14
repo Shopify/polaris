@@ -20,7 +20,13 @@ import {
   ToastID,
   ToastPropsWithID,
 } from '../../utilities/frame';
-import {ToastManager, Loading, ContextualSaveBar} from './components';
+import {
+  ToastManager,
+  Loading,
+  ContextualSaveBar,
+  CSSAnimation,
+  AnimationType,
+} from './components';
 
 import styles from './Frame.scss';
 
@@ -72,7 +78,6 @@ class Frame extends React.PureComponent<CombinedProps, State> {
   private contextualSaveBar: ContextualSaveBarProps | null;
   private globalRibbonContainer: HTMLDivElement | null = null;
   private navigationNode = createRef<HTMLDivElement>();
-  private contextualSaveBarNode = createRef<HTMLDivElement>();
   private skipToMainContentTargetNode = React.createRef<HTMLAnchorElement>();
 
   componentDidMount() {
@@ -161,23 +166,13 @@ class Frame extends React.PureComponent<CombinedProps, State> {
       ) : null;
 
     const contextualSaveBarMarkup = (
-      <CSSTransition
-        findDOMNode={this.findContextualSaveBarNode}
-        appear
-        exit
+      <CSSAnimation
         in={showContextualSaveBar}
-        timeout={300}
-        classNames={contextualSaveBarTransitionClasses}
-        mountOnEnter
-        unmountOnExit
+        className={styles.ContextualSaveBar}
+        type={AnimationType.Fade}
       >
-        <div
-          className={styles.ContextualSaveBar}
-          ref={this.contextualSaveBarNode}
-        >
-          <ContextualSaveBar {...this.contextualSaveBar} />
-        </div>
-      </CSSTransition>
+        <ContextualSaveBar {...this.contextualSaveBar} />
+      </CSSAnimation>
     );
 
     const topBarMarkup = topBar ? (
@@ -402,10 +397,6 @@ class Frame extends React.PureComponent<CombinedProps, State> {
   private findNavigationNode = () => {
     return this.navigationNode.current;
   };
-
-  private findContextualSaveBarNode = () => {
-    return this.contextualSaveBarNode.current;
-  };
 }
 
 const navTransitionClasses = {
@@ -414,14 +405,6 @@ const navTransitionClasses = {
   enterDone: classNames(styles['Navigation-enterActive']),
   exit: classNames(styles['Navigation-exit']),
   exitActive: classNames(styles['Navigation-exitActive']),
-};
-
-const contextualSaveBarTransitionClasses = {
-  enter: classNames(styles['ContextualSaveBar-enter']),
-  enterActive: classNames(styles['ContextualSaveBar-enterActive']),
-  enterDone: classNames(styles['ContextualSaveBar-enterActive']),
-  exit: classNames(styles['ContextualSaveBar-exit']),
-  exitActive: classNames(styles['ContextualSaveBar-exitActive']),
 };
 
 function isMobileView() {
