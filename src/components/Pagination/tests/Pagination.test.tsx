@@ -36,26 +36,46 @@ describe('<Pagination />', () => {
     removeEventListener.mockRestore();
   });
 
-  it('renders a tooltip if nextTooltip is provided', () => {
-    const pagination = mountWithAppProvider(<Pagination nextTooltip="k" />);
-    pagination.find(Tooltip).simulate('focus');
+  describe('tooltip', () => {
+    it('renders a tooltip if nextTooltip is provided and hasNext is true', () => {
+      const pagination = mountWithAppProvider(
+        <Pagination nextTooltip="k" hasNext />,
+      );
+      pagination.find(Tooltip).simulate('focus');
 
-    expect(findByTestID(pagination, 'TooltipOverlayLabel').text()).toBe('k');
-  });
+      expect(findByTestID(pagination, 'TooltipOverlayLabel').text()).toBe('k');
+    });
 
-  it('renders a tooltip if previousToolTip is provided', () => {
-    const pagination = mountWithAppProvider(<Pagination previousTooltip="j" />);
-    pagination.find(Tooltip).simulate('focus');
+    it('does not render a tooltip if nextTooltip is provided and hasNext is false', () => {
+      const pagination = mountWithAppProvider(
+        <Pagination nextTooltip="k" hasNext={false} />,
+      );
+      expect(pagination.find(Tooltip)).toHaveLength(0);
+    });
 
-    expect(findByTestID(pagination, 'TooltipOverlayLabel').text()).toBe('j');
-  });
+    it('renders a tooltip if previousToolTip is provided and hasPrevious is true', () => {
+      const pagination = mountWithAppProvider(
+        <Pagination previousTooltip="j" hasPrevious />,
+      );
+      pagination.find(Tooltip).simulate('focus');
 
-  it('renders a tooltip for nextToolTip and previousToolTip when they are provided', () => {
-    const pagination = mountWithAppProvider(
-      <Pagination previousTooltip="j" nextTooltip="k" />,
-    );
+      expect(findByTestID(pagination, 'TooltipOverlayLabel').text()).toBe('j');
+    });
 
-    expect(pagination.find(Tooltip)).toHaveLength(2);
+    it('does not render  tooltip if previousToolTip is provided and hasPrevious is false', () => {
+      const pagination = mountWithAppProvider(
+        <Pagination previousTooltip="j" hasPrevious={false} />,
+      );
+      expect(pagination.find(Tooltip)).toHaveLength(0);
+    });
+
+    it('renders a tooltip for nextToolTip and previousToolTip when they are provided and hasPrevious and hasNext are true', () => {
+      const pagination = mountWithAppProvider(
+        <Pagination previousTooltip="j" nextTooltip="k" hasPrevious hasNext />,
+      );
+
+      expect(pagination.find(Tooltip)).toHaveLength(2);
+    });
   });
 
   it('adds a keypress event for nextKeys', () => {

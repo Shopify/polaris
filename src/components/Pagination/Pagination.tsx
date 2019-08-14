@@ -117,17 +117,19 @@ export default function Pagination({
     </button>
   );
 
-  const constructedPrevious = previousTooltip ? (
-    <Tooltip content={previousTooltip}>{previousButton}</Tooltip>
-  ) : (
-    previousButton
-  );
+  const constructedPrevious =
+    previousTooltip && hasPrevious ? (
+      <Tooltip content={previousTooltip}>{previousButton}</Tooltip>
+    ) : (
+      previousButton
+    );
 
-  const constructedNext = nextTooltip ? (
-    <Tooltip content={nextTooltip}>{nextButton}</Tooltip>
-  ) : (
-    nextButton
-  );
+  const constructedNext =
+    nextTooltip && hasNext ? (
+      <Tooltip content={nextTooltip}>{nextButton}</Tooltip>
+    ) : (
+      nextButton
+    );
 
   const previousButtonEvents =
     previousKeys &&
