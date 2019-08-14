@@ -1,8 +1,8 @@
 import React from 'react';
+import isEqual from 'lodash/isEqual';
 import {ThemeContext} from '../../utilities/theme';
 import {Theme} from '../../utilities/theme/types';
 import {setColors} from '../../utilities/theme/utils';
-import {isObjectsEqual} from '../../utilities/is-objects-equal';
 
 interface State {
   theme: Theme;
@@ -30,7 +30,7 @@ export default class ThemeProvider extends React.Component<Props, State> {
 
   componentDidUpdate({theme: prevTheme}: Props) {
     const {theme} = this.props;
-    if (isObjectsEqual(prevTheme, theme)) {
+    if (isEqual(prevTheme, theme)) {
       return;
     }
 
