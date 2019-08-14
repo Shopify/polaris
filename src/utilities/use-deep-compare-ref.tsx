@@ -1,12 +1,12 @@
 import {useRef} from 'react';
-import {isObjectsEqual} from './is-objects-equal';
+import isEqual from 'lodash/isEqual';
 
 type DependencyList = ReadonlyArray<unknown>;
 type Comparator = (a: DependencyList, b: DependencyList) => boolean;
 
 export function useDeepCompareRef(
   dependencies: DependencyList,
-  comparator: Comparator = isObjectsEqual,
+  comparator: Comparator = isEqual,
 ) {
   const dependencyList = useRef<DependencyList>(dependencies);
 

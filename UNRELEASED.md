@@ -87,7 +87,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Restructured context structure to be more modular ([#1664](https://github.com/Shopify/polaris-react/pull/1664))
 - Updated `PositionedOverlay` to no longer use `componentWillReceiveProps`([#1621](https://github.com/Shopify/polaris-react/pull/1621))
 - Simplified `WithinContentContainer` context type ([#1602](https://github.com/Shopify/polaris-react/pull/1602))
-- Replaced all occurrences of `_.isEqual` with a custom isObjectsEqual function ([#1580](https://github.com/Shopify/polaris-react/pull/1580))
 - Updated `OptionList` to no longer use `componentWillReceiveProps`([#1557](https://github.com/Shopify/polaris-react/pull/1557))
 - Refactored `DualThumb` tests ([#1548](https://github.com/Shopify/polaris-react/pull/1548))
 - Converted `Sheet` to a functional component ([#1548](https://github.com/Shopify/polaris-react/pull/1548))
