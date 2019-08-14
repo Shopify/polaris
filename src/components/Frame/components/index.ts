@@ -9,3 +9,4 @@ export {
 } from './ToastManager';
 export {default as Loading, Props as LoadingProps} from './Loading';
 export {default as ContextualSaveBar} from './ContextualSaveBar';
+export {default as CSSAnimation, AnimationType} from './CSSAnimation';

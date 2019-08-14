@@ -1,0 +1,11 @@
+@import '../../../../styles/common';
+
+.startFade {
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity duration(slow) easing(out);
+}
+
+.endFade {
+  opacity: 1;
+}

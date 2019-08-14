@@ -114,24 +114,6 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
 }
 
-.ContextualSaveBar-enter {
-  opacity: 0;
-}
-
-.ContextualSaveBar-enterActive {
-  opacity: 1;
-  transition: opacity duration() easing(out);
-}
-
-.ContextualSaveBar-exit {
-  opacity: 1;
-}
-
-.ContextualSaveBar-exitActive {
-  opacity: 0;
-  transition: opacity duration() easing(out);
-}
-
 .Main {
   flex: 1;
   display: flex;
