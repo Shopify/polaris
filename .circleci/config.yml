@@ -32,6 +32,21 @@ jobs:
           paths:
             - node_modules
       - run: yarn run test:percy
+  chromaui:
+    docker:
+      - image: circleci/node:10.13.0-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          # Find a cache corresponding to these specific yarn.lock and .yarnclean checksums.
+          # When these files are changed, this key will fail and a clean install will happen.
+          key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+      - run: yarn
+      - save_cache:
+          key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+          paths:
+            - node_modules
+      - run: npx chroma publish --build-script-name='storybook:build'
   a11y:
     docker:
       - image: circleci/node:10.13.0-browsers
@@ -54,4 +69,5 @@ workflows:
     jobs:
       - check
       - percy
+      - chromaui
       - a11y
