@@ -31,7 +31,7 @@ export interface Props {
 
 type CombinedProps = Props & WithAppProviderProps;
 
-export interface State {
+interface State {
   disclosureWidth: number;
   tabWidths: number[];
   visibleTabs: number[];

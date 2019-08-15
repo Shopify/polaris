@@ -15,7 +15,7 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export interface State {
+interface State {
   focused: boolean;
 }
 

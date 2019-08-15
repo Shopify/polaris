@@ -47,7 +47,7 @@ export interface Props {
   onNavigationDismiss?(): void;
 }
 
-export interface State {
+interface State {
   mobileView?: boolean;
   skipFocused?: boolean;
   globalRibbonHeight: number;

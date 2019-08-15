@@ -37,7 +37,7 @@ export interface Props {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-export interface State {
+interface State {
   secondaryFooterActionsPopoverOpen: boolean;
 }
 

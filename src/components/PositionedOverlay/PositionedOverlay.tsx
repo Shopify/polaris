@@ -40,7 +40,7 @@ export interface Props {
   onScrollOut?(): void;
 }
 
-export interface State {
+interface State {
   measuring: boolean;
   activatorRect: Rect;
   left: number;

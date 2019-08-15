@@ -32,7 +32,7 @@ import styles from './DropZone.scss';
 
 export type Type = 'file' | 'image';
 
-export interface State {
+interface State {
   id: string;
   size: string;
   type?: string;

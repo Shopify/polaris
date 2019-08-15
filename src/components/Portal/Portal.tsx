@@ -8,7 +8,7 @@ export interface Props {
   onPortalCreated?(): void;
 }
 
-export interface State {
+interface State {
   isMounted: boolean;
 }
 

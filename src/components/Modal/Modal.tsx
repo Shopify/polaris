@@ -79,7 +79,7 @@ export interface Props extends FooterProps {
 }
 type CombinedProps = Props & WithAppProviderProps;
 
-export interface State {
+interface State {
   iframeHeight: number;
 }
 

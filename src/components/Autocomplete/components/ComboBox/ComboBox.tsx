@@ -12,7 +12,7 @@ import styles from './ComboBox.scss';
 
 const getUniqueId = createUniqueIDFactory('ComboBox');
 
-export interface State {
+interface State {
   comboBoxId: string;
   selectedOption?: OptionDescriptor | ActionListItemDescriptor | undefined;
   selectedIndex: number;

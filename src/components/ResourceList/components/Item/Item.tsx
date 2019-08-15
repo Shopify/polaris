@@ -57,7 +57,7 @@ export interface PropsWithClick extends BaseProps {
 
 export type Props = PropsWithUrl | PropsWithClick;
 
-export interface State {
+interface State {
   actionsMenuVisible: boolean;
   focused: boolean;
   focusedInner: boolean;

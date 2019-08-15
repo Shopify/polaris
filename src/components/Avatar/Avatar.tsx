@@ -38,7 +38,7 @@ export interface Props {
   accessibilityLabel?: string;
 }
 
-export interface State {
+interface State {
   hasError: boolean;
   hasLoaded: boolean;
   prevSource?: string;

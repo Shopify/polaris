@@ -35,7 +35,7 @@ const LARGE_SPINNER_HEIGHT = 45;
 
 export type Items = any[];
 
-export interface State {
+interface State {
   selectMode: boolean;
   loadingPosition: number;
   lastSelected: number | null;

@@ -4,7 +4,7 @@ import styles from './Loading.scss';
 
 export interface Props {}
 
-export interface State {
+interface State {
   progress: number;
   step: number;
   animation: number | null;

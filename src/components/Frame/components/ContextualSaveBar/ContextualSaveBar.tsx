@@ -17,7 +17,7 @@ import styles from './ContextualSaveBar.scss';
 
 type CombinedProps = Props & WithAppProviderProps;
 
-export interface State {
+interface State {
   discardConfirmationModalVisible: boolean;
 }
 

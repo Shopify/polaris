@@ -24,7 +24,7 @@ export interface Props {
 
 type CombinedProps = Props & WithAppProviderProps;
 
-export interface State {
+interface State {
   popoverActive: boolean;
   selectedFilter?: Filter;
   selectedFilterKey?: AppliedFilter['key'];

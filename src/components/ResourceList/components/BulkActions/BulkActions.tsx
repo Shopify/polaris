@@ -48,7 +48,7 @@ export interface Props {
   onSelectModeToggle?(selectMode: boolean): void;
 }
 
-export interface State {
+interface State {
   smallScreenPopoverVisible: boolean;
   largeScreenPopoverVisible: boolean;
   containerWidth: number;
