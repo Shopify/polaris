@@ -390,9 +390,9 @@ class RightAlignExample extends React.Component {
   render() {
     return (
       <Stack>
-        <Stack.Item fill>Price</Stack.Item>
+        <Stack.Item fill>Prices</Stack.Item>
         <TextField
-          label="Price"
+          label="Prices"
           labelHidden
           value={this.state.value}
           onChange={this.handleChange}
