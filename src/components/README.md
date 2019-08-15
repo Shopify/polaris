@@ -70,9 +70,10 @@ Include the CSS in your HTML. We suggest copying the styles file into your own p
 />
 ```
 
-First, import the component into your project:
+First, import the translations and the component into your project:
 
 ```js
+import enTranslations from '@shopify/polaris/locales/en.json';
 import {AppProvider, Button} from '@shopify/polaris';
 ```
 
@@ -80,7 +81,7 @@ Create an element using the Polaris React `AppProvider` component. The `AppProvi
 
 ```js
 const app = (
-  <AppProvider i18n={{}}>
+  <AppProvider i18n={enTranslations}>
     <Button onClick={() => alert('Button clicked!')}>Example button</Button>
   </AppProvider>
 );

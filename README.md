@@ -43,9 +43,10 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 />
 ```
 
-2.  Include any of the provided components in your project:
+2.  Include the translations and any of the provided components in your project:
 
 ```js
+import enTranslations from '@shopify/polaris/locales/en.json';
 import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 ```
 
@@ -53,7 +54,7 @@ import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 
 ```js
 ReactDOM.render(
-  <AppProvider i18n={{}}>
+  <AppProvider i18n={enTranslations}>
     <Page title="Example app">
       <Card sectioned>
         <Button onClick={() => alert('Button clicked!')}>Example button</Button>
