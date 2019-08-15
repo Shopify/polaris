@@ -6,7 +6,7 @@ import {HSBColor, HSBAColor} from '../../utilities/color-types';
 import {AlphaPicker, HuePicker, Slidable, Position} from './components';
 import styles from './ColorPicker.scss';
 
-export interface State {
+interface State {
   pickerSize: number;
 }
 

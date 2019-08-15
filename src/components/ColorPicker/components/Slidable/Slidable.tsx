@@ -9,7 +9,7 @@ export interface Position {
   y: number;
 }
 
-export interface State {
+interface State {
   dragging: boolean;
 }
 

@@ -43,10 +43,6 @@ export interface Props {
   onExit?(): void;
 }
 
-export interface State {
-  mobile: boolean;
-}
-
 export default function Sheet({
   children,
   open,

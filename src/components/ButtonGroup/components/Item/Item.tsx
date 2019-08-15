@@ -9,7 +9,7 @@ export interface Props {
   button: React.ReactElement<ButtonProps>;
 }
 
-export interface State {
+interface State {
   focused: boolean;
 }
 

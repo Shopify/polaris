@@ -26,7 +26,7 @@ export type AnimationState =
   | 'openingStart'
   | 'opening';
 
-export interface State {
+interface State {
   height?: number | null;
   animationState: AnimationState;
   open: boolean;

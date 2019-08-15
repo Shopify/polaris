@@ -24,7 +24,7 @@ export interface Props {
   onClick(section: number, option: number): void;
 }
 
-export interface State {
+interface State {
   focused: boolean;
 }
 

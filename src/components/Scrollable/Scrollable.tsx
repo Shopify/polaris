@@ -38,7 +38,7 @@ export interface Props extends React.HTMLProps<HTMLDivElement> {
   onScrolledToBottom?(): void;
 }
 
-export interface State {
+interface State {
   topShadow: boolean;
   bottomShadow: boolean;
   scrollPosition: number;

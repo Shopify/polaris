@@ -54,7 +54,7 @@ export interface BaseProps {
 export interface Props extends BaseProps {}
 type CombinedProps = Props & WithAppProviderProps;
 
-export interface State {
+interface State {
   hoverDate?: Date;
   focusDate?: Date;
 }

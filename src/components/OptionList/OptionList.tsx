@@ -57,10 +57,6 @@ export interface Props {
   onChange(selected: string[]): void;
 }
 
-export interface State {
-  normalizedOptions: SectionDescriptor[];
-}
-
 export default function OptionList({
   options,
   sections,

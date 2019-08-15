@@ -28,7 +28,7 @@ export interface Props {
   activatorWrapper?: string;
 }
 
-export interface State {
+interface State {
   active: boolean;
   activatorNode: HTMLElement | null;
 }

@@ -14,7 +14,7 @@ import {Key} from '../../../../types';
 
 import styles from './DualThumb.scss';
 
-export interface State {
+interface State {
   value: DualValue;
   trackWidth: number;
   trackLeft: number;

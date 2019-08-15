@@ -37,7 +37,7 @@ export interface Props {
 
 export type ComposedProps = Props & WithAppProviderProps;
 
-export interface State {
+interface State {
   focused: boolean;
 }
 

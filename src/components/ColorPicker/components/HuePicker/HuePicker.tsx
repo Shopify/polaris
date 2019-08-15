@@ -3,7 +3,7 @@ import Slidable, {Position} from '../Slidable';
 import styles from '../../ColorPicker.scss';
 import {calculateDraggerY, hueForDraggerY} from './utilities';
 
-export interface State {
+interface State {
   sliderHeight: number;
   draggerHeight: number;
 }

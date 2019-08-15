@@ -41,7 +41,7 @@ export interface Props {
   onClose(source: CloseSource): void;
 }
 
-export interface State {
+interface State {
   activatorNode: HTMLElement | null;
 }
 

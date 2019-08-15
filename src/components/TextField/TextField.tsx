@@ -34,7 +34,7 @@ export type Type =
 
 export type Alignment = 'left' | 'center' | 'right';
 
-export interface State {
+interface State {
   height?: number | null;
   focus: boolean;
   id: string;

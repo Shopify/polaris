@@ -5,7 +5,7 @@ import {
   withAppProvider,
 } from '../../utilities/with-app-provider';
 
-export interface State {
+interface State {
   isSticky: boolean;
   style: Object;
 }
