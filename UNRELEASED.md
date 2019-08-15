@@ -48,10 +48,12 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Updated translation.yml with the new locales path ([#1649](https://github.com/Shopify/polaris-react/pull/1649))
 - Fixed accessibility issue with `Tabs` list item presentation role ([#1958](https://github.com/Shopify/polaris-react/pull/1958))
 - Removed `Tooltip` on disabled `Pagination` buttons ([#1963](https://github.com/Shopify/polaris-react/pull/1963))
+- Fixed accessibility labels on `ResourceList.Item` persistent action disclosure icon ([#1973](https://github.com/Shopify/polaris-react/pull/1973))
 
 ### Documentation
 
 - Updated `AppProvider` app bridge example to use our `AppBridgeContext`([#1877](https://github.com/Shopify/polaris-react/pull/1877))
+- Updated example for the `ResourceList.Item` persistent actions accessibility labels ([#1973](https://github.com/Shopify/polaris-react/pull/1973))
 
 ### Development workflow
 

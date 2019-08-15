@@ -217,7 +217,7 @@ export class BaseItem extends React.Component<CombinedProps, State> {
             <Popover
               activator={
                 <Button
-                  aria-label={intl.translate(
+                  accessibilityLabel={intl.translate(
                     'Polaris.ResourceList.Item.actionsDropdown',
                   )}
                   onClick={this.handleActionsClick}
