@@ -4,17 +4,6 @@ import Focus, {Props} from '../Focus';
 import {Discard} from '../../../types';
 
 describe('<Focus />', () => {
-  let requestAnimationFrameSpy: jest.SpyInstance;
-
-  beforeEach(() => {
-    requestAnimationFrameSpy = jest.spyOn(window, 'requestAnimationFrame');
-    requestAnimationFrameSpy.mockImplementation((cb) => cb());
-  });
-
-  afterEach(() => {
-    requestAnimationFrameSpy.mockRestore();
-  });
-
   it('mounts', () => {
     const focus = mountWithAppProvider(<FocusTestWrapper />);
 

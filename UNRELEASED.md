@@ -72,6 +72,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Removed mocks in various tests suites that are now redundant ([#1978](https://github.com/Shopify/polaris-react/pull/1978))
 - Bumped test coverage in `Collapsible` ([#1929](https://github.com/Shopify/polaris-react/pull/1929))
 - Bumped test coverage in `DropZone`, `Frame`, `Icon`, and `Loading` ([#1927](https://github.com/Shopify/polaris-react/pull/1927))
 - Removed unused type definitions ([#1862](https://github.com/Shopify/polaris-react/pull/1862))
