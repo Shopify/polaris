@@ -26,10 +26,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed `LinkLikeComponent` type export. Use `AppProviderProps['linkComponent']` instead. ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
 - Removed the `Modal.Dialog` and `Tabs.Panel` subcomponents as they were undocumented parts of our public API meant for internal use only. ([#1899](https://github.com/Shopify/polaris-react/pull/1899)).
 
-### New components
-
-- `PolarisTestProvider`: Use for Polaris context in tests, see [polaris examples](https://github.com/Shopify/polaris-react/tree/master/examples) for usage ([#1810](https://github.com/Shopify/polaris-react/pull/1810))
-
 ### Enhancements
 
 - Added a new create-react-app example in typescript demonstrating polaris and react-testing ([#1937](https://github.com/Shopify/polaris-react/pull/1937))
@@ -56,6 +52,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Added support for React hooks in Storybook ([#1665](https://github.com/Shopify/polaris-react/pull/1665))
 - Created `toBeDisabled`, `mountWithContext` and added custom testing matchers ([#1596](https://github.com/Shopify/polaris-react/pull/1596))
+- Added `PolarisTestProvider` helper to ease configuration of required Polaris contexts in tests, see [polaris examples](https://github.com/Shopify/polaris-react/tree/master/examples) for usage ([#1810](https://github.com/Shopify/polaris-react/pull/1810))
 - Enabled strict mode in TypeScript ([#1883](https://github.com/Shopify/polaris-react/pull/1883))
 - Moved to `unpkg.com` for our CDN CSS assets, instead of using `sdks.shopifycdn.com`. Existing URLs will continue to work but new versions will only be available on `unpkg.com` ([#1960](https://github.com/Shopify/polaris-react/pull/1960))
 - Added [ChromaUI](https://www.chromaui.com/) integration for previewing Storybook builds, to potentially replace our self-hosted Heroku instance ([#1975](https://github.com/Shopify/polaris-react/pull/1975))
