@@ -614,7 +614,13 @@ Shortcut actions are intended to provide quick access to popular actions from th
       const {id, url, name, location, latestOrderUrl} = item;
       const media = <Avatar customer size="medium" name={name} />;
       const shortcutActions = latestOrderUrl
-        ? [{content: 'View latest order', url: latestOrderUrl}]
+        ? [
+            {
+              content: 'View latest order',
+              accessibilityLabel: `View ${name}'s latest order`,
+              url: latestOrderUrl,
+            },
+          ]
         : null;
 
       return (
@@ -664,7 +670,13 @@ Use persistent shortcut actions in rare cases when the action cannot be made ava
       const {id, url, name, location, latestOrderUrl} = item;
       const media = <Avatar customer size="medium" name={name} />;
       const shortcutActions = latestOrderUrl
-        ? [{content: 'View latest order', url: latestOrderUrl}]
+        ? [
+            {
+              content: 'View latest order',
+              accessibilityLabel: `View ${name}'s latest order`,
+              url: latestOrderUrl,
+            },
+          ]
         : null;
 
       return (
