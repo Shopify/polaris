@@ -52,6 +52,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Updated example section to include new examples and remove old ones ([#1979](https://github.com/Shopify/polaris-react/pull/1979))
 - Updated `AppProvider` app bridge example to use our `AppBridgeContext`([#1877](https://github.com/Shopify/polaris-react/pull/1877))
 - Updated example for the `ResourceList.Item` persistent actions accessibility labels ([#1973](https://github.com/Shopify/polaris-react/pull/1973))
 
