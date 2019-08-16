@@ -436,13 +436,15 @@ class ProviderThemeExample extends React.Component {
 
 ## Using translations
 
-When using Polaris, you are able to import translations from all languages supported by the core Shopify product and consume them through the `i18n` prop.
+Translations are provided in the locales folder. When using Polaris, you are able to import translations from all languages supported by the core Shopify product and consume them through the `i18n` prop.
 
 ```jsx
-import fr from '@shopify/polaris/locales/fr.json';
-...
-<AppProvider i18n={fr}>
-...
+// en.json is English. Replace with fr.json for French, etc
+import translations from '@shopify/polaris/locales/en.json';
+
+ReactDOM.render(
+  <AppProvider i18n={translations}>{/* App content */}</AppProvider>,
+);
 ```
 
 ---
