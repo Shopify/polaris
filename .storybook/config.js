@@ -1,3 +1,4 @@
+import 'storybook-chroma';
 import React from 'react';
 import {configure, addParameters, addDecorator} from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
