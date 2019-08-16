@@ -58,6 +58,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Created `toBeDisabled`, `mountWithContext` and added custom testing matchers ([#1596](https://github.com/Shopify/polaris-react/pull/1596))
 - Enabled strict mode in TypeScript ([#1883](https://github.com/Shopify/polaris-react/pull/1883))
 - Moved to `unpkg.com` for our CDN CSS assets, instead of using `sdks.shopifycdn.com`. Existing URLs will continue to work but new versions will only be available on `unpkg.com` ([#1960](https://github.com/Shopify/polaris-react/pull/1960))
+- Added [ChromaUI](https://www.chromaui.com/) integration for previewing Storybook builds, to potentially replace our self-hosted Heroku instance ([#1975](https://github.com/Shopify/polaris-react/pull/1975))
 
 ### Dependency upgrades
 
