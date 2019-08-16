@@ -4,17 +4,6 @@ import Collapsible from '../Collapsible';
 
 describe('<Collapsible />', () => {
   const ariaHiddenSelector = '[aria-hidden=true]';
-  let setTimeoutMock: jest.SpyInstance;
-
-  beforeEach(() => {
-    setTimeoutMock = jest
-      .spyOn(window, 'setTimeout')
-      .mockImplementation((cb: Function) => cb());
-  });
-
-  afterEach(() => {
-    setTimeoutMock.mockRestore();
-  });
 
   it('does not render its children and indicates hidden with aria-hidden', () => {
     const collapsible = mountWithAppProvider(
