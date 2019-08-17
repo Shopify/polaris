@@ -1,11 +1,17 @@
 import React from 'react';
-import {ResourceList, Select, Spinner, EmptySearchResult} from 'components';
+import {
+  ResourceList,
+  Select,
+  Spinner,
+  EmptySearchResult,
+  ResourceItem,
+} from 'components';
 import {
   findByTestID,
   mountWithAppProvider,
   trigger,
 } from 'test-utilities/legacy';
-import {BulkActions, Item, CheckableButton} from '../components';
+import {BulkActions, CheckableButton} from '../components';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
@@ -312,7 +318,7 @@ describe('<ResourceList />', () => {
           onSelectionChange={onSelectionChange}
         />,
       );
-      const firstItem = resourceList.find(Item).first();
+      const firstItem = resourceList.find(ResourceItem).first();
       findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
       expect(onSelectionChange).toHaveBeenCalled();
     });
@@ -694,7 +700,7 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList.find(Item)).toHaveLength(0);
+      expect(resourceList.find(ResourceItem)).toHaveLength(0);
     });
   });
 
@@ -760,10 +766,10 @@ describe('<ResourceList />', () => {
           resolveItemId={resolveItemId}
         />,
       );
-      const firstItem = resourceList.find(Item).first();
+      const firstItem = resourceList.find(ResourceItem).first();
       findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
 
-      const lastItem = resourceList.find(Item).last();
+      const lastItem = resourceList.find(ResourceItem).last();
       findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
         nativeEvent: {shiftKey: true},
       });
@@ -782,10 +788,10 @@ describe('<ResourceList />', () => {
           onSelectionChange={onSelectionChange}
         />,
       );
-      const firstItem = resourceList.find(Item).first();
+      const firstItem = resourceList.find(ResourceItem).first();
       findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
 
-      const lastItem = resourceList.find(Item).last();
+      const lastItem = resourceList.find(ResourceItem).last();
       findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
         nativeEvent: {shiftKey: true},
       });
@@ -822,10 +828,10 @@ describe('<ResourceList />', () => {
           resolveItemId={resolveItemId}
         />,
       );
-      const firstItem = resourceList.find(Item).first();
+      const firstItem = resourceList.find(ResourceItem).first();
       findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
 
-      const lastItem = resourceList.find(Item).last();
+      const lastItem = resourceList.find(ResourceItem).last();
       findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
         nativeEvent: {shiftKey: true},
       });
@@ -850,10 +856,10 @@ describe('<ResourceList />', () => {
         />,
       );
       // Sets {lastSeleced: 0}
-      const firstItem = resourceList.find(Item).first();
+      const firstItem = resourceList.find(ResourceItem).first();
       findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
 
-      const lastItem = resourceList.find(Item).last();
+      const lastItem = resourceList.find(ResourceItem).last();
       findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
         nativeEvent: {shiftKey: true},
       });

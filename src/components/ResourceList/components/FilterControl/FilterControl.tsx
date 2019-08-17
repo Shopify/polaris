@@ -7,7 +7,7 @@ import FormLayout from '../../../FormLayout';
 import TextField from '../../../TextField';
 import Tag from '../../../Tag';
 import {useI18n} from '../../../../utilities/i18n';
-import {ResourceListContext} from '../../context';
+import {ResourceListContext} from '../../../../utilities/resource-list';
 
 import {FilterCreator} from './components';
 import {AppliedFilter, Filter, FilterType, Operator} from './types';
@@ -25,6 +25,7 @@ export interface Props {
   onFiltersChange?(appliedFilters: AppliedFilter[]): void;
 }
 
+/** @deprecated Use <Filters /> instead. */
 export default function FilterControl({
   searchValue,
   appliedFilters = [],
@@ -36,6 +37,11 @@ export default function FilterControl({
   onSearchChange,
   onFiltersChange,
 }: Props) {
+  // eslint-disable-next-line no-console
+  console.warn(
+    'Deprecation: <FilterControl /> is deprecated. Use <Filters /> instead.',
+  );
+
   const intl = useI18n();
   const {selectMode, resourceName} = React.useContext(ResourceListContext);
 

@@ -18,20 +18,3 @@ $resource-list-variables: (
 @function resource-list($variable) {
   @return map-get($resource-list-variables, $variable);
 }
-
-// translate-offset equals handle-width - padding
-$resource-list-item-variables: (
-  padding: rem(12px),
-  control-indent: -1 * rem(12px),
-  min-height: rem(44px),
-  handle-width: rem(48px),
-  disclosure-width: rem(48px),
-  translate-offset: rem(48px) - rem(12px) + spacing(extra-tight),
-  clickable-stacking-order: 1,
-  content-stacking-order: 2,
-  actions-height: rem(56px),
-);
-
-@function resource-list-item($variable) {
-  @return map-get($resource-list-item-variables, $variable);
-}

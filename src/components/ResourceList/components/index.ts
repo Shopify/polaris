@@ -9,5 +9,3 @@ export {
   default as FilterControl,
   Props as FilterControlProps,
 } from './FilterControl';
-
-export {default as Item, Props as ItemProps} from './Item';
