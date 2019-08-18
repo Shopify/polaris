@@ -93,24 +93,28 @@ class ResourceList extends React.Component<CombinedProps, State> {
   private defaultResourceName: {singular: string; plural: string};
   private listRef: React.RefObject<HTMLUListElement> = React.createRef();
 
-  private handleResize = debounce(() => {
-    const {selectedItems} = this.props;
-    const {selectMode, smallScreen} = this.state;
-    const newSmallScreen = isSmallScreen();
+  private handleResize = debounce(
+    () => {
+      const {selectedItems} = this.props;
+      const {selectMode, smallScreen} = this.state;
+      const newSmallScreen = isSmallScreen();
 
-    if (
-      selectedItems &&
-      selectedItems.length === 0 &&
-      selectMode &&
-      !newSmallScreen
-    ) {
-      this.handleSelectMode(false);
-    }
+      if (
+        selectedItems &&
+        selectedItems.length === 0 &&
+        selectMode &&
+        !newSmallScreen
+      ) {
+        this.handleSelectMode(false);
+      }
 
-    if (smallScreen !== newSmallScreen) {
-      this.setState({smallScreen: newSmallScreen});
-    }
-  }, 50);
+      if (smallScreen !== newSmallScreen) {
+        this.setState({smallScreen: newSmallScreen});
+      }
+    },
+    50,
+    {leading: true, trailing: true, maxWait: 50},
+  );
 
   constructor(props: CombinedProps) {
     super(props);
@@ -389,7 +393,6 @@ class ResourceList extends React.Component<CombinedProps, State> {
           actions={bulkActions}
           disabled={loading}
         />
-        <EventListener event="resize" handler={this.handleResize} />
       </div>
     ) : null;
 
@@ -489,6 +492,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
               );
             }}
           </Sticky>
+          <EventListener event="resize" handler={this.handleResize} />
         </div>
       );
 
