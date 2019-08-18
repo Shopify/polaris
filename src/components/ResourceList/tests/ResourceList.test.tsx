@@ -5,6 +5,7 @@ import {
   Spinner,
   EmptySearchResult,
   ResourceItem,
+  EventListener,
 } from 'components';
 import {
   findByTestID,
@@ -865,6 +866,44 @@ describe('<ResourceList />', () => {
       });
 
       expect(onSelectionChange).toHaveBeenCalledWith([]);
+    });
+  });
+
+  describe('Resizing', () => {
+    const defaultWindowWidth = window.innerWidth;
+
+    afterEach(() => {
+      Object.defineProperty(window, 'innerWidth', {
+        configurable: true,
+        writable: true,
+        value: defaultWindowWidth,
+      });
+    });
+
+    it('an inline label is hidden on small screen', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          sortOptions={sortOptions}
+          onSortChange={noop}
+          renderItem={renderItem}
+        />,
+      );
+
+      Object.defineProperty(window, 'innerWidth', {
+        configurable: true,
+        writable: true,
+        value: 458,
+      });
+
+      trigger(resourceList.find(EventListener), 'handler');
+
+      expect(
+        resourceList
+          .find(Select)
+          .first()
+          .prop('labelInline'),
+      ).toBe(false);
     });
   });
 });
