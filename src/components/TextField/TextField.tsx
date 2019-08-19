@@ -87,12 +87,12 @@ export interface BaseProps {
   step?: number;
   /** Enable automatic completion by the browser */
   autoComplete?: boolean | string;
-  /** Mimics the behavior of the native HTML attribute, limiting how high the spinner can increment the value */
-  max?: number;
+  /** Mimics the behavior of the native HTML attribute, limiting the maximum value */
+  max?: number | string;
   /** Maximum character length for an input */
   maxLength?: number;
-  /** Mimics the behavior of the native HTML attribute, limiting how low the spinner can decrement the value */
-  min?: number;
+  /** Mimics the behavior of the native HTML attribute, limiting the minimum value */
+  min?: number | string;
   /** Minimum character length for an input */
   minLength?: number;
   /** A regular expression to check the value against */
