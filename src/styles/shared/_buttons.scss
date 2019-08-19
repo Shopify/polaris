@@ -34,6 +34,7 @@
   transition-property: background, border, box-shadow;
   transition-duration: duration();
   transition-timing-function: easing();
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     background: linear-gradient(
