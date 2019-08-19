@@ -112,10 +112,12 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
           {logoMarkup}
           <div className={styles.Contents}>
             <h2 className={styles.Message}>{message}</h2>
-            <Stack spacing="tight" wrap={false}>
-              {discardActionMarkup}
-              {saveActionMarkup}
-            </Stack>
+            <div className={styles.ActionContainer}>
+              <Stack spacing="tight" wrap={false}>
+                {discardActionMarkup}
+                {saveActionMarkup}
+              </Stack>
+            </div>
           </div>
         </div>
         {discardConfirmationModalMarkup}
