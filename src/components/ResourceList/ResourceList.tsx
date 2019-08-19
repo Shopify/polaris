@@ -479,6 +479,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
               );
               return (
                 <div className={headerClassName} testID="ResourceList-Header">
+                  <EventListener event="resize" handler={this.handleResize} />
                   {headerWrapperOverlay}
                   <div className={styles.HeaderContentWrapper}>
                     {headerTitleMarkup}
@@ -492,7 +493,6 @@ class ResourceList extends React.Component<CombinedProps, State> {
               );
             }}
           </Sticky>
-          <EventListener event="resize" handler={this.handleResize} />
         </div>
       );
 
