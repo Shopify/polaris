@@ -58,4 +58,4 @@ yarn run build
 npm run build
 ```
 
-This generates a `build` directory containing `index.html` and `bundle.js`. The index loads all Polaris styles via the Polaris CDN and the application scripts via `bundle.js`
+This generates a `build` directory containing `index.html` and `bundle.js`. Styles are included in the base bundle and are injected into a style tag in the html using the `style-loader` webpack plugin.

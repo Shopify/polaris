@@ -28,30 +28,30 @@ yarn add @shopify/polaris
 
 ### Usage
 
-1.  Include the CSS in your HTML:
+1.  Import the CSS directly into your project if your asset packager supports it:
+
+```js
+import '@shopify/polaris/styles.css';
+```
+
+Otherwise include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
 
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/4.0.0-rc.4/polaris.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.0.0-rc.4/styles.min.css"
 />
 ```
 
-> Note: you can import the CSS directly into your project if your asset packager supports it:
->
-> ```javascript
-> import '@shopify/polaris/styles.css';
-> ```
-
 2.  Include any of the provided components in your project:
 
-```javascript
+```js
 import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 ```
 
 3.  Tell React to render the element in the DOM:
 
-```javascript
+```js
 ReactDOM.render(
   <AppProvider i18n={{}}>
     <Page title="Example app">
@@ -76,12 +76,12 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 
 ### Usage
 
-1.  Include the CSS in your HTML:
+1.  Include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
 
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/4.0.0-rc.4/polaris.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.0.0-rc.4/styles.min.css"
 />
 ```
 
