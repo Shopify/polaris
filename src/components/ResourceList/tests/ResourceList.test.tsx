@@ -5,6 +5,7 @@ import {
   Spinner,
   EmptySearchResult,
   ResourceItem,
+  EventListener,
 } from 'components';
 import {
   findByTestID,
@@ -38,6 +39,7 @@ const sortOptions = [
 ];
 
 const alternateTool = <div id="AlternateTool">Alternate Tool</div>;
+const defaultWindowWidth = window.innerWidth;
 
 describe('<ResourceList />', () => {
   describe('renderItem', () => {
@@ -867,6 +869,48 @@ describe('<ResourceList />', () => {
       expect(onSelectionChange).toHaveBeenCalledWith([]);
     });
   });
+
+  describe('Resizing', () => {
+    afterEach(() => {
+      setDefaultScreen();
+    });
+
+    it('an inline label is hidden on small screen', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          sortOptions={sortOptions}
+          onSortChange={noop}
+          renderItem={renderItem}
+        />,
+      );
+
+      setSmallScreen();
+      trigger(resourceList.find(EventListener), 'handler');
+
+      expect(
+        resourceList
+          .find(Select)
+          .first()
+          .prop('labelInline'),
+      ).toBe(false);
+    });
+
+    it('select mode is turned off on large screen when no items are selected', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={singleItemWithID}
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectedItems={[]}
+        />,
+      );
+
+      trigger(resourceList.find(BulkActions), 'onSelectModeToggle', true);
+      trigger(resourceList.find(EventListener).first(), 'handler');
+      expect(resourceList.find(BulkActions).prop('selectMode')).toBe(false);
+    });
+  });
 });
 
 function noop() {}
@@ -891,4 +935,20 @@ function renderItem(item: any, id: any, index: number) {
       <div>{item.title}</div>
     </ResourceList.Item>
   );
+}
+
+function setSmallScreen() {
+  Object.defineProperty(window, 'innerWidth', {
+    configurable: true,
+    writable: true,
+    value: 458,
+  });
+}
+
+function setDefaultScreen() {
+  Object.defineProperty(window, 'innerWidth', {
+    configurable: true,
+    writable: true,
+    value: defaultWindowWidth,
+  });
 }

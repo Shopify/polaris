@@ -40,6 +40,7 @@ interface State {
   selectMode: boolean;
   loadingPosition: number;
   lastSelected: number | null;
+  smallScreen: boolean;
 }
 
 export interface Props {
@@ -92,19 +93,28 @@ class ResourceList extends React.Component<CombinedProps, State> {
   private defaultResourceName: {singular: string; plural: string};
   private listRef: React.RefObject<HTMLUListElement> = React.createRef();
 
-  private handleResize = debounce(() => {
-    const {selectedItems} = this.props;
-    const {selectMode} = this.state;
+  private handleResize = debounce(
+    () => {
+      const {selectedItems} = this.props;
+      const {selectMode, smallScreen} = this.state;
+      const newSmallScreen = isSmallScreen();
 
-    if (
-      selectedItems &&
-      selectedItems.length === 0 &&
-      selectMode &&
-      !isSmallScreen()
-    ) {
-      this.handleSelectMode(false);
-    }
-  }, 50);
+      if (
+        selectedItems &&
+        selectedItems.length === 0 &&
+        selectMode &&
+        !newSmallScreen
+      ) {
+        this.handleSelectMode(false);
+      }
+
+      if (smallScreen !== newSmallScreen) {
+        this.setState({smallScreen: newSmallScreen});
+      }
+    },
+    50,
+    {leading: true, trailing: true, maxWait: 50},
+  );
 
   constructor(props: CombinedProps) {
     super(props);
@@ -124,6 +134,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       selectMode: Boolean(selectedItems && selectedItems.length > 0),
       loadingPosition: 0,
       lastSelected: null,
+      smallScreen: isSmallScreen(),
     };
   }
 
@@ -361,7 +372,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       onSortChange,
       polaris: {intl},
     } = this.props;
-    const {selectMode, loadingPosition} = this.state;
+    const {selectMode, loadingPosition, smallScreen} = this.state;
 
     const filterControlMarkup = filterControl ? (
       <div className={styles.FiltersWrapper}>{filterControl}</div>
@@ -382,7 +393,6 @@ class ResourceList extends React.Component<CombinedProps, State> {
           actions={bulkActions}
           disabled={loading}
         />
-        <EventListener event="resize" handler={this.handleResize} />
       </div>
     ) : null;
 
@@ -391,7 +401,8 @@ class ResourceList extends React.Component<CombinedProps, State> {
         <div className={styles.SortWrapper}>
           <Select
             label={intl.translate('Polaris.ResourceList.sortingLabel')}
-            labelInline
+            labelInline={!smallScreen}
+            labelHidden={smallScreen}
             options={sortOptions}
             onChange={onSortChange}
             value={sortValue}
@@ -468,6 +479,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
               );
               return (
                 <div className={headerClassName} testID="ResourceList-Header">
+                  <EventListener event="resize" handler={this.handleResize} />
                   {headerWrapperOverlay}
                   <div className={styles.HeaderContentWrapper}>
                     {headerTitleMarkup}
