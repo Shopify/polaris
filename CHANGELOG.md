@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 3.21.1 - 2019-08-12
+
+### Enhancements
+
+- Added `onQueryFocus` callback prop to the `Filters` component ([#1948](https://github.com/Shopify/polaris-react/pull/1948))
+
 ## 3.21.0 - 2019-07-31
 
 ### Enhancements
