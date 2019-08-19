@@ -31,6 +31,7 @@ import {
 import styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
+const DEFAULT_IFRAME_CONTENT_HEIGHT = 400;
 
 export type Size = 'Small' | 'Medium' | 'Large' | 'Full';
 
@@ -335,9 +336,15 @@ class Modal extends React.Component<CombinedProps, State> {
   private handleIFrameLoad = (evt: React.SyntheticEvent<HTMLIFrameElement>) => {
     const iframe = evt.target as HTMLIFrameElement;
     if (iframe && iframe.contentWindow) {
-      this.setState({
-        iframeHeight: iframe.contentWindow.document.body.scrollHeight,
-      });
+      try {
+        this.setState({
+          iframeHeight: iframe.contentWindow.document.body.scrollHeight,
+        });
+      } catch {
+        this.setState({
+          iframeHeight: DEFAULT_IFRAME_CONTENT_HEIGHT,
+        });
+      }
     }
 
     const {onIFrameLoad} = this.props;
