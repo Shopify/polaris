@@ -432,7 +432,10 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     // step / value has.
     const decimalPlaces = Math.max(dpl(numericValue), dpl(step));
 
-    const newValue = Math.min(max, Math.max(numericValue + steps * step, min));
+    const newValue = Math.min(
+      Number(max),
+      Math.max(numericValue + steps * step, Number(min)),
+    );
     onChange(String(newValue.toFixed(decimalPlaces)), this.state.id);
   };
 
