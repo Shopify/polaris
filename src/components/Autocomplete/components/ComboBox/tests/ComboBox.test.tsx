@@ -420,8 +420,24 @@ describe('<ComboBox/>', () => {
       );
       comboBox.find(TextField).simulate('click');
       dispatchKeyup(Key.DownArrow);
-      dispatchKeyup(Key.Enter);
+      dispatchKeydown(Key.Enter);
       expect(spy).toHaveBeenCalledWith(['cheese_pizza']);
+    });
+
+    it('does not add to selected options when the down arrow and key other than enter is pressed', () => {
+      const spy = jest.fn();
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={spy}
+        />,
+      );
+      comboBox.find(TextField).simulate('click');
+      dispatchKeyup(Key.DownArrow);
+      dispatchKeydown(Key.RightArrow);
+      expect(spy).not.toHaveBeenCalled();
     });
 
     it('activates the popover when the combobox is focused', () => {
@@ -554,4 +570,9 @@ function renderNodeWithId() {
 function dispatchKeyup(key: Key) {
   const event: KeyboardEventInit & {keyCode: Key} = {keyCode: key};
   document.dispatchEvent(new KeyboardEvent('keyup', event));
+}
+
+function dispatchKeydown(key: Key) {
+  const event: KeyboardEventInit & {keyCode: Key} = {keyCode: key};
+  window.dispatchEvent(new KeyboardEvent('keydown', event));
 }

@@ -48,6 +48,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed accessibility issue with `Tabs` list item presentation role ([#1958](https://github.com/Shopify/polaris-react/pull/1958))
 - Removed `Tooltip` on disabled `Pagination` buttons ([#1963](https://github.com/Shopify/polaris-react/pull/1963))
 - Fixed accessibility labels on `ResourceList.Item` persistent action disclosure icon ([#1973](https://github.com/Shopify/polaris-react/pull/1973))
+- Fixed accessibility issue with `Autocomplete` where keyboard navigation of options was laggy and skipped options([#1887](https://github.com/Shopify/polaris-react/pull/1887))
+- Fixed bug where `Autocomplete` was bubbling up the `Enter` key event unexpectedly ([#1887](https://github.com/Shopify/polaris-react/pull/1887))
 
 ### Documentation
 
