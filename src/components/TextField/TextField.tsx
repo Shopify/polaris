@@ -1,18 +1,14 @@
-import React from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {addEventListener} from '@shopify/javascript-utilities/events';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
-
+import {useI18n} from '../../utilities/i18n';
+import {useUniqueId} from '../../utilities/unique-id';
 import {Labelled, Action, helpTextID, labelID} from '../Labelled';
 import {Connected} from '../Connected';
 
 import {Error, Key} from '../../types';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
 import {Icon} from '../Icon';
 import {Resizer, Spinner} from './components';
 import styles from './TextField.scss';
@@ -33,12 +29,6 @@ export type Type =
   | 'currency';
 
 type Alignment = 'left' | 'center' | 'right';
-
-interface State {
-  height?: number | null;
-  focus: boolean;
-  id: string;
-}
 
 export interface BaseProps {
   /** Text to display before value */
@@ -129,394 +119,360 @@ export type TextFieldProps = NonMutuallyExclusiveProps &
     | {disabled: true}
     | {onChange(value: string, id: string): void});
 
-type CombinedProps = TextFieldProps & WithAppProviderProps;
+export function TextField({
+  prefix,
+  suffix,
+  placeholder,
+  value,
+  helpText,
+  label,
+  labelAction,
+  labelHidden,
+  disabled,
+  clearButton,
+  readOnly,
+  autoFocus,
+  focused,
+  multiline,
+  error,
+  connectedRight,
+  connectedLeft,
+  type,
+  name,
+  id: idProp,
+  role,
+  step = 1,
+  autoComplete,
+  max = Infinity,
+  maxLength,
+  min = -Infinity,
+  minLength,
+  pattern,
+  spellCheck,
+  ariaOwns,
+  ariaControls,
+  ariaActiveDescendant,
+  ariaAutocomplete,
+  showCharacterCount,
+  align,
+  onClearButtonClick,
+  onChange,
+  onFocus,
+  onBlur,
+}: TextFieldProps) {
+  const intl = useI18n();
+  const [height, setHeight] = useState<number | null>(null);
+  const [focus, setFocus] = useState(Boolean(focused));
+  const [isMounted, setIsMounted] = useState(false);
 
-const getUniqueID = createUniqueIDFactory('TextField');
+  const id = useUniqueId('TextField', idProp);
 
-class TextField extends React.PureComponent<CombinedProps, State> {
-  static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
-    return {id: nextProps.id || prevState.id};
-  }
+  const inputRef = useRef<HTMLElement>(null);
+  const prefixRef = useRef<HTMLDivElement>(null);
+  const suffixRef = useRef<HTMLDivElement>(null);
+  const buttonPressTimer = useRef<number>();
 
-  private input: HTMLElement;
-  private buttonPressTimer: number;
-  private prefix = React.createRef<HTMLDivElement>();
-  private suffix = React.createRef<HTMLDivElement>();
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-  constructor(props: CombinedProps) {
-    super(props);
-
-    // eslint-disable-next-line react/state-in-constructor
-    this.state = {
-      height: null,
-      focus: props.focused || false,
-      id: props.id || getUniqueID(),
-    };
-  }
-
-  componentDidMount() {
-    if (!this.props.focused) {
-      return;
+  useEffect(() => {
+    if (!inputRef.current) return;
+    if (focused) {
+      inputRef.current.focus();
+    } else if (focused === false) {
+      inputRef.current.blur();
     }
+  }, [focused]);
 
-    this.input.focus();
-  }
+  const normalizedValue = value != null ? value : '';
 
-  componentDidUpdate({focused: wasFocused}: CombinedProps) {
-    const {focused} = this.props;
+  const className = classNames(
+    styles.TextField,
+    Boolean(normalizedValue) && styles.hasValue,
+    disabled && styles.disabled,
+    readOnly && styles.readOnly,
+    error && styles.error,
+    multiline && styles.multiline,
+    focus && styles.focus,
+  );
 
-    if (!wasFocused && focused) {
-      this.input.focus();
-    } else if (wasFocused && !focused) {
-      this.input.blur();
-    }
-  }
+  const inputType = type === 'currency' ? 'text' : type;
 
-  render() {
-    const {
-      align,
-      ariaActiveDescendant,
-      ariaAutocomplete,
-      ariaControls,
-      ariaOwns,
-      autoComplete,
-      autoFocus,
-      connectedLeft,
-      clearButton,
-      connectedRight,
-      disabled,
-      error,
-      helpText,
-      id = this.state.id,
-      label,
-      labelAction,
-      labelHidden,
-      max,
-      maxLength,
-      min,
-      minLength,
-      multiline,
-      name,
-      onBlur,
-      onFocus,
-      pattern,
-      placeholder,
-      polaris: {intl},
-      prefix,
-      readOnly,
-      role,
-      showCharacterCount,
-      spellCheck,
-      step,
-      suffix,
-      type,
-      value,
-    } = this.props;
+  const prefixMarkup = prefix ? (
+    <div className={styles.Prefix} id={`${id}Prefix`} ref={prefixRef}>
+      {prefix}
+    </div>
+  ) : null;
 
-    const normalizedValue = value != null ? value : '';
+  const suffixMarkup = suffix ? (
+    <div className={styles.Suffix} id={`${id}Suffix`} ref={suffixRef}>
+      {suffix}
+    </div>
+  ) : null;
 
-    const {height, focus} = this.state;
+  const characterCount = normalizedValue.length;
+  const characterCountLabel = intl.translate(
+    maxLength
+      ? 'Polaris.TextField.characterCountWithMaxLength'
+      : 'Polaris.TextField.characterCount',
+    {count: characterCount, limit: maxLength},
+  );
 
-    const className = classNames(
-      styles.TextField,
-      Boolean(normalizedValue) && styles.hasValue,
-      disabled && styles.disabled,
-      readOnly && styles.readOnly,
-      error && styles.error,
-      multiline && styles.multiline,
-      this.state.focus && styles.focus,
-    );
+  const characterCountClassName = classNames(
+    styles.CharacterCount,
+    multiline && styles.AlignFieldBottom,
+  );
 
-    const inputType = type === 'currency' ? 'text' : type;
+  const characterCountText = !maxLength
+    ? characterCount
+    : `${characterCount}/${maxLength}`;
 
-    const prefixMarkup = prefix ? (
-      <div className={styles.Prefix} id={`${id}Prefix`} ref={this.prefix}>
-        {prefix}
-      </div>
-    ) : null;
+  const characterCountMarkup = showCharacterCount ? (
+    <div
+      id={`${id}CharacterCounter`}
+      className={characterCountClassName}
+      aria-label={characterCountLabel}
+      aria-live={focus ? 'polite' : 'off'}
+      aria-atomic="true"
+    >
+      {characterCountText}
+    </div>
+  ) : null;
 
-    const suffixMarkup = suffix ? (
-      <div className={styles.Suffix} id={`${id}Suffix`} ref={this.suffix}>
-        {suffix}
-      </div>
-    ) : null;
-
-    const characterCount = normalizedValue.length;
-    const characterCountLabel = intl.translate(
-      maxLength
-        ? 'Polaris.TextField.characterCountWithMaxLength'
-        : 'Polaris.TextField.characterCount',
-      {count: characterCount, limit: maxLength},
-    );
-
-    const characterCountClassName = classNames(
-      styles.CharacterCount,
-      multiline && styles.AlignFieldBottom,
-    );
-
-    const characterCountText = !maxLength
-      ? characterCount
-      : `${characterCount}/${maxLength}`;
-
-    const characterCountMarkup = showCharacterCount ? (
-      <div
-        id={`${id}CharacterCounter`}
-        className={characterCountClassName}
-        aria-label={characterCountLabel}
-        aria-live={focus ? 'polite' : 'off'}
-        aria-atomic="true"
+  const clearButtonMarkup =
+    clearButton && normalizedValue !== '' ? (
+      <button
+        testID="clearButton"
+        className={styles.ClearButton}
+        onClick={handleClearButtonPress}
+        disabled={disabled}
       >
-        {characterCountText}
-      </div>
+        <VisuallyHidden>
+          {intl.translate('Polaris.Common.clear')}
+        </VisuallyHidden>
+        <Icon source={CircleCancelMinor} color="inkLightest" />
+      </button>
     ) : null;
 
-    const clearButtonMarkup =
-      clearButton && normalizedValue !== '' ? (
-        <button
-          testID="clearButton"
-          className={styles.ClearButton}
-          onClick={this.handleClearButtonPress}
-          disabled={disabled}
-        >
-          <VisuallyHidden>
-            {intl.translate('Polaris.Common.clear')}
-          </VisuallyHidden>
-          <Icon source={CircleCancelMinor} color="inkLightest" />
-        </button>
-      ) : null;
+  const handleNumberChange = useCallback(
+    (steps: number) => {
+      if (onChange == null) {
+        return;
+      }
+      // Returns the length of decimal places in a number
+      const dpl = (num: number) => (num.toString().split('.')[1] || []).length;
 
-    const spinnerMarkup =
-      type === 'number' && !disabled && !readOnly ? (
-        <Spinner
-          onChange={this.handleNumberChange}
-          onMouseDown={this.handleButtonPress}
-          onMouseUp={this.handleButtonRelease}
-        />
-      ) : null;
+      const numericValue = value ? parseFloat(value) : 0;
+      if (isNaN(numericValue)) {
+        return;
+      }
 
-    const style = multiline && height ? {height} : null;
+      // Making sure the new value has the same length of decimal places as the
+      // step / value has.
+      const decimalPlaces = Math.max(dpl(numericValue), dpl(step));
 
-    const resizer = multiline ? (
+      const newValue = Math.min(
+        Number(max),
+        Math.max(numericValue + steps * step, Number(min)),
+      );
+
+      onChange(String(newValue.toFixed(decimalPlaces)), id);
+    },
+    [id, max, min, onChange, step, value],
+  );
+
+  const handleButtonRelease = useCallback(() => {
+    clearTimeout(buttonPressTimer.current);
+  }, []);
+
+  const handleButtonPress = useCallback(
+    (onChange: Function) => {
+      const minInterval = 50;
+      const decrementBy = 10;
+      let interval = 200;
+
+      const onChangeInterval = () => {
+        if (interval > minInterval) interval -= decrementBy;
+        onChange();
+        buttonPressTimer.current = window.setTimeout(
+          onChangeInterval,
+          interval,
+        );
+      };
+
+      buttonPressTimer.current = window.setTimeout(onChangeInterval, interval);
+
+      addEventListener(document, 'mouseup', handleButtonRelease, {
+        once: true,
+      });
+    },
+    [handleButtonRelease],
+  );
+
+  const spinnerMarkup =
+    type === 'number' && !disabled && !readOnly ? (
+      <Spinner
+        onChange={handleNumberChange}
+        onMouseDown={handleButtonPress}
+        onMouseUp={handleButtonRelease}
+      />
+    ) : null;
+
+  const style = multiline && height ? {height} : null;
+
+  const handleExpandingResize = useCallback((height: number) => {
+    setHeight(height);
+  }, []);
+
+  const resizer =
+    multiline && isMounted ? (
       <Resizer
         contents={normalizedValue || placeholder}
         currentHeight={height}
         minimumLines={typeof multiline === 'number' ? multiline : 1}
-        onHeightChange={this.handleExpandingResize}
+        onHeightChange={handleExpandingResize}
       />
     ) : null;
 
-    const describedBy: string[] = [];
-    if (error) {
-      describedBy.push(`${id}Error`);
-    }
-    if (helpText) {
-      describedBy.push(helpTextID(id));
-    }
-    if (showCharacterCount) {
-      describedBy.push(`${id}CharacterCounter`);
-    }
-
-    const labelledBy: string[] = [];
-
-    if (prefix) {
-      labelledBy.push(`${id}Prefix`);
-    }
-
-    if (suffix) {
-      labelledBy.push(`${id}Suffix`);
-    }
-
-    if (labelledBy.length) {
-      labelledBy.unshift(labelID(id));
-    }
-
-    const inputClassName = classNames(
-      styles.Input,
-      align && styles[variationName('Input-align', align)],
-      suffix && styles['Input-suffixed'],
-      clearButton && styles['Input-hasClearButton'],
-    );
-
-    const input = React.createElement(multiline ? 'textarea' : 'input', {
-      name,
-      id,
-      disabled,
-      readOnly,
-      role,
-      autoFocus,
-      value: normalizedValue,
-      placeholder,
-      onFocus,
-      onBlur,
-      onKeyPress: this.handleKeyPress,
-      style,
-      autoComplete: normalizeAutoComplete(autoComplete),
-      className: inputClassName,
-      onChange: this.handleChange,
-      ref: this.setInput,
-      min,
-      max,
-      step,
-      minLength,
-      maxLength,
-      spellCheck,
-      pattern,
-      type: inputType,
-      'aria-describedby': describedBy.length
-        ? describedBy.join(' ')
-        : undefined,
-      'aria-labelledby': labelledBy.length ? labelledBy.join(' ') : undefined,
-      'aria-invalid': Boolean(error),
-      'aria-owns': ariaOwns,
-      'aria-activedescendant': ariaActiveDescendant,
-      'aria-autocomplete': ariaAutocomplete,
-      'aria-controls': ariaControls,
-      'aria-multiline': multiline,
-    });
-
-    return (
-      <Labelled
-        label={label}
-        id={id}
-        error={error}
-        action={labelAction}
-        labelHidden={labelHidden}
-        helpText={helpText}
-      >
-        <Connected left={connectedLeft} right={connectedRight}>
-          <div
-            className={className}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            onClick={this.handleClick}
-          >
-            {prefixMarkup}
-            {input}
-            {suffixMarkup}
-            {characterCountMarkup}
-            {clearButtonMarkup}
-            {spinnerMarkup}
-            <div className={styles.Backdrop} />
-            {resizer}
-          </div>
-        </Connected>
-      </Labelled>
-    );
+  const describedBy: string[] = [];
+  if (error) {
+    describedBy.push(`${id}Error`);
+  }
+  if (helpText) {
+    describedBy.push(helpTextID(id));
+  }
+  if (showCharacterCount) {
+    describedBy.push(`${id}CharacterCounter`);
   }
 
-  private setInput = (input: HTMLElement) => {
-    this.input = input;
-  };
+  const labelledBy: string[] = [];
 
-  private handleNumberChange = (steps: number) => {
-    const {
-      onChange,
-      value,
-      step = 1,
-      min = -Infinity,
-      max = Infinity,
-    } = this.props;
-    if (onChange == null) {
-      return;
-    }
+  if (prefix) {
+    labelledBy.push(`${id}Prefix`);
+  }
 
-    // Returns the length of decimal places in a number
-    const dpl = (num: number) => (num.toString().split('.')[1] || []).length;
+  if (suffix) {
+    labelledBy.push(`${id}Suffix`);
+  }
 
-    const numericValue = value ? parseFloat(value) : 0;
-    if (isNaN(numericValue)) {
-      return;
-    }
+  if (labelledBy.length) {
+    labelledBy.unshift(labelID(id));
+  }
 
-    // Making sure the new value has the same length of decimal places as the
-    // step / value has.
-    const decimalPlaces = Math.max(dpl(numericValue), dpl(step));
+  const inputClassName = classNames(
+    styles.Input,
+    align && styles[variationName('Input-align', align)],
+    suffix && styles['Input-suffixed'],
+    clearButton && styles['Input-hasClearButton'],
+  );
 
-    const newValue = Math.min(
-      Number(max),
-      Math.max(numericValue + steps * step, Number(min)),
-    );
-    onChange(String(newValue.toFixed(decimalPlaces)), this.state.id);
-  };
+  const input = React.createElement(multiline ? 'textarea' : 'input', {
+    name,
+    id,
+    disabled,
+    readOnly,
+    role,
+    autoFocus,
+    value: normalizedValue,
+    placeholder,
+    onFocus,
+    onBlur,
+    onKeyPress: handleKeyPress,
+    style,
+    autoComplete: normalizeAutoComplete(autoComplete),
+    className: inputClassName,
+    onChange: handleChange,
+    ref: inputRef,
+    min,
+    max,
+    step,
+    minLength,
+    maxLength,
+    spellCheck,
+    pattern,
+    type: inputType,
+    'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
+    'aria-labelledby': labelledBy.length ? labelledBy.join(' ') : undefined,
+    'aria-invalid': Boolean(error),
+    'aria-owns': ariaOwns,
+    'aria-activedescendant': ariaActiveDescendant,
+    'aria-autocomplete': ariaAutocomplete,
+    'aria-controls': ariaControls,
+    'aria-multiline': multiline,
+  });
 
-  private handleClearButtonPress = () => {
-    const {
-      state: {id},
-      props: {onClearButtonClick},
-    } = this;
+  return (
+    <Labelled
+      label={label}
+      id={id}
+      error={error}
+      action={labelAction}
+      labelHidden={labelHidden}
+      helpText={helpText}
+    >
+      <Connected left={connectedLeft} right={connectedRight}>
+        <div
+          className={className}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onClick={handleClick}
+        >
+          {prefixMarkup}
+          {input}
+          {suffixMarkup}
+          {characterCountMarkup}
+          {clearButtonMarkup}
+          {spinnerMarkup}
+          <div className={styles.Backdrop} />
+          {resizer}
+        </div>
+      </Connected>
+    </Labelled>
+  );
 
+  function handleClearButtonPress() {
     onClearButtonClick && onClearButtonClick(id);
-  };
+  }
 
-  private handleExpandingResize = (height: number) => {
-    this.setState({height});
-  };
-
-  private handleKeyPress = (event: React.KeyboardEvent) => {
+  function handleKeyPress(event: React.KeyboardEvent) {
     const {key, which} = event;
-    const {type} = this.props;
     const numbersSpec = /[\d.eE+-]$/;
-
     if (type !== 'number' || which === Key.Enter || key.match(numbersSpec)) {
       return;
     }
-
     event.preventDefault();
-  };
+  }
 
-  private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const {onChange} = this.props;
-    onChange && onChange(event.currentTarget.value, this.state.id);
-  };
-
-  private handleFocus = ({target}: React.FocusEvent) => {
-    if (this.containsAffix(target)) {
-      return;
-    }
-
-    this.setState({focus: true});
-  };
-
-  private handleBlur = () => {
-    this.setState({focus: false});
-  };
-
-  private handleClick = ({target}: React.MouseEvent) => {
-    if (this.containsAffix(target)) {
-      return;
-    }
-
-    this.input.focus();
-  };
-
-  private containsAffix(target: HTMLElement | EventTarget) {
+  function containsAffix(target: HTMLElement | EventTarget) {
     return (
       target instanceof HTMLElement &&
-      ((this.prefix.current && this.prefix.current.contains(target)) ||
-        (this.suffix.current && this.suffix.current.contains(target)))
+      ((prefixRef.current && prefixRef.current.contains(target)) ||
+        (suffixRef.current && suffixRef.current.contains(target)))
     );
   }
 
-  private handleButtonPress = (onChange: Function) => {
-    const minInterval = 50;
-    const decrementBy = 10;
-    let interval = 200;
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    onChange && onChange(event.currentTarget.value, id);
+  }
 
-    const onChangeInterval = () => {
-      if (interval > minInterval) interval -= decrementBy;
-      onChange();
-      this.buttonPressTimer = window.setTimeout(onChangeInterval, interval);
-    };
-    this.buttonPressTimer = window.setTimeout(onChangeInterval, interval);
+  function handleFocus({target}: React.FocusEvent) {
+    if (containsAffix(target)) {
+      return;
+    }
+    setFocus(true);
+  }
 
-    addEventListener(document, 'mouseup', this.handleButtonRelease, {
-      once: true,
-    });
-  };
+  function handleBlur() {
+    setFocus(false);
+  }
 
-  private handleButtonRelease = () => {
-    clearTimeout(this.buttonPressTimer);
-  };
+  function handleClick({target}: React.MouseEvent) {
+    if (containsAffix(target)) {
+      return;
+    }
+    inputRef.current && inputRef.current.focus();
+  }
 }
 
 function normalizeAutoComplete(autoComplete?: boolean | string) {
@@ -530,7 +486,3 @@ function normalizeAutoComplete(autoComplete?: boolean | string) {
     return autoComplete;
   }
 }
-
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<TextFieldProps>()(TextField);
