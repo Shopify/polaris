@@ -41,6 +41,56 @@ describe('<ActionMenu />', () => {
         mockActions,
       );
     });
+
+    it('renders actions in their overridden order when their index set', () => {
+      const overrideIndex = 1;
+      const actionWithIndex = {
+        content: 'mock content 1',
+        index: overrideIndex,
+      };
+
+      const actions: ActionMenuProps['actions'] = [
+        actionWithIndex,
+        {content: 'mock content 0'},
+      ];
+
+      const wrapper = mountWithAppProvider(<ActionMenu actions={actions} />);
+
+      expect(
+        wrapper
+          .find(MenuAction)
+          .at(overrideIndex)
+          .prop('content'),
+      ).toBe(actionWithIndex.content);
+    });
+
+    it('renders actions in their initial order when their index is not set', () => {
+      const overrideIndex = 1;
+      const actionWithIndex = {
+        content: 'mock content 1',
+        index: overrideIndex,
+      };
+
+      const actionsBeforeOverriddenOrder: ActionMenuProps['actions'] = [
+        actionWithIndex,
+        {content: 'mock content 0'},
+        {content: 'mock content 2'},
+      ];
+
+      const expectedOrderAfterOverride = [
+        {content: 'mock content 0'},
+        actionWithIndex,
+        {content: 'mock content 2'},
+      ];
+
+      const wrapper = mountWithAppProvider(
+        <ActionMenu actions={actionsBeforeOverriddenOrder} />,
+      );
+
+      wrapper.find(MenuAction).forEach((action, index) => {
+        expect(action.props()).toMatchObject(expectedOrderAfterOverride[index]);
+      });
+    });
   });
 
   describe('groups', () => {
@@ -78,6 +128,49 @@ describe('<ActionMenu />', () => {
       expect(wrapper.find(RollupActions).prop('sections')).toStrictEqual(
         convertedSections,
       );
+    });
+
+    it('renders groups at their overriden order when their index is set', () => {
+      const overrideIndex = 1;
+      const groupWithIndex = {
+        title: 'group with explicit order in menu',
+        actions: [{content: 'mock content 1'}],
+        index: overrideIndex,
+      };
+
+      const groups = [...mockGroups, groupWithIndex];
+      const wrapper = mountWithAppProvider(<ActionMenu groups={groups} />);
+
+      expect(
+        wrapper
+          .find(MenuGroup)
+          .at(overrideIndex)
+          .prop('title'),
+      ).toBe(groupWithIndex.title);
+    });
+
+    it('renders groups in their initial order when their index is not set', () => {
+      const overrideIndex = 1;
+      const groupWithIndex = {
+        title: 'group with explicit order in menu',
+        actions: [{content: 'mock content 1'}],
+        index: overrideIndex,
+      };
+
+      const groupsBeforeOverriddenOrder = [...mockGroups, groupWithIndex];
+      const expectedOrderAfterOverride = [
+        mockGroups[0],
+        groupWithIndex,
+        mockGroups[1],
+      ];
+
+      const wrapper = mountWithAppProvider(
+        <ActionMenu groups={groupsBeforeOverriddenOrder} />,
+      );
+
+      wrapper.find(MenuGroup).forEach((group, index) => {
+        expect(group.props()).toMatchObject(expectedOrderAfterOverride[index]);
+      });
     });
   });
 
@@ -121,7 +214,7 @@ describe('<ActionMenu />', () => {
         },
       ];
       const wrapper = mountWithAppProvider(
-        <ActionMenu {...mockProps} groups={mockGroupsWithoutActions} />,
+        <ActionMenu groups={mockGroupsWithoutActions} />,
       );
 
       expect(wrapper.find(MenuGroup)).toHaveLength(0);
