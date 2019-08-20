@@ -50,12 +50,6 @@ iOS and Android pagination should:
 
 ---
 
-## Content guidelines
-
-There are no editable content elements that are specific to the pagination component.
-
----
-
 ## Examples
 
 ### Default pagination

@@ -45,7 +45,7 @@ The collapsible component should:
 
 ## Content guidelines
 
-There are no content elements that are specific to the collapsible component. Follow the [content guidelines for cards](/components/structure/card) to make sure your headings, body content, links, and buttons are written consistently and clearly.
+Collapsible containers are cards with expandable and collapsible functionality, and should follow the [content guidelines](/components/structure/card#section-content-guidelines) for cards.
 
 ---
 
