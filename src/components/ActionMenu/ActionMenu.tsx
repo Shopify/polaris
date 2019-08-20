@@ -1,19 +1,19 @@
 import React from 'react';
 import {classNames} from '../../utilities/css';
-
 import {
   ActionListSection,
-  ComplexAction,
+  MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../types';
 
+import {sortAndOverrideActionOrder} from './utilities';
 import {MenuAction, MenuGroup, RollupActions} from './components';
 
 import styles from './ActionMenu.scss';
 
 export interface ActionMenuProps {
   /** Collection of page-level secondary actions */
-  actions?: ComplexAction[];
+  actions?: MenuActionDescriptor[];
   /** Collection of page-level action groups */
   groups?: MenuGroupDescriptor[];
   /** Roll up all actions into a Popover > ActionList */
@@ -40,6 +40,7 @@ export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
       styles.ActionMenu,
       rollup && styles.rollup,
     );
+
     const rollupSections = groups.map((group) => convertGroupToSection(group));
 
     return (
@@ -56,36 +57,44 @@ export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
   private renderActions = () => {
     const {actions = [], groups = []} = this.props;
     const {activeMenuGroup} = this.state;
+    const overriddenActions = sortAndOverrideActionOrder([
+      ...actions,
+      ...groups,
+    ]);
 
-    const actionsMarkup =
-      actions.length > 0
-        ? actions.map(({content, ...action}, index) => (
-            <MenuAction
-              key={`MenuAction-${content || index}`}
-              content={content}
-              {...action}
-            />
-          ))
-        : null;
+    if (overriddenActions.length === 0) {
+      return null;
+    }
 
-    const groupsMarkup = hasGroupsWithActions(groups)
-      ? groups.map(({title, ...rest}, index) => (
+    const actionMarkup = overriddenActions.map((action, index) => {
+      if ('title' in action) {
+        const {title, actions, ...rest} = action;
+
+        return actions.length > 0 ? (
           <MenuGroup
             key={`MenuGroup-${title || index}`}
             title={title}
             active={title === activeMenuGroup}
+            actions={actions}
             {...rest}
             onOpen={this.handleMenuGroupToggle}
             onClose={this.handleMenuGroupClose}
           />
-        ))
-      : null;
+        ) : null;
+      }
 
-    return actionsMarkup || groupsMarkup ? (
-      <div className={styles.ActionsLayout}>
-        {actionsMarkup}
-        {groupsMarkup}
-      </div>
+      const {content, ...rest} = action;
+      return (
+        <MenuAction
+          key={`MenuAction-${content || index}`}
+          content={content}
+          {...rest}
+        />
+      );
+    });
+
+    return actionMarkup.length > 0 ? (
+      <div className={styles.ActionsLayout}>{actionMarkup}</div>
     ) : null;
   };
 

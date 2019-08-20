@@ -3,8 +3,8 @@ import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import {
-  ComplexAction,
   MenuGroupDescriptor,
+  MenuActionDescriptor,
   AppBridgeAction,
   DestructableAction,
   DisableableAction,
@@ -38,7 +38,7 @@ export interface HeaderProps extends TitleProps {
   /** Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
   /** Collection of secondary page-level actions */
-  secondaryActions?: ComplexAction[];
+  secondaryActions?: MenuActionDescriptor[];
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
 }
