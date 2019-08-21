@@ -28,7 +28,7 @@ children. Options provide control of the wrapping, spacing, and relative size of
 
 ## Best practices
 
-Stack should:
+Stacks should:
 
 - Be used for small-scale layout tasks when you want a row of components that should wrap on small screen widths
 - Be used to vertically center two elements
