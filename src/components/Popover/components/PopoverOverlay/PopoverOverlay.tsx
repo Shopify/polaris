@@ -62,6 +62,8 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
   };
 
   private contentNode = createRef<HTMLDivElement>();
+  private enteringTimer?: number;
+  private exitingTimer?: number;
 
   changeTransitionStatus(transitionStatus: TransitionStatus, cb?: () => void) {
     this.setState({transitionStatus}, cb);
@@ -81,17 +83,24 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
   componentDidUpdate(oldProps: Props) {
     if (this.props.active && !oldProps.active) {
       this.focusContent();
-
-      this.changeTransitionStatus(TransitionStatus.Entered);
+      this.changeTransitionStatus(TransitionStatus.Entering, () => {
+        this.enteringTimer = window.setTimeout(() => {
+          this.setState({transitionStatus: TransitionStatus.Entered});
+        }, durationBase);
+      });
     }
 
     if (!this.props.active && oldProps.active) {
       this.changeTransitionStatus(TransitionStatus.Exiting, () => {
-        setTimeout(() => {
+        this.exitingTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Exited});
         }, durationBase);
       });
     }
+  }
+
+  componentWillUnmount() {
+    this.clearTransitionTimeout();
   }
 
   render() {
@@ -128,6 +137,16 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
         classNames={className}
       />
     );
+  }
+
+  private clearTransitionTimeout() {
+    if (this.enteringTimer) {
+      window.clearTimeout(this.enteringTimer);
+    }
+
+    if (this.exitingTimer) {
+      window.clearTimeout(this.exitingTimer);
+    }
   }
 
   private focusContent() {
