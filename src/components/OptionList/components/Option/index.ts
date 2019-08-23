@@ -1,4 +1,1 @@
-import Option, {Props} from './Option';
-
-export default Option;
-export {Props};
+export {Option, OptionProps} from './Option';

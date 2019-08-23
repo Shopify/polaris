@@ -9,7 +9,7 @@ import TextContainer from '../../../TextContainer';
 
 import styles from './Message.scss';
 
-export interface Props {
+export interface MessageProps {
   title: string;
   description: string;
   action: {onClick(): void; content: string};
@@ -17,13 +17,13 @@ export interface Props {
   badge?: {content: string; status: BadgeProps['status']};
 }
 
-export default function Message({
+export function Message({
   title,
   description,
   action,
   link,
   badge,
-}: Props) {
+}: MessageProps) {
   const badgeMarkup = badge && (
     <Badge status={badge.status}>{badge.content}</Badge>
   );

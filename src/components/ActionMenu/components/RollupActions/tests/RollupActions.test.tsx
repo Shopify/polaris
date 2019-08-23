@@ -11,12 +11,12 @@ import {
   Section as ActionListSection,
 } from '../../../../ActionList/components';
 
-import RollupActions, {Props} from '../RollupActions';
+import RollupActions, {RollupActionsProps} from '../RollupActions';
 
-type Wrapper = ReactWrapper<Props, any>;
+type Wrapper = ReactWrapper<RollupActionsProps, any>;
 
 describe('<RollupActions />', () => {
-  const mockProps: Props = {
+  const mockProps = {
     items: undefined,
     sections: undefined,
   };
@@ -28,7 +28,7 @@ describe('<RollupActions />', () => {
   });
 
   describe('items', () => {
-    const mockItems: Props['items'] = [
+    const mockItems = [
       {
         content: 'mock content 1',
         url: 'https://www.google.com',
@@ -68,7 +68,7 @@ describe('<RollupActions />', () => {
   });
 
   describe('sections', () => {
-    const mockSections: Props['sections'] = [
+    const mockSections = [
       {
         title: 'mock title 1',
         items: [

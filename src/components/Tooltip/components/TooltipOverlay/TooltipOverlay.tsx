@@ -9,7 +9,7 @@ import PositionedOverlay, {
 
 import styles from '../../Tooltip.scss';
 
-export interface Props {
+export interface TooltipOverlayProps {
   id: string;
   active: boolean;
   light?: boolean;
@@ -19,7 +19,10 @@ export interface Props {
   onClose(): void;
 }
 
-export default class TooltipOverlay extends React.PureComponent<Props, never> {
+export class TooltipOverlay extends React.PureComponent<
+  TooltipOverlayProps,
+  never
+> {
   render() {
     const markup = this.props.active ? this.renderOverlay() : null;
 

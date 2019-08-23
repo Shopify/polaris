@@ -7,12 +7,12 @@ import Icon from '../../../Icon';
 
 import styles from './CloseButton.scss';
 
-export interface Props {
+export interface CloseButtonProps {
   title?: boolean;
   onClick(): void;
 }
 
-export default function CloseButton({title = true, onClick}: Props) {
+export function CloseButton({title = true, onClick}: CloseButtonProps) {
   const intl = useI18n();
 
   const className = classNames(

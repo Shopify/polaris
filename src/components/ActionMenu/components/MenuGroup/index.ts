@@ -1,1 +1,1 @@
-export {default, Props} from './MenuGroup';
+export {MenuGroup, MenuGroupProps} from './MenuGroup';

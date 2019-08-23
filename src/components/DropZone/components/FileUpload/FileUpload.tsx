@@ -18,12 +18,12 @@ import {useI18n} from '../../../../utilities/i18n';
 
 import styles from './FileUpload.scss';
 
-export interface Props {
+export interface FileUploadProps {
   actionTitle?: string;
   actionHint?: string;
 }
 
-export default function FileUpload(props: Props) {
+export function FileUpload(props: FileUploadProps) {
   const {translate} = useI18n();
   const {size, type} = useContext(DropZoneContext);
   const suffix = capitalize(type);

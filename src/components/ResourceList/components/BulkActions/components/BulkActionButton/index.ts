@@ -1,4 +1,1 @@
-import BulkActionButton from './BulkActionButton';
-
-export {Props} from './BulkActionButton';
-export default BulkActionButton;
+export {BulkActionButton, BulkActionButtonProps} from './BulkActionButton';

@@ -3,7 +3,7 @@ import {classNames} from '../../../../utilities/css';
 import EventListener from '../../../EventListener';
 
 import {TabDescriptor} from '../../types';
-import Tab from '../Tab';
+import {Tab} from '../Tab';
 import styles from '../../Tabs.scss';
 
 export interface TabMeasurements {
@@ -12,7 +12,7 @@ export interface TabMeasurements {
   hiddenTabWidths: number[];
 }
 
-export interface Props {
+export interface TabMeasurerProps {
   tabToFocus: number;
   siblingTabHasFocus: boolean;
   activator: React.ReactElement<{}>;
@@ -21,7 +21,7 @@ export interface Props {
   handleMeasurement(measurements: TabMeasurements): void;
 }
 
-export default class TabMeasurer extends React.PureComponent<Props, never> {
+export class TabMeasurer extends React.PureComponent<TabMeasurerProps, never> {
   private containerNode: React.RefObject<HTMLDivElement> = React.createRef();
   private animationFrame: number | null = null;
 
@@ -35,7 +35,7 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
     }
   }
 
-  componentDidUpdate(prevProps: Props) {
+  componentDidUpdate(prevProps: TabMeasurerProps) {
     if (prevProps.tabs !== this.props.tabs) {
       this.handleMeasurement();
     }

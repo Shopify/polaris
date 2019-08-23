@@ -6,7 +6,9 @@ import {Item} from './components';
 import styles from './Stack.scss';
 
 export type Spacing = 'extraTight' | 'tight' | 'loose' | 'extraLoose' | 'none';
+
 export type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
+
 export type Distribution =
   | 'equalSpacing'
   | 'leading'

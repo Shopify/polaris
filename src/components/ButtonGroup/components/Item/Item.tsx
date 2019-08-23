@@ -5,7 +5,7 @@ import {Props as ButtonProps} from '../../../Button';
 
 import styles from '../../ButtonGroup.scss';
 
-export interface Props {
+export interface ItemProps {
   button: React.ReactElement<ButtonProps>;
 }
 
@@ -13,7 +13,7 @@ interface State {
   focused: boolean;
 }
 
-export default class Item extends React.PureComponent<Props, State> {
+export class Item extends React.PureComponent<ItemProps, State> {
   state: State = {focused: false};
 
   render() {

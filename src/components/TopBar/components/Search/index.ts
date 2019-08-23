@@ -1,4 +1,1 @@
-import Search from './Search';
-
-export {Props} from './Search';
-export default Search;
+export {Search, SearchProps} from './Search';

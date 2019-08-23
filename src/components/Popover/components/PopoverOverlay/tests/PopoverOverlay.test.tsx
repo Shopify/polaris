@@ -3,7 +3,7 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 import {TextContainer} from 'components';
 import {Key} from '../../../../../types';
 import PositionedOverlay from '../../../../PositionedOverlay';
-import PopoverOverlay from '../PopoverOverlay';
+import {PopoverOverlay} from '../PopoverOverlay';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;

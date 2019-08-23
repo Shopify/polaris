@@ -12,18 +12,19 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../../../utilities/with-app-provider';
-import CheckableButton from '../CheckableButton';
+import {CheckableButton} from '../CheckableButton';
 import {BulkActionButton} from './components';
 import styles from './BulkActions.scss';
 
 export type BulkAction = DisableableAction;
+
 export type BulkActionListSection = ActionListSection;
 
 export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 const MAX_PROMOTED_ACTIONS = 2;
 
-export interface Props {
+export interface BulkActionsProps {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Label for the bulk actions */
@@ -63,7 +64,7 @@ const slideClasses = {
   exit: classNames(styles.Slide, styles['Slide-exit']),
 };
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = BulkActionsProps & WithAppProviderProps;
 
 class BulkActions extends React.PureComponent<CombinedProps, State> {
   state: State = {
@@ -519,4 +520,4 @@ function instanceOfBulkActionArray(
   return actions.length === validList.length;
 }
 
-export default withAppProvider<Props>()(BulkActions);
+export default withAppProvider<BulkActionsProps>()(BulkActions);

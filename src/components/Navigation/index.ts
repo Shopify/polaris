@@ -4,9 +4,8 @@ export {Props} from './Navigation';
 export default Navigation;
 
 export {
-  Props as ItemProps,
+  ItemProps,
   SubNavigationItem,
   isNavigationItemActive,
-} from './components/Item';
-
-export {MessageProps} from './components';
+  MessageProps,
+} from './components';

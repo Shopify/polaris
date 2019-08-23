@@ -9,7 +9,7 @@ import {SortDirection, VerticalAlign} from '../../types';
 
 import styles from '../../DataTable.scss';
 
-export interface Props {
+export interface CellProps {
   content?: React.ReactNode;
   contentType?: string;
   firstColumn?: boolean;
@@ -24,7 +24,7 @@ export interface Props {
   onSort?(): void;
 }
 
-export default function Cell({
+export function Cell({
   content,
   contentType,
   firstColumn,
@@ -37,7 +37,7 @@ export default function Cell({
   verticalAlign = 'top',
   defaultSortDirection = 'ascending',
   onSort,
-}: Props) {
+}: CellProps) {
   const {translate} = useI18n();
   const numeric = contentType === 'numeric';
   const className = classNames(

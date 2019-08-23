@@ -1,4 +1,1 @@
-import Day from './Day';
-
-export {Props} from './Day';
-export default Day;
+export {default as Day, DayProps} from './Day';

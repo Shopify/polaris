@@ -25,7 +25,9 @@ import {
 import styles from './ResourceItem.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
+
 export type MediaSize = 'small' | 'medium' | 'large';
+
 export type MediaType = 'avatar' | 'thumbnail';
 
 interface WithContextTypes<IJ> {

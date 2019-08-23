@@ -9,7 +9,7 @@ import Subheading from '../../../Subheading';
 
 import styles from '../../Card.scss';
 
-export interface Props {
+export interface SectionProps {
   title?: React.ReactNode;
   children?: React.ReactNode;
   subdued?: boolean;
@@ -17,13 +17,13 @@ export interface Props {
   actions?: ComplexAction[];
 }
 
-export default function Section({
+export function Section({
   children,
   title,
   subdued,
   fullWidth,
   actions,
-}: Props) {
+}: SectionProps) {
   const className = classNames(
     styles.Section,
     subdued && styles['Section-subdued'],

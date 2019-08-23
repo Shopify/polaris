@@ -10,12 +10,12 @@ import UnstyledLink from '../../../UnstyledLink';
 
 import styles from './MenuAction.scss';
 
-export interface Props extends ComplexAction {
+export interface MenuActionProps extends ComplexAction {
   /** Whether or not the action discloses a menu group */
   disclosure?: boolean;
 }
 
-export default function MenuAction({
+export function MenuAction({
   content,
   accessibilityLabel,
   url,
@@ -24,7 +24,7 @@ export default function MenuAction({
   disclosure,
   disabled,
   onAction,
-}: Props) {
+}: MenuActionProps) {
   const iconMarkup = icon && (
     <span className={styles.IconWrapper}>
       <Icon source={icon} />

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Badge, DisplayText, Avatar} from 'components';
-import Title from '..';
+import {Title} from '../Title';
 
 describe('<Title />', () => {
   const mockProps = {

@@ -1,5 +1,7 @@
-export {default as Search, Props as SearchProps} from './Search';
-export {default as SearchField, Props as SearchFieldProps} from './SearchField';
-export {default as UserMenu, Props as UserProps} from './UserMenu';
-export {default as Menu, Props as MenuProps} from './Menu';
-export {MessageProps} from './Menu/components';
+export {Search, SearchProps} from './Search';
+
+export {SearchField, SearchFieldProps} from './SearchField';
+
+export {UserMenu, UserMenuProps} from './UserMenu';
+
+export {Menu, MenuProps} from './Menu';

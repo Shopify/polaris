@@ -2,14 +2,14 @@ import React from 'react';
 import EventListener from '../../../EventListener';
 import styles from '../../TextField.scss';
 
-export interface Props {
+export interface ResizerProps {
   contents?: string;
   currentHeight?: number | null;
   minimumLines?: number;
   onHeightChange(height: number): void;
 }
 
-export default class Resizer extends React.PureComponent<Props, never> {
+export class Resizer extends React.PureComponent<ResizerProps, never> {
   private contentNode = React.createRef<HTMLDivElement>();
   private minimumLinesNode = React.createRef<HTMLDivElement>();
   private animationFrame: number | null = null;

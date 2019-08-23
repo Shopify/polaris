@@ -18,7 +18,7 @@ export interface PopoverableAction extends Action {
   onAction(): void;
 }
 
-export interface Props {
+export interface ConnectedFilterControlProps {
   children: React.ReactNode;
   rightPopoverableActions?: PopoverableAction[] | null;
   rightAction?: React.ReactNode;
@@ -35,10 +35,11 @@ interface State {
 }
 
 export const FILTER_FIELD_MIN_WIDTH = 150;
+
 export const FILTER_FIELD_CUSTOM_PROPERTY = '--textfield-min-width';
 
-export default class ConnectedFilterControl extends React.Component<
-  Props,
+export class ConnectedFilterControl extends React.Component<
+  ConnectedFilterControlProps,
   State
 > {
   state: State = {

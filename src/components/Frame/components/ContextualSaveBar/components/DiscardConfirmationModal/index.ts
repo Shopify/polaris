@@ -1,4 +1,4 @@
-import DiscardConfirmationModal from './DiscardConfirmationModal';
-
-export {Props} from './DiscardConfirmationModal';
-export default DiscardConfirmationModal;
+export {
+  DiscardConfirmationModal,
+  DiscardConfirmationModalProps,
+} from './DiscardConfirmationModal';

@@ -1,4 +1,1 @@
-import TooltipOverlay from './TooltipOverlay';
-
-export {Props} from './TooltipOverlay';
-export default TooltipOverlay;
+export {TooltipOverlay, TooltipOverlayProps} from './TooltipOverlay';

@@ -1,15 +1,12 @@
 export {
-  default as DateSelector,
-  Props as DateSelectorProps,
+  DateSelector,
+  DateSelectorProps,
   DateFilterOption,
 } from './DateSelector';
 
-export {
-  default as FilterCreator,
-  Props as FilterCreatorProps,
-} from './FilterCreator';
+export {FilterCreator, FilterCreatorProps} from './FilterCreator';
 
 export {
-  default as FilterValueSelector,
-  Props as FilterValueSelectorProps,
+  FilterValueSelector,
+  FilterValueSelectorProps,
 } from './FilterValueSelector';

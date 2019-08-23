@@ -1,4 +1,4 @@
-import FilterValueSelector from './FilterValueSelector';
-
-export {Props} from './FilterValueSelector';
-export default FilterValueSelector;
+export {
+  default as FilterValueSelector,
+  FilterValueSelectorProps,
+} from './FilterValueSelector';

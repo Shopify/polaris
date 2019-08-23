@@ -1,4 +1,1 @@
-import Month from './Month';
-
-export {Props} from './Month';
-export default Month;
+export {Month, MonthProps} from './Month';

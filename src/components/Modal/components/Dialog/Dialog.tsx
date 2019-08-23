@@ -10,7 +10,7 @@ import TrapFocus from '../../../TrapFocus';
 
 import styles from './Dialog.scss';
 
-export interface DialogProps {
+export interface BaseDialogProps {
   labelledBy: string;
   instant?: boolean;
   children?: React.ReactNode;
@@ -21,9 +21,9 @@ export interface DialogProps {
   onExited?(): void;
 }
 
-export type Props = DialogProps & AnimationProps;
+export type DialogProps = BaseDialogProps & AnimationProps;
 
-export default function Dialog({
+export function Dialog({
   instant,
   labelledBy,
   children,
@@ -33,7 +33,7 @@ export default function Dialog({
   large,
   limitHeight,
   ...props
-}: Props) {
+}: DialogProps) {
   const containerNode = useRef<HTMLDivElement>(null);
   const findDOMNode = useCallback(() => containerNode.current, []);
   const classes = classNames(

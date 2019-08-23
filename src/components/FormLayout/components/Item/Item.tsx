@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from '../../FormLayout.scss';
 
-export interface Props {
+export interface ItemProps {
   children?: React.ReactNode;
 }
 
-export default function Item(props: Props) {
+export function Item(props: ItemProps) {
   return <div className={styles.Item}>{props.children}</div>;
 }

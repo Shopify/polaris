@@ -7,7 +7,7 @@ import Stack from '../../../Stack';
 
 import styles from './Footer.scss';
 
-export interface Props {
+export interface FooterProps {
   /** Primary action */
   primaryAction?: AppBridgeAction | ComplexAction;
   /** Collection of secondary actions */
@@ -16,11 +16,11 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export default function Footer({
+export function Footer({
   primaryAction,
   secondaryActions,
   children,
-}: Props) {
+}: FooterProps) {
   const primaryActionButton =
     (primaryAction && buttonsFrom(primaryAction, {primary: true})) || null;
   const secondaryActionButtons =

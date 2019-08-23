@@ -7,7 +7,7 @@ export enum AnimationType {
   Fade = 'fade',
 }
 
-export interface Props {
+export interface CSSAnimationProps {
   in: boolean;
   className: string;
   type: AnimationType;
@@ -21,12 +21,12 @@ enum TransitionStatus {
   Exited = 'exited',
 }
 
-export default function Collapsible({
+export function CSSAnimation({
   in: inProp,
   className,
   type,
   children,
-}: Props) {
+}: CSSAnimationProps) {
   const [transitionStatus, setTransitionStatus] = useState(
     inProp ? TransitionStatus.Entering : TransitionStatus.Exited,
   );

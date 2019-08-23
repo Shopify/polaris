@@ -8,13 +8,13 @@ import Heading from '../../../Heading';
 
 import styles from '../../Card.scss';
 
-export interface Props {
+export interface HeaderProps {
   title?: React.ReactNode;
   actions?: DisableableAction[];
   children?: React.ReactNode;
 }
 
-export default function Header({children, title, actions}: Props) {
+export function Header({children, title, actions}: HeaderProps) {
   const actionMarkup = actions ? (
     <ButtonGroup>{buttonsFrom(actions, {plain: true})}</ButtonGroup>
   ) : null;

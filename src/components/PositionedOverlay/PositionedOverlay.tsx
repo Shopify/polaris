@@ -18,6 +18,7 @@ import {
 import styles from './PositionedOverlay.scss';
 
 export {PreferredPosition, PreferredAlignment};
+
 export type Positioning = 'above' | 'below';
 
 export interface OverlayDetails {

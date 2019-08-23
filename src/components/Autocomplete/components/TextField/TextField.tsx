@@ -4,7 +4,7 @@ import React from 'react';
 import {ComboBoxContext} from '../ComboBox/context';
 import BaseTextField, {Props as TextFieldProps} from '../../../TextField';
 
-export default function TextField(props: TextFieldProps) {
+export function TextField(props: TextFieldProps) {
   return (
     <ComboBoxContext.Consumer>
       {({selectedOptionId, comboBoxId}) => (

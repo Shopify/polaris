@@ -1,9 +1,9 @@
-export {default as Pane, Props as PaneProps} from './Pane';
+export {Pane, PaneProps} from './Pane';
 
 export {
-  default as PopoverOverlay,
-  Props as PopoverOverlayProps,
+  PopoverOverlay,
+  PopoverOverlayProps,
   CloseSource,
 } from './PopoverOverlay';
 
-export {default as Section, Props as SectionProps} from './Section';
+export {Section, SectionProps} from './Section';

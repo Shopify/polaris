@@ -2,7 +2,7 @@ import React from 'react';
 
 import {getWidth} from '../../../../utilities/get-width';
 
-import {ContextualSaveBarProps as Props} from '../../../../utilities/frame';
+import {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -15,7 +15,7 @@ import {DiscardConfirmationModal} from './components';
 
 import styles from './ContextualSaveBar.scss';
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = ContextualSaveBarProps & WithAppProviderProps;
 
 interface State {
   discardConfirmationModalVisible: boolean;
@@ -140,4 +140,4 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
   };
 }
 
-export default withAppProvider<Props>()(ContextualSaveBar);
+export default withAppProvider<ContextualSaveBarProps>()(ContextualSaveBar);

@@ -8,7 +8,7 @@ import {
 
 import styles from '../../DatePicker.scss';
 
-export interface Props {
+export interface DayProps {
   focused?: boolean;
   day?: Date;
   selected?: boolean;
@@ -20,7 +20,7 @@ export interface Props {
   onFocus?(day: Date): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = DayProps & WithAppProviderProps;
 
 class Day extends React.PureComponent<CombinedProps, never> {
   private dayNode: HTMLElement | null = null;
@@ -92,6 +92,6 @@ class Day extends React.PureComponent<CombinedProps, never> {
   };
 }
 
-export default withAppProvider<Props>()(Day);
+export default withAppProvider<DayProps>()(Day);
 
 function noop() {}

@@ -15,11 +15,11 @@ import {
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import styles from '../../DatePicker.scss';
-import Day from '../Day';
-import Weekday from '../Weekday';
+import {Day} from '../Day';
+import {Weekday} from '../Weekday';
 import {monthName, weekdayName} from '../../utilities';
 
-export interface Props {
+export interface MonthProps {
   focusedDate?: Date;
   selected?: Range;
   hoverDate?: Date;
@@ -46,7 +46,7 @@ const WEEKDAYS = [
   Weekdays.Saturday,
 ];
 
-export default function Month({
+export function Month({
   focusedDate,
   selected,
   hoverDate,
@@ -59,7 +59,7 @@ export default function Month({
   month,
   year,
   weekStartsOn,
-}: Props) {
+}: MonthProps) {
   const intl = useI18n();
 
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;

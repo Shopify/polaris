@@ -4,6 +4,7 @@ import {classNames, variationName} from '../../utilities/css';
 import styles from './TextContainer.scss';
 
 export type Spacing = 'tight' | 'loose';
+
 export interface Props {
   /** The amount of vertical spacing children will get between them */
   spacing?: Spacing;

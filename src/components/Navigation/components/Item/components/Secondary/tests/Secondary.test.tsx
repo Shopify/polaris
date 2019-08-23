@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
-import Secondary from '../Secondary';
+import {Secondary} from '../Secondary';
 
 describe('Secondary()', () => {
   it('mounts', () => {

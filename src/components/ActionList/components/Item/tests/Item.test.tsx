@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {UnstyledLink} from 'components';
-import Item from '../Item';
+import {Item} from '../Item';
 import TextStyle from '../../../../TextStyle';
 
 describe('<Item />', () => {

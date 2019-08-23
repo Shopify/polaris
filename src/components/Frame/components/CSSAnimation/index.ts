@@ -1,1 +1,1 @@
-export {default, AnimationType} from './CSSAnimation';
+export {CSSAnimation, AnimationType} from './CSSAnimation';

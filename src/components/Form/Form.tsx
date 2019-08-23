@@ -10,7 +10,9 @@ export type Enctype =
   | 'application/x-www-form-urlencoded'
   | 'multipart/form-data'
   | 'text/plain';
+
 export type Method = 'post' | 'get' | 'action';
+
 export type Target = '_blank' | '_self' | '_parent' | '_top' | string;
 
 export interface Props {

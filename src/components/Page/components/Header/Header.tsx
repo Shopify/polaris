@@ -14,7 +14,7 @@ import {HeaderPrimaryAction} from '../../types';
 import {Title, TitleProps} from './components';
 import styles from './Header.scss';
 
-export interface Props extends TitleProps {
+export interface HeaderProps extends TitleProps {
   /** Visually hide the title (stand-alone app use only) */
   titleHidden?: boolean;
   /** Adds a border to the bottom of the page header (stand-alone app use only) */
@@ -35,7 +35,7 @@ interface State {
   mobileView?: boolean;
 }
 
-export default class Header extends React.PureComponent<Props, State> {
+export class Header extends React.PureComponent<HeaderProps, State> {
   state: State = {
     mobileView: isMobileView(),
   };

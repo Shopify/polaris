@@ -45,7 +45,7 @@ interface SecondaryAction {
   icon: IconProps['source'];
 }
 
-export interface Props extends ItemURLDetails {
+export interface ItemProps extends ItemURLDetails {
   icon?: IconProps['source'];
   badge?: ReactNode;
   label: string;
@@ -67,7 +67,7 @@ enum MatchState {
   NoMatch,
 }
 
-export default function Item({
+export function Item({
   url,
   icon,
   label,
@@ -83,7 +83,7 @@ export default function Item({
   exactMatch,
   matchPaths,
   excludePaths,
-}: Props) {
+}: ItemProps) {
   const intl = useI18n();
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const [expanded, setExpanded] = useState(false);
@@ -276,7 +276,7 @@ export default function Item({
     </li>
   );
 
-  function getClickHandler(onClick: Props['onClick']) {
+  function getClickHandler(onClick: ItemProps['onClick']) {
     return (event: MouseEvent<HTMLElement>) => {
       const {currentTarget} = event;
 
@@ -307,7 +307,7 @@ export default function Item({
 }
 
 export function isNavigationItemActive(
-  navigationItem: Props,
+  navigationItem: ItemProps,
   currentPath: string,
 ) {
   const matchState = matchStateForItem(navigationItem, currentPath);

@@ -9,10 +9,10 @@ import {
   WithAppProviderProps,
 } from '../../../../../../utilities/with-app-provider';
 
-import FilterValueSelector from '../FilterValueSelector';
+import {FilterValueSelector} from '../FilterValueSelector';
 import {AppliedFilter, Filter, Operator} from '../../types';
 
-export interface Props {
+export interface FilterCreatorProps {
   filters: Filter[];
   resourceName: {
     singular: string;
@@ -22,7 +22,7 @@ export interface Props {
   onAddFilter?(newFilter: AppliedFilter): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = FilterCreatorProps & WithAppProviderProps;
 
 interface State {
   popoverActive: boolean;
@@ -207,4 +207,4 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
   };
 }
 
-export default withAppProvider<Props>()(FilterCreator);
+export default withAppProvider<FilterCreatorProps>()(FilterCreator);

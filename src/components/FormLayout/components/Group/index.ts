@@ -1,4 +1,1 @@
-import Group from './Group';
-
-export {Props} from './Group';
-export default Group;
+export {Group, GroupProps} from './Group';

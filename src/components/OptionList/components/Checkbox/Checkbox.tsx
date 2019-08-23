@@ -6,7 +6,7 @@ import Icon from '../../../Icon';
 
 import styles from './Checkbox.scss';
 
-export interface Props {
+export interface CheckboxProps {
   checked?: boolean;
   disabled?: boolean;
   active?: boolean;
@@ -19,7 +19,7 @@ export interface Props {
 
 const getUniqueID = createUniqueIDFactory('Checkbox');
 
-export default function Checkbox({
+export function Checkbox({
   id = getUniqueID(),
   checked = false,
   disabled,
@@ -28,7 +28,7 @@ export default function Checkbox({
   name,
   value,
   role,
-}: Props) {
+}: CheckboxProps) {
   const className = classNames(styles.Checkbox, active && styles.active);
   return (
     <div className={className}>

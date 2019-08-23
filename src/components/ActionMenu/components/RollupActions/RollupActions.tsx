@@ -13,14 +13,14 @@ import Popover from '../../../Popover';
 
 import styles from './RollupActions.scss';
 
-export interface Props {
+export interface RollupActionsProps {
   /** Collection of actions for the list */
   items?: ActionListItemDescriptor[];
   /** Collection of sectioned action items */
   sections?: ActionListSection[];
 }
 
-type ComposedProps = Props & WithAppProviderProps;
+type ComposedProps = RollupActionsProps & WithAppProviderProps;
 
 interface State {
   rollupOpen: boolean;
@@ -77,4 +77,4 @@ class RollupActions extends React.PureComponent<ComposedProps, State> {
   };
 }
 
-export default withAppProvider<Props>()(RollupActions);
+export default withAppProvider<RollupActionsProps>()(RollupActions);

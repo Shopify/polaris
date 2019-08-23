@@ -10,13 +10,13 @@ import {handleMouseUpByBlurring} from '../../../../../../utilities/focus';
 
 import styles from '../../BulkActions.scss';
 
-export type Props = {
+export type BulkActionButtonProps = {
   disclosure?: boolean;
   handleMeasurement?(width: number): void;
 } & DisableableAction;
 
-export default class BulkActionButton extends React.PureComponent<
-  Props,
+export class BulkActionButton extends React.PureComponent<
+  BulkActionButtonProps,
   never
 > {
   private bulkActionButton = createRef<HTMLButtonElement>();

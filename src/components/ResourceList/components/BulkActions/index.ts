@@ -1,4 +1,1 @@
-import BulkActions from './BulkActions';
-
-export {Props} from './BulkActions';
-export default BulkActions;
+export {default as BulkActions, BulkActionsProps} from './BulkActions';

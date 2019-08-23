@@ -21,7 +21,7 @@ interface State {
   prevValue?: DualValue;
 }
 
-export interface Props extends RangeSliderProps {
+export interface DualThumbProps extends RangeSliderProps {
   value: DualValue;
   id: string;
   min: number;
@@ -40,8 +40,8 @@ enum Control {
 
 const THUMB_SIZE = 24;
 
-export default class DualThumb extends React.Component<Props, State> {
-  static getDerivedStateFromProps(props: Props, state: State) {
+export class DualThumb extends React.Component<DualThumbProps, State> {
+  static getDerivedStateFromProps(props: DualThumbProps, state: State) {
     const {min, step, max, value, onChange, id} = props;
     const {prevValue} = state;
 

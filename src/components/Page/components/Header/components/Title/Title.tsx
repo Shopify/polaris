@@ -6,7 +6,7 @@ import DisplayText from '../../../../../DisplayText';
 
 import styles from './Title.scss';
 
-export interface Props {
+export interface TitleProps {
   /** Page title, in large type */
   title: string;
   /** Page subtitle, in regular type*/
@@ -19,12 +19,7 @@ export interface Props {
     | React.SFC<React.SVGProps<SVGSVGElement>>;
 }
 
-export default function Title({
-  title,
-  subtitle,
-  titleMetadata,
-  thumbnail,
-}: Props) {
+export function Title({title, subtitle, titleMetadata, thumbnail}: TitleProps) {
   const titleMarkup = (
     <div className={styles.Title}>
       <DisplayText size="large" element="h1">

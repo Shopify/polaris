@@ -10,9 +10,9 @@ import TextStyle from '../../../TextStyle';
 
 import styles from '../../ActionList.scss';
 
-export type Props = ActionListItemDescriptor;
+export type ItemProps = ActionListItemDescriptor;
 
-export default function Item({
+export function Item({
   id,
   badge,
   content,
@@ -28,7 +28,7 @@ export default function Item({
   ellipsis,
   active,
   role,
-}: Props) {
+}: ItemProps) {
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,

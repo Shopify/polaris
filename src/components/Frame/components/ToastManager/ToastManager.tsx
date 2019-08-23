@@ -7,17 +7,22 @@ import {classNames} from '../../../../utilities/css';
 import EventListener from '../../../EventListener';
 import Portal from '../../../Portal';
 import {ToastPropsWithID} from '../../../../utilities/frame';
-import Toast from '../Toast';
+import {Toast} from '../Toast';
 import {useDeepEffect} from '../../../../utilities/use-deep-effect';
 import {useDeepCallback} from '../../../../utilities/use-deep-callback';
 
 import styles from './ToastManager.scss';
 
-export interface Props {
+export interface ToastManagerProps {
   toastMessages: (ToastPropsWithID)[];
 }
 
-function ToastManager({toastMessages}: Props) {
+// This does have display name, but the linting has a bug in it
+// https://github.com/yannickcr/eslint-plugin-react/issues/2324
+// eslint-disable-next-line react/display-name
+export const ToastManager = memo(function ToastManager({
+  toastMessages,
+}: ToastManagerProps) {
   const toastNodes: React.RefObject<HTMLDivElement>[] = [];
 
   const updateToasts = useDeepCallback(
@@ -77,12 +82,10 @@ function ToastManager({toastMessages}: Props) {
   function findDOMNode(index: number) {
     return () => toastNodes[index].current;
   }
-}
+});
 
 const toastClasses = {
   enter: classNames(styles.ToastWrapper, styles['ToastWrapper-enter']),
   enterDone: classNames(styles.ToastWrapper, styles['ToastWrapper-enter-done']),
   exit: classNames(styles.ToastWrapper, styles['ToastWrapper-exit']),
 };
-
-export default memo(ToastManager);

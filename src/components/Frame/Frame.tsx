@@ -57,8 +57,11 @@ interface State {
 }
 
 export const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
+
 export const APP_FRAME_MAIN = 'AppFrameMain';
+
 export const APP_FRAME_MAIN_ANCHOR_TARGET = 'AppFrameMainContent';
+
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';

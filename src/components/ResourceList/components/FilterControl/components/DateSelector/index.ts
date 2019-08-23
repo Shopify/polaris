@@ -1,4 +1,5 @@
-import DateSelector from './DateSelector';
-
-export {Props, DateFilterOption} from './DateSelector';
-export default DateSelector;
+export {
+  default as DateSelector,
+  DateSelectorProps,
+  DateFilterOption,
+} from './DateSelector';

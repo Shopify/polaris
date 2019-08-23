@@ -2,7 +2,7 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import styles from './Search.scss';
 
-export interface Props {
+export interface SearchProps {
   /** Toggles whether or not the search is visible */
   visible?: boolean;
   /** The content to display inside the search */
@@ -11,7 +11,7 @@ export interface Props {
   onDismiss?(): void;
 }
 
-export default class Search extends React.PureComponent<Props, never> {
+export class Search extends React.PureComponent<SearchProps, never> {
   private node = React.createRef<HTMLDivElement>();
 
   render() {

@@ -1,3 +1,1 @@
-import Secondary from './Secondary';
-
-export default Secondary;
+export {Secondary} from './Secondary';

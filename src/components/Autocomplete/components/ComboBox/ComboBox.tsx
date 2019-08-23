@@ -23,7 +23,7 @@ interface State {
   popoverWasActive: boolean;
 }
 
-export interface Props {
+export interface ComboBoxProps {
   /** A unique identifier for the ComboBox */
   id?: string;
   /** Collection of options to be listed */
@@ -54,14 +54,14 @@ export interface Props {
   onEndReached?(): void;
 }
 
-export default class ComboBox extends React.PureComponent<Props, State> {
+export class ComboBox extends React.PureComponent<ComboBoxProps, State> {
   static getDerivedStateFromProps(
     {
       options: nextOptions,
       selected: nextSelected,
       actionsBefore: nextActionsBefore,
       actionsAfter: nextActionsAfter,
-    }: Props,
+    }: ComboBoxProps,
     {navigableOptions, selectedOptions, comboBoxId}: State,
   ) {
     const optionsChanged =
@@ -129,7 +129,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     });
   }
 
-  componentDidUpdate(_: Props, prevState: State) {
+  componentDidUpdate(_: ComboBoxProps, prevState: State) {
     const {contentBefore, contentAfter, emptyState} = this.props;
     const {navigableOptions, popoverWasActive} = this.state;
 

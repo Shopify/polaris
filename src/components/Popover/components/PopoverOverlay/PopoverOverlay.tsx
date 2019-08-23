@@ -18,7 +18,7 @@ import PositionedOverlay, {
   PreferredAlignment,
 } from '../../../PositionedOverlay';
 
-import Pane, {Props as PaneProps} from '../Pane';
+import {Pane, PaneProps} from '../Pane';
 import styles from '../../Popover.scss';
 
 export enum CloseSource {
@@ -35,7 +35,7 @@ enum TransitionStatus {
   Exited = 'exited',
 }
 
-export interface Props {
+export interface PopoverOverlayProps {
   children?: React.ReactNode;
   fullWidth?: boolean;
   fullHeight?: boolean;
@@ -54,7 +54,10 @@ interface State {
   transitionStatus: TransitionStatus;
 }
 
-export default class PopoverOverlay extends React.PureComponent<Props, State> {
+export class PopoverOverlay extends React.PureComponent<
+  PopoverOverlayProps,
+  State
+> {
   state: State = {
     transitionStatus: this.props.active
       ? TransitionStatus.Entering
@@ -80,7 +83,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
     }
   }
 
-  componentDidUpdate(oldProps: Props) {
+  componentDidUpdate(oldProps: PopoverOverlayProps) {
     if (this.props.active && !oldProps.active) {
       this.focusContent();
       this.changeTransitionStatus(TransitionStatus.Entering, () => {

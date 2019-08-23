@@ -2,7 +2,7 @@ import React from 'react';
 import {Transition, CSSTransition} from '@material-ui/react-transition-group';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Popover} from 'components';
-import CheckableButton from '../../CheckableButton';
+import {CheckableButton} from '../../CheckableButton';
 import {BulkActionButton} from '../components';
 import BulkActions, {BulkAction} from '../BulkActions';
 

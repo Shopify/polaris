@@ -13,7 +13,7 @@ import {FilterCreator} from './components';
 import {AppliedFilter, Filter, FilterType, Operator} from './types';
 import styles from './FilterControl.scss';
 
-export interface Props {
+export interface FilterControlProps {
   searchValue?: string;
   appliedFilters?: AppliedFilter[];
   additionalAction?: ComplexAction;
@@ -26,7 +26,7 @@ export interface Props {
 }
 
 /** @deprecated Use <Filters /> instead. */
-export default function FilterControl({
+export function FilterControl({
   searchValue,
   appliedFilters = [],
   additionalAction,
@@ -36,7 +36,7 @@ export default function FilterControl({
   onSearchBlur,
   onSearchChange,
   onFiltersChange,
-}: Props) {
+}: FilterControlProps) {
   // eslint-disable-next-line no-console
   console.warn(
     'Deprecation: <FilterControl /> is deprecated. Use <Filters /> instead.',

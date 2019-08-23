@@ -9,12 +9,12 @@ const createSecondaryNavigationId = createUniqueIDFactory(
   'SecondaryNavigation',
 );
 
-interface Props {
+interface SecondaryProps {
   expanded: boolean;
   children?: React.ReactNode;
 }
 
-export default function Secondary({children, expanded}: Props) {
+export function Secondary({children, expanded}: SecondaryProps) {
   const secondaryNavigationId = createSecondaryNavigationId();
   return (
     <Collapsible id={secondaryNavigationId} open={expanded}>

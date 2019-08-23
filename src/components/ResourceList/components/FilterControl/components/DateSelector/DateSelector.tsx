@@ -15,7 +15,7 @@ const VALID_DATE_REGEX = /^\d{4}-\d{1,2}-\d{1,2}$/;
 
 type DateOptionType = 'past' | 'future' | 'full';
 
-export interface Props {
+export interface DateSelectorProps {
   dateOptionType?: DateOptionType;
   filterValue?: string;
   filterKey?: string;
@@ -34,7 +34,7 @@ interface State {
   initialConsumerFilterKey?: string;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = DateSelectorProps & WithAppProviderProps;
 
 export enum DateFilterOption {
   PastWeek = 'past_week',
@@ -433,4 +433,4 @@ function formatDateForLocalTimezone(date: Date) {
   return formattedDate.toISOString();
 }
 
-export default withAppProvider<Props>()(DateSelector);
+export default withAppProvider<DateSelectorProps>()(DateSelector);
