@@ -16,6 +16,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Added mobile example images error state of Single Choice List ([#2007](https://github.com/Shopify/polaris-react/pull/2007))
+
 ### Development workflow
 
 ### Dependency upgrades
