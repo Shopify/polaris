@@ -39,6 +39,7 @@ Radio buttons should:
     yellow are mutually exclusive. Red, blue, yellow, red/blue are not mutually
     exclusive.
   - List options in a rational order that makes logical sense.
+  - Have a default option selected whenever possible.
 
 ---
 
