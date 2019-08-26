@@ -63,6 +63,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Updated `ResourceList` examples to use `Filters` ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
 - Added an example to `Filters` showing the use of `children` ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
 - Added guidance for making animated gifs in PRs and issues more accessibility-friendly [#1998](https://github.com/Shopify/polaris-react/pull/1998)
+- Added `RadioButton` guidance to make one option selected by default [#2005](https://github.com/Shopify/polaris-react/pull/2005)
 
 ### Development workflow
 
