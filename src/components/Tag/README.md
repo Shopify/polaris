@@ -29,12 +29,6 @@ Tags should:
 
 ---
 
-## Content guidelines
-
-Tags are either automatically generated or are created by merchants. There are no specific content guidelines for creating them.
-
----
-
 ## Examples
 
 ### Default tag

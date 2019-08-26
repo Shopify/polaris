@@ -37,12 +37,6 @@ Stacks should:
 
 ---
 
-## Content guidelines
-
-There are no content elements that are specific to stack.
-
----
-
 ## Examples
 
 ### Default behavior

@@ -38,6 +38,8 @@ Links should:
 
 ## Content guidelines
 
+The link component should follow the general [content guidelines](/content/actionable-language#section-links) for links.
+
 ### Links
 
 Links should:

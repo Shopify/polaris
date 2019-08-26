@@ -26,9 +26,7 @@ The autocomplete component should:
 
 ## Content guidelines
 
-### Input field
-
-- Follow the [text field component](/components/forms/text-field)'s content guidelines
+The input field for autocomplete should follow the [content guidelines](/components/forms/text-field) for text fields.
 
 ---
 

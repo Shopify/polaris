@@ -30,12 +30,6 @@ email templates for their shop.
 
 ---
 
-## Content guidelines
-
-There are no customizable content elements in the color picker component.
-
----
-
 ## Examples
 
 ### Default color picker
