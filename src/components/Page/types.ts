@@ -1,5 +1,4 @@
 import {
-  AppBridgeAction,
   DestructableAction,
   DisableableAction,
   LoadableAction,
@@ -8,8 +7,7 @@ import {
 export interface HeaderPrimaryAction
   extends DestructableAction,
     DisableableAction,
-    LoadableAction,
-    AppBridgeAction {
+    LoadableAction {
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
 }

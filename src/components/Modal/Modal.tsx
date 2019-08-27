@@ -3,13 +3,8 @@ import {TransitionGroup} from '@material-ui/react-transition-group';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
-import isEqual from 'lodash/isEqual';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {wrapWithComponent} from '../../utilities/components';
-
-import {transformActions} from '../../utilities/app-bridge-transformers';
-import {pick} from '../../utilities/pick';
 
 import {
   withAppProvider,
@@ -86,15 +81,6 @@ interface State {
 
 const getUniqueID = createUniqueIDFactory('modal-header');
 
-const APP_BRIDGE_PROPS: (keyof ModalProps)[] = [
-  'title',
-  'size',
-  'message',
-  'src',
-  'primaryAction',
-  'secondaryActions',
-];
-
 class Modal extends React.Component<CombinedProps, State> {
   static Section = Section;
   focusReturnPointNode: HTMLElement;
@@ -104,106 +90,8 @@ class Modal extends React.Component<CombinedProps, State> {
   };
 
   private headerId = getUniqueID();
-  private appBridgeModal:
-    | AppBridgeModal.ModalMessage
-    | AppBridgeModal.ModalIframe
-    | undefined;
-
-  componentDidMount() {
-    if (this.props.polaris.appBridge == null) {
-      return;
-    }
-
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: Using `Modal` in an embedded app is deprecated and will be removed in v5.0. Use `Modal` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/modal',
-    );
-
-    const transformProps = this.transformProps();
-    if (transformProps) {
-      this.appBridgeModal = AppBridgeModal.create(
-        this.props.polaris.appBridge,
-        transformProps,
-      );
-    }
-
-    if (this.appBridgeModal) {
-      this.appBridgeModal.subscribe(
-        AppBridgeModal.Action.CLOSE,
-        this.props.onClose,
-      );
-    }
-
-    const {open} = this.props;
-
-    if (open) {
-      this.focusReturnPointNode = document.activeElement as HTMLElement;
-      this.appBridgeModal &&
-        this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
-    }
-  }
-
-  componentDidUpdate(prevProps: CombinedProps) {
-    if (this.props.polaris.appBridge == null || this.appBridgeModal == null) {
-      return;
-    }
-
-    const {open} = this.props;
-    const wasOpen = prevProps.open;
-    const transformedProps = this.transformProps();
-
-    const prevAppBridgeProps = pick(prevProps, APP_BRIDGE_PROPS);
-    const currentAppBridgeProps = pick(this.props, APP_BRIDGE_PROPS);
-
-    if (
-      !isEqual(prevAppBridgeProps, currentAppBridgeProps) &&
-      transformedProps
-    ) {
-      if (isIframeModal(transformedProps)) {
-        (this.appBridgeModal as AppBridgeModal.ModalIframe).set(
-          transformedProps,
-        );
-      } else {
-        (this.appBridgeModal as AppBridgeModal.ModalMessage).set(
-          transformedProps,
-        );
-      }
-    }
-
-    if (wasOpen !== open) {
-      if (open) {
-        this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
-      } else {
-        this.appBridgeModal.dispatch(AppBridgeModal.Action.CLOSE);
-      }
-    }
-
-    if (!wasOpen && open) {
-      this.focusReturnPointNode = document.activeElement as HTMLElement;
-    } else if (
-      wasOpen &&
-      !open &&
-      this.focusReturnPointNode != null &&
-      document.contains(this.focusReturnPointNode)
-    ) {
-      this.focusReturnPointNode.focus();
-      this.focusReturnPointNode = null as any;
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.props.polaris.appBridge == null || this.appBridgeModal == null) {
-      return;
-    }
-
-    this.appBridgeModal.unsubscribe();
-  }
 
   render() {
-    if (this.props.polaris.appBridge != null) {
-      return null;
-    }
-
     const {
       children,
       title,
@@ -355,58 +243,6 @@ class Modal extends React.Component<CombinedProps, State> {
       onIFrameLoad(evt);
     }
   };
-
-  private transformProps() {
-    const {
-      title,
-      size,
-      message,
-      src,
-      primaryAction,
-      secondaryActions,
-      polaris,
-    } = this.props;
-    const {appBridge} = polaris;
-
-    if (!appBridge) return;
-
-    const safeTitle = typeof title === 'string' ? title : undefined;
-    const safeSize = size != null ? AppBridgeModal.Size[size] : undefined;
-    const srcPayload: {url?: string; path?: string} = {};
-
-    if (src != null) {
-      if (src.match('^https?://')) {
-        srcPayload.url = src;
-      } else {
-        srcPayload.path = src;
-      }
-    }
-
-    return {
-      title: safeTitle,
-      message,
-      size: safeSize,
-      ...srcPayload,
-      footer: {
-        buttons: transformActions(appBridge, {
-          primaryAction,
-          secondaryActions,
-        }),
-      },
-    };
-  }
-}
-
-function isIframeModal(
-  options:
-    | AppBridgeModal.MessagePayload
-    | AppBridgeModal.IframePayload
-    | object,
-): options is AppBridgeModal.IframePayload {
-  return (
-    typeof (options as AppBridgeModal.IframePayload).url === 'string' ||
-    typeof (options as AppBridgeModal.IframePayload).path === 'string'
-  );
 }
 
 // Use named export once withAppProvider is refactored away

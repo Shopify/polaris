@@ -25,9 +25,6 @@ keywords:
   - outer wrapper
   - iframe
   - overlay
-  - easdk
-  - embedded app
-  - shopify app bridge
   - dialog
   - alert
   - android
@@ -37,53 +34,6 @@ keywords:
 # Modal
 
 Modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken. They can be disruptive because they require merchants to take an action before they can continue interacting with the rest of Shopify. It should be used thoughtfully and sparingly.
-
----
-
-## Use in an embedded application (deprecated)
-
-Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the modal component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
-
-In an embedded application context, not all documented properties are available. Some properties are only available in stand-alone applications.
-
-Properties that are available only in a stand-alone context are documented as `(stand-alone app use only)`. For instance the `children` property is documented as `(stand-alone app use only)`.
-
-The following example shows the modal component in an embedded application context:
-
-```jsx
-class EmbeddedAppModalExample extends React.Component {
-  state = {
-    modalOpen: false,
-  };
-
-  render() {
-    return (
-      <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
-        <Modal
-          src="https://my-app.com/upgrade-to-retail-package"
-          open={this.state.modalOpen}
-          title="Upgrade your Shopify POS with the Retail Package"
-          primaryAction={{
-            content: 'Add Retail Package',
-            onAction: () => this.setState({modalOpen: false}),
-          }}
-          secondaryActions={[
-            {
-              content: 'Cancel',
-              onAction: () => this.setState({modalOpen: false}),
-            },
-          ]}
-          onClose={() => this.setState({modalOpen: false})}
-        />
-      </AppProvider>
-    );
-  }
-}
-```
-
-#### Deprecation rationale
-
-As of v3.17.0, using `Modal` in an embedded app is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`Modal`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/modal) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) instead.
 
 ---
 

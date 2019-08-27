@@ -94,19 +94,4 @@ describe('<SkeletonPage />', () => {
       expect(skeletonPage.find(SkeletonDisplayText)).toHaveLength(1);
     });
   });
-
-  describe('deprecations', () => {
-    it('warns the singleColumn prop has been renamed', () => {
-      const warningSpy = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {});
-
-      mountWithAppProvider(<SkeletonPage title="title" singleColumn />);
-
-      expect(warningSpy).toHaveBeenCalledWith(
-        'Deprecation: The singleColumn prop has been renamed to narrowWidth to better represents its use and will be removed in v5.0.',
-      );
-      warningSpy.mockRestore();
-    });
-  });
 });
