@@ -53,6 +53,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed `ContextualSaveBar` actions overflowing on small screens ([#1967](https://github.com/Shopify/polaris-react/pull/1967))
 - Fixed cross-origin error being thrown in `Modal` when loading an external app ([#1992](https://github.com/Shopify/polaris-react/pull/1992))
 - Fixed regression in `PopoverOverlay` causing `onClose` to be fired when Popover is opening and trigger was not the activator ([#2000](https://github.com/Shopify/polaris-react/pull/2000))
+- Fixed issue with `ContextualSaveBar` blocking search when hidden ([#2044](https://github.com/Shopify/polaris-react/pull/2044))
 
 ### Documentation
 
