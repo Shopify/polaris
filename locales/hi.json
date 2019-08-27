@@ -158,15 +158,6 @@
         "moreActionsActivatorLabel": "अधिक कार्रवाई",
         "warningMessage": "बेहतर उपयोगकर्ता अनुभव प्रदान करने के लिए. केवल अधिकतम {maxPromotedActions} प्रचारित कार्रवाइयां होनी चाहिए."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "फ़िल्टर",
-        "selectFilterKeyPlaceholder": "फ़िल्टर चुनें...",
-        "addFilterButtonLabel": "फ़िल्टर जोड़ें",
-        "showAllWhere": "सभी {resourceNamePlural} दिखाएँ जहाँ:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "{resourceNamePlural} खोजें"
-      },
       "FilterValueSelector": {
         "selectFilterValuePlaceholder": "फ़िल्टर चुनें..."
       },

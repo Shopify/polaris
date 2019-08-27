@@ -158,15 +158,6 @@
         "moreActionsActivatorLabel": "その他の操作",
         "warningMessage": "さらによいユーザーエクスペリエンスのために。宣伝のアクションは最大で{maxPromotedActions}回までです。"
       },
-      "FilterCreator": {
-        "filterButtonLabel": "絞り込む",
-        "selectFilterKeyPlaceholder": "絞り込みを選択する...",
-        "addFilterButtonLabel": "絞り込みを追加する",
-        "showAllWhere": "すべての{resourceNamePlural}を表示する:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "{resourceNamePlural}を検索する"
-      },
       "FilterValueSelector": {
         "selectFilterValuePlaceholder": "絞り込みを選択する..."
       },

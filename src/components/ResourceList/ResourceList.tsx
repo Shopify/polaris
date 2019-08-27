@@ -21,13 +21,7 @@ import {Select, SelectOption} from '../Select';
 import {EmptySearchResult} from '../EmptySearchResult';
 import {ResourceItem} from '../ResourceItem';
 
-import {
-  BulkActions,
-  BulkActionsProps,
-  CheckableButton,
-  // eslint-disable-next-line import/no-deprecated
-  FilterControl,
-} from './components';
+import {BulkActions, BulkActionsProps, CheckableButton} from './components';
 
 import styles from './ResourceList.scss';
 
@@ -89,8 +83,6 @@ type CombinedProps = ResourceListProps & WithAppProviderProps;
 
 class ResourceList extends React.Component<CombinedProps, State> {
   static Item = ResourceItem;
-  // eslint-disable-next-line import/no-deprecated
-  static FilterControl = FilterControl;
 
   private defaultResourceName: {singular: string; plural: string};
   private listRef: React.RefObject<HTMLUListElement> = React.createRef();

@@ -158,15 +158,6 @@
         "moreActionsActivatorLabel": "其他操作",
         "warningMessage": "为了提供更好的用户体验，最多只能有 {maxPromotedActions} 个推广操作。"
       },
-      "FilterCreator": {
-        "filterButtonLabel": "筛选",
-        "selectFilterKeyPlaceholder": "选择筛选条件...",
-        "addFilterButtonLabel": "添加筛选条件",
-        "showAllWhere": "显示所有这些 {resourceNamePlural}："
-      },
-      "FilterControl": {
-        "textFieldLabel": "搜索 {resourceNamePlural}"
-      },
       "FilterValueSelector": {
         "selectFilterValuePlaceholder": "选择筛选条件..."
       },
