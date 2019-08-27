@@ -166,16 +166,7 @@ export {RangeSlider, RangeSliderProps} from './RangeSlider';
 
 export {ResourceItem, ResourceItemProps} from './ResourceItem';
 
-export {
-  ResourceList,
-  ResourceListProps,
-  FilterControlProps,
-  Filter,
-  AppliedFilter,
-  FilterType,
-  FilterSelect,
-  FilterTextField,
-} from './ResourceList';
+export {ResourceList, ResourceListProps} from './ResourceList';
 
 export {ResourceListSelectedItems} from '../utilities/resource-list';
 
