@@ -1,4 +1,3 @@
-import Sticky from './Sticky';
+import Sticky, {StickyProps} from './Sticky';
 
-export {Props} from './Sticky';
-export default Sticky;
+export {Sticky, StickyProps};

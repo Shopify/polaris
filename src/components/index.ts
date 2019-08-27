@@ -1,57 +1,42 @@
-export {
-  default as AccountConnection,
-  Props as AccountConnectionProps,
-} from './AccountConnection';
+export {AccountConnection, AccountConnectionProps} from './AccountConnection';
 
-export {default as ActionList, Props as ActionListProps} from './ActionList';
+export {ActionList, ActionListProps} from './ActionList';
 
-export {default as ActionMenu, Props as ActionMenuProps} from './ActionMenu';
+export {ActionMenu, ActionMenuProps} from './ActionMenu';
 
-export {default as AppProvider, Props as AppProviderProps} from './AppProvider';
+export {AppProvider, AppProviderProps} from './AppProvider';
 
-export {
-  default as Autocomplete,
-  Props as AutocompleteProps,
-} from './Autocomplete';
+export {Autocomplete, AutocompleteProps} from './Autocomplete';
 
-export {default as Avatar, Props as AvatarProps} from './Avatar';
+export {Avatar, AvatarProps} from './Avatar';
 
-export {default as Backdrop, BackdropProps} from './Backdrop';
+export {Backdrop, BackdropProps} from './Backdrop';
 
-export {default as Badge, Props as BadgeProps} from './Badge';
+export {Badge, BadgeProps} from './Badge';
 
-export {
-  default as Banner,
-  Props as BannerProps,
-  Status as BannerStatus,
-} from './Banner';
+export {Banner, BannerProps, BannerStatus} from './Banner';
 
-export {default as Breadcrumbs, Props as BreadcrumbsProps} from './Breadcrumbs';
+export {Breadcrumbs, BreadcrumbsProps} from './Breadcrumbs';
 
-export {
-  default as Button,
-  Props as ButtonProps,
-  buttonFrom,
-  buttonsFrom,
-} from './Button';
+export {Button, ButtonProps, buttonFrom, buttonsFrom} from './Button';
 
-export {default as ButtonGroup, Props as ButtonGroupProps} from './ButtonGroup';
+export {ButtonGroup, ButtonGroupProps} from './ButtonGroup';
 
-export {default as CalloutCard, Props as CalloutCardProps} from './CalloutCard';
+export {CalloutCard, CalloutCardProps} from './CalloutCard';
 
-export {default as Caption, Props as CaptionProps} from './Caption';
+export {Caption, CaptionProps} from './Caption';
 
-export {default as Card, Props as CardProps} from './Card';
+export {Card, CardProps} from './Card';
 
-export {default as Checkbox, Props as CheckboxProps} from './Checkbox';
+export {Checkbox, CheckboxProps} from './Checkbox';
 
-export {default as ChoiceList, Props as ChoiceListProps} from './ChoiceList';
+export {ChoiceList, ChoiceListProps} from './ChoiceList';
 
-export {default as Collapsible, Props as CollapsibleProps} from './Collapsible';
+export {Collapsible, CollapsibleProps} from './Collapsible';
 
 export {
-  default as ColorPicker,
-  Props as ColorPickerProps,
+  ColorPicker,
+  ColorPickerProps,
   RGBColor,
   HSBColor,
   RGBAColor,
@@ -68,157 +53,122 @@ export {
   rgbaString,
 } from './ColorPicker';
 
-export {default as Connected, Props as ConnectedProps} from './Connected';
+export {Connected, ConnectedProps} from './Connected';
+
+export {ContextualSaveBar, ContextualSaveBarProps} from './ContextualSaveBar';
 
 export {
-  default as ContextualSaveBar,
-  Props as ContextualSaveBarProps,
-} from './ContextualSaveBar';
-
-export {
-  default as DataTable,
-  Props as DataTableProps,
+  DataTable,
+  DataTableProps,
   TableData,
   TableRow,
   SortDirection,
   ColumnContentType,
 } from './DataTable';
 
-export {
-  default as DatePicker,
-  Props as DatePickerProps,
-  Range,
-  Months,
-  Year,
-} from './DatePicker';
+export {DatePicker, DatePickerProps, Range, Months, Year} from './DatePicker';
+
+export {DescriptionList, DescriptionListProps} from './DescriptionList';
+
+export {DisplayText, DisplayTextProps} from './DisplayText';
+
+export {DropZone, DropZoneProps} from './DropZone';
+
+export {EmptySearchResult, EmptySearchResultProps} from './EmptySearchResult';
+
+export {EmptyState, EmptyStateProps} from './EmptyState';
+
+export {EventListener, EventListenerProps} from './EventListener';
+
+export {ExceptionList, ExceptionListProps} from './ExceptionList';
 
 export {
-  default as DescriptionList,
-  Props as DescriptionListProps,
-} from './DescriptionList';
-
-export {default as DisplayText, Props as DisplayTextProps} from './DisplayText';
-
-export {default as DropZone, Props as DropZoneProps} from './DropZone';
-
-export {
-  default as EmptySearchResult,
-  Props as EmptySearchResultProps,
-} from './EmptySearchResult';
-
-export {default as EmptyState, Props as EmptyStateProps} from './EmptyState';
-
-export {
-  default as EventListener,
-  Props as EventListenerProps,
-} from './EventListener';
-
-export {
-  default as ExceptionList,
-  Props as ExceptionListProps,
-} from './ExceptionList';
-
-export {
-  default as Filters,
-  Props as FiltersProps,
-  AppliedFilter as AppliedFilterInterface,
-  Filter as FilterInterface,
+  Filters,
+  FiltersProps,
+  AppliedFilterInterface,
+  FilterInterface,
 } from './Filters';
 
-export {default as Focus, Props as FocusProps} from './Focus';
+export {Focus, FocusProps} from './Focus';
 
-export {default as FooterHelp, Props as FooterHelpProps} from './FooterHelp';
+export {FooterHelp, FooterHelpProps} from './FooterHelp';
 
-export {default as Form, Props as FormProps} from './Form';
+export {Form, FormProps} from './Form';
 
-export {default as FormLayout, Props as FormLayoutProps} from './FormLayout';
+export {FormLayout, FormLayoutProps} from './FormLayout';
 
 export {
-  default as Frame,
-  Props as FrameProps,
+  Frame,
+  FrameProps,
   DEFAULT_TOAST_DURATION,
   DEFAULT_TOAST_DURATION_WITH_ACTION,
 } from './Frame';
 
-export {default as Heading, Props as HeadingProps} from './Heading';
+export {Heading, HeadingProps} from './Heading';
 
-export {default as Icon} from './Icon';
+export {Icon} from './Icon';
 
-export {default as Image, Props as ImageProps} from './Image';
+export {Image, ImageProps} from './Image';
 
-export {default as Indicator, Props as IndicatorProps} from './Indicator';
+export {Indicator, IndicatorProps} from './Indicator';
 
-export {
-  default as InlineError,
-  Props as InlineErrorProps,
-  errorTextID,
-} from './InlineError';
+export {InlineError, InlineErrorProps, errorTextID} from './InlineError';
 
-export {default as KeyboardKey, Props as KeyboardKeyProps} from './KeyboardKey';
+export {KeyboardKey, KeyboardKeyProps} from './KeyboardKey';
 
-export {
-  default as KeypressListener,
-  Props as KeypressListenerProps,
-} from './KeypressListener';
+export {KeypressListener, KeypressListenerProps} from './KeypressListener';
 
-export {default as Label, Props as LabelProps} from './Label';
+export {Label, LabelProps} from './Label';
 
-export {default as Labelled, Props as LabelledProps} from './Labelled';
+export {Labelled, LabelledProps} from './Labelled';
 
-export {default as Layout, Props as LayoutProps} from './Layout';
+export {Layout, LayoutProps} from './Layout';
 
-export {default as Link, Props as LinkProps} from './Link';
+export {Link, LinkProps} from './Link';
 
-export {default as List, Props as ListProps} from './List';
+export {List, ListProps} from './List';
 
-export {default as Loading, Props as LoadingProps} from './Loading';
+export {Loading, LoadingProps} from './Loading';
 
-export {default as Modal, Props as ModalProps} from './Modal';
+export {Modal, ModalProps} from './Modal';
 
 export {
-  default as Navigation,
-  Props as NavigationProps,
+  Navigation,
+  NavigationProps,
   ItemProps as NavigationItemProps,
   MessageProps as NavigationMessageProps,
   SubNavigationItem,
   isNavigationItemActive,
 } from './Navigation';
 
-export {default as OptionList} from './OptionList';
+export {OptionList} from './OptionList';
 
-export {default as Page, Props as PageProps} from './Page';
+export {Page, PageProps} from './Page';
 
-export {default as PageActions, Props as PageActionsProps} from './PageActions';
+export {PageActions, PageActionsProps} from './PageActions';
 
-export {default as Pagination, Props as PaginationProps} from './Pagination';
+export {Pagination, PaginationProps} from './Pagination';
 
 export {
-  default as PolarisTestProvider,
+  PolarisTestProvider,
   WithPolarisTestProviderOptions,
 } from './PolarisTestProvider';
 
-export {
-  default as Popover,
-  Props as PopoverProps,
-  CloseSource as PopoverCloseSource,
-} from './Popover';
+export {Popover, PopoverProps, PopoverCloseSource} from './Popover';
 
-export {default as Portal, Props as PortalProps} from './Portal';
+export {Portal, PortalProps} from './Portal';
 
-export {default as ProgressBar, Props as ProgressBarProps} from './ProgressBar';
+export {ProgressBar, ProgressBarProps} from './ProgressBar';
 
-export {default as RadioButton, Props as RadioButtonProps} from './RadioButton';
+export {RadioButton, RadioButtonProps} from './RadioButton';
 
-export {default as RangeSlider, RangeSliderProps} from './RangeSlider';
+export {RangeSlider, RangeSliderProps} from './RangeSlider';
+
+export {ResourceItem, ResourceItemProps} from './ResourceItem';
 
 export {
-  default as ResourceItem,
-  Props as ResourceItemProps,
-} from './ResourceItem';
-
-export {
-  default as ResourceList,
-  Props as ResourceListProps,
+  ResourceList,
+  ResourceListProps,
   FilterControlProps,
   Filter,
   AppliedFilter,
@@ -231,92 +181,63 @@ export {
   SelectedItems as ResourceListSelectedItems,
 } from '../utilities/resource-list';
 
-export {
-  default as ResourcePicker,
-  Props as ResourcePickerProps,
-} from './ResourcePicker';
+export {ResourcePicker, ResourcePickerProps} from './ResourcePicker';
 
-export {default as Scrollable, Props as ScrollableProps} from './Scrollable';
+export {Scrollable, ScrollableProps} from './Scrollable';
 
-export {default as ScrollLock} from './ScrollLock';
+export {ScrollLock} from './ScrollLock';
 
-export {
-  default as Select,
-  Props as SelectProps,
-  SelectOption,
-  SelectGroup,
-} from './Select';
+export {Select, SelectProps, SelectOption, SelectGroup} from './Select';
 
-export {
-  default as SettingToggle,
-  Props as SettingToggleProps,
-} from './SettingToggle';
+export {SettingToggle, SettingToggleProps} from './SettingToggle';
 
 export {DATA_ATTRIBUTE} from './shared';
 
-export {default as Sheet} from './Sheet';
+export {Sheet} from './Sheet';
+
+export {SkeletonBodyText, SkeletonBodyTextProps} from './SkeletonBodyText';
 
 export {
-  default as SkeletonBodyText,
-  Props as SkeletonBodyTextProps,
-} from './SkeletonBodyText';
-
-export {
-  default as SkeletonDisplayText,
-  Props as SkeletonDisplayTextProps,
+  SkeletonDisplayText,
+  SkeletonDisplayTextProps,
 } from './SkeletonDisplayText';
 
-export {
-  default as SkeletonPage,
-  Props as SkeletonPageProps,
-} from './SkeletonPage';
+export {SkeletonPage, SkeletonPageProps} from './SkeletonPage';
 
-export {
-  default as SkeletonThumbnail,
-  Props as SkeletonThumbnailProps,
-} from './SkeletonThumbnail';
+export {SkeletonThumbnail, SkeletonThumbnailProps} from './SkeletonThumbnail';
 
-export {default as Spinner, Props as SpinnerProps} from './Spinner';
+export {Spinner, SpinnerProps} from './Spinner';
 
-export {default as Stack, Props as StackProps} from './Stack';
+export {Stack, StackProps} from './Stack';
 
-export {default as Sticky, Props as StickyProps} from './Sticky';
+export {Sticky, StickyProps} from './Sticky';
 
-export {default as Subheading, Props as SubheadingProps} from './Subheading';
+export {Subheading, SubheadingProps} from './Subheading';
 
-export {default as Tabs, Props as TabsProps} from './Tabs';
+export {Tabs, TabsProps} from './Tabs';
 
-export {default as Tag, Props as TagProps} from './Tag';
+export {Tag, TagProps} from './Tag';
 
-export {
-  default as TextContainer,
-  Props as TextContainerProps,
-} from './TextContainer';
+export {TextContainer, TextContainerProps} from './TextContainer';
 
-export {default as TextField, Props as TextFieldProps} from './TextField';
+export {TextField, TextFieldProps} from './TextField';
 
-export {default as TextStyle, Props as TextStyleProps} from './TextStyle';
+export {TextStyle, TextStyleProps} from './TextStyle';
 
-export {default as ThemeProvider} from './ThemeProvider';
+export {ThemeProvider} from './ThemeProvider';
 
-export {default as Thumbnail, Props as ThumbnailProps} from './Thumbnail';
+export {Thumbnail, ThumbnailProps} from './Thumbnail';
 
-export {default as Toast, Props as ToastProps} from './Toast';
+export {Toast, ToastProps} from './Toast';
 
-export {default as Tooltip, Props as TooltipProps} from './Tooltip';
+export {Tooltip, TooltipProps} from './Tooltip';
 
-export {default as TopBar, Props as TopBarProps} from './TopBar';
+export {TopBar, TopBarProps} from './TopBar';
 
-export {default as TrapFocus, Props as TrapFocusProps} from './TrapFocus';
+export {TrapFocus, TrapFocusProps} from './TrapFocus';
 
-export {default as Truncate, Props as TruncateProps} from './Truncate';
+export {Truncate, TruncateProps} from './Truncate';
 
-export {
-  default as UnstyledLink,
-  Props as UnstyledLinkProps,
-} from './UnstyledLink';
+export {UnstyledLink, UnstyledLinkProps} from './UnstyledLink';
 
-export {
-  default as VisuallyHidden,
-  Props as VisuallyHiddenProps,
-} from './VisuallyHidden';
+export {VisuallyHidden, VisuallyHiddenProps} from './VisuallyHidden';

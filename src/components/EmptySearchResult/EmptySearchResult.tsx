@@ -4,21 +4,21 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import DisplayText from '../DisplayText';
-import TextStyle from '../TextStyle';
-import Image from '../Image';
-import Stack from '../Stack';
+import {DisplayText} from '../DisplayText';
+import {TextStyle} from '../TextStyle';
+import {Image} from '../Image';
+import {Stack} from '../Stack';
 
 import {emptySearch} from './illustrations';
 import styles from './EmptySearchResult.scss';
 
-export interface Props {
+export interface EmptySearchResultProps {
   title: string;
   description?: string;
   withIllustration?: boolean;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = EmptySearchResultProps & WithAppProviderProps;
 
 class EmptySearchResult extends React.PureComponent<CombinedProps, never> {
   render() {
@@ -52,4 +52,4 @@ class EmptySearchResult extends React.PureComponent<CombinedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(EmptySearchResult);
+export default withAppProvider<EmptySearchResultProps>()(EmptySearchResult);

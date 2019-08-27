@@ -2,9 +2,9 @@ import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {IconProps} from '../../../../types';
-import {Props as ThumbnailProps} from '../../../Thumbnail';
-import {Props as AvatarProps} from '../../../Avatar';
-import Scrollable from '../../../Scrollable';
+import {ThumbnailProps} from '../../../Thumbnail';
+import {AvatarProps} from '../../../Avatar';
+import {Scrollable} from '../../../Scrollable';
 import {Checkbox} from '../Checkbox';
 
 import styles from './Option.scss';

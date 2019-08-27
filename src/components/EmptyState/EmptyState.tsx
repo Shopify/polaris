@@ -2,15 +2,15 @@ import React from 'react';
 import {classNames} from '../../utilities/css';
 
 import {Action} from '../../types';
-import Image from '../Image';
+import {Image} from '../Image';
 import {buttonFrom} from '../Button';
-import Stack from '../Stack';
-import TextContainer from '../TextContainer';
-import DisplayText from '../DisplayText';
+import {Stack} from '../Stack';
+import {TextContainer} from '../TextContainer';
+import {DisplayText} from '../DisplayText';
 
 import styles from './EmptyState.scss';
 
-export interface Props {
+export interface EmptyStateProps {
   /** The empty state heading */
   heading?: string;
   /** The image to use for small screens */
@@ -29,7 +29,7 @@ export interface Props {
   footerContent?: React.ReactNode;
 }
 
-export default class EmptyState extends React.PureComponent<Props, never> {
+export class EmptyState extends React.PureComponent<EmptyStateProps, never> {
   render() {
     const {
       children,

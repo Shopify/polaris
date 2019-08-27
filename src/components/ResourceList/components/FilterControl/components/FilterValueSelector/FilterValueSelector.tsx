@@ -1,7 +1,7 @@
 import React from 'react';
-import Select from '../../../../../Select';
-import Stack from '../../../../../Stack';
-import TextField from '../../../../../TextField';
+import {Select} from '../../../../../Select';
+import {Stack} from '../../../../../Stack';
+import {TextField} from '../../../../../TextField';
 import {
   withAppProvider,
   WithAppProviderProps,

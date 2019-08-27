@@ -3,10 +3,10 @@ import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
-import Button from '../../../Button';
+import {Button} from '../../../Button';
 
-import Icon from '../../../Icon';
-import KeypressListener from '../../../KeypressListener';
+import {Icon} from '../../../Icon';
+import {KeypressListener} from '../../../KeypressListener';
 import {ToastProps} from '../../../../utilities/frame';
 
 import styles from './Toast.scss';

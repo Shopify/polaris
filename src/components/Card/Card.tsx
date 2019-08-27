@@ -1,12 +1,12 @@
 import React from 'react';
 import {classNames} from '../../utilities/css';
 
-import ButtonGroup from '../ButtonGroup';
+import {ButtonGroup} from '../ButtonGroup';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {DisableableAction, ComplexAction} from '../../types';
-import ActionList from '../ActionList';
-import Button, {buttonFrom} from '../Button';
-import Popover from '../Popover';
+import {ActionList} from '../ActionList';
+import {Button, buttonFrom} from '../Button';
+import {Popover} from '../Popover';
 
 import {
   withAppProvider,
@@ -16,7 +16,7 @@ import {
 import {Header, Section, Subsection} from './components';
 import styles from './Card.scss';
 
-export interface Props {
+export interface CardProps {
   /** Title content for the card */
   title?: React.ReactNode;
   /** Inner content of the card */
@@ -35,7 +35,7 @@ export interface Props {
   secondaryFooterActionsDisclosureText?: string;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+export type CombinedProps = CardProps & WithAppProviderProps;
 
 interface State {
   secondaryFooterActionsPopoverOpen: boolean;
@@ -128,4 +128,4 @@ class Card extends React.PureComponent<CombinedProps, State> {
   };
 }
 
-export default withAppProvider<Props>()(Card);
+export default withAppProvider<CardProps>()(Card);

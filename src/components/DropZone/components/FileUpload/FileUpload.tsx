@@ -4,12 +4,12 @@ import {DragDropMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 import {capitalize} from '../../../../utilities/capitalize';
 
-import Link from '../../../Link';
-import Icon from '../../../Icon';
-import Stack from '../../../Stack';
-import Button from '../../../Button';
-import Caption from '../../../Caption';
-import TextStyle from '../../../TextStyle';
+import {Link} from '../../../Link';
+import {Icon} from '../../../Icon';
+import {Stack} from '../../../Stack';
+import {Button} from '../../../Button';
+import {Caption} from '../../../Caption';
+import {TextStyle} from '../../../TextStyle';
 
 import {fileUpload, imageUpload} from '../../images';
 

@@ -7,12 +7,12 @@ import {
 } from '../../utilities/with-app-provider';
 import {PreferredPosition} from '../PositionedOverlay';
 import {OptionDescriptor} from '../OptionList';
-import Spinner from '../Spinner';
+import {Spinner} from '../Spinner';
 
 import {TextField, ComboBox} from './components';
 import styles from './Autocomplete.scss';
 
-export interface Props {
+export interface AutocompleteProps {
   /** A unique identifier for the Autocomplete */
   id?: string;
   /** Collection of options to be listed */
@@ -41,7 +41,7 @@ export interface Props {
   onLoadMoreResults?(): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = AutocompleteProps & WithAppProviderProps;
 
 class Autocomplete extends React.PureComponent<CombinedProps, never> {
   static TextField = TextField;
@@ -99,4 +99,4 @@ class Autocomplete extends React.PureComponent<CombinedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(Autocomplete);
+export default withAppProvider<AutocompleteProps>()(Autocomplete);

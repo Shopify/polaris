@@ -4,8 +4,8 @@ import {
   CSSTransition,
 } from '@material-ui/react-transition-group';
 import {classNames} from '../../../../utilities/css';
-import EventListener from '../../../EventListener';
-import Portal from '../../../Portal';
+import {EventListener} from '../../../EventListener';
+import {Portal} from '../../../Portal';
 import {ToastPropsWithID} from '../../../../utilities/frame';
 import {Toast} from '../Toast';
 import {useDeepEffect} from '../../../../utilities/use-deep-effect';
@@ -17,7 +17,7 @@ export interface ToastManagerProps {
   toastMessages: (ToastPropsWithID)[];
 }
 
-// This does have display name, but the linting has a bug in it
+// This does have a display name, but the linting has a bug in it
 // https://github.com/yannickcr/eslint-plugin-react/issues/2324
 // eslint-disable-next-line react/display-name
 export const ToastManager = memo(function ToastManager({

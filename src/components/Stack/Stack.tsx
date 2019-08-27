@@ -17,7 +17,7 @@ export type Distribution =
   | 'fill'
   | 'fillEvenly';
 
-export interface Props {
+export interface StackProps {
   /** Elements to display inside stack */
   children?: React.ReactNode;
   /** Wrap stack elements to additional rows as needed on small screens (Defaults to true) */
@@ -32,7 +32,7 @@ export interface Props {
   distribution?: Distribution;
 }
 
-export default class Stack extends React.PureComponent<Props, never> {
+export class Stack extends React.PureComponent<StackProps, never> {
   static Item = Item;
 
   render() {

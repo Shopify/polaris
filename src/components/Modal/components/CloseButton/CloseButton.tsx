@@ -3,7 +3,7 @@ import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 
-import Icon from '../../../Icon';
+import {Icon} from '../../../Icon';
 
 import styles from './CloseButton.scss';
 

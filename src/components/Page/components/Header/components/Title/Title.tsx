@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {classNames} from '../../../../../../utilities/css';
-import {Props as AvatarProps} from '../../../../../Avatar';
-import {Props as ThumbnailProps} from '../../../../../Thumbnail';
-import DisplayText from '../../../../../DisplayText';
+import {AvatarProps} from '../../../../../Avatar';
+import {ThumbnailProps} from '../../../../../Thumbnail';
+import {DisplayText} from '../../../../../DisplayText';
 
 import styles from './Title.scss';
 

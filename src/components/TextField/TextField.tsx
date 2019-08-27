@@ -2,18 +2,18 @@ import React from 'react';
 import {addEventListener} from '@shopify/javascript-utilities/events';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
-import VisuallyHidden from '../VisuallyHidden';
+import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
 
-import Labelled, {Action, helpTextID, labelID} from '../Labelled';
-import Connected from '../Connected';
+import {Labelled, Action, helpTextID, labelID} from '../Labelled';
+import {Connected} from '../Connected';
 
 import {Error, Key} from '../../types';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import Icon from '../Icon';
+import {Icon} from '../Icon';
 import {Resizer, Spinner} from './components';
 import styles from './TextField.scss';
 
@@ -32,7 +32,7 @@ export type Type =
   | 'week'
   | 'currency';
 
-export type Alignment = 'left' | 'center' | 'right';
+type Alignment = 'left' | 'center' | 'right';
 
 interface State {
   height?: number | null;
@@ -40,7 +40,7 @@ interface State {
   id: string;
 }
 
-export interface BaseProps {
+interface BaseProps {
   /** Text to display before value */
   prefix?: React.ReactNode;
   /** Text to display after value */
@@ -121,15 +121,15 @@ export interface BaseProps {
   onBlur?(): void;
 }
 
-export interface NonMutuallyExclusiveProps extends BaseProps {}
+interface NonMutuallyExclusiveProps extends BaseProps {}
 
-export type Props = NonMutuallyExclusiveProps &
+export type TextFieldProps = NonMutuallyExclusiveProps &
   (
     | {readOnly: true}
     | {disabled: true}
     | {onChange(value: string, id: string): void});
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = TextFieldProps & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('TextField');
 
@@ -528,4 +528,4 @@ function normalizeAutoComplete(autoComplete?: boolean | string) {
   }
 }
 
-export default withAppProvider<Props>()(TextField);
+export default withAppProvider<TextFieldProps>()(TextField);

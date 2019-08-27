@@ -1,5 +1,5 @@
 import React from 'react';
-import EventListener from '../../../EventListener';
+import {EventListener} from '../../../EventListener';
 import styles from '../../TextField.scss';
 
 export interface ResizerProps {

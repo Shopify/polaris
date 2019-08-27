@@ -1,7 +1,7 @@
 import React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import Collapsible from '../../../../../Collapsible';
+import {Collapsible} from '../../../../../Collapsible';
 
 import styles from '../../../../Navigation.scss';
 

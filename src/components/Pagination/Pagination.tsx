@@ -3,10 +3,10 @@ import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {isInputFocused} from '../../utilities/is-input-focused';
-import Icon from '../Icon';
-import UnstyledLink from '../UnstyledLink';
-import Tooltip from '../Tooltip';
-import KeypressListener from '../KeypressListener';
+import {Icon} from '../Icon';
+import {UnstyledLink} from '../UnstyledLink';
+import {Tooltip} from '../Tooltip';
+import {KeypressListener} from '../KeypressListener';
 import {Key} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
@@ -37,12 +37,12 @@ export interface PaginationDescriptor {
   onPrevious?(): void;
 }
 
-export interface Props extends PaginationDescriptor {
+export interface PaginationProps extends PaginationDescriptor {
   /** A more subdued control for use in headers */
   plain?: boolean;
 }
 
-export default function Pagination({
+export function Pagination({
   hasNext,
   hasPrevious,
   nextURL,
@@ -55,7 +55,7 @@ export default function Pagination({
   previousKeys,
   plain,
   accessibilityLabel,
-}: Props) {
+}: PaginationProps) {
   const intl = useI18n();
 
   const node: React.RefObject<HTMLElement> = React.createRef();

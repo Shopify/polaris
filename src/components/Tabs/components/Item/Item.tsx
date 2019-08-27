@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from '../../Tabs.scss';
-import UnstyledLink from '../../../UnstyledLink';
+import {UnstyledLink} from '../../../UnstyledLink';
 
 export interface ItemProps {
   id: string;

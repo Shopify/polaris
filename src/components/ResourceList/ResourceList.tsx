@@ -4,10 +4,10 @@ import debounce from 'lodash/debounce';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import Button from '../Button';
-import EventListener from '../EventListener';
-import Sticky from '../Sticky';
-import Spinner from '../Spinner';
+import {Button} from '../Button';
+import {EventListener} from '../EventListener';
+import {Sticky} from '../Sticky';
+import {Spinner} from '../Spinner';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -17,9 +17,9 @@ import {
   SelectedItems,
   SELECT_ALL_ITEMS,
 } from '../../utilities/resource-list';
-import Select, {SelectOption} from '../Select';
-import EmptySearchResult from '../EmptySearchResult';
-import ResourceItem from '../ResourceItem';
+import {Select, SelectOption} from '../Select';
+import {EmptySearchResult} from '../EmptySearchResult';
+import {ResourceItem} from '../ResourceItem';
 
 import {
   BulkActions,
@@ -44,7 +44,7 @@ interface State {
   smallScreen: boolean;
 }
 
-export interface Props {
+export interface ResourceListProps {
   /** Item data; each item is passed to renderItem */
   items: Items;
   filterControl?: React.ReactNode;
@@ -85,7 +85,7 @@ export interface Props {
   resolveItemId?(item: any): string;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = ResourceListProps & WithAppProviderProps;
 
 class ResourceList extends React.Component<CombinedProps, State> {
   static Item = ResourceItem;
@@ -326,7 +326,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     loading: prevLoading,
     items: prevItems,
     selectedItems: prevSelectedItems,
-  }: Props) {
+  }: ResourceListProps) {
     const {selectedItems, loading} = this.props;
 
     if (
@@ -768,4 +768,4 @@ function isSmallScreen() {
     : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
 
-export default withAppProvider<Props>()(ResourceList);
+export default withAppProvider<ResourceListProps>()(ResourceList);

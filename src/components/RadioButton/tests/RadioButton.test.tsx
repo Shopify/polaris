@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'test-utilities/react-testing';
-import RadioButton from '../RadioButton';
+import {RadioButton} from '../RadioButton';
 
 describe('<RadioButton />', () => {
   describe('checked', () => {

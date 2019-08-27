@@ -4,10 +4,10 @@ import {durationBase} from '@shopify/polaris-tokens';
 import {CSSTransition, Transition} from '@material-ui/react-transition-group';
 import {classNames} from '../../../../utilities/css';
 import {DisableableAction, Action, ActionListSection} from '../../../../types';
-import ActionList from '../../../ActionList';
-import Popover from '../../../Popover';
-import Button from '../../../Button';
-import EventListener from '../../../EventListener';
+import {ActionList} from '../../../ActionList';
+import {Popover} from '../../../Popover';
+import {Button} from '../../../Button';
+import {EventListener} from '../../../EventListener';
 import {
   withAppProvider,
   WithAppProviderProps,

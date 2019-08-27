@@ -5,7 +5,7 @@ import {
   trigger,
 } from 'test-utilities/legacy';
 import {Resizer} from '../Resizer';
-import EventListener from '../../../../EventListener';
+import {EventListener} from '../../../../EventListener';
 
 describe('<Resizer />', () => {
   const mockProps = {

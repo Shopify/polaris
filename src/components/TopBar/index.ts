@@ -1,5 +1,4 @@
-import TopBar from './TopBar';
+import TopBar, {TopBarProps} from './TopBar';
 
-export {Props} from './TopBar';
+export {TopBar, TopBarProps};
 export {UserMenuProps, SearchFieldProps} from './components';
-export default TopBar;

@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {TextContainer} from 'components';
 import {Key} from '../../../../../types';
-import PositionedOverlay from '../../../../PositionedOverlay';
+import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
 
 interface HandlerMap {

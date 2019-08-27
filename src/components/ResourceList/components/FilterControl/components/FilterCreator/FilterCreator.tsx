@@ -1,9 +1,9 @@
 import React from 'react';
-import Button from '../../../../../Button';
-import Popover from '../../../../../Popover';
-import Select from '../../../../../Select';
-import FormLayout from '../../../../../FormLayout';
-import Form from '../../../../../Form';
+import {Button} from '../../../../../Button';
+import {Popover} from '../../../../../Popover';
+import {Select} from '../../../../../Select';
+import {FormLayout} from '../../../../../FormLayout';
+import {Form} from '../../../../../Form';
 import {
   withAppProvider,
   WithAppProviderProps,

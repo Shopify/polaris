@@ -1,4 +1,1 @@
-import SettingAction from './SettingAction';
-
-export {Props} from './SettingAction';
-export default SettingAction;
+export {SettingAction, SettingActionProps} from './SettingAction';

@@ -1,1 +1,3 @@
-export {default as RollupActions, RollupActionsProps} from './RollupActions';
+import RollupActions, {RollupActionsProps} from './RollupActions';
+
+export {RollupActions, RollupActionsProps};

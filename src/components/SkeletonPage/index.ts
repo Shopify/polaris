@@ -1,4 +1,3 @@
-import SkeletongBodyText from './SkeletonPage';
+import SkeletonPage, {SkeletonPageProps} from './SkeletonPage';
 
-export {Props} from './SkeletonPage';
-export default SkeletongBodyText;
+export {SkeletonPage, SkeletonPageProps};

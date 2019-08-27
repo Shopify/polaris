@@ -4,14 +4,14 @@ import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from '@material-ui/react-transition-group';
 import {classNames} from '../../utilities/css';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
-import Icon from '../Icon';
-import EventListener from '../EventListener';
+import {Icon} from '../Icon';
+import {EventListener} from '../EventListener';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import Backdrop from '../Backdrop';
-import TrapFocus from '../TrapFocus';
+import {Backdrop} from '../Backdrop';
+import {TrapFocus} from '../TrapFocus';
 import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/set-root-property';
 import {
@@ -30,7 +30,7 @@ import {
 
 import styles from './Frame.scss';
 
-export interface Props {
+export interface FrameProps {
   /** The content to display inside the frame. */
   children?: React.ReactNode;
   /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */
@@ -66,7 +66,7 @@ const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = FrameProps & WithAppProviderProps;
 
 class Frame extends React.PureComponent<CombinedProps, State> {
   state: State = {
@@ -91,7 +91,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     this.setGlobalRibbonRootProperty();
   }
 
-  componentDidUpdate(prevProps: Props) {
+  componentDidUpdate(prevProps: FrameProps) {
     if (this.props.globalRibbon !== prevProps.globalRibbon) {
       this.setGlobalRibbonHeight();
     }
@@ -414,4 +414,4 @@ function isMobileView() {
   return navigationBarCollapsed().matches;
 }
 
-export default withAppProvider<Props>()(Frame);
+export default withAppProvider<FrameProps>()(Frame);

@@ -1,1 +1,3 @@
-export {default as SearchField, SearchFieldProps} from './SearchField';
+import SearchField, {SearchFieldProps} from './SearchField';
+
+export {SearchField, SearchFieldProps};

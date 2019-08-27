@@ -23,7 +23,7 @@ const DELTA_PERCENTAGE = 0.2;
 const EVENTS_TO_LOCK = ['scroll', 'touchmove', 'wheel'];
 const PREFERS_REDUCED_MOTION = prefersReducedMotion();
 
-export interface Props extends React.HTMLProps<HTMLDivElement> {
+export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   /** Content to display in scrollable area */
   children?: React.ReactNode;
   /** Scroll content vertically */
@@ -44,7 +44,7 @@ interface State {
   scrollPosition: number;
 }
 
-export default class Scrollable extends React.Component<Props, State> {
+export class Scrollable extends React.Component<ScrollableProps, State> {
   static ScrollTo = ScrollTo;
   static forNode(node: HTMLElement): HTMLElement | Document {
     return (

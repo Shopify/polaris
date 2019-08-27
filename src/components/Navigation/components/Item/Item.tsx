@@ -12,11 +12,11 @@ import {classNames} from '../../../../utilities/css';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
 import {NavigationContext} from '../../context';
-import Badge from '../../../Badge';
-import Icon from '../../../Icon';
+import {Badge} from '../../../Badge';
+import {Icon} from '../../../Icon';
 import {IconProps} from '../../../../types';
-import Indicator from '../../../Indicator';
-import UnstyledLink from '../../../UnstyledLink';
+import {Indicator} from '../../../Indicator';
+import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';
 
 import styles from '../../Navigation.scss';

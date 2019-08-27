@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {useI18n} from '../../../../../../utilities/i18n';
-import Modal from '../../../../../Modal';
+import {Modal} from '../../../../../Modal';
 
 export interface DiscardConfirmationModalProps {
   open: boolean;

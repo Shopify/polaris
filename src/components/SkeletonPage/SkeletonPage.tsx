@@ -1,8 +1,8 @@
 import React from 'react';
 import {classNames} from '../../utilities/css';
-import DisplayText from '../DisplayText';
-import SkeletonDisplayText from '../SkeletonDisplayText';
-import SkeletonBodyText from '../SkeletonBodyText';
+import {DisplayText} from '../DisplayText';
+import {SkeletonDisplayText} from '../SkeletonDisplayText';
+import {SkeletonBodyText} from '../SkeletonBodyText';
 
 import {
   withAppProvider,
@@ -10,7 +10,7 @@ import {
 } from '../../utilities/with-app-provider';
 import styles from './SkeletonPage.scss';
 
-export interface Props {
+export interface SkeletonPageProps {
   /** Page title, in large type */
   title?: string;
   /** Remove the normal max-width on the page */
@@ -34,7 +34,9 @@ interface DeprecatedProps {
   singleColumn?: boolean;
 }
 
-export type CombinedProps = Props & DeprecatedProps & WithAppProviderProps;
+export type CombinedProps = SkeletonPageProps &
+  DeprecatedProps &
+  WithAppProviderProps;
 
 class SkeletonPage extends React.PureComponent<CombinedProps, never> {
   render() {
@@ -136,4 +138,6 @@ function renderTitle(title: string) {
   return <div className={styles.Title}>{titleContent}</div>;
 }
 
-export default withAppProvider<Props & DeprecatedProps>()(SkeletonPage);
+export default withAppProvider<SkeletonPageProps & DeprecatedProps>()(
+  SkeletonPage,
+);

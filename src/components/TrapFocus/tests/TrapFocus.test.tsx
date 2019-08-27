@@ -7,7 +7,7 @@ import {
   TextField,
   Button,
 } from 'components';
-import TrapFocus from '../TrapFocus';
+import {TrapFocus} from '../TrapFocus';
 
 describe('<TrapFocus />', () => {
   afterEach(() => {

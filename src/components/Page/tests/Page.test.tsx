@@ -5,7 +5,7 @@ import {
 } from '@shopify/app-bridge/actions';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {Page, PageProps as Props, Card, Avatar, Badge} from 'components';
+import {Page, PageProps, Card, Avatar, Badge} from 'components';
 import {Header} from '../components';
 import {LinkAction} from '../../../types';
 import {HeaderPrimaryAction} from '../types';
@@ -29,7 +29,7 @@ jest.mock('../../../utilities/app-bridge-transformers', () => ({
 }));
 
 describe('<Page />', () => {
-  const mockProps: Props = {
+  const mockProps: PageProps = {
     title: 'Test',
   };
 
@@ -330,11 +330,11 @@ describe('<Page />', () => {
         target: 'APP',
       };
 
-      const secondaryActions: Props['secondaryActions'] = [
+      const secondaryActions: PageProps['secondaryActions'] = [
         {content: 'Bar', url: '/bar', target: 'ADMIN_PATH'},
       ];
 
-      const actionGroups: Props['actionGroups'] = [
+      const actionGroups: PageProps['actionGroups'] = [
         {
           title: 'Baz',
           actions: [{content: 'Qux', url: 'https://qux.com', target: 'REMOTE'}],

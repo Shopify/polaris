@@ -5,8 +5,8 @@ import {classNames} from '../../../../utilities/css';
 
 import {AnimationProps, Key} from '../../../../types';
 
-import KeypressListener from '../../../KeypressListener';
-import TrapFocus from '../../../TrapFocus';
+import {KeypressListener} from '../../../KeypressListener';
+import {TrapFocus} from '../../../TrapFocus';
 
 import styles from './Dialog.scss';
 

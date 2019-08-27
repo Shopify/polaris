@@ -9,7 +9,7 @@ import {classNames} from '../../utilities/css';
 
 import styles from './Collapsible.scss';
 
-export interface Props {
+export interface CollapsibleProps {
   /** Assign a unique ID to the collapsible. For accessibility, pass this ID as the value of the triggering component’s aria-controls prop. */
   id: string;
   /** Toggle whether the collapsible is expanded or not. */
@@ -34,11 +34,11 @@ interface State {
 
 const ParentCollapsibleExpandingContext = createContext(false);
 
-class Collapsible extends React.Component<Props, State> {
+class Collapsible extends React.Component<CollapsibleProps, State> {
   static contextType = ParentCollapsibleExpandingContext;
 
   static getDerivedStateFromProps(
-    {open: willOpen}: Props,
+    {open: willOpen}: CollapsibleProps,
     {open, animationState: prevAnimationState}: State,
   ) {
     let nextAnimationState = prevAnimationState;
@@ -64,7 +64,7 @@ class Collapsible extends React.Component<Props, State> {
   private node = createRef<HTMLDivElement>();
   private heightNode = createRef<HTMLDivElement>();
 
-  componentDidUpdate({open: wasOpen}: Props) {
+  componentDidUpdate({open: wasOpen}: CollapsibleProps) {
     const {animationState} = this.state;
     const parentCollapsibleExpanding = this.context;
 
@@ -165,4 +165,5 @@ function collapsibleHeight(
   return `${height || 0}px`;
 }
 
-export default Collapsible as ComponentClass<Props> & typeof Collapsible;
+export default Collapsible as ComponentClass<CollapsibleProps> &
+  typeof Collapsible;

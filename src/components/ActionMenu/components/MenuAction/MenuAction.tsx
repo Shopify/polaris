@@ -5,8 +5,8 @@ import {classNames} from '../../../../utilities/css';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {ComplexAction} from '../../../../types';
 
-import Icon from '../../../Icon';
-import UnstyledLink from '../../../UnstyledLink';
+import {Icon} from '../../../Icon';
+import {UnstyledLink} from '../../../UnstyledLink';
 
 import styles from './MenuAction.scss';
 

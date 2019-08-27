@@ -4,14 +4,14 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
 import {classNames} from '../../utilities/css';
 import {DisableableAction} from '../../types';
-import ActionList from '../ActionList';
-import Popover from '../Popover';
-import {Props as AvatarProps} from '../Avatar';
-import UnstyledLink from '../UnstyledLink';
-import {Props as ThumbnailProps} from '../Thumbnail';
-import ButtonGroup from '../ButtonGroup';
-import Checkbox from '../Checkbox';
-import Button, {buttonsFrom} from '../Button';
+import {ActionList} from '../ActionList';
+import {Popover} from '../Popover';
+import {AvatarProps} from '../Avatar';
+import {UnstyledLink} from '../UnstyledLink';
+import {ThumbnailProps} from '../Thumbnail';
+import {ButtonGroup} from '../ButtonGroup';
+import {Checkbox} from '../Checkbox';
+import {Button, buttonsFrom} from '../Button';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -69,7 +69,7 @@ export interface PropsWithClick extends Props {
   onClick(id?: string): void;
 }
 
-export type ConditionalProps = PropsWithUrl | PropsWithClick;
+export type ResourceItemProps = PropsWithUrl | PropsWithClick;
 
 interface State {
   actionsMenuVisible: boolean;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Cell} from '../components';
-import DataTable, {Props} from '../DataTable';
+import DataTable, {DataTableProps} from '../DataTable';
 
 describe('<DataTable />', () => {
   const headings = ['Product', 'Price', 'Order Number', 'Quantity', 'Subtotal'];
@@ -17,7 +17,7 @@ describe('<DataTable />', () => {
     ['Mauve Cashmere Scarf', '$445.00', 124533, 140, '$14,240.00'],
   ];
 
-  const columnContentTypes: Props['columnContentTypes'] = [
+  const columnContentTypes: DataTableProps['columnContentTypes'] = [
     'text',
     'numeric',
     'numeric',
@@ -25,13 +25,13 @@ describe('<DataTable />', () => {
     'numeric',
   ];
 
-  const defaultProps: Props = {columnContentTypes, headings, rows};
+  const defaultProps: DataTableProps = {columnContentTypes, headings, rows};
 
   describe('columnContentTypes', () => {
     it('sets the provided contentType of Cells in each column', () => {
       const headings = ['Column 1', 'Column 2'];
       const rows = [['Cell 1', '2']];
-      const columnContentTypes: Props['columnContentTypes'] = [
+      const columnContentTypes: DataTableProps['columnContentTypes'] = [
         'text',
         'numeric',
       ];

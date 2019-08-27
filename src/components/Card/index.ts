@@ -1,4 +1,3 @@
-import Card from './Card';
+import Card, {CardProps} from './Card';
 
-export {Props} from './Card';
-export default Card;
+export {Card, CardProps};

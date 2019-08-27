@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {Props as ButtonProps} from '../../../Button';
+import {ButtonProps} from '../../../Button';
 
 import styles from '../../ButtonGroup.scss';
 

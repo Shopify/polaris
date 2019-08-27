@@ -3,8 +3,8 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 
-import Icon from '../../../Icon';
-import VisuallyHidden from '../../../VisuallyHidden';
+import {Icon} from '../../../Icon';
+import {VisuallyHidden} from '../../../VisuallyHidden';
 import {
   withAppProvider,
   WithAppProviderProps,

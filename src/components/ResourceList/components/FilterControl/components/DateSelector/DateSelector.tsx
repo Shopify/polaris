@@ -1,9 +1,9 @@
 import React from 'react';
 import {CalendarMinor} from '@shopify/polaris-icons';
-import DatePicker, {Months, Year, Range} from '../../../../../DatePicker';
-import Select from '../../../../../Select';
-import TextField from '../../../../../TextField';
-import Icon from '../../../../../Icon';
+import {DatePicker, Months, Year, Range} from '../../../../../DatePicker';
+import {Select} from '../../../../../Select';
+import {TextField} from '../../../../../TextField';
+import {Icon} from '../../../../../Icon';
 import {
   withAppProvider,
   WithAppProviderProps,

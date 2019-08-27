@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Badge, {Props as BadgeProps} from '../../../../../Badge';
-import Button from '../../../../../Button';
-import Heading from '../../../../../Heading';
-import Link from '../../../../../Link';
-import Popover from '../../../../../Popover';
-import Stack from '../../../../../Stack';
-import TextContainer from '../../../../../TextContainer';
+import {Badge, BadgeProps} from '../../../../../Badge';
+import {Button} from '../../../../../Button';
+import {Heading} from '../../../../../Heading';
+import {Link} from '../../../../../Link';
+import {Popover} from '../../../../../Popover';
+import {Stack} from '../../../../../Stack';
+import {TextContainer} from '../../../../../TextContainer';
 
 import styles from './Message.scss';
 

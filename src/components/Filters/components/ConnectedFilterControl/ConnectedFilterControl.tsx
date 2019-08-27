@@ -3,9 +3,9 @@ import debounce from 'lodash/debounce';
 import {classNames} from '../../../../utilities/css';
 
 import {Action, BaseAction} from '../../../../types';
-import Popover from '../../../Popover';
-import Button from '../../../Button';
-import EventListener from '../../../EventListener';
+import {Popover} from '../../../Popover';
+import {Button} from '../../../Button';
+import {EventListener} from '../../../EventListener';
 import {Item} from './components';
 
 import styles from './ConnectedFilterControl.scss';

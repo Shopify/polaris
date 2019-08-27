@@ -4,8 +4,8 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {classNames} from '../../../../utilities/css';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
-import Collapsible from '../../../Collapsible';
-import Icon from '../../../Icon';
+import {Collapsible} from '../../../Collapsible';
+import {Icon} from '../../../Icon';
 import {IconProps} from '../../../../types';
 
 import {Item, ItemProps} from '../Item';

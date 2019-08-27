@@ -7,9 +7,9 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../../../utilities/with-app-provider';
-import ActionList from '../../../ActionList';
-import Button from '../../../Button';
-import Popover from '../../../Popover';
+import {ActionList} from '../../../ActionList';
+import {Button} from '../../../Button';
+import {Popover} from '../../../Popover';
 
 import styles from './RollupActions.scss';
 

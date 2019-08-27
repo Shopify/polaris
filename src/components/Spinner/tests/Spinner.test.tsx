@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Spinner, {Color} from '../Spinner';
-import Image from '../../Image';
+import {Spinner, Color} from '../Spinner';
+import {Image} from '../../Image';
 
 describe('<Spinner />', () => {
   describe('accessibilityLabel', () => {

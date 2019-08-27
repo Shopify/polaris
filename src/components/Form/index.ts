@@ -1,4 +1,3 @@
-import Form from './Form';
+import Form, {FormProps, Enctype, Method, Target} from './Form';
 
-export * from './Form';
-export default Form;
+export {Form, FormProps, Enctype, Method, Target};

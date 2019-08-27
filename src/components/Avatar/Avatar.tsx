@@ -6,7 +6,7 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import Image from '../Image';
+import {Image} from '../Image';
 
 import styles from './Avatar.scss';
 import * as avatars from './images';
@@ -20,7 +20,7 @@ const AVATAR_IMAGES = Object.keys(avatars).map(
   (key: keyof typeof avatars) => avatars[key],
 );
 
-export interface Props {
+export interface AvatarProps {
   /**
    * Size of avatar
    * @default 'medium'
@@ -44,10 +44,10 @@ interface State {
   prevSource?: string;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = AvatarProps & WithAppProviderProps;
 
 class Avatar extends React.PureComponent<CombinedProps, State> {
-  static getDerivedStateFromProps(props: Props, state: State) {
+  static getDerivedStateFromProps(props: AvatarProps, state: State) {
     if (props.source !== state.prevSource) {
       return {
         prevSource: props.source,
@@ -173,4 +173,4 @@ function customerPlaceholder(name?: string) {
     : AVATAR_IMAGES[0];
 }
 
-export default withAppProvider<Props>()(Avatar);
+export default withAppProvider<AvatarProps>()(Avatar);

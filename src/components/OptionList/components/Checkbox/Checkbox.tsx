@@ -2,7 +2,7 @@ import React from 'react';
 import {TickSmallMinor} from '@shopify/polaris-icons';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '../../../../utilities/css';
-import Icon from '../../../Icon';
+import {Icon} from '../../../Icon';
 
 import styles from './Checkbox.scss';
 

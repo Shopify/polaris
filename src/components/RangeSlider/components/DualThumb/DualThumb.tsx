@@ -8,8 +8,8 @@ import isEqual from 'lodash/isEqual';
 import {classNames} from '../../../../utilities/css';
 import {CSS_VAR_PREFIX} from '../../utilities';
 import {RangeSliderProps, DualValue} from '../../types';
-import Labelled, {labelID} from '../../../Labelled';
-import EventListener from '../../../EventListener';
+import {Labelled, labelID} from '../../../Labelled';
+import {EventListener} from '../../../EventListener';
 import {Key} from '../../../../types';
 
 import styles from './DualThumb.scss';

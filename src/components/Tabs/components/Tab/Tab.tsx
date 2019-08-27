@@ -2,7 +2,7 @@ import React from 'react';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {classNames} from '../../../../utilities/css';
-import UnstyledLink from '../../../UnstyledLink';
+import {UnstyledLink} from '../../../UnstyledLink';
 import {
   withAppProvider,
   WithAppProviderProps,

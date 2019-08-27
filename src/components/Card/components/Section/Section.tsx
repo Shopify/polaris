@@ -2,10 +2,10 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
-import Stack from '../../../Stack';
-import ButtonGroup from '../../../ButtonGroup';
+import {Stack} from '../../../Stack';
+import {ButtonGroup} from '../../../ButtonGroup';
 
-import Subheading from '../../../Subheading';
+import {Subheading} from '../../../Subheading';
 
 import styles from '../../Card.scss';
 

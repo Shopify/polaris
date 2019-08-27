@@ -1,7 +1,4 @@
-import Navigation from './Navigation';
-
-export {Props} from './Navigation';
-export default Navigation;
+export {Navigation, NavigationProps} from './Navigation';
 
 export {
   ItemProps,

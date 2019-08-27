@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DisplayText from '../../../DisplayText';
+import {DisplayText} from '../../../DisplayText';
 import {CloseButton} from '../CloseButton';
 
 import styles from './Header.scss';

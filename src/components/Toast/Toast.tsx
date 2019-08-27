@@ -13,9 +13,12 @@ const createId = createUniqueIDFactory('Toast');
 // a component's props to be found in the Props interface. This silly workaround
 // ensures that the Props Explorer table is generated correctly, instead of
 // crashing if we write `ComposedProps = ToastProps & WithAppProviderProps`
-export interface Props extends ToastProps {}
+export interface ToastProps extends ToastProps {}
 
-function Toast(props: Props) {
+// This does have a display name, but the linting has a bug in it
+// https://github.com/yannickcr/eslint-plugin-react/issues/2324
+// eslint-disable-next-line react/display-name
+export const Toast = React.memo(function Toast(props: ToastProps) {
   const id = useRef(createId());
   const appBridgeToast = useRef<AppBridgeToast.Toast>();
   const {showToast, hideToast} = useFrame();
@@ -67,6 +70,4 @@ function Toast(props: Props) {
   );
 
   return null;
-}
-
-export default React.memo(Toast);
+});

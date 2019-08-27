@@ -10,9 +10,10 @@ import {
 } from '../../../../utilities/components';
 import {Key} from '../../../../types';
 import {overlay} from '../../../shared';
-import EventListener from '../../../EventListener';
-import KeypressListener from '../../../KeypressListener';
-import PositionedOverlay, {
+import {EventListener} from '../../../EventListener';
+import {KeypressListener} from '../../../KeypressListener';
+import {
+  PositionedOverlay,
   OverlayDetails,
   PreferredPosition,
   PreferredAlignment,

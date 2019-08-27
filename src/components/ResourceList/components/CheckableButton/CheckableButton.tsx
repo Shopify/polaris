@@ -1,6 +1,6 @@
 import React from 'react';
 import {classNames} from '../../../../utilities/css';
-import Checkbox from '../../../Checkbox';
+import {Checkbox} from '../../../Checkbox';
 
 import styles from './CheckableButton.scss';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Tag from '../Tag';
+import {Tag} from '../Tag';
 
 describe('<Tag />', () => {
   it('calls onRemove when remove button is clicked', () => {

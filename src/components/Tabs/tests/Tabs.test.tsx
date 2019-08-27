@@ -1,12 +1,12 @@
 import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Tab, Panel, TabMeasurer} from '../components';
-import Tabs, {Props} from '../Tabs';
+import Tabs, {TabsProps} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
-import Popover from '../../Popover';
+import {Popover} from '../../Popover';
 
 describe('<Tabs />', () => {
-  const tabs: Props['tabs'] = [
+  const tabs: TabsProps['tabs'] = [
     {content: 'Tab 1', id: 'tab-1'},
     {content: 'Tab 2', id: 'tab-2'},
   ];
@@ -25,7 +25,7 @@ describe('<Tabs />', () => {
 
   describe('tabs', () => {
     it('uses the IDs passed in for the tabs', () => {
-      const tabs: Props['tabs'] = [
+      const tabs: TabsProps['tabs'] = [
         {content: 'Tab 1', id: 'tab-1'},
         {content: 'Tab 2', id: 'tab-2'},
       ];

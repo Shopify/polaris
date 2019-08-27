@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './KeyboardKey.scss';
 
-export interface Props {
+export interface KeyboardKeyProps {
   /** The content to display inside the key */
   children?: string;
 }
 
-export default function KeyboardKey({children}: Props) {
+export function KeyboardKey({children}: KeyboardKeyProps) {
   let key = children || '';
   key = key.length > 1 ? key.toLowerCase() : key.toUpperCase();
 

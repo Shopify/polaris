@@ -1,6 +1,6 @@
 import React from 'react';
 import {classNames} from '../../../../utilities/css';
-import EventListener from '../../../EventListener';
+import {EventListener} from '../../../EventListener';
 
 import {TabDescriptor} from '../../types';
 import {Tab} from '../Tab';

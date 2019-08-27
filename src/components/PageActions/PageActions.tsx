@@ -1,20 +1,23 @@
 import React from 'react';
 
 import {ComplexAction, DisableableAction, LoadableAction} from '../../types';
-import Stack from '../Stack';
-import ButtonGroup from '../ButtonGroup';
+import {Stack} from '../Stack';
+import {ButtonGroup} from '../ButtonGroup';
 import {buttonsFrom} from '../Button';
 
 import styles from './PageActions.scss';
 
-export interface Props {
+export interface PageActionsProps {
   /** The primary action for the page */
   primaryAction?: DisableableAction & LoadableAction;
   /** The secondary actions for the page */
   secondaryActions?: ComplexAction[];
 }
 
-export default function PageActions({primaryAction, secondaryActions}: Props) {
+export function PageActions({
+  primaryAction,
+  secondaryActions,
+}: PageActionsProps) {
   const primaryActionMarkup = primaryAction
     ? buttonsFrom(primaryAction, {primary: true})
     : null;

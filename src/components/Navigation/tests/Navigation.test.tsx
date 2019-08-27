@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Navigation from '../Navigation';
+import {Navigation} from '../Navigation';
 import {NavigationContext} from '../context';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 

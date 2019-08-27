@@ -2,10 +2,10 @@ import React from 'react';
 import {SearchMinor} from '@shopify/polaris-icons';
 import {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
-import Icon from '../../../Icon';
-import FormLayout from '../../../FormLayout';
-import TextField from '../../../TextField';
-import Tag from '../../../Tag';
+import {Icon} from '../../../Icon';
+import {FormLayout} from '../../../FormLayout';
+import {TextField} from '../../../TextField';
+import {Tag} from '../../../Tag';
 import {useI18n} from '../../../../utilities/i18n';
 import {ResourceListContext} from '../../../../utilities/resource-list';
 

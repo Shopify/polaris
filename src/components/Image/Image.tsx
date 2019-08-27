@@ -7,7 +7,7 @@ export interface SourceSet {
 
 export type CrossOrigin = 'anonymous' | 'use-credentials' | '' | undefined;
 
-export interface Props extends React.HTMLProps<HTMLImageElement> {
+export interface ImageProps extends React.HTMLProps<HTMLImageElement> {
   alt: string;
   source: string;
   sourceSet?: SourceSet[];
@@ -15,12 +15,7 @@ export interface Props extends React.HTMLProps<HTMLImageElement> {
   onError?(): void;
 }
 
-export default function Image({
-  sourceSet,
-  source,
-  crossOrigin,
-  ...rest
-}: Props) {
+export function Image({sourceSet, source, crossOrigin, ...rest}: ImageProps) {
   const finalSourceSet = sourceSet
     ? sourceSet
         .map(({source: subSource, descriptor}) => `${subSource} ${descriptor}`)

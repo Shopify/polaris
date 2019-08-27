@@ -1,17 +1,17 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
-import ScrollLock from '../ScrollLock';
+import {ScrollLock} from '../ScrollLock';
 import styles from './Backdrop.scss';
 
-export interface Props {
+export interface BackdropProps {
   belowNavigation?: boolean;
   transparent?: boolean;
   onClick?(): void;
   onTouchStart?(): void;
 }
 
-export default function Backdrop(props: Props) {
+export function Backdrop(props: BackdropProps) {
   const {onClick, onTouchStart, belowNavigation, transparent} = props;
 
   const className = classNames(

@@ -7,9 +7,9 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../../../utilities/with-app-provider';
-import Button from '../../../Button';
-import Image from '../../../Image';
-import Stack from '../../../Stack';
+import {Button} from '../../../Button';
+import {Image} from '../../../Image';
+import {Stack} from '../../../Stack';
 
 import {DiscardConfirmationModal} from './components';
 

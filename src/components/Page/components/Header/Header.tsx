@@ -3,12 +3,12 @@ import debounce from 'lodash/debounce';
 import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
-import EventListener from '../../../EventListener';
+import {EventListener} from '../../../EventListener';
 import {ComplexAction, MenuGroupDescriptor} from '../../../../types';
-import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
+import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
 
-import Pagination, {PaginationDescriptor} from '../../../Pagination';
-import ActionMenu, {hasGroupsWithActions} from '../../../ActionMenu';
+import {Pagination, PaginationDescriptor} from '../../../Pagination';
+import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 
 import {HeaderPrimaryAction} from '../../types';
 import {Title, TitleProps} from './components';

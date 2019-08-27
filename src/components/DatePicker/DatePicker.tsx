@@ -18,7 +18,7 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import Button from '../Button';
+import {Button} from '../Button';
 import {monthName} from './utilities';
 
 import {Month} from './components';
@@ -51,8 +51,8 @@ export interface BaseProps {
   onMonthChange?(month: Months, year: Year): void;
 }
 
-export interface Props extends BaseProps {}
-type CombinedProps = Props & WithAppProviderProps;
+export interface DatePickerProps extends BaseProps {}
+type CombinedProps = DatePickerProps & WithAppProviderProps;
 
 interface State {
   hoverDate?: Date;
@@ -65,7 +65,7 @@ class DatePicker extends React.PureComponent<CombinedProps, State> {
     focusDate: undefined,
   };
 
-  componentDidUpdate(prevProps: Props) {
+  componentDidUpdate(prevProps: DatePickerProps) {
     const selectedPropDidChange = !isSameSelectedDate(
       prevProps.selected,
       this.props.selected,
@@ -300,8 +300,8 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
 }
 
 function isSameSelectedDate(
-  previousDate?: Props['selected'],
-  currentDate?: Props['selected'],
+  previousDate?: DatePickerProps['selected'],
+  currentDate?: DatePickerProps['selected'],
 ) {
   if (previousDate == null || currentDate == null) {
     return previousDate == null && currentDate == null;
@@ -325,4 +325,4 @@ function deriveRange(selected?: Date | Range) {
   return selected instanceof Date ? {start: selected, end: selected} : selected;
 }
 
-export default withAppProvider<Props>()(DatePicker);
+export default withAppProvider<DatePickerProps>()(DatePicker);

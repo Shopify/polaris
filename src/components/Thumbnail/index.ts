@@ -1,4 +1,1 @@
-import Thumbnail from './Thumbnail';
-
-export {Props} from './Thumbnail';
-export default Thumbnail;
+export {Thumbnail, ThumbnailProps} from './Thumbnail';

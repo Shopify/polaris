@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {isServer} from '../../../../utilities/target';
-import EventListener from '../../../EventListener';
+import {EventListener} from '../../../EventListener';
 import styles from '../../ColorPicker.scss';
 
 export interface Position {

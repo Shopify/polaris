@@ -2,7 +2,7 @@ import React from 'react';
 
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {ComboBoxContext} from '../ComboBox/context';
-import BaseTextField, {Props as TextFieldProps} from '../../../TextField';
+import {TextField as BaseTextField, TextFieldProps} from '../../../TextField';
 
 export function TextField(props: TextFieldProps) {
   return (
