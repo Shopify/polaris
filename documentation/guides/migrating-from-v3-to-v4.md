@@ -108,22 +108,33 @@ The `secondaryFooterAction` prop has been removed. Pass an array of actions into
 The `title` prop is now required. If you want the title to be visually hidden set a `title` for screen-readers and set `titleHidden` to hide it from view.
 
 ```jsx
+// old
 <ChoiceList
-  title={'Company name'}
   choices={[
-    {label: 'Hidden', value: 'hidden'},
-    {label: 'Optional', value: 'optional'},
-    {label: 'Required', value: 'required'},
+    {label: 'Choice One', value: 'one'},
+    {label: 'Choice Two', value: 'two'},
   ]}
-  selected={['hidden']}
+  selected={['one']}
+/>
+
+
+// new
+<ChoiceList
+  title={'Meaningful title'}
+  titleHidden
+  choices={[
+    {label: 'Choice One', value: 'one'},
+    {label: 'Choice Two', value: 'two'},
+  ]}
+  selected={['one']}
 />
 ```
 
 ### Icon <a name="polaris-icon"></a>
 
-The `source` prop no longer accepts a string that refers to a bundled icon name or an `SvgSource` shaped object. Pass in react components, such as the icons from `@shopify/polaris-icons`, into the `source` prop instead.
+The `source` prop no longer accepts a string that refers to a bundled icon name. Pass in a React component, such as the icons from `@shopify/polaris-icons` or icons processed through [SVGR](https://www.smooth-code.com/open-source/svgr/), into the `source` prop instead.
 
-Applications using sewing-kit must update to at least version v0.82.0 if they wish to load icon files from their own codebase (which uses SVGR under-the-hood to import SVG files as react components).
+Applications using sewing-kit must update to at least version v0.82.0 if they wish to load icon files from their own codebase (which uses SVGR under-the-hood to import SVG files as React components).
 
 ```jsx
 // old
@@ -154,7 +165,9 @@ The `Modal.Dialog` subcomponent has been removed. This was an undocumented subco
 
 ### Navigation <a name="polaris-navigation"></a>
 
-The `iconBody` prop has been removed from the `Navigation.Item` subcomponent. Pass a string into the `icon` prop instead.
+The `Navigation.UserMenu` subcomponent has been removed. Pass a `TopBar.UserMenu` into `TopBar`'s `userMenu` prop instead.
+
+The `iconBody` prop has been removed from the `Navigation.Item` subcomponent. Pass a string or React Component into the `icon` prop instead.
 
 ```jsx
 // old
@@ -182,11 +195,9 @@ The `iconBody` prop has been removed from the `Navigation.Item` subcomponent. Pa
 />;
 ```
 
-The `Navigation.UserMenu` subcomponent has been removed. Pass a `TopBar.UserMenu` into `TopBar`'s `userMenu` prop instead.
-
 ### Select <a name="polaris-select"></a>
 
-The `groups` prop has been removed. Pass groups into the `options` prop instead, which can now accept an array of groups or options.
+The `groups` prop has been removed. Pass an array of groups into the `options` prop instead, which can now accept an array of groups or options.
 
 ```jsx
 // old
@@ -260,69 +271,6 @@ class Test extends React.Component {
 ### WithRef <a name="polaris-withref"></a>
 
 The `WithRef` component has been removed. It was used as a utlity to place refs on components wrapped in higher-order components. Use functional components instead.
-
-```jsx
-// old
-class Input extends React.PureComponent {
-  inputRef = createRef();
-
-  focus = () => {
-    inputRef.current.focus();
-  };
-
-  render() {
-    return <input ref={inputRef} {...props} />;
-  }
-}
-
-const WrappedInput = compose(
-  hocOne,
-  hocTwo,
-  hocX,
-  withRef,
-)(Input);
-
-class App extends React.PureComponent {
-  input = createRef();
-
-  componentDidMount() {
-    input.current.focus();
-  }
-
-  render() {
-    return (
-      <ReffableInput
-        ref={reffableInput}
-        onFocus={() => console.log('focused')}
-      />
-    );
-  }
-}
-
-// new with hooks
-function Input(props, ref) {
-  const inputRef = useRef();
-  useImperativeHandle(ref, () => ({
-    focus: () => {
-      inputRef.current.focus();
-    },
-  }));
-  return <input ref={inputRef} {...props} />;
-}
-const ReffableInput = forwardRef(Input);
-
-function App() {
-  const reffableInput = useRef();
-
-  useEffect(() => {
-    reffableInput.current.focus();
-  }, []);
-
-  return (
-    <ReffableInput ref={reffableInput} onFocus={() => console.log('focused')} />
-  );
-}
-```
 
 ### LinkLikeComponent <a name="polaris-linklikecomponent"></a>
 
