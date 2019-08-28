@@ -25,6 +25,7 @@ import {
   BulkActions,
   BulkActionsProps,
   CheckableButton,
+  // eslint-disable-next-line import/no-deprecated
   FilterControl,
 } from './components';
 
@@ -88,6 +89,7 @@ type CombinedProps = Props & WithAppProviderProps;
 
 class ResourceList extends React.Component<CombinedProps, State> {
   static Item = ResourceItem;
+  // eslint-disable-next-line import/no-deprecated
   static FilterControl = FilterControl;
 
   private defaultResourceName: {singular: string; plural: string};

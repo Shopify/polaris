@@ -35,6 +35,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Update subcomponents to use named exports for components and better names props exports ([#2058](https://github.com/Shopify/polaris-react/pull/2058))
+
 ### Dependency upgrades
 
 ### Code quality
