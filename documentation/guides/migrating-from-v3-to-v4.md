@@ -1,6 +1,6 @@
 # Migrating from v3 to v4
 
-Polaris v4.0.0 removes most deprecated features introduced in v3.x.x releases. If you've been fixing deprecations in minor versions as they were introduced you shouldn't have much work to do. This file describes all breaking changes that require you to update your code.
+Polaris v4.0.0 removes most features deprecated in v3.x.x releases. This file describes all code updates required to stay up to date.
 
 ## Table of contents
 
@@ -25,11 +25,11 @@ Polaris v4.0.0 removes most deprecated features introduced in v3.x.x releases. I
 
 ## Testing <a name="polaris-testing"></a>
 
-We’ve migrated to [React’s new context API](https://reactjs.org/docs/context.html) while restructuring Polaris React’s entire context structure. We now expose all our internal contexts required for testing within a single `PolarisTestProvider` component.
+Polaris React was migrated to [React’s new context API](https://reactjs.org/docs/context.html) while restructuring its entire context structure. Polaris React now exposes all internal contexts required for testing within a single `PolarisTestProvider` component.
 
 **Note:** These examples use [Enzyme](https://airbnb.io/enzyme/). Other testing libraries can also be used, as shown in [these examples](https://github.com/Shopify/polaris-react/tree/master/examples).
 
-In v3, you could hook into Polaris React's legacy contexts using `createPolarisContext` and `polarisContextTypes`.
+In v3, you could hook into Polaris React’s legacy contexts using `createPolarisContext` and `polarisContextTypes`.
 
 ```jsx
 // old
@@ -44,7 +44,7 @@ export function mountWithAppProvider(node) {
 }
 ```
 
-In v4 you should to wrap your code in the `PolarisTestProvider` which
+In v4, wrap your code in the `PolarisTestProvider` which
 will provide all required contexts.
 
 ```jsx
@@ -105,7 +105,7 @@ The `secondaryFooterAction` prop has been removed. Pass an array of actions into
 
 ### ChoiceList <a name="polaris-choicelist"></a>
 
-The `title` prop is now required. If you want the title to be visually hidden set a `title` for screen-readers and set `titleHidden` to hide it from view.
+The `title` prop is now required. If you want the title to be visually hidden, set a `title` for screen-readers and set `titleHidden` to hide it from view.
 
 ```jsx
 // old
@@ -161,7 +161,7 @@ The `untrusted` prop has been removed. Passing a string into the `source` prop n
 
 ### Modal <a name="polaris-modal"></a>
 
-The `Modal.Dialog` subcomponent has been removed. This was an undocumented subcomponent for private usage only. It was never intended to be a public component.
+The `Modal.Dialog` subcomponent has been removed. This was an undocumented subcomponent for private usage only that was never intended to be public.
 
 ### Navigation <a name="polaris-navigation"></a>
 
@@ -231,7 +231,7 @@ The `groups` prop has been removed. Pass an array of groups into the `options` p
 
 ### Tabs <a name="polaris-tabs"></a>
 
-The `Tabs.Panel` subcomponent has been removed. This was a undocumented subcomponent for private usage only. It was never intended to be a public component.
+The `Tabs.Panel` subcomponent has been removed. This was an undocumented subcomponent for private usage only that was never intended to be public.
 
 ## Removed Exports <a name="polaris-removed-exports"></a>
 
@@ -274,7 +274,7 @@ The `WithRef` component has been removed. It was used as a utlity to place refs 
 
 ### LinkLikeComponent <a name="polaris-linklikecomponent"></a>
 
-The `LinkLikeComponent` type that describes argument you pass into `AppProvider`'s `link` prop has been removed. Use `AppProviderProps['linkComponent']` instead.
+The `LinkLikeComponent` type that describes argument you pass into `AppProvider`’s `link` prop has been removed. Use `AppProviderProps['linkComponent']` instead.
 
 ```jsx
 // old
@@ -302,7 +302,7 @@ npm install react react-dom
 
 ## TypeScript <a name="polaris-typescript"></a>
 
-Polaris now uses default imports for React. Because of this consuming applications that use Typescript must set the [esModuleInterop](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#support-for-import-d-from-cjs-from-commonjs-modules-with---esmoduleinterop) compiler option to `true` in their tsconfig.json. The TypeScript team recommend this option is enabled for all new projects.
+Polaris now uses default imports for React. Because of this, consuming applications that use TypeScript must set the [esModuleInterop](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#support-for-import-d-from-cjs-from-commonjs-modules-with---esmoduleinterop) compiler option to `true` in their `tsconfig.json`. The TypeScript team recommends enabling this option for all new projects.
 
 ```js
 // tsconfig.json
