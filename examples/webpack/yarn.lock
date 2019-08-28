@@ -745,10 +745,10 @@
   resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.6.0.tgz#1654c83025d80ce803f06329aceaabfb96b5e684"
   integrity sha512-l2AwgZhujgu/C1cchJginWODXWcjhrpqrh+lcI+SM3MSSca6l2zSXa3B5OqCcspk6DIQDeJEn5BvXJgT7AJNPQ==
 
-"@shopify/polaris@^4.0.0-rc.2":
-  version "4.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-4.0.0-rc.2.tgz#1d2dff5992201e4cb8a0765ab49513262dd37512"
-  integrity sha512-A72sHRLzbaU3BGnlF5A/gfB0FZxds1oV7a6gslev8+KKQcvYafZAoZB/0fxEZTphZRGpQdUeNPy4NS3aEIGfVQ==
+"@shopify/polaris@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-4.0.0.tgz#1353e388eec6df4e349d9391938697f9118dafa0"
+  integrity sha512-N5c59kX2li52YU1zxo22osjkjNopdOHypyGt2Cep3SPwLpABwyAD9LvR13bBcV77NpFFM3c/4onuEyGPJEjcsQ==
   dependencies:
     "@babel/runtime" "^7.1.6"
     "@material-ui/react-transition-group" "^4.2.0"
@@ -757,6 +757,7 @@
     "@shopify/polaris-icons" "^3.3.0"
     "@shopify/polaris-tokens" "^2.6.0"
     "@shopify/useful-types" "^1.2.4"
+    "@types/hoist-non-react-statics" "^3.3.1"
     "@types/react" "^16.8.15"
     "@types/react-dom" "^16.8.4"
     "@types/react-transition-group" "^2.0.7"
@@ -785,6 +786,14 @@
     "@types/events" "*"
     "@types/minimatch" "*"
     "@types/node" "*"
+
+"@types/hoist-non-react-statics@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
 
 "@types/lodash@^4.14.65":
   version "4.14.123"
