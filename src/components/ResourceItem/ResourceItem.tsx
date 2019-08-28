@@ -214,7 +214,6 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
               {buttonsFrom(shortcutActions, {
-                size: 'slim',
                 plain: true,
               })}
             </ButtonGroup>

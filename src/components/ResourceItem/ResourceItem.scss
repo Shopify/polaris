@@ -46,6 +46,7 @@ $resource-list-item-variables: (
       // stylelint-disable-next-line selector-max-specificity
       .Actions {
         @include action-unhide;
+        right: spacing();
 
         // stylelint-disable-next-line max-nesting-depth
         @include page-content-when-partially-condensed {
@@ -188,7 +189,6 @@ $resource-list-item-variables: (
 .Actions {
   position: absolute;
   top: 0;
-  right: resource-list-item(padding);
   display: flex;
   pointer-events: initial;
   height: 100%;
@@ -234,10 +234,6 @@ $resource-list-item-variables: (
 
   .selectMode & {
     display: none;
-  }
-
-  @include breakpoint-after(resource-list-item(breakpoint-small)) {
-    right: -1 * spacing(loose);
   }
 
   @include page-content-when-partially-condensed {
