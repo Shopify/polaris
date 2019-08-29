@@ -120,12 +120,14 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
 
     const activator = (
       <button
-        tabIndex={-1}
+        type="button"
         className={styles.DisclosureActivator}
         onClick={this.handleDisclosureActivatorClick}
         aria-label={intl.translate('Polaris.Tabs.toggleTabsLabel')}
       >
-        <Icon source={HorizontalDotsMinor} />
+        <span className={styles.Title}>
+          <Icon source={HorizontalDotsMinor} />
+        </span>
       </button>
     );
 
@@ -170,14 +172,17 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
   }
 
   private handleKeyPress = (event: React.KeyboardEvent<HTMLElement>) => {
-    const {tabToFocus, visibleTabs, hiddenTabs} = this.state;
-    const tabsArrayInOrder = visibleTabs.concat(hiddenTabs);
+    const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const key = event.key;
+    const tabsArrayInOrder = showDisclosure
+      ? visibleTabs.concat(hiddenTabs)
+      : [...visibleTabs];
 
     let newFocus = tabsArrayInOrder.indexOf(tabToFocus);
 
     if (key === 'ArrowRight' || key === 'ArrowDown') {
       newFocus += 1;
+
       if (newFocus === tabsArrayInOrder.length) {
         newFocus = 0;
       }
@@ -192,7 +197,6 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
     }
 
     this.setState({
-      showDisclosure: hiddenTabs.indexOf(tabsArrayInOrder[newFocus]) > -1,
       tabToFocus: tabsArrayInOrder[newFocus],
     });
   };
@@ -221,9 +225,9 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
   private handleFocus = (event: React.FocusEvent<HTMLUListElement>) => {
     const {selected, tabs} = this.props;
 
-    // If we are explicitly focusing one of the non-selected tabs, use it
-    // move the focus to it
+    // If we are explicitly focusing a non-selected tab, this focuses it
     const target = event.target as HTMLElement;
+
     if (
       target.classList.contains(styles.Tab) ||
       target.classList.contains(styles.Item)
@@ -256,6 +260,7 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
     }
 
     const relatedTarget = event.relatedTarget as HTMLElement;
+
     if (
       !relatedTarget.classList.contains(styles.Tab) &&
       !relatedTarget.classList.contains(styles.Item) &&
@@ -301,6 +306,7 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
       containerWidth,
       disclosureWidth,
     } = measurements;
+
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
       tabs,
       selected,
