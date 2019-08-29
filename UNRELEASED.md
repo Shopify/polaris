@@ -16,6 +16,9 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Added Android/iOS images for Plain destructive button ([#1881](https://github.com/Shopify/polaris-react/pull/2081))
+- Remove mobile mention from right-aligned text component guidelines ([#1881](https://github.com/Shopify/polaris-react/pull/2081))
+
 ### Development workflow
 
 ### Dependency upgrades
