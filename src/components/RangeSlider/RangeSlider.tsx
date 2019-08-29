@@ -50,4 +50,6 @@ function isDualThumb(value: RangeSliderValue): value is DualValue {
   return Array.isArray(value);
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<Props>()(RangeSlider);

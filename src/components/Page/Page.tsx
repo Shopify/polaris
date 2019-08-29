@@ -203,4 +203,6 @@ class Page extends React.PureComponent<ComposedProps, never> {
   }
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<PageProps & DeprecatedProps>()(Page);

@@ -444,4 +444,6 @@ function ResourceItem(props: CombinedProps) {
   );
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<Props>()(ResourceItem);

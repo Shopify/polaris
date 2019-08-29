@@ -768,4 +768,6 @@ function isSmallScreen() {
     : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<ResourceListProps>()(ResourceList);

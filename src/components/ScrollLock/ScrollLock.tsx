@@ -24,4 +24,6 @@ class ScrollLock extends React.Component<CombinedProps, never> {
   }
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<ScrollLockProps>()(ScrollLock);

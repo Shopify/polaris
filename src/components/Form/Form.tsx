@@ -107,4 +107,6 @@ function normalizeAutoComplete(autoComplete?: boolean) {
   return autoComplete ? 'on' : 'off';
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<FormProps>()(Form);

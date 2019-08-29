@@ -207,4 +207,6 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
   };
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<FilterCreatorProps>()(FilterCreator);

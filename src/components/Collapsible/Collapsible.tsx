@@ -165,5 +165,7 @@ function collapsibleHeight(
   return `${height || 0}px`;
 }
 
+// Use named export once we work out why not casting this breaks web
+// eslint-disable-next-line import/no-default-export
 export default Collapsible as ComponentClass<CollapsibleProps> &
   typeof Collapsible;

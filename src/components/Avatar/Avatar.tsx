@@ -173,4 +173,6 @@ function customerPlaceholder(name?: string) {
     : AVATAR_IMAGES[0];
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<AvatarProps>()(Avatar);

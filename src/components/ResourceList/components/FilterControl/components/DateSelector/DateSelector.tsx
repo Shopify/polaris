@@ -433,4 +433,6 @@ function formatDateForLocalTimezone(date: Date) {
   return formattedDate.toISOString();
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<DateSelectorProps>()(DateSelector);

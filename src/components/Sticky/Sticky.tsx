@@ -122,4 +122,6 @@ function isFunction(arg: any): arg is Function {
   return typeof arg === 'function';
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<StickyProps>()(Sticky);

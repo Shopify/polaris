@@ -174,4 +174,7 @@ function preventDefault(event: React.KeyboardEvent<HTMLInputElement>) {
     event.preventDefault();
   }
 }
+
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<SearchFieldProps>()(SearchField);

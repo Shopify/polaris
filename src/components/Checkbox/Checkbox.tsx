@@ -162,4 +162,6 @@ function stopPropagation<E>(event: React.MouseEvent<E>) {
   event.stopPropagation();
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<CheckboxProps>()(Checkbox);
