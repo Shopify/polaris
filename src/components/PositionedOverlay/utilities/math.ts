@@ -91,9 +91,6 @@ export function calculateHorizontalPosition(
   preferredAlignment: PreferredAlignment,
 ) {
   const maximum = containerRect.width - overlayRect.width;
-  console.log('CONTAINER WIDTH: ', containerRect.width);
-  console.log('OVERLAY WIDTH: ', overlayRect.width);
-  console.log('MAXIMUM: ', maximum);
 
   if (preferredAlignment === 'left') {
     return Math.min(
@@ -102,17 +99,6 @@ export function calculateHorizontalPosition(
     );
   } else if (preferredAlignment === 'right') {
     const activatorRight = activatorRect.left + activatorRect.width;
-    console.log('ACTIVATOR WIDTH: ', activatorRect.width);
-    console.log('ACTIVATOR RIGHT: ', activatorRight);
-    console.log('OVERLAY LEFT MARGIN: ', overlayMargins.horizontal);
-    console.log(
-      'OVERLAY WIDTH + OVERLAY LEFT MARGIN: ',
-      overlayRect.width + overlayMargins.horizontal,
-    );
-    console.log(
-      'ACTIVATOR RIGHT - OVERLAY WIDTH + OVERLAY LEFT MARGIN: ',
-      activatorRight - (overlayRect.width + overlayMargins.horizontal),
-    );
 
     return (
       maximum -
@@ -125,7 +111,12 @@ export function calculateHorizontalPosition(
 
   return Math.min(
     maximum,
-    Math.max(0, activatorRect.center.x - overlayRect.width / 2),
+    Math.max(
+      0,
+      activatorRect.center.x -
+        overlayRect.width / 2 -
+        overlayMargins.horizontal,
+    ),
   );
 }
 
