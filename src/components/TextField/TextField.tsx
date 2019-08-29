@@ -40,7 +40,7 @@ interface State {
   id: string;
 }
 
-interface BaseProps {
+export interface BaseProps {
   /** Text to display before value */
   prefix?: React.ReactNode;
   /** Text to display after value */
