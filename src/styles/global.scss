@@ -36,8 +36,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: color('sky', 'light');
-  // scrollbar width varies across browsers and operating systems, this value needs to be considered when calculating horizontal alignment of overlays so it must be consistent
-  scrollbar-width: scrollbar-width();
 }
 
 *,

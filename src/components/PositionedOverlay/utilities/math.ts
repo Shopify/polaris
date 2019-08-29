@@ -9,7 +9,6 @@ export interface Margins {
   horizontal: number;
 }
 
-// scrollbar-width()
 const SCROLLBAR_WIDTH = 16;
 const BOX_SHADOW_NUDGE = 1;
 
