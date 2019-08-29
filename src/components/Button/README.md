@@ -147,6 +147,18 @@ Use for actions that will delete merchant data or be otherwise difficult to reco
 </Button>
 ```
 
+<!-- content-for: android -->
+
+![Destructive plain button for Android](/public_images/components/Button/android/plain-destructive@2x.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Destructive plain button for iOS](/public_images/components/Button/ios/plain-destructive@2x.png)
+
+<!-- /content-for -->
+
 ### Primary button
 
 Use to highlight the most important actions in any experience. Don’t use more than one primary button in a section or screen to avoid overwhelming merchants.
@@ -177,13 +189,13 @@ Use when the action will delete merchant data or be otherwise difficult to recov
 
 <!-- content-for: android -->
 
-![Destrutive plain and destructive basic button for Android](/public_images/components/Button/android/destructive@2x.png)
+![Destructive basic button for Android](/public_images/components/Button/android/basic-destructive@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Destrutive plain and destructive basic button for iOS](/public_images/components/Button/ios/destructive@2x.png)
+![Destructive basic button for iOS](/public_images/components/Button/ios/basic-destructive@2x.png)
 
 <!-- /content-for -->
 
