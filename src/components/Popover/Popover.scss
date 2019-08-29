@@ -11,6 +11,7 @@ $content-max-width: rem(400px);
   box-shadow: shadow(deep);
   border-radius: border-radius();
   will-change: left, top;
+  width: 100%;
 }
 
 .PopoverOverlay {
