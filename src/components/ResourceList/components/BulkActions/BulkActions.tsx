@@ -27,6 +27,8 @@ const MAX_PROMOTED_ACTIONS = 2;
 export interface BulkActionsProps {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** Whether to render the small screen BulkActions or not */
+  smallScreen?: boolean;
   /** Label for the bulk actions */
   label?: string;
   /** State of the bulk actions checkbox */
@@ -193,6 +195,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
       label = '',
       onToggleAll,
       selected,
+      smallScreen,
       disabled,
       promotedActions,
       paginatedSelectAllText = null,
@@ -363,11 +366,12 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
       disabled,
     };
 
-    const smallScreenGroup = (
+    const smallScreenGroup = smallScreen ? (
       <Transition
         timeout={0}
         in={selectMode}
         key="smallGroup"
+        testID="smallGroup"
         findDOMNode={this.findSmallScreenGroupNode}
       >
         {(status: TransitionStatus) => {
@@ -393,7 +397,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
                     className={styles.CheckableContainer}
                     ref={this.checkableWrapperNode}
                   >
-                    <CheckableButton {...checkableButtonProps} />
+                    <CheckableButton {...checkableButtonProps} smallScreen />
                   </div>
                 </CSSTransition>
                 {allActionsPopover}
@@ -404,14 +408,15 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
           );
         }}
       </Transition>
-    );
+    ) : null;
 
-    const largeScreenGroup = (
+    const largeScreenGroup = smallScreen ? null : (
       <Transition
         timeout={0}
         in={selectMode}
         key="largeGroup"
         findDOMNode={this.findLargeScreenGroupNode}
+        testID="largeGroup"
       >
         {(status: TransitionStatus) => {
           const largeScreenGroupClassName = classNames(

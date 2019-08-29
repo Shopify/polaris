@@ -1,6 +1,11 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
+import {CheckboxHandles} from '../../../../types';
 import {classNames} from '../../../../utilities/css';
 import {Checkbox} from '../../../Checkbox';
+import {
+  ResourceListContext,
+  CheckableButtonKey,
+} from '../../../../utilities/resource-list';
 
 import styles from './CheckableButton.scss';
 
@@ -9,6 +14,7 @@ export interface CheckableButtonProps {
   label?: string;
   selected?: boolean | 'indeterminate';
   selectMode?: boolean;
+  smallScreen?: boolean;
   plain?: boolean;
   measuring?: boolean;
   disabled?: boolean;
@@ -24,7 +30,26 @@ export function CheckableButton({
   plain,
   measuring,
   disabled,
+  smallScreen,
 }: CheckableButtonProps) {
+  const checkBoxRef = useRef<CheckboxHandles>(null);
+
+  const {registerCheckableButtons} = React.useContext(ResourceListContext);
+
+  let currentKey: CheckableButtonKey = 'bulkLg';
+
+  if (plain) {
+    currentKey = 'plain';
+  } else if (smallScreen) {
+    currentKey = 'bulkSm';
+  }
+
+  useEffect(() => {
+    if (checkBoxRef.current && registerCheckableButtons) {
+      registerCheckableButtons(currentKey, checkBoxRef.current);
+    }
+  }, [currentKey, registerCheckableButtons]);
+
   const className = plain
     ? classNames(styles.CheckableButton, styles['CheckableButton-plain'])
     : classNames(
@@ -43,6 +68,7 @@ export function CheckableButton({
           checked={selected}
           disabled={disabled}
           onChange={onToggleAll}
+          ref={checkBoxRef}
         />
       </div>
       <span className={styles.Label}>{label}</span>
