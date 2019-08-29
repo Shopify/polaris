@@ -14,7 +14,7 @@ import {
 } from '../../utilities/with-app-provider';
 import {
   ResourceListContext,
-  SelectedItems,
+  ResourceListSelectedItems,
   SELECT_ALL_ITEMS,
 } from '../../utilities/resource-list';
 import {Select, SelectOption} from '../Select';
@@ -58,7 +58,7 @@ export interface ResourceListProps {
   /** Actions available on the currently selected items */
   bulkActions?: BulkActionsProps['actions'];
   /** Collection of IDs for the currently selected items */
-  selectedItems?: SelectedItems;
+  selectedItems?: ResourceListSelectedItems;
   /** Renders a Select All button at the top of the list and checkboxes in front of each list item. For use when bulkActions aren't provided. **/
   selectable?: boolean;
   /** If there are more items than currently in the list */
@@ -76,7 +76,7 @@ export interface ResourceListProps {
   /** Callback when sort option is changed */
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
-  onSelectionChange?(selectedItems: SelectedItems): void;
+  onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
   /** Function to render each list item	 */
   renderItem(item: any, id: string, index: number): React.ReactNode;
   /** Function to customize the unique ID for each item */

@@ -20,7 +20,7 @@ import {
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
-  SelectedItems,
+  ResourceListSelectedItems,
 } from '../../utilities/resource-list';
 import styles from './ResourceItem.scss';
 
@@ -428,7 +428,7 @@ function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();
 }
 
-function isSelected(id: string, selectedItems?: SelectedItems) {
+function isSelected(id: string, selectedItems?: ResourceListSelectedItems) {
   return Boolean(
     selectedItems &&
       ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||

@@ -135,8 +135,8 @@ export {Modal, ModalProps} from './Modal';
 export {
   Navigation,
   NavigationProps,
-  ItemProps as NavigationItemProps,
-  MessageProps as NavigationMessageProps,
+  NavigationItemProps,
+  NavigationMessageProps,
   SubNavigationItem,
   isNavigationItemActive,
 } from './Navigation';
@@ -177,9 +177,7 @@ export {
   FilterTextField,
 } from './ResourceList';
 
-export {
-  SelectedItems as ResourceListSelectedItems,
-} from '../utilities/resource-list';
+export {ResourceListSelectedItems} from '../utilities/resource-list';
 
 export {ResourcePicker, ResourcePickerProps} from './ResourcePicker';
 

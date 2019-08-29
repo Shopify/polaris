@@ -1,8 +1,8 @@
 export {Navigation, NavigationProps} from './Navigation';
 
 export {
-  ItemProps,
+  ItemProps as NavigationItemProps,
   SubNavigationItem,
   isNavigationItemActive,
-  MessageProps,
+  MessageProps as NavigationMessageProps,
 } from './components';
