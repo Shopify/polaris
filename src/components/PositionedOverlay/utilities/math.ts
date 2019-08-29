@@ -9,9 +9,6 @@ export interface Margins {
   horizontal: number;
 }
 
-const SCROLLBAR_WIDTH = 16;
-const BOX_SHADOW_NUDGE = 1;
-
 export function calculateVerticalPosition(
   activatorRect: Rect,
   overlayRect: Rect,
@@ -100,10 +97,7 @@ export function calculateHorizontalPosition(
   if (preferredAlignment === 'left') {
     return Math.min(
       maximum,
-      Math.max(
-        0,
-        activatorRect.left - overlayMargins.horizontal + BOX_SHADOW_NUDGE,
-      ),
+      Math.max(0, activatorRect.left - overlayMargins.horizontal),
     );
   } else if (preferredAlignment === 'right') {
     const activatorRight = activatorRect.left + activatorRect.width;
@@ -112,29 +106,18 @@ export function calculateHorizontalPosition(
     console.log('OVERLAY LEFT MARGIN: ', overlayMargins.horizontal);
     console.log(
       'OVERLAY WIDTH + OVERLAY LEFT MARGIN: ',
-      overlayRect.width +
-        overlayMargins.horizontal +
-        BOX_SHADOW_NUDGE -
-        SCROLLBAR_WIDTH,
+      overlayRect.width + overlayMargins.horizontal,
     );
     console.log(
-      'ACTIVATOR RIGHT - OVERLAY WIDTH + OVERLAY LEFT MARGIN + BOX_SHADOW_NUDGE - SCROLLBAR_WIDTH: ',
-      activatorRight -
-        (overlayRect.width +
-          overlayMargins.horizontal +
-          BOX_SHADOW_NUDGE -
-          SCROLLBAR_WIDTH),
+      'ACTIVATOR RIGHT - OVERLAY WIDTH + OVERLAY LEFT MARGIN: ',
+      activatorRight - (overlayRect.width + overlayMargins.horizontal),
     );
 
     return (
       maximum -
       Math.max(
         0,
-        activatorRight -
-          (overlayRect.width +
-            overlayMargins.horizontal +
-            BOX_SHADOW_NUDGE -
-            SCROLLBAR_WIDTH),
+        activatorRight - (overlayRect.width + overlayMargins.horizontal),
       )
     );
   }
