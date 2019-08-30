@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
 import {
   Range,
@@ -11,14 +11,10 @@ import {
   getPreviousDisplayYear,
   getPreviousDisplayMonth,
   Weekdays,
-  isSameDay,
 } from '@shopify/javascript-utilities/dates';
 
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
 import {Button} from '../Button';
+import {useI18n} from '../../utilities/i18n';
 import {monthName} from './utilities';
 
 import {Month} from './components';
@@ -52,235 +48,217 @@ export interface BaseProps {
 }
 
 export interface DatePickerProps extends BaseProps {}
-type CombinedProps = DatePickerProps & WithAppProviderProps;
 
-interface State {
-  hoverDate?: Date;
-  focusDate?: Date;
-}
+export function DatePicker({
+  id,
+  selected,
+  month,
+  year,
+  allowRange,
+  multiMonth,
+  disableDatesBefore,
+  disableDatesAfter,
+  weekStartsOn = Weekdays.Sunday,
+  onMonthChange,
+  onChange = noop,
+}: DatePickerProps) {
+  const i18n = useI18n();
+  const [hoverDate, setHoverDate] = useState<Date | undefined>(undefined);
+  const [focusDate, setFocusDate] = useState<Date | undefined>(undefined);
 
-class DatePicker extends React.PureComponent<CombinedProps, State> {
-  state: State = {
-    hoverDate: undefined,
-    focusDate: undefined,
-  };
+  useEffect(
+    () => {
+      setFocusDate(undefined);
+    },
+    [selected],
+  );
 
-  componentDidUpdate(prevProps: DatePickerProps) {
-    const selectedPropDidChange = !isSameSelectedDate(
-      prevProps.selected,
-      this.props.selected,
-    );
+  const handleFocus = useCallback((date: Date) => {
+    setFocusDate(date);
+  }, []);
 
-    if (selectedPropDidChange) {
-      this.resetFocus();
-    }
-  }
+  const setFocusDateAndHandleMonthChange = useCallback(
+    (date: Date) => {
+      if (onMonthChange) {
+        onMonthChange(date.getMonth(), date.getFullYear());
+      }
+      setHoverDate(date);
+      setFocusDate(date);
+    },
+    [onMonthChange],
+  );
 
-  render() {
-    const {
-      id,
-      selected,
-      month,
-      year,
-      allowRange,
-      multiMonth,
-      disableDatesBefore,
+  const handleDateSelection = useCallback(
+    (range: Range) => {
+      const {end} = range;
+
+      setHoverDate(end);
+      setFocusDate(new Date(end));
+      onChange(range);
+    },
+    [onChange],
+  );
+
+  const handleMonthChangeClick = useCallback(
+    (month: Months, year: Year) => {
+      if (!onMonthChange) {
+        return;
+      }
+      setFocusDate(undefined);
+      onMonthChange(month, year);
+    },
+    [onMonthChange],
+  );
+
+  const handleHover = useCallback((date: Date) => {
+    setHoverDate(date);
+  }, []);
+
+  const handleKeyUp = useCallback(
+    (event: React.KeyboardEvent<HTMLElement>) => {
+      const {key} = event;
+
+      const range = deriveRange(selected);
+      const focusedDate = focusDate || (range && range.start);
+
+      if (focusedDate == null) {
+        return;
+      }
+
+      if (key === 'ArrowUp') {
+        const previousWeek = new Date(focusedDate);
+        previousWeek.setDate(focusedDate.getDate() - 7);
+        if (
+          !(
+            disableDatesBefore && isDateBefore(previousWeek, disableDatesBefore)
+          )
+        ) {
+          setFocusDateAndHandleMonthChange(previousWeek);
+        }
+      }
+
+      if (key === 'ArrowDown') {
+        const nextWeek = new Date(focusedDate);
+        nextWeek.setDate(focusedDate.getDate() + 7);
+        if (!(disableDatesAfter && isDateAfter(nextWeek, disableDatesAfter))) {
+          setFocusDateAndHandleMonthChange(nextWeek);
+        }
+      }
+
+      if (key === 'ArrowRight') {
+        const tomorrow = new Date(focusedDate);
+        tomorrow.setDate(focusedDate.getDate() + 1);
+        if (!(disableDatesAfter && isDateAfter(tomorrow, disableDatesAfter))) {
+          setFocusDateAndHandleMonthChange(tomorrow);
+        }
+      }
+
+      if (key === 'ArrowLeft') {
+        const yesterday = new Date(focusedDate);
+        yesterday.setDate(focusedDate.getDate() - 1);
+        if (
+          !(disableDatesBefore && isDateBefore(yesterday, disableDatesBefore))
+        ) {
+          setFocusDateAndHandleMonthChange(yesterday);
+        }
+      }
+    },
+    [
       disableDatesAfter,
-      weekStartsOn = Weekdays.Sunday,
-      polaris: {intl},
-    } = this.props;
+      disableDatesBefore,
+      focusDate,
+      selected,
+      setFocusDateAndHandleMonthChange,
+    ],
+  );
 
-    const {hoverDate, focusDate} = this.state;
+  const showNextYear = getNextDisplayYear(month, year);
+  const showNextMonth = getNextDisplayMonth(month);
 
-    const showNextYear = getNextDisplayYear(month, year);
-    const showNextMonth = getNextDisplayMonth(month);
+  const showNextToNextYear = getNextDisplayYear(showNextMonth, showNextYear);
+  const showNextToNextMonth = getNextDisplayMonth(showNextMonth);
 
-    const showNextToNextYear = getNextDisplayYear(showNextMonth, showNextYear);
-    const showNextToNextMonth = getNextDisplayMonth(showNextMonth);
+  const showPreviousYear = getPreviousDisplayYear(month, year);
+  const showPreviousMonth = getPreviousDisplayMonth(month);
 
-    const showPreviousYear = getPreviousDisplayYear(month, year);
-    const showPreviousMonth = getPreviousDisplayMonth(month);
+  const previousMonthName = i18n.translate(
+    `Polaris.DatePicker.months.${monthName(showPreviousMonth)}`,
+  );
+  const nextMonth = multiMonth
+    ? i18n.translate(
+        `Polaris.DatePicker.months.${monthName(showNextToNextMonth)}`,
+      )
+    : i18n.translate(`Polaris.DatePicker.months.${monthName(showNextMonth)}`);
+  const nextYear = multiMonth ? showNextToNextYear : showNextYear;
 
-    const previousMonthName = intl.translate(
-      `Polaris.DatePicker.months.${monthName(showPreviousMonth)}`,
-    );
-    const nextMonth = multiMonth
-      ? intl.translate(
-          `Polaris.DatePicker.months.${monthName(showNextToNextMonth)}`,
-        )
-      : intl.translate(`Polaris.DatePicker.months.${monthName(showNextMonth)}`);
-    const nextYear = multiMonth ? showNextToNextYear : showNextYear;
+  const secondDatePicker = multiMonth ? (
+    <Month
+      onFocus={handleFocus}
+      focusedDate={focusDate}
+      month={showNextMonth}
+      year={showNextYear}
+      selected={deriveRange(selected)}
+      hoverDate={hoverDate}
+      onChange={handleDateSelection}
+      onHover={handleHover}
+      disableDatesBefore={disableDatesBefore}
+      disableDatesAfter={disableDatesAfter}
+      allowRange={allowRange}
+      weekStartsOn={weekStartsOn}
+    />
+  ) : null;
 
-    const secondDatePicker = multiMonth ? (
-      <Month
-        onFocus={this.handleFocus}
-        focusedDate={focusDate}
-        month={showNextMonth}
-        year={showNextYear}
-        selected={deriveRange(selected)}
-        hoverDate={hoverDate}
-        onChange={this.handleDateSelection}
-        onHover={this.handleHover}
-        disableDatesBefore={disableDatesBefore}
-        disableDatesAfter={disableDatesAfter}
-        allowRange={allowRange}
-        weekStartsOn={weekStartsOn}
-      />
-    ) : null;
-
-    return (
-      <div
-        id={id}
-        className={styles.DatePicker}
-        onKeyDown={handleKeyDown}
-        onKeyUp={this.handleKeyUp}
-      >
-        <div className={styles.Header}>
-          <Button
-            plain
-            icon={ArrowLeftMinor}
-            accessibilityLabel={intl.translate(
-              'Polaris.DatePicker.previousMonth',
-              {
-                previousMonthName,
-                showPreviousYear,
-              },
-            )}
-            onClick={this.handleMonthChangeClick.bind(
-              null,
-              showPreviousMonth,
+  return (
+    <div
+      id={id}
+      className={styles.DatePicker}
+      onKeyDown={handleKeyDown}
+      onKeyUp={handleKeyUp}
+    >
+      <div className={styles.Header}>
+        <Button
+          plain
+          icon={ArrowLeftMinor}
+          accessibilityLabel={i18n.translate(
+            'Polaris.DatePicker.previousMonth',
+            {
+              previousMonthName,
               showPreviousYear,
-            )}
-          />
-          <Button
-            plain
-            icon={ArrowRightMinor}
-            accessibilityLabel={intl.translate('Polaris.DatePicker.nextMonth', {
-              nextMonth,
-              nextYear,
-            })}
-            onClick={this.handleMonthChangeClick.bind(
-              null,
-              showNextMonth,
-              showNextYear,
-            )}
-          />
-        </div>
-        <div className={styles.MonthContainer}>
-          <Month
-            onFocus={this.handleFocus}
-            focusedDate={focusDate}
-            month={month}
-            year={year}
-            selected={deriveRange(selected)}
-            hoverDate={hoverDate}
-            onChange={this.handleDateSelection}
-            onHover={this.handleHover}
-            disableDatesBefore={disableDatesBefore}
-            disableDatesAfter={disableDatesAfter}
-            allowRange={allowRange}
-            weekStartsOn={weekStartsOn}
-          />
-          {secondDatePicker}
-        </div>
+            },
+          )}
+          onClick={() =>
+            handleMonthChangeClick(showPreviousMonth, showPreviousYear)
+          }
+        />
+        <Button
+          plain
+          icon={ArrowRightMinor}
+          accessibilityLabel={i18n.translate('Polaris.DatePicker.nextMonth', {
+            nextMonth,
+            nextYear,
+          })}
+          onClick={() => handleMonthChangeClick(showNextMonth, showNextYear)}
+        />
       </div>
-    );
-  }
-
-  private handleFocus = (date: Date) => {
-    this.setState({focusDate: date});
-  };
-
-  private resetFocus = () => {
-    this.setState({focusDate: undefined});
-  };
-
-  private handleKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
-    const {key} = event;
-    const {selected, disableDatesBefore, disableDatesAfter} = this.props;
-
-    const {focusDate} = this.state;
-    const range = deriveRange(selected);
-    const focusedDate = focusDate || (range && range.start);
-
-    if (focusedDate == null) {
-      return;
-    }
-
-    if (key === 'ArrowUp') {
-      const previousWeek = new Date(focusedDate);
-      previousWeek.setDate(focusedDate.getDate() - 7);
-      if (
-        !(disableDatesBefore && isDateBefore(previousWeek, disableDatesBefore))
-      ) {
-        this.setFocusDateAndHandleMonthChange(previousWeek);
-      }
-    }
-
-    if (key === 'ArrowDown') {
-      const nextWeek = new Date(focusedDate);
-      nextWeek.setDate(focusedDate.getDate() + 7);
-      if (!(disableDatesAfter && isDateAfter(nextWeek, disableDatesAfter))) {
-        this.setFocusDateAndHandleMonthChange(nextWeek);
-      }
-    }
-
-    if (key === 'ArrowRight') {
-      const tomorrow = new Date(focusedDate);
-      tomorrow.setDate(focusedDate.getDate() + 1);
-      if (!(disableDatesAfter && isDateAfter(tomorrow, disableDatesAfter))) {
-        this.setFocusDateAndHandleMonthChange(tomorrow);
-      }
-    }
-
-    if (key === 'ArrowLeft') {
-      const yesterday = new Date(focusedDate);
-      yesterday.setDate(focusedDate.getDate() - 1);
-      if (
-        !(disableDatesBefore && isDateBefore(yesterday, disableDatesBefore))
-      ) {
-        this.setFocusDateAndHandleMonthChange(yesterday);
-      }
-    }
-  };
-
-  private setFocusDateAndHandleMonthChange = (date: Date) => {
-    const {onMonthChange} = this.props;
-    if (onMonthChange) {
-      onMonthChange(date.getMonth(), date.getFullYear());
-    }
-    this.setState({
-      hoverDate: date,
-      focusDate: date,
-    });
-  };
-
-  private handleDateSelection = (range: Range) => {
-    const {end} = range;
-    const {onChange = noop} = this.props;
-
-    this.setState({hoverDate: end, focusDate: new Date(end)}, () =>
-      onChange(range),
-    );
-  };
-
-  private handleMonthChangeClick = (month: Months, year: Year) => {
-    const {onMonthChange} = this.props;
-    if (!onMonthChange) {
-      return;
-    }
-    this.setState({
-      focusDate: undefined,
-    });
-
-    onMonthChange(month, year);
-  };
-
-  private handleHover = (date: Date) => {
-    this.setState({
-      hoverDate: date,
-    });
-  };
+      <div className={styles.MonthContainer}>
+        <Month
+          onFocus={handleFocus}
+          focusedDate={focusDate}
+          month={month}
+          year={year}
+          selected={deriveRange(selected)}
+          hoverDate={hoverDate}
+          onChange={handleDateSelection}
+          onHover={handleHover}
+          disableDatesBefore={disableDatesBefore}
+          disableDatesAfter={disableDatesAfter}
+          allowRange={allowRange}
+          weekStartsOn={weekStartsOn}
+        />
+        {secondDatePicker}
+      </div>
+    </div>
+  );
 }
 
 function noop() {}
@@ -299,32 +277,6 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   }
 }
 
-function isSameSelectedDate(
-  previousDate?: DatePickerProps['selected'],
-  currentDate?: DatePickerProps['selected'],
-) {
-  if (previousDate == null || currentDate == null) {
-    return previousDate == null && currentDate == null;
-  }
-
-  if (previousDate instanceof Date || currentDate instanceof Date) {
-    return (
-      previousDate instanceof Date &&
-      currentDate instanceof Date &&
-      isSameDay(previousDate, currentDate)
-    );
-  }
-
-  return (
-    isSameDay(previousDate.start, currentDate.start) &&
-    isSameDay(previousDate.end, currentDate.end)
-  );
-}
-
 function deriveRange(selected?: Date | Range) {
   return selected instanceof Date ? {start: selected, end: selected} : selected;
 }
-
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<DatePickerProps>()(DatePicker);
