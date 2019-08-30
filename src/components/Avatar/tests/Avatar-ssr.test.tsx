@@ -1,7 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {Image} from 'components';
-import Avatar from '../Avatar';
+import {Avatar, Image} from 'components';
 
 jest.mock('../../../utilities/target', () => ({
   get isServer() {
