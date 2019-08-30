@@ -35,7 +35,6 @@ $color-palette-data: map-extend(
 /// @param {Color} $for-background - The background color on which this color
 /// will appear. Applies a multiply filter to ensure appropriate contrast.
 /// @return {Color} The color value.
-/// @deprecated Pull data from colors Polaris tokens
 
 @function color($hue, $value: base, $for-background: null) {
   $fetched-color: map-get(map-get($color-palette-data, $hue), $value);

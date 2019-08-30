@@ -7,7 +7,6 @@ $borders-data: (
 /// Returns the default border.
 /// @param {String} $variant [base] - The border variant key.
 /// @return {List} The border value.
-/// @deprecated Copy function into consuming project
 
 @function border($variant: base) {
   $fetched-value: map-get($borders-data, $variant);

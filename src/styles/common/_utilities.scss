@@ -4,7 +4,6 @@ $base-font-size: 10px;
 /// Returns the value in rem for a given pixel value.
 /// @param {Number} $value - The pixel value to be converted.
 /// @return {Number} The converted value in rem.
-/// @deprecated Copy function into consuming project
 
 @function rem($value) {
   $unit: unit($value);
@@ -25,7 +24,6 @@ $base-font-size: 10px;
 /// Returns the value in pixels for a given rem value.
 /// @param {Number} $value - The rem value to be converted.
 /// @return {Number} The converted value in pixels.
-/// @deprecated Copy function into consuming project
 
 @function px($value) {
   $unit: unit($value);
@@ -47,7 +45,6 @@ $base-font-size: 10px;
 /// only works for elements that have had no font-size changes.
 /// @param {Number} $value - The pixel value to be converted.
 /// @return {Number} The converted value in ems.
-/// @deprecated Copy function into consuming project
 
 @function em($value) {
   $unit: unit($value);
@@ -69,7 +66,6 @@ $base-font-size: 10px;
 /// @param {Map} $map - The map of data to list the names from.
 /// @param {Number} $map - The level of depth to get names from.
 /// @return {String} The list of names in the map.
-/// @deprecated Copy data and function into consuming project
 
 @function available-names($map, $level: 1) {
   @if type-of($map) != 'map' {
@@ -100,11 +96,10 @@ $base-font-size: 10px;
   @return $output;
 }
 
-/// Merge multiple maps into one.
-/// @param {Map} $map - Initial default map.
-/// @param {ArgList} $maps - Other maps to merge.
-/// @return {Map} The final merged map.
-/// @deprecated Copy function into consuming project
+// Merge multiple maps into one.
+// @param {Map} $map - Initial default map.
+// @param {ArgList} $maps - Other maps to merge.
+// @return {Map} The final merged map.
 @function map-extend($map, $maps...) {
   @for $i from 1 through length($maps) {
     @each $key, $value in nth($maps, $i) {

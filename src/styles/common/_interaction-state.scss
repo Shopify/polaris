@@ -3,7 +3,6 @@
 ///
 /// @param {argList} $interaction-states... - Accepts single or multiple
 /// interactions states.
-/// @deprecated Copy data and mixin into consuming project
 @mixin state($interaction-states...) {
   $backgrounds: ();
 

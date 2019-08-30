@@ -42,6 +42,7 @@ $layout-width-data: (
 /// Returns the widths of the specified column.
 /// @param {String} $name - The column name.
 /// @return {Number} The width for the column.
+/// @deprecated Pull data from sizes and spacing Polaris tokens
 
 @function layout-width($name, $value: base) {
   $fetched-value: map-get(map-get($layout-width-data, $name), $value);
@@ -55,14 +56,17 @@ $layout-width-data: (
 
 $dismiss-icon-size: 32px;
 
+/// @deprecated Copy function into consuming project
 @function top-bar-height() {
   @return rem(56px);
 }
 
+/// @deprecated Copy function into consuming project
 @function mobile-nav-width() {
   @return calc(100vw - #{rem($dismiss-icon-size) + spacing() * 2});
 }
 
+/// @deprecated Copy function into consuming project
 @function nav-min-window-corrected() {
   @return rem(769px);
 }

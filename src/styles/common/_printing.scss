@@ -1,18 +1,15 @@
-/// @deprecated Copy mixin into consuming project
 @mixin when-printing {
   @media print {
     @content;
   }
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin when-not-printing {
   @media not print {
     @content;
   }
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin hidden-when-printing {
   @include when-printing {
     // We really, really don't want to see this thing when it is printed.

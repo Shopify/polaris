@@ -4,31 +4,34 @@
 
 // stylelint-disable scss/partial-no-import
 
-@import './foundation/utilities';
-@import './foundation/colors';
-@import './foundation/filters';
-@import './foundation/spacing';
-@import './foundation/border-width';
-@import './foundation/borders';
-@import './foundation/border-radius';
-@import './foundation/duration';
-@import './foundation/easing';
-@import './foundation/layout';
-@import './foundation/shadows';
-@import './foundation/typography';
-@import './foundation/z-index';
+// start: data to be pulled from tokens
+@import './common/colors';
+@import './common/filters';
+@import './common/spacing';
+@import './common/border-width';
+@import './common/border-radius';
+@import './common/duration';
+@import './common/easing';
+@import './common/layout';
+@import './common/shadows';
+// end: data to be pulled from tokens
 
-@import './shared/accessibility';
-@import './shared/breakpoints';
-@import './shared/buttons';
-@import './shared/controls';
-@import './shared/forms';
-@import './shared/icons';
-@import './shared/layout';
-@import './shared/links';
-@import './shared/lists';
-@import './shared/page';
-@import './shared/typography';
-@import './shared/skeleton';
-@import './shared/interaction-state';
-@import './shared/printing';
+@import './common/typography';
+@import './common/utilities';
+@import './common/borders';
+@import './common/z-index';
+
+@import './common/accessibility';
+@import './common/breakpoints';
+@import './common/buttons';
+@import './common/controls';
+@import './common/forms';
+@import './common/icons';
+@import './common/layout';
+@import './common/links';
+@import './common/lists';
+@import './common/page';
+@import './common/typography';
+@import './common/skeleton';
+@import './common/interaction-state';
+@import './common/printing';

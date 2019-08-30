@@ -11,7 +11,6 @@ $easing-data: (
 ///
 /// @param {String} $variant - The key for the given variant.
 /// @return {String} The cubic-bezier function (string) for the variant.
-/// @deprecated Pull data from easings Polaris tokens
 
 @function easing($variant: base) {
   $fetched-value: map-get($easing-data, $variant);

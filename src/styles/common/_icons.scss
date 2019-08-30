@@ -1,9 +1,7 @@
-/// @deprecated Copy function into consuming project
 @function icon-size() {
   @return rem(20px);
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin recolor-icon($fill-color, $secondary-color: null, $filter-color: null) {
   svg {
     fill: $fill-color;
@@ -20,7 +18,6 @@
   }
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin color-icon($value, $hue: base) {
   svg {
     fill: color($value, $hue);

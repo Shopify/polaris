@@ -15,7 +15,6 @@ $color-filter-palette-data: $polaris-color-filters;
 /// @param {String} $value - The darkness/lightness of the color. Defaults to
 /// base.
 /// @return {List} The filter list.
-/// @deprecated Pull data from filters Polaris tokens
 
 @function filter($hue, $value: base) {
   $fetched-color: map-get(map-get($color-filter-palette-data, $hue), $value);

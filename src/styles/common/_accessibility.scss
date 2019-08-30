@@ -1,6 +1,5 @@
 /// Used to hide an element visually, but keeping it accessible for
 /// accessibility tools.
-/// @deprecated Copy mixin into consuming project
 
 @mixin visually-hidden {
   // Need to make sure we override any existing styles.

@@ -1,11 +1,9 @@
-/// @deprecated Copy mixin into consuming project
 @mixin high-contrast-button-outline($outline: 2px dotted) {
   @media (-ms-high-contrast: active) {
     outline: $outline;
   }
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin button-base {
   $min-height: control-height();
   $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
@@ -69,7 +67,6 @@
   }
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin base-button-disabled {
   @include recolor-icon(color('ink', 'lightest'));
   transition: none;
@@ -81,7 +78,6 @@
   color: color('ink', 'lightest');
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin button-filled($button-color, $focus-color, $outline-color: null) {
   $border-color: darken($button-color, 10%);
   $active-color: darken($button-color, 15%);
@@ -120,7 +116,6 @@
   }
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin button-filled-disabled($button-color) {
   @include recolor-icon(color('white'));
   // Transition gradient to gradient to avoid flicker
@@ -134,7 +129,6 @@
   color: color('white');
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin button-outline($outline-color) {
   background: transparent;
   border-color: rgba($outline-color, 0.4);
@@ -157,7 +151,6 @@
   }
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin button-outline-disabled($outline-color) {
   background: transparent;
   border-color: rgba($outline-color, 0.25);
@@ -167,18 +160,15 @@
   @include recolor-icon(color('ink', 'lightest'));
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin button-full-width {
   display: flex;
   width: 100%;
 }
 
-/// @deprecated Copy function into consuming project
 @function plain-button-background() {
   @return rgba(color('ink'), 0.1);
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin plain-button-backdrop() {
   padding: 2px 5px;
   margin: -2px -5px;
@@ -187,7 +177,6 @@
   transition: opacity duration() easing();
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin unstyled-button() {
   appearance: none;
   margin: 0;

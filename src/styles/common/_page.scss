@@ -1,16 +1,13 @@
 $actions-vertical-spacing: spacing(tight);
 
-/// @deprecated Copy mixin into consuming project
 @mixin page-padding-not-fully-condensed {
   padding: 0 spacing(loose);
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin page-padding-not-partially-condensed {
   padding: 0 spacing(extra-loose);
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin page-layout {
   margin: 0 auto;
   padding: 0;
@@ -25,7 +22,6 @@ $actions-vertical-spacing: spacing(tight);
   }
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin page-content-layout {
   margin: spacing(loose) 0;
 
@@ -34,7 +30,6 @@ $actions-vertical-spacing: spacing(tight);
   }
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin page-title-layout {
   @include layout-flex-fix;
   @include text-breakword;
@@ -50,7 +45,6 @@ $actions-vertical-spacing: spacing(tight);
   }
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin page-header-layout {
   padding: spacing(loose) spacing(loose) 0;
 
@@ -64,22 +58,18 @@ $actions-vertical-spacing: spacing(tight);
   }
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin page-header-has-navigation {
   padding-top: rem(32px);
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin page-header-without-navigation {
   margin-top: unset;
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin page-header-has-secondary-actions {
   padding-top: rem(24px);
 }
 
-/// @deprecated Copy mixin into consuming project
 @mixin page-actions-layout {
   display: flex;
   justify-content: flex-start;
