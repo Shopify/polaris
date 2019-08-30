@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './SettingAction.scss';
 
-export interface Props {
+export interface SettingActionProps {
   action?: React.ReactNode;
   children?: React.ReactNode;
 }
 
-export default function SettingAction({action, children}: Props) {
+export function SettingAction({action, children}: SettingActionProps) {
   return (
     <div className={styles.SettingAction}>
       <div className={styles.Setting}>{children}</div>

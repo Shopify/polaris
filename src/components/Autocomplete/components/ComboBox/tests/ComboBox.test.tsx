@@ -2,9 +2,9 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {OptionList, ActionList, Popover} from 'components';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import TextField from '../../TextField';
+import {TextField} from '../../TextField';
 import {Key} from '../../../../../types';
-import ComboBox from '..';
+import {ComboBox} from '..';
 
 describe('<ComboBox/>', () => {
   const options = [

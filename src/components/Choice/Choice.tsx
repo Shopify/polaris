@@ -2,11 +2,11 @@ import React from 'react';
 import {classNames} from '../../utilities/css';
 
 import {Error} from '../../types';
-import InlineError from '../InlineError';
+import {InlineError} from '../InlineError';
 
 import styles from './Choice.scss';
 
-export interface Props {
+export interface ChoiceProps {
   /** A unique identifier for the choice */
   id: string;
   /**	Label for the choice */
@@ -25,7 +25,7 @@ export interface Props {
   onClick?(): void;
 }
 
-export default function Choice({
+export function Choice({
   id,
   label,
   disabled,
@@ -34,7 +34,7 @@ export default function Choice({
   labelHidden,
   helpText,
   onClick,
-}: Props) {
+}: ChoiceProps) {
   const className = classNames(
     styles.Choice,
     labelHidden && styles.labelHidden,

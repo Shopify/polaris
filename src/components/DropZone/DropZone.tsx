@@ -12,12 +12,12 @@ import {
 
 import {classNames} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
-import Icon from '../Icon';
-import Stack from '../Stack';
-import Caption from '../Caption';
-import DisplayText from '../DisplayText';
-import VisuallyHidden from '../VisuallyHidden';
-import Labelled, {Action} from '../Labelled';
+import {Icon} from '../Icon';
+import {Stack} from '../Stack';
+import {Caption} from '../Caption';
+import {DisplayText} from '../DisplayText';
+import {VisuallyHidden} from '../VisuallyHidden';
+import {Labelled, Action} from '../Labelled';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -43,7 +43,7 @@ interface State {
   numFiles: number;
 }
 
-export interface Props {
+export interface DropZoneProps {
   /** Label for the file input */
   label?: string;
   /** Adds an action to the label */
@@ -110,7 +110,7 @@ export interface Props {
   onFileDialogClose?(): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = DropZoneProps & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('DropZone');
 
@@ -548,4 +548,6 @@ function handleDragStart(event: React.DragEvent<HTMLDivElement>) {
   event.stopPropagation();
 }
 
-export default withAppProvider<Props>()(DropZone);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<DropZoneProps>()(DropZone);

@@ -2,17 +2,17 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import styles from './Section.scss';
 
-export interface Props {
+export interface SectionProps {
   children?: React.ReactNode;
   flush?: boolean;
   subdued?: boolean;
 }
 
-export default function Section({
+export function Section({
   children,
   flush = false,
   subdued = false,
-}: Props) {
+}: SectionProps) {
   const className = classNames(
     styles.Section,
     flush && styles.flush,

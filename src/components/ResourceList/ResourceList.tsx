@@ -4,27 +4,28 @@ import debounce from 'lodash/debounce';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import Button from '../Button';
-import EventListener from '../EventListener';
-import Sticky from '../Sticky';
-import Spinner from '../Spinner';
+import {Button} from '../Button';
+import {EventListener} from '../EventListener';
+import {Sticky} from '../Sticky';
+import {Spinner} from '../Spinner';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
 import {
   ResourceListContext,
-  SelectedItems,
+  ResourceListSelectedItems,
   SELECT_ALL_ITEMS,
 } from '../../utilities/resource-list';
-import Select, {SelectOption} from '../Select';
-import EmptySearchResult from '../EmptySearchResult';
-import ResourceItem from '../ResourceItem';
+import {Select, SelectOption} from '../Select';
+import {EmptySearchResult} from '../EmptySearchResult';
+import {ResourceItem} from '../ResourceItem';
 
 import {
   BulkActions,
   BulkActionsProps,
   CheckableButton,
+  // eslint-disable-next-line import/no-deprecated
   FilterControl,
 } from './components';
 
@@ -43,7 +44,7 @@ interface State {
   smallScreen: boolean;
 }
 
-export interface Props {
+export interface ResourceListProps {
   /** Item data; each item is passed to renderItem */
   items: Items;
   filterControl?: React.ReactNode;
@@ -57,7 +58,7 @@ export interface Props {
   /** Actions available on the currently selected items */
   bulkActions?: BulkActionsProps['actions'];
   /** Collection of IDs for the currently selected items */
-  selectedItems?: SelectedItems;
+  selectedItems?: ResourceListSelectedItems;
   /** Renders a Select All button at the top of the list and checkboxes in front of each list item. For use when bulkActions aren't provided. **/
   selectable?: boolean;
   /** If there are more items than currently in the list */
@@ -75,7 +76,7 @@ export interface Props {
   /** Callback when sort option is changed */
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
-  onSelectionChange?(selectedItems: SelectedItems): void;
+  onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
   /** Function to render each list item	 */
   renderItem(item: any, id: string, index: number): React.ReactNode;
   /** Function to customize the unique ID for each item */
@@ -84,10 +85,11 @@ export interface Props {
   resolveItemId?(item: any): string;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = ResourceListProps & WithAppProviderProps;
 
 class ResourceList extends React.Component<CombinedProps, State> {
   static Item = ResourceItem;
+  // eslint-disable-next-line import/no-deprecated
   static FilterControl = FilterControl;
 
   private defaultResourceName: {singular: string; plural: string};
@@ -324,7 +326,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     loading: prevLoading,
     items: prevItems,
     selectedItems: prevSelectedItems,
-  }: Props) {
+  }: ResourceListProps) {
     const {selectedItems, loading} = this.props;
 
     if (
@@ -766,4 +768,6 @@ function isSmallScreen() {
     : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
 
-export default withAppProvider<Props>()(ResourceList);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<ResourceListProps>()(ResourceList);

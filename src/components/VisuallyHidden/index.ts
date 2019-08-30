@@ -1,4 +1,1 @@
-import VisuallyHidden from './VisuallyHidden';
-
-export {Props} from './VisuallyHidden';
-export default VisuallyHidden;
+export {VisuallyHidden, VisuallyHiddenProps} from './VisuallyHidden';

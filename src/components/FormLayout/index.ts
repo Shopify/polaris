@@ -1,4 +1,1 @@
-import FormLayout from './FormLayout';
-
-export {Props} from './FormLayout';
-export default FormLayout;
+export {FormLayout, FormLayoutProps} from './FormLayout';

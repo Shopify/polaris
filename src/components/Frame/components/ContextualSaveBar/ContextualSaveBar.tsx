@@ -2,20 +2,20 @@ import React from 'react';
 
 import {getWidth} from '../../../../utilities/get-width';
 
-import {ContextualSaveBarProps as Props} from '../../../../utilities/frame';
+import {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../../../utilities/with-app-provider';
-import Button from '../../../Button';
-import Image from '../../../Image';
-import Stack from '../../../Stack';
+import {Button} from '../../../Button';
+import {Image} from '../../../Image';
+import {Stack} from '../../../Stack';
 
 import {DiscardConfirmationModal} from './components';
 
 import styles from './ContextualSaveBar.scss';
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = ContextualSaveBarProps & WithAppProviderProps;
 
 interface State {
   discardConfirmationModalVisible: boolean;
@@ -140,4 +140,6 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
   };
 }
 
-export default withAppProvider<Props>()(ContextualSaveBar);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<ContextualSaveBarProps>()(ContextualSaveBar);

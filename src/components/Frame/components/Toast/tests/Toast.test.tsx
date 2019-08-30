@@ -5,9 +5,8 @@ import {
   trigger,
   findByTestID,
 } from 'test-utilities/legacy';
-import Button from '../../../../Button';
-import {ToastProps as Props} from '../../../../../utilities/frame';
-import Toast from '../Toast';
+import {Button} from '../../../../Button';
+import {Toast, ToastProps} from '../Toast';
 import {Key} from '../../../../../types';
 
 interface HandlerMap {
@@ -15,7 +14,7 @@ interface HandlerMap {
 }
 
 describe('<Toast />', () => {
-  const mockProps: Props = {
+  const mockProps: ToastProps = {
     content: 'Image uploaded',
     onDismiss: noop,
   };

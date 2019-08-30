@@ -4,17 +4,17 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {classNames} from '../../../../utilities/css';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
-import Collapsible from '../../../Collapsible';
-import Icon from '../../../Icon';
+import {Collapsible} from '../../../Collapsible';
+import {Icon} from '../../../Icon';
 import {IconProps} from '../../../../types';
 
-import Item, {Props as ItemProps} from '../Item';
+import {Item, ItemProps} from '../Item';
 
 import styles from '../../Navigation.scss';
 
 const createAdditionalItemsId = createUniqueIDFactory('AdditionalItems');
 
-export interface Props {
+export interface SectionProps {
   items: ItemProps[];
   icon?: IconProps['source'];
   title?: string;
@@ -37,7 +37,7 @@ interface State {
   expanded: boolean;
 }
 
-export default class Section extends React.Component<Props, State> {
+export class Section extends React.Component<SectionProps, State> {
   state: State = {
     expanded: false,
   };

@@ -1,4 +1,4 @@
 export {
-  default as DiscardConfirmationModal,
-  Props as TDiscardConfirmationModalProps,
+  DiscardConfirmationModal,
+  DiscardConfirmationModalProps,
 } from './DiscardConfirmationModal';

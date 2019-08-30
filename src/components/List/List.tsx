@@ -5,7 +5,7 @@ import styles from './List.scss';
 
 export type Type = 'bullet' | 'number';
 
-export interface Props {
+export interface ListProps {
   /**
    * Type of list to display
    * @default 'bullet'
@@ -15,7 +15,7 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export default class List extends React.PureComponent<Props, never> {
+export class List extends React.PureComponent<ListProps, never> {
   static Item = Item;
 
   render() {

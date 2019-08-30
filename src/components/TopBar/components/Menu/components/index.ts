@@ -1,1 +1,1 @@
-export {default as Message, Props as MessageProps} from './Message';
+export {Message, MessageProps} from './Message';

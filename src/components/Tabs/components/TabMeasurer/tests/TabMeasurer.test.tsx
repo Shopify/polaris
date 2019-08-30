@@ -1,8 +1,8 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import TabMeasurer from '../TabMeasurer';
-import Tab from '../../Tab';
-import Item from '../../Item';
+import {TabMeasurer} from '../TabMeasurer';
+import {Tab} from '../../Tab';
+import {Item} from '../../Item';
 
 describe('<TabMeasurer />', () => {
   const mockProps = {

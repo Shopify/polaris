@@ -1,4 +1,1 @@
-import HuePicker from './HuePicker';
-
-export {Props} from './HuePicker';
-export default HuePicker;
+export {HuePicker, HuePickerProps} from './HuePicker';

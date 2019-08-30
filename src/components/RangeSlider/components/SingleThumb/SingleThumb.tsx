@@ -1,14 +1,14 @@
 import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import {clamp} from '../../../../utilities/clamp';
-import Labelled, {helpTextID} from '../../../Labelled';
+import {Labelled, helpTextID} from '../../../Labelled';
 
 import {invertNumber, CSS_VAR_PREFIX} from '../../utilities';
 import {RangeSliderProps} from '../../types';
 
 import styles from './SingleThumb.scss';
 
-export interface Props extends RangeSliderProps {
+export interface SingleThumbProps extends RangeSliderProps {
   value: number;
   id: string;
   min: number;
@@ -16,7 +16,7 @@ export interface Props extends RangeSliderProps {
   step: number;
 }
 
-export default function SingleThumb(props: Props) {
+export function SingleThumb(props: SingleThumbProps) {
   const {
     id,
     error,

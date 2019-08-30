@@ -2,19 +2,19 @@ import React from 'react';
 
 import {DisableableAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
-import ButtonGroup from '../../../ButtonGroup';
-import Stack from '../../../Stack';
-import Heading from '../../../Heading';
+import {ButtonGroup} from '../../../ButtonGroup';
+import {Stack} from '../../../Stack';
+import {Heading} from '../../../Heading';
 
 import styles from '../../Card.scss';
 
-export interface Props {
+export interface HeaderProps {
   title?: React.ReactNode;
   actions?: DisableableAction[];
   children?: React.ReactNode;
 }
 
-export default function Header({children, title, actions}: Props) {
+export function Header({children, title, actions}: HeaderProps) {
   const actionMarkup = actions ? (
     <ButtonGroup>{buttonsFrom(actions, {plain: true})}</ButtonGroup>
   ) : null;

@@ -2,7 +2,7 @@ import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {RadioButton, Checkbox, InlineError, errorTextID} from 'components';
-import ChoiceList, {ChoiceDescriptor} from '../ChoiceList';
+import {ChoiceList, ChoiceDescriptor} from '../ChoiceList';
 
 describe('<ChoiceList />', () => {
   let choices: ChoiceDescriptor[];

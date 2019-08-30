@@ -1,7 +1,7 @@
 import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import Image from '../Image';
+import {Image} from '../Image';
 import styles from './Spinner.scss';
 import {spinnerLarge, spinnerSmall} from './images';
 
@@ -11,7 +11,7 @@ export type Size = 'small' | 'large';
 
 const COLORS_FOR_LARGE_SPINNER = ['teal', 'inkLightest'];
 
-export interface Props {
+export interface SpinnerProps {
   /**
    * Color of spinner
    * @default 'teal'
@@ -26,11 +26,11 @@ export interface Props {
   accessibilityLabel?: string;
 }
 
-export default function Spinner({
+export function Spinner({
   size = 'large',
   color = 'teal',
   accessibilityLabel,
-}: Props) {
+}: SpinnerProps) {
   const intl = useI18n();
 
   if (size === 'large' && COLORS_FOR_LARGE_SPINNER.indexOf(color) < 0) {

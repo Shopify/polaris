@@ -2,10 +2,10 @@ import React from 'react';
 import {SearchMinor} from '@shopify/polaris-icons';
 import {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
-import Icon from '../../../Icon';
-import FormLayout from '../../../FormLayout';
-import TextField from '../../../TextField';
-import Tag from '../../../Tag';
+import {Icon} from '../../../Icon';
+import {FormLayout} from '../../../FormLayout';
+import {TextField} from '../../../TextField';
+import {Tag} from '../../../Tag';
 import {useI18n} from '../../../../utilities/i18n';
 import {ResourceListContext} from '../../../../utilities/resource-list';
 
@@ -13,7 +13,7 @@ import {FilterCreator} from './components';
 import {AppliedFilter, Filter, FilterType, Operator} from './types';
 import styles from './FilterControl.scss';
 
-export interface Props {
+export interface FilterControlProps {
   searchValue?: string;
   appliedFilters?: AppliedFilter[];
   additionalAction?: ComplexAction;
@@ -26,7 +26,7 @@ export interface Props {
 }
 
 /** @deprecated Use <Filters /> instead. */
-export default function FilterControl({
+export function FilterControl({
   searchValue,
   appliedFilters = [],
   additionalAction,
@@ -36,7 +36,7 @@ export default function FilterControl({
   onSearchBlur,
   onSearchChange,
   onFiltersChange,
-}: Props) {
+}: FilterControlProps) {
   // eslint-disable-next-line no-console
   console.warn(
     'Deprecation: <FilterControl /> is deprecated. Use <Filters /> instead.',

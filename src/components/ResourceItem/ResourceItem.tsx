@@ -4,14 +4,14 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
 import {classNames} from '../../utilities/css';
 import {DisableableAction} from '../../types';
-import ActionList from '../ActionList';
-import Popover from '../Popover';
-import {Props as AvatarProps} from '../Avatar';
-import UnstyledLink from '../UnstyledLink';
-import {Props as ThumbnailProps} from '../Thumbnail';
-import ButtonGroup from '../ButtonGroup';
-import Checkbox from '../Checkbox';
-import Button, {buttonsFrom} from '../Button';
+import {ActionList} from '../ActionList';
+import {Popover} from '../Popover';
+import {AvatarProps} from '../Avatar';
+import {UnstyledLink} from '../UnstyledLink';
+import {ThumbnailProps} from '../Thumbnail';
+import {ButtonGroup} from '../ButtonGroup';
+import {Checkbox} from '../Checkbox';
+import {Button, buttonsFrom} from '../Button';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -20,12 +20,14 @@ import {
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
-  SelectedItems,
+  ResourceListSelectedItems,
 } from '../../utilities/resource-list';
 import styles from './ResourceItem.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
+
 export type MediaSize = 'small' | 'medium' | 'large';
+
 export type MediaType = 'avatar' | 'thumbnail';
 
 interface WithContextTypes<IJ> {
@@ -67,7 +69,7 @@ export interface PropsWithClick extends Props {
   onClick(id?: string): void;
 }
 
-export type ConditionalProps = PropsWithUrl | PropsWithClick;
+export type ResourceItemProps = PropsWithUrl | PropsWithClick;
 
 interface State {
   actionsMenuVisible: boolean;
@@ -426,7 +428,7 @@ function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();
 }
 
-function isSelected(id: string, selectedItems?: SelectedItems) {
+function isSelected(id: string, selectedItems?: ResourceListSelectedItems) {
   return Boolean(
     selectedItems &&
       ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||
@@ -442,4 +444,6 @@ function ResourceItem(props: CombinedProps) {
   );
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<Props>()(ResourceItem);

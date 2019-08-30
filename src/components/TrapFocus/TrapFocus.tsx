@@ -6,10 +6,10 @@ import {
   focusLastFocusableNode,
 } from '@shopify/javascript-utilities/focus';
 
-import EventListener from '../EventListener';
-import Focus from '../Focus';
+import {EventListener} from '../EventListener';
+import {Focus} from '../Focus';
 
-export interface Props {
+export interface TrapFocusProps {
   trapping?: boolean;
   children?: React.ReactNode;
 }
@@ -18,7 +18,7 @@ interface State {
   shouldFocusSelf: boolean | undefined;
 }
 
-export default class TrapFocus extends React.PureComponent<Props, State> {
+export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
   state: State = {
     shouldFocusSelf: undefined,
   };

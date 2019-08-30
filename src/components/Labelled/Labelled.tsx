@@ -4,14 +4,14 @@ import {classNames} from '../../utilities/css';
 import {Action, Error} from '../../types';
 
 import {buttonFrom} from '../Button';
-import Label, {Props as LabelProps, labelID} from '../Label';
-import InlineError from '../InlineError';
+import {Label, LabelProps, labelID} from '../Label';
+import {InlineError} from '../InlineError';
 
 import styles from './Labelled.scss';
 
 export {Action, labelID};
 
-export interface Props {
+export interface LabelledProps {
   /** A unique identifier for the label */
   id: LabelProps['id'];
   /** Text for the label */
@@ -28,7 +28,7 @@ export interface Props {
   labelHidden?: boolean;
 }
 
-export default function Labelled({
+export function Labelled({
   id,
   label,
   error,
@@ -37,7 +37,7 @@ export default function Labelled({
   children,
   labelHidden,
   ...rest
-}: Props) {
+}: LabelledProps) {
   const className = classNames(labelHidden && styles.hidden);
 
   const actionMarkup = action ? (

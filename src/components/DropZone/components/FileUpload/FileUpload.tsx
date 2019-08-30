@@ -4,12 +4,12 @@ import {DragDropMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 import {capitalize} from '../../../../utilities/capitalize';
 
-import Link from '../../../Link';
-import Icon from '../../../Icon';
-import Stack from '../../../Stack';
-import Button from '../../../Button';
-import Caption from '../../../Caption';
-import TextStyle from '../../../TextStyle';
+import {Link} from '../../../Link';
+import {Icon} from '../../../Icon';
+import {Stack} from '../../../Stack';
+import {Button} from '../../../Button';
+import {Caption} from '../../../Caption';
+import {TextStyle} from '../../../TextStyle';
 
 import {fileUpload, imageUpload} from '../../images';
 
@@ -18,12 +18,12 @@ import {useI18n} from '../../../../utilities/i18n';
 
 import styles from './FileUpload.scss';
 
-export interface Props {
+export interface FileUploadProps {
   actionTitle?: string;
   actionHint?: string;
 }
 
-export default function FileUpload(props: Props) {
+export function FileUpload(props: FileUploadProps) {
   const {translate} = useI18n();
   const {size, type} = useContext(DropZoneContext);
   const suffix = capitalize(type);

@@ -12,14 +12,14 @@ enum VariationValue {
   Code = 'code',
 }
 
-export interface Props {
+export interface TextStyleProps {
   /** Give text additional visual meaning */
   variation?: Variation;
   /** The content that should get the intended styling */
   children?: React.ReactNode;
 }
 
-export default function TextStyle({variation, children}: Props) {
+export function TextStyle({variation, children}: TextStyleProps) {
   const className = classNames(
     variation && styles[variationName('variation', variation)],
     variation === VariationValue.Code && styles.code,

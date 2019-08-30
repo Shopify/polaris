@@ -4,7 +4,7 @@ import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
 import {Modal} from 'components';
 
-import DiscardConfirmationModal from '../DiscardConfirmationModal';
+import {DiscardConfirmationModal} from '../DiscardConfirmationModal';
 
 describe('<DiscardConfirmationModal />', () => {
   it('passes its open prop value to the Modal', () => {

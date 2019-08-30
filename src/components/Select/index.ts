@@ -1,4 +1,1 @@
-import Select from './Select';
-
-export {Props, SelectOption, SelectGroup} from './Select';
-export default Select;
+export {Select, SelectProps, SelectOption, SelectGroup} from './Select';

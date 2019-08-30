@@ -19,7 +19,7 @@ import {
 import {Header, HeaderProps} from './components';
 import styles from './Page.scss';
 
-export interface Props extends HeaderProps {
+export interface PageProps extends HeaderProps {
   /** The contents of the page */
   children?: React.ReactNode;
   /** Remove the normal max-width on the page */
@@ -42,9 +42,9 @@ export interface DeprecatedProps {
   singleColumn?: boolean;
 }
 
-export type ComposedProps = Props & DeprecatedProps & WithAppProviderProps;
+export type ComposedProps = PageProps & DeprecatedProps & WithAppProviderProps;
 
-const APP_BRIDGE_PROPS: (keyof Props)[] = [
+const APP_BRIDGE_PROPS: (keyof PageProps)[] = [
   'title',
   'breadcrumbs',
   'secondaryActions',
@@ -203,4 +203,6 @@ class Page extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-export default withAppProvider<Props & DeprecatedProps>()(Page);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<PageProps & DeprecatedProps>()(Page);

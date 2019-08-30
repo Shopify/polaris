@@ -1,4 +1,1 @@
-import KeyboardKey from './KeyboardKey';
-
-export {Props} from './KeyboardKey';
-export default KeyboardKey;
+export {KeyboardKey, KeyboardKeyProps} from './KeyboardKey';

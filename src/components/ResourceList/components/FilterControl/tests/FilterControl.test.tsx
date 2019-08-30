@@ -10,11 +10,11 @@ import {
   FilterDateSelector,
 } from '../types';
 // eslint-disable-next-line import/no-deprecated
-import FilterControl, {Props} from '../FilterControl';
+import {FilterControl, FilterControlProps} from '../FilterControl';
 import {FilterCreator, DateFilterOption} from '../components';
 
 describe('<FilterControl />', () => {
-  const mockDefaultProps: Props = {
+  const mockDefaultProps: FilterControlProps = {
     onSearchChange: noop,
   };
 

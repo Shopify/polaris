@@ -1,4 +1,1 @@
-import Item from './Item';
-
-export {Props} from './Item';
-export default Item;
+export {Item, ItemProps} from './Item';

@@ -1,5 +1,5 @@
 export {
-  default,
-  Props,
+  PolarisTestProvider,
+  PolarisTestProviderProps,
   WithPolarisTestProviderOptions,
 } from './PolarisTestProvider';

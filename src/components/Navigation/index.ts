@@ -1,12 +1,8 @@
-import Navigation from './Navigation';
-
-export {Props} from './Navigation';
-export default Navigation;
+export {Navigation, NavigationProps} from './Navigation';
 
 export {
-  Props as ItemProps,
+  ItemProps as NavigationItemProps,
   SubNavigationItem,
   isNavigationItemActive,
-} from './components/Item';
-
-export {MessageProps} from './components';
+  MessageProps as NavigationMessageProps,
+} from './components';

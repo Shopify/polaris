@@ -1,10 +1,13 @@
 import React from 'react';
 import {DatePicker, Select, TextField} from 'components';
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
-import DateSelector, {Props, DateFilterOption} from '../DateSelector';
+import DateSelector, {
+  DateSelectorProps,
+  DateFilterOption,
+} from '../DateSelector';
 
 describe('<DateSelector />', () => {
-  const mockDefaultProps: Props = {
+  const mockDefaultProps: DateSelectorProps = {
     filterKey: 'starts',
     filterMinKey: 'starts_min',
     filterMaxKey: 'starts_max',

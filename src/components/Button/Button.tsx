@@ -3,10 +3,10 @@ import {CaretDownMinor} from '@shopify/polaris-icons';
 import {classNames, variationName} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {useI18n} from '../../utilities/i18n';
-import UnstyledLink from '../UnstyledLink';
-import Icon from '../Icon';
+import {UnstyledLink} from '../UnstyledLink';
+import {Icon} from '../Icon';
 import {IconProps} from '../../types';
-import Spinner from '../Spinner';
+import {Spinner} from '../Spinner';
 import styles from './Button.scss';
 
 export type Size = 'slim' | 'medium' | 'large';
@@ -15,7 +15,7 @@ export type TextAlign = 'left' | 'right' | 'center';
 
 export type IconSource = IconProps['source'];
 
-export interface Props {
+export interface ButtonProps {
   /** The content to display inside the button */
   children?: string | string[];
   /** A destination to link to, rendered in the href attribute of a link */
@@ -79,7 +79,7 @@ export interface Props {
 
 const DEFAULT_SIZE = 'medium';
 
-export default function Button({
+export function Button({
   id,
   url,
   disabled,
@@ -108,7 +108,7 @@ export default function Button({
   size = DEFAULT_SIZE,
   textAlign,
   fullWidth,
-}: Props) {
+}: ButtonProps) {
   const intl = useI18n();
 
   const isDisabled = disabled || loading;

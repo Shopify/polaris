@@ -1,15 +1,15 @@
 import React from 'react';
-import Heading from '../../../Heading';
-import TextContainer from '../../../TextContainer';
+import {Heading} from '../../../Heading';
+import {TextContainer} from '../../../TextContainer';
 import styles from '../../Layout.scss';
 
-export interface Props {
+export interface AnnotatedSectionProps {
   children?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
 }
 
-export default function AnnotatedSection(props: Props) {
+export function AnnotatedSection(props: AnnotatedSectionProps) {
   const {children, title, description} = props;
 
   const descriptionMarkup =

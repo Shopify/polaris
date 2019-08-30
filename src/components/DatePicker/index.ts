@@ -1,4 +1,3 @@
-import DatePicker from './DatePicker';
+import DatePicker, {DatePickerProps, Range, Months, Year} from './DatePicker';
 
-export {Props, Range, Months, Year} from './DatePicker';
-export default DatePicker;
+export {DatePicker, DatePickerProps, Range, Months, Year};

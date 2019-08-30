@@ -1,8 +1,8 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import EventListener from '../../EventListener';
+import {EventListener} from '../../EventListener';
 import {Slidable, AlphaPicker} from '../components';
-import ColorPicker from '../ColorPicker';
+import {ColorPicker} from '../ColorPicker';
 
 const red = {
   hue: 0,

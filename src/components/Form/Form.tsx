@@ -1,6 +1,6 @@
 import React from 'react';
 
-import VisuallyHidden from '../VisuallyHidden';
+import {VisuallyHidden} from '../VisuallyHidden';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -10,10 +10,12 @@ export type Enctype =
   | 'application/x-www-form-urlencoded'
   | 'multipart/form-data'
   | 'text/plain';
+
 export type Method = 'post' | 'get' | 'action';
+
 export type Target = '_blank' | '_self' | '_parent' | '_top' | string;
 
-export interface Props {
+export interface FormProps {
   /** Space separated list of character encodings */
   acceptCharset?: string;
   /** Where to send form-data on submittal */
@@ -40,7 +42,7 @@ export interface Props {
   onSubmit(event: React.FormEvent<HTMLFormElement>): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = FormProps & WithAppProviderProps;
 
 class Form extends React.PureComponent<CombinedProps, never> {
   render() {
@@ -105,4 +107,6 @@ function normalizeAutoComplete(autoComplete?: boolean) {
   return autoComplete ? 'on' : 'off';
 }
 
-export default withAppProvider<Props>()(Form);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<FormProps>()(Form);

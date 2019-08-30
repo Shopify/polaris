@@ -3,8 +3,8 @@ import {ArrowUpDownMinor} from '@shopify/polaris-icons';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {classNames} from '../../utilities/css';
-import Labelled, {Action, helpTextID} from '../Labelled';
-import Icon from '../Icon';
+import {Labelled, Action, helpTextID} from '../Labelled';
+import {Icon} from '../Icon';
 import {Error} from '../../types';
 
 import styles from './Select.scss';
@@ -69,12 +69,12 @@ export interface BaseProps {
   onBlur?(): void;
 }
 
-export interface Props extends BaseProps {}
+export interface SelectProps extends BaseProps {}
 
 const PLACEHOLDER_VALUE = '';
 const getUniqueID = createUniqueIDFactory('Select');
 
-export default function Select({
+export function Select({
   options: optionsProp,
   label,
   labelAction,
@@ -90,7 +90,7 @@ export default function Select({
   onChange,
   onFocus,
   onBlur,
-}: Props) {
+}: SelectProps) {
   const labelHidden = labelInline ? true : labelHiddenProp;
 
   const className = classNames(

@@ -1,4 +1,3 @@
-import EmptySearchResult from './EmptySearchResult';
+import EmptySearchResult, {EmptySearchResultProps} from './EmptySearchResult';
 
-export {Props} from './EmptySearchResult';
-export default EmptySearchResult;
+export {EmptySearchResult, EmptySearchResultProps};

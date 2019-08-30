@@ -2,7 +2,7 @@ import React from 'react';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {classNames} from '../../../../utilities/css';
-import UnstyledLink from '../../../UnstyledLink';
+import {UnstyledLink} from '../../../UnstyledLink';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -11,7 +11,7 @@ import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 
 import styles from '../../Tabs.scss';
 
-export interface Props {
+export interface TabProps {
   id: string;
   focused?: boolean;
   siblingTabHasFocus?: boolean;
@@ -24,7 +24,7 @@ export interface Props {
   onClick?(id: string): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = TabProps & WithAppProviderProps;
 
 class Tab extends React.PureComponent<CombinedProps, never> {
   private node: HTMLElement | null = null;
@@ -52,7 +52,7 @@ class Tab extends React.PureComponent<CombinedProps, never> {
     }
   }
 
-  componentDidUpdate(previousProps: Props) {
+  componentDidUpdate(previousProps: TabProps) {
     const {selected: wasSelected} = previousProps;
     const {focused, measuring, selected, panelID} = this.props;
 
@@ -149,4 +149,6 @@ function focusPanelID(panelID: string) {
   }
 }
 
-export default withAppProvider<Props>()(Tab);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<TabProps>()(Tab);

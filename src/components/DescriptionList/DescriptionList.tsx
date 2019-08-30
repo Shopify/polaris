@@ -9,7 +9,7 @@ export interface Item {
   description: React.ReactNode;
 }
 
-export interface Props {
+export interface DescriptionListProps {
   /** Collection of items for list */
   items: Item[];
 }
@@ -17,7 +17,7 @@ export interface Props {
 const getUniqueTermKey = createUniqueIDFactory(`Term`);
 const getUniqueDescriptionKey = createUniqueIDFactory(`Description`);
 
-export default function DescriptionList({items}: Props) {
+export function DescriptionList({items}: DescriptionListProps) {
   const terms = items.reduce(
     (allTerms, {term, description}) => [
       ...allTerms,

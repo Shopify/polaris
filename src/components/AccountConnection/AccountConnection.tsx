@@ -1,16 +1,16 @@
 import React from 'react';
 
 import {Action} from '../../types';
-import Avatar from '../Avatar';
+import {Avatar} from '../Avatar';
 import {buttonFrom} from '../Button';
-import Card from '../Card';
-import Stack from '../Stack';
-import TextStyle from '../TextStyle';
-import SettingAction from '../SettingAction';
+import {Card} from '../Card';
+import {Stack} from '../Stack';
+import {TextStyle} from '../TextStyle';
+import {SettingAction} from '../SettingAction';
 
 import styles from './AccountConnection.scss';
 
-export interface Props {
+export interface AccountConnectionProps {
   /** Content to display as title */
   title?: React.ReactNode;
   /** Content to display as additional details */
@@ -27,7 +27,7 @@ export interface Props {
   action?: Action;
 }
 
-export default function AccountConnection({
+export function AccountConnection({
   connected = false,
   action,
   avatarUrl,
@@ -35,7 +35,7 @@ export default function AccountConnection({
   title,
   details,
   termsOfService,
-}: Props) {
+}: AccountConnectionProps) {
   const initials = accountName
     ? accountName
         .split(/\s+/)

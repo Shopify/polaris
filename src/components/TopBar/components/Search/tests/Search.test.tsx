@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Search from '../Search';
+import {Search} from '../Search';
 
 describe('<Search />', () => {
   it('mounts', () => {

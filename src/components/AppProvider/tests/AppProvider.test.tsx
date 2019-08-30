@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {LinkContext} from '../../../utilities/link';
-import AppProvider from '../AppProvider';
+import {AppProvider} from '../AppProvider';
 
 describe('<AppProvider />', () => {
   it('updates context when props change', () => {

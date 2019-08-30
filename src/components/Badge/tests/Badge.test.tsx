@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {VisuallyHidden} from 'components';
-import Badge, {Status, Progress, PROGRESS_LABELS, STATUS_LABELS} from '..';
+import {Badge, Status, Progress, PROGRESS_LABELS, STATUS_LABELS} from '..';
 
 describe('<Badge />', () => {
   it('renders its children', () => {

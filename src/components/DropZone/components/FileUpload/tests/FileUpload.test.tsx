@@ -2,7 +2,7 @@ import React from 'react';
 import {Link, Icon, Button, Caption, TextStyle} from 'components';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {DropZoneContext} from '../../../context';
-import FileUpload from '../FileUpload';
+import {FileUpload} from '../FileUpload';
 import {fileUpload as fileUploadImage, imageUpload} from '../../../images';
 
 describe('<FileUpload />', () => {

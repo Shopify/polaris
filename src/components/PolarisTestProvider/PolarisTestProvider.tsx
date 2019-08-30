@@ -30,12 +30,13 @@ export type WithPolarisTestProviderOptions = {
   frame?: Partial<FrameContextType>;
 };
 
-export interface Props extends WithPolarisTestProviderOptions {
+export interface PolarisTestProviderProps
+  extends WithPolarisTestProviderOptions {
   children: React.ReactElement;
   strict?: boolean;
 }
 
-export default function PolarisTestProvider({
+export function PolarisTestProvider({
   strict,
   children,
   i18n,
@@ -43,7 +44,7 @@ export default function PolarisTestProvider({
   link,
   theme,
   frame,
-}: Props) {
+}: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
 
   const intl = new I18n(i18n || {});

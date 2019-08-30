@@ -2,11 +2,11 @@ import React from 'react';
 import {CancelSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import Icon from '../Icon';
+import {Icon} from '../Icon';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import styles from './Tag.scss';
 
-export interface Props {
+export interface TagProps {
   /** Content to display in the tag */
   children?: string;
   /** Disables the tag  */
@@ -15,7 +15,7 @@ export interface Props {
   onRemove?(): void;
 }
 
-export default function Tag({children, disabled = false, onRemove}: Props) {
+export function Tag({children, disabled = false, onRemove}: TagProps) {
   const intl = useI18n();
   const className = classNames(disabled && styles.disabled, styles.Tag);
   const ariaLabel = intl.translate('Polaris.Tag.ariaLabel', {children});

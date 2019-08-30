@@ -1,9 +1,9 @@
 import React from 'react';
 
 import styles from '../../Tabs.scss';
-import UnstyledLink from '../../../UnstyledLink';
+import {UnstyledLink} from '../../../UnstyledLink';
 
-export interface Props {
+export interface ItemProps {
   id: string;
   focused: boolean;
   panelID?: string;
@@ -13,7 +13,7 @@ export interface Props {
   onClick?(): void;
 }
 
-export default class Item extends React.PureComponent<Props, never> {
+export class Item extends React.PureComponent<ItemProps, never> {
   private focusedNode: HTMLElement | React.ReactElement<any> | null = null;
 
   componentDidMount() {

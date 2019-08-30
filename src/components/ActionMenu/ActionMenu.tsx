@@ -11,7 +11,7 @@ import {MenuAction, MenuGroup, RollupActions} from './components';
 
 import styles from './ActionMenu.scss';
 
-export interface Props {
+export interface ActionMenuProps {
   /** Collection of page-level secondary actions */
   actions?: ComplexAction[];
   /** Collection of page-level action groups */
@@ -24,7 +24,7 @@ interface State {
   activeMenuGroup?: string;
 }
 
-export default class ActionMenu extends React.PureComponent<Props, State> {
+export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
   state: State = {
     activeMenuGroup: undefined,
   };
@@ -100,7 +100,7 @@ export default class ActionMenu extends React.PureComponent<Props, State> {
   };
 }
 
-export function hasGroupsWithActions(groups: Props['groups'] = []) {
+export function hasGroupsWithActions(groups: ActionMenuProps['groups'] = []) {
   return groups.length === 0
     ? false
     : groups.some((group) => group.actions.length > 0);

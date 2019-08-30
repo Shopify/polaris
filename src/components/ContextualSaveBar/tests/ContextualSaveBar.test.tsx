@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import ContextualSaveBar from '../ContextualSaveBar';
+import {ContextualSaveBar} from '../ContextualSaveBar';
 
 describe('<ContextualSaveBar />', () => {
   const props = {

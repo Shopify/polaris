@@ -1,2 +1,3 @@
-export {default as DualThumb} from './DualThumb';
-export {default as SingleThumb} from './SingleThumb';
+export {DualThumb} from './DualThumb';
+
+export {SingleThumb} from './SingleThumb';

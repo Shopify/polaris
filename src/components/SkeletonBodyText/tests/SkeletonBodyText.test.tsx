@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import SkeletonBodyText from '../SkeletonBodyText';
+import {SkeletonBodyText} from '../SkeletonBodyText';
 
 describe('<SkeletonBodyText />', () => {
   it('renders the amount of lines provided', () => {

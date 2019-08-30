@@ -3,10 +3,14 @@ import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
 import {MenuGroupDescriptor, ActionListItemDescriptor} from '../../../types';
 import {MenuAction, MenuGroup, RollupActions} from '../components';
-import ActionMenu, {Props, convertGroupToSection} from '../ActionMenu';
+import {
+  ActionMenu,
+  ActionMenuProps,
+  convertGroupToSection,
+} from '../ActionMenu';
 
 describe('<ActionMenu />', () => {
-  const mockProps: Props = {
+  const mockProps: ActionMenuProps = {
     actions: undefined,
     groups: undefined,
     rollup: undefined,
@@ -18,7 +22,7 @@ describe('<ActionMenu />', () => {
   });
 
   describe('actions', () => {
-    const mockActions: Props['actions'] = [
+    const mockActions: ActionMenuProps['actions'] = [
       {content: 'mock content 1'},
       {content: 'mock content 2'},
     ];
@@ -43,11 +47,11 @@ describe('<ActionMenu />', () => {
   });
 
   describe('groups', () => {
-    const mockActions: Props['actions'] = [
+    const mockActions: ActionMenuProps['actions'] = [
       {content: 'mock content 1'},
       {content: 'mock content 2'},
     ];
-    const mockGroups: Props['groups'] = [
+    const mockGroups: ActionMenuProps['groups'] = [
       {
         title: 'First group',
         actions: [...mockActions],
@@ -81,7 +85,7 @@ describe('<ActionMenu />', () => {
   });
 
   describe('<MenuAction />', () => {
-    const mockActions: Props['actions'] = [
+    const mockActions: ActionMenuProps['actions'] = [
       {content: 'mock content 1'},
       {content: 'mock content 2'},
     ];
@@ -109,7 +113,7 @@ describe('<ActionMenu />', () => {
     });
 
     it('does not render when there are `groups` with no `actions`', () => {
-      const mockGroupsWithoutActions: Props['groups'] = [
+      const mockGroupsWithoutActions: ActionMenuProps['groups'] = [
         {
           title: 'First group',
           actions: [],

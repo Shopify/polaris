@@ -1,7 +1,9 @@
-import DataTable from './DataTable';
+import DataTable, {
+  DataTableProps,
+  TableRow,
+  TableData,
+  ColumnContentType,
+} from './DataTable';
 
+export {DataTable, DataTableProps, TableRow, TableData, ColumnContentType};
 export {SortDirection} from './types';
-
-export {Props, TableRow, TableData, ColumnContentType} from './DataTable';
-
-export default DataTable;

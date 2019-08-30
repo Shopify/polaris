@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Banner, UnstyledLink, Icon} from 'components';
 import en from '../../../../locales/en.json';
-import Link from '../Link';
+import {Link} from '../Link';
 
 describe('<Link />', () => {
   it('calls onClick when clicking', () => {

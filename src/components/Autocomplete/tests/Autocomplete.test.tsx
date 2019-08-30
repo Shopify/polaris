@@ -3,7 +3,7 @@ import {CirclePlusMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Spinner} from 'components';
 import {Key} from '../../../types';
-import Autocomplete from '..';
+import {Autocomplete} from '..';
 import {ComboBox} from '../components';
 
 describe('<Autocomplete/>', () => {

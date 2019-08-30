@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {ButtonGroup, Heading, buttonsFrom} from 'components';
-import Header from '../Header';
+import {Header} from '../Header';
 
 jest.mock('../../../../Button', () => ({
   ...require.requireActual('../../../../Button'),

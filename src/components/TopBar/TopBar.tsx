@@ -7,14 +7,14 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import Icon from '../Icon';
-import Image from '../Image';
-import UnstyledLink from '../UnstyledLink';
+import {Icon} from '../Icon';
+import {Image} from '../Image';
+import {UnstyledLink} from '../UnstyledLink';
 
 import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
 import styles from './TopBar.scss';
 
-export interface Props {
+export interface TopBarProps {
   /** Toggles whether or not a navigation component has been provided. Controls the presence of the mobile nav toggle button */
   showNavigationToggle?: boolean;
   /** Accepts a user component that is made available as a static member of the top bar component and renders as the primary menu */
@@ -35,7 +35,7 @@ export interface Props {
   onNavigationToggle?(): void;
 }
 
-export type ComposedProps = Props & WithAppProviderProps;
+export type ComposedProps = TopBarProps & WithAppProviderProps;
 
 interface State {
   focused: boolean;
@@ -151,4 +151,6 @@ class TopBar extends React.PureComponent<ComposedProps, State> {
   };
 }
 
-export default withAppProvider<Props>()(TopBar);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<TopBarProps>()(TopBar);

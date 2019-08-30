@@ -1,1 +1,1 @@
-export {default as FileUpload, Props as FileUploadProps} from './FileUpload';
+export {FileUpload, FileUploadProps} from './FileUpload';

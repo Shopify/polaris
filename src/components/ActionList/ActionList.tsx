@@ -4,7 +4,7 @@ import {Section} from './components';
 
 import styles from './ActionList.scss';
 
-export interface Props {
+export interface ActionListProps {
   /** Collection of actions for list */
   items?: ActionListItemDescriptor[];
   /** Collection of sectioned action items */
@@ -15,12 +15,12 @@ export interface Props {
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
 
-export default function ActionList({
+export function ActionList({
   items,
   sections = [],
   actionRole,
   onActionAnyItem,
-}: Props) {
+}: ActionListProps) {
   let finalSections: ActionListSection[] = [];
 
   if (items) {

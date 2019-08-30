@@ -1,1 +1,1 @@
-export {default as Item, Props as ItemProps, ItemPosition} from './Item';
+export {Item, ItemProps, ItemPosition} from './Item';

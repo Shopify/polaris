@@ -1,4 +1,8 @@
-import Labelled from './Labelled';
-
-export {Props, Action, labelID, errorID, helpTextID} from './Labelled';
-export default Labelled;
+export {
+  Labelled,
+  LabelledProps,
+  Action,
+  labelID,
+  errorID,
+  helpTextID,
+} from './Labelled';

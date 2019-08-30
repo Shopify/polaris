@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
 import {ActionList, Popover} from 'components';
-import Menu from '../Menu';
+import {Menu} from '../Menu';
 import {Message} from '../components';
 
 describe('<Menu />', () => {

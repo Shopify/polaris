@@ -2,11 +2,11 @@ import React from 'react';
 import {classNames} from '../../utilities/css';
 import styles from './Indicator.scss';
 
-export interface Props {
+export interface IndicatorProps {
   pulse?: boolean;
 }
 
-export default function Indicator({pulse = true}: Props) {
+export function Indicator({pulse = true}: IndicatorProps) {
   const className = classNames(
     styles.Indicator,
     pulse && styles.pulseIndicator,

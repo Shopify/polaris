@@ -1,19 +1,19 @@
 import React from 'react';
 import {AlertMinor} from '@shopify/polaris-icons';
 
-import Icon from '../Icon';
+import {Icon} from '../Icon';
 import {Error} from '../../types';
 
 import styles from './InlineError.scss';
 
-export interface Props {
+export interface InlineErrorProps {
   /** Content briefly explaining how to resolve the invalid form field input. */
   message: Error;
   /** Unique identifier of the invalid form field that the message describes */
   fieldID: string;
 }
 
-export default function InlineError({message, fieldID}: Props) {
+export function InlineError({message, fieldID}: InlineErrorProps) {
   if (!message) {
     return null;
   }

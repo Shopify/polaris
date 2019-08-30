@@ -1,1 +1,1 @@
-export {default, Props} from './MenuAction';
+export {MenuAction, MenuActionProps} from './MenuAction';

@@ -4,12 +4,12 @@ import {ExternalSmallMinor} from '@shopify/polaris-icons';
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import UnstyledLink from '../UnstyledLink';
-import Icon from '../Icon';
+import {UnstyledLink} from '../UnstyledLink';
+import {Icon} from '../Icon';
 
 import styles from './Link.scss';
 
-export interface Props {
+export interface LinkProps {
   /** ID for the link */
   id?: string;
   /** The url to link to */
@@ -24,14 +24,14 @@ export interface Props {
   onClick?(): void;
 }
 
-export default function Link({
+export function Link({
   url,
   children,
   onClick,
   external,
   id,
   monochrome,
-}: Props) {
+}: LinkProps) {
   const intl = useI18n();
   let childrenMarkup = children;
 

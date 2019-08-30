@@ -16,25 +16,25 @@ import {
   LoadableAction,
   IconProps,
 } from '../../types';
-import Button, {buttonFrom} from '../Button';
-import Heading from '../Heading';
-import ButtonGroup from '../ButtonGroup';
-import UnstyledLink from '../UnstyledLink';
-import Icon from '../Icon';
+import {Button, buttonFrom} from '../Button';
+import {Heading} from '../Heading';
+import {ButtonGroup} from '../ButtonGroup';
+import {UnstyledLink} from '../UnstyledLink';
+import {Icon} from '../Icon';
 
 import {WithinContentContext} from '../../utilities/within-content-context';
 
 import styles from './Banner.scss';
 
-export type Status = 'success' | 'info' | 'warning' | 'critical';
+export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
 
-export interface Props {
+export interface BannerProps {
   /** Title content for the banner. */
   title?: string;
   /** Icon to display in the banner. Use only major, duotone icons */
   icon?: IconProps['source'];
   /** Sets the status of the banner. */
-  status?: Status;
+  status?: BannerStatus;
   /** The child elements to render in the banner. */
   children?: React.ReactNode;
   /** Action for banner */
@@ -47,7 +47,7 @@ export interface Props {
   stopAnnouncements?: boolean;
 }
 
-export default class Banner extends React.PureComponent<Props, never> {
+export class Banner extends React.PureComponent<BannerProps, never> {
   private wrapper = React.createRef<HTMLDivElement>();
 
   public focus() {

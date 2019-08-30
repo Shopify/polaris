@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Subsection from '../Subsection';
+import {Subsection} from '../Subsection';
 
 describe('<Card.Subsection />', () => {
   it('can have any valid react element for children', () => {

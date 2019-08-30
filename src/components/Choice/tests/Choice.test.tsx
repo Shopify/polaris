@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {InlineError} from 'components';
-import Choice from '../Choice';
+import {Choice} from '../Choice';
 
 describe('<Choice />', () => {
   it('calls the provided onClick when clicked', () => {

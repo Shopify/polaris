@@ -6,12 +6,12 @@ import {
 } from '@shopify/javascript-utilities/focus';
 
 import {PreferredPosition, PreferredAlignment} from '../PositionedOverlay';
-import Portal from '../Portal';
+import {Portal} from '../Portal';
 import {CloseSource, Pane, PopoverOverlay, Section} from './components';
 
 export {CloseSource};
 
-export interface Props {
+export interface PopoverProps {
   /** The content to display inside the popover */
   children?: React.ReactNode;
   /** The preferred direction to open the popover */
@@ -47,7 +47,7 @@ interface State {
 
 const getUniqueID = createUniqueIDFactory('Popover');
 
-export default class Popover extends React.PureComponent<Props, State> {
+export class Popover extends React.PureComponent<PopoverProps, State> {
   static Pane = Pane;
   static Section = Section;
 

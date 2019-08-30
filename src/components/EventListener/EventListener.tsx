@@ -10,17 +10,20 @@ export interface BaseEventProps {
   handler(event: Event): void;
 }
 
-export interface Props extends BaseEventProps {
+export interface EventListenerProps extends BaseEventProps {
   passive?: boolean;
 }
 
 // see https://github.com/oliviertassinari/react-event-listener/
-export default class EventListener extends React.PureComponent<Props, never> {
+export class EventListener extends React.PureComponent<
+  EventListenerProps,
+  never
+> {
   componentDidMount() {
     this.attachListener();
   }
 
-  componentDidUpdate({passive, ...detachProps}: Props) {
+  componentDidUpdate({passive, ...detachProps}: EventListenerProps) {
     this.detachListener(detachProps);
     this.attachListener();
   }

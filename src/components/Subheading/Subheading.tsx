@@ -2,7 +2,7 @@ import React from 'react';
 import {HeadingTagName} from '../../types';
 import styles from './Subheading.scss';
 
-export interface Props {
+export interface SubheadingProps {
   /**
    * The element name to use for the subheading
    * @default 'h3'
@@ -12,7 +12,10 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export default function Subheading({element: Element = 'h3', children}: Props) {
+export function Subheading({
+  element: Element = 'h3',
+  children,
+}: SubheadingProps) {
   const ariaLabel = typeof children === 'string' ? children : undefined;
   return (
     <Element aria-label={ariaLabel} className={styles.Subheading}>

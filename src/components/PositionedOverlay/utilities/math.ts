@@ -1,6 +1,7 @@
 import {Rect} from '@shopify/javascript-utilities/geometry';
 
 export type PreferredPosition = 'above' | 'below' | 'mostSpace';
+
 export type PreferredAlignment = 'left' | 'center' | 'right';
 
 export interface Margins {

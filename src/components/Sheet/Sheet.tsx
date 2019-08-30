@@ -8,11 +8,11 @@ import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Key} from '../../types';
 import {layer, overlay, Duration} from '../shared';
 
-import Backdrop from '../Backdrop';
-import TrapFocus from '../TrapFocus';
-import Portal from '../Portal';
-import KeypressListener from '../KeypressListener';
-import EventListener from '../EventListener';
+import {Backdrop} from '../Backdrop';
+import {TrapFocus} from '../TrapFocus';
+import {Portal} from '../Portal';
+import {KeypressListener} from '../KeypressListener';
+import {EventListener} from '../EventListener';
 
 import styles from './Sheet.scss';
 
@@ -30,7 +30,7 @@ export const RIGHT_CLASS_NAMES = {
   exitActive: classNames(styles.Right, styles.exitRightActive),
 };
 
-export interface Props {
+export interface SheetProps {
   /** Whether or not the sheet is open */
   open: boolean;
   /** The child elements to render in the sheet */
@@ -43,13 +43,13 @@ export interface Props {
   onExit?(): void;
 }
 
-export default function Sheet({
+export function Sheet({
   children,
   open,
   onClose,
   onEntered,
   onExit,
-}: Props) {
+}: SheetProps) {
   const container = useRef<HTMLDivElement>(null);
   const [mobile, setMobile] = useState(false);
 

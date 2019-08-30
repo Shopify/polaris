@@ -1,4 +1,1 @@
-import Cell from './Cell';
-
-export {Props} from './Cell';
-export default Cell;
+export {Cell, CellProps} from './Cell';

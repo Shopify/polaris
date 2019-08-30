@@ -1,4 +1,1 @@
-import KeypressListener from './KeypressListener';
-
-export {Props} from './KeypressListener';
-export default KeypressListener;
+export {KeypressListener, KeypressListenerProps} from './KeypressListener';

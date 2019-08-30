@@ -1,8 +1,9 @@
 import React from 'react';
 import {Rect} from '@shopify/javascript-utilities/geometry';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import EventListener from '../../EventListener';
-import PositionedOverlay, {
+import {EventListener} from '../../EventListener';
+import {
+  PositionedOverlay,
   intersectionWithViewport,
 } from '../PositionedOverlay';
 import * as mathModule from '../utilities/math';

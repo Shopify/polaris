@@ -1,16 +1,16 @@
 import React from 'react';
 import {IconableAction} from '../../../../types';
-import Avatar, {Props as AvatarProps} from '../../../Avatar';
-import MessageIndicator from '../../../MessageIndicator';
-import Menu, {MessageProps} from '../Menu';
+import {Avatar, AvatarProps} from '../../../Avatar';
+import {MessageIndicator} from '../../../MessageIndicator';
+import {Menu, MenuProps} from '../Menu';
 
 import styles from './UserMenu.scss';
 
-export interface Props {
+export interface UserMenuProps {
   /** An array of action objects that are rendered inside of a popover triggered by this menu */
   actions: {items: IconableAction[]}[];
   /** Accepts a message that facilitates direct, urgent communication with the merchant through the user menu */
-  message?: MessageProps;
+  message?: MenuProps['message'];
   /** A string detailing the merchant’s full name to be displayed in the user menu */
   name: string;
   /** A string allowing further details on the merchant’s name displayed in the user menu */
@@ -25,7 +25,7 @@ export interface Props {
   onToggle(): void;
 }
 
-function UserMenu({
+export function UserMenu({
   name,
   detail,
   avatar,
@@ -34,7 +34,7 @@ function UserMenu({
   message,
   onToggle,
   open,
-}: Props) {
+}: UserMenuProps) {
   const showIndicator = Boolean(message);
 
   const activatorContentMarkup = (
@@ -64,5 +64,3 @@ function UserMenu({
     />
   );
 }
-
-export default UserMenu;

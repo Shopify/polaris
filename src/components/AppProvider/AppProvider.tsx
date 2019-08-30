@@ -1,6 +1,6 @@
 import React from 'react';
 import {Theme} from '../../utilities/theme';
-import ThemeProvider from '../ThemeProvider';
+import {ThemeProvider} from '../ThemeProvider';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
 import {
   ScrollLockManager,
@@ -23,7 +23,7 @@ interface State {
   link: LinkLikeComponent | undefined;
 }
 
-export interface Props extends AppBridgeOptions {
+export interface AppProviderProps extends AppBridgeOptions {
   /** A locale object or array of locale objects that overrides default translations */
   i18n: TranslationDictionary | TranslationDictionary[];
   /** A custom component to use for all links used by Polaris components */
@@ -32,11 +32,11 @@ export interface Props extends AppBridgeOptions {
   theme?: Theme;
 }
 
-export default class AppProvider extends React.Component<Props, State> {
+export class AppProvider extends React.Component<AppProviderProps, State> {
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
 
-  constructor(props: Props) {
+  constructor(props: AppProviderProps) {
     super(props);
     this.stickyManager = new StickyManager();
     this.scrollLockManager = new ScrollLockManager();
@@ -62,7 +62,7 @@ export default class AppProvider extends React.Component<Props, State> {
     apiKey: prevApiKey,
     shopOrigin: prevShopOrigin,
     forceRedirect: prevForceRedirect,
-  }: Props) {
+  }: AppProviderProps) {
     const {i18n, linkComponent, apiKey, shopOrigin, forceRedirect} = this.props;
 
     if (
