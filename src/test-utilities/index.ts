@@ -1,2 +1,2 @@
-export * from './enzyme';
-export {default as documentHasStyle} from './document-has-style';
+export * from './react-testing';
+export {documentHasStyle} from './document-has-style';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {
   focusFirstFocusableNode,
@@ -43,7 +43,7 @@ export default class TrapFocus extends React.PureComponent<Props, State> {
     const {children} = this.props;
 
     return (
-      <Focus disabled={this.shouldDisable}>
+      <Focus disabled={this.shouldDisable} root={this.focusTrapWrapper}>
         <div ref={this.setFocusTrapWrapper}>
           <EventListener event="focusout" handler={this.handleBlur} />
           {children}

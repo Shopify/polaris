@@ -14,7 +14,10 @@ function pickValueAndLength(obj: GeneralObject, key: string) {
   return {keyPaths, value};
 }
 
-function pick(obj: GeneralObject | null, ...keyPaths: (string | string[])[]) {
+export function pick(
+  obj: GeneralObject | null,
+  ...keyPaths: (string | string[])[]
+) {
   const flattenedKeypaths = ([] as string[]).concat(...keyPaths);
   if (obj == null || flattenedKeypaths.length === 0) return {};
   return flattenedKeypaths.reduce((acc, key) => {
@@ -37,5 +40,3 @@ function pick(obj: GeneralObject | null, ...keyPaths: (string | string[])[]) {
     return {...acc, ...innerObject};
   }, {});
 }
-
-export default pick;

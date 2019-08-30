@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {mountWithAppProvider, findByTestID} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import Popover from '../Popover';
 
 describe('<Popover />', () => {
@@ -146,5 +146,40 @@ describe('<Popover />', () => {
     const evt = new CustomEvent('click');
     window.dispatchEvent(evt);
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('does not call onClose when Popover is opening and trigger was not the activator', () => {
+    class PopoverWithDisconnectedActivator extends React.Component {
+      state = {
+        active: false,
+      };
+
+      handleActivatorClick = () => this.setState({active: true});
+
+      render() {
+        return (
+          <React.Fragment>
+            <button onClick={this.handleActivatorClick}>Activator</button>
+            <Popover
+              active={this.state.active}
+              activator={<div />}
+              onClose={onCloseSpy}
+            />
+          </React.Fragment>
+        );
+      }
+    }
+
+    const onCloseSpy = jest.fn();
+
+    const popoverWithDisconnectedActivator = mountWithAppProvider(
+      <PopoverWithDisconnectedActivator />,
+    );
+
+    popoverWithDisconnectedActivator.find('button').simulate('click');
+    const evt = new CustomEvent('click');
+    window.dispatchEvent(evt);
+
+    expect(onCloseSpy).not.toHaveBeenCalled();
   });
 });

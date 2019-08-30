@@ -1,8 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import {AppProvider, Heading} from '../src';
 import {withA11y} from '@storybook/addon-a11y';
 import {storiesOf} from '@storybook/react';
 import Playground from '../playground/Playground';
+import en from '../locales/en.json';
 
 /**
  * In most cases we want to test an "All Examples" page as fewer snapshots
@@ -29,6 +30,7 @@ export function generateStories(readme, readmeModule) {
       .addDecorator(withA11y)
       .addParameters({
         percy: {skip: false},
+        chromatic: {disable: true},
       })
       .add('All Examples', () => AllExamplesStoryForReadme(readme));
   }
@@ -59,13 +61,16 @@ export function hydrateExecutableExamples(readme) {
 export function addPlaygroundStory(playgroundModule) {
   storiesOf('Playground|Playground', playgroundModule)
     .addDecorator(AppProviderDecorator)
+    .addParameters({
+      chromatic: {disable: true},
+    })
     .add('Playground', () => <Playground />);
 }
 
 function AppProviderDecorator(story) {
   return (
     <div style={{padding: '8px'}}>
-      <AppProvider>{story()}</AppProvider>
+      <AppProvider i18n={en}>{story()}</AppProvider>
     </div>
   );
 }

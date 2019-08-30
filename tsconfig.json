@@ -3,17 +3,15 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "rootDir": "./",
-    "module": "es2015",
     "declarationDir": "types",
     "declarationMap": false,
     "jsx": "react-native",
-    "strict": false,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
+    // strictFunctionTypes & strictPropertyInitialization are implictly
+    // enabled by strict mode but we're not yet compliant, so disable for now
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
     "importHelpers": true,
     "skipLibCheck": false
   },
-  "include": ["./config/typescript/**/*", "./src/**/*"]
+  "include": ["./config/typescript/**/*", "./src/**/*", "./tests/**/*"]
 }

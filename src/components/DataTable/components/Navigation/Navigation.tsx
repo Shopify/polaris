@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {classNames} from '../../../../utilities/css';
+import {useI18n} from '../../../../utilities/i18n';
 import Button from '../../../Button';
 
 import {ColumnVisibilityData} from '../../types';
@@ -17,18 +17,15 @@ export interface Props {
   navigateTableRight?(): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
-
-function Navigation({
+export default function Navigation({
   columnVisibilityData,
   isScrolledFarthestLeft,
   isScrolledFarthestRight,
   navigateTableLeft,
   navigateTableRight,
-  polaris: {
-    intl: {translate},
-  },
-}: CombinedProps) {
+}: Props) {
+  const {translate} = useI18n();
+
   const pipMarkup = columnVisibilityData.map((column, index) => {
     const className = classNames(
       styles.Pip,
@@ -66,5 +63,3 @@ function Navigation({
     </div>
   );
 }
-
-export default withAppProvider<Props>()(Navigation);

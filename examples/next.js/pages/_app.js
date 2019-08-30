@@ -1,6 +1,7 @@
 import React from 'react';
 import App, {Container} from 'next/app';
 import {AppProvider} from '@shopify/polaris';
+import enTranslations from '@shopify/polaris/locales/en.json';
 import '@shopify/polaris/styles.css';
 
 export default class WrappedApp extends App {
@@ -9,7 +10,7 @@ export default class WrappedApp extends App {
 
     return (
       <Container>
-        <AppProvider>
+        <AppProvider i18n={enTranslations}>
           <Component {...pageProps} />
         </AppProvider>
       </Container>

@@ -147,6 +147,7 @@ $spinner-size: rem(20px);
     border: 0;
     box-shadow: none;
     color: color('blue', 'dark');
+    text-decoration: underline;
   }
 
   &:focus {

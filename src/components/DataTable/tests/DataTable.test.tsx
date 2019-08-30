@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Cell} from '../components';
 import DataTable, {Props} from '../DataTable';
 
@@ -111,16 +111,12 @@ describe('<DataTable />', () => {
 
       expect(dataTable.find('thead tr')).toHaveLength(2);
 
-      const expectedTotalsHeadingContent = dataTable
-        .instance()
-        .context.polaris.intl.translate('Polaris.DataTable.totalsRowHeading');
-
       const firstTotalCell = dataTable
         .find(Cell)
         .filterWhere((cell) => cell.prop('total') === true)
         .first();
 
-      expect(firstTotalCell.prop('content')).toBe(expectedTotalsHeadingContent);
+      expect(firstTotalCell.prop('content')).toBe('Totals');
     });
 
     it('sets the contentType of non-empty total Cells to numeric', () => {

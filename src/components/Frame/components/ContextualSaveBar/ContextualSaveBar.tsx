@@ -1,9 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 
-import {getWidth} from '../../../../utilities/getWidth';
+import {getWidth} from '../../../../utilities/get-width';
 
-import {ContextualSaveBarProps as Props} from '../../types';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {ContextualSaveBarProps as Props} from '../../../../utilities/frame';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import Button from '../../../Button';
 import Image from '../../../Image';
 import Stack from '../../../Stack';
@@ -31,11 +34,9 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
       message,
       discardAction,
       saveAction,
-      polaris: {
-        theme: {logo},
-        intl,
-      },
+      polaris: {theme, intl},
     } = this.props;
+    const logo = theme && theme.logo;
 
     const discardActionContent =
       discardAction && discardAction.content

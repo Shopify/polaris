@@ -1,9 +1,9 @@
-import * as React from 'react';
-import {classNames} from '@shopify/css-utilities';
+import React from 'react';
+import {classNames} from '../../utilities/css';
 
 import {
   ActionListSection,
-  MenuActionDescriptor,
+  ComplexAction,
   MenuGroupDescriptor,
 } from '../../types';
 
@@ -12,9 +12,9 @@ import {MenuAction, MenuGroup, RollupActions} from './components';
 import styles from './ActionMenu.scss';
 
 export interface Props {
-  /** Collection of page-level actions */
-  actions?: MenuActionDescriptor[];
-  /** Collection of page-level groups of secondary actions */
+  /** Collection of page-level secondary actions */
+  actions?: ComplexAction[];
+  /** Collection of page-level action groups */
   groups?: MenuGroupDescriptor[];
   /** Roll up all actions into a Popover > ActionList */
   rollup?: boolean;
@@ -75,7 +75,7 @@ export default class ActionMenu extends React.PureComponent<Props, State> {
             title={title}
             active={title === activeMenuGroup}
             {...rest}
-            onOpen={this.handleMenuGroupOpen}
+            onOpen={this.handleMenuGroupToggle}
             onClose={this.handleMenuGroupClose}
           />
         ))
@@ -89,8 +89,10 @@ export default class ActionMenu extends React.PureComponent<Props, State> {
     ) : null;
   };
 
-  private handleMenuGroupOpen = (group: string) => {
-    this.setState({activeMenuGroup: group});
+  private handleMenuGroupToggle = (group: string) => {
+    this.setState(({activeMenuGroup}) => ({
+      activeMenuGroup: activeMenuGroup ? undefined : group,
+    }));
   };
 
   private handleMenuGroupClose = () => {

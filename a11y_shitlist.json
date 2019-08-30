@@ -1,5 +1,5 @@
 {
-  "all-components-app-provider--with-i18n-object": [
+  "all-components-app-provider--with-i18n": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
       "context": "<a aria-describedby=\"341\" class=\"Item-Link_2-raD\" tabindex=\"0\" id=\"ResourceListItemOverlay1\" href=\"customers/341\" data-polaris-unstyled=\"true\"></a>",
@@ -129,26 +129,6 @@
       "type": "error",
       "typeCode": 1,
       "selector": "#256 > div:nth-child(4) > div > button"
-    }
-  ],
-  "all-components-tabs--fitted-tabs": [
-    {
-      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F92,ARIA4",
-      "context": "<li role=\"presentation\" class=\"Tabs-DisclosureTab_1_TJd\"><div><button tabindex=\"-1\" clas...</li>",
-      "message": "This element's role is \"presentation\" but contains child elements with semantic meaning.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#root > div > div > div > div > ul > li:nth-child(3)"
-    }
-  ],
-  "all-components-tabs--default-tabs": [
-    {
-      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F92,ARIA4",
-      "context": "<li role=\"presentation\" class=\"Tabs-DisclosureTab_1_TJd\"><div><button tabindex=\"-1\" clas...</li>",
-      "message": "This element's role is \"presentation\" but contains child elements with semantic meaning.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#root > div > div > div > div > ul > li:nth-child(5)"
     }
   ]
 }

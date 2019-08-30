@@ -1,6 +1,6 @@
-import * as React from 'react';
-import {classNames} from '@shopify/css-utilities';
+import React from 'react';
 
+import {classNames} from '../../utilities/css';
 import ScrollLock from '../ScrollLock';
 import styles from './Backdrop.scss';
 

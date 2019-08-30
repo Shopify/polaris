@@ -1,10 +1,9 @@
-import * as React from 'react';
+import React, {createRef} from 'react';
 import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
 import {write} from '@shopify/javascript-utilities/fastdom';
-import {classNames} from '@shopify/css-utilities';
 import {durationBase} from '@shopify/polaris-tokens';
-import {CSSTransition} from 'react-transition-group';
 
+import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
   wrapWithComponent,
@@ -29,7 +28,12 @@ export enum CloseSource {
   ScrollOut,
 }
 
-type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
+enum TransitionStatus {
+  Entering = 'entering',
+  Entered = 'entered',
+  Exiting = 'exiting',
+  Exited = 'exited',
+}
 
 export interface Props {
   children?: React.ReactNode;
@@ -46,40 +50,103 @@ export interface Props {
   onClose(source: CloseSource): void;
 }
 
-export default class PopoverOverlay extends React.PureComponent<Props, never> {
-  private contentNode = React.createRef<HTMLDivElement>();
-  private transitionStatus: TransitionStatus | null = null;
+interface State {
+  transitionStatus: TransitionStatus;
+}
+
+export default class PopoverOverlay extends React.PureComponent<Props, State> {
+  state: State = {
+    transitionStatus: this.props.active
+      ? TransitionStatus.Entering
+      : TransitionStatus.Exited,
+  };
+
+  private contentNode = createRef<HTMLDivElement>();
+  private enteringTimer?: number;
+  private exitingTimer?: number;
+
+  changeTransitionStatus(transitionStatus: TransitionStatus, cb?: () => void) {
+    this.setState({transitionStatus}, cb);
+    // Forcing a reflow to enable the animation
+    this.contentNode.current &&
+      this.contentNode.current.getBoundingClientRect();
+  }
 
   componentDidMount() {
     if (this.props.active) {
       this.focusContent();
+
+      this.changeTransitionStatus(TransitionStatus.Entered);
     }
   }
 
   componentDidUpdate(oldProps: Props) {
     if (this.props.active && !oldProps.active) {
       this.focusContent();
+      this.changeTransitionStatus(TransitionStatus.Entering, () => {
+        this.enteringTimer = window.setTimeout(() => {
+          this.setState({transitionStatus: TransitionStatus.Entered});
+        }, durationBase);
+      });
+    }
+
+    if (!this.props.active && oldProps.active) {
+      this.changeTransitionStatus(TransitionStatus.Exiting, () => {
+        this.exitingTimer = window.setTimeout(() => {
+          this.setState({transitionStatus: TransitionStatus.Exited});
+        }, durationBase);
+      });
     }
   }
 
+  componentWillUnmount() {
+    this.clearTransitionTimeout();
+  }
+
   render() {
-    const {active} = this.props;
-    return (
-      <CSSTransition
-        in={active}
-        timeout={durationBase}
-        mountOnEnter
-        unmountOnExit
-        classNames={{
-          enter: styles.entering,
-          enterActive: styles.entered,
-          exit: styles.exiting,
-          exitActive: styles.exited,
-        }}
-      >
-        {this.renderOverlay}
-      </CSSTransition>
+    const {
+      active,
+      activator,
+      fullWidth,
+      preferredPosition = 'below',
+      preferredAlignment = 'center',
+      fixed,
+    } = this.props;
+    const {transitionStatus} = this.state;
+    if (transitionStatus === TransitionStatus.Exited && !active) return null;
+
+    const className = classNames(
+      styles.PopoverOverlay,
+      transitionStatus === TransitionStatus.Entered &&
+        styles['PopoverOverlay-open'],
+      transitionStatus === TransitionStatus.Exiting &&
+        styles['PopoverOverlay-exiting'],
     );
+
+    return (
+      <PositionedOverlay
+        testID="positionedOverlay"
+        fullWidth={fullWidth}
+        active={active}
+        activator={activator}
+        preferredPosition={preferredPosition}
+        preferredAlignment={preferredAlignment}
+        render={this.renderPopover.bind(this)}
+        fixed={fixed}
+        onScrollOut={this.handleScrollOut}
+        classNames={className}
+      />
+    );
+  }
+
+  private clearTransitionTimeout() {
+    if (this.enteringTimer) {
+      window.clearTimeout(this.enteringTimer);
+    }
+
+    if (this.exitingTimer) {
+      window.clearTimeout(this.exitingTimer);
+    }
   }
 
   private focusContent() {
@@ -99,35 +166,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     });
   }
 
-  private renderOverlay = (transitionStatus: TransitionStatus) => {
-    const {
-      active,
-      activator,
-      fullWidth,
-      preferredPosition = 'below',
-      preferredAlignment = 'center',
-      fixed,
-    } = this.props;
-
-    return (
-      <PositionedOverlay
-        testID="positionedOverlay"
-        fullWidth={fullWidth}
-        active={active}
-        activator={activator}
-        preferredPosition={preferredPosition}
-        preferredAlignment={preferredAlignment}
-        render={this.renderPopover.bind(this, transitionStatus)}
-        fixed={fixed}
-        onScrollOut={this.handleScrollOut}
-      />
-    );
-  };
-
-  private renderPopover = (
-    transitionStatus: TransitionStatus,
-    overlayDetails: OverlayDetails,
-  ) => {
+  private renderPopover = (overlayDetails: OverlayDetails) => {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
     const {id, children, sectioned, fullWidth, fullHeight} = this.props;
@@ -138,8 +177,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       fullWidth && styles.fullWidth,
       measuring && styles.measuring,
     );
-
-    this.transitionStatus = transitionStatus;
 
     const contentStyles = measuring ? undefined : {height: desiredHeight};
 
@@ -195,7 +232,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     if (
       isDescendant ||
       isActivatorDescendant ||
-      this.transitionStatus !== 'entered'
+      this.state.transitionStatus !== TransitionStatus.Entered
     ) {
       return;
     }

@@ -1,14 +1,11 @@
-import * as React from 'react';
+import React, {useRef} from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 
-import {
-  DEFAULT_TOAST_DURATION,
-  FrameContext,
-  frameContextTypes,
-  ToastProps,
-} from '../Frame';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {DEFAULT_TOAST_DURATION} from '../Frame';
+import {ToastProps, useFrame} from '../../utilities/frame';
+import {useDeepEffect} from '../../utilities/use-deep-effect';
+import {useAppBridge} from '../../utilities/app-bridge';
 
 const createId = createUniqueIDFactory('Toast');
 
@@ -16,62 +13,60 @@ const createId = createUniqueIDFactory('Toast');
 // a component's props to be found in the Props interface. This silly workaround
 // ensures that the Props Explorer table is generated correctly, instead of
 // crashing if we write `ComposedProps = ToastProps & WithAppProviderProps`
-interface Props extends ToastProps {}
+export interface Props extends ToastProps {}
 
-export type ComposedProps = Props & WithAppProviderProps;
+function Toast(props: Props) {
+  const id = useRef(createId());
+  const appBridgeToast = useRef<AppBridgeToast.Toast>();
+  const {showToast, hideToast} = useFrame();
+  const appBridge = useAppBridge();
 
-class Toast extends React.PureComponent<ComposedProps, never> {
-  static contextTypes = frameContextTypes;
-  context: FrameContext;
+  useDeepEffect(
+    () => {
+      const {
+        error,
+        content,
+        duration = DEFAULT_TOAST_DURATION,
+        onDismiss,
+      } = props;
+      const toastId = id.current;
 
-  private id = createId();
-  private appBridgeToast: AppBridgeToast.Toast | undefined;
+      if (appBridge == null) {
+        showToast({
+          id: id.current,
+          ...props,
+        });
+      } else {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'Deprecation: Using `Toast` in an embedded app is deprecated and will be removed in v5.0. Use `Toast` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/toast',
+        );
 
-  componentDidMount() {
-    const {context, id, props} = this;
-    const {
-      error,
-      content,
-      duration = DEFAULT_TOAST_DURATION,
-      onDismiss,
-    } = props;
-    const {appBridge} = props.polaris;
+        appBridgeToast.current = AppBridgeToast.create(appBridge, {
+          message: content,
+          duration,
+          isError: error,
+        });
 
-    if (appBridge == null) {
-      context.frame.showToast({
-        id,
-        ...(props as Props),
-      });
-    } else {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'Deprecation: Using `Toast` in an embedded app is deprecated and will be removed in v5.0. Use `Toast` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/toast',
-      );
+        appBridgeToast.current.subscribe(
+          AppBridgeToast.Action.CLEAR,
+          onDismiss,
+        );
+        appBridgeToast.current.dispatch(AppBridgeToast.Action.SHOW);
+      }
 
-      this.appBridgeToast = AppBridgeToast.create(appBridge, {
-        message: content,
-        duration,
-        isError: error,
-      });
+      return () => {
+        if (appBridge == null) {
+          hideToast({id: toastId});
+        } else if (appBridgeToast.current != null) {
+          appBridgeToast.current.unsubscribe();
+        }
+      };
+    },
+    [appBridge, props],
+  );
 
-      this.appBridgeToast.subscribe(AppBridgeToast.Action.CLEAR, onDismiss);
-      this.appBridgeToast.dispatch(AppBridgeToast.Action.SHOW);
-    }
-  }
-
-  componentWillUnmount() {
-    const {appBridge} = this.props.polaris;
-
-    if (appBridge == null) {
-      this.context.frame.hideToast({id: this.id});
-    } else if (this.appBridgeToast != null) {
-      this.appBridgeToast.unsubscribe();
-    }
-  }
-
-  render() {
-    return null;
-  }
+  return null;
 }
 
-export default withAppProvider<Props>()(Toast);
+export default React.memo(Toast);

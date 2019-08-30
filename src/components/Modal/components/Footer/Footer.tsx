@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import {ComplexAction, AppBridgeAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';

@@ -1,9 +1,5 @@
-import * as React from 'react';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-  findByTestID,
-} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {InlineError, Labelled, Connected, Select} from 'components';
 import {Resizer, Spinner} from '../components';
 import TextField from '../TextField';
@@ -11,7 +7,7 @@ import TextField from '../TextField';
 describe('<TextField />', () => {
   it('allows specific props to pass through properties on the input', () => {
     const pattern = '\\d\\d';
-    const input = shallowWithAppProvider(
+    const input = mountWithAppProvider(
       <TextField
         label="TextField"
         disabled
@@ -46,7 +42,7 @@ describe('<TextField />', () => {
   });
 
   it('blocks props not listed as component props to pass on the input', () => {
-    const input = shallowWithAppProvider(
+    const input = mountWithAppProvider(
       <TextField
         label="TextField"
         disabled
@@ -77,7 +73,7 @@ describe('<TextField />', () => {
   describe('onFocus()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      shallowWithAppProvider(
+      mountWithAppProvider(
         <TextField label="TextField" onFocus={spy} onChange={noop} />,
       )
         .find('input')
@@ -89,7 +85,7 @@ describe('<TextField />', () => {
   describe('onBlur()', () => {
     it('is called when the input is blurred', () => {
       const spy = jest.fn();
-      const element = shallowWithAppProvider(
+      const element = mountWithAppProvider(
         <TextField label="TextField" onBlur={spy} onChange={noop} />,
       );
       element.find('input').simulate('focus');
@@ -100,7 +96,7 @@ describe('<TextField />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallowWithAppProvider(
+      const id = mountWithAppProvider(
         <TextField label="TextField" id="MyField" onChange={noop} />,
       )
         .find('input')
@@ -109,7 +105,7 @@ describe('<TextField />', () => {
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallowWithAppProvider(
+      const id = mountWithAppProvider(
         <TextField label="TextField" onChange={noop} />,
       )
         .find('input')
@@ -175,28 +171,28 @@ describe('<TextField />', () => {
 
   describe('autoComplete', () => {
     it('defaults to no autoComplete attribute', () => {
-      const textField = shallowWithAppProvider(
+      const textField = mountWithAppProvider(
         <TextField label="TextField" onChange={noop} />,
       );
       expect(textField.find('input').prop('autoComplete')).toBeUndefined();
     });
 
     it('sets autoComplete to "off" when false', () => {
-      const textField = shallowWithAppProvider(
+      const textField = mountWithAppProvider(
         <TextField label="TextField" autoComplete={false} onChange={noop} />,
       );
       expect(textField.find('input').prop('autoComplete')).toBe('off');
     });
 
     it('sets autoComplete to "on" when false', () => {
-      const textField = shallowWithAppProvider(
+      const textField = mountWithAppProvider(
         <TextField label="TextField" autoComplete onChange={noop} />,
       );
       expect(textField.find('input').prop('autoComplete')).toBe('on');
     });
 
     it('sets autoComplete to string value when string is given', () => {
-      const textField = shallowWithAppProvider(
+      const textField = mountWithAppProvider(
         <TextField
           label="TextField"
           autoComplete="firstName"
@@ -222,7 +218,7 @@ describe('<TextField />', () => {
 
   describe('error', () => {
     it('marks the input as invalid', () => {
-      const textField = shallowWithAppProvider(
+      const textField = mountWithAppProvider(
         <TextField
           error={<span>Invalid</span>}
           label="TextField"
@@ -491,7 +487,7 @@ describe('<TextField />', () => {
 
   describe('type', () => {
     it('sets the type on the input', () => {
-      const type = shallowWithAppProvider(
+      const type = mountWithAppProvider(
         <TextField label="TextField" type="email" onChange={noop} />,
       )
         .find('input')
@@ -845,7 +841,7 @@ describe('<TextField />', () => {
 
   describe('multiline', () => {
     it('does not render a resizer if multiline is false', () => {
-      const textField = shallowWithAppProvider(
+      const textField = mountWithAppProvider(
         <TextField
           label="TextField"
           id="MyField"
@@ -859,7 +855,7 @@ describe('<TextField />', () => {
 
   describe('aria labels', () => {
     it('sets aria labels on the input element', () => {
-      const textField = shallowWithAppProvider(
+      const textField = mountWithAppProvider(
         <TextField
           label="TextField"
           id="MyField"
@@ -927,10 +923,20 @@ describe('<TextField />', () => {
   describe('Connected', () => {
     it('passes props to Connected', () => {
       const connectedLeft = (
-        <Select label="Currency unit" labelHidden options={['$', '€']} />
+        <Select
+          label="Currency unit"
+          labelHidden
+          options={['$', '€']}
+          onChange={noop}
+        />
       );
       const connectedRight = (
-        <Select label="Weight unit" labelHidden options={['kg', 'lb']} />
+        <Select
+          label="Weight unit"
+          labelHidden
+          options={['kg', 'lb']}
+          onChange={noop}
+        />
       );
       const textField = mountWithAppProvider(
         <TextField

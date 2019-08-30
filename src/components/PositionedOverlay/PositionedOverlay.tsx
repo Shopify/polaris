@@ -1,8 +1,8 @@
-import * as React from 'react';
-import {classNames} from '@shopify/css-utilities';
+import React from 'react';
 import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
 import {closest} from '@shopify/javascript-utilities/dom';
 
+import {classNames} from '../../utilities/css';
 import EventListener from '../EventListener';
 import Scrollable from '../Scrollable';
 import {layer} from '../shared';
@@ -35,6 +35,7 @@ export interface Props {
   preferredAlignment?: PreferredAlignment;
   fullWidth?: boolean;
   fixed?: boolean;
+  classNames?: string;
   render(overlayDetails: OverlayDetails): React.ReactNode;
   onScrollOut?(): void;
 }
@@ -117,7 +118,7 @@ export default class PositionedOverlay extends React.PureComponent<
 
   render() {
     const {left, top, zIndex, width} = this.state;
-    const {render, fixed} = this.props;
+    const {render, fixed, classNames: propClassNames} = this.props;
 
     const style = {
       top: top == null || isNaN(top) ? undefined : top,
@@ -129,6 +130,7 @@ export default class PositionedOverlay extends React.PureComponent<
     const className = classNames(
       styles.PositionedOverlay,
       fixed && styles.fixed,
+      propClassNames,
     );
 
     return (

@@ -1,6 +1,5 @@
-import * as React from 'react';
+import React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {classNames} from '@shopify/css-utilities';
 import debounce from 'lodash/debounce';
 import {
   addEventListener,
@@ -11,19 +10,23 @@ import {
   CircleAlertMajorMonotone,
 } from '@shopify/polaris-icons';
 
-import capitalize from '../../utilities/capitalize';
+import {classNames} from '../../utilities/css';
+import {capitalize} from '../../utilities/capitalize';
 import Icon from '../Icon';
 import Stack from '../Stack';
 import Caption from '../Caption';
 import DisplayText from '../DisplayText';
 import VisuallyHidden from '../VisuallyHidden';
 import Labelled, {Action} from '../Labelled';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 
-import {FileUpload, Provider} from './components';
+import {FileUpload} from './components';
+import {DropZoneContext} from './context';
 
 import {fileAccepted, getDataTransferFiles} from './utils';
-import {DropZoneContext} from './types';
 
 import styles from './DropZone.scss';
 
@@ -204,13 +207,6 @@ class DropZone extends React.Component<CombinedProps, State> {
     };
   }
 
-  get getContext(): DropZoneContext {
-    return {
-      size: this.state.size,
-      type: this.state.type || 'file',
-    };
-  }
-
   get dropNode() {
     return this.props.dropOnPage ? document : this.node.current;
   }
@@ -221,6 +217,7 @@ class DropZone extends React.Component<CombinedProps, State> {
       dragging,
       error,
       size,
+      type,
       overlayText,
       errorOverlayText,
     } = this.state;
@@ -299,8 +296,13 @@ class DropZone extends React.Component<CombinedProps, State> {
       : intl.translate('Polaris.DropZone.FileUpload.label');
     const labelHiddenValue = label ? labelHidden : true;
 
+    const context = {
+      size,
+      type: type || 'file',
+    };
+
     return (
-      <Provider value={this.getContext}>
+      <DropZoneContext.Provider value={context}>
         <Labelled
           id={id}
           label={labelValue}
@@ -322,7 +324,7 @@ class DropZone extends React.Component<CombinedProps, State> {
             </VisuallyHidden>
           </div>
         </Labelled>
-      </Provider>
+      </DropZoneContext.Provider>
     );
   }
 

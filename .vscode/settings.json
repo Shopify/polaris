@@ -21,7 +21,7 @@
     "esnext/": true,
     "index.*": true,
     "sandbox": true,
-    "styles.{css,scss}": true,
+    "styles.{css,min.css,scss}": true,
     "styles/": true,
     "types/": true
   },
@@ -40,7 +40,7 @@
     "esnext/": true,
     "index.*": true,
     "sandbox": true,
-    "styles.{css,scss}": true,
+    "styles.{css,min.css,scss}": true,
     "styles/": true,
     "types/": true
   },

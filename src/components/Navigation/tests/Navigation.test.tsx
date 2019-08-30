@@ -1,10 +1,8 @@
-import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import Navigation from '../Navigation';
-import {UserMenu} from '../components';
-import {contextTypes} from '../types';
-
-const childContextTypes = contextTypes;
+import {NavigationContext} from '../context';
+import {WithinContentContext} from '../../../utilities/within-content-context';
 
 describe('<Navigation />', () => {
   it('mounts', () => {
@@ -14,16 +12,23 @@ describe('<Navigation />', () => {
 
   describe('context', () => {
     it('passes location context', () => {
-      const Child: React.SFC = (_props, context) => {
-        // eslint-disable-next-line shopify/jest/no-if
-        return context.location ? <div /> : null;
+      const Child: React.SFC<{}> = (_props) => {
+        return (
+          <NavigationContext.Consumer>
+            {({location}) => {
+              // eslint-disable-next-line shopify/jest/no-if
+              return location ? <div /> : null;
+            }}
+          </NavigationContext.Consumer>
+        );
       };
-      Child.contextTypes = childContextTypes;
 
       const navigation = mountWithAppProvider(
-        <Navigation location="/">
-          <Child />
-        </Navigation>,
+        <NavigationContext.Provider value={{location: '/'}}>
+          <Navigation location="/">
+            <Child />
+          </Navigation>
+        </NavigationContext.Provider>,
       );
 
       const div = navigation
@@ -35,11 +40,16 @@ describe('<Navigation />', () => {
     });
 
     it('has a child with contentContext', () => {
-      const Child: React.SFC = (_props, context) => {
-        // eslint-disable-next-line shopify/jest/no-if
-        return context.withinContentContainer ? <div /> : null;
+      const Child: React.SFC<{}> = (_props) => {
+        return (
+          <WithinContentContext.Consumer>
+            {(withinContentContainer) => {
+              // eslint-disable-next-line shopify/jest/no-if
+              return withinContentContainer ? <div /> : null;
+            }}
+          </WithinContentContext.Consumer>
+        );
       };
-      Child.contextTypes = childContextTypes;
 
       const navigation = mountWithAppProvider(
         <Navigation location="/">
@@ -47,22 +57,7 @@ describe('<Navigation />', () => {
         </Navigation>,
       );
 
-      const div = navigation
-        .find(Child)
-        .find('div')
-        .first();
-
-      expect(div.exists()).toBe(true);
-    });
-  });
-
-  describe('userMenu', () => {
-    it('renders the given user menu', () => {
-      const userMenu = <UserMenu avatarInitials="" />;
-      const navigation = mountWithAppProvider(
-        <Navigation location="/" userMenu={userMenu} />,
-      );
-      expect(navigation.contains(userMenu)).toBeTruthy();
+      expect(navigation.find(Child).find('div')).toHaveLength(1);
     });
   });
 

@@ -1,8 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import {ReactWrapper} from 'enzyme';
-import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {RadioButton, Checkbox, InlineError, errorTextID} from 'components';
-
 import ChoiceList, {ChoiceDescriptor} from '../ChoiceList';
 
 describe('<ChoiceList />', () => {
@@ -17,15 +16,15 @@ describe('<ChoiceList />', () => {
   });
 
   it('renders a fieldset', () => {
-    const element = shallowWithAppProvider(
-      <ChoiceList selected={[]} choices={choices} />,
+    const element = mountWithAppProvider(
+      <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
     );
     expect(element.find('fieldset').exists()).toBe(true);
   });
 
   describe('title', () => {
     it('renders a legend for the fieldset', () => {
-      const element = shallowWithAppProvider(
+      const element = mountWithAppProvider(
         <ChoiceList title="My title" selected={[]} choices={choices} />,
       );
       expect(element.find('legend').text()).toBe('My title');
@@ -40,8 +39,8 @@ describe('<ChoiceList />', () => {
         {...choices[2], helpText: 'Some help text'},
       ];
 
-      const choiceElements = shallowWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} />,
+      const choiceElements = mountWithAppProvider(
+        <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
       ).find(RadioButton);
 
       choiceElements.forEach((choiceElement, index) => {
@@ -65,8 +64,12 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = shallowWithAppProvider(
-          <ChoiceList selected={[]} choices={choices} />,
+        const choiceElements = mountWithAppProvider(
+          <ChoiceList
+            title="Choose a number"
+            selected={[]}
+            choices={choices}
+          />,
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
@@ -92,8 +95,12 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = shallowWithAppProvider(
-          <ChoiceList selected={selected} choices={choices} />,
+        const choiceElements = mountWithAppProvider(
+          <ChoiceList
+            title="Choose a number"
+            selected={selected}
+            choices={choices}
+          />,
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
@@ -117,8 +124,12 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = shallowWithAppProvider(
-          <ChoiceList selected={selected} choices={choices} />,
+        const choiceElements = mountWithAppProvider(
+          <ChoiceList
+            title="Choose a number"
+            selected={selected}
+            choices={choices}
+          />,
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
@@ -145,8 +156,12 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = shallowWithAppProvider(
-          <ChoiceList selected={[]} choices={choices} />,
+        const choiceElements = mountWithAppProvider(
+          <ChoiceList
+            title="Choose a number"
+            selected={[]}
+            choices={choices}
+          />,
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
@@ -171,8 +186,12 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = shallowWithAppProvider(
-          <ChoiceList selected={selected} choices={choices} />,
+        const choiceElements = mountWithAppProvider(
+          <ChoiceList
+            title="Choose a number"
+            selected={selected}
+            choices={choices}
+          />,
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
@@ -199,8 +218,12 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = shallowWithAppProvider(
-          <ChoiceList selected={[]} choices={choices} />,
+        const choiceElements = mountWithAppProvider(
+          <ChoiceList
+            title="Choose a number"
+            selected={[]}
+            choices={choices}
+          />,
         );
 
         expect(choiceElements.contains(children)).toBe(false);
@@ -212,8 +235,12 @@ describe('<ChoiceList />', () => {
     it('sets the provided choices to be selected', () => {
       const selectedIndexes = [0, 2];
       const selected = selectedIndexes.map((index) => choices[index].value);
-      const choiceElements = shallowWithAppProvider(
-        <ChoiceList selected={selected} choices={choices} />,
+      const choiceElements = mountWithAppProvider(
+        <ChoiceList
+          title="Choose a number"
+          selected={selected}
+          choices={choices}
+        />,
       ).find(RadioButton);
 
       choiceElements.forEach((choiceElement, index) => {
@@ -232,6 +259,7 @@ describe('<ChoiceList />', () => {
       });
       const choiceList = mountWithAppProvider(
         <ChoiceList
+          title="Choose a number"
           name="MyChoiceList"
           allowMultiple
           onChange={spy}
@@ -264,8 +292,8 @@ describe('<ChoiceList />', () => {
 
   describe('name', () => {
     it('provides a unique name when none is provided', () => {
-      const choiceElements = shallowWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} />,
+      const choiceElements = mountWithAppProvider(
+        <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
       ).find(RadioButton);
       const name = choiceElements.at(0).prop('name');
       expect(typeof name).toBe('string');
@@ -277,8 +305,13 @@ describe('<ChoiceList />', () => {
 
     it('uses the same name for choices', () => {
       const name = 'MyChoiceList';
-      const choiceElements = shallowWithAppProvider(
-        <ChoiceList name={name} selected={[]} choices={choices} />,
+      const choiceElements = mountWithAppProvider(
+        <ChoiceList
+          title="Choose a number"
+          name={name}
+          selected={[]}
+          choices={choices}
+        />,
       ).find(RadioButton);
       choiceElements.forEach((choiceElement) => {
         expect(choiceElement.prop('name')).toBe(name);
@@ -287,8 +320,9 @@ describe('<ChoiceList />', () => {
 
     it('postpends [] when multiple options are allowed', () => {
       const name = 'MyChoiceList';
-      const choiceElements = shallowWithAppProvider(
+      const choiceElements = mountWithAppProvider(
         <ChoiceList
+          title="Choose a number"
           allowMultiple
           name={name}
           selected={[]}
@@ -304,22 +338,32 @@ describe('<ChoiceList />', () => {
 
   describe('allowMultiple', () => {
     it('renders a radio button for each option when allowMultiple is not true', () => {
-      let element = shallowWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} />,
+      let element = mountWithAppProvider(
+        <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
       );
       expect(element.find(RadioButton)).toHaveLength(choices.length);
       expect(element.find(Checkbox).exists()).toBe(false);
 
-      element = shallowWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} allowMultiple={false} />,
+      element = mountWithAppProvider(
+        <ChoiceList
+          title="Choose a number"
+          selected={[]}
+          choices={choices}
+          allowMultiple={false}
+        />,
       );
       expect(element.find(RadioButton)).toHaveLength(choices.length);
       expect(element.find(Checkbox).exists()).toBe(false);
     });
 
     it('renders a checkbox each option when allowMultiple is true', () => {
-      const element = shallowWithAppProvider(
-        <ChoiceList allowMultiple selected={[]} choices={choices} />,
+      const element = mountWithAppProvider(
+        <ChoiceList
+          title="Choose a number"
+          allowMultiple
+          selected={[]}
+          choices={choices}
+        />,
       );
       expect(element.find(RadioButton).exists()).toBe(false);
       expect(element.find(Checkbox)).toHaveLength(choices.length);
@@ -336,14 +380,24 @@ describe('<ChoiceList />', () => {
 
     it('marks the fieldset as invalid', () => {
       const element = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} error="Error message" />,
+        <ChoiceList
+          title="Choose a number"
+          selected={[]}
+          choices={choices}
+          error="Error message"
+        />,
       );
       expect(element.find('fieldset').prop<string>('aria-invalid')).toBe(true);
     });
 
     it('renders an InlineError markup when truthy', () => {
       const element = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} error="Error message" />,
+        <ChoiceList
+          title="Choose a number"
+          selected={[]}
+          choices={choices}
+          error="Error message"
+        />,
       );
 
       const error = element.find(InlineError);
@@ -352,7 +406,12 @@ describe('<ChoiceList />', () => {
 
     it("connects the InlineError to the choice, with the describedByError key's, ariaDescribedBy prop", () => {
       const element = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} error="Error message" />,
+        <ChoiceList
+          title="Choose a number"
+          selected={[]}
+          choices={choices}
+          error="Error message"
+        />,
       );
 
       const fieldId = element.find(InlineError).prop('fieldID');
@@ -368,7 +427,7 @@ describe('<ChoiceList />', () => {
 
     it('does not provide the choice, with the describedByError key, with ariaDescribedBy prop if no error is provided', () => {
       const element = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} />,
+        <ChoiceList title="Title" selected={[]} choices={choices} />,
       );
 
       const radioButtonDescribeBy = element
@@ -381,7 +440,12 @@ describe('<ChoiceList />', () => {
 
     it('does not render an InlineError when falsy', () => {
       const element = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} error="" />,
+        <ChoiceList
+          title="Choose a number"
+          selected={[]}
+          choices={choices}
+          error=""
+        />,
       );
 
       expect(element.find(InlineError)).toHaveLength(0);
@@ -390,8 +454,8 @@ describe('<ChoiceList />', () => {
 
   describe('disabled', () => {
     it('disables choices', () => {
-      const choiceElements = shallowWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} disabled />,
+      const choiceElements = mountWithAppProvider(
+        <ChoiceList selected={[]} choices={choices} disabled title="title" />,
       ).find(RadioButton);
 
       choiceElements.forEach((choiceElement) => {
@@ -402,8 +466,8 @@ describe('<ChoiceList />', () => {
     it('preserves disabled choices', () => {
       choices = [choices[0], choices[1], {...choices[2], disabled: true}];
 
-      const choiceElements = shallowWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} disabled />,
+      const choiceElements = mountWithAppProvider(
+        <ChoiceList selected={[]} choices={choices} disabled title="title" />,
       ).find(RadioButton);
 
       choiceElements.forEach((choiceElement) => {

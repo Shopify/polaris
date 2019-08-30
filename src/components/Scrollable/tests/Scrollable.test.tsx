@@ -1,7 +1,7 @@
-import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
-import {contextTypes} from '../types';
+import React from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import Scrollable from '../Scrollable';
+import {ScrollableContext} from '../context';
 
 describe('<Scrollable />', () => {
   it('mounts', () => {
@@ -30,16 +30,21 @@ describe('<Scrollable />', () => {
   });
 
   it('provides scrollToPosition callback to children', () => {
-    const Child: React.SFC = (_props, context) => {
-      // eslint-disable-next-line shopify/jest/no-if
-      return context.scrollToPosition ? <div /> : null;
-    };
-    Child.contextTypes = contextTypes;
+    const Child: React.SFC<{}> = (_) => (
+      <ScrollableContext.Consumer>
+        {(scrollToPosition) => {
+          // eslint-disable-next-line shopify/jest/no-if
+          return scrollToPosition ? <div /> : null;
+        }}
+      </ScrollableContext.Consumer>
+    );
 
     const scrollableContainer = mountWithAppProvider(
-      <Scrollable>
-        <Child />
-      </Scrollable>,
+      <ScrollableContext.Provider value={() => {}}>
+        <Scrollable>
+          <Child />
+        </Scrollable>
+      </ScrollableContext.Provider>,
     );
 
     const div = scrollableContainer

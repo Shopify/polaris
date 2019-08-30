@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider, findByTestID} from 'test-utilities';
+import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Tooltip, TextField} from 'components';
 import {Key} from '../../../types';
 import Pagination from '../Pagination';

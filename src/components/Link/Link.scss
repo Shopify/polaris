@@ -15,6 +15,7 @@
   &:hover,
   &:active {
     color: color('blue', 'dark');
+    text-decoration: underline;
   }
 }
 

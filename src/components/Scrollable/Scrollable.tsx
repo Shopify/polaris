@@ -1,16 +1,19 @@
-import * as React from 'react';
+import React from 'react';
 import debounce from 'lodash/debounce';
 import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
-import {classNames} from '@shopify/css-utilities';
-import {withSticky, WithAppProviderProps} from '../AppProvider';
+import {classNames} from '../../utilities/css';
+import {
+  StickyManager,
+  StickyManagerContext,
+} from '../../utilities/sticky-manager';
 import {scrollable} from '../shared';
-import {contextTypes} from './types';
 
 import {ScrollTo} from './components';
+import {ScrollableContext} from './context';
 
 import styles from './Scrollable.scss';
 
@@ -41,15 +44,8 @@ export interface State {
   scrollPosition: number;
 }
 
-export interface Context {
-  scrollToPosition(scrollY: number): void;
-}
-
-type CombinedProps = Props & WithAppProviderProps;
-class Scrollable extends React.Component<CombinedProps, State> {
-  static childContextTypes = contextTypes;
+export default class Scrollable extends React.Component<Props, State> {
   static ScrollTo = ScrollTo;
-
   static forNode(node: HTMLElement): HTMLElement | Document {
     return (
       (closest(node, scrollable.selector) as HTMLElement | null) || document
@@ -62,6 +58,8 @@ class Scrollable extends React.Component<CombinedProps, State> {
     scrollPosition: 0,
   };
 
+  private stickyManager = new StickyManager();
+
   private scrollArea: HTMLElement | null;
 
   private handleResize = debounce(
@@ -72,18 +70,11 @@ class Scrollable extends React.Component<CombinedProps, State> {
     {trailing: true},
   );
 
-  getChildContext(): Context {
-    return {
-      scrollToPosition: this.scrollToPosition,
-    };
-  }
-
   componentDidMount() {
-    const {polaris} = this.props;
     if (this.scrollArea == null) {
       return;
     }
-    polaris.stickyManager.setContainer(this.scrollArea);
+    this.stickyManager.setContainer(this.scrollArea);
     addEventListener(this.scrollArea, 'scroll', () => {
       window.requestAnimationFrame(this.handleScroll);
     });
@@ -97,13 +88,12 @@ class Scrollable extends React.Component<CombinedProps, State> {
   }
 
   componentWillUnmount() {
-    const {polaris} = this.props;
     if (this.scrollArea == null) {
       return;
     }
     removeEventListener(this.scrollArea, 'scroll', this.handleScroll);
     removeEventListener(window, 'resize', this.handleResize);
-    polaris.stickyManager.removeScrollListener();
+    this.stickyManager.removeScrollListener();
   }
 
   componentDidUpdate() {
@@ -123,7 +113,6 @@ class Scrollable extends React.Component<CombinedProps, State> {
       shadow,
       hint,
       onScrolledToBottom,
-      polaris,
       ...rest
     } = this.props;
 
@@ -137,14 +126,18 @@ class Scrollable extends React.Component<CombinedProps, State> {
     );
 
     return (
-      <div
-        className={finalClassName}
-        {...scrollable.props}
-        {...rest}
-        ref={this.setScrollArea}
-      >
-        {children}
-      </div>
+      <ScrollableContext.Provider value={this.scrollToPosition}>
+        <StickyManagerContext.Provider value={this.stickyManager}>
+          <div
+            className={finalClassName}
+            {...scrollable.props}
+            {...rest}
+            ref={this.setScrollArea}
+          >
+            {children}
+          </div>
+        </StickyManagerContext.Provider>
+      </ScrollableContext.Provider>
     );
   }
 
@@ -256,5 +249,3 @@ function prefersReducedMotion() {
     return false;
   }
 }
-
-export default withSticky()(Scrollable);

@@ -1,9 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
-import {MenuActionDescriptor, ActionListSection} from '../../../../types';
+import {ActionListSection, ActionListItemDescriptor} from '../../../../types';
 
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import ActionList from '../../../ActionList';
 import Button from '../../../Button';
 import Popover from '../../../Popover';
@@ -12,7 +15,7 @@ import styles from './RollupActions.scss';
 
 export interface Props {
   /** Collection of actions for the list */
-  items?: MenuActionDescriptor[];
+  items?: ActionListItemDescriptor[];
   /** Collection of sectioned action items */
   sections?: ActionListSection[];
 }

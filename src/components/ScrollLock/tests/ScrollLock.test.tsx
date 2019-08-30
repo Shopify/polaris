@@ -1,13 +1,27 @@
-import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
-import {SCROLL_LOCKING_ATTRIBUTE} from '../../AppProvider';
+import React from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
+import {SCROLL_LOCKING_ATTRIBUTE} from '../../../utilities/scroll-lock-manager';
 import ScrollLock from '../ScrollLock';
 
 describe('ScrollLock', () => {
+  let scrollSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    scrollSpy = jest.spyOn(window, 'scroll');
+  });
+
+  afterEach(() => {
+    scrollSpy.mockRestore();
+  });
+
   it('does not remove the data attribute from the body when two scrolllocks are mounted and one unmounts', () => {
     class DummyFrame extends React.Component {
       state = {
         showScrollLock: true,
+      };
+
+      setScollLockFalse = () => {
+        this.setState({showScrollLock: false});
       };
 
       render() {
@@ -18,6 +32,7 @@ describe('ScrollLock', () => {
 
         return (
           <React.Fragment>
+            <button onClick={this.setScollLockFalse} />
             {scrollLockMarkup}
             <ScrollLock />
           </React.Fragment>
@@ -27,7 +42,7 @@ describe('ScrollLock', () => {
 
     const scrollLockContainer = mountWithAppProvider(<DummyFrame />);
 
-    scrollLockContainer.instance().setState({showScrollLock: false});
+    scrollLockContainer.find('button').simulate('click');
 
     expect(document.body.hasAttribute(`${SCROLL_LOCKING_ATTRIBUTE}`)).toBe(
       true,

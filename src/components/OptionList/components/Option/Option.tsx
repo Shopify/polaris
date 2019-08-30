@@ -1,7 +1,7 @@
-import * as React from 'react';
-import {classNames} from '@shopify/css-utilities';
+import React from 'react';
 
-import {Props as IconProps} from '../../../Icon';
+import {classNames} from '../../../../utilities/css';
+import {IconProps} from '../../../../types';
 import {Props as ThumbnailProps} from '../../../Thumbnail';
 import {Props as AvatarProps} from '../../../Avatar';
 import Scrollable from '../../../Scrollable';

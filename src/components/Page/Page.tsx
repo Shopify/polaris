@@ -1,17 +1,20 @@
-import * as React from 'react';
-import isEqual from 'lodash/isEqual';
-import {classNames} from '@shopify/css-utilities';
+import React from 'react';
 import {
   Button as AppBridgeButton,
   TitleBar as AppBridgeTitleBar,
 } from '@shopify/app-bridge/actions';
+import isEqual from 'lodash/isEqual';
 
+import {classNames} from '../../utilities/css';
 import {
   transformActions,
   generateRedirect,
 } from '../../utilities/app-bridge-transformers';
-import pick from '../../utilities/pick';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {pick} from '../../utilities/pick';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 
 import {Header, HeaderProps} from './components';
 import styles from './Page.scss';
@@ -22,7 +25,7 @@ export interface Props extends HeaderProps {
   /** Remove the normal max-width on the page */
   fullWidth?: boolean;
   /** Decreases the maximum layout width. Intended for single-column layouts */
-  singleColumn?: boolean;
+  narrowWidth?: boolean;
   /**
    * Force render in page and do not delegate to the app bridge TitleBar action
    * @default false
@@ -32,7 +35,14 @@ export interface Props extends HeaderProps {
   forceRender?: boolean;
 }
 
-type ComposedProps = Props & WithAppProviderProps;
+export interface DeprecatedProps {
+  /** Decreases the maximum layout width. Intended for single-column layouts
+   * @deprecated As of release 4.0, replaced by {@link https://polaris.shopify.com/components/structure/page#props-narrow-width}
+   */
+  singleColumn?: boolean;
+}
+
+export type ComposedProps = Props & DeprecatedProps & WithAppProviderProps;
 
 const APP_BRIDGE_PROPS: (keyof Props)[] = [
   'title',
@@ -46,9 +56,12 @@ class Page extends React.PureComponent<ComposedProps, never> {
   private titlebar: AppBridgeTitleBar.TitleBar | undefined;
 
   componentDidMount() {
-    if (this.delegateToAppbridge === false) {
+    if (this.delegateToAppbridge === false || !this.props.polaris.appBridge) {
       return;
     }
+
+    const transformedProps = this.transformProps();
+    if (!transformedProps) return;
 
     // eslint-disable-next-line no-console
     console.warn(
@@ -57,7 +70,7 @@ class Page extends React.PureComponent<ComposedProps, never> {
 
     this.titlebar = AppBridgeTitleBar.create(
       this.props.polaris.appBridge,
-      this.transformProps(),
+      transformedProps,
     );
   }
 
@@ -70,8 +83,11 @@ class Page extends React.PureComponent<ComposedProps, never> {
     const currentAppBridgeProps = pick(this.props, APP_BRIDGE_PROPS);
 
     if (!isEqual(prevAppBridgeProps, currentAppBridgeProps)) {
+      const transformedProps = this.transformProps();
+      if (!transformedProps) return;
+
       this.titlebar.unsubscribe();
-      this.titlebar.set(this.transformProps());
+      this.titlebar.set(transformedProps);
     }
   }
 
@@ -84,12 +100,25 @@ class Page extends React.PureComponent<ComposedProps, never> {
   }
 
   render() {
-    const {children, fullWidth, singleColumn, ...rest} = this.props;
+    const {
+      children,
+      fullWidth,
+      narrowWidth,
+      singleColumn,
+      ...rest
+    } = this.props;
+
+    if (singleColumn) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: The singleColumn prop has been renamed to narrowWidth to better represents its use and will be removed in v5.0.',
+      );
+    }
 
     const className = classNames(
       styles.Page,
       fullWidth && styles.fullWidth,
-      singleColumn && styles.singleColumn,
+      (narrowWidth || singleColumn) && styles.narrowWidth,
     );
 
     const headerMarkup =
@@ -132,8 +161,9 @@ class Page extends React.PureComponent<ComposedProps, never> {
     );
   }
 
-  private transformProps(): AppBridgeTitleBar.Options {
+  private transformProps(): AppBridgeTitleBar.Options | void {
     const {appBridge} = this.props.polaris;
+    if (!appBridge) return;
     const {title, primaryAction, secondaryActions, actionGroups} = this.props;
 
     return {
@@ -149,6 +179,7 @@ class Page extends React.PureComponent<ComposedProps, never> {
 
   private transformBreadcrumbs(): AppBridgeButton.Button | undefined {
     const {appBridge} = this.props.polaris;
+    if (!appBridge) return;
     const {breadcrumbs} = this.props;
 
     if (breadcrumbs != null && breadcrumbs.length > 0) {
@@ -172,4 +203,4 @@ class Page extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(Page);
+export default withAppProvider<Props & DeprecatedProps>()(Page);

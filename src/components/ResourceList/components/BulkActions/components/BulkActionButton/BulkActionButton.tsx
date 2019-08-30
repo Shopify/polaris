@@ -1,8 +1,7 @@
-import * as React from 'react';
-import {findDOMNode} from 'react-dom';
+import React, {createRef} from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 
+import {classNames} from '../../../../../../utilities/css';
 import Icon from '../../../../../Icon';
 import UnstyledLink from '../../../../../UnstyledLink';
 import {DisableableAction} from '../../../../../../types';
@@ -20,14 +19,12 @@ export default class BulkActionButton extends React.PureComponent<
   Props,
   never
 > {
+  private bulkActionButton = createRef<HTMLButtonElement>();
+
   componentDidMount() {
     const {handleMeasurement} = this.props;
-    if (handleMeasurement) {
-      const bulkActionButtonNode = findDOMNode(this);
-      const width =
-        (bulkActionButtonNode instanceof Element &&
-          bulkActionButtonNode.getBoundingClientRect().width) ||
-        0;
+    if (handleMeasurement && this.bulkActionButton.current) {
+      const width = this.bulkActionButton.current.getBoundingClientRect().width;
       handleMeasurement(width);
     }
   }
@@ -82,6 +79,7 @@ export default class BulkActionButton extends React.PureComponent<
         aria-label={accessibilityLabel}
         type="button"
         disabled={disabled}
+        ref={this.bulkActionButton}
       >
         {contentMarkup}
       </button>

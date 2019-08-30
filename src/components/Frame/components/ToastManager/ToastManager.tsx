@@ -1,73 +1,82 @@
-import * as React from 'react';
-import {TransitionGroup, CSSTransition} from 'react-transition-group';
-import {classNames} from '@shopify/css-utilities';
+import React, {createRef, memo} from 'react';
+import {
+  TransitionGroup,
+  CSSTransition,
+} from '@material-ui/react-transition-group';
+import {classNames} from '../../../../utilities/css';
 import EventListener from '../../../EventListener';
 import Portal from '../../../Portal';
-import {ToastProps} from '../../types';
+import {ToastPropsWithID} from '../../../../utilities/frame';
 import Toast from '../Toast';
+import {useDeepEffect} from '../../../../utilities/use-deep-effect';
+import {useDeepCallback} from '../../../../utilities/use-deep-callback';
 
 import styles from './ToastManager.scss';
 
 export interface Props {
-  toastMessages: (ToastProps & {id: string})[];
+  toastMessages: (ToastPropsWithID)[];
 }
 
-export default class ToastManager extends React.PureComponent<Props, never> {
-  private toastNodes: React.RefObject<HTMLDivElement>[] = [];
+function ToastManager({toastMessages}: Props) {
+  const toastNodes: React.RefObject<HTMLDivElement>[] = [];
 
-  componentDidUpdate() {
-    this.updateToasts();
-  }
-
-  render() {
-    const {toastMessages} = this.props;
-
-    const toastsMarkup = toastMessages.map((toast, index) => {
-      this.toastNodes[index] = React.createRef();
-
-      return (
-        <CSSTransition
-          key={toast.id}
-          timeout={{enter: 0, exit: 400}}
-          classNames={toastClasses}
-        >
-          <div ref={this.toastNodes[index]}>
-            <Toast {...toast} />
-          </div>
-        </CSSTransition>
-      );
-    });
-
-    return (
-      <Portal idPrefix="toast-manager">
-        <EventListener event="resize" handler={this.updateToasts} />
-        <div className={styles.ToastManager} aria-live="polite">
-          <TransitionGroup component={null}>{toastsMarkup}</TransitionGroup>
-        </div>
-      </Portal>
-    );
-  }
-
-  updateToasts = () => {
-    const {toastMessages} = this.props;
-
-    let targetInPos = 0;
-
-    toastMessages.forEach((_toast, i) => {
-      const currentToast = this.toastNodes[i].current;
-      if (currentToast) {
-        targetInPos += currentToast.clientHeight;
-        currentToast.style.setProperty(
+  const updateToasts = useDeepCallback(
+    () => {
+      let targetInPos = 0;
+      toastMessages.forEach((_, index) => {
+        const currentToast = toastNodes[index];
+        if (!currentToast.current) return;
+        targetInPos += currentToast.current.clientHeight;
+        currentToast.current.style.setProperty(
           '--toast-translate-y-in',
           `-${targetInPos}px`,
         );
-        currentToast.style.setProperty(
+        currentToast.current.style.setProperty(
           '--toast-translate-y-out',
           `${-targetInPos + 150}px`,
         );
-      }
-    });
-  };
+      });
+    },
+    [toastMessages, toastNodes],
+  );
+
+  useDeepEffect(
+    () => {
+      updateToasts();
+    },
+    [toastMessages],
+  );
+
+  const toastsMarkup = toastMessages.map((toast, index) => {
+    const toastNode = createRef<HTMLDivElement>();
+    toastNodes[index] = toastNode;
+
+    return (
+      <CSSTransition
+        findDOMNode={findDOMNode(index)}
+        key={toast.id}
+        timeout={{enter: 0, exit: 400}}
+        classNames={toastClasses}
+      >
+        <div ref={toastNode}>
+          <Toast {...toast} />
+        </div>
+      </CSSTransition>
+    );
+  });
+
+  return (
+    <Portal idPrefix="toast-manager">
+      <EventListener event="resize" handler={updateToasts} />
+      <div className={styles.ToastManager} aria-live="polite">
+        <TransitionGroup component={null}>{toastsMarkup}</TransitionGroup>
+      </div>
+    </Portal>
+  );
+
+  function findDOMNode(index: number) {
+    return () => toastNodes[index].current;
+  }
 }
 
 const toastClasses = {
@@ -75,3 +84,5 @@ const toastClasses = {
   enterDone: classNames(styles.ToastWrapper, styles['ToastWrapper-enter-done']),
   exit: classNames(styles.ToastWrapper, styles['ToastWrapper-exit']),
 };
+
+export default memo(ToastManager);

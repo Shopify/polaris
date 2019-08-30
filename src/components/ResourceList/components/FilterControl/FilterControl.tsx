@@ -1,17 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import {SearchMinor} from '@shopify/polaris-icons';
-import compose from '@shopify/react-compose';
-import {ComplexAction, WithContextTypes} from '../../../../types';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import Icon from '../../../Icon';
 import FormLayout from '../../../FormLayout';
 import TextField from '../../../TextField';
 import Tag from '../../../Tag';
-import withContext from '../../../WithContext';
-
-import {ResourceListContext} from '../../types';
-import {Consumer} from '../Context';
+import {useI18n} from '../../../../utilities/i18n';
+import {ResourceListContext} from '../../context';
 
 import {FilterCreator} from './components';
 import {AppliedFilter, Filter, FilterType, Operator} from './types';
@@ -29,144 +25,143 @@ export interface Props {
   onFiltersChange?(appliedFilters: AppliedFilter[]): void;
 }
 
-type CombinedProps = Props &
-  WithAppProviderProps &
-  WithContextTypes<ResourceListContext>;
+export default function FilterControl({
+  searchValue,
+  appliedFilters = [],
+  additionalAction,
+  focused = false,
+  filters = [],
+  placeholder,
+  onSearchBlur,
+  onSearchChange,
+  onFiltersChange,
+}: Props) {
+  const intl = useI18n();
+  const {selectMode, resourceName} = React.useContext(ResourceListContext);
 
-class FilterControl extends React.Component<CombinedProps> {
-  render() {
-    const {
-      searchValue,
-      appliedFilters = [],
-      additionalAction,
-      focused = false,
-      filters = [],
-      placeholder,
-      onSearchBlur,
-      onSearchChange,
-      polaris: {intl},
-      context: {selectMode, resourceName},
-    } = this.props;
-
-    const textFieldLabel = placeholder
-      ? placeholder
-      : intl.translate('Polaris.ResourceList.FilterControl.textFieldLabel', {
-          resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-        });
-
-    if (additionalAction) {
-      additionalAction.disabled = selectMode;
-    }
-
-    const additionalActionButton =
-      (additionalAction && buttonsFrom(additionalAction)) || null;
-
-    const filterCreatorMarkup =
-      filters.length > 0 ? (
-        <FilterCreator
-          resourceName={resourceName}
-          filters={filters}
-          onAddFilter={this.handleAddFilter}
-          disabled={selectMode}
-        />
-      ) : null;
-
-    const appliedFiltersMarkup = appliedFilters.map((appliedFilter) => {
-      const activeFilterLabel = this.getFilterLabel(appliedFilter);
-      const filterId = idFromFilter(appliedFilter);
-      return (
-        <li className={styles.AppliedFilter} key={filterId}>
-          <Tag
-            onRemove={this.getRemoveFilterCallback(filterId)}
-            disabled={selectMode}
-          >
-            {activeFilterLabel}
-          </Tag>
-        </li>
-      );
-    });
-
-    const appliedFiltersWrapper =
-      appliedFilters.length > 0 ? (
-        <ul className={styles.AppliedFilters}>{appliedFiltersMarkup}</ul>
-      ) : null;
-
-    return (
-      <FormLayout>
-        <TextField
-          connectedLeft={filterCreatorMarkup}
-          connectedRight={additionalActionButton}
-          label={textFieldLabel}
-          labelHidden
-          placeholder={textFieldLabel}
-          prefix={<Icon source={SearchMinor} color="skyDark" />}
-          value={searchValue}
-          onChange={onSearchChange}
-          onBlur={onSearchBlur}
-          focused={focused}
-          disabled={selectMode}
-        />
-        {appliedFiltersWrapper}
-      </FormLayout>
-    );
-  }
-
-  private handleAddFilter = (newFilter: AppliedFilter) => {
-    const {onFiltersChange, appliedFilters = []} = this.props;
-
-    if (!onFiltersChange) {
-      return;
-    }
-
-    const foundFilter = appliedFilters.find(
-      (appliedFilter) =>
-        idFromFilter(appliedFilter) === idFromFilter(newFilter),
-    );
-
-    if (foundFilter) {
-      return;
-    }
-
-    const newAppliedFilters = [...appliedFilters, newFilter];
-
-    onFiltersChange(newAppliedFilters);
+  const filterResourceName = resourceName || {
+    singular: intl.translate('Polaris.ResourceList.defaultItemSingular'),
+    plural: intl.translate('Polaris.ResourceList.defaultItemPlural'),
   };
 
-  private getRemoveFilterCallback(filterId: string) {
-    return () => {
-      this.handleRemoveFilter(filterId);
-    };
+  const handleAddFilter = React.useCallback(
+    (newFilter: AppliedFilter) => {
+      if (!onFiltersChange) {
+        return;
+      }
+
+      const foundFilter = appliedFilters.find(
+        (appliedFilter) =>
+          idFromFilter(appliedFilter) === idFromFilter(newFilter),
+      );
+
+      if (foundFilter) {
+        return;
+      }
+
+      const newAppliedFilters = [...appliedFilters, newFilter];
+
+      onFiltersChange(newAppliedFilters);
+    },
+    [onFiltersChange, appliedFilters],
+  );
+
+  const handleRemoveFilter = React.useCallback(
+    (filterId: string) => {
+      if (!onFiltersChange) {
+        return;
+      }
+
+      const foundIndex = appliedFilters.findIndex(
+        (appliedFilter) => idFromFilter(appliedFilter) === filterId,
+      );
+
+      const newAppliedFilters =
+        foundIndex >= 0
+          ? [
+              ...appliedFilters.slice(0, foundIndex),
+              ...appliedFilters.slice(foundIndex + 1, appliedFilters.length),
+            ]
+          : [...appliedFilters];
+
+      onFiltersChange(newAppliedFilters);
+    },
+    [appliedFilters, onFiltersChange],
+  );
+
+  const getRemoveFilterCallback = React.useCallback(
+    (filterId: string) => {
+      return () => {
+        handleRemoveFilter(filterId);
+      };
+    },
+    [handleRemoveFilter],
+  );
+
+  const textFieldLabel = placeholder
+    ? placeholder
+    : intl.translate('Polaris.ResourceList.FilterControl.textFieldLabel', {
+        resourceNamePlural: filterResourceName.plural.toLocaleLowerCase(),
+      });
+
+  if (additionalAction) {
+    additionalAction.disabled = selectMode;
   }
 
-  private handleRemoveFilter(filterId: string) {
-    const {onFiltersChange, appliedFilters = []} = this.props;
+  const additionalActionButton =
+    (additionalAction && buttonsFrom(additionalAction)) || null;
 
-    if (!onFiltersChange) {
-      return;
-    }
+  const filterCreatorMarkup =
+    filters.length > 0 ? (
+      <FilterCreator
+        resourceName={filterResourceName}
+        filters={filters}
+        onAddFilter={handleAddFilter}
+        disabled={selectMode}
+      />
+    ) : null;
 
-    const foundIndex = appliedFilters.findIndex(
-      (appliedFilter) => idFromFilter(appliedFilter) === filterId,
+  const appliedFiltersMarkup = appliedFilters.map((appliedFilter) => {
+    const activeFilterLabel = getFilterLabel(appliedFilter);
+    const filterId = idFromFilter(appliedFilter);
+    return (
+      <li className={styles.AppliedFilter} key={filterId}>
+        <Tag onRemove={getRemoveFilterCallback(filterId)} disabled={selectMode}>
+          {activeFilterLabel}
+        </Tag>
+      </li>
     );
+  });
 
-    const newAppliedFilters =
-      foundIndex >= 0
-        ? [
-            ...appliedFilters.slice(0, foundIndex),
-            ...appliedFilters.slice(foundIndex + 1, appliedFilters.length),
-          ]
-        : [...appliedFilters];
+  const appliedFiltersWrapper =
+    appliedFilters.length > 0 ? (
+      <ul className={styles.AppliedFilters}>{appliedFiltersMarkup}</ul>
+    ) : null;
 
-    onFiltersChange(newAppliedFilters);
-  }
+  return (
+    <FormLayout>
+      <TextField
+        connectedLeft={filterCreatorMarkup}
+        connectedRight={additionalActionButton}
+        label={textFieldLabel}
+        labelHidden
+        placeholder={textFieldLabel}
+        prefix={<Icon source={SearchMinor} color="skyDark" />}
+        value={searchValue}
+        onChange={onSearchChange}
+        onBlur={onSearchBlur}
+        focused={focused}
+        disabled={selectMode}
+      />
+      {appliedFiltersWrapper}
+    </FormLayout>
+  );
 
-  private getFilterLabel(appliedFilter: AppliedFilter): string {
+  function getFilterLabel(appliedFilter: AppliedFilter) {
     const {key, value, label} = appliedFilter;
     if (label) {
       return label;
     }
-
-    const {filters = []} = this.props;
 
     const filter = filters.find((filter: any) => {
       const {minKey, maxKey, operatorText} = filter;
@@ -192,7 +187,7 @@ class FilterControl extends React.Component<CombinedProps> {
     }
 
     const filterOperatorLabel = findOperatorLabel(filter, appliedFilter);
-    const filterLabelByType = this.findFilterLabelByType(filter, appliedFilter);
+    const filterLabelByType = findFilterLabelByType(filter, appliedFilter);
 
     if (!filterOperatorLabel) {
       return `${filter.label} ${filterLabelByType}`;
@@ -201,14 +196,7 @@ class FilterControl extends React.Component<CombinedProps> {
     return `${filter.label} ${filterOperatorLabel} ${filterLabelByType}`;
   }
 
-  private findFilterLabelByType(
-    filter: Filter,
-    appliedFilter: AppliedFilter,
-  ): string {
-    const {
-      polaris: {intl},
-    } = this.props;
-
+  function findFilterLabelByType(filter: Filter, appliedFilter: AppliedFilter) {
     const {value: appliedFilterValue} = appliedFilter;
 
     if (filter.type === FilterType.Select) {
@@ -294,8 +282,3 @@ function findOperatorLabel(filter: Filter, appliedFilter: AppliedFilter) {
     return appliedOperator.filterLabel || appliedOperator.optionLabel;
   }
 }
-
-export default compose<Props>(
-  withAppProvider<Props>(),
-  withContext<Props, WithAppProviderProps, ResourceListContext>(Consumer),
-)(FilterControl);

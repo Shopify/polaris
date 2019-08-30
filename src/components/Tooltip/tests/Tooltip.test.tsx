@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {findByTestID, mountWithAppProvider} from 'test-utilities';
+import React from 'react';
+import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
 import {Link} from 'components';
 import Tooltip from '../Tooltip';
 

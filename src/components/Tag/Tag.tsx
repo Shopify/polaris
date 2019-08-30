@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import {CancelSmallMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {classNames} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
 import Icon from '../Icon';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import styles from './Tag.scss';
@@ -15,14 +15,8 @@ export interface Props {
   onRemove?(): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
-
-function Tag({
-  children,
-  disabled = false,
-  onRemove,
-  polaris: {intl},
-}: CombinedProps) {
+export default function Tag({children, disabled = false, onRemove}: Props) {
+  const intl = useI18n();
   const className = classNames(disabled && styles.disabled, styles.Tag);
   const ariaLabel = intl.translate('Polaris.Tag.ariaLabel', {children});
 
@@ -44,5 +38,3 @@ function Tag({
     </span>
   );
 }
-
-export default withAppProvider<Props>()(Tag);

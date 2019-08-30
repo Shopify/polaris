@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import RangeSlider from '../RangeSlider';
 import {DualThumb, SingleThumb} from '../components';
 import {RangeSliderDefault} from '../utilities';

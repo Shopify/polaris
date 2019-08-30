@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
   Range,
   Weekdays,
@@ -12,8 +12,8 @@ import {
   dateIsSelected,
   getNewRange,
 } from '@shopify/javascript-utilities/dates';
-import {classNames} from '@shopify/css-utilities';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {classNames} from '../../../../utilities/css';
+import {useI18n} from '../../../../utilities/i18n';
 import styles from '../../DatePicker.scss';
 import Day from '../Day';
 import Weekday from '../Weekday';
@@ -36,8 +36,6 @@ export interface Props {
   weekdayName?(weekday: Weekdays): string;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
-
 const WEEKDAYS = [
   Weekdays.Sunday,
   Weekdays.Monday,
@@ -48,7 +46,7 @@ const WEEKDAYS = [
   Weekdays.Saturday,
 ];
 
-function Month({
+export default function Month({
   focusedDate,
   selected,
   hoverDate,
@@ -61,8 +59,9 @@ function Month({
   month,
   year,
   weekStartsOn,
-  polaris: {intl},
-}: CombinedProps) {
+}: Props) {
+  const intl = useI18n();
+
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
   const now = new Date();
   const current = now.getMonth() === month && now.getFullYear() === year;
@@ -136,8 +135,6 @@ function Month({
     </div>
   );
 }
-
-export default withAppProvider<Props>()(Month);
 
 function noop() {}
 

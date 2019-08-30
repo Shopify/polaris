@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import debounce from 'lodash/debounce';
-import isEqual from 'lodash/isEqual';
 import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
-import {classNames} from '@shopify/css-utilities';
+import isEqual from 'lodash/isEqual';
+import {classNames} from '../../../../utilities/css';
 import {CSS_VAR_PREFIX} from '../../utilities';
 import {RangeSliderProps, DualValue} from '../../types';
 import Labelled, {labelID} from '../../../Labelled';

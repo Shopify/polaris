@@ -1,6 +1,6 @@
-import * as React from 'react';
-import {classNames} from '@shopify/css-utilities';
+import React from 'react';
 
+import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
 import Scrollable from '../../../Scrollable';
 import Section from '../Section';

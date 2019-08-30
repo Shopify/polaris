@@ -1,8 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
-import {mountWithAppProvider, trigger, findByTestID} from 'test-utilities';
+import {
+  mountWithAppProvider,
+  trigger,
+  findByTestID,
+} from 'test-utilities/legacy';
 import Button from '../../../../Button';
-import {ToastProps as Props} from '../../../types';
+import {ToastProps as Props} from '../../../../../utilities/frame';
 import Toast from '../Toast';
 import {Key} from '../../../../../types';
 
@@ -28,7 +32,7 @@ describe('<Toast />', () => {
 
   it('renders its content', () => {
     const message = mountWithAppProvider(<Toast {...mockProps} />);
-    expect(message.prop('content')).toStrictEqual('Image uploaded');
+    expect(message.text()).toStrictEqual('Image uploaded');
   });
 
   describe('dismiss button', () => {
@@ -88,14 +92,16 @@ describe('<Toast />', () => {
     });
 
     it('warns that a duration of 10000ms is recommended with action if duration is lower than 10000', () => {
-      const warnSpy = jest.spyOn(console, 'log');
+      const logSpy = jest.spyOn(console, 'log');
+      logSpy.mockImplementation(() => {});
       mountWithAppProvider(
         <Toast {...mockProps} action={mockAction} duration={9000} />,
       );
 
-      expect(warnSpy).toHaveBeenCalledWith(
+      expect(logSpy).toHaveBeenCalledWith(
         'Toast with action should persist for at least 10,000 milliseconds to give the merchant enough time to act on it.',
       );
+      logSpy.mockRestore();
     });
   });
 

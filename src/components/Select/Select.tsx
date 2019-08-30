@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import {ArrowUpDownMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
+import {classNames} from '../../utilities/css';
 import Labelled, {Action, helpTextID} from '../Labelled';
 import Icon from '../Icon';
 import {Error} from '../../types';
@@ -39,8 +39,6 @@ export interface SelectGroup {
 export interface BaseProps {
   /** List of options or option groups to choose from */
   options?: (SelectOption | SelectGroup)[];
-  /** @deprecated List of grouped options to choose from */
-  groups?: (SelectOption | SelectGroup)[];
   /** Label for the select */
   label: string;
   /** Adds an action to the label */
@@ -78,7 +76,6 @@ const getUniqueID = createUniqueIDFactory('Select');
 
 export default function Select({
   options: optionsProp,
-  groups: groupsProp,
   label,
   labelAction,
   labelHidden: labelHiddenProp,
@@ -115,14 +112,7 @@ export default function Select({
     describedBy.push(`${id}Error`);
   }
 
-  if (groupsProp != null) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: the `groups` prop is deprecated and will be removed in the next major version. Pass groups to the `options` prop instead.',
-    );
-  }
-
-  const options = optionsProp || groupsProp || [];
+  const options = optionsProp || [];
   let normalizedOptions = options.map(normalizeOption);
 
   if (placeholder) {

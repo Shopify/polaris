@@ -1,9 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../../../../AppProvider';
+import {useI18n} from '../../../../../../utilities/i18n';
 import Modal from '../../../../../Modal';
 
 export interface Props {
@@ -12,14 +9,13 @@ export interface Props {
   onCancel(): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
-
-function DiscardConfirmationModal({
+export default function DiscardConfirmationModal({
   open,
   onDiscard,
   onCancel,
-  polaris: {intl},
-}: CombinedProps) {
+}: Props) {
+  const intl = useI18n();
+
   return (
     <Modal
       title={intl.translate('Polaris.DiscardConfirmationModal.title')}
@@ -46,5 +42,3 @@ function DiscardConfirmationModal({
     </Modal>
   );
 }
-
-export default withAppProvider<Props>()(DiscardConfirmationModal);

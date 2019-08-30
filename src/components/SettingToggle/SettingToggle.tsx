@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import {ComplexAction} from '../../types';
 import SettingAction from '../SettingAction';

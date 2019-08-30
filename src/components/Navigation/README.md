@@ -26,8 +26,6 @@ The navigation component must be passed to the [frame](/components/structure/fra
 
 ## Best practices
 
-The navigation component must be used within the [frame](/components/structure/frame) component.
-
 The navigation component should:
 
 - Contain primary navigation items that perform an action when clicked. Each action should navigate to a URL or trigger another action like a modal overlay.
@@ -123,7 +121,6 @@ The content of the navigation component consists of navigation items. Each item 
 | matchPaths         | string[]            | A string property providing a collection of additional paths for the navigation item to respond to                                         |
 | excludePaths       | string[]            | A string property providing an explicit collection of paths the navigation item should not respond to                                      |
 | icon               | IconProps['source'] | An icon to be displayed next to the navigation item                                                                                        |
-| iconBody           | string              | (deprecated) Pass a string representing an `SVG` element into the `icon` prop instead                                                      |
 | badge              | string \| null      | A string property allowing content to be displayed in a badge next to the navigation item                                                  |
 | label              | string              | A string property allowing content to be displayed as link text in the navigation item                                                     |
 | disabled           | boolean             | A boolean property indicating whether the navigation item is disabled                                                                      |
@@ -165,18 +162,6 @@ Action allows a complementary icon-only action to render next to the section tit
 
 ---
 
-<a name="subcomponent-usermenu"></a>
-
-## Navigation user menu
-
-The user menu component displays the current user’s avatar and name, and actions that are related to the current logged in user. The menu is displayed at the top of the navigation sidebar at small screen sizes. The user menu can display any messages that the current user has available to read.
-
-### Deprecation rationale
-
-As of release 3.6.0 `Navigation.UserMenu` is deprecated in favor of [`TopBar.UserMenu`](https://polaris.shopify.com/components/structure/top-bar#top-bar-menu) which will stay visible on mobile.
-
----
-
 ## Examples
 
 ### Basic navigation
@@ -204,44 +189,6 @@ Use to present a navigation menu in the [frame](/components/structure/frame).
         icon: ProductsMajorTwotone,
       },
     ]}
-  />
-</Navigation>
-```
-
-### Navigation with sections and a separator
-
-Use to divide groups of items with a horizontal divider.
-
-```jsx
-<Navigation location="/">
-  <Navigation.Section
-    items={[
-      {
-        url: '/path/to/place',
-        label: 'Home',
-        icon: HomeMajorMonotone,
-      },
-      {
-        url: '/path/to/place',
-        label: 'Orders',
-        icon: OrdersMajorTwotone,
-      },
-      {
-        url: '/path/to/place',
-        label: 'Products',
-        icon: ProductsMajorTwotone,
-      },
-    ]}
-  />
-  <Navigation.Section
-    items={[
-      {
-        url: '/path/to/place',
-        label: 'Online Store',
-        icon: OnlineStoreMajorTwotone,
-      },
-    ]}
-    separator
   />
 </Navigation>
 ```
@@ -358,7 +305,7 @@ Use to show a limited number of items in a section with an option to expand the 
 
 ### Navigation with section separator
 
-Use to add a horizontal line between sections.
+Use to add a horizontal line below the section.
 
 ```jsx
 <Navigation location="/">

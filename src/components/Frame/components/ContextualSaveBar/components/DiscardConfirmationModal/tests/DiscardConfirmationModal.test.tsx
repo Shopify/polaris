@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
 import {Modal} from 'components';
 

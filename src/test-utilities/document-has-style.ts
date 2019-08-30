@@ -1,4 +1,4 @@
-export default function documentHasStyle(key: string, value?: string): boolean {
+export function documentHasStyle(key: string, value?: string): boolean {
   if (!document) {
     return false;
   }

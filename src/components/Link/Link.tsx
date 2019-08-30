@@ -1,15 +1,15 @@
-import * as React from 'react';
-
-import {classNames} from '@shopify/css-utilities';
+import React from 'react';
 import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {BannerContext} from '../../utilities/banner-context';
+import {classNames} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
 import UnstyledLink from '../UnstyledLink';
 import Icon from '../Icon';
 
 import styles from './Link.scss';
 
-export interface BaseProps {
+export interface Props {
   /** ID for the link */
   id?: string;
   /** The url to link to */
@@ -24,19 +24,15 @@ export interface BaseProps {
   onClick?(): void;
 }
 
-export interface Props extends BaseProps {}
-type CombinedProps = Props & WithAppProviderProps;
-
-function Link({
+export default function Link({
   url,
   children,
   onClick,
   external,
   id,
   monochrome,
-  polaris: {intl},
-}: CombinedProps) {
-  const className = classNames(styles.Link, monochrome && styles.monochrome);
+}: Props) {
+  const intl = useI18n();
   let childrenMarkup = children;
 
   if (external && typeof children === 'string') {
@@ -56,21 +52,32 @@ function Link({
     );
   }
 
-  return url ? (
-    <UnstyledLink
-      onClick={onClick}
-      className={className}
-      url={url}
-      external={external}
-      id={id}
-    >
-      {childrenMarkup}
-    </UnstyledLink>
-  ) : (
-    <button type="button" onClick={onClick} className={className} id={id}>
-      {childrenMarkup}
-    </button>
+  return (
+    <BannerContext.Consumer>
+      {(BannerContext) => {
+        const shouldBeMonochrome = monochrome || BannerContext;
+
+        const className = classNames(
+          styles.Link,
+          shouldBeMonochrome && styles.monochrome,
+        );
+
+        return url ? (
+          <UnstyledLink
+            onClick={onClick}
+            className={className}
+            url={url}
+            external={external}
+            id={id}
+          >
+            {childrenMarkup}
+          </UnstyledLink>
+        ) : (
+          <button type="button" onClick={onClick} className={className} id={id}>
+            {childrenMarkup}
+          </button>
+        );
+      }}
+    </BannerContext.Consumer>
   );
 }
-
-export default withAppProvider<Props>()(Link);

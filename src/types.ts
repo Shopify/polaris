@@ -1,7 +1,56 @@
-import * as PropTypes from 'prop-types';
-import {ValidationMap} from 'react';
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {Props as IconProps} from './components/Icon';
+export type Color =
+  | 'white'
+  | 'black'
+  | 'skyLighter'
+  | 'skyLight'
+  | 'sky'
+  | 'skyDark'
+  | 'inkLightest'
+  | 'inkLighter'
+  | 'inkLight'
+  | 'ink'
+  | 'blueLighter'
+  | 'blueLight'
+  | 'blue'
+  | 'blueDark'
+  | 'blueDarker'
+  | 'indigoLighter'
+  | 'indigoLight'
+  | 'indigo'
+  | 'indigoDark'
+  | 'indigoDarker'
+  | 'tealLighter'
+  | 'tealLight'
+  | 'teal'
+  | 'tealDark'
+  | 'tealDarker'
+  | 'greenLighter'
+  | 'green'
+  | 'greenDark'
+  | 'yellowLighter'
+  | 'yellow'
+  | 'yellowDark'
+  | 'orange'
+  | 'redLighter'
+  | 'red'
+  | 'redDark'
+  | 'purple';
+
+export type IconSource =
+  | React.SFC<React.SVGProps<SVGSVGElement>>
+  | 'placeholder'
+  | string;
+
+export interface IconProps {
+  /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
+  source: IconSource;
+  /** Set the color for the SVG fill */
+  color?: Color;
+  /** Show a backdrop behind the icon */
+  backdrop?: boolean;
+  /** Descriptive text to be read to screenreaders */
+  accessibilityLabel?: string;
+}
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 export type AppBridgeTarget = 'ADMIN_PATH' | 'REMOTE' | 'APP';
@@ -135,16 +184,11 @@ export interface ComplexAction
     IconableAction,
     LoadableAction {}
 
-export interface MenuActionDescriptor extends ActionListItemDescriptor {
-  /** Displays the button with a disclosure icon */
-  disclosure?: boolean;
-}
-
 export interface MenuGroupDescriptor extends BadgeAction {
   /** Menu group title */
   title: string;
   /** List of actions */
-  actions: MenuActionDescriptor[];
+  actions: ActionListItemDescriptor[];
   /** Icon to display */
   icon?: IconableAction['icon'];
   /** Action details */
@@ -255,14 +299,6 @@ export enum Key {
   SingleQuote = 222,
 }
 
-export const contentContextTypes: ValidationMap<any> = {
-  withinContentContainer: PropTypes.bool,
-};
-
-export interface WithContextTypes<IJ> {
-  context: IJ;
-}
-
 export enum TypeOf {
   Undefined = 'undefined',
   Object = 'object',
@@ -276,3 +312,17 @@ export enum TypeOf {
 export interface GeneralObject {
   [key: string]: any;
 }
+
+export type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T[P] extends ReadonlyArray<infer U>
+      ? ReadonlyArray<DeepPartial<U>>
+      : DeepPartial<T[P]>
+};
+
+export type Discard<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+export type EffectCallback = () => void | (() => void | undefined);
+export type DependencyList = ReadonlyArray<unknown>;
+export type Comparator = (a: DependencyList, b: DependencyList) => boolean;

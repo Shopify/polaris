@@ -38,7 +38,21 @@ The app provider component is required to use Polaris. Without it, the component
 AppProvider works by default without any additional options passed to it.
 
 ```jsx
-<AppProvider>
+<AppProvider
+  i18n={{
+    Polaris: {
+      ResourceList: {
+        sortingLabel: 'Sort by',
+        defaultItemSingular: 'item',
+        defaultItemPlural: 'items',
+        showing: 'Showing {itemsCount} {resource}',
+      },
+      Common: {
+        checkbox: 'checkbox',
+      },
+    },
+  }}
+>
   <Page>
     <Card>
       <ResourceList
@@ -76,15 +90,19 @@ AppProvider works by default without any additional options passed to it.
 </AppProvider>
 ```
 
-### With i18n object
+### With i18n
 
-With an `i18n` object, the app provider component will override default English translations.
+With an `i18n`, `AppProvider` will provide these translations to polaris components. See [using translations](/components/structure/app-provider#using-translations)
 
 ```jsx
 <AppProvider
   i18n={{
     Polaris: {
+      Common: {
+        checkbox: 'case à cocher',
+      },
       ResourceList: {
+        sortingLabel: 'Trier par',
         showing: '{itemsCount} {resource} affichés',
         defaultItemPlural: 'articles',
         defaultItemSingular: 'article',
@@ -149,7 +167,18 @@ class ProviderLinkExample extends React.Component {
     };
 
     return (
-      <AppProvider linkComponent={CustomLinkComponent}>
+      <AppProvider
+        linkComponent={CustomLinkComponent}
+        i18n={{
+          Polaris: {
+            Page: {
+              Header: {
+                rollupButton: 'Actions',
+              },
+            },
+          },
+        }}
+      >
         <Page
           breadcrumbs={[{content: 'Products', url: '#'}]}
           title="Jar With Lock-Lid"
@@ -244,7 +273,24 @@ class ProviderThemeExample extends React.Component {
 
     return (
       <div style={{height: '250px'}}>
-        <AppProvider theme={theme}>
+        <AppProvider
+          theme={theme}
+          i18n={{
+            Polaris: {
+              Frame: {skipToContent: 'Skip to content'},
+              ContextualSaveBar: {
+                save: 'Save',
+                discard: 'Discard',
+              },
+              TopBar: {
+                SearchField: {
+                  clearButtonLabel: 'Clear',
+                  search: 'Search',
+                },
+              },
+            },
+          }}
+        >
           <Frame topBar={topBarMarkup}>
             {contextualSaveBarMarkup}
             {pageMarkup}
@@ -345,7 +391,26 @@ class ProviderThemeExample extends React.Component {
 
     return (
       <div style={{height: '250px'}}>
-        <AppProvider theme={theme}>
+        <AppProvider
+          theme={theme}
+          i18n={{
+            Polaris: {
+              Frame: {
+                skipToContent: 'Skip to content',
+              },
+              ContextualSaveBar: {
+                save: 'Save',
+                discard: 'Discard',
+              },
+              TopBar: {
+                SearchField: {
+                  clearButtonLabel: 'Clear',
+                  search: 'Search',
+                },
+              },
+            },
+          }}
+        >
           <Frame topBar={topBarMarkup}>
             {contextualSaveBarMarkup}
             {pageMarkup}
@@ -369,13 +434,28 @@ class ProviderThemeExample extends React.Component {
 
 ---
 
+## Using translations
+
+Translations are provided in the locales folder. When using Polaris, you are able to import translations from all languages supported by the core Shopify product and consume them through the `i18n` prop.
+
+```jsx
+// en.json is English. Replace with fr.json for French, etc
+import translations from '@shopify/polaris/locales/en.json';
+
+ReactDOM.render(
+  <AppProvider i18n={translations}>{/* App content */}</AppProvider>,
+);
+```
+
+---
+
 ## Initializing the Shopify App Bridge (deprecated)
 
 When using Polaris, you don’t need to go through the initialization of the Shopify App Bridge as described in the [Shopify Help Center](https://help.shopify.com/en/api/embedded-apps/app-bridge#set-up-your-app). Instead, configure the connection to the Shopify admin through the [app provider component](https://polaris.shopify.com/components/structure/app-provider), which wraps all components in an embedded app. The app provider component initializes the Shopify App Bridge using the `apiKey` and `shopOrigin` that you provide. **The `apiKey` and the `shopOrigin` attributes are required.** Find the API key for your app in the Apps section of your [Shopify Partner Dashboard](https://partners.shopify.com). Learn how to get and store the shop origin in the [Shopify Help Center](https://help.shopify.com/en/api/embedded-apps/shop-origin).
 
 ```jsx
 ReactDOM.render(
-  <AppProvider apiKey="YOUR_API_KEY" shopOrigin="SHOP_ORIGIN">
+  <AppProvider apiKey="YOUR_API_KEY" shopOrigin="SHOP_ORIGIN" i18n={{}}>
     <ResourcePicker
       resourceType="Product"
       open={this.state.open}
@@ -402,27 +482,30 @@ To provide access to your initialized Shopify App Bridge instance, we make it av
 ```js
 import React from 'react';
 import {render} from 'react-dom';
-import * as PropTypes from 'prop-types';
-import {AppProvider} from '@shopify/polaris';
+import {AppProvider, AppBridgeContext} from '@shopify/polaris';
 import {Redirect} from '@shopify/app-bridge/actions';
 
 class MyApp extends React.Component {
-  // This line is very important! It tells React to attach the `polaris`
-  // object to `this.context` within your component.
-  static contextTypes = {
-    polaris: PropTypes.object,
-  };
+  static contextType = AppBridgeContext;
 
-  redirectToSettings() {
-    const redirect = Redirect.create(this.context.polaris.appBridge);
+  componentDidMount() {
+    const redirect = Redirect.create(this.context);
 
     // Go to {appOrigin}/settings
     redirect.dispatch(Redirect.Action.APP, '/settings');
   }
+
+  render() {
+    return null;
+  }
 }
 
 render(
-  <AppProvider apiKey="YOUR_APP_API_KEY">
+  <AppProvider
+    apiKey="YOUR_APP_API_KEY"
+    shopOrigin="YOUR_SHOP_ORIGIN"
+    i18n={{}}
+  >
     <MyApp />
   </AppProvider>,
   document.querySelector('#app'),

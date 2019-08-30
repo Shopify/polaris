@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Slidable, {Position} from '../Slidable';
 import styles from '../../ColorPicker.scss';
 import {calculateDraggerY, hueForDraggerY} from './utilities';

@@ -1,10 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import compose from '@shopify/react-compose';
 import isEqual from 'lodash/isEqual';
-import {DisableableAction, WithContextTypes} from '../../../../types';
+import {classNames} from '../../../../utilities/css';
+import {DisableableAction} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import {Props as AvatarProps} from '../../../Avatar';
@@ -13,20 +12,22 @@ import {Props as ThumbnailProps} from '../../../Thumbnail';
 import ButtonGroup from '../../../ButtonGroup';
 import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
-
 import {
-  ResourceListContext,
-  SELECT_ALL_ITEMS,
-  SelectedItems,
-} from '../../types';
-import withContext from '../../../WithContext';
-import {Consumer} from '../Context';
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
+
+import {SELECT_ALL_ITEMS, SelectedItems} from '../../types';
+import {ResourceListContext} from '../../context';
 import styles from './Item.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
+
+interface WithContextTypes<IJ> {
+  context: IJ;
+}
 
 export interface BaseProps {
   /** Visually hidden text for screen readers */
@@ -63,16 +64,18 @@ export interface State {
   selected: boolean;
 }
 
-type CombinedProps =
-  | PropsWithUrl & WithAppProviderProps & WithContextTypes<ResourceListContext>
+export type CombinedProps =
+  | PropsWithUrl &
+      WithAppProviderProps &
+      WithContextTypes<React.ContextType<typeof ResourceListContext>>
   | PropsWithClick &
       WithAppProviderProps &
-      WithContextTypes<ResourceListContext>;
+      WithContextTypes<React.ContextType<typeof ResourceListContext>>;
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 const getUniqueOverlayID = createUniqueIDFactory('ResourceListItemOverlay');
 
-class Item extends React.Component<CombinedProps, State> {
+export class BaseItem extends React.Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
     const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
 
@@ -419,7 +422,12 @@ function isSelected(id: string, selectedItems?: SelectedItems) {
   );
 }
 
-export default compose<Props>(
-  withContext<Props, WithAppProviderProps, ResourceListContext>(Consumer),
-  withAppProvider<Props>(),
-)(Item);
+function Item(props: CombinedProps) {
+  return (
+    <ResourceListContext.Consumer>
+      {(context) => <BaseItem {...props} context={context} />}
+    </ResourceListContext.Consumer>
+  );
+}
+
+export default withAppProvider<Props>()(Item);

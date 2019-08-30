@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import {shallow} from 'enzyme';
 import {OptionList, ActionList, Popover} from 'components';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import TextField from '../../TextField';
 import {Key} from '../../../../../types';
 import ComboBox from '..';
@@ -408,21 +408,6 @@ describe('<ComboBox/>', () => {
   });
 
   describe('keypress events', () => {
-    it('selects the first option when the down arrow is pressed', () => {
-      const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-        />,
-      );
-
-      comboBox.find(TextField).simulate('click');
-      dispatchKeyup(Key.DownArrow);
-      expect(comboBox.state('selectedIndex')).toBe(0);
-    });
-
     it('adds to selected options when the down arrow and enter keys are pressed', () => {
       const spy = jest.fn();
       const comboBox = mountWithAppProvider(
@@ -450,7 +435,7 @@ describe('<ComboBox/>', () => {
       );
 
       comboBox.simulate('focus');
-      expect(comboBox.state('popoverActive')).toBe(true);
+      expect(comboBox.find(Popover).prop('active')).toBe(true);
     });
 
     it('deactivates the popover when the escape key is pressed', () => {
@@ -464,10 +449,11 @@ describe('<ComboBox/>', () => {
       );
 
       comboBox.find(TextField).simulate('click');
-      expect(comboBox.state('popoverActive')).toBe(true);
+      expect(comboBox.find(Popover).prop('active')).toBe(true);
 
       dispatchKeyup(Key.Escape);
-      expect(comboBox.state('popoverActive')).toBe(false);
+      comboBox.update();
+      expect(comboBox.find(Popover).prop('active')).toBe(false);
     });
   });
 

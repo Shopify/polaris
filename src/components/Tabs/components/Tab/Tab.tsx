@@ -1,9 +1,12 @@
-import * as React from 'react';
-import {classNames} from '@shopify/css-utilities';
+import React from 'react';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
+import {classNames} from '../../../../utilities/css';
 import UnstyledLink from '../../../UnstyledLink';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 
 import styles from '../../Tabs.scss';

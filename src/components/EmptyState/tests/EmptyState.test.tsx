@@ -1,6 +1,6 @@
-import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
+import React from 'react';
 import {Image, DisplayText, TextContainer, UnstyledLink} from 'components';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import EmptyState from '../EmptyState';
 
 describe('<EmptyState />', () => {

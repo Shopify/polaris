@@ -1,18 +1,30 @@
-import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import ScrollTo from '../ScrollTo';
+import {ScrollableContext} from '../../../context';
 
 describe('<Scrollable.ScrollTo />', () => {
   it('calls scrollToPosition on mount', () => {
     const spy = jest.fn();
-    const mockContext = {
-      scrollToPosition: spy,
-    };
 
-    mountWithAppProvider(<ScrollTo />, {
-      context: mockContext,
-    });
+    mountWithAppProvider(
+      <ScrollableContext.Provider value={spy}>
+        <ScrollTo />
+      </ScrollableContext.Provider>,
+    );
 
     expect(spy).toHaveBeenCalled();
+  });
+
+  it("does not call scrollToPosition when it's undefined", () => {
+    function fn() {
+      mountWithAppProvider(
+        <ScrollableContext.Provider value={undefined}>
+          <ScrollTo />
+        </ScrollableContext.Provider>,
+      );
+    }
+
+    expect(fn).not.toThrow();
   });
 });

@@ -1,8 +1,7 @@
-import * as React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import {mountWithAppProvider} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import ThemeProvider from '../ThemeProvider';
-import {THEME_CONTEXT_TYPES} from '../types';
+import {ThemeContext} from '../../../utilities/theme';
 
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
@@ -14,31 +13,19 @@ describe('<ThemeProvider />', () => {
     expect(themeProvider.exists()).toBe(true);
   });
 
-  it('passes theme into context', () => {
-    const context = {
-      polarisTheme: {
-        logo: {
-          width: 104,
-          topBarSource:
-            'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-white.svg',
-          contextualSaveBarSource:
-            'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-black.svg',
-        },
-        subscribe: () => {},
-        unsubscribe: () => {},
-      },
+  it('passes context', () => {
+    const Child: React.SFC<{}> = (_props) => {
+      return (
+        <ThemeContext.Consumer>
+          {(polarisTheme) => {
+            // eslint-disable-next-line shopify/jest/no-if
+            return polarisTheme && polarisTheme.logo ? <div /> : null;
+          }}
+        </ThemeContext.Consumer>
+      );
     };
 
-    // eslint-disable-next-line react/prefer-stateless-function
-    class Child extends React.Component {
-      static contextTypes = THEME_CONTEXT_TYPES;
-
-      render() {
-        return <div />;
-      }
-    }
-
-    const wrapper: unknown = TestUtils.renderIntoDocument(
+    const wrapper = mountWithAppProvider(
       <ThemeProvider
         theme={{
           logo: {
@@ -54,15 +41,12 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    const child = TestUtils.findRenderedComponentWithType(
-      wrapper as React.Component,
-      Child,
-    );
+    const div = wrapper
+      .find(Child)
+      .find('div')
+      .first();
 
-    const {logo, subscribe, unsubscribe} = child.context.polarisTheme;
-    expect(logo).toStrictEqual(context.polarisTheme.logo);
-    expect(typeof subscribe === 'function').toBe(true);
-    expect(typeof unsubscribe === 'function').toBe(true);
+    expect(div.exists()).toBe(true);
   });
 
   it('has a default theme', () => {
@@ -93,6 +77,39 @@ describe('<ThemeProvider />', () => {
     expect(wrapper.find('div').props().style).toStrictEqual({
       '--top-bar-background': '#108043',
       '--top-bar-background-lighter': 'hsl(147, 63%, 43%, 1)',
+      '--top-bar-color': 'rgb(255, 255, 255)',
+    });
+  });
+
+  it('updates themes', () => {
+    const wrapper = mountWithAppProvider(
+      <ThemeProvider
+        theme={{
+          colors: {
+            topBar: {
+              background: '#108043',
+            },
+          },
+        }}
+      >
+        <p />
+      </ThemeProvider>,
+    );
+
+    wrapper.setProps({
+      theme: {
+        colors: {
+          topBar: {
+            background: '#021123',
+          },
+        },
+      },
+    });
+    wrapper.update();
+
+    expect(wrapper.find('div').props().style).toStrictEqual({
+      '--top-bar-background': '#021123',
+      '--top-bar-background-lighter': 'hsl(213, 74%, 22%, 1)',
       '--top-bar-color': 'rgb(255, 255, 255)',
     });
   });

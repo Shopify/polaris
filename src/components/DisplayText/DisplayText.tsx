@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {classNames, variationName} from '@shopify/css-utilities';
+import React from 'react';
+import {classNames, variationName} from '../../utilities/css';
 import {HeadingTagName} from '../../types';
 import styles from './DisplayText.scss';
 

@@ -8,8 +8,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Breaking changes
 
-### New components
-
 ### Enhancements
 
 ### Bug fixes

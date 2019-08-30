@@ -1,8 +1,5 @@
-import * as React from 'react';
+import React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {mountWithAppProvider} from 'test-utilities';
-import Title from '..';
-
 import {
   ActionMenu,
   Breadcrumbs,
@@ -12,11 +9,11 @@ import {
   Badge,
   Avatar,
 } from 'components';
-
-import {HeaderPrimaryAction} from '../../../types';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {LinkAction} from '../../../../../types';
-
+import {HeaderPrimaryAction} from '../../../types';
 import Header, {Props} from '../Header';
+import Title from '..';
 
 describe('<Header />', () => {
   const mockProps: Props = {
@@ -67,18 +64,6 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(<Header {...mockProps} />);
       expect(header.find(Title).prop('titleMetadata')).toBe(
         mockProps.titleMetadata,
-      );
-    });
-  });
-
-  describe('icon', () => {
-    it('warns that icon is no longer supported', () => {
-      const warnSpy = jest.spyOn(console, 'warn');
-      mountWithAppProvider(<Header {...mockProps} icon="foo" />);
-
-      expect(warnSpy).toHaveBeenCalledTimes(1);
-      expect(warnSpy).toHaveBeenCalledWith(
-        "The icon prop has been removed from Page. Upload an application icon in the Shopify Partners Dashboard 'App setup' section instead.",
       );
     });
   });
@@ -158,11 +143,11 @@ describe('<Header />', () => {
     const mockActionGroups: Props['actionGroups'] = [
       {
         title: 'First group',
-        actions: [...mockSecondaryActions],
+        actions: mockSecondaryActions,
       },
       {
         title: 'Second group',
-        actions: [...mockSecondaryActions],
+        actions: mockSecondaryActions,
       },
     ];
 

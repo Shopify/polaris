@@ -1,20 +1,21 @@
-import * as React from 'react';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import Item from '../Item';
 
 describe('<Item />', () => {
   it('handles focus', () => {
     const item = mountWithAppProvider(<Item />);
 
-    trigger(item.childAt(0), 'onFocus');
-    expect(item.state().focused).toBe(true);
+    trigger(item.find('div'), 'onFocus');
+
+    expect(item.find('div').hasClass('Item-focused')).toBe(true);
   });
 
   it('handles blur', () => {
     const item = mountWithAppProvider(<Item />);
 
-    trigger(item.childAt(0), 'onBlur');
+    trigger(item.find('div'), 'onBlur');
 
-    expect(item.state().focused).toBe(false);
+    expect(item.find('div').hasClass('Item-focused')).toBe(false);
   });
 });

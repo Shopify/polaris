@@ -1,6 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import {getRectForNode} from '@shopify/javascript-utilities/geometry';
-import {polarisAppProviderContextTypes} from '../AppProvider';
+import {
+  WithAppProviderProps,
+  withAppProvider,
+} from '../../utilities/with-app-provider';
 
 export interface State {
   isSticky: boolean;
@@ -18,9 +21,9 @@ export type Props = {
   | {children: React.ReactNode}
   | {children(isSticky: boolean): React.ReactNode});
 
-export default class Sticky extends React.Component<Props, State> {
-  static contextTypes = polarisAppProviderContextTypes;
+type CombinedProps = Props & WithAppProviderProps;
 
+class Sticky extends React.Component<CombinedProps, State> {
   state: State = {
     isSticky: false,
     style: {},
@@ -30,8 +33,14 @@ export default class Sticky extends React.Component<Props, State> {
   private stickyNode: HTMLElement | null = null;
 
   componentDidMount() {
-    const {stickyManager} = this.context.polaris;
-    const {boundingElement, offset, disableWhenStacked} = this.props;
+    const {
+      boundingElement,
+      offset = false,
+      disableWhenStacked = false,
+      polaris: {stickyManager},
+    } = this.props;
+
+    if (!this.stickyNode || !this.placeHolderNode) return;
 
     stickyManager.registerStickyItem({
       stickyNode: this.stickyNode,
@@ -44,7 +53,8 @@ export default class Sticky extends React.Component<Props, State> {
   }
 
   componentWillUnmount() {
-    const {stickyManager} = this.context.polaris;
+    const {stickyManager} = this.props.polaris;
+    if (!this.stickyNode) return;
     stickyManager.unregisterStickyItem(this.stickyNode);
   }
 
@@ -111,3 +121,5 @@ export default class Sticky extends React.Component<Props, State> {
 function isFunction(arg: any): arg is Function {
   return typeof arg === 'function';
 }
+
+export default withAppProvider<Props>()(Sticky);

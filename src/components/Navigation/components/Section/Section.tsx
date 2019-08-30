@@ -1,12 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
+import {classNames} from '../../../../utilities/css';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 import Collapsible from '../../../Collapsible';
-import Icon, {Props as IconProps} from '../../../Icon';
-import {contextTypes} from '../../types';
+import Icon from '../../../Icon';
+import {IconProps} from '../../../../types';
 
 import Item, {Props as ItemProps} from '../Item';
 
@@ -38,8 +38,6 @@ interface State {
 }
 
 export default class Section extends React.Component<Props, State> {
-  static contextTypes = contextTypes;
-
   state: State = {
     expanded: false,
   };

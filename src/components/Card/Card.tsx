@@ -1,17 +1,17 @@
-import * as React from 'react';
-import {classNames} from '@shopify/css-utilities';
+import React from 'react';
+import {classNames} from '../../utilities/css';
 
-import {
-  DisableableAction,
-  ComplexAction,
-  contentContextTypes,
-} from '../../types';
+import ButtonGroup from '../ButtonGroup';
+import {WithinContentContext} from '../../utilities/within-content-context';
+import {DisableableAction, ComplexAction} from '../../types';
 import ActionList from '../ActionList';
 import Button, {buttonFrom} from '../Button';
-import ButtonGroup from '../ButtonGroup';
 import Popover from '../Popover';
 
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 
 import {Header, Section, Subsection} from './components';
 import styles from './Card.scss';
@@ -29,8 +29,6 @@ export interface Props {
   actions?: DisableableAction[];
   /** Primary action in the card footer */
   primaryFooterAction?: ComplexAction;
-  /** @deprecated Secondary action in the card footer */
-  secondaryFooterAction?: ComplexAction;
   /** Secondary actions in the card footer */
   secondaryFooterActions?: ComplexAction[];
   /** The content of the disclosure button rendered when there is more than one secondary footer action */
@@ -47,17 +45,10 @@ class Card extends React.PureComponent<CombinedProps, State> {
   static Section = Section;
   static Header = Header;
   static Subsection = Subsection;
-  static childContextTypes = contentContextTypes;
 
   state: State = {
     secondaryFooterActionsPopoverOpen: false,
   };
-
-  getChildContext() {
-    return {
-      withinContentContainer: true,
-    };
-  }
 
   render() {
     const {
@@ -67,7 +58,6 @@ class Card extends React.PureComponent<CombinedProps, State> {
       sectioned,
       actions,
       primaryFooterAction,
-      secondaryFooterAction,
       secondaryFooterActions,
       secondaryFooterActionsDisclosureText,
       polaris: {intl},
@@ -82,17 +72,6 @@ class Card extends React.PureComponent<CombinedProps, State> {
 
     const primaryFooterActionMarkup = primaryFooterAction
       ? buttonFrom(primaryFooterAction, {primary: true})
-      : null;
-
-    if (secondaryFooterAction) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'Deprecation: The secondaryFooterAction prop on Card has been deprecated. Pass an array of secondary actions to the secondaryFooterActions prop instead.',
-      );
-    }
-
-    const secondaryFooterActionMarkup = secondaryFooterAction
-      ? buttonFrom(secondaryFooterAction)
       : null;
 
     let secondaryFooterActionsMarkup = null;
@@ -120,23 +99,23 @@ class Card extends React.PureComponent<CombinedProps, State> {
     }
 
     const footerMarkup =
-      primaryFooterActionMarkup ||
-      secondaryFooterActionMarkup ||
-      secondaryFooterActionsMarkup ? (
+      primaryFooterActionMarkup || secondaryFooterActionsMarkup ? (
         <div className={styles.Footer}>
           <ButtonGroup>
-            {secondaryFooterActionsMarkup || secondaryFooterActionMarkup}
+            {secondaryFooterActionsMarkup}
             {primaryFooterActionMarkup}
           </ButtonGroup>
         </div>
       ) : null;
 
     return (
-      <div className={className}>
-        {headerMarkup}
-        {content}
-        {footerMarkup}
-      </div>
+      <WithinContentContext.Provider value>
+        <div className={className}>
+          {headerMarkup}
+          {content}
+          {footerMarkup}
+        </div>
+      </WithinContentContext.Provider>
     );
   }
 

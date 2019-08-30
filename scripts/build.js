@@ -76,6 +76,7 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
       cp('build/polaris.js', './index.js'),
       cp('build/polaris.es.js', './index.es.js'),
       cp('build/polaris.css', './styles.css'),
+      cp('build/polaris.min.css', './styles.min.css'),
       cp('build/styles.scss', './styles.scss'),
       cp('-r', 'build/styles', './styles'),
     ]),

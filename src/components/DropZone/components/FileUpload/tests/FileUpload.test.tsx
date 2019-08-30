@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import {Link, Icon, Button, Caption, TextStyle} from 'components';
-import {mountWithAppProvider} from 'test-utilities';
-import {Provider} from '../../Context';
+import {mountWithAppProvider} from 'test-utilities/legacy';
+import {DropZoneContext} from '../../../context';
 import FileUpload from '../FileUpload';
 import {fileUpload as fileUploadImage, imageUpload} from '../../../images';
 
@@ -9,9 +9,9 @@ describe('<FileUpload />', () => {
   describe('extraLarge', () => {
     it('renders extra large view for type file', () => {
       const fileUpload = mountWithAppProvider(
-        <Provider value={{size: 'extraLarge', type: 'file'}}>
+        <DropZoneContext.Provider value={{size: 'extraLarge', type: 'file'}}>
           <FileUpload />
-        </Provider>,
+        </DropZoneContext.Provider>,
       );
 
       expect(fileUpload.find('img').prop('src')).toBe(fileUploadImage);
@@ -21,9 +21,9 @@ describe('<FileUpload />', () => {
 
     it('renders extra large view for type image', () => {
       const fileUpload = mountWithAppProvider(
-        <Provider value={{size: 'extraLarge', type: 'image'}}>
+        <DropZoneContext.Provider value={{size: 'extraLarge', type: 'image'}}>
           <FileUpload />
-        </Provider>,
+        </DropZoneContext.Provider>,
       );
 
       expect(fileUpload.find('img').prop('src')).toBe(imageUpload);
@@ -35,9 +35,9 @@ describe('<FileUpload />', () => {
   describe('large', () => {
     it('renders large view for type file', () => {
       const fileUpload = mountWithAppProvider(
-        <Provider value={{size: 'large', type: 'file'}}>
+        <DropZoneContext.Provider value={{size: 'large', type: 'file'}}>
           <FileUpload />
-        </Provider>,
+        </DropZoneContext.Provider>,
       );
 
       expect(fileUpload.find('img').prop('src')).toBe(fileUploadImage);
@@ -48,9 +48,9 @@ describe('<FileUpload />', () => {
 
     it('renders large view for type image', () => {
       const fileUpload = mountWithAppProvider(
-        <Provider value={{size: 'large', type: 'image'}}>
+        <DropZoneContext.Provider value={{size: 'large', type: 'image'}}>
           <FileUpload />
-        </Provider>,
+        </DropZoneContext.Provider>,
       );
 
       expect(fileUpload.find('img').prop('src')).toBe(imageUpload);
@@ -62,9 +62,9 @@ describe('<FileUpload />', () => {
 
   it('renders medium view', () => {
     const fileUpload = mountWithAppProvider(
-      <Provider value={{size: 'medium', type: 'file'}}>
+      <DropZoneContext.Provider value={{size: 'medium', type: 'file'}}>
         <FileUpload />
-      </Provider>,
+      </DropZoneContext.Provider>,
     );
 
     expect(fileUpload.find(Link)).toHaveLength(1);
@@ -73,9 +73,9 @@ describe('<FileUpload />', () => {
 
   it('renders small view', () => {
     const fileUpload = mountWithAppProvider(
-      <Provider value={{size: 'small', type: 'file'}}>
+      <DropZoneContext.Provider value={{size: 'small', type: 'file'}}>
         <FileUpload />
-      </Provider>,
+      </DropZoneContext.Provider>,
     );
 
     expect(fileUpload.find(Icon)).toHaveLength(1);
@@ -83,9 +83,9 @@ describe('<FileUpload />', () => {
 
   it('sets a default actionTitle if the prop is provided then removed', () => {
     const fileUpload = mountWithAppProvider(
-      <Provider value={{size: 'large', type: 'file'}}>
+      <DropZoneContext.Provider value={{size: 'large', type: 'file'}}>
         <FileUpload actionTitle="Title" />
-      </Provider>,
+      </DropZoneContext.Provider>,
     );
 
     fileUpload.setProps({children: <FileUpload />});
@@ -94,29 +94,12 @@ describe('<FileUpload />', () => {
 
   it('sets a default actionHint if the prop is provided then removed', () => {
     const fileUpload = mountWithAppProvider(
-      <Provider value={{size: 'large', type: 'file'}}>
+      <DropZoneContext.Provider value={{size: 'large', type: 'file'}}>
         <FileUpload actionHint="Hint" />
-      </Provider>,
+      </DropZoneContext.Provider>,
     );
 
     fileUpload.setProps({children: <FileUpload />});
     expect(fileUpload.find(TextStyle).text()).toBe('or drop files to upload');
-  });
-
-  it('does not use default action title and hint when props are changed', () => {
-    const actionTitle = 'Add file title';
-    const actionHint = 'or drop files to upload hint';
-    const fileUpload = mountWithAppProvider(
-      <Provider value={{size: 'large', type: 'file'}}>
-        <FileUpload actionTitle={actionTitle} actionHint={actionHint} />
-      </Provider>,
-    );
-
-    fileUpload.setProps({
-      children: (
-        <FileUpload actionTitle={actionTitle} actionHint={actionHint} />
-      ),
-    });
-    expect(fileUpload.props()).toStrictEqual({actionTitle, actionHint});
   });
 });

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import styles from '../../Tabs.scss';
 import UnstyledLink from '../../../UnstyledLink';
@@ -55,7 +55,9 @@ export default class Item extends React.PureComponent<Props, never> {
     };
 
     const markup = url ? (
-      React.createElement(UnstyledLink, {url, ...sharedProps}, children)
+      <UnstyledLink {...sharedProps} url={url}>
+        {children}
+      </UnstyledLink>
     ) : (
       <button {...sharedProps} type="button">
         {children}

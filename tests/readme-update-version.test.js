@@ -8,7 +8,7 @@ describe('readme-update-version', () => {
       return accumulator + (readme.match(semverRegExp) || []).length;
     }, 0);
 
-    expect(occurrences).toBe(5);
+    expect(occurrences).toBe(4);
   });
 
   it('semverRegExp matches a variety of valid semver numbers', () => {

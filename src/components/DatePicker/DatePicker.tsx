@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
 import {
   Range,
@@ -14,7 +14,10 @@ import {
   isSameDay,
 } from '@shopify/javascript-utilities/dates';
 
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import Button from '../Button';
 import {monthName} from './utilities';
 

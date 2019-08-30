@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import ActionList, {Props as ActionListProps} from '../../../ActionList';
 import Popover from '../../../Popover';

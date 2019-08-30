@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {classNames} from '../../../../utilities/css';
+import {useI18n} from '../../../../utilities/i18n';
 
 import Icon from '../../../Icon';
 
@@ -12,9 +12,9 @@ export interface Props {
   onClick(): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+export default function CloseButton({title = true, onClick}: Props) {
+  const intl = useI18n();
 
-function CloseButton({title = true, onClick, polaris: {intl}}: CombinedProps) {
   const className = classNames(
     styles.CloseButton,
     !title && styles.withoutTitle,
@@ -30,5 +30,3 @@ function CloseButton({title = true, onClick, polaris: {intl}}: CombinedProps) {
     </button>
   );
 }
-
-export default withAppProvider<Props>()(CloseButton);

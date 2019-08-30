@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
+import React from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import InlineError, {errorTextID} from '../InlineError';
 
 describe('<InlineError />', () => {

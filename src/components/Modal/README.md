@@ -58,7 +58,7 @@ class EmbeddedAppModalExample extends React.Component {
 
   render() {
     return (
-      <AppProvider apiKey="YOUR_API_KEY">
+      <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
         <Modal
           src="https://my-app.com/upgrade-to-retail-package"
           open={this.state.modalOpen}

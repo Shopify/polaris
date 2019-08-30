@@ -1,7 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 
 import VisuallyHidden from '../VisuallyHidden';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 
 export type Enctype =
   | 'application/x-www-form-urlencoded'

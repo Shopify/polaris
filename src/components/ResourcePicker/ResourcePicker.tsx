@@ -1,7 +1,10 @@
-import * as React from 'react';
-import isEqual from 'lodash/isEqual';
+import React from 'react';
 import {ResourcePicker as AppBridgeResourcePicker} from '@shopify/app-bridge/actions';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import isEqual from 'lodash/isEqual';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 
 export interface SelectPayload {
   /** The selected resources
@@ -118,7 +121,18 @@ class ResourcePicker extends React.PureComponent<CombinedProps, never> {
     } = this.props;
     const wasOpen = prevProps.open;
 
-    if (!isEqual(prevProps, this.props)) {
+    const {
+      polaris: {appBridge: prevAppBridge},
+      ...prevResourcePickerProps
+    } = prevProps;
+    const {
+      polaris: {appBridge},
+      ...resourcePickerProps
+    } = this.props;
+    if (
+      !isEqual(prevResourcePickerProps, resourcePickerProps) ||
+      !isEqual(prevAppBridge, appBridge)
+    ) {
       this.appBridgeResourcePicker.set({
         initialQuery,
         showHidden,

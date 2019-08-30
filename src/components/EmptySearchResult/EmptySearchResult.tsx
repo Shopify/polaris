@@ -1,6 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import DisplayText from '../DisplayText';
 import TextStyle from '../TextStyle';
 import Image from '../Image';

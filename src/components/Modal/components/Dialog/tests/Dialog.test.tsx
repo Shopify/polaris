@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {trigger, mountWithAppProvider} from 'test-utilities';
+import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
 import {KeypressListener} from 'components';
 import Dialog from '../Dialog';
 
@@ -30,7 +30,7 @@ describe('<Dialog>', () => {
       </Dialog>,
     );
 
-    trigger(dialog, 'onEntered');
-    expect(dialog.prop('onEntered')).toHaveBeenCalledTimes(1);
+    trigger(dialog.find('FadeUp'), 'onEntered');
+    expect(dialog.find('FadeUp').prop('onEntered')).toHaveBeenCalledTimes(1);
   });
 });

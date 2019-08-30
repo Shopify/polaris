@@ -1,12 +1,11 @@
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import {classNames} from '@shopify/css-utilities';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
+import React, {
+  createContext,
+  createRef,
+  TransitionEvent,
+  ComponentClass,
+} from 'react';
 import {read} from '@shopify/javascript-utilities/fastdom';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {classNames} from '../../utilities/css';
 
 import styles from './Collapsible.scss';
 
@@ -19,8 +18,6 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
-
 export type AnimationState =
   | 'idle'
   | 'measuring'
@@ -32,53 +29,44 @@ export type AnimationState =
 export interface State {
   height?: number | null;
   animationState: AnimationState;
+  open: boolean;
 }
 
-export interface Context {
-  parentCollapsibleExpanding: boolean;
-}
+const ParentCollapsibleExpandingContext = createContext(false);
 
-const CONTEXT_TYPES = {
-  parentCollapsibleExpanding: PropTypes.bool,
-};
+class Collapsible extends React.Component<Props, State> {
+  static contextType = ParentCollapsibleExpandingContext;
 
-// eslint-disable-next-line react/no-unsafe
-class Collapsible extends React.Component<CombinedProps, State> {
-  static contextTypes = CONTEXT_TYPES;
-  static childContextTypes = CONTEXT_TYPES;
+  static getDerivedStateFromProps(
+    {open: willOpen}: Props,
+    {open, animationState: prevAnimationState}: State,
+  ) {
+    let nextAnimationState = prevAnimationState;
+    if (open !== willOpen) {
+      nextAnimationState = 'measuring';
+    }
 
-  context: Partial<Context>;
+    return {
+      animationState: nextAnimationState,
+      open: willOpen,
+    };
+  }
+
+  context!: React.ContextType<typeof ParentCollapsibleExpandingContext>;
 
   state: State = {
     height: null,
     animationState: 'idle',
+    // eslint-disable-next-line react/no-unused-state
+    open: this.props.open,
   };
 
-  private node: HTMLElement | null = null;
-  private heightNode: HTMLElement | null = null;
-
-  getChildContext(): Context {
-    const {open} = this.props;
-    const {animationState} = this.state;
-    const {parentCollapsibleExpanding} = this.context;
-
-    return {
-      parentCollapsibleExpanding:
-        parentCollapsibleExpanding || (open && animationState !== 'idle'),
-    };
-  }
-
-  componentWillReceiveProps({open: willOpen}: Props) {
-    const {open} = this.props;
-
-    if (open !== willOpen) {
-      this.setState({animationState: 'measuring'});
-    }
-  }
+  private node = createRef<HTMLDivElement>();
+  private heightNode = createRef<HTMLDivElement>();
 
   componentDidUpdate({open: wasOpen}: Props) {
     const {animationState} = this.state;
-    const {parentCollapsibleExpanding} = this.context;
+    const parentCollapsibleExpanding = this.context;
 
     if (parentCollapsibleExpanding && animationState !== 'idle') {
       // eslint-disable-next-line react/no-did-update-set-state
@@ -90,14 +78,14 @@ class Collapsible extends React.Component<CombinedProps, State> {
     }
 
     read(() => {
+      const heightNode = this.heightNode.current;
       switch (animationState) {
         case 'idle':
           break;
         case 'measuring':
           this.setState({
             animationState: wasOpen ? 'closingStart' : 'openingStart',
-            height:
-              wasOpen && this.heightNode ? this.heightNode.scrollHeight : 0,
+            height: wasOpen && heightNode ? heightNode.scrollHeight : 0,
           });
           break;
         case 'closingStart':
@@ -109,31 +97,16 @@ class Collapsible extends React.Component<CombinedProps, State> {
         case 'openingStart':
           this.setState({
             animationState: 'opening',
-            height: this.heightNode ? this.heightNode.scrollHeight : 0,
+            height: heightNode ? heightNode.scrollHeight : 0,
           });
       }
     });
   }
 
-  componentDidMount() {
-    if (this.node == null) {
-      return;
-    }
-
-    addEventListener(this.node, 'transitionend', this.handleTransitionEnd);
-  }
-
-  componentWillUnmount() {
-    if (this.node == null) {
-      return;
-    }
-
-    removeEventListener(this.node, 'transitionend', this.handleTransitionEnd);
-  }
-
   render() {
     const {id, open, children} = this.props;
     const {animationState, height} = this.state;
+    const parentCollapsibleExpanding = this.context;
 
     const animating = animationState !== 'idle';
 
@@ -149,29 +122,28 @@ class Collapsible extends React.Component<CombinedProps, State> {
     const content = animating || open ? children : null;
 
     return (
-      <div
-        id={id}
-        aria-hidden={!open}
-        style={{height: displayHeight}}
-        className={wrapperClassName}
-        ref={this.bindNode}
+      <ParentCollapsibleExpandingContext.Provider
+        value={
+          parentCollapsibleExpanding || (open && animationState !== 'idle')
+        }
       >
-        <div ref={this.bindHeightNode}>{content}</div>
-      </div>
+        <div
+          id={id}
+          aria-hidden={!open}
+          style={{height: displayHeight}}
+          className={wrapperClassName}
+          ref={this.node}
+          onTransitionEnd={this.handleTransitionEnd}
+        >
+          <div ref={this.heightNode}>{content}</div>
+        </div>
+      </ParentCollapsibleExpandingContext.Provider>
     );
   }
 
-  private bindNode = (node: HTMLElement | null) => {
-    this.node = node;
-  };
-
-  private bindHeightNode = (node: HTMLElement | null) => {
-    this.heightNode = node;
-  };
-
   private handleTransitionEnd = (event: TransitionEvent) => {
     const {target} = event;
-    if (target === this.node) {
+    if (target === this.node.current) {
       this.setState({animationState: 'idle', height: null});
     }
   };
@@ -193,4 +165,4 @@ function collapsibleHeight(
   return `${height || 0}px`;
 }
 
-export default withAppProvider<Props>()(Collapsible);
+export default Collapsible as ComponentClass<Props> & typeof Collapsible;

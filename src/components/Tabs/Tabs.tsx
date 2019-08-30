@@ -1,11 +1,14 @@
-import * as React from 'react';
+import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../utilities/css';
 
 import Icon from '../Icon';
 import Popover from '../Popover';
 
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../utilities/with-app-provider';
 import {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 
@@ -39,8 +42,6 @@ export interface State {
 }
 
 class Tabs extends React.PureComponent<CombinedProps, State> {
-  static Panel = Panel;
-
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     const {disclosureWidth, tabWidths, containerWidth} = prevState;
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
@@ -139,7 +140,7 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
           onKeyUp={this.handleKeyPress}
         >
           {tabsMarkup}
-          <li role="presentation" className={disclosureTabClassName}>
+          <li className={disclosureTabClassName}>
             <Popover
               preferredPosition="below"
               activator={activator}

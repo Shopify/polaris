@@ -1,6 +1,6 @@
 # [Polaris React](https://polaris.shopify.com/)
 
-[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) [![CircleCI build status](https://circleci.com/gh/Shopify/polaris-react.svg?style=shield&circle-token=c8498f3af1d113fe3974c8881c4ce32ef09423c2)](https://circleci.com/gh/Shopify/polaris-react) [![codecov](https://codecov.io/gh/Shopify/polaris-react/branch/master/graph/badge.svg?token=IKyeKcpRs1)](https://codecov.io/gh/Shopify/polaris-react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md#your-first-pull-request) [![join the Shopify Partners Slack #polaris channel](https://img.shields.io/badge/Shopify%20Partners%20Slack-%23polaris-orange.svg)](https://shopifypartners.slack.com/messages/C8PTBMWNR)
+[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) [![CircleCI build status](https://circleci.com/gh/Shopify/polaris-react.svg?style=shield&circle-token=c8498f3af1d113fe3974c8881c4ce32ef09423c2)](https://circleci.com/gh/Shopify/polaris-react) [![codecov](https://codecov.io/gh/Shopify/polaris-react/branch/master/graph/badge.svg?token=IKyeKcpRs1)](https://codecov.io/gh/Shopify/polaris-react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md#your-first-pull-request)
 
 Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
 
@@ -28,32 +28,33 @@ yarn add @shopify/polaris
 
 ### Usage
 
-1.  Include the CSS in your HTML:
+1.  Import the CSS directly into your project if your asset packager supports it:
+
+```js
+import '@shopify/polaris/styles.css';
+```
+
+Otherwise include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
 
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.21.1/polaris.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.0.0/styles.min.css"
 />
 ```
 
-> Note: you can import the CSS directly into your project if your asset packager supports it:
->
-> ```javascript
-> import '@shopify/polaris/styles.css';
-> ```
+2.  Include the translations and any of the provided components in your project:
 
-2.  Include any of the provided components in your project:
-
-```javascript
+```js
+import enTranslations from '@shopify/polaris/locales/en.json';
 import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 ```
 
 3.  Tell React to render the element in the DOM:
 
-```javascript
+```js
 ReactDOM.render(
-  <AppProvider>
+  <AppProvider i18n={enTranslations}>
     <Page title="Example app">
       <Card sectioned>
         <Button onClick={() => alert('Button clicked!')}>Example button</Button>
@@ -76,12 +77,12 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 
 ### Usage
 
-1.  Include the CSS in your HTML:
+1.  Include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
 
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.21.1/polaris.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.0.0/styles.min.css"
 />
 ```
 

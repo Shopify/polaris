@@ -22,5 +22,6 @@ action "Move assigned issue to column" {
   args = ["🌌 Polaris backlog", "🚀 In progress"]
   secrets = [
     "GITHUB_TOKEN",
+    "GH_PAT",
   ]
 }
