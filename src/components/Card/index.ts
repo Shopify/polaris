@@ -1,3 +1,1 @@
-import Card, {CardProps} from './Card';
-
-export {Card, CardProps};
+export {Card, CardProps} from './Card';

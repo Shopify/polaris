@@ -1,3 +1,1 @@
-import SkeletonPage, {SkeletonPageProps} from './SkeletonPage';
-
-export {SkeletonPage, SkeletonPageProps};
+export {SkeletonPage, SkeletonPageProps} from './SkeletonPage';
