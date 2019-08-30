@@ -4,34 +4,30 @@
 
 // stylelint-disable scss/partial-no-import
 
-// start: data to be pulled from tokens
-@import './common/colors';
-@import './common/filters';
+@import './common/utilities';
 @import './common/spacing';
-@import './common/border-width';
-@import './common/border-radius';
+
+// dependencies on imports above
+@import './common/borders';
+@import './common/colors';
 @import './common/duration';
 @import './common/easing';
+@import './common/filters';
 @import './common/layout';
 @import './common/shadows';
-// end: data to be pulled from tokens
-
 @import './common/typography';
-@import './common/utilities';
-@import './common/borders';
 @import './common/z-index';
 
+// dependencies on imports above
 @import './common/accessibility';
 @import './common/breakpoints';
 @import './common/buttons';
 @import './common/controls';
 @import './common/forms';
 @import './common/icons';
-@import './common/layout';
+@import './common/interaction-state';
 @import './common/links';
 @import './common/lists';
 @import './common/page';
-@import './common/typography';
-@import './common/skeleton';
-@import './common/interaction-state';
 @import './common/printing';
+@import './common/skeleton';

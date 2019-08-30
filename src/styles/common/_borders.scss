@@ -1,3 +1,38 @@
+// TODO: pull data from borderWidth tokens
+$border-width-data: (
+  base: rem(1px),
+  thick: rem(2px),
+  thicker: rem(3px),
+);
+
+/// Returns the width of the specified border type.
+/// @param {String} $variant [base] - The border variant key.
+/// @return {Number} The width for the border.
+
+@function border-width($variant: base) {
+  $fetched-value: map-get($border-width-data, $variant);
+
+  @if type-of($fetched-value) == number {
+    @return $fetched-value;
+  } @else {
+    @error 'Border width variant `#{$variant}` not found. Available variants: #{available-names($border-width-data)}';
+  }
+}
+
+// TODO: pull data from radii tokens
+$border-radius-data: (
+  base: 3px,
+  large: 6px,
+);
+
+/// Returns the border radius of the specified size.
+/// @param {String} $size - The border radius’s size.
+/// @return {Number} The border radius value.
+
+@function border-radius($size: base) {
+  @return map-get($border-radius-data, $size);
+}
+
 $borders-data: (
   base: border-width() solid color('sky'),
   dark: border-width() solid color('sky', 'dark'),
