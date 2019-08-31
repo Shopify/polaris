@@ -9,7 +9,7 @@ export function useToggle(initialState: boolean) {
   return [state, toggle] as [typeof state, typeof toggle];
 }
 
-export function useForcableToggle(initialState: boolean) {
+export function useForcibleToggle(initialState: boolean) {
   const [state, setState] = useState(initialState);
 
   const toggles = {

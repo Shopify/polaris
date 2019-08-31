@@ -4,7 +4,7 @@ import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useI18n} from '../../utilities/i18n';
 import {useTheme} from '../../utilities/theme';
-import {useForcableToggle} from '../../utilities/use-toggle';
+import {useForcibleToggle} from '../../utilities/use-toggle';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
@@ -50,7 +50,7 @@ export function TopBar({
   const [
     focused,
     {forceTrue: forceTrueFocused, forceFalse: forceFalseFocused},
-  ] = useForcableToggle(false);
+  ] = useForcibleToggle(false);
 
   const className = classNames(
     styles.NavigationIcon,
