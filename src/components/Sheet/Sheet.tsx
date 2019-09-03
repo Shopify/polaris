@@ -70,13 +70,10 @@ export function Sheet({
     [mobile],
   );
 
-  useEffect(
-    () => {
-      handleResize();
-    },
+  useEffect(() => {
+    handleResize();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
+  }, []);
 
   return (
     <Portal idPrefix="sheet">

@@ -88,24 +88,18 @@ export function Item({
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const [expanded, setExpanded] = useState(false);
 
-  const handleResize = useCallback(
-    () => {
-      if (!navigationBarCollapsed().matches && expanded) {
-        setExpanded(false);
-      }
-    },
-    [expanded],
-  );
+  const handleResize = useCallback(() => {
+    if (!navigationBarCollapsed().matches && expanded) {
+      setExpanded(false);
+    }
+  }, [expanded]);
 
-  useEffect(
-    () => {
-      navigationBarCollapsed().addListener(handleResize);
-      return () => {
-        navigationBarCollapsed().removeListener(handleResize);
-      };
-    },
-    [handleResize],
-  );
+  useEffect(() => {
+    navigationBarCollapsed().addListener(handleResize);
+    return () => {
+      navigationBarCollapsed().removeListener(handleResize);
+    };
+  }, [handleResize]);
 
   const tabIndex = disabled ? -1 : 0;
 

@@ -206,11 +206,10 @@ export function FilterControl({
     const {value: appliedFilterValue} = appliedFilter;
 
     if (filter.type === FilterType.Select) {
-      const foundFilterOption = filter.options.find(
-        (option) =>
-          typeof option === 'string'
-            ? option === appliedFilterValue
-            : option.value === appliedFilterValue,
+      const foundFilterOption = filter.options.find((option) =>
+        typeof option === 'string'
+          ? option === appliedFilterValue
+          : option.value === appliedFilterValue,
       );
 
       if (foundFilterOption) {
@@ -222,9 +221,7 @@ export function FilterControl({
 
     if (filter.type === FilterType.DateSelector) {
       if (filter.key === appliedFilter.key) {
-        const filterLabelKey = `Polaris.ResourceList.DateSelector.FilterLabelForValue.${
-          appliedFilter.value
-        }`;
+        const filterLabelKey = `Polaris.ResourceList.DateSelector.FilterLabelForValue.${appliedFilter.value}`;
 
         return intl.translationKeyExists(filterLabelKey)
           ? intl.translate(filterLabelKey)
