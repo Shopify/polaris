@@ -24,50 +24,44 @@ export const Toast = React.memo(function Toast(props: ToastProps) {
   const {showToast, hideToast} = useFrame();
   const appBridge = useAppBridge();
 
-  useDeepEffect(
-    () => {
-      const {
-        error,
-        content,
-        duration = DEFAULT_TOAST_DURATION,
-        onDismiss,
-      } = props;
-      const toastId = id.current;
+  useDeepEffect(() => {
+    const {
+      error,
+      content,
+      duration = DEFAULT_TOAST_DURATION,
+      onDismiss,
+    } = props;
+    const toastId = id.current;
 
+    if (appBridge == null) {
+      showToast({
+        id: id.current,
+        ...props,
+      });
+    } else {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: Using `Toast` in an embedded app is deprecated and will be removed in v5.0. Use `Toast` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/toast',
+      );
+
+      appBridgeToast.current = AppBridgeToast.create(appBridge, {
+        message: content,
+        duration,
+        isError: error,
+      });
+
+      appBridgeToast.current.subscribe(AppBridgeToast.Action.CLEAR, onDismiss);
+      appBridgeToast.current.dispatch(AppBridgeToast.Action.SHOW);
+    }
+
+    return () => {
       if (appBridge == null) {
-        showToast({
-          id: id.current,
-          ...props,
-        });
-      } else {
-        // eslint-disable-next-line no-console
-        console.warn(
-          'Deprecation: Using `Toast` in an embedded app is deprecated and will be removed in v5.0. Use `Toast` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/toast',
-        );
-
-        appBridgeToast.current = AppBridgeToast.create(appBridge, {
-          message: content,
-          duration,
-          isError: error,
-        });
-
-        appBridgeToast.current.subscribe(
-          AppBridgeToast.Action.CLEAR,
-          onDismiss,
-        );
-        appBridgeToast.current.dispatch(AppBridgeToast.Action.SHOW);
+        hideToast({id: toastId});
+      } else if (appBridgeToast.current != null) {
+        appBridgeToast.current.unsubscribe();
       }
-
-      return () => {
-        if (appBridge == null) {
-          hideToast({id: toastId});
-        } else if (appBridgeToast.current != null) {
-          appBridgeToast.current.unsubscribe();
-        }
-      };
-    },
-    [appBridge, props],
-  );
+    };
+  }, [appBridge, props]);
 
   return null;
 });

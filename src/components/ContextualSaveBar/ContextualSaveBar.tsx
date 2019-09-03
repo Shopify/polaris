@@ -18,30 +18,24 @@ export const ContextualSaveBar = React.memo(function ContextualSaveBar({
 }: ContextualSaveBarProps) {
   const {setContextualSaveBar, removeContextualSaveBar} = useFrame();
 
-  React.useEffect(
-    () => {
-      setContextualSaveBar({
-        message,
-        saveAction,
-        discardAction,
-        alignContentFlush,
-      });
-    },
-    [
+  React.useEffect(() => {
+    setContextualSaveBar({
       message,
       saveAction,
       discardAction,
       alignContentFlush,
-      setContextualSaveBar,
-    ],
-  );
+    });
+  }, [
+    message,
+    saveAction,
+    discardAction,
+    alignContentFlush,
+    setContextualSaveBar,
+  ]);
 
-  React.useEffect(
-    () => {
-      return removeContextualSaveBar;
-    },
-    [removeContextualSaveBar],
-  );
+  React.useEffect(() => {
+    return removeContextualSaveBar;
+  }, [removeContextualSaveBar]);
 
   return null;
 });
