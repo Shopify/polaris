@@ -94,7 +94,9 @@ Use for text links that are the same color as the surrounding text.
 </Link>
 ```
 
-Monochrome styles will be applied to links rendered within a `Banner`
+### Monochrome link in a banner
+
+Monochrome styles will be applied to links rendered within a `Banner`.
 
 ```jsx
 <Banner>
