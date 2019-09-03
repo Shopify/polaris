@@ -1049,7 +1049,7 @@ Using a resource list in a project involves combining the following components a
 
 - ResourceList
 - [ResourceItem](/components/lists-and-tables/resource-item) or a customized list item
-- [Filters](#subcomponent-filter-control) (optional)
+- [Filters](/components/lists-and-tables/filters) (optional)
 - Pagination component (optional)
 
 <!-- hint -->
