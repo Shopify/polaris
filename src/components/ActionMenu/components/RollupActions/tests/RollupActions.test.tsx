@@ -11,7 +11,7 @@ import {
   Section as ActionListSection,
 } from '../../../../ActionList/components';
 
-import RollupActions, {RollupActionsProps} from '../RollupActions';
+import {RollupActions, RollupActionsProps} from '../RollupActions';
 
 type Wrapper = ReactWrapper<RollupActionsProps, any>;
 

@@ -7,7 +7,7 @@ import {
   DisplayText,
   SkeletonDisplayText,
 } from 'components';
-import SkeletonPage from '../SkeletonPage';
+import {SkeletonPage} from '../SkeletonPage';
 
 describe('<SkeletonPage />', () => {
   it('renders its children', () => {

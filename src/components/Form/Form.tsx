@@ -1,10 +1,7 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 
 import {VisuallyHidden} from '../VisuallyHidden';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
+import {useI18n} from '../../utilities/i18n';
 
 export type Enctype =
   | 'application/x-www-form-urlencoded'
@@ -42,61 +39,60 @@ export interface FormProps {
   onSubmit(event: React.FormEvent<HTMLFormElement>): void;
 }
 
-type CombinedProps = FormProps & WithAppProviderProps;
+export function Form({
+  acceptCharset,
+  action,
+  autoComplete,
+  children,
+  encType,
+  implicitSubmit = true,
+  method = 'post',
+  name,
+  noValidate,
+  preventDefault = true,
+  target,
+  onSubmit,
+}: FormProps) {
+  const i18n = useI18n();
 
-class Form extends React.PureComponent<CombinedProps, never> {
-  render() {
-    const {
-      acceptCharset,
-      action,
-      autoComplete,
-      children,
-      encType,
-      implicitSubmit = true,
-      method = 'post',
-      name,
-      noValidate,
-      target,
-      polaris: {intl},
-    } = this.props;
-    const autoCompleteInputs = normalizeAutoComplete(autoComplete);
+  const handleSubmit = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      if (!preventDefault) {
+        return;
+      }
 
-    const submitMarkup = implicitSubmit ? (
-      <VisuallyHidden>
-        <button type="submit" aria-hidden="true">
-          {intl.translate('Polaris.Common.submit')}
-        </button>
-      </VisuallyHidden>
-    ) : null;
+      event.preventDefault();
+      onSubmit(event);
+    },
+    [onSubmit, preventDefault],
+  );
 
-    return (
-      <form
-        acceptCharset={acceptCharset}
-        action={action}
-        autoComplete={autoCompleteInputs}
-        encType={encType}
-        method={method}
-        name={name}
-        noValidate={noValidate}
-        target={target}
-        onSubmit={this.handleSubmit}
-      >
-        {children}
-        {submitMarkup}
-      </form>
-    );
-  }
+  const autoCompleteInputs = normalizeAutoComplete(autoComplete);
 
-  private handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    const {preventDefault = true, onSubmit} = this.props;
+  const submitMarkup = implicitSubmit ? (
+    <VisuallyHidden>
+      <button type="submit" aria-hidden="true">
+        {i18n.translate('Polaris.Common.submit')}
+      </button>
+    </VisuallyHidden>
+  ) : null;
 
-    if (!preventDefault) {
-      return;
-    }
-
-    event.preventDefault();
-    onSubmit(event);
-  };
+  return (
+    <form
+      acceptCharset={acceptCharset}
+      action={action}
+      autoComplete={autoCompleteInputs}
+      encType={encType}
+      method={method}
+      name={name}
+      noValidate={noValidate}
+      target={target}
+      onSubmit={handleSubmit}
+    >
+      {children}
+      {submitMarkup}
+    </form>
+  );
 }
 
 function normalizeAutoComplete(autoComplete?: boolean) {
@@ -106,7 +102,3 @@ function normalizeAutoComplete(autoComplete?: boolean) {
 
   return autoComplete ? 'on' : 'off';
 }
-
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<FormProps>()(Form);
