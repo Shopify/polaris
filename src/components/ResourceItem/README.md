@@ -61,12 +61,12 @@ class ResourceListExample extends React.Component {
           renderItem={(item) => {
             const {id, url, title, author} = item;
             const authorMarkup = author ? <div>by {author}</div> : null;
-
             return (
               <ResourceItem
                 id={id}
                 url={url}
                 accessibilityLabel={`View details for ${title}`}
+                name={title}
               >
                 <h3>
                   <TextStyle variation="strong">{title}</TextStyle>
@@ -115,6 +115,7 @@ The media element can hold an [avatar](/components/images-and-icons/avatar), [th
             <Avatar customer size="medium" name={name} source={avatarSource} />
           }
           accessibilityLabel={`View details for ${name}`}
+          name={name}
         >
           <h3>
             <TextStyle variation="strong">{name}</TextStyle>
@@ -161,6 +162,7 @@ Shortcut actions present popular actions from the resource’s details page for 
           }
           shortcutActions={shortcutActions}
           accessibilityLabel={`View details for ${name}`}
+          name={name}
         >
           <h3>
             <TextStyle variation="strong">{name}</TextStyle>
