@@ -65,6 +65,8 @@ class FrameExample extends React.Component {
     supportMessage: '',
   };
 
+  skipToContentRef = React.createRef();
+
   render() {
     const {
       showToast,
@@ -183,9 +185,14 @@ class FrameExample extends React.Component {
 
     const loadingMarkup = isLoading ? <Loading /> : null;
 
+    const skipToContentTarget = (
+      <a id="SkipToContentTarget" ref={this.skipToContentRef} tabIndex={-1} />
+    );
+
     const actualPageMarkup = (
       <Page title="Account">
         <Layout>
+          {skipToContentTarget}
           <Layout.AnnotatedSection
             title="Account details"
             description="Jaded Pixel will use this as your account information."
@@ -314,6 +321,7 @@ class FrameExample extends React.Component {
             navigation={navigationMarkup}
             showMobileNavigation={showMobileNavigation}
             onNavigationDismiss={this.toggleState('showMobileNavigation')}
+            skipToContentTarget={this.skipToContentRef}
           >
             {contextualSaveBarMarkup}
             {loadingMarkup}
