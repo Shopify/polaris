@@ -14,8 +14,7 @@ export function useUniqueId(prefix = '', override?: string) {
   // rerendering of a component
   // The first time a component is rendered the ref will be empty.
   // In that case fill it with the next available ID
-  // Only populating this on first render means we don't create a new Id on
-  // every render
+  // On subsequent renders we use the existing value instead of using a new id
   const currentComponentIdRef = useRef<string | null>(null);
 
   if (!currentComponentIdRef.current) {

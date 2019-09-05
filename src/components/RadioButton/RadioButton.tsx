@@ -42,12 +42,12 @@ export function RadioButton({
   onChange,
   onFocus,
   onBlur,
-  id: providedId,
-  name: providedName,
+  id: idProp,
+  name: nameProp,
   value,
 }: RadioButtonProps) {
-  const id = useUniqueId('RadioButton', providedId);
-  const name = providedName || id;
+  const id = useUniqueId('RadioButton', idProp);
+  const name = nameProp || id;
 
   function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
     onChange && onChange(currentTarget.checked, id);
