@@ -6,14 +6,14 @@ function TestHarness({children}: {children: React.ReactNode}) {
   return <React.Fragment>{children}</React.Fragment>;
 }
 
-const Component1 = () => <React.Fragment>{useUniqueId()}</React.Fragment>;
-const Component2 = () => <React.Fragment>{useUniqueId()}</React.Fragment>;
-const Component3 = () => <React.Fragment>{useUniqueId()}</React.Fragment>;
+const Component1 = () => <div id={useUniqueId()} />;
+const Component2 = () => <div id={useUniqueId()} />;
+const Component3 = () => <div id={useUniqueId()} />;
 
-const HasPrefix1 = () => <React.Fragment>{useUniqueId('a')}</React.Fragment>;
-const HasPrefix2 = () => <React.Fragment>{useUniqueId('a')}</React.Fragment>;
-const HasPrefix3 = () => <React.Fragment>{useUniqueId('a')}</React.Fragment>;
-const HasPrefix4 = () => <React.Fragment>{useUniqueId('b')}</React.Fragment>;
+const HasPrefix1 = () => <div id={useUniqueId('A')} />;
+const HasPrefix2 = () => <div id={useUniqueId('A')} />;
+const HasPrefix3 = () => <div id={useUniqueId('A')} />;
+const HasPrefix4 = () => <div id={useUniqueId('B')} />;
 
 describe('useUniqueId', () => {
   it('returns unique IDs across a single component', () => {
@@ -28,13 +28,12 @@ describe('useUniqueId', () => {
       </TestHarness>,
     );
 
-    expect(harness.findAll(Component1)[0].html()).toStrictEqual('polaris-1');
-    expect(harness.findAll(Component1)[1].html()).toStrictEqual('polaris-2');
-    expect(harness.findAll(Component1)[2].html()).toStrictEqual('polaris-3');
-
-    expect(harness.findAll(HasPrefix1)[0].html()).toStrictEqual('polaris-a1');
-    expect(harness.findAll(HasPrefix1)[1].html()).toStrictEqual('polaris-a2');
-    expect(harness.findAll(HasPrefix1)[2].html()).toStrictEqual('polaris-a3');
+    expect(harness.findAll('div')[0]).toHaveReactProps({id: 'Polaris1'});
+    expect(harness.findAll('div')[1]).toHaveReactProps({id: 'Polaris2'});
+    expect(harness.findAll('div')[2]).toHaveReactProps({id: 'Polaris3'});
+    expect(harness.findAll('div')[3]).toHaveReactProps({id: 'PolarisA1'});
+    expect(harness.findAll('div')[4]).toHaveReactProps({id: 'PolarisA2'});
+    expect(harness.findAll('div')[5]).toHaveReactProps({id: 'PolarisA3'});
   });
 
   it('returns unique IDs across multiple components', () => {
@@ -50,41 +49,39 @@ describe('useUniqueId', () => {
       </TestHarness>,
     );
 
-    expect(harness.find(Component1)!.html()).toStrictEqual('polaris-1');
-    expect(harness.find(Component2)!.html()).toStrictEqual('polaris-2');
-    expect(harness.find(Component3)!.html()).toStrictEqual('polaris-3');
-
-    expect(harness.find(HasPrefix1)!.html()).toStrictEqual('polaris-a1');
-    expect(harness.find(HasPrefix2)!.html()).toStrictEqual('polaris-a2');
-    expect(harness.find(HasPrefix3)!.html()).toStrictEqual('polaris-a3');
-    expect(harness.find(HasPrefix4)!.html()).toStrictEqual('polaris-b1');
+    expect(harness.findAll('div')[0]).toHaveReactProps({id: 'Polaris1'});
+    expect(harness.findAll('div')[1]).toHaveReactProps({id: 'Polaris2'});
+    expect(harness.findAll('div')[2]).toHaveReactProps({id: 'Polaris3'});
+    expect(harness.findAll('div')[3]).toHaveReactProps({id: 'PolarisA1'});
+    expect(harness.findAll('div')[4]).toHaveReactProps({id: 'PolarisA2'});
+    expect(harness.findAll('div')[5]).toHaveReactProps({id: 'PolarisA3'});
+    expect(harness.findAll('div')[6]).toHaveReactProps({id: 'PolarisB1'});
   });
 
   it('increments multiple IDs within the same component', () => {
     const HasMultipleIds = () => (
-      <React.Fragment>
-        {useUniqueId()} :: {useUniqueId()}
-      </React.Fragment>
+      <div id={useUniqueId()} title={useUniqueId()} />
     );
 
     const harness = mountWithApp(<HasMultipleIds />);
 
-    expect(harness.html()).toStrictEqual('polaris-1 :: polaris-2');
+    expect(harness.find('div')).toHaveReactProps({
+      id: 'Polaris1',
+      title: 'Polaris2',
+    });
   });
 
   it('uses an override if specified', () => {
-    const HasOverride = () => (
-      <React.Fragment>{useUniqueId('', 'overridden')}</React.Fragment>
-    );
+    const HasOverride = () => <div id={useUniqueId('', 'overridden')} />;
 
     const harness = mountWithApp(<HasOverride />);
 
-    expect(harness.html()).toStrictEqual('overridden');
+    expect(harness.find('div')).toHaveReactProps({id: 'overridden'});
   });
 
   it('uses an override if specified and the override does not interupt the count', () => {
     const HasOverride = ({idOverride}: {idOverride?: string}) => (
-      <React.Fragment>{useUniqueId('', idOverride)}</React.Fragment>
+      <div id={useUniqueId('', idOverride)} />
     );
 
     const harness = mountWithApp(
@@ -95,16 +92,14 @@ describe('useUniqueId', () => {
       </TestHarness>,
     );
 
-    expect(harness.findAll(HasOverride)[0].html()).toStrictEqual('polaris-1');
-    expect(harness.findAll(HasOverride)[1].html()).toStrictEqual('overridden');
-    expect(harness.findAll(HasOverride)[2].html()).toStrictEqual('polaris-2');
+    expect(harness.findAll('div')[0]).toHaveReactProps({id: 'Polaris1'});
+    expect(harness.findAll('div')[1]).toHaveReactProps({id: 'overridden'});
+    expect(harness.findAll('div')[2]).toHaveReactProps({id: 'Polaris2'});
   });
 
   it('keeps the same ID across multiple rerenders', () => {
     const HasProp = ({info}: {info: string}) => (
-      <React.Fragment>
-        {info} :: {useUniqueId()}
-      </React.Fragment>
+      <div id={useUniqueId()} title={info} />
     );
 
     const ReRenderingTestHarness = () => {
@@ -124,19 +119,23 @@ describe('useUniqueId', () => {
 
     const harness = mountWithApp(<ReRenderingTestHarness />);
 
-    expect(harness.find(HasProp)!.html()).toStrictEqual('count1 :: polaris-1');
+    expect(harness.findAll('div')[0]).toHaveReactProps({
+      title: 'count1',
+      id: 'Polaris1',
+    });
 
     harness.find('button')!.trigger('onClick');
 
-    expect(harness.find(HasProp)!.html()).toStrictEqual('count2 :: polaris-1');
+    expect(harness.findAll('div')[0]).toHaveReactProps({
+      title: 'count2',
+      id: 'Polaris1',
+    });
   });
 
   it('updates the ID if the overridden ID changes', () => {
     type HasPropProps = {info: string; idOverride?: string};
     const HasProp = ({info, idOverride}: HasPropProps) => (
-      <React.Fragment>
-        {info} :: {useUniqueId('', idOverride)}
-      </React.Fragment>
+      <div id={useUniqueId('', idOverride)} title={info} />
     );
 
     const ReRenderingTestHarness = () => {
@@ -147,7 +146,7 @@ describe('useUniqueId', () => {
       );
 
       // eslint-disable-next-line shopify/jest/no-if
-      const override = count % 2 === 0 ? `override-${count}` : undefined;
+      const override = count % 2 === 0 ? `Override${count}` : undefined;
 
       return (
         <React.Fragment>
@@ -160,23 +159,38 @@ describe('useUniqueId', () => {
     const harness = mountWithApp(<ReRenderingTestHarness />);
 
     // Initially we use an incremental id
-    expect(harness.find(HasProp)!.html()).toStrictEqual('count1 :: polaris-1');
+    expect(harness.find('div')).toHaveReactProps({
+      title: 'count1',
+      id: 'Polaris1',
+    });
 
     // But then we set an override id, so it should use that
     harness.find('button')!.trigger('onClick');
-    expect(harness.find(HasProp)!.html()).toStrictEqual('count2 :: override-2');
+    expect(harness.find('div')).toHaveReactProps({
+      title: 'count2',
+      id: 'Override2',
+    });
 
     // Then on the next render we don't set an override id, so we should go back
     // to using the incremental id
     harness.find('button')!.trigger('onClick');
-    expect(harness.find(HasProp)!.html()).toStrictEqual('count3 :: polaris-1');
+    expect(harness.find('div')).toHaveReactProps({
+      title: 'count3',
+      id: 'Polaris1',
+    });
 
     // Back to setting an override id
     harness.find('button')!.trigger('onClick');
-    expect(harness.find(HasProp)!.html()).toStrictEqual('count4 :: override-4');
+    expect(harness.find('div')).toHaveReactProps({
+      title: 'count4',
+      id: 'Override4',
+    });
 
     // Back to not setting an override, so back to using the incremental id
     harness.find('button')!.trigger('onClick');
-    expect(harness.find(HasProp)!.html()).toStrictEqual('count5 :: polaris-1');
+    expect(harness.find('div')).toHaveReactProps({
+      title: 'count5',
+      id: 'Polaris1',
+    });
   });
 });

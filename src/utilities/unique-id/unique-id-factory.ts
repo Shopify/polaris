@@ -21,5 +21,5 @@ export class UniqueIdFactory {
 
 export function globalIdGeneratorFactory(prefix = '') {
   let index = 1;
-  return () => `polaris-${prefix}${index++}`;
+  return () => `Polaris${prefix}${index++}`;
 }
