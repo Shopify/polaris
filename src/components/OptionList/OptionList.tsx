@@ -1,10 +1,10 @@
-import React, {useState, useRef, useCallback} from 'react';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import React, {useState, useCallback} from 'react';
 
 import {arraysAreEqual} from '../../utilities/arrays';
 import {IconProps} from '../../types';
 import {AvatarProps} from '../Avatar';
 import {ThumbnailProps} from '../Thumbnail';
+import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
 
 import {Option} from './components';
@@ -33,8 +33,6 @@ export interface SectionDescriptor {
 }
 
 type Descriptor = OptionDescriptor | SectionDescriptor;
-
-const getUniqueId = createUniqueIDFactory('OptionList');
 
 export interface OptionListProps {
   /** A unique identifier for the option list */
@@ -66,16 +64,12 @@ export function OptionList({
   role,
   optionRole,
   onChange,
-  id: propId,
+  id: idProp,
 }: OptionListProps) {
   const [normalizedOptions, setNormalizedOptions] = useState(
     createNormalizedOptions(options, sections, title),
   );
-  const id = useRef(propId || getUniqueId());
-
-  if (id.current !== propId) {
-    id.current = propId || id.current;
-  }
+  const id = useUniqueId('OptionList', idProp);
 
   useDeepEffect(
     () => {
@@ -122,7 +116,7 @@ export function OptionList({
           options.map((option, optionIndex) => {
             const isSelected = selected.includes(option.value);
             const optionId =
-              option.id || `${id.current}-${sectionIndex}-${optionIndex}`;
+              option.id || `${id}-${sectionIndex}-${optionIndex}`;
 
             return (
               <Option
@@ -144,7 +138,7 @@ export function OptionList({
             {titleMarkup}
             <ul
               className={styles.Options}
-              id={`${id.current}-${sectionIndex}`}
+              id={`${id}-${sectionIndex}`}
               role={role}
               aria-multiselectable={allowMultiple}
             >

@@ -1,5 +1,5 @@
 import React from 'react';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {useUniqueId} from '../../utilities/unique-id';
 import {Choice, helpTextID} from '../Choice';
 import styles from './RadioButton.scss';
 
@@ -32,8 +32,6 @@ export interface BaseProps {
 
 export interface RadioButtonProps extends BaseProps {}
 
-const getUniqueID = createUniqueIDFactory('RadioButton');
-
 export function RadioButton({
   ariaDescribedBy: ariaDescribedByProp,
   label,
@@ -44,10 +42,13 @@ export function RadioButton({
   onChange,
   onFocus,
   onBlur,
-  id = getUniqueID(),
-  name = id,
+  id: providedId,
+  name: providedName,
   value,
 }: RadioButtonProps) {
+  const id = useUniqueId('RadioButton', providedId);
+  const name = providedName || id;
+
   function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
     onChange && onChange(currentTarget.checked, id);
   }
