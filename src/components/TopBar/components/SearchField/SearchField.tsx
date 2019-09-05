@@ -1,18 +1,13 @@
-import React from 'react';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import React, {useCallback, useEffect, useRef} from 'react';
 import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
+import {useI18n} from '../../../../utilities/i18n';
+import {useUniqueId} from '../../../../utilities/unique-id';
 
 import {Icon} from '../../../Icon';
 import {VisuallyHidden} from '../../../VisuallyHidden';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../../../utilities/with-app-provider';
 
 import styles from './SearchField.scss';
-
-const getUniqueId = createUniqueIDFactory('SearchField');
 
 export interface SearchFieldProps {
   /** Initial value for the input */
@@ -33,148 +28,100 @@ export interface SearchFieldProps {
   onCancel?(): void;
 }
 
-export type ComposedProps = SearchFieldProps & WithAppProviderProps;
+export function SearchField({
+  value,
+  focused,
+  active,
+  placeholder,
+  onChange,
+  onFocus,
+  onBlur,
+  onCancel,
+}: SearchFieldProps) {
+  const i18n = useI18n();
 
-export class SearchField extends React.Component<ComposedProps, never> {
-  private input: React.RefObject<HTMLInputElement> = React.createRef();
-  private searchId = getUniqueId();
+  const input = useRef<HTMLInputElement>(null);
+  const searchId = useUniqueId('SearchField');
 
-  componentDidMount() {
-    const {focused} = this.props;
-    const {
-      input: {current: input},
-    } = this;
+  const handleChange = useCallback(
+    ({currentTarget}: React.ChangeEvent<HTMLInputElement>) => {
+      onChange(currentTarget.value);
+    },
+    [onChange],
+  );
 
-    if (input && focused) {
-      input.focus();
-    }
-  }
+  const handleFocus = useCallback(() => onFocus && onFocus(), [onFocus]);
 
-  componentDidUpdate({focused: wasFocused}: SearchFieldProps) {
-    const {
-      input: {current: input},
-    } = this;
-    if (input == null) {
-      return;
-    }
+  const handleBlur = useCallback(() => onBlur && onBlur(), [onBlur]);
 
-    const {focused} = this.props;
+  const handleClear = useCallback(() => {
+    onCancel && onCancel();
 
-    if (focused && !wasFocused) {
-      input.focus();
-    } else if (!focused && wasFocused) {
-      input.blur();
-    }
-  }
-
-  render() {
-    const {
-      value,
-      focused,
-      active,
-      placeholder,
-      polaris: {intl},
-    } = this.props;
-
-    const clearMarkup = value !== '' && (
-      <button
-        type="button"
-        aria-label={intl.translate(
-          'Polaris.TopBar.SearchField.clearButtonLabel',
-        )}
-        className={styles.Clear}
-        onClick={this.handleClear}
-      >
-        <Icon source={CircleCancelMinor} />
-      </button>
-    );
-
-    const className = classNames(
-      styles.SearchField,
-      (focused || active) && styles.focused,
-    );
-
-    return (
-      <div
-        className={className}
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}
-      >
-        <VisuallyHidden>
-          <label htmlFor={this.searchId}>
-            {intl.translate('Polaris.TopBar.SearchField.search')}
-          </label>
-        </VisuallyHidden>
-        <input
-          id={this.searchId}
-          className={styles.Input}
-          placeholder={placeholder}
-          type="search"
-          autoCapitalize="off"
-          autoComplete="off"
-          autoCorrect="off"
-          ref={this.input}
-          value={value}
-          onChange={this.handleChange}
-          onKeyDown={preventDefault}
-        />
-        <span className={styles.Icon}>
-          <Icon source={SearchMinor} />
-        </span>
-
-        {clearMarkup}
-        <div className={styles.Backdrop} />
-      </div>
-    );
-  }
-
-  private handleFocus = () => {
-    const {onFocus} = this.props;
-
-    if (onFocus) {
-      onFocus();
-    }
-  };
-
-  private handleBlur = () => {
-    const {onBlur} = this.props;
-
-    if (onBlur) {
-      onBlur();
-    }
-  };
-
-  private handleClear = () => {
-    const {onCancel = noop, onChange} = this.props;
-    const {
-      input: {current: input},
-    } = this;
-
-    onCancel();
-
-    if (input != null) {
-      input.value = '';
+    if (input.current) {
+      input.current.value = '';
       onChange('');
-      input.focus();
+      input.current.focus();
     }
-  };
+  }, [onCancel, onChange]);
 
-  private handleChange = ({
-    currentTarget,
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    const {onChange} = this.props;
-    onChange(currentTarget.value);
-  };
+  useEffect(() => {
+    if (input.current) {
+      if (focused) {
+        input.current.focus();
+      } else {
+        input.current.blur();
+      }
+    }
+  }, [focused]);
+
+  const clearMarkup = value !== '' && (
+    <button
+      type="button"
+      aria-label={i18n.translate('Polaris.TopBar.SearchField.clearButtonLabel')}
+      className={styles.Clear}
+      onClick={handleClear}
+    >
+      <Icon source={CircleCancelMinor} />
+    </button>
+  );
+
+  const className = classNames(
+    styles.SearchField,
+    (focused || active) && styles.focused,
+  );
+
+  return (
+    <div className={className} onFocus={handleFocus} onBlur={handleBlur}>
+      <VisuallyHidden>
+        <label htmlFor={searchId}>
+          {i18n.translate('Polaris.TopBar.SearchField.search')}
+        </label>
+      </VisuallyHidden>
+      <input
+        id={searchId}
+        className={styles.Input}
+        placeholder={placeholder}
+        type="search"
+        autoCapitalize="off"
+        autoComplete="off"
+        autoCorrect="off"
+        ref={input}
+        value={value}
+        onChange={handleChange}
+        onKeyDown={preventDefault}
+      />
+      <span className={styles.Icon}>
+        <Icon source={SearchMinor} />
+      </span>
+
+      {clearMarkup}
+      <div className={styles.Backdrop} />
+    </div>
+  );
 }
-
-function noop() {}
 
 function preventDefault(event: React.KeyboardEvent<HTMLInputElement>) {
   if (event.key === 'Enter') {
     event.preventDefault();
   }
 }
-
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<SearchFieldProps>()(SearchField);

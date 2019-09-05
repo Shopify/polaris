@@ -1,3 +1,1 @@
-import ScrollLock from './ScrollLock';
-
-export {ScrollLock};
+export {ScrollLock} from './ScrollLock';
