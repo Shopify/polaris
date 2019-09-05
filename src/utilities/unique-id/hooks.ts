@@ -1,8 +1,21 @@
 import {useContext, useRef} from 'react';
 import {UniqueIdFactoryContext} from './context';
 
-export function useUniqueId(prefix = '', override?: string) {
+/**
+ * Returns a unique id that remains consistent across multiple rerenders of the
+ * same hook
+ * @param prefix Defines a prefix for the ID. You probably want to set this to
+ *   the name of the component you're calling `useUniqueId` in.
+ * @param overrideId Defines a fixed value to use instead of generating a unique
+ *   ID. Useful for components that allow consumers to specify a fixed ID.
+ */
+export function useUniqueId(prefix = '', overrideId = '') {
   const idFactory = useContext(UniqueIdFactoryContext);
+
+  // By using a ref to store the uniqueId for each incovation of the hook and
+  // checking that it is not already populated we ensure that we don't generate
+  // a new ID on ever rerender of a component.
+  const uniqueIdRef = useRef<string | null>(null);
 
   if (!idFactory) {
     throw new Error(
@@ -10,17 +23,16 @@ export function useUniqueId(prefix = '', override?: string) {
     );
   }
 
-  // Use a ref to ensure that the returned ID does not increment on every
-  // rerendering of a component
-  // The first time a component is rendered the ref will be empty.
-  // In that case fill it with the next available ID
-  // On subsequent renders we use the existing value instead of using a new id
-  const currentComponentIdRef = useRef<string | null>(null);
-
-  if (!currentComponentIdRef.current) {
-    // If an override was specified, then use that instead of incrementing the ID
-    currentComponentIdRef.current = override || idFactory.nextId(prefix);
+  // If an override was specified, then use that instead of using a unique ID
+  // Hooks can't be called conditionally so this has to go after all use* calls
+  if (overrideId) {
+    return overrideId;
   }
 
-  return currentComponentIdRef.current;
+  // If a unique id has not yet been generated, then get a new one
+  if (!uniqueIdRef.current) {
+    uniqueIdRef.current = idFactory.nextId(prefix);
+  }
+
+  return uniqueIdRef.current;
 }

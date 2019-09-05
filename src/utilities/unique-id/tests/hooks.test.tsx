@@ -130,4 +130,53 @@ describe('useUniqueId', () => {
 
     expect(harness.find(HasProp)!.html()).toStrictEqual('count2 :: polaris-1');
   });
+
+  it('updates the ID if the overridden ID changes', () => {
+    type HasPropProps = {info: string; idOverride?: string};
+    const HasProp = ({info, idOverride}: HasPropProps) => (
+      <React.Fragment>
+        {info} :: {useUniqueId('', idOverride)}
+      </React.Fragment>
+    );
+
+    const ReRenderingTestHarness = () => {
+      const [count, setCount] = React.useState(1);
+      const incrementCount = React.useCallback(
+        () => setCount((count) => count + 1),
+        [],
+      );
+
+      // eslint-disable-next-line shopify/jest/no-if
+      const override = count % 2 === 0 ? `override-${count}` : undefined;
+
+      return (
+        <React.Fragment>
+          <button onClick={incrementCount}>Click Me</button>
+          <HasProp info={`count${count}`} idOverride={override} />
+        </React.Fragment>
+      );
+    };
+
+    const harness = mountWithApp(<ReRenderingTestHarness />);
+
+    // Initially we use an incremental id
+    expect(harness.find(HasProp)!.html()).toStrictEqual('count1 :: polaris-1');
+
+    // But then we set an override id, so it should use that
+    harness.find('button')!.trigger('onClick');
+    expect(harness.find(HasProp)!.html()).toStrictEqual('count2 :: override-2');
+
+    // Then on the next render we don't set an override id, so we should go back
+    // to using the incremental id
+    harness.find('button')!.trigger('onClick');
+    expect(harness.find(HasProp)!.html()).toStrictEqual('count3 :: polaris-1');
+
+    // Back to setting an override id
+    harness.find('button')!.trigger('onClick');
+    expect(harness.find(HasProp)!.html()).toStrictEqual('count4 :: override-4');
+
+    // Back to not setting an override, so back to using the incremental id
+    harness.find('button')!.trigger('onClick');
+    expect(harness.find(HasProp)!.html()).toStrictEqual('count5 :: polaris-1');
+  });
 });
