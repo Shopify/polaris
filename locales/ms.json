@@ -151,7 +151,8 @@
       "Item": {
         "selectItem": "Pilih: {accessibilityLabel}",
         "deselectItem": "Nyahpilih: {accessibilityLabel}",
-        "actionsDropdown": "Juntai bawah tindakan"
+        "actionsDropdown": "Juntai bawah tindakan",
+        "actionsDropdownLabel": "Tindakan untuk {accessibilityLabel}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Tindakan",

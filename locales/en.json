@@ -169,8 +169,7 @@
       "ariaLivePlural": "{itemsLength} items",
 
       "Item": {
-        "selectItem": "Select: {accessibilityLabel}",
-        "deselectItem": "Deselect: {accessibilityLabel}",
+        "actionsDropdownLabel": "Actions for {accessibilityLabel}",
         "actionsDropdown": "Actions dropdown"
       },
 

@@ -151,7 +151,8 @@
       "Item": {
         "selectItem": "Selecionar: {accessibilityLabel}",
         "deselectItem": "Desmarcar: {accessibilityLabel}",
-        "actionsDropdown": "Menu suspenso Ações"
+        "actionsDropdown": "Menu suspenso Ações",
+        "actionsDropdownLabel": "Ações para {accessibilityLabel}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Ações",
