@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed inconsistent padding of sections in `Modal` ([#2072](https://github.com/Shopify/polaris-react/pull/2072))
+
 ### Documentation
 
 ### Development workflow
