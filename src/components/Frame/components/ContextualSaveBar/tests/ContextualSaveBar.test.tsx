@@ -1,7 +1,7 @@
 import React from 'react';
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {act, mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Button, Image} from 'components';
-import ContextualSaveBar from '../ContextualSaveBar';
+import {ContextualSaveBar} from '../ContextualSaveBar';
 import {DiscardConfirmationModal} from '../components';
 
 describe('<ContextualSaveBar />', () => {
@@ -117,7 +117,9 @@ describe('<ContextualSaveBar />', () => {
         const discardConfirmationModal = contextualSaveBar.find(
           DiscardConfirmationModal,
         );
-        trigger(discardConfirmationModal, 'onCancel');
+        act(() => {
+          trigger(discardConfirmationModal, 'onCancel');
+        });
 
         expect(discardConfirmationModal.prop('open')).toBe(false);
       });
@@ -138,7 +140,9 @@ describe('<ContextualSaveBar />', () => {
           DiscardConfirmationModal,
         );
 
-        trigger(discardConfirmationModal, 'onDiscard');
+        act(() => {
+          trigger(discardConfirmationModal, 'onDiscard');
+        });
         expect(discardAction.onAction).toHaveBeenCalled();
       });
 
