@@ -80,6 +80,8 @@ export function Dialog({
 }
 
 const fadeUpClasses = {
+  appear: classNames(styles.animateFadeUp, styles.entering),
+  appearActive: classNames(styles.animateFadeUp, styles.entered),
   enter: classNames(styles.animateFadeUp, styles.entering),
   enterActive: classNames(styles.animateFadeUp, styles.entered),
   exit: classNames(styles.animateFadeUp, styles.exiting),

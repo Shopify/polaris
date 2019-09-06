@@ -56,7 +56,7 @@ export function isElementOfType<P>(
 // filtered by passing `predicate`.
 export function elementChildren<T extends React.ReactElement<{}>>(
   children: React.ReactNode,
-  predicate: ((element: T) => boolean) = () => true,
+  predicate: (element: T) => boolean = () => true,
 ): T[] {
   return React.Children.toArray(children).filter(
     (child) => React.isValidElement(child) && predicate(child as T),

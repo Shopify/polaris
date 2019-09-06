@@ -61,14 +61,13 @@ export function SingleThumb(props: SingleThumbProps) {
     [`${CSS_VAR_PREFIX}output-factor`]: `${outputFactor}`,
   };
 
-  const outputMarkup = !disabled &&
-    output && (
-      <output htmlFor={id} className={styles.Output}>
-        <div className={styles.OutputBubble}>
-          <span className={styles.OutputText}>{clampedValue}</span>
-        </div>
-      </output>
-    );
+  const outputMarkup = !disabled && output && (
+    <output htmlFor={id} className={styles.Output}>
+      <div className={styles.OutputBubble}>
+        <span className={styles.OutputText}>{clampedValue}</span>
+      </div>
+    </output>
+  );
 
   const prefixMarkup = prefix && <div className={styles.Prefix}>{prefix}</div>;
 

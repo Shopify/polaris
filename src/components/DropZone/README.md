@@ -178,9 +178,7 @@ class DropZoneExample extends React.Component {
         <List type="bullet">
           {rejectedFiles.map((file, index) => (
             <List.Item key={index}>
-              {`"${
-                file.name
-              }" is not supported. File type must be .gif, .jpg, .png or .svg.`}
+              {`"${file.name}" is not supported. File type must be .gif, .jpg, .png or .svg.`}
             </List.Item>
           ))}
         </List>

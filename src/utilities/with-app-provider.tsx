@@ -32,7 +32,7 @@ export function withAppProvider<OwnProps>() {
         appBridge: useAppBridge(),
       };
 
-      return <WrappedComponent {...props as any} polaris={polaris} />;
+      return <WrappedComponent {...(props as any)} polaris={polaris} />;
     };
 
     const FinalComponent = hoistStatics(WithProvider, WrappedComponent);
