@@ -151,7 +151,8 @@
       "Item": {
         "selectItem": "选择：{accessibilityLabel}",
         "deselectItem": "取消选择：{accessibilityLabel}",
-        "actionsDropdown": "操作下拉菜单"
+        "actionsDropdown": "操作下拉菜单",
+        "actionsDropdownLabel": "{accessibilityLabel}的操作"
       },
       "BulkActions": {
         "actionsActivatorLabel": "编辑",

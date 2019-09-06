@@ -151,7 +151,8 @@
       "Item": {
         "selectItem": "Selecteer: {accessibilityLabel}",
         "deselectItem": "Selectie opheffen: {accessibilityLabel}",
-        "actionsDropdown": "Vervolgkeuze acties"
+        "actionsDropdown": "Vervolgkeuze acties",
+        "actionsDropdownLabel": "Acties voor {accessibilityLabel}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Acties",

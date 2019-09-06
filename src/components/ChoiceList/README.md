@@ -252,6 +252,18 @@ class ChoiceListExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Single choice list with error for Android](/public_images/components/ChoiceList/android/single-choice-error@2x.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Single choice list with error for iOS](/public_images/components/ChoiceList/ios/single-choice-error@2x.png)
+
+<!-- /content-for -->
+
 ### Multi-choice list
 
 Allows merchants to select multiple options from a list.

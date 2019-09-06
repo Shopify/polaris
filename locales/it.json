@@ -151,7 +151,8 @@
       "Item": {
         "selectItem": "Seleziona: {accessibilityLabel}",
         "deselectItem": "Deseleziona: {accessibilityLabel}",
-        "actionsDropdown": "Menu a tendina delle azioni"
+        "actionsDropdown": "Menu a tendina delle azioni",
+        "actionsDropdownLabel": "Azioni per {accessibilityLabel}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Azioni",

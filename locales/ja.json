@@ -151,7 +151,8 @@
       "Item": {
         "selectItem": "選択: {accessibilityLabel}",
         "deselectItem": "選択解除: {accessibilityLabel}",
-        "actionsDropdown": "アクションドロップダウン"
+        "actionsDropdown": "アクションドロップダウン",
+        "actionsDropdownLabel": "{accessibilityLabel}のアクション"
       },
       "BulkActions": {
         "actionsActivatorLabel": "アクション",

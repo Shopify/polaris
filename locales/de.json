@@ -151,7 +151,8 @@
       "Item": {
         "selectItem": "Auswählen: {accessibilityLabel}",
         "deselectItem": "Auswahl aufheben: {accessibilityLabel}",
-        "actionsDropdown": "Dropdown-Liste mit Aktionen"
+        "actionsDropdown": "Dropdown-Liste mit Aktionen",
+        "actionsDropdownLabel": "Aktionen für {accessibilityLabel}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Aktionen",

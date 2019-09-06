@@ -13,11 +13,16 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Bug fixes
 
 - Fixed animation for Modal when being rendered asynchronously ([#2076](https://github.com/Shopify/polaris-react/pull/2076))
+- Updated `TextField` `min` and `max` type from `number` to `number | string` to allow min/max dates ([#1991](https://github.com/Shopify/polaris-react/pull/1991))
+- Fixed item content from overflowing past the container in `Stack` ([#2071](https://github.com/Shopify/polaris-react/pull/2071))
+- Fixed `Dropzone` hover, disabled and focus states ([#1994](https://github.com/Shopify/polaris-react/pull/1994))
+- Added `name` prop to `ResourceItem` to fix accessibility labels ([#2077](https://github.com/Shopify/polaris-react/pull/2077))
 
 ### Documentation
 
 - Added Android/iOS images for Plain destructive button ([#2081](https://github.com/Shopify/polaris-react/pull/2081))
 - Removed mobile mention from right-aligned text component guidelines ([#2081](https://github.com/Shopify/polaris-react/pull/2081))
+- Added mobile example images error state of Single Choice List ([#2007](https://github.com/Shopify/polaris-react/pull/2007))
 
 ### Development workflow
 
@@ -28,5 +33,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Code quality
 
 - Migrated `ActionMenu.RollupAction`, `Autocomplete`, `Card`, `EmptySearchResult`, `Form`, `SkeletonPage` and `TopBar` to use hooks instead of withAppProvider ([#2065](https://github.com/Shopify/polaris-react/pull/2065))
+- Added `useUniqueId` hook that can be used to get a unique id that remains consistent between rerenders and updated components to use it where appropriate ([#2079](https://github.com/Shopify/polaris-react/pull/2079))
 
 ### Deprecations

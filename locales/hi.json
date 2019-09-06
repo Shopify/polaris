@@ -151,7 +151,8 @@
       "Item": {
         "selectItem": "{accessibilityLabel} चुने:",
         "deselectItem": "{accessibilityLabel} अचयनित करें:",
-        "actionsDropdown": "कार्रवाई ड्रॉपडाउन"
+        "actionsDropdown": "कार्रवाई ड्रॉपडाउन",
+        "actionsDropdownLabel": "{accessibilityLabel} के लिए कार्रवाई"
       },
       "BulkActions": {
         "actionsActivatorLabel": "कार्रवाई",
