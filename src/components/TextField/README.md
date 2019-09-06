@@ -373,9 +373,9 @@ class LabelActionExample extends React.Component {
 }
 ```
 
-<!-- content-for: web -->
-
 ### TextField with right aligned text
+
+<!-- example-for: web -->
 
 Use when input text should be aligned right.
 
@@ -405,8 +405,6 @@ class RightAlignExample extends React.Component {
   }
 }
 ```
-
-<!-- /content-for -->
 
 ### Text field with placeholder text
 
