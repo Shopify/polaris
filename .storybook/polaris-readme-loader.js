@@ -7,55 +7,83 @@ const React = require('react');
 const HOOK_PREFIX = 'use';
 
 /**
- * A Webpack loader, that expects a Polaris README file, and returns metadata,
- * and the examples contained within the readme.
+ * A Webpack loader, that expects a Polaris README file, and returns a JS file
+ * that adheres Storybook's Component Story Format that describes the stories
+ * contained in the readme.
  *
- * The `code` property of the examples are functions that will render a JSX
- * component when called with a scope object that contains React and Polaris's
- * exports. This allows us to inject all Polaris components into the function's
- * scope whilemaintaining the current scope that contains the Babel helper
- * functions. Unfortunatly this is only possible using eval() to
- * generate a function with the correct local scope by dynamically creating
- * a parameters list.
+ * We don't know what Polaris exports are needed by a given component, so we
+ * import all of Polaris (using `import * as Polaris`) then create a component
+ * that has has the individual values in scope using eval (as we're in strict
+ * mode so we can't use `with {}`), so that examples can state `<Button>`
+ * instead of `<Polaris.Button>`.
  */
 module.exports = function loader(source) {
   this.cacheable();
 
   const readme = parseCodeExamples(source);
 
-  // Work around JSON.stringify() not supporting functions.
-  // First replace all code functions within the data with a placeholder string.
-  // This transforms:
-  // { code: function() {/* blah */ } }
-  // into:
-  // { code: "___CODEPLACEHOLDER__0__0___" }
-  const readmeWithPlaceholders = {
-    ...readme,
-    examples: readme.examples.map((example, exampleIdx) => ({
-      ...example,
-      code: `___CODEPLACEHOLDER__${exampleIdx}___`,
-    })),
-  };
+  const testIndividualExamples = ['Modal', 'Card'].includes(readme.name);
 
-  // Then stringify the data, and replace all the placeholder strings with the
-  // with the function declaration.
-  // This transforms:
-  // { code: "___CODEPLACEHOLDER__0__0___" }
-  // back into:
-  // { code: function() {/* blah */ } }
-  const stringyReadme = JSON.stringify(readmeWithPlaceholders, null, 2).replace(
-    /"___CODEPLACEHOLDER__(\d+)___"/g,
-    (_, exampleIdx) => readme.examples[exampleIdx].code.toString(),
+  const csfExports = readme.examples.map((example) => {
+    return `
+const ${example.storyName}Component = codeInvoker(${example.code});
+export function ${example.storyName}() {
+  return <${example.storyName}Component/>;
+}
+${example.storyName}.story = {
+  name: ${JSON.stringify(example.name)},
+  decorators: [withA11y],
+  parameters: {
+    notes: ${JSON.stringify(example.description)},
+    percy: {skip: ${JSON.stringify(testIndividualExamples)}},
+  }
+};
+`.trim();
+  });
+
+  if (!testIndividualExamples) {
+    allExamplesCode = readme.examples.map((example) => {
+      // Add styles to prevent false positives in visual regression testing.
+      // Set a minimum height so that examples don't shift and triger a failure
+      // if an example above them changes height
+      return `
+<div key="${example.storyName}" style={{
+    minHeight: '720px',
+    borderBottom: '1px solid #000',
+    marginBottom: '8px',
+  }}>
+  <Polaris.Heading>${example.name}</Polaris.Heading>
+  <${example.storyName}Component />
+</div>
+`.trim();
+    });
+
+    csfExports.unshift(`export function AllExamples() {
+  return (
+    <React.Fragment>
+  ${allExamplesCode.join('\n')}
+    </React.Fragment>
   );
+};
+AllExamples.story = {
+  decorators: [withA11y],
+  parameters: {
+    percy: {skip: false},
+    chromatic: {disable: true},
+  }
+}`);
+  }
 
   // Example code does not have any scope attached to it by default. It boldly
   // states `<Button>An example Button</Button>`, blindly trusting that `Button`
   // is available in its scope.
   //
   // codeInvoker is responsible for injecting Polaris into the scope for a
-  // function so that it will work. It does this by creating a new function with
-  // all the Polaris exports defined as parameters and then calling that new
-  // function.
+  // function so that it will work.
+  //
+  // Given a function with no parameters, it will create a new function with all
+  // the Polaris exports defined as parameters and then return the result of
+  // calling that new function.
   const codeInvoker = function(fn) {
     const scope = Object.assign({}, Polaris);
 
@@ -77,6 +105,7 @@ module.exports = function loader(source) {
 
   return `
 import React, {${hooks}} from 'react';
+import {withA11y} from '@storybook/addon-a11y';
 import * as Polaris from '@shopify/polaris';
 import {
   PlusMinor,
@@ -135,7 +164,9 @@ import {
 
 const codeInvoker = ${codeInvoker};
 
-export const component = ${stringyReadme};
+export default { title: ${JSON.stringify(`All Components|${readme.name}`)} };
+
+${csfExports.join('\n\n')}
 `;
 };
 
@@ -146,6 +177,12 @@ function stripCodeBlock(block) {
     .replace(/```jsx/, '')
     .replace('```', '')
     .trim();
+}
+
+function pascalCase(str) {
+  return (str.match(/[a-zA-Z0-9]+/g) || '')
+    .map((m) => m[0].toLocaleUpperCase() + m.slice(1))
+    .join('');
 }
 
 function isExampleForPlatform(exampleMarkdown, platform) {
@@ -172,9 +209,7 @@ function generateExamples(matter) {
   if (matter.data.platforms && !matter.data.platforms.includes('web')) {
     const ignoredPlatforms = matter.data.platforms.join(',');
     console.log(
-      chalk`ℹ️  {grey [${
-        matter.data.name
-      }] Component examples are ignored (platforms: ${ignoredPlatforms})}`,
+      chalk`ℹ️  {grey [${matter.data.name}] Component examples are ignored (platforms: ${ignoredPlatforms})}`,
     );
 
     return [];
@@ -182,9 +217,7 @@ function generateExamples(matter) {
 
   if (matter.data.hidePlayground) {
     console.log(
-      chalk`ℹ️  {grey [${
-        matter.data.name
-      }] Component examples are ignored (hidePlayground: true)}`,
+      chalk`ℹ️  {grey [${matter.data.name}] Component examples are ignored (hidePlayground: true)}`,
     );
 
     return [];
@@ -205,9 +238,7 @@ function generateExamples(matter) {
 
   if (allExamples.length === 0) {
     console.log(
-      chalk`🚨 {red [${
-        matter.data.name
-      }]} No examples found. For troubleshooting advice see https://github.com/Shopify/polaris-react/blob/master/documentation/Component%20READMEs.md#troubleshooting`,
+      chalk`🚨 {red [${matter.data.name}]} No examples found. For troubleshooting advice see https://github.com/Shopify/polaris-react/blob/master/documentation/Component%20READMEs.md#troubleshooting`,
     );
   }
 
@@ -221,6 +252,7 @@ function generateExamples(matter) {
       const codeBlock = example.match(codeRegex);
 
       const name = nameMatches !== null ? nameMatches[0].trim() : '';
+      const storyName = pascalCase(name);
       const code =
         codeBlock !== null ? wrapExample(stripCodeBlock(codeBlock[0])) : '';
 
@@ -234,7 +266,7 @@ function generateExamples(matter) {
         ).trim(),
       );
 
-      return {name, code, description};
+      return {name, storyName, code, description};
     });
 
   if (examples.filter((example) => example.code).length === 0) {
@@ -246,9 +278,7 @@ function generateExamples(matter) {
   examples.forEach((example) => {
     if (example.code === '') {
       console.log(
-        chalk`🚨 {red [${matter.data.name}]} Example “${
-          example.name
-        }” is missing a React example`,
+        chalk`🚨 {red [${matter.data.name}]} Example “${example.name}” is missing a React example`,
       );
     }
   });
@@ -283,37 +313,34 @@ function filterMarkdownForPlatform(markdown, platform) {
   );
 }
 
+/**
+ * Wraps example code in a function so that it can be passed to codeInvoker to get
+ * the full Polaris scope.
+ *
+ * Returns a string that is a parsable function that retuns a React Component
+ * If the example is a function or class then we return that function or class.
+ * If the example is plain JSX then return a function component that renders
+ * that JSX .
+ */
 function wrapExample(code) {
   const classPattern = /class (\w+) extends React.Component/g;
   const functionPattern = /^function (\w+)/g;
   const fullComponentDefinitionMatch =
     classPattern.exec(code) || functionPattern.exec(code);
 
-  let wrappedCode = '';
-
   if (fullComponentDefinitionMatch) {
-    wrappedCode = `${code}
-return ${fullComponentDefinitionMatch[1]};
-`;
+    return `function() {
+    ${code}
+    return ${fullComponentDefinitionMatch[1]};
+  }`;
   } else {
-    wrappedCode = `return function() {
+    return `function() {
+    function JsxOnlyExample() {
       return (
         ${code}
       );
-    }`;
-  }
-
-  // The eagle-eyed amongst you will spot that the function passed to
-  // codeInvoker has no arguments. This is because the codeInvoker function
-  // shall dynamically modify the given function, adding items from the current
-  // scope as arguments. We can't do this with some kind of placeholder value
-  // (e.g. codeInvoker(function(PLACEHOLDER) {}, scope) and then replace the
-  // PLACEHOLDER because its name will get mangled as part of minification in
-  // production mode and thus searching for "PLACEHOLDER in the function's
-  // string representation shall fail.
-  return `function () {
-    return codeInvoker(function () {
-      ${wrappedCode}
-    });
+    }
+    return JsxOnlyExample;
   }`;
+  }
 }
