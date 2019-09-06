@@ -375,6 +375,8 @@ class LabelActionExample extends React.Component {
 
 ### TextField with right aligned text
 
+<!-- example-for: web -->
+
 Use when input text should be aligned right.
 
 ```jsx
