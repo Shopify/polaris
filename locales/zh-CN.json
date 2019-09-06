@@ -149,10 +149,8 @@
       "ariaLiveSingular": "{itemsLength} 件产品",
       "ariaLivePlural": "{itemsLength} 件产品",
       "Item": {
-        "selectItem": "选择：{accessibilityLabel}",
-        "deselectItem": "取消选择：{accessibilityLabel}",
-        "actionsDropdown": "操作下拉菜单",
-        "actionsDropdownLabel": "{accessibilityLabel}的操作"
+        "actionsDropdownLabel": "{accessibilityLabel}的操作",
+        "actionsDropdown": "操作下拉菜单"
       },
       "BulkActions": {
         "actionsActivatorLabel": "编辑",
