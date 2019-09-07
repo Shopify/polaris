@@ -27,6 +27,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Migrated `Frame` to use hooks instead of `withAppProvider` ([#2096](https://github.com/Shopify/polaris-react/pull/2096))
+
 ### Deprecations
 
 ### Development workflow
