@@ -78,6 +78,14 @@ describe('<Pagination />', () => {
     });
   });
 
+  describe('label', () => {
+    it('renders as text', () => {
+      const label = 'test';
+      const pagination = mountWithAppProvider(<Pagination label={label} />);
+      expect(pagination.text()).toContain(label);
+    });
+  });
+
   it('adds a keypress event for nextKeys', () => {
     const spy = jest.fn();
     mountWithAppProvider(

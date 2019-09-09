@@ -8,6 +8,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
 // This is the adjustment needed to get the icon to appear flush with other
 // content around it.
 $plain-horizontal-adjustment: spacing(tight);
+$labelMinWidth: rem(80px);
 
 $stacking-order: (
   item: 10,
@@ -108,6 +109,7 @@ $stacking-order: (
   );
   border: border(dark);
   border-radius: border-radius();
+
   line-height: 1;
   color: color('ink');
   text-align: center;
@@ -165,4 +167,11 @@ $stacking-order: (
   margin-left: -1px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.Label {
+  min-width: $labelMinWidth;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
