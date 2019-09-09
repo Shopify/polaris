@@ -111,7 +111,7 @@ Titles should be:
 - Concise and scannable:
   - Use simple, clear language that can be read at a glance
   - Keep headings to single sentence and avoid using punctuation such as periods, commas, or semicolons
-  - Avoid articles (the, a, an) in [microcopy headings](/content/grammar-and-mechanics#section-headings-and-subheadings) to keep content short and actionable
+  - Avoid articles (the, a, an) in [microcopy headings](/content/actionable-language#section-headings-and-subheadings) to keep content short and actionable
   - Written in sentence case (first word capitalized, the rest is lowercase)
 
 <!-- usagelist -->
