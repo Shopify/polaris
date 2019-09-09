@@ -38,7 +38,15 @@ export interface AutocompleteProps {
   onLoadMoreResults?(): void;
 }
 
-export function Autocomplete({
+// TypeScript can't generate types that correctly infer the typing of
+// subcomponents so explicitly state the subcomponents in the type definition.
+// Letting this be implicit works in this project but fails in projects that use
+// generated *.d.ts files.
+
+export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
+  ComboBox: typeof ComboBox;
+  TextField: typeof TextField;
+} = function Autocomplete({
   id,
   options,
   selected,
@@ -86,7 +94,7 @@ export function Autocomplete({
       emptyState={emptyState}
     />
   );
-}
+};
 
-Autocomplete.TextField = TextField;
 Autocomplete.ComboBox = ComboBox;
+Autocomplete.TextField = TextField;
