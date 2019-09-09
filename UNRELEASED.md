@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Worked around issue where TypeScript will not generate correct types for functional components that have subcomponents ([#2111](https://github.com/Shopify/polaris-react/pull/2111))
+
 ### Documentation
 
 ### Development workflow
