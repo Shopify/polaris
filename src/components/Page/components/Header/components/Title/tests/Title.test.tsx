@@ -13,6 +13,11 @@ describe('<Title />', () => {
       const pageTitle = mountWithAppProvider(<Title {...mockProps} />);
       expect(pageTitle.find(DisplayText).text()).toBe(mockProps.title);
     });
+
+    it('does not render a title when not defined', () => {
+      const pageTitle = mountWithAppProvider(<Title />);
+      expect(pageTitle.find(DisplayText).exists()).toBe(false);
+    });
   });
 
   describe('subtitle', () => {
