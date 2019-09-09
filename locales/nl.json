@@ -149,10 +149,8 @@
       "ariaLiveSingular": "{itemsLength} artikel",
       "ariaLivePlural": "{itemsLength} artikelen",
       "Item": {
-        "selectItem": "Selecteer: {accessibilityLabel}",
-        "deselectItem": "Selectie opheffen: {accessibilityLabel}",
-        "actionsDropdown": "Vervolgkeuze acties",
-        "actionsDropdownLabel": "Acties voor {accessibilityLabel}"
+        "actionsDropdownLabel": "Acties voor {accessibilityLabel}",
+        "actionsDropdown": "Vervolgkeuze acties"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Acties",
