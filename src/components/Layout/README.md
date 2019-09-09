@@ -32,37 +32,17 @@ The layout component should:
 - Group similar concepts and actions together in cards
 - Separate different cards using a full-width divider
 - Structure primary/secondary, two-column layouts so the primary ⅔ section is used for main information and the secondary ⅓ section is used for information that might not be used as often but remains helpful for context or secondary tasks
-- Use equal-width layouts with two or more colums when each layout section has the same importance
+- Use equal-width layouts with two or more columns when each layout section has the same importance
 
 ---
 
 ## Content guidelines
 
-The content from the layout component comes from cards and annotated sections.
+The content from the layout component comes from cards and annotated sections. Content included in cards should follow the [content guidelines]() for cards.
 
-### Heading
+### Title
 
-Headings should be:
-
-- Informative and descriptive
-  - They should label the type of content grouped in the card
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep to a single sentence and avoid using punctuation such as periods, commas, or semicolons
-  - Avoid articles (the, a, an) in [microcopy headings](/content/grammar-and-mechanics#headings-and-subheadings) to keep content short and actionable
-  - Write in sentence case (first word capitalized, the rest is lowercase)
-
-<!-- usagelist -->
-
-#### Do
-
-- Online store dashboard
-
-#### Don’t
-
-- This is your online store dashboard
-
-<!-- end -->
+Headings should follow the general [content guidelines](/content/actionable-language#section-headings-and-subheadings) for headings and subheadings.
 
 ### Body content
 
