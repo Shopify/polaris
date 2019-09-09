@@ -33,7 +33,7 @@ The toast component is a non-disruptive message that appears at the bottom of th
 
 ## Required components
 
-The toast component must be wrapped in the [frame](/components/structure/frame) component or used in an embedded application.
+The toast component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component or used in an embedded application.
 
 ---
 
@@ -336,7 +336,7 @@ Use default toast for informative and neutral feedback.
 
 <!-- content-for: android -->
 
-![Default toast with neutral color](/public_images/components/Toast/android/default@2x.png)
+![Default toast with neutral color](https://polaris.shopify.com/public_images/components/Toast/android/default@2x.png)
 
 <!-- /content-for -->
 
@@ -344,7 +344,7 @@ Use default toast for informative and neutral feedback.
 
 On iOS, icons are available for cases where you want to re-inforce the message.
 
-![Default toast with neutral color](/public_images/components/Toast/ios/default@2x.png)
+![Default toast with neutral color](https://polaris.shopify.com/public_images/components/Toast/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -356,7 +356,7 @@ Use success toast to indicate that something was successful. For example, a prod
 
 <!-- content-for: android -->
 
-![Success toast](/public_images/components/Toast/android/success@2x.png)
+![Success toast](https://polaris.shopify.com/public_images/components/Toast/android/success@2x.png)
 
 <!-- /content-for -->
 
@@ -364,7 +364,7 @@ Use success toast to indicate that something was successful. For example, a prod
 
 On iOS, icons are available for cases where you want to re-inforce the message.
 
-![Success toast](/public_images/components/Toast/ios/success@2x.png)
+![Success toast](https://polaris.shopify.com/public_images/components/Toast/ios/success@2x.png)
 
 <!-- /content-for -->
 
@@ -372,7 +372,7 @@ On iOS, icons are available for cases where you want to re-inforce the message.
 
 <!-- example-for: android, ios, web -->
 
-Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](/patterns/error-messages).
+Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](https://polaris.shopify.com/patterns/error-messages).
 
 <!-- content-for: web -->
 
@@ -410,7 +410,7 @@ class ToastExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Error toast](/public_images/components/Toast/android/error@2x.png)
+![Error toast](https://polaris.shopify.com/public_images/components/Toast/android/error@2x.png)
 
 <!-- /content-for -->
 
@@ -418,7 +418,7 @@ class ToastExample extends React.Component {
 
 On iOS, icons are available for cases where you want to re-inforce the message.
 
-![Error toast](/public_images/components/Toast/ios/error@2x.png)
+![Error toast](https://polaris.shopify.com/public_images/components/Toast/ios/error@2x.png)
 
 <!-- /content-for -->
 
@@ -430,13 +430,13 @@ Use action when merchants have the ability to act on the message. For example, t
 
 <!-- content-for: android -->
 
-![Default toast with action to undo](/public_images/components/Toast/android/default-action@2x.png)
+![Default toast with action to undo](https://polaris.shopify.com/public_images/components/Toast/android/default-action@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default toast with action to undo](/public_images/components/Toast/ios/default-action@2x.png)
+![Default toast with action to undo](https://polaris.shopify.com/public_images/components/Toast/ios/default-action@2x.png)
 
 <!-- /content-for -->
 
@@ -444,8 +444,8 @@ Use action when merchants have the ability to act on the message. For example, t
 
 ## Related component
 
-- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](/components/popover)
-- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](/components/feedback-indicators/banner)
+- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/popover)
+- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
 
 ---
 

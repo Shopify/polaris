@@ -44,7 +44,7 @@ Avatars should be one of 3 sizes:
 
 ## Content guidelines
 
-Any time you use an image to communicate a concept on Shopify, it’s important to use descriptive [alt text](/content/alternative-text). Doing this is important for [accessibility](/patterns-and-guides/accessibility) because it allows screen readers to describe what’s in the image to people who may not be able to see it.
+Any time you use an image to communicate a concept on Shopify, it’s important to use descriptive [alt text](https://polaris.shopify.com/content/alternative-text). Doing this is important for [accessibility](https://polaris.shopify.com/patterns-and-guides/accessibility) because it allows screen readers to describe what’s in the image to people who may not be able to see it.
 
 For avatars, we recommend using a format that describes what will show in the
 image:
@@ -67,13 +67,13 @@ Use to present an avatar for a merchant, customer, or business.
 
 <!-- content-for: android -->
 
-![Default avatar](/public_images/components/Avatar/android/default@2x.png)
+![Default avatar](https://polaris.shopify.com/public_images/components/Avatar/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default avatar](/public_images/components/Avatar/ios/default@2x.png)
+![Default avatar](https://polaris.shopify.com/public_images/components/Avatar/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -81,7 +81,7 @@ Use to present an avatar for a merchant, customer, or business.
 
 ## Related components
 
-- To show a thumbnail for an object rather than a person or business, [use the thumbnail component](/components/images-and-icons/thumbnail)
+- To show a thumbnail for an object rather than a person or business, [use the thumbnail component](https://polaris.shopify.com/components/images-and-icons/thumbnail)
 
 ---
 
