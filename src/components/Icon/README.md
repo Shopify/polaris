@@ -73,7 +73,7 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 
 - Pair text and icons for clarity
 - Give the icon a text equivalent if its purpose isn’t conveyed in another way
-- Review our [alternative text](/content/alternative-text) guidelines to make sure your use of icon works for all merchants
+- Review our [alternative text](https://polaris.shopify.com/content/alternative-text) guidelines to make sure your use of icon works for all merchants
 
 ```jsx
 <Icon source={OrdersMajorTwotone} />
@@ -105,6 +105,6 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 
 - To learn about implementing Polaris icons with [Polaris React](https://github.com/Shopify/polaris-react) in your projects, see the [`@shopify/polaris-icons` documentation](https://github.com/Shopify/polaris-icons/tree/master/packages/polaris-icons)
 
-- To learn about the best practices for designing and using icons in your projects, see the [icon design guidelines](/design/icons)
+- To learn about the best practices for designing and using icons in your projects, see the [icon design guidelines](https://polaris.shopify.com/design/icons)
 
-- To learn how to name icons, see the [icon naming guidelines](/content/naming#section-icons)
+- To learn how to name icons, see the [icon naming guidelines](https://polaris.shopify.com/content/naming#section-icons)

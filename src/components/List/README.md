@@ -95,13 +95,13 @@ Use for a text-only list of related items that don’t need to be in a specific 
 
 <!-- content-for: android -->
 
-![Bulleted list on Android](/public_images/components/List/android/bullets@2x.png)
+![Bulleted list on Android](https://polaris.shopify.com/public_images/components/List/android/bullets@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Bulleted list on iOS](/public_images/components/List/ios/bullets@2x.png)
+![Bulleted list on iOS](https://polaris.shopify.com/public_images/components/List/ios/bullets@2x.png)
 
 <!-- /content-for -->
 
@@ -119,13 +119,13 @@ Use for a text-only list of related items when an inherent order, priority, or s
 
 <!-- content-for: android -->
 
-![Numbered list on Android](/public_images/components/List/android/numbered@2x.png)
+![Numbered list on Android](https://polaris.shopify.com/public_images/components/List/android/numbered@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Numbered list on iOS](/public_images/components/List/ios/numbered@2x.png)
+![Numbered list on iOS](https://polaris.shopify.com/public_images/components/List/ios/numbered@2x.png)
 
 <!-- /content-for -->
 
@@ -133,9 +133,9 @@ Use for a text-only list of related items when an inherent order, priority, or s
 
 ## Related components
 
-- To create a list of checkboxes or radio buttons, [use the choice list component](/components/forms/choice-list)
-- To present a collection of objects of the same type such as customers, products, or orders, [use the resource list component](/components/lists-and-tables/resource-list)
-- When text labels for each item are useful for describing the content, [use the Description List component](/components/lists-and-tables/description-list)
+- To create a list of checkboxes or radio buttons, [use the choice list component](https://polaris.shopify.com/components/forms/choice-list)
+- To present a collection of objects of the same type such as customers, products, or orders, [use the resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list)
+- When text labels for each item are useful for describing the content, [use the Description List component](https://polaris.shopify.com/components/lists-and-tables/description-list)
 
 ---
 
@@ -163,6 +163,6 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 The list component outputs list items (`<li>`) inside a list wrapper (`<ul>` for bullet lists or `<ol>` for numbered lists). By default, list items are conveyed as a group of related elements to assistive technology users.
 
-To group items for layout only, consider using the [stack component](/components/structure/stack).
+To group items for layout only, consider using the [stack component](https://polaris.shopify.com/components/structure/stack).
 
 <!-- /content-for -->

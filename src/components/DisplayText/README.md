@@ -80,13 +80,13 @@ Use this size sparingly and never multiple times on the same page.
 
 <!-- content-for: android -->
 
-![Extra large display text](/public_images/components/DisplayText/android/extra-large@2x.png)
+![Extra large display text](https://polaris.shopify.com/public_images/components/DisplayText/android/extra-large@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Extra large display text](/public_images/components/DisplayText/ios/extra-large@2x.png)
+![Extra large display text](https://polaris.shopify.com/public_images/components/DisplayText/ios/extra-large@2x.png)
 
 <!-- /content-for -->
 
@@ -110,13 +110,13 @@ Use for display text that’s more important than the small size, but less impor
 
 <!-- content-for: android -->
 
-![Medium and large display text](/public_images/components/DisplayText/android/medium-large@2x.png)
+![Medium and large display text](https://polaris.shopify.com/public_images/components/DisplayText/android/medium-large@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Medium and large display text](/public_images/components/DisplayText/ios/medium-large@2x.png)
+![Medium and large display text](https://polaris.shopify.com/public_images/components/DisplayText/ios/medium-large@2x.png)
 
 <!-- /content-for -->
 
@@ -166,7 +166,7 @@ Use display text to create visual interest along with a meaningful heading struc
 
 #### Don’t
 
-Use display text in place of standard headings. Use the [heading component](/components/titles-and-text/heading) and [subheading component](/components/titles-and-text/subheading) to provide structure.
+Use display text in place of standard headings. Use the [heading component](https://polaris.shopify.com/components/titles-and-text/heading) and [subheading component](https://polaris.shopify.com/components/titles-and-text/subheading) to provide structure.
 
 <!-- end -->
 

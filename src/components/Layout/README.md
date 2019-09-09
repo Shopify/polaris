@@ -49,7 +49,7 @@ Headings should be:
 - Concise and scannable:
   - Use simple, clear language that can be read at a glance
   - Keep to a single sentence and avoid using punctuation such as periods, commas, or semicolons
-  - Avoid articles (the, a, an) in [microcopy headings](/content/actionable-language#headings-and-subheadings) to keep content short and actionable
+  - Avoid articles (the, a, an) in [microcopy headings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings) to keep content short and actionable
   - Write in sentence case (first word capitalized, the rest is lowercase)
 
 <!-- usagelist -->
@@ -545,6 +545,6 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 
 ## Related components
 
-- To visually group content in a layout section, [use the card component](/components/structure/card)
-- To lay out a set of smaller components in a row, [use the stack component](/components/structure/stack)
-- To lay out form fields, [use the form layout component](/components/forms/form-layout)
+- To visually group content in a layout section, [use the card component](https://polaris.shopify.com/components/structure/card)
+- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/structure/stack)
+- To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/forms/form-layout)

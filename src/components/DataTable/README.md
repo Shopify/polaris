@@ -392,7 +392,7 @@ Keep decimals consistent. For example, don’t use 3 decimals in one row and 2 i
 
 ## Related components
 
-- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](/components/lists-and-tables/resource-list).
+- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list).
 
 ---
 
@@ -432,7 +432,7 @@ Use tables for tabular data.
 
 #### Don’t
 
-Use tables for layout. For a table-like layout that doesn’t use table HTML elements, use the [resource list component](/components/lists-and-tables/resource-list).
+Use tables for layout. For a table-like layout that doesn’t use table HTML elements, use the [resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list).
 
 <!-- end -->
 

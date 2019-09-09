@@ -131,13 +131,13 @@ Use when you need to present merchants with a list of items or terms alongside d
 
 <!-- content-for: android -->
 
-![Description list for Android](/public_images/components/DescriptionList/android/default@2x.png)
+![Description list for Android](https://polaris.shopify.com/public_images/components/DescriptionList/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Description list for iOS](/public_images/components/DescriptionList/ios/default@2x.png)
+![Description list for iOS](https://polaris.shopify.com/public_images/components/DescriptionList/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -145,7 +145,7 @@ Use when you need to present merchants with a list of items or terms alongside d
 
 ## Related components
 
-- To create a list of actions or navigation, [use the action list component](/components/actions/action-list).
+- To create a list of actions or navigation, [use the action list component](https://polaris.shopify.com/components/actions/action-list).
 
 ---
 
