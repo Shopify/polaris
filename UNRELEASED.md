@@ -10,6 +10,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Adjusted search results overlay to take up 100% height of the screen on small screens and to match the width of the search bar on large screens.
+
 ### Bug fixes
 
 - Fixed inconsistent padding of sections in `Modal` ([#2072](https://github.com/Shopify/polaris-react/pull/2072))
