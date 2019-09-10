@@ -41,15 +41,10 @@ describe('<Frame />', () => {
   });
 
   it('renders a TrapFocus with a `trapping` prop set to true around the navigation on small screens and showMobileNavigation is true', () => {
-    Object.defineProperty(window, 'innerWidth', {
-      configurable: true,
-      writable: true,
-      value: 500,
-    });
-
     const navigation = <div />;
     const frame = mountWithAppProvider(
       <Frame showMobileNavigation navigation={navigation} />,
+      {mediaQuery: {isNavigationCollapsed: true}},
     ).find(Frame);
 
     const trapFocus = frame.find(TrapFocus);
@@ -59,16 +54,10 @@ describe('<Frame />', () => {
   });
 
   it('renders a TrapFocus with a `trapping` prop set to false prop around the navigation on small screens and showMobileNavigation is false', () => {
-    Object.defineProperty(window, 'innerWidth', {
-      configurable: true,
-      writable: true,
-      value: 500,
-    });
-
     const navigation = <div />;
-    const frame = mountWithAppProvider(<Frame navigation={navigation} />).find(
-      Frame,
-    );
+    const frame = mountWithAppProvider(<Frame navigation={navigation} />, {
+      mediaQuery: {isNavigationCollapsed: false},
+    }).find(Frame);
 
     const trapFocus = frame.find(TrapFocus);
     expect(trapFocus.exists()).toBe(true);
@@ -86,15 +75,10 @@ describe('<Frame />', () => {
   });
 
   it('renders a CSSTransition around the navigation with `appear` and `exit` set to true on small screen', () => {
-    Object.defineProperty(window, 'innerWidth', {
-      configurable: true,
-      writable: true,
-      value: 500,
-    });
-
     const navigation = <div />;
     const cssTransition = mountWithAppProvider(
       <Frame showMobileNavigation navigation={navigation} />,
+      {mediaQuery: {isNavigationCollapsed: true}},
     )
       .find(TrapFocus)
       .find(CSSTransition);

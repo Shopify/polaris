@@ -1,6 +1,7 @@
 import React from 'react';
 import {Theme} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
+import {MediaQueryProvider} from '../MediaQueryProvider';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
 import {
   ScrollLockManager,
@@ -104,7 +105,9 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
             <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
               <AppBridgeContext.Provider value={appBridge}>
                 <LinkContext.Provider value={link}>
-                  <ThemeProvider theme={theme}>{children}</ThemeProvider>
+                  <ThemeProvider theme={theme}>
+                    <MediaQueryProvider>{children}</MediaQueryProvider>
+                  </ThemeProvider>
                 </LinkContext.Provider>
               </AppBridgeContext.Provider>
             </UniqueIdFactoryContext.Provider>

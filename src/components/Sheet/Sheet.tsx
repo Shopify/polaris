@@ -1,10 +1,9 @@
-import React, {useCallback, useEffect, useState, useRef} from 'react';
+import React, {useCallback, useRef} from 'react';
 
 import {CSSTransition} from '@material-ui/react-transition-group';
-import debounce from 'lodash/debounce';
+import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
 
-import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Key} from '../../types';
 import {layer, overlay, Duration} from '../shared';
 
@@ -12,7 +11,6 @@ import {Backdrop} from '../Backdrop';
 import {TrapFocus} from '../TrapFocus';
 import {Portal} from '../Portal';
 import {KeypressListener} from '../KeypressListener';
-import {EventListener} from '../EventListener';
 
 import styles from './Sheet.scss';
 
@@ -50,36 +48,20 @@ export function Sheet({
   onEntered,
   onExit,
 }: SheetProps) {
+  const {isNavigationCollapsed} = useMediaQuery();
   const container = useRef<HTMLDivElement>(null);
-  const [mobile, setMobile] = useState(false);
 
   const findDOMNode = useCallback(() => {
     return container.current;
-  }, []);
-
-  const handleResize = useCallback(
-    debounce(
-      () => {
-        if (mobile !== isMobile()) {
-          handleToggleMobile();
-        }
-      },
-      40,
-      {leading: true, trailing: true, maxWait: 40},
-    ),
-    [mobile],
-  );
-
-  useEffect(() => {
-    handleResize();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Portal idPrefix="sheet">
       <CSSTransition
         findDOMNode={findDOMNode}
-        classNames={mobile ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES}
+        classNames={
+          isNavigationCollapsed ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES
+        }
         timeout={Duration.Slow}
         in={open}
         mountOnEnter
@@ -101,16 +83,7 @@ export function Sheet({
         </div>
       </CSSTransition>
       <KeypressListener keyCode={Key.Escape} handler={onClose} />
-      <EventListener event="resize" handler={handleResize} />
       {open && <Backdrop transparent onClick={onClose} />}
     </Portal>
   );
-
-  function handleToggleMobile() {
-    setMobile((mobile) => !mobile);
-  }
-}
-
-function isMobile(): boolean {
-  return navigationBarCollapsed().matches;
 }
