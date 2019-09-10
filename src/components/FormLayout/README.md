@@ -54,26 +54,7 @@ Forms should:
 
 ### Form section title
 
-Section titles should be:
-
-- Informative and descriptive: they should label the type of content grouped in the section
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep section titles to 1 or 2 words and avoid using punctuation such as periods, commas, or semicolons
-  - Avoid articles (the, a, an) to keep content short and actionable
-- Be written in sentence case
-
-<!-- usagelist -->
-
-#### Do
-
-- Business details
-
-#### Don’t
-
-- Enter details about your business
-
-<!-- end -->
+Form section titles should follow the [content guidelines](/content/actionable-language#section-headings-and-subheadings) for headings and subheadings.
 
 ### Field label
 

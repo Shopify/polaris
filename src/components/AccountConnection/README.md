@@ -41,10 +41,10 @@ The account component should:
 
 ## Content guidelines
 
-### Heading
+### Title
 
-The account connection heading should state the name of the platform or service
-merchants will connect to, followed by the word “account”.
+The account connection title should be the name of the platform or service that
+merchants can connect to, followed by the word “account”. Write account connection titles in sentence case (capitalize the first word and proper nouns only).
 
 #### For example:
 
@@ -56,27 +56,13 @@ merchants will connect to, followed by the word “account”.
 
 #### Do
 
-Facebook account
+- Facebook account
+- Instagram account
 
 #### Don’t
 
-Connect your Account
-
-<!-- end -->
-
-Headings should be written in sentence case.
-
-<!-- usagelist -->
-
-#### Do
-
-Instagram account
-
-#### Don’t
-
-Instagram Account
-
-<!-- end -->
+- Connect your Account
+- Instagram Account
 
 ### Terms and conditions
 

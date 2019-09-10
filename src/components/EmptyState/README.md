@@ -54,15 +54,9 @@ Empty states should:
 
 ### Title
 
-- Descriptive: help merchants understand the feature or product related to the
-  empty state
-- Concise and scannable:
-  - Use simple, clear language that can be read at-a-glance
-  - Keep titles to single sentence and avoid using punctuation such as periods,
-    commas, or semicolons
-  - Written in sentence case (the first word capitalized, the rest lowercase)
-  - Action-oriented: encourage merchants to take the step required to
-    activate the product or feature
+Empty state titles should:
+
+- Be action-oriented: encourage merchants to take the step required to activate the product or feature
 
 <!-- usagelist -->
 
@@ -75,6 +69,8 @@ Empty states should:
 - Orders and invoices
 
 <!-- end -->
+
+- Follow the [content guidelines](/content/actionable-language#section-headings-and-subheadings) for headings and subheadings
 
 ### Subtitle
 

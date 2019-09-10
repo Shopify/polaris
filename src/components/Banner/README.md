@@ -61,53 +61,11 @@ Banners should:
 
 ## Content guidelines
 
-### Headings
+To learn about writing helpful and accessible error message text, see the guidelines for [error messages](/patterns-and-guides/error-messages).
 
-Banner headings should be:
+### Title
 
-- Descriptive: help merchants understand what they’ll find in the card.
-  - Communicate when a situation is serious enough to warrant using a critical or
-    warning banner. People who are unable to see the color of the banner need to
-    clearly understand the importance of the situation without the benefit of
-    seeing the color of the banner. Learn more about [accessibility](/patterns-and-guides/accessibility).
-
-<!-- usagelist -->
-
-#### Do
-
-You’ve received a chargeback
-
-#### Don’t
-
-Have a look at this
-
-<!-- end -->
-
-- Concise and scannable:
-
-  - Use simple, clear language that can be read at a glance
-  - Keep headings to a single sentence and avoid using punctuation such as
-    periods, commas, or semicolons
-  - Where possible, avoid articles (the, a, an) to keep content short and
-    actionable
-  - Avoid unnecessary terms, for example don’t use “successfully” in banners that confirm an action
-
-- Informative:
-  - Label the type of information in the body content
-  - Sentence case: capitalize only the first word in the heading and proper
-    nouns
-
-<!-- usagelist -->
-
-#### Do
-
-Online store is password protected
-
-#### Don’t
-
-Your Online Store is now Password Protected
-
-<!-- end -->
+Banner titles should the [content guidelines](/content/actionable-language#section-headings-and-subheadings) for headings and subheadings.
 
 ### Body content
 
