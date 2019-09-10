@@ -61,7 +61,7 @@
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
     "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static",
-    "observer": "babel-node --extensions '.tsx' ./scripts/observer/index.tsx"
+    "observer": "babel-node --extensions '.tsx, .ts' ./scripts/observer/index.tsx"
   },
   "stylelint": {
     "extends": [

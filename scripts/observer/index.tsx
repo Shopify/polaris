@@ -1,7 +1,5 @@
 import React from 'react';
-import tinycolor from 'tinycolor2';
-import tokens from '@shopify/polaris-tokens';
-import {Box, Text, render, Color} from 'ink';
+import {Box, Text, Color, render} from 'ink';
 
 const data = [
   {
@@ -50,7 +48,7 @@ const Component = ({path, filename, componentsAffected}) => (
         <Text bold>{filename}</Text>
       </Text>
     </Box>
-    <Box marginLeft={4}>Affected files:</Box>
+    <Box marginLeft={4}>Affected files: {componentsAffected.length}</Box>
     {componentsAffected.map(({path, filename}) => (
       <Box marginLeft={4} key={path + filename}>
         <Text>
