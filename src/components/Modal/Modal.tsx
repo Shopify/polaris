@@ -283,10 +283,12 @@ class Modal extends React.Component<CombinedProps, State> {
         />
       );
 
+      const labelledBy = title ? this.headerId : undefined;
+
       dialog = (
         <Dialog
           instant={instant}
-          labelledBy={this.headerId}
+          labelledBy={labelledBy}
           onClose={onClose}
           onEntered={this.handleEntered}
           onExited={this.handleExited}
