@@ -53,7 +53,7 @@ Cards should:
 
 ### Title
 
-Card titles should follow the [content guidelines](/content/actionable-language#section-headings-and-subheadings) for headings and subheadings.
+Card titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 

@@ -38,11 +38,15 @@ The layout component should:
 
 ## Content guidelines
 
-The content from the layout component comes from cards and annotated sections. Content from cards should follow the [content guidelines](https://polaris.shopify.com/components/structure/card#section-content-guidelines) for cards.
+The content that appears in the layout component comes from cards and annotated sections.
+
+### Cards
+
+Content from cards should follow the content guidelines for [cards](https://polaris.shopify.com/components/structure/card#section-content-guidelines).
 
 ### Annotated section titles
 
-Annotated section titles should follow the [content guidelines](/content/actionable-language#section-headings-and-subheadings) for headings and subheadings.
+Annotated section titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ### Annotated section descriptions
 

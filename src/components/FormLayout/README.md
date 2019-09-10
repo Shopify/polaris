@@ -54,7 +54,7 @@ Forms should:
 
 ### Form section title
 
-Form section titles should follow the [content guidelines](/content/actionable-language#section-headings-and-subheadings) for headings and subheadings.
+Form section titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ### Field label
 

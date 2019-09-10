@@ -70,7 +70,7 @@ Empty state titles should:
 
 <!-- end -->
 
-- Follow the [content guidelines](/content/actionable-language#section-headings-and-subheadings) for headings and subheadings
+- Follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings)
 
 ### Subtitle
 

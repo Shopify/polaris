@@ -65,7 +65,7 @@ To learn about writing helpful and accessible error message text, see the guidel
 
 ### Title
 
-Banner titles should the [content guidelines](/content/actionable-language#section-headings-and-subheadings) for headings and subheadings.
+Banner titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 

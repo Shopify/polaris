@@ -106,7 +106,7 @@ Modals should:
 Modal titles should:
 
 - Use a clear {verb}+{noun} question or statement
-- Follow the [content guidelines](/content/actionable-language#section-headings-and-subheadings) for headings and subheadings
+- Follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings)
 
 <!-- usagelist -->
 
