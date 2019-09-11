@@ -3,8 +3,8 @@
 $dropzone-padding: rem(15px);
 $dropzone-border-style: dashed;
 $dropzone-border-color: color('sky');
-$dropzone-background: color('white');
 $dropzone-border-radius: border-radius();
+$dropzone-background: color('white');
 $dropzone-min-height-extra-large: rem(205px);
 $dropzone-min-height-large: rem(160px);
 $dropzone-min-height-medium: rem(100px);
@@ -16,6 +16,10 @@ $dropzone-overlay-border-color: color('indigo');
 $dropzone-overlay-border-color-error: color('red');
 $dropzone-overlay-background: color('indigo', 'lighter');
 $dropzone-overlay-background-error: color('red', 'lighter');
+$dropzone-stacking-order: (
+  outline: 29,
+  overlay: 30,
+);
 
 .DropZone {
   position: relative;
@@ -23,15 +27,65 @@ $dropzone-overlay-background-error: color('red', 'lighter');
   justify-content: center;
   background-color: $dropzone-background;
   border-radius: $dropzone-border-radius;
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: z-index(outline, $dropzone-stacking-order);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: border-width(thick) $dropzone-border-style transparent;
+    border-radius: $dropzone-border-radius;
+    pointer-events: none;
+  }
 }
 
 .hasOutline {
-  border: border-width(thick) $dropzone-border-style $dropzone-border-color;
+  padding: border-width(thick);
+
+  &::after {
+    border-color: $dropzone-border-color;
+  }
+
+  &:not(.isDisabled) {
+    &:hover {
+      cursor: pointer;
+      background-color: $dropzone-overlay-background;
+    }
+
+    // stylelint-disable-next-line selector-max-specificity
+    &:hover::after {
+      border-color: $dropzone-overlay-border-color;
+    }
+  }
+}
+
+.focused {
+  &:not(.isDisabled) {
+    background-color: $dropzone-overlay-background;
+
+    &::after {
+      border: border-width(thick) $dropzone-border-style
+        $dropzone-overlay-border-color;
+
+      @media (-ms-high-contrast: active) {
+        border-style: solid;
+        border-color: ms-high-contrast-color('selected-text-background');
+      }
+    }
+  }
 }
 
 .isDragging {
-  border-color: $dropzone-overlay-border-color;
-  background-color: $dropzone-overlay-background;
+  &:not(.isDisabled) {
+    background-color: $dropzone-overlay-background;
+
+    &::after {
+      border-color: $dropzone-overlay-border-color;
+    }
+  }
 }
 
 .isDisabled {
@@ -63,7 +117,7 @@ $dropzone-overlay-background-error: color('red', 'lighter');
 
 .Overlay {
   position: absolute;
-  z-index: 30;
+  z-index: z-index(overlay, $dropzone-stacking-order);
   top: 0;
   right: 0;
   bottom: 0;
@@ -77,13 +131,6 @@ $dropzone-overlay-background-error: color('red', 'lighter');
   text-align: center;
   color: $dropzone-overlay-color;
   background-color: $dropzone-overlay-background;
-
-  .hasOutline & {
-    top: -(border-width(thick));
-    right: -(border-width(thick));
-    bottom: -(border-width(thick));
-    left: -(border-width(thick));
-  }
 
   .hasError & {
     border-color: $dropzone-overlay-border-color-error;

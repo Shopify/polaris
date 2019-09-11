@@ -59,7 +59,7 @@ Use to list a related set of keyboard shortcuts.
 
 ## Related components
 
-- To add a tooltip for a button with an associated keyboard shortcut, [use the tooltip component](/components/tooltip)
+- To add a tooltip for a button with an associated keyboard shortcut, [use the tooltip component](https://polaris.shopify.com/components/tooltip)
 
 ---
 

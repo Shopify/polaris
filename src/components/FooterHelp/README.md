@@ -35,7 +35,7 @@ If you’re a Shopify app developer, footer help could also:
 
 - Provide links to contact information or a support ticketing system
 
-It’s recommended to link your footer help component to [help documentation](/content/help-documentation). Linking directly to your contact information might result in receiving a higher number of emails or calls.
+It’s recommended to link your footer help component to [help documentation](https://polaris.shopify.com/content/help-documentation). Linking directly to your contact information might result in receiving a higher number of emails or calls.
 
 ---
 
@@ -92,6 +92,6 @@ Use to direct merchants to more information related to the product or feature th
 
 ## Related components and documentation
 
-- To learn how to embed a link in a piece of text, [use the link component](/components/link)
-- To learn how to write documentation for an app or theme, [use the the guide on how to write product documentation](/content/help-documentation)
+- To learn how to embed a link in a piece of text, [use the link component](https://polaris.shopify.com/components/link)
+- To learn how to write documentation for an app or theme, [use the the guide on how to write product documentation](https://polaris.shopify.com/content/help-documentation)
 - To learn how to provide support for an app, [use the guide on supporting your app](https://help.shopify.com/en/api/app-store/being-successful-in-the-app-store/supporting-your-app)

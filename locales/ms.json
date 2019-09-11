@@ -149,8 +149,7 @@
       "ariaLiveSingular": "{itemsLength} item",
       "ariaLivePlural": "{itemsLength} item",
       "Item": {
-        "selectItem": "Pilih: {accessibilityLabel}",
-        "deselectItem": "Nyahpilih: {accessibilityLabel}",
+        "actionsDropdownLabel": "Tindakan untuk {accessibilityLabel}",
         "actionsDropdown": "Juntai bawah tindakan"
       },
       "BulkActions": {

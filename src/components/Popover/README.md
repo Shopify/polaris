@@ -159,13 +159,13 @@ class PopoverExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Popover with action list for Android](/public_images/components/Popover/android/action-list@2x.png)
+![Popover with action list for Android](https://polaris.shopify.com/public_images/components/Popover/android/action-list@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Popover with action list for iOS](/public_images/components/Popover/ios/action-list@2x.png)
+![Popover with action list for iOS](https://polaris.shopify.com/public_images/components/Popover/ios/action-list@2x.png)
 
 <!-- /content-for -->
 
@@ -220,13 +220,13 @@ class PopoverContentExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Popover with content and actions for Android](/public_images/components/Popover/android/action-content@2x.png)
+![Popover with content and actions for Android](https://polaris.shopify.com/public_images/components/Popover/android/action-content@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Popover with content and actions for iOS](/public_images/components/Popover/ios/action-content@2x.png)
+![Popover with content and actions for iOS](https://polaris.shopify.com/public_images/components/Popover/ios/action-content@2x.png)
 
 <!-- /content-for -->
 
@@ -402,7 +402,7 @@ Use when you have few actions that affects the whole page. Action sheets doesnâ€
 
 <!-- content-for: ios -->
 
-![iOS action sheet](/public_images/components/Popover/ios/action-sheet@2x.png)
+![iOS action sheet](https://polaris.shopify.com/public_images/components/Popover/ios/action-sheet@2x.png)
 
 <!-- /content-for -->
 
@@ -410,8 +410,8 @@ Use when you have few actions that affects the whole page. Action sheets doesnâ€
 
 ## Related components
 
-- To put a list of actions in a popover, [use the action list component](/components/actions/action-list)
-- To let merchants select simple options from a list, [use the select component](/components/forms/select)
+- To put a list of actions in a popover, [use the action list component](https://polaris.shopify.com/components/actions/action-list)
+- To let merchants select simple options from a list, [use the select component](https://polaris.shopify.com/components/forms/select)
 
 ---
 
@@ -437,7 +437,7 @@ See Appleâ€™s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-Popovers usually contain an [option list](/components/lists-and-tables/option-list) or an [action list](/components/actions/action-list), but can also contain other controls or content.
+Popovers usually contain an [option list](https://polaris.shopify.com/components/lists-and-tables/option-list) or an [action list](https://polaris.shopify.com/components/actions/action-list), but can also contain other controls or content.
 
 ### Keyboard support
 

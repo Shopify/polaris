@@ -54,8 +54,8 @@ Banners should:
 - Be used thoughtfully and sparingly for only the most important information.
 - Not be used as the primary entry point to information or
   actions merchants need on a regular basis.
-- Not be used for marketing information or upsell—[use callout cards](/components/structure/callout-card) instead.
-- Use the default icon for `success`, `info`, `warning` and `critical` statuses. If the icon is changed, use only [major, duotone icons](/design/icons#using-icons-in-your-designs).
+- Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/structure/callout-card) instead.
+- Use the default icon for `success`, `info`, `warning` and `critical` statuses. If the icon is changed, use only [major, duotone icons](https://polaris.shopify.com/design/icons#using-icons-in-your-designs).
 
 ---
 
@@ -228,13 +228,13 @@ including packaging.
 
 <!-- content-for: android -->
 
-![Default banner for Android](/public_images/components/Banner/android/default@2x.png)
+![Default banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default banner for iOS](/public_images/components/Banner/ios/default@2x.png)
+![Default banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -273,13 +273,13 @@ Use when you want merchants to take an action after reading the banner.
 
 <!-- content-for: android -->
 
-![Banner with footer call-to-action for Android](/public_images/components/Banner/android/footer-action@2x.png)
+![Banner with footer call-to-action for Android](https://polaris.shopify.com/public_images/components/Banner/android/footer-action@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Banner with footer call-to-action for iOS](/public_images/components/Banner/ios/footer-action@2x.png)
+![Banner with footer call-to-action for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/footer-action@2x.png)
 
 <!-- /content-for -->
 
@@ -300,13 +300,13 @@ Use to update merchants about a change or give them advice.
 
 <!-- content-for: android -->
 
-![Informational banner for Android](/public_images/components/Banner/android/informational@2x.png)
+![Informational banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/informational@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Informational banner for iOS](/public_images/components/Banner/ios/informational@2x.png)
+![Informational banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/informational@2x.png)
 
 <!-- /content-for -->
 
@@ -326,13 +326,13 @@ Use to update merchants about a change or give them advice.
 
 <!-- content-for: android -->
 
-![Success banner for Android](/public_images/components/Banner/android/success@2x.png)
+![Success banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/success@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Success banner for iOS](/public_images/components/Banner/ios/success@2x.png)
+![Success banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/success@2x.png)
 
 <!-- /content-for -->
 
@@ -358,13 +358,13 @@ Use to update merchants about a change or give them advice.
 
 <!-- content-for: android -->
 
-![Warning banner for Android](/public_images/components/Banner/android/warning@2x.png)
+![Warning banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/warning@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Warning banner for iOS](/public_images/components/Banner/ios/warning@2x.png)
+![Warning banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/warning@2x.png)
 
 <!-- /content-for -->
 
@@ -390,13 +390,13 @@ Use to update merchants about a change or give them advice.
 
 <!-- content-for: android -->
 
-![Critical banner for Android](/public_images/components/Banner/android/critical@2x.png)
+![Critical banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/critical@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Critical banner for iOS](/public_images/components/Banner/ios/critical@2x.png)
+![Critical banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/critical@2x.png)
 
 <!-- /content-for -->
 
@@ -538,8 +538,8 @@ Banners inside of the navigation render with less spacing and a pared-back desig
 
 ## Related components
 
-- To inform merchants about a new feature or opportunity, [use callout cards](/components/structure/callout-card)
-- To group similar concepts together in the interface, [use a card](/components/structure/card)
+- To inform merchants about a new feature or opportunity, [use callout cards](https://polaris.shopify.com/components/structure/callout-card)
+- To group similar concepts together in the interface, [use a card](https://polaris.shopify.com/components/structure/card)
 
 ---
 
@@ -572,7 +572,7 @@ Banners provide context and assist workflows for merchants with disabilities.
 - All banners have an `aria-live` attribute and are announced by assistive technologies when their content is updated. These announcements can be disabled by using the prop `stopAnnouncements`.
 - Banners use `aria-describedby` to describe their purpose to assistive technologies when they’re announced or receive focus. If a banner has a `title`, then the title content is used for the `aria-describedby`. If the banner doesn’t have a `title`, then all of the banner content is used for the `aria-describedby`.
 - Banner containers have a `tabindex=”0”` and display a visible keyboard focus indicator. Because of this, merchants can discover banners while tabbing through forms or other interactions, and developers can programmatically move focus to banners.
-- Banners use a combination of [icons](/design/icons) and [colors](/design/colors) to show their meaning and level of importance to merchants.
+- Banners use a combination of [icons](https://polaris.shopify.com/design/icons) and [colors](https://polaris.shopify.com/design/colors) to show their meaning and level of importance to merchants.
 
 ### Error notifications in forms
 
@@ -582,9 +582,9 @@ When merchants submit long or complex forms with errors, use a critical banner t
 
 #### Inline errors
 
-Always include [inline error](/components/forms/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
+Always include [inline error](https://polaris.shopify.com/components/forms/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
 
-To learn about creating helpful and accessible error message text, see the guidelines for [error messages](/patterns-and-guides/error-messages).
+To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns-and-guides/error-messages).
 
 <!-- usageblock -->
 

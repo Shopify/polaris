@@ -96,7 +96,7 @@ Error messages should:
 
 - Clearly explain what went wrong and how to fix it
 - Be short and concise, no more than a single sentence
-- Use [passive voice](/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
+- Use [passive voice](https://polaris.shopify.com/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
 <!-- usagelist -->
 
@@ -145,13 +145,13 @@ class RangeSliderExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Range slider for Android](/public_images/components/RangeSlider/android/default@2x.png)
+![Range slider for Android](https://polaris.shopify.com/public_images/components/RangeSlider/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Range slider for iOS](/public_images/components/RangeSlider/ios/default@2x.png)
+![Range slider for iOS](https://polaris.shopify.com/public_images/components/RangeSlider/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -341,7 +341,7 @@ class RangeSliderExample extends React.Component {
 
 ## Related components
 
-- To collect a number value as a text input, [use the text field component](/components/forms/text-field)
+- To collect a number value as a text input, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
 
 ---
 

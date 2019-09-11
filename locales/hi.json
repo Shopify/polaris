@@ -149,8 +149,7 @@
       "ariaLiveSingular": "{itemsLength} आइटम",
       "ariaLivePlural": "{itemsLength} आइटम",
       "Item": {
-        "selectItem": "{accessibilityLabel} चुने:",
-        "deselectItem": "{accessibilityLabel} अचयनित करें:",
+        "actionsDropdownLabel": "{accessibilityLabel} के लिए कार्रवाई",
         "actionsDropdown": "कार्रवाई ड्रॉपडाउन"
       },
       "BulkActions": {

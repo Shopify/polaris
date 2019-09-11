@@ -149,8 +149,7 @@
       "ariaLiveSingular": "{itemsLength}個のアイテム",
       "ariaLivePlural": "{itemsLength}個のアイテム",
       "Item": {
-        "selectItem": "選択: {accessibilityLabel}",
-        "deselectItem": "選択解除: {accessibilityLabel}",
+        "actionsDropdownLabel": "{accessibilityLabel}のアクション",
         "actionsDropdown": "アクションドロップダウン"
       },
       "BulkActions": {

@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useRef} from 'react';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {useUniqueId} from '../../../../utilities/unique-id';
 import {ScrollableContext} from '../../context';
 
 export function ScrollTo() {
@@ -14,7 +14,7 @@ export function ScrollTo() {
     scrollToPosition(anchorNode.current.offsetTop);
   }, [scrollToPosition]);
 
-  const getUniqueId = createUniqueIDFactory(`ScrollTo`);
+  const id = useUniqueId(`ScrollTo`);
   // eslint-disable-next-line jsx-a11y/anchor-is-valid
-  return <a id={getUniqueId()} ref={anchorNode} />;
+  return <a id={id} ref={anchorNode} />;
 }

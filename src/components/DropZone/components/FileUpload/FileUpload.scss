@@ -1,10 +1,59 @@
 @import '../../../../styles/common';
 
 $fileupload-padding: rem(15px);
+$slim-min-height: rem(30px);
+$slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 
 .FileUpload {
   padding: $fileupload-padding;
   text-align: center;
+}
+
+.Button {
+  @include button-base;
+
+  &.disabled {
+    @include base-button-disabled;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  &.focused {
+    border-color: color('indigo');
+    outline: 0;
+    box-shadow: 0 0 0 1px color('indigo');
+
+    @include high-contrast-button-outline;
+  }
+
+  .sizeSlim {
+    min-height: $slim-min-height;
+    padding: $slim-vertical-padding spacing(base-tight);
+  }
+}
+
+.ActionTitle {
+  color: color('blue');
+  text-decoration: none;
+
+  &:not(.ActionTitle-disabled) {
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      color: color('blue', 'dark');
+      text-decoration: underline;
+    }
+  }
+}
+
+.ActionTitle-focused {
+  color: color('blue', 'dark');
+  text-decoration: underline;
+}
+
+.ActionTitle-disabled {
+  color: color('ink', 'lightest');
 }
 
 .Image {
