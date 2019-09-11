@@ -96,9 +96,9 @@ function findDependencies(fileName) {
     }
   }
 
-  return Object.keys(dependencies).filter(
-    (dependency) => !dependency.endsWith('src/components/index.ts'),
-  );
+  return Object.keys(dependencies)
+    .filter((dependency) => !dependency.endsWith('/src/components/index.ts'))
+    .map((dependency) => dependency.split('polaris-react/')[1]);
 }
 
 export function getGitStagedFiles(scope = '') {
