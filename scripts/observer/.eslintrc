@@ -1,5 +1,6 @@
 {
   "rules": {
-    "jsx-a11y/accessible-emoji": "off"
+    "jsx-a11y/accessible-emoji": "off",
+    "shopify/jsx-no-hardcoded-content": "off"
   }
 }
