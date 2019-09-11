@@ -73,6 +73,7 @@ function AppProviderDecorator(story) {
       <AppProvider i18n={en}>{story()}</AppProvider>
     </div>
   );
+}
 
 /**
  * A React component that renders all examples for a given component
