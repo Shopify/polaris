@@ -68,8 +68,11 @@ export function addPlaygroundStory(playgroundModule) {
 }
 
 function AppProviderDecorator(story) {
-  return <AppProvider>{story()}</AppProvider>;
-}
+  return (
+    <div style={{padding: '8px'}}>
+      <AppProvider i18n={en}>{story()}</AppProvider>
+    </div>
+  );
 
 /**
  * A React component that renders all examples for a given component
