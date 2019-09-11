@@ -1,3 +1,3 @@
-export {default as ComboBox} from './ComboBox';
+export {ComboBox} from './ComboBox';
 
-export {default as TextField} from './TextField';
+export {TextField} from './TextField';

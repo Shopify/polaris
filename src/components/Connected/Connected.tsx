@@ -3,7 +3,7 @@ import React from 'react';
 import {Item, ItemPosition} from './components';
 import styles from './Connected.scss';
 
-export interface Props {
+export interface ConnectedProps {
   /** Content to display on the left */
   left?: React.ReactNode;
   /** Content to display on the right */
@@ -12,7 +12,7 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export default function Connected({children, left, right}: Props) {
+export function Connected({children, left, right}: ConnectedProps) {
   if (left == null && right == null) {
     return <React.Fragment>{children}</React.Fragment>;
   }

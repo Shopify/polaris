@@ -2,17 +2,17 @@ import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {ActionListItemDescriptor} from '../../../../types';
-import Scrollable from '../../../Scrollable';
-import Icon from '../../../Icon';
-import UnstyledLink from '../../../UnstyledLink';
-import Badge from '../../../Badge';
-import TextStyle from '../../../TextStyle';
+import {Scrollable} from '../../../Scrollable';
+import {Icon} from '../../../Icon';
+import {UnstyledLink} from '../../../UnstyledLink';
+import {Badge} from '../../../Badge';
+import {TextStyle} from '../../../TextStyle';
 
 import styles from '../../ActionList.scss';
 
-export type Props = ActionListItemDescriptor;
+export type ItemProps = ActionListItemDescriptor;
 
-export default function Item({
+export function Item({
   id,
   badge,
   content,
@@ -28,7 +28,7 @@ export default function Item({
   ellipsis,
   active,
   role,
-}: Props) {
+}: ItemProps) {
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,

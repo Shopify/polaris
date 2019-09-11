@@ -5,9 +5,9 @@ import {
   withAppProvider,
 } from '../../utilities/with-app-provider';
 
-export interface Props {}
+export interface ScrollLockProps {}
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = ScrollLockProps & WithAppProviderProps;
 class ScrollLock extends React.Component<CombinedProps, never> {
   componentDidMount() {
     const {scrollLockManager} = this.props.polaris;
@@ -24,4 +24,6 @@ class ScrollLock extends React.Component<CombinedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(ScrollLock);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<ScrollLockProps>()(ScrollLock);

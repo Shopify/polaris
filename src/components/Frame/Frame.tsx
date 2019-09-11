@@ -4,14 +4,14 @@ import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from '@material-ui/react-transition-group';
 import {classNames} from '../../utilities/css';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
-import Icon from '../Icon';
-import EventListener from '../EventListener';
+import {Icon} from '../Icon';
+import {EventListener} from '../EventListener';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import Backdrop from '../Backdrop';
-import TrapFocus from '../TrapFocus';
+import {Backdrop} from '../Backdrop';
+import {TrapFocus} from '../TrapFocus';
 import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/set-root-property';
 import {
@@ -30,7 +30,7 @@ import {
 
 import styles from './Frame.scss';
 
-export interface Props {
+export interface FrameProps {
   /** The content to display inside the frame. */
   children?: React.ReactNode;
   /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */
@@ -43,6 +43,8 @@ export interface Props {
    * @default false
    */
   showMobileNavigation?: boolean;
+  /** Accepts a ref to the html anchor element you wish to focus when clicking the skip to content link */
+  skipToContentTarget?: React.RefObject<HTMLAnchorElement>;
   /** A callback function to handle clicking the mobile navigation dismiss button */
   onNavigationDismiss?(): void;
 }
@@ -57,13 +59,16 @@ interface State {
 }
 
 export const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
+
 export const APP_FRAME_MAIN = 'AppFrameMain';
+
 export const APP_FRAME_MAIN_ANCHOR_TARGET = 'AppFrameMainContent';
+
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = FrameProps & WithAppProviderProps;
 
 class Frame extends React.PureComponent<CombinedProps, State> {
   state: State = {
@@ -78,7 +83,8 @@ class Frame extends React.PureComponent<CombinedProps, State> {
   private contextualSaveBar: ContextualSaveBarProps | null;
   private globalRibbonContainer: HTMLDivElement | null = null;
   private navigationNode = createRef<HTMLDivElement>();
-  private skipToMainContentTargetNode = React.createRef<HTMLAnchorElement>();
+  private skipToMainContentTargetNode =
+    this.props.skipToContentTarget || React.createRef<HTMLAnchorElement>();
 
   componentDidMount() {
     this.handleResize();
@@ -88,7 +94,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     this.setGlobalRibbonRootProperty();
   }
 
-  componentDidUpdate(prevProps: Props) {
+  componentDidUpdate(prevProps: FrameProps) {
     if (this.props.globalRibbon !== prevProps.globalRibbon) {
       this.setGlobalRibbonHeight();
     }
@@ -109,6 +115,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
       globalRibbon,
       showMobileNavigation = false,
       polaris: {intl},
+      skipToContentTarget,
     } = this.props;
 
     const navClassName = classNames(
@@ -200,10 +207,14 @@ class Frame extends React.PureComponent<CombinedProps, State> {
       skipFocused && styles.focused,
     );
 
+    const skipTarget = skipToContentTarget
+      ? (skipToContentTarget.current && skipToContentTarget.current.id) || ''
+      : APP_FRAME_MAIN_ANCHOR_TARGET;
+
     const skipMarkup = (
       <div className={skipClassName}>
         <a
-          href={`#${APP_FRAME_MAIN_ANCHOR_TARGET}`}
+          href={`#${skipTarget}`}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
@@ -235,7 +246,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
         />
       ) : null;
 
-    const skipToMainContentTarget = (
+    const skipToMainContentTarget = skipToContentTarget ? null : (
       // eslint-disable-next-line jsx-a11y/anchor-is-valid
       <a
         id={APP_FRAME_MAIN_ANCHOR_TARGET}
@@ -411,4 +422,6 @@ function isMobileView() {
   return navigationBarCollapsed().matches;
 }
 
-export default withAppProvider<Props>()(Frame);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<FrameProps>()(Frame);

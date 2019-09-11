@@ -1,5 +1,5 @@
 export {
-  default as ConnectedFilterControl,
+  ConnectedFilterControl,
   ConnectedFilterControlProps,
   PopoverableAction,
 } from './ConnectedFilterControl';

@@ -1,7 +1,7 @@
 import React from 'react';
 import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
 import {Link} from 'components';
-import Tooltip from '../Tooltip';
+import {Tooltip} from '../Tooltip';
 
 describe('<Tooltip />', () => {
   const tooltip = mountWithAppProvider(

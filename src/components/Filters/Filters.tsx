@@ -13,29 +13,29 @@ import {
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
 import {ResourceListContext} from '../../utilities/resource-list';
-import Button from '../Button';
-import DisplayText from '../DisplayText';
-import Collapsible from '../Collapsible';
-import Scrollable from '../Scrollable';
-import ScrollLock from '../ScrollLock';
-import Icon from '../Icon';
-import TextField from '../TextField';
-import Tag from '../Tag';
-import EventListener from '../EventListener';
-import TextStyle from '../TextStyle';
-import Badge from '../Badge';
-import Focus from '../Focus';
-import Sheet from '../Sheet';
-import Stack from '../Stack';
+import {Button} from '../Button';
+import {DisplayText} from '../DisplayText';
+import {Collapsible} from '../Collapsible';
+import {Scrollable} from '../Scrollable';
+import {ScrollLock} from '../ScrollLock';
+import {Icon} from '../Icon';
+import {TextField} from '../TextField';
+import {Tag} from '../Tag';
+import {EventListener} from '../EventListener';
+import {TextStyle} from '../TextStyle';
+import {Badge} from '../Badge';
+import {Focus} from '../Focus';
+import {Sheet} from '../Sheet';
+import {Stack} from '../Stack';
 import {Key} from '../../types';
 
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
-import KeypressListener from '../KeypressListener';
+import {KeypressListener} from '../KeypressListener';
 import {ConnectedFilterControl, PopoverableAction} from './components';
 
 import styles from './Filters.scss';
 
-export interface AppliedFilter {
+export interface AppliedFilterInterface {
   /** A unique key used to identify the applied filter */
   key: string;
   /** A label for the applied filter */
@@ -44,7 +44,7 @@ export interface AppliedFilter {
   onRemove(key: string): void;
 }
 
-export interface Filter {
+export interface FilterInterface {
   /** A unique key used to identify the filter */
   key: string;
   /** The label for the filter */
@@ -55,7 +55,7 @@ export interface Filter {
   shortcut?: boolean;
 }
 
-export interface Props {
+export interface FiltersProps {
   /** Currently entered text in the query field */
   queryValue?: string;
   /** Placeholder text for the query field */
@@ -63,9 +63,9 @@ export interface Props {
   /** Whether the query field is focused */
   focused?: boolean;
   /** Available filters added to the sheet. Shortcut filters are exposed outside of the sheet. */
-  filters: Filter[];
+  filters: FilterInterface[];
   /** Applied filters which are rendered as tags. The remove callback is called with the respective key */
-  appliedFilters?: AppliedFilter[];
+  appliedFilters?: AppliedFilterInterface[];
   /** Callback when the query field is changed */
   onQueryChange(queryValue: string): void;
   /** Callback when the clear button is triggered */
@@ -80,7 +80,7 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-type ComposedProps = Props & WithAppProviderProps;
+type ComposedProps = FiltersProps & WithAppProviderProps;
 
 interface State {
   open: boolean;
@@ -458,7 +458,9 @@ class Filters extends React.Component<ComposedProps, State> {
     }
   }
 
-  private transformFilters(filters: Filter[]): PopoverableAction[] | null {
+  private transformFilters(
+    filters: FilterInterface[],
+  ): PopoverableAction[] | null {
     const transformedActions: PopoverableAction[] = [];
 
     getShortcutFilters(filters).forEach((filter) => {
@@ -475,7 +477,7 @@ class Filters extends React.Component<ComposedProps, State> {
     return transformedActions;
   }
 
-  private generateFilterMarkup(filter: Filter) {
+  private generateFilterMarkup(filter: FilterInterface) {
     const intl = this.props.polaris.intl;
     const removeCallback = this.getAppliedFilterRemoveHandler(filter.key);
     const removeHandler =
@@ -508,8 +510,10 @@ function isMobile(): boolean {
   return navigationBarCollapsed().matches;
 }
 
-function getShortcutFilters(filters: Filter[]) {
+function getShortcutFilters(filters: FilterInterface[]) {
   return filters.filter((filter) => filter.shortcut === true);
 }
 
-export default withAppProvider<Props>()(Filters);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<FiltersProps>()(Filters);

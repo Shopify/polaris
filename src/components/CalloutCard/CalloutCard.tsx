@@ -3,16 +3,16 @@ import {CancelSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 
 import {Action} from '../../types';
-import Card from '../Card';
-import TextContainer from '../TextContainer';
-import ButtonGroup from '../ButtonGroup';
-import Button, {buttonFrom} from '../Button';
-import Heading from '../Heading';
-import Image from '../Image';
+import {Card} from '../Card';
+import {TextContainer} from '../TextContainer';
+import {ButtonGroup} from '../ButtonGroup';
+import {Button, buttonFrom} from '../Button';
+import {Heading} from '../Heading';
+import {Image} from '../Image';
 
 import styles from './CalloutCard.scss';
 
-export interface Props {
+export interface CalloutCardProps {
   /** The content to display inside the callout card. */
   children?: React.ReactNode;
   /** The title of the card */
@@ -27,14 +27,14 @@ export interface Props {
   onDismiss?(): void;
 }
 
-export default function CalloutCard({
+export function CalloutCard({
   title,
   children,
   illustration,
   primaryAction,
   secondaryAction,
   onDismiss,
-}: Props) {
+}: CalloutCardProps) {
   const primaryActionMarkup = buttonFrom(primaryAction);
   const secondaryActionMarkup = secondaryAction
     ? buttonFrom(secondaryAction, {plain: true})

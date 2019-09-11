@@ -1,4 +1,1 @@
-import SettingToggle from './SettingToggle';
-
-export {Props} from './SettingToggle';
-export default SettingToggle;
+export {SettingToggle, SettingToggleProps} from './SettingToggle';

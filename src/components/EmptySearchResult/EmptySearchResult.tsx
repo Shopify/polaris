@@ -1,55 +1,44 @@
 import React from 'react';
 
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
-import DisplayText from '../DisplayText';
-import TextStyle from '../TextStyle';
-import Image from '../Image';
-import Stack from '../Stack';
+import {useI18n} from '../../utilities/i18n';
+import {DisplayText} from '../DisplayText';
+import {TextStyle} from '../TextStyle';
+import {Image} from '../Image';
+import {Stack} from '../Stack';
 
 import {emptySearch} from './illustrations';
 import styles from './EmptySearchResult.scss';
 
-export interface Props {
+export interface EmptySearchResultProps {
   title: string;
   description?: string;
   withIllustration?: boolean;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+export function EmptySearchResult({
+  title,
+  description,
+  withIllustration,
+}: EmptySearchResultProps) {
+  const i18n = useI18n();
+  const altText = i18n.translate('Polaris.EmptySearchResult.altText');
 
-class EmptySearchResult extends React.PureComponent<CombinedProps, never> {
-  render() {
-    const {
-      title,
-      description,
-      withIllustration,
-      polaris: {intl},
-    } = this.props;
+  const descriptionMarkup = description ? <p>{description}</p> : null;
 
-    const altText = intl.translate('Polaris.EmptySearchResult.altText');
+  const illustrationMarkup = withIllustration ? (
+    <Image
+      alt={altText}
+      source={emptySearch}
+      className={styles.Image}
+      draggable={false}
+    />
+  ) : null;
 
-    const descriptionMarkup = description ? <p>{description}</p> : null;
-
-    const illustrationMarkup = withIllustration ? (
-      <Image
-        alt={altText}
-        source={emptySearch}
-        className={styles.Image}
-        draggable={false}
-      />
-    ) : null;
-
-    return (
-      <Stack alignment="center" vertical>
-        {illustrationMarkup}
-        <DisplayText size="small">{title}</DisplayText>
-        <TextStyle variation="subdued">{descriptionMarkup}</TextStyle>
-      </Stack>
-    );
-  }
+  return (
+    <Stack alignment="center" vertical>
+      {illustrationMarkup}
+      <DisplayText size="small">{title}</DisplayText>
+      <TextStyle variation="subdued">{descriptionMarkup}</TextStyle>
+    </Stack>
+  );
 }
-
-export default withAppProvider<Props>()(EmptySearchResult);

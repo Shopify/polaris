@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Focus, {Props} from '../Focus';
+import {Focus, FocusProps} from '../Focus';
 import {Discard} from '../../../types';
 
 describe('<Focus />', () => {
@@ -43,7 +43,7 @@ describe('<Focus />', () => {
   });
 });
 
-function FocusTestWrapper({children, ...props}: Discard<Props, 'root'>) {
+function FocusTestWrapper({children, ...props}: Discard<FocusProps, 'root'>) {
   const root = useRef<HTMLDivElement>(null);
   const [, setMount] = useState(false);
 

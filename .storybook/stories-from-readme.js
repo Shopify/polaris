@@ -2,7 +2,7 @@ import React from 'react';
 import {AppProvider, Heading} from '../src';
 import {withA11y} from '@storybook/addon-a11y';
 import {storiesOf} from '@storybook/react';
-import Playground from '../playground/Playground';
+import {Playground} from '../playground/Playground';
 import en from '../locales/en.json';
 
 /**

@@ -26,9 +26,9 @@ export interface BaseProps {
   onChange(color: HSBAColor): void;
 }
 
-export interface Props extends BaseProps {}
+export interface ColorPickerProps extends BaseProps {}
 
-export default class ColorPicker extends React.PureComponent<Props, State> {
+export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
   state: State = {
     pickerSize: 0,
   };

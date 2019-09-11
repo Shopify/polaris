@@ -1,15 +1,15 @@
 import React from 'react';
-import Select from '../../../../../Select';
-import Stack from '../../../../../Stack';
-import TextField from '../../../../../TextField';
+import {Select} from '../../../../../Select';
+import {Stack} from '../../../../../Stack';
+import {TextField} from '../../../../../TextField';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../../../../../utilities/with-app-provider';
-import DateSelector from '../DateSelector';
+import {DateSelector} from '../DateSelector';
 import {Filter, AppliedFilter, FilterType, Operator} from '../../types';
 
-export interface Props {
+export interface FilterValueSelectorProps {
   filter: Filter;
   filterKey?: string;
   value?: AppliedFilter['value'];
@@ -17,7 +17,7 @@ export interface Props {
   onFilterKeyChange(filterKey: string): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = FilterValueSelectorProps & WithAppProviderProps;
 
 class FilterValueSelector extends React.PureComponent<CombinedProps> {
   componentDidMount() {
@@ -133,4 +133,6 @@ function buildOperatorOptions(operatorText?: string | Operator[]) {
   });
 }
 
-export default withAppProvider<Props>()(FilterValueSelector);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<FilterValueSelectorProps>()(FilterValueSelector);

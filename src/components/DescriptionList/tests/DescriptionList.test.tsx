@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
-import DescriptionList from '../DescriptionList';
+import {DescriptionList} from '../DescriptionList';
 
 describe('<DescriptionList />', () => {
   it('renders a dt element for an item term and a dd element for an item description', () => {

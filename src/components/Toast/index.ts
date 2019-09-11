@@ -1,1 +1,1 @@
-export {default, Props} from './Toast';
+export {Toast, ToastProps} from './Toast';

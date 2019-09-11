@@ -2,7 +2,7 @@ import React from 'react';
 import {HeadingTagName} from '../../types';
 import styles from './Heading.scss';
 
-export interface Props {
+export interface HeadingProps {
   /**
    * The element name to use for the heading
    * @default 'h2'
@@ -12,6 +12,6 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export default function Heading({element: Element = 'h2', children}: Props) {
+export function Heading({element: Element = 'h2', children}: HeadingProps) {
   return <Element className={styles.Heading}>{children}</Element>;
 }

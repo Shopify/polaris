@@ -61,12 +61,12 @@ class ResourceListExample extends React.Component {
           renderItem={(item) => {
             const {id, url, title, author} = item;
             const authorMarkup = author ? <div>by {author}</div> : null;
-
             return (
               <ResourceItem
                 id={id}
                 url={url}
                 accessibilityLabel={`View details for ${title}`}
+                name={title}
               >
                 <h3>
                   <TextStyle variation="strong">{title}</TextStyle>
@@ -88,7 +88,7 @@ class ResourceListExample extends React.Component {
 
 ### Item with media
 
-The media element can hold an [avatar](/components/images-and-icons/avatar), [thumbnail](/components/images-and-icons/thumbnail), or other small-format graphic.
+The media element can hold an [avatar](https://polaris.shopify.com/components/images-and-icons/avatar), [thumbnail](https://polaris.shopify.com/components/images-and-icons/thumbnail), or other small-format graphic.
 
 ```jsx
 <Card>
@@ -115,6 +115,7 @@ The media element can hold an [avatar](/components/images-and-icons/avatar), [th
             <Avatar customer size="medium" name={name} source={avatarSource} />
           }
           accessibilityLabel={`View details for ${name}`}
+          name={name}
         >
           <h3>
             <TextStyle variation="strong">{name}</TextStyle>
@@ -161,6 +162,7 @@ Shortcut actions present popular actions from the resource’s details page for 
           }
           shortcutActions={shortcutActions}
           accessibilityLabel={`View details for ${name}`}
+          name={name}
         >
           <h3>
             <TextStyle variation="strong">{name}</TextStyle>
@@ -177,7 +179,7 @@ Shortcut actions present popular actions from the resource’s details page for 
 
 ## Required components
 
-The resource item component must be wrapped in the [resource list](/components/lists-and-tables/resource-list) component.
+The resource item component must be wrapped in the [resource list](https://polaris.shopify.com/components/lists-and-tables/resource-list) component.
 
 ---
 
@@ -208,7 +210,7 @@ Resource items should:
 
 Resource items can optionally:
 
-- Provide [shortcut actions](/components/lists-and-tables/resource-list#study-custom-item-shortcut-actions) for quick access to frequent actions from the resource’s details page.
+- Provide [shortcut actions](https://polaris.shopify.com/components/lists-and-tables/resource-list#study-custom-item-shortcut-actions) for quick access to frequent actions from the resource’s details page.
 
 ---
 
@@ -219,10 +221,10 @@ Resource items should:
 - Present the information that merchants need to find the items that they’re looking for.
 - Support merchant tasks for the particular type of resource.
 - Avoid colons.
-- [Shortcut actions](/components/lists-and-tables/resource-list#study-custom-item-shortcut-actions) don’t need to follow the full verb + noun formula for buttons.
+- [Shortcut actions](https://polaris.shopify.com/components/lists-and-tables/resource-list#study-custom-item-shortcut-actions) don’t need to follow the full verb + noun formula for buttons.
 
 ---
 
 ## Related components
 
-To display a simple list of related content, [use the list component](/components/lists-and-tables/list).
+To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/lists-and-tables/list).

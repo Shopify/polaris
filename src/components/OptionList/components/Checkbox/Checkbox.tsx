@@ -1,12 +1,12 @@
 import React from 'react';
 import {TickSmallMinor} from '@shopify/polaris-icons';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '../../../../utilities/css';
-import Icon from '../../../Icon';
+import {useUniqueId} from '../../../../utilities/unique-id';
+import {Icon} from '../../../Icon';
 
 import styles from './Checkbox.scss';
 
-export interface Props {
+export interface CheckboxProps {
   checked?: boolean;
   disabled?: boolean;
   active?: boolean;
@@ -17,10 +17,8 @@ export interface Props {
   onChange(): void;
 }
 
-const getUniqueID = createUniqueIDFactory('Checkbox');
-
-export default function Checkbox({
-  id = getUniqueID(),
+export function Checkbox({
+  id: idProp,
   checked = false,
   disabled,
   active,
@@ -28,7 +26,9 @@ export default function Checkbox({
   name,
   value,
   role,
-}: Props) {
+}: CheckboxProps) {
+  const id = useUniqueId('Checkbox', idProp);
+
   const className = classNames(styles.Checkbox, active && styles.active);
   return (
     <div className={className}>

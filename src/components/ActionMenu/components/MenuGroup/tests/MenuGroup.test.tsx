@@ -4,11 +4,11 @@ import {SaveMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
 import {Popover, ActionList} from 'components';
-import MenuAction from '../../MenuAction';
-import MenuGroup, {Props} from '../MenuGroup';
+import {MenuAction} from '../../MenuAction';
+import {MenuGroup} from '../MenuGroup';
 
 describe('<MenuGroup />', () => {
-  const mockProps: Props = {
+  const mockProps = {
     title: 'title',
     actions: [],
     active: undefined,
@@ -80,7 +80,7 @@ describe('<MenuGroup />', () => {
     });
 
     it('passes `actions` into the <ActionList />', () => {
-      const mockActions: Props['actions'] = [
+      const mockActions = [
         {content: 'mock content 1'},
         {content: 'mock content 2'},
       ];

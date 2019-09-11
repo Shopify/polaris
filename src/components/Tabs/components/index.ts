@@ -1,13 +1,9 @@
-export {default as Item, Props as ItemProps} from './Item';
+export {Item, ItemProps} from './Item';
 
-export {default as List, Props as ListProps} from './List';
+export {List, ListProps} from './List';
 
-export {default as Panel, Props as PanelProps} from './Panel';
+export {Panel, PanelProps} from './Panel';
 
-export {default as Tab, Props as TabProps} from './Tab';
+export {Tab, TabProps} from './Tab';
 
-export {
-  default as TabMeasurer,
-  Props as TabMeasurerProps,
-  TabMeasurements,
-} from './TabMeasurer';
+export {TabMeasurer, TabMeasurerProps, TabMeasurements} from './TabMeasurer';

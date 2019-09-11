@@ -2,10 +2,10 @@ import React from 'react';
 
 import styles from '../../Card.scss';
 
-export interface Props {
+export interface SubsectionProps {
   children?: React.ReactNode;
 }
 
-export default function Subsection({children}: Props) {
+export function Subsection({children}: SubsectionProps) {
   return <div className={styles.Subsection}>{children}</div>;
 }

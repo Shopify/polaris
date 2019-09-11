@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import List from '../List';
-import Item from '../../Item';
+import {List} from '../List';
+import {Item} from '../../Item';
 
 describe('<List />', () => {
   const mockProps = {

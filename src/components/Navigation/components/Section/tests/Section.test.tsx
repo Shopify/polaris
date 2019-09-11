@@ -7,10 +7,10 @@ import {
   mountWithAppProvider,
 } from 'test-utilities/legacy';
 
-import Collapsible from '../../../../Collapsible';
+import {Collapsible} from '../../../../Collapsible';
 import {NavigationContext} from '../../../context';
-import Item from '../../Item';
-import Section from '../Section';
+import {Item} from '../../Item';
+import {Section} from '../Section';
 
 import channelResults from './fixtures/AdminNavQuery/multiple-channels.json';
 

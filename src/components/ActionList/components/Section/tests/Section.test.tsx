@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Item from '../../Item';
-import Section from '../Section';
+import {Item} from '../../Item';
+import {Section} from '../Section';
 
 describe('<Section />', () => {
   it('renders its items', () => {

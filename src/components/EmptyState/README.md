@@ -45,7 +45,7 @@ Empty states should:
 - Be encouraging and never make merchants feel unsuccessful or guilty because
   they haven’t used a product or feature
 - Explain the steps merchants need to take to activate a product or feature
-- Use illustrations thoughtfully as outlined in our [illustration guidelines](/design/illustrations)
+- Use illustrations thoughtfully as outlined in our [illustration guidelines](https://polaris.shopify.com/design/illustrations)
 - Use only one primary call-to-action button
 
 ---
@@ -165,13 +165,13 @@ Use to explain a single feature before merchants have used it.
 
 <!-- content-for: android -->
 
-![Default empty state](/public_images/components/EmptyState/android/default@2x.png)
+![Default empty state](https://polaris.shopify.com/public_images/components/EmptyState/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default empty state](/public_images/components/EmptyState/ios/default@2x.png)
+![Default empty state](https://polaris.shopify.com/public_images/components/EmptyState/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -205,6 +205,6 @@ Use to provide additional but non-critical context for a new product or feature.
 
 ## Related components
 
-- To learn more about illustrations for empty states, [read the illustration guidelines](/design/illustrations)
-- To create page-level layout, [use the layout component](/components/structure/layout)
-- To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card)
+- To learn more about illustrations for empty states, [read the illustration guidelines](https://polaris.shopify.com/design/illustrations)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
+- To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/structure/callout-card)

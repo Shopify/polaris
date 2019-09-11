@@ -4,7 +4,7 @@ import styles from './SkeletonThumbnail.scss';
 
 export type Size = 'small' | 'medium' | 'large';
 
-export interface Props {
+export interface SkeletonThumbnailProps {
   /**
    * Size of the thumbnail
    * @default 'medium'
@@ -12,7 +12,7 @@ export interface Props {
   size?: Size;
 }
 
-export default function SkeletonThumbnail({size = 'medium'}: Props) {
+export function SkeletonThumbnail({size = 'medium'}: SkeletonThumbnailProps) {
   const className = classNames(
     styles.SkeletonThumbnail,
     size && styles[variationName('size', size)],

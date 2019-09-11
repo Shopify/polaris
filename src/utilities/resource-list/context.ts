@@ -1,10 +1,10 @@
 import React from 'react';
-import {SelectedItems} from './types';
+import {ResourceListSelectedItems} from './types';
 
 export interface ResourceListContextType {
   selectMode?: boolean;
   selectable?: boolean;
-  selectedItems?: SelectedItems;
+  selectedItems?: ResourceListSelectedItems;
   resourceName?: {
     singular: string;
     plural: string;

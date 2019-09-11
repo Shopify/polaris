@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Panel from '../Panel';
+import {Panel} from '../Panel';
 
 describe('<Panel />', () => {
   it('adds the tabpanel role', () => {

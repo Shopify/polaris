@@ -149,8 +149,7 @@
       "ariaLiveSingular": "{itemsLength} artikel",
       "ariaLivePlural": "{itemsLength} artikelen",
       "Item": {
-        "selectItem": "Selecteer: {accessibilityLabel}",
-        "deselectItem": "Selectie opheffen: {accessibilityLabel}",
+        "actionsDropdownLabel": "Acties voor {accessibilityLabel}",
         "actionsDropdown": "Vervolgkeuze acties"
       },
       "BulkActions": {
@@ -208,7 +207,7 @@
       "warningMessage": "De kleur {color} is niet bedoeld voor gebruik op {size} spinners. De beschikbare kleuren op grote spinner zijn: {colors}"
     },
     "Tabs": {
-      "toggleTabsLabel": "Schakelen tussen menu's"
+      "toggleTabsLabel": "Meer tabbladen"
     },
     "Tag": {
       "ariaLabel": "{children} verwijderen"

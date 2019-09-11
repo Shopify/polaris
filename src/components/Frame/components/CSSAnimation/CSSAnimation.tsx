@@ -7,7 +7,7 @@ export enum AnimationType {
   Fade = 'fade',
 }
 
-export interface Props {
+export interface CSSAnimationProps {
   in: boolean;
   className: string;
   type: AnimationType;
@@ -21,35 +21,29 @@ enum TransitionStatus {
   Exited = 'exited',
 }
 
-export default function Collapsible({
+export function CSSAnimation({
   in: inProp,
   className,
   type,
   children,
-}: Props) {
+}: CSSAnimationProps) {
   const [transitionStatus, setTransitionStatus] = useState(
     inProp ? TransitionStatus.Entering : TransitionStatus.Exited,
   );
   const isMounted = useRef(false);
   const node = useRef<HTMLDivElement>(null);
 
-  useEffect(
-    () => {
-      if (!isMounted.current) return;
-      transitionStatus === TransitionStatus.Entering &&
-        changeTransitionStatus(TransitionStatus.Entered);
-    },
-    [transitionStatus],
-  );
+  useEffect(() => {
+    if (!isMounted.current) return;
+    transitionStatus === TransitionStatus.Entering &&
+      changeTransitionStatus(TransitionStatus.Entered);
+  }, [transitionStatus]);
 
-  useEffect(
-    () => {
-      if (!isMounted.current) return;
-      inProp && changeTransitionStatus(TransitionStatus.Entering);
-      !inProp && changeTransitionStatus(TransitionStatus.Exiting);
-    },
-    [inProp],
-  );
+  useEffect(() => {
+    if (!isMounted.current) return;
+    inProp && changeTransitionStatus(TransitionStatus.Entering);
+    !inProp && changeTransitionStatus(TransitionStatus.Exiting);
+  }, [inProp]);
 
   useEffect(() => {
     isMounted.current = true;

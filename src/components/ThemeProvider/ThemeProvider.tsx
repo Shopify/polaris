@@ -9,7 +9,7 @@ interface State {
   colors: string[][] | undefined;
 }
 
-interface Props {
+interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
   theme: Theme;
   /** The content to display */
@@ -22,13 +22,13 @@ const defaultTheme = {
   '--top-bar-background-lighter': '#1d9ba4',
 };
 
-export default class ThemeProvider extends React.Component<Props, State> {
+export class ThemeProvider extends React.Component<ThemeProviderProps, State> {
   state: State = {
     theme: setThemeContext(this.props.theme),
     colors: setColors(this.props.theme),
   };
 
-  componentDidUpdate({theme: prevTheme}: Props) {
+  componentDidUpdate({theme: prevTheme}: ThemeProviderProps) {
     const {theme} = this.props;
     if (isEqual(prevTheme, theme)) {
       return;

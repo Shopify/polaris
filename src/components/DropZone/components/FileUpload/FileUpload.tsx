@@ -3,13 +3,10 @@ import {DragDropMajorMonotone} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {capitalize} from '../../../../utilities/capitalize';
-
-import Link from '../../../Link';
-import Icon from '../../../Icon';
-import Stack from '../../../Stack';
-import Button from '../../../Button';
-import Caption from '../../../Caption';
-import TextStyle from '../../../TextStyle';
+import {Icon} from '../../../Icon';
+import {Stack} from '../../../Stack';
+import {Caption} from '../../../Caption';
+import {TextStyle} from '../../../TextStyle';
 
 import {fileUpload, imageUpload} from '../../images';
 
@@ -18,24 +15,42 @@ import {useI18n} from '../../../../utilities/i18n';
 
 import styles from './FileUpload.scss';
 
-export interface Props {
+export interface FileUploadProps {
   actionTitle?: string;
   actionHint?: string;
 }
 
-export default function FileUpload(props: Props) {
+export function FileUpload(props: FileUploadProps) {
   const {translate} = useI18n();
-  const {size, type} = useContext(DropZoneContext);
+  const {size, type, focused, disabled} = useContext(DropZoneContext);
   const suffix = capitalize(type);
   const {
     actionTitle = translate(`Polaris.DropZone.FileUpload.actionTitle${suffix}`),
     actionHint = translate(`Polaris.DropZone.FileUpload.actionHint${suffix}`),
   } = props;
+
   const imageClasses = classNames(
     styles.Image,
     size && size === 'extraLarge' && styles.sizeExtraLarge,
     size && size === 'large' && styles.sizeLarge,
   );
+
+  const buttonStyles =
+    size === 'extraLarge' || size === 'large'
+      ? classNames(
+          styles.Button,
+          size && size !== 'extraLarge' && styles.slim,
+          focused && styles.focused,
+          disabled && styles.disabled,
+        )
+      : null;
+
+  const buttonMarkup =
+    (size === 'extraLarge' || size === 'large') && buttonStyles ? (
+      <div testID="Button" className={buttonStyles}>
+        {actionTitle}
+      </div>
+    ) : null;
 
   const extraLargeView =
     size === 'extraLarge' ? (
@@ -46,7 +61,7 @@ export default function FileUpload(props: Props) {
         {type === 'image' && (
           <img className={imageClasses} src={imageUpload} alt="" />
         )}
-        <Button>{actionTitle}</Button>
+        {buttonMarkup}
         <TextStyle variation="subdued">{actionHint}</TextStyle>
       </Stack>
     ) : null;
@@ -60,17 +75,29 @@ export default function FileUpload(props: Props) {
         {type === 'image' && (
           <img className={imageClasses} src={imageUpload} alt="" />
         )}
-        <Button size="slim">{actionTitle}</Button>
+        {buttonMarkup}
         <Caption>
           <TextStyle variation="subdued">{actionHint}</TextStyle>
         </Caption>
       </Stack>
     ) : null;
 
+  const actionTitleClassName = classNames(
+    styles.ActionTitle,
+    focused && !disabled && styles['ActionTitle-focused'],
+    disabled && styles['ActionTitle-disabled'],
+  );
+
+  const actionTitleMarkup = (
+    <div testID="Link" className={actionTitleClassName}>
+      {actionTitle}
+    </div>
+  );
+
   const mediumView =
     size === 'medium' ? (
       <Stack vertical spacing="tight">
-        <Link>{actionTitle}</Link>
+        {actionTitleMarkup}
         <Caption>
           <TextStyle variation="subdued">{actionHint}</TextStyle>
         </Caption>

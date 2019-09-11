@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import ScrollTo from '../ScrollTo';
+import {ScrollTo} from '../ScrollTo';
 import {ScrollableContext} from '../../../context';
 
 describe('<Scrollable.ScrollTo />', () => {

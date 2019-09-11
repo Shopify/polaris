@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Key} from '../../../types';
-import KeypressListener from '../KeypressListener';
+import {KeypressListener} from '../KeypressListener';
 
 interface HandlerMap {
   [eventName: string]: any;

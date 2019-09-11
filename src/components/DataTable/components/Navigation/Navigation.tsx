@@ -3,13 +3,13 @@ import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
-import Button from '../../../Button';
+import {Button} from '../../../Button';
 
 import {ColumnVisibilityData} from '../../types';
 
 import styles from '../../DataTable.scss';
 
-export interface Props {
+export interface NavigationProps {
   columnVisibilityData: ColumnVisibilityData[];
   isScrolledFarthestLeft?: boolean;
   isScrolledFarthestRight?: boolean;
@@ -17,13 +17,13 @@ export interface Props {
   navigateTableRight?(): void;
 }
 
-export default function Navigation({
+export function Navigation({
   columnVisibilityData,
   isScrolledFarthestLeft,
   isScrolledFarthestRight,
   navigateTableLeft,
   navigateTableRight,
-}: Props) {
+}: NavigationProps) {
   const {translate} = useI18n();
 
   const pipMarkup = columnVisibilityData.map((column, index) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Key} from 'types';
-import DualThumb, {Props as DualThumbProps} from '../DualThumb';
+import {DualThumb, DualThumbProps} from '../DualThumb';
 
 describe('<DualThumb />', () => {
   const mockProps: DualThumbProps = {

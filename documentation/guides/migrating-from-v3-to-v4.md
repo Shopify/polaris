@@ -1,6 +1,6 @@
 # Migrating from v3 to v4
 
-Polaris v4.0.0 removes most features deprecated in v3.x.x releases. This file describes all code updates required to stay up to date.
+Polaris v4.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v4.0.0)) removes most features deprecated in v3.x.x releases. This file describes all code updates required to stay up to date.
 
 ## Table of contents
 

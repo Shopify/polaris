@@ -1,4 +1,3 @@
-import ResourceItem from './ResourceItem';
+import ResourceItem, {ResourceItemProps} from './ResourceItem';
 
-export {ConditionalProps as Props} from './ResourceItem';
-export default ResourceItem;
+export {ResourceItem, ResourceItemProps};

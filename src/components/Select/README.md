@@ -52,7 +52,7 @@ Labels should:
 - Give a short description (1–3 words) of the requested input.
 - Be written in sentence case (the first word capitalized, the rest lowercase).
 - Avoid punctuation and articles (“the”, “an”, “a”).
-- Be independent sentences. To support [internationalization](/patterns-and-guides/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
+- Be independent sentences. To support [internationalization](https://polaris.shopify.com/patterns-and-guides/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
 - Be descriptive, not instructional. If the selection needs more explanation, use help text below the field.
 
 <!-- usagelist -->
@@ -133,7 +133,7 @@ class SelectExample extends React.Component {
 
 The iOS picker expands in-line. Merchants scroll to select the item they want.
 
-![iOS select, and select with option menu](/public_images/components/Select/ios/default@2x.png)
+![iOS select, and select with option menu](https://polaris.shopify.com/public_images/components/Select/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -141,7 +141,7 @@ The iOS picker expands in-line. Merchants scroll to select the item they want.
 
 The Android menu is similar in behavior to the web dropdown.
 
-![Android select, and select with option menu](/public_images/components/Select/android/default@2x.png)
+![Android select, and select with option menu](https://polaris.shopify.com/public_images/components/Select/android/default@2x.png)
 
 <!-- /content-for -->
 
@@ -202,13 +202,13 @@ Use for selections that aren’t currently available. The surrounding interface 
 
 <!-- content-for: ios -->
 
-![Disabled select component on iOS](/public_images/components/Select/ios/disabled@2x.png)
+![Disabled select component on iOS](https://polaris.shopify.com/public_images/components/Select/ios/disabled@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: android -->
 
-![Disabled select component on Android](/public_images/components/Select/android/disabled@2x.png)
+![Disabled select component on Android](https://polaris.shopify.com/public_images/components/Select/android/disabled@2x.png)
 
 <!-- /content-for -->
 
@@ -254,7 +254,7 @@ To render an invalid select and its validation error separately:
 
 - Set a unique identifier to the select component `id` prop
 - Set a boolean to the select component `error` prop
-- Use an [inline error component](/components/forms/inline-error) to describe the invalid select input and set its `fieldID` prop to the same unique identifier used for the text field `id`
+- Use an [inline error component](https://polaris.shopify.com/components/forms/inline-error) to describe the invalid select input and set its `fieldID` prop to the same unique identifier used for the text field `id`
 
 ```jsx
 class SeparateValidationErrorExample extends React.Component {
@@ -329,5 +329,5 @@ class SeparateValidationErrorExample extends React.Component {
 
 ## Related components
 
-- To let merchants select one option from a list with less than 4 options, use [the choice list component](/components/forms/choice-list)
-- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](/components/lists-and-tables/option-list) inside a [popover](/components/overlays/popover)
+- To let merchants select one option from a list with less than 4 options, use [the choice list component](https://polaris.shopify.com/components/forms/choice-list)
+- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](https://polaris.shopify.com/components/lists-and-tables/option-list) inside a [popover](https://polaris.shopify.com/components/overlays/popover)

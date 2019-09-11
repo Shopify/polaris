@@ -3,8 +3,8 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 
-import Icon from '../../../Icon';
-import VisuallyHidden from '../../../VisuallyHidden';
+import {Icon} from '../../../Icon';
+import {VisuallyHidden} from '../../../VisuallyHidden';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -14,7 +14,7 @@ import styles from './SearchField.scss';
 
 const getUniqueId = createUniqueIDFactory('SearchField');
 
-export interface Props {
+export interface SearchFieldProps {
   /** Initial value for the input */
   value: string;
   /** Hint text to display */
@@ -33,7 +33,7 @@ export interface Props {
   onCancel?(): void;
 }
 
-export type ComposedProps = Props & WithAppProviderProps;
+export type ComposedProps = SearchFieldProps & WithAppProviderProps;
 
 export class SearchField extends React.Component<ComposedProps, never> {
   private input: React.RefObject<HTMLInputElement> = React.createRef();
@@ -50,7 +50,7 @@ export class SearchField extends React.Component<ComposedProps, never> {
     }
   }
 
-  componentDidUpdate({focused: wasFocused}: Props) {
+  componentDidUpdate({focused: wasFocused}: SearchFieldProps) {
     const {
       input: {current: input},
     } = this;
@@ -174,4 +174,7 @@ function preventDefault(event: React.KeyboardEvent<HTMLInputElement>) {
     event.preventDefault();
   }
 }
-export default withAppProvider<Props>()(SearchField);
+
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<SearchFieldProps>()(SearchField);

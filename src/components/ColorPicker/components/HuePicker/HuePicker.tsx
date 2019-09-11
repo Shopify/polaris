@@ -1,5 +1,5 @@
 import React from 'react';
-import Slidable, {Position} from '../Slidable';
+import {Slidable, Position} from '../Slidable';
 import styles from '../../ColorPicker.scss';
 import {calculateDraggerY, hueForDraggerY} from './utilities';
 
@@ -8,12 +8,12 @@ interface State {
   draggerHeight: number;
 }
 
-export interface Props {
+export interface HuePickerProps {
   hue: number;
   onChange(hue: number): void;
 }
 
-export default class HuePicker extends React.PureComponent<Props, State> {
+export class HuePicker extends React.PureComponent<HuePickerProps, State> {
   state: State = {
     sliderHeight: 0,
     draggerHeight: 0,

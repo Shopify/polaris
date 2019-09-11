@@ -32,7 +32,7 @@ Use to indicate that the page is loading.
 
 ## Required components
 
-The loading component must be wrapped in the [frame](/components/structure/frame) component or used in an embedded application.
+The loading component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component or used in an embedded application.
 
 ---
 
@@ -77,9 +77,9 @@ The loading component should:
 
 ## Related components
 
-- To indicate that an action has been received, use the [Spinner](/components/feedback-indicators/spinner)
-- To improve user experience and reduce the appearance of long loading times, use the [Progress bar](/components/feedback-indicators/progress-bar) component.
-- To better represent loading content, use [Skeleton page](/components/feedback-indicators/skeleton-page) along with [Skeleton body text](/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) components.
+- To indicate that an action has been received, use the [Spinner](https://polaris.shopify.com/components/feedback-indicators/spinner)
+- To improve user experience and reduce the appearance of long loading times, use the [Progress bar](https://polaris.shopify.com/components/feedback-indicators/progress-bar) component.
+- To better represent loading content, use [Skeleton page](https://polaris.shopify.com/components/feedback-indicators/skeleton-page) along with [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](https://polaris.shopify.com/components/feedback-indicators/skeleton-display-text) components.
 
 ---
 

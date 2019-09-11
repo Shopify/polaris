@@ -2,14 +2,14 @@ import React from 'react';
 import {AnnotatedSection, Section} from './components';
 import styles from './Layout.scss';
 
-export interface Props {
+export interface LayoutProps {
   /** Automatically adds sections to layout. */
   sectioned?: boolean;
   /** The content to display inside the layout. */
   children?: React.ReactNode;
 }
 
-export default class Layout extends React.Component<Props, never> {
+export class Layout extends React.Component<LayoutProps, never> {
   static AnnotatedSection = AnnotatedSection;
   static Section = Section;
 

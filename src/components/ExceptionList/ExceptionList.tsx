@@ -1,9 +1,9 @@
 import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
 
-import Icon from '../Icon';
+import {Icon} from '../Icon';
 import {IconProps} from '../../types';
-import Truncate from '../Truncate';
+import {Truncate} from '../Truncate';
 
 import styles from './ExceptionList.scss';
 
@@ -25,12 +25,12 @@ export interface Item {
   truncate?: boolean;
 }
 
-export interface Props {
+export interface ExceptionListProps {
   /** Collection of items for list */
   items: Item[];
 }
 
-export default function ExceptionList({items: itemsList}: Props) {
+export function ExceptionList({items: itemsList}: ExceptionListProps) {
   const items = itemsList.map((item, index) => {
     const {status, icon, title, description, truncate = false} = item;
 

@@ -1,3 +1,1 @@
-import ScrollTo from './ScrollTo';
-
-export default ScrollTo;
+export {ScrollTo} from './ScrollTo';

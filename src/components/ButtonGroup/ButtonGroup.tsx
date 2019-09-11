@@ -4,7 +4,7 @@ import {elementChildren} from '../../utilities/components';
 import {Item} from './components';
 import styles from './ButtonGroup.scss';
 
-export interface Props {
+export interface ButtonGroupProps {
   /** Join buttons as segmented group */
   segmented?: boolean;
   /** Buttons will stretch/shrink to occupy the full width */
@@ -15,12 +15,12 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export default function ButtonGroup({
+export function ButtonGroup({
   children,
   segmented,
   fullWidth,
   connectedTop,
-}: Props) {
+}: ButtonGroupProps) {
   const className = classNames(
     styles.ButtonGroup,
     segmented && styles.segmented,

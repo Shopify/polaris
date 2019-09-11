@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {TextField} from 'components';
-import FormLayout from '../FormLayout';
+import {FormLayout} from '../FormLayout';
 
 describe('<FormLayout />', () => {
   it('renders its children', () => {

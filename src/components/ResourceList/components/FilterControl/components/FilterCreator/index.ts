@@ -1,4 +1,3 @@
-import FilterCreator from './FilterCreator';
+import FilterCreator, {FilterCreatorProps} from './FilterCreator';
 
-export {Props} from './FilterCreator';
-export default FilterCreator;
+export {FilterCreator, FilterCreatorProps};

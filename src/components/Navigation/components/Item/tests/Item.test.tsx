@@ -5,7 +5,7 @@ import {Icon, UnstyledLink, Indicator, Badge} from 'components';
 import {act, trigger, mountWithAppProvider} from 'test-utilities/legacy';
 import {NavigationContext} from '../../../context';
 
-import Item, {Props as ItemProps} from '../Item';
+import {Item, ItemProps} from '../Item';
 import {Secondary} from '../components';
 
 describe('<Nav.Item />', () => {

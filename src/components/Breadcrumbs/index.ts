@@ -1,4 +1,1 @@
-import Breadcrumbs from './Breadcrumbs';
-
-export {Props} from './Breadcrumbs';
-export default Breadcrumbs;
+export {Breadcrumbs, BreadcrumbsProps} from './Breadcrumbs';

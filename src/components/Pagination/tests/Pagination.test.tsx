@@ -3,7 +3,7 @@ import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Tooltip, TextField} from 'components';
 import {Key} from '../../../types';
-import Pagination from '../Pagination';
+import {Pagination} from '../Pagination';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;

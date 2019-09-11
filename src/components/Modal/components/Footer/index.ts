@@ -1,4 +1,1 @@
-import Footer from './Footer';
-
-export {Props as FooterProps} from './Footer';
-export default Footer;
+export {Footer, FooterProps} from './Footer';

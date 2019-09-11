@@ -1,10 +1,10 @@
 import React from 'react';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {classNames} from '../../utilities/css';
-import Checkbox from '../Checkbox';
-import RadioButton from '../RadioButton';
-import InlineError, {errorTextID} from '../InlineError';
+import {useUniqueId} from '../../utilities/unique-id';
+import {Checkbox} from '../Checkbox';
+import {RadioButton} from '../RadioButton';
+import {InlineError, errorTextID} from '../InlineError';
 
 import {Error} from '../../types';
 
@@ -27,7 +27,7 @@ export interface ChoiceDescriptor {
 
 export type Choice = ChoiceDescriptor;
 
-export interface Props {
+export interface ChoiceListProps {
   /** Label for list of choices */
   title: string;
   /** Collection of choices */
@@ -48,9 +48,7 @@ export interface Props {
   onChange?(selected: string[], name: string): void;
 }
 
-const getUniqueID = createUniqueIDFactory('ChoiceList');
-
-export default function ChoiceList({
+export function ChoiceList({
   title,
   titleHidden,
   allowMultiple,
@@ -59,12 +57,13 @@ export default function ChoiceList({
   onChange = noop,
   error,
   disabled = false,
-  name = getUniqueID(),
-}: Props) {
+  name: nameProp,
+}: ChoiceListProps) {
   // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
   // see https://github.com/Microsoft/TypeScript/issues/28768
   const ControlComponent: any = allowMultiple ? Checkbox : RadioButton;
 
+  const name = useUniqueId('ChoiceList', nameProp);
   const finalName = allowMultiple ? `${name}[]` : name;
 
   const className = classNames(

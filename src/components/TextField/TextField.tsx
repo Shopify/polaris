@@ -2,18 +2,18 @@ import React from 'react';
 import {addEventListener} from '@shopify/javascript-utilities/events';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
-import VisuallyHidden from '../VisuallyHidden';
+import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
 
-import Labelled, {Action, helpTextID, labelID} from '../Labelled';
-import Connected from '../Connected';
+import {Labelled, Action, helpTextID, labelID} from '../Labelled';
+import {Connected} from '../Connected';
 
 import {Error, Key} from '../../types';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import Icon from '../Icon';
+import {Icon} from '../Icon';
 import {Resizer, Spinner} from './components';
 import styles from './TextField.scss';
 
@@ -32,7 +32,7 @@ export type Type =
   | 'week'
   | 'currency';
 
-export type Alignment = 'left' | 'center' | 'right';
+type Alignment = 'left' | 'center' | 'right';
 
 interface State {
   height?: number | null;
@@ -87,12 +87,12 @@ export interface BaseProps {
   step?: number;
   /** Enable automatic completion by the browser */
   autoComplete?: boolean | string;
-  /** Mimics the behavior of the native HTML attribute, limiting how high the spinner can increment the value */
-  max?: number;
+  /** Mimics the behavior of the native HTML attribute, limiting the maximum value */
+  max?: number | string;
   /** Maximum character length for an input */
   maxLength?: number;
-  /** Mimics the behavior of the native HTML attribute, limiting how low the spinner can decrement the value */
-  min?: number;
+  /** Mimics the behavior of the native HTML attribute, limiting the minimum value */
+  min?: number | string;
   /** Minimum character length for an input */
   minLength?: number;
   /** A regular expression to check the value against */
@@ -121,15 +121,15 @@ export interface BaseProps {
   onBlur?(): void;
 }
 
-export interface NonMutuallyExclusiveProps extends BaseProps {}
+interface NonMutuallyExclusiveProps extends BaseProps {}
 
-export type Props = NonMutuallyExclusiveProps &
+export type TextFieldProps = NonMutuallyExclusiveProps &
   (
     | {readOnly: true}
     | {disabled: true}
     | {onChange(value: string, id: string): void});
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = TextFieldProps & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('TextField');
 
@@ -432,7 +432,10 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     // step / value has.
     const decimalPlaces = Math.max(dpl(numericValue), dpl(step));
 
-    const newValue = Math.min(max, Math.max(numericValue + steps * step, min));
+    const newValue = Math.min(
+      Number(max),
+      Math.max(numericValue + steps * step, Number(min)),
+    );
     onChange(String(newValue.toFixed(decimalPlaces)), this.state.id);
   };
 
@@ -528,4 +531,6 @@ function normalizeAutoComplete(autoComplete?: boolean | string) {
   }
 }
 
-export default withAppProvider<Props>()(TextField);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<TextFieldProps>()(TextField);

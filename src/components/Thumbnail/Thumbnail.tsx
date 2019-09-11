@@ -1,11 +1,11 @@
 import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
-import Image from '../Image';
+import {Image} from '../Image';
 import styles from './Thumbnail.scss';
 
 export type Size = 'small' | 'medium' | 'large';
 
-export interface Props {
+export interface ThumbnailProps {
   /**
    * Size of thumbnail
    * @default 'medium'
@@ -17,7 +17,7 @@ export interface Props {
   alt: string;
 }
 
-export default function Thumbnail({source, alt, size = 'medium'}: Props) {
+export function Thumbnail({source, alt, size = 'medium'}: ThumbnailProps) {
   const className = classNames(
     styles.Thumbnail,
     size && styles[variationName('size', size)],

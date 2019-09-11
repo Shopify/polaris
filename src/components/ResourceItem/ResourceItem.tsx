@@ -4,14 +4,14 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
 import {classNames} from '../../utilities/css';
 import {DisableableAction} from '../../types';
-import ActionList from '../ActionList';
-import Popover from '../Popover';
-import {Props as AvatarProps} from '../Avatar';
-import UnstyledLink from '../UnstyledLink';
-import {Props as ThumbnailProps} from '../Thumbnail';
-import ButtonGroup from '../ButtonGroup';
-import Checkbox from '../Checkbox';
-import Button, {buttonsFrom} from '../Button';
+import {ActionList} from '../ActionList';
+import {Popover} from '../Popover';
+import {AvatarProps} from '../Avatar';
+import {UnstyledLink} from '../UnstyledLink';
+import {ThumbnailProps} from '../Thumbnail';
+import {ButtonGroup} from '../ButtonGroup';
+import {Checkbox} from '../Checkbox';
+import {Button, buttonsFrom} from '../Button';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -20,12 +20,14 @@ import {
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
-  SelectedItems,
+  ResourceListSelectedItems,
 } from '../../utilities/resource-list';
 import styles from './ResourceItem.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
+
 export type MediaSize = 'small' | 'medium' | 'large';
+
 export type MediaType = 'avatar' | 'thumbnail';
 
 interface WithContextTypes<IJ> {
@@ -33,8 +35,10 @@ interface WithContextTypes<IJ> {
 }
 
 export interface Props {
-  /** Visually hidden text for screen readers */
+  /** Visually hidden text for screen readers used for item link*/
   accessibilityLabel?: string;
+  /** Individual item name used by various text labels */
+  name?: string;
   /** Id of the element the item onClick controls */
   ariaControls?: string;
   /** Tells screen reader the controlled element is expanded */
@@ -67,7 +71,7 @@ export interface PropsWithClick extends Props {
   onClick(id?: string): void;
 }
 
-export type ConditionalProps = PropsWithUrl | PropsWithClick;
+export type ResourceItemProps = PropsWithUrl | PropsWithClick;
 
 interface State {
   actionsMenuVisible: boolean;
@@ -141,6 +145,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       persistActions = false,
       polaris: {intl},
       accessibilityLabel,
+      name,
       context: {selectable, selectMode, loading},
     } = this.props;
 
@@ -155,17 +160,9 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       </div>
     ) : null;
 
-    const checkboxAccessibilityLabel =
-      accessibilityLabel || intl.translate('Polaris.Common.checkbox');
-
     if (selectable) {
-      const label = selected
-        ? intl.translate('Polaris.ResourceList.Item.deselectItem', {
-            accessibilityLabel: checkboxAccessibilityLabel,
-          })
-        : intl.translate('Polaris.ResourceList.Item.selectItem', {
-            accessibilityLabel: checkboxAccessibilityLabel,
-          });
+      const checkboxAccessibilityLabel =
+        name || accessibilityLabel || intl.translate('Polaris.Common.checkbox');
 
       handleMarkup = (
         <div
@@ -178,7 +175,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
               <Checkbox
                 testID="Checkbox"
                 id={this.checkboxId}
-                label={label}
+                label={checkboxAccessibilityLabel}
                 labelHidden
                 checked={selected}
                 disabled={loading}
@@ -217,21 +214,24 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
               {buttonsFrom(shortcutActions, {
-                size: 'slim',
                 plain: true,
               })}
             </ButtonGroup>
           </div>
         );
 
+        const disclosureAccessibilityLabel = name
+          ? intl.translate('Polaris.ResourceList.Item.actionsDropdownLabel', {
+              accessibilityLabel: name,
+            })
+          : intl.translate('Polaris.ResourceList.Item.actionsDropdown');
+
         disclosureMarkup = (
           <div className={styles.Disclosure} onClick={stopPropagation}>
             <Popover
               activator={
                 <Button
-                  accessibilityLabel={intl.translate(
-                    'Polaris.ResourceList.Item.actionsDropdown',
-                  )}
+                  accessibilityLabel={disclosureAccessibilityLabel}
                   onClick={this.handleActionsClick}
                   plain
                   icon={HorizontalDotsMinor}
@@ -426,7 +426,7 @@ function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();
 }
 
-function isSelected(id: string, selectedItems?: SelectedItems) {
+function isSelected(id: string, selectedItems?: ResourceListSelectedItems) {
   return Boolean(
     selectedItems &&
       ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||
@@ -442,4 +442,6 @@ function ResourceItem(props: CombinedProps) {
   );
 }
 
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
 export default withAppProvider<Props>()(ResourceItem);

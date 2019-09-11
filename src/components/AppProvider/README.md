@@ -92,7 +92,7 @@ AppProvider works by default without any additional options passed to it.
 
 ### With i18n
 
-With an `i18n`, `AppProvider` will provide these translations to polaris components. See [using translations](/components/structure/app-provider#using-translations)
+With an `i18n`, `AppProvider` will provide these translations to polaris components. See [using translations](https://polaris.shopify.com/components/structure/app-provider#using-translations)
 
 ```jsx
 <AppProvider
@@ -198,7 +198,7 @@ class ProviderLinkExample extends React.Component {
 
 ### With theme
 
-With a `theme`, the app provider component will set light, dark, and text colors for the [top bar](/components/structure/top-bar) component when given a `background` color, as well as a logo for the top bar and [contextual save bar](/components/forms/contextual-save-bar) components.
+With a `theme`, the app provider component will set light, dark, and text colors for the [top bar](https://polaris.shopify.com/components/structure/top-bar) component when given a `background` color, as well as a logo for the top bar and [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) components.
 
 ```jsx
 class ProviderThemeExample extends React.Component {
@@ -314,7 +314,7 @@ class ProviderThemeExample extends React.Component {
 
 ### With theme using all theme keys
 
-Provide specific keys and corresponding colors to the [top bar](/components/structure/top-bar) component theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
+Provide specific keys and corresponding colors to the [top bar](https://polaris.shopify.com/components/structure/top-bar) component theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
 
 ```jsx
 class ProviderThemeExample extends React.Component {

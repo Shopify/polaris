@@ -1,1 +1,1 @@
-export {default as Secondary} from './Secondary';
+export {Secondary} from './Secondary';

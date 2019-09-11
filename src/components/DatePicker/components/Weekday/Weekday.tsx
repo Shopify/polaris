@@ -3,13 +3,13 @@ import {Weekdays} from '@shopify/javascript-utilities/dates';
 import {classNames} from '../../../../utilities/css';
 import styles from '../../DatePicker.scss';
 
-export interface Props {
+export interface WeekdayProps {
   label: Weekdays;
   title: string;
   current: boolean;
 }
 
-export default function Weekday({label, title, current}: Props) {
+export function Weekday({label, title, current}: WeekdayProps) {
   const className = classNames(
     styles.Weekday,
     current && styles['Weekday-current'],

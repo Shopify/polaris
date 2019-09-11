@@ -1,4 +1,1 @@
-import AlphaPicker from './AlphaPicker';
-
-export {Props} from './AlphaPicker';
-export default AlphaPicker;
+export {AlphaPicker, AlphaPickerProps} from './AlphaPicker';

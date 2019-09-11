@@ -1,4 +1,3 @@
-import ResourcePicker from './ResourcePicker';
+import ResourcePicker, {ResourcePickerProps} from './ResourcePicker';
 
-export {Props} from './ResourcePicker';
-export default ResourcePicker;
+export {ResourcePicker, ResourcePickerProps};

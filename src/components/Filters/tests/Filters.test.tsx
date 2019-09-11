@@ -9,12 +9,12 @@ import {
   findByTestID,
 } from 'test-utilities/legacy';
 
-import Filters, {Props} from '../Filters';
+import Filters, {FiltersProps} from '../Filters';
 import {ConnectedFilterControl} from '../components';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;
 const MockChild = () => <div />;
-const mockProps: Props = {
+const mockProps: FiltersProps = {
   onQueryChange: noop,
   onQueryClear: noop,
   onClearAll: noop,
@@ -162,7 +162,7 @@ describe('<Filters />', () => {
   });
 
   describe('<ConnectedFilterControl />', () => {
-    const mockPropsWithShortcuts: Props = {
+    const mockPropsWithShortcuts: FiltersProps = {
       onQueryChange: noop,
       onQueryClear: noop,
       onClearAll: noop,

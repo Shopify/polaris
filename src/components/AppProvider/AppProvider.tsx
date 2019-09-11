@@ -1,6 +1,6 @@
 import React from 'react';
 import {Theme} from '../../utilities/theme';
-import ThemeProvider from '../ThemeProvider';
+import {ThemeProvider} from '../ThemeProvider';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
 import {
   ScrollLockManager,
@@ -16,6 +16,11 @@ import {
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
+import {
+  UniqueIdFactory,
+  UniqueIdFactoryContext,
+  globalIdGeneratorFactory,
+} from '../../utilities/unique-id';
 
 interface State {
   intl: I18n;
@@ -23,7 +28,7 @@ interface State {
   link: LinkLikeComponent | undefined;
 }
 
-export interface Props extends AppBridgeOptions {
+export interface AppProviderProps extends AppBridgeOptions {
   /** A locale object or array of locale objects that overrides default translations */
   i18n: TranslationDictionary | TranslationDictionary[];
   /** A custom component to use for all links used by Polaris components */
@@ -32,14 +37,17 @@ export interface Props extends AppBridgeOptions {
   theme?: Theme;
 }
 
-export default class AppProvider extends React.Component<Props, State> {
+export class AppProvider extends React.Component<AppProviderProps, State> {
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
+  private uniqueIdFactory: UniqueIdFactory;
 
-  constructor(props: Props) {
+  constructor(props: AppProviderProps) {
     super(props);
     this.stickyManager = new StickyManager();
     this.scrollLockManager = new ScrollLockManager();
+    this.uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
+
     const {i18n, apiKey, shopOrigin, forceRedirect, linkComponent} = this.props;
 
     // eslint-disable-next-line react/state-in-constructor
@@ -62,7 +70,7 @@ export default class AppProvider extends React.Component<Props, State> {
     apiKey: prevApiKey,
     shopOrigin: prevShopOrigin,
     forceRedirect: prevForceRedirect,
-  }: Props) {
+  }: AppProviderProps) {
     const {i18n, linkComponent, apiKey, shopOrigin, forceRedirect} = this.props;
 
     if (
@@ -91,13 +99,15 @@ export default class AppProvider extends React.Component<Props, State> {
       <I18nContext.Provider value={intl}>
         <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
           <StickyManagerContext.Provider value={this.stickyManager}>
-            <AppBridgeContext.Provider value={appBridge}>
-              <LinkContext.Provider value={link}>
-                <ThemeProvider theme={theme}>
-                  {React.Children.only(children)}
-                </ThemeProvider>
-              </LinkContext.Provider>
-            </AppBridgeContext.Provider>
+            <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
+              <AppBridgeContext.Provider value={appBridge}>
+                <LinkContext.Provider value={link}>
+                  <ThemeProvider theme={theme}>
+                    {React.Children.only(children)}
+                  </ThemeProvider>
+                </LinkContext.Provider>
+              </AppBridgeContext.Provider>
+            </UniqueIdFactoryContext.Provider>
           </StickyManagerContext.Provider>
         </ScrollLockManagerContext.Provider>
       </I18nContext.Provider>

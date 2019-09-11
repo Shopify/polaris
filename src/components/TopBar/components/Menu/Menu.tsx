@@ -1,12 +1,12 @@
 import React from 'react';
 
-import ActionList, {Props as ActionListProps} from '../../../ActionList';
-import Popover, {Props as PopoverProps} from '../../../Popover';
+import {ActionList, ActionListProps} from '../../../ActionList';
+import {Popover} from '../../../Popover';
 
 import {Message, MessageProps} from './components';
 import styles from './Menu.scss';
 
-export interface Props {
+export interface MenuProps {
   /** Accepts an activator component that renders inside of a button that opens the menu */
   activatorContent: React.ReactNode;
   /** An array of action objects that are rendered inside of a popover triggered by this menu */
@@ -15,24 +15,14 @@ export interface Props {
   message?: MessageProps;
   /** A boolean property indicating whether the menu is currently open */
   open: boolean;
-  /** The preferred alignment of the popover relative to its activator */
-  preferredAlignment?: PopoverProps['preferredAlignment'];
   /** A callback function to handle opening the menu popover */
   onOpen(): void;
   /** A callback function to handle closing the menu popover */
   onClose(): void;
 }
 
-export default function Menu(props: Props) {
-  const {
-    actions,
-    onOpen,
-    onClose,
-    open,
-    activatorContent,
-    message,
-    preferredAlignment,
-  } = props;
+export function Menu(props: MenuProps) {
+  const {actions, onOpen, onClose, open, activatorContent, message} = props;
 
   const badgeProps = message &&
     message.badge && {
@@ -56,7 +46,6 @@ export default function Menu(props: Props) {
 
   return (
     <Popover
-      preferredAlignment={preferredAlignment}
       activator={
         <div className={styles.ActivatorWrapper}>
           <button type="button" className={styles.Activator} onClick={onOpen}>

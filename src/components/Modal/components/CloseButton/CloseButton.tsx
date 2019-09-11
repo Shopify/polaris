@@ -3,16 +3,16 @@ import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 
-import Icon from '../../../Icon';
+import {Icon} from '../../../Icon';
 
 import styles from './CloseButton.scss';
 
-export interface Props {
+export interface CloseButtonProps {
   title?: boolean;
   onClick(): void;
 }
 
-export default function CloseButton({title = true, onClick}: Props) {
+export function CloseButton({title = true, onClick}: CloseButtonProps) {
   const intl = useI18n();
 
   const className = classNames(
