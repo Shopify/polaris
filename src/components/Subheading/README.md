@@ -34,7 +34,7 @@ Subheadings should:
 
 - Be used to explain and clearly label logical groups in existing sections of a page
 - Not be used without a parent heading
-- Not be used in tables or list items, such as for the primary content in a [resource list](/components/lists-and-tables/resource-list)
+- Not be used in tables or list items, such as for the primary content in a [resource list](https://polaris.shopify.com/components/lists-and-tables/resource-list)
 
 ---
 
@@ -76,13 +76,13 @@ Use to structure content in a card.
 
 <!-- content-for: android -->
 
-![Subheading in a card](/public_images/components/Subheading/android/default@2x.png)
+![Subheading in a card](https://polaris.shopify.com/public_images/components/Subheading/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Subheading in a card](/public_images/components/Subheading/ios/default@2x.png)
+![Subheading in a card](https://polaris.shopify.com/public_images/components/Subheading/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -90,8 +90,8 @@ Use to structure content in a card.
 
 ## Related components
 
-- To learn how a card is structured to group similar concepts and tasks together, [use the card component](/components/structure/card)
-- To create a title for a card or top-level page section, [use the heading component](/components/titles-and-text/heading)
+- To learn how a card is structured to group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/structure/card)
+- To create a title for a card or top-level page section, [use the heading component](https://polaris.shopify.com/components/titles-and-text/heading)
 
 ---
 
@@ -121,7 +121,7 @@ A clear and consistent heading structure helps merchants who have difficulty wit
 
 Use the `element` prop to determine the specific HTML element that’s output for the subheading. The component defaults to a level 3 heading (`<h3>`). Use a different value for the `element` prop if a different subheading fits the context better.
 
-Learn more about writing helpful [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
+Learn more about writing helpful [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
 
 <!-- usageblock -->
 

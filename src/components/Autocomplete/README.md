@@ -26,7 +26,7 @@ The autocomplete component should:
 
 ## Content guidelines
 
-The input field for autocomplete should follow the [content guidelines](/components/forms/text-field) for text fields.
+The input field for autocomplete should follow the [content guidelines](https://polaris.shopify.com/components/forms/text-field) for text fields.
 
 ---
 
@@ -520,8 +520,8 @@ class AutocompleteExample extends React.Component {
 
 ## Related components
 
-- For an input field without suggested options, [use the text field component](/components/forms/text-field)
-- For a list of selectable options not linked to an input field, [use the option list component](/components/lists-and-tables/option-list)
+- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
+- For a list of selectable options not linked to an input field, [use the option list component](https://polaris.shopify.com/components/lists-and-tables/option-list)
 
 ---
 

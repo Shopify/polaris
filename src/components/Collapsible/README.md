@@ -45,7 +45,7 @@ The collapsible component should:
 
 ## Content guidelines
 
-Collapsible containers are cards with expandable and collapsible functionality, and should follow the [content guidelines](/components/structure/card#section-content-guidelines) for cards.
+Collapsible containers are cards with expandable and collapsible functionality, and should follow the [content guidelines](https://polaris.shopify.com/components/structure/card#section-content-guidelines) for cards.
 
 ---
 
@@ -101,13 +101,13 @@ class CollapsibleExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Collapsible on Android](/public_images/components/Collapsible/android/default@2x.png)
+![Collapsible on Android](https://polaris.shopify.com/public_images/components/Collapsible/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Collapsible on iOS](/public_images/components/Collapsible/ios/default@2x.png)
+![Collapsible on iOS](https://polaris.shopify.com/public_images/components/Collapsible/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -115,8 +115,8 @@ class CollapsibleExample extends React.Component {
 
 ## Related components
 
-- To control a collapsible component, use the [button](/components/actions/button) component
-- To put long sections of information in a container that allows for scrolling, [use the scrollable component](/components/behavior/scrollable)
+- To control a collapsible component, use the [button](https://polaris.shopify.com/components/actions/button) component
+- To put long sections of information in a container that allows for scrolling, [use the scrollable component](https://polaris.shopify.com/components/behavior/scrollable)
 
 ---
 
@@ -142,7 +142,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-Use the collapsible component in conjunction with a [button](/components/actions/button). Place the collapsible content immediately after the button that controls it, so merchants with vision or attention issues can easily discover what content is being affected.
+Use the collapsible component in conjunction with a [button](https://polaris.shopify.com/components/actions/button). Place the collapsible content immediately after the button that controls it, so merchants with vision or attention issues can easily discover what content is being affected.
 
 - Use the required `id` prop of the collapsible component to give the content a unique `id` value
 - Use the `ariaExpanded` prop on the button component to add an `aria-expanded` attribute, which conveys the expanded or collapsed state to screen reader users

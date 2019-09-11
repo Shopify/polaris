@@ -41,13 +41,13 @@ Use the action accessories to add actions that are relevant to what merchants ar
 
 <!-- content-for: android -->
 
-![Keyboard accessory with actions](/public_images/components/KeyboardAccessories/android/toolbar@2x.png)
+![Keyboard accessory with actions](https://polaris.shopify.com/public_images/components/KeyboardAccessories/android/toolbar@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Keyboard accessory with actions](/public_images/components/KeyboardAccessories/ios/toolbar@2x.png)
+![Keyboard accessory with actions](https://polaris.shopify.com/public_images/components/KeyboardAccessories/ios/toolbar@2x.png)
 
 <!-- /content-for -->
 
@@ -59,13 +59,13 @@ Use to make message entry easier in messaging and chat-based products.
 
 <!-- content-for: android -->
 
-![Keyboard accessory with text field](/public_images/components/KeyboardAccessories/android/text-field@2x.png)
+![Keyboard accessory with text field](https://polaris.shopify.com/public_images/components/KeyboardAccessories/android/text-field@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Keyboard accessory with text field](/public_images/components/KeyboardAccessories/ios/text-field@2x.png)
+![Keyboard accessory with text field](https://polaris.shopify.com/public_images/components/KeyboardAccessories/ios/text-field@2x.png)
 
 <!-- /content-for -->
 
@@ -73,6 +73,6 @@ Use to make message entry easier in messaging and chat-based products.
 
 ## Related components
 
-- To make more actions visible in keyboard accessories, use [the icon component](/components/images-and-icons/icon) for action labels
-- To group actions within keyboard accessories, use [the button group component](/components/actions/button-group)
-- For chat-based interfaces, use [the text field component](/components/forms/text-field) in keyboard accessories
+- To make more actions visible in keyboard accessories, use [the icon component](https://polaris.shopify.com/components/images-and-icons/icon) for action labels
+- To group actions within keyboard accessories, use [the button group component](https://polaris.shopify.com/components/actions/button-group)
+- For chat-based interfaces, use [the text field component](https://polaris.shopify.com/components/forms/text-field) in keyboard accessories

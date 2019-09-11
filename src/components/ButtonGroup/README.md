@@ -36,7 +36,7 @@ Button group displays multiple related actions stacked or in a horizontal row to
 Button groups should:
 
 - Only use buttons that follow the
-  [best practices outlined in the button component](/components/actions/button#best-practices)
+  [best practices outlined in the button component](https://polaris.shopify.com/components/actions/button#best-practices)
 - Group together calls to action that have a relationship
 - Be used with consideration that too many calls to action can cause merchants
   to be unsure of what to do next
@@ -67,13 +67,13 @@ Use when you have multiple buttons to space them out evenly.
 
 <!-- content-for: android -->
 
-![Alt text](/public_images/components/ButtonGroup/android/default@2x.png)
+![Alt text](https://polaris.shopify.com/public_images/components/ButtonGroup/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Alt text](/public_images/components/ButtonGroup/ios/default@2x.png)
+![Alt text](https://polaris.shopify.com/public_images/components/ButtonGroup/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -91,13 +91,13 @@ Use to emphasize several buttons as a thematically-related set among other contr
 
 <!-- content-for: android -->
 
-![Alt text](/public_images/components/ButtonGroup/android/segmented-button@2x.png)
+![Alt text](https://polaris.shopify.com/public_images/components/ButtonGroup/android/segmented-button@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Alt text](/public_images/components/ButtonGroup/ios/segmented-button@2x.png)
+![Alt text](https://polaris.shopify.com/public_images/components/ButtonGroup/ios/segmented-button@2x.png)
 
 <!-- /content-for -->
 
@@ -105,5 +105,5 @@ Use to emphasize several buttons as a thematically-related set among other contr
 
 ## Related components
 
-- To learn how to use individual buttons, [use the button component](/components/actions/button)
-- To embed an action or navigation into a line of text, [use the link component](/components/navigation/link)
+- To learn how to use individual buttons, [use the button component](https://polaris.shopify.com/components/actions/button)
+- To embed an action or navigation into a line of text, [use the link component](https://polaris.shopify.com/components/navigation/link)

@@ -150,7 +150,7 @@ Error messages should:
 
 - Clearly explain what went wrong and how to fix it
 - Be short and concise, no more than a single sentence
-- Use [passive voice](/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
+- Use [passive voice](https://polaris.shopify.com/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
 <!-- usagelist -->
 
@@ -183,13 +183,13 @@ function TextFieldExample() {
 
 <!-- content-for: android -->
 
-![Default text field](/public_images/components/TextField/android/default@2x.png)
+![Default text field](https://polaris.shopify.com/public_images/components/TextField/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text field](/public_images/components/TextField/ios/default@2x.png)
+![Default text field](https://polaris.shopify.com/public_images/components/TextField/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -217,7 +217,7 @@ function NumberFieldExample() {
 
 This will display the right keyboard on mobile devices.
 
-![Number text field with numeric keyboard](/public_images/components/TextField/android/number@2x.png)
+![Number text field with numeric keyboard](https://polaris.shopify.com/public_images/components/TextField/android/number@2x.png)
 
 <!-- /content-for -->
 
@@ -225,7 +225,7 @@ This will display the right keyboard on mobile devices.
 
 This will display the right keyboard on mobile devices.
 
-![Number text field with numeric keyboard](/public_images/components/TextField/ios/number@2x.png)
+![Number text field with numeric keyboard](https://polaris.shopify.com/public_images/components/TextField/ios/number@2x.png)
 
 <!-- /content-for -->
 
@@ -253,7 +253,7 @@ function EmailFieldExample() {
 
 This will display the right keyboard on mobile devices.
 
-![Email field with email keyboard](/public_images/components/TextField/android/email@2x.png)
+![Email field with email keyboard](https://polaris.shopify.com/public_images/components/TextField/android/email@2x.png)
 
 <!-- /content-for -->
 
@@ -261,7 +261,7 @@ This will display the right keyboard on mobile devices.
 
 This will display the right keyboard on mobile devices.
 
-![Email field with email keyboard](/public_images/components/TextField/ios/email@2x.png)
+![Email field with email keyboard](https://polaris.shopify.com/public_images/components/TextField/ios/email@2x.png)
 
 <!-- /content-for -->
 
@@ -287,13 +287,13 @@ function MultilineFieldExample() {
 
 <!-- content-for: android -->
 
-![Multi-line text field](/public_images/components/TextField/android/multi-line@2x.png)
+![Multi-line text field](https://polaris.shopify.com/public_images/components/TextField/android/multi-line@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Multi-line text field](/public_images/components/TextField/ios/multi-line@2x.png)
+![Multi-line text field](https://polaris.shopify.com/public_images/components/TextField/ios/multi-line@2x.png)
 
 <!-- /content-for -->
 
@@ -435,13 +435,13 @@ class PlaceholderExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Default text field with placeholder text hint](/public_images/components/TextField/android/placeholder-text@2x.png)
+![Default text field with placeholder text hint](https://polaris.shopify.com/public_images/components/TextField/android/placeholder-text@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text field with placeholder text hint](/public_images/components/TextField/ios/placeholder-text@2x.png)
+![Default text field with placeholder text hint](https://polaris.shopify.com/public_images/components/TextField/ios/placeholder-text@2x.png)
 
 <!-- /content-for -->
 
@@ -475,13 +475,13 @@ class HelpTextExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Default text field with help text](/public_images/components/TextField/android/help-text@2x.png)
+![Default text field with help text](https://polaris.shopify.com/public_images/components/TextField/android/help-text@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text field with help text](/public_images/components/TextField/ios/help-text@2x.png)
+![Default text field with help text](https://polaris.shopify.com/public_images/components/TextField/ios/help-text@2x.png)
 
 <!-- /content-for -->
 
@@ -518,13 +518,13 @@ class PrefixExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Default text field with prefix and suffix](/public_images/components/TextField/android/prefix-suffix@2x.png)
+![Default text field with prefix and suffix](https://polaris.shopify.com/public_images/components/TextField/android/prefix-suffix@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text field with prefix and suffix](/public_images/components/TextField/ios/prefix-suffix@2x.png)
+![Default text field with prefix and suffix](https://polaris.shopify.com/public_images/components/TextField/ios/prefix-suffix@2x.png)
 
 <!-- /content-for -->
 
@@ -534,7 +534,7 @@ Use when a text field and several related fields make up a logical unit.
 
 <!-- content-for: web -->
 
-If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](/components/forms/select) (for example “kg”, “lb”) as a connected field.
+If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](https://polaris.shopify.com/components/forms/select) (for example “kg”, “lb”) as a connected field.
 
 <!-- /content-for -->
 
@@ -579,7 +579,7 @@ class ConnectedFieldsExample extends React.Component {
 
 If inputting weight as a number and a separate unit of measurement, use a text field with a selector (like “kg” or “lb”) as a connected field.
 
-![Text field with connected selector](/public_images/components/TextField/android/connected-fields@2x.png)
+![Text field with connected selector](https://polaris.shopify.com/public_images/components/TextField/android/connected-fields@2x.png)
 
 <!-- /content-for -->
 
@@ -587,7 +587,7 @@ If inputting weight as a number and a separate unit of measurement, use a text f
 
 If inputting weight as a number and a separate unit of measurement, use a text field with a selector (like “kg” or “lb”) as a connected field.
 
-![Text field with connected selector](/public_images/components/TextField/ios/connected-fields@2x.png)
+![Text field with connected selector](https://polaris.shopify.com/public_images/components/TextField/ios/connected-fields@2x.png)
 
 <!-- /content-for -->
 
@@ -601,13 +601,13 @@ For example, tap on a barcode icon to launch the camera and scan barcode for the
 
 <!-- content-for: android -->
 
-![Text field with icon action inside the text field](/public_images/components/TextField/android/accessory@2x.png)
+![Text field with icon action inside the text field](https://polaris.shopify.com/public_images/components/TextField/android/accessory@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Text field with icon action inside the text field](/public_images/components/TextField/ios/accessory@2x.png)
+![Text field with icon action inside the text field](https://polaris.shopify.com/public_images/components/TextField/ios/accessory@2x.png)
 
 <!-- /content-for -->
 
@@ -640,13 +640,13 @@ class ValidationErrorExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Text field with error](/public_images/components/TextField/android/error@2x.png)
+![Text field with error](https://polaris.shopify.com/public_images/components/TextField/android/error@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Text field with error](/public_images/components/TextField/ios/error@2x.png)
+![Text field with error](https://polaris.shopify.com/public_images/components/TextField/ios/error@2x.png)
 
 <!-- /content-for -->
 
@@ -662,7 +662,7 @@ To render an invalid text field and its validation error separately:
 
 - Set a unique identifier on the text field component `id` prop
 - Set a boolean on the text field component `error` prop
-- Use an [inline error component](/components/forms/inline-error) to describe the invalid text field input, and set its `fieldID` prop to be the same unique indentifier as the text field component’s `id`
+- Use an [inline error component](https://polaris.shopify.com/components/forms/inline-error) to describe the invalid text field input, and set its `fieldID` prop to be the same unique indentifier as the text field component’s `id`
 
 ```jsx
 class SeparateValidationErrorExample extends React.Component {
@@ -822,9 +822,9 @@ class TextFieldExample extends React.Component {
 
 ## Related components
 
-- To lay out the elements in a responsive form, [use the form layout component](/components/forms/form-layout)
-- To describe an invalid form input with a separate validation error, [use the inline error component](/components/forms/inline-error)
-- It’s common to [use a select component](/components/forms/select) connected to the left or right of a text field.
+- To lay out the elements in a responsive form, [use the form layout component](https://polaris.shopify.com/components/forms/form-layout)
+- To describe an invalid form input with a separate validation error, [use the inline error component](https://polaris.shopify.com/components/forms/inline-error)
+- It’s common to [use a select component](https://polaris.shopify.com/components/forms/select) connected to the left or right of a text field.
 
 ---
 

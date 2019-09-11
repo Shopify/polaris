@@ -33,7 +33,16 @@ export interface TopBarProps {
   onNavigationToggle?(): void;
 }
 
-export function TopBar({
+// TypeScript can't generate types that correctly infer the typing of
+// subcomponents so explicitly state the subcomponents in the type definition.
+// Letting this be implicit works in this project but fails in projects that use
+// generated *.d.ts files.
+
+export const TopBar: React.FunctionComponent<TopBarProps> & {
+  Menu: typeof Menu;
+  SearchField: typeof SearchField;
+  UserMenu: typeof UserMenu;
+} = function TopBar({
   showNavigationToggle,
   userMenu,
   searchResults,
@@ -123,8 +132,8 @@ export function TopBar({
       </div>
     </div>
   );
-}
+};
 
-TopBar.UserMenu = UserMenu;
-TopBar.SearchField = SearchField;
 TopBar.Menu = Menu;
+TopBar.SearchField = SearchField;
+TopBar.UserMenu = UserMenu;

@@ -135,13 +135,13 @@ class RadioButtonExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Default radio button on Android](/public_images/components/RadioButton/android/default@2x.png)
+![Default radio button on Android](https://polaris.shopify.com/public_images/components/RadioButton/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default radio button on iOS](/public_images/components/RadioButton/ios/default@2x.png)
+![Default radio button on iOS](https://polaris.shopify.com/public_images/components/RadioButton/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -153,13 +153,13 @@ Use toggles when merchants need to make a binary choice (on or off).
 
 <!-- content-for: android -->
 
-![Android toggle with on or off options](/public_images/components/RadioButton/android/toggle@2x.png)
+![Android toggle with on or off options](https://polaris.shopify.com/public_images/components/RadioButton/android/toggle@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![iOS toggle with on or off options](/public_images/components/RadioButton/ios/toggle@2x.png)
+![iOS toggle with on or off options](https://polaris.shopify.com/public_images/components/RadioButton/ios/toggle@2x.png)
 
 <!-- /content-for -->
 
@@ -167,10 +167,10 @@ Use toggles when merchants need to make a binary choice (on or off).
 
 ## Related components
 
-- To make simple lists of radio buttons easier to build, [use the choice list component](/components/forms/choice-list)
-- For long lists of options, [consider the select component](/components/forms/select) to avoid overwhelming merchants
-- To present merchants with a list of checkboxes, [use the choice list component](/components/forms/choice-list) with the “allow multiple” option
-- To display non-interactive list of related content, [use the content list component](/components/lists-and-tables/list)
+- To make simple lists of radio buttons easier to build, [use the choice list component](https://polaris.shopify.com/components/forms/choice-list)
+- For long lists of options, [consider the select component](https://polaris.shopify.com/components/forms/select) to avoid overwhelming merchants
+- To present merchants with a list of checkboxes, [use the choice list component](https://polaris.shopify.com/components/forms/choice-list) with the “allow multiple” option
+- To display non-interactive list of related content, [use the content list component](https://polaris.shopify.com/components/lists-and-tables/list)
 
 ---
 

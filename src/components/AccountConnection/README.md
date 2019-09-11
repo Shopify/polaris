@@ -173,6 +173,6 @@ class AccountConnectionExample extends React.Component {
 
 <!-- content-for: web -->
 
-See accessibility guidance for the [setting toggle component](/components/actions/setting-toggle) to turn connections on and off.
+See accessibility guidance for the [setting toggle component](https://polaris.shopify.com/components/actions/setting-toggle) to turn connections on and off.
 
 <!-- /content-for-->

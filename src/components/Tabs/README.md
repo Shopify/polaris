@@ -125,13 +125,13 @@ class TabsExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Default tabs on Android](/public_images/components/Tabs/android/default@2x.png)
+![Default tabs on Android](https://polaris.shopify.com/public_images/components/Tabs/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default tabs on iOS](/public_images/components/Tabs/ios/default@2x.png)
+![Default tabs on iOS](https://polaris.shopify.com/public_images/components/Tabs/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -186,7 +186,7 @@ class FittedTabsExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Fixed tabs on Android](/public_images/components/Tabs/android/fixed@2x.png)
+![Fixed tabs on Android](https://polaris.shopify.com/public_images/components/Tabs/android/fixed@2x.png)
 
 <!-- /content-for -->
 
@@ -194,6 +194,6 @@ class FittedTabsExample extends React.Component {
 
 Also known as [Segmented controls](https://developer.apple.com/design/human-interface-guidelines/ios/controls/segmented-controls/) on iOS.
 
-![Fixed tabs on iOS](/public_images/components/Tabs/ios/fixed@2x.png)
+![Fixed tabs on iOS](https://polaris.shopify.com/public_images/components/Tabs/ios/fixed@2x.png)
 
 <!-- /content-for -->

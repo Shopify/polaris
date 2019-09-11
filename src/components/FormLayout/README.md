@@ -128,13 +128,13 @@ Use to stack form fields vertically, which makes them easier to scan and complet
 
 <!-- content-for: android -->
 
-![Default form layout for Android](/public_images/components/FormLayout/android/default@2x.png)
+![Default form layout for Android](https://polaris.shopify.com/public_images/components/FormLayout/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default form layout for iOS](/public_images/components/FormLayout/ios/default@2x.png)
+![Default form layout for iOS](https://polaris.shopify.com/public_images/components/FormLayout/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -157,13 +157,13 @@ Field groups will wrap automatically on smaller screens.
 
 <!-- content-for: android -->
 
-![Form layout with field group for Android](/public_images/components/FormLayout/android/field-group@2x.png)
+![Form layout with field group for Android](https://polaris.shopify.com/public_images/components/FormLayout/android/field-group@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Form layout with field group for iOS](/public_images/components/FormLayout/ios/field-group@2x.png)
+![Form layout with field group for iOS](https://polaris.shopify.com/public_images/components/FormLayout/ios/field-group@2x.png)
 
 <!-- /content-for -->
 
@@ -188,4 +188,4 @@ For very short inputs, the width of the inputs may be reduced in order to fit mo
 
 ## Related components
 
-- To arrange the largest sections of a page, [use the layout component](/components/structure/layout)
+- To arrange the largest sections of a page, [use the layout component](https://polaris.shopify.com/components/structure/layout)
