@@ -208,13 +208,13 @@ class ChoiceListExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Single choice list for Android](https://polaris.shopify.com/public_images/components/ChoiceList/android/single-choice@2x.png)
+![Single choice list for Android](/public_images/components/ChoiceList/android/single-choice@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Single choice list for iOS](https://polaris.shopify.com/public_images/components/ChoiceList/ios/single-choice@2x.png)
+![Single choice list for iOS](/public_images/components/ChoiceList/ios/single-choice@2x.png)
 
 <!-- /content-for -->
 
@@ -254,13 +254,13 @@ class ChoiceListExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Single choice list with error for Android](https://polaris.shopify.com/public_images/components/ChoiceList/android/single-choice-error@2x.png)
+![Single choice list with error for Android](/public_images/components/ChoiceList/android/single-choice-error@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Single choice list with error for iOS](https://polaris.shopify.com/public_images/components/ChoiceList/ios/single-choice-error@2x.png)
+![Single choice list with error for iOS](/public_images/components/ChoiceList/ios/single-choice-error@2x.png)
 
 <!-- /content-for -->
 
@@ -311,13 +311,13 @@ class ChoiceListExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Multi choice list for Android](https://polaris.shopify.com/public_images/components/ChoiceList/android/multi-choice@2x.png)
+![Multi choice list for Android](/public_images/components/ChoiceList/android/multi-choice@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Multi choice list for iOS](https://polaris.shopify.com/public_images/components/ChoiceList/ios/multi-choice@2x.png)
+![Multi choice list for iOS](/public_images/components/ChoiceList/ios/multi-choice@2x.png)
 
 <!-- /content-for -->
 

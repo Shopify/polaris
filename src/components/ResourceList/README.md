@@ -1080,7 +1080,7 @@ Because a details page displays all the content and actions for an individual re
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Schematic showing content from a details page being surfaced on a resource list](https://polaris.shopify.com/public_images/resource-list/list-surfacing-show@2x.png)
+![Schematic showing content from a details page being surfaced on a resource list](/public_images/resource-list/list-surfacing-show@2x.png)
 
 </div>
 

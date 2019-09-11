@@ -66,13 +66,13 @@ Used most in the interface. Only use another style if a button requires more or 
 
 <!-- content-for: android -->
 
-![Basic button for Android](https://polaris.shopify.com/public_images/components/Button/android/basic@2x.png)
+![Basic button for Android](/public_images/components/Button/android/basic@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Basic button for iOS](https://polaris.shopify.com/public_images/components/Button/ios/basic@2x.png)
+![Basic button for iOS](/public_images/components/Button/ios/basic@2x.png)
 
 <!-- /content-for -->
 
@@ -110,13 +110,13 @@ Use for less important or less commonly used actions since they’re less promin
 
 <!-- content-for: android -->
 
-![Plain button for Android](https://polaris.shopify.com/public_images/components/Button/android/plain@2x.png)
+![Plain button for Android](/public_images/components/Button/android/plain@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Plain button for iOS](https://polaris.shopify.com/public_images/components/Button/ios/plain@2x.png)
+![Plain button for iOS](/public_images/components/Button/ios/plain@2x.png)
 
 <!-- /content-for -->
 
@@ -149,13 +149,13 @@ Use for actions that will delete merchant data or be otherwise difficult to reco
 
 <!-- content-for: android -->
 
-![Destructive plain button for Android](https://polaris.shopify.com/public_images/components/Button/android/plain-destructive@2x.png)
+![Destructive plain button for Android](/public_images/components/Button/android/plain-destructive@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Destructive plain button for iOS](https://polaris.shopify.com/public_images/components/Button/ios/plain-destructive@2x.png)
+![Destructive plain button for iOS](/public_images/components/Button/ios/plain-destructive@2x.png)
 
 <!-- /content-for -->
 
@@ -169,13 +169,13 @@ Use to highlight the most important actions in any experience. Don’t use more 
 
 <!-- content-for: android -->
 
-![Primary button for Android](https://polaris.shopify.com/public_images/components/Button/android/primary@2x.png)
+![Primary button for Android](/public_images/components/Button/android/primary@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Primary button for iOS](https://polaris.shopify.com/public_images/components/Button/ios/primary@2x.png)
+![Primary button for iOS](/public_images/components/Button/ios/primary@2x.png)
 
 <!-- /content-for -->
 
@@ -189,13 +189,13 @@ Use when the action will delete merchant data or be otherwise difficult to recov
 
 <!-- content-for: android -->
 
-![Destructive basic button for Android](https://polaris.shopify.com/public_images/components/Button/android/basic-destructive@2x.png)
+![Destructive basic button for Android](/public_images/components/Button/android/basic-destructive@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Destructive basic button for iOS](https://polaris.shopify.com/public_images/components/Button/ios/basic-destructive@2x.png)
+![Destructive basic button for iOS](/public_images/components/Button/ios/basic-destructive@2x.png)
 
 <!-- /content-for -->
 
@@ -253,13 +253,13 @@ Use for actions that aren’t currently available. The surrounding interface sho
 
 <!-- content-for: android -->
 
-![Disabled primary button for Android](https://polaris.shopify.com/public_images/components/Button/android/disabled@2x.png)
+![Disabled primary button for Android](/public_images/components/Button/android/disabled@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Disabled primary button for iOS](https://polaris.shopify.com/public_images/components/Button/ios/disabled@2x.png)
+![Disabled primary button for iOS](/public_images/components/Button/ios/disabled@2x.png)
 
 <!-- /content-for -->
 

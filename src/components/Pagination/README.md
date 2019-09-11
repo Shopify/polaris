@@ -104,13 +104,13 @@ Use for lists longer than 25 items. In mobile apps it’s natural to scroll to t
 
 <!-- content-for: android -->
 
-![Infinite scroll pagination on Android](https://polaris.shopify.com/public_images/components/Pagination/android/default@2x.png)
+![Infinite scroll pagination on Android](/public_images/components/Pagination/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Infinite scroll pagination on iOS](https://polaris.shopify.com/public_images/components/Pagination/ios/default@2x.png)
+![Infinite scroll pagination on iOS](/public_images/components/Pagination/ios/default@2x.png)
 
 <!-- /content-for -->
 

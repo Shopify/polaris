@@ -51,13 +51,13 @@ Use this component for default vertical spacing.
 
 <!-- content-for: android -->
 
-![Default text container](https://polaris.shopify.com/public_images/components/TextContainer/android/default@2x.png)
+![Default text container](/public_images/components/TextContainer/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text container](https://polaris.shopify.com/public_images/components/TextContainer/ios/default@2x.png)
+![Default text container](/public_images/components/TextContainer/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -77,13 +77,13 @@ Use the tight spacing option to relate content topics to each other.
 
 <!-- content-for: android -->
 
-![Tight text container](https://polaris.shopify.com/public_images/components/TextContainer/android/tight@2x.png)
+![Tight text container](/public_images/components/TextContainer/android/tight@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Tight text container](https://polaris.shopify.com/public_images/components/TextContainer/ios/tight@2x.png)
+![Tight text container](/public_images/components/TextContainer/ios/tight@2x.png)
 
 <!-- /content-for -->
 
@@ -107,13 +107,13 @@ Use the loose spacing option to separate concepts that are independent of each o
 
 <!-- content-for: android -->
 
-![Loose text container](https://polaris.shopify.com/public_images/components/TextContainer/android/loose@2x.png)
+![Loose text container](/public_images/components/TextContainer/android/loose@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Loose text container](https://polaris.shopify.com/public_images/components/TextContainer/ios/loose@2x.png)
+![Loose text container](/public_images/components/TextContainer/ios/loose@2x.png)
 
 <!-- /content-for -->
 
