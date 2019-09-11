@@ -1,5 +1,13 @@
 import React from 'react';
 import {Box, Text, Color, render} from 'ink';
+import {getGitStagedFiles, getDependencies} from '../../treebuilder';
+
+(async function() {
+  const stagedFiles = await getGitStagedFiles('src/');
+  console.log(stagedFiles);
+  const data = await getDependencies(/* how do I use this function? */);
+  console.log(data);
+})();
 
 const data = [
   {
