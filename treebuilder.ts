@@ -88,7 +88,7 @@ function findDependencies(fileName) {
   recurse(graph[path.resolve(fileName)], 0);
 
   function recurse(node, depth) {
-    if (node.dependedOnBy) {
+    if (node && node.dependedOnBy) {
       node.dependedOnBy.forEach((dependency) => {
         dependencies[dependency.fileName] = 1;
         recurse(dependency, depth + 1);
@@ -139,19 +139,22 @@ export function getDependencies(
     module: ts.ModuleKind.CommonJS,
   });
 
-  return fileGlobs
+  const dependencies = fileGlobs
     .map((fileGlob) => glob.sync(fileGlob))
     .reduce((accumulator, current) => [...accumulator, ...current], [])
-    .map(findDependencies)
-    .reduce(
-      (accumulator, currentArray) => [...accumulator, ...currentArray],
-      [],
-    );
+    .map(findDependencies);
+
+  return fileGlobs.map((fileGlob, index) => ({
+    fileName: fileGlob,
+    dependencies: dependencies[index],
+  }));
 }
 
 // console.log(
-//   getDependencies('src/**/*.tsx', 'src/**/*.test.tsx', [
+//   getDependencies('src/***/*.tsx', 'src/***/*.test.tsx', [
 //     'src/components/Button/Button.tsx',
 //     'src/components/Avatar/Avatar.tsx',
 //   ]),
 // );
+
+// debugger;
