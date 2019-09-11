@@ -3,9 +3,13 @@ import {Box, Text, Color, render} from 'ink';
 import {getGitStagedFiles, getDependencies} from '../../treebuilder';
 
 (async function() {
-  const stagedFiles = await getGitStagedFiles('src/');
+  const stagedFiles = (await getGitStagedFiles('src/')) as string[];
   console.log(stagedFiles);
-  const data = await getDependencies(/* how do I use this function? */);
+  const data = await getDependencies(
+    'src/**/*.tsx',
+    'src/**/*.test.tsx,src/**/index.ts',
+    stagedFiles,
+  );
   console.log(data);
 })();
 
