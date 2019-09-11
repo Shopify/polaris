@@ -56,7 +56,7 @@ describe('<Frame />', () => {
   it('renders a TrapFocus with a `trapping` prop set to false prop around the navigation on small screens and showMobileNavigation is false', () => {
     const navigation = <div />;
     const frame = mountWithAppProvider(<Frame navigation={navigation} />, {
-      mediaQuery: {isNavigationCollapsed: false},
+      mediaQuery: {isNavigationCollapsed: true},
     }).find(Frame);
 
     const trapFocus = frame.find(TrapFocus);
