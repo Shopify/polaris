@@ -237,7 +237,7 @@ The `Tabs.Panel` subcomponent has been removed. This was an undocumented subcomp
 
 ### WithContext <a name="polaris-withcontext"></a>
 
-The `WithContext` component has been removed. It was used as a utility to handle [legacy contexts](https://reactjs.org/docs/legacy-context.html) in class based components and multiple contexts at once. Use [modern contexts](https://reactjs.org/docs/context.html#api) and access them using providers, hooks or `Class.contextType` instead.
+The `WithContext` component has been removed. It was used as a utility to handle [legacy contexts](https://reactjs.org/docs/legacy-context.html) in class based components and multiple contexts at once. Use [modern contexts](https://reactjs.org/docs/context.html#api) and access them using providers, hooks, or `Class.contextType` instead.
 
 ```jsx
 // old
