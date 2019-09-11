@@ -123,7 +123,11 @@ export function getGitStagedFiles(scope = '') {
   });
 }
 
-export function getDependencies(codebaseGlob, ignoreGlob, fileGlobs) {
+export function getDependencies(
+  codebaseGlob: string,
+  ignoreGlob: string,
+  fileGlobs: string[],
+) {
   const codebase = glob.sync(codebaseGlob, {
     ignore: ignoreGlob,
   });
@@ -138,5 +142,16 @@ export function getDependencies(codebaseGlob, ignoreGlob, fileGlobs) {
   return fileGlobs
     .map((fileGlob) => glob.sync(fileGlob))
     .reduce((accumulator, current) => [...accumulator, ...current], [])
-    .map(findDependencies);
+    .map(findDependencies)
+    .reduce(
+      (accumulator, currentArray) => [...accumulator, ...currentArray],
+      [],
+    );
 }
+
+// console.log(
+//   getDependencies('src/**/*.tsx', 'src/**/*.test.tsx', [
+//     'src/components/Button/Button.tsx',
+//     'src/components/Avatar/Avatar.tsx',
+//   ]),
+// );
