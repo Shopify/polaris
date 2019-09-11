@@ -11,4 +11,3 @@ node_modules
 /styles.scss
 /styles
 /src/styles/polaris-tokens
-/tests/shims/mutation-observer.ts
