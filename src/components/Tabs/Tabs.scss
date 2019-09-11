@@ -177,6 +177,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 .DisclosureActivator {
   @include recolor-icon(color('ink', 'lighter'));
   position: relative;
+  display: block;
   justify-content: center;
   height: 100%;
   margin: 1px 1px -1px 0;
