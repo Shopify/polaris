@@ -96,10 +96,8 @@ function findDependencies(fileName) {
     }
   }
 
-  return Object.keys(dependencies).filter(
-    (dependency) =>
-      dependency !==
-      '/Users/andrerocha/src/github.com/Shopify/polaris-react/src/components/index.ts',
+  return Object.keys(dependencies).filter((dependency) =>
+    dependency.endsWith('src/components/index.ts'),
   );
 }
 
