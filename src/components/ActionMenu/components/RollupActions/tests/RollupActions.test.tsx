@@ -1,7 +1,7 @@
 import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithAppProvider, trigger, act} from 'test-utilities/legacy';
 
 import {Button, Popover} from 'components';
 
@@ -60,7 +60,10 @@ describe('<RollupActions />', () => {
       expect(popoverComponent.prop('active')).toBe(true);
 
       const firstActionListItem = wrapper.find(ActionListItem).first();
-      trigger(firstActionListItem, 'onAction');
+      act(() => {
+        trigger(firstActionListItem, 'onAction');
+      });
+      popoverComponent.update();
 
       popoverComponent = wrapper.find(Popover);
       expect(popoverComponent.prop('active')).toBe(false);
@@ -107,5 +110,8 @@ function findPopoverActivator(wrapper: Wrapper) {
 
 function activatePopover(wrapper: Wrapper) {
   const activator = findPopoverActivator(wrapper);
-  trigger(activator, 'onClick');
+  act(() => {
+    trigger(activator, 'onClick');
+  });
+  wrapper.update();
 }
