@@ -101,7 +101,7 @@ function findDependencies(fileName) {
   );
 }
 
-export function getGitStagedFiles() {
+export function getGitStagedFiles(scope = '') {
   return new Promise((resolve, reject) => {
     cmd.get('git status --no-renames -s', (err, data, stderr) => {
       if (err) {
@@ -116,7 +116,8 @@ export function getGitStagedFiles() {
             (datum) =>
               ['M', 'A'].includes(datum[0]) || ['M', 'A'].includes(datum[1]),
           )
-          .map((datum) => datum.slice(3)),
+          .map((datum) => datum.slice(3))
+          .filter((filepath) => filepath.startsWith(scope)),
       );
     });
   });
