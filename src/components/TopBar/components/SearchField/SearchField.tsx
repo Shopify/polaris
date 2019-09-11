@@ -57,20 +57,24 @@ export function SearchField({
   const handleClear = useCallback(() => {
     onCancel && onCancel();
 
-    if (input.current) {
-      input.current.value = '';
-      onChange('');
-      input.current.focus();
+    if (!input.current) {
+      return;
     }
+
+    input.current.value = '';
+    onChange('');
+    input.current.focus();
   }, [onCancel, onChange]);
 
   useEffect(() => {
-    if (input.current) {
-      if (focused) {
-        input.current.focus();
-      } else {
-        input.current.blur();
-      }
+    if (!input.current) {
+      return;
+    }
+
+    if (focused) {
+      input.current.focus();
+    } else {
+      input.current.blur();
     }
   }, [focused]);
 
