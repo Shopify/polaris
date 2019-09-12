@@ -2,7 +2,6 @@ import path from 'path';
 import React, {useState, useEffect} from 'react';
 import {Box, Text, Color, render} from 'ink';
 import sortBy from 'lodash/sortBy';
-import {argv} from 'yargs';
 import {getGitStagedFiles, getDependencies} from './treebuilder';
 
 const excludedFileNames = (fileName) =>
@@ -128,28 +127,17 @@ const App = () => {
   const [data, setData] = useState([]);
   const [dataStatus, setDataStatus] = useState('loading');
 
-  const getStagedFiles = async () => {
-    const staged = (await getGitStagedFiles('src/')) as string[];
-    setStagedFiles(staged);
-
-    if (staged.length === 0) {
-      setDataStatus('loaded');
-    }
-  };
-
   useEffect(() => {
-    if (!argv.watch) {
-      getStagedFiles();
-    }
+    const getStagedFiles = async () => {
+      const staged = (await getGitStagedFiles('src/')) as string[];
+      setStagedFiles(staged);
+
+      if (staged.length === 0) {
+        setDataStatus('loaded');
+      }
+    };
+    getStagedFiles();
   }, []);
-  // ^ empty dependency array = exits after one run
-
-  useEffect(() => {
-    if (argv.watch) {
-      getStagedFiles();
-    }
-  });
-  // ^ no dependencies = keeps watching
 
   useEffect(() => {
     if (stagedFiles.length > 0) {
@@ -201,7 +189,7 @@ const App = () => {
         <Color dim>
           <Box width={3}>💡</Box>
           <Box>
-            tip: command + click a file path to open it in your text editor
+            Tip: command + click a file path to open it in your text editor
           </Box>
         </Color>
       </Box>

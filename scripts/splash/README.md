@@ -11,10 +11,7 @@ It answers the question:
 1. Edit files in `src/`, such as components 🧩 and style sheets 🎨
 2. Run `yarn splash` to see the splash zone of your changes in the working directory
 
-## Tips
-
-- <kbd>command</kbd> + click a file path to open it in your text editor
-- `yarn splash --watch` continuously looks for changes in the working directory and updates the list of impacted files in real-time (alpha: you may need to hit <kbd>ctrl</kbd> + <kbd>c</kbd> multiple times to exit)
+💡 Tip: <kbd>command</kbd> + click a file path to open it in your text editor
 
 ## Feedback and bug reports
 

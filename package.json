@@ -156,8 +156,7 @@
     "shx": "^0.3.2",
     "storybook-chroma": "^2.1.1",
     "svgo": "^1.2.2",
-    "typescript": "~3.5.1",
-    "yargs": "^13.2.2"
+    "typescript": "~3.5.1"
   },
   "peerDependencies": {
     "react": "^16.8.6",
