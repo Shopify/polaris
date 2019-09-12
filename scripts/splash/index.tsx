@@ -77,7 +77,8 @@ const Components = ({components, status}) => (
   <React.Fragment>
     {status === 'loading' && (
       <Box marginLeft={4} marginBottom={1}>
-        ⏳{'  '}Please wait during compilation… Beep boop beep 🤖
+        ⏳{'  '}
+        Please wait during compilation… Beep boop beep 🤖
       </Box>
     )}
 
@@ -131,25 +132,25 @@ const App = () => {
     const getStagedFiles = async () => {
       const staged = (await getGitStagedFiles('src/')) as string[];
       setStagedFiles(staged);
-
-      if (staged.length === 0) {
-        setDataStatus('loaded');
-      }
     };
     getStagedFiles();
   }, []);
 
-  useEffect(() => {
-    if (stagedFiles.length > 0) {
-      const dependencies = getDependencies(
-        'src/**/*.tsx',
-        '*.test.tsx',
-        stagedFiles,
-      );
-      setData(formatDependencies(dependencies));
+  useEffect(
+    () => {
+      if (stagedFiles.length !== 0) {
+        const dependencies = getDependencies(
+          'src/**/*.tsx',
+          '*.test.tsx',
+          stagedFiles,
+        );
+        setData(formatDependencies(dependencies));
+      }
+
       setDataStatus('loaded');
-    }
-  }, [setData, stagedFiles]);
+    },
+    [setData, stagedFiles],
+  );
 
   return (
     <React.Fragment>
