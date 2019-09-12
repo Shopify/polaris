@@ -127,6 +127,7 @@ const App = () => {
   const getStagedFiles = async () => {
     const staged = (await getGitStagedFiles('src/')) as string[];
     setStagedFiles(staged);
+
     if (staged.length === 0) {
       setDataStatus('loaded');
     }
