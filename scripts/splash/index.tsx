@@ -95,9 +95,11 @@ const Components = ({components, status}) => (
 const Summary = ({
   componentsModified,
   dependencies,
+  status,
 }: {
   componentsModified: number;
   dependencies: number;
+  status: string;
 }) => (
   <Box flexDirection="column">
     <Box>
@@ -113,7 +115,7 @@ const Summary = ({
         <Text>Files potentially affected:</Text>
       </Box>
       <Box justifyContent="flex-end" width={3}>
-        {dependencies > -1 ? dependencies : '⏳'}
+        {status === 'loading' ? '⏳' : dependencies}
       </Box>
     </Box>
   </Box>
@@ -173,25 +175,24 @@ const App = () => {
       <Components components={data} status={dataStatus} />
       <Summary
         componentsModified={stagedFiles.length}
+        status={dataStatus}
         dependencies={
-          dataStatus === 'loading'
-            ? -1
-            : new Map([
-                ...data.map(({pathname, filename}) => [
-                  pathname,
-                  pathname + filename,
-                ]),
-                ...data.reduce(
-                  (val, curr) =>
-                    val.concat(
-                      curr.dependencies.map(({pathname}) => [
-                        pathname,
-                        curr.pathname + curr.filename,
-                      ]),
-                    ),
-                  [],
+          new Map([
+            ...data.map(({pathname, filename}) => [
+              pathname,
+              pathname + filename,
+            ]),
+            ...data.reduce(
+              (val, curr) =>
+                val.concat(
+                  curr.dependencies.map(({pathname}) => [
+                    pathname,
+                    curr.pathname + curr.filename,
+                  ]),
                 ),
-              ]).size
+              [],
+            ),
+          ]).size
         }
       />
       <Box marginTop={1}>
