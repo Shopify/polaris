@@ -22,7 +22,7 @@ function compile(fileNames: string[], options: ts.CompilerOptions): void {
     if (!graph[path.resolve(fileName)]) {
       const ast: any = program.getSourceFile(fileName);
       recurse({
-        fileName: skipIndexFile(path.resolve(ast.originalFileName)),
+        fileName: path.resolve(ast.originalFileName),
         dependsOn: [],
         dependedOnBy: [],
       });
@@ -57,7 +57,7 @@ function compile(fileNames: string[], options: ts.CompilerOptions): void {
             newNode.dependedOnBy.push(node);
           } else {
             newNode = recurse({
-              fileName: skipIndexFile(moduleFileName),
+              fileName: moduleFileName,
               dependsOn: [],
               dependedOnBy: [node],
             });
@@ -97,7 +97,9 @@ function findDependencies(fileName) {
   }
 
   return Object.keys(dependencies)
-    .filter((dependency) => !dependency.endsWith('/src/components/index.ts'))
+    .filter(
+      (dependency) => !/(components\/)(\w*\/)?(index.ts)/.test(dependency),
+    )
     .map((dependency) => dependency.split('polaris-react/')[1]);
 }
 
@@ -151,10 +153,9 @@ export function getDependencies(
 }
 
 // console.log(
-//   getDependencies('src/***/*.tsx', 'src/***/*.test.tsx', [
+//   getDependencies('src/**/*.tsx', 'src/**/*.test.tsx', [
 //     'src/components/Button/Button.tsx',
 //     'src/components/Avatar/Avatar.tsx',
 //   ]),
 // );
-
 // debugger;
