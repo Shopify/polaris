@@ -137,7 +137,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       persistActions = false,
       accessibilityLabel,
       name,
-      context: {selectable, selectMode, loading},
+      context: {selectable, selectMode, loading, resourceName},
       i18n,
     } = this.props;
 
@@ -268,10 +268,16 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
 
     const tabIndex = loading ? -1 : 0;
 
+    const ariaLabel =
+      accessibilityLabel ||
+      i18n.translate('Polaris.ResourceList.Item.viewItem', {
+        itemName: name || (resourceName && resourceName.singular) || '',
+      });
+
     const accessibleMarkup = url ? (
       <UnstyledLink
         aria-describedby={this.props.id}
-        aria-label={accessibilityLabel}
+        aria-label={ariaLabel}
         className={styles.Link}
         url={url}
         tabIndex={tabIndex}
@@ -280,7 +286,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
     ) : (
       <button
         className={styles.Button}
-        aria-label={accessibilityLabel}
+        aria-label={ariaLabel}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         onClick={this.handleClick}

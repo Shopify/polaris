@@ -1,9 +1,6 @@
 /* eslint-disable no-console */
 const puppeteer = require('puppeteer');
 const pa11y = require('pa11y');
-const shitlistCheck = require('./pa11y-utilities.js').shitlistCheck;
-
-const shitlist = require('./../a11y_shitlist.json');
 
 const NUMBER_OF_BROWSERS = 5;
 
@@ -106,28 +103,7 @@ async function runPa11y() {
     process.exit(1);
   }
 
-  const {results, remainingIssues} = shitlistCheck(rawResults, shitlist);
-
-  if (remainingIssues) {
-    console.log(
-      `
-========================================================================
-The following items were fixed, and therefore should be removed from the shitlist.
-Please edit the file a11y_shitlist.json to remove them and run these tests again.',
-========================================================================
-`,
-    );
-    remainingIssues.forEach((issue) => {
-      console.log(
-        '------------------------------------------------------------------------',
-      );
-      console.log(issue.exampleID);
-      console.log(
-        '------------------------------------------------------------------------',
-      );
-      console.log(JSON.stringify(issue.issues, null, 2));
-    });
-  }
+  const results = rawResults.filter((result) => result.issues.length);
 
   console.log(
     `
@@ -153,7 +129,7 @@ The following issues were discovered and need to be fixed before this code can b
     console.log('No issues!');
   }
 
-  if (results.length || remainingIssues) {
+  if (results.length) {
     process.exit(1);
   }
   process.exit(0);
