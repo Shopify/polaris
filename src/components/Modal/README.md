@@ -51,33 +51,31 @@ Properties that are available only in a stand-alone context are documented as `(
 The following example shows the modal component in an embedded application context:
 
 ```jsx
-class EmbeddedAppModalExample extends React.Component {
-  state = {
-    modalOpen: false,
-  };
+function EmbeddedAppModalExample() {
+  const [modalOpen, setModalOpen] = useState(false);
 
-  render() {
-    return (
-      <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
-        <Modal
-          src="https://my-app.com/upgrade-to-retail-package"
-          open={this.state.modalOpen}
-          title="Upgrade your Shopify POS with the Retail Package"
-          primaryAction={{
-            content: 'Add Retail Package',
-            onAction: () => this.setState({modalOpen: false}),
-          }}
-          secondaryActions={[
-            {
-              content: 'Cancel',
-              onAction: () => this.setState({modalOpen: false}),
-            },
-          ]}
-          onClose={() => this.setState({modalOpen: false})}
-        />
-      </AppProvider>
-    );
-  }
+  const handleModalClose = useCallback(() => setModalOpen(false), []);
+
+  return (
+    <AppProvider apiKey="YOUR_API_KEY" i18n={{}} shopOrigin="YOUR_SHOP_ORIGIN">
+      <Modal
+        src="https://my-app.com/upgrade-to-retail-package"
+        open={modalOpen}
+        title="Upgrade your Shopify POS with the Retail Package"
+        primaryAction={{
+          content: 'Add Retail Package',
+          onAction: handleModalClose,
+        }}
+        secondaryActions={[
+          {
+            content: 'Cancel',
+            onAction: handleModalClose,
+          },
+        ]}
+        onClose={handleModalClose}
+      />
+    </AppProvider>
+  );
 }
 ```
 
@@ -276,49 +274,41 @@ Body content should be:
 Use as the default option for a modal.
 
 ```jsx
-class ModalExample extends React.Component {
-  state = {
-    active: true,
-  };
+function ModalExample() {
+  const [active, setActive] = useState(true);
 
-  render() {
-    const {active} = this.state;
+  const handleChange = useCallback(() => setActive(!active), [active]);
 
-    return (
-      <div style={{height: '500px'}}>
-        <Button onClick={this.handleChange}>Open</Button>
-        <Modal
-          open={active}
-          onClose={this.handleChange}
-          title="Reach more shoppers with Instagram product tags"
-          primaryAction={{
-            content: 'Add Instagram',
-            onAction: this.handleChange,
-          }}
-          secondaryActions={[
-            {
-              content: 'Learn more',
-              onAction: this.handleChange,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <TextContainer>
-              <p>
-                Use Instagram posts to share your products with millions of
-                people. Let shoppers buy from your store without leaving
-                Instagram.
-              </p>
-            </TextContainer>
-          </Modal.Section>
-        </Modal>
-      </div>
-    );
-  }
-
-  handleChange = () => {
-    this.setState(({active}) => ({active: !active}));
-  };
+  return (
+    <div style={{height: '500px'}}>
+      <Button onClick={handleChange}>Open</Button>
+      <Modal
+        open={active}
+        onClose={handleChange}
+        title="Reach more shoppers with Instagram product tags"
+        primaryAction={{
+          content: 'Add Instagram',
+          onAction: handleChange,
+        }}
+        secondaryActions={[
+          {
+            content: 'Learn more',
+            onAction: handleChange,
+          },
+        ]}
+      >
+        <Modal.Section>
+          <TextContainer>
+            <p>
+              Use Instagram posts to share your products with millions of
+              people. Let shoppers buy from your store without leaving
+              Instagram.
+            </p>
+          </TextContainer>
+        </Modal.Section>
+      </Modal>
+    </div>
+  );
 }
 ```
 
@@ -327,87 +317,68 @@ class ModalExample extends React.Component {
 Use to let merchants take a key action.
 
 ```jsx
-const DISCOUNT_LINK = 'https://polaris.shopify.com/';
+function ModalWithPrimaryActionExample() {
+  const DISCOUNT_LINK = 'https://polaris.shopify.com/';
 
-class ModalExample extends React.Component {
-  state = {
-    active: true,
-  };
+  const [active, setActive] = useState(true);
+  const node = useRef(null);
 
-  node = null;
+  const handleClick = useCallback(() => {
+    node.current && node.current.input.focus();
+  }, []);
 
-  render() {
-    const {active} = this.state;
-
-    return (
-      <div style={{height: '500px'}}>
-        <Button onClick={this.toggleModal}>Open</Button>
-        <Modal
-          open={active}
-          onClose={this.toggleModal}
-          title="Get a shareable link"
-          primaryAction={{
-            content: 'Close',
-            onAction: this.toggleModal,
-          }}
-        >
-          <Modal.Section>
-            <Stack>
-              <Stack.Item>
-                <TextContainer>
-                  <p>
-                    You can share this discount link with your customers via
-                    email or social media. Your discount will be automatically
-                    applied at checkout.
-                  </p>
-                </TextContainer>
-              </Stack.Item>
-              <Stack.Item fill>
-                <TextField
-                  ref={this.bindNode}
-                  label="Discount link"
-                  onFocus={this.handleFocus}
-                  value={DISCOUNT_LINK}
-                  onChange={() => {}}
-                  connectedRight={
-                    <Button primary onClick={this.handleClick}>
-                      Copy link
-                    </Button>
-                  }
-                />
-              </Stack.Item>
-            </Stack>
-          </Modal.Section>
-        </Modal>
-      </div>
-    );
-  }
-
-  handleClick = () => {
-    if (this.node == null) {
+  const handleFocus = useCallback(() => {
+    if (node.current == null) {
       return;
     }
-    this.node.input.focus();
-  };
-
-  handleFocus = () => {
-    if (this.node == null) {
-      return;
-    }
-    this.node.input.select();
+    node.current.input.select();
     document.execCommand('copy');
-  };
+  }, []);
 
-  toggleModal = () => {
-    this.setState(({active}) => ({active: !active}));
-  };
+  const toggleModal = useCallback(() => setActive((active) => !active), []);
 
-  bindNode = (node) => {
-    if (node == null) {
-      return;
-    }
-    this.node = node;
-  };
+  return (
+    <div style={{height: '500px'}}>
+      <Button onClick={toggleModal}>Open</Button>
+      <Modal
+        open={active}
+        onClose={toggleModal}
+        title="Get a shareable link"
+        primaryAction={{
+          content: 'Close',
+          onAction: toggleModal,
+        }}
+      >
+        <Modal.Section>
+          <Stack>
+            <Stack.Item>
+              <TextContainer>
+                <p>
+                  You can share this discount link with your customers via email
+                  or social media. Your discount will be automatically applied
+                  at checkout.
+                </p>
+              </TextContainer>
+            </Stack.Item>
+            <Stack.Item fill>
+              <TextField
+                ref={node}
+                label="Discount link"
+                onFocus={handleFocus}
+                value={DISCOUNT_LINK}
+                onChange={() => {}}
+                connectedRight={
+                  <Button primary onClick={handleClick}>
+                    Copy link
+                  </Button>
+                }
+              />
+            </Stack.Item>
+          </Stack>
+        </Modal.Section>
+      </Modal>
+    </div>
+  );
 }
 ```
 
@@ -428,91 +399,87 @@ class ModalExample extends React.Component {
 Use to let merchants take key actions at the bottom of the modal.
 
 ```jsx
-const CURRENT_PAGE = 'current_page';
-const ALL_CUSTOMERS = 'all_customers';
-const SELECTED_CUSTOMERS = 'selected_customers';
-const CSV_EXCEL = 'csv_excel';
-const CSV_PLAIN = 'csv_plain';
+function ModalWithPrimaryAndSecondaryActionsExample() {
+  const CURRENT_PAGE = 'current_page';
+  const ALL_CUSTOMERS = 'all_customers';
+  const SELECTED_CUSTOMERS = 'selected_customers';
+  const CSV_EXCEL = 'csv_excel';
+  const CSV_PLAIN = 'csv_plain';
 
-class ModalExample extends React.Component {
-  state = {
-    active: true,
-    selectedExport: [],
-    selectedExportAs: [],
+  const [active, setActive] = useState(true);
+  const [selectedExport, setSelectedExport] = useState([]);
+  const [selectedExportAs, setSelectedExportAs] = useState([]);
+
+  const handleModalChange = useCallback(() => setActive(!active), [active]);
+
+  const handleClose = () => {
+    handleModalChange();
+    handleSelectedExport([]);
+    handleSelectedExportAs([]);
   };
 
-  render() {
-    const {active, selectedExport, selectedExportAs} = this.state;
+  const handleSelectedExport = useCallback(
+    (value) => setSelectedExport(value),
+    [],
+  );
 
-    return (
-      <div style={{height: '500px'}}>
-        <Button onClick={this.handleModalChange}>Open</Button>
-        <Modal
-          open={active}
-          onClose={this.handleClose}
-          title="Export customers"
-          primaryAction={{
-            content: 'Export customers',
-            onAction: this.handleClose,
-          }}
-          secondaryActions={[
-            {
-              content: 'Cancel',
-              onAction: this.handleClose,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <Stack vertical>
-              <Stack.Item>
-                <ChoiceList
-                  title={'Export'}
-                  choices={[
-                    {label: 'Current page', value: CURRENT_PAGE},
-                    {label: 'All customers', value: ALL_CUSTOMERS},
-                    {label: 'Selected customers', value: SELECTED_CUSTOMERS},
-                  ]}
-                  selected={selectedExport}
-                  onChange={this.handleCheckboxChange('selectedExport')}
-                />
-              </Stack.Item>
-              <Stack.Item>
-                <ChoiceList
-                  title={'Export as'}
-                  choices={[
-                    {
-                      label:
-                        'CSV for Excel, Numbers, or other spreadsheet programs',
-                      value: CSV_EXCEL,
-                    },
-                    {label: 'Plain CSV file', value: CSV_PLAIN},
-                  ]}
-                  selected={selectedExportAs}
-                  onChange={this.handleCheckboxChange('selectedExportAs')}
-                />
-              </Stack.Item>
-            </Stack>
-          </Modal.Section>
-        </Modal>
-      </div>
-    );
-  }
+  const handleSelectedExportAs = useCallback(
+    (value) => setSelectedExportAs(value),
+    [],
+  );
 
-  handleModalChange = () => {
-    this.setState(({active}) => ({active: !active}));
-  };
-
-  handleClose = () => {
-    this.setState(({active}) => ({
-      active: !active,
-      selectedExport: [],
-      selectedExportAs: [],
-    }));
-  };
-
-  handleCheckboxChange = (key) => {
-    return (value) => this.setState({[key]: value});
-  };
+  return (
+    <div style={{height: '500px'}}>
+      <Button onClick={handleModalChange}>Open</Button>
+      <Modal
+        open={active}
+        onClose={handleClose}
+        title="Export customers"
+        primaryAction={{
+          content: 'Export customers',
+          onAction: handleClose,
+        }}
+        secondaryActions={[
+          {
+            content: 'Cancel',
+            onAction: handleClose,
+          },
+        ]}
+      >
+        <Modal.Section>
+          <Stack vertical>
+            <Stack.Item>
+              <ChoiceList
+                title="Export"
+                choices={[
+                  {label: 'Current page', value: CURRENT_PAGE},
+                  {label: 'All customers', value: ALL_CUSTOMERS},
+                  {label: 'Selected customers', value: SELECTED_CUSTOMERS},
+                ]}
+                selected={selectedExport}
+                onChange={handleSelectedExport}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <ChoiceList
+                title="Export as"
+                choices={[
+                  {
+                    label:
+                      'CSV for Excel, Numbers, or other spreadsheet programs',
+                    value: CSV_EXCEL,
+                  },
+                  {label: 'Plain CSV file', value: CSV_PLAIN},
+                ]}
+                selected={selectedExportAs}
+                onChange={handleSelectedExportAs}
+              />
+            </Stack.Item>
+          </Stack>
+        </Modal.Section>
+      </Modal>
+    </div>
+  );
 }
 ```
 
@@ -535,63 +502,53 @@ class ModalExample extends React.Component {
 Use when you need to increase the width of your modal.
 
 ```jsx
-class ModalExample extends React.Component {
-  state = {
-    active: true,
-    checked: false,
-  };
+function LargeModalExample() {
+  const [active, setActive] = useState(true);
+  const [checked, setChecked] = useState(false);
 
-  render() {
-    const {active, checked} = this.state;
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-    return (
-      <div style={{height: '500px'}}>
-        <Button onClick={this.handleChange}>Open</Button>
-        <Modal
-          large
-          open={active}
-          onClose={this.handleChange}
-          title="Import customers by CSV"
-          primaryAction={{
-            content: 'Import customers',
-            onAction: this.handleChange,
-          }}
-          secondaryActions={[
-            {
-              content: 'Cancel',
-              onAction: this.handleChange,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <Stack vertical>
-              <DropZone
-                accept=".csv"
-                errorOverlayText="File type must be .csv"
-                type="file"
-                onDrop={() => {}}
-              >
-                <DropZone.FileUpload />
-              </DropZone>
-              <Checkbox
-                checked={checked}
-                label="Overwrite existing customers that have the same email or phone"
-                onChange={this.handleCheckbox}
-              />
-            </Stack>
-          </Modal.Section>
-        </Modal>
-      </div>
-    );
-  }
+  const handleCheckbox = useCallback((value) => setChecked(value), []);
 
-  handleChange = () => {
-    this.setState(({active}) => ({active: !active}));
-  };
-
-  handleCheckbox = (value) => {
-    this.setState({checked: value});
-  };
+  return (
+    <div style={{height: '500px'}}>
+      <Button onClick={toggleActive}>Open</Button>
+      <Modal
+        large
+        open={active}
+        onClose={toggleActive}
+        title="Import customers by CSV"
+        primaryAction={{
+          content: 'Import customers',
+          onAction: toggleActive,
+        }}
+        secondaryActions={[
+          {
+            content: 'Cancel',
+            onAction: toggleActive,
+          },
+        ]}
+      >
+        <Modal.Section>
+          <Stack vertical>
+            <DropZone
+              accept=".csv"
+              errorOverlayText="File type must be .csv"
+              type="file"
+              onDrop={() => {}}
+            >
+              <DropZone.FileUpload />
+            </DropZone>
+            <Checkbox
+              checked={checked}
+              label="Overwrite existing customers that have the same email or phone"
+              onChange={handleCheckbox}
+            />
+          </Stack>
+        </Modal.Section>
+      </Modal>
+    </div>
+  );
 }
 ```
 
@@ -602,48 +559,40 @@ class ModalExample extends React.Component {
 We recommend you add a title to your modal, but you may leave it blank.
 
 ```jsx
-class ModalExample extends React.Component {
-  state = {
-    active: true,
-  };
+function ModalWithoutTitleExample() {
+  const [active, setActive] = useState(true);
 
-  render() {
-    const {active} = this.state;
+  const handleChange = useCallback(() => setActive(!active), [active]);
 
-    return (
-      <div style={{height: '500px'}}>
-        <Button onClick={this.handleChange}>Open</Button>
-        <Modal
-          open={active}
-          onClose={this.handleChange}
-          primaryAction={{
-            content: 'Add Instagram',
-            onAction: this.handleChange,
-          }}
-          secondaryActions={[
-            {
-              content: 'Learn more',
-              onAction: this.handleChange,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <TextContainer>
-              <p>
-                Use Instagram posts to share your products with millions of
-                people. Let shoppers buy from your store without leaving
-                Instagram.
-              </p>
-            </TextContainer>
-          </Modal.Section>
-        </Modal>
-      </div>
-    );
-  }
-
-  handleChange = () => {
-    this.setState(({active}) => ({active: !active}));
-  };
+  return (
+    <div style={{height: '500px'}}>
+      <Button onClick={handleChange}>Open</Button>
+      <Modal
+        open={active}
+        onClose={handleChange}
+        primaryAction={{
+          content: 'Add Instagram',
+          onAction: handleChange,
+        }}
+        secondaryActions={[
+          {
+            content: 'Learn more',
+            onAction: handleChange,
+          },
+        ]}
+      >
+        <Modal.Section>
+          <TextContainer>
+            <p>
+              Use Instagram posts to share your products with millions of
+              people. Let shoppers buy from your store without leaving
+              Instagram.
+            </p>
+          </TextContainer>
+        </Modal.Section>
+      </Modal>
+    </div>
+  );
 }
 ```
 
@@ -654,38 +603,32 @@ class ModalExample extends React.Component {
 Use to implement infinite scroll of modal content.
 
 ```jsx
-class ModalExample extends React.Component {
-  state = {
-    active: true,
-  };
+function ModalWithScrollListenerExample() {
+  const [active, setActive] = useState(true);
 
-  render() {
-    const {active} = this.state;
+  const handleChange = useCallback(() => setActive(!active), [active]);
 
-    return (
-      <div style={{height: '500px'}}>
-        <Button onClick={this.handleChange}>Open</Button>
-        <Modal
-          open={active}
-          title="Scrollable content"
-          onClose={this.toggleModalVisibility}
-          onScrolledToBottom={() => alert('Scrolled to bottom')}
-        >
-          {Array.from({length: 50}, (_, index) => (
-            <Modal.Section key={index}>
-              <TextContainer>
-                <p>Item #{index}</p>
-              </TextContainer>
-            </Modal.Section>
-          ))}
-        </Modal>
-      </div>
-    );
-  }
+  const handleScrollBottom = useCallback(() => alert('Scrolled to bottom'), []);
 
-  toggleModalVisibility = () => {
-    this.setState(({active}) => ({active: !active}));
-  };
+  return (
+    <div style={{height: '500px'}}>
+      <Button onClick={handleChange}>Open</Button>
+      <Modal
+        open={active}
+        title="Scrollable content"
+        onClose={handleChange}
+        onScrolledToBottom={handleScrollBottom}
+      >
+        {Array.from({length: 50}, (_, index) => (
+          <Modal.Section key={index}>
+            <TextContainer>
+              <p>Item #{index}</p>
+            </TextContainer>
+          </Modal.Section>
+        ))}
+      </Modal>
+    </div>
+  );
 }
 ```
 
