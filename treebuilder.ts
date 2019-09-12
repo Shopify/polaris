@@ -103,7 +103,7 @@ function findDependencies(fileName) {
 
 export function getGitStagedFiles(scope = '') {
   return new Promise((resolve, reject) => {
-    cmd.get('git status --no-renames -s', (err, data, stderr) => {
+    cmd.get('git status --porcelain', (err, data, stderr) => {
       if (err) {
         reject(err);
         return;
