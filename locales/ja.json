@@ -150,7 +150,8 @@
       "ariaLivePlural": "{itemsLength}個のアイテム",
       "Item": {
         "actionsDropdownLabel": "{accessibilityLabel}のアクション",
-        "actionsDropdown": "アクションドロップダウン"
+        "actionsDropdown": "アクションドロップダウン",
+        "viewItem": "{itemName}の詳細を表示する"
       },
       "BulkActions": {
         "actionsActivatorLabel": "アクション",

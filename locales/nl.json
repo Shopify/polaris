@@ -150,7 +150,8 @@
       "ariaLivePlural": "{itemsLength} artikelen",
       "Item": {
         "actionsDropdownLabel": "Acties voor {accessibilityLabel}",
-        "actionsDropdown": "Vervolgkeuze acties"
+        "actionsDropdown": "Vervolgkeuze acties",
+        "viewItem": "Details weergeven voor {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Acties",
