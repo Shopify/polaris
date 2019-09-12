@@ -55,16 +55,20 @@ const Component = ({pathname, filename, dependencies}) => (
       Files potentially affected (total: {dependencies.length})
     </Box>
     {dependencies.map(({pathname, filename, componentName}) => (
-      <Box marginLeft={3} key={pathname + filename}>
+      <Box
+        marginLeft={3}
+        key={pathname + filename}
+        flexDirection={process.stdout.columns > 80 ? 'row' : 'column'}
+      >
         <Box width={23}>
           <Color dim>{'<'}</Color>
           <Color>{componentName}</Color>
           <Color dim>{' />'}</Color>
         </Box>
-        <Text>
+        <Box textWrap="wrap">
           <Color dim>{pathname}</Color>
           {filename}
-        </Text>
+        </Box>
       </Box>
     ))}
   </Box>
