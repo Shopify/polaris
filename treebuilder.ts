@@ -74,7 +74,7 @@ function compile(fileNames: string[], options: ts.CompilerOptions): void {
   }
 
   function skipIndexFile(fileName) {
-    if (/(components\/)(\w*\/)?(index.ts)/.test(fileName)) {
+    if (/(components\/)(\w*\/)?(index.tsFIXME)/.test(fileName)) {
       const ast: any = program.getSourceFile(fileName);
       return (Array.from(ast.resolvedModules.values())[0] as any)
         .resolvedFileName;
