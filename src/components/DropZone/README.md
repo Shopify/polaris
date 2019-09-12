@@ -82,48 +82,45 @@ The following images couldn’t be uploaded:
 Use to allow merchants to upload files. They can drag and drop files into the dashed area, or upload traditionally by clicking the “Add file” button or anywhere inside the dashed area.
 
 ```jsx
-class DropZoneExample extends React.Component {
-  state = {
-    files: [],
-  };
+function DropZoneExample() {
+  const [files, setFiles] = useState([]);
 
-  render() {
-    const {files} = this.state;
-    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+  const handleDropZoneDrop = useCallback(
+    (_dropFiles, acceptedFiles, _rejectedFiles) =>
+      setFiles([...files, ...acceptedFiles]),
+    [files],
+  );
 
-    const fileUpload = !files.length && <DropZone.FileUpload />;
-    const uploadedFiles = files.length > 0 && (
-      <Stack vertical>
-        {files.map((file, index) => (
-          <Stack alignment="center" key={index}>
-            <Thumbnail
-              size="small"
-              alt={file.name}
-              source={
-                validImageTypes.indexOf(file.type) > 0
-                  ? window.URL.createObjectURL(file)
-                  : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
-              }
-            />
-            <div>
-              {file.name} <Caption>{file.size} bytes</Caption>
-            </div>
-          </Stack>
-        ))}
-      </Stack>
-    );
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
-    return (
-      <DropZone
-        onDrop={(files, acceptedFiles, rejectedFiles) => {
-          this.setState({files: [...this.state.files, ...acceptedFiles]});
-        }}
-      >
-        {uploadedFiles}
-        {fileUpload}
-      </DropZone>
-    );
-  }
+  const fileUpload = !files.length && <DropZone.FileUpload />;
+  const uploadedFiles = files.length > 0 && (
+    <Stack vertical>
+      {files.map((file, index) => (
+        <Stack alignment="center" key={index}>
+          <Thumbnail
+            size="small"
+            alt={file.name}
+            source={
+              validImageTypes.indexOf(file.type) > 0
+                ? window.URL.createObjectURL(file)
+                : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+            }
+          />
+          <div>
+            {file.name} <Caption>{file.size} bytes</Caption>
+          </div>
+        </Stack>
+      ))}
+    </Stack>
+  );
+
+  return (
+    <DropZone onDrop={handleDropZoneDrop}>
+      {uploadedFiles}
+      {fileUpload}
+    </DropZone>
+  );
 }
 ```
 
@@ -142,69 +139,59 @@ Use to pair with a label for better accessibility.
 Use for cases that accept image file formats.
 
 ```jsx
-class DropZoneExample extends React.Component {
-  state = {
-    files: [],
-    rejectedFiles: [],
-    hasError: false,
-  };
+function DropZoneWithImageFileUpload() {
+  const [files, setFiles] = useState([]);
+  const [rejectedFiles, setRejectedFiles] = useState([]);
+  const hasError = rejectedFiles.length > 0;
 
-  render() {
-    const {files, hasError, rejectedFiles} = this.state;
+  const handleDrop = useCallback((files, acceptedFiles, rejectedFiles) => {
+    setFiles([...files, ...acceptedFiles]);
+    setRejectedFiles(rejectedFiles);
+    setHasError(rejectedFiles.length > 0);
+  }, []);
 
-    const fileUpload = !files.length && <DropZone.FileUpload />;
-    const uploadedFiles = files.length > 0 && (
-      <Stack vertical>
-        {files.map((file, index) => (
-          <Stack alignment="center" key={index}>
-            <Thumbnail
-              size="small"
-              alt={file.name}
-              source={window.URL.createObjectURL(file)}
-            />
-            <div>
-              {file.name} <Caption>{file.size} bytes</Caption>
-            </div>
-          </Stack>
+  const fileUpload = !files.length && <DropZone.FileUpload />;
+  const uploadedFiles = files.length > 0 && (
+    <Stack vertical>
+      {files.map((file, index) => (
+        <Stack alignment="center" key={index}>
+          <Thumbnail
+            size="small"
+            alt={file.name}
+            source={window.URL.createObjectURL(file)}
+          />
+          <div>
+            {file.name} <Caption>{file.size} bytes</Caption>
+          </div>
+        </Stack>
+      ))}
+    </Stack>
+  );
+
+  const errorMessage = hasError && (
+    <Banner
+      title="The following images couldn’t be uploaded:"
+      status="critical"
+    >
+      <List type="bullet">
+        {rejectedFiles.map((file, index) => (
+          <List.Item key={index}>
+            {`"${file.name}" is not supported. File type must be .gif, .jpg, .png or .svg.`}
+          </List.Item>
         ))}
-      </Stack>
-    );
+      </List>
+    </Banner>
+  );
 
-    const errorMessage = hasError && (
-      <Banner
-        title="The following images couldn’t be uploaded:"
-        status="critical"
-      >
-        <List type="bullet">
-          {rejectedFiles.map((file, index) => (
-            <List.Item key={index}>
-              {`"${file.name}" is not supported. File type must be .gif, .jpg, .png or .svg.`}
-            </List.Item>
-          ))}
-        </List>
-      </Banner>
-    );
-
-    return (
-      <Stack vertical>
-        {errorMessage}
-        <DropZone
-          accept="image/*"
-          type="image"
-          onDrop={(files, acceptedFiles, rejectedFiles) => {
-            this.setState({
-              files: [...this.state.files, ...acceptedFiles],
-              rejectedFiles: rejectedFiles,
-              hasError: rejectedFiles.length > 0,
-            });
-          }}
-        >
-          {uploadedFiles}
-          {fileUpload}
-        </DropZone>
-      </Stack>
-    );
-  }
+  return (
+    <Stack vertical>
+      {errorMessage}
+      <DropZone accept="image/*" type="image" onDrop={handleDrop}>
+        {uploadedFiles}
+        {fileUpload}
+      </DropZone>
+    </Stack>
+  );
 }
 ```
 
@@ -213,61 +200,57 @@ class DropZoneExample extends React.Component {
 Use to accept files for upload when dropped anywhere on the page.
 
 ```jsx
-class DropZoneExample extends React.Component {
-  state = {
-    files: [],
-  };
+function DropZoneWithDropOnPageExample() {
+  const [files, setFiles] = useState([]);
 
-  render() {
-    const {files} = this.state;
-    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+  const handleDropZoneDrop = useCallback(
+    (dropFiles, _acceptedFiles, _rejectedFiles) =>
+      setFiles([...files, ...dropFiles]),
+    [files],
+  );
 
-    const uploadedFiles = files.length > 0 && (
-      <Stack vertical>
-        {files.map((file, index) => (
-          <Stack alignment="center" key={index}>
-            <Thumbnail
-              size="small"
-              alt={file.name}
-              source={
-                validImageTypes.indexOf(file.type) > 0
-                  ? window.URL.createObjectURL(file)
-                  : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
-              }
-            />
-            <div>
-              {file.name} <Caption>{file.size} bytes</Caption>
-            </div>
-          </Stack>
-        ))}
-      </Stack>
-    );
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
-    return (
-      <Page
-        breadcrumbs={[{content: 'Products'}]}
-        title="Jar With Lock-Lid"
-        primaryAction={{content: 'Save', disabled: true}}
-        secondaryActions={[
-          {content: 'Duplicate'},
-          {content: 'View on your store'},
-        ]}
-        pagination={{
-          hasPrevious: true,
-          hasNext: true,
-        }}
-      >
-        <DropZone
-          dropOnPage
-          onDrop={(files) => {
-            this.setState({files: [...this.state.files, ...files]});
-          }}
-        >
-          {uploadedFiles}
-        </DropZone>
-      </Page>
-    );
-  }
+  const uploadedFiles = files.length > 0 && (
+    <Stack vertical>
+      {files.map((file, index) => (
+        <Stack alignment="center" key={index}>
+          <Thumbnail
+            size="small"
+            alt={file.name}
+            source={
+              validImageTypes.indexOf(file.type) > 0
+                ? window.URL.createObjectURL(file)
+                : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+            }
+          />
+          <div>
+            {file.name} <Caption>{file.size} bytes</Caption>
+          </div>
+        </Stack>
+      ))}
+    </Stack>
+  );
+
+  return (
+    <Page
+      breadcrumbs={[{content: 'Products'}]}
+      title="Jar With Lock-Lid"
+      primaryAction={{content: 'Save', disabled: true}}
+      secondaryActions={[
+        {content: 'Duplicate'},
+        {content: 'View on your store'},
+      ]}
+      pagination={{
+        hasPrevious: true,
+        hasNext: true,
+      }}
+    >
+      <DropZone dropOnPage onDrop={handleDropZoneDrop}>
+        {uploadedFiles}
+      </DropZone>
+    </Page>
+  );
 }
 ```
 
@@ -276,68 +259,65 @@ class DropZoneExample extends React.Component {
 Use to accept only SVG files.
 
 ```jsx
-class DropZoneExample extends React.Component {
-  state = {
-    files: [],
-    rejectedFiles: [],
-    hasError: false,
-  };
+function DropZoneAcceptingSVGFilesExample() {
+  const [files, setFiles] = useState([]);
+  const [rejectedFiles, setRejectedFiles] = useState([]);
+  const hasError = rejectedFiles.length > 0;
 
-  render() {
-    const {files, hasError, rejectedFiles} = this.state;
+  const handleDropZoneDrop = useCallback(
+    (_dropFiles, acceptedFiles, rejectedFiles) => {
+      setFiles([...files, ...acceptedFiles]);
+      setRejectedFiles(rejectedFiles);
+      setHasError(rejectedFiles.length > 0);
+    },
+    [files],
+  );
 
-    const uploadedFiles = files.length > 0 && (
-      <Stack vertical>
-        {files.map((file, index) => (
-          <Stack alignment="center" key={index}>
-            <Thumbnail
-              size="small"
-              alt={file.name}
-              source={window.URL.createObjectURL(file)}
-            />
-            <div>
-              {file.name} <Caption>{file.size} bytes</Caption>
-            </div>
-          </Stack>
+  const uploadedFiles = files.length > 0 && (
+    <Stack vertical>
+      {files.map((file, index) => (
+        <Stack alignment="center" key={index}>
+          <Thumbnail
+            size="small"
+            alt={file.name}
+            source={window.URL.createObjectURL(file)}
+          />
+          <div>
+            {file.name} <Caption>{file.size} bytes</Caption>
+          </div>
+        </Stack>
+      ))}
+    </Stack>
+  );
+
+  const errorMessage = hasError && (
+    <Banner
+      title="The following images couldn’t be uploaded:"
+      status="critical"
+    >
+      <List type="bullet">
+        {rejectedFiles.map((file, index) => (
+          <List.Item key={index}>
+            {`"${file.name}" is not supported. File type must be .svg.`}
+          </List.Item>
         ))}
-      </Stack>
-    );
+      </List>
+    </Banner>
+  );
 
-    const errorMessage = hasError && (
-      <Banner
-        title="The following images couldn’t be uploaded:"
-        status="critical"
+  return (
+    <Stack vertical>
+      {errorMessage}
+      <DropZone
+        accept="image/svg+xml"
+        type="image"
+        errorOverlayText="File type must be .svg"
+        onDrop={handleDropZoneDrop}
       >
-        <List type="bullet">
-          {rejectedFiles.map((file, index) => (
-            <List.Item key={index}>
-              {`"${file.name}" is not supported. File type must be .svg.`}
-            </List.Item>
-          ))}
-        </List>
-      </Banner>
-    );
-
-    return (
-      <Stack vertical>
-        {errorMessage}
-        <DropZone
-          accept="image/svg+xml"
-          type="image"
-          errorOverlayText="File type must be .svg"
-          onDrop={(files, acceptedFiles, rejectedFiles) => {
-            this.setState({
-              files: [...this.state.files, ...acceptedFiles],
-              rejectedFiles: rejectedFiles,
-              hasError: rejectedFiles.length > 0,
-            });
-          }}
-        >
-          {uploadedFiles}
-        </DropZone>
-      </Stack>
-    );
-  }
+        {uploadedFiles}
+      </DropZone>
+    </Stack>
+  );
 }
 ```
 
@@ -346,53 +326,50 @@ class DropZoneExample extends React.Component {
 Use to allow merchants to upload files in a wider area than the visible drop zone.
 
 ```jsx
-class DropZoneExample extends React.Component {
-  state = {
-    files: [],
-  };
+function NestedDropZoneExample() {
+  const [files, setFiles] = useState([]);
 
-  render() {
-    const {files} = this.state;
-    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+  const handleDropZoneDrop = useCallback(
+    (dropFiles, _acceptedFiles, _rejectedFiles) =>
+      setFiles([...files, ...dropFiles]),
+    [files],
+  );
+  const handleDropZoneClick = useCallback(() => {}, []);
 
-    const fileUpload = !files.length && <DropZone.FileUpload />;
-    const uploadedFiles = files.length > 0 && (
-      <Stack vertical>
-        {files.map((file, index) => (
-          <Stack alignment="center" key={index}>
-            <Thumbnail
-              size="small"
-              alt={file.name}
-              source={
-                validImageTypes.indexOf(file.type) > 0
-                  ? window.URL.createObjectURL(file)
-                  : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
-              }
-            />
-            <div>
-              {file.name} <Caption>{file.size} bytes</Caption>
-            </div>
-          </Stack>
-        ))}
-      </Stack>
-    );
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
-    return (
-      <DropZone
-        outline={false}
-        onDrop={(files) => {
-          this.setState({files: [...this.state.files, ...files]});
-        }}
-      >
-        <Card sectioned>
-          <DropZone onClick={() => {}}>
-            {uploadedFiles}
-            {fileUpload}
-          </DropZone>
-        </Card>
-      </DropZone>
-    );
-  }
+  const fileUpload = !files.length && <DropZone.FileUpload />;
+  const uploadedFiles = files.length > 0 && (
+    <Stack vertical>
+      {files.map((file, index) => (
+        <Stack alignment="center" key={index}>
+          <Thumbnail
+            size="small"
+            alt={file.name}
+            source={
+              validImageTypes.indexOf(file.type) > 0
+                ? window.URL.createObjectURL(file)
+                : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+            }
+          />
+          <div>
+            {file.name} <Caption>{file.size} bytes</Caption>
+          </div>
+        </Stack>
+      ))}
+    </Stack>
+  );
+
+  return (
+    <DropZone outline={false} onDrop={handleDropZoneDrop}>
+      <Card sectioned>
+        <DropZone onClick={handleDropZoneClick}>
+          {uploadedFiles}
+          {fileUpload}
+        </DropZone>
+      </Card>
+    </DropZone>
+  );
 }
 ```
 
@@ -425,64 +402,63 @@ Use for cases with tight space constraints, such as variant thumbnails on the Pr
 Use to trigger the file dialog from an action somewhere else on the page.
 
 ```jsx
-class DropZoneExample extends React.Component {
-  state = {
-    openFileDialog: false,
-    files: [],
-  };
+function DropZoneWithCustomFileDialogExample() {
+  const [files, setFiles] = useState([]);
+  const [openFileDialog, setOpenFileDialog] = useState(false);
 
-  render() {
-    const {files, openFileDialog} = this.state;
-    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+  const handleDropZoneDrop = useCallback(
+    (dropFiles, _acceptedFiles, _rejectedFiles) =>
+      setFiles([...files, ...dropFiles]),
+    [files],
+  );
+  const toggleOpenFileDialog = useCallback(
+    () => setOpenFileDialog((openFileDialog) => !openFileDialog),
+    [],
+  );
 
-    const uploadedFiles = files.length > 0 && (
-      <Stack vertical>
-        {files.map((file, index) => (
-          <Stack alignment="center" key={index}>
-            <Thumbnail
-              size="small"
-              alt={file.name}
-              source={
-                validImageTypes.indexOf(file.type) > 0
-                  ? window.URL.createObjectURL(file)
-                  : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
-              }
-            />
-            <div>
-              {file.name} <Caption>{file.size} bytes</Caption>
-            </div>
-          </Stack>
-        ))}
-      </Stack>
-    );
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
-    return (
-      <Card
-        sectioned
-        title="Product Images"
-        actions={[
-          {
-            content: 'Upload Image',
-            onAction: () => {
-              this.setState({openFileDialog: true});
-            },
-          },
-        ]}
+  const uploadedFiles = files.length > 0 && (
+    <Stack vertical>
+      {files.map((file, index) => (
+        <Stack alignment="center" key={index}>
+          <Thumbnail
+            size="small"
+            alt={file.name}
+            source={
+              validImageTypes.indexOf(file.type) > 0
+                ? window.URL.createObjectURL(file)
+                : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+            }
+          />
+          <div>
+            {file.name} <Caption>{file.size} bytes</Caption>
+          </div>
+        </Stack>
+      ))}
+    </Stack>
+  );
+
+  return (
+    <Card
+      sectioned
+      title="Product Images"
+      actions={[
+        {
+          content: 'Upload Image',
+          onAction: toggleOpenFileDialog,
+        },
+      ]}
+    >
+      <DropZone
+        openFileDialog={openFileDialog}
+        onDrop={handleDropZoneDrop}
+        onFileDialogClose={toggleOpenFileDialog}
       >
-        <DropZone
-          openFileDialog={openFileDialog}
-          onDrop={(files) => {
-            this.setState({files: [...this.state.files, ...files]});
-          }}
-          onFileDialogClose={() => {
-            this.setState({openFileDialog: false});
-          }}
-        >
-          {uploadedFiles}
-        </DropZone>
-      </Card>
-    );
-  }
+        {uploadedFiles}
+      </DropZone>
+    </Card>
+  );
 }
 ```
 
