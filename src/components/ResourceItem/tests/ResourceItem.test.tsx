@@ -13,7 +13,7 @@ import {
   Button,
 } from 'components';
 import {ResourceListContext} from '../../../utilities/resource-list';
-import ResourceItem from '../ResourceItem';
+import {ResourceItem} from '../ResourceItem';
 
 describe('<ResourceItem />', () => {
   let spy: jest.SpyInstance;

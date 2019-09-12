@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.2.1 - 2019-09-10
+
+### Bug fixes
+
+- Fixed TypeScript not generating correct types for functional components that have subcomponents ([#2111](https://github.com/Shopify/polaris-react/pull/2111))
+
 ## 4.2.0 - 2019-09-09
 
 ### Enhancements

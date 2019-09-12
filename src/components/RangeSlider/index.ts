@@ -1,4 +1,2 @@
-import RangeSlider from './RangeSlider';
-
-export {RangeSlider};
+export {RangeSlider} from './RangeSlider';
 export {RangeSliderProps, RangeSliderValue, DualValue} from './types';
