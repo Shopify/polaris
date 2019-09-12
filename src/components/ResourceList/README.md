@@ -89,16 +89,43 @@ A resource list with simple items and no bulk actions, sorting, or filtering.
 A resource list with simple items and selection.
 
 ```jsx
-class ResourceListExample extends React.Component {
-  state = {
-    selectedItems: [],
+function ResourceListWithSelectionExample() {
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
   };
 
-  handleSelectionChange = (selectedItems) => {
-    this.setState({selectedItems});
-  };
+  const items = [
+    {
+      id: 341,
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+    },
+    {
+      id: 256,
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+    },
+  ];
 
-  renderItem = (item) => {
+  return (
+    <Card>
+      <ResourceList
+        resourceName={resourceName}
+        items={items}
+        renderItem={renderItem}
+        selectedItems={selectedItems}
+        onSelectionChange={setSelectedItems}
+        selectable
+      />
+    </Card>
+  );
+
+  function renderItem(item) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -114,41 +141,6 @@ class ResourceListExample extends React.Component {
         </h3>
         <div>{location}</div>
       </ResourceItem>
-    );
-  };
-
-  render() {
-    const resourceName = {
-      singular: 'customer',
-      plural: 'customers',
-    };
-
-    const items = [
-      {
-        id: 341,
-        url: 'customers/341',
-        name: 'Mae Jemison',
-        location: 'Decatur, USA',
-      },
-      {
-        id: 256,
-        url: 'customers/256',
-        name: 'Ellen Ochoa',
-        location: 'Los Angeles, USA',
-      },
-    ];
-
-    return (
-      <Card>
-        <ResourceList
-          resourceName={resourceName}
-          items={items}
-          renderItem={this.renderItem}
-          selectedItems={this.state.selectedItems}
-          onSelectionChange={this.handleSelectionChange}
-          selectable
-        />
-      </Card>
     );
   }
 }
@@ -159,16 +151,66 @@ class ResourceListExample extends React.Component {
 Allows merchants to select items and perform an action on the selection.
 
 ```jsx
-class ResourceListExample extends React.Component {
-  state = {
-    selectedItems: [],
+function ResourceListWithBulkActionsExample() {
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
   };
 
-  handleSelectionChange = (selectedItems) => {
-    this.setState({selectedItems});
-  };
+  const items = [
+    {
+      id: 341,
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+    },
+    {
+      id: 256,
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+    },
+  ];
 
-  renderItem = (item) => {
+  const promotedBulkActions = [
+    {
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
+    },
+  ];
+
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  return (
+    <Card>
+      <ResourceList
+        resourceName={resourceName}
+        items={items}
+        renderItem={renderItem}
+        selectedItems={selectedItems}
+        onSelectionChange={setSelectedItems}
+        promotedBulkActions={promotedBulkActions}
+        bulkActions={bulkActions}
+      />
+    </Card>
+  );
+
+  function renderItem(item) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -184,64 +226,6 @@ class ResourceListExample extends React.Component {
         </h3>
         <div>{location}</div>
       </ResourceItem>
-    );
-  };
-
-  render() {
-    const resourceName = {
-      singular: 'customer',
-      plural: 'customers',
-    };
-
-    const items = [
-      {
-        id: 341,
-        url: 'customers/341',
-        name: 'Mae Jemison',
-        location: 'Decatur, USA',
-      },
-      {
-        id: 256,
-        url: 'customers/256',
-        name: 'Ellen Ochoa',
-        location: 'Los Angeles, USA',
-      },
-    ];
-
-    const promotedBulkActions = [
-      {
-        content: 'Edit customers',
-        onAction: () => console.log('Todo: implement bulk edit'),
-      },
-    ];
-
-    const bulkActions = [
-      {
-        content: 'Add tags',
-        onAction: () => console.log('Todo: implement bulk add tags'),
-      },
-      {
-        content: 'Remove tags',
-        onAction: () => console.log('Todo: implement bulk remove tags'),
-      },
-      {
-        content: 'Delete customers',
-        onAction: () => console.log('Todo: implement bulk delete'),
-      },
-    ];
-
-    return (
-      <Card>
-        <ResourceList
-          resourceName={resourceName}
-          items={items}
-          renderItem={this.renderItem}
-          selectedItems={this.state.selectedItems}
-          onSelectionChange={this.handleSelectionChange}
-          promotedBulkActions={promotedBulkActions}
-          bulkActions={bulkActions}
-        />
-      </Card>
     );
   }
 }
@@ -252,16 +236,67 @@ class ResourceListExample extends React.Component {
 Notifies merchants that list items are being processed.
 
 ```jsx
-class ResourceListExample extends React.Component {
-  state = {
-    selectedItems: [],
+function ResourceListWithLoadingExample() {
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
   };
 
-  handleSelectionChange = (selectedItems) => {
-    this.setState({selectedItems});
-  };
+  const items = [
+    {
+      id: 341,
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+    },
+    {
+      id: 256,
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+    },
+  ];
 
-  renderItem = (item) => {
+  const promotedBulkActions = [
+    {
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
+    },
+  ];
+
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  return (
+    <Card>
+      <ResourceList
+        resourceName={resourceName}
+        items={items}
+        renderItem={renderItem}
+        selectedItems={selectedItems}
+        onSelectionChange={setSelectedItems}
+        promotedBulkActions={promotedBulkActions}
+        bulkActions={bulkActions}
+        loading
+      />
+    </Card>
+  );
+
+  function renderItem(item) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -277,65 +312,6 @@ class ResourceListExample extends React.Component {
         </h3>
         <div>{location}</div>
       </ResourceItem>
-    );
-  };
-
-  render() {
-    const resourceName = {
-      singular: 'customer',
-      plural: 'customers',
-    };
-
-    const items = [
-      {
-        id: 341,
-        url: 'customers/341',
-        name: 'Mae Jemison',
-        location: 'Decatur, USA',
-      },
-      {
-        id: 256,
-        url: 'customers/256',
-        name: 'Ellen Ochoa',
-        location: 'Los Angeles, USA',
-      },
-    ];
-
-    const promotedBulkActions = [
-      {
-        content: 'Edit customers',
-        onAction: () => console.log('Todo: implement bulk edit'),
-      },
-    ];
-
-    const bulkActions = [
-      {
-        content: 'Add tags',
-        onAction: () => console.log('Todo: implement bulk add tags'),
-      },
-      {
-        content: 'Remove tags',
-        onAction: () => console.log('Todo: implement bulk remove tags'),
-      },
-      {
-        content: 'Delete customers',
-        onAction: () => console.log('Todo: implement bulk delete'),
-      },
-    ];
-
-    return (
-      <Card>
-        <ResourceList
-          resourceName={resourceName}
-          items={items}
-          renderItem={this.renderItem}
-          selectedItems={this.state.selectedItems}
-          onSelectionChange={this.handleSelectionChange}
-          promotedBulkActions={promotedBulkActions}
-          bulkActions={bulkActions}
-          loading={true}
-        />
-      </Card>
     );
   }
 }
@@ -346,16 +322,49 @@ class ResourceListExample extends React.Component {
 Allows merchants to change the way the list is sorted by selecting one of several options from a [Select](https://polaris.shopify.com/components/forms/select) control.
 
 ```jsx
-class ResourceListExample extends React.Component {
-  state = {
-    sortValue: 'DATE_MODIFIED_DESC',
+function ResourceListWithSortingExample() {
+  const [sortValue, setSortValue] = useState('DATE_MODIFIED_DESC');
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
   };
 
-  handleSortChange = (sortValue) => {
-    this.setState({sortValue});
-  };
+  const items = [
+    {
+      id: 341,
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+    },
+    {
+      id: 256,
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+    },
+  ];
 
-  renderItem = (item) => {
+  return (
+    <Card>
+      <ResourceList
+        resourceName={resourceName}
+        items={items}
+        renderItem={renderItem}
+        sortValue={sortValue}
+        sortOptions={[
+          {label: 'Newest update', value: 'DATE_MODIFIED_DESC'},
+          {label: 'Oldest update', value: 'DATE_MODIFIED_ASC'},
+        ]}
+        onSortChange={(selected) => {
+          setSortValue(selected);
+          console.log(`Sort option changed to ${selected}.`);
+        }}
+      />
+    </Card>
+  );
+
+  function renderItem(item) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -371,47 +380,6 @@ class ResourceListExample extends React.Component {
         </h3>
         <div>{location}</div>
       </ResourceItem>
-    );
-  };
-
-  render() {
-    const resourceName = {
-      singular: 'customer',
-      plural: 'customers',
-    };
-
-    const items = [
-      {
-        id: 341,
-        url: 'customers/341',
-        name: 'Mae Jemison',
-        location: 'Decatur, USA',
-      },
-      {
-        id: 256,
-        url: 'customers/256',
-        name: 'Ellen Ochoa',
-        location: 'Los Angeles, USA',
-      },
-    ];
-
-    return (
-      <Card>
-        <ResourceList
-          resourceName={resourceName}
-          items={items}
-          renderItem={this.renderItem}
-          sortValue={this.state.sortValue}
-          sortOptions={[
-            {label: 'Newest update', value: 'DATE_MODIFIED_DESC'},
-            {label: 'Oldest update', value: 'DATE_MODIFIED_ASC'},
-          ]}
-          onSortChange={(selected) => {
-            this.setState({sortValue: selected});
-            console.log(`Sort option changed to ${selected}.`);
-          }}
-        />
-      </Card>
     );
   }
 }
@@ -422,8 +390,39 @@ class ResourceListExample extends React.Component {
 Allows merchants to add an alternate tool in the current sort option location when sort may not be the most relevant action for the current list.
 
 ```jsx
-class ResourceListExample extends React.Component {
-  renderItem = (item) => {
+function ResourceListWithAlternateToolExample() {
+  const resourceName = {
+    singular: 'Customer',
+    plural: 'Customers',
+  };
+
+  const items = [
+    {
+      id: 341,
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+    },
+    {
+      id: 256,
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+    },
+  ];
+
+  return (
+    <Card>
+      <ResourceList
+        items={items}
+        renderItem={renderItem}
+        resourceName={resourceName}
+        alternateTool={<Button>Email customers</Button>}
+      />
+    </Card>
+  );
+
+  function renderItem(item) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -440,39 +439,6 @@ class ResourceListExample extends React.Component {
         <div>{location}</div>
       </ResourceItem>
     );
-  };
-
-  render() {
-    const resourceName = {
-      singular: 'Customer',
-      plural: 'Customers',
-    };
-
-    const items = [
-      {
-        id: 341,
-        url: 'customers/341',
-        name: 'Mae Jemison',
-        location: 'Decatur, USA',
-      },
-      {
-        id: 256,
-        url: 'customers/256',
-        name: 'Ellen Ochoa',
-        location: 'Los Angeles, USA',
-      },
-    ];
-
-    return (
-      <Card>
-        <ResourceList
-          items={items}
-          renderItem={this.renderItem}
-          resourceName={resourceName}
-          alternateTool={<Button>Email customers</Button>}
-        />
-      </Card>
-    );
   }
 }
 ```
@@ -482,13 +448,98 @@ class ResourceListExample extends React.Component {
 Allows merchants to narrow the resource list to a subset of the original items.
 
 ```jsx
-class ResourceListExample extends React.Component {
-  state = {
-    taggedWith: 'VIP',
-    queryValue: null,
+function ResourceListWithFilteringExample() {
+  const [taggedWith, setTaggedWith] = useState('VIP');
+  const [queryValue, setQueryValue] = useState(null);
+
+  const handleTaggedWithChange = useCallback(
+    (value) => setTaggedWith(value),
+    [],
+  );
+  const handleQueryValueChange = useCallback(
+    (value) => setQueryValue(value),
+    [],
+  );
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleClearAll = useCallback(() => {
+    handleTaggedWithRemove();
+    handleQueryValueRemove();
+  }, [handleQueryValueRemove, handleTaggedWithRemove]);
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
   };
 
-  renderItem = (item) => {
+  const items = [
+    {
+      id: 341,
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+    },
+    {
+      id: 256,
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+    },
+  ];
+
+  const filters = [
+    {
+      key: 'taggedWith',
+      label: 'Tagged with',
+      filter: (
+        <TextField
+          label="Tagged with"
+          value={taggedWith}
+          onChange={handleTaggedWithChange}
+          labelHidden
+        />
+      ),
+      shortcut: true,
+    },
+  ];
+
+  const appliedFilters = !isEmpty(taggedWith)
+    ? [
+        {
+          key: 'taggedWith',
+          label: disambiguateLabel('taggedWith', taggedWith),
+          onRemove: handleTaggedWithRemove,
+        },
+      ]
+    : [];
+
+  const filterControl = (
+    <Filters
+      queryValue={queryValue}
+      filters={filters}
+      appliedFilters={appliedFilters}
+      onQueryChange={handleQueryValueChange}
+      onQueryClear={handleQueryValueRemove}
+      onClearAll={handleClearAll}
+    >
+      <div style={{paddingLeft: '8px'}}>
+        <Button onClick={() => console.log('New filter saved')}>Save</Button>
+      </div>
+    </Filters>
+  );
+
+  return (
+    <Card>
+      <ResourceList
+        resourceName={resourceName}
+        items={items}
+        renderItem={renderItem}
+        filterControl={filterControl}
+      />
+    </Card>
+  );
+
+  function renderItem(item) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -500,117 +551,23 @@ class ResourceListExample extends React.Component {
         <div>{location}</div>
       </ResourceItem>
     );
-  };
-
-  render() {
-    const {taggedWith, queryValue} = this.state;
-    const resourceName = {
-      singular: 'customer',
-      plural: 'customers',
-    };
-
-    const items = [
-      {
-        id: 341,
-        url: 'customers/341',
-        name: 'Mae Jemison',
-        location: 'Decatur, USA',
-      },
-      {
-        id: 256,
-        url: 'customers/256',
-        name: 'Ellen Ochoa',
-        location: 'Los Angeles, USA',
-      },
-    ];
-
-    const filters = [
-      {
-        key: 'taggedWith',
-        label: 'Tagged with',
-        filter: (
-          <TextField
-            label="Tagged with"
-            value={taggedWith}
-            onChange={this.handleChange('taggedWith')}
-            labelHidden
-          />
-        ),
-        shortcut: true,
-      },
-    ];
-
-    const appliedFilters = Object.keys(this.state)
-      .filter((key) => !isEmpty(this.state[key]) && key === 'taggedWith')
-      .map((key) => {
-        return {
-          key,
-          label: disambiguateLabel(key, this.state[key]),
-          onRemove: this.handleRemove,
-        };
-      });
-
-    const filterControl = (
-      <Filters
-        queryValue={queryValue}
-        filters={filters}
-        appliedFilters={appliedFilters}
-        onQueryChange={this.handleChange('queryValue')}
-        onQueryClear={this.handleQueryClear}
-        onClearAll={this.handleClearAll}
-      >
-        <div style={{paddingLeft: '8px'}}>
-          <Button onClick={() => console.log('New filter saved')}>Save</Button>
-        </div>
-      </Filters>
-    );
-
-    return (
-      <Card>
-        <ResourceList
-          resourceName={resourceName}
-          items={items}
-          renderItem={this.renderItem}
-          filterControl={filterControl}
-        />
-      </Card>
-    );
   }
 
-  handleChange = (key) => (value) => {
-    this.setState({[key]: value});
-  };
-
-  handleRemove = (key) => {
-    this.setState({[key]: null});
-  };
-
-  handleQueryClear = () => {
-    this.setState({queryValue: null});
-  };
-
-  handleClearAll = () => {
-    this.setState({
-      taggedWith: null,
-      queryValue: null,
-    });
-  };
-}
-
-function disambiguateLabel(key, value) {
-  switch (key) {
-    case 'taggedWith':
-      return `Tagged with ${value}`;
-    default:
-      return value;
+  function disambiguateLabel(key, value) {
+    switch (key) {
+      case 'taggedWith':
+        return `Tagged with ${value}`;
+      default:
+        return value;
+    }
   }
-}
 
-function isEmpty(value) {
-  if (Array.isArray(value)) {
-    return value.length === 0;
-  } else {
-    return value === '' || value == null;
+  function isEmpty(value) {
+    if (Array.isArray(value)) {
+      return value.length === 0;
+    } else {
+      return value === '' || value == null;
+    }
   }
 }
 ```
@@ -733,16 +690,91 @@ Use persistent shortcut actions in rare cases when the action cannot be made ava
 Allows merchants to select or deselect multiple items at once.
 
 ```jsx
-class ResourceListExample extends React.Component {
-  state = {
-    selectedItems: [],
+function ResourceListExample() {
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
   };
 
-  handleSelectionChange = (selectedItems) => {
-    this.setState({selectedItems});
-  };
+  const items = [
+    {
+      id: 231,
+      url: 'customers/231',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+    },
+    {
+      id: 246,
+      url: 'customers/246',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+    },
+    {
+      id: 276,
+      url: 'customers/276',
+      name: 'Joe Smith',
+      location: 'Arizona, USA',
+    },
+    {
+      id: 349,
+      url: 'customers/349',
+      name: 'Haden Jerado',
+      location: 'Decatur, USA',
+    },
+    {
+      id: 419,
+      url: 'customers/419',
+      name: 'Tom Thommas',
+      location: 'Florida, USA',
+    },
+    {
+      id: 516,
+      url: 'customers/516',
+      name: 'Emily Amrak',
+      location: 'Texas, USA',
+    },
+  ];
 
-  renderItem = (item, _, index) => {
+  const promotedBulkActions = [
+    {
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
+    },
+  ];
+
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  return (
+    <Card>
+      <ResourceList
+        resourceName={resourceName}
+        items={items}
+        renderItem={renderItem}
+        selectedItems={selectedItems}
+        onSelectionChange={setSelectedItems}
+        promotedBulkActions={promotedBulkActions}
+        bulkActions={bulkActions}
+        resolveItemId={resolveItemIds}
+      />
+    </Card>
+  );
+
+  function renderItem(item, _, index) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -760,94 +792,11 @@ class ResourceListExample extends React.Component {
         <div>{location}</div>
       </ResourceItem>
     );
-  };
-
-  render() {
-    const resourceName = {
-      singular: 'customer',
-      plural: 'customers',
-    };
-
-    const items = [
-      {
-        id: 231,
-        url: 'customers/231',
-        name: 'Mae Jemison',
-        location: 'Decatur, USA',
-      },
-      {
-        id: 246,
-        url: 'customers/246',
-        name: 'Ellen Ochoa',
-        location: 'Los Angeles, USA',
-      },
-      {
-        id: 276,
-        url: 'customers/276',
-        name: 'Joe Smith',
-        location: 'Arizona, USA',
-      },
-      {
-        id: 349,
-        url: 'customers/349',
-        name: 'Haden Jerado',
-        location: 'Decatur, USA',
-      },
-      {
-        id: 419,
-        url: 'customers/419',
-        name: 'Tom Thommas',
-        location: 'Florida, USA',
-      },
-      {
-        id: 516,
-        url: 'customers/516',
-        name: 'Emily Amrak',
-        location: 'Texas, USA',
-      },
-    ];
-
-    const promotedBulkActions = [
-      {
-        content: 'Edit customers',
-        onAction: () => console.log('Todo: implement bulk edit'),
-      },
-    ];
-
-    const bulkActions = [
-      {
-        content: 'Add tags',
-        onAction: () => console.log('Todo: implement bulk add tags'),
-      },
-      {
-        content: 'Remove tags',
-        onAction: () => console.log('Todo: implement bulk remove tags'),
-      },
-      {
-        content: 'Delete customers',
-        onAction: () => console.log('Todo: implement bulk delete'),
-      },
-    ];
-
-    return (
-      <Card>
-        <ResourceList
-          resourceName={resourceName}
-          items={items}
-          renderItem={this.renderItem}
-          selectedItems={this.state.selectedItems}
-          onSelectionChange={this.handleSelectionChange}
-          promotedBulkActions={promotedBulkActions}
-          bulkActions={bulkActions}
-          resolveItemId={resolveItemIds}
-        />
-      </Card>
-    );
   }
-}
 
-function resolveItemIds({id}) {
-  return id;
+  function resolveItemIds({id}) {
+    return id;
+  }
 }
 ```
 
@@ -856,15 +805,137 @@ function resolveItemIds({id}) {
 Use as a broad example that includes most props available to resource list.
 
 ```jsx
-class ResourceListExample extends React.Component {
-  state = {
-    selectedItems: [],
-    sortValue: 'DATE_MODIFIED_DESC',
-    taggedWith: 'VIP',
-    queryValue: null,
+function ResourceListExample() {
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [sortValue, setSortValue] = useState('DATE_MODIFIED_DESC');
+  const [taggedWith, setTaggedWith] = useState('VIP');
+  const [queryValue, setQueryValue] = useState(null);
+
+  const handleTaggedWithChange = useCallback(
+    (value) => setTaggedWith(value),
+    [],
+  );
+  const handleQueryValueChange = useCallback(
+    (value) => setQueryValue(value),
+    [],
+  );
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleClearAll = useCallback(() => {
+    handleTaggedWithRemove();
+    handleQueryValueRemove();
+  }, [handleQueryValueRemove, handleTaggedWithRemove]);
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
   };
 
-  renderItem = (item) => {
+  const items = [
+    {
+      id: 341,
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      latestOrderUrl: 'orders/1456',
+    },
+    {
+      id: 256,
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      latestOrderUrl: 'orders/1457',
+    },
+  ];
+
+  const promotedBulkActions = [
+    {
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
+    },
+  ];
+
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  const filters = [
+    {
+      key: 'taggedWith',
+      label: 'Tagged with',
+      filter: (
+        <TextField
+          label="Tagged with"
+          value={taggedWith}
+          onChange={handleTaggedWithChange}
+          labelHidden
+        />
+      ),
+      shortcut: true,
+    },
+  ];
+
+  const appliedFilters = !isEmpty(taggedWith)
+    ? [
+        {
+          key: 'taggedWith',
+          label: disambiguateLabel('taggedWith', taggedWith),
+          onRemove: handleTaggedWithRemove,
+        },
+      ]
+    : [];
+
+  const filterControl = (
+    <Filters
+      queryValue={queryValue}
+      filters={filters}
+      appliedFilters={appliedFilters}
+      onQueryChange={handleQueryValueChange}
+      onQueryClear={handleQueryValueRemove}
+      onClearAll={handleClearAll}
+    >
+      <div style={{paddingLeft: '8px'}}>
+        <Button onClick={() => console.log('New filter saved')}>Save</Button>
+      </div>
+    </Filters>
+  );
+
+  return (
+    <Card>
+      <ResourceList
+        resourceName={resourceName}
+        items={items}
+        renderItem={renderItem}
+        selectedItems={selectedItems}
+        onSelectionChange={setSelectedItems}
+        promotedBulkActions={promotedBulkActions}
+        bulkActions={bulkActions}
+        sortValue={sortValue}
+        sortOptions={[
+          {label: 'Newest update', value: 'DATE_MODIFIED_DESC'},
+          {label: 'Oldest update', value: 'DATE_MODIFIED_ASC'},
+        ]}
+        onSortChange={(selected) => {
+          setSortValue(selected);
+          console.log(`Sort option changed to ${selected}.`);
+        }}
+        filterControl={filterControl}
+      />
+    </Card>
+  );
+
+  function renderItem(item) {
     const {id, url, name, location, latestOrderUrl} = item;
     const media = <Avatar customer size="medium" name={name} />;
     const shortcutActions = latestOrderUrl
@@ -885,158 +956,23 @@ class ResourceListExample extends React.Component {
         <div>{location}</div>
       </ResourceItem>
     );
-  };
-
-  render() {
-    const {taggedWith, queryValue} = this.state;
-    const resourceName = {
-      singular: 'customer',
-      plural: 'customers',
-    };
-
-    const items = [
-      {
-        id: 341,
-        url: 'customers/341',
-        name: 'Mae Jemison',
-        location: 'Decatur, USA',
-        latestOrderUrl: 'orders/1456',
-      },
-      {
-        id: 256,
-        url: 'customers/256',
-        name: 'Ellen Ochoa',
-        location: 'Los Angeles, USA',
-        latestOrderUrl: 'orders/1457',
-      },
-    ];
-
-    const promotedBulkActions = [
-      {
-        content: 'Edit customers',
-        onAction: () => console.log('Todo: implement bulk edit'),
-      },
-    ];
-
-    const bulkActions = [
-      {
-        content: 'Add tags',
-        onAction: () => console.log('Todo: implement bulk add tags'),
-      },
-      {
-        content: 'Remove tags',
-        onAction: () => console.log('Todo: implement bulk remove tags'),
-      },
-      {
-        content: 'Delete customers',
-        onAction: () => console.log('Todo: implement bulk delete'),
-      },
-    ];
-
-    const filters = [
-      {
-        key: 'taggedWith',
-        label: 'Tagged with',
-        filter: (
-          <TextField
-            label="Tagged with"
-            value={taggedWith}
-            onChange={this.handleChange('taggedWith')}
-            labelHidden
-          />
-        ),
-        shortcut: true,
-      },
-    ];
-
-    const appliedFilters = Object.keys(this.state)
-      .filter((key) => !isEmpty(this.state[key]) && key === 'taggedWith')
-      .map((key) => {
-        return {
-          key,
-          label: disambiguateLabel(key, this.state[key]),
-          onRemove: this.handleRemove,
-        };
-      });
-
-    const filterControl = (
-      <Filters
-        queryValue={queryValue}
-        filters={filters}
-        appliedFilters={appliedFilters}
-        onQueryChange={this.handleChange('queryValue')}
-        onQueryClear={this.handleQueryClear}
-        onClearAll={this.handleClearAll}
-      >
-        <div style={{paddingLeft: '8px'}}>
-          <Button onClick={() => console.log('New filter saved')}>Save</Button>
-        </div>
-      </Filters>
-    );
-
-    return (
-      <Card>
-        <ResourceList
-          resourceName={resourceName}
-          items={items}
-          renderItem={this.renderItem}
-          selectedItems={this.state.selectedItems}
-          onSelectionChange={this.handleSelectionChange}
-          promotedBulkActions={promotedBulkActions}
-          bulkActions={bulkActions}
-          sortValue={this.state.sortValue}
-          sortOptions={[
-            {label: 'Newest update', value: 'DATE_MODIFIED_DESC'},
-            {label: 'Oldest update', value: 'DATE_MODIFIED_ASC'},
-          ]}
-          onSortChange={(selected) => {
-            this.setState({sortValue: selected});
-            console.log(`Sort option changed to ${selected}.`);
-          }}
-          filterControl={filterControl}
-        />
-      </Card>
-    );
   }
 
-  handleSelectionChange = (selectedItems) => {
-    this.setState({selectedItems});
-  };
-
-  handleChange = (key) => (value) => {
-    this.setState({[key]: value});
-  };
-
-  handleRemove = (key) => {
-    this.setState({[key]: null});
-  };
-
-  handleQueryClear = () => {
-    this.setState({queryValue: null});
-  };
-
-  handleClearAll = () => {
-    this.setState({
-      taggedWith: null,
-      queryValue: null,
-    });
-  };
-}
-
-function disambiguateLabel(key, value) {
-  switch (key) {
-    case 'taggedWith':
-      return `Tagged with ${value}`;
-    default:
-      return value;
+  function disambiguateLabel(key, value) {
+    switch (key) {
+      case 'taggedWith':
+        return `Tagged with ${value}`;
+      default:
+        return value;
+    }
   }
-}
 
-function isEmpty(value) {
-  if (Array.isArray(value)) {
-    return value.length === 0;
-  } else {
-    return value === '' || value == null;
+  function isEmpty(value) {
+    if (Array.isArray(value)) {
+      return value.length === 0;
+    } else {
+      return value === '' || value == null;
+    }
   }
 }
 ```
