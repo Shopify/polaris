@@ -21,6 +21,7 @@ const getEmojiForExtension = (extension) => {
       return '❔';
   }
 };
+
 const formatDependencies = (dependencies) =>
   dependencies
     .filter(({fileName}) => excludedFileNames(fileName))
