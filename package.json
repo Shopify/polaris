@@ -107,7 +107,6 @@
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/lodash": "^4.14.108",
     "@types/node": "^12.7.4",
-    "@types/tinycolor2": "^1.4.2",
     "archiver": "^3.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.0.5",
