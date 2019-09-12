@@ -79,34 +79,25 @@ say “Enable” to allow merchants to turn it on.
 Use on settings pages to allow merchants to toggle a setting that has an enabled or a disabled state.
 
 ```jsx
-class SettingToggleExample extends React.Component {
-  state = {
-    enabled: false,
-  };
+function SettingToggleExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const {enabled} = this.state;
-    const contentStatus = enabled ? 'Disable' : 'Enable';
-    const textStatus = enabled ? 'enabled' : 'disabled';
+  const handleToggle = useCallback(() => setActive((active) => !active), []);
 
-    return (
-      <SettingToggle
-        action={{
-          content: contentStatus,
-          onAction: this.handleChange,
-        }}
-        enabled={enabled}
-      >
-        This setting is <TextStyle variation="strong">{textStatus}</TextStyle>.
-      </SettingToggle>
-    );
-  }
+  const contentStatus = active ? 'Disable' : 'Enable';
+  const textStatus = active ? 'enabled' : 'disabled';
 
-  handleChange = () => {
-    this.setState(({enabled}) => {
-      return {enabled: !enabled};
-    });
-  };
+  return (
+    <SettingToggle
+      action={{
+        content: contentStatus,
+        onAction: handleToggle,
+      }}
+      enabled={active}
+    >
+      This setting is <TextStyle variation="strong">{textStatus}</TextStyle>.
+    </SettingToggle>
+  );
 }
 ```
 
