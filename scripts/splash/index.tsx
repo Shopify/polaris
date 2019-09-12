@@ -103,7 +103,7 @@ const Summary = ({
       <Box width={30}>
         <Text>Files modified:</Text>
       </Box>
-      <Box alignItems="flex-end" width={3}>
+      <Box justifyContent="flex-end" width={3}>
         {componentsModified}
       </Box>
     </Box>
@@ -111,7 +111,7 @@ const Summary = ({
       <Box width={30}>
         <Text>Files potentially affected:</Text>
       </Box>
-      <Box alignItems="flex-end" width={3}>
+      <Box justifyContent="flex-end" width={3}>
         {dependencies > -1 ? dependencies : '⏳'}
       </Box>
     </Box>
