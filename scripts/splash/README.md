@@ -14,7 +14,7 @@ It answers the question:
 ## Tips
 
 - <kbd>command</kbd> + click a file path to open it in your text editor
-- `yarn splash --watch` continuously looks for changes in the working directory and updates the list of impacted files in real-time
+- `yarn splash --watch` continuously looks for changes in the working directory and updates the list of impacted files in real-time (alpha: you may need to hit <kbd>ctrl</kbd> + <kbd>c</kbd> multiple times to exit)
 
 ## Feedback and bug reports
 
