@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {Box, Text, Color, render} from 'ink';
 import sortBy from 'lodash/sortBy';
 import {argv} from 'yargs';
-import {getGitStagedFiles, getDependencies} from '../../treebuilder';
+import {getGitStagedFiles, getDependencies} from './treebuilder';
 
 const excludedFileNames = (fileName) =>
   !fileName.includes('test') &&
