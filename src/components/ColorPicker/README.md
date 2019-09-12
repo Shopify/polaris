@@ -38,24 +38,16 @@ Use when merchants need to select a color to make the selection a visual
 task rather than a technical one.
 
 ```jsx
-class ColorPickerExample extends React.Component {
-  state = {
-    color: {
-      hue: 120,
-      brightness: 1,
-      saturation: 1,
-    },
-  };
+function ColorPickerExample() {
+  const [color, setColor] = useState({
+    hue: 120,
+    brightness: 1,
+    saturation: 1,
+  });
 
-  render() {
-    const {color} = this.state;
+  const handleChange = useCallback(setColor, []);
 
-    return <ColorPicker onChange={this.handleChange} color={color} />;
-  }
-
-  handleChange = (color) => {
-    this.setState({color});
-  };
+  return <ColorPicker onChange={handleChange} color={color} />;
 }
 ```
 
@@ -65,26 +57,16 @@ Use when attached to a visual builder to allow the designated object to have a
 transparent background that allows underlying objects to show through.
 
 ```jsx
-class ColorPickerExample extends React.Component {
-  state = {
-    color: {
-      hue: 300,
-      brightness: 1,
-      saturation: 0.7,
-      alpha: 0.7,
-    },
-  };
+function ColorPickerWithTransparentValueExample() {
+  const [color, setColor] = useState({
+    hue: 300,
+    brightness: 1,
+    saturation: 0.7,
+    alpha: 0.7,
+  });
 
-  render() {
-    const {color} = this.state;
+  const handleChange = useCallback(setColor, []);
 
-    return (
-      <ColorPicker onChange={this.handleChange} color={color} allowAlpha />
-    );
-  }
-
-  handleChange = (color) => {
-    this.setState({color});
-  };
+  return <ColorPicker onChange={handleChange} color={color} allowAlpha />;
 }
 ```
