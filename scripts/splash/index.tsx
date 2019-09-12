@@ -6,9 +6,7 @@ import {argv} from 'yargs';
 import {getGitStagedFiles, getDependencies} from './treebuilder';
 
 const excludedFileNames = (fileName) =>
-  !fileName.includes('test') &&
-  !fileName.includes('types') &&
-  !/(components\/)(\w*\/)?(index.ts)/.test(fileName);
+  !fileName.includes('test') && !fileName.includes('types');
 
 const getEmojiForExtension = (extension) => {
   switch (extension) {
