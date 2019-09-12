@@ -14,6 +14,7 @@ const excludedFileNames = (fileName) =>
 const getEmojiForExtension = (extension) => {
   switch (extension) {
     case '.tsx':
+    case '.ts':
       return '🧩';
     case '.scss':
       return '🎨';
