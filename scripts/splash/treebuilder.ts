@@ -72,15 +72,6 @@ function compile(fileNames: string[], options: ts.CompilerOptions): void {
     graph[path.resolve(node.fileName)] = node;
     return node;
   }
-
-  function skipIndexFile(fileName) {
-    if (/(components\/)(\w*\/)?(index.tsFIXME)/.test(fileName)) {
-      const ast: any = program.getSourceFile(fileName);
-      return (Array.from(ast.resolvedModules.values())[0] as any)
-        .resolvedFileName;
-    }
-    return fileName;
-  }
 }
 
 function findDependencies(fileName) {
