@@ -119,27 +119,24 @@ Error messages should:
 Use range sliders where merchants may need to select a percentage between `0 — 100`.
 
 ```jsx
-class RangeSliderExample extends React.Component {
-  state = {
-    value: 32,
-  };
+function RangeSliderExample() {
+  const [rangeValue, setRangeValue] = useState(32);
 
-  handleChange = (value) => {
-    this.setState({value});
-  };
+  const handleRangeSliderChange = useCallback(
+    (value) => setRangeValue(value),
+    [],
+  );
 
-  render() {
-    return (
-      <Card sectioned>
-        <RangeSlider
-          label="Opacity percentage"
-          value={this.state.value}
-          onChange={this.handleChange}
-          output
-        />
-      </Card>
-    );
-  }
+  return (
+    <Card sectioned>
+      <RangeSlider
+        label="Opacity percentage"
+        value={rangeValue}
+        onChange={handleRangeSliderChange}
+        output
+      />
+    </Card>
+  );
 }
 ```
 
@@ -162,29 +159,26 @@ class RangeSliderExample extends React.Component {
 For a more precise value, you can define a `min` and `max` range, as well as the amount with which the slider will be incremented.
 
 ```jsx
-class RangeSliderExample extends React.Component {
-  state = {
-    value: 5,
-  };
+function RangeSliderWithPreciseRangeControlExample() {
+  const [rangeValue, setRangeValue] = useState(5);
 
-  handleChange = (value) => {
-    this.setState({value});
-  };
+  const handleRangeSliderChange = useCallback(
+    (value) => setRangeValue(value),
+    [],
+  );
 
-  render() {
-    return (
-      <Card sectioned>
-        <RangeSlider
-          label="Logo offset"
-          min={-10}
-          max={10}
-          step={5}
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-      </Card>
-    );
-  }
+  return (
+    <Card sectioned>
+      <RangeSlider
+        label="Logo offset"
+        min={-10}
+        max={10}
+        step={5}
+        value={rangeValue}
+        onChange={handleRangeSliderChange}
+      />
+    </Card>
+  );
 }
 ```
 
@@ -195,35 +189,32 @@ class RangeSliderExample extends React.Component {
 Because a range slider can also output a `label` and `helpText`, the height of the overall component can vary. `prefix` and `suffix` props allow you to pass in a React element to be placed before or after the rendered `input`, allowing for perfect vertical alignment and easier stylistic control.
 
 ```jsx
-class RangeSliderExample extends React.Component {
-  state = {
-    value: 100,
+function RangeSliderWithPrefixAndSuffixExample() {
+  const [rangeValue, setRangeValue] = useState(100);
+
+  const handleRangeSliderChange = useCallback(
+    (value) => setRangeValue(value),
+    [],
+  );
+
+  const suffixStyles = {
+    minWidth: '24px',
+    textAlign: 'right',
   };
 
-  handleChange = (value) => {
-    this.setState({value});
-  };
-
-  render() {
-    const suffixStyles = {
-      minWidth: '24px',
-      textAlign: 'right',
-    };
-
-    return (
-      <Card sectioned>
-        <RangeSlider
-          label="Hue color mix"
-          min={0}
-          max={360}
-          value={this.state.value}
-          onChange={this.handleChange}
-          prefix={<p>Hue</p>}
-          suffix={<p style={suffixStyles}>{this.state.value}</p>}
-        />
-      </Card>
-    );
-  }
+  return (
+    <Card sectioned>
+      <RangeSlider
+        label="Hue color mix"
+        min={0}
+        max={360}
+        value={rangeValue}
+        onChange={handleRangeSliderChange}
+        prefix={<p>Hue</p>}
+        suffix={<p style={suffixStyles}>{rangeValue}</p>}
+      />
+    </Card>
+  );
 }
 ```
 
@@ -232,108 +223,114 @@ class RangeSliderExample extends React.Component {
 Use a dual thumb range slider when merchants need to select a range of values.
 
 ```jsx
-const initialValue = [900, 1000];
+function DualThumbRangeSliderExample() {
+  const initialValue = [900, 1000];
+  const prefix = '$';
+  const min = 0;
+  const max = 2000;
+  const step = 10;
 
-class RangeSliderExample extends React.Component {
-  state = {
-    intermediateTextFieldValue: initialValue,
-    value: initialValue,
-  };
+  const [intermediateTextFieldValue, setIntermediateTextFieldValue] = useState(
+    initialValue,
+  );
+  const [rangeValue, setRangeValue] = useState(initialValue);
 
-  handleRangeSliderChange = (value) => {
-    this.setState({value, intermediateTextFieldValue: value});
-  };
+  const handleRangeSliderChange = useCallback((value) => {
+    setRangeValue(value);
+    setIntermediateTextFieldValue(value);
+  }, []);
 
-  handleLowerTextFieldChange = (value) => {
-    const upperValue = this.state.value[1];
-    this.setState({intermediateTextFieldValue: [parseInt(value), upperValue]});
-  };
+  const handleLowerTextFieldChange = useCallback(
+    (value) => {
+      const upperValue = rangeValue[1];
+      setIntermediateTextFieldValue([parseInt(value, 10), upperValue]);
+    },
+    [rangeValue],
+  );
 
-  handleUpperTextFieldChange = (value) => {
-    const lowerValue = this.state.value[0];
-    this.setState({intermediateTextFieldValue: [lowerValue, parseInt(value)]});
-  };
+  const handleUpperTextFieldChange = useCallback(
+    (value) => {
+      const lowerValue = rangeValue[0];
+      setIntermediateTextFieldValue([lowerValue, parseInt(value, 10)]);
+    },
+    [rangeValue],
+  );
 
-  handleLowerTextFieldBlur = () => {
-    const upperValue = this.state.value[1];
-    const value = this.state.intermediateTextFieldValue[0];
+  const handleLowerTextFieldBlur = useCallback(() => {
+    const upperValue = rangeValue[1];
+    const value = intermediateTextFieldValue[0];
 
-    this.setState({value: [parseInt(value), upperValue]});
-  };
+    setRangeValue([parseInt(value, 10), upperValue]);
+  }, [intermediateTextFieldValue, rangeValue]);
 
-  handleUpperTextFieldBlur = () => {
-    const lowerValue = this.state.value[0];
-    const value = this.state.intermediateTextFieldValue[1];
+  const handleUpperTextFieldBlur = useCallback(() => {
+    const lowerValue = rangeValue[0];
+    const value = intermediateTextFieldValue[1];
 
-    this.setState({value: [lowerValue, parseInt(value)]});
-  };
+    setRangeValue([lowerValue, parseInt(value, 10)]);
+  }, [intermediateTextFieldValue, rangeValue]);
 
-  handleEnterKeyPress = (event) => {
-    const newValue = this.state.intermediateTextFieldValue;
-    const oldValue = this.state.value;
+  const handleEnterKeyPress = useCallback(
+    (event) => {
+      const newValue = intermediateTextFieldValue;
+      const oldValue = rangeValue;
 
-    if (event.keyCode === Key.Enter && newValue !== oldValue) {
-      this.setState({value: newValue});
-    }
-  };
+      if (event.keyCode === Key.Enter && newValue !== oldValue) {
+        setRangeValue(newValue);
+      }
+    },
+    [intermediateTextFieldValue, rangeValue],
+  );
 
-  render() {
-    const {value, intermediateTextFieldValue} = this.state;
-    const prefix = '$';
-    const min = 0;
-    const max = 2000;
-    const step = 10;
+  const lowerTextFieldValue =
+    intermediateTextFieldValue[0] === rangeValue[0]
+      ? rangeValue[0]
+      : intermediateTextFieldValue[0];
+  const upperTextFieldValue =
+    intermediateTextFieldValue[1] === rangeValue[1]
+      ? rangeValue[1]
+      : intermediateTextFieldValue[1];
 
-    const lowerTextFieldValue =
-      intermediateTextFieldValue[0] === value[0]
-        ? value[0]
-        : intermediateTextFieldValue[0];
-    const upperTextFieldValue =
-      intermediateTextFieldValue[1] === value[1]
-        ? value[1]
-        : intermediateTextFieldValue[1];
-
-    return (
-      <Card sectioned>
-        <div style={{marginTop: '20px'}} onKeyDown={this.handleEnterKeyPress}>
-          <RangeSlider
-            label="Money spent is between"
-            value={value}
+  return (
+    <Card sectioned>
+      <div style={{marginTop: '20px'}} onKeyDown={handleEnterKeyPress}>
+        <RangeSlider
+          label="Money spent is between"
+          value={rangeValue}
+          prefix={prefix}
+          output
+          min={min}
+          max={max}
+          step={step}
+          onChange={handleRangeSliderChange}
+        />
+        <Stack distribution="equalSpacing" spacing="extraLoose">
+          <TextField
+            label="Min money spent"
+            type="number"
+            value={`${lowerTextFieldValue}`}
             prefix={prefix}
-            output
             min={min}
             max={max}
             step={step}
-            onChange={this.handleRangeSliderChange}
+            onChange={handleLowerTextFieldChange}
+            onBlur={handleLowerTextFieldBlur}
           />
-          <Stack distribution="equalSpacing" spacing="extraLoose">
-            <TextField
-              label="Min money spent"
-              type="number"
-              value={`${lowerTextFieldValue}`}
-              prefix={prefix}
-              min={min}
-              max={max}
-              step={step}
-              onChange={this.handleLowerTextFieldChange}
-              onBlur={this.handleLowerTextFieldBlur}
-            />
-            <TextField
-              label="Max money spent"
-              type="number"
-              value={`${upperTextFieldValue}`}
-              prefix={prefix}
-              min={min}
-              max={max}
-              step={step}
-              onChange={this.handleUpperTextFieldChange}
-              onBlur={this.handleUpperTextFieldBlur}
-            />
-          </Stack>
-        </div>
-      </Card>
-    );
-  }
+          <TextField
+            label="Max money spent"
+            type="number"
+            value={`${upperTextFieldValue}`}
+            prefix={prefix}
+            min={min}
+            max={max}
+            step={step}
+            onChange={handleUpperTextFieldChange}
+            onBlur={handleUpperTextFieldBlur}
+          />
+        </Stack>
+      </div>
+    </Card>
+  );
 }
 ```
 
