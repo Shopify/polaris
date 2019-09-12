@@ -8,8 +8,7 @@ import {getGitStagedFiles, getDependencies} from './treebuilder';
 const excludedFileNames = (fileName) =>
   !fileName.includes('test') &&
   !fileName.includes('types') &&
-  !/(components\/)(\w*\/)?(index.ts)/.test(fileName) &&
-  !fileName.endsWith('utils.tsx');
+  !/(components\/)(\w*\/)?(index.ts)/.test(fileName);
 
 const getEmojiForExtension = (extension) => {
   switch (extension) {
