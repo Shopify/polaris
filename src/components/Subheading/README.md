@@ -40,27 +40,7 @@ Subheadings should:
 
 ## Content guidelines
 
-Subheadings should be:
-
-- Informative and descriptive: they should label the type of content grouped
-  beneath them
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep subheadings to single sentence and avoid using punctuation such as
-    periods, commas, or semicolons
-  - Write in sentence case (first word capitalized, the rest lowercase)
-
-<!-- usagelist -->
-
-#### Do
-
-- Shipping address
-
-#### Don’t
-
-- The package will be shipped to this address:
-
-<!-- end -->
+Subheadings should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ---
 

@@ -103,16 +103,10 @@ Modals should:
 
 ### Title
 
-Titles should be:
+Modal titles should:
 
-- Informative and descriptive
-  - They should label the type of content grouped in the modal
-  - Use a clear {verb}+{noun} question
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep headings to single sentence and avoid using punctuation such as periods, commas, or semicolons
-  - Avoid articles (the, a, an) in [microcopy headings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings) to keep content short and actionable
-  - Written in sentence case (first word capitalized, the rest is lowercase)
+- Use a clear {verb}+{noun} question or statement
+- Follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings)
 
 <!-- usagelist -->
 

@@ -51,32 +51,9 @@ Cards should:
 
 ## Content guidelines
 
-### Heading
+### Title
 
-Headings should be:
-
-- Descriptive: Help merchants understand what they’ll find in the card
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep headings to single sentence and avoid using punctuation such as
-    periods, commas, or semicolons
-  - Where possible, avoid articles (the, a, an) to keep content short and
-    actionable
-  - Written in sentence case
-  - Informative: They should label the type of content grouped in the body
-    content below
-
-<!-- usagelist -->
-
-#### Do
-
-Online store dashboard
-
-#### Don’t
-
-This is your online store dashboard
-
-<!-- end -->
+Card titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 

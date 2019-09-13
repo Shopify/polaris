@@ -46,40 +46,9 @@ Callout cards should:
 
 ## Content guidelines
 
-### Heading
+### Title
 
-Headings should be:
-
-- Descriptive: help merchants understand what they’ll find in the callout card
-- Concise and scannable:
-- Use simple, clear language that can be read at a glance
-- Keep headings to a single sentence and avoid using punctuation such as
-  periods, commas, or semicolons
-- Sentence case (first word capitalized, the rest lowercase)
-
-<!-- usagelist -->
-
-#### Do
-
-Messenger
-
-#### Don’t
-
-Chat with customers on Messenger
-
-<!-- end -->
-
-<!-- usagelist -->
-
-#### Do
-
-Get help from a Shopify Expert
-
-#### Don’t
-
-Get Help From a Shopify Expert!
-
-<!-- end -->
+Callout card titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 
