@@ -324,7 +324,7 @@ class Modal extends React.Component<CombinedProps, State> {
   private handleOnClose = () => {
     const {openerRef, onClose} = this.props;
 
-    openerRef && openerRef.focus();
+    openerRef && openerRef.current && openerRef.current.focus();
     onClose();
   };
 
