@@ -23,54 +23,37 @@ keywords:
 
 # Link
 
-Links are used to embed actions or pathways to more information in a sentence.
+Links take users to another place, and appear either within or directly following a sentence.
+
+For actions that don't appear with a sentence, use the [button component](/components/actions/button).
 
 ---
 
 ## Best practices
 
-Links should:
+### Buttons versus links
 
-- Consist of text that clearly describes either the action that merchants will take or the location they’ll navigate to.
-- Only be used in a sentence. For stand-alone navigational actions, [use the button component](/components/actions/button).
+Links should appear either within or directly following a sentence. For actions that don't appear with a sentence, use the [button component](/components/actions/button).
+
+The HTML for buttons and links carries specific meaning. Using these components intentionally and consistently results in:
+
+- a more inclusive experience for assistive technology users
+- a more cohesive visual experience for sighted users
+- products that are easier to maintain at scale
+
+### Unstyled link
+
+If the existing styled links won't work for your project, then use an `UnstyledLink` to create a custom link style.
+
+Unstyled links should:
+
+- best practices for unstyled links
 
 ---
 
 ## Content guidelines
 
-The link component should follow the general [content guidelines](/content/actionable-language#section-links) for links.
-
-### Links
-
-Links should:
-
-- Set the expectation of where merchants will be taken or what action will be performed.
-- Be consistent with the content they point to. If a navigational link leads to a page called Orders, label the link “orders”.
-- Use descriptive text and avoid using generic content such as “click here”.
-
-<!-- usageblock -->
-
-#### Do
-
-Learn more about <a>fulfilling orders</a> at the Shopify Help Center
-
-#### Don’t
-
-<a>Click here</a> to learn more about fulfilling orders
-
-<!-- end -->
-
-<!-- usagelist -->
-
-#### Do
-
-- Orders
-
-#### Don’t
-
-- To orders section
-
-<!-- end -->
+The link component should follow the content guidelines for [links](/content/actionable-language#section-links).
 
 ---
 
@@ -117,7 +100,7 @@ Use for text links that point to a different website. They will open in a new br
 
 ## Related components
 
-- To create navigational actions that aren’t part of a line of text, [use the button component](/components/actions/button)
+- For actions that don't appear within or directly following a sentence, use the use the [button component](/components/actions/button)
 
 ---
 
