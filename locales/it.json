@@ -36,7 +36,7 @@
     },
     "ContextualSaveBar": {
       "save": "Salva",
-      "discard": "Elimina"
+      "discard": "Rimuovi"
     },
     "DataTable": {
       "sortAccessibilityLabel": "ordina per {direction}",
