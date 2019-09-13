@@ -72,9 +72,9 @@
       }
     },
     "DiscardConfirmationModal": {
-      "title": "Elimina tutte le modifiche non salvate",
-      "message": "Eliminando le modifiche, annullerai tutti i cambiamenti apportati dopo l'ultimo salvataggio.",
-      "primaryAction": "Elimina le modifiche",
+      "title": "Rimuovi tutte le modifiche non salvate",
+      "message": "Rimuovendo le modifiche, eliminerai tutte le modifiche apportate dopo l'ultimo salvataggio.",
+      "primaryAction": "Rimuovi le modifiche",
       "secondaryAction": "Continua a modificare"
     },
     "DropZone": {
