@@ -1,4 +1,5 @@
 import {useContext, useRef} from 'react';
+import {MissingAppProviderError} from '../errors';
 import {UniqueIdFactoryContext} from './context';
 
 /**
@@ -18,9 +19,7 @@ export function useUniqueId(prefix = '', overrideId = '') {
   const uniqueIdRef = useRef<string | null>(null);
 
   if (!idFactory) {
-    throw new Error(
-      'No UniqueIdFactory was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.',
-    );
+    throw new MissingAppProviderError('No UniqueIdFactory was provided.');
   }
 
   // If an override was specified, then use that instead of using a unique ID
