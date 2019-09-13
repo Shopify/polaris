@@ -83,7 +83,7 @@
 
 .Footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: start;
   padding: 0 spacing() spacing();
 
   @include page-content-when-not-fully-condensed {
