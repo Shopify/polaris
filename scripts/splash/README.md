@@ -8,8 +8,8 @@ It answers the question:
 
 ## How to use `yarn splash`
 
-1. Edit files in `src/`, such as components 🧩 and style sheets 🎨
-2. Run `yarn splash` to see the splash zone of your changes in the working directory
+1. Edit files in `src/`, such as components 🧩 and style sheets 🎨.
+2. As you run `yarn dev`, `yarn splash` will run in the background. Keep an eye on the terminal to see the splash zone of your changes in the working directory.
 
 💡 Tip: <kbd>command</kbd> + click a file path to open it in your text editor
 
