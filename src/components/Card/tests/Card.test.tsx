@@ -3,7 +3,6 @@ import {
   mountWithAppProvider,
   trigger,
   findByTestID,
-  act,
 } from 'test-utilities/legacy';
 import {Card, Badge, Button, Popover, ActionList} from 'components';
 import {WithinContentContext} from '../../../utilities/within-content-context';
@@ -141,10 +140,8 @@ describe('<Card />', () => {
       expect(popover).toHaveLength(1);
       expect(popover.prop('active')).toBe(false);
 
-      act(() => {
-        trigger(disclosureButton, 'onClick');
-      });
-      card.update();
+      trigger(disclosureButton, 'onClick');
+
       expect(
         card
           .find(Popover)
