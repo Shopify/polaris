@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef, useImperativeHandle} from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
 import {classNames, variationName} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
@@ -79,37 +79,42 @@ export interface ButtonProps {
 
 const DEFAULT_SIZE = 'medium';
 
-export function Button({
-  id,
-  url,
-  disabled,
-  loading,
-  children,
-  accessibilityLabel,
-  ariaControls,
-  ariaExpanded,
-  ariaPressed,
-  onClick,
-  onFocus,
-  onBlur,
-  onKeyDown,
-  onKeyPress,
-  onKeyUp,
-  external,
-  download,
-  icon,
-  primary,
-  outline,
-  destructive,
-  disclosure,
-  plain,
-  monochrome,
-  submit,
-  size = DEFAULT_SIZE,
-  textAlign,
-  fullWidth,
-}: ButtonProps) {
+// eslint-disable-next-line react/display-name
+export const Button = forwardRef(function(
+  {
+    id,
+    url,
+    disabled,
+    loading,
+    children,
+    accessibilityLabel,
+    ariaControls,
+    ariaExpanded,
+    ariaPressed,
+    onClick,
+    onFocus,
+    onBlur,
+    onKeyDown,
+    onKeyPress,
+    onKeyUp,
+    external,
+    download,
+    icon,
+    primary,
+    outline,
+    destructive,
+    disclosure,
+    plain,
+    monochrome,
+    submit,
+    size = DEFAULT_SIZE,
+    textAlign,
+    fullWidth,
+  }: ButtonProps,
+  ref,
+) {
   const intl = useI18n();
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
 
   const isDisabled = disabled || loading;
 
@@ -127,6 +132,12 @@ export function Button({
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
   );
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      buttonRef.current && buttonRef.current.focus();
+    },
+  }));
 
   const disclosureIconMarkup = disclosure ? (
     <IconWrapper>
@@ -225,11 +236,12 @@ export function Button({
       aria-pressed={ariaPressed}
       role={loading ? 'alert' : undefined}
       aria-busy={loading ? true : undefined}
+      ref={buttonRef}
     >
       {content}
     </button>
   );
-}
+});
 
 export function IconWrapper({children}: any) {
   return <span className={styles.Icon}>{children}</span>;

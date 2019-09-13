@@ -16,7 +16,7 @@ export class Focus extends React.PureComponent<FocusProps, never> {
   componentDidUpdate({children: prevChildren, ...restPrevProps}: FocusProps) {
     const {children, ...restProps} = this.props;
 
-    if (isEqual(restProps, restPrevProps)) {
+    if (isEqual(restProps, restPrevProps) || !restPrevProps.root) {
       return;
     }
 

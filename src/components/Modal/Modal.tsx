@@ -77,6 +77,8 @@ export interface ModalProps extends FooterProps {
   onTransitionEnd?(): void;
   /** Callback when the bottom of the modal content is reached */
   onScrolledToBottom?(): void;
+  /** Reference to the element that opens the Modal */
+  openerRef?: React.RefObject<HTMLElement>;
 }
 type CombinedProps = ModalProps & WithAppProviderProps;
 
@@ -215,7 +217,6 @@ class Modal extends React.Component<CombinedProps, State> {
       loading,
       large,
       limitHeight,
-      onClose,
       footer,
       primaryAction,
       secondaryActions,
@@ -272,12 +273,16 @@ class Modal extends React.Component<CombinedProps, State> {
       );
 
       const headerMarkup = title ? (
-        <Header id={this.headerId} onClose={onClose} testID="ModalHeader">
+        <Header
+          id={this.headerId}
+          onClose={this.handleOnClose}
+          testID="ModalHeader"
+        >
           {title}
         </Header>
       ) : (
         <CloseButton
-          onClick={onClose}
+          onClick={this.handleOnClose}
           title={false}
           testID="ModalCloseButton"
         />
@@ -287,7 +292,7 @@ class Modal extends React.Component<CombinedProps, State> {
         <Dialog
           instant={instant}
           labelledBy={this.headerId}
-          onClose={onClose}
+          onClose={this.handleOnClose}
           onEntered={this.handleEntered}
           onExited={this.handleExited}
           large={large}
@@ -315,6 +320,13 @@ class Modal extends React.Component<CombinedProps, State> {
       </WithinContentContext.Provider>
     );
   }
+
+  private handleOnClose = () => {
+    const {openerRef, onClose} = this.props;
+
+    openerRef && openerRef.focus();
+    onClose();
+  };
 
   private handleEntered = () => {
     const {onTransitionEnd} = this.props;
