@@ -94,7 +94,9 @@ Use for text links that are the same color as the surrounding text.
 </Link>
 ```
 
-Monochrome styles will be applied to links rendered within a `Banner`
+### Monochrome link in a banner
+
+Monochrome styles will be applied to links rendered within a `Banner`.
 
 ```jsx
 <Banner>
@@ -154,13 +156,27 @@ To provide consistency and clarity:
 <Link>fulfilling orders</Link>
 ```
 
-#### Don’t
+<!-- end -->
+
+<!-- usageblock -->
+
+#### Do
 
 ```jsx
+/* Somewhere in the code: */
+<Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+
+/* Elsewhere in the code: */
 <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
 ```
 
+#### Don’t
+
 ```jsx
+/* Somewhere in the code: */
+<Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+
+/* Elsewhere in the code: */
 <Link url="https://help.shopify.com/manual">order fulfillment section</Link>
 ```
 

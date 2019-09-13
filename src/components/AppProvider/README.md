@@ -46,6 +46,9 @@ AppProvider works by default without any additional options passed to it.
         defaultItemSingular: 'item',
         defaultItemPlural: 'items',
         showing: 'Showing {itemsCount} {resource}',
+        Item: {
+          viewItem: 'View details for {itemName}',
+        },
       },
       Common: {
         checkbox: 'checkbox',
@@ -106,6 +109,9 @@ With an `i18n`, `AppProvider` will provide these translations to polaris compone
         showing: '{itemsCount} {resource} affichés',
         defaultItemPlural: 'articles',
         defaultItemSingular: 'article',
+        Item: {
+          viewItem: "Afficher les détails de l'{itemName}",
+        },
       },
     },
   }}

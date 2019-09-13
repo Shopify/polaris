@@ -19,7 +19,7 @@ $stacking-order: (
   align-items: center;
   border: 1px solid transparent;
   width: 100%;
-  max-width: rem(694px);
+  max-width: $search-max-width;
 }
 
 // We have both a focused class and a focus pseudo selector here
