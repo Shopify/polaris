@@ -4,6 +4,11 @@ import {Box, Text, Color, render} from 'ink';
 import sortBy from 'lodash/sortBy';
 import {getGitStagedFiles, getDependencies} from './treebuilder';
 
+enum Status {
+  Loading = 'LOADING',
+  Loaded = 'LOADED',
+}
+
 const excludedFileNames = (fileName) =>
   !fileName.includes('test') && !fileName.includes('types');
 
@@ -75,14 +80,14 @@ const Component = ({pathname, filename, dependencies}) => (
 
 const Components = ({components, status}) => (
   <React.Fragment>
-    {status === 'loading' && (
+    {status === Status.Loading && (
       <Box marginLeft={4} marginBottom={1}>
         ⏳{'  '}
         Please wait during compilation… Beep boop beep 🤖
       </Box>
     )}
 
-    {status === 'loaded' &&
+    {status === Status.Loaded &&
       components.map(({pathname, filename, dependencies}) => (
         <Component
           key={pathname + filename}
@@ -117,7 +122,7 @@ const Summary = ({
         <Text>Files potentially affected:</Text>
       </Box>
       <Box justifyContent="flex-end" width={3}>
-        {status === 'loading' ? '⏳' : dependencies}
+        {status === Status.Loading ? '⏳' : dependencies}
       </Box>
     </Box>
   </Box>
@@ -126,15 +131,20 @@ const Summary = ({
 const App = () => {
   const [stagedFiles, setStagedFiles] = useState([]);
   const [data, setData] = useState([]);
-  const [dataStatus, setDataStatus] = useState('loading');
+  const [dataStatus, setDataStatus] = useState<Status>(Status.Loading);
 
-  useEffect(() => {
-    const getStagedFiles = async () => {
-      const staged = (await getGitStagedFiles('src/')) as string[];
-      setStagedFiles(staged);
-    };
-    getStagedFiles();
-  }, []);
+  useEffect(
+    () => {
+      if (dataStatus === Status.Loading) {
+        const getStagedFiles = async () => {
+          const staged = (await getGitStagedFiles('src/')) as string[];
+          setStagedFiles(staged);
+        };
+        getStagedFiles();
+      }
+    },
+    [dataStatus],
+  );
 
   useEffect(
     () => {
@@ -147,7 +157,7 @@ const App = () => {
         setData(formatDependencies(dependencies));
       }
 
-      setDataStatus('loaded');
+      setDataStatus(Status.Loaded);
     },
     [setData, stagedFiles],
   );
