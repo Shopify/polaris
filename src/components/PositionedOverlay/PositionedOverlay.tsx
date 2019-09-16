@@ -3,8 +3,8 @@ import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
 import {closest} from '@shopify/javascript-utilities/dom';
 
 import {classNames} from '../../utilities/css';
-import EventListener from '../EventListener';
-import Scrollable from '../Scrollable';
+import {EventListener} from '../EventListener';
+import {Scrollable} from '../Scrollable';
 import {layer} from '../shared';
 
 import {
@@ -18,6 +18,7 @@ import {
 import styles from './PositionedOverlay.scss';
 
 export {PreferredPosition, PreferredAlignment};
+
 export type Positioning = 'above' | 'below';
 
 export interface OverlayDetails {
@@ -28,7 +29,7 @@ export interface OverlayDetails {
   activatorRect: Rect;
 }
 
-export interface Props {
+export interface PositionedOverlayProps {
   active: boolean;
   activator: HTMLElement;
   preferredPosition?: PreferredPosition;
@@ -55,8 +56,8 @@ interface State {
 
 const OBSERVER_CONFIG = {childList: true, subtree: true};
 
-export default class PositionedOverlay extends React.PureComponent<
-  Props,
+export class PositionedOverlay extends React.PureComponent<
+  PositionedOverlayProps,
   State
 > {
   state: State = {
@@ -76,7 +77,7 @@ export default class PositionedOverlay extends React.PureComponent<
   private scrollableContainer: HTMLElement | Document | null = null;
   private observer: MutationObserver;
 
-  constructor(props: Props) {
+  constructor(props: PositionedOverlayProps) {
     super(props);
 
     this.observer = new MutationObserver(this.handleMeasurement);

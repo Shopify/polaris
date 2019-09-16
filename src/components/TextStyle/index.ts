@@ -1,4 +1,1 @@
-import TextStyle from './TextStyle';
-
-export {Props} from './TextStyle';
-export default TextStyle;
+export {TextStyle, TextStyleProps} from './TextStyle';

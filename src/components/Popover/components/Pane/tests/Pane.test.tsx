@@ -1,8 +1,8 @@
 import React from 'react';
 import {TextContainer, Scrollable} from 'components';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import Pane from '../Pane';
-import Section from '../../Section';
+import {Pane} from '../Pane';
+import {Section} from '../../Section';
 
 describe('<Pane />', () => {
   describe('fixed', () => {

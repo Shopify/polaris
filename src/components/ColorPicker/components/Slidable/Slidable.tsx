@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {isServer} from '../../../../utilities/target';
-import EventListener from '../../../EventListener';
+import {EventListener} from '../../../EventListener';
 import styles from '../../ColorPicker.scss';
 
 export interface Position {
@@ -13,7 +13,7 @@ interface State {
   dragging: boolean;
 }
 
-export interface Props {
+export interface SlidableProps {
   draggerX?: number;
   draggerY?: number;
   onChange(position: Position): void;
@@ -41,7 +41,7 @@ if (!isServer) {
   );
 }
 
-export default class Slidable extends React.PureComponent<Props, State> {
+export class Slidable extends React.PureComponent<SlidableProps, State> {
   state: State = {
     dragging: false,
   };

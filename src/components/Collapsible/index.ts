@@ -1,4 +1,3 @@
-import Collapsible from './Collapsible';
+import Collapsible, {CollapsibleProps} from './Collapsible';
 
-export {Props} from './Collapsible';
-export default Collapsible;
+export {Collapsible, CollapsibleProps};

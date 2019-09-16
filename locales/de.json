@@ -149,9 +149,9 @@
       "ariaLiveSingular": "{itemsLength} Artikel",
       "ariaLivePlural": "{itemsLength} Produkte",
       "Item": {
-        "selectItem": "Auswählen: {accessibilityLabel}",
-        "deselectItem": "Auswahl aufheben: {accessibilityLabel}",
-        "actionsDropdown": "Dropdown-Liste mit Aktionen"
+        "actionsDropdownLabel": "Aktionen für {accessibilityLabel}",
+        "actionsDropdown": "Dropdown-Liste mit Aktionen",
+        "viewItem": "Details anzeigen für {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Aktionen",
@@ -208,7 +208,7 @@
       "warningMessage": "Die Farbe {color} sollte nicht für {size} Spinner verwendet werden. Die für große Spinner verfügbaren Farben sind: {colors}"
     },
     "Tabs": {
-      "toggleTabsLabel": "Menü wechseln"
+      "toggleTabsLabel": "Weitere Registerkarten"
     },
     "Tag": {
       "ariaLabel": "{children} entfernen"

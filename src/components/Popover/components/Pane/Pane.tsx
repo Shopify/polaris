@@ -2,11 +2,11 @@ import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
-import Scrollable from '../../../Scrollable';
-import Section from '../Section';
+import {Scrollable} from '../../../Scrollable';
+import {Section} from '../Section';
 import styles from '../../Popover.scss';
 
-export interface Props {
+export interface PaneProps {
   /** Fix the pane to the top of the popover */
   fixed?: boolean;
   /** Automatically wrap children in padded sections */
@@ -17,12 +17,12 @@ export interface Props {
   onScrolledToBottom?(): void;
 }
 
-export default function Pane({
+export function Pane({
   fixed,
   sectioned,
   children,
   onScrolledToBottom,
-}: Props) {
+}: PaneProps) {
   const className = classNames(styles.Pane, fixed && styles['Pane-fixed']);
   const content = sectioned
     ? wrapWithComponent(children, Section, {})

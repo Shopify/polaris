@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import Image, {SourceSet} from '../Image';
+import {Image, SourceSet} from '../Image';
 
 describe('<Image />', () => {
   describe('img attributes', () => {

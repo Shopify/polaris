@@ -33,7 +33,7 @@ The toast component is a non-disruptive message that appears at the bottom of th
 
 ## Required components
 
-The toast component must be wrapped in the [frame](/components/structure/frame) component or used in an embedded application.
+The toast component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component or used in an embedded application.
 
 ---
 
@@ -44,25 +44,20 @@ Passing an API key to the [app provider component](https://polaris.shopify.com/c
 Note that when used in an embedded application, the toast component does not support multiple, simultaneous toast messages.
 
 ```jsx
-class EmbeddedAppToastExample extends React.Component {
-  state = {
-    showToast: false,
-  };
+function EmbeddedAppToastExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const toastMarkup = this.state.showToast && (
-      <Toast
-        content="Message sent"
-        onDismiss={() => this.setState({showToast: false})}
-      />
-    );
+  const handleDismiss = useCallback(() => setActive(false), []);
 
-    return (
-      <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
-        {toastMarkup}
-      </AppProvider>
-    );
-  }
+  const toastMarkup = active && (
+    <Toast content="Message sent" onDismiss={handleDismiss} />
+  );
+
+  return (
+    <AppProvider apiKey="YOUR_API_KEY" i18n={{}} shopOrigin="YOUR_SHOP_ORIGIN">
+      {toastMarkup}
+    </AppProvider>
+  );
 }
 ```
 
@@ -166,32 +161,25 @@ Action should:
 Use to convey general confirmation or actions that aren’t critical. For example, you might show a toast message to inform the merchant that their recent action was successful.
 
 ```jsx
-class ToastExample extends React.Component {
-  state = {
-    showToast: false,
-  };
+function ToastExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const {showToast} = this.state;
-    const toastMarkup = showToast ? (
-      <Toast content="Message sent" onDismiss={this.toggleToast} />
-    ) : null;
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-    return (
-      <div style={{height: '250px'}}>
-        <Frame>
-          <Page title="Toast example">
-            <Button onClick={this.toggleToast}>Show Toast</Button>
-            {toastMarkup}
-          </Page>
-        </Frame>
-      </div>
-    );
-  }
+  const toastMarkup = active ? (
+    <Toast content="Message sent" onDismiss={toggleActive} />
+  ) : null;
 
-  toggleToast = () => {
-    this.setState(({showToast}) => ({showToast: !showToast}));
-  };
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
 }
 ```
 
@@ -202,45 +190,42 @@ class ToastExample extends React.Component {
 Use multiple toast messages to inform the merchant about distinct actions.
 
 ```jsx
-class ToastExample extends React.Component {
-  state = {
-    showToast1: false,
-    showToast2: false,
-  };
+function MultipleToastExample() {
+  const [activeOne, setActiveOne] = useState(false);
+  const [activeTwo, setActiveTwo] = useState(false);
 
-  render() {
-    const {showToast1, showToast2} = this.state;
-    const toastMarkup1 = showToast1 ? (
-      <Toast content="Message sent" onDismiss={this.toggleToast1} />
-    ) : null;
+  const toggleActiveOne = useCallback(
+    () => setActiveOne((activeOne) => !activeOne),
+    [],
+  );
 
-    const toastMarkup2 = showToast2 ? (
-      <Toast content="Image uploaded" onDismiss={this.toggleToast2} />
-    ) : null;
+  const toggleActiveTwo = useCallback(
+    () => setActiveTwo((activeTwo) => !activeTwo),
+    [],
+  );
 
-    return (
-      <div style={{height: '250px'}}>
-        <Frame>
-          <Page title="Toast example">
-            <ButtonGroup segmented>
-              <Button onClick={this.toggleToast1}>Show toast 1</Button>
-              <Button onClick={this.toggleToast2}>Show toast 2</Button>
-            </ButtonGroup>
-            {toastMarkup1}
-            {toastMarkup2}
-          </Page>
-        </Frame>
-      </div>
-    );
-  }
+  const toastMarkup1 = activeOne ? (
+    <Toast content="Message sent" onDismiss={toggleActiveOne} />
+  ) : null;
 
-  toggleToast1 = () => {
-    this.setState(({showToast1}) => ({showToast1: !showToast1}));
-  };
+  const toastMarkup2 = activeTwo ? (
+    <Toast content="Image uploaded" onDismiss={toggleActiveTwo} />
+  ) : null;
 
-  toggleToast2 = () => {
-    this.setState(({showToast2}) => ({showToast2: !showToast2}));
-  };
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <ButtonGroup segmented>
+            <Button onClick={toggleActiveOne}>Show toast 1</Button>
+            <Button onClick={toggleActiveTwo}>Show toast 2</Button>
+          </ButtonGroup>
+          {toastMarkup1}
+          {toastMarkup2}
+        </Page>
+      </Frame>
+    </div>
+  );
 }
 ```
 
@@ -251,36 +236,25 @@ class ToastExample extends React.Component {
 Use to shorten or lengthen the default duration of 5000 miliseconds.
 
 ```jsx
-class ToastExample extends React.Component {
-  state = {
-    showToast: false,
-  };
+function ToastWithCustomDurationExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const {showToast} = this.state;
-    const toastMarkup = showToast ? (
-      <Toast
-        content="Message sent"
-        onDismiss={this.toggleToast}
-        duration={4500}
-      />
-    ) : null;
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-    return (
-      <div style={{height: '250px'}}>
-        <Frame>
-          <Page title="Toast example">
-            <Button onClick={this.toggleToast}>Show Toast</Button>
-            {toastMarkup}
-          </Page>
-        </Frame>
-      </div>
-    );
-  }
+  const toastMarkup = active ? (
+    <Toast content="Message sent" onDismiss={toggleActive} duration={4500} />
+  ) : null;
 
-  toggleToast = () => {
-    this.setState(({showToast}) => ({showToast: !showToast}));
-  };
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
 }
 ```
 
@@ -291,40 +265,33 @@ class ToastExample extends React.Component {
 Use when a merchant has the ability to act on the message. For example, to undo a change or retry an action.
 
 ```jsx
-class ToastExample extends React.Component {
-  state = {
-    showToast: false,
-  };
+function ToastWithActionExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const {showToast} = this.state;
-    const toastMarkup = showToast ? (
-      <Toast
-        content="Image deleted"
-        action={{
-          content: 'Undo',
-          onAction: () => {},
-        }}
-        duration={10000}
-        onDismiss={this.toggleToast}
-      />
-    ) : null;
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-    return (
-      <div style={{height: '250px'}}>
-        <Frame>
-          <Page title="Toast example">
-            <Button onClick={this.toggleToast}>Show Toast</Button>
-            {toastMarkup}
-          </Page>
-        </Frame>
-      </div>
-    );
-  }
+  const toastMarkup = active ? (
+    <Toast
+      content="Image deleted"
+      action={{
+        content: 'Undo',
+        onAction: () => {},
+      }}
+      duration={10000}
+      onDismiss={toggleActive}
+    />
+  ) : null;
 
-  toggleToast = () => {
-    this.setState(({showToast}) => ({showToast: !showToast}));
-  };
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
 }
 ```
 
@@ -336,7 +303,7 @@ Use default toast for informative and neutral feedback.
 
 <!-- content-for: android -->
 
-![Default toast with neutral color](/public_images/components/Toast/android/default@2x.png)
+![Default toast with neutral color](https://polaris.shopify.com/public_images/components/Toast/android/default@2x.png)
 
 <!-- /content-for -->
 
@@ -344,7 +311,7 @@ Use default toast for informative and neutral feedback.
 
 On iOS, icons are available for cases where you want to re-inforce the message.
 
-![Default toast with neutral color](/public_images/components/Toast/ios/default@2x.png)
+![Default toast with neutral color](https://polaris.shopify.com/public_images/components/Toast/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -356,7 +323,7 @@ Use success toast to indicate that something was successful. For example, a prod
 
 <!-- content-for: android -->
 
-![Success toast](/public_images/components/Toast/android/success@2x.png)
+![Success toast](https://polaris.shopify.com/public_images/components/Toast/android/success@2x.png)
 
 <!-- /content-for -->
 
@@ -364,7 +331,7 @@ Use success toast to indicate that something was successful. For example, a prod
 
 On iOS, icons are available for cases where you want to re-inforce the message.
 
-![Success toast](/public_images/components/Toast/ios/success@2x.png)
+![Success toast](https://polaris.shopify.com/public_images/components/Toast/ios/success@2x.png)
 
 <!-- /content-for -->
 
@@ -372,37 +339,30 @@ On iOS, icons are available for cases where you want to re-inforce the message.
 
 <!-- example-for: android, ios, web -->
 
-Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](/patterns/error-messages).
+Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](https://polaris.shopify.com/patterns/error-messages).
 
 <!-- content-for: web -->
 
 ```jsx
-class ToastExample extends React.Component {
-  state = {
-    showToast: false,
-  };
+function ErrorToastExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const {showToast} = this.state;
-    const toastMarkup = showToast ? (
-      <Toast content="Server error" error onDismiss={this.toggleToast} />
-    ) : null;
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-    return (
-      <div style={{height: '250px'}}>
-        <Frame>
-          <Page title="Toast example">
-            <Button onClick={this.toggleToast}>Show Toast</Button>
-            {toastMarkup}
-          </Page>
-        </Frame>
-      </div>
-    );
-  }
+  const toastMarkup = active ? (
+    <Toast content="Server error" error onDismiss={toggleActive} />
+  ) : null;
 
-  toggleToast = () => {
-    this.setState(({showToast}) => ({showToast: !showToast}));
-  };
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
 }
 ```
 
@@ -410,7 +370,7 @@ class ToastExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Error toast](/public_images/components/Toast/android/error@2x.png)
+![Error toast](https://polaris.shopify.com/public_images/components/Toast/android/error@2x.png)
 
 <!-- /content-for -->
 
@@ -418,7 +378,7 @@ class ToastExample extends React.Component {
 
 On iOS, icons are available for cases where you want to re-inforce the message.
 
-![Error toast](/public_images/components/Toast/ios/error@2x.png)
+![Error toast](https://polaris.shopify.com/public_images/components/Toast/ios/error@2x.png)
 
 <!-- /content-for -->
 
@@ -430,13 +390,13 @@ Use action when merchants have the ability to act on the message. For example, t
 
 <!-- content-for: android -->
 
-![Default toast with action to undo](/public_images/components/Toast/android/default-action@2x.png)
+![Default toast with action to undo](https://polaris.shopify.com/public_images/components/Toast/android/default-action@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default toast with action to undo](/public_images/components/Toast/ios/default-action@2x.png)
+![Default toast with action to undo](https://polaris.shopify.com/public_images/components/Toast/ios/default-action@2x.png)
 
 <!-- /content-for -->
 
@@ -444,8 +404,8 @@ Use action when merchants have the ability to act on the message. For example, t
 
 ## Related component
 
-- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](/components/popover)
-- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](/components/feedback-indicators/banner)
+- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/popover)
+- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
 
 ---
 

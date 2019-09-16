@@ -1,12 +1,12 @@
 import React from 'react';
 
-import ActionList, {Props as ActionListProps} from '../../../ActionList';
-import Popover from '../../../Popover';
+import {ActionList, ActionListProps} from '../../../ActionList';
+import {Popover} from '../../../Popover';
 
 import {Message, MessageProps} from './components';
 import styles from './Menu.scss';
 
-export interface Props {
+export interface MenuProps {
   /** Accepts an activator component that renders inside of a button that opens the menu */
   activatorContent: React.ReactNode;
   /** An array of action objects that are rendered inside of a popover triggered by this menu */
@@ -21,7 +21,7 @@ export interface Props {
   onClose(): void;
 }
 
-export default function Menu(props: Props) {
+export function Menu(props: MenuProps) {
   const {actions, onOpen, onClose, open, activatorContent, message} = props;
 
   const badgeProps = message &&

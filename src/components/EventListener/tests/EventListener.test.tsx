@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import EventListener from '../EventListener';
+import {EventListener} from '../EventListener';
 
 describe('<EventListener />', () => {
   it('calls handler when the resize event is fired', () => {

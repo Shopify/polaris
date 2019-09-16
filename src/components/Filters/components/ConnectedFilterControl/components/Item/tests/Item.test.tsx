@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import Item from '../Item';
+import {Item} from '../Item';
 
 describe('<Item />', () => {
   it('handles focus', () => {

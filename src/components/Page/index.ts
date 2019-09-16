@@ -1,2 +1,4 @@
-export {default, Props} from './Page';
+import Page, {PageProps} from './Page';
+
+export {Page, PageProps};
 export {HeaderPrimaryAction} from './types';

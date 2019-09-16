@@ -15,10 +15,10 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import Backdrop from '../Backdrop';
-import Scrollable from '../Scrollable';
-import Spinner from '../Spinner';
-import Portal from '../Portal';
+import {Backdrop} from '../Backdrop';
+import {Scrollable} from '../Scrollable';
+import {Spinner} from '../Spinner';
+import {Portal} from '../Portal';
 
 import {
   CloseButton,
@@ -35,7 +35,7 @@ const DEFAULT_IFRAME_CONTENT_HEIGHT = 400;
 
 export type Size = 'Small' | 'Medium' | 'Large' | 'Full';
 
-export interface Props extends FooterProps {
+export interface ModalProps extends FooterProps {
   /** Whether the modal is open or not */
   open: boolean;
   /** The url that will be loaded as the content of the modal */
@@ -78,7 +78,7 @@ export interface Props extends FooterProps {
   /** Callback when the bottom of the modal content is reached */
   onScrolledToBottom?(): void;
 }
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = ModalProps & WithAppProviderProps;
 
 interface State {
   iframeHeight: number;
@@ -86,7 +86,7 @@ interface State {
 
 const getUniqueID = createUniqueIDFactory('modal-header');
 
-const APP_BRIDGE_PROPS: (keyof Props)[] = [
+const APP_BRIDGE_PROPS: (keyof ModalProps)[] = [
   'title',
   'size',
   'message',
@@ -283,10 +283,12 @@ class Modal extends React.Component<CombinedProps, State> {
         />
       );
 
+      const labelledBy = title ? this.headerId : undefined;
+
       dialog = (
         <Dialog
           instant={instant}
-          labelledBy={this.headerId}
+          labelledBy={labelledBy}
           onClose={onClose}
           onEntered={this.handleEntered}
           onExited={this.handleExited}
@@ -407,4 +409,6 @@ function isIframeModal(
   );
 }
 
-export default withAppProvider<Props>()(Modal);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<ModalProps>()(Modal);

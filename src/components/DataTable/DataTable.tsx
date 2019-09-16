@@ -9,20 +9,23 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import EventListener from '../EventListener';
+import {EventListener} from '../EventListener';
 import {Cell, CellProps, Navigation} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 
 import {DataTableState, SortDirection, VerticalAlign} from './types';
 import styles from './DataTable.scss';
 
-type CombinedProps = Props & WithAppProviderProps;
-export type TableRow = Props['headings'] | Props['rows'] | Props['totals'];
+type CombinedProps = DataTableProps & WithAppProviderProps;
+export type TableRow =
+  | DataTableProps['headings']
+  | DataTableProps['rows']
+  | DataTableProps['totals'];
 export type TableData = string | number | React.ReactNode;
 
 export type ColumnContentType = 'text' | 'numeric';
 
-export interface Props {
+export interface DataTableProps {
   /** List of data types, which determines content alignment for each column. Data types are "text," which aligns left, or "numeric," which aligns right. */
   columnContentTypes: ColumnContentType[];
   /** List of column headings. */
@@ -105,7 +108,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     }
   }
 
-  componentDidUpdate(prevProps: Props) {
+  componentDidUpdate(prevProps: DataTableProps) {
     if (isEqual(prevProps, this.props)) {
       return;
     }
@@ -387,4 +390,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   };
 }
 
-export default withAppProvider<Props>()(DataTable);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<DataTableProps>()(DataTable);

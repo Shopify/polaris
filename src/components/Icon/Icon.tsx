@@ -19,12 +19,7 @@ const COLORS_WITH_BACKDROPS = [
 // styleguide to generate the props explorer
 interface Props extends IconProps {}
 
-export default function Icon({
-  source,
-  color,
-  backdrop,
-  accessibilityLabel,
-}: Props) {
+export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   const intl = useI18n();
 
   if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {

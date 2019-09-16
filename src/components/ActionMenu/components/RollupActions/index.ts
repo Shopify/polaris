@@ -1,1 +1,1 @@
-export {default, Props} from './RollupActions';
+export {RollupActions, RollupActionsProps} from './RollupActions';

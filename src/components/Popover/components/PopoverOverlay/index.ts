@@ -1,4 +1,5 @@
-import PopoverOverlay from './PopoverOverlay';
-
-export {Props, CloseSource} from './PopoverOverlay';
-export default PopoverOverlay;
+export {
+  PopoverOverlay,
+  PopoverOverlayProps,
+  CloseSource,
+} from './PopoverOverlay';

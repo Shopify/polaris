@@ -1,7 +1,7 @@
 import React from 'react';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Toast from '../Toast';
+import {Toast} from '../Toast';
 
 describe('<Toast />', () => {
   beforeEach(() => {

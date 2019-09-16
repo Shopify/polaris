@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import List from '../List';
+import {List} from '../List';
 
 describe('<List />', () => {
   it('renders its children', () => {

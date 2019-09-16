@@ -2,21 +2,21 @@ import React, {createRef} from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../../../utilities/css';
-import Icon from '../../../../../Icon';
-import UnstyledLink from '../../../../../UnstyledLink';
+import {Icon} from '../../../../../Icon';
+import {UnstyledLink} from '../../../../../UnstyledLink';
 import {DisableableAction} from '../../../../../../types';
 
 import {handleMouseUpByBlurring} from '../../../../../../utilities/focus';
 
 import styles from '../../BulkActions.scss';
 
-export type Props = {
+export type BulkActionButtonProps = {
   disclosure?: boolean;
   handleMeasurement?(width: number): void;
 } & DisableableAction;
 
-export default class BulkActionButton extends React.PureComponent<
-  Props,
+export class BulkActionButton extends React.PureComponent<
+  BulkActionButtonProps,
   never
 > {
   private bulkActionButton = createRef<HTMLButtonElement>();

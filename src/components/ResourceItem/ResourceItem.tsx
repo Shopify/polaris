@@ -1,40 +1,37 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
 import {classNames} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
 import {DisableableAction} from '../../types';
-import ActionList from '../ActionList';
-import Popover from '../Popover';
-import {Props as AvatarProps} from '../Avatar';
-import UnstyledLink from '../UnstyledLink';
-import {Props as ThumbnailProps} from '../Thumbnail';
-import ButtonGroup from '../ButtonGroup';
-import Checkbox from '../Checkbox';
-import Button, {buttonsFrom} from '../Button';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
+import {ActionList} from '../ActionList';
+import {Popover} from '../Popover';
+import {AvatarProps} from '../Avatar';
+import {UnstyledLink} from '../UnstyledLink';
+import {ThumbnailProps} from '../Thumbnail';
+import {ButtonGroup} from '../ButtonGroup';
+import {Checkbox} from '../Checkbox';
+import {Button, buttonsFrom} from '../Button';
 
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
-  SelectedItems,
+  ResourceListSelectedItems,
 } from '../../utilities/resource-list';
 import styles from './ResourceItem.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
+
 export type MediaSize = 'small' | 'medium' | 'large';
+
 export type MediaType = 'avatar' | 'thumbnail';
 
-interface WithContextTypes<IJ> {
-  context: IJ;
-}
-
-export interface Props {
-  /** Visually hidden text for screen readers */
+export interface BaseProps {
+  /** Visually hidden text for screen readers used for item link*/
   accessibilityLabel?: string;
+  /** Individual item name used by various text labels */
+  name?: string;
   /** Id of the element the item onClick controls */
   ariaControls?: string;
   /** Tells screen reader the controlled element is expanded */
@@ -57,17 +54,22 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export interface PropsWithUrl extends Props {
+export interface PropsWithUrl extends BaseProps {
   url: string;
   onClick?(id?: string): void;
 }
 
-export interface PropsWithClick extends Props {
+export interface PropsWithClick extends BaseProps {
   url?: string;
   onClick(id?: string): void;
 }
 
-export type ConditionalProps = PropsWithUrl | PropsWithClick;
+export type ResourceItemProps = PropsWithUrl | PropsWithClick;
+
+interface PropsFromWrapper {
+  context: React.ContextType<typeof ResourceListContext>;
+  i18n: ReturnType<typeof useI18n>;
+}
 
 interface State {
   actionsMenuVisible: boolean;
@@ -76,13 +78,7 @@ interface State {
   selected: boolean;
 }
 
-export type CombinedProps =
-  | PropsWithUrl &
-      WithAppProviderProps &
-      WithContextTypes<React.ContextType<typeof ResourceListContext>>
-  | PropsWithClick &
-      WithAppProviderProps &
-      WithContextTypes<React.ContextType<typeof ResourceListContext>>;
+export type CombinedProps = PropsFromWrapper & (PropsWithUrl | PropsWithClick);
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 const getUniqueOverlayID = createUniqueIDFactory('ResourceListItemOverlay');
@@ -139,9 +135,10 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       ariaControls,
       ariaExpanded,
       persistActions = false,
-      polaris: {intl},
       accessibilityLabel,
-      context: {selectable, selectMode, loading},
+      name,
+      context: {selectable, selectMode, loading, resourceName},
+      i18n,
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -155,17 +152,9 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       </div>
     ) : null;
 
-    const checkboxAccessibilityLabel =
-      accessibilityLabel || intl.translate('Polaris.Common.checkbox');
-
     if (selectable) {
-      const label = selected
-        ? intl.translate('Polaris.ResourceList.Item.deselectItem', {
-            accessibilityLabel: checkboxAccessibilityLabel,
-          })
-        : intl.translate('Polaris.ResourceList.Item.selectItem', {
-            accessibilityLabel: checkboxAccessibilityLabel,
-          });
+      const checkboxAccessibilityLabel =
+        name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
 
       handleMarkup = (
         <div
@@ -178,7 +167,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
               <Checkbox
                 testID="Checkbox"
                 id={this.checkboxId}
-                label={label}
+                label={checkboxAccessibilityLabel}
                 labelHidden
                 checked={selected}
                 disabled={loading}
@@ -217,21 +206,24 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
               {buttonsFrom(shortcutActions, {
-                size: 'slim',
                 plain: true,
               })}
             </ButtonGroup>
           </div>
         );
 
+        const disclosureAccessibilityLabel = name
+          ? i18n.translate('Polaris.ResourceList.Item.actionsDropdownLabel', {
+              accessibilityLabel: name,
+            })
+          : i18n.translate('Polaris.ResourceList.Item.actionsDropdown');
+
         disclosureMarkup = (
           <div className={styles.Disclosure} onClick={stopPropagation}>
             <Popover
               activator={
                 <Button
-                  accessibilityLabel={intl.translate(
-                    'Polaris.ResourceList.Item.actionsDropdown',
-                  )}
+                  accessibilityLabel={disclosureAccessibilityLabel}
                   onClick={this.handleActionsClick}
                   plain
                   icon={HorizontalDotsMinor}
@@ -276,10 +268,16 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
 
     const tabIndex = loading ? -1 : 0;
 
+    const ariaLabel =
+      accessibilityLabel ||
+      i18n.translate('Polaris.ResourceList.Item.viewItem', {
+        itemName: name || (resourceName && resourceName.singular) || '',
+      });
+
     const accessibleMarkup = url ? (
       <UnstyledLink
         aria-describedby={this.props.id}
-        aria-label={accessibilityLabel}
+        aria-label={ariaLabel}
         className={styles.Link}
         url={url}
         tabIndex={tabIndex}
@@ -288,7 +286,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
     ) : (
       <button
         className={styles.Button}
-        aria-label={accessibilityLabel}
+        aria-label={ariaLabel}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         onClick={this.handleClick}
@@ -426,7 +424,7 @@ function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();
 }
 
-function isSelected(id: string, selectedItems?: SelectedItems) {
+function isSelected(id: string, selectedItems?: ResourceListSelectedItems) {
   return Boolean(
     selectedItems &&
       ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||
@@ -434,12 +432,12 @@ function isSelected(id: string, selectedItems?: SelectedItems) {
   );
 }
 
-function ResourceItem(props: CombinedProps) {
+export function ResourceItem(props: ResourceItemProps) {
   return (
-    <ResourceListContext.Consumer>
-      {(context) => <BaseResourceItem {...props} context={context} />}
-    </ResourceListContext.Consumer>
+    <BaseResourceItem
+      {...props}
+      context={useContext(ResourceListContext)}
+      i18n={useI18n()}
+    />
   );
 }
-
-export default withAppProvider<Props>()(ResourceItem);

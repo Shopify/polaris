@@ -4,17 +4,17 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {classNames} from '../../../../utilities/css';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
-import Collapsible from '../../../Collapsible';
-import Icon from '../../../Icon';
+import {Collapsible} from '../../../Collapsible';
+import {Icon} from '../../../Icon';
 import {IconProps} from '../../../../types';
 
-import Item, {Props as ItemProps} from '../Item';
+import {Item, ItemProps} from '../Item';
 
 import styles from '../../Navigation.scss';
 
 const createAdditionalItemsId = createUniqueIDFactory('AdditionalItems');
 
-export interface Props {
+export interface SectionProps {
   items: ItemProps[];
   icon?: IconProps['source'];
   title?: string;
@@ -37,7 +37,7 @@ interface State {
   expanded: boolean;
 }
 
-export default class Section extends React.Component<Props, State> {
+export class Section extends React.Component<SectionProps, State> {
   state: State = {
     expanded: false,
   };
@@ -97,22 +97,21 @@ export default class Section extends React.Component<Props, State> {
     const toggleClassName = classNames(styles.Item, styles.RollupToggle);
     const ariaLabel = rollup && (expanded ? rollup.hide : rollup.view);
 
-    const toggleRollup = rollup &&
-      items.length > rollup.after && (
-        <div className={styles.ListItem} key="List Item">
-          <button
-            type="button"
-            className={toggleClassName}
-            onClick={this.toggleViewAll}
-            aria-label={ariaLabel}
-            testID="ToggleViewAll"
-          >
-            <span className={styles.Icon}>
-              <Icon source={HorizontalDotsMinor} />
-            </span>
-          </button>
-        </div>
-      );
+    const toggleRollup = rollup && items.length > rollup.after && (
+      <div className={styles.ListItem} key="List Item">
+        <button
+          type="button"
+          className={toggleClassName}
+          onClick={this.toggleViewAll}
+          aria-label={ariaLabel}
+          testID="ToggleViewAll"
+        >
+          <span className={styles.Icon}>
+            <Icon source={HorizontalDotsMinor} />
+          </span>
+        </button>
+      </div>
+    );
 
     const activeItemIndex = items.findIndex((item: ItemProps) => {
       if (!rollup) {
@@ -148,15 +147,14 @@ export default class Section extends React.Component<Props, State> {
 
     const additionalItemsId = createAdditionalItemsId();
 
-    const activeItemsMarkup = rollup &&
-      additionalItems.length > 0 && (
-        <li className={styles.RollupSection}>
-          <Collapsible id={additionalItemsId} open={expanded}>
-            <ul className={styles.List}>{additionalItems}</ul>
-          </Collapsible>
-          {toggleRollup}
-        </li>
-      );
+    const activeItemsMarkup = rollup && additionalItems.length > 0 && (
+      <li className={styles.RollupSection}>
+        <Collapsible id={additionalItemsId} open={expanded}>
+          <ul className={styles.List}>{additionalItems}</ul>
+        </Collapsible>
+        {toggleRollup}
+      </li>
+    );
 
     return (
       <ul className={className}>

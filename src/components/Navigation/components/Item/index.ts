@@ -1,4 +1,6 @@
-import Item from './Item';
-
-export {Props, SubNavigationItem, isNavigationItemActive} from './Item';
-export default Item;
+export {
+  Item,
+  ItemProps,
+  SubNavigationItem,
+  isNavigationItemActive,
+} from './Item';

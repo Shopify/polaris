@@ -1,19 +1,19 @@
 import React from 'react';
 
 import {useI18n} from '../../../../../../utilities/i18n';
-import Modal from '../../../../../Modal';
+import {Modal} from '../../../../../Modal';
 
-export interface Props {
+export interface DiscardConfirmationModalProps {
   open: boolean;
   onDiscard(): void;
   onCancel(): void;
 }
 
-export default function DiscardConfirmationModal({
+export function DiscardConfirmationModal({
   open,
   onDiscard,
   onCancel,
-}: Props) {
+}: DiscardConfirmationModalProps) {
   const intl = useI18n();
 
   return (

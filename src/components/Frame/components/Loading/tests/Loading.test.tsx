@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Loading from '../Loading';
+import {Loading} from '../Loading';
 
 describe('<Loading />', () => {
   const loading = mountWithAppProvider(<Loading />);

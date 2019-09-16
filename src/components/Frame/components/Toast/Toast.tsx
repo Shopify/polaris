@@ -3,18 +3,21 @@ import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
-import Button from '../../../Button';
+import {Button} from '../../../Button';
 
-import Icon from '../../../Icon';
-import KeypressListener from '../../../KeypressListener';
-import {ToastProps as Props} from '../../../../utilities/frame';
+import {Icon} from '../../../Icon';
+import {KeypressListener} from '../../../KeypressListener';
+import {ToastProps} from '../../../../utilities/frame';
 
 import styles from './Toast.scss';
 
+export {ToastProps};
+
 export const DEFAULT_TOAST_DURATION = 5000;
+
 export const DEFAULT_TOAST_DURATION_WITH_ACTION = 10000;
 
-export default class Toast extends React.Component<Props, never> {
+export class Toast extends React.Component<ToastProps, never> {
   private timer?: number;
 
   componentDidUpdate() {

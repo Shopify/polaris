@@ -7,6 +7,7 @@ interface InitialOptions extends jest.InitialOptions {
   setupFilesAfterEnv: string[];
 }
 
+// eslint-disable-next-line import/no-default-export
 export default function sewingKitConfig(
   plugins: Plugins,
   env: Env,

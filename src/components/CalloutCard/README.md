@@ -46,40 +46,9 @@ Callout cards should:
 
 ## Content guidelines
 
-### Heading
+### Title
 
-Headings should be:
-
-- Descriptive: help merchants understand what they’ll find in the callout card
-- Concise and scannable:
-- Use simple, clear language that can be read at a glance
-- Keep headings to a single sentence and avoid using punctuation such as
-  periods, commas, or semicolons
-- Sentence case (first word capitalized, the rest lowercase)
-
-<!-- usagelist -->
-
-#### Do
-
-Messenger
-
-#### Don’t
-
-Chat with customers on Messenger
-
-<!-- end -->
-
-<!-- usagelist -->
-
-#### Do
-
-Get help from a Shopify Expert
-
-#### Don’t
-
-Get Help From a Shopify Expert!
-
-<!-- end -->
+Callout card titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 
@@ -223,9 +192,9 @@ Make all callout cards dismissible so merchants can get rid of cards about featu
 
 ## Related components
 
-- To group similar concepts and tasks together, [use the card component](/components/structure/card)
-- To create page-level layout, [use the layout component](/components/structure/layout)
-- To explain a feature that merchants haven’t tried yet, [use the empty state component](/components/structure/empty-state)
+- To group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/structure/card)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
+- To explain a feature that merchants haven’t tried yet, [use the empty state component](https://polaris.shopify.com/components/structure/empty-state)
 
 ---
 
@@ -255,6 +224,6 @@ The required `title` prop gives the callout card a level 2 heading (`<h2>`). Thi
 
 Illustrations included in callout cards are implemented as decorative images with empty `alt` attributes (`alt=""` ) so that they’re skipped by screen readers.
 
-Use [actionable language](/content/actionable-language#navigation) to ensure that the purpose of the callout card is clear to all merchants, including those with issues related to reading and language.
+Use [actionable language](https://polaris.shopify.com/content/actionable-language#navigation) to ensure that the purpose of the callout card is clear to all merchants, including those with issues related to reading and language.
 
 <!-- /content-for -->

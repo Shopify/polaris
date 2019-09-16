@@ -3,40 +3,38 @@ import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
 import {useFrame} from '../../utilities/frame';
 import {useAppBridge} from '../../utilities/app-bridge';
 
-export interface Props {}
+export interface LoadingProps {}
 
-function Loading() {
+// This does have a display name, but the linting has a bug in it
+// https://github.com/yannickcr/eslint-plugin-react/issues/2324
+// eslint-disable-next-line react/display-name
+export const Loading = React.memo(function Loading() {
   const appBridgeLoading = useRef<AppBridgeLoading.Loading>();
   const appBridge = useAppBridge();
   const {startLoading, stopLoading} = useFrame();
 
-  useEffect(
-    () => {
+  useEffect(() => {
+    if (appBridge == null) {
+      startLoading();
+    } else {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: Using `Loading` in an embedded app is deprecated and will be removed in v5.0. Use `Loading` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/loading',
+      );
+
+      appBridgeLoading.current = AppBridgeLoading.create(appBridge);
+      appBridgeLoading.current.dispatch(AppBridgeLoading.Action.START);
+    }
+
+    return () => {
       if (appBridge == null) {
-        startLoading();
+        stopLoading();
       } else {
-        // eslint-disable-next-line no-console
-        console.warn(
-          'Deprecation: Using `Loading` in an embedded app is deprecated and will be removed in v5.0. Use `Loading` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/loading',
-        );
-
-        appBridgeLoading.current = AppBridgeLoading.create(appBridge);
-        appBridgeLoading.current.dispatch(AppBridgeLoading.Action.START);
+        appBridgeLoading.current &&
+          appBridgeLoading.current.dispatch(AppBridgeLoading.Action.STOP);
       }
-
-      return () => {
-        if (appBridge == null) {
-          stopLoading();
-        } else {
-          appBridgeLoading.current &&
-            appBridgeLoading.current.dispatch(AppBridgeLoading.Action.STOP);
-        }
-      };
-    },
-    [appBridge, startLoading, stopLoading],
-  );
+    };
+  }, [appBridge, startLoading, stopLoading]);
 
   return null;
-}
-
-export default React.memo(Loading);
+});

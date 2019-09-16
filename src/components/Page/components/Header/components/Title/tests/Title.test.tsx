@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Badge, DisplayText, Avatar} from 'components';
-import Title from '..';
+import {Title} from '../Title';
 
 describe('<Title />', () => {
   const mockProps = {
@@ -12,6 +12,11 @@ describe('<Title />', () => {
     it('renders a DisplayText with the title', () => {
       const pageTitle = mountWithAppProvider(<Title {...mockProps} />);
       expect(pageTitle.find(DisplayText).text()).toBe(mockProps.title);
+    });
+
+    it('does not render a title when not defined', () => {
+      const pageTitle = mountWithAppProvider(<Title />);
+      expect(pageTitle.find(DisplayText).exists()).toBe(false);
     });
   });
 

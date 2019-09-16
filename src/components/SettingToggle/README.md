@@ -114,7 +114,7 @@ class SettingToggleExample extends React.Component {
 
 ## Related components
 
-- To let merchants to connect or disconnect their store to third-party services and apps, [use the account connection component](/components/actions/account-connection)
+- To let merchants to connect or disconnect their store to third-party services and apps, [use the account connection component](https://polaris.shopify.com/components/actions/account-connection)
 
 ---
 
@@ -124,6 +124,6 @@ class SettingToggleExample extends React.Component {
 
 The setting toggle component is implemented as an HTML `<button>`. The current label should convey what happens when the button is pressed.
 
-To learn more about button accessibility, see the [button component](/components/actions/button).
+To learn more about button accessibility, see the [button component](https://polaris.shopify.com/components/actions/button).
 
 <!-- /content-for-->

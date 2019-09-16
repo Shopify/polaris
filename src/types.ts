@@ -53,6 +53,7 @@ export interface IconProps {
 }
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
+
 export type AppBridgeTarget = 'ADMIN_PATH' | 'REMOTE' | 'APP';
 
 export type Error =
@@ -317,12 +318,14 @@ export type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Array<infer U>
     ? Array<DeepPartial<U>>
     : T[P] extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : DeepPartial<T[P]>
+    ? ReadonlyArray<DeepPartial<U>>
+    : DeepPartial<T[P]>;
 };
 
 export type Discard<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 export type EffectCallback = () => void | (() => void | undefined);
+
 export type DependencyList = ReadonlyArray<unknown>;
+
 export type Comparator = (a: DependencyList, b: DependencyList) => boolean;

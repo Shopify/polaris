@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Indicator from '../Indicator';
+import {Indicator} from '../Indicator';
 
 describe('<Indicator />', () => {
   describe('accessibilityLabel', () => {

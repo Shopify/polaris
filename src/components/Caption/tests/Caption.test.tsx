@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Caption from '../Caption';
+import {Caption} from '../Caption';
 
 describe('<Caption />', () => {
   it('renders a p tag', () => {

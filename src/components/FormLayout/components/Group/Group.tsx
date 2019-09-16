@@ -1,24 +1,22 @@
 import React from 'react';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
+import {useUniqueId} from '../../../../utilities/unique-id';
 import styles from '../../FormLayout.scss';
-import Item from '../Item';
+import {Item} from '../Item';
 
-export interface Props {
+export interface GroupProps {
   children?: React.ReactNode;
   condensed?: boolean;
   title?: string;
   helpText?: React.ReactNode;
 }
 
-const getUniqueID = createUniqueIDFactory('FormLayoutGroup');
-
-export default function Group({children, condensed, title, helpText}: Props) {
+export function Group({children, condensed, title, helpText}: GroupProps) {
   const className = classNames(condensed ? styles.condensed : styles.grouped);
 
-  const id = getUniqueID();
+  const id = useUniqueId('FormLayoutGroup');
 
   let helpTextElement = null;
   let helpTextID: undefined | string;

@@ -1,9 +1,9 @@
 import React from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {Weekday} from '../..';
-import Month from '../Month';
-import Day from '../../Day';
+import {Weekday} from '../../Weekday';
+import {Day} from '../../Day';
+import {Month} from '../Month';
 
 describe('<Month />', () => {
   describe('title', () => {

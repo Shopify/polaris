@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Badge, Subheading, ButtonGroup, Button} from 'components';
-import Section from '../Section';
+import {Section} from '../Section';
 
 describe('<Card.Section />', () => {
   it('can have any valid react element as the card section title', () => {

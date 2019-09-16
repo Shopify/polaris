@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {SingleThumb} from '../..';
+import {SingleThumb} from '../SingleThumb';
 
 const mockProps = {
   id: 'MyRangeSlider',

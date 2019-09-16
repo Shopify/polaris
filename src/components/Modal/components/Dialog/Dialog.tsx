@@ -5,13 +5,13 @@ import {classNames} from '../../../../utilities/css';
 
 import {AnimationProps, Key} from '../../../../types';
 
-import KeypressListener from '../../../KeypressListener';
-import TrapFocus from '../../../TrapFocus';
+import {KeypressListener} from '../../../KeypressListener';
+import {TrapFocus} from '../../../TrapFocus';
 
 import styles from './Dialog.scss';
 
-export interface DialogProps {
-  labelledBy: string;
+export interface BaseDialogProps {
+  labelledBy?: string;
   instant?: boolean;
   children?: React.ReactNode;
   limitHeight?: boolean;
@@ -21,9 +21,9 @@ export interface DialogProps {
   onExited?(): void;
 }
 
-export type Props = DialogProps & AnimationProps;
+export type DialogProps = BaseDialogProps & AnimationProps;
 
-export default function Dialog({
+export function Dialog({
   instant,
   labelledBy,
   children,
@@ -33,7 +33,7 @@ export default function Dialog({
   large,
   limitHeight,
   ...props
-}: Props) {
+}: DialogProps) {
   const containerNode = useRef<HTMLDivElement>(null);
   const findDOMNode = useCallback(() => containerNode.current, []);
   const classes = classNames(
@@ -80,6 +80,8 @@ export default function Dialog({
 }
 
 const fadeUpClasses = {
+  appear: classNames(styles.animateFadeUp, styles.entering),
+  appearActive: classNames(styles.animateFadeUp, styles.entered),
   enter: classNames(styles.animateFadeUp, styles.entering),
   enterActive: classNames(styles.animateFadeUp, styles.entered),
   exit: classNames(styles.animateFadeUp, styles.exiting),

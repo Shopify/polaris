@@ -37,13 +37,7 @@ Date pickers should:
 - Set the start date on first click or tap and the end date on second click or tap if a range
   is required
 - Not be used to enter a date that is many years in the future or the past
-
----
-
-## Content guidelines
-
-There are no content elements that are specific to the date picker.
-Learn how to [format dates and numbers](/content/grammar-and-mechanics#dates-and-numbers) in your interface content.
+- Follow [date format guidelines](https://polaris.shopify.com/content/grammar-and-mechanics#section-dates-numbers-and-addresses)
 
 ---
 
@@ -93,12 +87,12 @@ class DatePickerExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Date picker on Android](/public_images/components/DatePicker/android/default@2x.png)
+![Date picker on Android](https://polaris.shopify.com/public_images/components/DatePicker/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Date picker on iOS](/public_images/components/DatePicker/ios/default@2x.png)
+![Date picker on iOS](https://polaris.shopify.com/public_images/components/DatePicker/ios/default@2x.png)
 
 <!-- /content-for -->

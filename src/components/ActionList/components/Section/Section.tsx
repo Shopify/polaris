@@ -1,10 +1,10 @@
 import React from 'react';
-import Item from '../Item';
+import {Item} from '../Item';
 import {ActionListItemDescriptor, ActionListSection} from '../../../../types';
 
 import styles from '../../ActionList.scss';
 
-export interface Props {
+export interface SectionProps {
   /** Section of action items */
   section: ActionListSection;
   /** Should there be multiple sections */
@@ -15,12 +15,12 @@ export interface Props {
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
 
-export default function Section({
+export function Section({
   section,
   hasMultipleSections,
   actionRole,
   onActionAnyItem,
-}: Props) {
+}: SectionProps) {
   const handleAction = (itemOnAction: ActionListItemDescriptor['onAction']) => {
     return () => {
       if (itemOnAction) {

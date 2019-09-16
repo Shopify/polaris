@@ -34,57 +34,7 @@ Scrollable containers should:
 
 ## Content guidelines
 
-Scrollable containers are cards with scrolling functionality.
-
-### Heading
-
-Headings should be:
-
-- Informative and descriptive: they should label the type of content grouped in
-  the card.
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep headings to single sentence and avoid using punctuation such as
-    periods, commas, or semicolons
-  - Avoid articles (the, a, an) in [microcopy headings](/content/grammar-and-mechanics#headings-and-subheadings) to keep content short and actionable
-  - Write in sentence case (first word capitalized, the rest is lowercase)
-
-<!-- usagelist -->
-
-#### Do
-
-- Online store dashboard
-
-#### Don’t
-
-- This is your online store dashboard
-
-<!-- end -->
-
-### Body content
-
-Body content should be:
-
-- Actionable: start sentences with imperative verbs when telling merchants
-  what actions are available to them (especially something new). Don’t use
-  permissive language like “you can”.
-
-<!-- usagelist -->
-
-#### Do
-
-- You need to accept the terms and conditions to continue.
-
-#### Don’t
-
-- Now you can accept the terms and conditions.
-
-<!-- end -->
-
-- Structured for merchant success: Always put the most critical information
-  first.
-- Clear: use the verb “need” to help merchants understand when they’re
-  required to do something.
+Scrollable containers are cards with scrolling functionality, and should follow the [content guidelines](https://polaris.shopify.com/components/structure/card#section-content-guidelines) for cards.
 
 ---
 
@@ -405,4 +355,4 @@ Use when you need to programmatically scroll a child component into view in the 
 
 ## Related components
 
-- To put long sections of information under a block that merchants can expand or collapse, [use the collapsible component](/components/collapsible)
+- To put long sections of information under a block that merchants can expand or collapse, [use the collapsible component](https://polaris.shopify.com/components/collapsible)

@@ -1,4 +1,1 @@
-import Image from './Image';
-
-export {Props} from './Image';
-export default Image;
+export {Image, ImageProps} from './Image';

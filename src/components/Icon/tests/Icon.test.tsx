@@ -1,7 +1,7 @@
 import React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Icon from '../Icon';
+import {Icon} from '../Icon';
 
 describe('<Icon />', () => {
   describe('accessibilityLabel', () => {

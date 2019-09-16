@@ -2,13 +2,13 @@ import React from 'react';
 
 import {MenuGroupDescriptor} from '../../../../types';
 
-import ActionList from '../../../ActionList';
-import Popover from '../../../Popover';
-import MenuAction from '../MenuAction';
+import {ActionList} from '../../../ActionList';
+import {Popover} from '../../../Popover';
+import {MenuAction} from '../MenuAction';
 
 import styles from './MenuGroup.scss';
 
-export interface Props extends MenuGroupDescriptor {
+export interface MenuGroupProps extends MenuGroupDescriptor {
   /** Visually hidden menu description for screen readers */
   accessibilityLabel?: string;
   /** Whether or not the menu is open */
@@ -19,7 +19,7 @@ export interface Props extends MenuGroupDescriptor {
   onClose(title: string): void;
 }
 
-export default class MenuGroup extends React.Component<Props, never> {
+export class MenuGroup extends React.Component<MenuGroupProps, never> {
   render() {
     const {
       accessibilityLabel,

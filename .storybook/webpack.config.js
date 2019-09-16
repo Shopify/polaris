@@ -3,6 +3,7 @@
 // For more information refer the docs: https://storybook.js.org/configurations/custom-webpack-config
 
 const path = require('path');
+const spawn = require('child_process').spawn;
 
 const postcssShopify = require('postcss-shopify');
 
@@ -110,6 +111,17 @@ module.exports = ({config, mode}) => {
       ],
     },
   ];
+
+  config.plugins.push({
+    apply: (compiler) => {
+      compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
+        const spawnedProcess = spawn('yarn splash', {
+          shell: true,
+          stdio: 'inherit',
+        });
+      });
+    },
+  });
 
   config.module.rules = [config.module.rules[0], ...extraRules];
 

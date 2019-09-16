@@ -1,14 +1,14 @@
 import React from 'react';
 import {QuestionMarkMajorTwotone} from '@shopify/polaris-icons';
-import Icon from '../Icon';
+import {Icon} from '../Icon';
 import styles from './FooterHelp.scss';
 
-export interface Props {
+export interface FooterHelpProps {
   /** The content to display inside the layout. */
   children?: React.ReactNode;
 }
 
-export default function FooterHelp({children}: Props) {
+export function FooterHelp({children}: FooterHelpProps) {
   return (
     <div className={styles.FooterHelp}>
       <div className={styles.Content}>

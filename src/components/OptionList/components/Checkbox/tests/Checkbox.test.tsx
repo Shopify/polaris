@@ -1,9 +1,9 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Checkbox, {Props} from '../Checkbox';
+import {Checkbox, CheckboxProps} from '../Checkbox';
 
 describe('<Checkbox />', () => {
-  const defaultProps: Props = {
+  const defaultProps: CheckboxProps = {
     checked: true,
     disabled: false,
     id: 'checkboxId',

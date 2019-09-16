@@ -1,8 +1,8 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import PageActions from '..';
-import ButtonGroup from '../../ButtonGroup';
-import Stack from '../../Stack';
+import {PageActions} from '..';
+import {ButtonGroup} from '../../ButtonGroup';
+import {Stack} from '../../Stack';
 import {buttonsFrom} from '../../Button';
 
 jest.mock('../../Button', () => ({

@@ -1,28 +1,21 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import {Tab, Panel, TabMeasurer, List} from '../components';
-import Tabs, {Props} from '../Tabs';
+import {Tab, Panel, TabMeasurer} from '../components';
+import Tabs, {TabsProps} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
-import Popover from '../../Popover';
+import {Popover} from '../../Popover';
 
 describe('<Tabs />', () => {
-  const tabs: Props['tabs'] = [
+  const tabs: TabsProps['tabs'] = [
     {content: 'Tab 1', id: 'tab-1'},
     {content: 'Tab 2', id: 'tab-2'},
   ];
 
   const mockProps = {
-    selected: 0,
     tabs,
+    selected: 0,
     onSelect: noop,
   };
-
-  function getPopoverContents(tabs: ReactWrapper) {
-    return mountWithAppProvider(
-      <div>{tabs.find(Popover).prop('children')}</div>,
-    );
-  }
 
   afterEach(() => {
     if (document.activeElement) {
@@ -32,7 +25,7 @@ describe('<Tabs />', () => {
 
   describe('tabs', () => {
     it('uses the IDs passed in for the tabs', () => {
-      const tabs: Props['tabs'] = [
+      const tabs: TabsProps['tabs'] = [
         {content: 'Tab 1', id: 'tab-1'},
         {content: 'Tab 2', id: 'tab-2'},
       ];
@@ -420,13 +413,73 @@ describe('<Tabs />', () => {
           disclosureWidth: 0,
         });
 
-        const popoverContents = getPopoverContents(tabs);
-        async () => {
-          trigger(popoverContents.find(List), 'onKeyPress', {
-            key: 'ArrowRight',
-          });
-          await expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-        };
+        const popover = tabs.find(Popover);
+        const disclosureActivator = popover.find('.DisclosureActivator');
+
+        trigger(disclosureActivator, 'onClick', {
+          key: 'Enter',
+        });
+
+        trigger(tabs.find('ul'), 'onKeyUp', {
+          key: 'ArrowRight',
+        });
+
+        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
+      });
+
+      it('shifts focus to the first hidden tab when the last visible tab is focused and the disclosure popover is active', () => {
+        const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
+        const tabMeasurer = tabs.find(TabMeasurer);
+        trigger(tabMeasurer, 'handleMeasurement', {
+          hiddenTabWidths: [82, 160, 150, 100, 80, 120],
+          containerWidth: 300,
+          disclosureWidth: 0,
+        });
+        const popover = tabs.find(Popover);
+        const disclosureActivator = popover.find('button');
+
+        disclosureActivator.simulate('click');
+
+        trigger(disclosureActivator, 'onClick', {
+          key: 'Enter',
+        });
+
+        trigger(tabs.find('ul'), 'onKeyUp', {
+          key: 'ArrowRight',
+        });
+
+        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
+
+        trigger(tabs.find('ul'), 'onKeyUp', {
+          key: 'ArrowRight',
+        });
+
+        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(1);
+      });
+
+      it('does not shift focus to the first hidden tab when the last visible tab is focused and the disclosure popover is not active', () => {
+        const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
+        const tabMeasurer = tabs.find(TabMeasurer);
+        trigger(tabMeasurer, 'handleMeasurement', {
+          hiddenTabWidths: [82, 160, 150, 100, 80, 120],
+          containerWidth: 300,
+          disclosureWidth: 0,
+        });
+
+        const popover = tabs.find(Popover);
+        expect(popover.prop('active')).toBe(false);
+
+        trigger(tabs.find('ul'), 'onKeyUp', {
+          key: 'ArrowRight',
+        });
+
+        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
+
+        trigger(tabs.find('ul'), 'onKeyUp', {
+          key: 'Enter',
+        });
+
+        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
       });
     });
   });

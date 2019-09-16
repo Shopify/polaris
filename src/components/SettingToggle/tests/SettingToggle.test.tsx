@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import SettingAction from 'components/SettingAction';
-import SettingToggle from '../SettingToggle';
+import {SettingAction} from 'components/SettingAction';
+import {SettingToggle} from '../SettingToggle';
 
 describe('<SettingToggle />', () => {
   function getComponentProps(node: React.ReactNode) {

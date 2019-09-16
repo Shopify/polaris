@@ -1,14 +1,15 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Option} from '../components';
-import OptionList, {
-  Props,
+import {
+  OptionList,
+  OptionListProps,
   OptionDescriptor,
   SectionDescriptor,
 } from '../OptionList';
 
 describe('<OptionList />', () => {
-  const defaultProps: Props = {
+  const defaultProps: OptionListProps = {
     id: 'recommended-products',
     title: 'Recommended products',
     options: [
@@ -60,7 +61,7 @@ describe('<OptionList />', () => {
 
   it('renders options and sections', () => {
     const {options, sections} = defaultProps;
-    const optionWrappers = mountWithAppProvider<Props>(
+    const optionWrappers = mountWithAppProvider<OptionListProps>(
       <OptionList {...defaultProps} />,
     ).find(Option);
 
@@ -70,7 +71,7 @@ describe('<OptionList />', () => {
   it('renders sections', () => {
     const {sections} = defaultProps;
     const options: OptionDescriptor[] = [];
-    const optionWrappers = mountWithAppProvider<Props>(
+    const optionWrappers = mountWithAppProvider<OptionListProps>(
       <OptionList {...defaultProps} options={options} />,
     ).find(Option);
 
@@ -80,7 +81,7 @@ describe('<OptionList />', () => {
   it('renders options', () => {
     const {options} = defaultProps;
     const sections: SectionDescriptor[] = [];
-    const optionWrappers = mountWithAppProvider<Props>(
+    const optionWrappers = mountWithAppProvider<OptionListProps>(
       <OptionList {...defaultProps} sections={sections} />,
     ).find(Option);
 
@@ -89,7 +90,7 @@ describe('<OptionList />', () => {
 
   it('re-renders with new options passed in', () => {
     const {sections} = defaultProps;
-    const optionList = mountWithAppProvider<Props>(
+    const optionList = mountWithAppProvider<OptionListProps>(
       <OptionList {...defaultProps} />,
     );
 
@@ -113,7 +114,7 @@ describe('<OptionList />', () => {
 
   it('re-renders with new sections passed in', () => {
     const {options} = defaultProps;
-    const optionList = mountWithAppProvider<Props>(
+    const optionList = mountWithAppProvider<OptionListProps>(
       <OptionList {...defaultProps} />,
     );
 
@@ -140,7 +141,7 @@ describe('<OptionList />', () => {
   });
 
   it('re-renders with new options and new sections passed in', () => {
-    const optionList = mountWithAppProvider<Props>(
+    const optionList = mountWithAppProvider<OptionListProps>(
       <OptionList {...defaultProps} />,
     );
 
@@ -180,7 +181,7 @@ describe('<OptionList />', () => {
 
   it('re-renders with undefined options', () => {
     const {sections} = defaultProps;
-    const optionList = mountWithAppProvider<Props>(
+    const optionList = mountWithAppProvider<OptionListProps>(
       <OptionList {...defaultProps} />,
     );
 
@@ -192,7 +193,7 @@ describe('<OptionList />', () => {
 
   it('re-renders with undefined sections', () => {
     const {options} = defaultProps;
-    const optionList = mountWithAppProvider<Props>(
+    const optionList = mountWithAppProvider<OptionListProps>(
       <OptionList {...defaultProps} />,
     );
 
@@ -203,7 +204,7 @@ describe('<OptionList />', () => {
   });
 
   it('re-renders with undefined options and new sections', () => {
-    const optionList = mountWithAppProvider<Props>(
+    const optionList = mountWithAppProvider<OptionListProps>(
       <OptionList {...defaultProps} />,
     );
 
@@ -230,7 +231,7 @@ describe('<OptionList />', () => {
   });
 
   it('re-renders with new options and undefined sections', () => {
-    const optionList = mountWithAppProvider<Props>(
+    const optionList = mountWithAppProvider<OptionListProps>(
       <OptionList {...defaultProps} />,
     );
 
@@ -256,7 +257,7 @@ describe('<OptionList />', () => {
     const spy = jest.fn();
     const {options, sections} = defaultProps;
 
-    const buttonWrappers = mountWithAppProvider<Props>(
+    const buttonWrappers = mountWithAppProvider<OptionListProps>(
       <OptionList {...defaultProps} onChange={spy} />,
     ).find('button');
 
@@ -269,7 +270,7 @@ describe('<OptionList />', () => {
   describe('allowMultiple', () => {
     it('renders options and sections', () => {
       const {options, sections} = defaultProps;
-      const optionWrappers = mountWithAppProvider<Props>(
+      const optionWrappers = mountWithAppProvider<OptionListProps>(
         <OptionList {...defaultProps} allowMultiple />,
       ).find(Option);
 
@@ -279,7 +280,7 @@ describe('<OptionList />', () => {
     it('renders sections', () => {
       const {sections} = defaultProps;
       const options: OptionDescriptor[] = [];
-      const optionWrappers = mountWithAppProvider<Props>(
+      const optionWrappers = mountWithAppProvider<OptionListProps>(
         <OptionList {...defaultProps} options={options} allowMultiple />,
       ).find(Option);
 
@@ -289,7 +290,7 @@ describe('<OptionList />', () => {
     it('renders options', () => {
       const {options} = defaultProps;
       const sections: SectionDescriptor[] = [];
-      const optionWrappers = mountWithAppProvider<Props>(
+      const optionWrappers = mountWithAppProvider<OptionListProps>(
         <OptionList {...defaultProps} sections={sections} allowMultiple />,
       ).find(Option);
 
@@ -298,7 +299,7 @@ describe('<OptionList />', () => {
 
     it('re-renders with new options passed in', () => {
       const {sections} = defaultProps;
-      const optionList = mountWithAppProvider<Props>(
+      const optionList = mountWithAppProvider<OptionListProps>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -322,7 +323,7 @@ describe('<OptionList />', () => {
 
     it('re-renders with new sections passed in', () => {
       const {options} = defaultProps;
-      const optionList = mountWithAppProvider<Props>(
+      const optionList = mountWithAppProvider<OptionListProps>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -349,7 +350,7 @@ describe('<OptionList />', () => {
     });
 
     it('re-renders with new options and new sections passed in', () => {
-      const optionList = mountWithAppProvider<Props>(
+      const optionList = mountWithAppProvider<OptionListProps>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -391,7 +392,7 @@ describe('<OptionList />', () => {
 
     it('re-renders with undefined options', () => {
       const {sections} = defaultProps;
-      const optionList = mountWithAppProvider<Props>(
+      const optionList = mountWithAppProvider<OptionListProps>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -403,7 +404,7 @@ describe('<OptionList />', () => {
 
     it('re-renders with undefined sections', () => {
       const {options} = defaultProps;
-      const optionList = mountWithAppProvider<Props>(
+      const optionList = mountWithAppProvider<OptionListProps>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -414,7 +415,7 @@ describe('<OptionList />', () => {
     });
 
     it('re-renders with undefined options and new sections', () => {
-      const optionList = mountWithAppProvider<Props>(
+      const optionList = mountWithAppProvider<OptionListProps>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -441,7 +442,7 @@ describe('<OptionList />', () => {
     });
 
     it('re-renders with new options and undefined sections', () => {
-      const optionList = mountWithAppProvider<Props>(
+      const optionList = mountWithAppProvider<OptionListProps>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -468,7 +469,7 @@ describe('<OptionList />', () => {
         const spy = jest.fn();
         const {options, sections} = defaultProps;
 
-        const inputWrappers = mountWithAppProvider<Props>(
+        const inputWrappers = mountWithAppProvider<OptionListProps>(
           <OptionList {...defaultProps} onChange={spy} allowMultiple />,
         ).find('input');
 
@@ -483,7 +484,7 @@ describe('<OptionList />', () => {
         const {options, sections} = defaultProps;
         const selected = ['11', '8'];
 
-        const inputWrappers = mountWithAppProvider<Props>(
+        const inputWrappers = mountWithAppProvider<OptionListProps>(
           <OptionList
             {...defaultProps}
             onChange={spy}
@@ -506,7 +507,7 @@ describe('<OptionList />', () => {
         const {options, sections} = defaultProps;
         const selected = ['10', '8', '5'];
 
-        const inputWrappers = mountWithAppProvider<Props>(
+        const inputWrappers = mountWithAppProvider<OptionListProps>(
           <OptionList
             {...defaultProps}
             onChange={spy}

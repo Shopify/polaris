@@ -52,7 +52,7 @@ Labels should:
 - Give a short description (1–3 words) of the requested input.
 - Be written in sentence case (the first word capitalized, the rest lowercase).
 - Avoid punctuation and articles (“the”, “an”, “a”).
-- Be independent sentences. To support [internationalization](/patterns-and-guides/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
+- Be independent sentences. To support [internationalization](https://polaris.shopify.com/patterns-and-guides/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
 - Be descriptive, not instructional. If the selection needs more explanation, use help text below the field.
 
 <!-- usagelist -->
@@ -99,31 +99,25 @@ Options should:
 Presents a classic dropdown menu or equivalent picker as determined by merchants’ browsers.
 
 ```jsx
-class SelectExample extends React.Component {
-  state = {
-    selected: 'today',
-  };
+function SelectExample() {
+  const [selected, setSelected] = useState('today');
 
-  handleChange = (newValue) => {
-    this.setState({selected: newValue});
-  };
+  const handleSelectChange = useCallback((value) => setSelected(value), []);
 
-  render() {
-    const options = [
-      {label: 'Today', value: 'today'},
-      {label: 'Yesterday', value: 'yesterday'},
-      {label: 'Last 7 days', value: 'lastWeek'},
-    ];
+  const options = [
+    {label: 'Today', value: 'today'},
+    {label: 'Yesterday', value: 'yesterday'},
+    {label: 'Last 7 days', value: 'lastWeek'},
+  ];
 
-    return (
-      <Select
-        label="Date range"
-        options={options}
-        onChange={this.handleChange}
-        value={this.state.selected}
-      />
-    );
-  }
+  return (
+    <Select
+      label="Date range"
+      options={options}
+      onChange={handleSelectChange}
+      value={selected}
+    />
+  );
 }
 ```
 
@@ -133,7 +127,7 @@ class SelectExample extends React.Component {
 
 The iOS picker expands in-line. Merchants scroll to select the item they want.
 
-![iOS select, and select with option menu](/public_images/components/Select/ios/default@2x.png)
+![iOS select, and select with option menu](https://polaris.shopify.com/public_images/components/Select/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -141,7 +135,7 @@ The iOS picker expands in-line. Merchants scroll to select the item they want.
 
 The Android menu is similar in behavior to the web dropdown.
 
-![Android select, and select with option menu](/public_images/components/Select/android/default@2x.png)
+![Android select, and select with option menu](https://polaris.shopify.com/public_images/components/Select/android/default@2x.png)
 
 <!-- /content-for -->
 
@@ -152,35 +146,29 @@ The Android menu is similar in behavior to the web dropdown.
 Use only for cases where the select must fit on a single line, such as in a toolbar.
 
 ```jsx
-class InlineLabelExample extends React.Component {
-  state = {
-    selected: 'newestUpdate',
-  };
+function InlineLabelExample() {
+  const [selected, setSelected] = useState('newestUpdate');
 
-  handleChange = (newValue) => {
-    this.setState({selected: newValue});
-  };
+  const handleSelectChange = useCallback((value) => setSelected(value), []);
 
-  render() {
-    const options = [
-      {label: 'Newest update', value: 'newestUpdate'},
-      {label: 'Oldest update', value: 'oldestUpdate'},
-      {label: 'Most spent', value: 'mostSpent'},
-      {label: 'Most orders', value: 'mostOrders'},
-      {label: 'Last name A–Z', value: 'lastNameAlpha'},
-      {label: 'Last name Z–A', value: 'lastNameReverseAlpha'},
-    ];
+  const options = [
+    {label: 'Newest update', value: 'newestUpdate'},
+    {label: 'Oldest update', value: 'oldestUpdate'},
+    {label: 'Most spent', value: 'mostSpent'},
+    {label: 'Most orders', value: 'mostOrders'},
+    {label: 'Last name A–Z', value: 'lastNameAlpha'},
+    {label: 'Last name Z–A', value: 'lastNameReverseAlpha'},
+  ];
 
-    return (
-      <Select
-        label="Sort by"
-        labelInline
-        options={options}
-        onChange={this.handleChange}
-        value={this.state.selected}
-      />
-    );
-  }
+  return (
+    <Select
+      label="Sort by"
+      labelInline
+      options={options}
+      onChange={handleSelectChange}
+      value={selected}
+    />
+  );
 }
 ```
 
@@ -202,13 +190,13 @@ Use for selections that aren’t currently available. The surrounding interface 
 
 <!-- content-for: ios -->
 
-![Disabled select component on iOS](/public_images/components/Select/ios/disabled@2x.png)
+![Disabled select component on iOS](https://polaris.shopify.com/public_images/components/Select/ios/disabled@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: android -->
 
-![Disabled select component on Android](/public_images/components/Select/android/disabled@2x.png)
+![Disabled select component on Android](https://polaris.shopify.com/public_images/components/Select/android/disabled@2x.png)
 
 <!-- /content-for -->
 
@@ -219,26 +207,20 @@ Use for selections that aren’t currently available. The surrounding interface 
 Use to let merchants know if there’s a problem with their selection. For selects, a selection is typically invalid only when using a placeholder option (“Select”) and no other selection has been made.
 
 ```jsx
-class ValidationErrorExample extends React.Component {
-  state = {
-    value: '',
-  };
+function ValidationErrorExample() {
+  const [selected, setSelected] = useState('');
 
-  handleChange = (value) => {
-    this.setState({value});
-  };
+  const handleSelectChange = useCallback((value) => setSelected(value), []);
 
-  render() {
-    return (
-      <Select
-        label="Province"
-        options={['Alberta']}
-        value={this.state.value}
-        onChange={this.handleChange}
-        error="Province is required"
-      />
-    );
-  }
+  return (
+    <Select
+      label="Province"
+      options={['Alberta']}
+      value={selected}
+      onChange={handleSelectChange}
+      error="Province is required"
+    />
+  );
 }
 ```
 
@@ -254,54 +236,47 @@ To render an invalid select and its validation error separately:
 
 - Set a unique identifier to the select component `id` prop
 - Set a boolean to the select component `error` prop
-- Use an [inline error component](/components/forms/inline-error) to describe the invalid select input and set its `fieldID` prop to the same unique identifier used for the text field `id`
+- Use an [inline error component](https://polaris.shopify.com/components/forms/inline-error) to describe the invalid select input and set its `fieldID` prop to the same unique identifier used for the text field `id`
 
 ```jsx
-class SeparateValidationErrorExample extends React.Component {
-  state = {
-    weight: '12',
-    unit: '',
-  };
+function SeparateValidationErrorExample() {
+  const [weight, setWeight] = useState('12');
+  const [unit, setUnit] = useState('');
 
-  render() {
-    const {weight, unit} = this.state;
-    const unitSelectID = 'unit';
-    const errorMessage = this.generateErrorMessage();
-    const formGroupMarkup = (
-      <Stack vertical spacing="extraTight">
-        <FormLayout>
-          <FormLayout.Group condensed>
-            <TextField
-              label="Product weight"
-              type="number"
-              value={weight}
-              onChange={this.handleChange('weight')}
-              error={Boolean(!weight && unit)}
-            />
-            <Select
-              id={unitSelectID}
-              label="Unit of measure"
-              placeholder="Select"
-              options={['oz', 'g', 'kg', 'lb']}
-              value={unit}
-              onChange={this.handleChange('unit')}
-              error={Boolean(!unit && weight)}
-            />
-          </FormLayout.Group>
-        </FormLayout>
-        <InlineError message={errorMessage} fieldID={unitSelectID} />
-      </Stack>
-    );
+  const handleWeightChange = useCallback((value) => setWeight(value), []);
+  const handleUnitChange = useCallback((value) => setUnit(value), []);
 
-    return <Card sectioned>{formGroupMarkup}</Card>;
-  }
+  const unitSelectID = 'unit';
+  const errorMessage = generateErrorMessage();
+  const formGroupMarkup = (
+    <Stack vertical spacing="extraTight">
+      <FormLayout>
+        <FormLayout.Group condensed>
+          <TextField
+            label="Product weight"
+            type="number"
+            value={weight}
+            onChange={handleWeightChange}
+            error={Boolean(!weight && unit)}
+          />
+          <Select
+            id={unitSelectID}
+            label="Unit of measure"
+            placeholder="Select"
+            options={['oz', 'g', 'kg', 'lb']}
+            value={unit}
+            onChange={handleUnitChange}
+            error={Boolean(!unit && weight)}
+          />
+        </FormLayout.Group>
+      </FormLayout>
+      <InlineError message={errorMessage} fieldID={unitSelectID} />
+    </Stack>
+  );
 
-  handleChange = (field) => (value) => {
-    this.setState({[field]: value});
-  };
+  return <Card sectioned>{formGroupMarkup}</Card>;
 
-  generateErrorMessage = () => {
-    const {weight, unit} = this.state;
+  function generateErrorMessage() {
     const weightError =
       !weight && unit ? 'The numeric weight of the product ' : '';
     const unitError =
@@ -321,7 +296,7 @@ class SeparateValidationErrorExample extends React.Component {
         </TextStyle>
       </span>
     );
-  };
+  }
 }
 ```
 
@@ -329,5 +304,5 @@ class SeparateValidationErrorExample extends React.Component {
 
 ## Related components
 
-- To let merchants select one option from a list with less than 4 options, use [the choice list component](/components/forms/choice-list)
-- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](/components/lists-and-tables/option-list) inside a [popover](/components/overlays/popover)
+- To let merchants select one option from a list with less than 4 options, use [the choice list component](https://polaris.shopify.com/components/forms/choice-list)
+- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](https://polaris.shopify.com/components/lists-and-tables/option-list) inside a [popover](https://polaris.shopify.com/components/overlays/popover)

@@ -1,4 +1,1 @@
-import Resizer from './Resizer';
-
-export {Props} from './Resizer';
-export default Resizer;
+export {Resizer, ResizerProps} from './Resizer';

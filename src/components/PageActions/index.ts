@@ -1,4 +1,1 @@
-import PageActions from './PageActions';
-
-export {Props} from './PageActions';
-export default PageActions;
+export {PageActions, PageActionsProps} from './PageActions';

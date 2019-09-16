@@ -5,7 +5,7 @@ import styles from './DisplayText.scss';
 
 export type Size = 'small' | 'medium' | 'large' | 'extraLarge';
 
-export interface Props {
+export interface DisplayTextProps {
   /**
    * Name of element to use for text
    * @default 'p'
@@ -20,11 +20,11 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export default function DisplayText({
+export function DisplayText({
   element: Element = 'p',
   children,
   size = 'medium',
-}: Props) {
+}: DisplayTextProps) {
   const className = classNames(
     styles.DisplayText,
     size && styles[variationName('size', size)],

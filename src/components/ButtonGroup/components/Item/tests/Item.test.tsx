@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Button} from 'components';
-import Item from '../Item';
+import {Item} from '../Item';
 
 describe('<Item />', () => {
   describe('button', () => {

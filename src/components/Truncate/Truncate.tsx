@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Truncate.scss';
 
-export interface Props {
+export interface TruncateProps {
   children: React.ReactNode;
 }
 
-export default function Truncate({children}: Props) {
+export function Truncate({children}: TruncateProps) {
   return <span className={styles.Truncate}>{children}</span>;
 }

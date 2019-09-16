@@ -12,12 +12,12 @@ import {
 
 import {classNames} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
-import Icon from '../Icon';
-import Stack from '../Stack';
-import Caption from '../Caption';
-import DisplayText from '../DisplayText';
-import VisuallyHidden from '../VisuallyHidden';
-import Labelled, {Action} from '../Labelled';
+import {Icon} from '../Icon';
+import {Stack} from '../Stack';
+import {Caption} from '../Caption';
+import {DisplayText} from '../DisplayText';
+import {VisuallyHidden} from '../VisuallyHidden';
+import {Labelled, Action} from '../Labelled';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -34,16 +34,17 @@ export type Type = 'file' | 'image';
 
 interface State {
   id: string;
+  dragging: boolean;
+  error?: boolean;
+  errorOverlayText?: string;
+  focused: boolean;
+  numFiles: number;
+  overlayText?: string;
   size: string;
   type?: string;
-  error?: boolean;
-  dragging: boolean;
-  overlayText?: string;
-  errorOverlayText?: string;
-  numFiles: number;
 }
 
-export interface Props {
+export interface DropZoneProps {
   /** Label for the file input */
   label?: string;
   /** Adds an action to the label */
@@ -110,7 +111,7 @@ export interface Props {
   onFileDialogClose?(): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = DropZoneProps & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('DropZone');
 
@@ -196,14 +197,15 @@ class DropZone extends React.Component<CombinedProps, State> {
 
     // eslint-disable-next-line react/state-in-constructor
     this.state = {
-      type,
       id: props.id || getUniqueID(),
-      size: 'extraLarge',
       dragging: false,
       error: false,
-      overlayText: translate(`Polaris.DropZone.overlayText${suffix}`),
       errorOverlayText: translate(`Polaris.DropZone.errorOverlayText${suffix}`),
+      focused: false,
       numFiles: 0,
+      overlayText: translate(`Polaris.DropZone.overlayText${suffix}`),
+      size: 'extraLarge',
+      type,
     };
   }
 
@@ -215,6 +217,7 @@ class DropZone extends React.Component<CombinedProps, State> {
     const {
       id,
       dragging,
+      focused,
       error,
       size,
       type,
@@ -226,7 +229,7 @@ class DropZone extends React.Component<CombinedProps, State> {
       labelAction,
       labelHidden,
       children,
-      disabled,
+      disabled = false,
       outline,
       accept,
       active,
@@ -244,12 +247,16 @@ class DropZone extends React.Component<CombinedProps, State> {
       ref: this.fileInputNode,
       onChange: this.handleDrop,
       autoComplete: 'off',
+      onFocus: this.handleFocus,
+      onBlur: this.handleBlur,
     };
 
     const classes = classNames(
       styles.DropZone,
       outline && styles.hasOutline,
+      focused && styles.focused,
       (active || dragging) && styles.isDragging,
+      disabled && styles.isDisabled,
       error && styles.hasError,
       size && size === 'extraLarge' && styles.sizeExtraLarge,
       size && size === 'large' && styles.sizeLarge,
@@ -297,6 +304,8 @@ class DropZone extends React.Component<CombinedProps, State> {
     const labelHiddenValue = label ? labelHidden : true;
 
     const context = {
+      disabled,
+      focused,
       size,
       type: type || 'file',
     };
@@ -424,6 +433,14 @@ class DropZone extends React.Component<CombinedProps, State> {
     return onClick ? onClick(event) : this.open();
   };
 
+  private handleFocus = () => {
+    this.setState({focused: true});
+  };
+
+  private handleBlur = () => {
+    this.setState({focused: false});
+  };
+
   private handleDrop = (event: DragEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -548,4 +565,6 @@ function handleDragStart(event: React.DragEvent<HTMLDivElement>) {
   event.stopPropagation();
 }
 
-export default withAppProvider<Props>()(DropZone);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<DropZoneProps>()(DropZone);

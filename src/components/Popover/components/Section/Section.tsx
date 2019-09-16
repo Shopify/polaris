@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from '../../Popover.scss';
 
-export interface Props {
+export interface SectionProps {
   children?: React.ReactNode;
 }
 
-export default function Section({children}: Props) {
+export function Section({children}: SectionProps) {
   return <div className={styles.Section}>{children}</div>;
 }

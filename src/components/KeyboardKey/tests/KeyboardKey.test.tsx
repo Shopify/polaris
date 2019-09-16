@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import KeyboardKey from '../KeyboardKey';
+import {KeyboardKey} from '../KeyboardKey';
 
 describe('<KeyboardKey />', () => {
   it('renders a kbd element', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Label, {labelID} from '../Label';
+import {Label, labelID} from '../Label';
 
 describe('<Label />', () => {
   describe('id', () => {

@@ -1,18 +1,15 @@
 import React from 'react';
 
+import {useI18n} from '../../utilities/i18n';
 import {ActionListItemDescriptor} from '../../types';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
 import {PreferredPosition} from '../PositionedOverlay';
 import {OptionDescriptor} from '../OptionList';
-import Spinner from '../Spinner';
+import {Spinner} from '../Spinner';
 
 import {TextField, ComboBox} from './components';
 import styles from './Autocomplete.scss';
 
-export interface Props {
+export interface AutocompleteProps {
   /** A unique identifier for the Autocomplete */
   id?: string;
   /** Collection of options to be listed */
@@ -41,62 +38,63 @@ export interface Props {
   onLoadMoreResults?(): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+// TypeScript can't generate types that correctly infer the typing of
+// subcomponents so explicitly state the subcomponents in the type definition.
+// Letting this be implicit works in this project but fails in projects that use
+// generated *.d.ts files.
 
-class Autocomplete extends React.PureComponent<CombinedProps, never> {
-  static TextField = TextField;
-  static ComboBox = ComboBox;
+export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
+  ComboBox: typeof ComboBox;
+  TextField: typeof TextField;
+} = function Autocomplete({
+  id,
+  options,
+  selected,
+  textField,
+  preferredPosition,
+  listTitle,
+  allowMultiple,
+  loading,
+  actionBefore,
+  willLoadMoreResults,
+  emptyState,
+  onSelect,
+  onLoadMoreResults,
+}: AutocompleteProps) {
+  const i18n = useI18n();
 
-  render() {
-    const {
-      id,
-      options,
-      selected,
-      textField,
-      preferredPosition,
-      listTitle,
-      allowMultiple,
-      loading,
-      actionBefore,
-      willLoadMoreResults,
-      emptyState,
-      onSelect,
-      onLoadMoreResults,
-      polaris: {intl},
-    } = this.props;
-
-    const spinnerMarkup = loading ? (
-      <div className={styles.Loading}>
-        <Spinner
-          size="small"
-          accessibilityLabel={intl.translate(
-            'Polaris.Autocomplete.spinnerAccessibilityLabel',
-          )}
-        />
-      </div>
-    ) : null;
-
-    const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
-    const conditionalAction =
-      actionBefore && actionBefore !== [] ? [actionBefore] : undefined;
-
-    return (
-      <ComboBox
-        id={id}
-        options={conditionalOptions}
-        selected={selected}
-        textField={textField}
-        preferredPosition={preferredPosition}
-        listTitle={listTitle}
-        allowMultiple={allowMultiple}
-        contentAfter={spinnerMarkup}
-        actionsBefore={conditionalAction}
-        onSelect={onSelect}
-        onEndReached={onLoadMoreResults}
-        emptyState={emptyState}
+  const spinnerMarkup = loading ? (
+    <div className={styles.Loading}>
+      <Spinner
+        size="small"
+        accessibilityLabel={i18n.translate(
+          'Polaris.Autocomplete.spinnerAccessibilityLabel',
+        )}
       />
-    );
-  }
-}
+    </div>
+  ) : null;
 
-export default withAppProvider<Props>()(Autocomplete);
+  const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
+  const conditionalAction =
+    actionBefore && actionBefore !== [] ? [actionBefore] : undefined;
+
+  return (
+    <ComboBox
+      id={id}
+      options={conditionalOptions}
+      selected={selected}
+      textField={textField}
+      preferredPosition={preferredPosition}
+      listTitle={listTitle}
+      allowMultiple={allowMultiple}
+      contentAfter={spinnerMarkup}
+      actionsBefore={conditionalAction}
+      onSelect={onSelect}
+      onEndReached={onLoadMoreResults}
+      emptyState={emptyState}
+    />
+  );
+};
+
+Autocomplete.ComboBox = ComboBox;
+Autocomplete.TextField = TextField;

@@ -2,7 +2,7 @@ import React from 'react';
 import debounce from 'lodash/debounce';
 import styles from './Loading.scss';
 
-export interface Props {}
+export interface LoadingProps {}
 
 interface State {
   progress: number;
@@ -13,7 +13,7 @@ interface State {
 const INITIAL_STEP = 10;
 const STUCK_THRESHOLD = 99;
 
-export default class Loading extends React.Component<Props, State> {
+export class Loading extends React.Component<LoadingProps, State> {
   state: State = {
     progress: 0,
     step: INITIAL_STEP,

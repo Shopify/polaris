@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Image, UnstyledLink} from 'components';
-import TopBar from '../TopBar';
+import {TopBar} from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
 
 const actions = [

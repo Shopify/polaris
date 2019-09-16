@@ -3,7 +3,7 @@ import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
 import {Icon} from '../../../..';
-import Cell from '../Cell';
+import {Cell} from '../Cell';
 
 describe('<Cell />', () => {
   describe('content', () => {

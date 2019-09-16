@@ -29,12 +29,6 @@ Tags should:
 
 ---
 
-## Content guidelines
-
-Tags are either automatically generated or are created by merchants. There are no specific content guidelines for creating them.
-
----
-
 ## Examples
 
 ### Default tag
@@ -47,13 +41,13 @@ Use to allow merchants to add attributes to, and remove attributes from, an obje
 
 <!-- content-for: android -->
 
-![Tag for Android](/public_images/components/Tag/android/default@2x.png)
+![Tag for Android](https://polaris.shopify.com/public_images/components/Tag/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Tag for iOS](/public_images/components/Tag/ios/default@2x.png)
+![Tag for iOS](https://polaris.shopify.com/public_images/components/Tag/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -61,8 +55,8 @@ Use to allow merchants to add attributes to, and remove attributes from, an obje
 
 ## Related components
 
-- To show the status of an object, [use the badge component](/components/images-and-icons/badge)
-- To add and remove tags, [use the text field component](/components/forms/text-field)
+- To show the status of an object, [use the badge component](https://polaris.shopify.com/components/images-and-icons/badge)
+- To add and remove tags, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
 
 ---
 

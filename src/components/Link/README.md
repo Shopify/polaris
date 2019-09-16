@@ -32,11 +32,13 @@ Links are used to embed actions or pathways to more information in a sentence.
 Links should:
 
 - Consist of text that clearly describes either the action that merchants will take or the location they’ll navigate to.
-- Only be used in a sentence. For stand-alone navigational actions, [use the button component](/components/actions/button).
+- Only be used in a sentence. For stand-alone navigational actions, [use the button component](https://polaris.shopify.com/components/actions/button).
 
 ---
 
 ## Content guidelines
+
+The link component should follow the general [content guidelines](https://polaris.shopify.com/content/actionable-language#section-links) for links.
 
 ### Links
 
@@ -92,7 +94,9 @@ Use for text links that are the same color as the surrounding text.
 </Link>
 ```
 
-Monochrome styles will be applied to links rendered within a `Banner`
+### Monochrome link in a banner
+
+Monochrome styles will be applied to links rendered within a `Banner`.
 
 ```jsx
 <Banner>
@@ -115,7 +119,7 @@ Use for text links that point to a different website. They will open in a new br
 
 ## Related components
 
-- To create navigational actions that aren’t part of a line of text, [use the button component](/components/actions/button)
+- To create navigational actions that aren’t part of a line of text, [use the button component](https://polaris.shopify.com/components/actions/button)
 
 ---
 
@@ -127,7 +131,7 @@ Use the `url` prop to give the link component a valid `href` value. This allows 
 
 ### Submitting data
 
-Merchants generally expect links to navigate, and not to submit data or take action. If you need a component that doesn’t have a URL associated with it, then use the [button component](/components/actions/button) instead.
+Merchants generally expect links to navigate, and not to submit data or take action. If you need a component that doesn’t have a URL associated with it, then use the [button component](https://polaris.shopify.com/components/actions/button) instead.
 
 ### Labeling
 
@@ -152,13 +156,27 @@ To provide consistency and clarity:
 <Link>fulfilling orders</Link>
 ```
 
-#### Don’t
+<!-- end -->
+
+<!-- usageblock -->
+
+#### Do
 
 ```jsx
+/* Somewhere in the code: */
+<Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+
+/* Elsewhere in the code: */
 <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
 ```
 
+#### Don’t
+
 ```jsx
+/* Somewhere in the code: */
+<Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+
+/* Elsewhere in the code: */
 <Link url="https://help.shopify.com/manual">order fulfillment section</Link>
 ```
 

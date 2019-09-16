@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {classNames} from '../../../../../../utilities/css';
-import {Props as AvatarProps} from '../../../../../Avatar';
-import {Props as ThumbnailProps} from '../../../../../Thumbnail';
-import DisplayText from '../../../../../DisplayText';
+import {AvatarProps} from '../../../../../Avatar';
+import {ThumbnailProps} from '../../../../../Thumbnail';
+import {DisplayText} from '../../../../../DisplayText';
 
 import styles from './Title.scss';
 
-export interface Props {
+export interface TitleProps {
   /** Page title, in large type */
-  title: string;
+  title?: string;
   /** Page subtitle, in regular type*/
   subtitle?: string;
   /** Important and non-interactive status information shown immediately after the title. (stand-alone app use only) */
@@ -19,19 +19,14 @@ export interface Props {
     | React.SFC<React.SVGProps<SVGSVGElement>>;
 }
 
-export default function Title({
-  title,
-  subtitle,
-  titleMetadata,
-  thumbnail,
-}: Props) {
-  const titleMarkup = (
+export function Title({title, subtitle, titleMetadata, thumbnail}: TitleProps) {
+  const titleMarkup = title ? (
     <div className={styles.Title}>
       <DisplayText size="large" element="h1">
         {title}
       </DisplayText>
     </div>
-  );
+  ) : null;
 
   const titleMetadataMarkup = titleMetadata ? (
     <div className={styles.TitleMetadata}>{titleMetadata}</div>

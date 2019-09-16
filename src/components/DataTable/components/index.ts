@@ -1,3 +1,3 @@
-export {default as Cell, Props as CellProps} from './Cell';
+export {Cell, CellProps} from './Cell';
 
-export {default as Navigation, Props as NavigationProps} from './Navigation';
+export {Navigation, NavigationProps} from './Navigation';

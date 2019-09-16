@@ -1,18 +1,18 @@
 import React from 'react';
-import Button from '../../../../../Button';
-import Popover from '../../../../../Popover';
-import Select from '../../../../../Select';
-import FormLayout from '../../../../../FormLayout';
-import Form from '../../../../../Form';
+import {Button} from '../../../../../Button';
+import {Popover} from '../../../../../Popover';
+import {Select} from '../../../../../Select';
+import {FormLayout} from '../../../../../FormLayout';
+import {Form} from '../../../../../Form';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../../../../../utilities/with-app-provider';
 
-import FilterValueSelector from '../FilterValueSelector';
+import {FilterValueSelector} from '../FilterValueSelector';
 import {AppliedFilter, Filter, Operator} from '../../types';
 
-export interface Props {
+export interface FilterCreatorProps {
   filters: Filter[];
   resourceName: {
     singular: string;
@@ -22,7 +22,7 @@ export interface Props {
   onAddFilter?(newFilter: AppliedFilter): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = FilterCreatorProps & WithAppProviderProps;
 
 interface State {
   popoverActive: boolean;
@@ -207,4 +207,6 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
   };
 }
 
-export default withAppProvider<Props>()(FilterCreator);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<FilterCreatorProps>()(FilterCreator);
