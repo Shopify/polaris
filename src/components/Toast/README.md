@@ -44,25 +44,20 @@ Passing an API key to the [app provider component](https://polaris.shopify.com/c
 Note that when used in an embedded application, the toast component does not support multiple, simultaneous toast messages.
 
 ```jsx
-class EmbeddedAppToastExample extends React.Component {
-  state = {
-    showToast: false,
-  };
+function EmbeddedAppToastExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const toastMarkup = this.state.showToast && (
-      <Toast
-        content="Message sent"
-        onDismiss={() => this.setState({showToast: false})}
-      />
-    );
+  const handleDismiss = useCallback(() => setActive(false), []);
 
-    return (
-      <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
-        {toastMarkup}
-      </AppProvider>
-    );
-  }
+  const toastMarkup = active && (
+    <Toast content="Message sent" onDismiss={handleDismiss} />
+  );
+
+  return (
+    <AppProvider apiKey="YOUR_API_KEY" i18n={{}} shopOrigin="YOUR_SHOP_ORIGIN">
+      {toastMarkup}
+    </AppProvider>
+  );
 }
 ```
 
@@ -166,32 +161,25 @@ Action should:
 Use to convey general confirmation or actions that aren’t critical. For example, you might show a toast message to inform the merchant that their recent action was successful.
 
 ```jsx
-class ToastExample extends React.Component {
-  state = {
-    showToast: false,
-  };
+function ToastExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const {showToast} = this.state;
-    const toastMarkup = showToast ? (
-      <Toast content="Message sent" onDismiss={this.toggleToast} />
-    ) : null;
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-    return (
-      <div style={{height: '250px'}}>
-        <Frame>
-          <Page title="Toast example">
-            <Button onClick={this.toggleToast}>Show Toast</Button>
-            {toastMarkup}
-          </Page>
-        </Frame>
-      </div>
-    );
-  }
+  const toastMarkup = active ? (
+    <Toast content="Message sent" onDismiss={toggleActive} />
+  ) : null;
 
-  toggleToast = () => {
-    this.setState(({showToast}) => ({showToast: !showToast}));
-  };
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
 }
 ```
 
@@ -202,45 +190,42 @@ class ToastExample extends React.Component {
 Use multiple toast messages to inform the merchant about distinct actions.
 
 ```jsx
-class ToastExample extends React.Component {
-  state = {
-    showToast1: false,
-    showToast2: false,
-  };
+function MultipleToastExample() {
+  const [activeOne, setActiveOne] = useState(false);
+  const [activeTwo, setActiveTwo] = useState(false);
 
-  render() {
-    const {showToast1, showToast2} = this.state;
-    const toastMarkup1 = showToast1 ? (
-      <Toast content="Message sent" onDismiss={this.toggleToast1} />
-    ) : null;
+  const toggleActiveOne = useCallback(
+    () => setActiveOne((activeOne) => !activeOne),
+    [],
+  );
 
-    const toastMarkup2 = showToast2 ? (
-      <Toast content="Image uploaded" onDismiss={this.toggleToast2} />
-    ) : null;
+  const toggleActiveTwo = useCallback(
+    () => setActiveTwo((activeTwo) => !activeTwo),
+    [],
+  );
 
-    return (
-      <div style={{height: '250px'}}>
-        <Frame>
-          <Page title="Toast example">
-            <ButtonGroup segmented>
-              <Button onClick={this.toggleToast1}>Show toast 1</Button>
-              <Button onClick={this.toggleToast2}>Show toast 2</Button>
-            </ButtonGroup>
-            {toastMarkup1}
-            {toastMarkup2}
-          </Page>
-        </Frame>
-      </div>
-    );
-  }
+  const toastMarkup1 = activeOne ? (
+    <Toast content="Message sent" onDismiss={toggleActiveOne} />
+  ) : null;
 
-  toggleToast1 = () => {
-    this.setState(({showToast1}) => ({showToast1: !showToast1}));
-  };
+  const toastMarkup2 = activeTwo ? (
+    <Toast content="Image uploaded" onDismiss={toggleActiveTwo} />
+  ) : null;
 
-  toggleToast2 = () => {
-    this.setState(({showToast2}) => ({showToast2: !showToast2}));
-  };
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <ButtonGroup segmented>
+            <Button onClick={toggleActiveOne}>Show toast 1</Button>
+            <Button onClick={toggleActiveTwo}>Show toast 2</Button>
+          </ButtonGroup>
+          {toastMarkup1}
+          {toastMarkup2}
+        </Page>
+      </Frame>
+    </div>
+  );
 }
 ```
 
@@ -251,36 +236,25 @@ class ToastExample extends React.Component {
 Use to shorten or lengthen the default duration of 5000 miliseconds.
 
 ```jsx
-class ToastExample extends React.Component {
-  state = {
-    showToast: false,
-  };
+function ToastWithCustomDurationExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const {showToast} = this.state;
-    const toastMarkup = showToast ? (
-      <Toast
-        content="Message sent"
-        onDismiss={this.toggleToast}
-        duration={4500}
-      />
-    ) : null;
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-    return (
-      <div style={{height: '250px'}}>
-        <Frame>
-          <Page title="Toast example">
-            <Button onClick={this.toggleToast}>Show Toast</Button>
-            {toastMarkup}
-          </Page>
-        </Frame>
-      </div>
-    );
-  }
+  const toastMarkup = active ? (
+    <Toast content="Message sent" onDismiss={toggleActive} duration={4500} />
+  ) : null;
 
-  toggleToast = () => {
-    this.setState(({showToast}) => ({showToast: !showToast}));
-  };
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
 }
 ```
 
@@ -291,40 +265,33 @@ class ToastExample extends React.Component {
 Use when a merchant has the ability to act on the message. For example, to undo a change or retry an action.
 
 ```jsx
-class ToastExample extends React.Component {
-  state = {
-    showToast: false,
-  };
+function ToastWithActionExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const {showToast} = this.state;
-    const toastMarkup = showToast ? (
-      <Toast
-        content="Image deleted"
-        action={{
-          content: 'Undo',
-          onAction: () => {},
-        }}
-        duration={10000}
-        onDismiss={this.toggleToast}
-      />
-    ) : null;
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-    return (
-      <div style={{height: '250px'}}>
-        <Frame>
-          <Page title="Toast example">
-            <Button onClick={this.toggleToast}>Show Toast</Button>
-            {toastMarkup}
-          </Page>
-        </Frame>
-      </div>
-    );
-  }
+  const toastMarkup = active ? (
+    <Toast
+      content="Image deleted"
+      action={{
+        content: 'Undo',
+        onAction: () => {},
+      }}
+      duration={10000}
+      onDismiss={toggleActive}
+    />
+  ) : null;
 
-  toggleToast = () => {
-    this.setState(({showToast}) => ({showToast: !showToast}));
-  };
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
 }
 ```
 
@@ -377,32 +344,25 @@ Although error toast is still available and used in the system, we discourage it
 <!-- content-for: web -->
 
 ```jsx
-class ToastExample extends React.Component {
-  state = {
-    showToast: false,
-  };
+function ErrorToastExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const {showToast} = this.state;
-    const toastMarkup = showToast ? (
-      <Toast content="Server error" error onDismiss={this.toggleToast} />
-    ) : null;
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-    return (
-      <div style={{height: '250px'}}>
-        <Frame>
-          <Page title="Toast example">
-            <Button onClick={this.toggleToast}>Show Toast</Button>
-            {toastMarkup}
-          </Page>
-        </Frame>
-      </div>
-    );
-  }
+  const toastMarkup = active ? (
+    <Toast content="Server error" error onDismiss={toggleActive} />
+  ) : null;
 
-  toggleToast = () => {
-    this.setState(({showToast}) => ({showToast: !showToast}));
-  };
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
 }
 ```
 
