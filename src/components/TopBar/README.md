@@ -146,136 +146,119 @@ A text field component that is tailor-made for a search use-case.
 Use to provide structure for the top of an application. Style the top bar component using the app provider component with a theme. Providing just the `background` key for the top bar component theme will result in intelligent defaults being set for complementary colors with contrasting text.
 
 ```jsx
-class TopBarExample extends React.Component {
-  state = {
-    userMenuOpen: false,
-    searchActive: false,
-    searchText: '',
+function TopBarExample() {
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [isSearchActive, setIsSearchActive] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+
+  const toggleIsUserMenuOpen = useCallback(
+    () => setIsUserMenuOpen((isUserMenuOpen) => !isUserMenuOpen),
+    [],
+  );
+
+  const handleSearchResultsDismiss = useCallback(() => {
+    setIsSearchActive(false);
+    setSearchValue('');
+  }, []);
+
+  const handleSearchChange = useCallback((value) => {
+    setSearchValue(value);
+    setIsSearchActive(value.length > 0);
+  }, []);
+
+  const handleNavigationToggle = useCallback(() => {
+    console.log('toggle navigation visibility');
+  }, []);
+
+  const theme = {
+    colors: {
+      topBar: {
+        background: '#357997',
+      },
+    },
+    logo: {
+      width: 124,
+      topBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      url: 'http://jadedpixel.com',
+      accessibilityLabel: 'Jaded Pixel',
+    },
   };
 
-  render() {
-    const {
-      state,
-      handleSearchChange,
-      handleSearchResultsDismiss,
-      toggleUserMenu,
-    } = this;
-    const {userMenuOpen, searchText, searchActive} = state;
-
-    const theme = {
-      colors: {
-        topBar: {
-          background: '#357997',
+  const userMenuMarkup = (
+    <TopBar.UserMenu
+      actions={[
+        {
+          items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
         },
-      },
-      logo: {
-        width: 124,
-        topBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-        url: 'http://jadedpixel.com',
-        accessibilityLabel: 'Jaded Pixel',
-      },
-    };
+        {
+          items: [{content: 'Community forums'}],
+        },
+      ]}
+      name="Dharma"
+      detail="Jaded Pixel"
+      initials="D"
+      open={isUserMenuOpen}
+      onToggle={toggleIsUserMenuOpen}
+    />
+  );
 
-    const userMenuMarkup = (
-      <TopBar.UserMenu
-        actions={[
-          {
-            items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
-          },
-          {
-            items: [{content: 'Community forums'}],
-          },
+  const searchResultsMarkup = (
+    <Card>
+      <ActionList
+        items={[
+          {content: 'Shopify help center'},
+          {content: 'Community forums'},
         ]}
-        name="Dharma"
-        detail="Jaded Pixel"
-        initials="D"
-        open={userMenuOpen}
-        onToggle={toggleUserMenu}
       />
-    );
+    </Card>
+  );
 
-    const searchResultsMarkup = (
-      <Card>
-        <ActionList
-          items={[
-            {content: 'Shopify help center'},
-            {content: 'Community forums'},
-          ]}
-        />
-      </Card>
-    );
+  const searchFieldMarkup = (
+    <TopBar.SearchField
+      onChange={handleSearchChange}
+      value={searchValue}
+      placeholder="Search"
+    />
+  );
 
-    const searchFieldMarkup = (
-      <TopBar.SearchField
-        onChange={handleSearchChange}
-        value={searchText}
-        placeholder="Search"
-      />
-    );
+  const topBarMarkup = (
+    <TopBar
+      showNavigationToggle
+      userMenu={userMenuMarkup}
+      searchResultsVisible={isSearchActive}
+      searchField={searchFieldMarkup}
+      searchResults={searchResultsMarkup}
+      onSearchResultsDismiss={handleSearchResultsDismiss}
+      onNavigationToggle={handleNavigationToggle}
+    />
+  );
 
-    const topBarMarkup = (
-      <TopBar
-        showNavigationToggle={true}
-        userMenu={userMenuMarkup}
-        searchResultsVisible={searchActive}
-        searchField={searchFieldMarkup}
-        searchResults={searchResultsMarkup}
-        onSearchResultsDismiss={handleSearchResultsDismiss}
-        onNavigationToggle={() => {
-          console.log('toggle navigation visibility');
-        }}
-      />
-    );
-
-    return (
-      <div style={{height: '250px'}}>
-        <AppProvider
-          theme={theme}
-          i18n={{
-            Polaris: {
-              Avatar: {
-                label: 'Avatar',
-                labelWithInitials: 'Avatar with initials {initials}',
-              },
-              Frame: {skipToContent: 'Skip to content'},
-              TopBar: {
-                toggleMenuLabel: 'Toggle menu',
-                SearchField: {
-                  clearButtonLabel: 'Clear',
-                  search: 'Search',
-                },
+  return (
+    <div style={{height: '250px'}}>
+      <AppProvider
+        theme={theme}
+        i18n={{
+          Polaris: {
+            Avatar: {
+              label: 'Avatar',
+              labelWithInitials: 'Avatar with initials {initials}',
+            },
+            Frame: {skipToContent: 'Skip to content'},
+            TopBar: {
+              toggleMenuLabel: 'Toggle menu',
+              SearchField: {
+                clearButtonLabel: 'Clear',
+                search: 'Search',
               },
             },
-          }}
-        >
-          <Frame topBar={topBarMarkup} />
-        </AppProvider>
-      </div>
-    );
-  }
-
-  toggleUserMenu = () => {
-    this.setState(({userMenuOpen}) => ({userMenuOpen: !userMenuOpen}));
-  };
-
-  handleSearchResultsDismiss = () => {
-    this.setState(() => {
-      return {
-        searchActive: false,
-        searchText: '',
-      };
-    });
-  };
-
-  handleSearchChange = (value) => {
-    this.setState({searchText: value});
-    if (value.length > 0) {
-      this.setState({searchActive: true});
-    } else {
-      this.setState({searchActive: false});
-    }
-  };
+          },
+        }}
+      >
+        <Frame topBar={topBarMarkup} />
+      </AppProvider>
+    </div>
+  );
 }
 ```
 
@@ -284,138 +267,121 @@ class TopBarExample extends React.Component {
 Provide specific keys and corresponding colors to the top bar theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
 
 ```jsx
-class TopBarExample extends React.Component {
-  state = {
-    userMenuOpen: false,
-    searchActive: false,
-    searchText: '',
+function TopBarExample() {
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [isSearchActive, setIsSearchActive] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+
+  const toggleIsUserMenuOpen = useCallback(
+    () => setIsUserMenuOpen((isUserMenuOpen) => !isUserMenuOpen),
+    [],
+  );
+
+  const handleSearchResultsDismiss = useCallback(() => {
+    setIsSearchActive(false);
+    setSearchValue('');
+  }, []);
+
+  const handleSearchChange = useCallback((value) => {
+    setSearchValue(value);
+    setIsSearchActive(value.length > 0);
+  }, []);
+
+  const handleNavigationToggle = useCallback(() => {
+    console.log('toggle navigation visibility');
+  }, []);
+
+  const theme = {
+    colors: {
+      topBar: {
+        background: '#357997',
+        backgroundLighter: '#6192a9',
+        color: '#FFFFFF',
+      },
+    },
+    logo: {
+      width: 124,
+      topBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      url: 'http://jadedpixel.com',
+      accessibilityLabel: 'Jaded Pixel',
+    },
   };
 
-  render() {
-    const {
-      state,
-      handleSearchChange,
-      handleSearchResultsDismiss,
-      toggleUserMenu,
-    } = this;
-    const {userMenuOpen, searchText, searchActive} = state;
-
-    const theme = {
-      colors: {
-        topBar: {
-          background: '#357997',
-          backgroundLighter: '#6192a9',
-          color: '#FFFFFF',
+  const userMenuMarkup = (
+    <TopBar.UserMenu
+      actions={[
+        {
+          items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
         },
-      },
-      logo: {
-        width: 124,
-        topBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-        url: 'http://jadedpixel.com',
-        accessibilityLabel: 'Jaded Pixel',
-      },
-    };
+        {
+          items: [{content: 'Community forums'}],
+        },
+      ]}
+      name="Dharma"
+      detail="Jaded Pixel"
+      initials="D"
+      open={isUserMenuOpen}
+      onToggle={toggleIsUserMenuOpen}
+    />
+  );
 
-    const userMenuMarkup = (
-      <TopBar.UserMenu
-        actions={[
-          {
-            items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
-          },
-          {
-            items: [{content: 'Community forums'}],
-          },
+  const searchResultsMarkup = (
+    <Card>
+      <ActionList
+        items={[
+          {content: 'Shopify help center'},
+          {content: 'Community forums'},
         ]}
-        name="Dharma"
-        detail="Jaded Pixel"
-        initials="D"
-        open={userMenuOpen}
-        onToggle={toggleUserMenu}
       />
-    );
+    </Card>
+  );
 
-    const searchResultsMarkup = (
-      <Card>
-        <ActionList
-          items={[
-            {content: 'Shopify help center'},
-            {content: 'Community forums'},
-          ]}
-        />
-      </Card>
-    );
+  const searchFieldMarkup = (
+    <TopBar.SearchField
+      onChange={handleSearchChange}
+      value={searchValue}
+      placeholder="Search"
+    />
+  );
 
-    const searchFieldMarkup = (
-      <TopBar.SearchField
-        onChange={handleSearchChange}
-        value={searchText}
-        placeholder="Search"
-      />
-    );
+  const topBarMarkup = (
+    <TopBar
+      showNavigationToggle
+      userMenu={userMenuMarkup}
+      searchResultsVisible={isSearchActive}
+      searchField={searchFieldMarkup}
+      searchResults={searchResultsMarkup}
+      onSearchResultsDismiss={handleSearchResultsDismiss}
+      onNavigationToggle={handleNavigationToggle}
+    />
+  );
 
-    const topBarMarkup = (
-      <TopBar
-        showNavigationToggle={true}
-        userMenu={userMenuMarkup}
-        searchResultsVisible={searchActive}
-        searchField={searchFieldMarkup}
-        searchResults={searchResultsMarkup}
-        onSearchResultsDismiss={handleSearchResultsDismiss}
-        onNavigationToggle={() => {
-          console.log('toggle navigation visibility');
-        }}
-      />
-    );
-
-    return (
-      <div style={{height: '250px'}}>
-        <AppProvider
-          theme={theme}
-          i18n={{
-            Polaris: {
-              Frame: {skipToContent: 'Skip to content'},
-              Avatar: {
-                label: 'Avatar',
-                labelWithInitials: 'Avatar with initials {initials}',
-              },
-              TopBar: {
-                toggleMenuLabel: 'Toggle menu',
-                SearchField: {
-                  clearButtonLabel: 'Clear',
-                  search: 'Search',
-                },
+  return (
+    <div style={{height: '250px'}}>
+      <AppProvider
+        theme={theme}
+        i18n={{
+          Polaris: {
+            Avatar: {
+              label: 'Avatar',
+              labelWithInitials: 'Avatar with initials {initials}',
+            },
+            Frame: {skipToContent: 'Skip to content'},
+            TopBar: {
+              toggleMenuLabel: 'Toggle menu',
+              SearchField: {
+                clearButtonLabel: 'Clear',
+                search: 'Search',
               },
             },
-          }}
-        >
-          <Frame topBar={topBarMarkup} />
-        </AppProvider>
-      </div>
-    );
-  }
-
-  toggleUserMenu = () => {
-    this.setState(({userMenuOpen}) => ({userMenuOpen: !userMenuOpen}));
-  };
-
-  handleSearchResultsDismiss = () => {
-    this.setState(() => {
-      return {
-        searchActive: false,
-        searchText: '',
-      };
-    });
-  };
-
-  handleSearchChange = (value) => {
-    this.setState({searchText: value});
-    if (value.length > 0) {
-      this.setState({searchActive: true});
-    } else {
-      this.setState({searchActive: false});
-    }
-  };
+          },
+        }}
+      >
+        <Frame topBar={topBarMarkup} />
+      </AppProvider>
+    </div>
+  );
 }
 ```
 
