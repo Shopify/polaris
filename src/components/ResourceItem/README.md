@@ -37,52 +37,44 @@ Resource items represent specific objects within a collection, such as products 
 A basic resource item with its details filled in at the point of use.
 
 ```jsx
-class ResourceListExample extends React.Component {
-  state = {
-    selectedItems: [],
-  };
+function ResourceItemExample() {
+  const [selectedItems, setSelectedItems] = useState([]);
 
-  render() {
-    return (
-      <Card>
-        <ResourceList
-          resourceName={{singular: 'blog post', plural: 'blog posts'}}
-          items={[
-            {
-              id: 6,
-              url: 'posts/6',
-              title: 'How To Get Value From Wireframes',
-              author: 'Jonathan Mangrove',
-            },
-          ]}
-          selectedItems={this.state.selectedItems}
-          onSelectionChange={this.handleSelectionChange}
-          selectable
-          renderItem={(item) => {
-            const {id, url, title, author} = item;
-            const authorMarkup = author ? <div>by {author}</div> : null;
-            return (
-              <ResourceItem
-                id={id}
-                url={url}
-                accessibilityLabel={`View details for ${title}`}
-                name={title}
-              >
-                <h3>
-                  <TextStyle variation="strong">{title}</TextStyle>
-                </h3>
-                {authorMarkup}
-              </ResourceItem>
-            );
-          }}
-        />
-      </Card>
-    );
-  }
-
-  handleSelectionChange = (selectedItems) => {
-    this.setState({selectedItems});
-  };
+  return (
+    <Card>
+      <ResourceList
+        resourceName={{singular: 'blog post', plural: 'blog posts'}}
+        items={[
+          {
+            id: 6,
+            url: 'posts/6',
+            title: 'How To Get Value From Wireframes',
+            author: 'Jonathan Mangrove',
+          },
+        ]}
+        selectedItems={selectedItems}
+        onSelectionChange={setSelectedItems}
+        selectable
+        renderItem={(item) => {
+          const {id, url, title, author} = item;
+          const authorMarkup = author ? <div>by {author}</div> : null;
+          return (
+            <ResourceItem
+              id={id}
+              url={url}
+              accessibilityLabel={`View details for ${title}`}
+              name={title}
+            >
+              <h3>
+                <TextStyle variation="strong">{title}</TextStyle>
+              </h3>
+              {authorMarkup}
+            </ResourceItem>
+          );
+        }}
+      />
+    </Card>
+  );
 }
 ```
 
