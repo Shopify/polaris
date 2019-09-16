@@ -41,7 +41,7 @@ The HTML for buttons and links carries specific meaning. Using these components 
 - a more cohesive visual experience for sighted users
 - products that are easier to maintain at scale
 
-### Unstyled link
+### Unstyled links
 
 If the existing styled links won't work for your project, then use an `UnstyledLink` to create a custom link style.
 
