@@ -55,7 +55,7 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, State> {
 
     return (
       <ThemeContext.Provider value={theme}>
-        <div style={styles}>{React.Children.only(children)}</div>
+        <div style={styles}>{children}</div>
       </ThemeContext.Provider>
     );
   }

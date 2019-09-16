@@ -150,7 +150,8 @@
       "ariaLivePlural": "{itemsLength} artículos",
       "Item": {
         "actionsDropdownLabel": "Acciones para {accessibilityLabel}",
-        "actionsDropdown": "Menú desplegable de acciones"
+        "actionsDropdown": "Menú desplegable de acciones",
+        "viewItem": "Ver detalles de {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Acciones",

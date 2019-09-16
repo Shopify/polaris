@@ -2,7 +2,8 @@
 
 $dropzone-padding: rem(15px);
 $dropzone-border-style: dashed;
-$dropzone-border-color: color('sky');
+$dropzone-border-color: color('ink', 'lightest');
+$dropzone-border-color-disabled: color('sky');
 $dropzone-border-radius: border-radius();
 $dropzone-background: color('white');
 $dropzone-min-height-extra-large: rem(205px);
@@ -90,6 +91,10 @@ $dropzone-stacking-order: (
 
 .isDisabled {
   cursor: not-allowed;
+
+  &::after {
+    border-color: $dropzone-border-color-disabled;
+  }
 }
 
 .sizeExtraLarge {

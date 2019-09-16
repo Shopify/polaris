@@ -15,7 +15,7 @@ keywords:
 
 # Action list
 
-Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](/components/overlays/popover) to create a dropdown menu or to let merchants select from a list of options.
+Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/overlays/popover) to create a dropdown menu or to let merchants select from a list of options.
 
 ---
 
@@ -324,8 +324,8 @@ class ActionListExample extends React.Component {
 
 ## Related components
 
-- To combine more than one button in a single layout, [use the button group component](/components/actions/button-group)
-- To display a list of related content, [use the list component](/components/lists-and-tables/list)
+- To combine more than one button in a single layout, [use the button group component](https://polaris.shopify.com/components/actions/button-group)
+- To display a list of related content, [use the list component](https://polaris.shopify.com/components/lists-and-tables/list)
 
 ---
 
@@ -351,7 +351,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-Items in an action list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users. Each item is implemented as a [button](/components/actions/button).
+Items in an action list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users. Each item is implemented as a [button](https://polaris.shopify.com/components/actions/button).
 
 ### Keyboard support
 

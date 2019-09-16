@@ -27,8 +27,6 @@ Links take users to another place, and appear either within or directly followin
 
 For actions that don't appear with a sentence, use the [button component](/components/actions/button).
 
----
-
 ## Best practices
 
 ### Buttons versus links
@@ -77,7 +75,9 @@ Use for text links that are the same color as the surrounding text.
 </Link>
 ```
 
-Monochrome styles will be applied to links rendered within a `Banner`
+### Monochrome link in a banner
+
+Monochrome styles will be applied to links rendered within a `Banner`.
 
 ```jsx
 <Banner>
@@ -112,7 +112,7 @@ Use the `url` prop to give the link component a valid `href` value. This allows 
 
 ### Submitting data
 
-Merchants generally expect links to navigate, and not to submit data or take action. If you need a component that doesn’t have a URL associated with it, then use the [button component](/components/actions/button) instead.
+Merchants generally expect links to navigate, and not to submit data or take action. If you need a component that doesn’t have a URL associated with it, then use the [button component](https://polaris.shopify.com/components/actions/button) instead.
 
 ### Labeling
 
@@ -137,13 +137,27 @@ To provide consistency and clarity:
 <Link>fulfilling orders</Link>
 ```
 
-#### Don’t
+<!-- end -->
+
+<!-- usageblock -->
+
+#### Do
 
 ```jsx
+/* Somewhere in the code: */
+<Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+
+/* Elsewhere in the code: */
 <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
 ```
 
+#### Don’t
+
 ```jsx
+/* Somewhere in the code: */
+<Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+
+/* Elsewhere in the code: */
 <Link url="https://help.shopify.com/manual">order fulfillment section</Link>
 ```
 

@@ -150,7 +150,8 @@
       "ariaLivePlural": "{itemsLength} आइटम",
       "Item": {
         "actionsDropdownLabel": "{accessibilityLabel} के लिए कार्रवाई",
-        "actionsDropdown": "कार्रवाई ड्रॉपडाउन"
+        "actionsDropdown": "कार्रवाई ड्रॉपडाउन",
+        "viewItem": "{itemName} के लिए विवरण देखें"
       },
       "BulkActions": {
         "actionsActivatorLabel": "कार्रवाई",

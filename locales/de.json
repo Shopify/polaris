@@ -150,7 +150,8 @@
       "ariaLivePlural": "{itemsLength} Produkte",
       "Item": {
         "actionsDropdownLabel": "Aktionen für {accessibilityLabel}",
-        "actionsDropdown": "Dropdown-Liste mit Aktionen"
+        "actionsDropdown": "Dropdown-Liste mit Aktionen",
+        "viewItem": "Details anzeigen für {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Aktionen",

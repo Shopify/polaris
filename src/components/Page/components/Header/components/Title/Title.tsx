@@ -8,7 +8,7 @@ import styles from './Title.scss';
 
 export interface TitleProps {
   /** Page title, in large type */
-  title: string;
+  title?: string;
   /** Page subtitle, in regular type*/
   subtitle?: string;
   /** Important and non-interactive status information shown immediately after the title. (stand-alone app use only) */
@@ -20,13 +20,13 @@ export interface TitleProps {
 }
 
 export function Title({title, subtitle, titleMetadata, thumbnail}: TitleProps) {
-  const titleMarkup = (
+  const titleMarkup = title ? (
     <div className={styles.Title}>
       <DisplayText size="large" element="h1">
         {title}
       </DisplayText>
     </div>
-  );
+  ) : null;
 
   const titleMetadataMarkup = titleMetadata ? (
     <div className={styles.TitleMetadata}>{titleMetadata}</div>

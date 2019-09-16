@@ -30,19 +30,18 @@ The keyboard key component should:
 
 ### Heading
 
-Headings above the keyboard key should be:
+Headings above the keyboard key should:
 
-- Informative and descriptive
-  - They should label the type of keyboard shortcuts being presented
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep headings to single sentence and avoid using punctuation such as periods, commas, or semicolons
-  - Avoid articles (the, a, an) to keep content short and actionable
-  - Be written in sentence case (first word capitalized, the rest is lowercase)
+- Label the type of keyboard shortcuts being presented
+- Follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings)
 
 ### Shortcut description
 
-The shortcut description should describe what action will be taken if merchants tap certain keys. When a hotkey combination takes merchants to a location in the interface, the format should be:
+The shortcut description should describe what action is taken when merchants tap certain keys. When a hotkey combination takes merchants to a location in the interface, the format should be:
+
+| Properties | Type   | Description                           |
+| ---------- | ------ | ------------------------------------- |
+| children   | string | The content to display inside the key |
 
 ---
 
@@ -60,7 +59,7 @@ Use to list a related set of keyboard shortcuts.
 
 ## Related components
 
-- To add a tooltip for a button with an associated keyboard shortcut, [use the tooltip component](/components/tooltip)
+- To add a tooltip for a button with an associated keyboard shortcut, [use the tooltip component](https://polaris.shopify.com/components/tooltip)
 
 ---
 

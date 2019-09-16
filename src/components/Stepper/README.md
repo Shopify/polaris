@@ -69,13 +69,13 @@ The stepper has two buttons, a minus and a plus button. It’s possible to tap i
 
 <!-- content-for: android -->
 
-![Default stepper with enabled decrease and increase button](/public_images/components/Stepper/android/default@2x.png)
+![Default stepper with enabled decrease and increase button](https://polaris.shopify.com/public_images/components/Stepper/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default stepper with enabled decrease and increase button](/public_images/components/Stepper/ios/default@2x.png)
+![Default stepper with enabled decrease and increase button](https://polaris.shopify.com/public_images/components/Stepper/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -87,13 +87,13 @@ If you reach the bottom or top value, the appropriate button becomes disabled.
 
 <!-- content-for: android -->
 
-![Disabled stepper](/public_images/components/Stepper/android/disabled@2x.png)
+![Disabled stepper](https://polaris.shopify.com/public_images/components/Stepper/android/disabled@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Disabled stepper](/public_images/components/Stepper/ios/disabled@2x.png)
+![Disabled stepper](https://polaris.shopify.com/public_images/components/Stepper/ios/disabled@2x.png)
 
 <!-- /content-for -->
 
@@ -101,5 +101,5 @@ If you reach the bottom or top value, the appropriate button becomes disabled.
 
 ## Related components
 
-- If values need to change dramatically, use [text field with number field](/components/forms/text-field)
-- If values shouldn’t change or won’t be changing, use [disabled text field](/components/forms/text-field)
+- If values need to change dramatically, use [text field with number field](https://polaris.shopify.com/components/forms/text-field)
+- If values shouldn’t change or won’t be changing, use [disabled text field](https://polaris.shopify.com/components/forms/text-field)

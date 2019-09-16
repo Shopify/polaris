@@ -78,13 +78,13 @@ Used most in the interface. Only use another style if a button requires more or 
 
 <!-- content-for: android -->
 
-![Basic button for Android](/public_images/components/Button/android/basic@2x.png)
+![Basic button for Android](https://polaris.shopify.com/public_images/components/Button/android/basic@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Basic button for iOS](/public_images/components/Button/ios/basic@2x.png)
+![Basic button for iOS](https://polaris.shopify.com/public_images/components/Button/ios/basic@2x.png)
 
 <!-- /content-for -->
 
@@ -122,13 +122,13 @@ Use for less important or less commonly used actions since they’re less promin
 
 <!-- content-for: android -->
 
-![Plain button for Android](/public_images/components/Button/android/plain@2x.png)
+![Plain button for Android](https://polaris.shopify.com/public_images/components/Button/android/plain@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Plain button for iOS](/public_images/components/Button/ios/plain@2x.png)
+![Plain button for iOS](https://polaris.shopify.com/public_images/components/Button/ios/plain@2x.png)
 
 <!-- /content-for -->
 
@@ -161,13 +161,13 @@ Use for actions that will delete merchant data or be otherwise difficult to reco
 
 <!-- content-for: android -->
 
-![Destructive plain button for Android](/public_images/components/Button/android/plain-destructive@2x.png)
+![Destructive plain button for Android](https://polaris.shopify.com/public_images/components/Button/android/plain-destructive@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Destructive plain button for iOS](/public_images/components/Button/ios/plain-destructive@2x.png)
+![Destructive plain button for iOS](https://polaris.shopify.com/public_images/components/Button/ios/plain-destructive@2x.png)
 
 <!-- /content-for -->
 
@@ -181,13 +181,13 @@ Use to highlight the most important actions in any experience. Don’t use more 
 
 <!-- content-for: android -->
 
-![Primary button for Android](/public_images/components/Button/android/primary@2x.png)
+![Primary button for Android](https://polaris.shopify.com/public_images/components/Button/android/primary@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Primary button for iOS](/public_images/components/Button/ios/primary@2x.png)
+![Primary button for iOS](https://polaris.shopify.com/public_images/components/Button/ios/primary@2x.png)
 
 <!-- /content-for -->
 
@@ -201,13 +201,13 @@ Use when the action will delete merchant data or be otherwise difficult to recov
 
 <!-- content-for: android -->
 
-![Destructive basic button for Android](/public_images/components/Button/android/basic-destructive@2x.png)
+![Destructive basic button for Android](https://polaris.shopify.com/public_images/components/Button/android/basic-destructive@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Destructive basic button for iOS](/public_images/components/Button/ios/basic-destructive@2x.png)
+![Destructive basic button for iOS](https://polaris.shopify.com/public_images/components/Button/ios/basic-destructive@2x.png)
 
 <!-- /content-for -->
 
@@ -265,13 +265,13 @@ Use for actions that aren’t currently available. The surrounding interface sho
 
 <!-- content-for: android -->
 
-![Disabled primary button for Android](/public_images/components/Button/android/disabled@2x.png)
+![Disabled primary button for Android](https://polaris.shopify.com/public_images/components/Button/android/disabled@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Disabled primary button for iOS](/public_images/components/Button/ios/disabled@2x.png)
+![Disabled primary button for iOS](https://polaris.shopify.com/public_images/components/Button/ios/disabled@2x.png)
 
 <!-- /content-for -->
 
@@ -327,7 +327,7 @@ Buttons can have different states that are visually and programmatically conveye
 
 Merchants generally expect buttons to submit data or take action, and for links to navigate. If navigation is required for the button component, use the `url` prop. The control will output an anchor styled as a button, instead of a button in HTML, to help convey this difference.
 
-For more information on making accessible links, see the [link component](/components/navigation/link).
+For more information on making accessible links, see the [link component](https://polaris.shopify.com/components/navigation/link).
 
 ### Labeling
 
@@ -375,7 +375,7 @@ When you use the button component to create a link to an external resource:
 - Use the `icon` prop to add the `external` icon to the button
 - Use the `accessibilityLabel` prop to include the warning about opening a new tab in the button text for non-visual screen reader users
 
-For more information on making accessible links, see the [link component](/components/navigation/link).
+For more information on making accessible links, see the [link component](https://polaris.shopify.com/components/navigation/link).
 
 <!-- usageblock -->
 

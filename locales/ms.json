@@ -150,7 +150,8 @@
       "ariaLivePlural": "{itemsLength} item",
       "Item": {
         "actionsDropdownLabel": "Tindakan untuk {accessibilityLabel}",
-        "actionsDropdown": "Juntai bawah tindakan"
+        "actionsDropdown": "Juntai bawah tindakan",
+        "viewItem": "Lihat butiran untuk {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Tindakan",

@@ -88,13 +88,13 @@ Use to give a non-critical status update on a piece of information or action.
 
 <!-- content-for: android -->
 
-![Default badge with gray background](/public_images/components/Badge/android/default@2x.png)
+![Default badge with gray background](https://polaris.shopify.com/public_images/components/Badge/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default badge with gray background](/public_images/components/Badge/ios/default@2x.png)
+![Default badge with gray background](https://polaris.shopify.com/public_images/components/Badge/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -108,13 +108,13 @@ Use to call out an object or action as having an important attribute. For exampl
 
 <!-- content-for: android -->
 
-![Informational badge with blue background](/public_images/components/Badge/android/informational@2x.png)
+![Informational badge with blue background](https://polaris.shopify.com/public_images/components/Badge/android/informational@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Informational badge with blue background](/public_images/components/Badge/ios/informational@2x.png)
+![Informational badge with blue background](https://polaris.shopify.com/public_images/components/Badge/ios/informational@2x.png)
 
 <!-- /content-for -->
 
@@ -128,13 +128,13 @@ Use to indicate a successful, completed, or desirable state when it’s importan
 
 <!-- content-for: android -->
 
-![Success badge with green background](/public_images/components/Badge/android/success@2x.png)
+![Success badge with green background](https://polaris.shopify.com/public_images/components/Badge/android/success@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Success badge with green background](/public_images/components/Badge/ios/success@2x.png)
+![Success badge with green background](https://polaris.shopify.com/public_images/components/Badge/ios/success@2x.png)
 
 <!-- /content-for -->
 
@@ -148,13 +148,13 @@ Use when something requires merchants’ attention but the issue isn’t critica
 
 <!-- content-for: android -->
 
-![Attention badge with yellow background](/public_images/components/Badge/android/attention@2x.png)
+![Attention badge with yellow background](https://polaris.shopify.com/public_images/components/Badge/android/attention@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Attention badge with yellow background](/public_images/components/Badge/ios/attention@2x.png)
+![Attention badge with yellow background](https://polaris.shopify.com/public_images/components/Badge/ios/attention@2x.png)
 
 <!-- /content-for -->
 
@@ -170,13 +170,13 @@ Keep in mind that seeing this badge can feel stressful for merchants so it shoul
 
 <!-- content-for: android -->
 
-![Warning badge with orange background](/public_images/components/Badge/android/warning@2x.png)
+![Warning badge with orange background](https://polaris.shopify.com/public_images/components/Badge/android/warning@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Warning badge with orange background](/public_images/components/Badge/ios/warning@2x.png)
+![Warning badge with orange background](https://polaris.shopify.com/public_images/components/Badge/ios/warning@2x.png)
 
 <!-- /content-for -->
 
@@ -190,13 +190,13 @@ Keep in mind that seeing this badge can feel stressful for merchants so it shoul
 
 <!-- content-for: android -->
 
-![Critical badge with red background](/public_images/components/Badge/android/critical@2x.png)
+![Critical badge with red background](https://polaris.shopify.com/public_images/components/Badge/android/critical@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Critical badge with red background](/public_images/components/Badge/ios/critical@2x.png)
+![Critical badge with red background](https://polaris.shopify.com/public_images/components/Badge/ios/critical@2x.png)
 
 <!-- /content-for -->
 
@@ -210,13 +210,13 @@ Use to indicate when a given task has not yet been completed. For example, when 
 
 <!-- content-for: android -->
 
-![Incomplete badge. Default badge with incomplete status](/public_images/components/Badge/android/incomplete@2x.png)
+![Incomplete badge. Default badge with incomplete status](https://polaris.shopify.com/public_images/components/Badge/android/incomplete@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Incomplete badge. Default badge with incomplete status](/public_images/components/Badge/ios/incomplete@2x.png)
+![Incomplete badge. Default badge with incomplete status](https://polaris.shopify.com/public_images/components/Badge/ios/incomplete@2x.png)
 
 <!-- /content-for -->
 
@@ -230,13 +230,13 @@ Use to indicate when a given task has been partially completed. For example, whe
 
 <!-- content-for: android -->
 
-![Partially complete badge. Default badge with partially complete status](/public_images/components/Badge/android/partially-complete@2x.png)
+![Partially complete badge. Default badge with partially complete status](https://polaris.shopify.com/public_images/components/Badge/android/partially-complete@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Partially complete badge. Default badge with partially complete status](/public_images/components/Badge/ios/partially-complete@2x.png)
+![Partially complete badge. Default badge with partially complete status](https://polaris.shopify.com/public_images/components/Badge/ios/partially-complete@2x.png)
 
 <!-- /content-for -->
 
@@ -250,13 +250,13 @@ Use to indicate when a given task has been completed. For example, when merchant
 
 <!-- content-for: android -->
 
-![Complete badge. Default badge with complete status](/public_images/components/Badge/android/complete@2x.png)
+![Complete badge. Default badge with complete status](https://polaris.shopify.com/public_images/components/Badge/android/complete@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Complete badge. Default badge with complete status](/public_images/components/Badge/ios/complete@2x.png)
+![Complete badge. Default badge with complete status](https://polaris.shopify.com/public_images/components/Badge/ios/complete@2x.png)
 
 <!-- /content-for -->
 
@@ -264,7 +264,7 @@ Use to indicate when a given task has been completed. For example, when merchant
 
 ## Related components
 
-- To represent an interactive list of categories provided by merchants, [use tags](/components/forms/tag)
+- To represent an interactive list of categories provided by merchants, [use tags](https://polaris.shopify.com/components/forms/tag)
 
 ---
 
@@ -290,6 +290,6 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-Badges that convey information with icons or color include text provided by the [visually hidden component](/components/titles-and-text/visually-hidden#navigation). This text is read out by assistive technologies like screen readers so that merchants with vision issues can access the meaning of the badge in context.
+Badges that convey information with icons or color include text provided by the [visually hidden component](https://polaris.shopify.com/components/titles-and-text/visually-hidden#navigation). This text is read out by assistive technologies like screen readers so that merchants with vision issues can access the meaning of the badge in context.
 
 <!-- /content-for -->

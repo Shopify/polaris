@@ -31,7 +31,16 @@ export interface CardProps {
   secondaryFooterActionsDisclosureText?: string;
 }
 
-export function Card({
+// TypeScript can't generate types that correctly infer the typing of
+// subcomponents so explicitly state the subcomponents in the type definition.
+// Letting this be implicit works in this project but fails in projects that use
+// generated *.d.ts files.
+
+export const Card: React.FunctionComponent<CardProps> & {
+  Header: typeof Header;
+  Section: typeof Section;
+  Subsection: typeof Subsection;
+} = function Card({
   children,
   title,
   subdued,
@@ -102,8 +111,8 @@ export function Card({
       </div>
     </WithinContentContext.Provider>
   );
-}
+};
 
-Card.Section = Section;
 Card.Header = Header;
+Card.Section = Section;
 Card.Subsection = Subsection;

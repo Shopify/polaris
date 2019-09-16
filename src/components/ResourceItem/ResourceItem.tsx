@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
 import {classNames} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
 import {DisableableAction} from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
@@ -12,10 +13,6 @@ import {ThumbnailProps} from '../Thumbnail';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
 import {Button, buttonsFrom} from '../Button';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
 
 import {
   ResourceListContext,
@@ -30,11 +27,7 @@ export type MediaSize = 'small' | 'medium' | 'large';
 
 export type MediaType = 'avatar' | 'thumbnail';
 
-interface WithContextTypes<IJ> {
-  context: IJ;
-}
-
-export interface Props {
+export interface BaseProps {
   /** Visually hidden text for screen readers used for item link*/
   accessibilityLabel?: string;
   /** Individual item name used by various text labels */
@@ -61,17 +54,22 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export interface PropsWithUrl extends Props {
+export interface PropsWithUrl extends BaseProps {
   url: string;
   onClick?(id?: string): void;
 }
 
-export interface PropsWithClick extends Props {
+export interface PropsWithClick extends BaseProps {
   url?: string;
   onClick(id?: string): void;
 }
 
 export type ResourceItemProps = PropsWithUrl | PropsWithClick;
+
+interface PropsFromWrapper {
+  context: React.ContextType<typeof ResourceListContext>;
+  i18n: ReturnType<typeof useI18n>;
+}
 
 interface State {
   actionsMenuVisible: boolean;
@@ -80,13 +78,7 @@ interface State {
   selected: boolean;
 }
 
-export type CombinedProps =
-  | PropsWithUrl &
-      WithAppProviderProps &
-      WithContextTypes<React.ContextType<typeof ResourceListContext>>
-  | PropsWithClick &
-      WithAppProviderProps &
-      WithContextTypes<React.ContextType<typeof ResourceListContext>>;
+export type CombinedProps = PropsFromWrapper & (PropsWithUrl | PropsWithClick);
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 const getUniqueOverlayID = createUniqueIDFactory('ResourceListItemOverlay');
@@ -143,10 +135,10 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       ariaControls,
       ariaExpanded,
       persistActions = false,
-      polaris: {intl},
       accessibilityLabel,
       name,
-      context: {selectable, selectMode, loading},
+      context: {selectable, selectMode, loading, resourceName},
+      i18n,
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -162,7 +154,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
 
     if (selectable) {
       const checkboxAccessibilityLabel =
-        name || accessibilityLabel || intl.translate('Polaris.Common.checkbox');
+        name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
 
       handleMarkup = (
         <div
@@ -221,10 +213,10 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
         );
 
         const disclosureAccessibilityLabel = name
-          ? intl.translate('Polaris.ResourceList.Item.actionsDropdownLabel', {
+          ? i18n.translate('Polaris.ResourceList.Item.actionsDropdownLabel', {
               accessibilityLabel: name,
             })
-          : intl.translate('Polaris.ResourceList.Item.actionsDropdown');
+          : i18n.translate('Polaris.ResourceList.Item.actionsDropdown');
 
         disclosureMarkup = (
           <div className={styles.Disclosure} onClick={stopPropagation}>
@@ -276,10 +268,16 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
 
     const tabIndex = loading ? -1 : 0;
 
+    const ariaLabel =
+      accessibilityLabel ||
+      i18n.translate('Polaris.ResourceList.Item.viewItem', {
+        itemName: name || (resourceName && resourceName.singular) || '',
+      });
+
     const accessibleMarkup = url ? (
       <UnstyledLink
         aria-describedby={this.props.id}
-        aria-label={accessibilityLabel}
+        aria-label={ariaLabel}
         className={styles.Link}
         url={url}
         tabIndex={tabIndex}
@@ -288,7 +286,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
     ) : (
       <button
         className={styles.Button}
-        aria-label={accessibilityLabel}
+        aria-label={ariaLabel}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         onClick={this.handleClick}
@@ -434,14 +432,12 @@ function isSelected(id: string, selectedItems?: ResourceListSelectedItems) {
   );
 }
 
-function ResourceItem(props: CombinedProps) {
+export function ResourceItem(props: ResourceItemProps) {
   return (
-    <ResourceListContext.Consumer>
-      {(context) => <BaseResourceItem {...props} context={context} />}
-    </ResourceListContext.Consumer>
+    <BaseResourceItem
+      {...props}
+      context={useContext(ResourceListContext)}
+      i18n={useI18n()}
+    />
   );
 }
-
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<Props>()(ResourceItem);

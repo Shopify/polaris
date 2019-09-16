@@ -124,13 +124,13 @@ function CheckboxExample() {
 
 <!-- content-for: android -->
 
-![Default checkbox on Android](/public_images/components/Checkbox/android/default@2x.png)
+![Default checkbox on Android](https://polaris.shopify.com/public_images/components/Checkbox/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default checkbox on iOS](/public_images/components/Checkbox/ios/default@2x.png)
+![Default checkbox on iOS](https://polaris.shopify.com/public_images/components/Checkbox/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -138,9 +138,9 @@ function CheckboxExample() {
 
 ## Related components
 
-- To present a list of options where merchants can only make a single choice, [use the radio button component](/components/forms/radio-button)
-- To display a list of related content, [use the choice list component](/components/forms/choice-list)
-- To create an ungrouped list, [use the content list component](/components/lists-and-tables/list)
+- To present a list of options where merchants can only make a single choice, [use the radio button component](https://polaris.shopify.com/components/forms/radio-button)
+- To display a list of related content, [use the choice list component](https://polaris.shopify.com/components/forms/choice-list)
+- To create an ungrouped list, [use the content list component](https://polaris.shopify.com/components/lists-and-tables/list)
 
 ---
 
