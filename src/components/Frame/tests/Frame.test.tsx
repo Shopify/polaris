@@ -155,6 +155,30 @@ describe('<Frame />', () => {
     expect(mainAnchor.getDOMNode()).toBe(document.activeElement);
   });
 
+  it('sets focus to target element when the skip to content link is clicked', () => {
+    const targetId = 'SkipToContentTarget';
+    const targetRef = React.createRef<HTMLAnchorElement>();
+
+    const skipToContentTarget = (
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <a id={targetId} ref={targetRef} tabIndex={-1} href="" />
+    );
+
+    const frame = mountWithAppProvider(
+      <Frame skipToContentTarget={targetRef}>{skipToContentTarget}</Frame>,
+    );
+
+    const triggerAnchor = frame.find('a').at(0);
+    const targetAnchor = frame.find(`#${targetId}`);
+    trigger(triggerAnchor, 'onFocus');
+    trigger(triggerAnchor, 'onClick');
+
+    expect(triggerAnchor.getDOMNode().getAttribute('href')).toBe(
+      `#${targetId}`,
+    );
+    expect(targetAnchor.getDOMNode()).toBe(document.activeElement);
+  });
+
   it('renders with a has nav data attribute when nav is passed', () => {
     const navigation = <div />;
     const frame = mountWithAppProvider(<Frame navigation={navigation} />);

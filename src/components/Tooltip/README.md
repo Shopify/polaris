@@ -78,4 +78,4 @@ Use only when necessary to provide an explanation for an interface element.
 
 ## Related components
 
-- To make helpful content more visible to merchants, use the help text portions of form components such as [text fields](/components/forms/text-field), [footer help](/components/titles-and-text/footer-help), or [an inline link to help](/components/navigation/link)
+- To make helpful content more visible to merchants, use the help text portions of form components such as [text fields](https://polaris.shopify.com/components/forms/text-field), [footer help](https://polaris.shopify.com/components/titles-and-text/footer-help), or [an inline link to help](https://polaris.shopify.com/components/navigation/link)

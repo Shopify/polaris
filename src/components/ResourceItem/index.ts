@@ -1,3 +1,1 @@
-import ResourceItem, {ResourceItemProps} from './ResourceItem';
-
-export {ResourceItem, ResourceItemProps};
+export {ResourceItem, ResourceItemProps} from './ResourceItem';

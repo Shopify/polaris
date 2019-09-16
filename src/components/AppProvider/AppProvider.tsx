@@ -35,6 +35,8 @@ export interface AppProviderProps extends AppBridgeOptions {
   linkComponent?: LinkLikeComponent;
   /** Custom logos and colors provided to select components */
   theme?: Theme;
+  /** Inner content of the application */
+  children?: React.ReactNode;
 }
 
 export class AppProvider extends React.Component<AppProviderProps, State> {
@@ -102,9 +104,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
             <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
               <AppBridgeContext.Provider value={appBridge}>
                 <LinkContext.Provider value={link}>
-                  <ThemeProvider theme={theme}>
-                    {React.Children.only(children)}
-                  </ThemeProvider>
+                  <ThemeProvider theme={theme}>{children}</ThemeProvider>
                 </LinkContext.Provider>
               </AppBridgeContext.Provider>
             </UniqueIdFactoryContext.Provider>
