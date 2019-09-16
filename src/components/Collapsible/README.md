@@ -56,46 +56,33 @@ Collapsible containers are cards with expandable and collapsible functionality, 
 Use for a basic “show more” interaction when you need to display more content.
 
 ```jsx
-class CollapsibleExample extends React.Component {
-  state = {
-    open: true,
-  };
+function CollapsibleExample() {
+  const [active, setActive] = useState(true);
 
-  render() {
-    const {open} = this.state;
+  const handleToggle = useCallback(() => setActive((active) => !active), []);
 
-    return (
-      <div style={{height: '200px'}}>
-        <Card sectioned>
-          <Stack vertical>
-            <Button
-              onClick={this.handleToggleClick}
-              ariaExpanded={open}
-              ariaControls="basic-collapsible"
-            >
-              Toggle
-            </Button>
-            <Collapsible open={open} id="basic-collapsible">
-              <TextContainer>
-                Your mailing list lets you contact customers or visitors who
-                have shown an interest in your store. Reach out to them with
-                exclusive offers or updates about your products.
-              </TextContainer>
-            </Collapsible>
-          </Stack>
-        </Card>
-      </div>
-    );
-  }
-
-  handleToggleClick = () => {
-    this.setState((state) => {
-      const open = !state.open;
-      return {
-        open,
-      };
-    });
-  };
+  return (
+    <div style={{height: '200px'}}>
+      <Card sectioned>
+        <Stack vertical>
+          <Button
+            onClick={handleToggle}
+            ariaExpanded={active}
+            ariaControls="basic-collapsible"
+          >
+            Toggle
+          </Button>
+          <Collapsible open={active} id="basic-collapsible">
+            <TextContainer>
+              Your mailing list lets you contact customers or visitors who have
+              shown an interest in your store. Reach out to them with exclusive
+              offers or updates about your products.
+            </TextContainer>
+          </Collapsible>
+        </Stack>
+      </Card>
+    </div>
+  );
 }
 ```
 
