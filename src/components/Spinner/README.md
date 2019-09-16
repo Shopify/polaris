@@ -33,13 +33,13 @@ Use to notify merchants that their requested action is being processed.
 
 <!-- content-for: android -->
 
-![Material design spinner for Android](/public_images/components/Spinner/android/default@2x.gif)
+![Material design spinner for Android](https://polaris.shopify.com/public_images/components/Spinner/android/default@2x.gif)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Apple’s spinner for iOS](/public_images/components/Spinner/ios/default@2x.gif)
+![Apple’s spinner for iOS](https://polaris.shopify.com/public_images/components/Spinner/ios/default@2x.gif)
 
 <!-- /content-for -->
 
@@ -79,5 +79,5 @@ Spinner accessibility label should:
 
 ## Related components
 
-- To improve user experience and reduce the appearance of long loading times, use the [Progress bar](/components/feedback-indicators/progress-bar) component.
-- To better represent loading content, use [Skeleton page](/components/feedback-indicators/skeleton-page) along with [Skeleton body text](/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) components.
+- To improve user experience and reduce the appearance of long loading times, use the [Progress bar](https://polaris.shopify.com/components/feedback-indicators/progress-bar) component.
+- To better represent loading content, use [Skeleton page](https://polaris.shopify.com/components/feedback-indicators/skeleton-page) along with [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](https://polaris.shopify.com/components/feedback-indicators/skeleton-display-text) components.

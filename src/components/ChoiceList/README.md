@@ -208,13 +208,13 @@ class ChoiceListExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Single choice list for Android](/public_images/components/ChoiceList/android/single-choice@2x.png)
+![Single choice list for Android](https://polaris.shopify.com/public_images/components/ChoiceList/android/single-choice@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Single choice list for iOS](/public_images/components/ChoiceList/ios/single-choice@2x.png)
+![Single choice list for iOS](https://polaris.shopify.com/public_images/components/ChoiceList/ios/single-choice@2x.png)
 
 <!-- /content-for -->
 
@@ -254,13 +254,13 @@ class ChoiceListExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Single choice list with error for Android](/public_images/components/ChoiceList/android/single-choice-error@2x.png)
+![Single choice list with error for Android](https://polaris.shopify.com/public_images/components/ChoiceList/android/single-choice-error@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Single choice list with error for iOS](/public_images/components/ChoiceList/ios/single-choice-error@2x.png)
+![Single choice list with error for iOS](https://polaris.shopify.com/public_images/components/ChoiceList/ios/single-choice-error@2x.png)
 
 <!-- /content-for -->
 
@@ -311,13 +311,13 @@ class ChoiceListExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Multi choice list for Android](/public_images/components/ChoiceList/android/multi-choice@2x.png)
+![Multi choice list for Android](https://polaris.shopify.com/public_images/components/ChoiceList/android/multi-choice@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Multi choice list for iOS](/public_images/components/ChoiceList/ios/multi-choice@2x.png)
+![Multi choice list for iOS](https://polaris.shopify.com/public_images/components/ChoiceList/ios/multi-choice@2x.png)
 
 <!-- /content-for -->
 
@@ -435,9 +435,9 @@ class ChoiceListExample extends React.Component {
 
 ## Related components
 
-- To present a long list of radio buttons or when space is constrained, [use the select component](/components/forms/select)
-- To build a group of radio buttons or checkboxes with a custom layout, use the [radio button component](/components/forms/radio-button) or [checkbox component](/components/forms/checkbox)
-- To display a simple, non-interactive list of related content, [use the list component](/components/lists-and-tables/list)
+- To present a long list of radio buttons or when space is constrained, [use the select component](https://polaris.shopify.com/components/forms/select)
+- To build a group of radio buttons or checkboxes with a custom layout, use the [radio button component](https://polaris.shopify.com/components/forms/radio-button) or [checkbox component](https://polaris.shopify.com/components/forms/checkbox)
+- To display a simple, non-interactive list of related content, [use the list component](https://polaris.shopify.com/components/lists-and-tables/list)
 
 ---
 
@@ -463,6 +463,6 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-The choice list component uses the accessibility features of the [checkbox](/components/forms/checkbox) and [radio button](/components/forms/radio-button) components.
+The choice list component uses the accessibility features of the [checkbox](https://polaris.shopify.com/components/forms/checkbox) and [radio button](https://polaris.shopify.com/components/forms/radio-button) components.
 
 <!-- /content-for -->

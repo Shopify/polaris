@@ -170,7 +170,8 @@
 
       "Item": {
         "actionsDropdownLabel": "Actions for {accessibilityLabel}",
-        "actionsDropdown": "Actions dropdown"
+        "actionsDropdown": "Actions dropdown",
+        "viewItem": "View details for {itemName}"
       },
 
       "BulkActions": {

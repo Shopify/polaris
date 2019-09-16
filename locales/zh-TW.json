@@ -150,7 +150,8 @@
       "ariaLivePlural": "{itemsLength} 件商品",
       "Item": {
         "actionsDropdownLabel": "{accessibilityLabel} 的動作",
-        "actionsDropdown": "動作下拉式選單"
+        "actionsDropdown": "動作下拉式選單",
+        "viewItem": "檢視 {itemName} 的詳細資訊"
       },
       "BulkActions": {
         "actionsActivatorLabel": "動作",

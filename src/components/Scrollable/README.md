@@ -34,7 +34,7 @@ Scrollable containers should:
 
 ## Content guidelines
 
-Scrollable containers are cards with scrolling functionality, and should follow the [content guidelines](/components/structure/card#section-content-guidelines) for cards.
+Scrollable containers are cards with scrolling functionality, and should follow the [content guidelines](https://polaris.shopify.com/components/structure/card#section-content-guidelines) for cards.
 
 ---
 
@@ -355,4 +355,4 @@ Use when you need to programmatically scroll a child component into view in the 
 
 ## Related components
 
-- To put long sections of information under a block that merchants can expand or collapse, [use the collapsible component](/components/collapsible)
+- To put long sections of information under a block that merchants can expand or collapse, [use the collapsible component](https://polaris.shopify.com/components/collapsible)

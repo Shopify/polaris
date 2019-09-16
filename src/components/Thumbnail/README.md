@@ -42,7 +42,7 @@ On Android and iOS, thumbnails should:
 
 ## Content guidelines
 
-Any time you use an image to communicate a concept on Shopify, it’s important to use descriptive [alt text](/content/alternative-text). Doing this is important for [accessibility](/patterns-and-guides/accessibility) because it allows screen readers to describe what’s in the image to people who may not be able to see it.
+Any time you use an image to communicate a concept on Shopify, it’s important to use descriptive [alt text](https://polaris.shopify.com/content/alternative-text). Doing this is important for [accessibility](https://polaris.shopify.com/patterns-and-guides/accessibility) because it allows screen readers to describe what’s in the image to people who may not be able to see it.
 
 For thumbnails, we recommend using a format that describes what will show in the image:
 
@@ -68,13 +68,13 @@ Use as the default size.
 
 <!-- content-for: android -->
 
-![Default thumbnail](/public_images/components/Thumbnail/android/default@2x.png)
+![Default thumbnail](https://polaris.shopify.com/public_images/components/Thumbnail/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default thumbnail](/public_images/components/Thumbnail/ios/default@2x.png)
+![Default thumbnail](https://polaris.shopify.com/public_images/components/Thumbnail/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -106,13 +106,13 @@ Use when a thumbnail is a major focal point. Avoid this size in lists of like it
 
 <!-- content-for: android -->
 
-![Large thumbnail](/public_images/components/Thumbnail/android/large@2x.png)
+![Large thumbnail](https://polaris.shopify.com/public_images/components/Thumbnail/android/large@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Large thumbnail](/public_images/components/Thumbnail/ios/large@2x.png)
+![Large thumbnail](https://polaris.shopify.com/public_images/components/Thumbnail/ios/large@2x.png)
 
 <!-- /content-for -->
 
@@ -120,4 +120,4 @@ Use when a thumbnail is a major focal point. Avoid this size in lists of like it
 
 ## Related components
 
-- To present a thumbnail representation of an individual or business in the interface, [use the avatar component](/components/images-and-icons/avatar)
+- To present a thumbnail representation of an individual or business in the interface, [use the avatar component](https://polaris.shopify.com/components/images-and-icons/avatar)

@@ -36,7 +36,7 @@
     },
     "ContextualSaveBar": {
       "save": "Salva",
-      "discard": "Elimina"
+      "discard": "Rimuovi"
     },
     "DataTable": {
       "sortAccessibilityLabel": "ordina per {direction}",
@@ -72,9 +72,9 @@
       }
     },
     "DiscardConfirmationModal": {
-      "title": "Elimina tutte le modifiche non salvate",
-      "message": "Eliminando le modifiche, annullerai tutti i cambiamenti apportati dopo l'ultimo salvataggio.",
-      "primaryAction": "Elimina le modifiche",
+      "title": "Rimuovi tutte le modifiche non salvate",
+      "message": "Rimuovendo le modifiche, eliminerai tutte le modifiche apportate dopo l'ultimo salvataggio.",
+      "primaryAction": "Rimuovi le modifiche",
       "secondaryAction": "Continua a modificare"
     },
     "DropZone": {
@@ -150,7 +150,8 @@
       "ariaLivePlural": "{itemsLength} articoli",
       "Item": {
         "actionsDropdownLabel": "Azioni per {accessibilityLabel}",
-        "actionsDropdown": "Menu a tendina delle azioni"
+        "actionsDropdown": "Menu a tendina delle azioni",
+        "viewItem": "Visualizza dettagli di {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Azioni",
