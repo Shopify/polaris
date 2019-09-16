@@ -11,9 +11,9 @@ export const UnstyledLink = React.memo(
   // This does have a display name, but the linting has a bug in it
   // https://github.com/yannickcr/eslint-plugin-react/issues/2324
   // eslint-disable-next-line react/display-name
-  React.forwardRef(function UnstyledLink(
-    props: UnstyledLinkProps,
-    _ref: React.RefObject<unknown>,
+  React.forwardRef<unknown, UnstyledLinkProps>(function UnstyledLink(
+    props,
+    _ref,
   ) {
     const LinkComponent = useLink();
     if (LinkComponent) {
