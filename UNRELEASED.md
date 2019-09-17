@@ -24,6 +24,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added default accessibility label from `ResourceItem` ([#2097](https://github.com/Shopify/polaris-react/pull/2097))
 - Reverted `Page.primaryAction` forcing `primary` to be `true` ([#2137](https://github.com/Shopify/polaris-react/pull/2137))
 - Removed `React.Children.only` from `AppProvider`and `ThemeProvider` ([#2121](https://github.com/Shopify/polaris-react/pull/2121))
+- Fixed visual bug where button width changed in Filters component ([#1853](https://github.com/Shopify/polaris-react/issues/1853))
 
 ### Documentation
 
