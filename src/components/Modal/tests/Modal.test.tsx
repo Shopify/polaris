@@ -1,7 +1,11 @@
 import React from 'react';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
+import {
+  findByTestID,
+  mountWithAppProvider,
+  trigger,
+} from 'test-utilities/legacy';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
 import {Footer, Dialog} from '../components';
 import Modal from '../Modal';
@@ -78,6 +82,33 @@ describe('<Modal>', () => {
       const scrollable = modal.find(Scrollable).first();
       expect(scrollable.exists()).toBe(true);
       expect(scrollable.prop('shadow')).toBe(true);
+    });
+  });
+
+  describe('onTransitionEnd', () => {
+    it('calls onTransitionEnd after it mounts', () => {
+      const mockOnTransitionEnd = jest.fn();
+      const modal = mountWithAppProvider(
+        <Modal open onClose={noop} onTransitionEnd={mockOnTransitionEnd} />,
+      );
+      trigger(modal.find(Dialog), 'onEntered');
+      expect(mockOnTransitionEnd).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('onIFrameLoad', () => {
+    it('calls onIFrameLoad after it mounts', () => {
+      const mockOnIframeLoad = jest.fn();
+      const modal = mountWithAppProvider(
+        <Modal
+          open
+          onClose={noop}
+          onIFrameLoad={mockOnIframeLoad}
+          src="path/to/place"
+        />,
+      );
+      trigger(modal.find('iframe'), 'onLoad', {target: {contentWindow: {}}});
+      expect(mockOnIframeLoad).toHaveBeenCalledTimes(1);
     });
   });
 
