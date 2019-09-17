@@ -1,23 +1,51 @@
 import React from 'react';
-import {Image, DisplayText, TextContainer, UnstyledLink} from 'components';
+import {
+  Image,
+  DisplayText,
+  TextContainer,
+  UnstyledLink,
+  Button,
+} from 'components';
+
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {WithinContentContext} from '../../../utilities/within-content-context';
 import {EmptyState} from '../EmptyState';
 
 describe('<EmptyState />', () => {
   let imgSrc =
     'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
 
-  describe('primaryAction', () => {
-    it('renders a button with the action content if a primaryAction is provided', () => {
+  describe('action', () => {
+    it('renders a button with the action content if action is set', () => {
       const emptyState = mountWithAppProvider(
         <EmptyState action={{content: 'Add transfer'}} image={imgSrc} />,
       );
       expect(emptyState.find('button').contains('Add transfer')).toBe(true);
     });
 
-    it('renders does not render button with the action content if no primaryAction is provided', () => {
+    it('does not render a button when no action is set', () => {
       const emptyState = mountWithAppProvider(<EmptyState image={imgSrc} />);
       expect(emptyState.find('button').contains('Add transfer')).toBe(false);
+    });
+
+    it('renders a large button by default', () => {
+      const emptyState = mountWithAppProvider(
+        <EmptyState image={imgSrc} action={{content: 'Upload files'}} />,
+      );
+
+      expect(emptyState.find(Button).prop('size')).toBe('large');
+    });
+
+    it('renders a medium button when in a content context', () => {
+      const emptyStateInContentContext = mountWithAppProvider(
+        <WithinContentContext.Provider value>
+          <EmptyState image={imgSrc} action={{content: 'Upload files'}} />
+        </WithinContentContext.Provider>,
+      );
+
+      expect(emptyStateInContentContext.find(Button).prop('size')).toBe(
+        'medium',
+      );
     });
   });
 
@@ -92,6 +120,20 @@ describe('<EmptyState />', () => {
       );
       expect(emptyState.find(DisplayText).prop('size')).toBe('medium');
       expect(emptyState.find(DisplayText).contains(expectedHeading)).toBe(true);
+    });
+
+    it('renders a small DisplayText when in a content context', () => {
+      const emptyStateInContentContext = mountWithAppProvider(
+        <WithinContentContext.Provider value>
+          <EmptyState heading="Heading" image={imgSrc} />
+        </WithinContentContext.Provider>,
+      );
+
+      const headingSize = emptyStateInContentContext
+        .find(DisplayText)
+        .prop('size');
+
+      expect(headingSize).toBe('small');
     });
   });
 
