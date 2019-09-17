@@ -197,6 +197,29 @@ Use to provide additional but non-critical context for a new product or feature.
 </EmptyState>
 ```
 
+### Empty state within a content context
+
+<!-- example-for: web -->
+
+Use to explain a section or feature before merchants have used it within the context of a content container like a card or a resource list.
+
+```jsx
+<Card>
+  <Card.Section>
+    <EmptyState
+      heading="Upload a file to get started"
+      action={{content: 'Upload files'}}
+      image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+    >
+      <p>
+        You can use the Files section to upload images, videos, and other
+        documents
+      </p>
+    </EmptyState>
+  </Card.Section>
+</Card>
+```
+
 ---
 
 ## Related components
