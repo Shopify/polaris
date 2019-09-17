@@ -39,6 +39,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Development workflow
 
 - Added [`yarn splash` (beta)](/scripts/splash/), a command-line interface to observe the splash zone of a change across the component library ([#2113](https://github.com/Shopify/polaris-react/pull/2113))
+- Updated Storybook – [v5.2 release notes](https://medium.com/storybookjs/storybook-5-2-794958b9b111) ([#2157](https://github.com/Shopify/polaris-react/pull/2157))
 
 ### Dependency upgrades
 
