@@ -14,9 +14,9 @@ export interface LinkProps {
   id?: string;
   /** The url to link to */
   url?: string;
-  /** The content to display inside link */
+  /** The content to display inside the link */
   children?: React.ReactNode;
-  /** Use for a links that open a different site */
+  /** Makes the link open in a new tab */
   external?: boolean;
   /** Makes the link color the same as the current text color and adds an underline */
   monochrome?: boolean;
