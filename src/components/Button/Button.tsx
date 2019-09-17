@@ -1,5 +1,6 @@
 import React, {forwardRef, useImperativeHandle} from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
+import {FOCUSABLE_SELECTOR} from '@shopify/javascript-utilities/focus';
 import {classNames, variationName} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {useI18n} from '../../utilities/i18n';
@@ -135,7 +136,12 @@ export const Button = forwardRef(function(
 
   useImperativeHandle(ref, () => ({
     focus: () => {
-      buttonRef.current && buttonRef.current.focus();
+      const element = buttonRef.current;
+
+      if (element) {
+        FOCUSABLE_SELECTOR.includes(element.nodeName.toLowerCase()) &&
+          element.focus();
+      }
     },
   }));
 
