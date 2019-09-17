@@ -32,7 +32,7 @@ Use to indicate that the page is loading.
 
 ## Required components
 
-The loading component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component or used in an embedded application.
+The loading component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component.
 
 ---
 

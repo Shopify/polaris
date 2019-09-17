@@ -16,7 +16,6 @@ keywords:
   - overlay
   - popup
   - iframe
-  - embedded app
   - duration
   - ios
   - android
@@ -31,7 +30,7 @@ The toast component is a non-disruptive message that appears at the bottom of th
 
 ## Required components
 
-The toast component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component or used in an embedded application.
+The toast component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component.
 
 ---
 

@@ -28,8 +28,6 @@ import styles from './Modal.scss';
 const IFRAME_LOADING_HEIGHT = 200;
 const DEFAULT_IFRAME_CONTENT_HEIGHT = 400;
 
-export type Size = 'Small' | 'Medium' | 'Large' | 'Full';
-
 export interface ModalProps extends FooterProps {
   /** Whether the modal is open or not */
   open: boolean;
@@ -37,38 +35,27 @@ export interface ModalProps extends FooterProps {
   src?: string;
   /** The name of the modal content iframe */
   iFrameName?: string;
-  /** The content for the title of the modal (embedded app use accepts string only) */
+  /** The content for the title of the modal */
   title?: string | React.ReactNode;
-  /** The content to display inside modal (stand-alone app use only) */
+  /** The content to display inside modal */
   children?: React.ReactNode;
-  /** Inner content of the footer (stand-alone app use only) */
+  /** Inner content of the footer */
   footer?: React.ReactNode;
-  /** Disable animations and open modal instantly (stand-alone app use only) */
+  /** Disable animations and open modal instantly */
   instant?: boolean;
-  /** Automatically adds sections to modal (stand-alone app use only) */
+  /** Automatically adds sections to modal */
   sectioned?: boolean;
-  /** Increases the modal width (stand-alone app use only) */
+  /** Increases the modal width */
   large?: boolean;
-  /** Limits modal height on large sceens with scrolling (stand-alone app use only) */
+  /** Limits modal height on large sceens with scrolling */
   limitHeight?: boolean;
-  /** Replaces modal content with a spinner while a background action is being performed (stand-alone app use only) */
+  /** Replaces modal content with a spinner while a background action is being performed */
   loading?: boolean;
-  /**
-   * Controls the size of the modal
-   * @default 'Small'
-   * @embeddedAppOnly
-   */
-  size?: Size;
-  /**
-   * Message to display inside modal
-   * @embeddedAppOnly
-   */
-  message?: string;
   /** Callback when the modal is closed */
   onClose(): void;
-  /** Callback when iframe has loaded (stand-alone app use only) */
+  /** Callback when iframe has loaded */
   onIFrameLoad?(evt: React.SyntheticEvent<HTMLIFrameElement>): void;
-  /** Callback when modal transition animation has ended (stand-alone app use only) */
+  /** Callback when modal transition animation has ended */
   onTransitionEnd?(): void;
   /** Callback when the bottom of the modal content is reached */
   onScrolledToBottom?(): void;
