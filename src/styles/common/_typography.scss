@@ -107,7 +107,6 @@ $font-size-data: (
 ///
 /// @param {String} $family - The key for the given family.
 /// @return {Number} The font stack for the family.
-/// @deprecated Pull data from typography Polaris tokens
 
 @function font-family($family: base) {
   $fetched-value: map-get($font-family-data, $family);
@@ -124,7 +123,6 @@ $font-size-data: (
 /// @param {String} $style - The font style.
 /// @param {String} $variant [base] - The variant on the font-size.
 /// @return {Number} The line-height for the text-style.
-/// @deprecated Copy data and function into consuming project
 
 @function line-height($style, $variant: base) {
   $fetched-line-height: map-get(map-get($line-height-data, $style), $variant);
@@ -141,7 +139,6 @@ $font-size-data: (
 /// @param {String} $style - The font style.
 /// @param {String} $variant [base] - The variant on the font-size.
 /// @return {Number} The font-size for the text-style.
-/// @deprecated Copy data and function into consuming project
 
 @function font-size($style, $variant: base) {
   $fetched-font-size: map-get(map-get($font-size-data, $style), $variant);
