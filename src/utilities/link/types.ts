@@ -6,7 +6,7 @@ export interface LinkLikeComponentProps
   children?: React.ReactNode;
   /** Makes the link open in a new tab */
   external?: boolean;
-  /** Makes the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value. */
+  /** Makes the browser download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value. */
   download?: string | boolean;
   [key: string]: any;
 }
