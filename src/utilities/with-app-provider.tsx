@@ -5,7 +5,6 @@ import {useLink} from './link';
 import {useScrollLockManager} from './scroll-lock-manager';
 import {useTheme} from './theme';
 import {useStickyManager} from './sticky-manager';
-import {useAppBridge} from './app-bridge';
 import {useMediaQuery} from './media-query';
 
 export interface WithAppProviderProps {
@@ -15,7 +14,6 @@ export interface WithAppProviderProps {
     intl: ReturnType<typeof useI18n>;
     scrollLockManager: ReturnType<typeof useScrollLockManager>;
     stickyManager: ReturnType<typeof useStickyManager>;
-    appBridge: ReturnType<typeof useAppBridge>;
     mediaQuery: ReturnType<typeof useMediaQuery>;
   };
 }
@@ -31,7 +29,6 @@ export function withAppProvider<OwnProps>() {
         intl: useI18n(),
         scrollLockManager: useScrollLockManager(),
         stickyManager: useStickyManager(),
-        appBridge: useAppBridge(),
         mediaQuery: useMediaQuery(),
       };
 

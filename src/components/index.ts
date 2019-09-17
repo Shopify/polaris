@@ -170,8 +170,6 @@ export {ResourceList, ResourceListProps} from './ResourceList';
 
 export {ResourceListSelectedItems} from '../utilities/resource-list';
 
-export {ResourcePicker, ResourcePickerProps} from './ResourcePicker';
-
 export {Scrollable, ScrollableProps} from './Scrollable';
 
 export {ScrollLock} from './ScrollLock';

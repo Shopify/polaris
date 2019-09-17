@@ -13,13 +13,13 @@ import {Title, TitleProps} from './components';
 import styles from './Header.scss';
 
 export interface HeaderProps extends TitleProps {
-  /** Visually hide the title (stand-alone app use only) */
+  /** Visually hide the title */
   titleHidden?: boolean;
-  /** Adds a border to the bottom of the page header (stand-alone app use only) */
+  /** Adds a border to the bottom of the page header */
   separator?: boolean;
   /** Primary page-level action */
   primaryAction?: HeaderPrimaryAction;
-  /** Page-level pagination (stand-alone app use only) */
+  /** Page-level pagination */
   pagination?: PaginationDescriptor;
   /** Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];

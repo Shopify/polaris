@@ -3,13 +3,8 @@ import {TransitionGroup} from '@material-ui/react-transition-group';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
-import isEqual from 'lodash/isEqual';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {wrapWithComponent} from '../../utilities/components';
-
-import {transformActions} from '../../utilities/app-bridge-transformers';
-import {pick} from '../../utilities/pick';
 
 import {
   withAppProvider,
@@ -33,8 +28,6 @@ import styles from './Modal.scss';
 const IFRAME_LOADING_HEIGHT = 200;
 const DEFAULT_IFRAME_CONTENT_HEIGHT = 400;
 
-export type Size = 'Small' | 'Medium' | 'Large' | 'Full';
-
 export interface ModalProps extends FooterProps {
   /** Whether the modal is open or not */
   open: boolean;
@@ -42,38 +35,27 @@ export interface ModalProps extends FooterProps {
   src?: string;
   /** The name of the modal content iframe */
   iFrameName?: string;
-  /** The content for the title of the modal (embedded app use accepts string only) */
+  /** The content for the title of the modal */
   title?: string | React.ReactNode;
-  /** The content to display inside modal (stand-alone app use only) */
+  /** The content to display inside modal */
   children?: React.ReactNode;
-  /** Inner content of the footer (stand-alone app use only) */
+  /** Inner content of the footer */
   footer?: React.ReactNode;
-  /** Disable animations and open modal instantly (stand-alone app use only) */
+  /** Disable animations and open modal instantly */
   instant?: boolean;
-  /** Automatically adds sections to modal (stand-alone app use only) */
+  /** Automatically adds sections to modal */
   sectioned?: boolean;
-  /** Increases the modal width (stand-alone app use only) */
+  /** Increases the modal width */
   large?: boolean;
-  /** Limits modal height on large sceens with scrolling (stand-alone app use only) */
+  /** Limits modal height on large sceens with scrolling */
   limitHeight?: boolean;
-  /** Replaces modal content with a spinner while a background action is being performed (stand-alone app use only) */
+  /** Replaces modal content with a spinner while a background action is being performed */
   loading?: boolean;
-  /**
-   * Controls the size of the modal
-   * @default 'Small'
-   * @embeddedAppOnly
-   */
-  size?: Size;
-  /**
-   * Message to display inside modal
-   * @embeddedAppOnly
-   */
-  message?: string;
   /** Callback when the modal is closed */
   onClose(): void;
-  /** Callback when iframe has loaded (stand-alone app use only) */
+  /** Callback when iframe has loaded */
   onIFrameLoad?(evt: React.SyntheticEvent<HTMLIFrameElement>): void;
-  /** Callback when modal transition animation has ended (stand-alone app use only) */
+  /** Callback when modal transition animation has ended */
   onTransitionEnd?(): void;
   /** Callback when the bottom of the modal content is reached */
   onScrolledToBottom?(): void;
@@ -86,15 +68,6 @@ interface State {
 
 const getUniqueID = createUniqueIDFactory('modal-header');
 
-const APP_BRIDGE_PROPS: (keyof ModalProps)[] = [
-  'title',
-  'size',
-  'message',
-  'src',
-  'primaryAction',
-  'secondaryActions',
-];
-
 class Modal extends React.Component<CombinedProps, State> {
   static Section = Section;
   focusReturnPointNode: HTMLElement;
@@ -104,106 +77,8 @@ class Modal extends React.Component<CombinedProps, State> {
   };
 
   private headerId = getUniqueID();
-  private appBridgeModal:
-    | AppBridgeModal.ModalMessage
-    | AppBridgeModal.ModalIframe
-    | undefined;
-
-  componentDidMount() {
-    if (this.props.polaris.appBridge == null) {
-      return;
-    }
-
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: Using `Modal` in an embedded app is deprecated and will be removed in v5.0. Use `Modal` from `@shopify/app-bridge-react` instead: https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/modal',
-    );
-
-    const transformProps = this.transformProps();
-    if (transformProps) {
-      this.appBridgeModal = AppBridgeModal.create(
-        this.props.polaris.appBridge,
-        transformProps,
-      );
-    }
-
-    if (this.appBridgeModal) {
-      this.appBridgeModal.subscribe(
-        AppBridgeModal.Action.CLOSE,
-        this.props.onClose,
-      );
-    }
-
-    const {open} = this.props;
-
-    if (open) {
-      this.focusReturnPointNode = document.activeElement as HTMLElement;
-      this.appBridgeModal &&
-        this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
-    }
-  }
-
-  componentDidUpdate(prevProps: CombinedProps) {
-    if (this.props.polaris.appBridge == null || this.appBridgeModal == null) {
-      return;
-    }
-
-    const {open} = this.props;
-    const wasOpen = prevProps.open;
-    const transformedProps = this.transformProps();
-
-    const prevAppBridgeProps = pick(prevProps, APP_BRIDGE_PROPS);
-    const currentAppBridgeProps = pick(this.props, APP_BRIDGE_PROPS);
-
-    if (
-      !isEqual(prevAppBridgeProps, currentAppBridgeProps) &&
-      transformedProps
-    ) {
-      if (isIframeModal(transformedProps)) {
-        (this.appBridgeModal as AppBridgeModal.ModalIframe).set(
-          transformedProps,
-        );
-      } else {
-        (this.appBridgeModal as AppBridgeModal.ModalMessage).set(
-          transformedProps,
-        );
-      }
-    }
-
-    if (wasOpen !== open) {
-      if (open) {
-        this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
-      } else {
-        this.appBridgeModal.dispatch(AppBridgeModal.Action.CLOSE);
-      }
-    }
-
-    if (!wasOpen && open) {
-      this.focusReturnPointNode = document.activeElement as HTMLElement;
-    } else if (
-      wasOpen &&
-      !open &&
-      this.focusReturnPointNode != null &&
-      document.contains(this.focusReturnPointNode)
-    ) {
-      this.focusReturnPointNode.focus();
-      this.focusReturnPointNode = null as any;
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.props.polaris.appBridge == null || this.appBridgeModal == null) {
-      return;
-    }
-
-    this.appBridgeModal.unsubscribe();
-  }
 
   render() {
-    if (this.props.polaris.appBridge != null) {
-      return null;
-    }
-
     const {
       children,
       title,
@@ -355,58 +230,6 @@ class Modal extends React.Component<CombinedProps, State> {
       onIFrameLoad(evt);
     }
   };
-
-  private transformProps() {
-    const {
-      title,
-      size,
-      message,
-      src,
-      primaryAction,
-      secondaryActions,
-      polaris,
-    } = this.props;
-    const {appBridge} = polaris;
-
-    if (!appBridge) return;
-
-    const safeTitle = typeof title === 'string' ? title : undefined;
-    const safeSize = size != null ? AppBridgeModal.Size[size] : undefined;
-    const srcPayload: {url?: string; path?: string} = {};
-
-    if (src != null) {
-      if (src.match('^https?://')) {
-        srcPayload.url = src;
-      } else {
-        srcPayload.path = src;
-      }
-    }
-
-    return {
-      title: safeTitle,
-      message,
-      size: safeSize,
-      ...srcPayload,
-      footer: {
-        buttons: transformActions(appBridge, {
-          primaryAction,
-          secondaryActions,
-        }),
-      },
-    };
-  }
-}
-
-function isIframeModal(
-  options:
-    | AppBridgeModal.MessagePayload
-    | AppBridgeModal.IframePayload
-    | object,
-): options is AppBridgeModal.IframePayload {
-  return (
-    typeof (options as AppBridgeModal.IframePayload).url === 'string' ||
-    typeof (options as AppBridgeModal.IframePayload).path === 'string'
-  );
 }
 
 // Use named export once withAppProvider is refactored away
