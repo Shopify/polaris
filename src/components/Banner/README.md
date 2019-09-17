@@ -407,54 +407,46 @@ Use to update merchants about a change or give them advice.
 Banners inside of modals render with less spacing and a pared-back design to fit within a content context.
 
 ```jsx
-class ModalExample extends React.Component {
-  state = {
-    active: false,
-  };
+function BannerInModalExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const {active} = this.state;
+  const handleChange = useCallback(() => setActive(!active), [active]);
 
-    return (
-      <div style={{height: '500px'}}>
-        <Button onClick={this.handleChange}>Open</Button>
-        <Modal
-          open={active}
-          onClose={this.handleChange}
-          title="Reach more shoppers with Instagram product tags"
-          primaryAction={{
-            content: 'Add Instagram',
-            onAction: this.handleChange,
-          }}
-          secondaryActions={[
-            {
-              content: 'Learn more',
-              onAction: this.handleChange,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <TextContainer>
-              <Banner action={{content: 'Connect account'}} status="warning">
-                <p>
-                  Connect your instagram account to your shop before proceeding.
-                </p>
-              </Banner>
+  return (
+    <div style={{height: '500px'}}>
+      <Button onClick={handleChange}>Open</Button>
+      <Modal
+        open={active}
+        onClose={handleChange}
+        title="Reach more shoppers with Instagram product tags"
+        primaryAction={{
+          content: 'Add Instagram',
+          onAction: handleChange,
+        }}
+        secondaryActions={[
+          {
+            content: 'Learn more',
+            onAction: handleChange,
+          },
+        ]}
+      >
+        <Modal.Section>
+          <TextContainer>
+            <Banner action={{content: 'Connect account'}} status="warning">
               <p>
-                Use Instagram posts to share your products with millions of
-                people. Let shoppers buy from your store without leaving
-                Instagram.
+                Connect your instagram account to your shop before proceeding.
               </p>
-            </TextContainer>
-          </Modal.Section>
-        </Modal>
-      </div>
-    );
-  }
-
-  handleChange = () => {
-    this.setState(({active}) => ({active: !active}));
-  };
+            </Banner>
+            <p>
+              Use Instagram posts to share your products with millions of
+              people. Let shoppers buy from your store without leaving
+              Instagram.
+            </p>
+          </TextContainer>
+        </Modal.Section>
+      </Modal>
+    </div>
+  );
 }
 ```
 
@@ -465,28 +457,24 @@ class ModalExample extends React.Component {
 Banner can programmatically receive focus. Use this functionality to draw the merchant's attention to the banner.
 
 ```jsx
-class ModalExample extends React.Component {
-  banner = React.createRef();
+function BannerWithFocusExample() {
+  const banner = useRef();
 
-  componentDidMount() {
-    this.banner.current.focus();
-  }
+  useEffect(() => banner.current.focus(), []);
 
-  render() {
-    return (
-      <Banner
-        title="High risk of fraud detected"
-        onDismiss={() => {}}
-        status="critical"
-        ref={this.banner}
-      >
-        <p>
-          Before fulfilling this order or capturing payment, please review the
-          fraud analysis and determine if this order is fraudulent
-        </p>
-      </Banner>
-    );
-  }
+  return (
+    <Banner
+      title="High risk of fraud detected"
+      onDismiss={() => {}}
+      status="critical"
+      ref={banner}
+    >
+      <p>
+        Before fulfilling this order or capturing payment, please review the
+        fraud analysis and determine if this order is fraudulent
+      </p>
+    </Banner>
+  );
 }
 ```
 

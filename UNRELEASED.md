@@ -28,6 +28,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Converted `Autocomplete`, `Banner`, and `ChoiceList` examples to functional components ([#2127](https://github.com/Shopify/polaris-react/pull/2127))
 - Converted `Collapsible`, `ColorPicker`, and `DataTable` examples to functional components ([#2128](https://github.com/Shopify/polaris-react/pull/2128))
 - Converted `Modal`, `OptionList`, and `Popover` examples to functional components ([#2131](https://github.com/Shopify/polaris-react/pull/2131))
 - Converted `RadioButton`, `RangeSlider`, and `ResourceItem` examples to functional components ([#2132](https://github.com/Shopify/polaris-react/pull/2132))

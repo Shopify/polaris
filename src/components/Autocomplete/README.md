@@ -37,74 +37,68 @@ The input field for autocomplete should follow the [content guidelines](https://
 Use to help merchants complete text input quickly from a list of options.
 
 ```jsx
-class AutocompleteExample extends React.Component {
-  options = [
+function AutocompleteExample() {
+  const deselectedOptions = [
     {value: 'rustic', label: 'Rustic'},
     {value: 'antique', label: 'Antique'},
     {value: 'vinyl', label: 'Vinyl'},
     {value: 'vintage', label: 'Vintage'},
     {value: 'refurbished', label: 'Refurbished'},
   ];
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
 
-  state = {
-    selected: [],
-    inputText: '',
-    options: this.options,
-  };
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-  render() {
-    const textField = (
-      <Autocomplete.TextField
-        onChange={this.updateText}
-        label="Tags"
-        value={this.state.inputText}
-        prefix={<Icon source={SearchMinor} color="inkLighter" />}
-        placeholder="Search"
-      />
-    );
-    return (
-      <div style={{height: '225px'}}>
-        <Autocomplete
-          options={this.state.options}
-          selected={this.state.selected}
-          onSelect={this.updateSelection}
-          textField={textField}
-        />
-      </div>
-    );
-  }
+      if (value === '') {
+        setOptions(deselectedOptions);
+        return;
+      }
 
-  updateText = (newValue) => {
-    this.setState({inputText: newValue});
-    this.filterAndUpdateOptions(newValue);
-  };
+      const filterRegex = new RegExp(value, 'i');
+      const resultOptions = deselectedOptions.filter((option) =>
+        option.label.match(filterRegex),
+      );
+      setOptions(resultOptions);
+    },
+    [deselectedOptions],
+  );
 
-  filterAndUpdateOptions = (inputString) => {
-    if (inputString === '') {
-      this.setState({
-        options: this.options,
-      });
-      return;
-    }
-
-    const filterRegex = new RegExp(inputString, 'i');
-    const resultOptions = this.options.filter((option) =>
-      option.label.match(filterRegex),
-    );
-    this.setState({
-      options: resultOptions,
-    });
-  };
-
-  updateSelection = (selected) => {
-    const selectedText = selected.map((selectedItem) => {
-      const matchedOption = this.options.find((option) => {
+  const updateSelection = useCallback((selected) => {
+    const selectedValue = selected.map((selectedItem) => {
+      const matchedOption = options.find((option) => {
         return option.value.match(selectedItem);
       });
       return matchedOption && matchedOption.label;
     });
-    this.setState({selected, inputText: selectedText});
-  };
+
+    setSelectedOptions(selected);
+    setInputValue(selectedValue);
+  }, []);
+
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      prefix={<Icon source={SearchMinor} color="inkLighter" />}
+      placeholder="Search"
+    />
+  );
+
+  return (
+    <div style={{height: '225px'}}>
+      <Autocomplete
+        options={options}
+        selected={selectedOptions}
+        onSelect={updateSelection}
+        textField={textField}
+      />
+    </div>
+  );
 }
 ```
 
@@ -113,104 +107,95 @@ class AutocompleteExample extends React.Component {
 Use to help merchants select multiple options from a list curated by the text input.
 
 ```jsx
-class MultiAutocompleteExample extends React.Component {
-  options = [
+function MultiAutocompleteExample() {
+  const deselectedOptions = [
     {value: 'rustic', label: 'Rustic'},
     {value: 'antique', label: 'Antique'},
     {value: 'vinyl', label: 'Vinyl'},
     {value: 'vintage', label: 'Vintage'},
     {value: 'refurbished', label: 'Refurbished'},
   ];
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
 
-  state = {
-    selected: [],
-    inputText: '',
-    options: this.options,
-  };
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-  render() {
-    const textField = (
-      <Autocomplete.TextField
-        onChange={this.updateText}
-        label="Tags"
-        value={this.state.inputText}
-        placeholder="Vintage, cotton, summer"
-      />
-    );
-    return (
-      <div style={{height: '325px'}}>
-        <TextContainer>
-          <Stack>{this.renderTags()}</Stack>
-        </TextContainer>
-        <br />
-        <Autocomplete
-          allowMultiple
-          options={this.state.options}
-          selected={this.state.selected}
-          textField={textField}
-          onSelect={this.updateSelection}
-          listTitle="Suggested Tags"
-        />
-      </div>
-    );
-  }
+      if (value === '') {
+        setOptions(deselectedOptions);
+        return;
+      }
 
-  updateText = (newValue) => {
-    this.setState({inputText: newValue});
-    this.filterAndUpdateOptions(newValue);
-  };
-
-  removeTag = (tag) => {
-    const {selected: newSelected} = this.state;
-    newSelected.splice(newSelected.indexOf(tag), 1);
-    this.setState({selected: newSelected});
-  };
-
-  renderTags = () => {
-    return this.state.selected.map((option) => {
-      let tagLabel = '';
-      tagLabel = option.replace('_', ' ');
-      tagLabel = titleCase(tagLabel);
-      return (
-        <Tag key={'option' + option} onRemove={() => this.removeTag(option)}>
-          {tagLabel}
-        </Tag>
+      const filterRegex = new RegExp(value, 'i');
+      const resultOptions = deselectedOptions.filter((option) =>
+        option.label.match(filterRegex),
       );
-    });
-  };
+      let endIndex = resultOptions.length - 1;
+      if (resultOptions.length === 0) {
+        endIndex = 0;
+      }
+      setOptions(resultOptions);
+    },
+    [deselectedOptions],
+  );
 
-  filterAndUpdateOptions = (inputString) => {
-    if (inputString === '') {
-      this.setState({
-        options: this.options,
-      });
-      return;
-    }
+  const removeTag = useCallback(
+    (tag) => () => {
+      const options = [...selectedOptions];
+      options.splice(options.indexOf(tag), 1);
+      setSelectedOptions(options);
+    },
+    [selectedOptions],
+  );
 
-    const filterRegex = new RegExp(inputString, 'i');
-    const resultOptions = this.options.filter((option) =>
-      option.label.match(filterRegex),
+  const tagsMarkup = selectedOptions.map((option) => {
+    let tagLabel = '';
+    tagLabel = option.replace('_', ' ');
+    tagLabel = titleCase(tagLabel);
+    return (
+      <Tag key={`option${option}`} onRemove={removeTag(option)}>
+        {tagLabel}
+      </Tag>
     );
-    let endIndex = resultOptions.length - 1;
-    if (resultOptions.length === 0) {
-      endIndex = 0;
-    }
-    this.setState({
-      options: resultOptions,
-    });
-  };
+  });
 
-  updateSelection = (selected) => this.setState({selected});
-}
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      placeholder="Vintage, cotton, summer"
+    />
+  );
 
-function titleCase(string) {
-  string = string
-    .toLowerCase()
-    .split(' ')
-    .map(function(word) {
-      return word.replace(word[0], word[0].toUpperCase());
-    });
-  return string.join(' ');
+  return (
+    <div style={{height: '325px'}}>
+      <TextContainer>
+        <Stack>{tagsMarkup}</Stack>
+      </TextContainer>
+      <br />
+      <Autocomplete
+        allowMultiple
+        options={options}
+        selected={selectedOptions}
+        textField={textField}
+        onSelect={setSelectedOptions}
+        listTitle="Suggested Tags"
+      />
+    </div>
+  );
+
+  function titleCase(string) {
+    return string
+      .toLowerCase()
+      .split(' ')
+      .map(function(word) {
+        return word.replace(word[0], word[0].toUpperCase());
+      })
+      .join('');
+  }
 }
 ```
 
@@ -219,206 +204,187 @@ function titleCase(string) {
 Use to indicate loading state to merchants while option data is processing.
 
 ```jsx
-class AutocompleteExample extends React.Component {
-  options = [
+function AutocompleteExample() {
+  const deselectedOptions = [
     {value: 'rustic', label: 'Rustic'},
     {value: 'antique', label: 'Antique'},
     {value: 'vinyl', label: 'Vinyl'},
     {value: 'vintage', label: 'Vintage'},
     {value: 'refurbished', label: 'Refurbished'},
   ];
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
+  const [loading, setLoading] = useState(false);
 
-  state = {
-    selected: [],
-    inputText: '',
-    options: this.options,
-    loading: false,
-  };
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-  render() {
-    const textField = (
-      <Autocomplete.TextField
-        onChange={this.updateText}
-        label="Tags"
-        value={this.state.inputText}
-        prefix={<Icon source={SearchMinor} color="inkLighter" />}
-        placeholder="Search"
-      />
-    );
-    return (
-      <div style={{height: '225px'}}>
-        <Autocomplete
-          options={this.state.options}
-          selected={this.state.selected}
-          onSelect={this.updateSelection}
-          loading={this.state.loading}
-          textField={textField}
-        />
-      </div>
-    );
-  }
-
-  updateText = (newValue) => {
-    this.setState({inputText: newValue});
-    this.filterAndUpdateOptions(newValue);
-  };
-
-  filterAndUpdateOptions = (inputString) => {
-    if (!this.state.loading) {
-      this.setState({loading: true});
-    }
-
-    setTimeout(() => {
-      if (inputString === '') {
-        this.setState({
-          options: this.options,
-          loading: false,
-        });
-        return;
+      if (!loading) {
+        setLoading(true);
       }
-      const filterRegex = new RegExp(inputString, 'i');
-      const resultOptions = this.options.filter((option) =>
-        option.label.match(filterRegex),
-      );
 
-      this.setState({
-        options: resultOptions,
-        loading: false,
-      });
-    }, 300);
-  };
+      setTimeout(() => {
+        if (value === '') {
+          setOptions(deselectedOptions);
+          setLoading(true);
+          return;
+        }
+        const filterRegex = new RegExp(value, 'i');
+        const resultOptions = options.filter((option) =>
+          option.label.match(filterRegex),
+        );
+        setOptions(resultOptions);
+        setLoading(false);
+      }, 300);
+    },
+    [deselectedOptions],
+  );
 
-  updateSelection = (selected) => {
+  const updateSelection = useCallback((selected) => {
     const selectedText = selected.map((selectedItem) => {
-      const matchedOption = this.options.find((option) => {
+      const matchedOption = options.find((option) => {
         return option.value.match(selectedItem);
       });
       return matchedOption && matchedOption.label;
     });
-    this.setState({selected, inputText: selectedText});
-  };
+    setSelectedOptions(selected);
+    setInputValue(selectedText);
+  }, []);
+
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      prefix={<Icon source={SearchMinor} color="inkLighter" />}
+      placeholder="Search"
+    />
+  );
+
+  return (
+    <div style={{height: '225px'}}>
+      <Autocomplete
+        options={options}
+        selected={selectedOptions}
+        onSelect={updateSelection}
+        loading={loading}
+        textField={textField}
+      />
+    </div>
+  );
 }
 ```
 
 ### Autocomplete with lazy loading
 
 ```jsx
-class AutoCompleteLazyLoadExample extends React.Component {
-  paginationInterval = 25;
-
-  options = Array.from(Array(100)).map((_, index) => ({
+function AutoCompleteLazyLoadExample() {
+  const paginationInterval = 25;
+  const deselectedOptions = Array.from(Array(100)).map((_, index) => ({
     value: `rustic ${index}`,
     label: `Rustic ${index}`,
   }));
 
-  state = {
-    selected: [],
-    inputText: '',
-    options: this.options,
-    visibleOptionIndex: this.paginationInterval,
-  };
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
+  const [visibleOptionIndex, setVisibleOptionIndex] = useState(
+    paginationInterval,
+  );
 
-  render() {
-    const {visibleOptionIndex, selected, options} = this.state;
-    const textField = (
-      <Autocomplete.TextField
-        onChange={this.updateText}
-        label="Tags"
-        value={this.state.inputText}
-        placeholder="Vintage, cotton, summer"
-      />
-    );
-
-    const optionList = options.slice(0, visibleOptionIndex);
-    const selectedTagMarkup =
-      selected.length > 0 ? (
-        <Stack spacing="extraTight">{this.renderTags()}</Stack>
-      ) : null;
-
-    return (
-      <Stack vertical>
-        {selectedTagMarkup}
-        <Autocomplete
-          allowMultiple
-          options={optionList}
-          selected={this.state.selected}
-          textField={textField}
-          onSelect={this.updateSelection}
-          listTitle="Suggested Tags"
-          onLoadMoreResults={this.handleLoadMoreResults}
-        />
-      </Stack>
-    );
-  }
-
-  handleLoadMoreResults = () => {
-    const {visibleOptionIndex} = this.state;
-    const nextVisibleOptionIndex = visibleOptionIndex + this.paginationInterval;
-    if (nextVisibleOptionIndex <= this.options.length - 1) {
-      this.setState({visibleOptionIndex: nextVisibleOptionIndex});
+  const handleLoadMoreResults = useCallback(() => {
+    const nextVisibleOptionIndex = visibleOptionIndex + paginationInterval;
+    if (nextVisibleOptionIndex <= options.length - 1) {
+      setVisibleOptionIndex(nextVisibleOptionIndex);
     }
-  };
+  }, [visibleOptionIndex]);
 
-  updateText = (newValue) => {
-    this.setState({inputText: newValue});
-    this.filterAndUpdateOptions(newValue);
-  };
+  const removeTag = useCallback(
+    (tag) => () => {
+      const options = [...selectedOptions];
+      options.splice(options.indexOf(tag), 1);
+      setSelectedOptions(options);
+    },
+    [selectedOptions],
+  );
 
-  removeTag = (tag) => () => {
-    const {selected: newSelected} = this.state;
-    newSelected.splice(newSelected.indexOf(tag), 1);
-    this.setState({selected: newSelected});
-  };
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-  renderTags = () => {
-    return this.state.selected.map((option) => {
-      let tagLabel = '';
-      tagLabel = option.replace('_', ' ');
-      tagLabel = titleCase(tagLabel);
-      return (
-        <Tag key={`option${option}`} onRemove={this.removeTag(option)}>
-          {tagLabel}
-        </Tag>
+      if (value === '') {
+        setOptions(deselectedOptions);
+        return;
+      }
+
+      const filterRegex = new RegExp(value, 'i');
+      const resultOptions = options.filter((option) =>
+        option.label.match(filterRegex),
       );
-    });
-  };
 
-  filterAndUpdateOptions = (inputString) => {
-    if (inputString === '') {
-      this.setState({options: this.options});
+      let endIndex = resultOptions.length - 1;
+      if (resultOptions.length === 0) {
+        endIndex = 0;
+      }
+      setOptions(resultOptions);
+    },
+    [deselectedOptions],
+  );
 
-      return;
-    }
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      placeholder="Vintage, cotton, summer"
+    />
+  );
 
-    const filterRegex = new RegExp(inputString, 'i');
-    const resultOptions = this.options.filter((option) =>
-      option.label.match(filterRegex),
-    );
+  const hasSelectedOptions = selectedOptions.length > 0;
 
-    let endIndex = resultOptions.length - 1;
+  const tagsMarkup = hasSelectedOptions
+    ? selectedOptions.map((option) => {
+        let tagLabel = '';
+        tagLabel = option.replace('_', ' ');
+        tagLabel = titleCase(tagLabel);
+        return (
+          <Tag key={`option${option}`} onRemove={removeTag(option)}>
+            {tagLabel}
+          </Tag>
+        );
+      })
+    : null;
+  const optionList = options.slice(0, visibleOptionIndex);
+  const selectedTagMarkup = hasSelectedOptions ? (
+    <Stack spacing="extraTight">{tagsMarkup}</Stack>
+  ) : null;
 
-    if (resultOptions.length === 0) {
-      endIndex = 0;
-    }
+  return (
+    <Stack vertical>
+      {selectedTagMarkup}
+      <Autocomplete
+        allowMultiple
+        options={optionList}
+        selected={selectedOptions}
+        textField={textField}
+        onSelect={setSelectedOptions}
+        listTitle="Suggested Tags"
+        onLoadMoreResults={handleLoadMoreResults}
+      />
+    </Stack>
+  );
 
-    this.updateOptions(resultOptions);
-  };
-
-  updateOptions = (options) => {
-    this.setState({options: resultOptions});
-  };
-
-  updateSelection = (selected) => this.setState({selected});
-}
-
-function titleCase(string) {
-  return string
-    .toLowerCase()
-    .split(' ')
-    .map((word) => {
-      return word.replace(word[0], word[0].toUpperCase());
-    })
-    .join(' ');
+  function titleCase(string) {
+    return string
+      .toLowerCase()
+      .split(' ')
+      .map((word) => {
+        return word.replace(word[0], word[0].toUpperCase());
+      })
+      .join(' ');
+  }
 }
 ```
 
@@ -427,92 +393,89 @@ function titleCase(string) {
 Use to indicate there are no search results.
 
 ```jsx
-class AutocompleteExample extends React.Component {
-  options = [
+function AutocompleteExample() {
+  const deselectedOptions = [
     {value: 'rustic', label: 'Rustic'},
     {value: 'antique', label: 'Antique'},
     {value: 'vinyl', label: 'Vinyl'},
     {value: 'vintage', label: 'Vintage'},
     {value: 'refurbished', label: 'Refurbished'},
   ];
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
+  const [loading, setLoading] = useState(false);
 
-  state = {
-    selected: [],
-    inputText: '',
-    options: this.options,
-    loading: false,
-  };
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-  render() {
-    const textField = (
-      <Autocomplete.TextField
-        onChange={this.updateText}
-        label="Tags"
-        value={this.state.inputText}
-        prefix={<Icon source={SearchMinor} color="inkLighter" />}
-        placeholder="Search"
-      />
-    );
-    const emptyState = (
-      <React.Fragment>
-        <Icon source={SearchMinor} />
-        <div style={{textAlign: 'center'}}>
-          <TextContainer>Could not find any results</TextContainer>
-        </div>
-      </React.Fragment>
-    );
-    return (
-      <div style={{height: '225px'}}>
-        <Autocomplete
-          options={this.state.options}
-          selected={this.state.selected}
-          onSelect={this.updateSelection}
-          emptyState={emptyState}
-          loading={this.state.loading}
-          textField={textField}
-        />
-      </div>
-    );
-  }
-
-  updateText = (newValue) => {
-    this.setState({inputText: newValue});
-    this.filterAndUpdateOptions(newValue);
-  };
-
-  filterAndUpdateOptions = (inputString) => {
-    if (!this.state.loading) {
-      this.setState({loading: true});
-    }
-
-    setTimeout(() => {
-      if (inputString === '') {
-        this.setState({
-          options: this.options,
-          loading: false,
-        });
-        return;
+      if (!loading) {
+        setLoading(true);
       }
-      const filterRegex = new RegExp(inputString, 'i');
-      const resultOptions = this.options.filter((option) =>
-        option.label.match(filterRegex),
-      );
-      this.setState({
-        options: resultOptions,
-        loading: false,
-      });
-    }, 300);
-  };
 
-  updateSelection = (selected) => {
-    const selectedText = selected.map((selectedItem) => {
-      const matchedOption = this.options.find((option) => {
-        return option.value.match(selectedItem);
+      setTimeout(() => {
+        if (value === '') {
+          setOptions(deselectedOptions);
+          setLoading(false);
+          return;
+        }
+        const filterRegex = new RegExp(value, 'i');
+        const resultOptions = options.filter((option) =>
+          option.label.match(filterRegex),
+        );
+        setOptions(resultOptions);
+        setLoading(false);
+      }, 300);
+    },
+    [deselectedOptions, loading, options],
+  );
+
+  const updateSelection = useCallback(
+    (selected) => {
+      const selectedText = selected.map((selectedItem) => {
+        const matchedOption = options.find((option) => {
+          return option.value.match(selectedItem);
+        });
+        return matchedOption && matchedOption.label;
       });
-      return matchedOption && matchedOption.label;
-    });
-    this.setState({selected, inputText: selectedText});
-  };
+      setSelectedOptions(selected);
+      setInputValue(selectedText);
+    },
+    [options],
+  );
+
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      prefix={<Icon source={SearchMinor} color="inkLighter" />}
+      placeholder="Search"
+    />
+  );
+
+  const emptyState = (
+    <React.Fragment>
+      <Icon source={SearchMinor} />
+      <div style={{textAlign: 'center'}}>
+        <TextContainer>Could not find any results</TextContainer>
+      </div>
+    </React.Fragment>
+  );
+
+  return (
+    <div style={{height: '225px'}}>
+      <Autocomplete
+        options={options}
+        selected={selectedOptions}
+        onSelect={updateSelection}
+        emptyState={emptyState}
+        loading={loading}
+        textField={textField}
+      />
+    </div>
+  );
 }
 ```
 
