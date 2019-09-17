@@ -158,15 +158,6 @@
         "moreActionsActivatorLabel": "Lebih tindakan",
         "warningMessage": "Untuk memberikan pengalaman pengguna yang lebih baik. Hanya perlu ada maksimum sebanyak {maxPromotedActions} tindakan yang digalakkan."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Penapis",
-        "selectFilterKeyPlaceholder": "Pilih penapis...",
-        "addFilterButtonLabel": "Tambah penapis",
-        "showAllWhere": "Tunjukkan semua {resourceNamePlural} di mana:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "Cari {resourceNamePlural}"
-      },
       "FilterValueSelector": {
         "selectFilterValuePlaceholder": "Pilih penapis..."
       },

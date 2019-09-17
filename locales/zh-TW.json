@@ -158,15 +158,6 @@
         "moreActionsActivatorLabel": "更多動作",
         "warningMessage": "為提供更良好的使用者體驗，您一次舉辦的促銷活動應以 {maxPromotedActions} 項為限。"
       },
-      "FilterCreator": {
-        "filterButtonLabel": "篩選",
-        "selectFilterKeyPlaceholder": "選擇篩選條件......",
-        "addFilterButtonLabel": "新增篩選條件",
-        "showAllWhere": "顯示符合以下條件的所有 {resourceNamePlural}："
-      },
-      "FilterControl": {
-        "textFieldLabel": "搜尋 {resourceNamePlural}"
-      },
       "FilterValueSelector": {
         "selectFilterValuePlaceholder": "選擇篩選條件......"
       },

@@ -22,7 +22,6 @@ const IGNORE_WARN_REGEXES = [
   /Deprecation: Using `Page` to render an embedded app title bar is deprecated and will be removed in v5\.0\./,
   /Deprecation: Using `Toast` in an embedded app is deprecated and will be removed in v5\.0\./,
   /Deprecation: `ResourcePicker` is deprecated and will be removed in v5\.0\./,
-  /Deprecation: <FilterControl \/> is deprecated\. Use <Filters \/> instead\./,
 ];
 
 // eslint-disable-next-line no-console

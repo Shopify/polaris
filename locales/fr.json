@@ -158,15 +158,6 @@
         "moreActionsActivatorLabel": "Autres opérations",
         "warningMessage": "Pour fournir une meilleure expérience aux utilisateurs. Il ne doit y avoir que {maxPromotedActions} actions promues au maximum."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Filtrer",
-        "selectFilterKeyPlaceholder": "Sélectionner un filtre...",
-        "addFilterButtonLabel": "Ajouter un filtre",
-        "showAllWhere": "Afficher tous les {resourceNamePlural} où :"
-      },
-      "FilterControl": {
-        "textFieldLabel": "Rechercher {resourceNamePlural}"
-      },
       "FilterValueSelector": {
         "selectFilterValuePlaceholder": "Sélectionner un filtre..."
       },
