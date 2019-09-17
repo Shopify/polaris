@@ -177,12 +177,9 @@ export function TextField({
   }, []);
 
   useEffect(() => {
-    if (!inputRef.current) return;
-    if (focused) {
-      inputRef.current.focus();
-    } else if (focused === false) {
-      inputRef.current.blur();
-    }
+    const input = inputRef.current;
+    if (!input || focused === undefined) return;
+    focused ? input.focus() : input.blur();
   }, [focused]);
 
   const normalizedValue = value != null ? value : '';

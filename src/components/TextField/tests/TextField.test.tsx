@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {InlineError, Labelled, Connected, Select} from 'components';
 import {mountWithApp} from 'test-utilities';
 import {Resizer, Spinner} from '../components';
@@ -874,21 +875,16 @@ describe('<TextField />', () => {
     });
 
     it('renders a resizer with `minimumLines` set to 1 if `multiline` is true', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField label="TextField" id="MyField" onChange={noop} multiline />,
       );
-
-      expect(
-        textField
-          .findWhere(
-            (wrap) => wrap.is(Resizer) && wrap.prop('minimumLines') === 1,
-          )
-          .exists(),
-      ).toBe(true);
+      expect(textField).toContainReactComponentTimes(Resizer, 1, {
+        minimumLines: 1,
+      });
     });
 
     it('renders a resizer with `minimumLines` set to the `multiline` numeric value', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id="MyField"
@@ -897,18 +893,14 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(
-        textField
-          .findWhere(
-            (wrap) => wrap.is(Resizer) && wrap.prop('minimumLines') === 5,
-          )
-          .exists(),
-      ).toBe(true);
+      expect(textField).toContainReactComponentTimes(Resizer, 1, {
+        minimumLines: 5,
+      });
     });
 
     it('passes the `placeholder` to the resizer `contents` prop', () => {
       const placeholderText = 'placeholder text';
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField
           label="TextField"
           id="MyField"
@@ -918,14 +910,9 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(
-        textField
-          .findWhere(
-            (wrap) =>
-              wrap.is(Resizer) && wrap.prop('contents') === placeholderText,
-          )
-          .exists(),
-      ).toBe(true);
+      expect(textField).toContainReactComponentTimes(Resizer, 1, {
+        contents: placeholderText,
+      });
     });
   });
 
