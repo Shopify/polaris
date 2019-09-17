@@ -1,6 +1,5 @@
 import React from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
 import {InlineError, Labelled, Connected, Select} from 'components';
 import {mountWithApp} from 'test-utilities';
 import {Resizer, Spinner} from '../components';
