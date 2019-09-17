@@ -178,31 +178,23 @@ Allows merchants to select one option from a list.
 - Make sure all options are an either/or choice.
 
 ```jsx
-class ChoiceListExample extends React.Component {
-  state = {
-    selected: ['hidden'],
-  };
+function SingleChoiceListExample() {
+  const [selected, setSelected] = useState(['hidden']);
 
-  render() {
-    const {selected} = this.state;
+  const handleChange = useCallback((value) => setSelected(value), []);
 
-    return (
-      <ChoiceList
-        title={'Company name'}
-        choices={[
-          {label: 'Hidden', value: 'hidden'},
-          {label: 'Optional', value: 'optional'},
-          {label: 'Required', value: 'required'},
-        ]}
-        selected={selected}
-        onChange={this.handleChange}
-      />
-    );
-  }
-
-  handleChange = (value) => {
-    this.setState({selected: value});
-  };
+  return (
+    <ChoiceList
+      title="Company name"
+      choices={[
+        {label: 'Hidden', value: 'hidden'},
+        {label: 'Optional', value: 'optional'},
+        {label: 'Required', value: 'required'},
+      ]}
+      selected={selected}
+      onChange={handleChange}
+    />
+  );
 }
 ```
 
@@ -223,32 +215,24 @@ class ChoiceListExample extends React.Component {
 Allows for accessible error handling by connecting the error message to the field with the error.
 
 ```jsx
-class ChoiceListExample extends React.Component {
-  state = {
-    selected: ['hidden'],
-  };
+function ChoiceListWithErrorExample() {
+  const [selected, setSelected] = useState('hidden');
 
-  render() {
-    const {selected} = this.state;
+  const handleChange = useCallback((value) => setSelected(value), []);
 
-    return (
-      <ChoiceList
-        title="Company name"
-        choices={[
-          {label: 'Hidden', value: 'hidden', describedByError: true},
-          {label: 'Optional', value: 'optional'},
-          {label: 'Required', value: 'required'},
-        ]}
-        selected={selected}
-        onChange={this.handleChange}
-        error="Company name cannot be hidden at this time"
-      />
-    );
-  }
-
-  handleChange = (value) => {
-    this.setState({selected: value});
-  };
+  return (
+    <ChoiceList
+      title="Company name"
+      choices={[
+        {label: 'Hidden', value: 'hidden', describedByError: true},
+        {label: 'Optional', value: 'optional'},
+        {label: 'Required', value: 'required'},
+      ]}
+      selected={selected}
+      onChange={handleChange}
+      error="Company name cannot be hidden at this time"
+    />
+  );
 }
 ```
 
@@ -271,41 +255,33 @@ Allows merchants to select multiple options from a list.
 - Avoid options that are an either/or choice.
 
 ```jsx
-class ChoiceListExample extends React.Component {
-  state = {
-    selected: ['hidden'],
-  };
+function MultiChoiceListExample() {
+  const [selected, setSelected] = useState(['hidden']);
 
-  render() {
-    const {selected} = this.state;
+  const handleChange = useCallback((value) => setSelected(value), []);
 
-    return (
-      <ChoiceList
-        allowMultiple
-        title={'While the customer is checking out'}
-        choices={[
-          {
-            label: 'Use the shipping address as the billing address by default',
-            value: 'shipping',
-            helpText:
-              'Reduces the number of fields required to check out. The billing address can still be edited.',
-          },
-          {
-            label: 'Require a confirmation step',
-            value: 'confirmation',
-            helpText:
-              'Customers must review their order details before purchasing.',
-          },
-        ]}
-        selected={selected}
-        onChange={this.handleChange}
-      />
-    );
-  }
-
-  handleChange = (value) => {
-    this.setState({selected: value});
-  };
+  return (
+    <ChoiceList
+      allowMultiple
+      title="While the customer is checking out"
+      choices={[
+        {
+          label: 'Use the shipping address as the billing address by default',
+          value: 'shipping',
+          helpText:
+            'Reduces the number of fields required to check out. The billing address can still be edited.',
+        },
+        {
+          label: 'Require a confirmation step',
+          value: 'confirmation',
+          helpText:
+            'Customers must review their order details before purchasing.',
+        },
+      ]}
+      selected={selected}
+      onChange={handleChange}
+    />
+  );
 }
 ```
 
@@ -328,49 +304,45 @@ class ChoiceListExample extends React.Component {
 Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered. Works for both single-choice and multi-choice list.
 
 ```jsx
-class ChoiceListExample extends React.Component {
-  state = {
-    selected: ['none'],
-    textFieldValue: '',
-  };
+function SingleOrMultiChoiceListWithChildrenContextExample() {
+  const [selected, setSelected] = useState(['none']);
+  const [textFieldValue, setTextFieldValue] = useState('');
 
-  render() {
-    const {selected, textFieldValue} = this.state;
+  const handleChoiceListChange = useCallback((value) => setSelected(value), []);
 
-    return (
-      <ChoiceList
-        title={'Discount minimum requirements'}
-        choices={[
-          {label: 'None', value: 'none'},
-          {label: 'Minimum purchase', value: 'minimum_purchase'},
-          {
-            label: 'Minimum quantity',
-            value: 'minimum_quantity',
-            renderChildren: () => {
-              return (
-                <TextField
-                  label="Minimum Quantity"
-                  labelHidden
-                  onChange={this.handleTextFieldChange}
-                  value={textFieldValue}
-                />
-              );
-            },
-          },
-        ]}
-        selected={selected}
-        onChange={this.handleChange}
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    [],
+  );
+
+  const renderChildren = useCallback(
+    () => (
+      <TextField
+        label="Minimum Quantity"
+        labelHidden
+        onChange={handleTextFieldChange}
+        value={textFieldValue}
       />
-    );
-  }
+    ),
+    [handleTextFieldChange, textFieldValue],
+  );
 
-  handleChange = (value) => {
-    this.setState({selected: value});
-  };
-
-  handleTextFieldChange = (value) => {
-    this.setState({textFieldValue: value});
-  };
+  return (
+    <ChoiceList
+      title="Discount minimum requirements"
+      choices={[
+        {label: 'None', value: 'none'},
+        {label: 'Minimum purchase', value: 'minimum_purchase'},
+        {
+          label: 'Minimum quantity',
+          value: 'minimum_quantity',
+          renderChildren,
+        },
+      ]}
+      selected={selected}
+      onChange={handleChoiceListChange}
+    />
+  );
 }
 ```
 
@@ -381,53 +353,48 @@ class ChoiceListExample extends React.Component {
 Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
 
 ```jsx
-class ChoiceListExample extends React.Component {
-  state = {
-    selected: ['none'],
-    textFieldValue: '',
-  };
+function SingleOrMultuChoiceListWithChildrenContextWhenSelectedExample() {
+  const [selected, setSelected] = useState(['none']);
+  const [textFieldValue, setTextFieldValue] = useState('');
 
-  render() {
-    const {selected, textFieldValue} = this.state;
+  const handleChoiceListChange = useCallback((value) => setSelected(value), []);
 
-    return (
-      <div style={{height: '150px'}}>
-        <ChoiceList
-          title={'Discount minimum requirements'}
-          choices={[
-            {label: 'None', value: 'none'},
-            {label: 'Minimum purchase', value: 'minimum_purchase'},
-            {
-              label: 'Minimum quantity',
-              value: 'minimum_quantity',
-              renderChildren: (isSelected) => {
-                return (
-                  isSelected && (
-                    <TextField
-                      label="Minimum Quantity"
-                      labelHidden
-                      onChange={this.handleTextFieldChange}
-                      value={textFieldValue}
-                    />
-                  )
-                );
-              },
-            },
-          ]}
-          selected={selected}
-          onChange={this.handleChange}
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    [],
+  );
+
+  const renderChildren = useCallback(
+    (isSelected) =>
+      isSelected && (
+        <TextField
+          label="Minimum Quantity"
+          labelHidden
+          onChange={handleTextFieldChange}
+          value={textFieldValue}
         />
-      </div>
-    );
-  }
+      ),
+    [handleTextFieldChange, textFieldValue],
+  );
 
-  handleChange = (value) => {
-    this.setState({selected: value});
-  };
-
-  handleTextFieldChange = (value) => {
-    this.setState({textFieldValue: value});
-  };
+  return (
+    <div style={{height: '150px'}}>
+      <ChoiceList
+        title="Discount minimum requirements"
+        choices={[
+          {label: 'None', value: 'none'},
+          {label: 'Minimum purchase', value: 'minimum_purchase'},
+          {
+            label: 'Minimum quantity',
+            value: 'minimum_quantity',
+            renderChildren,
+          },
+        ]}
+        selected={selected}
+        onChange={handleChoiceListChange}
+      />
+    </div>
+  );
 }
 ```
 
