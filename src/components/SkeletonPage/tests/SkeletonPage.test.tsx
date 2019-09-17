@@ -33,7 +33,7 @@ describe('<SkeletonPage />', () => {
   describe('title', () => {
     it('renders title when a title is provided', () => {
       const skeletonPage = mountWithAppProvider(
-        <SkeletonPage title="Products" />,
+        <SkeletonPage title="Products" narrowWidth />,
       );
       const displayText = skeletonPage.find(DisplayText);
       expect(displayText).toHaveLength(1);
@@ -41,7 +41,7 @@ describe('<SkeletonPage />', () => {
     });
 
     it('does not render a title when a title is not provided', () => {
-      const skeletonPage = mountWithAppProvider(<SkeletonPage />);
+      const skeletonPage = mountWithAppProvider(<SkeletonPage fullWidth />);
       const displayText = skeletonPage.find(DisplayText);
       expect(displayText).toHaveLength(0);
     });
