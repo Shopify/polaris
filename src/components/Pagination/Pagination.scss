@@ -168,6 +168,10 @@ $stacking-order: (
   border-bottom-left-radius: 0;
 }
 
+.ButtonWithLabel {
+  border-radius: border-radius();
+}
+
 .Label {
   padding: 0 spacing(tight);
   display: flex;
