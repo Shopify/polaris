@@ -79,13 +79,20 @@ describe('<Pagination />', () => {
   });
 
   describe('accessibilityLabel', () => {
-    it('inserts as an aria label', () => {
+    it('inserts prop as aria-label', () => {
       const accessibilityLabel = 'test';
       const pagination = mountWithAppProvider(
         <Pagination accessibilityLabel={accessibilityLabel} />,
       );
       expect(pagination.find('nav').prop('aria-label')).toStrictEqual(
         accessibilityLabel,
+      );
+    });
+
+    it('uses default value for aria-label', () => {
+      const pagination = mountWithAppProvider(<Pagination />);
+      expect(pagination.find('nav').prop('aria-label')).toStrictEqual(
+        'Pagination',
       );
     });
   });
