@@ -6,17 +6,14 @@
   @return rem(28px);
 }
 
-/// @deprecated Copy into consuming project
 @function control-vertical-padding() {
   @return (control-height() - line-height(input) - rem(2px)) / 2;
 }
 
-/// @deprecated Copy into consuming project
 @function control-icon-transition() {
   @return transform duration(fast) easing(in) easing(out);
 }
 
-/// @deprecated Copy into consuming project
 @mixin control-backdrop($style: base) {
   @if $style == base {
     background-color: color('sky', 'dark');

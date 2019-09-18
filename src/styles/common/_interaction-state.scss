@@ -1,0 +1,26 @@
+/// Sets the background-image and box-shadow for single or multiple given
+/// interaction states.
+///
+/// @param {argList} $interaction-states... - Accepts single or multiple
+/// interactions states.
+@mixin state($interaction-states...) {
+  $backgrounds: ();
+
+  @each $state in $interaction-states {
+    $colors: color(state, $state);
+    $backgrounds: append(
+      $backgrounds,
+      linear-gradient($colors, $colors),
+      comma
+    );
+
+    @if $state == 'focused' {
+      box-shadow: inset rem(2px) 0 0 color('indigo');
+    }
+
+    @if $state == 'focused-destructive' {
+      box-shadow: inset rem(2px) 0 0 color('red');
+    }
+  }
+  background-image: $backgrounds;
+}

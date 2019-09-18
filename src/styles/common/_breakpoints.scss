@@ -21,7 +21,6 @@ $partially-condensed-min-page: $partially-condensed-content +
 $nav-size: em(layout-width(nav));
 $nav-min-window: em(layout-width(page-with-nav));
 
-/// @deprecated Copy into consuming project
 @function breakpoint($value, $adjustment: 0) {
   $adjusted-value: em($adjustment);
 
@@ -37,7 +36,6 @@ $nav-min-window: em(layout-width(page-with-nav));
   @return em($value) + $adjusted-value;
 }
 
-/// @deprecated Copy into consuming project
 @mixin page-content-breakpoint-before($size) {
   $size: breakpoint($size);
 
@@ -80,7 +78,6 @@ $nav-min-window: em(layout-width(page-with-nav));
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin page-content-breakpoint-after($size) {
   $size: breakpoint($size);
 
@@ -123,84 +120,72 @@ $nav-min-window: em(layout-width(page-with-nav));
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin breakpoint-after($breakpoint, $inclusive: true) {
   @media (min-width: #{breakpoint($breakpoint, if($inclusive, 0, 1px))}) {
     @content;
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin breakpoint-before($breakpoint, $inclusive: true) {
   @media (max-width: #{breakpoint($breakpoint, if($inclusive, 0, -1px))}) {
     @content;
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin frame-with-nav-when-not-max-width() {
   @include breakpoint-before($frame-with-nav-max-width) {
     @content;
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin page-when-not-max-width() {
   @include breakpoint-before($page-max-width) {
     @content;
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin page-content-when-layout-stacked() {
   @include page-content-breakpoint-before($stacked-content) {
     @content;
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin page-content-when-layout-not-stacked() {
   @include page-content-breakpoint-after($stacked-content) {
     @content;
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin page-content-when-partially-condensed() {
   @include page-content-breakpoint-before($not-condensed-content) {
     @content;
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin page-content-when-not-partially-condensed() {
   @include page-content-breakpoint-after($not-condensed-content) {
     @content;
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin page-content-when-fully-condensed() {
   @include page-content-breakpoint-before($partially-condensed-content) {
     @content;
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin page-content-when-not-fully-condensed() {
   @include page-content-breakpoint-after($partially-condensed-content) {
     @content;
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin frame-when-nav-displayed() {
   @include breakpoint-after(layout-width(page-with-nav)) {
     @content;
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin frame-when-nav-hidden() {
   @include breakpoint-before(layout-width(page-with-nav), false) {
     @content;

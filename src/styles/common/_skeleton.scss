@@ -16,7 +16,6 @@ $thumbnail-sizes: (
   @return map-get($thumbnail-sizes, $size);
 }
 
-/// @deprecated Copy into consuming project
 @mixin skeleton-shimmer {
   :global {
     // This is a global animation, defined in /src/styles/global.scss
@@ -27,7 +26,6 @@ $thumbnail-sizes: (
   will-change: opacity;
 }
 
-/// @deprecated Copy into consuming project
 @mixin skeleton-content {
   position: relative;
 
@@ -48,7 +46,6 @@ $thumbnail-sizes: (
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin skeleton-page-secondary-actions-layout {
   margin-top: spacing(tight);
   display: flex;
@@ -57,13 +54,11 @@ $thumbnail-sizes: (
   align-items: center;
 }
 
-/// @deprecated Copy into consuming project
 @mixin skeleton-page-header-has-secondary-actions {
   padding-top: rem(24px);
   margin-top: 0;
 }
 
-/// @deprecated Copy into consuming project
 @mixin skeleton-page-header-layout {
   padding-bottom: spacing(tight);
 }

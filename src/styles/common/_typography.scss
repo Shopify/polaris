@@ -12,7 +12,6 @@ $typography-condensed: em(640px);
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-style-caption {
   font-size: font-size(caption);
   // stylelint-disable-next-line font-weight-notation
@@ -25,7 +24,6 @@ $typography-condensed: em(640px);
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-style-heading {
   font-size: font-size(heading);
   // stylelint-disable-next-line font-weight-notation
@@ -37,7 +35,6 @@ $typography-condensed: em(640px);
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-style-subheading {
   font-size: font-size(subheading);
   // stylelint-disable-next-line font-weight-notation
@@ -51,7 +48,6 @@ $typography-condensed: em(640px);
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-style-input {
   font-size: font-size(input);
   // stylelint-disable-next-line font-weight-notation
@@ -66,7 +62,6 @@ $typography-condensed: em(640px);
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-style-body {
   font-size: font-size(body);
   // stylelint-disable-next-line font-weight-notation
@@ -81,7 +76,6 @@ $typography-condensed: em(640px);
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-style-button {
   font-size: font-size(button);
   // stylelint-disable-next-line font-weight-notation
@@ -96,7 +90,6 @@ $typography-condensed: em(640px);
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-style-button-large {
   font-size: font-size(button-large);
   // stylelint-disable-next-line font-weight-notation
@@ -111,7 +104,6 @@ $typography-condensed: em(640px);
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-style-display-x-large {
   font-size: font-size(display-x-large);
   // stylelint-disable-next-line font-weight-notation
@@ -124,7 +116,6 @@ $typography-condensed: em(640px);
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-style-display-large {
   font-size: font-size(display-large);
   // stylelint-disable-next-line font-weight-notation
@@ -137,7 +128,6 @@ $typography-condensed: em(640px);
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-style-display-medium {
   font-size: font-size(display-medium);
   // stylelint-disable-next-line font-weight-notation
@@ -150,7 +140,6 @@ $typography-condensed: em(640px);
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-style-display-small {
   font-size: font-size(display-small);
   // stylelint-disable-next-line font-weight-notation
@@ -163,42 +152,35 @@ $typography-condensed: em(640px);
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-emphasis-placeholder() {
   color: color('ink', 'lightest');
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-emphasis-subdued($for-background: null) {
   color: color('ink', 'lighter', $for-background: $for-background);
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-emphasis-strong {
   font-weight: 600;
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-emphasis-normal($for-background: null) {
   font-weight: 400;
   color: color(ink, $for-background: $for-background);
 }
 
-/// @deprecated Copy into consuming project
 @mixin text-breakword {
   word-wrap: break-word;
   word-break: break-word;
   overflow-wrap: break-word;
 }
 
-/// @deprecated Copy into consuming project
 @mixin truncate {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-/// @deprecated Copy into consuming project
 @mixin print-hidden {
   @media print {
     // stylelint-disable-next-line declaration-no-important

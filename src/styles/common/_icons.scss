@@ -2,7 +2,6 @@
   @return rem(20px);
 }
 
-/// @deprecated Copy into consuming project
 @mixin recolor-icon($fill-color, $secondary-color: null, $filter-color: null) {
   svg {
     fill: $fill-color;
@@ -19,7 +18,6 @@
   }
 }
 
-/// @deprecated Copy into consuming project
 @mixin color-icon($value, $hue: base) {
   svg {
     fill: color($value, $hue);

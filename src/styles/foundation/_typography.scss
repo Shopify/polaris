@@ -102,6 +102,20 @@ $font-size-data: (
   ),
 );
 
+$font-weight-data: (
+  caption: 400,
+  heading: 600,
+  subheading: 700,
+  input: 400,
+  body: 400,
+  button: 400,
+  button-large: 400,
+  display-x-large: 600,
+  display-large: 600,
+  display-medium: 400,
+  display-small: 400,
+);
+
 /// Returns the font stack for a given family.
 ///
 /// @param {String} $family - The key for the given family.
@@ -146,5 +160,20 @@ $font-size-data: (
     @return $fetched-font-size;
   } @else {
     @error 'Font size `#{$style} - #{$variant}` not found. Available font sizes: #{available-names($line-height-data)}';
+  }
+}
+
+/// Returns the font weight for a given text style.
+///
+/// @param {String} $weight - The font weight.
+/// @return {Number} The font weight for the text style.
+
+@function font-weight($weight) {
+  $fetched-font-weight: map-get($font-weight-data, $weight);
+
+  @if type-of($fetched-font-weight) != null {
+    @return $fetched-font-weight;
+  } @else {
+    @error 'Font weight `#{$weight}` not found. Available font weights: #{available-names($font-weight-data)}';
   }
 }
