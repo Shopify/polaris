@@ -64,9 +64,8 @@ export function Pagination({
 
   const node: React.RefObject<HTMLElement> = React.createRef();
 
-  const navLabel = accessibilityLabel
-    ? accessibilityLabel
-    : intl.translate('Polaris.Pagination.pagination');
+  const navLabel =
+    accessibilityLabel || intl.translate('Polaris.Pagination.pagination');
 
   const className = classNames(styles.Pagination, plain && styles.plain);
   const previousClassName = classNames(styles.Button, styles.PreviousButton);
