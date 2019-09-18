@@ -10,6 +10,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added new label prop to `Pagination` which is used to insert contextual info between navigation buttons [#2098](https://github.com/Shopify/polaris-react/pull/2098)
+
 ### Bug fixes
 
 ### Documentation

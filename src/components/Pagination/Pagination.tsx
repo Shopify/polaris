@@ -68,16 +68,14 @@ export function Pagination({
     accessibilityLabel || intl.translate('Polaris.Pagination.pagination');
 
   const className = classNames(styles.Pagination, plain && styles.plain);
-  const previousClassName = classNames(
-    styles.Button,
-    styles.PreviousButton,
-    label && styles.ButtonWithLabel,
-  );
-  const nextClassName = classNames(
-    styles.Button,
-    styles.NextButton,
-    label && styles.ButtonWithLabel,
-  );
+
+  const previousClassName = !label
+    ? classNames(styles.Button, styles.PreviousButton)
+    : classNames(styles.Button);
+
+  const nextClassName = !label
+    ? classNames(styles.Button, styles.NextButton)
+    : classNames(styles.Button);
 
   const previousButton = previousURL ? (
     <UnstyledLink
