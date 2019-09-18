@@ -78,6 +78,18 @@ describe('<Pagination />', () => {
     });
   });
 
+  describe('accessibilityLabel', () => {
+    it('inserts as an aria label', () => {
+      const accessibilityLabel = 'test';
+      const pagination = mountWithAppProvider(
+        <Pagination accessibilityLabel={accessibilityLabel} />,
+      );
+      expect(pagination.find('nav').prop('aria-label')).toStrictEqual(
+        accessibilityLabel,
+      );
+    });
+  });
+
   describe('label', () => {
     it('renders as text', () => {
       const label = 'test';
