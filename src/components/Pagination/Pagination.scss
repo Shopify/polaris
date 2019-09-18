@@ -78,7 +78,7 @@ $stacking-order: (
       border-radius: border-radius();
       will-change: background;
       transition-property: background;
-      transition-duration: duration();
+      transition-duration: $duration-base;
       transition-timing-function: easing();
     }
   }
@@ -115,7 +115,7 @@ $stacking-order: (
   user-select: none;
   text-decoration: none;
   transition-property: color, background, border, box-shadow;
-  transition-duration: duration();
+  transition-duration: $duration-base;
   transition-timing-function: easing();
 
   &:hover {

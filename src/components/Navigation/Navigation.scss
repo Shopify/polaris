@@ -228,7 +228,7 @@ $secondary-item-font-size: rem(15px);
     margin-right: spacing(extra-tight);
     padding: spacing(extra-tight) spacing();
     border-radius: border-radius();
-    transition: background-color duration() easing();
+    transition: background-color $duration-base easing();
 
     @include breakpoint-after(nav-min-window-corrected()) {
       height: nav(desktop-nav-height);

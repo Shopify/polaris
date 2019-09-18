@@ -1,5 +1,5 @@
 /// Used to create the shimmer effect of skeleton components
-$skeleton-shimmer-duration: duration(slower) * 2;
+$skeleton-shimmer-duration: $duration-slower * 2;
 
 // Used by both Thumbnail and SkeletonThumbnail
 $small-thumbnail-size: rem(40px);

@@ -27,7 +27,7 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   @include text-style-input;
   width: 100%;
   will-change: opacity, display;
-  transition: opacity easing() duration();
+  transition: opacity easing() $duration-base;
   display: none;
   align-items: center;
   flex-wrap: wrap;
@@ -176,7 +176,7 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
 .Slide {
   will-change: transform;
   transform: translateY(0);
-  transition: transform easing() duration();
+  transition: transform easing() $duration-base;
 }
 
 .Slide-appear,

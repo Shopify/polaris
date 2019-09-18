@@ -42,7 +42,7 @@ $spinner-size: rem(20px);
 }
 
 .Icon {
-  transition: color duration() easing();
+  transition: color $duration-base easing();
 
   &:first-child {
     // This compensates for the typical icon used in buttons being
@@ -115,7 +115,7 @@ $spinner-size: rem(20px);
 
 .loading {
   position: relative;
-  transition: border-color duration() easing();
+  transition: border-color $duration-base easing();
 
   &,
   &:hover,
@@ -309,7 +309,7 @@ $spinner-size: rem(20px);
 
     &::before {
       content: '';
-      transition: opacity duration() easing();
+      transition: opacity $duration-base easing();
       position: absolute;
       top: 0;
       right: 0;

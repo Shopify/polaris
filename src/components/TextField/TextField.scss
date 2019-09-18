@@ -188,7 +188,7 @@ $stacking-order: (
     border: border-width(thick) solid color('indigo');
     border-radius: inherit;
     opacity: 0;
-    transition: opacity duration() easing();
+    transition: opacity $duration-base easing();
     pointer-events: none;
   }
 }
@@ -291,8 +291,8 @@ $stacking-order: (
   );
   border: none;
   border-left: border(dark);
-  transition: background duration(fast) easing(),
-    box-shadow duration(fast) easing();
+  transition: background $duration-fast easing(),
+    box-shadow $duration-fast easing();
 
   &:focus {
     outline: none;

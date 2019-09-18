@@ -13,7 +13,7 @@
 
 /// @deprecated Copy into consuming project
 @function control-icon-transition() {
-  @return transform duration(fast) easing(in) easing(out);
+  @return transform $duration-fast easing(in) easing(out);
 }
 
 /// @deprecated Copy into consuming project
@@ -24,7 +24,7 @@
     box-shadow: 0 0 0 1px transparent, shadow(faint);
     border-radius: border-radius();
     transition-property: box-shadow, background-color;
-    transition-duration: duration();
+    transition-duration: $duration-base;
     transition-timing-function: easing();
 
     &::after {

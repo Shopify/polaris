@@ -24,7 +24,7 @@
   position: absolute;
   display: inline-flex;
   opacity: 0;
-  transition: transform duration(slower) ease, opacity duration(slower) ease;
+  transition: transform $duration-slower ease, opacity $duration-slower ease;
   transform: translateY(var(--toast-translate-y-out));
 }
 

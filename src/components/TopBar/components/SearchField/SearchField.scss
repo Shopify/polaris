@@ -68,7 +68,7 @@ $stacking-order: (
   outline: none;
   color: var(--top-bar-color);
   will-change: fill, color;
-  transition: fill duration() easing(), color duration() easing();
+  transition: fill $duration-base easing(), color $duration-base easing();
   appearance: textfield;
 
   &::placeholder {
@@ -119,7 +119,7 @@ $stacking-order: (
   left: 0;
   background-color: var(--top-bar-background-lighter);
   will-change: background-color;
-  transition: background-color duration() easing();
+  transition: background-color $duration-base easing();
   border-radius: border-radius();
   animation: toLightBackground 0.01ms;
 }

@@ -12,7 +12,7 @@ $backdrop-color: rgba(33, 43, 54, 0.4);
   left: 0;
   display: block;
   background-color: $backdrop-color;
-  animation: fade-in duration() $entry-iterations forwards;
+  animation: fade-in $duration-base $entry-iterations forwards;
   opacity: 1;
   will-change: opacity;
 }

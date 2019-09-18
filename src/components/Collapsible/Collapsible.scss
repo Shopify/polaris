@@ -11,7 +11,7 @@
 
 .animating {
   transition-property: opacity, height;
-  transition-duration: duration(slow);
+  transition-duration: $duration-slow;
   transition-timing-function: easing(out);
 }
 

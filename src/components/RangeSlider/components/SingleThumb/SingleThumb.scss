@@ -97,7 +97,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     box-shadow: $range-thumb-shadow;
     appearance: none;
     transition-property: border-color, box-shadow;
-    transition-duration: duration();
+    transition-duration: $duration-base;
     transition-timing-function: easing();
 
     &:hover {
@@ -181,7 +181,7 @@ $range-output-spacing: rem(16px);
   visibility: hidden;
   pointer-events: none;
   transition-property: opacity, visibility;
-  transition-duration: duration();
+  transition-duration: $duration-base;
   transition-timing-function: easing();
 
   .Input:hover + &,
@@ -201,7 +201,7 @@ $range-output-spacing: rem(16px);
   background-color: color('ink');
   border-radius: border-radius();
   transition-property: transform;
-  transition-duration: duration();
+  transition-duration: $duration-base;
   transition-timing-function: easing();
 
   // stylelint-disable selector-max-specificity

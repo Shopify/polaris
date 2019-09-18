@@ -45,8 +45,8 @@
   width: 0;
   will-change: width;
   background-color: color('teal');
-  animation: fillup duration(slowest) easing();
-  transition: width duration(slowest) easing();
+  animation: fillup $duration-slowest easing();
+  transition: width $duration-slowest easing();
 
   @media screen and (-ms-high-contrast: active) {
     border: progress-bar-height() solid

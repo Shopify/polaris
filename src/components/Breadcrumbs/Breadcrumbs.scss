@@ -62,7 +62,7 @@ $stacking-order: (
     height: control-slim-height();
     border-radius: border-radius();
     will-change: background;
-    transition: background duration() easing();
+    transition: background $duration-base easing();
   }
 }
 

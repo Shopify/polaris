@@ -34,7 +34,7 @@
   user-select: none;
   text-decoration: none;
   transition-property: background, border, box-shadow;
-  transition-duration: duration();
+  transition-duration: $duration-base;
   transition-timing-function: easing();
   -webkit-tap-highlight-color: transparent;
 
@@ -184,7 +184,7 @@
   margin: -2px -5px;
   background: plain-button-background();
   border-radius: border-radius();
-  transition: opacity duration() easing();
+  transition: opacity $duration-base easing();
 }
 
 /// @deprecated Copy into consuming project

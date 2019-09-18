@@ -15,7 +15,7 @@ $large-size: rem(44px);
 }
 
 .Spinner {
-  animation: loading duration(slowest) linear infinite;
+  animation: loading $duration-slowest linear infinite;
   color: transparent;
 }
 

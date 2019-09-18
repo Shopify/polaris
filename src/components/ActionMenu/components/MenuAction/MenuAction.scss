@@ -43,7 +43,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
     background: transparent;
     will-change: background;
     transition-property: background;
-    transition-duration: duration();
+    transition-duration: $duration-base;
     transition-timing-function: easing();
   }
 
