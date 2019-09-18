@@ -163,9 +163,16 @@ export function Pagination({
       />
     ));
 
+  const labelTextMarkup =
+    hasNext && hasPrevious ? (
+      <TextStyle>{label}</TextStyle>
+    ) : (
+      <TextStyle variation="subdued">{label}</TextStyle>
+    );
+
   const labelMarkup = label ? (
     <div className={styles.Label} aria-live="polite">
-      <TextStyle variation="subdued">{label}</TextStyle>
+      {labelTextMarkup}
     </div>
   ) : null;
 
