@@ -40,16 +40,16 @@ $secondary-action-horizontal-padding: 1.5 * rem($spacing-tight);
 
 @mixin banner-variants($in-page: false) {
   @include banner-attributes(
-    color('ink', 'lighter'),
-    color('sky', 'light'),
+    $color-ink-lighter,
+    $color-sky-light,
     $in-page,
     false
   );
 
   &.statusSuccess {
     @include banner-attributes(
-      color('green'),
-      color('green', 'lighter'),
+      $color-green,
+      $color-green-lighter,
       $in-page,
       true
     );
@@ -57,8 +57,8 @@ $secondary-action-horizontal-padding: 1.5 * rem($spacing-tight);
 
   &.statusInfo {
     @include banner-attributes(
-      color('teal'),
-      color('teal', 'lighter'),
+      $color-teal,
+      $color-teal-lighter,
       $in-page,
       true
     );
@@ -66,20 +66,15 @@ $secondary-action-horizontal-padding: 1.5 * rem($spacing-tight);
 
   &.statusWarning {
     @include banner-attributes(
-      color('yellow'),
-      color('yellow', 'lighter'),
+      $color-yellow,
+      $color-yellow-lighter,
       $in-page,
       true
     );
   }
 
   &.statusCritical {
-    @include banner-attributes(
-      color('red'),
-      color('red', 'lighter'),
-      $in-page,
-      true
-    );
+    @include banner-attributes($color-red, $color-red-lighter, $in-page, true);
   }
 }
 
@@ -174,7 +169,7 @@ $secondary-action-horizontal-padding: 1.5 * rem($spacing-tight);
     (-0.5 * $secondary-action-horizontal-padding);
   padding: $secondary-action-vertical-padding
     $secondary-action-horizontal-padding;
-  color: color('ink');
+  color: $color-ink;
   padding-left: rem(6px);
 
   &:hover > .Text::after {

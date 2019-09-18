@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$shadow-color: rgba(color('black'), 0.1);
+$shadow-color: rgba($color-black, 0.1);
 $shadow-size: rem(20px);
 $shadow-bottom: inset 0 (-1 * $shadow-size) $shadow-size (-1 * $shadow-size)
   $shadow-color;

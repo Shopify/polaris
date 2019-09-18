@@ -12,7 +12,7 @@ $nav-max-width: rem(360px);
   max-width: $nav-max-width;
   height: 100%;
   min-height: 100%;
-  background: color('sky', 'light');
+  background: $color-sky-light;
   -webkit-overflow-scrolling: touch;
 
   @include safe-area-for(padding-bottom, 0, bottom);
@@ -56,7 +56,7 @@ $disabled-fade: 0.6;
 
 .Item-selected {
   font-weight: 600;
-  color: color('indigo', 'dark');
+  color: $color-indigo-dark;
   background-color: $item-selected-background;
   @media (-ms-high-contrast: active) {
     background-color: ms-high-contrast-color('selected-text-background');
@@ -64,13 +64,13 @@ $disabled-fade: 0.6;
   // stylelint-disable selector-max-specificity
   .Icon,
   &:focus .Icon {
-    @include recolor-icon(color('indigo'), color('white'));
+    @include recolor-icon($color-indigo, $color-white);
   }
   // stylelint-enable selector-max-specificity
 }
 
 .Item-disabled {
-  color: color('ink', 'lightest');
+  color: $color-ink-lightest;
   pointer-events: none;
   opacity: $disabled-fade;
 }
@@ -111,8 +111,8 @@ $disabled-fade: 0.6;
 
 .SecondaryAction {
   @include recolor-icon(
-    color('ink', 'lightest'),
-    color('white'),
+    $color-ink-lightest,
+    $color-white,
     filter('ink', 'lightest')
   );
   display: flex;
@@ -129,7 +129,7 @@ $disabled-fade: 0.6;
   &:hover,
   &:focus,
   &:active {
-    @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
+    @include recolor-icon($color-indigo, $color-white, filter('indigo'));
     @include state(hover);
   }
 
@@ -156,12 +156,12 @@ $secondary-item-font-size: rem(15px);
     font-size: $secondary-item-font-size;
     font-weight: 400;
     line-height: nav(item-line-height);
-    color: color('ink', 'light');
+    color: $color-ink-light;
     &:hover {
-      color: color('indigo', 'dark');
+      color: $color-indigo-dark;
     }
     &:focus {
-      color: color('indigo', 'dark');
+      color: $color-indigo-dark;
     }
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: rem(14px);
@@ -179,11 +179,11 @@ $secondary-item-font-size: rem(15px);
   }
   .Item-selected {
     font-weight: 600;
-    color: color('indigo', 'dark');
+    color: $color-indigo-dark;
   }
   .Item-disabled {
     font-weight: 400;
-    color: color('ink', 'lightest');
+    color: $color-ink-lightest;
   }
 }
 
@@ -213,13 +213,13 @@ $secondary-item-font-size: rem(15px);
   align-items: center;
   min-height: nav(desktop-nav-height);
   padding-left: rem($spacing-base);
-  color: color('ink', 'lighter');
+  color: $color-ink-lighter;
 
   .Action {
     @include unstyled-button;
     @include recolor-icon(
-      color('ink', 'lightest'),
-      color('white'),
+      $color-ink-lightest,
+      $color-white,
       filter('ink', 'lightest')
     );
     display: flex;
@@ -237,7 +237,7 @@ $secondary-item-font-size: rem(15px);
     &:hover,
     &:active,
     &:focus {
-      @include recolor-icon(color('indigo'), null, filter('indigo'));
+      @include recolor-icon($color-indigo, null, filter('indigo'));
       @include state(hover);
     }
   }
@@ -248,8 +248,8 @@ $secondary-item-font-size: rem(15px);
   @include text-emphasis-subdued;
 
   &:hover {
-    @include recolor-icon(color('indigo'), null, filter('indigo'));
-    color: color('indigo');
+    @include recolor-icon($color-indigo, null, filter('indigo'));
+    color: $color-indigo;
   }
 
   &:focus {

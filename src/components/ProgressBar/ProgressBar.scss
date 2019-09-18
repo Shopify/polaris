@@ -20,7 +20,7 @@
 .ProgressBar {
   overflow: hidden;
   width: 100%;
-  background-color: color('sky', 'base');
+  background-color: $color-sky;
   border-radius: border-radius();
 
   @media screen and (-ms-high-contrast: active) {
@@ -44,7 +44,7 @@
   height: inherit;
   width: 0;
   will-change: width;
-  background-color: color('teal');
+  background-color: $color-teal;
   animation: fillup $duration-slowest easing();
   transition: width $duration-slowest easing();
 

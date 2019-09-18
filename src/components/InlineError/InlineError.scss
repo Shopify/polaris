@@ -4,8 +4,8 @@ $error-icon-adjustment: rem(2px);
 
 .InlineError {
   display: flex;
-  color: color('red', 'dark');
-  fill: color('red', 'dark');
+  color: $color-red-dark;
+  fill: $color-red-dark;
 }
 
 .Icon {

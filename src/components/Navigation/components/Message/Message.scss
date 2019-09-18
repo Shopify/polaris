@@ -6,5 +6,5 @@ $message-vertical-padding: ($message-min-height - line-height(body)) / 2;
 
 .Message {
   padding: $message-vertical-padding rem($spacing-base);
-  color: color('ink', 'light');
+  color: $color-ink-light;
 }

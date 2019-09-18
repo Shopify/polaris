@@ -8,13 +8,13 @@
   background: none;
   border: 0;
   font-size: inherit;
-  color: color('blue');
+  color: $color-blue;
   text-decoration: none;
   cursor: pointer;
 
   &:hover,
   &:active {
-    color: color('blue', 'dark');
+    color: $color-blue-dark;
     text-decoration: underline;
   }
 }

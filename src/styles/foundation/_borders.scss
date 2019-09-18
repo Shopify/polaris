@@ -1,6 +1,6 @@
 $borders-data: (
-  base: border-width() solid color('sky'),
-  dark: border-width() solid color('sky', 'dark'),
+  base: border-width() solid $color-sky,
+  dark: border-width() solid $color-sky-dark,
   transparent: border-width() solid transparent,
 );
 

@@ -58,7 +58,7 @@ $control-size: rem(16px);
   @include state(disabled);
 
   .Media {
-    @include recolor-icon(color('ink', 'lightest'), color('white'));
+    @include recolor-icon($color-ink-lightest, $color-white);
   }
 }
 
@@ -79,6 +79,6 @@ $control-size: rem(16px);
 }
 
 .Media {
-  @include recolor-icon(color('ink', 'light'), color('white'));
+  @include recolor-icon($color-ink-light, $color-white);
   padding: 0 rem($spacing-tight);
 }

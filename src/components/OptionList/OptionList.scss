@@ -13,5 +13,5 @@
   padding: rem($spacing-tight) rem($spacing-base);
   border-bottom: border();
   font-weight: 400;
-  color: color('ink', 'lighter');
+  color: $color-ink-lighter;
 }

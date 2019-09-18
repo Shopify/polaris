@@ -33,7 +33,7 @@ $stacking-order: (
 }
 
 .isColored {
-  color: color('white');
+  color: $color-white;
 }
 
 .colorWhite {
@@ -69,7 +69,7 @@ $stacking-order: (
   @include color-icon('ink', 'lighter');
 
   &::after {
-    background-color: color('sky');
+    background-color: $color-sky;
   }
 }
 
@@ -81,7 +81,7 @@ $stacking-order: (
   @include color-icon('ink');
 
   &::after {
-    background-color: color('sky');
+    background-color: $color-sky;
   }
 }
 
@@ -101,7 +101,7 @@ $stacking-order: (
   @include color-icon('blue', 'dark');
 
   &::after {
-    background-color: color('blue', 'light');
+    background-color: $color-blue-light;
   }
 }
 
@@ -141,7 +141,7 @@ $stacking-order: (
   @include color-icon('teal');
 
   &::after {
-    background-color: color('white');
+    background-color: $color-white;
   }
 }
 
@@ -149,7 +149,7 @@ $stacking-order: (
   @include color-icon('teal', 'dark');
 
   &::after {
-    background-color: color('teal', 'light');
+    background-color: $color-teal-light;
   }
 }
 
@@ -165,7 +165,7 @@ $stacking-order: (
   @include color-icon('green');
 
   &::after {
-    background-color: color('green', 'lighter');
+    background-color: $color-green-lighter;
   }
 }
 
@@ -173,7 +173,7 @@ $stacking-order: (
   @include color-icon('green', 'dark');
 
   &::after {
-    background-color: color('green', 'light');
+    background-color: $color-green-light;
   }
 }
 
@@ -189,7 +189,7 @@ $stacking-order: (
   @include color-icon('yellow', 'dark');
 
   &::after {
-    background-color: color('yellow', 'light');
+    background-color: $color-yellow-light;
   }
 }
 
@@ -213,7 +213,7 @@ $stacking-order: (
   @include color-icon('red', 'dark');
 
   &::after {
-    background-color: color('red', 'light');
+    background-color: $color-red-light;
   }
 }
 

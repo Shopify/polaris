@@ -2,21 +2,21 @@
 
 $dropzone-padding: rem(15px);
 $dropzone-border-style: dashed;
-$dropzone-border-color: color('ink', 'lightest');
-$dropzone-border-color-disabled: color('sky');
+$dropzone-border-color: $color-ink-lightest;
+$dropzone-border-color-disabled: $color-sky;
 $dropzone-border-radius: border-radius();
-$dropzone-background: color('white');
+$dropzone-background: $color-white;
 $dropzone-min-height-extra-large: rem(205px);
 $dropzone-min-height-large: rem(160px);
 $dropzone-min-height-medium: rem(100px);
 $dropzone-min-height-small: rem(50px);
 
-$dropzone-overlay-color: color('indigo');
-$dropzone-overlay-color-error: color('red');
-$dropzone-overlay-border-color: color('indigo');
-$dropzone-overlay-border-color-error: color('red');
-$dropzone-overlay-background: color('indigo', 'lighter');
-$dropzone-overlay-background-error: color('red', 'lighter');
+$dropzone-overlay-color: $color-indigo;
+$dropzone-overlay-color-error: $color-red;
+$dropzone-overlay-border-color: $color-indigo;
+$dropzone-overlay-border-color-error: $color-red;
+$dropzone-overlay-background: $color-indigo-lighter;
+$dropzone-overlay-background-error: $color-red-lighter;
 $dropzone-stacking-order: (
   outline: 29,
   overlay: 30,

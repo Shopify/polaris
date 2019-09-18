@@ -7,7 +7,7 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 .ContextualSaveBar {
   display: flex;
   height: top-bar-height();
-  background-color: color('white');
+  background-color: $color-white;
   box-shadow: $shadow;
 
   &::after {

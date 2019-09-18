@@ -29,7 +29,7 @@ $breakpoint: 768px;
 .Pip {
   height: rem(6px);
   width: rem(6px);
-  background: color('ink', 'lightest');
+  background: $color-ink-lightest;
   border-radius: border-radius();
 
   &:not(:last-of-type) {
@@ -38,7 +38,7 @@ $breakpoint: 768px;
 }
 
 .Pip-visible {
-  background: color('ink');
+  background: $color-ink;
 }
 
 .ScrollContainer {
@@ -54,14 +54,14 @@ $breakpoint: 768px;
 .TableRow {
   &:hover .Cell {
     @include breakpoint-after($breakpoint) {
-      background: color('sky', 'lighter');
+      background: $color-sky-lighter;
     }
   }
 }
 
 .Cell {
   padding: rem($spacing-base);
-  border-bottom: border-width() solid color('sky', 'light');
+  border-bottom: border-width() solid $color-sky-light;
   white-space: nowrap;
   text-align: left;
   transition: background-color 0.2s ease-in-out;
@@ -129,8 +129,8 @@ $breakpoint: 768px;
 
   &:hover,
   &:focus {
-    @include recolor-icon(color('indigo'));
-    color: color('indigo');
+    @include recolor-icon($color-indigo);
+    color: $color-indigo;
 
     .Icon {
       opacity: 1;
@@ -151,13 +151,13 @@ $breakpoint: 768px;
 
 .Cell-total {
   @include text-emphasis-strong;
-  background: color('sky', 'lighter');
+  background: $color-sky-lighter;
   border-bottom: border();
 }
 
 .Footer {
   padding: rem($spacing-base);
-  background: color('sky', 'light');
-  color: color('ink', 'lighter');
+  background: $color-sky-light;
+  color: $color-ink-lighter;
   text-align: center;
 }

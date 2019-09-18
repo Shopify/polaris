@@ -3,7 +3,7 @@ $item-font-size-small: rem(14px);
 $item-line-height-small: rem(32px);
 // This is the only place this color is used.
 // stylelint-disable-next-line color-no-hex
-$item-selected-background: rgba(color('indigo'), 0.12);
+$item-selected-background: rgba($color-indigo, 0.12);
 $text-line-height: rem(20px);
 $nav-variables: (
   mobile-spacing: rem(10px),
@@ -37,18 +37,18 @@ $nav-animation-variables: (
   padding: 0 rem($spacing-tight);
   margin: 0 rem($spacing-tight);
   border-radius: border-radius();
-  color: color('ink');
+  color: $color-ink;
   text-decoration: none;
   text-align: left;
 
   &:hover,
   &:focus {
     @include state(hover);
-    color: color('indigo', 'dark');
+    color: $color-indigo-dark;
     text-decoration: none;
 
     .Icon {
-      @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
+      @include recolor-icon($color-indigo, $color-white, filter('indigo'));
     }
   }
 
@@ -64,8 +64,8 @@ $nav-animation-variables: (
 
 @mixin nav-item-icon-attributes {
   @include recolor-icon(
-    color('ink', 'lightest'),
-    color('white'),
+    $color-ink-lightest,
+    $color-white,
     filter('ink', 'lightest')
   );
   flex-shrink: 0;
@@ -85,7 +85,7 @@ $nav-animation-variables: (
   .subNavigationActive &,
   .subNavigationActive:hover &,
   .subNavigationActive:focus & {
-    @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
+    @include recolor-icon($color-indigo, $color-white, filter('indigo'));
   } // The regular nav items are wrapped in polaris icon components which add
   // the styles we're missing which causes the channel items to shift down
   svg {
@@ -141,6 +141,6 @@ $nav-animation-variables: (
     display: block;
     width: 100%;
     height: 1px;
-    background-color: color('sky');
+    background-color: $color-sky;
   }
 }

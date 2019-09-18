@@ -2,7 +2,7 @@
 
 .Card {
   overflow: hidden;
-  background-color: color('white');
+  background-color: $color-white;
   box-shadow: shadow();
 
   + .Card {
@@ -19,7 +19,7 @@
 }
 
 .subdued {
-  background-color: color('sky', 'lighter');
+  background-color: $color-sky-lighter;
 }
 
 .Header {
@@ -47,7 +47,7 @@
 }
 
 .Section-subdued {
-  background-color: color('sky', 'lighter');
+  background-color: $color-sky-lighter;
 
   @media (-ms-high-contrast: active) {
     background-color: transparent;

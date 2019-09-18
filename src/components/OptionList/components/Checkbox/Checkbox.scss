@@ -12,7 +12,7 @@
   &:active,
   &:checked {
     + .Backdrop {
-      background: color('indigo');
+      background: $color-indigo;
     }
   }
 
@@ -35,7 +35,7 @@
     }
 
     ~ .Icon {
-      @include recolor-icon(color('ink', 'lightest'));
+      @include recolor-icon($color-ink-lightest);
     }
   }
 }
@@ -56,7 +56,7 @@
 }
 
 .Icon {
-  @include recolor-icon(color('indigo'));
+  @include recolor-icon($color-indigo);
   position: absolute;
   top: 50%;
   left: 50%;

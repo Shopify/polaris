@@ -30,30 +30,30 @@ $stacking-order: (
 .focused .Input,
 .Input:focus {
   border: none;
-  color: color('ink');
+  color: $color-ink;
 
   &::placeholder {
-    color: color('ink', 'lightest');
+    color: $color-ink-lightest;
   }
 }
 
 .Input:focus {
   ~ .Backdrop {
-    background-color: color('white');
+    background-color: $color-white;
   }
 
   ~ .Icon {
-    @include recolor-icon(color('ink', 'lightest'));
+    @include recolor-icon($color-ink-lightest);
   }
 }
 
 .focused {
   .Backdrop {
-    background-color: color('white');
+    background-color: $color-white;
   }
 
   .Icon {
-    @include recolor-icon(color('ink', 'lightest'));
+    @include recolor-icon($color-ink-lightest);
   }
 }
 
@@ -94,7 +94,7 @@ $stacking-order: (
 }
 
 .Clear {
-  @include recolor-icon(color('ink', 'lightest'));
+  @include recolor-icon($color-ink-lightest);
   position: relative;
   z-index: z-index(action, $stacking-order);
   align-self: stretch;
@@ -105,7 +105,7 @@ $stacking-order: (
 
   &:focus,
   &:hover {
-    @include recolor-icon(color('ink', 'lighter'));
+    @include recolor-icon($color-ink-lighter);
     outline: none;
   }
 }

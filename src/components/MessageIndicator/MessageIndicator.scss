@@ -14,5 +14,5 @@ $indicator-size: rem(8px);
   width: $indicator-size;
   height: $indicator-size;
   border-radius: 100%;
-  background-color: color('teal');
+  background-color: $color-teal;
 }

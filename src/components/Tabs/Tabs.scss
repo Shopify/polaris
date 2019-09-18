@@ -62,7 +62,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
     .Title {
       @include text-emphasis-normal;
       text-decoration: none;
-      border-bottom: border-width(thicker) solid color('sky');
+      border-bottom: border-width(thicker) solid $color-sky;
 
       @media (-ms-high-contrast: active) {
         border-bottom-color: ms-high-contrast-color('selected-text-background');
@@ -76,18 +76,18 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 
     .Title {
       @include text-emphasis-normal;
-      border-bottom: border-width(thicker) solid color('indigo', 'light');
+      border-bottom: border-width(thicker) solid $color-indigo-light;
     }
   }
 
   &:visited {
-    color: color('ink', 'lighter');
+    color: $color-ink-lighter;
   }
 
   &.Tab-selected {
     // stylelint-disable-next-line selector-max-class
     .Title {
-      border-bottom: border-width(thicker) solid color('indigo');
+      border-bottom: border-width(thicker) solid $color-indigo;
 
       @media (-ms-high-contrast: active) {
         background: ms-high-contrast-color('selected-text-background');
@@ -175,7 +175,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 }
 
 .DisclosureActivator {
-  @include recolor-icon(color('ink', 'lighter'));
+  @include recolor-icon($color-ink-lighter);
   position: relative;
   display: block;
   justify-content: center;
@@ -190,11 +190,11 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 
   &:hover {
     .Title {
-      @include recolor-icon(color('ink'));
-      border-bottom: border-width(thicker) solid color('sky');
+      @include recolor-icon($color-ink);
+      border-bottom: border-width(thicker) solid $color-sky;
 
       @media (-ms-high-contrast: active) {
-        @include recolor-icon(color('black'));
+        @include recolor-icon($color-black);
         @include state(active, hover);
         border-bottom-color: ms-high-contrast-color('selected-text-background');
       }
@@ -206,7 +206,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
       0 0 2px 0 $focus-state-box-shadow-color;
 
     .Title {
-      border-bottom: border-width(thicker) solid color('indigo', 'light');
+      border-bottom: border-width(thicker) solid $color-indigo-light;
     }
   }
 }

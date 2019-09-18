@@ -13,7 +13,7 @@
   &:active,
   &:checked {
     + .Backdrop {
-      background: color('indigo');
+      background: $color-indigo;
     }
   }
 
@@ -36,7 +36,7 @@
     }
 
     ~ .Icon {
-      background-color: color('sky', 'dark');
+      background-color: $color-sky-dark;
     }
   }
 }
@@ -63,7 +63,7 @@
   transform-origin: 50% 50%;
   height: 50%;
   width: 50%;
-  background: color('indigo');
+  background: $color-indigo;
   border-radius: 50%;
   transition: control-icon-transition();
 

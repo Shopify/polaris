@@ -153,20 +153,20 @@ $typography-condensed: em(640px);
 }
 
 @mixin text-emphasis-placeholder() {
-  color: color('ink', 'lightest');
+  color: $color-ink-lightest;
 }
 
-@mixin text-emphasis-subdued($for-background: null) {
-  color: color('ink', 'lighter', $for-background: $for-background);
+@mixin text-emphasis-subdued {
+  color: $color-ink-lighter;
 }
 
 @mixin text-emphasis-strong {
   font-weight: 600;
 }
 
-@mixin text-emphasis-normal($for-background: null) {
+@mixin text-emphasis-normal {
   font-weight: 400;
-  color: color(ink, $for-background: $for-background);
+  color: $color-ink;
 }
 
 @mixin text-breakword {

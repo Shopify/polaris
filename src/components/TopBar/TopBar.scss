@@ -59,13 +59,13 @@ $context-control-expand-after: 1400px;
   padding: rem($spacing-tight);
   border-radius: border-radius();
   &.focused {
-    background-color: rgba(color('white'), 0.16);
+    background-color: rgba($color-white, 0.16);
   }
   &.focused:active {
-    background-color: rgba(color('black'), 0.28);
+    background-color: rgba($color-black, 0.28);
   }
   &:hover {
-    background-color: rgba(color('white'), 0.08);
+    background-color: rgba($color-white, 0.08);
   } // This increases hit point size.
   &::after {
     content: '';

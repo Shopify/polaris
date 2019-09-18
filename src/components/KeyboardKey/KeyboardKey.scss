@@ -8,16 +8,15 @@ $bottom-shadow-size: 2px;
   height: $key-base-height;
   margin: 0 (rem($spacing-extra-tight) / 2) $bottom-shadow-size;
   padding: 0 rem($spacing-extra-tight);
-  background-color: color('white', 'base');
-  box-shadow: 0 0 0 1px color('sky', 'dark'),
-    0 $bottom-shadow-size 0 0 color('white'),
-    0 $bottom-shadow-size 0 1px color('sky', 'dark');
+  background-color: $color-white;
+  box-shadow: 0 0 0 1px $color-sky-dark, 0 $bottom-shadow-size 0 0 $color-white,
+    0 $bottom-shadow-size 0 1px $color-sky-dark;
   border-radius: border-radius();
   font-family: font-family();
   font-size: rem(12px);
   font-weight: 500;
   line-height: $key-base-height;
-  color: color('ink', 'lighter');
+  color: $color-ink-lighter;
   text-align: center;
   min-width: $key-base-height;
   user-select: none;

@@ -13,14 +13,14 @@ $difference-between-touch-area-and-backdrop: control-height() -
   padding: 0 $menu-action-padding-x;
   min-height: control-height();
   text-decoration: none;
-  color: color('ink', 'light');
+  color: $color-ink-light;
 
   &:hover,
   &:active {
-    color: color('ink');
+    color: $color-ink;
 
     .IconWrapper {
-      @include recolor-icon(color('ink'), color('white'));
+      @include recolor-icon($color-ink, $color-white);
     }
   }
 
@@ -48,12 +48,12 @@ $difference-between-touch-area-and-backdrop: control-height() -
   }
 
   &.disabled {
-    color: color('ink', 'lightest');
+    color: $color-ink-lightest;
     cursor: default;
     pointer-events: none;
 
     .IconWrapper {
-      @include recolor-icon(color('ink', 'lightest'));
+      @include recolor-icon($color-ink-lightest);
     }
   }
 }
@@ -64,7 +64,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
 }
 
 .IconWrapper {
-  @include recolor-icon(color('ink', 'lighter'), color('white'));
+  @include recolor-icon($color-ink-lighter, $color-white);
   display: inline-block;
 
   &:first-child {
@@ -81,6 +81,6 @@ $difference-between-touch-area-and-backdrop: control-height() -
   }
 
   &.disabled {
-    @include recolor-icon(color('ink', 'lightest'));
+    @include recolor-icon($color-ink-lightest);
   }
 }

@@ -20,7 +20,7 @@ $chekbox-label-margin: rem(20px);
   user-select: none;
   text-decoration: none;
   text-align: left;
-  background: color('white');
+  background: $color-white;
   border: border(dark);
   border-radius: border-radius() 0 0 border-radius();
   border-right-color: transparent;
@@ -66,10 +66,10 @@ $chekbox-label-margin: rem(20px);
   }
 
   &.CheckableButton-selected {
-    color: color('indigo');
+    color: $color-indigo;
 
     @include breakpoint-after(resource-list(breakpoint-small)) {
-      border-color: color('sky', 'dark');
+      border-color: $color-sky-dark;
     }
   }
 }

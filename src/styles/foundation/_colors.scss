@@ -57,7 +57,7 @@ $color-palette-data: map-extend(
     // prettier-ignore
     $error: "
 Color `#{$hue}, #{$value}` not found. Make sure arguments are strings.
-GOOD: color('yellow')
+GOOD: $color-yellow
 BAD: color(yellow)
 
 Available options: #{available-names($color-palette-data)}
@@ -158,11 +158,11 @@ Available options: #{available-names($ms-high-contrast-color-data)}
     );
 
     @if $state == 'focused' {
-      box-shadow: inset rem(2px) 0 0 color('indigo');
+      box-shadow: inset rem(2px) 0 0 $color-indigo;
     }
 
     @if $state == 'focused-destructive' {
-      box-shadow: inset rem(2px) 0 0 color('red');
+      box-shadow: inset rem(2px) 0 0 $color-red;
     }
   }
   background-image: $backgrounds;

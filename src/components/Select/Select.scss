@@ -17,7 +17,7 @@ $stacking-order: (
 
 .disabled {
   .Content {
-    color: color('ink', 'lightest');
+    color: $color-ink-lightest;
   }
 
   .InlineLabel {
@@ -57,7 +57,7 @@ $stacking-order: (
   // stylelint-disable-next-line selector-max-class, selector-max-specificity
   &.error .Input:-moz-focusring {
     color: transparent;
-    text-shadow: 0 0 0 color('ink', 'base');
+    text-shadow: 0 0 0 $color-ink;
   }
 }
 
@@ -87,7 +87,7 @@ $stacking-order: (
 }
 
 .Icon {
-  @include recolor-icon(color('ink', 'lighter'));
+  @include recolor-icon($color-ink-lighter);
 }
 
 .Backdrop {

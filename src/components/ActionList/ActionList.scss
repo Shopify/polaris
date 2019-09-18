@@ -77,8 +77,8 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   }
 
   &.destructive {
-    @include recolor-icon(color('red', 'dark'));
-    color: color('red', 'dark');
+    @include recolor-icon($color-red-dark);
+    color: $color-red-dark;
 
     &:active {
       @include state(active-destructive);
@@ -114,11 +114,11 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
   &.disabled {
     @include state(disabled);
-    color: color('ink', 'lightest');
+    color: $color-ink-lightest;
     pointer-events: none;
 
     .Image {
-      @include recolor-icon(color('ink', 'lightest'), color('white'));
+      @include recolor-icon($color-ink-lightest, $color-white);
     }
   }
 
@@ -133,7 +133,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 }
 
 .Image {
-  @include recolor-icon(color('ink', 'light'), color('white'));
+  @include recolor-icon($color-ink-light, $color-white);
   display: flex;
   flex: 0 0 auto;
   justify-content: center;

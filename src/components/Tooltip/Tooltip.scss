@@ -28,17 +28,17 @@ $content-max-width: rem(200px);
 
 .light {
   .Wrapper {
-    background: color('white');
-    color: color('ink');
+    background: $color-white;
+    color: $color-ink;
   }
 }
 
 .Wrapper {
   position: relative;
   display: flex;
-  background-color: color('ink');
+  background-color: $color-ink;
   border-radius: border-radius();
-  color: color('white');
+  color: $color-white;
   max-height: $content-max-height;
 }
 
