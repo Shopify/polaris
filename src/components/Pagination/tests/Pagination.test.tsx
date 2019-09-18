@@ -103,6 +103,18 @@ describe('<Pagination />', () => {
       const pagination = mountWithAppProvider(<Pagination label={label} />);
       expect(pagination.text()).toContain(label);
     });
+
+    it('has subdued text without next and previous pages', () => {
+      const label = 'test';
+      const variation = 'subdued';
+      const pagination = mountWithAppProvider(<Pagination label={label} />);
+      expect(
+        pagination
+          .find('.Label')
+          .children()
+          .prop('variation'),
+      ).toStrictEqual(variation);
+    });
   });
 
   it('adds a keypress event for nextKeys', () => {
