@@ -89,9 +89,11 @@ Use for text links in larger spans of text.
 Use for text links that are the same color as the surrounding text.
 
 ```jsx
-<Link monochrome url="https://help.shopify.com/manual">
-  fulfilling orders
-</Link>
+<div style={{color: '#108043'}}>
+  <Link monochrome url="https://help.shopify.com/manual">
+    fulfilling orders
+  </Link>
+</div>
 ```
 
 ### Monochrome link in a banner
