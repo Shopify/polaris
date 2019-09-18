@@ -36,7 +36,7 @@ export interface PaginationDescriptor {
   onNext?(): void;
   /** Callback when previous button is clicked */
   onPrevious?(): void;
-  /** Show page number information */
+  /** Text to provide more context in between the arrow buttons */
   label?: string;
 }
 
