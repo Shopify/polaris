@@ -69,8 +69,8 @@ $stacking-order: (
   align-items: center;
   width: 100%;
   min-height: control-height();
-  padding: control-vertical-padding() spacing(tight) control-vertical-padding()
-    spacing(base-tight);
+  padding: control-vertical-padding() rem($spacing-tight)
+    control-vertical-padding() rem($spacing-base-tight);
 }
 
 .InlineLabel {

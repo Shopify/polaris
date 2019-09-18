@@ -12,7 +12,7 @@
   color: color('ink', 'lighter');
 
   + .Item {
-    margin-top: spacing(extra-tight);
+    margin-top: rem($spacing-extra-tight);
   }
 }
 
@@ -25,7 +25,7 @@
   justify-content: center;
   min-width: rem(20px);
   height: rem(20px);
-  margin-right: spacing(extra-tight);
+  margin-right: rem($spacing-extra-tight);
 
   @include recolor-icon(color('ink', 'lightest'));
 
@@ -56,7 +56,7 @@
 .Title {
   + .Description::before {
     content: '–';
-    margin: 0 spacing(extra-tight);
+    margin: 0 rem($spacing-extra-tight);
   }
 
   .statusWarning &,

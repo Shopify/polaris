@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$code-padding: 0 spacing(extra-tight);
+$code-padding: 0 rem($spacing-extra-tight);
 $code-font-size: 1.15em;
 
 .variationPositive {

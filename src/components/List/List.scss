@@ -1,29 +1,29 @@
 @import '../../styles/common';
 
 .List {
-  padding-left: spacing(loose);
+  padding-left: rem($spacing-loose);
   margin-top: 0;
   margin-bottom: 0;
   list-style: disc outside none;
 
   + .List {
-    margin-top: spacing();
+    margin-top: rem($spacing-base);
   }
 }
 
 .typeNumber {
-  padding-left: spacing(extra-loose);
+  padding-left: rem($spacing-extra-loose);
   list-style: decimal outside none;
 }
 
 .Item {
-  margin-bottom: spacing(tight);
+  margin-bottom: rem($spacing-tight);
 
   &:last-child {
     margin-bottom: 0;
   }
 
   .List:first-child {
-    margin-top: spacing(tight);
+    margin-top: rem($spacing-tight);
   }
 }

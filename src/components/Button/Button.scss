@@ -47,19 +47,19 @@ $spinner-size: rem(20px);
   &:first-child {
     // This compensates for the typical icon used in buttons being
     // inset within its bounding box.
-    margin-left: -(spacing(extra-tight));
+    margin-left: -(rem($spacing-extra-tight));
   }
 
   &:last-child {
     // This compensates for the disclosure icon, which is substantially
     // inset within the viewbox (and makes it look like there is too much
     // spacing on the right of the button)
-    margin-right: -(spacing(tight));
-    margin-left: spacing(extra-tight);
+    margin-right: -(rem($spacing-tight));
+    margin-left: rem($spacing-extra-tight);
   }
 
   + *:not(.Icon) {
-    margin-left: spacing(extra-tight);
+    margin-left: rem($spacing-extra-tight);
   }
 }
 
@@ -132,8 +132,8 @@ $spinner-size: rem(20px);
 .plain {
   @include recolor-icon(color('blue'));
   margin: (-1 * $vertical-padding) rem(-8px);
-  padding-left: spacing(tight);
-  padding-right: spacing(tight);
+  padding-left: rem($spacing-tight);
+  padding-right: rem($spacing-tight);
   background: transparent;
   border: 0;
   box-shadow: none;
@@ -184,7 +184,7 @@ $spinner-size: rem(20px);
   }
 
   &.sizeLarge {
-    margin: (-1 * $large-vertical-padding) (-1 * spacing(loose));
+    margin: (-1 * $large-vertical-padding) (-1 * rem($spacing-loose));
   }
 
   &.iconOnly {
@@ -222,7 +222,7 @@ $spinner-size: rem(20px);
 
 .sizeSlim {
   min-height: $slim-min-height;
-  padding: $slim-vertical-padding spacing(base-tight);
+  padding: $slim-vertical-padding rem($spacing-base-tight);
 }
 
 .sizeLarge {
@@ -240,12 +240,12 @@ $spinner-size: rem(20px);
 }
 
 .iconOnly {
-  padding-left: spacing(tight);
-  padding-right: spacing(tight);
+  padding-left: rem($spacing-tight);
+  padding-right: rem($spacing-tight);
 
   &.sizeLarge {
-    padding-left: spacing(base-tight);
-    padding-right: spacing(base-tight);
+    padding-left: rem($spacing-base-tight);
+    padding-right: rem($spacing-base-tight);
   }
 
   .Icon:first-child {

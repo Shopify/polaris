@@ -10,18 +10,18 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: spacing(extra-tight);
+  margin-bottom: rem($spacing-extra-tight);
 }
 
 .HelpText {
   @include text-style-body;
   @include text-emphasis-subdued;
-  margin-top: spacing(extra-tight);
+  margin-top: rem($spacing-extra-tight);
 }
 
 .Error {
   @include text-breakword;
-  margin-top: spacing(extra-tight);
+  margin-top: rem($spacing-extra-tight);
 }
 
 .Action {

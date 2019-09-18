@@ -4,14 +4,14 @@
 
 // stylelint-disable scss/partial-no-import
 
+@import '~@shopify/polaris-tokens/dist/index';
+
 @import './foundation/utilities';
 @import './foundation/colors';
 @import './foundation/filters';
-@import './foundation/spacing';
 @import './foundation/border-width';
 @import './foundation/borders';
 @import './foundation/border-radius';
-@import '../polaris-tokens/duration';
 @import './foundation/easing';
 @import './foundation/layout';
 @import './foundation/shadows';

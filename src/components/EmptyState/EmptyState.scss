@@ -27,8 +27,8 @@ $illustration-width-cropped: calc(
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: spacing(loose) auto 0 auto;
-  padding: spacing(loose) 0;
+  margin: rem($spacing-loose) auto 0 auto;
+  padding: rem($spacing-loose) 0;
   max-width: $page-max-width;
 }
 
@@ -49,7 +49,7 @@ $illustration-width-cropped: calc(
   width: 100%;
 
   @include page-content-when-not-partially-condensed {
-    left: spacing(loose);
+    left: rem($spacing-loose);
     flex-direction: row;
     align-items: center;
   }
@@ -73,7 +73,7 @@ $illustration-width-cropped: calc(
 .Details {
   position: relative;
   z-index: z-index(details, $stacking-order);
-  padding: 0 spacing();
+  padding: 0 rem($spacing-base);
   width: $detail-width;
 
   @include page-content-when-not-fully-condensed {
@@ -87,13 +87,13 @@ $illustration-width-cropped: calc(
 }
 
 .Actions {
-  margin-top: spacing();
+  margin-top: rem($spacing-base);
 }
 
 .Image {
   position: relative;
   z-index: z-index(illustration, $stacking-order);
-  margin-top: spacing(loose) * -1;
+  margin-top: rem($spacing-loose) * -1;
   margin-left: $illustration-left-margin;
   width: $illustration-width-cropped;
   max-width: none;
@@ -112,5 +112,5 @@ $illustration-width-cropped: calc(
 
 .FooterContent {
   @include text-emphasis-subdued;
-  margin-top: spacing();
+  margin-top: rem($spacing-base);
 }

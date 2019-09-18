@@ -6,11 +6,11 @@ $border-radius: 999px;
 .FooterHelp {
   display: flex;
   justify-content: center;
-  margin: spacing(loose) 0;
+  margin: rem($spacing-loose) 0;
   width: 100%;
 
   @include page-content-when-not-fully-condensed {
-    margin: spacing(loose);
+    margin: rem($spacing-loose);
     width: auto;
   }
 }
@@ -18,7 +18,7 @@ $border-radius: 999px;
 .Content {
   display: inline-flex;
   align-items: center;
-  padding: spacing() spacing(loose) spacing() spacing();
+  padding: rem($spacing-base) rem($spacing-loose) rem($spacing-base) rem($spacing-base);
   border-top: border();
   border-bottom: border();
   width: 100%;
@@ -32,7 +32,7 @@ $border-radius: 999px;
 }
 
 .Icon {
-  margin-right: spacing(tight);
+  margin-right: rem($spacing-tight);
 }
 
 .Text {

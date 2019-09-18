@@ -11,5 +11,5 @@ $error-icon-adjustment: rem(2px);
 .Icon {
   fill: currentColor;
   margin-left: -1 * $error-icon-adjustment;
-  margin-right: spacing(extra-tight) + $error-icon-adjustment;
+  margin-right: rem($spacing-extra-tight) + $error-icon-adjustment;
 }

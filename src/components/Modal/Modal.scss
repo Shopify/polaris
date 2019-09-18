@@ -25,6 +25,6 @@ $small-width: rem(620px);
 }
 
 .Spinner {
-  margin: spacing();
+  margin: rem($spacing-base);
   text-align: center;
 }

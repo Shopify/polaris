@@ -5,5 +5,5 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: spacing(tight) spacing();
+  padding: rem($spacing-tight) rem($spacing-base);
 }

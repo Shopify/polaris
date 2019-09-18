@@ -31,11 +31,11 @@ $layout-width-data: (
     partially-condensed: rem(450px),
   ),
   inner-spacing: (
-    base: spacing(),
+    base: rem($spacing-base),
   ),
   outer-spacing: (
-    min: spacing(loose),
-    max: spacing(extra-loose),
+    min: rem($spacing-loose),
+    max: rem($spacing-extra-loose),
   ),
 );
 
@@ -60,7 +60,7 @@ $dismiss-icon-size: 32px;
 }
 
 @function mobile-nav-width() {
-  @return calc(100vw - #{rem($dismiss-icon-size) + spacing() * 2});
+  @return calc(100vw - #{rem($dismiss-icon-size) + rem($spacing-base) * 2});
 }
 
 @function nav-min-window-corrected() {

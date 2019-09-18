@@ -71,7 +71,7 @@ $skip-vertical-offset: rem(10px);
   left: 100%;
   width: $button-size;
   height: $button-size;
-  margin: spacing();
+  margin: rem($spacing-base);
   padding: 0;
   border: none;
   background: none;
@@ -183,7 +183,7 @@ $skip-vertical-offset: rem(10px);
   position: fixed;
   z-index: z-index(skip-to-content, $fixed-element-stacking-order);
   top: $skip-vertical-offset;
-  left: spacing(tight);
+  left: rem($spacing-tight);
   opacity: 0;
   pointer-events: none;
 

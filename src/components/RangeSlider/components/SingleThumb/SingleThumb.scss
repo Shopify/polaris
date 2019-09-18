@@ -29,7 +29,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
   height: $range-thumb-size;
 
   input {
-    padding: spacing(base-tight) 0;
+    padding: rem($spacing-base-tight) 0;
     background-color: transparent;
     cursor: pointer;
   }
@@ -43,12 +43,12 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 
 .Prefix {
   flex: 0 0 auto;
-  margin-right: spacing(tight);
+  margin-right: rem($spacing-tight);
 }
 
 .Suffix {
   flex: 0 0 auto;
-  margin-left: spacing(tight);
+  margin-left: rem($spacing-tight);
 }
 
 .Input {
@@ -195,7 +195,7 @@ $range-output-spacing: rem(16px);
 .OutputBubble {
   position: relative;
   display: flex;
-  padding: 0 spacing(tight);
+  padding: 0 rem($spacing-tight);
   min-width: $range-output-size;
   height: $range-output-size;
   background-color: color('ink');

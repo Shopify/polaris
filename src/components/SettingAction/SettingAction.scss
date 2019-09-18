@@ -6,16 +6,16 @@ $feature-width: rem(350px);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: -1 * spacing();
-  margin-left: -1 * spacing();
+  margin-top: -1 * rem($spacing-base);
+  margin-left: -1 * rem($spacing-base);
 }
 
 .Setting,
 .Action {
   flex: 0 0 auto;
-  margin-top: spacing();
-  margin-left: spacing();
-  max-width: calc(100% - #{spacing()});
+  margin-top: rem($spacing-base);
+  margin-left: rem($spacing-base);
+  max-width: calc(100% - #{rem($spacing-base)});
   min-width: 0;
 }
 

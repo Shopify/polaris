@@ -3,7 +3,7 @@
 
 $icon-size: rem(20px);
 $input-height: rem(34px);
-$clear-button-width: $icon-size + spacing();
+$clear-button-width: $icon-size + rem($spacing-base);
 
 $stacking-order: (
   backdrop: 1,
@@ -86,7 +86,7 @@ $stacking-order: (
   position: absolute;
   z-index: z-index(icon, $stacking-order);
   top: 50%;
-  left: spacing(tight);
+  left: rem($spacing-tight);
   display: flex;
   height: $icon-size;
   pointer-events: none;

@@ -18,15 +18,15 @@ $in-range-border-color: #9ca6de;
 .MonthContainer {
   display: flex;
   flex-wrap: wrap;
-  margin-top: -1 * spacing();
-  margin-left: -1 * spacing();
+  margin-top: -1 * rem($spacing-base);
+  margin-left: -1 * rem($spacing-base);
 }
 
 .Month {
   flex: 1 1 auto;
-  margin-top: spacing();
-  margin-left: spacing();
-  max-width: calc(100% - #{spacing()});
+  margin-top: rem($spacing-base);
+  margin-left: rem($spacing-base);
+  max-width: calc(100% - #{rem($spacing-base)});
   min-width: rem(230px);
 }
 
@@ -48,7 +48,7 @@ $in-range-border-color: #9ca6de;
   flex: 1 0 0%;
   width: (100% / 7);
   margin: 0;
-  padding: spacing(tight);
+  padding: rem($spacing-tight);
   background: transparent;
   border: border();
   border-radius: 0;
@@ -127,7 +127,7 @@ $in-range-border-color: #9ca6de;
   flex: 1 0 0%;
   width: calc(100% / 7);
   margin: 0;
-  padding: spacing(tight);
+  padding: rem($spacing-tight);
   border: border();
 
   + .EmptyDay,
@@ -139,7 +139,7 @@ $in-range-border-color: #9ca6de;
 .Weekday {
   display: block;
   flex: 1 0 0%;
-  padding: spacing(tight);
+  padding: rem($spacing-tight);
   background: transparent;
   font-size: $font-size;
   color: color('ink', 'lighter');
@@ -157,7 +157,7 @@ $in-range-border-color: #9ca6de;
 
 .Header {
   position: absolute;
-  top: spacing();
+  top: rem($spacing-base);
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -166,6 +166,6 @@ $in-range-border-color: #9ca6de;
 .Title {
   flex: 1 1 auto;
   margin-top: rem(2px);
-  padding-bottom: spacing(extra-tight);
+  padding-bottom: rem($spacing-extra-tight);
   text-align: center;
 }

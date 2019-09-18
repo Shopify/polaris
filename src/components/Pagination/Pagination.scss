@@ -7,7 +7,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
 
 // This is the adjustment needed to get the icon to appear flush with other
 // content around it.
-$plain-horizontal-adjustment: spacing(tight);
+$plain-horizontal-adjustment: rem($spacing-tight);
 
 $stacking-order: (
   item: 10,
@@ -100,7 +100,7 @@ $stacking-order: (
   display: inline-block;
   min-width: $min-height;
   margin: 0;
-  padding: $vertical-padding spacing(tight);
+  padding: $vertical-padding rem($spacing-tight);
   background: linear-gradient(
     to bottom,
     color('white'),

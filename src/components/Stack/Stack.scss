@@ -3,19 +3,15 @@
 /// Adjusts the spacing for the stack and contained items.
 /// @param {String} $spacing - The spacing variant to use.
 
-@mixin stack-spacing($spacing: base) {
-  margin-top: -1 * spacing($spacing);
-  margin-left: -1 * spacing($spacing);
+.Stack {
+  margin-top: -1 * rem($spacing-base);
+  margin-left: -1 * rem($spacing-base);
 
   > .Item {
-    margin-top: spacing($spacing);
-    margin-left: spacing($spacing);
+    margin-top: rem($spacing-base);
+    margin-left: rem($spacing-base);
     max-width: 100%;
   }
-}
-
-.Stack {
-  @include stack-spacing;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
@@ -26,23 +22,58 @@
 }
 
 .spacingNone {
-  @include stack-spacing(none);
+  margin-top: -1 * rem($spacing-none);
+  margin-left: -1 * rem($spacing-none);
+
+  > .Item {
+    margin-top: rem($spacing-none);
+    margin-left: rem($spacing-none);
+    max-width: 100%;
+  }
 }
 
 .spacingExtraTight {
-  @include stack-spacing(extra-tight);
+  margin-top: -1 * rem($spacing-extra-tight);
+  margin-left: -1 * rem($spacing-extra-tight);
+
+  > .Item {
+    margin-top: rem($spacing-extra-tight);
+    margin-left: rem($spacing-extra-tight);
+    max-width: 100%;
+  }
 }
 
 .spacingTight {
-  @include stack-spacing(tight);
+  margin-top: -1 * rem($spacing-tight);
+  margin-left: -1 * rem($spacing-tight);
+
+  > .Item {
+    margin-top: rem($spacing-tight);
+    margin-left: rem($spacing-tight);
+    max-width: 100%;
+  }
 }
 
 .spacingLoose {
-  @include stack-spacing(loose);
+  margin-top: -1 * rem($spacing-loose);
+  margin-left: -1 * rem($spacing-loose);
+
+  > .Item {
+    margin-top: rem($spacing-loose);
+    margin-left: rem($spacing-loose);
+    max-width: 100%;
+  }
 }
 
 .spacingExtraLoose {
-  @include stack-spacing(extra-loose);
+  margin-top: -1 * rem($spacing-extra-loose);
+  margin-left: -1 * rem($spacing-extra-loose);
+
+  > .Item {
+    margin-top: rem($spacing-extra-loose);
+    margin-left: rem($spacing-extra-loose);
+    max-width: 100%;
+  }
 }
 
 .distributionLeading {
@@ -96,10 +127,10 @@
 
 .vertical {
   flex-direction: column;
-  margin-left: spacing(none);
+  margin-left: rem($spacing-none);
 
   > .Item {
-    margin-left: spacing(none);
+    margin-left: rem($spacing-none);
   }
 }
 

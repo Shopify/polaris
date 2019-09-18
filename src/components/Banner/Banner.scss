@@ -2,10 +2,10 @@
 
 $accent-height: 3px;
 $heading-offset: rem(2px);
-$intermediate-spacing: spacing(base-tight);
+$intermediate-spacing: rem($spacing-base-tight);
 $ribbon-flex-basis: rem(32px);
 $secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
-$secondary-action-horizontal-padding: 1.5 * spacing(tight);
+$secondary-action-horizontal-padding: 1.5 * rem($spacing-tight);
 
 @mixin banner-attributes($highlight, $background, $in-page, $tint) {
   transition: box-shadow $duration-base easing();
@@ -90,12 +90,12 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 .withinContentContainer {
   border-radius: border-radius();
-  padding: spacing(tight) $intermediate-spacing;
+  padding: rem($spacing-tight) $intermediate-spacing;
 
   @include banner-variants;
 
   + .Banner {
-    margin-top: spacing(tight);
+    margin-top: rem($spacing-tight);
   }
 
   .Ribbon {
@@ -103,7 +103,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   }
 
   .Actions {
-    padding: $intermediate-spacing 0 spacing(extra-tight) 0;
+    padding: $intermediate-spacing 0 rem($spacing-extra-tight) 0;
   }
 
   .Dismiss {
@@ -115,31 +115,32 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 .withinPage {
   border-radius: 0 0 border-radius() border-radius();
-  padding: spacing();
+  padding: rem($spacing-base);
 
   @include banner-variants(true);
 
   + .Banner {
-    margin-top: spacing(loose);
+    margin-top: rem($spacing-loose);
   }
 
   .Ribbon {
-    padding-right: spacing();
+    padding-right: rem($spacing-base);
   }
 
   .Actions {
-    padding-top: spacing();
+    padding-top: rem($spacing-base);
   }
 
   .Dismiss {
-    right: spacing();
-    top: spacing(loose);
+    right: rem($spacing-base);
+    top: rem($spacing-loose);
     position: absolute;
   }
 }
 
 .hasDismiss {
-  padding-right: spacing() + spacing(extra-tight) + control-height();
+  padding-right: rem($spacing-base) + rem($spacing-extra-tight) +
+    control-height();
 }
 
 .Heading {
@@ -149,7 +150,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 .Content {
   @include text-breakword;
-  padding: spacing(extra-tight) 0;
+  padding: rem($spacing-extra-tight) 0;
 }
 
 .Ribbon {

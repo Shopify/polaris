@@ -12,12 +12,12 @@
 
   @include page-content-when-not-fully-condensed {
     display: block;
-    margin-left: spacing(loose);
+    margin-left: rem($spacing-loose);
   }
 }
 
 .DismissImage {
-  margin-right: spacing(loose);
+  margin-right: rem($spacing-loose);
 }
 
 .Content {
@@ -25,11 +25,11 @@
 }
 
 .Title {
-  margin-bottom: spacing(loose);
+  margin-bottom: rem($spacing-loose);
 }
 
 .Buttons {
-  margin-top: spacing(loose);
+  margin-top: rem($spacing-loose);
 }
 
 .Container {
@@ -37,7 +37,7 @@
 }
 
 .Dismiss {
-  right: spacing();
-  top: spacing();
+  right: rem($spacing-base);
+  top: rem($spacing-base);
   position: absolute;
 }

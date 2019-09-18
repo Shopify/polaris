@@ -18,7 +18,7 @@
   min-height: $min-height;
   min-width: $min-height;
   margin: 0;
-  padding: $vertical-padding spacing();
+  padding: $vertical-padding rem($spacing-base);
   background: linear-gradient(
     to bottom,
     color('white'),

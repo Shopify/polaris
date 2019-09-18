@@ -2,7 +2,7 @@
 
 $height: rem(20px);
 $small-height: rem(18px);
-$horizontal-padding: spacing(tight);
+$horizontal-padding: rem($spacing-tight);
 
 $pip-size: rem(10px);
 $pip-spacing: ($height - $pip-size) / 2;
@@ -65,7 +65,7 @@ $pip-spacing: ($height - $pip-size) / 2;
 .Pip {
   height: $pip-size;
   width: $pip-size;
-  margin: 0 spacing(extra-tight) 0 ($pip-spacing - $horizontal-padding);
+  margin: 0 rem($spacing-extra-tight) 0 ($pip-spacing - $horizontal-padding);
   border: border-width(thick) solid currentColor;
   border-radius: 50%;
 }

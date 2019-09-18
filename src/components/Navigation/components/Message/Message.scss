@@ -5,6 +5,6 @@ $message-min-height: rem(40px);
 $message-vertical-padding: ($message-min-height - line-height(body)) / 2;
 
 .Message {
-  padding: $message-vertical-padding spacing();
+  padding: $message-vertical-padding rem($spacing-base);
   color: color('ink', 'light');
 }

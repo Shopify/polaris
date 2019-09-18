@@ -14,7 +14,7 @@ $chekbox-label-margin: rem(20px);
   min-height: resource-list(button-min-height);
   min-width: resource-list(button-min-height);
   margin: 0;
-  padding: $button-vertical-padding spacing();
+  padding: $button-vertical-padding rem($spacing-base);
   line-height: 1;
   cursor: pointer;
   user-select: none;
@@ -78,7 +78,7 @@ $chekbox-label-margin: rem(20px);
   pointer-events: none;
   height: $control-size;
   width: $control-size;
-  margin-left: (-1 * (spacing(tight) + rem(1px))); // 1px accounts for border
+  margin-left: (-1 * (rem($spacing-tight) + rem(1px))); // 1px accounts for border
 }
 
 .Label {

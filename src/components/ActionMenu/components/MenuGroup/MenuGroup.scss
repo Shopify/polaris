@@ -1,6 +1,6 @@
 @import '../../../../styles/common';
 
 .Details {
-  margin-top: -(spacing());
-  padding: spacing();
+  margin-top: -(rem($spacing-base));
+  padding: rem($spacing-base);
 }

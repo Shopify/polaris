@@ -1,13 +1,13 @@
-$actions-vertical-spacing: spacing(tight);
+$actions-vertical-spacing: rem($spacing-tight);
 
 /// @deprecated Copy into consuming project
 @mixin page-padding-not-fully-condensed {
-  padding: 0 spacing(loose);
+  padding: 0 rem($spacing-loose);
 }
 
 /// @deprecated Copy into consuming project
 @mixin page-padding-not-partially-condensed {
-  padding: 0 spacing(extra-loose);
+  padding: 0 rem($spacing-extra-loose);
 }
 
 /// @deprecated Copy into consuming project
@@ -27,10 +27,10 @@ $actions-vertical-spacing: spacing(tight);
 
 /// @deprecated Copy into consuming project
 @mixin page-content-layout {
-  margin: spacing(loose) 0;
+  margin: rem($spacing-loose) 0;
 
   @include page-content-when-not-partially-condensed {
-    margin-top: spacing(loose);
+    margin-top: rem($spacing-loose);
   }
 }
 
@@ -41,18 +41,18 @@ $actions-vertical-spacing: spacing(tight);
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  margin-top: -1 * spacing(tight);
-  margin-left: -1 * spacing(tight);
+  margin-top: -1 * rem($spacing-tight);
+  margin-left: -1 * rem($spacing-tight);
 
   > * {
-    margin-top: spacing(tight);
-    margin-left: spacing(tight);
+    margin-top: rem($spacing-tight);
+    margin-left: rem($spacing-tight);
   }
 }
 
 /// @deprecated Copy into consuming project
 @mixin page-header-layout {
-  padding: spacing(loose) spacing(loose) 0;
+  padding: rem($spacing-loose) rem($spacing-loose) 0;
 
   @include page-content-when-not-fully-condensed {
     padding-left: 0;
@@ -60,7 +60,7 @@ $actions-vertical-spacing: spacing(tight);
   }
 
   @include page-content-when-not-partially-condensed {
-    padding-top: spacing(extra-loose);
+    padding-top: rem($spacing-extra-loose);
   }
 }
 

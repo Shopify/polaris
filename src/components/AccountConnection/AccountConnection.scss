@@ -1,12 +1,12 @@
 @import '../../styles/common';
 
 .TermsOfService {
-  margin-top: spacing(loose);
+  margin-top: rem($spacing-loose);
 }
 
 .Content {
   // stylelint-disable-next-line selector-max-combinators
   > * + * {
-    margin-top: spacing(tight);
+    margin-top: rem($spacing-tight);
   }
 }

@@ -19,18 +19,18 @@ $control-size: rem(16px);
 }
 
 .ChoiceChildren {
-  margin-bottom: spacing(tight);
-  padding-left: spacing(tight) + $control-size;
+  margin-bottom: rem($spacing-tight);
+  padding-left: rem($spacing-tight) + $control-size;
 }
 
 .ChoiceError {
-  margin-top: spacing(extra-tight);
-  margin-bottom: spacing(tight);
+  margin-top: rem($spacing-extra-tight);
+  margin-bottom: rem($spacing-tight);
 }
 
 .Title {
   @include text-style-body;
   display: block;
-  margin: 0 0 spacing(extra-tight);
+  margin: 0 0 rem($spacing-extra-tight);
   padding: 0;
 }

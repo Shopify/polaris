@@ -5,8 +5,8 @@
   align-self: flex-end;
   align-items: center;
   width: 100%;
-  min-height: spacing() * 4;
-  padding: spacing();
+  min-height: rem($spacing-base) * 4;
+  padding: rem($spacing-base);
   border-top: border();
 }
 

@@ -15,11 +15,11 @@ $breakpoint: 550px;
 
 .Term {
   @include text-emphasis-strong;
-  padding: spacing() 0 spacing(tight);
+  padding: rem($spacing-base) 0 rem($spacing-tight);
 
   @include page-content-breakpoint-after($breakpoint) {
     flex: 0 1 25%;
-    padding: spacing() spacing() spacing() 0;
+    padding: rem($spacing-base) rem($spacing-base) rem($spacing-base) 0;
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
     .Description + & + .Description {
@@ -30,7 +30,7 @@ $breakpoint: 550px;
 
 .Description {
   margin-left: 0;
-  padding: 0 0 spacing();
+  padding: 0 0 rem($spacing-base);
 
   + .Term {
     border-top: border();
@@ -38,7 +38,7 @@ $breakpoint: 550px;
 
   @include page-content-breakpoint-after($breakpoint) {
     flex: 1 1 51%;
-    padding: spacing() 0;
+    padding: rem($spacing-base) 0;
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
     + .Term + .Description {

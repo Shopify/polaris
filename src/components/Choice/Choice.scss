@@ -9,7 +9,7 @@ $control-vertical-adjustment: 2px;
 .Choice {
   display: inline-flex;
   justify-content: flex-start;
-  padding: spacing(extra-tight) 0;
+  padding: rem($spacing-extra-tight) 0;
 }
 
 .labelHidden {
@@ -42,7 +42,7 @@ $control-vertical-adjustment: 2px;
   width: $control-size;
   height: $control-size;
   margin-top: $control-vertical-adjustment;
-  margin-right: spacing(tight);
+  margin-right: rem($spacing-tight);
 
   > * {
     width: 100%;
@@ -55,11 +55,11 @@ $control-vertical-adjustment: 2px;
 }
 
 .Descriptions {
-  padding-left: spacing(tight) + $control-size;
+  padding-left: rem($spacing-tight) + $control-size;
 }
 
 .HelpText {
   @include text-style-body;
   @include text-emphasis-subdued;
-  margin-bottom: spacing(extra-tight);
+  margin-bottom: rem($spacing-extra-tight);
 }

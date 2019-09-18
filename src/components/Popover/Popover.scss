@@ -6,8 +6,8 @@ $content-max-height: rem(295px);
 $content-max-width: rem(400px);
 
 .Popover {
-  max-width: calc(100vw - #{2 * spacing()});
-  margin: $visible-portion-of-arrow spacing(tight) spacing();
+  max-width: calc(100vw - #{2 * rem($spacing-base)});
+  margin: $visible-portion-of-arrow rem($spacing-tight) rem($spacing-base);
   box-shadow: shadow(deep);
   border-radius: border-radius();
   will-change: left, top;
@@ -48,7 +48,7 @@ $content-max-width: rem(400px);
 }
 
 .positionedAbove {
-  margin: spacing() 0 $visible-portion-of-arrow spacing(tight);
+  margin: rem($spacing-base) 0 $visible-portion-of-arrow rem($spacing-tight);
 
   &.fullWidth {
     margin: 0 0 $visible-portion-of-arrow;
@@ -97,7 +97,7 @@ $content-max-width: rem(400px);
 }
 
 .Section {
-  padding: spacing();
+  padding: rem($spacing-base);
 
   + .Section {
     border-top: border();

@@ -78,7 +78,7 @@ $list-filters-footer-height: rem(70px);
 
 .FilterTrigger {
   width: 100%;
-  padding: rem(14px) spacing(loose);
+  padding: rem(14px) rem($spacing-loose);
   border: none;
   background: none;
   color: color(ink);
@@ -100,7 +100,7 @@ $list-filters-footer-height: rem(70px);
 }
 
 .AppliedFilterBadgeContainer {
-  padding-top: spacing(extra-tight);
+  padding-top: rem($spacing-extra-tight);
   display: flex;
 
   .open & {
@@ -196,11 +196,11 @@ $list-filters-footer-height: rem(70px);
 
 .TagsContainer {
   display: flex;
-  padding-top: spacing(tight);
+  padding-top: rem($spacing-tight);
   flex-wrap: wrap;
 
   > * {
-    margin-right: spacing(tight);
-    margin-bottom: spacing(tight);
+    margin-right: rem($spacing-tight);
+    margin-bottom: rem($spacing-tight);
   }
 }

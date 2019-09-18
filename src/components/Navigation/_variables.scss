@@ -34,8 +34,8 @@ $nav-animation-variables: (
   flex-grow: 1;
   align-items: flex-start;
   max-width: 100%;
-  padding: 0 spacing(tight);
-  margin: 0 spacing(tight);
+  padding: 0 rem($spacing-tight);
+  margin: 0 rem($spacing-tight);
   border-radius: border-radius();
   color: color('ink');
   text-decoration: none;
@@ -73,11 +73,11 @@ $nav-animation-variables: (
   width: nav(icon-size);
   height: nav(icon-size);
   margin-top: nav(mobile-spacing);
-  margin-right: spacing(loose);
+  margin-right: rem($spacing-loose);
   margin-bottom: nav(mobile-spacing);
   @include breakpoint-after(nav-min-window-corrected()) {
     margin-top: nav(desktop-spacing);
-    margin-right: spacing();
+    margin-right: rem($spacing-base);
     margin-bottom: nav(desktop-spacing);
   }
   .Item-selected &,
@@ -132,11 +132,11 @@ $nav-animation-variables: (
 
 @mixin usermenu-section-attributes {
   position: relative;
-  margin-top: spacing();
+  margin-top: rem($spacing-base);
   &::before {
     content: '';
     position: absolute;
-    top: spacing(tight) * -1;
+    top: rem($spacing-tight) * -1;
     left: 0;
     display: block;
     width: 100%;

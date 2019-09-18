@@ -24,7 +24,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 
   .Title {
     width: 100%;
-    padding: spacing(tight) spacing();
+    padding: rem($spacing-tight) rem($spacing-base);
   }
 }
 
@@ -51,7 +51,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   min-width: 100%; // IE11 fix for overflowing flex items from parent container
   margin-top: 1px;
   margin-bottom: -1px;
-  padding: 0 spacing();
+  padding: 0 rem($spacing-base);
   outline: none;
   text-align: center;
   white-space: nowrap;
@@ -103,7 +103,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 
 .Title {
   display: block;
-  padding: spacing() 0 (spacing() - border-width(thicker)) 0;
+  padding: rem($spacing-base) 0 (rem($spacing-base) - border-width(thicker)) 0;
   border-bottom: border-width(thicker) solid transparent;
   min-width: $item-min-width;
 }
@@ -123,7 +123,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 .List {
   list-style: none;
   margin: 0;
-  padding: spacing(tight) 0;
+  padding: rem($spacing-tight) 0;
 }
 
 .Item {
@@ -132,7 +132,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   display: block;
   width: 100%;
   min-height: $item-min-height;
-  padding: $item-vertical-padding spacing();
+  padding: $item-vertical-padding rem($spacing-base);
   text-align: left;
   cursor: pointer;
 
@@ -181,7 +181,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   justify-content: center;
   height: 100%;
   margin: 1px 1px -1px 0;
-  padding: 0 spacing();
+  padding: 0 rem($spacing-base);
   background-color: transparent;
   cursor: pointer;
   border: none;

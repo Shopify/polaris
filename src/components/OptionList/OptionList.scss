@@ -10,7 +10,7 @@
 
 .Title {
   @include text-style-subheading;
-  padding: spacing(tight) spacing();
+  padding: rem($spacing-tight) rem($spacing-base);
   border-bottom: border();
   font-weight: 400;
   color: color('ink', 'lighter');

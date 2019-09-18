@@ -2,7 +2,7 @@
 
 .Section {
   flex: 0 0 auto;
-  padding: spacing(loose);
+  padding: rem($spacing-loose);
 
   &:not(:last-of-type) {
     border-bottom: border();

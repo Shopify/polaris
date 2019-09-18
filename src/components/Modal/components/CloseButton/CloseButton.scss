@@ -2,9 +2,9 @@
 
 .CloseButton {
   @include unstyled-button;
-  margin-left: spacing(loose);
-  margin-right: -1 * spacing(tight);
-  padding: spacing(tight);
+  margin-left: rem($spacing-loose);
+  margin-right: -1 * rem($spacing-tight);
+  padding: rem($spacing-tight);
 
   &:focus,
   &:active {
@@ -15,5 +15,5 @@
 
 .withoutTitle {
   position: absolute;
-  right: spacing(tight);
+  right: rem($spacing-tight);
 }

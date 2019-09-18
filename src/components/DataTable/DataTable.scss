@@ -14,7 +14,7 @@ $breakpoint: 768px;
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: spacing() spacing(tight);
+    padding: rem($spacing-base) rem($spacing-tight);
 
     @include breakpoint-after($breakpoint, inclusive) {
       justify-content: flex-end;
@@ -33,7 +33,7 @@ $breakpoint: 768px;
   border-radius: border-radius();
 
   &:not(:last-of-type) {
-    margin-right: spacing(extra-tight);
+    margin-right: rem($spacing-extra-tight);
   }
 }
 
@@ -60,7 +60,7 @@ $breakpoint: 768px;
 }
 
 .Cell {
-  padding: spacing();
+  padding: rem($spacing-base);
   border-bottom: border-width() solid color('sky', 'light');
   white-space: nowrap;
   text-align: left;
@@ -124,7 +124,7 @@ $breakpoint: 768px;
   justify-content: flex-end;
   align-items: baseline;
   transition: color $duration-base easing();
-  padding: spacing();
+  padding: rem($spacing-base);
   cursor: pointer;
 
   &:hover,
@@ -156,7 +156,7 @@ $breakpoint: 768px;
 }
 
 .Footer {
-  padding: spacing();
+  padding: rem($spacing-base);
   background: color('sky', 'light');
   color: color('ink', 'lighter');
   text-align: center;

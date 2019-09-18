@@ -7,13 +7,13 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 .ActionList {
   list-style: none;
   margin: 0;
-  padding: spacing(tight) 0;
+  padding: rem($spacing-tight) 0;
 }
 
 .Section-withoutTitle:not(:first-child) {
   border-top: border();
-  margin-top: spacing(tight);
-  padding-top: spacing(tight);
+  margin-top: rem($spacing-tight);
+  padding-top: rem($spacing-tight);
 }
 
 .Actions {
@@ -33,7 +33,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
 .Title {
   @include text-style-subheading;
-  padding: (spacing(tight) * 1.5) spacing();
+  padding: (rem($spacing-tight) * 1.5) rem($spacing-base);
 }
 
 .Item {
@@ -42,7 +42,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   display: block;
   width: 100%;
   min-height: $item-min-height;
-  padding: $item-vertical-padding spacing();
+  padding: $item-vertical-padding rem($spacing-base);
   text-align: left;
   cursor: pointer;
   border-radius: 0;
@@ -144,7 +144,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
   // We need the negative margin to ensure that the image does not set
   // the minimum height of the action item.
-  margin: (-0.5 * $image-size) spacing() (-0.5 * $image-size) 0;
+  margin: (-0.5 * $image-size) rem($spacing-base) (-0.5 * $image-size) 0;
   background-size: cover;
   background-position: center center;
 }
@@ -155,5 +155,5 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 }
 
 .BadgeWrapper {
-  margin-left: spacing();
+  margin-left: rem($spacing-base);
 }

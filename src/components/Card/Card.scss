@@ -6,7 +6,7 @@
   box-shadow: shadow();
 
   + .Card {
-    margin-top: spacing(loose);
+    margin-top: rem($spacing-loose);
   }
 
   @include page-content-when-not-fully-condensed {
@@ -23,18 +23,18 @@
 }
 
 .Header {
-  padding: spacing() spacing() 0;
+  padding: rem($spacing-base) rem($spacing-base) 0;
 
   @include page-content-when-not-fully-condensed {
-    padding: spacing(loose) spacing(loose) 0;
+    padding: rem($spacing-loose) rem($spacing-loose) 0;
   }
 }
 
 .Section {
-  padding: spacing();
+  padding: rem($spacing-base);
 
   @include page-content-when-not-fully-condensed {
-    padding: spacing(loose);
+    padding: rem($spacing-loose);
   }
 
   + .Section {
@@ -43,7 +43,7 @@
 }
 
 .Section-fullWidth {
-  padding: spacing(loose) spacing(none);
+  padding: rem($spacing-loose) rem($spacing-none);
 }
 
 .Section-subdued {
@@ -55,28 +55,28 @@
 
   .Header + & {
     border-top: border();
-    margin-top: spacing(loose);
+    margin-top: rem($spacing-loose);
   }
 }
 
 .SectionHeader {
-  padding-bottom: spacing(tight);
+  padding-bottom: rem($spacing-tight);
 
   .Section-fullWidth & {
-    padding-left: spacing();
-    padding-right: spacing();
+    padding-left: rem($spacing-base);
+    padding-right: rem($spacing-base);
 
     @include page-content-when-not-fully-condensed {
-      padding-left: spacing(loose);
-      padding-right: spacing(loose);
+      padding-left: rem($spacing-loose);
+      padding-right: rem($spacing-loose);
     }
   }
 }
 
 .Subsection {
   + .Subsection {
-    margin-top: spacing();
-    padding-top: spacing();
+    margin-top: rem($spacing-base);
+    padding-top: rem($spacing-base);
     border-top: border();
   }
 }
@@ -84,14 +84,14 @@
 .Footer {
   display: flex;
   justify-content: flex-end;
-  padding: 0 spacing() spacing();
+  padding: 0 rem($spacing-base) rem($spacing-base);
 
   @include page-content-when-not-fully-condensed {
-    padding: 0 spacing(loose) spacing(loose);
+    padding: 0 rem($spacing-loose) rem($spacing-loose);
   }
 
   .Section-subdued + & {
     border-top: border();
-    padding: spacing(loose);
+    padding: rem($spacing-loose);
   }
 }

@@ -27,7 +27,7 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 0 0 layout-width(nav);
     align-items: center;
     height: 100%;
-    padding: 0 spacing();
+    padding: 0 rem($spacing-base);
     border-right: 1px solid $off-white-border;
     background-color: $off-white;
   }
@@ -43,14 +43,14 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     layout-width(inner-spacing);
   height: 100%;
   margin: 0 auto;
-  padding: 0 spacing();
+  padding: 0 rem($spacing-base);
 
   @include page-content-when-not-fully-condensed {
-    padding: 0 spacing(loose);
+    padding: 0 rem($spacing-loose);
   }
 
   @include page-content-when-not-partially-condensed {
-    padding: 0 spacing(extra-loose);
+    padding: 0 rem($spacing-extra-loose);
   }
 }
 
@@ -65,5 +65,5 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .Action {
-  margin-left: spacing(tight);
+  margin-left: rem($spacing-tight);
 }

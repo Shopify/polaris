@@ -76,12 +76,12 @@ $disabled-fade: 0.6;
 }
 
 .Badge {
-  margin-left: spacing(tight);
+  margin-left: rem($spacing-tight);
   display: inline-flex;
-  margin-top: spacing(base-tight);
+  margin-top: rem($spacing-base-tight);
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    margin-top: spacing(tight);
+    margin-top: rem($spacing-tight);
   }
 }
 
@@ -95,7 +95,7 @@ $disabled-fade: 0.6;
 
 .ListItem-hasAction .Item {
   max-width: calc(
-    100% - #{nav(icon-size) + spacing() * 2 + spacing(extra-tight)}
+    100% - #{nav(icon-size) + rem($spacing-base) * 2 + rem($spacing-extra-tight)}
   );
 }
 
@@ -118,8 +118,8 @@ $disabled-fade: 0.6;
   display: flex;
   align-items: center;
   height: nav(mobile-height);
-  margin-right: spacing(extra-tight);
-  padding: spacing(extra-tight) spacing();
+  margin-right: rem($spacing-extra-tight);
+  padding: rem($spacing-extra-tight) rem($spacing-base);
   border-radius: border-radius();
 
   @include breakpoint-after(nav-min-window-corrected()) {
@@ -143,11 +143,11 @@ $disabled-fade: 0.6;
 $secondary-item-font-size: rem(15px);
 .SecondaryNavigation {
   flex-basis: 100%;
-  margin-bottom: spacing(tight);
-  margin-left: nav(icon-size) + spacing(loose);
+  margin-bottom: rem($spacing-tight);
+  margin-left: nav(icon-size) + rem($spacing-loose);
   overflow-x: hidden;
   @include breakpoint-after(nav-min-window-corrected()) {
-    margin-left: nav(icon-size) + spacing();
+    margin-left: nav(icon-size) + rem($spacing-base);
   }
   .List {
     @include unstyled-list;
@@ -173,8 +173,8 @@ $secondary-item-font-size: rem(15px);
     margin-bottom: nav(mobile-spacing);
     line-height: rem(20px);
     @include breakpoint-after(nav-min-window-corrected()) {
-      margin-top: spacing(extra-tight);
-      margin-bottom: spacing(extra-tight);
+      margin-top: rem($spacing-extra-tight);
+      margin-bottom: rem($spacing-extra-tight);
     }
   }
   .Item-selected {
@@ -191,11 +191,11 @@ $secondary-item-font-size: rem(15px);
 .Section {
   @include unstyled-list;
   flex: 0 0 auto;
-  padding: spacing() 0;
+  padding: rem($spacing-base) 0;
   @include safe-area-for(padding-left, 0, left);
 
   + .Section {
-    padding-top: spacing(extra-tight);
+    padding-top: rem($spacing-extra-tight);
   }
 }
 
@@ -212,7 +212,7 @@ $secondary-item-font-size: rem(15px);
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
-  padding-left: spacing();
+  padding-left: rem($spacing-base);
   color: color('ink', 'lighter');
 
   .Action {
@@ -225,8 +225,8 @@ $secondary-item-font-size: rem(15px);
     display: flex;
     align-items: center;
     height: nav(mobile-nav-height);
-    margin-right: spacing(extra-tight);
-    padding: spacing(extra-tight) spacing();
+    margin-right: rem($spacing-extra-tight);
+    padding: rem($spacing-extra-tight) rem($spacing-base);
     border-radius: border-radius();
     transition: background-color $duration-base easing();
 

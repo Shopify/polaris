@@ -91,7 +91,7 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   @include breakpoint-after(resource-list(breakpoint-small)) {
     width: auto;
     justify-content: flex-start;
-    margin-right: spacing(tight);
+    margin-right: rem($spacing-tight);
   }
 
   .Group-measuring & {
@@ -148,14 +148,14 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   display: inline-block;
 
   &:first-child {
-    margin-right: spacing(extra-tight);
+    margin-right: rem($spacing-extra-tight);
   }
 
   &:last-child {
     // This compensates for the disclosure icon, which is substantially
     // inset within the viewbox (and makes it look like there is too much
     // spacing on the right of the button)
-    margin-right: -1 * spacing(tight);
+    margin-right: -1 * rem($spacing-tight);
   }
 
   &.disabled {
@@ -170,7 +170,7 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
 }
 
 .PaginatedSelectAll {
-  padding: spacing(extra-tight) 0;
+  padding: rem($spacing-extra-tight) 0;
 }
 
 .Slide {

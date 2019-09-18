@@ -17,10 +17,10 @@ $item-wrapper-loading-height: rem(64px);
 
 .FiltersWrapper {
   padding: resource-list(header-padding-small)
-    resource-list(header-padding-small) spacing();
+    resource-list(header-padding-small) rem($spacing-base);
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
-    padding: spacing();
+    padding: rem($spacing-base);
   }
 
   + .ResourceList {
@@ -49,7 +49,7 @@ $item-wrapper-loading-height: rem(64px);
 }
 
 .FiltersWrapper + .HeaderOuterWrapper {
-  margin-top: -1 * spacing();
+  margin-top: -1 * rem($spacing-base);
 }
 
 .HeaderWrapper {
@@ -64,7 +64,7 @@ $item-wrapper-loading-height: rem(64px);
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex-direction: row;
-    padding: resource-list(header-vertical-padding) spacing();
+    padding: resource-list(header-vertical-padding) rem($spacing-base);
   }
 }
 
@@ -87,8 +87,8 @@ $item-wrapper-loading-height: rem(64px);
   }
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
-    right: spacing();
-    left: spacing();
+    right: rem($spacing-base);
+    left: rem($spacing-base);
     align-self: flex-start;
   }
 }
@@ -101,14 +101,14 @@ $item-wrapper-loading-height: rem(64px);
   align-items: center;
 
   .HeaderWrapper-hasSelect & {
-    padding-right: spacing(tight);
+    padding-right: rem($spacing-tight);
   }
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     position: relative;
     left: auto;
     flex: 0 1 auto;
-    margin-left: spacing();
+    margin-left: rem($spacing-base);
 
     // stylelint-disable-next-line selector-max-class
     .HeaderWrapper-hasAlternateTool.HeaderWrapper-hasSelect &,
@@ -122,7 +122,7 @@ $item-wrapper-loading-height: rem(64px);
   white-space: nowrap;
   text-overflow: ellipsis;
   flex: 1;
-  padding-left: spacing(extra-tight);
+  padding-left: rem($spacing-extra-tight);
   align-self: center;
 
   .HeaderWrapper-hasAlternateTool &,

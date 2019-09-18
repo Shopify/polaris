@@ -27,9 +27,9 @@ $context-control-expand-after: 1400px;
     flex: 0 0 layout-width(nav);
     align-items: center;
     height: 100%;
-    padding: 0 spacing(tight) 0 spacing(base);
+    padding: 0 rem($spacing-tight) 0 rem($spacing-base);
     @include safe-area-for(flex-basis, layout-width(nav), left);
-    @include safe-area-for(padding-left, spacing(), left);
+    @include safe-area-for(padding-left, rem($spacing-base), left);
   }
 }
 
@@ -54,9 +54,9 @@ $context-control-expand-after: 1400px;
   @include unstyled-button;
   position: relative;
   align-self: center;
-  margin-left: spacing(tight) + rem(2px);
-  margin-right: spacing(tight);
-  padding: spacing(tight);
+  margin-left: rem($spacing-tight) + rem(2px);
+  margin-right: rem($spacing-tight);
+  padding: rem($spacing-tight);
   border-radius: border-radius();
   &.focused {
     background-color: rgba(color('white'), 0.16);
@@ -70,10 +70,10 @@ $context-control-expand-after: 1400px;
   &::after {
     content: '';
     position: absolute;
-    top: spacing(tight) * -1;
-    left: spacing(tight) * -1;
-    width: calc(100% + #{spacing(loose)});
-    height: calc(100% + #{spacing(loose)});
+    top: rem($spacing-tight) * -1;
+    left: rem($spacing-tight) * -1;
+    width: calc(100% + #{rem($spacing-loose)});
+    height: calc(100% + #{rem($spacing-loose)});
   }
   @include breakpoint-after(nav-min-window-corrected()) {
     display: none;

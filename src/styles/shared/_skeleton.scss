@@ -50,7 +50,7 @@ $thumbnail-sizes: (
 
 /// @deprecated Copy into consuming project
 @mixin skeleton-page-secondary-actions-layout {
-  margin-top: spacing(tight);
+  margin-top: rem($spacing-tight);
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -65,5 +65,5 @@ $thumbnail-sizes: (
 
 /// @deprecated Copy into consuming project
 @mixin skeleton-page-header-layout {
-  padding-bottom: spacing(tight);
+  padding-bottom: rem($spacing-tight);
 }

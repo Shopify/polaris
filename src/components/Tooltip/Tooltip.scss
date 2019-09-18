@@ -5,7 +5,7 @@ $content-max-height: rem(100px);
 $content-max-width: rem(200px);
 
 .Tooltip {
-  margin: $offset-from-activator spacing() spacing();
+  margin: $offset-from-activator rem($spacing-base) rem($spacing-base);
   opacity: 1;
   box-shadow: shadow(deep);
   border-radius: border-radius();
@@ -23,7 +23,7 @@ $content-max-width: rem(200px);
 }
 
 .positionedAbove {
-  margin: spacing() spacing() $offset-from-activator;
+  margin: rem($spacing-base) rem($spacing-base) $offset-from-activator;
 }
 
 .light {
@@ -50,6 +50,6 @@ $content-max-width: rem(200px);
 }
 
 .Label {
-  padding: spacing(extra-tight) spacing(tight);
+  padding: rem($spacing-extra-tight) rem($spacing-tight);
   word-break: break-word;
 }

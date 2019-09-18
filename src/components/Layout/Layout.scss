@@ -11,8 +11,8 @@ $relative-size: $primary-basis / $secondary-basis;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  margin-top: -1 * spacing(loose);
-  margin-left: -1 * spacing(loose);
+  margin-top: -1 * rem($spacing-loose);
+  margin-left: -1 * rem($spacing-loose);
 }
 
 .Section {
@@ -46,13 +46,13 @@ $relative-size: $primary-basis / $secondary-basis;
 
 .Section,
 .AnnotatedSection {
-  max-width: calc(100% - #{spacing(loose)});
-  margin-top: spacing(loose);
-  margin-left: spacing(loose);
+  max-width: calc(100% - #{rem($spacing-loose)});
+  margin-top: rem($spacing-loose);
+  margin-left: rem($spacing-loose);
 
   + .AnnotatedSection {
     @include page-content-when-not-fully-condensed {
-      padding-top: spacing(loose);
+      padding-top: rem($spacing-loose);
       border-top: border();
     }
   }
@@ -61,8 +61,8 @@ $relative-size: $primary-basis / $secondary-basis;
 .AnnotationWrapper {
   display: flex;
   flex-wrap: wrap;
-  margin-top: -1 * spacing(loose);
-  margin-left: -1 * spacing(loose);
+  margin-top: -1 * rem($spacing-loose);
+  margin-left: -1 * rem($spacing-loose);
 }
 
 .AnnotationContent {
@@ -71,23 +71,23 @@ $relative-size: $primary-basis / $secondary-basis;
 
 .Annotation {
   flex: 1 1 $secondary-basis;
-  padding: spacing() spacing(loose) 0;
+  padding: rem($spacing-base) rem($spacing-loose) 0;
 
   @include page-content-when-not-fully-condensed {
-    padding: spacing() 0 0;
+    padding: rem($spacing-base) 0 0;
   }
 
   @include page-content-when-layout-not-stacked {
-    padding: spacing(loose) spacing(loose) spacing(loose) 0;
+    padding: rem($spacing-loose) rem($spacing-loose) rem($spacing-loose) 0;
   }
 }
 
 .Annotation,
 .AnnotationContent {
   min-width: 0;
-  max-width: calc(100% - #{spacing(loose)});
-  margin-top: spacing(loose);
-  margin-left: spacing(loose);
+  max-width: calc(100% - #{rem($spacing-loose)});
+  margin-top: rem($spacing-loose);
+  margin-left: rem($spacing-loose);
 }
 
 .AnnotationDescription {

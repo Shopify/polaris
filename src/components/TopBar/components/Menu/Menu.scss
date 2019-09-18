@@ -28,11 +28,11 @@ $activator-variables: (
   justify-content: center;
   align-items: center;
   min-width: menu(min-width);
-  padding: rem(6px) spacing(tight);
+  padding: rem(6px) rem($spacing-tight);
   border: 0;
   cursor: pointer;
   transition: menu(transition);
-  margin-right: spacing(tight);
+  margin-right: rem($spacing-tight);
   border-radius: border-radius();
 
   &:focus {
@@ -52,7 +52,7 @@ $activator-variables: (
   }
 
   @include breakpoint-before(layout-width(page-with-nav), false) {
-    margin: 0 spacing(extra-tight);
+    margin: 0 rem($spacing-extra-tight);
 
     &:focus,
     &:hover,
@@ -65,7 +65,7 @@ $activator-variables: (
 }
 
 .Section {
-  margin-top: spacing(tight);
-  padding-top: spacing(tight);
+  margin-top: rem($spacing-tight);
+  padding-top: rem($spacing-tight);
   border-top: border();
 }

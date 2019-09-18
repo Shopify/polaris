@@ -1,8 +1,6 @@
 @import '../../../../styles/common';
 @import '../../variables';
 
-$spacing: tight;
-
 .AppliedFilters {
   list-style-type: none;
   padding: 0;
@@ -24,8 +22,8 @@ $spacing: tight;
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex-wrap: wrap;
     margin-right: 0;
-    margin-left: -1 * spacing($spacing);
-    margin-top: -1 * spacing(base);
+    margin-left: -1 * rem($spacing-tight);
+    margin-top: -1 * rem($spacing-base);
 
     &::after {
       content: none;
@@ -35,18 +33,18 @@ $spacing: tight;
 
   @include breakpoint-before(resource-list(breakpoint-small)) {
     // account for scrollbar
-    padding-bottom: spacing($spacing);
+    padding-bottom: rem($spacing-tight);
   }
 }
 
 .AppliedFilter {
   flex: 1 0 auto;
-  margin-top: spacing($spacing);
+  margin-top: rem($spacing-tight);
   margin-left: resource-list(header-padding-small);
-  max-width: calc(100% - #{spacing($spacing)});
+  max-width: calc(100% - #{rem($spacing-tight)});
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex: 0 1 auto;
-    margin-left: spacing($spacing);
+    margin-left: rem($spacing-tight);
   }
 }

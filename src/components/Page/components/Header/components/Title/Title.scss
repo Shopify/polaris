@@ -5,12 +5,12 @@
 }
 
 .SubTitle {
-  margin-top: spacing(tight);
+  margin-top: rem($spacing-tight);
 }
 
 .hasThumbnail {
   display: grid;
-  grid-gap: spacing();
+  grid-gap: rem($spacing-base);
   grid-template-columns: auto 1fr;
 
   .TitleAndSubtitleWrapper {
@@ -23,7 +23,7 @@
 .TitleWithMetadataWrapper {
   .Title {
     display: inline;
-    margin-right: spacing(tight);
+    margin-right: rem($spacing-tight);
 
     // stylelint-disable-next-line selector-max-combinators
     > * {
@@ -32,7 +32,7 @@
   }
 
   .TitleMetadata {
-    margin-top: spacing(tight);
+    margin-top: rem($spacing-tight);
     display: inline-block;
   }
 }

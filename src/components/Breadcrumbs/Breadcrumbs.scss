@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 $vertical-padding: (control-height() - line-height(body)) / 2;
-$horizontal-padding: spacing(tight);
+$horizontal-padding: rem($spacing-tight);
 $icon-size: rem(20px);
 
 $difference-between-touch-area-and-backdrop: control-height() -

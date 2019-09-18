@@ -17,7 +17,7 @@ $search-results-min-width: 45rem;
   width: 100%;
 
   @include breakpoint-after($not-condensed-content) {
-    top: top-bar-height() - spacing();
+    top: top-bar-height() - rem($spacing-base);
     left: auto;
     right: auto;
   }

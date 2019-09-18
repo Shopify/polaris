@@ -1,9 +1,9 @@
 @import '../../../../../../styles/common';
 
 .DateTextField {
-  margin-top: spacing(tight);
+  margin-top: rem($spacing-tight);
 }
 
 .DatePicker {
-  margin-top: spacing();
+  margin-top: rem($spacing-base);
 }

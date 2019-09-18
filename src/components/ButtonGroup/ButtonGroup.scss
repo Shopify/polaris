@@ -5,8 +5,8 @@ $stacking-order: (
   focused: 20,
 );
 
-$plain-horizontal-spacing: spacing(tight);
-$item-spacing: spacing(tight);
+$plain-horizontal-spacing: rem($spacing-tight);
+$item-spacing: rem($spacing-tight);
 
 .ButtonGroup {
   display: flex;
