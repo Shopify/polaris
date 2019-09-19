@@ -36,6 +36,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Converted `TextField`, `Toast`, and `TopBar` examples to functional components ([#2135](https://github.com/Shopify/polaris-react/pull/2135))
 - Updated the `withContext` section in the [v3 to v4 migration guide](https://github.com/Shopify/polaris-react/blob/master/documentation/guides/migrating-from-v3-to-v4.md) ([#2124](https://github.com/Shopify/polaris-react/pull/2124))
 - Clarify when to use the `external` prop on the `Link` component ([#2153](https://github.com/Shopify/polaris-react/pull/2153))
+- Updated documentation examples to include disclosure on `Popover` activators ([#2147](https://github.com/Shopify/polaris-react/pull/2171))
 
 ### Development workflow
 
