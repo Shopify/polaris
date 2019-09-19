@@ -46,6 +46,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Added `useLazyRef` hook to use while building components ([#2166](https://github.com/Shopify/polaris-react/pull/2166))
 - Migrated `FilterCreator` to use hooks instead of withAppProvider ([#2156](https://github.com/Shopify/polaris-react/pull/2156))
 - Created a custom error for lack of context providers ([#2136](https://github.com/Shopify/polaris-react/pull/2136))
 - Migrated `ContextualSaveBar` to use hooks instead of `withAppProvider` ([#2091](https://github.com/Shopify/polaris-react/pull/2091))
