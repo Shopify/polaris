@@ -124,13 +124,13 @@ function CheckboxExample() {
 
 <!-- content-for: android -->
 
-![Default checkbox on Android](https://polaris.shopify.com/public_images/components/Checkbox/android/default@2x.png)
+![Default checkbox on Android](/public_images/components/Checkbox/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default checkbox on iOS](https://polaris.shopify.com/public_images/components/Checkbox/ios/default@2x.png)
+![Default checkbox on iOS](/public_images/components/Checkbox/ios/default@2x.png)
 
 <!-- /content-for -->
 

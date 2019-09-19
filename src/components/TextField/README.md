@@ -184,13 +184,13 @@ function TextFieldExample() {
 
 <!-- content-for: android -->
 
-![Default text field](https://polaris.shopify.com/public_images/components/TextField/android/default@2x.png)
+![Default text field](/public_images/components/TextField/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text field](https://polaris.shopify.com/public_images/components/TextField/ios/default@2x.png)
+![Default text field](/public_images/components/TextField/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -219,7 +219,7 @@ function NumberFieldExample() {
 
 This will display the right keyboard on mobile devices.
 
-![Number text field with numeric keyboard](https://polaris.shopify.com/public_images/components/TextField/android/number@2x.png)
+![Number text field with numeric keyboard](/public_images/components/TextField/android/number@2x.png)
 
 <!-- /content-for -->
 
@@ -227,7 +227,7 @@ This will display the right keyboard on mobile devices.
 
 This will display the right keyboard on mobile devices.
 
-![Number text field with numeric keyboard](https://polaris.shopify.com/public_images/components/TextField/ios/number@2x.png)
+![Number text field with numeric keyboard](/public_images/components/TextField/ios/number@2x.png)
 
 <!-- /content-for -->
 
@@ -256,7 +256,7 @@ function EmailFieldExample() {
 
 This will display the right keyboard on mobile devices.
 
-![Email field with email keyboard](https://polaris.shopify.com/public_images/components/TextField/android/email@2x.png)
+![Email field with email keyboard](/public_images/components/TextField/android/email@2x.png)
 
 <!-- /content-for -->
 
@@ -264,7 +264,7 @@ This will display the right keyboard on mobile devices.
 
 This will display the right keyboard on mobile devices.
 
-![Email field with email keyboard](https://polaris.shopify.com/public_images/components/TextField/ios/email@2x.png)
+![Email field with email keyboard](/public_images/components/TextField/ios/email@2x.png)
 
 <!-- /content-for -->
 
@@ -291,13 +291,13 @@ function MultilineFieldExample() {
 
 <!-- content-for: android -->
 
-![Multi-line text field](https://polaris.shopify.com/public_images/components/TextField/android/multi-line@2x.png)
+![Multi-line text field](/public_images/components/TextField/android/multi-line@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Multi-line text field](https://polaris.shopify.com/public_images/components/TextField/ios/multi-line@2x.png)
+![Multi-line text field](/public_images/components/TextField/ios/multi-line@2x.png)
 
 <!-- /content-for -->
 
@@ -432,13 +432,13 @@ function PlaceholderExample() {
 
 <!-- content-for: android -->
 
-![Default text field with placeholder text hint](https://polaris.shopify.com/public_images/components/TextField/android/placeholder-text@2x.png)
+![Default text field with placeholder text hint](/public_images/components/TextField/android/placeholder-text@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text field with placeholder text hint](https://polaris.shopify.com/public_images/components/TextField/ios/placeholder-text@2x.png)
+![Default text field with placeholder text hint](/public_images/components/TextField/ios/placeholder-text@2x.png)
 
 <!-- /content-for -->
 
@@ -471,13 +471,13 @@ function HelpTextExample() {
 
 <!-- content-for: android -->
 
-![Default text field with help text](https://polaris.shopify.com/public_images/components/TextField/android/help-text@2x.png)
+![Default text field with help text](/public_images/components/TextField/android/help-text@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text field with help text](https://polaris.shopify.com/public_images/components/TextField/ios/help-text@2x.png)
+![Default text field with help text](/public_images/components/TextField/ios/help-text@2x.png)
 
 <!-- /content-for -->
 
@@ -511,13 +511,13 @@ function PrefixExample() {
 
 <!-- content-for: android -->
 
-![Default text field with prefix and suffix](https://polaris.shopify.com/public_images/components/TextField/android/prefix-suffix@2x.png)
+![Default text field with prefix and suffix](/public_images/components/TextField/android/prefix-suffix@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text field with prefix and suffix](https://polaris.shopify.com/public_images/components/TextField/ios/prefix-suffix@2x.png)
+![Default text field with prefix and suffix](/public_images/components/TextField/ios/prefix-suffix@2x.png)
 
 <!-- /content-for -->
 
@@ -567,7 +567,7 @@ function ConnectedFieldsExample() {
 
 If inputting weight as a number and a separate unit of measurement, use a text field with a selector (like “kg” or “lb”) as a connected field.
 
-![Text field with connected selector](https://polaris.shopify.com/public_images/components/TextField/android/connected-fields@2x.png)
+![Text field with connected selector](/public_images/components/TextField/android/connected-fields@2x.png)
 
 <!-- /content-for -->
 
@@ -575,7 +575,7 @@ If inputting weight as a number and a separate unit of measurement, use a text f
 
 If inputting weight as a number and a separate unit of measurement, use a text field with a selector (like “kg” or “lb”) as a connected field.
 
-![Text field with connected selector](https://polaris.shopify.com/public_images/components/TextField/ios/connected-fields@2x.png)
+![Text field with connected selector](/public_images/components/TextField/ios/connected-fields@2x.png)
 
 <!-- /content-for -->
 
@@ -589,13 +589,13 @@ For example, tap on a barcode icon to launch the camera and scan barcode for the
 
 <!-- content-for: android -->
 
-![Text field with icon action inside the text field](https://polaris.shopify.com/public_images/components/TextField/android/accessory@2x.png)
+![Text field with icon action inside the text field](/public_images/components/TextField/android/accessory@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Text field with icon action inside the text field](https://polaris.shopify.com/public_images/components/TextField/ios/accessory@2x.png)
+![Text field with icon action inside the text field](/public_images/components/TextField/ios/accessory@2x.png)
 
 <!-- /content-for -->
 
@@ -625,13 +625,13 @@ function ValidationErrorExample() {
 
 <!-- content-for: android -->
 
-![Text field with error](https://polaris.shopify.com/public_images/components/TextField/android/error@2x.png)
+![Text field with error](/public_images/components/TextField/android/error@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Text field with error](https://polaris.shopify.com/public_images/components/TextField/ios/error@2x.png)
+![Text field with error](/public_images/components/TextField/ios/error@2x.png)
 
 <!-- /content-for -->
 

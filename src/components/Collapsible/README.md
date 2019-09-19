@@ -88,13 +88,13 @@ function CollapsibleExample() {
 
 <!-- content-for: android -->
 
-![Collapsible on Android](https://polaris.shopify.com/public_images/components/Collapsible/android/default@2x.png)
+![Collapsible on Android](/public_images/components/Collapsible/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Collapsible on iOS](https://polaris.shopify.com/public_images/components/Collapsible/ios/default@2x.png)
+![Collapsible on iOS](/public_images/components/Collapsible/ios/default@2x.png)
 
 <!-- /content-for -->
 

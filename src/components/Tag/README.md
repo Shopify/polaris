@@ -41,13 +41,13 @@ Use to allow merchants to add attributes to, and remove attributes from, an obje
 
 <!-- content-for: android -->
 
-![Tag for Android](https://polaris.shopify.com/public_images/components/Tag/android/default@2x.png)
+![Tag for Android](/public_images/components/Tag/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Tag for iOS](https://polaris.shopify.com/public_images/components/Tag/ios/default@2x.png)
+![Tag for iOS](/public_images/components/Tag/ios/default@2x.png)
 
 <!-- /content-for -->
 

@@ -221,12 +221,12 @@ Tertiary actions should:
 #### Do
 
 - Use a plain button for a tertiary action if needed
-  ![Screenshot of modal with a plain button as a tertiary action](https://polaris.shopify.com/public_images/components/Modal/do-use-plain-button-for-tertiary-action@2x.png)
+  ![Screenshot of modal with a plain button as a tertiary action](/public_images/components/Modal/do-use-plain-button-for-tertiary-action@2x.png)
 
 #### Don’t
 
 - Use a tertiary action for a destructive action
-  ![Screenshot of modal with a destructive button as a tertiary action](https://polaris.shopify.com/public_images/components/Modal/dont-use-destructive-tertiary-action@2x.png)
+  ![Screenshot of modal with a destructive button as a tertiary action](/public_images/components/Modal/dont-use-destructive-tertiary-action@2x.png)
 
 <!-- end -->
 
@@ -384,13 +384,13 @@ function ModalWithPrimaryActionExample() {
 
 <!-- content-for: android -->
 
-![Modal with primary action on Android](https://polaris.shopify.com/public_images/components/Modal/android/information@2x.png)
+![Modal with primary action on Android](/public_images/components/Modal/android/information@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Modal with primary action on iOS](https://polaris.shopify.com/public_images/components/Modal/ios/information@2x.png)
+![Modal with primary action on iOS](/public_images/components/Modal/ios/information@2x.png)
 
 <!-- /content-for -->
 
@@ -485,13 +485,13 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
 
 <!-- content-for: android -->
 
-![Modal with primary and secondary actions on Android](https://polaris.shopify.com/public_images/components/Modal/android/basic@2x.png)
+![Modal with primary and secondary actions on Android](/public_images/components/Modal/android/basic@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Modal with primary and secondary actions on iOS](https://polaris.shopify.com/public_images/components/Modal/ios/basic@2x.png)
+![Modal with primary and secondary actions on iOS](/public_images/components/Modal/ios/basic@2x.png)
 
 <!-- /content-for -->
 
@@ -640,13 +640,13 @@ Use to make it clear to the merchant that the action is potentially dangerous. O
 
 <!-- content-for: android -->
 
-![Warning modal on Android](https://polaris.shopify.com/public_images/components/Modal/android/default@2x.png)
+![Warning modal on Android](/public_images/components/Modal/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Warning modal on iOS](https://polaris.shopify.com/public_images/components/Modal/ios/default@2x.png)
+![Warning modal on iOS](/public_images/components/Modal/ios/default@2x.png)
 
 <!-- /content-for -->
 

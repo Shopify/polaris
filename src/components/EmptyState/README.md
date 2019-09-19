@@ -161,13 +161,13 @@ Use to explain a single feature before merchants have used it.
 
 <!-- content-for: android -->
 
-![Default empty state](https://polaris.shopify.com/public_images/components/EmptyState/android/default@2x.png)
+![Default empty state](/public_images/components/EmptyState/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default empty state](https://polaris.shopify.com/public_images/components/EmptyState/ios/default@2x.png)
+![Default empty state](/public_images/components/EmptyState/ios/default@2x.png)
 
 <!-- /content-for -->
 

@@ -152,13 +152,13 @@ function PopoverWithActionListExample() {
 
 <!-- content-for: android -->
 
-![Popover with action list for Android](https://polaris.shopify.com/public_images/components/Popover/android/action-list@2x.png)
+![Popover with action list for Android](/public_images/components/Popover/android/action-list@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Popover with action list for iOS](https://polaris.shopify.com/public_images/components/Popover/ios/action-list@2x.png)
+![Popover with action list for iOS](/public_images/components/Popover/ios/action-list@2x.png)
 
 <!-- /content-for -->
 
@@ -208,13 +208,13 @@ function PopoverContentExample() {
 
 <!-- content-for: android -->
 
-![Popover with content and actions for Android](https://polaris.shopify.com/public_images/components/Popover/android/action-content@2x.png)
+![Popover with content and actions for Android](/public_images/components/Popover/android/action-content@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Popover with content and actions for iOS](https://polaris.shopify.com/public_images/components/Popover/ios/action-content@2x.png)
+![Popover with content and actions for iOS](/public_images/components/Popover/ios/action-content@2x.png)
 
 <!-- /content-for -->
 
@@ -372,7 +372,7 @@ Use when you have few actions that affects the whole page. Action sheets doesnâ€
 
 <!-- content-for: ios -->
 
-![iOS action sheet](https://polaris.shopify.com/public_images/components/Popover/ios/action-sheet@2x.png)
+![iOS action sheet](/public_images/components/Popover/ios/action-sheet@2x.png)
 
 <!-- /content-for -->
 

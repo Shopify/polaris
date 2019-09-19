@@ -95,13 +95,13 @@ Use for a text-only list of related items that don’t need to be in a specific 
 
 <!-- content-for: android -->
 
-![Bulleted list on Android](https://polaris.shopify.com/public_images/components/List/android/bullets@2x.png)
+![Bulleted list on Android](/public_images/components/List/android/bullets@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Bulleted list on iOS](https://polaris.shopify.com/public_images/components/List/ios/bullets@2x.png)
+![Bulleted list on iOS](/public_images/components/List/ios/bullets@2x.png)
 
 <!-- /content-for -->
 
@@ -119,13 +119,13 @@ Use for a text-only list of related items when an inherent order, priority, or s
 
 <!-- content-for: android -->
 
-![Numbered list on Android](https://polaris.shopify.com/public_images/components/List/android/numbered@2x.png)
+![Numbered list on Android](/public_images/components/List/android/numbered@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Numbered list on iOS](https://polaris.shopify.com/public_images/components/List/ios/numbered@2x.png)
+![Numbered list on iOS](/public_images/components/List/ios/numbered@2x.png)
 
 <!-- /content-for -->
 

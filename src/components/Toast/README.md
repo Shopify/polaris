@@ -303,7 +303,7 @@ Use default toast for informative and neutral feedback.
 
 <!-- content-for: android -->
 
-![Default toast with neutral color](https://polaris.shopify.com/public_images/components/Toast/android/default@2x.png)
+![Default toast with neutral color](/public_images/components/Toast/android/default@2x.png)
 
 <!-- /content-for -->
 
@@ -311,7 +311,7 @@ Use default toast for informative and neutral feedback.
 
 On iOS, icons are available for cases where you want to re-inforce the message.
 
-![Default toast with neutral color](https://polaris.shopify.com/public_images/components/Toast/ios/default@2x.png)
+![Default toast with neutral color](/public_images/components/Toast/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -323,7 +323,7 @@ Use success toast to indicate that something was successful. For example, a prod
 
 <!-- content-for: android -->
 
-![Success toast](https://polaris.shopify.com/public_images/components/Toast/android/success@2x.png)
+![Success toast](/public_images/components/Toast/android/success@2x.png)
 
 <!-- /content-for -->
 
@@ -331,7 +331,7 @@ Use success toast to indicate that something was successful. For example, a prod
 
 On iOS, icons are available for cases where you want to re-inforce the message.
 
-![Success toast](https://polaris.shopify.com/public_images/components/Toast/ios/success@2x.png)
+![Success toast](/public_images/components/Toast/ios/success@2x.png)
 
 <!-- /content-for -->
 
@@ -370,7 +370,7 @@ function ErrorToastExample() {
 
 <!-- content-for: android -->
 
-![Error toast](https://polaris.shopify.com/public_images/components/Toast/android/error@2x.png)
+![Error toast](/public_images/components/Toast/android/error@2x.png)
 
 <!-- /content-for -->
 
@@ -378,7 +378,7 @@ function ErrorToastExample() {
 
 On iOS, icons are available for cases where you want to re-inforce the message.
 
-![Error toast](https://polaris.shopify.com/public_images/components/Toast/ios/error@2x.png)
+![Error toast](/public_images/components/Toast/ios/error@2x.png)
 
 <!-- /content-for -->
 
@@ -390,13 +390,13 @@ Use action when merchants have the ability to act on the message. For example, t
 
 <!-- content-for: android -->
 
-![Default toast with action to undo](https://polaris.shopify.com/public_images/components/Toast/android/default-action@2x.png)
+![Default toast with action to undo](/public_images/components/Toast/android/default-action@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default toast with action to undo](https://polaris.shopify.com/public_images/components/Toast/ios/default-action@2x.png)
+![Default toast with action to undo](/public_images/components/Toast/ios/default-action@2x.png)
 
 <!-- /content-for -->
 

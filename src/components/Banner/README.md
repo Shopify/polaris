@@ -228,13 +228,13 @@ including packaging.
 
 <!-- content-for: android -->
 
-![Default banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/default@2x.png)
+![Default banner for Android](/public_images/components/Banner/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/default@2x.png)
+![Default banner for iOS](/public_images/components/Banner/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -273,13 +273,13 @@ Use when you want merchants to take an action after reading the banner.
 
 <!-- content-for: android -->
 
-![Banner with footer call-to-action for Android](https://polaris.shopify.com/public_images/components/Banner/android/footer-action@2x.png)
+![Banner with footer call-to-action for Android](/public_images/components/Banner/android/footer-action@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Banner with footer call-to-action for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/footer-action@2x.png)
+![Banner with footer call-to-action for iOS](/public_images/components/Banner/ios/footer-action@2x.png)
 
 <!-- /content-for -->
 
@@ -300,13 +300,13 @@ Use to update merchants about a change or give them advice.
 
 <!-- content-for: android -->
 
-![Informational banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/informational@2x.png)
+![Informational banner for Android](/public_images/components/Banner/android/informational@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Informational banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/informational@2x.png)
+![Informational banner for iOS](/public_images/components/Banner/ios/informational@2x.png)
 
 <!-- /content-for -->
 
@@ -326,13 +326,13 @@ Use to update merchants about a change or give them advice.
 
 <!-- content-for: android -->
 
-![Success banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/success@2x.png)
+![Success banner for Android](/public_images/components/Banner/android/success@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Success banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/success@2x.png)
+![Success banner for iOS](/public_images/components/Banner/ios/success@2x.png)
 
 <!-- /content-for -->
 
@@ -358,13 +358,13 @@ Use to update merchants about a change or give them advice.
 
 <!-- content-for: android -->
 
-![Warning banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/warning@2x.png)
+![Warning banner for Android](/public_images/components/Banner/android/warning@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Warning banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/warning@2x.png)
+![Warning banner for iOS](/public_images/components/Banner/ios/warning@2x.png)
 
 <!-- /content-for -->
 
@@ -390,13 +390,13 @@ Use to update merchants about a change or give them advice.
 
 <!-- content-for: android -->
 
-![Critical banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/critical@2x.png)
+![Critical banner for Android](/public_images/components/Banner/android/critical@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Critical banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/critical@2x.png)
+![Critical banner for iOS](/public_images/components/Banner/ios/critical@2x.png)
 
 <!-- /content-for -->
 
