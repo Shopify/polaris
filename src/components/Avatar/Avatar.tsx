@@ -1,17 +1,20 @@
-import React from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
 import {isServer} from '../../utilities/target';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
 import {Image} from '../Image';
 
 import styles from './Avatar.scss';
 import * as avatars from './images';
 
 export type Size = 'small' | 'medium' | 'large';
+
+enum Status {
+  Pending = 'PENDING',
+  Loaded = 'LOADED',
+  Errored = 'ERRORED',
+}
 
 const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five', 'six'];
 const AVATAR_IMAGES = Object.keys(avatars).map(
@@ -38,127 +41,103 @@ export interface AvatarProps {
   accessibilityLabel?: string;
 }
 
-interface State {
-  hasError: boolean;
-  hasLoaded: boolean;
-  prevSource?: string;
-}
+export function Avatar({
+  name,
+  source,
+  initials,
+  customer,
+  size = 'medium',
+  accessibilityLabel,
+}: AvatarProps) {
+  const i18n = useI18n();
 
-type CombinedProps = AvatarProps & WithAppProviderProps;
+  const [status, setStatus] = useState<Status>(Status.Pending);
 
-class Avatar extends React.PureComponent<CombinedProps, State> {
-  static getDerivedStateFromProps(props: AvatarProps, state: State) {
-    if (props.source !== state.prevSource) {
-      return {
-        prevSource: props.source,
-        hasError: false,
-        hasLoaded: false,
-      };
-    }
+  // If the source changes, set the status back to pending
+  useEffect(() => {
+    setStatus(Status.Pending);
+  }, [source]);
 
-    return null;
+  const handleError = useCallback(() => {
+    setStatus(Status.Errored);
+  }, []);
+  const handleLoad = useCallback(() => {
+    setStatus(Status.Loaded);
+  }, []);
+
+  const hasImage = (source || customer) && status !== Status.Errored;
+
+  const nameString = name || initials;
+
+  let finalSource: string | undefined;
+  let label: string | undefined;
+
+  if (accessibilityLabel) {
+    label = accessibilityLabel;
+  } else if (name) {
+    label = name;
+  } else if (initials) {
+    const splitInitials = initials.split('').join(' ');
+    label = i18n.translate('Polaris.Avatar.labelWithInitials', {
+      initials: splitInitials,
+    });
+  } else {
+    label = i18n.translate('Polaris.Avatar.label');
   }
 
-  state: State = {
-    hasError: false,
-    hasLoaded: false,
-  };
+  if (source) {
+    finalSource = source;
+  } else if (customer) {
+    finalSource = customerPlaceholder(nameString);
+  }
 
-  render() {
-    const {
-      name,
-      source,
-      initials,
-      customer,
-      size = 'medium',
-      accessibilityLabel,
-      polaris: {intl},
-    } = this.props;
+  const className = classNames(
+    styles.Avatar,
+    styles[variationName('style', styleClass(nameString))],
+    size && styles[variationName('size', size)],
+    hasImage && status !== Status.Loaded && styles.hidden,
+    hasImage && styles.hasImage,
+  );
 
-    const {hasError, hasLoaded} = this.state;
+  const imageMarkUp =
+    finalSource && !isServer && status !== Status.Errored ? (
+      <Image
+        className={styles.Image}
+        source={finalSource}
+        alt=""
+        role="presentation"
+        onLoad={handleLoad}
+        onError={handleError}
+      />
+    ) : null;
 
-    const hasImage = (source || customer) && !hasError;
+  // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
+  const verticalOffset = '0.35em';
 
-    const nameString = name || initials;
-
-    let finalSource: string | undefined;
-    let label: string | undefined;
-
-    if (accessibilityLabel) {
-      label = accessibilityLabel;
-    } else if (name) {
-      label = name;
-    } else if (initials) {
-      const splitInitials = initials.split('').join(' ');
-      label = intl.translate('Polaris.Avatar.labelWithInitials', {
-        initials: splitInitials,
-      });
-    } else {
-      label = intl.translate('Polaris.Avatar.label');
-    }
-
-    if (source) {
-      finalSource = source;
-    } else if (customer) {
-      finalSource = customerPlaceholder(nameString);
-    }
-
-    const className = classNames(
-      styles.Avatar,
-      styles[variationName('style', styleClass(nameString))],
-      size && styles[variationName('size', size)],
-      hasImage && !hasLoaded && styles.hidden,
-      hasImage && styles.hasImage,
-    );
-
-    const imageMarkUp =
-      finalSource && !isServer && !hasError ? (
-        <Image
-          className={styles.Image}
-          source={finalSource}
-          alt=""
-          role="presentation"
-          onLoad={this.handleLoad}
-          onError={this.handleError}
-        />
-      ) : null;
-
-    // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
-    const verticalOffset = '0.35em';
-
-    const initialsMarkup =
-      initials && !hasImage ? (
-        <span className={styles.Initials}>
-          <svg className={styles.Svg} viewBox="0 0 48 48">
-            <text
-              x="50%"
-              y="50%"
-              dy={verticalOffset}
-              fill="currentColor"
-              fontSize="26"
-              textAnchor="middle"
-            >
-              {initials}
-            </text>
-          </svg>
-        </span>
-      ) : null;
-
-    return (
-      <span aria-label={label} role="img" className={className}>
-        {initialsMarkup}
-        {imageMarkUp}
+  const initialsMarkup =
+    initials && !hasImage ? (
+      <span className={styles.Initials}>
+        <svg className={styles.Svg} viewBox="0 0 48 48">
+          <text
+            x="50%"
+            y="50%"
+            dy={verticalOffset}
+            fill="currentColor"
+            fontSize="26"
+            textAnchor="middle"
+          >
+            {initials}
+          </text>
+        </svg>
       </span>
-    );
-  }
+    ) : null;
 
-  handleError = () => {
-    this.setState({hasError: true, hasLoaded: false});
-  };
-
-  handleLoad = () => {
-    this.setState({hasLoaded: true, hasError: false});
-  };
+  return (
+    <span aria-label={label} role="img" className={className}>
+      {initialsMarkup}
+      {imageMarkUp}
+    </span>
+  );
 }
 
 function styleClass(name?: string) {
@@ -172,7 +151,3 @@ function customerPlaceholder(name?: string) {
     ? AVATAR_IMAGES[name.charCodeAt(0) % AVATAR_IMAGES.length]
     : AVATAR_IMAGES[0];
 }
-
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<AvatarProps>()(Avatar);
