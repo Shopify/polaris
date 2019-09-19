@@ -161,7 +161,11 @@ function OptionListInPopoverExample() {
     [],
   );
 
-  const activator = <Button onClick={togglePopoverActive}>Options</Button>;
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      Options
+    </Button>
+  );
 
   return (
     <div style={{height: '275px'}}>

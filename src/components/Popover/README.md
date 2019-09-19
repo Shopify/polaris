@@ -134,7 +134,11 @@ function PopoverWithActionListExample() {
     [],
   );
 
-  const activator = <Button onClick={togglePopoverActive}>More actions</Button>;
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      More actions
+    </Button>
+  );
 
   return (
     <div style={{height: '250px'}}>
@@ -176,7 +180,9 @@ function PopoverContentExample() {
   );
 
   const activator = (
-    <Button onClick={togglePopoverActive}>Sales channels</Button>
+    <Button onClick={togglePopoverActive} disclosure>
+      Sales channels
+    </Button>
   );
 
   return (
