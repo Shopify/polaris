@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {InlineError, Labelled, Connected, Select} from 'components';
 import {mountWithApp} from 'test-utilities';
@@ -1026,33 +1026,17 @@ describe('<TextField />', () => {
       );
       const connectedChild = textField
         .find(Connected)
-        .find('div')
-        .first();
+        .prop('children') as ReactElement;
 
-      connectedChild.simulate('click');
+      expect(textField.getDOMNode().querySelector('input')).not.toBe(
+        document.activeElement,
+      );
+
+      connectedChild.props.onClick({});
 
       expect(textField.getDOMNode().querySelector('input')).toBe(
         document.activeElement,
       );
-    });
-
-    it('applies focus variant style `onFocus`', () => {
-      const textField = mountWithAppProvider(
-        <TextField label="TextField" onChange={noop} />,
-      );
-      let connectedInteriorWrapper = textField
-        .find(Connected)
-        .find('div')
-        .first();
-
-      connectedInteriorWrapper.simulate('focus');
-
-      connectedInteriorWrapper = textField
-        .find(Connected)
-        .find('div')
-        .first();
-
-      expect(connectedInteriorWrapper.hasClass('focus')).toBe(true);
     });
   });
 
