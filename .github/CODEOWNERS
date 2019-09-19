@@ -4,6 +4,5 @@
 # to prevent any new helpers from sneaking in.
 /src/styles/foundation @BPScott @danrosenthal @tmlayton
 /src/styles/shared @BPScott @danrosenthal @tmlayton
-/src/styles/_common.scss @BPScott @danrosenthal @tmlayton
 /src/styles/foundation.scss @BPScott @danrosenthal @tmlayton
 /src/styles/shared.scss @BPScott @danrosenthal @tmlayton
