@@ -1,0 +1,67 @@
+@import '../../styles/common';
+
+.IndexTable {
+  position: relative;
+}
+
+.ScrollContainer {
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+
+.Table {
+  min-width: 100%;
+  border-spacing: 0;
+}
+
+.TableHeading {
+  text-align: left;
+  padding: spacing();
+  font-weight: 500;
+  scroll-snap-align: start;
+  white-space: nowrap;
+}
+
+.TableCell {
+  text-align: left;
+  padding: spacing();
+  white-space: nowrap;
+}
+
+.TableRow {
+  background-color: color('white');
+}
+
+.TableRow:hover {
+  background-color: rgba(color('sky'), 0.3);
+}
+
+.TableRow--selected {
+  background-color: rgba(color('indigo'), 0.12);
+}
+
+.ScrollLeft {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.ScrollRight {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.IndexTable:hover {
+  .ScrollLeft {
+    display: block;
+  }
+
+  .ScrollRight {
+    display: block;
+  }
+}

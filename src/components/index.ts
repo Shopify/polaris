@@ -18,6 +18,8 @@ export {Banner, BannerProps, BannerStatus} from './Banner';
 
 export {Breadcrumbs, BreadcrumbsProps} from './Breadcrumbs';
 
+export {BulkActions, BulkActionsProps} from './BulkActions';
+
 export {Button, ButtonProps, buttonFrom, buttonsFrom} from './Button';
 
 export {ButtonGroup, ButtonGroupProps} from './ButtonGroup';
@@ -109,6 +111,14 @@ export {Heading, HeadingProps} from './Heading';
 export {Icon} from './Icon';
 
 export {Image, ImageProps} from './Image';
+
+export {
+  IndexProvider,
+  IndexProviderProps,
+  useIndexValue,
+} from './IndexProvider';
+
+export {IndexTable, IndexTableProps} from './IndexTable';
 
 export {Indicator, IndicatorProps} from './Indicator';
 
