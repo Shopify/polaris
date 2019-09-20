@@ -66,12 +66,9 @@ export function DatePicker({
   const [hoverDate, setHoverDate] = useState<Date | undefined>(undefined);
   const [focusDate, setFocusDate] = useState<Date | undefined>(undefined);
 
-  useEffect(
-    () => {
-      setFocusDate(undefined);
-    },
-    [selected],
-  );
+  useEffect(() => {
+    setFocusDate(undefined);
+  }, [selected]);
 
   const handleFocus = useCallback((date: Date) => {
     setFocusDate(date);

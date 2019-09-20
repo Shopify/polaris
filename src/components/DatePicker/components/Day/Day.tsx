@@ -14,7 +14,7 @@ export interface DayProps {
   disabled?: boolean;
   onClick?(day: Date): void;
   onHover?(day?: Date): void;
-  onFocus?(day?: Date): void;
+  onFocus?(day: Date): void;
 }
 
 export function Day({
@@ -31,14 +31,11 @@ export function Day({
   const i18n = useI18n();
   const dayNode = useRef<HTMLButtonElement>(null);
 
-  useEffect(
-    () => {
-      if (focused && dayNode.current) {
-        dayNode.current.focus();
-      }
-    },
-    [focused],
-  );
+  useEffect(() => {
+    if (focused && dayNode.current) {
+      dayNode.current.focus();
+    }
+  }, [focused]);
 
   if (!day) {
     return <div className={styles.EmptyDay} onMouseOver={() => onHover(day)} />;
