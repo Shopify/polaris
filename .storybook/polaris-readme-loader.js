@@ -35,7 +35,7 @@ ${example.storyName}.story = {
   decorators: [withA11y],
   parameters: {
     notes: ${JSON.stringify(example.description)},
-    percy: {skip: ${JSON.stringify(testIndividualExamples)}},
+    percy: {skip: ${JSON.stringify(!testIndividualExamples)}},
   }
 };
 `.trim();
