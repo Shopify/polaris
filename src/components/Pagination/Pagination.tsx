@@ -69,13 +69,12 @@ export function Pagination({
 
   const className = classNames(styles.Pagination, plain && styles.plain);
 
-  const previousClassName = !label
-    ? classNames(styles.Button, styles.PreviousButton)
-    : classNames(styles.Button);
+  const previousClassName = classNames(
+    styles.Button,
+    !label && styles.PreviousButton,
+  );
 
-  const nextClassName = !label
-    ? classNames(styles.Button, styles.NextButton)
-    : classNames(styles.Button);
+  const nextClassName = classNames(styles.Button, !label && styles.NextButton);
 
   const previousButton = previousURL ? (
     <UnstyledLink
