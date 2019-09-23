@@ -80,13 +80,10 @@ describe('<Pagination />', () => {
 
   describe('accessibilityLabel', () => {
     it('inserts prop as aria-label', () => {
-      const accessibilityLabel = 'test';
       const pagination = mountWithAppProvider(
-        <Pagination accessibilityLabel={accessibilityLabel} />,
+        <Pagination accessibilityLabel="test" />,
       );
-      expect(pagination.find('nav').prop('aria-label')).toStrictEqual(
-        accessibilityLabel,
-      );
+      expect(pagination.find('nav').prop('aria-label')).toStrictEqual('test');
     });
 
     it('uses default value for aria-label', () => {
@@ -99,21 +96,18 @@ describe('<Pagination />', () => {
 
   describe('label', () => {
     it('renders as text', () => {
-      const label = 'test';
-      const pagination = mountWithAppProvider(<Pagination label={label} />);
-      expect(pagination.text()).toContain(label);
+      const pagination = mountWithAppProvider(<Pagination label="test" />);
+      expect(pagination.text()).toContain('test');
     });
 
     it('has subdued text without next and previous pages', () => {
-      const label = 'test';
-      const variation = 'subdued';
-      const pagination = mountWithAppProvider(<Pagination label={label} />);
+      const pagination = mountWithAppProvider(<Pagination label="test" />);
       expect(
         pagination
           .find('.Label')
           .children()
           .prop('variation'),
-      ).toStrictEqual(variation);
+      ).toStrictEqual('subdued');
     });
   });
 
