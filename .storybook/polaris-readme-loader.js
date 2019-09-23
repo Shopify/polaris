@@ -41,7 +41,7 @@ ${example.storyName}.story = {
 `.trim();
   });
 
-  if (!testIndividualExamples) {
+  if (readme.examples.length && !testIndividualExamples) {
     allExamplesCode = readme.examples.map((example) => {
       // Add styles to prevent false positives in visual regression testing.
       // Set a minimum height so that examples don't shift and triger a failure
