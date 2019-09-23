@@ -25,6 +25,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Reverted `Page.primaryAction` forcing `primary` to be `true` ([#2137](https://github.com/Shopify/polaris-react/pull/2137))
 - Removed `React.Children.only` from `AppProvider`and `ThemeProvider` ([#2121](https://github.com/Shopify/polaris-react/pull/2121))
 - Fixed visual bug where button width changed in Filters component ([#1853](https://github.com/Shopify/polaris-react/issues/1853))
+- Changed `text-rendering` to `auto` in `Select` to prevent Safari 13 from crashing ([#2179](https://github.com/Shopify/polaris-react/pull/2179))
 
 ### Documentation
 
