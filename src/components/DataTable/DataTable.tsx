@@ -144,18 +144,12 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
 
     const bodyMarkup = rows.map(this.defaultRenderRow);
 
-    let footerMarkup;
+    const footerMarkup = footerContent ? (
+      <div className={styles.Footer}>{footerContent}</div>
+    ) : null;
 
-    if (footerContent) {
-      footerMarkup = footerTotals ? (
-        <div className={styles.Footer}>
-          {footerContent}
-          {totalsMarkup}
-        </div>
-      ) : (
-        <div className={styles.Footer}>{footerContent}</div>
-      );
-    }
+    const headerTotalsMarkup = !footerTotals ? totalsMarkup : null;
+    const footerTotalsMarkup = footerTotals ? totalsMarkup : null;
 
     return (
       <div className={wrapperClassName}>
@@ -177,9 +171,10 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
             <table className={styles.Table} ref={this.table}>
               <thead>
                 {headingMarkup}
-                {totalsMarkup}
+                {headerTotalsMarkup}
               </thead>
               <tbody>{bodyMarkup}</tbody>
+              {footerTotalsMarkup}
             </table>
           </div>
           {footerMarkup}
