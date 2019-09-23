@@ -147,6 +147,18 @@ Use for actions that will delete merchant data or be otherwise difficult to reco
 </Button>
 ```
 
+<!-- content-for: android -->
+
+![Destructive plain button for Android](/public_images/components/Button/android/plain-destructive@2x.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Destructive plain button for iOS](/public_images/components/Button/ios/plain-destructive@2x.png)
+
+<!-- /content-for -->
+
 ### Primary button
 
 Use to highlight the most important actions in any experience. Don’t use more than one primary button in a section or screen to avoid overwhelming merchants.
@@ -177,13 +189,13 @@ Use when the action will delete merchant data or be otherwise difficult to recov
 
 <!-- content-for: android -->
 
-![Destrutive plain and destructive basic button for Android](/public_images/components/Button/android/destructive@2x.png)
+![Destructive basic button for Android](/public_images/components/Button/android/basic-destructive@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Destrutive plain and destructive basic button for iOS](/public_images/components/Button/ios/destructive@2x.png)
+![Destructive basic button for iOS](/public_images/components/Button/ios/basic-destructive@2x.png)
 
 <!-- /content-for -->
 
@@ -265,8 +277,8 @@ Use when a button has been pressed and the associated action is in progress.
 
 ## Related components
 
-- To learn how to combine or lay out multiple buttons, [use the button group component](/components/actions/button-group)
-- To embed an action into a line of text, [use the link component](/components/navigation/link)
+- To learn how to combine or lay out multiple buttons, [use the button group component](https://polaris.shopify.com/components/actions/button-group)
+- To embed an action into a line of text, [use the link component](https://polaris.shopify.com/components/navigation/link)
 
 ---
 
@@ -303,7 +315,7 @@ Buttons can have different states that are visually and programmatically conveye
 
 Merchants generally expect buttons to submit data or take action, and for links to navigate. If navigation is required for the button component, use the `url` prop. The control will output an anchor styled as a button, instead of a button in HTML, to help convey this difference.
 
-For more information on making accessible links, see the [link component](/components/navigation/link).
+For more information on making accessible links, see the [link component](https://polaris.shopify.com/components/navigation/link).
 
 ### Labeling
 
@@ -351,7 +363,7 @@ When you use the button component to create a link to an external resource:
 - Use the `icon` prop to add the `external` icon to the button
 - Use the `accessibilityLabel` prop to include the warning about opening a new tab in the button text for non-visual screen reader users
 
-For more information on making accessible links, see the [link component](/components/navigation/link).
+For more information on making accessible links, see the [link component](https://polaris.shopify.com/components/navigation/link).
 
 <!-- usageblock -->
 

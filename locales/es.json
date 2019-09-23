@@ -149,9 +149,9 @@
       "ariaLiveSingular": "{itemsLength} artículo",
       "ariaLivePlural": "{itemsLength} artículos",
       "Item": {
-        "selectItem": "Seleccionar: {accessibilityLabel}",
-        "deselectItem": "Deseleccionar: {accessibilityLabel}",
-        "actionsDropdown": "Menú desplegable de acciones"
+        "actionsDropdownLabel": "Acciones para {accessibilityLabel}",
+        "actionsDropdown": "Menú desplegable de acciones",
+        "viewItem": "Ver detalles de {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Acciones",

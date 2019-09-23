@@ -45,7 +45,7 @@ The collapsible component should:
 
 ## Content guidelines
 
-Collapsible containers are cards with expandable and collapsible functionality, and should follow the [content guidelines](/components/structure/card#section-content-guidelines) for cards.
+Collapsible containers are cards with expandable and collapsible functionality, and should follow the content guidelines for [cards](/components/structure/card#section-content-guidelines).
 
 ---
 
@@ -56,46 +56,33 @@ Collapsible containers are cards with expandable and collapsible functionality, 
 Use for a basic “show more” interaction when you need to display more content.
 
 ```jsx
-class CollapsibleExample extends React.Component {
-  state = {
-    open: true,
-  };
+function CollapsibleExample() {
+  const [active, setActive] = useState(true);
 
-  render() {
-    const {open} = this.state;
+  const handleToggle = useCallback(() => setActive((active) => !active), []);
 
-    return (
-      <div style={{height: '200px'}}>
-        <Card sectioned>
-          <Stack vertical>
-            <Button
-              onClick={this.handleToggleClick}
-              ariaExpanded={open}
-              ariaControls="basic-collapsible"
-            >
-              Toggle
-            </Button>
-            <Collapsible open={open} id="basic-collapsible">
-              <TextContainer>
-                Your mailing list lets you contact customers or visitors who
-                have shown an interest in your store. Reach out to them with
-                exclusive offers or updates about your products.
-              </TextContainer>
-            </Collapsible>
-          </Stack>
-        </Card>
-      </div>
-    );
-  }
-
-  handleToggleClick = () => {
-    this.setState((state) => {
-      const open = !state.open;
-      return {
-        open,
-      };
-    });
-  };
+  return (
+    <div style={{height: '200px'}}>
+      <Card sectioned>
+        <Stack vertical>
+          <Button
+            onClick={handleToggle}
+            ariaExpanded={active}
+            ariaControls="basic-collapsible"
+          >
+            Toggle
+          </Button>
+          <Collapsible open={active} id="basic-collapsible">
+            <TextContainer>
+              Your mailing list lets you contact customers or visitors who have
+              shown an interest in your store. Reach out to them with exclusive
+              offers or updates about your products.
+            </TextContainer>
+          </Collapsible>
+        </Stack>
+      </Card>
+    </div>
+  );
 }
 ```
 
@@ -115,8 +102,8 @@ class CollapsibleExample extends React.Component {
 
 ## Related components
 
-- To control a collapsible component, use the [button](/components/actions/button) component
-- To put long sections of information in a container that allows for scrolling, [use the scrollable component](/components/behavior/scrollable)
+- To control a collapsible component, use the [button](https://polaris.shopify.com/components/actions/button) component
+- To put long sections of information in a container that allows for scrolling, [use the scrollable component](https://polaris.shopify.com/components/behavior/scrollable)
 
 ---
 
@@ -142,7 +129,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-Use the collapsible component in conjunction with a [button](/components/actions/button). Place the collapsible content immediately after the button that controls it, so merchants with vision or attention issues can easily discover what content is being affected.
+Use the collapsible component in conjunction with a [button](https://polaris.shopify.com/components/actions/button). Place the collapsible content immediately after the button that controls it, so merchants with vision or attention issues can easily discover what content is being affected.
 
 - Use the required `id` prop of the collapsible component to give the content a unique `id` value
 - Use the `ariaExpanded` prop on the button component to add an `aria-expanded` attribute, which conveys the expanded or collapsed state to screen reader users

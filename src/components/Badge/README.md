@@ -264,7 +264,7 @@ Use to indicate when a given task has been completed. For example, when merchant
 
 ## Related components
 
-- To represent an interactive list of categories provided by merchants, [use tags](/components/forms/tag)
+- To represent an interactive list of categories provided by merchants, [use tags](https://polaris.shopify.com/components/forms/tag)
 
 ---
 
@@ -290,6 +290,6 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-Badges that convey information with icons or color include text provided by the [visually hidden component](/components/titles-and-text/visually-hidden#navigation). This text is read out by assistive technologies like screen readers so that merchants with vision issues can access the meaning of the badge in context.
+Badges that convey information with icons or color include text provided by the [visually hidden component](https://polaris.shopify.com/components/titles-and-text/visually-hidden#navigation). This text is read out by assistive technologies like screen readers so that merchants with vision issues can access the meaning of the badge in context.
 
 <!-- /content-for -->

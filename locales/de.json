@@ -149,9 +149,9 @@
       "ariaLiveSingular": "{itemsLength} Artikel",
       "ariaLivePlural": "{itemsLength} Produkte",
       "Item": {
-        "selectItem": "Auswählen: {accessibilityLabel}",
-        "deselectItem": "Auswahl aufheben: {accessibilityLabel}",
-        "actionsDropdown": "Dropdown-Liste mit Aktionen"
+        "actionsDropdownLabel": "Aktionen für {accessibilityLabel}",
+        "actionsDropdown": "Dropdown-Liste mit Aktionen",
+        "viewItem": "Details anzeigen für {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Aktionen",

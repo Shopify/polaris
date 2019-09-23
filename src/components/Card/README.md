@@ -51,32 +51,9 @@ Cards should:
 
 ## Content guidelines
 
-### Heading
+### Title
 
-Headings should be:
-
-- Descriptive: Help merchants understand what they’ll find in the card
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep headings to single sentence and avoid using punctuation such as
-    periods, commas, or semicolons
-  - Where possible, avoid articles (the, a, an) to keep content short and
-    actionable
-  - Written in sentence case
-  - Informative: They should label the type of content grouped in the body
-    content below
-
-<!-- usagelist -->
-
-#### Do
-
-Online store dashboard
-
-#### Don’t
-
-This is your online store dashboard
-
-<!-- end -->
+Card titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 
@@ -694,8 +671,8 @@ Use as a broad example that includes most props available to card.
 
 ## Related components
 
-- To create page-level layout, [use the layout component](/components/structure/layout)
-- To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
+- To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/structure/callout-card)
 
 ---
 

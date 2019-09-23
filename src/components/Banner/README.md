@@ -54,60 +54,18 @@ Banners should:
 - Be used thoughtfully and sparingly for only the most important information.
 - Not be used as the primary entry point to information or
   actions merchants need on a regular basis.
-- Not be used for marketing information or upsell—[use callout cards](/components/structure/callout-card) instead.
-- Use the default icon for `success`, `info`, `warning` and `critical` statuses. If the icon is changed, use only [major, duotone icons](/design/icons#using-icons-in-your-designs).
+- Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/structure/callout-card) instead.
+- Use the default icon for `success`, `info`, `warning` and `critical` statuses. If the icon is changed, use only [major, duotone icons](https://polaris.shopify.com/design/icons#using-icons-in-your-designs).
 
 ---
 
 ## Content guidelines
 
-### Headings
+To learn about writing helpful and accessible error message text, see the guidelines for [error messages](/patterns-and-guides/error-messages).
 
-Banner headings should be:
+### Title
 
-- Descriptive: help merchants understand what they’ll find in the card.
-  - Communicate when a situation is serious enough to warrant using a critical or
-    warning banner. People who are unable to see the color of the banner need to
-    clearly understand the importance of the situation without the benefit of
-    seeing the color of the banner. Learn more about [accessibility](/patterns-and-guides/accessibility).
-
-<!-- usagelist -->
-
-#### Do
-
-You’ve received a chargeback
-
-#### Don’t
-
-Have a look at this
-
-<!-- end -->
-
-- Concise and scannable:
-
-  - Use simple, clear language that can be read at a glance
-  - Keep headings to a single sentence and avoid using punctuation such as
-    periods, commas, or semicolons
-  - Where possible, avoid articles (the, a, an) to keep content short and
-    actionable
-  - Avoid unnecessary terms, for example don’t use “successfully” in banners that confirm an action
-
-- Informative:
-  - Label the type of information in the body content
-  - Sentence case: capitalize only the first word in the heading and proper
-    nouns
-
-<!-- usagelist -->
-
-#### Do
-
-Online store is password protected
-
-#### Don’t
-
-Your Online Store is now Password Protected
-
-<!-- end -->
+Banner titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 
@@ -449,54 +407,46 @@ Use to update merchants about a change or give them advice.
 Banners inside of modals render with less spacing and a pared-back design to fit within a content context.
 
 ```jsx
-class ModalExample extends React.Component {
-  state = {
-    active: false,
-  };
+function BannerInModalExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const {active} = this.state;
+  const handleChange = useCallback(() => setActive(!active), [active]);
 
-    return (
-      <div style={{height: '500px'}}>
-        <Button onClick={this.handleChange}>Open</Button>
-        <Modal
-          open={active}
-          onClose={this.handleChange}
-          title="Reach more shoppers with Instagram product tags"
-          primaryAction={{
-            content: 'Add Instagram',
-            onAction: this.handleChange,
-          }}
-          secondaryActions={[
-            {
-              content: 'Learn more',
-              onAction: this.handleChange,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <TextContainer>
-              <Banner action={{content: 'Connect account'}} status="warning">
-                <p>
-                  Connect your instagram account to your shop before proceeding.
-                </p>
-              </Banner>
+  return (
+    <div style={{height: '500px'}}>
+      <Button onClick={handleChange}>Open</Button>
+      <Modal
+        open={active}
+        onClose={handleChange}
+        title="Reach more shoppers with Instagram product tags"
+        primaryAction={{
+          content: 'Add Instagram',
+          onAction: handleChange,
+        }}
+        secondaryActions={[
+          {
+            content: 'Learn more',
+            onAction: handleChange,
+          },
+        ]}
+      >
+        <Modal.Section>
+          <TextContainer>
+            <Banner action={{content: 'Connect account'}} status="warning">
               <p>
-                Use Instagram posts to share your products with millions of
-                people. Let shoppers buy from your store without leaving
-                Instagram.
+                Connect your instagram account to your shop before proceeding.
               </p>
-            </TextContainer>
-          </Modal.Section>
-        </Modal>
-      </div>
-    );
-  }
-
-  handleChange = () => {
-    this.setState(({active}) => ({active: !active}));
-  };
+            </Banner>
+            <p>
+              Use Instagram posts to share your products with millions of
+              people. Let shoppers buy from your store without leaving
+              Instagram.
+            </p>
+          </TextContainer>
+        </Modal.Section>
+      </Modal>
+    </div>
+  );
 }
 ```
 
@@ -507,28 +457,24 @@ class ModalExample extends React.Component {
 Banner can programmatically receive focus. Use this functionality to draw the merchant's attention to the banner.
 
 ```jsx
-class ModalExample extends React.Component {
-  banner = React.createRef();
+function BannerWithFocusExample() {
+  const banner = useRef();
 
-  componentDidMount() {
-    this.banner.current.focus();
-  }
+  useEffect(() => banner.current.focus(), []);
 
-  render() {
-    return (
-      <Banner
-        title="High risk of fraud detected"
-        onDismiss={() => {}}
-        status="critical"
-        ref={this.banner}
-      >
-        <p>
-          Before fulfilling this order or capturing payment, please review the
-          fraud analysis and determine if this order is fraudulent
-        </p>
-      </Banner>
-    );
-  }
+  return (
+    <Banner
+      title="High risk of fraud detected"
+      onDismiss={() => {}}
+      status="critical"
+      ref={banner}
+    >
+      <p>
+        Before fulfilling this order or capturing payment, please review the
+        fraud analysis and determine if this order is fraudulent
+      </p>
+    </Banner>
+  );
 }
 ```
 
@@ -580,8 +526,8 @@ Banners inside of the navigation render with less spacing and a pared-back desig
 
 ## Related components
 
-- To inform merchants about a new feature or opportunity, [use callout cards](/components/structure/callout-card)
-- To group similar concepts together in the interface, [use a card](/components/structure/card)
+- To inform merchants about a new feature or opportunity, [use callout cards](https://polaris.shopify.com/components/structure/callout-card)
+- To group similar concepts together in the interface, [use a card](https://polaris.shopify.com/components/structure/card)
 
 ---
 
@@ -614,7 +560,7 @@ Banners provide context and assist workflows for merchants with disabilities.
 - All banners have an `aria-live` attribute and are announced by assistive technologies when their content is updated. These announcements can be disabled by using the prop `stopAnnouncements`.
 - Banners use `aria-describedby` to describe their purpose to assistive technologies when they’re announced or receive focus. If a banner has a `title`, then the title content is used for the `aria-describedby`. If the banner doesn’t have a `title`, then all of the banner content is used for the `aria-describedby`.
 - Banner containers have a `tabindex=”0”` and display a visible keyboard focus indicator. Because of this, merchants can discover banners while tabbing through forms or other interactions, and developers can programmatically move focus to banners.
-- Banners use a combination of [icons](/design/icons) and [colors](/design/colors) to show their meaning and level of importance to merchants.
+- Banners use a combination of [icons](https://polaris.shopify.com/design/icons) and [colors](https://polaris.shopify.com/design/colors) to show their meaning and level of importance to merchants.
 
 ### Error notifications in forms
 
@@ -624,9 +570,9 @@ When merchants submit long or complex forms with errors, use a critical banner t
 
 #### Inline errors
 
-Always include [inline error](/components/forms/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
+Always include [inline error](https://polaris.shopify.com/components/forms/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
 
-To learn about creating helpful and accessible error message text, see the guidelines for [error messages](/patterns-and-guides/error-messages).
+To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns-and-guides/error-messages).
 
 <!-- usageblock -->
 

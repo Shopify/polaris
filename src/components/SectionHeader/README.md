@@ -49,7 +49,7 @@ Use the section header component to group items in a list. It helps merchants to
 
 <!-- end -->
 
-Read more about [dates and numbers](/content/grammar-and-mechanics#section-dates-numbers-and-addresses).
+Read more about [dates and numbers](https://polaris.shopify.com/content/grammar-and-mechanics#section-dates-numbers-and-addresses).
 
 - Use a clear sort order
 
@@ -100,4 +100,4 @@ Use if your list section could be longer than the height of the screen. For exam
 
 ## Related components
 
-- Use section headers if you want to organize [resource list items](/components/lists-and-tables/resource-list) into groups.
+- Use section headers if you want to organize [resource list items](https://polaris.shopify.com/components/lists-and-tables/resource-list) into groups.

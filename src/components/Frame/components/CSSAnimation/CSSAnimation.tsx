@@ -33,23 +33,17 @@ export function CSSAnimation({
   const isMounted = useRef(false);
   const node = useRef<HTMLDivElement>(null);
 
-  useEffect(
-    () => {
-      if (!isMounted.current) return;
-      transitionStatus === TransitionStatus.Entering &&
-        changeTransitionStatus(TransitionStatus.Entered);
-    },
-    [transitionStatus],
-  );
+  useEffect(() => {
+    if (!isMounted.current) return;
+    transitionStatus === TransitionStatus.Entering &&
+      changeTransitionStatus(TransitionStatus.Entered);
+  }, [transitionStatus]);
 
-  useEffect(
-    () => {
-      if (!isMounted.current) return;
-      inProp && changeTransitionStatus(TransitionStatus.Entering);
-      !inProp && changeTransitionStatus(TransitionStatus.Exiting);
-    },
-    [inProp],
-  );
+  useEffect(() => {
+    if (!isMounted.current) return;
+    inProp && changeTransitionStatus(TransitionStatus.Entering);
+    !inProp && changeTransitionStatus(TransitionStatus.Exiting);
+  }, [inProp]);
 
   useEffect(() => {
     isMounted.current = true;

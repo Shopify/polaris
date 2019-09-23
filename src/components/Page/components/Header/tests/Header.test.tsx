@@ -87,7 +87,7 @@ describe('<Header />', () => {
   });
 
   describe('primaryAction', () => {
-    it('renders a button based on the given action', () => {
+    it('renders a `primary` button based on the given action', () => {
       const primaryAction: HeaderPrimaryAction = {
         content: 'Click me!',
       };
@@ -97,6 +97,20 @@ describe('<Header />', () => {
       );
 
       const expectedButton = buttonsFrom(primaryAction, {primary: true});
+      expect(header.contains(expectedButton)).toBeTruthy();
+    });
+
+    it('renders a regular button based on the given action when primary is set to false', () => {
+      const primaryAction: HeaderPrimaryAction = {
+        content: 'Click me!',
+        primary: false,
+      };
+
+      const header = mountWithAppProvider(
+        <Header {...mockProps} primaryAction={primaryAction} />,
+      );
+
+      const expectedButton = buttonsFrom(primaryAction, {primary: false});
       expect(header.contains(expectedButton)).toBeTruthy();
     });
   });

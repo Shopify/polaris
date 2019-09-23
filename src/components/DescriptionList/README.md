@@ -145,7 +145,7 @@ Use when you need to present merchants with a list of items or terms alongside d
 
 ## Related components
 
-- To create a list of actions or navigation, [use the action list component](/components/actions/action-list).
+- To create a list of actions or navigation, [use the action list component](https://polaris.shopify.com/components/actions/action-list).
 
 ---
 

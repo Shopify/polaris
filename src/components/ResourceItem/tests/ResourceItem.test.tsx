@@ -10,9 +10,10 @@ import {
   Checkbox,
   Thumbnail,
   UnstyledLink,
+  Button,
 } from 'components';
 import {ResourceListContext} from '../../../utilities/resource-list';
-import ResourceItem from '../ResourceItem';
+import {ResourceItem} from '../ResourceItem';
 
 describe('<ResourceItem />', () => {
   let spy: jest.SpyInstance;
@@ -40,6 +41,7 @@ describe('<ResourceItem />', () => {
   const itemId = 'itemId';
   const selectedItemId = 'selectedId';
   const accessibilityLabel = 'link anchor aria-label';
+  const name = 'item name';
 
   const mockSelectableContext = {
     ...mockDefaultContext,
@@ -84,6 +86,76 @@ describe('<ResourceItem />', () => {
       expect(item.find(UnstyledLink).prop('aria-label')).toBe(
         accessibilityLabel,
       );
+    });
+  });
+
+  describe('name', () => {
+    it('is used as the Checkbox label', () => {
+      const item = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockSelectableContext}>
+          <ResourceItem
+            accessibilityLabel={accessibilityLabel}
+            id={itemId}
+            url="https://shopify.com"
+            name={name}
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      const expectedLabel = name;
+
+      expect(item.find(Checkbox).prop('label')).toBe(expectedLabel);
+    });
+
+    it('is used on <UnstyledLink /> for the aria-label attribute if an `accessibilityLabel` is not provided', () => {
+      const item = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockSelectableContext}>
+          <ResourceItem id={itemId} url="https://shopify.com" name={name} />
+        </ResourceListContext.Provider>,
+      );
+
+      const expectedLabel = `View details for ${name}`;
+
+      expect(item.find(UnstyledLink).prop('aria-label')).toBe(expectedLabel);
+    });
+
+    it('is used on the disclosure action menu when there are persistent actions', () => {
+      const item = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockSelectableContext}>
+          <ResourceItem
+            accessibilityLabel={accessibilityLabel}
+            id={selectedItemId}
+            url="https://shopify.com"
+            name={name}
+            shortcutActions={[{content: 'action'}]}
+            persistActions
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      const expectedLabel = `Actions for ${name}`;
+
+      expect(
+        item
+          .find(Button)
+          .findWhere(
+            (node) => node.prop('accessibilityLabel') === expectedLabel,
+          ),
+      ).toHaveLength(1);
+    });
+  });
+
+  describe('ResourceName.singular', () => {
+    it('is used on <UnstyledLink /> for the aria-label attribute if a `name` and `accessibilityLabel` is not provided', () => {
+      const item = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem id={itemId} url="https://shopify.com" />
+        </ResourceListContext.Provider>,
+      );
+
+      const expectedLabel = `View details for ${mockDefaultContext.resourceName.singular}`;
+
+      expect(item.find(UnstyledLink).prop('aria-label')).toBe(expectedLabel);
     });
   });
 

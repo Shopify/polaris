@@ -11,7 +11,7 @@ import {TrapFocus} from '../../../TrapFocus';
 import styles from './Dialog.scss';
 
 export interface BaseDialogProps {
-  labelledBy: string;
+  labelledBy?: string;
   instant?: boolean;
   children?: React.ReactNode;
   limitHeight?: boolean;
@@ -80,6 +80,8 @@ export function Dialog({
 }
 
 const fadeUpClasses = {
+  appear: classNames(styles.animateFadeUp, styles.entering),
+  appearActive: classNames(styles.animateFadeUp, styles.entered),
   enter: classNames(styles.animateFadeUp, styles.entering),
   enterActive: classNames(styles.animateFadeUp, styles.entered),
   exit: classNames(styles.animateFadeUp, styles.exiting),

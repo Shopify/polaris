@@ -6,7 +6,7 @@ import {
   mountWithAppProvider,
 } from 'test-utilities/legacy';
 import {Button, Select, Popover} from 'components';
-import FilterCreator, {FilterCreatorProps} from '../FilterCreator';
+import {FilterCreator, FilterCreatorProps} from '../FilterCreator';
 import {FilterValueSelector} from '../../FilterValueSelector';
 import {FilterType} from '../../../types';
 

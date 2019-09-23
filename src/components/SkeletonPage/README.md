@@ -154,5 +154,5 @@ Use this component to compose a loading version of a page where the page title a
 
 ## Related components
 
-- Use the [Skeleton body text](/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) components to represent blocks of content.
-- When giving feedback for in-context operations, use [Progress bar](/components/feedback-indicators/progress-bar) or [Spinner](/components/feedback-indicators/spinner) component.
+- Use the [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](https://polaris.shopify.com/components/feedback-indicators/skeleton-display-text) components to represent blocks of content.
+- When giving feedback for in-context operations, use [Progress bar](https://polaris.shopify.com/components/feedback-indicators/progress-bar) or [Spinner](https://polaris.shopify.com/components/feedback-indicators/spinner) component.

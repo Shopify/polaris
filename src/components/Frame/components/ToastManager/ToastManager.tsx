@@ -25,32 +25,26 @@ export const ToastManager = memo(function ToastManager({
 }: ToastManagerProps) {
   const toastNodes: React.RefObject<HTMLDivElement>[] = [];
 
-  const updateToasts = useDeepCallback(
-    () => {
-      let targetInPos = 0;
-      toastMessages.forEach((_, index) => {
-        const currentToast = toastNodes[index];
-        if (!currentToast.current) return;
-        targetInPos += currentToast.current.clientHeight;
-        currentToast.current.style.setProperty(
-          '--toast-translate-y-in',
-          `-${targetInPos}px`,
-        );
-        currentToast.current.style.setProperty(
-          '--toast-translate-y-out',
-          `${-targetInPos + 150}px`,
-        );
-      });
-    },
-    [toastMessages, toastNodes],
-  );
+  const updateToasts = useDeepCallback(() => {
+    let targetInPos = 0;
+    toastMessages.forEach((_, index) => {
+      const currentToast = toastNodes[index];
+      if (!currentToast.current) return;
+      targetInPos += currentToast.current.clientHeight;
+      currentToast.current.style.setProperty(
+        '--toast-translate-y-in',
+        `-${targetInPos}px`,
+      );
+      currentToast.current.style.setProperty(
+        '--toast-translate-y-out',
+        `${-targetInPos + 150}px`,
+      );
+    });
+  }, [toastMessages, toastNodes]);
 
-  useDeepEffect(
-    () => {
-      updateToasts();
-    },
-    [toastMessages],
-  );
+  useDeepEffect(() => {
+    updateToasts();
+  }, [toastMessages]);
 
   const toastsMarkup = toastMessages.map((toast, index) => {
     const toastNode = createRef<HTMLDivElement>();

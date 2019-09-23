@@ -45,7 +45,7 @@ Empty states should:
 - Be encouraging and never make merchants feel unsuccessful or guilty because
   they haven’t used a product or feature
 - Explain the steps merchants need to take to activate a product or feature
-- Use illustrations thoughtfully as outlined in our [illustration guidelines](/design/illustrations)
+- Use illustrations thoughtfully as outlined in our [illustration guidelines](https://polaris.shopify.com/design/illustrations)
 - Use only one primary call-to-action button
 
 ---
@@ -54,15 +54,9 @@ Empty states should:
 
 ### Title
 
-- Descriptive: help merchants understand the feature or product related to the
-  empty state
-- Concise and scannable:
-  - Use simple, clear language that can be read at-a-glance
-  - Keep titles to single sentence and avoid using punctuation such as periods,
-    commas, or semicolons
-  - Written in sentence case (the first word capitalized, the rest lowercase)
-  - Action-oriented: encourage merchants to take the step required to
-    activate the product or feature
+Empty state titles should:
+
+- Be action-oriented: encourage merchants to take the step required to activate the product or feature
 
 <!-- usagelist -->
 
@@ -75,6 +69,8 @@ Empty states should:
 - Orders and invoices
 
 <!-- end -->
+
+- Follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings)
 
 ### Subtitle
 
@@ -205,6 +201,6 @@ Use to provide additional but non-critical context for a new product or feature.
 
 ## Related components
 
-- To learn more about illustrations for empty states, [read the illustration guidelines](/design/illustrations)
-- To create page-level layout, [use the layout component](/components/structure/layout)
-- To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card)
+- To learn more about illustrations for empty states, [read the illustration guidelines](https://polaris.shopify.com/design/illustrations)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
+- To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/structure/callout-card)

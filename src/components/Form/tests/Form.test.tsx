@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Form from '../Form';
+import {Form} from '../Form';
 
 const name = 'form-name';
 const noValidate = true;

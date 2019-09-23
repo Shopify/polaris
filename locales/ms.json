@@ -149,9 +149,9 @@
       "ariaLiveSingular": "{itemsLength} item",
       "ariaLivePlural": "{itemsLength} item",
       "Item": {
-        "selectItem": "Pilih: {accessibilityLabel}",
-        "deselectItem": "Nyahpilih: {accessibilityLabel}",
-        "actionsDropdown": "Juntai bawah tindakan"
+        "actionsDropdownLabel": "Tindakan untuk {accessibilityLabel}",
+        "actionsDropdown": "Juntai bawah tindakan",
+        "viewItem": "Lihat butiran untuk {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Tindakan",

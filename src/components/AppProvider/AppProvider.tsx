@@ -16,6 +16,11 @@ import {
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
+import {
+  UniqueIdFactory,
+  UniqueIdFactoryContext,
+  globalIdGeneratorFactory,
+} from '../../utilities/unique-id';
 
 interface State {
   intl: I18n;
@@ -30,16 +35,21 @@ export interface AppProviderProps extends AppBridgeOptions {
   linkComponent?: LinkLikeComponent;
   /** Custom logos and colors provided to select components */
   theme?: Theme;
+  /** Inner content of the application */
+  children?: React.ReactNode;
 }
 
 export class AppProvider extends React.Component<AppProviderProps, State> {
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
+  private uniqueIdFactory: UniqueIdFactory;
 
   constructor(props: AppProviderProps) {
     super(props);
     this.stickyManager = new StickyManager();
     this.scrollLockManager = new ScrollLockManager();
+    this.uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
+
     const {i18n, apiKey, shopOrigin, forceRedirect, linkComponent} = this.props;
 
     // eslint-disable-next-line react/state-in-constructor
@@ -91,13 +101,13 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
       <I18nContext.Provider value={intl}>
         <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
           <StickyManagerContext.Provider value={this.stickyManager}>
-            <AppBridgeContext.Provider value={appBridge}>
-              <LinkContext.Provider value={link}>
-                <ThemeProvider theme={theme}>
-                  {React.Children.only(children)}
-                </ThemeProvider>
-              </LinkContext.Provider>
-            </AppBridgeContext.Provider>
+            <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
+              <AppBridgeContext.Provider value={appBridge}>
+                <LinkContext.Provider value={link}>
+                  <ThemeProvider theme={theme}>{children}</ThemeProvider>
+                </LinkContext.Provider>
+              </AppBridgeContext.Provider>
+            </UniqueIdFactoryContext.Provider>
           </StickyManagerContext.Provider>
         </ScrollLockManagerContext.Provider>
       </I18nContext.Provider>

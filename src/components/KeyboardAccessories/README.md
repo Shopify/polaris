@@ -73,6 +73,6 @@ Use to make message entry easier in messaging and chat-based products.
 
 ## Related components
 
-- To make more actions visible in keyboard accessories, use [the icon component](/components/images-and-icons/icon) for action labels
-- To group actions within keyboard accessories, use [the button group component](/components/actions/button-group)
-- For chat-based interfaces, use [the text field component](/components/forms/text-field) in keyboard accessories
+- To make more actions visible in keyboard accessories, use [the icon component](https://polaris.shopify.com/components/images-and-icons/icon) for action labels
+- To group actions within keyboard accessories, use [the button group component](https://polaris.shopify.com/components/actions/button-group)
+- For chat-based interfaces, use [the text field component](https://polaris.shopify.com/components/forms/text-field) in keyboard accessories

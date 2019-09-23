@@ -19,7 +19,7 @@ The option list component lets you create a list of grouped items that
 merchants can pick from. This can include single selection or multiple selection
 of options. Option list usually appears in a popover, and sometimes in a modal
 or a sidebar. Option lists are styled differently than
-[choice lists](/components/forms/choice-list) and should not be used within a form, but as a standalone menu.
+[choice lists](https://polaris.shopify.com/components/forms/choice-list) and should not be used within a form, but as a standalone menu.
 
 ---
 
@@ -28,9 +28,9 @@ or a sidebar. Option lists are styled differently than
 The option list component should:
 
 - Be placed on its own inside a container. Usually the container behaves like a
-  menu, as it does with [popover](/components/overlays/popover). Don’t
+  menu, as it does with [popover](https://polaris.shopify.com/components/overlays/popover). Don’t
   place other components within the same container.
-- Not be used when a [select component](/components/forms/select) will do.
+- Not be used when a [select component](https://polaris.shopify.com/components/forms/select) will do.
 
 ---
 
@@ -61,29 +61,25 @@ Each item in an option list should be clear and descriptive.
 Use for a group of similar selectable items when only one should be selectable at once.
 
 ```jsx
-class OptionListExample extends React.Component {
-  state = {selected: []};
+function OptionListExample() {
+  const [selected, setSelected] = useState([]);
 
-  render() {
-    return (
-      <Card>
-        <OptionList
-          title="Inventory Location"
-          onChange={(updated) => {
-            this.setState({selected: updated});
-          }}
-          options={[
-            {value: 'byward_market', label: 'Byward Market'},
-            {value: 'centretown', label: 'Centretown'},
-            {value: 'hintonburg', label: 'Hintonburg'},
-            {value: 'westboro', label: 'Westboro'},
-            {value: 'downtown', label: 'Downtown'},
-          ]}
-          selected={this.state.selected}
-        />
-      </Card>
-    );
-  }
+  return (
+    <Card>
+      <OptionList
+        title="Inventory Location"
+        onChange={setSelected}
+        options={[
+          {value: 'byward_market', label: 'Byward Market'},
+          {value: 'centretown', label: 'Centretown'},
+          {value: 'hintonburg', label: 'Hintonburg'},
+          {value: 'westboro', label: 'Westboro'},
+          {value: 'downtown', label: 'Downtown'},
+        ]}
+        selected={selected}
+      />
+    </Card>
+  );
 }
 ```
 
@@ -92,30 +88,26 @@ class OptionListExample extends React.Component {
 Use when you have a group of similar selectable items and more than one item can be selected at once.
 
 ```jsx
-class OptionListExample extends React.Component {
-  state = {selected: []};
+function MultipleOptionListExample() {
+  const [selected, setSelected] = useState([]);
 
-  render() {
-    return (
-      <Card>
-        <OptionList
-          title="Manage sales channels availability"
-          onChange={(updated) => {
-            this.setState({selected: updated});
-          }}
-          options={[
-            {value: 'online_store', label: 'Online Store'},
-            {value: 'messenger', label: 'Messenger'},
-            {value: 'facebook', label: 'Facebook'},
-            {value: 'wholesale', label: 'Wholesale'},
-            {value: 'buzzfeed', label: 'BuzzFeed'},
-          ]}
-          selected={this.state.selected}
-          allowMultiple
-        />
-      </Card>
-    );
-  }
+  return (
+    <Card>
+      <OptionList
+        title="Manage sales channels availability"
+        onChange={setSelected}
+        options={[
+          {value: 'online_store', label: 'Online Store'},
+          {value: 'messenger', label: 'Messenger'},
+          {value: 'facebook', label: 'Facebook'},
+          {value: 'wholesale', label: 'Wholesale'},
+          {value: 'buzzfeed', label: 'BuzzFeed'},
+        ]}
+        selected={selected}
+        allowMultiple
+      />
+    </Card>
+  );
 }
 ```
 
@@ -124,38 +116,34 @@ class OptionListExample extends React.Component {
 Use sections when you have multiple groups of similar selectable items.
 
 ```jsx
-class OptionListExample extends React.Component {
-  state = {selected: []};
+function OptionListWithSectionsExample() {
+  const [selected, setSelected] = useState([]);
 
-  render() {
-    return (
-      <Card>
-        <OptionList
-          onChange={(updated) => {
-            this.setState({selected: updated});
-          }}
-          sections={[
-            {
-              options: [
-                {value: 'type', label: 'Sale item type'},
-                {value: 'kind', label: 'Sale kind'},
-              ],
-            },
-            {
-              title: 'Traffic',
-              options: [
-                {value: 'source', label: 'Traffic referrer source'},
-                {value: 'host', label: 'Traffic referrer host'},
-                {value: 'path', label: 'Traffic referrer path'},
-              ],
-            },
-          ]}
-          selected={this.state.selected}
-          allowMultiple
-        />
-      </Card>
-    );
-  }
+  return (
+    <Card>
+      <OptionList
+        onChange={setSelected}
+        sections={[
+          {
+            options: [
+              {value: 'type', label: 'Sale item type'},
+              {value: 'kind', label: 'Sale kind'},
+            ],
+          },
+          {
+            title: 'Traffic',
+            options: [
+              {value: 'source', label: 'Traffic referrer source'},
+              {value: 'host', label: 'Traffic referrer host'},
+              {value: 'path', label: 'Traffic referrer path'},
+            ],
+          },
+        ]}
+        selected={selected}
+        allowMultiple
+      />
+    </Card>
+  );
 }
 ```
 
@@ -164,46 +152,43 @@ class OptionListExample extends React.Component {
 Use when a set of selections won’t fit in the available screen space.
 
 ```jsx
-class OptionListExample extends React.Component {
-  state = {
-    selected: [],
-    popoverActive: true,
-  };
+function OptionListInPopoverExample() {
+  const [selected, setSelected] = useState([]);
+  const [popoverActive, setPopoverActive] = useState(true);
 
-  togglePopover = () => {
-    this.setState(({popoverActive}) => {
-      return {popoverActive: !popoverActive};
-    });
-  };
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
 
-  render() {
-    const activator = <Button onClick={this.togglePopover}>Options</Button>;
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      Options
+    </Button>
+  );
 
-    return (
-      <div style={{height: '275px'}}>
-        <Popover
-          active={this.state.popoverActive}
-          activator={activator}
-          onClose={this.togglePopover}
-        >
-          <OptionList
-            title="Inventory Location"
-            onChange={(updated) => {
-              this.setState({selected: updated});
-            }}
-            options={[
-              {value: 'byward_market', label: 'Byward Market'},
-              {value: 'centretown', label: 'Centretown'},
-              {value: 'hintonburg', label: 'Hintonburg'},
-              {value: 'westboro', label: 'Westboro'},
-              {value: 'downtown', label: 'Downtown'},
-            ]}
-            selected={this.state.selected}
-          />
-        </Popover>
-      </div>
-    );
-  }
+  return (
+    <div style={{height: '275px'}}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        onClose={togglePopoverActive}
+      >
+        <OptionList
+          title="Inventory Location"
+          onChange={setSelected}
+          options={[
+            {value: 'byward_market', label: 'Byward Market'},
+            {value: 'centretown', label: 'Centretown'},
+            {value: 'hintonburg', label: 'Hintonburg'},
+            {value: 'westboro', label: 'Westboro'},
+            {value: 'downtown', label: 'Downtown'},
+          ]}
+          selected={selected}
+        />
+      </Popover>
+    </div>
+  );
 }
 ```
 
@@ -212,11 +197,11 @@ class OptionListExample extends React.Component {
 ## Related components
 
 - To render a list of actions,
-  [use the action list component](/components/actions/action-list)
+  [use the action list component](https://polaris.shopify.com/components/actions/action-list)
 - To create a list of grouped radio buttons or checkboxes,
-  [use the choice list component](/components/forms/choice-list)
+  [use the choice list component](https://polaris.shopify.com/components/forms/choice-list)
 - For a basic version of option list as a single choice menu,
-  [use the select component](/components/forms/select)
+  [use the select component](https://polaris.shopify.com/components/forms/select)
 
 ---
 
@@ -244,7 +229,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 Items in an option list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users.
 
-Controls in simple option lists are [buttons](/components/actions/button), and controls in multiple option lists are [checkboxes](/components/forms/checkbox).
+Controls in simple option lists are [buttons](https://polaris.shopify.com/components/actions/button), and controls in multiple option lists are [checkboxes](https://polaris.shopify.com/components/forms/checkbox).
 
 If you customize the option list, you can provide ARIA roles that fit the context. These roles must be valid according to the [W3C ARIA specification](https://www.w3.org/TR/wai-aria-1.1/) to be conveyed correctly to screen reader users.
 
