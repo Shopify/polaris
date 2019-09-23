@@ -58,4 +58,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Migrated `TextField` and `Resizer` to use hooks ([#1997](https://github.com/Shopify/polaris-react/pull/1997))
 - Migrated `Avatar` to use hooks instead of withAppProvider ([#2067](https://github.com/Shopify/polaris-react/pull/2067))
 
+- Update `Day` and `DatePicker` to use hooks ([#2089](https://github.com/Shopify/polaris-react/pull/2089))
+
 ### Deprecations
