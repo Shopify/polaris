@@ -1,5 +1,6 @@
 import React from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
+import {TextStyle} from '../TextStyle';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {isInputFocused} from '../../utilities/is-input-focused';
@@ -35,6 +36,8 @@ export interface PaginationDescriptor {
   onNext?(): void;
   /** Callback when previous button is clicked */
   onPrevious?(): void;
+  /** Text to provide more context in between the arrow buttons */
+  label?: string;
 }
 
 export interface PaginationProps extends PaginationDescriptor {
@@ -55,21 +58,23 @@ export function Pagination({
   previousKeys,
   plain,
   accessibilityLabel,
+  label,
 }: PaginationProps) {
   const intl = useI18n();
 
   const node: React.RefObject<HTMLElement> = React.createRef();
-  let label: string;
 
-  if (accessibilityLabel) {
-    label = accessibilityLabel;
-  } else {
-    label = intl.translate('Polaris.Pagination.pagination');
-  }
+  const navLabel =
+    accessibilityLabel || intl.translate('Polaris.Pagination.pagination');
 
   const className = classNames(styles.Pagination, plain && styles.plain);
-  const previousClassName = classNames(styles.Button, styles.PreviousButton);
-  const nextClassName = classNames(styles.Button, styles.NextButton);
+
+  const previousClassName = classNames(
+    styles.Button,
+    !label && styles.PreviousButton,
+  );
+
+  const nextClassName = classNames(styles.Button, !label && styles.NextButton);
 
   const previousButton = previousURL ? (
     <UnstyledLink
@@ -163,10 +168,24 @@ export function Pagination({
       />
     ));
 
+  const labelTextMarkup =
+    hasNext && hasPrevious ? (
+      <TextStyle>{label}</TextStyle>
+    ) : (
+      <TextStyle variation="subdued">{label}</TextStyle>
+    );
+
+  const labelMarkup = label ? (
+    <div className={styles.Label} aria-live="polite">
+      {labelTextMarkup}
+    </div>
+  ) : null;
+
   return (
-    <nav className={className} aria-label={label} ref={node}>
+    <nav className={className} aria-label={navLabel} ref={node}>
       {previousButtonEvents}
       {constructedPrevious}
+      {labelMarkup}
       {nextButtonEvents}
       {constructedNext}
     </nav>

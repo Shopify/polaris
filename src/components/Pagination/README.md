@@ -9,6 +9,7 @@ keywords:
   - lists
   - detail
   - page
+  - label
   - pager
   - previous
   - next
@@ -94,6 +95,24 @@ Attach standard keyboard shortcuts to important pagination controls.
     }}
   />
 </div>
+```
+
+### Pagination with label
+
+Add a label between navigation buttons to provide more context of the content being viewed by the user.
+
+```jsx
+<Pagination
+  label="Results"
+  hasPrevious
+  onPrevious={() => {
+    console.log('Previous');
+  }}
+  hasNext
+  onNext={() => {
+    console.log('Next');
+  }}
+/>
 ```
 
 ### Infinite scroll
