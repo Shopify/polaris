@@ -15,6 +15,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Converted `Form`, `Frame`, and `Loading` examples to functional components ([#2130](https://github.com/Shopify/polaris-react/pull/2130))
+- Replaced Latin abbreviations with English words in Text field content guidelines ([#2192](https://github.com/Shopify/polaris-react/pull/2192))
 
 ### Development workflow
 
