@@ -263,8 +263,15 @@ export function hsbToString(hsbColor: HSBColor | string) {
   return rgbString(hsbToRgb(hsbColor));
 }
 
-function rgbToObject(color: string): RGBAColor {
-  // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
+export function hsbToString(hsbColor: HSBColor | string) {
+  if (typeof hsbColor === 'string') {
+    return hsbColor;
+  }
+
+  return rgbString(hsbToRgb(hsbColor));
+}
+
+function rgbToObject(color: string) {
   const colorMatch = color.match(/\(([^)]+)\)/);
 
   if (!colorMatch) {

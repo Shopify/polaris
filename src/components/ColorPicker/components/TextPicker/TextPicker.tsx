@@ -3,22 +3,19 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {classNames} from '../../../../utilities/css';
 import {HSBColor} from '../../../../utilities/color-types';
 import {
-  normalizeColorString,
-  expandHex,
-  hsbToHex,
-  hsbToString,
-  rgbStringToHex,
-  nameToHex,
-  hexToHsb,
-} from '../../../../utilities/color-transformers';
-import {
-  isColorName,
+  normalizeValue,
+  isTransparentUserInput,
   isHexString,
   isHashlessHex,
   isRgbString,
-} from '../../../../utilities/color-validation';
-import {useI18n} from '../../../../utilities/i18n';
+  expandHex,
+  hsbToHex,
+  rgbStringToHex,
+  TRANSPARENT,
+  hexToHsb,
+} from '../../../../utilities/color-transformers';
 import {TextField} from '../../../TextField';
+import {SwatchBackground} from '../SwatchBackground';
 import styles from '../../ColorPicker.scss';
 
 export interface TextPickerProps {
