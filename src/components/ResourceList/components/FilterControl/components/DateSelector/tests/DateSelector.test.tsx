@@ -1,7 +1,8 @@
 import React from 'react';
 import {DatePicker, Select, TextField} from 'components';
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
-import DateSelector, {
+import {
+  DateSelector,
   DateSelectorProps,
   DateFilterOption,
 } from '../DateSelector';
