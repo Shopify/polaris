@@ -97,17 +97,18 @@ input. Field placeholder text should:
 
 - Be used only for supplementary information because the text has low contrast and is not visible when text is entered
 - Be written as examples instead of instructions
-- Include “e.g.” before an example
+- Include “Example:” before an example
 
 <!-- usagelist -->
 
 #### Do
 
-- e.g. FALLSALE
+- Example: FALLSALE
 
 #### Don’t
 
 - Name your discount code
+- e.g. FALLSALE
 
 <!-- end -->
 
@@ -424,7 +425,7 @@ function PlaceholderExample() {
       label="Shipping zone name"
       value={textFieldValue}
       onChange={handleTextFieldChange}
-      placeholder="e.g. North America, Europe"
+      placeholder="Example: North America, Europe"
     />
   );
 }
