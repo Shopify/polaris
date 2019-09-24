@@ -2,6 +2,8 @@
 
 $picker-size: rem(160px);
 $dragger-size: rem(18px);
+$hex-size: rem(126px);
+$alpha-size: rem(90px);
 $inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
 
 $stacking-order: (
@@ -9,6 +11,10 @@ $stacking-order: (
   adjustments: 20,
   dragger: 30,
 );
+
+$swatch-size: rem(20px);
+$swatch-shadow: inset rgba(0, 0, 0, 0.07) 0 0 0 1px,
+  inset rgba(0, 0, 0, 0.15) 0 1px 3px 0;
 
 @mixin checkers {
   background-image: linear-gradient(45deg, color('sky') 25%, transparent 25%),
@@ -139,4 +145,41 @@ $huepicker-bottom-padding-start: $picker-size - $dragger-size;
   height: 100%;
   width: 100%;
   cursor: pointer;
+}
+
+.TextFields {
+  display: flex;
+}
+
+.TextPicker {
+  width: $picker-size + rem(32px);
+  margin-top: spacing(tight);
+
+  &.AlphaAllowed {
+    width: $hex-size;
+  }
+}
+
+.TextFieldSwatch {
+  width: $swatch-size;
+  height: $swatch-size;
+  margin-left: -(spacing(extra-tight));
+  border-radius: 50%;
+  box-shadow: $swatch-shadow;
+
+  &.AlphaAllowed {
+    @include checkers;
+  }
+}
+
+.SwatchBackground {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  box-shadow: inherit;
+}
+
+.AlphaField {
+  width: $alpha-size;
+  margin: spacing(tight) 0 0 spacing(tight);
 }
