@@ -10,6 +10,10 @@ import {
 } from './color-types';
 import {compose} from './compose';
 
+const RGB_STRING_TO_HEX_REGEX = /^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i;
+const IS_RGB_STRING_REGEX = /rgba?\(((25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,\s*?){2}(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,?\s*([01]\.?\d*?)?\)/i;
+export const TRANSPARENT = 'rgba(0,0,0,0)';
+
 export function rgbString(color: RGBColor | RGBAColor) {
   const {red, green, blue} = color;
 
@@ -252,6 +256,14 @@ export function hslToString(hslColor: HSLAColor | string) {
   return `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
 }
 
+export function hsbToString(hsbColor: HSBColor | string) {
+  if (typeof hsbColor === 'string') {
+    return hsbColor;
+  }
+
+  return rgbString(hsbToRgb(hsbColor));
+}
+
 function rgbToObject(color: string): RGBAColor {
   // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
   const colorMatch = color.match(/\(([^)]+)\)/);
@@ -312,4 +324,45 @@ export function colorToHsla(color: string): HSLAColor {
         'Accepted color formats are: hex, rgb, rgba, hsl and hsla',
       );
   }
+}
+
+export function normalizeValue(value: string) {
+  return value.toLowerCase().replace(/\s/g, '');
+}
+
+export function isHexString(value: string) {
+  return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(value);
+}
+
+export function isHashlessHex(value: string) {
+  return /(^[0-9A-F]{6}$)|(^[0-9A-F]{3}$)/i.test(value);
+}
+
+export function isRgbString(value: string) {
+  return IS_RGB_STRING_REGEX.test(value);
+}
+export function isTransparentUserInput(value: string) {
+  return value === 'transparent' || value === TRANSPARENT;
+}
+
+export function hexToHsb(hex: string) {
+  return rgbToHsb(hexToRgb(hex));
+}
+
+export function expandHex(hex: string) {
+  if (hex.length === 4) {
+    return `#${hex[1]}${hex[1]}${hex[2]}${hex[2]}${hex[3]}${hex[3]}`;
+  }
+  return hex;
+}
+
+export function rgbStringToHex(value: string) {
+  const rgb = normalizeValue(value).match(
+    RGB_STRING_TO_HEX_REGEX,
+  ) as RegExpMatchArray;
+  return rgbToHex({
+    red: parseInt(rgb[1], 10),
+    green: parseInt(rgb[2], 10),
+    blue: parseInt(rgb[3], 10),
+  });
 }
