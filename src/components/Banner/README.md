@@ -248,7 +248,7 @@ Make all banners dismissible, unless they contain critical information or an imp
 <Banner onDismiss={() => {}}>
   <p>
     Use your finance report to get detailed information about your business.{' '}
-    <Link url="">Let us know what you think.</Link>
+    <Link url="">Let us know what you think</Link>
   </p>
 </Banner>
 ```
@@ -490,7 +490,7 @@ Banners inside of cards render with less spacing and a pared-back design to fit 
     <Banner onDismiss={() => {}}>
       <p>
         Use your finance report to get detailed information about your business.{' '}
-        <Link url="">Let us know what you think.</Link>
+        <Link url="">Let us know what you think</Link>
       </p>
     </Banner>
 
