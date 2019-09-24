@@ -1,5 +1,9 @@
-export * from './AlphaPicker';
+export {AlphaField, AlphaFieldProps} from './AlphaField';
+
+export {AlphaPicker, AlphaPickerProps} from './AlphaPicker';
 
 export * from './HuePicker';
 
-export * from './Slidable';
+export {Slidable, SlidableProps, Position} from './Slidable';
+
+export {TextPicker, TextPickerProps} from './TextPicker';
