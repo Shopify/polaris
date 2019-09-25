@@ -1,0 +1,56 @@
+@import '../../../../styles/common';
+
+$size: rem(28px);
+$base-position: 0;
+
+.ScrollButton {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: $size;
+  min-height: $size;
+  padding: 0;
+  border: rem(1px) solid rgba(color('ink', 'lighter'), 0.24);
+  border-radius: rem(14px);
+  background: color('white');
+  cursor: pointer;
+}
+
+.IconWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.onboarding {
+  background-color: color('teal');
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: color('teal');
+    width: $size;
+    height: $size;
+    border-radius: 100%;
+  }
+}
+
+.onboarding::after {
+  animation: pulse 5s ease infinite;
+}
+
+@keyframes pulse {
+  from,
+  35% {
+    transform: scale(0.85);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}

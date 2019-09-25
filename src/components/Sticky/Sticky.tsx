@@ -10,9 +10,13 @@ interface State {
   style: Object;
 }
 
+export type StickyElementTagName = 'div' | 'thead';
+
 export type StickyProps = {
   /** Element outlining the fixed position boundaries */
   boundingElement?: HTMLElement | null;
+  /** Element name to render */
+  stickyElement?: StickyElementTagName;
   /** Offset vertical spacing from the top of the scrollable container */
   offset?: boolean;
   /** Should the element remain in a fixed position when the layout is stacked (smaller screens)  */
@@ -60,19 +64,19 @@ class Sticky extends React.Component<CombinedProps, State> {
 
   render() {
     const {style, isSticky} = this.state;
-    const {children} = this.props;
+    const {children, stickyElement: StickyElement = 'div'} = this.props;
 
     const childrenContent = isFunction(children)
       ? children(isSticky)
       : children;
 
     return (
-      <div>
-        <div ref={this.setPlaceHolderNode} />
-        <div ref={this.setStickyNode} style={style}>
+      <React.Fragment>
+        <StickyElement ref={this.setPlaceHolderNode} />
+        <StickyElement ref={this.setStickyNode} style={style}>
           {childrenContent}
-        </div>
-      </div>
+        </StickyElement>
+      </React.Fragment>
     );
   }
 

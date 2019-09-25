@@ -10,16 +10,83 @@
 }
 
 .Table {
+  width: 100%;
   min-width: 100%;
-  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.FixedColumnHeader {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: color('white');
+}
+
+.FixedColumnHeader--isFixed {
+  position: fixed;
+  box-shadow: rem(8px) 0 rem(10px) rem(-6px) rgba(color('sky'), 0.3);
+}
+
+.FixedTable {
+  border-collapse: collapse;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .TableHeading--first,
+  .TableCell--first {
+    visibility: visible;
+  }
+
+  .TableRow,
+  .HeadingRow {
+    background-color: color('white');
+  }
+}
+
+.FixedTable--scrolling {
+  .TableCell--first,
+  .TableHeading--first {
+    visibility: visible;
+    box-shadow: rem(8px) 0 rem(10px) rem(-6px) rgba(color('sky'), 0.3);
+  }
+}
+
+.TableRow {
+  background-color: color('white');
+}
+
+.TableRow--selected {
+  background-color: rgba(color('indigo'), 0.12);
+
+  .TableHeading--first,
+  .TableCell--first {
+    background-color: rgba(color('indigo'), 0.12);
+  }
+}
+
+.TableRow--hovering {
+  background-color: rgba(color('sky'), 0.3);
+
+  .TableHeading--first,
+  .TableCell--first {
+    background-color: rgba(color('sky'), 0.3);
+  }
 }
 
 .TableHeading {
-  text-align: left;
   padding: spacing();
+  text-align: left;
   font-weight: 500;
   scroll-snap-align: start;
   white-space: nowrap;
+  border: 0;
+}
+
+.TableHeading--first {
+  visibility: hidden;
 }
 
 .TableCell {
@@ -28,32 +95,46 @@
   white-space: nowrap;
 }
 
-.TableRow {
+.TableCell--first {
+  visibility: hidden;
+}
+
+.StickyTable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+}
+
+.StickyTableHeader {
+  position: absolute;
+  display: flex;
+  overflow: hidden;
+}
+
+.StickyTableHeader--isSticky {
+  visibility: visible;
   background-color: color('white');
-}
-
-.TableRow:hover {
-  background-color: rgba(color('sky'), 0.3);
-}
-
-.TableRow--selected {
-  background-color: rgba(color('indigo'), 0.12);
+  box-shadow: shadow();
 }
 
 .ScrollLeft {
   position: absolute;
+  z-index: 2;
   top: 50%;
-  left: 0;
-  transform: translateY(-50%);
+  right: rem(32px);
   display: none;
+  transform: translateY(-50%);
 }
 
 .ScrollRight {
   position: absolute;
+  z-index: 2;
   top: 50%;
   right: 0;
-  transform: translateY(-50%);
   display: none;
+  transform: translateY(-50%);
 }
 
 .IndexTable:hover {
@@ -64,4 +145,8 @@
   .ScrollRight {
     display: block;
   }
+}
+
+.IndexTable .ScrollRight--onboarding {
+  display: block;
 }
