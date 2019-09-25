@@ -1,1 +1,3 @@
-export {TextPicker, TextPickerProps} from './TextPicker';
+import TextPicker, {TextPickerProps} from './TextPicker';
+
+export {TextPicker, TextPickerProps};

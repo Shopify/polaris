@@ -1,6 +1,10 @@
 import React from 'react';
 
 import {HSBColor} from '../../../../utilities/color-types';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import {TextField} from '../../../TextField';
 import styles from '../../ColorPicker.scss';
 
@@ -10,13 +14,15 @@ export interface AlphaFieldProps {
   onChange(hue: number): void;
 }
 
+type CombinedProps = AlphaFieldProps & WithAppProviderProps;
+
 interface State {
   alpha: AlphaFieldProps['alpha'];
   percentage: number;
   inputError: boolean;
 }
 
-export class AlphaField extends React.PureComponent<AlphaFieldProps, State> {
+class AlphaField extends React.PureComponent<CombinedProps, State> {
   static getDerivedStateFromProps(
     {alpha: alphaProp}: AlphaFieldProps,
     {alpha}: State,
@@ -40,7 +46,12 @@ export class AlphaField extends React.PureComponent<AlphaFieldProps, State> {
 
   render() {
     const {alpha, percentage, inputError} = this.state;
-    const error = inputError ? 'Input error' : undefined;
+    const {
+      polaris: {intl},
+    } = this.props;
+    const error = inputError
+      ? intl.translate('Polaris.ColorPicker.invalidColor')
+      : undefined;
     const percentageToDisplay = Math.round(percentage).toString();
 
     return (
@@ -93,3 +104,7 @@ export class AlphaField extends React.PureComponent<AlphaFieldProps, State> {
     this.setState({percentage: parseInt(value, 10)});
   };
 }
+
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<AlphaFieldProps>()(AlphaField);
