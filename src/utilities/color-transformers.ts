@@ -12,8 +12,6 @@ import {
 import {compose} from './compose';
 
 const RGB_STRING_TO_HEX_REGEX = /^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i;
-const IS_RGB_STRING_REGEX = /rgba?\(((25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,\s*?){2}(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,?\s*([01]\.?\d*?)?\)/i;
-export const TRANSPARENT = 'rgba(0,0,0,0)';
 
 export function rgbString(color: RGBColor | RGBAColor) {
   const {red, green, blue} = color;
