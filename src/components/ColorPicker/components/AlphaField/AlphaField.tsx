@@ -57,7 +57,7 @@ class AlphaField extends React.PureComponent<CombinedProps, State> {
     return (
       <div className={styles.AlphaField}>
         <TextField
-          label="Opacity"
+          label="Alpha"
           type="number"
           value={percentageToDisplay}
           onBlur={this.handleBlur}
