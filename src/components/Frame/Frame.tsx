@@ -3,7 +3,6 @@ import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from '@material-ui/react-transition-group';
 import {classNames} from '../../utilities/css';
-import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Icon} from '../Icon';
 import {EventListener} from '../EventListener';
 import {
@@ -50,7 +49,6 @@ export interface FrameProps {
 }
 
 interface State {
-  mobileView?: boolean;
   skipFocused?: boolean;
   globalRibbonHeight: number;
   loadingStack: number;
@@ -76,7 +74,6 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     globalRibbonHeight: 0,
     loadingStack: 0,
     toastMessages: [],
-    mobileView: isMobileView(),
     showContextualSaveBar: false,
   };
 
@@ -106,7 +103,6 @@ class Frame extends React.PureComponent<CombinedProps, State> {
       loadingStack,
       toastMessages,
       showContextualSaveBar,
-      mobileView,
     } = this.state;
     const {
       children,
@@ -114,8 +110,11 @@ class Frame extends React.PureComponent<CombinedProps, State> {
       topBar,
       globalRibbon,
       showMobileNavigation = false,
-      polaris: {intl},
       skipToContentTarget,
+      polaris: {
+        intl,
+        mediaQuery: {isNavigationCollapsed},
+      },
     } = this.props;
 
     const navClassName = classNames(
@@ -123,16 +122,16 @@ class Frame extends React.PureComponent<CombinedProps, State> {
       showMobileNavigation && styles['Navigation-visible'],
     );
 
-    const mobileNavHidden = mobileView && !showMobileNavigation;
-    const mobileNavShowing = mobileView && showMobileNavigation;
+    const mobileNavHidden = isNavigationCollapsed && !showMobileNavigation;
+    const mobileNavShowing = isNavigationCollapsed && showMobileNavigation;
     const tabIndex = mobileNavShowing ? 0 : -1;
 
     const navigationMarkup = navigation ? (
       <TrapFocus trapping={mobileNavShowing}>
         <CSSTransition
           findDOMNode={this.findNavigationNode}
-          appear={mobileView}
-          exit={mobileView}
+          appear={isNavigationCollapsed}
+          exit={isNavigationCollapsed}
           in={showMobileNavigation}
           timeout={durationSlow}
           classNames={navTransitionClasses}
@@ -151,7 +150,8 @@ class Frame extends React.PureComponent<CombinedProps, State> {
               className={styles.NavigationDismiss}
               onClick={this.handleNavigationDismiss}
               aria-hidden={
-                mobileNavHidden || (!mobileView && !showMobileNavigation)
+                mobileNavHidden ||
+                (!isNavigationCollapsed && !showMobileNavigation)
               }
               aria-label={intl.translate(
                 'Polaris.Frame.Navigation.closeMobileNavigationLabel',
@@ -238,7 +238,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     );
 
     const navigationOverlayMarkup =
-      showMobileNavigation && mobileView ? (
+      showMobileNavigation && isNavigationCollapsed ? (
         <Backdrop
           belowNavigation
           onClick={this.handleNavigationDismiss}
@@ -360,14 +360,6 @@ class Frame extends React.PureComponent<CombinedProps, State> {
   };
 
   private handleResize = () => {
-    const {mobileView} = this.state;
-
-    if (isMobileView() && !mobileView) {
-      this.setState({mobileView: true});
-    } else if (!isMobileView() && mobileView) {
-      this.setState({mobileView: false});
-    }
-
     if (this.props.globalRibbon) {
       this.setGlobalRibbonHeight();
     }
@@ -417,10 +409,6 @@ const navTransitionClasses = {
   exit: classNames(styles['Navigation-exit']),
   exitActive: classNames(styles['Navigation-exitActive']),
 };
-
-function isMobileView() {
-  return navigationBarCollapsed().matches;
-}
 
 // Use named export once withAppProvider is refactored away
 // eslint-disable-next-line import/no-default-export

@@ -108,6 +108,7 @@ $stacking-order: (
   );
   border: border(dark);
   border-radius: border-radius();
+
   line-height: 1;
   color: color('ink');
   text-align: center;
@@ -165,4 +166,11 @@ $stacking-order: (
   margin-left: -1px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.Label {
+  padding: 0 spacing(tight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

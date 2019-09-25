@@ -2,7 +2,6 @@
 @import '../../variables';
 
 $page-layout-when-not-partially-condensed-absolute: rem(743px);
-$search-results-max-width: 70rem;
 $search-results-min-width: 45rem;
 
 .Search {
@@ -11,7 +10,7 @@ $search-results-min-width: 45rem;
   left: 0;
   right: 0;
   top: top-bar-height();
-  height: calc(100vh - #{top-bar-height() + spacing(loose)});
+  height: calc(100vh - #{top-bar-height()});
   visibility: hidden;
   pointer-events: none;
   padding: 0;
@@ -37,7 +36,7 @@ $search-results-min-width: 45rem;
   flex-direction: column;
   align-items: stretch;
   width: 100%;
-  max-width: $search-results-max-width;
+  max-width: $search-max-width;
   min-width: $search-results-min-width;
   max-height: 100%;
 

@@ -61,53 +61,11 @@ Banners should:
 
 ## Content guidelines
 
-### Headings
+To learn about writing helpful and accessible error message text, see the guidelines for [error messages](/patterns-and-guides/error-messages).
 
-Banner headings should be:
+### Title
 
-- Descriptive: help merchants understand what they’ll find in the card.
-  - Communicate when a situation is serious enough to warrant using a critical or
-    warning banner. People who are unable to see the color of the banner need to
-    clearly understand the importance of the situation without the benefit of
-    seeing the color of the banner. Learn more about [accessibility](https://polaris.shopify.com/patterns-and-guides/accessibility).
-
-<!-- usagelist -->
-
-#### Do
-
-You’ve received a chargeback
-
-#### Don’t
-
-Have a look at this
-
-<!-- end -->
-
-- Concise and scannable:
-
-  - Use simple, clear language that can be read at a glance
-  - Keep headings to a single sentence and avoid using punctuation such as
-    periods, commas, or semicolons
-  - Where possible, avoid articles (the, a, an) to keep content short and
-    actionable
-  - Avoid unnecessary terms, for example don’t use “successfully” in banners that confirm an action
-
-- Informative:
-  - Label the type of information in the body content
-  - Sentence case: capitalize only the first word in the heading and proper
-    nouns
-
-<!-- usagelist -->
-
-#### Do
-
-Online store is password protected
-
-#### Don’t
-
-Your Online Store is now Password Protected
-
-<!-- end -->
+Banner titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 
@@ -270,13 +228,13 @@ including packaging.
 
 <!-- content-for: android -->
 
-![Default banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/default@2x.png)
+![Default banner for Android](/public_images/components/Banner/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/default@2x.png)
+![Default banner for iOS](/public_images/components/Banner/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -290,7 +248,7 @@ Make all banners dismissible, unless they contain critical information or an imp
 <Banner onDismiss={() => {}}>
   <p>
     Use your finance report to get detailed information about your business.{' '}
-    <Link url="">Let us know what you think.</Link>
+    <Link url="">Let us know what you think</Link>
   </p>
 </Banner>
 ```
@@ -315,13 +273,13 @@ Use when you want merchants to take an action after reading the banner.
 
 <!-- content-for: android -->
 
-![Banner with footer call-to-action for Android](https://polaris.shopify.com/public_images/components/Banner/android/footer-action@2x.png)
+![Banner with footer call-to-action for Android](/public_images/components/Banner/android/footer-action@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Banner with footer call-to-action for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/footer-action@2x.png)
+![Banner with footer call-to-action for iOS](/public_images/components/Banner/ios/footer-action@2x.png)
 
 <!-- /content-for -->
 
@@ -342,13 +300,13 @@ Use to update merchants about a change or give them advice.
 
 <!-- content-for: android -->
 
-![Informational banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/informational@2x.png)
+![Informational banner for Android](/public_images/components/Banner/android/informational@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Informational banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/informational@2x.png)
+![Informational banner for iOS](/public_images/components/Banner/ios/informational@2x.png)
 
 <!-- /content-for -->
 
@@ -368,13 +326,13 @@ Use to update merchants about a change or give them advice.
 
 <!-- content-for: android -->
 
-![Success banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/success@2x.png)
+![Success banner for Android](/public_images/components/Banner/android/success@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Success banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/success@2x.png)
+![Success banner for iOS](/public_images/components/Banner/ios/success@2x.png)
 
 <!-- /content-for -->
 
@@ -400,13 +358,13 @@ Use to update merchants about a change or give them advice.
 
 <!-- content-for: android -->
 
-![Warning banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/warning@2x.png)
+![Warning banner for Android](/public_images/components/Banner/android/warning@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Warning banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/warning@2x.png)
+![Warning banner for iOS](/public_images/components/Banner/ios/warning@2x.png)
 
 <!-- /content-for -->
 
@@ -432,13 +390,13 @@ Use to update merchants about a change or give them advice.
 
 <!-- content-for: android -->
 
-![Critical banner for Android](https://polaris.shopify.com/public_images/components/Banner/android/critical@2x.png)
+![Critical banner for Android](/public_images/components/Banner/android/critical@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Critical banner for iOS](https://polaris.shopify.com/public_images/components/Banner/ios/critical@2x.png)
+![Critical banner for iOS](/public_images/components/Banner/ios/critical@2x.png)
 
 <!-- /content-for -->
 
@@ -449,54 +407,46 @@ Use to update merchants about a change or give them advice.
 Banners inside of modals render with less spacing and a pared-back design to fit within a content context.
 
 ```jsx
-class ModalExample extends React.Component {
-  state = {
-    active: false,
-  };
+function BannerInModalExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    const {active} = this.state;
+  const handleChange = useCallback(() => setActive(!active), [active]);
 
-    return (
-      <div style={{height: '500px'}}>
-        <Button onClick={this.handleChange}>Open</Button>
-        <Modal
-          open={active}
-          onClose={this.handleChange}
-          title="Reach more shoppers with Instagram product tags"
-          primaryAction={{
-            content: 'Add Instagram',
-            onAction: this.handleChange,
-          }}
-          secondaryActions={[
-            {
-              content: 'Learn more',
-              onAction: this.handleChange,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <TextContainer>
-              <Banner action={{content: 'Connect account'}} status="warning">
-                <p>
-                  Connect your instagram account to your shop before proceeding.
-                </p>
-              </Banner>
+  return (
+    <div style={{height: '500px'}}>
+      <Button onClick={handleChange}>Open</Button>
+      <Modal
+        open={active}
+        onClose={handleChange}
+        title="Reach more shoppers with Instagram product tags"
+        primaryAction={{
+          content: 'Add Instagram',
+          onAction: handleChange,
+        }}
+        secondaryActions={[
+          {
+            content: 'Learn more',
+            onAction: handleChange,
+          },
+        ]}
+      >
+        <Modal.Section>
+          <TextContainer>
+            <Banner action={{content: 'Connect account'}} status="warning">
               <p>
-                Use Instagram posts to share your products with millions of
-                people. Let shoppers buy from your store without leaving
-                Instagram.
+                Connect your instagram account to your shop before proceeding.
               </p>
-            </TextContainer>
-          </Modal.Section>
-        </Modal>
-      </div>
-    );
-  }
-
-  handleChange = () => {
-    this.setState(({active}) => ({active: !active}));
-  };
+            </Banner>
+            <p>
+              Use Instagram posts to share your products with millions of
+              people. Let shoppers buy from your store without leaving
+              Instagram.
+            </p>
+          </TextContainer>
+        </Modal.Section>
+      </Modal>
+    </div>
+  );
 }
 ```
 
@@ -507,28 +457,24 @@ class ModalExample extends React.Component {
 Banner can programmatically receive focus. Use this functionality to draw the merchant's attention to the banner.
 
 ```jsx
-class ModalExample extends React.Component {
-  banner = React.createRef();
+function BannerWithFocusExample() {
+  const banner = useRef();
 
-  componentDidMount() {
-    this.banner.current.focus();
-  }
+  useEffect(() => banner.current.focus(), []);
 
-  render() {
-    return (
-      <Banner
-        title="High risk of fraud detected"
-        onDismiss={() => {}}
-        status="critical"
-        ref={this.banner}
-      >
-        <p>
-          Before fulfilling this order or capturing payment, please review the
-          fraud analysis and determine if this order is fraudulent
-        </p>
-      </Banner>
-    );
-  }
+  return (
+    <Banner
+      title="High risk of fraud detected"
+      onDismiss={() => {}}
+      status="critical"
+      ref={banner}
+    >
+      <p>
+        Before fulfilling this order or capturing payment, please review the
+        fraud analysis and determine if this order is fraudulent
+      </p>
+    </Banner>
+  );
 }
 ```
 
@@ -544,7 +490,7 @@ Banners inside of cards render with less spacing and a pared-back design to fit 
     <Banner onDismiss={() => {}}>
       <p>
         Use your finance report to get detailed information about your business.{' '}
-        <Link url="">Let us know what you think.</Link>
+        <Link url="">Let us know what you think</Link>
       </p>
     </Banner>
 

@@ -1,5 +1,4 @@
 import React, {createRef} from 'react';
-import debounce from 'lodash/debounce';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {
   SearchMinor,
@@ -21,7 +20,6 @@ import {ScrollLock} from '../ScrollLock';
 import {Icon} from '../Icon';
 import {TextField} from '../TextField';
 import {Tag} from '../Tag';
-import {EventListener} from '../EventListener';
 import {TextStyle} from '../TextStyle';
 import {Badge} from '../Badge';
 import {Focus} from '../Focus';
@@ -29,7 +27,6 @@ import {Sheet} from '../Sheet';
 import {Stack} from '../Stack';
 import {Key} from '../../types';
 
-import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {KeypressListener} from '../KeypressListener';
 import {ConnectedFilterControl, PopoverableAction} from './components';
 
@@ -84,7 +81,6 @@ type ComposedProps = FiltersProps & WithAppProviderProps;
 
 interface State {
   open: boolean;
-  mobile: boolean;
   readyForFocus: boolean;
   [key: string]: boolean;
 }
@@ -99,7 +95,6 @@ class Filters extends React.Component<ComposedProps, State> {
 
   state: State = {
     open: false,
-    mobile: false,
     readyForFocus: false,
   };
 
@@ -114,21 +109,6 @@ class Filters extends React.Component<ComposedProps, State> {
     return filtersApplied || queryApplied;
   }
 
-  private handleResize = debounce(
-    () => {
-      const {mobile} = this.state;
-      if (mobile !== isMobile()) {
-        this.setState({mobile: !mobile});
-      }
-    },
-    40,
-    {leading: true, trailing: true, maxWait: 40},
-  );
-
-  componentDidMount() {
-    this.handleResize();
-  }
-
   render() {
     const {
       filters,
@@ -139,13 +119,16 @@ class Filters extends React.Component<ComposedProps, State> {
       focused,
       onClearAll,
       appliedFilters,
-      polaris: {intl},
+      polaris: {
+        intl,
+        mediaQuery: {isNavigationCollapsed},
+      },
       onQueryClear,
       queryPlaceholder,
       children,
     } = this.props;
     const {resourceName} = this.context;
-    const {open, mobile, readyForFocus} = this.state;
+    const {open, readyForFocus} = this.state;
 
     const backdropMarkup = open ? (
       <React.Fragment>
@@ -336,7 +319,7 @@ class Filters extends React.Component<ComposedProps, State> {
         </div>
       ) : null;
 
-    const filtersContainerMarkup = mobile ? (
+    const filtersContainerMarkup = isNavigationCollapsed ? (
       <Sheet
         open={open}
         onClose={this.closeFilters}
@@ -372,7 +355,6 @@ class Filters extends React.Component<ComposedProps, State> {
         {filtersContainerMarkup}
         {tagsMarkup}
         {backdropMarkup}
-        <EventListener event="resize" handler={this.handleResize} />
         <KeypressListener keyCode={Key.Escape} handler={this.closeFilters} />
       </div>
     );
@@ -504,10 +486,6 @@ class Filters extends React.Component<ComposedProps, State> {
       </div>
     );
   }
-}
-
-function isMobile(): boolean {
-  return navigationBarCollapsed().matches;
 }
 
 function getShortcutFilters(filters: FilterInterface[]) {

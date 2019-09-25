@@ -9,8 +9,6 @@ import {
   WithPolarisTestProviderOptions,
 } from '../components';
 
-export {act};
-
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
 export function findByTestID(root: ReactWrapper<any, any>, id: string) {
@@ -29,6 +27,8 @@ export function matchByTestID(root: ReactWrapper<any, any>, regexp: RegExp) {
 
   return root.findWhere(matchesTestID);
 }
+
+const reactAct = act as (func: () => void | Promise<void>) => Promise<void>;
 
 export function trigger(wrapper: AnyWrapper, keypath: string, ...args: any[]) {
   if (wrapper.length === 0) {
@@ -53,18 +53,36 @@ export function trigger(wrapper: AnyWrapper, keypath: string, ...args: any[]) {
     );
   }
 
-  // eslint-disable-next-line callback-return
-  const returnValue = callback(...args);
-  updateRoot(wrapper);
+  let returnValue: any;
 
-  if (returnValue instanceof Promise) {
-    return returnValue.then((ret) => {
+  const promise = reactAct(() => {
+    // eslint-disable-next-line callback-return
+    returnValue = callback(...args);
+
+    // The return type of non-async `act()`, DebugPromiseLike, contains a `then` method
+    // This condition checks the returned value is an actual Promise and returns it
+    // to React’s `act()` call, otherwise we just want to return `undefined`
+    if (isPromise(returnValue)) {
+      return (returnValue as unknown) as Promise<void>;
+    }
+  });
+
+  if (isPromise(returnValue)) {
+    return Promise.resolve(promise as Promise<any>).then((ret) => {
       updateRoot(wrapper);
       return ret;
     });
   }
 
+  updateRoot(wrapper);
+
   return returnValue;
+}
+
+function isPromise<T>(promise: T | Promise<T>): promise is Promise<T> {
+  return (
+    promise != null && typeof promise === 'object' && 'then' in (promise as any)
+  );
 }
 
 function updateRoot(wrapper: AnyWrapper) {

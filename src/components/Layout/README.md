@@ -32,142 +32,25 @@ The layout component should:
 - Group similar concepts and actions together in cards
 - Separate different cards using a full-width divider
 - Structure primary/secondary, two-column layouts so the primary ⅔ section is used for main information and the secondary ⅓ section is used for information that might not be used as often but remains helpful for context or secondary tasks
-- Use equal-width layouts with two or more colums when each layout section has the same importance
+- Use equal-width layouts with two or more columns when each layout section has the same importance
 
 ---
 
 ## Content guidelines
 
-The content from the layout component comes from cards and annotated sections.
+The content that appears in the layout component comes from cards and annotated sections.
 
-### Heading
+### Cards
 
-Headings should be:
+Content from cards should follow the content guidelines for [cards](https://polaris.shopify.com/components/structure/card#section-content-guidelines).
 
-- Informative and descriptive
-  - They should label the type of content grouped in the card
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep to a single sentence and avoid using punctuation such as periods, commas, or semicolons
-  - Avoid articles (the, a, an) in [microcopy headings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings) to keep content short and actionable
-  - Write in sentence case (first word capitalized, the rest is lowercase)
+### Annotated section titles
 
-<!-- usagelist -->
+Annotated section titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
-#### Do
+### Annotated section descriptions
 
-- Online store dashboard
-
-#### Don’t
-
-- This is your online store dashboard
-
-<!-- end -->
-
-### Body content
-
-Body content should be:
-
-- Actionable: start sentences with imperative verbs when telling merchants what actions are available to them (especially something new). Don’t use permissive language like “you can”.
-
-<!-- usagelist -->
-
-#### Do
-
-- Get performance for all your sales channels.
-
-#### Don’t
-
-- Now you can get performance data for all your sales channels.
-
-<!-- end -->
-
-- Structured for merchant success: always put the most critical information first.
-- Clear: use the verb “need” to help merchants understand when they’re required to do something.
-
-<!-- usagelist -->
-
-#### Do
-
-- To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
-
-#### Don’t
-
-- To buy a shipping label, you must enter the total weight of your shipment, including packaging.
-
-<!-- end -->
-
-### Call-to-action button
-
-Buttons should be:
-
-- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
-
-<!-- usagelist -->
-
-#### Do
-
-- Buy shipping label
-
-#### Don’t
-
-- Buy
-
-<!-- end -->
-
-- Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
-
-<!-- usagelist -->
-
-#### Do
-
-- Activate Apple Pay
-
-#### Don’t
-
-- Try Apple Pay
-
-<!-- end -->
-
-- Scannable: avoid unnecessary words and articles such as the, an, or a.
-
-<!-- usagelist -->
-
-#### Do
-
-- Add menu item
-
-#### Don’t
-
-- Add a menu item
-
-<!-- end -->
-
-### Section titles
-
-Section titles should be:
-
-- Informative: they should label the type of content grouped in the body content below
-- Like headings: follow the same content guidelines as when you’re writing headings
-
-### Action links
-
-Links should be:
-
-- Used for secondary or persistent actions: links are for lower priority actions than buttons, or persistent actions (such as an Edit link) that merchants can take at any time.
-- Clearly labeled: merchants should not need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
-- Similar to buttons: follow the same content guidelines as when you’re writing buttons.
-
-### Annotated content titles
-
-Annotated content titles should be:
-
-- Informative: they should label the type of content grouped in the body content below
-- Like headings: follow the same content guidelines as when you’re writing headings
-
-### Annotated content descriptions
-
-The descriptions in annotated sections should:
+Annotated section descriptions should:
 
 - Be used if the explanation or purpose of the associated cards isn’t clear
 - Provide instructions for any choices merchants need to make, or explain the purpose of the section

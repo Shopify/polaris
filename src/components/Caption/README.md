@@ -49,7 +49,7 @@ Captions are primarily used in [data visualizations](https://polaris.shopify.com
 #### Do
 
 - Use caption for labelling data visualizations
-  ![Diagram of using captions to label graphs and other data content](https://polaris.shopify.com/public_images/typography/display-styles/do-use-caption-for-labeling-data-visualizations@2x.png)
+  ![Diagram of using captions to label graphs and other data content](/public_images/typography/display-styles/do-use-caption-for-labeling-data-visualizations@2x.png)
 - Received April 21, 2017
 
 #### Don’t
@@ -80,13 +80,13 @@ Use to provide details in situations where content is compact and space is tight
 
 <!-- content-for: android -->
 
-![Default caption](https://polaris.shopify.com/public_images/components/Caption/android/default@2x.png)
+![Default caption](/public_images/components/Caption/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default caption](https://polaris.shopify.com/public_images/components/Caption/ios/default@2x.png)
+![Default caption](/public_images/components/Caption/ios/default@2x.png)
 
 <!-- /content-for -->
 

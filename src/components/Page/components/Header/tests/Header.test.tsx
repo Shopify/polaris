@@ -1,10 +1,8 @@
 import React from 'react';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 import {
   ActionMenu,
   Breadcrumbs,
   buttonsFrom,
-  EventListener,
   Pagination,
   Badge,
   Avatar,
@@ -18,23 +16,6 @@ describe('<Header />', () => {
   const mockProps: HeaderProps = {
     title: 'mock title',
   };
-
-  beforeEach(() => {
-    matchMedia.mock();
-  });
-
-  afterEach(() => {
-    matchMedia.restore();
-  });
-
-  it('renders resize <EventListener />', () => {
-    const wrapper = mountWithAppProvider(<Header {...mockProps} />);
-    const resizeEventListener = wrapper
-      .find(EventListener)
-      .filterWhere((component) => component.prop('event') === 'resize');
-
-    expect(resizeEventListener).toHaveLength(1);
-  });
 
   describe('Header', () => {
     const mockProps = {
@@ -87,7 +68,7 @@ describe('<Header />', () => {
   });
 
   describe('primaryAction', () => {
-    it('renders a button based on the given action', () => {
+    it('renders a `primary` button based on the given action', () => {
       const primaryAction: HeaderPrimaryAction = {
         content: 'Click me!',
       };
@@ -97,6 +78,20 @@ describe('<Header />', () => {
       );
 
       const expectedButton = buttonsFrom(primaryAction, {primary: true});
+      expect(header.contains(expectedButton)).toBeTruthy();
+    });
+
+    it('renders a regular button based on the given action when primary is set to false', () => {
+      const primaryAction: HeaderPrimaryAction = {
+        content: 'Click me!',
+        primary: false,
+      };
+
+      const header = mountWithAppProvider(
+        <Header {...mockProps} primaryAction={primaryAction} />,
+      );
+
+      const expectedButton = buttonsFrom(primaryAction, {primary: false});
       expect(header.contains(expectedButton)).toBeTruthy();
     });
   });
@@ -218,10 +213,9 @@ describe('<Header />', () => {
     });
 
     it('renders with `rollup` as `true` when on mobile', () => {
-      matchMedia.setMedia(() => ({matches: true}));
-
       const wrapper = mountWithAppProvider(
         <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
+        {mediaQuery: {isNavigationCollapsed: true}},
       );
 
       expect(wrapper.find(ActionMenu).prop('rollup')).toBe(true);

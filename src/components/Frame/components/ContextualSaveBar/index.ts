@@ -1,3 +1,1 @@
-import ContextualSaveBar from './ContextualSaveBar';
-
-export {ContextualSaveBar};
+export {ContextualSaveBar} from './ContextualSaveBar';

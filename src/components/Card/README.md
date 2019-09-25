@@ -51,32 +51,9 @@ Cards should:
 
 ## Content guidelines
 
-### Heading
+### Title
 
-Headings should be:
-
-- Descriptive: Help merchants understand what they’ll find in the card
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep headings to single sentence and avoid using punctuation such as
-    periods, commas, or semicolons
-  - Where possible, avoid articles (the, a, an) to keep content short and
-    actionable
-  - Written in sentence case
-  - Informative: They should label the type of content grouped in the body
-    content below
-
-<!-- usagelist -->
-
-#### Do
-
-Online store dashboard
-
-#### Don’t
-
-This is your online store dashboard
-
-<!-- end -->
+Card titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 
@@ -208,13 +185,13 @@ Use when you have a simple message to communicate to merchants that doesn’t re
 
 <!-- content-for: android -->
 
-![Default card with a title and a short body](https://polaris.shopify.com/public_images/components/Card/android/default@2x.png)
+![Default card with a title and a short body](/public_images/components/Card/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default card with a title and a short body](https://polaris.shopify.com/public_images/components/Card/ios/default@2x.png)
+![Default card with a title and a short body](/public_images/components/Card/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -246,13 +223,13 @@ Use for less important card actions, or actions merchants may do before reviewin
 
 <!-- content-for: android -->
 
-![Card with a title (Conditions), a short body and a header action to add a condition](https://polaris.shopify.com/public_images/components/Card/android/header-actions@2x.png)
+![Card with a title (Conditions), a short body and a header action to add a condition](/public_images/components/Card/android/header-actions@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Card with a title (Conditions), a short body and a header action to add a condition](https://polaris.shopify.com/public_images/components/Card/ios/header-actions@2x.png)
+![Card with a title (Conditions), a short body and a header action to add a condition](/public_images/components/Card/ios/header-actions@2x.png)
 
 <!-- /content-for -->
 
@@ -290,13 +267,13 @@ Use footer actions for a card’s most important actions, or actions merchants s
 
 <!-- content-for: android -->
 
-![Card featuring footer actions: add variant, edit options](https://polaris.shopify.com/public_images/components/Card/android/footer-actions@2x.png)
+![Card featuring footer actions: add variant, edit options](/public_images/components/Card/android/footer-actions@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Card featuring footer actions: add variant, edit options](https://polaris.shopify.com/public_images/components/Card/ios/footer-actions@2x.png)
+![Card featuring footer actions: add variant, edit options](/public_images/components/Card/ios/footer-actions@2x.png)
 
 <!-- /content-for -->
 
@@ -390,13 +367,13 @@ Use when you have two related but distinct pieces of information to communicate 
 
 <!-- content-for: android -->
 
-![Shipping costs card with multiple sections: domestic, international](https://polaris.shopify.com/public_images/components/Card/android/multiple-sections@2x.png)
+![Shipping costs card with multiple sections: domestic, international](/public_images/components/Card/android/multiple-sections@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Shipping costs card with multiple sections: domestic, international](https://polaris.shopify.com/public_images/components/Card/ios/multiple-sections@2x.png)
+![Shipping costs card with multiple sections: domestic, international](/public_images/components/Card/ios/multiple-sections@2x.png)
 
 <!-- /content-for -->
 
@@ -497,13 +474,13 @@ Use when a card action applies only to one section and will delete merchant data
 
 <!-- content-for: android -->
 
-![Customer card with multiple titled sections: note, shipping address](https://polaris.shopify.com/public_images/components/Card/android/multiple-titled-sections@2x.png)
+![Customer card with multiple titled sections: note, shipping address](/public_images/components/Card/android/multiple-titled-sections@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Customer card with multiple titled sections: note, shipping address](https://polaris.shopify.com/public_images/components/Card/ios/multiple-titled-sections@2x.png)
+![Customer card with multiple titled sections: note, shipping address](/public_images/components/Card/ios/multiple-titled-sections@2x.png)
 
 <!-- /content-for -->
 

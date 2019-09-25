@@ -1,6 +1,8 @@
 import React from 'react';
+import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
 import {Theme, ThemeContext} from '../../utilities/theme';
+import {MediaQueryContext} from '../../utilities/media-query';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -19,6 +21,9 @@ import {
 } from '../../utilities/unique-id';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
+type MediaQueryContextType = NonNullable<
+  React.ContextType<typeof MediaQueryContext>
+>;
 
 /**
  * When writing a custom mounting function `mountWithAppContext(node, options)`
@@ -31,6 +36,7 @@ export type WithPolarisTestProviderOptions = {
   appBridge?: AppBridgeOptions;
   link?: LinkLikeComponent;
   theme?: Partial<Theme>;
+  mediaQuery?: Partial<MediaQueryContextType>;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
 };
@@ -41,6 +47,10 @@ export interface PolarisTestProviderProps
   strict?: boolean;
 }
 
+const defaultMediaQuery: MediaQueryContextType = {
+  isNavigationCollapsed: false,
+};
+
 export function PolarisTestProvider({
   strict,
   children,
@@ -49,6 +59,7 @@ export function PolarisTestProvider({
   link,
   theme,
   frame,
+  mediaQuery,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
 
@@ -68,6 +79,8 @@ export function PolarisTestProvider({
 
   const mergedFrame = createFrameContext(frame);
 
+  const mergedMediaQuery = merge(defaultMediaQuery, mediaQuery);
+
   return (
     <Wrapper>
       <I18nContext.Provider value={intl}>
@@ -78,7 +91,9 @@ export function PolarisTestProvider({
                 <LinkContext.Provider value={link}>
                   <ThemeContext.Provider value={mergedTheme}>
                     <FrameContext.Provider value={mergedFrame}>
-                      {children}
+                      <MediaQueryContext.Provider value={mergedMediaQuery}>
+                        {children}
+                      </MediaQueryContext.Provider>
                     </FrameContext.Provider>
                   </ThemeContext.Provider>
                 </LinkContext.Provider>

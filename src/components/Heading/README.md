@@ -39,45 +39,7 @@ Headings should:
 
 ## Content guidelines
 
-### Heading
-
-Headings should be:
-
-- Informative and descriptive:
-  - They should label the type of content grouped in the interface below
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep headings to single sentence and avoid using punctuation such as periods, commas, or semicolons
-  - Avoid articles (the, a, an) in [microcopy headings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings) to keep content short and actionable
-  - Write in sentence case (first word capitalized, the rest is lowercase)
-
-Microcopy headings should be easy for merchants to scan and understand instantly.
-
-<!-- usagelist -->
-
-#### Do
-
-- Custom reports
-
-#### Don’t
-
-- These are your custom reports
-
-<!-- end -->
-
-Conversational headings for areas like empty states and home cards are the only cases where you should use articles.
-
-<!-- usagelist -->
-
-#### Do
-
-- Secure your account with two-step authentication
-
-#### Don’t
-
-- Two-step authentication
-
-<!-- end -->
+Headings should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
 
 ---
 
@@ -93,13 +55,13 @@ Use for the title of each top-level page section.
 
 <!-- content-for: android -->
 
-![Typographic heading](https://polaris.shopify.com/public_images/components/Heading/android/default@2x.png)
+![Typographic heading](/public_images/components/Heading/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Typographic heading](https://polaris.shopify.com/public_images/components/Heading/ios/default@2x.png)
+![Typographic heading](/public_images/components/Heading/ios/default@2x.png)
 
 <!-- /content-for -->
 

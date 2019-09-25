@@ -11,7 +11,7 @@ import {TrapFocus} from '../../../TrapFocus';
 import styles from './Dialog.scss';
 
 export interface BaseDialogProps {
-  labelledBy: string;
+  labelledBy?: string;
   instant?: boolean;
   children?: React.ReactNode;
   limitHeight?: boolean;

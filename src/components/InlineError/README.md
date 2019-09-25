@@ -72,13 +72,13 @@ Use when the merchant has entered invalid information into multiple fields insid
 
 <!-- content-for: android -->
 
-![Inline error for Android](https://polaris.shopify.com/public_images/components/InlineError/android/default@2x.png)
+![Inline error for Android](/public_images/components/InlineError/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Inline error for iOS](https://polaris.shopify.com/public_images/components/InlineError/ios/default@2x.png)
+![Inline error for iOS](/public_images/components/InlineError/ios/default@2x.png)
 
 <!-- /content-for -->
 

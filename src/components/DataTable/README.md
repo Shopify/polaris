@@ -22,45 +22,43 @@ Data tables are used to organize and display all information from a data set. Wh
 Use to present small amounts of data for merchants to view statically.
 
 ```jsx
-class DataTableExample extends React.Component {
-  render() {
-    const rows = [
-      ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
-      ['Mauve Cashmere Scarf', '$230.00', 124533, 83, '$19,090.00'],
-      [
-        'Navy Merino Wool Blazer with khaki chinos and yellow belt',
-        '$445.00',
-        124518,
-        32,
-        '$14,240.00',
-      ],
-    ];
+function DataTableExample() {
+  const rows = [
+    ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
+    ['Mauve Cashmere Scarf', '$230.00', 124533, 83, '$19,090.00'],
+    [
+      'Navy Merino Wool Blazer with khaki chinos and yellow belt',
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+  ];
 
-    return (
-      <Page title="Sales by product">
-        <Card>
-          <DataTable
-            columnContentTypes={[
-              'text',
-              'numeric',
-              'numeric',
-              'numeric',
-              'numeric',
-            ]}
-            headings={[
-              'Product',
-              'Price',
-              'SKU Number',
-              'Net quantity',
-              'Net sales',
-            ]}
-            rows={rows}
-            totals={['', '', '', 255, '$155,830.00']}
-          />
-        </Card>
-      </Page>
-    );
-  }
+  return (
+    <Page title="Sales by product">
+      <Card>
+        <DataTable
+          columnContentTypes={[
+            'text',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+          ]}
+          headings={[
+            'Product',
+            'Price',
+            'SKU Number',
+            'Net quantity',
+            'Net sales',
+          ]}
+          rows={rows}
+          totals={['', '', '', 255, '$155,830.00']}
+        />
+      </Card>
+    </Page>
+  );
 }
 ```
 
@@ -69,67 +67,63 @@ class DataTableExample extends React.Component {
 Use when clarity of the table’s content is needed. For example, to note the number of rows currently shown in a data table with pagination.
 
 ```jsx
-class SortableDataTableExample extends React.Component {
-  state = {
-    sortedRows: null,
-  };
+function SortableDataTableExample() {
+  const [sortedRows, setSortedRows] = useState(null);
 
-  sortCurrency = (rows, index, direction) => {
+  const initiallySortedRows = [
+    ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
+    ['Mauve Cashmere Scarf', '$230.00', 124533, 83, '$19,090.00'],
+    [
+      'Navy Merino Wool Blazer with khaki chinos and yellow belt',
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+  ];
+  const rows = sortedRows ? sortedRows : initiallySortedRows;
+
+  const handleSort = useCallback(
+    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
+    [rows],
+  );
+
+  return (
+    <Page title="Sales by product">
+      <Card>
+        <DataTable
+          columnContentTypes={[
+            'text',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+          ]}
+          headings={[
+            'Product',
+            'Price',
+            'SKU Number',
+            'Net quantity',
+            'Net sales',
+          ]}
+          rows={rows}
+          totals={['', '', '', 255, '$155,830.00']}
+          sortable={[false, true, false, false, true]}
+          defaultSortDirection="descending"
+          initialSortColumnIndex={4}
+          onSort={handleSort}
+        />
+      </Card>
+    </Page>
+  );
+
+  function sortCurrency(rows, index, direction) {
     return [...rows].sort((rowA, rowB) => {
       const amountA = parseFloat(rowA[index].substring(1));
       const amountB = parseFloat(rowB[index].substring(1));
 
       return direction === 'descending' ? amountB - amountA : amountA - amountB;
     });
-  };
-
-  handleSort = (rows) => (index, direction) => {
-    this.setState({sortedRows: this.sortCurrency(rows, index, direction)});
-  };
-
-  render() {
-    const {sortedRows} = this.state;
-    const initiallySortedRows = [
-      ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
-      ['Mauve Cashmere Scarf', '$230.00', 124533, 83, '$19,090.00'],
-      [
-        'Navy Merino Wool Blazer with khaki chinos and yellow belt',
-        '$445.00',
-        124518,
-        32,
-        '$14,240.00',
-      ],
-    ];
-    const rows = sortedRows ? sortedRows : initiallySortedRows;
-
-    return (
-      <Page title="Sales by product">
-        <Card>
-          <DataTable
-            columnContentTypes={[
-              'text',
-              'numeric',
-              'numeric',
-              'numeric',
-              'numeric',
-            ]}
-            headings={[
-              'Product',
-              'Price',
-              'SKU Number',
-              'Net quantity',
-              'Net sales',
-            ]}
-            rows={rows}
-            totals={['', '', '', 255, '$155,830.00']}
-            sortable={[false, true, false, false, true]}
-            defaultSortDirection="descending"
-            initialSortColumnIndex={4}
-            onSort={this.handleSort(rows)}
-          />
-        </Card>
-      </Page>
-    );
   }
 }
 ```
@@ -139,46 +133,44 @@ class SortableDataTableExample extends React.Component {
 Use when clarity of the table’s content is needed. For example, to note the number of rows currently shown in a data table with pagination.
 
 ```jsx
-class DataTableFooterExample extends React.Component {
-  render() {
-    const rows = [
-      ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
-      ['Mauve Cashmere Scarf', '$230.00', 124533, 83, '$19,090.00'],
-      [
-        'Navy Merino Wool Blazer with khaki chinos and yellow belt',
-        '$445.00',
-        124518,
-        32,
-        '$14,240.00',
-      ],
-    ];
+function DataTableFooterExample() {
+  const rows = [
+    ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
+    ['Mauve Cashmere Scarf', '$230.00', 124533, 83, '$19,090.00'],
+    [
+      'Navy Merino Wool Blazer with khaki chinos and yellow belt',
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+  ];
 
-    return (
-      <Page title="Sales by product">
-        <Card>
-          <DataTable
-            columnContentTypes={[
-              'text',
-              'numeric',
-              'numeric',
-              'numeric',
-              'numeric',
-            ]}
-            headings={[
-              'Product',
-              'Price',
-              'SKU Number',
-              'Net quantity',
-              'Net sales',
-            ]}
-            rows={rows}
-            totals={['', '', '', 255, '$155,830.00']}
-            footerContent={`Showing ${rows.length} of ${rows.length} results`}
-          />
-        </Card>
-      </Page>
-    );
-  }
+  return (
+    <Page title="Sales by product">
+      <Card>
+        <DataTable
+          columnContentTypes={[
+            'text',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+          ]}
+          headings={[
+            'Product',
+            'Price',
+            'SKU Number',
+            'Net quantity',
+            'Net sales',
+          ]}
+          rows={rows}
+          totals={['', '', '', 255, '$155,830.00']}
+          footerContent={`Showing ${rows.length} of ${rows.length} results`}
+        />
+      </Card>
+    </Page>
+  );
 }
 ```
 
@@ -187,59 +179,55 @@ class DataTableFooterExample extends React.Component {
 Use to help merchants find relevant, finer grained data sets.
 
 ```jsx
-class DataTableLinkExample extends React.Component {
-  render() {
-    const rows = [
-      [
-        <Link url="https://www.example.com">Emerald Silk Gown</Link>,
-        '$875.00',
-        124689,
-        140,
-        '$122,500.00',
-      ],
-      [
-        <Link url="https://www.example.com">Mauve Cashmere Scarf</Link>,
-        '$230.00',
-        124533,
-        83,
-        '$19,090.00',
-      ],
-      [
-        <Link url="https://www.example.com">
-          Navy Merino Wool Blazer with khaki chinos and yellow belt
-        </Link>,
-        '$445.00',
-        124518,
-        32,
-        '$14,240.00',
-      ],
-    ];
+function DataTableLinkExample() {
+  const rows = [
+    [
+      <Link url="https://www.example.com" key="emerald-silk-gown">
+        Emerald Silk Gown
+      </Link>,
+      '$875.00',
+      124689,
+      140,
+      '$122,500.00',
+    ],
+    [
+      <Link url="https://www.example.com" key="mauve-cashmere-scarf">
+        Mauve Cashmere Scarf
+      </Link>,
+      '$230.00',
+      124533,
+      83,
+      '$19,090.00',
+    ],
+    [
+      <Link url="https://www.example.com" key="navy-merino-wool">
+        Navy Merino Wool Blazer with khaki chinos and yellow belt
+      </Link>,
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+  ];
 
-    return (
-      <Page title="Sales by product">
-        <Card>
-          <DataTable
-            columnContentTypes={[
-              'text',
-              'numeric',
-              'numeric',
-              'numeric',
-              'numeric',
-            ]}
-            headings={[
-              'Product',
-              'Price',
-              'SKU Number',
-              'Quantity',
-              'Net sales',
-            ]}
-            rows={rows}
-            totals={['', '', '', 255, '$155,830.00']}
-          />
-        </Card>
-      </Page>
-    );
-  }
+  return (
+    <Page title="Sales by product">
+      <Card>
+        <DataTable
+          columnContentTypes={[
+            'text',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+          ]}
+          headings={['Product', 'Price', 'SKU Number', 'Quantity', 'Net sales']}
+          rows={rows}
+          totals={['', '', '', 255, '$155,830.00']}
+        />
+      </Card>
+    </Page>
+  );
 }
 ```
 
@@ -248,84 +236,82 @@ class DataTableLinkExample extends React.Component {
 Use as a broad example that includes most props available to data table.
 
 ```jsx
-class FullDataTableExample extends React.Component {
-  state = {
-    sortedRows: null,
-  };
+function FullDataTableExample() {
+  const [sortedRows, setSortedRows] = useState(null);
 
-  sortCurrency = (rows, index, direction) => {
+  const initiallySortedRows = [
+    [
+      <Link url="https://www.example.com" key="emerald-silk-gown">
+        Emerald Silk Gown
+      </Link>,
+      '$875.00',
+      124689,
+      140,
+      '$121,500.00',
+    ],
+    [
+      <Link url="https://www.example.com" key="mauve-cashmere-scarf">
+        Mauve Cashmere Scarf
+      </Link>,
+      '$230.00',
+      124533,
+      83,
+      '$19,090.00',
+    ],
+    [
+      <Link url="https://www.example.com" key="navy-merino-wool">
+        Navy Merino Wool Blazer with khaki chinos and yellow belt
+      </Link>,
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+  ];
+
+  const rows = sortedRows ? sortedRows : initiallySortedRows;
+  const handleSort = useCallback(
+    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
+    [rows],
+  );
+
+  return (
+    <Page title="Sales by product">
+      <Card>
+        <DataTable
+          columnContentTypes={[
+            'text',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+          ]}
+          headings={[
+            'Product',
+            'Price',
+            'SKU Number',
+            'Net quantity',
+            'Net sales',
+          ]}
+          rows={rows}
+          totals={['', '', '', 255, '$155,830.00']}
+          sortable={[false, true, false, false, true]}
+          defaultSortDirection="descending"
+          initialSortColumnIndex={4}
+          onSort={handleSort}
+          footerContent={`Showing ${rows.length} of ${rows.length} results`}
+        />
+      </Card>
+    </Page>
+  );
+
+  function sortCurrency(rows, index, direction) {
     return [...rows].sort((rowA, rowB) => {
       const amountA = parseFloat(rowA[index].substring(1));
       const amountB = parseFloat(rowB[index].substring(1));
 
       return direction === 'descending' ? amountB - amountA : amountA - amountB;
     });
-  };
-
-  handleSort = (rows) => (index, direction) => {
-    this.setState({sortedRows: this.sortCurrency(rows, index, direction)});
-  };
-
-  render() {
-    const {sortedRows} = this.state;
-
-    const initiallySortedRows = [
-      [
-        <Link url="https://www.example.com">Emerald Silk Gown</Link>,
-        '$875.00',
-        124689,
-        140,
-        '$121,500.00',
-      ],
-      [
-        <Link url="https://www.example.com">Mauve Cashmere Scarf</Link>,
-        '$230.00',
-        124533,
-        83,
-        '$19,090.00',
-      ],
-      [
-        <Link url="https://www.example.com">
-          Navy Merino Wool Blazer with khaki chinos and yellow belt
-        </Link>,
-        '$445.00',
-        124518,
-        32,
-        '$14,240.00',
-      ],
-    ];
-
-    const rows = sortedRows ? sortedRows : initiallySortedRows;
-
-    return (
-      <Page title="Sales by product">
-        <Card>
-          <DataTable
-            columnContentTypes={[
-              'text',
-              'numeric',
-              'numeric',
-              'numeric',
-              'numeric',
-            ]}
-            headings={[
-              'Product',
-              'Price',
-              'SKU Number',
-              'Net quantity',
-              'Net sales',
-            ]}
-            rows={rows}
-            totals={['', '', '', 255, '$155,830.00']}
-            sortable={[false, true, false, false, true]}
-            defaultSortDirection="descending"
-            initialSortColumnIndex={4}
-            onSort={this.handleSort(rows)}
-            footerContent={`Showing ${rows.length} of ${rows.length} results`}
-          />
-        </Card>
-      </Page>
-    );
   }
 }
 ```
