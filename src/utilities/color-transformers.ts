@@ -1,4 +1,5 @@
 import {clamp} from '@shopify/javascript-utilities/math';
+import {nameHexMap} from './color-validation';
 import {
   RGBColor,
   RGBAColor,
@@ -330,21 +331,6 @@ export function normalizeValue(value: string) {
   return value.toLowerCase().replace(/\s/g, '');
 }
 
-export function isHexString(value: string) {
-  return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(value);
-}
-
-export function isHashlessHex(value: string) {
-  return /(^[0-9A-F]{6}$)|(^[0-9A-F]{3}$)/i.test(value);
-}
-
-export function isRgbString(value: string) {
-  return IS_RGB_STRING_REGEX.test(value);
-}
-export function isTransparentUserInput(value: string) {
-  return value === 'transparent' || value === TRANSPARENT;
-}
-
 export function hexToHsb(hex: string) {
   return rgbToHsb(hexToRgb(hex));
 }
@@ -354,6 +340,11 @@ export function expandHex(hex: string) {
     return `#${hex[1]}${hex[1]}${hex[2]}${hex[2]}${hex[3]}${hex[3]}`;
   }
   return hex;
+}
+
+export function nameToHex(value: string) {
+  const hex = nameHexMap[normalizeValue(value)];
+  return expandHex(`#${hex}`);
 }
 
 export function rgbStringToHex(value: string) {

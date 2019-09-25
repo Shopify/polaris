@@ -4,16 +4,20 @@ import {classNames} from '../../../../utilities/css';
 import {HSBColor} from '../../../../utilities/color-types';
 import {
   normalizeValue,
+  expandHex,
+  hsbToHex,
+  rgbStringToHex,
+  nameToHex,
+  TRANSPARENT,
+  hexToHsb,
+} from '../../../../utilities/color-transformers';
+import {
+  isColorName,
   isTransparentUserInput,
   isHexString,
   isHashlessHex,
   isRgbString,
-  expandHex,
-  hsbToHex,
-  rgbStringToHex,
-  TRANSPARENT,
-  hexToHsb,
-} from '../../../../utilities/color-transformers';
+} from '../../../../utilities/color-validation';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -136,6 +140,8 @@ class TextPicker extends React.PureComponent<CombinedProps, State> {
         return expandHex(`#${normalizedValue}`);
       case isRgbString(normalizedValue):
         return rgbStringToHex(normalizedValue);
+      case isColorName(normalizedValue):
+        return nameToHex(normalizedValue);
       default:
         return null;
     }
