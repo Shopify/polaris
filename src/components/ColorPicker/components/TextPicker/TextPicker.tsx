@@ -8,12 +8,10 @@ import {
   hsbToHex,
   rgbStringToHex,
   nameToHex,
-  TRANSPARENT,
   hexToHsb,
 } from '../../../../utilities/color-transformers';
 import {
   isColorName,
-  isTransparentUserInput,
   isHexString,
   isHashlessHex,
   isRgbString,
@@ -107,7 +105,7 @@ class TextPicker extends React.PureComponent<CombinedProps, State> {
     const validUserInput = this.coerceToValidUserInput(value);
     if (validUserInput) {
       this.setState({
-        value: isTransparentUserInput(validUserInput) ? '' : validUserInput,
+        value: validUserInput,
         inputError: false,
       });
 
@@ -132,8 +130,6 @@ class TextPicker extends React.PureComponent<CombinedProps, State> {
   private coerceToValidUserInput(value: string) {
     const normalizedValue = normalizeValue(value);
     switch (true) {
-      case isTransparentUserInput(normalizedValue):
-        return TRANSPARENT;
       case isHexString(normalizedValue):
         return expandHex(normalizedValue);
       case isHashlessHex(normalizedValue):
