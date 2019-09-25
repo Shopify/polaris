@@ -4,16 +4,20 @@ import {classNames} from '../../../../utilities/css';
 import {HSBColor} from '../../../../utilities/color-types';
 import {
   normalizeValue,
-  isTransparentUserInput,
-  isHexString,
-  isHashlessHex,
-  isRgbString,
   expandHex,
   hsbToHex,
   rgbStringToHex,
+  nameToHex,
   TRANSPARENT,
   hexToHsb,
 } from '../../../../utilities/color-transformers';
+import {
+  isColorName,
+  isHexString,
+  isHashlessHex,
+  isRgbString,
+} from '../../../../utilities/color-validation';
+import {useI18n} from '../../../../utilities/i18n';
 import {TextField} from '../../../TextField';
 import {SwatchBackground} from '../SwatchBackground';
 import styles from '../../ColorPicker.scss';
