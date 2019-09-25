@@ -136,11 +136,11 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       condensed && styles.condensed,
     );
 
+    const headingMarkup = <tr>{headings.map(this.renderHeadings)}</tr>;
+
     const totalsMarkup = totals ? (
       <tr>{totals.map(this.renderTotals)}</tr>
     ) : null;
-
-    const headingMarkup = <tr>{headings.map(this.renderHeadings)}</tr>;
 
     const bodyMarkup = rows.map(this.defaultRenderRow);
 
