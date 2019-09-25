@@ -14,6 +14,10 @@ import {
   TRANSPARENT,
   hexToHsb,
 } from '../../../../utilities/color-transformers';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../utilities/with-app-provider';
 import {TextField} from '../../../TextField';
 import {SwatchBackground} from '../SwatchBackground';
 import styles from '../../ColorPicker.scss';
@@ -24,6 +28,8 @@ export interface TextPickerProps {
   onChange(hex: string): void;
 }
 
+type CombinedProps = TextPickerProps & WithAppProviderProps;
+
 interface State {
   valueHasBeenUpdatedOnce: boolean;
   value: string;
@@ -31,7 +37,7 @@ interface State {
   inputError: boolean;
 }
 
-export class TextPicker extends React.PureComponent<TextPickerProps, State> {
+class TextPicker extends React.PureComponent<CombinedProps, State> {
   static getDerivedStateFromProps(
     {color: colorProp}: TextPickerProps,
     {color, value: currentValue}: State,
@@ -58,12 +64,17 @@ export class TextPicker extends React.PureComponent<TextPickerProps, State> {
 
   render() {
     const {value, inputError} = this.state;
-    const {allowAlpha} = this.props;
+    const {
+      allowAlpha,
+      polaris: {intl},
+    } = this.props;
     const className = classNames(
       styles.TextPicker,
       allowAlpha && styles.AlphaAllowed,
     );
-    const error = inputError ? 'Input error' : undefined;
+    const error = inputError
+      ? intl.translate('Polaris.ColorPicker.invalidColor')
+      : undefined;
     const valueForDisplay = isHexString(value) ? value.toUpperCase() : value;
 
     return (
@@ -145,3 +156,7 @@ export class TextPicker extends React.PureComponent<TextPickerProps, State> {
     );
   };
 }
+
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<TextPickerProps>()(TextPicker);
