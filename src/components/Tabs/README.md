@@ -75,51 +75,47 @@ Where possible, follow this pattern when writing tabs.
 Use for most cases, especially when the number of tabs may be more than three.
 
 ```jsx
-class TabsExample extends React.Component {
-  state = {
-    selected: 0,
-  };
+function TabsExample() {
+  const [selected, setSelected] = useState(0);
 
-  handleTabChange = (selectedTabIndex) => {
-    this.setState({selected: selectedTabIndex});
-  };
+  const handleTabChange = useCallback(
+    (selectedTabIndex) => setSelected(selectedTabIndex),
+    [],
+  );
 
-  render() {
-    const {selected} = this.state;
-    const tabs = [
-      {
-        id: 'all-customers',
-        content: 'All',
-        accessibilityLabel: 'All customers',
-        panelID: 'all-customers-content',
-      },
-      {
-        id: 'accepts-marketing',
-        content: 'Accepts marketing',
-        panelID: 'accepts-marketing-content',
-      },
-      {
-        id: 'repeat-customers',
-        content: 'Repeat customers',
-        panelID: 'repeat-customers-content',
-      },
-      {
-        id: 'prospects',
-        content: 'Prospects',
-        panelID: 'prospects-content',
-      },
-    ];
+  const tabs = [
+    {
+      id: 'all-customers',
+      content: 'All',
+      accessibilityLabel: 'All customers',
+      panelID: 'all-customers-content',
+    },
+    {
+      id: 'accepts-marketing',
+      content: 'Accepts marketing',
+      panelID: 'accepts-marketing-content',
+    },
+    {
+      id: 'repeat-customers',
+      content: 'Repeat customers',
+      panelID: 'repeat-customers-content',
+    },
+    {
+      id: 'prospects',
+      content: 'Prospects',
+      panelID: 'prospects-content',
+    },
+  ];
 
-    return (
-      <Card>
-        <Tabs tabs={tabs} selected={selected} onSelect={this.handleTabChange}>
-          <Card.Section title={tabs[selected].content}>
-            <p>Tab {selected} selected</p>
-          </Card.Section>
-        </Tabs>
-      </Card>
-    );
-  }
+  return (
+    <Card>
+      <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
+        <Card.Section title={tabs[selected].content}>
+          <p>Tab {selected} selected</p>
+        </Card.Section>
+      </Tabs>
+    </Card>
+  );
 }
 ```
 
@@ -140,47 +136,37 @@ class TabsExample extends React.Component {
 Use when tabs contain a few (2 or 3) items within a narrow column.
 
 ```jsx
-class FittedTabsExample extends React.Component {
-  state = {
-    selected: 0,
-  };
+function FittedTabsExample() {
+  const [selected, setSelected] = useState(0);
 
-  handleTabChange = (selectedTabIndex) => {
-    this.setState({selected: selectedTabIndex});
-  };
+  const handleTabChange = useCallback(
+    (selectedTabIndex) => setSelected(selectedTabIndex),
+    [],
+  );
 
-  render() {
-    const {selected} = this.state;
+  const tabs = [
+    {
+      id: 'all-customers-fitted',
+      content: 'All',
+      accessibilityLabel: 'All customers',
+      panelID: 'all-customers-fitted-content',
+    },
+    {
+      id: 'accepts-marketing-fitted',
+      content: 'Accepts marketing',
+      panelID: 'accepts-marketing-fitted-Ccontent',
+    },
+  ];
 
-    const tabs = [
-      {
-        id: 'all-customers-fitted',
-        content: 'All',
-        accessibilityLabel: 'All customers',
-        panelID: 'all-customers-fitted-content',
-      },
-      {
-        id: 'accepts-marketing-fitted',
-        content: 'Accepts marketing',
-        panelID: 'accepts-marketing-fitted-Ccontent',
-      },
-    ];
-
-    return (
-      <Card>
-        <Tabs
-          tabs={tabs}
-          selected={selected}
-          onSelect={this.handleTabChange}
-          fitted
-        >
-          <Card.Section title={tabs[selected].content}>
-            <p>Tab {selected} selected</p>
-          </Card.Section>
-        </Tabs>
-      </Card>
-    );
-  }
+  return (
+    <Card>
+      <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
+        <Card.Section title={tabs[selected].content}>
+          <p>Tab {selected} selected</p>
+        </Card.Section>
+      </Tabs>
+    </Card>
+  );
 }
 ```
 
