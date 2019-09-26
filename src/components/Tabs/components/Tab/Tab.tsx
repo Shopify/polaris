@@ -33,7 +33,9 @@ export function Tab({
   accessibilityLabel,
 }: TabProps) {
   const wasSelected = useRef(selected);
+  const panelFocused = useRef(false);
   const node = useRef<HTMLLIElement | null>(null);
+
   // A tab can start selected when it is moved from the disclosure dropdown
   // into the main list, so we need to send focus from the tab to the panel
   // on mount and update
@@ -50,16 +52,9 @@ export function Tab({
 
     // If we just check for selected, the panel for the active tab will
     // be focused on page load, which we don’t want
-    if (itemHadFocus && selected && panelID != null) {
+    if (itemHadFocus && selected && panelID != null && !panelFocused.current) {
       focusPanelID(panelID);
-    }
-
-    /* eslint-disable-next-line react-hooks/exhaustive-deps */
-  }, []);
-
-  useEffect(() => {
-    if (measuring) {
-      return;
+      panelFocused.current = true;
     }
 
     if (selected && !wasSelected.current && panelID != null) {
@@ -69,7 +64,7 @@ export function Tab({
     }
 
     wasSelected.current = selected;
-  }, [focused, measuring, panelID, selected]);
+  }, [focused, id, measuring, panelID, selected]);
 
   const handleClick = onClick && onClick.bind(null, id);
 
