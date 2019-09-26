@@ -87,8 +87,8 @@ function DropZoneExample() {
 
   const handleDropZoneDrop = useCallback(
     (_dropFiles, acceptedFiles, _rejectedFiles) =>
-      setFiles([...files, ...acceptedFiles]),
-    [files],
+      setFiles((files) => [...files, ...acceptedFiles]),
+    [],
   );
 
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
@@ -144,11 +144,13 @@ function DropZoneWithImageFileUpload() {
   const [rejectedFiles, setRejectedFiles] = useState([]);
   const hasError = rejectedFiles.length > 0;
 
-  const handleDrop = useCallback((files, acceptedFiles, rejectedFiles) => {
-    setFiles([...files, ...acceptedFiles]);
-    setRejectedFiles(rejectedFiles);
-    setHasError(rejectedFiles.length > 0);
-  }, []);
+  const handleDrop = useCallback(
+    (_droppedFiles, acceptedFiles, rejectedFiles) => {
+      setFiles((files) => [...files, ...acceptedFiles]);
+      setRejectedFiles(rejectedFiles);
+    },
+    [],
+  );
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
@@ -205,8 +207,8 @@ function DropZoneWithDropOnPageExample() {
 
   const handleDropZoneDrop = useCallback(
     (dropFiles, _acceptedFiles, _rejectedFiles) =>
-      setFiles([...files, ...dropFiles]),
-    [files],
+      setFiles((files) => [...files, ...dropFiles]),
+    [],
   );
 
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
@@ -266,11 +268,10 @@ function DropZoneAcceptingSVGFilesExample() {
 
   const handleDropZoneDrop = useCallback(
     (_dropFiles, acceptedFiles, rejectedFiles) => {
-      setFiles([...files, ...acceptedFiles]);
+      setFiles((files) => [...files, ...acceptedFiles]);
       setRejectedFiles(rejectedFiles);
-      setHasError(rejectedFiles.length > 0);
     },
-    [files],
+    [],
   );
 
   const uploadedFiles = files.length > 0 && (
@@ -329,11 +330,10 @@ Use to allow merchants to upload files in a wider area than the visible drop zon
 function NestedDropZoneExample() {
   const [files, setFiles] = useState([]);
 
-  const handleDropZoneDrop = useCallback(
-    (dropFiles, _acceptedFiles, _rejectedFiles) =>
-      setFiles([...files, ...dropFiles]),
-    [files],
-  );
+  const handleDrop = useCallback((dropFiles) => {
+    setFiles((files) => [...files, dropFiles]);
+  }, []);
+
   const handleDropZoneClick = useCallback(() => {}, []);
 
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
@@ -361,7 +361,7 @@ function NestedDropZoneExample() {
   );
 
   return (
-    <DropZone outline={false} onDrop={handleDropZoneDrop}>
+    <DropZone outline={false} onDrop={handleDrop}>
       <Card sectioned>
         <DropZone onClick={handleDropZoneClick}>
           {uploadedFiles}
@@ -408,8 +408,8 @@ function DropZoneWithCustomFileDialogExample() {
 
   const handleDropZoneDrop = useCallback(
     (dropFiles, _acceptedFiles, _rejectedFiles) =>
-      setFiles([...files, ...dropFiles]),
-    [files],
+      setFiles((files) => [...files, ...dropFiles]),
+    [],
   );
   const toggleOpenFileDialog = useCallback(
     () => setOpenFileDialog((openFileDialog) => !openFileDialog),
