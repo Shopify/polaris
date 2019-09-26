@@ -240,6 +240,7 @@ export function TextField({
   const clearButtonMarkup =
     clearButton && normalizedValue !== '' ? (
       <button
+        type="button"
         testID="clearButton"
         className={styles.ClearButton}
         onClick={handleClearButtonPress}
