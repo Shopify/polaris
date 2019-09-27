@@ -1,9 +1,6 @@
 name: Discoverability
 
-on:
-  pull_request:
-    branches:
-      - test-splash-action
+on: pull_request
 
 jobs:
   discoverability-action:
