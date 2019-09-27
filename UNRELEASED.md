@@ -11,6 +11,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Removed the need for z-indexes in `Icon` ([#2207](https://github.com/Shopify/polaris-react/pull/2207))
+- Added `settings` prop to `AppProvider` ([#2204](https://github.com/Shopify/polaris-react/pull/2204))
 
 ### Bug fixes
 
