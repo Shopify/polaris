@@ -156,10 +156,10 @@ describe('<DataTable />', () => {
       totalsCells.forEach((total) => expect(total.text()).toBe(''));
     });
 
-    it('renders totals in the footer with a showTotalsFooter prop', () => {
+    it('renders totals in the footer with a showTotalsInFooter prop', () => {
       const totals = ['', '', ''];
       const dataTable = mountWithAppProvider(
-        <DataTable {...defaultProps} totals={totals} showTotalsFooter />,
+        <DataTable {...defaultProps} totals={totals} showTotalsInFooter />,
       );
 
       expect(dataTable.find('thead tr')).toHaveLength(1);

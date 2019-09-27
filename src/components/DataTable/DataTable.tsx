@@ -33,7 +33,7 @@ export interface DataTableProps {
   /** List of numeric column totals, highlighted in the table’s header below column headings. Use empty strings as placeholders for columns with no total. */
   totals?: TableData[];
   /** Placement of totals row within table, true for t */
-  showTotalsFooter?: boolean;
+  showTotalsInFooter?: boolean;
   /** Lists of data points which map to table body rows. */
   rows: TableData[][];
   /** Truncate content in first column instead of wrapping.
@@ -121,7 +121,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     const {
       headings,
       totals,
-      showTotalsFooter,
+      showTotalsInFooter,
       rows,
       footerContent,
     } = this.props;
@@ -154,8 +154,8 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       <div className={styles.Footer}>{footerContent}</div>
     ) : null;
 
-    const headerTotalsMarkup = !showTotalsFooter ? totalsMarkup : null;
-    const footerTotalsMarkup = showTotalsFooter ? totalsMarkup : null;
+    const headerTotalsMarkup = !showTotalsInFooter ? totalsMarkup : null;
+    const footerTotalsMarkup = showTotalsInFooter ? totalsMarkup : null;
 
     return (
       <div className={wrapperClassName}>
