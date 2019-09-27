@@ -156,7 +156,7 @@ describe('<DataTable />', () => {
       totalsCells.forEach((total) => expect(total.text()).toBe(''));
     });
 
-    it('does not render totals in header', () => {
+    it('renders totals in the footer with a showTotalsFooter prop', () => {
       const totals = ['', '', ''];
       const dataTable = mountWithAppProvider(
         <DataTable {...defaultProps} totals={totals} showTotalsFooter />,
