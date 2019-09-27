@@ -17,6 +17,7 @@ import {
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
+import {Features, FeaturesContext} from '../../utilities/features';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -27,6 +28,7 @@ interface State {
   intl: I18n;
   appBridge: ReturnType<typeof createAppBridge>;
   link: LinkLikeComponent | undefined;
+  features?: Features;
 }
 
 export interface AppProviderProps extends AppBridgeOptions {
@@ -36,6 +38,8 @@ export interface AppProviderProps extends AppBridgeOptions {
   linkComponent?: LinkLikeComponent;
   /** Custom logos and colors provided to select components */
   theme?: Theme;
+  /** For toggling features */
+  features?: Features;
   /** Inner content of the application */
   children?: React.ReactNode;
 }
@@ -51,13 +55,21 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
     this.scrollLockManager = new ScrollLockManager();
     this.uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-    const {i18n, apiKey, shopOrigin, forceRedirect, linkComponent} = this.props;
+    const {
+      i18n,
+      apiKey,
+      shopOrigin,
+      forceRedirect,
+      linkComponent,
+      features,
+    } = this.props;
 
     // eslint-disable-next-line react/state-in-constructor
     this.state = {
       link: linkComponent,
       intl: new I18n(i18n),
       appBridge: createAppBridge({shopOrigin, apiKey, forceRedirect}),
+      features,
     };
   }
 
@@ -73,15 +85,24 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
     apiKey: prevApiKey,
     shopOrigin: prevShopOrigin,
     forceRedirect: prevForceRedirect,
+    features: prevFeatures,
   }: AppProviderProps) {
-    const {i18n, linkComponent, apiKey, shopOrigin, forceRedirect} = this.props;
+    const {
+      i18n,
+      linkComponent,
+      apiKey,
+      shopOrigin,
+      forceRedirect,
+      features,
+    } = this.props;
 
     if (
       i18n === prevI18n &&
       linkComponent === prevLinkComponent &&
       apiKey === prevApiKey &&
       shopOrigin === prevShopOrigin &&
-      forceRedirect === prevForceRedirect
+      forceRedirect === prevForceRedirect &&
+      features === prevFeatures
     ) {
       return;
     }
@@ -91,29 +112,32 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
       link: linkComponent,
       intl: new I18n(i18n),
       appBridge: createAppBridge({shopOrigin, apiKey, forceRedirect}),
+      features,
     });
   }
 
   render() {
     const {theme = {logo: null}, children} = this.props;
-    const {intl, appBridge, link} = this.state;
+    const {intl, appBridge, link, features = {}} = this.state;
 
     return (
-      <I18nContext.Provider value={intl}>
-        <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
-          <StickyManagerContext.Provider value={this.stickyManager}>
-            <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
-              <AppBridgeContext.Provider value={appBridge}>
-                <LinkContext.Provider value={link}>
-                  <ThemeProvider theme={theme}>
-                    <MediaQueryProvider>{children}</MediaQueryProvider>
-                  </ThemeProvider>
-                </LinkContext.Provider>
-              </AppBridgeContext.Provider>
-            </UniqueIdFactoryContext.Provider>
-          </StickyManagerContext.Provider>
-        </ScrollLockManagerContext.Provider>
-      </I18nContext.Provider>
+      <FeaturesContext.Provider value={features}>
+        <I18nContext.Provider value={intl}>
+          <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
+            <StickyManagerContext.Provider value={this.stickyManager}>
+              <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
+                <AppBridgeContext.Provider value={appBridge}>
+                  <LinkContext.Provider value={link}>
+                    <ThemeProvider theme={theme}>
+                      <MediaQueryProvider>{children}</MediaQueryProvider>
+                    </ThemeProvider>
+                  </LinkContext.Provider>
+                </AppBridgeContext.Provider>
+              </UniqueIdFactoryContext.Provider>
+            </StickyManagerContext.Provider>
+          </ScrollLockManagerContext.Provider>
+        </I18nContext.Provider>
+      </FeaturesContext.Provider>
     );
   }
 }
