@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Day from '../Day';
+import {Day} from '../Day';
 
 describe('<Day />', () => {
   it('renders a button', () => {

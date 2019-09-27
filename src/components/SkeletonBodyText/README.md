@@ -36,12 +36,12 @@ Show static content that never changes on a page and use skeleton loading for dy
 #### Do
 
 Use skeleton body text for dynamic content.
-![Image showing skeleton body text for dynamic content](https://polaris.shopify.com/public_images/skeleton/do-use-skeleton-body-for-dynamic-content@2x.png)
+![Image showing skeleton body text for dynamic content](/public_images/skeleton/do-use-skeleton-body-for-dynamic-content@2x.png)
 
 #### Don’t
 
 Use skeleton body text for static content or use placeholder content for dynamic content.
-![Image showing skeleton body text for static content](https://polaris.shopify.com/public_images/skeleton/dont-use-skeleton-body-for-static-or-placeholder-for-dynamic-text@2x.png)
+![Image showing skeleton body text for static content](/public_images/skeleton/dont-use-skeleton-body-for-static-or-placeholder-for-dynamic-text@2x.png)
 
 <!-- end -->
 

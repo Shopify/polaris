@@ -78,6 +78,39 @@ describe('<Pagination />', () => {
     });
   });
 
+  describe('accessibilityLabel', () => {
+    it('inserts prop as aria-label', () => {
+      const pagination = mountWithAppProvider(
+        <Pagination accessibilityLabel="test" />,
+      );
+      expect(pagination.find('nav').prop('aria-label')).toStrictEqual('test');
+    });
+
+    it('uses default value for aria-label', () => {
+      const pagination = mountWithAppProvider(<Pagination />);
+      expect(pagination.find('nav').prop('aria-label')).toStrictEqual(
+        'Pagination',
+      );
+    });
+  });
+
+  describe('label', () => {
+    it('renders as text', () => {
+      const pagination = mountWithAppProvider(<Pagination label="test" />);
+      expect(pagination.text()).toContain('test');
+    });
+
+    it('has subdued text without next and previous pages', () => {
+      const pagination = mountWithAppProvider(<Pagination label="test" />);
+      expect(
+        pagination
+          .find('.Label')
+          .children()
+          .prop('variation'),
+      ).toStrictEqual('subdued');
+    });
+  });
+
   it('adds a keypress event for nextKeys', () => {
     const spy = jest.fn();
     mountWithAppProvider(

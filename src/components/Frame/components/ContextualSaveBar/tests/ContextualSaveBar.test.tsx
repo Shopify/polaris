@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Button, Image} from 'components';
-import ContextualSaveBar from '../ContextualSaveBar';
+import {ContextualSaveBar} from '../ContextualSaveBar';
 import {DiscardConfirmationModal} from '../components';
 
 describe('<ContextualSaveBar />', () => {
@@ -139,6 +139,7 @@ describe('<ContextualSaveBar />', () => {
         );
 
         trigger(discardConfirmationModal, 'onDiscard');
+
         expect(discardAction.onAction).toHaveBeenCalled();
       });
 

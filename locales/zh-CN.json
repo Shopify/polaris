@@ -150,7 +150,8 @@
       "ariaLivePlural": "{itemsLength} 件产品",
       "Item": {
         "actionsDropdownLabel": "{accessibilityLabel}的操作",
-        "actionsDropdown": "操作下拉菜单"
+        "actionsDropdown": "操作下拉菜单",
+        "viewItem": "查看 {itemName} 详细信息"
       },
       "BulkActions": {
         "actionsActivatorLabel": "编辑",

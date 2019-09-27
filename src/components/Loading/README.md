@@ -41,20 +41,16 @@ The loading component must be wrapped in the [frame](https://polaris.shopify.com
 Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the loading component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
 
 ```jsx
-class EmbeddedAppLoadingExample extends React.Component {
-  state = {
-    loading: false,
-  };
+function EmbeddedAppLoadingExample() {
+  const [loading] = useState(false);
 
-  render() {
-    const loadingMarkup = this.state.loading && <Loading />;
+  const loadingMarkup = loading && <Loading />;
 
-    return (
-      <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
-        {loadingMarkup}
-      </AppProvider>
-    );
-  }
+  return (
+    <AppProvider apiKey="YOUR_API_KEY" i18n={{}} shopOrigin="YOUR_SHOP_ORIGIN">
+      {loadingMarkup}
+    </AppProvider>
+  );
 }
 ```
 

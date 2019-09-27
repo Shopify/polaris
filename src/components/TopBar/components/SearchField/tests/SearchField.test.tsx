@@ -2,10 +2,7 @@ import React from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-// We've got to export a named SearchField otherwise other stuff breaks
-// Fix once we stop exporting a default
-// eslint-disable-next-line import/no-named-as-default
-import SearchField from '../SearchField';
+import {SearchField} from '../SearchField';
 
 describe('<TextField />', () => {
   it('mounts', () => {

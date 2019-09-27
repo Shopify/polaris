@@ -126,46 +126,43 @@ If the popover includes a series of navigational links, each item should:
 Use when presenting a set of actions in a disclosable menu.
 
 ```jsx
-class PopoverExample extends React.Component {
-  state = {
-    active: true,
-  };
+function PopoverWithActionListExample() {
+  const [popoverActive, setPopoverActive] = useState(true);
 
-  togglePopover = () => {
-    this.setState(({active}) => {
-      return {active: !active};
-    });
-  };
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
 
-  render() {
-    const activator = (
-      <Button onClick={this.togglePopover}>More actions</Button>
-    );
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      More actions
+    </Button>
+  );
 
-    return (
-      <div style={{height: '250px'}}>
-        <Popover
-          active={this.state.active}
-          activator={activator}
-          onClose={this.togglePopover}
-        >
-          <ActionList items={[{content: 'Import'}, {content: 'Export'}]} />
-        </Popover>
-      </div>
-    );
-  }
+  return (
+    <div style={{height: '250px'}}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        onClose={togglePopoverActive}
+      >
+        <ActionList items={[{content: 'Import'}, {content: 'Export'}]} />
+      </Popover>
+    </div>
+  );
 }
 ```
 
 <!-- content-for: android -->
 
-![Popover with action list for Android](https://polaris.shopify.com/public_images/components/Popover/android/action-list@2x.png)
+![Popover with action list for Android](/public_images/components/Popover/android/action-list@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Popover with action list for iOS](https://polaris.shopify.com/public_images/components/Popover/ios/action-list@2x.png)
+![Popover with action list for iOS](/public_images/components/Popover/ios/action-list@2x.png)
 
 <!-- /content-for -->
 
@@ -174,59 +171,56 @@ class PopoverExample extends React.Component {
 Use to present a combination of content, instructions, and actions in a panel for tasks that are of low or secondary importance to the current page. When used this way, popovers provide useful entry points to related features without overwhelming merchants.
 
 ```jsx
-class PopoverContentExample extends React.Component {
-  state = {
-    active: true,
-  };
+function PopoverContentExample() {
+  const [popoverActive, setPopoverActive] = useState(true);
 
-  togglePopover = () => {
-    this.setState(({active}) => {
-      return {active: !active};
-    });
-  };
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
 
-  render() {
-    const activator = (
-      <Button onClick={this.togglePopover}>Sales channels</Button>
-    );
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      Sales channels
+    </Button>
+  );
 
-    return (
-      <div style={{height: '250px'}}>
-        <Popover
-          active={this.state.active}
-          activator={activator}
-          onClose={this.togglePopover}
-        >
-          <Popover.Pane fixed>
-            <Popover.Section>
-              <p>Available sales channels</p>
-            </Popover.Section>
-          </Popover.Pane>
-          <Popover.Pane>
-            <ActionList
-              items={[
-                {content: 'Online store'},
-                {content: 'Facebook'},
-                {content: 'Shopify POS'},
-              ]}
-            />
-          </Popover.Pane>
-        </Popover>
-      </div>
-    );
-  }
+  return (
+    <div style={{height: '250px'}}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        onClose={togglePopoverActive}
+      >
+        <Popover.Pane fixed>
+          <Popover.Section>
+            <p>Available sales channels</p>
+          </Popover.Section>
+        </Popover.Pane>
+        <Popover.Pane>
+          <ActionList
+            items={[
+              {content: 'Online store'},
+              {content: 'Facebook'},
+              {content: 'Shopify POS'},
+            ]}
+          />
+        </Popover.Pane>
+      </Popover>
+    </div>
+  );
 }
 ```
 
 <!-- content-for: android -->
 
-![Popover with content and actions for Android](https://polaris.shopify.com/public_images/components/Popover/android/action-content@2x.png)
+![Popover with content and actions for Android](/public_images/components/Popover/android/action-content@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Popover with content and actions for iOS](https://polaris.shopify.com/public_images/components/Popover/ios/action-content@2x.png)
+![Popover with content and actions for iOS](/public_images/components/Popover/ios/action-content@2x.png)
 
 <!-- /content-for -->
 
@@ -237,55 +231,43 @@ class PopoverContentExample extends React.Component {
 Use to present secondary input tasks on demand.
 
 ```jsx
-class PopoverFormExample extends React.Component {
-  state = {
-    active: true,
-    tagValue: '',
-  };
+function PopoverFormExample() {
+  const [popoverActive, setPopoverActive] = useState(true);
+  const [tagValue, setTagValue] = useState('');
 
-  togglePopover = () => {
-    this.setState(({active}) => {
-      return {active: !active};
-    });
-  };
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
 
-  handleTagChange = (value) => {
-    this.setState({
-      tagValue: value,
-    });
-  };
+  const handleTagValueChange = useCallback((value) => setTagValue(value), []);
 
-  render() {
-    const activator = (
-      <Button onClick={this.togglePopover} disclosure>
-        Filter
-      </Button>
-    );
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      Filter
+    </Button>
+  );
 
-    return (
-      <div style={{height: '280px'}}>
-        <Popover
-          active={this.state.active}
-          activator={activator}
-          onClose={this.togglePopover}
-          sectioned
-        >
-          <FormLayout>
-            <Select
-              label="Show all customers where:"
-              options={['Tagged with']}
-            />
-            <TextField
-              label="Tags"
-              value={this.state.tagValue}
-              onChange={this.handleTagChange}
-            />
-            <Button size="slim">Add filter</Button>
-          </FormLayout>
-        </Popover>
-      </div>
-    );
-  }
+  return (
+    <div style={{height: '280px'}}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        onClose={togglePopoverActive}
+        sectioned
+      >
+        <FormLayout>
+          <Select label="Show all customers where:" options={['Tagged with']} />
+          <TextField
+            label="Tags"
+            value={tagValue}
+            onChange={handleTagValueChange}
+          />
+          <Button size="slim">Add filter</Button>
+        </FormLayout>
+      </Popover>
+    </div>
+  );
 }
 ```
 
@@ -296,13 +278,10 @@ class PopoverFormExample extends React.Component {
 Use to present merchants with a list that dynamically loads more items on scroll or arrow down.
 
 ```jsx
-class PopoverLazyLoadExample extends React.Component {
-  state = {
-    visibleStaffIndex: 5,
-    active: true,
-  };
-
-  staff = [
+function PopoverLazyLoadExample() {
+  const [popoverActive, setPopoverActive] = useState(true);
+  const [visibleStaffIndex, setVisibleStaffIndex] = useState(5);
+  const staff = [
     'Abbey Mayert',
     'Abbi Senger',
     'Abdul Goodwin',
@@ -321,76 +300,73 @@ class PopoverLazyLoadExample extends React.Component {
     'Alex Hernandez',
   ];
 
-  render() {
-    const {active, visibleStaffIndex} = this.state;
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
 
-    const activator = (
-      <Button onClick={this.togglePopover} disclosure>
-        View staff
-      </Button>
-    );
-
-    const staffList = this.staff.slice(0, visibleStaffIndex).map((name) => ({
-      name,
-      initials: this.getInitials(name),
-    }));
-
-    return (
-      <Card sectioned>
-        <div style={{height: '280px'}}>
-          <Popover
-            sectioned
-            active={active}
-            activator={activator}
-            onClose={this.togglePopover}
-          >
-            <Popover.Pane onScrolledToBottom={this.handleScrolledToBottom}>
-              <ResourceList items={staffList} renderItem={this.renderItem} />
-            </Popover.Pane>
-          </Popover>
-        </div>
-      </Card>
-    );
-  }
-
-  handleScrolledToBottom = () => {
-    const {visibleStaffIndex} = this.state;
-    const totalIndexes = this.staff.length;
+  const handleScrolledToBottom = useCallback(() => {
+    const totalIndexes = staff.length;
     const interval =
       visibleStaffIndex + 3 < totalIndexes
         ? 3
         : totalIndexes - visibleStaffIndex;
 
     if (interval > 0) {
-      this.setState({visibleStaffIndex: visibleStaffIndex + interval});
+      setVisibleStaffIndex(visibleStaffIndex + interval);
     }
-  };
+  }, [staff.length, visibleStaffIndex]);
 
-  togglePopover = () => {
-    this.setState(({active}) => {
-      return {active: !active};
-    });
-  };
+  const handleResourceListItemClick = useCallback(() => {}, []);
 
-  renderItem = ({name, initials}) => {
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      View staff
+    </Button>
+  );
+
+  const staffList = staff.slice(0, visibleStaffIndex).map((name) => ({
+    name,
+    initials: getInitials(name),
+  }));
+
+  return (
+    <Card sectioned>
+      <div style={{height: '280px'}}>
+        <Popover
+          sectioned
+          active={popoverActive}
+          activator={activator}
+          onClose={togglePopoverActive}
+        >
+          <Popover.Pane onScrolledToBottom={handleScrolledToBottom}>
+            <ResourceList items={staffList} renderItem={renderItem} />
+          </Popover.Pane>
+        </Popover>
+      </div>
+    </Card>
+  );
+
+  function renderItem({name, initials}) {
     return (
       <ResourceList.Item
         id={name}
         media={<Avatar size="medium" name={name} initials={initials} />}
+        onClick={handleResourceListItemClick}
       >
         {name}
       </ResourceList.Item>
     );
-  };
+  }
 
-  getInitials = (name) => {
+  function getInitials(name) {
     return name
       .split(' ')
       .map((surnameOrFamilyName) => {
         return surnameOrFamilyName.slice(0, 1);
       })
       .join('');
-  };
+  }
 }
 ```
 
@@ -402,7 +378,7 @@ Use when you have few actions that affects the whole page. Action sheets doesnâ€
 
 <!-- content-for: ios -->
 
-![iOS action sheet](https://polaris.shopify.com/public_images/components/Popover/ios/action-sheet@2x.png)
+![iOS action sheet](/public_images/components/Popover/ios/action-sheet@2x.png)
 
 <!-- /content-for -->
 

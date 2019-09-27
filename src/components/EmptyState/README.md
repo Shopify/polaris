@@ -54,15 +54,9 @@ Empty states should:
 
 ### Title
 
-- Descriptive: help merchants understand the feature or product related to the
-  empty state
-- Concise and scannable:
-  - Use simple, clear language that can be read at-a-glance
-  - Keep titles to single sentence and avoid using punctuation such as periods,
-    commas, or semicolons
-  - Written in sentence case (the first word capitalized, the rest lowercase)
-  - Action-oriented: encourage merchants to take the step required to
-    activate the product or feature
+Empty state titles should:
+
+- Be action-oriented: encourage merchants to take the step required to activate the product or feature
 
 <!-- usagelist -->
 
@@ -75,6 +69,8 @@ Empty states should:
 - Orders and invoices
 
 <!-- end -->
+
+- Follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings)
 
 ### Subtitle
 
@@ -165,13 +161,13 @@ Use to explain a single feature before merchants have used it.
 
 <!-- content-for: android -->
 
-![Default empty state](https://polaris.shopify.com/public_images/components/EmptyState/android/default@2x.png)
+![Default empty state](/public_images/components/EmptyState/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default empty state](https://polaris.shopify.com/public_images/components/EmptyState/ios/default@2x.png)
+![Default empty state](/public_images/components/EmptyState/ios/default@2x.png)
 
 <!-- /content-for -->
 

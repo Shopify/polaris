@@ -98,50 +98,46 @@ Toggle values should:
 Use radio buttons where merchants must make a single selection.
 
 ```jsx
-class RadioButtonExample extends React.Component {
-  state = {
-    value: 'disabled',
-  };
+function RadioButtonExample() {
+  const [value, setValue] = useState('disabled');
 
-  handleChange = (checked, newValue) => {
-    this.setState({value: newValue});
-  };
+  const handleChange = useCallback(
+    (_checked, newValue) => setValue(newValue),
+    [],
+  );
 
-  render() {
-    const {value} = this.state;
-    return (
-      <Stack vertical>
-        <RadioButton
-          label="Accounts are disabled"
-          helpText="Customers will only be able to check out as guests."
-          checked={value === 'disabled'}
-          id="disabled"
-          name="accounts"
-          onChange={this.handleChange}
-        />
-        <RadioButton
-          label="Accounts are optional"
-          helpText="Customers will be able to check out with a customer account or as a guest."
-          id="optional"
-          name="accounts"
-          checked={value === 'optional'}
-          onChange={this.handleChange}
-        />
-      </Stack>
-    );
-  }
+  return (
+    <Stack vertical>
+      <RadioButton
+        label="Accounts are disabled"
+        helpText="Customers will only be able to check out as guests."
+        checked={value === 'disabled'}
+        id="disabled"
+        name="accounts"
+        onChange={handleChange}
+      />
+      <RadioButton
+        label="Accounts are optional"
+        helpText="Customers will be able to check out with a customer account or as a guest."
+        id="optional"
+        name="accounts"
+        checked={value === 'optional'}
+        onChange={handleChange}
+      />
+    </Stack>
+  );
 }
 ```
 
 <!-- content-for: android -->
 
-![Default radio button on Android](https://polaris.shopify.com/public_images/components/RadioButton/android/default@2x.png)
+![Default radio button on Android](/public_images/components/RadioButton/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default radio button on iOS](https://polaris.shopify.com/public_images/components/RadioButton/ios/default@2x.png)
+![Default radio button on iOS](/public_images/components/RadioButton/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -153,13 +149,13 @@ Use toggles when merchants need to make a binary choice (on or off).
 
 <!-- content-for: android -->
 
-![Android toggle with on or off options](https://polaris.shopify.com/public_images/components/RadioButton/android/toggle@2x.png)
+![Android toggle with on or off options](/public_images/components/RadioButton/android/toggle@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![iOS toggle with on or off options](https://polaris.shopify.com/public_images/components/RadioButton/ios/toggle@2x.png)
+![iOS toggle with on or off options](/public_images/components/RadioButton/ios/toggle@2x.png)
 
 <!-- /content-for -->
 

@@ -6,6 +6,7 @@ import {useScrollLockManager} from './scroll-lock-manager';
 import {useTheme} from './theme';
 import {useStickyManager} from './sticky-manager';
 import {useAppBridge} from './app-bridge';
+import {useMediaQuery} from './media-query';
 
 export interface WithAppProviderProps {
   polaris: {
@@ -15,6 +16,7 @@ export interface WithAppProviderProps {
     scrollLockManager: ReturnType<typeof useScrollLockManager>;
     stickyManager: ReturnType<typeof useStickyManager>;
     appBridge: ReturnType<typeof useAppBridge>;
+    mediaQuery: ReturnType<typeof useMediaQuery>;
   };
 }
 
@@ -30,6 +32,7 @@ export function withAppProvider<OwnProps>() {
         scrollLockManager: useScrollLockManager(),
         stickyManager: useStickyManager(),
         appBridge: useAppBridge(),
+        mediaQuery: useMediaQuery(),
       };
 
       return <WrappedComponent {...(props as any)} polaris={polaris} />;

@@ -1,13 +1,11 @@
-import React from 'react';
+import React, {useRef, useState, useCallback} from 'react';
 import {Button} from '../../../../../Button';
 import {Popover} from '../../../../../Popover';
 import {Select} from '../../../../../Select';
 import {FormLayout} from '../../../../../FormLayout';
 import {Form} from '../../../../../Form';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../../../../../utilities/with-app-provider';
+import {useForcibleToggle} from '../../../../../../utilities/use-toggle';
+import {useI18n} from '../../../../../../utilities/i18n';
 
 import {FilterValueSelector} from '../FilterValueSelector';
 import {AppliedFilter, Filter, Operator} from '../../types';
@@ -22,191 +20,165 @@ export interface FilterCreatorProps {
   onAddFilter?(newFilter: AppliedFilter): void;
 }
 
-type CombinedProps = FilterCreatorProps & WithAppProviderProps;
+export function FilterCreator({
+  filters,
+  resourceName,
+  disabled,
+  onAddFilter,
+}: FilterCreatorProps) {
+  const [
+    popoverActive,
+    {toggle: togglePopoverActive, forceFalse: setPopoverActiveFalse},
+  ] = useForcibleToggle(false);
+  const [selectedFilter, setSelectedFilter] = useState<Filter>();
+  const [selectedFilterKey, setSelectedFilterKey] = useState<
+    AppliedFilter['key']
+  >();
+  const [selectedFilterValue, setSelectedFilterValue] = useState<
+    AppliedFilter['value']
+  >();
+  const {translate} = useI18n();
+  const node = useRef<HTMLButtonElement>(null);
 
-interface State {
-  popoverActive: boolean;
-  selectedFilter?: Filter;
-  selectedFilterKey?: AppliedFilter['key'];
-  selectedFilterValue?: AppliedFilter['value'];
-}
+  const canAddFilter = Boolean(
+    selectedFilter && selectedFilterKey && selectedFilterValue,
+  );
 
-class FilterCreator extends React.PureComponent<CombinedProps, State> {
-  state: State = {
-    popoverActive: false,
-  };
+  const handleButtonFocus = useCallback(
+    (...args: React.FocusEvent<HTMLButtonElement>[]) => {
+      const event = args[0];
+      if (!node.current && event) {
+        // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/31065
+        (node as any).current = event.target as HTMLButtonElement;
+      }
+    },
+    [],
+  );
+  const handleFilterKeyChange = useCallback(
+    (filterKey: string) => {
+      const foundFilter = filters.find((filter: any) => {
+        const {minKey, maxKey, operatorText} = filter;
 
-  private node: HTMLButtonElement | null = null;
+        if (minKey || maxKey) {
+          return (
+            filter.key === filterKey ||
+            minKey === filterKey ||
+            maxKey === filterKey
+          );
+        }
 
-  private get canAddFilter() {
-    return Boolean(
-      this.state.selectedFilter &&
-        this.state.selectedFilterKey &&
-        this.state.selectedFilterValue,
-    );
-  }
+        if (operatorText && typeof operatorText !== 'string') {
+          return (
+            filter.key === filterKey ||
+            operatorText.filter(({key}: Operator) => key === filterKey)
+              .length === 1
+          );
+        }
 
-  render() {
-    const {
-      filters,
-      resourceName,
-      disabled,
-      polaris: {intl},
-    } = this.props;
+        return filter.key === filterKey;
+      });
 
-    const {
-      popoverActive,
-      selectedFilter,
-      selectedFilterKey,
-      selectedFilterValue,
-    } = this.state;
-
-    const activator = (
-      <Button
-        onClick={this.togglePopover}
-        disclosure
-        testID="FilterCreator-FilterActivator"
-        disabled={disabled}
-        onFocus={this.handleButtonFocus}
-      >
-        {intl.translate('Polaris.ResourceList.FilterCreator.filterButtonLabel')}
-      </Button>
-    );
-
-    const filterOptions = filters.map(({key, label}) => ({
-      value: key,
-      label,
-    }));
-
-    const filterValueSelectionMarkup = selectedFilter ? (
-      <FilterValueSelector
-        filter={selectedFilter}
-        filterKey={selectedFilterKey}
-        value={selectedFilterValue}
-        onFilterKeyChange={this.handleFilterKeyChange}
-        onChange={this.handleFilterValueChange}
-      />
-    ) : null;
-
-    const addFilterButtonMarkup = selectedFilter ? (
-      <Button
-        onClick={this.handleAddFilter}
-        disabled={!this.canAddFilter}
-        testID="FilterCreator-AddFilterButton"
-      >
-        {intl.translate(
-          'Polaris.ResourceList.FilterCreator.addFilterButtonLabel',
-        )}
-      </Button>
-    ) : null;
-
-    return (
-      <Popover
-        active={popoverActive}
-        activator={activator}
-        onClose={this.togglePopover}
-        sectioned
-        fullHeight
-      >
-        <Form onSubmit={this.handleAddFilter}>
-          <FormLayout>
-            <Select
-              label={intl.translate(
-                'Polaris.ResourceList.FilterCreator.showAllWhere',
-                {resourceNamePlural: resourceName.plural.toLocaleLowerCase()},
-              )}
-              placeholder={intl.translate(
-                'Polaris.ResourceList.FilterCreator.selectFilterKeyPlaceholder',
-              )}
-              options={filterOptions}
-              onChange={this.handleFilterKeyChange}
-              value={selectedFilter && selectedFilter.key}
-            />
-            {filterValueSelectionMarkup}
-            {addFilterButtonMarkup}
-          </FormLayout>
-        </Form>
-      </Popover>
-    );
-  }
-
-  private handleButtonFocus = (
-    ...args: React.FocusEvent<HTMLButtonElement>[]
-  ) => {
-    const event = args[0];
-    if (!this.node && event) {
-      this.node = event.target as HTMLButtonElement;
-    }
-  };
-
-  private togglePopover = (): void => {
-    this.setState(({popoverActive}) => ({popoverActive: !popoverActive}));
-  };
-
-  private handleFilterKeyChange = (filterKey: string) => {
-    const {filters} = this.props;
-
-    const foundFilter = filters.find((filter: any) => {
-      const {minKey, maxKey, operatorText} = filter;
-
-      if (minKey || maxKey) {
-        return (
-          filter.key === filterKey ||
-          minKey === filterKey ||
-          maxKey === filterKey
-        );
+      if (!foundFilter) {
+        return;
       }
 
-      if (operatorText && typeof operatorText !== 'string') {
-        return (
-          filter.key === filterKey ||
-          operatorText.filter(({key}: Operator) => key === filterKey).length ===
-            1
-        );
-      }
-
-      return filter.key === filterKey;
-    });
-
-    if (!foundFilter) {
-      return;
-    }
-
-    this.setState({
-      selectedFilter: foundFilter,
-      selectedFilterKey: filterKey,
-      selectedFilterValue: undefined,
-    });
-  };
-
-  private handleFilterValueChange = (filterValue: string) => {
-    this.setState({selectedFilterValue: filterValue});
-  };
-
-  private handleAddFilter = () => {
-    const {onAddFilter} = this.props;
-    const {selectedFilterKey} = this.state;
-
-    if (!onAddFilter || !this.canAddFilter || !selectedFilterKey) {
+      setSelectedFilter(foundFilter);
+      setSelectedFilterKey(filterKey);
+      setSelectedFilterValue(undefined);
+    },
+    [filters],
+  );
+  const handleFilterValueChange = useCallback((value: string) => {
+    setSelectedFilterValue(value);
+  }, []);
+  const handleAddFilter = useCallback(() => {
+    if (!onAddFilter || !canAddFilter || !selectedFilterKey) {
       return;
     }
 
     onAddFilter({
       key: selectedFilterKey,
-      value: this.state.selectedFilterValue || '',
-    });
-    this.setState({
-      popoverActive: false,
-      selectedFilter: undefined,
-      selectedFilterValue: undefined,
+      value: selectedFilterValue || '',
     });
 
-    if (this.node != null) {
-      this.node.focus();
+    setPopoverActiveFalse();
+    setSelectedFilter(undefined);
+    setSelectedFilterValue(undefined);
+
+    if (node.current != null) {
+      node.current.focus();
     }
-  };
-}
+  }, [
+    canAddFilter,
+    onAddFilter,
+    selectedFilterKey,
+    selectedFilterValue,
+    setPopoverActiveFalse,
+  ]);
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<FilterCreatorProps>()(FilterCreator);
+  const activator = (
+    <Button
+      onClick={togglePopoverActive}
+      disclosure
+      testID="FilterCreator-FilterActivator"
+      disabled={disabled}
+      onFocus={handleButtonFocus}
+    >
+      {translate('Polaris.ResourceList.FilterCreator.filterButtonLabel')}
+    </Button>
+  );
+
+  const filterOptions = filters.map(({key, label}) => ({
+    value: key,
+    label,
+  }));
+
+  const filterValueSelectionMarkup = selectedFilter ? (
+    <FilterValueSelector
+      filter={selectedFilter}
+      filterKey={selectedFilterKey}
+      value={selectedFilterValue}
+      onFilterKeyChange={handleFilterKeyChange}
+      onChange={handleFilterValueChange}
+    />
+  ) : null;
+
+  const addFilterButtonMarkup = selectedFilter ? (
+    <Button
+      onClick={handleAddFilter}
+      disabled={!canAddFilter}
+      testID="FilterCreator-AddFilterButton"
+    >
+      {translate('Polaris.ResourceList.FilterCreator.addFilterButtonLabel')}
+    </Button>
+  ) : null;
+
+  return (
+    <Popover
+      active={popoverActive}
+      activator={activator}
+      onClose={togglePopoverActive}
+      sectioned
+      fullHeight
+    >
+      <Form onSubmit={handleAddFilter}>
+        <FormLayout>
+          <Select
+            label={translate(
+              'Polaris.ResourceList.FilterCreator.showAllWhere',
+              {resourceNamePlural: resourceName.plural.toLocaleLowerCase()},
+            )}
+            placeholder={translate(
+              'Polaris.ResourceList.FilterCreator.selectFilterKeyPlaceholder',
+            )}
+            options={filterOptions}
+            onChange={handleFilterKeyChange}
+            value={selectedFilter && selectedFilter.key}
+          />
+          {filterValueSelectionMarkup}
+          {addFilterButtonMarkup}
+        </FormLayout>
+      </Form>
+    </Popover>
+  );
+}

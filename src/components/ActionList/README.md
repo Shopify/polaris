@@ -98,7 +98,9 @@ class ActionListExample extends React.Component {
 
   render() {
     const activator = (
-      <Button onClick={this.togglePopover}>More actions</Button>
+      <Button onClick={this.togglePopover} disclosure>
+        More actions
+      </Button>
     );
 
     return (
@@ -149,7 +151,9 @@ class ActionListExample extends React.Component {
 
   render() {
     const activator = (
-      <Button onClick={this.togglePopover}>More actions</Button>
+      <Button onClick={this.togglePopover} disclosure>
+        More actions
+      </Button>
     );
 
     return (
@@ -190,7 +194,9 @@ class ActionListExample extends React.Component {
 
   render() {
     const activator = (
-      <Button onClick={this.togglePopover}>More actions</Button>
+      <Button onClick={this.togglePopover} disclosure>
+        More actions
+      </Button>
     );
 
     return (
@@ -236,7 +242,9 @@ class ActionListExample extends React.Component {
 
   render() {
     const activator = (
-      <Button onClick={this.togglePopover}>More actions</Button>
+      <Button onClick={this.togglePopover} disclosure>
+        More actions
+      </Button>
     );
 
     return (
@@ -287,7 +295,9 @@ class ActionListExample extends React.Component {
 
   render() {
     const activator = (
-      <Button onClick={this.togglePopover}>More actions</Button>
+      <Button onClick={this.togglePopover} disclosure>
+        More actions
+      </Button>
     );
 
     return (

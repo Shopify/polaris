@@ -35,50 +35,48 @@ The form component should be used to:
 Use onSubmit as a callback for when your form is submitted.
 
 ```jsx
-class FormExample extends React.Component {
-  state = {
-    newsletter: false,
-    email: '',
-  };
+function FormOnSubmitExample() {
+  const [newsletter, setNewsletter] = useState(false);
+  const [email, setEmail] = useState('');
 
-  render() {
-    const {newsletter, email} = this.state;
+  const handleSubmit = useCallback((_event) => {
+    setEmail('');
+    setNewsletter(false);
+  }, []);
 
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <FormLayout>
-          <Checkbox
-            label="Sign up for the Polaris newsletter"
-            checked={newsletter}
-            onChange={this.handleChange('newsletter')}
-          />
+  const handleNewsLetterChange = useCallback(
+    (value) => setNewsletter(value),
+    [],
+  );
 
-          <TextField
-            value={email}
-            onChange={this.handleChange('email')}
-            label="Email"
-            type="email"
-            helpText={
-              <span>
-                We’ll use this email address to inform you on future changes to
-                Polaris.
-              </span>
-            }
-          />
+  const handleEmailChange = useCallback((value) => setEmail(value), []);
 
-          <Button submit>Submit</Button>
-        </FormLayout>
-      </Form>
-    );
-  }
+  return (
+    <Form onSubmit={handleSubmit}>
+      <FormLayout>
+        <Checkbox
+          label="Sign up for the Polaris newsletter"
+          checked={newsletter}
+          onChange={handleNewsLetterChange}
+        />
 
-  handleSubmit = (event) => {
-    this.setState({newsletter: false, email: ''});
-  };
+        <TextField
+          value={email}
+          onChange={handleEmailChange}
+          label="Email"
+          type="email"
+          helpText={
+            <span>
+              We’ll use this email address to inform you on future changes to
+              Polaris.
+            </span>
+          }
+        />
 
-  handleChange = (field) => {
-    return (value) => this.setState({[field]: value});
-  };
+        <Button submit>Submit</Button>
+      </FormLayout>
+    </Form>
+  );
 }
 ```
 
@@ -87,37 +85,27 @@ class FormExample extends React.Component {
 Use in forms to toggle native form validation.
 
 ```jsx
-class FormExample extends React.Component {
-  state = {
-    url: '',
-  };
+function FormWithoutNativeValidationExample() {
+  const [url, setUrl] = useState('');
 
-  render() {
-    const {url} = this.state;
+  const handleSubmit = useCallback((_event) => setUrl(''), []);
 
-    return (
-      <Form noValidate onSubmit={this.handleSubmit}>
-        <FormLayout>
-          <TextField
-            value={url}
-            onChange={this.handleChange('url')}
-            label="App URL"
-            type="url"
-          />
+  const handleUrlChange = useCallback((value) => setUrl(value), []);
 
-          <Button submit>Submit</Button>
-        </FormLayout>
-      </Form>
-    );
-  }
+  return (
+    <Form noValidate onSubmit={handleSubmit}>
+      <FormLayout>
+        <TextField
+          value={url}
+          onChange={handleUrlChange}
+          label="App URL"
+          type="url"
+        />
 
-  handleSubmit = (event) => {
-    this.setState({url: ''});
-  };
-
-  handleChange = (field) => {
-    return (value) => this.setState({[field]: value});
-  };
+        <Button submit>Submit</Button>
+      </FormLayout>
+    </Form>
+  );
 }
 ```
 

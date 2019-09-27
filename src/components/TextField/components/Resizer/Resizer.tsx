@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useEffect, useCallback, useLayoutEffect} from 'react';
 import {EventListener} from '../../../EventListener';
 import styles from '../../TextField.scss';
 
@@ -9,77 +9,77 @@ export interface ResizerProps {
   onHeightChange(height: number): void;
 }
 
-export class Resizer extends React.PureComponent<ResizerProps, never> {
-  private contentNode = React.createRef<HTMLDivElement>();
-  private minimumLinesNode = React.createRef<HTMLDivElement>();
-  private animationFrame: number | null = null;
+export function Resizer({
+  contents,
+  currentHeight: currentHeightProp = null,
+  minimumLines,
+  onHeightChange,
+}: ResizerProps) {
+  const contentNode = useRef<HTMLDivElement>(null);
+  const minimumLinesNode = useRef<HTMLDivElement>(null);
+  const animationFrame = useRef<number>();
+  const currentHeight = useRef<number | null>(currentHeightProp);
 
-  componentDidMount() {
-    this.handleHeightCheck();
+  if (currentHeightProp !== currentHeight.current) {
+    currentHeight.current = currentHeightProp;
   }
 
-  componentDidUpdate() {
-    this.handleHeightCheck();
-  }
+  useEffect(() => {
+    return () => {
+      if (animationFrame.current) {
+        cancelAnimationFrame(animationFrame.current);
+      }
+    };
+  }, []);
 
-  componentWillUnmount() {
-    if (this.animationFrame) {
-      cancelAnimationFrame(this.animationFrame);
-    }
-  }
+  const minimumLinesMarkup = minimumLines ? (
+    <div
+      testID="MinimumLines"
+      ref={minimumLinesNode}
+      className={styles.DummyInput}
+      dangerouslySetInnerHTML={{
+        __html: getContentsForMinimumLines(minimumLines),
+      }}
+    />
+  ) : null;
 
-  render() {
-    const {contents, minimumLines} = this.props;
-
-    const minimumLinesMarkup = minimumLines ? (
-      <div
-        testID="MinimumLines"
-        ref={this.minimumLinesNode}
-        className={styles.DummyInput}
-        dangerouslySetInnerHTML={{
-          __html: getContentsForMinimumLines(minimumLines),
-        }}
-      />
-    ) : null;
-
-    return (
-      <div testID="ResizerWrapper" aria-hidden className={styles.Resizer}>
-        <EventListener event="resize" handler={this.handleHeightCheck} />
-        <div
-          testID="ContentsNode"
-          ref={this.contentNode}
-          className={styles.DummyInput}
-          dangerouslySetInnerHTML={{__html: getFinalContents(contents)}}
-        />
-        {minimumLinesMarkup}
-      </div>
-    );
-  }
-
-  private handleHeightCheck = () => {
-    if (this.animationFrame) {
-      cancelAnimationFrame(this.animationFrame);
+  const handleHeightCheck = useCallback(() => {
+    if (animationFrame.current) {
+      cancelAnimationFrame(animationFrame.current);
     }
 
-    this.animationFrame = requestAnimationFrame(() => {
-      const contentNode = this.contentNode.current;
-      const minimumLinesNode = this.minimumLinesNode.current;
-
-      if (!contentNode || !minimumLinesNode) {
+    animationFrame.current = requestAnimationFrame(() => {
+      if (!contentNode.current || !minimumLinesNode.current) {
         return;
       }
 
       const newHeight = Math.max(
-        contentNode.offsetHeight,
-        minimumLinesNode.offsetHeight,
+        contentNode.current.offsetHeight,
+        minimumLinesNode.current.offsetHeight,
       );
-      const {currentHeight, onHeightChange} = this.props;
 
-      if (newHeight !== currentHeight) {
+      if (newHeight !== currentHeight.current) {
         onHeightChange(newHeight);
       }
     });
-  };
+  }, [onHeightChange]);
+
+  useLayoutEffect(() => {
+    handleHeightCheck();
+  });
+
+  return (
+    <div testID="ResizerWrapper" aria-hidden className={styles.Resizer}>
+      <EventListener event="resize" handler={handleHeightCheck} />
+      <div
+        testID="ContentsNode"
+        ref={contentNode}
+        className={styles.DummyInput}
+        dangerouslySetInnerHTML={{__html: getFinalContents(contents)}}
+      />
+      {minimumLinesMarkup}
+    </div>
+  );
 }
 
 const ENTITIES_TO_REPLACE = {

@@ -13,7 +13,7 @@ export interface UserMenuProps {
   message?: MenuProps['message'];
   /** A string detailing the merchant’s full name to be displayed in the user menu */
   name: string;
-  /** A string allowing further details on the merchant’s name displayed in the user menu */
+  /** A string allowing further detail on the merchant’s name displayed in the user menu */
   detail?: string;
   /** The merchant’s initials, rendered in place of an avatar image when not provided */
   initials: AvatarProps['initials'];

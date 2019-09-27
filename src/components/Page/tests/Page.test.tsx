@@ -20,8 +20,6 @@ window.matchMedia =
     };
   };
 
-const defaultWindowWidth = window.innerWidth;
-
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
   ...require.requireActual('../../../utilities/app-bridge-transformers'),
   generateRedirect: jest.fn((...args) => args),
@@ -57,11 +55,6 @@ describe('<Page />', () => {
 
   afterEach(() => {
     animationFrame.restore();
-    Object.defineProperty(window, 'innerWidth', {
-      configurable: true,
-      writable: true,
-      value: defaultWindowWidth,
-    });
   });
 
   describe('forceRender renders children in page', () => {

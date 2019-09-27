@@ -1,6 +1,5 @@
 import React, {
   useEffect,
-  useCallback,
   useContext,
   useState,
   MouseEvent,
@@ -9,7 +8,6 @@ import React, {
 } from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
@@ -18,6 +16,7 @@ import {IconProps} from '../../../../types';
 import {Indicator} from '../../../Indicator';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';
+import {useMediaQuery} from '../../../../utilities/media-query';
 
 import styles from '../../Navigation.scss';
 
@@ -85,21 +84,15 @@ export function Item({
   excludePaths,
 }: ItemProps) {
   const intl = useI18n();
+  const {isNavigationCollapsed} = useMediaQuery();
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const [expanded, setExpanded] = useState(false);
 
-  const handleResize = useCallback(() => {
-    if (!navigationBarCollapsed().matches && expanded) {
+  useEffect(() => {
+    if (!isNavigationCollapsed && expanded) {
       setExpanded(false);
     }
-  }, [expanded]);
-
-  useEffect(() => {
-    navigationBarCollapsed().addListener(handleResize);
-    return () => {
-      navigationBarCollapsed().removeListener(handleResize);
-    };
-  }, [handleResize]);
+  }, [expanded, isNavigationCollapsed]);
 
   const tabIndex = disabled ? -1 : 0;
 
@@ -281,7 +274,7 @@ export function Item({
       if (
         subNavigationItems &&
         subNavigationItems.length > 0 &&
-        navigationBarCollapsed().matches
+        isNavigationCollapsed
       ) {
         event.preventDefault();
         setExpanded(!expanded);

@@ -94,7 +94,9 @@ Use for text links that are the same color as the surrounding text.
 </Link>
 ```
 
-Monochrome styles will be applied to links rendered within a `Banner`
+### Monochrome link in a banner
+
+Monochrome styles will be applied to links rendered within a `Banner`.
 
 ```jsx
 <Banner>
@@ -105,7 +107,7 @@ Monochrome styles will be applied to links rendered within a `Banner`
 
 ### External link
 
-Use for text links that point to a different website. They will open in a new browser tab or window.
+Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when opening a page in the same tab might disrupt the merchant’s workflow.
 
 ```jsx
 <Link url="https://help.shopify.com/manual" external>
@@ -154,13 +156,27 @@ To provide consistency and clarity:
 <Link>fulfilling orders</Link>
 ```
 
-#### Don’t
+<!-- end -->
+
+<!-- usageblock -->
+
+#### Do
 
 ```jsx
+/* Somewhere in the code: */
+<Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+
+/* Elsewhere in the code: */
 <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
 ```
 
+#### Don’t
+
 ```jsx
+/* Somewhere in the code: */
+<Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+
+/* Elsewhere in the code: */
 <Link url="https://help.shopify.com/manual">order fulfillment section</Link>
 ```
 
@@ -168,7 +184,7 @@ To provide consistency and clarity:
 
 #### External links
 
-The `external` prop adds an icon and a notification that the link opens a new window. Use the `external` prop to make the link open in a new window (or tab, depending on the merchant’s browser settings). Open a page in a new window or tab only when opening a page in the same tab might disrupt the merchant’s workflow.
+The `external` prop adds an icon and a notification that the link opens a new tab. Use the `external` prop to make the link open in a new tab (or window, depending on the merchant’s browser settings). Open a page in a new tab only when opening a page in the same tab might disrupt the merchant’s workflow.
 
 ### Keyboard support
 

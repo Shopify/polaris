@@ -1,5 +1,6 @@
 import React from 'react';
-import {mount} from '@shopify/react-testing';
+import {mount, mountWithApp} from 'test-utilities';
+import {MediaQueryContext, useMediaQuery} from 'utilities/media-query';
 import {PolarisTestProvider} from '../PolarisTestProvider';
 
 describe('PolarisTestProvider', () => {
@@ -21,5 +22,35 @@ describe('PolarisTestProvider', () => {
     );
 
     expect(polarisTestProvider).toContainReactComponent(React.StrictMode);
+  });
+
+  describe('MediaQueryContext', () => {
+    it('contains a MediaQueryContext provider', () => {
+      const polarisTestProvider = mountWithApp(
+        <PolarisTestProvider>
+          <div>Children</div>
+        </PolarisTestProvider>,
+      );
+
+      expect(polarisTestProvider).toContainReactComponent(
+        MediaQueryContext.Provider,
+      );
+    });
+
+    it('allows isNavigationCollapsed to be overwritten', () => {
+      function Component() {
+        const {isNavigationCollapsed} = useMediaQuery();
+        // eslint-disable-next-line shopify/jest/no-if
+        return isNavigationCollapsed ? <div /> : null;
+      }
+
+      const polarisTestProvider = mountWithApp(
+        <PolarisTestProvider mediaQuery={{isNavigationCollapsed: true}}>
+          <Component />
+        </PolarisTestProvider>,
+      );
+
+      expect(polarisTestProvider).toContainReactComponentTimes('div', 1);
+    });
   });
 });
