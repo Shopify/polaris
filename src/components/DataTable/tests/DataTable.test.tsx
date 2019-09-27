@@ -155,6 +155,15 @@ describe('<DataTable />', () => {
 
       totalsCells.forEach((total) => expect(total.text()).toBe(''));
     });
+
+    it('does not render totals in header', () => {
+      const totals = ['', '', ''];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} showTotalsFooter />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(1);
+    });
   });
 
   describe('rows', () => {
