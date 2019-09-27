@@ -85,51 +85,45 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 Use for the least important actions so merchants aren’t distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
 
 ```jsx
-class ActionListExample extends React.Component {
-  state = {
-    active: true,
-  };
+function ActionListInPopoverExample() {
+  const [active, setActive] = useState(true);
 
-  togglePopover = () => {
-    this.setState(({active}) => {
-      return {active: !active};
-    });
-  };
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-  render() {
-    const activator = (
-      <Button onClick={this.togglePopover} disclosure>
-        More actions
-      </Button>
-    );
+  const handleImportedAction = useCallback(
+    () => console.log('Imported action'),
+    [],
+  );
 
-    return (
-      <div style={{height: '250px'}}>
-        <Popover
-          active={this.state.active}
-          activator={activator}
-          onClose={this.togglePopover}
-        >
-          <ActionList
-            items={[
-              {
-                content: 'Import file',
-                onAction: () => {
-                  console.log('File imported');
-                },
-              },
-              {
-                content: 'Export file',
-                onAction: () => {
-                  console.log('File exported');
-                },
-              },
-            ]}
-          />
-        </Popover>
-      </div>
-    );
-  }
+  const handleExportedAction = useCallback(
+    () => console.log('Exported action'),
+    [],
+  );
+
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
+
+  return (
+    <div style={{height: '250px'}}>
+      <Popover active={active} activator={activator} onClose={toggleActive}>
+        <ActionList
+          items={[
+            {
+              content: 'Import file',
+              onAction: handleImportedAction,
+            },
+            {
+              content: 'Export file',
+              onAction: handleExportedAction,
+            },
+          ]}
+        />
+      </Popover>
+    </div>
+  );
 }
 ```
 
@@ -138,41 +132,29 @@ class ActionListExample extends React.Component {
 Use when the items benefit from an associated action or image, such as a list of products.
 
 ```jsx
-class ActionListExample extends React.Component {
-  state = {
-    active: true,
-  };
+function ActionListWithMediaExample() {
+  const [active, setActive] = useState(true);
 
-  togglePopover = () => {
-    this.setState(({active}) => {
-      return {active: !active};
-    });
-  };
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-  render() {
-    const activator = (
-      <Button onClick={this.togglePopover} disclosure>
-        More actions
-      </Button>
-    );
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
 
-    return (
-      <div style={{height: '200px'}}>
-        <Popover
-          active={this.state.active}
-          activator={activator}
-          onClose={this.togglePopover}
-        >
-          <ActionList
-            items={[
-              {content: 'Import file', icon: ImportMinor},
-              {content: 'Export file', icon: ExportMinor},
-            ]}
-          />
-        </Popover>
-      </div>
-    );
-  }
+  return (
+    <div style={{height: '200px'}}>
+      <Popover active={active} activator={activator} onClose={toggleActive}>
+        <ActionList
+          items={[
+            {content: 'Import file', icon: ImportMinor},
+            {content: 'Export file', icon: ExportMinor},
+          ]}
+        />
+      </Popover>
+    </div>
+  );
 }
 ```
 
@@ -181,46 +163,34 @@ class ActionListExample extends React.Component {
 Use when the items benefit from sections to help differentiate actions.
 
 ```jsx
-class ActionListExample extends React.Component {
-  state = {
-    active: true,
-  };
+function SectionedActionListExample() {
+  const [active, setActive] = useState(true);
 
-  togglePopover = () => {
-    this.setState(({active}) => {
-      return {active: !active};
-    });
-  };
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-  render() {
-    const activator = (
-      <Button onClick={this.togglePopover} disclosure>
-        More actions
-      </Button>
-    );
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
 
-    return (
-      <div style={{height: '250px'}}>
-        <Popover
-          active={this.state.active}
-          activator={activator}
-          onClose={this.togglePopover}
-        >
-          <ActionList
-            sections={[
-              {
-                title: 'File options',
-                items: [
-                  {content: 'Import file', icon: ImportMinor},
-                  {content: 'Export file', icon: ExportMinor},
-                ],
-              },
-            ]}
-          />
-        </Popover>
-      </div>
-    );
-  }
+  return (
+    <div style={{height: '250px'}}>
+      <Popover active={active} activator={activator} onClose={toggleActive}>
+        <ActionList
+          sections={[
+            {
+              title: 'File options',
+              items: [
+                {content: 'Import file', icon: ImportMinor},
+                {content: 'Export file', icon: ExportMinor},
+              ],
+            },
+          ]}
+        />
+      </Popover>
+    </div>
+  );
 }
 ```
 
@@ -229,51 +199,39 @@ class ActionListExample extends React.Component {
 Use to visually indicate that an action list item is destructive.
 
 ```jsx
-class ActionListExample extends React.Component {
-  state = {
-    active: true,
-  };
+function ActionListWithDestructiveItemExample() {
+  const [active, setActive] = useState(true);
 
-  togglePopover = () => {
-    this.setState(({active}) => {
-      return {active: !active};
-    });
-  };
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-  render() {
-    const activator = (
-      <Button onClick={this.togglePopover} disclosure>
-        More actions
-      </Button>
-    );
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
 
-    return (
-      <div style={{height: '250px'}}>
-        <Popover
-          active={this.state.active}
-          activator={activator}
-          onClose={this.togglePopover}
-        >
-          <ActionList
-            sections={[
-              {
-                title: 'File options',
-                items: [
-                  {content: 'Import file', icon: ImportMinor},
-                  {content: 'Export file', icon: ExportMinor},
-                  {
-                    destructive: true,
-                    content: 'Delete file',
-                    icon: DeleteMinor,
-                  },
-                ],
-              },
-            ]}
-          />
-        </Popover>
-      </div>
-    );
-  }
+  return (
+    <div style={{height: '250px'}}>
+      <Popover active={active} activator={activator} onClose={toggleActive}>
+        <ActionList
+          sections={[
+            {
+              title: 'File options',
+              items: [
+                {content: 'Import file', icon: ImportMinor},
+                {content: 'Export file', icon: ExportMinor},
+                {
+                  destructive: true,
+                  content: 'Delete file',
+                  icon: DeleteMinor,
+                },
+              ],
+            },
+          ]}
+        />
+      </Popover>
+    </div>
+  );
 }
 ```
 
@@ -282,51 +240,39 @@ class ActionListExample extends React.Component {
 Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
 
 ```jsx
-class ActionListExample extends React.Component {
-  state = {
-    active: true,
-  };
+function ActionListWithHelpTextExample() {
+  const [active, setActive] = useState(true);
 
-  togglePopover = () => {
-    this.setState(({active}) => {
-      return {active: !active};
-    });
-  };
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-  render() {
-    const activator = (
-      <Button onClick={this.togglePopover} disclosure>
-        More actions
-      </Button>
-    );
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
 
-    return (
-      <div style={{height: '250px'}}>
-        <Popover
-          active={this.state.active}
-          activator={activator}
-          onClose={this.togglePopover}
-        >
-          <ActionList
-            sections={[
-              {
-                items: [
-                  {
-                    content: 'Blog posts',
-                    helpText: 'Manage your blog articles',
-                  },
-                  {
-                    content: 'Blogs',
-                    helpText: 'Manage blogs published to your Online Store',
-                  },
-                ],
-              },
-            ]}
-          />
-        </Popover>
-      </div>
-    );
-  }
+  return (
+    <div style={{height: '250px'}}>
+      <Popover active={active} activator={activator} onClose={toggleActive}>
+        <ActionList
+          sections={[
+            {
+              items: [
+                {
+                  content: 'Blog posts',
+                  helpText: 'Manage your blog articles',
+                },
+                {
+                  content: 'Blogs',
+                  helpText: 'Manage blogs published to your Online Store',
+                },
+              ],
+            },
+          ]}
+        />
+      </Popover>
+    </div>
+  );
 }
 ```
 

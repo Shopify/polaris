@@ -145,7 +145,7 @@ class Tab extends React.PureComponent<CombinedProps, never> {
 function focusPanelID(panelID: string) {
   const panel = document.getElementById(panelID);
   if (panel) {
-    panel.focus();
+    panel.focus({preventScroll: true});
   }
 }
 
