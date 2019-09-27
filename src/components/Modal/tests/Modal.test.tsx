@@ -6,7 +6,7 @@ import {
   mountWithAppProvider,
   trigger,
 } from 'test-utilities/legacy';
-import {Badge, Spinner, Portal, Scrollable} from 'components';
+import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
 import {Footer, Dialog} from '../components';
 import Modal from '../Modal';
 
@@ -510,6 +510,28 @@ describe('<Modal>', () => {
 
       modal.unmount();
       expect(appBridgeModalMock.unsubscribe).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('activator', () => {
+    it('renders the element that is passed in', () => {
+      const modal = mountWithAppProvider(
+        <Modal onClose={noop} open={false} activator={<Button />} />,
+      );
+
+      expect(modal.find(Button).exists()).toBe(true);
+    });
+
+    it('focuses the activator when the modal is closed', () => {
+      const modal = mountWithAppProvider(
+        <Modal onClose={noop} open instant activator={<Button />} />,
+      );
+
+      modal.setProps({open: false});
+
+      requestAnimationFrame(() => {
+        expect(document.activeElement).toBe(modal.find(Button).getDOMNode());
+      });
     });
   });
 });
