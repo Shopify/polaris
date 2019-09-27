@@ -118,7 +118,13 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   }
 
   render() {
-    const {headings, totals, showTotalsFooter, rows, footerContent} = this.props;
+    const {
+      headings,
+      totals,
+      showTotalsFooter,
+      rows,
+      footerContent,
+    } = this.props;
     const {
       condensed,
       columnVisibilityData,
