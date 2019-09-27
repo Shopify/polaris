@@ -17,7 +17,7 @@ import {
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
-import {Settings, SettingsContext} from '../../utilities/settings';
+import {Features, FeaturesContext} from '../../utilities/features';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -28,7 +28,7 @@ interface State {
   intl: I18n;
   appBridge: ReturnType<typeof createAppBridge>;
   link: LinkLikeComponent | undefined;
-  settings?: Settings;
+  features?: Features;
 }
 
 export interface AppProviderProps extends AppBridgeOptions {
@@ -38,8 +38,8 @@ export interface AppProviderProps extends AppBridgeOptions {
   linkComponent?: LinkLikeComponent;
   /** Custom logos and colors provided to select components */
   theme?: Theme;
-  /** For toggling settings */
-  settings?: Settings;
+  /** For toggling features */
+  features?: Features;
   /** Inner content of the application */
   children?: React.ReactNode;
 }
@@ -61,7 +61,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
       shopOrigin,
       forceRedirect,
       linkComponent,
-      settings,
+      features,
     } = this.props;
 
     // eslint-disable-next-line react/state-in-constructor
@@ -69,7 +69,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
       link: linkComponent,
       intl: new I18n(i18n),
       appBridge: createAppBridge({shopOrigin, apiKey, forceRedirect}),
-      settings,
+      features,
     };
   }
 
@@ -85,7 +85,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
     apiKey: prevApiKey,
     shopOrigin: prevShopOrigin,
     forceRedirect: prevForceRedirect,
-    settings: prevSettings,
+    features: prevFeatures,
   }: AppProviderProps) {
     const {
       i18n,
@@ -93,7 +93,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
       apiKey,
       shopOrigin,
       forceRedirect,
-      settings,
+      features,
     } = this.props;
 
     if (
@@ -102,7 +102,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
       apiKey === prevApiKey &&
       shopOrigin === prevShopOrigin &&
       forceRedirect === prevForceRedirect &&
-      settings === prevSettings
+      features === prevFeatures
     ) {
       return;
     }
@@ -112,16 +112,16 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
       link: linkComponent,
       intl: new I18n(i18n),
       appBridge: createAppBridge({shopOrigin, apiKey, forceRedirect}),
-      settings,
+      features,
     });
   }
 
   render() {
     const {theme = {logo: null}, children} = this.props;
-    const {intl, appBridge, link, settings} = this.state;
+    const {intl, appBridge, link, features = {}} = this.state;
 
     return (
-      <SettingsContext.Provider value={settings}>
+      <FeaturesContext.Provider value={features}>
         <I18nContext.Provider value={intl}>
           <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
             <StickyManagerContext.Provider value={this.stickyManager}>
@@ -137,7 +137,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
             </StickyManagerContext.Provider>
           </ScrollLockManagerContext.Provider>
         </I18nContext.Provider>
-      </SettingsContext.Provider>
+      </FeaturesContext.Provider>
     );
   }
 }

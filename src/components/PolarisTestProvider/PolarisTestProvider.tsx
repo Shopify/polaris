@@ -14,7 +14,7 @@ import {
 import {AppBridgeContext, AppBridgeOptions} from '../../utilities/app-bridge';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
-import {Settings, SettingsContext} from '../../utilities/settings';
+import {Features, FeaturesContext} from '../../utilities/features';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -40,7 +40,7 @@ export type WithPolarisTestProviderOptions = {
   mediaQuery?: Partial<MediaQueryContextType>;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
-  settings?: Settings;
+  features?: Features;
 };
 
 export interface PolarisTestProviderProps
@@ -62,7 +62,7 @@ export function PolarisTestProvider({
   theme,
   frame,
   mediaQuery,
-  settings,
+  features,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
 
@@ -86,7 +86,7 @@ export function PolarisTestProvider({
 
   return (
     <Wrapper>
-      <SettingsContext.Provider value={settings}>
+      <FeaturesContext.Provider value={features}>
         <I18nContext.Provider value={intl}>
           <ScrollLockManagerContext.Provider value={scrollLockManager}>
             <StickyManagerContext.Provider value={stickyManager}>
@@ -106,7 +106,7 @@ export function PolarisTestProvider({
             </StickyManagerContext.Provider>
           </ScrollLockManagerContext.Provider>
         </I18nContext.Provider>
-      </SettingsContext.Provider>
+      </FeaturesContext.Provider>
     </Wrapper>
   );
 }

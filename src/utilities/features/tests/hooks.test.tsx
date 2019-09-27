@@ -1,18 +1,18 @@
 import React from 'react';
 import {mountWithApp} from 'test-utilities';
-import {useSettings} from '../hooks';
+import {useFeatures} from '../hooks';
 
 function Component() {
-  const settings = useSettings();
-  const featureFoo = settings != null ? settings.featureFoo : false;
+  const features = useFeatures();
+  const {foo} = features;
 
-  return featureFoo ? <div /> : null;
+  return foo ? <div /> : null;
 }
 
-describe('useSettings', () => {
+describe('useFeatures', () => {
   it('returns context', () => {
     const component = mountWithApp(<Component />, {
-      settings: {featureFoo: true},
+      features: {foo: true},
     });
     expect(component).toContainReactComponent('div');
   });

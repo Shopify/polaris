@@ -1,3 +1,3 @@
-export interface Settings {
+export interface Features {
   [key: string]: boolean;
 }
