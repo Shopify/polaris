@@ -66,216 +66,185 @@ The sheet component is best used in cases where the merchant needs to see elemen
 Use as the default option for a sheet.
 
 ```jsx
-class SheetExample extends React.Component {
-  state = {
-    sheetActive: true,
-    title: 'Big yellow socks',
-    description:
-      "They're big, yellow socks. What more could you possibly want from socks? These socks will change your life.\n\nThey're made from light, hand-loomed cotton that's so soft, you'll feel like you are walking on a cloud.",
-    salesChannels: [
-      {value: 'onlineStore', label: 'Online Store'},
-      {value: 'facebook', label: 'Facebook'},
-      {value: 'googleShopping', label: 'Google shopping'},
-      {value: 'facebookMarketing', label: 'Facebook Marketing'},
-    ],
-    selected: [],
+function SheetExample() {
+  const [sheetActive, setSheetActive] = useState(true);
+  const [title, setTitle] = useState('Big yellow socks');
+  const [description, setDescription] = useState(
+    "They're big, yellow socks. What more could you possibly want from socks? These socks will change your life.\n\nThey're made from light, hand-loomed cotton that's so soft, you'll feel like you are walking on a cloud.",
+  );
+  const [salesChannels, setSalesChannels] = useState([
+    {value: 'onlineStore', label: 'Online Store'},
+    {value: 'facebook', label: 'Facebook'},
+    {value: 'googleShopping', label: 'Google shopping'},
+    {value: 'facebookMarketing', label: 'Facebook Marketing'},
+  ]);
+  const [selected, setSelected] = useState([]);
+
+  const toggleSheetActive = useCallback(
+    () => setSheetActive((sheetActive) => !sheetActive),
+    [],
+  );
+  const handleSelectedChange = useCallback((value) => setSelected(value), []);
+  const handleTitleChange = useCallback((value) => setTitle(value), []);
+  const handleDescriptionChange = useCallback(
+    (value) => setDescription(value),
+    [],
+  );
+
+  const selectedSalesChannels = selected.map((key) => {
+    return salesChannels.reduce((accumulator, current) => {
+      accumulator[current.value] = current.label;
+      return accumulator;
+    }, {})[key];
+  });
+  const hasSelectedSalesChannels = selectedSalesChannels.length > 0;
+
+  const theme = {
+    colors: {
+      topBar: {
+        background: '#357997',
+      },
+    },
+    logo: {
+      width: 124,
+      topBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      contextualSaveBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      url: 'http://jadedpixel.com',
+      accessibilityLabel: 'Jaded Pixel',
+    },
   };
 
-  render() {
-    const {
-      state: {sheetActive, title, description, salesChannels, selected},
-      handleCloseSheet,
-      handleOpenSheet,
-      handleChange,
-      handleToggleSheet,
-      hasSelectedSalesChannels,
-      selectedSalesChannels,
-    } = this;
+  const salesChannelsCardMarkup = hasSelectedSalesChannels ? (
+    <List>
+      {selectedSalesChannels.map((channel, index) => (
+        <List.Item key={index}>{channel}</List.Item>
+      ))}
+    </List>
+  ) : (
+    <div
+      style={{
+        alignItems: 'center',
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '100%',
+      }}
+    >
+      <p>No sales channels selected</p>
+      <Button onClick={toggleSheetActive}>Manage sales channels</Button>
+    </div>
+  );
 
-    const theme = {
-      colors: {
-        topBar: {
-          background: '#357997',
+  const salesChannelAction = hasSelectedSalesChannels
+    ? [
+        {
+          onAction: toggleSheetActive,
+          content: 'Manage sales channels',
         },
-      },
-      logo: {
-        width: 124,
-        topBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-        contextualSaveBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-        url: 'http://jadedpixel.com',
-        accessibilityLabel: 'Jaded Pixel',
-      },
-    };
+      ]
+    : null;
 
-    const salesChannelsCardMarkup = hasSelectedSalesChannels ? (
-      <List>
-        {selectedSalesChannels.map((channel, index) => (
-          <List.Item key={index}>{channel}</List.Item>
-        ))}
-      </List>
-    ) : (
-      <div
-        style={{
-          alignItems: 'center',
-          display: 'flex',
-          justifyContent: 'space-between',
-          width: '100%',
+  return (
+    <div style={{maxHeight: '640px', overflow: 'visible'}}>
+      <AppProvider
+        theme={theme}
+        i18n={{
+          Polaris: {
+            Frame: {
+              skipToContent: 'Skip to content',
+            },
+            TextField: {
+              characterCount: '{count} characters',
+            },
+          },
         }}
       >
-        <p>No sales channels selected</p>
-        <Button onClick={handleToggleSheet}>Manage sales channels</Button>
-      </div>
-    );
-
-    const salesChannelAction = hasSelectedSalesChannels
-      ? [
-          {
-            onAction: handleOpenSheet,
-            content: 'Manage sales channels',
-          },
-        ]
-      : null;
-
-    return (
-      <div style={{maxHeight: '640px', overflow: 'visible'}}>
-        <AppProvider
-          theme={theme}
-          i18n={{
-            Polaris: {
-              Frame: {
-                skipToContent: 'Skip to content',
-              },
-              TextField: {
-                characterCount: '{count} characters',
-              },
-            },
-          }}
-        >
-          <Frame topBar={<TopBar />}>
-            <Page narrowWidth title="Big yellow socks">
-              <Card sectioned>
-                <FormLayout>
-                  <TextField
-                    label="Title"
-                    onChange={handleChange('title')}
-                    value={title}
-                    readOnly
-                  />
-                  <TextField
-                    label="Description"
-                    onChange={handleChange('description')}
-                    value={description}
-                    multiline
-                  />
-                </FormLayout>
-              </Card>
-              <Card
-                sectioned
-                subdued
-                title="Product availability"
-                actions={salesChannelAction}
+        <Frame topBar={<TopBar />}>
+          <Page narrowWidth title="Big yellow socks">
+            <Card sectioned>
+              <FormLayout>
+                <TextField
+                  label="Title"
+                  onChange={handleTitleChange}
+                  value={title}
+                  readOnly
+                />
+                <TextField
+                  label="Description"
+                  onChange={handleDescriptionChange}
+                  value={description}
+                  multiline
+                />
+              </FormLayout>
+            </Card>
+            <Card
+              sectioned
+              subdued
+              title="Product availability"
+              actions={salesChannelAction}
+            >
+              {salesChannelsCardMarkup}
+            </Card>
+            <Sheet open={sheetActive} onClose={toggleSheetActive}>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
+                }}
               >
-                {salesChannelsCardMarkup}
-              </Card>
-              <Sheet open={sheetActive} onClose={handleCloseSheet}>
                 <div
                   style={{
+                    alignItems: 'center',
+                    borderBottom: '1px solid #DFE3E8',
                     display: 'flex',
-                    flexDirection: 'column',
-                    height: '100%',
+                    justifyContent: 'space-between',
+                    padding: '1.6rem',
+                    width: '100%',
                   }}
                 >
-                  <div
-                    style={{
-                      alignItems: 'center',
-                      borderBottom: '1px solid #DFE3E8',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      padding: '1.6rem',
-                      width: '100%',
-                    }}
-                  >
-                    <Heading>Manage sales channels</Heading>
-                    <Button
-                      accessibilityLabel="Cancel"
-                      icon={MobileCancelMajorMonotone}
-                      onClick={handleCloseSheet}
-                      plain
-                    />
-                  </div>
-                  <Scrollable style={{padding: '1.6rem', height: '100%'}}>
-                    <ChoiceList
-                      title="Select a sales channel"
-                      name="salesChannelsList"
-                      choices={salesChannels}
-                      selected={selected}
-                      titleHidden
-                      allowMultiple
-                      onChange={handleChange('selected')}
-                    />
-                  </Scrollable>
-                  <div
-                    style={{
-                      alignItems: 'center',
-                      borderTop: '1px solid #DFE3E8',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      padding: '1.6rem',
-                      width: '100%',
-                    }}
-                  >
-                    <Button onClick={handleCloseSheet}>Cancel</Button>
-                    <Button primary onClick={handleCloseSheet}>
-                      Done
-                    </Button>
-                  </div>
+                  <Heading>Manage sales channels</Heading>
+                  <Button
+                    accessibilityLabel="Cancel"
+                    icon={MobileCancelMajorMonotone}
+                    onClick={toggleSheetActive}
+                    plain
+                  />
                 </div>
-              </Sheet>
-            </Page>
-          </Frame>
-        </AppProvider>
-      </div>
-    );
-  }
-
-  handleOpenSheet = () => {
-    this.setState({sheetActive: true});
-  };
-
-  handleCloseSheet = () => {
-    this.setState({sheetActive: false});
-  };
-
-  handleToggleSheet = () => {
-    const {
-      state: {sheetActive},
-      handleCloseSheet,
-      handleOpenSheet,
-    } = this;
-
-    sheetActive ? handleCloseSheet() : handleOpenSheet();
-  };
-
-  handleChange = (field) => {
-    return (value) => this.setState({[field]: value});
-  };
-
-  get hasSelectedSalesChannels() {
-    return this.selectedSalesChannels.length > 0;
-  }
-
-  get selectedSalesChannels() {
-    const {salesChannels, selected} = this.state;
-
-    return selected.map((key) => {
-      return salesChannels.reduce((accumulator, current) => {
-        accumulator[current.value] = current.label;
-        return accumulator;
-      }, {})[key];
-    });
-  }
+                <Scrollable style={{padding: '1.6rem', height: '100%'}}>
+                  <ChoiceList
+                    title="Select a sales channel"
+                    name="salesChannelsList"
+                    choices={salesChannels}
+                    selected={selected}
+                    titleHidden
+                    allowMultiple
+                    onChange={handleSelectedChange}
+                  />
+                </Scrollable>
+                <div
+                  style={{
+                    alignItems: 'center',
+                    borderTop: '1px solid #DFE3E8',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    padding: '1.6rem',
+                    width: '100%',
+                  }}
+                >
+                  <Button onClick={toggleSheetActive}>Cancel</Button>
+                  <Button primary onClick={toggleSheetActive}>
+                    Done
+                  </Button>
+                </div>
+              </div>
+            </Sheet>
+          </Page>
+        </Frame>
+      </AppProvider>
+    </div>
+  );
 }
 ```
 

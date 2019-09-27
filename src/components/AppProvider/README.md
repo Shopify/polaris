@@ -158,47 +158,45 @@ With an `i18n`, `AppProvider` will provide these translations to polaris compone
 With a `linkComponent`, the app provider component will override the links used in other components. For example you may want to use the `Link` component provided by `react-router` throughout your application instead of the default `a` tag.
 
 ```jsx
-class ProviderLinkExample extends React.Component {
-  render() {
-    const CustomLinkComponent = ({children, url, ...rest}) => {
-      return (
-        <a
-          href={url}
-          onClick={() => console.log('Custom link clicked')}
-          {...rest}
-        >
-          {children}
-        </a>
-      );
-    };
-
+function AppProviderLinkExample() {
+  const CustomLinkComponent = ({children, url, ...rest}) => {
     return (
-      <AppProvider
-        linkComponent={CustomLinkComponent}
-        i18n={{
-          Polaris: {
-            Page: {
-              Header: {
-                rollupButton: 'Actions',
-              },
+      <a
+        href={url}
+        onClick={() => console.log('Custom link clicked')}
+        {...rest}
+      >
+        {children}
+      </a>
+    );
+  };
+
+  return (
+    <AppProvider
+      linkComponent={CustomLinkComponent}
+      i18n={{
+        Polaris: {
+          Page: {
+            Header: {
+              rollupButton: 'Actions',
             },
           },
-        }}
+        },
+      }}
+    >
+      <Page
+        breadcrumbs={[{content: 'Products', url: '#'}]}
+        title="Jar With Lock-Lid"
+        primaryAction={{content: 'Save', disabled: true}}
+        secondaryActions={[
+          {content: 'Duplicate', url: '#'},
+          {content: 'View on your store', url: '#'},
+        ]}
       >
-        <Page
-          breadcrumbs={[{content: 'Products', url: '#'}]}
-          title="Jar With Lock-Lid"
-          primaryAction={{content: 'Save', disabled: true}}
-          secondaryActions={[
-            {content: 'Duplicate', url: '#'},
-            {content: 'View on your store', url: '#'},
-          ]}
-        >
-          <p>Page content</p>
-        </Page>
-      </AppProvider>
-    );
-  }
+        <p>Page content</p>
+      </Page>
+    </AppProvider>
+  );
 }
 ```
 
@@ -207,114 +205,108 @@ class ProviderLinkExample extends React.Component {
 With a `theme`, the app provider component will set light, dark, and text colors for the [top bar](https://polaris.shopify.com/components/structure/top-bar) component when given a `background` color, as well as a logo for the top bar and [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) components.
 
 ```jsx
-class ProviderThemeExample extends React.Component {
-  state = {
-    isDirty: false,
-    searchFieldValue: '',
+function AppProviderThemeExample() {
+  const [isDirty, setIsDirty] = useState(false);
+  const [searchFieldValue, setSearchFieldValue] = useState('');
+
+  const handleSearchChange = useCallback(
+    (searchFieldValue) => setSearchFieldValue(searchFieldValue),
+    [],
+  );
+
+  const toggleIsDirty = useCallback(
+    () => setIsDirty((isDirty) => !isDirty),
+    [],
+  );
+
+  const theme = {
+    colors: {
+      topBar: {
+        background: '#357997',
+      },
+    },
+    logo: {
+      width: 124,
+      topBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      url: 'http://jadedpixel.com',
+      accessibilityLabel: 'Jaded Pixel',
+      contextualSaveBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+    },
   };
 
-  render() {
-    const {isDirty, searchFieldValue} = this.state;
+  const searchFieldMarkup = (
+    <TopBar.SearchField
+      placeholder="Search"
+      value={searchFieldValue}
+      onChange={handleSearchChange}
+    />
+  );
 
-    const theme = {
-      colors: {
-        topBar: {
-          background: '#357997',
-        },
-      },
-      logo: {
-        width: 124,
-        topBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-        url: 'http://jadedpixel.com',
-        accessibilityLabel: 'Jaded Pixel',
-        contextualSaveBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      },
-    };
+  const topBarMarkup = <TopBar searchField={searchFieldMarkup} />;
 
-    const searchFieldMarkup = (
-      <TopBar.SearchField
-        placeholder="Search"
-        value={searchFieldValue}
-        onChange={this.handleSearchChange}
-      />
-    );
+  const contentStatus = isDirty ? 'Disable' : 'Enable';
+  const textStatus = isDirty ? 'enabled' : 'disabled';
 
-    const topBarMarkup = <TopBar searchField={searchFieldMarkup} />;
+  const pageMarkup = (
+    <Page title="Account">
+      <Layout>
+        <Layout.Section>
+          <SettingToggle
+            action={{
+              content: contentStatus,
+              onAction: toggleIsDirty,
+            }}
+            enabled={isDirty}
+          >
+            This setting is{' '}
+            <TextStyle variation="strong">{textStatus}</TextStyle>.
+          </SettingToggle>
+        </Layout.Section>
+      </Layout>
+    </Page>
+  );
 
-    const contentStatus = isDirty ? 'Disable' : 'Enable';
-    const textStatus = isDirty ? 'enabled' : 'disabled';
+  const contextualSaveBarMarkup = isDirty ? (
+    <ContextualSaveBar
+      message="Unsaved changes"
+      saveAction={{
+        onAction: toggleIsDirty,
+      }}
+      discardAction={{
+        onAction: toggleIsDirty,
+      }}
+    />
+  ) : null;
 
-    const pageMarkup = (
-      <Page title="Account">
-        <Layout>
-          <Layout.Section>
-            <SettingToggle
-              action={{
-                content: contentStatus,
-                onAction: this.toggleState('isDirty'),
-              }}
-              enabled={isDirty}
-            >
-              This setting is{' '}
-              <TextStyle variation="strong">{textStatus}</TextStyle>.
-            </SettingToggle>
-          </Layout.Section>
-        </Layout>
-      </Page>
-    );
-
-    const contextualSaveBarMarkup = isDirty ? (
-      <ContextualSaveBar
-        message="Unsaved changes"
-        saveAction={{
-          onAction: this.toggleState('isDirty'),
-        }}
-        discardAction={{
-          onAction: this.toggleState('isDirty'),
-        }}
-      />
-    ) : null;
-
-    return (
-      <div style={{height: '250px'}}>
-        <AppProvider
-          theme={theme}
-          i18n={{
-            Polaris: {
-              Frame: {skipToContent: 'Skip to content'},
-              ContextualSaveBar: {
-                save: 'Save',
-                discard: 'Discard',
-              },
-              TopBar: {
-                SearchField: {
-                  clearButtonLabel: 'Clear',
-                  search: 'Search',
-                },
+  return (
+    <div style={{height: '250px'}}>
+      <AppProvider
+        theme={theme}
+        i18n={{
+          Polaris: {
+            Frame: {skipToContent: 'Skip to content'},
+            ContextualSaveBar: {
+              save: 'Save',
+              discard: 'Discard',
+            },
+            TopBar: {
+              SearchField: {
+                clearButtonLabel: 'Clear',
+                search: 'Search',
               },
             },
-          }}
-        >
-          <Frame topBar={topBarMarkup}>
-            {contextualSaveBarMarkup}
-            {pageMarkup}
-          </Frame>
-        </AppProvider>
-      </div>
-    );
-  }
-
-  handleSearchChange = (searchFieldValue) => {
-    this.setState({searchFieldValue});
-  };
-
-  toggleState = (key) => {
-    return () => {
-      this.setState((prevState) => ({[key]: !prevState[key]}));
-    };
-  };
+          },
+        }}
+      >
+        <Frame topBar={topBarMarkup}>
+          {contextualSaveBarMarkup}
+          {pageMarkup}
+        </Frame>
+      </AppProvider>
+    </div>
+  );
 }
 ```
 
@@ -323,118 +315,112 @@ class ProviderThemeExample extends React.Component {
 Provide specific keys and corresponding colors to the [top bar](https://polaris.shopify.com/components/structure/top-bar) component theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
 
 ```jsx
-class ProviderThemeExample extends React.Component {
-  state = {
-    isDirty: false,
-    searchFieldValue: '',
+function AppProviderWithAllThemeKeysExample() {
+  const [isDirty, setIsDirty] = useState(false);
+  const [searchFieldValue, setSearchFieldValue] = useState('');
+
+  const handleSearchChange = useCallback(
+    (searchFieldValue) => setSearchFieldValue(searchFieldValue),
+    [],
+  );
+
+  const toggleIsDirty = useCallback(
+    () => setIsDirty((isDirty) => !isDirty),
+    [],
+  );
+
+  const theme = {
+    colors: {
+      topBar: {
+        background: '#357997',
+        backgroundLighter: '#6192a9',
+        color: '#FFFFFF',
+      },
+    },
+    logo: {
+      width: 124,
+      topBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      url: 'http://jadedpixel.com',
+      accessibilityLabel: 'Jaded Pixel',
+      contextualSaveBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+    },
   };
 
-  render() {
-    const {isDirty, searchFieldValue} = this.state;
+  const searchFieldMarkup = (
+    <TopBar.SearchField
+      placeholder="Search"
+      value={searchFieldValue}
+      onChange={handleSearchChange}
+    />
+  );
 
-    const theme = {
-      colors: {
-        topBar: {
-          background: '#357997',
-          backgroundLighter: '#6192a9',
-          color: '#FFFFFF',
-        },
-      },
-      logo: {
-        width: 124,
-        topBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-        url: 'http://jadedpixel.com',
-        accessibilityLabel: 'Jaded Pixel',
-        contextualSaveBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      },
-    };
+  const topBarMarkup = <TopBar searchField={searchFieldMarkup} />;
 
-    const searchFieldMarkup = (
-      <TopBar.SearchField
-        placeholder="Search"
-        value={searchFieldValue}
-        onChange={this.handleSearchChange}
-      />
-    );
+  const contentStatus = isDirty ? 'Disable' : 'Enable';
+  const textStatus = isDirty ? 'enabled' : 'disabled';
 
-    const topBarMarkup = <TopBar searchField={searchFieldMarkup} />;
+  const pageMarkup = (
+    <Page title="Account">
+      <Layout>
+        <Layout.Section>
+          <SettingToggle
+            action={{
+              content: contentStatus,
+              onAction: toggleIsDirty,
+            }}
+            enabled={isDirty}
+          >
+            This setting is{' '}
+            <TextStyle variation="strong">{textStatus}</TextStyle>.
+          </SettingToggle>
+        </Layout.Section>
+      </Layout>
+    </Page>
+  );
 
-    const contentStatus = isDirty ? 'Disable' : 'Enable';
-    const textStatus = isDirty ? 'enabled' : 'disabled';
+  const contextualSaveBarMarkup = isDirty ? (
+    <ContextualSaveBar
+      message="Unsaved changes"
+      saveAction={{
+        onAction: toggleIsDirty,
+      }}
+      discardAction={{
+        onAction: toggleIsDirty,
+      }}
+    />
+  ) : null;
 
-    const pageMarkup = (
-      <Page title="Account">
-        <Layout>
-          <Layout.Section>
-            <SettingToggle
-              action={{
-                content: contentStatus,
-                onAction: this.toggleState('isDirty'),
-              }}
-              enabled={isDirty}
-            >
-              This setting is{' '}
-              <TextStyle variation="strong">{textStatus}</TextStyle>.
-            </SettingToggle>
-          </Layout.Section>
-        </Layout>
-      </Page>
-    );
-
-    const contextualSaveBarMarkup = isDirty ? (
-      <ContextualSaveBar
-        message="Unsaved changes"
-        saveAction={{
-          onAction: this.toggleState('isDirty'),
-        }}
-        discardAction={{
-          onAction: this.toggleState('isDirty'),
-        }}
-      />
-    ) : null;
-
-    return (
-      <div style={{height: '250px'}}>
-        <AppProvider
-          theme={theme}
-          i18n={{
-            Polaris: {
-              Frame: {
-                skipToContent: 'Skip to content',
-              },
-              ContextualSaveBar: {
-                save: 'Save',
-                discard: 'Discard',
-              },
-              TopBar: {
-                SearchField: {
-                  clearButtonLabel: 'Clear',
-                  search: 'Search',
-                },
+  return (
+    <div style={{height: '250px'}}>
+      <AppProvider
+        theme={theme}
+        i18n={{
+          Polaris: {
+            Frame: {
+              skipToContent: 'Skip to content',
+            },
+            ContextualSaveBar: {
+              save: 'Save',
+              discard: 'Discard',
+            },
+            TopBar: {
+              SearchField: {
+                clearButtonLabel: 'Clear',
+                search: 'Search',
               },
             },
-          }}
-        >
-          <Frame topBar={topBarMarkup}>
-            {contextualSaveBarMarkup}
-            {pageMarkup}
-          </Frame>
-        </AppProvider>
-      </div>
-    );
-  }
-
-  handleSearchChange = (searchFieldValue) => {
-    this.setState({searchFieldValue});
-  };
-
-  toggleState = (key) => {
-    return () => {
-      this.setState((prevState) => ({[key]: !prevState[key]}));
-    };
-  };
+          },
+        }}
+      >
+        <Frame topBar={topBarMarkup}>
+          {contextualSaveBarMarkup}
+          {pageMarkup}
+        </Frame>
+      </AppProvider>
+    </div>
+  );
 }
 ```
 
@@ -488,14 +474,14 @@ To provide access to your initialized Shopify App Bridge instance, we make it av
 ```js
 import React from 'react';
 import {render} from 'react-dom';
-import {AppProvider, AppBridgeContext} from '@shopify/polaris';
+import {AppProvider, _SECRET_INTERNAL_APP_BRIDGE_CONTEXT} from '@shopify/polaris';
 import {Redirect} from '@shopify/app-bridge/actions';
 
-class MyApp extends React.Component {
-  static contextType = AppBridgeContext;
+function MyApp() {
+  const appBridge = useContext(_SECRET_INTERNAL_APP_BRIDGE_CONTEXT)
 
-  componentDidMount() {
-    const redirect = Redirect.create(this.context);
+  redirectToSettings() {
+    const redirect = Redirect.create(appBridge);
 
     // Go to {appOrigin}/settings
     redirect.dispatch(Redirect.Action.APP, '/settings');

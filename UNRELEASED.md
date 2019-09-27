@@ -11,13 +11,20 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Added showTotalsFooter prop to `DataTable` for control over placement of Totals row ([#2200](https://github.com/Shopify/polaris-react/pull/2200))
+- Removed the need for z-indexes in `Icon` ([#2207](https://github.com/Shopify/polaris-react/pull/2207))
 
 ### Bug fixes
 
+- Fixed `type` for clearButton ([#2060](https://github.com/Shopify/polaris-react/pull/2060))
+- Prevented the `onSelect` prop of `Tabs` from changing scroll position ([#2196](https://github.com/Shopify/polaris-react/pull/2196))
+
 ### Documentation
 
+- Converted `SettingToggle`, `Sheet`, and `Tabs` examples to functional components ([#2134](https://github.com/Shopify/polaris-react/pull/2134))
 - Converted `Form`, `Frame`, and `Loading` examples to functional components ([#2130](https://github.com/Shopify/polaris-react/pull/2130))
 - Replaced Latin abbreviations with English words in Text field content guidelines ([#2192](https://github.com/Shopify/polaris-react/pull/2192))
+- Converted `SettingToggle`, `Sheet`, and `Tabs` examples to functional components ([#2134](https://github.com/Shopify/polaris-react/pull/2134))
+- Converted `DatePicker`, `DropZone`, and `Filters` examples to functional components ([#2129](https://github.com/Shopify/polaris-react/pull/2129))
 
 ### Development workflow
 

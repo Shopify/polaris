@@ -48,40 +48,30 @@ Date pickers should:
 Use when merchants need to select a date range close to today (today is the default starting position for the date picker).
 
 ```jsx
-class DatePickerExample extends React.Component {
-  state = {
+function DatePickerExample() {
+  const [{month, year}, setDate] = useState({
     month: 1,
     year: 2018,
-    selected: {
-      start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-      end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-    },
-  };
+  });
+  const [selectedDates, setSelectedDates] = useState({
+    start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+    end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+  });
 
-  render() {
-    const {month, year, selected} = this.state;
+  const handleMonthChange = useCallback(
+    (month, year) => setDate({month, year}),
+    [],
+  );
 
-    return (
-      <DatePicker
-        month={month}
-        year={year}
-        onChange={this.handleChange}
-        onMonthChange={this.handleMonthChange}
-        selected={selected}
-      />
-    );
-  }
-
-  handleChange = (value) => {
-    this.setState({selected: value});
-  };
-
-  handleMonthChange = (month, year) => {
-    this.setState({
-      month,
-      year,
-    });
-  };
+  return (
+    <DatePicker
+      month={month}
+      year={year}
+      onChange={setSelectedDates}
+      onMonthChange={handleMonthChange}
+      selected={selectedDates}
+    />
+  );
 }
 ```
 
