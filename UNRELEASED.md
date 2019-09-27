@@ -10,7 +10,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Added footerTotals prop to `DataTable` for control over placement of Totals row ([#2200](https://github.com/Shopify/polaris-react/pull/2200))
+- Added showTotalsFooter prop to `DataTable` for control over placement of Totals row ([#2200](https://github.com/Shopify/polaris-react/pull/2200))
 
 ### Bug fixes
 
