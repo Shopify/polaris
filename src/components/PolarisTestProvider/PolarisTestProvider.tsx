@@ -14,6 +14,7 @@ import {
 import {AppBridgeContext, AppBridgeOptions} from '../../utilities/app-bridge';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
+import {Settings, SettingsContext} from '../../utilities/settings';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -39,6 +40,7 @@ export type WithPolarisTestProviderOptions = {
   mediaQuery?: Partial<MediaQueryContextType>;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
+  settings?: Settings;
 };
 
 export interface PolarisTestProviderProps
@@ -60,6 +62,7 @@ export function PolarisTestProvider({
   theme,
   frame,
   mediaQuery,
+  settings,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
 
@@ -83,25 +86,27 @@ export function PolarisTestProvider({
 
   return (
     <Wrapper>
-      <I18nContext.Provider value={intl}>
-        <ScrollLockManagerContext.Provider value={scrollLockManager}>
-          <StickyManagerContext.Provider value={stickyManager}>
-            <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
-              <AppBridgeContext.Provider value={appBridgeApp}>
-                <LinkContext.Provider value={link}>
-                  <ThemeContext.Provider value={mergedTheme}>
-                    <FrameContext.Provider value={mergedFrame}>
-                      <MediaQueryContext.Provider value={mergedMediaQuery}>
-                        {children}
-                      </MediaQueryContext.Provider>
-                    </FrameContext.Provider>
-                  </ThemeContext.Provider>
-                </LinkContext.Provider>
-              </AppBridgeContext.Provider>
-            </UniqueIdFactoryContext.Provider>
-          </StickyManagerContext.Provider>
-        </ScrollLockManagerContext.Provider>
-      </I18nContext.Provider>
+      <SettingsContext.Provider value={settings}>
+        <I18nContext.Provider value={intl}>
+          <ScrollLockManagerContext.Provider value={scrollLockManager}>
+            <StickyManagerContext.Provider value={stickyManager}>
+              <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
+                <AppBridgeContext.Provider value={appBridgeApp}>
+                  <LinkContext.Provider value={link}>
+                    <ThemeContext.Provider value={mergedTheme}>
+                      <FrameContext.Provider value={mergedFrame}>
+                        <MediaQueryContext.Provider value={mergedMediaQuery}>
+                          {children}
+                        </MediaQueryContext.Provider>
+                      </FrameContext.Provider>
+                    </ThemeContext.Provider>
+                  </LinkContext.Provider>
+                </AppBridgeContext.Provider>
+              </UniqueIdFactoryContext.Provider>
+            </StickyManagerContext.Provider>
+          </ScrollLockManagerContext.Provider>
+        </I18nContext.Provider>
+      </SettingsContext.Provider>
     </Wrapper>
   );
 }
