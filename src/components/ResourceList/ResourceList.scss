@@ -118,15 +118,6 @@ $item-wrapper-loading-height: rem(64px);
   }
 }
 
-.SortLabel {
-  margin-right: spacing(tight);
-  display: none;
-
-  @include breakpoint-after(resource-list(breakpoint-small)) {
-    display: block;
-  }
-}
-
 .HeaderTitleWrapper {
   white-space: nowrap;
   text-overflow: ellipsis;

@@ -50,7 +50,7 @@ describe('build', () => {
 
   it('generates fully namespaced CSS for nested components', () => {
     expect(fs.readFileSync('./styles/components.scss', 'utf8')).toMatch(
-      '.Polaris-ResourceList-Item{',
+      '.Polaris-ResourceList-BulkActions__Button{',
     );
   });
 
@@ -134,7 +134,7 @@ describe('build', () => {
         'esnext/components/Avatar/index.js',
         'utf8',
       );
-      expect(contents).toMatch("import Avatar from './Avatar'");
+      expect(contents).toMatch("export { Avatar } from './Avatar'");
     });
 
     it('preserves ES scss imports', () => {

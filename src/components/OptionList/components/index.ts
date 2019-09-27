@@ -1,2 +1,3 @@
-export {default as Option, Props as OptionProps} from './Option';
-export {default as Checkbox, Props as CheckboxProps} from './Checkbox';
+export {Option, OptionProps} from './Option';
+
+export {Checkbox, CheckboxProps} from './Checkbox';

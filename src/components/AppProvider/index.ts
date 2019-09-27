@@ -1,1 +1,1 @@
-export {default, Props} from './AppProvider';
+export {AppProvider, AppProviderProps} from './AppProvider';

@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Message from '../Message';
-import Badge from '../../../../../../Badge';
+import {Message} from '../Message';
+import {Badge} from '../../../../../../Badge';
 
 const messageProps = {
   title: 'Polaris',

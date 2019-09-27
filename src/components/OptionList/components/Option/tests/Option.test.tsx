@@ -1,10 +1,10 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Checkbox from '../../Checkbox';
-import Option, {Props} from '../Option';
+import {Checkbox} from '../../Checkbox';
+import {Option, OptionProps} from '../Option';
 
 describe('<Option />', () => {
-  const defaultProps: Props = {
+  const defaultProps: OptionProps = {
     id: 'itemId',
     label: 'Option Item',
     value: 'option_item',

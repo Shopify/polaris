@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Checkbox} from 'components';
-import CheckableButton from '../CheckableButton';
+import {CheckableButton} from '../CheckableButton';
 import {Key} from '../../../../../types';
 
 const CheckableButtonProps = {

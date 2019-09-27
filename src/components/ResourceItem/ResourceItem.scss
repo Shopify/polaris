@@ -1,5 +1,22 @@
-@import '../../../../styles/common';
-@import '../../variables';
+@import '../../styles/common';
+
+// translate-offset equals handle-width - padding
+$resource-list-item-variables: (
+  padding: rem(12px),
+  control-indent: -1 * rem(12px),
+  min-height: rem(44px),
+  handle-width: rem(48px),
+  disclosure-width: rem(48px),
+  translate-offset: rem(48px) - rem(12px) + spacing(extra-tight),
+  clickable-stacking-order: 1,
+  content-stacking-order: 2,
+  actions-height: rem(56px),
+  breakpoint-small: 458px,
+);
+
+@function resource-list-item($variable) {
+  @return map-get($resource-list-item-variables, $variable);
+}
 
 @mixin action-hide {
   clip: rect(1px, 1px, 1px, 1px);
@@ -17,7 +34,7 @@
   display: flex;
 }
 
-.Item {
+.ResourceItem {
   position: relative;
   outline: none;
   cursor: pointer;
@@ -29,6 +46,7 @@
       // stylelint-disable-next-line selector-max-specificity
       .Actions {
         @include action-unhide;
+        right: spacing();
 
         // stylelint-disable-next-line max-nesting-depth
         @include page-content-when-partially-condensed {
@@ -107,7 +125,7 @@
   display: flex;
   align-items: flex-start;
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @include breakpoint-after(resource-list-item(breakpoint-small)) {
     padding: resource-list-item(padding) spacing(loose);
   }
 }
@@ -127,7 +145,7 @@
     (-1 * resource-list-item(padding)) resource-list-item(control-indent);
   display: flex;
 
-  @include breakpoint-before(resource-list(breakpoint-small)) {
+  @include breakpoint-before(resource-list-item(breakpoint-small)) {
     visibility: hidden;
 
     .selectMode & {
@@ -146,7 +164,7 @@
     transform: translateX(0);
   }
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @include breakpoint-after(resource-list-item(breakpoint-small)) {
     width: 100%;
     transform: translateX(0);
     margin-right: 0;
@@ -171,7 +189,6 @@
 .Actions {
   position: absolute;
   top: 0;
-  right: resource-list-item(padding);
   display: flex;
   pointer-events: initial;
   height: 100%;
@@ -217,10 +234,6 @@
 
   .selectMode & {
     display: none;
-  }
-
-  @include breakpoint-after(resource-list(breakpoint-small)) {
-    right: -1 * spacing(loose);
   }
 
   @include page-content-when-partially-condensed {

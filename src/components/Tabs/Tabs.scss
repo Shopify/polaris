@@ -177,19 +177,36 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 .DisclosureActivator {
   @include recolor-icon(color('ink', 'lighter'));
   position: relative;
+  display: block;
   justify-content: center;
   height: 100%;
+  margin: 1px 1px -1px 0;
   padding: 0 spacing();
   background-color: transparent;
   cursor: pointer;
   border: none;
   outline: none;
   text-align: center;
+
   &:hover {
-    @include recolor-icon(color('ink'));
-    @media (-ms-high-contrast: active) {
-      @include recolor-icon(color('black'));
-      @include state(active, hover);
+    .Title {
+      @include recolor-icon(color('ink'));
+      border-bottom: border-width(thicker) solid color('sky');
+
+      @media (-ms-high-contrast: active) {
+        @include recolor-icon(color('black'));
+        @include state(active, hover);
+        border-bottom-color: ms-high-contrast-color('selected-text-background');
+      }
+    }
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 2px 0 $focus-state-box-shadow-color,
+      0 0 2px 0 $focus-state-box-shadow-color;
+
+    .Title {
+      border-bottom: border-width(thicker) solid color('indigo', 'light');
     }
   }
 }

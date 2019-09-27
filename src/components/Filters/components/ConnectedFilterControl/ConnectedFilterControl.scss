@@ -63,11 +63,14 @@ $stacking-order: (
 }
 
 .MoreFiltersButtonContainer * {
-  margin-left: -1px;
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
   flex-shrink: 0;
   white-space: nowrap;
+
+  > div {
+    margin-left: -1px;
+  }
 }
 
 .Wrapper {

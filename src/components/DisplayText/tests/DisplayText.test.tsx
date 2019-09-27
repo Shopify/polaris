@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
-import DisplayText from '../DisplayText';
+import {DisplayText} from '../DisplayText';
 
 describe('<DisplayText />', () => {
   it('renders its children', () => {

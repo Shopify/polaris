@@ -5,7 +5,7 @@ import styles from './ProgressBar.scss';
 
 export type Size = 'small' | 'medium' | 'large';
 
-export interface Props {
+export interface ProgressBarProps {
   /**
    * The progression of certain tasks
    * @default 0
@@ -18,7 +18,7 @@ export interface Props {
   size?: Size;
 }
 
-export default function ProgressBar({progress = 0, size = 'medium'}: Props) {
+export function ProgressBar({progress = 0, size = 'medium'}: ProgressBarProps) {
   const intl = useI18n();
 
   const className = classNames(

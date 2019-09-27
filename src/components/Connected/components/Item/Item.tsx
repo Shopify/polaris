@@ -8,18 +8,18 @@ export enum ItemPosition {
   Right,
 }
 
-export interface Props {
+export interface ItemProps {
   /** Position of the item */
   position: ItemPosition;
   /** Item content */
   children?: React.ReactNode;
 }
 
-export interface State {
+interface State {
   focused: boolean;
 }
 
-export default class Item extends React.PureComponent<Props, State> {
+export class Item extends React.PureComponent<ItemProps, State> {
   state: State = {focused: false};
 
   render() {

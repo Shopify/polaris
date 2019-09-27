@@ -2,7 +2,7 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import styles from '../../Layout.scss';
 
-export interface Props {
+export interface SectionProps {
   children?: React.ReactNode;
   secondary?: boolean;
   fullWidth?: boolean;
@@ -10,13 +10,13 @@ export interface Props {
   oneThird?: boolean;
 }
 
-export default function Section({
+export function Section({
   children,
   secondary,
   fullWidth,
   oneHalf,
   oneThird,
-}: Props) {
+}: SectionProps) {
   const className = classNames(
     styles.Section,
     secondary && styles['Section-secondary'],

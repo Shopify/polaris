@@ -1,11 +1,18 @@
 import React from 'react';
-import {ResourceList, Select, Spinner, EmptySearchResult} from 'components';
+import {
+  ResourceList,
+  Select,
+  Spinner,
+  EmptySearchResult,
+  ResourceItem,
+  EventListener,
+} from 'components';
 import {
   findByTestID,
   mountWithAppProvider,
   trigger,
 } from 'test-utilities/legacy';
-import {BulkActions, Item, CheckableButton} from '../components';
+import {BulkActions, CheckableButton} from '../components';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
@@ -32,6 +39,7 @@ const sortOptions = [
 ];
 
 const alternateTool = <div id="AlternateTool">Alternate Tool</div>;
+const defaultWindowWidth = window.innerWidth;
 
 describe('<ResourceList />', () => {
   describe('renderItem', () => {
@@ -312,7 +320,7 @@ describe('<ResourceList />', () => {
           onSelectionChange={onSelectionChange}
         />,
       );
-      const firstItem = resourceList.find(Item).first();
+      const firstItem = resourceList.find(ResourceItem).first();
       findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
       expect(onSelectionChange).toHaveBeenCalled();
     });
@@ -694,7 +702,7 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList.find(Item)).toHaveLength(0);
+      expect(resourceList.find(ResourceItem)).toHaveLength(0);
     });
   });
 
@@ -760,10 +768,10 @@ describe('<ResourceList />', () => {
           resolveItemId={resolveItemId}
         />,
       );
-      const firstItem = resourceList.find(Item).first();
+      const firstItem = resourceList.find(ResourceItem).first();
       findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
 
-      const lastItem = resourceList.find(Item).last();
+      const lastItem = resourceList.find(ResourceItem).last();
       findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
         nativeEvent: {shiftKey: true},
       });
@@ -782,10 +790,10 @@ describe('<ResourceList />', () => {
           onSelectionChange={onSelectionChange}
         />,
       );
-      const firstItem = resourceList.find(Item).first();
+      const firstItem = resourceList.find(ResourceItem).first();
       findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
 
-      const lastItem = resourceList.find(Item).last();
+      const lastItem = resourceList.find(ResourceItem).last();
       findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
         nativeEvent: {shiftKey: true},
       });
@@ -822,10 +830,10 @@ describe('<ResourceList />', () => {
           resolveItemId={resolveItemId}
         />,
       );
-      const firstItem = resourceList.find(Item).first();
+      const firstItem = resourceList.find(ResourceItem).first();
       findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
 
-      const lastItem = resourceList.find(Item).last();
+      const lastItem = resourceList.find(ResourceItem).last();
       findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
         nativeEvent: {shiftKey: true},
       });
@@ -850,15 +858,57 @@ describe('<ResourceList />', () => {
         />,
       );
       // Sets {lastSeleced: 0}
-      const firstItem = resourceList.find(Item).first();
+      const firstItem = resourceList.find(ResourceItem).first();
       findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
 
-      const lastItem = resourceList.find(Item).last();
+      const lastItem = resourceList.find(ResourceItem).last();
       findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
         nativeEvent: {shiftKey: true},
       });
 
       expect(onSelectionChange).toHaveBeenCalledWith([]);
+    });
+  });
+
+  describe('Resizing', () => {
+    afterEach(() => {
+      setDefaultScreen();
+    });
+
+    it('an inline label is hidden on small screen', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          sortOptions={sortOptions}
+          onSortChange={noop}
+          renderItem={renderItem}
+        />,
+      );
+
+      setSmallScreen();
+      trigger(resourceList.find(EventListener), 'handler');
+
+      expect(
+        resourceList
+          .find(Select)
+          .first()
+          .prop('labelInline'),
+      ).toBe(false);
+    });
+
+    it('select mode is turned off on large screen when no items are selected', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={singleItemWithID}
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectedItems={[]}
+        />,
+      );
+
+      trigger(resourceList.find(BulkActions), 'onSelectModeToggle', true);
+      trigger(resourceList.find(EventListener).first(), 'handler');
+      expect(resourceList.find(BulkActions).prop('selectMode')).toBe(false);
     });
   });
 });
@@ -885,4 +935,20 @@ function renderItem(item: any, id: any, index: number) {
       <div>{item.title}</div>
     </ResourceList.Item>
   );
+}
+
+function setSmallScreen() {
+  Object.defineProperty(window, 'innerWidth', {
+    configurable: true,
+    writable: true,
+    value: 458,
+  });
+}
+
+function setDefaultScreen() {
+  Object.defineProperty(window, 'innerWidth', {
+    configurable: true,
+    writable: true,
+    value: defaultWindowWidth,
+  });
 }

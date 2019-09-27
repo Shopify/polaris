@@ -1,8 +1,9 @@
 import React from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {InlineError, Labelled, Connected, Select} from 'components';
+import {mountWithApp} from 'test-utilities';
 import {Resizer, Spinner} from '../components';
-import TextField from '../TextField';
+import {TextField} from '../TextField';
 
 describe('<TextField />', () => {
   it('allows specific props to pass through properties on the input', () => {
@@ -473,15 +474,14 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(
-        textField.find('#MyFieldCharacterCounter').prop<string>('aria-live'),
-      ).toBe('off');
+      expect(textField.find('#MyFieldCharacterCounter').prop('aria-live')).toBe(
+        'off',
+      );
 
       textField.find('input').simulate('focus');
-
-      expect(
-        textField.find('#MyFieldCharacterCounter').prop<string>('aria-live'),
-      ).toBe('polite');
+      expect(textField.find('#MyFieldCharacterCounter').prop('aria-live')).toBe(
+        'polite',
+      );
     });
   });
 
@@ -530,6 +530,27 @@ describe('<TextField />', () => {
           .last()
           .simulate('click');
         expect(spy).toHaveBeenCalledWith('2', 'MyTextField');
+      });
+
+      it('does not call the onChange if the value is not a number', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="number"
+            value="not a number"
+            onChange={spy}
+          />,
+        );
+
+        element!
+          .find('div', {
+            role: 'button',
+          })!
+          .trigger('onClick');
+
+        expect(spy).not.toHaveBeenCalled();
       });
 
       it('handles incrementing from no value', () => {
@@ -840,7 +861,7 @@ describe('<TextField />', () => {
   });
 
   describe('multiline', () => {
-    it('does not render a resizer if multiline is false', () => {
+    it('does not render a resizer if `multiline` is false', () => {
       const textField = mountWithAppProvider(
         <TextField
           label="TextField"
@@ -850,6 +871,47 @@ describe('<TextField />', () => {
         />,
       );
       expect(textField.find(Resizer).exists()).toBe(false);
+    });
+
+    it('renders a resizer with `minimumLines` set to 1 if `multiline` is true', () => {
+      const textField = mountWithApp(
+        <TextField label="TextField" id="MyField" onChange={noop} multiline />,
+      );
+      expect(textField).toContainReactComponentTimes(Resizer, 1, {
+        minimumLines: 1,
+      });
+    });
+
+    it('renders a resizer with `minimumLines` set to the `multiline` numeric value', () => {
+      const textField = mountWithApp(
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          multiline={5}
+        />,
+      );
+
+      expect(textField).toContainReactComponentTimes(Resizer, 1, {
+        minimumLines: 5,
+      });
+    });
+
+    it('passes the `placeholder` to the resizer `contents` prop', () => {
+      const placeholderText = 'placeholder text';
+      const textField = mountWithApp(
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          placeholder={placeholderText}
+          multiline={5}
+        />,
+      );
+
+      expect(textField).toContainReactComponentTimes(Resizer, 1, {
+        contents: placeholderText,
+      });
     });
   });
 

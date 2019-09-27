@@ -195,6 +195,45 @@ describe('<DropZone />', () => {
     expect(input.prop('id')).toStrictEqual(id);
   });
 
+  it('renders a disabled input when the disabled prop is true', () => {
+    const dropZone = mountWithAppProvider(<DropZone disabled />);
+    expect(dropZone.find('input[type="file"]').prop('disabled')).toBe(true);
+  });
+
+  describe('onClick', () => {
+    it('calls the onClick when clicking the dropzone if one is provided', () => {
+      const spy = jest.fn();
+      const dropZone = mountWithAppProvider(
+        <DropZone label="My DropZone label" onClick={spy} />,
+      );
+
+      dropZone
+        .find('div')
+        .at(4)
+        .simulate('click');
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('triggers the file input click event if no onClick is provided', () => {
+      const dropZone = mountWithAppProvider(
+        <DropZone label="My DropZone label" />,
+      );
+
+      const fileInput = dropZone
+        .find('input[type="file"]')
+        .getDOMNode() as HTMLInputElement;
+
+      const spy = jest.spyOn(fileInput, 'click');
+
+      dropZone
+        .find('div')
+        .at(4)
+        .simulate('click');
+
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
   describe('labelAction', () => {
     it("passes 'labelAction' to the Labelled options", () => {
       const callbackDropZone = {
@@ -310,7 +349,9 @@ describe('<DropZone />', () => {
       const displayText = dropZone.find(DisplayText);
       expect(displayText.contains(errorOverlayText)).toBe(true);
     });
+  });
 
+  describe('context', () => {
     it('sets type from props on context', () => {
       const type = 'image';
 
@@ -329,6 +370,64 @@ describe('<DropZone />', () => {
 
       const component = mountWithApp(<Component />);
       expect(component).toContainReactComponent('div');
+    });
+
+    it('sets focused to true when the input file is focused', () => {
+      const dropZone = mountWithAppProvider(
+        <DropZone>
+          <DropZoneContext.Consumer>
+            {({focused}) => {
+              return focused ? <div id="focused" /> : null;
+            }}
+          </DropZoneContext.Consumer>
+        </DropZone>,
+      );
+      const fileInput = dropZone.find(`input[type="file"]`);
+      fileInput.simulate('focus');
+      expect(dropZone.find('#focused')).toHaveLength(1);
+    });
+
+    it('sets focused to false when the input file is blur', () => {
+      const dropZone = mountWithAppProvider(
+        <DropZone>
+          <DropZoneContext.Consumer>
+            {({focused}) => {
+              return focused ? null : <div id="blurred" />;
+            }}
+          </DropZoneContext.Consumer>
+        </DropZone>,
+      );
+      const fileInput = dropZone.find(`input[type="file"]`);
+      fileInput.simulate('blur');
+      expect(dropZone.find('#blurred')).toHaveLength(1);
+    });
+
+    it('sets disabled to true when the dropzone is disabled', () => {
+      const dropZone = mountWithAppProvider(
+        <DropZone disabled>
+          <DropZoneContext.Consumer>
+            {({disabled}) => {
+              return disabled ? <div id="disabled" /> : null;
+            }}
+          </DropZoneContext.Consumer>
+        </DropZone>,
+      );
+
+      expect(dropZone.find('#disabled')).toHaveLength(1);
+    });
+
+    it('sets the default type to file if not specified', () => {
+      const dropZone = mountWithAppProvider(
+        <DropZone>
+          <DropZoneContext.Consumer>
+            {({type}) => {
+              return type === 'file' ? <div id="file" /> : null;
+            }}
+          </DropZoneContext.Consumer>
+        </DropZone>,
+      );
+
+      expect(dropZone.find('#file')).toHaveLength(1);
     });
   });
 

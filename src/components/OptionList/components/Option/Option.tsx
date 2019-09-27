@@ -2,14 +2,14 @@ import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {IconProps} from '../../../../types';
-import {Props as ThumbnailProps} from '../../../Thumbnail';
-import {Props as AvatarProps} from '../../../Avatar';
-import Scrollable from '../../../Scrollable';
-import Checkbox from '../Checkbox';
+import {ThumbnailProps} from '../../../Thumbnail';
+import {AvatarProps} from '../../../Avatar';
+import {Scrollable} from '../../../Scrollable';
+import {Checkbox} from '../Checkbox';
 
 import styles from './Option.scss';
 
-export interface Props {
+export interface OptionProps {
   id: string;
   label: React.ReactNode;
   value: string;
@@ -24,11 +24,11 @@ export interface Props {
   onClick(section: number, option: number): void;
 }
 
-export interface State {
+interface State {
   focused: boolean;
 }
 
-export default class Option extends React.Component<Props, State> {
+export class Option extends React.Component<OptionProps, State> {
   state: State = {
     focused: false,
   };

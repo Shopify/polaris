@@ -2,12 +2,12 @@ import React from 'react';
 
 import styles from './MessageIndicator.scss';
 
-export interface Props {
+export interface MessageIndicatorProps {
   children?: React.ReactNode;
   active?: boolean;
 }
 
-export default function MessageIndicator({children, active}: Props) {
+export function MessageIndicator({children, active}: MessageIndicatorProps) {
   const indicatorMarkup = active && (
     <div testID="indicator" className={styles.MessageIndicator} />
   );

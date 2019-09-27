@@ -39,7 +39,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@4.0.0/styles.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.3.0/styles.min.css"
 />
 ```
 
@@ -82,7 +82,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@4.0.0/styles.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.3.0/styles.min.css"
 />
 ```
 
@@ -97,9 +97,10 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 We have created example applications to document some of the ways you could include Polaris in one of your own applications. Each of these examples includes further documentation on how to install dependencies and run the app:
 
 - [create-react-app example](https://github.com/Shopify/polaris-react/tree/master/examples/create-react-app)
+- [create-react-app with TypeScript and react-testing example](https://github.com/Shopify/polaris-react/tree/master/examples/create-react-app-ts-react-testing)
 - [Webpack example](https://github.com/Shopify/polaris-react/tree/master/examples/webpack)
-- [Browserify example](https://github.com/Shopify/polaris-react/tree/master/examples/browserify)
 - [CSS-only example](https://github.com/Shopify/polaris-react/tree/master/examples/cdn-styles)
+- [next.js example](https://github.com/Shopify/polaris-react/tree/master/examples/next.js)
 
 ## Development
 

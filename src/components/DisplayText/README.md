@@ -166,7 +166,7 @@ Use display text to create visual interest along with a meaningful heading struc
 
 #### Don’t
 
-Use display text in place of standard headings. Use the [heading component](/components/titles-and-text/heading) and [subheading component](/components/titles-and-text/subheading) to provide structure.
+Use display text in place of standard headings. Use the [heading component](https://polaris.shopify.com/components/titles-and-text/heading) and [subheading component](https://polaris.shopify.com/components/titles-and-text/subheading) to provide structure.
 
 <!-- end -->
 

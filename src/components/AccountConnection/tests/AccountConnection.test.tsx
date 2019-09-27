@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Avatar, buttonFrom} from 'components';
-import AccountConnection from '../AccountConnection';
+import {AccountConnection} from '../AccountConnection';
 
 describe('<AccountConnection />', () => {
   describe('title', () => {

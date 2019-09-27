@@ -90,5 +90,5 @@ Use this component to represent small display text such as content headings.
 
 ## Related components
 
-- Use this component with [Skeleton page](/components/feedback-indicators/skeleton-page) and [Skeleton body text](/components/feedback-indicators/skeleton-body-text) to represent the content of a page before it’s loaded.
-- When giving feedback for in-context operations, use [Progress bar](/components/feedback-indicators/progress-bar) or [Spinner](/components/feedback-indicators/spinner) component.
+- Use this component with [Skeleton page](https://polaris.shopify.com/components/feedback-indicators/skeleton-page) and [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) to represent the content of a page before it’s loaded.
+- When giving feedback for in-context operations, use [Progress bar](https://polaris.shopify.com/components/feedback-indicators/progress-bar) or [Spinner](https://polaris.shopify.com/components/feedback-indicators/spinner) component.

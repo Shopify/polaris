@@ -13,7 +13,7 @@ export interface SelectPayload {
   selection: AppBridgeResourcePicker.ResourceSelection[];
 }
 
-export interface Props {
+export interface ResourcePickerProps {
   /** Whether the picker is open or not */
   open: boolean;
   /** The type of resource you want to pick */
@@ -40,7 +40,7 @@ export interface Props {
   onCancel?(): void;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = ResourcePickerProps & WithAppProviderProps;
 
 /** @deprecated Use `ResourcePicker` from `@shopify/app-bridge-react` instead. */
 class ResourcePicker extends React.PureComponent<CombinedProps, never> {
@@ -197,4 +197,6 @@ class ResourcePicker extends React.PureComponent<CombinedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(ResourcePicker);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<ResourcePickerProps>()(ResourcePicker);

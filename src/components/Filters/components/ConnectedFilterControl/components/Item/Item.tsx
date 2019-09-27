@@ -2,15 +2,15 @@ import React from 'react';
 import {classNames} from '../../../../../../utilities/css';
 import styles from '../../ConnectedFilterControl.scss';
 
-export interface Props {
+interface ItemProps {
   children?: React.ReactNode;
 }
 
-export interface State {
+interface State {
   focused: boolean;
 }
 
-export default class Item extends React.PureComponent<Props, State> {
+export class Item extends React.PureComponent<ItemProps, State> {
   state: State = {focused: false};
 
   render() {

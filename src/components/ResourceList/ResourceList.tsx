@@ -1,31 +1,33 @@
 import React from 'react';
 
 import debounce from 'lodash/debounce';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import Button from '../Button';
-import EventListener from '../EventListener';
-import Sticky from '../Sticky';
-import Spinner from '../Spinner';
+import {Button} from '../Button';
+import {EventListener} from '../EventListener';
+import {Sticky} from '../Sticky';
+import {Spinner} from '../Spinner';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import Select, {SelectOption} from '../Select';
-import EmptySearchResult from '../EmptySearchResult';
+import {
+  ResourceListContext,
+  ResourceListSelectedItems,
+  SELECT_ALL_ITEMS,
+} from '../../utilities/resource-list';
+import {Select, SelectOption} from '../Select';
+import {EmptySearchResult} from '../EmptySearchResult';
+import {ResourceItem} from '../ResourceItem';
 
 import {
   BulkActions,
   BulkActionsProps,
   CheckableButton,
+  // eslint-disable-next-line import/no-deprecated
   FilterControl,
-  Item,
 } from './components';
-import {ResourceListContext} from './context';
-
-import {SelectedItems, SELECT_ALL_ITEMS} from './types';
 
 import styles from './ResourceList.scss';
 
@@ -35,13 +37,14 @@ const LARGE_SPINNER_HEIGHT = 45;
 
 export type Items = any[];
 
-export interface State {
+interface State {
   selectMode: boolean;
   loadingPosition: number;
   lastSelected: number | null;
+  smallScreen: boolean;
 }
 
-export interface Props {
+export interface ResourceListProps {
   /** Item data; each item is passed to renderItem */
   items: Items;
   filterControl?: React.ReactNode;
@@ -55,7 +58,7 @@ export interface Props {
   /** Actions available on the currently selected items */
   bulkActions?: BulkActionsProps['actions'];
   /** Collection of IDs for the currently selected items */
-  selectedItems?: SelectedItems;
+  selectedItems?: ResourceListSelectedItems;
   /** Renders a Select All button at the top of the list and checkboxes in front of each list item. For use when bulkActions aren't provided. **/
   selectable?: boolean;
   /** If there are more items than currently in the list */
@@ -73,7 +76,7 @@ export interface Props {
   /** Callback when sort option is changed */
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
-  onSelectionChange?(selectedItems: SelectedItems): void;
+  onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
   /** Function to render each list item	 */
   renderItem(item: any, id: string, index: number): React.ReactNode;
   /** Function to customize the unique ID for each item */
@@ -82,30 +85,38 @@ export interface Props {
   resolveItemId?(item: any): string;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
-
-const getUniqueID = createUniqueIDFactory('Select');
+type CombinedProps = ResourceListProps & WithAppProviderProps;
 
 class ResourceList extends React.Component<CombinedProps, State> {
-  static Item: typeof Item = Item;
-  static FilterControl: typeof FilterControl = FilterControl;
+  static Item = ResourceItem;
+  // eslint-disable-next-line import/no-deprecated
+  static FilterControl = FilterControl;
 
   private defaultResourceName: {singular: string; plural: string};
   private listRef: React.RefObject<HTMLUListElement> = React.createRef();
 
-  private handleResize = debounce(() => {
-    const {selectedItems} = this.props;
-    const {selectMode} = this.state;
+  private handleResize = debounce(
+    () => {
+      const {selectedItems} = this.props;
+      const {selectMode, smallScreen} = this.state;
+      const newSmallScreen = isSmallScreen();
 
-    if (
-      selectedItems &&
-      selectedItems.length === 0 &&
-      selectMode &&
-      !isSmallScreen()
-    ) {
-      this.handleSelectMode(false);
-    }
-  }, 50);
+      if (
+        selectedItems &&
+        selectedItems.length === 0 &&
+        selectMode &&
+        !newSmallScreen
+      ) {
+        this.handleSelectMode(false);
+      }
+
+      if (smallScreen !== newSmallScreen) {
+        this.setState({smallScreen: newSmallScreen});
+      }
+    },
+    50,
+    {leading: true, trailing: true, maxWait: 50},
+  );
 
   constructor(props: CombinedProps) {
     super(props);
@@ -125,6 +136,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       selectMode: Boolean(selectedItems && selectedItems.length > 0),
       loadingPosition: 0,
       lastSelected: null,
+      smallScreen: isSmallScreen(),
     };
   }
 
@@ -314,7 +326,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     loading: prevLoading,
     items: prevItems,
     selectedItems: prevSelectedItems,
-  }: Props) {
+  }: ResourceListProps) {
     const {selectedItems, loading} = this.props;
 
     if (
@@ -362,7 +374,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       onSortChange,
       polaris: {intl},
     } = this.props;
-    const {selectMode, loadingPosition} = this.state;
+    const {selectMode, loadingPosition, smallScreen} = this.state;
 
     const filterControlMarkup = filterControl ? (
       <div className={styles.FiltersWrapper}>{filterControl}</div>
@@ -383,25 +395,16 @@ class ResourceList extends React.Component<CombinedProps, State> {
           actions={bulkActions}
           disabled={loading}
         />
-        <EventListener event="resize" handler={this.handleResize} />
       </div>
     ) : null;
-
-    const selectId = getUniqueID();
-
-    const sortingLabelMarkup = (
-      <label className={styles.SortLabel} htmlFor={selectId}>
-        {intl.translate('Polaris.ResourceList.sortingLabel')}
-      </label>
-    );
 
     const sortingSelectMarkup =
       sortOptions && sortOptions.length > 0 && !alternateTool ? (
         <div className={styles.SortWrapper}>
-          {sortingLabelMarkup}
           <Select
             label={intl.translate('Polaris.ResourceList.sortingLabel')}
-            labelHidden
+            labelInline={!smallScreen}
+            labelHidden={smallScreen}
             options={sortOptions}
             onChange={onSortChange}
             value={sortValue}
@@ -478,6 +481,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
               );
               return (
                 <div className={headerClassName} testID="ResourceList-Header">
+                  <EventListener event="resize" handler={this.handleResize} />
                   {headerWrapperOverlay}
                   <div className={styles.HeaderContentWrapper}>
                     {headerTitleMarkup}
@@ -764,4 +768,6 @@ function isSmallScreen() {
     : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
 
-export default withAppProvider<Props>()(ResourceList);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<ResourceListProps>()(ResourceList);

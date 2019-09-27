@@ -2,18 +2,18 @@ import React from 'react';
 import {SearchMinor} from '@shopify/polaris-icons';
 import {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
-import Icon from '../../../Icon';
-import FormLayout from '../../../FormLayout';
-import TextField from '../../../TextField';
-import Tag from '../../../Tag';
+import {Icon} from '../../../Icon';
+import {FormLayout} from '../../../FormLayout';
+import {TextField} from '../../../TextField';
+import {Tag} from '../../../Tag';
 import {useI18n} from '../../../../utilities/i18n';
-import {ResourceListContext} from '../../context';
+import {ResourceListContext} from '../../../../utilities/resource-list';
 
 import {FilterCreator} from './components';
 import {AppliedFilter, Filter, FilterType, Operator} from './types';
 import styles from './FilterControl.scss';
 
-export interface Props {
+export interface FilterControlProps {
   searchValue?: string;
   appliedFilters?: AppliedFilter[];
   additionalAction?: ComplexAction;
@@ -25,7 +25,8 @@ export interface Props {
   onFiltersChange?(appliedFilters: AppliedFilter[]): void;
 }
 
-export default function FilterControl({
+/** @deprecated Use <Filters /> instead. */
+export function FilterControl({
   searchValue,
   appliedFilters = [],
   additionalAction,
@@ -35,7 +36,12 @@ export default function FilterControl({
   onSearchBlur,
   onSearchChange,
   onFiltersChange,
-}: Props) {
+}: FilterControlProps) {
+  // eslint-disable-next-line no-console
+  console.warn(
+    'Deprecation: <FilterControl /> is deprecated. Use <Filters /> instead.',
+  );
+
   const intl = useI18n();
   const {selectMode, resourceName} = React.useContext(ResourceListContext);
 
@@ -200,11 +206,10 @@ export default function FilterControl({
     const {value: appliedFilterValue} = appliedFilter;
 
     if (filter.type === FilterType.Select) {
-      const foundFilterOption = filter.options.find(
-        (option) =>
-          typeof option === 'string'
-            ? option === appliedFilterValue
-            : option.value === appliedFilterValue,
+      const foundFilterOption = filter.options.find((option) =>
+        typeof option === 'string'
+          ? option === appliedFilterValue
+          : option.value === appliedFilterValue,
       );
 
       if (foundFilterOption) {
@@ -216,9 +221,7 @@ export default function FilterControl({
 
     if (filter.type === FilterType.DateSelector) {
       if (filter.key === appliedFilter.key) {
-        const filterLabelKey = `Polaris.ResourceList.DateSelector.FilterLabelForValue.${
-          appliedFilter.value
-        }`;
+        const filterLabelKey = `Polaris.ResourceList.DateSelector.FilterLabelForValue.${appliedFilter.value}`;
 
         return intl.translationKeyExists(filterLabelKey)
           ? intl.translate(filterLabelKey)

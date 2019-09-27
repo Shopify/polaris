@@ -1,5 +1,3 @@
-import FilterControl from './FilterControl';
+export {FilterControl, FilterControlProps} from './FilterControl';
 
 export * from './types';
-export {Props} from './FilterControl';
-export default FilterControl;

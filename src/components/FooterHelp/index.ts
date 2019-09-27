@@ -1,4 +1,1 @@
-import FooterHelp from './FooterHelp';
-
-export {Props} from './FooterHelp';
-export default FooterHelp;
+export {FooterHelp, FooterHelpProps} from './FooterHelp';

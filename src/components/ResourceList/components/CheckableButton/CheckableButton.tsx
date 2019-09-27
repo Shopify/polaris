@@ -1,10 +1,10 @@
 import React from 'react';
 import {classNames} from '../../../../utilities/css';
-import Checkbox from '../../../Checkbox';
+import {Checkbox} from '../../../Checkbox';
 
 import styles from './CheckableButton.scss';
 
-export interface Props {
+export interface CheckableButtonProps {
   accessibilityLabel?: string;
   label?: string;
   selected?: boolean | 'indeterminate';
@@ -15,7 +15,7 @@ export interface Props {
   onToggleAll?(): void;
 }
 
-export default function CheckableButton({
+export function CheckableButton({
   accessibilityLabel,
   label = '',
   onToggleAll,
@@ -24,7 +24,7 @@ export default function CheckableButton({
   plain,
   measuring,
   disabled,
-}: Props) {
+}: CheckableButtonProps) {
   const className = plain
     ? classNames(styles.CheckableButton, styles['CheckableButton-plain'])
     : classNames(

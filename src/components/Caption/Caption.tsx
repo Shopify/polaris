@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './Caption.scss';
 
-export interface Props {
+export interface CaptionProps {
   /** The content to use as a graph label or timestamp */
   children?: React.ReactNode;
 }
 
-export default function Caption({children}: Props) {
+export function Caption({children}: CaptionProps) {
   return <p className={styles.Caption}>{children}</p>;
 }

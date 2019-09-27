@@ -3,18 +3,18 @@ import debounce from 'lodash/debounce';
 import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
-import EventListener from '../../../EventListener';
+import {EventListener} from '../../../EventListener';
 import {ComplexAction, MenuGroupDescriptor} from '../../../../types';
-import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
+import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
 
-import Pagination, {PaginationDescriptor} from '../../../Pagination';
-import ActionMenu, {hasGroupsWithActions} from '../../../ActionMenu';
+import {Pagination, PaginationDescriptor} from '../../../Pagination';
+import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 
 import {HeaderPrimaryAction} from '../../types';
 import {Title, TitleProps} from './components';
 import styles from './Header.scss';
 
-export interface Props extends TitleProps {
+export interface HeaderProps extends TitleProps {
   /** Visually hide the title (stand-alone app use only) */
   titleHidden?: boolean;
   /** Adds a border to the bottom of the page header (stand-alone app use only) */
@@ -35,7 +35,7 @@ interface State {
   mobileView?: boolean;
 }
 
-export default class Header extends React.PureComponent<Props, State> {
+export class Header extends React.PureComponent<HeaderProps, State> {
   state: State = {
     mobileView: isMobileView(),
   };
@@ -114,11 +114,13 @@ export default class Header extends React.PureComponent<Props, State> {
       />
     );
 
+    const primary =
+      primaryAction &&
+      (primaryAction.primary === undefined ? true : primaryAction.primary);
+
     const primaryActionMarkup = primaryAction ? (
       <div className={styles.PrimaryActionWrapper}>
-        {buttonsFrom(primaryAction, {
-          primary: true,
-        })}
+        {buttonsFrom(primaryAction, {primary})}
       </div>
     ) : null;
 

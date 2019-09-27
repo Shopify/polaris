@@ -1,5 +1,1 @@
-import Backdrop from './Backdrop';
-
-export {Props as BackdropProps} from './Backdrop';
-
-export default Backdrop;
+export {Backdrop, BackdropProps} from './Backdrop';

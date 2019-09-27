@@ -5,12 +5,12 @@ import {
   withAppProvider,
 } from '../../utilities/with-app-provider';
 
-export interface State {
+interface State {
   isSticky: boolean;
   style: Object;
 }
 
-export type Props = {
+export type StickyProps = {
   /** Element outlining the fixed position boundaries */
   boundingElement?: HTMLElement | null;
   /** Offset vertical spacing from the top of the scrollable container */
@@ -21,7 +21,7 @@ export type Props = {
   | {children: React.ReactNode}
   | {children(isSticky: boolean): React.ReactNode});
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = StickyProps & WithAppProviderProps;
 
 class Sticky extends React.Component<CombinedProps, State> {
   state: State = {
@@ -122,4 +122,6 @@ function isFunction(arg: any): arg is Function {
   return typeof arg === 'function';
 }
 
-export default withAppProvider<Props>()(Sticky);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<StickyProps>()(Sticky);

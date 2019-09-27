@@ -2,7 +2,7 @@ import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {InlineError} from 'components';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Select from '../Select';
+import {Select} from '../Select';
 
 describe('<Select />', () => {
   describe('onChange()', () => {

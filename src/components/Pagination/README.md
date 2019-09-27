@@ -9,6 +9,7 @@ keywords:
   - lists
   - detail
   - page
+  - label
   - pager
   - previous
   - next
@@ -46,13 +47,7 @@ Web pagination should:
 iOS and Android pagination should:
 
 - Start loading items when merchants are close to the bottom, roughly 5 items from the end
-- Show [a spinner](/components/feedback-indicators/spinner) below the list to indicate that items have been requested
-
----
-
-## Content guidelines
-
-There are no editable content elements that are specific to the pagination component.
+- Show [a spinner](https://polaris.shopify.com/components/feedback-indicators/spinner) below the list to indicate that items have been requested
 
 ---
 
@@ -102,6 +97,24 @@ Attach standard keyboard shortcuts to important pagination controls.
 </div>
 ```
 
+### Pagination with label
+
+Add a label between navigation buttons to provide more context of the content being viewed by the user.
+
+```jsx
+<Pagination
+  label="Results"
+  hasPrevious
+  onPrevious={() => {
+    console.log('Previous');
+  }}
+  hasNext
+  onNext={() => {
+    console.log('Next');
+  }}
+/>
+```
+
 ### Infinite scroll
 
 <!-- example-for: ios, android -->
@@ -124,8 +137,8 @@ Use for lists longer than 25 items. In mobile apps it’s natural to scroll to t
 
 ## Related components
 
-- To see how pagination is used on a page, see the [page component](/components/structure/page)
-- To add primary and secondary calls to action at the bottom of a page, see the [page actions component](/components/structure/page-actions)
-- The [resource list component](/components/lists-and-tables/resource-list) is often combined with pagination to handle long lists of resources such as orders or customers
-- To create stand-alone navigational links or calls to action, use the [button component](/components/actions/button)
-- To embed actions or pathways to more information within a sentence, use the [link component](/components/navigation/link)
+- To see how pagination is used on a page, see the [page component](https://polaris.shopify.com/components/structure/page)
+- To add primary and secondary calls to action at the bottom of a page, see the [page actions component](https://polaris.shopify.com/components/structure/page-actions)
+- The [resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list) is often combined with pagination to handle long lists of resources such as orders or customers
+- To create stand-alone navigational links or calls to action, use the [button component](https://polaris.shopify.com/components/actions/button)
+- To embed actions or pathways to more information within a sentence, use the [link component](https://polaris.shopify.com/components/navigation/link)

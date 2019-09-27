@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Button, ButtonGroup} from 'components';
-import CalloutCard from '../CalloutCard';
+import {CalloutCard} from '../CalloutCard';
 
 describe('<CalloutCard />', () => {
   const illustration =

@@ -1,12 +1,13 @@
 import React from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
+import {TextStyle} from '../TextStyle';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {isInputFocused} from '../../utilities/is-input-focused';
-import Icon from '../Icon';
-import UnstyledLink from '../UnstyledLink';
-import Tooltip from '../Tooltip';
-import KeypressListener from '../KeypressListener';
+import {Icon} from '../Icon';
+import {UnstyledLink} from '../UnstyledLink';
+import {Tooltip} from '../Tooltip';
+import {KeypressListener} from '../KeypressListener';
 import {Key} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
@@ -35,14 +36,16 @@ export interface PaginationDescriptor {
   onNext?(): void;
   /** Callback when previous button is clicked */
   onPrevious?(): void;
+  /** Text to provide more context in between the arrow buttons */
+  label?: string;
 }
 
-export interface Props extends PaginationDescriptor {
+export interface PaginationProps extends PaginationDescriptor {
   /** A more subdued control for use in headers */
   plain?: boolean;
 }
 
-export default function Pagination({
+export function Pagination({
   hasNext,
   hasPrevious,
   nextURL,
@@ -55,21 +58,23 @@ export default function Pagination({
   previousKeys,
   plain,
   accessibilityLabel,
-}: Props) {
+  label,
+}: PaginationProps) {
   const intl = useI18n();
 
   const node: React.RefObject<HTMLElement> = React.createRef();
-  let label: string;
 
-  if (accessibilityLabel) {
-    label = accessibilityLabel;
-  } else {
-    label = intl.translate('Polaris.Pagination.pagination');
-  }
+  const navLabel =
+    accessibilityLabel || intl.translate('Polaris.Pagination.pagination');
 
   const className = classNames(styles.Pagination, plain && styles.plain);
-  const previousClassName = classNames(styles.Button, styles.PreviousButton);
-  const nextClassName = classNames(styles.Button, styles.NextButton);
+
+  const previousClassName = classNames(
+    styles.Button,
+    !label && styles.PreviousButton,
+  );
+
+  const nextClassName = classNames(styles.Button, !label && styles.NextButton);
 
   const previousButton = previousURL ? (
     <UnstyledLink
@@ -117,17 +122,19 @@ export default function Pagination({
     </button>
   );
 
-  const constructedPrevious = previousTooltip ? (
-    <Tooltip content={previousTooltip}>{previousButton}</Tooltip>
-  ) : (
-    previousButton
-  );
+  const constructedPrevious =
+    previousTooltip && hasPrevious ? (
+      <Tooltip content={previousTooltip}>{previousButton}</Tooltip>
+    ) : (
+      previousButton
+    );
 
-  const constructedNext = nextTooltip ? (
-    <Tooltip content={nextTooltip}>{nextButton}</Tooltip>
-  ) : (
-    nextButton
-  );
+  const constructedNext =
+    nextTooltip && hasNext ? (
+      <Tooltip content={nextTooltip}>{nextButton}</Tooltip>
+    ) : (
+      nextButton
+    );
 
   const previousButtonEvents =
     previousKeys &&
@@ -161,10 +168,24 @@ export default function Pagination({
       />
     ));
 
+  const labelTextMarkup =
+    hasNext && hasPrevious ? (
+      <TextStyle>{label}</TextStyle>
+    ) : (
+      <TextStyle variation="subdued">{label}</TextStyle>
+    );
+
+  const labelMarkup = label ? (
+    <div className={styles.Label} aria-live="polite">
+      {labelTextMarkup}
+    </div>
+  ) : null;
+
   return (
-    <nav className={className} aria-label={label} ref={node}>
+    <nav className={className} aria-label={navLabel} ref={node}>
       {previousButtonEvents}
       {constructedPrevious}
+      {labelMarkup}
       {nextButtonEvents}
       {constructedNext}
     </nav>

@@ -1,18 +1,19 @@
 import React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import OptionList, {OptionDescriptor} from '../../../OptionList';
-import ActionList from '../../../ActionList';
-import Popover from '../../../Popover';
+import {OptionList, OptionDescriptor} from '../../../OptionList';
+import {ActionList} from '../../../ActionList';
+import {Popover} from '../../../Popover';
 import {PreferredPosition} from '../../../PositionedOverlay';
 import {ActionListItemDescriptor, Key} from '../../../../types';
-import KeypressListener from '../../../KeypressListener';
+import {KeypressListener} from '../../../KeypressListener';
+import {EventListener} from '../../../EventListener';
 import {ComboBoxContext} from './context';
 
 import styles from './ComboBox.scss';
 
 const getUniqueId = createUniqueIDFactory('ComboBox');
 
-export interface State {
+interface State {
   comboBoxId: string;
   selectedOption?: OptionDescriptor | ActionListItemDescriptor | undefined;
   selectedIndex: number;
@@ -22,7 +23,7 @@ export interface State {
   popoverWasActive: boolean;
 }
 
-export interface Props {
+export interface ComboBoxProps {
   /** A unique identifier for the ComboBox */
   id?: string;
   /** Collection of options to be listed */
@@ -53,14 +54,14 @@ export interface Props {
   onEndReached?(): void;
 }
 
-export default class ComboBox extends React.PureComponent<Props, State> {
+export class ComboBox extends React.PureComponent<ComboBoxProps, State> {
   static getDerivedStateFromProps(
     {
       options: nextOptions,
       selected: nextSelected,
       actionsBefore: nextActionsBefore,
       actionsAfter: nextActionsAfter,
-    }: Props,
+    }: ComboBoxProps,
     {navigableOptions, selectedOptions, comboBoxId}: State,
   ) {
     const optionsChanged =
@@ -128,7 +129,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     });
   }
 
-  componentDidUpdate(_: Props, prevState: State) {
+  componentDidUpdate(_: ComboBoxProps, prevState: State) {
     const {contentBefore, contentAfter, emptyState} = this.props;
     const {navigableOptions, popoverWasActive} = this.state;
 
@@ -183,15 +184,13 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     } = this.props;
     const {comboBoxId, navigableOptions, selectedOptions} = this.state;
 
-    const actionsBeforeMarkup = actionsBefore &&
-      actionsBefore.length > 0 && (
-        <ActionList actionRole="option" items={actionsBefore} />
-      );
+    const actionsBeforeMarkup = actionsBefore && actionsBefore.length > 0 && (
+      <ActionList actionRole="option" items={actionsBefore} />
+    );
 
-    const actionsAfterMarkup = actionsAfter &&
-      actionsAfter.length > 0 && (
-        <ActionList actionRole="option" items={actionsAfter} />
-      );
+    const actionsAfterMarkup = actionsAfter && actionsAfter.length > 0 && (
+      <ActionList actionRole="option" items={actionsAfter} />
+    );
 
     const optionsMarkup = options.length > 0 && (
       <OptionList
@@ -238,7 +237,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
             keyCode={Key.UpArrow}
             handler={this.handleUpArrow}
           />
-          <KeypressListener keyCode={Key.Enter} handler={this.handleEnter} />
+          <EventListener event="keydown" handler={this.handleEnter} />
           <KeypressListener
             keyCode={Key.Escape}
             handler={this.handlePopoverClose}
@@ -281,11 +280,15 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     this.handlePopoverOpen;
   };
 
-  private handleEnter = () => {
-    const {selectedOption} = this.state;
+  private handleEnter = (event: KeyboardEvent) => {
+    if (event.keyCode !== Key.Enter) {
+      return;
+    }
 
+    const {selectedOption} = this.state;
     if (this.state.popoverActive && selectedOption) {
       if (isOption(selectedOption)) {
+        event.preventDefault();
         this.handleSelection(selectedOption.value);
       } else {
         selectedOption.onAction && selectedOption.onAction();
@@ -407,21 +410,26 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   };
 
   private selectOptionAtIndex = (newOptionIndex: number) => {
-    const {navigableOptions, selectedOption: oldSelectedOption} = this.state;
-    if (!navigableOptions || navigableOptions.length === 0) {
-      return;
-    }
-    const newSelectedOption = navigableOptions[newOptionIndex];
+    this.setState((prevState) => {
+      if (
+        !prevState.navigableOptions ||
+        prevState.navigableOptions.length === 0
+      ) {
+        return prevState;
+      }
+      const newSelectedOption = prevState.navigableOptions[newOptionIndex];
 
-    this.setState(
-      {
+      this.visuallyUpdateSelectedOption(
+        newSelectedOption,
+        prevState.selectedOption,
+      );
+
+      return {
+        ...prevState,
         selectedOption: newSelectedOption,
         selectedIndex: newOptionIndex,
-      },
-      () => {
-        this.visuallyUpdateSelectedOption(newSelectedOption, oldSelectedOption);
-      },
-    );
+      };
+    });
   };
 
   private visuallyUpdateSelectedOption = (

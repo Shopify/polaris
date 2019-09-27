@@ -4,26 +4,27 @@ import {durationBase} from '@shopify/polaris-tokens';
 import {CSSTransition, Transition} from '@material-ui/react-transition-group';
 import {classNames} from '../../../../utilities/css';
 import {DisableableAction, Action, ActionListSection} from '../../../../types';
-import ActionList from '../../../ActionList';
-import Popover from '../../../Popover';
-import Button from '../../../Button';
-import EventListener from '../../../EventListener';
+import {ActionList} from '../../../ActionList';
+import {Popover} from '../../../Popover';
+import {Button} from '../../../Button';
+import {EventListener} from '../../../EventListener';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../../../utilities/with-app-provider';
-import CheckableButton from '../CheckableButton';
+import {CheckableButton} from '../CheckableButton';
 import {BulkActionButton} from './components';
 import styles from './BulkActions.scss';
 
 export type BulkAction = DisableableAction;
+
 export type BulkActionListSection = ActionListSection;
 
 export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 const MAX_PROMOTED_ACTIONS = 2;
 
-export interface Props {
+export interface BulkActionsProps {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Label for the bulk actions */
@@ -48,7 +49,7 @@ export interface Props {
   onSelectModeToggle?(selectMode: boolean): void;
 }
 
-export interface State {
+interface State {
   smallScreenPopoverVisible: boolean;
   largeScreenPopoverVisible: boolean;
   containerWidth: number;
@@ -63,7 +64,7 @@ const slideClasses = {
   exit: classNames(styles.Slide, styles['Slide-exit']),
 };
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = BulkActionsProps & WithAppProviderProps;
 
 class BulkActions extends React.PureComponent<CombinedProps, State> {
   state: State = {
@@ -519,4 +520,6 @@ function instanceOfBulkActionArray(
   return actions.length === validList.length;
 }
 
-export default withAppProvider<Props>()(BulkActions);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<BulkActionsProps>()(BulkActions);

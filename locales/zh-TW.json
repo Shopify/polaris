@@ -149,9 +149,9 @@
       "ariaLiveSingular": "{itemsLength} 件商品",
       "ariaLivePlural": "{itemsLength} 件商品",
       "Item": {
-        "selectItem": "選擇：{accessibilityLabel}",
-        "deselectItem": "取消選擇：{accessibilityLabel}",
-        "actionsDropdown": "動作下拉式選單"
+        "actionsDropdownLabel": "{accessibilityLabel} 的動作",
+        "actionsDropdown": "動作下拉式選單",
+        "viewItem": "檢視 {itemName} 的詳細資訊"
       },
       "BulkActions": {
         "actionsActivatorLabel": "動作",
@@ -208,7 +208,7 @@
       "warningMessage": "{color} 這個顏色不能搭配{size}的轉盤。大型轉盤可以使用的顏色為：{colors}"
     },
     "Tabs": {
-      "toggleTabsLabel": "切換選單"
+      "toggleTabsLabel": "更多索引標籤"
     },
     "Tag": {
       "ariaLabel": "移除 {children}"

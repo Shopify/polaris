@@ -1,10 +1,10 @@
 import React from 'react';
 import {ViewMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import UserMenu, {Props} from '../UserMenu';
+import {UserMenu} from '../UserMenu';
 
 describe('<UserMenu />', () => {
-  const userMenuProps: Props = {
+  const userMenuProps = {
     actions: [{items: [{icon: ViewMinor}]}],
     name: '',
     initials: '',

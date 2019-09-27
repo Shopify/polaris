@@ -1,22 +1,18 @@
 import React from 'react';
+import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
-
-import ButtonGroup from '../ButtonGroup';
+import {useToggle} from '../../utilities/use-toggle';
 import {WithinContentContext} from '../../utilities/within-content-context';
+import {ButtonGroup} from '../ButtonGroup';
 import {DisableableAction, ComplexAction} from '../../types';
-import ActionList from '../ActionList';
-import Button, {buttonFrom} from '../Button';
-import Popover from '../Popover';
-
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
+import {ActionList} from '../ActionList';
+import {Button, buttonFrom} from '../Button';
+import {Popover} from '../Popover';
 
 import {Header, Section, Subsection} from './components';
 import styles from './Card.scss';
 
-export interface Props {
+export interface CardProps {
   /** Title content for the card */
   title?: React.ReactNode;
   /** Inner content of the card */
@@ -35,97 +31,88 @@ export interface Props {
   secondaryFooterActionsDisclosureText?: string;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+// TypeScript can't generate types that correctly infer the typing of
+// subcomponents so explicitly state the subcomponents in the type definition.
+// Letting this be implicit works in this project but fails in projects that use
+// generated *.d.ts files.
 
-export interface State {
-  secondaryFooterActionsPopoverOpen: boolean;
-}
+export const Card: React.FunctionComponent<CardProps> & {
+  Header: typeof Header;
+  Section: typeof Section;
+  Subsection: typeof Subsection;
+} = function Card({
+  children,
+  title,
+  subdued,
+  sectioned,
+  actions,
+  primaryFooterAction,
+  secondaryFooterActions,
+  secondaryFooterActionsDisclosureText,
+}: CardProps) {
+  const i18n = useI18n();
 
-class Card extends React.PureComponent<CombinedProps, State> {
-  static Section = Section;
-  static Header = Header;
-  static Subsection = Subsection;
+  const [
+    secondaryActionsPopoverOpen,
+    toggleSecondaryActionsPopoverOpen,
+  ] = useToggle(false);
 
-  state: State = {
-    secondaryFooterActionsPopoverOpen: false,
-  };
+  const className = classNames(styles.Card, subdued && styles.subdued);
 
-  render() {
-    const {
-      children,
-      title,
-      subdued,
-      sectioned,
-      actions,
-      primaryFooterAction,
-      secondaryFooterActions,
-      secondaryFooterActionsDisclosureText,
-      polaris: {intl},
-    } = this.props;
+  const headerMarkup =
+    title || actions ? <Header actions={actions} title={title} /> : null;
 
-    const className = classNames(styles.Card, subdued && styles.subdued);
+  const content = sectioned ? <Section>{children}</Section> : children;
 
-    const headerMarkup =
-      title || actions ? <Header actions={actions} title={title} /> : null;
+  const primaryFooterActionMarkup = primaryFooterAction
+    ? buttonFrom(primaryFooterAction, {primary: true})
+    : null;
 
-    const content = sectioned ? <Section>{children}</Section> : children;
-
-    const primaryFooterActionMarkup = primaryFooterAction
-      ? buttonFrom(primaryFooterAction, {primary: true})
-      : null;
-
-    let secondaryFooterActionsMarkup = null;
-    if (secondaryFooterActions && secondaryFooterActions.length) {
-      if (secondaryFooterActions.length === 1) {
-        secondaryFooterActionsMarkup = buttonFrom(secondaryFooterActions[0]);
-      } else {
-        secondaryFooterActionsMarkup = (
-          <React.Fragment>
-            <Popover
-              active={this.state.secondaryFooterActionsPopoverOpen}
-              activator={
-                <Button disclosure onClick={this.toggleSecondaryActionsPopover}>
-                  {secondaryFooterActionsDisclosureText ||
-                    intl.translate('Polaris.Common.more')}
-                </Button>
-              }
-              onClose={this.toggleSecondaryActionsPopover}
-            >
-              <ActionList items={secondaryFooterActions} />
-            </Popover>
-          </React.Fragment>
-        );
-      }
+  let secondaryFooterActionsMarkup = null;
+  if (secondaryFooterActions && secondaryFooterActions.length) {
+    if (secondaryFooterActions.length === 1) {
+      secondaryFooterActionsMarkup = buttonFrom(secondaryFooterActions[0]);
+    } else {
+      secondaryFooterActionsMarkup = (
+        <React.Fragment>
+          <Popover
+            active={secondaryActionsPopoverOpen}
+            activator={
+              <Button disclosure onClick={toggleSecondaryActionsPopoverOpen}>
+                {secondaryFooterActionsDisclosureText ||
+                  i18n.translate('Polaris.Common.more')}
+              </Button>
+            }
+            onClose={toggleSecondaryActionsPopoverOpen}
+          >
+            <ActionList items={secondaryFooterActions} />
+          </Popover>
+        </React.Fragment>
+      );
     }
-
-    const footerMarkup =
-      primaryFooterActionMarkup || secondaryFooterActionsMarkup ? (
-        <div className={styles.Footer}>
-          <ButtonGroup>
-            {secondaryFooterActionsMarkup}
-            {primaryFooterActionMarkup}
-          </ButtonGroup>
-        </div>
-      ) : null;
-
-    return (
-      <WithinContentContext.Provider value>
-        <div className={className}>
-          {headerMarkup}
-          {content}
-          {footerMarkup}
-        </div>
-      </WithinContentContext.Provider>
-    );
   }
 
-  private toggleSecondaryActionsPopover = () => {
-    this.setState(({secondaryFooterActionsPopoverOpen}) => {
-      return {
-        secondaryFooterActionsPopoverOpen: !secondaryFooterActionsPopoverOpen,
-      };
-    });
-  };
-}
+  const footerMarkup =
+    primaryFooterActionMarkup || secondaryFooterActionsMarkup ? (
+      <div className={styles.Footer}>
+        <ButtonGroup>
+          {secondaryFooterActionsMarkup}
+          {primaryFooterActionMarkup}
+        </ButtonGroup>
+      </div>
+    ) : null;
 
-export default withAppProvider<Props>()(Card);
+  return (
+    <WithinContentContext.Provider value>
+      <div className={className}>
+        {headerMarkup}
+        {content}
+        {footerMarkup}
+      </div>
+    </WithinContentContext.Provider>
+  );
+};
+
+Card.Header = Header;
+Card.Section = Section;
+Card.Subsection = Subsection;

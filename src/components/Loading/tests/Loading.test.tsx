@@ -2,7 +2,7 @@ import React from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
-import Loading from '../Loading';
+import {Loading} from '../Loading';
 
 describe('<Loading />', () => {
   beforeEach(() => {

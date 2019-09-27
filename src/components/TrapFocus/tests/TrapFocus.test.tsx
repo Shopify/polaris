@@ -7,19 +7,11 @@ import {
   TextField,
   Button,
 } from 'components';
-import TrapFocus from '../TrapFocus';
+import {TrapFocus} from '../TrapFocus';
 
 describe('<TrapFocus />', () => {
-  let requestAnimationFrameSpy: jest.SpyInstance;
-
-  beforeEach(() => {
-    requestAnimationFrameSpy = jest.spyOn(window, 'requestAnimationFrame');
-    requestAnimationFrameSpy.mockImplementation((cb) => cb());
-  });
-
   afterEach(() => {
     (document.activeElement as HTMLElement).blur();
-    requestAnimationFrameSpy.mockRestore();
   });
 
   it('mounts', () => {

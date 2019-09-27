@@ -6,12 +6,12 @@ import {
   mountWithAppProvider,
 } from 'test-utilities/legacy';
 import {Button, Select, Popover} from 'components';
-import FilterCreator, {Props} from '../FilterCreator';
-import FilterValueSelector from '../../FilterValueSelector';
+import {FilterCreator, FilterCreatorProps} from '../FilterCreator';
+import {FilterValueSelector} from '../../FilterValueSelector';
 import {FilterType} from '../../../types';
 
 describe('<FilterCreator />', () => {
-  const mockDefaultProps: Props = {
+  const mockDefaultProps: FilterCreatorProps = {
     filters: [
       {
         key: 'filterKey',
@@ -293,25 +293,28 @@ describe('<FilterCreator />', () => {
   });
 });
 
-function activatePopover(wrapper: ReactWrapper<Props, any>) {
+function activatePopover(wrapper: ReactWrapper<FilterCreatorProps, any>) {
   trigger(findByTestID(wrapper, 'FilterCreator-FilterActivator'), 'onClick');
 }
 
-function findFilterKeySelect(popover: ReactWrapper<Props, any>) {
+function findFilterKeySelect(popover: ReactWrapper<FilterCreatorProps, any>) {
   return popover.find(Select);
 }
 
-function selectFilterKey(wrapper: ReactWrapper<Props, any>, filterKey: string) {
+function selectFilterKey(
+  wrapper: ReactWrapper<FilterCreatorProps, any>,
+  filterKey: string,
+) {
   trigger(wrapper.find(Select), 'onChange', filterKey);
 }
 
 function selectFilterValue(
-  wrapper: ReactWrapper<Props, any>,
+  wrapper: ReactWrapper<FilterCreatorProps, any>,
   filterValue: string,
 ) {
   trigger(wrapper.find(FilterValueSelector), 'onChange', filterValue);
 }
 
-function clickAddFilter(wrapper: ReactWrapper<Props, any>) {
+function clickAddFilter(wrapper: ReactWrapper<FilterCreatorProps, any>) {
   trigger(findByTestID(wrapper, 'FilterCreator-AddFilterButton'), 'onClick');
 }

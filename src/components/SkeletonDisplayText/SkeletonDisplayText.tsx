@@ -4,7 +4,7 @@ import styles from './SkeletonDisplayText.scss';
 
 export type Size = 'small' | 'medium' | 'large' | 'extraLarge';
 
-export interface Props {
+export interface SkeletonDisplayTextProps {
   /**
    * Size of the text
    * @default 'medium'
@@ -12,7 +12,9 @@ export interface Props {
   size?: Size;
 }
 
-export default function SkeletonDisplayText({size = 'medium'}: Props) {
+export function SkeletonDisplayText({
+  size = 'medium',
+}: SkeletonDisplayTextProps) {
   const className = classNames(
     styles.DisplayText,
     size && styles[variationName('size', size)],

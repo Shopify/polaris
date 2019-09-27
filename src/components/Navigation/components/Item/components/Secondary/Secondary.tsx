@@ -1,23 +1,19 @@
 import React from 'react';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import Collapsible from '../../../../../Collapsible';
+import {useUniqueId} from '../../../../../../utilities/unique-id';
+import {Collapsible} from '../../../../../Collapsible';
 
 import styles from '../../../../Navigation.scss';
 
-const createSecondaryNavigationId = createUniqueIDFactory(
-  'SecondaryNavigation',
-);
-
-interface Props {
+interface SecondaryProps {
   expanded: boolean;
   children?: React.ReactNode;
 }
 
-export default function Secondary({children, expanded}: Props) {
-  const secondaryNavigationId = createSecondaryNavigationId();
+export function Secondary({children, expanded}: SecondaryProps) {
+  const id = useUniqueId('SecondaryNavigation');
   return (
-    <Collapsible id={secondaryNavigationId} open={expanded}>
+    <Collapsible id={id} open={expanded}>
       <ul className={styles.List}>{children}</ul>
     </Collapsible>
   );

@@ -3,6 +3,7 @@ import {Action} from '../Labelled';
 import {Error} from '../../types';
 
 export type DualValue = [number, number];
+
 export type RangeSliderValue = number | DualValue;
 
 export interface RangeSliderProps {

@@ -3,7 +3,7 @@ import {classNames} from '../../utilities/css';
 
 import styles from './Label.scss';
 
-export interface Props {
+export interface LabelProps {
   /** Label content */
   children?: string;
   /** A unique identifier for the label */
@@ -16,7 +16,7 @@ export function labelID(id: string) {
   return `${id}Label`;
 }
 
-export default function Label({children, id, hidden}: Props) {
+export function Label({children, id, hidden}: LabelProps) {
   const className = classNames(styles.Label, hidden && styles.hidden);
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import ThemeProvider from '../ThemeProvider';
+import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext} from '../../../utilities/theme';
 
 describe('<ThemeProvider />', () => {

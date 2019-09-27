@@ -1,4 +1,7 @@
-import Filters from './Filters';
+import Filters, {
+  FiltersProps,
+  AppliedFilterInterface,
+  FilterInterface,
+} from './Filters';
 
-export * from './Filters';
-export default Filters;
+export {Filters, FiltersProps, AppliedFilterInterface, FilterInterface};

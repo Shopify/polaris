@@ -1,4 +1,1 @@
-import Layout from './Layout';
-
-export {Props} from './Layout';
-export default Layout;
+export {Layout, LayoutProps} from './Layout';

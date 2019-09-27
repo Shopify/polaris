@@ -2,7 +2,8 @@ import React from 'react';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Spinner} from 'components';
-import Autocomplete from '..';
+import {Key} from '../../../types';
+import {Autocomplete} from '..';
 import {ComboBox} from '../components';
 
 describe('<Autocomplete/>', () => {
@@ -89,6 +90,29 @@ describe('<Autocomplete/>', () => {
       expect(autocomplete.find(ComboBox).prop('emptyState')).toStrictEqual(
         <EmptyState />,
       );
+    });
+
+    it('`Enter` keypress in <Autocomplete/> does not trigger `onSubmit` when wrapped in a <form>', () => {
+      const spy = jest.fn();
+
+      const autocomplete = mountWithAppProvider(
+        <form style={{height: '225px'}} onSubmit={spy}>
+          <Autocomplete
+            options={options}
+            selected={[]}
+            textField={renderTextField()}
+            onSelect={noop}
+            loading
+          />
+        </form>,
+      );
+
+      autocomplete.find(Autocomplete).simulate('click');
+      autocomplete
+        .find(Autocomplete)
+        .simulate('keyup', {keyCode: Key.DownArrow});
+      autocomplete.find(Autocomplete).simulate('keyDown', {keyCode: Key.Enter});
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 

@@ -283,5 +283,5 @@ class SheetExample extends React.Component {
 
 ## Related components
 
-- To offer an action before merchants can go to the next step in the flow, use the [modal component](/components/overlays/modal)
-- To present a small amount of content or a menu of actions in a non-blocking overlay, use the [popover component](/components/overlays/popover)
+- To offer an action before merchants can go to the next step in the flow, use the [modal component](https://polaris.shopify.com/components/overlays/modal)
+- To present a small amount of content or a menu of actions in a non-blocking overlay, use the [popover component](https://polaris.shopify.com/components/overlays/popover)

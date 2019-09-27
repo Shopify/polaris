@@ -149,9 +149,9 @@
       "ariaLiveSingular": "{itemsLength} article",
       "ariaLivePlural": "{itemsLength} articles",
       "Item": {
-        "selectItem": "Sélectionner : {accessibilityLabel}",
-        "deselectItem": "Désélectionner : {accessibilityLabel}",
-        "actionsDropdown": "Actions de la liste déroulante"
+        "actionsDropdownLabel": "Actions pour {accessibilityLabel}",
+        "actionsDropdown": "Actions de la liste déroulante",
+        "viewItem": "Afficher les détails de {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Actions",
@@ -208,7 +208,7 @@
       "warningMessage": "La couleur {color} n'est pas destinée à être utilisée sur les boutons fléchés de {size}. Les couleurs disponibles sur les grands boutons fléchés sont : {colors}"
     },
     "Tabs": {
-      "toggleTabsLabel": "Menu toggle"
+      "toggleTabsLabel": "Plus d'onglets"
     },
     "Tag": {
       "ariaLabel": "Supprimer {children}"

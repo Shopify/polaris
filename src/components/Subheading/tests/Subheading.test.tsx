@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Button} from 'components';
-import Subheading from '../Subheading';
+import {Subheading} from '../Subheading';
 
 describe('<Subheading />', () => {
   describe('children', () => {

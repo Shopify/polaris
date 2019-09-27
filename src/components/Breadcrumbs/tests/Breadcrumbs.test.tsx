@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {CallbackAction, LinkAction} from '../../../types';
-import Breadcrumbs from '../Breadcrumbs';
+import {Breadcrumbs} from '../Breadcrumbs';
 
 describe('<Breadcrumbs />', () => {
   describe('url', () => {

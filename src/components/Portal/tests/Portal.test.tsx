@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Portal from '../Portal';
+import {Portal} from '../Portal';
 
 jest.mock('react-dom', () => ({
   ...require.requireActual('react-dom'),

@@ -18,7 +18,15 @@ Fixes #0000 <!-- link to issue if one exists -->
 
 <!--
   Summary of the changes committed.
-  Before / after screenshots appreciated for UI changes.
+
+  Before / after screenshots are appreciated for UI changes. Make sure to include alt text that describes the screenshot.
+
+  If you include an animated gif showing your change, wrapping it in a details tag is recommended. Gifs usually autoplay, which can cause accessibility issues for people reviewing your PR:
+
+    <details>
+      <summary>Summary of your gif(s)</summary>
+      <img src="..." alt="Description of what the gif shows">
+    </details>
 -->
 
 ## <!-- ℹ️ Delete the following for small / trivial changes -->
@@ -41,7 +49,7 @@ Fixes #0000 <!-- link to issue if one exists -->
 import React from 'react';
 import {Page} from '../src';
 
-export default function Playground() {
+export function Playground() {
   return (
     <Page title="Playground">
       {/* Add the code you want to test in here */}
@@ -60,6 +68,7 @@ export default function Playground() {
 * [ ] Tested for [accessibility](https://github.com/Shopify/polaris-react/blob/master/documentation/Accessibility%20testing.md)
 * [ ] Updated the component's `README.md` with documentation changes
 * [ ] [Tophatted documentation](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting%20documentation.md) changes in the style guide
+* [ ] For visual design changes, pinged one of @ HYPD, @ mirualves, @ sarahill, or @ ry5n to update the [Polaris UI kit](https://polaris.shopify.com/resources/polaris-ui-kit)
 
 <!--
   When tophatting, please check the UNRELEASED entry for consistency, as per the [guidelines](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md).

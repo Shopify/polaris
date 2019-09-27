@@ -149,9 +149,9 @@
       "ariaLiveSingular": "{itemsLength} item",
       "ariaLivePlural": "{itemsLength} itens",
       "Item": {
-        "selectItem": "Selecionar: {accessibilityLabel}",
-        "deselectItem": "Desmarcar: {accessibilityLabel}",
-        "actionsDropdown": "Menu suspenso Ações"
+        "actionsDropdownLabel": "Ações para {accessibilityLabel}",
+        "actionsDropdown": "Menu suspenso Ações",
+        "viewItem": "Visualizar detalhes de {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Ações",
@@ -208,7 +208,7 @@
       "warningMessage": "A cor {color} não é para ser usada spinners de {size}. As cores disponíveis em grandes spinners são: {colors}"
     },
     "Tabs": {
-      "toggleTabsLabel": "Alternar menu"
+      "toggleTabsLabel": "Mais abas"
     },
     "Tag": {
       "ariaLabel": "Remover {children}"

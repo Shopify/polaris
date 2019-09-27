@@ -7,9 +7,9 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
-import Choice, {helpTextID} from '../Choice';
+import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
-import Icon from '../Icon';
+import {Icon} from '../Icon';
 import {Error, Key} from '../../types';
 
 import styles from './Checkbox.scss';
@@ -43,8 +43,8 @@ export interface BaseProps {
   onBlur?(): void;
 }
 
-export interface Props extends BaseProps {}
-type CombinedProps = Props & WithAppProviderProps;
+export interface CheckboxProps extends BaseProps {}
+type CombinedProps = CheckboxProps & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('Checkbox');
 
@@ -162,4 +162,6 @@ function stopPropagation<E>(event: React.MouseEvent<E>) {
   event.stopPropagation();
 }
 
-export default withAppProvider<Props>()(Checkbox);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<CheckboxProps>()(Checkbox);

@@ -1,11 +1,11 @@
 import React from 'react';
 
 import {ComplexAction} from '../../types';
-import SettingAction from '../SettingAction';
+import {SettingAction} from '../SettingAction';
 import {buttonFrom} from '../Button';
-import Card from '../Card';
+import {Card} from '../Card';
 
-export interface Props {
+export interface SettingToggleProps {
   /** Inner content of the card */
   children?: React.ReactNode;
   /** Card header actions */
@@ -14,7 +14,7 @@ export interface Props {
   enabled?: boolean;
 }
 
-export default function SettingToggle({enabled, action, children}: Props) {
+export function SettingToggle({enabled, action, children}: SettingToggleProps) {
   const actionMarkup = action ? buttonFrom(action, {primary: !enabled}) : null;
 
   return (

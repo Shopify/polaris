@@ -149,9 +149,9 @@
       "ariaLiveSingular": "{itemsLength}個のアイテム",
       "ariaLivePlural": "{itemsLength}個のアイテム",
       "Item": {
-        "selectItem": "選択: {accessibilityLabel}",
-        "deselectItem": "選択解除: {accessibilityLabel}",
-        "actionsDropdown": "アクションドロップダウン"
+        "actionsDropdownLabel": "{accessibilityLabel}のアクション",
+        "actionsDropdown": "アクションドロップダウン",
+        "viewItem": "{itemName}の詳細を表示する"
       },
       "BulkActions": {
         "actionsActivatorLabel": "アクション",
@@ -208,7 +208,7 @@
       "warningMessage": "{color}色は{size}のスピナーでは使用されていません。大きなスピナーで利用可能な色は次のとおりです: {colors}"
     },
     "Tabs": {
-      "toggleTabsLabel": "メニューを切り替える"
+      "toggleTabsLabel": "その他のタブ"
     },
     "Tag": {
       "ariaLabel": "{children}を削除する"

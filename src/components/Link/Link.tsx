@@ -4,19 +4,19 @@ import {ExternalSmallMinor} from '@shopify/polaris-icons';
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import UnstyledLink from '../UnstyledLink';
-import Icon from '../Icon';
+import {UnstyledLink} from '../UnstyledLink';
+import {Icon} from '../Icon';
 
 import styles from './Link.scss';
 
-export interface Props {
+export interface LinkProps {
   /** ID for the link */
   id?: string;
   /** The url to link to */
   url?: string;
-  /** The content to display inside link */
+  /** The content to display inside the link */
   children?: React.ReactNode;
-  /** Use for a links that open a different site */
+  /** Makes the link open in a new tab */
   external?: boolean;
   /** Makes the link color the same as the current text color and adds an underline */
   monochrome?: boolean;
@@ -24,14 +24,14 @@ export interface Props {
   onClick?(): void;
 }
 
-export default function Link({
+export function Link({
   url,
   children,
   onClick,
   external,
   id,
   monochrome,
-}: Props) {
+}: LinkProps) {
   const intl = useI18n();
   let childrenMarkup = children;
 

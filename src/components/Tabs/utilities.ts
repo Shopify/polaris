@@ -8,7 +8,6 @@ export function getVisibleAndHiddenTabIndices(
   containerWidth: number,
 ) {
   const sumTabWidths = tabWidths.reduce((sum, width) => sum + width, 0);
-
   const arrayOfTabIndices = tabs.map((_, index) => {
     return index;
   });
@@ -20,16 +19,20 @@ export function getVisibleAndHiddenTabIndices(
     visibleTabs.push(...arrayOfTabIndices);
   } else {
     visibleTabs.push(selected);
-    let newTabWidth: number = tabWidths[selected];
 
-    arrayOfTabIndices.forEach((index) => {
-      if (index !== selected) {
-        if (newTabWidth + tabWidths[index] > containerWidth - disclosureWidth) {
-          hiddenTabs.push(index);
+    let tabListWidth = tabWidths[selected];
+
+    arrayOfTabIndices.forEach((currentTabIndex) => {
+      if (currentTabIndex !== selected) {
+        const currentTabWidth = tabWidths[currentTabIndex];
+
+        if (tabListWidth + currentTabWidth > containerWidth - disclosureWidth) {
+          hiddenTabs.push(currentTabIndex);
           return;
         }
-        visibleTabs.push(index);
-        newTabWidth += tabWidths[index];
+
+        visibleTabs.push(currentTabIndex);
+        tabListWidth += currentTabWidth;
       }
     });
   }

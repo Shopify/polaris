@@ -2,19 +2,19 @@ import React from 'react';
 import {createPortal} from 'react-dom';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-export interface Props {
+export interface PortalProps {
   children?: React.ReactNode;
   idPrefix?: string;
   onPortalCreated?(): void;
 }
 
-export interface State {
+interface State {
   isMounted: boolean;
 }
 
 const getUniqueID = createUniqueIDFactory('portal-');
 
-export default class Portal extends React.PureComponent<Props, State> {
+export class Portal extends React.PureComponent<PortalProps, State> {
   static defaultProps = {idPrefix: ''};
 
   state: State = {isMounted: false};
@@ -33,7 +33,7 @@ export default class Portal extends React.PureComponent<Props, State> {
     this.setState({isMounted: true});
   }
 
-  componentDidUpdate(_: Props, prevState: State) {
+  componentDidUpdate(_: PortalProps, prevState: State) {
     const {onPortalCreated = noop} = this.props;
     if (!prevState.isMounted && this.state.isMounted) {
       onPortalCreated();

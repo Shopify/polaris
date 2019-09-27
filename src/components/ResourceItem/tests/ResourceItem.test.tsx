@@ -10,11 +10,12 @@ import {
   Checkbox,
   Thumbnail,
   UnstyledLink,
+  Button,
 } from 'components';
-import {ResourceListContext} from '../../../context';
-import Item from '../Item';
+import {ResourceListContext} from '../../../utilities/resource-list';
+import {ResourceItem} from '../ResourceItem';
 
-describe('<Item />', () => {
+describe('<ResourceItem />', () => {
   let spy: jest.SpyInstance;
 
   beforeEach(() => {
@@ -40,6 +41,7 @@ describe('<Item />', () => {
   const itemId = 'itemId';
   const selectedItemId = 'selectedId';
   const accessibilityLabel = 'link anchor aria-label';
+  const name = 'item name';
 
   const mockSelectableContext = {
     ...mockDefaultContext,
@@ -73,7 +75,7 @@ describe('<Item />', () => {
     it('is used on the <UnstyledLink /> for the aria-label attribute', () => {
       const item = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item
+          <ResourceItem
             accessibilityLabel={accessibilityLabel}
             id={itemId}
             url="https://shopify.com"
@@ -87,11 +89,85 @@ describe('<Item />', () => {
     });
   });
 
+  describe('name', () => {
+    it('is used as the Checkbox label', () => {
+      const item = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockSelectableContext}>
+          <ResourceItem
+            accessibilityLabel={accessibilityLabel}
+            id={itemId}
+            url="https://shopify.com"
+            name={name}
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      const expectedLabel = name;
+
+      expect(item.find(Checkbox).prop('label')).toBe(expectedLabel);
+    });
+
+    it('is used on <UnstyledLink /> for the aria-label attribute if an `accessibilityLabel` is not provided', () => {
+      const item = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockSelectableContext}>
+          <ResourceItem id={itemId} url="https://shopify.com" name={name} />
+        </ResourceListContext.Provider>,
+      );
+
+      const expectedLabel = `View details for ${name}`;
+
+      expect(item.find(UnstyledLink).prop('aria-label')).toBe(expectedLabel);
+    });
+
+    it('is used on the disclosure action menu when there are persistent actions', () => {
+      const item = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockSelectableContext}>
+          <ResourceItem
+            accessibilityLabel={accessibilityLabel}
+            id={selectedItemId}
+            url="https://shopify.com"
+            name={name}
+            shortcutActions={[{content: 'action'}]}
+            persistActions
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      const expectedLabel = `Actions for ${name}`;
+
+      expect(
+        item
+          .find(Button)
+          .findWhere(
+            (node) => node.prop('accessibilityLabel') === expectedLabel,
+          ),
+      ).toHaveLength(1);
+    });
+  });
+
+  describe('ResourceName.singular', () => {
+    it('is used on <UnstyledLink /> for the aria-label attribute if a `name` and `accessibilityLabel` is not provided', () => {
+      const item = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem id={itemId} url="https://shopify.com" />
+        </ResourceListContext.Provider>,
+      );
+
+      const expectedLabel = `View details for ${mockDefaultContext.resourceName.singular}`;
+
+      expect(item.find(UnstyledLink).prop('aria-label')).toBe(expectedLabel);
+    });
+  });
+
   describe('url', () => {
     it('does not render an <UnstyledLink /> by default', () => {
       const element = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id="itemId" onClick={noop} accessibilityLabel={ariaLabel} />
+          <ResourceItem
+            id="itemId"
+            onClick={noop}
+            accessibilityLabel={ariaLabel}
+          />
         </ResourceListContext.Provider>,
       );
 
@@ -101,7 +177,7 @@ describe('<Item />', () => {
     it('renders an <UnstyledLink />', () => {
       const element = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />
+          <ResourceItem id="itemId" url={url} accessibilityLabel={ariaLabel} />
         </ResourceListContext.Provider>,
       );
 
@@ -111,7 +187,7 @@ describe('<Item />', () => {
     it('renders an <UnstyledLink /> with url', () => {
       const element = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />
+          <ResourceItem id="itemId" url={url} accessibilityLabel={ariaLabel} />
         </ResourceListContext.Provider>,
       );
 
@@ -121,7 +197,7 @@ describe('<Item />', () => {
     it('renders an <UnstyledLink /> with an aria-label of ariaLabel', () => {
       const element = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />
+          <ResourceItem id="itemId" url={url} accessibilityLabel={ariaLabel} />
         </ResourceListContext.Provider>,
       );
 
@@ -131,7 +207,7 @@ describe('<Item />', () => {
     it('adds a data-href to the wrapper element', () => {
       const element = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id="itemId" url={url} />
+          <ResourceItem id="itemId" url={url} />
         </ResourceListContext.Provider>,
       );
 
@@ -143,7 +219,7 @@ describe('<Item />', () => {
     it('is used on the content node and for the description of a link', () => {
       const item = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item
+          <ResourceItem
             id={itemId}
             url="https://shopify.com"
             accessibilityLabel={ariaLabel}
@@ -161,7 +237,11 @@ describe('<Item />', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id={itemId} onClick={onClick} accessibilityLabel={ariaLabel} />
+          <ResourceItem
+            id={itemId}
+            onClick={onClick}
+            accessibilityLabel={ariaLabel}
+          />
         </ResourceListContext.Provider>,
       );
 
@@ -173,7 +253,7 @@ describe('<Item />', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item
+          <ResourceItem
             id={itemId}
             onClick={onClick}
             url={url}
@@ -189,7 +269,7 @@ describe('<Item />', () => {
     it('calls window.open on metaKey + click', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id={itemId} url={url} accessibilityLabel={ariaLabel} />
+          <ResourceItem id={itemId} url={url} accessibilityLabel={ariaLabel} />
         </ResourceListContext.Provider>,
       );
       const item = findByTestID(wrapper, 'Item-Wrapper');
@@ -204,7 +284,7 @@ describe('<Item />', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id={itemId} url="#" onClick={onClick} />
+          <ResourceItem id={itemId} url="#" onClick={onClick} />
         </ResourceListContext.Provider>,
       );
 
@@ -219,7 +299,7 @@ describe('<Item />', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id={itemId} url="#" onClick={onClick} />
+          <ResourceItem id={itemId} url="#" onClick={onClick} />
         </ResourceListContext.Provider>,
       );
 
@@ -234,7 +314,7 @@ describe('<Item />', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockSelectModeContext}>
-          <Item id={itemId} onClick={onClick} />
+          <ResourceItem id={itemId} onClick={onClick} />
         </ResourceListContext.Provider>,
       );
 
@@ -248,7 +328,7 @@ describe('<Item />', () => {
     it('calls window.open on ctrlKey + click', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id={itemId} url={url} accessibilityLabel={ariaLabel} />
+          <ResourceItem id={itemId} url={url} accessibilityLabel={ariaLabel} />
         </ResourceListContext.Provider>,
       );
       const item = findByTestID(wrapper, 'Item-Wrapper');
@@ -265,7 +345,7 @@ describe('<Item />', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockSelectableContext}>
-          <Item id={itemId} onClick={onClick} />
+          <ResourceItem id={itemId} onClick={onClick} />
         </ResourceListContext.Provider>,
       );
 
@@ -277,7 +357,7 @@ describe('<Item />', () => {
       const sortOrder = 0;
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockSelectableContext}>
-          <Item id={itemId} url={url} sortOrder={sortOrder} />
+          <ResourceItem id={itemId} url={url} sortOrder={sortOrder} />
         </ResourceListContext.Provider>,
       );
 
@@ -298,7 +378,11 @@ describe('<Item />', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockSelectModeContext}>
-          <Item id={itemId} onClick={onClick} accessibilityLabel={ariaLabel} />
+          <ResourceItem
+            id={itemId}
+            onClick={onClick}
+            accessibilityLabel={ariaLabel}
+          />
         </ResourceListContext.Provider>,
       );
 
@@ -311,7 +395,7 @@ describe('<Item />', () => {
       const sortOrder = 0;
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockSelectModeContext}>
-          <Item
+          <ResourceItem
             id={itemId}
             url={url}
             onClick={onClick}
@@ -335,7 +419,7 @@ describe('<Item />', () => {
     it('renders a checked Checkbox if the item is in the selectedItems context', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockSelectableContext}>
-          <Item id={selectedItemId} url={url} />
+          <ResourceItem id={selectedItemId} url={url} />
         </ResourceListContext.Provider>,
       );
       expect(wrapper.find(Checkbox).props().checked).toBe(true);
@@ -344,7 +428,7 @@ describe('<Item />', () => {
     it('does not call window.open when clicking the item with metaKey', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockSelectModeContext}>
-          <Item id={selectedItemId} url={url} />
+          <ResourceItem id={selectedItemId} url={url} />
         </ResourceListContext.Provider>,
       );
       findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
@@ -356,7 +440,7 @@ describe('<Item />', () => {
     it('does not call window.open when clicking the item with ctrlKey', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockSelectModeContext}>
-          <Item id={selectedItemId} url={url} />
+          <ResourceItem id={selectedItemId} url={url} />
         </ResourceListContext.Provider>,
       );
       findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
@@ -370,7 +454,7 @@ describe('<Item />', () => {
     it('does not include media if not provided', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id={itemId} url={url} />
+          <ResourceItem id={itemId} url={url} />
         </ResourceListContext.Provider>,
       );
       expect(findByTestID(wrapper, 'Media').exists()).toBe(false);
@@ -379,7 +463,7 @@ describe('<Item />', () => {
     it('renders a disabled checked Checkbox if loading context is true', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockLoadingContext}>
-          <Item id={selectedItemId} url={url} />
+          <ResourceItem id={selectedItemId} url={url} />
         </ResourceListContext.Provider>,
       );
       expect(wrapper.find(Checkbox).prop('disabled')).toBe(true);
@@ -388,7 +472,7 @@ describe('<Item />', () => {
     it('includes an <Avatar /> if one is provided', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id={itemId} url={url} media={<Avatar customer />} />
+          <ResourceItem id={itemId} url={url} media={<Avatar customer />} />
         </ResourceListContext.Provider>,
       );
       expect(
@@ -401,7 +485,7 @@ describe('<Item />', () => {
     it('includes a <Thumbnail /> if one is provided', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item
+          <ResourceItem
             id={itemId}
             url={url}
             media={<Thumbnail source="source" alt="alt" />}
@@ -420,7 +504,7 @@ describe('<Item />', () => {
     it('does not render shortcut actions if none are provided', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id={itemId} url={url} />
+          <ResourceItem id={itemId} url={url} />
         </ResourceListContext.Provider>,
       );
       expect(findByTestID(wrapper, 'ShortcutActions').exists()).toBe(false);
@@ -429,7 +513,11 @@ describe('<Item />', () => {
     it('renders shortcut actions when some are provided', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item id={itemId} url={url} shortcutActions={[{content: 'action'}]} />
+          <ResourceItem
+            id={itemId}
+            url={url}
+            shortcutActions={[{content: 'action'}]}
+          />
         </ResourceListContext.Provider>,
       );
       expect(findByTestID(wrapper, 'ShortcutActions').exists()).toBe(true);
@@ -438,7 +526,7 @@ describe('<Item />', () => {
     it('renders persistent shortcut actions if persistActions is true', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item
+          <ResourceItem
             id={itemId}
             url={url}
             shortcutActions={[{content: 'action'}]}
@@ -452,7 +540,7 @@ describe('<Item />', () => {
     it('does not render while loading', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={{...mockLoadingContext}}>
-          <Item
+          <ResourceItem
             id={itemId}
             url={url}
             shortcutActions={[{content: 'action'}]}
@@ -468,7 +556,7 @@ describe('<Item />', () => {
     it('renders with a tab index of -1 when loading is true', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockLoadingContext}>
-          <Item
+          <ResourceItem
             id={itemId}
             url={url}
             shortcutActions={[{content: 'action'}]}
@@ -482,7 +570,7 @@ describe('<Item />', () => {
     it('renders with a tab index of 0 when loading is false', () => {
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <Item
+          <ResourceItem
             id={itemId}
             url={url}
             shortcutActions={[{content: 'action'}]}

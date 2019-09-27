@@ -8,6 +8,138 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.3.0 - 2019-09-23
+
+### Enhancements
+
+- Added new label prop to `Pagination` which is used to insert contextual info between navigation buttons ([#2098](https://github.com/Shopify/polaris-react/pull/2098))
+- Updated `trigger` to use `act` ([#2141](https://github.com/Shopify/polaris-react/pull/2141))
+- Changed border color of `Drop zone` to have better contrast from the background and to be lighter when disabled ([#2119](https://github.com/Shopify/polaris-react/pull/2119))
+- Adjusted search results overlay to take up 100% height of the screen on small screens and to match the width of the search bar on large screens. ([#2103](https://github.com/Shopify/polaris-react/pull/2103))
+- Added skipToContentTarget prop to Frame component ([#2080](https://github.com/Shopify/polaris-react/pull/2080))
+
+### Bug fixes
+
+- Updated `Card` footer actions to be left aligned instead of right by default ([#2075](https://github.com/Shopify/polaris-react/issues/2075))
+- Fixed vertical alignment of Tabs disclosure activator ([#2087](https://github.com/Shopify/polaris-react/pull/2087))
+- Fixed `Modal` setting an invalid `id` on `aria-labelledby` when no `title` is set ([#2115](https://github.com/Shopify/polaris-react/pull/2115))
+- Fixed error warnings in `Card` and `RollupActions` tests ([#2125](https://github.com/Shopify/polaris-react/pull/2125))
+- Fixed modal border not being visible in Windows high contrast mode ([#2114](https://github.com/Shopify/polaris-react/pull/2114))
+- Added default accessibility label from `ResourceItem` ([#2097](https://github.com/Shopify/polaris-react/pull/2097))
+- Reverted `Page.primaryAction` forcing `primary` to be `true` ([#2137](https://github.com/Shopify/polaris-react/pull/2137))
+- Removed `React.Children.only` from `AppProvider`and `ThemeProvider` ([#2121](https://github.com/Shopify/polaris-react/pull/2121))
+- Fixed visual bug where button width changed in Filters component. Thank you to [@alexieyizhe](https://github.com/alexieyizhe) for the contribution ([#2003](https://github.com/Shopify/polaris-react/pull/2003)).
+- Changed `text-rendering` to `auto` in `Select` to prevent Safari 13 from crashing ([#2179](https://github.com/Shopify/polaris-react/pull/2179))
+
+### Documentation
+
+- Converted `Autocomplete`, `Banner`, and `ChoiceList` examples to functional components ([#2127](https://github.com/Shopify/polaris-react/pull/2127))
+- Converted `Collapsible`, `ColorPicker`, and `DataTable` examples to functional components ([#2128](https://github.com/Shopify/polaris-react/pull/2128))
+- Converted `Modal`, `OptionList`, and `Popover` examples to functional components ([#2131](https://github.com/Shopify/polaris-react/pull/2131))
+- Converted `RadioButton`, `RangeSlider`, and `ResourceItem` examples to functional components ([#2132](https://github.com/Shopify/polaris-react/pull/2132))
+- Converted `ResourceList`, `ResourcePicker`, and `Select` examples to functional components ([#2133](https://github.com/Shopify/polaris-react/pull/2133))
+- Converted `TextField`, `Toast`, and `TopBar` examples to functional components ([#2135](https://github.com/Shopify/polaris-react/pull/2135))
+- Updated the `withContext` section in the [v3 to v4 migration guide](https://github.com/Shopify/polaris-react/blob/master/documentation/guides/migrating-from-v3-to-v4.md) ([#2124](https://github.com/Shopify/polaris-react/pull/2124))
+- Clarified when to use the `external` prop on the `Link` component ([#2153](https://github.com/Shopify/polaris-react/pull/2153))
+- Updated documentation examples to include disclosure on `Popover` activators ([#2171](https://github.com/Shopify/polaris-react/pull/2171))
+
+### Development workflow
+
+- Added [`yarn splash` (beta)](/scripts/splash/), a command-line interface to observe the splash zone of a change across the component library ([#2113](https://github.com/Shopify/polaris-react/pull/2113))
+- Updated Storybook – [v5.2 release notes](https://medium.com/storybookjs/storybook-5-2-794958b9b111) ([#2157](https://github.com/Shopify/polaris-react/pull/2157))
+
+### Code quality
+
+- Added `useLazyRef` hook to use while building components ([#2166](https://github.com/Shopify/polaris-react/pull/2166))
+- Migrated `FilterCreator` to use hooks instead of withAppProvider ([#2156](https://github.com/Shopify/polaris-react/pull/2156))
+- Created a custom error for lack of context providers ([#2136](https://github.com/Shopify/polaris-react/pull/2136))
+- Migrated `ContextualSaveBar` to use hooks instead of `withAppProvider`. Thank you to [@sijad](https://github.com/sijad) for the contribution ([#2091](https://github.com/Shopify/polaris-react/pull/2091)).
+- Migrated `RangeSlider`, `ScrollLock` and `TopBar.SearchField` to use hooks instead of withAppProvider ([#2083](https://github.com/Shopify/polaris-react/pull/2083))
+- Updated `ResourceItem` to no longer rely on withAppProvider ([#2094](https://github.com/Shopify/polaris-react/pull/2094))
+- Migrated `TextField` and `Resizer` to use hooks ([#1997](https://github.com/Shopify/polaris-react/pull/1997))
+- Migrated `Avatar` to use hooks instead of withAppProvider ([#2067](https://github.com/Shopify/polaris-react/pull/2067))
+- Updated `Day` and `DatePicker` to use hooks ([#2089](https://github.com/Shopify/polaris-react/pull/2089))
+
+## 4.2.1 - 2019-09-10
+
+### Bug fixes
+
+- Fixed TypeScript not generating correct types for functional components that have subcomponents ([#2111](https://github.com/Shopify/polaris-react/pull/2111))
+
+## 4.2.0 - 2019-09-09
+
+### Enhancements
+
+- Added support for min/max dates in `TextField` by setting a string on `min` and `max` props ([#1991](https://github.com/Shopify/polaris-react/pull/1991))
+- Made the `title` prop on `Page` optional, supporting continued use of `Page` for structure in apps using the App Bridge React [`TitleBar`](https://github.com/Shopify/app-bridge/tree/master/packages/app-bridge-react/src/components/TitleBar) ([#2082](https://github.com/Shopify/polaris-react/pull/2082))
+
+### Bug fixes
+
+- Fixed inconsistent padding of sections in `Modal` ([#2072](https://github.com/Shopify/polaris-react/pull/2072))
+- Fixed animation for Modal when being rendered asynchronously ([#2076](https://github.com/Shopify/polaris-react/pull/2076))
+- Fixed item content from overflowing past the container in `Stack` ([#2071](https://github.com/Shopify/polaris-react/pull/2071))
+- Fixed `Dropzone` hover, disabled, and focus states ([#1994](https://github.com/Shopify/polaris-react/pull/1994))
+- Added `name` prop to `ResourceItem` to fix accessibility labels ([#2077](https://github.com/Shopify/polaris-react/pull/2077))
+- Fixed misalignment of `ResourceItem` actions ([#2051](https://github.com/Shopify/polaris-react/pull/2051))
+
+### Documentation
+
+- Added Android/iOS images for Plain destructive button ([#2081](https://github.com/Shopify/polaris-react/pull/2081))
+- Removed mobile mention from right-aligned text component guidelines ([#2081](https://github.com/Shopify/polaris-react/pull/2081))
+- Added mobile example images error state of Single Choice List ([#2007](https://github.com/Shopify/polaris-react/pull/2007))
+
+### Dependency upgrades
+
+- Updated Prettier to v1.18.2 ([#2070](https://github.com/Shopify/polaris-react/pull/2070))
+
+### Development workflow
+
+- Added a displayName to the function generated by the `withAppProvider` HoC for a better devtools experience ([#2093](https://github.com/Shopify/polaris-react/pull/2093))
+
+### Code quality
+
+- Migrated `ActionMenu.RollupAction`, `Autocomplete`, `Card`, `EmptySearchResult`, `Form`, `SkeletonPage` and `TopBar` to use hooks instead of withAppProvider ([#2065](https://github.com/Shopify/polaris-react/pull/2065))
+- Added `useUniqueId` hook that can be used to get a unique id that remains consistent between rerenders and updated components to use it where appropriate ([#2079](https://github.com/Shopify/polaris-react/pull/2079))
+
+## 4.1.0 - 2019-09-03
+
+### Enhancements
+
+- Moved `ResourceItem` to its own component ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
+- Updated `ResourceList` sort to show an inline label ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
+- Removed the `tap-highlight-color` for `Buttons` ([#1545](https://github.com/Shopify/polaris-react/pull/1545))
+
+### Bug fixes
+
+- Removed `Tooltip` on disabled `Pagination` buttons ([#1963](https://github.com/Shopify/polaris-react/pull/1963))
+- Fixed accessibility labels on `ResourceList.Item` persistent action disclosure icon ([#1973](https://github.com/Shopify/polaris-react/pull/1973))
+- Fixed accessibility issue with `Autocomplete` where keyboard navigation of options was laggy and skipped options ([#1887](https://github.com/Shopify/polaris-react/pull/1887))
+- Fixed bug where `Autocomplete` was bubbling up the `Enter` key event unexpectedly ([#1887](https://github.com/Shopify/polaris-react/pull/1887))
+- Fixed `ContextualSaveBar` actions overflowing on small screens ([#1967](https://github.com/Shopify/polaris-react/pull/1967))
+- Fixed `Tabs` rollup automatically opening from keyboard navigation of tab list ([#1933](https://github.com/Shopify/polaris-react/pull/1933))
+
+### Documentation
+
+- Updated example section to include new examples and remove old ones ([#1979](https://github.com/Shopify/polaris-react/pull/1979))
+- Updated example for the `ResourceList.Item` persistent actions accessibility labels ([#1973](https://github.com/Shopify/polaris-react/pull/1973))
+- Removed `FilterControl` documentation and case studies from `ResourceList` documentation ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
+- Updated `ResourceList` examples to use `Filters` ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
+- Added an example to `Filters` showing the use of `children` ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
+- Added guidance for making animated gifs in PRs and issues more accessibility-friendly ([#1998](https://github.com/Shopify/polaris-react/pull/1998))
+- Added `RadioButton` guidance to make one option selected by default ([#2005](https://github.com/Shopify/polaris-react/pull/2005))
+
+### Development workflow
+
+- Update subcomponents to use named exports for components and better names props exports ([#2058](https://github.com/Shopify/polaris-react/pull/2058))
+
+### Code quality
+
+- Removed mocks in various tests suites that are now redundant ([#1978](https://github.com/Shopify/polaris-react/pull/1978))
+
+### Deprecations
+
+- Deprecated `FilterControl`. Use `Filters` instead ([#1774](https://github.com/Shopify/polaris-react/pull/1774))
+
 ## 4.0.0 - 2019-08-28
 
 For instructions on updating from v3 to v4, see our [migration guide](https://github.com/Shopify/polaris-react/blob/master/documentation/guides/migrating-from-v3-to-v4.md).

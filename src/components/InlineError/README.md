@@ -30,7 +30,7 @@ Inline errors should:
 - Describe specific solutions so merchants can successfully complete their task in the form
 - Not be placed out of context of the input or group of inputs they describe
 
-[Learn more about error message patterns](/patterns-and-guides/error-messages#section-form-validation)
+[Learn more about error message patterns](https://polaris.shopify.com/patterns-and-guides/error-messages#section-form-validation)
 
 ---
 
@@ -44,7 +44,7 @@ Inline error messages should:
 
 - Clearly explain what went wrong, give a next step, or offer a one-click fix
 - Be short and concise, no more than a single sentence
-- Use [passive voice](/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
+- Use [passive voice](https://polaris.shopify.com/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
 <!-- usagelist -->
 
@@ -86,7 +86,7 @@ Use when the merchant has entered invalid information into multiple fields insid
 
 ## Related components
 
-- To create a list of exceptions that describe a resource, [use the exception list component](/components/lists-and-tables/exception-list)
+- To create a list of exceptions that describe a resource, [use the exception list component](https://polaris.shopify.com/components/lists-and-tables/exception-list)
 
 ---
 
@@ -114,6 +114,6 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 - Use the required `fieldID` prop to give the inline error a unique `id`. This ties the error to a form field using `aria-describedby` so that it's conveyed to screen reader users.
 - Use the required `message` prop to provide the text that describes the error.
-- The inline error [icon](/design/icons) helps visually identify the error message for merchants who have difficulty seeing [colors](/design/colors) or who use settings that remove color from the page.
+- The inline error [icon](https://polaris.shopify.com/design/icons) helps visually identify the error message for merchants who have difficulty seeing [colors](https://polaris.shopify.com/design/colors) or who use settings that remove color from the page.
 
 <!-- /content-for -->

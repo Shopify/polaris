@@ -2,18 +2,18 @@ import React from 'react';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import isEqual from 'lodash/isEqual';
 
-export interface Props {
+export interface FocusProps {
   children?: React.ReactNode;
   disabled?: boolean;
   root: HTMLElement | null;
 }
 
-export default class Focus extends React.PureComponent<Props, never> {
+export class Focus extends React.PureComponent<FocusProps, never> {
   componentDidMount() {
     this.handleSelfFocus();
   }
 
-  componentDidUpdate({children: prevChildren, ...restPrevProps}: Props) {
+  componentDidUpdate({children: prevChildren, ...restPrevProps}: FocusProps) {
     const {children, ...restProps} = this.props;
 
     if (isEqual(restProps, restPrevProps)) {

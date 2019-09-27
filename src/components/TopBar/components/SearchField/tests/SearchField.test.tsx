@@ -2,7 +2,7 @@ import React from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import SearchField from '../SearchField';
+import {SearchField} from '../SearchField';
 
 describe('<TextField />', () => {
   it('mounts', () => {

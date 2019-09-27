@@ -149,9 +149,9 @@
       "ariaLiveSingular": "{itemsLength} आइटम",
       "ariaLivePlural": "{itemsLength} आइटम",
       "Item": {
-        "selectItem": "{accessibilityLabel} चुने:",
-        "deselectItem": "{accessibilityLabel} अचयनित करें:",
-        "actionsDropdown": "कार्रवाई ड्रॉपडाउन"
+        "actionsDropdownLabel": "{accessibilityLabel} के लिए कार्रवाई",
+        "actionsDropdown": "कार्रवाई ड्रॉपडाउन",
+        "viewItem": "{itemName} के लिए विवरण देखें"
       },
       "BulkActions": {
         "actionsActivatorLabel": "कार्रवाई",
@@ -208,7 +208,7 @@
       "warningMessage": "{color} रंग का उपयोग {size} स्पिनर पर करने के लिए नहीं है. बड़े स्पिनर पर उपलब्ध रंग हैं: {colors}"
     },
     "Tabs": {
-      "toggleTabsLabel": "मेनू टॉगल करें"
+      "toggleTabsLabel": "अधिक टैब"
     },
     "Tag": {
       "ariaLabel": "{children} को निकालें"

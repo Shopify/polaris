@@ -12,6 +12,11 @@ import {
 import {AppBridgeContext, AppBridgeOptions} from '../../utilities/app-bridge';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
+import {
+  UniqueIdFactory,
+  UniqueIdFactoryContext,
+  globalIdGeneratorFactory,
+} from '../../utilities/unique-id';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
 
@@ -30,12 +35,13 @@ export type WithPolarisTestProviderOptions = {
   frame?: Partial<FrameContextType>;
 };
 
-export interface Props extends WithPolarisTestProviderOptions {
+export interface PolarisTestProviderProps
+  extends WithPolarisTestProviderOptions {
   children: React.ReactElement;
   strict?: boolean;
 }
 
-export default function PolarisTestProvider({
+export function PolarisTestProvider({
   strict,
   children,
   i18n,
@@ -43,7 +49,7 @@ export default function PolarisTestProvider({
   link,
   theme,
   frame,
-}: Props) {
+}: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
 
   const intl = new I18n(i18n || {});
@@ -51,6 +57,8 @@ export default function PolarisTestProvider({
   const scrollLockManager = new ScrollLockManager();
 
   const stickyManager = new StickyManager();
+
+  const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
   // This typing is odd, but as appBridge is deprecated and going away in v5
   // I'm not that worried about it
@@ -65,15 +73,17 @@ export default function PolarisTestProvider({
       <I18nContext.Provider value={intl}>
         <ScrollLockManagerContext.Provider value={scrollLockManager}>
           <StickyManagerContext.Provider value={stickyManager}>
-            <AppBridgeContext.Provider value={appBridgeApp}>
-              <LinkContext.Provider value={link}>
-                <ThemeContext.Provider value={mergedTheme}>
-                  <FrameContext.Provider value={mergedFrame}>
-                    {children}
-                  </FrameContext.Provider>
-                </ThemeContext.Provider>
-              </LinkContext.Provider>
-            </AppBridgeContext.Provider>
+            <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
+              <AppBridgeContext.Provider value={appBridgeApp}>
+                <LinkContext.Provider value={link}>
+                  <ThemeContext.Provider value={mergedTheme}>
+                    <FrameContext.Provider value={mergedFrame}>
+                      {children}
+                    </FrameContext.Provider>
+                  </ThemeContext.Provider>
+                </LinkContext.Provider>
+              </AppBridgeContext.Provider>
+            </UniqueIdFactoryContext.Provider>
           </StickyManagerContext.Provider>
         </ScrollLockManagerContext.Provider>
       </I18nContext.Provider>

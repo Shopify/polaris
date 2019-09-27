@@ -1,7 +1,7 @@
 import React from 'react';
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import {Image} from 'components';
-import Avatar from '../Avatar';
+import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
+import {Avatar, Image} from 'components';
 
 describe('<Avatar />', () => {
   describe('intials', () => {
@@ -45,36 +45,44 @@ describe('<Avatar />', () => {
 
   describe('on Error with Initials', () => {
     it('renders initials if the Image onError prop is triggered and the Intials are provided', () => {
-      const src = 'image/path/';
-      const avatar = mountWithAppProvider(
-        <Avatar size="large" initials="DL" source={src} />,
+      const avatar = mountWithApp(
+        <Avatar size="large" initials="DL" source="image/path/" />,
       );
-      expect(avatar.find('span[role="img"] span svg')).toHaveLength(0);
-      trigger(avatar.find(Image), 'onError');
-      expect(avatar.find('span[role="img"] span svg')).toHaveLength(1);
+
+      expect(avatar).toContainReactComponent(Image);
+      expect(avatar).not.toContainReactComponent('span', {
+        className: 'Initials',
+      });
+
+      avatar.find(Image)!.trigger('onError');
+
+      expect(avatar).not.toContainReactComponent(Image);
+      expect(avatar).toContainReactComponent('span', {
+        className: 'Initials',
+      });
     });
   });
 
   describe('on Error with changed props', () => {
     it('re-renders the image if a the source prop is changed after an error', () => {
-      const src = 'image/path/';
       const workingSrc = 'image/goodPath/';
-      const avatar = mountWithAppProvider(
-        <Avatar size="large" initials="DL" source={src} />,
+      const avatar = mountWithApp(
+        <Avatar size="large" initials="DL" source="image/path/" />,
       );
-      trigger(avatar.find(Image), 'onError');
-      expect(avatar.find(Image)).toHaveLength(0);
+      avatar.find(Image)!.trigger('onError');
+
+      expect(avatar).not.toContainReactComponent(Image);
+
       avatar.setProps({source: workingSrc});
-      const image = avatar.find(Image);
-      expect(image).toHaveLength(1);
+      expect(avatar).toContainReactComponent(Image);
     });
   });
 
   describe('on Load', () => {
     it('safely triggers onLoad', () => {
-      const avatar = mountWithAppProvider(<Avatar source="image/path/" />);
+      const avatar = mountWithApp(<Avatar source="image/path/" />);
       expect(() => {
-        trigger(avatar.find(Image), 'onLoad');
+        avatar.find(Image)!.trigger('onLoad');
       }).not.toThrow();
     });
   });

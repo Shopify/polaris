@@ -4,12 +4,12 @@ import {wrapWithComponent, isElementOfType} from '../../utilities/components';
 import {Group, Item} from './components';
 import styles from './FormLayout.scss';
 
-export interface Props {
+export interface FormLayoutProps {
   /** The content to display inside the layout. */
   children?: React.ReactNode;
 }
 
-export default class FormLayout extends React.PureComponent<Props, never> {
+export class FormLayout extends React.PureComponent<FormLayoutProps, never> {
   static Group = Group;
 
   render() {

@@ -12,11 +12,10 @@ import {
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {LinkAction} from '../../../../../types';
 import {HeaderPrimaryAction} from '../../../types';
-import Header, {Props} from '../Header';
-import Title from '..';
+import {Header, HeaderProps} from '../Header';
 
 describe('<Header />', () => {
-  const mockProps: Props = {
+  const mockProps: HeaderProps = {
     title: 'mock title',
   };
 
@@ -37,7 +36,7 @@ describe('<Header />', () => {
     expect(resizeEventListener).toHaveLength(1);
   });
 
-  describe('Title', () => {
+  describe('Header', () => {
     const mockProps = {
       title: 'title',
       subtitle: 'subtitle',
@@ -45,24 +44,24 @@ describe('<Header />', () => {
       thumbnail: <Avatar customer />,
     };
 
-    it('sets the title on the Title', () => {
+    it('sets the title on the Header', () => {
       const header = mountWithAppProvider(<Header {...mockProps} />);
-      expect(header.find(Title).prop('title')).toBe(mockProps.title);
+      expect(header.find(Header).prop('title')).toBe(mockProps.title);
     });
 
-    it('sets the subtitle on the Title', () => {
+    it('sets the subtitle on the Header', () => {
       const header = mountWithAppProvider(<Header {...mockProps} />);
-      expect(header.find(Title).prop('subtitle')).toBe(mockProps.subtitle);
+      expect(header.find(Header).prop('subtitle')).toBe(mockProps.subtitle);
     });
 
-    it('sets the thumbnail on the Title', () => {
+    it('sets the thumbnail on the Header', () => {
       const header = mountWithAppProvider(<Header {...mockProps} />);
-      expect(header.find(Title).prop('thumbnail')).toBe(mockProps.thumbnail);
+      expect(header.find(Header).prop('thumbnail')).toBe(mockProps.thumbnail);
     });
 
-    it('sets the titleMetadata on the Title', () => {
+    it('sets the titleMetadata on the Header', () => {
       const header = mountWithAppProvider(<Header {...mockProps} />);
-      expect(header.find(Title).prop('titleMetadata')).toBe(
+      expect(header.find(Header).prop('titleMetadata')).toBe(
         mockProps.titleMetadata,
       );
     });
@@ -88,7 +87,7 @@ describe('<Header />', () => {
   });
 
   describe('primaryAction', () => {
-    it('renders a button based on the given action', () => {
+    it('renders a `primary` button based on the given action', () => {
       const primaryAction: HeaderPrimaryAction = {
         content: 'Click me!',
       };
@@ -98,6 +97,20 @@ describe('<Header />', () => {
       );
 
       const expectedButton = buttonsFrom(primaryAction, {primary: true});
+      expect(header.contains(expectedButton)).toBeTruthy();
+    });
+
+    it('renders a regular button based on the given action when primary is set to false', () => {
+      const primaryAction: HeaderPrimaryAction = {
+        content: 'Click me!',
+        primary: false,
+      };
+
+      const header = mountWithAppProvider(
+        <Header {...mockProps} primaryAction={primaryAction} />,
+      );
+
+      const expectedButton = buttonsFrom(primaryAction, {primary: false});
       expect(header.contains(expectedButton)).toBeTruthy();
     });
   });
@@ -119,7 +132,7 @@ describe('<Header />', () => {
   });
 
   describe('secondaryActions', () => {
-    const mockSecondaryActions: Props['secondaryActions'] = [
+    const mockSecondaryActions: HeaderProps['secondaryActions'] = [
       {content: 'mock content 1'},
       {content: 'mock content 2'},
     ];
@@ -136,11 +149,11 @@ describe('<Header />', () => {
   });
 
   describe('actionGroups', () => {
-    const mockSecondaryActions: Props['secondaryActions'] = [
+    const mockSecondaryActions: HeaderProps['secondaryActions'] = [
       {content: 'mock content 1'},
       {content: 'mock content 2'},
     ];
-    const mockActionGroups: Props['actionGroups'] = [
+    const mockActionGroups: HeaderProps['actionGroups'] = [
       {
         title: 'First group',
         actions: mockSecondaryActions,
@@ -161,7 +174,7 @@ describe('<Header />', () => {
   });
 
   describe('<ActionMenu />', () => {
-    const mockSecondaryActions: Props['secondaryActions'] = [
+    const mockSecondaryActions: HeaderProps['secondaryActions'] = [
       {content: 'mock content 1'},
     ];
 
@@ -172,7 +185,7 @@ describe('<Header />', () => {
     });
 
     it('does not render if `actionGroups` has no `actions', () => {
-      const mockActionGroups: Props['actionGroups'] = [
+      const mockActionGroups: HeaderProps['actionGroups'] = [
         {
           title: 'mock title',
           actions: [],
@@ -186,7 +199,7 @@ describe('<Header />', () => {
     });
 
     it('renders with atleast valid `secondaryActions`', () => {
-      const mockSecondaryActions: Props['secondaryActions'] = [
+      const mockSecondaryActions: HeaderProps['secondaryActions'] = [
         {content: 'mock content'},
       ];
       const wrapper = mountWithAppProvider(
@@ -197,7 +210,7 @@ describe('<Header />', () => {
     });
 
     it('renders with atleast valid `actionGroups`', () => {
-      const mockActionGroups: Props['actionGroups'] = [
+      const mockActionGroups: HeaderProps['actionGroups'] = [
         {
           title: 'mock title',
           actions: [{content: 'mock content 1'}],

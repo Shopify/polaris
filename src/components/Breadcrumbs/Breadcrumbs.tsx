@@ -1,19 +1,19 @@
 import React from 'react';
 import {ChevronLeftMinor} from '@shopify/polaris-icons';
 
-import Icon from '../Icon';
-import UnstyledLink from '../UnstyledLink';
+import {Icon} from '../Icon';
+import {UnstyledLink} from '../UnstyledLink';
 import {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
 import styles from './Breadcrumbs.scss';
 
-export interface Props {
+export interface BreadcrumbsProps {
   /** Collection of breadcrumbs */
   breadcrumbs: Array<CallbackAction | LinkAction>;
 }
 
-export default class Breadcrumbs extends React.PureComponent<Props, never> {
+export class Breadcrumbs extends React.PureComponent<BreadcrumbsProps, never> {
   render() {
     const {breadcrumbs} = this.props;
     const breadcrumb = breadcrumbs[breadcrumbs.length - 1];

@@ -3,11 +3,11 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {PreferredPosition} from '../PositionedOverlay';
-import Portal from '../Portal';
+import {Portal} from '../Portal';
 import {TooltipOverlay} from './components';
 import styles from './Tooltip.scss';
 
-export interface Props {
+export interface TooltipProps {
   /** The element that will activate to tooltip */
   children?: React.ReactNode;
   /** The content to display within the tooltip */
@@ -28,14 +28,14 @@ export interface Props {
   activatorWrapper?: string;
 }
 
-export interface State {
+interface State {
   active: boolean;
   activatorNode: HTMLElement | null;
 }
 
 const getUniqueID = createUniqueIDFactory('TooltipContent');
 
-export default class Tooltip extends React.PureComponent<Props, State> {
+export class Tooltip extends React.PureComponent<TooltipProps, State> {
   state: State = {
     active: Boolean(this.props.active),
     activatorNode: null,

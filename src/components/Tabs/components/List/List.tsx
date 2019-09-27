@@ -1,17 +1,17 @@
 import React from 'react';
 
-import Item from '../Item';
+import {Item} from '../Item';
 import {TabDescriptor} from '../../types';
 import styles from '../../Tabs.scss';
 
-export interface Props {
+export interface ListProps {
   focusIndex: number;
   disclosureTabs: TabDescriptor[];
   onClick?(id: string): void;
   onKeyPress?(event: React.KeyboardEvent<HTMLElement>): void;
 }
 
-export default class List extends React.PureComponent<Props, never> {
+export class List extends React.PureComponent<ListProps, never> {
   render() {
     const {focusIndex, disclosureTabs, onClick = noop} = this.props;
     const tabs = disclosureTabs.map(({id, content, ...tabProps}, index) => {

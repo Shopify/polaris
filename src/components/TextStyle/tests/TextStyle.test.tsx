@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import TextStyle from '../TextStyle';
+import {TextStyle} from '../TextStyle';
 
 describe('<TextStyle />', () => {
   it('mounts', () => {

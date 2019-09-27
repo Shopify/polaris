@@ -1,9 +1,9 @@
 import React from 'react';
 import {CalendarMinor} from '@shopify/polaris-icons';
-import DatePicker, {Months, Year, Range} from '../../../../../DatePicker';
-import Select from '../../../../../Select';
-import TextField from '../../../../../TextField';
-import Icon from '../../../../../Icon';
+import {DatePicker, Months, Year, Range} from '../../../../../DatePicker';
+import {Select} from '../../../../../Select';
+import {TextField} from '../../../../../TextField';
+import {Icon} from '../../../../../Icon';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -15,7 +15,7 @@ const VALID_DATE_REGEX = /^\d{4}-\d{1,2}-\d{1,2}$/;
 
 type DateOptionType = 'past' | 'future' | 'full';
 
-export interface Props {
+export interface DateSelectorProps {
   dateOptionType?: DateOptionType;
   filterValue?: string;
   filterKey?: string;
@@ -34,7 +34,7 @@ interface State {
   initialConsumerFilterKey?: string;
 }
 
-type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = DateSelectorProps & WithAppProviderProps;
 
 export enum DateFilterOption {
   PastWeek = 'past_week',
@@ -433,4 +433,6 @@ function formatDateForLocalTimezone(date: Date) {
   return formattedDate.toISOString();
 }
 
-export default withAppProvider<Props>()(DateSelector);
+// Use named export once withAppProvider is refactored away
+// eslint-disable-next-line import/no-default-export
+export default withAppProvider<DateSelectorProps>()(DateSelector);

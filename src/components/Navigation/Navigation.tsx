@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Scrollable from '../Scrollable';
+import {Scrollable} from '../Scrollable';
 
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {NavigationContext} from './context';
@@ -9,7 +9,7 @@ import {SectionType} from './types';
 
 import styles from './Navigation.scss';
 
-export interface Props {
+export interface NavigationProps {
   location: string;
   sections?: SectionType[];
   children?: React.ReactNode;
@@ -17,7 +17,7 @@ export interface Props {
   onDismiss?(): void;
 }
 
-export default class Navigation extends React.Component<Props, never> {
+export class Navigation extends React.Component<NavigationProps, never> {
   static Item = Item;
   static Section = Section;
 

@@ -21,7 +21,7 @@ Merchants use filters to:
 - filter by typing into a text field
 - filter by selecting filters or promoted filters
 
-The way that merchants interact with filters depends on the components that you decide to incorporate. In its simplest form, filters includes a text field and a set of filters, which can be displayed in different ways. For example, you could show promoted filters and a More button that opens a [sheet](/components/overlays/sheet) containing more filters. What the filters are and how they’re exposed to merchants is flexible.
+The way that merchants interact with filters depends on the components that you decide to incorporate. In its simplest form, filters includes a text field and a set of filters, which can be displayed in different ways. For example, you could show promoted filters and a More button that opens a [sheet](https://polaris.shopify.com/components/overlays/sheet) containing more filters. What the filters are and how they’re exposed to merchants is flexible.
 
 ---
 
@@ -466,6 +466,141 @@ function disambiguateLabel(key, value) {
       return value.map((val) => `Available on ${val}`).join(', ');
     case 'productType':
       return value.join(', ');
+    default:
+      return value;
+  }
+}
+
+function isEmpty(value) {
+  if (Array.isArray(value)) {
+    return value.length === 0;
+  } else {
+    return value === '' || value == null;
+  }
+}
+```
+
+### Filters with children content
+
+```jsx
+class FiltersExample extends React.Component {
+  state = {
+    taggedWith: null,
+    queryValue: null,
+  };
+
+  render() {
+    const {taggedWith, queryValue} = this.state;
+
+    const filters = [
+      {
+        key: 'taggedWith',
+        label: 'Tagged with',
+        filter: (
+          <TextField
+            label="Tagged with"
+            value={taggedWith}
+            onChange={this.handleChange('taggedWith')}
+            labelHidden
+          />
+        ),
+        shortcut: true,
+      },
+    ];
+
+    const appliedFilters = Object.keys(this.state)
+      .filter((key) => !isEmpty(this.state[key]) && key !== 'queryValue')
+      .map((key) => {
+        return {
+          key,
+          label: disambiguateLabel(key, this.state[key]),
+          onRemove: this.handleRemove,
+        };
+      });
+
+    return (
+      <div style={{height: '568px'}}>
+        <Card>
+          <ResourceList
+            resourceName={{singular: 'customer', plural: 'customers'}}
+            filterControl={
+              <Filters
+                queryValue={queryValue}
+                filters={filters}
+                appliedFilters={appliedFilters}
+                onQueryChange={this.handleChange('queryValue')}
+                onQueryClear={this.handleQueryClear}
+                onClearAll={this.handleClearAll}
+              >
+                <div style={{paddingLeft: '8px'}}>
+                  <Button onClick={() => console.log('New filter saved')}>
+                    Save
+                  </Button>
+                </div>
+              </Filters>
+            }
+            items={[
+              {
+                id: 341,
+                url: 'customers/341',
+                name: 'Mae Jemison',
+                location: 'Decatur, USA',
+              },
+              {
+                id: 256,
+                url: 'customers/256',
+                name: 'Ellen Ochoa',
+                location: 'Los Angeles, USA',
+              },
+            ]}
+            renderItem={(item) => {
+              const {id, url, name, location} = item;
+              const media = <Avatar customer size="medium" name={name} />;
+
+              return (
+                <ResourceList.Item
+                  id={id}
+                  url={url}
+                  media={media}
+                  accessibilityLabel={`View details for ${name}`}
+                >
+                  <h3>
+                    <TextStyle variation="strong">{name}</TextStyle>
+                  </h3>
+                  <div>{location}</div>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </Card>
+      </div>
+    );
+  }
+
+  handleChange = (key) => (value) => {
+    this.setState({[key]: value});
+  };
+
+  handleRemove = (key) => {
+    this.setState({[key]: null});
+  };
+
+  handleQueryClear = () => {
+    this.setState({queryValue: null});
+  };
+
+  handleClearAll = () => {
+    this.setState({
+      taggedWith: null,
+      queryValue: null,
+    });
+  };
+}
+
+function disambiguateLabel(key, value) {
+  switch (key) {
+    case 'taggedWith':
+      return `Tagged with ${value}`;
     default:
       return value;
   }

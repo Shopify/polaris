@@ -1,4 +1,1 @@
-export {
-  default as BulkActionButton,
-  Props as BulkActionButtonProps,
-} from './BulkActionButton';
+export {BulkActionButton, BulkActionButtonProps} from './BulkActionButton';

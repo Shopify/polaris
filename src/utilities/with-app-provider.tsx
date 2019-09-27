@@ -22,7 +22,7 @@ export function withAppProvider<OwnProps>() {
   return function addProvider<C>(
     WrappedComponent: React.ComponentType<OwnProps & WithAppProviderProps> & C,
   ) {
-    const WithProvider: React.FunctionComponent<OwnProps> = (props) => {
+    const WithAppProvider: React.FunctionComponent<OwnProps> = (props) => {
       const polaris: WithAppProviderProps['polaris'] = {
         link: useLink(),
         theme: useTheme(),
@@ -32,10 +32,17 @@ export function withAppProvider<OwnProps>() {
         appBridge: useAppBridge(),
       };
 
-      return <WrappedComponent {...props as any} polaris={polaris} />;
+      return <WrappedComponent {...(props as any)} polaris={polaris} />;
     };
+    WithAppProvider.displayName = `WithAppProvider(${getDisplayName(
+      WrappedComponent,
+    )})`;
 
-    const FinalComponent = hoistStatics(WithProvider, WrappedComponent);
+    const FinalComponent = hoistStatics(WithAppProvider, WrappedComponent);
     return FinalComponent;
   };
+}
+
+function getDisplayName(WrappedComponent: any) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }

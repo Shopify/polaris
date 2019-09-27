@@ -1,21 +1,10 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import TabMeasurer from '../TabMeasurer';
-import Tab from '../../Tab';
-import Item from '../../Item';
+import {TabMeasurer} from '../TabMeasurer';
+import {Tab} from '../../Tab';
+import {Item} from '../../Item';
 
 describe('<TabMeasurer />', () => {
-  let requestAnimationFrameSpy: jest.SpyInstance;
-
-  beforeEach(() => {
-    requestAnimationFrameSpy = jest.spyOn(window, 'requestAnimationFrame');
-    requestAnimationFrameSpy.mockImplementation((cb) => cb());
-  });
-
-  afterEach(() => {
-    requestAnimationFrameSpy.mockRestore();
-  });
-
   const mockProps = {
     tabToFocus: 0,
     activator: <Item id="id" focused />,

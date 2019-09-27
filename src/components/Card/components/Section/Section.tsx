@@ -2,14 +2,14 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
-import Stack from '../../../Stack';
-import ButtonGroup from '../../../ButtonGroup';
+import {Stack} from '../../../Stack';
+import {ButtonGroup} from '../../../ButtonGroup';
 
-import Subheading from '../../../Subheading';
+import {Subheading} from '../../../Subheading';
 
 import styles from '../../Card.scss';
 
-export interface Props {
+export interface SectionProps {
   title?: React.ReactNode;
   children?: React.ReactNode;
   subdued?: boolean;
@@ -18,14 +18,14 @@ export interface Props {
   flush?: boolean;
 }
 
-export default function Section({
+export function Section({
   children,
   title,
   subdued,
   fullWidth,
   actions,
   flush,
-}: Props) {
+}: SectionProps) {
   const className = classNames(
     styles.Section,
     subdued && styles['Section-subdued'],

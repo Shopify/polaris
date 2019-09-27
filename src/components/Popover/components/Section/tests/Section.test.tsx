@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {TextContainer} from 'components';
-import Section from '../Section';
+import {Section} from '../Section';
 
 // section: ActionListSection;
 // hasMultipleSections: boolean;

@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from '../../List.scss';
 
-export interface Props {
+export interface ItemProps {
   /** Content to display inside the item */
   children?: React.ReactNode;
 }
 
-export default function Item({children}: Props) {
+export function Item({children}: ItemProps) {
   return <li className={styles.Item}>{children}</li>;
 }

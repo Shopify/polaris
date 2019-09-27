@@ -48,25 +48,28 @@ As of v3.17.0, `ResourcePicker` is deprecated. It will be removed in v5.0 as the
 When you ask for products, the `onSelection` callback is called with an object that has a `selection` key, which will have an array of objects detailing the selected products (even if `allowMultiple` is set to `false`).
 
 ```jsx
-class EmbeddedAppResourcePickerExample extends React.Component {
-  state = {
-    resourcePickerOpen: false,
-  };
+function EmbeddedAppResourcePickerExample() {
+  const [active, setActive] = useState(false);
 
-  render() {
-    return (
-      <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
-        <ResourcePicker
-          resourceType="Product"
-          open={this.state.resourcePickerOpen}
-          onSelection={({selection}) => {
-            console.log('Selected products: ', selection);
-            this.setState({resourcePickerOpen: false});
-          }}
-          onCancel={() => this.setState({resourcePickerOpen: false})}
-        />
-      </AppProvider>
-    );
-  }
+  const handleResourcePickerClose = useCallback(() => setActive(false), []);
+
+  const handleSelection = useCallback(
+    ({selection}) => {
+      console.log('Selected products: ', selection);
+      handleResourcePickerClose();
+    },
+    [handleResourcePickerClose],
+  );
+
+  return (
+    <AppProvider apiKey="YOUR_API_KEY" i18n={{}} shopOrigin="YOUR_SHOP_ORIGIN">
+      <ResourcePicker
+        resourceType="Product"
+        open={active}
+        onSelection={handleSelection}
+        onCancel={handleResourcePickerClose}
+      />
+    </AppProvider>
+  );
 }
 ```

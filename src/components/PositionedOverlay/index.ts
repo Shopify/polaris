@@ -1,9 +1,7 @@
-import PositionedOverlay from './PositionedOverlay';
-
 export {
-  Props,
+  PositionedOverlay,
+  PositionedOverlayProps,
   PreferredPosition,
   PreferredAlignment,
   OverlayDetails,
 } from './PositionedOverlay';
-export default PositionedOverlay;

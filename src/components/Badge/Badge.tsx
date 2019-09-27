@@ -1,14 +1,14 @@
 import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import VisuallyHidden from '../VisuallyHidden';
+import {VisuallyHidden} from '../VisuallyHidden';
 import styles from './Badge.scss';
 
 export type Status = 'success' | 'info' | 'attention' | 'warning' | 'new';
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
 export type Size = 'small' | 'medium';
 
-export interface Props {
+export interface BadgeProps {
   /** The content to display inside the badge. */
   children?: string;
   /** Set the color of the badge for the given status. */
@@ -38,12 +38,12 @@ export const STATUS_LABELS: {[key in Status]: Status} = {
 
 const DEFAULT_SIZE = 'medium';
 
-export default function Badge({
+export function Badge({
   children,
   status,
   progress,
   size = DEFAULT_SIZE,
-}: Props) {
+}: BadgeProps) {
   const intl = useI18n();
 
   const className = classNames(

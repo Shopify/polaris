@@ -5,12 +5,15 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {Key} from '../../types';
 
-export interface Props {
+export interface KeypressListenerProps {
   keyCode: Key;
   handler(event: KeyboardEvent): void;
 }
 
-export default class KeypressListener extends React.Component<Props, never> {
+export class KeypressListener extends React.Component<
+  KeypressListenerProps,
+  never
+> {
   componentDidMount() {
     addEventListener(document, 'keyup', this.handleKeyEvent);
   }

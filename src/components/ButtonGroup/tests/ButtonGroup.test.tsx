@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Button} from 'components';
 import {Item} from '../components';
-import ButtonGroup from '../ButtonGroup';
+import {ButtonGroup} from '../ButtonGroup';
 
 describe('<ButtonGroup />', () => {
   describe('children', () => {
