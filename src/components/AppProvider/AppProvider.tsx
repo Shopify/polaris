@@ -28,7 +28,6 @@ interface State {
   intl: I18n;
   appBridge: ReturnType<typeof createAppBridge>;
   link: LinkLikeComponent | undefined;
-  features?: Features;
 }
 
 export interface AppProviderProps extends AppBridgeOptions {
@@ -55,21 +54,13 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
     this.scrollLockManager = new ScrollLockManager();
     this.uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-    const {
-      i18n,
-      apiKey,
-      shopOrigin,
-      forceRedirect,
-      linkComponent,
-      features,
-    } = this.props;
+    const {i18n, apiKey, shopOrigin, forceRedirect, linkComponent} = this.props;
 
     // eslint-disable-next-line react/state-in-constructor
     this.state = {
       link: linkComponent,
       intl: new I18n(i18n),
       appBridge: createAppBridge({shopOrigin, apiKey, forceRedirect}),
-      features,
     };
   }
 
@@ -85,24 +76,15 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
     apiKey: prevApiKey,
     shopOrigin: prevShopOrigin,
     forceRedirect: prevForceRedirect,
-    features: prevFeatures,
   }: AppProviderProps) {
-    const {
-      i18n,
-      linkComponent,
-      apiKey,
-      shopOrigin,
-      forceRedirect,
-      features,
-    } = this.props;
+    const {i18n, linkComponent, apiKey, shopOrigin, forceRedirect} = this.props;
 
     if (
       i18n === prevI18n &&
       linkComponent === prevLinkComponent &&
       apiKey === prevApiKey &&
       shopOrigin === prevShopOrigin &&
-      forceRedirect === prevForceRedirect &&
-      features === prevFeatures
+      forceRedirect === prevForceRedirect
     ) {
       return;
     }
@@ -112,13 +94,12 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
       link: linkComponent,
       intl: new I18n(i18n),
       appBridge: createAppBridge({shopOrigin, apiKey, forceRedirect}),
-      features,
     });
   }
 
   render() {
-    const {theme = {logo: null}, children} = this.props;
-    const {intl, appBridge, link, features = {}} = this.state;
+    const {theme = {logo: null}, features = {}, children} = this.props;
+    const {intl, appBridge, link} = this.state;
 
     return (
       <FeaturesContext.Provider value={features}>
