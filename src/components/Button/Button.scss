@@ -131,7 +131,7 @@ $spinner-size: rem(20px);
 
 .plain {
   @include recolor-icon(color('blue'));
-  margin: (-1 * $vertical-padding) rem(-8px);
+  margin: (-1 * $vertical-padding) (-1 * spacing(tight));
   padding-left: spacing(tight);
   padding-right: spacing(tight);
   background: transparent;
