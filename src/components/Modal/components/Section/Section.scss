@@ -10,6 +10,11 @@
 
   &.subdued {
     background: color('sky', 'light');
+    &:last-child {
+      @include breakpoint-after(layout-width(page-with-nav)) {
+        border-radius: 0 0 border-radius(large) border-radius(large);
+      }
+    }
   }
 
   &.flush {
