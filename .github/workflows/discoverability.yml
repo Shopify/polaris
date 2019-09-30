@@ -13,7 +13,7 @@ jobs:
       run: yarn
 
     - name: Add a comment with known areas to test
-      uses: shopify/discoverability-action@master
+      uses: shopify/discoverability-action@beta-1
       with:
         codebaseGlob: src/**/*.tsx
         ignoreGlob: src/**/*.test.tsx
