@@ -1,13 +1,11 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Select} from '../../../../../Select';
 import {Stack} from '../../../../../Stack';
 import {TextField} from '../../../../../TextField';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../../../../../utilities/with-app-provider';
 import {DateSelector} from '../DateSelector';
 import {Filter, AppliedFilter, FilterType, Operator} from '../../types';
+import {useI18n} from '../../../../../../utilities/i18n';
+import {useIsMountedRef} from '../../../../../../utilities/use-is-mounted-ref';
 
 export interface FilterValueSelectorProps {
   filter: Filter;
@@ -17,110 +15,94 @@ export interface FilterValueSelectorProps {
   onFilterKeyChange(filterKey: string): void;
 }
 
-type CombinedProps = FilterValueSelectorProps & WithAppProviderProps;
+export function FilterValueSelector({
+  filter,
+  filterKey,
+  value,
+  onChange,
+  onFilterKeyChange,
+}: FilterValueSelectorProps) {
+  const {translate} = useI18n();
+  const isMounted = useIsMountedRef();
+  const {operatorText, type, label} = filter;
+  const showOperatorOptions =
+    type !== FilterType.DateSelector &&
+    operatorText &&
+    typeof operatorText !== 'string';
 
-class FilterValueSelector extends React.PureComponent<CombinedProps> {
-  componentDidMount() {
-    const {
-      filter: {operatorText, type},
-    } = this.props;
+  const handleOperatorOptionChange = useCallback(
+    (operatorKey: string) => {
+      onFilterKeyChange(operatorKey);
 
-    if (
-      type === FilterType.DateSelector ||
-      !operatorText ||
-      typeof operatorText === 'string' ||
-      operatorText.length === 0
-    ) {
-      return;
-    }
+      if (!value) {
+        return;
+      }
 
-    this.handleOperatorOptionChange(operatorText[0].key);
+      onChange(value);
+    },
+    [onChange, onFilterKeyChange, value],
+  );
+
+  if (showOperatorOptions && operatorText!.length !== 0 && !isMounted) {
+    handleOperatorOptionChange((operatorText as Operator[])[0].key);
   }
 
-  render() {
-    const {
-      filter,
-      filterKey,
-      value,
-      onChange,
-      onFilterKeyChange,
-      polaris: {intl},
-    } = this.props;
+  const operatorOptionsMarkup = showOperatorOptions ? (
+    <Select
+      label={label}
+      labelHidden
+      options={buildOperatorOptions(operatorText)}
+      value={filterKey}
+      onChange={handleOperatorOptionChange}
+    />
+  ) : null;
 
-    const {operatorText} = filter;
+  const selectedFilterLabel =
+    typeof operatorText === 'string' ? operatorText : '';
 
-    const showOperatorOptions =
-      filter.type !== FilterType.DateSelector &&
-      operatorText &&
-      typeof operatorText !== 'string';
-    const operatorOptionsMarkup = showOperatorOptions ? (
-      <Select
-        label={filter.label}
-        labelHidden
-        options={buildOperatorOptions(operatorText)}
-        value={filterKey}
-        onChange={this.handleOperatorOptionChange}
-      />
-    ) : null;
-
-    const selectedFilterLabel =
-      typeof operatorText === 'string' ? operatorText : '';
-
-    switch (filter.type) {
-      case FilterType.Select:
-        return (
-          <Stack vertical>
-            {operatorOptionsMarkup}
-            <Select
-              label={selectedFilterLabel}
-              options={filter.options}
-              placeholder={intl.translate(
-                'Polaris.ResourceList.FilterValueSelector.selectFilterValuePlaceholder',
-              )}
-              value={value}
-              onChange={onChange}
-            />
-          </Stack>
-        );
-      case FilterType.TextField:
-        return (
-          <Stack vertical>
-            {operatorOptionsMarkup}
-            <TextField
-              label={selectedFilterLabel}
-              value={value}
-              type={filter.textFieldType}
-              onChange={onChange}
-            />
-          </Stack>
-        );
-      case FilterType.DateSelector:
-        return (
-          <DateSelector
-            dateOptionType={filter.dateOptionType}
-            filterValue={value}
-            filterKey={filterKey}
-            filterMinKey={filter.minKey}
-            filterMaxKey={filter.maxKey}
-            onFilterValueChange={onChange}
-            onFilterKeyChange={onFilterKeyChange}
+  switch (filter.type) {
+    case FilterType.Select:
+      return (
+        <Stack vertical>
+          {operatorOptionsMarkup}
+          <Select
+            label={selectedFilterLabel}
+            options={filter.options}
+            placeholder={translate(
+              'Polaris.ResourceList.FilterValueSelector.selectFilterValuePlaceholder',
+            )}
+            value={value}
+            onChange={onChange}
           />
-        );
-      default:
-        return null;
-    }
+        </Stack>
+      );
+    case FilterType.TextField:
+      return (
+        <Stack vertical>
+          {operatorOptionsMarkup}
+          <TextField
+            label={selectedFilterLabel}
+            value={value}
+            type={filter.textFieldType}
+            onChange={onChange}
+          />
+        </Stack>
+      );
+    case FilterType.DateSelector:
+      return (
+        <DateSelector
+          dateOptionType={filter.dateOptionType}
+          filterValue={value}
+          filterKey={filterKey}
+          filterMinKey={filter.minKey}
+          filterMaxKey={filter.maxKey}
+          onFilterValueChange={onChange}
+          onFilterKeyChange={onFilterKeyChange}
+        />
+      );
+    default:
+      return null;
   }
-
-  private handleOperatorOptionChange = (operatorKey: string) => {
-    const {value, onChange, onFilterKeyChange} = this.props;
-    onFilterKeyChange(operatorKey);
-
-    if (!value) {
-      return;
-    }
-
-    onChange(value);
-  };
 }
 
 function buildOperatorOptions(operatorText?: string | Operator[]) {
@@ -132,7 +114,3 @@ function buildOperatorOptions(operatorText?: string | Operator[]) {
     return {value: key, label: optionLabel};
   });
 }
-
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<FilterValueSelectorProps>()(FilterValueSelector);
