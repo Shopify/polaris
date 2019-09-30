@@ -180,7 +180,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
                 {headerTotalsMarkup}
               </thead>
               <tbody>{bodyMarkup}</tbody>
-              {footerTotalsMarkup}
+              <tfoot>{footerTotalsMarkup}</tfoot>
             </table>
           </div>
           {footerMarkup}
