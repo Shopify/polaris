@@ -10,8 +10,7 @@ jobs:
     - uses: actions/checkout@master
 
     - name: yarn
-      run: |
-        yarn
+      run: yarn
 
     - name: Add a comment with known areas to test
       uses: shopify/discoverability-action@master
