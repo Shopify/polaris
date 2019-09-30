@@ -142,7 +142,7 @@ export function DatePicker({
         }
       }
 
-      if (key === 'Arrowight') {
+      if (key === 'ArrowRight') {
         const tomorrow = new Date(focusedDate);
         tomorrow.setDate(focusedDate.getDate() + 1);
         if (!(disableDatesAfter && isDateAfter(tomorrow, disableDatesAfter))) {
@@ -267,7 +267,7 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
     key === 'ArrowUp' ||
     key === 'ArrowDown' ||
     key === 'ArrowLeft' ||
-    key === 'ArrowRighta'
+    key === 'ArrowRight'
   ) {
     event.preventDefault();
     event.stopPropagation();

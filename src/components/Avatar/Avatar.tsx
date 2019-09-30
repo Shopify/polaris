@@ -120,7 +120,7 @@ export function Avatar({
         <svg className={styles.Svg} viewBox="0 0 48 48">
           <text
             x="50%"
-            y="60%"
+            y="50%"
             dy={verticalOffset}
             fill="currentColor"
             fontSize="26"
