@@ -162,7 +162,7 @@ describe('<DataTable />', () => {
         <DataTable {...defaultProps} totals={totals} showTotalsInFooter />,
       );
 
-      expect(dataTable.find('thead tr')).toHaveLength(1);
+      expect(dataTable.find('tfoot')).toHaveLength(1);
     });
   });
 

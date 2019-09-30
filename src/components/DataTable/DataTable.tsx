@@ -155,7 +155,9 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     ) : null;
 
     const headerTotalsMarkup = !showTotalsInFooter ? totalsMarkup : null;
-    const footerTotalsMarkup = showTotalsInFooter ? totalsMarkup : null;
+    const footerTotalsMarkup = showTotalsInFooter ? (
+      <tfoot>{totalsMarkup}</tfoot>
+    ) : null;
 
     return (
       <div className={wrapperClassName}>
@@ -180,7 +182,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
                 {headerTotalsMarkup}
               </thead>
               <tbody>{bodyMarkup}</tbody>
-              <tfoot>{footerTotalsMarkup}</tfoot>
+              {footerTotalsMarkup}
             </table>
           </div>
           {footerMarkup}
