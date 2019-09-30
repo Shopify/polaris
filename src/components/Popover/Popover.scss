@@ -19,6 +19,10 @@ $content-max-width: rem(400px);
   transition: opacity duration() easing(in);
 }
 
+.PopoverOverlay-entering {
+  opacity: 1;
+}
+
 .PopoverOverlay-open {
   opacity: 1;
 }
