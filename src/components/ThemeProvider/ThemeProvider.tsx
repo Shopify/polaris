@@ -8,6 +8,8 @@ import {
 import {themeProvider} from '../shared';
 import {useFeatures} from '../../utilities/features';
 
+import styles from './ThemeProvider.scss';
+
 interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
   theme: ThemeConfig;
@@ -28,7 +30,11 @@ export function ThemeProvider({
 
   return (
     <ThemeContext.Provider value={theme}>
-      <div style={customProperties} {...themeProvider.props}>
+      <div
+        style={customProperties}
+        {...themeProvider.props}
+        className={styles.ThemeProvider}
+      >
         {children}
       </div>
     </ThemeContext.Provider>

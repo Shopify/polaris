@@ -1,0 +1,6 @@
+@import '../../styles/common';
+
+.ThemeProvider {
+  background-color: var(--surface-background, color('sky', 'light'));
+  @include text-emphasis-normal;
+}

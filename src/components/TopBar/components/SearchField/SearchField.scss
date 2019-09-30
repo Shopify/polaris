@@ -30,30 +30,34 @@ $stacking-order: (
 .focused .Input,
 .Input:focus {
   border: none;
-  color: color('ink');
+  color: var(--text-on-surface, color('ink'));
 
   &::placeholder {
-    color: color('ink', 'lightest');
+    color: var(--text-subdued-on-surface, color('ink', 'lightest'));
   }
 }
 
 .Input:focus {
   ~ .Backdrop {
-    background-color: color('white');
+    background-color: var(--surface-foreground, color('white'));
   }
 
   ~ .Icon {
-    @include recolor-icon(color('ink', 'lightest'));
+    @include recolor-icon(
+      var(--icon-subdued-on-surface, color('ink', 'lightest'))
+    );
   }
 }
 
 .focused {
   .Backdrop {
-    background-color: color('white');
+    background-color: var(--surface-foreground, color('white'));
   }
 
   .Icon {
-    @include recolor-icon(color('ink', 'lightest'));
+    @include recolor-icon(
+      var(--icon-subdued-on-surface, color('ink', 'lightest'))
+    );
   }
 }
 
@@ -66,13 +70,13 @@ $stacking-order: (
   border: none;
   background-color: transparent;
   outline: none;
-  color: var(--top-bar-color);
+  color: var(--text-on-surface, --top-bar-color);
   will-change: fill, color;
   transition: fill duration() easing(), color duration() easing();
   appearance: textfield;
 
   &::placeholder {
-    color: var(--top-bar-color);
+    color: var(--text-on-surface, --top-bar-color);
   }
 
   &::-webkit-search-decoration,
@@ -82,7 +86,7 @@ $stacking-order: (
 }
 
 .Icon {
-  @include recolor-icon(var(--top-bar-color));
+  @include recolor-icon(var(--icon-on-surface, --top-bar-color));
   position: absolute;
   z-index: z-index(icon, $stacking-order);
   top: 50%;
@@ -94,7 +98,9 @@ $stacking-order: (
 }
 
 .Clear {
-  @include recolor-icon(color('ink', 'lightest'));
+  @include recolor-icon(
+    var(--interactive-neutral-elevation-4, color('ink', 'lightest'))
+  );
   position: relative;
   z-index: z-index(action, $stacking-order);
   align-self: stretch;
@@ -105,7 +111,9 @@ $stacking-order: (
 
   &:focus,
   &:hover {
-    @include recolor-icon(color('ink', 'lighter'));
+    @include recolor-icon(
+      var(--interactive-neutral-elevation-5, color('ink', 'lighter'))
+    );
     outline: none;
   }
 }
@@ -117,7 +125,10 @@ $stacking-order: (
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--top-bar-background-lighter);
+  background-color: var(
+    --interactive-neutral-elevation-2,
+    var(--top-bar-background-lighter)
+  );
   will-change: background-color;
   transition: background-color duration() easing();
   border-radius: border-radius();
@@ -126,6 +137,9 @@ $stacking-order: (
 
 @keyframes toLightBackground {
   to {
-    background-color: var(--top-bar-background-lighter);
+    background-color: var(
+      --interactive-neutral-elevation-2,
+      var(--top-bar-background-lighter)
+    );
   }
 }

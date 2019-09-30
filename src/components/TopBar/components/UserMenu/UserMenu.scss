@@ -14,7 +14,7 @@
   @include text-style-body;
   font-weight: 500;
   line-height: line-height(subheading);
-  color: var(--top-bar-color);
+  color: var(--text-on-surface, --top-bar-color);
   text-align: left;
 }
 
@@ -22,6 +22,6 @@
   @include text-style-caption;
   @include truncate;
   opacity: 0.7;
-  color: var(--top-bar-color);
+  color: var(--text-on-surface, --top-bar-color);
   text-align: left;
 }

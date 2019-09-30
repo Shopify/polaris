@@ -10,7 +10,7 @@ $context-control-expand-after: 1400px;
   position: relative;
   display: flex;
   height: top-bar-height();
-  background-color: var(--top-bar-background);
+  background-color: var(--surface-background, var(--top-bar-background));
   &::after {
     content: '';
     position: absolute;

@@ -30,7 +30,7 @@ addParameters({
     }),
   },
   backgrounds: [
-    {name: 'Sky Light', value: tokens.colorSkyLight, default: true},
+    // {name: 'Sky Light', value: tokens.colorSkyLight, default: true},
     {name: 'White', value: '#fff'},
   ],
   percy: {
