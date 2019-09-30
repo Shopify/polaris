@@ -1,0 +1,20 @@
+name: Discoverability
+
+on: pull_request
+
+jobs:
+  discoverability-action:
+    name: Discoverability action
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+
+    - name: yarn
+      run: yarn
+
+    - name: Add a comment with known areas to test
+      uses: shopify/discoverability-action@beta-1
+      with:
+        codebaseGlob: src/**/*.tsx
+        ignoreGlob: src/**/*.test.tsx
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
