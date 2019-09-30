@@ -267,7 +267,7 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
     key === 'ArrowUp' ||
     key === 'ArrowDown' ||
     key === 'ArrowLeft' ||
-    key === 'ArrowRight'
+    key === 'ArrowRights'
   ) {
     event.preventDefault();
     event.stopPropagation();
