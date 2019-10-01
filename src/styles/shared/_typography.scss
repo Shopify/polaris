@@ -35,7 +35,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-subheading {
   font-size: font-size(subheading);
-  font-weight: 700;
+  font-weight: 600;
   line-height: line-height(subheading);
   text-transform: uppercase;
 
