@@ -24,7 +24,7 @@ export function Navigation({
   navigateTableLeft,
   navigateTableRight,
 }: NavigationProps) {
-  const {translate} = useI18n();
+  const i18n = useI18n();
 
   const pipMarkup = columnVisibilityData.map((column, index) => {
     const className = classNames(
@@ -35,13 +35,15 @@ export function Navigation({
     return <div className={className} key={`pip-${index}`} />;
   });
 
-  const leftA11yLabel = translate('Polaris.DataTable.navAccessibilityLabel', {
-    direction: 'left',
-  });
+  const leftA11yLabel = i18n.translate(
+    'Polaris.DataTable.navAccessibilityLabel',
+    {direction: 'left'},
+  );
 
-  const rightA11yLabel = translate('Polaris.DataTable.navAccessibilityLabel', {
-    direction: 'right',
-  });
+  const rightA11yLabel = i18n.translate(
+    'Polaris.DataTable.navAccessibilityLabel',
+    {direction: 'right'},
+  );
 
   return (
     <div className={styles.Navigation}>

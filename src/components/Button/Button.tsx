@@ -109,7 +109,7 @@ export function Button({
   textAlign,
   fullWidth,
 }: ButtonProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
 
   const isDisabled = disabled || loading;
 
@@ -156,7 +156,7 @@ export function Button({
       <Spinner
         size="small"
         color={spinnerColor}
-        accessibilityLabel={intl.translate(
+        accessibilityLabel={i18n.translate(
           'Polaris.Button.spinnerAccessibilityLabel',
         )}
       />

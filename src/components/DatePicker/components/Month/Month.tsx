@@ -60,7 +60,7 @@ export function Month({
   year,
   weekStartsOn,
 }: MonthProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
 
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
   const now = new Date();
@@ -73,7 +73,7 @@ export function Month({
   const weekdays = getWeekdaysOrdered(weekStartsOn).map((weekday) => (
     <Weekday
       key={weekday}
-      title={intl.translate(
+      title={i18n.translate(
         `Polaris.DatePicker.daysAbbreviated.${weekdayName(weekday)}`,
       )}
       current={current && new Date().getDay() === weekday}
@@ -126,7 +126,7 @@ export function Month({
   return (
     <div role="grid" className={styles.Month}>
       <div className={className}>
-        {intl.translate(`Polaris.DatePicker.months.${monthName(month)}`)} {year}
+        {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)} {year}
       </div>
       <div role="rowheader" className={styles.WeekHeadings}>
         {weekdays}

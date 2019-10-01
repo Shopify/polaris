@@ -31,13 +31,13 @@ export function Spinner({
   color = 'teal',
   accessibilityLabel,
 }: SpinnerProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
 
   if (size === 'large' && COLORS_FOR_LARGE_SPINNER.indexOf(color) < 0) {
     if (process.env.NODE_ENV === 'development') {
       // eslint-disable-next-line no-console
       console.warn(
-        intl.translate('Polaris.Spinner.warningMessage', {
+        i18n.translate('Polaris.Spinner.warningMessage', {
           color,
           size,
           colors: COLORS_FOR_LARGE_SPINNER.join(', '),

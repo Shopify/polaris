@@ -20,12 +20,12 @@ const COLORS_WITH_BACKDROPS = [
 interface Props extends IconProps {}
 
 export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
-  const intl = useI18n();
+  const i18n = useI18n();
 
   if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {
     // eslint-disable-next-line no-console
     console.warn(
-      intl.translate('Polaris.Icon.backdropWarning', {
+      i18n.translate('Polaris.Icon.backdropWarning', {
         color,
         colorsWithBackDrops: COLORS_WITH_BACKDROPS.join(', '),
       }),
