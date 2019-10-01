@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Tab from '../Tab';
+import {Tab} from '../Tab';
 
 describe('<Tab />', () => {
   it('has the tab role', () => {
