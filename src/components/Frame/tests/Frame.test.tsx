@@ -7,11 +7,14 @@ import {
   TrapFocus,
   ContextualSaveBar as PolarisContextualSavebar,
   Loading as PolarisLoading,
+  Toast as PolarisToast,
 } from 'components';
 import {Frame} from '../Frame';
 import {
   ContextualSaveBar as FrameContextualSavebar,
   Loading as FrameLoading,
+  Toast as FrameToast,
+  ToastManager,
 } from '../components';
 
 window.matchMedia =
@@ -123,6 +126,52 @@ describe('<Frame />', () => {
     expect(cssTransition.prop('in')).toBe(true);
   });
 
+  it('calls onNavigationDismiss on dismiss button click', () => {
+    const mockOnNavigationDismiss = jest.fn();
+    const navigation = <div />;
+    const cssTransition = mountWithAppProvider(
+      <Frame
+        navigation={navigation}
+        onNavigationDismiss={mockOnNavigationDismiss}
+      />,
+      {mediaQuery: {isNavigationCollapsed: true}},
+    )
+      .find(Frame)
+      .find(TrapFocus)
+      .find(CSSTransition);
+
+    cssTransition
+      .find('button')
+      .first()
+      .simulate('click');
+    animationFrame.runFrame();
+
+    expect(mockOnNavigationDismiss).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onNavigationDismiss on Escape keypress', () => {
+    const mockOnNavigationDismiss = jest.fn();
+    const navigation = <div />;
+    const div = mountWithAppProvider(
+      <Frame
+        navigation={navigation}
+        onNavigationDismiss={mockOnNavigationDismiss}
+      />,
+      {mediaQuery: {isNavigationCollapsed: true}},
+    )
+      .find(Frame)
+      .find(TrapFocus)
+      .find(CSSTransition)
+      .find('div')
+      .first();
+
+    div.simulate('keydown', {key: 'Enter'});
+    expect(mockOnNavigationDismiss).toHaveBeenCalledTimes(0);
+
+    div.simulate('keydown', {key: 'Escape'});
+    expect(mockOnNavigationDismiss).toHaveBeenCalledTimes(1);
+  });
+
   it('renders a skip to content link with the proper text', () => {
     const skipToContentLinkText = mountWithAppProvider(<Frame />)
       .find('a')
@@ -224,6 +273,20 @@ describe('<Frame />', () => {
     expect(frame.find(FrameContextualSavebar).exists()).toBe(true);
   });
 
+  it("unmounts rendered Frame's ContextualSavebar if Polaris' ContextualSavebar is unmounted", () => {
+    const frame = mountWithAppProvider(
+      <Frame>
+        <PolarisContextualSavebar />
+      </Frame>,
+    );
+    expect(frame.find(FrameContextualSavebar).exists()).toBe(true);
+
+    frame.setProps({children: null});
+    frame.update();
+
+    expect(frame.find('CSSAnimation.ContextualSaveBar').prop('in')).toBe(false);
+  });
+
   it('renders a Frame Loading if Polaris Loading is rendered', () => {
     const frame = mountWithAppProvider(
       <Frame>
@@ -231,5 +294,64 @@ describe('<Frame />', () => {
       </Frame>,
     );
     expect(frame.find(FrameLoading).exists()).toBe(true);
+  });
+
+  it('unmounts rendered Frame Loading if Polaris Loading is unmounted', () => {
+    const frame = mountWithAppProvider(
+      <Frame>
+        <PolarisLoading />
+      </Frame>,
+    );
+
+    expect(frame.find(FrameLoading).exists()).toBe(true);
+
+    frame.setProps({children: null});
+    frame.update();
+
+    expect(frame.find(FrameLoading).exists()).toBe(false);
+  });
+
+  it('renders a Frame Toast if Polaris Toast is rendered', () => {
+    const props = {content: 'Image uploaded', onDismiss: () => {}};
+    const frame = mountWithAppProvider(
+      <Frame>
+        <PolarisToast {...props} />
+      </Frame>,
+    );
+
+    expect(frame.find(FrameToast).exists()).toBe(true);
+  });
+
+  it('only renders a Frame Toast if two Polaris Toasts with same ID are rendered', () => {
+    const props = {
+      id: 'mock-id',
+      content: 'Image uploaded',
+      onDismiss: () => {},
+    };
+    const frame = mountWithAppProvider(
+      <Frame>
+        <PolarisToast {...props} />
+        <PolarisToast {...props} />
+      </Frame>,
+    );
+
+    expect(frame.find(FrameToast).exists()).toBe(true);
+    expect(frame.find(FrameToast)).toHaveLength(1);
+  });
+
+  it('unmounts rendered Frame Toast if Polaris Toast is unmounted', () => {
+    const props = {content: 'Image uploaded', onDismiss: () => {}};
+    const frame = mountWithAppProvider(
+      <Frame>
+        <PolarisToast {...props} />
+      </Frame>,
+    );
+
+    expect(frame.find(FrameToast).exists()).toBe(true);
+
+    frame.setProps({children: null});
+    frame.update();
+
+    expect(frame.find(ToastManager).prop('toastMessages')).toHaveLength(0);
   });
 });
