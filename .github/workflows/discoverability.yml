@@ -16,5 +16,5 @@ jobs:
       uses: shopify/discoverability-action@beta-2
       with:
         codebaseGlob: src/**/*.tsx
-        ignoreGlob: src/**/*.test.tsx
+        ignoreGlob: '{src/**/*.test.tsx,src/test-utilities/*}'
         githubToken: ${{ secrets.GITHUB_TOKEN }}
