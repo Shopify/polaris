@@ -53,7 +53,7 @@ export interface ButtonProps {
   external?: boolean;
   /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value */
   download?: string | boolean;
-  /** Icon to display to the left of the button content */
+  /** Icon to display to the of the button content */
   icon?: React.ReactElement | IconSource;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
