@@ -8,6 +8,7 @@ import {Key} from '../../types';
 export interface KeypressListenerProps {
   keyCode: Key;
   handler(event: KeyboardEvent): void;
+  keyEventName?: 'keyup' | 'keydown';
 }
 
 export class KeypressListener extends React.Component<
@@ -15,11 +16,13 @@ export class KeypressListener extends React.Component<
   never
 > {
   componentDidMount() {
-    addEventListener(document, 'keyup', this.handleKeyEvent);
+    const {keyEventName = 'keyup'} = this.props;
+    addEventListener(document, keyEventName, this.handleKeyEvent);
   }
 
   componentWillUnmount() {
-    removeEventListener(document, 'keyup', this.handleKeyEvent);
+    const {keyEventName = 'keyup'} = this.props;
+    removeEventListener(document, keyEventName, this.handleKeyEvent);
   }
 
   render() {

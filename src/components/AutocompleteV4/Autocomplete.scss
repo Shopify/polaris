@@ -1,0 +1,51 @@
+@import '../../styles/common';
+
+.Loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: spacing(tight) spacing();
+}
+
+.ListBox {
+  @include unstyled-list;
+}
+
+.Option {
+  @include unstyled-list;
+  padding: spacing(tight) spacing();
+  cursor: pointer;
+
+  &:hover {
+    @include state(hover);
+  }
+
+  &.focused {
+    @include state(focused);
+
+    &:hover {
+      @include state(focused, hover);
+    }
+  }
+
+  &.disabled {
+    @include state(disabled);
+
+    .Media {
+      @include recolor-icon(color('ink', 'lightest'), color('white'));
+    }
+  }
+
+  &.selected {
+    @include state(selected);
+
+    &.focused {
+      @include state(selected, focused);
+
+      &:hover {
+        @include state(selected, focused, hover);
+      }
+    }
+  }
+}
