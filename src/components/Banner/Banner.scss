@@ -7,25 +7,18 @@ $ribbon-flex-basis: rem(32px);
 $secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
 $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
-@mixin banner-attributes($highlight, $background, $in-page, $tint) {
+@mixin banner-attributes($highlight, $background) {
   transition: box-shadow duration() easing();
   transition-delay: duration(fast);
+  background-color: $background;
+  box-sizing: border-box;
+  box-shadow: inset 0 2px 0 0 $highlight, inset 0 0 0 2px $highlight;
+  border-radius: var(--border-radius-wide, border-radius());
 
   @media (-ms-high-contrast: active) {
     box-shadow: inset 0 $accent-height 0 0 ms-high-contrast-color('text'),
       inset 0 0 border-width(base) border-width(base)
         ms-high-contrast-color('text');
-  }
-
-  @if $in-page {
-    box-shadow: inset 0 $accent-height 0 0 $highlight, inset shadow(transparent),
-      shadow();
-  }
-
-  @if $tint {
-    background-color: mix(white, $background, 44%);
-  } @else {
-    background-color: $background;
   }
 
   &:focus {
@@ -38,47 +31,37 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   }
 }
 
-@mixin banner-variants($in-page: false) {
+@mixin banner-variants {
   @include banner-attributes(
-    color('ink', 'lighter'),
-    color('sky', 'light'),
-    $in-page,
-    false
+    var(--divider-on-surface, color('ink', 'lighter')),
+    var(--surface-background, color('sky', 'light'))
   );
 
   &.statusSuccess {
     @include banner-attributes(
-      color('green'),
-      color('green', 'lighter'),
-      $in-page,
-      true
+      var(--success-divider, color('green')),
+      var(--success-surface-subdued, color('green', 'lighter'))
     );
   }
 
   &.statusInfo {
     @include banner-attributes(
-      color('teal'),
-      color('teal', 'lighter'),
-      $in-page,
-      true
+      var(--highlight-divider, color('teal')),
+      var(--highlight-surface-subdued, color('teal', 'lighter'))
     );
   }
 
   &.statusWarning {
     @include banner-attributes(
-      color('yellow'),
-      color('yellow', 'lighter'),
-      $in-page,
-      true
+      var(--warning-divider, color('yellow')),
+      var(--warning-surface-subdued, color('yellow', 'lighter'))
     );
   }
 
   &.statusCritical {
     @include banner-attributes(
-      color('red'),
-      color('red', 'lighter'),
-      $in-page,
-      true
+      var(--critical-diviver, color('red')),
+      var(--critical-surface-subdued, color('red', 'lighter'))
     );
   }
 }
@@ -89,7 +72,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .withinContentContainer {
-  border-radius: border-radius();
   padding: spacing(tight) $intermediate-spacing;
 
   @include banner-variants;
@@ -117,7 +99,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   border-radius: 0 0 border-radius() border-radius();
   padding: spacing();
 
-  @include banner-variants(true);
+  @include banner-variants;
 
   + .Banner {
     margin-top: spacing(loose);
@@ -173,7 +155,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     (-0.5 * $secondary-action-horizontal-padding);
   padding: $secondary-action-vertical-padding
     $secondary-action-horizontal-padding;
-  color: color('ink');
+  color: var(--text-on-surface, color('ink'));
   padding-left: rem(6px);
 
   &:hover > .Text::after {
