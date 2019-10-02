@@ -16,7 +16,6 @@
 - Added support for using `EmptyState` in a content context ([#1570](https://github.com/Shopify/polaris-react/pull/1570))
 - `Page` no longer renders navigation or actions in print mode ([#2469](https://github.com/Shopify/polaris-react/pull/2469))
 - Added an `emptyState` prop to `ResourceList` ([#2160](https://github.com/Shopify/polaris-react/pull/2160))
-- Added a `disabled` prop to `Filters` ([#2160](https://github.com/Shopify/polaris-react/pull/2160))
 
 ### Bug fixes
 
