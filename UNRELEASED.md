@@ -22,7 +22,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
-- Improved code quality for the theme provider component in preparation for the color system project ([#2225](https://github.com/Shopify/polaris-react/pull/2225)):
+- Improved code quality for the theme provider component ([#2225](https://github.com/Shopify/polaris-react/pull/2225)):
 
   - updated type for `theme` prop to `ThemeConfig` to distinguish from the type `Theme` which is shared over context. A `Theme` contains only the logo properties, while `ThemeConfig` can contain a `colors` property.
   - converted `ThemeProvider` to use hooks
