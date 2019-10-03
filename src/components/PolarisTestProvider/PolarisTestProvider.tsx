@@ -38,9 +38,9 @@ export type WithPolarisTestProviderOptions = {
   link?: LinkLikeComponent;
   theme?: Partial<Theme>;
   mediaQuery?: Partial<MediaQueryContextType>;
+  features?: Features;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
-  features?: Features;
 };
 
 export interface PolarisTestProviderProps
@@ -60,9 +60,9 @@ export function PolarisTestProvider({
   appBridge,
   link,
   theme,
-  frame,
   mediaQuery,
   features = {},
+  frame,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
 
@@ -94,11 +94,11 @@ export function PolarisTestProvider({
                 <AppBridgeContext.Provider value={appBridgeApp}>
                   <LinkContext.Provider value={link}>
                     <ThemeContext.Provider value={mergedTheme}>
-                      <FrameContext.Provider value={mergedFrame}>
-                        <MediaQueryContext.Provider value={mergedMediaQuery}>
+                      <MediaQueryContext.Provider value={mergedMediaQuery}>
+                        <FrameContext.Provider value={mergedFrame}>
                           {children}
-                        </MediaQueryContext.Provider>
-                      </FrameContext.Provider>
+                        </FrameContext.Provider>
+                      </MediaQueryContext.Provider>
                     </ThemeContext.Provider>
                   </LinkContext.Provider>
                 </AppBridgeContext.Provider>
