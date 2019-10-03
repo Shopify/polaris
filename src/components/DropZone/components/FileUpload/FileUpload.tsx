@@ -21,12 +21,16 @@ export interface FileUploadProps {
 }
 
 export function FileUpload(props: FileUploadProps) {
-  const {translate} = useI18n();
+  const i18n = useI18n();
   const {size, type, focused, disabled} = useContext(DropZoneContext);
   const suffix = capitalize(type);
   const {
-    actionTitle = translate(`Polaris.DropZone.FileUpload.actionTitle${suffix}`),
-    actionHint = translate(`Polaris.DropZone.FileUpload.actionHint${suffix}`),
+    actionTitle = i18n.translate(
+      `Polaris.DropZone.FileUpload.actionTitle${suffix}`,
+    ),
+    actionHint = i18n.translate(
+      `Polaris.DropZone.FileUpload.actionHint${suffix}`,
+    ),
   } = props;
 
   const imageClasses = classNames(

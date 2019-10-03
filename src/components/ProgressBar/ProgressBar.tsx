@@ -19,14 +19,14 @@ export interface ProgressBarProps {
 }
 
 export function ProgressBar({progress = 0, size = 'medium'}: ProgressBarProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
 
   const className = classNames(
     styles.ProgressBar,
     size && styles[variationName('size', size)],
   );
 
-  const warningMessage = intl.translate(
+  const warningMessage = i18n.translate(
     progress < 0
       ? 'Polaris.ProgressBar.negativeWarningMessage'
       : 'Polaris.ProgressBar.exceedWarningMessage',

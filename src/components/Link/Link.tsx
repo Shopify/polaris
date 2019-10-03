@@ -32,11 +32,11 @@ export function Link({
   id,
   monochrome,
 }: LinkProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
   let childrenMarkup = children;
 
   if (external && typeof children === 'string') {
-    const iconLabel = intl.translate(
+    const iconLabel = i18n.translate(
       'Polaris.Common.newWindowAccessibilityHint',
     );
 

@@ -37,7 +37,7 @@ export function FilterCreator({
   const [selectedFilterValue, setSelectedFilterValue] = useState<
     AppliedFilter['value']
   >();
-  const {translate} = useI18n();
+  const i18n = useI18n();
   const node = useRef<HTMLButtonElement>(null);
 
   const canAddFilter = Boolean(
@@ -124,7 +124,7 @@ export function FilterCreator({
       disabled={disabled}
       onFocus={handleButtonFocus}
     >
-      {translate('Polaris.ResourceList.FilterCreator.filterButtonLabel')}
+      {i18n.translate('Polaris.ResourceList.FilterCreator.filterButtonLabel')}
     </Button>
   );
 
@@ -149,7 +149,9 @@ export function FilterCreator({
       disabled={!canAddFilter}
       testID="FilterCreator-AddFilterButton"
     >
-      {translate('Polaris.ResourceList.FilterCreator.addFilterButtonLabel')}
+      {i18n.translate(
+        'Polaris.ResourceList.FilterCreator.addFilterButtonLabel',
+      )}
     </Button>
   ) : null;
 
@@ -164,11 +166,11 @@ export function FilterCreator({
       <Form onSubmit={handleAddFilter}>
         <FormLayout>
           <Select
-            label={translate(
+            label={i18n.translate(
               'Polaris.ResourceList.FilterCreator.showAllWhere',
               {resourceNamePlural: resourceName.plural.toLocaleLowerCase()},
             )}
-            placeholder={translate(
+            placeholder={i18n.translate(
               'Polaris.ResourceList.FilterCreator.selectFilterKeyPlaceholder',
             )}
             options={filterOptions}

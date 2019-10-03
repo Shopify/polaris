@@ -93,8 +93,12 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
 
   constructor(props: CombinedProps) {
     super(props);
-    const {translate} = props.polaris.intl;
-    this.totalsRowHeading = translate('Polaris.DataTable.totalsRowHeading');
+    const {
+      polaris: {intl},
+    } = props;
+    this.totalsRowHeading = intl.translate(
+      'Polaris.DataTable.totalsRowHeading',
+    );
   }
 
   componentDidMount() {

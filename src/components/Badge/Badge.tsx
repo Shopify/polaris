@@ -44,7 +44,7 @@ export function Badge({
   progress,
   size = DEFAULT_SIZE,
 }: BadgeProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
 
   const className = classNames(
     styles.Badge,
@@ -56,17 +56,17 @@ export function Badge({
   let progressMarkup;
   switch (progress) {
     case PROGRESS_LABELS.incomplete:
-      progressMarkup = intl.translate(
+      progressMarkup = i18n.translate(
         'Polaris.Badge.PROGRESS_LABELS.incomplete',
       );
       break;
     case PROGRESS_LABELS.partiallyComplete:
-      progressMarkup = intl.translate(
+      progressMarkup = i18n.translate(
         'Polaris.Badge.PROGRESS_LABELS.partiallyComplete',
       );
       break;
     case PROGRESS_LABELS.complete:
-      progressMarkup = intl.translate('Polaris.Badge.PROGRESS_LABELS.complete');
+      progressMarkup = i18n.translate('Polaris.Badge.PROGRESS_LABELS.complete');
       break;
   }
 
@@ -79,19 +79,19 @@ export function Badge({
   let statusMarkup;
   switch (status) {
     case STATUS_LABELS.info:
-      statusMarkup = intl.translate('Polaris.Badge.STATUS_LABELS.info');
+      statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.info');
       break;
     case STATUS_LABELS.success:
-      statusMarkup = intl.translate('Polaris.Badge.STATUS_LABELS.success');
+      statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.success');
       break;
     case STATUS_LABELS.warning:
-      statusMarkup = intl.translate('Polaris.Badge.STATUS_LABELS.warning');
+      statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.warning');
       break;
     case STATUS_LABELS.attention:
-      statusMarkup = intl.translate('Polaris.Badge.STATUS_LABELS.attention');
+      statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.attention');
       break;
     case STATUS_LABELS.new:
-      statusMarkup = intl.translate('Polaris.Badge.STATUS_LABELS.new');
+      statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.new');
       break;
   }
 

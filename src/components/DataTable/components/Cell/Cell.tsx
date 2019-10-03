@@ -38,7 +38,7 @@ export function Cell({
   defaultSortDirection = 'ascending',
   onSort,
 }: CellProps) {
-  const {translate} = useI18n();
+  const i18n = useI18n();
   const numeric = contentType === 'numeric';
   const className = classNames(
     styles.Cell,
@@ -63,7 +63,7 @@ export function Cell({
   const oppositeDirection =
     sortDirection === 'ascending' ? 'descending' : 'ascending';
 
-  const sortAccessibilityLabel = translate(
+  const sortAccessibilityLabel = i18n.translate(
     'Polaris.DataTable.sortAccessibilityLabel',
     {direction: sorted ? oppositeDirection : direction},
   );

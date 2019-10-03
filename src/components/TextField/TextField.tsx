@@ -160,7 +160,7 @@ export function TextField({
   onFocus,
   onBlur,
 }: TextFieldProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const [isMounted, setIsMounted] = useState(false);
@@ -209,7 +209,7 @@ export function TextField({
   ) : null;
 
   const characterCount = normalizedValue.length;
-  const characterCountLabel = intl.translate(
+  const characterCountLabel = i18n.translate(
     maxLength
       ? 'Polaris.TextField.characterCountWithMaxLength'
       : 'Polaris.TextField.characterCount',
@@ -247,7 +247,7 @@ export function TextField({
         disabled={disabled}
       >
         <VisuallyHidden>
-          {intl.translate('Polaris.Common.clear')}
+          {i18n.translate('Polaris.Common.clear')}
         </VisuallyHidden>
         <Icon source={CircleCancelMinor} color="inkLightest" />
       </button>

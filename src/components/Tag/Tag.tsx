@@ -16,9 +16,9 @@ export interface TagProps {
 }
 
 export function Tag({children, disabled = false, onRemove}: TagProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
   const className = classNames(disabled && styles.disabled, styles.Tag);
-  const ariaLabel = intl.translate('Polaris.Tag.ariaLabel', {children});
+  const ariaLabel = i18n.translate('Polaris.Tag.ariaLabel', {children});
 
   return (
     <span className={className}>
