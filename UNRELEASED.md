@@ -22,6 +22,17 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Improved code quality for the theme provider component ([#2225](https://github.com/Shopify/polaris-react/pull/2225)):
+
+  - updated type for `theme` prop to `ThemeConfig` to distinguish from the type `Theme` which is shared over context. A `Theme` contains only the logo properties, while `ThemeConfig` can contain a `colors` property.
+  - converted `ThemeProvider` to use hooks
+  - created symmetry in context between app provider and test provider
+  - added better tests for default topBar colors
+  - fixed an issue where `colorToHsla` returned HSLA strings instead of HSLA objects when given HSL or HSLA strings
+  - fixed an issue with `colorToHsla` where RGB colors with no saturation could result in a divide by zero error
+  - fixed an issue where `colorToHsla` inconsistently returned an alpha value
+  - fixed an issue where `lightenColor` and `darkenColor` would lighten or darken absolute lightness vales (0, 100)
+
 ### Deprecations
 
 ### Development workflow

@@ -1,5 +1,3 @@
-export type ColorsToParse = ThemeColor;
-
 export type ThemeLogo = {
   /** Provides a path for a logo used on a dark background */
   topBarSource?: string;
@@ -11,25 +9,22 @@ export type ThemeLogo = {
   accessibilityLabel?: string;
   /** Number of pixels wide the logo image is */
   width?: number;
-} | null;
-
-export interface ThemeColor {
-  [key: string]: string;
-}
-
-export interface TopBar extends ThemeColor {
-  background: string;
-}
-
-export type ThemeColors = {
-  topBar: TopBar;
 };
 
+// The value that is passed into the ThemeProvider
+export interface ThemeConfig {
+  /** Sets the logo for the top bar and contextual save bar components*/
+  logo?: ThemeLogo;
+  colors?: {
+    /** Sets the background color of the top bar component. Complimentary and typography colors are determined programmatically */
+    topBar?: Record<string, string>;
+  };
+}
+
+// The value that is stored in the ThemeContext
 export interface Theme {
   /** Sets the logo for the top bar and contextual save bar components*/
   logo?: ThemeLogo;
-  /** Sets the background color of the top bar component. Complimentary and typography colors are determined programmatically */
-  colors?: ThemeColors;
 }
 
-export type ThemeVariant = 'light' | 'dark';
+export type CustomPropertiesLike = Record<string, string>;

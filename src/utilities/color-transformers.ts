@@ -147,10 +147,11 @@ function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
   } else if (type === 'b') {
     saturation = delta / largestComponent;
   } else if (type === 'l') {
-    saturation =
+    const baseSaturation =
       lightness > 0.5
         ? delta / (2 - largestComponent - smallestComponent)
         : delta / (largestComponent + smallestComponent);
+    saturation = isNaN(baseSaturation) ? 0 : baseSaturation;
   }
 
   let huePercentage = 0;
@@ -177,20 +178,18 @@ function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
 }
 
 export function rgbToHsb(color: RGBColor): HSBColor;
-export function rgbToHsb(color: RGBAColor): HSBAColor;
 export function rgbToHsb(color: RGBAColor): HSBAColor {
-  const {hue, saturation, brightness, alpha} = rgbToHsbl(color, 'b');
+  const {hue, saturation, brightness, alpha = 1} = rgbToHsbl(color, 'b');
   return {hue, saturation, brightness, alpha};
 }
 
-export function rgbToHsl(color: RGBColor): HSLColor;
-export function rgbToHsl(color: RGBAColor): HSLAColor;
+export function rgbToHsl(color: RGBColor): HSLAColor;
 export function rgbToHsl(color: RGBAColor): HSLAColor {
   const {
     hue,
     saturation: rawSaturation,
     lightness: rawLightness,
-    alpha,
+    alpha = 1,
   } = rgbToHsbl(color, 'l');
   const saturation = rawSaturation * 100;
   const lightness = rawLightness * 100;
@@ -253,7 +252,7 @@ export function hslToString(hslColor: HSLAColor | string) {
   return `hsl(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
 }
 
-function rgbToObject(color: string) {
+function rgbToObject(color: string): RGBAColor {
   const colorMatch = color.match(/\(([^)]+)\)/);
 
   if (!colorMatch) {
@@ -270,27 +269,48 @@ function rgbToObject(color: string) {
   return objColor;
 }
 
-const hexToHsl: (color: string) => HSLColor | HSLAColor = compose(
+const hexToHsla: (color: string) => HSLAColor = compose(
   rgbToHsl,
   hexToRgb,
 );
 
-const rbgStringToHsl: (color: string) => HSLColor | HSLAColor = compose(
+const rbgStringToHsla: (color: string) => HSLAColor = compose(
   rgbToHsl,
   rgbToObject,
 );
 
-export function colorToHsla(color: string) {
+function hslToObject(color: string): HSLAColor {
+  const colorMatch = color.match(/\(([^)]+)\)/);
+
+  if (!colorMatch) {
+    return {hue: 0, saturation: 0, lightness: 0, alpha: 0};
+  }
+
+  const [hue, saturation, lightness, alpha] = colorMatch[1].split(',');
+  const objColor = {
+    hue: parseInt(hue, 10),
+    saturation: parseInt(saturation, 10),
+    lightness: parseInt(lightness, 10),
+    alpha: parseFloat(alpha) || 1,
+  };
+  return objColor;
+}
+
+export function colorToHsla(color: string): HSLAColor {
   const type: ColorType = getColorType(color);
   switch (type) {
     case ColorType.Hex:
-      return hexToHsl(color);
+      return hexToHsla(color);
     case ColorType.Rgb:
     case ColorType.Rgba:
-      return rbgStringToHsl(color);
-    case ColorType.Hsl:
+      return rbgStringToHsla(color);
     case ColorType.Hsla:
+    case ColorType.Hsl:
+      return hslToObject(color);
+    case ColorType.Default:
     default:
-      return color;
+      throw new Error(
+        'Accepted color formats are: hex, rgb, rgba, hsl and hsla',
+      );
   }
 }
