@@ -239,7 +239,7 @@ function customPropertyTransformer(colors: {[key: string]: HSLAColor}) {
 }
 
 function toCssCustomPropertySyntax(camelCase: string) {
-  return `--${camelCase.replace(/([A-Z0-9])/g, '-$1').toLowerCase()}`;
+  return `--p-${camelCase.replace(/([A-Z0-9])/g, '-$1').toLowerCase()}`;
 }
 
 function setLightness(
