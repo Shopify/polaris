@@ -3,6 +3,7 @@ import isEqual from 'lodash/isEqual';
 import {ThemeContext} from '../../utilities/theme';
 import {Theme} from '../../utilities/theme/types';
 import {setColors} from '../../utilities/theme/utils';
+import {themeProvider} from '../shared';
 
 interface State {
   theme: Theme;
@@ -55,7 +56,9 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, State> {
 
     return (
       <ThemeContext.Provider value={theme}>
-        <div style={styles}>{children}</div>
+        <div style={styles} {...themeProvider.props}>
+          {children}
+        </div>
       </ThemeContext.Provider>
     );
   }
