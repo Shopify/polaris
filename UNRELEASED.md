@@ -24,6 +24,8 @@
 
 ### Dependency upgrades
 
+- Upgraded to TypeScript `v3.6.4` ([#2237](https://github.com/Shopify/polaris-react/pull/2237))
+
 ### Code quality
 
 - Changed `aria-labelledby` to always exist on `TextField` ([#2401](https://github.com/Shopify/polaris-react/pull/2401))
