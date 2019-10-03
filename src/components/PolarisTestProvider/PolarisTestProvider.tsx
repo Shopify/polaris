@@ -62,7 +62,7 @@ export function PolarisTestProvider({
   theme,
   frame,
   mediaQuery,
-  features,
+  features = {},
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
 
