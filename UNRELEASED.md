@@ -21,6 +21,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed 200ms visual delay when activating `Popover` ([#2209](https://github.com/Shopify/polaris-react/pull/2209))
 - Fixed `ResourceList` `Item` deselect ([#1952](https://github.com/Shopify/polaris-react/pull/1952))
 - Fixed `Subheading`’s `font-weight` ([#2218](https://github.com/Shopify/polaris-react/pull/2218))
+- Fixed `fullWidth` `CardSection`s when contained in a page with a `Nav` ([#2227](https://github.com/Shopify/polaris-react/pull/2227))
 
 ### Documentation
 
