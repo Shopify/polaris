@@ -35,8 +35,8 @@ type CombinedProps = TextPickerProps & WithAppProviderProps;
 interface State {
   valueHasBeenUpdatedOnce: boolean;
   value: string;
+  lastValidValue: string;
   color: TextPickerProps['color'];
-  inputError: boolean;
 }
 
 class TextPicker extends React.PureComponent<CombinedProps, State> {
@@ -52,7 +52,6 @@ class TextPicker extends React.PureComponent<CombinedProps, State> {
     const isNewHex = newValue !== hsbToHex(hexToHsb(currentValue));
     return {
       value: isNewHex ? newValue : currentValue,
-      inputError: false,
       color: colorProp,
     };
   }
@@ -60,12 +59,12 @@ class TextPicker extends React.PureComponent<CombinedProps, State> {
   state: State = {
     valueHasBeenUpdatedOnce: false,
     value: hsbToHex(this.props.color),
+    lastValidValue: hsbToHex(this.props.color),
     color: this.props.color,
-    inputError: false,
   };
 
   render() {
-    const {value, inputError} = this.state;
+    const {value} = this.state;
     const {
       allowAlpha,
       polaris: {intl},
@@ -74,18 +73,18 @@ class TextPicker extends React.PureComponent<CombinedProps, State> {
       styles.TextPicker,
       allowAlpha && styles.AlphaAllowed,
     );
-    const error = inputError
-      ? intl.translate('Polaris.ColorPicker.invalidColor')
-      : undefined;
+    const label = intl.translate(
+      'Polaris.ColorPicker.textPickerAccessibilityLabel',
+    );
     const valueForDisplay = isHexString(value) ? value.toUpperCase() : value;
 
     return (
       <div className={className}>
         <TextField
-          label="HEX color"
+          label={label}
+          labelHidden
           value={valueForDisplay}
           onBlur={this.handleBlur}
-          error={error}
           onChange={this.handleTextChange}
           prefix={this.renderSelectedColorSwatch()}
           autoComplete={false}
@@ -96,7 +95,7 @@ class TextPicker extends React.PureComponent<CombinedProps, State> {
 
   private handleBlur = () => {
     const {onChange, color} = this.props;
-    const {value, valueHasBeenUpdatedOnce} = this.state;
+    const {value, lastValidValue, valueHasBeenUpdatedOnce} = this.state;
 
     if (!valueHasBeenUpdatedOnce) {
       return;
@@ -106,7 +105,7 @@ class TextPicker extends React.PureComponent<CombinedProps, State> {
     if (validUserInput) {
       this.setState({
         value: validUserInput,
-        inputError: false,
+        lastValidValue: validUserInput,
       });
 
       const colorHasChanged = validUserInput !== hsbToHex(color);
@@ -119,7 +118,7 @@ class TextPicker extends React.PureComponent<CombinedProps, State> {
     }
 
     this.setState({
-      inputError: true,
+      value: lastValidValue,
     });
   };
 
