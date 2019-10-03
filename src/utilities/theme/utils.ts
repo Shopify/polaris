@@ -5,27 +5,44 @@ import {isLight} from '../color-validation';
 import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
 import {compose} from '../compose';
-
-import {Theme, ColorsToParse, ThemeVariant, ThemeColors} from './types';
 import {needsVariantList} from './config';
+import {ThemeConfig, Theme, CustomPropertiesLike} from './types';
 
-export function setColors(theme: Theme | undefined): string[][] | undefined {
+export function buildCustomProperties(
+  themeConfig: ThemeConfig,
+): CustomPropertiesLike {
+  return {
+    ...setColors(themeConfig),
+  };
+}
+
+export function buildThemeContext(themeConfig: ThemeConfig): Theme {
+  const {logo} = themeConfig;
+  return {logo};
+}
+
+function setColors(theme: ThemeConfig | undefined): CustomPropertiesLike {
   let colorPairs;
-  if (theme && theme.colors) {
-    Object.entries(theme.colors).forEach(([colorKey, pairs]) => {
-      const colorKeys = Object.keys(pairs);
-      if (colorKey === 'topBar' && colorKeys.length > 1) {
-        colorPairs = colorKeys.map((key: string) => {
-          const colors = (theme.colors as ThemeColors).topBar;
-          return [constructColorName(colorKey, key), colors[key]];
-        });
-      } else {
-        colorPairs = parseColors([colorKey, pairs]);
-      }
+  const pairs =
+    theme && theme.colors && theme.colors.topBar
+      ? theme.colors.topBar
+      : {background: '#00848e', backgroundLighter: '#f9fafb', color: '#1d9ba4'};
+
+  const colorKey = 'topBar';
+  const colorKeys = Object.keys(pairs);
+  if (colorKeys.length > 1) {
+    colorPairs = colorKeys.map((key: string) => {
+      const colors = pairs;
+      return colors && [constructColorName(colorKey, key), colors[key]];
     });
+  } else {
+    colorPairs = parseColors([colorKey, pairs]);
   }
 
-  return colorPairs;
+  return colorPairs.reduce(
+    (state, [key, value]) => ({...state, [key]: value}),
+    {},
+  );
 }
 
 export function needsVariant(name: string) {
@@ -43,7 +60,7 @@ const lightenToString: (
 
 export function setTextColor(
   name: string,
-  variant: ThemeVariant = 'dark',
+  variant: 'light' | 'dark' = 'dark',
 ): string[] {
   if (variant === 'light') {
     return [name, tokens.colorInk];
@@ -88,7 +105,10 @@ export function setTheme(
   return colorPairs;
 }
 
-function parseColors([baseName, colors]: [string, ColorsToParse]): string[][] {
+function parseColors([baseName, colors]: [
+  string,
+  {[key: string]: string},
+]): string[][] {
   const keys = Object.keys(colors);
   const colorPairs = [];
   for (let i = 0; i < keys.length; i++) {

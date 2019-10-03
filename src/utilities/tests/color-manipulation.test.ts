@@ -20,6 +20,11 @@ describe('lightenColor', () => {
     );
     expect((lightColor as HSLColor).lightness).toBeGreaterThan(50);
   });
+
+  it('returns a valid color when an input is at maximum lightness', () => {
+    const lightColor = lightenColor({hue: 0, saturation: 0, lightness: 100}, 5);
+    expect((lightColor as HSLColor).lightness).toBe(100);
+  });
 });
 
 describe('darkenColor', () => {
@@ -31,6 +36,11 @@ describe('darkenColor', () => {
   it('will return a darker color', () => {
     const darkColor = darkenColor({hue: 50, saturation: 50, lightness: 50}, 5);
     expect((darkColor as HSLColor).lightness).toBeLessThan(50);
+  });
+
+  it('returns a valid color when an input is at maximum lightness', () => {
+    const darkColor = darkenColor({hue: 0, saturation: 0, lightness: 0}, 5);
+    expect((darkColor as HSLColor).lightness).toBe(0);
   });
 });
 
