@@ -6,7 +6,7 @@ import {ThemeContext} from '../../../utilities/theme';
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
     const themeProvider = mountWithAppProvider(
-      <ThemeProvider theme={{logo: null}}>
+      <ThemeProvider theme={{logo: {}}}>
         <p>Hello</p>
       </ThemeProvider>,
     );
@@ -41,10 +41,7 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    const div = wrapper
-      .find(Child)
-      .find('div')
-      .first();
+    const div = wrapper.find(Child).find('div');
 
     expect(div.exists()).toBe(true);
   });
@@ -56,7 +53,11 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(wrapper.find('div').props().style).toBeDefined();
+    expect(wrapper.find('div').props().style).toStrictEqual({
+      '--top-bar-background': '#00848e',
+      '--top-bar-background-lighter': '#f9fafb',
+      '--top-bar-color': '#1d9ba4',
+    });
   });
 
   it('sets a provided theme', () => {

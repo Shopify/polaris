@@ -126,6 +126,15 @@ describe('colorUtilities', () => {
       });
     });
 
+    it('returns a valid color when given an rgb color with no saturation', () => {
+      expect(colorToHsla('rgb(0, 0, 0)')).toStrictEqual({
+        alpha: 1,
+        hue: 0,
+        lightness: 0,
+        saturation: 0,
+      });
+    });
+
     it('returns the hsla color for rgba', () => {
       expect(colorToHsla('rgb(132, 11, 2, 0.2)')).toStrictEqual({
         alpha: 1,
@@ -136,13 +145,21 @@ describe('colorUtilities', () => {
     });
 
     it('returns the hsla color for hsl', () => {
-      expect(colorToHsla('hsla(120, 100%, 50%)')).toBe('hsla(120, 100%, 50%)');
+      expect(colorToHsla('hsla(120, 100%, 50%)')).toStrictEqual({
+        alpha: 1,
+        hue: 120,
+        lightness: 50,
+        saturation: 100,
+      });
     });
 
     it('returns the hsla color for hsla', () => {
-      expect(colorToHsla('hsla(120, 100%, 50%, 0.3)')).toBe(
-        'hsla(120, 100%, 50%, 0.3)',
-      );
+      expect(colorToHsla('hsla(120, 100%, 50%, 0.3)')).toStrictEqual({
+        alpha: 0.3,
+        hue: 120,
+        lightness: 50,
+        saturation: 100,
+      });
     });
   });
 });

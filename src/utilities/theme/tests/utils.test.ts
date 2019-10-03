@@ -1,7 +1,12 @@
 import tokens from '@shopify/polaris-tokens';
-
-import {needsVariant, setColors, setTextColor, setTheme} from '../utils';
 import {needsVariantList} from '../config';
+import {
+  needsVariant,
+  setTextColor,
+  setTheme,
+  buildThemeContext,
+  buildCustomProperties,
+} from '../utils';
 
 describe('setTextColor', () => {
   it('sets a css variable to white if the variant is dark', () => {
@@ -43,11 +48,21 @@ describe('needsVariant', () => {
   });
 });
 
-describe('setColors', () => {
-  it('iterates over colors when a theme is passed', () => {
+describe('buildCustomProperties', () => {
+  it('builds an object of css custom properties and colors for a given theme', () => {
     const theme = {colors: {topBar: {background: '#eeeeee'}}};
-    const spy = jest.spyOn(Object, 'entries');
-    setColors(theme);
-    expect(spy).toHaveBeenCalledWith(theme.colors);
+
+    const colors = buildCustomProperties(theme);
+    expect(colors).toStrictEqual({
+      '--top-bar-background': '#eeeeee',
+      '--top-bar-background-lighter': 'hsl(0, 10%, 100%, 1)',
+      '--top-bar-color': 'rgb(33, 43, 54)',
+    });
+  });
+});
+
+describe('buildThemeContext', () => {
+  it('reduces theme config down to a theme', () => {
+    expect(buildThemeContext({colors: {}, logo: {}})).toStrictEqual({logo: {}});
   });
 });

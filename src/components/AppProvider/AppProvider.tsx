@@ -1,5 +1,5 @@
 import React from 'react';
-import {Theme} from '../../utilities/theme';
+import {ThemeConfig} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
@@ -36,7 +36,7 @@ export interface AppProviderProps extends AppBridgeOptions {
   /** A custom component to use for all links used by Polaris components */
   linkComponent?: LinkLikeComponent;
   /** Custom logos and colors provided to select components */
-  theme?: Theme;
+  theme?: ThemeConfig;
   /** For toggling features */
   features?: Features;
   /** Inner content of the application */
@@ -98,7 +98,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
   }
 
   render() {
-    const {theme = {logo: null}, features = {}, children} = this.props;
+    const {theme = {}, features = {}, children} = this.props;
     const {intl, appBridge, link} = this.state;
 
     return (

@@ -1,7 +1,11 @@
 import React from 'react';
 import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
-import {Theme, ThemeContext} from '../../utilities/theme';
+import {
+  ThemeContext,
+  ThemeConfig,
+  buildThemeContext,
+} from '../../utilities/theme';
 import {MediaQueryContext} from '../../utilities/media-query';
 import {
   ScrollLockManager,
@@ -36,7 +40,7 @@ export type WithPolarisTestProviderOptions = {
   i18n?: TranslationDictionary | TranslationDictionary[];
   appBridge?: AppBridgeOptions;
   link?: LinkLikeComponent;
-  theme?: Partial<Theme>;
+  theme?: ThemeConfig;
   mediaQuery?: Partial<MediaQueryContextType>;
   features?: Features;
   // Contexts provided by Frame
@@ -59,7 +63,7 @@ export function PolarisTestProvider({
   i18n,
   appBridge,
   link,
-  theme,
+  theme = {},
   mediaQuery,
   features = {},
   frame,
@@ -78,7 +82,7 @@ export function PolarisTestProvider({
   // I'm not that worried about it
   const appBridgeApp = appBridge as React.ContextType<typeof AppBridgeContext>;
 
-  const mergedTheme = createThemeContext(theme);
+  const mergedTheme = buildThemeContext(theme);
 
   const mergedFrame = createFrameContext(frame);
 
@@ -112,11 +116,6 @@ export function PolarisTestProvider({
 }
 
 function noop() {}
-
-function createThemeContext(theme: Partial<Theme> = {}): Theme {
-  const {logo = null} = theme;
-  return {logo};
-}
 
 function createFrameContext({
   showToast = noop,
