@@ -8,6 +8,40 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.4.0 - 2019-10-03
+
+### Enhancements
+
+- Removed the need for z-indexes in `Icon` ([#2207](https://github.com/Shopify/polaris-react/pull/2207))
+- Added `features` prop to `AppProvider` ([#2204](https://github.com/Shopify/polaris-react/pull/2204))
+
+### Bug fixes
+
+- Fixed loss of focus on `TextField` when changing connectedRight/connectedLeft content while user is typing ([#2170](https://github.com/Shopify/polaris-react/pull/2170))
+- Fixed `type` for clearButton ([#2060](https://github.com/Shopify/polaris-react/pull/2060))
+- Prevented the `onSelect` prop of `Tabs` from changing scroll position ([#2196](https://github.com/Shopify/polaris-react/pull/2196))
+- Fixed 200ms visual delay when activating `Popover` ([#2209](https://github.com/Shopify/polaris-react/pull/2209))
+- Removed the `ResourceList` `Item` hover state when `Item` is deselected ([#1952](https://github.com/Shopify/polaris-react/pull/1952))
+- Fixed `Subheading`’s `font-weight` ([#2218](https://github.com/Shopify/polaris-react/pull/2218))
+- Fixed `fullWidth` `CardSection`s when contained in a page with a `Nav` ([#2227](https://github.com/Shopify/polaris-react/pull/2227))
+
+### Documentation
+
+- Converted `SettingToggle`, `Sheet`, and `Tabs` examples to functional components ([#2134](https://github.com/Shopify/polaris-react/pull/2134))
+- Converted `Form`, `Frame`, and `Loading` examples to functional components ([#2130](https://github.com/Shopify/polaris-react/pull/2130))
+- Replaced Latin abbreviations with English words in Text field content guidelines ([#2192](https://github.com/Shopify/polaris-react/pull/2192))
+- Converted `SettingToggle`, `Sheet`, and `Tabs` examples to functional components ([#2134](https://github.com/Shopify/polaris-react/pull/2134))
+- Converted `DatePicker`, `DropZone`, and `Filters` examples to functional components ([#2129](https://github.com/Shopify/polaris-react/pull/2129))
+
+### Code quality
+
+- Added `MediaQueryProvider` to ease the use of media queries and reduce duplication ([#2117](https://github.com/Shopify/polaris-react/pull/2117))
+- Migrated `Tab` to use hooks instead of `withAppProvider` ([#2096](https://github.com/Shopify/polaris-react/pull/2096))
+
+### Development workflow
+
+- Added a GitHub action, [discoverability-action](https://github.com/Shopify/discoverability-action), that runs `yarn splash` on PR diffs and leaves a comment with the output ([#2208](https://github.com/Shopify/polaris-react/pull/2208))
+
 ## 4.3.0 - 2019-09-23
 
 ### Enhancements
