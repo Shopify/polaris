@@ -21,22 +21,22 @@ export function buildThemeContext(themeConfig: ThemeConfig): Theme {
   return {logo};
 }
 
-function setColors(theme: ThemeConfig | undefined): CustomPropertiesLike {
+function setColors(theme: ThemeConfig): CustomPropertiesLike {
   let colorPairs;
-  const pairs =
+  const colors =
     theme && theme.colors && theme.colors.topBar
       ? theme.colors.topBar
       : {background: '#00848e', backgroundLighter: '#f9fafb', color: '#1d9ba4'};
 
   const colorKey = 'topBar';
-  const colorKeys = Object.keys(pairs);
+  const colorKeys = Object.keys(colors);
+
   if (colorKeys.length > 1) {
-    colorPairs = colorKeys.map((key: string) => {
-      const colors = pairs;
-      return colors && [constructColorName(colorKey, key), colors[key]];
+    colorPairs = colorKeys.map((key) => {
+      return [constructColorName(colorKey, key), colors[key]];
     });
   } else {
-    colorPairs = parseColors([colorKey, pairs]);
+    colorPairs = parseColors([colorKey, colors]);
   }
 
   return colorPairs.reduce(
