@@ -10,6 +10,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added `totalItemsCount` prop to `ResourceList` component ([2233](https://github.com/Shopify/polaris-react/pull/2233))
+
 ### Bug fixes
 
 ### Documentation

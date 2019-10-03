@@ -213,6 +213,37 @@ describe('<ResourceList />', () => {
         'Loading items',
       );
     });
+
+    it('prints number of items shown when totalItemsCount is not provided', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsNoID}
+          renderItem={renderItem}
+          resourceName={{singular: 'product', plural: 'products'}}
+          showHeader
+        />,
+      );
+
+      expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
+        'Showing 2 products',
+      );
+    });
+
+    it('prints number of items shown of totalItemsCount when totalItemsCount is provided', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsNoID}
+          renderItem={renderItem}
+          resourceName={{singular: 'product', plural: 'products'}}
+          showHeader
+          totalItemsCount={5}
+        />,
+      );
+
+      expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
+        'Showing 2 of 5 products',
+      );
+    });
   });
 
   describe('bulkActionsAccessibilityLabel', () => {
