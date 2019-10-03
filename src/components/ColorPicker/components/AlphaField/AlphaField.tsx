@@ -19,7 +19,6 @@ type CombinedProps = AlphaFieldProps & WithAppProviderProps;
 interface State {
   alpha: AlphaFieldProps['alpha'];
   percentage: number;
-  inputError: boolean;
 }
 
 class AlphaField extends React.PureComponent<CombinedProps, State> {
@@ -33,7 +32,6 @@ class AlphaField extends React.PureComponent<CombinedProps, State> {
 
     return {
       percentage: alphaProp * 100,
-      inputError: false,
       alpha: alphaProp,
     };
   }
@@ -41,27 +39,27 @@ class AlphaField extends React.PureComponent<CombinedProps, State> {
   state: State = {
     alpha: this.props.alpha,
     percentage: this.props.alpha * 100,
-    inputError: false,
   };
 
   render() {
-    const {alpha, percentage, inputError} = this.state;
+    const {percentage} = this.state;
     const {
       polaris: {intl},
     } = this.props;
-    const error = inputError
-      ? intl.translate('Polaris.ColorPicker.invalidColor')
-      : undefined;
+
+    const label = intl.translate(
+      'Polaris.ColorPicker.alphaFieldAccessibilityLabel',
+    );
     const percentageToDisplay = Math.round(percentage).toString();
 
     return (
       <div className={styles.AlphaField}>
         <TextField
-          label="Alpha"
+          label={label}
+          labelHidden
           type="number"
           value={percentageToDisplay}
           onBlur={this.handleBlur}
-          error={error}
           min={0}
           max={100}
           suffix="%"
@@ -76,28 +74,22 @@ class AlphaField extends React.PureComponent<CombinedProps, State> {
     const {onChange, alpha} = this.props;
     const {percentage} = this.state;
 
-    const roundedValue = Math.round(percentage);
+    let roundedValue = Math.round(percentage);
 
-    const validUserInput =
-      roundedValue >= 0 && roundedValue <= 100 ? roundedValue : null;
-    if (validUserInput !== null) {
+    if (roundedValue !== null) {
+      if (roundedValue > 100) {
+        roundedValue = 100;
+      }
       this.setState({
         percentage: roundedValue,
-        inputError: false,
       });
 
-      const alphaHasChanged = validUserInput !== alpha;
+      const alphaHasChanged = roundedValue !== alpha * 100;
 
       if (alphaHasChanged) {
-        onChange(validUserInput / 100);
+        onChange(roundedValue / 100);
       }
-
-      return;
     }
-
-    this.setState({
-      inputError: true,
-    });
   };
 
   private handleTextChange = (value: string) => {
