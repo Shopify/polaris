@@ -53,11 +53,13 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(wrapper.find('div').props().style).toStrictEqual({
-      '--top-bar-background': '#00848e',
-      '--top-bar-background-lighter': '#f9fafb',
-      '--top-bar-color': '#1d9ba4',
-    });
+    expect(wrapper.find('div').props().style).toStrictEqual(
+      expect.objectContaining({
+        '--top-bar-background': '#00848e',
+        '--top-bar-background-lighter': '#f9fafb',
+        '--top-bar-color': '#1d9ba4',
+      }),
+    );
   });
 
   it('sets a provided theme', () => {
@@ -75,11 +77,13 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(wrapper.find('div').props().style).toStrictEqual({
-      '--top-bar-background': '#108043',
-      '--top-bar-background-lighter': 'hsl(147, 63%, 43%, 1)',
-      '--top-bar-color': 'rgb(255, 255, 255)',
-    });
+    expect(wrapper.find('div').props().style).toStrictEqual(
+      expect.objectContaining({
+        '--top-bar-background': '#108043',
+        '--top-bar-background-lighter': 'hsl(147, 63%, 43%, 1)',
+        '--top-bar-color': 'rgb(255, 255, 255)',
+      }),
+    );
   });
 
   it('updates themes', () => {
@@ -108,10 +112,12 @@ describe('<ThemeProvider />', () => {
     });
     wrapper.update();
 
-    expect(wrapper.find('div').props().style).toStrictEqual({
-      '--top-bar-background': '#021123',
-      '--top-bar-background-lighter': 'hsl(213, 74%, 22%, 1)',
-      '--top-bar-color': 'rgb(255, 255, 255)',
-    });
+    expect(wrapper.find('div').props().style).toStrictEqual(
+      expect.objectContaining({
+        '--top-bar-background': '#021123',
+        '--top-bar-background-lighter': 'hsl(213, 74%, 22%, 1)',
+        '--top-bar-color': 'rgb(255, 255, 255)',
+      }),
+    );
   });
 });
