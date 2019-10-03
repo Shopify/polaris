@@ -6,6 +6,7 @@ import {
   buildCustomProperties,
 } from '../../utilities/theme';
 import {themeProvider} from '../shared';
+import {useFeatures} from '../../utilities/features';
 
 interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
@@ -18,10 +19,12 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
+  const {globalTheming} = useFeatures();
   const theme = useMemo(() => buildThemeContext(themeConfig), [themeConfig]);
-  const customProperties = useMemo(() => buildCustomProperties(themeConfig), [
-    themeConfig,
-  ]);
+  const customProperties = useMemo(
+    () => buildCustomProperties(themeConfig, globalTheming),
+    [globalTheming, themeConfig],
+  );
 
   return (
     <ThemeContext.Provider value={theme}>

@@ -18,6 +18,15 @@ export interface ThemeConfig {
   colors?: {
     /** Sets the background color of the top bar component. Complimentary and typography colors are determined programmatically */
     topBar?: Record<string, string>;
+    surface?: string;
+    onSurface?: string;
+    interactive?: string;
+    interactiveNeutral?: string;
+    branded?: string;
+    critical?: string;
+    warning?: string;
+    highlight?: string;
+    success?: string;
   };
 }
 
