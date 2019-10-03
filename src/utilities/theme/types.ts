@@ -18,6 +18,9 @@ export interface ThemeConfig {
   colors?: {
     /** Sets the background color of the top bar component. Complimentary and typography colors are determined programmatically */
     topBar?: Record<string, string>;
+  };
+  // eslint-disable-next-line babel/camelcase
+  UNSTABLE_colors?: {
     surface?: string;
     onSurface?: string;
     interactive?: string;

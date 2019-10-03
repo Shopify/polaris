@@ -6,7 +6,7 @@ import {
   setTheme,
   buildThemeContext,
   buildCustomProperties,
-  Colors,
+  buildColors,
 } from '../utils';
 
 describe('setTextColor', () => {
@@ -49,10 +49,12 @@ describe('needsVariant', () => {
   });
 });
 
+/* eslint-disable babel/camelcase */
 describe('buildCustomProperties', () => {
   it('creates legacy custom properties but ignores new custom properties when global theming is disabled', () => {
     const theme = {
-      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
+      colors: {topBar: {background: '#eeeeee'}},
+      UNSTABLE_colors: {surface: '#ffffff'},
     };
 
     const colors = buildCustomProperties(theme, false);
@@ -65,7 +67,8 @@ describe('buildCustomProperties', () => {
 
   it('creates legacy custom properties with new custom properties when global theming is enabled', () => {
     const theme = {
-      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
+      colors: {topBar: {background: '#eeeeee'}},
+      UNSTABLE_colors: {surface: '#ffffff'},
     };
 
     const colors = buildCustomProperties(theme, true);
@@ -84,10 +87,10 @@ describe('buildCustomProperties', () => {
   });
 });
 
-describe('Colors', () => {
+describe('buildColors', () => {
   describe('surface', () => {
     it('has a default value', () => {
-      expect(Colors({colors: {}})).toStrictEqual(
+      expect(buildColors({UNSTABLE_colors: {}})).toStrictEqual(
         expect.objectContaining({
           '--p-surface': 'hsl(0, 0%, 98%, 1)',
           '--p-surface-background': 'hsl(0, 0%, 98%, 1)',
@@ -99,7 +102,9 @@ describe('Colors', () => {
     });
 
     it('creates variants when given a light surface', () => {
-      expect(Colors({colors: {surface: '#ffffff'}})).toStrictEqual(
+      expect(
+        buildColors({UNSTABLE_colors: {surface: '#ffffff'}}),
+      ).toStrictEqual(
         expect.objectContaining({
           '--p-surface': 'hsl(0, 0%, 100%, 1)',
           '--p-surface-background': 'hsl(0, 0%, 98%, 1)',
@@ -111,7 +116,9 @@ describe('Colors', () => {
     });
 
     it('creates variants when given a dark surface', () => {
-      expect(Colors({colors: {surface: '#000000'}})).toStrictEqual(
+      expect(
+        buildColors({UNSTABLE_colors: {surface: '#000000'}}),
+      ).toStrictEqual(
         expect.objectContaining({
           '--p-surface': 'hsl(0, 0%, 0%, 1)',
           '--p-surface-background': 'hsl(0, 0%, 7%, 1)',
@@ -125,7 +132,7 @@ describe('Colors', () => {
 
   describe('onSurface', () => {
     it('has a default value', () => {
-      expect(Colors({colors: {}})).toStrictEqual(
+      expect(buildColors({UNSTABLE_colors: {}})).toStrictEqual(
         expect.objectContaining({
           '--p-action-disabled-on-dark': 'hsl(210, 9%, 66%, 1)',
           '--p-action-disabled-on-inverse': 'hsl(210, 9%, 66%, 1)',
@@ -190,8 +197,8 @@ describe('Colors', () => {
 
     it('creates variants when given a light surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#ffffff', onSurface: '#000000'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#ffffff', onSurface: '#000000'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -258,8 +265,8 @@ describe('Colors', () => {
 
     it('creates variants when given a dark surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#000000', onSurface: '#ffffff'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#000000', onSurface: '#ffffff'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -327,7 +334,7 @@ describe('Colors', () => {
 
   describe('interactive', () => {
     it('has a default value', () => {
-      expect(Colors({colors: {}})).toStrictEqual(
+      expect(buildColors({UNSTABLE_colors: {}})).toStrictEqual(
         expect.objectContaining({
           '--p-interactive': 'hsl(210, 93%, 44%, 1)',
           '--p-interactive-action': 'hsl(210, 93%, 44%, 1)',
@@ -342,8 +349,8 @@ describe('Colors', () => {
 
     it('creates variants when given a light surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#ffffff', interactive: '#0000FF'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#ffffff', interactive: '#0000FF'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -360,8 +367,8 @@ describe('Colors', () => {
 
     it('creates variants when given a dark surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#000000', interactive: '#0000FF'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#000000', interactive: '#0000FF'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -379,7 +386,7 @@ describe('Colors', () => {
 
   describe('interactiveNeutral', () => {
     it('has a default value', () => {
-      expect(Colors({colors: {}})).toStrictEqual(
+      expect(buildColors({UNSTABLE_colors: {}})).toStrictEqual(
         expect.objectContaining({
           '--p-interactive-neutral': 'hsl(240, 2%, 92%, 1)',
           '--p-interactive-neutral-elevation-0': 'hsl(240, 2%, 100%, 1)',
@@ -394,8 +401,8 @@ describe('Colors', () => {
 
     it('creates variants when given a light surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#ffffff', interactiveNeutral: '#778899'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#ffffff', interactiveNeutral: '#778899'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -418,8 +425,8 @@ describe('Colors', () => {
 
     it('creates variants when given a dark surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#000000', interactiveNeutral: '#778899'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#000000', interactiveNeutral: '#778899'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -443,7 +450,7 @@ describe('Colors', () => {
 
   describe('branded', () => {
     it('has a default value', () => {
-      expect(Colors({colors: {}})).toStrictEqual(
+      expect(buildColors({UNSTABLE_colors: {}})).toStrictEqual(
         expect.objectContaining({
           '--p-branded': 'hsl(165, 100%, 25%, 1)',
           '--p-branded-action': 'hsl(165, 100%, 25%, 1)',
@@ -459,8 +466,8 @@ describe('Colors', () => {
 
     it('creates variants when given a light surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#ffffff', branded: '#FF00FF'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#ffffff', branded: '#FF00FF'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -478,8 +485,8 @@ describe('Colors', () => {
 
     it('creates variants when given a dark surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#000000', branded: '#FF00FF'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#000000', branded: '#FF00FF'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -498,7 +505,7 @@ describe('Colors', () => {
 
   describe('critical', () => {
     it('has a default value', () => {
-      expect(Colors({colors: {}})).toStrictEqual(
+      expect(buildColors({UNSTABLE_colors: {}})).toStrictEqual(
         expect.objectContaining({
           '--p-critical': 'hsl(0, 77%, 52%, 1)',
           '--p-critical-divider': 'hsl(0, 77%, 52%, 1)',
@@ -512,8 +519,8 @@ describe('Colors', () => {
 
     it('creates variants when given a light surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#ffffff', critical: '#DC143C'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#ffffff', critical: '#DC143C'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -529,8 +536,8 @@ describe('Colors', () => {
 
     it('creates variants when given a dark surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#000000', critical: '#DC143C'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#000000', critical: '#DC143C'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -547,7 +554,7 @@ describe('Colors', () => {
 
   describe('warning', () => {
     it('has a default value', () => {
-      expect(Colors({colors: {}})).toStrictEqual(
+      expect(buildColors({UNSTABLE_colors: {}})).toStrictEqual(
         expect.objectContaining({
           '--p-warning': 'hsl(39, 100%, 66%, 1)',
           '--p-warning-divider': 'hsl(39, 100%, 66%, 1)',
@@ -561,8 +568,8 @@ describe('Colors', () => {
 
     it('creates variants when given a light surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#ffffff', warning: '#FF8C00'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#ffffff', warning: '#FF8C00'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -578,8 +585,8 @@ describe('Colors', () => {
 
     it('creates variants when given a dark surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#000000', warning: '#FF8C00'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#000000', warning: '#FF8C00'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -596,7 +603,7 @@ describe('Colors', () => {
 
   describe('highlight', () => {
     it('has a default value', () => {
-      expect(Colors({colors: {}})).toStrictEqual(
+      expect(buildColors({UNSTABLE_colors: {}})).toStrictEqual(
         expect.objectContaining({
           '--p-highlight':
             'hsl(173, 56.00000000000001%, 57.99999999999999%, 1)',
@@ -612,8 +619,8 @@ describe('Colors', () => {
 
     it('creates variants when given a light surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#ffffff', highlight: '#00FFFF'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#ffffff', highlight: '#00FFFF'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -629,8 +636,8 @@ describe('Colors', () => {
 
     it('creates variants when given a dark surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#000000', highlight: '#00FFFF'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#000000', highlight: '#00FFFF'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -647,7 +654,7 @@ describe('Colors', () => {
 
   describe('success', () => {
     it('has a default value', () => {
-      expect(Colors({colors: {}})).toStrictEqual(
+      expect(buildColors({UNSTABLE_colors: {}})).toStrictEqual(
         expect.objectContaining({
           '--p-success': 'hsl(165, 100%, 25%, 1)',
           '--p-success-divider': 'hsl(165, 100%, 25%, 1)',
@@ -661,8 +668,8 @@ describe('Colors', () => {
 
     it('creates variants when given a light surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#ffffff', success: '#008000'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#ffffff', success: '#008000'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -678,8 +685,8 @@ describe('Colors', () => {
 
     it('creates variants when given a dark surface', () => {
       expect(
-        Colors({
-          colors: {surface: '#000000', success: '#008000'},
+        buildColors({
+          UNSTABLE_colors: {surface: '#000000', success: '#008000'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
@@ -694,6 +701,7 @@ describe('Colors', () => {
     });
   });
 });
+/* eslint-enable babel/camelcase */
 
 describe('buildThemeContext', () => {
   it('reduces theme config down to a theme', () => {

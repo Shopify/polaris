@@ -10,14 +10,16 @@ import {ThemeConfig, Theme, CustomPropertiesLike} from './types';
 
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
-  globalTheming?: boolean,
+  globalTheming: boolean,
 ): CustomPropertiesLike {
-  const colors = globalTheming === true ? Colors(themeConfig) : {};
-
-  return {
-    ...setColors(themeConfig),
-    ...colors,
-  };
+  return globalTheming
+    ? {
+        ...buildLegacyColors(themeConfig),
+        ...buildColors(themeConfig),
+      }
+    : {
+        ...buildLegacyColors(themeConfig),
+      };
 }
 
 export function buildThemeContext(themeConfig: ThemeConfig): Theme {
@@ -25,8 +27,9 @@ export function buildThemeContext(themeConfig: ThemeConfig): Theme {
   return {logo};
 }
 
-export function Colors(theme: ThemeConfig) {
-  const {colors = {}} = theme;
+export function buildColors(theme: ThemeConfig) {
+  /* eslint-disable babel/camelcase */
+  const {UNSTABLE_colors = {}} = theme;
 
   const {
     surface = '#FAFAFA',
@@ -38,7 +41,8 @@ export function Colors(theme: ThemeConfig) {
     warning = '#FFC453',
     highlight = '#59D0C2',
     success = '#008060',
-  } = colors;
+  } = UNSTABLE_colors;
+  /* eslint-enable babel/camelcase */
 
   const lightSurface = isLight(hslToRgb(colorToHsla(surface)));
 
@@ -230,11 +234,12 @@ function overrides() {
 }
 
 function customPropertyTransformer(colors: {[key: string]: HSLAColor}) {
-  return Object.assign(
-    {},
-    ...Object.entries(colors).map(([key, value]) => ({
+  return Object.entries(colors).reduce(
+    (transformed, [key, value]) => ({
+      ...transformed,
       [toCssCustomPropertySyntax(key)]: hslToString(value),
-    })),
+    }),
+    {},
   );
 }
 
@@ -249,7 +254,7 @@ function setLightness(
   return {hue, saturation, lightness, alpha};
 }
 
-function setColors(theme: ThemeConfig | undefined): CustomPropertiesLike {
+function buildLegacyColors(theme?: ThemeConfig): CustomPropertiesLike {
   let colorPairs;
   const colors =
     theme && theme.colors && theme.colors.topBar
