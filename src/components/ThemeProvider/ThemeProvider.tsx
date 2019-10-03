@@ -19,11 +19,11 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
-  const {globalTheming} = useFeatures();
+  const {unstableGlobalTheming = false} = useFeatures();
   const theme = useMemo(() => buildThemeContext(themeConfig), [themeConfig]);
   const customProperties = useMemo(
-    () => buildCustomProperties(themeConfig, globalTheming),
-    [globalTheming, themeConfig],
+    () => buildCustomProperties(themeConfig, unstableGlobalTheming),
+    [unstableGlobalTheming, themeConfig],
   );
 
   return (
