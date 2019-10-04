@@ -43,7 +43,11 @@
 }
 
 .Section-fullWidth {
-  padding: spacing(loose) spacing(none);
+  padding: spacing() spacing(none);
+
+  @include page-content-when-not-fully-condensed {
+    padding: spacing(loose) spacing(none);
+  }
 }
 
 .Section-flush {
@@ -90,7 +94,7 @@
 
 .Footer {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   padding: 0 spacing() spacing();
 
   @include page-content-when-not-fully-condensed {

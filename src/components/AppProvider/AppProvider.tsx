@@ -1,6 +1,7 @@
 import React from 'react';
 import {Theme} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
+import {MediaQueryProvider} from '../MediaQueryProvider';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
 import {
   ScrollLockManager,
@@ -16,6 +17,7 @@ import {
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
+import {Features, FeaturesContext} from '../../utilities/features';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -35,6 +37,8 @@ export interface AppProviderProps extends AppBridgeOptions {
   linkComponent?: LinkLikeComponent;
   /** Custom logos and colors provided to select components */
   theme?: Theme;
+  /** For toggling features */
+  features?: Features;
   /** Inner content of the application */
   children?: React.ReactNode;
 }
@@ -94,23 +98,27 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
   }
 
   render() {
-    const {theme = {logo: null}, children} = this.props;
+    const {theme = {logo: null}, features = {}, children} = this.props;
     const {intl, appBridge, link} = this.state;
 
     return (
-      <I18nContext.Provider value={intl}>
-        <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
-          <StickyManagerContext.Provider value={this.stickyManager}>
-            <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
-              <AppBridgeContext.Provider value={appBridge}>
-                <LinkContext.Provider value={link}>
-                  <ThemeProvider theme={theme}>{children}</ThemeProvider>
-                </LinkContext.Provider>
-              </AppBridgeContext.Provider>
-            </UniqueIdFactoryContext.Provider>
-          </StickyManagerContext.Provider>
-        </ScrollLockManagerContext.Provider>
-      </I18nContext.Provider>
+      <FeaturesContext.Provider value={features}>
+        <I18nContext.Provider value={intl}>
+          <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
+            <StickyManagerContext.Provider value={this.stickyManager}>
+              <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
+                <AppBridgeContext.Provider value={appBridge}>
+                  <LinkContext.Provider value={link}>
+                    <ThemeProvider theme={theme}>
+                      <MediaQueryProvider>{children}</MediaQueryProvider>
+                    </ThemeProvider>
+                  </LinkContext.Provider>
+                </AppBridgeContext.Provider>
+              </UniqueIdFactoryContext.Provider>
+            </StickyManagerContext.Provider>
+          </ScrollLockManagerContext.Provider>
+        </I18nContext.Provider>
+      </FeaturesContext.Provider>
     );
   }
 }

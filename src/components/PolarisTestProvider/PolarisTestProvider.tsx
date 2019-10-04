@@ -1,6 +1,8 @@
 import React from 'react';
+import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
 import {Theme, ThemeContext} from '../../utilities/theme';
+import {MediaQueryContext} from '../../utilities/media-query';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -12,6 +14,7 @@ import {
 import {AppBridgeContext, AppBridgeOptions} from '../../utilities/app-bridge';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
+import {Features, FeaturesContext} from '../../utilities/features';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -19,6 +22,9 @@ import {
 } from '../../utilities/unique-id';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
+type MediaQueryContextType = NonNullable<
+  React.ContextType<typeof MediaQueryContext>
+>;
 
 /**
  * When writing a custom mounting function `mountWithAppContext(node, options)`
@@ -31,8 +37,10 @@ export type WithPolarisTestProviderOptions = {
   appBridge?: AppBridgeOptions;
   link?: LinkLikeComponent;
   theme?: Partial<Theme>;
+  mediaQuery?: Partial<MediaQueryContextType>;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
+  features?: Features;
 };
 
 export interface PolarisTestProviderProps
@@ -40,6 +48,10 @@ export interface PolarisTestProviderProps
   children: React.ReactElement;
   strict?: boolean;
 }
+
+const defaultMediaQuery: MediaQueryContextType = {
+  isNavigationCollapsed: false,
+};
 
 export function PolarisTestProvider({
   strict,
@@ -49,6 +61,8 @@ export function PolarisTestProvider({
   link,
   theme,
   frame,
+  mediaQuery,
+  features,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
 
@@ -68,25 +82,31 @@ export function PolarisTestProvider({
 
   const mergedFrame = createFrameContext(frame);
 
+  const mergedMediaQuery = merge(defaultMediaQuery, mediaQuery);
+
   return (
     <Wrapper>
-      <I18nContext.Provider value={intl}>
-        <ScrollLockManagerContext.Provider value={scrollLockManager}>
-          <StickyManagerContext.Provider value={stickyManager}>
-            <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
-              <AppBridgeContext.Provider value={appBridgeApp}>
-                <LinkContext.Provider value={link}>
-                  <ThemeContext.Provider value={mergedTheme}>
-                    <FrameContext.Provider value={mergedFrame}>
-                      {children}
-                    </FrameContext.Provider>
-                  </ThemeContext.Provider>
-                </LinkContext.Provider>
-              </AppBridgeContext.Provider>
-            </UniqueIdFactoryContext.Provider>
-          </StickyManagerContext.Provider>
-        </ScrollLockManagerContext.Provider>
-      </I18nContext.Provider>
+      <FeaturesContext.Provider value={features}>
+        <I18nContext.Provider value={intl}>
+          <ScrollLockManagerContext.Provider value={scrollLockManager}>
+            <StickyManagerContext.Provider value={stickyManager}>
+              <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
+                <AppBridgeContext.Provider value={appBridgeApp}>
+                  <LinkContext.Provider value={link}>
+                    <ThemeContext.Provider value={mergedTheme}>
+                      <FrameContext.Provider value={mergedFrame}>
+                        <MediaQueryContext.Provider value={mergedMediaQuery}>
+                          {children}
+                        </MediaQueryContext.Provider>
+                      </FrameContext.Provider>
+                    </ThemeContext.Provider>
+                  </LinkContext.Provider>
+                </AppBridgeContext.Provider>
+              </UniqueIdFactoryContext.Provider>
+            </StickyManagerContext.Provider>
+          </ScrollLockManagerContext.Provider>
+        </I18nContext.Provider>
+      </FeaturesContext.Provider>
     </Wrapper>
   );
 }

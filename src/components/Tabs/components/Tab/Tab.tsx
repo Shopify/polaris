@@ -1,12 +1,8 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {classNames} from '../../../../utilities/css';
 import {UnstyledLink} from '../../../UnstyledLink';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../../../utilities/with-app-provider';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 
 import styles from '../../Tabs.scss';
@@ -24,17 +20,26 @@ export interface TabProps {
   onClick?(id: string): void;
 }
 
-type CombinedProps = TabProps & WithAppProviderProps;
-
-class Tab extends React.PureComponent<CombinedProps, never> {
-  private node: HTMLElement | null = null;
+export function Tab({
+  id,
+  focused,
+  siblingTabHasFocus,
+  children,
+  onClick,
+  selected,
+  url,
+  panelID,
+  measuring,
+  accessibilityLabel,
+}: TabProps) {
+  const wasSelected = useRef(selected);
+  const panelFocused = useRef(false);
+  const node = useRef<HTMLLIElement | null>(null);
 
   // A tab can start selected when it is moved from the disclosure dropdown
   // into the main list, so we need to send focus from the tab to the panel
   // on mount and update
-  componentDidMount() {
-    const {id, measuring, selected, panelID, focused} = this.props;
-
+  useEffect(() => {
     if (measuring) {
       return;
     }
@@ -47,108 +52,76 @@ class Tab extends React.PureComponent<CombinedProps, never> {
 
     // If we just check for selected, the panel for the active tab will
     // be focused on page load, which we don’t want
-    if (itemHadFocus && selected && panelID != null) {
+    if (itemHadFocus && selected && panelID != null && !panelFocused.current) {
       focusPanelID(panelID);
-    }
-  }
-
-  componentDidUpdate(previousProps: TabProps) {
-    const {selected: wasSelected} = previousProps;
-    const {focused, measuring, selected, panelID} = this.props;
-
-    if (measuring) {
-      return;
+      panelFocused.current = true;
     }
 
-    if (selected && !wasSelected && panelID != null) {
+    if (selected && !wasSelected.current && panelID != null) {
       focusPanelID(panelID);
-    } else if (focused && this.node != null) {
-      focusFirstFocusableNode(this.node);
-    }
-  }
-
-  render() {
-    const {
-      id,
-      focused,
-      siblingTabHasFocus,
-      children,
-      onClick,
-      selected,
-      url,
-      panelID,
-      measuring,
-      accessibilityLabel,
-    } = this.props;
-
-    const handleClick = onClick && onClick.bind(null, id);
-
-    const className = classNames(
-      styles.Tab,
-      selected && styles['Tab-selected'],
-    );
-
-    let tabIndex: 0 | -1;
-
-    if (selected && !siblingTabHasFocus && !measuring) {
-      tabIndex = 0;
-    } else if (focused && !measuring) {
-      tabIndex = 0;
-    } else {
-      tabIndex = -1;
+    } else if (focused && node.current != null) {
+      focusFirstFocusableNode(node.current);
     }
 
-    const markup = url ? (
-      <UnstyledLink
-        id={id}
-        url={url}
-        role="tab"
-        tabIndex={tabIndex}
-        onClick={handleClick}
-        className={className}
-        aria-selected={selected}
-        aria-controls={panelID}
-        aria-label={accessibilityLabel}
-        onMouseUp={handleMouseUpByBlurring}
-      >
-        <span className={styles.Title}>{children}</span>
-      </UnstyledLink>
-    ) : (
-      <button
-        id={id}
-        role="tab"
-        type="button"
-        tabIndex={tabIndex}
-        className={className}
-        onClick={handleClick}
-        aria-selected={selected}
-        aria-controls={panelID}
-        aria-label={accessibilityLabel}
-        onMouseUp={handleMouseUpByBlurring}
-      >
-        <span className={styles.Title}>{children}</span>
-      </button>
-    );
+    wasSelected.current = selected;
+  }, [focused, id, measuring, panelID, selected]);
 
-    return (
-      <li className={styles.TabContainer} ref={this.setNode}>
-        {markup}
-      </li>
-    );
+  const handleClick = onClick && onClick.bind(null, id);
+
+  const className = classNames(styles.Tab, selected && styles['Tab-selected']);
+
+  let tabIndex: 0 | -1;
+
+  if (selected && !siblingTabHasFocus && !measuring) {
+    tabIndex = 0;
+  } else if (focused && !measuring) {
+    tabIndex = 0;
+  } else {
+    tabIndex = -1;
   }
 
-  private setNode = (node: HTMLElement | null) => {
-    this.node = node;
-  };
+  const markup = url ? (
+    <UnstyledLink
+      id={id}
+      url={url}
+      role="tab"
+      tabIndex={tabIndex}
+      onClick={handleClick}
+      className={className}
+      aria-selected={selected}
+      aria-controls={panelID}
+      aria-label={accessibilityLabel}
+      onMouseUp={handleMouseUpByBlurring}
+    >
+      <span className={styles.Title}>{children}</span>
+    </UnstyledLink>
+  ) : (
+    <button
+      id={id}
+      role="tab"
+      type="button"
+      tabIndex={tabIndex}
+      className={className}
+      onClick={handleClick}
+      aria-selected={selected}
+      aria-controls={panelID}
+      aria-label={accessibilityLabel}
+      onMouseUp={handleMouseUpByBlurring}
+    >
+      <span className={styles.Title}>{children}</span>
+    </button>
+  );
+
+  return (
+    <li className={styles.TabContainer} ref={node}>
+      {markup}
+    </li>
+  );
 }
 
 function focusPanelID(panelID: string) {
   const panel = document.getElementById(panelID);
   if (panel) {
-    panel.focus();
+    panel.focus({preventScroll: true});
   }
 }
-
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<TabProps>()(Tab);

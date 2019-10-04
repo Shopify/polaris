@@ -1,20 +1,11 @@
 import React from 'react';
 import {CSSTransition} from '@material-ui/react-transition-group';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
 import {Backdrop} from 'components/Backdrop';
 import {Sheet, BOTTOM_CLASS_NAMES, RIGHT_CLASS_NAMES} from '../Sheet';
 
 describe('<Sheet />', () => {
-  beforeEach(() => {
-    matchMedia.mock();
-  });
-
-  afterEach(() => {
-    matchMedia.restore();
-  });
-
   const mockProps = {
     open: true,
     onClose: noop,
@@ -42,12 +33,11 @@ describe('<Sheet />', () => {
   });
 
   it('renders a css transition component with bottom class names at mobile sizes', () => {
-    matchMedia.setMedia(() => ({matches: true}));
-
     const sheet = mountWithAppProvider(
       <Sheet {...mockProps}>
         <div>Content</div>
       </Sheet>,
+      {mediaQuery: {isNavigationCollapsed: true}},
     );
 
     expect(sheet.find(CSSTransition).props().classNames).toStrictEqual(

@@ -46,7 +46,7 @@ Content from cards should follow the content guidelines for [cards](https://pola
 
 ### Annotated section titles
 
-Annotated section titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
+Annotated section titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
 
 ### Annotated section descriptions
 

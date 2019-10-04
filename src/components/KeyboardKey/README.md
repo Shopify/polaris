@@ -33,7 +33,7 @@ The keyboard key component should:
 Headings above the keyboard key should:
 
 - Label the type of keyboard shortcuts being presented
-- Follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings)
+- Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings)
 
 ### Shortcut description
 

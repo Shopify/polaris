@@ -1,7 +1,7 @@
 {
   "name": "@joinarthur/polaris",
   "description": "Shopify’s product component library",
-  "version": "4.3.0-fork.0",
+  "version": "4.4.0-fork.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -111,7 +111,7 @@
     "archiver": "^3.1.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.0.6",
-    "babel-preset-shopify": "^20.0.0",
+    "babel-preset-shopify": "^20.1.0",
     "chalk": "^2.4.2",
     "change-case": "^3.1.0",
     "codecov": "^3.5.0",

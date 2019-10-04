@@ -21,3 +21,5 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Code quality
 
 ### Deprecations
+
+### Development workflow

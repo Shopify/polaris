@@ -61,11 +61,11 @@ Banners should:
 
 ## Content guidelines
 
-To learn about writing helpful and accessible error message text, see the guidelines for [error messages](/patterns-and-guides/error-messages).
+To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns-and-guides/error-messages).
 
 ### Title
 
-Banner titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
+Banner titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 
@@ -248,7 +248,7 @@ Make all banners dismissible, unless they contain critical information or an imp
 <Banner onDismiss={() => {}}>
   <p>
     Use your finance report to get detailed information about your business.{' '}
-    <Link url="">Let us know what you think.</Link>
+    <Link url="">Let us know what you think</Link>
   </p>
 </Banner>
 ```
@@ -490,7 +490,7 @@ Banners inside of cards render with less spacing and a pared-back design to fit 
     <Banner onDismiss={() => {}}>
       <p>
         Use your finance report to get detailed information about your business.{' '}
-        <Link url="">Let us know what you think.</Link>
+        <Link url="">Let us know what you think</Link>
       </p>
     </Banner>
 

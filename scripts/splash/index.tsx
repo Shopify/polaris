@@ -15,7 +15,7 @@ const getEmojiForExtension = (extension) => {
     case '.scss':
       return '🎨';
     default:
-      return '❔';
+      return '📄';
   }
 };
 
