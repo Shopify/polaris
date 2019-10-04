@@ -13,13 +13,8 @@ export function buildCustomProperties(
   globalTheming: boolean,
 ): CustomPropertiesLike {
   return globalTheming
-    ? {
-        ...buildColors(themeConfig),
-        ...overrides(),
-      }
-    : {
-        ...buildLegacyColors(themeConfig),
-      };
+    ? buildColors(themeConfig)
+    : buildLegacyColors(themeConfig);
 }
 
 export function buildThemeContext(themeConfig: ThemeConfig): Theme {
@@ -61,6 +56,7 @@ export function buildColors(theme: ThemeConfig) {
       ...highlightColors(colorToHsla(highlight), lightSurface),
       ...successColors(colorToHsla(success), lightSurface),
     }),
+    ...overrides(),
   };
 }
 
@@ -230,11 +226,21 @@ function overrides() {
     [toCssCustomPropertySyntax('borderRadiusBase')]: '4px',
     [toCssCustomPropertySyntax('borderRadiusWide')]: '8px',
     [toCssCustomPropertySyntax('borderBox')]: 'border-box',
-    [toCssCustomPropertySyntax('bannerBorder')]:'inset 0 2px 0 0 var(--p-divider-on-surface), inset 0 0 0 2px var(--p-divider-on-surface)',
-    [toCssCustomPropertySyntax('successBannerBorder')]:'inset 0 2px 0 0 var(--p-success-divider), inset 0 0 0 2px var(--p-success-divider)',
-    [toCssCustomPropertySyntax('highlightBannerBorder')]:'inset 0 2px 0 0 var(--p-highlight-divider), inset 0 0 0 2px var(--p-highlight-divider)',
-    [toCssCustomPropertySyntax('warningBannerBorder')]:'inset 0 2px 0 0 var(--p-warning-divider), inset 0 0 0 2px var(--p-warning-divider)',
-    [toCssCustomPropertySyntax('criticalBannerBorder')]:'inset 0 2px 0 0 var(--p-critical-divider), inset 0 0 0 2px var(--p-critical-divider)',
+    [toCssCustomPropertySyntax(
+      'bannerBorder',
+    )]: 'inset 0 2px 0 0 var(--p-divider-on-surface), inset 0 0 0 2px var(--p-divider-on-surface)',
+    [toCssCustomPropertySyntax(
+      'successBannerBorder',
+    )]: 'inset 0 2px 0 0 var(--p-success-divider), inset 0 0 0 2px var(--p-success-divider)',
+    [toCssCustomPropertySyntax(
+      'highlightBannerBorder',
+    )]: 'inset 0 2px 0 0 var(--p-highlight-divider), inset 0 0 0 2px var(--p-highlight-divider)',
+    [toCssCustomPropertySyntax(
+      'warningBannerBorder',
+    )]: 'inset 0 2px 0 0 var(--p-warning-divider), inset 0 0 0 2px var(--p-warning-divider)',
+    [toCssCustomPropertySyntax(
+      'criticalBannerBorder',
+    )]: 'inset 0 2px 0 0 var(--p-critical-divider), inset 0 0 0 2px var(--p-critical-divider)',
   };
 }
 
