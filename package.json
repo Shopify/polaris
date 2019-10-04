@@ -5,7 +5,7 @@
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
-  "homepage": "https://github.com/Shopify/polaris-react#readme",
+  "homepage": "https://polaris.shopify.com/components",
   "repository": "https://github.com/Shopify/polaris-react",
   "bugs": {
     "url": "https://github.com/Shopify/polaris-react/issues"

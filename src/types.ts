@@ -329,3 +329,7 @@ export type EffectCallback = () => void | (() => void | undefined);
 export type DependencyList = ReadonlyArray<unknown>;
 
 export type Comparator = (a: DependencyList, b: DependencyList) => boolean;
+
+export interface CheckboxHandles {
+  focus(): void;
+}

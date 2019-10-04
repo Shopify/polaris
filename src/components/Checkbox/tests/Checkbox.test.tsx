@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Key} from '../../../types';
-import Checkbox from '../Checkbox';
+import {Checkbox} from '../Checkbox';
 
 describe('<Checkbox />', () => {
   it('sets pass through properties on the input', () => {
