@@ -16,7 +16,7 @@ keywords:
 
 # Drop zone
 
-The drop zone component lets merchants upload files by dragging and dropping files into an area on a page.
+The drop zone component lets users upload files by dragging and dropping the files into an area on a page, or activating a button.
 
 ---
 
@@ -481,3 +481,38 @@ Use file upload with the drop zone component to let merchants select files for u
 
 - To provide context to upload errors when they occur, use the [banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
 - To provide feedback during file upload, use the [spinner component](https://polaris.shopify.com/components/feedback-indicators/spinner)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+The drop zone component builds on the native HTML `<input type=”upload”>` element by including a `<button>` as well as a drag and drop area.
+
+### Keyboard support
+
+To upload a file with the keyboard, merchants interact with the “Add file” button.
+
+- To give the button keyboard focus, use the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
+- To activate the button, use the <kbd>enter</kbd>/<kbd>return</kbd> or <kbd>space</kbd> keys
+
+<!-- /content-for -->
