@@ -18,14 +18,14 @@
   margin: 0;
   padding: $vertical-padding spacing();
   background: var(
-    --interactive-neutral-elevation-2,
+    --p-interactive-neutral-elevation-2,
     linear-gradient(to bottom, color('white'), color('sky', 'lighter'))
   );
-  border: var(--none, border(dark));
-  box-shadow: var(--none, shadow(faint));
+  border: var(--p-none, border(dark));
+  box-shadow: var(--p-none, shadow(faint));
   border-radius: border-radius();
   line-height: 1;
-  color: var(--text-on-surface, color('ink'));
+  color: var(--p-text-on-surface, color('ink'));
   text-align: center;
   cursor: pointer;
   user-select: none;
@@ -37,29 +37,29 @@
 
   &:hover {
     background: var(
-      --interactive-neutral-elevation-3,
+      --p-interactive-neutral-elevation-3,
       linear-gradient(to bottom, color('sky', 'lighter'), color('sky', 'light'))
     );
-    border-color: var(--none, color('sky', 'dark'));
+    border-color: var(--p-none, color('sky', 'dark'));
   }
 
   &:focus {
-    border-color: var(--transparent, color('indigo'));
+    border-color: var(--p-transparent, color('indigo'));
     outline: 0;
-    box-shadow: var(--none, 0 0 0 1px color('indigo'));
+    box-shadow: var(--p-none, 0 0 0 1px color('indigo'));
 
     // TODO: We’ll want to pull a version of this focus ring style into a mixin
     // and probably allow setting a border radius. Although not sure how it plays
     // out with the high contrast outline.
     &::after {
-      content: var(--focus-ring-content, none);
+      content: var(--p-focus-ring-content, none);
       position: absolute;
       top: rem(-3px);
       right: rem(-3px);
       bottom: rem(-3px);
       left: rem(-3px);
       display: block;
-      border: rem(2px) solid var(--interactive-focus);
+      border: rem(2px) solid var(--p-interactive-focus);
       border-radius: border-radius(large);
     }
 
@@ -69,12 +69,12 @@
   &:active {
     // Same color gradient is necessary for background transitions
     background: var(
-      --interactive-neutral-elevation-4,
+      --p-interactive-neutral-elevation-4,
       linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'))
     );
-    border-color: var(--none, color('sky', 'dark'));
+    border-color: var(--p-none, color('sky', 'dark'));
     box-shadow: var(
-      --none,
+      --p-none,
       0 0 0 0 transparent,
       inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
       inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2)
@@ -90,46 +90,46 @@
   @include recolor-icon(color('ink', 'lightest'));
   transition: none;
   background: var(
-    --interactive-neutral-elevation-1,
+    --p-interactive-neutral-elevation-1,
     linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'))
   );
-  color: var(--text-disabled-on-surface, color('ink', 'lightest'));
+  color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
 }
 
 @mixin button-filled($button-color, $focus-color, $outline-color: null) {
   $border-color: darken($button-color, 10%);
   $active-color: darken($button-color, 15%);
   background: var(
-    --button-color,
+    --p-button-color,
     linear-gradient(
       to bottom,
       lighten($button-color, 2%),
       darken($button-color, 2%)
     )
   );
-  border-color: var(--transparent, $border-color);
+  border-color: var(--p-transparent, $border-color);
   box-shadow: var(
-    --none,
+    --p-none,
     inset 0 1px 0 0 lighten($button-color, 3%),
     shadow(faint),
     0 0 0 0 transparent
   );
-  color: var(--text-on-branded, color('white'));
+  color: var(--p-text-on-branded, color('white'));
 
   &:hover {
     background: var(
-      --button-color-hover,
+      --p-button-color-hover,
       linear-gradient(to bottom, $button-color, darken($button-color, 5%))
     );
-    border-color: var(--transparent, $border-color);
-    color: var(--text-on-branded, color('white'));
+    border-color: var(--p-transparent, $border-color);
+    color: var(--p-text-on-branded, color('white'));
     text-decoration: none;
   }
 
   &:focus {
-    border-color: var(--transparent, $focus-color);
+    border-color: var(--p-transparent, $focus-color);
     box-shadow: var(
-      --none,
+      --p-none,
       inset 0 1px 0 0 lighten($button-color, 5%),
       shadow(faint),
       0 0 0 1px $focus-color
@@ -138,12 +138,12 @@
 
   &:active {
     background: var(
-      --button-color-active,
+      --p-button-color-active,
       linear-gradient(to bottom, $border-color, $border-color)
     );
-    border-color: var(--transparent, $active-color);
+    border-color: var(--p-transparent, $active-color);
     box-shadow: var(
-      --none,
+      --p-none,
       inset 0 0 0 0 transparent,
       shadow(faint),
       0 0 1px 0 $active-color
@@ -155,16 +155,16 @@
   @include recolor-icon(color('white'));
   // Transition gradient to gradient to avoid flicker
   background: var(
-    --button-color-disabled,
+    --p-button-color-disabled,
     linear-gradient(
       to bottom,
       lighten($button-color, 25%),
       lighten($button-color, 25%)
     )
   );
-  border-color: var(--transparent, lighten($button-color, 20%));
+  border-color: var(--p-transparent, lighten($button-color, 20%));
   box-shadow: none;
-  color: var(--text-on-branded, color('white'));
+  color: var(--p-text-on-branded, color('white'));
 }
 
 @mixin button-outline($outline-color) {

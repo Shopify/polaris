@@ -13,7 +13,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   background-color: $background;
   box-sizing: border-box;
   box-shadow: inset 0 2px 0 0 $highlight, inset 0 0 0 2px $highlight;
-  border-radius: var(--border-radius-wide, border-radius());
+  border-radius: var(--p-border-radius-wide, border-radius());
 
   @media (-ms-high-contrast: active) {
     box-shadow: inset 0 $accent-height 0 0 ms-high-contrast-color('text'),
@@ -33,35 +33,35 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 @mixin banner-variants {
   @include banner-attributes(
-    var(--divider-on-surface, color('ink', 'lighter')),
-    var(--surface-background, color('sky', 'light'))
+    var(--p-divider-on-surface, color('ink', 'lighter')),
+    var(--p-surface-background, color('sky', 'light'))
   );
 
   &.statusSuccess {
     @include banner-attributes(
-      var(--success-divider, color('green')),
-      var(--success-surface-subdued, color('green', 'lighter'))
+      var(--p-success-divider, color('green')),
+      var(--p-success-surface-subdued, color('green', 'lighter'))
     );
   }
 
   &.statusInfo {
     @include banner-attributes(
-      var(--highlight-divider, color('teal')),
-      var(--highlight-surface-subdued, color('teal', 'lighter'))
+      var(--p-highlight-divider, color('teal')),
+      var(--p-highlight-surface-subdued, color('teal', 'lighter'))
     );
   }
 
   &.statusWarning {
     @include banner-attributes(
-      var(--warning-divider, color('yellow')),
-      var(--warning-surface-subdued, color('yellow', 'lighter'))
+      var(--p-warning-divider, color('yellow')),
+      var(--p-warning-surface-subdued, color('yellow', 'lighter'))
     );
   }
 
   &.statusCritical {
     @include banner-attributes(
-      var(--critical-diviver, color('red')),
-      var(--critical-surface-subdued, color('red', 'lighter'))
+      var(--p-critical-diviver, color('red')),
+      var(--p-critical-surface-subdued, color('red', 'lighter'))
     );
   }
 }
@@ -155,7 +155,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     (-0.5 * $secondary-action-horizontal-padding);
   padding: $secondary-action-vertical-padding
     $secondary-action-horizontal-padding;
-  color: var(--text-on-surface, color('ink'));
+  color: var(--p-text-on-surface, color('ink'));
   padding-left: rem(6px);
 
   &:hover > .Text::after {

@@ -72,14 +72,14 @@ $spinner-size: rem(20px);
 }
 
 .primary {
-  --button-color: var(--branded-action);
-  --button-color-hover: var(--branded-action-hovered);
-  --button-color-active: var(--branded-action-pressed);
+  --p-button-color: var(--p-branded-action);
+  --p-button-color-hover: var(--p-branded-action-hovered);
+  --p-button-color-active: var(--p-branded-action-pressed);
   @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(color('white'));
 
   &.disabled {
-    --button-color-disabled: var(--brand-action-disabled);
+    --p-button-color-disabled: var(--p-brand-action-disabled);
     @include button-filled-disabled(color('indigo'));
   }
 }
