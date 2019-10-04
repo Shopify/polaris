@@ -65,7 +65,7 @@ describe('buildCustomProperties', () => {
     });
   });
 
-  it('creates legacy custom properties with new custom properties when global theming is enabled', () => {
+  it('creates new custom properties when global theming is enabled but ignores legacy colors', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}},
       UNSTABLE_colors: {surface: '#ffffff'},
@@ -79,9 +79,11 @@ describe('buildCustomProperties', () => {
         '--p-surface-foreground': 'hsl(0, 0%, 100%, 1)',
         '--p-surface-foreground-subdued': 'hsl(0, 0%, 90%, 1)',
         '--p-surface-inverse': 'hsl(0, 0%, 0%, 1)',
+      }),
+    );
+    expect(colors).not.toStrictEqual(
+      expect.objectContaining({
         '--top-bar-background': '#eeeeee',
-        '--top-bar-background-lighter': 'hsl(0, 10%, 100%, 1)',
-        '--top-bar-color': 'rgb(33, 43, 54)',
       }),
     );
   });

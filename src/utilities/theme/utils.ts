@@ -14,8 +14,8 @@ export function buildCustomProperties(
 ): CustomPropertiesLike {
   return globalTheming
     ? {
-        ...buildLegacyColors(themeConfig),
         ...buildColors(themeConfig),
+        ...overrides(),
       }
     : {
         ...buildLegacyColors(themeConfig),
@@ -61,7 +61,6 @@ export function buildColors(theme: ThemeConfig) {
       ...highlightColors(colorToHsla(highlight), lightSurface),
       ...successColors(colorToHsla(success), lightSurface),
     }),
-    ...overrides(),
   };
 }
 
