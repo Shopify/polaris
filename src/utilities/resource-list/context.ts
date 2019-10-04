@@ -1,7 +1,13 @@
 import React from 'react';
-import {ResourceListSelectedItems} from './types';
+
+import {CheckboxHandles} from '../../types';
+import {ResourceListSelectedItems, CheckableButtonKey} from './types';
 
 export interface ResourceListContextType {
+  registerCheckableButtons?(
+    key: CheckableButtonKey,
+    button: CheckboxHandles,
+  ): void;
   selectMode?: boolean;
   selectable?: boolean;
   selectedItems?: ResourceListSelectedItems;

@@ -92,9 +92,9 @@ describe('<BulkActions />', () => {
       expect(count).toBe(0);
     });
 
-    it('renders a Popover', () => {
+    it('renders a Popover when smallScreen is true', () => {
       const bulkActionsElement = mountWithAppProvider(
-        <BulkActions {...bulkActionProps} />,
+        <BulkActions {...bulkActionProps} smallScreen />,
       );
       const popover = bulkActionsElement.find(Popover);
       expect(popover).toHaveLength(1);
@@ -120,7 +120,7 @@ describe('<BulkActions />', () => {
         bulkActionsElement
           .find('button')
           .filterWhere((element) => Boolean(element.prop('disabled'))),
-      ).toHaveLength(5);
+      ).toHaveLength(2);
     });
   });
 
@@ -227,7 +227,7 @@ describe('<BulkActions />', () => {
     });
 
     describe('promotedActions', () => {
-      it('renders a BulkActionButton for actions and one for each item in promotedActions', () => {
+      it('renders a BulkActionButton for each item in promotedActions', () => {
         const warnSpy = jest.spyOn(console, 'warn');
         warnSpy.mockImplementation(() => {});
         const bulkActionProps: Props = {
@@ -253,7 +253,7 @@ describe('<BulkActions />', () => {
           <BulkActions {...bulkActionProps} />,
         );
         const bulkActionButtons = bulkActions.find(BulkActionButton);
-        expect(bulkActionButtons).toHaveLength(4);
+        expect(bulkActionButtons).toHaveLength(3);
         warnSpy.mockRestore();
       });
     });
@@ -352,6 +352,30 @@ describe('<BulkActions />', () => {
         );
         findByTestID(bulkActions, 'paginated-action').simulate('click');
         expect(spy).toHaveBeenCalled();
+      });
+    });
+
+    describe('smallScreen', () => {
+      it('renders only the large screen bulkactions if smallScreen is false', () => {
+        const bulkActions = mountWithAppProvider(
+          <BulkActions {...bulkActionProps} selectMode />,
+        );
+        const smallGroup = findByTestID(bulkActions, 'smallGroup');
+        const largeGroup = findByTestID(bulkActions, 'largeGroup');
+
+        expect(smallGroup.exists()).toBe(false);
+        expect(largeGroup.exists()).toBe(true);
+      });
+
+      it('renders only the small screen bulkactions if smallScreen is true', () => {
+        const bulkActions = mountWithAppProvider(
+          <BulkActions {...bulkActionProps} selectMode smallScreen />,
+        );
+        const smallGroup = findByTestID(bulkActions, 'smallGroup');
+        const largeGroup = findByTestID(bulkActions, 'largeGroup');
+
+        expect(smallGroup.exists()).toBe(true);
+        expect(largeGroup.exists()).toBe(false);
       });
     });
   });
