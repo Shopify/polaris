@@ -259,7 +259,7 @@ function buildLegacyColors(theme?: ThemeConfig): CustomPropertiesLike {
   const colors =
     theme && theme.colors && theme.colors.topBar
       ? theme.colors.topBar
-      : {background: '#00848e', backgroundLighter: '#f9fafb', color: '#1d9ba4'};
+      : {background: '#00848e', backgroundLighter: '#1d9ba4', color: '#f9fafb'};
 
   const colorKey = 'topBar';
   const colorKeys = Object.keys(colors);
