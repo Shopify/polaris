@@ -56,8 +56,8 @@ describe('<ThemeProvider />', () => {
     expect(wrapper.find('div').props().style).toStrictEqual(
       expect.objectContaining({
         '--top-bar-background': '#00848e',
-        '--top-bar-background-lighter': '#f9fafb',
-        '--top-bar-color': '#1d9ba4',
+        '--top-bar-background-lighter': '#1d9ba4',
+        '--top-bar-color': '#f9fafb',
       }),
     );
   });
