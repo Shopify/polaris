@@ -14,14 +14,19 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   border-radius: var(--p-border-radius-wide, inherit);
   box-shadow: var(--border, none);
 
-  @if $in-page {
-    box-shadow: var(--border, inset 0 $accent-height 0 0 $highlight, inset shadow(transparent), shadow());
-  }
-
   @media (-ms-high-contrast: active) {
     box-shadow: inset 0 $accent-height 0 0 ms-high-contrast-color('text'),
       inset 0 0 border-width(base) border-width(base)
-      ms-high-contrast-color('text');
+        ms-high-contrast-color('text');
+  }
+
+  @if $in-page {
+    box-shadow: var(
+      --border,
+      inset 0 $accent-height 0 0 $highlight,
+      inset shadow(transparent),
+      shadow()
+    );
   }
 
   @if $tint {
