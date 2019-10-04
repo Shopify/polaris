@@ -510,7 +510,7 @@ The drop zone component builds on the native HTML `<input type="upload">` elemen
 
 ### Keyboard support
 
-To upload a file with the keyboard, merchants interact with the “Add file” button.
+To upload a file with the keyboard, merchants can interact with the drag-and-drop region.
 
 - To give the input keyboard focus, use the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - To activate the input, use the <kbd>enter</kbd>/<kbd>return</kbd> or <kbd>space</kbd> keys
