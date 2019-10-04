@@ -70,13 +70,13 @@ $stacking-order: (
   border: none;
   background-color: transparent;
   outline: none;
-  color: var(--p-text-on-surface, --top-bar-color);
+  color: var(--p-text-on-surface, var(--top-bar-color));
   will-change: fill, color;
   transition: fill duration() easing(), color duration() easing();
   appearance: textfield;
 
   &::placeholder {
-    color: var(--p-text-on-surface, --top-bar-color);
+    color: var(--p-text-on-surface, var(--top-bar-color));
   }
 
   &::-webkit-search-decoration,
@@ -86,7 +86,7 @@ $stacking-order: (
 }
 
 .Icon {
-  @include recolor-icon(var(--p-icon-on-surface, --top-bar-color));
+  @include recolor-icon(var(--p-icon-on-surface, var(--top-bar-color)));
   position: absolute;
   z-index: z-index(icon, $stacking-order);
   top: 50%;
