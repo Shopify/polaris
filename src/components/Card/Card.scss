@@ -19,7 +19,10 @@
 }
 
 .subdued {
-  background-color: var(--p-surface-foreground-subdued, color('sky', 'lighter'));
+  background-color: var(
+    --p-surface-foreground-subdued,
+    color('sky', 'lighter')
+  );
 }
 
 .Header {
@@ -51,7 +54,10 @@
 }
 
 .Section-subdued {
-  background-color: var(--p-surface-foreground-subdued, color('sky', 'lighter'));
+  background-color: var(
+    --p-surface-foreground-subdued,
+    color('sky', 'lighter')
+  );
 
   @media (-ms-high-contrast: active) {
     background-color: transparent;
