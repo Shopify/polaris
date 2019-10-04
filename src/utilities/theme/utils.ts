@@ -14,7 +14,7 @@ export function buildCustomProperties(
 ): CustomPropertiesLike {
   return globalTheming
     ? {
-        ...customPropertyTransformer(buildColors(themeConfig)),
+        ...buildColors(themeConfig),
         ...overrides(),
       }
     : {
@@ -47,22 +47,24 @@ export function buildColors(theme: ThemeConfig) {
   const lightSurface = isLight(hslToRgb(colorToHsla(surface)));
 
   return {
-    ...buildSurfaceColors(colorToHsla(surface), lightSurface),
-    ...buildOnSurfaceColors(colorToHsla(onSurface), lightSurface),
-    ...buildInteractiveColors(colorToHsla(interactive), lightSurface),
-    ...buildInteractiveNeutralColors(
-      colorToHsla(interactiveNeutral),
-      lightSurface,
-    ),
-    ...buildBrandedColors(colorToHsla(branded), lightSurface),
-    ...buildCriticalColors(colorToHsla(critical), lightSurface),
-    ...buildWarningColors(colorToHsla(warning), lightSurface),
-    ...buildHighlightColors(colorToHsla(highlight), lightSurface),
-    ...buildSuccessColors(colorToHsla(success), lightSurface),
+    ...customPropertyTransformer({
+      ...surfaceColors(colorToHsla(surface), lightSurface),
+      ...onSurfaceColors(colorToHsla(onSurface), lightSurface),
+      ...interactiveColors(colorToHsla(interactive), lightSurface),
+      ...interactiveNeutralColors(
+        colorToHsla(interactiveNeutral),
+        lightSurface,
+      ),
+      ...brandedColors(colorToHsla(branded), lightSurface),
+      ...criticalColors(colorToHsla(critical), lightSurface),
+      ...warningColors(colorToHsla(warning), lightSurface),
+      ...highlightColors(colorToHsla(highlight), lightSurface),
+      ...successColors(colorToHsla(success), lightSurface),
+    }),
   };
 }
 
-function buildSurfaceColors(color: HSLAColor, lightSurface: boolean) {
+function surfaceColors(color: HSLAColor, lightSurface: boolean) {
   return {
     surface: color,
     surfaceBackground: setLightness(color, lightSurface ? 98 : 7),
@@ -72,7 +74,7 @@ function buildSurfaceColors(color: HSLAColor, lightSurface: boolean) {
   };
 }
 
-function buildOnSurfaceColors(color: HSLAColor, lightSurface: boolean) {
+function onSurfaceColors(color: HSLAColor, lightSurface: boolean) {
   return {
     onSurface: color,
     actionOnDark: setLightness(color, 76),
@@ -130,7 +132,7 @@ function buildOnSurfaceColors(color: HSLAColor, lightSurface: boolean) {
   };
 }
 
-function buildInteractiveColors(color: HSLAColor, lightSurface: boolean) {
+function interactiveColors(color: HSLAColor, lightSurface: boolean) {
   return {
     interactive: color,
     interactiveAction: setLightness(color, lightSurface ? 44 : 56),
@@ -145,10 +147,7 @@ function buildInteractiveColors(color: HSLAColor, lightSurface: boolean) {
   };
 }
 
-function buildInteractiveNeutralColors(
-  color: HSLAColor,
-  lightSurface: boolean,
-) {
+function interactiveNeutralColors(color: HSLAColor, lightSurface: boolean) {
   return {
     interactiveNeutral: color,
     interactiveNeutralElevation0: setLightness(color, lightSurface ? 100 : 7),
@@ -160,7 +159,7 @@ function buildInteractiveNeutralColors(
   };
 }
 
-function buildBrandedColors(color: HSLAColor, lightSurface: boolean) {
+function brandedColors(color: HSLAColor, lightSurface: boolean) {
   return {
     branded: color,
     brandedAction: setLightness(color, 25),
@@ -177,7 +176,7 @@ function buildBrandedColors(color: HSLAColor, lightSurface: boolean) {
   };
 }
 
-function buildCriticalColors(color: HSLAColor, lightSurface: boolean) {
+function criticalColors(color: HSLAColor, lightSurface: boolean) {
   return {
     critical: color,
     criticalDivider: setLightness(color, lightSurface ? 52 : 48),
@@ -188,7 +187,7 @@ function buildCriticalColors(color: HSLAColor, lightSurface: boolean) {
   };
 }
 
-function buildWarningColors(color: HSLAColor, lightSurface: boolean) {
+function warningColors(color: HSLAColor, lightSurface: boolean) {
   return {
     warning: color,
     warningDivider: setLightness(color, lightSurface ? 66 : 34),
@@ -199,7 +198,7 @@ function buildWarningColors(color: HSLAColor, lightSurface: boolean) {
   };
 }
 
-function buildHighlightColors(color: HSLAColor, lightSurface: boolean) {
+function highlightColors(color: HSLAColor, lightSurface: boolean) {
   return {
     highlight: color,
     highlightDivider: setLightness(color, lightSurface ? 58 : 42),
@@ -210,7 +209,7 @@ function buildHighlightColors(color: HSLAColor, lightSurface: boolean) {
   };
 }
 
-function buildSuccessColors(color: HSLAColor, lightSurface: boolean) {
+function successColors(color: HSLAColor, lightSurface: boolean) {
   return {
     success: color,
     successDivider: setLightness(color, lightSurface ? 25 : 35),
