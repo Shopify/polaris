@@ -1,0 +1,228 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar com as iniciais {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Carregar"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Incompleto",
+        "partiallyComplete": "Parcialmente concluído",
+        "complete": "Concluído"
+      },
+      "STATUS_LABELS": {
+        "info": "Informações",
+        "success": "Sucesso",
+        "warning": "Aviso",
+        "attention": "Atenção",
+        "new": "Novo"
+      }
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Carregar"
+    },
+    "Common": {
+      "checkbox": "caixa de verificação",
+      "undo": "Anular",
+      "cancel": "Cancelar",
+      "newWindowAccessibilityHint": "(abre uma nova janela)",
+      "clear": "Limpar",
+      "close": "Fechar",
+      "submit": "Enviar",
+      "more": "Mais"
+    },
+    "ContextualSaveBar": {
+      "save": "Guardar",
+      "discard": "Descartar"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "ordenar {direction} por",
+      "navAccessibilityLabel": "Deslocar tabela {direction} de uma coluna",
+      "totalsRowHeading": "Totais"
+    },
+    "DatePicker": {
+      "previousMonth": "Mostrar mês anterior, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Mostrar mês seguinte, {nextMonth} {nextYear}",
+      "today": "Hoje ",
+      "months": {
+        "january": "Janeiro",
+        "february": "Fevereiro",
+        "march": "Março",
+        "april": "Abril",
+        "may": "Maio",
+        "june": "Junho",
+        "july": "Julho",
+        "august": "Agosto",
+        "september": "Setembro",
+        "october": "Outubro",
+        "november": "Novembro",
+        "december": "Dezembro"
+      },
+      "daysAbbreviated": {
+        "monday": "Seg",
+        "tuesday": "Ter",
+        "wednesday": "Qua",
+        "thursday": "Qui",
+        "friday": "Sex",
+        "saturday": "Sáb",
+        "sunday": "Dom"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Descartar todas as alterações não guardadas",
+      "message": "Se descartar as alterações, vai eliminar quaisquer edições feitas desde que guardou pela última vez.",
+      "primaryAction": "Descartar alterações",
+      "secondaryAction": "Continuar a editar"
+    },
+    "DropZone": {
+      "overlayTextFile": "Solte o ficheiro para carregar",
+      "overlayTextImage": "Solte a imagem para carregar",
+      "errorOverlayTextFile": "O tipo de ficheiro não é válido",
+      "errorOverlayTextImage": "O tipo de imagem não é válido",
+      "FileUpload": {
+        "actionTitleFile": "Adicionar ficheiro",
+        "actionTitleImage": "Adicionar imagem",
+        "actionHintFile": "ou solte os ficheiros para carregar",
+        "actionHintImage": "ou solte as imagens para carregar",
+        "label": "Carregar ficheiro"
+      }
+    },
+    "EmptySearchResult": {
+      "altText": "Resultados de pesquisa vazios"
+    },
+    "Frame": {
+      "skipToContent": "Saltar para o conteúdo",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Fechar a navegação"
+      }
+    },
+    "Icon": {
+      "backdropWarning": "O ícone {color} não aceita fundos. As cores dos ícones com fundos são: {colorsWithBackDrops}"
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Ações"
+      }
+    },
+    "Filters": {
+      "moreFilters": "Mais filtros",
+      "filter": "Filtrar {resourceName}",
+      "noFiltersApplied": "Nenhum filtro aplicado",
+      "cancel": "Cancelar",
+      "done": "Concluído",
+      "clearAllFilters": "Limpar todos os filtros",
+      "clear": "Limpar",
+      "clearLabel": "Limpar {filterName}"
+    },
+    "Modal": {
+      "iFrameTitle": "marcação de corpo",
+      "modalWarning": "Estas propriedades necessárias estão em falta no Modal: {missingProps}"
+    },
+    "Pagination": {
+      "previous": "Anterior",
+      "next": "Seguinte",
+      "pagination": "Paginação"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Os valores passados para propriedades do progresso não devem ser negativos. A repor {progress} para 0.",
+      "exceedWarningMessage": "Os valores passados para propriedades do progresso não devem exceder 100. A configurar {progress} para 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Ordenar por",
+      "defaultItemSingular": "item",
+      "defaultItemPlural": "itens",
+      "showing": "A mostrar {itemsCount} {resource}",
+      "loading": "Carregar {resource}",
+      "selected": "{selectedItemsCount} selecionado",
+      "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} da sua loja estão selecionados.",
+      "selectAllItems": "Selecione todos os {itemsLength}+ {resourceNamePlural} da sua loja",
+      "emptySearchResultTitle": "Nenhum {resourceNamePlural} encontrado",
+      "emptySearchResultDescription": "Tente alterar os filtros ou o termo de pesquisa",
+      "selectButtonText": "Selecionar",
+      "a11yCheckboxDeselectAllSingle": "Desselecionar {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Desselecionar tudo em {resourceNamePlural} de {itemsLength}",
+      "a11yCheckboxSelectAllMultiple": "Selecionar tudo em {resourceNamePlural} de {itemsLength}",
+      "ariaLiveSingular": "Item de {itemsLength}",
+      "ariaLivePlural": "{itemsLength} itens",
+      "Item": {
+        "actionsDropdownLabel": "Ações para {accessibilityLabel}",
+        "actionsDropdown": "Menu pendente de ações",
+        "viewItem": "Ver detalhes de {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Ações",
+        "moreActionsActivatorLabel": "Mais ações",
+        "warningMessage": "Para oferecer uma melhor experiência ao utilizador. Deve existir apenas um máximo de {maxPromotedActions} ações promovidas."
+      },
+      "FilterCreator": {
+        "filterButtonLabel": "Filtro",
+        "selectFilterKeyPlaceholder": "Selecione um filtro...",
+        "addFilterButtonLabel": "Adicionar filtro",
+        "showAllWhere": "Mostrar todos os {resourceNamePlural} nos quais:"
+      },
+      "FilterControl": {
+        "textFieldLabel": "Pesquisar {resourceNamePlural}"
+      },
+      "FilterValueSelector": {
+        "selectFilterValuePlaceholder": "Selecione um filtro..."
+      },
+      "DateSelector": {
+        "dateFilterLabel": "Selecione um valor",
+        "dateValueLabel": "Data",
+        "dateValueError": "Compatível com o formato AAAA-MM-DD",
+        "dateValuePlaceholder": "AAAA-MM-DD",
+        "SelectOptions": {
+          "PastWeek": "na última semana",
+          "PastMonth": "no último mês",
+          "PastQuarter": "nos últimos 3 meses",
+          "PastYear": "no último ano",
+          "ComingWeek": "na próxima semana",
+          "ComingMonth": "no próximo mês",
+          "ComingQuarter": "nos próximos 3 meses",
+          "ComingYear": "no próximo ano",
+          "OnOrBefore": "em ou antes de",
+          "OnOrAfter": "em ou depois de"
+        },
+        "FilterLabelForValue": {
+          "past_week": "na última semana",
+          "past_month": "no último mês",
+          "past_quarter": "nos últimos 3 meses",
+          "past_year": "no último ano",
+          "coming_week": "na próxima semana",
+          "coming_month": "no próximo mês",
+          "coming_quarter": "nos próximos 3 meses",
+          "coming_year": "no próximo ano",
+          "on_or_before": "antes de {date}",
+          "on_or_after": "depois de {date}"
+        }
+      }
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Página a carregar"
+    },
+    "Spinner": {
+      "warningMessage": "A cor {color} não deve ser utilizada em spinners de {size}. As cores disponíveis em spinners grandes são: {colors}"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "Mais separadores"
+    },
+    "Tag": {
+      "ariaLabel": "Remover {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} caracteres",
+      "characterCountWithMaxLength": "{count} de {limit} caracteres usados"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Alternar menu",
+      "SearchField": {
+        "clearButtonLabel": "Limpar",
+        "search": "Pesquisar"
+      }
+    }
+  }
+}
