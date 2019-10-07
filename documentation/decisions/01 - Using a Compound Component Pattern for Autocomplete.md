@@ -29,4 +29,6 @@ We opted against this for a couple of reasons:
 
 2. Using `cloneElement`: We opted against this approach because since cloning happens at run time and TypeScript happens at compile time the benefits of using TypeScript were lost. The experience also felt less performant most likely due to the cloning at every render.
 
-3. Having the list of results as a child of the component and the activator text field as a prop: We chose this approach. Overall the approach felt right, the experience not lagging and renders we're kept to the elements being affected only.
+3. Having the list of results as a child of the component and the activator text field as a prop
+
+We chose this approach. Overall the approach felt right, the experience felt snappy and renders were kept to the elements being affected only.
