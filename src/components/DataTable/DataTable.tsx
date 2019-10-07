@@ -330,9 +330,12 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       content = total;
     }
 
+    const totalInFooter = this.props.showTotalsInFooter;
+
     return (
       <Cell
         total
+        totalInFooter={totalInFooter}
         firstColumn={index === 0}
         key={id}
         content={content}
