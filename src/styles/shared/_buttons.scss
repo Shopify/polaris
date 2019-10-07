@@ -60,7 +60,7 @@
       left: rem(-3px);
       display: block;
       border: rem(2px) solid var(--p-interactive-focus);
-      border-radius: calc(var(--p-border-radius-base) + 2px);
+      border-radius: calc(var(--p-border-radius-base) + 3px);
     }
 
     @include high-contrast-button-outline;
