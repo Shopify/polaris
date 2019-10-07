@@ -16,6 +16,7 @@ export interface CellProps {
   truncate?: boolean;
   header?: boolean;
   total?: boolean;
+  totalInFooter?: boolean;
   sorted?: boolean;
   sortable?: boolean;
   sortDirection?: SortDirection;
@@ -31,6 +32,7 @@ export function Cell({
   truncate,
   header,
   total,
+  totalInFooter,
   sorted,
   sortable,
   sortDirection,
@@ -47,6 +49,7 @@ export function Cell({
     firstColumn && truncate && styles['Cell-truncated'],
     header && styles['Cell-header'],
     total && styles['Cell-total'],
+    totalInFooter && styles['Cell-total-footer'],
     numeric && styles['Cell-numeric'],
     sortable && styles['Cell-sortable'],
     sorted && styles['Cell-sorted'],

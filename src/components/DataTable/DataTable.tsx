@@ -32,6 +32,8 @@ export interface DataTableProps {
   headings: string[];
   /** List of numeric column totals, highlighted in the table’s header below column headings. Use empty strings as placeholders for columns with no total. */
   totals?: TableData[];
+  /** Placement of totals row within table, true for t */
+  showTotalsInFooter?: boolean;
   /** Lists of data points which map to table body rows. */
   rows: TableData[][];
   /** Truncate content in first column instead of wrapping.
@@ -120,7 +122,13 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   }
 
   render() {
-    const {headings, totals, rows, footerContent} = this.props;
+    const {
+      headings,
+      totals,
+      showTotalsInFooter,
+      rows,
+      footerContent,
+    } = this.props;
     const {
       condensed,
       columnVisibilityData,
@@ -150,6 +158,11 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       <div className={styles.Footer}>{footerContent}</div>
     ) : null;
 
+    const headerTotalsMarkup = !showTotalsInFooter ? totalsMarkup : null;
+    const footerTotalsMarkup = showTotalsInFooter ? (
+      <tfoot>{totalsMarkup}</tfoot>
+    ) : null;
+
     return (
       <div className={wrapperClassName}>
         <Navigation
@@ -170,9 +183,10 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
             <table className={styles.Table} ref={this.table}>
               <thead>
                 {headingMarkup}
-                {totalsMarkup}
+                {headerTotalsMarkup}
               </thead>
               <tbody>{bodyMarkup}</tbody>
+              {footerTotalsMarkup}
             </table>
           </div>
           {footerMarkup}
@@ -320,9 +334,12 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       content = total;
     }
 
+    const totalInFooter = this.props.showTotalsInFooter;
+
     return (
       <Cell
         total
+        totalInFooter={totalInFooter}
         firstColumn={index === 0}
         key={id}
         content={content}

@@ -155,6 +155,15 @@ describe('<DataTable />', () => {
 
       totalsCells.forEach((total) => expect(total.text()).toBe(''));
     });
+
+    it('renders totals in the footer with a showTotalsInFooter prop', () => {
+      const totals = ['', '', ''];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} showTotalsInFooter />,
+      );
+
+      expect(dataTable.find('tfoot')).toHaveLength(1);
+    });
   });
 
   describe('rows', () => {
