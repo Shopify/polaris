@@ -23,7 +23,7 @@
   );
   border: var(--p-none, border(dark));
   box-shadow: var(--p-none, shadow(faint));
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base, border-radius());
   line-height: 1;
   color: var(--p-text-on-surface, color('ink'));
   text-align: center;
@@ -60,7 +60,7 @@
       left: rem(-3px);
       display: block;
       border: rem(2px) solid var(--p-interactive-focus);
-      border-radius: border-radius(large);
+      border-radius: calc(var(--p-border-radius-base) + 2px);
     }
 
     @include high-contrast-button-outline;
