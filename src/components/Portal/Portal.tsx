@@ -2,6 +2,7 @@ import React from 'react';
 import {createPortal} from 'react-dom';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {ThemeContext} from '../../utilities/theme';
+import {portal} from '../shared';
 
 export interface PortalProps {
   children?: React.ReactNode;
@@ -31,7 +32,7 @@ export class Portal extends React.PureComponent<PortalProps, State> {
 
   componentDidMount() {
     this.portalNode = document.createElement('div');
-    this.portalNode.setAttribute('data-portal-id', this.portalId);
+    this.portalNode.setAttribute(portal.props[0], this.portalId);
 
     if (this.context != null) {
       /* eslint-disable babel/camelcase */
