@@ -49,8 +49,6 @@
     box-shadow: var(--p-none, 0 0 0 1px color('indigo'));
 
     @include focus-ring;
-
-    @include high-contrast-button-outline;
   }
 
   &:active {

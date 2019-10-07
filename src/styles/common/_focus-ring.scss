@@ -1,8 +1,8 @@
 /// Sets the focus ring for an interactive element
-/// @param {Bool} $wide - Whether the border radius on the focus ring is wide.
+/// @param {String} $size - The size of the border radius on the focus ring.
 ///
 
-@mixin focus-ring($wide: false) {
+@mixin focus-ring($size: 'base') {
   position: relative;
 
   &::after {
@@ -14,10 +14,12 @@
     left: rem(-3px);
     display: block;
     border: rem(2px) solid var(--p-interactive-focus);
-    @if $wide {
+    @if $size == 'wide' {
       border-radius: calc(var(--p-border-radius-wide) + 3px);
     } @else {
       border-radius: calc(var(--p-border-radius-base) + 3px);
     }
   }
+
+  @include high-contrast-button-outline;
 }

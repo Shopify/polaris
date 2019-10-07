@@ -46,11 +46,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
       )
     );
 
-    @include focus-ring(true);
-
-    @media (-ms-high-contrast: active) {
-      box-shadow: inset 0 0 0 $accent-height ms-high-contrast-color('text');
-    }
+    @include focus-ring('wide');
   }
 }
 
