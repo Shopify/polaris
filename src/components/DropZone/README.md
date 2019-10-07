@@ -506,7 +506,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-The drop zone component builds on the native HTML `<input type="upload">` element. It includes a  visual`<button>` as well as a drag and drop area that can receive keyboard focus.
+The drop zone component builds on the native HTML `<input type="upload">` element. It includes a visual`<button>` as well as a drag and drop area that can receive keyboard focus.
 
 ### Keyboard support
 
