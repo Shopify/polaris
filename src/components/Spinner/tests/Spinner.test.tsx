@@ -1,15 +1,19 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Spinner, Color} from '../Spinner';
 import {Image} from '../../Image';
+import {VisuallyHidden} from '../../VisuallyHidden';
 
 describe('<Spinner />', () => {
   describe('accessibilityLabel', () => {
     it('uses the label as the aria-label for the spinner', () => {
-      const spinner = mountWithAppProvider(
+      const spinner = mountWithApp(
         <Spinner accessibilityLabel="Content is loading" />,
       );
-      expect(spinner.find(Image).prop('aria-label')).toBe('Content is loading');
+      expect(spinner.find(VisuallyHidden)).toContainReactText(
+        'Content is loading',
+      );
     });
   });
 
@@ -38,9 +42,14 @@ describe('<Spinner />', () => {
   });
 
   describe('role', () => {
-    it('sets the role to status to denote advisory information to screen readers', () => {
-      const spinner = mountWithAppProvider(<Spinner />);
-      expect(spinner.find(Image).prop('role')).toBe('status');
+    it('sets the role to status to denote advisory information to screen readers when a live region is not active', () => {
+      const spinner = mountWithApp(<Spinner hasFocusableParent={false} />);
+      expect(spinner).toContainReactComponentTimes('span', 1, {role: 'status'});
+    });
+
+    it('does not set role to status when a live region is active', () => {
+      const spinner = mountWithApp(<Spinner hasFocusableParent />);
+      expect(spinner).not.toContainReactComponent('span', {role: 'status'});
     });
   });
 
