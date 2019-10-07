@@ -1,4 +1,4 @@
-# Using a compound component patter to build Autocomplete
+# Using a compound component pattern to build Autocomplete
 
 ## Date
 
