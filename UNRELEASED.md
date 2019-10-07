@@ -12,12 +12,14 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Added showTotalsFooter prop to `DataTable` for control over placement of Totals row ([#2200](https://github.com/Shopify/polaris-react/pull/2200))
 - Removed the need for z-indexes in `Icon` ([#2207](https://github.com/Shopify/polaris-react/pull/2207))
+- Added `hasFocusableParent` to `Spinner` ([#2176](https://github.com/Shopify/polaris-react/pull/2176))
 
 ### Bug fixes
 
 - Fixed tabs that don't wrap correctly on small screens in pre-iOS 13 Safari ([#2232](https://github.com/Shopify/polaris-react/pull/2232))
 - Fixed `BulkActions` checkbox losing on selection focus ([#2138](https://github.com/Shopify/polaris-react/pull/2138))
 - Moved rendering of the portal component’s node within the node created by the theme provider component to enable theming through CSS Custom Properties ([#2224](https://github.com/Shopify/polaris-react/pull/2224))
+- Fixed bug which caused the `Popover` overlay to remain in the DOM if it was updated during exiting ([#2246](https://github.com/Shopify/polaris-react/pull/2246))
 
 ### Documentation
 

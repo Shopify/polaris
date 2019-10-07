@@ -85,11 +85,10 @@ export class PopoverOverlay extends React.PureComponent<
   }
 
   componentDidUpdate(oldProps: PopoverOverlayProps) {
-    this.clearTransitionTimeout();
-
     if (this.props.active && !oldProps.active) {
       this.focusContent();
       this.changeTransitionStatus(TransitionStatus.Entering, () => {
+        this.clearTransitionTimeout();
         this.enteringTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Entered});
         }, durationBase);
@@ -98,6 +97,7 @@ export class PopoverOverlay extends React.PureComponent<
 
     if (!this.props.active && oldProps.active) {
       this.changeTransitionStatus(TransitionStatus.Exiting, () => {
+        this.clearTransitionTimeout();
         this.exitingTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Exited});
         }, durationBase);
