@@ -48,20 +48,7 @@
     outline: 0;
     box-shadow: var(--p-none, 0 0 0 1px color('indigo'));
 
-    // TODO: We’ll want to pull a version of this focus ring style into a mixin
-    // and probably allow setting a border radius. Although not sure how it plays
-    // out with the high contrast outline.
-    &::after {
-      content: var(--p-focus-ring-content, none);
-      position: absolute;
-      top: rem(-3px);
-      right: rem(-3px);
-      bottom: rem(-3px);
-      left: rem(-3px);
-      display: block;
-      border: rem(2px) solid var(--p-interactive-focus);
-      border-radius: calc(var(--p-border-radius-base) + 3px);
-    }
+    @include focus-ring;
 
     @include high-contrast-button-outline;
   }
