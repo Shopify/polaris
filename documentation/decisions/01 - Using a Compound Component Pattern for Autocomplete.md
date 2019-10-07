@@ -27,7 +27,11 @@ We opted against this for a couple of reasons:
 - it defeated the purpose of having smaller components
 - it causes the component to re-render every time an option is added (one call to the parent render method for each option)
 
-2. Using `cloneElement`: We opted against this approach because since cloning happens at run time and TypeScript happens at compile time the benefits of using TypeScript were lost. The experience also felt less performant most likely due to the cloning at every render.
+2. Using `cloneElement`
+
+We opted against this approach because:
+- cloning occurs at run time, while TypeScript runs at compile time, meaning the benefits of using TypeScript were lost
+- the experience also felt less performant most likely due to the cloning at every render
 
 3. Having the list of results as a child of the component and the activator text field as a prop
 
