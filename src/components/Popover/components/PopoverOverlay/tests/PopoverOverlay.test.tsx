@@ -154,6 +154,26 @@ describe('<PopoverOverlay />', () => {
     listenerMap.keyup({keyCode: Key.Escape});
     expect(spy).toHaveBeenCalledTimes(1);
   });
+
+  it('starts animating in immediately', () => {
+    const popoverOverlay = mountWithAppProvider(
+      <PopoverOverlay
+        active={false}
+        id="PopoverOverlay-1"
+        activator={activator}
+        onClose={noop}
+        fullWidth
+      >
+        {children}
+      </PopoverOverlay>,
+    );
+
+    popoverOverlay.setProps({active: true});
+    popoverOverlay.update();
+    expect(popoverOverlay.find(PositionedOverlay).prop('classNames')).toMatch(
+      /PopoverOverlay-entering/,
+    );
+  });
 });
 
 function noop() {}

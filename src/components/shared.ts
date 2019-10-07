@@ -28,6 +28,11 @@ export const headerCell = {
   selector: '[data-polaris-header-cell]',
 };
 
+export const themeProvider = {
+  props: {'data-polaris-theme-provider': true},
+  selector: '[data-polaris-theme-provider]',
+};
+
 export const DATA_ATTRIBUTE = {
   overlay,
   layer,

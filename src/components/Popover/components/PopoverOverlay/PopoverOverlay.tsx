@@ -85,6 +85,8 @@ export class PopoverOverlay extends React.PureComponent<
   }
 
   componentDidUpdate(oldProps: PopoverOverlayProps) {
+    this.clearTransitionTimeout();
+
     if (this.props.active && !oldProps.active) {
       this.focusContent();
       this.changeTransitionStatus(TransitionStatus.Entering, () => {
@@ -121,6 +123,8 @@ export class PopoverOverlay extends React.PureComponent<
 
     const className = classNames(
       styles.PopoverOverlay,
+      transitionStatus === TransitionStatus.Entering &&
+        styles['PopoverOverlay-entering'],
       transitionStatus === TransitionStatus.Entered &&
         styles['PopoverOverlay-open'],
       transitionStatus === TransitionStatus.Exiting &&

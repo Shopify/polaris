@@ -6,7 +6,7 @@ import {ThemeContext} from '../../../utilities/theme';
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
     const themeProvider = mountWithAppProvider(
-      <ThemeProvider theme={{logo: null}}>
+      <ThemeProvider theme={{logo: {}}}>
         <p>Hello</p>
       </ThemeProvider>,
     );
@@ -41,10 +41,7 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    const div = wrapper
-      .find(Child)
-      .find('div')
-      .first();
+    const div = wrapper.find(Child).find('div');
 
     expect(div.exists()).toBe(true);
   });
@@ -56,7 +53,13 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(wrapper.find('div').props().style).toBeDefined();
+    expect(wrapper.find('div').props().style).toStrictEqual(
+      expect.objectContaining({
+        '--top-bar-background': '#00848e',
+        '--top-bar-background-lighter': '#1d9ba4',
+        '--top-bar-color': '#f9fafb',
+      }),
+    );
   });
 
   it('sets a provided theme', () => {
@@ -74,11 +77,13 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(wrapper.find('div').props().style).toStrictEqual({
-      '--top-bar-background': '#108043',
-      '--top-bar-background-lighter': 'hsl(147, 63%, 43%, 1)',
-      '--top-bar-color': 'rgb(255, 255, 255)',
-    });
+    expect(wrapper.find('div').props().style).toStrictEqual(
+      expect.objectContaining({
+        '--top-bar-background': '#108043',
+        '--top-bar-background-lighter': 'hsl(147, 63%, 43%, 1)',
+        '--top-bar-color': 'rgb(255, 255, 255)',
+      }),
+    );
   });
 
   it('updates themes', () => {
@@ -107,10 +112,12 @@ describe('<ThemeProvider />', () => {
     });
     wrapper.update();
 
-    expect(wrapper.find('div').props().style).toStrictEqual({
-      '--top-bar-background': '#021123',
-      '--top-bar-background-lighter': 'hsl(213, 74%, 22%, 1)',
-      '--top-bar-color': 'rgb(255, 255, 255)',
-    });
+    expect(wrapper.find('div').props().style).toStrictEqual(
+      expect.objectContaining({
+        '--top-bar-background': '#021123',
+        '--top-bar-background-lighter': 'hsl(213, 74%, 22%, 1)',
+        '--top-bar-color': 'rgb(255, 255, 255)',
+      }),
+    );
   });
 });

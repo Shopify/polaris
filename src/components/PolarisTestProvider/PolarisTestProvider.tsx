@@ -1,7 +1,11 @@
 import React from 'react';
 import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
-import {Theme, ThemeContext} from '../../utilities/theme';
+import {
+  ThemeContext,
+  ThemeConfig,
+  buildThemeContext,
+} from '../../utilities/theme';
 import {MediaQueryContext} from '../../utilities/media-query';
 import {
   ScrollLockManager,
@@ -14,6 +18,7 @@ import {
 import {AppBridgeContext, AppBridgeOptions} from '../../utilities/app-bridge';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
+import {Features, FeaturesContext} from '../../utilities/features';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -35,8 +40,9 @@ export type WithPolarisTestProviderOptions = {
   i18n?: TranslationDictionary | TranslationDictionary[];
   appBridge?: AppBridgeOptions;
   link?: LinkLikeComponent;
-  theme?: Partial<Theme>;
+  theme?: ThemeConfig;
   mediaQuery?: Partial<MediaQueryContextType>;
+  features?: Features;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
 };
@@ -57,9 +63,10 @@ export function PolarisTestProvider({
   i18n,
   appBridge,
   link,
-  theme,
-  frame,
+  theme = {},
   mediaQuery,
+  features = {},
+  frame,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
 
@@ -75,7 +82,7 @@ export function PolarisTestProvider({
   // I'm not that worried about it
   const appBridgeApp = appBridge as React.ContextType<typeof AppBridgeContext>;
 
-  const mergedTheme = createThemeContext(theme);
+  const mergedTheme = buildThemeContext(theme);
 
   const mergedFrame = createFrameContext(frame);
 
@@ -83,35 +90,32 @@ export function PolarisTestProvider({
 
   return (
     <Wrapper>
-      <I18nContext.Provider value={intl}>
-        <ScrollLockManagerContext.Provider value={scrollLockManager}>
-          <StickyManagerContext.Provider value={stickyManager}>
-            <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
-              <AppBridgeContext.Provider value={appBridgeApp}>
-                <LinkContext.Provider value={link}>
-                  <ThemeContext.Provider value={mergedTheme}>
-                    <FrameContext.Provider value={mergedFrame}>
+      <FeaturesContext.Provider value={features}>
+        <I18nContext.Provider value={intl}>
+          <ScrollLockManagerContext.Provider value={scrollLockManager}>
+            <StickyManagerContext.Provider value={stickyManager}>
+              <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
+                <AppBridgeContext.Provider value={appBridgeApp}>
+                  <LinkContext.Provider value={link}>
+                    <ThemeContext.Provider value={mergedTheme}>
                       <MediaQueryContext.Provider value={mergedMediaQuery}>
-                        {children}
+                        <FrameContext.Provider value={mergedFrame}>
+                          {children}
+                        </FrameContext.Provider>
                       </MediaQueryContext.Provider>
-                    </FrameContext.Provider>
-                  </ThemeContext.Provider>
-                </LinkContext.Provider>
-              </AppBridgeContext.Provider>
-            </UniqueIdFactoryContext.Provider>
-          </StickyManagerContext.Provider>
-        </ScrollLockManagerContext.Provider>
-      </I18nContext.Provider>
+                    </ThemeContext.Provider>
+                  </LinkContext.Provider>
+                </AppBridgeContext.Provider>
+              </UniqueIdFactoryContext.Provider>
+            </StickyManagerContext.Provider>
+          </ScrollLockManagerContext.Provider>
+        </I18nContext.Provider>
+      </FeaturesContext.Provider>
     </Wrapper>
   );
 }
 
 function noop() {}
-
-function createThemeContext(theme: Partial<Theme> = {}): Theme {
-  const {logo = null} = theme;
-  return {logo};
-}
 
 function createFrameContext({
   showToast = noop,

@@ -356,7 +356,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       return;
     }
 
-    this.setState({focused: true, focusedInner: true});
+    this.setState({focused: value, focusedInner: value});
     onSelectionChange(value, id, sortOrder, shiftKey);
   };
 

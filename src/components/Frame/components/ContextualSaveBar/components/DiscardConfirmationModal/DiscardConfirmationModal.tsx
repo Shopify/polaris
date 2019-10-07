@@ -14,15 +14,15 @@ export function DiscardConfirmationModal({
   onDiscard,
   onCancel,
 }: DiscardConfirmationModalProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
 
   return (
     <Modal
-      title={intl.translate('Polaris.DiscardConfirmationModal.title')}
+      title={i18n.translate('Polaris.DiscardConfirmationModal.title')}
       open={open}
       onClose={onCancel}
       primaryAction={{
-        content: intl.translate(
+        content: i18n.translate(
           'Polaris.DiscardConfirmationModal.primaryAction',
         ),
         destructive: true,
@@ -30,7 +30,7 @@ export function DiscardConfirmationModal({
       }}
       secondaryActions={[
         {
-          content: intl.translate(
+          content: i18n.translate(
             'Polaris.DiscardConfirmationModal.secondaryAction',
           ),
           onAction: onCancel,
@@ -38,7 +38,7 @@ export function DiscardConfirmationModal({
       ]}
       sectioned
     >
-      {intl.translate('Polaris.DiscardConfirmationModal.message')}
+      {i18n.translate('Polaris.DiscardConfirmationModal.message')}
     </Modal>
   );
 }

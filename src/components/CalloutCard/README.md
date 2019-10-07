@@ -48,7 +48,7 @@ Callout cards should:
 
 ### Title
 
-Callout card titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
+Callout card titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 

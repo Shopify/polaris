@@ -188,9 +188,7 @@ class DropZone extends React.Component<CombinedProps, State> {
     super(props);
 
     const {
-      polaris: {
-        intl: {translate},
-      },
+      polaris: {intl},
       type,
     } = props;
     const suffix = capitalize(type);
@@ -200,10 +198,12 @@ class DropZone extends React.Component<CombinedProps, State> {
       id: props.id || getUniqueID(),
       dragging: false,
       error: false,
-      errorOverlayText: translate(`Polaris.DropZone.errorOverlayText${suffix}`),
+      errorOverlayText: intl.translate(
+        `Polaris.DropZone.errorOverlayText${suffix}`,
+      ),
       focused: false,
       numFiles: 0,
-      overlayText: translate(`Polaris.DropZone.overlayText${suffix}`),
+      overlayText: intl.translate(`Polaris.DropZone.overlayText${suffix}`),
       size: 'extraLarge',
       type,
     };
