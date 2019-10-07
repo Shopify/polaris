@@ -20,6 +20,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed `BulkActions` checkbox losing on selection focus ([#2138](https://github.com/Shopify/polaris-react/pull/2138))
 - Moved rendering of the portal component’s node within the node created by the theme provider component to enable theming through CSS Custom Properties ([#2224](https://github.com/Shopify/polaris-react/pull/2224))
 - Fixed bug which caused the `Popover` overlay to remain in the DOM if it was updated during exiting ([#2246](https://github.com/Shopify/polaris-react/pull/2246))
+- Fixed `Breadcrumbs` to use `accessibilityLabel` prop when passed in ([#2254](https://github.com/Shopify/polaris-react/pull/2254))
 
 ### Documentation
 
