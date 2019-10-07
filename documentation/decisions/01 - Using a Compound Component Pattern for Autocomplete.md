@@ -19,7 +19,7 @@ There is a need for Polaris to provide smaller, more composable components so th
 
 ## Solution
 
-Following an (https://github.com/Shopify/polaris-react/issues/1794)[exploration] we decided to build the Autocomplete using a compound component pattern. We explored various ways to do this:
+Following an [exploration](https://github.com/Shopify/polaris-react/issues/1794), we decided to build the Autocomplete using a compound component pattern. We explored various ways to do this.
 
 1. Having the child delegate rendering to its parent via methods shared through context
 
