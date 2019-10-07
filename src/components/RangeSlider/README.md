@@ -116,7 +116,7 @@ Error messages should:
 
 ### Default range slider
 
-Use range sliders where merchants may need to select a percentage between `0 — 100`.
+Use when a single value between `0 and 100` needs to be selected.
 
 ```jsx
 function RangeSliderExample() {
@@ -128,7 +128,7 @@ function RangeSliderExample() {
   );
 
   return (
-    <Card sectioned>
+    <Card sectioned title="Background color">
       <RangeSlider
         label="Opacity percentage"
         value={rangeValue}
@@ -152,15 +152,15 @@ function RangeSliderExample() {
 
 <!-- /content-for -->
 
-### More precise range control
+### Min and max range control
 
 <!-- example-for: web -->
 
-For a more precise value, you can define a `min` and `max` range, as well as the amount with which the slider will be incremented.
+Use when a single value needs to be selected from a number range with a specific minimum and maximum.
 
 ```jsx
 function RangeSliderWithPreciseRangeControlExample() {
-  const [rangeValue, setRangeValue] = useState(5);
+  const [rangeValue, setRangeValue] = useState(0);
 
   const handleRangeSliderChange = useCallback(
     (value) => setRangeValue(value),
@@ -168,12 +168,43 @@ function RangeSliderWithPreciseRangeControlExample() {
   );
 
   return (
-    <Card sectioned>
+    <Card sectioned title="Navigation branding">
       <RangeSlider
+        output
         label="Logo offset"
-        min={-10}
-        max={10}
-        step={5}
+        min={-20}
+        max={20}
+        value={rangeValue}
+        onChange={handleRangeSliderChange}
+      />
+    </Card>
+  );
+}
+```
+
+### Step incremented range control
+
+<!-- example-for: web -->
+
+Use when a single value of a specific increment needs to be selected from a range of numbers.
+
+```jsx
+function RangeSliderWithPreciseRangeControlExample() {
+  const [rangeValue, setRangeValue] = useState(4);
+
+  const handleRangeSliderChange = useCallback(
+    (value) => setRangeValue(value),
+    [],
+  );
+
+  return (
+    <Card sectioned title="Navigation branding">
+      <RangeSlider
+        output
+        label="Logo offset"
+        min={-20}
+        max={20}
+        step={4}
         value={rangeValue}
         onChange={handleRangeSliderChange}
       />
@@ -186,7 +217,9 @@ function RangeSliderWithPreciseRangeControlExample() {
 
 <!-- example-for: web -->
 
-Because a range slider can also output a `label` and `helpText`, the height of the overall component can vary. `prefix` and `suffix` props allow you to pass in a React element to be placed before or after the rendered `input`, allowing for perfect vertical alignment and easier stylistic control.
+Use when the start or end of the range input benefits from additional content.
+
+The height of the range slider component varies based on the presence or absense of props like `label` and `helpText`. Setting a React element on the `prefix` and `suffix` props is supported to enable control of spacing and alignment.
 
 ```jsx
 function RangeSliderWithPrefixAndSuffixExample() {
@@ -203,8 +236,9 @@ function RangeSliderWithPrefixAndSuffixExample() {
   };
 
   return (
-    <Card sectioned>
+    <Card sectioned title="Text color">
       <RangeSlider
+        output
         label="Hue color mix"
         min={0}
         max={360}
@@ -220,7 +254,9 @@ function RangeSliderWithPrefixAndSuffixExample() {
 
 ### Dual thumb range slider
 
-Use a dual thumb range slider when merchants need to select a range of values.
+<!-- example-for: web -->
+
+Use when two values need to be selected from a range of numbers.
 
 ```jsx
 function DualThumbRangeSliderExample() {
@@ -286,19 +322,20 @@ function DualThumbRangeSliderExample() {
     intermediateTextFieldValue[0] === rangeValue[0]
       ? rangeValue[0]
       : intermediateTextFieldValue[0];
+
   const upperTextFieldValue =
     intermediateTextFieldValue[1] === rangeValue[1]
       ? rangeValue[1]
       : intermediateTextFieldValue[1];
 
   return (
-    <Card sectioned>
-      <div style={{marginTop: '20px'}} onKeyDown={handleEnterKeyPress}>
+    <Card sectioned title="Minimum requirements">
+      <div onKeyDown={handleEnterKeyPress}>
         <RangeSlider
+          output
           label="Money spent is between"
           value={rangeValue}
           prefix={prefix}
-          output
           min={min}
           max={max}
           step={step}
