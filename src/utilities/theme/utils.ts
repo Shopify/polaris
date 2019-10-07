@@ -241,6 +241,7 @@ function overrides() {
     [toCssCustomPropertySyntax(
       'criticalBannerBorder',
     )]: 'inset 0 2px 0 0 var(--p-critical-divider), inset 0 0 0 2px var(--p-critical-divider)',
+    [toCssCustomPropertySyntax('badgeMixBlendMode')]: 'luminosity',
   };
 }
 

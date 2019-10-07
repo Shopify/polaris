@@ -34,13 +34,23 @@ $pip-spacing: ($height - $pip-size) / 2;
 .statusSuccess {
   @include pip-color(var(--p-success-icon, color('green', 'dark')));
   background: var(--p-success-surface, color('green', 'light'));
-  color: var(--p-text-on-surface, color('green', 'text'));
+  color: color('green', 'text');
+
+  .Content {
+    color: var(--p-text-on-surface);
+    mix-blend-mode: var(--p-badge-mix-blend-mode);
+  }
 }
 
 .statusInfo {
   @include pip-color(var(--p-highlight-icon, color('blue', 'dark')));
   background-color: var(--p-highlight-surface, color('blue', 'light'));
-  color: var(--p-text-on-surface, color('blue', 'text'));
+  color: color('blue', 'text');
+
+  .Content {
+    color: var(--p-text-on-surface);
+    mix-blend-mode: var(--p-badge-mix-blend-mode);
+  }
 }
 
 .statusAttention {
@@ -52,7 +62,12 @@ $pip-spacing: ($height - $pip-size) / 2;
 .statusWarning {
   @include pip-color(var(--p-warning-icon, color('orange', 'dark')));
   background-color: var(--p-warning-surface, color('orange', 'light'));
-  color: var(--p-text-on-surface, color('orange', 'text'));
+  color: color('orange', 'text');
+
+  .Content {
+    color: var(--p-text-on-surface);
+    mix-blend-mode: var(--p-badge-mix-blend-mode);
+  }
 }
 
 .statusNew {
