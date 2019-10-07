@@ -15,7 +15,7 @@ October 3, 2019
 
 ## Summary
 
-There is a need for Polaris to provide smaller more reusable components so that Polaris can be used by everyone without needing to fork component. The re-development of the Autocomplete component provided an opportunity for exploration.
+There is a need for Polaris to provide smaller, more composable components so that Polaris can be extended without needing to fork components. The re-development of the Autocomplete component provided an opportunity for exploration of the compound component pattern.
 
 ## Solution
 
