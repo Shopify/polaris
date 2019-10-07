@@ -1,4 +1,5 @@
 import React from 'react';
+import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {TextContainer} from 'components';
 import {Key} from '../../../../../types';
@@ -174,6 +175,43 @@ describe('<PopoverOverlay />', () => {
       /PopoverOverlay-entering/,
     );
   });
+
+  it('does not render after exiting when the component is updated during exit', () => {
+    jest.useFakeTimers();
+
+    const popoverOverlay = mountWithAppProvider(
+      <PopoverOverlay
+        active
+        id="PopoverOverlay-1"
+        activator={activator}
+        onClose={noop}
+      >
+        {children}
+      </PopoverOverlay>,
+    );
+
+    // Start exiting
+    close(popoverOverlay);
+
+    // Update before exiting is complete
+    triggerSomeUpdate(popoverOverlay);
+
+    // Run any timers and a final update for changed state
+    jest.runOnlyPendingTimers();
+    popoverOverlay.update();
+
+    expect(popoverOverlay.find(PositionedOverlay)).toHaveLength(0);
+  });
 });
 
 function noop() {}
+
+function close(wrapper: ReactWrapper) {
+  wrapper.setProps({active: false});
+  wrapper.update();
+}
+
+function triggerSomeUpdate(wrapper: ReactWrapper) {
+  wrapper.setProps({fullWidth: true});
+  wrapper.update();
+}
