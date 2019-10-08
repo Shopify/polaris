@@ -1,0 +1,228 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar alkukirjaimilla {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Ladataan"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Ei valmis",
+        "partiallyComplete": "Osittain valmis",
+        "complete": "Valmis"
+      },
+      "STATUS_LABELS": {
+        "info": "Tiedot",
+        "success": "Onnistui",
+        "warning": "Varoitus",
+        "attention": "Huomio",
+        "new": "Uusi"
+      }
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Ladataan"
+    },
+    "Common": {
+      "checkbox": "valintaruutu",
+      "undo": "Kumoa",
+      "cancel": "Peruuta",
+      "newWindowAccessibilityHint": "(avaa uuden ikkunan)",
+      "clear": "Tyhjennä",
+      "close": "Sulje",
+      "submit": "Lähetä",
+      "more": "Lisää"
+    },
+    "ContextualSaveBar": {
+      "save": "Tallenna",
+      "discard": "Hylkää"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "lajittele {direction}:",
+      "navAccessibilityLabel": "Selaa taulukkoa {direction} yksi sarake",
+      "totalsRowHeading": "Yhteenlasketut"
+    },
+    "DatePicker": {
+      "previousMonth": "Näytä edellinen kuukausi, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Näytä seuraava kuukausi, {nextMonth} {nextYear}",
+      "today": "Tänään ",
+      "months": {
+        "january": "Tammikuu",
+        "february": "Helmikuu",
+        "march": "Maaliskuu",
+        "april": "Huhtikuu",
+        "may": "Toukokuu",
+        "june": "Kesäkuu",
+        "july": "Heinäkuu",
+        "august": "Elokuu",
+        "september": "Syyskuu",
+        "october": "Lokakuu",
+        "november": "Marraskuu",
+        "december": "Joulukuu"
+      },
+      "daysAbbreviated": {
+        "monday": "Ma",
+        "tuesday": "Ti",
+        "wednesday": "Ke",
+        "thursday": "To",
+        "friday": "Pe",
+        "saturday": "La",
+        "sunday": "Su"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Hylkää kaikki tallentamattomat muutokset",
+      "message": "Jos hylkäät muutokset, poistat kaikki edellisen tallennuksen jälkeen tekemäsi muokkaukset.",
+      "primaryAction": "Hylkää muutokset",
+      "secondaryAction": "Jatka muokkausta"
+    },
+    "DropZone": {
+      "overlayTextFile": "Pudota lähetettävä tiedosto",
+      "overlayTextImage": "Pudota lähetettävä kuva",
+      "errorOverlayTextFile": "Tiedostotyyppi ei kelpaa",
+      "errorOverlayTextImage": "Kuvan tyyppi ei kelpaa",
+      "FileUpload": {
+        "actionTitleFile": "Lisää tiedosto",
+        "actionTitleImage": "Lisää kuva",
+        "actionHintFile": "tai pudota lähetettävät tiedostot",
+        "actionHintImage": "tai pudota lähetettävät kuvat",
+        "label": "Lataa tiedosto"
+      }
+    },
+    "EmptySearchResult": {
+      "altText": "Tyhjennä hakutulokset"
+    },
+    "Frame": {
+      "skipToContent": "Ohita ja siirry sisältöön",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Sulje navigointi"
+      }
+    },
+    "Icon": {
+      "backdropWarning": "{color} kuvake ei hyväksy taustoja. Kuvakevärit, joissa on tausta, ovat seuraavat: {colorsWithBackDrops}"
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Toiminnat"
+      }
+    },
+    "Filters": {
+      "moreFilters": "Lisää suodattimia",
+      "filter": "{resourceName}-suodatin",
+      "noFiltersApplied": "Suodattimia ei ole käytetty",
+      "cancel": "Peruuta",
+      "done": "Valmis",
+      "clearAllFilters": "Tyhjennä kaikki suodattimet",
+      "clear": "Tyhjennä",
+      "clearLabel": "Tyhjennä {filterName}"
+    },
+    "Modal": {
+      "iFrameTitle": "tekstin merkintä",
+      "modalWarning": "Nämä vaaditut ominaisuudet puuttuvat Modalista: {missingProps}"
+    },
+    "Pagination": {
+      "previous": "Edellinen",
+      "next": "Seuraava",
+      "pagination": "Sivunumerointi"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Edistymistietoihin siirretyt arvot eivät saa olla negatiivisia. Palautetaan {progress} arvoon 0.",
+      "exceedWarningMessage": "Edistymistietoihin siirretyt arvot eivät saa olla suurempia kuin 100. Asetetaan {progress} arvoon 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Lajittele:",
+      "defaultItemSingular": "tuote",
+      "defaultItemPlural": "tuotteet",
+      "showing": "Näytetään {itemsCount} {resource}",
+      "loading": "Ladataan {resource}",
+      "selected": "{selectedItemsCount} valittu",
+      "allItemsSelected": "Kaikki {itemsLength}+ {resourceNamePlural} kaupassasi on valittu.",
+      "selectAllItems": "Valitse kaikki {itemsLength}+ {resourceNamePlural} kaupassasi",
+      "emptySearchResultTitle": "{resourceNamePlural} ei löytynyt",
+      "emptySearchResultDescription": "Yritä vaihtaa suodattimia tai hakuehtoa",
+      "selectButtonText": "Valitse",
+      "a11yCheckboxDeselectAllSingle": "Poista valinta {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Valitse {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Poista kaikki valitut {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Valitse kaikki {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} tuote",
+      "ariaLivePlural": "{itemsLength} tuotteet",
+      "Item": {
+        "actionsDropdownLabel": "Kohdetta {accessibilityLabel} koskevat toimenpiteet",
+        "actionsDropdown": "Toiminnat-alasvetovalikko",
+        "viewItem": "Näytä tiedot kohteesta {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Toiminnat",
+        "moreActionsActivatorLabel": "Lisää toimintoja",
+        "warningMessage": "Paremman käyttäjäkokemuksen tarjoamiseksi. Mainostettavia toimintoja saa olla enintään {maxPromotedActions}."
+      },
+      "FilterCreator": {
+        "filterButtonLabel": "Suodata",
+        "selectFilterKeyPlaceholder": "Valitse suodatin…",
+        "addFilterButtonLabel": "Lisää suodatin",
+        "showAllWhere": "Näytä kaikki {resourceNamePlural}, joissa:"
+      },
+      "FilterControl": {
+        "textFieldLabel": "Hae {resourceNamePlural}"
+      },
+      "FilterValueSelector": {
+        "selectFilterValuePlaceholder": "Valitse suodatin…"
+      },
+      "DateSelector": {
+        "dateFilterLabel": "Valitse arvo",
+        "dateValueLabel": "Päivämäärä",
+        "dateValueError": "Noudata muotoa VVVV-KK-PP",
+        "dateValuePlaceholder": "VVVV-KK-PP",
+        "SelectOptions": {
+          "PastWeek": "viime viikolla",
+          "PastMonth": "viime kuussa",
+          "PastQuarter": "viimeisten kolmen kuukauden aikana",
+          "PastYear": "viime vuonna",
+          "ComingWeek": "ensi viikolla",
+          "ComingMonth": "ensi kuussa",
+          "ComingQuarter": "seuraavien kolmen kuukauden aikana",
+          "ComingYear": "ensi vuonna",
+          "OnOrBefore": "päivänä tai sitä ennen",
+          "OnOrAfter": "päivänä tai sen jälkeen"
+        },
+        "FilterLabelForValue": {
+          "past_week": "viime viikolla",
+          "past_month": "viime kuussa",
+          "past_quarter": "viimeisten kolmen kuukauden aikana",
+          "past_year": "viime vuonna",
+          "coming_week": "ensi viikolla",
+          "coming_month": "ensi kuussa",
+          "coming_quarter": "seuraavien kolmen kuukauden aikana",
+          "coming_year": "ensi vuonna",
+          "on_or_before": "ennen {date}",
+          "on_or_after": "jälkeen {date}"
+        }
+      }
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Sivu latautuu"
+    },
+    "Spinner": {
+      "warningMessage": "Väriä {color} ei ole tarkoitus käyttää koon {size} spinnereissä. Suurten spinnerien värit ovat: {colors}"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "Lisää välilehtiä"
+    },
+    "Tag": {
+      "ariaLabel": "Poista {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} merkkiä",
+      "characterCountWithMaxLength": "{count} / {limit} merkistä käytetty"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Vaihda valikkoa",
+      "SearchField": {
+        "clearButtonLabel": "Tyhjennä",
+        "search": "Hae"
+      }
+    }
+  }
+}
