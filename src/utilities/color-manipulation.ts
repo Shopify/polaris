@@ -1,3 +1,4 @@
+import {clamp} from '@shopify/javascript-utilities/math';
 import {HSLColor, HSBColor} from './color-types';
 
 export function lightenColor(color: HSLColor | string, lighten = 0) {
@@ -8,7 +9,7 @@ export function lightenColor(color: HSLColor | string, lighten = 0) {
   const {lightness} = color;
   const nextLightness = lightness + lighten;
 
-  return {...color, lightness: nextLightness};
+  return {...color, lightness: clamp(nextLightness, 0, 100)};
 }
 
 export function darkenColor(color: HSLColor | string, lighten = 0) {
@@ -19,7 +20,7 @@ export function darkenColor(color: HSLColor | string, lighten = 0) {
   const {lightness} = color;
   const nextLightness = lightness - lighten;
 
-  return {...color, lightness: nextLightness};
+  return {...color, lightness: clamp(nextLightness, 0, 100)};
 }
 
 export function saturateColor(

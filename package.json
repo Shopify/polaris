@@ -1,11 +1,11 @@
 {
   "name": "@joinarthur/polaris",
   "description": "Shopify’s product component library",
-  "version": "4.4.0-fork.0",
+  "version": "4.5.0-fork.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
-  "homepage": "https://github.com/Shopify/polaris-react#readme",
+  "homepage": "https://polaris.shopify.com/components",
   "repository": "https://github.com/Shopify/polaris-react",
   "bugs": {
     "url": "https://github.com/Shopify/polaris-react/issues"

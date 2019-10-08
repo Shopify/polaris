@@ -42,12 +42,12 @@ export function FilterControl({
     'Deprecation: <FilterControl /> is deprecated. Use <Filters /> instead.',
   );
 
-  const intl = useI18n();
+  const i18n = useI18n();
   const {selectMode, resourceName} = React.useContext(ResourceListContext);
 
   const filterResourceName = resourceName || {
-    singular: intl.translate('Polaris.ResourceList.defaultItemSingular'),
-    plural: intl.translate('Polaris.ResourceList.defaultItemPlural'),
+    singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
+    plural: i18n.translate('Polaris.ResourceList.defaultItemPlural'),
   };
 
   const handleAddFilter = React.useCallback(
@@ -106,7 +106,7 @@ export function FilterControl({
 
   const textFieldLabel = placeholder
     ? placeholder
-    : intl.translate('Polaris.ResourceList.FilterControl.textFieldLabel', {
+    : i18n.translate('Polaris.ResourceList.FilterControl.textFieldLabel', {
         resourceNamePlural: filterResourceName.plural.toLocaleLowerCase(),
       });
 
@@ -223,13 +223,13 @@ export function FilterControl({
       if (filter.key === appliedFilter.key) {
         const filterLabelKey = `Polaris.ResourceList.DateSelector.FilterLabelForValue.${appliedFilter.value}`;
 
-        return intl.translationKeyExists(filterLabelKey)
-          ? intl.translate(filterLabelKey)
+        return i18n.translationKeyExists(filterLabelKey)
+          ? i18n.translate(filterLabelKey)
           : appliedFilter.value;
       }
 
       if (appliedFilter.key === filter.maxKey) {
-        return intl.translate(
+        return i18n.translate(
           'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
           {
             date: formatDateForLabelDisplay(appliedFilter.value),
@@ -238,7 +238,7 @@ export function FilterControl({
       }
 
       if (appliedFilter.key === filter.minKey) {
-        return intl.translate(
+        return i18n.translate(
           'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_after',
           {
             date: formatDateForLabelDisplay(appliedFilter.value),

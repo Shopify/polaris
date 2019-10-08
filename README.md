@@ -10,7 +10,7 @@ For more information about creating apps for the Shopify App Store, take a look 
 
 ## Using the React components
 
-While we do offer a CSS-only version, **we strongly recommend using the React versions of our components**. It’s the version that we’ll be using at Shopify. It allows for rich, complex components like Tabs and Popovers, and will not have as many breaking changes as the CSS-only version.
+While we do offer a CSS-only version, **we strongly recommend using the React versions of our components**. It’s the version that we use at Shopify. It allows for rich, complex components like Tabs and Popovers, and will not have as many breaking changes as the CSS-only version.
 
 ### Installation
 
@@ -39,7 +39,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@4.4.0/styles.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.5.0/styles.min.css"
 />
 ```
 
@@ -82,7 +82,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@4.4.0/styles.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.5.0/styles.min.css"
 />
 ```
 

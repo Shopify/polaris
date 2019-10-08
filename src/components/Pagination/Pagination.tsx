@@ -60,12 +60,12 @@ export function Pagination({
   accessibilityLabel,
   label,
 }: PaginationProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
 
   const node: React.RefObject<HTMLElement> = React.createRef();
 
   const navLabel =
-    accessibilityLabel || intl.translate('Polaris.Pagination.pagination');
+    accessibilityLabel || i18n.translate('Polaris.Pagination.pagination');
 
   const className = classNames(styles.Pagination, plain && styles.plain);
 
@@ -81,7 +81,7 @@ export function Pagination({
       className={previousClassName}
       url={previousURL}
       onMouseUp={handleMouseUpByBlurring}
-      aria-label={intl.translate('Polaris.Pagination.previous')}
+      aria-label={i18n.translate('Polaris.Pagination.previous')}
       id="previousURL"
     >
       <Icon source={ArrowLeftMinor} />
@@ -92,7 +92,7 @@ export function Pagination({
       type="button"
       onMouseUp={handleMouseUpByBlurring}
       className={previousClassName}
-      aria-label={intl.translate('Polaris.Pagination.previous')}
+      aria-label={i18n.translate('Polaris.Pagination.previous')}
       disabled={!hasPrevious}
     >
       <Icon source={ArrowLeftMinor} />
@@ -104,7 +104,7 @@ export function Pagination({
       className={nextClassName}
       url={nextURL}
       onMouseUp={handleMouseUpByBlurring}
-      aria-label={intl.translate('Polaris.Pagination.next')}
+      aria-label={i18n.translate('Polaris.Pagination.next')}
       id="nextURL"
     >
       <Icon source={ArrowRightMinor} />
@@ -115,7 +115,7 @@ export function Pagination({
       type="button"
       onMouseUp={handleMouseUpByBlurring}
       className={nextClassName}
-      aria-label={intl.translate('Polaris.Pagination.next')}
+      aria-label={i18n.translate('Polaris.Pagination.next')}
       disabled={!hasNext}
     >
       <Icon source={ArrowRightMinor} />

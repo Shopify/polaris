@@ -13,7 +13,7 @@ export interface CloseButtonProps {
 }
 
 export function CloseButton({title = true, onClick}: CloseButtonProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
 
   const className = classNames(
     styles.CloseButton,
@@ -24,7 +24,7 @@ export function CloseButton({title = true, onClick}: CloseButtonProps) {
     <button
       onClick={onClick}
       className={className}
-      aria-label={intl.translate('Polaris.Common.close')}
+      aria-label={i18n.translate('Polaris.Common.close')}
     >
       <Icon source={MobileCancelMajorMonotone} color="inkLighter" />
     </button>

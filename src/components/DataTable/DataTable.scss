@@ -155,6 +155,11 @@ $breakpoint: 768px;
   border-bottom: border();
 }
 
+.Cell-total-footer {
+  border-top: border();
+  border-bottom: none;
+}
+
 .Footer {
   padding: spacing();
   background: color('sky', 'light');

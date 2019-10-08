@@ -83,7 +83,7 @@ export function Item({
   matchPaths,
   excludePaths,
 }: ItemProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const [expanded, setExpanded] = useState(false);
@@ -116,7 +116,7 @@ export function Item({
   if (isNew) {
     badgeMarkup = (
       <Badge status="new" size="small">
-        {intl.translate('Polaris.Badge.STATUS_LABELS.new')}
+        {i18n.translate('Polaris.Badge.STATUS_LABELS.new')}
       </Badge>
     );
   } else if (typeof badge === 'string') {
