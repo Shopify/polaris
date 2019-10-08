@@ -20,6 +20,4 @@
       border-radius: calc(var(--p-border-radius-base) + 3px);
     }
   }
-
-  @include high-contrast-button-outline;
 }
