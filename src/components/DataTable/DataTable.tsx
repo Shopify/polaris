@@ -32,7 +32,7 @@ export interface DataTableProps {
   headings: string[];
   /** List of numeric column totals, highlighted in the table’s header below column headings. Use empty strings as placeholders for columns with no total. */
   totals?: TableData[];
-  /** Placement of totals row within table, true for t */
+  /** Placement of totals row within table */
   showTotalsInFooter?: boolean;
   /** Lists of data points which map to table body rows. */
   rows: TableData[][];

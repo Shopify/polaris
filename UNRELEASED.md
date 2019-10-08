@@ -10,7 +10,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Added showTotalsFooter prop to `DataTable` for control over placement of Totals row ([#2200](https://github.com/Shopify/polaris-react/pull/2200))
+- Added `showTotalsInFooter` prop to `DataTable` for control over placement of Totals row ([#2200](https://github.com/Shopify/polaris-react/pull/2200))
 - Removed the need for z-indexes in `Icon` ([#2207](https://github.com/Shopify/polaris-react/pull/2207))
 - Added `hasFocusableParent` to `Spinner` ([#2176](https://github.com/Shopify/polaris-react/pull/2176))
 
