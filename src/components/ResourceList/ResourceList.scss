@@ -17,7 +17,7 @@ $item-wrapper-loading-height: rem(64px);
 
 .FiltersWrapper {
   padding: resource-list(header-padding-small)
-    resource-list(header-padding-small) spacing();
+    resource-list(header-padding-small) spacing(tight);
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     padding: spacing();
