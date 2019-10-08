@@ -23,15 +23,17 @@ keywords:
 
 # Link
 
-Links take users to another place, and appear either within or directly following a sentence.
+Links take users to another place, and usually appear within or directly following a sentence.
 
-For actions that don't appear with a sentence, use the [button component](/components/actions/button).
+For actions that aren't related to navigation, use the [button component](/components/actions/button).
 
 ## Best practices
 
 ### Buttons versus links
 
-Links should appear either within or directly following a sentence. For actions that don't appear with a sentence, use the [button component](/components/actions/button).
+Links are used primarily for navigation, and usually appear within or directly following a sentence.
+
+Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as "view shipping settings".
 
 The HTML for buttons and links carries specific meaning. Using these components intentionally and consistently results in:
 
@@ -41,11 +43,7 @@ The HTML for buttons and links carries specific meaning. Using these components 
 
 ### Unstyled links
 
-If the existing styled links won't work for your project, then use an `UnstyledLink` to create a custom link style.
-
-Unstyled links should:
-
-- best practices for unstyled links
+If the existing styled links aren't suitable for your project, then use an `UnstyledLink` to create a custom link style.
 
 ---
 

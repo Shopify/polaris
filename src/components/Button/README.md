@@ -30,7 +30,7 @@ keywords:
 
 # Button
 
-Buttons are used to perform an action or take users to another place with one click, tap, or keypress.
+Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as "view shipping settings".
 
 For navigational actions that appear within or directly following a sentence, use the [link component](/components/navigation/link).
 
@@ -50,7 +50,9 @@ Buttons should:
 
 ### Buttons versus links
 
-Buttons shouldn't appear within or directly following a sentence. For navigational actions that appear with a sentence, use the [link component](/components/navigation/link).
+Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as "view shipping settings".
+
+Links are used primarily for navigation, and usually appear within or directly following a sentence.
 
 The HTML for buttons and links carries specific meaning. Using these components intentionally and consistently results in:
 
