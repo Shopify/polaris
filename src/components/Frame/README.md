@@ -182,7 +182,7 @@ function FrameExample() {
       placeholder="Search"
     />
   );
-  console.log(mobileNavigationActive);
+
   const topBarMarkup = (
     <TopBar
       showNavigationToggle
