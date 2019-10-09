@@ -325,13 +325,14 @@ export function colorToHsla(color: string): HSLAColor {
   }
 }
 
-export function normalizeValue(value: string) {
+export function normalizeColorString(value: string) {
   return value.toLowerCase().replace(/\s/g, '');
 }
 
-export function hexToHsb(hex: string) {
-  return rgbToHsb(hexToRgb(hex));
-}
+export const hexToHsb: (hex: string) => HSBColor = compose(
+  rgbToHsb,
+  hexToRgb,
+);
 
 export function expandHex(hex: string) {
   if (hex.length === 4) {
@@ -341,12 +342,12 @@ export function expandHex(hex: string) {
 }
 
 export function nameToHex(value: string) {
-  const hex = nameHexMap[normalizeValue(value)];
+  const hex = nameHexMap[normalizeColorString(value)];
   return expandHex(`#${hex}`);
 }
 
 export function rgbStringToHex(value: string) {
-  const rgb = normalizeValue(value).match(
+  const rgb = normalizeColorString(value).match(
     RGB_STRING_TO_HEX_REGEX,
   ) as RegExpMatchArray;
   return rgbToHex({

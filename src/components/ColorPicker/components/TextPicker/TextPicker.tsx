@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {HSBColor} from '../../../../utilities/color-types';
 import {
-  normalizeValue,
+  normalizeColorString,
   expandHex,
   hsbToHex,
+  hsbToString,
   rgbStringToHex,
   nameToHex,
   hexToHsb,
@@ -16,97 +17,34 @@ import {
   isHashlessHex,
   isRgbString,
 } from '../../../../utilities/color-validation';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../../../utilities/with-app-provider';
+import {useI18n} from '../../../../utilities/i18n';
 import {TextField} from '../../../TextField';
-import {SwatchBackground} from '../SwatchBackground';
 import styles from '../../ColorPicker.scss';
 
 export interface TextPickerProps {
+  /** The currently selected color */
   color: HSBColor;
+  /** Allow user to select an alpha value */
   allowAlpha?: boolean;
+  /** Callback when value is changed */
   onChange(hex: string): void;
 }
 
-type CombinedProps = TextPickerProps & WithAppProviderProps;
+export function TextPicker({color, allowAlpha, onChange}: TextPickerProps) {
+  const i18n = useI18n();
 
-interface State {
-  valueHasBeenUpdatedOnce: boolean;
-  value: string;
-  lastValidValue: string;
-  color: TextPickerProps['color'];
-}
+  const [text, setText] = useState('');
+  const [lastValidValue, setLastValidValue] = useState('');
 
-class TextPicker extends React.PureComponent<CombinedProps, State> {
-  static getDerivedStateFromProps(
-    {color: colorProp}: TextPickerProps,
-    {color, value: currentValue}: State,
-  ) {
-    if (colorProp === color) {
-      return null;
-    }
+  const handleTextChange = useCallback((value) => {
+    setText(value);
+  }, []);
 
-    const newValue = hsbToHex(colorProp);
-    const isNewHex = newValue !== hsbToHex(hexToHsb(currentValue));
-    return {
-      value: isNewHex ? newValue : currentValue,
-      color: colorProp,
-    };
-  }
-
-  state: State = {
-    valueHasBeenUpdatedOnce: false,
-    value: hsbToHex(this.props.color),
-    lastValidValue: hsbToHex(this.props.color),
-    color: this.props.color,
-  };
-
-  render() {
-    const {value} = this.state;
-    const {
-      allowAlpha,
-      polaris: {intl},
-    } = this.props;
-    const className = classNames(
-      styles.TextPicker,
-      allowAlpha && styles.AlphaAllowed,
-    );
-    const label = intl.translate(
-      'Polaris.ColorPicker.textPickerAccessibilityLabel',
-    );
-    const valueForDisplay = isHexString(value) ? value.toUpperCase() : value;
-
-    return (
-      <div className={className}>
-        <TextField
-          label={label}
-          labelHidden
-          value={valueForDisplay}
-          onBlur={this.handleBlur}
-          onChange={this.handleTextChange}
-          prefix={this.renderSelectedColorSwatch()}
-          autoComplete={false}
-        />
-      </div>
-    );
-  }
-
-  private handleBlur = () => {
-    const {onChange, color} = this.props;
-    const {value, lastValidValue, valueHasBeenUpdatedOnce} = this.state;
-
-    if (!valueHasBeenUpdatedOnce) {
-      return;
-    }
-
-    const validUserInput = this.coerceToValidUserInput(value);
+  const handleBlur = useCallback(() => {
+    const validUserInput = coerceToValidUserInput(text);
     if (validUserInput) {
-      this.setState({
-        value: validUserInput,
-        lastValidValue: validUserInput,
-      });
+      setText(validUserInput);
+      setLastValidValue(validUserInput);
 
       const colorHasChanged = validUserInput !== hsbToHex(color);
 
@@ -117,17 +55,40 @@ class TextPicker extends React.PureComponent<CombinedProps, State> {
       return;
     }
 
-    this.setState({
-      value: lastValidValue,
-    });
+    setText(lastValidValue);
+  }, [color, lastValidValue, onChange, text]);
+
+  useEffect(() => {
+    const newValue = hsbToHex(color);
+    if (newValue !== hsbToHex(hexToHsb(lastValidValue))) setText(newValue);
+    if (lastValidValue === '') setLastValidValue(newValue);
+  }, [color, lastValidValue]);
+
+  const className = classNames(
+    styles.TextPicker,
+    allowAlpha && styles.AlphaAllowed,
+  );
+  const label = i18n.translate(
+    'Polaris.ColorPicker.textPickerAccessibilityLabel',
+  );
+  const valueForDisplay = isHexString(text) ? text.toUpperCase() : text;
+
+  const renderSelectedColorSwatch = () => {
+    const className = classNames(
+      styles.TextFieldSwatch,
+      allowAlpha && styles.AlphaAllowed,
+    );
+    const style = {backgroundColor: hsbToString(color)};
+
+    return (
+      <div className={className}>
+        <div style={style} className={styles.SwatchBackground} />
+      </div>
+    );
   };
 
-  private handleTextChange = (value: string) => {
-    this.setState({value, valueHasBeenUpdatedOnce: true});
-  };
-
-  private coerceToValidUserInput(value: string) {
-    const normalizedValue = normalizeValue(value);
+  const coerceToValidUserInput = (value: string) => {
+    const normalizedValue = normalizeColorString(value);
     switch (true) {
       case isHexString(normalizedValue):
         return expandHex(normalizedValue);
@@ -140,24 +101,19 @@ class TextPicker extends React.PureComponent<CombinedProps, State> {
       default:
         return null;
     }
-  }
-
-  private renderSelectedColorSwatch = () => {
-    const {color} = this.state;
-    const {allowAlpha} = this.props;
-    const className = classNames(
-      styles.TextFieldSwatch,
-      allowAlpha && styles.AlphaAllowed,
-    );
-
-    return (
-      <div className={className}>
-        <SwatchBackground color={color} />
-      </div>
-    );
   };
-}
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<TextPickerProps>()(TextPicker);
+  return (
+    <div className={className}>
+      <TextField
+        label={label}
+        labelHidden
+        value={valueForDisplay}
+        onBlur={handleBlur}
+        onChange={handleTextChange}
+        prefix={renderSelectedColorSwatch()}
+        autoComplete={false}
+      />
+    </div>
+  );
+}

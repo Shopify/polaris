@@ -1,4 +1,5 @@
 import React from 'react';
+import {clamp} from '@shopify/javascript-utilities/math';
 
 import {HSBColor} from '../../../../utilities/color-types';
 import {
@@ -74,12 +75,9 @@ class AlphaField extends React.PureComponent<CombinedProps, State> {
     const {onChange, alpha} = this.props;
     const {percentage} = this.state;
 
-    let roundedValue = Math.round(percentage);
+    const roundedValue = clamp(Math.round(percentage), 0, 100);
 
     if (roundedValue !== null) {
-      if (roundedValue > 100) {
-        roundedValue = 100;
-      }
       this.setState({
         percentage: roundedValue,
       });
