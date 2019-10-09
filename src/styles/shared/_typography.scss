@@ -72,7 +72,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-button {
   font-size: font-size(button);
-  font-weight: 400;
+  font-weight: var(--p-button-font-weight, 400);
   line-height: line-height(button);
 
   text-transform: initial;
@@ -85,7 +85,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-button-large {
   font-size: font-size(button-large);
-  font-weight: 400;
+  font-weight: var(--p-button-font-weight, 400);
   line-height: line-height(button-large);
 
   text-transform: initial;

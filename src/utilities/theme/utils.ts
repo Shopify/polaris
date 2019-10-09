@@ -228,8 +228,8 @@ function overrides() {
     [toCssCustomPropertySyntax('zero')]: '0',
     [toCssCustomPropertySyntax('buttonFontWeight')]: '500',
     [toCssCustomPropertySyntax('focusRingContent')]: "''",
-    [toCssCustomPropertySyntax('borderRadiusBase')]: '4px',
-    [toCssCustomPropertySyntax('borderRadiusWide')]: '8px',
+    [toCssCustomPropertySyntax('borderRadiusBase')]: rem('4px'),
+    [toCssCustomPropertySyntax('borderRadiusWide')]: rem('8px'),
   };
 }
 
@@ -365,4 +365,9 @@ function parseColors([baseName, colors]: [
   }
 
   return colorPairs;
+}
+
+function rem(px: string) {
+  const baseFontSize = 10;
+  return `${parseInt(px, 10) / baseFontSize}rem`;
 }

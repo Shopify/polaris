@@ -1,0 +1,26 @@
+/// Sets the focus ring for an interactive element
+/// @param {String} $size - The size of the border radius on the focus ring.
+///
+
+@mixin focus-ring($size: 'base') {
+  $offset: rem(1px);
+  $stroke: rem(2px);
+  $position: $offset + $stroke;
+  position: relative;
+
+  &::after {
+    content: var(--p-focus-ring-content, none);
+    position: absolute;
+    top: -$position;
+    right: -$position;
+    bottom: -$position;
+    left: -$position;
+    display: block;
+    border: $stroke solid var(--p-interactive-focus);
+    @if $size == 'wide' {
+      border-radius: calc(var(--p-border-radius-wide) + #{$position});
+    } @else {
+      border-radius: calc(var(--p-border-radius-base) + #{$position});
+    }
+  }
+}

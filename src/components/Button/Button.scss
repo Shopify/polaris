@@ -72,10 +72,14 @@ $spinner-size: rem(20px);
 }
 
 .primary {
+  --p-button-color: var(--p-branded-action);
+  --p-button-color-hover: var(--p-branded-action-hovered);
+  --p-button-color-active: var(--p-branded-action-pressed);
   @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(color('white'));
 
   &.disabled {
+    --p-button-color-disabled: var(--p-branded-action-disabled);
     @include button-filled-disabled(color('indigo'));
   }
 }
