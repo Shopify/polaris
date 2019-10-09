@@ -3,9 +3,10 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {classNames} from '../../../../utilities/css';
 import {HSBColor} from '../../../../utilities/color-types';
 import {
-  normalizeValue,
+  normalizeColorString,
   expandHex,
   hsbToHex,
+  hsbToString,
   rgbStringToHex,
   nameToHex,
   TRANSPARENT,
@@ -19,12 +20,14 @@ import {
 } from '../../../../utilities/color-validation';
 import {useI18n} from '../../../../utilities/i18n';
 import {TextField} from '../../../TextField';
-import {SwatchBackground} from '../SwatchBackground';
 import styles from '../../ColorPicker.scss';
 
 export interface TextPickerProps {
+  /** The currently selected color */
   color: HSBColor;
+  /** Allow user to select an alpha value */
   allowAlpha?: boolean;
+  /** Callback when value is changed */
   onChange(hex: string): void;
 }
 
