@@ -154,7 +154,7 @@ $typography-condensed: em(640px);
 
 @mixin text-emphasis-normal($for-background: null) {
   font-weight: 400;
-  color: color(ink, $for-background: $for-background);
+  color: var(--p-text-on-surface, color(ink, $for-background: $for-background));
 }
 
 @mixin text-breakword {
