@@ -12,7 +12,9 @@ export function buildCustomProperties(
   themeConfig: ThemeConfig,
   globalTheming: boolean,
 ): CustomPropertiesLike {
-  return globalTheming ? buildColors(themeConfig) : buildLegacyColors(themeConfig);
+  return globalTheming
+    ? buildColors(themeConfig)
+    : buildLegacyColors(themeConfig);
 }
 
 export function buildThemeContext(themeConfig: ThemeConfig): Theme {
