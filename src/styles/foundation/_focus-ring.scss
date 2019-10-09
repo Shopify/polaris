@@ -3,21 +3,26 @@
 ///
 
 @mixin focus-ring($size: 'base') {
+  $offset: 1px;
+  $stroke: 2px;
+  $position: $offset + $stroke;
+  $newRadius: 4px;
+  $newWideRadius: 8px;
   position: relative;
 
   &::after {
     content: var(--p-focus-ring-content, none);
     position: absolute;
-    top: rem(-3px);
-    right: rem(-3px);
-    bottom: rem(-3px);
-    left: rem(-3px);
+    top: rem(-$position);
+    right: rem(-$position);
+    bottom: rem(-$position);
+    left: rem(-$position);
     display: block;
-    border: rem(2px) solid var(--p-interactive-focus);
+    border: rem($stroke) solid var(--p-interactive-focus);
     @if $size == 'wide' {
-      border-radius: calc(var(--p-border-radius-wide) + 3px);
+      border-radius: rem($newWideRadius + $position);
     } @else {
-      border-radius: calc(var(--p-border-radius-base) + 3px);
+      border-radius: rem($newRadius + $position);
     }
   }
 }
