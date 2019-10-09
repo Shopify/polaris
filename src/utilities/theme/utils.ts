@@ -14,7 +14,6 @@ export function buildCustomProperties(
 ): CustomPropertiesLike {
   return globalTheming
     ? {
-        ...buildLegacyColors(themeConfig),
         ...buildColors(themeConfig),
       }
     : {
