@@ -5,7 +5,7 @@ import {useIsAfterInitialMount} from './use-is-after-initial-mount';
 /**
  * Similarly to the lifecycle hook componentDidMount, useComponentDidMount
  * will be invoked after the component has mounted, and only the initial mount.
- * @param callback Defines a callback to use invoked once the component has
+ * @param callback Defines a callback to invoke once the component has
  * initially mounted.
  */
 export function useComponentDidMount(callback: EffectCallback) {
