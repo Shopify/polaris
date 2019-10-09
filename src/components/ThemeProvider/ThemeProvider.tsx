@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useEffect} from 'react';
 import {
   ThemeContext,
   ThemeConfig,
@@ -7,8 +7,6 @@ import {
 } from '../../utilities/theme';
 import {themeProvider} from '../shared';
 import {useFeatures} from '../../utilities/features';
-
-import styles from './ThemeProvider.scss';
 
 interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
@@ -28,13 +26,19 @@ export function ThemeProvider({
     [unstableGlobalTheming, themeConfig],
   );
 
+  // We want these values to be `null` instead of `undefined` when not set.
+  // Otherwise, setting a style property to `undefined` does not remove it from the DOM.
+  const backgroundColor = customProperties['--p-surface-background'] || null;
+  const color = customProperties['--p-text-on-surface'] || null;
+
+  useEffect(() => {
+    document.body.style.backgroundColor = backgroundColor;
+    document.body.style.color = color;
+  }, [backgroundColor, color]);
+
   return (
     <ThemeContext.Provider value={theme}>
-      <div
-        style={customProperties}
-        {...themeProvider.props}
-        className={styles.ThemeProvider}
-      >
+      <div style={customProperties} {...themeProvider.props}>
         {children}
       </div>
     </ThemeContext.Provider>
