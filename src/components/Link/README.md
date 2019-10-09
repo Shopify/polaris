@@ -27,6 +27,8 @@ Links take users to another place, and usually appear within or directly followi
 
 For actions that aren't related to navigation, use the [button component](/components/actions/button).
 
+---
+
 ## Best practices
 
 ### Buttons versus links
