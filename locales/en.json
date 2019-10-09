@@ -154,6 +154,7 @@
       "defaultItemSingular": "item",
       "defaultItemPlural": "items",
       "showing": "Showing {itemsCount} {resource}",
+      "showingTotalCount": "Showing {itemsCount} of {totalItemsCount} {resource}",
       "loading": "Loading {resource}",
       "selected": "{selectedItemsCount} selected",
       "allItemsSelected": "All {itemsLength}+ {resourceNamePlural} in your store are selected.",
