@@ -39,7 +39,7 @@ export function isHashlessHex(value: string) {
 }
 
 export function isRgbString(value: string) {
-  return /rgba?\(((25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,\s*?){2}(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,?\s*([01]\.?\d*?)?\)/i.test(
+  return /rgba?\(\s*(0*((25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,\s*?)){2}(0*(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?))\s*,?\s*([01]\.?\d*?)?\s*\)/i.test(
     value,
   );
 }

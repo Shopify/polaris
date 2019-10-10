@@ -1,100 +1,63 @@
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {clamp} from '@shopify/javascript-utilities/math';
 
-import {HSBColor} from '../../../../utilities/color-types';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../../../utilities/with-app-provider';
+import {useI18n} from '../../../../utilities/i18n';
 import {TextField} from '../../../TextField';
 import styles from '../../ColorPicker.scss';
 
 export interface AlphaFieldProps {
-  color: HSBColor;
   alpha: number;
-  onChange(hue: number): void;
+  onChange(alpha: number): void;
 }
 
-type CombinedProps = AlphaFieldProps & WithAppProviderProps;
+export function AlphaField({alpha, onChange}: AlphaFieldProps) {
+  const i18n = useI18n();
 
-interface State {
-  alpha: AlphaFieldProps['alpha'];
-  percentage: number;
-}
+  const initialValue = Math.round(alpha * 100);
+  const [percentage, setPercentage] = useState(
+    initialValue === null ? 0 : initialValue,
+  );
 
-class AlphaField extends React.PureComponent<CombinedProps, State> {
-  static getDerivedStateFromProps(
-    {alpha: alphaProp}: AlphaFieldProps,
-    {alpha}: State,
-  ) {
-    if (alphaProp === alpha) {
-      return null;
-    }
+  const label = i18n.translate(
+    'Polaris.ColorPicker.alphaFieldAccessibilityLabel',
+  );
 
-    return {
-      percentage: alphaProp * 100,
-      alpha: alphaProp,
-    };
-  }
+  useEffect(() => {
+    setPercentage(Math.round(alpha * 100));
+  }, [alpha]);
 
-  state: State = {
-    alpha: this.props.alpha,
-    percentage: this.props.alpha * 100,
-  };
+  const handleTextChange = useCallback((value) => {
+    setPercentage(value);
+  }, []);
 
-  render() {
-    const {percentage} = this.state;
-    const {
-      polaris: {intl},
-    } = this.props;
+  const handleBlur = useCallback(() => {
+    const normalizedPercentage = clamp(percentage, 0, 100);
 
-    const label = intl.translate(
-      'Polaris.ColorPicker.alphaFieldAccessibilityLabel',
-    );
-    const percentageToDisplay = Math.round(percentage).toString();
+    if (normalizedPercentage !== null) {
+      setPercentage(normalizedPercentage);
 
-    return (
-      <div className={styles.AlphaField}>
-        <TextField
-          label={label}
-          labelHidden
-          type="number"
-          value={percentageToDisplay}
-          onBlur={this.handleBlur}
-          min={0}
-          max={100}
-          suffix="%"
-          onChange={this.handleTextChange}
-          autoComplete={false}
-        />
-      </div>
-    );
-  }
-
-  private handleBlur = () => {
-    const {onChange, alpha} = this.props;
-    const {percentage} = this.state;
-
-    const roundedValue = clamp(Math.round(percentage), 0, 100);
-
-    if (roundedValue !== null) {
-      this.setState({
-        percentage: roundedValue,
-      });
-
-      const alphaHasChanged = roundedValue !== alpha * 100;
+      const alphaHasChanged = normalizedPercentage !== alpha * 100;
 
       if (alphaHasChanged) {
-        onChange(roundedValue / 100);
+        onChange(normalizedPercentage / 100);
       }
     }
-  };
+  }, [alpha, onChange, percentage]);
 
-  private handleTextChange = (value: string) => {
-    this.setState({percentage: parseInt(value, 10)});
-  };
+  return (
+    <div className={styles.AlphaField}>
+      <TextField
+        suffix="%"
+        value={percentage.toString()}
+        label={label}
+        labelHidden
+        type="number"
+        autoComplete={false}
+        max={100}
+        min={0}
+        onChange={handleTextChange}
+        onBlur={handleBlur}
+      />
+    </div>
+  );
 }
-
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<AlphaFieldProps>()(AlphaField);

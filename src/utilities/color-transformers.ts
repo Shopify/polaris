@@ -347,9 +347,9 @@ export function nameToHex(value: string) {
 }
 
 export function rgbStringToHex(value: string) {
-  const rgb = normalizeColorString(value).match(
-    RGB_STRING_TO_HEX_REGEX,
-  ) as RegExpMatchArray;
+  const rgb =
+    normalizeColorString(value).match(RGB_STRING_TO_HEX_REGEX) ||
+    'rgb(0, 0, 0)';
   return rgbToHex({
     red: parseInt(rgb[1], 10),
     green: parseInt(rgb[2], 10),

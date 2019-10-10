@@ -1,3 +1,3 @@
-import AlphaField, {AlphaFieldProps} from './AlphaField';
+import {AlphaField, AlphaFieldProps} from './AlphaField';
 
 export {AlphaField, AlphaFieldProps};
