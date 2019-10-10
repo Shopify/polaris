@@ -14,6 +14,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed issue with `Stack` where a `Stack.Item` was not getting a minimum width ([2273](https://github.com/Shopify/polaris-react/pull/2273))
+
 ### Documentation
 
 - Added accessibility documentation for the drop zone component ([#2243](https://github.com/Shopify/polaris-react/pull/2243))

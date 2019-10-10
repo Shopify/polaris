@@ -680,32 +680,34 @@ function SeparateValidationErrorExample() {
     : '';
 
   const formGroupMarkup = (
-    <Stack wrap={false} alignment="leading" spacing="tight">
+    <Stack wrap={false} alignment="leading" spacing="loose">
       <Stack.Item fill>
-        <Stack distribution="fill" spacing="tight">
-          <Select
-            labelHidden
-            label="Collection rule type"
-            options={['Product type']}
-            value={selectTypeValue}
-            onChange={handleSelectTypeChange}
-          />
-          <Select
-            labelHidden
-            label="Collection rule condition"
-            options={['is equal to']}
-            value={selectConditionValue}
-            onChange={handleSelectConditionChange}
-          />
-          <TextField
-            labelHidden
-            label="Collection rule content"
-            error={isInvalid}
-            id={textFieldID}
-            value={textFieldValue}
-            onChange={handleTextFieldValueChange}
-          />
-        </Stack>
+        <FormLayout>
+          <FormLayout.Group condensed>
+            <Select
+              labelHidden
+              label="Collection rule type"
+              options={['Product type']}
+              value={selectTypeValue}
+              onChange={handleSelectTypeChange}
+            />
+            <Select
+              labelHidden
+              label="Collection rule condition"
+              options={['is equal to']}
+              value={selectConditionValue}
+              onChange={handleSelectConditionChange}
+            />
+            <TextField
+              labelHidden
+              label="Collection rule content"
+              error={isInvalid}
+              id={textFieldID}
+              value={textFieldValue}
+              onChange={handleTextFieldValueChange}
+            />
+          </FormLayout.Group>
+        </FormLayout>
         <div style={{marginTop: '4px'}}>
           <InlineError message={errorMessage} fieldID={textFieldID} />
         </div>
