@@ -85,11 +85,7 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
     );
 
     const alphaFieldMarkup = allowAlpha ? (
-      <AlphaField
-        alpha={alpha}
-        color={color}
-        onChange={this.handleAlphaChange}
-      />
+      <AlphaField alpha={alpha} onChange={this.handleAlphaChange} />
     ) : null;
 
     return (

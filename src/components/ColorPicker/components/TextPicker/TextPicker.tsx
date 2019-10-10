@@ -22,11 +22,8 @@ import {TextField} from '../../../TextField';
 import styles from '../../ColorPicker.scss';
 
 export interface TextPickerProps {
-  /** The currently selected color */
   color: HSBColor;
-  /** Allow user to select an alpha value */
   allowAlpha?: boolean;
-  /** Callback when value is changed */
   onChange(hex: string): void;
 }
 
@@ -106,13 +103,13 @@ export function TextPicker({color, allowAlpha, onChange}: TextPickerProps) {
   return (
     <div className={className}>
       <TextField
+        prefix={renderSelectedColorSwatch()}
+        value={valueForDisplay}
         label={label}
         labelHidden
-        value={valueForDisplay}
-        onBlur={handleBlur}
-        onChange={handleTextChange}
-        prefix={renderSelectedColorSwatch()}
         autoComplete={false}
+        onChange={handleTextChange}
+        onBlur={handleBlur}
       />
     </div>
   );
