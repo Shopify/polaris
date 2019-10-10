@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useEffect} from 'react';
 import {
   ThemeContext,
   ThemeConfig,
@@ -25,6 +25,16 @@ export function ThemeProvider({
     () => buildCustomProperties(themeConfig, unstableGlobalTheming),
     [unstableGlobalTheming, themeConfig],
   );
+
+  // We want these values to be `null` instead of `undefined` when not set.
+  // Otherwise, setting a style property to `undefined` does not remove it from the DOM.
+  const backgroundColor = customProperties['--p-surface-background'] || null;
+  const color = customProperties['--p-text-on-surface'] || null;
+
+  useEffect(() => {
+    document.body.style.backgroundColor = backgroundColor;
+    document.body.style.color = color;
+  }, [backgroundColor, color]);
 
   return (
     <ThemeContext.Provider value={theme}>
