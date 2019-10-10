@@ -133,7 +133,7 @@ function SpinnerWithFocusManagement() {
 
 <!-- content-for: web -->
 
-SVGs are often conveyed inconsistently to assistive technologies. The `Spinner` component's accessibility is also highly contextual. When the parent component is focusable, you'll need to set the `hasFocusableParent` prop for the appropriate `role` attribute to be applied.
+SVGs are often conveyed inconsistently to assistive technologies. The `Spinner` component’s accessibility is also highly contextual. When the parent component is focusable, you’ll need to set the `hasFocusableParent` prop for the appropriate `role` attribute to be applied.
 
 <!-- /content-for-->
 
@@ -156,7 +156,7 @@ The spinner component should:
 
 Spinner accessibility label should:
 
-- Accurately explain the state of the requested action. For example, “Loading”, “Submitting”, “Processing.”
+- Accurately explain the state of the requested action. For example, “Loading”, “Submitting”, “Processing”.
 - Use as few words to describe the state as possible.
 
 ---
