@@ -26,6 +26,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Code quality
 
 - Migrated `DateSelector` to use hooks instead of withAppProvider ([#2193](https://github.com/Shopify/polaris-react/pull/2193))
+- Migrated `Toast` to use hooks ([#2222](https://github.com/Shopify/polaris-react/pull/2222))
 
 ### Deprecations
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
@@ -17,64 +17,14 @@ export const DEFAULT_TOAST_DURATION = 5000;
 
 export const DEFAULT_TOAST_DURATION_WITH_ACTION = 10000;
 
-export class Toast extends React.Component<ToastProps, never> {
-  private timer?: number;
-
-  componentDidUpdate() {
-    this.triggerDismissalTimeout();
-  }
-
-  componentDidMount() {
-    this.triggerDismissalTimeout();
-  }
-
-  componentWillUnmount() {
-    this.clearDismissalTimeout();
-  }
-
-  render() {
-    const {content, onDismiss, error, action} = this.props;
-
-    const dismissMarkup = (
-      <button
-        type="button"
-        className={styles.CloseButton}
-        onClick={onDismiss}
-        testID="closeButton"
-      >
-        <Icon source={MobileCancelMajorMonotone} />
-      </button>
-    );
-
-    const actionMarkup = action ? (
-      <div className={styles.Action}>
-        <Button plain monochrome onClick={action.onAction}>
-          {action.content}
-        </Button>
-      </div>
-    ) : null;
-
-    const className = classNames(styles.Toast, error && styles.error);
-
-    return (
-      <div className={className}>
-        <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
-        {content}
-        {actionMarkup}
-        {dismissMarkup}
-      </div>
-    );
-  }
-
-  private clearDismissalTimeout() {
-    if (this.timer) {
-      window.clearTimeout(this.timer);
-    }
-  }
-
-  private triggerDismissalTimeout() {
-    const {onDismiss, duration, action} = this.props;
-
+export function Toast({
+  content,
+  onDismiss,
+  duration,
+  error,
+  action,
+}: ToastProps) {
+  useEffect(() => {
     let timeoutDuration = duration || DEFAULT_TOAST_DURATION;
 
     if (action && !duration) {
@@ -90,9 +40,40 @@ export class Toast extends React.Component<ToastProps, never> {
       );
     }
 
-    this.clearDismissalTimeout();
-    if (onDismiss != null) {
-      this.timer = window.setTimeout(onDismiss, timeoutDuration);
-    }
-  }
+    const timer = setTimeout(onDismiss, timeoutDuration);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [action, duration, onDismiss]);
+
+  const dismissMarkup = (
+    <button
+      type="button"
+      className={styles.CloseButton}
+      onClick={onDismiss}
+      testID="closeButton"
+    >
+      <Icon source={MobileCancelMajorMonotone} />
+    </button>
+  );
+
+  const actionMarkup = action ? (
+    <div className={styles.Action}>
+      <Button plain monochrome onClick={action.onAction}>
+        {action.content}
+      </Button>
+    </div>
+  ) : null;
+
+  const className = classNames(styles.Toast, error && styles.error);
+
+  return (
+    <div className={className}>
+      <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
+      {content}
+      {actionMarkup}
+      {dismissMarkup}
+    </div>
+  );
 }
