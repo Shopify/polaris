@@ -17,6 +17,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Added accessibility documentation for the drop zone component ([#2243](https://github.com/Shopify/polaris-react/pull/2243))
+- Improved accessibility documentation for the `Spinner` component ([#2258](https://github.com/Shopify/polaris-react/pull/2258))
 
 ### Development workflow
 
