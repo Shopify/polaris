@@ -23,7 +23,7 @@ $nav-max-width: rem(360px);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     max-width: layout-width(nav);
-    border-right: border();
+    border-right: var(--p-none, border());
     @include safe-area-for(max-width, layout-width(nav), left);
   }
 }
@@ -56,23 +56,53 @@ $disabled-fade: 0.6;
 
 .Item-selected {
   font-weight: 600;
-  color: color('indigo', 'dark');
-  background-color: $item-selected-background;
+  color: var(--p-branded-action, color('indigo', 'dark'));
+  background-color: var(--p-branded-selected, $item-selected-background);
   @media (-ms-high-contrast: active) {
     background-color: ms-high-contrast-color('selected-text-background');
   }
   // stylelint-disable selector-max-specificity
   .Icon,
   &:focus .Icon {
-    @include recolor-icon(color('indigo'), color('white'));
+    @include recolor-icon(
+      var(--p-branded-action, color('indigo')),
+      var(--p-transparent, color('white'))
+    );
   }
   // stylelint-enable selector-max-specificity
+
+  &:hover {
+    background-color: var(
+      --p-branded-selected-hovered,
+      $item-selected-background
+    );
+    color: var(--p-branded-action-hovered, color('indigo', 'dark'));
+  }
+  &:focus {
+    color: var(--p-branded-action, color('indigo', 'dark'));
+    @include focus-ring;
+  }
+  &:active {
+    background-color: var(
+      --p-branded-selected-pressed,
+      $item-selected-background
+    );
+    color: var(--p-branded-action-pressed, color('indigo', 'dark'));
+    @include no-focus-ring;
+  }
 }
 
 .Item-disabled {
-  color: color('ink', 'lightest');
+  color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
   pointer-events: none;
-  opacity: $disabled-fade;
+  opacity: var(--p-one, $disabled-fade);
+
+  .Icon {
+    @include recolor-icon(
+      var(--p-icon-disabled-on-surface, color('ink', 'lightest')),
+      var(--p-transparent, color('white'))
+    );
+  }
 }
 
 .Badge {
@@ -111,8 +141,8 @@ $disabled-fade: 0.6;
 
 .SecondaryAction {
   @include recolor-icon(
-    color('ink', 'lightest'),
-    color('white'),
+    var(--p-icon-subdued-on-surface, color('ink', 'lightest')),
+    var(--p-transparent, color('white')),
     filter('ink', 'lightest')
   );
   display: flex;
@@ -120,17 +150,58 @@ $disabled-fade: 0.6;
   height: nav(mobile-height);
   margin-right: spacing(extra-tight);
   padding: spacing(extra-tight) spacing();
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base, border-radius());
 
   @include breakpoint-after(nav-min-window-corrected()) {
     height: nav(desktop-height);
   }
 
-  &:hover,
-  &:focus,
+  &:hover {
+    @include recolor-icon(
+      var(--p-branded-action, color('indigo')),
+      var(--p-transparent, color('white')),
+      filter('indigo')
+    );
+    background-image: var(
+      --p-none,
+      linear-gradient(color(state, hover), color(state, hover))
+    );
+    background-color: var(--p-interactive-neutral-elevation-2);
+  }
+
+  &:focus {
+    @include recolor-icon(
+      var(--p-icon-subdued-on-surface, color('indigo')),
+      var(--p-transparent, color('white')),
+      filter('indigo')
+    );
+    background-image: var(
+      --p-none,
+      linear-gradient(color(state, hover), color(state, hover))
+    );
+    @include focus-ring;
+  }
+
+  &:focus:hover {
+    @include recolor-icon(
+      var(--p-branded-action, color('indigo')),
+      var(--p-transparent, color('white')),
+      filter('indigo')
+    );
+  }
+
   &:active {
-    @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
-    @include state(hover);
+    @include recolor-icon(
+      var(--p-branded-action, color('indigo')),
+      var(--p-transparent, color('white')),
+      filter('indigo')
+    );
+    background-image: var(
+      --p-none,
+      linear-gradient(color(state, hover), color(state, hover))
+    );
+    @include no-focus-ring;
+    background-color: var(--p-interactive-neutral-elevation-3);
   }
 
   &:focus,
@@ -145,7 +216,7 @@ $secondary-item-font-size: rem(15px);
   flex-basis: 100%;
   margin-bottom: spacing(tight);
   margin-left: nav(icon-size) + spacing(loose);
-  overflow-x: hidden;
+  overflow-x: var(--p-visible, hidden);
   @include breakpoint-after(nav-min-window-corrected()) {
     margin-left: nav(icon-size) + spacing();
   }
@@ -156,13 +227,24 @@ $secondary-item-font-size: rem(15px);
     font-size: $secondary-item-font-size;
     font-weight: 400;
     line-height: nav(item-line-height);
-    color: color('ink', 'light');
+    color: var(--p-text-on-surface, color('ink', 'light'));
     &:hover {
-      color: color('indigo', 'dark');
+      color: var(--p-branded-action, color('indigo', 'dark'));
     }
     &:focus {
-      color: color('indigo', 'dark');
+      color: var(--p-text-on-surface, color('indigo', 'dark'));
+      @include focus-ring;
     }
+    // stylelint-disable selector-max-specificity
+    &:focus:hover {
+      color: var(--p-branded-action, color('indigo', 'dark'));
+    }
+    &:active,
+    &:active:hover {
+      color: var(--p-branded-action-pressed, color('indigo', 'dark'));
+      @include no-focus-ring;
+    }
+    // stylelint-enable selector-max-specificity
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: rem(14px);
       line-height: rem(28px);
@@ -179,11 +261,22 @@ $secondary-item-font-size: rem(15px);
   }
   .Item-selected {
     font-weight: 600;
-    color: color('indigo', 'dark');
+    color: var(--p-branded-action, color('indigo', 'dark'));
+    &:hover {
+      color: var(--p-branded-action-hovered, color('indigo', 'dark'));
+    }
+    &:focus {
+      color: var(--p-branded-action, color('indigo', 'dark'));
+      @include focus-ring;
+    }
+    &:active {
+      color: var(--p-branded-action-pressed, color('indigo', 'dark'));
+      @include no-focus-ring;
+    }
   }
   .Item-disabled {
     font-weight: 400;
-    color: color('ink', 'lightest');
+    color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
   }
 }
 
@@ -204,7 +297,7 @@ $secondary-item-font-size: rem(15px);
 }
 
 .Section-withSeparator {
-  border-top: border();
+  border-top: var(--p-border-subdued, border());
 }
 
 .SectionHeading {
@@ -213,13 +306,13 @@ $secondary-item-font-size: rem(15px);
   align-items: center;
   min-height: nav(desktop-nav-height);
   padding-left: spacing();
-  color: color('ink', 'lighter');
+  color: var(--p-text-subdued-on-surface, color('ink', 'lighter'));
 
   .Action {
     @include unstyled-button;
     @include recolor-icon(
-      color('ink', 'lightest'),
-      color('white'),
+      var(--p-icon-subdued-on-surface, color('ink', 'lightest')),
+      var(--p-transparent, color('white')),
       filter('ink', 'lightest')
     );
     display: flex;
@@ -227,18 +320,64 @@ $secondary-item-font-size: rem(15px);
     height: nav(mobile-nav-height);
     margin-right: spacing(extra-tight);
     padding: spacing(extra-tight) spacing();
-    border-radius: border-radius();
-    transition: background-color duration() easing();
+    border-radius: var(--p-border-radius-base, border-radius());
 
     @include breakpoint-after(nav-min-window-corrected()) {
       height: nav(desktop-nav-height);
     }
 
-    &:hover,
-    &:active,
+    &:hover {
+      @include recolor-icon(
+        var(--p-branded-action, color('indigo')),
+        var(--p-transparent, color('white')),
+        filter('indigo')
+      );
+      background-image: var(
+        --p-none,
+        linear-gradient(color(state, hover), color(state, hover))
+      );
+      background-color: var(--p-interactive-neutral-elevation-2);
+    }
+
     &:focus {
-      @include recolor-icon(color('indigo'), null, filter('indigo'));
-      @include state(hover);
+      @include recolor-icon(
+        var(--p-icon-subdued-on-surface, color('indigo')),
+        var(--p-transparent, color('white')),
+        filter('indigo')
+      );
+      background-image: var(
+        --p-none,
+        linear-gradient(color(state, hover), color(state, hover))
+      );
+      @include focus-ring;
+    }
+
+    // stylelint-disable-next-line selector-max-specificity
+    &:focus:hover {
+      @include recolor-icon(
+        var(--p-branded-action, color('indigo')),
+        var(--p-transparent, color('white')),
+        filter('indigo')
+      );
+    }
+
+    &:active {
+      @include recolor-icon(
+        var(--p-branded-action, color('indigo')),
+        var(--p-transparent, color('white')),
+        filter('indigo')
+      );
+      background-image: var(
+        --p-none,
+        linear-gradient(color(state, hover), color(state, hover))
+      );
+      @include no-focus-ring;
+      background-color: var(--p-interactive-neutral-elevation-3);
+    }
+
+    &:focus,
+    &:active {
+      outline: none;
     }
   }
 }
@@ -248,12 +387,17 @@ $secondary-item-font-size: rem(15px);
   @include text-emphasis-subdued;
 
   &:hover {
-    @include recolor-icon(color('indigo'), null, filter('indigo'));
-    color: color('indigo');
+    @include recolor-icon(
+      var(--p-branded-action, color('indigo')),
+      null,
+      filter('indigo')
+    );
+    color: var(--p-branded-action, color('indigo'));
   }
 
   &:focus {
     outline: none;
+    @include focus-ring;
   }
 }
 

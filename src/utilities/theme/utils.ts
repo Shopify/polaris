@@ -166,9 +166,18 @@ function brandedColors(color: HSLAColor, lightSurface: boolean) {
     iconSubduedOnBranded: setLightness(color, 88),
     textOnBranded: setLightness(color, 100),
     textSubduedOnBranded: setLightness(color, 90),
-    brandedSelected: setLightness(color, lightSurface ? 95 : 5),
-    brandedSelectedHovered: setLightness(color, lightSurface ? 81 : 19),
-    brandedSelectedPressed: setLightness(color, lightSurface ? 74 : 26),
+    brandedSelected: setSaturation(
+      setLightness(color, lightSurface ? 95 : 5),
+      30,
+    ),
+    brandedSelectedHovered: setSaturation(
+      setLightness(color, lightSurface ? 81 : 19),
+      22,
+    ),
+    brandedSelectedPressed: setSaturation(
+      setLightness(color, lightSurface ? 74 : 26),
+      22,
+    ),
   };
 }
 
@@ -245,6 +254,11 @@ function overrides() {
     ),
 
     [toCssCustomPropertySyntax('badgeMixBlendMode')]: 'luminosity',
+    [toCssCustomPropertySyntax('one')]: '1',
+    [toCssCustomPropertySyntax('visible')]: 'visible',
+    [toCssCustomPropertySyntax('borderSubdued')]: `${rem(
+      '1px',
+    )} solid var(--p-divider-subdued-on-surface)`,
   };
 }
 
@@ -265,6 +279,13 @@ function toCssCustomPropertySyntax(camelCase: string) {
 function setLightness(
   {hue, saturation, alpha}: HSLAColor,
   lightness: number,
+): HSLAColor {
+  return {hue, saturation, lightness, alpha};
+}
+
+function setSaturation(
+  {hue, lightness, alpha}: HSLAColor,
+  saturation: number,
 ): HSLAColor {
   return {hue, saturation, lightness, alpha};
 }
