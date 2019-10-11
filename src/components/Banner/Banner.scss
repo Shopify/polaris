@@ -51,7 +51,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 @mixin banner-variants($in-page: false) {
   --p-banner-background: var(--p-surface-background);
-  --p-banner-border: var(--p-default-banner-border);
+  --p-banner-border: var(--p-banner-default-border);
   @include banner-attributes(
     var(--p-divider-on-surface, color('ink', 'lighter')),
     color('sky', 'light'),
@@ -61,7 +61,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
   &.statusSuccess {
     --p-banner-background: var(--p-success-surface-subdued);
-    --p-banner-border: var(--p-success-banner-border);
+    --p-banner-border: var(--p-banner-success-border);
     @include banner-attributes(
       var(--p-success-divider, color('green')),
       color('green', 'lighter'),
@@ -72,7 +72,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
   &.statusInfo {
     --p-banner-background: var(--p-highlight-surface-subdued);
-    --p-banner-border: var(--p-highlight-banner-border);
+    --p-banner-border: var(--p-banner-highlight-border);
     @include banner-attributes(
       var(--p-highlight-divider, color('teal')),
       color('teal', 'lighter'),
@@ -83,7 +83,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
   &.statusWarning {
     --p-banner-background: var(--p-warning-surface-subdued);
-    --p-banner-border: var(--p-warning-banner-border);
+    --p-banner-border: var(--p-banner-warning-border);
     @include banner-attributes(
       var(--p-warning-divider, color('yellow')),
       color('yellow', 'lighter'),
@@ -94,7 +94,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
   &.statusCritical {
     --p-banner-background: var(--p-critical-surface-subdued);
-    --p-banner-border: var(--p-critical-banner-border);
+    --p-banner-border: var(--p-banner-critical-border);
     @include banner-attributes(
       var(--p-critical-diviver, color('red')),
       color('red', 'lighter'),

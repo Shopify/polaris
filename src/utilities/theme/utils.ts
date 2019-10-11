@@ -225,22 +225,22 @@ function overrides() {
     [toCssCustomPropertySyntax('focusRingContent')]: "''",
     [toCssCustomPropertySyntax('borderRadiusBase')]: rem('4px'),
     [toCssCustomPropertySyntax('borderRadiusWide')]: rem('8px'),
-    [toCssCustomPropertySyntax('defaultBannerBorder')]: buildBannerBorder(
+    [toCssCustomPropertySyntax('bannerDefaultBorder')]: buildBannerBorder(
       '--p-divider-on-surface',
     ),
-    [toCssCustomPropertySyntax('successBannerBorder')]: buildBannerBorder(
+    [toCssCustomPropertySyntax('bannerSuccessBorder')]: buildBannerBorder(
       '--p-success-divider',
     ),
 
-    [toCssCustomPropertySyntax('highlightBannerBorder')]: buildBannerBorder(
+    [toCssCustomPropertySyntax('bannerHighlightBorder')]: buildBannerBorder(
       '--p-highlight-divider',
     ),
 
-    [toCssCustomPropertySyntax('warningBannerBorder')]: buildBannerBorder(
+    [toCssCustomPropertySyntax('bannerWarningBorder')]: buildBannerBorder(
       '--p-warning-divider',
     ),
 
-    [toCssCustomPropertySyntax('criticalBannerBorder')]: buildBannerBorder(
+    [toCssCustomPropertySyntax('bannerCriticalBorder')]: buildBannerBorder(
       '--p-critical-divider',
     ),
 
