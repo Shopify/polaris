@@ -225,7 +225,6 @@ function overrides() {
     [toCssCustomPropertySyntax('focusRingContent')]: "''",
     [toCssCustomPropertySyntax('borderRadiusBase')]: rem('4px'),
     [toCssCustomPropertySyntax('borderRadiusWide')]: rem('8px'),
-    [toCssCustomPropertySyntax('borderBox')]: 'border-box',
     [toCssCustomPropertySyntax('defaultBannerBorder')]: buildBannerBorder(
       '--p-divider-on-surface',
     ),

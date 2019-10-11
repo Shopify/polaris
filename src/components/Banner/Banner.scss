@@ -10,7 +10,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 @mixin banner-attributes($highlight, $background, $in-page, $tint) {
   transition: box-shadow duration() easing();
   transition-delay: duration(fast);
-  box-sizing: var(--p-border-box, inherit);
   border-radius: var(--p-border-radius-wide, inherit);
   box-shadow: var(--p-banner-border, none);
 
