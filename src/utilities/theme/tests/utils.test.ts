@@ -459,9 +459,9 @@ describe('buildColors', () => {
           '--p-branded-action-disabled': 'hsl(165, 100%, 32%, 1)',
           '--p-branded-action-hovered': 'hsl(165, 100%, 22%, 1)',
           '--p-branded-action-pressed': 'hsl(165, 100%, 15%, 1)',
-          '--p-branded-selected': 'hsl(165, 100%, 95%, 1)',
-          '--p-branded-selected-hovered': 'hsl(165, 100%, 81%, 1)',
-          '--p-branded-selected-pressed': 'hsl(165, 100%, 74%, 1)',
+          '--p-branded-selected': 'hsl(165, 30%, 95%, 1)',
+          '--p-branded-selected-hovered': 'hsl(165, 22%, 81%, 1)',
+          '--p-branded-selected-pressed': 'hsl(165, 22%, 74%, 1)',
         }),
       );
     });
@@ -478,9 +478,9 @@ describe('buildColors', () => {
           '--p-branded-action-disabled': 'hsl(300, 100%, 32%, 1)',
           '--p-branded-action-hovered': 'hsl(300, 100%, 22%, 1)',
           '--p-branded-action-pressed': 'hsl(300, 100%, 15%, 1)',
-          '--p-branded-selected': 'hsl(300, 100%, 95%, 1)',
-          '--p-branded-selected-hovered': 'hsl(300, 100%, 81%, 1)',
-          '--p-branded-selected-pressed': 'hsl(300, 100%, 74%, 1)',
+          '--p-branded-selected': 'hsl(300, 30%, 95%, 1)',
+          '--p-branded-selected-hovered': 'hsl(300, 22%, 81%, 1)',
+          '--p-branded-selected-pressed': 'hsl(300, 22%, 74%, 1)',
         }),
       );
     });
@@ -497,9 +497,9 @@ describe('buildColors', () => {
           '--p-branded-action-disabled': 'hsl(300, 100%, 32%, 1)',
           '--p-branded-action-hovered': 'hsl(300, 100%, 22%, 1)',
           '--p-branded-action-pressed': 'hsl(300, 100%, 15%, 1)',
-          '--p-branded-selected': 'hsl(300, 100%, 5%, 1)',
-          '--p-branded-selected-hovered': 'hsl(300, 100%, 19%, 1)',
-          '--p-branded-selected-pressed': 'hsl(300, 100%, 26%, 1)',
+          '--p-branded-selected': 'hsl(300, 30%, 5%, 1)',
+          '--p-branded-selected-hovered': 'hsl(300, 22%, 19%, 1)',
+          '--p-branded-selected-pressed': 'hsl(300, 22%, 26%, 1)',
         }),
       );
     });
