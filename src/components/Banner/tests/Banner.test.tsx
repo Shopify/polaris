@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {
   CirclePlusMinor,
   CircleAlertMajorTwotone,
@@ -132,16 +132,14 @@ describe('<Banner />', () => {
 
   describe('focus', () => {
     it('exposes a function that allows the banner to be programmatically focused', () => {
-      class Test extends React.Component {
-        banner = React.createRef<any>();
+      function Test() {
+        const banner = useRef<Banner>(null);
 
-        componentDidMount() {
-          this.banner.current.focus();
-        }
+        useEffect(() => {
+          banner.current && banner.current.focus();
+        }, []);
 
-        render() {
-          return <Banner ref={this.banner} status="critical" />;
-        }
+        return <Banner ref={banner} status="critical" />;
       }
 
       const div = mountWithAppProvider(<Test />)

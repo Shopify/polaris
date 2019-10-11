@@ -82,14 +82,12 @@ describe('<Portal />', () => {
       expect(ref.current).not.toBeNull(),
     );
 
-    class PortalParent extends React.Component {
-      render() {
-        return (
-          <Portal onPortalCreated={handlePortalCreated}>
-            <div ref={ref} />
-          </Portal>
-        );
-      }
+    function PortalParent() {
+      return (
+        <Portal onPortalCreated={handlePortalCreated}>
+          <div ref={ref} />
+        </Portal>
+      );
     }
 
     mountWithAppProvider(<PortalParent />);
