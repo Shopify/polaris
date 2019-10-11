@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {Spinner} from 'components';
 import {AlphaField} from '../AlphaField';
 import {TextField} from '../../../../TextField';
 
@@ -57,6 +58,36 @@ describe('<AlphaField />', () => {
         .simulate('blur');
 
       expect(onChangeSpy).toHaveBeenCalledWith(expectedAlpha);
+    });
+  });
+
+  describe('<Spinner />', () => {
+    it('calls onChange with 0.01 when the TextField Spinner up button is pressed', () => {
+      const onChangeSpy = jest.fn();
+      const alphaField = mountWithAppProvider(
+        <AlphaField {...mockProps} onChange={onChangeSpy} />,
+      );
+      const textField = alphaField.find(TextField);
+      const upButton = textField.find('[role="button"]').first();
+
+      upButton.simulate('click');
+      textField.find('input').simulate('blur');
+
+      expect(onChangeSpy).toHaveBeenCalledWith(0.01);
+    });
+
+    it('calls onChange with 0.99 when the TextField Spinner down button is pressed', () => {
+      const onChangeSpy = jest.fn();
+      const alphaField = mountWithAppProvider(
+        <AlphaField alpha={1} onChange={onChangeSpy} />,
+      );
+      const textField = alphaField.find(TextField);
+      const upButton = textField.find('[role="button"]').last();
+
+      upButton.simulate('click');
+      textField.find('input').simulate('blur');
+
+      expect(onChangeSpy).toHaveBeenCalledWith(0.99);
     });
   });
 });
