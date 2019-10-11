@@ -29,6 +29,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Migrated `DateSelector` to use hooks instead of withAppProvider ([#2193](https://github.com/Shopify/polaris-react/pull/2193))
 - Migrated `Toast` to use hooks ([#2222](https://github.com/Shopify/polaris-react/pull/2222))
+- Removed `link`, `theme` and `scrollLockManager` from the object returned by withAppProvider as nothing consumes them any more ([#2277](https://github.com/Shopify/polaris-react/pull/2277))
 
 ### Deprecations
 
