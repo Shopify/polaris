@@ -225,6 +225,26 @@ function overrides() {
     [toCssCustomPropertySyntax('focusRingContent')]: "''",
     [toCssCustomPropertySyntax('borderRadiusBase')]: rem('4px'),
     [toCssCustomPropertySyntax('borderRadiusWide')]: rem('8px'),
+    [toCssCustomPropertySyntax('bannerDefaultBorder')]: buildBannerBorder(
+      '--p-divider-on-surface',
+    ),
+    [toCssCustomPropertySyntax('bannerSuccessBorder')]: buildBannerBorder(
+      '--p-success-divider',
+    ),
+
+    [toCssCustomPropertySyntax('bannerHighlightBorder')]: buildBannerBorder(
+      '--p-highlight-divider',
+    ),
+
+    [toCssCustomPropertySyntax('bannerWarningBorder')]: buildBannerBorder(
+      '--p-warning-divider',
+    ),
+
+    [toCssCustomPropertySyntax('bannerCriticalBorder')]: buildBannerBorder(
+      '--p-critical-divider',
+    ),
+
+    [toCssCustomPropertySyntax('badgeMixBlendMode')]: 'luminosity',
   };
 }
 
@@ -365,4 +385,10 @@ function parseColors([baseName, colors]: [
 function rem(px: string) {
   const baseFontSize = 10;
   return `${parseInt(px, 10) / baseFontSize}rem`;
+}
+
+function buildBannerBorder(cssVar: string) {
+  return `inset 0 ${rem('2px')} 0 0 var(${cssVar}), inset 0 0 0 ${rem(
+    '2px',
+  )} var(${cssVar})`;
 }
