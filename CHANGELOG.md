@@ -70,7 +70,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 ### Code quality
 
 - Added `MediaQueryProvider` to ease the use of media queries and reduce duplication ([#2117](https://github.com/Shopify/polaris-react/pull/2117))
-- Migrated `Tab` to use hooks instead of `withAppProvider` ([#2096](https://github.com/Shopify/polaris-react/pull/2096))
+- Migrated `Tab` to use hooks instead of `withAppProvider` ([#2123](https://github.com/Shopify/polaris-react/pull/2123))
 
 ### Development workflow
 
