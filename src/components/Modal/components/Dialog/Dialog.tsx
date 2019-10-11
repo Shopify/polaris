@@ -16,6 +16,7 @@ export interface BaseDialogProps {
   children?: React.ReactNode;
   limitHeight?: boolean;
   large?: boolean;
+  fixedToBottom?: boolean;
   onClose(): void;
   onEntered?(): void;
   onExited?(): void;
@@ -32,14 +33,20 @@ export function Dialog({
   onEntered,
   large,
   limitHeight,
+  fixedToBottom,
   ...props
 }: DialogProps) {
   const containerNode = useRef<HTMLDivElement>(null);
   const findDOMNode = useCallback(() => containerNode.current, []);
-  const classes = classNames(
+  const dialogContainerClasses = classNames(
+    styles.Container,
+    fixedToBottom && styles.fixedToBottom,
+  );
+  const dialogClasses = classNames(
     styles.Modal,
     large && styles.sizeLarge,
     limitHeight && styles.limitHeight,
+    fixedToBottom && styles.fixedToBottom,
   );
   const TransitionChild = instant ? Transition : FadeUp;
 
@@ -54,14 +61,14 @@ export function Dialog({
       onExited={onExited}
     >
       <div
-        className={styles.Container}
+        className={dialogContainerClasses}
         data-polaris-layer
         data-polaris-overlay
         ref={containerNode}
       >
         <TrapFocus>
           <div
-            className={classes}
+            className={dialogClasses}
             role="dialog"
             aria-labelledby={labelledBy}
             tabIndex={-1}

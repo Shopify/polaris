@@ -21,6 +21,12 @@ $large-width: rem(980px);
   @include breakpoint-after(layout-width(page-with-nav)) {
     justify-content: center;
   }
+
+  &.fixedToBottom {
+    @include breakpoint-after(layout-width(page-with-nav)) {
+      justify-content: flex-end;
+    }
+  }
 }
 
 .Modal {
@@ -53,6 +59,13 @@ $large-width: rem(980px);
     max-width: $small-width;
     margin: 0 auto;
     border-radius: border-radius(large);
+  }
+
+  &.fixedToBottom {
+    @include breakpoint-after(layout-width(page-with-nav)) {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 
   &.limitHeight {
