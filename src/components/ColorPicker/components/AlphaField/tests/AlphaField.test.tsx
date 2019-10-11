@@ -41,7 +41,7 @@ describe('<AlphaField />', () => {
       expect(onChangeSpy).toHaveBeenCalledWith(expectedAlpha);
     });
 
-    it('calls onChange with the 1 when percentage value over 100 is set', () => {
+    it('calls onChange with alpha value of 1 when percentage value over 100 is set', () => {
       const onChangeSpy = jest.fn();
       const alphaField = mountWithAppProvider(
         <AlphaField {...mockProps} onChange={onChangeSpy} />,
