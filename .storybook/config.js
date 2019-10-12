@@ -7,11 +7,12 @@ import {
   storiesOf,
 } from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
+import {withContexts} from '@storybook/addon-contexts/react';
 import {create} from '@storybook/theming';
 import tokens from '@shopify/polaris-tokens';
 import {AppProvider} from '../src';
 import {Playground} from '../playground/Playground';
-import en from '../locales/en.json';
+import enTranslations from '../locales/en.json';
 
 addParameters({
   options: {
@@ -29,27 +30,63 @@ addParameters({
       // SEE https://github.com/storybooks/storybook/blob/next/docs/src/pages/configurations/theming/index.md
     }),
   },
-  backgrounds: [
-    {name: 'Sky Light', value: tokens.colorSkyLight, default: true},
-    {name: 'White', value: '#fff'},
-  ],
   percy: {
     skip: true,
     widths: [375, 1280],
   },
 });
 
-addDecorator(function StrictModeDecorator(story) {
-  return <React.StrictMode>{story()}</React.StrictMode>;
+addDecorator(function PaddingDecorator(story) {
+  return <div style={{padding: '8px'}}>{story()}</div>;
 });
 
-addDecorator(function AppProviderDecorator(story) {
-  return (
-    <div style={{padding: '8px'}}>
-      <AppProvider i18n={en}>{story()}</AppProvider>
-    </div>
-  );
-});
+function StrictModeToggle({isStrict = false, children}) {
+  const Wrapper = isStrict ? React.StrictMode : React.Fragment;
+  return <Wrapper>{children}</Wrapper>;
+}
+
+addDecorator(
+  withContexts([
+    {
+      icon: 'dashboard',
+      title: 'Strict Mode',
+      components: [StrictModeToggle],
+      params: [
+        {name: 'React Strict Mode On', default: true, props: {isStrict: true}},
+        {name: 'React Strict Mode Off', props: {isStrict: false}},
+      ],
+    },
+    {
+      icon: 'paintbrush',
+      title: 'Themes',
+      components: [AppProvider],
+      params: [
+        {name: 'Base Theming', default: true, props: {i18n: enTranslations}},
+        {
+          name: 'Global Theming Enabled - Light Mode',
+          props: {
+            i18n: enTranslations,
+            features: {
+              unstableGlobalTheming: true,
+              theme: {UNSTABLE_colors: {surface: '#FAFAFA'}},
+            },
+          },
+        },
+        {
+          name: 'Global Theming Enabled - Dark Mode',
+          props: {
+            i18n: enTranslations,
+            features: {unstableGlobalTheming: true},
+            theme: {
+              colors: {topBar: {background: '#357997'}},
+              UNSTABLE_colors: {surface: '#111213'},
+            },
+          },
+        },
+      ],
+    },
+  ]),
+);
 
 // addon-console
 setConsoleOptions((opts) => {
