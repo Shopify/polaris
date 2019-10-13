@@ -165,7 +165,7 @@ The `Modal.Dialog` subcomponent has been removed. This was an undocumented subco
 
 ### Navigation <a name="polaris-navigation"></a>
 
-The `Navigation.UserMenu` subcomponent has been removed. Pass a `TopBar.UserMenu` into `TopBar`'s `userMenu` prop instead.
+The `Navigation.UserMenu` subcomponent has been removed. Pass a `TopBar.UserMenu` into `TopBar`’s `userMenu` prop instead.
 
 The `iconBody` prop has been removed from the `Navigation.Item` subcomponent. Pass a string or React Component into the `icon` prop instead.
 
