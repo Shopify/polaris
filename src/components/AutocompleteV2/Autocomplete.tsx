@@ -1,82 +1,42 @@
-import React, {
-  useState,
-  useRef,
-  useContext,
-  useEffect,
-  useReducer,
-} from 'react';
+import React, {useState, useRef, useContext, useEffect} from 'react';
 import {useUniqueId} from '../../utilities/unique-id';
 import {elementChildren, isElementOfType} from '../../utilities/components';
 import {Key} from '../../types';
+import {scrollable} from '../shared';
 import {classNames} from '../../utilities/css';
 
 import {KeypressListener} from '../KeypressListener';
 import {TextFieldProps} from '../TextField';
 import {Popover} from '../Popover';
+import {EventListener} from '../EventListener';
 import styles from './Autocomplete.scss';
 
 export interface AutocompleteProps {
   id?: string;
   children: React.ReactNode;
   textfield: React.ReactElement<TextFieldProps>;
-  allowMultiple: boolean;
-  autoFill: boolean;
-  highlightMatches: boolean;
+  allowMultiple?: boolean;
+  autoFill?: boolean;
+  highlightMatches?: boolean;
 }
 
 interface AutocompleteContextType {
-  activeDescendant?: string;
   allowMultiple?: boolean;
-  dispatchAction(action: Actions): void;
   highlightMatches?: boolean;
-  textfieldId?: string;
-  textFieldValue?: string;
-  listBoxId?: string;
+  autoFill?: boolean;
+  activeDescendant: string;
+  setActiveDescendant(id: string): void;
+  textfieldId: string;
+  setTextFieldId(id: string): void;
+  textfieldValue: string;
+  setTextFieldValue(value: string): void;
+  listBoxId: string;
+  onSelect(): void;
 }
-
-enum AutoCompleteAction {
-  TextFieldValueChange = 'TEXTFIELD_VALUE_CHANGE',
-  SetTextFieldId = 'SET_TEXTFIELD_ID',
-  SetActiveDescendant = 'SET_ACTIVE_DESCENDANT',
-}
-
-type Actions =
-  | {type: AutoCompleteAction.TextFieldValueChange; value: string}
-  | {type: AutoCompleteAction.SetTextFieldId; id: string}
-  | {type: AutoCompleteAction.SetActiveDescendant; value: string};
 
 const AutocompleteContext = React.createContext<AutocompleteContextType | null>(
   null,
 );
-
-function autoCompleteReducer(state: AutocompleteContextType, action: Actions) {
-  switch (action.type) {
-    case AutoCompleteAction.TextFieldValueChange: {
-      return {...state, textFieldValue: action.value};
-    }
-    case AutoCompleteAction.SetActiveDescendant: {
-      return {...state, activeDescendant: action.value};
-    }
-    case AutoCompleteAction.SetTextFieldId: {
-      return {...state, textfieldId: action.id};
-    }
-    default: {
-      throw new Error(`Unhandled action type: ${action}`);
-    }
-  }
-}
-
-// const AutocompleteContextProvider = ({children}: any) => {
-//   const [state, dispatchAction] = useReducer(autoCompleteReducer, {
-//     textFieldValue: '',
-//   });
-//   const value = {state, dispatchAction};
-//   return (
-//     <AutocompleteContext.Provider value={value}>
-//       {children}
-//     </AutocompleteContext.Provider>
-//   );
-// };
 
 function useAutocompleteContext() {
   const context = React.useContext(AutocompleteContext);
@@ -96,27 +56,45 @@ export function Autocomplete({
 }: AutocompleteProps) {
   const [popoverActive, setPopoverActive] = useState(false);
   const listBoxId = useUniqueId('listBox');
-  const initialContextValue = {
-    activeDescendant: '',
+  const [activeDescendant, setActiveDescendant] = useState('');
+  const [textfieldValue, setTextFieldValue] = useState('');
+  const [textfieldId, setTextFieldId] = useState(useUniqueId('textfieldId'));
+  const textFieldWrapperRef = useRef<HTMLDivElement>(null);
+
+  const handleSelect = () => {
+    focusInput();
+    if (allowMultiple) return;
+    setPopoverActive(false);
+  };
+
+  const contextValue: AutocompleteContextType = {
+    activeDescendant,
+    setActiveDescendant,
+    textfieldValue,
+    setTextFieldValue,
+    textfieldId,
+    setTextFieldId,
     allowMultiple,
     highlightMatches,
-    textfieldId: useUniqueId('textfieldId'),
-    textFieldValue: '',
     listBoxId,
+    onSelect: handleSelect,
   };
 
-  const [reducerState, dispatchAction] = useReducer(autoCompleteReducer, {
-    ...initialContextValue,
-    dispatchAction: () => null,
-  });
+  const hasChildren = React.Children.toArray(children).length > 0;
 
   const handleFocus = () => {
-    // TODO: If there's a LISTBox as child
-    setPopoverActive(true);
+    if (hasChildren && !popoverActive) {
+      setPopoverActive(true);
+    }
   };
 
-  const handleBlur = () => {
-    // TODO: if not clicking on the popover () (clicking scrollbar blurs)
+  const handleKeyUp = () => {
+    if (hasChildren && !popoverActive) {
+      setPopoverActive(true);
+    }
+  };
+
+  const handleClose = () => {
     setPopoverActive(false);
   };
 
@@ -128,11 +106,28 @@ export function Autocomplete({
       aria-haspopup="listbox"
       aria-controls={listBoxId}
       onFocus={handleFocus}
-      onBlur={handleBlur}
+      onKeyUp={handleKeyUp}
+      ref={textFieldWrapperRef}
+      tabIndex={0}
     >
       {textfield}
     </div>
   );
+
+  const focusInput = () => {
+    const input =
+      textFieldWrapperRef &&
+      textFieldWrapperRef.current &&
+      textFieldWrapperRef.current.querySelector('input');
+
+    if (input) input.focus();
+  };
+
+  const handleStopScroll = ({target}: MouseEvent) => {
+    if ((target as HTMLElement).matches(scrollable.selector)) {
+      focusInput();
+    }
+  };
 
   const listBoxMarkup =
     React.Children.toArray(children).length > 0 ? (
@@ -142,18 +137,18 @@ export function Autocomplete({
   const popover = (
     <Popover
       active={popoverActive}
-      onClose={() => null}
+      onClose={handleClose}
       activator={textfieldMarkup}
       preventAutofocus
       fullWidth
     >
+      <EventListener event="mouseup" handler={handleStopScroll} />
       {listBoxMarkup}
     </Popover>
   );
 
-  const value = {reducerState, dispatchAction};
   return (
-    <AutocompleteContext.Provider value={value}>
+    <AutocompleteContext.Provider value={contextValue}>
       {popover}
     </AutocompleteContext.Provider>
   );
@@ -176,14 +171,13 @@ export function ListBox({children, onSelect}: ListBoxProps) {
   const listBoxClassName = classNames(styles.ListBox);
   const [keyboardFocusedOption, setKeyboardFocusedOption] = useState();
   const [navigableOptions, setNavigableOptions] = useState([] as string[]);
-  const autoCompleteContext = useAutocompleteContext();
+  const {
+    setActiveDescendant,
+    onSelect: contextOnSelect,
+  } = useAutocompleteContext();
 
   if (keyboardFocusedOption) {
-    autoCompleteContext &&
-      autoCompleteContext.dispatchAction({
-        type: AutoCompleteAction.SetActiveDescendant,
-        value: keyboardFocusedOption,
-      });
+    setActiveDescendant(keyboardFocusedOption);
   }
 
   const totalOptions = useRef<number>(navigableOptions.length);
@@ -207,6 +201,13 @@ export function ListBox({children, onSelect}: ListBoxProps) {
 
   const onItemClick = (value: string) => {
     onSelect && onSelect(value);
+    contextOnSelect && contextOnSelect();
+  };
+
+  const handleEnter = (evt: KeyboardEvent) => {
+    evt.preventDefault();
+    onSelect && onSelect(keyboardFocusedOption);
+    contextOnSelect && contextOnSelect();
   };
 
   const listBoxContext = {
@@ -242,11 +243,6 @@ export function ListBox({children, onSelect}: ListBoxProps) {
     }
   };
 
-  const handleEnter = (evt: KeyboardEvent) => {
-    evt.preventDefault();
-    onSelect && onSelect(keyboardFocusedOption);
-  };
-
   // const handleClick = ({target}: React.MouseEvent<HTMLUListElement>) => {
   //   const value = (target as HTMLElement).dataset.value;
   //   value && onSelect && onSelect(value);
@@ -256,11 +252,7 @@ export function ListBox({children, onSelect}: ListBoxProps) {
     <React.Fragment>
       <KeypressListener keyCode={Key.DownArrow} handler={handleDownArrow} />
       <KeypressListener keyCode={Key.UpArrow} handler={handleUpArrow} />
-      <KeypressListener
-        keyCode={Key.Enter}
-        handler={handleEnter}
-        keyEventName="keyup"
-      />
+      <KeypressListener keyCode={Key.Enter} handler={handleEnter} />
       <ListBoxtContext.Provider value={listBoxContext}>
         <ul className={listBoxClassName}>{children}</ul>
       </ListBoxtContext.Provider>
@@ -277,6 +269,7 @@ type OptionProps = {
 
 export function Option({value, children, selected}: OptionProps) {
   const {keyboardFocusedOption, onItemClick} = useContext(ListBoxtContext);
+  const listItemRef = useRef<HTMLLIElement>(null);
   const optionClassName = classNames(
     styles.Option,
     selected && styles.selected,
@@ -288,7 +281,12 @@ export function Option({value, children, selected}: OptionProps) {
   };
 
   return (
-    <li className={optionClassName} id={value} onClick={handleItemClick}>
+    <li
+      className={optionClassName}
+      id={value}
+      ref={listItemRef}
+      onClick={handleItemClick}
+    >
       {children}
     </li>
   );

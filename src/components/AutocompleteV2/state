@@ -1,0 +1,38 @@
+<autocomplete
+  allowMultiple
+  autofill
+  highlightMatch
+>
+  send = {
+    hasOptions (popoverVisible)
+    ulid
+  }
+  <textfield>
+    send = {
+      textfieldid,
+      textfieldvalue,
+    }
+    receive = {
+      activedescendants,
+      autofill,
+      hasOptions
+      ulid
+    }
+  </textfield>
+  <list>
+    receive = {
+      ulid
+    }
+    <option>
+      send = {
+        activedescendant (it's id);
+      }
+      receive = {
+        highlightmatch,
+        autofill,
+        textfieldid,
+        allowMultiple,
+      }
+    </option>
+  </list>
+</autocomplete>
