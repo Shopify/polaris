@@ -46,7 +46,7 @@ $nav-animation-variables: (
       --p-none,
       linear-gradient(color(state, hover), color(state, hover))
     );
-    background-color: var(--p-interactive-neutral-elevation-2);
+    background-color: var(--p-surface-hovered);
     color: var(--p-branded-action, color('indigo', 'dark'));
     text-decoration: none;
 

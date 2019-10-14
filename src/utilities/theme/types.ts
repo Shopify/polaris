@@ -24,7 +24,7 @@ export interface ThemeConfig {
     surface?: string;
     onSurface?: string;
     interactive?: string;
-    interactiveNeutral?: string;
+    neutral?: string;
     branded?: string;
     critical?: string;
     warning?: string;

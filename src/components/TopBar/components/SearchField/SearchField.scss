@@ -98,9 +98,7 @@ $stacking-order: (
 }
 
 .Clear {
-  @include recolor-icon(
-    var(--p-interactive-neutral-elevation-4, color('ink', 'lightest'))
-  );
+  @include recolor-icon(var(--p-neutral-action, color('ink', 'lightest')));
   position: relative;
   z-index: z-index(action, $stacking-order);
   align-self: stretch;
@@ -112,7 +110,7 @@ $stacking-order: (
   &:focus,
   &:hover {
     @include recolor-icon(
-      var(--p-interactive-neutral-elevation-5, color('ink', 'lighter'))
+      var(--p-neutral-action-hovered, color('ink', 'lighter'))
     );
     outline: none;
   }
@@ -125,10 +123,7 @@ $stacking-order: (
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(
-    --p-interactive-neutral-elevation-2,
-    var(--top-bar-background-lighter)
-  );
+  background-color: var(--p-neutral-action, var(--top-bar-background-lighter));
   will-change: background-color;
   transition: background-color duration() easing();
   border-radius: border-radius();
@@ -138,7 +133,7 @@ $stacking-order: (
 @keyframes toLightBackground {
   to {
     background-color: var(
-      --p-interactive-neutral-elevation-2,
+      --p-neutral-action,
       var(--top-bar-background-lighter)
     );
   }

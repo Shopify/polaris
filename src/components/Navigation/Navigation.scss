@@ -166,7 +166,7 @@ $disabled-fade: 0.6;
       --p-none,
       linear-gradient(color(state, hover), color(state, hover))
     );
-    background-color: var(--p-interactive-neutral-elevation-2);
+    background-color: var(--p-surface-hovered);
   }
 
   &:focus {
@@ -201,7 +201,7 @@ $disabled-fade: 0.6;
       linear-gradient(color(state, hover), color(state, hover))
     );
     @include no-focus-ring;
-    background-color: var(--p-interactive-neutral-elevation-3);
+    background-color: var(--p-surface-pressed);
   }
 
   &:focus,
@@ -336,7 +336,7 @@ $secondary-item-font-size: rem(15px);
         --p-none,
         linear-gradient(color(state, hover), color(state, hover))
       );
-      background-color: var(--p-interactive-neutral-elevation-2);
+      background-color: var(--p-surface-hovered);
     }
 
     &:focus {
@@ -372,7 +372,7 @@ $secondary-item-font-size: rem(15px);
         linear-gradient(color(state, hover), color(state, hover))
       );
       @include no-focus-ring;
-      background-color: var(--p-interactive-neutral-elevation-3);
+      background-color: var(--p-surface-pressed);
     }
 
     &:focus,

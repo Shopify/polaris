@@ -30,7 +30,7 @@ export function buildColors(theme: ThemeConfig) {
     surface = '#FAFAFA',
     onSurface = '#1F2225',
     interactive = '#0870D9',
-    interactiveNeutral = '#EAEAEB',
+    neutral = '#EAEAEB',
     branded = '#008060',
     critical = '#E32727',
     warning = '#FFC453',
@@ -46,10 +46,7 @@ export function buildColors(theme: ThemeConfig) {
       ...surfaceColors(colorToHsla(surface), lightSurface),
       ...onSurfaceColors(colorToHsla(onSurface), lightSurface),
       ...interactiveColors(colorToHsla(interactive), lightSurface),
-      ...interactiveNeutralColors(
-        colorToHsla(interactiveNeutral),
-        lightSurface,
-      ),
+      ...neutralColors(colorToHsla(neutral), lightSurface),
       ...brandedColors(colorToHsla(branded), lightSurface),
       ...criticalColors(colorToHsla(critical), lightSurface),
       ...warningColors(colorToHsla(warning), lightSurface),
@@ -67,6 +64,8 @@ function surfaceColors(color: HSLAColor, lightSurface: boolean) {
     surfaceForeground: setLightness(color, lightSurface ? 100 : 13),
     surfaceForegroundSubdued: setLightness(color, lightSurface ? 90 : 10),
     surfaceInverse: setLightness(color, lightSurface ? 0 : 100),
+    surfaceActionHovered: setLightness(color, lightSurface ? 93 : 20),
+    surfaceActionPressed: setLightness(color, lightSurface ? 86 : 27),
   };
 }
 
@@ -143,15 +142,13 @@ function interactiveColors(color: HSLAColor, lightSurface: boolean) {
   };
 }
 
-function interactiveNeutralColors(color: HSLAColor, lightSurface: boolean) {
+function neutralColors(color: HSLAColor, lightSurface: boolean) {
   return {
-    interactiveNeutral: color,
-    interactiveNeutralElevation0: setLightness(color, lightSurface ? 100 : 7),
-    interactiveNeutralElevation1: setLightness(color, lightSurface ? 94 : 13),
-    interactiveNeutralElevation2: setLightness(color, lightSurface ? 92 : 22),
-    interactiveNeutralElevation3: setLightness(color, lightSurface ? 86 : 29),
-    interactiveNeutralElevation4: setLightness(color, lightSurface ? 76 : 39),
-    interactiveNeutralElevation5: setLightness(color, lightSurface ? 66 : 49),
+    neutral: color,
+    neutralActionDisabled: setLightness(color, lightSurface ? 94 : 13),
+    neutralAction: setLightness(color, lightSurface ? 92 : 22),
+    neutralActionHovered: setLightness(color, lightSurface ? 86 : 29),
+    neutralActionPressed: setLightness(color, lightSurface ? 76 : 39),
   };
 }
 
@@ -189,6 +186,11 @@ function criticalColors(color: HSLAColor, lightSurface: boolean) {
     criticalSurface: setLightness(color, lightSurface ? 88 : 12),
     criticalSurfaceSubdued: setLightness(color, lightSurface ? 98 : 12),
     criticalText: setLightness(color, lightSurface ? 30 : 70),
+    criticalActionDisabled: setLightness(color, lightSurface ? 59 : 41),
+    criticalAction: setLightness(color, lightSurface ? 52 : 48),
+    criticalActionHovered: setLightness(color, lightSurface ? 45 : 55),
+    criticalActionSubdued: setLightness(color, lightSurface ? 38 : 62),
+    criticalActionPressed: setLightness(color, lightSurface ? 31 : 69),
   };
 }
 
