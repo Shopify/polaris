@@ -18,7 +18,7 @@ $pip-spacing: ($height - $pip-size) / 2;
   display: inline-flex;
   align-items: center;
   padding: 0 $horizontal-padding;
-  background-color: var(--p-interactive-neutral-elevation-1, color('sky'));
+  background-color: var(--p-neutral, color('sky'));
   border: border-width(thick) solid var(--p-surface-foreground, color('white'));
   border-radius: $height;
   font-size: rem(13px);

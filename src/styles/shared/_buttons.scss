@@ -18,7 +18,7 @@
   margin: 0;
   padding: $vertical-padding spacing();
   background: var(
-    --p-interactive-neutral-elevation-2,
+    --p-neutral-action,
     linear-gradient(to bottom, color('white'), color('sky', 'lighter'))
   );
   border: var(--p-none, border(dark));
@@ -37,7 +37,7 @@
 
   &:hover {
     background: var(
-      --p-interactive-neutral-elevation-3,
+      --p-neutral-action-hovered,
       linear-gradient(to bottom, color('sky', 'lighter'), color('sky', 'light'))
     );
     border-color: var(--p-none, color('sky', 'dark'));
@@ -55,7 +55,7 @@
   &:active {
     // Same color gradient is necessary for background transitions
     background: var(
-      --p-interactive-neutral-elevation-4,
+      --p-neutral-action-pressed,
       linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'))
     );
     border-color: var(--p-none, color('sky', 'dark'));
@@ -76,7 +76,7 @@
   @include recolor-icon(color('ink', 'lightest'));
   transition: none;
   background: var(
-    --p-interactive-neutral-elevation-1,
+    --p-neutral-action-disabled,
     linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'))
   );
   color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
