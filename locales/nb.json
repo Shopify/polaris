@@ -199,7 +199,8 @@
           "on_or_before": "før {date}",
           "on_or_after": "etter {date}"
         }
-      }
+      },
+      "showingTotalCount": "Viser {itemsCount} av {totalItemsCount} {resource}"
     },
     "SkeletonPage": {
       "loadingLabel": "Siden laster"
