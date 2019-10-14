@@ -151,7 +151,7 @@
       "Item": {
         "actionsDropdownLabel": "Ações para {accessibilityLabel}",
         "actionsDropdown": "Menu suspenso Ações",
-        "viewItem": "Visualizar detalhes de {itemName}"
+        "viewItem": "Visualizar informações de {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Ações",
