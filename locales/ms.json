@@ -199,7 +199,8 @@
           "on_or_before": "sebelum {date}",
           "on_or_after": "selepas {date}"
         }
-      }
+      },
+      "showingTotalCount": "Menunjukkan {itemsCount} daripada {totalItemsCount} {resource}"
     },
     "SkeletonPage": {
       "loadingLabel": "Memuatkan halaman"
