@@ -85,6 +85,9 @@ $spinner-size: rem(20px);
 }
 
 .destructive {
+  --p-button-color: var(--p-critical-action);
+  --p-button-color-hover: var(--p-critical-action-hovered);
+  --p-button-color-active: var(--p-critical-action-pressed);
   @include button-filled(color('red'), color('red', 'dark'));
   @include recolor-icon(color('white'));
 
