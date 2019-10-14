@@ -152,7 +152,7 @@ $list-filters-footer-height: rem(70px);
   }
 }
 
-.open + .open {
+.open ~ .open {
   &::before {
     display: none;
   }
@@ -171,6 +171,12 @@ $list-filters-footer-height: rem(70px);
   }
 
   &::after {
+    display: none;
+  }
+}
+
+.open + .last {
+  &::before {
     display: none;
   }
 }
