@@ -199,7 +199,8 @@
           "on_or_before": "ennen {date}",
           "on_or_after": "jälkeen {date}"
         }
-      }
+      },
+      "showingTotalCount": "Näytetään {itemsCount}/{totalItemsCount} {resource}"
     },
     "SkeletonPage": {
       "loadingLabel": "Sivu latautuu"
