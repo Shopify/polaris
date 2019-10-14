@@ -199,7 +199,8 @@
           "on_or_before": "{date} 之前",
           "on_or_after": "{date} 之後"
         }
-      }
+      },
+      "showingTotalCount": "顯示第 {itemsCount} 個 {resource}，共 {totalItemsCount} 個"
     },
     "SkeletonPage": {
       "loadingLabel": "頁面載入中"
