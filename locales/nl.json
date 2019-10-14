@@ -199,7 +199,8 @@
           "on_or_before": "vóór {date}",
           "on_or_after": "na {date}"
         }
-      }
+      },
+      "showingTotalCount": "{itemsCount} weergeven van {totalItemsCount} {resource}"
     },
     "SkeletonPage": {
       "loadingLabel": "Pagina is aan het laden"

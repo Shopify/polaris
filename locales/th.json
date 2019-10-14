@@ -199,7 +199,8 @@
           "on_or_before": "ก่อน {date}",
           "on_or_after": "หลัง {date}"
         }
-      }
+      },
+      "showingTotalCount": "แสดง {itemsCount} ของ {totalItemsCount} {resource}"
     },
     "SkeletonPage": {
       "loadingLabel": "กำลังโหลดหน้า"

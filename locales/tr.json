@@ -199,7 +199,8 @@
           "on_or_before": "{date} tarihinden önce",
           "on_or_after": "{date} tarihinden sonra"
         }
-      }
+      },
+      "showingTotalCount": "{resource} için {totalItemsCount} üründen {itemsCount} tanesi gösteriliyor"
     },
     "SkeletonPage": {
       "loadingLabel": "Sayfa yükleniyor"

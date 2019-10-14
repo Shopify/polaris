@@ -199,7 +199,8 @@
           "on_or_before": "før {date}",
           "on_or_after": "efter {date}"
         }
-      }
+      },
+      "showingTotalCount": "Viser {itemsCount} af {totalItemsCount} {resource}"
     },
     "SkeletonPage": {
       "loadingLabel": "Indlæser side"
