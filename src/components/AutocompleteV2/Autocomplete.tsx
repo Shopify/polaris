@@ -1,4 +1,10 @@
-import React, {useState, useRef, useContext, useEffect} from 'react';
+import React, {
+  useState,
+  useRef,
+  useContext,
+  useEffect,
+  useReducer,
+} from 'react';
 import {useUniqueId} from '../../utilities/unique-id';
 import {elementChildren, isElementOfType} from '../../utilities/components';
 import {Key} from '../../types';
@@ -13,18 +19,104 @@ export interface AutocompleteProps {
   id?: string;
   children: React.ReactNode;
   textfield: React.ReactElement<TextFieldProps>;
+  allowMultiple: boolean;
+  autoFill: boolean;
+  highlightMatches: boolean;
 }
 
-export function Autocomplete({children, textfield}: AutocompleteProps) {
+interface AutocompleteContextType {
+  activeDescendant?: string;
+  allowMultiple?: boolean;
+  dispatchAction(action: Actions): void;
+  highlightMatches?: boolean;
+  textfieldId?: string;
+  textFieldValue?: string;
+  listBoxId?: string;
+}
+
+enum AutoCompleteAction {
+  TextFieldValueChange = 'TEXTFIELD_VALUE_CHANGE',
+  SetTextFieldId = 'SET_TEXTFIELD_ID',
+  SetActiveDescendant = 'SET_ACTIVE_DESCENDANT',
+}
+
+type Actions =
+  | {type: AutoCompleteAction.TextFieldValueChange; value: string}
+  | {type: AutoCompleteAction.SetTextFieldId; id: string}
+  | {type: AutoCompleteAction.SetActiveDescendant; value: string};
+
+const AutocompleteContext = React.createContext<AutocompleteContextType | null>(
+  null,
+);
+
+function autoCompleteReducer(state: AutocompleteContextType, action: Actions) {
+  switch (action.type) {
+    case AutoCompleteAction.TextFieldValueChange: {
+      return {...state, textFieldValue: action.value};
+    }
+    case AutoCompleteAction.SetActiveDescendant: {
+      return {...state, activeDescendant: action.value};
+    }
+    case AutoCompleteAction.SetTextFieldId: {
+      return {...state, textfieldId: action.id};
+    }
+    default: {
+      throw new Error(`Unhandled action type: ${action}`);
+    }
+  }
+}
+
+// const AutocompleteContextProvider = ({children}: any) => {
+//   const [state, dispatchAction] = useReducer(autoCompleteReducer, {
+//     textFieldValue: '',
+//   });
+//   const value = {state, dispatchAction};
+//   return (
+//     <AutocompleteContext.Provider value={value}>
+//       {children}
+//     </AutocompleteContext.Provider>
+//   );
+// };
+
+function useAutocompleteContext() {
+  const context = React.useContext(AutocompleteContext);
+  if (!context) {
+    throw new Error(
+      'useAutocompleteContext must be used within the AutocompleteContextProvider',
+    );
+  }
+  return context;
+}
+
+export function Autocomplete({
+  children,
+  textfield,
+  allowMultiple,
+  highlightMatches,
+}: AutocompleteProps) {
   const [popoverActive, setPopoverActive] = useState(false);
-  const comboBoxId = useUniqueId('comboBox');
   const listBoxId = useUniqueId('listBox');
+  const initialContextValue = {
+    activeDescendant: '',
+    allowMultiple,
+    highlightMatches,
+    textfieldId: useUniqueId('textfieldId'),
+    textFieldValue: '',
+    listBoxId,
+  };
+
+  const [reducerState, dispatchAction] = useReducer(autoCompleteReducer, {
+    ...initialContextValue,
+    dispatchAction: () => null,
+  });
 
   const handleFocus = () => {
+    // TODO: If there's a LISTBox as child
     setPopoverActive(true);
   };
 
   const handleBlur = () => {
+    // TODO: if not clicking on the popover () (clicking scrollbar blurs)
     setPopoverActive(false);
   };
 
@@ -35,7 +127,6 @@ export function Autocomplete({children, textfield}: AutocompleteProps) {
       aria-owns={listBoxId}
       aria-haspopup="listbox"
       aria-controls={listBoxId}
-      id={comboBoxId}
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
@@ -60,7 +151,12 @@ export function Autocomplete({children, textfield}: AutocompleteProps) {
     </Popover>
   );
 
-  return <React.Fragment>{popover}</React.Fragment>;
+  const value = {reducerState, dispatchAction};
+  return (
+    <AutocompleteContext.Provider value={value}>
+      {popover}
+    </AutocompleteContext.Provider>
+  );
 }
 
 type ListBoxProps = {
@@ -80,6 +176,15 @@ export function ListBox({children, onSelect}: ListBoxProps) {
   const listBoxClassName = classNames(styles.ListBox);
   const [keyboardFocusedOption, setKeyboardFocusedOption] = useState();
   const [navigableOptions, setNavigableOptions] = useState([] as string[]);
+  const autoCompleteContext = useAutocompleteContext();
+
+  if (keyboardFocusedOption) {
+    autoCompleteContext &&
+      autoCompleteContext.dispatchAction({
+        type: AutoCompleteAction.SetActiveDescendant,
+        value: keyboardFocusedOption,
+      });
+  }
 
   const totalOptions = useRef<number>(navigableOptions.length);
 
@@ -183,11 +288,7 @@ export function Option({value, children, selected}: OptionProps) {
   };
 
   return (
-    <li
-      className={optionClassName}
-      data-value={value}
-      onClick={handleItemClick}
-    >
+    <li className={optionClassName} id={value} onClick={handleItemClick}>
       {children}
     </li>
   );

@@ -33,10 +33,10 @@ describe('A11Y', () => {
         'has an `id` attribute whos value matches the labels for attribute value',
       );
       it.todo(
-        'has an `aria-autocomplete` attribute with a value of `list` if `inline` is false',
+        'has an `aria-autocomplete` attribute with a value of `list` if `autofill` is false',
       );
       it.todo(
-        'has an `aria-autocomplete` attribute with a value of `both` if `inline` is true',
+        'has an `aria-autocomplete` attribute with a value of `both` if `autofill` is true',
       );
       it.todo(
         'has an `aria-controls` attribute whos value matches the ListBox UL ID when the ListBox visible',
@@ -51,11 +51,14 @@ describe('A11Y', () => {
   });
   describe('listbox (ul)', () => {
     it.todo('has an `role` attribute with a value of `listbox`');
-  });
-  describe('option (li)', () => {
-    it.todo('has an `role` attribute with a value of `listbox`');
     it.todo(
       'has an `aria-labelledby` attribute whos value matches the textfields label id',
+    );
+  });
+  describe('option (li)', () => {
+    it.todo(
+      //question in a multi slect will this be selected if the prop is selected
+      'has an `aria-selected` attribute whos value is true when an option is selected via keyboard,
     );
   });
 });
@@ -93,5 +96,9 @@ describe('keyboard interactions', () => {
     describe('first item is focused', () => {
       it.todo('Moves focus to the last Option');
     });
+  });
+  describe('Tab', () => {
+    it.todo('calls onSelect with the selected value when tab is pressed');
+    it.todo('does not call onSelect if there is no selected value');
   });
 });
