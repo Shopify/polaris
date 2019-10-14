@@ -21,8 +21,8 @@
     --p-interactive-neutral-elevation-2,
     linear-gradient(to bottom, color('white'), color('sky', 'lighter'))
   );
-  border: var(--p-none, border(dark));
-  box-shadow: var(--p-none, shadow(faint));
+  border: var(--p-override-none, border(dark));
+  box-shadow: var(--p-override-none, shadow(faint));
   border-radius: var(--p-border-radius-base, border-radius());
   line-height: 1;
   color: var(--p-text-on-surface, color('ink'));
@@ -40,13 +40,13 @@
       --p-interactive-neutral-elevation-3,
       linear-gradient(to bottom, color('sky', 'lighter'), color('sky', 'light'))
     );
-    border-color: var(--p-none, color('sky', 'dark'));
+    border-color: var(--p-override-none, color('sky', 'dark'));
   }
 
   &:focus {
-    border-color: var(--p-transparent, color('indigo'));
+    border-color: var(--p-override-transparent, color('indigo'));
     outline: 0;
-    box-shadow: var(--p-none, 0 0 0 1px color('indigo'));
+    box-shadow: var(--p-override-none, 0 0 0 1px color('indigo'));
 
     @include focus-ring;
     @include high-contrast-button-outline;
@@ -58,9 +58,9 @@
       --p-interactive-neutral-elevation-4,
       linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'))
     );
-    border-color: var(--p-none, color('sky', 'dark'));
+    border-color: var(--p-override-none, color('sky', 'dark'));
     box-shadow: var(
-      --p-none,
+      --p-override-none,
       0 0 0 0 transparent,
       inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
       inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2)
@@ -93,9 +93,9 @@
       darken($button-color, 2%)
     )
   );
-  border-color: var(--p-transparent, $border-color);
+  border-color: var(--p-override-transparent, $border-color);
   box-shadow: var(
-    --p-none,
+    --p-override-none,
     inset 0 1px 0 0 lighten($button-color, 3%),
     shadow(faint),
     0 0 0 0 transparent
@@ -107,15 +107,15 @@
       --p-button-color-hover,
       linear-gradient(to bottom, $button-color, darken($button-color, 5%))
     );
-    border-color: var(--p-transparent, $border-color);
+    border-color: var(--p-override-transparent, $border-color);
     color: var(--p-text-on-branded, color('white'));
     text-decoration: none;
   }
 
   &:focus {
-    border-color: var(--p-transparent, $focus-color);
+    border-color: var(--p-override-transparent, $focus-color);
     box-shadow: var(
-      --p-none,
+      --p-override-none,
       inset 0 1px 0 0 lighten($button-color, 5%),
       shadow(faint),
       0 0 0 1px $focus-color
@@ -127,9 +127,9 @@
       --p-button-color-active,
       linear-gradient(to bottom, $border-color, $border-color)
     );
-    border-color: var(--p-transparent, $active-color);
+    border-color: var(--p-override-transparent, $active-color);
     box-shadow: var(
-      --p-none,
+      --p-override-none,
       inset 0 0 0 0 transparent,
       shadow(faint),
       0 0 1px 0 $active-color
@@ -148,7 +148,7 @@
       lighten($button-color, 25%)
     )
   );
-  border-color: var(--p-transparent, lighten($button-color, 20%));
+  border-color: var(--p-override-transparent, lighten($button-color, 20%));
   box-shadow: none;
   color: var(--p-text-on-branded, color('white'));
 }
