@@ -229,11 +229,12 @@ function successColors(color: HSLAColor, lightSurface: boolean) {
 
 function overrides() {
   return {
-    [toCssCustomPropertySyntax('none')]: 'none',
-    [toCssCustomPropertySyntax('transparent')]: 'transparent',
-    [toCssCustomPropertySyntax('zero')]: '0',
+    [toCssCustomPropertySyntax('overrideNone')]: 'none',
+    [toCssCustomPropertySyntax('overrideTransparent')]: 'transparent',
+    [toCssCustomPropertySyntax('overrideOne')]: '1',
+    [toCssCustomPropertySyntax('overrideVisible')]: 'visible',
     [toCssCustomPropertySyntax('buttonFontWeight')]: '500',
-    [toCssCustomPropertySyntax('focusRingContent')]: "''",
+    [toCssCustomPropertySyntax('nonNullContent')]: "''",
     [toCssCustomPropertySyntax('borderRadiusBase')]: rem('4px'),
     [toCssCustomPropertySyntax('borderRadiusWide')]: rem('8px'),
     [toCssCustomPropertySyntax('bannerDefaultBorder')]: buildBannerBorder(
@@ -256,8 +257,6 @@ function overrides() {
     ),
 
     [toCssCustomPropertySyntax('badgeMixBlendMode')]: 'luminosity',
-    [toCssCustomPropertySyntax('one')]: '1',
-    [toCssCustomPropertySyntax('visible')]: 'visible',
     [toCssCustomPropertySyntax('borderSubdued')]: `${rem(
       '1px',
     )} solid var(--p-divider-subdued-on-surface)`,

@@ -43,7 +43,7 @@ $nav-animation-variables: (
 
   &:hover {
     background-image: var(
-      --p-none,
+      --p-override-none,
       linear-gradient(color(state, hover), color(state, hover))
     );
     background-color: var(--p-surface-hovered);
@@ -53,7 +53,7 @@ $nav-animation-variables: (
     .Icon {
       @include recolor-icon(
         var(--p-branded-action, color('indigo')),
-        var(--p-transparent, color('white')),
+        var(--p-override-transparent, color('white')),
         filter('indigo')
       );
     }
@@ -62,7 +62,7 @@ $nav-animation-variables: (
   &:focus {
     @include focus-ring;
     background-image: var(
-      --p-none,
+      --p-override-none,
       linear-gradient(color(state, hover), color(state, hover))
     );
     color: var(--p-text-on-surface, color('indigo', 'dark'));
@@ -71,7 +71,7 @@ $nav-animation-variables: (
     .Icon {
       @include recolor-icon(
         var(--p-icon-on-surface, color('indigo')),
-        var(--p-transparent, color('white')),
+        var(--p-override-transparent, color('white')),
         filter('indigo')
       );
     }
@@ -83,7 +83,7 @@ $nav-animation-variables: (
     .Icon {
       @include recolor-icon(
         var(--p-branded-action, color('indigo')),
-        var(--p-transparent, color('white')),
+        var(--p-override-transparent, color('white')),
         filter('indigo')
       );
     }
@@ -97,7 +97,7 @@ $nav-animation-variables: (
     .Icon {
       @include recolor-icon(
         var(--p-branded-action-pressed, color('indigo')),
-        var(--p-transparent, color('white')),
+        var(--p-override-transparent, color('white')),
         filter('indigo')
       );
     }
@@ -116,7 +116,7 @@ $nav-animation-variables: (
 @mixin nav-item-icon-attributes {
   @include recolor-icon(
     var(--p-icon-on-surface, color('ink', 'lightest')),
-    var(--p-transparent, color('white')),
+    var(--p-override-transparent, color('white')),
     filter('ink', 'lightest')
   );
   flex-shrink: 0;
@@ -138,7 +138,7 @@ $nav-animation-variables: (
   .subNavigationActive:focus & {
     @include recolor-icon(
       var(--p-branded-action, color('indigo')),
-      var(--p-transparent, color('white')),
+      var(--p-override-transparent, color('white')),
       filter('indigo')
     );
   } // The regular nav items are wrapped in polaris icon components which add

@@ -23,7 +23,7 @@ $nav-max-width: rem(360px);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     max-width: layout-width(nav);
-    border-right: var(--p-none, border());
+    border-right: var(--p-override-none, border());
     @include safe-area-for(max-width, layout-width(nav), left);
   }
 }
@@ -66,7 +66,7 @@ $disabled-fade: 0.6;
   &:focus .Icon {
     @include recolor-icon(
       var(--p-branded-action, color('indigo')),
-      var(--p-transparent, color('white'))
+      var(--p-override-transparent, color('white'))
     );
   }
   // stylelint-enable selector-max-specificity
@@ -95,12 +95,12 @@ $disabled-fade: 0.6;
 .Item-disabled {
   color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
   pointer-events: none;
-  opacity: var(--p-one, $disabled-fade);
+  opacity: var(--p-override-one, $disabled-fade);
 
   .Icon {
     @include recolor-icon(
       var(--p-icon-disabled-on-surface, color('ink', 'lightest')),
-      var(--p-transparent, color('white'))
+      var(--p-override-transparent, color('white'))
     );
   }
 }
@@ -142,7 +142,7 @@ $disabled-fade: 0.6;
 .SecondaryAction {
   @include recolor-icon(
     var(--p-icon-subdued-on-surface, color('ink', 'lightest')),
-    var(--p-transparent, color('white')),
+    var(--p-override-transparent, color('white')),
     filter('ink', 'lightest')
   );
   display: flex;
@@ -159,11 +159,11 @@ $disabled-fade: 0.6;
   &:hover {
     @include recolor-icon(
       var(--p-branded-action, color('indigo')),
-      var(--p-transparent, color('white')),
+      var(--p-override-transparent, color('white')),
       filter('indigo')
     );
     background-image: var(
-      --p-none,
+      --p-override-none,
       linear-gradient(color(state, hover), color(state, hover))
     );
     background-color: var(--p-surface-hovered);
@@ -172,11 +172,11 @@ $disabled-fade: 0.6;
   &:focus {
     @include recolor-icon(
       var(--p-icon-subdued-on-surface, color('indigo')),
-      var(--p-transparent, color('white')),
+      var(--p-override-transparent, color('white')),
       filter('indigo')
     );
     background-image: var(
-      --p-none,
+      --p-override-none,
       linear-gradient(color(state, hover), color(state, hover))
     );
     @include focus-ring;
@@ -185,7 +185,7 @@ $disabled-fade: 0.6;
   &:focus:hover {
     @include recolor-icon(
       var(--p-branded-action, color('indigo')),
-      var(--p-transparent, color('white')),
+      var(--p-override-transparent, color('white')),
       filter('indigo')
     );
   }
@@ -193,11 +193,11 @@ $disabled-fade: 0.6;
   &:active {
     @include recolor-icon(
       var(--p-branded-action, color('indigo')),
-      var(--p-transparent, color('white')),
+      var(--p-override-transparent, color('white')),
       filter('indigo')
     );
     background-image: var(
-      --p-none,
+      --p-override-none,
       linear-gradient(color(state, hover), color(state, hover))
     );
     @include no-focus-ring;
@@ -216,7 +216,7 @@ $secondary-item-font-size: rem(15px);
   flex-basis: 100%;
   margin-bottom: spacing(tight);
   margin-left: nav(icon-size) + spacing(loose);
-  overflow-x: var(--p-visible, hidden);
+  overflow-x: var(--p-override-visible, hidden);
   @include breakpoint-after(nav-min-window-corrected()) {
     margin-left: nav(icon-size) + spacing();
   }
@@ -312,7 +312,7 @@ $secondary-item-font-size: rem(15px);
     @include unstyled-button;
     @include recolor-icon(
       var(--p-icon-subdued-on-surface, color('ink', 'lightest')),
-      var(--p-transparent, color('white')),
+      var(--p-override-transparent, color('white')),
       filter('ink', 'lightest')
     );
     display: flex;
@@ -329,11 +329,11 @@ $secondary-item-font-size: rem(15px);
     &:hover {
       @include recolor-icon(
         var(--p-branded-action, color('indigo')),
-        var(--p-transparent, color('white')),
+        var(--p-override-transparent, color('white')),
         filter('indigo')
       );
       background-image: var(
-        --p-none,
+        --p-override-none,
         linear-gradient(color(state, hover), color(state, hover))
       );
       background-color: var(--p-surface-hovered);
@@ -342,11 +342,11 @@ $secondary-item-font-size: rem(15px);
     &:focus {
       @include recolor-icon(
         var(--p-icon-subdued-on-surface, color('indigo')),
-        var(--p-transparent, color('white')),
+        var(--p-override-transparent, color('white')),
         filter('indigo')
       );
       background-image: var(
-        --p-none,
+        --p-override-none,
         linear-gradient(color(state, hover), color(state, hover))
       );
       @include focus-ring;
@@ -356,7 +356,7 @@ $secondary-item-font-size: rem(15px);
     &:focus:hover {
       @include recolor-icon(
         var(--p-branded-action, color('indigo')),
-        var(--p-transparent, color('white')),
+        var(--p-override-transparent, color('white')),
         filter('indigo')
       );
     }
@@ -364,11 +364,11 @@ $secondary-item-font-size: rem(15px);
     &:active {
       @include recolor-icon(
         var(--p-branded-action, color('indigo')),
-        var(--p-transparent, color('white')),
+        var(--p-override-transparent, color('white')),
         filter('indigo')
       );
       background-image: var(
-        --p-none,
+        --p-override-none,
         linear-gradient(color(state, hover), color(state, hover))
       );
       @include no-focus-ring;
