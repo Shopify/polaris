@@ -7,20 +7,8 @@ export {ActionMenu, ActionMenuProps} from './ActionMenu';
 export {AppProvider, AppProviderProps} from './AppProvider';
 
 export {Autocomplete, AutocompleteProps} from './Autocomplete';
-export {
-  Autocomplete as AutocompleteV2,
-  AutocompleteProps as AutocompleteV2Props,
-} from './AutocompleteV2';
 
-export {
-  Autocomplete as AutocompleteV3,
-  AutocompleteProps as AutocompleteV3Props,
-} from './AutocompleteV3';
-
-export {
-  Autocomplete as AutocompleteV4,
-  AutocompleteProps as AutocompleteV3Prop4,
-} from './AutocompleteV4';
+export {ComboBox, ComboBoxProps} from './ComboBox';
 
 export {Avatar, AvatarProps} from './Avatar';
 

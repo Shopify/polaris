@@ -1,21 +1,22 @@
 ---
-name: Autocomplete
+name: ComboBox
 description:
 
 Use Textfield as a prop and provide a composable list box.
 
 ```jsx
 import React, {useCallback, useState} from 'react';
-import {Page, AutocompleteV2, TextField} from '../src';
+import {Page, ComboBox, TextField} from '../src';
+import deselectedOptions from './test/1000.json';
 
 export function Playground() {
-  const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
-  ];
+  // const deselectedOptions = [
+  //   {value: 'rustic', label: 'Rustic'},
+  //   {value: 'antique', label: 'Antique'},
+  //   {value: 'vinyl', label: 'Vinyl'},
+  //   {value: 'vintage', label: 'Vintage'},
+  //   {value: 'refurbished', label: 'Refurbished'},
+  // ];
 
   const [inputValue, setInputValue] = useState('');
   const [selected, setSelected] = useState('');
@@ -29,50 +30,47 @@ export function Playground() {
     setSelected(value);
   };
 
-  const updateText = useCallback(
-    (value) => {
-      setInputValue(value);
+  const updateText = useCallback((value) => {
+    setInputValue(value);
 
-      if (value === '') {
-        setOptions(deselectedOptions);
-        return;
-      }
+    if (value === '') {
+      setOptions(deselectedOptions);
+      return;
+    }
 
-      const filterRegex = new RegExp(value, 'i');
-      const resultOptions = deselectedOptions.filter((option) =>
-        option.label.match(filterRegex),
-      );
-      setOptions(resultOptions);
-    },
-    [deselectedOptions],
-  );
+    const filterRegex = new RegExp(value, 'i');
+    const resultOptions = deselectedOptions.filter((option) =>
+      option.label.match(filterRegex),
+    );
+    setOptions(resultOptions);
+  }, []);
 
   return (
     <Page title="Playground">
-      <AutocompleteV2
+      <ComboBox
         textfield={
           <TextField
             onChange={updateText}
             label="Tags"
             value={inputValue}
-            autoComplete={false}
+            ComboBox={false}
           />
         }
       >
-        <AutocompleteV2.ListBox onSelect={handleSelection}>
+        <ComboBox.ListBox onSelect={handleSelection}>
           {options.map((option) => {
             return (
-              <AutocompleteV2.Option
+              <ComboBox.Option
                 key={option.value}
                 value={option.value}
                 selected={selected === option.value}
               >
                 {option.label}
-              </AutocompleteV2.Option>
+              </ComboBox.Option>
             );
           })}
-        </AutocompleteV2.ListBox>
-      </AutocompleteV2>
+        </ComboBox.ListBox>
+      </ComboBox>
     </Page>
   );
 }

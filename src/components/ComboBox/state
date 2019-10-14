@@ -1,0 +1,39 @@
+<ComboBox
+  allowMultiple
+  inline
+  highlightMatch
+>
+  send = {
+    ulid
+    valueOfFirstOption (if inline)
+    popoverActive
+  }
+  <textfield>
+    send = {
+      textfieldid,
+      textfieldvalue,
+    }
+    receive = {
+      activedescendants,
+      valueOfFirstOption (if inline),
+      popoverActive
+      ulid
+    }
+  </textfield>
+  <list>
+    receive = {
+      ulid
+    }
+    <option>
+      send = {
+        activedescendant (it's id);
+      }
+      receive = {
+        highlightmatch,
+        autofill,
+        textfieldid,
+        allowMultiple,
+      }
+    </option>
+  </list>
+</ComboBox>
