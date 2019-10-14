@@ -81,8 +81,8 @@ describe('buildCustomProperties', () => {
         '--p-surface-foreground': 'hsl(0, 0%, 100%, 1)',
         '--p-surface-foreground-subdued': 'hsl(0, 0%, 90%, 1)',
         '--p-surface-inverse': 'hsl(0, 0%, 0%, 1)',
-        '--p-surface-action-hovered': 'hsl(0, 0%, 93%, 1)',
-        '--p-surface-action-pressed': 'hsl(0, 0%, 86%, 1)',
+        '--p-surface-hovered': 'hsl(0, 0%, 93%, 1)',
+        '--p-surface-pressed': 'hsl(0, 0%, 86%, 1)',
       }),
     );
     expect(colors).not.toStrictEqual(
@@ -101,8 +101,8 @@ describe('buildColors', () => {
           '--p-surface-foreground': 'hsl(0, 0%, 100%, 1)',
           '--p-surface-foreground-subdued': 'hsl(0, 0%, 90%, 1)',
           '--p-surface-inverse': 'hsl(0, 0%, 0%, 1)',
-          '--p-surface-action-hovered': 'hsl(0, 0%, 93%, 1)',
-          '--p-surface-action-pressed': 'hsl(0, 0%, 86%, 1)',
+          '--p-surface-hovered': 'hsl(0, 0%, 93%, 1)',
+          '--p-surface-pressed': 'hsl(0, 0%, 86%, 1)',
         }),
       );
     });
@@ -117,8 +117,8 @@ describe('buildColors', () => {
           '--p-surface-foreground': 'hsl(0, 0%, 100%, 1)',
           '--p-surface-foreground-subdued': 'hsl(0, 0%, 90%, 1)',
           '--p-surface-inverse': 'hsl(0, 0%, 0%, 1)',
-          '--p-surface-action-hovered': 'hsl(0, 0%, 93%, 1)',
-          '--p-surface-action-pressed': 'hsl(0, 0%, 86%, 1)',
+          '--p-surface-hovered': 'hsl(0, 0%, 93%, 1)',
+          '--p-surface-pressed': 'hsl(0, 0%, 86%, 1)',
         }),
       );
     });
@@ -133,8 +133,8 @@ describe('buildColors', () => {
           '--p-surface-foreground': 'hsl(0, 0%, 13%, 1)',
           '--p-surface-foreground-subdued': 'hsl(0, 0%, 10%, 1)',
           '--p-surface-inverse': 'hsl(0, 0%, 100%, 1)',
-          '--p-surface-action-hovered': 'hsl(0, 0%, 20%, 1)',
-          '--p-surface-action-pressed': 'hsl(0, 0%, 27%, 1)',
+          '--p-surface-hovered': 'hsl(0, 0%, 20%, 1)',
+          '--p-surface-pressed': 'hsl(0, 0%, 27%, 1)',
         }),
       );
     });
