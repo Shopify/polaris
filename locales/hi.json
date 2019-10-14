@@ -199,7 +199,8 @@
           "on_or_before": "{date} से पहले",
           "on_or_after": "{date} के बाद"
         }
-      }
+      },
+      "showingTotalCount": "{totalItemsCount} {resource} का {itemsCount} दिखा रहा है"
     },
     "SkeletonPage": {
       "loadingLabel": "पेज लोड हो रहा है"
