@@ -60,8 +60,11 @@ $stacking-order: (
 
   // stylelint-disable-next-line selector-max-class, selector-max-combinators
   > .Input ~ .Backdrop {
-    background-color: color('red', 'lighter');
-    border-color: color('red', 'dark');
+    background-color: var(
+      --p-critical-surface-subdued,
+      color('red', 'lighter')
+    );
+    border-color: var(--p-critical-divider, color('red', 'dark'));
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
     &::after {
@@ -181,8 +184,10 @@ $stacking-order: (
   bottom: 0;
   left: 0;
   background-color: var(--p-surface-foreground, color('white'));
-  border: border(dark);
-  border-radius: border-radius();
+  border: border-width() solid
+    var(--p-divider-subdued-on-surface, color('sky', 'dark'));
+  border-top-color: var(--p-divider-on-surface, color('sky', 'dark'));
+  border-radius: var(--p-border-radius-base, border-radius());
   box-shadow: var(
     --p-override-none,
     (inset 0 1px 0 0 rgba(color('ink', 'lighter'), 0.05))
