@@ -16,11 +16,11 @@ $stacking-order: (
   position: relative;
   display: flex;
   align-items: center;
-  color: color('ink', 'lighter');
+  color: var(--p-text-on-surface, color('ink', 'lighter'));
   cursor: text;
 
   svg {
-    fill: color('ink', 'lighter');
+    fill: var(--p-icon-on-surface, color('ink', 'lighter'));
   }
 }
 
@@ -37,7 +37,7 @@ $stacking-order: (
 }
 
 .hasValue {
-  color: color('ink', 'lighter');
+  color: var(--p-text-on-surface, color('ink', 'lighter'));
 }
 
 .focus > .Input,
@@ -70,21 +70,25 @@ $stacking-order: (
   }
 }
 
+.readOnly {
+  color: var(--p-text-disabled-on-surface);
+}
+
 .readOnly > .Backdrop {
-  background-color: color('sky', 'lighter');
+  background-color: var(--p-neutral-action-disabled, color('sky', 'lighter'));
 }
 
 .disabled {
-  color: color('ink', 'lightest');
+  color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
   cursor: initial;
 
   > .Backdrop {
-    background-color: color('sky', 'lighter');
+    background-color: var(--p-neutral-action-disabled, color('sky', 'lighter'));
     box-shadow: none;
   }
 
   svg {
-    fill: color('ink', 'lightest');
+    fill: var(--p-icon-disabled-on-surface, color('ink', 'lightest'));
   }
 }
 
@@ -106,6 +110,10 @@ $stacking-order: (
   font-weight: inherit;
   appearance: none;
 
+  .hasValue & {
+    color: var(--p-text-on-surface, initial);
+  }
+
   .Prefix + & {
     padding-left: 0;
   }
@@ -124,7 +132,7 @@ $stacking-order: (
   }
 
   &::placeholder {
-    color: color('ink', 'lightest');
+    color: var(--p-text-subdued-on-surface, color('ink', 'lightest'));
   }
 
   // These properties are used to remove the default "spinner" controls
@@ -172,10 +180,13 @@ $stacking-order: (
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: color('white');
+  background-color: var(--p-surface-foreground, color('white'));
   border: border(dark);
   border-radius: border-radius();
-  box-shadow: inset 0 1px 0 0 rgba(color('ink', 'lighter'), 0.05);
+  box-shadow: var(
+    --p-override-none,
+    (inset 0 1px 0 0 rgba(color('ink', 'lighter'), 0.05))
+  );
   pointer-events: none;
 
   &::after {
@@ -242,13 +253,16 @@ $stacking-order: (
 }
 
 .Spinner {
+  --p-text-field-spinner-offset-large: calc(
+    var(--p-text-field-spinner-offset) + #{border-width()}
+  );
   z-index: z-index(contents, $stacking-order);
   display: flex;
   align-self: stretch;
   flex-direction: column;
   width: rem(22px);
-  margin: 1px;
-  color: color('ink');
+  margin: var(--p-text-field-spinner-offset-large, 1px);
+  color: var(--icon-on-surface, color('ink'));
   cursor: pointer;
 }
 
@@ -279,18 +293,21 @@ $stacking-order: (
 }
 
 .Segment {
+  --p-text-field-spinner-border-radius: calc(
+    var(--p-border-radius-base) - var(--p-text-field-spinner-offset)
+  );
   display: flex;
   flex: 1 1 0%;
   justify-content: center;
   align-items: center;
   appearance: none;
-  background: linear-gradient(
-    to bottom,
-    color('white'),
-    color('sky', 'lighter')
+  background: var(
+    --p-neutral-action,
+    linear-gradient(to bottom, color('white'), color('sky', 'lighter'))
   );
   border: none;
-  border-left: border(dark);
+  border-radius: var(--p-text-field-spinner-border-radius, none);
+  border-left: var(--p-override-none, border(dark));
   transition: background duration(fast) easing(),
     box-shadow duration(fast) easing();
 
@@ -298,26 +315,41 @@ $stacking-order: (
     outline: none;
   }
 
+  &:hover {
+    background: var(--p-neutral-action-hovered);
+  }
+
   &:active {
-    background: linear-gradient(
-      to bottom,
-      color('sky', 'light'),
-      color('sky', 'light')
+    background: var(
+      --p-neutral-action-pressed,
+      linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'))
     );
-    box-shadow: inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
-      inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2);
+    box-shadow: var(
+      --p-override-none,
+      (
+        inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
+        inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2)
+      )
+    );
   }
 
   &:not(:first-child) {
-    margin-top: -1px;
-    border-top: border(dark);
+    margin-top: var(--p-override-none, -1px);
+    border-top: var(--p-override-none, border(dark));
   }
 
   &:first-child {
-    border-top-right-radius: border-radius();
+    border-top-right-radius: var(
+      --p-text-field-spinner-border-radius,
+      border-radius()
+    );
+    margin-bottom: var(--p-text-field-spinner-offset);
   }
 
   &:last-child {
-    border-bottom-right-radius: border-radius();
+    border-bottom-right-radius: var(
+      --p-text-field-spinner-border-radius,
+      border-radius()
+    );
   }
 }

@@ -274,6 +274,7 @@ function overrides() {
     [toCssCustomPropertySyntax('borderSubdued')]: `${rem(
       '1px',
     )} solid var(--p-divider-subdued-on-surface)`,
+    [toCssCustomPropertySyntax('textFieldSpinnerOffset')]: rem('2px'),
   };
 }
 
