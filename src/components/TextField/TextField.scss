@@ -68,7 +68,7 @@ $stacking-order: (
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
     &::after {
-      border-color: color('red', 'dark');
+      border-color: var(--p-interactive-focus, color('red', 'dark'));
     }
   }
 }
@@ -197,14 +197,15 @@ $stacking-order: (
   &::after {
     content: '';
     position: absolute;
-    top: $textfield-backdrop-offset;
-    right: $textfield-backdrop-offset;
-    bottom: $textfield-backdrop-offset;
-    left: $textfield-backdrop-offset;
-    border: border-width(thick) solid color('indigo');
-    border-radius: inherit;
+    top: var(--p-text-field-focus-ring-offset, $textfield-backdrop-offset);
+    right: var(--p-text-field-focus-ring-offset, $textfield-backdrop-offset);
+    bottom: var(--p-text-field-focus-ring-offset, $textfield-backdrop-offset);
+    left: var(--p-text-field-focus-ring-offset, $textfield-backdrop-offset);
+    border: var(--p-focus-ring-stroke, border-width(thick)) solid
+      var(--p-interactive-focus, color('indigo'));
+    border-radius: var(--p-text-field-focus-ring-border-radius, inherit);
     opacity: 0;
-    transition: opacity duration() easing();
+    transition: var(--p-override-none, opacity duration() easing());
     pointer-events: none;
   }
 }

@@ -275,6 +275,9 @@ function overrides() {
       '1px',
     )} solid var(--p-divider-subdued-on-surface)`,
     [toCssCustomPropertySyntax('textFieldSpinnerOffset')]: rem('2px'),
+    [toCssCustomPropertySyntax('textFieldFocusRingOffset')]: rem('-4px'),
+    [toCssCustomPropertySyntax('textFieldFocusRingBorderRadius')]: rem('7px'),
+    [toCssCustomPropertySyntax('focusRingStroke')]: rem('2px'),
   };
 }
 
