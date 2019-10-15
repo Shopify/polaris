@@ -14,6 +14,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Doesn't render `MenuActions` if no actions are passed to an `actionGroups` item inside `Page` ([2266](https://github.com/Shopify/polaris-react/pull/2266))
+
 ### Documentation
 
 - Added accessibility documentation for the drop zone component ([#2243](https://github.com/Shopify/polaris-react/pull/2243))
@@ -26,6 +28,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Code quality
 
 - Migrated `DateSelector` to use hooks instead of withAppProvider ([#2193](https://github.com/Shopify/polaris-react/pull/2193))
+- Migrated `Toast` to use hooks ([#2222](https://github.com/Shopify/polaris-react/pull/2222))
 
 ### Deprecations
 
