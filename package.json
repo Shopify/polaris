@@ -97,7 +97,7 @@
     "@shopify/sewing-kit": "^0.92.3",
     "@storybook/addon-a11y": "^5.2.1",
     "@storybook/addon-actions": "^5.2.1",
-    "@storybook/addon-backgrounds": "^5.2.1",
+    "@storybook/addon-contexts": "^5.2.1",
     "@storybook/addon-console": "^1.2.1",
     "@storybook/addon-notes": "^5.2.1",
     "@storybook/addon-viewport": "^5.2.1",
