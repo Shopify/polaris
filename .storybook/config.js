@@ -61,7 +61,11 @@ addDecorator(
       title: 'Themes',
       components: [AppProvider],
       params: [
-        {name: 'Base Theming', default: true, props: {i18n: enTranslations}},
+        {
+          name: 'Global Theming Disabled',
+          default: true,
+          props: {i18n: enTranslations},
+        },
         {
           name: 'Global Theming Enabled - Light Mode',
           props: {

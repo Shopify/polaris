@@ -18,6 +18,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed issue with `Stack` where a `Stack.Item` was not getting a minimum width ([2273](https://github.com/Shopify/polaris-react/pull/2273))
 - Fixed issue with `Filters` applying inconsistent border styles to sibling filters and when
   there is only one filter in the filter list ([2284](https://github.com/Shopify/polaris-react/pull/2284))
+- Added `aria-disabled` to select component content when it is disabled ([#2281](https://github.com/Shopify/polaris-react/pull/2281))
 
 ### Documentation
 
@@ -25,6 +26,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Improved accessibility documentation for the `Spinner` component ([#2258](https://github.com/Shopify/polaris-react/pull/2258))
 
 ### Development workflow
+
+- Add support for context customization in Storybook using addon-contexts ([#2281](https://github.com/Shopify/polaris-react/pull/2281))
 
 ### Dependency upgrades
 
