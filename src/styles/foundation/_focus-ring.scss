@@ -9,8 +9,9 @@
   position: relative;
 
   &::after {
-    content: var(--p-focus-ring-content, none);
+    content: var(--p-non-null-content, none);
     position: absolute;
+    z-index: 1;
     top: -$position;
     right: -$position;
     bottom: -$position;
@@ -22,5 +23,11 @@
     } @else {
       border-radius: calc(var(--p-border-radius-base) + #{$position});
     }
+  }
+}
+
+@mixin no-focus-ring {
+  &::after {
+    border: none;
   }
 }

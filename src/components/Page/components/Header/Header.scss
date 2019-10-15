@@ -67,6 +67,7 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
 }
 
 .PrimaryActionWrapper {
+  flex: 0 0 auto;
   .mobileView & {
     margin-top: spacing();
   }

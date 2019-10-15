@@ -17,7 +17,7 @@ describe('withAppProvider', () => {
       consoleSpy.mockRestore();
     };
     expect(fn).toThrow(
-      `No Theme was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.`,
+      `No i18n was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.`,
     );
   });
 });

@@ -199,7 +199,8 @@
           "on_or_before": "{date} 之前",
           "on_or_after": "{date} 之后"
         }
-      }
+      },
+      "showingTotalCount": "显示 {itemsCount} 项 {resource}（共 {totalItemsCount} 项）"
     },
     "SkeletonPage": {
       "loadingLabel": "页面加载"

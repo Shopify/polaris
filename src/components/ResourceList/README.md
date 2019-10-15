@@ -653,7 +653,7 @@ Shortcut actions are intended to provide quick access to popular actions from th
         ? [
             {
               content: 'View latest order',
-              accessibilityLabel: `View ${name}'s latest order`,
+              accessibilityLabel: `View ${name}’s latest order`,
               url: latestOrderUrl,
             },
           ]
@@ -709,7 +709,7 @@ Use persistent shortcut actions in rare cases when the action cannot be made ava
         ? [
             {
               content: 'View latest order',
-              accessibilityLabel: `View ${name}'s latest order`,
+              accessibilityLabel: `View ${name}’s latest order`,
               url: latestOrderUrl,
             },
           ]

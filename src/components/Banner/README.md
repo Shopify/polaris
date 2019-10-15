@@ -454,7 +454,7 @@ function BannerInModalExample() {
 
 <!-- example-for: web -->
 
-Banner can programmatically receive focus. Use this functionality to draw the merchant's attention to the banner.
+Banner can programmatically receive focus. Use this functionality to draw the merchant’s attention to the banner.
 
 ```jsx
 function BannerWithFocusExample() {

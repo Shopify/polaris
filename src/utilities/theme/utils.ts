@@ -22,20 +22,34 @@ export function buildThemeContext(themeConfig: ThemeConfig): Theme {
   return {logo};
 }
 
+/* eslint-disable babel/camelcase */
+// eslint-disable-next-line shopify/typescript/prefer-pascal-case-enums
+export enum UNSTABLE_Color {
+  Surface = '#FAFAFA',
+  DarkSurface = '#111213',
+  OnSurface = '#1F2225',
+  Interactive = '#0870D9',
+  Neutral = '#EAEAEB',
+  Branded = '#008060',
+  Critical = '#E32727',
+  Warning = '#FFC453',
+  Highlight = '#59D0C2',
+  Success = '#008060',
+}
+
 export function buildColors(theme: ThemeConfig) {
-  /* eslint-disable babel/camelcase */
   const {UNSTABLE_colors = {}} = theme;
 
   const {
-    surface = '#FAFAFA',
-    onSurface = '#1F2225',
-    interactive = '#0870D9',
-    interactiveNeutral = '#EAEAEB',
-    branded = '#008060',
-    critical = '#E32727',
-    warning = '#FFC453',
-    highlight = '#59D0C2',
-    success = '#008060',
+    surface = UNSTABLE_Color.Surface,
+    onSurface = UNSTABLE_Color.OnSurface,
+    interactive = UNSTABLE_Color.Interactive,
+    neutral = UNSTABLE_Color.Neutral,
+    branded = UNSTABLE_Color.Branded,
+    critical = UNSTABLE_Color.Critical,
+    warning = UNSTABLE_Color.Warning,
+    highlight = UNSTABLE_Color.Highlight,
+    success = UNSTABLE_Color.Success,
   } = UNSTABLE_colors;
   /* eslint-enable babel/camelcase */
 
@@ -46,10 +60,7 @@ export function buildColors(theme: ThemeConfig) {
       ...surfaceColors(colorToHsla(surface), lightSurface),
       ...onSurfaceColors(colorToHsla(onSurface), lightSurface),
       ...interactiveColors(colorToHsla(interactive), lightSurface),
-      ...interactiveNeutralColors(
-        colorToHsla(interactiveNeutral),
-        lightSurface,
-      ),
+      ...neutralColors(colorToHsla(neutral), lightSurface),
       ...brandedColors(colorToHsla(branded), lightSurface),
       ...criticalColors(colorToHsla(critical), lightSurface),
       ...warningColors(colorToHsla(warning), lightSurface),
@@ -67,6 +78,8 @@ function surfaceColors(color: HSLAColor, lightSurface: boolean) {
     surfaceForeground: setLightness(color, lightSurface ? 100 : 13),
     surfaceForegroundSubdued: setLightness(color, lightSurface ? 90 : 10),
     surfaceInverse: setLightness(color, lightSurface ? 0 : 100),
+    surfaceHovered: setLightness(color, lightSurface ? 93 : 20),
+    surfacePressed: setLightness(color, lightSurface ? 86 : 27),
   };
 }
 
@@ -143,15 +156,13 @@ function interactiveColors(color: HSLAColor, lightSurface: boolean) {
   };
 }
 
-function interactiveNeutralColors(color: HSLAColor, lightSurface: boolean) {
+function neutralColors(color: HSLAColor, lightSurface: boolean) {
   return {
-    interactiveNeutral: color,
-    interactiveNeutralElevation0: setLightness(color, lightSurface ? 100 : 7),
-    interactiveNeutralElevation1: setLightness(color, lightSurface ? 94 : 13),
-    interactiveNeutralElevation2: setLightness(color, lightSurface ? 92 : 22),
-    interactiveNeutralElevation3: setLightness(color, lightSurface ? 86 : 29),
-    interactiveNeutralElevation4: setLightness(color, lightSurface ? 76 : 39),
-    interactiveNeutralElevation5: setLightness(color, lightSurface ? 66 : 49),
+    neutral: color,
+    neutralActionDisabled: setLightness(color, lightSurface ? 94 : 13),
+    neutralAction: setLightness(color, lightSurface ? 92 : 22),
+    neutralActionHovered: setLightness(color, lightSurface ? 86 : 29),
+    neutralActionPressed: setLightness(color, lightSurface ? 76 : 39),
   };
 }
 
@@ -166,9 +177,18 @@ function brandedColors(color: HSLAColor, lightSurface: boolean) {
     iconSubduedOnBranded: setLightness(color, 88),
     textOnBranded: setLightness(color, 100),
     textSubduedOnBranded: setLightness(color, 90),
-    brandedSelected: setLightness(color, lightSurface ? 95 : 5),
-    brandedSelectedHovered: setLightness(color, lightSurface ? 81 : 19),
-    brandedSelectedPressed: setLightness(color, lightSurface ? 74 : 26),
+    brandedSelected: setSaturation(
+      setLightness(color, lightSurface ? 95 : 5),
+      30,
+    ),
+    brandedSelectedHovered: setSaturation(
+      setLightness(color, lightSurface ? 81 : 19),
+      22,
+    ),
+    brandedSelectedPressed: setSaturation(
+      setLightness(color, lightSurface ? 74 : 26),
+      22,
+    ),
   };
 }
 
@@ -180,6 +200,11 @@ function criticalColors(color: HSLAColor, lightSurface: boolean) {
     criticalSurface: setLightness(color, lightSurface ? 88 : 12),
     criticalSurfaceSubdued: setLightness(color, lightSurface ? 98 : 12),
     criticalText: setLightness(color, lightSurface ? 30 : 70),
+    criticalActionDisabled: setLightness(color, lightSurface ? 59 : 41),
+    criticalAction: setLightness(color, lightSurface ? 52 : 48),
+    criticalActionHovered: setLightness(color, lightSurface ? 45 : 55),
+    criticalActionSubdued: setLightness(color, lightSurface ? 38 : 62),
+    criticalActionPressed: setLightness(color, lightSurface ? 31 : 69),
   };
 }
 
@@ -218,13 +243,37 @@ function successColors(color: HSLAColor, lightSurface: boolean) {
 
 function overrides() {
   return {
-    [toCssCustomPropertySyntax('none')]: 'none',
-    [toCssCustomPropertySyntax('transparent')]: 'transparent',
-    [toCssCustomPropertySyntax('zero')]: '0',
+    [toCssCustomPropertySyntax('overrideNone')]: 'none',
+    [toCssCustomPropertySyntax('overrideTransparent')]: 'transparent',
+    [toCssCustomPropertySyntax('overrideOne')]: '1',
+    [toCssCustomPropertySyntax('overrideVisible')]: 'visible',
     [toCssCustomPropertySyntax('buttonFontWeight')]: '500',
-    [toCssCustomPropertySyntax('focusRingContent')]: "''",
+    [toCssCustomPropertySyntax('nonNullContent')]: "''",
     [toCssCustomPropertySyntax('borderRadiusBase')]: rem('4px'),
     [toCssCustomPropertySyntax('borderRadiusWide')]: rem('8px'),
+    [toCssCustomPropertySyntax('bannerDefaultBorder')]: buildBannerBorder(
+      '--p-divider-on-surface',
+    ),
+    [toCssCustomPropertySyntax('bannerSuccessBorder')]: buildBannerBorder(
+      '--p-success-divider',
+    ),
+
+    [toCssCustomPropertySyntax('bannerHighlightBorder')]: buildBannerBorder(
+      '--p-highlight-divider',
+    ),
+
+    [toCssCustomPropertySyntax('bannerWarningBorder')]: buildBannerBorder(
+      '--p-warning-divider',
+    ),
+
+    [toCssCustomPropertySyntax('bannerCriticalBorder')]: buildBannerBorder(
+      '--p-critical-divider',
+    ),
+
+    [toCssCustomPropertySyntax('badgeMixBlendMode')]: 'luminosity',
+    [toCssCustomPropertySyntax('borderSubdued')]: `${rem(
+      '1px',
+    )} solid var(--p-divider-subdued-on-surface)`,
   };
 }
 
@@ -245,6 +294,13 @@ function toCssCustomPropertySyntax(camelCase: string) {
 function setLightness(
   {hue, saturation, alpha}: HSLAColor,
   lightness: number,
+): HSLAColor {
+  return {hue, saturation, lightness, alpha};
+}
+
+function setSaturation(
+  {hue, lightness, alpha}: HSLAColor,
+  saturation: number,
 ): HSLAColor {
   return {hue, saturation, lightness, alpha};
 }
@@ -365,4 +421,10 @@ function parseColors([baseName, colors]: [
 function rem(px: string) {
   const baseFontSize = 10;
   return `${parseInt(px, 10) / baseFontSize}rem`;
+}
+
+function buildBannerBorder(cssVar: string) {
+  return `inset 0 ${rem('2px')} 0 0 var(${cssVar}), inset 0 0 0 ${rem(
+    '2px',
+  )} var(${cssVar})`;
 }

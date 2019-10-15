@@ -199,7 +199,8 @@
           "on_or_before": "avant le {date}",
           "on_or_after": "après le {date}"
         }
-      }
+      },
+      "showingTotalCount": "Afficher {itemsCount} sur {totalItemsCount} {resource}"
     },
     "SkeletonPage": {
       "loadingLabel": "Chargement de page"

@@ -2,7 +2,7 @@ import React, {useRef, useEffect} from 'react';
 import {mount} from 'test-utilities';
 import {useEventListener} from '../use-event-listener';
 
-describe('useComponentDidMount', () => {
+describe('useEventListener', () => {
   let addEventListenerSpy: jest.SpyInstance;
   let removeEventListenerSpy: jest.SpyInstance;
 

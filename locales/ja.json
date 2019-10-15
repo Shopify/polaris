@@ -199,7 +199,8 @@
           "on_or_before": "{date}以前",
           "on_or_after": "{date}以後"
         }
-      }
+      },
+      "showingTotalCount": "{totalItemsCount}件の{resource}中、{itemsCount}件を表示中"
     },
     "SkeletonPage": {
       "loadingLabel": "ページの読み込み中"

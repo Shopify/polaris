@@ -4,7 +4,7 @@ about: Ask a question or report a problem with Polaris or the documentation
 labels: Bug
 ---
 
-<!-- For feature requests, please use the following template: https://github.com/Shopify/polaris-react/issues/new?template=FEATURE_REQUEST.md -->
+<!-- For feature requests, please use the following template: https://github.com/Shopify/polaris-react/issues/new?labels=Feature+request&template=FEATURE_REQUEST.md -->
 
 ## Issue summary
 

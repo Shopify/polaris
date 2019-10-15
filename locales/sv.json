@@ -199,7 +199,8 @@
           "on_or_before": "före {date}",
           "on_or_after": "efter {date}"
         }
-      }
+      },
+      "showingTotalCount": "Visar {itemsCount} av {totalItemsCount} {resource}"
     },
     "SkeletonPage": {
       "loadingLabel": "Sidan laddar"
