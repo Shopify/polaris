@@ -64,8 +64,8 @@ function surfaceColors(color: HSLAColor, lightSurface: boolean) {
     surfaceForeground: setLightness(color, lightSurface ? 100 : 13),
     surfaceForegroundSubdued: setLightness(color, lightSurface ? 90 : 10),
     surfaceInverse: setLightness(color, lightSurface ? 0 : 100),
-    surfaceActionHovered: setLightness(color, lightSurface ? 93 : 20),
-    surfaceActionPressed: setLightness(color, lightSurface ? 86 : 27),
+    surfaceHovered: setLightness(color, lightSurface ? 93 : 20),
+    surfacePressed: setLightness(color, lightSurface ? 86 : 27),
   };
 }
 
