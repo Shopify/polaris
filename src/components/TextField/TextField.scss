@@ -262,7 +262,7 @@ $stacking-order: (
   flex-direction: column;
   width: rem(22px);
   margin: var(--p-text-field-spinner-offset-large, 1px);
-  color: var(--icon-on-surface, color('ink'));
+  color: var(--p-icon-on-surface, color('ink'));
   cursor: pointer;
 }
 
