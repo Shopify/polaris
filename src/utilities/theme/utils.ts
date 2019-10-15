@@ -22,20 +22,34 @@ export function buildThemeContext(themeConfig: ThemeConfig): Theme {
   return {logo};
 }
 
+/* eslint-disable babel/camelcase */
+// eslint-disable-next-line shopify/typescript/prefer-pascal-case-enums
+export enum UNSTABLE_Color {
+  Surface = '#FAFAFA',
+  DarkSurface = '#111213',
+  OnSurface = '#1F2225',
+  Interactive = '#0870D9',
+  Neutral = '#EAEAEB',
+  Branded = '#008060',
+  Critical = '#E32727',
+  Warning = '#FFC453',
+  Highlight = '#59D0C2',
+  Success = '#008060',
+}
+
 export function buildColors(theme: ThemeConfig) {
-  /* eslint-disable babel/camelcase */
   const {UNSTABLE_colors = {}} = theme;
 
   const {
-    surface = '#FAFAFA',
-    onSurface = '#1F2225',
-    interactive = '#0870D9',
-    neutral = '#EAEAEB',
-    branded = '#008060',
-    critical = '#E32727',
-    warning = '#FFC453',
-    highlight = '#59D0C2',
-    success = '#008060',
+    surface = UNSTABLE_Color.Surface,
+    onSurface = UNSTABLE_Color.OnSurface,
+    interactive = UNSTABLE_Color.Interactive,
+    neutral = UNSTABLE_Color.Neutral,
+    branded = UNSTABLE_Color.Branded,
+    critical = UNSTABLE_Color.Critical,
+    warning = UNSTABLE_Color.Warning,
+    highlight = UNSTABLE_Color.Highlight,
+    success = UNSTABLE_Color.Success,
   } = UNSTABLE_colors;
   /* eslint-enable babel/camelcase */
 
