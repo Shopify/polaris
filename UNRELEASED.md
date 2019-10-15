@@ -11,6 +11,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Added `totalItemsCount` prop to `ResourceList` component ([2233](https://github.com/Shopify/polaris-react/pull/2233))
+- Prevents the `Header` primary action label on `Page` from wrapping when the title is too long ([2262](https://github.com/Shopify/polaris-react/pull/2262))
 
 ### Bug fixes
 
