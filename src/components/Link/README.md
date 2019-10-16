@@ -51,7 +51,7 @@ If the existing link styles don’t meet the needs of your project, then use the
 
 ## Content guidelines
 
-The link component should follow the content guidelines for [links](/content/actionable-language#section-links).
+The link component should follow the content guidelines for [links](https://polaris.shopify.com/content/actionable-language#section-links).
 
 ---
 
