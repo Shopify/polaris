@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
 import {classNames, variationName} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
@@ -39,6 +39,8 @@ export interface ButtonProps {
   textAlign?: TextAlign;
   /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
   outline?: boolean;
+  /** Demonstrates a pressed state */
+  pressed?: boolean;
   /** Allows the button to grow to the width of its container */
   fullWidth?: boolean;
   /** Displays the button with a disclosure icon */
@@ -61,7 +63,10 @@ export interface ButtonProps {
   ariaControls?: string;
   /** Tells screen reader the controlled element is expanded */
   ariaExpanded?: boolean;
-  /** Tells screen reader the element is pressed */
+  /**
+   * @deprecated As of release 4.7.0, replaced by {@link https://polaris.shopify.com/components/structure/page#props-pressed}
+   * Tells screen reader the element is pressed
+   */
   ariaPressed?: boolean;
   /** Callback when clicked */
   onClick?(): void;
@@ -108,7 +113,18 @@ export function Button({
   size = DEFAULT_SIZE,
   textAlign,
   fullWidth,
+  pressed,
 }: ButtonProps) {
+  const hasGivenDeprecationWarning = useRef(false);
+
+  if (ariaPressed && !hasGivenDeprecationWarning.current) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The ariaPressed prop has been replaced with pressed',
+    );
+    hasGivenDeprecationWarning.current = true;
+  }
+
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;
@@ -121,6 +137,7 @@ export function Button({
     isDisabled && styles.disabled,
     loading && styles.loading,
     plain && styles.plain,
+    pressed && !disabled && !url && styles.pressed,
     monochrome && styles.monochrome,
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
     textAlign && styles[variationName('textAlign', textAlign)],
@@ -206,6 +223,8 @@ export function Button({
     );
   }
 
+  const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
+
   return (
     <button
       id={id}
@@ -222,7 +241,7 @@ export function Button({
       aria-label={accessibilityLabel}
       aria-controls={ariaControls}
       aria-expanded={ariaExpanded}
-      aria-pressed={ariaPressed}
+      aria-pressed={ariaPressedStatus}
       role={loading ? 'alert' : undefined}
       aria-busy={loading ? true : undefined}
     >
