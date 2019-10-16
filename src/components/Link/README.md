@@ -100,7 +100,7 @@ Use for text links that point to a different website. They will open in a new br
 
 ## Related components
 
-- For actions that don't appear within or directly following a sentence, use the use the [button component](/components/actions/button)
+- For actions that don’t appear within or directly following a sentence, use the [button component](https://polaris.shopify.com/components/actions/button)
 
 ---
 
