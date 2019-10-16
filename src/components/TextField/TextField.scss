@@ -112,6 +112,7 @@ $stacking-order: (
   font-size: inherit;
   font-weight: inherit;
   appearance: none;
+  caret-color: var(--p-text-on-surface);
 
   .hasValue & {
     color: var(--p-text-on-surface, color('black'));
