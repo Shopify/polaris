@@ -114,7 +114,7 @@ $stacking-order: (
   appearance: none;
 
   .hasValue & {
-    color: var(--p-text-on-surface, initial);
+    color: var(--p-text-on-surface, color('black'));
   }
 
   .Prefix + & {
