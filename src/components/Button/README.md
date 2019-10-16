@@ -54,7 +54,7 @@ Buttons are used primarily for actions, such as “Add”, “Close”, “Cance
 
 Links are used primarily for navigation, and usually appear within or directly following a sentence.
 
-The HTML for buttons and links carries specific meaning. Using these components intentionally and consistently results in:
+The HTML that renders for the `Button` and `Link` components carries meaning. Using these components intentionally and consistently results in:
 
 - a more inclusive experience for assistive technology users
 - a more cohesive visual experience for sighted users
