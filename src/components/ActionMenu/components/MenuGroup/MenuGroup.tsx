@@ -30,6 +30,10 @@ export class MenuGroup extends React.Component<MenuGroupProps, never> {
       icon,
     } = this.props;
 
+    if (!actions.length) {
+      return null;
+    }
+
     const popoverActivator = (
       <MenuAction
         disclosure
