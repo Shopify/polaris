@@ -8,6 +8,35 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.6.0 - 2019-16-08
+
+### Enhancements
+
+- Added a `totalItemsCount` prop to the `ResourceList` component ([2233](https://github.com/Shopify/polaris-react/pull/2233))
+- Prevented the `Header` primary action label on the `Page` component from wrapping when the title is too long ([2262](https://github.com/Shopify/polaris-react/pull/2262))
+
+### Bug fixes
+
+- Fixed an issue with the `Stack` component where a `Stack.Item` was not getting a minimum width ([2273](https://github.com/Shopify/polaris-react/pull/2273))
+- Fixed an issue with `Filters` applying inconsistent border styles to sibling filters when
+  there is only one filter in the filter list ([2284](https://github.com/Shopify/polaris-react/pull/2284))
+- Added `aria-disabled` to the select component's content when it is disabled ([#2281](https://github.com/Shopify/polaris-react/pull/2281))
+
+### Documentation
+
+- Added accessibility documentation for the `DropZone` component ([#2243](https://github.com/Shopify/polaris-react/pull/2243))
+- Improved accessibility documentation for the `Spinner` component ([#2258](https://github.com/Shopify/polaris-react/pull/2258))
+
+### Development workflow
+
+- Added support for context customization in Storybook using addon-contexts ([#2281](https://github.com/Shopify/polaris-react/pull/2281))
+
+### Code quality
+
+- Migrated `DateSelector` to use hooks instead of withAppProvider ([#2193](https://github.com/Shopify/polaris-react/pull/2193))
+- Migrated `Toast` to use hooks ([#2222](https://github.com/Shopify/polaris-react/pull/2222))
+- Removed `link`, `theme` and `scrollLockManager` from the object returned by `withAppProvider` as nothing consumes them any more ([#2277](https://github.com/Shopify/polaris-react/pull/2277))
+
 ## 4.5.0 - 2019-10-08
 
 ### Enhancements
