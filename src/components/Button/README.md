@@ -292,7 +292,7 @@ Use when a button has been pressed and the associated action is in progress.
 ## Related components
 
 - To combine or lay out multiple buttons, [use the button group component](https://polaris.shopify.com/components/actions/button-group)
-- For navigational actions that appear within or directly following a sentence, use the use the [link component](/components/navigation/link)
+- For navigational actions that appear within or directly following a sentence, use the [link component](https://polaris.shopify.com/components/navigation/link)
 
 ---
 
