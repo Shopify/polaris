@@ -25,7 +25,7 @@ keywords:
 
 Links take users to another place, and usually appear within or directly following a sentence.
 
-For actions that aren't related to navigation, use the [button component](/components/actions/button).
+For actions that aren’t related to navigation, use the [button component](https://polaris.shopify.com/components/actions/button).
 
 ---
 
