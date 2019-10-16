@@ -5,7 +5,6 @@ import {
   buildThemeContext,
   buildCustomProperties,
 } from '../../utilities/theme';
-import {themeProvider} from '../shared';
 import {useFeatures} from '../../utilities/features';
 
 interface ThemeProviderProps {
@@ -38,9 +37,7 @@ export function ThemeProvider({
 
   return (
     <ThemeContext.Provider value={theme}>
-      <div style={customProperties} {...themeProvider.props}>
-        {children}
-      </div>
+      <div style={customProperties}>{children}</div>
     </ThemeContext.Provider>
   );
 }
