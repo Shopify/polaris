@@ -45,7 +45,7 @@ The HTML for buttons and links carries specific meaning. Using these components 
 
 ### Unstyled links
 
-If the existing link styles don't meet the needs of your project, then use the `UnstyledLink` component to create a custom link style.
+If the existing link styles don’t meet the needs of your project, then use the `UnstyledLink` component to create a custom link style.
 
 ---
 
