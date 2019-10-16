@@ -91,6 +91,7 @@ export function calculateHorizontalPosition(
   preferredAlignment: PreferredAlignment,
 ) {
   const maximum = containerRect.width - overlayRect.width;
+  const borderWidth = 2;
 
   if (preferredAlignment === 'left') {
     return Math.min(
@@ -99,18 +100,26 @@ export function calculateHorizontalPosition(
     );
   } else if (preferredAlignment === 'right') {
     const activatorRight = activatorRect.left + activatorRect.width;
-    return Math.min(
-      maximum,
+
+    return (
+      maximum -
       Math.max(
         0,
-        activatorRight - overlayRect.width + overlayMargins.horizontal,
-      ),
+        activatorRight -
+          (overlayRect.width - overlayMargins.horizontal) -
+          borderWidth,
+      )
     );
   }
 
   return Math.min(
     maximum,
-    Math.max(0, activatorRect.center.x - overlayRect.width / 2),
+    Math.max(
+      0,
+      activatorRect.center.x -
+        overlayRect.width / 2 -
+        overlayMargins.horizontal,
+    ),
   );
 }
 

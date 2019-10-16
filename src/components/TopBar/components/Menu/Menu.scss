@@ -18,6 +18,11 @@ $activator-variables: (
   height: top-bar-height();
   display: flex;
   align-items: center;
+  margin-right: spacing(tight);
+
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    margin: 0 spacing(extra-tight);
+  }
 }
 
 .Activator {
@@ -32,7 +37,6 @@ $activator-variables: (
   border: 0;
   cursor: pointer;
   transition: menu(transition);
-  margin-right: spacing(tight);
   border-radius: border-radius();
 
   &:focus {
@@ -52,8 +56,6 @@ $activator-variables: (
   }
 
   @include breakpoint-before(layout-width(page-with-nav), false) {
-    margin: 0 spacing(extra-tight);
-
     &:focus,
     &:hover,
     &:active,
