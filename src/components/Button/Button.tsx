@@ -39,7 +39,7 @@ export interface ButtonProps {
   textAlign?: TextAlign;
   /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
   outline?: boolean;
-  /** Demonstrates a pressed state */
+  /** Gives the button the appearance of being pressed */
   pressed?: boolean;
   /** Allows the button to grow to the width of its container */
   fullWidth?: boolean;
