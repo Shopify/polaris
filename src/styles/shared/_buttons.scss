@@ -153,8 +153,8 @@
   color: var(--p-text-on-branded, color('white'));
 }
 
-@mixin button-outline($outline-color) {
-  background: transparent;
+@mixin button-outline($outline-color, $background-color: transparent) {
+  background: $background-color;
   border-color: rgba($outline-color, 0.4);
   box-shadow: none;
   color: darken($outline-color, 20%);
@@ -193,10 +193,10 @@
   @return rgba(color('ink'), 0.1);
 }
 
-@mixin plain-button-backdrop() {
+@mixin plain-button-backdrop($background-color: plain-button-background()) {
   padding: 2px 5px;
   margin: -2px -5px;
-  background: plain-button-background();
+  background: $background-color;
   border-radius: border-radius();
   transition: opacity duration() easing();
 }

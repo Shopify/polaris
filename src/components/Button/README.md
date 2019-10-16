@@ -243,6 +243,39 @@ Use for plain or monochrome buttons that could have a long length and should be 
 </Button>
 ```
 
+### Pressed button
+
+<!-- example-for: web -->
+
+Buttons are sometimes used as a toggle for other parts of the user interface.
+
+```jsx
+function PressedButton() {
+  const [isFirstButtonActive, setIsFirstButtonActive] = useState(true);
+
+  const handleFirstButtonClick = useCallback(() => {
+    if (isFirstButtonActive) return;
+    setIsFirstButtonActive(true);
+  }, [isFirstButtonActive]);
+
+  const handleSecondButtonClick = useCallback(() => {
+    if (!isFirstButtonActive) return;
+    setIsFirstButtonActive(false);
+  }, [isFirstButtonActive]);
+
+  return (
+    <ButtonGroup segmented>
+      <Button pressed={isFirstButtonActive} onClick={handleFirstButtonClick}>
+        First button
+      </Button>
+      <Button pressed={!isFirstButtonActive} onClick={handleSecondButtonClick}>
+        Second button
+      </Button>
+    </ButtonGroup>
+  );
+}
+```
+
 ### Disabled state
 
 Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it.

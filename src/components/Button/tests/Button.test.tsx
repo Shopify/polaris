@@ -1,6 +1,7 @@
 import React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {UnstyledLink, Icon, Spinner} from 'components';
 import {Button, IconWrapper} from '../Button';
 
@@ -191,8 +192,14 @@ describe('<Button />', () => {
 
   describe('ariaPressed', () => {
     it('sets an aria-pressed on the button', () => {
+      const warningSpy = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(() => {});
+
       const button = mountWithAppProvider(<Button ariaPressed />);
       expect(button.find('button').prop('aria-pressed')).toBeTruthy();
+
+      warningSpy.mockRestore();
     });
   });
 
@@ -278,6 +285,45 @@ describe('<Button />', () => {
       ).find('button');
       trigger(button, 'onKeyDown');
       expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('pressed', () => {
+    const buttonPressedClasses = 'Button pressed';
+
+    it('outputs a pressed button', () => {
+      const button = mountWithApp(<Button pressed />);
+      expect(button).toContainReactComponent('button', {
+        className: buttonPressedClasses,
+      });
+    });
+
+    it("doesn't output a pressed button when disabled", () => {
+      const button = mountWithApp(<Button pressed disabled />);
+      expect(button).not.toContainReactComponent('button', {
+        className: buttonPressedClasses,
+      });
+    });
+
+    it("doesn't output a pressed button when a url is present", () => {
+      const button = mountWithApp(<Button pressed url="/" />);
+      expect(button).not.toContainReactComponent('button', {
+        className: buttonPressedClasses,
+      });
+    });
+  });
+
+  describe('deprecations', () => {
+    it('warns the ariaPressed prop has been replaced', () => {
+      const warningSpy = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(() => {});
+      mountWithApp(<Button ariaPressed />);
+
+      expect(warningSpy).toHaveBeenCalledWith(
+        'Deprecation: The ariaPressed prop has been replaced with pressed',
+      );
+      warningSpy.mockRestore();
     });
   });
 });
