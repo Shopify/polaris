@@ -133,7 +133,7 @@ export function Select({
   const selectedOption = getSelectedOption(normalizedOptions, value);
 
   const contentMarkup = (
-    <div className={styles.Content} aria-hidden>
+    <div className={styles.Content} aria-hidden aria-disabled={disabled}>
       {inlineLabelMarkup}
       <span className={styles.SelectedOption}>{selectedOption}</span>
       <span className={styles.Icon}>
