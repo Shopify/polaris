@@ -6,7 +6,7 @@ export {
 
 export {ToastManager, ToastManagerProps} from './ToastManager';
 
-export {Loading, LoadingProps} from './Loading';
+export {Loading} from './Loading';
 
 export {ContextualSaveBar} from './ContextualSaveBar';
 

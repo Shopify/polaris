@@ -1,78 +1,57 @@
-import React from 'react';
-import debounce from 'lodash/debounce';
+import React, {useEffect, useState} from 'react';
 import styles from './Loading.scss';
-
-export interface LoadingProps {}
-
-interface State {
-  progress: number;
-  step: number;
-  animation: number | null;
-}
 
 const INITIAL_STEP = 10;
 const STUCK_THRESHOLD = 99;
 
-export class Loading extends React.Component<LoadingProps, State> {
-  state: State = {
-    progress: 0,
-    step: INITIAL_STEP,
-    animation: null,
-  };
+export function Loading() {
+  const [progress, setProgress] = useState(0.1);
 
-  private ariaValuenow = debounce(() => {
-    const {progress} = this.state;
-    return Math.floor(progress / 10) * 10;
-  }, 15);
+  useEffect(() => {
+    let animation: number;
+    let step = INITIAL_STEP;
+    let currentProgress = 0;
+    let previousProgress = 0;
 
-  componentDidMount() {
-    this.increment();
-  }
+    const increment = () => {
+      if (currentProgress >= STUCK_THRESHOLD) {
+        return;
+      }
 
-  componentWillUnmount() {
-    const {animation} = this.state;
+      currentProgress = Math.min(currentProgress + step, 100);
+      const nextProgress = Math.floor(currentProgress) / 100;
 
-    if (animation != null) {
-      cancelAnimationFrame(animation);
-    }
-  }
+      if (nextProgress !== previousProgress) {
+        setProgress(nextProgress);
+        previousProgress = nextProgress;
+      }
 
-  render() {
-    const {progress} = this.state;
+      step = INITIAL_STEP ** -(currentProgress / 25);
 
-    const customStyles = {
-      transform: `scaleX(${Math.floor(progress) / 100})`,
+      animation = requestAnimationFrame(increment);
     };
 
-    const ariaValuenow = this.ariaValuenow();
+    increment();
 
-    return (
-      <div className={styles.Loading}>
-        <div
-          className={styles.Level}
-          style={customStyles}
-          aria-valuenow={ariaValuenow}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          role="progressbar"
-        />
-      </div>
-    );
-  }
+    return () => {
+      cancelAnimationFrame(animation);
+    };
+  }, []);
 
-  private increment() {
-    const {progress, step} = this.state;
+  const customStyles = {
+    transform: `scaleX(${progress})`,
+  };
 
-    if (progress >= STUCK_THRESHOLD) {
-      return;
-    }
-
-    const animation = requestAnimationFrame(() => this.increment());
-
-    this.setState({
-      progress: Math.min(progress + step, 100),
-      step: INITIAL_STEP ** -(progress / 25),
-      animation,
-    });
-  }
+  return (
+    <div className={styles.Loading}>
+      <div
+        className={styles.Level}
+        style={customStyles}
+        aria-valuenow={progress * 100}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        role="progressbar"
+      />
+    </div>
+  );
 }
