@@ -17,9 +17,13 @@ export function buildCustomProperties(
     : buildLegacyColors(themeConfig);
 }
 
-export function buildThemeContext(themeConfig: ThemeConfig): Theme {
+export function buildThemeContext(
+  themeConfig: ThemeConfig,
+  cssCustomProperties: CustomPropertiesLike,
+): Theme {
   const {logo} = themeConfig;
-  return {logo};
+  // eslint-disable-next-line babel/camelcase
+  return {logo, UNSTABLE_cssCustomProperties: cssCustomProperties};
 }
 
 /* eslint-disable babel/camelcase */

@@ -19,10 +19,13 @@ export function ThemeProvider({
   children,
 }: ThemeProviderProps) {
   const {unstableGlobalTheming = false} = useFeatures();
-  const theme = useMemo(() => buildThemeContext(themeConfig), [themeConfig]);
   const customProperties = useMemo(
     () => buildCustomProperties(themeConfig, unstableGlobalTheming),
     [unstableGlobalTheming, themeConfig],
+  );
+  const theme = useMemo(
+    () => buildThemeContext(themeConfig, customProperties),
+    [themeConfig, customProperties],
   );
 
   // We want these values to be `null` instead of `undefined` when not set.

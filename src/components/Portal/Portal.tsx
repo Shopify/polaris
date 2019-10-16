@@ -1,6 +1,7 @@
 import React from 'react';
 import {createPortal} from 'react-dom';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {ThemeContext} from '../../utilities/theme';
 
 export interface PortalProps {
   children?: React.ReactNode;
@@ -16,6 +17,7 @@ const getUniqueID = createUniqueIDFactory('portal-');
 
 export class Portal extends React.PureComponent<PortalProps, State> {
   static defaultProps = {idPrefix: ''};
+  static contextType = ThemeContext;
 
   state: State = {isMounted: false};
 
@@ -27,14 +29,26 @@ export class Portal extends React.PureComponent<PortalProps, State> {
       : getUniqueID();
 
   componentDidMount() {
+    // eslint-disable-next-line babel/camelcase
+    const {UNSTABLE_cssCustomProperties} = this.context;
     this.portalNode = document.createElement('div');
     this.portalNode.setAttribute('data-portal-id', this.portalId);
+    this.portalNode.setAttribute(
+      'style',
+      JSON.stringify(UNSTABLE_cssCustomProperties),
+    );
     document.body.appendChild(this.portalNode);
     this.setState({isMounted: true});
   }
 
   componentDidUpdate(_: PortalProps, prevState: State) {
     const {onPortalCreated = noop} = this.props;
+    // eslint-disable-next-line babel/camelcase
+    const {UNSTABLE_cssCustomProperties} = this.context;
+    this.portalNode.setAttribute(
+      'style',
+      JSON.stringify(UNSTABLE_cssCustomProperties),
+    );
     if (!prevState.isMounted && this.state.isMounted) {
       onPortalCreated();
     }
