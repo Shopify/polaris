@@ -35,13 +35,13 @@ export interface BaseProps {
   prefix?: React.ReactNode;
   /** Text to display after value */
   suffix?: React.ReactNode;
-  /** Hint text to display */
+  /** Non-essential hint text to display */
   placeholder?: string;
   /** Initial value for the input */
   value?: string;
-  /** Additional hint text to display */
+  /** Secondary help text to display */
   helpText?: React.ReactNode;
-  /** Label for the input */
+  /** Primary label for the input */
   label: string;
   /** Adds an action to the label */
   labelAction?: Action;
