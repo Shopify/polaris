@@ -24,8 +24,12 @@ export function ThemeProvider({
     [unstableGlobalTheming, themeConfig],
   );
   const theme = useMemo(
-    () => buildThemeContext(themeConfig, customProperties),
-    [themeConfig, customProperties],
+    () =>
+      buildThemeContext(
+        themeConfig,
+        unstableGlobalTheming ? customProperties : undefined,
+      ),
+    [customProperties, themeConfig, unstableGlobalTheming],
   );
 
   // We want these values to be `null` instead of `undefined` when not set.
