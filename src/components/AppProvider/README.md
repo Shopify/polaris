@@ -430,13 +430,48 @@ function AppProviderWithAllThemeKeysExample() {
 
 Translations are provided in the locales folder. When using Polaris, you are able to import translations from all languages supported by the core Shopify product and consume them through the `i18n` prop.
 
+If a project has only one locale, then you can pass the JSON content from the locale file into `AppProvider`.
+
 ```jsx
+import AppProvider from '@shopify/polaris';
 // en.json is English. Replace with fr.json for French, etc
 import translations from '@shopify/polaris/locales/en.json';
 
-ReactDOM.render(
-  <AppProvider i18n={translations}>{/* App content */}</AppProvider>,
-);
+function App() {
+  return <AppProvider i18n={translations}>{/* App content */}</AppProvider>;
+}
+```
+
+If a project supports multiple locales, then load them dynamically using [`@shopify/react-i18n`](https://github.com/Shopify/quilt/tree/master/packages/react-i18n#translation). This ensures that you load only the translations you need.
+
+```jsx
+import AppProvider from '@shopify/polaris';
+// en.json is English. Replace with fr.json for French, etc
+import translations from '@shopify/polaris/locales/en.json';
+import {useI18n} from '@shopify/react-i18n';
+
+function App() {
+  const [i18n] = useI18n({
+    id: 'Polaris',
+    fallback: translations,
+    translations(locale) {
+      return import(
+        /* webpackChunkName: "Polaris-i18n-[request]", webpackMode: "lazy-once" */ `@shopify/polaris/locales/${locale}.json`
+      ).then((dictionary) => dictionary && dictionary.default);
+    },
+  });
+
+  // i18n.translations is an array of translation dictionaries, where the first
+  // dictionary is the desired language, and the second is the fallback.
+  // AppProvider however expects that the first dictionary is the fallback
+  // and the second is the desired language. Thus we need to reverse the array
+  // to ensure the dictionaries are in the order desired by AppProvider
+  return (
+    <AppProvider i18n={i18n.translations.reverse()}>
+      {/* App content */}
+    </AppProvider>
+  );
+}
 ```
 
 ---
