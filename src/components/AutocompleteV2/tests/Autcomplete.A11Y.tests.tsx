@@ -2,21 +2,21 @@
 describe('A11Y', () => {
   describe('combobox', () => {
     it.todo('renders the activator wrapped in a div with a role of combobox');
-    it.todo('has an `area-expanded` attribute of false by default');
+    it.todo('has an `aria-expanded` attribute of false by default');
     it.todo(
-      'has an `area-expanded` attribute of true when a ListBox is visible',
+      'has an `aria-expanded` attribute of true when a ListBox is visible',
     );
     it.todo(
-      'does not have an `area-owns` attribute when the LisBox is not visible',
+      'does not have an `aria-owns` attribute when the LisBox is not visible',
     );
     it.todo(
-      'has an `area-owns` attribute whos value matches the ListBox UL ID when the ListBox visible',
+      'has an `aria-owns` attribute whos value matches the ListBox UL ID when the ListBox visible',
     );
-    it.todo('has a an attribute of `haspopup` with a value of `listbox`');
+    it.todo('has a an attribute of `aria-haspopup` with a value of `listbox`');
 
     describe('input', () => {
       it.todo(
-        'has an `id` attribute whos value matches the labels for attribute value',
+        'has an `id` attribute whos value matches the label for attribute value',
       );
       it.todo(
         'has an `aria-autocomplete` attribute with a value of `list` if `inline` is false',
@@ -25,7 +25,7 @@ describe('A11Y', () => {
         'has an `aria-autocomplete` attribute with a value of `both` if `inline` is true',
       );
       it.todo(
-        'has an `aria-controls` attribute whos value matches the ListBox UL ID when the ListBox visible',
+        'has an `aria-controls` attribute whose value matches the ListBox UL ID when the ListBox visible',
       );
       it.todo(
         'does not have an `aria-controls` when the ListBox is not visible',
@@ -45,18 +45,21 @@ describe('A11Y', () => {
   });
   describe('option (li)', () => {
     it.todo(
-      'has an `aria-selected` attribute whos value is true when an option is selected via keyboard',
+      'has an `aria-selected` attribute whose value is `true` when an option is selected via keyboard',
     );
     it.todo(
-      'has an `aria-selected` attribute whos value is true when the option has a selected prop',
+      'has an `aria-selected` attribute whose value is `true` when the option has a selected prop',
     );
     it.todo(
-      'has an `aria-selected` attribute whos value is false when an option is not selected via keyboard or prop',
+      'has an `aria-selected` attribute whose value is `false` when an option is not selected via keyboard or prop',
+    );
+    it.todo(
+      'has multiple options with `aria-selected` set to `true` only if the listbox ul has an `aria-multiselectable` attribute set to `true`,
     );
   });
   describe('Aria-live', () => {
     it.todo(
-      'it renders an empty div with and aria-live attribute of polite by default',
+      'it renders an empty, visually hidden div on page load with and `aria-live` attribute of `polite` by default',
     );
     it.todo('');
   });
