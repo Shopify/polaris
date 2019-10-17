@@ -184,7 +184,8 @@ class ResourceList extends React.Component<CombinedProps, State> {
 
     const itemsCount = items.length;
     const resource =
-      itemsCount === 1 && !loading
+      !loading &&
+      ((!totalItemsCount && itemsCount === 1) || totalItemsCount === 1)
         ? resourceName.singular
         : resourceName.plural;
 

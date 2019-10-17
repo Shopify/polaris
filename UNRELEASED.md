@@ -19,6 +19,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed `PositionedOverlay` incorrectly calculating `Topbar.UserMenu` `Popover` width ([#1692](https://github.com/Shopify/polaris-react/pull/1692))
 - Fixed `recolor-icon` Sass mixin to properly scope `$secondary-color` to the child `svg` ([#2298](https://github.com/Shopify/polaris-react/pull/2298))
 - Fixed a regression with the positioning of the `Popover` component ([#2305](https://github.com/Shopify/polaris-react/pull/2305))
+- Fixed an issue with the `ResourceList` component where the plural resource name was not used for `totalItemsCount` ([#2299](https://github.com/Shopify/polaris-react/issues/2299))
 
 ### Documentation
 
