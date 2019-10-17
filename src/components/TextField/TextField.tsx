@@ -35,15 +35,15 @@ export interface BaseProps {
   prefix?: React.ReactNode;
   /** Text to display after value */
   suffix?: React.ReactNode;
-  /** Non-essential hint text to display */
+  /** Non-essential hint text to display in the field */
   placeholder?: string;
   /** Initial value for the input */
   value?: string;
-  /** Secondary help text to display */
+  /** Secondary instruction text that displays below the field */
   helpText?: React.ReactNode;
   /** Primary label for the input */
   label: string;
-  /** Adds an action to the label */
+  /** Adds an action next to the label */
   labelAction?: Action;
   /** Visually hide the label */
   labelHidden?: boolean;
