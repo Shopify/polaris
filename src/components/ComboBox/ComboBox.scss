@@ -1,13 +1,5 @@
 @import '../../styles/common';
 
-.Loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: spacing(tight) spacing();
-}
-
 .ListBox {
   @include unstyled-list;
 }
@@ -48,4 +40,34 @@
       }
     }
   }
+}
+
+.InlinePopoverWrapper {
+  position: relative;
+}
+
+.InlinePopoverOverlay {
+  position: absolute;
+  width: 100%;
+  margin-top: spacing(extra-tight);
+  transition: opacity duration('slow') easing('base');
+  will-change: opacity;
+}
+
+.InlinePopoverOverlay-hidden {
+  opacity: 0;
+}
+
+.InlinePopoverOverlay-visible {
+  opacity: 1;
+}
+
+.InlinePopover {
+  border-radius: border-radius();
+  background-color: color('white');
+  box-shadow: shadow(deep);
+}
+
+.Scrollable {
+  max-height: 300px;
 }

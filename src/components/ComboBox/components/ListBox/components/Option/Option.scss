@@ -1,21 +1,11 @@
-@import '../../styles/common';
-
-.Loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: spacing(tight) spacing();
-}
-
-.ListBox {
-  @include unstyled-list;
-}
+@import '../../../../../../styles/common';
 
 .Option {
   @include unstyled-list;
   padding: spacing(tight) spacing();
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
 
   &:hover {
     @include state(hover);
@@ -48,4 +38,14 @@
       }
     }
   }
+}
+
+.Content {
+  flex: 1 1 auto;
+}
+
+.Checkmark {
+  display: flex;
+  flex: 0 0 auto;
+  align-content: center;
 }
