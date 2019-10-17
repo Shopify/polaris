@@ -22,6 +22,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Clarified usage of the `helpText`, `label`, and `placeholder` props for the `TextField` componnent. ([#2321](https://github.com/Shopify/polaris-react/pull/2321))
+
 ### Development workflow
 
 ### Dependency upgrades
