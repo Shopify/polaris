@@ -846,7 +846,7 @@ If there are separate visual cues that convey the purpose of the text field to s
 
 When you provide help text via the `helpText` prop or an inline error message via the `error` prop, the help or error content is conveyed to screen reader users with the `aria-describedby` attribute. This attribute causes the content to be read along with the label, either immediately or after a short delay.
 
-Use the `placeholder` prop only to provide formatting instructions that aren't essential. [HTML placeholders can be difficult for users to access.](https://www.nngroup.com/articles/form-design-placeholders/) Don’t rely on placeholders to convey important information since the content isn’t always conveyed to all users.
+Use the `placeholder` prop only to provide formatting instructions that aren’t essential, as [users may find difficult or impossible to access placeholders](https://www.nngroup.com/articles/form-design-placeholders/).
 
 <!-- usageblock -->
 
