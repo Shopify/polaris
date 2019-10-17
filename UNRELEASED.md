@@ -11,6 +11,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Added `pressed` state to `Button` ([#2148](https://github.com/Shopify/polaris-react/pull/2148))
+- Added CSS custom properties to `Portal` container ([#2306](https://github.com/Shopify/polaris-react/pull/2306))
 
 ### Bug fixes
 
