@@ -1,7 +1,7 @@
 import React from 'react';
 import {createPortal} from 'react-dom';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {ThemeContext, CustomPropertiesLike} from '../../utilities/theme';
+import {ThemeContext} from '../../utilities/theme';
 
 export interface PortalProps {
   children?: React.ReactNode;
@@ -35,11 +35,8 @@ export class Portal extends React.PureComponent<PortalProps, State> {
 
     if (this.context != null) {
       /* eslint-disable babel/camelcase */
-      const {UNSTABLE_cssCustomProperties = {}} = this.context;
-      this.portalNode.setAttribute(
-        'style',
-        toString(UNSTABLE_cssCustomProperties),
-      );
+      const {UNSTABLE_cssCustomProperties = ''} = this.context;
+      this.portalNode.setAttribute('style', UNSTABLE_cssCustomProperties);
     }
     document.body.appendChild(this.portalNode);
     this.setState({isMounted: true});
@@ -49,10 +46,10 @@ export class Portal extends React.PureComponent<PortalProps, State> {
     const {onPortalCreated = noop} = this.props;
 
     if (this.context != null) {
-      const {UNSTABLE_cssCustomProperties = {}} = this.context;
+      const {UNSTABLE_cssCustomProperties = ''} = this.context;
       this.portalNode.setAttribute(
         'style',
-        toString(UNSTABLE_cssCustomProperties),
+        UNSTABLE_cssCustomProperties,
         /* eslint-enable babel/camelcase */
       );
     }
@@ -73,9 +70,3 @@ export class Portal extends React.PureComponent<PortalProps, State> {
 }
 
 function noop() {}
-
-function toString(obj: CustomPropertiesLike) {
-  return Object.entries(obj)
-    .map((pair) => pair.join(':'))
-    .join(';');
-}

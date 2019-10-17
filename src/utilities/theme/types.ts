@@ -40,5 +40,5 @@ export interface Theme {
   /** Sets the logo for the top bar and contextual save bar components*/
   logo?: ThemeLogo;
   // eslint-disable-next-line babel/camelcase
-  UNSTABLE_cssCustomProperties?: CustomPropertiesLike;
+  UNSTABLE_cssCustomProperties?: string;
 }

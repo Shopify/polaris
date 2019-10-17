@@ -22,8 +22,21 @@ export function buildThemeContext(
   cssCustomProperties?: CustomPropertiesLike,
 ): Theme {
   const {logo} = themeConfig;
-  // eslint-disable-next-line babel/camelcase
-  return {logo, UNSTABLE_cssCustomProperties: cssCustomProperties};
+  return {
+    logo,
+    // eslint-disable-next-line babel/camelcase
+    UNSTABLE_cssCustomProperties: toString(cssCustomProperties),
+  };
+}
+
+function toString(obj?: CustomPropertiesLike) {
+  if (obj) {
+    return Object.entries(obj)
+      .map((pair) => pair.join(':'))
+      .join(';');
+  } else {
+    return undefined;
+  }
 }
 
 /* eslint-disable babel/camelcase */
