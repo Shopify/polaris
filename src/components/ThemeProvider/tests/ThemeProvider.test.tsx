@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {ThemeProvider} from '../ThemeProvider';
-import {ThemeContext} from '../../../utilities/theme';
+import {ThemeContext, useTheme} from '../../../utilities/theme';
 
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
@@ -134,5 +134,36 @@ describe('<ThemeProvider />', () => {
         '--p-surface-background': 'hsl(0, 0%, 98%, 1)',
       }),
     );
+  });
+
+  it('sets color system properties in context when global theming is enabled', () => {
+    mountWithAppProvider(
+      <ThemeProvider theme={{}}>
+        <Child />
+      </ThemeProvider>,
+      {features: {unstableGlobalTheming: true}},
+    );
+
+    function Child() {
+      // eslint-disable-next-line babel/camelcase
+      const {UNSTABLE_cssCustomProperties} = useTheme();
+      expect(UNSTABLE_cssCustomProperties).toBeTruthy();
+      return null;
+    }
+  });
+
+  it('does not set color system properties in context by default', () => {
+    mountWithAppProvider(
+      <ThemeProvider theme={{}}>
+        <Child />
+      </ThemeProvider>,
+    );
+
+    function Child() {
+      // eslint-disable-next-line babel/camelcase
+      const {UNSTABLE_cssCustomProperties} = useTheme();
+      expect(UNSTABLE_cssCustomProperties).toBeUndefined();
+      return null;
+    }
   });
 });

@@ -5,6 +5,7 @@ import {
   ThemeContext,
   ThemeConfig,
   buildThemeContext,
+  buildCustomProperties,
 } from '../../utilities/theme';
 import {MediaQueryContext} from '../../utilities/media-query';
 import {
@@ -82,7 +83,11 @@ export function PolarisTestProvider({
   // I'm not that worried about it
   const appBridgeApp = appBridge as React.ContextType<typeof AppBridgeContext>;
 
-  const mergedTheme = buildThemeContext(theme);
+  const {unstableGlobalTheming = false} = features;
+  const customProperties = unstableGlobalTheming
+    ? buildCustomProperties(theme, unstableGlobalTheming)
+    : undefined;
+  const mergedTheme = buildThemeContext(theme, customProperties);
 
   const mergedFrame = createFrameContext(frame);
 

@@ -12,6 +12,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Updated `OptionList` section title to match `ActionList` section title ([https://github.com/Shopify/polaris-react/pull/2300])
 - Added `pressed` state to `Button` ([#2148](https://github.com/Shopify/polaris-react/pull/2148))
+- Added CSS custom properties to `Portal` container ([#2306](https://github.com/Shopify/polaris-react/pull/2306))
 
 ### Bug fixes
 
