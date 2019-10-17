@@ -19,7 +19,7 @@ export function buildCustomProperties(
 
 export function buildThemeContext(
   themeConfig: ThemeConfig,
-  cssCustomProperties: CustomPropertiesLike,
+  cssCustomProperties?: CustomPropertiesLike,
 ): Theme {
   const {logo} = themeConfig;
   // eslint-disable-next-line babel/camelcase
