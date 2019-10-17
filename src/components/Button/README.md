@@ -30,7 +30,9 @@ keywords:
 
 # Button
 
-Buttons are used to make common actions immediately visible and easy to perform with one click, tap, or keypress. Merchants can use them to navigate or to take action.
+Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as “view shipping settings”.
+
+For navigational actions that appear within or directly following a sentence, use the [link component](https://polaris.shopify.com/components/navigation/link).
 
 ---
 
@@ -46,11 +48,23 @@ Buttons should:
   confusion and make merchants unsure of what to do next.
 - Be positioned in consistent locations in the interface.
 
+### Buttons versus links
+
+Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as “view shipping settings”.
+
+Links are used primarily for navigation, and usually appear within or directly following a sentence.
+
+The HTML that renders for the `Button` and `Link` components carries meaning. Using these components intentionally and consistently results in:
+
+- a more inclusive experience for assistive technology users
+- a more cohesive visual experience for sighted users
+- products that are easier to maintain at scale
+
 ---
 
 ## Content guidelines
 
-Learn about the [content guidelines](https://polaris.shopify.com/content/actionable-language#section-buttons) for buttons.
+Buttons should follow the content guidelines for [buttons](https://polaris.shopify.com/content/actionable-language#section-buttons).
 
 ---
 
@@ -310,8 +324,8 @@ Use when a button has been pressed and the associated action is in progress.
 
 ## Related components
 
-- To learn how to combine or lay out multiple buttons, [use the button group component](https://polaris.shopify.com/components/actions/button-group)
-- To embed an action into a line of text, [use the link component](https://polaris.shopify.com/components/navigation/link)
+- To combine or lay out multiple buttons, [use the button group component](https://polaris.shopify.com/components/actions/button-group)
+- For navigational actions that appear within or directly following a sentence, use the [link component](https://polaris.shopify.com/components/navigation/link)
 
 ---
 
