@@ -1,7 +1,7 @@
 import React from 'react';
 import {createPortal} from 'react-dom';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {ThemeContext} from '../../utilities/theme';
+import {ThemeContext, CustomPropertiesLike} from '../../utilities/theme';
 
 export interface PortalProps {
   children?: React.ReactNode;
@@ -35,9 +35,7 @@ export class Portal extends React.PureComponent<PortalProps, State> {
     this.portalNode.setAttribute('data-portal-id', this.portalId);
     this.portalNode.setAttribute(
       'style',
-      Object.entries(UNSTABLE_cssCustomProperties)
-        .map((pair) => pair.join(':'))
-        .join(';'),
+      toString(UNSTABLE_cssCustomProperties),
     );
     document.body.appendChild(this.portalNode);
     this.setState({isMounted: true});
@@ -49,9 +47,7 @@ export class Portal extends React.PureComponent<PortalProps, State> {
     const {UNSTABLE_cssCustomProperties} = this.context;
     this.portalNode.setAttribute(
       'style',
-      Object.entries(UNSTABLE_cssCustomProperties)
-        .map((pair) => pair.join(':'))
-        .join(';'),
+      toString(UNSTABLE_cssCustomProperties),
     );
     if (!prevState.isMounted && this.state.isMounted) {
       onPortalCreated();
@@ -70,3 +66,9 @@ export class Portal extends React.PureComponent<PortalProps, State> {
 }
 
 function noop() {}
+
+function toString(obj: CustomPropertiesLike) {
+  return Object.entries(obj)
+    .map((pair) => pair.join(':'))
+    .join(';');
+}
