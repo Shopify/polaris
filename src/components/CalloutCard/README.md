@@ -188,6 +188,27 @@ Make all callout cards dismissible so merchants can get rid of cards about featu
 </CalloutCard>
 ```
 
+### Callout card with a banner and large image
+
+```jsx
+<CalloutCard
+  title="Customize the style of your checkout"
+  header={<Banner status="success">Customization saved</Banner>}
+  illustration={
+    <Image
+      alt=""
+      height="240px"
+      width="300px"
+      source="https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg"
+    />
+  }
+  primaryAction={{content: 'Customize checkout'}}
+  onDismiss={() => {}}
+>
+  <p>Upload your store’s logo, change colors and fonts, and more.</p>
+</CalloutCard>
+```
+
 ---
 
 ## Related components
