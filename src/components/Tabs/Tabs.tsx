@@ -78,7 +78,9 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
       polaris: {intl},
     } = this.props;
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
-    const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
+    const disclosureTabs = hiddenTabs
+      .map((tabIndex) => tabs[tabIndex])
+      .filter(Boolean);
 
     const panelMarkup = children
       ? tabs.map((_tab, index) => {
@@ -201,9 +203,13 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
     });
   };
 
-  private renderTabMarkup = (tab: TabDescriptor, index: number) => {
+  private renderTabMarkup = (tab: TabDescriptor | undefined, index: number) => {
     const {selected} = this.props;
     const {tabToFocus} = this.state;
+
+    if (!tab) {
+      return null;
+    }
 
     return (
       <Tab
