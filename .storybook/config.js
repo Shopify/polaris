@@ -48,26 +48,24 @@ function StrictModeToggle({isStrict = false, children}) {
 addDecorator(
   withContexts([
     {
-      icon: 'dashboard',
       title: 'Strict Mode',
       components: [StrictModeToggle],
       params: [
-        {name: 'React Strict Mode On', default: true, props: {isStrict: true}},
-        {name: 'React Strict Mode Off', props: {isStrict: false}},
+        {name: 'Disabled', props: {isStrict: false}},
+        {name: 'Enabled', default: true, props: {isStrict: true}},
       ],
     },
     {
-      icon: 'paintbrush',
-      title: 'Themes',
+      title: 'Global Theming',
       components: [AppProvider],
       params: [
         {
-          name: 'Global Theming Disabled',
+          name: 'Disabled',
           default: true,
           props: {i18n: enTranslations},
         },
         {
-          name: 'Global Theming Enabled - Light Mode',
+          name: 'Enabled - Light Mode',
           props: {
             i18n: enTranslations,
             features: {
@@ -77,7 +75,7 @@ addDecorator(
           },
         },
         {
-          name: 'Global Theming Enabled - Dark Mode',
+          name: 'Enabled - Dark Mode',
           props: {
             i18n: enTranslations,
             features: {unstableGlobalTheming: true},
