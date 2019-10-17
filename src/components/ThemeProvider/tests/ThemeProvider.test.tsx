@@ -120,4 +120,19 @@ describe('<ThemeProvider />', () => {
       }),
     );
   });
+
+  it('sets color system properties when global theming is enabled', () => {
+    const themeProvider = mountWithAppProvider(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      {features: {unstableGlobalTheming: true}},
+    );
+
+    expect(themeProvider.find('div').props().style).toStrictEqual(
+      expect.objectContaining({
+        '--p-surface-background': 'hsl(0, 0%, 98%, 1)',
+      }),
+    );
+  });
 });

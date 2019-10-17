@@ -151,7 +151,7 @@
       "Item": {
         "actionsDropdownLabel": "Ações para {accessibilityLabel}",
         "actionsDropdown": "Menu suspenso Ações",
-        "viewItem": "Visualizar detalhes de {itemName}"
+        "viewItem": "Visualizar informações de {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Ações",
@@ -199,7 +199,8 @@
           "on_or_before": "antes de {date}",
           "on_or_after": "depois de {date}"
         }
-      }
+      },
+      "showingTotalCount": "Mostrando {itemsCount} de {totalItemsCount} {resource}"
     },
     "SkeletonPage": {
       "loadingLabel": "Página carregando"

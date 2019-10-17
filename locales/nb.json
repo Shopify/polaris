@@ -1,0 +1,229 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar med initialene {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Laster inn"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Ufullstendig",
+        "partiallyComplete": "Delvis fullført",
+        "complete": "Ferdig"
+      },
+      "STATUS_LABELS": {
+        "info": "Info",
+        "success": "Vellykket",
+        "warning": "Advarsel",
+        "attention": "Obs",
+        "new": "Ny"
+      }
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Laster inn"
+    },
+    "Common": {
+      "checkbox": "avmerkingsboks",
+      "undo": "Angre",
+      "cancel": "Avbryt",
+      "newWindowAccessibilityHint": "(åpner et nytt vindu)",
+      "clear": "Fjern",
+      "close": "Lukk",
+      "submit": "Send",
+      "more": "Mer"
+    },
+    "ContextualSaveBar": {
+      "save": "Lagre",
+      "discard": "Forkast"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "sortere {direction} etter",
+      "navAccessibilityLabel": "Rull tabell {direction} en kolonne",
+      "totalsRowHeading": "Totalt"
+    },
+    "DatePicker": {
+      "previousMonth": "Vis forrige måned, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Vis neste måned, {nextMonth} {nextYear}",
+      "today": "I dag ",
+      "months": {
+        "january": "Januar",
+        "february": "Februar",
+        "march": "Mars",
+        "april": "April",
+        "may": "Mai",
+        "june": "Juni",
+        "july": "Juli",
+        "august": "August",
+        "september": "September",
+        "october": "Oktober",
+        "november": "November",
+        "december": "Desember"
+      },
+      "daysAbbreviated": {
+        "monday": "man",
+        "tuesday": "tir",
+        "wednesday": "ons",
+        "thursday": "tor",
+        "friday": "fre",
+        "saturday": "lør",
+        "sunday": "søn"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Forkast alle ulagrede endringer",
+      "message": "Hvis du forkaster endringer, sletter du alt du har gjort siden du sist gang du lagret.",
+      "primaryAction": "Forkast endringer",
+      "secondaryAction": "Fortsett å redigere"
+    },
+    "DropZone": {
+      "overlayTextFile": "Slipp fil for å laste opp",
+      "overlayTextImage": "Slipp bilde for å laste opp",
+      "errorOverlayTextFile": "Filtypen er ikke gyldig",
+      "errorOverlayTextImage": "Bildetypen er ikke gyldig",
+      "FileUpload": {
+        "actionTitleFile": "Legg til en fil",
+        "actionTitleImage": "Legg til et bilde",
+        "actionHintFile": "eller slipp filer for å laste opp",
+        "actionHintImage": "eller slipp bilder for å laste opp",
+        "label": "Last opp fil"
+      }
+    },
+    "EmptySearchResult": {
+      "altText": "Tøm søkeresultater"
+    },
+    "Frame": {
+      "skipToContent": "Gå videre til innholdet",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Lukk navigering"
+      }
+    },
+    "Icon": {
+      "backdropWarning": "{color}-ikonet godtar ikke bakgrunnsstiler. Ikonfargene som har bakgrunnsstiler, er: {colorsWithBackDrops}"
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Handlinger"
+      }
+    },
+    "Filters": {
+      "moreFilters": "Flere filtre",
+      "filter": "Filter {resourceName}",
+      "noFiltersApplied": "Ingen filtre ble brukt",
+      "cancel": "Avbryt",
+      "done": "Ferdig",
+      "clearAllFilters": "Fjern alle filtrene",
+      "clear": "Fjern",
+      "clearLabel": "Fjern {filterName}"
+    },
+    "Modal": {
+      "iFrameTitle": "brødtekstpåslag",
+      "modalWarning": "Disse nødvendige egenskapene mangler fra Modal: {missingProps}"
+    },
+    "Pagination": {
+      "previous": "Forrige",
+      "next": "Neste",
+      "pagination": "Sideinndeling"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Verdier som er overført til fremgangsrekvisitten, bør ikke være negative. Tilbakestiller {progress} til 0.",
+      "exceedWarningMessage": "Verdier som er overført til fremgangsrekvisitten, bør ikke overstige 100. Setter {progress} til 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Sorter etter",
+      "defaultItemSingular": "gjenstand",
+      "defaultItemPlural": "gjenstander",
+      "showing": "Viser {itemsCount} {resource}",
+      "loading": "Laster inn {resource}",
+      "selected": "{selectedItemsCount} er valgt",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} i butikken din er valgt.",
+      "selectAllItems": "Velg alle {itemsLength}+ {resourceNamePlural} i butikken din",
+      "emptySearchResultTitle": "Fant ingen {resourceNamePlural}",
+      "emptySearchResultDescription": "Prøv å endre filtrene eller søkeord",
+      "selectButtonText": "Velg",
+      "a11yCheckboxDeselectAllSingle": "Opphev valg av {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Velg {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Opphev alle valg av {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Velg alle {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} gjenstand",
+      "ariaLivePlural": "{itemsLength} gjenstander",
+      "Item": {
+        "actionsDropdownLabel": "Handlinger for {accessibilityLabel}",
+        "actionsDropdown": "Handlinger-rullegardin",
+        "viewItem": "Se detaljer for {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Handlinger",
+        "moreActionsActivatorLabel": "Flere handlinger",
+        "warningMessage": "For å gi en bedre brukeropplevelse. Det bør ikke være mer enn {maxPromotedActions} promoterte handlinger."
+      },
+      "FilterCreator": {
+        "filterButtonLabel": "Filter",
+        "selectFilterKeyPlaceholder": "Velg et filter",
+        "addFilterButtonLabel": "Legg til filter",
+        "showAllWhere": "Vis alle {resourceNamePlural} der:"
+      },
+      "FilterControl": {
+        "textFieldLabel": "Søk {resourceNamePlural}"
+      },
+      "FilterValueSelector": {
+        "selectFilterValuePlaceholder": "Velg et filter"
+      },
+      "DateSelector": {
+        "dateFilterLabel": "Velg en verdi",
+        "dateValueLabel": "Dato",
+        "dateValueError": "Match formatet ÅÅÅÅ-MM-DD",
+        "dateValuePlaceholder": "ÅÅÅÅ-MM-DD",
+        "SelectOptions": {
+          "PastWeek": "i løpet av den siste uken",
+          "PastMonth": "i løpet av den siste måneden",
+          "PastQuarter": "i løpet av de siste 3 månedene",
+          "PastYear": "i løpet av det siste året",
+          "ComingWeek": "neste uke",
+          "ComingMonth": "neste måned",
+          "ComingQuarter": "i løpet av de neste 3 månedene",
+          "ComingYear": "i løpet av det neste året",
+          "OnOrBefore": "på eller før",
+          "OnOrAfter": "på eller etter"
+        },
+        "FilterLabelForValue": {
+          "past_week": "i løpet av den siste uken",
+          "past_month": "i løpet av den siste måneden",
+          "past_quarter": "i løpet av de siste 3 månedene",
+          "past_year": "i løpet av det siste året",
+          "coming_week": "neste uke",
+          "coming_month": "neste måned",
+          "coming_quarter": "i løpet av de neste 3 månedene",
+          "coming_year": "i løpet av det neste året",
+          "on_or_before": "før {date}",
+          "on_or_after": "etter {date}"
+        }
+      },
+      "showingTotalCount": "Viser {itemsCount} av {totalItemsCount} {resource}"
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Siden laster"
+    },
+    "Spinner": {
+      "warningMessage": "Fargen {color} er ikke ment å bli brukt på {size} spinnere. Fargene som er tilgjengelige på store spinnere, er: {colors}"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "Flere faner"
+    },
+    "Tag": {
+      "ariaLabel": "Fjern {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} tegn",
+      "characterCountWithMaxLength": "{count} av {limit} tegn brukt"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Aktiver/deaktiver meny",
+      "SearchField": {
+        "clearButtonLabel": "Fjern",
+        "search": "Søk"
+      }
+    }
+  }
+}

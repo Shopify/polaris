@@ -34,6 +34,11 @@ describe('<Toast />', () => {
     expect(message.text()).toStrictEqual('Image uploaded');
   });
 
+  it('renders an error Toast when error is true', () => {
+    const message = mountWithAppProvider(<Toast {...mockProps} error />);
+    expect(message.find('.Toast').hasClass('error')).toBe(true);
+  });
+
   describe('dismiss button', () => {
     it('renders by default', () => {
       expect(message.find('button')).toHaveLength(1);

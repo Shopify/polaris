@@ -70,7 +70,7 @@ function SheetExample() {
   const [sheetActive, setSheetActive] = useState(true);
   const [title, setTitle] = useState('Big yellow socks');
   const [description, setDescription] = useState(
-    "They're big, yellow socks. What more could you possibly want from socks? These socks will change your life.\n\nThey're made from light, hand-loomed cotton that's so soft, you'll feel like you are walking on a cloud.",
+    "They’re big, yellow socks. What more could you possibly want from socks? These socks will change your life.\n\nThey’re made from light, hand-loomed cotton that’s so soft, you'll feel like you are walking on a cloud.",
   );
   const [salesChannels, setSalesChannels] = useState([
     {value: 'onlineStore', label: 'Online Store'},

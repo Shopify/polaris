@@ -70,6 +70,8 @@ export interface ResourceListProps {
   loading?: boolean;
   /** Boolean to show or hide the header */
   showHeader?: boolean;
+  /** Total number of resources */
+  totalItemsCount?: number;
   /** Current value of the sort control */
   sortValue?: string;
   /** Collection of sort options to choose from */
@@ -177,6 +179,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       items,
       polaris: {intl},
       loading,
+      totalItemsCount,
     } = this.props;
 
     const itemsCount = items.length;
@@ -185,14 +188,20 @@ class ResourceList extends React.Component<CombinedProps, State> {
         ? resourceName.singular
         : resourceName.plural;
 
-    const headerTitleMarkup = loading
-      ? intl.translate('Polaris.ResourceList.loading', {resource})
-      : intl.translate('Polaris.ResourceList.showing', {
-          itemsCount,
-          resource,
-        });
-
-    return headerTitleMarkup;
+    if (loading) {
+      return intl.translate('Polaris.ResourceList.loading', {resource});
+    } else if (totalItemsCount) {
+      return intl.translate('Polaris.ResourceList.showingTotalCount', {
+        itemsCount,
+        totalItemsCount,
+        resource,
+      });
+    } else {
+      return intl.translate('Polaris.ResourceList.showing', {
+        itemsCount,
+        resource,
+      });
+    }
   }
 
   private get bulkActionsLabel() {

@@ -148,7 +148,7 @@ class Filters extends React.Component<ComposedProps, State> {
         styles.FilterTriggerContainer,
         filterIsOpen && styles.open,
         index === 0 && styles.first,
-        index === filters.length - 1 && styles.last,
+        filters.length !== 1 && index === filters.length - 1 && styles.last,
       );
 
       const appliedFilterContent = this.getAppliedFilterContent(filter.key);

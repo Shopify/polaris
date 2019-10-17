@@ -1,7 +1,7 @@
 {
   "name": "@joinarthur/polaris",
   "description": "Shopify’s product component library",
-  "version": "4.5.0-fork.1",
+  "version": "4.6.0-fork.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -98,8 +98,8 @@
     "@shopify/sewing-kit": "^0.92.3",
     "@storybook/addon-a11y": "^5.2.1",
     "@storybook/addon-actions": "^5.2.1",
-    "@storybook/addon-backgrounds": "^5.2.1",
     "@storybook/addon-console": "^1.2.1",
+    "@storybook/addon-contexts": "^5.2.1",
     "@storybook/addon-notes": "^5.2.1",
     "@storybook/addon-viewport": "^5.2.1",
     "@storybook/react": "^5.2.1",

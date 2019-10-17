@@ -51,6 +51,12 @@ describe('needsVariant', () => {
 
 /* eslint-disable babel/camelcase */
 describe('buildCustomProperties', () => {
+  const legacyCustomProperties = {
+    '--top-bar-background': '#eeeeee',
+    '--top-bar-background-lighter': 'hsl(0, 10%, 100%, 1)',
+    '--top-bar-color': 'rgb(33, 43, 54)',
+  };
+
   it('creates legacy custom properties but ignores new custom properties when global theming is disabled', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}},
@@ -58,14 +64,10 @@ describe('buildCustomProperties', () => {
     };
 
     const colors = buildCustomProperties(theme, false);
-    expect(colors).toStrictEqual({
-      '--top-bar-background': '#eeeeee',
-      '--top-bar-background-lighter': 'hsl(0, 10%, 100%, 1)',
-      '--top-bar-color': 'rgb(33, 43, 54)',
-    });
+    expect(colors).toStrictEqual(legacyCustomProperties);
   });
 
-  it('creates legacy custom properties with new custom properties when global theming is enabled', () => {
+  it('creates new custom properties when global theming is enabled but ignores legacy colors', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}},
       UNSTABLE_colors: {surface: '#ffffff'},
@@ -79,10 +81,12 @@ describe('buildCustomProperties', () => {
         '--p-surface-foreground': 'hsl(0, 0%, 100%, 1)',
         '--p-surface-foreground-subdued': 'hsl(0, 0%, 90%, 1)',
         '--p-surface-inverse': 'hsl(0, 0%, 0%, 1)',
-        '--top-bar-background': '#eeeeee',
-        '--top-bar-background-lighter': 'hsl(0, 10%, 100%, 1)',
-        '--top-bar-color': 'rgb(33, 43, 54)',
+        '--p-surface-hovered': 'hsl(0, 0%, 93%, 1)',
+        '--p-surface-pressed': 'hsl(0, 0%, 86%, 1)',
       }),
+    );
+    expect(colors).not.toStrictEqual(
+      expect.objectContaining(legacyCustomProperties),
     );
   });
 });
@@ -97,6 +101,8 @@ describe('buildColors', () => {
           '--p-surface-foreground': 'hsl(0, 0%, 100%, 1)',
           '--p-surface-foreground-subdued': 'hsl(0, 0%, 90%, 1)',
           '--p-surface-inverse': 'hsl(0, 0%, 0%, 1)',
+          '--p-surface-hovered': 'hsl(0, 0%, 93%, 1)',
+          '--p-surface-pressed': 'hsl(0, 0%, 86%, 1)',
         }),
       );
     });
@@ -111,6 +117,8 @@ describe('buildColors', () => {
           '--p-surface-foreground': 'hsl(0, 0%, 100%, 1)',
           '--p-surface-foreground-subdued': 'hsl(0, 0%, 90%, 1)',
           '--p-surface-inverse': 'hsl(0, 0%, 0%, 1)',
+          '--p-surface-hovered': 'hsl(0, 0%, 93%, 1)',
+          '--p-surface-pressed': 'hsl(0, 0%, 86%, 1)',
         }),
       );
     });
@@ -125,6 +133,8 @@ describe('buildColors', () => {
           '--p-surface-foreground': 'hsl(0, 0%, 13%, 1)',
           '--p-surface-foreground-subdued': 'hsl(0, 0%, 10%, 1)',
           '--p-surface-inverse': 'hsl(0, 0%, 100%, 1)',
+          '--p-surface-hovered': 'hsl(0, 0%, 20%, 1)',
+          '--p-surface-pressed': 'hsl(0, 0%, 27%, 1)',
         }),
       );
     });
@@ -384,17 +394,15 @@ describe('buildColors', () => {
     });
   });
 
-  describe('interactiveNeutral', () => {
+  describe('neutral', () => {
     it('has a default value', () => {
       expect(buildColors({UNSTABLE_colors: {}})).toStrictEqual(
         expect.objectContaining({
-          '--p-interactive-neutral': 'hsl(240, 2%, 92%, 1)',
-          '--p-interactive-neutral-elevation-0': 'hsl(240, 2%, 100%, 1)',
-          '--p-interactive-neutral-elevation-1': 'hsl(240, 2%, 94%, 1)',
-          '--p-interactive-neutral-elevation-2': 'hsl(240, 2%, 92%, 1)',
-          '--p-interactive-neutral-elevation-3': 'hsl(240, 2%, 86%, 1)',
-          '--p-interactive-neutral-elevation-4': 'hsl(240, 2%, 76%, 1)',
-          '--p-interactive-neutral-elevation-5': 'hsl(240, 2%, 66%, 1)',
+          '--p-neutral': 'hsl(240, 2%, 92%, 1)',
+          '--p-neutral-action-disabled': 'hsl(240, 2%, 94%, 1)',
+          '--p-neutral-action': 'hsl(240, 2%, 92%, 1)',
+          '--p-neutral-action-hovered': 'hsl(240, 2%, 86%, 1)',
+          '--p-neutral-action-pressed': 'hsl(240, 2%, 76%, 1)',
         }),
       );
     });
@@ -402,23 +410,17 @@ describe('buildColors', () => {
     it('creates variants when given a light surface', () => {
       expect(
         buildColors({
-          UNSTABLE_colors: {surface: '#ffffff', interactiveNeutral: '#778899'},
+          UNSTABLE_colors: {surface: '#ffffff', neutral: '#778899'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
-          '--p-interactive-neutral': 'hsl(210, 14.000000000000002%, 53%, 1)',
-          '--p-interactive-neutral-elevation-0':
-            'hsl(210, 14.000000000000002%, 100%, 1)',
-          '--p-interactive-neutral-elevation-1':
+          '--p-neutral': 'hsl(210, 14.000000000000002%, 53%, 1)',
+
+          '--p-neutral-action-disabled':
             'hsl(210, 14.000000000000002%, 94%, 1)',
-          '--p-interactive-neutral-elevation-2':
-            'hsl(210, 14.000000000000002%, 92%, 1)',
-          '--p-interactive-neutral-elevation-3':
-            'hsl(210, 14.000000000000002%, 86%, 1)',
-          '--p-interactive-neutral-elevation-4':
-            'hsl(210, 14.000000000000002%, 76%, 1)',
-          '--p-interactive-neutral-elevation-5':
-            'hsl(210, 14.000000000000002%, 66%, 1)',
+          '--p-neutral-action': 'hsl(210, 14.000000000000002%, 92%, 1)',
+          '--p-neutral-action-hovered': 'hsl(210, 14.000000000000002%, 86%, 1)',
+          '--p-neutral-action-pressed': 'hsl(210, 14.000000000000002%, 76%, 1)',
         }),
       );
     });
@@ -426,23 +428,16 @@ describe('buildColors', () => {
     it('creates variants when given a dark surface', () => {
       expect(
         buildColors({
-          UNSTABLE_colors: {surface: '#000000', interactiveNeutral: '#778899'},
+          UNSTABLE_colors: {surface: '#000000', neutral: '#778899'},
         }),
       ).toStrictEqual(
         expect.objectContaining({
-          '--p-interactive-neutral': 'hsl(210, 14.000000000000002%, 53%, 1)',
-          '--p-interactive-neutral-elevation-0':
-            'hsl(210, 14.000000000000002%, 7%, 1)',
-          '--p-interactive-neutral-elevation-1':
+          '--p-neutral': 'hsl(210, 14.000000000000002%, 53%, 1)',
+          '--p-neutral-action-disabled':
             'hsl(210, 14.000000000000002%, 13%, 1)',
-          '--p-interactive-neutral-elevation-2':
-            'hsl(210, 14.000000000000002%, 22%, 1)',
-          '--p-interactive-neutral-elevation-3':
-            'hsl(210, 14.000000000000002%, 29%, 1)',
-          '--p-interactive-neutral-elevation-4':
-            'hsl(210, 14.000000000000002%, 39%, 1)',
-          '--p-interactive-neutral-elevation-5':
-            'hsl(210, 14.000000000000002%, 49%, 1)',
+          '--p-neutral-action': 'hsl(210, 14.000000000000002%, 22%, 1)',
+          '--p-neutral-action-hovered': 'hsl(210, 14.000000000000002%, 29%, 1)',
+          '--p-neutral-action-pressed': 'hsl(210, 14.000000000000002%, 39%, 1)',
         }),
       );
     });
@@ -457,9 +452,9 @@ describe('buildColors', () => {
           '--p-branded-action-disabled': 'hsl(165, 100%, 32%, 1)',
           '--p-branded-action-hovered': 'hsl(165, 100%, 22%, 1)',
           '--p-branded-action-pressed': 'hsl(165, 100%, 15%, 1)',
-          '--p-branded-selected': 'hsl(165, 100%, 95%, 1)',
-          '--p-branded-selected-hovered': 'hsl(165, 100%, 81%, 1)',
-          '--p-branded-selected-pressed': 'hsl(165, 100%, 74%, 1)',
+          '--p-branded-selected': 'hsl(165, 30%, 95%, 1)',
+          '--p-branded-selected-hovered': 'hsl(165, 22%, 81%, 1)',
+          '--p-branded-selected-pressed': 'hsl(165, 22%, 74%, 1)',
         }),
       );
     });
@@ -476,9 +471,9 @@ describe('buildColors', () => {
           '--p-branded-action-disabled': 'hsl(300, 100%, 32%, 1)',
           '--p-branded-action-hovered': 'hsl(300, 100%, 22%, 1)',
           '--p-branded-action-pressed': 'hsl(300, 100%, 15%, 1)',
-          '--p-branded-selected': 'hsl(300, 100%, 95%, 1)',
-          '--p-branded-selected-hovered': 'hsl(300, 100%, 81%, 1)',
-          '--p-branded-selected-pressed': 'hsl(300, 100%, 74%, 1)',
+          '--p-branded-selected': 'hsl(300, 30%, 95%, 1)',
+          '--p-branded-selected-hovered': 'hsl(300, 22%, 81%, 1)',
+          '--p-branded-selected-pressed': 'hsl(300, 22%, 74%, 1)',
         }),
       );
     });
@@ -495,9 +490,9 @@ describe('buildColors', () => {
           '--p-branded-action-disabled': 'hsl(300, 100%, 32%, 1)',
           '--p-branded-action-hovered': 'hsl(300, 100%, 22%, 1)',
           '--p-branded-action-pressed': 'hsl(300, 100%, 15%, 1)',
-          '--p-branded-selected': 'hsl(300, 100%, 5%, 1)',
-          '--p-branded-selected-hovered': 'hsl(300, 100%, 19%, 1)',
-          '--p-branded-selected-pressed': 'hsl(300, 100%, 26%, 1)',
+          '--p-branded-selected': 'hsl(300, 30%, 5%, 1)',
+          '--p-branded-selected-hovered': 'hsl(300, 22%, 19%, 1)',
+          '--p-branded-selected-pressed': 'hsl(300, 22%, 26%, 1)',
         }),
       );
     });
@@ -513,6 +508,11 @@ describe('buildColors', () => {
           '--p-critical-surface': 'hsl(0, 77%, 88%, 1)',
           '--p-critical-surface-subdued': 'hsl(0, 77%, 98%, 1)',
           '--p-critical-text': 'hsl(0, 77%, 30%, 1)',
+          '--p-critical-action-disabled': 'hsl(0, 77%, 59%, 1)',
+          '--p-critical-action': 'hsl(0, 77%, 52%, 1)',
+          '--p-critical-action-hovered': 'hsl(0, 77%, 45%, 1)',
+          '--p-critical-action-subdued': 'hsl(0, 77%, 38%, 1)',
+          '--p-critical-action-pressed': 'hsl(0, 77%, 31%, 1)',
         }),
       );
     });
@@ -530,6 +530,11 @@ describe('buildColors', () => {
           '--p-critical-surface': 'hsl(348, 83%, 88%, 1)',
           '--p-critical-surface-subdued': 'hsl(348, 83%, 98%, 1)',
           '--p-critical-text': 'hsl(348, 83%, 30%, 1)',
+          '--p-critical-action-disabled': 'hsl(348, 83%, 59%, 1)',
+          '--p-critical-action': 'hsl(348, 83%, 52%, 1)',
+          '--p-critical-action-hovered': 'hsl(348, 83%, 45%, 1)',
+          '--p-critical-action-pressed': 'hsl(348, 83%, 31%, 1)',
+          '--p-critical-action-subdued': 'hsl(348, 83%, 38%, 1)',
         }),
       );
     });
@@ -547,6 +552,11 @@ describe('buildColors', () => {
           '--p-critical-surface': 'hsl(348, 83%, 12%, 1)',
           '--p-critical-surface-subdued': 'hsl(348, 83%, 12%, 1)',
           '--p-critical-text': 'hsl(348, 83%, 70%, 1)',
+          '--p-critical-action': 'hsl(348, 83%, 48%, 1)',
+          '--p-critical-action-disabled': 'hsl(348, 83%, 41%, 1)',
+          '--p-critical-action-hovered': 'hsl(348, 83%, 55%, 1)',
+          '--p-critical-action-pressed': 'hsl(348, 83%, 69%, 1)',
+          '--p-critical-action-subdued': 'hsl(348, 83%, 62%, 1)',
         }),
       );
     });
