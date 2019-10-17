@@ -39,7 +39,7 @@ export interface BaseProps {
   placeholder?: string;
   /** Initial value for the input */
   value?: string;
-  /** Secondary instruction text that displays below the field */
+  /** Secondary help text to display below the field */
   helpText?: React.ReactNode;
   /** Primary label for the input */
   label: string;
