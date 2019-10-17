@@ -5,7 +5,6 @@ import {
   buildThemeContext,
   buildCustomProperties,
 } from '../../utilities/theme';
-import {themeProvider} from '../shared';
 import {useFeatures} from '../../utilities/features';
 
 interface ThemeProviderProps {
@@ -20,10 +19,17 @@ export function ThemeProvider({
   children,
 }: ThemeProviderProps) {
   const {unstableGlobalTheming = false} = useFeatures();
-  const theme = useMemo(() => buildThemeContext(themeConfig), [themeConfig]);
   const customProperties = useMemo(
     () => buildCustomProperties(themeConfig, unstableGlobalTheming),
     [unstableGlobalTheming, themeConfig],
+  );
+  const theme = useMemo(
+    () =>
+      buildThemeContext(
+        themeConfig,
+        unstableGlobalTheming ? customProperties : undefined,
+      ),
+    [customProperties, themeConfig, unstableGlobalTheming],
   );
 
   // We want these values to be `null` instead of `undefined` when not set.
@@ -38,9 +44,7 @@ export function ThemeProvider({
 
   return (
     <ThemeContext.Provider value={theme}>
-      <div style={customProperties} {...themeProvider.props}>
-        {children}
-      </div>
+      <div style={customProperties}>{children}</div>
     </ThemeContext.Provider>
   );
 }

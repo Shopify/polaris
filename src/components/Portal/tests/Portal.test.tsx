@@ -1,4 +1,5 @@
 import React from 'react';
+import {mount} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Portal} from '../Portal';
 
@@ -46,20 +47,15 @@ describe('<Portal />', () => {
   });
 
   describe('DOM node', () => {
-    const appendChildSpy = jest.fn();
-    const removeChildSpy = jest.fn();
-    Object.defineProperty(document, 'querySelector', {
-      value: () => {
-        return {appendChild: appendChildSpy, removeChild: removeChildSpy};
-      },
-    });
     it('gets added to the DOM on mount', () => {
+      const appendChildSpy = jest.spyOn(document.body, 'appendChild');
       mountWithAppProvider(<Portal />);
       expect(appendChildSpy).toHaveBeenCalledWith(expect.any(HTMLDivElement));
       appendChildSpy.mockRestore();
     });
 
     it('gets removed from the DOM when the component unmounts', () => {
+      const removeChildSpy = jest.spyOn(document.body, 'removeChild');
       const portal = mountWithAppProvider(<Portal />);
       portal.unmount();
       expect(removeChildSpy).toHaveBeenCalledWith(expect.any(HTMLDivElement));
@@ -92,5 +88,23 @@ describe('<Portal />', () => {
 
     mountWithAppProvider(<PortalParent />);
     expect(handlePortalCreated).toHaveBeenCalledTimes(1);
+  });
+
+  it('renders okay when theme context is undefined', () => {
+    expect(() => {
+      mount(<Portal />);
+    }).not.toThrow();
+  });
+
+  it('renders okay with new theme context', () => {
+    expect(() => {
+      mountWithAppProvider(<Portal />, {
+        features: {unstableGlobalTheming: true},
+        theme: {
+          // eslint-disable-next-line babel/camelcase
+          UNSTABLE_colors: {surface: '#000000'},
+        },
+      });
+    }).not.toThrow();
   });
 });
