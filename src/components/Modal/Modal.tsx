@@ -72,7 +72,6 @@ const getUniqueID = createUniqueIDFactory('modal-header');
 
 class Modal extends React.Component<CombinedProps, State> {
   static Section = Section;
-  focusReturnPointNode: HTMLElement;
 
   state: State = {
     iframeHeight: IFRAME_LOADING_HEIGHT,
@@ -209,12 +208,6 @@ class Modal extends React.Component<CombinedProps, State> {
     this.setState({
       iframeHeight: IFRAME_LOADING_HEIGHT,
     });
-
-    if (this.focusReturnPointNode) {
-      return write(() =>
-        focusFirstFocusableNode(this.focusReturnPointNode, false),
-      );
-    }
 
     const activator = this.activatorRef.current;
     if (activator) {
