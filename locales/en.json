@@ -25,7 +25,8 @@
     },
 
     "Button": {
-      "spinnerAccessibilityLabel": "Loading"
+      "spinnerAccessibilityLabel": "Loading",
+      "connectedDisclosureAccessibilityLabel": "Related actions"
     },
 
     "Common": {

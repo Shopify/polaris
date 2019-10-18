@@ -263,7 +263,7 @@ Use for plain or monochrome buttons that could have a long length and should be 
 
 Buttons are sometimes used as a toggle for other parts of the user interface.
 
-```jsx
+````jsx
 function PressedButton() {
   const [isFirstButtonActive, setIsFirstButtonActive] = useState(true);
 
@@ -313,6 +313,24 @@ function DisclosureButtion() {
   );
 }
 ```
+
+### Split button
+
+<!-- example-for: web -->
+
+Use when there is only one primary action but other related actions can be taken.
+
+```jsx
+<Button
+  primary
+  connectedDisclosure={{
+    accessibilityLabel: 'Other save actions',
+    actions: [{content: 'Save as draft'}],
+  }}
+>
+  Save
+</Button>
+````
 
 ### Disabled state
 

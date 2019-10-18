@@ -63,11 +63,26 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   }
 }
 
+$stacking-order: (
+  segment: 10,
+  focused: 20,
+);
+
 .Button {
   @include button-base;
 
   &.disabled {
     @include base-button-disabled;
+  }
+
+  &.connectedDisclosure {
+    z-index: z-index(segment, $stacking-order);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &:focus {
+      z-index: z-index(focused, $stacking-order);
+    }
   }
 }
 // stylelint-disable selector-max-combinators
@@ -643,4 +658,20 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 
 .DisclosureIconFacingUp {
   transform: rotate(-180deg);
+}
+
+.ConnectedDisclosureWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.ConnectedDisclosure {
+  z-index: z-index(segment, $stacking-order);
+  margin-left: -(border-width());
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  &:focus {
+    z-index: z-index(focused, $stacking-order);
+  }
 }
