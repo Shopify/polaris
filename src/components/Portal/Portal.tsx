@@ -36,8 +36,11 @@ export class Portal extends React.PureComponent<PortalProps, State> {
     if (this.context != null) {
       /* eslint-disable babel/camelcase */
       const {UNSTABLE_cssCustomProperties} = this.context;
-      UNSTABLE_cssCustomProperties &&
+      if (UNSTABLE_cssCustomProperties != null) {
         this.portalNode.setAttribute('style', UNSTABLE_cssCustomProperties);
+      } else {
+        this.portalNode.removeAttribute('style');
+      }
     }
     document.body.appendChild(this.portalNode);
     this.setState({isMounted: true});
@@ -48,12 +51,12 @@ export class Portal extends React.PureComponent<PortalProps, State> {
 
     if (this.context != null) {
       const {UNSTABLE_cssCustomProperties} = this.context;
-      UNSTABLE_cssCustomProperties &&
-        this.portalNode.setAttribute(
-          'style',
-          UNSTABLE_cssCustomProperties,
-          /* eslint-enable babel/camelcase */
-        );
+      if (UNSTABLE_cssCustomProperties != null) {
+        this.portalNode.setAttribute('style', UNSTABLE_cssCustomProperties);
+      } else {
+        this.portalNode.removeAttribute('style');
+      }
+      /* eslint-enable babel/camelcase */
     }
     if (!prevState.isMounted && this.state.isMounted) {
       onPortalCreated();
