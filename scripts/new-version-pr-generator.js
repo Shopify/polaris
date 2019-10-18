@@ -113,6 +113,9 @@ The automatic branch creation for ${repository} failed. This can be due to many 
 mkdir(sandbox);
 
 const jobs = repositories.map((repository) => {
+  // TODO work out how to keep eslint happy
+  // SEE https://eslint.org/docs/rules/no-async-promise-executor
+  // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve, reject) => {
     try {
       const repositoryDirectory = path.resolve(sandbox, repository);

@@ -40,7 +40,7 @@ export function merge<TSource1, TSource2, TSource3, TSource4, TSource5>(
 
 function mergeRecursively(objA: GeneralObject, objB: GeneralObject) {
   for (const key in objB) {
-    if (!objB.hasOwnProperty(key)) {
+    if (!Object.prototype.hasOwnProperty.call(objB, key)) {
       continue;
     } else if (isMergeableValue(objB[key]) && isMergeableValue(objA[key])) {
       objA[key] = mergeRecursively(objA[key], objB[key]);

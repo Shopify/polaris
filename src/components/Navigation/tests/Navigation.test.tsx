@@ -16,7 +16,6 @@ describe('<Navigation />', () => {
         return (
           <NavigationContext.Consumer>
             {({location}) => {
-              // eslint-disable-next-line shopify/jest/no-if
               return location ? <div /> : null;
             }}
           </NavigationContext.Consumer>
@@ -44,7 +43,6 @@ describe('<Navigation />', () => {
         return (
           <WithinContentContext.Consumer>
             {(withinContentContainer) => {
-              // eslint-disable-next-line shopify/jest/no-if
               return withinContentContainer ? <div /> : null;
             }}
           </WithinContentContext.Consumer>

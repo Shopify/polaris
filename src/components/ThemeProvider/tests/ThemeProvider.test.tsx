@@ -18,7 +18,6 @@ describe('<ThemeProvider />', () => {
       return (
         <ThemeContext.Consumer>
           {(polarisTheme) => {
-            // eslint-disable-next-line shopify/jest/no-if
             return polarisTheme && polarisTheme.logo ? <div /> : null;
           }}
         </ThemeContext.Consumer>

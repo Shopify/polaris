@@ -145,7 +145,6 @@ describe('useUniqueId', () => {
         [],
       );
 
-      // eslint-disable-next-line shopify/jest/no-if
       const override = count % 2 === 0 ? `Override${count}` : undefined;
 
       return (

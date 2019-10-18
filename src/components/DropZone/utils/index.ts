@@ -55,5 +55,5 @@ function isDragEvent(event: DropZoneEvent): event is DragEvent {
 function isChangeEvent(
   event: DropZoneEvent,
 ): event is React.ChangeEvent<HTMLInputElement> {
-  return event.hasOwnProperty('target');
+  return Object.prototype.hasOwnProperty.call(event, 'target');
 }

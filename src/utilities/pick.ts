@@ -4,7 +4,7 @@ function pickValueAndLength(obj: GeneralObject, key: string) {
   const keyPaths = key.split('.');
   let value = obj;
   for (const key of keyPaths) {
-    if (!value.hasOwnProperty(key)) {
+    if (!Object.prototype.hasOwnProperty.call(value, key)) {
       return null;
     }
 
@@ -21,7 +21,10 @@ export function pick(
   const flattenedKeypaths = ([] as string[]).concat(...keyPaths);
   if (obj == null || flattenedKeypaths.length === 0) return {};
   return flattenedKeypaths.reduce((acc, key) => {
-    if (typeof key !== TypeOf.String || obj.hasOwnProperty(key)) {
+    if (
+      typeof key !== TypeOf.String ||
+      Object.prototype.hasOwnProperty.call(obj, key)
+    ) {
       return {...acc, [key]: obj[key]};
     }
 
