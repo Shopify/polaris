@@ -104,6 +104,8 @@ $stacking-order: (
   // Even though the input is invisible, text styles apply to the options menu
   @include text-style-input;
   position: absolute;
+  // Required to solve a bug causing Safari 13 to crash https://bugs.webkit.org/show_bug.cgi?id=202055
+  text-rendering: auto;
   top: 0;
   left: 0;
   z-index: z-index(input, $stacking-order);

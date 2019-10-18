@@ -180,17 +180,6 @@
         "warningMessage": "To provide a better user experience. There should only be a maximum of {maxPromotedActions} promoted actions."
       },
 
-      "FilterCreator": {
-        "filterButtonLabel": "Filter",
-        "selectFilterKeyPlaceholder": "Select a filter\u2026",
-        "addFilterButtonLabel": "Add filter",
-        "showAllWhere": "Show all {resourceNamePlural} where:"
-      },
-
-      "FilterControl": {
-        "textFieldLabel": "Search {resourceNamePlural}"
-      },
-
       "FilterValueSelector": {
         "selectFilterValuePlaceholder": "Select a filter\u2026"
       },

@@ -158,15 +158,6 @@
         "moreActionsActivatorLabel": "Meer acties",
         "warningMessage": "Voor een betere gebruikerservaring. Er een maximum van {maxPromotedActions} gepromote acties."
       },
-      "FilterCreator": {
-        "filterButtonLabel": "Filter",
-        "selectFilterKeyPlaceholder": "Selecteer een filter...",
-        "addFilterButtonLabel": "Filter toevoegen",
-        "showAllWhere": "Toon alle {resourceNamePlural} waar:"
-      },
-      "FilterControl": {
-        "textFieldLabel": "{resourceNamePlural} zoeken"
-      },
       "FilterValueSelector": {
         "selectFilterValuePlaceholder": "Selecteer een filter..."
       },

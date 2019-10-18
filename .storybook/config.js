@@ -1,15 +1,17 @@
 import 'storybook-chroma';
 import React from 'react';
-import {configure, addParameters, addDecorator} from '@storybook/react';
+import {
+  configure,
+  addParameters,
+  addDecorator,
+  storiesOf,
+} from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
 import {create} from '@storybook/theming';
 import tokens from '@shopify/polaris-tokens';
-
-import {
-  addPlaygroundStory,
-  generateStories,
-  hydrateExecutableExamples,
-} from './stories-from-readme';
+import {AppProvider} from '../src';
+import {Playground} from '../playground/Playground';
+import en from '../locales/en.json';
 
 addParameters({
   options: {
@@ -37,10 +39,17 @@ addParameters({
   },
 });
 
-const StrictModeDecorator = (story) => (
-  <React.StrictMode>{story()}</React.StrictMode>
-);
-addDecorator(StrictModeDecorator);
+addDecorator(function StrictModeDecorator(story) {
+  return <React.StrictMode>{story()}</React.StrictMode>;
+});
+
+addDecorator(function AppProviderDecorator(story) {
+  return (
+    <div style={{padding: '8px'}}>
+      <AppProvider i18n={en}>{story()}</AppProvider>
+    </div>
+  );
+});
 
 // addon-console
 setConsoleOptions((opts) => {
@@ -56,6 +65,14 @@ setConsoleOptions((opts) => {
   return opts;
 });
 
+function addPlaygroundStory() {
+  storiesOf('Playground|Playground', module)
+    .addParameters({
+      chromatic: {disable: true},
+    })
+    .add('Playground', () => <Playground />);
+}
+
 // import all README.md files within component folders
 const readmeReq = require.context(
   '../src/components',
@@ -63,12 +80,9 @@ const readmeReq = require.context(
   /\/.+\/README.md$/,
 );
 function loadStories() {
-  addPlaygroundStory(module);
+  addPlaygroundStory();
 
-  readmeReq.keys().forEach((filename) => {
-    const readme = readmeReq(filename).component;
-    generateStories(hydrateExecutableExamples(readme), module);
-  });
+  return readmeReq.keys().map((filename) => readmeReq(filename));
 }
 
 configure(loadStories, module);

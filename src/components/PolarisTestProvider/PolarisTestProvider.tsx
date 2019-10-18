@@ -1,6 +1,8 @@
 import React from 'react';
+import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
 import {Theme, ThemeContext} from '../../utilities/theme';
+import {MediaQueryContext} from '../../utilities/media-query';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -9,7 +11,6 @@ import {
   StickyManager,
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
-import {AppBridgeContext, AppBridgeOptions} from '../../utilities/app-bridge';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
 import {
@@ -19,6 +20,9 @@ import {
 } from '../../utilities/unique-id';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
+type MediaQueryContextType = NonNullable<
+  React.ContextType<typeof MediaQueryContext>
+>;
 
 /**
  * When writing a custom mounting function `mountWithAppContext(node, options)`
@@ -28,9 +32,9 @@ type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
 export type WithPolarisTestProviderOptions = {
   // Contexts provided by AppProvider
   i18n?: TranslationDictionary | TranslationDictionary[];
-  appBridge?: AppBridgeOptions;
   link?: LinkLikeComponent;
   theme?: Partial<Theme>;
+  mediaQuery?: Partial<MediaQueryContextType>;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
 };
@@ -41,14 +45,18 @@ export interface PolarisTestProviderProps
   strict?: boolean;
 }
 
+const defaultMediaQuery: MediaQueryContextType = {
+  isNavigationCollapsed: false,
+};
+
 export function PolarisTestProvider({
   strict,
   children,
   i18n,
-  appBridge,
   link,
   theme,
   frame,
+  mediaQuery,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
 
@@ -60,13 +68,11 @@ export function PolarisTestProvider({
 
   const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-  // This typing is odd, but as appBridge is deprecated and going away in v5
-  // I'm not that worried about it
-  const appBridgeApp = appBridge as React.ContextType<typeof AppBridgeContext>;
-
   const mergedTheme = createThemeContext(theme);
 
   const mergedFrame = createFrameContext(frame);
+
+  const mergedMediaQuery = merge(defaultMediaQuery, mediaQuery);
 
   return (
     <Wrapper>
@@ -74,15 +80,15 @@ export function PolarisTestProvider({
         <ScrollLockManagerContext.Provider value={scrollLockManager}>
           <StickyManagerContext.Provider value={stickyManager}>
             <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
-              <AppBridgeContext.Provider value={appBridgeApp}>
-                <LinkContext.Provider value={link}>
-                  <ThemeContext.Provider value={mergedTheme}>
-                    <FrameContext.Provider value={mergedFrame}>
+              <LinkContext.Provider value={link}>
+                <ThemeContext.Provider value={mergedTheme}>
+                  <FrameContext.Provider value={mergedFrame}>
+                    <MediaQueryContext.Provider value={mergedMediaQuery}>
                       {children}
-                    </FrameContext.Provider>
-                  </ThemeContext.Provider>
-                </LinkContext.Provider>
-              </AppBridgeContext.Provider>
+                    </MediaQueryContext.Provider>
+                  </FrameContext.Provider>
+                </ThemeContext.Provider>
+              </LinkContext.Provider>
             </UniqueIdFactoryContext.Provider>
           </StickyManagerContext.Provider>
         </ScrollLockManagerContext.Provider>

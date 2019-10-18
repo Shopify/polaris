@@ -20,7 +20,7 @@ fullSizeExamples: true
 
 # Frame
 
-The frame component, while not visible in the user interface itself, provides the structure for any non-embedded application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation/navigation), [top bar](https://polaris.shopify.com/components/structure/top-bar), [toast](https://polaris.shopify.com/components/feedback-indicators/toast), and [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) components.
+The frame component, while not visible in the user interface itself, provides the structure for an application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation/navigation), [top bar](https://polaris.shopify.com/components/structure/top-bar), [toast](https://polaris.shopify.com/components/feedback-indicators/toast), and [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) components.
 
 ---
 
@@ -38,366 +38,346 @@ For the best experience when creating an application frame, use the following co
 
 ## Examples
 
-### Frame in a stand-alone application
+### Frame in an application
 
 Use to present the frame structure and all of its elements.
 
 ```jsx
-class FrameExample extends React.Component {
-  defaultState = {
+function FrameExample() {
+  const defaultState = useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
-  };
+  });
+  const skipToContentRef = useRef(null);
 
-  state = {
-    showToast: false,
-    isLoading: false,
-    isDirty: false,
-    searchActive: false,
-    searchText: '',
-    userMenuOpen: false,
-    showMobileNavigation: false,
-    modalActive: false,
-    nameFieldValue: this.defaultState.nameFieldValue,
-    emailFieldValue: this.defaultState.emailFieldValue,
-    storeName: this.defaultState.nameFieldValue,
-    supportSubject: '',
-    supportMessage: '',
-  };
+  const [toastActive, setToastActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+  const [userMenuActive, setUserMenuActive] = useState(false);
+  const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
+  const [modalActive, setModalActive] = useState(false);
+  const [nameFieldValue, setNameFieldValue] = useState(
+    defaultState.current.nameFieldValue,
+  );
+  const [emailFieldValue, setEmailFieldValue] = useState(
+    defaultState.current.emailFieldValue,
+  );
+  const [storeName, setStoreName] = useState(
+    defaultState.current.nameFieldValue,
+  );
+  const [supportSubject, setSupportSubject] = useState('');
+  const [supportMessage, setSupportMessage] = useState('');
 
-  skipToContentRef = React.createRef();
+  const handleSubjectChange = useCallback(
+    (value) => setSupportSubject(value),
+    [],
+  );
+  const handleMessageChange = useCallback(
+    (value) => setSupportMessage(value),
+    [],
+  );
+  const handleDiscard = useCallback(() => {
+    setEmailFieldValue(defaultState.current.emailFieldValue);
+    setNameFieldValue(defaultState.current.nameFieldValue);
+    setIsDirty(false);
+  }, []);
+  const handleSave = useCallback(() => {
+    defaultState.current.nameFieldValue = nameFieldValue;
+    defaultState.current.emailFieldValue = emailFieldValue;
 
-  render() {
-    const {
-      showToast,
-      isLoading,
-      isDirty,
-      searchActive,
-      searchText,
-      userMenuOpen,
-      showMobileNavigation,
-      nameFieldValue,
-      emailFieldValue,
-      modalActive,
-      storeName,
-    } = this.state;
+    setIsDirty(false);
+    setToastActive(true);
+    setStoreName(defaultState.current.nameFieldValue);
+  }, [emailFieldValue, nameFieldValue]);
+  const handleNameFieldChange = useCallback((value) => {
+    setNameFieldValue(value);
+    value && setIsDirty(true);
+  }, []);
+  const handleEmailFieldChange = useCallback((value) => {
+    setEmailFieldValue(value);
+    value && setIsDirty(true);
+  }, []);
+  const handleSearchResultsDismiss = useCallback(() => {
+    setSearchActive(false);
+    setSearchValue('');
+  }, []);
+  const handleSearchFieldChange = useCallback((value) => {
+    setSearchValue(value);
+    setSearchActive(value.length > 0);
+  }, []);
+  const toggleToastActive = useCallback(
+    () => setToastActive((toastActive) => !toastActive),
+    [],
+  );
+  const toggleUserMenuActive = useCallback(
+    () => setUserMenuActive((userMenuActive) => !userMenuActive),
+    [],
+  );
+  const toggleMobileNavigationActive = useCallback(
+    () =>
+      setMobileNavigationActive(
+        (mobileNavigationActive) => !mobileNavigationActive,
+      ),
+    [],
+  );
+  const toggleIsLoading = useCallback(
+    () => setIsLoading((isLoading) => !isLoading),
+    [],
+  );
+  const toggleModalActive = useCallback(
+    () => setModalActive((modalActive) => !modalActive),
+    [],
+  );
 
-    const toastMarkup = showToast ? (
-      <Toast
-        onDismiss={this.toggleState('showToast')}
-        content="Changes saved"
+  const toastMarkup = toastActive ? (
+    <Toast onDismiss={toggleToastActive} content="Changes saved" />
+  ) : null;
+
+  const userMenuActions = [
+    {
+      items: [{content: 'Community forums'}],
+    },
+  ];
+
+  const contextualSaveBarMarkup = isDirty ? (
+    <ContextualSaveBar
+      message="Unsaved changes"
+      saveAction={{
+        onAction: handleSave,
+      }}
+      discardAction={{
+        onAction: handleDiscard,
+      }}
+    />
+  ) : null;
+
+  const userMenuMarkup = (
+    <TopBar.UserMenu
+      actions={userMenuActions}
+      name="Dharma"
+      detail={storeName}
+      initials="D"
+      open={userMenuActive}
+      onToggle={toggleUserMenuActive}
+    />
+  );
+
+  const searchResultsMarkup = (
+    <Card>
+      <ActionList
+        items={[
+          {content: 'Shopify help center'},
+          {content: 'Community forums'},
+        ]}
       />
-    ) : null;
+    </Card>
+  );
 
-    const userMenuActions = [
-      {
-        items: [{content: 'Community forums'}],
+  const searchFieldMarkup = (
+    <TopBar.SearchField
+      onChange={handleSearchFieldChange}
+      value={searchValue}
+      placeholder="Search"
+    />
+  );
+  console.log(mobileNavigationActive);
+  const topBarMarkup = (
+    <TopBar
+      showNavigationToggle
+      userMenu={userMenuMarkup}
+      searchResultsVisible={searchActive}
+      searchField={searchFieldMarkup}
+      searchResults={searchResultsMarkup}
+      onSearchResultsDismiss={handleSearchResultsDismiss}
+      onNavigationToggle={toggleMobileNavigationActive}
+    />
+  );
+
+  const navigationMarkup = (
+    <Navigation location="/">
+      <Navigation.Section
+        items={[
+          {
+            label: 'Back to Shopify',
+            icon: ArrowLeftMinor,
+          },
+        ]}
+      />
+      <Navigation.Section
+        separator
+        title="Jaded Pixel App"
+        items={[
+          {
+            label: 'Dashboard',
+            icon: HomeMajorMonotone,
+            onClick: toggleIsLoading,
+          },
+          {
+            label: 'Jaded Pixel Orders',
+            icon: OrdersMajorTwotone,
+            onClick: toggleIsLoading,
+          },
+        ]}
+        action={{
+          icon: ConversationMinor,
+          accessibilityLabel: 'Contact support',
+          onClick: toggleModalActive,
+        }}
+      />
+    </Navigation>
+  );
+
+  const loadingMarkup = isLoading ? <Loading /> : null;
+
+  const skipToContentTarget = (
+    <a id="SkipToContentTarget" ref={skipToContentRef} tabIndex={-1} />
+  );
+
+  const actualPageMarkup = (
+    <Page title="Account">
+      <Layout>
+        {skipToContentTarget}
+        <Layout.AnnotatedSection
+          title="Account details"
+          description="Jaded Pixel will use this as your account information."
+        >
+          <Card sectioned>
+            <FormLayout>
+              <TextField
+                label="Full name"
+                value={nameFieldValue}
+                onChange={handleNameFieldChange}
+              />
+              <TextField
+                type="email"
+                label="Email"
+                value={emailFieldValue}
+                onChange={handleEmailFieldChange}
+              />
+            </FormLayout>
+          </Card>
+        </Layout.AnnotatedSection>
+      </Layout>
+    </Page>
+  );
+
+  const loadingPageMarkup = (
+    <SkeletonPage>
+      <Layout>
+        <Layout.Section>
+          <Card sectioned>
+            <TextContainer>
+              <SkeletonDisplayText size="small" />
+              <SkeletonBodyText lines={9} />
+            </TextContainer>
+          </Card>
+        </Layout.Section>
+      </Layout>
+    </SkeletonPage>
+  );
+
+  const pageMarkup = isLoading ? loadingPageMarkup : actualPageMarkup;
+
+  const modalMarkup = (
+    <Modal
+      open={modalActive}
+      onClose={toggleModalActive}
+      title="Contact support"
+      primaryAction={{
+        content: 'Send',
+        onAction: toggleModalActive,
+      }}
+    >
+      <Modal.Section>
+        <FormLayout>
+          <TextField
+            label="Subject"
+            value={supportSubject}
+            onChange={handleSubjectChange}
+          />
+          <TextField
+            label="Message"
+            value={supportMessage}
+            onChange={handleMessageChange}
+            multiline
+          />
+        </FormLayout>
+      </Modal.Section>
+    </Modal>
+  );
+
+  const theme = {
+    colors: {
+      topBar: {
+        background: '#357997',
       },
-    ];
+    },
+    logo: {
+      width: 124,
+      topBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      contextualSaveBarSource:
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      url: 'http://jadedpixel.com',
+      accessibilityLabel: 'Jaded Pixel',
+    },
+  };
 
-    const contextualSaveBarMarkup = isDirty ? (
-      <ContextualSaveBar
-        message="Unsaved changes"
-        saveAction={{
-          onAction: this.handleSave,
-        }}
-        discardAction={{
-          onAction: this.handleDiscard,
-        }}
-      />
-    ) : null;
-
-    const userMenuMarkup = (
-      <TopBar.UserMenu
-        actions={userMenuActions}
-        name="Dharma"
-        detail={storeName}
-        initials="D"
-        open={userMenuOpen}
-        onToggle={this.toggleState('userMenuOpen')}
-      />
-    );
-
-    const searchResultsMarkup = (
-      <Card>
-        <ActionList
-          items={[
-            {content: 'Shopify help center'},
-            {content: 'Community forums'},
-          ]}
-        />
-      </Card>
-    );
-
-    const searchFieldMarkup = (
-      <TopBar.SearchField
-        onChange={this.handleSearchFieldChange}
-        value={searchText}
-        placeholder="Search"
-      />
-    );
-
-    const topBarMarkup = (
-      <TopBar
-        showNavigationToggle={true}
-        userMenu={userMenuMarkup}
-        searchResultsVisible={searchActive}
-        searchField={searchFieldMarkup}
-        searchResults={searchResultsMarkup}
-        onSearchResultsDismiss={this.handleSearchResultsDismiss}
-        onNavigationToggle={this.toggleState('showMobileNavigation')}
-      />
-    );
-
-    const navigationMarkup = (
-      <Navigation location="/">
-        <Navigation.Section
-          items={[
-            {
-              label: 'Back to Shopify',
-              icon: ArrowLeftMinor,
+  return (
+    <div style={{height: '500px'}}>
+      <AppProvider
+        theme={theme}
+        i18n={{
+          Polaris: {
+            Avatar: {
+              label: 'Avatar',
+              labelWithInitials: 'Avatar with initials {initials}',
             },
-          ]}
-        />
-        <Navigation.Section
-          separator
-          title="Jaded Pixel App"
-          items={[
-            {
-              label: 'Dashboard',
-              icon: HomeMajorMonotone,
-              onClick: this.toggleState('isLoading'),
+            ContextualSaveBar: {
+              save: 'Save',
+              discard: 'Discard',
             },
-            {
-              label: 'Jaded Pixel Orders',
-              icon: OrdersMajorTwotone,
-              onClick: this.toggleState('isLoading'),
+            TextField: {
+              characterCount: '{count} characters',
             },
-          ]}
-          action={{
-            icon: ConversationMinor,
-            accessibilityLabel: 'Contact support',
-            onClick: this.toggleState('modalActive'),
-          }}
-        />
-      </Navigation>
-    );
+            TopBar: {
+              toggleMenuLabel: 'Toggle menu',
 
-    const loadingMarkup = isLoading ? <Loading /> : null;
-
-    const skipToContentTarget = (
-      <a id="SkipToContentTarget" ref={this.skipToContentRef} tabIndex={-1} />
-    );
-
-    const actualPageMarkup = (
-      <Page title="Account">
-        <Layout>
-          {skipToContentTarget}
-          <Layout.AnnotatedSection
-            title="Account details"
-            description="Jaded Pixel will use this as your account information."
-          >
-            <Card sectioned>
-              <FormLayout>
-                <TextField
-                  label="Full name"
-                  value={nameFieldValue}
-                  onChange={this.handleNameFieldChange}
-                />
-                <TextField
-                  type="email"
-                  label="Email"
-                  value={emailFieldValue}
-                  onChange={this.handleEmailFieldChange}
-                />
-              </FormLayout>
-            </Card>
-          </Layout.AnnotatedSection>
-        </Layout>
-      </Page>
-    );
-
-    const loadingPageMarkup = (
-      <SkeletonPage>
-        <Layout>
-          <Layout.Section>
-            <Card sectioned>
-              <TextContainer>
-                <SkeletonDisplayText size="small" />
-                <SkeletonBodyText lines={9} />
-              </TextContainer>
-            </Card>
-          </Layout.Section>
-        </Layout>
-      </SkeletonPage>
-    );
-
-    const pageMarkup = isLoading ? loadingPageMarkup : actualPageMarkup;
-
-    const modalMarkup = (
-      <Modal
-        open={modalActive}
-        onClose={this.toggleState('modalActive')}
-        title="Contact support"
-        primaryAction={{
-          content: 'Send',
-          onAction: this.toggleState('modalActive'),
+              SearchField: {
+                clearButtonLabel: 'Clear',
+                search: 'Search',
+              },
+            },
+            Modal: {
+              iFrameTitle: 'body markup',
+            },
+            Frame: {
+              skipToContent: 'Skip to content',
+              Navigation: {
+                closeMobileNavigationLabel: 'Close navigation',
+              },
+            },
+          },
         }}
       >
-        <Modal.Section>
-          <FormLayout>
-            <TextField
-              label="Subject"
-              value={this.state.supportSubject}
-              onChange={this.handleSubjectChange}
-            />
-            <TextField
-              label="Message"
-              value={this.state.supportMessage}
-              onChange={this.handleMessageChange}
-              multiline
-            />
-          </FormLayout>
-        </Modal.Section>
-      </Modal>
-    );
-
-    const theme = {
-      colors: {
-        topBar: {
-          background: '#357997',
-        },
-      },
-      logo: {
-        width: 124,
-        topBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-        contextualSaveBarSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-        url: 'http://jadedpixel.com',
-        accessibilityLabel: 'Jaded Pixel',
-      },
-    };
-
-    return (
-      <div style={{height: '500px'}}>
-        <AppProvider
-          theme={theme}
-          i18n={{
-            Polaris: {
-              Avatar: {
-                label: 'Avatar',
-                labelWithInitials: 'Avatar with initials {initials}',
-              },
-              ContextualSaveBar: {
-                save: 'Save',
-                discard: 'Discard',
-              },
-              TextField: {
-                characterCount: '{count} characters',
-              },
-              TopBar: {
-                toggleMenuLabel: 'Toggle menu',
-
-                SearchField: {
-                  clearButtonLabel: 'Clear',
-                  search: 'Search',
-                },
-              },
-              Modal: {
-                iFrameTitle: 'body markup',
-              },
-              Frame: {
-                skipToContent: 'Skip to content',
-                Navigation: {
-                  closeMobileNavigationLabel: 'Close navigation',
-                },
-              },
-            },
-          }}
+        <Frame
+          topBar={topBarMarkup}
+          navigation={navigationMarkup}
+          showMobileNavigation={mobileNavigationActive}
+          onNavigationDismiss={toggleMobileNavigationActive}
+          skipToContentTarget={skipToContentRef.current}
         >
-          <Frame
-            topBar={topBarMarkup}
-            navigation={navigationMarkup}
-            showMobileNavigation={showMobileNavigation}
-            onNavigationDismiss={this.toggleState('showMobileNavigation')}
-            skipToContentTarget={this.skipToContentRef}
-          >
-            {contextualSaveBarMarkup}
-            {loadingMarkup}
-            {pageMarkup}
-            {toastMarkup}
-            {modalMarkup}
-          </Frame>
-        </AppProvider>
-      </div>
-    );
-  }
-
-  toggleState = (key) => {
-    return () => {
-      this.setState((prevState) => ({[key]: !prevState[key]}));
-    };
-  };
-
-  handleSearchFieldChange = (value) => {
-    this.setState({searchText: value});
-    if (value.length > 0) {
-      this.setState({searchActive: true});
-    } else {
-      this.setState({searchActive: false});
-    }
-  };
-
-  handleSearchResultsDismiss = () => {
-    this.setState(() => {
-      return {
-        searchActive: false,
-        searchText: '',
-      };
-    });
-  };
-
-  handleEmailFieldChange = (emailFieldValue) => {
-    this.setState({emailFieldValue});
-    if (emailFieldValue != '') {
-      this.setState({isDirty: true});
-    }
-  };
-
-  handleNameFieldChange = (nameFieldValue) => {
-    this.setState({nameFieldValue});
-    if (nameFieldValue != '') {
-      this.setState({isDirty: true});
-    }
-  };
-
-  handleSave = () => {
-    this.defaultState.nameFieldValue = this.state.nameFieldValue;
-    this.defaultState.emailFieldValue = this.state.emailFieldValue;
-
-    this.setState({
-      isDirty: false,
-      showToast: true,
-      storeName: this.defaultState.nameFieldValue,
-    });
-  };
-
-  handleDiscard = () => {
-    this.setState({
-      emailFieldValue: this.defaultState.emailFieldValue,
-      nameFieldValue: this.defaultState.nameFieldValue,
-      isDirty: false,
-    });
-  };
-
-  handleSubjectChange = (supportSubject) => {
-    this.setState({supportSubject});
-  };
-
-  handleMessageChange = (supportMessage) => {
-    this.setState({supportMessage});
-  };
+          {contextualSaveBarMarkup}
+          {loadingMarkup}
+          {pageMarkup}
+          {toastMarkup}
+          {modalMarkup}
+        </Frame>
+      </AppProvider>
+    </div>
+  );
 }
 ```
 
@@ -406,7 +386,7 @@ class FrameExample extends React.Component {
 ## Related components
 
 - To display the navigation component on small screens, to provide search and a user menu, or to style the [frame](https://polaris.shopify.com/components/structure/frame) component to reflect an application’s brand, use the [top bar](https://polaris.shopify.com/components/structure/top-bar) component.
-- To display the primary navigation within the frame of a non-embedded application, use the [navigation](https://polaris.shopify.com/components/structure/navigation) component.
+- To display the primary navigation within the frame of an application, use the [navigation](https://polaris.shopify.com/components/structure/navigation) component.
 - To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) component.
 - To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/feedback-indicators/toast) component.
 - To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/feedback-indicators/loading) component.

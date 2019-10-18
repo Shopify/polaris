@@ -1320,11 +1320,6 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
-"@shopify/app-bridge@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@shopify/app-bridge/-/app-bridge-1.3.0.tgz#1c3dfb1b3e10041a3d639a219bc7010051f5fa97"
-  integrity sha512-h4/RGKsLUej4gE6/XVXoOa3lG7xRUfwYvV+xfFkyoI7xZWNa8RmfKtgnzPBIxRBIWkeQBoms7hWuYuqO9RENLw==
-
 "@shopify/async@>1.2.0 <3.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@shopify/async/-/async-2.0.0.tgz#8d3f4e96a0f8e1e2bc9b4a873885fbee6c22124a"
@@ -3776,10 +3771,10 @@ babel-preset-react-app@^9.0.0:
     babel-plugin-macros "2.5.1"
     babel-plugin-transform-react-remove-prop-types "0.4.24"
 
-babel-preset-shopify@^20.0.0:
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-shopify/-/babel-preset-shopify-20.0.0.tgz#cfaaf87739a6d31762297fee3f711865bd993ef2"
-  integrity sha512-xgKygCwFj/DCdCr/uq9JuJd3mwvc5HHRN3AijqwxQ4Y4XYPE1VZ1lZoq+t2tolkgsH1ER6XivC9Y8HdlBMH7Ug==
+babel-preset-shopify@^20.0.0, babel-preset-shopify@^20.1.0:
+  version "20.1.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-shopify/-/babel-preset-shopify-20.1.0.tgz#426e8519d93edf5af10ae60b4295b5ca27ccaa65"
+  integrity sha512-ute3HCuANxuwP3EVIHe368t0Q/2mB3knsMiFvLoutO0zbdSVD+aX+FwSLpiJ4NMVqWXZNXsRo2Hn0G6mAqZZ0w==
   dependencies:
     "@babel/core" "^7.4.3"
     "@babel/plugin-proposal-class-properties" "^7.4.0"

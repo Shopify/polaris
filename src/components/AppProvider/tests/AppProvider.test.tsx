@@ -1,9 +1,20 @@
 import React, {useContext} from 'react';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities/react-testing';
+import {MediaQueryProvider} from 'components/MediaQueryProvider';
 import {LinkContext} from '../../../utilities/link';
 import {AppProvider} from '../AppProvider';
 
 describe('<AppProvider />', () => {
+  beforeEach(() => {
+    matchMedia.mock();
+  });
+
+  afterEach(() => {
+    matchMedia.restore();
+  });
+
   it('updates context when props change', () => {
     const Child: React.SFC<{}> = () => {
       // eslint-disable-next-line shopify/jest/no-if
@@ -21,5 +32,14 @@ describe('<AppProvider />', () => {
     wrapper.setProps({linkComponent: LinkComponent});
     wrapper.update();
     expect(wrapper.find('#child')).toHaveLength(1);
+  });
+
+  it('renders a MediaProvider', () => {
+    const appProvider = mountWithApp(
+      <AppProvider i18n={{}}>
+        <div>Child</div>
+      </AppProvider>,
+    );
+    expect(appProvider).toContainReactComponent(MediaQueryProvider);
   });
 });
