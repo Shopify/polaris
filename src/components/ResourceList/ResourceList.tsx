@@ -801,7 +801,9 @@ function getAllItemsOnPage(
 }
 
 function defaultIdForItem(item: any, index: number) {
-  return item.hasOwnProperty('id') ? item.id : index.toString();
+  return Object.prototype.hasOwnProperty.call(item, 'id')
+    ? item.id
+    : index.toString();
 }
 
 function isSmallScreen() {

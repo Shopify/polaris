@@ -17,7 +17,6 @@ describe('<AppProvider />', () => {
 
   it('updates context when props change', () => {
     const Child: React.SFC<{}> = () => {
-      // eslint-disable-next-line shopify/jest/no-if
       return useContext(LinkContext) ? <div id="child" /> : null;
     };
     const LinkComponent = () => <div />;

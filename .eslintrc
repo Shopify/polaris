@@ -9,7 +9,7 @@
   ],
   "settings": {
     "react": {
-      "version": "16.3"
+      "version": "16.8"
     }
   },
   "rules": {
@@ -17,6 +17,7 @@
     "no-process-env": "off",
     "no-warning-comments": "off",
     "no-negated-condition": "off",
+    "no-console": "error",
     "consistent-return": "off",
     "match-default-export-name": "off",
     "jsx-use-translation-function": "off",

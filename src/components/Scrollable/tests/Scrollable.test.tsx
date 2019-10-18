@@ -33,7 +33,6 @@ describe('<Scrollable />', () => {
     const Child: React.SFC<{}> = (_) => (
       <ScrollableContext.Consumer>
         {(scrollToPosition) => {
-          // eslint-disable-next-line shopify/jest/no-if
           return scrollToPosition ? <div /> : null;
         }}
       </ScrollableContext.Consumer>
