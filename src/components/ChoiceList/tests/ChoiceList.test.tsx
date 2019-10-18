@@ -50,6 +50,31 @@ describe('<ChoiceList />', () => {
       });
     });
 
+    it('renders choices with labels containing JSX', () => {
+      const jsxLabel = <b>Two</b>;
+      const ComponentLabel = () => (
+        <React.Fragment>
+          Label <i>one</i>
+        </React.Fragment>
+      );
+
+      choices = [
+        {label: <ComponentLabel />, value: 'one'},
+        {label: jsxLabel, value: 'two'},
+        {...choices[2], helpText: 'Some help text'},
+      ];
+
+      const choiceElements = mountWithAppProvider(
+        <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
+      ).find(RadioButton);
+
+      choiceElements.forEach((choiceElement, index) => {
+        expect(choiceElement.prop('label')).toBe(choices[index].label);
+        expect(choiceElement.prop('value')).toBe(choices[index].value);
+        expect(choiceElement.prop('helpText')).toBe(choices[index].helpText);
+      });
+    });
+
     describe('with valid children property returning node', () => {
       const children = <span>Child</span>;
 
