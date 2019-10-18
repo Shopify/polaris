@@ -33,10 +33,12 @@ export interface ThemeConfig {
   };
 }
 
+export type CustomPropertiesLike = Record<string, string>;
+
 // The value that is stored in the ThemeContext
 export interface Theme {
   /** Sets the logo for the top bar and contextual save bar components*/
   logo?: ThemeLogo;
+  // eslint-disable-next-line babel/camelcase
+  UNSTABLE_cssCustomProperties?: string;
 }
-
-export type CustomPropertiesLike = Record<string, string>;

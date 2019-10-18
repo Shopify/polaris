@@ -120,7 +120,7 @@ export class PositionedOverlay extends React.PureComponent<
 
   render() {
     const {top, zIndex, width} = this.state;
-    const {render, fixed} = this.props;
+    const {render, fixed, classNames: propClassNames} = this.props;
 
     const right =
       this.state.right == null || isNaN(this.state.right)
@@ -143,6 +143,7 @@ export class PositionedOverlay extends React.PureComponent<
     const className = classNames(
       styles.PositionedOverlay,
       fixed && styles.fixed,
+      propClassNames,
     );
 
     return (

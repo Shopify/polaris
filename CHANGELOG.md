@@ -8,7 +8,17 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
-## 4.6.0 - 2019-16-08
+## 4.6.1 - 2019-10-17
+
+### Enhancements
+
+- Added CSS custom properties to `Portal` container ([#2306](https://github.com/Shopify/polaris-react/pull/2306))
+
+### Bug fixes
+
+- Fixed a regression with the positioning of the `Popover` component ([#2305](https://github.com/Shopify/polaris-react/pull/2305))
+
+## 4.6.0 - 2019-10-16
 
 ### Enhancements
 

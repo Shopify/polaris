@@ -711,10 +711,12 @@ describe('buildColors', () => {
     });
   });
 });
-/* eslint-enable babel/camelcase */
 
 describe('buildThemeContext', () => {
   it('reduces theme config down to a theme', () => {
-    expect(buildThemeContext({colors: {}, logo: {}})).toStrictEqual({logo: {}});
+    expect(
+      buildThemeContext({colors: {}, logo: {}}, {foo: 'bar'}),
+    ).toStrictEqual({logo: {}, UNSTABLE_cssCustomProperties: 'foo:bar'});
   });
 });
+/* eslint-enable babel/camelcase */

@@ -32,7 +32,7 @@ $large-width: rem(980px);
   flex-direction: column;
   width: 100vw;
   max-height: calc(100vh - #{$vertical-spacing});
-  background: color('white');
+  background: var(--p-surface-foreground, color('white'));
   box-shadow: shadow(layer);
 
   @media (-ms-high-contrast: active) {
