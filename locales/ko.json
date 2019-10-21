@@ -199,7 +199,8 @@
           "on_or_before": "{date} 전",
           "on_or_after": "{date} 후"
         }
-      }
+      },
+      "showingTotalCount": "{totalItemsCount} {resource}의 {itemsCount} 표시"
     },
     "SkeletonPage": {
       "loadingLabel": "페이지 로딩"
