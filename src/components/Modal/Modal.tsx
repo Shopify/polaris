@@ -1,15 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {TransitionGroup} from '@material-ui/react-transition-group';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {useUniqueId} from '../../utilities/unique-id/hooks';
+import {useI18n} from '../../utilities/i18n';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {wrapWithComponent} from '../../utilities/components';
 
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
 import {Backdrop} from '../Backdrop';
 import {Scrollable} from '../Scrollable';
 import {Spinner} from '../Spinner';
@@ -62,11 +59,8 @@ export interface ModalProps extends FooterProps {
   /** The element to activate the Modal */
   activator?: React.ReactElement;
 }
-type CombinedProps = ModalProps & WithAppProviderProps;
 
-const getUniqueID = createUniqueIDFactory('modal-header');
-
-const Modal: React.FunctionComponent<CombinedProps> & {
+export const Modal: React.FunctionComponent<ModalProps> & {
   Section: typeof Section;
 } = function Modal({
   children,
@@ -82,21 +76,56 @@ const Modal: React.FunctionComponent<CombinedProps> & {
   footer,
   primaryAction,
   secondaryActions,
-  polaris: {intl},
   onScrolledToBottom,
   activator,
   onClose,
   onIFrameLoad,
   onTransitionEnd,
-}: CombinedProps) {
+}: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
 
-  const headerId = getUniqueID();
+  const headerId = useUniqueId('modal-header');
   const activatorRef = React.useRef<HTMLDivElement>(null);
-  const iframeTitle = intl.translate('Polaris.Modal.iFrameTitle');
+
+  const i18n = useI18n();
+  const iframeTitle = i18n.translate('Polaris.Modal.iFrameTitle');
 
   let dialog: React.ReactNode;
   let backdrop: React.ReactNode;
+
+  const handleEntered = useCallback(() => {
+    if (onTransitionEnd) {
+      onTransitionEnd();
+    }
+  }, [onTransitionEnd]);
+
+  const handleExited = useCallback(() => {
+    setIframeHeight(IFRAME_LOADING_HEIGHT);
+
+    const activator = activatorRef.current;
+    if (activator) {
+      write(() => focusFirstFocusableNode(activator));
+    }
+  }, []);
+
+  const handleIFrameLoad = useCallback(
+    (evt: React.SyntheticEvent<HTMLIFrameElement>) => {
+      const iframe = evt.target as HTMLIFrameElement;
+      if (iframe && iframe.contentWindow) {
+        try {
+          setIframeHeight(iframe.contentWindow.document.body.scrollHeight);
+        } catch {
+          setIframeHeight(DEFAULT_IFRAME_CONTENT_HEIGHT);
+        }
+      }
+
+      if (onIFrameLoad != null) {
+        onIFrameLoad(evt);
+      }
+    },
+    [onIFrameLoad],
+  );
+
   if (open) {
     const footerMarkup =
       !footer && !primaryAction && !secondaryActions ? null : (
@@ -181,40 +210,10 @@ const Modal: React.FunctionComponent<CombinedProps> & {
       </Portal>
     </WithinContentContext.Provider>
   );
-
-  function handleEntered() {
-    if (onTransitionEnd) {
-      onTransitionEnd();
-    }
-  }
-
-  function handleExited() {
-    setIframeHeight(IFRAME_LOADING_HEIGHT);
-
-    const activator = activatorRef.current;
-    if (activator) {
-      write(() => focusFirstFocusableNode(activator));
-    }
-  }
-
-  function handleIFrameLoad(evt: React.SyntheticEvent<HTMLIFrameElement>) {
-    const iframe = evt.target as HTMLIFrameElement;
-    if (iframe && iframe.contentWindow) {
-      try {
-        setIframeHeight(iframe.contentWindow.document.body.scrollHeight);
-      } catch {
-        setIframeHeight(DEFAULT_IFRAME_CONTENT_HEIGHT);
-      }
-    }
-
-    if (onIFrameLoad != null) {
-      onIFrameLoad(evt);
-    }
-  }
 };
 
 Modal.Section = Section;
 
 // Use named export once withAppProvider is refactored away
 // eslint-disable-next-line import/no-default-export
-export default withAppProvider<ModalProps>()(Modal);
+// export default Modal;

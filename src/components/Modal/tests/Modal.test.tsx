@@ -7,7 +7,7 @@ import {
 } from 'test-utilities/legacy';
 import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
 import {Footer, Dialog} from '../components';
-import Modal from '../Modal';
+import {Modal} from '../Modal';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
@@ -337,9 +337,17 @@ describe('<Modal>', () => {
       expect(modal.find(Button).exists()).toBe(true);
     });
 
+    it('does not throw an error when no activator is passed in', () => {
+      const modal = mountWithAppProvider(<Modal onClose={noop} open />);
+
+      expect(() => {
+        modal.setProps({open: false});
+      }).not.toThrow();
+    });
+
     it('focuses the activator when the modal is closed', () => {
       const modal = mountWithAppProvider(
-        <Modal onClose={noop} open instant activator={<Button />} />,
+        <Modal onClose={noop} open activator={<Button />} />,
       );
 
       modal.setProps({open: false});
