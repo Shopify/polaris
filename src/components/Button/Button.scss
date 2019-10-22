@@ -247,25 +247,56 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 // stylelint-disable selector-max-specificity
 
 .plain {
-  @include recolor-icon(color('blue'));
+  @include recolor-icon(var(--p-interactive-action, color('blue')));
   margin: (-1 * $vertical-padding) rem(-8px);
   padding-left: spacing(tight);
   padding-right: spacing(tight);
   background: transparent;
   border: 0;
   box-shadow: none;
-  color: color('blue');
+  color: var(--p-interactive-action, color('blue'));
+
+  .Content {
+    font-weight: 400;
+  }
 
   &.pressed,
   &:hover,
   &:focus,
   &:active {
-    @include recolor-icon(color('blue', 'dark'));
     background: transparent;
     border: 0;
     box-shadow: none;
+  }
+
+  // TODO: implement pressed for global theming
+  &.pressed {
+    @include recolor-icon(color('blue', 'dark'));
     color: color('blue', 'dark');
     text-decoration: underline;
+  }
+
+  &:hover {
+    @include recolor-icon(
+      var(--p-interactive-action-hovered, color('blue', 'dark'))
+    );
+    color: var(--p-interactive-action-hovered, color('blue', 'dark'));
+    text-decoration: underline;
+  }
+
+  &:focus {
+    @include recolor-icon(var(--p-interactive-action, color('blue', 'dark')));
+    color: var(--p-interactive-action, color('blue', 'dark'));
+    text-decoration: var(--p-override-none, underline);
+    @include no-focus-ring;
+  }
+
+  &:active {
+    @include recolor-icon(
+      var(--p-interactive-action-pressed, color('blue', 'dark'))
+    );
+    color: var(--p-interactive-action-pressed, color('blue', 'dark'));
+    text-decoration: var(--p-override-none, underline);
   }
 
   &.pressed,
@@ -277,14 +308,27 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     @include high-contrast-button-outline;
   }
 
+  &:focus:not(:active) > .Content {
+    @include focus-ring;
+  }
+
   &.pressed > .Content {
     @include plain-button-backdrop(rgba(color('ink', 'lighter'), 0.1));
   }
 
   &.pressed:hover:not(.iconOnly) > .Content,
-  &.pressed:active:not(.iconOnly) > .Content,
-  &:focus:not(.iconOnly) > .Content {
+  &.pressed:active:not(.iconOnly) > .Content {
     @include plain-button-backdrop;
+  }
+
+  &:focus:not(.iconOnly) > .Content {
+    @include plain-button-backdrop(
+      var(--p-override-none, plain-button-background())
+    );
+  }
+
+  &:active:not(.iconOnly) > .Content {
+    @include plain-button-backdrop(var(--p-neutral-action, none));
   }
 
   &.fullWidth {
