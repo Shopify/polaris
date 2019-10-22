@@ -14,7 +14,7 @@ export interface ChoiceDescriptor {
   /** Value of the choice */
   value: string;
   /** Label for the choice */
-  label: string;
+  label: React.ReactNode;
   /** Disable choice */
   disabled?: boolean;
   /** Additional text to aide in use */
