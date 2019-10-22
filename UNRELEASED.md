@@ -16,10 +16,10 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Removed the need to upload assets with each release ([#2346](https://github.com/Shopify/polaris-react/pull/2346))
+
 ### Dependency upgrades
 
 ### Code quality
 
 ### Deprecations
-
-### Development workflow
