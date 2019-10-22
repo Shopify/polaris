@@ -6,6 +6,9 @@
 
 ### Bug fixes
 
+- Fixed `TextField` to no longer render `aria-invalid="false"` ([#2282](https://github.com/Shopify/polaris-react/pull/2282))
+- Fixed `TextField` to only render `min` ,`max` and `step` attributes when explicitly passed ([#2282](https://github.com/Shopify/polaris-react/pull/2282))
+
 ### Documentation
 
 ### Development workflow
