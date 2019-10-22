@@ -59,6 +59,8 @@ export interface ModalProps extends FooterProps {
   onTransitionEnd?(): void;
   /** Callback when the bottom of the modal content is reached */
   onScrolledToBottom?(): void;
+  /** The element to activate the Modal */
+  activator?: React.ReactElement;
 }
 type CombinedProps = ModalProps & WithAppProviderProps;
 
@@ -70,13 +72,13 @@ const getUniqueID = createUniqueIDFactory('modal-header');
 
 class Modal extends React.Component<CombinedProps, State> {
   static Section = Section;
-  focusReturnPointNode: HTMLElement;
 
   state: State = {
     iframeHeight: IFRAME_LOADING_HEIGHT,
   };
 
   private headerId = getUniqueID();
+  private activatorRef = React.createRef<HTMLDivElement>();
 
   render() {
     const {
@@ -90,12 +92,13 @@ class Modal extends React.Component<CombinedProps, State> {
       loading,
       large,
       limitHeight,
-      onClose,
       footer,
       primaryAction,
       secondaryActions,
       polaris: {intl},
       onScrolledToBottom,
+      activator,
+      onClose,
     } = this.props;
 
     const {iframeHeight} = this.state;
@@ -183,6 +186,7 @@ class Modal extends React.Component<CombinedProps, State> {
 
     return (
       <WithinContentContext.Provider value>
+        <div ref={this.activatorRef}>{activator}</div>
         <Portal idPrefix="modal">
           <TransitionGroup appear={animated} enter={animated} exit={animated}>
             {dialog}
@@ -205,8 +209,9 @@ class Modal extends React.Component<CombinedProps, State> {
       iframeHeight: IFRAME_LOADING_HEIGHT,
     });
 
-    if (this.focusReturnPointNode) {
-      write(() => focusFirstFocusableNode(this.focusReturnPointNode, false));
+    const activator = this.activatorRef.current;
+    if (activator) {
+      write(() => focusFirstFocusableNode(activator));
     }
   };
 
