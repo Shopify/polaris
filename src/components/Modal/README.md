@@ -658,7 +658,7 @@ function ModalExample() {
 
   const handleClose = useCallback(() => {
     setActive(false);
-    button.current.querySelector('button').focus();
+    requestAnimationFrame(() => button.current.querySelector('button').focus());
   }, []);
 
   return (
