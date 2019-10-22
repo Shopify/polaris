@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "กำลังโหลด"
+      "spinnerAccessibilityLabel": "กำลังโหลด",
+      "connectedDisclosureAccessibilityLabel": "การดำเนินการที่เกี่ยวข้อง"
     },
     "Common": {
       "checkbox": "ช่องทำเครื่องหมาย",

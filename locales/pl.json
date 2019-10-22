@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Ładowanie"
+      "spinnerAccessibilityLabel": "Ładowanie",
+      "connectedDisclosureAccessibilityLabel": "Powiązane czynności"
     },
     "Common": {
       "checkbox": "pole wyboru",

@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "लोड हो रहा है"
+      "spinnerAccessibilityLabel": "लोड हो रहा है",
+      "connectedDisclosureAccessibilityLabel": "संबंधित कार्रवाइयाँ"
     },
     "Common": {
       "checkbox": "चेकबॉक्स",

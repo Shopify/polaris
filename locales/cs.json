@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Načítání"
+      "spinnerAccessibilityLabel": "Načítání",
+      "connectedDisclosureAccessibilityLabel": "Související akce"
     },
     "Common": {
       "checkbox": "zaškrtávací políčko",

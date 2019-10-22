@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "로드 중"
+      "spinnerAccessibilityLabel": "로드 중",
+      "connectedDisclosureAccessibilityLabel": "관련 작업"
     },
     "Common": {
       "checkbox": "확인란",

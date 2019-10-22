@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Indlæser"
+      "spinnerAccessibilityLabel": "Indlæser",
+      "connectedDisclosureAccessibilityLabel": "Relaterede handlinger"
     },
     "Common": {
       "checkbox": "afkrydsningsfelt",

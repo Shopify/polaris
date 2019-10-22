@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Wird geladen"
+      "spinnerAccessibilityLabel": "Wird geladen",
+      "connectedDisclosureAccessibilityLabel": "Ähnliche Aktionen"
     },
     "Common": {
       "checkbox": "Kontrollkästchen",

@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Laddar"
+      "spinnerAccessibilityLabel": "Laddar",
+      "connectedDisclosureAccessibilityLabel": "Relaterade åtgärder"
     },
     "Common": {
       "checkbox": "kryssruta",

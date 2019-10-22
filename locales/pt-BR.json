@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Carregando"
+      "spinnerAccessibilityLabel": "Carregando",
+      "connectedDisclosureAccessibilityLabel": "Ações relacionadas"
     },
     "Common": {
       "checkbox": "caixa de seleção",

@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Laden"
+      "spinnerAccessibilityLabel": "Laden",
+      "connectedDisclosureAccessibilityLabel": "Gerelateerde acties"
     },
     "Common": {
       "checkbox": "selectievakje",

@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Caricamento"
+      "spinnerAccessibilityLabel": "Caricamento",
+      "connectedDisclosureAccessibilityLabel": "Azioni correlate"
     },
     "Common": {
       "checkbox": "casella di spunta",
