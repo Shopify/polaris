@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {TransitionGroup} from '@material-ui/react-transition-group';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
@@ -64,178 +64,156 @@ export interface ModalProps extends FooterProps {
 }
 type CombinedProps = ModalProps & WithAppProviderProps;
 
-interface State {
-  iframeHeight: number;
-}
-
 const getUniqueID = createUniqueIDFactory('modal-header');
 
-class Modal extends React.Component<CombinedProps, State> {
-  static Section = Section;
+const Modal: React.FunctionComponent<CombinedProps> & {
+  Section: typeof Section;
+} = function Modal({
+  children,
+  title,
+  src,
+  iFrameName,
+  open,
+  instant,
+  sectioned,
+  loading,
+  large,
+  limitHeight,
+  footer,
+  primaryAction,
+  secondaryActions,
+  polaris: {intl},
+  onScrolledToBottom,
+  activator,
+  onClose,
+  onIFrameLoad,
+  onTransitionEnd,
+}: CombinedProps) {
+  const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
 
-  state: State = {
-    iframeHeight: IFRAME_LOADING_HEIGHT,
-  };
+  const headerId = getUniqueID();
+  const activatorRef = React.useRef<HTMLDivElement>(null);
+  const iframeTitle = intl.translate('Polaris.Modal.iFrameTitle');
 
-  private headerId = getUniqueID();
-  private activatorRef = React.createRef<HTMLDivElement>();
-
-  render() {
-    const {
-      children,
-      title,
-      src,
-      iFrameName,
-      open,
-      instant,
-      sectioned,
-      loading,
-      large,
-      limitHeight,
-      footer,
-      primaryAction,
-      secondaryActions,
-      polaris: {intl},
-      onScrolledToBottom,
-      activator,
-      onClose,
-    } = this.props;
-
-    const {iframeHeight} = this.state;
-
-    const iframeTitle = intl.translate('Polaris.Modal.iFrameTitle');
-
-    let dialog: React.ReactNode;
-    let backdrop: React.ReactNode;
-    if (open) {
-      const footerMarkup =
-        !footer && !primaryAction && !secondaryActions ? null : (
-          <Footer
-            primaryAction={primaryAction}
-            secondaryActions={secondaryActions}
-          >
-            {footer}
-          </Footer>
-        );
-
-      const content = sectioned
-        ? wrapWithComponent(children, Section, {})
-        : children;
-
-      const body = loading ? (
-        <div className={styles.Spinner}>
-          <Spinner />
-        </div>
-      ) : (
-        content
-      );
-
-      const bodyMarkup = src ? (
-        <iframe
-          name={iFrameName}
-          title={iframeTitle}
-          src={src}
-          className={styles.IFrame}
-          onLoad={this.handleIFrameLoad}
-          style={{height: `${iframeHeight}px`}}
-        />
-      ) : (
-        <Scrollable
-          shadow
-          className={styles.Body}
-          onScrolledToBottom={onScrolledToBottom}
+  let dialog: React.ReactNode;
+  let backdrop: React.ReactNode;
+  if (open) {
+    const footerMarkup =
+      !footer && !primaryAction && !secondaryActions ? null : (
+        <Footer
+          primaryAction={primaryAction}
+          secondaryActions={secondaryActions}
         >
-          {body}
-        </Scrollable>
+          {footer}
+        </Footer>
       );
 
-      const headerMarkup = title ? (
-        <Header id={this.headerId} onClose={onClose} testID="ModalHeader">
-          {title}
-        </Header>
-      ) : (
-        <CloseButton
-          onClick={onClose}
-          title={false}
-          testID="ModalCloseButton"
-        />
-      );
+    const content = sectioned
+      ? wrapWithComponent(children, Section, {})
+      : children;
 
-      const labelledBy = title ? this.headerId : undefined;
-
-      dialog = (
-        <Dialog
-          instant={instant}
-          labelledBy={labelledBy}
-          onClose={onClose}
-          onEntered={this.handleEntered}
-          onExited={this.handleExited}
-          large={large}
-          limitHeight={limitHeight}
-        >
-          {headerMarkup}
-          <div className={styles.BodyWrapper}>{bodyMarkup}</div>
-          {footerMarkup}
-        </Dialog>
-      );
-
-      backdrop = <Backdrop />;
-    }
-
-    const animated = !instant;
-
-    return (
-      <WithinContentContext.Provider value>
-        <div ref={this.activatorRef}>{activator}</div>
-        <Portal idPrefix="modal">
-          <TransitionGroup appear={animated} enter={animated} exit={animated}>
-            {dialog}
-          </TransitionGroup>
-          {backdrop}
-        </Portal>
-      </WithinContentContext.Provider>
+    const body = loading ? (
+      <div className={styles.Spinner}>
+        <Spinner />
+      </div>
+    ) : (
+      content
     );
+
+    const bodyMarkup = src ? (
+      <iframe
+        name={iFrameName}
+        title={iframeTitle}
+        src={src}
+        className={styles.IFrame}
+        onLoad={handleIFrameLoad}
+        style={{height: `${iframeHeight}px`}}
+      />
+    ) : (
+      <Scrollable
+        shadow
+        className={styles.Body}
+        onScrolledToBottom={onScrolledToBottom}
+      >
+        {body}
+      </Scrollable>
+    );
+
+    const headerMarkup = title ? (
+      <Header id={headerId} onClose={onClose} testID="ModalHeader">
+        {title}
+      </Header>
+    ) : (
+      <CloseButton onClick={onClose} title={false} testID="ModalCloseButton" />
+    );
+
+    const labelledBy = title ? headerId : undefined;
+
+    dialog = (
+      <Dialog
+        instant={instant}
+        labelledBy={labelledBy}
+        onClose={onClose}
+        onEntered={handleEntered}
+        onExited={handleExited}
+        large={large}
+        limitHeight={limitHeight}
+      >
+        {headerMarkup}
+        <div className={styles.BodyWrapper}>{bodyMarkup}</div>
+        {footerMarkup}
+      </Dialog>
+    );
+
+    backdrop = <Backdrop />;
   }
 
-  private handleEntered = () => {
-    const {onTransitionEnd} = this.props;
+  const animated = !instant;
+
+  return (
+    <WithinContentContext.Provider value>
+      <div ref={activatorRef}>{activator}</div>
+      <Portal idPrefix="modal">
+        <TransitionGroup appear={animated} enter={animated} exit={animated}>
+          {dialog}
+        </TransitionGroup>
+        {backdrop}
+      </Portal>
+    </WithinContentContext.Provider>
+  );
+
+  function handleEntered() {
     if (onTransitionEnd) {
       onTransitionEnd();
     }
-  };
+  }
 
-  private handleExited = () => {
-    this.setState({
-      iframeHeight: IFRAME_LOADING_HEIGHT,
-    });
+  function handleExited() {
+    setIframeHeight(IFRAME_LOADING_HEIGHT);
 
-    const activator = this.activatorRef.current;
+    const activator = activatorRef.current;
     if (activator) {
       write(() => focusFirstFocusableNode(activator));
     }
-  };
+  }
 
-  private handleIFrameLoad = (evt: React.SyntheticEvent<HTMLIFrameElement>) => {
+  function handleIFrameLoad(evt: React.SyntheticEvent<HTMLIFrameElement>) {
     const iframe = evt.target as HTMLIFrameElement;
     if (iframe && iframe.contentWindow) {
       try {
-        this.setState({
-          iframeHeight: iframe.contentWindow.document.body.scrollHeight,
-        });
+        setIframeHeight(iframe.contentWindow.document.body.scrollHeight);
       } catch {
-        this.setState({
-          iframeHeight: DEFAULT_IFRAME_CONTENT_HEIGHT,
-        });
+        setIframeHeight(DEFAULT_IFRAME_CONTENT_HEIGHT);
       }
     }
-
-    const {onIFrameLoad} = this.props;
 
     if (onIFrameLoad != null) {
       onIFrameLoad(evt);
     }
-  };
-}
+  }
+};
+
+Modal.Section = Section;
 
 // Use named export once withAppProvider is refactored away
 // eslint-disable-next-line import/no-default-export
