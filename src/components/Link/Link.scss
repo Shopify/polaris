@@ -8,14 +8,43 @@
   background: none;
   border: 0;
   font-size: inherit;
-  color: color('blue');
+  color: var(--p-interactive-action, color('blue'));
   text-decoration: none;
   cursor: pointer;
 
-  &:hover,
-  &:active {
-    color: color('blue', 'dark');
+  &:hover {
+    color: var(--p-interactive-action-hovered, color('blue', 'dark'));
     text-decoration: underline;
+  }
+
+  &:focus {
+    $chrome-default-outline: rgba(0, 103, 244, 0.247) auto rem(4.5px);
+    text-decoration: var(--p-override-none, underline);
+    outline: var(--p-override-none, $chrome-default-outline);
+  }
+
+  &:focus:not(:active) {
+    @include focus-ring;
+  }
+
+  &:active {
+    position: relative;
+    &::before {
+      content: var(--p-non-null-content, none);
+      position: absolute;
+      z-index: -1;
+      // this mimics the box model of the plain button backdrop
+      top: rem(-2px);
+      right: rem(-5px);
+      bottom: rem(-2px);
+      left: rem(-5px);
+      display: block;
+
+      border-radius: border-radius();
+      background: var(--p-neutral-action, none);
+    }
+    color: var(--p-interactive-action-pressed, color('blue', 'dark'));
+    text-decoration: var(--p-override-none, underline);
   }
 }
 
