@@ -12,7 +12,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Add an activator prop to the `Modal` ([#2206](https://github.com/Shopify/polaris-react/pull/2206))
+- Added an activator prop to `Modal` so that focus can be returned to it when the `Modal` is closed ([#2206](https://github.com/Shopify/polaris-react/pull/2206))
 
 ### Bug fixes
 
