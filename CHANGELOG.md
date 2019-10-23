@@ -30,7 +30,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Fixed an issue with the `ResourceList` component where the plural resource name was not used for `totalItemsCount` ([#2301](https://github.com/Shopify/polaris-react/issues/2301))
 - Fixed Stack Item proportion when shrinking ([#2319](https://github.com/Shopify/polaris-react/pull/2319))
 - Fixed animation of `Collapsible` with children having margins ([#1980](https://github.com/Shopify/polaris-react/pull/1980))
-- Add vertical adjustment to `OptionList` control items ([#1310](https://github.com/Shopify/polaris-react/pull/1310))
+- Added vertical adjustment to `OptionList` control items ([#2313](https://github.com/Shopify/polaris-react/pull/2313))
 
 ### Dependency upgrades
 
