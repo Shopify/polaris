@@ -17,15 +17,16 @@
   min-width: $min-height;
   margin: 0;
   padding: $vertical-padding spacing();
-  background: var(
-    --p-neutral-action,
-    linear-gradient(to bottom, color('white'), color('sky', 'lighter'))
+  background: linear-gradient(
+    to bottom,
+    color('white'),
+    color('sky', 'lighter')
   );
-  border: var(--p-override-none, border(dark));
-  box-shadow: var(--p-override-none, shadow(faint));
-  border-radius: var(--p-border-radius-base, border-radius());
+  border: border(dark);
+  box-shadow: shadow(faint);
+  border-radius: border-radius();
   line-height: 1;
-  color: var(--p-text-on-surface, color('ink'));
+  color: color('ink');
   text-align: center;
   cursor: pointer;
   user-select: none;
@@ -36,121 +37,96 @@
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
-    background: var(
-      --p-neutral-action-hovered,
-      linear-gradient(to bottom, color('sky', 'lighter'), color('sky', 'light'))
+    background: linear-gradient(
+      to bottom,
+      color('sky', 'lighter'),
+      color('sky', 'light')
     );
-    border-color: var(--p-override-none, color('sky', 'dark'));
+    border-color: color('sky', 'dark');
   }
 
   &:focus {
-    border-color: var(--p-override-transparent, color('indigo'));
+    border-color: color('indigo');
     outline: 0;
-    box-shadow: var(--p-override-none, 0 0 0 1px color('indigo'));
+    box-shadow: 0 0 0 1px color('indigo');
 
-    @include focus-ring;
     @include high-contrast-button-outline;
   }
 
   &:active {
     // Same color gradient is necessary for background transitions
-    background: var(
-      --p-neutral-action-pressed,
-      linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'))
+    background: linear-gradient(
+      to bottom,
+      color('sky', 'light'),
+      color('sky', 'light')
     );
-    border-color: var(--p-override-none, color('sky', 'dark'));
-    box-shadow: var(
-      --p-override-none,
-      0 0 0 0 transparent,
+    border-color: color('sky', 'dark');
+    box-shadow: 0 0 0 0 transparent,
       inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
-      inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2)
-    );
-
-    &::after {
-      border: none;
-    }
+      inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2);
   }
 }
 
 @mixin base-button-disabled {
   @include recolor-icon(color('ink', 'lightest'));
   transition: none;
-  background: var(
-    --p-neutral-action-disabled,
-    linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'))
+  background: linear-gradient(
+    to bottom,
+    color('sky', 'light'),
+    color('sky', 'light')
   );
-  color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
+  color: color('ink', 'lightest');
 }
 
 @mixin button-filled($button-color, $focus-color, $outline-color: null) {
   $border-color: darken($button-color, 10%);
   $active-color: darken($button-color, 15%);
-  background: var(
-    --p-button-color,
-    linear-gradient(
-      to bottom,
-      lighten($button-color, 2%),
-      darken($button-color, 2%)
-    )
+  background: linear-gradient(
+    to bottom,
+    lighten($button-color, 2%),
+    darken($button-color, 2%)
   );
-  border-color: var(--p-override-transparent, $border-color);
-  box-shadow: var(
-    --p-override-none,
-    inset 0 1px 0 0 lighten($button-color, 3%),
-    shadow(faint),
-    0 0 0 0 transparent
-  );
-  color: var(--p-text-on-branded, color('white'));
+  border-color: $border-color;
+  box-shadow: inset 0 1px 0 0 lighten($button-color, 3%), shadow(faint),
+    0 0 0 0 transparent;
+  color: color('white');
 
   &:hover {
-    background: var(
-      --p-button-color-hover,
-      linear-gradient(to bottom, $button-color, darken($button-color, 5%))
+    background: linear-gradient(
+      to bottom,
+      $button-color,
+      darken($button-color, 5%)
     );
-    border-color: var(--p-override-transparent, $border-color);
-    color: var(--p-text-on-branded, color('white'));
+    border-color: $border-color;
+    color: color('white');
     text-decoration: none;
   }
 
   &:focus {
-    border-color: var(--p-override-transparent, $focus-color);
-    box-shadow: var(
-      --p-override-none,
-      inset 0 1px 0 0 lighten($button-color, 5%),
-      shadow(faint),
-      0 0 0 1px $focus-color
-    );
+    border-color: $focus-color;
+    box-shadow: inset 0 1px 0 0 lighten($button-color, 5%), shadow(faint),
+      0 0 0 1px $focus-color;
   }
 
   &:active {
-    background: var(
-      --p-button-color-active,
-      linear-gradient(to bottom, $border-color, $border-color)
-    );
-    border-color: var(--p-override-transparent, $active-color);
-    box-shadow: var(
-      --p-override-none,
-      inset 0 0 0 0 transparent,
-      shadow(faint),
-      0 0 1px 0 $active-color
-    );
+    background: linear-gradient(to bottom, $border-color, $border-color);
+    border-color: $active-color;
+    box-shadow: inset 0 0 0 0 transparent, shadow(faint),
+      0 0 1px 0 $active-color;
   }
 }
 
 @mixin button-filled-disabled($button-color) {
   @include recolor-icon(color('white'));
   // Transition gradient to gradient to avoid flicker
-  background: var(
-    --p-button-color-disabled,
-    linear-gradient(
-      to bottom,
-      lighten($button-color, 25%),
-      lighten($button-color, 25%)
-    )
+  background: linear-gradient(
+    to bottom,
+    lighten($button-color, 25%),
+    lighten($button-color, 25%)
   );
-  border-color: var(--p-override-transparent, lighten($button-color, 20%));
+  border-color: lighten($button-color, 20%);
   box-shadow: none;
-  color: var(--p-text-on-branded, color('white'));
+  color: color('white');
 }
 
 @mixin button-outline($outline-color, $background-color: transparent) {
