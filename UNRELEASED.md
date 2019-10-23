@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed an accessibility issue by updating the `aria-multiline` attribute for `TextField` with `multiline` of type number. Replaced positive number values with `true`. ([#2351](https://github.com/Shopify/polaris-react/pull/2351)).
+
 ### Documentation
 
 ### Development workflow
