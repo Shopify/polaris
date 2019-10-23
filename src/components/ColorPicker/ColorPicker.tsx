@@ -1,9 +1,11 @@
 import React from 'react';
+import debounce from 'lodash/debounce';
 import {clamp} from '@shopify/javascript-utilities/math';
 
 import {classNames} from '../../utilities/css';
 import {hsbToRgb, hexToHsb} from '../../utilities/color-transformers';
 import {HSBColor, HSBAColor} from '../../utilities/color-types';
+import {EventListener} from '../EventListener';
 
 import {
   AlphaField,
@@ -43,6 +45,18 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
   };
 
   private colorNode: HTMLElement | null = null;
+
+  private handleResize = debounce(
+    () => {
+      if (this.colorNode == null) return;
+      this.setState({
+        pickerWidth: this.colorNode.clientWidth,
+        pickerHeight: this.colorNode.clientHeight,
+      });
+    },
+    50,
+    {trailing: true},
+  );
 
   componentDidMount() {
     const {colorNode} = this;
@@ -130,6 +144,7 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
           {hexPickerMarkup}
           {alphaFieldMarkup}
         </div>
+        <EventListener event="resize" handler={this.handleResize} />
       </div>
     );
   }
