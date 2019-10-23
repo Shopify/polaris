@@ -11,7 +11,7 @@ import {
 } from './color-types';
 import {compose} from './compose';
 
-const RGB_STRING_TO_HEX_REGEX = /^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i;
+const RGB_STRING_TO_HEX_REGEX = /^rgb[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i;
 
 export function rgbString(color: RGBColor | RGBAColor) {
   const {red, green, blue} = color;
@@ -348,14 +348,14 @@ export function nameToHex(value: string) {
 
 export function rgbStringToHex(value: string) {
   const rgb = normalizeColorString(value).match(RGB_STRING_TO_HEX_REGEX) || [
-    'rgb(0,0,0)',
+    undefined,
     '0',
     '0',
     '0',
   ];
   return rgbToHex({
-    red: parseInt(rgb[1], 10),
-    green: parseInt(rgb[2], 10),
-    blue: parseInt(rgb[3], 10),
+    red: parseInt(rgb[1]!, 10),
+    green: parseInt(rgb[2]!, 10),
+    blue: parseInt(rgb[3]!, 10),
   });
 }

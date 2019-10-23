@@ -1,6 +1,5 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {Spinner} from 'components';
 import {AlphaField} from '../AlphaField';
 import {TextField} from '../../../../TextField';
 
@@ -33,7 +32,7 @@ describe('<AlphaField />', () => {
       const percentageValue = 70;
       const expectedAlpha = percentageValue / 100;
 
-      (textField.find('input') as any).instance().value = percentageValue;
+      textField.find('input').getDOMNode().value = percentageValue;
       textField
         .find('input')
         .simulate('change')
@@ -51,7 +50,7 @@ describe('<AlphaField />', () => {
       const percentageValue = 150;
       const expectedAlpha = 1;
 
-      (textField.find('input') as any).instance().value = percentageValue;
+      textField.find('input').getDOMNode().value = percentageValue;
       textField
         .find('input')
         .simulate('change')
@@ -82,9 +81,9 @@ describe('<AlphaField />', () => {
         <AlphaField alpha={1} onChange={onChangeSpy} />,
       );
       const textField = alphaField.find(TextField);
-      const upButton = textField.find('[role="button"]').last();
+      const downButton = textField.find('[role="button"]').last();
 
-      upButton.simulate('click');
+      downButton.simulate('click');
       textField.find('input').simulate('blur');
 
       expect(onChangeSpy).toHaveBeenCalledWith(0.99);

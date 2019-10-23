@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {HSBColor} from '../../../../utilities/color-types';
@@ -31,7 +31,7 @@ export function TextPicker({color, allowAlpha, onChange}: TextPickerProps) {
   const i18n = useI18n();
 
   const [text, setText] = useState('');
-  const [lastValidValue, setLastValidValue] = useState('');
+  const lastValidValue = useRef<string>('');
 
   const handleTextChange = useCallback((value) => {
     setText(value);
@@ -41,7 +41,7 @@ export function TextPicker({color, allowAlpha, onChange}: TextPickerProps) {
     const validUserInput = coerceToValidUserInput(text);
     if (validUserInput) {
       setText(validUserInput);
-      setLastValidValue(validUserInput);
+      lastValidValue.current = validUserInput;
 
       const colorHasChanged = validUserInput !== hsbToHex(color);
 
@@ -52,14 +52,17 @@ export function TextPicker({color, allowAlpha, onChange}: TextPickerProps) {
       return;
     }
 
-    setText(lastValidValue);
+    setText(lastValidValue.current);
   }, [color, lastValidValue, onChange, text]);
 
   useEffect(() => {
     const newValue = hsbToHex(color);
-    if (newValue !== hsbToHex(hexToHsb(lastValidValue))) setText(newValue);
-    if (lastValidValue === '') setLastValidValue(newValue);
-  }, [color, lastValidValue]);
+    if (newValue !== hsbToHex(hexToHsb(lastValidValue.current))) {
+      setText(newValue);
+      lastValidValue.current = newValue;
+    }
+    if (lastValidValue.current === '') lastValidValue.current = newValue;
+  }, [color]);
 
   const className = classNames(
     styles.TextPicker,
@@ -70,19 +73,16 @@ export function TextPicker({color, allowAlpha, onChange}: TextPickerProps) {
   );
   const valueForDisplay = isHexString(text) ? text.toUpperCase() : text;
 
-  const renderSelectedColorSwatch = () => {
-    const className = classNames(
-      styles.TextFieldSwatch,
-      allowAlpha && styles.AlphaAllowed,
-    );
-    const style = {backgroundColor: hsbToString(color)};
-
-    return (
-      <div className={className}>
-        <div style={style} className={styles.SwatchBackground} />
-      </div>
-    );
-  };
+  const prefixClassNames = classNames(
+    styles.TextFieldSwatch,
+    allowAlpha && styles.AlphaAllowed,
+  );
+  const prefixStyle = {backgroundColor: hsbToString(color)};
+  const prefixMarkup = (
+    <div className={prefixClassNames}>
+      <div style={prefixStyle} className={styles.SwatchBackground} />
+    </div>
+  );
 
   const coerceToValidUserInput = (value: string) => {
     const normalizedValue = normalizeColorString(value);
@@ -95,15 +95,13 @@ export function TextPicker({color, allowAlpha, onChange}: TextPickerProps) {
         return rgbStringToHex(normalizedValue);
       case isColorName(normalizedValue):
         return nameToHex(normalizedValue);
-      default:
-        return null;
     }
   };
 
   return (
     <div className={className}>
       <TextField
-        prefix={renderSelectedColorSwatch()}
+        prefix={prefixMarkup}
         value={valueForDisplay}
         label={label}
         labelHidden

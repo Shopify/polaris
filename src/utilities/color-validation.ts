@@ -24,10 +24,7 @@ export function isDark(color: RGBColor | RGBAColor): boolean {
 }
 
 export function isColorName(value: string) {
-  if (nameHexMap[value]) {
-    return true;
-  }
-  return false;
+  return Boolean(nameHexMap[value]);
 }
 
 export function isHexString(value: string) {
@@ -39,7 +36,7 @@ export function isHashlessHex(value: string) {
 }
 
 export function isRgbString(value: string) {
-  return /rgba?\(\s*(0*((25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,\s*?)){2}(0*(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?))\s*,?\s*([01]\.?\d*?)?\s*\)/i.test(
+  return /rgb\(\s*(0*((25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,\s*?)){2}(0*(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?))\s*,?\s*([01]\.?\d*?)?\s*\)/i.test(
     value,
   );
 }
