@@ -13,10 +13,7 @@ export interface AlphaFieldProps {
 export function AlphaField({alpha, onChange}: AlphaFieldProps) {
   const i18n = useI18n();
 
-  const initialValue = Math.round(alpha * 100);
-  const [percentage, setPercentage] = useState(
-    initialValue === null ? 0 : initialValue,
-  );
+  const [percentage, setPercentage] = useState(Math.round(alpha * 100) || 0);
 
   const label = i18n.translate(
     'Polaris.ColorPicker.alphaFieldAccessibilityLabel',
