@@ -43,7 +43,7 @@ export function FilterValueSelector({
     [onChange, onFilterKeyChange, value],
   );
 
-  if (showOperatorOptions && operatorText!.length !== 0 && !isMounted) {
+  if (showOperatorOptions && operatorText!.length !== 0 && !isMounted.current) {
     handleOperatorOptionChange((operatorText as Operator[])[0].key);
   }
 
