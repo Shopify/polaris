@@ -364,7 +364,6 @@ describe('<DropZone />', () => {
           <DropZone type="image">
             <DropZoneContext.Consumer>
               {(ctx) => {
-                // eslint-disable-next-line shopify/jest/no-if
                 return type === ctx.type ? <div /> : null;
               }}
             </DropZoneContext.Consumer>

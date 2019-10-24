@@ -4,6 +4,7 @@ import React, {
   useCallback,
   FunctionComponent,
   useMemo,
+  useEffect,
 } from 'react';
 import debounce from 'lodash/debounce';
 import {
@@ -22,7 +23,6 @@ import {Labelled, Action} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
 import {useEventListener} from '../../utilities/use-event-listener';
 import {useUniqueId} from '../../utilities/unique-id';
-import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useForcibleToggle} from '../../utilities/use-toggle';
 
@@ -116,7 +116,7 @@ export function DropZone({
   allowMultiple = true,
   overlayText,
   errorOverlayText,
-  id,
+  id: idProp,
   type = 'file',
   onClick,
   error,
@@ -133,7 +133,6 @@ export function DropZone({
   const node = useRef<HTMLDivElement>(null);
   const fileInputNode = useRef<HTMLInputElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
-  const isAfterInitialMount = useIsAfterInitialMount();
 
   const adjustSize = useCallback(
     debounce(
@@ -172,7 +171,7 @@ export function DropZone({
   const [size, setSize] = useState('extraLarge');
   const [measuring, setMeasuring] = useState(true);
 
-  const intl = useI18n();
+  const i18n = useI18n();
   const dropNode = dropOnPage ? document : node;
 
   const getValidatedFiles = useCallback(
@@ -298,21 +297,26 @@ export function DropZone({
 
   useComponentDidMount(() => {
     adjustSize();
-    openFileDialog && triggerFileDialog();
   });
 
-  const currentID = useUniqueId('DropZone', id);
+  useEffect(() => {
+    if (!openFileDialog) return;
+    open();
+    onFileDialogClose && onFileDialogClose();
+  }, [onFileDialogClose, openFileDialog]);
+
+  const id = useUniqueId('DropZone', idProp);
   const suffix = capitalize(type);
   const overlayTextWithDefault =
     overlayText === undefined
-      ? intl.translate(`Polaris.DropZone.overlayText${suffix}`)
+      ? i18n.translate(`Polaris.DropZone.overlayText${suffix}`)
       : overlayText;
   const errorOverlayTextWithDefault =
     errorOverlayText === undefined
-      ? intl.translate(`Polaris.DropZone.errorOverlayText${suffix}`)
+      ? i18n.translate(`Polaris.DropZone.errorOverlayText${suffix}`)
       : errorOverlayText;
   const inputAttributes: object = {
-    id: currentID,
+    id,
     accept,
     disabled,
     type: 'file',
@@ -347,7 +351,7 @@ export function DropZone({
     overlayMarkup(CircleAlertMajorMonotone, 'red', errorOverlayTextWithDefault);
 
   const labelValue =
-    label || intl.translate('Polaris.DropZone.FileUpload.label');
+    label || i18n.translate('Polaris.DropZone.FileUpload.label');
   const labelHiddenValue = label ? labelHidden : true;
 
   const context = useMemo(
@@ -361,12 +365,10 @@ export function DropZone({
     [disabled, focused, measuring, size, type],
   );
 
-  openFileDialog && isAfterInitialMount && triggerFileDialog();
-
   return (
     <DropZoneContext.Provider value={context}>
       <Labelled
-        id={currentID}
+        id={id}
         label={labelValue}
         action={labelAction}
         labelHidden={labelHiddenValue}
@@ -407,11 +409,6 @@ export function DropZone({
         </Stack>
       </div>
     );
-  }
-
-  function triggerFileDialog() {
-    open();
-    onFileDialogClose && onFileDialogClose();
   }
 
   function open() {
