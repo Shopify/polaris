@@ -29,7 +29,7 @@ export type Choice = ChoiceDescriptor;
 
 export interface ChoiceListProps {
   /** Label for list of choices */
-  title: string;
+  title: React.ReactNode;
   /** Collection of choices */
   choices: Choice[];
   /** Collection of selected choices */
