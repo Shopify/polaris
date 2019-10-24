@@ -23,16 +23,11 @@ export interface SkeletonPageProps {
   breadcrumbs?: boolean;
   /** The child elements to render in the skeleton page. */
   children?: React.ReactNode;
-}
-
-interface DeprecatedProps {
   /** Decreases the maximum layout width. Intended for single-column layouts
    * @deprecated As of release 4.0, replaced by {@link https://polaris.shopify.com/components/feedback-indicators/skeleton-page#props-narrow-width}
    */
   singleColumn?: boolean;
 }
-
-export type CombinedProps = SkeletonPageProps & DeprecatedProps;
 
 export function SkeletonPage({
   children,
@@ -43,7 +38,7 @@ export function SkeletonPage({
   secondaryActions,
   title = '',
   breadcrumbs,
-}: CombinedProps) {
+}: SkeletonPageProps) {
   if (singleColumn) {
     // eslint-disable-next-line no-console
     console.warn(

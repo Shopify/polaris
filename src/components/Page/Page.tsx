@@ -33,16 +33,13 @@ export interface PageProps extends HeaderProps {
    * @see {@link https://polaris.shopify.com/components/structure/page#section-use-in-an-embedded-application|Shopify Page Component docs}
    * */
   forceRender?: boolean;
-}
-
-export interface DeprecatedProps {
   /** Decreases the maximum layout width. Intended for single-column layouts
    * @deprecated As of release 4.0, replaced by {@link https://polaris.shopify.com/components/structure/page#props-narrow-width}
    */
   singleColumn?: boolean;
 }
 
-export type ComposedProps = PageProps & DeprecatedProps & WithAppProviderProps;
+export type ComposedProps = PageProps & WithAppProviderProps;
 
 const APP_BRIDGE_PROPS: (keyof PageProps)[] = [
   'title',
@@ -205,4 +202,4 @@ class Page extends React.PureComponent<ComposedProps, never> {
 
 // Use named export once withAppProvider is refactored away
 // eslint-disable-next-line import/no-default-export
-export default withAppProvider<PageProps & DeprecatedProps>()(Page);
+export default withAppProvider<PageProps>()(Page);
