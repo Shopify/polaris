@@ -40,12 +40,6 @@ function toString(obj?: CustomPropertiesLike) {
   }
 }
 
-export function snakeCaseToCamelCase(str: string): string {
-  return str
-    .toLowerCase()
-    .replace(/_([a-z])/g, (_match, char) => char.toUpperCase());
-}
-
 /* eslint-disable babel/camelcase */
 // eslint-disable-next-line shopify/typescript/prefer-pascal-case-enums
 export enum UNSTABLE_Color {
@@ -119,7 +113,7 @@ export function buildColors(theme: ThemeConfig) {
     const adjustments = colorSettings[lightSurface ? 'light' : 'dark'];
     const baseColor = colorToHsla(UNSTABLE_colors[colorSettings.baseColor]);
 
-    allColors[snakeCaseToCamelCase(colorName)] = {
+    allColors[colorName] = {
       alpha: baseColor.alpha,
       hue: baseColor.hue,
       lightness:

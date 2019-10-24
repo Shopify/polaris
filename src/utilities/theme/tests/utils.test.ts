@@ -721,16 +721,4 @@ describe('buildThemeContext', () => {
   });
 });
 
-describe('snakeCaseToCamelCase', () => {
-  it('convert convers uppercase snake case', () => {
-    expect(snakeCaseToCamelCase('P_SUCCESS_TEXT')).toStrictEqual(
-      'pSuccessText',
-    );
-  });
-  it('convert convers lowercase snake case', () => {
-    expect(snakeCaseToCamelCase('p_success_text')).toStrictEqual(
-      'pSuccessText',
-    );
-  });
-});
 /* eslint-enable babel/camelcase */

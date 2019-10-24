@@ -1,544 +1,544 @@
 {
-  "SURFACE": {"baseColor": "surface", "light": {}, "dark": {}},
-  "SURFACE_BACKGROUND": {
+  "surface": {"baseColor": "surface", "light": {}, "dark": {}},
+  "surfaceBackground": {
     "baseColor": "surface",
     "light": {"lightness": 98},
     "dark": {"lightness": 7}
   },
-  "SURFACE_FOREGROUND": {
+  "surfaceForeground": {
     "baseColor": "surface",
     "light": {"lightness": 100},
     "dark": {"lightness": 13}
   },
-  "SURFACE_FOREGROUND_SUBDUED": {
+  "surfaceForegroundSubdued": {
     "baseColor": "surface",
     "light": {"lightness": 90},
     "dark": {"lightness": 10}
   },
-  "SURFACE_INVERSE": {
+  "surfaceInverse": {
     "baseColor": "surface",
     "light": {"lightness": 0},
     "dark": {"lightness": 100}
   },
-  "SURFACE_HOVERED": {
+  "surfaceHovered": {
     "baseColor": "surface",
     "light": {"lightness": 93},
     "dark": {"lightness": 20}
   },
-  "SURFACE_PRESSED": {
+  "surfacePressed": {
     "baseColor": "surface",
     "light": {"lightness": 86},
     "dark": {"lightness": 27}
   },
-  "ON_SURFACE": {"baseColor": "onSurface", "light": {}, "dark": {}},
-  "ACTION_ON_INVERSE": {
+  "onSurface": {"baseColor": "onSurface", "light": {}, "dark": {}},
+  "actionOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 76},
     "dark": {"lightness": 36}
   },
-  "ACTION_ON_SURFACE": {
+  "actionOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 36},
     "dark": {"lightness": 76}
   },
-  "ACTION_DISABLED_ON_INVERSE": {
+  "actionDisabledOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 66},
     "dark": {"lightness": 46}
   },
-  "ACTION_DISABLED_ON_SURFACE": {
+  "actionDisabledOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 46},
     "dark": {"lightness": 66}
   },
-  "ACTION_HOVERED_ON_INVERSE": {
+  "actionHoveredOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 86},
     "dark": {"lightness": 26}
   },
-  "ACTION_HOVERED_ON_SURFACE": {
+  "actionHoveredOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 26},
     "dark": {"lightness": 86}
   },
-  "ACTION_PRESSED_ON_INVERSE": {
+  "actionPressedOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 96},
     "dark": {"lightness": 16}
   },
-  "ACTION_PRESSED_ON_SURFACE": {
+  "actionPressedOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 16},
     "dark": {"lightness": 96}
   },
-  "DIVIDER_ON_INVERSE": {
+  "dividerOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 80},
     "dark": {"lightness": 75}
   },
-  "DIVIDER_ON_SURFACE": {
+  "dividerOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 75},
     "dark": {"lightness": 80}
   },
-  "DIVIDER_DISABLED_ON_INVERSE": {
+  "dividerDisabledOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 70},
     "dark": {"lightness": 95}
   },
-  "DIVIDER_DISABLED_ON_SURFACE": {
+  "dividerDisabledOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 95},
     "dark": {"lightness": 70}
   },
-  "DIVIDER_SUBDUED_ON_INVERSE": {
+  "dividerSubduedOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 75},
     "dark": {"lightness": 85}
   },
-  "DIVIDER_SUBDUED_ON_SURFACE": {
+  "dividerSubduedOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 85},
     "dark": {"lightness": 75}
   },
-  "ICON_ON_INVERSE": {
+  "iconOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 98},
     "dark": {"lightness": 18}
   },
-  "ICON_ON_SURFACE": {
+  "iconOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 18},
     "dark": {"lightness": 98}
   },
-  "ICON_DISABLED_ON_INVERSE": {
+  "iconDisabledOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 75},
     "dark": {"lightness": 68}
   },
-  "ICON_DISABLED_ON_SURFACE": {
+  "iconDisabledOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 68},
     "dark": {"lightness": 75}
   },
-  "ICON_SUBDUED_ON_INVERSE": {
+  "iconSubduedOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 88},
     "dark": {"lightness": 43}
   },
-  "ICON_SUBDUED_ON_SURFACE": {
+  "iconSubduedOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 43},
     "dark": {"lightness": 88}
   },
-  "TEXT_ON_INVERSE": {
+  "textOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 100},
     "dark": {"lightness": 13}
   },
-  "TEXT_ON_SURFACE": {
+  "textOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 13},
     "dark": {"lightness": 100}
   },
-  "TEXT_DISABLED_ON_INVERSE": {
+  "textDisabledOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 80},
     "dark": {"lightness": 63}
   },
-  "TEXT_DISABLED_ON_SURFACE": {
+  "textDisabledOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 63},
     "dark": {"lightness": 80}
   },
-  "TEXT_SUBDUED_ON_INVERSE": {
+  "textSubduedOnInverse": {
     "baseColor": "onSurface",
     "light": {"lightness": 90},
     "dark": {"lightness": 38}
   },
-  "TEXT_SUBDUED_ON_SURFACE": {
+  "textSubduedOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 38},
     "dark": {"lightness": 90}
   },
-  "ACTION_ON_DARK": {
+  "actionOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 76},
     "dark": {"lightness": 76}
   },
-  "ACTION_ON_LIGHT": {
+  "actionOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 36},
     "dark": {"lightness": 36}
   },
-  "ACTION_DISABLED_ON_DARK": {
+  "actionDisabledOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 66},
     "dark": {"lightness": 66}
   },
-  "ACTION_DISABLED_ON_LIGHT": {
+  "actionDisabledOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 46},
     "dark": {"lightness": 46}
   },
-  "ACTION_HOVERED_ON_DARK": {
+  "actionHoveredOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 86},
     "dark": {"lightness": 86}
   },
-  "ACTION_HOVERED_ON_LIGHT": {
+  "actionHoveredOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 26},
     "dark": {"lightness": 26}
   },
-  "ACTION_PRESSED_ON_DARK": {
+  "actionPressedOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 96},
     "dark": {"lightness": 96}
   },
-  "ACTION_PRESSED_ON_LIGHT": {
+  "actionPressedOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 16},
     "dark": {"lightness": 16}
   },
-  "DIVIDER_ON_DARK": {
+  "dividerOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 80},
     "dark": {"lightness": 80}
   },
-  "DIVIDER_ON_LIGHT": {
+  "dividerOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 75},
     "dark": {"lightness": 75}
   },
-  "DIVIDER_DISABLED_ON_DARK": {
+  "dividerDisabledOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 70},
     "dark": {"lightness": 70}
   },
-  "DIVIDER_DISABLED_ON_LIGHT": {
+  "dividerDisabledOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 95},
     "dark": {"lightness": 95}
   },
-  "DIVIDER_SUBDUED_ON_DARK": {
+  "dividerSubduedOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 75},
     "dark": {"lightness": 75}
   },
-  "DIVIDER_SUBDUED_ON_LIGHT": {
+  "dividerSubduedOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 85},
     "dark": {"lightness": 85}
   },
-  "ICON_ON_DARK": {
+  "iconOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 98},
     "dark": {"lightness": 98}
   },
-  "ICON_ON_LIGHT": {
+  "iconOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 18},
     "dark": {"lightness": 18}
   },
-  "ICON_DISABLED_ON_DARK": {
+  "iconDisabledOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 75},
     "dark": {"lightness": 75}
   },
-  "ICON_DISABLED_ON_LIGHT": {
+  "iconDisabledOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 68},
     "dark": {"lightness": 68}
   },
-  "ICON_SUBDUED_ON_DARK": {
+  "iconSubduedOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 88},
     "dark": {"lightness": 88}
   },
-  "ICON_SUBDUED_ON_LIGHT": {
+  "iconSubduedOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 43},
     "dark": {"lightness": 43}
   },
-  "TEXT_ON_DARK": {
+  "textOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 100},
     "dark": {"lightness": 100}
   },
-  "TEXT_ON_LIGHT": {
+  "textOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 13},
     "dark": {"lightness": 13}
   },
-  "TEXT_DISABLED_ON_DARK": {
+  "textDisabledOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 80},
     "dark": {"lightness": 80}
   },
-  "TEXT_DISABLED_ON_LIGHT": {
+  "textDisabledOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 63},
     "dark": {"lightness": 63}
   },
-  "TEXT_SUBDUED_ON_DARK": {
+  "textSubduedOnDark": {
     "baseColor": "onSurface",
     "light": {"lightness": 90},
     "dark": {"lightness": 90}
   },
-  "TEXT_SUBDUED_ON_LIGHT": {
+  "textSubduedOnLight": {
     "baseColor": "onSurface",
     "light": {"lightness": 38},
     "dark": {"lightness": 38}
   },
-  "INTERACTIVE": {"baseColor": "interactive", "light": {}, "dark": {}},
-  "INTERACTIVE_ACTION": {
+  "interactive": {"baseColor": "interactive", "light": {}, "dark": {}},
+  "interactiveAction": {
     "baseColor": "interactive",
     "light": {"lightness": 44},
     "dark": {"lightness": 56}
   },
-  "INTERACTIVE_ACTION_DISABLED": {
+  "interactiveActionDisabled": {
     "baseColor": "interactive",
     "light": {"lightness": 58},
     "dark": {"lightness": 42}
   },
-  "INTERACTIVE_ACTION_HOVERED": {
+  "interactiveActionHovered": {
     "baseColor": "interactive",
     "light": {"lightness": 37},
     "dark": {"lightness": 63}
   },
-  "INTERACTIVE_ACTION_SUBDUED": {
+  "interactiveActionSubdued": {
     "baseColor": "interactive",
     "light": {"lightness": 51},
     "dark": {"lightness": 49}
   },
-  "INTERACTIVE_ACTION_PRESSED": {
+  "interactiveActionPressed": {
     "baseColor": "interactive",
     "light": {"lightness": 31},
     "dark": {"lightness": 69}
   },
-  "INTERACTIVE_FOCUS": {
+  "interactiveFocus": {
     "baseColor": "interactive",
     "light": {"lightness": 58},
     "dark": {"lightness": 42}
   },
-  "INTERACTIVE_SELECTED": {
+  "interactiveSelected": {
     "baseColor": "interactive",
     "light": {"lightness": 96},
     "dark": {"lightness": 4}
   },
-  "INTERACTIVE_SELECTED_HOVERED": {
+  "interactiveSelectedHovered": {
     "baseColor": "interactive",
     "light": {"lightness": 89},
     "dark": {"lightness": 11}
   },
-  "INTERACTIVE_SELECTED_PRESSED": {
+  "interactiveSelectedPressed": {
     "baseColor": "interactive",
     "light": {"lightness": 82},
     "dark": {"lightness": 18}
   },
-  "NEUTRAL": {"baseColor": "neutral", "light": {}, "dark": {}},
-  "NEUTRAL_ACTION_DISABLED": {
+  "neutral": {"baseColor": "neutral", "light": {}, "dark": {}},
+  "neutralActionDisabled": {
     "baseColor": "neutral",
     "light": {"lightness": 94},
     "dark": {"lightness": 13}
   },
-  "NEUTRAL_ACTION": {
+  "neutralAction": {
     "baseColor": "neutral",
     "light": {"lightness": 92},
     "dark": {"lightness": 22}
   },
-  "NEUTRAL_ACTION_HOVERED": {
+  "neutralActionHovered": {
     "baseColor": "neutral",
     "light": {"lightness": 86},
     "dark": {"lightness": 29}
   },
-  "NEUTRAL_ACTION_PRESSED": {
+  "neutralActionPressed": {
     "baseColor": "neutral",
     "light": {"lightness": 76},
     "dark": {"lightness": 39}
   },
-  "BRANDED": {"baseColor": "branded", "light": {}, "dark": {}},
-  "BRANDED_ACTION": {
+  "branded": {"baseColor": "branded", "light": {}, "dark": {}},
+  "brandedAction": {
     "baseColor": "branded",
     "light": {"lightness": 25},
     "dark": {"lightness": 25}
   },
-  "BRANDED_ACTION_DISABLED": {
+  "brandedActionDisabled": {
     "baseColor": "branded",
     "light": {"lightness": 32},
     "dark": {"lightness": 32}
   },
-  "BRANDED_ACTION_HOVERED": {
+  "brandedActionHovered": {
     "baseColor": "branded",
     "light": {"lightness": 22},
     "dark": {"lightness": 22}
   },
-  "BRANDED_ACTION_PRESSED": {
+  "brandedActionPressed": {
     "baseColor": "branded",
     "light": {"lightness": 15},
     "dark": {"lightness": 15}
   },
-  "ICON_ON_BRANDED": {
+  "iconOnBranded": {
     "baseColor": "branded",
     "light": {"lightness": 98},
     "dark": {"lightness": 98}
   },
-  "ICON_SUBDUED_ON_BRANDED": {
+  "iconSubduedOnBranded": {
     "baseColor": "branded",
     "light": {"lightness": 88},
     "dark": {"lightness": 88}
   },
-  "TEXT_ON_BRANDED": {
+  "textOnBranded": {
     "baseColor": "branded",
     "light": {"lightness": 100},
     "dark": {"lightness": 100}
   },
-  "TEXT_SUBDUED_ON_BRANDED": {
+  "textSubduedOnBranded": {
     "baseColor": "branded",
     "light": {"lightness": 90},
     "dark": {"lightness": 90}
   },
-  "BRANDED_SELECTED": {
+  "brandedSelected": {
     "baseColor": "branded",
     "light": {"lightness": 95, "saturation": 30},
     "dark": {"lightness": 5, "saturation": 30}
   },
-  "BRANDED_SELECTED_HOVERED": {
+  "brandedSelectedHovered": {
     "baseColor": "branded",
     "light": {"lightness": 81, "saturation": 22},
     "dark": {"lightness": 19, "saturation": 22}
   },
-  "BRANDED_SELECTED_PRESSED": {
+  "brandedSelectedPressed": {
     "baseColor": "branded",
     "light": {"lightness": 74, "saturation": 22},
     "dark": {"lightness": 26, "saturation": 22}
   },
-  "CRITICAL": {"baseColor": "critical", "light": {}, "dark": {}},
-  "CRITICAL_DIVIDER": {
+  "critical": {"baseColor": "critical", "light": {}, "dark": {}},
+  "criticalDivider": {
     "baseColor": "critical",
     "light": {"lightness": 52},
     "dark": {"lightness": 48}
   },
-  "CRITICAL_ICON": {
+  "criticalIcon": {
     "baseColor": "critical",
     "light": {"lightness": 52},
     "dark": {"lightness": 48}
   },
-  "CRITICAL_SURFACE": {
+  "criticalSurface": {
     "baseColor": "critical",
     "light": {"lightness": 88},
     "dark": {"lightness": 12}
   },
-  "CRITICAL_SURFACE_SUBDUED": {
+  "criticalSurfaceSubdued": {
     "baseColor": "critical",
     "light": {"lightness": 98},
     "dark": {"lightness": 12}
   },
-  "CRITICAL_TEXT": {
+  "criticalText": {
     "baseColor": "critical",
     "light": {"lightness": 30},
     "dark": {"lightness": 70}
   },
-  "CRITICAL_ACTION_DISABLED": {
+  "criticalActionDisabled": {
     "baseColor": "critical",
     "light": {"lightness": 59},
     "dark": {"lightness": 41}
   },
-  "CRITICAL_ACTION": {
+  "criticalAction": {
     "baseColor": "critical",
     "light": {"lightness": 52},
     "dark": {"lightness": 48}
   },
-  "CRITICAL_ACTION_HOVERED": {
+  "criticalActionHovered": {
     "baseColor": "critical",
     "light": {"lightness": 45},
     "dark": {"lightness": 55}
   },
-  "CRITICAL_ACTION_SUBDUED": {
+  "criticalActionSubdued": {
     "baseColor": "critical",
     "light": {"lightness": 38},
     "dark": {"lightness": 62}
   },
-  "CRITICAL_ACTION_PRESSED": {
+  "criticalActionPressed": {
     "baseColor": "critical",
     "light": {"lightness": 31},
     "dark": {"lightness": 69}
   },
-  "WARNING": {"baseColor": "warning", "light": {}, "dark": {}},
-  "WARNING_DIVIDER": {
+  "warning": {"baseColor": "warning", "light": {}, "dark": {}},
+  "warningDivider": {
     "baseColor": "warning",
     "light": {"lightness": 66},
     "dark": {"lightness": 34}
   },
-  "WARNING_ICON": {
+  "warningIcon": {
     "baseColor": "warning",
     "light": {"lightness": 66},
     "dark": {"lightness": 34}
   },
-  "WARNING_SURFACE": {
+  "warningSurface": {
     "baseColor": "warning",
     "light": {"lightness": 88},
     "dark": {"lightness": 12}
   },
-  "WARNING_SURFACE_SUBDUED": {
+  "warningSurfaceSubdued": {
     "baseColor": "warning",
     "light": {"lightness": 98},
     "dark": {"lightness": 12}
   },
-  "WARNING_TEXT": {
+  "warningText": {
     "baseColor": "warning",
     "light": {"lightness": 30},
     "dark": {"lightness": 70}
   },
-  "HIGHLIGHT": {"baseColor": "highlight", "light": {}, "dark": {}},
-  "HIGHLIGHT_DIVIDER": {
+  "highlight": {"baseColor": "highlight", "light": {}, "dark": {}},
+  "highlightDivider": {
     "baseColor": "highlight",
     "light": {"lightness": 58},
     "dark": {"lightness": 42}
   },
-  "HIGHLIGHT_ICON": {
+  "highlightIcon": {
     "baseColor": "highlight",
     "light": {"lightness": 58},
     "dark": {"lightness": 42}
   },
-  "HIGHLIGHT_SURFACE": {
+  "highlightSurface": {
     "baseColor": "highlight",
     "light": {"lightness": 88},
     "dark": {"lightness": 12}
   },
-  "HIGHLIGHT_SURFACE_SUBDUED": {
+  "highlightSurfaceSubdued": {
     "baseColor": "highlight",
     "light": {"lightness": 98},
     "dark": {"lightness": 12}
   },
-  "HIGHLIGHT_TEXT": {
+  "highlightText": {
     "baseColor": "highlight",
     "light": {"lightness": 98},
     "dark": {"lightness": 2}
   },
-  "SUCCESS": {"baseColor": "success", "light": {}, "dark": {}},
-  "SUCCESS_DIVIDER": {
+  "success": {"baseColor": "success", "light": {}, "dark": {}},
+  "successDivider": {
     "baseColor": "success",
     "light": {"lightness": 25},
     "dark": {"lightness": 35}
   },
-  "SUCCESS_ICON": {
+  "successIcon": {
     "baseColor": "success",
     "light": {"lightness": 25},
     "dark": {"lightness": 35}
   },
-  "SUCCESS_SURFACE": {
+  "successSurface": {
     "baseColor": "success",
     "light": {"lightness": 88},
     "dark": {"lightness": 12}
   },
-  "SUCCESS_SURFACE_SUBDUED": {
+  "successSurfaceSubdued": {
     "baseColor": "success",
     "light": {"lightness": 98},
     "dark": {"lightness": 12}
   },
-  "SUCCESS_TEXT": {
+  "successText": {
     "baseColor": "success",
     "light": {"lightness": 15},
     "dark": {"lightness": 85}
