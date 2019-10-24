@@ -958,7 +958,7 @@ describe('<TextField />', () => {
       expect(textField.find('textarea').prop('aria-multiline')).toBe(true);
     });
 
-    it('renders a input element with `aria-multiline` set to false if multiline is equal to 0', () => {
+    it('renders an input element with `aria-multiline` set to false if multiline is equal to 0', () => {
       const textField = mountWithAppProvider(
         <TextField
           label="TextField"
@@ -974,7 +974,7 @@ describe('<TextField />', () => {
       expect(textField.find('input').prop('aria-multiline')).toBe(false);
     });
 
-    it('renders a input element with `aria-multiline` set to false if multiline is undefined', () => {
+    it('renders an input element with `aria-multiline` set to false if multiline is undefined', () => {
       const textField = mountWithAppProvider(
         <TextField
           label="TextField"

@@ -486,13 +486,12 @@ function normalizeAutoComplete(autoComplete?: boolean | string) {
 }
 
 function normalizeAriaMultiline(multiline?: boolean | number) {
-  if (!multiline) {
-    return false;
-  }
-
-  if (typeof multiline === 'boolean') {
-    return multiline;
-  } else if (typeof multiline === 'number') {
-    return Boolean(multiline > 0);
+  switch (typeof multiline) {
+    case 'undefined':
+      return false;
+    case 'boolean':
+      return multiline;
+    case 'number':
+      return Boolean(multiline > 0);
   }
 }
