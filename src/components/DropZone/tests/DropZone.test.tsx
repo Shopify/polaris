@@ -1,11 +1,12 @@
 import React from 'react';
+import {act} from 'react-dom/test-utils';
 import {ReactWrapper} from 'enzyme';
 import {clock} from '@shopify/jest-dom-mocks';
 import {Label, Labelled, DisplayText, Caption} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
-import DropZone from '../DropZone';
+import {DropZone} from '../DropZone';
 import {DropZoneContext} from '../context';
 
 const files = [
@@ -72,7 +73,9 @@ describe('<DropZone />', () => {
   it('calls the onDrop callback with files when a drop event is fired on document', () => {
     mountWithAppProvider(<DropZone dropOnPage onDrop={spy} />);
     const event = createEvent('drop', files);
-    document.dispatchEvent(event);
+    act(() => {
+      document.dispatchEvent(event);
+    });
     expect(spy).toHaveBeenCalledWith(files, files, []);
   });
 
@@ -361,6 +364,7 @@ describe('<DropZone />', () => {
           <DropZone type="image">
             <DropZoneContext.Consumer>
               {(ctx) => {
+                // eslint-disable-next-line shopify/jest/no-if
                 return type === ctx.type ? <div /> : null;
               }}
             </DropZoneContext.Consumer>
@@ -488,17 +492,21 @@ function fireEvent({
   spy?: jest.Mock;
   testFiles?: object[];
 }) {
-  if (spy) {
-    spy.mockReset();
-  }
-  const event = createEvent(eventType, testFiles);
-  element
-    .find('div')
-    .at(3)
-    .getDOMNode()
-    .dispatchEvent(event);
-  if (eventType === 'dragenter') {
-    clock.tick(50);
-  }
+  act(() => {
+    if (spy) {
+      spy.mockReset();
+    }
+    const event = createEvent(eventType, testFiles);
+
+    element
+      .find('div')
+      .at(3)
+      .getDOMNode()
+      .dispatchEvent(event);
+
+    if (eventType === 'dragenter') {
+      clock.tick(50);
+    }
+  });
   element.update();
 }
