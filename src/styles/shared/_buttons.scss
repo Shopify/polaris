@@ -65,6 +65,36 @@
       inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
       inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2);
   }
+
+  &.globalTheming {
+    @include recolor-icon(var(--p-icon-on-surface));
+    background: var(--p-neutral-action);
+    border: none;
+    box-shadow: none;
+    border-radius: var(--p-border-radius-base);
+    color: var(--p-text-on-surface);
+
+    &:hover {
+      background: var(--p-neutral-action-hovered);
+      border-color: none;
+    }
+
+    &:focus {
+      border-color: transparent;
+      box-shadow: none;
+      @include focus-ring;
+    }
+
+    &:active {
+      background: var(--p-neutral-action-pressed);
+      border-color: none;
+      box-shadow: none;
+
+      &::after {
+        border: none;
+      }
+    }
+  }
 }
 
 @mixin base-button-disabled {
@@ -76,6 +106,12 @@
     color('sky', 'light')
   );
   color: color('ink', 'lightest');
+
+  &.globalTheming {
+    @include recolor-icon(var(--p-icon-disabled-on-surface));
+    background: var(--p-neutral-action-disabled);
+    color: var(--p-text-disabled-on-surface);
+  }
 }
 
 @mixin button-filled($button-color, $focus-color, $outline-color: null) {
@@ -114,6 +150,30 @@
     box-shadow: inset 0 0 0 0 transparent, shadow(faint),
       0 0 1px 0 $active-color;
   }
+
+  &.globalTheming {
+    background: var(--p-button-color);
+    border-color: transparent;
+    box-shadow: none;
+    color: var(--p-text-on-dark);
+
+    &:hover {
+      background: var(--p-button-color-hover);
+      border-color: transparent;
+      color: var(--p-text-on-dark);
+    }
+
+    &:focus {
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    &:active {
+      background: var(--p-button-color-active);
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
 }
 
 @mixin button-filled-disabled($button-color) {
@@ -127,6 +187,13 @@
   border-color: lighten($button-color, 20%);
   box-shadow: none;
   color: color('white');
+
+  &.globalTheming {
+    @include recolor-icon(var(--p-icon-disabled-on-dark));
+    background: var(--p-button-color-disabled);
+    border-color: transparent;
+    color: var(--p-text-disabled-on-dark);
+  }
 }
 
 @mixin button-outline($outline-color, $background-color: transparent) {
