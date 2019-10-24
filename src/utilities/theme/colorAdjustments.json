@@ -1,0 +1,546 @@
+{
+  "SURFACE": {"baseColor": "surface", "light": {}, "dark": {}},
+  "SURFACE_BACKGROUND": {
+    "baseColor": "surface",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 7}
+  },
+  "SURFACE_FOREGROUND": {
+    "baseColor": "surface",
+    "light": {"lightness": 100},
+    "dark": {"lightness": 13}
+  },
+  "SURFACE_FOREGROUND_SUBDUED": {
+    "baseColor": "surface",
+    "light": {"lightness": 90},
+    "dark": {"lightness": 10}
+  },
+  "SURFACE_INVERSE": {
+    "baseColor": "surface",
+    "light": {"lightness": 0},
+    "dark": {"lightness": 100}
+  },
+  "SURFACE_HOVERED": {
+    "baseColor": "surface",
+    "light": {"lightness": 93},
+    "dark": {"lightness": 20}
+  },
+  "SURFACE_PRESSED": {
+    "baseColor": "surface",
+    "light": {"lightness": 86},
+    "dark": {"lightness": 27}
+  },
+  "ON_SURFACE": {"baseColor": "onSurface", "light": {}, "dark": {}},
+  "ACTION_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 76},
+    "dark": {"lightness": 36}
+  },
+  "ACTION_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 36},
+    "dark": {"lightness": 76}
+  },
+  "ACTION_DISABLED_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 66},
+    "dark": {"lightness": 46}
+  },
+  "ACTION_DISABLED_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 46},
+    "dark": {"lightness": 66}
+  },
+  "ACTION_HOVERED_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 86},
+    "dark": {"lightness": 26}
+  },
+  "ACTION_HOVERED_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 26},
+    "dark": {"lightness": 86}
+  },
+  "ACTION_PRESSED_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 96},
+    "dark": {"lightness": 16}
+  },
+  "ACTION_PRESSED_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 16},
+    "dark": {"lightness": 96}
+  },
+  "DIVIDER_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 80},
+    "dark": {"lightness": 75}
+  },
+  "DIVIDER_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 75},
+    "dark": {"lightness": 80}
+  },
+  "DIVIDER_DISABLED_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 70},
+    "dark": {"lightness": 95}
+  },
+  "DIVIDER_DISABLED_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 95},
+    "dark": {"lightness": 70}
+  },
+  "DIVIDER_SUBDUED_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 75},
+    "dark": {"lightness": 85}
+  },
+  "DIVIDER_SUBDUED_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 85},
+    "dark": {"lightness": 75}
+  },
+  "ICON_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 18}
+  },
+  "ICON_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 18},
+    "dark": {"lightness": 98}
+  },
+  "ICON_DISABLED_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 75},
+    "dark": {"lightness": 68}
+  },
+  "ICON_DISABLED_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 68},
+    "dark": {"lightness": 75}
+  },
+  "ICON_SUBDUED_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 43}
+  },
+  "ICON_SUBDUED_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 43},
+    "dark": {"lightness": 88}
+  },
+  "TEXT_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 100},
+    "dark": {"lightness": 13}
+  },
+  "TEXT_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 13},
+    "dark": {"lightness": 100}
+  },
+  "TEXT_DISABLED_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 80},
+    "dark": {"lightness": 63}
+  },
+  "TEXT_DISABLED_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 63},
+    "dark": {"lightness": 80}
+  },
+  "TEXT_SUBDUED_ON_INVERSE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 90},
+    "dark": {"lightness": 38}
+  },
+  "TEXT_SUBDUED_ON_SURFACE": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 38},
+    "dark": {"lightness": 90}
+  },
+  "ACTION_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 76},
+    "dark": {"lightness": 76}
+  },
+  "ACTION_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 36},
+    "dark": {"lightness": 36}
+  },
+  "ACTION_DISABLED_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 66},
+    "dark": {"lightness": 66}
+  },
+  "ACTION_DISABLED_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 46},
+    "dark": {"lightness": 46}
+  },
+  "ACTION_HOVERED_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 86},
+    "dark": {"lightness": 86}
+  },
+  "ACTION_HOVERED_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 26},
+    "dark": {"lightness": 26}
+  },
+  "ACTION_PRESSED_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 96},
+    "dark": {"lightness": 96}
+  },
+  "ACTION_PRESSED_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 16},
+    "dark": {"lightness": 16}
+  },
+  "DIVIDER_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 80},
+    "dark": {"lightness": 80}
+  },
+  "DIVIDER_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 75},
+    "dark": {"lightness": 75}
+  },
+  "DIVIDER_DISABLED_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 70},
+    "dark": {"lightness": 70}
+  },
+  "DIVIDER_DISABLED_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 95},
+    "dark": {"lightness": 95}
+  },
+  "DIVIDER_SUBDUED_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 75},
+    "dark": {"lightness": 75}
+  },
+  "DIVIDER_SUBDUED_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 85},
+    "dark": {"lightness": 85}
+  },
+  "ICON_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 98}
+  },
+  "ICON_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 18},
+    "dark": {"lightness": 18}
+  },
+  "ICON_DISABLED_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 75},
+    "dark": {"lightness": 75}
+  },
+  "ICON_DISABLED_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 68},
+    "dark": {"lightness": 68}
+  },
+  "ICON_SUBDUED_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 88}
+  },
+  "ICON_SUBDUED_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 43},
+    "dark": {"lightness": 43}
+  },
+  "TEXT_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 100},
+    "dark": {"lightness": 100}
+  },
+  "TEXT_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 13},
+    "dark": {"lightness": 13}
+  },
+  "TEXT_DISABLED_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 80},
+    "dark": {"lightness": 80}
+  },
+  "TEXT_DISABLED_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 63},
+    "dark": {"lightness": 63}
+  },
+  "TEXT_SUBDUED_ON_DARK": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 90},
+    "dark": {"lightness": 90}
+  },
+  "TEXT_SUBDUED_ON_LIGHT": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 38},
+    "dark": {"lightness": 38}
+  },
+  "INTERACTIVE": {"baseColor": "interactive", "light": {}, "dark": {}},
+  "INTERACTIVE_ACTION": {
+    "baseColor": "interactive",
+    "light": {"lightness": 44},
+    "dark": {"lightness": 56}
+  },
+  "INTERACTIVE_ACTION_DISABLED": {
+    "baseColor": "interactive",
+    "light": {"lightness": 58},
+    "dark": {"lightness": 42}
+  },
+  "INTERACTIVE_ACTION_HOVERED": {
+    "baseColor": "interactive",
+    "light": {"lightness": 37},
+    "dark": {"lightness": 63}
+  },
+  "INTERACTIVE_ACTION_SUBDUED": {
+    "baseColor": "interactive",
+    "light": {"lightness": 51},
+    "dark": {"lightness": 49}
+  },
+  "INTERACTIVE_ACTION_PRESSED": {
+    "baseColor": "interactive",
+    "light": {"lightness": 31},
+    "dark": {"lightness": 69}
+  },
+  "INTERACTIVE_FOCUS": {
+    "baseColor": "interactive",
+    "light": {"lightness": 58},
+    "dark": {"lightness": 42}
+  },
+  "INTERACTIVE_SELECTED": {
+    "baseColor": "interactive",
+    "light": {"lightness": 96},
+    "dark": {"lightness": 4}
+  },
+  "INTERACTIVE_SELECTED_HOVERED": {
+    "baseColor": "interactive",
+    "light": {"lightness": 89},
+    "dark": {"lightness": 11}
+  },
+  "INTERACTIVE_SELECTED_PRESSED": {
+    "baseColor": "interactive",
+    "light": {"lightness": 82},
+    "dark": {"lightness": 18}
+  },
+  "NEUTRAL": {"baseColor": "neutral", "light": {}, "dark": {}},
+  "NEUTRAL_ACTION_DISABLED": {
+    "baseColor": "neutral",
+    "light": {"lightness": 94},
+    "dark": {"lightness": 13}
+  },
+  "NEUTRAL_ACTION": {
+    "baseColor": "neutral",
+    "light": {"lightness": 92},
+    "dark": {"lightness": 22}
+  },
+  "NEUTRAL_ACTION_HOVERED": {
+    "baseColor": "neutral",
+    "light": {"lightness": 86},
+    "dark": {"lightness": 29}
+  },
+  "NEUTRAL_ACTION_PRESSED": {
+    "baseColor": "neutral",
+    "light": {"lightness": 76},
+    "dark": {"lightness": 39}
+  },
+  "BRANDED": {"baseColor": "branded", "light": {}, "dark": {}},
+  "BRANDED_ACTION": {
+    "baseColor": "branded",
+    "light": {"lightness": 25},
+    "dark": {"lightness": 25}
+  },
+  "BRANDED_ACTION_DISABLED": {
+    "baseColor": "branded",
+    "light": {"lightness": 32},
+    "dark": {"lightness": 32}
+  },
+  "BRANDED_ACTION_HOVERED": {
+    "baseColor": "branded",
+    "light": {"lightness": 22},
+    "dark": {"lightness": 22}
+  },
+  "BRANDED_ACTION_PRESSED": {
+    "baseColor": "branded",
+    "light": {"lightness": 15},
+    "dark": {"lightness": 15}
+  },
+  "ICON_ON_BRANDED": {
+    "baseColor": "branded",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 98}
+  },
+  "ICON_SUBDUED_ON_BRANDED": {
+    "baseColor": "branded",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 88}
+  },
+  "TEXT_ON_BRANDED": {
+    "baseColor": "branded",
+    "light": {"lightness": 100},
+    "dark": {"lightness": 100}
+  },
+  "TEXT_SUBDUED_ON_BRANDED": {
+    "baseColor": "branded",
+    "light": {"lightness": 90},
+    "dark": {"lightness": 90}
+  },
+  "BRANDED_SELECTED": {
+    "baseColor": "branded",
+    "light": {"lightness": 95, "saturation": 30},
+    "dark": {"lightness": 5, "saturation": 30}
+  },
+  "BRANDED_SELECTED_HOVERED": {
+    "baseColor": "branded",
+    "light": {"lightness": 81, "saturation": 22},
+    "dark": {"lightness": 19, "saturation": 22}
+  },
+  "BRANDED_SELECTED_PRESSED": {
+    "baseColor": "branded",
+    "light": {"lightness": 74, "saturation": 22},
+    "dark": {"lightness": 26, "saturation": 22}
+  },
+  "CRITICAL": {"baseColor": "critical", "light": {}, "dark": {}},
+  "CRITICAL_DIVIDER": {
+    "baseColor": "critical",
+    "light": {"lightness": 52},
+    "dark": {"lightness": 48}
+  },
+  "CRITICAL_ICON": {
+    "baseColor": "critical",
+    "light": {"lightness": 52},
+    "dark": {"lightness": 48}
+  },
+  "CRITICAL_SURFACE": {
+    "baseColor": "critical",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 12}
+  },
+  "CRITICAL_SURFACE_SUBDUED": {
+    "baseColor": "critical",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 12}
+  },
+  "CRITICAL_TEXT": {
+    "baseColor": "critical",
+    "light": {"lightness": 30},
+    "dark": {"lightness": 70}
+  },
+  "CRITICAL_ACTION_DISABLED": {
+    "baseColor": "critical",
+    "light": {"lightness": 59},
+    "dark": {"lightness": 41}
+  },
+  "CRITICAL_ACTION": {
+    "baseColor": "critical",
+    "light": {"lightness": 52},
+    "dark": {"lightness": 48}
+  },
+  "CRITICAL_ACTION_HOVERED": {
+    "baseColor": "critical",
+    "light": {"lightness": 45},
+    "dark": {"lightness": 55}
+  },
+  "CRITICAL_ACTION_SUBDUED": {
+    "baseColor": "critical",
+    "light": {"lightness": 38},
+    "dark": {"lightness": 62}
+  },
+  "CRITICAL_ACTION_PRESSED": {
+    "baseColor": "critical",
+    "light": {"lightness": 31},
+    "dark": {"lightness": 69}
+  },
+  "WARNING": {"baseColor": "warning", "light": {}, "dark": {}},
+  "WARNING_DIVIDER": {
+    "baseColor": "warning",
+    "light": {"lightness": 66},
+    "dark": {"lightness": 34}
+  },
+  "WARNING_ICON": {
+    "baseColor": "warning",
+    "light": {"lightness": 66},
+    "dark": {"lightness": 34}
+  },
+  "WARNING_SURFACE": {
+    "baseColor": "warning",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 12}
+  },
+  "WARNING_SURFACE_SUBDUED": {
+    "baseColor": "warning",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 12}
+  },
+  "WARNING_TEXT": {
+    "baseColor": "warning",
+    "light": {"lightness": 30},
+    "dark": {"lightness": 70}
+  },
+  "HIGHLIGHT": {"baseColor": "highlight", "light": {}, "dark": {}},
+  "HIGHLIGHT_DIVIDER": {
+    "baseColor": "highlight",
+    "light": {"lightness": 58},
+    "dark": {"lightness": 42}
+  },
+  "HIGHLIGHT_ICON": {
+    "baseColor": "highlight",
+    "light": {"lightness": 58},
+    "dark": {"lightness": 42}
+  },
+  "HIGHLIGHT_SURFACE": {
+    "baseColor": "highlight",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 12}
+  },
+  "HIGHLIGHT_SURFACE_SUBDUED": {
+    "baseColor": "highlight",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 12}
+  },
+  "HIGHLIGHT_TEXT": {
+    "baseColor": "highlight",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 2}
+  },
+  "SUCCESS": {"baseColor": "success", "light": {}, "dark": {}},
+  "SUCCESS_DIVIDER": {
+    "baseColor": "success",
+    "light": {"lightness": 25},
+    "dark": {"lightness": 35}
+  },
+  "SUCCESS_ICON": {
+    "baseColor": "success",
+    "light": {"lightness": 25},
+    "dark": {"lightness": 35}
+  },
+  "SUCCESS_SURFACE": {
+    "baseColor": "success",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 12}
+  },
+  "SUCCESS_SURFACE_SUBDUED": {
+    "baseColor": "success",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 12}
+  },
+  "SUCCESS_TEXT": {
+    "baseColor": "success",
+    "light": {"lightness": 15},
+    "dark": {"lightness": 85}
+  }
+}

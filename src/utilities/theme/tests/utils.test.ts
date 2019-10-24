@@ -7,6 +7,7 @@ import {
   buildThemeContext,
   buildCustomProperties,
   buildColors,
+  snakeCaseToCamelCase,
 } from '../utils';
 
 describe('setTextColor', () => {
@@ -717,6 +718,19 @@ describe('buildThemeContext', () => {
     expect(
       buildThemeContext({colors: {}, logo: {}}, {foo: 'bar'}),
     ).toStrictEqual({logo: {}, UNSTABLE_cssCustomProperties: 'foo:bar'});
+  });
+});
+
+describe('snakeCaseToCamelCase', () => {
+  it('convert convers uppercase snake case correctly', () => {
+    expect(snakeCaseToCamelCase('P_SUCCESS_TEXT')).toStrictEqual(
+      'pSuccessText',
+    );
+  });
+  it('convert convers lowercase snake case correctly', () => {
+    expect(snakeCaseToCamelCase('p_success_text')).toStrictEqual(
+      'pSuccessText',
+    );
   });
 });
 /* eslint-enable babel/camelcase */
