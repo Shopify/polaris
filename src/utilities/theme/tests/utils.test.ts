@@ -504,6 +504,7 @@ describe('buildColors', () => {
         expect.objectContaining({
           '--p-critical': 'hsl(0, 77%, 52%, 1)',
           '--p-critical-divider': 'hsl(0, 77%, 52%, 1)',
+          '--p-critical-divider-disabled': 'hsl(0, 77%, 82%, 1)',
           '--p-critical-icon': 'hsl(0, 77%, 52%, 1)',
           '--p-critical-surface': 'hsl(0, 77%, 88%, 1)',
           '--p-critical-surface-subdued': 'hsl(0, 77%, 98%, 1)',
@@ -526,6 +527,7 @@ describe('buildColors', () => {
         expect.objectContaining({
           '--p-critical': 'hsl(348, 83%, 47%, 1)',
           '--p-critical-divider': 'hsl(348, 83%, 52%, 1)',
+          '--p-critical-divider-disabled': 'hsl(348, 83%, 82%, 1)',
           '--p-critical-icon': 'hsl(348, 83%, 52%, 1)',
           '--p-critical-surface': 'hsl(348, 83%, 88%, 1)',
           '--p-critical-surface-subdued': 'hsl(348, 83%, 98%, 1)',
@@ -548,6 +550,7 @@ describe('buildColors', () => {
         expect.objectContaining({
           '--p-critical': 'hsl(348, 83%, 47%, 1)',
           '--p-critical-divider': 'hsl(348, 83%, 48%, 1)',
+          '--p-critical-divider-disabled': 'hsl(348, 83%, 28%, 1)',
           '--p-critical-icon': 'hsl(348, 83%, 48%, 1)',
           '--p-critical-surface': 'hsl(348, 83%, 12%, 1)',
           '--p-critical-surface-subdued': 'hsl(348, 83%, 12%, 1)',

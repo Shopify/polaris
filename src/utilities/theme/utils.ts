@@ -213,6 +213,7 @@ function criticalColors(color: HSLAColor, lightSurface: boolean) {
   return {
     critical: color,
     criticalDivider: setLightness(color, lightSurface ? 52 : 48),
+    criticalDividerDisabled: setLightness(color, lightSurface ? 82 : 28),
     criticalIcon: setLightness(color, lightSurface ? 52 : 48),
     criticalSurface: setLightness(color, lightSurface ? 88 : 12),
     criticalSurfaceSubdued: setLightness(color, lightSurface ? 98 : 12),

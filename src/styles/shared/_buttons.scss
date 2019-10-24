@@ -76,7 +76,7 @@
 
     &:hover {
       background: var(--p-neutral-action-hovered);
-      border-color: none;
+      border-color: transparent;
     }
 
     &:focus {
@@ -87,7 +87,7 @@
 
     &:active {
       background: var(--p-neutral-action-pressed);
-      border-color: none;
+      border-color: transparent;
       box-shadow: none;
 
       &::after {
@@ -189,10 +189,10 @@
   color: color('white');
 
   &.globalTheming {
-    @include recolor-icon(var(--p-icon-disabled-on-dark));
-    background: var(--p-button-color-disabled);
+    @include recolor-icon(var(--p-icon-disabled-on-surface));
     border-color: transparent;
-    color: var(--p-text-disabled-on-dark);
+    background: var(--p-neutral-action-disabled);
+    color: var(--p-text-disabled-on-surface);
   }
 }
 
@@ -215,6 +215,67 @@
   &:active {
     background: rgba($outline-color, 0.1);
     box-shadow: none;
+  }
+
+  &.globalTheming {
+    background: transparent;
+    border: 1px solid var(--p-divider-subdued-on-surface);
+    box-shadow: none;
+    color: var(--p-text-on-surface);
+
+    &:hover {
+      border: 1px solid var(--p-divider-subdued-on-surface);
+      background: var(--p-surface-hovered);
+    }
+
+    &:focus {
+      border: 1px solid var(--p-divider-subdued-on-surface);
+      box-shadow: none;
+    }
+
+    &:active {
+      border: 1px solid var(--p-divider-subdued-on-surface);
+      background: var(--p-surface-pressed);
+      box-shadow: none;
+    }
+
+    &.disabled {
+      border: 1px solid var(--p-divider-disabled-on-surface);
+      background: transparent;
+      color: var(--p-text-disabled-on-surface);
+    }
+
+    &.destructive {
+      background: transparent;
+      border: 1px solid var(--p-critical-divider);
+      box-shadow: none;
+      color: var(--p-critical-action);
+
+      &:hover {
+        border: 1px solid var(--p-critical-divider);
+        background: var(--p-critical-surface-subdued);
+      }
+
+      &:focus {
+        border: 1px solid var(--p-critical-divider);
+        background: var(--p-critical-surface-subdued);
+        box-shadow: none;
+      }
+
+      &:active {
+        border: 1px solid var(--p-critical-divider);
+        background: var(--p-surface-pressed);
+        background: var(--p-critical-surface-subdued);
+        box-shadow: none;
+      }
+
+      // stylelint-disable-next-line selector-max-class
+      &.disabled {
+        border: 1px solid var(--p-critical-divider-disabled);
+        background: transparent;
+        color: var(--p-critical-action-disabled);
+      }
+    }
   }
 }
 
