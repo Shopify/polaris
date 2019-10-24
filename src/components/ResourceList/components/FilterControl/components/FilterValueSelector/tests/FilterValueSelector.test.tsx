@@ -1,7 +1,7 @@
 import React from 'react';
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
 import {Select, TextField} from 'components';
-import FilterValueSelector from '../FilterValueSelector';
+import {FilterValueSelector} from '../FilterValueSelector';
 import {DateSelector} from '../../DateSelector';
 import {Filter, FilterType, Operator} from '../../../types';
 
