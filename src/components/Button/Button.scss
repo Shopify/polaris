@@ -396,13 +396,13 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     }
 
     &.destructive {
-      @include recolor-icon(var(--p-critical-action));
-      color: var(--p-critical-action);
+      @include recolor-icon(var(--p-critical-link));
+      color: var(--p-critical-link);
       &:hover {
-        color: var(--p-critical-action-hovered);
+        color: var(--p-critical-link-hovered);
       }
       &:active {
-        color: var(--p-critical-action-pressed);
+        color: var(--p-critical-link-pressed);
       }
     }
 

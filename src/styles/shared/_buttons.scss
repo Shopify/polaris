@@ -249,7 +249,7 @@
       background: transparent;
       border: 1px solid var(--p-critical-divider);
       box-shadow: none;
-      color: var(--p-critical-action);
+      color: var(--p-critical-link);
 
       &:hover {
         border: 1px solid var(--p-critical-divider);
@@ -273,7 +273,7 @@
       &.disabled {
         border: 1px solid var(--p-critical-divider-disabled);
         background: transparent;
-        color: var(--p-critical-action-disabled);
+        color: var(--p-critical-link-disabled);
       }
     }
   }

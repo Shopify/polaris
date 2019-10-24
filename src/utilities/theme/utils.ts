@@ -223,6 +223,10 @@ function criticalColors(color: HSLAColor, lightSurface: boolean) {
     criticalActionHovered: setLightness(color, lightSurface ? 45 : 55),
     criticalActionSubdued: setLightness(color, lightSurface ? 38 : 62),
     criticalActionPressed: setLightness(color, lightSurface ? 31 : 69),
+    criticalLinkDisabled: setLightness(color, lightSurface ? 49 : 48),
+    criticalLink: setLightness(color, lightSurface ? 42 : 48),
+    criticalLinkHovered: setLightness(color, lightSurface ? 45 : 55),
+    criticalLinkPressed: setLightness(color, lightSurface ? 21 : 69),
   };
 }
 
