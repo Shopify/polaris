@@ -73,9 +73,10 @@ Polaris now supports multiple languages and ships with [many translations](https
 
 // new
 import translations from '@shopify/polaris/locales/en.json';
-
 <AppProvider i18n={translations}>
 ```
+
+If you use [`@shopify/react-i18n`](https://github.com/Shopify/quilt/tree/master/packages/react-i18n) and want to dynamically load translations based on a provided locale, see the [AppProvider README](https://github.com/Shopify/polaris-react/blob/master/src/components/AppProvider/README.md#using-translations) for more information.
 
 ### Autocomplete <a name="polaris-autocomplete"></a>
 
