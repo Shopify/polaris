@@ -190,6 +190,7 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-transition-group": "^2.0.7",
     "hoist-non-react-statics": "^3.3.0",
+    "hsluv": "^0.0.3",
     "lodash": "^4.17.4",
     "tslib": "^1.9.3"
   }
