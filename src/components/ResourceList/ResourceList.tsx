@@ -270,6 +270,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       hasMoreItems,
       selectedItems,
       items,
+      totalItemsCount,
       resourceName = this.defaultResourceName,
       polaris: {intl},
     } = this.props;
@@ -280,7 +281,10 @@ class ResourceList extends React.Component<CombinedProps, State> {
 
     if (selectedItems === SELECT_ALL_ITEMS) {
       return intl.translate('Polaris.ResourceList.allItemsSelected', {
-        itemsLength: items.length,
+        itemsLength:
+          typeof totalItemsCount === 'number'
+            ? totalItemsCount.toLocaleString()
+            : items.length.toLocaleString(),
         resourceNamePlural: resourceName.plural,
       });
     }
