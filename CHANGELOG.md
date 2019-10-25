@@ -8,6 +8,34 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.7.1 - 2019-10-23
+
+### Bug fixes
+
+- Fixed a bug with `Button` which caused infinite layout and high CPU load in Safari, related to [WebKit Bug 194332](https://bugs.webkit.org/show_bug.cgi?id=194332) ([#2350](https://github.com/Shopify/polaris-react/pull/2350))
+
+## 4.7.0 - 2019-10-22
+
+### Enhancements
+
+- Updated `OptionList` section title to match `ActionList` section title ([#2300](https://github.com/Shopify/polaris-react/pull/2300))
+- Added `pressed` state to `Button` ([#2148](https://github.com/Shopify/polaris-react/pull/2148))
+- Updated the type of the `label` prop in `ChoiceList` (nested prop of `choices`) from `string` to `ReactNode` ([#2325](https://github.com/Shopify/polaris-react/pull/2325)).
+
+### Bug fixes
+
+- Fixed `actionGroups` to only render `MenuActions` when actions are provided in the `Page` ([#2266](https://github.com/Shopify/polaris-react/pull/2266))
+- Fixed `PositionedOverlay` incorrectly calculating `Topbar.UserMenu` `Popover` width ([#2231](https://github.com/Shopify/polaris-react/pull/2231))
+- Fixed `recolor-icon` Sass mixin to properly scope `$secondary-color` to the child `svg` ([#2298](https://github.com/Shopify/polaris-react/pull/2298))
+- Fixed an issue with the `ResourceList` component where the plural resource name was not used for `totalItemsCount` ([#2301](https://github.com/Shopify/polaris-react/issues/2301))
+- Fixed Stack Item proportion when shrinking ([#2319](https://github.com/Shopify/polaris-react/pull/2319))
+- Fixed animation of `Collapsible` with children having margins ([#1980](https://github.com/Shopify/polaris-react/pull/1980))
+- Add vertical adjustment to `OptionList` control items ([#1310](https://github.com/Shopify/polaris-react/pull/1310))
+
+### Dependency upgrades
+
+- Updated sewing-kit to v0.111.0 and storybook to v5.2.4 ([#2326](https://github.com/Shopify/polaris-react/pull/2326))
+
 ## 4.6.1 - 2019-10-17
 
 ### Enhancements
@@ -22,15 +50,15 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Enhancements
 
-- Added a `totalItemsCount` prop to the `ResourceList` component ([2233](https://github.com/Shopify/polaris-react/pull/2233))
-- Prevented the `Header` primary action label on the `Page` component from wrapping when the title is too long ([2262](https://github.com/Shopify/polaris-react/pull/2262))
+- Added a `totalItemsCount` prop to the `ResourceList` component ([#2233](https://github.com/Shopify/polaris-react/pull/2233))
+- Prevented the `Header` primary action label on the `Page` component from wrapping when the title is too long ([#2262](https://github.com/Shopify/polaris-react/pull/2262))
 
 ### Bug fixes
 
-- Fixed an issue with the `Stack` component where a `Stack.Item` was not getting a minimum width ([2273](https://github.com/Shopify/polaris-react/pull/2273))
+- Fixed an issue with the `Stack` component where a `Stack.Item` was not getting a minimum width ([#2273](https://github.com/Shopify/polaris-react/pull/2273))
 - Fixed an issue with `Filters` applying inconsistent border styles to sibling filters when
-  there is only one filter in the filter list ([2284](https://github.com/Shopify/polaris-react/pull/2284))
-- Added `aria-disabled` to the select component's content when it is disabled ([#2281](https://github.com/Shopify/polaris-react/pull/2281))
+  there is only one filter in the filter list ([#2284](https://github.com/Shopify/polaris-react/pull/2284))
+- Added `aria-disabled` to the `Select` component’s content when it is disabled ([#2281](https://github.com/Shopify/polaris-react/pull/2281))
 
 ### Documentation
 

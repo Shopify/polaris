@@ -130,7 +130,7 @@ class Collapsible extends React.Component<CollapsibleProps, State> {
         <div
           id={id}
           aria-hidden={!open}
-          style={{height: displayHeight}}
+          style={{maxHeight: displayHeight}}
           className={wrapperClassName}
           ref={this.node}
           onTransitionEnd={this.handleTransitionEnd}
@@ -155,11 +155,11 @@ function collapsibleHeight(
   height?: number | null,
 ) {
   if (animationState === 'idle' && open) {
-    return open ? 'auto' : undefined;
+    return open ? 'none' : undefined;
   }
 
   if (animationState === 'measuring') {
-    return open ? undefined : 'auto';
+    return open ? undefined : 'none';
   }
 
   return `${height || 0}px`;

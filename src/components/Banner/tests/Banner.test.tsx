@@ -11,8 +11,8 @@ import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {BannerContext} from 'utilities/banner-context';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
-import {Banner} from '..';
 import {WithinContentContext} from '../../../utilities/within-content-context';
+import {Banner} from '..';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -156,7 +156,6 @@ describe('<Banner />', () => {
         return (
           <BannerContext.Consumer>
             {(BannerContext) => {
-              // eslint-disable-next-line shopify/jest/no-if
               return BannerContext ? <div /> : null;
             }}
           </BannerContext.Consumer>

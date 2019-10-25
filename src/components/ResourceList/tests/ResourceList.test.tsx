@@ -244,6 +244,22 @@ describe('<ResourceList />', () => {
         'Showing 2 of 5 products',
       );
     });
+
+    it('prints number of items shown of totalItemsCount plural when totalItemsCount is provided and items is one resource', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={singleItemNoID}
+          renderItem={renderItem}
+          resourceName={{singular: 'product', plural: 'products'}}
+          showHeader
+          totalItemsCount={5}
+        />,
+      );
+
+      expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
+        'Showing 1 of 5 products',
+      );
+    });
   });
 
   describe('bulkActionsAccessibilityLabel', () => {

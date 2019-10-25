@@ -96,15 +96,24 @@ describe('<Portal />', () => {
     }).not.toThrow();
   });
 
-  it('renders okay with new theme context', () => {
-    expect(() => {
-      mountWithAppProvider(<Portal />, {
-        features: {unstableGlobalTheming: true},
-        theme: {
-          // eslint-disable-next-line babel/camelcase
-          UNSTABLE_colors: {surface: '#000000'},
-        },
-      });
-    }).not.toThrow();
+  it('sets CSS custom properties on the portal node', () => {
+    const setSpy = jest.spyOn(Element.prototype, 'setAttribute');
+    const portal = mountWithAppProvider(<Portal />, {
+      features: {unstableGlobalTheming: true},
+      theme: {
+        // eslint-disable-next-line babel/camelcase
+        UNSTABLE_colors: {surface: '#000000'},
+      },
+    });
+    expect(setSpy).toHaveBeenCalledWith(
+      'style',
+      portal.context().UNSTABLE_cssCustomProperties,
+    );
+  });
+
+  it('removes CSS custom properties from the portal node', () => {
+    const removeSpy = jest.spyOn(Element.prototype, 'removeAttribute');
+    mountWithAppProvider(<Portal />);
+    expect(removeSpy).toHaveBeenCalledWith('style');
   });
 });

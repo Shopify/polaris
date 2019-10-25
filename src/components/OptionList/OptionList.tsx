@@ -183,7 +183,10 @@ function createNormalizedOptions(
 }
 
 function isSection(arr: Descriptor[]): arr is SectionDescriptor[] {
-  return typeof arr[0] === 'object' && arr[0].hasOwnProperty('options');
+  return (
+    typeof arr[0] === 'object' &&
+    Object.prototype.hasOwnProperty.call(arr[0], 'options')
+  );
 }
 
 function optionArraysAreEqual(

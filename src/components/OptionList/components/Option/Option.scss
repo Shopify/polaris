@@ -2,6 +2,7 @@
 
 $min-height: control-height();
 $control-size: rem(16px);
+$control-vertical-adjustment: rem(2px);
 
 .Option {
   @include unstyled-button;
@@ -32,7 +33,7 @@ $control-size: rem(16px);
 .Label,
 .SingleSelectOption {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   padding: spacing(tight) spacing();
 }
@@ -43,6 +44,7 @@ $control-size: rem(16px);
   flex-shrink: 0;
   width: $control-size;
   height: $control-size;
+  margin-top: $control-vertical-adjustment;
   margin-right: spacing(tight);
 }
 

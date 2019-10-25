@@ -20,7 +20,6 @@ describe('ScrollLock', () => {
 
       const setScollLockFalse = useCallback(() => setScrollLock(false), []);
 
-      // eslint-disable-next-line shopify/jest/no-if
       const scrollLockMarkup = showScrollLock ? <ScrollLock /> : null;
 
       return (

@@ -350,7 +350,7 @@ function ModalWithPrimaryActionExample() {
         }}
       >
         <Modal.Section>
-          <Stack>
+          <Stack vertical>
             <Stack.Item>
               <TextContainer>
                 <p>

@@ -40,7 +40,6 @@ describe('PolarisTestProvider', () => {
     it('allows isNavigationCollapsed to be overwritten', () => {
       function Component() {
         const {isNavigationCollapsed} = useMediaQuery();
-        // eslint-disable-next-line shopify/jest/no-if
         return isNavigationCollapsed ? <div /> : null;
       }
 

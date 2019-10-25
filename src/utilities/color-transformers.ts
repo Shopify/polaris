@@ -13,7 +13,7 @@ import {compose} from './compose';
 export function rgbString(color: RGBColor | RGBAColor) {
   const {red, green, blue} = color;
 
-  if (color.hasOwnProperty('alpha')) {
+  if (Object.prototype.hasOwnProperty.call(color, 'alpha')) {
     return `rgba(${red}, ${green}, ${blue}, ${(color as RGBAColor).alpha})`;
   } else {
     return `rgb(${red}, ${green}, ${blue})`;

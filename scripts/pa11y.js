@@ -55,23 +55,29 @@ async function runPa11y() {
     .goto(iframePath)
     .then(() => page.evaluate(() => window.__STORYBOOK_CLIENT_API__.raw()));
 
-  const storyIDs = stories.reduce((memo, story) => {
+  const storyQueryStrings = stories.reduce((memo, story) => {
     // There is no need to test the Playground, or the "All Examples" stories
     const isSkippedStory =
       story.kind === 'Playground|Playground' || story.name === 'All Examples';
 
     if (!isSkippedStory) {
-      memo.push(`${encodeURIComponent(story.id)}`);
+      const idParam = `id=${encodeURIComponent(story.id)}`;
+      memo.push(
+        idParam,
+        `${idParam}&contexts=Global%20Theming=Enabled%20-%20Light%20Mode`,
+        // Dark mode has lots of errors. It is still very WIP so ignore for now
+        // `${idParam}&contexts=Global%20Theming=Enabled%20-%20Dark%20Mode`,
+      );
     }
     return memo;
   }, []);
 
-  storyIDs.forEach((queryString) => {
+  storyQueryStrings.forEach((queryString) => {
     const currentBrowser = browsers[browserIndex % NUMBER_OF_BROWSERS];
     browserIndex++;
     currentBrowser.taken = currentBrowser.taken.then(async () => {
       console.log('Testing ', queryString);
-      const result = await pa11y(`${iframePath}?id=${queryString}`, {
+      const result = await pa11y(`${iframePath}?${queryString}`, {
         browser: currentBrowser.browser,
         ignore: [
           // Missing lang attribute on <html> tag

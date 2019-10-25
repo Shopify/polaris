@@ -2,15 +2,15 @@
 
 .Collapsible {
   overflow: hidden;
-  height: 0;
+  max-height: 0;
   padding-top: 0;
   padding-bottom: 0;
   opacity: 0;
-  will-change: opacity, height;
+  will-change: opacity, max-height;
 }
 
 .animating {
-  transition-property: opacity, height;
+  transition-property: opacity, max-height;
   transition-duration: duration(slow);
   transition-timing-function: easing(out);
 }

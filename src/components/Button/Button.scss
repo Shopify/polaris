@@ -7,6 +7,61 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 $large-min-height: rem(44px);
 $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 $spinner-size: rem(20px);
+// darken(color(sky, dark), 4%)
+$pressed-border-color: rgb(184, 195, 205);
+// darken(color(sky), 2%)
+$pressed-hover-background: rgb(217, 222, 228);
+// darken(color(sky), 4%)
+$pressed-active-background: rgb(211, 217, 223);
+// darken(color('indigo'), 10%)
+$primary-pressed-lightest: rgb(63, 78, 174);
+// darken(color('indigo'), 12%)
+$primary-pressed-light: rgb(60, 75, 167);
+// darken(color('indigo', 'dark'), 15%)
+$primary-pressed-dark: rgb(16, 23, 60);
+// darken(color('indigo', 'dark'), 20%)
+$primary-pressed-darkest: rgb(11, 15, 39);
+// darken(color('red'), 10%)
+$destructive-pressed-lightest: rgb(176, 43, 19);
+// darken(color('red'), 12%)
+$destructive-pressed-light: rgb(167, 41, 18);
+// darken(color('red', 'dark'), 15%)
+$destructive-pressed-dark: rgb(117, 4, 10);
+// darken(color('red', 'dark'), 20%)
+$destructive-pressed-darkest: rgb(93, 3, 8);
+$partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
+  inset 0 1px 1px 0 rgba(22, 29, 37, 0.05), inset 0 0 3px 0;
+
+@mixin pressed-box-shadow($color: transparent) {
+  box-shadow: 0 0 0 1px $color,
+    inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
+    inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.1);
+}
+
+@mixin button-filled-pressed(
+  $color-lightest,
+  $color-light,
+  $color-dark,
+  $color-darkest
+) {
+  background: linear-gradient(to bottom, $color-lightest, $color-lightest);
+  border-color: $color-dark;
+  box-shadow: $partial-button-filled-pressed-box-shadow $color-dark;
+
+  &:focus,
+  &:hover {
+    transition-duration: duration(fast);
+    background: linear-gradient(to bottom, $color-light, $color-light);
+    border-color: $color-dark;
+    box-shadow: $partial-button-filled-pressed-box-shadow$color-dark;
+  }
+
+  &:active {
+    background: linear-gradient(to bottom, $color-lightest, $color-lightest);
+    border-color: $color-dark;
+    box-shadow: $partial-button-filled-pressed-box-shadow$color-darkest;
+  }
+}
 
 .Button {
   @include button-base;
@@ -72,15 +127,20 @@ $spinner-size: rem(20px);
 }
 
 .primary {
-  --p-button-color: var(--p-branded-action);
-  --p-button-color-hover: var(--p-branded-action-hovered);
-  --p-button-color-active: var(--p-branded-action-pressed);
   @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(color('white'));
 
   &.disabled {
-    --p-button-color-disabled: var(--p-branded-action-disabled);
     @include button-filled-disabled(color('indigo'));
+  }
+
+  &.pressed {
+    @include button-filled-pressed(
+      $primary-pressed-lightest,
+      $primary-pressed-light,
+      $primary-pressed-dark,
+      $primary-pressed-darkest
+    );
   }
 }
 
@@ -93,6 +153,15 @@ $spinner-size: rem(20px);
 
   &.disabled {
     @include button-filled-disabled(color('red'));
+  }
+
+  &.pressed {
+    @include button-filled-pressed(
+      $destructive-pressed-lightest,
+      $destructive-pressed-light,
+      $destructive-pressed-dark,
+      $destructive-pressed-darkest
+    );
   }
 }
 
@@ -107,6 +176,14 @@ $spinner-size: rem(20px);
 .destructive.outline {
   @include button-outline(color('red'));
   @include recolor-icon(color('red', 'dark'));
+
+  &.pressed {
+    @include button-outline(
+      color('red', 'dark'),
+      rgba(color('red', 'dark'), 0.03)
+    );
+    @include recolor-icon(color('red', 'darker'));
+  }
 }
 
 .disabled {
@@ -131,32 +208,94 @@ $spinner-size: rem(20px);
   }
 }
 
+.pressed {
+  background: color(sky);
+  border-color: $pressed-border-color;
+  @include pressed-box-shadow;
+
+  &:hover {
+    transition-duration: duration(fast);
+    background: $pressed-hover-background;
+    border-color: $pressed-border-color;
+    @include pressed-box-shadow;
+  }
+
+  &:focus {
+    border-color: color('indigo');
+    @include pressed-box-shadow(color('indigo'));
+  }
+
+  &:active {
+    background: $pressed-active-background;
+    border-color: $pressed-border-color;
+    @include pressed-box-shadow;
+  }
+
+  @media (-ms-high-contrast: active) {
+    color: ms-high-contrast-color('button-text');
+    background: ms-high-contrast-color('button-text-background');
+  }
+}
+
 // The way the designs work, we need to do lots of reaching down to
 // target the content in pseudo-selectors, so we need higher specificity
 // in this case.
 // stylelint-disable selector-max-specificity
 
 .plain {
-  @include recolor-icon(color('blue'));
+  @include recolor-icon(var(--p-interactive-action, color('blue')));
   margin: (-1 * $vertical-padding) rem(-8px);
   padding-left: spacing(tight);
   padding-right: spacing(tight);
   background: transparent;
   border: 0;
   box-shadow: none;
-  color: color('blue');
+  color: var(--p-interactive-action, color('blue'));
 
+  .Content {
+    font-weight: 400;
+  }
+
+  &.pressed,
   &:hover,
   &:focus,
   &:active {
-    @include recolor-icon(color('blue', 'dark'));
     background: transparent;
     border: 0;
     box-shadow: none;
+  }
+
+  // TODO: implement depressed state for global theming
+  &.pressed {
+    @include recolor-icon(color('blue', 'dark'));
     color: color('blue', 'dark');
     text-decoration: underline;
   }
 
+  &:hover {
+    @include recolor-icon(
+      var(--p-interactive-action-hovered, color('blue', 'dark'))
+    );
+    color: var(--p-interactive-action-hovered, color('blue', 'dark'));
+    text-decoration: underline;
+  }
+
+  &:focus {
+    @include recolor-icon(var(--p-interactive-action, color('blue', 'dark')));
+    color: var(--p-interactive-action, color('blue', 'dark'));
+    text-decoration: var(--p-override-none, underline);
+    @include no-focus-ring;
+  }
+
+  &:active {
+    @include recolor-icon(
+      var(--p-interactive-action-pressed, color('blue', 'dark'))
+    );
+    color: var(--p-interactive-action-pressed, color('blue', 'dark'));
+    text-decoration: var(--p-override-none, underline);
+  }
+
+  &.pressed,
   &:focus {
     @include high-contrast-button-outline(none);
   }
@@ -165,8 +304,27 @@ $spinner-size: rem(20px);
     @include high-contrast-button-outline;
   }
 
-  &:focus:not(.iconOnly) > .Content {
+  &:focus:not(:active) > .Content {
+    @include focus-ring;
+  }
+
+  &.pressed > .Content {
+    @include plain-button-backdrop(rgba(color('ink', 'lighter'), 0.1));
+  }
+
+  &.pressed:hover:not(.iconOnly) > .Content,
+  &.pressed:active:not(.iconOnly) > .Content {
     @include plain-button-backdrop;
+  }
+
+  &:focus:not(.iconOnly) > .Content {
+    @include plain-button-backdrop(
+      var(--p-override-none, plain-button-background())
+    );
+  }
+
+  &:active:not(.iconOnly) > .Content {
+    @include plain-button-backdrop(var(--p-neutral-action, none));
   }
 
   &.fullWidth {
@@ -327,13 +485,24 @@ $spinner-size: rem(20px);
       z-index: 0;
     }
 
+    &.pressed {
+      background: transparent;
+      border-color: currentColor;
+      box-shadow: none;
+
+      // stylelint-disable-next-line selector-max-class
+      &::before {
+        opacity: 0.05;
+      }
+    }
+
     &:hover,
     &:focus,
     &:active {
       background-color: transparent;
       border-color: currentColor;
       &::before {
-        opacity: 0.05;
+        opacity: 0.07;
       }
     }
   }

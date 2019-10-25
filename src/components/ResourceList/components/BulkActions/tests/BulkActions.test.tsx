@@ -6,7 +6,7 @@ import {CheckableButton} from '../../CheckableButton';
 import {BulkActionButton} from '../components';
 import BulkActions, {BulkAction} from '../BulkActions';
 
-export interface Props {
+interface Props {
   bulkActions: BulkAction[];
   promotedActions: BulkAction[];
   paginatedSelectAllText: string;
@@ -16,7 +16,7 @@ export interface Props {
   disabled: boolean;
 }
 
-export type TestValue = BulkAction[] | string | boolean;
+type TestValue = BulkAction[] | string | boolean;
 
 const bulkActionProps: Props = {
   bulkActions: [

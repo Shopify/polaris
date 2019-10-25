@@ -79,7 +79,7 @@
     },
     "DropZone": {
       "overlayTextFile": "Upuść plik, aby załadować",
-      "overlayTextImage": "Upuść zdjęcie, aby załadować",
+      "overlayTextImage": "Upuść obraz , aby załadować",
       "errorOverlayTextFile": "Nieprawidłowy typ pliku",
       "errorOverlayTextImage": "Nieprawidłowy typ obrazu",
       "FileUpload": {
