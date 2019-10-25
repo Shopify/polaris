@@ -1,6 +1,12 @@
 import tokens from '@shopify/polaris-tokens';
+import {hexToHsluv, hsluvToHex} from 'hsluv';
 import {HSLColor, HSLAColor} from '../color-types';
-import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
+import {
+  colorToHsla,
+  hslToString,
+  hslToRgb,
+  hexToRgb,
+} from '../color-transformers';
 import {isLight} from '../color-validation';
 import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
@@ -83,6 +89,16 @@ export type ColorAdjustments = {
   };
 };
 
+function hexToHsluvObj(hex: string) {
+  const [hue, saturation, lightness] = hexToHsluv(hex);
+
+  return {
+    hue,
+    saturation,
+    lightness,
+  };
+}
+
 export function buildColors(theme: ThemeConfig) {
   const colors = {
     surface: UNSTABLE_Color.Surface,
@@ -97,8 +113,7 @@ export function buildColors(theme: ThemeConfig) {
     ...theme.UNSTABLE_colors,
   };
 
-  const surfaceColor = colorToHsla(colors.surface);
-  const lightSurface = isLight(hslToRgb(surfaceColor));
+  const lightSurface = isLight(hexToRgb(colors.surface));
 
   const colorAdjustments: ColorAdjustments = {};
   Object.assign(colorAdjustments, colorAdjustmentsJson);
@@ -107,20 +122,18 @@ export function buildColors(theme: ThemeConfig) {
     (accumulator, [colorRole, colorAdjustment]) => {
       if (colorAdjustment == null) return accumulator;
 
-      const baseColor = colorToHsla(colors[colorAdjustment.baseColor]);
+      const baseColor = hexToHsluvObj(colors[colorAdjustment.baseColor]);
       const {
         hue = baseColor.hue,
         saturation = baseColor.saturation,
         lightness = baseColor.lightness,
-        alpha = baseColor.alpha,
+        alpha = 1,
       } = colorAdjustment[lightSurface ? 'light' : 'dark'];
 
       return {
         ...accumulator,
         [colorRole]: hslToString({
-          hue,
-          saturation,
-          lightness,
+          ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
           alpha,
         }),
       };
