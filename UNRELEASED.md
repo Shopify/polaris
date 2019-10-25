@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fix alignment of center aligned popovers that overlap the page ([#2362](https://github.com/Shopify/polaris-react/pull/2362))
+
 ### Documentation
 
 ### Development workflow
