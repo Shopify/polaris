@@ -3,7 +3,7 @@
 .Card {
   overflow: hidden;
   background-color: var(--p-surface-foreground, color('white'));
-  box-shadow: shadow();
+  box-shadow: var(--p-card-shadow, shadow());
 
   + .Card {
     margin-top: spacing(loose);

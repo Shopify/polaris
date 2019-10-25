@@ -8,7 +8,7 @@ $content-max-width: rem(400px);
 .Popover {
   max-width: calc(100vw - #{2 * spacing()});
   margin: $visible-portion-of-arrow spacing(tight) spacing();
-  box-shadow: shadow(deep);
+  box-shadow: var(--p-popover-shadow, shadow(deep));
   border-radius: var(--p-border-radius-wide, border-radius());
   will-change: left, top;
   width: 100%;
