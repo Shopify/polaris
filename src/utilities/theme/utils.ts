@@ -296,6 +296,15 @@ function overrides() {
     [toCssCustomPropertySyntax('borderSubdued')]: `${rem(
       '1px',
     )} solid var(--p-divider-subdued-on-surface)`,
+    [toCssCustomPropertySyntax('borderDisabled')]: `${rem(
+      '1px',
+    )} solid var(--p-divider-disabled-on-surface)`,
+    [toCssCustomPropertySyntax('borderCritical')]: `${rem(
+      '1px',
+    )} solid var(--p-critical-divider)`,
+    [toCssCustomPropertySyntax('borderCriticalDisabled')]: `${rem(
+      '1px',
+    )} solid var(--p-critical-divider-disabled)`,
     [toCssCustomPropertySyntax('textFieldSpinnerOffset')]: rem('2px'),
     [toCssCustomPropertySyntax('textFieldFocusRingOffset')]: rem('-4px'),
     [toCssCustomPropertySyntax('textFieldFocusRingBorderRadius')]: rem('7px'),
