@@ -49,7 +49,6 @@ describe('needsVariant', () => {
   });
 });
 
-/* eslint-disable babel/camelcase */
 describe('buildCustomProperties', () => {
   const legacyCustomProperties = {
     '--top-bar-background': '#eeeeee',
@@ -806,4 +805,3 @@ describe('buildThemeContext', () => {
     ).toStrictEqual({logo: {}, UNSTABLE_cssCustomProperties: 'foo:bar'});
   });
 });
-/* eslint-enable babel/camelcase */

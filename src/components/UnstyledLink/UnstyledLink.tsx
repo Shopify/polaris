@@ -7,11 +7,7 @@ import {useLink, LinkLikeComponentProps} from '../../utilities/link';
 // but the props explorer isn't smart enough to work that out
 export interface UnstyledLinkProps extends LinkLikeComponentProps {}
 
-// This does have a display name, but the linting has a bug in it
-// https://github.com/yannickcr/eslint-plugin-react/issues/2324
-// eslint-disable-next-line react/display-name
 export const UnstyledLink = React.memo(
-  // eslint-disable-next-line react/display-name
   React.forwardRef<unknown, UnstyledLinkProps>(function UnstyledLink(
     props,
     _ref,
@@ -29,3 +25,8 @@ export const UnstyledLink = React.memo(
     );
   }),
 );
+
+// Wrapping forwardRef in a memo means the component does not get a name set
+// So we have to do it ourselves
+// https://github.com/facebook/react/issues/16722
+UnstyledLink.displayName = 'Memoised(UnstyledLink)';

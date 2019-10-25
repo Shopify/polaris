@@ -57,7 +57,7 @@ describe('<Page />', () => {
     animationFrame.restore();
   });
 
-  describe('forceRender renders children in page', () => {
+  it('forceRender renders children in page', () => {
     const {
       createSpy: titleBarCreateSpy,
       restore: restoreTitleBarCreateMock,

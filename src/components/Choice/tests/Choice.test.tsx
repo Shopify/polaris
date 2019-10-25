@@ -82,8 +82,8 @@ describe('<Choice />', () => {
       <Choice id="MyChoice" label="Label" />,
     );
     const label = element.find('label');
-    for (let i = 0; i < blockLevelElements.length; i++) {
-      expect(label.find(blockLevelElements[i])).toHaveLength(0);
+    for (const blockLevelElement of blockLevelElements) {
+      expect(label.find(blockLevelElement)).toHaveLength(0);
     }
   });
 });

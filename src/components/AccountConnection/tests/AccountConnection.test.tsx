@@ -28,7 +28,7 @@ describe('<AccountConnection />', () => {
     it('is shown on the card when provided', () => {
       const TermsOfService = () => (
         <p>
-          By clicking <strong>Connect</strong>, you agree to accept Sample App’s{' '}
+          By clicking <strong>Connect</strong>, you agree to accept Sample App’s
           terms and conditions. You’ll pay a commission rate of 15% on sales
           made through Sample App.
         </p>

@@ -17,9 +17,6 @@ export interface ToastManagerProps {
   toastMessages: (ToastPropsWithID)[];
 }
 
-// This does have a display name, but the linting has a bug in it
-// https://github.com/yannickcr/eslint-plugin-react/issues/2324
-// eslint-disable-next-line react/display-name
 export const ToastManager = memo(function ToastManager({
   toastMessages,
 }: ToastManagerProps) {

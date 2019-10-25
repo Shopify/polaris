@@ -102,7 +102,6 @@ describe('<Portal />', () => {
     const portal = mountWithAppProvider(<Portal />, {
       features: {unstableGlobalTheming: true},
       theme: {
-        // eslint-disable-next-line babel/camelcase
         UNSTABLE_colors: {surface: '#000000'},
       },
     });

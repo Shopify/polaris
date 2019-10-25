@@ -1,8 +1,8 @@
 import React from 'react';
 
-type MediaQueryContextType = {
+export interface MediaQueryContextType {
   isNavigationCollapsed: boolean;
-};
+}
 
 export const MediaQueryContext = React.createContext<
   MediaQueryContextType | undefined

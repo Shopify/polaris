@@ -3,15 +3,15 @@ import * as ts from 'typescript';
 import glob from 'glob';
 import cmd from 'node-cmd';
 
-type Node = {
+interface Node {
   fileName: string;
   dependsOn: Node[];
   dependedOnBy: Node[];
-};
+}
 
-type GraphType = {
+interface GraphType {
   [name: string]: Node;
-};
+}
 
 const graph: GraphType = {};
 
