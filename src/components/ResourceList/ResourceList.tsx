@@ -192,13 +192,13 @@ class ResourceList extends React.Component<CombinedProps, State> {
       return intl.translate('Polaris.ResourceList.loading', {resource});
     } else if (totalItemsCount) {
       return intl.translate('Polaris.ResourceList.showingTotalCount', {
-        itemsCount,
-        totalItemsCount,
+        itemsCount: itemsCount.toLocaleString(),
+        totalItemsCount: totalItemsCount.toLocaleString(),
         resource,
       });
     } else {
       return intl.translate('Polaris.ResourceList.showing', {
-        itemsCount,
+        itemsCount: itemsCount.toLocaleString(),
         resource,
       });
     }
@@ -290,6 +290,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       hasMoreItems,
       selectedItems,
       items,
+      totalItemsCount,
       resourceName = this.defaultResourceName,
       polaris: {intl},
     } = this.props;
@@ -302,7 +303,10 @@ class ResourceList extends React.Component<CombinedProps, State> {
       selectedItems === SELECT_ALL_ITEMS
         ? intl.translate('Polaris.Common.undo')
         : intl.translate('Polaris.ResourceList.selectAllItems', {
-            itemsLength: items.length,
+            itemsLength:
+              typeof totalItemsCount === 'number'
+                ? totalItemsCount.toLocaleString()
+                : items.length.toLocaleString(),
             resourceNamePlural: resourceName.plural,
           });
 
