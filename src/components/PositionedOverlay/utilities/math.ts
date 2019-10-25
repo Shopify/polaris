@@ -90,16 +90,21 @@ export function calculateHorizontalPosition(
   preferredAlignment: PreferredAlignment,
 ) {
   const borderWidth = 1;
-  const rightHorizontalPosition = activatorRect.left + activatorRect.width - overlayRect.width - borderWidth;
+  const rightHorizontalPosition =
+    activatorRect.left + activatorRect.width - overlayRect.width - borderWidth;
   const leftHorizontalPosition = activatorRect.left + borderWidth;
-  const centerHorizontalPosition = activatorRect.center.x - overlayRect.width / 2;
+  const centerHorizontalPosition =
+    activatorRect.center.x - overlayRect.width / 2;
 
   // If right aligned or the popover goes over the right side of the page
-  if(preferredAlignment === 'right' || centerHorizontalPosition + overlayRect.width > containerRect.width){
+  if (
+    preferredAlignment === 'right' ||
+    centerHorizontalPosition + overlayRect.width > containerRect.width
+  ) {
     return rightHorizontalPosition;
   }
   // If left aligned or the popover goes over the left side of the page
-  else if( preferredAlignment === 'left' || centerHorizontalPosition < 0){
+  else if (preferredAlignment === 'left' || centerHorizontalPosition < 0) {
     return leftHorizontalPosition;
   }
 
