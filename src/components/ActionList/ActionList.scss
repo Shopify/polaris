@@ -177,6 +177,27 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   &::-moz-focus-inner {
     border: none;
   }
+
+  &.globalTheming {
+    // States
+    // Active (.active)
+
+    // Active, hovered, focused (:active:hover:focus)
+
+    // Hovered, focused (:hover:focus)
+
+    // Focused (:focus)
+
+    // Destructive (.destructive)
+
+    // Destructive, active, hovered, focused (.destructive:active:hover:focus)
+
+    // Destructive, hovered, focused (.destructive:hover:focus)
+
+    // Destructive, focused (.destructive:focus)
+
+    // Disabled (.disabled)
+  }
 }
 
 .Content {
