@@ -1,18 +1,11 @@
 const util = require('util');
 const path = require('path');
 const postcss = require('postcss');
-const {
-  ensureDir,
-  outputFile,
-  readFileSync,
-  writeFile,
-  createWriteStream,
-} = require('fs-extra');
+const {ensureDir, outputFile, readFileSync, writeFile} = require('fs-extra');
 const glob = require('glob');
 const nodeSass = require('node-sass');
 const {createFilter} = require('rollup-pluginutils');
 const cssnano = require('cssnano');
-const archiver = require('archiver');
 
 const cssModulesExtractImports = require('postcss-modules-extract-imports');
 const cssModulesLocalByDefault = require('postcss-modules-local-by-default');
@@ -206,29 +199,4 @@ async function generateSass(inputFolder, outputFolder, cssByFile) {
     ),
     outputFile(`${outputFolder}/styles.scss`, polarisScssContent),
   ]);
-
-  // Generate Sass.zip
-  return generateSassZip(outputFolder, outputFolder);
-}
-
-// see https://archiverjs.com
-function generateSassZip(sourceDir, destinationDir) {
-  return new Promise((resolve, reject) => {
-    const output = createWriteStream(`${destinationDir}/Sass.zip`);
-    const archive = archiver('zip', {store: true});
-
-    output.on('close', () => {
-      // eslint-disable-next-line no-console
-      console.log(`Sass zip complete: ${archive.pointer()} total bytes`);
-      resolve();
-    });
-
-    archive.on('error', (err) => {
-      reject(err);
-    });
-
-    archive.pipe(output);
-    archive.glob(`**/*.scss`, {cwd: sourceDir});
-    archive.finalize();
-  });
 }
