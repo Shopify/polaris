@@ -22,11 +22,11 @@ interface Props extends IconProps {}
 
 export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   const i18n = useI18n();
-  const monorail = useMonorail();
+  const unstableMonorail = useMonorail();
 
   /* eslint-disable babel/camelcase */
   useEffect(() => {
-    if (monorail) {
+    if (unstableMonorail) {
       let loggedSource;
       if (typeof source === 'function') {
         loggedSource = source.name;
@@ -36,14 +36,14 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
         loggedSource = 'custom icon string';
       }
 
-      monorail.produce('polaris_icons_usage/1.0', {
+      unstableMonorail.produce('polaris_icons_usage/1.0', {
         icon_source: loggedSource,
         color,
         backdrop,
         accessibility_label: accessibilityLabel,
       });
     }
-  }, [accessibilityLabel, backdrop, color, monorail, source]);
+  }, [accessibilityLabel, backdrop, color, source, unstableMonorail]);
   /* eslint-enable babel/camelcase */
 
   if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {

@@ -42,7 +42,7 @@ export interface AppProviderProps extends AppBridgeOptions {
   features?: Features;
   /** Inner content of the application */
   children?: React.ReactNode;
-  monorail?: MonorailObject;
+  UNSTABLE_monorail?: MonorailObject;
 }
 
 export class AppProvider extends React.Component<AppProviderProps, State> {
@@ -100,7 +100,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
   }
 
   render() {
-    const {theme = {}, features = {}, monorail, children} = this.props;
+    const {theme = {}, features = {}, UNSTABLE_monorail, children} = this.props;
     const {intl, appBridge, link} = this.state;
 
     return (
@@ -112,7 +112,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
                 <AppBridgeContext.Provider value={appBridge}>
                   <LinkContext.Provider value={link}>
                     <ThemeProvider theme={theme}>
-                      <MonorailContext.Provider value={monorail}>
+                      <MonorailContext.Provider value={UNSTABLE_monorail}>
                         <MediaQueryProvider>{children}</MediaQueryProvider>
                       </MonorailContext.Provider>
                     </ThemeProvider>
