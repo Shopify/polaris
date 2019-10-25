@@ -178,26 +178,82 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     border: none;
   }
 
+  // stylelint-disable selector-max-class
+  // stylelint-disable selector-max-specificity
   &.globalTheming {
     // States
-    // Active (.active)
+    // Active (.active, :active)
+    //    An action list `Item` can be put into an active state, which is functionally similar to `selected`,
+    //    but, it is also the same as the `:active` state in the current design.
+    //    since action lists can't actually be selected, we should use the `pressed` state to express this
+    &.active,
+    &:active {
+      background-image: none;
+    }
+
+    // Hovered (:hover)
+    &:hover {
+      background-image: none;
+    }
 
     // Active, hovered, focused (:active:hover:focus)
+    &:active:hover:focus {
+      box-shadow: none;
+      background-image: none;
+    }
 
     // Hovered, focused (:hover:focus)
+    &:hover:focus {
+      box-shadow: none;
+      background-image: none;
+    }
 
     // Focused (:focus)
+    &:focus {
+      box-shadow: none;
+      background-image: none;
+    }
 
     // Destructive (.destructive)
+    // &.destructive {}
+
+    // Destructive, active (.destructive.active, .destructive:active)
+    &.destructive.active,
+    &.destructive:active {
+      background-image: none;
+    }
+
+    // Hovered (:hover)
+    &.destructive:hover {
+      background-image: none;
+    }
 
     // Destructive, active, hovered, focused (.destructive:active:hover:focus)
+    &.destructive:active:hover:focus {
+      box-shadow: none;
+      background-image: none;
+    }
 
     // Destructive, hovered, focused (.destructive:hover:focus)
+    &.destructive:hover:focus {
+      box-shadow: none;
+      background-image: none;
+    }
 
     // Destructive, focused (.destructive:focus)
+    &.destructive:focus {
+      box-shadow: none;
+      background-image: none;
+    }
 
     // Disabled (.disabled)
+    &.disabled {
+      background-image: none;
+    }
+    // &.disabled .Image
   }
+  // stylelint-enable selector-max-specificity
+  // stylelint-enable selector-max-class
 }
 
 .Content {
