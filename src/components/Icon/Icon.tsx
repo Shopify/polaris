@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
+import {useMonorail} from '../../utilities/monorail';
 import {IconProps} from '../../types';
 
 import styles from './Icon.scss';
@@ -21,6 +22,29 @@ interface Props extends IconProps {}
 
 export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   const i18n = useI18n();
+  const monorail = useMonorail();
+
+  /* eslint-disable babel/camelcase */
+  useEffect(() => {
+    if (monorail) {
+      let loggedSource;
+      if (typeof source === 'function') {
+        loggedSource = source.name;
+      } else if (source === 'placeholder') {
+        loggedSource = source;
+      } else {
+        loggedSource = 'custom icon string';
+      }
+
+      monorail.produce('polaris_icons_usage/1.0', {
+        icon_source: loggedSource,
+        color,
+        backdrop,
+        accessibility_label: accessibilityLabel,
+      });
+    }
+  }, [accessibilityLabel, backdrop, color, monorail, source]);
+  /* eslint-enable babel/camelcase */
 
   if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {
     // eslint-disable-next-line no-console

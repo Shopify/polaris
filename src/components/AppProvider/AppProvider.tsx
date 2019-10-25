@@ -1,5 +1,6 @@
 import React from 'react';
 import {ThemeConfig} from '../../utilities/theme';
+import {MonorailContext, MonorailObject} from '../../utilities/monorail';
 import {ThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
@@ -41,6 +42,7 @@ export interface AppProviderProps extends AppBridgeOptions {
   features?: Features;
   /** Inner content of the application */
   children?: React.ReactNode;
+  monorail?: MonorailObject;
 }
 
 export class AppProvider extends React.Component<AppProviderProps, State> {
@@ -98,7 +100,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
   }
 
   render() {
-    const {theme = {}, features = {}, children} = this.props;
+    const {theme = {}, features = {}, monorail, children} = this.props;
     const {intl, appBridge, link} = this.state;
 
     return (
@@ -110,7 +112,9 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
                 <AppBridgeContext.Provider value={appBridge}>
                   <LinkContext.Provider value={link}>
                     <ThemeProvider theme={theme}>
-                      <MediaQueryProvider>{children}</MediaQueryProvider>
+                      <MonorailContext.Provider value={monorail}>
+                        <MediaQueryProvider>{children}</MediaQueryProvider>
+                      </MonorailContext.Provider>
                     </ThemeProvider>
                   </LinkContext.Provider>
                 </AppBridgeContext.Provider>
