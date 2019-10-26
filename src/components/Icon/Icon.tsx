@@ -32,7 +32,7 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   }, [source, telemetry]);
   /* eslint-enable babel/camelcase */
 
-  if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {
+  if (color && backdrop && !COLORS_WITH_BACKDROPS.includes(color)) {
     // eslint-disable-next-line no-console
     console.warn(
       i18n.translate('Polaris.Icon.backdropWarning', {

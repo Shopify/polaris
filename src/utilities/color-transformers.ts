@@ -253,6 +253,7 @@ export function hslToString(hslColor: HSLAColor | string) {
 }
 
 function rgbToObject(color: string): RGBAColor {
+  // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
   const colorMatch = color.match(/\(([^)]+)\)/);
 
   if (!colorMatch) {
@@ -280,6 +281,7 @@ const rbgStringToHsla: (color: string) => HSLAColor = compose(
 );
 
 function hslToObject(color: string): HSLAColor {
+  // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
   const colorMatch = color.match(/\(([^)]+)\)/);
 
   if (!colorMatch) {

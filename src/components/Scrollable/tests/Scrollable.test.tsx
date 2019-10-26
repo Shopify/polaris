@@ -30,7 +30,7 @@ describe('<Scrollable />', () => {
   });
 
   it('provides scrollToPosition callback to children', () => {
-    const Child: React.SFC<{}> = (_) => (
+    const Child: React.SFC = (_) => (
       <ScrollableContext.Consumer>
         {(scrollToPosition) => {
           return scrollToPosition ? <div /> : null;

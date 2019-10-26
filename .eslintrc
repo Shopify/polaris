@@ -69,6 +69,18 @@
   },
   "overrides": [
     {
+      "files": ["src/**/*.{ts,tsx}"],
+      "extends": ["plugin:shopify/typescript-type-checking"],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "@typescript-eslint/prefer-readonly": "off",
+        "@typescript-eslint/no-unnecessary-condition": "off",
+        "@typescript-eslint/unbound-method": "off"
+      }
+    },
+    {
       "files": ["**/*.test.{ts,tsx}"],
       "rules": {
         "jest/no-truthy-falsy": "off",

@@ -183,7 +183,7 @@ function buildLegacyColors(theme?: ThemeConfig): CustomPropertiesLike {
 }
 
 export function needsVariant(name: string) {
-  return needsVariantList.indexOf(name) !== -1;
+  return needsVariantList.includes(name);
 }
 
 const lightenToString: (

@@ -445,7 +445,7 @@ describe('<Page />', () => {
 
 function noop() {}
 
-function mountWithAppBridge(element: React.ReactElement<any>) {
+function mountWithAppBridge(element: React.ReactElement) {
   const appBridge = {};
   const page = mountWithAppProvider(element, {appBridge});
   return {page, appBridge};

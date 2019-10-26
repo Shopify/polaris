@@ -2,7 +2,7 @@ import * as appBridge from '@shopify/app-bridge';
 import {createAppBridge, setClientInterfaceHook} from '../app-bridge';
 
 describe('createAppBridge()', () => {
-  const createAppSpy: jest.SpyInstance<any> = jest.spyOn(appBridge, 'default');
+  const createAppSpy: jest.SpyInstance = jest.spyOn(appBridge, 'default');
 
   afterEach(() => {
     createAppSpy.mockReset();

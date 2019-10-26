@@ -9,8 +9,8 @@ import styles from './ExceptionList.scss';
 
 export type Description =
   | string
-  | React.ReactElement<any>
-  | (string | React.ReactElement<any>)[];
+  | React.ReactElement
+  | (string | React.ReactElement)[];
 
 export interface Item {
   /** Set the color of the icon and title for the given item. */

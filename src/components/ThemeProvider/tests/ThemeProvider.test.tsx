@@ -14,7 +14,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('passes context', () => {
-    const Child: React.SFC<{}> = (_props) => {
+    const Child: React.SFC = (_props) => {
       return (
         <ThemeContext.Consumer>
           {(polarisTheme) => {

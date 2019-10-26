@@ -60,8 +60,8 @@ export type AppBridgeTarget = 'ADMIN_PATH' | 'REMOTE' | 'APP';
 
 export type Error =
   | string
-  | React.ReactElement<any>
-  | (string | React.ReactElement<any>)[];
+  | React.ReactElement
+  | (string | React.ReactElement)[];
 
 export interface BaseAction {
   /** A unique identifier for the action */
