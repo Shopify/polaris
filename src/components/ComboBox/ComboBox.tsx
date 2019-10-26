@@ -11,8 +11,8 @@ import {ListBox, ListBoxProps, Option, InlinePopover} from './components';
 
 export interface ComboBoxProps {
   id?: string;
-  children: React.ReactNode;
-  textfield: React.ReactElement<TextFieldProps>;
+  children?: React.ReactNode;
+  activator: React.ReactElement<TextFieldProps>;
   allowMultiple?: boolean;
   inline?: boolean;
   highlightMatches?: boolean;
@@ -21,7 +21,7 @@ export interface ComboBoxProps {
 
 export function ComboBox({
   children,
-  textfield,
+  activator,
   allowMultiple,
   highlightMatches,
   inline,
@@ -81,14 +81,14 @@ export function ComboBox({
     <div
       role="combobox"
       aria-expanded={popoverActive}
-      aria-owns={listBoxId}
+      aria-owns={popoverActive ? listBoxId : undefined}
       aria-haspopup="listbox"
       aria-controls={listBoxId}
       onFocus={handleFocus}
       onKeyUp={handleKeyUp}
       tabIndex={0}
     >
-      {textfield}
+      {activator}
     </div>
   );
 
@@ -144,8 +144,8 @@ function findOptions(children: any) {
   childrenArray.forEach((child) => {
     if (
       isListBox(child) &&
-      child.props.children &&
-      child.props.children.length > 0
+      child.props.children
+      // child.props.children.length > 0
     ) {
       foundOption = true;
     } else if (child.props.children && child.props.children.length > 0) {

@@ -13,8 +13,10 @@ import {ListBoxContext} from './context/list-box';
 import styles from './ListBox.scss';
 
 export type ListBoxProps = {
-  children?: React.ReactNode[];
+  children?: React.ReactNode | React.ReactNode[];
 };
+
+export type NavigableOptions = Map<Number, String>;
 
 export function ListBox({children}: ListBoxProps) {
   const listBoxClassName = classNames(styles.ListBox);
@@ -31,6 +33,7 @@ export function ListBox({children}: ListBoxProps) {
     setFirstOptionLabel,
     firstOptionLabel,
     onOptionSelected,
+    listBoxId,
   } = combobox;
 
   if (keyboardFocusedOption) {
@@ -47,12 +50,12 @@ export function ListBox({children}: ListBoxProps) {
           child &&
           isElementOfType(child, Option) &&
           !child.props.disabled &&
-          child.props.id
+          child.props.value
         ) {
           setFirstOptionLabel &&
             !firstOptionLabel &&
             setFirstOptionLabel(child.props.label);
-          return child.props.id;
+          return child.props.value;
         }
       },
     );
@@ -109,7 +112,9 @@ export function ListBox({children}: ListBoxProps) {
       <KeypressListener keyCode={Key.UpArrow} handler={handleUpArrow} />
       <KeypressListener keyCode={Key.Enter} handler={handleEnter} />
       <ListBoxContext.Provider value={listBoxContext}>
-        <ul className={listBoxClassName}>{children}</ul>
+        <ul id={listBoxId} className={listBoxClassName}>
+          {children}
+        </ul>
       </ListBoxContext.Provider>
     </React.Fragment>
   ) : null;
