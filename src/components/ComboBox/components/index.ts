@@ -1,2 +1,3 @@
 export {InlinePopover, InlinePopoverProps} from './InlinePopover';
-export {ListBox, ListBoxProps, Option, OptionProps} from './ListBox';
+export {ListBox, ListBoxProps} from './ListBox';
+export {Option, OptionProps} from './Option';

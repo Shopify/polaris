@@ -8,7 +8,7 @@ import {
 import {Key} from '../../../../types';
 import {classNames} from '../../../../utilities/css';
 import {KeypressListener} from '../../../KeypressListener';
-import {Option, OptionProps} from './components';
+import {Option} from '../Option';
 import {ListBoxContext} from './context/list-box';
 import styles from './ListBox.scss';
 
@@ -16,12 +16,11 @@ export type ListBoxProps = {
   children?: React.ReactNode | React.ReactNode[];
 };
 
-export type NavigableOptions = Map<Number, String>;
-
 export function ListBox({children}: ListBoxProps) {
   const listBoxClassName = classNames(styles.ListBox);
-  const [keyboardFocusedOption, setKeyboardFocusedOption] = useState();
-  const [navigableOptions, setNavigableOptions] = useState([] as string[]);
+  const [navigableItems, setNavigableItems] = useState([] as string[]);
+  const [keyboardFocusedItem, setKeyboardFocusedItem] = useState();
+  const [navigableItemsCursor, setNavigableItemsCursor] = useState(0);
   const combobox = useComboBox();
 
   if (!combobox) {
@@ -29,23 +28,18 @@ export function ListBox({children}: ListBoxProps) {
   }
 
   const {
-    setActiveDescendant,
     setFirstOptionLabel,
     firstOptionLabel,
     onOptionSelected,
     listBoxId,
   } = combobox;
 
-  if (keyboardFocusedOption) {
-    setActiveDescendant(keyboardFocusedOption);
-  }
-
-  const totalOptions = useRef<number>(navigableOptions.length);
+  const totalOptions = useRef<number>(navigableItems.length);
 
   // TODO: recursive when we add sections
   useEffect(() => {
-    const updatedNavigableOptions = elementChildren(children).map(
-      (child: React.ReactElement<OptionProps>) => {
+    const updatedNavigableItems = elementChildren(children).map(
+      (child: React.ReactElement<any>) => {
         if (
           child &&
           isElementOfType(child, Option) &&
@@ -59,49 +53,45 @@ export function ListBox({children}: ListBoxProps) {
         }
       },
     );
-    setNavigableOptions(updatedNavigableOptions as string[]);
-    totalOptions.current = updatedNavigableOptions.length;
+    setNavigableItems(updatedNavigableItems);
+    setNavigableItemsCursor(0);
+    totalOptions.current = updatedNavigableItems.length;
   }, [children, firstOptionLabel, setFirstOptionLabel]);
 
   const onItemClick = (value: string) => {
     onOptionSelected(value);
   };
 
-  const handleEnter = (evt: KeyboardEvent) => {
-    evt.preventDefault();
-    onOptionSelected(keyboardFocusedOption);
-  };
-
   const listBoxContext = {
-    keyboardFocusedOption,
+    keyboardFocusedItem,
     onItemClick,
   };
 
   /** key interactions */
   const handleDownArrow = () => {
-    if (!navigableOptions) return;
-    keyboardFocusedOption == null
-      ? setKeyboardFocusedOption(navigableOptions[0])
-      : handleNextPosition(navigableOptions.indexOf(keyboardFocusedOption) + 1);
+    if (!navigableItems) return;
+    keyboardFocusedItem == null
+      ? setKeyboardFocusedItem(navigableItems[0])
+      : handleNextPosition(navigableItems.indexOf(keyboardFocusedItem) + 1);
   };
 
   const handleUpArrow = () => {
-    if (!navigableOptions || !totalOptions.current) return;
-    keyboardFocusedOption == null
-      ? setKeyboardFocusedOption(navigableOptions[totalOptions.current - 1])
-      : handleNextPosition(navigableOptions.indexOf(keyboardFocusedOption) - 1);
+    if (!navigableItems || !totalOptions.current) return;
+    keyboardFocusedItem == null
+      ? setKeyboardFocusedItem(navigableItems[totalOptions.current - 1])
+      : handleNextPosition(navigableItems.indexOf(keyboardFocusedItem) - 1);
   };
 
   const handleNextPosition = (nextPosition: number) => {
     switch (nextPosition) {
       case -1:
-        setKeyboardFocusedOption(navigableOptions[totalOptions.current - 1]);
+        setKeyboardFocusedItem(navigableItems[totalOptions.current - 1]);
         break;
       case totalOptions.current:
-        setKeyboardFocusedOption(navigableOptions[0]);
+        setKeyboardFocusedItem(navigableItems[0]);
         break;
       default:
-        setKeyboardFocusedOption(navigableOptions[nextPosition]);
+        setKeyboardFocusedItem(navigableItems[nextPosition]);
     }
   };
 
@@ -110,7 +100,6 @@ export function ListBox({children}: ListBoxProps) {
     <React.Fragment>
       <KeypressListener keyCode={Key.DownArrow} handler={handleDownArrow} />
       <KeypressListener keyCode={Key.UpArrow} handler={handleUpArrow} />
-      <KeypressListener keyCode={Key.Enter} handler={handleEnter} />
       <ListBoxContext.Provider value={listBoxContext}>
         <ul id={listBoxId} className={listBoxClassName}>
           {children}
