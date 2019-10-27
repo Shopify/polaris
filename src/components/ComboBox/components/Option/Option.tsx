@@ -1,4 +1,4 @@
-import React, {useRef, useCallback} from 'react';
+import React, {useRef, useCallback, useEffect} from 'react';
 import {TickMinor} from '@shopify/polaris-icons';
 import {useComboBox} from '../../../../utilities/combo-box';
 import {classNames} from '../../../../utilities/css';
@@ -6,11 +6,11 @@ import {useUniqueId} from '../../../../utilities/unique-id';
 import {Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {Icon} from '../../../Icon';
+import {Scrollable} from '../../../Scrollable';
 import {useListBox} from '../ListBox';
 import styles from './Option.scss';
 
 export type OptionProps = {
-  label: string;
   value: string;
   suggest?: boolean;
   children?: React.ReactNode | string;
@@ -18,36 +18,45 @@ export type OptionProps = {
   disabled?: boolean;
 };
 
-export function Option({value, label, children, selected}: OptionProps) {
-  const {keyboardFocusedOption, onItemClick} = useListBox();
+export function Option({value, children, selected}: OptionProps) {
+  const {keyboardFocusedItem, onItemClick} = useListBox(); // scrollable
   const combobox = useComboBox();
   const listItemRef = useRef<HTMLLIElement>(null);
   const id = useUniqueId('ComboBoxOption');
 
+  // useEffect(() => {
+  //   if (scrollable && listItemRef.current && keyboardFocusedItem === value) {
+  //     const scrollableHeight = scrollable.clientHeight;
+  //     const scrollableOffsetTop = (scrollable as HTMLElement).offsetTop;
+  //     const optionHeight = scrollable.getBoundingClientRect();
+  //     const optionOffsetTop = listItemRef.current.offsetTop;
+  //   }
+  // });
+
   const optionClassName = classNames(
     styles.Option,
     selected && styles.selected,
-    keyboardFocusedOption === value && styles.focused,
+    keyboardFocusedItem === value && styles.focused,
   );
 
   // ListBox Context keeps track of which option is keyboard focused using the value
-  const currentlyKeyboardFocused = keyboardFocusedOption === value;
+  const currentlyKeyboardFocused = keyboardFocusedItem === value;
 
   // The parent doesn't know the id and we need the id for the activeDescendant
   // TODO: TEXTFIELD ONLY PROVIDER
   currentlyKeyboardFocused && combobox && combobox.setActiveDescendant(id);
 
+  const scrollToView = currentlyKeyboardFocused ? (
+    <Scrollable.ScrollTo />
+  ) : null;
+
   const handleItemClick = useCallback(() => {
     onItemClick && onItemClick(value);
   }, [onItemClick, value]);
 
-  const handleEnter = useCallback(
-    (evt: KeyboardEvent) => {
-      evt.preventDefault();
-      handleItemClick();
-    },
-    [handleItemClick],
-  );
+  const handleEnter = useCallback(() => {
+    handleItemClick();
+  }, [handleItemClick]);
 
   const enterKeyListenner = currentlyKeyboardFocused ? (
     <KeypressListener
@@ -57,7 +66,6 @@ export function Option({value, label, children, selected}: OptionProps) {
     />
   ) : null;
 
-  const content = children ? children : label;
   const selectedIconMarkup = selected ? (
     <div className={styles.Checkmark}>
       <Icon color="indigo" source={TickMinor} />
@@ -72,7 +80,7 @@ export function Option({value, label, children, selected}: OptionProps) {
       onClick={handleItemClick}
     >
       {enterKeyListenner}
-      <div className={styles.Content}>{content}</div>
+      <div className={styles.Content}>{children}</div>
       {selectedIconMarkup}
     </li>
   );

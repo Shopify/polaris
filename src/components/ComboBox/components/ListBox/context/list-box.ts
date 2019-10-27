@@ -1,8 +1,9 @@
 import React from 'react';
 
 type ListBoxContextType = {
-  keyboardFocusedOption?: string;
-  onItemClick?(value: string, id?: string): void;
+  keyboardFocusedItem?: string;
+  onItemClick?(value: string): void;
+  scrollable?: Element;
 };
 
 export const ListBoxContext = React.createContext<ListBoxContextType>({});

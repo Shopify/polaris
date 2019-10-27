@@ -405,7 +405,10 @@ export function TextField({
     'aria-labelledby': labelledBy.length ? labelledBy.join(' ') : undefined,
     'aria-invalid': Boolean(error),
     'aria-owns': ariaOwns,
-    'aria-activedescendant': ariaActiveDescendant,
+    'aria-activedescendant':
+      comboBox && comboBox.activeDescendant
+        ? comboBox.activeDescendant
+        : ariaActiveDescendant,
     'aria-autocomplete': ariaAutocomplete,
     'aria-controls': ariaControls,
     'aria-multiline': normalizeAriaMultiline(multiline),
