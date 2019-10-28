@@ -155,6 +155,14 @@ const App = () => {
     <React.Fragment>
       <Box marginBottom={1} flexDirection="column">
         <Box>
+          <Box width={3}>💡</Box>
+          <Box>
+            Tip: disable <Text bold>yarn splash</Text> by running{' '}
+            <Text bold>yarn dev-no-splash</Text> or setting an environment
+            variable <Text bold>DISABLE_SPLASH=1</Text>
+          </Box>
+        </Box>
+        <Box>
           <Box width={3}>💦</Box>
           <Box>
             <Text bold>yarn splash</Text>: Observe the splash zone of a change

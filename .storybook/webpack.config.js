@@ -115,10 +115,11 @@ module.exports = ({config, mode}) => {
   config.plugins.push({
     apply: (compiler) => {
       compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
-        const spawnedProcess = spawn('yarn splash', {
-          shell: true,
-          stdio: 'inherit',
-        });
+        process.env.DISABLE_SPLASH ||
+          spawn('yarn splash', {
+            shell: true,
+            stdio: 'inherit',
+          });
       });
     },
   });
