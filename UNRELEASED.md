@@ -12,6 +12,9 @@
 - Prevented scrolling to `Popover` content in development ([#2403](https://github.com/Shopify/polaris-react/pull/2403))
 - Fixed an issue which caused HSL colors to not display in Edge ([#2418](https://github.com/Shopify/polaris-react/pull/2418))
 - Fixed an issue where the dropzone component jumped from an extra-large layout to a layout based on the width of its container ([#2412](https://github.com/Shopify/polaris-react/pull/2412))
+- Fixed an issue which caused HSL colors to not display in Edge ((#2418)[https://github.com/Shopify/polaris-react/pull/2418])
+- Fixed an issue where the dropzone component jumped from an extra-large layout to a layout based on the width of it's container ([#2412](https://github.com/Shopify/polaris-react/pull/2412))
+- Fixed a race condition in DatePicker ([#2373](https://github.com/Shopify/polaris-react/pull/2373))
 
 ### Documentation
 
