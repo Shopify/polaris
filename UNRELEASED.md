@@ -16,6 +16,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Made running yarn splash along with the storybook optional ([#2372](https://github.com/Shopify/polaris-react/pull/2372))
+
 ### Dependency upgrades
 
 ### Code quality
