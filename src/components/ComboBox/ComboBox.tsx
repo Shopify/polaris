@@ -2,16 +2,21 @@ import React, {useState, useRef, useEffect} from 'react';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useMediaQuery} from '../../utilities/media-query';
 import {ComboBoxContext} from '../../utilities/combo-box';
-import {isElementOfType} from '../../utilities/components';
 import {scrollable} from '../shared';
 import {TextFieldProps} from '../TextField';
 import {Popover} from '../Popover';
 import {EventListener} from '../EventListener';
-import {ListBox, ListBoxProps, Option, InlinePopover} from './components';
+import {
+  ListBox,
+  ListBoxProps,
+  Option,
+  OptionProps,
+  InlinePopover,
+} from './components';
 
 export interface ComboBoxProps {
   id?: string;
-  children?: React.ReactNode;
+  children?: React.ReactElement<OptionProps>[];
   activator: React.ReactElement<TextFieldProps>;
   allowMultiple?: boolean;
   inline?: boolean;
@@ -35,11 +40,6 @@ export function ComboBox({
   const [textfieldId, setTextFieldId] = useState(useUniqueId('textfieldId'));
   const listBoxWrapper = useRef<HTMLDivElement>(null);
   const {isNavigationCollapsed} = useMediaQuery();
-  const [hasOptions, setHasOptions] = useState(false);
-
-  useEffect(() => {
-    setHasOptions(findOptions(children));
-  }, [children]);
 
   const handleSelectOption = (id: string) => {
     focusInput();
@@ -62,9 +62,9 @@ export function ComboBox({
   };
 
   const handleFocus = () => {
-    if (!popoverActive && hasOptions) {
+    if (!popoverActive && children) {
       setPopoverActive(true);
-    } else if (popoverActive && !hasOptions) {
+    } else if (popoverActive && !children) {
       setPopoverActive(false);
     }
   };
@@ -103,9 +103,9 @@ export function ComboBox({
     }
   };
 
-  const listBoxMarkup = hasOptions ? (
+  const listBoxMarkup = children ? (
     <div ref={listBoxWrapper} id={listBoxId}>
-      {children}
+      <ListBox>{children}</ListBox>
     </div>
   ) : null;
 
@@ -138,28 +138,28 @@ export function ComboBox({
   );
 }
 
-function findOptions(children: any) {
-  const childrenArray = React.Children.toArray(children);
-  let foundOption = false;
-  childrenArray.forEach((child) => {
-    if (
-      isListBox(child) &&
-      child.props.children
-      // child.props.children.length > 0
-    ) {
-      foundOption = true;
-    } else if (child.props.children && child.props.children.length > 0) {
-      findOptions(child.props.children);
-    }
-  });
-  return foundOption;
-}
+// function findOptions(children: any) {
+//   const childrenArray = React.Children.toArray(children);
+//   let foundOption = false;
+//   childrenArray.forEach((child) => {
+//     if (
+//       isListBox(child) &&
+//       child.props.children
+//       // child.props.children.length > 0
+//     ) {
+//       foundOption = true;
+//     } else if (child.props.children && child.props.children.length > 0) {
+//       findOptions(child.props.children);
+//     }
+//   });
+//   return foundOption;
+// }
 
-function isListBox(
-  listBox: React.ReactElement,
-): listBox is React.ReactElement<ListBoxProps> {
-  return isElementOfType(listBox, ListBox);
-}
+// function isListBox(
+//   listBox: React.ReactElement,
+// ): listBox is React.ReactElement<ListBoxProps> {
+//   return isElementOfType(listBox, ListBox);
+// }
 
 ComboBox.Option = Option;
-ComboBox.ListBox = ListBox;
+// ComboBox.ListBox = ListBox;

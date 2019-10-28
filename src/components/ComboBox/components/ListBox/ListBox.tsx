@@ -8,12 +8,12 @@ import {Key} from '../../../../types';
 import {classNames} from '../../../../utilities/css';
 import {KeypressListener} from '../../../KeypressListener';
 import {scrollable} from '../../../shared';
-import {Option} from '../Option';
+import {Option, OptionProps} from '../Option';
 import {ListBoxContext} from './context/list-box';
 import styles from './ListBox.scss';
 
 export type ListBoxProps = {
-  children?: React.ReactNode | React.ReactNode[];
+  children: React.ReactElement<OptionProps> | React.ReactElement<OptionProps>[];
 };
 
 export type ScrollabelState = {
@@ -35,49 +35,6 @@ export function ListBox({children}: ListBoxProps) {
         listBoxRef.current.closest(scrollable.selector) || null;
     }
   }, []);
-
-  // const listBoxRef = useRef<HTMLDivElement>(null);
-  // const scrollableRef = useRef<Element | null>(null);
-  // const [scrollableState, setScrollableState] = useState({});
-
-  // const handleScroll = useCallback(
-  //   ({target}: Event) => {
-  //     const scrolltop = target && (target as HTMLDivElement).scrollTop;
-  //     setScrollableState({...scrollableState, scrolltop});
-  //   },
-  //   [scrollableState],
-  // );
-
-  // const handleResize = useCallback(
-  //   ({target}: Event) => {
-  //     const height = target && (target as HTMLDivElement).clientHeight;
-  //     setScrollableState({...scrollableState, height});
-  //   },
-  //   [scrollableState],
-  // );
-
-  // // So that the Option gets the require info
-  // useEffect(() => {
-  //   scrollableRef.current = listBoxRef.current
-  //     ? listBoxRef.current.closest(scrollable.selector)
-  //     : null;
-
-  //   const scrollableEl = scrollableRef.current;
-
-  //   if (scrollableEl) {
-  //     scrollableEl.addEventListener('scroll', handleScroll);
-  //     scrollableEl.addEventListener('resize', handleResize);
-  //     scrollableEl.dispatchEvent(new Event('scroll'));
-  //     scrollableEl.dispatchEvent(new Event('resize'));
-  //   }
-
-  //   return () => {
-  //     if (scrollableEl) {
-  //       scrollableEl.removeEventListener('scroll', handleScroll);
-  //       scrollableEl.removeEventListener('resize', handleResize);
-  //     }
-  //   };
-  // }, [handleResize, handleScroll]);
 
   const combobox = useComboBox();
 
@@ -112,7 +69,6 @@ export function ListBox({children}: ListBoxProps) {
       },
     );
     setNavigableItems(updatedNavigableItems);
-    // setNavigableItemsCursor(-1);
     totalOptions.current = updatedNavigableItems.length;
   }, [children]);
 
@@ -162,8 +118,7 @@ export function ListBox({children}: ListBoxProps) {
     evt.preventDefault();
   }, []);
 
-  // this check doesn't work
-  return React.Children.toArray(children).length > 0 ? (
+  return children ? (
     <div ref={listBoxRef}>
       <KeypressListener
         keyEventName="keydown"
