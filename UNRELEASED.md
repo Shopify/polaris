@@ -10,6 +10,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added unstable API to integrate with Monorail and gather analytics about icon usage ([#2368](https://github.com/Shopify/polaris-react/pull/2368))
+
 ### Bug fixes
 
 ### Documentation

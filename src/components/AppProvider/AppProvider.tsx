@@ -42,7 +42,7 @@ export interface AppProviderProps extends AppBridgeOptions {
   features?: Features;
   /** Inner content of the application */
   children?: React.ReactNode;
-  UNSTABLE_monorail?: MonorailObject;
+  UNSTABLE_monorail?: MonorailObject; // eslint-disable-line babel/camelcase
 }
 
 export class AppProvider extends React.Component<AppProviderProps, State> {
@@ -99,6 +99,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
     });
   }
 
+  /* eslint-disable babel/camelcase */
   render() {
     const {theme = {}, features = {}, UNSTABLE_monorail, children} = this.props;
     const {intl, appBridge, link} = this.state;
@@ -125,4 +126,5 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
       </FeaturesContext.Provider>
     );
   }
+  /* eslint-enable babel/camelcase */
 }
