@@ -7,6 +7,7 @@ import {
   buildThemeContext,
   buildCustomProperties,
   buildColors,
+  snakeCaseToCamelCase,
 } from '../utils';
 
 describe('setTextColor', () => {
