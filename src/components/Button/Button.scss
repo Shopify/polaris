@@ -584,10 +584,10 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     }
 
     &.globalTheming {
-      box-shadow: 0 0 0 rem(1px) currentColor;
+      box-shadow: 0 0 0 border-width('base') currentColor;
 
       &:focus {
-        box-shadow: 0 0 0 rem(2px) currentColor;
+        box-shadow: 0 0 0 border-width('thick') currentColor;
         @include no-focus-ring;
       }
     }
