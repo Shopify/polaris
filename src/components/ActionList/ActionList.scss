@@ -188,6 +188,11 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     padding: $item-vertical-padding spacing(tight);
     border-radius: var(--p-border-radius-base);
     // States
+    // Hovered (:hover)
+    &:hover {
+      background-image: none;
+      background-color: var(--p-surface-hovered);
+    }
     // Active (.active, :active)
     // We need to decide if the .active state appears as pressed or focused
     // Focused might be odd, as another item could be focused simultaneously
@@ -195,12 +200,6 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     &:active {
       background-image: none;
       background-color: var(--p-surface-pressed);
-    }
-
-    // Hovered (:hover)
-    &:hover {
-      background-image: none;
-      background-color: var(--p-surface-hovered);
     }
 
     // Active, hovered, focused (:active:hover:focus)
