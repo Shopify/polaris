@@ -154,12 +154,11 @@ const App = () => {
   return (
     <React.Fragment>
       <Box marginBottom={1} flexDirection="column">
-        {process.argv.includes('--storybook') ? (
+        {process.argv.includes('--show-storybook-tip') ? (
           <Box>
             <Box width={3}>💡</Box>
             <Box>
-              Tip: disable <Text bold>yarn splash</Text> by running{' '}
-              <Text bold>yarn dev-no-splash</Text> or setting an environment
+              Tip: disable <Text bold>yarn splash</Text> setting an environment
               variable <Text bold>DISABLE_SPLASH=1</Text>
             </Box>
           </Box>
