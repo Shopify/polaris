@@ -7,22 +7,14 @@ Use Textfield as a prop and provide a composable list box.
 ```jsx
 import React, {useCallback, useState} from 'react';
 import {Page, ComboBox, TextField} from '../src';
-import deselectedOptions from './test/1000.json';
+import deselectedOptions from './test/100.json';
 
 export function Playground() {
-  // const deselectedOptions = [
-  //   {value: 'rustic', label: 'Rustic'},
-  //   {value: 'antique', label: 'Antique'},
-  //   {value: 'vinyl', label: 'Vinyl'},
-  //   {value: 'vintage', label: 'Vintage'},
-  //   {value: 'refurbished', label: 'Refurbished'},
-  // ];
-
   const [inputValue, setInputValue] = useState('');
   const [selected, setSelected] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
-  const handleSelection = (value) => {
+  const handleSelection = (value: string) => {
     const {label} = deselectedOptions.filter(
       (option) => option.value === value,
     )[0];
@@ -45,31 +37,37 @@ export function Playground() {
     setOptions(resultOptions);
   }, []);
 
+  const optionsMarkup =
+    options.length > 0
+      ? options.map((option, index) => {
+          const {label, value} = option;
+          return (
+            <ComboBox.Option
+              key={`${value}_${index}`}
+              value={value}
+              selected={selected === value}
+            >
+              {label}
+            </ComboBox.Option>
+          );
+        })
+      : null;
+
   return (
     <Page title="Playground">
       <ComboBox
-        textfield={
+        onOptionSelected={handleSelection}
+        allowMultiple
+        activator={
           <TextField
             onChange={updateText}
             label="Tags"
             value={inputValue}
-            ComboBox={false}
+            autoComplete={false}
           />
         }
       >
-        <ComboBox.ListBox onSelect={handleSelection}>
-          {options.map((option) => {
-            return (
-              <ComboBox.Option
-                key={option.value}
-                value={option.value}
-                selected={selected === option.value}
-              >
-                {option.label}
-              </ComboBox.Option>
-            );
-          })}
-        </ComboBox.ListBox>
+        {optionsMarkup}
       </ComboBox>
     </Page>
   );
