@@ -731,6 +731,18 @@ describe('buildColors', () => {
       );
     });
   });
+
+  describe('opacity', () => {
+    it('has a default value', () => {
+      expect(buildColors({UNSTABLE_colors: {}})).toStrictEqual(
+        expect.objectContaining({
+          '--p-opacity': 'hsl(0, 0%, 0%, 0.15)',
+          '--p-opacity-deep': 'hsl(0, 0%, 0%, 0.5)',
+          '--p-opacity-shallow': 'hsl(180, 5%, 8%, 0.05)',
+        }),
+      );
+    });
+  });
 });
 
 describe('buildThemeContext', () => {

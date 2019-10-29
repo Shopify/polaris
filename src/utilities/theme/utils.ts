@@ -148,6 +148,29 @@ export function buildColors(theme: ThemeConfig) {
 }
 /* eslint-enable babel/camelcase */
 
+function opacityColors() {
+  return {
+    opacityShallow: {
+      hue: 180,
+      saturation: 5,
+      lightness: 8,
+      alpha: 0.05,
+    },
+    opacity: {
+      hue: 0,
+      saturation: 0,
+      lightness: 0,
+      alpha: 0.15,
+    },
+    opacityDeep: {
+      hue: 0,
+      saturation: 0,
+      lightness: 0,
+      alpha: 0.5,
+    },
+  };
+}
+
 function overrides() {
   return {
     overrideNone: 'none',
