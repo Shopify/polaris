@@ -8,6 +8,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   list-style: none;
   margin: 0;
   padding: spacing(tight) 0;
+
+  &.globalTheming {
+    padding: spacing(tight);
+  }
 }
 
 .Section-withoutTitle:not(:first-child) {
@@ -181,6 +185,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   // stylelint-disable selector-max-class
   // stylelint-disable selector-max-specificity
   &.globalTheming {
+    padding: $item-vertical-padding spacing(tight);
     border-radius: var(--p-border-radius-base);
     // States
     // Active (.active, :active)
