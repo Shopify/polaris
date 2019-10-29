@@ -225,17 +225,22 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     }
 
     // Destructive (.destructive)
-    // &.destructive {}
-
-    // Destructive, active (.destructive.active, .destructive:active)
-    &.destructive.active,
-    &.destructive:active {
-      background-image: none;
+    &.destructive {
+      @include recolor-icon(var(--p-critical-icon));
+      color: var(--p-critical-link);
     }
 
     // Hovered (:hover)
     &.destructive:hover {
       background-image: none;
+      background-color: var(--p-critical-surface-subdued-hovered);
+    }
+
+    // Destructive, active (.destructive.active, .destructive:active)
+    &.destructive.active,
+    &.destructive:active {
+      background-image: none;
+      background-color: var(--p-critical-surface-subdued-pressed);
     }
 
     // Destructive, active, hovered, focused (.destructive:active:hover:focus)
