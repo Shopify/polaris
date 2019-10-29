@@ -219,59 +219,53 @@
 
   &.globalTheming {
     background: transparent;
-    border: var(--p-border-subdued);
-    box-shadow: none;
+    box-shadow: 0 0 0 rem(1px) var(--p-divider-subdued-on-surface);
     color: var(--p-text-on-surface);
 
     &:hover {
-      border: var(--p-border-subdued);
+      box-shadow: 0 0 0 rem(1px) var(--p-divider-subdued-on-surface);
       background: var(--p-surface-hovered);
     }
 
     &:focus {
-      border: var(--p-border-subdued);
-      box-shadow: none;
+      box-shadow: 0 0 0 rem(2px) var(--p-divider-subdued-on-surface);
+      @include no-focus-ring;
     }
 
     &:active {
-      border: var(--p-border-subdued);
+      box-shadow: 0 0 0 rem(1px) var(--p-divider-subdued-on-surface);
       background: var(--p-surface-pressed);
-      box-shadow: none;
     }
 
     &.disabled {
-      border: var(--p-border-disabled);
+      box-shadow: 0 0 0 rem(1px) var(--p-divider-disabled-on-surface);
       background: transparent;
       color: var(--p-text-disabled-on-surface);
     }
 
     &.destructive {
       background: transparent;
-      border: var(--p-border-critical);
-      box-shadow: none;
+      box-shadow: 0 0 0 rem(1px) var(--p-critical-divider);
       color: var(--p-critical-link);
 
       &:hover {
-        border: var(--p-border-critical);
+        box-shadow: 0 0 0 rem(1px) var(--p-critical-divider);
         background: var(--p-critical-surface-subdued);
       }
 
       &:focus {
-        border: var(--p-border-critical);
-        background: var(--p-critical-surface-subdued);
-        box-shadow: none;
+        box-shadow: 0 0 0 rem(2px) var(--p-critical-divider);
+        @include no-focus-ring;
       }
 
       &:active {
-        border: var(--p-border-critical);
-        background: var(--p-surface-pressed);
+        box-shadow: 0 0 0 rem(1px) var(--p-critical-divider);
         background: var(--p-critical-surface-subdued);
-        box-shadow: none;
       }
 
       // stylelint-disable-next-line selector-max-class
       &.disabled {
-        border: var(--p-border-critical-disabled);
+        box-shadow: 0 0 0 rem(1px) var(--p-critical-divider-disabled);
         background: transparent;
         color: var(--p-critical-link-disabled);
       }
