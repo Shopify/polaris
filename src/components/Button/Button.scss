@@ -265,9 +265,6 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     background: transparent;
     border: 0;
     box-shadow: none;
-  }
-
-  &.pressed {
     color: color('blue', 'dark');
     text-decoration: underline;
   }
