@@ -264,8 +264,11 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     // Disabled (.disabled)
     &.disabled {
       background-image: none;
+      color: var(--p-text-disabled-on-surface);
+      .Image {
+        @include recolor-icon(var(--p-icon-disabled-on-surface));
+      }
     }
-    // &.disabled .Image
   }
   // stylelint-enable selector-max-specificity
   // stylelint-enable selector-max-class

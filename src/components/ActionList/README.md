@@ -184,9 +184,6 @@ function SectionedActionListExample() {
               items: [
                 {content: 'Import file', icon: ImportMinor},
                 {content: 'Export file', icon: ExportMinor},
-                {content: 'Export file', icon: ExportMinor, active: true},
-                {content: 'Export file', icon: ExportMinor},
-                {content: 'Export file', icon: ExportMinor},
               ],
             },
           ]}
