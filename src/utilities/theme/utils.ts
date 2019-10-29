@@ -213,6 +213,7 @@ function criticalColors(color: HSLAColor, lightSurface: boolean) {
   return {
     critical: color,
     criticalDivider: setLightness(color, lightSurface ? 52 : 48),
+    criticalDividerDisabled: setLightness(color, lightSurface ? 82 : 28),
     criticalIcon: setLightness(color, lightSurface ? 52 : 48),
     criticalSurface: setLightness(color, lightSurface ? 88 : 12),
     criticalSurfaceSubdued: setLightness(color, lightSurface ? 98 : 12),
@@ -222,6 +223,10 @@ function criticalColors(color: HSLAColor, lightSurface: boolean) {
     criticalActionHovered: setLightness(color, lightSurface ? 45 : 55),
     criticalActionSubdued: setLightness(color, lightSurface ? 38 : 62),
     criticalActionPressed: setLightness(color, lightSurface ? 31 : 69),
+    criticalLinkDisabled: setLightness(color, lightSurface ? 72 : 78),
+    criticalLink: setLightness(color, lightSurface ? 42 : 48),
+    criticalLinkHovered: setLightness(color, lightSurface ? 45 : 55),
+    criticalLinkPressed: setLightness(color, lightSurface ? 21 : 69),
   };
 }
 
@@ -291,6 +296,15 @@ function overrides() {
     [toCssCustomPropertySyntax('borderSubdued')]: `${rem(
       '1px',
     )} solid var(--p-divider-subdued-on-surface)`,
+    [toCssCustomPropertySyntax('borderDisabled')]: `${rem(
+      '1px',
+    )} solid var(--p-divider-disabled-on-surface)`,
+    [toCssCustomPropertySyntax('borderCritical')]: `${rem(
+      '1px',
+    )} solid var(--p-critical-divider)`,
+    [toCssCustomPropertySyntax('borderCriticalDisabled')]: `${rem(
+      '1px',
+    )} solid var(--p-critical-divider-disabled)`,
     [toCssCustomPropertySyntax('textFieldSpinnerOffset')]: rem('2px'),
     [toCssCustomPropertySyntax('textFieldFocusRingOffset')]: rem('-4px'),
     [toCssCustomPropertySyntax('textFieldFocusRingBorderRadius')]: rem('7px'),
