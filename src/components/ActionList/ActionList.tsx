@@ -1,7 +1,7 @@
 import React from 'react';
 import {ActionListItemDescriptor, ActionListSection} from '../../types';
 import {useFeatures} from '../../utilities/features';
-import {classNames} from '../../../../utilities/css';
+import {classNames} from '../../utilities/css';
 import {Section} from './components';
 
 import styles from './ActionList.scss';
