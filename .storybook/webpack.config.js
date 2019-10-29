@@ -116,7 +116,7 @@ module.exports = ({config, mode}) => {
     apply: (compiler) => {
       compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
         process.env.DISABLE_SPLASH ||
-          spawn('yarn splash', {
+          spawn('yarn splash --storybook', {
             shell: true,
             stdio: 'inherit',
           });
