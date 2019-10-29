@@ -7,3 +7,5 @@ export {HuePicker, HuePickerProps} from './HuePicker';
 export {Slidable, SlidableProps, Position} from './Slidable';
 
 export {TextPicker, TextPickerProps} from './TextPicker';
+
+export {RecentlySelected, RecentlySelectedProps} from './RecentlySelected';
