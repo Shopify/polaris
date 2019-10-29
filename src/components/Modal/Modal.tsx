@@ -102,9 +102,9 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   const handleExited = useCallback(() => {
     setIframeHeight(IFRAME_LOADING_HEIGHT);
 
-    const activator = activatorRef.current;
-    if (activator) {
-      write(() => focusFirstFocusableNode(activator));
+    const activatorElement = activatorRef.current;
+    if (activatorElement) {
+      write(() => focusFirstFocusableNode(activatorElement));
     }
   }, []);
 
