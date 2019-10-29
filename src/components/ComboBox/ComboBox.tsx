@@ -36,7 +36,7 @@ export function ComboBox({
   const listBoxId = useUniqueId('listBox');
   const [activeDescendant, setActiveDescendant] = useState('');
   const [textfieldValue, setTextfieldValue] = useState('');
-  const [firstOptionLabel, setFirstOptionLabel] = useState('');
+  // const [firstOptionLabel, setFirstOptionLabel] = useState('');
   const [textfieldId, setTextFieldId] = useState(useUniqueId('textfieldId'));
   const listBoxWrapper = useRef<HTMLDivElement>(null);
   const {isNavigationCollapsed} = useMediaQuery();
@@ -49,8 +49,8 @@ export function ComboBox({
   };
 
   const contextValue = {
-    firstOptionLabel: inline ? firstOptionLabel : undefined,
-    setFirstOptionLabel: inline ? setFirstOptionLabel : undefined,
+    // firstOptionLabel: inline ? firstOptionLabel : undefined,
+    // setFirstOptionLabel: inline ? setFirstOptionLabel : undefined,
     activeDescendant,
     setActiveDescendant,
     textfieldValue: highlightMatches ? textfieldValue : undefined,

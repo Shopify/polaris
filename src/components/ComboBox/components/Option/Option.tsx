@@ -19,7 +19,7 @@ export type OptionProps = {
 };
 
 export function Option({value, children, selected}: OptionProps) {
-  const {keyboardFocusedItem, onItemClick} = useListBox(); // scrollable
+  const {keyboardFocusedItem, onItemClick, scrollable} = useListBox();
   const combobox = useComboBox();
   const listItemRef = useRef<HTMLLIElement>(null);
   const id = useUniqueId('ComboBoxOption');
@@ -33,22 +33,28 @@ export function Option({value, children, selected}: OptionProps) {
   //   }
   // });
 
+  // ListBox Context keeps track of which option is keyboard focused using the value
+  const currentlyKeyboardFocused = keyboardFocusedItem === value;
+
   const optionClassName = classNames(
     styles.Option,
     selected && styles.selected,
-    keyboardFocusedItem === value && styles.focused,
+    currentlyKeyboardFocused && styles.focused,
   );
 
-  // ListBox Context keeps track of which option is keyboard focused using the value
-  const currentlyKeyboardFocused = keyboardFocusedItem === value;
+  useEffect(() => {
+    if (currentlyKeyboardFocused && listItemRef.current != null) {
+      listItemRef.current.scrollIntoView(false);
+    }
+  }, [currentlyKeyboardFocused]);
 
   // The parent doesn't know the id and we need the id for the activeDescendant
   // TODO: TEXTFIELD ONLY PROVIDER
   currentlyKeyboardFocused && combobox && combobox.setActiveDescendant(id);
 
-  const scrollToView = currentlyKeyboardFocused ? (
-    <Scrollable.ScrollTo />
-  ) : null;
+  // const scrollToView = currentlyKeyboardFocused ? (
+  //   <Scrollable.ScrollTo />
+  // ) : null;
 
   const handleItemClick = useCallback(() => {
     onItemClick && onItemClick(value);

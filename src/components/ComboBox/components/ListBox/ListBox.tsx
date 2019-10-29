@@ -83,6 +83,8 @@ export function ListBox({children}: ListBoxProps) {
       scrollableRef.current != null ? scrollableRef.current : undefined,
   };
 
+  /** key interactions */
+
   const handleNextPosition = useCallback(
     (nextPosition: number) => {
       setKeyboardFocusedItem(navigableItems[nextPosition]);
@@ -91,7 +93,6 @@ export function ListBox({children}: ListBoxProps) {
     [navigableItems],
   );
 
-  /** key interactions */
   const handleDownArrow = useCallback(() => {
     if (!navigableItems) return;
     const nextCursor =

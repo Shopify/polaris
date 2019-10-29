@@ -1,10 +1,6 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {addEventListener} from '@shopify/javascript-utilities/events';
-import {
-  CircleCancelMinor,
-  ChevronDownMinor,
-  ChevronUpMinor,
-} from '@shopify/polaris-icons';
+import {CircleCancelMinor} from '@shopify/polaris-icons';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
 import {useFeatures} from '../../utilities/features';
@@ -376,6 +372,22 @@ export function TextField({
     clearButton && styles['Input-hasClearButton'],
   );
 
+  const hintInputClassName = classNames(
+    styles.Input,
+    styles.HintInput,
+    align && styles[variationName('Input-align', align)],
+    suffix && styles['Input-suffixed'],
+  );
+
+  const hintInput = (
+    <input
+      className={hintInputClassName}
+      readOnly
+      tabIndex={-1}
+      value={normalizedValue}
+    />
+  );
+
   const input = React.createElement(multiline ? 'textarea' : 'input', {
     name,
     id,
@@ -431,6 +443,7 @@ export function TextField({
           onClick={handleClick}
         >
           {prefixMarkup}
+          {hintInput}
           {input}
           {suffixMarkup}
           {characterCountMarkup}

@@ -153,6 +153,13 @@ $stacking-order: (
   padding-right: 0;
 }
 
+.HintInput {
+  position: absolute;
+  flex: none;
+  color: var(--p-text-disabled-on-surface, color('ink', 'lighter'));
+  background-color: transparent;
+}
+
 .Input-alignRight {
   text-align: right;
 }

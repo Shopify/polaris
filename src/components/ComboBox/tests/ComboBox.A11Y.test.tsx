@@ -107,12 +107,20 @@ describe('A11Y', () => {
     it.todo(
       'has an `aria-selected` attribute whose value is `false` when an option is not selected via keyboard or prop',
     );
+    describe('Inside a section', () => {
+      it.todo(
+        'has an `aria-described-by` attribute whose value matches the ID of the section li',
+      );
+    });
+  });
+  describe('option section', () => {
+    it.todo("it renders it's children inside an li");
+    it.todo('it renders an li with an auto generated id');
   });
   describe('Aria-live', () => {
     it.todo(
       'it renders an empty, visually hidden div on page load with and `aria-live` attribute of `polite` by default',
     );
-    it.todo('');
   });
 });
 
