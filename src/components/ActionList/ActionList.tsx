@@ -1,5 +1,7 @@
 import React from 'react';
 import {ActionListItemDescriptor, ActionListSection} from '../../types';
+import {useFeatures} from '../../utilities/features';
+import {classNames} from '../../../../utilities/css';
 import {Section} from './components';
 
 import styles from './ActionList.scss';
@@ -29,6 +31,12 @@ export function ActionList({
     finalSections = sections;
   }
 
+  const {unstableGlobalTheming = false} = useFeatures();
+  const className = classNames(
+    styles.ActionList,
+    unstableGlobalTheming && styles.globalTheming,
+  );
+
   const hasMultipleSections = finalSections.length > 1;
   // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
   // see https://github.com/Microsoft/TypeScript/issues/28768
@@ -45,5 +53,5 @@ export function ActionList({
     ) : null;
   });
 
-  return <Element className={styles.ActionList}>{sectionMarkup}</Element>;
+  return <Element className={className}>{sectionMarkup}</Element>;
 }
