@@ -42,12 +42,7 @@ export function ListBox({children}: ListBoxProps) {
     throw new Error('ListBox must be used inside a Combobox');
   }
 
-  const {
-    // setFirstOptionLabel,
-    // firstOptionLabel,
-    onOptionSelected,
-    listBoxId,
-  } = combobox;
+  const {onOptionSelected, listBoxId} = combobox;
 
   const totalOptions = useRef<number>(navigableItems.length);
 
@@ -61,9 +56,6 @@ export function ListBox({children}: ListBoxProps) {
           !child.props.disabled &&
           child.props.value
         ) {
-          // setFirstOptionLabel &&
-          //   !firstOptionLabel &&
-          //   setFirstOptionLabel(child.props.label);
           return child.props.value;
         }
       },
@@ -84,7 +76,6 @@ export function ListBox({children}: ListBoxProps) {
   };
 
   /** key interactions */
-
   const handleNextPosition = useCallback(
     (nextPosition: number) => {
       setKeyboardFocusedItem(navigableItems[nextPosition]);

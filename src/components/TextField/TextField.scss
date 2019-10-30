@@ -156,8 +156,12 @@ $stacking-order: (
 .HintInput {
   position: absolute;
   flex: none;
-  color: var(--p-text-disabled-on-surface, color('ink', 'lighter'));
+  color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
   background-color: transparent;
+
+  .hasValue & {
+    color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
+  }
 }
 
 .Input-alignRight {

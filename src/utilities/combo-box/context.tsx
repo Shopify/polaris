@@ -3,8 +3,8 @@ import React from 'react';
 type ComboBoxContextType = {
   activeDescendant: string;
   setActiveDescendant(id: string): void;
-  // firstOptionLabel?: string;
-  // setFirstOptionLabel?(label: React.ReactNode): void;
+  suggestion?: string;
+  setSuggestion?(value: string): void;
   textfieldId: string;
   setTextFieldId(id: string): void;
   textfieldValue?: string;

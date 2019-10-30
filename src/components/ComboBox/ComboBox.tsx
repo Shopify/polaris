@@ -29,14 +29,13 @@ export function ComboBox({
   activator,
   allowMultiple,
   highlightMatches,
-  inline,
   onOptionSelected,
 }: ComboBoxProps) {
   const [popoverActive, setPopoverActive] = useState(false);
   const listBoxId = useUniqueId('listBox');
   const [activeDescendant, setActiveDescendant] = useState('');
   const [textfieldValue, setTextfieldValue] = useState('');
-  // const [firstOptionLabel, setFirstOptionLabel] = useState('');
+  const [suggestion, setSuggestion] = useState('');
   const [textfieldId, setTextFieldId] = useState(useUniqueId('textfieldId'));
   const listBoxWrapper = useRef<HTMLDivElement>(null);
   const {isNavigationCollapsed} = useMediaQuery();
@@ -49,10 +48,10 @@ export function ComboBox({
   };
 
   const contextValue = {
-    // firstOptionLabel: inline ? firstOptionLabel : undefined,
-    // setFirstOptionLabel: inline ? setFirstOptionLabel : undefined,
     activeDescendant,
     setActiveDescendant,
+    suggestion,
+    setSuggestion,
     textfieldValue: highlightMatches ? textfieldValue : undefined,
     setTextfieldValue: highlightMatches ? setTextfieldValue : undefined,
     textfieldId,
@@ -104,7 +103,7 @@ export function ComboBox({
   };
 
   const listBoxMarkup = children ? (
-    <div ref={listBoxWrapper} id={listBoxId}>
+    <div ref={listBoxWrapper}>
       <ListBox>{children}</ListBox>
     </div>
   ) : null;

@@ -372,21 +372,27 @@ export function TextField({
     clearButton && styles['Input-hasClearButton'],
   );
 
-  const hintInputClassName = classNames(
-    styles.Input,
-    styles.HintInput,
-    align && styles[variationName('Input-align', align)],
-    suffix && styles['Input-suffixed'],
-  );
+  const suggestion =
+    comboBox && comboBox.suggestion != null && comboBox.suggestion;
 
-  const hintInput = (
-    <input
-      className={hintInputClassName}
-      readOnly
-      tabIndex={-1}
-      value={normalizedValue}
-    />
-  );
+  const hintInputClassName =
+    suggestion &&
+    classNames(
+      styles.Input,
+      styles.HintInput,
+      align && styles[variationName('Input-align', align)],
+      suffix && styles['Input-suffixed'],
+    );
+
+  const hintInput =
+    suggestion && hintInputClassName ? (
+      <input
+        className={hintInputClassName}
+        readOnly
+        tabIndex={-1}
+        value={suggestion}
+      />
+    ) : null;
 
   const input = React.createElement(multiline ? 'textarea' : 'input', {
     name,

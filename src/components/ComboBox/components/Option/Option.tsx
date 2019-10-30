@@ -16,13 +16,29 @@ export type OptionProps = {
   children?: React.ReactNode | string;
   selected?: boolean;
   disabled?: boolean;
+  ariaLabel?: string;
 };
 
-export function Option({value, children, selected}: OptionProps) {
+export function Option({
+  value,
+  children,
+  selected,
+  suggest,
+  ariaLabel,
+}: OptionProps) {
   const {keyboardFocusedItem, onItemClick, scrollable} = useListBox();
   const combobox = useComboBox();
   const listItemRef = useRef<HTMLLIElement>(null);
   const id = useUniqueId('ComboBoxOption');
+  const text = typeof children === 'string' ? children : ariaLabel;
+
+  combobox &&
+    suggest &&
+    text &&
+    combobox.setSuggestion &&
+    combobox.setSuggestion(text);
+
+  // console.log(combobox && suggest && value);
 
   // useEffect(() => {
   //   if (scrollable && listItemRef.current && keyboardFocusedItem === value) {
@@ -31,7 +47,7 @@ export function Option({value, children, selected}: OptionProps) {
   //     const optionHeight = scrollable.getBoundingClientRect();
   //     const optionOffsetTop = listItemRef.current.offsetTop;
   //   }
-  // });
+  // });`
 
   // ListBox Context keeps track of which option is keyboard focused using the value
   const currentlyKeyboardFocused = keyboardFocusedItem === value;
