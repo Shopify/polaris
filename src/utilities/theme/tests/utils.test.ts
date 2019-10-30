@@ -719,5 +719,4 @@ describe('buildThemeContext', () => {
     ).toStrictEqual({logo: {}, UNSTABLE_cssCustomProperties: 'foo:bar'});
   });
 });
-
 /* eslint-enable babel/camelcase */
