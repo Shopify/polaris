@@ -22,4 +22,6 @@
 
 ### Code quality
 
+- Migrated `Popover` to use hooks ([#2386](https://github.com/Shopify/polaris-react/pull/2386))
+
 ### Deprecations

@@ -79,8 +79,7 @@ describe('<Popover />', () => {
         onClose={spy}
       />,
     );
-    const activatorWrapper = findByTestID(popover, 'wrapper-component');
-    expect(activatorWrapper.type()).toBe('div');
+    expect(popover.childAt(0).type()).toBe('div');
   });
 
   it('has a span as activatorWrapper when activatorWrapper prop is set to span', () => {
@@ -93,8 +92,7 @@ describe('<Popover />', () => {
         onClose={spy}
       />,
     );
-    const activatorWrapper = findByTestID(popover, 'wrapper-component');
-    expect(activatorWrapper.type()).toBe('span');
+    expect(popover.childAt(0).type()).toBe('span');
   });
 
   it('passes preventAutofocus to PopoverOverlay', () => {
