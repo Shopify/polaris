@@ -1,6 +1,7 @@
 import React from 'react';
 import {ImportMinor, ExportMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {ActionList} from '../ActionList';
 import {Badge} from '../../Badge';
 import {Item, Section} from '../components';
@@ -136,6 +137,26 @@ describe('<ActionList />', () => {
     expect(actionList.find(Badge).props()).toStrictEqual({
       children: 'badge',
       status: 'new',
+    });
+  });
+
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled', () => {
+      const actionList = mountWithApp(<ActionList />, {
+        features: {unstableGlobalTheming: true},
+      });
+      expect(actionList).toContainReactComponent('div', {
+        className: 'ActionList globalTheming',
+      });
+    });
+
+    it('does not add a global theming class when global theming is disabled', () => {
+      const actionList = mountWithApp(<ActionList />, {
+        features: {unstableGlobalTheming: false},
+      });
+      expect(actionList).not.toContainReactComponent('div', {
+        className: 'ActionList globalTheming',
+      });
     });
   });
 });

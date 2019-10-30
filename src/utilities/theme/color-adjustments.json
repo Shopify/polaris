@@ -440,6 +440,16 @@
     "light": {"lightness": 98},
     "dark": {"lightness": 12}
   },
+  "criticalSurfaceSubduedHovered": {
+    "baseColor": "critical",
+    "light": {"lightness": 93},
+    "dark": {"lightness": 17}
+  },
+  "criticalSurfaceSubduedPressed": {
+    "baseColor": "critical",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 22}
+  },
   "criticalText": {
     "baseColor": "critical",
     "light": {"lightness": 30},
