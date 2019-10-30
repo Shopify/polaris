@@ -1,2 +1,2 @@
-export {ComboBoxContext} from './context';
+export {ComboBoxContext, ComboBoxContextType} from './context';
 export {useComboBox} from './hooks';

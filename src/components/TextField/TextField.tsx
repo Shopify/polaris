@@ -179,7 +179,9 @@ export function TextField({
   }, []);
 
   useEffect(() => {
-    comboBox && comboBox.setTextFieldId(id);
+    const {setTextFieldId, labelId, setLabelId} = comboBox;
+    setTextFieldId && setTextFieldId(id);
+    !labelId && setLabelId && setLabelId(labelID(id));
   }, [comboBox, id]);
 
   useEffect(() => {

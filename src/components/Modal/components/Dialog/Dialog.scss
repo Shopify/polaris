@@ -42,6 +42,7 @@ $large-width: rem(980px);
   @include frame-when-nav-hidden {
     bottom: 0;
     max-height: 100%;
+    height: calc(100vh - #{$vertical-spacing});
   }
 
   &:focus {

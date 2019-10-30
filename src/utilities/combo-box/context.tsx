@@ -1,14 +1,15 @@
 import React from 'react';
 
-type ComboBoxContextType = {
+export type ComboBoxContextType = {
   activeDescendant?: string;
   setActiveDescendant?(id: string): void;
   suggestion?: string;
   setSuggestion?(value: string): void;
   textfieldId?: string;
   setTextFieldId?(id: string): void;
-  textfieldValue?: string;
-  setTextfieldValue?(value: string): void;
+  labelId?: string;
+  setLabelId?(id: string): void;
+  labelledBy?: string;
   onOptionSelected?(value: string): void;
 };
 

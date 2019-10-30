@@ -6,8 +6,8 @@ import {useUniqueId} from '../../../../utilities/unique-id';
 import {Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {Icon} from '../../../Icon';
-import {Scrollable} from '../../../Scrollable';
 import {useListBox} from '../ListBox';
+import {useSection} from '../Section';
 import styles from './Option.scss';
 
 export type OptionProps = {
@@ -26,37 +26,16 @@ export function Option({
   suggest,
   ariaLabel,
 }: OptionProps) {
-  const {keyboardFocusedItem} = useListBox();
+  const {keyboardFocusedItem, scrollable} = useListBox();
   const {setActiveDescendant, setSuggestion, onOptionSelected} = useComboBox();
+  const {sectionId} = useSection();
   const listItemRef = useRef<HTMLLIElement>(null);
-  // const scrollableRef = useRef<HTMLElement | Document>(document);
   const id = useUniqueId('ComboBoxOption');
   const text = typeof children === 'string' ? children : ariaLabel;
 
-  setSuggestion && suggest && text && setSuggestion(text);
-
-  // const scrollable = useRef<any>(Scrollable.forNode(listItemRef.current));
-
-  // useEffect(() => {
-  //   if (keyboardFocusedItem && listItemRef.current) {
-  //     const scrollable = Scrollable.forNode(listItemRef.current);
-  //     scrollableRef.current = scrollable;
-  //   }
-  // }, [keyboardFocusedItem]);
-
-  // console.log(combobox && suggest && value);
-
-  // useEffect(() => {
-  //   if (scrollable && listItemRef.current && keyboardFocusedItem === value) {
-  //     const scrollableHeight = scrollable.clientHeight;
-  //     const scrollableOffsetTop = (scrollable as HTMLElement).offsetTop;
-  //     const optionHeight = scrollable.getBoundingClientRect();
-  //     const optionOffsetTop = listItemRef.current.offsetTop;
-  //   }
-  // });`
-
-  // ListBox Context keeps track of which option is keyboard focused using the value
   const currentlyKeyboardFocused = keyboardFocusedItem === value;
+  setSuggestion && suggest && text && setSuggestion(text);
+  currentlyKeyboardFocused && setActiveDescendant && setActiveDescendant(id);
 
   const optionClassName = classNames(
     styles.Option,
@@ -65,18 +44,26 @@ export function Option({
   );
 
   useEffect(() => {
-    if (currentlyKeyboardFocused && listItemRef.current != null) {
-      listItemRef.current.scrollIntoView(false);
+    if (currentlyKeyboardFocused && scrollable && listItemRef.current) {
+      const elementTop = listItemRef.current.offsetTop;
+      const elementBottom = elementTop + listItemRef.current.clientHeight;
+      const viewportTop = (scrollable as HTMLElement).scrollTop;
+      const viewportBottom = viewportTop + scrollable.clientHeight;
+
+      let direction: boolean | undefined;
+
+      if (elementBottom > viewportBottom) {
+        direction = false;
+      } else if (elementTop < viewportTop) {
+        direction = true;
+      }
+
+      typeof direction === 'boolean' &&
+        requestAnimationFrame(() => {
+          listItemRef.current && listItemRef.current.scrollIntoView(direction);
+        });
     }
-  }, [currentlyKeyboardFocused]);
-
-  // The parent doesn't know the id and we need the id for the activeDescendant
-  // TODO: TEXTFIELD ONLY PROVIDER
-  currentlyKeyboardFocused && setActiveDescendant && setActiveDescendant(id);
-
-  // const scrollToView = currentlyKeyboardFocused ? (
-  //   <Scrollable.ScrollTo />
-  // ) : null;
+  }, [currentlyKeyboardFocused, scrollable]);
 
   const handleItemClick = useCallback(() => {
     onOptionSelected && onOptionSelected(value);
@@ -100,12 +87,18 @@ export function Option({
     </div>
   ) : null;
 
+  const aria = typeof children === 'string' ? children : ariaLabel;
+
   return (
     <li
       className={optionClassName}
       id={id}
       ref={listItemRef}
       onClick={handleItemClick}
+      aria-label={ariaLabel || aria}
+      role="option"
+      aria-selected={selected || currentlyKeyboardFocused}
+      aria-describedby={sectionId}
     >
       {enterKeyListenner}
       <div className={styles.Content}>{children}</div>

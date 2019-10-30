@@ -11,7 +11,8 @@
 }
 
 .InlinePopoverOverlay {
-  position: absolute;
+  // position: absolute;
+  z-index: 1000;
   width: 100%;
   margin-top: spacing(extra-tight);
   transition: opacity duration('slow') easing('base');

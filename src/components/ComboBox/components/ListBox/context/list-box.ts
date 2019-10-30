@@ -2,7 +2,7 @@ import React from 'react';
 
 type ListBoxContextType = {
   keyboardFocusedItem?: string;
-  scrollable?: HTMLElement | Document;
+  scrollable?: Element | null;
 };
 
 export const ListBoxContext = React.createContext<ListBoxContextType>({});

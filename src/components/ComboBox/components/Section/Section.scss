@@ -1,0 +1,6 @@
+@import '../../../../styles/common';
+
+.Title {
+  @include text-style-subheading;
+  padding: (spacing(tight) * 1.5) spacing();
+}

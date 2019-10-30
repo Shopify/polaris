@@ -1,26 +1,31 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef} from 'react';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useMediaQuery} from '../../utilities/media-query';
-import {ComboBoxContext} from '../../utilities/combo-box';
+import {ComboBoxContext, ComboBoxContextType} from '../../utilities/combo-box';
 import {scrollable} from '../shared';
 import {TextFieldProps} from '../TextField';
 import {Popover} from '../Popover';
 import {EventListener} from '../EventListener';
 import {
   ListBox,
-  ListBoxProps,
   Option,
   OptionProps,
   InlinePopover,
+  Section,
+  SectionProps,
 } from './components';
+
+export type ComboBoxChildrenType = React.ReactElement<
+  OptionProps | SectionProps
+>;
 
 export interface ComboBoxProps {
   id?: string;
-  children?: React.ReactElement<OptionProps>[];
+  children?: ComboBoxChildrenType | ComboBoxChildrenType[];
   activator: React.ReactElement<TextFieldProps>;
   allowMultiple?: boolean;
-  inline?: boolean;
-  highlightMatches?: boolean;
+  labelledBy?: string;
+  inlineSuggest?: boolean;
   onOptionSelected(id: string): void;
 }
 
@@ -28,15 +33,15 @@ export function ComboBox({
   children,
   activator,
   allowMultiple,
-  highlightMatches,
   onOptionSelected,
+  labelledBy,
 }: ComboBoxProps) {
   const [popoverActive, setPopoverActive] = useState(false);
   const listBoxId = useUniqueId('listBox');
   const [activeDescendant, setActiveDescendant] = useState('');
-  const [textfieldValue, setTextfieldValue] = useState('');
   const [suggestion, setSuggestion] = useState('');
   const [textfieldId, setTextFieldId] = useState(useUniqueId('textfieldId'));
+  const [labelId, setLabelId] = useState(labelledBy);
   const listBoxWrapper = useRef<HTMLDivElement>(null);
   const {isNavigationCollapsed} = useMediaQuery();
 
@@ -47,15 +52,15 @@ export function ComboBox({
     setPopoverActive(false);
   };
 
-  const contextValue = {
+  const contextValue: ComboBoxContextType = {
     activeDescendant,
     setActiveDescendant,
     suggestion,
     setSuggestion,
-    textfieldValue: highlightMatches ? textfieldValue : undefined,
-    setTextfieldValue: highlightMatches ? setTextfieldValue : undefined,
     textfieldId,
     setTextFieldId,
+    labelId,
+    setLabelId,
     onOptionSelected: handleSelectOption,
   };
 
@@ -84,7 +89,7 @@ export function ComboBox({
       aria-controls={listBoxId}
       onFocus={handleFocus}
       onKeyUp={handleKeyUp}
-      tabIndex={0}
+      tabIndex={-1}
     >
       {activator}
     </div>
@@ -102,7 +107,12 @@ export function ComboBox({
   };
 
   const listBoxMarkup = children ? (
-    <div ref={listBoxWrapper} id={listBoxId}>
+    <div
+      ref={listBoxWrapper}
+      role="listbox"
+      arial-labelleby={labelId}
+      id={listBoxId}
+    >
       <ListBox>{children}</ListBox>
     </div>
   ) : null;
@@ -113,7 +123,6 @@ export function ComboBox({
       activator={textfieldMarkup}
       onClose={handleClose}
     >
-      <EventListener event="mouseup" handler={handleStopScroll} />
       {listBoxMarkup}
     </InlinePopover>
   ) : (
@@ -124,7 +133,6 @@ export function ComboBox({
       preventAutofocus
       fullWidth
     >
-      <EventListener event="mouseup" handler={handleStopScroll} />
       {listBoxMarkup}
     </Popover>
   );
@@ -132,6 +140,7 @@ export function ComboBox({
   return (
     <ComboBoxContext.Provider value={contextValue}>
       {popover}
+      <EventListener event="mouseup" handler={handleStopScroll} />
     </ComboBoxContext.Provider>
   );
 }
@@ -160,4 +169,5 @@ export function ComboBox({
 // }
 
 ComboBox.Option = Option;
+ComboBox.Section = Section;
 // ComboBox.ListBox = ListBox;

@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect, useCallback} from 'react';
-import {useComboBox} from '../../../../utilities/combo-box';
+import {useMediaQuery} from '../../../../utilities/media-query';
 import {
   elementChildren,
   isElementOfType,
@@ -7,58 +7,36 @@ import {
 import {Key} from '../../../../types';
 import {classNames} from '../../../../utilities/css';
 import {KeypressListener} from '../../../KeypressListener';
-import {Scrollable} from '../../../Scrollable';
-import {Option, OptionProps} from '../Option';
+import {scrollable} from '../../../shared';
+import {Option} from '../Option';
+import {Section} from '../Section';
+import {ComboBoxChildrenType} from '../../ComboBox';
+
 import {ListBoxContext} from './context/list-box';
 import styles from './ListBox.scss';
 
 export type ListBoxProps = {
-  children: React.ReactElement<OptionProps> | React.ReactElement<OptionProps>[];
-};
-
-export type ScrollabelState = {
-  height: number;
-  scrollTop: number;
+  children: ComboBoxChildrenType | ComboBoxChildrenType[];
 };
 
 export function ListBox({children}: ListBoxProps) {
   const listBoxClassName = classNames(styles.ListBox);
   const [navigableItems, setNavigableItems] = useState([] as string[]);
   const [keyboardFocusedItem, setKeyboardFocusedItem] = useState();
-  const [navigableItemsCursor, setNavigableItemsCursor] = useState(-1);
-  const scrollableRef = useRef<HTMLElement | Document>(document);
+  // const [navigableItemsCursor, setNavigableItemsCursor] = useState(-1);
+  const {isNavigationCollapsed} = useMediaQuery();
+  const scrollableRef = useRef<Element | null>(null);
   const listBoxRef = useRef<HTMLDivElement>(null);
+  const totalOptions = useRef<number>(navigableItems.length);
 
   useEffect(() => {
     if (listBoxRef.current) {
-      scrollableRef.current = Scrollable.forNode(listBoxRef.current);
+      scrollableRef.current = listBoxRef.current.closest(scrollable.selector);
     }
-  }, []);
+  }, [isNavigationCollapsed]);
 
-  const combobox = useComboBox();
-
-  if (!combobox) {
-    throw new Error('ListBox must be used inside a Combobox');
-  }
-
-  const {onOptionSelected} = combobox;
-
-  const totalOptions = useRef<number>(navigableItems.length);
-
-  // TODO: recursive when we add sections
   useEffect(() => {
-    const updatedNavigableItems = elementChildren(children).map(
-      (child: React.ReactElement<any>) => {
-        if (
-          child &&
-          isElementOfType(child, Option) &&
-          !child.props.disabled &&
-          child.props.value
-        ) {
-          return child.props.value;
-        }
-      },
-    );
+    const updatedNavigableItems = getNavigableItems([children]);
     setNavigableItems(updatedNavigableItems);
     totalOptions.current = updatedNavigableItems.length;
   }, [children]);
@@ -69,35 +47,63 @@ export function ListBox({children}: ListBoxProps) {
   };
 
   /** key interactions */
-  const handleNextPosition = useCallback(
-    (nextPosition: number) => {
-      setKeyboardFocusedItem(navigableItems[nextPosition]);
-      setNavigableItemsCursor(nextPosition);
-    },
-    [navigableItems],
-  );
-
-  const handleDownArrow = useCallback(() => {
+  const handleDownArrow = () => {
     if (!navigableItems) return;
-    const nextCursor =
-      navigableItemsCursor >= totalOptions.current - 1
-        ? 0
-        : navigableItemsCursor + 1;
-    handleNextPosition(nextCursor);
-  }, [handleNextPosition, navigableItems, navigableItemsCursor]);
+    keyboardFocusedItem == null
+      ? setKeyboardFocusedItem(navigableItems[0])
+      : handleNextPosition(navigableItems.indexOf(keyboardFocusedItem) + 1);
+  };
 
-  const handleUpArrow = useCallback(
-    (evt: KeyboardEvent) => {
-      evt.preventDefault();
-      if (!navigableItems || !totalOptions.current) return;
-      const nextCursor =
-        navigableItemsCursor <= 0
-          ? totalOptions.current - 1
-          : navigableItemsCursor - 1;
-      handleNextPosition(nextCursor);
-    },
-    [handleNextPosition, navigableItems, navigableItemsCursor],
-  );
+  const handleUpArrow = () => {
+    if (!navigableItems || !totalOptions.current) return;
+    keyboardFocusedItem == null
+      ? setKeyboardFocusedItem(navigableItems[totalOptions.current - 1])
+      : handleNextPosition(navigableItems.indexOf(keyboardFocusedItem) - 1);
+  };
+
+  const handleNextPosition = (nextPosition: number) => {
+    switch (nextPosition) {
+      case -1:
+        setKeyboardFocusedItem(navigableItems[totalOptions.current - 1]);
+        break;
+      case totalOptions.current:
+        setKeyboardFocusedItem(navigableItems[0]);
+        break;
+      default:
+        setKeyboardFocusedItem(navigableItems[nextPosition]);
+    }
+  };
+
+  /** key interactions */
+  // const handleNextPosition = useCallback(
+  //   (nextPosition: number) => {
+  //     setKeyboardFocusedItem(navigableItems[nextPosition]);
+  //     setNavigableItemsCursor(nextPosition);
+  //   },
+  //   [navigableItems],
+  // );
+
+  // const handleDownArrow = useCallback(() => {
+  //   if (!navigableItems) return;
+  //   const nextCursor =
+  //     navigableItemsCursor >= totalOptions.current - 1
+  //       ? 0
+  //       : navigableItemsCursor + 1;
+  //   handleNextPosition(nextCursor);
+  // }, [handleNextPosition, navigableItems, navigableItemsCursor]);
+
+  // const handleUpArrow = useCallback(
+  //   (evt: KeyboardEvent) => {
+  //     evt.preventDefault();
+  //     if (!navigableItems || !totalOptions.current) return;
+  //     const nextCursor =
+  //       navigableItemsCursor <= 0
+  //         ? totalOptions.current - 1
+  //         : navigableItemsCursor - 1;
+  //     handleNextPosition(nextCursor);
+  //   },
+  //   [handleNextPosition, navigableItems, navigableItemsCursor],
+  // );
 
   const handleEnter = useCallback((evt: KeyboardEvent) => {
     evt.preventDefault();
@@ -125,4 +131,23 @@ export function ListBox({children}: ListBoxProps) {
       </ListBoxContext.Provider>
     </div>
   ) : null;
+}
+
+function getNavigableItems(children: React.ReactNodeArray): string[] {
+  const updateNavigableItems = elementChildren(children).reduce(
+    (acc, child: React.ReactElement<any>) => {
+      if (
+        child &&
+        isElementOfType(child, Option) &&
+        !child.props.disabled &&
+        child.props.value
+      ) {
+        return [...acc, child.props.value];
+      } else if (child && isElementOfType(child, Section)) {
+        return [...acc, ...getNavigableItems(child.props.children)];
+      }
+    },
+    [] as string[],
+  );
+  return updateNavigableItems ? updateNavigableItems : [];
 }
