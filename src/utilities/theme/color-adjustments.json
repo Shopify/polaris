@@ -1,0 +1,571 @@
+{
+  "surface": {"baseColor": "surface", "light": {}, "dark": {}},
+  "surfaceBackground": {
+    "baseColor": "surface",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 7}
+  },
+  "surfaceForeground": {
+    "baseColor": "surface",
+    "light": {"lightness": 100},
+    "dark": {"lightness": 13}
+  },
+  "surfaceForegroundSubdued": {
+    "baseColor": "surface",
+    "light": {"lightness": 95},
+    "dark": {"lightness": 10}
+  },
+  "surfaceInverse": {
+    "baseColor": "surface",
+    "light": {"lightness": 0},
+    "dark": {"lightness": 100}
+  },
+  "surfaceHovered": {
+    "baseColor": "surface",
+    "light": {"lightness": 93},
+    "dark": {"lightness": 20}
+  },
+  "surfacePressed": {
+    "baseColor": "surface",
+    "light": {"lightness": 86},
+    "dark": {"lightness": 27}
+  },
+  "onSurface": {"baseColor": "onSurface", "light": {}, "dark": {}},
+  "actionOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 76},
+    "dark": {"lightness": 36}
+  },
+  "actionOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 36},
+    "dark": {"lightness": 76}
+  },
+  "actionDisabledOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 66},
+    "dark": {"lightness": 46}
+  },
+  "actionDisabledOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 46},
+    "dark": {"lightness": 66}
+  },
+  "actionHoveredOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 86},
+    "dark": {"lightness": 26}
+  },
+  "actionHoveredOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 26},
+    "dark": {"lightness": 86}
+  },
+  "actionPressedOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 96},
+    "dark": {"lightness": 16}
+  },
+  "actionPressedOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 16},
+    "dark": {"lightness": 96}
+  },
+  "dividerOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 80},
+    "dark": {"lightness": 75}
+  },
+  "dividerOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 75},
+    "dark": {"lightness": 80}
+  },
+  "dividerDisabledOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 70},
+    "dark": {"lightness": 95}
+  },
+  "dividerDisabledOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 95},
+    "dark": {"lightness": 70}
+  },
+  "dividerSubduedOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 75},
+    "dark": {"lightness": 85}
+  },
+  "dividerSubduedOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 85},
+    "dark": {"lightness": 75}
+  },
+  "iconOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 18}
+  },
+  "iconOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 18},
+    "dark": {"lightness": 98}
+  },
+  "iconDisabledOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 75},
+    "dark": {"lightness": 68}
+  },
+  "iconDisabledOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 68},
+    "dark": {"lightness": 75}
+  },
+  "iconSubduedOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 43}
+  },
+  "iconSubduedOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 43},
+    "dark": {"lightness": 88}
+  },
+  "textOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 100},
+    "dark": {"lightness": 13}
+  },
+  "textOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 13},
+    "dark": {"lightness": 100}
+  },
+  "textDisabledOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 80},
+    "dark": {"lightness": 63}
+  },
+  "textDisabledOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 63},
+    "dark": {"lightness": 80}
+  },
+  "textSubduedOnInverse": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 90},
+    "dark": {"lightness": 38}
+  },
+  "textSubduedOnSurface": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 38},
+    "dark": {"lightness": 90}
+  },
+  "actionOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 76},
+    "dark": {"lightness": 76}
+  },
+  "actionOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 36},
+    "dark": {"lightness": 36}
+  },
+  "actionDisabledOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 66},
+    "dark": {"lightness": 66}
+  },
+  "actionDisabledOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 46},
+    "dark": {"lightness": 46}
+  },
+  "actionHoveredOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 86},
+    "dark": {"lightness": 86}
+  },
+  "actionHoveredOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 26},
+    "dark": {"lightness": 26}
+  },
+  "actionPressedOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 96},
+    "dark": {"lightness": 96}
+  },
+  "actionPressedOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 16},
+    "dark": {"lightness": 16}
+  },
+  "dividerOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 80},
+    "dark": {"lightness": 80}
+  },
+  "dividerOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 75},
+    "dark": {"lightness": 75}
+  },
+  "dividerDisabledOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 70},
+    "dark": {"lightness": 70}
+  },
+  "dividerDisabledOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 95},
+    "dark": {"lightness": 95}
+  },
+  "dividerSubduedOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 75},
+    "dark": {"lightness": 75}
+  },
+  "dividerSubduedOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 85},
+    "dark": {"lightness": 85}
+  },
+  "iconOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 98}
+  },
+  "iconOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 18},
+    "dark": {"lightness": 18}
+  },
+  "iconDisabledOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 75},
+    "dark": {"lightness": 75}
+  },
+  "iconDisabledOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 68},
+    "dark": {"lightness": 68}
+  },
+  "iconSubduedOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 88}
+  },
+  "iconSubduedOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 43},
+    "dark": {"lightness": 43}
+  },
+  "textOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 100},
+    "dark": {"lightness": 100}
+  },
+  "textOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 13},
+    "dark": {"lightness": 13}
+  },
+  "textDisabledOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 80},
+    "dark": {"lightness": 80}
+  },
+  "textDisabledOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 63},
+    "dark": {"lightness": 63}
+  },
+  "textSubduedOnDark": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 90},
+    "dark": {"lightness": 90}
+  },
+  "textSubduedOnLight": {
+    "baseColor": "onSurface",
+    "light": {"lightness": 38},
+    "dark": {"lightness": 38}
+  },
+  "interactive": {"baseColor": "interactive", "light": {}, "dark": {}},
+  "interactiveAction": {
+    "baseColor": "interactive",
+    "light": {"lightness": 44},
+    "dark": {"lightness": 56}
+  },
+  "interactiveActionDisabled": {
+    "baseColor": "interactive",
+    "light": {"lightness": 58},
+    "dark": {"lightness": 42}
+  },
+  "interactiveActionHovered": {
+    "baseColor": "interactive",
+    "light": {"lightness": 37},
+    "dark": {"lightness": 63}
+  },
+  "interactiveActionSubdued": {
+    "baseColor": "interactive",
+    "light": {"lightness": 51},
+    "dark": {"lightness": 49}
+  },
+  "interactiveActionPressed": {
+    "baseColor": "interactive",
+    "light": {"lightness": 31},
+    "dark": {"lightness": 69}
+  },
+  "interactiveFocus": {
+    "baseColor": "interactive",
+    "light": {"lightness": 58},
+    "dark": {"lightness": 42}
+  },
+  "interactiveSelected": {
+    "baseColor": "interactive",
+    "light": {"lightness": 96},
+    "dark": {"lightness": 4}
+  },
+  "interactiveSelectedHovered": {
+    "baseColor": "interactive",
+    "light": {"lightness": 89},
+    "dark": {"lightness": 11}
+  },
+  "interactiveSelectedPressed": {
+    "baseColor": "interactive",
+    "light": {"lightness": 82},
+    "dark": {"lightness": 18}
+  },
+  "neutral": {"baseColor": "neutral", "light": {}, "dark": {}},
+  "neutralActionDisabled": {
+    "baseColor": "neutral",
+    "light": {"lightness": 94},
+    "dark": {"lightness": 13}
+  },
+  "neutralAction": {
+    "baseColor": "neutral",
+    "light": {"lightness": 92},
+    "dark": {"lightness": 22}
+  },
+  "neutralActionHovered": {
+    "baseColor": "neutral",
+    "light": {"lightness": 86},
+    "dark": {"lightness": 29}
+  },
+  "neutralActionPressed": {
+    "baseColor": "neutral",
+    "light": {"lightness": 76},
+    "dark": {"lightness": 39}
+  },
+  "branded": {"baseColor": "branded", "light": {}, "dark": {}},
+  "brandedAction": {
+    "baseColor": "branded",
+    "light": {"lightness": 25},
+    "dark": {"lightness": 25}
+  },
+  "brandedActionDisabled": {
+    "baseColor": "branded",
+    "light": {"lightness": 32},
+    "dark": {"lightness": 32}
+  },
+  "brandedActionHovered": {
+    "baseColor": "branded",
+    "light": {"lightness": 22},
+    "dark": {"lightness": 22}
+  },
+  "brandedActionPressed": {
+    "baseColor": "branded",
+    "light": {"lightness": 15},
+    "dark": {"lightness": 15}
+  },
+  "iconOnBranded": {
+    "baseColor": "branded",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 98}
+  },
+  "iconSubduedOnBranded": {
+    "baseColor": "branded",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 88}
+  },
+  "textOnBranded": {
+    "baseColor": "branded",
+    "light": {"lightness": 100},
+    "dark": {"lightness": 100}
+  },
+  "textSubduedOnBranded": {
+    "baseColor": "branded",
+    "light": {"lightness": 90},
+    "dark": {"lightness": 90}
+  },
+  "brandedSelected": {
+    "baseColor": "branded",
+    "light": {"lightness": 95, "saturation": 30},
+    "dark": {"lightness": 5, "saturation": 30}
+  },
+  "brandedSelectedHovered": {
+    "baseColor": "branded",
+    "light": {"lightness": 81, "saturation": 22},
+    "dark": {"lightness": 19, "saturation": 22}
+  },
+  "brandedSelectedPressed": {
+    "baseColor": "branded",
+    "light": {"lightness": 74, "saturation": 22},
+    "dark": {"lightness": 26, "saturation": 22}
+  },
+  "critical": {"baseColor": "critical", "light": {}, "dark": {}},
+  "criticalDivider": {
+    "baseColor": "critical",
+    "light": {"lightness": 52},
+    "dark": {"lightness": 48}
+  },
+  "criticalDividerDisabled": {
+    "baseColor": "critical",
+    "light": {"lightness": 82},
+    "dark": {"lightness": 28}
+  },
+  "criticalIcon": {
+    "baseColor": "critical",
+    "light": {"lightness": 52},
+    "dark": {"lightness": 48}
+  },
+  "criticalSurface": {
+    "baseColor": "critical",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 12}
+  },
+  "criticalSurfaceSubdued": {
+    "baseColor": "critical",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 12}
+  },
+  "criticalText": {
+    "baseColor": "critical",
+    "light": {"lightness": 30},
+    "dark": {"lightness": 70}
+  },
+  "criticalActionDisabled": {
+    "baseColor": "critical",
+    "light": {"lightness": 59},
+    "dark": {"lightness": 41}
+  },
+  "criticalAction": {
+    "baseColor": "critical",
+    "light": {"lightness": 52},
+    "dark": {"lightness": 48}
+  },
+  "criticalActionHovered": {
+    "baseColor": "critical",
+    "light": {"lightness": 45},
+    "dark": {"lightness": 55}
+  },
+  "criticalActionSubdued": {
+    "baseColor": "critical",
+    "light": {"lightness": 38},
+    "dark": {"lightness": 62}
+  },
+  "criticalActionPressed": {
+    "baseColor": "critical",
+    "light": {"lightness": 31},
+    "dark": {"lightness": 69}
+  },
+  "criticalLink": {
+    "baseColor": "critical",
+    "light": {"lightness": 42},
+    "dark": {"lightness": 48}
+  },
+  "criticalLinkDisabled": {
+    "baseColor": "critical",
+    "light": {"lightness": 72},
+    "dark": {"lightness": 78}
+  },
+  "criticalLinkHovered": {
+    "baseColor": "critical",
+    "light": {"lightness": 45},
+    "dark": {"lightness": 55}
+  },
+  "criticalLinkPressed": {
+    "baseColor": "critical",
+    "light": {"lightness": 21},
+    "dark": {"lightness": 69}
+  },
+  "warning": {"baseColor": "warning", "light": {}, "dark": {}},
+  "warningDivider": {
+    "baseColor": "warning",
+    "light": {"lightness": 66},
+    "dark": {"lightness": 34}
+  },
+  "warningIcon": {
+    "baseColor": "warning",
+    "light": {"lightness": 66},
+    "dark": {"lightness": 34}
+  },
+  "warningSurface": {
+    "baseColor": "warning",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 12}
+  },
+  "warningSurfaceSubdued": {
+    "baseColor": "warning",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 12}
+  },
+  "warningText": {
+    "baseColor": "warning",
+    "light": {"lightness": 30},
+    "dark": {"lightness": 70}
+  },
+  "highlight": {"baseColor": "highlight", "light": {}, "dark": {}},
+  "highlightDivider": {
+    "baseColor": "highlight",
+    "light": {"lightness": 58},
+    "dark": {"lightness": 42}
+  },
+  "highlightIcon": {
+    "baseColor": "highlight",
+    "light": {"lightness": 58},
+    "dark": {"lightness": 42}
+  },
+  "highlightSurface": {
+    "baseColor": "highlight",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 12}
+  },
+  "highlightSurfaceSubdued": {
+    "baseColor": "highlight",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 12}
+  },
+  "highlightText": {
+    "baseColor": "highlight",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 2}
+  },
+  "success": {"baseColor": "success", "light": {}, "dark": {}},
+  "successDivider": {
+    "baseColor": "success",
+    "light": {"lightness": 25},
+    "dark": {"lightness": 35}
+  },
+  "successIcon": {
+    "baseColor": "success",
+    "light": {"lightness": 25},
+    "dark": {"lightness": 35}
+  },
+  "successSurface": {
+    "baseColor": "success",
+    "light": {"lightness": 88},
+    "dark": {"lightness": 12}
+  },
+  "successSurfaceSubdued": {
+    "baseColor": "success",
+    "light": {"lightness": 98},
+    "dark": {"lightness": 12}
+  },
+  "successText": {
+    "baseColor": "success",
+    "light": {"lightness": 15},
+    "dark": {"lightness": 85}
+  }
+}
