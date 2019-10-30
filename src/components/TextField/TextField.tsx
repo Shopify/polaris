@@ -397,7 +397,7 @@ export function TextField({
     'aria-activedescendant': ariaActiveDescendant,
     'aria-autocomplete': ariaAutocomplete,
     'aria-controls': ariaControls,
-    'aria-multiline': multiline,
+    'aria-multiline': normalizeAriaMultiline(multiline),
   });
 
   return (
@@ -482,5 +482,16 @@ function normalizeAutoComplete(autoComplete?: boolean | string) {
     return 'off';
   } else {
     return autoComplete;
+  }
+}
+
+function normalizeAriaMultiline(multiline?: boolean | number) {
+  switch (typeof multiline) {
+    case 'undefined':
+      return false;
+    case 'boolean':
+      return multiline;
+    case 'number':
+      return Boolean(multiline > 0);
   }
 }

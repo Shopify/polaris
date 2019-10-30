@@ -79,7 +79,7 @@ describe('buildCustomProperties', () => {
         '--p-surface': 'hsl(0, 0%, 100%, 1)',
         '--p-surface-background': 'hsl(0, 0%, 98%, 1)',
         '--p-surface-foreground': 'hsl(0, 0%, 100%, 1)',
-        '--p-surface-foreground-subdued': 'hsl(0, 0%, 90%, 1)',
+        '--p-surface-foreground-subdued': 'hsl(0, 0%, 95%, 1)',
         '--p-surface-inverse': 'hsl(0, 0%, 0%, 1)',
         '--p-surface-hovered': 'hsl(0, 0%, 93%, 1)',
         '--p-surface-pressed': 'hsl(0, 0%, 86%, 1)',
@@ -99,7 +99,7 @@ describe('buildColors', () => {
           '--p-surface': 'hsl(0, 0%, 98%, 1)',
           '--p-surface-background': 'hsl(0, 0%, 98%, 1)',
           '--p-surface-foreground': 'hsl(0, 0%, 100%, 1)',
-          '--p-surface-foreground-subdued': 'hsl(0, 0%, 90%, 1)',
+          '--p-surface-foreground-subdued': 'hsl(0, 0%, 95%, 1)',
           '--p-surface-inverse': 'hsl(0, 0%, 0%, 1)',
           '--p-surface-hovered': 'hsl(0, 0%, 93%, 1)',
           '--p-surface-pressed': 'hsl(0, 0%, 86%, 1)',
@@ -115,7 +115,7 @@ describe('buildColors', () => {
           '--p-surface': 'hsl(0, 0%, 100%, 1)',
           '--p-surface-background': 'hsl(0, 0%, 98%, 1)',
           '--p-surface-foreground': 'hsl(0, 0%, 100%, 1)',
-          '--p-surface-foreground-subdued': 'hsl(0, 0%, 90%, 1)',
+          '--p-surface-foreground-subdued': 'hsl(0, 0%, 95%, 1)',
           '--p-surface-inverse': 'hsl(0, 0%, 0%, 1)',
           '--p-surface-hovered': 'hsl(0, 0%, 93%, 1)',
           '--p-surface-pressed': 'hsl(0, 0%, 86%, 1)',
@@ -504,6 +504,7 @@ describe('buildColors', () => {
         expect.objectContaining({
           '--p-critical': 'hsl(0, 77%, 52%, 1)',
           '--p-critical-divider': 'hsl(0, 77%, 52%, 1)',
+          '--p-critical-divider-disabled': 'hsl(0, 77%, 82%, 1)',
           '--p-critical-icon': 'hsl(0, 77%, 52%, 1)',
           '--p-critical-surface': 'hsl(0, 77%, 88%, 1)',
           '--p-critical-surface-subdued': 'hsl(0, 77%, 98%, 1)',
@@ -513,6 +514,10 @@ describe('buildColors', () => {
           '--p-critical-action-hovered': 'hsl(0, 77%, 45%, 1)',
           '--p-critical-action-subdued': 'hsl(0, 77%, 38%, 1)',
           '--p-critical-action-pressed': 'hsl(0, 77%, 31%, 1)',
+          '--p-critical-link': 'hsl(0, 77%, 42%, 1)',
+          '--p-critical-link-disabled': 'hsl(0, 77%, 72%, 1)',
+          '--p-critical-link-hovered': 'hsl(0, 77%, 45%, 1)',
+          '--p-critical-link-pressed': 'hsl(0, 77%, 21%, 1)',
         }),
       );
     });
@@ -526,6 +531,7 @@ describe('buildColors', () => {
         expect.objectContaining({
           '--p-critical': 'hsl(348, 83%, 47%, 1)',
           '--p-critical-divider': 'hsl(348, 83%, 52%, 1)',
+          '--p-critical-divider-disabled': 'hsl(348, 83%, 82%, 1)',
           '--p-critical-icon': 'hsl(348, 83%, 52%, 1)',
           '--p-critical-surface': 'hsl(348, 83%, 88%, 1)',
           '--p-critical-surface-subdued': 'hsl(348, 83%, 98%, 1)',
@@ -535,6 +541,10 @@ describe('buildColors', () => {
           '--p-critical-action-hovered': 'hsl(348, 83%, 45%, 1)',
           '--p-critical-action-pressed': 'hsl(348, 83%, 31%, 1)',
           '--p-critical-action-subdued': 'hsl(348, 83%, 38%, 1)',
+          '--p-critical-link': 'hsl(348, 83%, 42%, 1)',
+          '--p-critical-link-disabled': 'hsl(348, 83%, 72%, 1)',
+          '--p-critical-link-hovered': 'hsl(348, 83%, 45%, 1)',
+          '--p-critical-link-pressed': 'hsl(348, 83%, 21%, 1)',
         }),
       );
     });
@@ -548,6 +558,7 @@ describe('buildColors', () => {
         expect.objectContaining({
           '--p-critical': 'hsl(348, 83%, 47%, 1)',
           '--p-critical-divider': 'hsl(348, 83%, 48%, 1)',
+          '--p-critical-divider-disabled': 'hsl(348, 83%, 28%, 1)',
           '--p-critical-icon': 'hsl(348, 83%, 48%, 1)',
           '--p-critical-surface': 'hsl(348, 83%, 12%, 1)',
           '--p-critical-surface-subdued': 'hsl(348, 83%, 12%, 1)',
@@ -557,6 +568,10 @@ describe('buildColors', () => {
           '--p-critical-action-hovered': 'hsl(348, 83%, 55%, 1)',
           '--p-critical-action-pressed': 'hsl(348, 83%, 69%, 1)',
           '--p-critical-action-subdued': 'hsl(348, 83%, 62%, 1)',
+          '--p-critical-link': 'hsl(348, 83%, 48%, 1)',
+          '--p-critical-link-disabled': 'hsl(348, 83%, 78%, 1)',
+          '--p-critical-link-hovered': 'hsl(348, 83%, 55%, 1)',
+          '--p-critical-link-pressed': 'hsl(348, 83%, 69%, 1)',
         }),
       );
     });

@@ -12,7 +12,7 @@
   },
   "surfaceForegroundSubdued": {
     "baseColor": "surface",
-    "light": {"lightness": 90},
+    "light": {"lightness": 95},
     "dark": {"lightness": 10}
   },
   "surfaceInverse": {
@@ -420,6 +420,11 @@
     "light": {"lightness": 52},
     "dark": {"lightness": 48}
   },
+  "criticalDividerDisabled": {
+    "baseColor": "critical",
+    "light": {"lightness": 82},
+    "dark": {"lightness": 28}
+  },
   "criticalIcon": {
     "baseColor": "critical",
     "light": {"lightness": 52},
@@ -463,6 +468,26 @@
   "criticalActionPressed": {
     "baseColor": "critical",
     "light": {"lightness": 31},
+    "dark": {"lightness": 69}
+  },
+  "criticalLink": {
+    "baseColor": "critical",
+    "light": {"lightness": 42},
+    "dark": {"lightness": 48}
+  },
+  "criticalLinkDisabled": {
+    "baseColor": "critical",
+    "light": {"lightness": 72},
+    "dark": {"lightness": 78}
+  },
+  "criticalLinkHovered": {
+    "baseColor": "critical",
+    "light": {"lightness": 45},
+    "dark": {"lightness": 55}
+  },
+  "criticalLinkPressed": {
+    "baseColor": "critical",
+    "light": {"lightness": 21},
     "dark": {"lightness": 69}
   },
   "warning": {"baseColor": "warning", "light": {}, "dark": {}},

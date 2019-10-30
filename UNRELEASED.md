@@ -10,31 +10,25 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Updated `OptionList` section title to match `ActionList` section title ([#2300](https://github.com/Shopify/polaris-react/pull/2300))
-- Added `pressed` state to `Button` ([#2148](https://github.com/Shopify/polaris-react/pull/2148))
-- Added CSS custom properties to `Portal` container ([#2306](https://github.com/Shopify/polaris-react/pull/2306))
-- Updated the type of the `label` prop in `ChoiceList` (nested prop of `choices`) from `string` to `ReactNode` ([#2325](https://github.com/Shopify/polaris-react/pull/2325)).
-
 ### Bug fixes
 
-- Fixed `actionGroups` to only render `MenuActions` when actions are provided in the `Page` ([#2266](https://github.com/Shopify/polaris-react/pull/2266))
-- Fixed `PositionedOverlay` incorrectly calculating `Topbar.UserMenu` `Popover` width ([#1692](https://github.com/Shopify/polaris-react/pull/1692))
-- Fixed `recolor-icon` Sass mixin to properly scope `$secondary-color` to the child `svg` ([#2298](https://github.com/Shopify/polaris-react/pull/2298))
-- Fixed a regression with the positioning of the `Popover` component ([#2305](https://github.com/Shopify/polaris-react/pull/2305))
-- Fixed an issue with the `ResourceList` component where the plural resource name was not used for `totalItemsCount` ([#2299](https://github.com/Shopify/polaris-react/issues/2299))
-- Fixed Stack Item proportion when shrinking ([#2319](https://github.com/Shopify/polaris-react/pull/2319))
-- Fixed animation of `Collapsible` with children having margins ([#1980](https://github.com/Shopify/polaris-react/pull/1980))
+- Fixed an accessibility issue with `TextField` `multiline` where `aria-multiline` would be set to an invalid type `number` ([#2351](https://github.com/Shopify/polaris-react/pull/2351))
+- Fixed alignement of disclosure icons on `ResourceItem` ([#2370](https://github.com/Shopify/polaris-react/pull/2370))
 
 ### Documentation
 
+- Updated the `AppProvider` section in the Polaris [v3 to v4 migration guide](https://github.com/Shopify/polaris-react/blob/master/documentation/guides/migrating-from-v3-to-v4.md) ([#2312](https://github.com/Shopify/polaris-react/pull/2312))
+- Updated the `Using translations` section in the [AppProvider README](https://github.com/Shopify/polaris-react/blob/master/src/components/AppProvider/README.md#using-translations) ([#2312](https://github.com/Shopify/polaris-react/pull/2312))
+
 ### Development workflow
+
+- Removed the need to upload assets with each release ([#2346](https://github.com/Shopify/polaris-react/pull/2346))
 
 ### Dependency upgrades
 
-- Updated sewing-kit to v0.111.0 and storybook to v5.2.4 ([#2326](https://github.com/Shopify/polaris-react/pull/2326))
-
 ### Code quality
 
-### Deprecations
+- Migrated `FilterValueSelector` to use hooks instead of withAppProvider ([#2156](https://github.com/Shopify/polaris-react/pull/2156))
+- Added `useIsMountedRef` hook to use while building components ([#2167](https://github.com/Shopify/polaris-react/pull/2167))
 
-### Development workflow
+### Deprecations

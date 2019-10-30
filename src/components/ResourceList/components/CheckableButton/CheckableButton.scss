@@ -20,7 +20,7 @@ $chekbox-label-margin: rem(20px);
   user-select: none;
   text-decoration: none;
   text-align: left;
-  background: color('white');
+  background: var(--p-surface-foreground, color('white'));
   border: border(dark);
   border-radius: border-radius() 0 0 border-radius();
   border-right-color: transparent;

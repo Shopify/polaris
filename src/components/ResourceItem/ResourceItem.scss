@@ -40,7 +40,10 @@ $resource-list-item-variables: (
   cursor: pointer;
 
   &:hover {
-    @include state(hover);
+    background-image: linear-gradient(
+      rgba(223, 227, 232, 0.3),
+      rgba(223, 227, 232, 0.3)
+    );
 
     &:not(.persistActions) {
       // stylelint-disable-next-line selector-max-specificity
@@ -57,39 +60,78 @@ $resource-list-item-variables: (
   }
 
   &:active {
-    @include state(active);
+    background-image: linear-gradient(
+      rgba(179, 188, 245, 0.1),
+      rgba(179, 188, 245, 0.1)
+    );
   }
 }
 
 .selected {
-  @include state(selected);
+  background-image: linear-gradient(
+    rgba(179, 188, 245, 0.15),
+    rgba(179, 188, 245, 0.15)
+  );
 
   &.focused {
-    @include state(selected, focused);
+    box-shadow: inset 0.2rem 0 0 color('indigo');
+    background-image: linear-gradient(
+        rgba(179, 188, 245, 0.15),
+        rgba(179, 188, 245, 0.15)
+      ),
+      linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
 
     &:hover {
-      @include state(selected, focused, hover);
+      box-shadow: inset 0.2rem 0 0 color('indigo');
+      background-image: linear-gradient(
+          rgba(179, 188, 245, 0.15),
+          rgba(179, 188, 245, 0.15)
+        ),
+        linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3)),
+        linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
     }
   }
 
   &:hover {
-    @include state(selected, hover);
+    background-image: linear-gradient(
+        rgba(179, 188, 245, 0.15),
+        rgba(179, 188, 245, 0.15)
+      ),
+      linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
   }
 
   &:active {
-    @include state(selected, active);
+    background-image: linear-gradient(
+        rgba(179, 188, 245, 0.15),
+        rgba(179, 188, 245, 0.15)
+      ),
+      linear-gradient(rgba(179, 188, 245, 0.1), rgba(179, 188, 245, 0.1));
   }
 }
 
 .focused {
-  @include state(focused);
+  box-shadow: inset 0.2rem 0 0 color('indigo');
+  background-image: linear-gradient(
+    rgba(223, 227, 232, 0.3),
+    rgba(223, 227, 232, 0.3)
+  );
 
   &:hover {
-    @include state(focused, hover);
+    box-shadow: inset 0.2rem 0 0 color('indigo');
+    background-image: linear-gradient(
+        rgba(223, 227, 232, 0.3),
+        rgba(223, 227, 232, 0.3)
+      ),
+      linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
   }
 
   &:active {
-    @include state(focused, active);
+    box-shadow: inset 0.2rem 0 0 color('indigo');
+    background-image: linear-gradient(
+        rgba(223, 227, 232, 0.3),
+        rgba(223, 227, 232, 0.3)
+      ),
+      linear-gradient(rgba(179, 188, 245, 0.1), rgba(179, 188, 245, 0.1));
   }
 }
 
@@ -238,6 +280,7 @@ $resource-list-item-variables: (
 
   @include page-content-when-partially-condensed {
     display: flex;
+    flex: 0 0 resource-list-item(disclosure-width);
     justify-content: center;
     align-items: center;
   }

@@ -8,6 +8,34 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.7.1 - 2019-10-23
+
+### Bug fixes
+
+- Fixed a bug with `Button` which caused infinite layout and high CPU load in Safari, related to [WebKit Bug 194332](https://bugs.webkit.org/show_bug.cgi?id=194332) ([#2350](https://github.com/Shopify/polaris-react/pull/2350))
+
+## 4.7.0 - 2019-10-22
+
+### Enhancements
+
+- Updated `OptionList` section title to match `ActionList` section title ([#2300](https://github.com/Shopify/polaris-react/pull/2300))
+- Added `pressed` state to `Button` ([#2148](https://github.com/Shopify/polaris-react/pull/2148))
+- Updated the type of the `label` prop in `ChoiceList` (nested prop of `choices`) from `string` to `ReactNode` ([#2325](https://github.com/Shopify/polaris-react/pull/2325)).
+
+### Bug fixes
+
+- Fixed `actionGroups` to only render `MenuActions` when actions are provided in the `Page` ([#2266](https://github.com/Shopify/polaris-react/pull/2266))
+- Fixed `PositionedOverlay` incorrectly calculating `Topbar.UserMenu` `Popover` width ([#2231](https://github.com/Shopify/polaris-react/pull/2231))
+- Fixed `recolor-icon` Sass mixin to properly scope `$secondary-color` to the child `svg` ([#2298](https://github.com/Shopify/polaris-react/pull/2298))
+- Fixed an issue with the `ResourceList` component where the plural resource name was not used for `totalItemsCount` ([#2301](https://github.com/Shopify/polaris-react/issues/2301))
+- Fixed Stack Item proportion when shrinking ([#2319](https://github.com/Shopify/polaris-react/pull/2319))
+- Fixed animation of `Collapsible` with children having margins ([#1980](https://github.com/Shopify/polaris-react/pull/1980))
+- Added vertical adjustment to `OptionList` control items ([#2313](https://github.com/Shopify/polaris-react/pull/2313))
+
+### Dependency upgrades
+
+- Updated sewing-kit to v0.111.0 and storybook to v5.2.4 ([#2326](https://github.com/Shopify/polaris-react/pull/2326))
+
 ## 4.6.1 - 2019-10-17
 
 ### Enhancements
@@ -410,7 +438,7 @@ For instructions on updating from v3 to v4, see our [migration guide](https://gi
 
 ### Development workflow
 
-- Use explicit imports for our base sass mixins instead of having them implictly defined at build-time. This simplifes our build config and other tooling that wants to build us from source [[#1680](https://github.com/Shopify/polaris-react/pull/1680)]
+- Use explicit imports for our base Sass mixins instead of having them implictly defined at build-time. This simplifes our build config and other tooling that wants to build us from source [[#1680](https://github.com/Shopify/polaris-react/pull/1680)]
 
 ## 3.19.0 - 2019-07-09
 
@@ -422,7 +450,7 @@ For instructions on updating from v3 to v4, see our [migration guide](https://gi
 
 - Added the rollover and Windows high contrast mode to `Disclosure` button on `Tabs` ([#1755](https://github.com/Shopify/polaris-react/pull/1755))
 - Added support for disabling all choices in `ChoiceList` ([#1758](https://github.com/Shopify/polaris-react/pull/1758))
-- Components in our sass build (the `styles` folder) are now precompiled to avoid the chance of accidentally overwriting any of our global variables, mixins and functions ([#1764](https://github.com/Shopify/polaris-react/pull/1764))
+- Components in our Sass build (the `styles` folder) are now precompiled to avoid the chance of accidentally overwriting any of our global variables, mixins and functions ([#1764](https://github.com/Shopify/polaris-react/pull/1764))
 - Changed `Skip to content` to render an anchor instead of a button to meet accessiblity level A guidelines ([#1785](https://github.com/Shopify/polaris-react/pull/1785))
 
 ### Bug fixes
@@ -439,7 +467,7 @@ For instructions on updating from v3 to v4, see our [migration guide](https://gi
 
 - Renamed `yarn run ts` to `yarn run type-check` to match most other Shopify projects ([#1745](https://github.com/Shopify/polaris-react/pull/1745))
 - Fixed deprecation notice in build ([#1754](https://github.com/Shopify/polaris-react/pull/1754))
-- Simplified our rollup plugin for sass compilation while retaining identical behaviour ([#1753](https://github.com/Shopify/polaris-react/pull/1753))
+- Simplified our rollup plugin for Sass compilation while retaining identical behaviour ([#1753](https://github.com/Shopify/polaris-react/pull/1753))
 
 ## 3.18.0 - 2019-06-26
 
@@ -954,7 +982,7 @@ Upgraded Storybook to v5 ([#1140](https://github.com/Shopify/polaris-react/pull/
 
 - Ensured disabled `Button` components with a `url` prop output valid HTML ([#773](https://github.com/Shopify/polaris-react/pull/773))
 - Fixed `DropZone` which was unable to add a duplicate file back to back or add a file again once removed [#782](https://github.com/Shopify/polaris-react/pull/782). Thank you [@jzsplk](https://github.com/jzsplk) for the contribution [#425](https://github.com/Shopify/polaris-react/issues/425) and [@vladucu](https://github.com/vladucu) for the clear example.
-- Added a fallback to the `safeAreaFor` sass mixin to handle browsers that don’t support `env` and `constant` ([#881](https://github.com/Shopify/polaris-react/pull/881))
+- Added a fallback to the `safeAreaFor` Sass mixin to handle browsers that don’t support `env` and `constant` ([#881](https://github.com/Shopify/polaris-react/pull/881))
 
 ### Documentation
 

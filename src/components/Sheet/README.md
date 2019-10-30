@@ -99,23 +99,6 @@ function SheetExample() {
   });
   const hasSelectedSalesChannels = selectedSalesChannels.length > 0;
 
-  const theme = {
-    colors: {
-      topBar: {
-        background: '#357997',
-      },
-    },
-    logo: {
-      width: 124,
-      topBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-      contextualSaveBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      url: 'http://jadedpixel.com',
-      accessibilityLabel: 'Jaded Pixel',
-    },
-  };
-
   const salesChannelsCardMarkup = hasSelectedSalesChannels ? (
     <List>
       {selectedSalesChannels.map((channel, index) => (
@@ -146,104 +129,70 @@ function SheetExample() {
     : null;
 
   return (
-    <div style={{maxHeight: '640px', overflow: 'visible'}}>
-      <AppProvider
-        theme={theme}
-        i18n={{
-          Polaris: {
-            Frame: {
-              skipToContent: 'Skip to content',
-            },
-            TextField: {
-              characterCount: '{count} characters',
-            },
-          },
-        }}
+    <Page narrowWidth>
+      <Card
+        sectioned
+        subdued
+        title="Product availability"
+        actions={salesChannelAction}
       >
-        <Frame topBar={<TopBar />}>
-          <Page narrowWidth title="Big yellow socks">
-            <Card sectioned>
-              <FormLayout>
-                <TextField
-                  label="Title"
-                  onChange={handleTitleChange}
-                  value={title}
-                  readOnly
-                />
-                <TextField
-                  label="Description"
-                  onChange={handleDescriptionChange}
-                  value={description}
-                  multiline
-                />
-              </FormLayout>
-            </Card>
-            <Card
-              sectioned
-              subdued
-              title="Product availability"
-              actions={salesChannelAction}
-            >
-              {salesChannelsCardMarkup}
-            </Card>
-            <Sheet open={sheetActive} onClose={toggleSheetActive}>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: '100%',
-                }}
-              >
-                <div
-                  style={{
-                    alignItems: 'center',
-                    borderBottom: '1px solid #DFE3E8',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    padding: '1.6rem',
-                    width: '100%',
-                  }}
-                >
-                  <Heading>Manage sales channels</Heading>
-                  <Button
-                    accessibilityLabel="Cancel"
-                    icon={MobileCancelMajorMonotone}
-                    onClick={toggleSheetActive}
-                    plain
-                  />
-                </div>
-                <Scrollable style={{padding: '1.6rem', height: '100%'}}>
-                  <ChoiceList
-                    title="Select a sales channel"
-                    name="salesChannelsList"
-                    choices={salesChannels}
-                    selected={selected}
-                    titleHidden
-                    allowMultiple
-                    onChange={handleSelectedChange}
-                  />
-                </Scrollable>
-                <div
-                  style={{
-                    alignItems: 'center',
-                    borderTop: '1px solid #DFE3E8',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    padding: '1.6rem',
-                    width: '100%',
-                  }}
-                >
-                  <Button onClick={toggleSheetActive}>Cancel</Button>
-                  <Button primary onClick={toggleSheetActive}>
-                    Done
-                  </Button>
-                </div>
-              </div>
-            </Sheet>
-          </Page>
-        </Frame>
-      </AppProvider>
-    </div>
+        {salesChannelsCardMarkup}
+      </Card>
+      <Sheet open={sheetActive} onClose={toggleSheetActive}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+          }}
+        >
+          <div
+            style={{
+              alignItems: 'center',
+              borderBottom: '1px solid #DFE3E8',
+              display: 'flex',
+              justifyContent: 'space-between',
+              padding: '1.6rem',
+              width: '100%',
+            }}
+          >
+            <Heading>Manage sales channels</Heading>
+            <Button
+              accessibilityLabel="Cancel"
+              icon={MobileCancelMajorMonotone}
+              onClick={toggleSheetActive}
+              plain
+            />
+          </div>
+          <Scrollable style={{padding: '1.6rem', height: '100%'}}>
+            <ChoiceList
+              title="Select a sales channel"
+              name="salesChannelsList"
+              choices={salesChannels}
+              selected={selected}
+              titleHidden
+              allowMultiple
+              onChange={handleSelectedChange}
+            />
+          </Scrollable>
+          <div
+            style={{
+              alignItems: 'center',
+              borderTop: '1px solid #DFE3E8',
+              display: 'flex',
+              justifyContent: 'space-between',
+              padding: '1.6rem',
+              width: '100%',
+            }}
+          >
+            <Button onClick={toggleSheetActive}>Cancel</Button>
+            <Button primary onClick={toggleSheetActive}>
+              Done
+            </Button>
+          </div>
+        </div>
+      </Sheet>
+    </Page>
   );
 }
 ```
