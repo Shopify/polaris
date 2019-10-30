@@ -324,10 +324,6 @@ $stacking-order: (
 
 // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors
 .globalTheming {
-  &.Textfield {
-    color: var(--p-text-on-surface);
-  }
-
   .hasValue {
     color: var(--p-text-on-surface);
   }
@@ -361,6 +357,7 @@ $stacking-order: (
 
   .Input {
     caret-color: var(--p-text-on-surface);
+    color: var(--p-text-on-surface);
 
     .hasValue & {
       color: var(--p-text-on-surface);
