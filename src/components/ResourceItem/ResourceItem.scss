@@ -280,6 +280,7 @@ $resource-list-item-variables: (
 
   @include page-content-when-partially-condensed {
     display: flex;
+    flex: 0 0 resource-list-item(disclosure-width);
     justify-content: center;
     align-items: center;
   }

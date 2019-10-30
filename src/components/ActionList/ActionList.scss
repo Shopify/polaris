@@ -8,6 +8,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   list-style: none;
   margin: 0;
   padding: spacing(tight) 0;
+
+  &.globalTheming {
+    padding: spacing(tight);
+  }
 }
 
 .Section-withoutTitle:not(:first-child) {
@@ -177,6 +181,97 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   &::-moz-focus-inner {
     border: none;
   }
+
+  // stylelint-disable selector-max-class
+  // stylelint-disable selector-max-specificity
+  &.globalTheming {
+    padding: $item-vertical-padding spacing(tight);
+    border-radius: var(--p-border-radius-base);
+    // States
+    // Hovered (:hover)
+    &:hover {
+      background-image: none;
+      background-color: var(--p-surface-hovered);
+    }
+    // Active (.active, :active)
+    // We need to decide if the .active state appears as pressed or focused
+    // Focused might be odd, as another item could be focused simultaneously
+    &.active,
+    &:active {
+      background-image: none;
+      background-color: var(--p-surface-pressed);
+    }
+
+    // Active, hovered, focused (:active:hover:focus)
+    &:active:hover:focus {
+      box-shadow: none;
+      background-image: none;
+    }
+
+    // Hovered, focused (:hover:focus)
+    &:hover:focus {
+      box-shadow: none;
+      background-image: none;
+    }
+
+    // Focused (:focus)
+    &:focus {
+      box-shadow: none;
+      background-image: none;
+    }
+
+    &:focus:not(:active) {
+      @include focus-ring;
+    }
+
+    // Destructive (.destructive)
+    &.destructive {
+      @include recolor-icon(var(--p-critical-icon));
+      color: var(--p-critical-link);
+    }
+
+    // Hovered (:hover)
+    &.destructive:hover {
+      background-image: none;
+      background-color: var(--p-critical-surface-subdued-hovered);
+    }
+
+    // Destructive, active (.destructive.active, .destructive:active)
+    &.destructive.active,
+    &.destructive:active {
+      background-image: none;
+      background-color: var(--p-critical-surface-subdued-pressed);
+    }
+
+    // Destructive, active, hovered, focused (.destructive:active:hover:focus)
+    &.destructive:active:hover:focus {
+      box-shadow: none;
+      background-image: none;
+    }
+
+    // Destructive, hovered, focused (.destructive:hover:focus)
+    &.destructive:hover:focus {
+      box-shadow: none;
+      background-image: none;
+    }
+
+    // Destructive, focused (.destructive:focus)
+    &.destructive:focus {
+      box-shadow: none;
+      background-image: none;
+    }
+
+    // Disabled (.disabled)
+    &.disabled {
+      background-image: none;
+      color: var(--p-text-disabled-on-surface);
+      .Image {
+        @include recolor-icon(var(--p-icon-disabled-on-surface));
+      }
+    }
+  }
+  // stylelint-enable selector-max-specificity
+  // stylelint-enable selector-max-class
 }
 
 .Content {
