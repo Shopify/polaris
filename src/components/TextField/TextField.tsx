@@ -372,27 +372,40 @@ export function TextField({
     clearButton && styles['Input-hasClearButton'],
   );
 
-  const suggestion =
-    comboBox && comboBox.suggestion != null && comboBox.suggestion;
+  let hintInput;
 
-  const hintInputClassName =
-    suggestion &&
-    classNames(
-      styles.Input,
-      styles.HintInput,
-      align && styles[variationName('Input-align', align)],
-      suffix && styles['Input-suffixed'],
-    );
+  if (comboBox && comboBox.suggestion) {
+    const suggestion = comboBox && comboBox.suggestion;
 
-  const hintInput =
-    suggestion && hintInputClassName ? (
-      <input
-        className={hintInputClassName}
-        readOnly
-        tabIndex={-1}
-        value={suggestion}
-      />
-    ) : null;
+    const suggestionBeginsWithValue =
+      suggestion &&
+      value &&
+      suggestion.toLowerCase().startsWith(value.toLowerCase(), 0);
+
+    const suggestionValue =
+      suggestion && suggestionBeginsWithValue && value
+        ? value + suggestion.substr(value.length)
+        : null;
+
+    const hintInputClassName =
+      suggestionValue &&
+      classNames(
+        styles.Input,
+        styles.HintInput,
+        align && styles[variationName('Input-align', align)],
+        suffix && styles['Input-suffixed'],
+      );
+
+    hintInput =
+      suggestionValue && hintInputClassName ? (
+        <input
+          className={hintInputClassName}
+          readOnly
+          tabIndex={-1}
+          value={suggestionValue}
+        />
+      ) : null;
+  }
 
   const input = React.createElement(multiline ? 'textarea' : 'input', {
     name,

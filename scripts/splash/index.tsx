@@ -150,7 +150,7 @@ const App = () => {
       setDataStatus('loaded');
     }
   }, [setData, stagedFiles]);
-
+  console.log('YES');
   return (
     <React.Fragment>
       <Box marginBottom={1} flexDirection="column">
