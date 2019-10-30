@@ -17,7 +17,7 @@ export interface EmptyStateProps {
   image: string;
   /** The image to use for large screens */
   largeImage?: string;
-  /** The image to use for large screens */
+  /** The image width is contained within its wrapper */
   imageContained?: boolean;
   /** Elements to display inside empty state */
   children?: React.ReactNode;
