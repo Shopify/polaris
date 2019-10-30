@@ -7,7 +7,7 @@ import {createLightColor} from '../color-manipulation';
 import {compose} from '../compose';
 import {needsVariantList} from './config';
 import {ThemeConfig, Theme, CustomPropertiesLike} from './types';
-import colorAdjustmentsJson from './colorAdjustments.json';
+import colorAdjustmentsJson from './color-adjustments.json';
 
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
@@ -55,36 +55,36 @@ export enum UNSTABLE_Color {
   Success = '#008060',
 }
 
-export interface ColorAdjustments {
-  [x: string]: {
-    baseColor:
-      | 'surface'
-      | 'onSurface'
-      | 'interactive'
-      | 'neutral'
-      | 'branded'
-      | 'critical'
-      | 'warning'
-      | 'highlight'
-      | 'success';
-    light: {
-      hue?: number;
-      saturation?: number;
-      lightness?: number;
-      alpha?: number;
-    };
-    dark: {
-      hue?: number;
-      saturation?: number;
-      lightness?: number;
-      alpha?: number;
-    };
-  };
+type ColorRole = keyof typeof colorAdjustmentsJson;
+
+type BaseColor =
+  | 'surface'
+  | 'onSurface'
+  | 'interactive'
+  | 'neutral'
+  | 'branded'
+  | 'critical'
+  | 'warning'
+  | 'highlight'
+  | 'success';
+
+interface HslaAdjustment {
+  hue?: number;
+  saturation?: number;
+  lightness?: number;
+  alpha?: number;
 }
 
+export type ColorAdjustments = {
+  [C in ColorRole]?: {
+    baseColor: BaseColor;
+    light: HslaAdjustment;
+    dark: HslaAdjustment;
+  };
+};
+
 export function buildColors(theme: ThemeConfig) {
-  /* eslint-enable babel/camelcase */
-  const UNSTABLE_colors = {
+  const colors = {
     surface: UNSTABLE_Color.Surface,
     onSurface: UNSTABLE_Color.OnSurface,
     interactive: UNSTABLE_Color.Interactive,
@@ -97,87 +97,75 @@ export function buildColors(theme: ThemeConfig) {
     ...theme.UNSTABLE_colors,
   };
 
-  const surfaceColor = colorToHsla(UNSTABLE_colors.surface);
-  const lightSurface = isLight(
-    hslToRgb({
-      hue: surfaceColor.hue,
-      lightness: surfaceColor.lightness,
-      saturation: surfaceColor.saturation,
-    }),
+  const surfaceColor = colorToHsla(colors.surface);
+  const lightSurface = isLight(hslToRgb(surfaceColor));
+
+  const colorAdjustments: ColorAdjustments = {};
+  Object.assign(colorAdjustments, colorAdjustmentsJson);
+
+  const allColors = Object.entries(colorAdjustments).reduce(
+    (accumulator, [colorRole, colorAdjustment]) => {
+      if (colorAdjustment == null) return accumulator;
+
+      const baseColor = colorToHsla(colors[colorAdjustment.baseColor]);
+      const {
+        hue = baseColor.hue,
+        saturation = baseColor.saturation,
+        lightness = baseColor.lightness,
+        alpha = baseColor.alpha,
+      } = colorAdjustment[lightSurface ? 'light' : 'dark'];
+
+      return {
+        ...accumulator,
+        [colorRole]: hslToString({
+          hue,
+          saturation,
+          lightness,
+          alpha,
+        }),
+      };
+    },
+    {},
   );
 
-  const allColors: any = {};
-  const colorAdjustments = colorAdjustmentsJson as ColorAdjustments;
-
-  Object.entries(colorAdjustments).forEach(([colorName, colorSettings]) => {
-    const adjustments = colorSettings[lightSurface ? 'light' : 'dark'];
-    const baseColor = colorToHsla(UNSTABLE_colors[colorSettings.baseColor]);
-
-    allColors[colorName] = {
-      alpha: baseColor.alpha,
-      hue: baseColor.hue,
-      lightness:
-        adjustments.lightness !== undefined
-          ? setLightness(baseColor, adjustments.lightness).lightness
-          : baseColor.lightness,
-      saturation:
-        adjustments.saturation !== undefined
-          ? setSaturation(baseColor, adjustments.saturation).saturation
-          : baseColor.saturation,
-    };
-  });
-
-  return {
-    ...customPropertyTransformer(allColors),
+  return customPropertyTransformer({
+    ...allColors,
     ...overrides(),
-  };
+  });
 }
+/* eslint-enable babel/camelcase */
 
 function overrides() {
   return {
-    [toCssCustomPropertySyntax('overrideNone')]: 'none',
-    [toCssCustomPropertySyntax('overrideTransparent')]: 'transparent',
-    [toCssCustomPropertySyntax('overrideOne')]: '1',
-    [toCssCustomPropertySyntax('overrideVisible')]: 'visible',
-    [toCssCustomPropertySyntax('buttonFontWeight')]: '500',
-    [toCssCustomPropertySyntax('nonNullContent')]: "''",
-    [toCssCustomPropertySyntax('borderRadiusBase')]: rem('4px'),
-    [toCssCustomPropertySyntax('borderRadiusWide')]: rem('8px'),
-    [toCssCustomPropertySyntax('bannerDefaultBorder')]: buildBannerBorder(
-      '--p-divider-on-surface',
-    ),
-    [toCssCustomPropertySyntax('bannerSuccessBorder')]: buildBannerBorder(
-      '--p-success-divider',
-    ),
-
-    [toCssCustomPropertySyntax('bannerHighlightBorder')]: buildBannerBorder(
-      '--p-highlight-divider',
-    ),
-
-    [toCssCustomPropertySyntax('bannerWarningBorder')]: buildBannerBorder(
-      '--p-warning-divider',
-    ),
-
-    [toCssCustomPropertySyntax('bannerCriticalBorder')]: buildBannerBorder(
-      '--p-critical-divider',
-    ),
-
-    [toCssCustomPropertySyntax('badgeMixBlendMode')]: 'luminosity',
-    [toCssCustomPropertySyntax('borderSubdued')]: `${rem(
-      '1px',
-    )} solid var(--p-divider-subdued-on-surface)`,
-    [toCssCustomPropertySyntax('textFieldSpinnerOffset')]: rem('2px'),
-    [toCssCustomPropertySyntax('textFieldFocusRingOffset')]: rem('-4px'),
-    [toCssCustomPropertySyntax('textFieldFocusRingBorderRadius')]: rem('7px'),
-    [toCssCustomPropertySyntax('focusRingStroke')]: rem('2px'),
+    overrideNone: 'none',
+    overrideTransparent: 'transparent',
+    overrideOne: '1',
+    overrideVisible: 'visible',
+    buttonFontWeight: '500',
+    nonNullContent: "''",
+    borderRadiusBase: rem('4px'),
+    borderRadiusWide: rem('8px'),
+    bannerDefaultBorder: buildBannerBorder('--p-divider-on-surface'),
+    bannerSuccessBorder: buildBannerBorder('--p-success-divider'),
+    bannerHighlightBorder: buildBannerBorder('--p-highlight-divider'),
+    bannerWarningBorder: buildBannerBorder('--p-warning-divider'),
+    bannerCriticalBorder: buildBannerBorder('--p-critical-divider'),
+    badgeMixBlendMode: 'luminosity',
+    borderSubdued: `${rem('1px')} solid var(--p-divider-subdued-on-surface)`,
+    textFieldSpinnerOffset: rem('2px'),
+    textFieldFocusRingOffset: rem('-4px'),
+    textFieldFocusRingBorderRadius: rem('7px'),
+    focusRingStroke: rem('2px'),
   };
 }
 
-function customPropertyTransformer(colors: {[key: string]: HSLAColor}) {
-  return Object.entries(colors).reduce(
+function customPropertyTransformer(
+  properties: Record<string, HSLAColor | string>,
+) {
+  return Object.entries(properties).reduce(
     (transformed, [key, value]) => ({
       ...transformed,
-      [toCssCustomPropertySyntax(key)]: hslToString(value),
+      [toCssCustomPropertySyntax(key)]: value,
     }),
     {},
   );
@@ -187,18 +175,15 @@ function toCssCustomPropertySyntax(camelCase: string) {
   return `--p-${camelCase.replace(/([A-Z0-9])/g, '-$1').toLowerCase()}`;
 }
 
-function setLightness(
-  {hue, saturation, alpha}: HSLAColor,
-  lightness: number,
-): HSLAColor {
-  return {hue, saturation, lightness, alpha};
+function rem(px: string) {
+  const baseFontSize = 10;
+  return `${parseInt(px, 10) / baseFontSize}rem`;
 }
 
-function setSaturation(
-  {hue, lightness, alpha}: HSLAColor,
-  saturation: number,
-): HSLAColor {
-  return {hue, saturation, lightness, alpha};
+function buildBannerBorder(cssVar: string) {
+  return `inset 0 ${rem('2px')} 0 0 var(${cssVar}), inset 0 0 0 ${rem(
+    '2px',
+  )} var(${cssVar})`;
 }
 
 function buildLegacyColors(theme?: ThemeConfig): CustomPropertiesLike {
@@ -312,15 +297,4 @@ function parseColors([baseName, colors]: [
   }
 
   return colorPairs;
-}
-
-function rem(px: string) {
-  const baseFontSize = 10;
-  return `${parseInt(px, 10) / baseFontSize}rem`;
-}
-
-function buildBannerBorder(cssVar: string) {
-  return `inset 0 ${rem('2px')} 0 0 var(${cssVar}), inset 0 0 0 ${rem(
-    '2px',
-  )} var(${cssVar})`;
 }
