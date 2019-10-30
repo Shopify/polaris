@@ -56,7 +56,6 @@ export function ComboBox({
     setTextfieldValue: highlightMatches ? setTextfieldValue : undefined,
     textfieldId,
     setTextFieldId,
-    listBoxId,
     onOptionSelected: handleSelectOption,
   };
 
@@ -103,7 +102,7 @@ export function ComboBox({
   };
 
   const listBoxMarkup = children ? (
-    <div ref={listBoxWrapper}>
+    <div ref={listBoxWrapper} id={listBoxId}>
       <ListBox>{children}</ListBox>
     </div>
   ) : null;

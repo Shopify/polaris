@@ -7,7 +7,7 @@ import {
 import {Key} from '../../../../types';
 import {classNames} from '../../../../utilities/css';
 import {KeypressListener} from '../../../KeypressListener';
-import {scrollable} from '../../../shared';
+import {Scrollable} from '../../../Scrollable';
 import {Option, OptionProps} from '../Option';
 import {ListBoxContext} from './context/list-box';
 import styles from './ListBox.scss';
@@ -26,13 +26,12 @@ export function ListBox({children}: ListBoxProps) {
   const [navigableItems, setNavigableItems] = useState([] as string[]);
   const [keyboardFocusedItem, setKeyboardFocusedItem] = useState();
   const [navigableItemsCursor, setNavigableItemsCursor] = useState(-1);
-  const scrollableRef = useRef<Element | null>(null);
+  const scrollableRef = useRef<HTMLElement | Document>(document);
   const listBoxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (listBoxRef.current) {
-      scrollableRef.current =
-        listBoxRef.current.closest(scrollable.selector) || null;
+      scrollableRef.current = Scrollable.forNode(listBoxRef.current);
     }
   }, []);
 
@@ -42,7 +41,7 @@ export function ListBox({children}: ListBoxProps) {
     throw new Error('ListBox must be used inside a Combobox');
   }
 
-  const {onOptionSelected, listBoxId} = combobox;
+  const {onOptionSelected} = combobox;
 
   const totalOptions = useRef<number>(navigableItems.length);
 
@@ -64,15 +63,9 @@ export function ListBox({children}: ListBoxProps) {
     totalOptions.current = updatedNavigableItems.length;
   }, [children]);
 
-  const onItemClick = (value: string) => {
-    onOptionSelected(value);
-  };
-
   const listBoxContext = {
     keyboardFocusedItem,
-    onItemClick,
-    scrollable:
-      scrollableRef.current != null ? scrollableRef.current : undefined,
+    scrollable: scrollableRef.current,
   };
 
   /** key interactions */
@@ -128,9 +121,7 @@ export function ListBox({children}: ListBoxProps) {
         handler={handleEnter}
       />
       <ListBoxContext.Provider value={listBoxContext}>
-        <ul id={listBoxId} className={listBoxClassName}>
-          {children}
-        </ul>
+        <ul className={listBoxClassName}>{children}</ul>
       </ListBoxContext.Provider>
     </div>
   ) : null;

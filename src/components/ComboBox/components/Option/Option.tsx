@@ -26,17 +26,23 @@ export function Option({
   suggest,
   ariaLabel,
 }: OptionProps) {
-  const {keyboardFocusedItem, onItemClick, scrollable} = useListBox();
-  const combobox = useComboBox();
+  const {keyboardFocusedItem} = useListBox();
+  const {setActiveDescendant, setSuggestion, onOptionSelected} = useComboBox();
   const listItemRef = useRef<HTMLLIElement>(null);
+  // const scrollableRef = useRef<HTMLElement | Document>(document);
   const id = useUniqueId('ComboBoxOption');
   const text = typeof children === 'string' ? children : ariaLabel;
 
-  combobox &&
-    suggest &&
-    text &&
-    combobox.setSuggestion &&
-    combobox.setSuggestion(text);
+  setSuggestion && suggest && text && setSuggestion(text);
+
+  // const scrollable = useRef<any>(Scrollable.forNode(listItemRef.current));
+
+  // useEffect(() => {
+  //   if (keyboardFocusedItem && listItemRef.current) {
+  //     const scrollable = Scrollable.forNode(listItemRef.current);
+  //     scrollableRef.current = scrollable;
+  //   }
+  // }, [keyboardFocusedItem]);
 
   // console.log(combobox && suggest && value);
 
@@ -66,15 +72,15 @@ export function Option({
 
   // The parent doesn't know the id and we need the id for the activeDescendant
   // TODO: TEXTFIELD ONLY PROVIDER
-  currentlyKeyboardFocused && combobox && combobox.setActiveDescendant(id);
+  currentlyKeyboardFocused && setActiveDescendant && setActiveDescendant(id);
 
   // const scrollToView = currentlyKeyboardFocused ? (
   //   <Scrollable.ScrollTo />
   // ) : null;
 
   const handleItemClick = useCallback(() => {
-    onItemClick && onItemClick(value);
-  }, [onItemClick, value]);
+    onOptionSelected && onOptionSelected(value);
+  }, [onOptionSelected, value]);
 
   const handleEnter = useCallback(() => {
     handleItemClick();
