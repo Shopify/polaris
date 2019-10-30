@@ -43,7 +43,8 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
         accessibility_label: accessibilityLabel,
       });
     }
-  }, [accessibilityLabel, backdrop, color, source, unstableMonorail]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [source]);
   /* eslint-enable babel/camelcase */
 
   if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {
