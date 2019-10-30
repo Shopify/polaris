@@ -155,7 +155,6 @@ function overrides() {
     textFieldSpinnerOffset: rem('2px'),
     textFieldFocusRingOffset: rem('-4px'),
     textFieldFocusRingBorderRadius: rem('7px'),
-    focusRingStroke: rem('2px'),
   };
 }
 

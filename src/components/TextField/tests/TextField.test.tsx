@@ -1145,6 +1145,32 @@ describe('<TextField />', () => {
       expect(findByTestID(textField, 'clearButton').exists()).toBeFalsy();
     });
   });
+
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled', () => {
+      const textField = mountWithApp(
+        <TextField label="TextField" onChange={noop} />,
+        {
+          features: {unstableGlobalTheming: true},
+        },
+      );
+      expect(textField).toContainReactComponent('div', {
+        className: 'TextField globalTheming',
+      });
+    });
+
+    it('does not add a global theming class when global theming is disabled', () => {
+      const textField = mountWithApp(
+        <TextField label="TextField" onChange={noop} />,
+        {
+          features: {unstableGlobalTheming: false},
+        },
+      );
+      expect(textField).not.toContainReactComponent('div', {
+        className: 'TextField globalTheming',
+      });
+    });
+  });
 });
 
 function noop() {}
