@@ -2,13 +2,13 @@
   "surface": {"baseColor": "surface", "light": {}, "dark": {}},
   "surfaceBackground": {
     "baseColor": "surface",
-    "light": {"lightness": 98},
-    "dark": {"lightness": 7}
+    "light": {"lightness": 97.9},
+    "dark": {"lightness": 3.3}
   },
   "surfaceForeground": {
     "baseColor": "surface",
     "light": {"lightness": 100},
-    "dark": {"lightness": 13}
+    "dark": {"lightness": 8.8}
   },
   "surfaceForegroundSubdued": {
     "baseColor": "surface",
@@ -22,12 +22,12 @@
   },
   "surfaceHovered": {
     "baseColor": "surface",
-    "light": {"lightness": 93},
+    "light": {"lightness": 95},
     "dark": {"lightness": 20}
   },
   "surfacePressed": {
     "baseColor": "surface",
-    "light": {"lightness": 86},
+    "light": {"lightness": 90},
     "dark": {"lightness": 27}
   },
   "onSurface": {"baseColor": "onSurface", "light": {}, "dark": {}},
@@ -79,7 +79,7 @@
   "dividerOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 75},
-    "dark": {"lightness": 80}
+    "dark": {"lightness": 35}
   },
   "dividerDisabledOnInverse": {
     "baseColor": "onSurface",
@@ -99,7 +99,7 @@
   "dividerSubduedOnSurface": {
     "baseColor": "onSurface",
     "light": {"lightness": 85},
-    "dark": {"lightness": 75}
+    "dark": {"lightness": 25}
   },
   "iconOnInverse": {
     "baseColor": "onSurface",
@@ -108,7 +108,7 @@
   },
   "iconOnSurface": {
     "baseColor": "onSurface",
-    "light": {"lightness": 18},
+    "light": {"lightness": 29.9},
     "dark": {"lightness": 98}
   },
   "iconDisabledOnInverse": {
@@ -128,7 +128,7 @@
   },
   "iconSubduedOnSurface": {
     "baseColor": "onSurface",
-    "light": {"lightness": 43},
+    "light": {"lightness": 59.8},
     "dark": {"lightness": 88}
   },
   "textOnInverse": {
@@ -148,8 +148,8 @@
   },
   "textDisabledOnSurface": {
     "baseColor": "onSurface",
-    "light": {"lightness": 63},
-    "dark": {"lightness": 80}
+    "light": {"lightness": 61.3},
+    "dark": {"lightness": 50}
   },
   "textSubduedOnInverse": {
     "baseColor": "onSurface",
@@ -258,8 +258,8 @@
   },
   "iconSubduedOnLight": {
     "baseColor": "onSurface",
-    "light": {"lightness": 43},
-    "dark": {"lightness": 43}
+    "light": {"lightness": 39.5},
+    "dark": {"lightness": 39.5}
   },
   "textOnDark": {
     "baseColor": "onSurface",
@@ -268,8 +268,8 @@
   },
   "textOnLight": {
     "baseColor": "onSurface",
-    "light": {"lightness": 13},
-    "dark": {"lightness": 13}
+    "light": {"lightness": 8.8},
+    "dark": {"lightness": 8.8}
   },
   "textDisabledOnDark": {
     "baseColor": "onSurface",
@@ -295,7 +295,7 @@
   "interactiveAction": {
     "baseColor": "interactive",
     "light": {"lightness": 44},
-    "dark": {"lightness": 56}
+    "dark": {"lightness": 65}
   },
   "interactiveActionDisabled": {
     "baseColor": "interactive",
@@ -305,7 +305,7 @@
   "interactiveActionHovered": {
     "baseColor": "interactive",
     "light": {"lightness": 37},
-    "dark": {"lightness": 63}
+    "dark": {"lightness": 70}
   },
   "interactiveActionSubdued": {
     "baseColor": "interactive",
@@ -315,7 +315,7 @@
   "interactiveActionPressed": {
     "baseColor": "interactive",
     "light": {"lightness": 31},
-    "dark": {"lightness": 69}
+    "dark": {"lightness": 75}
   },
   "interactiveFocus": {
     "baseColor": "interactive",
@@ -345,24 +345,24 @@
   },
   "neutralAction": {
     "baseColor": "neutral",
-    "light": {"lightness": 92},
+    "light": {"lightness": 93},
     "dark": {"lightness": 22}
   },
   "neutralActionHovered": {
     "baseColor": "neutral",
-    "light": {"lightness": 86},
-    "dark": {"lightness": 29}
+    "light": {"lightness": 90},
+    "dark": {"lightness": 25}
   },
   "neutralActionPressed": {
     "baseColor": "neutral",
-    "light": {"lightness": 76},
+    "light": {"lightness": 87},
     "dark": {"lightness": 39}
   },
   "branded": {"baseColor": "branded", "light": {}, "dark": {}},
   "brandedAction": {
     "baseColor": "branded",
-    "light": {"lightness": 25},
-    "dark": {"lightness": 25}
+    "light": {"lightness": 47.3},
+    "dark": {"lightness": 47.3}
   },
   "brandedActionDisabled": {
     "baseColor": "branded",
@@ -371,13 +371,13 @@
   },
   "brandedActionHovered": {
     "baseColor": "branded",
-    "light": {"lightness": 22},
-    "dark": {"lightness": 22}
+    "light": {"lightness": 42.3},
+    "dark": {"lightness": 55}
   },
   "brandedActionPressed": {
     "baseColor": "branded",
-    "light": {"lightness": 15},
-    "dark": {"lightness": 15}
+    "light": {"lightness": 37.3},
+    "dark": {"lightness": 60}
   },
   "iconOnBranded": {
     "baseColor": "branded",
@@ -417,8 +417,8 @@
   "critical": {"baseColor": "critical", "light": {}, "dark": {}},
   "criticalDivider": {
     "baseColor": "critical",
-    "light": {"lightness": 52},
-    "dark": {"lightness": 48}
+    "light": {"lightness": 50},
+    "dark": {"lightness": 50}
   },
   "criticalDividerDisabled": {
     "baseColor": "critical",
@@ -432,7 +432,7 @@
   },
   "criticalSurface": {
     "baseColor": "critical",
-    "light": {"lightness": 88},
+    "light": {"lightness": 98.6},
     "dark": {"lightness": 12}
   },
   "criticalSurfaceSubdued": {
@@ -443,7 +443,7 @@
   "criticalSurfaceSubduedHovered": {
     "baseColor": "critical",
     "light": {"lightness": 93},
-    "dark": {"lightness": 17}
+    "dark": {"lightness": 15, "saturation": 60}
   },
   "criticalSurfaceSubduedPressed": {
     "baseColor": "critical",
@@ -462,13 +462,13 @@
   },
   "criticalAction": {
     "baseColor": "critical",
-    "light": {"lightness": 52},
-    "dark": {"lightness": 48}
+    "light": {"lightness": 47.5},
+    "dark": {"lightness": 45}
   },
   "criticalActionHovered": {
     "baseColor": "critical",
-    "light": {"lightness": 45},
-    "dark": {"lightness": 55}
+    "light": {"lightness": 42.5},
+    "dark": {"lightness": 50}
   },
   "criticalActionSubdued": {
     "baseColor": "critical",
@@ -477,13 +477,13 @@
   },
   "criticalActionPressed": {
     "baseColor": "critical",
-    "light": {"lightness": 31},
-    "dark": {"lightness": 69}
+    "light": {"lightness": 37.5},
+    "dark": {"lightness": 60}
   },
   "criticalLink": {
     "baseColor": "critical",
-    "light": {"lightness": 42},
-    "dark": {"lightness": 48}
+    "light": {"lightness": 48.5},
+    "dark": {"lightness": 65}
   },
   "criticalLinkDisabled": {
     "baseColor": "critical",
@@ -493,18 +493,18 @@
   "criticalLinkHovered": {
     "baseColor": "critical",
     "light": {"lightness": 45},
-    "dark": {"lightness": 55}
+    "dark": {"lightness": 70}
   },
   "criticalLinkPressed": {
     "baseColor": "critical",
     "light": {"lightness": 21},
-    "dark": {"lightness": 69}
+    "dark": {"lightness": 75}
   },
   "warning": {"baseColor": "warning", "light": {}, "dark": {}},
   "warningDivider": {
     "baseColor": "warning",
-    "light": {"lightness": 66},
-    "dark": {"lightness": 34}
+    "light": {"lightness": 76.6},
+    "dark": {"lightness": 50}
   },
   "warningIcon": {
     "baseColor": "warning",
@@ -513,13 +513,13 @@
   },
   "warningSurface": {
     "baseColor": "warning",
-    "light": {"lightness": 88},
-    "dark": {"lightness": 12}
+    "light": {"lightness": 84.5},
+    "dark": {"lightness": 50}
   },
   "warningSurfaceSubdued": {
     "baseColor": "warning",
-    "light": {"lightness": 98},
-    "dark": {"lightness": 12}
+    "light": {"lightness": 99.1},
+    "dark": {"lightness": 15}
   },
   "warningText": {
     "baseColor": "warning",
@@ -529,8 +529,8 @@
   "highlight": {"baseColor": "highlight", "light": {}, "dark": {}},
   "highlightDivider": {
     "baseColor": "highlight",
-    "light": {"lightness": 58},
-    "dark": {"lightness": 42}
+    "light": {"lightness": 60},
+    "dark": {"lightness": 60}
   },
   "highlightIcon": {
     "baseColor": "highlight",
@@ -539,13 +539,13 @@
   },
   "highlightSurface": {
     "baseColor": "highlight",
-    "light": {"lightness": 88},
-    "dark": {"lightness": 12}
+    "light": {"lightness": 84.5, "saturation": 60},
+    "dark": {"lightness": 50, "saturation": 100}
   },
   "highlightSurfaceSubdued": {
     "baseColor": "highlight",
-    "light": {"lightness": 98},
-    "dark": {"lightness": 12}
+    "light": {"lightness": 98.6},
+    "dark": {"lightness": 20}
   },
   "highlightText": {
     "baseColor": "highlight",
@@ -555,8 +555,8 @@
   "success": {"baseColor": "success", "light": {}, "dark": {}},
   "successDivider": {
     "baseColor": "success",
-    "light": {"lightness": 25},
-    "dark": {"lightness": 35}
+    "light": {"lightness": 50},
+    "dark": {"lightness": 50}
   },
   "successIcon": {
     "baseColor": "success",
@@ -565,13 +565,13 @@
   },
   "successSurface": {
     "baseColor": "success",
-    "light": {"lightness": 88},
-    "dark": {"lightness": 12}
+    "light": {"lightness": 84.5, "saturation": 60},
+    "dark": {"lightness": 40}
   },
   "successSurfaceSubdued": {
     "baseColor": "success",
-    "light": {"lightness": 98},
-    "dark": {"lightness": 12}
+    "light": {"lightness": 99, "saturation": 60},
+    "dark": {"lightness": 20, "saturation": 60}
   },
   "successText": {
     "baseColor": "success",

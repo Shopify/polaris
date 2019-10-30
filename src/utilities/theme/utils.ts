@@ -55,7 +55,7 @@ export enum UNSTABLE_Color {
   Interactive = '#0870D9',
   Neutral = '#EAEAEB',
   Branded = '#008060',
-  Critical = '#E32727',
+  Critical = '#D82C0D',
   Warning = '#FFC453',
   Highlight = '#59D0C2',
   Success = '#008060',
