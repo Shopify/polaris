@@ -3,7 +3,6 @@ import React, {useCallback} from 'react';
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import {hsbToString} from '../../../../utilities/color-transformers';
-import {TextStyle} from '../../../TextStyle';
 import {Color} from '../../ColorPicker';
 import styles from '../../ColorPicker.scss';
 
@@ -35,9 +34,8 @@ export function RecentlySelected({
       backgroundColor: hsbToString(color),
     };
     return (
-      <div className={className}>
+      <div key={index} className={className}>
         <button
-          key={index}
           type="button"
           className={styles.SwatchBackground}
           aria-label={label}

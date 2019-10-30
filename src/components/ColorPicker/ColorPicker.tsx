@@ -192,18 +192,18 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
 
   private handleHueChange = (hue: number) => {
     const {
-      onChange,
       color: {brightness, saturation, alpha = 1},
+      onChange,
     } = this.props;
-    onChange({hue, saturation, brightness, alpha});
+    onChange({hue, brightness, saturation, alpha});
   };
 
   private handleAlphaChange = (alpha: number) => {
     const {
-      onChange,
       color: {hue, brightness, saturation},
+      onChange,
     } = this.props;
-    onChange({hue, saturation, brightness, alpha});
+    onChange({hue, brightness, saturation, alpha});
   };
 
   private handleHexChange = (hex: string) => {
