@@ -305,10 +305,6 @@ function overrides() {
     [toCssCustomPropertySyntax('borderCriticalDisabled')]: `${rem(
       '1px',
     )} solid var(--p-critical-divider-disabled)`,
-    [toCssCustomPropertySyntax('textFieldSpinnerOffset')]: rem('2px'),
-    [toCssCustomPropertySyntax('textFieldFocusRingOffset')]: rem('-4px'),
-    [toCssCustomPropertySyntax('textFieldFocusRingBorderRadius')]: rem('7px'),
-    [toCssCustomPropertySyntax('focusRingStroke')]: rem('2px'),
   };
 }
 

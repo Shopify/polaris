@@ -23,7 +23,6 @@
     } @else {
       border-radius: calc(var(--p-border-radius-base) + #{$position});
     }
-    pointer-events: none;
   }
 }
 
