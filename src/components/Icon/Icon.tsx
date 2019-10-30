@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {useMonorail} from '../../utilities/monorail';
+import {useTelemetry} from '../../utilities/telemetry';
 import {IconProps} from '../../types';
 
 import styles from './Icon.scss';
@@ -20,29 +20,27 @@ const COLORS_WITH_BACKDROPS = [
 // styleguide to generate the props explorer
 interface Props extends IconProps {}
 
+function parseSource(source: string | Function) {
+  if (typeof source === 'function') {
+    return source.name;
+  } else if (source === 'placeholder') {
+    return source;
+  }
+  return 'custom icon string';
+}
+
 export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   const i18n = useI18n();
-  const unstableMonorail = useMonorail();
+  const telemetry = useTelemetry();
 
   /* eslint-disable babel/camelcase */
   useEffect(() => {
-    if (unstableMonorail) {
-      let loggedSource;
-      if (typeof source === 'function') {
-        loggedSource = source.name;
-      } else if (source === 'placeholder') {
-        loggedSource = source;
-      } else {
-        loggedSource = 'custom icon string';
-      }
-
-      unstableMonorail.produce('polaris_icons_usage/1.0', {
-        icon_source: loggedSource,
-        color,
-        backdrop,
-        accessibility_label: accessibilityLabel,
-      });
-    }
+    telemetry.produce('polaris_icons_usage/1.0', {
+      icon_source: parseSource(source),
+      color,
+      backdrop,
+      accessibility_label: accessibilityLabel,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [source]);
   /* eslint-enable babel/camelcase */
