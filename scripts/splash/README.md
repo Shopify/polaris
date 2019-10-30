@@ -12,7 +12,7 @@ It answers the question:
 2. As you run `yarn dev`, `yarn splash` will run in the background. Keep an eye on the terminal to see the splash zone of your changes in the working directory.
 
 💡 Tip: <kbd>command</kbd> + click a file path to open it in your text editor
-💡 Tip: To disable `yarn splash` running inside of `yarn dev` add the environment variable `DISABLE_SPLASH=1` to your environment
+💡 Tip: To disable `yarn splash` when running `yarn dev` either run `yarn dev-no-splash` or add the environment variable `DISABLE_SPLASH=1` to your environment
 
 ## Feedback and bug reports
 

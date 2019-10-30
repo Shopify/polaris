@@ -53,6 +53,7 @@
     "prepublish": "in-publish && yarn run build || :",
     "postpublish": "in-publish && npm-run-all new-version-pr-generator",
     "dev": "npm-run-all copy-polaris-tokens storybook",
+    "dev-no-splash": "DISABLE_SPLASH=1 yarn run dev",
     "test:percy": "yarn run storybook:build && percy-storybook --build_dir build/storybook/static",
     "test:a11y": "yarn run storybook:build && node ./scripts/pa11y.js",
     "start": "serve -l ${PORT} -c .storybook/serve.json",
