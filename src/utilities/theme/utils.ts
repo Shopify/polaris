@@ -89,14 +89,13 @@ export type ColorAdjustments = {
   };
 };
 
-function hexToHsluvObj(hex: string): HSLAColor {
+function hexToHsluvObj(hex: string) {
   const [hue, saturation, lightness] = hexToHsluv(hex);
 
   return {
     hue,
     saturation,
     lightness,
-    alpha: 1,
   };
 }
 
@@ -128,7 +127,7 @@ export function buildColors(theme: ThemeConfig) {
         hue = baseColor.hue,
         saturation = baseColor.saturation,
         lightness = baseColor.lightness,
-        alpha = baseColor.alpha,
+        alpha = 1,
       } = colorAdjustment[lightSurface ? 'light' : 'dark'];
 
       return {
