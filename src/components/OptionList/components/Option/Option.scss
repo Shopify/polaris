@@ -13,7 +13,10 @@ $control-vertical-adjustment: rem(2px);
   cursor: pointer;
 
   &:hover {
-    @include state(hover);
+    background-image: linear-gradient(
+      rgba(223, 227, 232, 0.3),
+      rgba(223, 227, 232, 0.3)
+    );
   }
 }
 
@@ -49,15 +52,27 @@ $control-vertical-adjustment: rem(2px);
 }
 
 .focused {
-  @include state(focused);
+  box-shadow: inset 0.2rem 0 0 color('indigo');
+  background-image: linear-gradient(
+    rgba(223, 227, 232, 0.3),
+    rgba(223, 227, 232, 0.3)
+  );
 
   &:hover {
-    @include state(focused, hover);
+    box-shadow: inset 0.2rem 0 0 color('indigo');
+    background-image: linear-gradient(
+        rgba(223, 227, 232, 0.3),
+        rgba(223, 227, 232, 0.3)
+      ),
+      linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
   }
 }
 
 .disabled {
-  @include state(disabled);
+  background-image: linear-gradient(
+    rgba(249, 250, 251, 1),
+    rgba(249, 250, 251, 1)
+  );
 
   .Media {
     @include recolor-icon(color('ink', 'lightest'), color('white'));
@@ -65,19 +80,36 @@ $control-vertical-adjustment: rem(2px);
 }
 
 .select {
-  @include state(selected);
+  background-image: linear-gradient(
+    rgba(179, 188, 245, 0.15),
+    rgba(179, 188, 245, 0.15)
+  );
 
   &.focused {
-    @include state(selected, focused);
+    box-shadow: inset 0.2rem 0 0 color('indigo');
+    background-image: linear-gradient(
+        rgba(179, 188, 245, 0.15),
+        rgba(179, 188, 245, 0.15)
+      ),
+      linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
 
     &:hover {
-      @include state(selected, focused, hover);
+      box-shadow: inset 0.2rem 0 0 color('indigo');
+      background-image: linear-gradient(
+          rgba(179, 188, 245, 0.15),
+          rgba(179, 188, 245, 0.15)
+        ),
+        linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3)),
+        linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
     }
   }
 }
 
 .active {
-  @include state(active);
+  background-image: linear-gradient(
+    rgba(179, 188, 245, 0.1),
+    rgba(179, 188, 245, 0.1)
+  );
 }
 
 .Media {

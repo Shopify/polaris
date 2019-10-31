@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
 import {classNames, variationName} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
+import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {UnstyledLink} from '../UnstyledLink';
 import {Icon} from '../Icon';
@@ -115,6 +116,7 @@ export function Button({
   fullWidth,
   pressed,
 }: ButtonProps) {
+  const {unstableGlobalTheming = false} = useFeatures();
   const hasGivenDeprecationWarning = useRef(false);
 
   if (ariaPressed && !hasGivenDeprecationWarning.current) {
@@ -131,6 +133,7 @@ export function Button({
 
   const className = classNames(
     styles.Button,
+    unstableGlobalTheming && styles.globalTheming,
     primary && styles.primary,
     outline && styles.outline,
     destructive && styles.destructive,

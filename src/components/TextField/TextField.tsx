@@ -3,6 +3,7 @@ import {addEventListener} from '@shopify/javascript-utilities/events';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {useUniqueId} from '../../utilities/unique-id';
 import {Labelled, Action, helpTextID, labelID} from '../Labelled';
@@ -183,7 +184,7 @@ export function TextField({
   }, [focused]);
 
   const normalizedValue = value != null ? value : '';
-
+  const {unstableGlobalTheming = false} = useFeatures();
   const className = classNames(
     styles.TextField,
     Boolean(normalizedValue) && styles.hasValue,
@@ -192,6 +193,7 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && styles.focus,
+    unstableGlobalTheming && styles.globalTheming,
   );
 
   const inputType = type === 'currency' ? 'text' : type;
@@ -397,7 +399,7 @@ export function TextField({
     'aria-activedescendant': ariaActiveDescendant,
     'aria-autocomplete': ariaAutocomplete,
     'aria-controls': ariaControls,
-    'aria-multiline': multiline,
+    'aria-multiline': normalizeAriaMultiline(multiline),
   });
 
   return (
@@ -482,5 +484,16 @@ function normalizeAutoComplete(autoComplete?: boolean | string) {
     return 'off';
   } else {
     return autoComplete;
+  }
+}
+
+function normalizeAriaMultiline(multiline?: boolean | number) {
+  switch (typeof multiline) {
+    case 'undefined':
+      return false;
+    case 'boolean':
+      return multiline;
+    case 'number':
+      return Boolean(multiline > 0);
   }
 }

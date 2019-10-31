@@ -127,6 +127,9 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 }
 
 .primary {
+  --p-button-color: var(--p-branded-action);
+  --p-button-color-hover: var(--p-branded-action-hovered);
+  --p-button-color-active: var(--p-branded-action-pressed);
   @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(color('white'));
 
@@ -197,10 +200,12 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   }
 }
 
-.loading {
+.loading,
+.globalTheming.loading {
   position: relative;
   transition: border-color duration() easing();
 
+  // stylelint-disable-next-line selector-max-class
   &,
   &:hover,
   &.disabled {
@@ -243,56 +248,25 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 // stylelint-disable selector-max-specificity
 
 .plain {
-  @include recolor-icon(var(--p-interactive-action, color('blue')));
+  @include recolor-icon(color('blue'));
   margin: (-1 * $vertical-padding) rem(-8px);
   padding-left: spacing(tight);
   padding-right: spacing(tight);
   background: transparent;
   border: 0;
   box-shadow: none;
-  color: var(--p-interactive-action, color('blue'));
-
-  .Content {
-    font-weight: 400;
-  }
+  color: color('blue');
 
   &.pressed,
   &:hover,
   &:focus,
   &:active {
+    @include recolor-icon(color('blue', 'dark'));
     background: transparent;
     border: 0;
     box-shadow: none;
-  }
-
-  // TODO: implement depressed state for global theming
-  &.pressed {
-    @include recolor-icon(color('blue', 'dark'));
     color: color('blue', 'dark');
     text-decoration: underline;
-  }
-
-  &:hover {
-    @include recolor-icon(
-      var(--p-interactive-action-hovered, color('blue', 'dark'))
-    );
-    color: var(--p-interactive-action-hovered, color('blue', 'dark'));
-    text-decoration: underline;
-  }
-
-  &:focus {
-    @include recolor-icon(var(--p-interactive-action, color('blue', 'dark')));
-    color: var(--p-interactive-action, color('blue', 'dark'));
-    text-decoration: var(--p-override-none, underline);
-    @include no-focus-ring;
-  }
-
-  &:active {
-    @include recolor-icon(
-      var(--p-interactive-action-pressed, color('blue', 'dark'))
-    );
-    color: var(--p-interactive-action-pressed, color('blue', 'dark'));
-    text-decoration: var(--p-override-none, underline);
   }
 
   &.pressed,
@@ -304,27 +278,14 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     @include high-contrast-button-outline;
   }
 
-  &:focus:not(:active) > .Content {
-    @include focus-ring;
-  }
-
   &.pressed > .Content {
     @include plain-button-backdrop(rgba(color('ink', 'lighter'), 0.1));
   }
 
   &.pressed:hover:not(.iconOnly) > .Content,
-  &.pressed:active:not(.iconOnly) > .Content {
-    @include plain-button-backdrop;
-  }
-
+  &.pressed:active:not(.iconOnly) > .Content,
   &:focus:not(.iconOnly) > .Content {
-    @include plain-button-backdrop(
-      var(--p-override-none, plain-button-background())
-    );
-  }
-
-  &:active:not(.iconOnly) > .Content {
-    @include plain-button-backdrop(var(--p-neutral-action, none));
+    @include plain-button-backdrop;
   }
 
   &.fullWidth {
@@ -351,7 +312,6 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   &.sizeLarge {
     margin: (-1 * $large-vertical-padding) (-1 * spacing(loose));
   }
-
   &.iconOnly {
     @include recolor-icon(color('ink', 'lighter'));
     margin: -0.5 * ($min-height - icon-size());
@@ -381,6 +341,120 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     margin-left: 0;
     margin-right: 0;
   }
+
+  // stylelint-disable selector-max-class
+  &.globalTheming {
+    // redeclaring these styles here for specificity
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    @include recolor-icon(var(--p-interactive-action));
+    color: var(--p-interactive-action);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+
+    > .Content {
+      font-weight: 400;
+    }
+
+    &:hover {
+      @include recolor-icon(var(--p-interactive-action-hovered));
+      color: var(--p-interactive-action-hovered);
+      text-decoration: underline;
+    }
+
+    &:focus {
+      @include recolor-icon(var(--p-interactive-action));
+      color: var(--p-interactive-action);
+      text-decoration: none;
+      @include no-focus-ring;
+    }
+
+    &:active {
+      @include recolor-icon(var(--p-interactive-action-pressed));
+      color: var(--p-interactive-action-pressed);
+      text-decoration: none;
+    }
+
+    &:focus:not(:active) > .Content {
+      @include focus-ring;
+    }
+
+    &:focus:not(.iconOnly) > .Content {
+      background: none;
+    }
+
+    &:active:not(.iconOnly) > .Content {
+      @include plain-button-backdrop(var(--p-neutral-action));
+    }
+
+    &.destructive {
+      @include recolor-icon(var(--p-critical-link));
+      color: var(--p-critical-link);
+      &:hover {
+        color: var(--p-critical-link-hovered);
+      }
+      &:active {
+        color: var(--p-critical-link-pressed);
+      }
+
+      &.disabled {
+        color: var(--p-critical-link-disabled);
+      }
+    }
+
+    &.disabled {
+      color: var(--p-text-disabled-on-surface);
+      background: none;
+    }
+
+    &.iconOnly {
+      @include recolor-icon(var(--p-interactive-action));
+
+      &:hover {
+        @include recolor-icon(var(--p-interactive-action-hovered));
+      }
+
+      &:focus {
+        @include recolor-icon(var(--p-interactive-action));
+      }
+
+      &:active {
+        @include recolor-icon(var(--p-interactive-action-pressed));
+      }
+
+      &.disabled {
+        @include recolor-icon(var(--p-interactive-action-disabled));
+      }
+    }
+
+    &.destructive.iconOnly {
+      @include recolor-icon(var(--p-critical-action));
+
+      &:hover {
+        @include recolor-icon(var(--p-critical-action-hovered));
+      }
+
+      &:focus {
+        @include recolor-icon(var(--p-critical-action));
+      }
+
+      &:active {
+        @include recolor-icon(var(--p-critical-action-pressed));
+      }
+
+      &.disabled {
+        @include recolor-icon(var(--p-critical-action-disabled));
+      }
+    }
+  }
+  // stylelint-enable selector-max-class
 }
 
 // stylelint-enable selector-max-specificity
@@ -490,7 +564,7 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
       border-color: currentColor;
       box-shadow: none;
 
-      // stylelint-disable-next-line selector-max-class
+      // stylelint-disable selector-max-class
       &::before {
         opacity: 0.05;
       }
@@ -505,6 +579,16 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
         opacity: 0.07;
       }
     }
+
+    &.globalTheming {
+      box-shadow: 0 0 0 border-width('base') currentColor;
+
+      &:focus {
+        box-shadow: 0 0 0 border-width('thick') currentColor;
+        @include no-focus-ring;
+      }
+    }
+    // stylelint-enable selector-max-class
   }
 }
 // stylelint-enable selector-max-specificity

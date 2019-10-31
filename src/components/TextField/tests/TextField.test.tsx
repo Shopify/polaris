@@ -941,6 +941,53 @@ describe('<TextField />', () => {
         'Aria controls',
       );
     });
+
+    it('renders a textarea element with `aria-multiline` set to true if multiline greater than 0', () => {
+      const textField = mountWithAppProvider(
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          multiline={4}
+          ariaOwns="Aria owns"
+          ariaActiveDescendant="Aria active descendant"
+          ariaAutocomplete="Aria autocomplete"
+          ariaControls="Aria controls"
+        />,
+      );
+      expect(textField.find('textarea').prop('aria-multiline')).toBe(true);
+    });
+
+    it('renders an input element with `aria-multiline` set to false if multiline is equal to 0', () => {
+      const textField = mountWithAppProvider(
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          multiline={0}
+          ariaOwns="Aria owns"
+          ariaActiveDescendant="Aria active descendant"
+          ariaAutocomplete="Aria autocomplete"
+          ariaControls="Aria controls"
+        />,
+      );
+      expect(textField.find('input').prop('aria-multiline')).toBe(false);
+    });
+
+    it('renders an input element with `aria-multiline` set to false if multiline is undefined', () => {
+      const textField = mountWithAppProvider(
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          ariaOwns="Aria owns"
+          ariaActiveDescendant="Aria active descendant"
+          ariaAutocomplete="Aria autocomplete"
+          ariaControls="Aria controls"
+        />,
+      );
+      expect(textField.find('input').prop('aria-multiline')).toBe(false);
+    });
   });
 
   describe('Labelled', () => {
@@ -1096,6 +1143,32 @@ describe('<TextField />', () => {
         />,
       );
       expect(findByTestID(textField, 'clearButton').exists()).toBeFalsy();
+    });
+  });
+
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled', () => {
+      const textField = mountWithApp(
+        <TextField label="TextField" onChange={noop} />,
+        {
+          features: {unstableGlobalTheming: true},
+        },
+      );
+      expect(textField).toContainReactComponent('div', {
+        className: 'TextField globalTheming',
+      });
+    });
+
+    it('does not add a global theming class when global theming is disabled', () => {
+      const textField = mountWithApp(
+        <TextField label="TextField" onChange={noop} />,
+        {
+          features: {unstableGlobalTheming: false},
+        },
+      );
+      expect(textField).not.toContainReactComponent('div', {
+        className: 'TextField globalTheming',
+      });
     });
   });
 });

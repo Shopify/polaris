@@ -85,12 +85,19 @@ $list-filters-footer-height: rem(70px);
 
   &:hover {
     cursor: pointer;
-    @include state(hover);
+    background-image: linear-gradient(
+      rgba(223, 227, 232, 0.3),
+      rgba(223, 227, 232, 0.3)
+    );
   }
 
   &:focus {
     outline: none;
-    @include state(focused);
+    box-shadow: inset 0.2rem 0 0 color('indigo');
+    background-image: linear-gradient(
+      rgba(223, 227, 232, 0.3),
+      rgba(223, 227, 232, 0.3)
+    );
   }
 }
 
