@@ -42,7 +42,8 @@ export interface AppProviderProps extends AppBridgeOptions {
   features?: Features;
   /** Inner content of the application */
   children?: React.ReactNode;
-  UNSTABLE_telemetry?: TelemetryObject; // eslint-disable-line babel/camelcase
+  // eslint-disable-next-line babel/camelcase
+  UNSTABLE_telemetry?: TelemetryObject;
 }
 
 export class AppProvider extends React.Component<AppProviderProps, State> {

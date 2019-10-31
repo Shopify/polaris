@@ -20,15 +20,6 @@ const COLORS_WITH_BACKDROPS = [
 // styleguide to generate the props explorer
 interface Props extends IconProps {}
 
-function parseSource(source: string | Function) {
-  if (typeof source === 'function') {
-    return source.name;
-  } else if (source === 'placeholder') {
-    return source;
-  }
-  return 'custom icon string';
-}
-
 export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   const i18n = useI18n();
   const telemetry = useTelemetry();
@@ -37,12 +28,8 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   useEffect(() => {
     telemetry.produce('polaris_icons_usage/1.0', {
       icon_source: parseSource(source),
-      color,
-      backdrop,
-      accessibility_label: accessibilityLabel,
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [source]);
+  }, [source, telemetry]);
   /* eslint-enable babel/camelcase */
 
   if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {
@@ -90,4 +77,13 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
       {contentMarkup}
     </span>
   );
+}
+
+function parseSource(source: string | Function) {
+  if (typeof source === 'function') {
+    return source.name;
+  } else if (source === 'placeholder') {
+    return source;
+  }
+  return 'custom icon string';
 }
