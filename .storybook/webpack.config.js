@@ -115,11 +115,10 @@ module.exports = ({config, mode}) => {
   config.plugins.push({
     apply: (compiler) => {
       compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
-        process.env.DISABLE_SPLASH ||
-          spawn('yarn splash --show-storybook-tip', {
-            shell: true,
-            stdio: 'inherit',
-          });
+        spawn('yarn splash --show-disable-tip', {
+          shell: true,
+          stdio: 'inherit',
+        });
       });
     },
   });
