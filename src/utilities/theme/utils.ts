@@ -168,6 +168,12 @@ function overrides() {
     textFieldSpinnerOffset: rem('2px'),
     textFieldFocusRingOffset: rem('-4px'),
     textFieldFocusRingBorderRadius: rem('7px'),
+    cardShadow:
+      '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
+    popoverShadow:
+      '-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)',
+    modalShadow:
+      '0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light)',
   };
 }
 
