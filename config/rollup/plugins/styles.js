@@ -138,9 +138,11 @@ function generateMinifiedCss(sourceFilePath, css) {
  * The only Sass feature we use in the built output is the importing of partials
  * to generate fewer entrypoints.
  *
- * - global.scss: standard css that must be included by all applications.
- *   per-ccomponent styles (e.g. Button.scss) rely on the typography defined in
- *   this base file.
+ * - global.scss: previously contained standard css that must be included by all
+ *   applications as it contained global styles. This css is now handled by
+ *   AppProvider.scss which is imported as a side effect of importing
+ *   AppProvider. Exists as an empty file for backwards compatibility with
+ *   versions of sewing-kit prior to v0.113.0. Shall be removed in v6.
  * - components.scss and the components folder: a suite of the compiled css for
  *  every component
  * - foundation.scss, shared.scss and the foundation and shared folders: our
@@ -163,16 +165,8 @@ async function generateSass(inputFolder, outputFolder, cssByFile) {
     }),
   );
 
-  const writeStylesFolderFilesPromises = [];
   const componentFilesContent = [];
   cssByFile.forEach((compiledCss, filename) => {
-    // Promises to copy the files referenced that live in the styles folder
-    if (filename.startsWith(`${inputFolder}/styles`)) {
-      writeStylesFolderFilesPromises.push(
-        outputFile(filename.replace(inputFolder, outputFolder), compiledCss),
-      );
-    }
-
     // For every referenced file that lives in the components folder:
     // - make a note of the contents to use in styles/components.scss
     if (filename.startsWith(`${inputFolder}/components`)) {
@@ -187,12 +181,10 @@ async function generateSass(inputFolder, outputFolder, cssByFile) {
   // Generate polaris.scss
   const polarisScssContent = `@import 'styles/foundation';
 @import 'styles/shared';
-@import 'styles/global';
 @import 'styles/components';
 `;
 
   await Promise.all([
-    ...writeStylesFolderFilesPromises,
     outputFile(
       `${outputFolder}/styles/components.scss`,
       componentsScssContents,

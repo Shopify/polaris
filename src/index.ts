@@ -1,4 +1,3 @@
-import './styles/global.scss';
 import './configure';
 
 export * from './types';

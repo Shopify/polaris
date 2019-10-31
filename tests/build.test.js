@@ -87,7 +87,7 @@ describe('build', () => {
       'polaris.es.js',
       'polaris.js',
       'polaris.min.css',
-      'styles/global.scss',
+      'styles/components.scss',
     ].join(',');
     const files = glob.sync(`./build/{${globFiles}}`);
     const total = files.reduce((acc, file) => {
