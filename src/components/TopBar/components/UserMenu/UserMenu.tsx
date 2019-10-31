@@ -55,7 +55,6 @@ export function UserMenu({
 
   return (
     <Menu
-      preferredAlignment="right"
       activatorContent={activatorContentMarkup}
       open={open}
       onOpen={onToggle}
