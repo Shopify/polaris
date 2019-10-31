@@ -577,5 +577,50 @@
     "baseColor": "success",
     "light": {"lightness": 15},
     "dark": {"lightness": 85}
+  },
+  "backdrop": {
+    "baseColor": "surface",
+    "light": {
+      "hue": 0,
+      "saturation": 0,
+      "lightness": 0,
+      "alpha": 0.5
+    },
+    "dark": {
+      "hue": 0,
+      "saturation": 0,
+      "lightness": 0,
+      "alpha": 0.5
+    }
+  },
+  "shadowFromAmbientLight": {
+    "baseColor": "surface",
+    "light": {
+      "hue": 180,
+      "saturation": 5,
+      "lightness": 8,
+      "alpha": 0.05
+    },
+    "dark": {
+      "hue": 180,
+      "saturation": 5,
+      "lightness": 8,
+      "alpha": 0.05
+    }
+  },
+  "shadowFromDirectLight": {
+    "baseColor": "surface",
+    "light": {
+      "hue": 0,
+      "saturation": 0,
+      "lightness": 0,
+      "alpha": 0.15
+    },
+    "dark": {
+      "hue": 0,
+      "saturation": 0,
+      "lightness": 0,
+      "alpha": 0.15
+    }
   }
 }

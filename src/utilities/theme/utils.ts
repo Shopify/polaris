@@ -148,29 +148,6 @@ export function buildColors(theme: ThemeConfig) {
 }
 /* eslint-enable babel/camelcase */
 
-function opacityColors() {
-  return {
-    opacityShallow: {
-      hue: 180,
-      saturation: 5,
-      lightness: 8,
-      alpha: 0.05,
-    },
-    opacity: {
-      hue: 0,
-      saturation: 0,
-      lightness: 0,
-      alpha: 0.15,
-    },
-    opacityDeep: {
-      hue: 0,
-      saturation: 0,
-      lightness: 0,
-      alpha: 0.5,
-    },
-  };
-}
-
 function overrides() {
   return {
     overrideNone: 'none',
@@ -192,6 +169,12 @@ function overrides() {
     textFieldFocusRingOffset: rem('-4px'),
     textFieldFocusRingBorderRadius: rem('7px'),
     focusRingStroke: rem('2px'),
+    cardShadow:
+      '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
+    popoverShadow:
+      '-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)',
+    modalShadow:
+      '0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light)',
   };
 }
 
