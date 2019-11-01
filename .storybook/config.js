@@ -12,6 +12,7 @@ import {create} from '@storybook/theming';
 import tokens from '@shopify/polaris-tokens';
 import {AppProvider} from '../src';
 import {Playground} from '../playground/Playground';
+import {KitchenSink} from '../playground/KitchenSink';
 import enTranslations from '../locales/en.json';
 
 addParameters({
@@ -109,7 +110,8 @@ function addPlaygroundStory() {
     .addParameters({
       chromatic: {disable: true},
     })
-    .add('Playground', () => <Playground />);
+    .add('Playground', () => <Playground />)
+    .add('Kitchen Sink', () => <KitchenSink />);
 }
 
 // import all README.md files within component folders
