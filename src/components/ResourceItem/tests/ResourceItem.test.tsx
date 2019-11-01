@@ -69,6 +69,7 @@ describe('<ResourceItem />', () => {
   };
 
   const url = 'http://test-link.com';
+  const external = false;
   const ariaLabel = 'View Item';
 
   describe('accessibilityLabel', () => {
@@ -212,6 +213,48 @@ describe('<ResourceItem />', () => {
       );
 
       expect(findByTestID(element, 'Item-Wrapper').prop('data-href')).toBe(url);
+    });
+  });
+
+  describe('external', () => {
+    it('renders an <UnstyledLink /> with undefined external prop', () => {
+      const element = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem id="itemId" url={url} />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(element.find(UnstyledLink).prop('external')).toBeUndefined();
+    });
+
+    it('renders an <UnstyledLink /> with external set to true', () => {
+      const element = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem
+            id="itemId"
+            url={url}
+            accessibilityLabel={ariaLabel}
+            external
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(element.find(UnstyledLink).prop('external')).toBe(true);
+    });
+
+    it('renders an <UnstyledLink /> with external set to false', () => {
+      const element = mountWithAppProvider(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem
+            id="itemId"
+            url={url}
+            accessibilityLabel={ariaLabel}
+            external={external}
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(element.find(UnstyledLink).prop('external')).toBe(false);
     });
   });
 
