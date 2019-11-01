@@ -64,6 +64,7 @@ export function Dialog({
             className={classes}
             role="dialog"
             aria-labelledby={labelledBy}
+            aria-modal
             tabIndex={-1}
           >
             <KeypressListener
