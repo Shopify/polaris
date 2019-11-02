@@ -80,8 +80,8 @@
     "DropZone": {
       "overlayTextFile": "Solte o arquivo para carregar",
       "overlayTextImage": "Solte a imagem para carregar",
-      "errorOverlayTextFile": "O tipo de arquivo não é válido",
-      "errorOverlayTextImage": "O tipo de imagem não é válido",
+      "errorOverlayTextFile": "O tipo de arquivo é inválido.",
+      "errorOverlayTextImage": "O tipo de imagem é inválido.",
       "FileUpload": {
         "actionTitleFile": "Adicionar arquivo",
         "actionTitleImage": "Adicionar imagem",
