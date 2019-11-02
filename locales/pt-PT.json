@@ -81,7 +81,7 @@
       "overlayTextFile": "Solte o ficheiro para carregar",
       "overlayTextImage": "Solte a imagem para carregar",
       "errorOverlayTextFile": "O tipo de ficheiro não é válido",
-      "errorOverlayTextImage": "O tipo de imagem é inválido.",
+      "errorOverlayTextImage": "O tipo de imagem é inválido",
       "FileUpload": {
         "actionTitleFile": "Adicionar ficheiro",
         "actionTitleImage": "Adicionar imagem",
