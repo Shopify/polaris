@@ -44,7 +44,6 @@ export interface PositionedOverlayProps {
 interface State {
   measuring: boolean;
   activatorRect: Rect;
-  right?: number;
   left: number;
   top: number;
   height: number;
@@ -119,23 +118,12 @@ export class PositionedOverlay extends React.PureComponent<
   }
 
   render() {
-    const {top, zIndex, width} = this.state;
+    const {left, top, zIndex, width} = this.state;
     const {render, fixed, classNames: propClassNames} = this.props;
 
-    const right =
-      this.state.right == null || isNaN(this.state.right)
-        ? undefined
-        : this.state.right;
-
-    const left =
-      right != null || this.state.left == null || isNaN(this.state.left)
-        ? undefined
-        : this.state.left;
-
     const style = {
-      right,
-      left,
       top: top == null || isNaN(top) ? undefined : top,
+      left: left == null || isNaN(left) ? undefined : left,
       width: width == null || isNaN(width) ? undefined : width,
       zIndex: zIndex == null || isNaN(zIndex) ? undefined : zIndex,
     };
@@ -246,9 +234,7 @@ export class PositionedOverlay extends React.PureComponent<
           {
             measuring: false,
             activatorRect: getRectForNode(activator),
-            right:
-              preferredAlignment === 'right' ? horizontalPosition : undefined,
-            left: preferredAlignment === 'right' ? 0 : horizontalPosition,
+            left: horizontalPosition,
             top: lockPosition ? top : verticalPosition.top,
             lockPosition: Boolean(fixed),
             height: verticalPosition.height || 0,
