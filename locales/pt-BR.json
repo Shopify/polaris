@@ -39,7 +39,7 @@
       "discard": "Descartar"
     },
     "DataTable": {
-      "sortAccessibilityLabel": "ordenar {direction} por",
+      "sortAccessibilityLabel": "organizar {direction} por",
       "navAccessibilityLabel": "Rolar tabela uma coluna para {direction}",
       "totalsRowHeading": "Totais"
     },
@@ -80,8 +80,8 @@
     "DropZone": {
       "overlayTextFile": "Solte o arquivo para carregar",
       "overlayTextImage": "Solte a imagem para carregar",
-      "errorOverlayTextFile": "O tipo de arquivo não é válido",
-      "errorOverlayTextImage": "O tipo de imagem não é válido",
+      "errorOverlayTextFile": "O tipo de arquivo é inválido.",
+      "errorOverlayTextImage": "O tipo de imagem é inválido.",
       "FileUpload": {
         "actionTitleFile": "Adicionar arquivo",
         "actionTitleImage": "Adicionar imagem",
@@ -131,7 +131,7 @@
       "exceedWarningMessage": "Os valores passados para o prop de progresso não devem exceder 100. Configurando {progress} como 100."
     },
     "ResourceList": {
-      "sortingLabel": "Ordenar por",
+      "sortingLabel": "Organizar por",
       "defaultItemSingular": "item",
       "defaultItemPlural": "itens",
       "showing": "Exibindo {itemsCount} {resource}",
