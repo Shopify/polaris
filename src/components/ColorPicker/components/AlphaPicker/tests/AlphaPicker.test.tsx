@@ -84,7 +84,7 @@ describe('<AlphaPicker />', () => {
         clientX: 0,
         clientY: 100,
       } as MouseEventInit);
-      Object.assign(event, {preventDefault: jest.fn()});
+      Object.assign(event);
 
       window.dispatchEvent(event);
 
@@ -101,7 +101,7 @@ describe('<AlphaPicker />', () => {
         clientX: 0,
         clientY: 100,
       } as TouchEventInit);
-      Object.assign(event, {preventDefault: jest.fn()});
+      Object.assign(event);
 
       window.dispatchEvent(event);
 
@@ -118,7 +118,7 @@ describe('<AlphaPicker />', () => {
         clientX: 0,
         clientY: 100,
       } as TouchEventInit);
-      Object.assign(event, {preventDefault: jest.fn()});
+      Object.assign(event);
 
       window.dispatchEvent(event);
 
