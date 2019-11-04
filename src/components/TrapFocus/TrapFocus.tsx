@@ -1,10 +1,20 @@
+/*
+A component which allows you to trap keyboard focus inside of a container.
+
+TrapFocus internally employs `Focus` to focus it's first focusable child on mount.
+
+Whenever a `blur` event occurs that would take the user outside the trap, we reset to the first focusable child.
+
+If you want to cease trapping focus, simply cease rendering the trap.
+*/
+
 import React from 'react';
-import {closest} from '@shopify/javascript-utilities/dom';
 import {
   focusFirstFocusableNode,
   findFirstFocusableNode,
   focusLastFocusableNode,
 } from '@shopify/javascript-utilities/focus';
+import {write} from '@shopify/javascript-utilities/fastdom';
 
 import {EventListener} from '../EventListener';
 import {Focus} from '../Focus';
@@ -44,7 +54,7 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
 
     return (
       <Focus disabled={this.shouldDisable} root={this.focusTrapWrapper}>
-        <div ref={this.setFocusTrapWrapper}>
+        <div ref={this.setFocusTrapWrapper} style={{background: 'salmon'}}>
           <EventListener event="focusout" handler={this.handleBlur} />
           {children}
         </div>
@@ -68,25 +78,31 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
   };
 
   private handleBlur = (event: FocusEvent) => {
-    const {relatedTarget} = event;
-    const {focusTrapWrapper} = this;
+    const {relatedTarget: currentTarget} = event;
+    const {focusTrapWrapper} = this; // the div around the modal
     const {trapping = true} = this.props;
 
-    if (relatedTarget == null || trapping === false) {
-      return;
+    if (currentTarget == null || trapping === false) {
+      // do nothing
+      // return;
     }
 
+    // if we have declared a container
+    // and the currently selected element is outside of that container
+    // and the current target has no parent with the `data-polaris-overlay` property
     if (
       focusTrapWrapper &&
-      !focusTrapWrapper.contains(relatedTarget as HTMLElement) &&
-      !closest(relatedTarget as HTMLElement, '[data-polaris-overlay]')
+      !focusTrapWrapper.contains(currentTarget as HTMLElement) // &&
+      // !closest(currentTarget as HTMLElement, '[data-polaris-overlay]')
     ) {
       event.preventDefault();
 
       if (event.srcElement === findFirstFocusableNode(focusTrapWrapper)) {
+        // !!
         return focusLastFocusableNode(focusTrapWrapper);
       }
-      focusFirstFocusableNode(focusTrapWrapper);
+      const firstNode = findFirstFocusableNode(focusTrapWrapper) as HTMLElement;
+      write(() => focusFirstFocusableNode(firstNode));
     }
   };
 }

@@ -1,3 +1,7 @@
+/*
+`Focus` will automatically focus the first focusable element that it finds in it's children when it is mounted, unless the user specified an `autoFocus` element.
+*/
+
 import React from 'react';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import isEqual from 'lodash/isEqual';
