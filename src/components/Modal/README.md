@@ -682,7 +682,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-- Modals use ARIA `role=”dialog”` to convey to screen reader users that they work like native dialog windows.
+- Modals use ARIA `role=”dialog”` and `aria-modal` to convey to screen reader users that they work like native dialog windows.
 - If you set the `title` prop to give the modal component a heading, then the `title` is used to label the dialog element with `aria-labelledby`. This helps to convey the purpose of the modal to screen reader users when it displays.
 
 ### Keyboard support
