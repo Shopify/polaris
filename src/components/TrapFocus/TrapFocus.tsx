@@ -54,7 +54,7 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
 
     return (
       <Focus disabled={this.shouldDisable} root={this.focusTrapWrapper}>
-        <div ref={this.setFocusTrapWrapper} style={{background: 'salmon'}}>
+        <div ref={this.setFocusTrapWrapper}>
           <EventListener event="focusout" handler={this.handleBlur} />
           {children}
         </div>
@@ -79,26 +79,20 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
 
   private handleBlur = (event: FocusEvent) => {
     const {relatedTarget: currentTarget} = event;
-    const {focusTrapWrapper} = this; // the div around the modal
+    const {focusTrapWrapper} = this;
     const {trapping = true} = this.props;
 
     if (currentTarget == null || trapping === false) {
-      // do nothing
       // return;
     }
 
-    // if we have declared a container
-    // and the currently selected element is outside of that container
-    // and the current target has no parent with the `data-polaris-overlay` property
     if (
       focusTrapWrapper &&
-      !focusTrapWrapper.contains(currentTarget as HTMLElement) // &&
-      // !closest(currentTarget as HTMLElement, '[data-polaris-overlay]')
+      !focusTrapWrapper.contains(currentTarget as HTMLElement)
     ) {
       event.preventDefault();
 
       if (event.srcElement === findFirstFocusableNode(focusTrapWrapper)) {
-        // !!
         return focusLastFocusableNode(focusTrapWrapper);
       }
       const firstNode = findFirstFocusableNode(focusTrapWrapper) as HTMLElement;
