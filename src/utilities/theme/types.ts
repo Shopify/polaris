@@ -42,3 +42,29 @@ export interface Theme {
   // eslint-disable-next-line babel/camelcase
   UNSTABLE_cssCustomProperties?: string;
 }
+
+interface HslaAdjustment {
+  hue?: number;
+  saturation?: number;
+  lightness?: number;
+  alpha?: number;
+}
+
+type BaseColor =
+  | 'surface'
+  | 'onSurface'
+  | 'interactive'
+  | 'neutral'
+  | 'branded'
+  | 'critical'
+  | 'warning'
+  | 'highlight'
+  | 'success';
+
+interface ColorRole {
+  baseColor: BaseColor;
+  light: HslaAdjustment;
+  dark: HslaAdjustment;
+}
+
+export type ColorAdjustments = Record<string, ColorRole>;

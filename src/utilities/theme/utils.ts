@@ -13,7 +13,11 @@ import {createLightColor} from '../color-manipulation';
 import {compose} from '../compose';
 import {needsVariantList} from './config';
 import {ThemeConfig, Theme, CustomPropertiesLike} from './types';
-import colorAdjustmentsJson from './color-adjustments.json';
+import {
+  colorAdjustments,
+  // eslint-disable-next-line babel/camelcase
+  UNSTABLE_Color,
+} from './color-adjustments';
 
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
@@ -46,49 +50,6 @@ function toString(obj?: CustomPropertiesLike) {
   }
 }
 
-/* eslint-disable babel/camelcase */
-// eslint-disable-next-line shopify/typescript/prefer-pascal-case-enums
-export enum UNSTABLE_Color {
-  Surface = '#FAFAFA',
-  DarkSurface = '#111213',
-  OnSurface = '#1F2225',
-  Interactive = '#0870D9',
-  Neutral = '#EAEAEB',
-  Branded = '#008060',
-  Critical = '#D82C0D',
-  Warning = '#FFC453',
-  Highlight = '#59D0C2',
-  Success = '#008060',
-}
-
-type ColorRole = keyof typeof colorAdjustmentsJson;
-
-type BaseColor =
-  | 'surface'
-  | 'onSurface'
-  | 'interactive'
-  | 'neutral'
-  | 'branded'
-  | 'critical'
-  | 'warning'
-  | 'highlight'
-  | 'success';
-
-interface HslaAdjustment {
-  hue?: number;
-  saturation?: number;
-  lightness?: number;
-  alpha?: number;
-}
-
-export type ColorAdjustments = {
-  [C in ColorRole]?: {
-    baseColor: BaseColor;
-    light: HslaAdjustment;
-    dark: HslaAdjustment;
-  };
-};
-
 function hexToHsluvObj(hex: string) {
   const [hue, saturation, lightness] = hexToHsluv(hex);
 
@@ -99,6 +60,7 @@ function hexToHsluvObj(hex: string) {
   };
 }
 
+/* eslint-disable babel/camelcase */
 export function buildColors(theme: ThemeConfig) {
   const colors = {
     surface: UNSTABLE_Color.Surface,
@@ -114,9 +76,6 @@ export function buildColors(theme: ThemeConfig) {
   };
 
   const lightSurface = isLight(hexToRgb(colors.surface));
-
-  const colorAdjustments: ColorAdjustments = {};
-  Object.assign(colorAdjustments, colorAdjustmentsJson);
 
   const allColors = Object.entries(colorAdjustments).reduce(
     (accumulator, [colorRole, colorAdjustment]) => {
