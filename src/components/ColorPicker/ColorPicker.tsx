@@ -61,6 +61,10 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
     const draggerX = clamp(saturation * pickerSize, 0, pickerSize);
     const draggerY = clamp(pickerSize - brightness * pickerSize, 0, pickerSize);
 
+    const backgroundStyle = this.isWindowsHighContrast()
+      ? {background: `linear-gradient(to top, ${colorString}, ${colorString})`}
+      : {backgroundColor: colorString};
+
     const alphaSliderMarkup = allowAlpha ? (
       <AlphaPicker
         alpha={alpha}
@@ -76,10 +80,7 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
         onMouseDown={this.handlePickerDrag}
       >
         <div ref={this.setColorNode} className={styles.MainColor}>
-          <div
-            className={styles.ColorLayer}
-            style={{backgroundColor: colorString}}
-          />
+          <div className={styles.ColorLayer} style={backgroundStyle} />
           <Slidable
             onChange={this.handleDraggerMove}
             draggerX={draggerX}
@@ -130,5 +131,13 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
   ) => {
     // prevents external elements from being selected
     event.preventDefault();
+  };
+
+  private isWindowsHighContrast = () => {
+    try {
+      return window.matchMedia('(-ms-high-contrast: active)').matches;
+    } catch (err) {
+      return false;
+    }
   };
 }
