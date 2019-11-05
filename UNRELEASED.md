@@ -25,6 +25,7 @@
 - Fixed `TrapFocus` from tabbing out of the container ([#2555](https://github.com/Shopify/polaris-react/pull/2555))
 - Fixed `PositionedOverlay` not correctly getting its position when aligned to the right of the activator ([#2587](https://github.com/Shopify/polaris-react/pull/2587))
 - Fix colour not appearing in main colour picker when in Windows high contrast mode ([#2399](https://github.com/Shopify/polaris-react/pull/2399))
+- Fix colour not appearing in main `ColorPicker` panel when in Windows high contrast mode ([#2399](https://github.com/Shopify/polaris-react/pull/2399))
 
 ### Documentation
 
