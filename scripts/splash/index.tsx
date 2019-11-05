@@ -4,6 +4,10 @@ import {Box, Text, Color, render} from 'ink';
 import sortBy from 'lodash/sortBy';
 import {getGitStagedFiles, getDependencies} from './treebuilder';
 
+if (process.env.DISABLE_SPLASH) {
+  process.exit(0);
+}
+
 const excludedFileNames = (fileName) =>
   !fileName.includes('test') && !fileName.includes('types');
 
@@ -154,18 +158,6 @@ const App = () => {
   return (
     <React.Fragment>
       <Box marginBottom={1} flexDirection="column">
-        {process.argv.includes('--show-storybook-tip') ? (
-          <Box>
-            <Box width={3}>💡</Box>
-            <Box>
-              Tip: disable <Text bold>yarn splash</Text> by running variable{' '}
-              <Text bold>yarn dev-no-splash</Text> or setting an environment
-              variable <Text bold>DISABLE_SPLASH=1</Text>
-            </Box>
-          </Box>
-        ) : (
-          undefined
-        )}
         <Box>
           <Box width={3}>💦</Box>
           <Box>
@@ -205,6 +197,17 @@ const App = () => {
           </Box>
         </Color>
       </Box>
+      {process.argv.includes('--show-disable-tip') && (
+        <Box>
+          <Color dim>
+            <Box width={3}>💡</Box>
+            <Box>
+              Tip: to disable these reports, run{' '}
+              <Text bold>DISABLE_SPLASH=1 yarn dev</Text>
+            </Box>
+          </Color>
+        </Box>
+      )}
     </React.Fragment>
   );
 };
