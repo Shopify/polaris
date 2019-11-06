@@ -16,7 +16,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
-- Made it possible to prevent [“yarn splash”](https://github.com/Shopify/polaris-react/tree/master/scripts/splash) from automatically running alongside `yarn dev`: `yarn dev-no-splash` or `DISABLE_SPLASH=1 yarn dev` ([#2372](https://github.com/Shopify/polaris-react/pull/2372))
+- Enable developers to hide [`yarn splash`](https://github.com/Shopify/polaris-react/tree/master/scripts/splash) reports when running `yarn dev` by running `DISABLE_SPLASH=1 yarn dev` ([#2372](https://github.com/Shopify/polaris-react/pull/2372))
 
 ### Dependency upgrades
 
