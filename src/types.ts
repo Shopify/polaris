@@ -76,6 +76,10 @@ export interface BaseAction {
   external?: boolean;
   /** Callback when an action takes place */
   onAction?(): void;
+  /** Callback when mouse enter */
+  onMouseEnter?(): void;
+  /** Callback when element is touched */
+  onTouchStart?(): void;
 }
 
 export interface Action extends BaseAction {}

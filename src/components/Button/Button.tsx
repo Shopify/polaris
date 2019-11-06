@@ -81,6 +81,10 @@ export interface ButtonProps {
   onKeyUp?(event: React.KeyboardEvent<HTMLButtonElement>): void;
   /** Callback when a keydown event is registered on the button */
   onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  /** Callback when mouse enter */
+  onMouseEnter?(): void;
+  /** Callback when element is touched */
+  onTouchStart?(): void;
 }
 
 const DEFAULT_SIZE = 'medium';
@@ -101,6 +105,8 @@ export function Button({
   onKeyDown,
   onKeyPress,
   onKeyUp,
+  onMouseEnter,
+  onTouchStart,
   external,
   download,
   icon,
@@ -218,6 +224,8 @@ export function Button({
         onFocus={onFocus}
         onBlur={onBlur}
         onMouseUp={handleMouseUpByBlurring}
+        onMouseEnter={onMouseEnter}
+        onTouchStart={onTouchStart}
         className={className}
         aria-label={accessibilityLabel}
       >
@@ -239,6 +247,8 @@ export function Button({
       onKeyUp={onKeyUp}
       onKeyPress={onKeyPress}
       onMouseUp={handleMouseUpByBlurring}
+      onMouseEnter={onMouseEnter}
+      onTouchStart={onTouchStart}
       className={className}
       disabled={isDisabled}
       aria-label={accessibilityLabel}
