@@ -169,14 +169,14 @@ function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
       huePercentage = (red - green) / delta + 4;
   }
 
-  const hue = Math.round((huePercentage / 6) * 360);
+  const hue = (huePercentage / 6) * 360;
 
   return {
     hue: clamp(hue, 0, 360) || 0,
-    saturation: parseFloat(clamp(saturation, 0, 1).toFixed(2)),
-    brightness: parseFloat(clamp(largestComponent, 0, 1).toFixed(2)),
-    lightness: parseFloat(lightness.toFixed(2)),
-    alpha: parseFloat(alpha.toFixed(2)),
+    saturation: clamp(saturation, 0, 1),
+    brightness: clamp(largestComponent, 0, 1),
+    lightness,
+    alpha,
   };
 }
 
