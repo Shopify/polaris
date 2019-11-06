@@ -36,7 +36,7 @@ describe('<Dialog>', () => {
   });
 
   it('sets the aria-modal attribute to true', () => {
-    const trapFocus = mountWithAppProvider(
+    const dialog = mountWithAppProvider(
       <Dialog labelledBy="test" onClose={jest.fn()} in>
         something
       </Dialog>,
