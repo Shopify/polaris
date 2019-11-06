@@ -6,7 +6,7 @@ Use Textfield as a prop and provide a composable list box.
 
 ```jsx
 import React, {useCallback, useState} from 'react';
-import {Page, ComboBox, TextField} from '../src';
+import {Page, ComboBox, TextField, Modal} from '../src';
 import deselectedOptions from './test/100.json';
 
 export function Playground() {
@@ -14,13 +14,13 @@ export function Playground() {
   const [selected, setSelected] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
-  const handleSelection = (value: string) => {
+  const handleSelection = useCallback((value: string) => {
     const {label} = deselectedOptions.filter(
       (option) => option.value === value,
     )[0];
     setInputValue(label);
     setSelected(value);
-  };
+  }, []);
 
   const updateText = useCallback((value) => {
     setInputValue(value);
@@ -37,15 +37,27 @@ export function Playground() {
     setOptions(resultOptions);
   }, []);
 
+  const suggest =
+    inputValue !== ''
+      ? options.find((option) => {
+          const {label, value} = option;
+          return (
+            value && value.toLowerCase().startsWith(inputValue.toLowerCase(), 0)
+          );
+        })
+      : false;
+
   const optionsMarkup =
     options.length > 0
       ? options.map((option, index) => {
           const {label, value} = option;
+
           return (
             <ComboBox.Option
               key={`${value}_${index}`}
               value={value}
               selected={selected === value}
+              suggest={suggest && suggest.value === value}
             >
               {label}
             </ComboBox.Option>
@@ -55,9 +67,14 @@ export function Playground() {
 
   return (
     <Page title="Playground">
+      {/* <Modal
+        title="Reach more shoppers with Instagram product tags"
+        open
+        onClose={() => null}
+      >
+        <Modal.Section> */}
       <ComboBox
         onOptionSelected={handleSelection}
-        allowMultiple
         activator={
           <TextField
             onChange={updateText}
@@ -67,11 +84,16 @@ export function Playground() {
           />
         }
       >
-        {optionsMarkup}
+        <ComboBox.Section title="My Section Title">
+          {optionsMarkup}
+        </ComboBox.Section>
       </ComboBox>
+      {/* </Modal.Section>
+      </Modal> */}
     </Page>
   );
 }
+
 ```
 
 ---
