@@ -2,7 +2,7 @@ import React from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
-import {KeypressListener, TrapFocus} from 'components';
+import {KeypressListener} from 'components';
 import {Dialog} from '../Dialog';
 
 describe('<Dialog>', () => {
@@ -40,7 +40,7 @@ describe('<Dialog>', () => {
       <Dialog labelledBy="test" onClose={jest.fn()} in>
         something
       </Dialog>,
-    ).find('div.Modal');
-    expect(trapFocus.prop('aria-modal')).toBe(true);
+    ).find('[role="dialog"]');
+    expect(dialog.prop('aria-modal')).toBe(true);
   });
 });

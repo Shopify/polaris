@@ -4,6 +4,8 @@
 
 ### Enhancements
 
+Add missing `aria-modal` attribute for Modal's Dialog component
+
 ### Bug fixes
 
 ### Documentation
