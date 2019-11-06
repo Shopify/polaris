@@ -14,6 +14,8 @@
 
 ### Development workflow
 
+- Enabled maintainers running `yarn dev` to hide [`yarn splash`](https://github.com/Shopify/polaris-react/tree/master/scripts/splash) reports from the console by running `DISABLE_SPLASH=1 yarn dev` ([#2372](https://github.com/Shopify/polaris-react/pull/2372))
+
 ### Dependency upgrades
 
 ### Code quality
