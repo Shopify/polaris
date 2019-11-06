@@ -1,13 +1,23 @@
 import tokens from '@shopify/polaris-tokens';
+import {hexToHsluv, hsluvToHex} from 'hsluv';
 import {HSLColor, HSLAColor} from '../color-types';
-import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
+import {
+  colorToHsla,
+  hslToString,
+  hslToRgb,
+  hexToRgb,
+} from '../color-transformers';
 import {isLight} from '../color-validation';
 import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
 import {compose} from '../compose';
 import {needsVariantList} from './config';
 import {ThemeConfig, Theme, CustomPropertiesLike} from './types';
-import colorAdjustmentsJson from './color-adjustments.json';
+import {
+  colorAdjustments,
+  // eslint-disable-next-line babel/camelcase
+  UNSTABLE_Color,
+} from './color-adjustments';
 
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
@@ -40,49 +50,17 @@ function toString(obj?: CustomPropertiesLike) {
   }
 }
 
-/* eslint-disable babel/camelcase */
-// eslint-disable-next-line shopify/typescript/prefer-pascal-case-enums
-export enum UNSTABLE_Color {
-  Surface = '#FAFAFA',
-  DarkSurface = '#111213',
-  OnSurface = '#1F2225',
-  Interactive = '#0870D9',
-  Neutral = '#EAEAEB',
-  Branded = '#008060',
-  Critical = '#E32727',
-  Warning = '#FFC453',
-  Highlight = '#59D0C2',
-  Success = '#008060',
-}
+function hexToHsluvObj(hex: string) {
+  const [hue, saturation, lightness] = hexToHsluv(hex);
 
-type ColorRole = keyof typeof colorAdjustmentsJson;
-
-type BaseColor =
-  | 'surface'
-  | 'onSurface'
-  | 'interactive'
-  | 'neutral'
-  | 'branded'
-  | 'critical'
-  | 'warning'
-  | 'highlight'
-  | 'success';
-
-interface HslaAdjustment {
-  hue?: number;
-  saturation?: number;
-  lightness?: number;
-  alpha?: number;
-}
-
-export type ColorAdjustments = {
-  [C in ColorRole]?: {
-    baseColor: BaseColor;
-    light: HslaAdjustment;
-    dark: HslaAdjustment;
+  return {
+    hue,
+    saturation,
+    lightness,
   };
-};
+}
 
+/* eslint-disable babel/camelcase */
 export function buildColors(theme: ThemeConfig) {
   const colors = {
     surface: UNSTABLE_Color.Surface,
@@ -97,30 +75,24 @@ export function buildColors(theme: ThemeConfig) {
     ...theme.UNSTABLE_colors,
   };
 
-  const surfaceColor = colorToHsla(colors.surface);
-  const lightSurface = isLight(hslToRgb(surfaceColor));
-
-  const colorAdjustments: ColorAdjustments = {};
-  Object.assign(colorAdjustments, colorAdjustmentsJson);
+  const lightSurface = isLight(hexToRgb(colors.surface));
 
   const allColors = Object.entries(colorAdjustments).reduce(
     (accumulator, [colorRole, colorAdjustment]) => {
       if (colorAdjustment == null) return accumulator;
 
-      const baseColor = colorToHsla(colors[colorAdjustment.baseColor]);
+      const baseColor = hexToHsluvObj(colors[colorAdjustment.baseColor]);
       const {
         hue = baseColor.hue,
         saturation = baseColor.saturation,
         lightness = baseColor.lightness,
-        alpha = baseColor.alpha,
+        alpha = 1,
       } = colorAdjustment[lightSurface ? 'light' : 'dark'];
 
       return {
         ...accumulator,
         [colorRole]: hslToString({
-          hue,
-          saturation,
-          lightness,
+          ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
           alpha,
         }),
       };
@@ -155,6 +127,12 @@ function overrides() {
     textFieldSpinnerOffset: rem('2px'),
     textFieldFocusRingOffset: rem('-4px'),
     textFieldFocusRingBorderRadius: rem('7px'),
+    cardShadow:
+      '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
+    popoverShadow:
+      '-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)',
+    modalShadow:
+      '0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light)',
   };
 }
 

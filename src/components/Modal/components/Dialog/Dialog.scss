@@ -33,7 +33,7 @@ $large-width: rem(980px);
   width: 100vw;
   max-height: calc(100vh - #{$vertical-spacing});
   background: var(--p-surface-foreground, color('white'));
-  box-shadow: shadow(layer);
+  box-shadow: var(--p-modal-shadow, shadow(layer));
 
   @media (-ms-high-contrast: active) {
     border: 1px solid ms-high-contrast-color('text');
