@@ -113,6 +113,8 @@ function overrides() {
     overrideTransparent: 'transparent',
     overrideOne: '1',
     overrideVisible: 'visible',
+    overrideZero: '0',
+    overrideLoadingZIndex: '514',
     buttonFontWeight: '500',
     nonNullContent: "''",
     borderRadiusBase: rem('4px'),

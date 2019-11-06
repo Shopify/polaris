@@ -173,8 +173,11 @@ $skip-vertical-offset: rem(10px);
 
   @include frame-when-nav-displayed {
     .hasTopBar & {
-      top: top-bar-height();
-      z-index: z-index(loading-bar, $fixed-element-stacking-order);
+      top: var(--p-override-zero, top-bar-height());
+      z-index: var(
+        --p-override-loading-z-index,
+        z-index(loading-bar, $fixed-element-stacking-order)
+      );
     }
   }
 }
