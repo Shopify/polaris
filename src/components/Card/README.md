@@ -237,7 +237,7 @@ Use for less important card actions, or actions merchants may do before reviewin
 
 <!-- content-for: web -->
 
-Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, merchants should review the contents of a shipment before an important action like adding tracking information.
+Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, merchants should review the contents of a shipment before an important action like adding tracking information. Footer actions can be left or right aligned with the `footerActionAlignment` prop.
 
 <!-- /content-for -->
 
