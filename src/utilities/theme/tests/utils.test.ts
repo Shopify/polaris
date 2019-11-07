@@ -790,6 +790,7 @@ describe('buildColors', () => {
       expect(Object.keys(buildColors({UNSTABLE_colors: {}}))).toStrictEqual(
         expect.arrayContaining([
           '--p-backdrop',
+          '--p-backdrop-light',
           '--p-shadow-from-direct-light',
           '--p-shadow-from-ambient-light',
         ]),

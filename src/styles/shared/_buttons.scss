@@ -228,8 +228,7 @@
     }
 
     &:focus {
-      box-shadow: 0 0 0 border-width('thick')
-        var(--p-border-subdued-on-surface);
+      box-shadow: 0 0 0 border-width('thick') var(--p-border-subdued-on-surface);
       @include no-focus-ring;
     }
 
@@ -239,8 +238,7 @@
     }
 
     &.disabled {
-      box-shadow: 0 0 0 border-width('base')
-        var(--p-border-disabled-on-surface);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-disabled-on-surface);
       background: transparent;
       color: var(--p-text-disabled-on-surface);
     }
@@ -267,8 +265,7 @@
 
       // stylelint-disable-next-line selector-max-class
       &.disabled {
-        box-shadow: 0 0 0 border-width('base')
-          var(--p-critical-border-disabled);
+        box-shadow: 0 0 0 border-width('base') var(--p-critical-border-disabled);
         background: transparent;
         color: var(--p-critical-link-disabled);
       }

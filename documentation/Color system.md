@@ -6,8 +6,6 @@
 
 The surface role is used for the backgrounds of our UIs, and consists of a range of gray hues. In light mode, surface colors are nearly white, while in dark mode, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts.
 
-**Note** surface variants needed: inverse background, inverse foreground, dark background, dark foreground, light background, light foreground.
-
 ### Surface concepts
 
 - **surface**: a variable background color that is light in light mode and dark in dark mode
@@ -68,7 +66,7 @@ For use as a surface color on interactive elements such as resource list items a
 
 ## On Surface (default: `#1F2225`)
 
-The On Surface role is made up of elements which appear on top of a surface, including borders (borders), neutral icons, and text. When a light Surface is provided, On Surface values will be dark. When a dark surface is provided, On Surface values will be light.
+The On Surface role is made up of elements which appear on top of a surface, including borders, neutral icons, and text. When a light Surface is provided, On Surface values will be dark. When a dark surface is provided, On Surface values will be light.
 
 ### On Surface base: `--p-on-surface`
 
@@ -167,8 +165,6 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 ### Interactive Action
 
-For use as a text color in links and plain buttons. **Note** would be clearer if named `Link`
-
 - Interactive Action: `--p-interactive-action`
 - Interactive Action Disabled: `--p-interactive-action-disabled`
 - Interactive Action Hovered: `--p-interactive-action-hovered`
@@ -225,17 +221,19 @@ Used as the background color for primary actions, and as the fill color for icon
 
 ### Icon On Branded
 
-For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs. **Note** disabled variant needed.
+For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs.
 
 - Icon On Branded: `--p-icon-on-branded`
 - Icon Subdued On Branded: `--p-icon-subdued-on-branded`
+- Icon Disabled On Branded: `--p-icon-disabled-on-branded`
 
 ### Text On Branded
 
-For use as a text color on primary actions. Not for use in text on navigation and tabs. **Note** disabled variant needed.
+For use as a text color on primary actions. Not for use in text on navigation and tabs.
 
 - Text On Branded: `--p-text-on-branded`
 - Text Subdued On Branded: `--p-text-subdued-on-branded`
+- Text Disabled On Branded: `--p-text-disabled-on-branded`
 
 ### Branded Selected
 
@@ -402,9 +400,12 @@ Used to add depth to our UIs in the cases of backdrops and shadows. Used in navi
 
 **Note**: a white transparent backdrop is needed
 
-### Backdrop : `--p-backdrop`
+### Backdrop
 
 For use as the background color of the backdrop component for navigation and modal.
+
+- Backdrop: `--p-backdrop`
+- Backdrop Light: `--p-backdrop-light`
 
 ### Shadow
 

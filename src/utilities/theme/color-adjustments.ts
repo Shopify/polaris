@@ -635,6 +635,21 @@ export const colorAdjustments: ColorAdjustments = {
       alpha: 0.5,
     },
   },
+  backdropLight: {
+    baseColor: 'surface',
+    light: {
+      hue: 0,
+      saturation: 0,
+      lightness: 100,
+      alpha: 0.5,
+    },
+    dark: {
+      hue: 0,
+      saturation: 0,
+      lightness: 100,
+      alpha: 0.5,
+    },
+  },
   shadowFromAmbientLight: {
     baseColor: 'surface',
     light: {
