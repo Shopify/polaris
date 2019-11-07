@@ -1,11 +1,11 @@
-import React from 'react';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import React, {useRef, useEffect, useCallback, useState} from 'react';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {focusNextFocusableNode} from '../../utilities/focus';
 
 import {PreferredPosition, PreferredAlignment} from '../PositionedOverlay';
 import {Portal} from '../Portal';
 import {portal} from '../shared';
+import {useUniqueId} from '../../utilities/unique-id';
 import {CloseSource, Pane, PopoverOverlay, Section} from './components';
 
 export {CloseSource};
@@ -40,95 +40,38 @@ export interface PopoverProps {
   onClose(source: CloseSource): void;
 }
 
-interface State {
-  activatorNode: HTMLElement | null;
-}
+export function Popover({
+  activatorWrapper = 'div',
+  children,
+  onClose,
+  activator,
+  active,
+  fixed,
+  ...rest
+}: PopoverProps) {
+  const [activatorNode, setActivatorNode] = useState();
+  const activatorContainer = useRef<HTMLElement>(null);
+  const WrapperComponent: any = activatorWrapper;
+  const id = useUniqueId('popover');
 
-const getUniqueID = createUniqueIDFactory('Popover');
-
-export class Popover extends React.PureComponent<PopoverProps, State> {
-  static Pane = Pane;
-  static Section = Section;
-
-  state: State = {
-    activatorNode: null,
-  };
-
-  private activatorContainer: HTMLElement | null = null;
-  private id = getUniqueID();
-
-  componentDidMount() {
-    this.setAccessibilityAttributes();
-  }
-
-  componentDidUpdate() {
-    if (
-      this.activatorContainer &&
-      this.state.activatorNode &&
-      !this.activatorContainer.contains(this.state.activatorNode)
-    ) {
-      this.setActivator(this.activatorContainer);
-    }
-    this.setAccessibilityAttributes();
-  }
-
-  render() {
-    const {
-      activatorWrapper: WrapperComponent = 'div' as any,
-      children,
-      onClose,
-      activator,
-      active,
-      fixed,
-      ...rest
-    } = this.props;
-
-    const {activatorNode} = this.state;
-
-    const portal = activatorNode ? (
-      <Portal idPrefix="popover" testID="portal">
-        <PopoverOverlay
-          testID="popoverOverlay"
-          id={this.id}
-          activator={activatorNode}
-          onClose={this.handleClose}
-          active={active}
-          fixed={fixed}
-          {...rest}
-        >
-          {children}
-        </PopoverOverlay>
-      </Portal>
-    ) : null;
-
-    return (
-      <WrapperComponent testID="wrapper-component" ref={this.setActivator}>
-        {React.Children.only(this.props.activator)}
-        {portal}
-      </WrapperComponent>
-    );
-  }
-
-  private setAccessibilityAttributes() {
-    const {id, activatorContainer} = this;
-    if (activatorContainer == null) {
+  const setAccessibilityAttributes = useCallback(() => {
+    if (activatorContainer.current == null) {
       return;
     }
 
-    const firstFocusable = findFirstFocusableNode(activatorContainer);
-    const focusableActivator = firstFocusable || activatorContainer;
+    const firstFocusable = findFirstFocusableNode(activatorContainer.current);
+    const focusableActivator = firstFocusable || activatorContainer.current;
     focusableActivator.tabIndex = focusableActivator.tabIndex || 0;
     focusableActivator.setAttribute('aria-controls', id);
     focusableActivator.setAttribute('aria-owns', id);
     focusableActivator.setAttribute('aria-haspopup', 'true');
-    focusableActivator.setAttribute('aria-expanded', String(this.props.active));
-  }
+    focusableActivator.setAttribute('aria-expanded', String(active));
+  }, [active, id]);
 
-  private handleClose = (source: CloseSource) => {
-    const {activatorNode} = this.state;
-    this.props.onClose(source);
+  const handleClose = (source: CloseSource) => {
+    onClose(source);
 
-    if (this.activatorContainer == null) {
+    if (activatorContainer.current == null) {
       return;
     }
 
@@ -139,24 +82,56 @@ export class Popover extends React.PureComponent<PopoverProps, State> {
     ) {
       const focusableActivator =
         findFirstFocusableNode(activatorNode) ||
-        findFirstFocusableNode(this.activatorContainer) ||
-        this.activatorContainer;
+        findFirstFocusableNode(activatorContainer.current) ||
+        activatorContainer.current;
       if (!focusNextFocusableNode(focusableActivator, isInPortal)) {
         focusableActivator.focus();
       }
     }
   };
 
-  private setActivator = (node: HTMLElement | null) => {
-    if (node == null) {
-      this.activatorContainer = null;
-      this.setState({activatorNode: null});
-      return;
+  useEffect(() => {
+    if (!activatorNode && activatorContainer.current) {
+      setActivatorNode(activatorContainer.current.firstElementChild);
+    } else if (
+      activatorNode &&
+      activatorContainer.current &&
+      !activatorContainer.current.contains(activatorNode)
+    ) {
+      setActivatorNode(activatorContainer.current.firstElementChild);
     }
+    setAccessibilityAttributes();
+  }, [activatorNode, setAccessibilityAttributes]);
 
-    this.setState({activatorNode: node.firstElementChild as HTMLElement});
-    this.activatorContainer = node;
-  };
+  useEffect(() => {
+    if (activatorNode && activatorContainer.current) {
+      setActivatorNode(activatorContainer.current.firstElementChild);
+    }
+    setAccessibilityAttributes();
+  }, [activatorNode, setAccessibilityAttributes]);
+
+  const portal = activatorNode ? (
+    <Portal idPrefix="popover" testID="portal">
+      <PopoverOverlay
+        testID="popoverOverlay"
+        id={id}
+        activator={activatorNode}
+        onClose={handleClose}
+        active={active}
+        fixed={fixed}
+        {...rest}
+      >
+        {children}
+      </PopoverOverlay>
+    </Portal>
+  ) : null;
+
+  return (
+    <WrapperComponent ref={activatorContainer}>
+      {React.Children.only(activator)}
+      {portal}
+    </WrapperComponent>
+  );
 }
 
 function isInPortal(element: Element) {
@@ -169,3 +144,6 @@ function isInPortal(element: Element) {
 
   return true;
 }
+
+Popover.Pane = Pane;
+Popover.Section = Section;
