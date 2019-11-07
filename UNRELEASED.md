@@ -4,6 +4,7 @@
 
 ### Enhancements
 
+- Updated `Popover` to focus the correct element when closed ([#2255](https://github.com/Shopify/polaris-react/pull/2255))
 - Updated the type of the `title` prop in `ChoiceList` from `string` to `ReactNode` ([#2355](https://github.com/Shopify/polaris-react/pull/2355))
 - Added `disabled` prop to `Filters` component ([2389](https://github.com/Shopify/polaris-react/pull/2389))
 
