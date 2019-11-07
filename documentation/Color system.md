@@ -68,47 +68,11 @@ For use as a surface color on interactive elements such as resource list items a
 
 ## On Surface (default: `#1F2225`)
 
-The On Surface role is made up of elements which appear on top of a surface, including plain text actions, borders (dividers), neutral icons, and text. When a light Surface is provided, On Surface values will be dark. When a dark surface is provided, On Surface values will be light.
+The On Surface role is made up of elements which appear on top of a surface, including borders (dividers), neutral icons, and text. When a light Surface is provided, On Surface values will be dark. When a dark surface is provided, On Surface values will be light.
 
 ### On Surface base: `--p-on-surface`
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
-
-### Action
-
-For use in plain text actions as a text color. **Note** might be clearer if named `Link`
-
-- Action On Surface: `--p-action-on-surface`
-- Action On Inverse: `--p-action-on-inverse`
-- Action On Dark: `--p-action-on-dark`
-- Action On Light: `--p-action-on-light`
-
-#### Action Disabled
-
-For use in plain text disabled actions as a text color.
-
-- Action Disabled On Surface: `--p-action-disabled-on-surface`
-- Action Disabled On Inverse: `--p-action-disabled-on-inverse`
-- Action Disabled On Dark: `--p-action-disabled-on-dark`
-- Action Disabled On Light: `--p-action-disabled-on-light`
-
-#### Action Hovered
-
-For use in plain text hovered actions as a text color.
-
-- Action Hovered On Surface: `--p-action-hovered-on-surface`
-- Action Hovered On Inverse: `--p-action-hovered-on-inverse`
-- Action Hovered On Dark: `--p-action-hovered-on-dark`
-- Action Hovered On Light: `--p-action-hovered-on-light`
-
-#### Action Pressed
-
-For use in plain text pressed actions as a text color.
-
-- Action Pressed On Surface: `--p-action-pressed-on-surface`
-- Action Pressed On Inverse: `--p-action-pressed-on-inverse`
-- Action Pressed On Dark: `--p-action-pressed-on-dark`
-- Action Pressed On Light: `--p-action-pressed-on-light`
 
 ### Divider
 

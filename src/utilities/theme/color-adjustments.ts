@@ -118,46 +118,6 @@ export const colorAdjustments: ColorAdjustments = {
     dark: {lightness: 90},
   },
   onSurface: {baseColor: 'onSurface', light: {}, dark: {}},
-  actionOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 76},
-    dark: {lightness: 36},
-  },
-  actionOnSurface: {
-    baseColor: 'onSurface',
-    light: {lightness: 36},
-    dark: {lightness: 76},
-  },
-  actionDisabledOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 66},
-    dark: {lightness: 46},
-  },
-  actionDisabledOnSurface: {
-    baseColor: 'onSurface',
-    light: {lightness: 46},
-    dark: {lightness: 66},
-  },
-  actionHoveredOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 86},
-    dark: {lightness: 26},
-  },
-  actionHoveredOnSurface: {
-    baseColor: 'onSurface',
-    light: {lightness: 26},
-    dark: {lightness: 86},
-  },
-  actionPressedOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 96},
-    dark: {lightness: 16},
-  },
-  actionPressedOnSurface: {
-    baseColor: 'onSurface',
-    light: {lightness: 16},
-    dark: {lightness: 96},
-  },
   dividerOnInverse: {
     baseColor: 'onSurface',
     light: {lightness: 80},
