@@ -118,32 +118,32 @@ export const colorAdjustments: ColorAdjustments = {
     dark: {lightness: 90},
   },
   onSurface: {baseColor: 'onSurface', light: {}, dark: {}},
-  dividerOnInverse: {
+  borderOnInverse: {
     baseColor: 'onSurface',
     light: {lightness: 80},
     dark: {lightness: 75},
   },
-  dividerOnSurface: {
+  borderOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 75},
     dark: {lightness: 35},
   },
-  dividerDisabledOnInverse: {
+  borderDisabledOnInverse: {
     baseColor: 'onSurface',
     light: {lightness: 70},
     dark: {lightness: 95},
   },
-  dividerDisabledOnSurface: {
+  borderDisabledOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 95},
     dark: {lightness: 70},
   },
-  dividerSubduedOnInverse: {
+  borderSubduedOnInverse: {
     baseColor: 'onSurface',
     light: {lightness: 75},
     dark: {lightness: 85},
   },
-  dividerSubduedOnSurface: {
+  borderSubduedOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 85},
     dark: {lightness: 25},
@@ -248,32 +248,32 @@ export const colorAdjustments: ColorAdjustments = {
     light: {lightness: 16},
     dark: {lightness: 16},
   },
-  dividerOnDark: {
+  borderOnDark: {
     baseColor: 'onSurface',
     light: {lightness: 80},
     dark: {lightness: 80},
   },
-  dividerOnLight: {
+  borderOnLight: {
     baseColor: 'onSurface',
     light: {lightness: 75},
     dark: {lightness: 75},
   },
-  dividerDisabledOnDark: {
+  borderDisabledOnDark: {
     baseColor: 'onSurface',
     light: {lightness: 70},
     dark: {lightness: 70},
   },
-  dividerDisabledOnLight: {
+  borderDisabledOnLight: {
     baseColor: 'onSurface',
     light: {lightness: 95},
     dark: {lightness: 95},
   },
-  dividerSubduedOnDark: {
+  borderSubduedOnDark: {
     baseColor: 'onSurface',
     light: {lightness: 75},
     dark: {lightness: 75},
   },
-  dividerSubduedOnLight: {
+  borderSubduedOnLight: {
     baseColor: 'onSurface',
     light: {lightness: 85},
     dark: {lightness: 85},
@@ -462,12 +462,12 @@ export const colorAdjustments: ColorAdjustments = {
     dark: {lightness: 26, saturation: 22},
   },
   critical: {baseColor: 'critical', light: {}, dark: {}},
-  criticalDivider: {
+  criticalBorder: {
     baseColor: 'critical',
     light: {lightness: 50},
     dark: {lightness: 50},
   },
-  criticalDividerDisabled: {
+  criticalBorderDisabled: {
     baseColor: 'critical',
     light: {lightness: 82},
     dark: {lightness: 28},
@@ -543,7 +543,7 @@ export const colorAdjustments: ColorAdjustments = {
     dark: {lightness: 75},
   },
   warning: {baseColor: 'warning', light: {}, dark: {}},
-  warningDivider: {
+  warningBorder: {
     baseColor: 'warning',
     light: {lightness: 76.6},
     dark: {lightness: 50},
@@ -569,7 +569,7 @@ export const colorAdjustments: ColorAdjustments = {
     dark: {lightness: 70},
   },
   highlight: {baseColor: 'highlight', light: {}, dark: {}},
-  highlightDivider: {
+  highlightBorder: {
     baseColor: 'highlight',
     light: {lightness: 60},
     dark: {lightness: 60},
@@ -595,7 +595,7 @@ export const colorAdjustments: ColorAdjustments = {
     dark: {lightness: 2},
   },
   success: {baseColor: 'success', light: {}, dark: {}},
-  successDivider: {
+  successBorder: {
     baseColor: 'success',
     light: {lightness: 50},
     dark: {lightness: 50},

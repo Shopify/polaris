@@ -219,56 +219,56 @@
 
   &.globalTheming {
     background: transparent;
-    box-shadow: 0 0 0 border-width('base') var(--p-divider-subdued-on-surface);
+    box-shadow: 0 0 0 border-width('base') var(--p-border-subdued-on-surface);
     color: var(--p-text-on-surface);
 
     &:hover {
-      box-shadow: 0 0 0 border-width('base') var(--p-divider-subdued-on-surface);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-subdued-on-surface);
       background: var(--p-surface-hovered);
     }
 
     &:focus {
       box-shadow: 0 0 0 border-width('thick')
-        var(--p-divider-subdued-on-surface);
+        var(--p-border-subdued-on-surface);
       @include no-focus-ring;
     }
 
     &:active {
-      box-shadow: 0 0 0 border-width('base') var(--p-divider-subdued-on-surface);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-subdued-on-surface);
       background: var(--p-surface-pressed);
     }
 
     &.disabled {
       box-shadow: 0 0 0 border-width('base')
-        var(--p-divider-disabled-on-surface);
+        var(--p-border-disabled-on-surface);
       background: transparent;
       color: var(--p-text-disabled-on-surface);
     }
 
     &.destructive {
       background: transparent;
-      box-shadow: 0 0 0 border-width('base') var(--p-critical-divider);
+      box-shadow: 0 0 0 border-width('base') var(--p-critical-border);
       color: var(--p-critical-link);
 
       &:hover {
-        box-shadow: 0 0 0 border-width('base') var(--p-critical-divider);
+        box-shadow: 0 0 0 border-width('base') var(--p-critical-border);
         background: var(--p-critical-surface-subdued);
       }
 
       &:focus {
-        box-shadow: 0 0 0 border-width('thick') var(--p-critical-divider);
+        box-shadow: 0 0 0 border-width('thick') var(--p-critical-border);
         @include no-focus-ring;
       }
 
       &:active {
-        box-shadow: 0 0 0 border-width('base') var(--p-critical-divider);
+        box-shadow: 0 0 0 border-width('base') var(--p-critical-border);
         background: var(--p-critical-surface-subdued);
       }
 
       // stylelint-disable-next-line selector-max-class
       &.disabled {
         box-shadow: 0 0 0 border-width('base')
-          var(--p-critical-divider-disabled);
+          var(--p-critical-border-disabled);
         background: transparent;
         color: var(--p-critical-link-disabled);
       }

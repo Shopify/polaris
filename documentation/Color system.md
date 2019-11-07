@@ -68,38 +68,38 @@ For use as a surface color on interactive elements such as resource list items a
 
 ## On Surface (default: `#1F2225`)
 
-The On Surface role is made up of elements which appear on top of a surface, including borders (dividers), neutral icons, and text. When a light Surface is provided, On Surface values will be dark. When a dark surface is provided, On Surface values will be light.
+The On Surface role is made up of elements which appear on top of a surface, including borders (borders), neutral icons, and text. When a light Surface is provided, On Surface values will be dark. When a dark surface is provided, On Surface values will be light.
 
 ### On Surface base: `--p-on-surface`
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-### Divider
+### Border
 
-For use as a divider (border or interactive outline).
+For use as a border (border or interactive outline).
 
-- Divider On Surface: `--p-divider-on-surface`
-- Divider On Inverse: `--p-divider-on-inverse`
-- Divider On Dark: `--p-divider-on-dark`
-- Divider On Light: `--p-divider-on-light`
+- Border On Surface: `--p-border-on-surface`
+- Border On Inverse: `--p-border-on-inverse`
+- Border On Dark: `--p-border-on-dark`
+- Border On Light: `--p-border-on-light`
 
-#### Divider Disabled
+#### Border Disabled
 
 For use as a an interactive outline on disabled elements.
 
-- Divider Disabled On Surface: `--p-divider-disabled-on-surface`
-- Divider Disabled On Inverse: `--p-divider-disabled-on-inverse`
-- Divider Disabled On Dark: `--p-divider-disabled-on-dark`
-- Divider Disabled On Light: `--p-divider-disabled-on-light`
+- Border Disabled On Surface: `--p-border-disabled-on-surface`
+- Border Disabled On Inverse: `--p-border-disabled-on-inverse`
+- Border Disabled On Dark: `--p-border-disabled-on-dark`
+- Border Disabled On Light: `--p-border-disabled-on-light`
 
-#### Divider Subdued
+#### Border Subdued
 
-For use as a subdued divider (border or interactive outline).
+For use as a subdued border (border or interactive outline).
 
-- Divider Subdued On Surface: `--p-divider-subdued-on-surface`
-- Divider Subdued On Inverse: `--p-divider-subdued-on-inverse`
-- Divider Subdued On Dark: `--p-divider-subdued-on-dark`
-- Divider Subdued On Light: `--p-divider-subdued-on-light`
+- Border Subdued On Surface: `--p-border-subdued-on-surface`
+- Border Subdued On Inverse: `--p-border-subdued-on-inverse`
+- Border Subdued On Dark: `--p-border-subdued-on-dark`
+- Border Subdued On Light: `--p-border-subdued-on-light`
 
 ### Icon
 
@@ -255,12 +255,12 @@ Used to communicate destructive outcomes on interactive elements, for communicat
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-### Critical Divider
+### Critical Border
 
 For use as a border on critical components such as banners, and as an outline on interactive elements in an error state.
 
-- Critical Divider: `--p-critical-divider`
-- Critical Divider Disabled: `--p-critical-divider-disabled`
+- Critical Border: `--p-critical-border`
+- Critical Border Disabled: `--p-critical-border-disabled`
 
 ### Critical Icon: `--p-critical-icon`
 
@@ -314,7 +314,7 @@ For use as an indicator that action should be taken by merchants in components i
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-### Warning Divider: `--p-warning-divider`
+### Warning Border: `--p-warning-border`
 
 For use as a border on warning components such as banners.
 
@@ -344,7 +344,7 @@ Used to highlight elements of the UI that are important for merchants, but do no
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-### Highlight Divider: `--p-highlight-divider`
+### Highlight Border: `--p-highlight-border`
 
 For use as a border on informational components such as banners.
 
@@ -374,7 +374,7 @@ Used to indicate the result of a successful action taken by a merchant, to indic
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-### Success Divider: `--p-success-divider`
+### Success Border: `--p-success-border`
 
 For use as a border on success components such as banners.
 
