@@ -9,6 +9,7 @@
 ### Bug fixes
 
 - Fixed an issue where types were not generated for a JSON config file [#2361](https://github.com/Shopify/polaris-react/pull/2361))
+- Prevented scrolling to `Popover` content in development ([#2403](https://github.com/Shopify/polaris-react/pull/2403))
 
 ### Documentation
 
