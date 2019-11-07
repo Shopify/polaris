@@ -105,13 +105,13 @@ setConsoleOptions((opts) => {
   return opts;
 });
 
-function addPlaygroundStory() {
+function addPlaygroundStory(readmeModules) {
   storiesOf('Playground|Playground', module)
     .addParameters({
       chromatic: {disable: true},
     })
     .add('Playground', () => <Playground />)
-    .add('Kitchen Sink', () => <KitchenSink />);
+    .add('Kitchen Sink', () => <KitchenSink readmeModules={readmeModules} />);
 }
 
 // import all README.md files within component folders
@@ -121,9 +121,10 @@ const readmeReq = require.context(
   /\/.+\/README.md$/,
 );
 function loadStories() {
-  addPlaygroundStory();
+  const readmeModules = readmeReq.keys().map((filename) => readmeReq(filename));
+  addPlaygroundStory(readmeModules);
 
-  return readmeReq.keys().map((filename) => readmeReq(filename));
+  return readmeModules;
 }
 
 configure(loadStories, module);
