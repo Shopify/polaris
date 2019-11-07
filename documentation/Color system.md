@@ -331,10 +331,6 @@ For use as the background color for destructive buttons, and as the background c
 - Critical Action Hovered: `--p-critical-action-hovered`
 - Critical Action Pressed: `--p-critical-action-pressed`
 
-### Critical Action Subdued: `--p-critical-action-subdued`
-
-**Note** Not currently used, and likely to be deleted
-
 ### Critical Link
 
 For use as a text color in destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.

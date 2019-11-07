@@ -22,30 +22,100 @@ export const colorAdjustments: ColorAdjustments = {
     light: {lightness: 97.9},
     dark: {lightness: 3.3},
   },
+  surfaceInverseBackground: {
+    baseColor: 'surface',
+    light: {lightness: 3.3},
+    dark: {lightness: 97.9},
+  },
+  surfaceDarkBackground: {
+    baseColor: 'surface',
+    light: {lightness: 3.3},
+    dark: {lightness: 3.3},
+  },
+  surfaceLightBackground: {
+    baseColor: 'surface',
+    light: {lightness: 97.9},
+    dark: {lightness: 97.9},
+  },
   surfaceForeground: {
     baseColor: 'surface',
     light: {lightness: 100},
     dark: {lightness: 8.8},
+  },
+  surfaceInverseForeground: {
+    baseColor: 'surface',
+    light: {lightness: 8.8},
+    dark: {lightness: 100},
+  },
+  surfaceDarkForeground: {
+    baseColor: 'surface',
+    light: {lightness: 8.8},
+    dark: {lightness: 8.8},
+  },
+  surfaceLightForeground: {
+    baseColor: 'surface',
+    light: {lightness: 100},
+    dark: {lightness: 100},
   },
   surfaceForegroundSubdued: {
     baseColor: 'surface',
     light: {lightness: 95},
     dark: {lightness: 10},
   },
-  surfaceInverse: {
+  surfaceInverseForegroundSubdued: {
     baseColor: 'surface',
-    light: {lightness: 0},
-    dark: {lightness: 100},
+    light: {lightness: 10},
+    dark: {lightness: 95},
+  },
+  surfaceDarkForegroundSubdued: {
+    baseColor: 'surface',
+    light: {lightness: 10},
+    dark: {lightness: 10},
+  },
+  surfaceLightForegroundSubdued: {
+    baseColor: 'surface',
+    light: {lightness: 95},
+    dark: {lightness: 95},
   },
   surfaceHovered: {
     baseColor: 'surface',
     light: {lightness: 95},
     dark: {lightness: 20},
   },
+  surfaceInverseHovered: {
+    baseColor: 'surface',
+    light: {lightness: 20},
+    dark: {lightness: 95},
+  },
+  surfaceDarkHovered: {
+    baseColor: 'surface',
+    light: {lightness: 20},
+    dark: {lightness: 20},
+  },
+  surfaceLightHovered: {
+    baseColor: 'surface',
+    light: {lightness: 95},
+    dark: {lightness: 95},
+  },
   surfacePressed: {
     baseColor: 'surface',
     light: {lightness: 90},
     dark: {lightness: 27},
+  },
+  surfaceInversePressed: {
+    baseColor: 'surface',
+    light: {lightness: 27},
+    dark: {lightness: 90},
+  },
+  surfaceDarkPressed: {
+    baseColor: 'surface',
+    light: {lightness: 27},
+    dark: {lightness: 27},
+  },
+  surfaceLightPressed: {
+    baseColor: 'surface',
+    light: {lightness: 90},
+    dark: {lightness: 90},
   },
   onSurface: {baseColor: 'onSurface', light: {}, dark: {}},
   actionOnInverse: {
@@ -486,11 +556,6 @@ export const colorAdjustments: ColorAdjustments = {
     baseColor: 'critical',
     light: {lightness: 42.5},
     dark: {lightness: 50},
-  },
-  criticalActionSubdued: {
-    baseColor: 'critical',
-    light: {lightness: 38},
-    dark: {lightness: 62},
   },
   criticalActionPressed: {
     baseColor: 'critical',
