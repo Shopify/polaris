@@ -1,4 +1,5 @@
 import React from 'react';
+import {closest} from '@shopify/javascript-utilities/dom';
 import {
   focusFirstFocusableNode,
   findFirstFocusableNode,
@@ -68,7 +69,7 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
   };
 
   private handleBlur = (event: FocusEvent) => {
-    const {relatedTarget: currentTarget} = event;
+    const {relatedTarget} = event;
     const {focusTrapWrapper} = this;
     const {trapping = true} = this.props;
 
@@ -78,7 +79,9 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
 
     if (
       focusTrapWrapper &&
-      !focusTrapWrapper.contains(currentTarget as HTMLElement)
+      !focusTrapWrapper.contains(relatedTarget as HTMLElement) &&
+      (!relatedTarget ||
+        !closest(relatedTarget as HTMLElement, '[data-polaris-overlay]'))
     ) {
       event.preventDefault();
 
