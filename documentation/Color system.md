@@ -112,7 +112,7 @@ For use in plain text pressed actions as a text color.
 
 ### Divider
 
-For use as a divider (border or interactive outline).
+For use as a divider.
 
 - Divider On Surface: `--p-divider-on-surface`
 - Divider On Inverse: `--p-divider-on-inverse`
@@ -121,7 +121,7 @@ For use as a divider (border or interactive outline).
 
 #### Divider Disabled
 
-For use as a an interactive outline on disabled elements.
+For use as a border on disabled elements.
 
 - Divider Disabled On Surface: `--p-divider-disabled-on-surface`
 - Divider Disabled On Inverse: `--p-divider-disabled-on-inverse`
@@ -130,7 +130,7 @@ For use as a an interactive outline on disabled elements.
 
 #### Divider Subdued
 
-For use as a subdued divider (border or interactive outline).
+For use as a subdued divider.
 
 - Divider Subdued On Surface: `--p-divider-subdued-on-surface`
 - Divider Subdued On Inverse: `--p-divider-subdued-on-inverse`
@@ -227,7 +227,7 @@ For use as a surface color in selected interactive elements, in components such 
 
 ## Neutral (default: `#EAEAEB`)
 
-A neutral interactive color role, for use in secondary and tertiary buttons as a background color, as well as in form elements as a background color.
+A neutral interactive color role, for use in secondary and tertiary buttons as a background color, as well as in form elements as a background color. Also for use in borders on interactive elements.
 
 ### Neutral Base : `--p-neutral`
 
@@ -239,6 +239,12 @@ While use directly in our components is discouraged, the base variant is unmodif
 - Neutral Action Disabled: `--p-neutral-action-disabled`
 - Neutral Action Hovered: `--p-neutral-action-hovered`
 - Neutral Action Pressed: `--p-neutral-action-pressed`
+
+### Neutral Border
+
+- Neutral Border: '--p-neutral-border',
+- Neutral Border Subdued: '--p-neutral-border-subdued',
+- Neutral Border Disabled: '--p-neutral-border-disabled',
 
 ---
 

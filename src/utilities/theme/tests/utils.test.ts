@@ -411,6 +411,9 @@ describe('buildColors', () => {
           '--p-neutral-action',
           '--p-neutral-action-hovered',
           '--p-neutral-action-pressed',
+          '--p-neutral-border',
+          '--p-neutral-border-subdued',
+          '--p-neutral-border-disabled',
         ]),
       );
     });
@@ -425,11 +428,13 @@ describe('buildColors', () => {
       ).toStrictEqual(
         expect.arrayContaining([
           '--p-neutral',
-
           '--p-neutral-action-disabled',
           '--p-neutral-action',
           '--p-neutral-action-hovered',
           '--p-neutral-action-pressed',
+          '--p-neutral-border',
+          '--p-neutral-border-subdued',
+          '--p-neutral-border-disabled',
         ]),
       );
     });
@@ -448,6 +453,9 @@ describe('buildColors', () => {
           '--p-neutral-action',
           '--p-neutral-action-hovered',
           '--p-neutral-action-pressed',
+          '--p-neutral-border',
+          '--p-neutral-border-subdued',
+          '--p-neutral-border-disabled',
         ]),
       );
     });

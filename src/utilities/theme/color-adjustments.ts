@@ -375,6 +375,21 @@ export const colorAdjustments: ColorAdjustments = {
     light: {lightness: 87},
     dark: {lightness: 39},
   },
+  neutralBorder: {
+    baseColor: 'neutral',
+    light: {lightness: 75},
+    dark: {lightness: 35},
+  },
+  neutralBorderSubdued: {
+    baseColor: 'neutral',
+    light: {lightness: 85},
+    dark: {lightness: 45},
+  },
+  neutralBorderDisabled: {
+    baseColor: 'neutral',
+    light: {lightness: 95},
+    dark: {lightness: 55},
+  },
   branded: {baseColor: 'branded', light: {}, dark: {}},
   brandedAction: {
     baseColor: 'branded',
