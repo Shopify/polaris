@@ -634,9 +634,9 @@ export const colorAdjustments: ColorAdjustments = {
       alpha: 0.15,
     },
     dark: {
-      hue: 0,
+      hue: 360,
       saturation: 0,
-      lightness: 0,
+      lightness: 100,
       alpha: 0.15,
     },
   },
