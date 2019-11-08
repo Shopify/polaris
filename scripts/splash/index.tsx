@@ -203,7 +203,7 @@ const App = () => {
             <Box width={3}>💡</Box>
             <Box>
               Tip: to disable these reports, run
-              <Text bold>DISABLE_SPLASH=1 yarn dev</Text>
+              <Text bold> DISABLE_SPLASH=1 yarn dev</Text>
             </Box>
           </Color>
         </Box>
