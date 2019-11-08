@@ -75,7 +75,11 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
         id={id}
         onMouseDown={this.handlePickerDrag}
       >
-        <div ref={this.setColorNode} className={styles.MainColor}>
+        <div
+          ref={this.setColorNode}
+          className={styles.MainColor}
+          onFocus={this.handleFocus}
+        >
           <div
             className={styles.ColorLayer}
             style={{backgroundColor: colorString}}
@@ -130,5 +134,10 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
   ) => {
     // prevents external elements from being selected
     event.preventDefault();
+  };
+
+  private handleFocus = (event: React.FocusEvent<HTMLElement>) => {
+    // Prevents MainColor from scrolling on focus
+    event.currentTarget.scrollTo(0, 0);
   };
 }

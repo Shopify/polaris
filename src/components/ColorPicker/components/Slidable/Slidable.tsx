@@ -118,9 +118,15 @@ export class Slidable extends React.PureComponent<SlidableProps, State> {
         {touchEndListener}
         {touchCancelListener}
         <div
+          role="slider"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={0}
+          onKeyUp={this.handleKeyUp}
           style={draggerPositioning}
           className={styles.Dragger}
           ref={this.setDraggerNode}
+          tabIndex={0}
         />
       </div>
     );
@@ -183,5 +189,31 @@ export class Slidable extends React.PureComponent<SlidableProps, State> {
     const offsetX = x - rect.left;
     const offsetY = y - rect.top;
     onChange({x: offsetX, y: offsetY});
+  };
+
+  private handleKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (this.node == null) {
+      return;
+    }
+    const {key, shiftKey} = event;
+    const {draggerX = 0, draggerY = 0, onChange} = this.props;
+    const rect = this.node.getBoundingClientRect();
+    const stepX = shiftKey ? rect.width / 20 : rect.width / 100;
+    const stepY = shiftKey ? rect.height / 20 : rect.height / 100;
+
+    switch (key) {
+      case 'ArrowUp':
+        onChange({x: draggerX, y: draggerY - stepY});
+        break;
+      case 'ArrowDown':
+        onChange({x: draggerX, y: draggerY + stepY});
+        break;
+      case 'ArrowRight':
+        onChange({x: draggerX + stepX, y: draggerY});
+        break;
+      case 'ArrowLeft':
+        onChange({x: draggerX - stepX, y: draggerY});
+        break;
+    }
   };
 }
