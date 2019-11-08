@@ -62,7 +62,8 @@
         "allow": [
           "UNSTABLE_Color",
           "UNSTABLE_colors",
-          "UNSTABLE_cssCustomProperties"
+          "UNSTABLE_cssCustomProperties",
+          "UNSTABLE_telemetry"
         ]
       }
     ]

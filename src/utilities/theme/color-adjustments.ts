@@ -1,6 +1,5 @@
 import {ColorAdjustments} from './types';
 
-/* eslint-disable babel/camelcase */
 // eslint-disable-next-line shopify/typescript/prefer-pascal-case-enums
 export enum UNSTABLE_Color {
   Surface = '#FAFAFA',
@@ -13,7 +12,7 @@ export enum UNSTABLE_Color {
   Warning = '#FFC453',
   Highlight = '#59D0C2',
   Success = '#008060',
-} /* eslint-enable babel/camelcase */
+}
 
 export const colorAdjustments: ColorAdjustments = {
   surface: {baseColor: 'surface', light: {}, dark: {}},
