@@ -201,7 +201,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 
   return (
     <WithinContentContext.Provider value>
-      <div ref={activatorRef}>{activator}</div>
+      {activator && <div ref={activatorRef}>{activator}</div>}
       <Portal idPrefix="modal">
         <TransitionGroup appear={animated} enter={animated} exit={animated}>
           {dialog}
