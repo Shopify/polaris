@@ -17,6 +17,8 @@
 - Changed Button's `disclosure` prop to be `boolean | "up" | "down"`, allowing greater control over the direction the disclosure caret faces ([#2431](https://github.com/Shopify/polaris-react/pull/2431))
 - Fixed an issue where the dropzone component jumped from an extra-large layout to a layout based on the width of it's container ([#2412](https://github.com/Shopify/polaris-react/pull/2412))
 - Fixed a race condition in DatePicker ([#2373](https://github.com/Shopify/polaris-react/pull/2373))
+- Fixed an issue where types were not generated for a JSON config file ([#2361](https://github.com/Shopify/polaris-react/pull/2361))
+- Added the top bar height to the `Topbar` in `Frame` to ensure the `Sticky` components get the correct top position ([2415](https://github.com/Shopify/polaris-react/pull/2415))
 
 ### Documentation
 
