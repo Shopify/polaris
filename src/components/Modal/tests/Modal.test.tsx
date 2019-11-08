@@ -356,6 +356,10 @@ describe('<Modal>', () => {
         expect(document.activeElement).toBe(modal.find(Button).getDOMNode());
       });
     });
+
+    it('does a good thing', () => {
+      expect(true).toBe(true);
+    });
   });
 });
 
