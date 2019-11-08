@@ -17,6 +17,7 @@
 ### Development workflow
 
 - Enabled maintainers running `yarn dev` to hide [`yarn splash`](https://github.com/Shopify/polaris-react/tree/master/scripts/splash) reports from the console by running `DISABLE_SPLASH=1 yarn dev` ([#2372](https://github.com/Shopify/polaris-react/pull/2372))
+- Updated to sewing-kit 0.112.0 and eslint 6 and updated vscode config to use the eslint plugin to format js/ts files ((#2369)[https://github.com/Shopify/polaris-react/pull/2369])
 
 ### Dependency upgrades
 

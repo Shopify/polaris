@@ -94,7 +94,7 @@
     "@percy/storybook": "^3.2.0",
     "@shopify/jest-dom-mocks": "^2.1.1",
     "@shopify/react-testing": "^1.7.8",
-    "@shopify/sewing-kit": "^0.111.0",
+    "@shopify/sewing-kit": "^0.112.0",
     "@storybook/addon-a11y": "^5.2.4",
     "@storybook/addon-actions": "^5.2.4",
     "@storybook/addon-console": "^1.2.1",
@@ -161,9 +161,6 @@
   "peerDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
-  },
-  "resolutions": {
-    "typescript-eslint-parser": "npm:@typescript-eslint/parser@1.10.2"
   },
   "files": [
     "esnext",

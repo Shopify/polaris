@@ -39,7 +39,7 @@ export function Spinner({
   const i18n = useI18n();
   const isAfterInitialMount = useIsAfterInitialMount();
 
-  if (size === 'large' && COLORS_FOR_LARGE_SPINNER.indexOf(color) < 0) {
+  if (size === 'large' && !COLORS_FOR_LARGE_SPINNER.includes(color)) {
     if (process.env.NODE_ENV === 'development') {
       // eslint-disable-next-line no-console
       console.warn(

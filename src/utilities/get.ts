@@ -11,6 +11,7 @@ export function get<T>(
 
   const keys = Array.isArray(keypath) ? keypath : getKeypath(keypath);
   let acc = obj;
+  // eslint-disable-next-line @typescript-eslint/prefer-for-of
   for (let i = 0; i < keys.length; i++) {
     const val = acc[keys[i]];
     if (val === undefined) return defaultValue;

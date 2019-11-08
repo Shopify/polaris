@@ -482,7 +482,7 @@ function fireEvent({
   element: ReactWrapper<any, any>;
   eventType?: string;
   spy?: jest.Mock;
-  testFiles?: Array<Object>;
+  testFiles?: object[];
 }) {
   if (spy) {
     spy.mockReset();

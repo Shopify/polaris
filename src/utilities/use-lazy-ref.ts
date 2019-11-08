@@ -12,7 +12,7 @@ const UNIQUE_IDENTIFIER = Symbol('unique_identifier');
  * results from invoking initial value
  */
 export function useLazyRef<T>(initialValue: () => T) {
-  const lazyRef = useRef<T | Symbol>(UNIQUE_IDENTIFIER);
+  const lazyRef = useRef<T | symbol>(UNIQUE_IDENTIFIER);
 
   if (lazyRef.current === UNIQUE_IDENTIFIER) {
     lazyRef.current = initialValue();

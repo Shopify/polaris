@@ -20,7 +20,7 @@ export interface PopoverProps {
   /** Show or hide the Popover */
   active: boolean;
   /** The element to activate the Popover */
-  activator: React.ReactElement<any>;
+  activator: React.ReactElement;
   /**
    * The element type to wrap the activator with
    * @default 'div'

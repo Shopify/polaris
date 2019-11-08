@@ -109,7 +109,7 @@ describe('<Toast />', () => {
 
 function noop() {}
 
-function mountWithAppBridge(element: React.ReactElement<any>) {
+function mountWithAppBridge(element: React.ReactElement) {
   const appBridge = {};
   const toast = mountWithAppProvider(element, {appBridge});
 

@@ -14,7 +14,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('passes context', () => {
-    const Child: React.SFC<{}> = (_props) => {
+    const Child: React.SFC = (_props) => {
       return (
         <ThemeContext.Consumer>
           {(polarisTheme) => {
@@ -144,7 +144,6 @@ describe('<ThemeProvider />', () => {
     );
 
     function Child() {
-      // eslint-disable-next-line babel/camelcase
       const {UNSTABLE_cssCustomProperties} = useTheme();
       expect(UNSTABLE_cssCustomProperties).toBeTruthy();
       return null;
@@ -159,7 +158,6 @@ describe('<ThemeProvider />', () => {
     );
 
     function Child() {
-      // eslint-disable-next-line babel/camelcase
       const {UNSTABLE_cssCustomProperties} = useTheme();
       expect(UNSTABLE_cssCustomProperties).toBeUndefined();
       return null;
