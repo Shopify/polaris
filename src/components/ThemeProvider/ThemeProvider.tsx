@@ -32,10 +32,10 @@ export function ThemeProvider({
     [customProperties, themeConfig, unstableGlobalTheming],
   );
 
-  // We want these values to be `null` instead of `undefined` when not set.
+  // We want these values to be empty string instead of `undefined` when not set.
   // Otherwise, setting a style property to `undefined` does not remove it from the DOM.
-  const backgroundColor = customProperties['--p-surface-background'] || null;
-  const color = customProperties['--p-text-on-surface'] || null;
+  const backgroundColor = customProperties['--p-surface-background'] || '';
+  const color = customProperties['--p-text-on-surface'] || '';
 
   useEffect(() => {
     document.body.style.backgroundColor = backgroundColor;
