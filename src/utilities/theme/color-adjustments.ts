@@ -145,7 +145,7 @@ export const colorAdjustments: ColorAdjustments = {
   borderSubduedOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 85},
-    dark: {lightness: 25},
+    dark: {lightness: 15},
   },
   iconOnInverse: {
     baseColor: 'onSurface',
@@ -205,7 +205,7 @@ export const colorAdjustments: ColorAdjustments = {
   textSubduedOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 38},
-    dark: {lightness: 90},
+    dark: {lightness: 62},
   },
   actionOnDark: {
     baseColor: 'onSurface',
@@ -498,8 +498,8 @@ export const colorAdjustments: ColorAdjustments = {
   },
   criticalText: {
     baseColor: 'critical',
-    light: {lightness: 30},
-    dark: {lightness: 70},
+    light: {lightness: 40},
+    dark: {lightness: 60},
   },
   criticalActionDisabled: {
     baseColor: 'critical',
@@ -616,8 +616,8 @@ export const colorAdjustments: ColorAdjustments = {
   },
   successText: {
     baseColor: 'success',
-    light: {lightness: 15},
-    dark: {lightness: 85},
+    light: {lightness: 40},
+    dark: {lightness: 60},
   },
   backdrop: {
     baseColor: 'surface',

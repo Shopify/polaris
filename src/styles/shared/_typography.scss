@@ -145,7 +145,10 @@ $typography-condensed: em(640px);
 }
 
 @mixin text-emphasis-subdued($for-background: null) {
-  color: color('ink', 'lighter', $for-background: $for-background);
+  color: var(
+    --p-text-subdued-on-surface,
+    color('ink', 'lighter', $for-background: $for-background)
+  );
 }
 
 @mixin text-emphasis-strong {
