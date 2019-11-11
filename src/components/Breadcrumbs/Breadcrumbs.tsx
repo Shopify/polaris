@@ -24,12 +24,12 @@ export class Breadcrumbs extends React.PureComponent<BreadcrumbsProps, never> {
     const {content} = breadcrumb;
 
     const contentMarkup = (
-      <React.Fragment>
+      <span className={styles.ContentWrapper}>
         <span className={styles.Icon}>
           <Icon source={ChevronLeftMinor} />
         </span>
         <span className={styles.Content}>{content}</span>
-      </React.Fragment>
+      </span>
     );
 
     const breadcrumbMarkup =

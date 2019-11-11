@@ -7,11 +7,6 @@ $icon-size: rem(20px);
 $difference-between-touch-area-and-backdrop: control-height() -
   control-slim-height();
 
-$stacking-order: (
-  focus-backdrop: 10,
-  content: 20,
-);
-
 .Breadcrumb {
   @include text-style-body;
   @include text-emphasis-subdued;
@@ -21,66 +16,68 @@ $stacking-order: (
   align-items: center;
   min-height: control-height();
 
-  // We only have to compensate for half the space on the left because
-  // The icon has half the space to the focus backdrop as the text does
-  // on the right side. We have to do negative margin on top and bottom
-  // to compensate for the focus backdrop being smaller than the actual
-  // hit area.
   margin: (-0.5 * $difference-between-touch-area-and-backdrop)
     (-1 * $horizontal-padding)
     (-0.5 * $difference-between-touch-area-and-backdrop)
     (-0.5 * $horizontal-padding);
-  padding: $vertical-padding $horizontal-padding;
-  color: color('ink', 'lighter');
+
+  color: var(--p-text-subdued-on-surface, color('ink', 'lighter'));
   text-decoration: none;
 
   &:hover,
   &:active {
-    color: color('ink');
+    color: var(--p-text-on-surface, color('ink'));
     text-decoration: none;
 
     .Icon {
-      @include recolor-icon(color('ink'));
+      @include recolor-icon(var(--p-icon-on-surface, color('ink')));
     }
   }
-
+  // stylelint-disable selector-max-specificity
   &:focus {
     outline: none;
-
-    &::after {
-      background: plain-button-background();
+    .ContentWrapper {
+      background: var(--p-override-transparent, plain-button-background());
     }
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: z-index(focus-backdrop, $stacking-order);
-    top: 0.5 * $difference-between-touch-area-and-backdrop;
-    right: 0;
-    left: 0;
-    display: block;
-    height: control-slim-height();
-    border-radius: border-radius();
-    will-change: background;
-    transition: background duration() easing();
+  &:active {
+    .ContentWrapper {
+      background: var(--p-surface-subdued, plain-button-background());
+    }
   }
+
+  &:focus:not(:active) {
+    .ContentWrapper {
+      @include focus-ring;
+    }
+  }
+  // stylelint-enable selector-max-specificity
+}
+
+.ContentWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: $vertical-padding $horizontal-padding;
+  background: transparent;
+  height: control-slim-height();
+  border-radius: var(--p-border-radius-base, border-radius());
+  will-change: background;
+  transition: background duration() easing();
 }
 
 .Content {
   @include truncate;
   position: relative;
-  z-index: z-index(content, $stacking-order);
 }
 
 .Icon {
-  @include recolor-icon(color('ink', 'lighter'));
-  height: $icon-size;
+  @include recolor-icon(
+    var(--p-icon-subdued-on-surface, color('ink', 'lighter'))
+  );
   width: $icon-size;
-
-  // We set negative top/ bottom margin so the icon never sets
-  // the height of the content. We set negative left margin to
-  // compensate for the inset viewbox and to match the Page
-  // component’s secondary actions
+  height: $icon-size;
   margin: (-0.5 * $icon-size) 0 (-0.5 * $icon-size) rem(-8px);
+  margin: 0 0 0 rem(-8px);
 }
