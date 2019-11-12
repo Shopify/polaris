@@ -40,7 +40,15 @@ export interface PopoverProps {
   onClose(source: CloseSource): void;
 }
 
-export function Popover({
+// TypeScript can't generate types that correctly infer the typing of
+// subcomponents so explicitly state the subcomponents in the type definition.
+// Letting this be implicit works in this project but fails in projects that use
+// generated *.d.ts files.
+
+export const Popover: React.FunctionComponent<PopoverProps> & {
+  Pane: typeof Pane;
+  Section: typeof Section;
+} = function Popover({
   activatorWrapper = 'div',
   children,
   onClose,
@@ -132,7 +140,7 @@ export function Popover({
       {portal}
     </WrapperComponent>
   );
-}
+};
 
 function isInPortal(element: Element) {
   let parentElement = element.parentElement;
