@@ -356,9 +356,7 @@ export function TextField({
     labelledBy.push(`${id}Suffix`);
   }
 
-  if (labelledBy.length) {
-    labelledBy.unshift(labelID(id));
-  }
+  labelledBy.unshift(labelID(id));
 
   const inputClassName = classNames(
     styles.Input,
@@ -393,7 +391,7 @@ export function TextField({
     pattern,
     type: inputType,
     'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
-    'aria-labelledby': labelledBy.length ? labelledBy.join(' ') : undefined,
+    'aria-labelledby': labelledBy.join(' '),
     'aria-invalid': Boolean(error),
     'aria-owns': ariaOwns,
     'aria-activedescendant': ariaActiveDescendant,
