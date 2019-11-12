@@ -13,7 +13,7 @@ $Backdrop-opacity: 0.88;
     --p-surface-inverse-foreground,
     rgba(color('black'), $Backdrop-opacity)
   );
-  box-shadow: shadow();
+  box-shadow: var(--p-override-none, shadow());
   color: var(--p-text-on-inverse, color('white'));
   margin-bottom: spacing(loose);
 
