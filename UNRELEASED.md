@@ -6,7 +6,7 @@
 
 ### Bug fixes
 
-- Fixed an issue where the dropzone component jumped from an extra-large layout to a layout based on the width of it's container [#2412](https://github.com/Shopify/polaris-react/pull/2412)
+- Fixed an issue where the dropzone component jumped from an extra-large layout to a layout based on the width of it's container ([#2412](https://github.com/Shopify/polaris-react/pull/2412))
 
 ### Documentation
 
