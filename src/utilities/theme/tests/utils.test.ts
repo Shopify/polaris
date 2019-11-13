@@ -32,7 +32,7 @@ describe('setTheme', () => {
 
     expect(theme).toStrictEqual([
       ['--top-bar-color', 'rgb(255, 255, 255)'],
-      ['--top-bar-background-lighter', 'hsl(184, 85%, 43%, 1)'],
+      ['--top-bar-background-lighter', 'hsla(184, 85%, 43%, 1)'],
     ]);
   });
 });
@@ -52,7 +52,7 @@ describe('needsVariant', () => {
 describe('buildCustomProperties', () => {
   const legacyCustomProperties = {
     '--top-bar-background': '#eeeeee',
-    '--top-bar-background-lighter': 'hsl(0, 10%, 100%, 1)',
+    '--top-bar-background-lighter': 'hsla(0, 10%, 100%, 1)',
     '--top-bar-color': 'rgb(33, 43, 54)',
   };
 
