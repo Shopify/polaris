@@ -1,5 +1,6 @@
 import React from 'react';
 import {classNames} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 import {elementChildren} from '../../utilities/components';
 import {Item} from './components';
 import styles from './ButtonGroup.scss';
@@ -21,8 +22,11 @@ export function ButtonGroup({
   fullWidth,
   connectedTop,
 }: ButtonGroupProps) {
+  const {unstableGlobalTheming = false} = useFeatures();
+
   const className = classNames(
     styles.ButtonGroup,
+    unstableGlobalTheming && styles.globalTheming,
     segmented && styles.segmented,
     fullWidth && styles.fullWidth,
     connectedTop && styles.connectedTop,

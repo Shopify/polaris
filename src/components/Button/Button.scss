@@ -53,13 +53,13 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     transition-duration: duration(fast);
     background: linear-gradient(to bottom, $color-light, $color-light);
     border-color: $color-dark;
-    box-shadow: $partial-button-filled-pressed-box-shadow$color-dark;
+    box-shadow: $partial-button-filled-pressed-box-shadow $color-dark;
   }
 
   &:active {
     background: linear-gradient(to bottom, $color-lightest, $color-lightest);
     border-color: $color-dark;
-    box-shadow: $partial-button-filled-pressed-box-shadow$color-darkest;
+    box-shadow: $partial-button-filled-pressed-box-shadow $color-darkest;
   }
 }
 
