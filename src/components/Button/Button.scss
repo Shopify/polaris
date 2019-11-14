@@ -592,3 +592,13 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   }
 }
 // stylelint-enable selector-max-specificity
+
+.DisclosureIcon {
+  transition-property: transform;
+  transition-duration: duration(slow);
+  transition-timing-function: easing(out);
+}
+
+.DisclosureIconFacingUp {
+  transform: rotate(-180deg);
+}

@@ -290,6 +290,30 @@ function PressedButton() {
 }
 ```
 
+### Button with disclosure
+
+<!-- example-for: web -->
+
+Use to denote something that can be progressively disclosed to the user on click.
+
+```jsx
+function DisclosureButtion() {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <Button
+      plain
+      disclosure={expanded ? 'up' : 'down'}
+      onClick={() => {
+        setExpanded(!expanded);
+      }}
+    >
+      {expanded ? 'Show less' : 'Show more'}
+    </Button>
+  );
+}
+```
+
 ### Disabled state
 
 Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it.
