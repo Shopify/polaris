@@ -5,6 +5,7 @@
 ### Enhancements
 
 - Add `external` prop to `ResourceList` [#2408](https://github.com/Shopify/polaris-react/pull/2408)
+- Add `onMouseEnter` and `onTouchStart` props to `Button` ([#2409](https://github.com/Shopify/polaris-react/pull/2409))
 
 ### Bug fixes
 
