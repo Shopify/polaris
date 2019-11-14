@@ -13,6 +13,7 @@ import tokens from '@shopify/polaris-tokens';
 import {AppProvider} from '../src';
 import {Playground} from '../playground/Playground';
 import {KitchenSink} from '../playground/KitchenSink';
+import {DetailsPage} from '../playground/DetailsPage';
 import enTranslations from '../locales/en.json';
 
 addParameters({
@@ -111,7 +112,8 @@ function addPlaygroundStory(readmeModules) {
       chromatic: {disable: true},
     })
     .add('Playground', () => <Playground />)
-    .add('Kitchen Sink', () => <KitchenSink readmeModules={readmeModules} />);
+    .add('Details page', () => <DetailsPage />)
+    .add('Kitchen sink', () => <KitchenSink readmeModules={readmeModules} />);
 }
 
 // import all README.md files within component folders
