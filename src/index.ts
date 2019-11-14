@@ -12,5 +12,5 @@ export {
   WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT,
 } from './utilities/within-content-context';
 
-export {buildColors} from './utilities/theme/utils';
+export {buildColors as unstableBuildColors} from './utilities/theme/utils';
 export {AppBridgeContext} from './utilities/app-bridge';
