@@ -12,6 +12,8 @@ import {create} from '@storybook/theming';
 import tokens from '@shopify/polaris-tokens';
 import {AppProvider} from '../src';
 import {Playground} from '../playground/Playground';
+import {KitchenSink} from '../playground/KitchenSink';
+import {DetailsPage} from '../playground/DetailsPage';
 import enTranslations from '../locales/en.json';
 
 addParameters({
@@ -104,12 +106,14 @@ setConsoleOptions((opts) => {
   return opts;
 });
 
-function addPlaygroundStory() {
+function addPlaygroundStory(readmeModules) {
   storiesOf('Playground|Playground', module)
     .addParameters({
       chromatic: {disable: true},
     })
-    .add('Playground', () => <Playground />);
+    .add('Playground', () => <Playground />)
+    .add('Details page', () => <DetailsPage />)
+    .add('Kitchen sink', () => <KitchenSink readmeModules={readmeModules} />);
 }
 
 // import all README.md files within component folders
@@ -119,9 +123,10 @@ const readmeReq = require.context(
   /\/.+\/README.md$/,
 );
 function loadStories() {
-  addPlaygroundStory();
+  const readmeModules = readmeReq.keys().map((filename) => readmeReq(filename));
+  addPlaygroundStory(readmeModules);
 
-  return readmeReq.keys().map((filename) => readmeReq(filename));
+  return readmeModules;
 }
 
 configure(loadStories, module);
