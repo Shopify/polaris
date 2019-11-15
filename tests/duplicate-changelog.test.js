@@ -1,8 +1,8 @@
 const fs = require('fs-extra');
 
-test('the CHANGELOG.md does not contain any entries currently in UNRELEASED.md', () => {
+test('the latest release in CHANGELOG.md does not contain any entries currently in UNRELEASED.md', () => {
   const changelogEntries = parseEntries(
-    fs.readFileSync('CHANGELOG.md', 'utf8'),
+    fs.readFileSync('CHANGELOG.md', 'utf8').split('\n## ')[1],
   );
   const unreleasedEntries = parseEntries(
     fs.readFileSync('UNRELEASED.md', 'utf8'),
@@ -14,5 +14,5 @@ test('the CHANGELOG.md does not contain any entries currently in UNRELEASED.md',
 });
 
 function parseEntries(log) {
-  return log.split('\n').filter((line) => line.charAt(0).match(/-|\*/));
+  return log.split('\n').filter((line) => line.match(/^[-|*] /));
 }
