@@ -14,7 +14,7 @@
 
 ### Documentation
 
-- Added a Kitchen Sink example to Storybook ([#2402](https://github.com/Shopify/polaris-react/pull/2402))
+- Added a details page and kitchen sink example to Storybook ([#2402](https://github.com/Shopify/polaris-react/pull/2402))
 
 ### Development workflow
 
