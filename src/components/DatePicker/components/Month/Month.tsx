@@ -27,7 +27,7 @@ export interface MonthProps {
   year: Year;
   disableDatesBefore?: Date;
   disableDatesAfter?: Date;
-  allowRange?: Boolean;
+  allowRange?: boolean;
   weekStartsOn: Weekdays;
   onChange?(date: Range): void;
   onHover?(hoverEnd: Date): void;
@@ -82,7 +82,7 @@ export function Month({
   ));
 
   function handleDateClick(selectedDate: Date) {
-    onChange(getNewRange(allowRange && selected, selectedDate));
+    onChange(getNewRange(allowRange ? selected : undefined, selectedDate));
   }
 
   function renderWeek(day: Date, dayIndex: number) {

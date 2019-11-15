@@ -41,6 +41,7 @@ interface State {
   numFiles: number;
   overlayText?: string;
   size: string;
+  measuring: boolean;
   type?: string;
 }
 
@@ -178,7 +179,10 @@ class DropZone extends React.Component<CombinedProps, State> {
         size = 'large';
       }
 
-      this.setState({size});
+      this.setState({
+        size,
+        measuring: false,
+      });
     },
     50,
     {trailing: true},
@@ -205,6 +209,7 @@ class DropZone extends React.Component<CombinedProps, State> {
       numFiles: 0,
       overlayText: intl.translate(`Polaris.DropZone.overlayText${suffix}`),
       size: 'extraLarge',
+      measuring: true,
       type,
     };
   }
@@ -223,6 +228,7 @@ class DropZone extends React.Component<CombinedProps, State> {
       type,
       overlayText,
       errorOverlayText,
+      measuring,
     } = this.state;
     const {
       label,
@@ -262,6 +268,7 @@ class DropZone extends React.Component<CombinedProps, State> {
       size && size === 'large' && styles.sizeLarge,
       size && size === 'medium' && styles.sizeMedium,
       size && size === 'small' && styles.sizeSmall,
+      measuring && styles.measuring,
     );
 
     const dragOverlay =
@@ -308,6 +315,7 @@ class DropZone extends React.Component<CombinedProps, State> {
       focused,
       size,
       type: type || 'file',
+      measuring,
     };
 
     return (
@@ -499,7 +507,7 @@ class DropZone extends React.Component<CombinedProps, State> {
 
     const fileList = getDataTransferFiles(event);
 
-    if (event.target && this.dragTargets.indexOf(event.target) === -1) {
+    if (event.target && !this.dragTargets.includes(event.target)) {
       this.dragTargets.push(event.target);
     }
 

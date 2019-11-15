@@ -13,11 +13,7 @@ import {createLightColor} from '../color-manipulation';
 import {compose} from '../compose';
 import {needsVariantList} from './config';
 import {ThemeConfig, Theme, CustomPropertiesLike} from './types';
-import {
-  colorAdjustments,
-  // eslint-disable-next-line babel/camelcase
-  UNSTABLE_Color,
-} from './color-adjustments';
+import {colorAdjustments, UNSTABLE_Color} from './color-adjustments';
 
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
@@ -35,7 +31,6 @@ export function buildThemeContext(
   const {logo} = themeConfig;
   return {
     logo,
-    // eslint-disable-next-line babel/camelcase
     UNSTABLE_cssCustomProperties: toString(cssCustomProperties),
   };
 }
@@ -60,7 +55,6 @@ function hexToHsluvObj(hex: string) {
   };
 }
 
-/* eslint-disable babel/camelcase */
 export function buildColors(theme: ThemeConfig) {
   const colors = {
     surface: UNSTABLE_Color.Surface,
@@ -105,7 +99,6 @@ export function buildColors(theme: ThemeConfig) {
     ...overrides(),
   });
 }
-/* eslint-enable babel/camelcase */
 
 function overrides() {
   return {
@@ -113,17 +106,19 @@ function overrides() {
     overrideTransparent: 'transparent',
     overrideOne: '1',
     overrideVisible: 'visible',
+    overrideZero: '0',
+    overrideLoadingZIndex: '514',
     buttonFontWeight: '500',
     nonNullContent: "''",
     borderRadiusBase: rem('4px'),
     borderRadiusWide: rem('8px'),
-    bannerDefaultBorder: buildBannerBorder('--p-divider-on-surface'),
-    bannerSuccessBorder: buildBannerBorder('--p-success-divider'),
-    bannerHighlightBorder: buildBannerBorder('--p-highlight-divider'),
-    bannerWarningBorder: buildBannerBorder('--p-warning-divider'),
-    bannerCriticalBorder: buildBannerBorder('--p-critical-divider'),
+    bannerDefaultBorder: buildBannerBorder('--p-border-on-surface'),
+    bannerSuccessBorder: buildBannerBorder('--p-success-border'),
+    bannerHighlightBorder: buildBannerBorder('--p-highlight-border'),
+    bannerWarningBorder: buildBannerBorder('--p-warning-border'),
+    bannerCriticalBorder: buildBannerBorder('--p-critical-border'),
     badgeMixBlendMode: 'luminosity',
-    borderSubdued: `${rem('1px')} solid var(--p-divider-subdued-on-surface)`,
+    borderSubdued: `${rem('1px')} solid var(--p-border-subdued-on-surface)`,
     textFieldSpinnerOffset: rem('2px'),
     textFieldFocusRingOffset: rem('-4px'),
     textFieldFocusRingBorderRadius: rem('7px'),
@@ -188,7 +183,7 @@ function buildLegacyColors(theme?: ThemeConfig): CustomPropertiesLike {
 }
 
 export function needsVariant(name: string) {
-  return needsVariantList.indexOf(name) !== -1;
+  return needsVariantList.includes(name);
 }
 
 const lightenToString: (
@@ -253,11 +248,11 @@ function parseColors([baseName, colors]: [
 ]): string[][] {
   const keys = Object.keys(colors);
   const colorPairs = [];
-  for (let i = 0; i < keys.length; i++) {
-    colorPairs.push([constructColorName(baseName, keys[i]), colors[keys[i]]]);
+  for (const key of keys) {
+    colorPairs.push([constructColorName(baseName, key), colors[key]]);
 
     if (needsVariant(baseName)) {
-      const hslColor = colorToHsla(colors[keys[i]]);
+      const hslColor = colorToHsla(colors[key]);
 
       if (typeof hslColor === 'string') {
         return colorPairs;
@@ -266,9 +261,9 @@ function parseColors([baseName, colors]: [
       const rgbColor = hslToRgb(hslColor);
 
       if (isLight(rgbColor)) {
-        colorPairs.push(...setTheme(hslColor, baseName, keys[i], 'light'));
+        colorPairs.push(...setTheme(hslColor, baseName, key, 'light'));
       } else {
-        colorPairs.push(...setTheme(hslColor, baseName, keys[i], 'dark'));
+        colorPairs.push(...setTheme(hslColor, baseName, key, 'dark'));
       }
     }
   }

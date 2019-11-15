@@ -1,12 +1,14 @@
 // Place your settings in this file to overwrite default and user settings.
 {
   "css.validate": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "eslint.autoFixOnSave": true,
   "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
+    {"language": "javascript", "autoFix": true},
+    {"language": "javascriptreact", "autoFix": true},
+    {"language": "typescript", "autoFix": true},
+    {"language": "typescriptreact", "autoFix": true}
   ],
   "files.exclude": {
     "**/.DS_Store": true,
@@ -27,7 +29,6 @@
   },
   "javascript.validate.enable": false,
   "jest.autoEnable": false,
-  "prettier.eslintIntegration": true,
   "prettier.stylelintIntegration": true,
   "scss.validate": false,
   "search.exclude": {

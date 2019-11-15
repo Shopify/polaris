@@ -28,6 +28,11 @@ export const headerCell = {
   selector: '[data-polaris-header-cell]',
 };
 
+export const portal = {
+  props: ['data-portal-id'],
+  selector: '[data-portal-id]',
+};
+
 export const DATA_ATTRIBUTE = {
   overlay,
   layer,

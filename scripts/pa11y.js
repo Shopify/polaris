@@ -39,6 +39,7 @@ async function runPa11y() {
   ];
 
   await browsers.forEach(async (instance) => {
+    // eslint-disable-next-line require-atomic-updates
     instance.page = await instance.browser.newPage();
   });
 

@@ -136,7 +136,7 @@ export function ChoiceList({
 function noop() {}
 
 function choiceIsSelected({value}: Choice, selected: string[]) {
-  return selected.indexOf(value) >= 0;
+  return selected.includes(value);
 }
 
 function updateSelectedChoices(

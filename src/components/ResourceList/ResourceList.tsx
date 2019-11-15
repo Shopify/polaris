@@ -714,11 +714,8 @@ class ResourceList extends React.Component<CombinedProps, State> {
     newlySelectedItems = [...new Set([...newlySelectedItems, ...selectedIds])];
 
     if (!selected) {
-      for (let i = 0; i < selectedIds.length; i++) {
-        newlySelectedItems.splice(
-          newlySelectedItems.indexOf(selectedIds[i]),
-          1,
-        );
+      for (const selectedId of selectedIds) {
+        newlySelectedItems.splice(newlySelectedItems.indexOf(selectedId), 1);
       }
     }
 

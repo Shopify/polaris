@@ -7,7 +7,7 @@ import {
 
 interface State {
   isSticky: boolean;
-  style: Object;
+  style: object;
 }
 
 export type StickyProps = {

@@ -4,21 +4,23 @@
 
 ### Enhancements
 
-- Updated the type of the `title` prop in `ChoiceList` from `string` to `ReactNode` ([#2355](https://github.com/Shopify/polaris-react/pull/2355))
+- Add `external` prop to `ResourceList` [#2408](https://github.com/Shopify/polaris-react/pull/2408)
+- Add `onMouseEnter` and `onTouchStart` props to `Button` ([#2409](https://github.com/Shopify/polaris-react/pull/2409))
 
 ### Bug fixes
 
-- Fixed an issue where types were not generated for a JSON config file [#2361](https://github.com/Shopify/polaris-react/pull/2361))
 - Prevented scrolling to `Popover` content in development ([#2403](https://github.com/Shopify/polaris-react/pull/2403))
+- Fixed an issue which caused HSL colors to not display in Edge ((#2418)[https://github.com/Shopify/polaris-react/pull/2418])
+- Fixed an issue where the dropzone component jumped from an extra-large layout to a layout based on the width of it's container ([#2412](https://github.com/Shopify/polaris-react/pull/2412))
 
 ### Documentation
 
 ### Development workflow
 
-- Enabled maintainers running `yarn dev` to hide [`yarn splash`](https://github.com/Shopify/polaris-react/tree/master/scripts/splash) reports from the console by running `DISABLE_SPLASH=1 yarn dev` ([#2372](https://github.com/Shopify/polaris-react/pull/2372))
-
 ### Dependency upgrades
 
 ### Code quality
+
+- Changed `aria-labelledby` to always exist on `TextField` ([#2401](https://github.com/Shopify/polaris-react/pull/2401))
 
 ### Deprecations

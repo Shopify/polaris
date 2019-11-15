@@ -13,9 +13,6 @@ import {useAppBridge} from '../../utilities/app-bridge';
 // crashing if we write `ComposedProps = ToastProps & WithAppProviderProps`
 export interface ToastProps extends ToastProps {}
 
-// This does have a display name, but the linting has a bug in it
-// https://github.com/yannickcr/eslint-plugin-react/issues/2324
-// eslint-disable-next-line react/display-name
 export const Toast = React.memo(function Toast(props: ToastProps) {
   const id = useUniqueId('Toast');
   const appBridgeToast = useRef<AppBridgeToast.Toast>();

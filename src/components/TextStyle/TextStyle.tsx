@@ -4,7 +4,7 @@ import styles from './TextStyle.scss';
 
 export type Variation = 'positive' | 'negative' | 'strong' | 'subdued' | 'code';
 
-enum VariationValue {
+export enum VariationValue {
   Positive = 'positive',
   Negative = 'negative',
   Strong = 'strong',

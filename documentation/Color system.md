@@ -2,11 +2,78 @@
 
 ⚠️The color system is currently an unstable API, and is subject to change in non-major releases of Polaris react. Please use with caution.
 
+- [Surface (default: `#FAFAFA`)](#surface-default-fafafa)
+  - [Surface concepts](#surface-concepts)
+  - [Surface Base: `--p-surface`](#surface-base---p-surface)
+  - [Surface Background](#surface-background)
+  - [Surface Foreground](#surface-foreground)
+  - [Surface Foreground Subdued](#surface-foreground-subdued)
+  - [Surface Hovered](#surface-hovered)
+  - [Surface Pressed: `--p-surface-pressed`](#surface-pressed---p-surface-pressed)
+- [On Surface (default: `#1F2225`)](#on-surface-default-1f2225)
+  - [On Surface base: `--p-on-surface`](#on-surface-base---p-on-surface)
+  - [Border](#border)
+    - [Border Disabled](#border-disabled)
+    - [Border Subdued](#border-subdued)
+  - [Icon](#icon)
+    - [Icon subdued](#icon-subdued)
+    - [Icon disabled](#icon-disabled)
+  - [Text](#text)
+    - [Text Subdued](#text-subdued)
+    - [Text Disabled](#text-disabled)
+- [Interactive (default: `#0870D9`)](#interactive-default-0870d9)
+  - [Interactive Base: `--p-interactive`](#interactive-base---p-interactive)
+  - [Interactive Action](#interactive-action)
+  - [Interactive Focus: `--p-interactive-focus`](#interactive-focus---p-interactive-focus)
+  - [Interactive Selected](#interactive-selected)
+- [Neutral (default: `#EAEAEB`)](#neutral-default-eaeaeb)
+  - [Neutral Base : `--p-neutral`](#neutral-base----p-neutral)
+  - [Neutral Action](#neutral-action)
+- [Branded (default: `#008060`)](#branded-default-008060)
+  - [Branded Base: `--p-branded`](#branded-base---p-branded)
+  - [Branded Action](#branded-action)
+  - [Icon On Branded](#icon-on-branded)
+  - [Text On Branded](#text-on-branded)
+  - [Branded Selected](#branded-selected)
+- [Critical (default: `#D82C0D`)](#critical-default-d82c0d)
+  - [Critical Base : `--p-critical`](#critical-base----p-critical)
+  - [Critical Border](#critical-border)
+  - [Critical Icon: `--p-critical-icon`](#critical-icon---p-critical-icon)
+  - [Critical Surface: `--p-critical-surface`](#critical-surface---p-critical-surface)
+  - [Critical Surface Subdued: `--p-critical-surface-subdued`](#critical-surface-subdued---p-critical-surface-subdued)
+  - [Critical Surface Subdued Hovered: `--p-critical-surface-subdued-hovered`](#critical-surface-subdued-hovered---p-critical-surface-subdued-hovered)
+  - [Critical Surface Subdued Pressed: `--p-critical-surface-subdued-pressed`](#critical-surface-subdued-pressed---p-critical-surface-subdued-pressed)
+  - [Critical Text: `--p-critical-text`](#critical-text---p-critical-text)
+  - [Critical Action](#critical-action)
+  - [Critical Link](#critical-link)
+- [Warning (default: `#FFC453`)](#warning-default-ffc453)
+  - [Warning Base: `--p-warning`](#warning-base---p-warning)
+  - [Warning Border: `--p-warning-border`](#warning-border---p-warning-border)
+  - [Warning Icon: `--p-warning-icon`](#warning-icon---p-warning-icon)
+  - [Warning Surface: `--p-warning-surface`](#warning-surface---p-warning-surface)
+  - [Warning Surface Subdued: `--p-warning-surface-subdued`](#warning-surface-subdued---p-warning-surface-subdued)
+  - [Warning Text: `--p-warning-text`](#warning-text---p-warning-text)
+- [Highlight (default: `#59D0C2`)](#highlight-default-59d0c2)
+  - [Highlight Base: `--p-highlight`](#highlight-base---p-highlight)
+  - [Highlight Border: `--p-highlight-border`](#highlight-border---p-highlight-border)
+  - [Highlight Icon: `--p-highlight-icon`](#highlight-icon---p-highlight-icon)
+  - [Highlight Surface: `--p-highlight-surface`](#highlight-surface---p-highlight-surface)
+  - [Highlight Surface Subdued: `--p-highlight-surface-subdued`](#highlight-surface-subdued---p-highlight-surface-subdued)
+  - [Highlight Text: `--p-highlight-text`](#highlight-text---p-highlight-text)
+- [Success (default: `#008060`)](#success-default-008060)
+  - [Success Base: `--p-success`](#success-base---p-success)
+  - [Success Border: `--p-success-border`](#success-border---p-success-border)
+  - [Success Icon: `--p-success-icon`](#success-icon---p-success-icon)
+  - [Success Surface: `--p-success-surface`](#success-surface---p-success-surface)
+  - [Success Surface Subdued: `--p-success-surface-subdued`](#success-surface-subdued---p-success-surface-subdued)
+  - [Success Text: `--p-success-text`](#success-text---p-success-text)
+- [Transparency](#transparency)
+  - [Backdrop](#backdrop)
+  - [Shadow](#shadow)
+
 ## Surface (default: `#FAFAFA`)
 
 The surface role is used for the backgrounds of our UIs, and consists of a range of gray hues. In light mode, surface colors are nearly white, while in dark mode, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts.
-
-**Note** surface variants needed: inverse background, inverse foreground, dark background, dark foreground, light background, light foreground.
 
 ### Surface concepts
 
@@ -68,74 +135,38 @@ For use as a surface color on interactive elements such as resource list items a
 
 ## On Surface (default: `#1F2225`)
 
-The On Surface role is made up of elements which appear on top of a surface, including plain text actions, borders (dividers), neutral icons, and text. When a light Surface is provided, On Surface values will be dark. When a dark surface is provided, On Surface values will be light.
+The On Surface role is made up of elements which appear on top of a surface, including borders, neutral icons, and text. When a light Surface is provided, On Surface values will be dark. When a dark surface is provided, On Surface values will be light.
 
 ### On Surface base: `--p-on-surface`
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-### Action
+### Border
 
-For use in plain text actions as a text color. **Note** might be clearer if named `Link`
+For use as a border (border or interactive outline).
 
-- Action On Surface: `--p-action-on-surface`
-- Action On Inverse: `--p-action-on-inverse`
-- Action On Dark: `--p-action-on-dark`
-- Action On Light: `--p-action-on-light`
+- Border On Surface: `--p-border-on-surface`
+- Border On Inverse: `--p-border-on-inverse`
+- Border On Dark: `--p-border-on-dark`
+- Border On Light: `--p-border-on-light`
 
-#### Action Disabled
-
-For use in plain text disabled actions as a text color.
-
-- Action Disabled On Surface: `--p-action-disabled-on-surface`
-- Action Disabled On Inverse: `--p-action-disabled-on-inverse`
-- Action Disabled On Dark: `--p-action-disabled-on-dark`
-- Action Disabled On Light: `--p-action-disabled-on-light`
-
-#### Action Hovered
-
-For use in plain text hovered actions as a text color.
-
-- Action Hovered On Surface: `--p-action-hovered-on-surface`
-- Action Hovered On Inverse: `--p-action-hovered-on-inverse`
-- Action Hovered On Dark: `--p-action-hovered-on-dark`
-- Action Hovered On Light: `--p-action-hovered-on-light`
-
-#### Action Pressed
-
-For use in plain text pressed actions as a text color.
-
-- Action Pressed On Surface: `--p-action-pressed-on-surface`
-- Action Pressed On Inverse: `--p-action-pressed-on-inverse`
-- Action Pressed On Dark: `--p-action-pressed-on-dark`
-- Action Pressed On Light: `--p-action-pressed-on-light`
-
-### Divider
-
-For use as a divider (border or interactive outline).
-
-- Divider On Surface: `--p-divider-on-surface`
-- Divider On Inverse: `--p-divider-on-inverse`
-- Divider On Dark: `--p-divider-on-dark`
-- Divider On Light: `--p-divider-on-light`
-
-#### Divider Disabled
+#### Border Disabled
 
 For use as a an interactive outline on disabled elements.
 
-- Divider Disabled On Surface: `--p-divider-disabled-on-surface`
-- Divider Disabled On Inverse: `--p-divider-disabled-on-inverse`
-- Divider Disabled On Dark: `--p-divider-disabled-on-dark`
-- Divider Disabled On Light: `--p-divider-disabled-on-light`
+- Border Disabled On Surface: `--p-border-disabled-on-surface`
+- Border Disabled On Inverse: `--p-border-disabled-on-inverse`
+- Border Disabled On Dark: `--p-border-disabled-on-dark`
+- Border Disabled On Light: `--p-border-disabled-on-light`
 
-#### Divider Subdued
+#### Border Subdued
 
-For use as a subdued divider (border or interactive outline).
+For use as a subdued border (border or interactive outline).
 
-- Divider Subdued On Surface: `--p-divider-subdued-on-surface`
-- Divider Subdued On Inverse: `--p-divider-subdued-on-inverse`
-- Divider Subdued On Dark: `--p-divider-subdued-on-dark`
-- Divider Subdued On Light: `--p-divider-subdued-on-light`
+- Border Subdued On Surface: `--p-border-subdued-on-surface`
+- Border Subdued On Inverse: `--p-border-subdued-on-inverse`
+- Border Subdued On Dark: `--p-border-subdued-on-dark`
+- Border Subdued On Light: `--p-border-subdued-on-light`
 
 ### Icon
 
@@ -203,8 +234,6 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 ### Interactive Action
 
-For use as a text color in links and plain buttons. **Note** would be clearer if named `Link`
-
 - Interactive Action: `--p-interactive-action`
 - Interactive Action Disabled: `--p-interactive-action-disabled`
 - Interactive Action Hovered: `--p-interactive-action-hovered`
@@ -261,17 +290,19 @@ Used as the background color for primary actions, and as the fill color for icon
 
 ### Icon On Branded
 
-For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs. **Note** disabled variant needed.
+For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs.
 
 - Icon On Branded: `--p-icon-on-branded`
 - Icon Subdued On Branded: `--p-icon-subdued-on-branded`
+- Icon Disabled On Branded: `--p-icon-disabled-on-branded`
 
 ### Text On Branded
 
-For use as a text color on primary actions. Not for use in text on navigation and tabs. **Note** disabled variant needed.
+For use as a text color on primary actions. Not for use in text on navigation and tabs.
 
 - Text On Branded: `--p-text-on-branded`
 - Text Subdued On Branded: `--p-text-subdued-on-branded`
+- Text Disabled On Branded: `--p-text-disabled-on-branded`
 
 ### Branded Selected
 
@@ -291,12 +322,12 @@ Used to communicate destructive outcomes on interactive elements, for communicat
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-### Critical Divider
+### Critical Border
 
 For use as a border on critical components such as banners, and as an outline on interactive elements in an error state.
 
-- Critical Divider: `--p-critical-divider`
-- Critical Divider Disabled: `--p-critical-divider-disabled`
+- Critical Border: `--p-critical-border`
+- Critical Border Disabled: `--p-critical-border-disabled`
 
 ### Critical Icon: `--p-critical-icon`
 
@@ -331,10 +362,6 @@ For use as the background color for destructive buttons, and as the background c
 - Critical Action Hovered: `--p-critical-action-hovered`
 - Critical Action Pressed: `--p-critical-action-pressed`
 
-### Critical Action Subdued: `--p-critical-action-subdued`
-
-**Note** Not currently used, and likely to be deleted
-
 ### Critical Link
 
 For use as a text color in destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
@@ -354,7 +381,7 @@ For use as an indicator that action should be taken by merchants in components i
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-### Warning Divider: `--p-warning-divider`
+### Warning Border: `--p-warning-border`
 
 For use as a border on warning components such as banners.
 
@@ -384,7 +411,7 @@ Used to highlight elements of the UI that are important for merchants, but do no
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-### Highlight Divider: `--p-highlight-divider`
+### Highlight Border: `--p-highlight-border`
 
 For use as a border on informational components such as banners.
 
@@ -414,7 +441,7 @@ Used to indicate the result of a successful action taken by a merchant, to indic
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-### Success Divider: `--p-success-divider`
+### Success Border: `--p-success-border`
 
 For use as a border on success components such as banners.
 
@@ -442,9 +469,12 @@ Used to add depth to our UIs in the cases of backdrops and shadows. Used in navi
 
 **Note**: a white transparent backdrop is needed
 
-### Backdrop : `--p-backdrop`
+### Backdrop
 
 For use as the background color of the backdrop component for navigation and modal.
+
+- Backdrop: `--p-backdrop`
+- Backdrop Light: `--p-backdrop-light`
 
 ### Shadow
 

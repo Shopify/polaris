@@ -1,6 +1,5 @@
 import {ColorAdjustments} from './types';
 
-/* eslint-disable babel/camelcase */
 // eslint-disable-next-line shopify/typescript/prefer-pascal-case-enums
 export enum UNSTABLE_Color {
   Surface = '#FAFAFA',
@@ -13,7 +12,7 @@ export enum UNSTABLE_Color {
   Warning = '#FFC453',
   Highlight = '#59D0C2',
   Success = '#008060',
-} /* eslint-enable babel/camelcase */
+}
 
 export const colorAdjustments: ColorAdjustments = {
   surface: {baseColor: 'surface', light: {}, dark: {}},
@@ -22,101 +21,131 @@ export const colorAdjustments: ColorAdjustments = {
     light: {lightness: 97.9},
     dark: {lightness: 3.3},
   },
+  surfaceInverseBackground: {
+    baseColor: 'surface',
+    light: {lightness: 3.3},
+    dark: {lightness: 97.9},
+  },
+  surfaceDarkBackground: {
+    baseColor: 'surface',
+    light: {lightness: 3.3},
+    dark: {lightness: 3.3},
+  },
+  surfaceLightBackground: {
+    baseColor: 'surface',
+    light: {lightness: 97.9},
+    dark: {lightness: 97.9},
+  },
   surfaceForeground: {
     baseColor: 'surface',
     light: {lightness: 100},
     dark: {lightness: 8.8},
+  },
+  surfaceInverseForeground: {
+    baseColor: 'surface',
+    light: {lightness: 8.8},
+    dark: {lightness: 100},
+  },
+  surfaceDarkForeground: {
+    baseColor: 'surface',
+    light: {lightness: 8.8},
+    dark: {lightness: 8.8},
+  },
+  surfaceLightForeground: {
+    baseColor: 'surface',
+    light: {lightness: 100},
+    dark: {lightness: 100},
   },
   surfaceForegroundSubdued: {
     baseColor: 'surface',
     light: {lightness: 95},
     dark: {lightness: 10},
   },
-  surfaceInverse: {
+  surfaceInverseForegroundSubdued: {
     baseColor: 'surface',
-    light: {lightness: 0},
-    dark: {lightness: 100},
+    light: {lightness: 10},
+    dark: {lightness: 95},
+  },
+  surfaceDarkForegroundSubdued: {
+    baseColor: 'surface',
+    light: {lightness: 10},
+    dark: {lightness: 10},
+  },
+  surfaceLightForegroundSubdued: {
+    baseColor: 'surface',
+    light: {lightness: 95},
+    dark: {lightness: 95},
   },
   surfaceHovered: {
     baseColor: 'surface',
     light: {lightness: 95},
     dark: {lightness: 20},
   },
+  surfaceInverseHovered: {
+    baseColor: 'surface',
+    light: {lightness: 20},
+    dark: {lightness: 95},
+  },
+  surfaceDarkHovered: {
+    baseColor: 'surface',
+    light: {lightness: 20},
+    dark: {lightness: 20},
+  },
+  surfaceLightHovered: {
+    baseColor: 'surface',
+    light: {lightness: 95},
+    dark: {lightness: 95},
+  },
   surfacePressed: {
     baseColor: 'surface',
     light: {lightness: 90},
     dark: {lightness: 27},
   },
+  surfaceInversePressed: {
+    baseColor: 'surface',
+    light: {lightness: 27},
+    dark: {lightness: 90},
+  },
+  surfaceDarkPressed: {
+    baseColor: 'surface',
+    light: {lightness: 27},
+    dark: {lightness: 27},
+  },
+  surfaceLightPressed: {
+    baseColor: 'surface',
+    light: {lightness: 90},
+    dark: {lightness: 90},
+  },
   onSurface: {baseColor: 'onSurface', light: {}, dark: {}},
-  actionOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 76},
-    dark: {lightness: 36},
-  },
-  actionOnSurface: {
-    baseColor: 'onSurface',
-    light: {lightness: 36},
-    dark: {lightness: 76},
-  },
-  actionDisabledOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 66},
-    dark: {lightness: 46},
-  },
-  actionDisabledOnSurface: {
-    baseColor: 'onSurface',
-    light: {lightness: 46},
-    dark: {lightness: 66},
-  },
-  actionHoveredOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 86},
-    dark: {lightness: 26},
-  },
-  actionHoveredOnSurface: {
-    baseColor: 'onSurface',
-    light: {lightness: 26},
-    dark: {lightness: 86},
-  },
-  actionPressedOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 96},
-    dark: {lightness: 16},
-  },
-  actionPressedOnSurface: {
-    baseColor: 'onSurface',
-    light: {lightness: 16},
-    dark: {lightness: 96},
-  },
-  dividerOnInverse: {
+  borderOnInverse: {
     baseColor: 'onSurface',
     light: {lightness: 80},
     dark: {lightness: 75},
   },
-  dividerOnSurface: {
+  borderOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 75},
     dark: {lightness: 35},
   },
-  dividerDisabledOnInverse: {
+  borderDisabledOnInverse: {
     baseColor: 'onSurface',
     light: {lightness: 70},
     dark: {lightness: 95},
   },
-  dividerDisabledOnSurface: {
+  borderDisabledOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 95},
     dark: {lightness: 70},
   },
-  dividerSubduedOnInverse: {
+  borderSubduedOnInverse: {
     baseColor: 'onSurface',
     light: {lightness: 75},
     dark: {lightness: 85},
   },
-  dividerSubduedOnSurface: {
+  borderSubduedOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 85},
-    dark: {lightness: 25},
+    dark: {lightness: 15},
   },
   iconOnInverse: {
     baseColor: 'onSurface',
@@ -176,7 +205,7 @@ export const colorAdjustments: ColorAdjustments = {
   textSubduedOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 38},
-    dark: {lightness: 90},
+    dark: {lightness: 62},
   },
   actionOnDark: {
     baseColor: 'onSurface',
@@ -218,32 +247,32 @@ export const colorAdjustments: ColorAdjustments = {
     light: {lightness: 16},
     dark: {lightness: 16},
   },
-  dividerOnDark: {
+  borderOnDark: {
     baseColor: 'onSurface',
     light: {lightness: 80},
     dark: {lightness: 80},
   },
-  dividerOnLight: {
+  borderOnLight: {
     baseColor: 'onSurface',
     light: {lightness: 75},
     dark: {lightness: 75},
   },
-  dividerDisabledOnDark: {
+  borderDisabledOnDark: {
     baseColor: 'onSurface',
     light: {lightness: 70},
     dark: {lightness: 70},
   },
-  dividerDisabledOnLight: {
+  borderDisabledOnLight: {
     baseColor: 'onSurface',
     light: {lightness: 95},
     dark: {lightness: 95},
   },
-  dividerSubduedOnDark: {
+  borderSubduedOnDark: {
     baseColor: 'onSurface',
     light: {lightness: 75},
     dark: {lightness: 75},
   },
-  dividerSubduedOnLight: {
+  borderSubduedOnLight: {
     baseColor: 'onSurface',
     light: {lightness: 85},
     dark: {lightness: 85},
@@ -432,12 +461,12 @@ export const colorAdjustments: ColorAdjustments = {
     dark: {lightness: 26, saturation: 22},
   },
   critical: {baseColor: 'critical', light: {}, dark: {}},
-  criticalDivider: {
+  criticalBorder: {
     baseColor: 'critical',
     light: {lightness: 50},
     dark: {lightness: 50},
   },
-  criticalDividerDisabled: {
+  criticalBorderDisabled: {
     baseColor: 'critical',
     light: {lightness: 82},
     dark: {lightness: 28},
@@ -469,8 +498,8 @@ export const colorAdjustments: ColorAdjustments = {
   },
   criticalText: {
     baseColor: 'critical',
-    light: {lightness: 30},
-    dark: {lightness: 70},
+    light: {lightness: 40},
+    dark: {lightness: 60},
   },
   criticalActionDisabled: {
     baseColor: 'critical',
@@ -486,11 +515,6 @@ export const colorAdjustments: ColorAdjustments = {
     baseColor: 'critical',
     light: {lightness: 42.5},
     dark: {lightness: 50},
-  },
-  criticalActionSubdued: {
-    baseColor: 'critical',
-    light: {lightness: 38},
-    dark: {lightness: 62},
   },
   criticalActionPressed: {
     baseColor: 'critical',
@@ -518,7 +542,7 @@ export const colorAdjustments: ColorAdjustments = {
     dark: {lightness: 75},
   },
   warning: {baseColor: 'warning', light: {}, dark: {}},
-  warningDivider: {
+  warningBorder: {
     baseColor: 'warning',
     light: {lightness: 76.6},
     dark: {lightness: 50},
@@ -544,7 +568,7 @@ export const colorAdjustments: ColorAdjustments = {
     dark: {lightness: 70},
   },
   highlight: {baseColor: 'highlight', light: {}, dark: {}},
-  highlightDivider: {
+  highlightBorder: {
     baseColor: 'highlight',
     light: {lightness: 60},
     dark: {lightness: 60},
@@ -570,7 +594,7 @@ export const colorAdjustments: ColorAdjustments = {
     dark: {lightness: 2},
   },
   success: {baseColor: 'success', light: {}, dark: {}},
-  successDivider: {
+  successBorder: {
     baseColor: 'success',
     light: {lightness: 50},
     dark: {lightness: 50},
@@ -592,8 +616,8 @@ export const colorAdjustments: ColorAdjustments = {
   },
   successText: {
     baseColor: 'success',
-    light: {lightness: 15},
-    dark: {lightness: 85},
+    light: {lightness: 40},
+    dark: {lightness: 60},
   },
   backdrop: {
     baseColor: 'surface',
@@ -607,6 +631,21 @@ export const colorAdjustments: ColorAdjustments = {
       hue: 0,
       saturation: 0,
       lightness: 0,
+      alpha: 0.5,
+    },
+  },
+  backdropLight: {
+    baseColor: 'surface',
+    light: {
+      hue: 0,
+      saturation: 0,
+      lightness: 100,
+      alpha: 0.5,
+    },
+    dark: {
+      hue: 0,
+      saturation: 0,
+      lightness: 100,
       alpha: 0.5,
     },
   },

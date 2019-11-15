@@ -35,9 +35,6 @@ export enum DateFilterOption {
   OnOrAfter = 'on_or_after',
 }
 
-// This does have a display name, but the linting has a bug in it
-// https://github.com/yannickcr/eslint-plugin-react/issues/2324
-// eslint-disable-next-line react/display-name
 export const DateSelector = memo(function DateSelector({
   filterValue,
   filterKey,

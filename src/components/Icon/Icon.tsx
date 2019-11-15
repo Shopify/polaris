@@ -24,15 +24,14 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   const i18n = useI18n();
   const telemetry = useTelemetry();
 
-  /* eslint-disable babel/camelcase */
   useEffect(() => {
     telemetry.produce('polaris_icons_usage/1.0', {
+      // eslint-disable-next-line @typescript-eslint/camelcase
       icon_source: parseSource(source),
     });
   }, [source, telemetry]);
-  /* eslint-enable babel/camelcase */
 
-  if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {
+  if (color && backdrop && !COLORS_WITH_BACKDROPS.includes(color)) {
     // eslint-disable-next-line no-console
     console.warn(
       i18n.translate('Polaris.Icon.backdropWarning', {

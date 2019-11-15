@@ -59,6 +59,15 @@ describe('<TextField />', () => {
     expect(input.prop('prefix')).toBeUndefined();
   });
 
+  it('always has an `aria-labelledby` property', () => {
+    const textField = mountWithAppProvider(
+      <TextField label="TextField" onChange={noop} />,
+    );
+    const property = textField.find('input').prop('aria-labelledby');
+
+    expect(property).not.toHaveLength(0);
+  });
+
   describe('onChange()', () => {
     it('is called with the new value', () => {
       const spy = jest.fn();

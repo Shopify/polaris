@@ -22,7 +22,9 @@ export interface FileUploadProps {
 
 export function FileUpload(props: FileUploadProps) {
   const i18n = useI18n();
-  const {size, type, focused, disabled} = useContext(DropZoneContext);
+  const {size, measuring, type, focused, disabled} = useContext(
+    DropZoneContext,
+  );
   const suffix = capitalize(type);
   const {
     actionTitle = i18n.translate(
@@ -115,8 +117,13 @@ export function FileUpload(props: FileUploadProps) {
       </Stack>
     ) : null;
 
+  const fileUploadClassName = classNames(
+    styles.FileUpload,
+    measuring && styles.measuring,
+  );
+
   return (
-    <div className={styles.FileUpload}>
+    <div className={fileUploadClassName}>
       {smallView}
       {mediumView}
       {largeView}

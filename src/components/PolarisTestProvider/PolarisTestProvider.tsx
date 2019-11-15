@@ -36,7 +36,7 @@ type MediaQueryContextType = NonNullable<
  * this is the type of the options object. These values are customizable when
  * you call the app
  */
-export type WithPolarisTestProviderOptions = {
+export interface WithPolarisTestProviderOptions {
   // Contexts provided by AppProvider
   i18n?: TranslationDictionary | TranslationDictionary[];
   appBridge?: AppBridgeOptions;
@@ -46,7 +46,7 @@ export type WithPolarisTestProviderOptions = {
   features?: Features;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
-};
+}
 
 export interface PolarisTestProviderProps
   extends WithPolarisTestProviderOptions {
