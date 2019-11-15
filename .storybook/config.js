@@ -15,6 +15,7 @@ import {Playground} from '../playground/Playground';
 import {KitchenSink} from '../playground/KitchenSink';
 import {DetailsPage} from '../playground/DetailsPage';
 import enTranslations from '../locales/en.json';
+import {UNSTABLE_Color} from '../src/utilities/theme';
 
 addParameters({
   options: {
@@ -72,7 +73,7 @@ addDecorator(
             i18n: enTranslations,
             features: {
               unstableGlobalTheming: true,
-              theme: {UNSTABLE_colors: {surface: '#FAFAFA'}},
+              theme: {UNSTABLE_colors: {surface: UNSTABLE_Color.Surface}},
             },
           },
         },
@@ -82,8 +83,7 @@ addDecorator(
             i18n: enTranslations,
             features: {unstableGlobalTheming: true},
             theme: {
-              colors: {topBar: {background: '#357997'}},
-              UNSTABLE_colors: {surface: '#111213'},
+              UNSTABLE_colors: {surface: UNSTABLE_Color.DarkSurface},
             },
           },
         },
