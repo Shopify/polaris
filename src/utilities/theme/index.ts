@@ -6,4 +6,4 @@ export {Theme, ThemeConfig, CustomPropertiesLike} from './types';
 
 export {UNSTABLE_Color} from './color-adjustments';
 
-export {buildCustomProperties, buildThemeContext} from './utils';
+export {buildCustomProperties, buildThemeContext, buildColors} from './utils';
