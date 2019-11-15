@@ -86,14 +86,6 @@ export function DetailsPage() {
     setToastActive(true);
     setStoreName(defaultState.current.nameFieldValue);
   }, [emailFieldValue, nameFieldValue]);
-  const handleNameFieldChange = useCallback((value) => {
-    setNameFieldValue(value);
-    value && setIsDirty(true);
-  }, []);
-  const handleEmailFieldChange = useCallback((value) => {
-    setEmailFieldValue(value);
-    value && setIsDirty(true);
-  }, []);
   const handleSearchResultsDismiss = useCallback(() => {
     setSearchActive(false);
     setSearchValue('');
@@ -340,6 +332,7 @@ export function DetailsPage() {
       }}
     >
       <Layout>
+        {skipToContentTarget}
         <Layout.Section>
           <Card sectioned>
             <FormLayout>
@@ -430,23 +423,6 @@ export function DetailsPage() {
       </Modal.Section>
     </Modal>
   );
-
-  const theme = {
-    colors: {
-      topBar: {
-        background: '#357997',
-      },
-    },
-    logo: {
-      width: 124,
-      topBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-      contextualSaveBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-      url: 'http://jadedpixel.com',
-      accessibilityLabel: 'Jaded Pixel',
-    },
-  };
 
   return (
     <Frame
