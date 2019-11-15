@@ -22,321 +22,71 @@ export const colorAdjustments: ColorAdjustments = {
     light: {lightness: 97.9},
     dark: {lightness: 3.3},
   },
-  surfaceInverseBackground: {
-    baseColor: 'surface',
-    light: {lightness: 3.3},
-    dark: {lightness: 97.9},
-  },
-  surfaceDarkBackground: {
-    baseColor: 'surface',
-    light: {lightness: 3.3},
-    dark: {lightness: 3.3},
-  },
-  surfaceLightBackground: {
-    baseColor: 'surface',
-    light: {lightness: 97.9},
-    dark: {lightness: 97.9},
-  },
   surfaceForeground: {
     baseColor: 'surface',
     light: {lightness: 100},
     dark: {lightness: 8.8},
-  },
-  surfaceInverseForeground: {
-    baseColor: 'surface',
-    light: {lightness: 8.8},
-    dark: {lightness: 100},
-  },
-  surfaceDarkForeground: {
-    baseColor: 'surface',
-    light: {lightness: 8.8},
-    dark: {lightness: 8.8},
-  },
-  surfaceLightForeground: {
-    baseColor: 'surface',
-    light: {lightness: 100},
-    dark: {lightness: 100},
   },
   surfaceForegroundSubdued: {
     baseColor: 'surface',
     light: {lightness: 95},
     dark: {lightness: 10},
   },
-  surfaceInverseForegroundSubdued: {
-    baseColor: 'surface',
-    light: {lightness: 10},
-    dark: {lightness: 95},
-  },
-  surfaceDarkForegroundSubdued: {
-    baseColor: 'surface',
-    light: {lightness: 10},
-    dark: {lightness: 10},
-  },
-  surfaceLightForegroundSubdued: {
-    baseColor: 'surface',
-    light: {lightness: 95},
-    dark: {lightness: 95},
-  },
   surfaceHovered: {
     baseColor: 'surface',
     light: {lightness: 95},
     dark: {lightness: 20},
-  },
-  surfaceInverseHovered: {
-    baseColor: 'surface',
-    light: {lightness: 20},
-    dark: {lightness: 95},
-  },
-  surfaceDarkHovered: {
-    baseColor: 'surface',
-    light: {lightness: 20},
-    dark: {lightness: 20},
-  },
-  surfaceLightHovered: {
-    baseColor: 'surface',
-    light: {lightness: 95},
-    dark: {lightness: 95},
   },
   surfacePressed: {
     baseColor: 'surface',
     light: {lightness: 90},
     dark: {lightness: 27},
   },
-  surfaceInversePressed: {
-    baseColor: 'surface',
-    light: {lightness: 27},
-    dark: {lightness: 90},
-  },
-  surfaceDarkPressed: {
-    baseColor: 'surface',
-    light: {lightness: 27},
-    dark: {lightness: 27},
-  },
-  surfaceLightPressed: {
-    baseColor: 'surface',
-    light: {lightness: 90},
-    dark: {lightness: 90},
-  },
   onSurface: {baseColor: 'onSurface', light: {}, dark: {}},
-  borderOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 80},
-    dark: {lightness: 75},
-  },
   borderOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 75},
     dark: {lightness: 35},
-  },
-  borderDisabledOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 70},
-    dark: {lightness: 95},
   },
   borderDisabledOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 95},
     dark: {lightness: 70},
   },
-  borderSubduedOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 75},
-    dark: {lightness: 85},
-  },
   borderSubduedOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 85},
     dark: {lightness: 15},
-  },
-  iconOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 98},
-    dark: {lightness: 18},
   },
   iconOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 29.9},
     dark: {lightness: 98},
   },
-  iconDisabledOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 75},
-    dark: {lightness: 68},
-  },
   iconDisabledOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 68},
     dark: {lightness: 75},
-  },
-  iconSubduedOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 88},
-    dark: {lightness: 43},
   },
   iconSubduedOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 59.8},
     dark: {lightness: 62},
   },
-  textOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 100},
-    dark: {lightness: 13},
-  },
   textOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 13},
     dark: {lightness: 100},
-  },
-  textDisabledOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 80},
-    dark: {lightness: 63},
   },
   textDisabledOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 61.3},
     dark: {lightness: 50},
   },
-  textSubduedOnInverse: {
-    baseColor: 'onSurface',
-    light: {lightness: 90},
-    dark: {lightness: 38},
-  },
   textSubduedOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 38},
     dark: {lightness: 62},
-  },
-  actionOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 76},
-    dark: {lightness: 76},
-  },
-  actionOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 36},
-    dark: {lightness: 36},
-  },
-  actionDisabledOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 66},
-    dark: {lightness: 66},
-  },
-  actionDisabledOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 46},
-    dark: {lightness: 46},
-  },
-  actionHoveredOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 86},
-    dark: {lightness: 86},
-  },
-  actionHoveredOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 26},
-    dark: {lightness: 26},
-  },
-  actionPressedOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 96},
-    dark: {lightness: 96},
-  },
-  actionPressedOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 16},
-    dark: {lightness: 16},
-  },
-  borderOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 80},
-    dark: {lightness: 80},
-  },
-  borderOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 75},
-    dark: {lightness: 75},
-  },
-  borderDisabledOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 70},
-    dark: {lightness: 70},
-  },
-  borderDisabledOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 95},
-    dark: {lightness: 95},
-  },
-  borderSubduedOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 75},
-    dark: {lightness: 75},
-  },
-  borderSubduedOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 85},
-    dark: {lightness: 85},
-  },
-  iconOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 98},
-    dark: {lightness: 98},
-  },
-  iconOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 18},
-    dark: {lightness: 18},
-  },
-  iconDisabledOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 75},
-    dark: {lightness: 75},
-  },
-  iconDisabledOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 68},
-    dark: {lightness: 68},
-  },
-  iconSubduedOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 88},
-    dark: {lightness: 88},
-  },
-  iconSubduedOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 39.5},
-    dark: {lightness: 39.5},
-  },
-  textOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 100},
-    dark: {lightness: 100},
-  },
-  textOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 8.8},
-    dark: {lightness: 8.8},
-  },
-  textDisabledOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 80},
-    dark: {lightness: 80},
-  },
-  textDisabledOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 63},
-    dark: {lightness: 63},
-  },
-  textSubduedOnDark: {
-    baseColor: 'onSurface',
-    light: {lightness: 90},
-    dark: {lightness: 90},
-  },
-  textSubduedOnLight: {
-    baseColor: 'onSurface',
-    light: {lightness: 38},
-    dark: {lightness: 38},
   },
   interactive: {baseColor: 'interactive', light: {}, dark: {}},
   interactiveAction: {

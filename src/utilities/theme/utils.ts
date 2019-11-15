@@ -1,5 +1,6 @@
 import tokens from '@shopify/polaris-tokens';
 import {hexToHsluv, hsluvToHex} from 'hsluv';
+import isEqual from 'lodash/isEqual';
 import {HSLColor, HSLAColor} from '../color-types';
 import {
   colorToHsla,
@@ -84,12 +85,43 @@ export function buildColors(theme: ThemeConfig) {
         alpha = 1,
       } = colorAdjustment[lightSurface ? 'light' : 'dark'];
 
+      let additionalRoles = {};
+
+      if (!isEqual(colorAdjustment.light, colorAdjustment.dark)) {
+        const variants = {
+          Inverse: colorAdjustment[lightSurface ? 'dark' : 'light'],
+          Light: colorAdjustment.light,
+          Dark: colorAdjustment.dark,
+        };
+
+        additionalRoles = Object.entries(variants).reduce(
+          (accumulator, [variant, adjustment]) => {
+            const {
+              hue = baseColor.hue,
+              saturation = baseColor.saturation,
+              lightness = baseColor.lightness,
+              alpha = 1,
+            } = adjustment;
+
+            return {
+              ...accumulator,
+              [colorRole + variant]: hslToString({
+                ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
+                alpha,
+              }),
+            };
+          },
+          {},
+        );
+      }
+
       return {
         ...accumulator,
         [colorRole]: hslToString({
           ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
           alpha,
         }),
+        ...additionalRoles,
       };
     },
     {},

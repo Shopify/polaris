@@ -155,12 +155,12 @@
     background: var(--p-button-color);
     border-color: transparent;
     box-shadow: none;
-    color: var(--p-text-on-dark);
+    color: var(--p-text-on-surface-dark);
 
     &:hover {
       background: var(--p-button-color-hover);
       border-color: transparent;
-      color: var(--p-text-on-dark);
+      color: var(--p-text-on-surface-dark);
     }
 
     &:focus {
