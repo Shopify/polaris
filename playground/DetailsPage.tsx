@@ -14,7 +14,6 @@ import {
 } from '@shopify/polaris-icons';
 import {
   ActionList,
-  Avatar,
   Card,
   ContextualSaveBar,
   FormLayout,
@@ -36,6 +35,7 @@ import {
   DropZone,
   Stack,
   Caption,
+  Thumbnail,
 } from '../src';
 
 export function DetailsPage() {
@@ -248,7 +248,12 @@ export function DetailsPage() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <a id="SkipToContentTarget" ref={skipToContentRef} tabIndex={-1} />
+    <a
+      href="#SkipToContent"
+      id="SkipToContentTarget"
+      ref={skipToContentRef}
+      tabIndex={-1}
+    />
   );
 
   // ---- Description ----
@@ -290,7 +295,8 @@ export function DetailsPage() {
             alt={file.name}
             source={
               validImageTypes.indexOf(file.type) > 0
-                ? window.URL.createObjectURL(file)
+                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                  window.URL.createObjectURL(file)
                 : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
             }
           />

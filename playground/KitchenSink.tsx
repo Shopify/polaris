@@ -29,9 +29,7 @@ function StoryWithWrapper({children}: {children: React.ReactNode}) {
       <hr
         style={{
           border: 'none',
-          borderTop: '2px dotted magenta',
-          margin: 20,
-          opacity: 0.5,
+          margin: 10,
         }}
       />
     </React.Fragment>
