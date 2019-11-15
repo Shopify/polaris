@@ -6,6 +6,11 @@ import {Key} from '../../../../../types';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
 
+jest.mock('@shopify/javascript-utilities/fastdom', () => ({
+  ...require.requireActual('@shopify/javascript-utilities/fastdom'),
+  write: jest.fn((callback) => callback()),
+}));
+
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
 }
@@ -201,6 +206,55 @@ describe('<PopoverOverlay />', () => {
     popoverOverlay.update();
 
     expect(popoverOverlay.find(PositionedOverlay)).toHaveLength(0);
+  });
+
+  describe('focus', () => {
+    const oldEnv = process.env;
+
+    beforeEach(() => {
+      process.env = {...oldEnv};
+      delete process.env.NODE_ENV;
+    });
+
+    afterEach(() => {
+      process.env = oldEnv;
+      jest.clearAllMocks();
+    });
+
+    it('focuses the content on mount', () => {
+      const focusSpy = jest.spyOn(HTMLElement.prototype, 'focus');
+      mountWithAppProvider(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={noop}
+        >
+          {children}
+        </PopoverOverlay>,
+      );
+
+      expect(focusSpy).toHaveBeenCalledTimes(1);
+      expect(focusSpy).toHaveBeenCalledWith({preventScroll: false});
+    });
+
+    it('focuses the content on mount and prevents scroll in development', () => {
+      process.env.NODE_ENV = 'development';
+      const focusSpy = jest.spyOn(HTMLElement.prototype, 'focus');
+      mountWithAppProvider(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={noop}
+        >
+          {children}
+        </PopoverOverlay>,
+      );
+
+      expect(focusSpy).toHaveBeenCalledTimes(1);
+      expect(focusSpy).toHaveBeenCalledWith({preventScroll: true});
+    });
   });
 });
 

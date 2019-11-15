@@ -170,7 +170,9 @@ export class PopoverOverlay extends React.PureComponent<
         return;
       }
 
-      this.contentNode.current.focus();
+      this.contentNode.current.focus({
+        preventScroll: process.env.NODE_ENV === 'development',
+      });
     });
   }
 
