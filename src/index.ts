@@ -12,5 +12,6 @@ export {
   WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT,
 } from './utilities/within-content-context';
 
-export {buildColors as UNSTABLE_BuildColors} from './utilities/theme';
+// eslint-disable-next-line @typescript-eslint/camelcase
+export {UNSTABLE_buildColors} from './utilities/theme';
 export {AppBridgeContext} from './utilities/app-bridge';
