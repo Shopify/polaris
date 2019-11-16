@@ -13,7 +13,12 @@ import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
 import {compose} from '../compose';
 import {needsVariantList} from './config';
-import {ThemeConfig, Theme, CustomPropertiesLike} from './types';
+import {
+  ThemeConfig,
+  Theme,
+  CustomPropertiesLike,
+  ColorAdjustments,
+} from './types';
 import {colorAdjustments, UNSTABLE_Color} from './color-adjustments';
 
 export function buildCustomProperties(
@@ -21,7 +26,10 @@ export function buildCustomProperties(
   globalTheming: boolean,
 ): CustomPropertiesLike {
   return globalTheming
-    ? buildColors(themeConfig)
+    ? customPropertyTransformer({
+        ...buildColors(themeConfig, colorAdjustments),
+        ...overrides(),
+      })
     : buildLegacyColors(themeConfig);
 }
 
@@ -56,7 +64,10 @@ function hexToHsluvObj(hex: string) {
   };
 }
 
-export function buildColors(theme: ThemeConfig) {
+export function buildColors(
+  theme: ThemeConfig,
+  colorAdjustments: ColorAdjustments,
+) {
   const colors = {
     surface: UNSTABLE_Color.Surface,
     onSurface: UNSTABLE_Color.OnSurface,
@@ -127,10 +138,7 @@ export function buildColors(theme: ThemeConfig) {
     {},
   );
 
-  return customPropertyTransformer({
-    ...allColors,
-    ...overrides(),
-  });
+  return allColors;
 }
 
 function overrides() {
