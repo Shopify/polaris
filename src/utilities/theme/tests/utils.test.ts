@@ -65,6 +65,9 @@ describe('buildCustomProperties', () => {
 
     const colors = buildCustomProperties(theme, false);
     expect(colors).toStrictEqual(legacyCustomProperties);
+    expect(colors).not.toStrictEqual(
+      expect.objectContaining({'--p-surface': 'hsla(0, 0%, 100%, 1)'}),
+    );
   });
 
   it('creates new custom properties when global theming is enabled but ignores legacy colors', () => {
@@ -75,7 +78,7 @@ describe('buildCustomProperties', () => {
 
     const colors = Object.keys(buildCustomProperties(theme, true));
     expect(colors).toContain('--p-surface');
-    expect(colors).not.toContain(Object.keys(legacyCustomProperties));
+    expect(colors).not.toContain('--top-bar-background');
   });
 });
 
