@@ -270,10 +270,7 @@ function rgbToObject(color: string): RGBAColor {
   return objColor;
 }
 
-const hexToHsla: (color: string) => HSLAColor = compose(
-  rgbToHsl,
-  hexToRgb,
-);
+const hexToHsla: (color: string) => HSLAColor = compose(rgbToHsl, hexToRgb);
 
 const rbgStringToHsla: (color: string) => HSLAColor = compose(
   rgbToHsl,

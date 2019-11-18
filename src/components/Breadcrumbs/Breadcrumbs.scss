@@ -26,9 +26,10 @@ $stacking-order: (
   // on the right side. We have to do negative margin on top and bottom
   // to compensate for the focus backdrop being smaller than the actual
   // hit area.
-  // prettier-ignore
-  margin:
-    (-0.5 * $difference-between-touch-area-and-backdrop) (-1 * $horizontal-padding) (-0.5 * $difference-between-touch-area-and-backdrop) (-0.5 * $horizontal-padding);
+  margin: (-0.5 * $difference-between-touch-area-and-backdrop)
+    (-1 * $horizontal-padding)
+    (-0.5 * $difference-between-touch-area-and-backdrop)
+    (-0.5 * $horizontal-padding);
   padding: $vertical-padding $horizontal-padding;
   color: color('ink', 'lighter');
   text-decoration: none;

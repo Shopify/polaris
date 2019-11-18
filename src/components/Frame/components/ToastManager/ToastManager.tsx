@@ -14,7 +14,7 @@ import {useDeepCallback} from '../../../../utilities/use-deep-callback';
 import styles from './ToastManager.scss';
 
 export interface ToastManagerProps {
-  toastMessages: (ToastPropsWithID)[];
+  toastMessages: ToastPropsWithID[];
 }
 
 export const ToastManager = memo(function ToastManager({

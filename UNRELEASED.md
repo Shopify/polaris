@@ -25,6 +25,7 @@
 ### Dependency upgrades
 
 - Upgraded to TypeScript `v3.7.2` ([#2237](https://github.com/Shopify/polaris-react/pull/2237))
+- Upgraded to Prettier to `v1.19.1` ([#2443](https://github.com/Shopify/polaris-react/pull/2443))
 
 ### Code quality
 
