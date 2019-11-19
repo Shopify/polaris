@@ -2,7 +2,16 @@ import React from 'react';
 
 type ReadmeModule = Record<string, any>;
 
-export function KitchenSink({readmeModules}: {readmeModules: ReadmeModule[]}) {
+const readmeReq = require.context(
+  '../src/components',
+  true,
+  /\/.+\/README.md$/,
+);
+const readmeModules = readmeReq
+  .keys()
+  .map((filename): ReadmeModule => readmeReq(filename));
+
+export function KitchenSink() {
   return readmeModules.reduce((memo, readmeModule) => {
     const stories = Object.entries(readmeModule)
       .filter(filterExports)

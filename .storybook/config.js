@@ -1,19 +1,10 @@
-import 'storybook-chromatic';
 import React from 'react';
-import {
-  configure,
-  addParameters,
-  addDecorator,
-  storiesOf,
-} from '@storybook/react';
+import {configure, addParameters, addDecorator} from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
 import {withContexts} from '@storybook/addon-contexts/react';
 import {create} from '@storybook/theming';
 import tokens from '@shopify/polaris-tokens';
 import {AppProvider} from '../src';
-import {Playground} from '../playground/Playground';
-import {KitchenSink} from '../playground/KitchenSink';
-import {DetailsPage} from '../playground/DetailsPage';
 import enTranslations from '../locales/en.json';
 import {UNSTABLE_Color} from '../src/utilities/theme';
 
@@ -106,27 +97,12 @@ setConsoleOptions((opts) => {
   return opts;
 });
 
-function addPlaygroundStory(readmeModules) {
-  storiesOf('Playground|Playground', module)
-    .addParameters({
-      chromatic: {disable: true},
-    })
-    .add('Playground', () => <Playground />)
-    .add('Details page', () => <DetailsPage />)
-    .add('Kitchen sink', () => <KitchenSink readmeModules={readmeModules} />);
-}
-
-// import all README.md files within component folders
-const readmeReq = require.context(
-  '../src/components',
-  true,
-  /\/.+\/README.md$/,
+configure(
+  [
+    // Playground stories
+    require.context('../playground', true, /stories.tsx$/),
+    // Component readme stories
+    require.context('../src/components', true, /\/.+\/README.md$/),
+  ],
+  module,
 );
-function loadStories() {
-  const readmeModules = readmeReq.keys().map((filename) => readmeReq(filename));
-  addPlaygroundStory(readmeModules);
-
-  return readmeModules;
-}
-
-configure(loadStories, module);
