@@ -10,9 +10,14 @@ $large-size: rem(60px);
   overflow: hidden;
   min-width: $small-size;
   max-width: 100%;
-  background: color('teal');
+  background: var(--p-action-secondary, color('sky'));
+  color: var(--p-icon-subdued, color('ink', 'lightest'));
   border-radius: $large-size / 2;
   user-select: none;
+
+  @media (-ms-high-contrast: active) {
+    border: 1px solid ms-high-contrast-color('text');
+  }
 
   &::after {
     content: '';
@@ -77,9 +82,8 @@ $large-size: rem(60px);
   left: 50%;
   width: 100%;
   height: 100%;
-  background-color: var(--p-action-secondary-disabled, color('sky'));
+  background-color: var(--p-neutral, color('sky'));
   border-radius: $large-size / 2;
-  // background-color: var(--p-neutral, color('sky'));
   transform: translate(-50%, -50%);
   object-fit: cover;
 }

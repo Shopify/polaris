@@ -91,8 +91,8 @@ export function Avatar({
 
   const className = classNames(
     styles.Avatar,
-    styles[variationName('style', styleClass(nameString))],
     size && styles[variationName('size', size)],
+    !customer && styles[variationName('style', styleClass(nameString))],
     (hasImage || (initials && initials.length === 0)) &&
       status !== Status.Loaded &&
       styles.hidden,
@@ -114,10 +114,27 @@ export function Avatar({
   // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
   const verticalOffset = '0.35em';
 
+  const avatarBody = customer ? (
+    <g fill="currentColor" fillRule="nonzero">
+      <path d="M8.28 27.5A14.95 14.95 0 0120 21.8c4.76 0 8.97 2.24 11.72 5.7a14.02 14.02 0 01-8.25 5.91 14.82 14.82 0 01-6.94 0 14.02 14.02 0 01-8.25-5.9zM13.99 12.78a6.02 6.02 0 1112.03 0 6.02 6.02 0 01-12.03 0z" />
+    </g>
+  ) : (
+    <text
+      x="50%"
+      y="50%"
+      dy={verticalOffset}
+      fill="currentColor"
+      fontSize="20"
+      textAnchor="middle"
+    >
+      {initials}
+    </text>
+  );
+
   const svgMarkup = !hasImage ? (
     <span className={styles.Initials}>
       <svg className={styles.Svg} viewBox="0 0 40 40">
-        {avatarBody()}
+        {avatarBody}
       </svg>
     </span>
   ) : null;
@@ -128,23 +145,4 @@ export function Avatar({
       {imageMarkUp}
     </span>
   );
-
-  function avatarBody() {
-    return customer ? (
-      <g fill="currentColor" fill-rule="nonzero">
-        <path d="M8.28 27.5A14.95 14.95 0 0120 21.8c4.76 0 8.97 2.24 11.72 5.7a14.02 14.02 0 01-8.25 5.91 14.82 14.82 0 01-6.94 0 14.02 14.02 0 01-8.25-5.9zM13.99 12.78a6.02 6.02 0 1112.03 0 6.02 6.02 0 01-12.03 0z" />
-      </g>
-    ) : (
-      <text
-        x="50%"
-        y="50%"
-        dy={verticalOffset}
-        fill="currentColor"
-        fontSize="20"
-        textAnchor="middle"
-      >
-        {initials}
-      </text>
-    );
-  }
 }
