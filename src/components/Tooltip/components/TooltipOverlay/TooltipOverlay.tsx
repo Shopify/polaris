@@ -13,7 +13,6 @@ import styles from '../../Tooltip.scss';
 export interface TooltipOverlayProps {
   id: string;
   active: boolean;
-  light?: boolean;
   preferredPosition?: PreferredPosition;
   children?: React.ReactNode;
   activator: HTMLElement;
@@ -46,11 +45,10 @@ export class TooltipOverlay extends React.PureComponent<
   private renderTooltip = (overlayDetails: OverlayDetails) => {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
-    const {id, children, light} = this.props;
+    const {id, children} = this.props;
 
     const containerClassName = classNames(
       styles.Tooltip,
-      light && styles.light,
       measuring && styles.measuring,
       positioning === 'above' && styles.positionedAbove,
     );

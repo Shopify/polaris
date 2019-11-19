@@ -12,8 +12,6 @@ export interface TooltipProps {
   children?: React.ReactNode;
   /** The content to display within the tooltip */
   content: string;
-  /** Display tooltip with a light background */
-  light?: boolean;
   /** Toggle whether the tooltip is visible */
   active?: boolean;
   /**
@@ -59,7 +57,6 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
     const {
       children,
       content,
-      light,
       preferredPosition = 'below',
       activatorWrapper: WrapperComponent = 'span' as any,
     } = this.props;
@@ -74,7 +71,6 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
           activator={activatorNode}
           active={active}
           onClose={noop}
-          light={light}
         >
           <div className={styles.Label} testID="TooltipOverlayLabel">
             {content}
