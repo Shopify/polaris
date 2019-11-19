@@ -66,6 +66,7 @@ export function buildColors(theme: ThemeConfig) {
     warning: UNSTABLE_Color.Warning,
     highlight: UNSTABLE_Color.Highlight,
     success: UNSTABLE_Color.Success,
+    decorative: UNSTABLE_Color.Decorative,
     ...theme.UNSTABLE_colors,
   };
 
