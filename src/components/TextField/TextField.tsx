@@ -118,7 +118,8 @@ export type TextFieldProps = NonMutuallyExclusiveProps &
   (
     | {readOnly: true}
     | {disabled: true}
-    | {onChange(value: string, id: string): void});
+    | {onChange(value: string, id: string): void}
+  );
 
 export function TextField({
   prefix,

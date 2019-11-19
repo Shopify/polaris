@@ -71,7 +71,6 @@ function setupShrinkRay() {
 }
 
 function sendCommitStatus(state) {
-  // prettier-ignore
   const statusUrl = `https://shrink-ray.shopifycloud.com/repos/${repo}/commits/${sha}/status/${state}`;
   console.log(`[shrink-ray] POST ${statusUrl}`);
   return fetch(statusUrl, {method: 'POST'});

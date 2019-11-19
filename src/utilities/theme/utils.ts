@@ -190,10 +190,7 @@ const lightenToString: (
   color: HSLColor | string,
   lightness: number,
   saturation: number,
-) => string = compose(
-  hslToString,
-  createLightColor,
-);
+) => string = compose(hslToString, createLightColor);
 
 export function setTextColor(
   name: string,

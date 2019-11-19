@@ -71,7 +71,8 @@ export class ComboBox extends React.PureComponent<ComboBoxProps, State> {
 
     let newNavigableOptions: (
       | OptionDescriptor
-      | ActionListItemDescriptor)[] = [];
+      | ActionListItemDescriptor
+    )[] = [];
     if (nextActionsBefore) {
       newNavigableOptions = newNavigableOptions.concat(nextActionsBefore);
     }

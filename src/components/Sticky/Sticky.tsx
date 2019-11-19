@@ -19,7 +19,8 @@ export type StickyProps = {
   disableWhenStacked?: boolean;
 } & (
   | {children: React.ReactNode}
-  | {children(isSticky: boolean): React.ReactNode});
+  | {children(isSticky: boolean): React.ReactNode}
+);
 
 type CombinedProps = StickyProps & WithAppProviderProps;
 
