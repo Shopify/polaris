@@ -3,7 +3,7 @@ import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Popover} from '../Popover';
 import {PopoverOverlay} from '../components';
-import * as SetActivatorAttributes from '../set-activator-attributes';
+import * as setActivatorAttributes from '../set-activator-attributes';
 
 describe('<Popover />', () => {
   const spy = jest.fn();
@@ -11,7 +11,7 @@ describe('<Popover />', () => {
 
   beforeEach(() => {
     setActivatorAttributesSpy = jest.spyOn(
-      SetActivatorAttributes,
+      setActivatorAttributes,
       'setActivatorAttributes',
     );
   });
@@ -27,7 +27,7 @@ describe('<Popover />', () => {
 
     expect(setActivatorAttributesSpy).toHaveBeenLastCalledWith(
       expect.any(Object),
-      {active: false, ariaHaspopup: undefined, id: 'Popover1'},
+      {active: false, ariaHaspopup: undefined, id: 'Polarispopover1'},
     );
   });
 

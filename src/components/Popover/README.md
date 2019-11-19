@@ -419,8 +419,6 @@ Popovers usually contain an [option list](https://polaris.shopify.com/components
 
 A popover can contain many numerous types of content. Whether it's a menu, grid or something entirely different! When `aria-expanded` is applied to an element, `aria-haspopup` will default to `menu`. To assist screen readers you'll need to pass `ariaHaspopup` to `Popover`.
 
-Popovers can contain many types of content. If a popover contains a complex feature such as an ARIA menu, grid, listbox, or similar feature, then use the `ariaHaspopup` prop. This adds `aria-haspopup` to the button, which is helpful information for people who use screen readers.
-
 ### Keyboard support
 
 - When a popover opens, focus moves to the popover container
