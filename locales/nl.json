@@ -36,7 +36,7 @@
     },
     "ContextualSaveBar": {
       "save": "Opslaan",
-      "discard": "Verwerpen"
+      "discard": "Verwijderen"
     },
     "DataTable": {
       "sortAccessibilityLabel": "sorteer {direction} op",
