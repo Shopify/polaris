@@ -71,7 +71,7 @@ export function Form({
 
   const submitMarkup = implicitSubmit ? (
     <VisuallyHidden>
-      <button type="submit" aria-hidden="true">
+      <button type="submit" aria-hidden="true" tabIndex={-1}>
         {i18n.translate('Polaris.Common.submit')}
       </button>
     </VisuallyHidden>
