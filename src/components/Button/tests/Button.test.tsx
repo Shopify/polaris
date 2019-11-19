@@ -370,6 +370,26 @@ describe('<Button />', () => {
     });
   });
 
+  describe('disclosure', () => {
+    it('assumes "down" if set to true', () => {
+      const button = mountWithAppProvider(<Button disclosure />);
+      const disclosureIcon = button.find('.DisclosureIcon');
+      expect(disclosureIcon!.hasClass('DisclosureIconFacingUp')).toBe(false);
+    });
+
+    it('is facing down if set to "down"', () => {
+      const button = mountWithAppProvider(<Button disclosure="down" />);
+      const disclosureIcon = button.find('.DisclosureIcon');
+      expect(disclosureIcon!.hasClass('DisclosureIconFacingUp')).toBe(false);
+    });
+
+    it('is facing up if set to "up"', () => {
+      const button = mountWithAppProvider(<Button disclosure="up" />);
+      const disclosureIcon = button.find('.DisclosureIcon');
+      expect(disclosureIcon!.hasClass('DisclosureIconFacingUp')).toBe(true);
+    });
+  });
+
   describe('deprecations', () => {
     it('warns the ariaPressed prop has been replaced', () => {
       const warningSpy = jest
