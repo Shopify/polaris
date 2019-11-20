@@ -52,7 +52,7 @@ export function Sheet({
   onEntered,
   onExit,
   transparentBackdrop = true,
-  large = true,
+  large = false,
 }: SheetProps) {
   const {isNavigationCollapsed} = useMediaQuery();
   const container = useRef<HTMLDivElement>(null);
