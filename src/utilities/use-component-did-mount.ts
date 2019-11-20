@@ -11,7 +11,7 @@ import {useIsAfterInitialMount} from './use-is-after-initial-mount';
  * function Playground({active}) {
  *  useComponentDidMount(() => {
  *    if (active) {
- *      console.warning(`Active is now deprecated.`);
+ *      console.warning(`Component has mounted.`);
  *    }
  *  });
  *

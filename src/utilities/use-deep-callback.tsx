@@ -10,15 +10,25 @@ import {useDeepCompareRef} from './use-deep-compare-ref';
  * @param customCompare Opportunity to provide a custom compare function
  * @returns A memoized callback
  * @example
+ * const Child = memo(function Child({onClick}) {
+ *   console.log('Child has rendered.');
+ *   return <button onClick={onClick}>Click me</button>;
+ * });
+ *
  * function ComponentExample() {
- *  const [, forceUpdate] = useState();
- *  const obj = {a: 1};
+ *   const [timesClicked, setTimesClicked] = useState(0);
  *
- *  const handleClick = useDeepCallback(() => {
- *    forceUpdate(obj);
- *  }, [obj]);
+ *   const handleClick = useDeepCallback(() => {
+ *     setTimesClicked((timesClicked) => timesClicked + 1);
+ *     // New reference every render
+ *   }, [{}]);
  *
- *  return <button onClick={handleClick}>Click me</button>;
+ *   return (
+ *     <Fragment>
+ *       <div>Times clicked: {timesClicked}</div>
+ *       <Child onClick={handleClick} />
+ *     </Fragment>
+ *   );
  * }
  */
 export function useDeepCallback(
