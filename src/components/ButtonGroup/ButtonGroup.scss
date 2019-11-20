@@ -12,18 +12,20 @@ $item-spacing: spacing(tight);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: (-1 * $item-spacing);
-  margin-left: (-1 * $item-spacing);
+  margin-top: calc(#{var(--p-button-group-item-spacing, $item-spacing)} * -1);
+  margin-left: calc(#{var(--p-button-group-item-spacing, $item-spacing)} * -1);
 }
 
 .Item {
-  margin-top: $item-spacing;
-  margin-left: $item-spacing;
+  margin-top: var(--p-button-group-item-spacing, $item-spacing);
+  margin-left: var(--p-button-group-item-spacing, $item-spacing);
 }
 
 .Item-plain {
   &:not(:first-child) {
-    margin-left: $item-spacing + $plain-horizontal-spacing;
+    margin-left: calc(
+      #{var(--p-button-group-item-spacing, $item-spacing)} + #{$plain-horizontal-spacing}
+    );
   }
 
   &:not(:last-child) {
@@ -37,8 +39,6 @@ $item-spacing: spacing(tight);
   margin-top: 0;
   margin-left: 0;
 
-  // This is a violation of our component model, but it’s the cleanest
-  // way to remove the border radii on connected elements.
   .Item {
     position: relative;
     z-index: z-index(item, $stacking-order);
@@ -46,24 +46,7 @@ $item-spacing: spacing(tight);
     margin-left: 0;
 
     &:not(:first-child) {
-      margin-left: -(border-width());
-    }
-
-    // stylelint-disable-next-line selector-max-combinators
-    > * {
-      border-radius: 0;
-    }
-
-    // stylelint-disable-next-line selector-max-combinators
-    &:first-child > * {
-      border-top-left-radius: border-radius();
-      border-bottom-left-radius: border-radius();
-    }
-
-    // stylelint-disable-next-line selector-max-combinators
-    &:last-child > * {
-      border-top-right-radius: border-radius();
-      border-bottom-right-radius: border-radius();
+      margin-left: var(--p-button-group-item-spacing, -1 * border-width());
     }
   }
 
@@ -75,24 +58,5 @@ $item-spacing: spacing(tight);
 .fullWidth {
   .Item {
     flex: 1 1 auto;
-
-    // stylelint-disable-next-line selector-max-combinators
-    > * {
-      @include button-full-width;
-    }
-  }
-}
-
-.connectedTop {
-  .Item {
-    // stylelint-disable-next-line selector-max-combinators
-    &:first-child > * {
-      border-top-left-radius: 0;
-    }
-
-    // stylelint-disable-next-line selector-max-combinators
-    &:last-child > * {
-      border-top-right-radius: 0;
-    }
   }
 }

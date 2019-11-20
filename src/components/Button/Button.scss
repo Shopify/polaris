@@ -53,13 +53,13 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     transition-duration: duration(fast);
     background: linear-gradient(to bottom, $color-light, $color-light);
     border-color: $color-dark;
-    box-shadow: $partial-button-filled-pressed-box-shadow$color-dark;
+    box-shadow: $partial-button-filled-pressed-box-shadow $color-dark;
   }
 
   &:active {
     background: linear-gradient(to bottom, $color-lightest, $color-lightest);
     border-color: $color-dark;
-    box-shadow: $partial-button-filled-pressed-box-shadow$color-darkest;
+    box-shadow: $partial-button-filled-pressed-box-shadow $color-darkest;
   }
 }
 
@@ -70,7 +70,37 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     @include base-button-disabled;
   }
 }
+// stylelint-disable selector-max-combinators
+[data-buttongroup-segmented] {
+  .Button {
+    border-radius: 0;
+  }
+  > :first-child .Button {
+    border-top-left-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  }
+  > :last-child .Button {
+    border-top-right-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
+  }
+}
 
+[data-buttongroup-connected-top] {
+  > :first-child .Button {
+    border-top-left-radius: 0;
+  }
+
+  > :last-child .Button {
+    border-top-right-radius: 0;
+  }
+}
+
+[data-buttongroup-full-width] {
+  .Button {
+    @include button-full-width;
+  }
+}
+// stylelint-enable selector-max-combinators
 .Content {
   @include text-style-button;
   position: relative;
@@ -132,6 +162,10 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   --p-button-color-active: var(--p-branded-action-pressed);
   @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(color('white'));
+
+  &.globalTheming {
+    @include recolor-icon(var(--p-icon-on-branded));
+  }
 
   &.disabled {
     @include button-filled-disabled(color('indigo'));
@@ -493,6 +527,10 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 
   .Icon:last-child {
     margin-right: rem(-4px);
+  }
+
+  .Icon + .Icon:last-child {
+    margin-left: 0;
   }
 
   .Icon:only-child {

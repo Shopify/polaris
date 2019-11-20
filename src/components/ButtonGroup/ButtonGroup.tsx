@@ -25,12 +25,20 @@ export function ButtonGroup({
     styles.ButtonGroup,
     segmented && styles.segmented,
     fullWidth && styles.fullWidth,
-    connectedTop && styles.connectedTop,
   );
 
   const contents = elementChildren(children).map((child, index) => (
     <Item button={child} key={index} />
   ));
 
-  return <div className={className}>{contents}</div>;
+  return (
+    <div
+      className={className}
+      data-buttongroup-segmented={segmented}
+      data-buttongroup-connected-top={connectedTop}
+      data-buttongroup-full-width={fullWidth}
+    >
+      {contents}
+    </div>
+  );
 }
