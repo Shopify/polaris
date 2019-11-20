@@ -10,7 +10,7 @@ import styles from './Breadcrumbs.scss';
 
 export interface BreadcrumbsProps {
   /** Collection of breadcrumbs */
-  breadcrumbs: Array<CallbackAction | LinkAction>;
+  breadcrumbs: (CallbackAction | LinkAction)[];
 }
 
 export class Breadcrumbs extends React.PureComponent<BreadcrumbsProps, never> {

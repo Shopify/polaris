@@ -257,7 +257,7 @@ describe('<Navigation.Section />', () => {
 });
 
 function mountWithNavigationProvider(
-  node: React.ReactElement<any>,
+  node: React.ReactElement,
   context: React.ContextType<typeof NavigationContext> = {location: ''},
 ) {
   return mountWithAppProvider(

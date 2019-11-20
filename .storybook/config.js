@@ -1,4 +1,4 @@
-import 'storybook-chroma';
+import 'storybook-chromatic';
 import React from 'react';
 import {
   configure,

@@ -335,7 +335,7 @@ $stacking-order: (
   &.error {
     > .Input ~ .Backdrop {
       background-color: var(--p-critical-surface-subdued);
-      border-color: var(--p-critical-divider);
+      border-color: var(--p-critical-border);
 
       &::after {
         border-color: var(--p-interactive-focus);
@@ -374,8 +374,8 @@ $stacking-order: (
 
   .Backdrop {
     background-color: var(--p-surface-foreground);
-    border: border-width() solid var(--p-divider-subdued-on-surface);
-    border-top-color: var(--p-divider-on-surface);
+    border: border-width() solid var(--p-border-subdued-on-surface);
+    border-top-color: var(--p-border-on-surface);
     border-radius: var(--p-border-radius-base);
     box-shadow: none;
 

@@ -4,9 +4,6 @@ export {useTheme} from './hooks';
 
 export {Theme, ThemeConfig, CustomPropertiesLike} from './types';
 
-export {
-  buildCustomProperties,
-  buildThemeContext,
-  // eslint-disable-next-line babel/camelcase
-  UNSTABLE_Color,
-} from './utils';
+export {UNSTABLE_Color} from './color-adjustments';
+
+export {buildCustomProperties, buildThemeContext} from './utils';

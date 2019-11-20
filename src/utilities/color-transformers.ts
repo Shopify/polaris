@@ -196,7 +196,7 @@ export function rgbToHsl(color: RGBAColor): HSLAColor {
   return {hue, saturation, lightness, alpha};
 }
 
-function hexToRgb(color: string) {
+export function hexToRgb(color: string) {
   if (color.length === 4) {
     const repeatHex = (hex1: number, hex2: number) =>
       color.slice(hex1, hex2).repeat(2);
@@ -253,6 +253,7 @@ export function hslToString(hslColor: HSLAColor | string) {
 }
 
 function rgbToObject(color: string): RGBAColor {
+  // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
   const colorMatch = color.match(/\(([^)]+)\)/);
 
   if (!colorMatch) {
@@ -280,6 +281,7 @@ const rbgStringToHsla: (color: string) => HSLAColor = compose(
 );
 
 function hslToObject(color: string): HSLAColor {
+  // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
   const colorMatch = color.match(/\(([^)]+)\)/);
 
   if (!colorMatch) {

@@ -133,7 +133,10 @@ describe('useUniqueId', () => {
   });
 
   it('updates the ID if the overridden ID changes', () => {
-    type HasPropProps = {info: string; idOverride?: string};
+    interface HasPropProps {
+      info: string;
+      idOverride?: string;
+    }
     const HasProp = ({info, idOverride}: HasPropProps) => (
       <div id={useUniqueId('', idOverride)} title={info} />
     );

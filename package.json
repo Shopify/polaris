@@ -1,7 +1,7 @@
 {
   "name": "@joinarthur/polaris",
   "description": "Shopify’s product component library",
-  "version": "4.7.3-fork.0",
+  "version": "4.8.0-fork.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -95,7 +95,7 @@
     "@percy/storybook": "^3.2.0",
     "@shopify/jest-dom-mocks": "^2.1.1",
     "@shopify/react-testing": "^1.7.8",
-    "@shopify/sewing-kit": "^0.111.0",
+    "@shopify/sewing-kit": "^0.112.0",
     "@storybook/addon-a11y": "^5.2.4",
     "@storybook/addon-actions": "^5.2.4",
     "@storybook/addon-console": "^1.2.1",
@@ -155,16 +155,13 @@
     "serve": "^11.1.0",
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
-    "storybook-chroma": "^2.2.2",
+    "storybook-chromatic": "^3.1.0",
     "svgo": "^1.3.0",
     "typescript": "~3.5.1"
   },
   "peerDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
-  },
-  "resolutions": {
-    "typescript-eslint-parser": "npm:@typescript-eslint/parser@1.10.2"
   },
   "files": [
     "esnext",
@@ -191,6 +188,7 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-transition-group": "^2.0.7",
     "hoist-non-react-statics": "^3.3.0",
+    "hsluv": "^0.0.3",
     "lodash": "^4.17.4",
     "tslib": "^1.9.3"
   }

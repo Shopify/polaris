@@ -1,13 +1,19 @@
 import tokens from '@shopify/polaris-tokens';
+import {hexToHsluv, hsluvToHex} from 'hsluv';
 import {HSLColor, HSLAColor} from '../color-types';
-import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
+import {
+  colorToHsla,
+  hslToString,
+  hslToRgb,
+  hexToRgb,
+} from '../color-transformers';
 import {isLight} from '../color-validation';
 import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
 import {compose} from '../compose';
 import {needsVariantList} from './config';
 import {ThemeConfig, Theme, CustomPropertiesLike} from './types';
-import colorAdjustmentsJson from './color-adjustments.json';
+import {colorAdjustments, UNSTABLE_Color} from './color-adjustments';
 
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
@@ -25,7 +31,6 @@ export function buildThemeContext(
   const {logo} = themeConfig;
   return {
     logo,
-    // eslint-disable-next-line babel/camelcase
     UNSTABLE_cssCustomProperties: toString(cssCustomProperties),
   };
 }
@@ -40,48 +45,15 @@ function toString(obj?: CustomPropertiesLike) {
   }
 }
 
-/* eslint-disable babel/camelcase */
-// eslint-disable-next-line shopify/typescript/prefer-pascal-case-enums
-export enum UNSTABLE_Color {
-  Surface = '#FAFAFA',
-  DarkSurface = '#111213',
-  OnSurface = '#1F2225',
-  Interactive = '#0870D9',
-  Neutral = '#EAEAEB',
-  Branded = '#008060',
-  Critical = '#E32727',
-  Warning = '#FFC453',
-  Highlight = '#59D0C2',
-  Success = '#008060',
-}
+function hexToHsluvObj(hex: string) {
+  const [hue, saturation, lightness] = hexToHsluv(hex);
 
-type ColorRole = keyof typeof colorAdjustmentsJson;
-
-type BaseColor =
-  | 'surface'
-  | 'onSurface'
-  | 'interactive'
-  | 'neutral'
-  | 'branded'
-  | 'critical'
-  | 'warning'
-  | 'highlight'
-  | 'success';
-
-interface HslaAdjustment {
-  hue?: number;
-  saturation?: number;
-  lightness?: number;
-  alpha?: number;
-}
-
-export type ColorAdjustments = {
-  [C in ColorRole]?: {
-    baseColor: BaseColor;
-    light: HslaAdjustment;
-    dark: HslaAdjustment;
+  return {
+    hue,
+    saturation,
+    lightness,
   };
-};
+}
 
 export function buildColors(theme: ThemeConfig) {
   const colors = {
@@ -97,30 +69,24 @@ export function buildColors(theme: ThemeConfig) {
     ...theme.UNSTABLE_colors,
   };
 
-  const surfaceColor = colorToHsla(colors.surface);
-  const lightSurface = isLight(hslToRgb(surfaceColor));
-
-  const colorAdjustments: ColorAdjustments = {};
-  Object.assign(colorAdjustments, colorAdjustmentsJson);
+  const lightSurface = isLight(hexToRgb(colors.surface));
 
   const allColors = Object.entries(colorAdjustments).reduce(
     (accumulator, [colorRole, colorAdjustment]) => {
       if (colorAdjustment == null) return accumulator;
 
-      const baseColor = colorToHsla(colors[colorAdjustment.baseColor]);
+      const baseColor = hexToHsluvObj(colors[colorAdjustment.baseColor]);
       const {
         hue = baseColor.hue,
         saturation = baseColor.saturation,
         lightness = baseColor.lightness,
-        alpha = baseColor.alpha,
+        alpha = 1,
       } = colorAdjustment[lightSurface ? 'light' : 'dark'];
 
       return {
         ...accumulator,
         [colorRole]: hslToString({
-          hue,
-          saturation,
-          lightness,
+          ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
           alpha,
         }),
       };
@@ -133,7 +99,6 @@ export function buildColors(theme: ThemeConfig) {
     ...overrides(),
   });
 }
-/* eslint-enable babel/camelcase */
 
 function overrides() {
   return {
@@ -141,20 +106,28 @@ function overrides() {
     overrideTransparent: 'transparent',
     overrideOne: '1',
     overrideVisible: 'visible',
+    overrideZero: '0',
+    overrideLoadingZIndex: '514',
     buttonFontWeight: '500',
     nonNullContent: "''",
     borderRadiusBase: rem('4px'),
     borderRadiusWide: rem('8px'),
-    bannerDefaultBorder: buildBannerBorder('--p-divider-on-surface'),
-    bannerSuccessBorder: buildBannerBorder('--p-success-divider'),
-    bannerHighlightBorder: buildBannerBorder('--p-highlight-divider'),
-    bannerWarningBorder: buildBannerBorder('--p-warning-divider'),
-    bannerCriticalBorder: buildBannerBorder('--p-critical-divider'),
+    bannerDefaultBorder: buildBannerBorder('--p-border-on-surface'),
+    bannerSuccessBorder: buildBannerBorder('--p-success-border'),
+    bannerHighlightBorder: buildBannerBorder('--p-highlight-border'),
+    bannerWarningBorder: buildBannerBorder('--p-warning-border'),
+    bannerCriticalBorder: buildBannerBorder('--p-critical-border'),
     badgeMixBlendMode: 'luminosity',
-    borderSubdued: `${rem('1px')} solid var(--p-divider-subdued-on-surface)`,
+    borderSubdued: `${rem('1px')} solid var(--p-border-subdued-on-surface)`,
     textFieldSpinnerOffset: rem('2px'),
     textFieldFocusRingOffset: rem('-4px'),
     textFieldFocusRingBorderRadius: rem('7px'),
+    cardShadow:
+      '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
+    popoverShadow:
+      '-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)',
+    modalShadow:
+      '0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light)',
   };
 }
 
@@ -210,7 +183,7 @@ function buildLegacyColors(theme?: ThemeConfig): CustomPropertiesLike {
 }
 
 export function needsVariant(name: string) {
-  return needsVariantList.indexOf(name) !== -1;
+  return needsVariantList.includes(name);
 }
 
 const lightenToString: (
@@ -275,11 +248,11 @@ function parseColors([baseName, colors]: [
 ]): string[][] {
   const keys = Object.keys(colors);
   const colorPairs = [];
-  for (let i = 0; i < keys.length; i++) {
-    colorPairs.push([constructColorName(baseName, keys[i]), colors[keys[i]]]);
+  for (const key of keys) {
+    colorPairs.push([constructColorName(baseName, key), colors[key]]);
 
     if (needsVariant(baseName)) {
-      const hslColor = colorToHsla(colors[keys[i]]);
+      const hslColor = colorToHsla(colors[key]);
 
       if (typeof hslColor === 'string') {
         return colorPairs;
@@ -288,9 +261,9 @@ function parseColors([baseName, colors]: [
       const rgbColor = hslToRgb(hslColor);
 
       if (isLight(rgbColor)) {
-        colorPairs.push(...setTheme(hslColor, baseName, keys[i], 'light'));
+        colorPairs.push(...setTheme(hslColor, baseName, key, 'light'));
       } else {
-        colorPairs.push(...setTheme(hslColor, baseName, keys[i], 'dark'));
+        colorPairs.push(...setTheme(hslColor, baseName, key, 'dark'));
       }
     }
   }

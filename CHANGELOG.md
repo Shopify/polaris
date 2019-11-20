@@ -8,6 +8,40 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.8.0 - 2019-11-12
+
+### Enhancements
+
+- Updated `Popover` to focus the correct element when closed ([#2255](https://github.com/Shopify/polaris-react/pull/2255))
+- Updated the type of the `title` prop in `ChoiceList` from `string` to `ReactNode` ([#2355](https://github.com/Shopify/polaris-react/pull/2355))
+- Added `disabled` prop to `Filters` component ([2389](https://github.com/Shopify/polaris-react/pull/2389))
+- Added `helpText` prop to `Filters` component ([2389](https://github.com/Shopify/polaris-react/pull/2389))
+
+### Bug fixes
+
+- Fixed an issue where types were not generated for a JSON config file [#2361](https://github.com/Shopify/polaris-react/pull/2361))
+
+### Development workflow
+
+- Enabled maintainers running `yarn dev` to hide [`yarn splash`](https://github.com/Shopify/polaris-react/tree/master/scripts/splash) reports from the console by running `DISABLE_SPLASH=1 yarn dev` ([#2372](https://github.com/Shopify/polaris-react/pull/2372))
+- Updated to sewing-kit 0.112.0 and eslint 6 and updated vscode config to use the eslint plugin to format js/ts files ((#2369)[https://github.com/Shopify/polaris-react/pull/2369])
+
+### Code quality
+
+- Migrated `Popover` to use hooks ([#2386](https://github.com/Shopify/polaris-react/pull/2386))
+
+## 4.7.3 - 2019-10-31
+
+### Enhancements
+
+- Added unstable telemetry API to gather analytics about icon usage ([#2368](https://github.com/Shopify/polaris-react/pull/2368))
+
+### Bug fixes
+
+- Fixed an accessibility issue with `TextField` `multiline` where `aria-multiline` would be set to an invalid type `number` ([#2351](https://github.com/Shopify/polaris-react/pull/2351))
+- Revert [#2231](https://github.com/Shopify/polaris-react/pull/2351) as it breaks middle aligned popovers ([#2237](https://github.com/Shopify/polaris-react/pull/2237))
+- Fixed alignement of disclosure icons on `ResourceItem` ([#2370](https://github.com/Shopify/polaris-react/pull/2370))
+
 ## 4.7.2 - 2019-10-30
 
 ### Bug fixes

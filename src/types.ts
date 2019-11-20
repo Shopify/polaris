@@ -1,4 +1,3 @@
-// eslint-disable-next-line babel/camelcase
 export {UNSTABLE_Color} from './utilities/theme';
 
 export type Color =
@@ -61,8 +60,8 @@ export type AppBridgeTarget = 'ADMIN_PATH' | 'REMOTE' | 'APP';
 
 export type Error =
   | string
-  | React.ReactElement<any>
-  | (string | React.ReactElement<any>)[];
+  | React.ReactElement
+  | (string | React.ReactElement)[];
 
 export interface BaseAction {
   /** A unique identifier for the action */
@@ -318,8 +317,8 @@ export interface GeneralObject {
 }
 
 export type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends Array<infer U>
-    ? Array<DeepPartial<U>>
+  [P in keyof T]?: T[P] extends (infer U)[]
+    ? DeepPartial<U>[]
     : T[P] extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : DeepPartial<T[P]>;

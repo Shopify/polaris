@@ -1,6 +1,8 @@
 import React, {useState, useCallback} from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Popover} from '../Popover';
+import {PopoverOverlay} from '../components';
 
 describe('<Popover />', () => {
   const spy = jest.fn();
@@ -77,8 +79,7 @@ describe('<Popover />', () => {
         onClose={spy}
       />,
     );
-    const activatorWrapper = findByTestID(popover, 'wrapper-component');
-    expect(activatorWrapper.type()).toBe('div');
+    expect(popover.childAt(0).type()).toBe('div');
   });
 
   it('has a span as activatorWrapper when activatorWrapper prop is set to span', () => {
@@ -91,8 +92,7 @@ describe('<Popover />', () => {
         onClose={spy}
       />,
     );
-    const activatorWrapper = findByTestID(popover, 'wrapper-component');
-    expect(activatorWrapper.type()).toBe('span');
+    expect(popover.childAt(0).type()).toBe('span');
   });
 
   it('passes preventAutofocus to PopoverOverlay', () => {
@@ -173,4 +173,45 @@ describe('<Popover />', () => {
 
     expect(onCloseSpy).not.toHaveBeenCalled();
   });
+
+  it('focuses the next available element when the popover is closed', () => {
+    const id = 'focus-target';
+    function PopoverTest() {
+      return (
+        <React.Fragment>
+          <div>
+            <Popover active activator={<div />} onClose={noop} />
+          </div>
+          <button id={id} />
+        </React.Fragment>
+      );
+    }
+
+    const popover = mountWithApp(<PopoverTest />);
+
+    popover.find(PopoverOverlay)!.trigger('onClose', 1);
+    const focusTarget = popover.find('button', {id})!.domNode;
+
+    expect(document.activeElement).toBe(focusTarget);
+  });
+
+  it('focuses the activator when another focusable element is not available when the popover is closed', () => {
+    const id = 'activator';
+    function PopoverTest() {
+      return (
+        <React.Fragment>
+          <Popover active activator={<button id={id} />} onClose={noop} />
+        </React.Fragment>
+      );
+    }
+
+    const popover = mountWithApp(<PopoverTest />);
+
+    popover.find(PopoverOverlay)!.trigger('onClose', 1);
+    const focusTarget = popover.find('button', {id})!.domNode;
+
+    expect(document.activeElement).toBe(focusTarget);
+  });
 });
+
+function noop() {}

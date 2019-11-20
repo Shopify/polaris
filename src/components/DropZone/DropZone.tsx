@@ -499,7 +499,7 @@ class DropZone extends React.Component<CombinedProps, State> {
 
     const fileList = getDataTransferFiles(event);
 
-    if (event.target && this.dragTargets.indexOf(event.target) === -1) {
+    if (event.target && !this.dragTargets.includes(event.target)) {
       this.dragTargets.push(event.target);
     }
 

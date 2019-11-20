@@ -463,7 +463,7 @@ function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {
 }
 
 function mountWithNavigationProvider(
-  node: React.ReactElement<any>,
+  node: React.ReactElement,
   context: React.ContextType<typeof NavigationContext> = {location: ''},
 ) {
   return mountWithAppProvider(

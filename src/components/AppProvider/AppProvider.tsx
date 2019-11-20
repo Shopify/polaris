@@ -42,7 +42,6 @@ export interface AppProviderProps extends AppBridgeOptions {
   features?: Features;
   /** Inner content of the application */
   children?: React.ReactNode;
-  // eslint-disable-next-line babel/camelcase
   UNSTABLE_telemetry?: TelemetryObject;
 }
 
@@ -100,7 +99,6 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
     });
   }
 
-  /* eslint-disable babel/camelcase */
   render() {
     const {
       theme = {},
@@ -132,5 +130,4 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
       </FeaturesContext.Provider>
     );
   }
-  /* eslint-enable babel/camelcase */
 }

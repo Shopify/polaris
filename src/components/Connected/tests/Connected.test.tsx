@@ -6,20 +6,18 @@ import {Item, ItemPosition} from '../components';
 
 describe('<Connected />', () => {
   describe('<Item />', () => {
-    it('wraps children in an Item component', async () => {
+    it('wraps children in an Item component', () => {
       const expectedContent = 'foo';
-      const connected = await mountWithApp(
-        <Connected>{expectedContent}</Connected>,
-      );
+      const connected = mountWithApp(<Connected>{expectedContent}</Connected>);
 
       expect(
         connected.find(Item, {position: ItemPosition.Primary}),
       ).toContainReactText(expectedContent);
     });
 
-    it('includes `rightConnected` markup in an Item component', async () => {
+    it('includes `rightConnected` markup in an Item component', () => {
       const rightConnectedContent = 'foo';
-      const connected = await mountWithApp(
+      const connected = mountWithApp(
         <Connected right={rightConnectedContent} />,
       );
 
@@ -28,21 +26,19 @@ describe('<Connected />', () => {
       ).toContainReactText(rightConnectedContent);
     });
 
-    it('includes `leftConnected` markup in an Item component', async () => {
+    it('includes `leftConnected` markup in an Item component', () => {
       const leftConnectedContent = 'foo';
-      const connected = await mountWithApp(
-        <Connected left={leftConnectedContent} />,
-      );
+      const connected = mountWithApp(<Connected left={leftConnectedContent} />);
 
       expect(
         connected.find(Item, {position: ItemPosition.Left}),
       ).toContainReactText(leftConnectedContent);
     });
 
-    it('`leftConnected` and `rightConnected` are not mutually exclusive', async () => {
+    it('`leftConnected` and `rightConnected` are not mutually exclusive', () => {
       const rightConnectedContent = 'rightfoo';
       const leftConnectedContent = 'leftfoo';
-      const connected = await mountWithApp(
+      const connected = mountWithApp(
         <Connected right={rightConnectedContent} left={leftConnectedContent} />,
       );
 

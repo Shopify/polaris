@@ -379,7 +379,7 @@ class Modal extends React.Component<CombinedProps, State> {
     const srcPayload: {url?: string; path?: string} = {};
 
     if (src != null) {
-      if (src.match('^https?://')) {
+      if (/^https?:\/\//.test(src)) {
         srcPayload.url = src;
       } else {
         srcPayload.path = src;

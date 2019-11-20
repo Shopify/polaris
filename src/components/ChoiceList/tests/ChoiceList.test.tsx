@@ -1,5 +1,6 @@
 import React from 'react';
 import {ReactWrapper} from 'enzyme';
+import {mountWithApp} from 'test-utilities';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {RadioButton, Checkbox, InlineError, errorTextID} from 'components';
 import {ChoiceList, ChoiceDescriptor} from '../ChoiceList';
@@ -28,6 +29,23 @@ describe('<ChoiceList />', () => {
         <ChoiceList title="My title" selected={[]} choices={choices} />,
       );
       expect(element.find('legend').text()).toBe('My title');
+    });
+
+    it('renders a legend containing JSX for the fieldset', () => {
+      const TitleComponent = () => (
+        <React.Fragment>
+          JSX <b>title</b>
+        </React.Fragment>
+      );
+
+      const element = mountWithApp(
+        <ChoiceList
+          title={<TitleComponent />}
+          selected={[]}
+          choices={choices}
+        />,
+      );
+      expect(element.find('legend')).toContainReactComponent(TitleComponent);
     });
   });
 

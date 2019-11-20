@@ -12,7 +12,7 @@ export interface ChoiceProps {
   /**	Label for the choice */
   label: React.ReactNode;
   /** Whether the associated form control is disabled */
-  disabled?: Boolean;
+  disabled?: boolean;
   /** Display an error message */
   error?: Error | boolean;
   /** Visually hide the label */

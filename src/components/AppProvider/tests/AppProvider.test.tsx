@@ -16,7 +16,7 @@ describe('<AppProvider />', () => {
   });
 
   it('updates context when props change', () => {
-    const Child: React.SFC<{}> = () => {
+    const Child: React.SFC = () => {
       return useContext(LinkContext) ? <div id="child" /> : null;
     };
     const LinkComponent = () => <div />;
