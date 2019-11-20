@@ -175,7 +175,7 @@ export const colorAdjustments: ColorAdjustments = {
   iconSubduedOnSurface: {
     baseColor: 'onSurface',
     light: {lightness: 59.8},
-    dark: {lightness: 88},
+    dark: {lightness: 62},
   },
   textOnInverse: {
     baseColor: 'onSurface',
