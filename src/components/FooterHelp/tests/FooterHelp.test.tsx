@@ -1,5 +1,6 @@
 import React from 'react';
 import {QuestionMarkMajorTwotone} from '@shopify/polaris-icons';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Icon} from 'components';
 import {FooterHelp} from '../FooterHelp';

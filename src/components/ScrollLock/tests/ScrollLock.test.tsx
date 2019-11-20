@@ -1,4 +1,5 @@
 import React, {useState, useCallback} from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {SCROLL_LOCKING_ATTRIBUTE} from '../../../utilities/scroll-lock-manager';
 import {ScrollLock} from '../ScrollLock';

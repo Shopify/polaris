@@ -1,5 +1,6 @@
 import React from 'react';
 import {Transition, CSSTransition} from '@material-ui/react-transition-group';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Popover} from 'components';

@@ -1,6 +1,7 @@
 import React from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 import {ReactWrapper} from 'enzyme';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {SearchField} from '../SearchField';
 

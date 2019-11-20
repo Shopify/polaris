@@ -1,5 +1,6 @@
 import React, {ReactElement} from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
 import {Icon} from '../../../..';

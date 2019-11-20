@@ -10,6 +10,7 @@ import {
   Button,
   EmptyState,
 } from 'components';
+// eslint-disable-next-line no-restricted-imports
 import {
   findByTestID,
   mountWithAppProvider,

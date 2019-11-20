@@ -2,7 +2,7 @@ import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Button, Popover, Sheet, Tag, TextField, TextStyle} from 'components';
-
+// eslint-disable-next-line no-restricted-imports
 import {
   mountWithAppProvider,
   trigger,

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import {animationFrame} from '@shopify/jest-dom-mocks';
+// eslint-disable-next-line no-restricted-imports
 import {
   findByTestID,
   mountWithAppProvider,

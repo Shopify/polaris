@@ -2,6 +2,7 @@ import React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
+// eslint-disable-next-line no-restricted-imports
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
 import {NavigationContext} from '../../../context';
 

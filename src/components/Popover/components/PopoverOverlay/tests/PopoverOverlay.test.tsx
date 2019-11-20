@@ -1,5 +1,6 @@
 import React from 'react';
 import {ReactWrapper} from 'enzyme';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {TextContainer} from 'components';
 import {Key} from '../../../../../types';

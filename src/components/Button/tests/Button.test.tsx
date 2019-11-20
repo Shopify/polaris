@@ -1,5 +1,6 @@
 import React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {UnstyledLink, Icon, Spinner} from 'components';

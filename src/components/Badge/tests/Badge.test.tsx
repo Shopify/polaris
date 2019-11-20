@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {VisuallyHidden} from 'components';
 import {Badge, Status, Progress, PROGRESS_LABELS, STATUS_LABELS} from '..';

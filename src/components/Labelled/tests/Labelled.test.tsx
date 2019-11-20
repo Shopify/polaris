@@ -1,5 +1,6 @@
 import React from 'react';
 import {InlineError, Label, buttonFrom, Labelled} from 'components';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
 describe('<Labelled />', () => {

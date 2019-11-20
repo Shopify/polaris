@@ -1,5 +1,6 @@
 import React from 'react';
 import {Rect} from '@shopify/javascript-utilities/geometry';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {EventListener} from '../../EventListener';
 import {
