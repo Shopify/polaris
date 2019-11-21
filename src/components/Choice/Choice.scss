@@ -39,9 +39,9 @@ $control-vertical-adjustment: rem(2px);
   display: flex;
   flex: 0 0 auto;
   align-items: stretch;
-  width: $control-size;
-  height: $control-size;
-  margin-top: $control-vertical-adjustment;
+  width: var(--p-choice-size, $control-size);
+  height: var(--p-choice-size, $control-size);
+  margin-top: var(--p-choice-vertical-adjustment, $control-vertical-adjustment);
   margin-right: spacing(tight);
 
   > * {
@@ -55,7 +55,9 @@ $control-vertical-adjustment: rem(2px);
 }
 
 .Descriptions {
-  padding-left: spacing(tight) + $control-size;
+  padding-left: calc(
+    #{spacing(tight)} + var(--p-choice-size, #{$control-size})
+  );
 }
 
 .HelpText {

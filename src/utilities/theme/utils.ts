@@ -110,6 +110,8 @@ function overrides() {
     overrideLoadingZIndex: '514',
     buttonFontWeight: '500',
     nonNullContent: "''",
+    choiceSize: rem('20px'),
+    choiceVerticalAdjustment: rem('-2px'),
     borderRadiusBase: rem('4px'),
     borderRadiusWide: rem('8px'),
     bannerDefaultBorder: buildBannerBorder('--p-border-on-surface'),
