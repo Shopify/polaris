@@ -22,6 +22,7 @@
 
 - Added a details page and kitchen sink example to Storybook ([#2402](https://github.com/Shopify/polaris-react/pull/2402))
 - Combined the interface used by `Page` so the types can be parsed ([#2358](https://github.com/Shopify/polaris-react/pull/2358))
+- Changed a link to the Polaris icons documentation so it would point to npm (a public resource) rather than the `Shopify/polaris-icons` repository (which is now private) ([#2452](https://github.com/Shopify/polaris-react/pull/2452))
 
 ### Development workflow
 
