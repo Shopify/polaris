@@ -33,7 +33,7 @@ describe('<Avatar />', () => {
     it('renders an Image component with a customer Avatar if the customer prop is true', () => {
       const avatar = mountWithAppProvider(<Avatar customer />);
       const image = avatar.find(Image);
-      expect(image.prop('source')).toContain('avatar-');
+      expect(image.prop('source')).toBe('customer-placeholder.svg');
     });
 
     it('does not render a customer Avatar if a source is provided', () => {

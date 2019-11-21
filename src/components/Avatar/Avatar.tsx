@@ -7,7 +7,6 @@ import {isServer} from '../../utilities/target';
 import {Image} from '../Image';
 
 import styles from './Avatar.scss';
-import * as avatars from './images';
 
 type Size = 'small' | 'medium' | 'large';
 
@@ -17,12 +16,7 @@ enum Status {
   Errored = 'ERRORED',
 }
 
-const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'];
-const AVATAR_IMAGES = Object.keys(avatars).map(
-  // import/namespace does not allow computed values by default
-  // eslint-disable-next-line import/namespace
-  (key: keyof typeof avatars) => avatars[key],
-);
+export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'];
 
 export interface AvatarProps {
   /**
@@ -76,11 +70,10 @@ export function Avatar({
     setStatus(Status.Loaded);
   }, []);
 
-  const hasImage = (source || customer) && status !== Status.Errored;
+  const hasImage = source && status !== Status.Errored;
 
   const nameString = name || initials;
 
-  let finalSource: string | undefined;
   let label: string | undefined;
 
   if (accessibilityLabel) {
@@ -96,25 +89,21 @@ export function Avatar({
     label = i18n.translate('Polaris.Avatar.label');
   }
 
-  if (source) {
-    finalSource = source;
-  } else if (customer) {
-    finalSource = customerPlaceholder(nameString);
-  }
-
   const className = classNames(
     styles.Avatar,
     styles[variationName('style', styleClass(nameString))],
     size && styles[variationName('size', size)],
-    hasImage && status !== Status.Loaded && styles.hidden,
+    (hasImage || (initials && initials.length === 0)) &&
+      status !== Status.Loaded &&
+      styles.hidden,
     hasImage && styles.hasImage,
   );
 
   const imageMarkUp =
-    finalSource && !isServer && status !== Status.Errored ? (
+    source && !isServer && status !== Status.Errored ? (
       <Image
         className={styles.Image}
-        source={finalSource}
+        source={source}
         alt=""
         role="presentation"
         onLoad={handleLoad}
@@ -125,34 +114,37 @@ export function Avatar({
   // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
   const verticalOffset = '0.35em';
 
-  const initialsMarkup =
-    initials && !hasImage ? (
-      <span className={styles.Initials}>
-        <svg className={styles.Svg} viewBox="0 0 48 48">
-          <text
-            x="50%"
-            y="50%"
-            dy={verticalOffset}
-            fill="currentColor"
-            fontSize="26"
-            textAnchor="middle"
-          >
-            {initials}
-          </text>
-        </svg>
-      </span>
-    ) : null;
+  const svgMarkup = !hasImage ? (
+    <span className={styles.Initials}>
+      <svg className={styles.Svg} viewBox="0 0 40 40">
+        {avatarBody()}
+      </svg>
+    </span>
+  ) : null;
 
   return (
     <span aria-label={label} role="img" className={className}>
-      {initialsMarkup}
+      {svgMarkup}
       {imageMarkUp}
     </span>
   );
-}
 
-function customerPlaceholder(name?: string) {
-  return name
-    ? AVATAR_IMAGES[name.charCodeAt(0) % AVATAR_IMAGES.length]
-    : AVATAR_IMAGES[0];
+  function avatarBody() {
+    return customer ? (
+      <g fill="currentColor" fill-rule="nonzero">
+        <path d="M8.28 27.5A14.95 14.95 0 0120 21.8c4.76 0 8.97 2.24 11.72 5.7a14.02 14.02 0 01-8.25 5.91 14.82 14.82 0 01-6.94 0 14.02 14.02 0 01-8.25-5.9zM13.99 12.78a6.02 6.02 0 1112.03 0 6.02 6.02 0 01-12.03 0z" />
+      </g>
+    ) : (
+      <text
+        x="50%"
+        y="50%"
+        dy={verticalOffset}
+        fill="currentColor"
+        fontSize="20"
+        textAnchor="middle"
+      >
+        {initials}
+      </text>
+    );
+  }
 }

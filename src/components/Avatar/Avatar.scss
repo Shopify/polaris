@@ -79,6 +79,7 @@ $large-size: rem(60px);
   height: 100%;
   background-color: var(--p-action-secondary-disabled, color('sky'));
   border-radius: $large-size / 2;
+  // background-color: var(--p-neutral, color('sky'));
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
@@ -92,10 +93,9 @@ $large-size: rem(60px);
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: rem(2px);
 }
 
 .Svg {
-  width: rem(48px);
-  height: auto;
+  width: 100%;
+  height: 100%;
 }
