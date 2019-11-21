@@ -33,6 +33,22 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     background-color: transparent;
     cursor: pointer;
   }
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: $range-track-height;
+    width: 100%;
+    background-image: linear-gradient(
+      to right,
+      var(--p-surface-inverse-foreground),
+      var(--p-surface-inverse-foreground) 50%,
+      transparent 50%,
+      transparent 100%
+    );
+    background-size: $range-track-height $range-track-height;
+    border-radius: var(--p-border-radius-base, border-radius());
+  }
 }
 
 .disabled {
@@ -53,7 +69,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 
 .Input {
   --progress-lower: #{color('indigo')};
-  --progress-upper: #{color('sky', 'dark')};
+  --progress-upper: #{var(--p-override-transparent, color('sky', 'dark'))};
   // create-react-app v2 leverages postcss-preset-env to transpile modern CSS
   // into something kinda supported by older browsers. Unfortunatly its
   // custom properties transpiler has a bug that means it doesn't like multiple
@@ -80,7 +96,8 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     cursor: pointer;
     width: 100%;
     height: $range-track-height;
-    background-color: var(--progress-upper, color('sky', 'dark'));
+    // background-color: red;
+    // background-color: var(--progress-upper, color('sky', 'dark'));
     background-image: linear-gradient(to right, var(--gradient-colors));
     border: none;
     border-radius: $range-track-height;
