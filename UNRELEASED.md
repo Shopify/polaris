@@ -19,6 +19,7 @@
 - Fixed an issue where the dropzone component jumped from an extra-large layout to a layout based on the width of it's container ([#2412](https://github.com/Shopify/polaris-react/pull/2412))
 - Fixed a race condition in DatePicker ([#2373](https://github.com/Shopify/polaris-react/pull/2373))
 - Added the top bar height to the `Topbar` in `Frame` to ensure the `Sticky` components get the correct top position ([2415](https://github.com/Shopify/polaris-react/pull/2415))
+- Fixed `merge` mutating its arguments ([#2317](https://github.com/Shopify/polaris-react/pull/2317))
 
 ### Documentation
 
