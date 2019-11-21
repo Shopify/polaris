@@ -6,7 +6,7 @@ $stacking-order: (
 );
 
 $range-track-height: rem(4px);
-$range-thumb-size: rem(24px);
+$range-thumb-size: var(--p-range-slider-thumb-size-base, rem(24px));
 $range-thumb-shadow: (0 0 0 rem(1px) rgba(black, 0.2), shadow(faint));
 $range-thumb-shadow-hover: (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint));
 $range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
@@ -68,7 +68,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 }
 
 .Input {
-  --progress-lower: #{color('indigo')};
+  --progress-lower: #{var(--p-interactive, color('indigo'))};
   --progress-upper: #{var(--p-override-transparent, color('sky', 'dark'))};
   // create-react-app v2 leverages postcss-preset-env to transpile modern CSS
   // into something kinda supported by older browsers. Unfortunatly its
@@ -96,8 +96,6 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     cursor: pointer;
     width: 100%;
     height: $range-track-height;
-    // background-color: red;
-    // background-color: var(--progress-upper, color('sky', 'dark'));
     background-image: linear-gradient(to right, var(--gradient-colors));
     border: none;
     border-radius: $range-track-height;
@@ -108,21 +106,27 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     cursor: -webkit-grab;
     width: $range-thumb-size;
     height: $range-thumb-size;
-    border: border-width() solid color('sky', 'lighter');
+    border: border-width() solid var(--p-interactive, color('sky', 'lighter'));
     border-radius: 50%;
-    background: linear-gradient(color('white'), color('sky', 'lighter'));
-    box-shadow: $range-thumb-shadow;
+    background: var(
+      --p-interactive,
+      linear-gradient(color('white'), color('sky', 'lighter'))
+    );
+    box-shadow: var(--p-override-none, $range-thumb-shadow);
     appearance: none;
     transition-property: border-color, box-shadow;
     transition-duration: duration();
     transition-timing-function: easing();
 
     &:hover {
-      background: linear-gradient(
-        color('sky', 'lighter'),
-        color('sky', 'light')
+      width: var(--p-range-slider-thumb-size-active, $range-thumb-size);
+      height: var(--p-range-slider-thumb-size-active, $range-thumb-size);
+
+      background: var(
+        --p-interactive,
+        linear-gradient(color('sky', 'lighter'), color('sky', 'light'))
       );
-      box-shadow: $range-thumb-shadow-hover;
+      box-shadow: var(--p-override-none, $range-thumb-shadow-hover);
     }
   }
 
@@ -131,8 +135,18 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     transform: translateY($range-thumb-size / 5) scale(0.4);
   }
 
+  @mixin rangeSliderThumbPosition($size) {
+    margin-top: calc(-1 * (#{$size} - #{$range-track-height}) / 2);
+  }
+
   &::-webkit-slider-thumb {
-    margin-top: -($range-thumb-size - $range-track-height) / 2;
+    @include rangeSliderThumbPosition($range-thumb-size);
+
+    &:hover {
+      @include rangeSliderThumbPosition(
+        var(--p-range-slider-thumb-size-active, $range-thumb-size)
+      );
+    }
   }
 
   .error & {

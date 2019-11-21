@@ -122,6 +122,8 @@ function overrides() {
     textFieldSpinnerOffset: rem('2px'),
     textFieldFocusRingOffset: rem('-4px'),
     textFieldFocusRingBorderRadius: rem('7px'),
+    rangeSliderThumbSizeBase: rem('16px'),
+    rangeSliderThumbSizeActive: rem('24px'),
     cardShadow:
       '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
     popoverShadow:
