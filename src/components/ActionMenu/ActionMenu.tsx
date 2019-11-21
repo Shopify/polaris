@@ -57,14 +57,13 @@ export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
   private renderActions = () => {
     const {actions = [], groups = []} = this.props;
     const {activeMenuGroup} = this.state;
-    const overriddenActions = sortAndOverrideActionOrder([
-      ...actions,
-      ...groups,
-    ]);
+    const menuActions = [...actions, ...groups];
 
-    if (overriddenActions.length === 0) {
+    if (menuActions.length === 0) {
       return null;
     }
+
+    const overriddenActions = sortAndOverrideActionOrder(menuActions);
 
     const actionMarkup = overriddenActions.map((action, index) => {
       if ('title' in action) {
@@ -72,7 +71,7 @@ export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
 
         return actions.length > 0 ? (
           <MenuGroup
-            key={`MenuGroup-${title || index}`}
+            key={`MenuGroup-${index}`}
             title={title}
             active={title === activeMenuGroup}
             actions={actions}
@@ -85,17 +84,11 @@ export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
 
       const {content, ...rest} = action;
       return (
-        <MenuAction
-          key={`MenuAction-${content || index}`}
-          content={content}
-          {...rest}
-        />
+        <MenuAction key={`MenuAction-${index}`} content={content} {...rest} />
       );
     });
 
-    return actionMarkup.length > 0 ? (
-      <div className={styles.ActionsLayout}>{actionMarkup}</div>
-    ) : null;
+    return <div className={styles.ActionsLayout}>{actionMarkup}</div>;
   };
 
   private handleMenuGroupToggle = (group: string) => {
