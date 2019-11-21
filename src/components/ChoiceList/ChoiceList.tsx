@@ -46,6 +46,8 @@ export interface ChoiceListProps {
   disabled?: boolean;
   /** Callback when the selected choices change */
   onChange?(selected: string[], name: string): void;
+  /** Renders the choicelist horizontal */
+  horizontal?: boolean;
 }
 
 export function ChoiceList({
@@ -58,6 +60,7 @@ export function ChoiceList({
   error,
   disabled = false,
   name: nameProp,
+  horizontal,
 }: ChoiceListProps) {
   // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
   // see https://github.com/Microsoft/TypeScript/issues/28768
@@ -127,7 +130,14 @@ export function ChoiceList({
   return (
     <fieldset className={className} id={finalName} aria-invalid={error != null}>
       {titleMarkup}
-      <ul className={styles.Choices}>{choicesMarkup}</ul>
+      <ul
+        className={classNames(
+          styles.Choices,
+          horizontal && styles['Choices-horizontal'],
+        )}
+      >
+        {choicesMarkup}
+      </ul>
       {errorMarkup}
     </fieldset>
   );
