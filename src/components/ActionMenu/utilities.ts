@@ -3,20 +3,32 @@ import {MenuActionDescriptor, MenuGroupDescriptor} from '../../types';
 export function sortAndOverrideActionOrder(
   actions: (MenuActionDescriptor | MenuGroupDescriptor)[],
 ) {
-  const sortedActionsWithOverrides = actions
-    .filter((action) => action.index !== undefined)
-    .sort(({index: indexA = 0}, {index: indexB = 0}) => {
-      return indexA - indexB;
-    });
+  const actionsWithOverrides = actions.filter(
+    (action) => action.index !== undefined,
+  );
 
-  const overriddenActions: (
-    | MenuActionDescriptor
-    | MenuGroupDescriptor)[] = actions.filter(
+  if (actionsWithOverrides.length === 0) {
+    return actions;
+  }
+
+  const sortedActionsWithOverrides = actionsWithOverrides.sort(
+    ({index: indexA = 0}, {index: indexB = 0}) => {
+      return indexA - indexB;
+    },
+  );
+
+  const actionsWithoutOverrides = actions.filter(
     (action) => action.index === undefined,
   );
 
+  const overriddenActions: (MenuActionDescriptor | MenuGroupDescriptor)[] = [
+    ...actionsWithoutOverrides,
+  ];
+
   sortedActionsWithOverrides.forEach((action) => {
-    action.index && overriddenActions.splice(action.index, 0, action);
+    if (action.index !== undefined) {
+      overriddenActions.splice(action.index, 0, action);
+    }
   });
 
   return overriddenActions;
