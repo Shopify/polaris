@@ -20,6 +20,22 @@ describe('merge', () => {
     expect(merge(objA, objB, objC)).toStrictEqual(expectedObject);
   });
 
+  it('does not mutate deeply nested objects', () => {
+    const objA = {
+      keyA: {nestedA: {nestedB: {nestedC: {}, nestedD: [{nestedE: {}}, []]}}},
+    };
+    const objB = {keyA: {nestedA: {nestedB: {nestedD: {}}}}};
+    const objC = {keyA: {nestedA: {nestedB: {nestedE: [[], {nestedD: {}}]}}}};
+    merge(objA, objB, objC);
+    expect(objA).toStrictEqual({
+      keyA: {nestedA: {nestedB: {nestedC: {}, nestedD: [{nestedE: {}}, []]}}},
+    });
+    expect(objB).toStrictEqual({keyA: {nestedA: {nestedB: {nestedD: {}}}}});
+    expect(objC).toStrictEqual({
+      keyA: {nestedA: {nestedB: {nestedE: [[], {nestedD: {}}]}}},
+    });
+  });
+
   it('does not mutate the provided arguments', () => {
     const objA = {keyA: {nestedA: 1}};
     const objB = {keyA: {nestedA: 2}};
