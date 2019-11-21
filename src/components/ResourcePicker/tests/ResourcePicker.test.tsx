@@ -227,7 +227,7 @@ describe('<ResourcePicker />', () => {
 
 function noop() {}
 
-function mountWithAppBridge(element: React.ReactElement<any>) {
+function mountWithAppBridge(element: React.ReactElement) {
   const appBridge = {};
   const resourcePicker = mountWithAppProvider(element, {appBridge});
 

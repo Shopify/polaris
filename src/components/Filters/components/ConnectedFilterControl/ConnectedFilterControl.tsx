@@ -185,9 +185,7 @@ export class ConnectedFilterControl extends React.Component<
     return actionsToReturn;
   }
 
-  private activatorButtonFrom(
-    action: PopoverableAction,
-  ): React.ReactElement<any> {
+  private activatorButtonFrom(action: PopoverableAction): React.ReactElement {
     return (
       <Button
         onClick={action.onAction}
@@ -200,7 +198,7 @@ export class ConnectedFilterControl extends React.Component<
     );
   }
 
-  private popoverFrom(actions: PopoverableAction[]): React.ReactElement<any>[] {
+  private popoverFrom(actions: PopoverableAction[]): React.ReactElement[] {
     return actions.map((action) => {
       return (
         <Item key={action.key}>

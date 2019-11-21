@@ -6,8 +6,7 @@ export function pluckDeep(obj: {[key: string]: any} | null, key: string): any {
   }
 
   const keys = Object.keys(obj);
-  for (let i = 0; i < keys.length; i++) {
-    const currKey = keys[i];
+  for (const currKey of keys) {
     if (currKey === key) {
       return obj[key];
     }

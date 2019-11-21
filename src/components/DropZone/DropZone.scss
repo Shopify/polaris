@@ -116,6 +116,11 @@ $dropzone-stacking-order: (
   min-height: $dropzone-min-height-small;
 }
 
+.measuring {
+  visibility: hidden;
+  min-height: 0;
+}
+
 .Container {
   flex: 1;
 }

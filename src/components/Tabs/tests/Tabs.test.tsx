@@ -133,7 +133,7 @@ describe('<Tabs />', () => {
 
   describe('selected', () => {
     let getElementById: jest.SpyInstance;
-    let panelStub: {focus: jest.Mock<any>};
+    let panelStub: {focus: jest.Mock};
 
     beforeEach(() => {
       panelStub = {focus: jest.fn()};

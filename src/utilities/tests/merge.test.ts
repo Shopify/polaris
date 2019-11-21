@@ -6,6 +6,7 @@ describe('merge', () => {
   });
 
   it('does not merge prototypes', () => {
+    // eslint-disable-next-line @typescript-eslint/no-extraneous-class
     class Obj {}
     (Obj.prototype as any).prototypeVal = 'val';
     expect(merge(new Obj(), {})).toStrictEqual({});

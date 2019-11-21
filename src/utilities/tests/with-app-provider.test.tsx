@@ -8,7 +8,7 @@ describe('withAppProvider', () => {
       .spyOn(console, 'error')
       .mockImplementation(() => {});
 
-    const Child: React.SFC<{}> = (_props) => <div />;
+    const Child: React.SFC = (_props) => <div />;
 
     const WrappedComponent = withAppProvider<any>()(Child);
 

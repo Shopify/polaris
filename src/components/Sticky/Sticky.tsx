@@ -7,7 +7,7 @@ import {
 
 interface State {
   isSticky: boolean;
-  style: Object;
+  style: object;
 }
 
 export type StickyProps = {
@@ -19,7 +19,8 @@ export type StickyProps = {
   disableWhenStacked?: boolean;
 } & (
   | {children: React.ReactNode}
-  | {children(isSticky: boolean): React.ReactNode});
+  | {children(isSticky: boolean): React.ReactNode}
+);
 
 type CombinedProps = StickyProps & WithAppProviderProps;
 

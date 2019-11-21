@@ -44,8 +44,8 @@ export interface ButtonProps {
   pressed?: boolean;
   /** Allows the button to grow to the width of its container */
   fullWidth?: boolean;
-  /** Displays the button with a disclosure icon */
-  disclosure?: boolean;
+  /** Displays the button with a disclosure icon. Defaults to `down` when set to true */
+  disclosure?: 'down' | 'up' | boolean;
   /** Allows the button to submit a form */
   submit?: boolean;
   /** Renders a button that looks like a link */
@@ -81,6 +81,10 @@ export interface ButtonProps {
   onKeyUp?(event: React.KeyboardEvent<HTMLButtonElement>): void;
   /** Callback when a keydown event is registered on the button */
   onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  /** Callback when mouse enter */
+  onMouseEnter?(): void;
+  /** Callback when element is touched */
+  onTouchStart?(): void;
 }
 
 const DEFAULT_SIZE = 'medium';
@@ -101,6 +105,8 @@ export function Button({
   onKeyDown,
   onKeyPress,
   onKeyUp,
+  onMouseEnter,
+  onTouchStart,
   external,
   download,
   icon,
@@ -148,9 +154,20 @@ export function Button({
     icon && children == null && styles.iconOnly,
   );
 
+  const disclosureIcon = (
+    <Icon source={loading ? 'placeholder' : CaretDownMinor} />
+  );
+
   const disclosureIconMarkup = disclosure ? (
     <IconWrapper>
-      <Icon source={loading ? 'placeholder' : CaretDownMinor} />
+      <div
+        className={classNames(
+          styles.DisclosureIcon,
+          disclosure === 'up' && styles.DisclosureIconFacingUp,
+        )}
+      >
+        {disclosureIcon}
+      </div>
     </IconWrapper>
   ) : null;
 
@@ -218,6 +235,8 @@ export function Button({
         onFocus={onFocus}
         onBlur={onBlur}
         onMouseUp={handleMouseUpByBlurring}
+        onMouseEnter={onMouseEnter}
+        onTouchStart={onTouchStart}
         className={className}
         aria-label={accessibilityLabel}
       >
@@ -239,6 +258,8 @@ export function Button({
       onKeyUp={onKeyUp}
       onKeyPress={onKeyPress}
       onMouseUp={handleMouseUpByBlurring}
+      onMouseEnter={onMouseEnter}
+      onTouchStart={onTouchStart}
       className={className}
       disabled={isDisabled}
       aria-label={accessibilityLabel}

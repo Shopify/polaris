@@ -469,6 +469,9 @@ function setBoundingClientRect(size: keyof typeof widths) {
         left: 0,
         bottom: 0,
         right: 0,
+        x: 0,
+        y: 0,
+        toJSON() {},
       };
     });
 }
@@ -482,7 +485,7 @@ function fireEvent({
   element: ReactWrapper<any, any>;
   eventType?: string;
   spy?: jest.Mock;
-  testFiles?: Array<Object>;
+  testFiles?: object[];
 }) {
   if (spy) {
     spy.mockReset();

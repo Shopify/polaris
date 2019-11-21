@@ -118,7 +118,8 @@ export type TextFieldProps = NonMutuallyExclusiveProps &
   (
     | {readOnly: true}
     | {disabled: true}
-    | {onChange(value: string, id: string): void});
+    | {onChange(value: string, id: string): void}
+  );
 
 export function TextField({
   prefix,
@@ -356,9 +357,7 @@ export function TextField({
     labelledBy.push(`${id}Suffix`);
   }
 
-  if (labelledBy.length) {
-    labelledBy.unshift(labelID(id));
-  }
+  labelledBy.unshift(labelID(id));
 
   const inputClassName = classNames(
     styles.Input,
@@ -393,7 +392,7 @@ export function TextField({
     pattern,
     type: inputType,
     'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
-    'aria-labelledby': labelledBy.length ? labelledBy.join(' ') : undefined,
+    'aria-labelledby': labelledBy.join(' '),
     'aria-invalid': Boolean(error),
     'aria-owns': ariaOwns,
     'aria-activedescendant': ariaActiveDescendant,
@@ -438,7 +437,7 @@ export function TextField({
   function handleKeyPress(event: React.KeyboardEvent) {
     const {key, which} = event;
     const numbersSpec = /[\d.eE+-]$/;
-    if (type !== 'number' || which === Key.Enter || key.match(numbersSpec)) {
+    if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
       return;
     }
     event.preventDefault();

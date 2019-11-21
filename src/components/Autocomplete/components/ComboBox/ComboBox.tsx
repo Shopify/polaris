@@ -31,7 +31,7 @@ export interface ComboBoxProps {
   /** The selected options */
   selected: string[];
   /** The text field component attached to the list of options */
-  textField: React.ReactElement<any>;
+  textField: React.ReactElement;
   /** The preferred direction to open the popover */
   preferredPosition?: PreferredPosition;
   /** Title of the list of options */
@@ -71,7 +71,8 @@ export class ComboBox extends React.PureComponent<ComboBoxProps, State> {
 
     let newNavigableOptions: (
       | OptionDescriptor
-      | ActionListItemDescriptor)[] = [];
+      | ActionListItemDescriptor
+    )[] = [];
     if (nextActionsBefore) {
       newNavigableOptions = newNavigableOptions.concat(nextActionsBefore);
     }

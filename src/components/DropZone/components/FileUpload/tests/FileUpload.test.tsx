@@ -10,7 +10,28 @@ describe('<FileUpload />', () => {
     hover: false,
     focused: false,
     disabled: false,
+    measuring: false,
   };
+  describe('measuring', () => {
+    it('hides the FileUpload while measuring is true', () => {
+      const fileUpload = mountWithAppProvider(
+        <DropZoneContext.Provider
+          value={{
+            size: 'extraLarge',
+            type: 'file',
+            ...defaultStates,
+            measuring: true,
+          }}
+        >
+          <FileUpload />
+        </DropZoneContext.Provider>,
+      );
+
+      const wrapper = fileUpload.find('div').first();
+      expect(wrapper.hasClass('measuring')).toBe(true);
+    });
+  });
+
   describe('extraLarge', () => {
     it('renders extra large view for type file', () => {
       const fileUpload = mountWithAppProvider(

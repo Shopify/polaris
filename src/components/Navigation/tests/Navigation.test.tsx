@@ -12,7 +12,7 @@ describe('<Navigation />', () => {
 
   describe('context', () => {
     it('passes location context', () => {
-      const Child: React.SFC<{}> = (_props) => {
+      const Child: React.SFC = (_props) => {
         return (
           <NavigationContext.Consumer>
             {({location}) => {
@@ -39,7 +39,7 @@ describe('<Navigation />', () => {
     });
 
     it('has a child with contentContext', () => {
-      const Child: React.SFC<{}> = (_props) => {
+      const Child: React.SFC = (_props) => {
         return (
           <WithinContentContext.Consumer>
             {(withinContentContainer) => {

@@ -57,7 +57,7 @@ describe('<Page />', () => {
     animationFrame.restore();
   });
 
-  describe('forceRender renders children in page', () => {
+  it('forceRender renders children in page', () => {
     const {
       createSpy: titleBarCreateSpy,
       restore: restoreTitleBarCreateMock,
@@ -445,7 +445,7 @@ describe('<Page />', () => {
 
 function noop() {}
 
-function mountWithAppBridge(element: React.ReactElement<any>) {
+function mountWithAppBridge(element: React.ReactElement) {
   const appBridge = {};
   const page = mountWithAppProvider(element, {appBridge});
   return {page, appBridge};

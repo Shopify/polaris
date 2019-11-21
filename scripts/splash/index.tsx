@@ -81,7 +81,7 @@ const Components = ({components, status}) => (
   <React.Fragment>
     {status === 'loading' && (
       <Box marginLeft={4} marginBottom={1}>
-        ⏳{'  '}Please wait during compilation… Beep boop beep 🤖
+        ⏳ Please wait during compilation… Beep boop beep 🤖
       </Box>
     )}
 
@@ -202,8 +202,8 @@ const App = () => {
           <Color dim>
             <Box width={3}>💡</Box>
             <Box>
-              Tip: to disable these reports, run{' '}
-              <Text bold>DISABLE_SPLASH=1 yarn dev</Text>
+              Tip: to disable these reports, run
+              <Text bold> DISABLE_SPLASH=1 yarn dev</Text>
             </Box>
           </Color>
         </Box>
