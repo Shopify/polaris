@@ -7,10 +7,19 @@ $stacking-order: (
 
 $range-track-height: rem(4px);
 $range-thumb-size: var(--p-range-slider-thumb-size-base, rem(24px));
-$range-thumb-shadow: (0 0 0 rem(1px) rgba(black, 0.2), shadow(faint));
-$range-thumb-shadow-hover: (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint));
-$range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
-$range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
+$range-thumb-shadow: var(
+  --p-override-none,
+  (0 0 0 rem(1px) rgba(black, 0.2), shadow(faint))
+);
+$range-thumb-shadow-hover: var(
+  --p-override-none,
+  (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint))
+);
+$range-thumb-shadow-error: var(--p-override-none, 0 0 0 rem(1px) color('red'));
+$range-thumb-shadow-focus: var(
+  --p-override-none,
+  0 0 0 rem(1px) color('indigo')
+);
 
 .SingleThumb {
   display: flex;
@@ -139,7 +148,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
       --p-interactive,
       linear-gradient(color('white'), color('sky', 'lighter'))
     );
-    box-shadow: var(--p-override-none, $range-thumb-shadow);
+    box-shadow: $range-thumb-shadow;
     appearance: none;
     transition-property: width, height, margin-top, border-color, box-shadow;
     transition-duration: duration();
@@ -152,7 +161,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
         --p-interactive,
         linear-gradient(color('sky', 'lighter'), color('sky', 'light'))
       );
-      box-shadow: var(--p-override-none, $range-thumb-shadow-hover);
+      box-shadow: $range-thumb-shadow-hover;
     }
   }
 
@@ -170,8 +179,8 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 
     @include range-thumb-selectors {
       background: var(--p-critical, color('white'));
-      border-color: color('red');
-      box-shadow: var(--p-override-none, $range-thumb-shadow-error);
+      border-color: var(--p-critical, color('red'));
+      box-shadow: $range-thumb-shadow-error;
     }
   }
 
@@ -184,7 +193,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 
     @include range-thumb-selectors {
       cursor: not-allowed;
-      border-color: color('sky', 'dark');
+      border-color: var(--p-border-on-surface, color('sky', 'dark'));
       background: var(--p-surface-background, color('white'));
 
       &:hover {
@@ -193,25 +202,6 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
           linear-gradient(color('sky', 'lighter'), color('sky', 'light'))
         );
       }
-    }
-  }
-
-  // match `error` specificity for interaction styles
-  .RangeSlider &:focus {
-    // repeated so that `focus` can override `error`
-    --progress-lower: #{color('indigo')};
-
-    @include range-track-selectors {
-      background-color: color('sky', 'dark');
-    }
-
-    @include range-thumb-selectors {
-      background: linear-gradient(
-        color('sky', 'lighter'),
-        color('sky', 'light')
-      );
-      border-color: color('indigo');
-      box-shadow: $range-thumb-shadow-focus;
     }
   }
 }
@@ -255,7 +245,7 @@ $range-output-spacing: rem(16px);
   padding: 0 spacing(tight);
   min-width: $range-output-size;
   height: $range-output-size;
-  background-color: color('ink');
+  background-color: var(--p-surface-inverse-foreground, color('ink'));
   border-radius: border-radius();
   transition-property: transform;
   transition-duration: duration();
@@ -280,5 +270,5 @@ $range-output-spacing: rem(16px);
   flex: 1 1 auto;
   margin: auto;
   text-align: center;
-  color: color('white');
+  color: var(--p-text-on-inverse, color('white'));
 }
