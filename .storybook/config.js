@@ -62,10 +62,8 @@ addDecorator(
           name: 'Enabled - Light Mode',
           props: {
             i18n: enTranslations,
-            features: {
-              unstableGlobalTheming: true,
-              theme: {UNSTABLE_colors: {surface: UNSTABLE_Color.Surface}},
-            },
+            features: {unstableGlobalTheming: true},
+            theme: {mode: 'light'},
           },
         },
         {
@@ -73,9 +71,7 @@ addDecorator(
           props: {
             i18n: enTranslations,
             features: {unstableGlobalTheming: true},
-            theme: {
-              UNSTABLE_colors: {surface: UNSTABLE_Color.DarkSurface},
-            },
+            theme: {mode: 'dark'},
           },
         },
       ],

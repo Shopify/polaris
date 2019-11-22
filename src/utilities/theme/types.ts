@@ -36,6 +36,8 @@ export interface RoleColors {
 
 export type Role = keyof RoleColors;
 
+export type Mode = 'light' | 'dark';
+
 // The value that is passed into the ThemeProvider
 export interface ThemeConfig {
   /** Sets the logo for the top bar and contextual save bar components*/
@@ -45,6 +47,7 @@ export interface ThemeConfig {
     topBar?: Record<string, string>;
   };
   UNSTABLE_colors?: Partial<RoleColors>;
+  mode?: Mode;
 }
 
 export type CustomPropertiesLike = Record<string, string>;
@@ -54,6 +57,8 @@ export interface Theme {
   /** Sets the logo for the top bar and contextual save bar components*/
   logo?: ThemeLogo;
   UNSTABLE_cssCustomProperties?: string;
+  UNSTABLE_colors?: Partial<RoleColors>;
+  mode?: Mode;
 }
 
 export interface HslaSetting {

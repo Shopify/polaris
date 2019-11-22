@@ -1,8 +1,10 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mount} from 'enzyme';
 import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext, useTheme} from '../../../utilities/theme';
+import {FeaturesContext} from '../../../utilities/features';
 
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
@@ -122,26 +124,24 @@ describe('<ThemeProvider />', () => {
   });
 
   it('sets color system properties when global theming is enabled', () => {
-    const themeProvider = mountWithAppProvider(
-      <ThemeProvider theme={{}}>
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{UNSTABLE_colors: {surface: '#ffffff'}}}>
         <p>Hello</p>
       </ThemeProvider>,
-      {features: {unstableGlobalTheming: true}},
+      true,
     );
 
-    expect(themeProvider.find('div').props().style).toStrictEqual(
-      expect.objectContaining({
-        '--p-surface-background': 'hsla(0, 0%, 98%, 1)',
-      }),
-    );
+    const styleKeys = Object.keys(wrapper.find('div').props().style || {});
+
+    expect(styleKeys).toContain('--p-surface-background');
   });
 
   it('sets color system properties in context when global theming is enabled', () => {
-    mountWithAppProvider(
-      <ThemeProvider theme={{}}>
+    mountWithGlobalTheming(
+      <ThemeProvider theme={{UNSTABLE_colors: {surface: '#ffffff'}}}>
         <Child />
       </ThemeProvider>,
-      {features: {unstableGlobalTheming: true}},
+      true,
     );
 
     function Child() {
@@ -152,10 +152,11 @@ describe('<ThemeProvider />', () => {
   });
 
   it('does not set color system properties in context by default', () => {
-    mountWithAppProvider(
+    mountWithGlobalTheming(
       <ThemeProvider theme={{}}>
         <Child />
       </ThemeProvider>,
+      false,
     );
 
     function Child() {
@@ -164,4 +165,221 @@ describe('<ThemeProvider />', () => {
       return null;
     }
   });
+
+  it('does set overrides', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      true,
+    );
+
+    const styleKeys = Object.keys(wrapper.find('div').props().style || {});
+
+    expect(styleKeys).toContain('--p-override-zero');
+  });
+
+  describe('when nested', () => {
+    it('does not set a default theme', () => {
+      const wrapper = mountWithGlobalTheming(
+        <ThemeProvider theme={{}}>
+          <ThemeProvider theme={{}}>
+            <p>Hello</p>
+          </ThemeProvider>
+        </ThemeProvider>,
+        true,
+      );
+
+      expect(
+        wrapper
+          .find('div')
+          .last()
+          .props().style,
+      ).toStrictEqual({});
+    });
+
+    it('does not set overrides', () => {
+      const wrapper = mountWithGlobalTheming(
+        <ThemeProvider theme={{}}>
+          <ThemeProvider theme={{}}>
+            <p>Hello</p>
+          </ThemeProvider>
+        </ThemeProvider>,
+        true,
+      );
+
+      const styleKeys = Object.keys(
+        wrapper
+          .find('div')
+          .last()
+          .props().style || {},
+      );
+
+      expect(styleKeys).not.toContain('--p-override-zero');
+    });
+    it('adds css custom properties for color roles provided', () => {
+      const wrapper = mountWithGlobalTheming(
+        <ThemeProvider
+          theme={{
+            UNSTABLE_colors: {surface: '#FFFFFF'},
+          }}
+        >
+          <ThemeProvider
+            theme={{
+              UNSTABLE_colors: {surface: '#000000'},
+            }}
+          >
+            <p>Hello</p>
+          </ThemeProvider>
+        </ThemeProvider>,
+        true,
+      );
+
+      expect(
+        wrapper
+          .find('div')
+          .last()
+          .props().style,
+      ).toStrictEqual(
+        expect.objectContaining({'--p-surface': 'hsla(0, 0%, 0%, 1)'}),
+      );
+    });
+
+    it('inherits mode from parent <ThemeProvider>', () => {
+      const wrapper = mountWithGlobalTheming(
+        <ThemeProvider theme={{mode: 'dark'}}>
+          <ThemeProvider
+            theme={{
+              UNSTABLE_colors: {critical: '#FFFEEE'},
+            }}
+          >
+            <p>Hello</p>
+          </ThemeProvider>
+        </ThemeProvider>,
+        true,
+      );
+
+      const {style} = wrapper
+        .find('div')
+        .last()
+        .props();
+      expect(style).toStrictEqual(
+        expect.objectContaining({
+          '--p-critical-surface-subdued':
+            'hsla(58, 100%, 7.000000000000001%, 1)',
+        }),
+      );
+      expect(style).not.toStrictEqual(
+        expect.objectContaining({
+          '--p-critical-surface-subdued': 'hsla(57, 100%, 89%, 1)',
+        }),
+      );
+    });
+
+    it('overrides mode from parent <ThemeProvider> when provided a mode', () => {
+      const wrapper = mountWithGlobalTheming(
+        <ThemeProvider theme={{mode: 'dark'}}>
+          <ThemeProvider
+            theme={{
+              UNSTABLE_colors: {critical: '#FFFEEE'},
+              mode: 'light',
+            }}
+          >
+            <p>Hello</p>
+          </ThemeProvider>
+        </ThemeProvider>,
+        true,
+      );
+
+      const {style} = wrapper
+        .find('div')
+        .last()
+        .props();
+      expect(style).toStrictEqual(
+        expect.objectContaining({
+          '--p-critical-surface-subdued': 'hsla(57, 100%, 89%, 1)',
+        }),
+      );
+      expect(style).not.toStrictEqual(
+        expect.objectContaining({
+          '--p-critical-surface-subdued':
+            'hsla(58, 100%, 7.000000000000001%, 1)',
+        }),
+      );
+    });
+
+    it('inherits colors from parent <ThemeProvider> when their modes differ', () => {
+      const wrapper = mountWithGlobalTheming(
+        <ThemeProvider theme={{mode: 'dark'}}>
+          <ThemeProvider
+            theme={{
+              mode: 'light',
+            }}
+          >
+            <p>Hello</p>
+          </ThemeProvider>
+        </ThemeProvider>,
+        true,
+      );
+
+      const {style} = wrapper
+        .find('div')
+        .last()
+        .props();
+      expect(style).toStrictEqual(
+        expect.objectContaining({
+          '--p-surface-background': 'hsla(0, 0%, 98%, 1)',
+        }),
+      );
+    });
+  });
+
+  it('overrides inherited colors from parent <ThemeProvider> with provided colors when their modes differ', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider
+        theme={{
+          mode: 'dark',
+          UNSTABLE_colors: {critical: '#000000'},
+        }}
+      >
+        <ThemeProvider
+          theme={{
+            mode: 'light',
+            UNSTABLE_colors: {critical: '#FFFEEE'},
+          }}
+        >
+          <p>Hello</p>
+        </ThemeProvider>
+      </ThemeProvider>,
+      true,
+    );
+
+    const {style} = wrapper
+      .find('div')
+      .last()
+      .props();
+    expect(style).toStrictEqual(
+      expect.objectContaining({
+        '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
+      }),
+    );
+    expect(style).not.toStrictEqual(
+      expect.objectContaining({
+        '--p-critical-surface': 'hsla(0, 0%, 98%, 1)',
+      }),
+    );
+  });
 });
+
+function mountWithGlobalTheming(
+  children: React.ReactNode,
+  globalThemingEnabled: boolean,
+) {
+  return mount(
+    <FeaturesContext.Provider
+      value={{unstableGlobalTheming: globalThemingEnabled}}
+    >
+      {children}
+    </FeaturesContext.Provider>,
+  );
+}
