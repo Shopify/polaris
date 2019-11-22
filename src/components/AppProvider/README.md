@@ -456,7 +456,7 @@ function App() {
     fallback: translations,
     translations(locale) {
       return import(
-        /* webpackChunkName: "Polaris-i18n-[request]", webpackMode: "lazy-once" */ `@shopify/polaris/locales/${locale}.json`
+        /* webpackChunkName: "Polaris-i18n", webpackMode: "lazy-once" */ `@shopify/polaris/locales/${locale}.json`
       ).then((dictionary) => dictionary && dictionary.default);
     },
   });
