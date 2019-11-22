@@ -6,6 +6,7 @@ import {classNames, variationName} from '../../utilities/css';
 import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {useUniqueId} from '../../utilities/unique-id';
+import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {Labelled, Action, helpTextID, labelID} from '../Labelled';
 import {Connected} from '../Connected';
 
@@ -165,7 +166,7 @@ export function TextField({
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
-  const [isMounted, setIsMounted] = useState(false);
+  const isAfterInitial = useIsAfterInitialMount();
 
   const id = useUniqueId('TextField', idProp);
 
@@ -173,10 +174,6 @@ export function TextField({
   const prefixRef = useRef<HTMLDivElement>(null);
   const suffixRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     const input = inputRef.current;
@@ -327,7 +324,7 @@ export function TextField({
   }, []);
 
   const resizer =
-    multiline && isMounted ? (
+    multiline && isAfterInitial ? (
       <Resizer
         contents={normalizedValue || placeholder}
         currentHeight={height}
