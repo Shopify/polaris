@@ -35,6 +35,7 @@
 
 ### Code quality
 
+- Changed `TextField` to use a custom hook ([#2464](https://github.com/Shopify/polaris-react/pull/2464))
 - Changed `aria-labelledby` to always exist on `TextField` ([#2401](https://github.com/Shopify/polaris-react/pull/2401))
 
 ### Deprecations
