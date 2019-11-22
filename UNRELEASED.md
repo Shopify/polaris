@@ -30,6 +30,7 @@
 
 ### Dependency upgrades
 
+- Upgraded to `@shopify/react-testing`v1.8.0` ([#2465](https://github.com/Shopify/polaris-react/pull/2465))
 - Upgraded to TypeScript `v3.7.2` ([#2237](https://github.com/Shopify/polaris-react/pull/2237))
 - Upgraded to Prettier to `v1.19.1` ([#2443](https://github.com/Shopify/polaris-react/pull/2443))
 
