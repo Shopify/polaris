@@ -141,8 +141,8 @@
     "postcss-modules-values": "^2.0.0",
     "postcss-shopify": "^2.2.1",
     "puppeteer": "^1.20.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-test-renderer": "^16.3.1",
     "rimraf": "^3.0.0",
     "rollup": "^1.10.1",
@@ -160,8 +160,8 @@
     "typescript": "~3.5.1"
   },
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "resolutions": {
     "typescript-eslint-parser": "npm:@typescript-eslint/parser@1.10.2"
@@ -186,8 +186,8 @@
     "@shopify/polaris-tokens": "^2.6.0",
     "@shopify/useful-types": "^1.2.4",
     "@types/hoist-non-react-statics": "^3.3.1",
-    "@types/react": "^16.8.15",
-    "@types/react-dom": "^16.8.4",
+    "@types/react": "^16.9.12",
+    "@types/react-dom": "^16.9.4",
     "@types/react-transition-group": "^2.0.7",
     "hoist-non-react-statics": "^3.3.0",
     "lodash": "^4.17.4",
