@@ -3,10 +3,6 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 import {TextContainer} from 'components';
 import {Section} from '../Section';
 
-// section: ActionListSection;
-// hasMultipleSections: boolean;
-// onActionAnyItem?: ActionListItemDescriptor['onAction'];
-
 describe('<Section />', () => {
   const children = (
     <TextContainer>
