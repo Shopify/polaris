@@ -83,6 +83,27 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     var(--progress-upper, transparent) var(--Polaris-RangeSlider-progress, 100%),
     var(--progress-upper, transparent) 100%;
 
+  @mixin rangeSliderThumbPosition($size) {
+    margin-top: calc(-1 * (#{$size} - #{$range-track-height}) / 2);
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    @include range-thumb-selectors {
+      transition-property: width, height, margin-top;
+      transition-duration: duration();
+      transition-timing-function: easing();
+
+      width: var(--p-range-slider-thumb-size-active, $range-thumb-size);
+      height: var(--p-range-slider-thumb-size-active, $range-thumb-size);
+
+      @include rangeSliderThumbPosition(
+        var(--p-range-slider-thumb-size-active, $range-thumb-size)
+      );
+    }
+  }
+
   &::-ms-tooltip {
     display: none;
   }
@@ -114,14 +135,13 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     );
     box-shadow: var(--p-override-none, $range-thumb-shadow);
     appearance: none;
-    transition-property: border-color, box-shadow;
+    transition-property: width, height, margin-top, border-color, box-shadow;
     transition-duration: duration();
     transition-timing-function: easing();
 
-    &:hover {
-      width: var(--p-range-slider-thumb-size-active, $range-thumb-size);
-      height: var(--p-range-slider-thumb-size-active, $range-thumb-size);
+    @include rangeSliderThumbPosition($range-thumb-size);
 
+    &:hover {
       background: var(
         --p-interactive,
         linear-gradient(color('sky', 'lighter'), color('sky', 'light'))
@@ -133,20 +153,6 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
   &::-ms-thumb {
     margin-top: 0;
     transform: translateY($range-thumb-size / 5) scale(0.4);
-  }
-
-  @mixin rangeSliderThumbPosition($size) {
-    margin-top: calc(-1 * (#{$size} - #{$range-track-height}) / 2);
-  }
-
-  &::-webkit-slider-thumb {
-    @include rangeSliderThumbPosition($range-thumb-size);
-
-    &:hover {
-      @include rangeSliderThumbPosition(
-        var(--p-range-slider-thumb-size-active, $range-thumb-size)
-      );
-    }
   }
 
   .error & {
@@ -198,7 +204,10 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 /// Output value indicator
 $range-output-size: rem(32px);
 $range-output-translate-x: calc(
-  -50% + var(--Polaris-RangeSlider-output-factor, 0) * #{$range-thumb-size}
+  -50% + var(--Polaris-RangeSlider-output-factor, 0) * #{var(
+      --p-range-slider-thumb-size-active,
+      $range-thumb-size
+    )}
 );
 $range-output-spacing: rem(16px);
 
@@ -220,6 +229,7 @@ $range-output-spacing: rem(16px);
   .Input:focus + & {
     opacity: 1;
     visibility: visible;
+    bottom: var(--p-range-slider-thumb-size-active, $range-thumb-size);
   }
 }
 
