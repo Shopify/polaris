@@ -65,7 +65,11 @@ export function AppProvider({
 
   useEffect(() => {
     stickyManager.current.setContainer(document);
-  }, [stickyManager]);
+    // We're using a disable because stickyManager is a ref
+    // Refs are used for values which don't trigger a re-render
+    // and intended to be mutated outside the render data flow
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <FeaturesContext.Provider value={features}>
