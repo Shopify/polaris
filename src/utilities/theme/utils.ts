@@ -2,12 +2,7 @@ import tokens from '@shopify/polaris-tokens';
 import {hexToHsluv, hsluvToHex} from 'hsluv';
 import isEqual from 'lodash/isEqual';
 import {HSLColor, HSLAColor} from '../color-types';
-import {
-  colorToHsla,
-  hslToString,
-  hslToRgb,
-  hexToRgb,
-} from '../color-transformers';
+import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
 import {isLight} from '../color-validation';
 import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
@@ -19,21 +14,22 @@ import {
   CustomPropertiesLike,
   RoleVariants,
   Role,
-  Variant,
+  RoleColors,
   HslaSetting,
+  Mode,
 } from './types';
-import {roleVariants, UNSTABLE_Color} from './role-variants';
-import {Tokens} from './tokens';
+
+import {roleVariants} from './role-variants';
 
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
   globalTheming: boolean,
 ): CustomPropertiesLike {
+  const {UNSTABLE_colors = {}, mode = 'light'} = themeConfig;
   return globalTheming
-    ? customPropertyTransformer({
-        ...buildColors(themeConfig, roleVariants),
-        ...Tokens,
-      })
+    ? customPropertyTransformer(
+        buildColors(UNSTABLE_colors, roleVariants, mode),
+      )
     : buildLegacyColors(themeConfig);
 }
 
@@ -41,10 +37,11 @@ export function buildThemeContext(
   themeConfig: ThemeConfig,
   cssCustomProperties?: CustomPropertiesLike,
 ): Theme {
-  const {logo} = themeConfig;
+  const {logo, UNSTABLE_colors} = themeConfig;
   return {
     logo,
     UNSTABLE_cssCustomProperties: toString(cssCustomProperties),
+    UNSTABLE_colors,
   };
 }
 
@@ -69,68 +66,51 @@ function hexToHsluvObj(hex: string) {
 }
 
 export function buildColors(
-  theme: ThemeConfig,
+  colors: Partial<RoleColors>,
   roleVariants: Partial<RoleVariants>,
+  mode: Mode = 'light',
 ) {
-  const colors = {
-    surface: UNSTABLE_Color.Surface,
-    onSurface: UNSTABLE_Color.OnSurface,
-    interactive: UNSTABLE_Color.Interactive,
-    neutral: UNSTABLE_Color.Neutral,
-    primary: UNSTABLE_Color.Primary,
-    critical: UNSTABLE_Color.Critical,
-    warning: UNSTABLE_Color.Warning,
-    highlight: UNSTABLE_Color.Highlight,
-    success: UNSTABLE_Color.Success,
-    decorative: UNSTABLE_Color.Decorative,
-    ...theme.UNSTABLE_colors,
-  };
+  return Object.entries(colors).reduce((acc1, [role, hex]: [Role, string]) => {
+    const base = hexToHsluvObj(hex);
+    const variants = roleVariants[role] || [];
+    return {
+      ...acc1,
+      ...variants.reduce((acc2, {name, light, dark}) => {
+        const configs: Record<string, HslaSetting> = {
+          default: mode === 'light' ? light : dark,
+        };
 
-  const lightSurface = isLight(hexToRgb(colors.surface));
+        if (!isEqual(light, dark)) {
+          configs.Inverse = mode === 'dark' ? dark : light;
+          configs.Light = light;
+          configs.Dark = dark;
+        }
 
-  return Object.entries(roleVariants).reduce(
-    (acc1, [role, variants]: [Role, Variant[]]) => {
-      const base = hexToHsluvObj(colors[role]);
-      return {
-        ...acc1,
-        ...variants.reduce((acc2, {name, light, dark}) => {
-          const configs: Record<string, HslaSetting> = {
-            default: lightSurface ? light : dark,
-          };
+        return {
+          ...acc2,
+          ...Object.entries(configs).reduce((acc3, [variant, config]) => {
+            const {
+              hue = base.hue,
+              saturation = base.saturation,
+              lightness = base.lightness,
+              alpha = 1,
+            } = config;
 
-          if (!isEqual(light, dark)) {
-            configs.Inverse = lightSurface ? dark : light;
-            configs.Light = light;
-            configs.Dark = dark;
-          }
+            const displayName =
+              variant === 'default' ? name : `${name}${variant}`;
 
-          return {
-            ...acc2,
-            ...Object.entries(configs).reduce((acc3, [variant, config]) => {
-              const {
-                hue = base.hue,
-                saturation = base.saturation,
-                lightness = base.lightness,
-                alpha = 1,
-              } = config;
-
-              const displayName =
-                variant === 'default' ? name : `${name}${variant}`;
-
-              return {
-                ...acc3,
-                [displayName]: hslToString({
-                  ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
-                  alpha,
-                }),
-              };
-            }, {}),
-          };
-        }, {}),
-      };
-    },
-    {},
-  );
+            return {
+              ...acc3,
+              [displayName]: hslToString({
+                ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
+                alpha,
+              }),
+            };
+          }, {}),
+        };
+      }, {}),
+    };
+  }, {});
 }
 
 function customPropertyTransformer(

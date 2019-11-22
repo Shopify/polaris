@@ -2,8 +2,7 @@ import {RoleVariants} from './types';
 
 // eslint-disable-next-line shopify/typescript/prefer-pascal-case-enums
 export enum UNSTABLE_Color {
-  Surface = '#FAFAFA',
-  DarkSurface = '#111213',
+  Surface = '#111213',
   OnSurface = '#111213',
   Interactive = '#2E72D2',
   Neutral = '#111213',
