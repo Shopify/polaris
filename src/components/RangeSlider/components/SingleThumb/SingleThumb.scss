@@ -101,6 +101,12 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
       @include rangeSliderThumbPosition(
         var(--p-range-slider-thumb-size-active, $range-thumb-size)
       );
+
+      .disabled & {
+        width: $range-thumb-size;
+        height: $range-thumb-size;
+        @include rangeSliderThumbPosition($range-thumb-size);
+      }
     }
   }
 
@@ -159,24 +165,34 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     --progress-lower: #{color('red')};
 
     @include range-track-selectors {
-      background-color: color('red', 'light');
+      background-color: var(--p-override-none, color('red', 'light'));
     }
 
     @include range-thumb-selectors {
+      background: var(--p-critical, color('white'));
       border-color: color('red');
-      box-shadow: $range-thumb-shadow-error;
+      box-shadow: var(--p-override-none, $range-thumb-shadow-error);
     }
   }
 
   .disabled & {
     @include range-track-selectors {
       cursor: auto;
+      background-color: var(--p-border-on-inverse, color('sky', 'dark'));
       background-image: none;
     }
 
     @include range-thumb-selectors {
       cursor: not-allowed;
       border-color: color('sky', 'dark');
+      background: var(--p-surface-background, color('white'));
+
+      &:hover {
+        background: var(
+          --p-surface-background,
+          linear-gradient(color('sky', 'lighter'), color('sky', 'light'))
+        );
+      }
     }
   }
 
