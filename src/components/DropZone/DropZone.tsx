@@ -214,7 +214,7 @@ class DropZone extends React.Component<CombinedProps, State> {
       numFiles: 0,
       overlayText: intl.translate(`Polaris.DropZone.overlayText${suffix}`),
       size: this.props.size || SizeValue.ExtraLarge,
-      measuring: this.props.size ? false : true,
+      measuring: !this.props.size,
       type,
     };
   }
