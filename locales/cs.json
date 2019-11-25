@@ -72,8 +72,8 @@
       }
     },
     "DiscardConfirmationModal": {
-      "title": "Zrušit všechny neuložené změny",
-      "message": "Pokud zrušíte změny, smažete všechny úpravy provedené od posledního uložení.",
+      "title": "Zahodit všechny neuložené změny",
+      "message": "Pokud zahodíte změny, smažete všechny úpravy provedené od posledního uložení.",
       "primaryAction": "Zrušit změny",
       "secondaryAction": "Pokračovat v úpravách"
     },
