@@ -94,7 +94,7 @@ export interface DropZoneProps {
   dropOnPage?: boolean;
   /** Sets the default file dialog state */
   openFileDialog?: boolean;
-  /** Forces unique dropzone container size */
+  /** Uses fixed size instead of dropzone container size */
   size?: Size;
   /** Adds custom validations */
   customValidator?(file: File): boolean;

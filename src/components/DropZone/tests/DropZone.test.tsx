@@ -285,6 +285,15 @@ describe('<DropZone />', () => {
       expect(captionText.contains(overlayText)).toBe(true);
     });
 
+    it('renders a Caption containing the overlayText when size is medium', () => {
+      const dropZone = mountWithAppProvider(
+        <DropZone overlayText={overlayText} size="medium" />,
+      );
+      fireEvent({element: dropZone, eventType: 'dragenter'});
+      const captionText = dropZone.find(Caption);
+      expect(captionText.contains(overlayText)).toBe(true);
+    });
+
     it('renders a Caption containing the overlayText on large screens', () => {
       setBoundingClientRect('large');
       const dropZone = mountWithAppProvider(
@@ -295,10 +304,28 @@ describe('<DropZone />', () => {
       expect(captionText.contains(overlayText)).toBe(true);
     });
 
+    it('renders a Caption containing the overlayText on when size is large', () => {
+      const dropZone = mountWithAppProvider(
+        <DropZone overlayText={overlayText} size="large" />,
+      );
+      fireEvent({element: dropZone, eventType: 'dragenter'});
+      const captionText = dropZone.find(Caption);
+      expect(captionText.contains(overlayText)).toBe(true);
+    });
+
     it('renders a DisplayText containing the overlayText on extra-large screens', () => {
       setBoundingClientRect('extraLarge');
       const dropZone = mountWithAppProvider(
         <DropZone overlayText={overlayText} />,
+      );
+      fireEvent({element: dropZone, eventType: 'dragenter'});
+      const displayText = dropZone.find(DisplayText);
+      expect(displayText.contains(overlayText)).toBe(true);
+    });
+
+    it('renders a DisplayText containing the overlayText when size is extraLarge', () => {
+      const dropZone = mountWithAppProvider(
+        <DropZone overlayText={overlayText} size="extraLarge" />,
       );
       fireEvent({element: dropZone, eventType: 'dragenter'});
       const displayText = dropZone.find(DisplayText);
@@ -427,6 +454,25 @@ describe('<DropZone />', () => {
       );
 
       expect(dropZone.find('#file')).toHaveLength(1);
+    });
+
+    it('sets size from props on context when passed', () => {
+      const size = 'small';
+
+      function Component() {
+        return (
+          <DropZone size="small">
+            <DropZoneContext.Consumer>
+              {(ctx) => {
+                return size === ctx.size ? <div /> : null;
+              }}
+            </DropZoneContext.Consumer>
+          </DropZone>
+        );
+      }
+
+      const component = mountWithApp(<Component />);
+      expect(component).toContainReactComponent('div');
     });
   });
 

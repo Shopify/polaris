@@ -2,6 +2,7 @@ import React from 'react';
 import {Icon, Caption, TextStyle} from 'components';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {DropZoneContext} from '../../../context';
+import {Size} from '../../../types';
 import {FileUpload} from '../FileUpload';
 import {fileUpload as fileUploadImage, imageUpload} from '../../../images';
 
@@ -17,7 +18,7 @@ describe('<FileUpload />', () => {
       const fileUpload = mountWithAppProvider(
         <DropZoneContext.Provider
           value={{
-            size: 'extraLarge',
+            size: Size.ExtraLarge,
             type: 'file',
             ...defaultStates,
             measuring: true,
@@ -37,7 +38,7 @@ describe('<FileUpload />', () => {
       const fileUpload = mountWithAppProvider(
         <DropZoneContext.Provider
           value={{
-            size: 'extraLarge',
+            size: Size.ExtraLarge,
             type: 'file',
             ...defaultStates,
           }}
@@ -54,7 +55,7 @@ describe('<FileUpload />', () => {
     it('renders extra large view for type image', () => {
       const fileUpload = mountWithAppProvider(
         <DropZoneContext.Provider
-          value={{size: 'extraLarge', type: 'image', ...defaultStates}}
+          value={{size: Size.ExtraLarge, type: 'image', ...defaultStates}}
         >
           <FileUpload />
         </DropZoneContext.Provider>,
@@ -70,7 +71,7 @@ describe('<FileUpload />', () => {
     it('renders large view for type file', () => {
       const fileUpload = mountWithAppProvider(
         <DropZoneContext.Provider
-          value={{size: 'large', type: 'file', ...defaultStates}}
+          value={{size: Size.Large, type: 'file', ...defaultStates}}
         >
           <FileUpload />
         </DropZoneContext.Provider>,
@@ -85,7 +86,7 @@ describe('<FileUpload />', () => {
     it('renders large view for type image', () => {
       const fileUpload = mountWithAppProvider(
         <DropZoneContext.Provider
-          value={{size: 'large', type: 'image', ...defaultStates}}
+          value={{size: Size.Large, type: 'image', ...defaultStates}}
         >
           <FileUpload />
         </DropZoneContext.Provider>,
@@ -101,7 +102,7 @@ describe('<FileUpload />', () => {
   it('renders medium view', () => {
     const fileUpload = mountWithAppProvider(
       <DropZoneContext.Provider
-        value={{size: 'medium', type: 'file', ...defaultStates}}
+        value={{size: Size.Medium, type: 'file', ...defaultStates}}
       >
         <FileUpload />
       </DropZoneContext.Provider>,
@@ -114,7 +115,7 @@ describe('<FileUpload />', () => {
   it('renders small view', () => {
     const fileUpload = mountWithAppProvider(
       <DropZoneContext.Provider
-        value={{size: 'small', type: 'file', ...defaultStates}}
+        value={{size: Size.Small, type: 'file', ...defaultStates}}
       >
         <FileUpload />
       </DropZoneContext.Provider>,
@@ -126,7 +127,7 @@ describe('<FileUpload />', () => {
   it('sets a default actionTitle if the prop is provided then removed', () => {
     const fileUpload = mountWithAppProvider(
       <DropZoneContext.Provider
-        value={{size: 'large', type: 'file', ...defaultStates}}
+        value={{size: Size.Large, type: 'file', ...defaultStates}}
       >
         <FileUpload actionTitle="Title" />
       </DropZoneContext.Provider>,
@@ -139,7 +140,7 @@ describe('<FileUpload />', () => {
   it('sets a default actionHint if the prop is provided then removed', () => {
     const fileUpload = mountWithAppProvider(
       <DropZoneContext.Provider
-        value={{size: 'large', type: 'file', ...defaultStates}}
+        value={{size: Size.Large, type: 'file', ...defaultStates}}
       >
         <FileUpload actionHint="Hint" />
       </DropZoneContext.Provider>,
