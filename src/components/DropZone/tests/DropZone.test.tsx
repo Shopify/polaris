@@ -275,6 +275,17 @@ describe('<DropZone />', () => {
       expect(caption).toHaveLength(0);
     });
 
+    it('does not render the overlayText size is small', () => {
+      const dropZone = mountWithAppProvider(
+        <DropZone overlayText={overlayText} size="small" />,
+      );
+      fireEvent({element: dropZone, eventType: 'dragenter'});
+      const displayText = dropZone.find(DisplayText);
+      const caption = dropZone.find(Caption);
+      expect(displayText).toHaveLength(0);
+      expect(caption).toHaveLength(0);
+    });
+
     it('renders a Caption containing the overlayText on medium screens', () => {
       setBoundingClientRect('medium');
       const dropZone = mountWithAppProvider(
