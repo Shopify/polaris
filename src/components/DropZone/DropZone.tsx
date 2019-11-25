@@ -28,7 +28,7 @@ import {DropZoneContext} from './context';
 
 import {fileAccepted, getDataTransferFiles} from './utils';
 
-import {Size} from './types';
+import {Size, SizeValue} from './types';
 
 import styles from './DropZone.scss';
 
@@ -172,16 +172,16 @@ class DropZone extends React.Component<CombinedProps, State> {
         return;
       }
 
-      let size = Size.ExtraLarge;
+      let size = SizeValue.ExtraLarge;
 
       const width = this.node.current.getBoundingClientRect().width;
 
       if (width < 100) {
-        size = Size.Small;
+        size = SizeValue.Small;
       } else if (width < 160) {
-        size = Size.Medium;
+        size = SizeValue.Medium;
       } else if (width < 300) {
-        size = Size.Large;
+        size = SizeValue.Large;
       }
 
       this.setState({
@@ -213,7 +213,7 @@ class DropZone extends React.Component<CombinedProps, State> {
       focused: false,
       numFiles: 0,
       overlayText: intl.translate(`Polaris.DropZone.overlayText${suffix}`),
-      size: this.props.size || Size.ExtraLarge,
+      size: this.props.size || SizeValue.ExtraLarge,
       measuring: true,
       type,
     };
@@ -269,10 +269,10 @@ class DropZone extends React.Component<CombinedProps, State> {
       (active || dragging) && styles.isDragging,
       disabled && styles.isDisabled,
       error && styles.hasError,
-      size && size === Size.ExtraLarge && styles.sizeExtraLarge,
-      size && size === Size.Large && styles.sizeLarge,
-      size && size === Size.Medium && styles.sizeMedium,
-      size && size === Size.Small && styles.sizeSmall,
+      size && size === SizeValue.ExtraLarge && styles.sizeExtraLarge,
+      size && size === SizeValue.Large && styles.sizeLarge,
+      size && size === SizeValue.Medium && styles.sizeMedium,
+      size && size === SizeValue.Small && styles.sizeSmall,
       measuring && styles.measuring,
     );
 
@@ -281,12 +281,12 @@ class DropZone extends React.Component<CombinedProps, State> {
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
             <Icon source={DragDropMajorMonotone} color="indigo" />
-            {size === Size.ExtraLarge && (
+            {size === SizeValue.ExtraLarge && (
               <DisplayText size="small" element="p">
                 {overlayText}
               </DisplayText>
             )}
-            {(size === Size.Medium || size === Size.Large) && (
+            {(size === SizeValue.Medium || size === SizeValue.Large) && (
               <Caption>{overlayText}</Caption>
             )}
           </Stack>
@@ -298,12 +298,12 @@ class DropZone extends React.Component<CombinedProps, State> {
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
             <Icon source={CircleAlertMajorMonotone} color="red" />
-            {size === Size.ExtraLarge && (
+            {size === SizeValue.ExtraLarge && (
               <DisplayText size="small" element="p">
                 {errorOverlayText}
               </DisplayText>
             )}
-            {(size === Size.Medium || size === Size.Large) && (
+            {(size === SizeValue.Medium || size === SizeValue.Large) && (
               <Caption>{errorOverlayText}</Caption>
             )}
           </Stack>
