@@ -74,7 +74,7 @@
     "DiscardConfirmationModal": {
       "title": "Zahodit všechny neuložené změny",
       "message": "Pokud zahodíte změny, smažete všechny úpravy provedené od posledního uložení.",
-      "primaryAction": "Zrušit změny",
+      "primaryAction": "Zahodit změny",
       "secondaryAction": "Pokračovat v úpravách"
     },
     "DropZone": {
