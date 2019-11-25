@@ -172,8 +172,6 @@ class DropZone extends React.Component<CombinedProps, State> {
         return;
       }
 
-      console.log('Will adjust size based on node', this.node.current);
-
       let size = Size.ExtraLarge;
 
       const width = this.node.current.getBoundingClientRect().width;
@@ -185,8 +183,6 @@ class DropZone extends React.Component<CombinedProps, State> {
       } else if (width < 300) {
         size = Size.Large;
       }
-
-      console.log('Adjusted size is', size);
 
       this.setState({
         size,
