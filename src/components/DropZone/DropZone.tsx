@@ -28,6 +28,8 @@ import {DropZoneContext} from './context';
 
 import {fileAccepted, getDataTransferFiles} from './utils';
 
+import {Size} from './types';
+
 import styles from './DropZone.scss';
 
 export type Type = 'file' | 'image';
@@ -40,7 +42,7 @@ interface State {
   focused: boolean;
   numFiles: number;
   overlayText?: string;
-  size: string;
+  size: Size;
   measuring: boolean;
   type?: string;
 }
@@ -92,6 +94,8 @@ export interface DropZoneProps {
   dropOnPage?: boolean;
   /** Sets the default file dialog state */
   openFileDialog?: boolean;
+  /** Forces unique dropzone container size */
+  size?: Size;
   /** Adds custom validations */
   customValidator?(file: File): boolean;
   /** Callback triggered on click */
@@ -164,20 +168,25 @@ class DropZone extends React.Component<CombinedProps, State> {
 
   private adjustSize = debounce(
     () => {
-      if (!this.node.current) {
+      if (!this.node.current || this.props.size) {
         return;
       }
 
-      let size = 'extraLarge';
+      console.log('Will adjust size based on node', this.node.current);
+
+      let size = Size.ExtraLarge;
+
       const width = this.node.current.getBoundingClientRect().width;
 
       if (width < 100) {
-        size = 'small';
+        size = Size.Small;
       } else if (width < 160) {
-        size = 'medium';
+        size = Size.Medium;
       } else if (width < 300) {
-        size = 'large';
+        size = Size.Large;
       }
+
+      console.log('Adjusted size is', size);
 
       this.setState({
         size,
@@ -208,7 +217,7 @@ class DropZone extends React.Component<CombinedProps, State> {
       focused: false,
       numFiles: 0,
       overlayText: intl.translate(`Polaris.DropZone.overlayText${suffix}`),
-      size: 'extraLarge',
+      size: this.props.size || Size.ExtraLarge,
       measuring: true,
       type,
     };
@@ -264,10 +273,10 @@ class DropZone extends React.Component<CombinedProps, State> {
       (active || dragging) && styles.isDragging,
       disabled && styles.isDisabled,
       error && styles.hasError,
-      size && size === 'extraLarge' && styles.sizeExtraLarge,
-      size && size === 'large' && styles.sizeLarge,
-      size && size === 'medium' && styles.sizeMedium,
-      size && size === 'small' && styles.sizeSmall,
+      size && size === Size.ExtraLarge && styles.sizeExtraLarge,
+      size && size === Size.Large && styles.sizeLarge,
+      size && size === Size.Medium && styles.sizeMedium,
+      size && size === Size.Small && styles.sizeSmall,
       measuring && styles.measuring,
     );
 
@@ -276,12 +285,12 @@ class DropZone extends React.Component<CombinedProps, State> {
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
             <Icon source={DragDropMajorMonotone} color="indigo" />
-            {size === 'extraLarge' && (
+            {size === Size.ExtraLarge && (
               <DisplayText size="small" element="p">
                 {overlayText}
               </DisplayText>
             )}
-            {(size === 'medium' || size === 'large') && (
+            {(size === Size.Medium || size === Size.Large) && (
               <Caption>{overlayText}</Caption>
             )}
           </Stack>
@@ -293,12 +302,12 @@ class DropZone extends React.Component<CombinedProps, State> {
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
             <Icon source={CircleAlertMajorMonotone} color="red" />
-            {size === 'extraLarge' && (
+            {size === Size.ExtraLarge && (
               <DisplayText size="small" element="p">
                 {errorOverlayText}
               </DisplayText>
             )}
-            {(size === 'medium' || size === 'large') && (
+            {(size === Size.Medium || size === Size.Large) && (
               <Caption>{errorOverlayText}</Caption>
             )}
           </Stack>
