@@ -1479,12 +1479,12 @@
     "@shopify/ast-utilities" "^0.0.6"
     webpack-virtual-modules "^0.1.12"
 
-"@shopify/react-testing@^1.7.8":
-  version "1.7.8"
-  resolved "https://registry.yarnpkg.com/@shopify/react-testing/-/react-testing-1.7.8.tgz#64b79d8b1cc4791d8e77e3ad5c06dfb7380c88b7"
-  integrity sha512-P4CNcYPjX6OKMe4f6LfyTM0UWlQqinBSoFIWPrWRwAI0qnwKRYnP81WdUANpmeY01SxAIp/WwjKTgpg3sdTnoQ==
+"@shopify/react-testing@^1.8.0":
+  version "1.8.6"
+  resolved "https://registry.yarnpkg.com/@shopify/react-testing/-/react-testing-1.8.6.tgz#910a90910d443812dba6f4067a7e55ff44fe4a14"
+  integrity sha512-9QagkYVOUiIjsHQG6yuGITUZErMDaKjpARPqSCa3tiIASZuRpNdXIy0B881zSWlKsVahV/u+8Z+uRl7bVL698w==
   dependencies:
-    "@shopify/useful-types" "^2.0.1"
+    "@shopify/useful-types" "^2.1.2"
     jest-matcher-utils "^24.5.0"
     react-reconciler "^0.20.2"
 
@@ -1613,10 +1613,10 @@
     "@types/react" ">=16.4.0"
     tslib "^1.9.3"
 
-"@shopify/useful-types@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@shopify/useful-types/-/useful-types-2.0.1.tgz#df27503acb26249b83be84e2298186bf7a0194fc"
-  integrity sha512-dmBg7FIbONo+KN4+q9nhiLNb9qIFMkWcar5yUJIipTtNLtPKyaDvHCA6oL7ofzvtq+8uFD6jw5kbswXCutJY9A==
+"@shopify/useful-types@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@shopify/useful-types/-/useful-types-2.1.2.tgz#b489005c8ee72c0d22c89bb1114aca2aaf0059b4"
+  integrity sha512-2gBvMeY5J6nyJBm3mLZS+P4LOT3aVi0kE1OIYNfCbonr8jiWquBI4YqJ4n2nhG1rmSW1bizSe0xz0ZZXgfGkBg==
   dependencies:
     tslib "^1.9.3"
 
