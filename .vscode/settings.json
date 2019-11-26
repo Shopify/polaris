@@ -29,7 +29,6 @@
   },
   "javascript.validate.enable": false,
   "jest.autoEnable": false,
-  "prettier.stylelintIntegration": true,
   "scss.validate": false,
   "search.exclude": {
     "**/bower_components": true,
