@@ -17,7 +17,7 @@ enum Status {
   Errored = 'ERRORED',
 }
 
-const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'];
+export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'];
 const AVATAR_IMAGES = Object.keys(avatars).map(
   // import/namespace does not allow computed values by default
   // eslint-disable-next-line import/namespace
