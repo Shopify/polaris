@@ -115,9 +115,9 @@ describe('buildColors', () => {
   });
 
   it('does not create inverse, light, and dark variants when light and dark adjustments are the same', () => {
-    expect(Object.keys(buildColors({UNSTABLE_colors: {}}, same))).toStrictEqual(
-      ['surface'],
-    );
+    expect(
+      Object.keys(buildColors({UNSTABLE_colors: {}}, same)),
+    ).toStrictEqual(['surface']);
   });
 
   it('uses light adjustments if the surface value is light', () => {
