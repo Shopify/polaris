@@ -528,10 +528,11 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   .Icon:last-child {
     margin-right: rem(-4px);
   }
-
+  // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
   .Icon + .Icon:last-child {
     margin-left: 0;
   }
+  // stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
 
   .Icon:only-child {
     margin-right: 0;
