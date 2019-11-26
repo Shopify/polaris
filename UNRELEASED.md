@@ -10,6 +10,7 @@
 - Fixed an accessibility issue where the `Form` implicit submit was still accessible via keyboard ([#2447](https://github.com/Shopify/polaris-react/pull/2447))
 - Moved `Button` styles from the `Buttongroup` CSS file to the `Button` CSS file ([#2441](https://github.com/Shopify/polaris-react/pull/2441))
 - Added `footerActionAlignment` prop to control `<Card>` footer action alignment, defaults to `'right'`
+- Improved contrast of `MessageIndicator` with a border ([#2428](https://github.com/Shopify/polaris-react/pull/2428))
 
 ### Bug fixes
 
