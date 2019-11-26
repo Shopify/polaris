@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Checkbox} from 'components';
 import {CheckableButton} from '../CheckableButton';
 import {Key} from '../../../../../types';
@@ -93,6 +94,32 @@ describe('<CheckableButton />', () => {
           keyCode: Key.Space,
         });
       expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled and the button is selected', () => {
+      const checkableButton = mountWithApp(
+        <CheckableButton {...CheckableButtonProps} />,
+        {
+          features: {unstableGlobalTheming: true},
+        },
+      );
+      expect(checkableButton).toContainReactComponent('div', {
+        className: 'CheckableButton globalTheming CheckableButton-selected',
+      });
+    });
+
+    it('adds a global theming class when global theming is enabled and the button is not selected', () => {
+      const checkableButton = mountWithApp(
+        <CheckableButton {...CheckableButtonProps} plain selected={false} />,
+        {
+          features: {unstableGlobalTheming: true},
+        },
+      );
+      expect(checkableButton).toContainReactComponent('div', {
+        className: 'CheckableButton CheckableButton-plain globalTheming',
+      });
     });
   });
 });

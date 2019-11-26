@@ -7,6 +7,7 @@ import {DisableableAction, Action, ActionListSection} from '../../../../types';
 import {ActionList} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
+import {ButtonGroup} from '../../../ButtonGroup';
 import {EventListener} from '../../../EventListener';
 import {
   withAppProvider,
@@ -246,20 +247,14 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
         </div>
       ) : null;
 
-    const cancelButtonClassName = classNames(
-      styles.Button,
-      styles['Button-cancel'],
-      disabled && styles.disabled,
-    );
     const cancelButton = (
-      <button
-        className={cancelButtonClassName}
+      <Button
         onClick={this.setSelectMode.bind(this, false)}
         testID="btn-cancel"
         disabled={disabled}
       >
         {intl.translate('Polaris.Common.cancel')}
-      </button>
+      </Button>
     );
 
     const numberOfPromotedActionsToRender = this
@@ -385,23 +380,25 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
               className={smallScreenGroupClassName}
               ref={this.smallScreenGroupNode}
             >
-              <div className={styles.ButtonGroup}>
-                <CSSTransition
-                  findDOMNode={this.findCheckableWrapperNode}
-                  in={selectMode}
-                  timeout={durationBase}
-                  classNames={slideClasses}
-                  appear
-                >
-                  <div
-                    className={styles.CheckableContainer}
-                    ref={this.checkableWrapperNode}
+              <div className={styles.ButtonGroupWrapper}>
+                <ButtonGroup segmented>
+                  <CSSTransition
+                    findDOMNode={this.findCheckableWrapperNode}
+                    in={selectMode}
+                    timeout={durationBase}
+                    classNames={slideClasses}
+                    appear={!selectMode}
                   >
-                    <CheckableButton {...checkableButtonProps} smallScreen />
-                  </div>
-                </CSSTransition>
-                {allActionsPopover}
-                {cancelButton}
+                    <div
+                      className={styles.CheckableContainer}
+                      ref={this.checkableWrapperNode}
+                    >
+                      <CheckableButton {...checkableButtonProps} smallScreen />
+                    </div>
+                  </CSSTransition>
+                  {allActionsPopover}
+                  {cancelButton}
+                </ButtonGroup>
               </div>
               {paginatedSelectAllMarkup}
             </div>
@@ -409,6 +406,17 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
         }}
       </Transition>
     ) : null;
+
+    const largeGroupContent =
+      promotedActionsMarkup || actionsPopover ? (
+        <ButtonGroup segmented>
+          <CheckableButton {...checkableButtonProps} />
+          {promotedActionsMarkup}
+          {actionsPopover}
+        </ButtonGroup>
+      ) : (
+        <CheckableButton {...checkableButtonProps} />
+      );
 
     const largeScreenGroup = smallScreen ? null : (
       <Transition
@@ -432,12 +440,10 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
             >
               <EventListener event="resize" handler={this.handleResize} />
               <div
-                className={styles.ButtonGroup}
+                className={styles.ButtonGroupWrapper}
                 ref={this.setLargeScreenButtonsNode}
               >
-                <CheckableButton {...checkableButtonProps} />
-                {promotedActionsMarkup}
-                {actionsPopover}
+                {largeGroupContent}
               </div>
               {paginatedSelectAllMarkup}
             </div>
