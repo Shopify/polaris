@@ -11,6 +11,21 @@ export interface ThemeLogo {
   width?: number;
 }
 
+export type Role =
+  | 'surface'
+  | 'onSurface'
+  | 'interactive'
+  | 'neutral'
+  | 'branded'
+  | 'critical'
+  | 'warning'
+  | 'highlight'
+  | 'success';
+
+export type RoleColors = {
+  [r in Role]: string;
+};
+
 // The value that is passed into the ThemeProvider
 export interface ThemeConfig {
   /** Sets the logo for the top bar and contextual save bar components*/
@@ -19,18 +34,7 @@ export interface ThemeConfig {
     /** Sets the background color of the top bar component. Complimentary and typography colors are determined programmatically */
     topBar?: Record<string, string>;
   };
-  UNSTABLE_colors?: {
-    surface?: string;
-    onSurface?: string;
-    interactive?: string;
-    neutral?: string;
-    branded?: string;
-    critical?: string;
-    warning?: string;
-    highlight?: string;
-    success?: string;
-    decorative?: string;
-  };
+  UNSTABLE_colors?: Partial<RoleColors>;
 }
 
 export type CustomPropertiesLike = Record<string, string>;
@@ -42,29 +46,19 @@ export interface Theme {
   UNSTABLE_cssCustomProperties?: string;
 }
 
-interface HslaAdjustment {
+export interface HslaSetting {
   hue?: number;
   saturation?: number;
   lightness?: number;
   alpha?: number;
 }
 
-type BaseColor =
-  | 'surface'
-  | 'onSurface'
-  | 'interactive'
-  | 'neutral'
-  | 'branded'
-  | 'critical'
-  | 'warning'
-  | 'highlight'
-  | 'success'
-  | 'decorative';
-
-interface ColorRole {
-  baseColor: BaseColor;
-  light: HslaAdjustment;
-  dark: HslaAdjustment;
+export interface Variant {
+  name: string;
+  light: HslaSetting;
+  dark: HslaSetting;
 }
 
-export type ColorAdjustments = Record<string, ColorRole>;
+export type RoleVariants = {
+  [r in Role]: Variant[];
+};

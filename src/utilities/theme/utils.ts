@@ -17,9 +17,12 @@ import {
   ThemeConfig,
   Theme,
   CustomPropertiesLike,
-  ColorAdjustments,
+  RoleVariants,
+  Role,
+  Variant,
+  HslaSetting,
 } from './types';
-import {colorAdjustments, UNSTABLE_Color} from './color-adjustments';
+import {roleVariants, UNSTABLE_Color} from './role-variants';
 
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
@@ -27,7 +30,7 @@ export function buildCustomProperties(
 ): CustomPropertiesLike {
   return globalTheming
     ? customPropertyTransformer({
-        ...buildColors(themeConfig, colorAdjustments),
+        ...buildColors(themeConfig, roleVariants),
         ...overrides(),
       })
     : buildLegacyColors(themeConfig);
@@ -66,7 +69,7 @@ function hexToHsluvObj(hex: string) {
 
 export function buildColors(
   theme: ThemeConfig,
-  colorAdjustments: ColorAdjustments,
+  roleVariants: Partial<RoleVariants>,
 ) {
   const colors = {
     surface: UNSTABLE_Color.Surface,
@@ -84,61 +87,50 @@ export function buildColors(
 
   const lightSurface = isLight(hexToRgb(colors.surface));
 
-  const allColors = Object.entries(colorAdjustments).reduce(
-    (accumulator, [colorRole, colorAdjustment]) => {
-      if (colorAdjustment == null) return accumulator;
-
-      const baseColor = hexToHsluvObj(colors[colorAdjustment.baseColor]);
-      const {
-        hue = baseColor.hue,
-        saturation = baseColor.saturation,
-        lightness = baseColor.lightness,
-        alpha = 1,
-      } = colorAdjustment[lightSurface ? 'light' : 'dark'];
-
-      let additionalRoles = {};
-
-      if (!isEqual(colorAdjustment.light, colorAdjustment.dark)) {
-        const variants = {
-          Inverse: colorAdjustment[lightSurface ? 'dark' : 'light'],
-          Light: colorAdjustment.light,
-          Dark: colorAdjustment.dark,
-        };
-
-        additionalRoles = Object.entries(variants).reduce(
-          (accumulator, [variant, adjustment]) => {
-            const {
-              hue = baseColor.hue,
-              saturation = baseColor.saturation,
-              lightness = baseColor.lightness,
-              alpha = 1,
-            } = adjustment;
-
-            return {
-              ...accumulator,
-              [colorRole + variant]: hslToString({
-                ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
-                alpha,
-              }),
-            };
-          },
-          {},
-        );
-      }
-
+  return Object.entries(roleVariants).reduce(
+    (acc1, [role, variants]: [Role, Variant[]]) => {
+      const base = hexToHsluvObj(colors[role]);
       return {
-        ...accumulator,
-        [colorRole]: hslToString({
-          ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
-          alpha,
-        }),
-        ...additionalRoles,
+        ...acc1,
+        [role]: colors[role],
+        ...variants.reduce((acc2, {name, light, dark}) => {
+          const configs: Record<string, HslaSetting> = {
+            default: lightSurface ? light : dark,
+          };
+
+          if (!isEqual(light, dark)) {
+            configs.Inverse = lightSurface ? dark : light;
+            configs.Light = light;
+            configs.Dark = dark;
+          }
+
+          return {
+            ...acc2,
+            ...Object.entries(configs).reduce((acc3, [variant, config]) => {
+              const {
+                hue = base.hue,
+                saturation = base.saturation,
+                lightness = base.lightness,
+                alpha = 1,
+              } = config;
+
+              const displayName =
+                variant === 'default' ? name : `${name}${variant}`;
+
+              return {
+                ...acc3,
+                [displayName]: hslToString({
+                  ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
+                  alpha,
+                }),
+              };
+            }, {}),
+          };
+        }, {}),
       };
     },
     {},
   );
-
-  return allColors;
 }
 
 function overrides() {

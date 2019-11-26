@@ -8,7 +8,7 @@ import {
   buildCustomProperties,
   buildColors,
 } from '../utils';
-import {ColorAdjustments} from '../types';
+import {RoleVariants} from '../types';
 
 describe('setTextColor', () => {
   it('sets a css variable to white if the variant is dark', () => {
@@ -83,20 +83,24 @@ describe('buildCustomProperties', () => {
 });
 
 describe('buildColors', () => {
-  const different: ColorAdjustments = {
-    surface: {
-      baseColor: 'surface',
-      light: {lightness: 100},
-      dark: {lightness: 0},
-    },
+  const different: Partial<RoleVariants> = {
+    surface: [
+      {
+        name: 'surface',
+        light: {lightness: 100},
+        dark: {lightness: 0},
+      },
+    ],
   };
 
-  const same: ColorAdjustments = {
-    surface: {
-      baseColor: 'surface',
-      light: {lightness: 100},
-      dark: {lightness: 100},
-    },
+  const same: Partial<RoleVariants> = {
+    surface: [
+      {
+        name: 'surface',
+        light: {lightness: 100},
+        dark: {lightness: 100},
+      },
+    ],
   };
 
   it('creates inverse, light, and dark variants when light and dark adjustments are different', () => {
