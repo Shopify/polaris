@@ -26,6 +26,7 @@
 
 - Added a details page and kitchen sink example to Storybook ([#2402](https://github.com/Shopify/polaris-react/pull/2402))
 - Combined the interface used by `Page` so the types can be parsed ([#2358](https://github.com/Shopify/polaris-react/pull/2358))
+- Updated the `PageActions` example ([#2471](https://github.com/Shopify/polaris-react/pull/2471))
 
 ### Development workflow
 
