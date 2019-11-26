@@ -29,6 +29,7 @@ export interface ThemeConfig {
     warning?: string;
     highlight?: string;
     success?: string;
+    decorative?: string;
   };
 }
 
@@ -57,7 +58,8 @@ type BaseColor =
   | 'critical'
   | 'warning'
   | 'highlight'
-  | 'success';
+  | 'success'
+  | 'decorative';
 
 interface ColorRole {
   baseColor: BaseColor;
