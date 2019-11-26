@@ -4,6 +4,7 @@ import {
   trigger,
   findByTestID,
 } from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Card, Badge, Button, Popover, ActionList} from 'components';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {Section} from '../components';
@@ -72,6 +73,55 @@ describe('<Card />', () => {
 
     expect(card.find(Button)).toHaveLength(1);
     expect(card.find(Card.Header)).toHaveLength(1);
+  });
+
+  describe('footerActionAlignment prop', () => {
+    it('renders right-aligned if not supplied', () => {
+      const card = mountWithApp(
+        <Card
+          primaryFooterAction={{content: 'primary action'}}
+          secondaryFooterActions={[{content: 'secondary action'}]}
+        >
+          <p>Some card content.</p>
+        </Card>,
+      );
+
+      const buttons = card.findAll(Button);
+      expect(buttons[0].prop('children')).toBe('secondary action');
+      expect(buttons[1].prop('children')).toBe('primary action');
+    });
+
+    it('renders right-aligned if set to "right"', () => {
+      const card = mountWithApp(
+        <Card
+          primaryFooterAction={{content: 'primary action'}}
+          secondaryFooterActions={[{content: 'secondary action'}]}
+          footerActionAlignment="right"
+        >
+          <p>Some card content.</p>
+        </Card>,
+      );
+
+      const buttons = card.findAll(Button);
+      expect(buttons[0].prop('children')).toBe('secondary action');
+      expect(buttons[1].prop('children')).toBe('primary action');
+    });
+
+    it('renders left-aligned if set to "left"', () => {
+      const card = mountWithApp(
+        <Card
+          primaryFooterAction={{content: 'primary action'}}
+          secondaryFooterActions={[{content: 'secondary action'}]}
+          footerActionAlignment="left"
+        >
+          <p>Some card content.</p>
+        </Card>,
+      );
+
+      const buttons = card.findAll(Button);
+      expect(buttons[0].prop('children')).toBe('primary action');
+      expect(buttons[1].prop('children')).toBe('secondary action');
+    });
   });
 
   it('renders a primary footer action', () => {

@@ -29,6 +29,8 @@ export interface CardProps {
   secondaryFooterActions?: ComplexAction[];
   /** The content of the disclosure button rendered when there is more than one secondary footer action */
   secondaryFooterActionsDisclosureText?: string;
+  /** Alignment of the footer actions on the card, defaults to right */
+  footerActionAlignment?: 'right' | 'left';
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -49,6 +51,7 @@ export const Card: React.FunctionComponent<CardProps> & {
   primaryFooterAction,
   secondaryFooterActions,
   secondaryFooterActionsDisclosureText,
+  footerActionAlignment = 'right',
 }: CardProps) {
   const i18n = useI18n();
 
@@ -94,11 +97,23 @@ export const Card: React.FunctionComponent<CardProps> & {
 
   const footerMarkup =
     primaryFooterActionMarkup || secondaryFooterActionsMarkup ? (
-      <div className={styles.Footer}>
-        <ButtonGroup>
-          {secondaryFooterActionsMarkup}
-          {primaryFooterActionMarkup}
-        </ButtonGroup>
+      <div
+        className={classNames(
+          styles.Footer,
+          footerActionAlignment === 'left' && styles.LeftJustified,
+        )}
+      >
+        {footerActionAlignment === 'right' ? (
+          <ButtonGroup>
+            {secondaryFooterActionsMarkup}
+            {primaryFooterActionMarkup}
+          </ButtonGroup>
+        ) : (
+          <ButtonGroup>
+            {primaryFooterActionMarkup}
+            {secondaryFooterActionsMarkup}
+          </ButtonGroup>
+        )}
       </div>
     ) : null;
 
