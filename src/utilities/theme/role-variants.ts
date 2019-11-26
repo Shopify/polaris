@@ -18,36 +18,50 @@ export const roleVariants: RoleVariants = {
   surface: [
     {
       name: 'surface',
+      description:
+        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
       light: {},
       dark: {},
     },
     {
       name: 'surfaceBackground',
+      description:
+        'For use in the background of our UIs as a background color, in components such as Page and Frame backgrounds.',
       light: {lightness: 97.9},
       dark: {lightness: 3.3},
     },
     {
       name: 'surfaceForeground',
+      description:
+        'For use in the foreground of our UIs as a background color, in components such as Card, Modal, and Popover.',
       light: {lightness: 100},
       dark: {lightness: 8.8},
     },
     {
       name: 'surfaceForegroundSubdued',
+      description:
+        'For use in the foreground of our UIs as a subdued background color, in components such as Card, Modal, and Popover.',
       light: {lightness: 95},
       dark: {lightness: 10},
     },
     {
       name: 'surfaceHovered',
+      description:
+        'For use as a surface color on interactive elements such as resource list items and action list items when in a hovered state.',
       light: {lightness: 95},
       dark: {lightness: 20},
     },
     {
       name: 'surfacePressed',
+      description:
+        'For use as a surface color on interactive elements such as resource list items and action list items when in a pressed state.',
       light: {lightness: 90},
       dark: {lightness: 27},
     },
     {
       name: 'backdrop',
+      description:
+        'For use as the background color of the backdrop component for navigation and modal.',
       light: {
         hue: 0,
         saturation: 0,
@@ -58,26 +72,13 @@ export const roleVariants: RoleVariants = {
         hue: 0,
         saturation: 0,
         lightness: 0,
-        alpha: 0.5,
-      },
-    },
-    {
-      name: 'backdropLight',
-      light: {
-        hue: 0,
-        saturation: 0,
-        lightness: 100,
-        alpha: 0.5,
-      },
-      dark: {
-        hue: 0,
-        saturation: 0,
-        lightness: 100,
         alpha: 0.5,
       },
     },
     {
       name: 'shadowFromAmbientLight',
+      description:
+        'For use in building shadows for popovers, cards, and modals.',
       light: {
         hue: 180,
         saturation: 5,
@@ -93,6 +94,8 @@ export const roleVariants: RoleVariants = {
     },
     {
       name: 'shadowFromDirectLight',
+      description:
+        'For use in building shadows for popovers, cards, and modals.',
       light: {
         hue: 0,
         saturation: 0,
@@ -109,22 +112,34 @@ export const roleVariants: RoleVariants = {
   ],
   onSurface: [
     {
+      name: 'onSurface',
+      description:
+        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
+      light: {},
+      dark: {},
+    },
+    {
       name: 'borderOnSurface',
+      description: 'For use as a border (border or interactive outline).',
       light: {lightness: 75},
       dark: {lightness: 35},
     },
     {
       name: 'borderDisabledOnSurface',
+      description: 'For use as a an interactive outline on disabled elements.',
       light: {lightness: 95},
       dark: {lightness: 70},
     },
     {
       name: 'borderSubduedOnSurface',
+      description:
+        'For use as a subdued border (border or interactive outline).',
       light: {lightness: 85},
       dark: {lightness: 15},
     },
     {
       name: 'iconOnSurface',
+      description: 'For use as the fill color of neutral icons.',
       light: {lightness: 29.9},
       dark: {lightness: 98},
     },
