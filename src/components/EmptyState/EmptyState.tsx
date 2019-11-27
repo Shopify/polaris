@@ -14,11 +14,13 @@ import styles from './EmptyState.scss';
 export interface EmptyStateProps {
   /** The empty state heading */
   heading?: string;
-  /** The image to use for small screens */
+  /** The path to the image to display */
   image: string;
-  /** The image to use for large screens */
+  /** The path to the image to display on large screens */
   largeImage?: string;
-  /** The image to use for large screens */
+  /**
+   * Whether or not to limit the image to the size of its container on large screens.
+   */
   imageContained?: boolean;
   /** Elements to display inside empty state */
   children?: React.ReactNode;
