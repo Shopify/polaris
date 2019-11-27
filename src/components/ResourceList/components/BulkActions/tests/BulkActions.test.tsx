@@ -1,6 +1,7 @@
 import React from 'react';
 import {Transition, CSSTransition} from '@material-ui/react-transition-group';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Popover} from 'components';
 import {CheckableButton} from '../../CheckableButton';
 import {BulkActionButton} from '../components';
@@ -377,6 +378,23 @@ describe('<BulkActions />', () => {
         expect(smallGroup.exists()).toBe(true);
         expect(largeGroup.exists()).toBe(false);
       });
+    });
+  });
+
+  describe('buttongroup', () => {
+    // Since we need to break our component model and reach into ButtonGroup to access the CheckableButton
+    // and ensure only the first element flex grows, we add this test to ensure the mark-up does not change
+    it('has the mark-up structure to target the CheckableButton', () => {
+      const bulkActions = mountWithApp(
+        <BulkActions {...bulkActionProps} selectMode smallScreen />,
+      );
+
+      const checkableButton = bulkActions!
+        .find('div', {
+          className: 'ButtonGroupWrapper',
+        })!
+        .domNode!.querySelector('div > div.Item:first-child');
+      expect(checkableButton).not.toBeNull();
     });
   });
 });

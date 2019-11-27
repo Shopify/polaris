@@ -46,5 +46,6 @@
 
 - Changed `aria-labelledby` to always exist on `TextField` ([#2401](https://github.com/Shopify/polaris-react/pull/2401))
 - Converted `ButtonGroup > Item` into a functional component ([#2441](https://github.com/Shopify/polaris-react/pull/2441))
+- Refactored BulkActions to make use of `ButtonGroup` ([#2441](https://github.com/Shopify/polaris-react/pull/2441))
 
 ### Deprecations

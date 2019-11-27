@@ -187,7 +187,7 @@ $resource-list-item-variables: (
     (-1 * resource-list-item(padding)) resource-list-item(control-indent);
   display: flex;
 
-  @include breakpoint-before(resource-list-item(breakpoint-small)) {
+  @include breakpoint-before(resource-list-item(breakpoint-small), false) {
     visibility: hidden;
 
     .selectMode & {
