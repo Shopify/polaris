@@ -376,114 +376,174 @@ export const roleVariants: RoleVariants = {
   ],
   critical: [
     {
+      name: 'critical',
+      description:
+        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
+      light: {},
+      dark: {},
+    },
+    {
       name: 'criticalBorder',
+      description:
+        'For use as a border on critical components such as banners, and as an outline on interactive elements in an error state.',
       light: {lightness: 50},
       dark: {lightness: 50},
     },
     {
       name: 'criticalBorderDisabled',
+      description:
+        'For use as a disabled border on critical components such as banners, and as an outline on interactive elements in an error state.',
       light: {lightness: 82},
       dark: {lightness: 28},
     },
     {
       name: 'criticalIcon',
+      description: 'For use as an icon fill color on top of critical elements.',
       light: {lightness: 52},
       dark: {lightness: 48},
     },
     {
       name: 'criticalSurface',
+      description:
+        'For use as a surface color on critical elements including badges.',
       light: {lightness: 98.6},
       dark: {lightness: 12},
     },
     {
       name: 'criticalSurfaceSubdued',
+      description:
+        'For use as a subdued surface color on critical elements including banners.',
       light: {lightness: 98},
       dark: {lightness: 12},
     },
     {
       name: 'criticalSurfaceSubduedHovered',
+      description:
+        'For use as a surface color on critical interactive elements including action list items in a hovered state.',
       light: {lightness: 93},
       dark: {lightness: 15, saturation: 60},
     },
     {
       name: 'criticalSurfaceSubduedPressed',
+      description:
+        'For use as a surface color on critical interactive elements including action list items in a pressed state.',
       light: {lightness: 88},
       dark: {lightness: 22},
     },
     {
       name: 'criticalText',
+      description:
+        'For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.',
       light: {lightness: 40},
       dark: {lightness: 60},
     },
     {
-      name: 'criticalActionDisabled',
-      light: {lightness: 59},
-      dark: {lightness: 41},
-    },
-    {
       name: 'criticalAction',
+      description:
+        'For use as the background color for destructive buttons, and as the background color for error toast messages.',
       light: {lightness: 47.5},
       dark: {lightness: 45},
     },
     {
+      name: 'criticalActionDisabled',
+      description:
+        'For use as the background color for disabled destructive buttons, and as the background color for error toast messages.',
+      light: {lightness: 59},
+      dark: {lightness: 41},
+    },
+    {
       name: 'criticalActionHovered',
+      description:
+        'For use as the background color for hovered destructive buttons, and as the background color for error toast messages.',
       light: {lightness: 42.5},
       dark: {lightness: 50},
     },
     {
       name: 'criticalActionPressed',
+      description:
+        'For use as the background color for pressed destructive buttons, and as the background color for error toast messages.',
       light: {lightness: 37.5},
       dark: {lightness: 60},
     },
     {
       name: 'criticalLink',
+      description:
+        'For use as a text color in destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.',
       light: {lightness: 48.5},
       dark: {lightness: 65},
     },
     {
       name: 'criticalLinkDisabled',
+      description:
+        'For use as a text color in disabled destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.',
       light: {lightness: 72},
       dark: {lightness: 78},
     },
     {
       name: 'criticalLinkHovered',
+      description:
+        'For use as a text color in hovered destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.',
       light: {lightness: 45},
       dark: {lightness: 70},
     },
     {
       name: 'criticalLinkPressed',
+      description:
+        'For use as a text color in pressed destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.',
       light: {lightness: 21},
       dark: {lightness: 75},
     },
   ],
   warning: [
     {
+      name: 'warning',
+      description:
+        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
+      light: {},
+      dark: {},
+    },
+    {
       name: 'warningBorder',
+      description: 'For use as a border on warning components such as banners.',
       light: {lightness: 76.6},
       dark: {lightness: 50},
     },
     {
       name: 'warningIcon',
+      description: 'For use as an icon fill color on top of warning elements.',
       light: {lightness: 66},
       dark: {lightness: 34},
     },
     {
       name: 'warningSurface',
+      description:
+        'For use as a surface color on warning elements including badges.',
       light: {lightness: 84.5},
       dark: {lightness: 50},
     },
     {
       name: 'warningSurfaceSubdued',
+      description:
+        'For use as a subdued surface color on warning elements including banners.',
       light: {lightness: 99.1},
       dark: {lightness: 15},
     },
     {
       name: 'warningText',
+      description:
+        'For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.',
       light: {lightness: 30},
       dark: {lightness: 70},
     },
   ],
   highlight: [
+    {
+      name: 'highlight',
+      description:
+        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
+      light: {},
+      dark: {},
+    },
     {
       name: 'highlightBorder',
       light: {lightness: 60},

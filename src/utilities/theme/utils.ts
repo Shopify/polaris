@@ -92,7 +92,6 @@ export function buildColors(
       const base = hexToHsluvObj(colors[role]);
       return {
         ...acc1,
-        [role]: colors[role],
         ...variants.reduce((acc2, {name, light, dark}) => {
           const configs: Record<string, HslaSetting> = {
             default: lightSurface ? light : dark,
