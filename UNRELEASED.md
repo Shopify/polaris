@@ -15,6 +15,7 @@
 - Added `features` prop to `AppProvider` ([#2204](https://github.com/Shopify/polaris-react/pull/2204))
 - Added support for using `EmptyState` in a content context ([#1570](https://github.com/Shopify/polaris-react/pull/1570))
 - `Page` no longer renders navigation or actions in print mode ([#2469](https://github.com/Shopify/polaris-react/pull/2469))
+- Added an `emptyState` prop to `ResourceList` ([#2160](https://github.com/Shopify/polaris-react/pull/2160))
 
 ### Bug fixes
 
