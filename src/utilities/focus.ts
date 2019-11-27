@@ -34,6 +34,20 @@ export function nextFocusableNode(
   return null;
 }
 
+// Popover needs to be able to find its activator even if it is disabled, which FOCUSABLE_SELECTOR doesn't support.
+
+export function findFirstFocusableNode(
+  element: HTMLElement,
+): HTMLElement | null {
+  const focusableSelector = `a,button,frame,iframe,input:not([type=hidden]),select,textarea,*[tabindex]`;
+
+  if (matches(element, focusableSelector)) {
+    return element;
+  }
+
+  return element.querySelector(focusableSelector);
+}
+
 export function focusNextFocusableNode(node: HTMLElement, filter?: Filter) {
   const nextFocusable = nextFocusableNode(node, filter);
   if (nextFocusable && nextFocusable instanceof HTMLElement) {

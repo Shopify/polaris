@@ -5,8 +5,10 @@ import React, {
   useState,
   AriaAttributes,
 } from 'react';
-import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
-import {focusNextFocusableNode} from '../../utilities/focus';
+import {
+  findFirstFocusableNode,
+  focusNextFocusableNode,
+} from '../../utilities/focus';
 import {Portal} from '../Portal';
 import {portal} from '../shared';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -90,9 +92,20 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
     }
 
     const firstFocusable = findFirstFocusableNode(activatorContainer.current);
-    const focusableActivator = firstFocusable || activatorContainer.current;
-    setActivatorAttributes(focusableActivator, {id, active, ariaHaspopup});
-  }, [active, ariaHaspopup, id]);
+    const focusableActivator: HTMLElement & {
+      disabled?: boolean;
+    } = firstFocusable || activatorContainer.current;
+
+    const activatorDisabled =
+      'disabled' in focusableActivator && Boolean(focusableActivator.disabled);
+
+    setActivatorAttributes(focusableActivator, {
+      id,
+      active,
+      ariaHaspopup,
+      activatorDisabled,
+    });
+  }, [id, active, ariaHaspopup]);
 
   const handleClose = (source: PopoverCloseSource) => {
     onClose(source);
