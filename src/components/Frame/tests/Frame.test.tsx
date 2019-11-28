@@ -2,6 +2,7 @@ import React from 'react';
 import {CSSTransition} from '@material-ui/react-transition-group';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {documentHasStyle} from 'test-utilities';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {
   TrapFocus,

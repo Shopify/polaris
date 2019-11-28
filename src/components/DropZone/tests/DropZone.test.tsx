@@ -2,6 +2,7 @@ import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {clock} from '@shopify/jest-dom-mocks';
 import {Label, Labelled, DisplayText, Caption} from 'components';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import DropZone from '../DropZone';

@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext, useTheme} from '../../../utilities/theme';

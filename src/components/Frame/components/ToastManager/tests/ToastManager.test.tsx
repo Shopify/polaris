@@ -1,5 +1,6 @@
 import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Toast} from '../../Toast';
 import Frame from '../../../Frame';

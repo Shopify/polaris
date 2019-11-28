@@ -1,6 +1,7 @@
 import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {SaveMinor} from '@shopify/polaris-icons';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
 import {Popover, ActionList} from 'components';

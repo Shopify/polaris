@@ -8,6 +8,7 @@ import {
   FlagMajorTwotone,
 } from '@shopify/polaris-icons';
 import {ReactWrapper} from 'enzyme';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {BannerContext} from 'utilities/banner-context';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
