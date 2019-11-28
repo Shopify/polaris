@@ -62,7 +62,7 @@
         "paths": [
           {
             "name": "test-utilities/legacy",
-            "message": "Please import the modern testing library from test-utilities instead"
+            "message": "Please import the modern testing library from 'test-utilities' instead"
           }
         ]
       }
