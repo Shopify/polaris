@@ -9,9 +9,9 @@ const {
 } = require('../');
 
 const ColorSwatch = {
-  Width: 64,
-  Height: 32,
-  Padding: 32,
+  Width: 32,
+  Height: 16,
+  Padding: 16,
 };
 
 const RoleDescription = {
@@ -46,38 +46,24 @@ const darkColors = colorFactory(
 );
 
 const Template = {
-  parent: (name) => `- [${name}](#${name})\n`,
-  child: (name) => `[${name}](#${name}-), `,
-  role: (name, description) => `## ${name}\n\n${description}\n\n`,
+  anchor: (name) => `- [${name}](#${name})\n`,
+  role: (name, description) =>
+    `## ${name}\n\n[↑ Back to top](#table-of-contents)\n\n${description}\n\n`,
+  heading:
+    '|CSS variable|Description|Light mode|Dark mode|\n|---|---|---|---|\n',
+  hr: '\n\n---\n\n',
   variant: (name, description, light, dark) => {
     const {Width, Height, Padding} = ColorSwatch;
     const size = `${Width + Padding * 2}x${Height + Padding * 2}`;
+    const additionalVariants = `\`-inverse\`, \`-light\`, and \`-dark\` variants available.`;
 
-    const additionalVariants = () => `\n
-- \`${cssify(
-      name,
-    )}-inverse\` returns the dark mode color while in light mode and vice versa
-- \`${cssify(name)}-light\` returns the fixed light value regardless of mode
-- \`${cssify(name)}-dark\` returns the fixed dark value regardless of mode
-<!--
-| \`${cssify(name)}-inverse\` | ![][${name}Dark]  | ![][${name}Light] |
-| \`${cssify(name)}-light\`   | ![][${name}Light] | ![][${name}Light] |
-| \`${cssify(name)}-dark\`    | ![][${name}Dark]  | ![][${name}Dark]  |
--->`;
-
-    return `### ${name} [↑](#Table-of-contents)\n\n${description}
-
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| \`${cssify(name)}\`         | ![][${name}Light] | ![][${name}Dark]  |
-${light === dark ? '' : additionalVariants()}
-
-[${name}Light]: https://www.gifpng.com/${size}/${light}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
+    return `|\`${cssify(name)}\`|${description} ${
+      light === dark ? '' : additionalVariants
+    }|![](https://www.gifpng.com/${size}/${light}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
       lightColors.surfaceBackground,
-    )}&text=%20
-[${name}Dark]: https://www.gifpng.com/${size}/${dark}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
+    )}&text=%20)|![](https://www.gifpng.com/${size}/${dark}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
       darkColors.surfaceBackground,
-    )}&text=%20\n\n---\n\n`;
+    )}&text=%20)|\n`;
   },
 };
 
@@ -85,14 +71,8 @@ const boilerplate =
   '# Color system\n\n⚠️ The color system is currently an unstable API, and is subject to change in non-major releases of Polaris react. Please use with caution.\n\n';
 const tocTitle = '## Table of contents\n\n';
 
-const tocContents = Object.entries(roleVariants).reduce(
-  (acc1, [role, variants]) => {
-    const children = variants.reduce((acc2, variant) => {
-      return acc2 + Template.child(variant.name);
-    }, '');
-
-    return `${acc1 + Template.parent(role)}  - ${children.slice(0, -2)}\n`;
-  },
+const tocContents = Object.keys(roleVariants).reduce(
+  (acc1, role) => acc1 + Template.anchor(role),
   '',
 );
 
@@ -107,7 +87,13 @@ const contents = Object.entries(roleVariants).reduce(
       );
     }, '');
 
-    return acc1 + Template.role(role, RoleDescription[role]) + children;
+    return (
+      acc1 +
+      Template.role(role, RoleDescription[role]) +
+      Template.heading +
+      children +
+      Template.hr
+    );
   },
   '',
 );
