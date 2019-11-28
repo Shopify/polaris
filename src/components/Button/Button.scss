@@ -157,9 +157,9 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 }
 
 .primary {
-  --p-button-color: var(--p-branded-action);
-  --p-button-color-hover: var(--p-branded-action-hovered);
-  --p-button-color-active: var(--p-branded-action-pressed);
+  --p-button-color: var(--p-primary-action);
+  --p-button-color-hover: var(--p-primary-action-hovered);
+  --p-button-color-active: var(--p-primary-action-pressed);
   @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(color('white'));
 

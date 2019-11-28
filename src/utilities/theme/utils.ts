@@ -1,5 +1,6 @@
 import tokens from '@shopify/polaris-tokens';
 import {hexToHsluv, hsluvToHex} from 'hsluv';
+import isEqual from 'lodash/isEqual';
 import {HSLColor, HSLAColor} from '../color-types';
 import {
   colorToHsla,
@@ -12,15 +13,26 @@ import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
 import {compose} from '../compose';
 import {needsVariantList} from './config';
-import {ThemeConfig, Theme, CustomPropertiesLike} from './types';
-import {colorAdjustments, UNSTABLE_Color} from './color-adjustments';
+import {
+  ThemeConfig,
+  Theme,
+  CustomPropertiesLike,
+  RoleVariants,
+  Role,
+  Variant,
+  HslaSetting,
+} from './types';
+import {roleVariants, UNSTABLE_Color} from './role-variants';
 
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
   globalTheming: boolean,
 ): CustomPropertiesLike {
   return globalTheming
-    ? buildColors(themeConfig)
+    ? customPropertyTransformer({
+        ...buildColors(themeConfig, roleVariants),
+        ...overrides(),
+      })
     : buildLegacyColors(themeConfig);
 }
 
@@ -55,13 +67,16 @@ function hexToHsluvObj(hex: string) {
   };
 }
 
-export function buildColors(theme: ThemeConfig) {
+export function buildColors(
+  theme: ThemeConfig,
+  roleVariants: Partial<RoleVariants>,
+) {
   const colors = {
     surface: UNSTABLE_Color.Surface,
     onSurface: UNSTABLE_Color.OnSurface,
     interactive: UNSTABLE_Color.Interactive,
     neutral: UNSTABLE_Color.Neutral,
-    branded: UNSTABLE_Color.Branded,
+    primary: UNSTABLE_Color.Primary,
     critical: UNSTABLE_Color.Critical,
     warning: UNSTABLE_Color.Warning,
     highlight: UNSTABLE_Color.Highlight,
@@ -72,33 +87,49 @@ export function buildColors(theme: ThemeConfig) {
 
   const lightSurface = isLight(hexToRgb(colors.surface));
 
-  const allColors = Object.entries(colorAdjustments).reduce(
-    (accumulator, [colorRole, colorAdjustment]) => {
-      if (colorAdjustment == null) return accumulator;
-
-      const baseColor = hexToHsluvObj(colors[colorAdjustment.baseColor]);
-      const {
-        hue = baseColor.hue,
-        saturation = baseColor.saturation,
-        lightness = baseColor.lightness,
-        alpha = 1,
-      } = colorAdjustment[lightSurface ? 'light' : 'dark'];
-
+  return Object.entries(roleVariants).reduce(
+    (acc1, [role, variants]: [Role, Variant[]]) => {
+      const base = hexToHsluvObj(colors[role]);
       return {
-        ...accumulator,
-        [colorRole]: hslToString({
-          ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
-          alpha,
-        }),
+        ...acc1,
+        ...variants.reduce((acc2, {name, light, dark}) => {
+          const configs: Record<string, HslaSetting> = {
+            default: lightSurface ? light : dark,
+          };
+
+          if (!isEqual(light, dark)) {
+            configs.Inverse = lightSurface ? dark : light;
+            configs.Light = light;
+            configs.Dark = dark;
+          }
+
+          return {
+            ...acc2,
+            ...Object.entries(configs).reduce((acc3, [variant, config]) => {
+              const {
+                hue = base.hue,
+                saturation = base.saturation,
+                lightness = base.lightness,
+                alpha = 1,
+              } = config;
+
+              const displayName =
+                variant === 'default' ? name : `${name}${variant}`;
+
+              return {
+                ...acc3,
+                [displayName]: hslToString({
+                  ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
+                  alpha,
+                }),
+              };
+            }, {}),
+          };
+        }, {}),
       };
     },
     {},
   );
-
-  return customPropertyTransformer({
-    ...allColors,
-    ...overrides(),
-  });
 }
 
 function overrides() {
@@ -145,7 +176,7 @@ function customPropertyTransformer(
   );
 }
 
-function toCssCustomPropertySyntax(camelCase: string) {
+export function toCssCustomPropertySyntax(camelCase: string) {
   return `--p-${camelCase.replace(/([A-Z0-9])/g, '-$1').toLowerCase()}`;
 }
 

@@ -11,6 +11,31 @@ export interface ThemeLogo {
   width?: number;
 }
 
+export interface RoleColors {
+  /** The surface role is used for the backgrounds of the UI. In light mode, surface colors are nearly white, while in dark mode, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts. */
+  surface: string;
+  /** The onSurface role is made up of elements which appear on top of a surface, including borders, neutral icons, and text. When a light surface is provided, onSurface values will be dark. When a dark surface is provided, onSurface values will be light. */
+  onSurface: string;
+  /** The interactive role is used to express interactivity in components. It is used in links, as an indicator of focus, and as an indicator of selected interactive states. */
+  interactive: string;
+  /** A neutral interactive color role, for use in secondary and tertiary buttons as a background color, as well as in form elements as a background color. */
+  neutral: string;
+  /** A primary interactive color, for use in primary buttons as a background color. Also used in navigation and tabs for icons, and for a surface color when in a selected state. */
+  primary: string;
+  /** Used to communicate destructive outcomes on interactive elements, for communicating errors, and to indicate a critical event in inert elements that requires immediate merchant action. */
+  critical: string;
+  /** For use as an indicator that action should be taken by merchants in components including badges, banners, and exception lists. */
+  warning: string;
+  /** Used to highlight elements of the UI that are important for merchants, but do not require immediate action. Used in information banners and badges, indicators that draw attention to new information, bars that indicate loading or progress, and in data visualization. */
+  highlight: string;
+  /** Used to indicate the result of a successful action taken by a merchant, to indicate a positive event, or to illustrate growth. */
+  success: string;
+  /** Used to decorate elements where color does convey a specific meaning in components like avatars */
+  decorative: string;
+}
+
+export type Role = keyof RoleColors;
+
 // The value that is passed into the ThemeProvider
 export interface ThemeConfig {
   /** Sets the logo for the top bar and contextual save bar components*/
@@ -19,18 +44,7 @@ export interface ThemeConfig {
     /** Sets the background color of the top bar component. Complimentary and typography colors are determined programmatically */
     topBar?: Record<string, string>;
   };
-  UNSTABLE_colors?: {
-    surface?: string;
-    onSurface?: string;
-    interactive?: string;
-    neutral?: string;
-    branded?: string;
-    critical?: string;
-    warning?: string;
-    highlight?: string;
-    success?: string;
-    decorative?: string;
-  };
+  UNSTABLE_colors?: Partial<RoleColors>;
 }
 
 export type CustomPropertiesLike = Record<string, string>;
@@ -42,29 +56,18 @@ export interface Theme {
   UNSTABLE_cssCustomProperties?: string;
 }
 
-interface HslaAdjustment {
+export interface HslaSetting {
   hue?: number;
   saturation?: number;
   lightness?: number;
   alpha?: number;
 }
 
-type BaseColor =
-  | 'surface'
-  | 'onSurface'
-  | 'interactive'
-  | 'neutral'
-  | 'branded'
-  | 'critical'
-  | 'warning'
-  | 'highlight'
-  | 'success'
-  | 'decorative';
-
-interface ColorRole {
-  baseColor: BaseColor;
-  light: HslaAdjustment;
-  dark: HslaAdjustment;
+export interface Variant {
+  name: string;
+  description?: string;
+  light: HslaSetting;
+  dark: HslaSetting;
 }
 
-export type ColorAdjustments = Record<string, ColorRole>;
+export type RoleVariants = Record<Role, Variant[]>;

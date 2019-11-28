@@ -1,484 +1,219 @@
-# Color system documentation
+# Color system
 
-⚠️The color system is currently an unstable API, and is subject to change in non-major releases of Polaris react. Please use with caution.
+⚠️ The color system is currently an unstable API, and is subject to change in non-major releases of Polaris react. Please use with caution.
 
-- [Surface (default: `#FAFAFA`)](#surface-default-fafafa)
-  - [Surface concepts](#surface-concepts)
-  - [Surface Base: `--p-surface`](#surface-base---p-surface)
-  - [Surface Background](#surface-background)
-  - [Surface Foreground](#surface-foreground)
-  - [Surface Foreground Subdued](#surface-foreground-subdued)
-  - [Surface Hovered](#surface-hovered)
-  - [Surface Pressed: `--p-surface-pressed`](#surface-pressed---p-surface-pressed)
-- [On Surface (default: `#1F2225`)](#on-surface-default-1f2225)
-  - [On Surface base: `--p-on-surface`](#on-surface-base---p-on-surface)
-  - [Border](#border)
-    - [Border Disabled](#border-disabled)
-    - [Border Subdued](#border-subdued)
-  - [Icon](#icon)
-    - [Icon subdued](#icon-subdued)
-    - [Icon disabled](#icon-disabled)
-  - [Text](#text)
-    - [Text Subdued](#text-subdued)
-    - [Text Disabled](#text-disabled)
-- [Interactive (default: `#0870D9`)](#interactive-default-0870d9)
-  - [Interactive Base: `--p-interactive`](#interactive-base---p-interactive)
-  - [Interactive Action](#interactive-action)
-  - [Interactive Focus: `--p-interactive-focus`](#interactive-focus---p-interactive-focus)
-  - [Interactive Selected](#interactive-selected)
-- [Neutral (default: `#EAEAEB`)](#neutral-default-eaeaeb)
-  - [Neutral Base : `--p-neutral`](#neutral-base----p-neutral)
-  - [Neutral Action](#neutral-action)
-- [Branded (default: `#008060`)](#branded-default-008060)
-  - [Branded Base: `--p-branded`](#branded-base---p-branded)
-  - [Branded Action](#branded-action)
-  - [Icon On Branded](#icon-on-branded)
-  - [Text On Branded](#text-on-branded)
-  - [Branded Selected](#branded-selected)
-- [Critical (default: `#D82C0D`)](#critical-default-d82c0d)
-  - [Critical Base : `--p-critical`](#critical-base----p-critical)
-  - [Critical Border](#critical-border)
-  - [Critical Icon: `--p-critical-icon`](#critical-icon---p-critical-icon)
-  - [Critical Surface: `--p-critical-surface`](#critical-surface---p-critical-surface)
-  - [Critical Surface Subdued: `--p-critical-surface-subdued`](#critical-surface-subdued---p-critical-surface-subdued)
-  - [Critical Surface Subdued Hovered: `--p-critical-surface-subdued-hovered`](#critical-surface-subdued-hovered---p-critical-surface-subdued-hovered)
-  - [Critical Surface Subdued Pressed: `--p-critical-surface-subdued-pressed`](#critical-surface-subdued-pressed---p-critical-surface-subdued-pressed)
-  - [Critical Text: `--p-critical-text`](#critical-text---p-critical-text)
-  - [Critical Action](#critical-action)
-  - [Critical Link](#critical-link)
-- [Warning (default: `#FFC453`)](#warning-default-ffc453)
-  - [Warning Base: `--p-warning`](#warning-base---p-warning)
-  - [Warning Border: `--p-warning-border`](#warning-border---p-warning-border)
-  - [Warning Icon: `--p-warning-icon`](#warning-icon---p-warning-icon)
-  - [Warning Surface: `--p-warning-surface`](#warning-surface---p-warning-surface)
-  - [Warning Surface Subdued: `--p-warning-surface-subdued`](#warning-surface-subdued---p-warning-surface-subdued)
-  - [Warning Text: `--p-warning-text`](#warning-text---p-warning-text)
-- [Highlight (default: `#59D0C2`)](#highlight-default-59d0c2)
-  - [Highlight Base: `--p-highlight`](#highlight-base---p-highlight)
-  - [Highlight Border: `--p-highlight-border`](#highlight-border---p-highlight-border)
-  - [Highlight Icon: `--p-highlight-icon`](#highlight-icon---p-highlight-icon)
-  - [Highlight Surface: `--p-highlight-surface`](#highlight-surface---p-highlight-surface)
-  - [Highlight Surface Subdued: `--p-highlight-surface-subdued`](#highlight-surface-subdued---p-highlight-surface-subdued)
-  - [Highlight Text: `--p-highlight-text`](#highlight-text---p-highlight-text)
-- [Success (default: `#008060`)](#success-default-008060)
-  - [Success Base: `--p-success`](#success-base---p-success)
-  - [Success Border: `--p-success-border`](#success-border---p-success-border)
-  - [Success Icon: `--p-success-icon`](#success-icon---p-success-icon)
-  - [Success Surface: `--p-success-surface`](#success-surface---p-success-surface)
-  - [Success Surface Subdued: `--p-success-surface-subdued`](#success-surface-subdued---p-success-surface-subdued)
-  - [Success Text: `--p-success-text`](#success-text---p-success-text)
-- [Transparency](#transparency)
-  - [Backdrop](#backdrop)
-  - [Shadow](#shadow)
+## Table of contents
 
-## Surface (default: `#FAFAFA`)
+- [surface](#surface)
+- [onSurface](#onSurface)
+- [interactive](#interactive)
+- [neutral](#neutral)
+- [primary](#primary)
+- [critical](#critical)
+- [warning](#warning)
+- [highlight](#highlight)
+- [success](#success)
+- [decorative](#decorative)
 
-The surface role is used for the backgrounds of our UIs, and consists of a range of gray hues. In light mode, surface colors are nearly white, while in dark mode, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts.
+## surface
 
-### Surface concepts
+[↑ Back to top](#table-of-contents)
 
-- **surface**: a variable background color that is light in light mode and dark in dark mode
-- **inverse**: a variable background color that is dark in light mode and light in dark mode
-- **dark**: a constant background color that is always dark regardless of mode
-- **light**: a constant background color that is always light regardless of mode
+The surface role is used for the backgrounds of the UI. In light mode, surface colors are nearly white, while in dark mode, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts.
 
-### Surface Base: `--p-surface`
-
-While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
-
-### Surface Background
-
-For use in the background of our UIs as a background color, in components such as `Page` and `Frame` backgrounds.
-
-- Surface Background: `--p-surface-background`
-- Surface Inverse Background: `--p-surface-inverse-background`
-- Surface Dark Background: `--p-surface-dark-background`
-- Surface Light Background: `--p-surface-light-background`
-
-### Surface Foreground
-
-For use in the foreground of our UIs as a background color, in components such as `Card`, `Modal`, and `Popover`.
-
-- Surface Foreground: `--p-surface-foreground`
-- Surface Inverse Foreground: `--p-surface-inverse-foreground`
-- Surface Dark Foreground: `--p-surface-dark-foreground`
-- Surface Light Foreground: `--p-surface-light-foreground`
-
-### Surface Foreground Subdued
-
-For use in the foreground of our UIs as a subdued background color, in components such as `Card`, `Modal`, and `Popover`.
-
-- Surface Foreground Subdued: `--p-surface-foreground-subdued`
-- Surface Inverse Foreground Subdued: `--p-surface-inverse-foreground-subdued`
-- Surface Dark Foreground Subdued: `--p-surface-dark-foreground-subdued`
-- Surface Light Foreground Subdued: `--p-surface-light-foreground-subdued`
-
-### Surface Hovered
-
-For use as a surface color on interactive elements such as resource list items and action list items when in a hovered state.
-
-- Surface Hovered: `--p-surface-hovered`
-- Surface Inverse Hovered: `--p-surface-inverse-hovered`
-- Surface Dark Hovered: `--p-surface-dark-hovered`
-- Surface Light Hovered: `--p-surface-light-hovered`
-
-### Surface Pressed: `--p-surface-pressed`
-
-For use as a surface color on interactive elements such as resource list items and action list items when in a pressed state.
-
-- Surface Pressed: `--p-surface-pressed`
-- Surface Inverse Pressed: `--p-surface-inverse-pressed`
-- Surface Dark Pressed: `--p-surface-dark-pressed`
-- Surface Light Pressed: `--p-surface-light-pressed`
+| CSS variable                     | Description                                                                                                                                                                         | Light mode                                                                                                         | Dark mode                                                                                                          |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `--p-surface`                    | While use directly in our components is discouraged, the base variant is unmodified from the original role input color. `-inverse`, `-light`, and `-dark` variants available.       | ![](https://www.gifpng.com/64x64/fafafa/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/111213/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-surface-background`         | For use in the background of our UIs as a background color, in components such as Page and Frame backgrounds. `-inverse`, `-light`, and `-dark` variants available.                 | ![](https://www.gifpng.com/64x64/fafafa/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/0c0d0e/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-surface-foreground`         | For use in the foreground of our UIs as a background color, in components such as Card, Modal, and Popover. `-inverse`, `-light`, and `-dark` variants available.                   | ![](https://www.gifpng.com/64x64/ffffff/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/181a1b/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-surface-foreground-subdued` | For use in the foreground of our UIs as a subdued background color, in components such as Card, Modal, and Popover. `-inverse`, `-light`, and `-dark` variants available.           | ![](https://www.gifpng.com/64x64/f2f2f2/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/1b1d1d/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-surface-hovered`            | For use as a surface color on interactive elements such as resource list items and action list items when in a hovered state. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/f2f2f2/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/2f3032/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-surface-pressed`            | For use as a surface color on interactive elements such as resource list items and action list items when in a pressed state. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/e3e3e3/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/3d3f42/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-backdrop`                   | For use as the background color of the backdrop component for navigation and modal.                                                                                                 | ![](https://www.gifpng.com/64x64/000000/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/000000/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-shadow-from-ambient-light`  | For use in building shadows for popovers, cards, and modals.                                                                                                                        | ![](https://www.gifpng.com/64x64/161717/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/161717/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-shadow-from-direct-light`   | For use in building shadows for popovers, cards, and modals.                                                                                                                        | ![](https://www.gifpng.com/64x64/000000/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/000000/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
 
 ---
 
-## On Surface (default: `#1F2225`)
+## onSurface
 
-The On Surface role is made up of elements which appear on top of a surface, including borders, neutral icons, and text. When a light Surface is provided, On Surface values will be dark. When a dark surface is provided, On Surface values will be light.
+[↑ Back to top](#table-of-contents)
 
-### On Surface base: `--p-on-surface`
+The onSurface role is made up of elements which appear on top of a surface, including borders, neutral icons, and text. When a light surface is provided, onSurface values will be dark. When a dark surface is provided, onSurface values will be light.
 
-While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
-
-### Border
-
-For use as a border (border or interactive outline).
-
-- Border On Surface: `--p-border-on-surface`
-- Border On Inverse: `--p-border-on-inverse`
-- Border On Dark: `--p-border-on-dark`
-- Border On Light: `--p-border-on-light`
-
-#### Border Disabled
-
-For use as a an interactive outline on disabled elements.
-
-- Border Disabled On Surface: `--p-border-disabled-on-surface`
-- Border Disabled On Inverse: `--p-border-disabled-on-inverse`
-- Border Disabled On Dark: `--p-border-disabled-on-dark`
-- Border Disabled On Light: `--p-border-disabled-on-light`
-
-#### Border Subdued
-
-For use as a subdued border (border or interactive outline).
-
-- Border Subdued On Surface: `--p-border-subdued-on-surface`
-- Border Subdued On Inverse: `--p-border-subdued-on-inverse`
-- Border Subdued On Dark: `--p-border-subdued-on-dark`
-- Border Subdued On Light: `--p-border-subdued-on-light`
-
-### Icon
-
-For use as the fill color of neutral icons.
-
-- Icon On Surface: `--p-icon-on-surface`
-- Icon On Inverse: `--p-icon-on-inverse`
-- Icon On Dark: `--p-icon-on-dark`
-- Icon On Light: `--p-icon-on-light`
-
-#### Icon subdued
-
-For use as the fill color of subdued neutral icons.
-
-- Icon Subdued On Surface: `--p-icon-subdued-on-surface`
-- Icon Subdued On Inverse: `--p-icon-subdued-on-inverse`
-- Icon Subdued On Dark: `--p-icon-subdued-on-dark`
-- Icon Subdued On Light: `--p-icon-subdued-on-light`
-
-#### Icon disabled
-
-For use as the fill color of disabled neutral icons.
-
-- Icon Disabled On Surface: `--p-icon-disabled-on-surface`
-- Icon Disabled On Inverse: `--p-icon-disabled-on-inverse`
-- Icon Disabled On Dark: `--p-icon-disabled-on-dark`
-- Icon Disabled On Light: `--p-icon-disabled-on-light`
-
-### Text
-
-For use as a neutral text color.
-
-- Text On Surface: `--p-text-on-surface`
-- Text On Inverse: `--p-text-on-inverse`
-- Text On Dark: `--p-text-on-dark`
-- Text On Light: `--p-text-on-light`
-
-#### Text Subdued
-
-For use as a subdued neutral text color.
-
-- Text Subdued On Surface: `--p-text-subdued-on-surface`
-- Text Subdued On Inverse: `--p-text-subdued-on-inverse`
-- Text Subdued On Dark: `--p-text-subdued-on-dark`
-- Text Subdued On Light: `--p-text-subdued-on-light`
-
-#### Text Disabled
-
-For use as a disabled neutral text color.
-
-- Text Disabled On Surface: `--p-text-disabled-on-surface`
-- Text Disabled On Inverse: `--p-text-disabled-on-inverse`
-- Text Disabled On Dark: `--p-text-disabled-on-dark`
-- Text Disabled On Light: `--p-text-disabled-on-light`
+| CSS variable                     | Description                                                                                                             | Light mode                                                                                                         | Dark mode                                                                                                          |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `--p-on-surface`                 | While use directly in our components is discouraged, the base variant is unmodified from the original role input color. | ![](https://www.gifpng.com/64x64/1e2124/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/1e2124/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-border-on-surface`          | For use as a border (border or interactive outline). `-inverse`, `-light`, and `-dark` variants available.              | ![](https://www.gifpng.com/64x64/b1bac4/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/4e545a/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-border-disabled-on-surface` | For use as a an interactive outline on disabled elements. `-inverse`, `-light`, and `-dark` variants available.         | ![](https://www.gifpng.com/64x64/f0f2f4/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/a2aeb9/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-border-subdued-on-surface`  | For use as a subdued border (border or interactive outline). `-inverse`, `-light`, and `-dark` variants available.      | ![](https://www.gifpng.com/64x64/d0d6dc/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/232629/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-icon-on-surface`            | For use as the fill color of neutral icons. `-inverse`, `-light`, and `-dark` variants available.                       | ![](https://www.gifpng.com/64x64/42474c/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/f9f9fa/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-icon-disabled-on-surface`   | For use as the fill color of disabled neutral icons. `-inverse`, `-light`, and `-dark` variants available.              | ![](https://www.gifpng.com/64x64/9ba6b0/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/b1bac4/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-icon-subdued-on-surface`    | For use as the fill color of subdued neutral icons. `-inverse`, `-light`, and `-dark` variants available.               | ![](https://www.gifpng.com/64x64/87919b/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/8c96a1/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-text-on-surface`            | For use as a neutral text color. `-inverse`, `-light`, and `-dark` variants available.                                  | ![](https://www.gifpng.com/64x64/1e2124/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/ffffff/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-text-disabled-on-surface`   | For use as a disabled neutral text color. `-inverse`, `-light`, and `-dark` variants available.                         | ![](https://www.gifpng.com/64x64/8a949e/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/6f7880/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-text-subdued-on-surface`    | For use as a subdued neutral text color. `-inverse`, `-light`, and `-dark` variants available.                          | ![](https://www.gifpng.com/64x64/53595f/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/8c96a1/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
 
 ---
 
-## Interactive (default: `#0870D9`)
+## interactive
+
+[↑ Back to top](#table-of-contents)
 
 The interactive role is used to express interactivity in components. It is used in links, as an indicator of focus, and as an indicator of selected interactive states.
 
-### Interactive Base: `--p-interactive`
-
-While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
-
-### Interactive Action
-
-- Interactive Action: `--p-interactive-action`
-- Interactive Action Disabled: `--p-interactive-action-disabled`
-- Interactive Action Hovered: `--p-interactive-action-hovered`
-- Interactive Action Subdued: `--p-interactive-action-subdued`
-- Interactive Action Pressed: `--p-interactive-action-pressed`
-
-### Interactive Focus: `--p-interactive-focus`
-
-For use in the focus ring on interactive elements.
-
-### Interactive Selected
-
-For use as a surface color in selected interactive elements, in components such as option list and resource list.
-
-- Interactive Selected: `--p-interactive-selected`
-- Interactive Selected Hovered: `--p-interactive-selected-hovered`
-- Interactive Selected Pressed: `--p-interactive-selected-pressed`
+| CSS variable                       | Description                                                                                                                                                                              | Light mode                                                                                                         | Dark mode                                                                                                          |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `--p-interactive`                  | While use directly in our components is discouraged, the base variant is unmodified from the original role input color.                                                                  | ![](https://www.gifpng.com/64x64/0870d9/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/0870d9/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-interactive-action`           | Used for links and plain buttons. `-inverse`, `-light`, and `-dark` variants available.                                                                                                  | ![](https://www.gifpng.com/64x64/0769ca/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/679cfe/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-interactive-action-disabled`  | Used for disabled links and plain buttons. `-inverse`, `-light`, and `-dark` variants available.                                                                                         | ![](https://www.gifpng.com/64x64/348cfe/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/0663c1/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-interactive-action-hovered`   | Used for hovered links and plain buttons. `-inverse`, `-light`, and `-dark` variants available.                                                                                          | ![](https://www.gifpng.com/64x64/0557a8/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/81a8fe/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-interactive-action-subdued`   | Used for subdued links and plain buttons. `-inverse`, `-light`, and `-dark` variants available.                                                                                          | ![](https://www.gifpng.com/64x64/0878e7/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/0873dd/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-interactive-action-pressed`   | Used for pressed links and plain buttons. `-inverse`, `-light`, and `-dark` variants available.                                                                                          | ![](https://www.gifpng.com/64x64/034891/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/9ab8fe/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-interactive-focus`            | For use in the focus ring on interactive elements. `-inverse`, `-light`, and `-dark` variants available.                                                                                 | ![](https://www.gifpng.com/64x64/348cfe/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/0663c1/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-interactive-selected`         | For use as a surface color in selected interactive elements, in components such as option list and resource list. `-inverse`, `-light`, and `-dark` variants available.                  | ![](https://www.gifpng.com/64x64/f0f3ff/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/000e24/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-interactive-selected-hovered` | For use as a surface color in selected interactive elements that are hovered, in components such as option list and resource list. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/d6e0ff/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/011d41/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-interactive-selected-pressed` | For use as a surface color in selected interactive elements that are pressed, in components such as option list and resource list. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/b8cbff/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/012b5b/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
 
 ---
 
-## Neutral (default: `#EAEAEB`)
+## neutral
+
+[↑ Back to top](#table-of-contents)
 
 A neutral interactive color role, for use in secondary and tertiary buttons as a background color, as well as in form elements as a background color.
 
-### Neutral Base : `--p-neutral`
-
-While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
-
-### Neutral Action
-
-- Neutral Action: `--p-neutral-action`
-- Neutral Action Disabled: `--p-neutral-action-disabled`
-- Neutral Action Hovered: `--p-neutral-action-hovered`
-- Neutral Action Pressed: `--p-neutral-action-pressed`
+| CSS variable                  | Description                                                                                                                                                                                       | Light mode                                                                                                         | Dark mode                                                                                                          |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `--p-neutral`                 | While use directly in our components is discouraged, the base variant is unmodified from the original role input color.                                                                           | ![](https://www.gifpng.com/64x64/eaeaeb/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/eaeaeb/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-neutral-action`          | Used for secondary buttons and tertiary buttons, as well as in form elements as a background color and pontentially other neutral surfaces. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/eaeaeb/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/35353b/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-neutral-action-disabled` | Used as a disabled state for secondary buttons `-inverse`, `-light`, and `-dark` variants available.                                                                                              | ![](https://www.gifpng.com/64x64/ededed/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/222226/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-neutral-action-hovered`  | Used as a hovered state for secondary buttons `-inverse`, `-light`, and `-dark` variants available.                                                                                               | ![](https://www.gifpng.com/64x64/e2e2e4/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/3a3a40/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-neutral-action-pressed`  | Used as a pressed state for secondary buttons `-inverse`, `-light`, and `-dark` variants available.                                                                                               | ![](https://www.gifpng.com/64x64/dadadc/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/5b5b62/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
 
 ---
 
-## Branded (default: `#008060`)
+## primary
 
-A branded interactive color, for use in primary buttons as a background color. Also used in navigation and tabs for icons, and for a surface color when in a selected state.
+[↑ Back to top](#table-of-contents)
 
-### Branded Base: `--p-branded`
+A primary interactive color, for use in primary buttons as a background color. Also used in navigation and tabs for icons, and for a surface color when in a selected state.
 
-While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
-
-### Branded Action
-
-Used as the background color for primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
-
-- Branded Action: `--p-branded-action`
-- Branded Action Disabled: `--p-branded-action-disabled`
-- Branded Action Hovered: `--p-branded-action-hovered`
-- Branded Action Pressed: `--p-branded-action-pressed`
-
-### Icon On Branded
-
-For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs.
-
-- Icon On Branded: `--p-icon-on-branded`
-- Icon Subdued On Branded: `--p-icon-subdued-on-branded`
-- Icon Disabled On Branded: `--p-icon-disabled-on-branded`
-
-### Text On Branded
-
-For use as a text color on primary actions. Not for use in text on navigation and tabs.
-
-- Text On Branded: `--p-text-on-branded`
-- Text Subdued On Branded: `--p-text-subdued-on-branded`
-- Text Disabled On Branded: `--p-text-disabled-on-branded`
-
-### Branded Selected
-
-Used as a surface color to indicate selected interactive states in navigation and tabs.
-
-- Branded Selected: `--p-branded-selected`
-- Branded Selected Hovered: `--p-branded-selected-hovered`
-- Branded Selected Pressed: `--p-branded-selected-pressed`
+| CSS variable                   | Description                                                                                                                                                                                                                  | Light mode                                                                                                         | Dark mode                                                                                                          |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `--p-primary`                  | While use directly in our components is discouraged, the base variant is unmodified from the original role input color.                                                                                                      | ![](https://www.gifpng.com/64x64/008060/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/008060/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-primary-action`           | Used as the background color for primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.                                                               | ![](https://www.gifpng.com/64x64/008060/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/008060/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-primary-action-disabled`  | Used as the background color for disabled primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.                                                      | ![](https://www.gifpng.com/64x64/005741/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/005741/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-primary-action-hovered`   | Used as the background color for hovered primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/007054/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/00946f/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-primary-action-pressed`   | Used as the background color for pressed primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/00664d/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/00a37a/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-icon-on-primary`          | For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs.                                                                                                                           | ![](https://www.gifpng.com/64x64/e5fff4/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/e5fff4/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-icon-subdued-on-primary`  | For use as a fill color for icons on subdued primary actions. Not for use in icons on navigation and tabs.                                                                                                                   | ![](https://www.gifpng.com/64x64/00fac0/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/00fac0/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-icon-disabled-on-primary` | For use as a fill color for icons on disabled primary actions. Not for use in icons on navigation and tabs.                                                                                                                  | ![](https://www.gifpng.com/64x64/00dba4/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/00dba4/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-text-on-primary`          | For use as a text color on primary actions. Not for use in text on navigation and tabs.                                                                                                                                      | ![](https://www.gifpng.com/64x64/ffffff/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/ffffff/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-text-subdued-on-primary`  | For use as a text color on subdued primary actions. Not for use in text on navigation and tabs.                                                                                                                              | ![](https://www.gifpng.com/64x64/33ffc5/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/33ffc5/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-text-disabled-on-primary` | For use as a text color on disabled primary actions. Not for use in text on navigation and tabs.                                                                                                                             | ![](https://www.gifpng.com/64x64/33ffc5/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/33ffc5/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-primary-selected`         | Used as a surface color to indicate selected interactive states in navigation and tabs. `-inverse`, `-light`, and `-dark` variants available.                                                                                | ![](https://www.gifpng.com/64x64/e1f5ec/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/0c1210/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-primary-selected-hovered` | Used as a surface color to indicate selected interactive states that are hovered in navigation and tabs. `-inverse`, `-light`, and `-dark` variants available.                                                               | ![](https://www.gifpng.com/64x64/b3d0c3/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/272f2b/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-primary-selected-pressed` | Used as a surface color to indicate selected interactive states that are pressed in navigation and tabs. `-inverse`, `-light`, and `-dark` variants available.                                                               | ![](https://www.gifpng.com/64x64/a3bdb1/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/363f3b/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
 
 ---
 
-## Critical (default: `#D82C0D`)
+## critical
+
+[↑ Back to top](#table-of-contents)
 
 Used to communicate destructive outcomes on interactive elements, for communicating errors, and to indicate a critical event in inert elements that requires immediate merchant action.
 
-### Critical Base : `--p-critical`
-
-While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
-
-### Critical Border
-
-For use as a border on critical components such as banners, and as an outline on interactive elements in an error state.
-
-- Critical Border: `--p-critical-border`
-- Critical Border Disabled: `--p-critical-border-disabled`
-
-### Critical Icon: `--p-critical-icon`
-
-For use as an icon fill color on top of critical elements.
-
-### Critical Surface: `--p-critical-surface`
-
-For use as a surface color on critical elements including badges.
-
-### Critical Surface Subdued: `--p-critical-surface-subdued`
-
-For use as a surface color on critical elements including banners.
-
-### Critical Surface Subdued Hovered: `--p-critical-surface-subdued-hovered`
-
-For use as a surface color on critical interactive elements including action list items in a hovered state.
-
-### Critical Surface Subdued Pressed: `--p-critical-surface-subdued-pressed`
-
-For use as a surface color on critical interactive elements including action list items in a pressed state.
-
-### Critical Text: `--p-critical-text`
-
-For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.
-
-### Critical Action
-
-For use as the background color for destructive buttons, and as the background color for error toast messages.
-
-- Critical Action: `--p-critical-action`
-- Critical Action Disabled: `--p-critical-action-disabled`
-- Critical Action Hovered: `--p-critical-action-hovered`
-- Critical Action Pressed: `--p-critical-action-pressed`
-
-### Critical Link
-
-For use as a text color in destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
-
-- Critical Link: `--p-critical-link`
-- Critical Link Disabled: `--p-critical-link-disabled`
-- Critical Link Hovered: `--p-critical-link-hovered`
-- Critical Link Pressed: `--p-critical-link-pressed`
+| CSS variable                           | Description                                                                                                                                                                                                                | Light mode                                                                                                         | Dark mode                                                                                                          |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `--p-critical`                         | While use directly in our components is discouraged, the base variant is unmodified from the original role input color.                                                                                                    | ![](https://www.gifpng.com/64x64/d92b0d/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/d92b0d/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-border`                  | For use as a border on critical components such as banners, and as an outline on interactive elements in an error state.                                                                                                   | ![](https://www.gifpng.com/64x64/e12e0e/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/e12e0e/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-border-disabled`         | For use as a disabled border on critical components such as banners, and as an outline on interactive elements in an error state. `-inverse`, `-light`, and `-dark` variants available.                                    | ![](https://www.gifpng.com/64x64/febcb9/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/811704/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-icon`                    | For use as an icon fill color on top of critical elements. `-inverse`, `-light`, and `-dark` variants available.                                                                                                           | ![](https://www.gifpng.com/64x64/eb300f/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/d92b0d/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-surface`                 | For use as a surface color on critical elements including badges. `-inverse`, `-light`, and `-dark` variants available.                                                                                                    | ![](https://www.gifpng.com/64x64/fffafa/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/460701/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-surface-subdued`         | For use as a subdued surface color on critical elements including banners. `-inverse`, `-light`, and `-dark` variants available.                                                                                           | ![](https://www.gifpng.com/64x64/fff6f5/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/460701/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-surface-subdued-hovered` | For use as a surface color on critical interactive elements including action list items in a hovered state. `-inverse`, `-light`, and `-dark` variants available.                                                          | ![](https://www.gifpng.com/64x64/fee7e6/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/431714/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-surface-subdued-pressed` | For use as a surface color on critical interactive elements including action list items in a pressed state. `-inverse`, `-light`, and `-dark` variants available.                                                          | ![](https://www.gifpng.com/64x64/fed4d2/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/6d1103/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-text`                    | For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges. `-inverse`, `-light`, and `-dark` variants available.                                        | ![](https://www.gifpng.com/64x64/b42208/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/fd5849/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-action`                  | For use as the background color for destructive buttons, and as the background color for error toast messages. `-inverse`, `-light`, and `-dark` variants available.                                                       | ![](https://www.gifpng.com/64x64/d92b0d/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/cf290c/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-action-disabled`         | For use as the background color for disabled destructive buttons, and as the background color for error toast messages. `-inverse`, `-light`, and `-dark` variants available.                                              | ![](https://www.gifpng.com/64x64/fd4f3f/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/bd250a/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-action-hovered`          | For use as the background color for hovered destructive buttons, and as the background color for error toast messages. `-inverse`, `-light`, and `-dark` variants available.                                               | ![](https://www.gifpng.com/64x64/c2260a/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/e12e0e/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-action-pressed`          | For use as the background color for pressed destructive buttons, and as the background color for error toast messages. `-inverse`, `-light`, and `-dark` variants available.                                               | ![](https://www.gifpng.com/64x64/aa2008/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/fd5849/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-link`                    | For use as a text color in destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges. `-inverse`, `-light`, and `-dark` variants available.          | ![](https://www.gifpng.com/64x64/dd2d0e/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/fd7068/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-link-disabled`           | For use as a text color in disabled destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/fd918b/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/feada9/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-link-hovered`            | For use as a text color in hovered destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges. `-inverse`, `-light`, and `-dark` variants available.  | ![](https://www.gifpng.com/64x64/cf290c/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/fd8881/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-critical-link-pressed`            | For use as a text color in pressed destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges. `-inverse`, `-light`, and `-dark` variants available.  | ![](https://www.gifpng.com/64x64/680f03/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/fd9e9b/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
 
 ---
 
-## Warning (default: `#FFC453`)
+## warning
+
+[↑ Back to top](#table-of-contents)
 
 For use as an indicator that action should be taken by merchants in components including badges, banners, and exception lists.
 
-### Warning Base: `--p-warning`
-
-While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
-
-### Warning Border: `--p-warning-border`
-
-For use as a border on warning components such as banners.
-
-### Warning Icon: `--p-warning-icon`
-
-For use as an icon fill color on top of warning elements.
-
-### Warning Surface: `--p-warning-surface`
-
-For use as a surface color on warning elements including badges.
-
-### Warning Surface Subdued: `--p-warning-surface-subdued`
-
-For use as a surface color on warning elements including banners.
-
-### Warning Text: `--p-warning-text`
-
-For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.
+| CSS variable                  | Description                                                                                                                                                                         | Light mode                                                                                                         | Dark mode                                                                                                          |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `--p-warning`                 | While use directly in our components is discouraged, the base variant is unmodified from the original role input color.                                                             | ![](https://www.gifpng.com/64x64/ffc252/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/ffc252/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-warning-border`          | For use as a border on warning components such as banners. `-inverse`, `-light`, and `-dark` variants available.                                                                    | ![](https://www.gifpng.com/64x64/f0b400/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/997000/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-warning-icon`            | For use as an icon fill color on top of warning elements. `-inverse`, `-light`, and `-dark` variants available.                                                                     | ![](https://www.gifpng.com/64x64/cc9600/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/664900/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-warning-surface`         | For use as a surface color on warning elements including badges. `-inverse`, `-light`, and `-dark` variants available.                                                              | ![](https://www.gifpng.com/64x64/ffcd75/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/997000/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-warning-surface-subdued` | For use as a subdued surface color on warning elements including banners. `-inverse`, `-light`, and `-dark` variants available.                                                     | ![](https://www.gifpng.com/64x64/fffcfa/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/332300/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-warning-text`            | For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/5c4200/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/dba100/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
 
 ---
 
-## Highlight (default: `#59D0C2`)
+## highlight
+
+[↑ Back to top](#table-of-contents)
 
 Used to highlight elements of the UI that are important for merchants, but do not require immediate action. Used in information banners and badges, indicators that draw attention to new information, bars that indicate loading or progress, and in data visualization.
 
-### Highlight Base: `--p-highlight`
-
-While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
-
-### Highlight Border: `--p-highlight-border`
-
-For use as a border on informational components such as banners.
-
-### Highlight Icon: `--p-highlight-icon`
-
-For use as an icon fill color on top of informational elements.
-
-### Highlight Surface: `--p-highlight-surface`
-
-For use as a surface color on information elements including badges.
-
-### Highlight Surface Subdued: `--p-highlight-surface-subdued`
-
-For use as a surface color on information elements including banners.
-
-### Highlight Text: `--p-highlight-text`
-
-For use as a text color in inert informational elements. Not for use as a text color on banners and badges.
+| CSS variable                    | Description                                                                                                                                                       | Light mode                                                                                                         | Dark mode                                                                                                          |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `--p-highlight`                 | While use directly in our components is discouraged, the base variant is unmodified from the original role input color.                                           | ![](https://www.gifpng.com/64x64/58d0c2/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/58d0c2/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-highlight-border`          | For use as a border on informational components such as banners.                                                                                                  | ![](https://www.gifpng.com/64x64/429e93/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/429e93/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-highlight-icon`            | For use as an icon fill color on top of informational elements. `-inverse`, `-light`, and `-dark` variants available.                                             | ![](https://www.gifpng.com/64x64/419b90/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/2c6d67/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-highlight-surface`         | For use as a surface color on information elements including badges. `-inverse`, `-light`, and `-dark` variants available.                                        | ![](https://www.gifpng.com/64x64/8de2d7/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/00857a/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-highlight-surface-subdued` | For use as a surface color on information elements including banners. `-inverse`, `-light`, and `-dark` variants available.                                       | ![](https://www.gifpng.com/64x64/f1fefc/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/123631/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-highlightext`              | For use as a text color in inert informational elements. Not for use as a text color on banners and badges. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/071d1a/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/6df8e8/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
 
 ---
 
-## Success (default: `#008060`)
+## success
+
+[↑ Back to top](#table-of-contents)
 
 Used to indicate the result of a successful action taken by a merchant, to indicate a positive event, or to illustrate growth.
 
-### Success Base: `--p-success`
-
-While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
-
-### Success Border: `--p-success-border`
-
-For use as a border on success components such as banners.
-
-### Success Icon: `--p-success-icon`
-
-For use as an icon fill color on top of success elements.
-
-### Success Surface: `--p-success-surface`
-
-For use as a surface color on success elements including badges.
-
-### Success Surface Subdued: `--p-success-surface-subdued`
-
-For use as a surface color on information elements including banners.
-
-### Success Text: `--p-success-text`
-
-For use as a text color in inert success elements. Not for use as a text color on banners and badges.
+| CSS variable                  | Description                                                                                                                                                 | Light mode                                                                                                         | Dark mode                                                                                                          |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `--p-success`                 | While use directly in our components is discouraged, the base variant is unmodified from the original role input color.                                     | ![](https://www.gifpng.com/64x64/008060/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/008060/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-success-border`          | For use as a border on success components such as banners.                                                                                                  | ![](https://www.gifpng.com/64x64/008563/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/008563/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-success-icon`            | For use as an icon fill color on top of success elements. `-inverse`, `-light`, and `-dark` variants available.                                             | ![](https://www.gifpng.com/64x64/004231/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/005c45/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-success-surface`         | For use as a surface color on success elements including badges. `-inverse`, `-light`, and `-dark` variants available.                                      | ![](https://www.gifpng.com/64x64/8ae5c2/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/006b4f/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-success-surface-subdued` | For use as a surface color on information elements including banners. `-inverse`, `-light`, and `-dark` variants available.                                 | ![](https://www.gifpng.com/64x64/f6fefa/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/1c352c/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-success-text`            | For use as a text color in inert success elements. Not for use as a text color on banners and badges. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/006b4f/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/00a37a/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
 
 ---
 
-## Transparency
+## decorative
 
-Used to add depth to our UIs in the cases of backdrops and shadows. Used in navigation, popovers, cards, modals, and sheets.
+[↑ Back to top](#table-of-contents)
 
-**Note**: a white transparent backdrop is needed
+Used to decorate elements where color does convey a specific meaning in components like avatars
 
-### Backdrop
+| CSS variable                   | Description                                                                                                                       | Light mode                                                                                                         | Dark mode                                                                                                          |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `--p-decorative-one-surface`   | For use as a decorative surface color. `-inverse`, `-light`, and `-dark` variants available.                                      | ![](https://www.gifpng.com/64x64/ffc96b/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/906709/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-decorative-one-text`      | For use as a decorative text color that is applied on a decorative surface. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/3d2800/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/ffffff/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-decorative-two-surface`   | For use as a decorative surface color. `-inverse`, `-light`, and `-dark` variants available.                                      | ![](https://www.gifpng.com/64x64/ffc6b3/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/cc5814/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-decorative-two-text`      | For use as a decorative text color that is applied on a decorative surface. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/470b1b/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/ffffff/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-decorative-three-surface` | For use as a decorative surface color. `-inverse`, `-light`, and `-dark` variants available.                                      | ![](https://www.gifpng.com/64x64/91e3b3/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/007a5a/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-decorative-three-text`    | For use as a decorative text color that is applied on a decorative surface. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/002e18/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/ffffff/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-decorative-four-surface`  | For use as a decorative surface color. `-inverse`, `-light`, and `-dark` variants available.                                      | ![](https://www.gifpng.com/64x64/90e0d5/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/167e7a/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-decorative-four-text`     | For use as a decorative text color that is applied on a decorative surface. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/002e2e/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/ffffff/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-decorative-five-surface`  | For use as a decorative surface color. `-inverse`, `-light`, and `-dark` variants available.                                      | ![](https://www.gifpng.com/64x64/fdc9d0/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/c13357/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
+| `--p-decorative-five-text`     | For use as a decorative text color that is applied on a decorative surface. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/4e0e1f/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/ffffff/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
 
-For use as the background color of the backdrop component for navigation and modal.
-
-- Backdrop: `--p-backdrop`
-- Backdrop Light: `--p-backdrop-light`
-
-### Shadow
-
-For use in building shadows for popovers, cards, and modals.
-
-- Shadow From Ambient Light: `--p-shadow-from-ambient-light`
-- Shadow From Direct Light: `--p-shadow-from-direct-light`
+---
