@@ -30,6 +30,8 @@ export interface RoleColors {
   highlight: string;
   /** Used to indicate the result of a successful action taken by a merchant, to indicate a positive event, or to illustrate growth. */
   success: string;
+  /** Used to decorate elements where color does convey a specific meaning in components like avatars */
+  decorative: string;
 }
 
 export type Role = keyof RoleColors;

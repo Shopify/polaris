@@ -55,6 +55,8 @@ const RoleDescription = {
     'Used to highlight elements of the UI that are important for merchants, but do not require immediate action. Used in information banners and badges, indicators that draw attention to new information, bars that indicate loading or progress, and in data visualization.',
   success:
     'Used to indicate the result of a successful action taken by a merchant, to indicate a positive event, or to illustrate growth.',
+  decorative:
+    'Used to decorate elements where color does convey a specific meaning in components like avatars',
 };
 
 const Template = {

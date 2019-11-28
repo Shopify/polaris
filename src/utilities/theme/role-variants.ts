@@ -12,6 +12,7 @@ export enum UNSTABLE_Color {
   Warning = '#FFC453',
   Highlight = '#59D0C2',
   Success = '#008060',
+  Decorative = '#FDC7CE',
 }
 
 export const roleVariants: RoleVariants = {
@@ -576,8 +577,8 @@ export const roleVariants: RoleVariants = {
       name: 'highlightext',
       description:
         'For use as a text color in inert informational elements. Not for use as a text color on banners and badges.',
-      light: {lightness: 98},
-      dark: {lightness: 2},
+      light: {lightness: 10},
+      dark: {lightness: 90},
     },
   ],
   success: [
@@ -620,6 +621,129 @@ export const roleVariants: RoleVariants = {
         'For use as a text color in inert success elements. Not for use as a text color on banners and badges.',
       light: {lightness: 40},
       dark: {lightness: 60},
+    },
+  ],
+  decorative: [
+    {
+      name: 'decorativeOneSurface',
+      description: 'For use as a decorative surface color.',
+      light: {
+        hue: 56,
+        saturation: 100,
+        lightness: 84,
+      },
+      dark: {
+        hue: 54,
+        saturation: 98,
+        lightness: 46,
+      },
+    },
+    {
+      name: 'decorativeOneText',
+      description:
+        'For use as a decorative text color that is applied on a decorative surface.',
+      light: {
+        hue: 52,
+        saturation: 100,
+        lightness: 18,
+      },
+      dark: {lightness: 100},
+    },
+    {
+      name: 'decorativeTwoSurface',
+      description: 'For use as a decorative surface color.',
+      light: {
+        hue: 30,
+        saturation: 100,
+        lightness: 84,
+      },
+      dark: {
+        hue: 24,
+        saturation: 96,
+        lightness: 52,
+      },
+    },
+    {
+      name: 'decorativeTwoText',
+      description:
+        'For use as a decorative text color that is applied on a decorative surface.',
+      light: {
+        hue: 362,
+        saturation: 80,
+        lightness: 14,
+      },
+      dark: {lightness: 100},
+    },
+    {
+      name: 'decorativeThreeSurface',
+      description: 'For use as a decorative surface color.',
+      light: {
+        hue: 144,
+        saturation: 54,
+        lightness: 84,
+      },
+      dark: {
+        hue: 154,
+        saturation: 100,
+        lightness: 46,
+      },
+    },
+    {
+      name: 'decorativeThreeText',
+      description:
+        'For use as a decorative text color that is applied on a decorative surface.',
+      light: {
+        hue: 144,
+        saturation: 100,
+        lightness: 16,
+      },
+      dark: {lightness: 100},
+    },
+    {
+      name: 'decorativeFourSurface',
+      description: 'For use as a decorative surface color.',
+      light: {
+        hue: 180,
+        saturation: 56,
+        lightness: 84,
+      },
+      dark: {
+        hue: 188,
+        saturation: 95,
+        lightness: 47,
+      },
+    },
+    {
+      name: 'decorativeFourText',
+      description:
+        'For use as a decorative text color that is applied on a decorative surface.',
+      light: {
+        hue: 190,
+        saturation: 100,
+        lightness: 16,
+      },
+      dark: {lightness: 100},
+    },
+    {
+      name: 'decorativeFiveSurface',
+      description: 'For use as a decorative surface color.',
+      light: {},
+      dark: {
+        hue: 363,
+        saturation: 77,
+        lightness: 45,
+      },
+    },
+    {
+      name: 'decorativeFiveText',
+      description:
+        'For use as a decorative text color that is applied on a decorative surface.',
+      light: {
+        hue: 363,
+        saturation: 78,
+        lightness: 16,
+      },
+      dark: {lightness: 100},
     },
   ],
 };

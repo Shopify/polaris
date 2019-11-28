@@ -96,6 +96,17 @@
   - [`successSurface`](#successSurface)
   - [`successSurfaceSubdued`](#successSurfaceSubdued)
   - [`successText`](#successText)
+- [`decorative`](#decorative)
+  - [`decorativeOneSurface`](#decorativeOneSurface)
+  - [`decorativeOneText`](#decorativeOneText)
+  - [`decorativeTwoSurface`](#decorativeTwoSurface)
+  - [`decorativeTwoText`](#decorativeTwoText)
+  - [`decorativeThreeSurface`](#decorativeThreeSurface)
+  - [`decorativeThreeText`](#decorativeThreeText)
+  - [`decorativeFourSurface`](#decorativeFourSurface)
+  - [`decorativeFourText`](#decorativeFourText)
+  - [`decorativeFiveSurface`](#decorativeFiveSurface)
+  - [`decorativeFiveText`](#decorativeFiveText)
 
 ## `surface`
 
@@ -1450,8 +1461,8 @@ For use as a text color in inert informational elements. Not for use as a text c
 | `--p-highlightext-light`   | ![][highlightextlight] | ![][highlightextlight] |
 | `--p-highlightext-dark`    | ![][highlightextdark]  | ![][highlightextdark]  |
 
-[highlightextlight]: https://www.gifpng.com/64x32/e7fefa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlightextdark]: https://www.gifpng.com/64x32/010908/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[highlightextlight]: https://www.gifpng.com/64x32/071d1a/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[highlightextdark]: https://www.gifpng.com/64x32/6df8e8/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1558,5 +1569,189 @@ For use as a text color in inert success elements. Not for use as a text color o
 
 [successtextlight]: https://www.gifpng.com/64x32/006b4f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [successtextdark]: https://www.gifpng.com/64x32/00a37a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
+
+## `decorative`
+
+Used to decorate elements where color does convey a specific meaning in components like avatars
+
+### `decorativeOneSurface`
+
+[Back to top](#Table-of-contents)
+
+For use as a decorative surface color.
+
+| CSS variable                         | Light mode                     | Dark mode                      |
+| ------------------------------------ | ------------------------------ | ------------------------------ |
+| `--p-decorative-one-surface`         | ![][decorativeonesurfacelight] | ![][decorativeonesurfacedark]  |
+| `--p-decorative-one-surface-inverse` | ![][decorativeonesurfacedark]  | ![][decorativeonesurfacelight] |
+| `--p-decorative-one-surface-light`   | ![][decorativeonesurfacelight] | ![][decorativeonesurfacelight] |
+| `--p-decorative-one-surface-dark`    | ![][decorativeonesurfacedark]  | ![][decorativeonesurfacedark]  |
+
+[decorativeonesurfacelight]: https://www.gifpng.com/64x32/ffc96b/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[decorativeonesurfacedark]: https://www.gifpng.com/64x32/906709/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
+
+### `decorativeOneText`
+
+[Back to top](#Table-of-contents)
+
+For use as a decorative text color that is applied on a decorative surface.
+
+| CSS variable                      | Light mode                  | Dark mode                   |
+| --------------------------------- | --------------------------- | --------------------------- |
+| `--p-decorative-one-text`         | ![][decorativeonetextlight] | ![][decorativeonetextdark]  |
+| `--p-decorative-one-text-inverse` | ![][decorativeonetextdark]  | ![][decorativeonetextlight] |
+| `--p-decorative-one-text-light`   | ![][decorativeonetextlight] | ![][decorativeonetextlight] |
+| `--p-decorative-one-text-dark`    | ![][decorativeonetextdark]  | ![][decorativeonetextdark]  |
+
+[decorativeonetextlight]: https://www.gifpng.com/64x32/3d2800/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[decorativeonetextdark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
+
+### `decorativeTwoSurface`
+
+[Back to top](#Table-of-contents)
+
+For use as a decorative surface color.
+
+| CSS variable                         | Light mode                     | Dark mode                      |
+| ------------------------------------ | ------------------------------ | ------------------------------ |
+| `--p-decorative-two-surface`         | ![][decorativetwosurfacelight] | ![][decorativetwosurfacedark]  |
+| `--p-decorative-two-surface-inverse` | ![][decorativetwosurfacedark]  | ![][decorativetwosurfacelight] |
+| `--p-decorative-two-surface-light`   | ![][decorativetwosurfacelight] | ![][decorativetwosurfacelight] |
+| `--p-decorative-two-surface-dark`    | ![][decorativetwosurfacedark]  | ![][decorativetwosurfacedark]  |
+
+[decorativetwosurfacelight]: https://www.gifpng.com/64x32/ffc6b3/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[decorativetwosurfacedark]: https://www.gifpng.com/64x32/cc5814/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
+
+### `decorativeTwoText`
+
+[Back to top](#Table-of-contents)
+
+For use as a decorative text color that is applied on a decorative surface.
+
+| CSS variable                      | Light mode                  | Dark mode                   |
+| --------------------------------- | --------------------------- | --------------------------- |
+| `--p-decorative-two-text`         | ![][decorativetwotextlight] | ![][decorativetwotextdark]  |
+| `--p-decorative-two-text-inverse` | ![][decorativetwotextdark]  | ![][decorativetwotextlight] |
+| `--p-decorative-two-text-light`   | ![][decorativetwotextlight] | ![][decorativetwotextlight] |
+| `--p-decorative-two-text-dark`    | ![][decorativetwotextdark]  | ![][decorativetwotextdark]  |
+
+[decorativetwotextlight]: https://www.gifpng.com/64x32/470b1b/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[decorativetwotextdark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
+
+### `decorativeThreeSurface`
+
+[Back to top](#Table-of-contents)
+
+For use as a decorative surface color.
+
+| CSS variable                           | Light mode                       | Dark mode                        |
+| -------------------------------------- | -------------------------------- | -------------------------------- |
+| `--p-decorative-three-surface`         | ![][decorativethreesurfacelight] | ![][decorativethreesurfacedark]  |
+| `--p-decorative-three-surface-inverse` | ![][decorativethreesurfacedark]  | ![][decorativethreesurfacelight] |
+| `--p-decorative-three-surface-light`   | ![][decorativethreesurfacelight] | ![][decorativethreesurfacelight] |
+| `--p-decorative-three-surface-dark`    | ![][decorativethreesurfacedark]  | ![][decorativethreesurfacedark]  |
+
+[decorativethreesurfacelight]: https://www.gifpng.com/64x32/91e3b3/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[decorativethreesurfacedark]: https://www.gifpng.com/64x32/007a5a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
+
+### `decorativeThreeText`
+
+[Back to top](#Table-of-contents)
+
+For use as a decorative text color that is applied on a decorative surface.
+
+| CSS variable                        | Light mode                    | Dark mode                     |
+| ----------------------------------- | ----------------------------- | ----------------------------- |
+| `--p-decorative-three-text`         | ![][decorativethreetextlight] | ![][decorativethreetextdark]  |
+| `--p-decorative-three-text-inverse` | ![][decorativethreetextdark]  | ![][decorativethreetextlight] |
+| `--p-decorative-three-text-light`   | ![][decorativethreetextlight] | ![][decorativethreetextlight] |
+| `--p-decorative-three-text-dark`    | ![][decorativethreetextdark]  | ![][decorativethreetextdark]  |
+
+[decorativethreetextlight]: https://www.gifpng.com/64x32/002e18/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[decorativethreetextdark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
+
+### `decorativeFourSurface`
+
+[Back to top](#Table-of-contents)
+
+For use as a decorative surface color.
+
+| CSS variable                          | Light mode                      | Dark mode                       |
+| ------------------------------------- | ------------------------------- | ------------------------------- |
+| `--p-decorative-four-surface`         | ![][decorativefoursurfacelight] | ![][decorativefoursurfacedark]  |
+| `--p-decorative-four-surface-inverse` | ![][decorativefoursurfacedark]  | ![][decorativefoursurfacelight] |
+| `--p-decorative-four-surface-light`   | ![][decorativefoursurfacelight] | ![][decorativefoursurfacelight] |
+| `--p-decorative-four-surface-dark`    | ![][decorativefoursurfacedark]  | ![][decorativefoursurfacedark]  |
+
+[decorativefoursurfacelight]: https://www.gifpng.com/64x32/90e0d5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[decorativefoursurfacedark]: https://www.gifpng.com/64x32/167e7a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
+
+### `decorativeFourText`
+
+[Back to top](#Table-of-contents)
+
+For use as a decorative text color that is applied on a decorative surface.
+
+| CSS variable                       | Light mode                   | Dark mode                    |
+| ---------------------------------- | ---------------------------- | ---------------------------- |
+| `--p-decorative-four-text`         | ![][decorativefourtextlight] | ![][decorativefourtextdark]  |
+| `--p-decorative-four-text-inverse` | ![][decorativefourtextdark]  | ![][decorativefourtextlight] |
+| `--p-decorative-four-text-light`   | ![][decorativefourtextlight] | ![][decorativefourtextlight] |
+| `--p-decorative-four-text-dark`    | ![][decorativefourtextdark]  | ![][decorativefourtextdark]  |
+
+[decorativefourtextlight]: https://www.gifpng.com/64x32/002e2e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[decorativefourtextdark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
+
+### `decorativeFiveSurface`
+
+[Back to top](#Table-of-contents)
+
+For use as a decorative surface color.
+
+| CSS variable                          | Light mode                      | Dark mode                       |
+| ------------------------------------- | ------------------------------- | ------------------------------- |
+| `--p-decorative-five-surface`         | ![][decorativefivesurfacelight] | ![][decorativefivesurfacedark]  |
+| `--p-decorative-five-surface-inverse` | ![][decorativefivesurfacedark]  | ![][decorativefivesurfacelight] |
+| `--p-decorative-five-surface-light`   | ![][decorativefivesurfacelight] | ![][decorativefivesurfacelight] |
+| `--p-decorative-five-surface-dark`    | ![][decorativefivesurfacedark]  | ![][decorativefivesurfacedark]  |
+
+[decorativefivesurfacelight]: https://www.gifpng.com/64x32/fdc9d0/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[decorativefivesurfacedark]: https://www.gifpng.com/64x32/c13357/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
+
+### `decorativeFiveText`
+
+[Back to top](#Table-of-contents)
+
+For use as a decorative text color that is applied on a decorative surface.
+
+| CSS variable                       | Light mode                   | Dark mode                    |
+| ---------------------------------- | ---------------------------- | ---------------------------- |
+| `--p-decorative-five-text`         | ![][decorativefivetextlight] | ![][decorativefivetextdark]  |
+| `--p-decorative-five-text-inverse` | ![][decorativefivetextdark]  | ![][decorativefivetextlight] |
+| `--p-decorative-five-text-light`   | ![][decorativefivetextlight] | ![][decorativefivetextlight] |
+| `--p-decorative-five-text-dark`    | ![][decorativefivetextdark]  | ![][decorativefivetextdark]  |
+
+[decorativefivetextlight]: https://www.gifpng.com/64x32/4e0e1f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[decorativefivetextdark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
