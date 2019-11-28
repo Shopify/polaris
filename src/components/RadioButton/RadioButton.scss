@@ -2,59 +2,122 @@
 
 .RadioButton {
   position: relative;
+  margin: var(--p-choice-margin, 0);
 }
 
 .Input {
-  margin: 0;
-  padding: 0;
-  opacity: 0;
-
-  &:focus,
-  &:active,
-  &:checked {
-    + .Backdrop {
-      background: color('indigo');
-    }
-  }
-
-  &:checked {
-    ~ .Icon {
-      transform: translate(-50%, -50%) scale(1);
-    }
-  }
-
-  &:focus,
-  &:active {
-    + .Backdrop {
-      @include control-backdrop(focused);
-    }
-  }
-
-  &:disabled {
-    + .Backdrop {
-      @include control-backdrop(disabled);
-    }
-
-    ~ .Icon {
-      background-color: color('sky', 'dark');
-    }
-  }
+  @include visually-hidden;
 }
+// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
+.RadioButton:not(.globalTheming) {
+  .Input {
+    &:focus,
+    &:active,
+    &:checked {
+      + .Backdrop {
+        background: color('indigo');
+      }
+    }
 
-.Backdrop {
-  @include control-backdrop;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-radius: 50%;
+    &:checked {
+      ~ .Icon {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
 
-  &::after {
+    &:focus,
+    &:active {
+      + .Backdrop {
+        @include control-backdrop(focused);
+      }
+    }
+
+    &:disabled {
+      + .Backdrop {
+        @include control-backdrop(disabled);
+      }
+      ~ .Icon {
+        background-color: color('sky', 'dark');
+      }
+    }
+  }
+
+  .Backdrop {
+    @include control-backdrop;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     border-radius: 50%;
+    &::after {
+      border-radius: 50%;
+    }
   }
 }
 
+.RadioButton.globalTheming {
+  .Input {
+    &:focus {
+      + .Backdrop {
+        @include focus-ring(
+          $offset: var(--p-checkbox-radio-button-focus-ring-offset),
+          $style: 'focused'
+        );
+        &::after {
+          border-radius: 50%;
+        }
+      }
+    }
+    &:active:not(:disabled),
+    &:checked {
+      // stylelint-disable-next-line selector-max-specificity
+      + .Backdrop {
+        @include control-backdrop(active, $global-theming: true);
+      }
+      // stylelint-disable-next-line selector-max-specificity, selector-max-class
+      ~ .Icon {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    &:disabled {
+      // stylelint-disable-next-line selector-max-specificity
+      + .Backdrop {
+        @include control-backdrop(disabled, $global-theming: true);
+      }
+    }
+    &:disabled:checked {
+      // stylelint-disable-next-line selector-max-specificity,
+      + .Backdrop {
+        background: var(--p-border-secondary-disabled);
+        // stylelint-disable-next-line selector-max-specificity, selector-max-class, max-nesting-depth, selector-max-combinators
+        &::before {
+          background: var(--p-border-secondary-disabled);
+        }
+      }
+    }
+  }
+
+  .Backdrop {
+    @include control-backdrop($global-theming: true);
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    @include focus-ring(
+      $offset: var(--p-checkbox-radio-button-focus-ring-offset)
+    );
+    &::before {
+      border-radius: 50%;
+    }
+    &::after {
+      border-radius: 50%;
+    }
+  }
+}
+// stylelint-enable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
 .Icon {
   position: absolute;
   top: 50%;
@@ -63,7 +126,7 @@
   transform-origin: 50% 50%;
   height: 50%;
   width: 50%;
-  background: color('indigo');
+  background: var(--p-icon-on-interactive, color('indigo'));
   border-radius: 50%;
   transition: control-icon-transition();
 

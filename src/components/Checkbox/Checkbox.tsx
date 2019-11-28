@@ -1,7 +1,9 @@
 import React, {useRef, useImperativeHandle} from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
-import {useUniqueId} from '../../utilities/unique-id';
 import {classNames} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
+import {useToggle} from '../../utilities/use-toggle';
+import {useUniqueId} from '../../utilities/unique-id';
 import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
@@ -60,8 +62,13 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     ref,
   ) {
     const inputNode = useRef<HTMLInputElement>(null);
-
+    const {unstableGlobalTheming = false} = useFeatures();
     const id = useUniqueId('Checkbox', idProp);
+    const {
+      value: mouseOver,
+      setTrue: forceTrueMouseOver,
+      setFalse: forceFalseMouseOver,
+    } = useToggle(false);
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -100,7 +107,16 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
       ? describedBy.join(' ')
       : undefined;
 
-    const wrapperClassName = classNames(styles.Checkbox, error && styles.error);
+    const wrapperClassName = classNames(
+      styles.Checkbox,
+      error && styles.error,
+      unstableGlobalTheming && styles.globalTheming,
+    );
+
+    const backdropClassName = classNames(
+      styles.Backdrop,
+      mouseOver && styles.hover,
+    );
 
     const isIndeterminate = checked === 'indeterminate';
     const isChecked = !isIndeterminate && Boolean(checked);
@@ -126,6 +142,8 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
         error={error}
         disabled={disabled}
         onClick={handleInput}
+        onMouseOver={forceTrueMouseOver}
+        onMouseOut={forceFalseMouseOver}
       >
         <span className={wrapperClassName}>
           <input
@@ -147,7 +165,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
             role="checkbox"
             {...indeterminateAttributes}
           />
-          <span className={styles.Backdrop} />
+          <span className={backdropClassName} />
           <span className={styles.Icon}>
             <Icon source={iconSource} />
           </span>
