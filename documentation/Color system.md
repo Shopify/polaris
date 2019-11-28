@@ -5,25 +5,25 @@
 ## Table of contents
 
 - [surface](#surface)
-  - [surface](#surface), [surfaceBackground](#surfaceBackground), [surfaceForeground](#surfaceForeground), [surfaceForegroundSubdued](#surfaceForegroundSubdued), [surfaceHovered](#surfaceHovered), [surfacePressed](#surfacePressed), [backdrop](#backdrop), [shadowFromAmbientLight](#shadowFromAmbientLight), [shadowFromDirectLight](#shadowFromDirectLight),
+  - [surface](#surface-), [surfaceBackground](#surfaceBackground-), [surfaceForeground](#surfaceForeground-), [surfaceForegroundSubdued](#surfaceForegroundSubdued-), [surfaceHovered](#surfaceHovered-), [surfacePressed](#surfacePressed-), [backdrop](#backdrop-), [shadowFromAmbientLight](#shadowFromAmbientLight-), [shadowFromDirectLight](#shadowFromDirectLight-)
 - [onSurface](#onSurface)
-  - [onSurface](#onSurface), [borderOnSurface](#borderOnSurface), [borderDisabledOnSurface](#borderDisabledOnSurface), [borderSubduedOnSurface](#borderSubduedOnSurface), [iconOnSurface](#iconOnSurface), [iconDisabledOnSurface](#iconDisabledOnSurface), [iconSubduedOnSurface](#iconSubduedOnSurface), [textOnSurface](#textOnSurface), [textDisabledOnSurface](#textDisabledOnSurface), [textSubduedOnSurface](#textSubduedOnSurface),
+  - [onSurface](#onSurface-), [borderOnSurface](#borderOnSurface-), [borderDisabledOnSurface](#borderDisabledOnSurface-), [borderSubduedOnSurface](#borderSubduedOnSurface-), [iconOnSurface](#iconOnSurface-), [iconDisabledOnSurface](#iconDisabledOnSurface-), [iconSubduedOnSurface](#iconSubduedOnSurface-), [textOnSurface](#textOnSurface-), [textDisabledOnSurface](#textDisabledOnSurface-), [textSubduedOnSurface](#textSubduedOnSurface-)
 - [interactive](#interactive)
-  - [interactive](#interactive), [interactiveAction](#interactiveAction), [interactiveActionDisabled](#interactiveActionDisabled), [interactiveActionHovered](#interactiveActionHovered), [interactiveActionSubdued](#interactiveActionSubdued), [interactiveActionPressed](#interactiveActionPressed), [interactiveFocus](#interactiveFocus), [interactiveSelected](#interactiveSelected), [interactiveSelectedHovered](#interactiveSelectedHovered), [interactiveSelectedPressed](#interactiveSelectedPressed),
+  - [interactive](#interactive-), [interactiveAction](#interactiveAction-), [interactiveActionDisabled](#interactiveActionDisabled-), [interactiveActionHovered](#interactiveActionHovered-), [interactiveActionSubdued](#interactiveActionSubdued-), [interactiveActionPressed](#interactiveActionPressed-), [interactiveFocus](#interactiveFocus-), [interactiveSelected](#interactiveSelected-), [interactiveSelectedHovered](#interactiveSelectedHovered-), [interactiveSelectedPressed](#interactiveSelectedPressed-)
 - [neutral](#neutral)
-  - [neutral](#neutral), [neutralAction](#neutralAction), [neutralActionDisabled](#neutralActionDisabled), [neutralActionHovered](#neutralActionHovered), [neutralActionPressed](#neutralActionPressed),
+  - [neutral](#neutral-), [neutralAction](#neutralAction-), [neutralActionDisabled](#neutralActionDisabled-), [neutralActionHovered](#neutralActionHovered-), [neutralActionPressed](#neutralActionPressed-)
 - [primary](#primary)
-  - [primary](#primary), [primaryAction](#primaryAction), [primaryActionDisabled](#primaryActionDisabled), [primaryActionHovered](#primaryActionHovered), [primaryActionPressed](#primaryActionPressed), [iconOnPrimary](#iconOnPrimary), [iconSubduedOnPrimary](#iconSubduedOnPrimary), [iconDisabledOnPrimary](#iconDisabledOnPrimary), [textOnPrimary](#textOnPrimary), [textSubduedOnPrimary](#textSubduedOnPrimary), [textDisabledOnPrimary](#textDisabledOnPrimary), [primarySelected](#primarySelected), [primarySelectedHovered](#primarySelectedHovered), [primarySelectedPressed](#primarySelectedPressed),
+  - [primary](#primary-), [primaryAction](#primaryAction-), [primaryActionDisabled](#primaryActionDisabled-), [primaryActionHovered](#primaryActionHovered-), [primaryActionPressed](#primaryActionPressed-), [iconOnPrimary](#iconOnPrimary-), [iconSubduedOnPrimary](#iconSubduedOnPrimary-), [iconDisabledOnPrimary](#iconDisabledOnPrimary-), [textOnPrimary](#textOnPrimary-), [textSubduedOnPrimary](#textSubduedOnPrimary-), [textDisabledOnPrimary](#textDisabledOnPrimary-), [primarySelected](#primarySelected-), [primarySelectedHovered](#primarySelectedHovered-), [primarySelectedPressed](#primarySelectedPressed-)
 - [critical](#critical)
-  - [critical](#critical), [criticalBorder](#criticalBorder), [criticalBorderDisabled](#criticalBorderDisabled), [criticalIcon](#criticalIcon), [criticalSurface](#criticalSurface), [criticalSurfaceSubdued](#criticalSurfaceSubdued), [criticalSurfaceSubduedHovered](#criticalSurfaceSubduedHovered), [criticalSurfaceSubduedPressed](#criticalSurfaceSubduedPressed), [criticalText](#criticalText), [criticalAction](#criticalAction), [criticalActionDisabled](#criticalActionDisabled), [criticalActionHovered](#criticalActionHovered), [criticalActionPressed](#criticalActionPressed), [criticalLink](#criticalLink), [criticalLinkDisabled](#criticalLinkDisabled), [criticalLinkHovered](#criticalLinkHovered), [criticalLinkPressed](#criticalLinkPressed),
+  - [critical](#critical-), [criticalBorder](#criticalBorder-), [criticalBorderDisabled](#criticalBorderDisabled-), [criticalIcon](#criticalIcon-), [criticalSurface](#criticalSurface-), [criticalSurfaceSubdued](#criticalSurfaceSubdued-), [criticalSurfaceSubduedHovered](#criticalSurfaceSubduedHovered-), [criticalSurfaceSubduedPressed](#criticalSurfaceSubduedPressed-), [criticalText](#criticalText-), [criticalAction](#criticalAction-), [criticalActionDisabled](#criticalActionDisabled-), [criticalActionHovered](#criticalActionHovered-), [criticalActionPressed](#criticalActionPressed-), [criticalLink](#criticalLink-), [criticalLinkDisabled](#criticalLinkDisabled-), [criticalLinkHovered](#criticalLinkHovered-), [criticalLinkPressed](#criticalLinkPressed-)
 - [warning](#warning)
-  - [warning](#warning), [warningBorder](#warningBorder), [warningIcon](#warningIcon), [warningSurface](#warningSurface), [warningSurfaceSubdued](#warningSurfaceSubdued), [warningText](#warningText),
+  - [warning](#warning-), [warningBorder](#warningBorder-), [warningIcon](#warningIcon-), [warningSurface](#warningSurface-), [warningSurfaceSubdued](#warningSurfaceSubdued-), [warningText](#warningText-)
 - [highlight](#highlight)
-  - [highlight](#highlight), [highlightBorder](#highlightBorder), [highlightIcon](#highlightIcon), [highlightSurface](#highlightSurface), [highlightSurfaceSubdued](#highlightSurfaceSubdued), [highlightext](#highlightext),
+  - [highlight](#highlight-), [highlightBorder](#highlightBorder-), [highlightIcon](#highlightIcon-), [highlightSurface](#highlightSurface-), [highlightSurfaceSubdued](#highlightSurfaceSubdued-), [highlightext](#highlightext-)
 - [success](#success)
-  - [success](#success), [successBorder](#successBorder), [successIcon](#successIcon), [successSurface](#successSurface), [successSurfaceSubdued](#successSurfaceSubdued), [successText](#successText),
+  - [success](#success-), [successBorder](#successBorder-), [successIcon](#successIcon-), [successSurface](#successSurface-), [successSurfaceSubdued](#successSurfaceSubdued-), [successText](#successText-)
 - [decorative](#decorative)
-  - [decorativeOneSurface](#decorativeOneSurface), [decorativeOneText](#decorativeOneText), [decorativeTwoSurface](#decorativeTwoSurface), [decorativeTwoText](#decorativeTwoText), [decorativeThreeSurface](#decorativeThreeSurface), [decorativeThreeText](#decorativeThreeText), [decorativeFourSurface](#decorativeFourSurface), [decorativeFourText](#decorativeFourText), [decorativeFiveSurface](#decorativeFiveSurface), [decorativeFiveText](#decorativeFiveText),
+  - [decorativeOneSurface](#decorativeOneSurface-), [decorativeOneText](#decorativeOneText-), [decorativeTwoSurface](#decorativeTwoSurface-), [decorativeTwoText](#decorativeTwoText-), [decorativeThreeSurface](#decorativeThreeSurface-), [decorativeThreeText](#decorativeThreeText-), [decorativeFourSurface](#decorativeFourSurface-), [decorativeFourText](#decorativeFourText-), [decorativeFiveSurface](#decorativeFiveSurface-), [decorativeFiveText](#decorativeFiveText-)
 
 ## surface
 
@@ -37,9 +37,9 @@ While use directly in our components is discouraged, the base variant is unmodif
 | ------------- | ----------------- | ---------------- |
 | `--p-surface` | ![][surfacelight] | ![][surfacedark] |
 
-- `--p-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-surface-light`: returns the fixed light value regardless of mode
-- `--p-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-surface-light` returns the fixed light value regardless of mode
+- `--p-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-surface-inverse` | ![][surfaceDark]  | ![][surfaceLight] |
   | `--p-surface-light`   | ![][surfaceLight] | ![][surfaceLight] |
@@ -59,9 +59,9 @@ For use in the background of our UIs as a background color, in components such a
 | ------------------------ | --------------------------- | -------------------------- |
 | `--p-surface-background` | ![][surfacebackgroundlight] | ![][surfacebackgrounddark] |
 
-- `--p-surface-background-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-surface-background-light`: returns the fixed light value regardless of mode
-- `--p-surface-background-dark`: returns the fixed dark value regardless of mode
+- `--p-surface-background-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-surface-background-light` returns the fixed light value regardless of mode
+- `--p-surface-background-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-surface-background-inverse` | ![][surfaceBackgroundDark]  | ![][surfaceBackgroundLight] |
   | `--p-surface-background-light`   | ![][surfaceBackgroundLight] | ![][surfaceBackgroundLight] |
@@ -81,9 +81,9 @@ For use in the foreground of our UIs as a background color, in components such a
 | ------------------------ | --------------------------- | -------------------------- |
 | `--p-surface-foreground` | ![][surfaceforegroundlight] | ![][surfaceforegrounddark] |
 
-- `--p-surface-foreground-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-surface-foreground-light`: returns the fixed light value regardless of mode
-- `--p-surface-foreground-dark`: returns the fixed dark value regardless of mode
+- `--p-surface-foreground-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-surface-foreground-light` returns the fixed light value regardless of mode
+- `--p-surface-foreground-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-surface-foreground-inverse` | ![][surfaceForegroundDark]  | ![][surfaceForegroundLight] |
   | `--p-surface-foreground-light`   | ![][surfaceForegroundLight] | ![][surfaceForegroundLight] |
@@ -103,9 +103,9 @@ For use in the foreground of our UIs as a subdued background color, in component
 | -------------------------------- | ---------------------------------- | --------------------------------- |
 | `--p-surface-foreground-subdued` | ![][surfaceforegroundsubduedlight] | ![][surfaceforegroundsubdueddark] |
 
-- `--p-surface-foreground-subdued-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-surface-foreground-subdued-light`: returns the fixed light value regardless of mode
-- `--p-surface-foreground-subdued-dark`: returns the fixed dark value regardless of mode
+- `--p-surface-foreground-subdued-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-surface-foreground-subdued-light` returns the fixed light value regardless of mode
+- `--p-surface-foreground-subdued-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-surface-foreground-subdued-inverse` | ![][surfaceForegroundSubduedDark]  | ![][surfaceForegroundSubduedLight] |
   | `--p-surface-foreground-subdued-light`   | ![][surfaceForegroundSubduedLight] | ![][surfaceForegroundSubduedLight] |
@@ -125,9 +125,9 @@ For use as a surface color on interactive elements such as resource list items a
 | --------------------- | ------------------------ | ----------------------- |
 | `--p-surface-hovered` | ![][surfacehoveredlight] | ![][surfacehovereddark] |
 
-- `--p-surface-hovered-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-surface-hovered-light`: returns the fixed light value regardless of mode
-- `--p-surface-hovered-dark`: returns the fixed dark value regardless of mode
+- `--p-surface-hovered-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-surface-hovered-light` returns the fixed light value regardless of mode
+- `--p-surface-hovered-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-surface-hovered-inverse` | ![][surfaceHoveredDark]  | ![][surfaceHoveredLight] |
   | `--p-surface-hovered-light`   | ![][surfaceHoveredLight] | ![][surfaceHoveredLight] |
@@ -147,9 +147,9 @@ For use as a surface color on interactive elements such as resource list items a
 | --------------------- | ------------------------ | ----------------------- |
 | `--p-surface-pressed` | ![][surfacepressedlight] | ![][surfacepresseddark] |
 
-- `--p-surface-pressed-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-surface-pressed-light`: returns the fixed light value regardless of mode
-- `--p-surface-pressed-dark`: returns the fixed dark value regardless of mode
+- `--p-surface-pressed-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-surface-pressed-light` returns the fixed light value regardless of mode
+- `--p-surface-pressed-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-surface-pressed-inverse` | ![][surfacePressedDark]  | ![][surfacePressedLight] |
   | `--p-surface-pressed-light`   | ![][surfacePressedLight] | ![][surfacePressedLight] |
@@ -225,9 +225,9 @@ For use as a border (border or interactive outline).
 | ----------------------- | ------------------------- | ------------------------ |
 | `--p-border-on-surface` | ![][borderonsurfacelight] | ![][borderonsurfacedark] |
 
-- `--p-border-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-border-on-surface-light`: returns the fixed light value regardless of mode
-- `--p-border-on-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-border-on-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-border-on-surface-light` returns the fixed light value regardless of mode
+- `--p-border-on-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-border-on-surface-inverse` | ![][borderOnSurfaceDark]  | ![][borderOnSurfaceLight] |
   | `--p-border-on-surface-light`   | ![][borderOnSurfaceLight] | ![][borderOnSurfaceLight] |
@@ -247,9 +247,9 @@ For use as a an interactive outline on disabled elements.
 | -------------------------------- | --------------------------------- | -------------------------------- |
 | `--p-border-disabled-on-surface` | ![][borderdisabledonsurfacelight] | ![][borderdisabledonsurfacedark] |
 
-- `--p-border-disabled-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-border-disabled-on-surface-light`: returns the fixed light value regardless of mode
-- `--p-border-disabled-on-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-border-disabled-on-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-border-disabled-on-surface-light` returns the fixed light value regardless of mode
+- `--p-border-disabled-on-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-border-disabled-on-surface-inverse` | ![][borderDisabledOnSurfaceDark]  | ![][borderDisabledOnSurfaceLight] |
   | `--p-border-disabled-on-surface-light`   | ![][borderDisabledOnSurfaceLight] | ![][borderDisabledOnSurfaceLight] |
@@ -269,9 +269,9 @@ For use as a subdued border (border or interactive outline).
 | ------------------------------- | -------------------------------- | ------------------------------- |
 | `--p-border-subdued-on-surface` | ![][bordersubduedonsurfacelight] | ![][bordersubduedonsurfacedark] |
 
-- `--p-border-subdued-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-border-subdued-on-surface-light`: returns the fixed light value regardless of mode
-- `--p-border-subdued-on-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-border-subdued-on-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-border-subdued-on-surface-light` returns the fixed light value regardless of mode
+- `--p-border-subdued-on-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-border-subdued-on-surface-inverse` | ![][borderSubduedOnSurfaceDark]  | ![][borderSubduedOnSurfaceLight] |
   | `--p-border-subdued-on-surface-light`   | ![][borderSubduedOnSurfaceLight] | ![][borderSubduedOnSurfaceLight] |
@@ -291,9 +291,9 @@ For use as the fill color of neutral icons.
 | --------------------- | ----------------------- | ---------------------- |
 | `--p-icon-on-surface` | ![][icononsurfacelight] | ![][icononsurfacedark] |
 
-- `--p-icon-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-icon-on-surface-light`: returns the fixed light value regardless of mode
-- `--p-icon-on-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-icon-on-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-icon-on-surface-light` returns the fixed light value regardless of mode
+- `--p-icon-on-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-icon-on-surface-inverse` | ![][iconOnSurfaceDark]  | ![][iconOnSurfaceLight] |
   | `--p-icon-on-surface-light`   | ![][iconOnSurfaceLight] | ![][iconOnSurfaceLight] |
@@ -313,9 +313,9 @@ For use as the fill color of disabled neutral icons.
 | ------------------------------ | ------------------------------- | ------------------------------ |
 | `--p-icon-disabled-on-surface` | ![][icondisabledonsurfacelight] | ![][icondisabledonsurfacedark] |
 
-- `--p-icon-disabled-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-icon-disabled-on-surface-light`: returns the fixed light value regardless of mode
-- `--p-icon-disabled-on-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-icon-disabled-on-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-icon-disabled-on-surface-light` returns the fixed light value regardless of mode
+- `--p-icon-disabled-on-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-icon-disabled-on-surface-inverse` | ![][iconDisabledOnSurfaceDark]  | ![][iconDisabledOnSurfaceLight] |
   | `--p-icon-disabled-on-surface-light`   | ![][iconDisabledOnSurfaceLight] | ![][iconDisabledOnSurfaceLight] |
@@ -335,9 +335,9 @@ For use as the fill color of subdued neutral icons.
 | ----------------------------- | ------------------------------ | ----------------------------- |
 | `--p-icon-subdued-on-surface` | ![][iconsubduedonsurfacelight] | ![][iconsubduedonsurfacedark] |
 
-- `--p-icon-subdued-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-icon-subdued-on-surface-light`: returns the fixed light value regardless of mode
-- `--p-icon-subdued-on-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-icon-subdued-on-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-icon-subdued-on-surface-light` returns the fixed light value regardless of mode
+- `--p-icon-subdued-on-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-icon-subdued-on-surface-inverse` | ![][iconSubduedOnSurfaceDark]  | ![][iconSubduedOnSurfaceLight] |
   | `--p-icon-subdued-on-surface-light`   | ![][iconSubduedOnSurfaceLight] | ![][iconSubduedOnSurfaceLight] |
@@ -357,9 +357,9 @@ For use as a neutral text color.
 | --------------------- | ----------------------- | ---------------------- |
 | `--p-text-on-surface` | ![][textonsurfacelight] | ![][textonsurfacedark] |
 
-- `--p-text-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-text-on-surface-light`: returns the fixed light value regardless of mode
-- `--p-text-on-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-text-on-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-text-on-surface-light` returns the fixed light value regardless of mode
+- `--p-text-on-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-text-on-surface-inverse` | ![][textOnSurfaceDark]  | ![][textOnSurfaceLight] |
   | `--p-text-on-surface-light`   | ![][textOnSurfaceLight] | ![][textOnSurfaceLight] |
@@ -379,9 +379,9 @@ For use as a disabled neutral text color.
 | ------------------------------ | ------------------------------- | ------------------------------ |
 | `--p-text-disabled-on-surface` | ![][textdisabledonsurfacelight] | ![][textdisabledonsurfacedark] |
 
-- `--p-text-disabled-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-text-disabled-on-surface-light`: returns the fixed light value regardless of mode
-- `--p-text-disabled-on-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-text-disabled-on-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-text-disabled-on-surface-light` returns the fixed light value regardless of mode
+- `--p-text-disabled-on-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-text-disabled-on-surface-inverse` | ![][textDisabledOnSurfaceDark]  | ![][textDisabledOnSurfaceLight] |
   | `--p-text-disabled-on-surface-light`   | ![][textDisabledOnSurfaceLight] | ![][textDisabledOnSurfaceLight] |
@@ -401,9 +401,9 @@ For use as a subdued neutral text color.
 | ----------------------------- | ------------------------------ | ----------------------------- |
 | `--p-text-subdued-on-surface` | ![][textsubduedonsurfacelight] | ![][textsubduedonsurfacedark] |
 
-- `--p-text-subdued-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-text-subdued-on-surface-light`: returns the fixed light value regardless of mode
-- `--p-text-subdued-on-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-text-subdued-on-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-text-subdued-on-surface-light` returns the fixed light value regardless of mode
+- `--p-text-subdued-on-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-text-subdued-on-surface-inverse` | ![][textSubduedOnSurfaceDark]  | ![][textSubduedOnSurfaceLight] |
   | `--p-text-subdued-on-surface-light`   | ![][textSubduedOnSurfaceLight] | ![][textSubduedOnSurfaceLight] |
@@ -440,9 +440,9 @@ Used for links and plain buttons.
 | ------------------------ | --------------------------- | -------------------------- |
 | `--p-interactive-action` | ![][interactiveactionlight] | ![][interactiveactiondark] |
 
-- `--p-interactive-action-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-interactive-action-light`: returns the fixed light value regardless of mode
-- `--p-interactive-action-dark`: returns the fixed dark value regardless of mode
+- `--p-interactive-action-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-interactive-action-light` returns the fixed light value regardless of mode
+- `--p-interactive-action-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-interactive-action-inverse` | ![][interactiveActionDark]  | ![][interactiveActionLight] |
   | `--p-interactive-action-light`   | ![][interactiveActionLight] | ![][interactiveActionLight] |
@@ -462,9 +462,9 @@ Used for disabled links and plain buttons.
 | --------------------------------- | ----------------------------------- | ---------------------------------- |
 | `--p-interactive-action-disabled` | ![][interactiveactiondisabledlight] | ![][interactiveactiondisableddark] |
 
-- `--p-interactive-action-disabled-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-interactive-action-disabled-light`: returns the fixed light value regardless of mode
-- `--p-interactive-action-disabled-dark`: returns the fixed dark value regardless of mode
+- `--p-interactive-action-disabled-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-interactive-action-disabled-light` returns the fixed light value regardless of mode
+- `--p-interactive-action-disabled-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-interactive-action-disabled-inverse` | ![][interactiveActionDisabledDark]  | ![][interactiveActionDisabledLight] |
   | `--p-interactive-action-disabled-light`   | ![][interactiveActionDisabledLight] | ![][interactiveActionDisabledLight] |
@@ -484,9 +484,9 @@ Used for hovered links and plain buttons.
 | -------------------------------- | ---------------------------------- | --------------------------------- |
 | `--p-interactive-action-hovered` | ![][interactiveactionhoveredlight] | ![][interactiveactionhovereddark] |
 
-- `--p-interactive-action-hovered-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-interactive-action-hovered-light`: returns the fixed light value regardless of mode
-- `--p-interactive-action-hovered-dark`: returns the fixed dark value regardless of mode
+- `--p-interactive-action-hovered-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-interactive-action-hovered-light` returns the fixed light value regardless of mode
+- `--p-interactive-action-hovered-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-interactive-action-hovered-inverse` | ![][interactiveActionHoveredDark]  | ![][interactiveActionHoveredLight] |
   | `--p-interactive-action-hovered-light`   | ![][interactiveActionHoveredLight] | ![][interactiveActionHoveredLight] |
@@ -506,9 +506,9 @@ Used for subdued links and plain buttons.
 | -------------------------------- | ---------------------------------- | --------------------------------- |
 | `--p-interactive-action-subdued` | ![][interactiveactionsubduedlight] | ![][interactiveactionsubdueddark] |
 
-- `--p-interactive-action-subdued-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-interactive-action-subdued-light`: returns the fixed light value regardless of mode
-- `--p-interactive-action-subdued-dark`: returns the fixed dark value regardless of mode
+- `--p-interactive-action-subdued-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-interactive-action-subdued-light` returns the fixed light value regardless of mode
+- `--p-interactive-action-subdued-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-interactive-action-subdued-inverse` | ![][interactiveActionSubduedDark]  | ![][interactiveActionSubduedLight] |
   | `--p-interactive-action-subdued-light`   | ![][interactiveActionSubduedLight] | ![][interactiveActionSubduedLight] |
@@ -528,9 +528,9 @@ Used for pressed links and plain buttons.
 | -------------------------------- | ---------------------------------- | --------------------------------- |
 | `--p-interactive-action-pressed` | ![][interactiveactionpressedlight] | ![][interactiveactionpresseddark] |
 
-- `--p-interactive-action-pressed-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-interactive-action-pressed-light`: returns the fixed light value regardless of mode
-- `--p-interactive-action-pressed-dark`: returns the fixed dark value regardless of mode
+- `--p-interactive-action-pressed-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-interactive-action-pressed-light` returns the fixed light value regardless of mode
+- `--p-interactive-action-pressed-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-interactive-action-pressed-inverse` | ![][interactiveActionPressedDark]  | ![][interactiveActionPressedLight] |
   | `--p-interactive-action-pressed-light`   | ![][interactiveActionPressedLight] | ![][interactiveActionPressedLight] |
@@ -550,9 +550,9 @@ For use in the focus ring on interactive elements.
 | ----------------------- | -------------------------- | ------------------------- |
 | `--p-interactive-focus` | ![][interactivefocuslight] | ![][interactivefocusdark] |
 
-- `--p-interactive-focus-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-interactive-focus-light`: returns the fixed light value regardless of mode
-- `--p-interactive-focus-dark`: returns the fixed dark value regardless of mode
+- `--p-interactive-focus-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-interactive-focus-light` returns the fixed light value regardless of mode
+- `--p-interactive-focus-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-interactive-focus-inverse` | ![][interactiveFocusDark]  | ![][interactiveFocusLight] |
   | `--p-interactive-focus-light`   | ![][interactiveFocusLight] | ![][interactiveFocusLight] |
@@ -572,9 +572,9 @@ For use as a surface color in selected interactive elements, in components such 
 | -------------------------- | ----------------------------- | ---------------------------- |
 | `--p-interactive-selected` | ![][interactiveselectedlight] | ![][interactiveselecteddark] |
 
-- `--p-interactive-selected-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-interactive-selected-light`: returns the fixed light value regardless of mode
-- `--p-interactive-selected-dark`: returns the fixed dark value regardless of mode
+- `--p-interactive-selected-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-interactive-selected-light` returns the fixed light value regardless of mode
+- `--p-interactive-selected-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-interactive-selected-inverse` | ![][interactiveSelectedDark]  | ![][interactiveSelectedLight] |
   | `--p-interactive-selected-light`   | ![][interactiveSelectedLight] | ![][interactiveSelectedLight] |
@@ -594,9 +594,9 @@ For use as a surface color in selected interactive elements that are hovered, in
 | ---------------------------------- | ------------------------------------ | ----------------------------------- |
 | `--p-interactive-selected-hovered` | ![][interactiveselectedhoveredlight] | ![][interactiveselectedhovereddark] |
 
-- `--p-interactive-selected-hovered-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-interactive-selected-hovered-light`: returns the fixed light value regardless of mode
-- `--p-interactive-selected-hovered-dark`: returns the fixed dark value regardless of mode
+- `--p-interactive-selected-hovered-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-interactive-selected-hovered-light` returns the fixed light value regardless of mode
+- `--p-interactive-selected-hovered-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-interactive-selected-hovered-inverse` | ![][interactiveSelectedHoveredDark]  | ![][interactiveSelectedHoveredLight] |
   | `--p-interactive-selected-hovered-light`   | ![][interactiveSelectedHoveredLight] | ![][interactiveSelectedHoveredLight] |
@@ -616,9 +616,9 @@ For use as a surface color in selected interactive elements that are pressed, in
 | ---------------------------------- | ------------------------------------ | ----------------------------------- |
 | `--p-interactive-selected-pressed` | ![][interactiveselectedpressedlight] | ![][interactiveselectedpresseddark] |
 
-- `--p-interactive-selected-pressed-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-interactive-selected-pressed-light`: returns the fixed light value regardless of mode
-- `--p-interactive-selected-pressed-dark`: returns the fixed dark value regardless of mode
+- `--p-interactive-selected-pressed-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-interactive-selected-pressed-light` returns the fixed light value regardless of mode
+- `--p-interactive-selected-pressed-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-interactive-selected-pressed-inverse` | ![][interactiveSelectedPressedDark]  | ![][interactiveSelectedPressedLight] |
   | `--p-interactive-selected-pressed-light`   | ![][interactiveSelectedPressedLight] | ![][interactiveSelectedPressedLight] |
@@ -655,9 +655,9 @@ Used for secondary buttons and tertiary buttons, as well as in form elements as 
 | -------------------- | ----------------------- | ---------------------- |
 | `--p-neutral-action` | ![][neutralactionlight] | ![][neutralactiondark] |
 
-- `--p-neutral-action-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-neutral-action-light`: returns the fixed light value regardless of mode
-- `--p-neutral-action-dark`: returns the fixed dark value regardless of mode
+- `--p-neutral-action-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-neutral-action-light` returns the fixed light value regardless of mode
+- `--p-neutral-action-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-neutral-action-inverse` | ![][neutralActionDark]  | ![][neutralActionLight] |
   | `--p-neutral-action-light`   | ![][neutralActionLight] | ![][neutralActionLight] |
@@ -677,9 +677,9 @@ Used as a disabled state for secondary buttons
 | ----------------------------- | ------------------------------- | ------------------------------ |
 | `--p-neutral-action-disabled` | ![][neutralactiondisabledlight] | ![][neutralactiondisableddark] |
 
-- `--p-neutral-action-disabled-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-neutral-action-disabled-light`: returns the fixed light value regardless of mode
-- `--p-neutral-action-disabled-dark`: returns the fixed dark value regardless of mode
+- `--p-neutral-action-disabled-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-neutral-action-disabled-light` returns the fixed light value regardless of mode
+- `--p-neutral-action-disabled-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-neutral-action-disabled-inverse` | ![][neutralActionDisabledDark]  | ![][neutralActionDisabledLight] |
   | `--p-neutral-action-disabled-light`   | ![][neutralActionDisabledLight] | ![][neutralActionDisabledLight] |
@@ -699,9 +699,9 @@ Used as a hovered state for secondary buttons
 | ---------------------------- | ------------------------------ | ----------------------------- |
 | `--p-neutral-action-hovered` | ![][neutralactionhoveredlight] | ![][neutralactionhovereddark] |
 
-- `--p-neutral-action-hovered-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-neutral-action-hovered-light`: returns the fixed light value regardless of mode
-- `--p-neutral-action-hovered-dark`: returns the fixed dark value regardless of mode
+- `--p-neutral-action-hovered-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-neutral-action-hovered-light` returns the fixed light value regardless of mode
+- `--p-neutral-action-hovered-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-neutral-action-hovered-inverse` | ![][neutralActionHoveredDark]  | ![][neutralActionHoveredLight] |
   | `--p-neutral-action-hovered-light`   | ![][neutralActionHoveredLight] | ![][neutralActionHoveredLight] |
@@ -721,9 +721,9 @@ Used as a pressed state for secondary buttons
 | ---------------------------- | ------------------------------ | ----------------------------- |
 | `--p-neutral-action-pressed` | ![][neutralactionpressedlight] | ![][neutralactionpresseddark] |
 
-- `--p-neutral-action-pressed-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-neutral-action-pressed-light`: returns the fixed light value regardless of mode
-- `--p-neutral-action-pressed-dark`: returns the fixed dark value regardless of mode
+- `--p-neutral-action-pressed-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-neutral-action-pressed-light` returns the fixed light value regardless of mode
+- `--p-neutral-action-pressed-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-neutral-action-pressed-inverse` | ![][neutralActionPressedDark]  | ![][neutralActionPressedLight] |
   | `--p-neutral-action-pressed-light`   | ![][neutralActionPressedLight] | ![][neutralActionPressedLight] |
@@ -786,9 +786,9 @@ Used as the background color for hovered primary actions, and as the fill color 
 | ---------------------------- | ------------------------------ | ----------------------------- |
 | `--p-primary-action-hovered` | ![][primaryactionhoveredlight] | ![][primaryactionhovereddark] |
 
-- `--p-primary-action-hovered-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-primary-action-hovered-light`: returns the fixed light value regardless of mode
-- `--p-primary-action-hovered-dark`: returns the fixed dark value regardless of mode
+- `--p-primary-action-hovered-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-primary-action-hovered-light` returns the fixed light value regardless of mode
+- `--p-primary-action-hovered-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-primary-action-hovered-inverse` | ![][primaryActionHoveredDark]  | ![][primaryActionHoveredLight] |
   | `--p-primary-action-hovered-light`   | ![][primaryActionHoveredLight] | ![][primaryActionHoveredLight] |
@@ -808,9 +808,9 @@ Used as the background color for pressed primary actions, and as the fill color 
 | ---------------------------- | ------------------------------ | ----------------------------- |
 | `--p-primary-action-pressed` | ![][primaryactionpressedlight] | ![][primaryactionpresseddark] |
 
-- `--p-primary-action-pressed-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-primary-action-pressed-light`: returns the fixed light value regardless of mode
-- `--p-primary-action-pressed-dark`: returns the fixed dark value regardless of mode
+- `--p-primary-action-pressed-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-primary-action-pressed-light` returns the fixed light value regardless of mode
+- `--p-primary-action-pressed-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-primary-action-pressed-inverse` | ![][primaryActionPressedDark]  | ![][primaryActionPressedLight] |
   | `--p-primary-action-pressed-light`   | ![][primaryActionPressedLight] | ![][primaryActionPressedLight] |
@@ -908,9 +908,9 @@ Used as a surface color to indicate selected interactive states in navigation an
 | ---------------------- | ------------------------- | ------------------------ |
 | `--p-primary-selected` | ![][primaryselectedlight] | ![][primaryselecteddark] |
 
-- `--p-primary-selected-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-primary-selected-light`: returns the fixed light value regardless of mode
-- `--p-primary-selected-dark`: returns the fixed dark value regardless of mode
+- `--p-primary-selected-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-primary-selected-light` returns the fixed light value regardless of mode
+- `--p-primary-selected-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-primary-selected-inverse` | ![][primarySelectedDark]  | ![][primarySelectedLight] |
   | `--p-primary-selected-light`   | ![][primarySelectedLight] | ![][primarySelectedLight] |
@@ -930,9 +930,9 @@ Used as a surface color to indicate selected interactive states that are hovered
 | ------------------------------ | -------------------------------- | ------------------------------- |
 | `--p-primary-selected-hovered` | ![][primaryselectedhoveredlight] | ![][primaryselectedhovereddark] |
 
-- `--p-primary-selected-hovered-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-primary-selected-hovered-light`: returns the fixed light value regardless of mode
-- `--p-primary-selected-hovered-dark`: returns the fixed dark value regardless of mode
+- `--p-primary-selected-hovered-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-primary-selected-hovered-light` returns the fixed light value regardless of mode
+- `--p-primary-selected-hovered-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-primary-selected-hovered-inverse` | ![][primarySelectedHoveredDark]  | ![][primarySelectedHoveredLight] |
   | `--p-primary-selected-hovered-light`   | ![][primarySelectedHoveredLight] | ![][primarySelectedHoveredLight] |
@@ -952,9 +952,9 @@ Used as a surface color to indicate selected interactive states that are pressed
 | ------------------------------ | -------------------------------- | ------------------------------- |
 | `--p-primary-selected-pressed` | ![][primaryselectedpressedlight] | ![][primaryselectedpresseddark] |
 
-- `--p-primary-selected-pressed-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-primary-selected-pressed-light`: returns the fixed light value regardless of mode
-- `--p-primary-selected-pressed-dark`: returns the fixed dark value regardless of mode
+- `--p-primary-selected-pressed-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-primary-selected-pressed-light` returns the fixed light value regardless of mode
+- `--p-primary-selected-pressed-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-primary-selected-pressed-inverse` | ![][primarySelectedPressedDark]  | ![][primarySelectedPressedLight] |
   | `--p-primary-selected-pressed-light`   | ![][primarySelectedPressedLight] | ![][primarySelectedPressedLight] |
@@ -1004,9 +1004,9 @@ For use as a disabled border on critical components such as banners, and as an o
 | ------------------------------ | -------------------------------- | ------------------------------- |
 | `--p-critical-border-disabled` | ![][criticalborderdisabledlight] | ![][criticalborderdisableddark] |
 
-- `--p-critical-border-disabled-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-border-disabled-light`: returns the fixed light value regardless of mode
-- `--p-critical-border-disabled-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-border-disabled-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-border-disabled-light` returns the fixed light value regardless of mode
+- `--p-critical-border-disabled-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-border-disabled-inverse` | ![][criticalBorderDisabledDark]  | ![][criticalBorderDisabledLight] |
   | `--p-critical-border-disabled-light`   | ![][criticalBorderDisabledLight] | ![][criticalBorderDisabledLight] |
@@ -1026,9 +1026,9 @@ For use as an icon fill color on top of critical elements.
 | ------------------- | ---------------------- | --------------------- |
 | `--p-critical-icon` | ![][criticaliconlight] | ![][criticalicondark] |
 
-- `--p-critical-icon-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-icon-light`: returns the fixed light value regardless of mode
-- `--p-critical-icon-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-icon-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-icon-light` returns the fixed light value regardless of mode
+- `--p-critical-icon-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-icon-inverse` | ![][criticalIconDark]  | ![][criticalIconLight] |
   | `--p-critical-icon-light`   | ![][criticalIconLight] | ![][criticalIconLight] |
@@ -1048,9 +1048,9 @@ For use as a surface color on critical elements including badges.
 | ---------------------- | ------------------------- | ------------------------ |
 | `--p-critical-surface` | ![][criticalsurfacelight] | ![][criticalsurfacedark] |
 
-- `--p-critical-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-surface-light`: returns the fixed light value regardless of mode
-- `--p-critical-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-surface-light` returns the fixed light value regardless of mode
+- `--p-critical-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-surface-inverse` | ![][criticalSurfaceDark]  | ![][criticalSurfaceLight] |
   | `--p-critical-surface-light`   | ![][criticalSurfaceLight] | ![][criticalSurfaceLight] |
@@ -1070,9 +1070,9 @@ For use as a subdued surface color on critical elements including banners.
 | ------------------------------ | -------------------------------- | ------------------------------- |
 | `--p-critical-surface-subdued` | ![][criticalsurfacesubduedlight] | ![][criticalsurfacesubdueddark] |
 
-- `--p-critical-surface-subdued-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-surface-subdued-light`: returns the fixed light value regardless of mode
-- `--p-critical-surface-subdued-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-surface-subdued-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-surface-subdued-light` returns the fixed light value regardless of mode
+- `--p-critical-surface-subdued-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-surface-subdued-inverse` | ![][criticalSurfaceSubduedDark]  | ![][criticalSurfaceSubduedLight] |
   | `--p-critical-surface-subdued-light`   | ![][criticalSurfaceSubduedLight] | ![][criticalSurfaceSubduedLight] |
@@ -1092,9 +1092,9 @@ For use as a surface color on critical interactive elements including action lis
 | -------------------------------------- | --------------------------------------- | -------------------------------------- |
 | `--p-critical-surface-subdued-hovered` | ![][criticalsurfacesubduedhoveredlight] | ![][criticalsurfacesubduedhovereddark] |
 
-- `--p-critical-surface-subdued-hovered-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-surface-subdued-hovered-light`: returns the fixed light value regardless of mode
-- `--p-critical-surface-subdued-hovered-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-surface-subdued-hovered-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-surface-subdued-hovered-light` returns the fixed light value regardless of mode
+- `--p-critical-surface-subdued-hovered-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-surface-subdued-hovered-inverse` | ![][criticalSurfaceSubduedHoveredDark]  | ![][criticalSurfaceSubduedHoveredLight] |
   | `--p-critical-surface-subdued-hovered-light`   | ![][criticalSurfaceSubduedHoveredLight] | ![][criticalSurfaceSubduedHoveredLight] |
@@ -1114,9 +1114,9 @@ For use as a surface color on critical interactive elements including action lis
 | -------------------------------------- | --------------------------------------- | -------------------------------------- |
 | `--p-critical-surface-subdued-pressed` | ![][criticalsurfacesubduedpressedlight] | ![][criticalsurfacesubduedpresseddark] |
 
-- `--p-critical-surface-subdued-pressed-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-surface-subdued-pressed-light`: returns the fixed light value regardless of mode
-- `--p-critical-surface-subdued-pressed-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-surface-subdued-pressed-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-surface-subdued-pressed-light` returns the fixed light value regardless of mode
+- `--p-critical-surface-subdued-pressed-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-surface-subdued-pressed-inverse` | ![][criticalSurfaceSubduedPressedDark]  | ![][criticalSurfaceSubduedPressedLight] |
   | `--p-critical-surface-subdued-pressed-light`   | ![][criticalSurfaceSubduedPressedLight] | ![][criticalSurfaceSubduedPressedLight] |
@@ -1136,9 +1136,9 @@ For use as a text color in inert critical elements such as exception list. Not f
 | ------------------- | ---------------------- | --------------------- |
 | `--p-critical-text` | ![][criticaltextlight] | ![][criticaltextdark] |
 
-- `--p-critical-text-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-text-light`: returns the fixed light value regardless of mode
-- `--p-critical-text-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-text-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-text-light` returns the fixed light value regardless of mode
+- `--p-critical-text-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-text-inverse` | ![][criticalTextDark]  | ![][criticalTextLight] |
   | `--p-critical-text-light`   | ![][criticalTextLight] | ![][criticalTextLight] |
@@ -1158,9 +1158,9 @@ For use as the background color for destructive buttons, and as the background c
 | --------------------- | ------------------------ | ----------------------- |
 | `--p-critical-action` | ![][criticalactionlight] | ![][criticalactiondark] |
 
-- `--p-critical-action-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-action-light`: returns the fixed light value regardless of mode
-- `--p-critical-action-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-action-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-action-light` returns the fixed light value regardless of mode
+- `--p-critical-action-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-action-inverse` | ![][criticalActionDark]  | ![][criticalActionLight] |
   | `--p-critical-action-light`   | ![][criticalActionLight] | ![][criticalActionLight] |
@@ -1180,9 +1180,9 @@ For use as the background color for disabled destructive buttons, and as the bac
 | ------------------------------ | -------------------------------- | ------------------------------- |
 | `--p-critical-action-disabled` | ![][criticalactiondisabledlight] | ![][criticalactiondisableddark] |
 
-- `--p-critical-action-disabled-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-action-disabled-light`: returns the fixed light value regardless of mode
-- `--p-critical-action-disabled-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-action-disabled-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-action-disabled-light` returns the fixed light value regardless of mode
+- `--p-critical-action-disabled-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-action-disabled-inverse` | ![][criticalActionDisabledDark]  | ![][criticalActionDisabledLight] |
   | `--p-critical-action-disabled-light`   | ![][criticalActionDisabledLight] | ![][criticalActionDisabledLight] |
@@ -1202,9 +1202,9 @@ For use as the background color for hovered destructive buttons, and as the back
 | ----------------------------- | ------------------------------- | ------------------------------ |
 | `--p-critical-action-hovered` | ![][criticalactionhoveredlight] | ![][criticalactionhovereddark] |
 
-- `--p-critical-action-hovered-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-action-hovered-light`: returns the fixed light value regardless of mode
-- `--p-critical-action-hovered-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-action-hovered-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-action-hovered-light` returns the fixed light value regardless of mode
+- `--p-critical-action-hovered-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-action-hovered-inverse` | ![][criticalActionHoveredDark]  | ![][criticalActionHoveredLight] |
   | `--p-critical-action-hovered-light`   | ![][criticalActionHoveredLight] | ![][criticalActionHoveredLight] |
@@ -1224,9 +1224,9 @@ For use as the background color for pressed destructive buttons, and as the back
 | ----------------------------- | ------------------------------- | ------------------------------ |
 | `--p-critical-action-pressed` | ![][criticalactionpressedlight] | ![][criticalactionpresseddark] |
 
-- `--p-critical-action-pressed-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-action-pressed-light`: returns the fixed light value regardless of mode
-- `--p-critical-action-pressed-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-action-pressed-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-action-pressed-light` returns the fixed light value regardless of mode
+- `--p-critical-action-pressed-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-action-pressed-inverse` | ![][criticalActionPressedDark]  | ![][criticalActionPressedLight] |
   | `--p-critical-action-pressed-light`   | ![][criticalActionPressedLight] | ![][criticalActionPressedLight] |
@@ -1246,9 +1246,9 @@ For use as a text color in destructive plain buttons, as well as a text color on
 | ------------------- | ---------------------- | --------------------- |
 | `--p-critical-link` | ![][criticallinklight] | ![][criticallinkdark] |
 
-- `--p-critical-link-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-link-light`: returns the fixed light value regardless of mode
-- `--p-critical-link-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-link-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-link-light` returns the fixed light value regardless of mode
+- `--p-critical-link-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-link-inverse` | ![][criticalLinkDark]  | ![][criticalLinkLight] |
   | `--p-critical-link-light`   | ![][criticalLinkLight] | ![][criticalLinkLight] |
@@ -1268,9 +1268,9 @@ For use as a text color in disabled destructive plain buttons, as well as a text
 | ---------------------------- | ------------------------------ | ----------------------------- |
 | `--p-critical-link-disabled` | ![][criticallinkdisabledlight] | ![][criticallinkdisableddark] |
 
-- `--p-critical-link-disabled-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-link-disabled-light`: returns the fixed light value regardless of mode
-- `--p-critical-link-disabled-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-link-disabled-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-link-disabled-light` returns the fixed light value regardless of mode
+- `--p-critical-link-disabled-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-link-disabled-inverse` | ![][criticalLinkDisabledDark]  | ![][criticalLinkDisabledLight] |
   | `--p-critical-link-disabled-light`   | ![][criticalLinkDisabledLight] | ![][criticalLinkDisabledLight] |
@@ -1290,9 +1290,9 @@ For use as a text color in hovered destructive plain buttons, as well as a text 
 | --------------------------- | ----------------------------- | ---------------------------- |
 | `--p-critical-link-hovered` | ![][criticallinkhoveredlight] | ![][criticallinkhovereddark] |
 
-- `--p-critical-link-hovered-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-link-hovered-light`: returns the fixed light value regardless of mode
-- `--p-critical-link-hovered-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-link-hovered-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-link-hovered-light` returns the fixed light value regardless of mode
+- `--p-critical-link-hovered-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-link-hovered-inverse` | ![][criticalLinkHoveredDark]  | ![][criticalLinkHoveredLight] |
   | `--p-critical-link-hovered-light`   | ![][criticalLinkHoveredLight] | ![][criticalLinkHoveredLight] |
@@ -1312,9 +1312,9 @@ For use as a text color in pressed destructive plain buttons, as well as a text 
 | --------------------------- | ----------------------------- | ---------------------------- |
 | `--p-critical-link-pressed` | ![][criticallinkpressedlight] | ![][criticallinkpresseddark] |
 
-- `--p-critical-link-pressed-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-critical-link-pressed-light`: returns the fixed light value regardless of mode
-- `--p-critical-link-pressed-dark`: returns the fixed dark value regardless of mode
+- `--p-critical-link-pressed-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-critical-link-pressed-light` returns the fixed light value regardless of mode
+- `--p-critical-link-pressed-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-critical-link-pressed-inverse` | ![][criticalLinkPressedDark]  | ![][criticalLinkPressedLight] |
   | `--p-critical-link-pressed-light`   | ![][criticalLinkPressedLight] | ![][criticalLinkPressedLight] |
@@ -1351,9 +1351,9 @@ For use as a border on warning components such as banners.
 | -------------------- | ----------------------- | ---------------------- |
 | `--p-warning-border` | ![][warningborderlight] | ![][warningborderdark] |
 
-- `--p-warning-border-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-warning-border-light`: returns the fixed light value regardless of mode
-- `--p-warning-border-dark`: returns the fixed dark value regardless of mode
+- `--p-warning-border-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-warning-border-light` returns the fixed light value regardless of mode
+- `--p-warning-border-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-warning-border-inverse` | ![][warningBorderDark]  | ![][warningBorderLight] |
   | `--p-warning-border-light`   | ![][warningBorderLight] | ![][warningBorderLight] |
@@ -1373,9 +1373,9 @@ For use as an icon fill color on top of warning elements.
 | ------------------ | --------------------- | -------------------- |
 | `--p-warning-icon` | ![][warningiconlight] | ![][warningicondark] |
 
-- `--p-warning-icon-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-warning-icon-light`: returns the fixed light value regardless of mode
-- `--p-warning-icon-dark`: returns the fixed dark value regardless of mode
+- `--p-warning-icon-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-warning-icon-light` returns the fixed light value regardless of mode
+- `--p-warning-icon-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-warning-icon-inverse` | ![][warningIconDark]  | ![][warningIconLight] |
   | `--p-warning-icon-light`   | ![][warningIconLight] | ![][warningIconLight] |
@@ -1395,9 +1395,9 @@ For use as a surface color on warning elements including badges.
 | --------------------- | ------------------------ | ----------------------- |
 | `--p-warning-surface` | ![][warningsurfacelight] | ![][warningsurfacedark] |
 
-- `--p-warning-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-warning-surface-light`: returns the fixed light value regardless of mode
-- `--p-warning-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-warning-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-warning-surface-light` returns the fixed light value regardless of mode
+- `--p-warning-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-warning-surface-inverse` | ![][warningSurfaceDark]  | ![][warningSurfaceLight] |
   | `--p-warning-surface-light`   | ![][warningSurfaceLight] | ![][warningSurfaceLight] |
@@ -1417,9 +1417,9 @@ For use as a subdued surface color on warning elements including banners.
 | ----------------------------- | ------------------------------- | ------------------------------ |
 | `--p-warning-surface-subdued` | ![][warningsurfacesubduedlight] | ![][warningsurfacesubdueddark] |
 
-- `--p-warning-surface-subdued-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-warning-surface-subdued-light`: returns the fixed light value regardless of mode
-- `--p-warning-surface-subdued-dark`: returns the fixed dark value regardless of mode
+- `--p-warning-surface-subdued-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-warning-surface-subdued-light` returns the fixed light value regardless of mode
+- `--p-warning-surface-subdued-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-warning-surface-subdued-inverse` | ![][warningSurfaceSubduedDark]  | ![][warningSurfaceSubduedLight] |
   | `--p-warning-surface-subdued-light`   | ![][warningSurfaceSubduedLight] | ![][warningSurfaceSubduedLight] |
@@ -1439,9 +1439,9 @@ For use as a text color in inert critical elements such as exception list. Not f
 | ------------------ | --------------------- | -------------------- |
 | `--p-warning-text` | ![][warningtextlight] | ![][warningtextdark] |
 
-- `--p-warning-text-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-warning-text-light`: returns the fixed light value regardless of mode
-- `--p-warning-text-dark`: returns the fixed dark value regardless of mode
+- `--p-warning-text-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-warning-text-light` returns the fixed light value regardless of mode
+- `--p-warning-text-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-warning-text-inverse` | ![][warningTextDark]  | ![][warningTextLight] |
   | `--p-warning-text-light`   | ![][warningTextLight] | ![][warningTextLight] |
@@ -1491,9 +1491,9 @@ For use as an icon fill color on top of informational elements.
 | -------------------- | ----------------------- | ---------------------- |
 | `--p-highlight-icon` | ![][highlighticonlight] | ![][highlighticondark] |
 
-- `--p-highlight-icon-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-highlight-icon-light`: returns the fixed light value regardless of mode
-- `--p-highlight-icon-dark`: returns the fixed dark value regardless of mode
+- `--p-highlight-icon-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-highlight-icon-light` returns the fixed light value regardless of mode
+- `--p-highlight-icon-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-highlight-icon-inverse` | ![][highlightIconDark]  | ![][highlightIconLight] |
   | `--p-highlight-icon-light`   | ![][highlightIconLight] | ![][highlightIconLight] |
@@ -1513,9 +1513,9 @@ For use as a surface color on information elements including badges.
 | ----------------------- | -------------------------- | ------------------------- |
 | `--p-highlight-surface` | ![][highlightsurfacelight] | ![][highlightsurfacedark] |
 
-- `--p-highlight-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-highlight-surface-light`: returns the fixed light value regardless of mode
-- `--p-highlight-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-highlight-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-highlight-surface-light` returns the fixed light value regardless of mode
+- `--p-highlight-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-highlight-surface-inverse` | ![][highlightSurfaceDark]  | ![][highlightSurfaceLight] |
   | `--p-highlight-surface-light`   | ![][highlightSurfaceLight] | ![][highlightSurfaceLight] |
@@ -1535,9 +1535,9 @@ For use as a surface color on information elements including banners.
 | ------------------------------- | --------------------------------- | -------------------------------- |
 | `--p-highlight-surface-subdued` | ![][highlightsurfacesubduedlight] | ![][highlightsurfacesubdueddark] |
 
-- `--p-highlight-surface-subdued-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-highlight-surface-subdued-light`: returns the fixed light value regardless of mode
-- `--p-highlight-surface-subdued-dark`: returns the fixed dark value regardless of mode
+- `--p-highlight-surface-subdued-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-highlight-surface-subdued-light` returns the fixed light value regardless of mode
+- `--p-highlight-surface-subdued-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-highlight-surface-subdued-inverse` | ![][highlightSurfaceSubduedDark]  | ![][highlightSurfaceSubduedLight] |
   | `--p-highlight-surface-subdued-light`   | ![][highlightSurfaceSubduedLight] | ![][highlightSurfaceSubduedLight] |
@@ -1557,9 +1557,9 @@ For use as a text color in inert informational elements. Not for use as a text c
 | ------------------ | ---------------------- | --------------------- |
 | `--p-highlightext` | ![][highlightextlight] | ![][highlightextdark] |
 
-- `--p-highlightext-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-highlightext-light`: returns the fixed light value regardless of mode
-- `--p-highlightext-dark`: returns the fixed dark value regardless of mode
+- `--p-highlightext-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-highlightext-light` returns the fixed light value regardless of mode
+- `--p-highlightext-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-highlightext-inverse` | ![][highlightextDark]  | ![][highlightextLight] |
   | `--p-highlightext-light`   | ![][highlightextLight] | ![][highlightextLight] |
@@ -1609,9 +1609,9 @@ For use as an icon fill color on top of success elements.
 | ------------------ | --------------------- | -------------------- |
 | `--p-success-icon` | ![][successiconlight] | ![][successicondark] |
 
-- `--p-success-icon-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-success-icon-light`: returns the fixed light value regardless of mode
-- `--p-success-icon-dark`: returns the fixed dark value regardless of mode
+- `--p-success-icon-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-success-icon-light` returns the fixed light value regardless of mode
+- `--p-success-icon-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-success-icon-inverse` | ![][successIconDark]  | ![][successIconLight] |
   | `--p-success-icon-light`   | ![][successIconLight] | ![][successIconLight] |
@@ -1631,9 +1631,9 @@ For use as a surface color on success elements including badges.
 | --------------------- | ------------------------ | ----------------------- |
 | `--p-success-surface` | ![][successsurfacelight] | ![][successsurfacedark] |
 
-- `--p-success-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-success-surface-light`: returns the fixed light value regardless of mode
-- `--p-success-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-success-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-success-surface-light` returns the fixed light value regardless of mode
+- `--p-success-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-success-surface-inverse` | ![][successSurfaceDark]  | ![][successSurfaceLight] |
   | `--p-success-surface-light`   | ![][successSurfaceLight] | ![][successSurfaceLight] |
@@ -1653,9 +1653,9 @@ For use as a surface color on information elements including banners.
 | ----------------------------- | ------------------------------- | ------------------------------ |
 | `--p-success-surface-subdued` | ![][successsurfacesubduedlight] | ![][successsurfacesubdueddark] |
 
-- `--p-success-surface-subdued-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-success-surface-subdued-light`: returns the fixed light value regardless of mode
-- `--p-success-surface-subdued-dark`: returns the fixed dark value regardless of mode
+- `--p-success-surface-subdued-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-success-surface-subdued-light` returns the fixed light value regardless of mode
+- `--p-success-surface-subdued-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-success-surface-subdued-inverse` | ![][successSurfaceSubduedDark]  | ![][successSurfaceSubduedLight] |
   | `--p-success-surface-subdued-light`   | ![][successSurfaceSubduedLight] | ![][successSurfaceSubduedLight] |
@@ -1675,9 +1675,9 @@ For use as a text color in inert success elements. Not for use as a text color o
 | ------------------ | --------------------- | -------------------- |
 | `--p-success-text` | ![][successtextlight] | ![][successtextdark] |
 
-- `--p-success-text-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-success-text-light`: returns the fixed light value regardless of mode
-- `--p-success-text-dark`: returns the fixed dark value regardless of mode
+- `--p-success-text-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-success-text-light` returns the fixed light value regardless of mode
+- `--p-success-text-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-success-text-inverse` | ![][successTextDark]  | ![][successTextLight] |
   | `--p-success-text-light`   | ![][successTextLight] | ![][successTextLight] |
@@ -1701,9 +1701,9 @@ For use as a decorative surface color.
 | ---------------------------- | ------------------------------ | ----------------------------- |
 | `--p-decorative-one-surface` | ![][decorativeonesurfacelight] | ![][decorativeonesurfacedark] |
 
-- `--p-decorative-one-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-decorative-one-surface-light`: returns the fixed light value regardless of mode
-- `--p-decorative-one-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-decorative-one-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-decorative-one-surface-light` returns the fixed light value regardless of mode
+- `--p-decorative-one-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-decorative-one-surface-inverse` | ![][decorativeOneSurfaceDark]  | ![][decorativeOneSurfaceLight] |
   | `--p-decorative-one-surface-light`   | ![][decorativeOneSurfaceLight] | ![][decorativeOneSurfaceLight] |
@@ -1723,9 +1723,9 @@ For use as a decorative text color that is applied on a decorative surface.
 | ------------------------- | --------------------------- | -------------------------- |
 | `--p-decorative-one-text` | ![][decorativeonetextlight] | ![][decorativeonetextdark] |
 
-- `--p-decorative-one-text-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-decorative-one-text-light`: returns the fixed light value regardless of mode
-- `--p-decorative-one-text-dark`: returns the fixed dark value regardless of mode
+- `--p-decorative-one-text-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-decorative-one-text-light` returns the fixed light value regardless of mode
+- `--p-decorative-one-text-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-decorative-one-text-inverse` | ![][decorativeOneTextDark]  | ![][decorativeOneTextLight] |
   | `--p-decorative-one-text-light`   | ![][decorativeOneTextLight] | ![][decorativeOneTextLight] |
@@ -1745,9 +1745,9 @@ For use as a decorative surface color.
 | ---------------------------- | ------------------------------ | ----------------------------- |
 | `--p-decorative-two-surface` | ![][decorativetwosurfacelight] | ![][decorativetwosurfacedark] |
 
-- `--p-decorative-two-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-decorative-two-surface-light`: returns the fixed light value regardless of mode
-- `--p-decorative-two-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-decorative-two-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-decorative-two-surface-light` returns the fixed light value regardless of mode
+- `--p-decorative-two-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-decorative-two-surface-inverse` | ![][decorativeTwoSurfaceDark]  | ![][decorativeTwoSurfaceLight] |
   | `--p-decorative-two-surface-light`   | ![][decorativeTwoSurfaceLight] | ![][decorativeTwoSurfaceLight] |
@@ -1767,9 +1767,9 @@ For use as a decorative text color that is applied on a decorative surface.
 | ------------------------- | --------------------------- | -------------------------- |
 | `--p-decorative-two-text` | ![][decorativetwotextlight] | ![][decorativetwotextdark] |
 
-- `--p-decorative-two-text-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-decorative-two-text-light`: returns the fixed light value regardless of mode
-- `--p-decorative-two-text-dark`: returns the fixed dark value regardless of mode
+- `--p-decorative-two-text-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-decorative-two-text-light` returns the fixed light value regardless of mode
+- `--p-decorative-two-text-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-decorative-two-text-inverse` | ![][decorativeTwoTextDark]  | ![][decorativeTwoTextLight] |
   | `--p-decorative-two-text-light`   | ![][decorativeTwoTextLight] | ![][decorativeTwoTextLight] |
@@ -1789,9 +1789,9 @@ For use as a decorative surface color.
 | ------------------------------ | -------------------------------- | ------------------------------- |
 | `--p-decorative-three-surface` | ![][decorativethreesurfacelight] | ![][decorativethreesurfacedark] |
 
-- `--p-decorative-three-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-decorative-three-surface-light`: returns the fixed light value regardless of mode
-- `--p-decorative-three-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-decorative-three-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-decorative-three-surface-light` returns the fixed light value regardless of mode
+- `--p-decorative-three-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-decorative-three-surface-inverse` | ![][decorativeThreeSurfaceDark]  | ![][decorativeThreeSurfaceLight] |
   | `--p-decorative-three-surface-light`   | ![][decorativeThreeSurfaceLight] | ![][decorativeThreeSurfaceLight] |
@@ -1811,9 +1811,9 @@ For use as a decorative text color that is applied on a decorative surface.
 | --------------------------- | ----------------------------- | ---------------------------- |
 | `--p-decorative-three-text` | ![][decorativethreetextlight] | ![][decorativethreetextdark] |
 
-- `--p-decorative-three-text-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-decorative-three-text-light`: returns the fixed light value regardless of mode
-- `--p-decorative-three-text-dark`: returns the fixed dark value regardless of mode
+- `--p-decorative-three-text-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-decorative-three-text-light` returns the fixed light value regardless of mode
+- `--p-decorative-three-text-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-decorative-three-text-inverse` | ![][decorativeThreeTextDark]  | ![][decorativeThreeTextLight] |
   | `--p-decorative-three-text-light`   | ![][decorativeThreeTextLight] | ![][decorativeThreeTextLight] |
@@ -1833,9 +1833,9 @@ For use as a decorative surface color.
 | ----------------------------- | ------------------------------- | ------------------------------ |
 | `--p-decorative-four-surface` | ![][decorativefoursurfacelight] | ![][decorativefoursurfacedark] |
 
-- `--p-decorative-four-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-decorative-four-surface-light`: returns the fixed light value regardless of mode
-- `--p-decorative-four-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-decorative-four-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-decorative-four-surface-light` returns the fixed light value regardless of mode
+- `--p-decorative-four-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-decorative-four-surface-inverse` | ![][decorativeFourSurfaceDark]  | ![][decorativeFourSurfaceLight] |
   | `--p-decorative-four-surface-light`   | ![][decorativeFourSurfaceLight] | ![][decorativeFourSurfaceLight] |
@@ -1855,9 +1855,9 @@ For use as a decorative text color that is applied on a decorative surface.
 | -------------------------- | ---------------------------- | --------------------------- |
 | `--p-decorative-four-text` | ![][decorativefourtextlight] | ![][decorativefourtextdark] |
 
-- `--p-decorative-four-text-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-decorative-four-text-light`: returns the fixed light value regardless of mode
-- `--p-decorative-four-text-dark`: returns the fixed dark value regardless of mode
+- `--p-decorative-four-text-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-decorative-four-text-light` returns the fixed light value regardless of mode
+- `--p-decorative-four-text-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-decorative-four-text-inverse` | ![][decorativeFourTextDark]  | ![][decorativeFourTextLight] |
   | `--p-decorative-four-text-light`   | ![][decorativeFourTextLight] | ![][decorativeFourTextLight] |
@@ -1877,9 +1877,9 @@ For use as a decorative surface color.
 | ----------------------------- | ------------------------------- | ------------------------------ |
 | `--p-decorative-five-surface` | ![][decorativefivesurfacelight] | ![][decorativefivesurfacedark] |
 
-- `--p-decorative-five-surface-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-decorative-five-surface-light`: returns the fixed light value regardless of mode
-- `--p-decorative-five-surface-dark`: returns the fixed dark value regardless of mode
+- `--p-decorative-five-surface-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-decorative-five-surface-light` returns the fixed light value regardless of mode
+- `--p-decorative-five-surface-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-decorative-five-surface-inverse` | ![][decorativeFiveSurfaceDark]  | ![][decorativeFiveSurfaceLight] |
   | `--p-decorative-five-surface-light`   | ![][decorativeFiveSurfaceLight] | ![][decorativeFiveSurfaceLight] |
@@ -1899,9 +1899,9 @@ For use as a decorative text color that is applied on a decorative surface.
 | -------------------------- | ---------------------------- | --------------------------- |
 | `--p-decorative-five-text` | ![][decorativefivetextlight] | ![][decorativefivetextdark] |
 
-- `--p-decorative-five-text-inverse`: returns the dark mode color while in light mode and vice versa
-- `--p-decorative-five-text-light`: returns the fixed light value regardless of mode
-- `--p-decorative-five-text-dark`: returns the fixed dark value regardless of mode
+- `--p-decorative-five-text-inverse` returns the dark mode color while in light mode and vice versa
+- `--p-decorative-five-text-light` returns the fixed light value regardless of mode
+- `--p-decorative-five-text-dark` returns the fixed dark value regardless of mode
   <!--
   | `--p-decorative-five-text-inverse` | ![][decorativeFiveTextDark]  | ![][decorativeFiveTextLight] |
   | `--p-decorative-five-text-light`   | ![][decorativeFiveTextLight] | ![][decorativeFiveTextLight] |

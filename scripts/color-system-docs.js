@@ -47,7 +47,7 @@ const darkColors = colorFactory(
 
 const Template = {
   parent: (name) => `- [${name}](#${name})\n`,
-  child: (name) => `[${name}](#${name}), `,
+  child: (name) => `[${name}](#${name}-), `,
   role: (name, description) => `## ${name}\n\n${description}\n\n`,
   variant: (name, description, light, dark) => {
     const {Width, Height, Padding} = ColorSwatch;
@@ -56,9 +56,9 @@ const Template = {
     const additionalVariants = () => `\n
 - \`${cssify(
       name,
-    )}-inverse\`: returns the dark mode color while in light mode and vice versa
-- \`${cssify(name)}-light\`: returns the fixed light value regardless of mode
-- \`${cssify(name)}-dark\`: returns the fixed dark value regardless of mode
+    )}-inverse\` returns the dark mode color while in light mode and vice versa
+- \`${cssify(name)}-light\` returns the fixed light value regardless of mode
+- \`${cssify(name)}-dark\` returns the fixed dark value regardless of mode
 <!--
 | \`${cssify(name)}-inverse\` | ![][${name}Dark]  | ![][${name}Light] |
 | \`${cssify(name)}-light\`   | ![][${name}Light] | ![][${name}Light] |
@@ -91,7 +91,7 @@ const tocContents = Object.entries(roleVariants).reduce(
       return acc2 + Template.child(variant.name);
     }, '');
 
-    return `${acc1 + Template.parent(role)}  - ${children}\n`;
+    return `${acc1 + Template.parent(role)}  - ${children.slice(0, -2)}\n`;
   },
   '',
 );
