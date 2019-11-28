@@ -99,7 +99,7 @@
 
 ## `surface`
 
-GET DESC FROM TYPE
+The surface role is used for the backgrounds of the UI. In light mode, surface colors are nearly white, while in dark mode, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts.
 
 ### `surface`
 
@@ -256,7 +256,7 @@ For use in building shadows for popovers, cards, and modals.
 
 ## `onSurface`
 
-GET DESC FROM TYPE
+The onSurface role is made up of elements which appear on top of a surface, including borders, neutral icons, and text. When a light surface is provided, onSurface values will be dark. When a dark surface is provided, onSurface values will be light.
 
 ### `onSurface`
 
@@ -437,7 +437,7 @@ For use as a subdued neutral text color.
 
 ## `interactive`
 
-GET DESC FROM TYPE
+The interactive role is used to express interactivity in components. It is used in links, as an indicator of focus, and as an indicator of selected interactive states.
 
 ### `interactive`
 
@@ -618,7 +618,7 @@ For use as a surface color in selected interactive elements that are pressed, in
 
 ## `neutral`
 
-GET DESC FROM TYPE
+A neutral interactive color role, for use in secondary and tertiary buttons as a background color, as well as in form elements as a background color.
 
 ### `neutral`
 
@@ -709,7 +709,7 @@ Used as a pressed state for secondary buttons
 
 ## `primary`
 
-GET DESC FROM TYPE
+A primary interactive color, for use in primary buttons as a background color. Also used in navigation and tabs for icons, and for a surface color when in a selected state.
 
 ### `primary`
 
@@ -938,7 +938,7 @@ Used as a surface color to indicate selected interactive states that are pressed
 
 ## `critical`
 
-GET DESC FROM TYPE
+Used to communicate destructive outcomes on interactive elements, for communicating errors, and to indicate a critical event in inert elements that requires immediate merchant action.
 
 ### `critical`
 
@@ -1242,7 +1242,7 @@ For use as a text color in pressed destructive plain buttons, as well as a text 
 
 ## `warning`
 
-GET DESC FROM TYPE
+For use as an indicator that action should be taken by merchants in components including badges, banners, and exception lists.
 
 ### `warning`
 
@@ -1351,7 +1351,7 @@ For use as a text color in inert critical elements such as exception list. Not f
 
 ## `highlight`
 
-GET DESC FROM TYPE
+Used to highlight elements of the UI that are important for merchants, but do not require immediate action. Used in information banners and badges, indicators that draw attention to new information, bars that indicate loading or progress, and in data visualization.
 
 ### `highlight`
 
@@ -1457,7 +1457,7 @@ For use as a text color in inert informational elements. Not for use as a text c
 
 ## `success`
 
-GET DESC FROM TYPE
+Used to indicate the result of a successful action taken by a merchant, to indicate a positive event, or to illustrate growth.
 
 ### `success`
 

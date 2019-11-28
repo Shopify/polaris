@@ -36,6 +36,27 @@ function toHex(color) {
   return rgbToHex(hslToRgb(stringToHsla(color))).substr(1);
 }
 
+const RoleDescription = {
+  surface:
+    'The surface role is used for the backgrounds of the UI. In light mode, surface colors are nearly white, while in dark mode, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts.',
+  onSurface:
+    'The onSurface role is made up of elements which appear on top of a surface, including borders, neutral icons, and text. When a light surface is provided, onSurface values will be dark. When a dark surface is provided, onSurface values will be light.',
+  interactive:
+    'The interactive role is used to express interactivity in components. It is used in links, as an indicator of focus, and as an indicator of selected interactive states.',
+  neutral:
+    'A neutral interactive color role, for use in secondary and tertiary buttons as a background color, as well as in form elements as a background color.',
+  primary:
+    'A primary interactive color, for use in primary buttons as a background color. Also used in navigation and tabs for icons, and for a surface color when in a selected state.',
+  critical:
+    'Used to communicate destructive outcomes on interactive elements, for communicating errors, and to indicate a critical event in inert elements that requires immediate merchant action.',
+  warning:
+    'For use as an indicator that action should be taken by merchants in components including badges, banners, and exception lists.',
+  highlight:
+    'Used to highlight elements of the UI that are important for merchants, but do not require immediate action. Used in information banners and badges, indicators that draw attention to new information, bars that indicate loading or progress, and in data visualization.',
+  success:
+    'Used to indicate the result of a successful action taken by a merchant, to indicate a positive event, or to illustrate growth.',
+};
+
 const Template = {
   parent: (name) => `- [\`${name}\`](#${name})\n`,
   child: (name) => `  - [\`${name}\`](#${name})\n`,
@@ -87,7 +108,7 @@ ${Object.entries(roleVariants).reduce((acc1, [role, variants]) => {
     );
   }, '');
 
-  return acc1 + Template.role(role, 'GET DESC FROM TYPE') + children;
+  return acc1 + Template.role(role, RoleDescription[role]) + children;
 }, '')}`;
 
 writeFileSync(resolvePath('documentation/Color system.md'), contents, function(
