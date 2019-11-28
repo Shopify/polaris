@@ -47,7 +47,7 @@ const Template = {
 | \`${cssify(name)}-light\`   | ![][${name}Light] | ![][${name}Light] |
 | \`${cssify(name)}-dark\`    | ![][${name}Dark]  | ![][${name}Dark]  |`;
 
-    return `### \`${name}\`\n\n${description}
+    return `### \`${name}\`\n\n[Back to top](#Table-of-contents)\n\n${description}
 
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|

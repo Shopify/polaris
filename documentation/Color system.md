@@ -104,6 +104,8 @@ GET DESC FROM TYPE
 
 ### `surface`
 
+[Back to top](#Table-of-contents)
+
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -119,6 +121,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 ---
 
 ### `surfaceBackground`
+
+[Back to top](#Table-of-contents)
 
 For use in the background of our UIs as a background color, in components such as Page and Frame backgrounds.
 
@@ -136,6 +140,8 @@ For use in the background of our UIs as a background color, in components such a
 
 ### `surfaceForeground`
 
+[Back to top](#Table-of-contents)
+
 For use in the foreground of our UIs as a background color, in components such as Card, Modal, and Popover.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -151,6 +157,8 @@ For use in the foreground of our UIs as a background color, in components such a
 ---
 
 ### `surfaceForegroundSubdued`
+
+[Back to top](#Table-of-contents)
 
 For use in the foreground of our UIs as a subdued background color, in components such as Card, Modal, and Popover.
 
@@ -168,6 +176,8 @@ For use in the foreground of our UIs as a subdued background color, in component
 
 ### `surfaceHovered`
 
+[Back to top](#Table-of-contents)
+
 For use as a surface color on interactive elements such as resource list items and action list items when in a hovered state.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -183,6 +193,8 @@ For use as a surface color on interactive elements such as resource list items a
 ---
 
 ### `surfacePressed`
+
+[Back to top](#Table-of-contents)
 
 For use as a surface color on interactive elements such as resource list items and action list items when in a pressed state.
 
@@ -200,6 +212,8 @@ For use as a surface color on interactive elements such as resource list items a
 
 ### `backdrop`
 
+[Back to top](#Table-of-contents)
+
 For use as the background color of the backdrop component for navigation and modal.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -214,6 +228,8 @@ For use as the background color of the backdrop component for navigation and mod
 
 ### `shadowFromAmbientLight`
 
+[Back to top](#Table-of-contents)
+
 For use in building shadows for popovers, cards, and modals.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -227,6 +243,8 @@ For use in building shadows for popovers, cards, and modals.
 ---
 
 ### `shadowFromDirectLight`
+
+[Back to top](#Table-of-contents)
 
 For use in building shadows for popovers, cards, and modals.
 
@@ -246,6 +264,8 @@ GET DESC FROM TYPE
 
 ### `onSurface`
 
+[Back to top](#Table-of-contents)
+
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -259,6 +279,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 ---
 
 ### `borderOnSurface`
+
+[Back to top](#Table-of-contents)
 
 For use as a border (border or interactive outline).
 
@@ -276,6 +298,8 @@ For use as a border (border or interactive outline).
 
 ### `borderDisabledOnSurface`
 
+[Back to top](#Table-of-contents)
+
 For use as a an interactive outline on disabled elements.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -291,6 +315,8 @@ For use as a an interactive outline on disabled elements.
 ---
 
 ### `borderSubduedOnSurface`
+
+[Back to top](#Table-of-contents)
 
 For use as a subdued border (border or interactive outline).
 
@@ -308,6 +334,8 @@ For use as a subdued border (border or interactive outline).
 
 ### `iconOnSurface`
 
+[Back to top](#Table-of-contents)
+
 For use as the fill color of neutral icons.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -323,6 +351,8 @@ For use as the fill color of neutral icons.
 ---
 
 ### `iconDisabledOnSurface`
+
+[Back to top](#Table-of-contents)
 
 For use as the fill color of disabled neutral icons.
 
@@ -340,6 +370,8 @@ For use as the fill color of disabled neutral icons.
 
 ### `iconSubduedOnSurface`
 
+[Back to top](#Table-of-contents)
+
 For use as the fill color of subdued neutral icons.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -355,6 +387,8 @@ For use as the fill color of subdued neutral icons.
 ---
 
 ### `textOnSurface`
+
+[Back to top](#Table-of-contents)
 
 For use as a neutral text color.
 
@@ -372,6 +406,8 @@ For use as a neutral text color.
 
 ### `textDisabledOnSurface`
 
+[Back to top](#Table-of-contents)
+
 For use as a disabled neutral text color.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -387,6 +423,8 @@ For use as a disabled neutral text color.
 ---
 
 ### `textSubduedOnSurface`
+
+[Back to top](#Table-of-contents)
 
 For use as a subdued neutral text color.
 
@@ -408,6 +446,8 @@ GET DESC FROM TYPE
 
 ### `interactive`
 
+[Back to top](#Table-of-contents)
+
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -421,6 +461,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 ---
 
 ### `interactiveAction`
+
+[Back to top](#Table-of-contents)
 
 Used for links and plain buttons.
 
@@ -438,6 +480,8 @@ Used for links and plain buttons.
 
 ### `interactiveActionDisabled`
 
+[Back to top](#Table-of-contents)
+
 Used for disabled links and plain buttons.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -453,6 +497,8 @@ Used for disabled links and plain buttons.
 ---
 
 ### `interactiveActionHovered`
+
+[Back to top](#Table-of-contents)
 
 Used for hovered links and plain buttons.
 
@@ -470,6 +516,8 @@ Used for hovered links and plain buttons.
 
 ### `interactiveActionSubdued`
 
+[Back to top](#Table-of-contents)
+
 Used for subdued links and plain buttons.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -485,6 +533,8 @@ Used for subdued links and plain buttons.
 ---
 
 ### `interactiveActionPressed`
+
+[Back to top](#Table-of-contents)
 
 Used for pressed links and plain buttons.
 
@@ -502,6 +552,8 @@ Used for pressed links and plain buttons.
 
 ### `interactiveFocus`
 
+[Back to top](#Table-of-contents)
+
 For use in the focus ring on interactive elements.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -517,6 +569,8 @@ For use in the focus ring on interactive elements.
 ---
 
 ### `interactiveSelected`
+
+[Back to top](#Table-of-contents)
 
 For use as a surface color in selected interactive elements, in components such as option list and resource list.
 
@@ -534,6 +588,8 @@ For use as a surface color in selected interactive elements, in components such 
 
 ### `interactiveSelectedHovered`
 
+[Back to top](#Table-of-contents)
+
 For use as a surface color in selected interactive elements that are hovered, in components such as option list and resource list.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -549,6 +605,8 @@ For use as a surface color in selected interactive elements that are hovered, in
 ---
 
 ### `interactiveSelectedPressed`
+
+[Back to top](#Table-of-contents)
 
 For use as a surface color in selected interactive elements that are pressed, in components such as option list and resource list.
 
@@ -570,6 +628,8 @@ GET DESC FROM TYPE
 
 ### `neutral`
 
+[Back to top](#Table-of-contents)
+
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -583,6 +643,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 ---
 
 ### `neutralAction`
+
+[Back to top](#Table-of-contents)
 
 Used for secondary buttons and tertiary buttons, as well as in form elements as a background color and pontentially other neutral surfaces.
 
@@ -600,6 +662,8 @@ Used for secondary buttons and tertiary buttons, as well as in form elements as 
 
 ### `neutralActionDisabled`
 
+[Back to top](#Table-of-contents)
+
 Used as a disabled state for secondary buttons
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -616,6 +680,8 @@ Used as a disabled state for secondary buttons
 
 ### `neutralActionHovered`
 
+[Back to top](#Table-of-contents)
+
 Used as a hovered state for secondary buttons
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -631,6 +697,8 @@ Used as a hovered state for secondary buttons
 ---
 
 ### `neutralActionPressed`
+
+[Back to top](#Table-of-contents)
 
 Used as a pressed state for secondary buttons
 
@@ -652,6 +720,8 @@ GET DESC FROM TYPE
 
 ### `primary`
 
+[Back to top](#Table-of-contents)
+
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -665,6 +735,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 ---
 
 ### `primaryAction`
+
+[Back to top](#Table-of-contents)
 
 Used as the background color for primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
 
@@ -680,6 +752,8 @@ Used as the background color for primary actions, and as the fill color for icon
 
 ### `primaryActionDisabled`
 
+[Back to top](#Table-of-contents)
+
 Used as the background color for disabled primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -693,6 +767,8 @@ Used as the background color for disabled primary actions, and as the fill color
 ---
 
 ### `primaryActionHovered`
+
+[Back to top](#Table-of-contents)
 
 Used as the background color for hovered primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
 
@@ -710,6 +786,8 @@ Used as the background color for hovered primary actions, and as the fill color 
 
 ### `primaryActionPressed`
 
+[Back to top](#Table-of-contents)
+
 Used as the background color for pressed primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -726,6 +804,8 @@ Used as the background color for pressed primary actions, and as the fill color 
 
 ### `iconOnPrimary`
 
+[Back to top](#Table-of-contents)
+
 For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -739,6 +819,8 @@ For use as a fill color for icons on primary actions. Not for use in icons on na
 ---
 
 ### `iconSubduedOnPrimary`
+
+[Back to top](#Table-of-contents)
 
 For use as a fill color for icons on subdued primary actions. Not for use in icons on navigation and tabs.
 
@@ -754,6 +836,8 @@ For use as a fill color for icons on subdued primary actions. Not for use in ico
 
 ### `iconDisabledOnPrimary`
 
+[Back to top](#Table-of-contents)
+
 For use as a fill color for icons on disabled primary actions. Not for use in icons on navigation and tabs.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -767,6 +851,8 @@ For use as a fill color for icons on disabled primary actions. Not for use in ic
 ---
 
 ### `textOnPrimary`
+
+[Back to top](#Table-of-contents)
 
 For use as a text color on primary actions. Not for use in text on navigation and tabs.
 
@@ -782,6 +868,8 @@ For use as a text color on primary actions. Not for use in text on navigation an
 
 ### `textSubduedOnPrimary`
 
+[Back to top](#Table-of-contents)
+
 For use as a text color on subdued primary actions. Not for use in text on navigation and tabs.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -796,6 +884,8 @@ For use as a text color on subdued primary actions. Not for use in text on navig
 
 ### `textDisabledOnPrimary`
 
+[Back to top](#Table-of-contents)
+
 For use as a text color on disabled primary actions. Not for use in text on navigation and tabs.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -809,6 +899,8 @@ For use as a text color on disabled primary actions. Not for use in text on navi
 ---
 
 ### `primarySelected`
+
+[Back to top](#Table-of-contents)
 
 Used as a surface color to indicate selected interactive states in navigation and tabs.
 
@@ -826,6 +918,8 @@ Used as a surface color to indicate selected interactive states in navigation an
 
 ### `primarySelectedHovered`
 
+[Back to top](#Table-of-contents)
+
 Used as a surface color to indicate selected interactive states that are hovered in navigation and tabs.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -841,6 +935,8 @@ Used as a surface color to indicate selected interactive states that are hovered
 ---
 
 ### `primarySelectedPressed`
+
+[Back to top](#Table-of-contents)
 
 Used as a surface color to indicate selected interactive states that are pressed in navigation and tabs.
 
@@ -862,6 +958,8 @@ GET DESC FROM TYPE
 
 ### `critical`
 
+[Back to top](#Table-of-contents)
+
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -876,6 +974,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 ### `criticalBorder`
 
+[Back to top](#Table-of-contents)
+
 For use as a border on critical components such as banners, and as an outline on interactive elements in an error state.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -889,6 +989,8 @@ For use as a border on critical components such as banners, and as an outline on
 ---
 
 ### `criticalBorderDisabled`
+
+[Back to top](#Table-of-contents)
 
 For use as a disabled border on critical components such as banners, and as an outline on interactive elements in an error state.
 
@@ -906,6 +1008,8 @@ For use as a disabled border on critical components such as banners, and as an o
 
 ### `criticalIcon`
 
+[Back to top](#Table-of-contents)
+
 For use as an icon fill color on top of critical elements.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -921,6 +1025,8 @@ For use as an icon fill color on top of critical elements.
 ---
 
 ### `criticalSurface`
+
+[Back to top](#Table-of-contents)
 
 For use as a surface color on critical elements including badges.
 
@@ -938,6 +1044,8 @@ For use as a surface color on critical elements including badges.
 
 ### `criticalSurfaceSubdued`
 
+[Back to top](#Table-of-contents)
+
 For use as a subdued surface color on critical elements including banners.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -953,6 +1061,8 @@ For use as a subdued surface color on critical elements including banners.
 ---
 
 ### `criticalSurfaceSubduedHovered`
+
+[Back to top](#Table-of-contents)
 
 For use as a surface color on critical interactive elements including action list items in a hovered state.
 
@@ -970,6 +1080,8 @@ For use as a surface color on critical interactive elements including action lis
 
 ### `criticalSurfaceSubduedPressed`
 
+[Back to top](#Table-of-contents)
+
 For use as a surface color on critical interactive elements including action list items in a pressed state.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -985,6 +1097,8 @@ For use as a surface color on critical interactive elements including action lis
 ---
 
 ### `criticalText`
+
+[Back to top](#Table-of-contents)
 
 For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.
 
@@ -1002,6 +1116,8 @@ For use as a text color in inert critical elements such as exception list. Not f
 
 ### `criticalAction`
 
+[Back to top](#Table-of-contents)
+
 For use as the background color for destructive buttons, and as the background color for error toast messages.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1017,6 +1133,8 @@ For use as the background color for destructive buttons, and as the background c
 ---
 
 ### `criticalActionDisabled`
+
+[Back to top](#Table-of-contents)
 
 For use as the background color for disabled destructive buttons, and as the background color for error toast messages.
 
@@ -1034,6 +1152,8 @@ For use as the background color for disabled destructive buttons, and as the bac
 
 ### `criticalActionHovered`
 
+[Back to top](#Table-of-contents)
+
 For use as the background color for hovered destructive buttons, and as the background color for error toast messages.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1049,6 +1169,8 @@ For use as the background color for hovered destructive buttons, and as the back
 ---
 
 ### `criticalActionPressed`
+
+[Back to top](#Table-of-contents)
 
 For use as the background color for pressed destructive buttons, and as the background color for error toast messages.
 
@@ -1066,6 +1188,8 @@ For use as the background color for pressed destructive buttons, and as the back
 
 ### `criticalLink`
 
+[Back to top](#Table-of-contents)
+
 For use as a text color in destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1081,6 +1205,8 @@ For use as a text color in destructive plain buttons, as well as a text color on
 ---
 
 ### `criticalLinkDisabled`
+
+[Back to top](#Table-of-contents)
 
 For use as a text color in disabled destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
 
@@ -1098,6 +1224,8 @@ For use as a text color in disabled destructive plain buttons, as well as a text
 
 ### `criticalLinkHovered`
 
+[Back to top](#Table-of-contents)
+
 For use as a text color in hovered destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1113,6 +1241,8 @@ For use as a text color in hovered destructive plain buttons, as well as a text 
 ---
 
 ### `criticalLinkPressed`
+
+[Back to top](#Table-of-contents)
 
 For use as a text color in pressed destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
 
@@ -1134,6 +1264,8 @@ GET DESC FROM TYPE
 
 ### `warning`
 
+[Back to top](#Table-of-contents)
+
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1147,6 +1279,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 ---
 
 ### `warningBorder`
+
+[Back to top](#Table-of-contents)
 
 For use as a border on warning components such as banners.
 
@@ -1164,6 +1298,8 @@ For use as a border on warning components such as banners.
 
 ### `warningIcon`
 
+[Back to top](#Table-of-contents)
+
 For use as an icon fill color on top of warning elements.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1179,6 +1315,8 @@ For use as an icon fill color on top of warning elements.
 ---
 
 ### `warningSurface`
+
+[Back to top](#Table-of-contents)
 
 For use as a surface color on warning elements including badges.
 
@@ -1196,6 +1334,8 @@ For use as a surface color on warning elements including badges.
 
 ### `warningSurfaceSubdued`
 
+[Back to top](#Table-of-contents)
+
 For use as a subdued surface color on warning elements including banners.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1211,6 +1351,8 @@ For use as a subdued surface color on warning elements including banners.
 ---
 
 ### `warningText`
+
+[Back to top](#Table-of-contents)
 
 For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.
 
@@ -1232,6 +1374,8 @@ GET DESC FROM TYPE
 
 ### `highlight`
 
+[Back to top](#Table-of-contents)
+
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1246,6 +1390,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 ### `highlightBorder`
 
+[Back to top](#Table-of-contents)
+
 For use as a border on informational components such as banners.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1259,6 +1405,8 @@ For use as a border on informational components such as banners.
 ---
 
 ### `highlightIcon`
+
+[Back to top](#Table-of-contents)
 
 For use as an icon fill color on top of informational elements.
 
@@ -1276,6 +1424,8 @@ For use as an icon fill color on top of informational elements.
 
 ### `highlightSurface`
 
+[Back to top](#Table-of-contents)
+
 For use as a surface color on information elements including badges.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1292,6 +1442,8 @@ For use as a surface color on information elements including badges.
 
 ### `highlightSurfaceSubdued`
 
+[Back to top](#Table-of-contents)
+
 For use as a surface color on information elements including banners.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1307,6 +1459,8 @@ For use as a surface color on information elements including banners.
 ---
 
 ### `highlightext`
+
+[Back to top](#Table-of-contents)
 
 For use as a text color in inert informational elements. Not for use as a text color on banners and badges.
 
@@ -1328,6 +1482,8 @@ GET DESC FROM TYPE
 
 ### `success`
 
+[Back to top](#Table-of-contents)
+
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1342,6 +1498,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 ### `successBorder`
 
+[Back to top](#Table-of-contents)
+
 For use as a border on success components such as banners.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1355,6 +1513,8 @@ For use as a border on success components such as banners.
 ---
 
 ### `successIcon`
+
+[Back to top](#Table-of-contents)
 
 For use as an icon fill color on top of success elements.
 
@@ -1372,6 +1532,8 @@ For use as an icon fill color on top of success elements.
 
 ### `successSurface`
 
+[Back to top](#Table-of-contents)
+
 For use as a surface color on success elements including badges.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1388,6 +1550,8 @@ For use as a surface color on success elements including badges.
 
 ### `successSurfaceSubdued`
 
+[Back to top](#Table-of-contents)
+
 For use as a surface color on information elements including banners.
 
 | CSS variable                | Light mode        | Dark mode         |
@@ -1403,6 +1567,8 @@ For use as a surface color on information elements including banners.
 ---
 
 ### `successText`
+
+[Back to top](#Table-of-contents)
 
 For use as a text color in inert success elements. Not for use as a text color on banners and badges.
 
