@@ -97,7 +97,6 @@
   - [`successSurfaceSubdued`](#successSurfaceSubdued)
   - [`successText`](#successText)
 
-
 ## `surface`
 
 GET DESC FROM TYPE
@@ -108,15 +107,15 @@ GET DESC FROM TYPE
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-surface`         | ![][surfaceLight] | ![][surfaceDark]  |
-| `--p-surface-inverse` | ![][surfaceDark]  | ![][surfaceLight] |
-| `--p-surface-light`   | ![][surfaceLight] | ![][surfaceLight] |
-| `--p-surface-dark`    | ![][surfaceDark]  | ![][surfaceDark]  |
+| CSS variable          | Light mode        | Dark mode         |
+| --------------------- | ----------------- | ----------------- |
+| `--p-surface`         | ![][surfacelight] | ![][surfacedark]  |
+| `--p-surface-inverse` | ![][surfacedark]  | ![][surfacelight] |
+| `--p-surface-light`   | ![][surfacelight] | ![][surfacelight] |
+| `--p-surface-dark`    | ![][surfacedark]  | ![][surfacedark]  |
 
-[surfaceLight]: https://www.gifpng.com/64x32/fafafa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[surfaceDark]: https://www.gifpng.com/64x32/111213/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[surfacelight]: https://www.gifpng.com/64x32/fafafa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[surfacedark]: https://www.gifpng.com/64x32/111213/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -126,15 +125,15 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 For use in the background of our UIs as a background color, in components such as Page and Frame backgrounds.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-surface-background`         | ![][surfaceBackgroundLight] | ![][surfaceBackgroundDark]  |
-| `--p-surface-background-inverse` | ![][surfaceBackgroundDark]  | ![][surfaceBackgroundLight] |
-| `--p-surface-background-light`   | ![][surfaceBackgroundLight] | ![][surfaceBackgroundLight] |
-| `--p-surface-background-dark`    | ![][surfaceBackgroundDark]  | ![][surfaceBackgroundDark]  |
+| CSS variable                     | Light mode                  | Dark mode                   |
+| -------------------------------- | --------------------------- | --------------------------- |
+| `--p-surface-background`         | ![][surfacebackgroundlight] | ![][surfacebackgrounddark]  |
+| `--p-surface-background-inverse` | ![][surfacebackgrounddark]  | ![][surfacebackgroundlight] |
+| `--p-surface-background-light`   | ![][surfacebackgroundlight] | ![][surfacebackgroundlight] |
+| `--p-surface-background-dark`    | ![][surfacebackgrounddark]  | ![][surfacebackgrounddark]  |
 
-[surfaceBackgroundLight]: https://www.gifpng.com/64x32/fafafa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[surfaceBackgroundDark]: https://www.gifpng.com/64x32/0c0d0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[surfacebackgroundlight]: https://www.gifpng.com/64x32/fafafa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[surfacebackgrounddark]: https://www.gifpng.com/64x32/0c0d0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -144,15 +143,15 @@ For use in the background of our UIs as a background color, in components such a
 
 For use in the foreground of our UIs as a background color, in components such as Card, Modal, and Popover.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-surface-foreground`         | ![][surfaceForegroundLight] | ![][surfaceForegroundDark]  |
-| `--p-surface-foreground-inverse` | ![][surfaceForegroundDark]  | ![][surfaceForegroundLight] |
-| `--p-surface-foreground-light`   | ![][surfaceForegroundLight] | ![][surfaceForegroundLight] |
-| `--p-surface-foreground-dark`    | ![][surfaceForegroundDark]  | ![][surfaceForegroundDark]  |
+| CSS variable                     | Light mode                  | Dark mode                   |
+| -------------------------------- | --------------------------- | --------------------------- |
+| `--p-surface-foreground`         | ![][surfaceforegroundlight] | ![][surfaceforegrounddark]  |
+| `--p-surface-foreground-inverse` | ![][surfaceforegrounddark]  | ![][surfaceforegroundlight] |
+| `--p-surface-foreground-light`   | ![][surfaceforegroundlight] | ![][surfaceforegroundlight] |
+| `--p-surface-foreground-dark`    | ![][surfaceforegrounddark]  | ![][surfaceforegrounddark]  |
 
-[surfaceForegroundLight]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[surfaceForegroundDark]: https://www.gifpng.com/64x32/181a1b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[surfaceforegroundlight]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[surfaceforegrounddark]: https://www.gifpng.com/64x32/181a1b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -162,15 +161,15 @@ For use in the foreground of our UIs as a background color, in components such a
 
 For use in the foreground of our UIs as a subdued background color, in components such as Card, Modal, and Popover.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-surface-foreground-subdued`         | ![][surfaceForegroundSubduedLight] | ![][surfaceForegroundSubduedDark]  |
-| `--p-surface-foreground-subdued-inverse` | ![][surfaceForegroundSubduedDark]  | ![][surfaceForegroundSubduedLight] |
-| `--p-surface-foreground-subdued-light`   | ![][surfaceForegroundSubduedLight] | ![][surfaceForegroundSubduedLight] |
-| `--p-surface-foreground-subdued-dark`    | ![][surfaceForegroundSubduedDark]  | ![][surfaceForegroundSubduedDark]  |
+| CSS variable                             | Light mode                         | Dark mode                          |
+| ---------------------------------------- | ---------------------------------- | ---------------------------------- |
+| `--p-surface-foreground-subdued`         | ![][surfaceforegroundsubduedlight] | ![][surfaceforegroundsubdueddark]  |
+| `--p-surface-foreground-subdued-inverse` | ![][surfaceforegroundsubdueddark]  | ![][surfaceforegroundsubduedlight] |
+| `--p-surface-foreground-subdued-light`   | ![][surfaceforegroundsubduedlight] | ![][surfaceforegroundsubduedlight] |
+| `--p-surface-foreground-subdued-dark`    | ![][surfaceforegroundsubdueddark]  | ![][surfaceforegroundsubdueddark]  |
 
-[surfaceForegroundSubduedLight]: https://www.gifpng.com/64x32/f2f2f2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[surfaceForegroundSubduedDark]: https://www.gifpng.com/64x32/1b1d1d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[surfaceforegroundsubduedlight]: https://www.gifpng.com/64x32/f2f2f2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[surfaceforegroundsubdueddark]: https://www.gifpng.com/64x32/1b1d1d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -180,15 +179,15 @@ For use in the foreground of our UIs as a subdued background color, in component
 
 For use as a surface color on interactive elements such as resource list items and action list items when in a hovered state.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-surface-hovered`         | ![][surfaceHoveredLight] | ![][surfaceHoveredDark]  |
-| `--p-surface-hovered-inverse` | ![][surfaceHoveredDark]  | ![][surfaceHoveredLight] |
-| `--p-surface-hovered-light`   | ![][surfaceHoveredLight] | ![][surfaceHoveredLight] |
-| `--p-surface-hovered-dark`    | ![][surfaceHoveredDark]  | ![][surfaceHoveredDark]  |
+| CSS variable                  | Light mode               | Dark mode                |
+| ----------------------------- | ------------------------ | ------------------------ |
+| `--p-surface-hovered`         | ![][surfacehoveredlight] | ![][surfacehovereddark]  |
+| `--p-surface-hovered-inverse` | ![][surfacehovereddark]  | ![][surfacehoveredlight] |
+| `--p-surface-hovered-light`   | ![][surfacehoveredlight] | ![][surfacehoveredlight] |
+| `--p-surface-hovered-dark`    | ![][surfacehovereddark]  | ![][surfacehovereddark]  |
 
-[surfaceHoveredLight]: https://www.gifpng.com/64x32/f2f2f2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[surfaceHoveredDark]: https://www.gifpng.com/64x32/2f3032/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[surfacehoveredlight]: https://www.gifpng.com/64x32/f2f2f2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[surfacehovereddark]: https://www.gifpng.com/64x32/2f3032/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -198,15 +197,15 @@ For use as a surface color on interactive elements such as resource list items a
 
 For use as a surface color on interactive elements such as resource list items and action list items when in a pressed state.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-surface-pressed`         | ![][surfacePressedLight] | ![][surfacePressedDark]  |
-| `--p-surface-pressed-inverse` | ![][surfacePressedDark]  | ![][surfacePressedLight] |
-| `--p-surface-pressed-light`   | ![][surfacePressedLight] | ![][surfacePressedLight] |
-| `--p-surface-pressed-dark`    | ![][surfacePressedDark]  | ![][surfacePressedDark]  |
+| CSS variable                  | Light mode               | Dark mode                |
+| ----------------------------- | ------------------------ | ------------------------ |
+| `--p-surface-pressed`         | ![][surfacepressedlight] | ![][surfacepresseddark]  |
+| `--p-surface-pressed-inverse` | ![][surfacepresseddark]  | ![][surfacepressedlight] |
+| `--p-surface-pressed-light`   | ![][surfacepressedlight] | ![][surfacepressedlight] |
+| `--p-surface-pressed-dark`    | ![][surfacepresseddark]  | ![][surfacepresseddark]  |
 
-[surfacePressedLight]: https://www.gifpng.com/64x32/e3e3e3/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[surfacePressedDark]: https://www.gifpng.com/64x32/3d3f42/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[surfacepressedlight]: https://www.gifpng.com/64x32/e3e3e3/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[surfacepresseddark]: https://www.gifpng.com/64x32/3d3f42/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -216,13 +215,12 @@ For use as a surface color on interactive elements such as resource list items a
 
 For use as the background color of the backdrop component for navigation and modal.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-backdrop`         | ![][backdropLight] | ![][backdropDark]  |
+| CSS variable   | Light mode         | Dark mode         |
+| -------------- | ------------------ | ----------------- |
+| `--p-backdrop` | ![][backdroplight] | ![][backdropdark] |
 
-
-[backdropLight]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[backdropDark]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[backdroplight]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[backdropdark]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -232,13 +230,12 @@ For use as the background color of the backdrop component for navigation and mod
 
 For use in building shadows for popovers, cards, and modals.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-shadow-from-ambient-light`         | ![][shadowFromAmbientLightLight] | ![][shadowFromAmbientLightDark]  |
+| CSS variable                    | Light mode                       | Dark mode                       |
+| ------------------------------- | -------------------------------- | ------------------------------- |
+| `--p-shadow-from-ambient-light` | ![][shadowfromambientlightlight] | ![][shadowfromambientlightdark] |
 
-
-[shadowFromAmbientLightLight]: https://www.gifpng.com/64x32/161717/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[shadowFromAmbientLightDark]: https://www.gifpng.com/64x32/161717/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[shadowfromambientlightlight]: https://www.gifpng.com/64x32/161717/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[shadowfromambientlightdark]: https://www.gifpng.com/64x32/161717/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -248,13 +245,12 @@ For use in building shadows for popovers, cards, and modals.
 
 For use in building shadows for popovers, cards, and modals.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-shadow-from-direct-light`         | ![][shadowFromDirectLightLight] | ![][shadowFromDirectLightDark]  |
+| CSS variable                   | Light mode                      | Dark mode                      |
+| ------------------------------ | ------------------------------- | ------------------------------ |
+| `--p-shadow-from-direct-light` | ![][shadowfromdirectlightlight] | ![][shadowfromdirectlightdark] |
 
-
-[shadowFromDirectLightLight]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[shadowFromDirectLightDark]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[shadowfromdirectlightlight]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[shadowfromdirectlightdark]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -268,13 +264,12 @@ GET DESC FROM TYPE
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-on-surface`         | ![][onSurfaceLight] | ![][onSurfaceDark]  |
+| CSS variable     | Light mode          | Dark mode          |
+| ---------------- | ------------------- | ------------------ |
+| `--p-on-surface` | ![][onsurfacelight] | ![][onsurfacedark] |
 
-
-[onSurfaceLight]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[onSurfaceDark]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[onsurfacelight]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[onsurfacedark]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -284,15 +279,15 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 For use as a border (border or interactive outline).
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-border-on-surface`         | ![][borderOnSurfaceLight] | ![][borderOnSurfaceDark]  |
-| `--p-border-on-surface-inverse` | ![][borderOnSurfaceDark]  | ![][borderOnSurfaceLight] |
-| `--p-border-on-surface-light`   | ![][borderOnSurfaceLight] | ![][borderOnSurfaceLight] |
-| `--p-border-on-surface-dark`    | ![][borderOnSurfaceDark]  | ![][borderOnSurfaceDark]  |
+| CSS variable                    | Light mode                | Dark mode                 |
+| ------------------------------- | ------------------------- | ------------------------- |
+| `--p-border-on-surface`         | ![][borderonsurfacelight] | ![][borderonsurfacedark]  |
+| `--p-border-on-surface-inverse` | ![][borderonsurfacedark]  | ![][borderonsurfacelight] |
+| `--p-border-on-surface-light`   | ![][borderonsurfacelight] | ![][borderonsurfacelight] |
+| `--p-border-on-surface-dark`    | ![][borderonsurfacedark]  | ![][borderonsurfacedark]  |
 
-[borderOnSurfaceLight]: https://www.gifpng.com/64x32/b1bac4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[borderOnSurfaceDark]: https://www.gifpng.com/64x32/4e545a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[borderonsurfacelight]: https://www.gifpng.com/64x32/b1bac4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[borderonsurfacedark]: https://www.gifpng.com/64x32/4e545a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -302,15 +297,15 @@ For use as a border (border or interactive outline).
 
 For use as a an interactive outline on disabled elements.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-border-disabled-on-surface`         | ![][borderDisabledOnSurfaceLight] | ![][borderDisabledOnSurfaceDark]  |
-| `--p-border-disabled-on-surface-inverse` | ![][borderDisabledOnSurfaceDark]  | ![][borderDisabledOnSurfaceLight] |
-| `--p-border-disabled-on-surface-light`   | ![][borderDisabledOnSurfaceLight] | ![][borderDisabledOnSurfaceLight] |
-| `--p-border-disabled-on-surface-dark`    | ![][borderDisabledOnSurfaceDark]  | ![][borderDisabledOnSurfaceDark]  |
+| CSS variable                             | Light mode                        | Dark mode                         |
+| ---------------------------------------- | --------------------------------- | --------------------------------- |
+| `--p-border-disabled-on-surface`         | ![][borderdisabledonsurfacelight] | ![][borderdisabledonsurfacedark]  |
+| `--p-border-disabled-on-surface-inverse` | ![][borderdisabledonsurfacedark]  | ![][borderdisabledonsurfacelight] |
+| `--p-border-disabled-on-surface-light`   | ![][borderdisabledonsurfacelight] | ![][borderdisabledonsurfacelight] |
+| `--p-border-disabled-on-surface-dark`    | ![][borderdisabledonsurfacedark]  | ![][borderdisabledonsurfacedark]  |
 
-[borderDisabledOnSurfaceLight]: https://www.gifpng.com/64x32/f0f2f4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[borderDisabledOnSurfaceDark]: https://www.gifpng.com/64x32/a2aeb9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[borderdisabledonsurfacelight]: https://www.gifpng.com/64x32/f0f2f4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[borderdisabledonsurfacedark]: https://www.gifpng.com/64x32/a2aeb9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -320,15 +315,15 @@ For use as a an interactive outline on disabled elements.
 
 For use as a subdued border (border or interactive outline).
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-border-subdued-on-surface`         | ![][borderSubduedOnSurfaceLight] | ![][borderSubduedOnSurfaceDark]  |
-| `--p-border-subdued-on-surface-inverse` | ![][borderSubduedOnSurfaceDark]  | ![][borderSubduedOnSurfaceLight] |
-| `--p-border-subdued-on-surface-light`   | ![][borderSubduedOnSurfaceLight] | ![][borderSubduedOnSurfaceLight] |
-| `--p-border-subdued-on-surface-dark`    | ![][borderSubduedOnSurfaceDark]  | ![][borderSubduedOnSurfaceDark]  |
+| CSS variable                            | Light mode                       | Dark mode                        |
+| --------------------------------------- | -------------------------------- | -------------------------------- |
+| `--p-border-subdued-on-surface`         | ![][bordersubduedonsurfacelight] | ![][bordersubduedonsurfacedark]  |
+| `--p-border-subdued-on-surface-inverse` | ![][bordersubduedonsurfacedark]  | ![][bordersubduedonsurfacelight] |
+| `--p-border-subdued-on-surface-light`   | ![][bordersubduedonsurfacelight] | ![][bordersubduedonsurfacelight] |
+| `--p-border-subdued-on-surface-dark`    | ![][bordersubduedonsurfacedark]  | ![][bordersubduedonsurfacedark]  |
 
-[borderSubduedOnSurfaceLight]: https://www.gifpng.com/64x32/d0d6dc/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[borderSubduedOnSurfaceDark]: https://www.gifpng.com/64x32/232629/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[bordersubduedonsurfacelight]: https://www.gifpng.com/64x32/d0d6dc/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[bordersubduedonsurfacedark]: https://www.gifpng.com/64x32/232629/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -338,15 +333,15 @@ For use as a subdued border (border or interactive outline).
 
 For use as the fill color of neutral icons.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-icon-on-surface`         | ![][iconOnSurfaceLight] | ![][iconOnSurfaceDark]  |
-| `--p-icon-on-surface-inverse` | ![][iconOnSurfaceDark]  | ![][iconOnSurfaceLight] |
-| `--p-icon-on-surface-light`   | ![][iconOnSurfaceLight] | ![][iconOnSurfaceLight] |
-| `--p-icon-on-surface-dark`    | ![][iconOnSurfaceDark]  | ![][iconOnSurfaceDark]  |
+| CSS variable                  | Light mode              | Dark mode               |
+| ----------------------------- | ----------------------- | ----------------------- |
+| `--p-icon-on-surface`         | ![][icononsurfacelight] | ![][icononsurfacedark]  |
+| `--p-icon-on-surface-inverse` | ![][icononsurfacedark]  | ![][icononsurfacelight] |
+| `--p-icon-on-surface-light`   | ![][icononsurfacelight] | ![][icononsurfacelight] |
+| `--p-icon-on-surface-dark`    | ![][icononsurfacedark]  | ![][icononsurfacedark]  |
 
-[iconOnSurfaceLight]: https://www.gifpng.com/64x32/42474c/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[iconOnSurfaceDark]: https://www.gifpng.com/64x32/f9f9fa/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[icononsurfacelight]: https://www.gifpng.com/64x32/42474c/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[icononsurfacedark]: https://www.gifpng.com/64x32/f9f9fa/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -356,15 +351,15 @@ For use as the fill color of neutral icons.
 
 For use as the fill color of disabled neutral icons.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-icon-disabled-on-surface`         | ![][iconDisabledOnSurfaceLight] | ![][iconDisabledOnSurfaceDark]  |
-| `--p-icon-disabled-on-surface-inverse` | ![][iconDisabledOnSurfaceDark]  | ![][iconDisabledOnSurfaceLight] |
-| `--p-icon-disabled-on-surface-light`   | ![][iconDisabledOnSurfaceLight] | ![][iconDisabledOnSurfaceLight] |
-| `--p-icon-disabled-on-surface-dark`    | ![][iconDisabledOnSurfaceDark]  | ![][iconDisabledOnSurfaceDark]  |
+| CSS variable                           | Light mode                      | Dark mode                       |
+| -------------------------------------- | ------------------------------- | ------------------------------- |
+| `--p-icon-disabled-on-surface`         | ![][icondisabledonsurfacelight] | ![][icondisabledonsurfacedark]  |
+| `--p-icon-disabled-on-surface-inverse` | ![][icondisabledonsurfacedark]  | ![][icondisabledonsurfacelight] |
+| `--p-icon-disabled-on-surface-light`   | ![][icondisabledonsurfacelight] | ![][icondisabledonsurfacelight] |
+| `--p-icon-disabled-on-surface-dark`    | ![][icondisabledonsurfacedark]  | ![][icondisabledonsurfacedark]  |
 
-[iconDisabledOnSurfaceLight]: https://www.gifpng.com/64x32/9ba6b0/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[iconDisabledOnSurfaceDark]: https://www.gifpng.com/64x32/b1bac4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[icondisabledonsurfacelight]: https://www.gifpng.com/64x32/9ba6b0/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[icondisabledonsurfacedark]: https://www.gifpng.com/64x32/b1bac4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -374,15 +369,15 @@ For use as the fill color of disabled neutral icons.
 
 For use as the fill color of subdued neutral icons.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-icon-subdued-on-surface`         | ![][iconSubduedOnSurfaceLight] | ![][iconSubduedOnSurfaceDark]  |
-| `--p-icon-subdued-on-surface-inverse` | ![][iconSubduedOnSurfaceDark]  | ![][iconSubduedOnSurfaceLight] |
-| `--p-icon-subdued-on-surface-light`   | ![][iconSubduedOnSurfaceLight] | ![][iconSubduedOnSurfaceLight] |
-| `--p-icon-subdued-on-surface-dark`    | ![][iconSubduedOnSurfaceDark]  | ![][iconSubduedOnSurfaceDark]  |
+| CSS variable                          | Light mode                     | Dark mode                      |
+| ------------------------------------- | ------------------------------ | ------------------------------ |
+| `--p-icon-subdued-on-surface`         | ![][iconsubduedonsurfacelight] | ![][iconsubduedonsurfacedark]  |
+| `--p-icon-subdued-on-surface-inverse` | ![][iconsubduedonsurfacedark]  | ![][iconsubduedonsurfacelight] |
+| `--p-icon-subdued-on-surface-light`   | ![][iconsubduedonsurfacelight] | ![][iconsubduedonsurfacelight] |
+| `--p-icon-subdued-on-surface-dark`    | ![][iconsubduedonsurfacedark]  | ![][iconsubduedonsurfacedark]  |
 
-[iconSubduedOnSurfaceLight]: https://www.gifpng.com/64x32/87919b/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[iconSubduedOnSurfaceDark]: https://www.gifpng.com/64x32/8c96a1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[iconsubduedonsurfacelight]: https://www.gifpng.com/64x32/87919b/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[iconsubduedonsurfacedark]: https://www.gifpng.com/64x32/8c96a1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -392,15 +387,15 @@ For use as the fill color of subdued neutral icons.
 
 For use as a neutral text color.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-text-on-surface`         | ![][textOnSurfaceLight] | ![][textOnSurfaceDark]  |
-| `--p-text-on-surface-inverse` | ![][textOnSurfaceDark]  | ![][textOnSurfaceLight] |
-| `--p-text-on-surface-light`   | ![][textOnSurfaceLight] | ![][textOnSurfaceLight] |
-| `--p-text-on-surface-dark`    | ![][textOnSurfaceDark]  | ![][textOnSurfaceDark]  |
+| CSS variable                  | Light mode              | Dark mode               |
+| ----------------------------- | ----------------------- | ----------------------- |
+| `--p-text-on-surface`         | ![][textonsurfacelight] | ![][textonsurfacedark]  |
+| `--p-text-on-surface-inverse` | ![][textonsurfacedark]  | ![][textonsurfacelight] |
+| `--p-text-on-surface-light`   | ![][textonsurfacelight] | ![][textonsurfacelight] |
+| `--p-text-on-surface-dark`    | ![][textonsurfacedark]  | ![][textonsurfacedark]  |
 
-[textOnSurfaceLight]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[textOnSurfaceDark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[textonsurfacelight]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[textonsurfacedark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -410,15 +405,15 @@ For use as a neutral text color.
 
 For use as a disabled neutral text color.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-text-disabled-on-surface`         | ![][textDisabledOnSurfaceLight] | ![][textDisabledOnSurfaceDark]  |
-| `--p-text-disabled-on-surface-inverse` | ![][textDisabledOnSurfaceDark]  | ![][textDisabledOnSurfaceLight] |
-| `--p-text-disabled-on-surface-light`   | ![][textDisabledOnSurfaceLight] | ![][textDisabledOnSurfaceLight] |
-| `--p-text-disabled-on-surface-dark`    | ![][textDisabledOnSurfaceDark]  | ![][textDisabledOnSurfaceDark]  |
+| CSS variable                           | Light mode                      | Dark mode                       |
+| -------------------------------------- | ------------------------------- | ------------------------------- |
+| `--p-text-disabled-on-surface`         | ![][textdisabledonsurfacelight] | ![][textdisabledonsurfacedark]  |
+| `--p-text-disabled-on-surface-inverse` | ![][textdisabledonsurfacedark]  | ![][textdisabledonsurfacelight] |
+| `--p-text-disabled-on-surface-light`   | ![][textdisabledonsurfacelight] | ![][textdisabledonsurfacelight] |
+| `--p-text-disabled-on-surface-dark`    | ![][textdisabledonsurfacedark]  | ![][textdisabledonsurfacedark]  |
 
-[textDisabledOnSurfaceLight]: https://www.gifpng.com/64x32/8a949e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[textDisabledOnSurfaceDark]: https://www.gifpng.com/64x32/6f7880/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[textdisabledonsurfacelight]: https://www.gifpng.com/64x32/8a949e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[textdisabledonsurfacedark]: https://www.gifpng.com/64x32/6f7880/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -428,15 +423,15 @@ For use as a disabled neutral text color.
 
 For use as a subdued neutral text color.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-text-subdued-on-surface`         | ![][textSubduedOnSurfaceLight] | ![][textSubduedOnSurfaceDark]  |
-| `--p-text-subdued-on-surface-inverse` | ![][textSubduedOnSurfaceDark]  | ![][textSubduedOnSurfaceLight] |
-| `--p-text-subdued-on-surface-light`   | ![][textSubduedOnSurfaceLight] | ![][textSubduedOnSurfaceLight] |
-| `--p-text-subdued-on-surface-dark`    | ![][textSubduedOnSurfaceDark]  | ![][textSubduedOnSurfaceDark]  |
+| CSS variable                          | Light mode                     | Dark mode                      |
+| ------------------------------------- | ------------------------------ | ------------------------------ |
+| `--p-text-subdued-on-surface`         | ![][textsubduedonsurfacelight] | ![][textsubduedonsurfacedark]  |
+| `--p-text-subdued-on-surface-inverse` | ![][textsubduedonsurfacedark]  | ![][textsubduedonsurfacelight] |
+| `--p-text-subdued-on-surface-light`   | ![][textsubduedonsurfacelight] | ![][textsubduedonsurfacelight] |
+| `--p-text-subdued-on-surface-dark`    | ![][textsubduedonsurfacedark]  | ![][textsubduedonsurfacedark]  |
 
-[textSubduedOnSurfaceLight]: https://www.gifpng.com/64x32/53595f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[textSubduedOnSurfaceDark]: https://www.gifpng.com/64x32/8c96a1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[textsubduedonsurfacelight]: https://www.gifpng.com/64x32/53595f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[textsubduedonsurfacedark]: https://www.gifpng.com/64x32/8c96a1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -450,13 +445,12 @@ GET DESC FROM TYPE
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-interactive`         | ![][interactiveLight] | ![][interactiveDark]  |
+| CSS variable      | Light mode            | Dark mode            |
+| ----------------- | --------------------- | -------------------- |
+| `--p-interactive` | ![][interactivelight] | ![][interactivedark] |
 
-
-[interactiveLight]: https://www.gifpng.com/64x32/0870d9/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveDark]: https://www.gifpng.com/64x32/0870d9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[interactivelight]: https://www.gifpng.com/64x32/0870d9/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[interactivedark]: https://www.gifpng.com/64x32/0870d9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -466,15 +460,15 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 Used for links and plain buttons.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-interactive-action`         | ![][interactiveActionLight] | ![][interactiveActionDark]  |
-| `--p-interactive-action-inverse` | ![][interactiveActionDark]  | ![][interactiveActionLight] |
-| `--p-interactive-action-light`   | ![][interactiveActionLight] | ![][interactiveActionLight] |
-| `--p-interactive-action-dark`    | ![][interactiveActionDark]  | ![][interactiveActionDark]  |
+| CSS variable                     | Light mode                  | Dark mode                   |
+| -------------------------------- | --------------------------- | --------------------------- |
+| `--p-interactive-action`         | ![][interactiveactionlight] | ![][interactiveactiondark]  |
+| `--p-interactive-action-inverse` | ![][interactiveactiondark]  | ![][interactiveactionlight] |
+| `--p-interactive-action-light`   | ![][interactiveactionlight] | ![][interactiveactionlight] |
+| `--p-interactive-action-dark`    | ![][interactiveactiondark]  | ![][interactiveactiondark]  |
 
-[interactiveActionLight]: https://www.gifpng.com/64x32/0769ca/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveActionDark]: https://www.gifpng.com/64x32/679cfe/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[interactiveactionlight]: https://www.gifpng.com/64x32/0769ca/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveactiondark]: https://www.gifpng.com/64x32/679cfe/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -484,15 +478,15 @@ Used for links and plain buttons.
 
 Used for disabled links and plain buttons.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-interactive-action-disabled`         | ![][interactiveActionDisabledLight] | ![][interactiveActionDisabledDark]  |
-| `--p-interactive-action-disabled-inverse` | ![][interactiveActionDisabledDark]  | ![][interactiveActionDisabledLight] |
-| `--p-interactive-action-disabled-light`   | ![][interactiveActionDisabledLight] | ![][interactiveActionDisabledLight] |
-| `--p-interactive-action-disabled-dark`    | ![][interactiveActionDisabledDark]  | ![][interactiveActionDisabledDark]  |
+| CSS variable                              | Light mode                          | Dark mode                           |
+| ----------------------------------------- | ----------------------------------- | ----------------------------------- |
+| `--p-interactive-action-disabled`         | ![][interactiveactiondisabledlight] | ![][interactiveactiondisableddark]  |
+| `--p-interactive-action-disabled-inverse` | ![][interactiveactiondisableddark]  | ![][interactiveactiondisabledlight] |
+| `--p-interactive-action-disabled-light`   | ![][interactiveactiondisabledlight] | ![][interactiveactiondisabledlight] |
+| `--p-interactive-action-disabled-dark`    | ![][interactiveactiondisableddark]  | ![][interactiveactiondisableddark]  |
 
-[interactiveActionDisabledLight]: https://www.gifpng.com/64x32/348cfe/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveActionDisabledDark]: https://www.gifpng.com/64x32/0663c1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[interactiveactiondisabledlight]: https://www.gifpng.com/64x32/348cfe/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveactiondisableddark]: https://www.gifpng.com/64x32/0663c1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -502,15 +496,15 @@ Used for disabled links and plain buttons.
 
 Used for hovered links and plain buttons.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-interactive-action-hovered`         | ![][interactiveActionHoveredLight] | ![][interactiveActionHoveredDark]  |
-| `--p-interactive-action-hovered-inverse` | ![][interactiveActionHoveredDark]  | ![][interactiveActionHoveredLight] |
-| `--p-interactive-action-hovered-light`   | ![][interactiveActionHoveredLight] | ![][interactiveActionHoveredLight] |
-| `--p-interactive-action-hovered-dark`    | ![][interactiveActionHoveredDark]  | ![][interactiveActionHoveredDark]  |
+| CSS variable                             | Light mode                         | Dark mode                          |
+| ---------------------------------------- | ---------------------------------- | ---------------------------------- |
+| `--p-interactive-action-hovered`         | ![][interactiveactionhoveredlight] | ![][interactiveactionhovereddark]  |
+| `--p-interactive-action-hovered-inverse` | ![][interactiveactionhovereddark]  | ![][interactiveactionhoveredlight] |
+| `--p-interactive-action-hovered-light`   | ![][interactiveactionhoveredlight] | ![][interactiveactionhoveredlight] |
+| `--p-interactive-action-hovered-dark`    | ![][interactiveactionhovereddark]  | ![][interactiveactionhovereddark]  |
 
-[interactiveActionHoveredLight]: https://www.gifpng.com/64x32/0557a8/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveActionHoveredDark]: https://www.gifpng.com/64x32/81a8fe/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[interactiveactionhoveredlight]: https://www.gifpng.com/64x32/0557a8/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveactionhovereddark]: https://www.gifpng.com/64x32/81a8fe/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -520,15 +514,15 @@ Used for hovered links and plain buttons.
 
 Used for subdued links and plain buttons.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-interactive-action-subdued`         | ![][interactiveActionSubduedLight] | ![][interactiveActionSubduedDark]  |
-| `--p-interactive-action-subdued-inverse` | ![][interactiveActionSubduedDark]  | ![][interactiveActionSubduedLight] |
-| `--p-interactive-action-subdued-light`   | ![][interactiveActionSubduedLight] | ![][interactiveActionSubduedLight] |
-| `--p-interactive-action-subdued-dark`    | ![][interactiveActionSubduedDark]  | ![][interactiveActionSubduedDark]  |
+| CSS variable                             | Light mode                         | Dark mode                          |
+| ---------------------------------------- | ---------------------------------- | ---------------------------------- |
+| `--p-interactive-action-subdued`         | ![][interactiveactionsubduedlight] | ![][interactiveactionsubdueddark]  |
+| `--p-interactive-action-subdued-inverse` | ![][interactiveactionsubdueddark]  | ![][interactiveactionsubduedlight] |
+| `--p-interactive-action-subdued-light`   | ![][interactiveactionsubduedlight] | ![][interactiveactionsubduedlight] |
+| `--p-interactive-action-subdued-dark`    | ![][interactiveactionsubdueddark]  | ![][interactiveactionsubdueddark]  |
 
-[interactiveActionSubduedLight]: https://www.gifpng.com/64x32/0878e7/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveActionSubduedDark]: https://www.gifpng.com/64x32/0873dd/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[interactiveactionsubduedlight]: https://www.gifpng.com/64x32/0878e7/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveactionsubdueddark]: https://www.gifpng.com/64x32/0873dd/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -538,15 +532,15 @@ Used for subdued links and plain buttons.
 
 Used for pressed links and plain buttons.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-interactive-action-pressed`         | ![][interactiveActionPressedLight] | ![][interactiveActionPressedDark]  |
-| `--p-interactive-action-pressed-inverse` | ![][interactiveActionPressedDark]  | ![][interactiveActionPressedLight] |
-| `--p-interactive-action-pressed-light`   | ![][interactiveActionPressedLight] | ![][interactiveActionPressedLight] |
-| `--p-interactive-action-pressed-dark`    | ![][interactiveActionPressedDark]  | ![][interactiveActionPressedDark]  |
+| CSS variable                             | Light mode                         | Dark mode                          |
+| ---------------------------------------- | ---------------------------------- | ---------------------------------- |
+| `--p-interactive-action-pressed`         | ![][interactiveactionpressedlight] | ![][interactiveactionpresseddark]  |
+| `--p-interactive-action-pressed-inverse` | ![][interactiveactionpresseddark]  | ![][interactiveactionpressedlight] |
+| `--p-interactive-action-pressed-light`   | ![][interactiveactionpressedlight] | ![][interactiveactionpressedlight] |
+| `--p-interactive-action-pressed-dark`    | ![][interactiveactionpresseddark]  | ![][interactiveactionpresseddark]  |
 
-[interactiveActionPressedLight]: https://www.gifpng.com/64x32/034891/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveActionPressedDark]: https://www.gifpng.com/64x32/9ab8fe/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[interactiveactionpressedlight]: https://www.gifpng.com/64x32/034891/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveactionpresseddark]: https://www.gifpng.com/64x32/9ab8fe/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -556,15 +550,15 @@ Used for pressed links and plain buttons.
 
 For use in the focus ring on interactive elements.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-interactive-focus`         | ![][interactiveFocusLight] | ![][interactiveFocusDark]  |
-| `--p-interactive-focus-inverse` | ![][interactiveFocusDark]  | ![][interactiveFocusLight] |
-| `--p-interactive-focus-light`   | ![][interactiveFocusLight] | ![][interactiveFocusLight] |
-| `--p-interactive-focus-dark`    | ![][interactiveFocusDark]  | ![][interactiveFocusDark]  |
+| CSS variable                    | Light mode                 | Dark mode                  |
+| ------------------------------- | -------------------------- | -------------------------- |
+| `--p-interactive-focus`         | ![][interactivefocuslight] | ![][interactivefocusdark]  |
+| `--p-interactive-focus-inverse` | ![][interactivefocusdark]  | ![][interactivefocuslight] |
+| `--p-interactive-focus-light`   | ![][interactivefocuslight] | ![][interactivefocuslight] |
+| `--p-interactive-focus-dark`    | ![][interactivefocusdark]  | ![][interactivefocusdark]  |
 
-[interactiveFocusLight]: https://www.gifpng.com/64x32/348cfe/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveFocusDark]: https://www.gifpng.com/64x32/0663c1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[interactivefocuslight]: https://www.gifpng.com/64x32/348cfe/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[interactivefocusdark]: https://www.gifpng.com/64x32/0663c1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -574,15 +568,15 @@ For use in the focus ring on interactive elements.
 
 For use as a surface color in selected interactive elements, in components such as option list and resource list.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-interactive-selected`         | ![][interactiveSelectedLight] | ![][interactiveSelectedDark]  |
-| `--p-interactive-selected-inverse` | ![][interactiveSelectedDark]  | ![][interactiveSelectedLight] |
-| `--p-interactive-selected-light`   | ![][interactiveSelectedLight] | ![][interactiveSelectedLight] |
-| `--p-interactive-selected-dark`    | ![][interactiveSelectedDark]  | ![][interactiveSelectedDark]  |
+| CSS variable                       | Light mode                    | Dark mode                     |
+| ---------------------------------- | ----------------------------- | ----------------------------- |
+| `--p-interactive-selected`         | ![][interactiveselectedlight] | ![][interactiveselecteddark]  |
+| `--p-interactive-selected-inverse` | ![][interactiveselecteddark]  | ![][interactiveselectedlight] |
+| `--p-interactive-selected-light`   | ![][interactiveselectedlight] | ![][interactiveselectedlight] |
+| `--p-interactive-selected-dark`    | ![][interactiveselecteddark]  | ![][interactiveselecteddark]  |
 
-[interactiveSelectedLight]: https://www.gifpng.com/64x32/f0f3ff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveSelectedDark]: https://www.gifpng.com/64x32/000e24/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[interactiveselectedlight]: https://www.gifpng.com/64x32/f0f3ff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveselecteddark]: https://www.gifpng.com/64x32/000e24/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -592,15 +586,15 @@ For use as a surface color in selected interactive elements, in components such 
 
 For use as a surface color in selected interactive elements that are hovered, in components such as option list and resource list.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-interactive-selected-hovered`         | ![][interactiveSelectedHoveredLight] | ![][interactiveSelectedHoveredDark]  |
-| `--p-interactive-selected-hovered-inverse` | ![][interactiveSelectedHoveredDark]  | ![][interactiveSelectedHoveredLight] |
-| `--p-interactive-selected-hovered-light`   | ![][interactiveSelectedHoveredLight] | ![][interactiveSelectedHoveredLight] |
-| `--p-interactive-selected-hovered-dark`    | ![][interactiveSelectedHoveredDark]  | ![][interactiveSelectedHoveredDark]  |
+| CSS variable                               | Light mode                           | Dark mode                            |
+| ------------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `--p-interactive-selected-hovered`         | ![][interactiveselectedhoveredlight] | ![][interactiveselectedhovereddark]  |
+| `--p-interactive-selected-hovered-inverse` | ![][interactiveselectedhovereddark]  | ![][interactiveselectedhoveredlight] |
+| `--p-interactive-selected-hovered-light`   | ![][interactiveselectedhoveredlight] | ![][interactiveselectedhoveredlight] |
+| `--p-interactive-selected-hovered-dark`    | ![][interactiveselectedhovereddark]  | ![][interactiveselectedhovereddark]  |
 
-[interactiveSelectedHoveredLight]: https://www.gifpng.com/64x32/d6e0ff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveSelectedHoveredDark]: https://www.gifpng.com/64x32/011d41/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[interactiveselectedhoveredlight]: https://www.gifpng.com/64x32/d6e0ff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveselectedhovereddark]: https://www.gifpng.com/64x32/011d41/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -610,15 +604,15 @@ For use as a surface color in selected interactive elements that are hovered, in
 
 For use as a surface color in selected interactive elements that are pressed, in components such as option list and resource list.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-interactive-selected-pressed`         | ![][interactiveSelectedPressedLight] | ![][interactiveSelectedPressedDark]  |
-| `--p-interactive-selected-pressed-inverse` | ![][interactiveSelectedPressedDark]  | ![][interactiveSelectedPressedLight] |
-| `--p-interactive-selected-pressed-light`   | ![][interactiveSelectedPressedLight] | ![][interactiveSelectedPressedLight] |
-| `--p-interactive-selected-pressed-dark`    | ![][interactiveSelectedPressedDark]  | ![][interactiveSelectedPressedDark]  |
+| CSS variable                               | Light mode                           | Dark mode                            |
+| ------------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `--p-interactive-selected-pressed`         | ![][interactiveselectedpressedlight] | ![][interactiveselectedpresseddark]  |
+| `--p-interactive-selected-pressed-inverse` | ![][interactiveselectedpresseddark]  | ![][interactiveselectedpressedlight] |
+| `--p-interactive-selected-pressed-light`   | ![][interactiveselectedpressedlight] | ![][interactiveselectedpressedlight] |
+| `--p-interactive-selected-pressed-dark`    | ![][interactiveselectedpresseddark]  | ![][interactiveselectedpresseddark]  |
 
-[interactiveSelectedPressedLight]: https://www.gifpng.com/64x32/b8cbff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveSelectedPressedDark]: https://www.gifpng.com/64x32/012b5b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[interactiveselectedpressedlight]: https://www.gifpng.com/64x32/b8cbff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveselectedpresseddark]: https://www.gifpng.com/64x32/012b5b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -632,13 +626,12 @@ GET DESC FROM TYPE
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-neutral`         | ![][neutralLight] | ![][neutralDark]  |
+| CSS variable  | Light mode        | Dark mode        |
+| ------------- | ----------------- | ---------------- |
+| `--p-neutral` | ![][neutrallight] | ![][neutraldark] |
 
-
-[neutralLight]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[neutralDark]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[neutrallight]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[neutraldark]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -648,15 +641,15 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 Used for secondary buttons and tertiary buttons, as well as in form elements as a background color and pontentially other neutral surfaces.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-neutral-action`         | ![][neutralActionLight] | ![][neutralActionDark]  |
-| `--p-neutral-action-inverse` | ![][neutralActionDark]  | ![][neutralActionLight] |
-| `--p-neutral-action-light`   | ![][neutralActionLight] | ![][neutralActionLight] |
-| `--p-neutral-action-dark`    | ![][neutralActionDark]  | ![][neutralActionDark]  |
+| CSS variable                 | Light mode              | Dark mode               |
+| ---------------------------- | ----------------------- | ----------------------- |
+| `--p-neutral-action`         | ![][neutralactionlight] | ![][neutralactiondark]  |
+| `--p-neutral-action-inverse` | ![][neutralactiondark]  | ![][neutralactionlight] |
+| `--p-neutral-action-light`   | ![][neutralactionlight] | ![][neutralactionlight] |
+| `--p-neutral-action-dark`    | ![][neutralactiondark]  | ![][neutralactiondark]  |
 
-[neutralActionLight]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[neutralActionDark]: https://www.gifpng.com/64x32/35353b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[neutralactionlight]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[neutralactiondark]: https://www.gifpng.com/64x32/35353b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -666,15 +659,15 @@ Used for secondary buttons and tertiary buttons, as well as in form elements as 
 
 Used as a disabled state for secondary buttons
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-neutral-action-disabled`         | ![][neutralActionDisabledLight] | ![][neutralActionDisabledDark]  |
-| `--p-neutral-action-disabled-inverse` | ![][neutralActionDisabledDark]  | ![][neutralActionDisabledLight] |
-| `--p-neutral-action-disabled-light`   | ![][neutralActionDisabledLight] | ![][neutralActionDisabledLight] |
-| `--p-neutral-action-disabled-dark`    | ![][neutralActionDisabledDark]  | ![][neutralActionDisabledDark]  |
+| CSS variable                          | Light mode                      | Dark mode                       |
+| ------------------------------------- | ------------------------------- | ------------------------------- |
+| `--p-neutral-action-disabled`         | ![][neutralactiondisabledlight] | ![][neutralactiondisableddark]  |
+| `--p-neutral-action-disabled-inverse` | ![][neutralactiondisableddark]  | ![][neutralactiondisabledlight] |
+| `--p-neutral-action-disabled-light`   | ![][neutralactiondisabledlight] | ![][neutralactiondisabledlight] |
+| `--p-neutral-action-disabled-dark`    | ![][neutralactiondisableddark]  | ![][neutralactiondisableddark]  |
 
-[neutralActionDisabledLight]: https://www.gifpng.com/64x32/ededed/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[neutralActionDisabledDark]: https://www.gifpng.com/64x32/222226/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[neutralactiondisabledlight]: https://www.gifpng.com/64x32/ededed/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[neutralactiondisableddark]: https://www.gifpng.com/64x32/222226/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -684,15 +677,15 @@ Used as a disabled state for secondary buttons
 
 Used as a hovered state for secondary buttons
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-neutral-action-hovered`         | ![][neutralActionHoveredLight] | ![][neutralActionHoveredDark]  |
-| `--p-neutral-action-hovered-inverse` | ![][neutralActionHoveredDark]  | ![][neutralActionHoveredLight] |
-| `--p-neutral-action-hovered-light`   | ![][neutralActionHoveredLight] | ![][neutralActionHoveredLight] |
-| `--p-neutral-action-hovered-dark`    | ![][neutralActionHoveredDark]  | ![][neutralActionHoveredDark]  |
+| CSS variable                         | Light mode                     | Dark mode                      |
+| ------------------------------------ | ------------------------------ | ------------------------------ |
+| `--p-neutral-action-hovered`         | ![][neutralactionhoveredlight] | ![][neutralactionhovereddark]  |
+| `--p-neutral-action-hovered-inverse` | ![][neutralactionhovereddark]  | ![][neutralactionhoveredlight] |
+| `--p-neutral-action-hovered-light`   | ![][neutralactionhoveredlight] | ![][neutralactionhoveredlight] |
+| `--p-neutral-action-hovered-dark`    | ![][neutralactionhovereddark]  | ![][neutralactionhovereddark]  |
 
-[neutralActionHoveredLight]: https://www.gifpng.com/64x32/e2e2e4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[neutralActionHoveredDark]: https://www.gifpng.com/64x32/3a3a40/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[neutralactionhoveredlight]: https://www.gifpng.com/64x32/e2e2e4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[neutralactionhovereddark]: https://www.gifpng.com/64x32/3a3a40/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -702,15 +695,15 @@ Used as a hovered state for secondary buttons
 
 Used as a pressed state for secondary buttons
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-neutral-action-pressed`         | ![][neutralActionPressedLight] | ![][neutralActionPressedDark]  |
-| `--p-neutral-action-pressed-inverse` | ![][neutralActionPressedDark]  | ![][neutralActionPressedLight] |
-| `--p-neutral-action-pressed-light`   | ![][neutralActionPressedLight] | ![][neutralActionPressedLight] |
-| `--p-neutral-action-pressed-dark`    | ![][neutralActionPressedDark]  | ![][neutralActionPressedDark]  |
+| CSS variable                         | Light mode                     | Dark mode                      |
+| ------------------------------------ | ------------------------------ | ------------------------------ |
+| `--p-neutral-action-pressed`         | ![][neutralactionpressedlight] | ![][neutralactionpresseddark]  |
+| `--p-neutral-action-pressed-inverse` | ![][neutralactionpresseddark]  | ![][neutralactionpressedlight] |
+| `--p-neutral-action-pressed-light`   | ![][neutralactionpressedlight] | ![][neutralactionpressedlight] |
+| `--p-neutral-action-pressed-dark`    | ![][neutralactionpresseddark]  | ![][neutralactionpresseddark]  |
 
-[neutralActionPressedLight]: https://www.gifpng.com/64x32/dadadc/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[neutralActionPressedDark]: https://www.gifpng.com/64x32/5b5b62/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[neutralactionpressedlight]: https://www.gifpng.com/64x32/dadadc/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[neutralactionpresseddark]: https://www.gifpng.com/64x32/5b5b62/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -724,13 +717,12 @@ GET DESC FROM TYPE
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-primary`         | ![][primaryLight] | ![][primaryDark]  |
+| CSS variable  | Light mode        | Dark mode        |
+| ------------- | ----------------- | ---------------- |
+| `--p-primary` | ![][primarylight] | ![][primarydark] |
 
-
-[primaryLight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primaryDark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[primarylight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[primarydark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -740,13 +732,12 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 Used as the background color for primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-primary-action`         | ![][primaryActionLight] | ![][primaryActionDark]  |
+| CSS variable         | Light mode              | Dark mode              |
+| -------------------- | ----------------------- | ---------------------- |
+| `--p-primary-action` | ![][primaryactionlight] | ![][primaryactiondark] |
 
-
-[primaryActionLight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primaryActionDark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[primaryactionlight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[primaryactiondark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -756,13 +747,12 @@ Used as the background color for primary actions, and as the fill color for icon
 
 Used as the background color for disabled primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-primary-action-disabled`         | ![][primaryActionDisabledLight] | ![][primaryActionDisabledDark]  |
+| CSS variable                  | Light mode                      | Dark mode                      |
+| ----------------------------- | ------------------------------- | ------------------------------ |
+| `--p-primary-action-disabled` | ![][primaryactiondisabledlight] | ![][primaryactiondisableddark] |
 
-
-[primaryActionDisabledLight]: https://www.gifpng.com/64x32/005741/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primaryActionDisabledDark]: https://www.gifpng.com/64x32/005741/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[primaryactiondisabledlight]: https://www.gifpng.com/64x32/005741/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[primaryactiondisableddark]: https://www.gifpng.com/64x32/005741/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -772,15 +762,15 @@ Used as the background color for disabled primary actions, and as the fill color
 
 Used as the background color for hovered primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-primary-action-hovered`         | ![][primaryActionHoveredLight] | ![][primaryActionHoveredDark]  |
-| `--p-primary-action-hovered-inverse` | ![][primaryActionHoveredDark]  | ![][primaryActionHoveredLight] |
-| `--p-primary-action-hovered-light`   | ![][primaryActionHoveredLight] | ![][primaryActionHoveredLight] |
-| `--p-primary-action-hovered-dark`    | ![][primaryActionHoveredDark]  | ![][primaryActionHoveredDark]  |
+| CSS variable                         | Light mode                     | Dark mode                      |
+| ------------------------------------ | ------------------------------ | ------------------------------ |
+| `--p-primary-action-hovered`         | ![][primaryactionhoveredlight] | ![][primaryactionhovereddark]  |
+| `--p-primary-action-hovered-inverse` | ![][primaryactionhovereddark]  | ![][primaryactionhoveredlight] |
+| `--p-primary-action-hovered-light`   | ![][primaryactionhoveredlight] | ![][primaryactionhoveredlight] |
+| `--p-primary-action-hovered-dark`    | ![][primaryactionhovereddark]  | ![][primaryactionhovereddark]  |
 
-[primaryActionHoveredLight]: https://www.gifpng.com/64x32/007054/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primaryActionHoveredDark]: https://www.gifpng.com/64x32/00946f/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[primaryactionhoveredlight]: https://www.gifpng.com/64x32/007054/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[primaryactionhovereddark]: https://www.gifpng.com/64x32/00946f/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -790,15 +780,15 @@ Used as the background color for hovered primary actions, and as the fill color 
 
 Used as the background color for pressed primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-primary-action-pressed`         | ![][primaryActionPressedLight] | ![][primaryActionPressedDark]  |
-| `--p-primary-action-pressed-inverse` | ![][primaryActionPressedDark]  | ![][primaryActionPressedLight] |
-| `--p-primary-action-pressed-light`   | ![][primaryActionPressedLight] | ![][primaryActionPressedLight] |
-| `--p-primary-action-pressed-dark`    | ![][primaryActionPressedDark]  | ![][primaryActionPressedDark]  |
+| CSS variable                         | Light mode                     | Dark mode                      |
+| ------------------------------------ | ------------------------------ | ------------------------------ |
+| `--p-primary-action-pressed`         | ![][primaryactionpressedlight] | ![][primaryactionpresseddark]  |
+| `--p-primary-action-pressed-inverse` | ![][primaryactionpresseddark]  | ![][primaryactionpressedlight] |
+| `--p-primary-action-pressed-light`   | ![][primaryactionpressedlight] | ![][primaryactionpressedlight] |
+| `--p-primary-action-pressed-dark`    | ![][primaryactionpresseddark]  | ![][primaryactionpresseddark]  |
 
-[primaryActionPressedLight]: https://www.gifpng.com/64x32/00664d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primaryActionPressedDark]: https://www.gifpng.com/64x32/00a37a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[primaryactionpressedlight]: https://www.gifpng.com/64x32/00664d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[primaryactionpresseddark]: https://www.gifpng.com/64x32/00a37a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -808,13 +798,12 @@ Used as the background color for pressed primary actions, and as the fill color 
 
 For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-icon-on-primary`         | ![][iconOnPrimaryLight] | ![][iconOnPrimaryDark]  |
+| CSS variable          | Light mode              | Dark mode              |
+| --------------------- | ----------------------- | ---------------------- |
+| `--p-icon-on-primary` | ![][icononprimarylight] | ![][icononprimarydark] |
 
-
-[iconOnPrimaryLight]: https://www.gifpng.com/64x32/e5fff4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[iconOnPrimaryDark]: https://www.gifpng.com/64x32/e5fff4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[icononprimarylight]: https://www.gifpng.com/64x32/e5fff4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[icononprimarydark]: https://www.gifpng.com/64x32/e5fff4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -824,13 +813,12 @@ For use as a fill color for icons on primary actions. Not for use in icons on na
 
 For use as a fill color for icons on subdued primary actions. Not for use in icons on navigation and tabs.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-icon-subdued-on-primary`         | ![][iconSubduedOnPrimaryLight] | ![][iconSubduedOnPrimaryDark]  |
+| CSS variable                  | Light mode                     | Dark mode                     |
+| ----------------------------- | ------------------------------ | ----------------------------- |
+| `--p-icon-subdued-on-primary` | ![][iconsubduedonprimarylight] | ![][iconsubduedonprimarydark] |
 
-
-[iconSubduedOnPrimaryLight]: https://www.gifpng.com/64x32/00fac0/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[iconSubduedOnPrimaryDark]: https://www.gifpng.com/64x32/00fac0/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[iconsubduedonprimarylight]: https://www.gifpng.com/64x32/00fac0/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[iconsubduedonprimarydark]: https://www.gifpng.com/64x32/00fac0/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -840,13 +828,12 @@ For use as a fill color for icons on subdued primary actions. Not for use in ico
 
 For use as a fill color for icons on disabled primary actions. Not for use in icons on navigation and tabs.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-icon-disabled-on-primary`         | ![][iconDisabledOnPrimaryLight] | ![][iconDisabledOnPrimaryDark]  |
+| CSS variable                   | Light mode                      | Dark mode                      |
+| ------------------------------ | ------------------------------- | ------------------------------ |
+| `--p-icon-disabled-on-primary` | ![][icondisabledonprimarylight] | ![][icondisabledonprimarydark] |
 
-
-[iconDisabledOnPrimaryLight]: https://www.gifpng.com/64x32/00dba4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[iconDisabledOnPrimaryDark]: https://www.gifpng.com/64x32/00dba4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[icondisabledonprimarylight]: https://www.gifpng.com/64x32/00dba4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[icondisabledonprimarydark]: https://www.gifpng.com/64x32/00dba4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -856,13 +843,12 @@ For use as a fill color for icons on disabled primary actions. Not for use in ic
 
 For use as a text color on primary actions. Not for use in text on navigation and tabs.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-text-on-primary`         | ![][textOnPrimaryLight] | ![][textOnPrimaryDark]  |
+| CSS variable          | Light mode              | Dark mode              |
+| --------------------- | ----------------------- | ---------------------- |
+| `--p-text-on-primary` | ![][textonprimarylight] | ![][textonprimarydark] |
 
-
-[textOnPrimaryLight]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[textOnPrimaryDark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[textonprimarylight]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[textonprimarydark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -872,13 +858,12 @@ For use as a text color on primary actions. Not for use in text on navigation an
 
 For use as a text color on subdued primary actions. Not for use in text on navigation and tabs.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-text-subdued-on-primary`         | ![][textSubduedOnPrimaryLight] | ![][textSubduedOnPrimaryDark]  |
+| CSS variable                  | Light mode                     | Dark mode                     |
+| ----------------------------- | ------------------------------ | ----------------------------- |
+| `--p-text-subdued-on-primary` | ![][textsubduedonprimarylight] | ![][textsubduedonprimarydark] |
 
-
-[textSubduedOnPrimaryLight]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[textSubduedOnPrimaryDark]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[textsubduedonprimarylight]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[textsubduedonprimarydark]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -888,13 +873,12 @@ For use as a text color on subdued primary actions. Not for use in text on navig
 
 For use as a text color on disabled primary actions. Not for use in text on navigation and tabs.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-text-disabled-on-primary`         | ![][textDisabledOnPrimaryLight] | ![][textDisabledOnPrimaryDark]  |
+| CSS variable                   | Light mode                      | Dark mode                      |
+| ------------------------------ | ------------------------------- | ------------------------------ |
+| `--p-text-disabled-on-primary` | ![][textdisabledonprimarylight] | ![][textdisabledonprimarydark] |
 
-
-[textDisabledOnPrimaryLight]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[textDisabledOnPrimaryDark]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[textdisabledonprimarylight]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[textdisabledonprimarydark]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -904,15 +888,15 @@ For use as a text color on disabled primary actions. Not for use in text on navi
 
 Used as a surface color to indicate selected interactive states in navigation and tabs.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-primary-selected`         | ![][primarySelectedLight] | ![][primarySelectedDark]  |
-| `--p-primary-selected-inverse` | ![][primarySelectedDark]  | ![][primarySelectedLight] |
-| `--p-primary-selected-light`   | ![][primarySelectedLight] | ![][primarySelectedLight] |
-| `--p-primary-selected-dark`    | ![][primarySelectedDark]  | ![][primarySelectedDark]  |
+| CSS variable                   | Light mode                | Dark mode                 |
+| ------------------------------ | ------------------------- | ------------------------- |
+| `--p-primary-selected`         | ![][primaryselectedlight] | ![][primaryselecteddark]  |
+| `--p-primary-selected-inverse` | ![][primaryselecteddark]  | ![][primaryselectedlight] |
+| `--p-primary-selected-light`   | ![][primaryselectedlight] | ![][primaryselectedlight] |
+| `--p-primary-selected-dark`    | ![][primaryselecteddark]  | ![][primaryselecteddark]  |
 
-[primarySelectedLight]: https://www.gifpng.com/64x32/e1f5ec/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primarySelectedDark]: https://www.gifpng.com/64x32/0c1210/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[primaryselectedlight]: https://www.gifpng.com/64x32/e1f5ec/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[primaryselecteddark]: https://www.gifpng.com/64x32/0c1210/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -922,15 +906,15 @@ Used as a surface color to indicate selected interactive states in navigation an
 
 Used as a surface color to indicate selected interactive states that are hovered in navigation and tabs.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-primary-selected-hovered`         | ![][primarySelectedHoveredLight] | ![][primarySelectedHoveredDark]  |
-| `--p-primary-selected-hovered-inverse` | ![][primarySelectedHoveredDark]  | ![][primarySelectedHoveredLight] |
-| `--p-primary-selected-hovered-light`   | ![][primarySelectedHoveredLight] | ![][primarySelectedHoveredLight] |
-| `--p-primary-selected-hovered-dark`    | ![][primarySelectedHoveredDark]  | ![][primarySelectedHoveredDark]  |
+| CSS variable                           | Light mode                       | Dark mode                        |
+| -------------------------------------- | -------------------------------- | -------------------------------- |
+| `--p-primary-selected-hovered`         | ![][primaryselectedhoveredlight] | ![][primaryselectedhovereddark]  |
+| `--p-primary-selected-hovered-inverse` | ![][primaryselectedhovereddark]  | ![][primaryselectedhoveredlight] |
+| `--p-primary-selected-hovered-light`   | ![][primaryselectedhoveredlight] | ![][primaryselectedhoveredlight] |
+| `--p-primary-selected-hovered-dark`    | ![][primaryselectedhovereddark]  | ![][primaryselectedhovereddark]  |
 
-[primarySelectedHoveredLight]: https://www.gifpng.com/64x32/b3d0c3/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primarySelectedHoveredDark]: https://www.gifpng.com/64x32/272f2b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[primaryselectedhoveredlight]: https://www.gifpng.com/64x32/b3d0c3/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[primaryselectedhovereddark]: https://www.gifpng.com/64x32/272f2b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -940,15 +924,15 @@ Used as a surface color to indicate selected interactive states that are hovered
 
 Used as a surface color to indicate selected interactive states that are pressed in navigation and tabs.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-primary-selected-pressed`         | ![][primarySelectedPressedLight] | ![][primarySelectedPressedDark]  |
-| `--p-primary-selected-pressed-inverse` | ![][primarySelectedPressedDark]  | ![][primarySelectedPressedLight] |
-| `--p-primary-selected-pressed-light`   | ![][primarySelectedPressedLight] | ![][primarySelectedPressedLight] |
-| `--p-primary-selected-pressed-dark`    | ![][primarySelectedPressedDark]  | ![][primarySelectedPressedDark]  |
+| CSS variable                           | Light mode                       | Dark mode                        |
+| -------------------------------------- | -------------------------------- | -------------------------------- |
+| `--p-primary-selected-pressed`         | ![][primaryselectedpressedlight] | ![][primaryselectedpresseddark]  |
+| `--p-primary-selected-pressed-inverse` | ![][primaryselectedpresseddark]  | ![][primaryselectedpressedlight] |
+| `--p-primary-selected-pressed-light`   | ![][primaryselectedpressedlight] | ![][primaryselectedpressedlight] |
+| `--p-primary-selected-pressed-dark`    | ![][primaryselectedpresseddark]  | ![][primaryselectedpresseddark]  |
 
-[primarySelectedPressedLight]: https://www.gifpng.com/64x32/a3bdb1/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primarySelectedPressedDark]: https://www.gifpng.com/64x32/363f3b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[primaryselectedpressedlight]: https://www.gifpng.com/64x32/a3bdb1/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[primaryselectedpresseddark]: https://www.gifpng.com/64x32/363f3b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -962,13 +946,12 @@ GET DESC FROM TYPE
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical`         | ![][criticalLight] | ![][criticalDark]  |
+| CSS variable   | Light mode         | Dark mode         |
+| -------------- | ------------------ | ----------------- |
+| `--p-critical` | ![][criticallight] | ![][criticaldark] |
 
-
-[criticalLight]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalDark]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticallight]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticaldark]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -978,13 +961,12 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 For use as a border on critical components such as banners, and as an outline on interactive elements in an error state.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-border`         | ![][criticalBorderLight] | ![][criticalBorderDark]  |
+| CSS variable          | Light mode               | Dark mode               |
+| --------------------- | ------------------------ | ----------------------- |
+| `--p-critical-border` | ![][criticalborderlight] | ![][criticalborderdark] |
 
-
-[criticalBorderLight]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalBorderDark]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticalborderlight]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticalborderdark]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -994,15 +976,15 @@ For use as a border on critical components such as banners, and as an outline on
 
 For use as a disabled border on critical components such as banners, and as an outline on interactive elements in an error state.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-border-disabled`         | ![][criticalBorderDisabledLight] | ![][criticalBorderDisabledDark]  |
-| `--p-critical-border-disabled-inverse` | ![][criticalBorderDisabledDark]  | ![][criticalBorderDisabledLight] |
-| `--p-critical-border-disabled-light`   | ![][criticalBorderDisabledLight] | ![][criticalBorderDisabledLight] |
-| `--p-critical-border-disabled-dark`    | ![][criticalBorderDisabledDark]  | ![][criticalBorderDisabledDark]  |
+| CSS variable                           | Light mode                       | Dark mode                        |
+| -------------------------------------- | -------------------------------- | -------------------------------- |
+| `--p-critical-border-disabled`         | ![][criticalborderdisabledlight] | ![][criticalborderdisableddark]  |
+| `--p-critical-border-disabled-inverse` | ![][criticalborderdisableddark]  | ![][criticalborderdisabledlight] |
+| `--p-critical-border-disabled-light`   | ![][criticalborderdisabledlight] | ![][criticalborderdisabledlight] |
+| `--p-critical-border-disabled-dark`    | ![][criticalborderdisableddark]  | ![][criticalborderdisableddark]  |
 
-[criticalBorderDisabledLight]: https://www.gifpng.com/64x32/febcb9/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalBorderDisabledDark]: https://www.gifpng.com/64x32/811704/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticalborderdisabledlight]: https://www.gifpng.com/64x32/febcb9/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticalborderdisableddark]: https://www.gifpng.com/64x32/811704/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1012,15 +994,15 @@ For use as a disabled border on critical components such as banners, and as an o
 
 For use as an icon fill color on top of critical elements.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-icon`         | ![][criticalIconLight] | ![][criticalIconDark]  |
-| `--p-critical-icon-inverse` | ![][criticalIconDark]  | ![][criticalIconLight] |
-| `--p-critical-icon-light`   | ![][criticalIconLight] | ![][criticalIconLight] |
-| `--p-critical-icon-dark`    | ![][criticalIconDark]  | ![][criticalIconDark]  |
+| CSS variable                | Light mode             | Dark mode              |
+| --------------------------- | ---------------------- | ---------------------- |
+| `--p-critical-icon`         | ![][criticaliconlight] | ![][criticalicondark]  |
+| `--p-critical-icon-inverse` | ![][criticalicondark]  | ![][criticaliconlight] |
+| `--p-critical-icon-light`   | ![][criticaliconlight] | ![][criticaliconlight] |
+| `--p-critical-icon-dark`    | ![][criticalicondark]  | ![][criticalicondark]  |
 
-[criticalIconLight]: https://www.gifpng.com/64x32/eb300f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalIconDark]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticaliconlight]: https://www.gifpng.com/64x32/eb300f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticalicondark]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1030,15 +1012,15 @@ For use as an icon fill color on top of critical elements.
 
 For use as a surface color on critical elements including badges.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-surface`         | ![][criticalSurfaceLight] | ![][criticalSurfaceDark]  |
-| `--p-critical-surface-inverse` | ![][criticalSurfaceDark]  | ![][criticalSurfaceLight] |
-| `--p-critical-surface-light`   | ![][criticalSurfaceLight] | ![][criticalSurfaceLight] |
-| `--p-critical-surface-dark`    | ![][criticalSurfaceDark]  | ![][criticalSurfaceDark]  |
+| CSS variable                   | Light mode                | Dark mode                 |
+| ------------------------------ | ------------------------- | ------------------------- |
+| `--p-critical-surface`         | ![][criticalsurfacelight] | ![][criticalsurfacedark]  |
+| `--p-critical-surface-inverse` | ![][criticalsurfacedark]  | ![][criticalsurfacelight] |
+| `--p-critical-surface-light`   | ![][criticalsurfacelight] | ![][criticalsurfacelight] |
+| `--p-critical-surface-dark`    | ![][criticalsurfacedark]  | ![][criticalsurfacedark]  |
 
-[criticalSurfaceLight]: https://www.gifpng.com/64x32/fffafa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalSurfaceDark]: https://www.gifpng.com/64x32/460701/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticalsurfacelight]: https://www.gifpng.com/64x32/fffafa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticalsurfacedark]: https://www.gifpng.com/64x32/460701/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1048,15 +1030,15 @@ For use as a surface color on critical elements including badges.
 
 For use as a subdued surface color on critical elements including banners.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-surface-subdued`         | ![][criticalSurfaceSubduedLight] | ![][criticalSurfaceSubduedDark]  |
-| `--p-critical-surface-subdued-inverse` | ![][criticalSurfaceSubduedDark]  | ![][criticalSurfaceSubduedLight] |
-| `--p-critical-surface-subdued-light`   | ![][criticalSurfaceSubduedLight] | ![][criticalSurfaceSubduedLight] |
-| `--p-critical-surface-subdued-dark`    | ![][criticalSurfaceSubduedDark]  | ![][criticalSurfaceSubduedDark]  |
+| CSS variable                           | Light mode                       | Dark mode                        |
+| -------------------------------------- | -------------------------------- | -------------------------------- |
+| `--p-critical-surface-subdued`         | ![][criticalsurfacesubduedlight] | ![][criticalsurfacesubdueddark]  |
+| `--p-critical-surface-subdued-inverse` | ![][criticalsurfacesubdueddark]  | ![][criticalsurfacesubduedlight] |
+| `--p-critical-surface-subdued-light`   | ![][criticalsurfacesubduedlight] | ![][criticalsurfacesubduedlight] |
+| `--p-critical-surface-subdued-dark`    | ![][criticalsurfacesubdueddark]  | ![][criticalsurfacesubdueddark]  |
 
-[criticalSurfaceSubduedLight]: https://www.gifpng.com/64x32/fff6f5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalSurfaceSubduedDark]: https://www.gifpng.com/64x32/460701/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticalsurfacesubduedlight]: https://www.gifpng.com/64x32/fff6f5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticalsurfacesubdueddark]: https://www.gifpng.com/64x32/460701/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1066,15 +1048,15 @@ For use as a subdued surface color on critical elements including banners.
 
 For use as a surface color on critical interactive elements including action list items in a hovered state.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-surface-subdued-hovered`         | ![][criticalSurfaceSubduedHoveredLight] | ![][criticalSurfaceSubduedHoveredDark]  |
-| `--p-critical-surface-subdued-hovered-inverse` | ![][criticalSurfaceSubduedHoveredDark]  | ![][criticalSurfaceSubduedHoveredLight] |
-| `--p-critical-surface-subdued-hovered-light`   | ![][criticalSurfaceSubduedHoveredLight] | ![][criticalSurfaceSubduedHoveredLight] |
-| `--p-critical-surface-subdued-hovered-dark`    | ![][criticalSurfaceSubduedHoveredDark]  | ![][criticalSurfaceSubduedHoveredDark]  |
+| CSS variable                                   | Light mode                              | Dark mode                               |
+| ---------------------------------------------- | --------------------------------------- | --------------------------------------- |
+| `--p-critical-surface-subdued-hovered`         | ![][criticalsurfacesubduedhoveredlight] | ![][criticalsurfacesubduedhovereddark]  |
+| `--p-critical-surface-subdued-hovered-inverse` | ![][criticalsurfacesubduedhovereddark]  | ![][criticalsurfacesubduedhoveredlight] |
+| `--p-critical-surface-subdued-hovered-light`   | ![][criticalsurfacesubduedhoveredlight] | ![][criticalsurfacesubduedhoveredlight] |
+| `--p-critical-surface-subdued-hovered-dark`    | ![][criticalsurfacesubduedhovereddark]  | ![][criticalsurfacesubduedhovereddark]  |
 
-[criticalSurfaceSubduedHoveredLight]: https://www.gifpng.com/64x32/fee7e6/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalSurfaceSubduedHoveredDark]: https://www.gifpng.com/64x32/431714/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticalsurfacesubduedhoveredlight]: https://www.gifpng.com/64x32/fee7e6/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticalsurfacesubduedhovereddark]: https://www.gifpng.com/64x32/431714/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1084,15 +1066,15 @@ For use as a surface color on critical interactive elements including action lis
 
 For use as a surface color on critical interactive elements including action list items in a pressed state.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-surface-subdued-pressed`         | ![][criticalSurfaceSubduedPressedLight] | ![][criticalSurfaceSubduedPressedDark]  |
-| `--p-critical-surface-subdued-pressed-inverse` | ![][criticalSurfaceSubduedPressedDark]  | ![][criticalSurfaceSubduedPressedLight] |
-| `--p-critical-surface-subdued-pressed-light`   | ![][criticalSurfaceSubduedPressedLight] | ![][criticalSurfaceSubduedPressedLight] |
-| `--p-critical-surface-subdued-pressed-dark`    | ![][criticalSurfaceSubduedPressedDark]  | ![][criticalSurfaceSubduedPressedDark]  |
+| CSS variable                                   | Light mode                              | Dark mode                               |
+| ---------------------------------------------- | --------------------------------------- | --------------------------------------- |
+| `--p-critical-surface-subdued-pressed`         | ![][criticalsurfacesubduedpressedlight] | ![][criticalsurfacesubduedpresseddark]  |
+| `--p-critical-surface-subdued-pressed-inverse` | ![][criticalsurfacesubduedpresseddark]  | ![][criticalsurfacesubduedpressedlight] |
+| `--p-critical-surface-subdued-pressed-light`   | ![][criticalsurfacesubduedpressedlight] | ![][criticalsurfacesubduedpressedlight] |
+| `--p-critical-surface-subdued-pressed-dark`    | ![][criticalsurfacesubduedpresseddark]  | ![][criticalsurfacesubduedpresseddark]  |
 
-[criticalSurfaceSubduedPressedLight]: https://www.gifpng.com/64x32/fed4d2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalSurfaceSubduedPressedDark]: https://www.gifpng.com/64x32/6d1103/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticalsurfacesubduedpressedlight]: https://www.gifpng.com/64x32/fed4d2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticalsurfacesubduedpresseddark]: https://www.gifpng.com/64x32/6d1103/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1102,15 +1084,15 @@ For use as a surface color on critical interactive elements including action lis
 
 For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-text`         | ![][criticalTextLight] | ![][criticalTextDark]  |
-| `--p-critical-text-inverse` | ![][criticalTextDark]  | ![][criticalTextLight] |
-| `--p-critical-text-light`   | ![][criticalTextLight] | ![][criticalTextLight] |
-| `--p-critical-text-dark`    | ![][criticalTextDark]  | ![][criticalTextDark]  |
+| CSS variable                | Light mode             | Dark mode              |
+| --------------------------- | ---------------------- | ---------------------- |
+| `--p-critical-text`         | ![][criticaltextlight] | ![][criticaltextdark]  |
+| `--p-critical-text-inverse` | ![][criticaltextdark]  | ![][criticaltextlight] |
+| `--p-critical-text-light`   | ![][criticaltextlight] | ![][criticaltextlight] |
+| `--p-critical-text-dark`    | ![][criticaltextdark]  | ![][criticaltextdark]  |
 
-[criticalTextLight]: https://www.gifpng.com/64x32/b42208/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalTextDark]: https://www.gifpng.com/64x32/fd5849/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticaltextlight]: https://www.gifpng.com/64x32/b42208/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticaltextdark]: https://www.gifpng.com/64x32/fd5849/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1120,15 +1102,15 @@ For use as a text color in inert critical elements such as exception list. Not f
 
 For use as the background color for destructive buttons, and as the background color for error toast messages.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-action`         | ![][criticalActionLight] | ![][criticalActionDark]  |
-| `--p-critical-action-inverse` | ![][criticalActionDark]  | ![][criticalActionLight] |
-| `--p-critical-action-light`   | ![][criticalActionLight] | ![][criticalActionLight] |
-| `--p-critical-action-dark`    | ![][criticalActionDark]  | ![][criticalActionDark]  |
+| CSS variable                  | Light mode               | Dark mode                |
+| ----------------------------- | ------------------------ | ------------------------ |
+| `--p-critical-action`         | ![][criticalactionlight] | ![][criticalactiondark]  |
+| `--p-critical-action-inverse` | ![][criticalactiondark]  | ![][criticalactionlight] |
+| `--p-critical-action-light`   | ![][criticalactionlight] | ![][criticalactionlight] |
+| `--p-critical-action-dark`    | ![][criticalactiondark]  | ![][criticalactiondark]  |
 
-[criticalActionLight]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalActionDark]: https://www.gifpng.com/64x32/cf290c/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticalactionlight]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticalactiondark]: https://www.gifpng.com/64x32/cf290c/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1138,15 +1120,15 @@ For use as the background color for destructive buttons, and as the background c
 
 For use as the background color for disabled destructive buttons, and as the background color for error toast messages.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-action-disabled`         | ![][criticalActionDisabledLight] | ![][criticalActionDisabledDark]  |
-| `--p-critical-action-disabled-inverse` | ![][criticalActionDisabledDark]  | ![][criticalActionDisabledLight] |
-| `--p-critical-action-disabled-light`   | ![][criticalActionDisabledLight] | ![][criticalActionDisabledLight] |
-| `--p-critical-action-disabled-dark`    | ![][criticalActionDisabledDark]  | ![][criticalActionDisabledDark]  |
+| CSS variable                           | Light mode                       | Dark mode                        |
+| -------------------------------------- | -------------------------------- | -------------------------------- |
+| `--p-critical-action-disabled`         | ![][criticalactiondisabledlight] | ![][criticalactiondisableddark]  |
+| `--p-critical-action-disabled-inverse` | ![][criticalactiondisableddark]  | ![][criticalactiondisabledlight] |
+| `--p-critical-action-disabled-light`   | ![][criticalactiondisabledlight] | ![][criticalactiondisabledlight] |
+| `--p-critical-action-disabled-dark`    | ![][criticalactiondisableddark]  | ![][criticalactiondisableddark]  |
 
-[criticalActionDisabledLight]: https://www.gifpng.com/64x32/fd4f3f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalActionDisabledDark]: https://www.gifpng.com/64x32/bd250a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticalactiondisabledlight]: https://www.gifpng.com/64x32/fd4f3f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticalactiondisableddark]: https://www.gifpng.com/64x32/bd250a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1156,15 +1138,15 @@ For use as the background color for disabled destructive buttons, and as the bac
 
 For use as the background color for hovered destructive buttons, and as the background color for error toast messages.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-action-hovered`         | ![][criticalActionHoveredLight] | ![][criticalActionHoveredDark]  |
-| `--p-critical-action-hovered-inverse` | ![][criticalActionHoveredDark]  | ![][criticalActionHoveredLight] |
-| `--p-critical-action-hovered-light`   | ![][criticalActionHoveredLight] | ![][criticalActionHoveredLight] |
-| `--p-critical-action-hovered-dark`    | ![][criticalActionHoveredDark]  | ![][criticalActionHoveredDark]  |
+| CSS variable                          | Light mode                      | Dark mode                       |
+| ------------------------------------- | ------------------------------- | ------------------------------- |
+| `--p-critical-action-hovered`         | ![][criticalactionhoveredlight] | ![][criticalactionhovereddark]  |
+| `--p-critical-action-hovered-inverse` | ![][criticalactionhovereddark]  | ![][criticalactionhoveredlight] |
+| `--p-critical-action-hovered-light`   | ![][criticalactionhoveredlight] | ![][criticalactionhoveredlight] |
+| `--p-critical-action-hovered-dark`    | ![][criticalactionhovereddark]  | ![][criticalactionhovereddark]  |
 
-[criticalActionHoveredLight]: https://www.gifpng.com/64x32/c2260a/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalActionHoveredDark]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticalactionhoveredlight]: https://www.gifpng.com/64x32/c2260a/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticalactionhovereddark]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1174,15 +1156,15 @@ For use as the background color for hovered destructive buttons, and as the back
 
 For use as the background color for pressed destructive buttons, and as the background color for error toast messages.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-action-pressed`         | ![][criticalActionPressedLight] | ![][criticalActionPressedDark]  |
-| `--p-critical-action-pressed-inverse` | ![][criticalActionPressedDark]  | ![][criticalActionPressedLight] |
-| `--p-critical-action-pressed-light`   | ![][criticalActionPressedLight] | ![][criticalActionPressedLight] |
-| `--p-critical-action-pressed-dark`    | ![][criticalActionPressedDark]  | ![][criticalActionPressedDark]  |
+| CSS variable                          | Light mode                      | Dark mode                       |
+| ------------------------------------- | ------------------------------- | ------------------------------- |
+| `--p-critical-action-pressed`         | ![][criticalactionpressedlight] | ![][criticalactionpresseddark]  |
+| `--p-critical-action-pressed-inverse` | ![][criticalactionpresseddark]  | ![][criticalactionpressedlight] |
+| `--p-critical-action-pressed-light`   | ![][criticalactionpressedlight] | ![][criticalactionpressedlight] |
+| `--p-critical-action-pressed-dark`    | ![][criticalactionpresseddark]  | ![][criticalactionpresseddark]  |
 
-[criticalActionPressedLight]: https://www.gifpng.com/64x32/aa2008/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalActionPressedDark]: https://www.gifpng.com/64x32/fd5849/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticalactionpressedlight]: https://www.gifpng.com/64x32/aa2008/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticalactionpresseddark]: https://www.gifpng.com/64x32/fd5849/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1192,15 +1174,15 @@ For use as the background color for pressed destructive buttons, and as the back
 
 For use as a text color in destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-link`         | ![][criticalLinkLight] | ![][criticalLinkDark]  |
-| `--p-critical-link-inverse` | ![][criticalLinkDark]  | ![][criticalLinkLight] |
-| `--p-critical-link-light`   | ![][criticalLinkLight] | ![][criticalLinkLight] |
-| `--p-critical-link-dark`    | ![][criticalLinkDark]  | ![][criticalLinkDark]  |
+| CSS variable                | Light mode             | Dark mode              |
+| --------------------------- | ---------------------- | ---------------------- |
+| `--p-critical-link`         | ![][criticallinklight] | ![][criticallinkdark]  |
+| `--p-critical-link-inverse` | ![][criticallinkdark]  | ![][criticallinklight] |
+| `--p-critical-link-light`   | ![][criticallinklight] | ![][criticallinklight] |
+| `--p-critical-link-dark`    | ![][criticallinkdark]  | ![][criticallinkdark]  |
 
-[criticalLinkLight]: https://www.gifpng.com/64x32/dd2d0e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalLinkDark]: https://www.gifpng.com/64x32/fd7068/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticallinklight]: https://www.gifpng.com/64x32/dd2d0e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticallinkdark]: https://www.gifpng.com/64x32/fd7068/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1210,15 +1192,15 @@ For use as a text color in destructive plain buttons, as well as a text color on
 
 For use as a text color in disabled destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-link-disabled`         | ![][criticalLinkDisabledLight] | ![][criticalLinkDisabledDark]  |
-| `--p-critical-link-disabled-inverse` | ![][criticalLinkDisabledDark]  | ![][criticalLinkDisabledLight] |
-| `--p-critical-link-disabled-light`   | ![][criticalLinkDisabledLight] | ![][criticalLinkDisabledLight] |
-| `--p-critical-link-disabled-dark`    | ![][criticalLinkDisabledDark]  | ![][criticalLinkDisabledDark]  |
+| CSS variable                         | Light mode                     | Dark mode                      |
+| ------------------------------------ | ------------------------------ | ------------------------------ |
+| `--p-critical-link-disabled`         | ![][criticallinkdisabledlight] | ![][criticallinkdisableddark]  |
+| `--p-critical-link-disabled-inverse` | ![][criticallinkdisableddark]  | ![][criticallinkdisabledlight] |
+| `--p-critical-link-disabled-light`   | ![][criticallinkdisabledlight] | ![][criticallinkdisabledlight] |
+| `--p-critical-link-disabled-dark`    | ![][criticallinkdisableddark]  | ![][criticallinkdisableddark]  |
 
-[criticalLinkDisabledLight]: https://www.gifpng.com/64x32/fd918b/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalLinkDisabledDark]: https://www.gifpng.com/64x32/feada9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticallinkdisabledlight]: https://www.gifpng.com/64x32/fd918b/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticallinkdisableddark]: https://www.gifpng.com/64x32/feada9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1228,15 +1210,15 @@ For use as a text color in disabled destructive plain buttons, as well as a text
 
 For use as a text color in hovered destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-link-hovered`         | ![][criticalLinkHoveredLight] | ![][criticalLinkHoveredDark]  |
-| `--p-critical-link-hovered-inverse` | ![][criticalLinkHoveredDark]  | ![][criticalLinkHoveredLight] |
-| `--p-critical-link-hovered-light`   | ![][criticalLinkHoveredLight] | ![][criticalLinkHoveredLight] |
-| `--p-critical-link-hovered-dark`    | ![][criticalLinkHoveredDark]  | ![][criticalLinkHoveredDark]  |
+| CSS variable                        | Light mode                    | Dark mode                     |
+| ----------------------------------- | ----------------------------- | ----------------------------- |
+| `--p-critical-link-hovered`         | ![][criticallinkhoveredlight] | ![][criticallinkhovereddark]  |
+| `--p-critical-link-hovered-inverse` | ![][criticallinkhovereddark]  | ![][criticallinkhoveredlight] |
+| `--p-critical-link-hovered-light`   | ![][criticallinkhoveredlight] | ![][criticallinkhoveredlight] |
+| `--p-critical-link-hovered-dark`    | ![][criticallinkhovereddark]  | ![][criticallinkhovereddark]  |
 
-[criticalLinkHoveredLight]: https://www.gifpng.com/64x32/cf290c/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalLinkHoveredDark]: https://www.gifpng.com/64x32/fd8881/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticallinkhoveredlight]: https://www.gifpng.com/64x32/cf290c/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticallinkhovereddark]: https://www.gifpng.com/64x32/fd8881/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1246,15 +1228,15 @@ For use as a text color in hovered destructive plain buttons, as well as a text 
 
 For use as a text color in pressed destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-critical-link-pressed`         | ![][criticalLinkPressedLight] | ![][criticalLinkPressedDark]  |
-| `--p-critical-link-pressed-inverse` | ![][criticalLinkPressedDark]  | ![][criticalLinkPressedLight] |
-| `--p-critical-link-pressed-light`   | ![][criticalLinkPressedLight] | ![][criticalLinkPressedLight] |
-| `--p-critical-link-pressed-dark`    | ![][criticalLinkPressedDark]  | ![][criticalLinkPressedDark]  |
+| CSS variable                        | Light mode                    | Dark mode                     |
+| ----------------------------------- | ----------------------------- | ----------------------------- |
+| `--p-critical-link-pressed`         | ![][criticallinkpressedlight] | ![][criticallinkpresseddark]  |
+| `--p-critical-link-pressed-inverse` | ![][criticallinkpresseddark]  | ![][criticallinkpressedlight] |
+| `--p-critical-link-pressed-light`   | ![][criticallinkpressedlight] | ![][criticallinkpressedlight] |
+| `--p-critical-link-pressed-dark`    | ![][criticallinkpresseddark]  | ![][criticallinkpresseddark]  |
 
-[criticalLinkPressedLight]: https://www.gifpng.com/64x32/680f03/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalLinkPressedDark]: https://www.gifpng.com/64x32/fd9e9b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticallinkpressedlight]: https://www.gifpng.com/64x32/680f03/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[criticallinkpresseddark]: https://www.gifpng.com/64x32/fd9e9b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1268,13 +1250,12 @@ GET DESC FROM TYPE
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-warning`         | ![][warningLight] | ![][warningDark]  |
+| CSS variable  | Light mode        | Dark mode        |
+| ------------- | ----------------- | ---------------- |
+| `--p-warning` | ![][warninglight] | ![][warningdark] |
 
-
-[warningLight]: https://www.gifpng.com/64x32/ffc252/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[warningDark]: https://www.gifpng.com/64x32/ffc252/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[warninglight]: https://www.gifpng.com/64x32/ffc252/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[warningdark]: https://www.gifpng.com/64x32/ffc252/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1284,15 +1265,15 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 For use as a border on warning components such as banners.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-warning-border`         | ![][warningBorderLight] | ![][warningBorderDark]  |
-| `--p-warning-border-inverse` | ![][warningBorderDark]  | ![][warningBorderLight] |
-| `--p-warning-border-light`   | ![][warningBorderLight] | ![][warningBorderLight] |
-| `--p-warning-border-dark`    | ![][warningBorderDark]  | ![][warningBorderDark]  |
+| CSS variable                 | Light mode              | Dark mode               |
+| ---------------------------- | ----------------------- | ----------------------- |
+| `--p-warning-border`         | ![][warningborderlight] | ![][warningborderdark]  |
+| `--p-warning-border-inverse` | ![][warningborderdark]  | ![][warningborderlight] |
+| `--p-warning-border-light`   | ![][warningborderlight] | ![][warningborderlight] |
+| `--p-warning-border-dark`    | ![][warningborderdark]  | ![][warningborderdark]  |
 
-[warningBorderLight]: https://www.gifpng.com/64x32/f0b400/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[warningBorderDark]: https://www.gifpng.com/64x32/997000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[warningborderlight]: https://www.gifpng.com/64x32/f0b400/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[warningborderdark]: https://www.gifpng.com/64x32/997000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1302,15 +1283,15 @@ For use as a border on warning components such as banners.
 
 For use as an icon fill color on top of warning elements.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-warning-icon`         | ![][warningIconLight] | ![][warningIconDark]  |
-| `--p-warning-icon-inverse` | ![][warningIconDark]  | ![][warningIconLight] |
-| `--p-warning-icon-light`   | ![][warningIconLight] | ![][warningIconLight] |
-| `--p-warning-icon-dark`    | ![][warningIconDark]  | ![][warningIconDark]  |
+| CSS variable               | Light mode            | Dark mode             |
+| -------------------------- | --------------------- | --------------------- |
+| `--p-warning-icon`         | ![][warningiconlight] | ![][warningicondark]  |
+| `--p-warning-icon-inverse` | ![][warningicondark]  | ![][warningiconlight] |
+| `--p-warning-icon-light`   | ![][warningiconlight] | ![][warningiconlight] |
+| `--p-warning-icon-dark`    | ![][warningicondark]  | ![][warningicondark]  |
 
-[warningIconLight]: https://www.gifpng.com/64x32/cc9600/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[warningIconDark]: https://www.gifpng.com/64x32/664900/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[warningiconlight]: https://www.gifpng.com/64x32/cc9600/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[warningicondark]: https://www.gifpng.com/64x32/664900/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1320,15 +1301,15 @@ For use as an icon fill color on top of warning elements.
 
 For use as a surface color on warning elements including badges.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-warning-surface`         | ![][warningSurfaceLight] | ![][warningSurfaceDark]  |
-| `--p-warning-surface-inverse` | ![][warningSurfaceDark]  | ![][warningSurfaceLight] |
-| `--p-warning-surface-light`   | ![][warningSurfaceLight] | ![][warningSurfaceLight] |
-| `--p-warning-surface-dark`    | ![][warningSurfaceDark]  | ![][warningSurfaceDark]  |
+| CSS variable                  | Light mode               | Dark mode                |
+| ----------------------------- | ------------------------ | ------------------------ |
+| `--p-warning-surface`         | ![][warningsurfacelight] | ![][warningsurfacedark]  |
+| `--p-warning-surface-inverse` | ![][warningsurfacedark]  | ![][warningsurfacelight] |
+| `--p-warning-surface-light`   | ![][warningsurfacelight] | ![][warningsurfacelight] |
+| `--p-warning-surface-dark`    | ![][warningsurfacedark]  | ![][warningsurfacedark]  |
 
-[warningSurfaceLight]: https://www.gifpng.com/64x32/ffcd75/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[warningSurfaceDark]: https://www.gifpng.com/64x32/997000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[warningsurfacelight]: https://www.gifpng.com/64x32/ffcd75/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[warningsurfacedark]: https://www.gifpng.com/64x32/997000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1338,15 +1319,15 @@ For use as a surface color on warning elements including badges.
 
 For use as a subdued surface color on warning elements including banners.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-warning-surface-subdued`         | ![][warningSurfaceSubduedLight] | ![][warningSurfaceSubduedDark]  |
-| `--p-warning-surface-subdued-inverse` | ![][warningSurfaceSubduedDark]  | ![][warningSurfaceSubduedLight] |
-| `--p-warning-surface-subdued-light`   | ![][warningSurfaceSubduedLight] | ![][warningSurfaceSubduedLight] |
-| `--p-warning-surface-subdued-dark`    | ![][warningSurfaceSubduedDark]  | ![][warningSurfaceSubduedDark]  |
+| CSS variable                          | Light mode                      | Dark mode                       |
+| ------------------------------------- | ------------------------------- | ------------------------------- |
+| `--p-warning-surface-subdued`         | ![][warningsurfacesubduedlight] | ![][warningsurfacesubdueddark]  |
+| `--p-warning-surface-subdued-inverse` | ![][warningsurfacesubdueddark]  | ![][warningsurfacesubduedlight] |
+| `--p-warning-surface-subdued-light`   | ![][warningsurfacesubduedlight] | ![][warningsurfacesubduedlight] |
+| `--p-warning-surface-subdued-dark`    | ![][warningsurfacesubdueddark]  | ![][warningsurfacesubdueddark]  |
 
-[warningSurfaceSubduedLight]: https://www.gifpng.com/64x32/fffcfa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[warningSurfaceSubduedDark]: https://www.gifpng.com/64x32/332300/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[warningsurfacesubduedlight]: https://www.gifpng.com/64x32/fffcfa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[warningsurfacesubdueddark]: https://www.gifpng.com/64x32/332300/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1356,15 +1337,15 @@ For use as a subdued surface color on warning elements including banners.
 
 For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-warning-text`         | ![][warningTextLight] | ![][warningTextDark]  |
-| `--p-warning-text-inverse` | ![][warningTextDark]  | ![][warningTextLight] |
-| `--p-warning-text-light`   | ![][warningTextLight] | ![][warningTextLight] |
-| `--p-warning-text-dark`    | ![][warningTextDark]  | ![][warningTextDark]  |
+| CSS variable               | Light mode            | Dark mode             |
+| -------------------------- | --------------------- | --------------------- |
+| `--p-warning-text`         | ![][warningtextlight] | ![][warningtextdark]  |
+| `--p-warning-text-inverse` | ![][warningtextdark]  | ![][warningtextlight] |
+| `--p-warning-text-light`   | ![][warningtextlight] | ![][warningtextlight] |
+| `--p-warning-text-dark`    | ![][warningtextdark]  | ![][warningtextdark]  |
 
-[warningTextLight]: https://www.gifpng.com/64x32/5c4200/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[warningTextDark]: https://www.gifpng.com/64x32/dba100/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[warningtextlight]: https://www.gifpng.com/64x32/5c4200/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[warningtextdark]: https://www.gifpng.com/64x32/dba100/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1378,13 +1359,12 @@ GET DESC FROM TYPE
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-highlight`         | ![][highlightLight] | ![][highlightDark]  |
+| CSS variable    | Light mode          | Dark mode          |
+| --------------- | ------------------- | ------------------ |
+| `--p-highlight` | ![][highlightlight] | ![][highlightdark] |
 
-
-[highlightLight]: https://www.gifpng.com/64x32/58d0c2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlightDark]: https://www.gifpng.com/64x32/58d0c2/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[highlightlight]: https://www.gifpng.com/64x32/58d0c2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[highlightdark]: https://www.gifpng.com/64x32/58d0c2/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1394,13 +1374,12 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 For use as a border on informational components such as banners.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-highlight-border`         | ![][highlightBorderLight] | ![][highlightBorderDark]  |
+| CSS variable           | Light mode                | Dark mode                |
+| ---------------------- | ------------------------- | ------------------------ |
+| `--p-highlight-border` | ![][highlightborderlight] | ![][highlightborderdark] |
 
-
-[highlightBorderLight]: https://www.gifpng.com/64x32/429e93/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlightBorderDark]: https://www.gifpng.com/64x32/429e93/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[highlightborderlight]: https://www.gifpng.com/64x32/429e93/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[highlightborderdark]: https://www.gifpng.com/64x32/429e93/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1410,15 +1389,15 @@ For use as a border on informational components such as banners.
 
 For use as an icon fill color on top of informational elements.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-highlight-icon`         | ![][highlightIconLight] | ![][highlightIconDark]  |
-| `--p-highlight-icon-inverse` | ![][highlightIconDark]  | ![][highlightIconLight] |
-| `--p-highlight-icon-light`   | ![][highlightIconLight] | ![][highlightIconLight] |
-| `--p-highlight-icon-dark`    | ![][highlightIconDark]  | ![][highlightIconDark]  |
+| CSS variable                 | Light mode              | Dark mode               |
+| ---------------------------- | ----------------------- | ----------------------- |
+| `--p-highlight-icon`         | ![][highlighticonlight] | ![][highlighticondark]  |
+| `--p-highlight-icon-inverse` | ![][highlighticondark]  | ![][highlighticonlight] |
+| `--p-highlight-icon-light`   | ![][highlighticonlight] | ![][highlighticonlight] |
+| `--p-highlight-icon-dark`    | ![][highlighticondark]  | ![][highlighticondark]  |
 
-[highlightIconLight]: https://www.gifpng.com/64x32/419b90/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlightIconDark]: https://www.gifpng.com/64x32/2c6d67/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[highlighticonlight]: https://www.gifpng.com/64x32/419b90/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[highlighticondark]: https://www.gifpng.com/64x32/2c6d67/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1428,15 +1407,15 @@ For use as an icon fill color on top of informational elements.
 
 For use as a surface color on information elements including badges.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-highlight-surface`         | ![][highlightSurfaceLight] | ![][highlightSurfaceDark]  |
-| `--p-highlight-surface-inverse` | ![][highlightSurfaceDark]  | ![][highlightSurfaceLight] |
-| `--p-highlight-surface-light`   | ![][highlightSurfaceLight] | ![][highlightSurfaceLight] |
-| `--p-highlight-surface-dark`    | ![][highlightSurfaceDark]  | ![][highlightSurfaceDark]  |
+| CSS variable                    | Light mode                 | Dark mode                  |
+| ------------------------------- | -------------------------- | -------------------------- |
+| `--p-highlight-surface`         | ![][highlightsurfacelight] | ![][highlightsurfacedark]  |
+| `--p-highlight-surface-inverse` | ![][highlightsurfacedark]  | ![][highlightsurfacelight] |
+| `--p-highlight-surface-light`   | ![][highlightsurfacelight] | ![][highlightsurfacelight] |
+| `--p-highlight-surface-dark`    | ![][highlightsurfacedark]  | ![][highlightsurfacedark]  |
 
-[highlightSurfaceLight]: https://www.gifpng.com/64x32/8de2d7/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlightSurfaceDark]: https://www.gifpng.com/64x32/00857a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[highlightsurfacelight]: https://www.gifpng.com/64x32/8de2d7/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[highlightsurfacedark]: https://www.gifpng.com/64x32/00857a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1446,15 +1425,15 @@ For use as a surface color on information elements including badges.
 
 For use as a surface color on information elements including banners.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-highlight-surface-subdued`         | ![][highlightSurfaceSubduedLight] | ![][highlightSurfaceSubduedDark]  |
-| `--p-highlight-surface-subdued-inverse` | ![][highlightSurfaceSubduedDark]  | ![][highlightSurfaceSubduedLight] |
-| `--p-highlight-surface-subdued-light`   | ![][highlightSurfaceSubduedLight] | ![][highlightSurfaceSubduedLight] |
-| `--p-highlight-surface-subdued-dark`    | ![][highlightSurfaceSubduedDark]  | ![][highlightSurfaceSubduedDark]  |
+| CSS variable                            | Light mode                        | Dark mode                         |
+| --------------------------------------- | --------------------------------- | --------------------------------- |
+| `--p-highlight-surface-subdued`         | ![][highlightsurfacesubduedlight] | ![][highlightsurfacesubdueddark]  |
+| `--p-highlight-surface-subdued-inverse` | ![][highlightsurfacesubdueddark]  | ![][highlightsurfacesubduedlight] |
+| `--p-highlight-surface-subdued-light`   | ![][highlightsurfacesubduedlight] | ![][highlightsurfacesubduedlight] |
+| `--p-highlight-surface-subdued-dark`    | ![][highlightsurfacesubdueddark]  | ![][highlightsurfacesubdueddark]  |
 
-[highlightSurfaceSubduedLight]: https://www.gifpng.com/64x32/f1fefc/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlightSurfaceSubduedDark]: https://www.gifpng.com/64x32/123631/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[highlightsurfacesubduedlight]: https://www.gifpng.com/64x32/f1fefc/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[highlightsurfacesubdueddark]: https://www.gifpng.com/64x32/123631/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1464,15 +1443,15 @@ For use as a surface color on information elements including banners.
 
 For use as a text color in inert informational elements. Not for use as a text color on banners and badges.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-highlightext`         | ![][highlightextLight] | ![][highlightextDark]  |
-| `--p-highlightext-inverse` | ![][highlightextDark]  | ![][highlightextLight] |
-| `--p-highlightext-light`   | ![][highlightextLight] | ![][highlightextLight] |
-| `--p-highlightext-dark`    | ![][highlightextDark]  | ![][highlightextDark]  |
+| CSS variable               | Light mode             | Dark mode              |
+| -------------------------- | ---------------------- | ---------------------- |
+| `--p-highlightext`         | ![][highlightextlight] | ![][highlightextdark]  |
+| `--p-highlightext-inverse` | ![][highlightextdark]  | ![][highlightextlight] |
+| `--p-highlightext-light`   | ![][highlightextlight] | ![][highlightextlight] |
+| `--p-highlightext-dark`    | ![][highlightextdark]  | ![][highlightextdark]  |
 
-[highlightextLight]: https://www.gifpng.com/64x32/e7fefa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlightextDark]: https://www.gifpng.com/64x32/010908/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[highlightextlight]: https://www.gifpng.com/64x32/e7fefa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[highlightextdark]: https://www.gifpng.com/64x32/010908/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1486,13 +1465,12 @@ GET DESC FROM TYPE
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-success`         | ![][successLight] | ![][successDark]  |
+| CSS variable  | Light mode        | Dark mode        |
+| ------------- | ----------------- | ---------------- |
+| `--p-success` | ![][successlight] | ![][successdark] |
 
-
-[successLight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[successDark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[successlight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[successdark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1502,13 +1480,12 @@ While use directly in our components is discouraged, the base variant is unmodif
 
 For use as a border on success components such as banners.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-success-border`         | ![][successBorderLight] | ![][successBorderDark]  |
+| CSS variable         | Light mode              | Dark mode              |
+| -------------------- | ----------------------- | ---------------------- |
+| `--p-success-border` | ![][successborderlight] | ![][successborderdark] |
 
-
-[successBorderLight]: https://www.gifpng.com/64x32/008563/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[successBorderDark]: https://www.gifpng.com/64x32/008563/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[successborderlight]: https://www.gifpng.com/64x32/008563/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[successborderdark]: https://www.gifpng.com/64x32/008563/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1518,15 +1495,15 @@ For use as a border on success components such as banners.
 
 For use as an icon fill color on top of success elements.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-success-icon`         | ![][successIconLight] | ![][successIconDark]  |
-| `--p-success-icon-inverse` | ![][successIconDark]  | ![][successIconLight] |
-| `--p-success-icon-light`   | ![][successIconLight] | ![][successIconLight] |
-| `--p-success-icon-dark`    | ![][successIconDark]  | ![][successIconDark]  |
+| CSS variable               | Light mode            | Dark mode             |
+| -------------------------- | --------------------- | --------------------- |
+| `--p-success-icon`         | ![][successiconlight] | ![][successicondark]  |
+| `--p-success-icon-inverse` | ![][successicondark]  | ![][successiconlight] |
+| `--p-success-icon-light`   | ![][successiconlight] | ![][successiconlight] |
+| `--p-success-icon-dark`    | ![][successicondark]  | ![][successicondark]  |
 
-[successIconLight]: https://www.gifpng.com/64x32/004231/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[successIconDark]: https://www.gifpng.com/64x32/005c45/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[successiconlight]: https://www.gifpng.com/64x32/004231/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[successicondark]: https://www.gifpng.com/64x32/005c45/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1536,15 +1513,15 @@ For use as an icon fill color on top of success elements.
 
 For use as a surface color on success elements including badges.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-success-surface`         | ![][successSurfaceLight] | ![][successSurfaceDark]  |
-| `--p-success-surface-inverse` | ![][successSurfaceDark]  | ![][successSurfaceLight] |
-| `--p-success-surface-light`   | ![][successSurfaceLight] | ![][successSurfaceLight] |
-| `--p-success-surface-dark`    | ![][successSurfaceDark]  | ![][successSurfaceDark]  |
+| CSS variable                  | Light mode               | Dark mode                |
+| ----------------------------- | ------------------------ | ------------------------ |
+| `--p-success-surface`         | ![][successsurfacelight] | ![][successsurfacedark]  |
+| `--p-success-surface-inverse` | ![][successsurfacedark]  | ![][successsurfacelight] |
+| `--p-success-surface-light`   | ![][successsurfacelight] | ![][successsurfacelight] |
+| `--p-success-surface-dark`    | ![][successsurfacedark]  | ![][successsurfacedark]  |
 
-[successSurfaceLight]: https://www.gifpng.com/64x32/8ae5c2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[successSurfaceDark]: https://www.gifpng.com/64x32/006b4f/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[successsurfacelight]: https://www.gifpng.com/64x32/8ae5c2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[successsurfacedark]: https://www.gifpng.com/64x32/006b4f/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1554,15 +1531,15 @@ For use as a surface color on success elements including badges.
 
 For use as a surface color on information elements including banners.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-success-surface-subdued`         | ![][successSurfaceSubduedLight] | ![][successSurfaceSubduedDark]  |
-| `--p-success-surface-subdued-inverse` | ![][successSurfaceSubduedDark]  | ![][successSurfaceSubduedLight] |
-| `--p-success-surface-subdued-light`   | ![][successSurfaceSubduedLight] | ![][successSurfaceSubduedLight] |
-| `--p-success-surface-subdued-dark`    | ![][successSurfaceSubduedDark]  | ![][successSurfaceSubduedDark]  |
+| CSS variable                          | Light mode                      | Dark mode                       |
+| ------------------------------------- | ------------------------------- | ------------------------------- |
+| `--p-success-surface-subdued`         | ![][successsurfacesubduedlight] | ![][successsurfacesubdueddark]  |
+| `--p-success-surface-subdued-inverse` | ![][successsurfacesubdueddark]  | ![][successsurfacesubduedlight] |
+| `--p-success-surface-subdued-light`   | ![][successsurfacesubduedlight] | ![][successsurfacesubduedlight] |
+| `--p-success-surface-subdued-dark`    | ![][successsurfacesubdueddark]  | ![][successsurfacesubdueddark]  |
 
-[successSurfaceSubduedLight]: https://www.gifpng.com/64x32/f6fefa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[successSurfaceSubduedDark]: https://www.gifpng.com/64x32/1c352c/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[successsurfacesubduedlight]: https://www.gifpng.com/64x32/f6fefa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[successsurfacesubdueddark]: https://www.gifpng.com/64x32/1c352c/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
@@ -1572,15 +1549,14 @@ For use as a surface color on information elements including banners.
 
 For use as a text color in inert success elements. Not for use as a text color on banners and badges.
 
-| CSS variable                | Light mode        | Dark mode         |
-| ----------------------------| ------------------| ------------------|
-| `--p-success-text`         | ![][successTextLight] | ![][successTextDark]  |
-| `--p-success-text-inverse` | ![][successTextDark]  | ![][successTextLight] |
-| `--p-success-text-light`   | ![][successTextLight] | ![][successTextLight] |
-| `--p-success-text-dark`    | ![][successTextDark]  | ![][successTextDark]  |
+| CSS variable               | Light mode            | Dark mode             |
+| -------------------------- | --------------------- | --------------------- |
+| `--p-success-text`         | ![][successtextlight] | ![][successtextdark]  |
+| `--p-success-text-inverse` | ![][successtextdark]  | ![][successtextlight] |
+| `--p-success-text-light`   | ![][successtextlight] | ![][successtextlight] |
+| `--p-success-text-dark`    | ![][successtextdark]  | ![][successtextdark]  |
 
-[successTextLight]: https://www.gifpng.com/64x32/006b4f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[successTextDark]: https://www.gifpng.com/64x32/00a37a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[successtextlight]: https://www.gifpng.com/64x32/006b4f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
+[successtextdark]: https://www.gifpng.com/64x32/00a37a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
-
