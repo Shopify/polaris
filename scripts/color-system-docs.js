@@ -59,7 +59,7 @@ ${light === dark ? '' : additionalVariants()}
     )}&text=%20
 [${name}Dark]: https://www.gifpng.com/64x32/${dark}/FFFFFF?border-width=8&border-type=rectangle&border-color=${toHex(
       darkColors.surfaceBackground,
-    )}&text=%20\n\n`;
+    )}&text=%20\n\n---\n\n`;
   },
 };
 

@@ -116,6 +116,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 [surfaceLight]: https://www.gifpng.com/64x32/fafafa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [surfaceDark]: https://www.gifpng.com/64x32/111213/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `surfaceBackground`
 
 For use in the background of our UIs as a background color, in components such as Page and Frame backgrounds.
@@ -129,6 +131,8 @@ For use in the background of our UIs as a background color, in components such a
 
 [surfaceBackgroundLight]: https://www.gifpng.com/64x32/fafafa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [surfaceBackgroundDark]: https://www.gifpng.com/64x32/0c0d0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `surfaceForeground`
 
@@ -144,6 +148,8 @@ For use in the foreground of our UIs as a background color, in components such a
 [surfaceForegroundLight]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [surfaceForegroundDark]: https://www.gifpng.com/64x32/181a1b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `surfaceForegroundSubdued`
 
 For use in the foreground of our UIs as a subdued background color, in components such as Card, Modal, and Popover.
@@ -157,6 +163,8 @@ For use in the foreground of our UIs as a subdued background color, in component
 
 [surfaceForegroundSubduedLight]: https://www.gifpng.com/64x32/f2f2f2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [surfaceForegroundSubduedDark]: https://www.gifpng.com/64x32/1b1d1d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `surfaceHovered`
 
@@ -172,6 +180,8 @@ For use as a surface color on interactive elements such as resource list items a
 [surfaceHoveredLight]: https://www.gifpng.com/64x32/f2f2f2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [surfaceHoveredDark]: https://www.gifpng.com/64x32/2f3032/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `surfacePressed`
 
 For use as a surface color on interactive elements such as resource list items and action list items when in a pressed state.
@@ -186,6 +196,8 @@ For use as a surface color on interactive elements such as resource list items a
 [surfacePressedLight]: https://www.gifpng.com/64x32/e3e3e3/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [surfacePressedDark]: https://www.gifpng.com/64x32/3d3f42/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `backdrop`
 
 For use as the background color of the backdrop component for navigation and modal.
@@ -197,6 +209,8 @@ For use as the background color of the backdrop component for navigation and mod
 
 [backdropLight]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [backdropDark]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `shadowFromAmbientLight`
 
@@ -210,6 +224,8 @@ For use in building shadows for popovers, cards, and modals.
 [shadowFromAmbientLightLight]: https://www.gifpng.com/64x32/161717/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [shadowFromAmbientLightDark]: https://www.gifpng.com/64x32/161717/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `shadowFromDirectLight`
 
 For use in building shadows for popovers, cards, and modals.
@@ -221,6 +237,8 @@ For use in building shadows for popovers, cards, and modals.
 
 [shadowFromDirectLightLight]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [shadowFromDirectLightDark]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ## `onSurface`
 
@@ -238,6 +256,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 [onSurfaceLight]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [onSurfaceDark]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `borderOnSurface`
 
 For use as a border (border or interactive outline).
@@ -251,6 +271,8 @@ For use as a border (border or interactive outline).
 
 [borderOnSurfaceLight]: https://www.gifpng.com/64x32/b1bac4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [borderOnSurfaceDark]: https://www.gifpng.com/64x32/4e545a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `borderDisabledOnSurface`
 
@@ -266,6 +288,8 @@ For use as a an interactive outline on disabled elements.
 [borderDisabledOnSurfaceLight]: https://www.gifpng.com/64x32/f0f2f4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [borderDisabledOnSurfaceDark]: https://www.gifpng.com/64x32/a2aeb9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `borderSubduedOnSurface`
 
 For use as a subdued border (border or interactive outline).
@@ -279,6 +303,8 @@ For use as a subdued border (border or interactive outline).
 
 [borderSubduedOnSurfaceLight]: https://www.gifpng.com/64x32/d0d6dc/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [borderSubduedOnSurfaceDark]: https://www.gifpng.com/64x32/232629/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `iconOnSurface`
 
@@ -294,6 +320,8 @@ For use as the fill color of neutral icons.
 [iconOnSurfaceLight]: https://www.gifpng.com/64x32/42474c/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [iconOnSurfaceDark]: https://www.gifpng.com/64x32/f9f9fa/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `iconDisabledOnSurface`
 
 For use as the fill color of disabled neutral icons.
@@ -307,6 +335,8 @@ For use as the fill color of disabled neutral icons.
 
 [iconDisabledOnSurfaceLight]: https://www.gifpng.com/64x32/9ba6b0/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [iconDisabledOnSurfaceDark]: https://www.gifpng.com/64x32/b1bac4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `iconSubduedOnSurface`
 
@@ -322,6 +352,8 @@ For use as the fill color of subdued neutral icons.
 [iconSubduedOnSurfaceLight]: https://www.gifpng.com/64x32/87919b/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [iconSubduedOnSurfaceDark]: https://www.gifpng.com/64x32/8c96a1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `textOnSurface`
 
 For use as a neutral text color.
@@ -335,6 +367,8 @@ For use as a neutral text color.
 
 [textOnSurfaceLight]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [textOnSurfaceDark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `textDisabledOnSurface`
 
@@ -350,6 +384,8 @@ For use as a disabled neutral text color.
 [textDisabledOnSurfaceLight]: https://www.gifpng.com/64x32/8a949e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [textDisabledOnSurfaceDark]: https://www.gifpng.com/64x32/6f7880/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `textSubduedOnSurface`
 
 For use as a subdued neutral text color.
@@ -363,6 +399,8 @@ For use as a subdued neutral text color.
 
 [textSubduedOnSurfaceLight]: https://www.gifpng.com/64x32/53595f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [textSubduedOnSurfaceDark]: https://www.gifpng.com/64x32/8c96a1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ## `interactive`
 
@@ -380,6 +418,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 [interactiveLight]: https://www.gifpng.com/64x32/0870d9/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [interactiveDark]: https://www.gifpng.com/64x32/0870d9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `interactiveAction`
 
 Used for links and plain buttons.
@@ -393,6 +433,8 @@ Used for links and plain buttons.
 
 [interactiveActionLight]: https://www.gifpng.com/64x32/0769ca/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [interactiveActionDark]: https://www.gifpng.com/64x32/679cfe/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `interactiveActionDisabled`
 
@@ -408,6 +450,8 @@ Used for disabled links and plain buttons.
 [interactiveActionDisabledLight]: https://www.gifpng.com/64x32/348cfe/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [interactiveActionDisabledDark]: https://www.gifpng.com/64x32/0663c1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `interactiveActionHovered`
 
 Used for hovered links and plain buttons.
@@ -421,6 +465,8 @@ Used for hovered links and plain buttons.
 
 [interactiveActionHoveredLight]: https://www.gifpng.com/64x32/0557a8/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [interactiveActionHoveredDark]: https://www.gifpng.com/64x32/81a8fe/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `interactiveActionSubdued`
 
@@ -436,6 +482,8 @@ Used for subdued links and plain buttons.
 [interactiveActionSubduedLight]: https://www.gifpng.com/64x32/0878e7/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [interactiveActionSubduedDark]: https://www.gifpng.com/64x32/0873dd/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `interactiveActionPressed`
 
 Used for pressed links and plain buttons.
@@ -449,6 +497,8 @@ Used for pressed links and plain buttons.
 
 [interactiveActionPressedLight]: https://www.gifpng.com/64x32/034891/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [interactiveActionPressedDark]: https://www.gifpng.com/64x32/9ab8fe/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `interactiveFocus`
 
@@ -464,6 +514,8 @@ For use in the focus ring on interactive elements.
 [interactiveFocusLight]: https://www.gifpng.com/64x32/348cfe/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [interactiveFocusDark]: https://www.gifpng.com/64x32/0663c1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `interactiveSelected`
 
 For use as a surface color in selected interactive elements, in components such as option list and resource list.
@@ -477,6 +529,8 @@ For use as a surface color in selected interactive elements, in components such 
 
 [interactiveSelectedLight]: https://www.gifpng.com/64x32/f0f3ff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [interactiveSelectedDark]: https://www.gifpng.com/64x32/000e24/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `interactiveSelectedHovered`
 
@@ -492,6 +546,8 @@ For use as a surface color in selected interactive elements that are hovered, in
 [interactiveSelectedHoveredLight]: https://www.gifpng.com/64x32/d6e0ff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [interactiveSelectedHoveredDark]: https://www.gifpng.com/64x32/011d41/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `interactiveSelectedPressed`
 
 For use as a surface color in selected interactive elements that are pressed, in components such as option list and resource list.
@@ -505,6 +561,8 @@ For use as a surface color in selected interactive elements that are pressed, in
 
 [interactiveSelectedPressedLight]: https://www.gifpng.com/64x32/b8cbff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [interactiveSelectedPressedDark]: https://www.gifpng.com/64x32/012b5b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ## `neutral`
 
@@ -522,6 +580,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 [neutralLight]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [neutralDark]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `neutralAction`
 
 Used for secondary buttons and tertiary buttons, as well as in form elements as a background color and pontentially other neutral surfaces.
@@ -535,6 +595,8 @@ Used for secondary buttons and tertiary buttons, as well as in form elements as 
 
 [neutralActionLight]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [neutralActionDark]: https://www.gifpng.com/64x32/35353b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `neutralActionDisabled`
 
@@ -550,6 +612,8 @@ Used as a disabled state for secondary buttons
 [neutralActionDisabledLight]: https://www.gifpng.com/64x32/ededed/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [neutralActionDisabledDark]: https://www.gifpng.com/64x32/222226/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `neutralActionHovered`
 
 Used as a hovered state for secondary buttons
@@ -564,6 +628,8 @@ Used as a hovered state for secondary buttons
 [neutralActionHoveredLight]: https://www.gifpng.com/64x32/e2e2e4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [neutralActionHoveredDark]: https://www.gifpng.com/64x32/3a3a40/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `neutralActionPressed`
 
 Used as a pressed state for secondary buttons
@@ -577,6 +643,8 @@ Used as a pressed state for secondary buttons
 
 [neutralActionPressedLight]: https://www.gifpng.com/64x32/dadadc/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [neutralActionPressedDark]: https://www.gifpng.com/64x32/5b5b62/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ## `primary`
 
@@ -594,6 +662,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 [primaryLight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [primaryDark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `primaryAction`
 
 Used as the background color for primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
@@ -606,6 +676,8 @@ Used as the background color for primary actions, and as the fill color for icon
 [primaryActionLight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [primaryActionDark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `primaryActionDisabled`
 
 Used as the background color for disabled primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
@@ -617,6 +689,8 @@ Used as the background color for disabled primary actions, and as the fill color
 
 [primaryActionDisabledLight]: https://www.gifpng.com/64x32/005741/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [primaryActionDisabledDark]: https://www.gifpng.com/64x32/005741/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `primaryActionHovered`
 
@@ -632,6 +706,8 @@ Used as the background color for hovered primary actions, and as the fill color 
 [primaryActionHoveredLight]: https://www.gifpng.com/64x32/007054/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [primaryActionHoveredDark]: https://www.gifpng.com/64x32/00946f/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `primaryActionPressed`
 
 Used as the background color for pressed primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
@@ -646,6 +722,8 @@ Used as the background color for pressed primary actions, and as the fill color 
 [primaryActionPressedLight]: https://www.gifpng.com/64x32/00664d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [primaryActionPressedDark]: https://www.gifpng.com/64x32/00a37a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `iconOnPrimary`
 
 For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs.
@@ -657,6 +735,8 @@ For use as a fill color for icons on primary actions. Not for use in icons on na
 
 [iconOnPrimaryLight]: https://www.gifpng.com/64x32/e5fff4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [iconOnPrimaryDark]: https://www.gifpng.com/64x32/e5fff4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `iconSubduedOnPrimary`
 
@@ -670,6 +750,8 @@ For use as a fill color for icons on subdued primary actions. Not for use in ico
 [iconSubduedOnPrimaryLight]: https://www.gifpng.com/64x32/00fac0/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [iconSubduedOnPrimaryDark]: https://www.gifpng.com/64x32/00fac0/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `iconDisabledOnPrimary`
 
 For use as a fill color for icons on disabled primary actions. Not for use in icons on navigation and tabs.
@@ -681,6 +763,8 @@ For use as a fill color for icons on disabled primary actions. Not for use in ic
 
 [iconDisabledOnPrimaryLight]: https://www.gifpng.com/64x32/00dba4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [iconDisabledOnPrimaryDark]: https://www.gifpng.com/64x32/00dba4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `textOnPrimary`
 
@@ -694,6 +778,8 @@ For use as a text color on primary actions. Not for use in text on navigation an
 [textOnPrimaryLight]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [textOnPrimaryDark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `textSubduedOnPrimary`
 
 For use as a text color on subdued primary actions. Not for use in text on navigation and tabs.
@@ -706,6 +792,8 @@ For use as a text color on subdued primary actions. Not for use in text on navig
 [textSubduedOnPrimaryLight]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [textSubduedOnPrimaryDark]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `textDisabledOnPrimary`
 
 For use as a text color on disabled primary actions. Not for use in text on navigation and tabs.
@@ -717,6 +805,8 @@ For use as a text color on disabled primary actions. Not for use in text on navi
 
 [textDisabledOnPrimaryLight]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [textDisabledOnPrimaryDark]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `primarySelected`
 
@@ -732,6 +822,8 @@ Used as a surface color to indicate selected interactive states in navigation an
 [primarySelectedLight]: https://www.gifpng.com/64x32/e1f5ec/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [primarySelectedDark]: https://www.gifpng.com/64x32/0c1210/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `primarySelectedHovered`
 
 Used as a surface color to indicate selected interactive states that are hovered in navigation and tabs.
@@ -746,6 +838,8 @@ Used as a surface color to indicate selected interactive states that are hovered
 [primarySelectedHoveredLight]: https://www.gifpng.com/64x32/b3d0c3/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [primarySelectedHoveredDark]: https://www.gifpng.com/64x32/272f2b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `primarySelectedPressed`
 
 Used as a surface color to indicate selected interactive states that are pressed in navigation and tabs.
@@ -759,6 +853,8 @@ Used as a surface color to indicate selected interactive states that are pressed
 
 [primarySelectedPressedLight]: https://www.gifpng.com/64x32/a3bdb1/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [primarySelectedPressedDark]: https://www.gifpng.com/64x32/363f3b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ## `critical`
 
@@ -776,6 +872,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 [criticalLight]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalDark]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `criticalBorder`
 
 For use as a border on critical components such as banners, and as an outline on interactive elements in an error state.
@@ -787,6 +885,8 @@ For use as a border on critical components such as banners, and as an outline on
 
 [criticalBorderLight]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalBorderDark]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `criticalBorderDisabled`
 
@@ -802,6 +902,8 @@ For use as a disabled border on critical components such as banners, and as an o
 [criticalBorderDisabledLight]: https://www.gifpng.com/64x32/febcb9/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalBorderDisabledDark]: https://www.gifpng.com/64x32/811704/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `criticalIcon`
 
 For use as an icon fill color on top of critical elements.
@@ -815,6 +917,8 @@ For use as an icon fill color on top of critical elements.
 
 [criticalIconLight]: https://www.gifpng.com/64x32/eb300f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalIconDark]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `criticalSurface`
 
@@ -830,6 +934,8 @@ For use as a surface color on critical elements including badges.
 [criticalSurfaceLight]: https://www.gifpng.com/64x32/fffafa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalSurfaceDark]: https://www.gifpng.com/64x32/460701/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `criticalSurfaceSubdued`
 
 For use as a subdued surface color on critical elements including banners.
@@ -843,6 +949,8 @@ For use as a subdued surface color on critical elements including banners.
 
 [criticalSurfaceSubduedLight]: https://www.gifpng.com/64x32/fff6f5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalSurfaceSubduedDark]: https://www.gifpng.com/64x32/460701/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `criticalSurfaceSubduedHovered`
 
@@ -858,6 +966,8 @@ For use as a surface color on critical interactive elements including action lis
 [criticalSurfaceSubduedHoveredLight]: https://www.gifpng.com/64x32/fee7e6/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalSurfaceSubduedHoveredDark]: https://www.gifpng.com/64x32/431714/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `criticalSurfaceSubduedPressed`
 
 For use as a surface color on critical interactive elements including action list items in a pressed state.
@@ -871,6 +981,8 @@ For use as a surface color on critical interactive elements including action lis
 
 [criticalSurfaceSubduedPressedLight]: https://www.gifpng.com/64x32/fed4d2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalSurfaceSubduedPressedDark]: https://www.gifpng.com/64x32/6d1103/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `criticalText`
 
@@ -886,6 +998,8 @@ For use as a text color in inert critical elements such as exception list. Not f
 [criticalTextLight]: https://www.gifpng.com/64x32/b42208/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalTextDark]: https://www.gifpng.com/64x32/fd5849/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `criticalAction`
 
 For use as the background color for destructive buttons, and as the background color for error toast messages.
@@ -899,6 +1013,8 @@ For use as the background color for destructive buttons, and as the background c
 
 [criticalActionLight]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalActionDark]: https://www.gifpng.com/64x32/cf290c/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `criticalActionDisabled`
 
@@ -914,6 +1030,8 @@ For use as the background color for disabled destructive buttons, and as the bac
 [criticalActionDisabledLight]: https://www.gifpng.com/64x32/fd4f3f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalActionDisabledDark]: https://www.gifpng.com/64x32/bd250a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `criticalActionHovered`
 
 For use as the background color for hovered destructive buttons, and as the background color for error toast messages.
@@ -927,6 +1045,8 @@ For use as the background color for hovered destructive buttons, and as the back
 
 [criticalActionHoveredLight]: https://www.gifpng.com/64x32/c2260a/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalActionHoveredDark]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `criticalActionPressed`
 
@@ -942,6 +1062,8 @@ For use as the background color for pressed destructive buttons, and as the back
 [criticalActionPressedLight]: https://www.gifpng.com/64x32/aa2008/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalActionPressedDark]: https://www.gifpng.com/64x32/fd5849/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `criticalLink`
 
 For use as a text color in destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
@@ -955,6 +1077,8 @@ For use as a text color in destructive plain buttons, as well as a text color on
 
 [criticalLinkLight]: https://www.gifpng.com/64x32/dd2d0e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalLinkDark]: https://www.gifpng.com/64x32/fd7068/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `criticalLinkDisabled`
 
@@ -970,6 +1094,8 @@ For use as a text color in disabled destructive plain buttons, as well as a text
 [criticalLinkDisabledLight]: https://www.gifpng.com/64x32/fd918b/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalLinkDisabledDark]: https://www.gifpng.com/64x32/feada9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `criticalLinkHovered`
 
 For use as a text color in hovered destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
@@ -984,6 +1110,8 @@ For use as a text color in hovered destructive plain buttons, as well as a text 
 [criticalLinkHoveredLight]: https://www.gifpng.com/64x32/cf290c/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalLinkHoveredDark]: https://www.gifpng.com/64x32/fd8881/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `criticalLinkPressed`
 
 For use as a text color in pressed destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
@@ -997,6 +1125,8 @@ For use as a text color in pressed destructive plain buttons, as well as a text 
 
 [criticalLinkPressedLight]: https://www.gifpng.com/64x32/680f03/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalLinkPressedDark]: https://www.gifpng.com/64x32/fd9e9b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ## `warning`
 
@@ -1014,6 +1144,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 [warningLight]: https://www.gifpng.com/64x32/ffc252/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [warningDark]: https://www.gifpng.com/64x32/ffc252/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `warningBorder`
 
 For use as a border on warning components such as banners.
@@ -1027,6 +1159,8 @@ For use as a border on warning components such as banners.
 
 [warningBorderLight]: https://www.gifpng.com/64x32/f0b400/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [warningBorderDark]: https://www.gifpng.com/64x32/997000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `warningIcon`
 
@@ -1042,6 +1176,8 @@ For use as an icon fill color on top of warning elements.
 [warningIconLight]: https://www.gifpng.com/64x32/cc9600/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [warningIconDark]: https://www.gifpng.com/64x32/664900/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `warningSurface`
 
 For use as a surface color on warning elements including badges.
@@ -1055,6 +1191,8 @@ For use as a surface color on warning elements including badges.
 
 [warningSurfaceLight]: https://www.gifpng.com/64x32/ffcd75/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [warningSurfaceDark]: https://www.gifpng.com/64x32/997000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `warningSurfaceSubdued`
 
@@ -1070,6 +1208,8 @@ For use as a subdued surface color on warning elements including banners.
 [warningSurfaceSubduedLight]: https://www.gifpng.com/64x32/fffcfa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [warningSurfaceSubduedDark]: https://www.gifpng.com/64x32/332300/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `warningText`
 
 For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.
@@ -1083,6 +1223,8 @@ For use as a text color in inert critical elements such as exception list. Not f
 
 [warningTextLight]: https://www.gifpng.com/64x32/5c4200/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [warningTextDark]: https://www.gifpng.com/64x32/dba100/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ## `highlight`
 
@@ -1100,6 +1242,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 [highlightLight]: https://www.gifpng.com/64x32/58d0c2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [highlightDark]: https://www.gifpng.com/64x32/58d0c2/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `highlightBorder`
 
 For use as a border on informational components such as banners.
@@ -1111,6 +1255,8 @@ For use as a border on informational components such as banners.
 
 [highlightBorderLight]: https://www.gifpng.com/64x32/429e93/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [highlightBorderDark]: https://www.gifpng.com/64x32/429e93/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `highlightIcon`
 
@@ -1126,6 +1272,8 @@ For use as an icon fill color on top of informational elements.
 [highlightIconLight]: https://www.gifpng.com/64x32/419b90/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [highlightIconDark]: https://www.gifpng.com/64x32/2c6d67/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `highlightSurface`
 
 For use as a surface color on information elements including badges.
@@ -1139,6 +1287,8 @@ For use as a surface color on information elements including badges.
 
 [highlightSurfaceLight]: https://www.gifpng.com/64x32/8de2d7/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [highlightSurfaceDark]: https://www.gifpng.com/64x32/00857a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `highlightSurfaceSubdued`
 
@@ -1154,6 +1304,8 @@ For use as a surface color on information elements including banners.
 [highlightSurfaceSubduedLight]: https://www.gifpng.com/64x32/f1fefc/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [highlightSurfaceSubduedDark]: https://www.gifpng.com/64x32/123631/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `highlightext`
 
 For use as a text color in inert informational elements. Not for use as a text color on banners and badges.
@@ -1167,6 +1319,8 @@ For use as a text color in inert informational elements. Not for use as a text c
 
 [highlightextLight]: https://www.gifpng.com/64x32/e7fefa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [highlightextDark]: https://www.gifpng.com/64x32/010908/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ## `success`
 
@@ -1184,6 +1338,8 @@ While use directly in our components is discouraged, the base variant is unmodif
 [successLight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [successDark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `successBorder`
 
 For use as a border on success components such as banners.
@@ -1195,6 +1351,8 @@ For use as a border on success components such as banners.
 
 [successBorderLight]: https://www.gifpng.com/64x32/008563/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [successBorderDark]: https://www.gifpng.com/64x32/008563/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `successIcon`
 
@@ -1210,6 +1368,8 @@ For use as an icon fill color on top of success elements.
 [successIconLight]: https://www.gifpng.com/64x32/004231/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [successIconDark]: https://www.gifpng.com/64x32/005c45/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `successSurface`
 
 For use as a surface color on success elements including badges.
@@ -1223,6 +1383,8 @@ For use as a surface color on success elements including badges.
 
 [successSurfaceLight]: https://www.gifpng.com/64x32/8ae5c2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [successSurfaceDark]: https://www.gifpng.com/64x32/006b4f/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
 ### `successSurfaceSubdued`
 
@@ -1238,6 +1400,8 @@ For use as a surface color on information elements including banners.
 [successSurfaceSubduedLight]: https://www.gifpng.com/64x32/f6fefa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [successSurfaceSubduedDark]: https://www.gifpng.com/64x32/1c352c/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
 
+---
+
 ### `successText`
 
 For use as a text color in inert success elements. Not for use as a text color on banners and badges.
@@ -1251,4 +1415,6 @@ For use as a text color in inert success elements. Not for use as a text color o
 
 [successTextLight]: https://www.gifpng.com/64x32/006b4f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [successTextDark]: https://www.gifpng.com/64x32/00a37a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+
+---
 
