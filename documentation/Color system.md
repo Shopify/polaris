@@ -4,225 +4,164 @@
 
 ## Table of contents
 
-- [`surface`](#surface)
-  - [`surface`](#surface)
-  - [`surfaceBackground`](#surfaceBackground)
-  - [`surfaceForeground`](#surfaceForeground)
-  - [`surfaceForegroundSubdued`](#surfaceForegroundSubdued)
-  - [`surfaceHovered`](#surfaceHovered)
-  - [`surfacePressed`](#surfacePressed)
-  - [`backdrop`](#backdrop)
-  - [`shadowFromAmbientLight`](#shadowFromAmbientLight)
-  - [`shadowFromDirectLight`](#shadowFromDirectLight)
-- [`onSurface`](#onSurface)
-  - [`onSurface`](#onSurface)
-  - [`borderOnSurface`](#borderOnSurface)
-  - [`borderDisabledOnSurface`](#borderDisabledOnSurface)
-  - [`borderSubduedOnSurface`](#borderSubduedOnSurface)
-  - [`iconOnSurface`](#iconOnSurface)
-  - [`iconDisabledOnSurface`](#iconDisabledOnSurface)
-  - [`iconSubduedOnSurface`](#iconSubduedOnSurface)
-  - [`textOnSurface`](#textOnSurface)
-  - [`textDisabledOnSurface`](#textDisabledOnSurface)
-  - [`textSubduedOnSurface`](#textSubduedOnSurface)
-- [`interactive`](#interactive)
-  - [`interactive`](#interactive)
-  - [`interactiveAction`](#interactiveAction)
-  - [`interactiveActionDisabled`](#interactiveActionDisabled)
-  - [`interactiveActionHovered`](#interactiveActionHovered)
-  - [`interactiveActionSubdued`](#interactiveActionSubdued)
-  - [`interactiveActionPressed`](#interactiveActionPressed)
-  - [`interactiveFocus`](#interactiveFocus)
-  - [`interactiveSelected`](#interactiveSelected)
-  - [`interactiveSelectedHovered`](#interactiveSelectedHovered)
-  - [`interactiveSelectedPressed`](#interactiveSelectedPressed)
-- [`neutral`](#neutral)
-  - [`neutral`](#neutral)
-  - [`neutralAction`](#neutralAction)
-  - [`neutralActionDisabled`](#neutralActionDisabled)
-  - [`neutralActionHovered`](#neutralActionHovered)
-  - [`neutralActionPressed`](#neutralActionPressed)
-- [`primary`](#primary)
-  - [`primary`](#primary)
-  - [`primaryAction`](#primaryAction)
-  - [`primaryActionDisabled`](#primaryActionDisabled)
-  - [`primaryActionHovered`](#primaryActionHovered)
-  - [`primaryActionPressed`](#primaryActionPressed)
-  - [`iconOnPrimary`](#iconOnPrimary)
-  - [`iconSubduedOnPrimary`](#iconSubduedOnPrimary)
-  - [`iconDisabledOnPrimary`](#iconDisabledOnPrimary)
-  - [`textOnPrimary`](#textOnPrimary)
-  - [`textSubduedOnPrimary`](#textSubduedOnPrimary)
-  - [`textDisabledOnPrimary`](#textDisabledOnPrimary)
-  - [`primarySelected`](#primarySelected)
-  - [`primarySelectedHovered`](#primarySelectedHovered)
-  - [`primarySelectedPressed`](#primarySelectedPressed)
-- [`critical`](#critical)
-  - [`critical`](#critical)
-  - [`criticalBorder`](#criticalBorder)
-  - [`criticalBorderDisabled`](#criticalBorderDisabled)
-  - [`criticalIcon`](#criticalIcon)
-  - [`criticalSurface`](#criticalSurface)
-  - [`criticalSurfaceSubdued`](#criticalSurfaceSubdued)
-  - [`criticalSurfaceSubduedHovered`](#criticalSurfaceSubduedHovered)
-  - [`criticalSurfaceSubduedPressed`](#criticalSurfaceSubduedPressed)
-  - [`criticalText`](#criticalText)
-  - [`criticalAction`](#criticalAction)
-  - [`criticalActionDisabled`](#criticalActionDisabled)
-  - [`criticalActionHovered`](#criticalActionHovered)
-  - [`criticalActionPressed`](#criticalActionPressed)
-  - [`criticalLink`](#criticalLink)
-  - [`criticalLinkDisabled`](#criticalLinkDisabled)
-  - [`criticalLinkHovered`](#criticalLinkHovered)
-  - [`criticalLinkPressed`](#criticalLinkPressed)
-- [`warning`](#warning)
-  - [`warning`](#warning)
-  - [`warningBorder`](#warningBorder)
-  - [`warningIcon`](#warningIcon)
-  - [`warningSurface`](#warningSurface)
-  - [`warningSurfaceSubdued`](#warningSurfaceSubdued)
-  - [`warningText`](#warningText)
-- [`highlight`](#highlight)
-  - [`highlight`](#highlight)
-  - [`highlightBorder`](#highlightBorder)
-  - [`highlightIcon`](#highlightIcon)
-  - [`highlightSurface`](#highlightSurface)
-  - [`highlightSurfaceSubdued`](#highlightSurfaceSubdued)
-  - [`highlightext`](#highlightext)
-- [`success`](#success)
-  - [`success`](#success)
-  - [`successBorder`](#successBorder)
-  - [`successIcon`](#successIcon)
-  - [`successSurface`](#successSurface)
-  - [`successSurfaceSubdued`](#successSurfaceSubdued)
-  - [`successText`](#successText)
-- [`decorative`](#decorative)
-  - [`decorativeOneSurface`](#decorativeOneSurface)
-  - [`decorativeOneText`](#decorativeOneText)
-  - [`decorativeTwoSurface`](#decorativeTwoSurface)
-  - [`decorativeTwoText`](#decorativeTwoText)
-  - [`decorativeThreeSurface`](#decorativeThreeSurface)
-  - [`decorativeThreeText`](#decorativeThreeText)
-  - [`decorativeFourSurface`](#decorativeFourSurface)
-  - [`decorativeFourText`](#decorativeFourText)
-  - [`decorativeFiveSurface`](#decorativeFiveSurface)
-  - [`decorativeFiveText`](#decorativeFiveText)
+- [surface](#surface)
+  - [surface](#surface), [surfaceBackground](#surfaceBackground), [surfaceForeground](#surfaceForeground), [surfaceForegroundSubdued](#surfaceForegroundSubdued), [surfaceHovered](#surfaceHovered), [surfacePressed](#surfacePressed), [backdrop](#backdrop), [shadowFromAmbientLight](#shadowFromAmbientLight), [shadowFromDirectLight](#shadowFromDirectLight),
+- [onSurface](#onSurface)
+  - [onSurface](#onSurface), [borderOnSurface](#borderOnSurface), [borderDisabledOnSurface](#borderDisabledOnSurface), [borderSubduedOnSurface](#borderSubduedOnSurface), [iconOnSurface](#iconOnSurface), [iconDisabledOnSurface](#iconDisabledOnSurface), [iconSubduedOnSurface](#iconSubduedOnSurface), [textOnSurface](#textOnSurface), [textDisabledOnSurface](#textDisabledOnSurface), [textSubduedOnSurface](#textSubduedOnSurface),
+- [interactive](#interactive)
+  - [interactive](#interactive), [interactiveAction](#interactiveAction), [interactiveActionDisabled](#interactiveActionDisabled), [interactiveActionHovered](#interactiveActionHovered), [interactiveActionSubdued](#interactiveActionSubdued), [interactiveActionPressed](#interactiveActionPressed), [interactiveFocus](#interactiveFocus), [interactiveSelected](#interactiveSelected), [interactiveSelectedHovered](#interactiveSelectedHovered), [interactiveSelectedPressed](#interactiveSelectedPressed),
+- [neutral](#neutral)
+  - [neutral](#neutral), [neutralAction](#neutralAction), [neutralActionDisabled](#neutralActionDisabled), [neutralActionHovered](#neutralActionHovered), [neutralActionPressed](#neutralActionPressed),
+- [primary](#primary)
+  - [primary](#primary), [primaryAction](#primaryAction), [primaryActionDisabled](#primaryActionDisabled), [primaryActionHovered](#primaryActionHovered), [primaryActionPressed](#primaryActionPressed), [iconOnPrimary](#iconOnPrimary), [iconSubduedOnPrimary](#iconSubduedOnPrimary), [iconDisabledOnPrimary](#iconDisabledOnPrimary), [textOnPrimary](#textOnPrimary), [textSubduedOnPrimary](#textSubduedOnPrimary), [textDisabledOnPrimary](#textDisabledOnPrimary), [primarySelected](#primarySelected), [primarySelectedHovered](#primarySelectedHovered), [primarySelectedPressed](#primarySelectedPressed),
+- [critical](#critical)
+  - [critical](#critical), [criticalBorder](#criticalBorder), [criticalBorderDisabled](#criticalBorderDisabled), [criticalIcon](#criticalIcon), [criticalSurface](#criticalSurface), [criticalSurfaceSubdued](#criticalSurfaceSubdued), [criticalSurfaceSubduedHovered](#criticalSurfaceSubduedHovered), [criticalSurfaceSubduedPressed](#criticalSurfaceSubduedPressed), [criticalText](#criticalText), [criticalAction](#criticalAction), [criticalActionDisabled](#criticalActionDisabled), [criticalActionHovered](#criticalActionHovered), [criticalActionPressed](#criticalActionPressed), [criticalLink](#criticalLink), [criticalLinkDisabled](#criticalLinkDisabled), [criticalLinkHovered](#criticalLinkHovered), [criticalLinkPressed](#criticalLinkPressed),
+- [warning](#warning)
+  - [warning](#warning), [warningBorder](#warningBorder), [warningIcon](#warningIcon), [warningSurface](#warningSurface), [warningSurfaceSubdued](#warningSurfaceSubdued), [warningText](#warningText),
+- [highlight](#highlight)
+  - [highlight](#highlight), [highlightBorder](#highlightBorder), [highlightIcon](#highlightIcon), [highlightSurface](#highlightSurface), [highlightSurfaceSubdued](#highlightSurfaceSubdued), [highlightext](#highlightext),
+- [success](#success)
+  - [success](#success), [successBorder](#successBorder), [successIcon](#successIcon), [successSurface](#successSurface), [successSurfaceSubdued](#successSurfaceSubdued), [successText](#successText),
+- [decorative](#decorative)
+  - [decorativeOneSurface](#decorativeOneSurface), [decorativeOneText](#decorativeOneText), [decorativeTwoSurface](#decorativeTwoSurface), [decorativeTwoText](#decorativeTwoText), [decorativeThreeSurface](#decorativeThreeSurface), [decorativeThreeText](#decorativeThreeText), [decorativeFourSurface](#decorativeFourSurface), [decorativeFourText](#decorativeFourText), [decorativeFiveSurface](#decorativeFiveSurface), [decorativeFiveText](#decorativeFiveText),
 
-## `surface`
+## surface
 
 The surface role is used for the backgrounds of the UI. In light mode, surface colors are nearly white, while in dark mode, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts.
 
-### `surface`
-
-[Back to top](#Table-of-contents)
+### surface [↑](#Table-of-contents)
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
-| CSS variable          | Light mode        | Dark mode         |
-| --------------------- | ----------------- | ----------------- |
-| `--p-surface`         | ![][surfacelight] | ![][surfacedark]  |
-| `--p-surface-inverse` | ![][surfacedark]  | ![][surfacelight] |
-| `--p-surface-light`   | ![][surfacelight] | ![][surfacelight] |
-| `--p-surface-dark`    | ![][surfacedark]  | ![][surfacedark]  |
+| CSS variable  | Light mode        | Dark mode        |
+| ------------- | ----------------- | ---------------- |
+| `--p-surface` | ![][surfacelight] | ![][surfacedark] |
 
-[surfacelight]: https://www.gifpng.com/64x32/fafafa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[surfacedark]: https://www.gifpng.com/64x32/111213/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-surface-light`: returns the fixed light value regardless of mode
+- `--p-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-surface-inverse` | ![][surfaceDark]  | ![][surfaceLight] |
+  | `--p-surface-light`   | ![][surfaceLight] | ![][surfaceLight] |
+  | `--p-surface-dark`    | ![][surfaceDark]  | ![][surfaceDark]  |
+  -->
+
+[surfacelight]: https://www.gifpng.com/128x96/fafafa/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[surfacedark]: https://www.gifpng.com/128x96/111213/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `surfaceBackground`
-
-[Back to top](#Table-of-contents)
+### surfaceBackground [↑](#Table-of-contents)
 
 For use in the background of our UIs as a background color, in components such as Page and Frame backgrounds.
 
-| CSS variable                     | Light mode                  | Dark mode                   |
-| -------------------------------- | --------------------------- | --------------------------- |
-| `--p-surface-background`         | ![][surfacebackgroundlight] | ![][surfacebackgrounddark]  |
-| `--p-surface-background-inverse` | ![][surfacebackgrounddark]  | ![][surfacebackgroundlight] |
-| `--p-surface-background-light`   | ![][surfacebackgroundlight] | ![][surfacebackgroundlight] |
-| `--p-surface-background-dark`    | ![][surfacebackgrounddark]  | ![][surfacebackgrounddark]  |
+| CSS variable             | Light mode                  | Dark mode                  |
+| ------------------------ | --------------------------- | -------------------------- |
+| `--p-surface-background` | ![][surfacebackgroundlight] | ![][surfacebackgrounddark] |
 
-[surfacebackgroundlight]: https://www.gifpng.com/64x32/fafafa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[surfacebackgrounddark]: https://www.gifpng.com/64x32/0c0d0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-surface-background-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-surface-background-light`: returns the fixed light value regardless of mode
+- `--p-surface-background-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-surface-background-inverse` | ![][surfaceBackgroundDark]  | ![][surfaceBackgroundLight] |
+  | `--p-surface-background-light`   | ![][surfaceBackgroundLight] | ![][surfaceBackgroundLight] |
+  | `--p-surface-background-dark`    | ![][surfaceBackgroundDark]  | ![][surfaceBackgroundDark]  |
+  -->
+
+[surfacebackgroundlight]: https://www.gifpng.com/128x96/fafafa/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[surfacebackgrounddark]: https://www.gifpng.com/128x96/0c0d0e/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `surfaceForeground`
-
-[Back to top](#Table-of-contents)
+### surfaceForeground [↑](#Table-of-contents)
 
 For use in the foreground of our UIs as a background color, in components such as Card, Modal, and Popover.
 
-| CSS variable                     | Light mode                  | Dark mode                   |
-| -------------------------------- | --------------------------- | --------------------------- |
-| `--p-surface-foreground`         | ![][surfaceforegroundlight] | ![][surfaceforegrounddark]  |
-| `--p-surface-foreground-inverse` | ![][surfaceforegrounddark]  | ![][surfaceforegroundlight] |
-| `--p-surface-foreground-light`   | ![][surfaceforegroundlight] | ![][surfaceforegroundlight] |
-| `--p-surface-foreground-dark`    | ![][surfaceforegrounddark]  | ![][surfaceforegrounddark]  |
+| CSS variable             | Light mode                  | Dark mode                  |
+| ------------------------ | --------------------------- | -------------------------- |
+| `--p-surface-foreground` | ![][surfaceforegroundlight] | ![][surfaceforegrounddark] |
 
-[surfaceforegroundlight]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[surfaceforegrounddark]: https://www.gifpng.com/64x32/181a1b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-surface-foreground-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-surface-foreground-light`: returns the fixed light value regardless of mode
+- `--p-surface-foreground-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-surface-foreground-inverse` | ![][surfaceForegroundDark]  | ![][surfaceForegroundLight] |
+  | `--p-surface-foreground-light`   | ![][surfaceForegroundLight] | ![][surfaceForegroundLight] |
+  | `--p-surface-foreground-dark`    | ![][surfaceForegroundDark]  | ![][surfaceForegroundDark]  |
+  -->
+
+[surfaceforegroundlight]: https://www.gifpng.com/128x96/ffffff/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[surfaceforegrounddark]: https://www.gifpng.com/128x96/181a1b/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `surfaceForegroundSubdued`
-
-[Back to top](#Table-of-contents)
+### surfaceForegroundSubdued [↑](#Table-of-contents)
 
 For use in the foreground of our UIs as a subdued background color, in components such as Card, Modal, and Popover.
 
-| CSS variable                             | Light mode                         | Dark mode                          |
-| ---------------------------------------- | ---------------------------------- | ---------------------------------- |
-| `--p-surface-foreground-subdued`         | ![][surfaceforegroundsubduedlight] | ![][surfaceforegroundsubdueddark]  |
-| `--p-surface-foreground-subdued-inverse` | ![][surfaceforegroundsubdueddark]  | ![][surfaceforegroundsubduedlight] |
-| `--p-surface-foreground-subdued-light`   | ![][surfaceforegroundsubduedlight] | ![][surfaceforegroundsubduedlight] |
-| `--p-surface-foreground-subdued-dark`    | ![][surfaceforegroundsubdueddark]  | ![][surfaceforegroundsubdueddark]  |
+| CSS variable                     | Light mode                         | Dark mode                         |
+| -------------------------------- | ---------------------------------- | --------------------------------- |
+| `--p-surface-foreground-subdued` | ![][surfaceforegroundsubduedlight] | ![][surfaceforegroundsubdueddark] |
 
-[surfaceforegroundsubduedlight]: https://www.gifpng.com/64x32/f2f2f2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[surfaceforegroundsubdueddark]: https://www.gifpng.com/64x32/1b1d1d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-surface-foreground-subdued-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-surface-foreground-subdued-light`: returns the fixed light value regardless of mode
+- `--p-surface-foreground-subdued-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-surface-foreground-subdued-inverse` | ![][surfaceForegroundSubduedDark]  | ![][surfaceForegroundSubduedLight] |
+  | `--p-surface-foreground-subdued-light`   | ![][surfaceForegroundSubduedLight] | ![][surfaceForegroundSubduedLight] |
+  | `--p-surface-foreground-subdued-dark`    | ![][surfaceForegroundSubduedDark]  | ![][surfaceForegroundSubduedDark]  |
+  -->
+
+[surfaceforegroundsubduedlight]: https://www.gifpng.com/128x96/f2f2f2/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[surfaceforegroundsubdueddark]: https://www.gifpng.com/128x96/1b1d1d/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `surfaceHovered`
-
-[Back to top](#Table-of-contents)
+### surfaceHovered [↑](#Table-of-contents)
 
 For use as a surface color on interactive elements such as resource list items and action list items when in a hovered state.
 
-| CSS variable                  | Light mode               | Dark mode                |
-| ----------------------------- | ------------------------ | ------------------------ |
-| `--p-surface-hovered`         | ![][surfacehoveredlight] | ![][surfacehovereddark]  |
-| `--p-surface-hovered-inverse` | ![][surfacehovereddark]  | ![][surfacehoveredlight] |
-| `--p-surface-hovered-light`   | ![][surfacehoveredlight] | ![][surfacehoveredlight] |
-| `--p-surface-hovered-dark`    | ![][surfacehovereddark]  | ![][surfacehovereddark]  |
+| CSS variable          | Light mode               | Dark mode               |
+| --------------------- | ------------------------ | ----------------------- |
+| `--p-surface-hovered` | ![][surfacehoveredlight] | ![][surfacehovereddark] |
 
-[surfacehoveredlight]: https://www.gifpng.com/64x32/f2f2f2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[surfacehovereddark]: https://www.gifpng.com/64x32/2f3032/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-surface-hovered-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-surface-hovered-light`: returns the fixed light value regardless of mode
+- `--p-surface-hovered-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-surface-hovered-inverse` | ![][surfaceHoveredDark]  | ![][surfaceHoveredLight] |
+  | `--p-surface-hovered-light`   | ![][surfaceHoveredLight] | ![][surfaceHoveredLight] |
+  | `--p-surface-hovered-dark`    | ![][surfaceHoveredDark]  | ![][surfaceHoveredDark]  |
+  -->
+
+[surfacehoveredlight]: https://www.gifpng.com/128x96/f2f2f2/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[surfacehovereddark]: https://www.gifpng.com/128x96/2f3032/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `surfacePressed`
-
-[Back to top](#Table-of-contents)
+### surfacePressed [↑](#Table-of-contents)
 
 For use as a surface color on interactive elements such as resource list items and action list items when in a pressed state.
 
-| CSS variable                  | Light mode               | Dark mode                |
-| ----------------------------- | ------------------------ | ------------------------ |
-| `--p-surface-pressed`         | ![][surfacepressedlight] | ![][surfacepresseddark]  |
-| `--p-surface-pressed-inverse` | ![][surfacepresseddark]  | ![][surfacepressedlight] |
-| `--p-surface-pressed-light`   | ![][surfacepressedlight] | ![][surfacepressedlight] |
-| `--p-surface-pressed-dark`    | ![][surfacepresseddark]  | ![][surfacepresseddark]  |
+| CSS variable          | Light mode               | Dark mode               |
+| --------------------- | ------------------------ | ----------------------- |
+| `--p-surface-pressed` | ![][surfacepressedlight] | ![][surfacepresseddark] |
 
-[surfacepressedlight]: https://www.gifpng.com/64x32/e3e3e3/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[surfacepresseddark]: https://www.gifpng.com/64x32/3d3f42/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-surface-pressed-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-surface-pressed-light`: returns the fixed light value regardless of mode
+- `--p-surface-pressed-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-surface-pressed-inverse` | ![][surfacePressedDark]  | ![][surfacePressedLight] |
+  | `--p-surface-pressed-light`   | ![][surfacePressedLight] | ![][surfacePressedLight] |
+  | `--p-surface-pressed-dark`    | ![][surfacePressedDark]  | ![][surfacePressedDark]  |
+  -->
+
+[surfacepressedlight]: https://www.gifpng.com/128x96/e3e3e3/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[surfacepresseddark]: https://www.gifpng.com/128x96/3d3f42/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `backdrop`
-
-[Back to top](#Table-of-contents)
+### backdrop [↑](#Table-of-contents)
 
 For use as the background color of the backdrop component for navigation and modal.
 
@@ -230,14 +169,12 @@ For use as the background color of the backdrop component for navigation and mod
 | -------------- | ------------------ | ----------------- |
 | `--p-backdrop` | ![][backdroplight] | ![][backdropdark] |
 
-[backdroplight]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[backdropdark]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[backdroplight]: https://www.gifpng.com/128x96/000000/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[backdropdark]: https://www.gifpng.com/128x96/000000/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `shadowFromAmbientLight`
-
-[Back to top](#Table-of-contents)
+### shadowFromAmbientLight [↑](#Table-of-contents)
 
 For use in building shadows for popovers, cards, and modals.
 
@@ -245,14 +182,12 @@ For use in building shadows for popovers, cards, and modals.
 | ------------------------------- | -------------------------------- | ------------------------------- |
 | `--p-shadow-from-ambient-light` | ![][shadowfromambientlightlight] | ![][shadowfromambientlightdark] |
 
-[shadowfromambientlightlight]: https://www.gifpng.com/64x32/161717/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[shadowfromambientlightdark]: https://www.gifpng.com/64x32/161717/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[shadowfromambientlightlight]: https://www.gifpng.com/128x96/161717/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[shadowfromambientlightdark]: https://www.gifpng.com/128x96/161717/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `shadowFromDirectLight`
-
-[Back to top](#Table-of-contents)
+### shadowFromDirectLight [↑](#Table-of-contents)
 
 For use in building shadows for popovers, cards, and modals.
 
@@ -260,18 +195,16 @@ For use in building shadows for popovers, cards, and modals.
 | ------------------------------ | ------------------------------- | ------------------------------ |
 | `--p-shadow-from-direct-light` | ![][shadowfromdirectlightlight] | ![][shadowfromdirectlightdark] |
 
-[shadowfromdirectlightlight]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[shadowfromdirectlightdark]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[shadowfromdirectlightlight]: https://www.gifpng.com/128x96/000000/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[shadowfromdirectlightdark]: https://www.gifpng.com/128x96/000000/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-## `onSurface`
+## onSurface
 
 The onSurface role is made up of elements which appear on top of a surface, including borders, neutral icons, and text. When a light surface is provided, onSurface values will be dark. When a dark surface is provided, onSurface values will be light.
 
-### `onSurface`
-
-[Back to top](#Table-of-contents)
+### onSurface [↑](#Table-of-contents)
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
@@ -279,180 +212,214 @@ While use directly in our components is discouraged, the base variant is unmodif
 | ---------------- | ------------------- | ------------------ |
 | `--p-on-surface` | ![][onsurfacelight] | ![][onsurfacedark] |
 
-[onsurfacelight]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[onsurfacedark]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[onsurfacelight]: https://www.gifpng.com/128x96/1e2124/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[onsurfacedark]: https://www.gifpng.com/128x96/1e2124/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `borderOnSurface`
-
-[Back to top](#Table-of-contents)
+### borderOnSurface [↑](#Table-of-contents)
 
 For use as a border (border or interactive outline).
 
-| CSS variable                    | Light mode                | Dark mode                 |
-| ------------------------------- | ------------------------- | ------------------------- |
-| `--p-border-on-surface`         | ![][borderonsurfacelight] | ![][borderonsurfacedark]  |
-| `--p-border-on-surface-inverse` | ![][borderonsurfacedark]  | ![][borderonsurfacelight] |
-| `--p-border-on-surface-light`   | ![][borderonsurfacelight] | ![][borderonsurfacelight] |
-| `--p-border-on-surface-dark`    | ![][borderonsurfacedark]  | ![][borderonsurfacedark]  |
+| CSS variable            | Light mode                | Dark mode                |
+| ----------------------- | ------------------------- | ------------------------ |
+| `--p-border-on-surface` | ![][borderonsurfacelight] | ![][borderonsurfacedark] |
 
-[borderonsurfacelight]: https://www.gifpng.com/64x32/b1bac4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[borderonsurfacedark]: https://www.gifpng.com/64x32/4e545a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-border-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-border-on-surface-light`: returns the fixed light value regardless of mode
+- `--p-border-on-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-border-on-surface-inverse` | ![][borderOnSurfaceDark]  | ![][borderOnSurfaceLight] |
+  | `--p-border-on-surface-light`   | ![][borderOnSurfaceLight] | ![][borderOnSurfaceLight] |
+  | `--p-border-on-surface-dark`    | ![][borderOnSurfaceDark]  | ![][borderOnSurfaceDark]  |
+  -->
+
+[borderonsurfacelight]: https://www.gifpng.com/128x96/b1bac4/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[borderonsurfacedark]: https://www.gifpng.com/128x96/4e545a/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `borderDisabledOnSurface`
-
-[Back to top](#Table-of-contents)
+### borderDisabledOnSurface [↑](#Table-of-contents)
 
 For use as a an interactive outline on disabled elements.
 
-| CSS variable                             | Light mode                        | Dark mode                         |
-| ---------------------------------------- | --------------------------------- | --------------------------------- |
-| `--p-border-disabled-on-surface`         | ![][borderdisabledonsurfacelight] | ![][borderdisabledonsurfacedark]  |
-| `--p-border-disabled-on-surface-inverse` | ![][borderdisabledonsurfacedark]  | ![][borderdisabledonsurfacelight] |
-| `--p-border-disabled-on-surface-light`   | ![][borderdisabledonsurfacelight] | ![][borderdisabledonsurfacelight] |
-| `--p-border-disabled-on-surface-dark`    | ![][borderdisabledonsurfacedark]  | ![][borderdisabledonsurfacedark]  |
+| CSS variable                     | Light mode                        | Dark mode                        |
+| -------------------------------- | --------------------------------- | -------------------------------- |
+| `--p-border-disabled-on-surface` | ![][borderdisabledonsurfacelight] | ![][borderdisabledonsurfacedark] |
 
-[borderdisabledonsurfacelight]: https://www.gifpng.com/64x32/f0f2f4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[borderdisabledonsurfacedark]: https://www.gifpng.com/64x32/a2aeb9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-border-disabled-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-border-disabled-on-surface-light`: returns the fixed light value regardless of mode
+- `--p-border-disabled-on-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-border-disabled-on-surface-inverse` | ![][borderDisabledOnSurfaceDark]  | ![][borderDisabledOnSurfaceLight] |
+  | `--p-border-disabled-on-surface-light`   | ![][borderDisabledOnSurfaceLight] | ![][borderDisabledOnSurfaceLight] |
+  | `--p-border-disabled-on-surface-dark`    | ![][borderDisabledOnSurfaceDark]  | ![][borderDisabledOnSurfaceDark]  |
+  -->
+
+[borderdisabledonsurfacelight]: https://www.gifpng.com/128x96/f0f2f4/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[borderdisabledonsurfacedark]: https://www.gifpng.com/128x96/a2aeb9/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `borderSubduedOnSurface`
-
-[Back to top](#Table-of-contents)
+### borderSubduedOnSurface [↑](#Table-of-contents)
 
 For use as a subdued border (border or interactive outline).
 
-| CSS variable                            | Light mode                       | Dark mode                        |
-| --------------------------------------- | -------------------------------- | -------------------------------- |
-| `--p-border-subdued-on-surface`         | ![][bordersubduedonsurfacelight] | ![][bordersubduedonsurfacedark]  |
-| `--p-border-subdued-on-surface-inverse` | ![][bordersubduedonsurfacedark]  | ![][bordersubduedonsurfacelight] |
-| `--p-border-subdued-on-surface-light`   | ![][bordersubduedonsurfacelight] | ![][bordersubduedonsurfacelight] |
-| `--p-border-subdued-on-surface-dark`    | ![][bordersubduedonsurfacedark]  | ![][bordersubduedonsurfacedark]  |
+| CSS variable                    | Light mode                       | Dark mode                       |
+| ------------------------------- | -------------------------------- | ------------------------------- |
+| `--p-border-subdued-on-surface` | ![][bordersubduedonsurfacelight] | ![][bordersubduedonsurfacedark] |
 
-[bordersubduedonsurfacelight]: https://www.gifpng.com/64x32/d0d6dc/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[bordersubduedonsurfacedark]: https://www.gifpng.com/64x32/232629/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-border-subdued-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-border-subdued-on-surface-light`: returns the fixed light value regardless of mode
+- `--p-border-subdued-on-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-border-subdued-on-surface-inverse` | ![][borderSubduedOnSurfaceDark]  | ![][borderSubduedOnSurfaceLight] |
+  | `--p-border-subdued-on-surface-light`   | ![][borderSubduedOnSurfaceLight] | ![][borderSubduedOnSurfaceLight] |
+  | `--p-border-subdued-on-surface-dark`    | ![][borderSubduedOnSurfaceDark]  | ![][borderSubduedOnSurfaceDark]  |
+  -->
+
+[bordersubduedonsurfacelight]: https://www.gifpng.com/128x96/d0d6dc/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[bordersubduedonsurfacedark]: https://www.gifpng.com/128x96/232629/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `iconOnSurface`
-
-[Back to top](#Table-of-contents)
+### iconOnSurface [↑](#Table-of-contents)
 
 For use as the fill color of neutral icons.
 
-| CSS variable                  | Light mode              | Dark mode               |
-| ----------------------------- | ----------------------- | ----------------------- |
-| `--p-icon-on-surface`         | ![][icononsurfacelight] | ![][icononsurfacedark]  |
-| `--p-icon-on-surface-inverse` | ![][icononsurfacedark]  | ![][icononsurfacelight] |
-| `--p-icon-on-surface-light`   | ![][icononsurfacelight] | ![][icononsurfacelight] |
-| `--p-icon-on-surface-dark`    | ![][icononsurfacedark]  | ![][icononsurfacedark]  |
+| CSS variable          | Light mode              | Dark mode              |
+| --------------------- | ----------------------- | ---------------------- |
+| `--p-icon-on-surface` | ![][icononsurfacelight] | ![][icononsurfacedark] |
 
-[icononsurfacelight]: https://www.gifpng.com/64x32/42474c/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[icononsurfacedark]: https://www.gifpng.com/64x32/f9f9fa/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-icon-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-icon-on-surface-light`: returns the fixed light value regardless of mode
+- `--p-icon-on-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-icon-on-surface-inverse` | ![][iconOnSurfaceDark]  | ![][iconOnSurfaceLight] |
+  | `--p-icon-on-surface-light`   | ![][iconOnSurfaceLight] | ![][iconOnSurfaceLight] |
+  | `--p-icon-on-surface-dark`    | ![][iconOnSurfaceDark]  | ![][iconOnSurfaceDark]  |
+  -->
+
+[icononsurfacelight]: https://www.gifpng.com/128x96/42474c/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[icononsurfacedark]: https://www.gifpng.com/128x96/f9f9fa/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `iconDisabledOnSurface`
-
-[Back to top](#Table-of-contents)
+### iconDisabledOnSurface [↑](#Table-of-contents)
 
 For use as the fill color of disabled neutral icons.
 
-| CSS variable                           | Light mode                      | Dark mode                       |
-| -------------------------------------- | ------------------------------- | ------------------------------- |
-| `--p-icon-disabled-on-surface`         | ![][icondisabledonsurfacelight] | ![][icondisabledonsurfacedark]  |
-| `--p-icon-disabled-on-surface-inverse` | ![][icondisabledonsurfacedark]  | ![][icondisabledonsurfacelight] |
-| `--p-icon-disabled-on-surface-light`   | ![][icondisabledonsurfacelight] | ![][icondisabledonsurfacelight] |
-| `--p-icon-disabled-on-surface-dark`    | ![][icondisabledonsurfacedark]  | ![][icondisabledonsurfacedark]  |
+| CSS variable                   | Light mode                      | Dark mode                      |
+| ------------------------------ | ------------------------------- | ------------------------------ |
+| `--p-icon-disabled-on-surface` | ![][icondisabledonsurfacelight] | ![][icondisabledonsurfacedark] |
 
-[icondisabledonsurfacelight]: https://www.gifpng.com/64x32/9ba6b0/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[icondisabledonsurfacedark]: https://www.gifpng.com/64x32/b1bac4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-icon-disabled-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-icon-disabled-on-surface-light`: returns the fixed light value regardless of mode
+- `--p-icon-disabled-on-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-icon-disabled-on-surface-inverse` | ![][iconDisabledOnSurfaceDark]  | ![][iconDisabledOnSurfaceLight] |
+  | `--p-icon-disabled-on-surface-light`   | ![][iconDisabledOnSurfaceLight] | ![][iconDisabledOnSurfaceLight] |
+  | `--p-icon-disabled-on-surface-dark`    | ![][iconDisabledOnSurfaceDark]  | ![][iconDisabledOnSurfaceDark]  |
+  -->
+
+[icondisabledonsurfacelight]: https://www.gifpng.com/128x96/9ba6b0/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[icondisabledonsurfacedark]: https://www.gifpng.com/128x96/b1bac4/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `iconSubduedOnSurface`
-
-[Back to top](#Table-of-contents)
+### iconSubduedOnSurface [↑](#Table-of-contents)
 
 For use as the fill color of subdued neutral icons.
 
-| CSS variable                          | Light mode                     | Dark mode                      |
-| ------------------------------------- | ------------------------------ | ------------------------------ |
-| `--p-icon-subdued-on-surface`         | ![][iconsubduedonsurfacelight] | ![][iconsubduedonsurfacedark]  |
-| `--p-icon-subdued-on-surface-inverse` | ![][iconsubduedonsurfacedark]  | ![][iconsubduedonsurfacelight] |
-| `--p-icon-subdued-on-surface-light`   | ![][iconsubduedonsurfacelight] | ![][iconsubduedonsurfacelight] |
-| `--p-icon-subdued-on-surface-dark`    | ![][iconsubduedonsurfacedark]  | ![][iconsubduedonsurfacedark]  |
+| CSS variable                  | Light mode                     | Dark mode                     |
+| ----------------------------- | ------------------------------ | ----------------------------- |
+| `--p-icon-subdued-on-surface` | ![][iconsubduedonsurfacelight] | ![][iconsubduedonsurfacedark] |
 
-[iconsubduedonsurfacelight]: https://www.gifpng.com/64x32/87919b/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[iconsubduedonsurfacedark]: https://www.gifpng.com/64x32/8c96a1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-icon-subdued-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-icon-subdued-on-surface-light`: returns the fixed light value regardless of mode
+- `--p-icon-subdued-on-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-icon-subdued-on-surface-inverse` | ![][iconSubduedOnSurfaceDark]  | ![][iconSubduedOnSurfaceLight] |
+  | `--p-icon-subdued-on-surface-light`   | ![][iconSubduedOnSurfaceLight] | ![][iconSubduedOnSurfaceLight] |
+  | `--p-icon-subdued-on-surface-dark`    | ![][iconSubduedOnSurfaceDark]  | ![][iconSubduedOnSurfaceDark]  |
+  -->
+
+[iconsubduedonsurfacelight]: https://www.gifpng.com/128x96/87919b/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[iconsubduedonsurfacedark]: https://www.gifpng.com/128x96/8c96a1/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `textOnSurface`
-
-[Back to top](#Table-of-contents)
+### textOnSurface [↑](#Table-of-contents)
 
 For use as a neutral text color.
 
-| CSS variable                  | Light mode              | Dark mode               |
-| ----------------------------- | ----------------------- | ----------------------- |
-| `--p-text-on-surface`         | ![][textonsurfacelight] | ![][textonsurfacedark]  |
-| `--p-text-on-surface-inverse` | ![][textonsurfacedark]  | ![][textonsurfacelight] |
-| `--p-text-on-surface-light`   | ![][textonsurfacelight] | ![][textonsurfacelight] |
-| `--p-text-on-surface-dark`    | ![][textonsurfacedark]  | ![][textonsurfacedark]  |
+| CSS variable          | Light mode              | Dark mode              |
+| --------------------- | ----------------------- | ---------------------- |
+| `--p-text-on-surface` | ![][textonsurfacelight] | ![][textonsurfacedark] |
 
-[textonsurfacelight]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[textonsurfacedark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-text-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-text-on-surface-light`: returns the fixed light value regardless of mode
+- `--p-text-on-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-text-on-surface-inverse` | ![][textOnSurfaceDark]  | ![][textOnSurfaceLight] |
+  | `--p-text-on-surface-light`   | ![][textOnSurfaceLight] | ![][textOnSurfaceLight] |
+  | `--p-text-on-surface-dark`    | ![][textOnSurfaceDark]  | ![][textOnSurfaceDark]  |
+  -->
+
+[textonsurfacelight]: https://www.gifpng.com/128x96/1e2124/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[textonsurfacedark]: https://www.gifpng.com/128x96/ffffff/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `textDisabledOnSurface`
-
-[Back to top](#Table-of-contents)
+### textDisabledOnSurface [↑](#Table-of-contents)
 
 For use as a disabled neutral text color.
 
-| CSS variable                           | Light mode                      | Dark mode                       |
-| -------------------------------------- | ------------------------------- | ------------------------------- |
-| `--p-text-disabled-on-surface`         | ![][textdisabledonsurfacelight] | ![][textdisabledonsurfacedark]  |
-| `--p-text-disabled-on-surface-inverse` | ![][textdisabledonsurfacedark]  | ![][textdisabledonsurfacelight] |
-| `--p-text-disabled-on-surface-light`   | ![][textdisabledonsurfacelight] | ![][textdisabledonsurfacelight] |
-| `--p-text-disabled-on-surface-dark`    | ![][textdisabledonsurfacedark]  | ![][textdisabledonsurfacedark]  |
+| CSS variable                   | Light mode                      | Dark mode                      |
+| ------------------------------ | ------------------------------- | ------------------------------ |
+| `--p-text-disabled-on-surface` | ![][textdisabledonsurfacelight] | ![][textdisabledonsurfacedark] |
 
-[textdisabledonsurfacelight]: https://www.gifpng.com/64x32/8a949e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[textdisabledonsurfacedark]: https://www.gifpng.com/64x32/6f7880/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-text-disabled-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-text-disabled-on-surface-light`: returns the fixed light value regardless of mode
+- `--p-text-disabled-on-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-text-disabled-on-surface-inverse` | ![][textDisabledOnSurfaceDark]  | ![][textDisabledOnSurfaceLight] |
+  | `--p-text-disabled-on-surface-light`   | ![][textDisabledOnSurfaceLight] | ![][textDisabledOnSurfaceLight] |
+  | `--p-text-disabled-on-surface-dark`    | ![][textDisabledOnSurfaceDark]  | ![][textDisabledOnSurfaceDark]  |
+  -->
+
+[textdisabledonsurfacelight]: https://www.gifpng.com/128x96/8a949e/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[textdisabledonsurfacedark]: https://www.gifpng.com/128x96/6f7880/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `textSubduedOnSurface`
-
-[Back to top](#Table-of-contents)
+### textSubduedOnSurface [↑](#Table-of-contents)
 
 For use as a subdued neutral text color.
 
-| CSS variable                          | Light mode                     | Dark mode                      |
-| ------------------------------------- | ------------------------------ | ------------------------------ |
-| `--p-text-subdued-on-surface`         | ![][textsubduedonsurfacelight] | ![][textsubduedonsurfacedark]  |
-| `--p-text-subdued-on-surface-inverse` | ![][textsubduedonsurfacedark]  | ![][textsubduedonsurfacelight] |
-| `--p-text-subdued-on-surface-light`   | ![][textsubduedonsurfacelight] | ![][textsubduedonsurfacelight] |
-| `--p-text-subdued-on-surface-dark`    | ![][textsubduedonsurfacedark]  | ![][textsubduedonsurfacedark]  |
+| CSS variable                  | Light mode                     | Dark mode                     |
+| ----------------------------- | ------------------------------ | ----------------------------- |
+| `--p-text-subdued-on-surface` | ![][textsubduedonsurfacelight] | ![][textsubduedonsurfacedark] |
 
-[textsubduedonsurfacelight]: https://www.gifpng.com/64x32/53595f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[textsubduedonsurfacedark]: https://www.gifpng.com/64x32/8c96a1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-text-subdued-on-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-text-subdued-on-surface-light`: returns the fixed light value regardless of mode
+- `--p-text-subdued-on-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-text-subdued-on-surface-inverse` | ![][textSubduedOnSurfaceDark]  | ![][textSubduedOnSurfaceLight] |
+  | `--p-text-subdued-on-surface-light`   | ![][textSubduedOnSurfaceLight] | ![][textSubduedOnSurfaceLight] |
+  | `--p-text-subdued-on-surface-dark`    | ![][textSubduedOnSurfaceDark]  | ![][textSubduedOnSurfaceDark]  |
+  -->
+
+[textsubduedonsurfacelight]: https://www.gifpng.com/128x96/53595f/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[textsubduedonsurfacedark]: https://www.gifpng.com/128x96/8c96a1/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-## `interactive`
+## interactive
 
 The interactive role is used to express interactivity in components. It is used in links, as an indicator of focus, and as an indicator of selected interactive states.
 
-### `interactive`
-
-[Back to top](#Table-of-contents)
+### interactive [↑](#Table-of-contents)
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
@@ -460,180 +427,214 @@ While use directly in our components is discouraged, the base variant is unmodif
 | ----------------- | --------------------- | -------------------- |
 | `--p-interactive` | ![][interactivelight] | ![][interactivedark] |
 
-[interactivelight]: https://www.gifpng.com/64x32/0870d9/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactivedark]: https://www.gifpng.com/64x32/0870d9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[interactivelight]: https://www.gifpng.com/128x96/0870d9/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[interactivedark]: https://www.gifpng.com/128x96/0870d9/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `interactiveAction`
-
-[Back to top](#Table-of-contents)
+### interactiveAction [↑](#Table-of-contents)
 
 Used for links and plain buttons.
 
-| CSS variable                     | Light mode                  | Dark mode                   |
-| -------------------------------- | --------------------------- | --------------------------- |
-| `--p-interactive-action`         | ![][interactiveactionlight] | ![][interactiveactiondark]  |
-| `--p-interactive-action-inverse` | ![][interactiveactiondark]  | ![][interactiveactionlight] |
-| `--p-interactive-action-light`   | ![][interactiveactionlight] | ![][interactiveactionlight] |
-| `--p-interactive-action-dark`    | ![][interactiveactiondark]  | ![][interactiveactiondark]  |
+| CSS variable             | Light mode                  | Dark mode                  |
+| ------------------------ | --------------------------- | -------------------------- |
+| `--p-interactive-action` | ![][interactiveactionlight] | ![][interactiveactiondark] |
 
-[interactiveactionlight]: https://www.gifpng.com/64x32/0769ca/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveactiondark]: https://www.gifpng.com/64x32/679cfe/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-interactive-action-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-interactive-action-light`: returns the fixed light value regardless of mode
+- `--p-interactive-action-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-interactive-action-inverse` | ![][interactiveActionDark]  | ![][interactiveActionLight] |
+  | `--p-interactive-action-light`   | ![][interactiveActionLight] | ![][interactiveActionLight] |
+  | `--p-interactive-action-dark`    | ![][interactiveActionDark]  | ![][interactiveActionDark]  |
+  -->
+
+[interactiveactionlight]: https://www.gifpng.com/128x96/0769ca/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveactiondark]: https://www.gifpng.com/128x96/679cfe/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `interactiveActionDisabled`
-
-[Back to top](#Table-of-contents)
+### interactiveActionDisabled [↑](#Table-of-contents)
 
 Used for disabled links and plain buttons.
 
-| CSS variable                              | Light mode                          | Dark mode                           |
-| ----------------------------------------- | ----------------------------------- | ----------------------------------- |
-| `--p-interactive-action-disabled`         | ![][interactiveactiondisabledlight] | ![][interactiveactiondisableddark]  |
-| `--p-interactive-action-disabled-inverse` | ![][interactiveactiondisableddark]  | ![][interactiveactiondisabledlight] |
-| `--p-interactive-action-disabled-light`   | ![][interactiveactiondisabledlight] | ![][interactiveactiondisabledlight] |
-| `--p-interactive-action-disabled-dark`    | ![][interactiveactiondisableddark]  | ![][interactiveactiondisableddark]  |
+| CSS variable                      | Light mode                          | Dark mode                          |
+| --------------------------------- | ----------------------------------- | ---------------------------------- |
+| `--p-interactive-action-disabled` | ![][interactiveactiondisabledlight] | ![][interactiveactiondisableddark] |
 
-[interactiveactiondisabledlight]: https://www.gifpng.com/64x32/348cfe/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveactiondisableddark]: https://www.gifpng.com/64x32/0663c1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-interactive-action-disabled-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-interactive-action-disabled-light`: returns the fixed light value regardless of mode
+- `--p-interactive-action-disabled-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-interactive-action-disabled-inverse` | ![][interactiveActionDisabledDark]  | ![][interactiveActionDisabledLight] |
+  | `--p-interactive-action-disabled-light`   | ![][interactiveActionDisabledLight] | ![][interactiveActionDisabledLight] |
+  | `--p-interactive-action-disabled-dark`    | ![][interactiveActionDisabledDark]  | ![][interactiveActionDisabledDark]  |
+  -->
+
+[interactiveactiondisabledlight]: https://www.gifpng.com/128x96/348cfe/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveactiondisableddark]: https://www.gifpng.com/128x96/0663c1/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `interactiveActionHovered`
-
-[Back to top](#Table-of-contents)
+### interactiveActionHovered [↑](#Table-of-contents)
 
 Used for hovered links and plain buttons.
 
-| CSS variable                             | Light mode                         | Dark mode                          |
-| ---------------------------------------- | ---------------------------------- | ---------------------------------- |
-| `--p-interactive-action-hovered`         | ![][interactiveactionhoveredlight] | ![][interactiveactionhovereddark]  |
-| `--p-interactive-action-hovered-inverse` | ![][interactiveactionhovereddark]  | ![][interactiveactionhoveredlight] |
-| `--p-interactive-action-hovered-light`   | ![][interactiveactionhoveredlight] | ![][interactiveactionhoveredlight] |
-| `--p-interactive-action-hovered-dark`    | ![][interactiveactionhovereddark]  | ![][interactiveactionhovereddark]  |
+| CSS variable                     | Light mode                         | Dark mode                         |
+| -------------------------------- | ---------------------------------- | --------------------------------- |
+| `--p-interactive-action-hovered` | ![][interactiveactionhoveredlight] | ![][interactiveactionhovereddark] |
 
-[interactiveactionhoveredlight]: https://www.gifpng.com/64x32/0557a8/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveactionhovereddark]: https://www.gifpng.com/64x32/81a8fe/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-interactive-action-hovered-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-interactive-action-hovered-light`: returns the fixed light value regardless of mode
+- `--p-interactive-action-hovered-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-interactive-action-hovered-inverse` | ![][interactiveActionHoveredDark]  | ![][interactiveActionHoveredLight] |
+  | `--p-interactive-action-hovered-light`   | ![][interactiveActionHoveredLight] | ![][interactiveActionHoveredLight] |
+  | `--p-interactive-action-hovered-dark`    | ![][interactiveActionHoveredDark]  | ![][interactiveActionHoveredDark]  |
+  -->
+
+[interactiveactionhoveredlight]: https://www.gifpng.com/128x96/0557a8/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveactionhovereddark]: https://www.gifpng.com/128x96/81a8fe/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `interactiveActionSubdued`
-
-[Back to top](#Table-of-contents)
+### interactiveActionSubdued [↑](#Table-of-contents)
 
 Used for subdued links and plain buttons.
 
-| CSS variable                             | Light mode                         | Dark mode                          |
-| ---------------------------------------- | ---------------------------------- | ---------------------------------- |
-| `--p-interactive-action-subdued`         | ![][interactiveactionsubduedlight] | ![][interactiveactionsubdueddark]  |
-| `--p-interactive-action-subdued-inverse` | ![][interactiveactionsubdueddark]  | ![][interactiveactionsubduedlight] |
-| `--p-interactive-action-subdued-light`   | ![][interactiveactionsubduedlight] | ![][interactiveactionsubduedlight] |
-| `--p-interactive-action-subdued-dark`    | ![][interactiveactionsubdueddark]  | ![][interactiveactionsubdueddark]  |
+| CSS variable                     | Light mode                         | Dark mode                         |
+| -------------------------------- | ---------------------------------- | --------------------------------- |
+| `--p-interactive-action-subdued` | ![][interactiveactionsubduedlight] | ![][interactiveactionsubdueddark] |
 
-[interactiveactionsubduedlight]: https://www.gifpng.com/64x32/0878e7/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveactionsubdueddark]: https://www.gifpng.com/64x32/0873dd/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-interactive-action-subdued-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-interactive-action-subdued-light`: returns the fixed light value regardless of mode
+- `--p-interactive-action-subdued-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-interactive-action-subdued-inverse` | ![][interactiveActionSubduedDark]  | ![][interactiveActionSubduedLight] |
+  | `--p-interactive-action-subdued-light`   | ![][interactiveActionSubduedLight] | ![][interactiveActionSubduedLight] |
+  | `--p-interactive-action-subdued-dark`    | ![][interactiveActionSubduedDark]  | ![][interactiveActionSubduedDark]  |
+  -->
+
+[interactiveactionsubduedlight]: https://www.gifpng.com/128x96/0878e7/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveactionsubdueddark]: https://www.gifpng.com/128x96/0873dd/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `interactiveActionPressed`
-
-[Back to top](#Table-of-contents)
+### interactiveActionPressed [↑](#Table-of-contents)
 
 Used for pressed links and plain buttons.
 
-| CSS variable                             | Light mode                         | Dark mode                          |
-| ---------------------------------------- | ---------------------------------- | ---------------------------------- |
-| `--p-interactive-action-pressed`         | ![][interactiveactionpressedlight] | ![][interactiveactionpresseddark]  |
-| `--p-interactive-action-pressed-inverse` | ![][interactiveactionpresseddark]  | ![][interactiveactionpressedlight] |
-| `--p-interactive-action-pressed-light`   | ![][interactiveactionpressedlight] | ![][interactiveactionpressedlight] |
-| `--p-interactive-action-pressed-dark`    | ![][interactiveactionpresseddark]  | ![][interactiveactionpresseddark]  |
+| CSS variable                     | Light mode                         | Dark mode                         |
+| -------------------------------- | ---------------------------------- | --------------------------------- |
+| `--p-interactive-action-pressed` | ![][interactiveactionpressedlight] | ![][interactiveactionpresseddark] |
 
-[interactiveactionpressedlight]: https://www.gifpng.com/64x32/034891/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveactionpresseddark]: https://www.gifpng.com/64x32/9ab8fe/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-interactive-action-pressed-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-interactive-action-pressed-light`: returns the fixed light value regardless of mode
+- `--p-interactive-action-pressed-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-interactive-action-pressed-inverse` | ![][interactiveActionPressedDark]  | ![][interactiveActionPressedLight] |
+  | `--p-interactive-action-pressed-light`   | ![][interactiveActionPressedLight] | ![][interactiveActionPressedLight] |
+  | `--p-interactive-action-pressed-dark`    | ![][interactiveActionPressedDark]  | ![][interactiveActionPressedDark]  |
+  -->
+
+[interactiveactionpressedlight]: https://www.gifpng.com/128x96/034891/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveactionpresseddark]: https://www.gifpng.com/128x96/9ab8fe/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `interactiveFocus`
-
-[Back to top](#Table-of-contents)
+### interactiveFocus [↑](#Table-of-contents)
 
 For use in the focus ring on interactive elements.
 
-| CSS variable                    | Light mode                 | Dark mode                  |
-| ------------------------------- | -------------------------- | -------------------------- |
-| `--p-interactive-focus`         | ![][interactivefocuslight] | ![][interactivefocusdark]  |
-| `--p-interactive-focus-inverse` | ![][interactivefocusdark]  | ![][interactivefocuslight] |
-| `--p-interactive-focus-light`   | ![][interactivefocuslight] | ![][interactivefocuslight] |
-| `--p-interactive-focus-dark`    | ![][interactivefocusdark]  | ![][interactivefocusdark]  |
+| CSS variable            | Light mode                 | Dark mode                 |
+| ----------------------- | -------------------------- | ------------------------- |
+| `--p-interactive-focus` | ![][interactivefocuslight] | ![][interactivefocusdark] |
 
-[interactivefocuslight]: https://www.gifpng.com/64x32/348cfe/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactivefocusdark]: https://www.gifpng.com/64x32/0663c1/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-interactive-focus-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-interactive-focus-light`: returns the fixed light value regardless of mode
+- `--p-interactive-focus-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-interactive-focus-inverse` | ![][interactiveFocusDark]  | ![][interactiveFocusLight] |
+  | `--p-interactive-focus-light`   | ![][interactiveFocusLight] | ![][interactiveFocusLight] |
+  | `--p-interactive-focus-dark`    | ![][interactiveFocusDark]  | ![][interactiveFocusDark]  |
+  -->
+
+[interactivefocuslight]: https://www.gifpng.com/128x96/348cfe/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[interactivefocusdark]: https://www.gifpng.com/128x96/0663c1/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `interactiveSelected`
-
-[Back to top](#Table-of-contents)
+### interactiveSelected [↑](#Table-of-contents)
 
 For use as a surface color in selected interactive elements, in components such as option list and resource list.
 
-| CSS variable                       | Light mode                    | Dark mode                     |
-| ---------------------------------- | ----------------------------- | ----------------------------- |
-| `--p-interactive-selected`         | ![][interactiveselectedlight] | ![][interactiveselecteddark]  |
-| `--p-interactive-selected-inverse` | ![][interactiveselecteddark]  | ![][interactiveselectedlight] |
-| `--p-interactive-selected-light`   | ![][interactiveselectedlight] | ![][interactiveselectedlight] |
-| `--p-interactive-selected-dark`    | ![][interactiveselecteddark]  | ![][interactiveselecteddark]  |
+| CSS variable               | Light mode                    | Dark mode                    |
+| -------------------------- | ----------------------------- | ---------------------------- |
+| `--p-interactive-selected` | ![][interactiveselectedlight] | ![][interactiveselecteddark] |
 
-[interactiveselectedlight]: https://www.gifpng.com/64x32/f0f3ff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveselecteddark]: https://www.gifpng.com/64x32/000e24/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-interactive-selected-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-interactive-selected-light`: returns the fixed light value regardless of mode
+- `--p-interactive-selected-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-interactive-selected-inverse` | ![][interactiveSelectedDark]  | ![][interactiveSelectedLight] |
+  | `--p-interactive-selected-light`   | ![][interactiveSelectedLight] | ![][interactiveSelectedLight] |
+  | `--p-interactive-selected-dark`    | ![][interactiveSelectedDark]  | ![][interactiveSelectedDark]  |
+  -->
+
+[interactiveselectedlight]: https://www.gifpng.com/128x96/f0f3ff/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveselecteddark]: https://www.gifpng.com/128x96/000e24/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `interactiveSelectedHovered`
-
-[Back to top](#Table-of-contents)
+### interactiveSelectedHovered [↑](#Table-of-contents)
 
 For use as a surface color in selected interactive elements that are hovered, in components such as option list and resource list.
 
-| CSS variable                               | Light mode                           | Dark mode                            |
-| ------------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `--p-interactive-selected-hovered`         | ![][interactiveselectedhoveredlight] | ![][interactiveselectedhovereddark]  |
-| `--p-interactive-selected-hovered-inverse` | ![][interactiveselectedhovereddark]  | ![][interactiveselectedhoveredlight] |
-| `--p-interactive-selected-hovered-light`   | ![][interactiveselectedhoveredlight] | ![][interactiveselectedhoveredlight] |
-| `--p-interactive-selected-hovered-dark`    | ![][interactiveselectedhovereddark]  | ![][interactiveselectedhovereddark]  |
+| CSS variable                       | Light mode                           | Dark mode                           |
+| ---------------------------------- | ------------------------------------ | ----------------------------------- |
+| `--p-interactive-selected-hovered` | ![][interactiveselectedhoveredlight] | ![][interactiveselectedhovereddark] |
 
-[interactiveselectedhoveredlight]: https://www.gifpng.com/64x32/d6e0ff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveselectedhovereddark]: https://www.gifpng.com/64x32/011d41/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-interactive-selected-hovered-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-interactive-selected-hovered-light`: returns the fixed light value regardless of mode
+- `--p-interactive-selected-hovered-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-interactive-selected-hovered-inverse` | ![][interactiveSelectedHoveredDark]  | ![][interactiveSelectedHoveredLight] |
+  | `--p-interactive-selected-hovered-light`   | ![][interactiveSelectedHoveredLight] | ![][interactiveSelectedHoveredLight] |
+  | `--p-interactive-selected-hovered-dark`    | ![][interactiveSelectedHoveredDark]  | ![][interactiveSelectedHoveredDark]  |
+  -->
+
+[interactiveselectedhoveredlight]: https://www.gifpng.com/128x96/d6e0ff/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveselectedhovereddark]: https://www.gifpng.com/128x96/011d41/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `interactiveSelectedPressed`
-
-[Back to top](#Table-of-contents)
+### interactiveSelectedPressed [↑](#Table-of-contents)
 
 For use as a surface color in selected interactive elements that are pressed, in components such as option list and resource list.
 
-| CSS variable                               | Light mode                           | Dark mode                            |
-| ------------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `--p-interactive-selected-pressed`         | ![][interactiveselectedpressedlight] | ![][interactiveselectedpresseddark]  |
-| `--p-interactive-selected-pressed-inverse` | ![][interactiveselectedpresseddark]  | ![][interactiveselectedpressedlight] |
-| `--p-interactive-selected-pressed-light`   | ![][interactiveselectedpressedlight] | ![][interactiveselectedpressedlight] |
-| `--p-interactive-selected-pressed-dark`    | ![][interactiveselectedpresseddark]  | ![][interactiveselectedpresseddark]  |
+| CSS variable                       | Light mode                           | Dark mode                           |
+| ---------------------------------- | ------------------------------------ | ----------------------------------- |
+| `--p-interactive-selected-pressed` | ![][interactiveselectedpressedlight] | ![][interactiveselectedpresseddark] |
 
-[interactiveselectedpressedlight]: https://www.gifpng.com/64x32/b8cbff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[interactiveselectedpresseddark]: https://www.gifpng.com/64x32/012b5b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-interactive-selected-pressed-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-interactive-selected-pressed-light`: returns the fixed light value regardless of mode
+- `--p-interactive-selected-pressed-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-interactive-selected-pressed-inverse` | ![][interactiveSelectedPressedDark]  | ![][interactiveSelectedPressedLight] |
+  | `--p-interactive-selected-pressed-light`   | ![][interactiveSelectedPressedLight] | ![][interactiveSelectedPressedLight] |
+  | `--p-interactive-selected-pressed-dark`    | ![][interactiveSelectedPressedDark]  | ![][interactiveSelectedPressedDark]  |
+  -->
+
+[interactiveselectedpressedlight]: https://www.gifpng.com/128x96/b8cbff/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[interactiveselectedpresseddark]: https://www.gifpng.com/128x96/012b5b/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-## `neutral`
+## neutral
 
 A neutral interactive color role, for use in secondary and tertiary buttons as a background color, as well as in form elements as a background color.
 
-### `neutral`
-
-[Back to top](#Table-of-contents)
+### neutral [↑](#Table-of-contents)
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
@@ -641,90 +642,104 @@ While use directly in our components is discouraged, the base variant is unmodif
 | ------------- | ----------------- | ---------------- |
 | `--p-neutral` | ![][neutrallight] | ![][neutraldark] |
 
-[neutrallight]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[neutraldark]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[neutrallight]: https://www.gifpng.com/128x96/eaeaeb/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[neutraldark]: https://www.gifpng.com/128x96/eaeaeb/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `neutralAction`
-
-[Back to top](#Table-of-contents)
+### neutralAction [↑](#Table-of-contents)
 
 Used for secondary buttons and tertiary buttons, as well as in form elements as a background color and pontentially other neutral surfaces.
 
-| CSS variable                 | Light mode              | Dark mode               |
-| ---------------------------- | ----------------------- | ----------------------- |
-| `--p-neutral-action`         | ![][neutralactionlight] | ![][neutralactiondark]  |
-| `--p-neutral-action-inverse` | ![][neutralactiondark]  | ![][neutralactionlight] |
-| `--p-neutral-action-light`   | ![][neutralactionlight] | ![][neutralactionlight] |
-| `--p-neutral-action-dark`    | ![][neutralactiondark]  | ![][neutralactiondark]  |
+| CSS variable         | Light mode              | Dark mode              |
+| -------------------- | ----------------------- | ---------------------- |
+| `--p-neutral-action` | ![][neutralactionlight] | ![][neutralactiondark] |
 
-[neutralactionlight]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[neutralactiondark]: https://www.gifpng.com/64x32/35353b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-neutral-action-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-neutral-action-light`: returns the fixed light value regardless of mode
+- `--p-neutral-action-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-neutral-action-inverse` | ![][neutralActionDark]  | ![][neutralActionLight] |
+  | `--p-neutral-action-light`   | ![][neutralActionLight] | ![][neutralActionLight] |
+  | `--p-neutral-action-dark`    | ![][neutralActionDark]  | ![][neutralActionDark]  |
+  -->
+
+[neutralactionlight]: https://www.gifpng.com/128x96/eaeaeb/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[neutralactiondark]: https://www.gifpng.com/128x96/35353b/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `neutralActionDisabled`
-
-[Back to top](#Table-of-contents)
+### neutralActionDisabled [↑](#Table-of-contents)
 
 Used as a disabled state for secondary buttons
 
-| CSS variable                          | Light mode                      | Dark mode                       |
-| ------------------------------------- | ------------------------------- | ------------------------------- |
-| `--p-neutral-action-disabled`         | ![][neutralactiondisabledlight] | ![][neutralactiondisableddark]  |
-| `--p-neutral-action-disabled-inverse` | ![][neutralactiondisableddark]  | ![][neutralactiondisabledlight] |
-| `--p-neutral-action-disabled-light`   | ![][neutralactiondisabledlight] | ![][neutralactiondisabledlight] |
-| `--p-neutral-action-disabled-dark`    | ![][neutralactiondisableddark]  | ![][neutralactiondisableddark]  |
+| CSS variable                  | Light mode                      | Dark mode                      |
+| ----------------------------- | ------------------------------- | ------------------------------ |
+| `--p-neutral-action-disabled` | ![][neutralactiondisabledlight] | ![][neutralactiondisableddark] |
 
-[neutralactiondisabledlight]: https://www.gifpng.com/64x32/ededed/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[neutralactiondisableddark]: https://www.gifpng.com/64x32/222226/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-neutral-action-disabled-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-neutral-action-disabled-light`: returns the fixed light value regardless of mode
+- `--p-neutral-action-disabled-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-neutral-action-disabled-inverse` | ![][neutralActionDisabledDark]  | ![][neutralActionDisabledLight] |
+  | `--p-neutral-action-disabled-light`   | ![][neutralActionDisabledLight] | ![][neutralActionDisabledLight] |
+  | `--p-neutral-action-disabled-dark`    | ![][neutralActionDisabledDark]  | ![][neutralActionDisabledDark]  |
+  -->
+
+[neutralactiondisabledlight]: https://www.gifpng.com/128x96/ededed/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[neutralactiondisableddark]: https://www.gifpng.com/128x96/222226/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `neutralActionHovered`
-
-[Back to top](#Table-of-contents)
+### neutralActionHovered [↑](#Table-of-contents)
 
 Used as a hovered state for secondary buttons
 
-| CSS variable                         | Light mode                     | Dark mode                      |
-| ------------------------------------ | ------------------------------ | ------------------------------ |
-| `--p-neutral-action-hovered`         | ![][neutralactionhoveredlight] | ![][neutralactionhovereddark]  |
-| `--p-neutral-action-hovered-inverse` | ![][neutralactionhovereddark]  | ![][neutralactionhoveredlight] |
-| `--p-neutral-action-hovered-light`   | ![][neutralactionhoveredlight] | ![][neutralactionhoveredlight] |
-| `--p-neutral-action-hovered-dark`    | ![][neutralactionhovereddark]  | ![][neutralactionhovereddark]  |
+| CSS variable                 | Light mode                     | Dark mode                     |
+| ---------------------------- | ------------------------------ | ----------------------------- |
+| `--p-neutral-action-hovered` | ![][neutralactionhoveredlight] | ![][neutralactionhovereddark] |
 
-[neutralactionhoveredlight]: https://www.gifpng.com/64x32/e2e2e4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[neutralactionhovereddark]: https://www.gifpng.com/64x32/3a3a40/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-neutral-action-hovered-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-neutral-action-hovered-light`: returns the fixed light value regardless of mode
+- `--p-neutral-action-hovered-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-neutral-action-hovered-inverse` | ![][neutralActionHoveredDark]  | ![][neutralActionHoveredLight] |
+  | `--p-neutral-action-hovered-light`   | ![][neutralActionHoveredLight] | ![][neutralActionHoveredLight] |
+  | `--p-neutral-action-hovered-dark`    | ![][neutralActionHoveredDark]  | ![][neutralActionHoveredDark]  |
+  -->
+
+[neutralactionhoveredlight]: https://www.gifpng.com/128x96/e2e2e4/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[neutralactionhovereddark]: https://www.gifpng.com/128x96/3a3a40/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `neutralActionPressed`
-
-[Back to top](#Table-of-contents)
+### neutralActionPressed [↑](#Table-of-contents)
 
 Used as a pressed state for secondary buttons
 
-| CSS variable                         | Light mode                     | Dark mode                      |
-| ------------------------------------ | ------------------------------ | ------------------------------ |
-| `--p-neutral-action-pressed`         | ![][neutralactionpressedlight] | ![][neutralactionpresseddark]  |
-| `--p-neutral-action-pressed-inverse` | ![][neutralactionpresseddark]  | ![][neutralactionpressedlight] |
-| `--p-neutral-action-pressed-light`   | ![][neutralactionpressedlight] | ![][neutralactionpressedlight] |
-| `--p-neutral-action-pressed-dark`    | ![][neutralactionpresseddark]  | ![][neutralactionpresseddark]  |
+| CSS variable                 | Light mode                     | Dark mode                     |
+| ---------------------------- | ------------------------------ | ----------------------------- |
+| `--p-neutral-action-pressed` | ![][neutralactionpressedlight] | ![][neutralactionpresseddark] |
 
-[neutralactionpressedlight]: https://www.gifpng.com/64x32/dadadc/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[neutralactionpresseddark]: https://www.gifpng.com/64x32/5b5b62/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-neutral-action-pressed-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-neutral-action-pressed-light`: returns the fixed light value regardless of mode
+- `--p-neutral-action-pressed-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-neutral-action-pressed-inverse` | ![][neutralActionPressedDark]  | ![][neutralActionPressedLight] |
+  | `--p-neutral-action-pressed-light`   | ![][neutralActionPressedLight] | ![][neutralActionPressedLight] |
+  | `--p-neutral-action-pressed-dark`    | ![][neutralActionPressedDark]  | ![][neutralActionPressedDark]  |
+  -->
+
+[neutralactionpressedlight]: https://www.gifpng.com/128x96/dadadc/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[neutralactionpresseddark]: https://www.gifpng.com/128x96/5b5b62/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-## `primary`
+## primary
 
 A primary interactive color, for use in primary buttons as a background color. Also used in navigation and tabs for icons, and for a surface color when in a selected state.
 
-### `primary`
-
-[Back to top](#Table-of-contents)
+### primary [↑](#Table-of-contents)
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
@@ -732,14 +747,12 @@ While use directly in our components is discouraged, the base variant is unmodif
 | ------------- | ----------------- | ---------------- |
 | `--p-primary` | ![][primarylight] | ![][primarydark] |
 
-[primarylight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primarydark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[primarylight]: https://www.gifpng.com/128x96/008060/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[primarydark]: https://www.gifpng.com/128x96/008060/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `primaryAction`
-
-[Back to top](#Table-of-contents)
+### primaryAction [↑](#Table-of-contents)
 
 Used as the background color for primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
 
@@ -747,14 +760,12 @@ Used as the background color for primary actions, and as the fill color for icon
 | -------------------- | ----------------------- | ---------------------- |
 | `--p-primary-action` | ![][primaryactionlight] | ![][primaryactiondark] |
 
-[primaryactionlight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primaryactiondark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[primaryactionlight]: https://www.gifpng.com/128x96/008060/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[primaryactiondark]: https://www.gifpng.com/128x96/008060/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `primaryActionDisabled`
-
-[Back to top](#Table-of-contents)
+### primaryActionDisabled [↑](#Table-of-contents)
 
 Used as the background color for disabled primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
 
@@ -762,50 +773,56 @@ Used as the background color for disabled primary actions, and as the fill color
 | ----------------------------- | ------------------------------- | ------------------------------ |
 | `--p-primary-action-disabled` | ![][primaryactiondisabledlight] | ![][primaryactiondisableddark] |
 
-[primaryactiondisabledlight]: https://www.gifpng.com/64x32/005741/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primaryactiondisableddark]: https://www.gifpng.com/64x32/005741/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[primaryactiondisabledlight]: https://www.gifpng.com/128x96/005741/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[primaryactiondisableddark]: https://www.gifpng.com/128x96/005741/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `primaryActionHovered`
-
-[Back to top](#Table-of-contents)
+### primaryActionHovered [↑](#Table-of-contents)
 
 Used as the background color for hovered primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
 
-| CSS variable                         | Light mode                     | Dark mode                      |
-| ------------------------------------ | ------------------------------ | ------------------------------ |
-| `--p-primary-action-hovered`         | ![][primaryactionhoveredlight] | ![][primaryactionhovereddark]  |
-| `--p-primary-action-hovered-inverse` | ![][primaryactionhovereddark]  | ![][primaryactionhoveredlight] |
-| `--p-primary-action-hovered-light`   | ![][primaryactionhoveredlight] | ![][primaryactionhoveredlight] |
-| `--p-primary-action-hovered-dark`    | ![][primaryactionhovereddark]  | ![][primaryactionhovereddark]  |
+| CSS variable                 | Light mode                     | Dark mode                     |
+| ---------------------------- | ------------------------------ | ----------------------------- |
+| `--p-primary-action-hovered` | ![][primaryactionhoveredlight] | ![][primaryactionhovereddark] |
 
-[primaryactionhoveredlight]: https://www.gifpng.com/64x32/007054/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primaryactionhovereddark]: https://www.gifpng.com/64x32/00946f/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-primary-action-hovered-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-primary-action-hovered-light`: returns the fixed light value regardless of mode
+- `--p-primary-action-hovered-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-primary-action-hovered-inverse` | ![][primaryActionHoveredDark]  | ![][primaryActionHoveredLight] |
+  | `--p-primary-action-hovered-light`   | ![][primaryActionHoveredLight] | ![][primaryActionHoveredLight] |
+  | `--p-primary-action-hovered-dark`    | ![][primaryActionHoveredDark]  | ![][primaryActionHoveredDark]  |
+  -->
+
+[primaryactionhoveredlight]: https://www.gifpng.com/128x96/007054/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[primaryactionhovereddark]: https://www.gifpng.com/128x96/00946f/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `primaryActionPressed`
-
-[Back to top](#Table-of-contents)
+### primaryActionPressed [↑](#Table-of-contents)
 
 Used as the background color for pressed primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.
 
-| CSS variable                         | Light mode                     | Dark mode                      |
-| ------------------------------------ | ------------------------------ | ------------------------------ |
-| `--p-primary-action-pressed`         | ![][primaryactionpressedlight] | ![][primaryactionpresseddark]  |
-| `--p-primary-action-pressed-inverse` | ![][primaryactionpresseddark]  | ![][primaryactionpressedlight] |
-| `--p-primary-action-pressed-light`   | ![][primaryactionpressedlight] | ![][primaryactionpressedlight] |
-| `--p-primary-action-pressed-dark`    | ![][primaryactionpresseddark]  | ![][primaryactionpresseddark]  |
+| CSS variable                 | Light mode                     | Dark mode                     |
+| ---------------------------- | ------------------------------ | ----------------------------- |
+| `--p-primary-action-pressed` | ![][primaryactionpressedlight] | ![][primaryactionpresseddark] |
 
-[primaryactionpressedlight]: https://www.gifpng.com/64x32/00664d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primaryactionpresseddark]: https://www.gifpng.com/64x32/00a37a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-primary-action-pressed-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-primary-action-pressed-light`: returns the fixed light value regardless of mode
+- `--p-primary-action-pressed-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-primary-action-pressed-inverse` | ![][primaryActionPressedDark]  | ![][primaryActionPressedLight] |
+  | `--p-primary-action-pressed-light`   | ![][primaryActionPressedLight] | ![][primaryActionPressedLight] |
+  | `--p-primary-action-pressed-dark`    | ![][primaryActionPressedDark]  | ![][primaryActionPressedDark]  |
+  -->
+
+[primaryactionpressedlight]: https://www.gifpng.com/128x96/00664d/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[primaryactionpresseddark]: https://www.gifpng.com/128x96/00a37a/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `iconOnPrimary`
-
-[Back to top](#Table-of-contents)
+### iconOnPrimary [↑](#Table-of-contents)
 
 For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs.
 
@@ -813,14 +830,12 @@ For use as a fill color for icons on primary actions. Not for use in icons on na
 | --------------------- | ----------------------- | ---------------------- |
 | `--p-icon-on-primary` | ![][icononprimarylight] | ![][icononprimarydark] |
 
-[icononprimarylight]: https://www.gifpng.com/64x32/e5fff4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[icononprimarydark]: https://www.gifpng.com/64x32/e5fff4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[icononprimarylight]: https://www.gifpng.com/128x96/e5fff4/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[icononprimarydark]: https://www.gifpng.com/128x96/e5fff4/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `iconSubduedOnPrimary`
-
-[Back to top](#Table-of-contents)
+### iconSubduedOnPrimary [↑](#Table-of-contents)
 
 For use as a fill color for icons on subdued primary actions. Not for use in icons on navigation and tabs.
 
@@ -828,14 +843,12 @@ For use as a fill color for icons on subdued primary actions. Not for use in ico
 | ----------------------------- | ------------------------------ | ----------------------------- |
 | `--p-icon-subdued-on-primary` | ![][iconsubduedonprimarylight] | ![][iconsubduedonprimarydark] |
 
-[iconsubduedonprimarylight]: https://www.gifpng.com/64x32/00fac0/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[iconsubduedonprimarydark]: https://www.gifpng.com/64x32/00fac0/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[iconsubduedonprimarylight]: https://www.gifpng.com/128x96/00fac0/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[iconsubduedonprimarydark]: https://www.gifpng.com/128x96/00fac0/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `iconDisabledOnPrimary`
-
-[Back to top](#Table-of-contents)
+### iconDisabledOnPrimary [↑](#Table-of-contents)
 
 For use as a fill color for icons on disabled primary actions. Not for use in icons on navigation and tabs.
 
@@ -843,14 +856,12 @@ For use as a fill color for icons on disabled primary actions. Not for use in ic
 | ------------------------------ | ------------------------------- | ------------------------------ |
 | `--p-icon-disabled-on-primary` | ![][icondisabledonprimarylight] | ![][icondisabledonprimarydark] |
 
-[icondisabledonprimarylight]: https://www.gifpng.com/64x32/00dba4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[icondisabledonprimarydark]: https://www.gifpng.com/64x32/00dba4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[icondisabledonprimarylight]: https://www.gifpng.com/128x96/00dba4/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[icondisabledonprimarydark]: https://www.gifpng.com/128x96/00dba4/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `textOnPrimary`
-
-[Back to top](#Table-of-contents)
+### textOnPrimary [↑](#Table-of-contents)
 
 For use as a text color on primary actions. Not for use in text on navigation and tabs.
 
@@ -858,14 +869,12 @@ For use as a text color on primary actions. Not for use in text on navigation an
 | --------------------- | ----------------------- | ---------------------- |
 | `--p-text-on-primary` | ![][textonprimarylight] | ![][textonprimarydark] |
 
-[textonprimarylight]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[textonprimarydark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[textonprimarylight]: https://www.gifpng.com/128x96/ffffff/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[textonprimarydark]: https://www.gifpng.com/128x96/ffffff/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `textSubduedOnPrimary`
-
-[Back to top](#Table-of-contents)
+### textSubduedOnPrimary [↑](#Table-of-contents)
 
 For use as a text color on subdued primary actions. Not for use in text on navigation and tabs.
 
@@ -873,14 +882,12 @@ For use as a text color on subdued primary actions. Not for use in text on navig
 | ----------------------------- | ------------------------------ | ----------------------------- |
 | `--p-text-subdued-on-primary` | ![][textsubduedonprimarylight] | ![][textsubduedonprimarydark] |
 
-[textsubduedonprimarylight]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[textsubduedonprimarydark]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[textsubduedonprimarylight]: https://www.gifpng.com/128x96/33ffc5/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[textsubduedonprimarydark]: https://www.gifpng.com/128x96/33ffc5/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `textDisabledOnPrimary`
-
-[Back to top](#Table-of-contents)
+### textDisabledOnPrimary [↑](#Table-of-contents)
 
 For use as a text color on disabled primary actions. Not for use in text on navigation and tabs.
 
@@ -888,72 +895,82 @@ For use as a text color on disabled primary actions. Not for use in text on navi
 | ------------------------------ | ------------------------------- | ------------------------------ |
 | `--p-text-disabled-on-primary` | ![][textdisabledonprimarylight] | ![][textdisabledonprimarydark] |
 
-[textdisabledonprimarylight]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[textdisabledonprimarydark]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[textdisabledonprimarylight]: https://www.gifpng.com/128x96/33ffc5/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[textdisabledonprimarydark]: https://www.gifpng.com/128x96/33ffc5/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `primarySelected`
-
-[Back to top](#Table-of-contents)
+### primarySelected [↑](#Table-of-contents)
 
 Used as a surface color to indicate selected interactive states in navigation and tabs.
 
-| CSS variable                   | Light mode                | Dark mode                 |
-| ------------------------------ | ------------------------- | ------------------------- |
-| `--p-primary-selected`         | ![][primaryselectedlight] | ![][primaryselecteddark]  |
-| `--p-primary-selected-inverse` | ![][primaryselecteddark]  | ![][primaryselectedlight] |
-| `--p-primary-selected-light`   | ![][primaryselectedlight] | ![][primaryselectedlight] |
-| `--p-primary-selected-dark`    | ![][primaryselecteddark]  | ![][primaryselecteddark]  |
+| CSS variable           | Light mode                | Dark mode                |
+| ---------------------- | ------------------------- | ------------------------ |
+| `--p-primary-selected` | ![][primaryselectedlight] | ![][primaryselecteddark] |
 
-[primaryselectedlight]: https://www.gifpng.com/64x32/e1f5ec/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primaryselecteddark]: https://www.gifpng.com/64x32/0c1210/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-primary-selected-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-primary-selected-light`: returns the fixed light value regardless of mode
+- `--p-primary-selected-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-primary-selected-inverse` | ![][primarySelectedDark]  | ![][primarySelectedLight] |
+  | `--p-primary-selected-light`   | ![][primarySelectedLight] | ![][primarySelectedLight] |
+  | `--p-primary-selected-dark`    | ![][primarySelectedDark]  | ![][primarySelectedDark]  |
+  -->
+
+[primaryselectedlight]: https://www.gifpng.com/128x96/e1f5ec/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[primaryselecteddark]: https://www.gifpng.com/128x96/0c1210/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `primarySelectedHovered`
-
-[Back to top](#Table-of-contents)
+### primarySelectedHovered [↑](#Table-of-contents)
 
 Used as a surface color to indicate selected interactive states that are hovered in navigation and tabs.
 
-| CSS variable                           | Light mode                       | Dark mode                        |
-| -------------------------------------- | -------------------------------- | -------------------------------- |
-| `--p-primary-selected-hovered`         | ![][primaryselectedhoveredlight] | ![][primaryselectedhovereddark]  |
-| `--p-primary-selected-hovered-inverse` | ![][primaryselectedhovereddark]  | ![][primaryselectedhoveredlight] |
-| `--p-primary-selected-hovered-light`   | ![][primaryselectedhoveredlight] | ![][primaryselectedhoveredlight] |
-| `--p-primary-selected-hovered-dark`    | ![][primaryselectedhovereddark]  | ![][primaryselectedhovereddark]  |
+| CSS variable                   | Light mode                       | Dark mode                       |
+| ------------------------------ | -------------------------------- | ------------------------------- |
+| `--p-primary-selected-hovered` | ![][primaryselectedhoveredlight] | ![][primaryselectedhovereddark] |
 
-[primaryselectedhoveredlight]: https://www.gifpng.com/64x32/b3d0c3/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primaryselectedhovereddark]: https://www.gifpng.com/64x32/272f2b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-primary-selected-hovered-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-primary-selected-hovered-light`: returns the fixed light value regardless of mode
+- `--p-primary-selected-hovered-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-primary-selected-hovered-inverse` | ![][primarySelectedHoveredDark]  | ![][primarySelectedHoveredLight] |
+  | `--p-primary-selected-hovered-light`   | ![][primarySelectedHoveredLight] | ![][primarySelectedHoveredLight] |
+  | `--p-primary-selected-hovered-dark`    | ![][primarySelectedHoveredDark]  | ![][primarySelectedHoveredDark]  |
+  -->
+
+[primaryselectedhoveredlight]: https://www.gifpng.com/128x96/b3d0c3/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[primaryselectedhovereddark]: https://www.gifpng.com/128x96/272f2b/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `primarySelectedPressed`
-
-[Back to top](#Table-of-contents)
+### primarySelectedPressed [↑](#Table-of-contents)
 
 Used as a surface color to indicate selected interactive states that are pressed in navigation and tabs.
 
-| CSS variable                           | Light mode                       | Dark mode                        |
-| -------------------------------------- | -------------------------------- | -------------------------------- |
-| `--p-primary-selected-pressed`         | ![][primaryselectedpressedlight] | ![][primaryselectedpresseddark]  |
-| `--p-primary-selected-pressed-inverse` | ![][primaryselectedpresseddark]  | ![][primaryselectedpressedlight] |
-| `--p-primary-selected-pressed-light`   | ![][primaryselectedpressedlight] | ![][primaryselectedpressedlight] |
-| `--p-primary-selected-pressed-dark`    | ![][primaryselectedpresseddark]  | ![][primaryselectedpresseddark]  |
+| CSS variable                   | Light mode                       | Dark mode                       |
+| ------------------------------ | -------------------------------- | ------------------------------- |
+| `--p-primary-selected-pressed` | ![][primaryselectedpressedlight] | ![][primaryselectedpresseddark] |
 
-[primaryselectedpressedlight]: https://www.gifpng.com/64x32/a3bdb1/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[primaryselectedpresseddark]: https://www.gifpng.com/64x32/363f3b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-primary-selected-pressed-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-primary-selected-pressed-light`: returns the fixed light value regardless of mode
+- `--p-primary-selected-pressed-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-primary-selected-pressed-inverse` | ![][primarySelectedPressedDark]  | ![][primarySelectedPressedLight] |
+  | `--p-primary-selected-pressed-light`   | ![][primarySelectedPressedLight] | ![][primarySelectedPressedLight] |
+  | `--p-primary-selected-pressed-dark`    | ![][primarySelectedPressedDark]  | ![][primarySelectedPressedDark]  |
+  -->
+
+[primaryselectedpressedlight]: https://www.gifpng.com/128x96/a3bdb1/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[primaryselectedpresseddark]: https://www.gifpng.com/128x96/363f3b/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-## `critical`
+## critical
 
 Used to communicate destructive outcomes on interactive elements, for communicating errors, and to indicate a critical event in inert elements that requires immediate merchant action.
 
-### `critical`
-
-[Back to top](#Table-of-contents)
+### critical [↑](#Table-of-contents)
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
@@ -961,14 +978,12 @@ While use directly in our components is discouraged, the base variant is unmodif
 | -------------- | ------------------ | ----------------- |
 | `--p-critical` | ![][criticallight] | ![][criticaldark] |
 
-[criticallight]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticaldark]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticallight]: https://www.gifpng.com/128x96/d92b0d/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticaldark]: https://www.gifpng.com/128x96/d92b0d/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalBorder`
-
-[Back to top](#Table-of-contents)
+### criticalBorder [↑](#Table-of-contents)
 
 For use as a border on critical components such as banners, and as an outline on interactive elements in an error state.
 
@@ -976,288 +991,346 @@ For use as a border on critical components such as banners, and as an outline on
 | --------------------- | ------------------------ | ----------------------- |
 | `--p-critical-border` | ![][criticalborderlight] | ![][criticalborderdark] |
 
-[criticalborderlight]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalborderdark]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[criticalborderlight]: https://www.gifpng.com/128x96/e12e0e/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticalborderdark]: https://www.gifpng.com/128x96/e12e0e/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalBorderDisabled`
-
-[Back to top](#Table-of-contents)
+### criticalBorderDisabled [↑](#Table-of-contents)
 
 For use as a disabled border on critical components such as banners, and as an outline on interactive elements in an error state.
 
-| CSS variable                           | Light mode                       | Dark mode                        |
-| -------------------------------------- | -------------------------------- | -------------------------------- |
-| `--p-critical-border-disabled`         | ![][criticalborderdisabledlight] | ![][criticalborderdisableddark]  |
-| `--p-critical-border-disabled-inverse` | ![][criticalborderdisableddark]  | ![][criticalborderdisabledlight] |
-| `--p-critical-border-disabled-light`   | ![][criticalborderdisabledlight] | ![][criticalborderdisabledlight] |
-| `--p-critical-border-disabled-dark`    | ![][criticalborderdisableddark]  | ![][criticalborderdisableddark]  |
+| CSS variable                   | Light mode                       | Dark mode                       |
+| ------------------------------ | -------------------------------- | ------------------------------- |
+| `--p-critical-border-disabled` | ![][criticalborderdisabledlight] | ![][criticalborderdisableddark] |
 
-[criticalborderdisabledlight]: https://www.gifpng.com/64x32/febcb9/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalborderdisableddark]: https://www.gifpng.com/64x32/811704/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-border-disabled-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-border-disabled-light`: returns the fixed light value regardless of mode
+- `--p-critical-border-disabled-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-border-disabled-inverse` | ![][criticalBorderDisabledDark]  | ![][criticalBorderDisabledLight] |
+  | `--p-critical-border-disabled-light`   | ![][criticalBorderDisabledLight] | ![][criticalBorderDisabledLight] |
+  | `--p-critical-border-disabled-dark`    | ![][criticalBorderDisabledDark]  | ![][criticalBorderDisabledDark]  |
+  -->
+
+[criticalborderdisabledlight]: https://www.gifpng.com/128x96/febcb9/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticalborderdisableddark]: https://www.gifpng.com/128x96/811704/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalIcon`
-
-[Back to top](#Table-of-contents)
+### criticalIcon [↑](#Table-of-contents)
 
 For use as an icon fill color on top of critical elements.
 
-| CSS variable                | Light mode             | Dark mode              |
-| --------------------------- | ---------------------- | ---------------------- |
-| `--p-critical-icon`         | ![][criticaliconlight] | ![][criticalicondark]  |
-| `--p-critical-icon-inverse` | ![][criticalicondark]  | ![][criticaliconlight] |
-| `--p-critical-icon-light`   | ![][criticaliconlight] | ![][criticaliconlight] |
-| `--p-critical-icon-dark`    | ![][criticalicondark]  | ![][criticalicondark]  |
+| CSS variable        | Light mode             | Dark mode             |
+| ------------------- | ---------------------- | --------------------- |
+| `--p-critical-icon` | ![][criticaliconlight] | ![][criticalicondark] |
 
-[criticaliconlight]: https://www.gifpng.com/64x32/eb300f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalicondark]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-icon-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-icon-light`: returns the fixed light value regardless of mode
+- `--p-critical-icon-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-icon-inverse` | ![][criticalIconDark]  | ![][criticalIconLight] |
+  | `--p-critical-icon-light`   | ![][criticalIconLight] | ![][criticalIconLight] |
+  | `--p-critical-icon-dark`    | ![][criticalIconDark]  | ![][criticalIconDark]  |
+  -->
+
+[criticaliconlight]: https://www.gifpng.com/128x96/eb300f/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticalicondark]: https://www.gifpng.com/128x96/d92b0d/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalSurface`
-
-[Back to top](#Table-of-contents)
+### criticalSurface [↑](#Table-of-contents)
 
 For use as a surface color on critical elements including badges.
 
-| CSS variable                   | Light mode                | Dark mode                 |
-| ------------------------------ | ------------------------- | ------------------------- |
-| `--p-critical-surface`         | ![][criticalsurfacelight] | ![][criticalsurfacedark]  |
-| `--p-critical-surface-inverse` | ![][criticalsurfacedark]  | ![][criticalsurfacelight] |
-| `--p-critical-surface-light`   | ![][criticalsurfacelight] | ![][criticalsurfacelight] |
-| `--p-critical-surface-dark`    | ![][criticalsurfacedark]  | ![][criticalsurfacedark]  |
+| CSS variable           | Light mode                | Dark mode                |
+| ---------------------- | ------------------------- | ------------------------ |
+| `--p-critical-surface` | ![][criticalsurfacelight] | ![][criticalsurfacedark] |
 
-[criticalsurfacelight]: https://www.gifpng.com/64x32/fffafa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalsurfacedark]: https://www.gifpng.com/64x32/460701/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-surface-light`: returns the fixed light value regardless of mode
+- `--p-critical-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-surface-inverse` | ![][criticalSurfaceDark]  | ![][criticalSurfaceLight] |
+  | `--p-critical-surface-light`   | ![][criticalSurfaceLight] | ![][criticalSurfaceLight] |
+  | `--p-critical-surface-dark`    | ![][criticalSurfaceDark]  | ![][criticalSurfaceDark]  |
+  -->
+
+[criticalsurfacelight]: https://www.gifpng.com/128x96/fffafa/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticalsurfacedark]: https://www.gifpng.com/128x96/460701/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalSurfaceSubdued`
-
-[Back to top](#Table-of-contents)
+### criticalSurfaceSubdued [↑](#Table-of-contents)
 
 For use as a subdued surface color on critical elements including banners.
 
-| CSS variable                           | Light mode                       | Dark mode                        |
-| -------------------------------------- | -------------------------------- | -------------------------------- |
-| `--p-critical-surface-subdued`         | ![][criticalsurfacesubduedlight] | ![][criticalsurfacesubdueddark]  |
-| `--p-critical-surface-subdued-inverse` | ![][criticalsurfacesubdueddark]  | ![][criticalsurfacesubduedlight] |
-| `--p-critical-surface-subdued-light`   | ![][criticalsurfacesubduedlight] | ![][criticalsurfacesubduedlight] |
-| `--p-critical-surface-subdued-dark`    | ![][criticalsurfacesubdueddark]  | ![][criticalsurfacesubdueddark]  |
+| CSS variable                   | Light mode                       | Dark mode                       |
+| ------------------------------ | -------------------------------- | ------------------------------- |
+| `--p-critical-surface-subdued` | ![][criticalsurfacesubduedlight] | ![][criticalsurfacesubdueddark] |
 
-[criticalsurfacesubduedlight]: https://www.gifpng.com/64x32/fff6f5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalsurfacesubdueddark]: https://www.gifpng.com/64x32/460701/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-surface-subdued-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-surface-subdued-light`: returns the fixed light value regardless of mode
+- `--p-critical-surface-subdued-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-surface-subdued-inverse` | ![][criticalSurfaceSubduedDark]  | ![][criticalSurfaceSubduedLight] |
+  | `--p-critical-surface-subdued-light`   | ![][criticalSurfaceSubduedLight] | ![][criticalSurfaceSubduedLight] |
+  | `--p-critical-surface-subdued-dark`    | ![][criticalSurfaceSubduedDark]  | ![][criticalSurfaceSubduedDark]  |
+  -->
+
+[criticalsurfacesubduedlight]: https://www.gifpng.com/128x96/fff6f5/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticalsurfacesubdueddark]: https://www.gifpng.com/128x96/460701/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalSurfaceSubduedHovered`
-
-[Back to top](#Table-of-contents)
+### criticalSurfaceSubduedHovered [↑](#Table-of-contents)
 
 For use as a surface color on critical interactive elements including action list items in a hovered state.
 
-| CSS variable                                   | Light mode                              | Dark mode                               |
-| ---------------------------------------------- | --------------------------------------- | --------------------------------------- |
-| `--p-critical-surface-subdued-hovered`         | ![][criticalsurfacesubduedhoveredlight] | ![][criticalsurfacesubduedhovereddark]  |
-| `--p-critical-surface-subdued-hovered-inverse` | ![][criticalsurfacesubduedhovereddark]  | ![][criticalsurfacesubduedhoveredlight] |
-| `--p-critical-surface-subdued-hovered-light`   | ![][criticalsurfacesubduedhoveredlight] | ![][criticalsurfacesubduedhoveredlight] |
-| `--p-critical-surface-subdued-hovered-dark`    | ![][criticalsurfacesubduedhovereddark]  | ![][criticalsurfacesubduedhovereddark]  |
+| CSS variable                           | Light mode                              | Dark mode                              |
+| -------------------------------------- | --------------------------------------- | -------------------------------------- |
+| `--p-critical-surface-subdued-hovered` | ![][criticalsurfacesubduedhoveredlight] | ![][criticalsurfacesubduedhovereddark] |
 
-[criticalsurfacesubduedhoveredlight]: https://www.gifpng.com/64x32/fee7e6/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalsurfacesubduedhovereddark]: https://www.gifpng.com/64x32/431714/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-surface-subdued-hovered-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-surface-subdued-hovered-light`: returns the fixed light value regardless of mode
+- `--p-critical-surface-subdued-hovered-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-surface-subdued-hovered-inverse` | ![][criticalSurfaceSubduedHoveredDark]  | ![][criticalSurfaceSubduedHoveredLight] |
+  | `--p-critical-surface-subdued-hovered-light`   | ![][criticalSurfaceSubduedHoveredLight] | ![][criticalSurfaceSubduedHoveredLight] |
+  | `--p-critical-surface-subdued-hovered-dark`    | ![][criticalSurfaceSubduedHoveredDark]  | ![][criticalSurfaceSubduedHoveredDark]  |
+  -->
+
+[criticalsurfacesubduedhoveredlight]: https://www.gifpng.com/128x96/fee7e6/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticalsurfacesubduedhovereddark]: https://www.gifpng.com/128x96/431714/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalSurfaceSubduedPressed`
-
-[Back to top](#Table-of-contents)
+### criticalSurfaceSubduedPressed [↑](#Table-of-contents)
 
 For use as a surface color on critical interactive elements including action list items in a pressed state.
 
-| CSS variable                                   | Light mode                              | Dark mode                               |
-| ---------------------------------------------- | --------------------------------------- | --------------------------------------- |
-| `--p-critical-surface-subdued-pressed`         | ![][criticalsurfacesubduedpressedlight] | ![][criticalsurfacesubduedpresseddark]  |
-| `--p-critical-surface-subdued-pressed-inverse` | ![][criticalsurfacesubduedpresseddark]  | ![][criticalsurfacesubduedpressedlight] |
-| `--p-critical-surface-subdued-pressed-light`   | ![][criticalsurfacesubduedpressedlight] | ![][criticalsurfacesubduedpressedlight] |
-| `--p-critical-surface-subdued-pressed-dark`    | ![][criticalsurfacesubduedpresseddark]  | ![][criticalsurfacesubduedpresseddark]  |
+| CSS variable                           | Light mode                              | Dark mode                              |
+| -------------------------------------- | --------------------------------------- | -------------------------------------- |
+| `--p-critical-surface-subdued-pressed` | ![][criticalsurfacesubduedpressedlight] | ![][criticalsurfacesubduedpresseddark] |
 
-[criticalsurfacesubduedpressedlight]: https://www.gifpng.com/64x32/fed4d2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalsurfacesubduedpresseddark]: https://www.gifpng.com/64x32/6d1103/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-surface-subdued-pressed-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-surface-subdued-pressed-light`: returns the fixed light value regardless of mode
+- `--p-critical-surface-subdued-pressed-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-surface-subdued-pressed-inverse` | ![][criticalSurfaceSubduedPressedDark]  | ![][criticalSurfaceSubduedPressedLight] |
+  | `--p-critical-surface-subdued-pressed-light`   | ![][criticalSurfaceSubduedPressedLight] | ![][criticalSurfaceSubduedPressedLight] |
+  | `--p-critical-surface-subdued-pressed-dark`    | ![][criticalSurfaceSubduedPressedDark]  | ![][criticalSurfaceSubduedPressedDark]  |
+  -->
+
+[criticalsurfacesubduedpressedlight]: https://www.gifpng.com/128x96/fed4d2/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticalsurfacesubduedpresseddark]: https://www.gifpng.com/128x96/6d1103/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalText`
-
-[Back to top](#Table-of-contents)
+### criticalText [↑](#Table-of-contents)
 
 For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.
 
-| CSS variable                | Light mode             | Dark mode              |
-| --------------------------- | ---------------------- | ---------------------- |
-| `--p-critical-text`         | ![][criticaltextlight] | ![][criticaltextdark]  |
-| `--p-critical-text-inverse` | ![][criticaltextdark]  | ![][criticaltextlight] |
-| `--p-critical-text-light`   | ![][criticaltextlight] | ![][criticaltextlight] |
-| `--p-critical-text-dark`    | ![][criticaltextdark]  | ![][criticaltextdark]  |
+| CSS variable        | Light mode             | Dark mode             |
+| ------------------- | ---------------------- | --------------------- |
+| `--p-critical-text` | ![][criticaltextlight] | ![][criticaltextdark] |
 
-[criticaltextlight]: https://www.gifpng.com/64x32/b42208/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticaltextdark]: https://www.gifpng.com/64x32/fd5849/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-text-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-text-light`: returns the fixed light value regardless of mode
+- `--p-critical-text-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-text-inverse` | ![][criticalTextDark]  | ![][criticalTextLight] |
+  | `--p-critical-text-light`   | ![][criticalTextLight] | ![][criticalTextLight] |
+  | `--p-critical-text-dark`    | ![][criticalTextDark]  | ![][criticalTextDark]  |
+  -->
+
+[criticaltextlight]: https://www.gifpng.com/128x96/b42208/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticaltextdark]: https://www.gifpng.com/128x96/fd5849/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalAction`
-
-[Back to top](#Table-of-contents)
+### criticalAction [↑](#Table-of-contents)
 
 For use as the background color for destructive buttons, and as the background color for error toast messages.
 
-| CSS variable                  | Light mode               | Dark mode                |
-| ----------------------------- | ------------------------ | ------------------------ |
-| `--p-critical-action`         | ![][criticalactionlight] | ![][criticalactiondark]  |
-| `--p-critical-action-inverse` | ![][criticalactiondark]  | ![][criticalactionlight] |
-| `--p-critical-action-light`   | ![][criticalactionlight] | ![][criticalactionlight] |
-| `--p-critical-action-dark`    | ![][criticalactiondark]  | ![][criticalactiondark]  |
+| CSS variable          | Light mode               | Dark mode               |
+| --------------------- | ------------------------ | ----------------------- |
+| `--p-critical-action` | ![][criticalactionlight] | ![][criticalactiondark] |
 
-[criticalactionlight]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalactiondark]: https://www.gifpng.com/64x32/cf290c/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-action-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-action-light`: returns the fixed light value regardless of mode
+- `--p-critical-action-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-action-inverse` | ![][criticalActionDark]  | ![][criticalActionLight] |
+  | `--p-critical-action-light`   | ![][criticalActionLight] | ![][criticalActionLight] |
+  | `--p-critical-action-dark`    | ![][criticalActionDark]  | ![][criticalActionDark]  |
+  -->
+
+[criticalactionlight]: https://www.gifpng.com/128x96/d92b0d/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticalactiondark]: https://www.gifpng.com/128x96/cf290c/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalActionDisabled`
-
-[Back to top](#Table-of-contents)
+### criticalActionDisabled [↑](#Table-of-contents)
 
 For use as the background color for disabled destructive buttons, and as the background color for error toast messages.
 
-| CSS variable                           | Light mode                       | Dark mode                        |
-| -------------------------------------- | -------------------------------- | -------------------------------- |
-| `--p-critical-action-disabled`         | ![][criticalactiondisabledlight] | ![][criticalactiondisableddark]  |
-| `--p-critical-action-disabled-inverse` | ![][criticalactiondisableddark]  | ![][criticalactiondisabledlight] |
-| `--p-critical-action-disabled-light`   | ![][criticalactiondisabledlight] | ![][criticalactiondisabledlight] |
-| `--p-critical-action-disabled-dark`    | ![][criticalactiondisableddark]  | ![][criticalactiondisableddark]  |
+| CSS variable                   | Light mode                       | Dark mode                       |
+| ------------------------------ | -------------------------------- | ------------------------------- |
+| `--p-critical-action-disabled` | ![][criticalactiondisabledlight] | ![][criticalactiondisableddark] |
 
-[criticalactiondisabledlight]: https://www.gifpng.com/64x32/fd4f3f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalactiondisableddark]: https://www.gifpng.com/64x32/bd250a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-action-disabled-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-action-disabled-light`: returns the fixed light value regardless of mode
+- `--p-critical-action-disabled-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-action-disabled-inverse` | ![][criticalActionDisabledDark]  | ![][criticalActionDisabledLight] |
+  | `--p-critical-action-disabled-light`   | ![][criticalActionDisabledLight] | ![][criticalActionDisabledLight] |
+  | `--p-critical-action-disabled-dark`    | ![][criticalActionDisabledDark]  | ![][criticalActionDisabledDark]  |
+  -->
+
+[criticalactiondisabledlight]: https://www.gifpng.com/128x96/fd4f3f/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticalactiondisableddark]: https://www.gifpng.com/128x96/bd250a/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalActionHovered`
-
-[Back to top](#Table-of-contents)
+### criticalActionHovered [↑](#Table-of-contents)
 
 For use as the background color for hovered destructive buttons, and as the background color for error toast messages.
 
-| CSS variable                          | Light mode                      | Dark mode                       |
-| ------------------------------------- | ------------------------------- | ------------------------------- |
-| `--p-critical-action-hovered`         | ![][criticalactionhoveredlight] | ![][criticalactionhovereddark]  |
-| `--p-critical-action-hovered-inverse` | ![][criticalactionhovereddark]  | ![][criticalactionhoveredlight] |
-| `--p-critical-action-hovered-light`   | ![][criticalactionhoveredlight] | ![][criticalactionhoveredlight] |
-| `--p-critical-action-hovered-dark`    | ![][criticalactionhovereddark]  | ![][criticalactionhovereddark]  |
+| CSS variable                  | Light mode                      | Dark mode                      |
+| ----------------------------- | ------------------------------- | ------------------------------ |
+| `--p-critical-action-hovered` | ![][criticalactionhoveredlight] | ![][criticalactionhovereddark] |
 
-[criticalactionhoveredlight]: https://www.gifpng.com/64x32/c2260a/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalactionhovereddark]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-action-hovered-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-action-hovered-light`: returns the fixed light value regardless of mode
+- `--p-critical-action-hovered-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-action-hovered-inverse` | ![][criticalActionHoveredDark]  | ![][criticalActionHoveredLight] |
+  | `--p-critical-action-hovered-light`   | ![][criticalActionHoveredLight] | ![][criticalActionHoveredLight] |
+  | `--p-critical-action-hovered-dark`    | ![][criticalActionHoveredDark]  | ![][criticalActionHoveredDark]  |
+  -->
+
+[criticalactionhoveredlight]: https://www.gifpng.com/128x96/c2260a/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticalactionhovereddark]: https://www.gifpng.com/128x96/e12e0e/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalActionPressed`
-
-[Back to top](#Table-of-contents)
+### criticalActionPressed [↑](#Table-of-contents)
 
 For use as the background color for pressed destructive buttons, and as the background color for error toast messages.
 
-| CSS variable                          | Light mode                      | Dark mode                       |
-| ------------------------------------- | ------------------------------- | ------------------------------- |
-| `--p-critical-action-pressed`         | ![][criticalactionpressedlight] | ![][criticalactionpresseddark]  |
-| `--p-critical-action-pressed-inverse` | ![][criticalactionpresseddark]  | ![][criticalactionpressedlight] |
-| `--p-critical-action-pressed-light`   | ![][criticalactionpressedlight] | ![][criticalactionpressedlight] |
-| `--p-critical-action-pressed-dark`    | ![][criticalactionpresseddark]  | ![][criticalactionpresseddark]  |
+| CSS variable                  | Light mode                      | Dark mode                      |
+| ----------------------------- | ------------------------------- | ------------------------------ |
+| `--p-critical-action-pressed` | ![][criticalactionpressedlight] | ![][criticalactionpresseddark] |
 
-[criticalactionpressedlight]: https://www.gifpng.com/64x32/aa2008/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticalactionpresseddark]: https://www.gifpng.com/64x32/fd5849/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-action-pressed-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-action-pressed-light`: returns the fixed light value regardless of mode
+- `--p-critical-action-pressed-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-action-pressed-inverse` | ![][criticalActionPressedDark]  | ![][criticalActionPressedLight] |
+  | `--p-critical-action-pressed-light`   | ![][criticalActionPressedLight] | ![][criticalActionPressedLight] |
+  | `--p-critical-action-pressed-dark`    | ![][criticalActionPressedDark]  | ![][criticalActionPressedDark]  |
+  -->
+
+[criticalactionpressedlight]: https://www.gifpng.com/128x96/aa2008/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticalactionpresseddark]: https://www.gifpng.com/128x96/fd5849/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalLink`
-
-[Back to top](#Table-of-contents)
+### criticalLink [↑](#Table-of-contents)
 
 For use as a text color in destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
 
-| CSS variable                | Light mode             | Dark mode              |
-| --------------------------- | ---------------------- | ---------------------- |
-| `--p-critical-link`         | ![][criticallinklight] | ![][criticallinkdark]  |
-| `--p-critical-link-inverse` | ![][criticallinkdark]  | ![][criticallinklight] |
-| `--p-critical-link-light`   | ![][criticallinklight] | ![][criticallinklight] |
-| `--p-critical-link-dark`    | ![][criticallinkdark]  | ![][criticallinkdark]  |
+| CSS variable        | Light mode             | Dark mode             |
+| ------------------- | ---------------------- | --------------------- |
+| `--p-critical-link` | ![][criticallinklight] | ![][criticallinkdark] |
 
-[criticallinklight]: https://www.gifpng.com/64x32/dd2d0e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticallinkdark]: https://www.gifpng.com/64x32/fd7068/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-link-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-link-light`: returns the fixed light value regardless of mode
+- `--p-critical-link-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-link-inverse` | ![][criticalLinkDark]  | ![][criticalLinkLight] |
+  | `--p-critical-link-light`   | ![][criticalLinkLight] | ![][criticalLinkLight] |
+  | `--p-critical-link-dark`    | ![][criticalLinkDark]  | ![][criticalLinkDark]  |
+  -->
+
+[criticallinklight]: https://www.gifpng.com/128x96/dd2d0e/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticallinkdark]: https://www.gifpng.com/128x96/fd7068/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalLinkDisabled`
-
-[Back to top](#Table-of-contents)
+### criticalLinkDisabled [↑](#Table-of-contents)
 
 For use as a text color in disabled destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
 
-| CSS variable                         | Light mode                     | Dark mode                      |
-| ------------------------------------ | ------------------------------ | ------------------------------ |
-| `--p-critical-link-disabled`         | ![][criticallinkdisabledlight] | ![][criticallinkdisableddark]  |
-| `--p-critical-link-disabled-inverse` | ![][criticallinkdisableddark]  | ![][criticallinkdisabledlight] |
-| `--p-critical-link-disabled-light`   | ![][criticallinkdisabledlight] | ![][criticallinkdisabledlight] |
-| `--p-critical-link-disabled-dark`    | ![][criticallinkdisableddark]  | ![][criticallinkdisableddark]  |
+| CSS variable                 | Light mode                     | Dark mode                     |
+| ---------------------------- | ------------------------------ | ----------------------------- |
+| `--p-critical-link-disabled` | ![][criticallinkdisabledlight] | ![][criticallinkdisableddark] |
 
-[criticallinkdisabledlight]: https://www.gifpng.com/64x32/fd918b/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticallinkdisableddark]: https://www.gifpng.com/64x32/feada9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-link-disabled-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-link-disabled-light`: returns the fixed light value regardless of mode
+- `--p-critical-link-disabled-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-link-disabled-inverse` | ![][criticalLinkDisabledDark]  | ![][criticalLinkDisabledLight] |
+  | `--p-critical-link-disabled-light`   | ![][criticalLinkDisabledLight] | ![][criticalLinkDisabledLight] |
+  | `--p-critical-link-disabled-dark`    | ![][criticalLinkDisabledDark]  | ![][criticalLinkDisabledDark]  |
+  -->
+
+[criticallinkdisabledlight]: https://www.gifpng.com/128x96/fd918b/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticallinkdisableddark]: https://www.gifpng.com/128x96/feada9/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalLinkHovered`
-
-[Back to top](#Table-of-contents)
+### criticalLinkHovered [↑](#Table-of-contents)
 
 For use as a text color in hovered destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
 
-| CSS variable                        | Light mode                    | Dark mode                     |
-| ----------------------------------- | ----------------------------- | ----------------------------- |
-| `--p-critical-link-hovered`         | ![][criticallinkhoveredlight] | ![][criticallinkhovereddark]  |
-| `--p-critical-link-hovered-inverse` | ![][criticallinkhovereddark]  | ![][criticallinkhoveredlight] |
-| `--p-critical-link-hovered-light`   | ![][criticallinkhoveredlight] | ![][criticallinkhoveredlight] |
-| `--p-critical-link-hovered-dark`    | ![][criticallinkhovereddark]  | ![][criticallinkhovereddark]  |
+| CSS variable                | Light mode                    | Dark mode                    |
+| --------------------------- | ----------------------------- | ---------------------------- |
+| `--p-critical-link-hovered` | ![][criticallinkhoveredlight] | ![][criticallinkhovereddark] |
 
-[criticallinkhoveredlight]: https://www.gifpng.com/64x32/cf290c/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticallinkhovereddark]: https://www.gifpng.com/64x32/fd8881/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-link-hovered-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-link-hovered-light`: returns the fixed light value regardless of mode
+- `--p-critical-link-hovered-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-link-hovered-inverse` | ![][criticalLinkHoveredDark]  | ![][criticalLinkHoveredLight] |
+  | `--p-critical-link-hovered-light`   | ![][criticalLinkHoveredLight] | ![][criticalLinkHoveredLight] |
+  | `--p-critical-link-hovered-dark`    | ![][criticalLinkHoveredDark]  | ![][criticalLinkHoveredDark]  |
+  -->
+
+[criticallinkhoveredlight]: https://www.gifpng.com/128x96/cf290c/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticallinkhovereddark]: https://www.gifpng.com/128x96/fd8881/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `criticalLinkPressed`
-
-[Back to top](#Table-of-contents)
+### criticalLinkPressed [↑](#Table-of-contents)
 
 For use as a text color in pressed destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.
 
-| CSS variable                        | Light mode                    | Dark mode                     |
-| ----------------------------------- | ----------------------------- | ----------------------------- |
-| `--p-critical-link-pressed`         | ![][criticallinkpressedlight] | ![][criticallinkpresseddark]  |
-| `--p-critical-link-pressed-inverse` | ![][criticallinkpresseddark]  | ![][criticallinkpressedlight] |
-| `--p-critical-link-pressed-light`   | ![][criticallinkpressedlight] | ![][criticallinkpressedlight] |
-| `--p-critical-link-pressed-dark`    | ![][criticallinkpresseddark]  | ![][criticallinkpresseddark]  |
+| CSS variable                | Light mode                    | Dark mode                    |
+| --------------------------- | ----------------------------- | ---------------------------- |
+| `--p-critical-link-pressed` | ![][criticallinkpressedlight] | ![][criticallinkpresseddark] |
 
-[criticallinkpressedlight]: https://www.gifpng.com/64x32/680f03/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[criticallinkpresseddark]: https://www.gifpng.com/64x32/fd9e9b/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-critical-link-pressed-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-critical-link-pressed-light`: returns the fixed light value regardless of mode
+- `--p-critical-link-pressed-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-critical-link-pressed-inverse` | ![][criticalLinkPressedDark]  | ![][criticalLinkPressedLight] |
+  | `--p-critical-link-pressed-light`   | ![][criticalLinkPressedLight] | ![][criticalLinkPressedLight] |
+  | `--p-critical-link-pressed-dark`    | ![][criticalLinkPressedDark]  | ![][criticalLinkPressedDark]  |
+  -->
+
+[criticallinkpressedlight]: https://www.gifpng.com/128x96/680f03/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[criticallinkpresseddark]: https://www.gifpng.com/128x96/fd9e9b/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-## `warning`
+## warning
 
 For use as an indicator that action should be taken by merchants in components including badges, banners, and exception lists.
 
-### `warning`
-
-[Back to top](#Table-of-contents)
+### warning [↑](#Table-of-contents)
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
@@ -1265,108 +1338,126 @@ While use directly in our components is discouraged, the base variant is unmodif
 | ------------- | ----------------- | ---------------- |
 | `--p-warning` | ![][warninglight] | ![][warningdark] |
 
-[warninglight]: https://www.gifpng.com/64x32/ffc252/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[warningdark]: https://www.gifpng.com/64x32/ffc252/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[warninglight]: https://www.gifpng.com/128x96/ffc252/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[warningdark]: https://www.gifpng.com/128x96/ffc252/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `warningBorder`
-
-[Back to top](#Table-of-contents)
+### warningBorder [↑](#Table-of-contents)
 
 For use as a border on warning components such as banners.
 
-| CSS variable                 | Light mode              | Dark mode               |
-| ---------------------------- | ----------------------- | ----------------------- |
-| `--p-warning-border`         | ![][warningborderlight] | ![][warningborderdark]  |
-| `--p-warning-border-inverse` | ![][warningborderdark]  | ![][warningborderlight] |
-| `--p-warning-border-light`   | ![][warningborderlight] | ![][warningborderlight] |
-| `--p-warning-border-dark`    | ![][warningborderdark]  | ![][warningborderdark]  |
+| CSS variable         | Light mode              | Dark mode              |
+| -------------------- | ----------------------- | ---------------------- |
+| `--p-warning-border` | ![][warningborderlight] | ![][warningborderdark] |
 
-[warningborderlight]: https://www.gifpng.com/64x32/f0b400/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[warningborderdark]: https://www.gifpng.com/64x32/997000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-warning-border-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-warning-border-light`: returns the fixed light value regardless of mode
+- `--p-warning-border-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-warning-border-inverse` | ![][warningBorderDark]  | ![][warningBorderLight] |
+  | `--p-warning-border-light`   | ![][warningBorderLight] | ![][warningBorderLight] |
+  | `--p-warning-border-dark`    | ![][warningBorderDark]  | ![][warningBorderDark]  |
+  -->
+
+[warningborderlight]: https://www.gifpng.com/128x96/f0b400/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[warningborderdark]: https://www.gifpng.com/128x96/997000/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `warningIcon`
-
-[Back to top](#Table-of-contents)
+### warningIcon [↑](#Table-of-contents)
 
 For use as an icon fill color on top of warning elements.
 
-| CSS variable               | Light mode            | Dark mode             |
-| -------------------------- | --------------------- | --------------------- |
-| `--p-warning-icon`         | ![][warningiconlight] | ![][warningicondark]  |
-| `--p-warning-icon-inverse` | ![][warningicondark]  | ![][warningiconlight] |
-| `--p-warning-icon-light`   | ![][warningiconlight] | ![][warningiconlight] |
-| `--p-warning-icon-dark`    | ![][warningicondark]  | ![][warningicondark]  |
+| CSS variable       | Light mode            | Dark mode            |
+| ------------------ | --------------------- | -------------------- |
+| `--p-warning-icon` | ![][warningiconlight] | ![][warningicondark] |
 
-[warningiconlight]: https://www.gifpng.com/64x32/cc9600/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[warningicondark]: https://www.gifpng.com/64x32/664900/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-warning-icon-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-warning-icon-light`: returns the fixed light value regardless of mode
+- `--p-warning-icon-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-warning-icon-inverse` | ![][warningIconDark]  | ![][warningIconLight] |
+  | `--p-warning-icon-light`   | ![][warningIconLight] | ![][warningIconLight] |
+  | `--p-warning-icon-dark`    | ![][warningIconDark]  | ![][warningIconDark]  |
+  -->
+
+[warningiconlight]: https://www.gifpng.com/128x96/cc9600/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[warningicondark]: https://www.gifpng.com/128x96/664900/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `warningSurface`
-
-[Back to top](#Table-of-contents)
+### warningSurface [↑](#Table-of-contents)
 
 For use as a surface color on warning elements including badges.
 
-| CSS variable                  | Light mode               | Dark mode                |
-| ----------------------------- | ------------------------ | ------------------------ |
-| `--p-warning-surface`         | ![][warningsurfacelight] | ![][warningsurfacedark]  |
-| `--p-warning-surface-inverse` | ![][warningsurfacedark]  | ![][warningsurfacelight] |
-| `--p-warning-surface-light`   | ![][warningsurfacelight] | ![][warningsurfacelight] |
-| `--p-warning-surface-dark`    | ![][warningsurfacedark]  | ![][warningsurfacedark]  |
+| CSS variable          | Light mode               | Dark mode               |
+| --------------------- | ------------------------ | ----------------------- |
+| `--p-warning-surface` | ![][warningsurfacelight] | ![][warningsurfacedark] |
 
-[warningsurfacelight]: https://www.gifpng.com/64x32/ffcd75/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[warningsurfacedark]: https://www.gifpng.com/64x32/997000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-warning-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-warning-surface-light`: returns the fixed light value regardless of mode
+- `--p-warning-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-warning-surface-inverse` | ![][warningSurfaceDark]  | ![][warningSurfaceLight] |
+  | `--p-warning-surface-light`   | ![][warningSurfaceLight] | ![][warningSurfaceLight] |
+  | `--p-warning-surface-dark`    | ![][warningSurfaceDark]  | ![][warningSurfaceDark]  |
+  -->
+
+[warningsurfacelight]: https://www.gifpng.com/128x96/ffcd75/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[warningsurfacedark]: https://www.gifpng.com/128x96/997000/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `warningSurfaceSubdued`
-
-[Back to top](#Table-of-contents)
+### warningSurfaceSubdued [↑](#Table-of-contents)
 
 For use as a subdued surface color on warning elements including banners.
 
-| CSS variable                          | Light mode                      | Dark mode                       |
-| ------------------------------------- | ------------------------------- | ------------------------------- |
-| `--p-warning-surface-subdued`         | ![][warningsurfacesubduedlight] | ![][warningsurfacesubdueddark]  |
-| `--p-warning-surface-subdued-inverse` | ![][warningsurfacesubdueddark]  | ![][warningsurfacesubduedlight] |
-| `--p-warning-surface-subdued-light`   | ![][warningsurfacesubduedlight] | ![][warningsurfacesubduedlight] |
-| `--p-warning-surface-subdued-dark`    | ![][warningsurfacesubdueddark]  | ![][warningsurfacesubdueddark]  |
+| CSS variable                  | Light mode                      | Dark mode                      |
+| ----------------------------- | ------------------------------- | ------------------------------ |
+| `--p-warning-surface-subdued` | ![][warningsurfacesubduedlight] | ![][warningsurfacesubdueddark] |
 
-[warningsurfacesubduedlight]: https://www.gifpng.com/64x32/fffcfa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[warningsurfacesubdueddark]: https://www.gifpng.com/64x32/332300/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-warning-surface-subdued-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-warning-surface-subdued-light`: returns the fixed light value regardless of mode
+- `--p-warning-surface-subdued-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-warning-surface-subdued-inverse` | ![][warningSurfaceSubduedDark]  | ![][warningSurfaceSubduedLight] |
+  | `--p-warning-surface-subdued-light`   | ![][warningSurfaceSubduedLight] | ![][warningSurfaceSubduedLight] |
+  | `--p-warning-surface-subdued-dark`    | ![][warningSurfaceSubduedDark]  | ![][warningSurfaceSubduedDark]  |
+  -->
+
+[warningsurfacesubduedlight]: https://www.gifpng.com/128x96/fffcfa/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[warningsurfacesubdueddark]: https://www.gifpng.com/128x96/332300/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `warningText`
-
-[Back to top](#Table-of-contents)
+### warningText [↑](#Table-of-contents)
 
 For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.
 
-| CSS variable               | Light mode            | Dark mode             |
-| -------------------------- | --------------------- | --------------------- |
-| `--p-warning-text`         | ![][warningtextlight] | ![][warningtextdark]  |
-| `--p-warning-text-inverse` | ![][warningtextdark]  | ![][warningtextlight] |
-| `--p-warning-text-light`   | ![][warningtextlight] | ![][warningtextlight] |
-| `--p-warning-text-dark`    | ![][warningtextdark]  | ![][warningtextdark]  |
+| CSS variable       | Light mode            | Dark mode            |
+| ------------------ | --------------------- | -------------------- |
+| `--p-warning-text` | ![][warningtextlight] | ![][warningtextdark] |
 
-[warningtextlight]: https://www.gifpng.com/64x32/5c4200/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[warningtextdark]: https://www.gifpng.com/64x32/dba100/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-warning-text-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-warning-text-light`: returns the fixed light value regardless of mode
+- `--p-warning-text-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-warning-text-inverse` | ![][warningTextDark]  | ![][warningTextLight] |
+  | `--p-warning-text-light`   | ![][warningTextLight] | ![][warningTextLight] |
+  | `--p-warning-text-dark`    | ![][warningTextDark]  | ![][warningTextDark]  |
+  -->
+
+[warningtextlight]: https://www.gifpng.com/128x96/5c4200/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[warningtextdark]: https://www.gifpng.com/128x96/dba100/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-## `highlight`
+## highlight
 
 Used to highlight elements of the UI that are important for merchants, but do not require immediate action. Used in information banners and badges, indicators that draw attention to new information, bars that indicate loading or progress, and in data visualization.
 
-### `highlight`
-
-[Back to top](#Table-of-contents)
+### highlight [↑](#Table-of-contents)
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
@@ -1374,14 +1465,12 @@ While use directly in our components is discouraged, the base variant is unmodif
 | --------------- | ------------------- | ------------------ |
 | `--p-highlight` | ![][highlightlight] | ![][highlightdark] |
 
-[highlightlight]: https://www.gifpng.com/64x32/58d0c2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlightdark]: https://www.gifpng.com/64x32/58d0c2/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[highlightlight]: https://www.gifpng.com/128x96/58d0c2/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[highlightdark]: https://www.gifpng.com/128x96/58d0c2/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `highlightBorder`
-
-[Back to top](#Table-of-contents)
+### highlightBorder [↑](#Table-of-contents)
 
 For use as a border on informational components such as banners.
 
@@ -1389,90 +1478,104 @@ For use as a border on informational components such as banners.
 | ---------------------- | ------------------------- | ------------------------ |
 | `--p-highlight-border` | ![][highlightborderlight] | ![][highlightborderdark] |
 
-[highlightborderlight]: https://www.gifpng.com/64x32/429e93/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlightborderdark]: https://www.gifpng.com/64x32/429e93/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[highlightborderlight]: https://www.gifpng.com/128x96/429e93/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[highlightborderdark]: https://www.gifpng.com/128x96/429e93/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `highlightIcon`
-
-[Back to top](#Table-of-contents)
+### highlightIcon [↑](#Table-of-contents)
 
 For use as an icon fill color on top of informational elements.
 
-| CSS variable                 | Light mode              | Dark mode               |
-| ---------------------------- | ----------------------- | ----------------------- |
-| `--p-highlight-icon`         | ![][highlighticonlight] | ![][highlighticondark]  |
-| `--p-highlight-icon-inverse` | ![][highlighticondark]  | ![][highlighticonlight] |
-| `--p-highlight-icon-light`   | ![][highlighticonlight] | ![][highlighticonlight] |
-| `--p-highlight-icon-dark`    | ![][highlighticondark]  | ![][highlighticondark]  |
+| CSS variable         | Light mode              | Dark mode              |
+| -------------------- | ----------------------- | ---------------------- |
+| `--p-highlight-icon` | ![][highlighticonlight] | ![][highlighticondark] |
 
-[highlighticonlight]: https://www.gifpng.com/64x32/419b90/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlighticondark]: https://www.gifpng.com/64x32/2c6d67/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-highlight-icon-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-highlight-icon-light`: returns the fixed light value regardless of mode
+- `--p-highlight-icon-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-highlight-icon-inverse` | ![][highlightIconDark]  | ![][highlightIconLight] |
+  | `--p-highlight-icon-light`   | ![][highlightIconLight] | ![][highlightIconLight] |
+  | `--p-highlight-icon-dark`    | ![][highlightIconDark]  | ![][highlightIconDark]  |
+  -->
+
+[highlighticonlight]: https://www.gifpng.com/128x96/419b90/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[highlighticondark]: https://www.gifpng.com/128x96/2c6d67/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `highlightSurface`
-
-[Back to top](#Table-of-contents)
+### highlightSurface [↑](#Table-of-contents)
 
 For use as a surface color on information elements including badges.
 
-| CSS variable                    | Light mode                 | Dark mode                  |
-| ------------------------------- | -------------------------- | -------------------------- |
-| `--p-highlight-surface`         | ![][highlightsurfacelight] | ![][highlightsurfacedark]  |
-| `--p-highlight-surface-inverse` | ![][highlightsurfacedark]  | ![][highlightsurfacelight] |
-| `--p-highlight-surface-light`   | ![][highlightsurfacelight] | ![][highlightsurfacelight] |
-| `--p-highlight-surface-dark`    | ![][highlightsurfacedark]  | ![][highlightsurfacedark]  |
+| CSS variable            | Light mode                 | Dark mode                 |
+| ----------------------- | -------------------------- | ------------------------- |
+| `--p-highlight-surface` | ![][highlightsurfacelight] | ![][highlightsurfacedark] |
 
-[highlightsurfacelight]: https://www.gifpng.com/64x32/8de2d7/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlightsurfacedark]: https://www.gifpng.com/64x32/00857a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-highlight-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-highlight-surface-light`: returns the fixed light value regardless of mode
+- `--p-highlight-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-highlight-surface-inverse` | ![][highlightSurfaceDark]  | ![][highlightSurfaceLight] |
+  | `--p-highlight-surface-light`   | ![][highlightSurfaceLight] | ![][highlightSurfaceLight] |
+  | `--p-highlight-surface-dark`    | ![][highlightSurfaceDark]  | ![][highlightSurfaceDark]  |
+  -->
+
+[highlightsurfacelight]: https://www.gifpng.com/128x96/8de2d7/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[highlightsurfacedark]: https://www.gifpng.com/128x96/00857a/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `highlightSurfaceSubdued`
-
-[Back to top](#Table-of-contents)
+### highlightSurfaceSubdued [↑](#Table-of-contents)
 
 For use as a surface color on information elements including banners.
 
-| CSS variable                            | Light mode                        | Dark mode                         |
-| --------------------------------------- | --------------------------------- | --------------------------------- |
-| `--p-highlight-surface-subdued`         | ![][highlightsurfacesubduedlight] | ![][highlightsurfacesubdueddark]  |
-| `--p-highlight-surface-subdued-inverse` | ![][highlightsurfacesubdueddark]  | ![][highlightsurfacesubduedlight] |
-| `--p-highlight-surface-subdued-light`   | ![][highlightsurfacesubduedlight] | ![][highlightsurfacesubduedlight] |
-| `--p-highlight-surface-subdued-dark`    | ![][highlightsurfacesubdueddark]  | ![][highlightsurfacesubdueddark]  |
+| CSS variable                    | Light mode                        | Dark mode                        |
+| ------------------------------- | --------------------------------- | -------------------------------- |
+| `--p-highlight-surface-subdued` | ![][highlightsurfacesubduedlight] | ![][highlightsurfacesubdueddark] |
 
-[highlightsurfacesubduedlight]: https://www.gifpng.com/64x32/f1fefc/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlightsurfacesubdueddark]: https://www.gifpng.com/64x32/123631/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-highlight-surface-subdued-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-highlight-surface-subdued-light`: returns the fixed light value regardless of mode
+- `--p-highlight-surface-subdued-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-highlight-surface-subdued-inverse` | ![][highlightSurfaceSubduedDark]  | ![][highlightSurfaceSubduedLight] |
+  | `--p-highlight-surface-subdued-light`   | ![][highlightSurfaceSubduedLight] | ![][highlightSurfaceSubduedLight] |
+  | `--p-highlight-surface-subdued-dark`    | ![][highlightSurfaceSubduedDark]  | ![][highlightSurfaceSubduedDark]  |
+  -->
+
+[highlightsurfacesubduedlight]: https://www.gifpng.com/128x96/f1fefc/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[highlightsurfacesubdueddark]: https://www.gifpng.com/128x96/123631/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `highlightext`
-
-[Back to top](#Table-of-contents)
+### highlightext [↑](#Table-of-contents)
 
 For use as a text color in inert informational elements. Not for use as a text color on banners and badges.
 
-| CSS variable               | Light mode             | Dark mode              |
-| -------------------------- | ---------------------- | ---------------------- |
-| `--p-highlightext`         | ![][highlightextlight] | ![][highlightextdark]  |
-| `--p-highlightext-inverse` | ![][highlightextdark]  | ![][highlightextlight] |
-| `--p-highlightext-light`   | ![][highlightextlight] | ![][highlightextlight] |
-| `--p-highlightext-dark`    | ![][highlightextdark]  | ![][highlightextdark]  |
+| CSS variable       | Light mode             | Dark mode             |
+| ------------------ | ---------------------- | --------------------- |
+| `--p-highlightext` | ![][highlightextlight] | ![][highlightextdark] |
 
-[highlightextlight]: https://www.gifpng.com/64x32/071d1a/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[highlightextdark]: https://www.gifpng.com/64x32/6df8e8/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-highlightext-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-highlightext-light`: returns the fixed light value regardless of mode
+- `--p-highlightext-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-highlightext-inverse` | ![][highlightextDark]  | ![][highlightextLight] |
+  | `--p-highlightext-light`   | ![][highlightextLight] | ![][highlightextLight] |
+  | `--p-highlightext-dark`    | ![][highlightextDark]  | ![][highlightextDark]  |
+  -->
+
+[highlightextlight]: https://www.gifpng.com/128x96/071d1a/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[highlightextdark]: https://www.gifpng.com/128x96/6df8e8/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-## `success`
+## success
 
 Used to indicate the result of a successful action taken by a merchant, to indicate a positive event, or to illustrate growth.
 
-### `success`
-
-[Back to top](#Table-of-contents)
+### success [↑](#Table-of-contents)
 
 While use directly in our components is discouraged, the base variant is unmodified from the original role input color.
 
@@ -1480,14 +1583,12 @@ While use directly in our components is discouraged, the base variant is unmodif
 | ------------- | ----------------- | ---------------- |
 | `--p-success` | ![][successlight] | ![][successdark] |
 
-[successlight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[successdark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[successlight]: https://www.gifpng.com/128x96/008060/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[successdark]: https://www.gifpng.com/128x96/008060/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `successBorder`
-
-[Back to top](#Table-of-contents)
+### successBorder [↑](#Table-of-contents)
 
 For use as a border on success components such as banners.
 
@@ -1495,263 +1596,319 @@ For use as a border on success components such as banners.
 | -------------------- | ----------------------- | ---------------------- |
 | `--p-success-border` | ![][successborderlight] | ![][successborderdark] |
 
-[successborderlight]: https://www.gifpng.com/64x32/008563/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[successborderdark]: https://www.gifpng.com/64x32/008563/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+[successborderlight]: https://www.gifpng.com/128x96/008563/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[successborderdark]: https://www.gifpng.com/128x96/008563/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `successIcon`
-
-[Back to top](#Table-of-contents)
+### successIcon [↑](#Table-of-contents)
 
 For use as an icon fill color on top of success elements.
 
-| CSS variable               | Light mode            | Dark mode             |
-| -------------------------- | --------------------- | --------------------- |
-| `--p-success-icon`         | ![][successiconlight] | ![][successicondark]  |
-| `--p-success-icon-inverse` | ![][successicondark]  | ![][successiconlight] |
-| `--p-success-icon-light`   | ![][successiconlight] | ![][successiconlight] |
-| `--p-success-icon-dark`    | ![][successicondark]  | ![][successicondark]  |
+| CSS variable       | Light mode            | Dark mode            |
+| ------------------ | --------------------- | -------------------- |
+| `--p-success-icon` | ![][successiconlight] | ![][successicondark] |
 
-[successiconlight]: https://www.gifpng.com/64x32/004231/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[successicondark]: https://www.gifpng.com/64x32/005c45/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-success-icon-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-success-icon-light`: returns the fixed light value regardless of mode
+- `--p-success-icon-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-success-icon-inverse` | ![][successIconDark]  | ![][successIconLight] |
+  | `--p-success-icon-light`   | ![][successIconLight] | ![][successIconLight] |
+  | `--p-success-icon-dark`    | ![][successIconDark]  | ![][successIconDark]  |
+  -->
+
+[successiconlight]: https://www.gifpng.com/128x96/004231/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[successicondark]: https://www.gifpng.com/128x96/005c45/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `successSurface`
-
-[Back to top](#Table-of-contents)
+### successSurface [↑](#Table-of-contents)
 
 For use as a surface color on success elements including badges.
 
-| CSS variable                  | Light mode               | Dark mode                |
-| ----------------------------- | ------------------------ | ------------------------ |
-| `--p-success-surface`         | ![][successsurfacelight] | ![][successsurfacedark]  |
-| `--p-success-surface-inverse` | ![][successsurfacedark]  | ![][successsurfacelight] |
-| `--p-success-surface-light`   | ![][successsurfacelight] | ![][successsurfacelight] |
-| `--p-success-surface-dark`    | ![][successsurfacedark]  | ![][successsurfacedark]  |
+| CSS variable          | Light mode               | Dark mode               |
+| --------------------- | ------------------------ | ----------------------- |
+| `--p-success-surface` | ![][successsurfacelight] | ![][successsurfacedark] |
 
-[successsurfacelight]: https://www.gifpng.com/64x32/8ae5c2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[successsurfacedark]: https://www.gifpng.com/64x32/006b4f/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-success-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-success-surface-light`: returns the fixed light value regardless of mode
+- `--p-success-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-success-surface-inverse` | ![][successSurfaceDark]  | ![][successSurfaceLight] |
+  | `--p-success-surface-light`   | ![][successSurfaceLight] | ![][successSurfaceLight] |
+  | `--p-success-surface-dark`    | ![][successSurfaceDark]  | ![][successSurfaceDark]  |
+  -->
+
+[successsurfacelight]: https://www.gifpng.com/128x96/8ae5c2/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[successsurfacedark]: https://www.gifpng.com/128x96/006b4f/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `successSurfaceSubdued`
-
-[Back to top](#Table-of-contents)
+### successSurfaceSubdued [↑](#Table-of-contents)
 
 For use as a surface color on information elements including banners.
 
-| CSS variable                          | Light mode                      | Dark mode                       |
-| ------------------------------------- | ------------------------------- | ------------------------------- |
-| `--p-success-surface-subdued`         | ![][successsurfacesubduedlight] | ![][successsurfacesubdueddark]  |
-| `--p-success-surface-subdued-inverse` | ![][successsurfacesubdueddark]  | ![][successsurfacesubduedlight] |
-| `--p-success-surface-subdued-light`   | ![][successsurfacesubduedlight] | ![][successsurfacesubduedlight] |
-| `--p-success-surface-subdued-dark`    | ![][successsurfacesubdueddark]  | ![][successsurfacesubdueddark]  |
+| CSS variable                  | Light mode                      | Dark mode                      |
+| ----------------------------- | ------------------------------- | ------------------------------ |
+| `--p-success-surface-subdued` | ![][successsurfacesubduedlight] | ![][successsurfacesubdueddark] |
 
-[successsurfacesubduedlight]: https://www.gifpng.com/64x32/f6fefa/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[successsurfacesubdueddark]: https://www.gifpng.com/64x32/1c352c/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-success-surface-subdued-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-success-surface-subdued-light`: returns the fixed light value regardless of mode
+- `--p-success-surface-subdued-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-success-surface-subdued-inverse` | ![][successSurfaceSubduedDark]  | ![][successSurfaceSubduedLight] |
+  | `--p-success-surface-subdued-light`   | ![][successSurfaceSubduedLight] | ![][successSurfaceSubduedLight] |
+  | `--p-success-surface-subdued-dark`    | ![][successSurfaceSubduedDark]  | ![][successSurfaceSubduedDark]  |
+  -->
+
+[successsurfacesubduedlight]: https://www.gifpng.com/128x96/f6fefa/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[successsurfacesubdueddark]: https://www.gifpng.com/128x96/1c352c/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `successText`
-
-[Back to top](#Table-of-contents)
+### successText [↑](#Table-of-contents)
 
 For use as a text color in inert success elements. Not for use as a text color on banners and badges.
 
-| CSS variable               | Light mode            | Dark mode             |
-| -------------------------- | --------------------- | --------------------- |
-| `--p-success-text`         | ![][successtextlight] | ![][successtextdark]  |
-| `--p-success-text-inverse` | ![][successtextdark]  | ![][successtextlight] |
-| `--p-success-text-light`   | ![][successtextlight] | ![][successtextlight] |
-| `--p-success-text-dark`    | ![][successtextdark]  | ![][successtextdark]  |
+| CSS variable       | Light mode            | Dark mode            |
+| ------------------ | --------------------- | -------------------- |
+| `--p-success-text` | ![][successtextlight] | ![][successtextdark] |
 
-[successtextlight]: https://www.gifpng.com/64x32/006b4f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[successtextdark]: https://www.gifpng.com/64x32/00a37a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-success-text-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-success-text-light`: returns the fixed light value regardless of mode
+- `--p-success-text-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-success-text-inverse` | ![][successTextDark]  | ![][successTextLight] |
+  | `--p-success-text-light`   | ![][successTextLight] | ![][successTextLight] |
+  | `--p-success-text-dark`    | ![][successTextDark]  | ![][successTextDark]  |
+  -->
+
+[successtextlight]: https://www.gifpng.com/128x96/006b4f/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[successtextdark]: https://www.gifpng.com/128x96/00a37a/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-## `decorative`
+## decorative
 
 Used to decorate elements where color does convey a specific meaning in components like avatars
 
-### `decorativeOneSurface`
-
-[Back to top](#Table-of-contents)
+### decorativeOneSurface [↑](#Table-of-contents)
 
 For use as a decorative surface color.
 
-| CSS variable                         | Light mode                     | Dark mode                      |
-| ------------------------------------ | ------------------------------ | ------------------------------ |
-| `--p-decorative-one-surface`         | ![][decorativeonesurfacelight] | ![][decorativeonesurfacedark]  |
-| `--p-decorative-one-surface-inverse` | ![][decorativeonesurfacedark]  | ![][decorativeonesurfacelight] |
-| `--p-decorative-one-surface-light`   | ![][decorativeonesurfacelight] | ![][decorativeonesurfacelight] |
-| `--p-decorative-one-surface-dark`    | ![][decorativeonesurfacedark]  | ![][decorativeonesurfacedark]  |
+| CSS variable                 | Light mode                     | Dark mode                     |
+| ---------------------------- | ------------------------------ | ----------------------------- |
+| `--p-decorative-one-surface` | ![][decorativeonesurfacelight] | ![][decorativeonesurfacedark] |
 
-[decorativeonesurfacelight]: https://www.gifpng.com/64x32/ffc96b/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[decorativeonesurfacedark]: https://www.gifpng.com/64x32/906709/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-decorative-one-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-decorative-one-surface-light`: returns the fixed light value regardless of mode
+- `--p-decorative-one-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-decorative-one-surface-inverse` | ![][decorativeOneSurfaceDark]  | ![][decorativeOneSurfaceLight] |
+  | `--p-decorative-one-surface-light`   | ![][decorativeOneSurfaceLight] | ![][decorativeOneSurfaceLight] |
+  | `--p-decorative-one-surface-dark`    | ![][decorativeOneSurfaceDark]  | ![][decorativeOneSurfaceDark]  |
+  -->
+
+[decorativeonesurfacelight]: https://www.gifpng.com/128x96/ffc96b/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[decorativeonesurfacedark]: https://www.gifpng.com/128x96/906709/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `decorativeOneText`
-
-[Back to top](#Table-of-contents)
+### decorativeOneText [↑](#Table-of-contents)
 
 For use as a decorative text color that is applied on a decorative surface.
 
-| CSS variable                      | Light mode                  | Dark mode                   |
-| --------------------------------- | --------------------------- | --------------------------- |
-| `--p-decorative-one-text`         | ![][decorativeonetextlight] | ![][decorativeonetextdark]  |
-| `--p-decorative-one-text-inverse` | ![][decorativeonetextdark]  | ![][decorativeonetextlight] |
-| `--p-decorative-one-text-light`   | ![][decorativeonetextlight] | ![][decorativeonetextlight] |
-| `--p-decorative-one-text-dark`    | ![][decorativeonetextdark]  | ![][decorativeonetextdark]  |
+| CSS variable              | Light mode                  | Dark mode                  |
+| ------------------------- | --------------------------- | -------------------------- |
+| `--p-decorative-one-text` | ![][decorativeonetextlight] | ![][decorativeonetextdark] |
 
-[decorativeonetextlight]: https://www.gifpng.com/64x32/3d2800/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[decorativeonetextdark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-decorative-one-text-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-decorative-one-text-light`: returns the fixed light value regardless of mode
+- `--p-decorative-one-text-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-decorative-one-text-inverse` | ![][decorativeOneTextDark]  | ![][decorativeOneTextLight] |
+  | `--p-decorative-one-text-light`   | ![][decorativeOneTextLight] | ![][decorativeOneTextLight] |
+  | `--p-decorative-one-text-dark`    | ![][decorativeOneTextDark]  | ![][decorativeOneTextDark]  |
+  -->
+
+[decorativeonetextlight]: https://www.gifpng.com/128x96/3d2800/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[decorativeonetextdark]: https://www.gifpng.com/128x96/ffffff/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `decorativeTwoSurface`
-
-[Back to top](#Table-of-contents)
+### decorativeTwoSurface [↑](#Table-of-contents)
 
 For use as a decorative surface color.
 
-| CSS variable                         | Light mode                     | Dark mode                      |
-| ------------------------------------ | ------------------------------ | ------------------------------ |
-| `--p-decorative-two-surface`         | ![][decorativetwosurfacelight] | ![][decorativetwosurfacedark]  |
-| `--p-decorative-two-surface-inverse` | ![][decorativetwosurfacedark]  | ![][decorativetwosurfacelight] |
-| `--p-decorative-two-surface-light`   | ![][decorativetwosurfacelight] | ![][decorativetwosurfacelight] |
-| `--p-decorative-two-surface-dark`    | ![][decorativetwosurfacedark]  | ![][decorativetwosurfacedark]  |
+| CSS variable                 | Light mode                     | Dark mode                     |
+| ---------------------------- | ------------------------------ | ----------------------------- |
+| `--p-decorative-two-surface` | ![][decorativetwosurfacelight] | ![][decorativetwosurfacedark] |
 
-[decorativetwosurfacelight]: https://www.gifpng.com/64x32/ffc6b3/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[decorativetwosurfacedark]: https://www.gifpng.com/64x32/cc5814/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-decorative-two-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-decorative-two-surface-light`: returns the fixed light value regardless of mode
+- `--p-decorative-two-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-decorative-two-surface-inverse` | ![][decorativeTwoSurfaceDark]  | ![][decorativeTwoSurfaceLight] |
+  | `--p-decorative-two-surface-light`   | ![][decorativeTwoSurfaceLight] | ![][decorativeTwoSurfaceLight] |
+  | `--p-decorative-two-surface-dark`    | ![][decorativeTwoSurfaceDark]  | ![][decorativeTwoSurfaceDark]  |
+  -->
+
+[decorativetwosurfacelight]: https://www.gifpng.com/128x96/ffc6b3/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[decorativetwosurfacedark]: https://www.gifpng.com/128x96/cc5814/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `decorativeTwoText`
-
-[Back to top](#Table-of-contents)
+### decorativeTwoText [↑](#Table-of-contents)
 
 For use as a decorative text color that is applied on a decorative surface.
 
-| CSS variable                      | Light mode                  | Dark mode                   |
-| --------------------------------- | --------------------------- | --------------------------- |
-| `--p-decorative-two-text`         | ![][decorativetwotextlight] | ![][decorativetwotextdark]  |
-| `--p-decorative-two-text-inverse` | ![][decorativetwotextdark]  | ![][decorativetwotextlight] |
-| `--p-decorative-two-text-light`   | ![][decorativetwotextlight] | ![][decorativetwotextlight] |
-| `--p-decorative-two-text-dark`    | ![][decorativetwotextdark]  | ![][decorativetwotextdark]  |
+| CSS variable              | Light mode                  | Dark mode                  |
+| ------------------------- | --------------------------- | -------------------------- |
+| `--p-decorative-two-text` | ![][decorativetwotextlight] | ![][decorativetwotextdark] |
 
-[decorativetwotextlight]: https://www.gifpng.com/64x32/470b1b/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[decorativetwotextdark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-decorative-two-text-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-decorative-two-text-light`: returns the fixed light value regardless of mode
+- `--p-decorative-two-text-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-decorative-two-text-inverse` | ![][decorativeTwoTextDark]  | ![][decorativeTwoTextLight] |
+  | `--p-decorative-two-text-light`   | ![][decorativeTwoTextLight] | ![][decorativeTwoTextLight] |
+  | `--p-decorative-two-text-dark`    | ![][decorativeTwoTextDark]  | ![][decorativeTwoTextDark]  |
+  -->
+
+[decorativetwotextlight]: https://www.gifpng.com/128x96/470b1b/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[decorativetwotextdark]: https://www.gifpng.com/128x96/ffffff/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `decorativeThreeSurface`
-
-[Back to top](#Table-of-contents)
+### decorativeThreeSurface [↑](#Table-of-contents)
 
 For use as a decorative surface color.
 
-| CSS variable                           | Light mode                       | Dark mode                        |
-| -------------------------------------- | -------------------------------- | -------------------------------- |
-| `--p-decorative-three-surface`         | ![][decorativethreesurfacelight] | ![][decorativethreesurfacedark]  |
-| `--p-decorative-three-surface-inverse` | ![][decorativethreesurfacedark]  | ![][decorativethreesurfacelight] |
-| `--p-decorative-three-surface-light`   | ![][decorativethreesurfacelight] | ![][decorativethreesurfacelight] |
-| `--p-decorative-three-surface-dark`    | ![][decorativethreesurfacedark]  | ![][decorativethreesurfacedark]  |
+| CSS variable                   | Light mode                       | Dark mode                       |
+| ------------------------------ | -------------------------------- | ------------------------------- |
+| `--p-decorative-three-surface` | ![][decorativethreesurfacelight] | ![][decorativethreesurfacedark] |
 
-[decorativethreesurfacelight]: https://www.gifpng.com/64x32/91e3b3/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[decorativethreesurfacedark]: https://www.gifpng.com/64x32/007a5a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-decorative-three-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-decorative-three-surface-light`: returns the fixed light value regardless of mode
+- `--p-decorative-three-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-decorative-three-surface-inverse` | ![][decorativeThreeSurfaceDark]  | ![][decorativeThreeSurfaceLight] |
+  | `--p-decorative-three-surface-light`   | ![][decorativeThreeSurfaceLight] | ![][decorativeThreeSurfaceLight] |
+  | `--p-decorative-three-surface-dark`    | ![][decorativeThreeSurfaceDark]  | ![][decorativeThreeSurfaceDark]  |
+  -->
+
+[decorativethreesurfacelight]: https://www.gifpng.com/128x96/91e3b3/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[decorativethreesurfacedark]: https://www.gifpng.com/128x96/007a5a/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `decorativeThreeText`
-
-[Back to top](#Table-of-contents)
+### decorativeThreeText [↑](#Table-of-contents)
 
 For use as a decorative text color that is applied on a decorative surface.
 
-| CSS variable                        | Light mode                    | Dark mode                     |
-| ----------------------------------- | ----------------------------- | ----------------------------- |
-| `--p-decorative-three-text`         | ![][decorativethreetextlight] | ![][decorativethreetextdark]  |
-| `--p-decorative-three-text-inverse` | ![][decorativethreetextdark]  | ![][decorativethreetextlight] |
-| `--p-decorative-three-text-light`   | ![][decorativethreetextlight] | ![][decorativethreetextlight] |
-| `--p-decorative-three-text-dark`    | ![][decorativethreetextdark]  | ![][decorativethreetextdark]  |
+| CSS variable                | Light mode                    | Dark mode                    |
+| --------------------------- | ----------------------------- | ---------------------------- |
+| `--p-decorative-three-text` | ![][decorativethreetextlight] | ![][decorativethreetextdark] |
 
-[decorativethreetextlight]: https://www.gifpng.com/64x32/002e18/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[decorativethreetextdark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-decorative-three-text-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-decorative-three-text-light`: returns the fixed light value regardless of mode
+- `--p-decorative-three-text-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-decorative-three-text-inverse` | ![][decorativeThreeTextDark]  | ![][decorativeThreeTextLight] |
+  | `--p-decorative-three-text-light`   | ![][decorativeThreeTextLight] | ![][decorativeThreeTextLight] |
+  | `--p-decorative-three-text-dark`    | ![][decorativeThreeTextDark]  | ![][decorativeThreeTextDark]  |
+  -->
+
+[decorativethreetextlight]: https://www.gifpng.com/128x96/002e18/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[decorativethreetextdark]: https://www.gifpng.com/128x96/ffffff/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `decorativeFourSurface`
-
-[Back to top](#Table-of-contents)
+### decorativeFourSurface [↑](#Table-of-contents)
 
 For use as a decorative surface color.
 
-| CSS variable                          | Light mode                      | Dark mode                       |
-| ------------------------------------- | ------------------------------- | ------------------------------- |
-| `--p-decorative-four-surface`         | ![][decorativefoursurfacelight] | ![][decorativefoursurfacedark]  |
-| `--p-decorative-four-surface-inverse` | ![][decorativefoursurfacedark]  | ![][decorativefoursurfacelight] |
-| `--p-decorative-four-surface-light`   | ![][decorativefoursurfacelight] | ![][decorativefoursurfacelight] |
-| `--p-decorative-four-surface-dark`    | ![][decorativefoursurfacedark]  | ![][decorativefoursurfacedark]  |
+| CSS variable                  | Light mode                      | Dark mode                      |
+| ----------------------------- | ------------------------------- | ------------------------------ |
+| `--p-decorative-four-surface` | ![][decorativefoursurfacelight] | ![][decorativefoursurfacedark] |
 
-[decorativefoursurfacelight]: https://www.gifpng.com/64x32/90e0d5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[decorativefoursurfacedark]: https://www.gifpng.com/64x32/167e7a/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-decorative-four-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-decorative-four-surface-light`: returns the fixed light value regardless of mode
+- `--p-decorative-four-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-decorative-four-surface-inverse` | ![][decorativeFourSurfaceDark]  | ![][decorativeFourSurfaceLight] |
+  | `--p-decorative-four-surface-light`   | ![][decorativeFourSurfaceLight] | ![][decorativeFourSurfaceLight] |
+  | `--p-decorative-four-surface-dark`    | ![][decorativeFourSurfaceDark]  | ![][decorativeFourSurfaceDark]  |
+  -->
+
+[decorativefoursurfacelight]: https://www.gifpng.com/128x96/90e0d5/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[decorativefoursurfacedark]: https://www.gifpng.com/128x96/167e7a/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `decorativeFourText`
-
-[Back to top](#Table-of-contents)
+### decorativeFourText [↑](#Table-of-contents)
 
 For use as a decorative text color that is applied on a decorative surface.
 
-| CSS variable                       | Light mode                   | Dark mode                    |
-| ---------------------------------- | ---------------------------- | ---------------------------- |
-| `--p-decorative-four-text`         | ![][decorativefourtextlight] | ![][decorativefourtextdark]  |
-| `--p-decorative-four-text-inverse` | ![][decorativefourtextdark]  | ![][decorativefourtextlight] |
-| `--p-decorative-four-text-light`   | ![][decorativefourtextlight] | ![][decorativefourtextlight] |
-| `--p-decorative-four-text-dark`    | ![][decorativefourtextdark]  | ![][decorativefourtextdark]  |
+| CSS variable               | Light mode                   | Dark mode                   |
+| -------------------------- | ---------------------------- | --------------------------- |
+| `--p-decorative-four-text` | ![][decorativefourtextlight] | ![][decorativefourtextdark] |
 
-[decorativefourtextlight]: https://www.gifpng.com/64x32/002e2e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[decorativefourtextdark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-decorative-four-text-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-decorative-four-text-light`: returns the fixed light value regardless of mode
+- `--p-decorative-four-text-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-decorative-four-text-inverse` | ![][decorativeFourTextDark]  | ![][decorativeFourTextLight] |
+  | `--p-decorative-four-text-light`   | ![][decorativeFourTextLight] | ![][decorativeFourTextLight] |
+  | `--p-decorative-four-text-dark`    | ![][decorativeFourTextDark]  | ![][decorativeFourTextDark]  |
+  -->
+
+[decorativefourtextlight]: https://www.gifpng.com/128x96/002e2e/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[decorativefourtextdark]: https://www.gifpng.com/128x96/ffffff/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `decorativeFiveSurface`
-
-[Back to top](#Table-of-contents)
+### decorativeFiveSurface [↑](#Table-of-contents)
 
 For use as a decorative surface color.
 
-| CSS variable                          | Light mode                      | Dark mode                       |
-| ------------------------------------- | ------------------------------- | ------------------------------- |
-| `--p-decorative-five-surface`         | ![][decorativefivesurfacelight] | ![][decorativefivesurfacedark]  |
-| `--p-decorative-five-surface-inverse` | ![][decorativefivesurfacedark]  | ![][decorativefivesurfacelight] |
-| `--p-decorative-five-surface-light`   | ![][decorativefivesurfacelight] | ![][decorativefivesurfacelight] |
-| `--p-decorative-five-surface-dark`    | ![][decorativefivesurfacedark]  | ![][decorativefivesurfacedark]  |
+| CSS variable                  | Light mode                      | Dark mode                      |
+| ----------------------------- | ------------------------------- | ------------------------------ |
+| `--p-decorative-five-surface` | ![][decorativefivesurfacelight] | ![][decorativefivesurfacedark] |
 
-[decorativefivesurfacelight]: https://www.gifpng.com/64x32/fdc9d0/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[decorativefivesurfacedark]: https://www.gifpng.com/64x32/c13357/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-decorative-five-surface-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-decorative-five-surface-light`: returns the fixed light value regardless of mode
+- `--p-decorative-five-surface-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-decorative-five-surface-inverse` | ![][decorativeFiveSurfaceDark]  | ![][decorativeFiveSurfaceLight] |
+  | `--p-decorative-five-surface-light`   | ![][decorativeFiveSurfaceLight] | ![][decorativeFiveSurfaceLight] |
+  | `--p-decorative-five-surface-dark`    | ![][decorativeFiveSurfaceDark]  | ![][decorativeFiveSurfaceDark]  |
+  -->
+
+[decorativefivesurfacelight]: https://www.gifpng.com/128x96/fdc9d0/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[decorativefivesurfacedark]: https://www.gifpng.com/128x96/c13357/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---
 
-### `decorativeFiveText`
-
-[Back to top](#Table-of-contents)
+### decorativeFiveText [↑](#Table-of-contents)
 
 For use as a decorative text color that is applied on a decorative surface.
 
-| CSS variable                       | Light mode                   | Dark mode                    |
-| ---------------------------------- | ---------------------------- | ---------------------------- |
-| `--p-decorative-five-text`         | ![][decorativefivetextlight] | ![][decorativefivetextdark]  |
-| `--p-decorative-five-text-inverse` | ![][decorativefivetextdark]  | ![][decorativefivetextlight] |
-| `--p-decorative-five-text-light`   | ![][decorativefivetextlight] | ![][decorativefivetextlight] |
-| `--p-decorative-five-text-dark`    | ![][decorativefivetextdark]  | ![][decorativefivetextdark]  |
+| CSS variable               | Light mode                   | Dark mode                   |
+| -------------------------- | ---------------------------- | --------------------------- |
+| `--p-decorative-five-text` | ![][decorativefivetextlight] | ![][decorativefivetextdark] |
 
-[decorativefivetextlight]: https://www.gifpng.com/64x32/4e0e1f/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
-[decorativefivetextdark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
+- `--p-decorative-five-text-inverse`: returns the dark mode color while in light mode and vice versa
+- `--p-decorative-five-text-light`: returns the fixed light value regardless of mode
+- `--p-decorative-five-text-dark`: returns the fixed dark value regardless of mode
+  <!--
+  | `--p-decorative-five-text-inverse` | ![][decorativeFiveTextDark]  | ![][decorativeFiveTextLight] |
+  | `--p-decorative-five-text-light`   | ![][decorativeFiveTextLight] | ![][decorativeFiveTextLight] |
+  | `--p-decorative-five-text-dark`    | ![][decorativeFiveTextDark]  | ![][decorativeFiveTextDark]  |
+  -->
+
+[decorativefivetextlight]: https://www.gifpng.com/128x96/4e0e1f/FFFFFF?border-width=32&border-type=rectangle&border-color=fafafa&text=%20
+[decorativefivetextdark]: https://www.gifpng.com/128x96/ffffff/FFFFFF?border-width=32&border-type=rectangle&border-color=0c0d0e&text=%20
 
 ---

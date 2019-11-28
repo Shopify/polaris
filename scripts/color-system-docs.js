@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 const {resolve: resolvePath} = require('path');
 const {writeFileSync} = require('fs-extra');
 const {
@@ -10,31 +8,11 @@ const {
   UNSTABLE_buildColors: colorFactory,
 } = require('../');
 
-// eslint-disable-next-line babel/camelcase
-const lightColors = colorFactory({UNSTABLE_colors: {}}, roleVariants);
-const darkColors = colorFactory(
-  // eslint-disable-next-line babel/camelcase
-  {UNSTABLE_colors: {surface: '#111213'}},
-  roleVariants,
-);
-
-function stringToHsla(hsla) {
-  const [hue, saturation, lightness] = hsla
-    .substring(5)
-    .slice(0, -1)
-    .split(', ');
-
-  return {
-    hue,
-    saturation: saturation.slice(0, -1),
-    lightness: lightness.slice(0, -1),
-    alpha: 1,
-  };
-}
-
-function toHex(color) {
-  return rgbToHex(hslToRgb(stringToHsla(color))).substr(1);
-}
+const ColorSwatch = {
+  Width: 64,
+  Height: 32,
+  Padding: 32,
+};
 
 const RoleDescription = {
   surface:
@@ -59,63 +37,99 @@ const RoleDescription = {
     'Used to decorate elements where color does convey a specific meaning in components like avatars',
 };
 
-const Template = {
-  parent: (name) => `- [\`${name}\`](#${name})\n`,
-  child: (name) => `  - [\`${name}\`](#${name})\n`,
-  role: (name, description) => `## \`${name}\`\n\n${description}\n\n`,
-  variant: (name, description, light, dark) => {
-    const additionalVariants = () => `| \`${cssify(
-      name,
-    )}-inverse\` | ![][${name}Dark]  | ![][${name}Light] |
-| \`${cssify(name)}-light\`   | ![][${name}Light] | ![][${name}Light] |
-| \`${cssify(name)}-dark\`    | ![][${name}Dark]  | ![][${name}Dark]  |`;
+// eslint-disable-next-line babel/camelcase
+const lightColors = colorFactory({UNSTABLE_colors: {}}, roleVariants);
+const darkColors = colorFactory(
+  // eslint-disable-next-line babel/camelcase
+  {UNSTABLE_colors: {surface: '#111213'}},
+  roleVariants,
+);
 
-    return `### \`${name}\`\n\n[Back to top](#Table-of-contents)\n\n${description}
+const Template = {
+  parent: (name) => `- [${name}](#${name})\n`,
+  child: (name) => `[${name}](#${name}), `,
+  role: (name, description) => `## ${name}\n\n${description}\n\n`,
+  variant: (name, description, light, dark) => {
+    const {Width, Height, Padding} = ColorSwatch;
+    const size = `${Width + Padding * 2}x${Height + Padding * 2}`;
+
+    const additionalVariants = () => `\n
+- \`${cssify(
+      name,
+    )}-inverse\`: returns the dark mode color while in light mode and vice versa
+- \`${cssify(name)}-light\`: returns the fixed light value regardless of mode
+- \`${cssify(name)}-dark\`: returns the fixed dark value regardless of mode
+<!--
+| \`${cssify(name)}-inverse\` | ![][${name}Dark]  | ![][${name}Light] |
+| \`${cssify(name)}-light\`   | ![][${name}Light] | ![][${name}Light] |
+| \`${cssify(name)}-dark\`    | ![][${name}Dark]  | ![][${name}Dark]  |
+-->`;
+
+    return `### ${name} [↑](#Table-of-contents)\n\n${description}
 
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | \`${cssify(name)}\`         | ![][${name}Light] | ![][${name}Dark]  |
 ${light === dark ? '' : additionalVariants()}
 
-[${name}Light]: https://www.gifpng.com/64x32/${light}/FFFFFF?border-width=8&border-type=rectangle&border-color=${toHex(
+[${name}Light]: https://www.gifpng.com/${size}/${light}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
       lightColors.surfaceBackground,
     )}&text=%20
-[${name}Dark]: https://www.gifpng.com/64x32/${dark}/FFFFFF?border-width=8&border-type=rectangle&border-color=${toHex(
+[${name}Dark]: https://www.gifpng.com/${size}/${dark}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
       darkColors.surfaceBackground,
     )}&text=%20\n\n---\n\n`;
   },
 };
 
-const contents = `# Color system
+const boilerplate =
+  '# Color system\n\n⚠️ The color system is currently an unstable API, and is subject to change in non-major releases of Polaris react. Please use with caution.\n\n';
+const tocTitle = '## Table of contents\n\n';
 
-⚠️ The color system is currently an unstable API, and is subject to change in non-major releases of Polaris react. Please use with caution.
+const tocContents = Object.entries(roleVariants).reduce(
+  (acc1, [role, variants]) => {
+    const children = variants.reduce((acc2, variant) => {
+      return acc2 + Template.child(variant.name);
+    }, '');
 
-## Table of contents
+    return `${acc1 + Template.parent(role)}  - ${children}\n`;
+  },
+  '',
+);
 
-${Object.entries(roleVariants).reduce((acc1, [role, variants]) => {
-  const children = variants.reduce((acc2, variant) => {
-    return acc2 + Template.child(variant.name);
-  }, '');
+const contents = Object.entries(roleVariants).reduce(
+  (acc1, [role, variants]) => {
+    const children = variants.reduce((acc2, variant) => {
+      const light = toHex(lightColors[variant.name]);
+      const dark = toHex(darkColors[variant.name]);
 
-  return acc1 + Template.parent(role) + children;
-}, '')}
+      return (
+        acc2 + Template.variant(variant.name, variant.description, light, dark)
+      );
+    }, '');
 
-${Object.entries(roleVariants).reduce((acc1, [role, variants]) => {
-  const children = variants.reduce((acc2, variant) => {
-    const light = toHex(lightColors[variant.name]);
-    const dark = toHex(darkColors[variant.name]);
+    return acc1 + Template.role(role, RoleDescription[role]) + children;
+  },
+  '',
+);
 
-    return (
-      acc2 + Template.variant(variant.name, variant.description, light, dark)
-    );
-  }, '');
+const data = boilerplate + tocTitle + tocContents + contents;
 
-  return acc1 + Template.role(role, RoleDescription[role]) + children;
-}, '')}`;
+writeFileSync(resolvePath('documentation/Color system.md'), data);
 
-writeFileSync(resolvePath('documentation/Color system.md'), contents, function(
-  err,
-) {
-  if (err) throw err;
-  console.log('File is created successfully.');
-});
+function stringToHsla(hsla) {
+  const [hue, saturation, lightness] = hsla
+    .substring(5)
+    .slice(0, -1)
+    .split(', ');
+
+  return {
+    hue,
+    saturation: saturation.slice(0, -1),
+    lightness: lightness.slice(0, -1),
+    alpha: 1,
+  };
+}
+
+function toHex(color) {
+  return rgbToHex(hslToRgb(stringToHsla(color))).substr(1);
+}
