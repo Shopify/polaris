@@ -10,7 +10,7 @@ const {
 
 const ColorSwatch = {
   Width: 32,
-  Height: 16,
+  Height: 32,
   Padding: 16,
 };
 
