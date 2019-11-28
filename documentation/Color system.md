@@ -193,9 +193,7 @@ For use as the background color of the backdrop component for navigation and mod
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-backdrop`         | ![][backdropLight] | ![][backdropDark]  |
-| `--p-backdrop-inverse` | ![][backdropDark]  | ![][backdropLight] |
-| `--p-backdrop-light`   | ![][backdropLight] | ![][backdropLight] |
-| `--p-backdrop-dark`    | ![][backdropDark]  | ![][backdropDark]  |
+
 
 [backdropLight]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [backdropDark]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -207,9 +205,7 @@ For use in building shadows for popovers, cards, and modals.
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-shadow-from-ambient-light`         | ![][shadowFromAmbientLightLight] | ![][shadowFromAmbientLightDark]  |
-| `--p-shadow-from-ambient-light-inverse` | ![][shadowFromAmbientLightDark]  | ![][shadowFromAmbientLightLight] |
-| `--p-shadow-from-ambient-light-light`   | ![][shadowFromAmbientLightLight] | ![][shadowFromAmbientLightLight] |
-| `--p-shadow-from-ambient-light-dark`    | ![][shadowFromAmbientLightDark]  | ![][shadowFromAmbientLightDark]  |
+
 
 [shadowFromAmbientLightLight]: https://www.gifpng.com/64x32/161717/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [shadowFromAmbientLightDark]: https://www.gifpng.com/64x32/161717/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -221,9 +217,7 @@ For use in building shadows for popovers, cards, and modals.
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-shadow-from-direct-light`         | ![][shadowFromDirectLightLight] | ![][shadowFromDirectLightDark]  |
-| `--p-shadow-from-direct-light-inverse` | ![][shadowFromDirectLightDark]  | ![][shadowFromDirectLightLight] |
-| `--p-shadow-from-direct-light-light`   | ![][shadowFromDirectLightLight] | ![][shadowFromDirectLightLight] |
-| `--p-shadow-from-direct-light-dark`    | ![][shadowFromDirectLightDark]  | ![][shadowFromDirectLightDark]  |
+
 
 [shadowFromDirectLightLight]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [shadowFromDirectLightDark]: https://www.gifpng.com/64x32/000000/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -239,9 +233,7 @@ While use directly in our components is discouraged, the base variant is unmodif
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-on-surface`         | ![][onSurfaceLight] | ![][onSurfaceDark]  |
-| `--p-on-surface-inverse` | ![][onSurfaceDark]  | ![][onSurfaceLight] |
-| `--p-on-surface-light`   | ![][onSurfaceLight] | ![][onSurfaceLight] |
-| `--p-on-surface-dark`    | ![][onSurfaceDark]  | ![][onSurfaceDark]  |
+
 
 [onSurfaceLight]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [onSurfaceDark]: https://www.gifpng.com/64x32/1e2124/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -383,9 +375,7 @@ While use directly in our components is discouraged, the base variant is unmodif
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-interactive`         | ![][interactiveLight] | ![][interactiveDark]  |
-| `--p-interactive-inverse` | ![][interactiveDark]  | ![][interactiveLight] |
-| `--p-interactive-light`   | ![][interactiveLight] | ![][interactiveLight] |
-| `--p-interactive-dark`    | ![][interactiveDark]  | ![][interactiveDark]  |
+
 
 [interactiveLight]: https://www.gifpng.com/64x32/0870d9/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [interactiveDark]: https://www.gifpng.com/64x32/0870d9/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -527,9 +517,7 @@ While use directly in our components is discouraged, the base variant is unmodif
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-neutral`         | ![][neutralLight] | ![][neutralDark]  |
-| `--p-neutral-inverse` | ![][neutralDark]  | ![][neutralLight] |
-| `--p-neutral-light`   | ![][neutralLight] | ![][neutralLight] |
-| `--p-neutral-dark`    | ![][neutralDark]  | ![][neutralDark]  |
+
 
 [neutralLight]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [neutralDark]: https://www.gifpng.com/64x32/eaeaeb/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -601,9 +589,7 @@ While use directly in our components is discouraged, the base variant is unmodif
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-primary`         | ![][primaryLight] | ![][primaryDark]  |
-| `--p-primary-inverse` | ![][primaryDark]  | ![][primaryLight] |
-| `--p-primary-light`   | ![][primaryLight] | ![][primaryLight] |
-| `--p-primary-dark`    | ![][primaryDark]  | ![][primaryDark]  |
+
 
 [primaryLight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [primaryDark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -615,9 +601,7 @@ Used as the background color for primary actions, and as the fill color for icon
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-primary-action`         | ![][primaryActionLight] | ![][primaryActionDark]  |
-| `--p-primary-action-inverse` | ![][primaryActionDark]  | ![][primaryActionLight] |
-| `--p-primary-action-light`   | ![][primaryActionLight] | ![][primaryActionLight] |
-| `--p-primary-action-dark`    | ![][primaryActionDark]  | ![][primaryActionDark]  |
+
 
 [primaryActionLight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [primaryActionDark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -629,9 +613,7 @@ Used as the background color for disabled primary actions, and as the fill color
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-primary-action-disabled`         | ![][primaryActionDisabledLight] | ![][primaryActionDisabledDark]  |
-| `--p-primary-action-disabled-inverse` | ![][primaryActionDisabledDark]  | ![][primaryActionDisabledLight] |
-| `--p-primary-action-disabled-light`   | ![][primaryActionDisabledLight] | ![][primaryActionDisabledLight] |
-| `--p-primary-action-disabled-dark`    | ![][primaryActionDisabledDark]  | ![][primaryActionDisabledDark]  |
+
 
 [primaryActionDisabledLight]: https://www.gifpng.com/64x32/005741/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [primaryActionDisabledDark]: https://www.gifpng.com/64x32/005741/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -671,9 +653,7 @@ For use as a fill color for icons on primary actions. Not for use in icons on na
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-icon-on-primary`         | ![][iconOnPrimaryLight] | ![][iconOnPrimaryDark]  |
-| `--p-icon-on-primary-inverse` | ![][iconOnPrimaryDark]  | ![][iconOnPrimaryLight] |
-| `--p-icon-on-primary-light`   | ![][iconOnPrimaryLight] | ![][iconOnPrimaryLight] |
-| `--p-icon-on-primary-dark`    | ![][iconOnPrimaryDark]  | ![][iconOnPrimaryDark]  |
+
 
 [iconOnPrimaryLight]: https://www.gifpng.com/64x32/e5fff4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [iconOnPrimaryDark]: https://www.gifpng.com/64x32/e5fff4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -685,9 +665,7 @@ For use as a fill color for icons on subdued primary actions. Not for use in ico
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-icon-subdued-on-primary`         | ![][iconSubduedOnPrimaryLight] | ![][iconSubduedOnPrimaryDark]  |
-| `--p-icon-subdued-on-primary-inverse` | ![][iconSubduedOnPrimaryDark]  | ![][iconSubduedOnPrimaryLight] |
-| `--p-icon-subdued-on-primary-light`   | ![][iconSubduedOnPrimaryLight] | ![][iconSubduedOnPrimaryLight] |
-| `--p-icon-subdued-on-primary-dark`    | ![][iconSubduedOnPrimaryDark]  | ![][iconSubduedOnPrimaryDark]  |
+
 
 [iconSubduedOnPrimaryLight]: https://www.gifpng.com/64x32/00fac0/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [iconSubduedOnPrimaryDark]: https://www.gifpng.com/64x32/00fac0/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -699,9 +677,7 @@ For use as a fill color for icons on disabled primary actions. Not for use in ic
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-icon-disabled-on-primary`         | ![][iconDisabledOnPrimaryLight] | ![][iconDisabledOnPrimaryDark]  |
-| `--p-icon-disabled-on-primary-inverse` | ![][iconDisabledOnPrimaryDark]  | ![][iconDisabledOnPrimaryLight] |
-| `--p-icon-disabled-on-primary-light`   | ![][iconDisabledOnPrimaryLight] | ![][iconDisabledOnPrimaryLight] |
-| `--p-icon-disabled-on-primary-dark`    | ![][iconDisabledOnPrimaryDark]  | ![][iconDisabledOnPrimaryDark]  |
+
 
 [iconDisabledOnPrimaryLight]: https://www.gifpng.com/64x32/00dba4/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [iconDisabledOnPrimaryDark]: https://www.gifpng.com/64x32/00dba4/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -713,9 +689,7 @@ For use as a text color on primary actions. Not for use in text on navigation an
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-text-on-primary`         | ![][textOnPrimaryLight] | ![][textOnPrimaryDark]  |
-| `--p-text-on-primary-inverse` | ![][textOnPrimaryDark]  | ![][textOnPrimaryLight] |
-| `--p-text-on-primary-light`   | ![][textOnPrimaryLight] | ![][textOnPrimaryLight] |
-| `--p-text-on-primary-dark`    | ![][textOnPrimaryDark]  | ![][textOnPrimaryDark]  |
+
 
 [textOnPrimaryLight]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [textOnPrimaryDark]: https://www.gifpng.com/64x32/ffffff/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -727,9 +701,7 @@ For use as a text color on subdued primary actions. Not for use in text on navig
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-text-subdued-on-primary`         | ![][textSubduedOnPrimaryLight] | ![][textSubduedOnPrimaryDark]  |
-| `--p-text-subdued-on-primary-inverse` | ![][textSubduedOnPrimaryDark]  | ![][textSubduedOnPrimaryLight] |
-| `--p-text-subdued-on-primary-light`   | ![][textSubduedOnPrimaryLight] | ![][textSubduedOnPrimaryLight] |
-| `--p-text-subdued-on-primary-dark`    | ![][textSubduedOnPrimaryDark]  | ![][textSubduedOnPrimaryDark]  |
+
 
 [textSubduedOnPrimaryLight]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [textSubduedOnPrimaryDark]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -741,9 +713,7 @@ For use as a text color on disabled primary actions. Not for use in text on navi
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-text-disabled-on-primary`         | ![][textDisabledOnPrimaryLight] | ![][textDisabledOnPrimaryDark]  |
-| `--p-text-disabled-on-primary-inverse` | ![][textDisabledOnPrimaryDark]  | ![][textDisabledOnPrimaryLight] |
-| `--p-text-disabled-on-primary-light`   | ![][textDisabledOnPrimaryLight] | ![][textDisabledOnPrimaryLight] |
-| `--p-text-disabled-on-primary-dark`    | ![][textDisabledOnPrimaryDark]  | ![][textDisabledOnPrimaryDark]  |
+
 
 [textDisabledOnPrimaryLight]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [textDisabledOnPrimaryDark]: https://www.gifpng.com/64x32/33ffc5/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -801,9 +771,7 @@ While use directly in our components is discouraged, the base variant is unmodif
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-critical`         | ![][criticalLight] | ![][criticalDark]  |
-| `--p-critical-inverse` | ![][criticalDark]  | ![][criticalLight] |
-| `--p-critical-light`   | ![][criticalLight] | ![][criticalLight] |
-| `--p-critical-dark`    | ![][criticalDark]  | ![][criticalDark]  |
+
 
 [criticalLight]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalDark]: https://www.gifpng.com/64x32/d92b0d/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -815,9 +783,7 @@ For use as a border on critical components such as banners, and as an outline on
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-critical-border`         | ![][criticalBorderLight] | ![][criticalBorderDark]  |
-| `--p-critical-border-inverse` | ![][criticalBorderDark]  | ![][criticalBorderLight] |
-| `--p-critical-border-light`   | ![][criticalBorderLight] | ![][criticalBorderLight] |
-| `--p-critical-border-dark`    | ![][criticalBorderDark]  | ![][criticalBorderDark]  |
+
 
 [criticalBorderLight]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [criticalBorderDark]: https://www.gifpng.com/64x32/e12e0e/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -1043,9 +1009,7 @@ While use directly in our components is discouraged, the base variant is unmodif
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-warning`         | ![][warningLight] | ![][warningDark]  |
-| `--p-warning-inverse` | ![][warningDark]  | ![][warningLight] |
-| `--p-warning-light`   | ![][warningLight] | ![][warningLight] |
-| `--p-warning-dark`    | ![][warningDark]  | ![][warningDark]  |
+
 
 [warningLight]: https://www.gifpng.com/64x32/ffc252/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [warningDark]: https://www.gifpng.com/64x32/ffc252/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -1131,9 +1095,7 @@ While use directly in our components is discouraged, the base variant is unmodif
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-highlight`         | ![][highlightLight] | ![][highlightDark]  |
-| `--p-highlight-inverse` | ![][highlightDark]  | ![][highlightLight] |
-| `--p-highlight-light`   | ![][highlightLight] | ![][highlightLight] |
-| `--p-highlight-dark`    | ![][highlightDark]  | ![][highlightDark]  |
+
 
 [highlightLight]: https://www.gifpng.com/64x32/58d0c2/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [highlightDark]: https://www.gifpng.com/64x32/58d0c2/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -1145,9 +1107,7 @@ For use as a border on informational components such as banners.
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-highlight-border`         | ![][highlightBorderLight] | ![][highlightBorderDark]  |
-| `--p-highlight-border-inverse` | ![][highlightBorderDark]  | ![][highlightBorderLight] |
-| `--p-highlight-border-light`   | ![][highlightBorderLight] | ![][highlightBorderLight] |
-| `--p-highlight-border-dark`    | ![][highlightBorderDark]  | ![][highlightBorderDark]  |
+
 
 [highlightBorderLight]: https://www.gifpng.com/64x32/429e93/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [highlightBorderDark]: https://www.gifpng.com/64x32/429e93/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -1219,9 +1179,7 @@ While use directly in our components is discouraged, the base variant is unmodif
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-success`         | ![][successLight] | ![][successDark]  |
-| `--p-success-inverse` | ![][successDark]  | ![][successLight] |
-| `--p-success-light`   | ![][successLight] | ![][successLight] |
-| `--p-success-dark`    | ![][successDark]  | ![][successDark]  |
+
 
 [successLight]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [successDark]: https://www.gifpng.com/64x32/008060/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20
@@ -1233,9 +1191,7 @@ For use as a border on success components such as banners.
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | `--p-success-border`         | ![][successBorderLight] | ![][successBorderDark]  |
-| `--p-success-border-inverse` | ![][successBorderDark]  | ![][successBorderLight] |
-| `--p-success-border-light`   | ![][successBorderLight] | ![][successBorderLight] |
-| `--p-success-border-dark`    | ![][successBorderDark]  | ![][successBorderDark]  |
+
 
 [successBorderLight]: https://www.gifpng.com/64x32/008563/FFFFFF?border-width=8&border-type=rectangle&border-color=fafafa&text=%20
 [successBorderDark]: https://www.gifpng.com/64x32/008563/FFFFFF?border-width=8&border-type=rectangle&border-color=0c0d0e&text=%20

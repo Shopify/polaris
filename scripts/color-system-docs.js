@@ -52,7 +52,7 @@ const Template = {
 | CSS variable                | Light mode        | Dark mode         |
 | ----------------------------| ------------------| ------------------|
 | \`${cssify(name)}\`         | ![][${name}Light] | ![][${name}Dark]  |
-${additionalVariants()}
+${light === dark ? '' : additionalVariants()}
 
 [${name}Light]: https://www.gifpng.com/64x32/${light}/FFFFFF?border-width=8&border-type=rectangle&border-color=${toHex(
       lightColors.surfaceBackground,
