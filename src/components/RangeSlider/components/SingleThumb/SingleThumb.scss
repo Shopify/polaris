@@ -44,19 +44,22 @@ $range-thumb-shadow-focus: var(
   }
 
   &::after {
+    $borderRadius: var(--p-border-radius-base, border-radius());
+    $dashedTrackColor: var(--p-border-disabled-on-dark);
     content: '';
     position: absolute;
     height: $range-track-height;
     width: 100%;
     background-image: linear-gradient(
       to right,
-      var(--p-surface-inverse-foreground),
-      var(--p-surface-inverse-foreground) 50%,
+      $dashedTrackColor,
+      $dashedTrackColor 50%,
       transparent 50%,
       transparent 100%
     );
     background-size: $range-track-height $range-track-height;
-    border-radius: var(--p-border-radius-base, border-radius());
+    border-radius: $borderRadius;
+    border-right: $borderRadius $dashedTrackColor solid;
   }
 }
 
@@ -144,9 +147,9 @@ $range-thumb-shadow-focus: var(
     height: $range-thumb-size;
     border: border-width() solid var(--p-interactive, color('sky', 'lighter'));
     border-radius: 50%;
-    background: var(
-      --p-interactive,
-      linear-gradient(color('white'), color('sky', 'lighter'))
+    background: linear-gradient(
+      var(--p-interactive, color('white')),
+      var(--p-interactive, color('sky', 'lighter'))
     );
     box-shadow: $range-thumb-shadow;
     appearance: none;
@@ -157,9 +160,9 @@ $range-thumb-shadow-focus: var(
     @include rangeSliderThumbPosition($range-thumb-size);
 
     &:hover {
-      background: var(
-        --p-interactive,
-        linear-gradient(color('sky', 'lighter'), color('sky', 'light'))
+      background: linear-gradient(
+        var(--p-interactive, color('sky', 'lighter')),
+        var(--p-interactive, color('sky', 'light'))
       );
       box-shadow: $range-thumb-shadow-hover;
     }
@@ -197,9 +200,9 @@ $range-thumb-shadow-focus: var(
       background: var(--p-surface-background, color('white'));
 
       &:hover {
-        background: var(
-          --p-surface-background,
-          linear-gradient(color('sky', 'lighter'), color('sky', 'light'))
+        background: linear-gradient(
+          var(--p-surface-background, color('sky', 'lighter')),
+          var(--p-surface-background, color('sky', 'light'))
         );
       }
     }
