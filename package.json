@@ -61,7 +61,9 @@
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
     "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static",
-    "splash": "babel-node --extensions '.tsx','.ts' ./scripts/splash/index.tsx"
+    "splash": "babel-node --extensions '.tsx','.ts' ./scripts/splash/index.tsx",
+    "precolordocs": "yarn run build",
+    "colordocs": "node ./scripts/color-system-docs"
   },
   "stylelint": {
     "extends": [

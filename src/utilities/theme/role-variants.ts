@@ -7,7 +7,7 @@ export enum UNSTABLE_Color {
   OnSurface = '#1F2225',
   Interactive = '#0870D9',
   Neutral = '#EAEAEB',
-  Branded = '#008060',
+  Primary = '#008060',
   Critical = '#D82C0D',
   Warning = '#FFC453',
   Highlight = '#59D0C2',
@@ -274,100 +274,100 @@ export const roleVariants: RoleVariants = {
       dark: {lightness: 39},
     },
   ],
-  branded: [
+  primary: [
     {
-      name: 'branded',
+      name: 'primary',
       description:
         'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
       light: {},
       dark: {},
     },
     {
-      name: 'brandedAction',
+      name: 'primaryAction',
       description:
         'Used as the background color for primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.',
       light: {lightness: 47.3},
       dark: {lightness: 47.3},
     },
     {
-      name: 'brandedActionDisabled',
+      name: 'primaryActionDisabled',
       description:
         'Used as the background color for disabled primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.',
       light: {lightness: 32},
       dark: {lightness: 32},
     },
     {
-      name: 'brandedActionHovered',
+      name: 'primaryActionHovered',
       description:
         'Used as the background color for hovered primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.',
       light: {lightness: 42.3},
       dark: {lightness: 55},
     },
     {
-      name: 'brandedActionPressed',
+      name: 'primaryActionPressed',
       description:
         'Used as the background color for pressed primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.',
       light: {lightness: 37.3},
       dark: {lightness: 60},
     },
     {
-      name: 'iconOnBranded',
+      name: 'iconOnPrimary',
       description:
         'For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs.',
       light: {lightness: 98},
       dark: {lightness: 98},
     },
     {
-      name: 'iconSubduedOnBranded',
+      name: 'iconSubduedOnPrimary',
       description:
         'For use as a fill color for icons on subdued primary actions. Not for use in icons on navigation and tabs.',
       light: {lightness: 88},
       dark: {lightness: 88},
     },
     {
-      name: 'iconDisabledOnBranded',
+      name: 'iconDisabledOnPrimary',
       description:
         'For use as a fill color for icons on disabled primary actions. Not for use in icons on navigation and tabs.',
       light: {lightness: 78},
       dark: {lightness: 78},
     },
     {
-      name: 'textOnBranded',
+      name: 'textOnPrimary',
       description:
         'For use as a text color on primary actions. Not for use in text on navigation and tabs.',
       light: {lightness: 100},
       dark: {lightness: 100},
     },
     {
-      name: 'textSubduedOnBranded',
+      name: 'textSubduedOnPrimary',
       description:
         'For use as a text color on subdued primary actions. Not for use in text on navigation and tabs.',
       light: {lightness: 90},
       dark: {lightness: 90},
     },
     {
-      name: 'textDisabledOnBranded',
+      name: 'textDisabledOnPrimary',
       description:
         'For use as a text color on disabled primary actions. Not for use in text on navigation and tabs.',
       light: {lightness: 90},
       dark: {lightness: 90},
     },
     {
-      name: 'brandedSelected',
+      name: 'primarySelected',
       description:
         'Used as a surface color to indicate selected interactive states in navigation and tabs.',
       light: {lightness: 95, saturation: 30},
       dark: {lightness: 5, saturation: 30},
     },
     {
-      name: 'brandedSelectedHovered',
+      name: 'primarySelectedHovered',
       description:
         'Used as a surface color to indicate selected interactive states that are hovered in navigation and tabs.',
       light: {lightness: 81, saturation: 22},
       dark: {lightness: 19, saturation: 22},
     },
     {
-      name: 'brandedSelectedPressed',
+      name: 'primarySelectedPressed',
       description:
         'Used as a surface color to indicate selected interactive states that are pressed in navigation and tabs.',
       light: {lightness: 74, saturation: 22},
@@ -546,53 +546,78 @@ export const roleVariants: RoleVariants = {
     },
     {
       name: 'highlightBorder',
+      description:
+        'For use as a border on informational components such as banners.',
       light: {lightness: 60},
       dark: {lightness: 60},
     },
     {
       name: 'highlightIcon',
+      description:
+        'For use as an icon fill color on top of informational elements.',
       light: {lightness: 58},
       dark: {lightness: 42},
     },
     {
       name: 'highlightSurface',
+      description:
+        'For use as a surface color on information elements including badges.',
       light: {lightness: 84.5, saturation: 60},
       dark: {lightness: 50, saturation: 100},
     },
     {
       name: 'highlightSurfaceSubdued',
+      description:
+        'For use as a surface color on information elements including banners.',
       light: {lightness: 98.6},
       dark: {lightness: 20},
     },
     {
-      name: 'highlightText',
+      name: 'highlightext',
+      description:
+        'For use as a text color in inert informational elements. Not for use as a text color on banners and badges.',
       light: {lightness: 98},
       dark: {lightness: 2},
     },
   ],
   success: [
     {
+      name: 'success',
+      description:
+        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
+      light: {},
+      dark: {},
+    },
+    {
       name: 'successBorder',
+      description: 'For use as a border on success components such as banners.',
       light: {lightness: 50},
       dark: {lightness: 50},
     },
     {
       name: 'successIcon',
+      description: 'For use as an icon fill color on top of success elements.',
       light: {lightness: 25},
       dark: {lightness: 35},
     },
     {
       name: 'successSurface',
+      description:
+        'For use as a surface color on success elements including badges.',
       light: {lightness: 84.5, saturation: 60},
       dark: {lightness: 40},
     },
     {
       name: 'successSurfaceSubdued',
+      description:
+        'For use as a surface color on information elements including banners.',
       light: {lightness: 99, saturation: 60},
       dark: {lightness: 20, saturation: 60},
     },
     {
       name: 'successText',
+      description:
+        'For use as a text color in inert success elements. Not for use as a text color on banners and badges.',
       light: {lightness: 40},
       dark: {lightness: 60},
     },

@@ -11,17 +11,6 @@ export interface ThemeLogo {
   width?: number;
 }
 
-export type Role =
-  | 'surface'
-  | 'onSurface'
-  | 'interactive'
-  | 'neutral'
-  | 'branded'
-  | 'critical'
-  | 'warning'
-  | 'highlight'
-  | 'success';
-
 export interface RoleColors {
   /** The surface role is used for the backgrounds of the UI. In light mode, surface colors are nearly white, while in dark mode, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts. */
   surface: string;
@@ -31,8 +20,8 @@ export interface RoleColors {
   interactive: string;
   /** A neutral interactive color role, for use in secondary and tertiary buttons as a background color, as well as in form elements as a background color. */
   neutral: string;
-  /** A branded interactive color, for use in primary buttons as a background color. Also used in navigation and tabs for icons, and for a surface color when in a selected state. */
-  branded: string;
+  /** A primary interactive color, for use in primary buttons as a background color. Also used in navigation and tabs for icons, and for a surface color when in a selected state. */
+  primary: string;
   /** Used to communicate destructive outcomes on interactive elements, for communicating errors, and to indicate a critical event in inert elements that requires immediate merchant action. */
   critical: string;
   /** For use as an indicator that action should be taken by merchants in components including badges, banners, and exception lists. */
@@ -42,6 +31,8 @@ export interface RoleColors {
   /** Used to indicate the result of a successful action taken by a merchant, to indicate a positive event, or to illustrate growth. */
   success: string;
 }
+
+export type Role = keyof RoleColors;
 
 // The value that is passed into the ThemeProvider
 export interface ThemeConfig {
@@ -77,6 +68,4 @@ export interface Variant {
   dark: HslaSetting;
 }
 
-export type RoleVariants = {
-  [r in Role]: Variant[];
-};
+export type RoleVariants = Record<Role, Variant[]>;

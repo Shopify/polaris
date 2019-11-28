@@ -76,7 +76,7 @@ export function buildColors(
     onSurface: UNSTABLE_Color.OnSurface,
     interactive: UNSTABLE_Color.Interactive,
     neutral: UNSTABLE_Color.Neutral,
-    branded: UNSTABLE_Color.Branded,
+    primary: UNSTABLE_Color.Primary,
     critical: UNSTABLE_Color.Critical,
     warning: UNSTABLE_Color.Warning,
     highlight: UNSTABLE_Color.Highlight,
@@ -176,7 +176,7 @@ function customPropertyTransformer(
   );
 }
 
-function toCssCustomPropertySyntax(camelCase: string) {
+export function toCssCustomPropertySyntax(camelCase: string) {
   return `--p-${camelCase.replace(/([A-Z0-9])/g, '-$1').toLowerCase()}`;
 }
 
