@@ -10,7 +10,7 @@ export enum UNSTABLE_Color {
   Primary = '#008060',
   Critical = '#D82C0D',
   Warning = '#FFC453',
-  Highlight = '#5bcdda',
+  Highlight = '#5BCDDA',
   Success = '#008060',
   Decorative = '#FDC7CE',
 }
