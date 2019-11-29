@@ -387,4 +387,3 @@ describe('<Modal>', () => {
 });
 
 function noop() {}
-
