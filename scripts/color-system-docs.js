@@ -57,7 +57,7 @@ const Template = {
     const size = `${Width + Padding * 2}x${Height + Padding * 2}`;
     const additionalVariants = `\`-inverse\`, \`-light\`, and \`-dark\` variants available.`;
 
-    return `|\`${cssify(name)}\`|${description} ${
+    return `|<pre>${cssify(name)}</pre>|${description} ${
       light === dark ? '' : additionalVariants
     }|![](https://www.gifpng.com/${size}/${light}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
       lightColors.surfaceBackground,
