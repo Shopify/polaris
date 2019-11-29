@@ -1,15 +1,30 @@
 import React from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
+import * as focusUtils from '@shopify/javascript-utilities/focus';
 import {
   findByTestID,
   mountWithAppProvider,
   trigger,
 } from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
 import {Footer, Dialog} from '../components';
 import {Modal} from '../Modal';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
+
+jest.mock('@material-ui/react-transition-group', () => {
+  function ChildGroup({children}: {children: React.ReactNode}) {
+    return <div>{children}</div>;
+  }
+
+  return {
+    ...require.requireActual('@material-ui/react-transition-group'),
+    TransitionGroup: ChildGroup,
+    TransitionChild: ChildGroup,
+    CSSTransition: ChildGroup,
+  };
+});
 
 describe('<Modal>', () => {
   let scrollSpy: jest.SpyInstance;
@@ -329,6 +344,17 @@ describe('<Modal>', () => {
   });
 
   describe('activator', () => {
+    let rafSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      rafSpy = jest.spyOn(window, 'requestAnimationFrame');
+      rafSpy.mockImplementation((callback) => callback());
+    });
+
+    afterEach(() => {
+      rafSpy.mockRestore();
+    });
+
     it('renders the element that is passed in', () => {
       const modal = mountWithAppProvider(
         <Modal onClose={noop} open={false} activator={<Button />} />,
@@ -346,17 +372,19 @@ describe('<Modal>', () => {
     });
 
     it('focuses the activator when the modal is closed', () => {
-      const modal = mountWithAppProvider(
+      const focusSpy = jest.spyOn(focusUtils, 'focusFirstFocusableNode');
+
+      const modal = mountWithApp(
         <Modal onClose={noop} open activator={<Button />} />,
       );
 
-      modal.setProps({open: false});
+      modal.find(Dialog)!.trigger('onExited');
 
-      requestAnimationFrame(() => {
-        expect(document.activeElement).toBe(modal.find(Button).getDOMNode());
-      });
+      expect(document.activeElement).toBe(modal.find(Button)!.domNode);
+      expect(focusSpy).toHaveBeenCalledTimes(2);
     });
   });
 });
 
 function noop() {}
+
