@@ -4,6 +4,7 @@
 
 ### Enhancements
 
+- Added `cursor: pointer` prop to `Choice` ([#2491](https://github.com/Shopify/polaris-react/pull/2491))
 - Added `external` prop to `ResourceList` ([#2408](https://github.com/Shopify/polaris-react/pull/2408))
 - Added `onMouseEnter` and `onTouchStart` props to `Button` ([#2409](https://github.com/Shopify/polaris-react/pull/2409))
 - Added `ariaHaspopup` prop to `Popover` ([#2248](https://github.com/Shopify/polaris-react/pull/2248))
