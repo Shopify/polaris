@@ -158,6 +158,7 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 
 .primary {
   --p-button-color: var(--p-primary-action);
+  --p-button-text: var(--p-text-on-primary);
   --p-button-color-hover: var(--p-primary-action-hovered);
   --p-button-color-active: var(--p-primary-action-pressed);
   @include button-filled(color('indigo'), color('indigo', 'dark'));
@@ -183,6 +184,7 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 
 .destructive {
   --p-button-color: var(--p-critical-action);
+  --p-button-text: var(--p-text-on-critical);
   --p-button-color-hover: var(--p-critical-action-hovered);
   --p-button-color-active: var(--p-critical-action-pressed);
   @include button-filled(color('red'), color('red', 'dark'));

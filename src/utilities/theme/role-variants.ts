@@ -319,39 +319,11 @@ export const roleVariants: RoleVariants = {
       dark: {lightness: 98},
     },
     {
-      name: 'iconSubduedOnPrimary',
-      description:
-        'For use as a fill color for icons on subdued primary actions. Not for use in icons on navigation and tabs.',
-      light: {lightness: 88},
-      dark: {lightness: 88},
-    },
-    {
-      name: 'iconDisabledOnPrimary',
-      description:
-        'For use as a fill color for icons on disabled primary actions. Not for use in icons on navigation and tabs.',
-      light: {lightness: 78},
-      dark: {lightness: 78},
-    },
-    {
       name: 'textOnPrimary',
       description:
         'For use as a text color on primary actions. Not for use in text on navigation and tabs.',
       light: {lightness: 100},
       dark: {lightness: 100},
-    },
-    {
-      name: 'textSubduedOnPrimary',
-      description:
-        'For use as a text color on subdued primary actions. Not for use in text on navigation and tabs.',
-      light: {lightness: 90},
-      dark: {lightness: 90},
-    },
-    {
-      name: 'textDisabledOnPrimary',
-      description:
-        'For use as a text color on disabled primary actions. Not for use in text on navigation and tabs.',
-      light: {lightness: 90},
-      dark: {lightness: 90},
     },
     {
       name: 'primarySelected',
@@ -465,6 +437,18 @@ export const roleVariants: RoleVariants = {
         'For use as the background color for pressed destructive buttons, and as the background color for error toast messages.',
       light: {lightness: 37.5},
       dark: {lightness: 55},
+    },
+    {
+      name: 'iconOnCritical',
+      description: 'For use as a fill color for icons on critical actions.',
+      light: {lightness: 98},
+      dark: {lightness: 98},
+    },
+    {
+      name: 'textOnCritical',
+      description: 'For use as a text color on critical actions.',
+      light: {lightness: 100},
+      dark: {lightness: 100},
     },
     {
       name: 'criticalLink',
