@@ -27,7 +27,7 @@ module PreCommit
   def generate_color_docs
     changed_files.each do |path|
       if COLOR_DOC_SOURCE_FILE_PATHS.include? path
-        puts "Color system changes detected. Generating new docs..."
+        puts "Color system changes detected. Generating new docs (may take a couple minutes)..."
         %x(yarn run colordocs)
         %x(git add "documentation/Color system.md")
       end
