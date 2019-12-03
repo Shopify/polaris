@@ -9,19 +9,17 @@ $icon-size: rem(16px);
   align-items: center;
   min-height: $height;
   padding-left: spacing(tight);
-  background-color: color('sky');
+  background-color: var(--p-neutral-action, color('sky'));
   border-radius: border-radius();
-  color: color('ink');
+  color: var(--p-text-on-surface, color('ink'));
 
   &.disabled {
-    @include recolor-icon(color('ink', 'lightest'));
-    transition: none;
-    background: linear-gradient(
-      to bottom,
-      color('sky', 'light'),
-      color('sky', 'light')
+    @include recolor-icon(
+      var(--p-icon-disabled-on-surface, color('ink', 'lightest'))
     );
-    color: color('ink', 'lightest');
+    transition: none;
+    background: var(--p-neutral-action-disabled, color('sky', 'light'));
+    color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
   }
 
   .TagText {
@@ -32,7 +30,9 @@ $icon-size: rem(16px);
 }
 
 .Button {
-  @include recolor-icon(color('ink', 'lighter'));
+  @include recolor-icon(
+    var(--p-icon-subdued-on-surface, color('ink', 'lightest'))
+  );
   @include unstyled-button;
   display: block;
   height: $height;
@@ -43,17 +43,22 @@ $icon-size: rem(16px);
   &:hover,
   &:focus,
   &:active {
-    @include recolor-icon(color('ink'));
-    background: color('sky', 'dark');
+    @include recolor-icon(var(--p-icon-on-surface, color('ink')));
+    background: var(--p-neutral-action-hovered, color('sky', 'dark'));
   }
 
   &:disabled {
-    @include recolor-icon(color('ink', 'lightest'));
+    @include recolor-icon(
+      var(--p-icon-disabled-on-surface, color('ink', 'lightest'))
+    );
     cursor: default;
     pointer-events: none;
   }
 
   &:active {
-    background: rgba(color('ink', 'lightest'), 0.6);
+    background: var(
+      --p-neutral-action-hovered,
+      rgba(color('ink', 'lightest'), 0.6)
+    );
   }
 }
