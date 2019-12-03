@@ -38,7 +38,7 @@
 - Updated the `PageActions` example ([#2471](https://github.com/Shopify/polaris-react/pull/2471))
 - Fixed spacing of the `Filters` data table example ([#2477](https://github.com/Shopify/polaris-react/pull/2477))
 - Fixed duplicate and unclear prop descriptions of `EmptyState` ([#2477](https://github.com/Shopify/polaris-react/pull/2477))
-- Added an example for a light Tooltip ((#2434)[https://github.com/Shopify/polaris-react/pull/2434])
+- Added an example for a light `Tooltip` ([#2434](https://github.com/Shopify/polaris-react/pull/2434))
 
 ### Development workflow
 
