@@ -41,6 +41,8 @@ export interface PopoverProps {
   fullWidth?: boolean;
   /** Allow popover to stretch to fit content vertically */
   fullHeight?: boolean;
+  /** Allow popover content to determine the overlay width/height */
+  fluidContent?: boolean;
   /** Remains in a fixed position */
   fixed?: boolean;
   /** Used to illustrate the type of popover element */
