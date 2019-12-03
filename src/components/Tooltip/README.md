@@ -74,6 +74,18 @@ Use only when necessary to provide an explanation for an interface element.
 </div>
 ```
 
+### Light tooltip
+
+A light tooltip draws less attention than the default tooltip. Use only when necessary to provide an explanation for an interface element with less emphasis.
+
+```jsx
+<div style={{padding: '75px 0'}}>
+  <Tooltip light active content="This order has shipping labels.">
+    <Link>Order #1001</Link>
+  </Tooltip>
+</div>
+```
+
 ---
 
 ## Related components
