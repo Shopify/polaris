@@ -4,13 +4,13 @@ import {RoleVariants} from './types';
 export enum UNSTABLE_Color {
   Surface = '#FAFAFA',
   DarkSurface = '#111213',
-  OnSurface = '#1F2225',
-  Interactive = '#0870D9',
-  Neutral = '#EAEAEB',
+  OnSurface = '#111213',
+  Interactive = '#2E72D2',
+  Neutral = '#111213',
   Primary = '#008060',
   Critical = '#D82C0D',
   Warning = '#FFC453',
-  Highlight = '#59D0C2',
+  Highlight = '#5BCDDA',
   Success = '#008060',
   Decorative = '#FDC7CE',
 }
@@ -28,7 +28,7 @@ export const roleVariants: RoleVariants = {
       name: 'surfaceBackground',
       description:
         'For use in the background of our UIs as a background color, in components such as Page and Frame backgrounds.',
-      light: {lightness: 97.9},
+      light: {lightness: 98.3},
       dark: {lightness: 3.3},
     },
     {
@@ -36,20 +36,20 @@ export const roleVariants: RoleVariants = {
       description:
         'For use in the foreground of our UIs as a background color, in components such as Card, Modal, and Popover.',
       light: {lightness: 100},
-      dark: {lightness: 8.8},
+      dark: {lightness: 12.7},
     },
     {
       name: 'surfaceForegroundSubdued',
       description:
         'For use in the foreground of our UIs as a subdued background color, in components such as Card, Modal, and Popover.',
-      light: {lightness: 95},
+      light: {lightness: 98.3},
       dark: {lightness: 10},
     },
     {
       name: 'surfaceHovered',
       description:
         'For use as a surface color on interactive elements such as resource list items and action list items when in a hovered state.',
-      light: {lightness: 95},
+      light: {lightness: 96},
       dark: {lightness: 20},
     },
     {
@@ -136,43 +136,43 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a subdued border (border or interactive outline).',
       light: {lightness: 85},
-      dark: {lightness: 15},
+      dark: {lightness: 32},
     },
     {
       name: 'iconOnSurface',
       description: 'For use as the fill color of neutral icons.',
-      light: {lightness: 29.9},
-      dark: {lightness: 98},
+      light: {lightness: 40.1},
+      dark: {lightness: 70.1},
     },
     {
       name: 'iconDisabledOnSurface',
       description: 'For use as the fill color of disabled neutral icons.',
-      light: {lightness: 68},
-      dark: {lightness: 75},
+      light: {lightness: 76.9},
+      dark: {lightness: 36.8},
     },
     {
       name: 'iconSubduedOnSurface',
       description: 'For use as the fill color of subdued neutral icons.',
       light: {lightness: 59.8},
-      dark: {lightness: 62},
+      dark: {lightness: 52.1},
     },
     {
       name: 'textOnSurface',
       description: 'For use as a neutral text color.',
-      light: {lightness: 13},
-      dark: {lightness: 100},
+      light: {lightness: 13.1},
+      dark: {lightness: 90.8},
     },
     {
       name: 'textDisabledOnSurface',
       description: 'For use as a disabled neutral text color.',
       light: {lightness: 61.3},
-      dark: {lightness: 50},
+      dark: {lightness: 48.2},
     },
     {
       name: 'textSubduedOnSurface',
       description: 'For use as a subdued neutral text color.',
-      light: {lightness: 38},
-      dark: {lightness: 62},
+      light: {lightness: 47.4},
+      dark: {lightness: 65.1},
     },
   ],
   interactive: [
@@ -186,8 +186,8 @@ export const roleVariants: RoleVariants = {
     {
       name: 'interactiveAction',
       description: 'Used for links and plain buttons.',
-      light: {lightness: 44},
-      dark: {lightness: 65},
+      light: {lightness: 48.6},
+      dark: {lightness: 65, saturation: 100, hue: 247.6},
     },
     {
       name: 'interactiveActionDisabled',
@@ -199,7 +199,7 @@ export const roleVariants: RoleVariants = {
       name: 'interactiveActionHovered',
       description: 'Used for hovered links and plain buttons.',
       light: {lightness: 37},
-      dark: {lightness: 70},
+      dark: {lightness: 70, saturation: 100, hue: 247.6},
     },
     {
       name: 'interactiveActionSubdued',
@@ -211,7 +211,7 @@ export const roleVariants: RoleVariants = {
       name: 'interactiveActionPressed',
       description: 'Used for pressed links and plain buttons.',
       light: {lightness: 31},
-      dark: {lightness: 75},
+      dark: {lightness: 75, saturation: 100, hue: 247.6},
     },
     {
       name: 'interactiveFocus',
@@ -266,13 +266,13 @@ export const roleVariants: RoleVariants = {
       name: 'neutralActionHovered',
       description: 'Used as a hovered state for secondary buttons',
       light: {lightness: 90},
-      dark: {lightness: 25},
+      dark: {lightness: 37},
     },
     {
       name: 'neutralActionPressed',
       description: 'Used as a pressed state for secondary buttons',
       light: {lightness: 87},
-      dark: {lightness: 39},
+      dark: {lightness: 42},
     },
   ],
   primary: [
@@ -319,39 +319,11 @@ export const roleVariants: RoleVariants = {
       dark: {lightness: 98},
     },
     {
-      name: 'iconSubduedOnPrimary',
-      description:
-        'For use as a fill color for icons on subdued primary actions. Not for use in icons on navigation and tabs.',
-      light: {lightness: 88},
-      dark: {lightness: 88},
-    },
-    {
-      name: 'iconDisabledOnPrimary',
-      description:
-        'For use as a fill color for icons on disabled primary actions. Not for use in icons on navigation and tabs.',
-      light: {lightness: 78},
-      dark: {lightness: 78},
-    },
-    {
       name: 'textOnPrimary',
       description:
         'For use as a text color on primary actions. Not for use in text on navigation and tabs.',
       light: {lightness: 100},
       dark: {lightness: 100},
-    },
-    {
-      name: 'textSubduedOnPrimary',
-      description:
-        'For use as a text color on subdued primary actions. Not for use in text on navigation and tabs.',
-      light: {lightness: 90},
-      dark: {lightness: 90},
-    },
-    {
-      name: 'textDisabledOnPrimary',
-      description:
-        'For use as a text color on disabled primary actions. Not for use in text on navigation and tabs.',
-      light: {lightness: 90},
-      dark: {lightness: 90},
     },
     {
       name: 'primarySelected',
@@ -421,7 +393,7 @@ export const roleVariants: RoleVariants = {
       name: 'criticalSurfaceSubduedHovered',
       description:
         'For use as a surface color on critical interactive elements including action list items in a hovered state.',
-      light: {lightness: 93},
+      light: {lightness: 96},
       dark: {lightness: 15, saturation: 60},
     },
     {
@@ -435,8 +407,8 @@ export const roleVariants: RoleVariants = {
       name: 'criticalText',
       description:
         'For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.',
-      light: {lightness: 40},
-      dark: {lightness: 60},
+      light: {lightness: 47.3},
+      dark: {lightness: 65, saturation: 70},
     },
     {
       name: 'criticalAction',
@@ -464,7 +436,19 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as the background color for pressed destructive buttons, and as the background color for error toast messages.',
       light: {lightness: 37.5},
-      dark: {lightness: 60},
+      dark: {lightness: 55},
+    },
+    {
+      name: 'iconOnCritical',
+      description: 'For use as a fill color for icons on critical actions.',
+      light: {lightness: 98},
+      dark: {lightness: 98},
+    },
+    {
+      name: 'textOnCritical',
+      description: 'For use as a text color on critical actions.',
+      light: {lightness: 100},
+      dark: {lightness: 100},
     },
     {
       name: 'criticalLink',
@@ -526,15 +510,15 @@ export const roleVariants: RoleVariants = {
       name: 'warningSurfaceSubdued',
       description:
         'For use as a subdued surface color on warning elements including banners.',
-      light: {lightness: 99.1},
-      dark: {lightness: 15},
+      light: {lightness: 96},
+      dark: {lightness: 26, saturation: 71},
     },
     {
       name: 'warningText',
       description:
         'For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.',
-      light: {lightness: 30},
-      dark: {lightness: 70},
+      light: {lightness: 47.4},
+      dark: {lightness: 64.9},
     },
   ],
   highlight: [
@@ -564,7 +548,7 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a surface color on information elements including badges.',
       light: {lightness: 84.5, saturation: 60},
-      dark: {lightness: 50, saturation: 100},
+      dark: {lightness: 40, saturation: 100},
     },
     {
       name: 'highlightSurfaceSubdued',
@@ -606,7 +590,7 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a surface color on success elements including badges.',
       light: {lightness: 84.5, saturation: 60},
-      dark: {lightness: 40},
+      dark: {lightness: 35},
     },
     {
       name: 'successSurfaceSubdued',
@@ -619,8 +603,8 @@ export const roleVariants: RoleVariants = {
       name: 'successText',
       description:
         'For use as a text color in inert success elements. Not for use as a text color on banners and badges.',
-      light: {lightness: 40},
-      dark: {lightness: 60},
+      light: {lightness: 47.3},
+      dark: {lightness: 65, saturation: 70},
     },
   ],
   decorative: [
