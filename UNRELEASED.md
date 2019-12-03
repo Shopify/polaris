@@ -30,6 +30,7 @@
 - Fixed `merge` mutating its arguments ([#2317](https://github.com/Shopify/polaris-react/pull/2317))
 - Updated `Card` footer actions to be right aligned by default again ([#2407](https://github.com/Shopify/polaris-react/pull/2407))
 - Fixed the `EmptyState` styles conditional on the `imageContained` prop not being applied ([#2477](https://github.com/Shopify/polaris-react/pull/2477))
+- Fixed `TrapFocus` to keep focus within the container when tabbing past the last element ([#2397](https://github.com/Shopify/polaris-react/pull/2397))
 
 ### Documentation
 
