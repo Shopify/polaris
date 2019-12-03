@@ -136,7 +136,6 @@ export {
   Navigation,
   NavigationProps,
   NavigationItemProps,
-  NavigationMessageProps,
   SubNavigationItem,
   isNavigationItemActive,
 } from './Navigation';

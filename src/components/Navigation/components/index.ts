@@ -6,5 +6,3 @@ export {
   SubNavigationItem,
   isNavigationItemActive,
 } from './Item';
-
-export {Message, MessageProps} from './Message';
