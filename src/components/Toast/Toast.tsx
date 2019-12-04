@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 
 import {DEFAULT_TOAST_DURATION} from '../Frame';
-import {ToastProps, useFrame} from '../../utilities/frame';
+import {ToastProps as BaseToastProps, useFrame} from '../../utilities/frame';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
 import {useAppBridge} from '../../utilities/app-bridge';
@@ -11,7 +11,7 @@ import {useAppBridge} from '../../utilities/app-bridge';
 // a component's props to be found in the Props interface. This silly workaround
 // ensures that the Props Explorer table is generated correctly, instead of
 // crashing if we write `ComposedProps = ToastProps & WithAppProviderProps`
-export interface ToastProps extends ToastProps {}
+export interface ToastProps extends BaseToastProps {}
 
 export const Toast = React.memo(function Toast(props: ToastProps) {
   const id = useUniqueId('Toast');
