@@ -31,7 +31,7 @@ $icon-size: rem(16px);
 
 .Button {
   @include recolor-icon(
-    var(--p-icon-subdued-on-surface, color('ink', 'lightest'))
+    var(--p-icon-subdued-on-surface, color('ink', 'lighter'))
   );
   @include unstyled-button;
   display: block;
