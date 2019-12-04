@@ -35,6 +35,7 @@
     "type-check": "sewing-kit type-check",
     "test": "sewing-kit test",
     "test:coverage": "yarn test --coverage",
+    "open:coverage": "open build/coverage/index.html",
     "test:ci": "yarn test --coverage",
     "check": "npm-run-all lint type-check test",
     "check:ci": "npm-run-all lint type-check test:ci",
