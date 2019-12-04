@@ -44,6 +44,9 @@
 
 ### Development workflow
 
+- Updated splash Github Action to the latest Docker beta version ([#2474](https://github.com/Shopify/polaris-react/pull/2474))
+- Updated local splash script to use npm package @shopify/splash ([#2474](https://github.com/Shopify/polaris-react/pull/2474))
+
 ### Dependency upgrades
 
 - Upgraded to `@shopify/react-testing`v1.8.0` ([#2465](https://github.com/Shopify/polaris-react/pull/2465))
