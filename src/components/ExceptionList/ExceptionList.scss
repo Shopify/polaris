@@ -67,10 +67,10 @@
   }
 
   .statusWarning & {
-    color: var(--p-warning, color('yellow', 'dark'));
+    color: var(--p-warning-text, color('yellow', 'dark'));
   }
 
   .statusCritical & {
-    color: var(--p-critical, color('red', 'dark'));
+    color: var(--p-critical-text, color('red', 'dark'));
   }
 }
