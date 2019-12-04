@@ -159,6 +159,19 @@ describe('<Popover />', () => {
     expect(popoverOverlay.prop('fullWidth')).toBe(true);
   });
 
+  it('passes fluidContent to PopoverOverlay', () => {
+    const popover = mountWithAppProvider(
+      <Popover
+        active
+        fluidContent
+        activator={<div>Activator</div>}
+        onClose={spy}
+      />,
+    );
+    const popoverOverlay = findByTestID(popover, 'popoverOverlay');
+    expect(popoverOverlay.prop('fluidContent')).toBe(true);
+  });
+
   it('calls onClose when you click outside the Popover', () => {
     mountWithAppProvider(
       <Popover
