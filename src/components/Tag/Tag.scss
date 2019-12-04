@@ -44,7 +44,18 @@ $icon-size: rem(16px);
   &:focus,
   &:active {
     @include recolor-icon(var(--p-icon-on-surface, color('ink')));
+  }
+
+  &:hover {
     background: var(--p-neutral-action-hovered, color('sky', 'dark'));
+  }
+
+  &:focus:not(.globalTheming) {
+    background: color('sky', 'dark');
+  }
+
+  &:focus.globalTheming {
+    @include focus-ring;
   }
 
   &:disabled {
