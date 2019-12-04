@@ -1,6 +1,5 @@
 import React, {useRef, useEffect} from 'react';
 import {CheckboxHandles} from '../../../../types';
-import {useFeatures} from '../../../../utilities/features';
 import {classNames} from '../../../../utilities/css';
 import {Checkbox} from '../../../Checkbox';
 import {
@@ -34,7 +33,6 @@ export function CheckableButton({
   smallScreen,
 }: CheckableButtonProps) {
   const checkBoxRef = useRef<CheckboxHandles>(null);
-  const {unstableGlobalTheming = false} = useFeatures();
 
   const {registerCheckableButtons} = React.useContext(ResourceListContext);
 
@@ -53,14 +51,9 @@ export function CheckableButton({
   }, [currentKey, registerCheckableButtons]);
 
   const className = plain
-    ? classNames(
-        styles.CheckableButton,
-        styles['CheckableButton-plain'],
-        unstableGlobalTheming && styles.globalTheming,
-      )
+    ? classNames(styles.CheckableButton, styles['CheckableButton-plain'])
     : classNames(
         styles.CheckableButton,
-        unstableGlobalTheming && styles.globalTheming,
         selectMode && styles['CheckableButton-selectMode'],
         selected && styles['CheckableButton-selected'],
         measuring && styles['CheckableButton-measuring'],

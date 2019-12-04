@@ -961,7 +961,7 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          trigger(resourceList.find(Button).first(), 'onClick');
+          trigger(resourceList.find(Button), 'onClick');
 
           const selectAllCheckableButton = bulkActionsCheckableButton(
             resourceList,
@@ -1193,7 +1193,7 @@ function setSmallScreen() {
   Object.defineProperty(window, 'innerWidth', {
     configurable: true,
     writable: true,
-    value: 457,
+    value: 458,
   });
 }
 
