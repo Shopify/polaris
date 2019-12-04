@@ -20,7 +20,7 @@
 .ProgressBar {
   overflow: hidden;
   width: 100%;
-  background-color: var(--p-neutral, color('sky'));
+  background-color: var(--p-secondary-action, color('sky'));
   border-radius: border-radius();
 
   @media screen and (-ms-high-contrast: active) {
@@ -44,7 +44,7 @@
   height: inherit;
   width: 0;
   will-change: width;
-  background-color: var(--p-highlight, color('teal'));
+  background-color: var(--p-highlight-border, color('teal'));
   animation: fillup duration(slowest) easing();
   transition: width duration(slowest) easing();
 
