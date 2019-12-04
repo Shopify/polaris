@@ -132,7 +132,7 @@
     },
     "ResourceList": {
       "sortingLabel": "Sorteer op",
-      "defaultItemSingular": "item",
+      "defaultItemSingular": "artikel",
       "defaultItemPlural": "artikelen",
       "showing": "Weergave {itemsCount} {resource}",
       "loading": "{resource} aan het laden",
