@@ -263,7 +263,7 @@ Use for plain or monochrome buttons that could have a long length and should be 
 
 Buttons are sometimes used as a toggle for other parts of the user interface.
 
-````jsx
+```jsx
 function PressedButton() {
   const [isFirstButtonActive, setIsFirstButtonActive] = useState(true);
 
@@ -290,11 +290,11 @@ function PressedButton() {
 }
 ```
 
-### Button with disclosure
+### Plain disclosure button
 
 <!-- example-for: web -->
 
-Use to denote something that can be progressively disclosed to the user on click.
+Use to indicate that more content can be disclosed on click, like text in a collapsible.
 
 ```jsx
 function DisclosureButtion() {
@@ -330,7 +330,7 @@ Use when there is only one primary action but other related actions can be taken
 >
   Save
 </Button>
-````
+```
 
 ### Disabled state
 
