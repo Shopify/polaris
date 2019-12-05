@@ -235,13 +235,9 @@ describe('<ThemeProvider />', () => {
       );
     });
 
-    it('inherits isLight from parent <ThemeProvider>', () => {
+    it('inherits mode from parent <ThemeProvider>', () => {
       const themeProvider = mountWithAppProvider(
-        <ThemeProvider
-          theme={{
-            UNSTABLE_colors: {surface: '#000000'},
-          }}
-        >
+        <ThemeProvider theme={{mode: 'dark'}}>
           <ThemeProvider
             theme={{
               UNSTABLE_colors: {critical: '#FFFEEE'},
@@ -270,16 +266,13 @@ describe('<ThemeProvider />', () => {
       );
     });
 
-    it('overrides isLight from parent <ThemeProvider> when provided a surface value', () => {
+    it('overrides mode from parent <ThemeProvider> when provided a mode', () => {
       const themeProvider = mountWithAppProvider(
-        <ThemeProvider
-          theme={{
-            UNSTABLE_colors: {surface: '#000000'},
-          }}
-        >
+        <ThemeProvider theme={{mode: 'dark'}}>
           <ThemeProvider
             theme={{
-              UNSTABLE_colors: {surface: '#FFFFFF', critical: '#FFFEEE'},
+              UNSTABLE_colors: {critical: '#FFFEEE'},
+              mode: 'light',
             }}
           >
             <p>Hello</p>

@@ -5,6 +5,9 @@ import {
   buildThemeContext,
   buildCustomProperties,
   UNSTABLE_Color,
+  Tokens,
+  customPropertyTransformer,
+  Mode,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
 
@@ -19,10 +22,13 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
-  const isNested = Boolean(useContext(ThemeContext));
-  const {UNSTABLE_colors, ...rest} = themeConfig;
+  const rawContext = useContext(ThemeContext);
+  const {mode: parentMode} = rawContext || {};
+  const isNested = Boolean(rawContext);
+  const {UNSTABLE_colors, mode, ...rest} = themeConfig;
   const processedThemeConfig: ThemeConfig = {
     ...rest,
+    ...(isNested === true && {mode: mode !== undefined ? mode : parentMode}),
     UNSTABLE_colors: {
       ...(isNested === false && {
         surface: UNSTABLE_Color.Surface,
@@ -40,10 +46,14 @@ export function ThemeProvider({
   };
   const {unstableGlobalTheming = false} = useFeatures();
 
-  const customProperties = useMemo(
-    () => buildCustomProperties(processedThemeConfig, unstableGlobalTheming),
-    [processedThemeConfig, unstableGlobalTheming],
-  );
+  const customProperties = useMemo(() => {
+    return {
+      ...buildCustomProperties(processedThemeConfig, unstableGlobalTheming),
+      ...(unstableGlobalTheming === true &&
+        isNested === false &&
+        customPropertyTransformer(Tokens)),
+    };
+  }, [isNested, processedThemeConfig, unstableGlobalTheming]);
 
   const theme = useMemo(
     () =>
@@ -54,10 +64,10 @@ export function ThemeProvider({
     [customProperties, processedThemeConfig, unstableGlobalTheming],
   );
 
-  // We want these values to be `null` instead of `undefined` when not set.
+  // We want these values to be empty string instead of `undefined` when not set.
   // Otherwise, setting a style property to `undefined` does not remove it from the DOM.
-  const backgroundColor = customProperties['--p-surface-background'] || null;
-  const color = customProperties['--p-text-on-surface'] || null;
+  const backgroundColor = customProperties['--p-surface-background'] || '';
+  const color = customProperties['--p-text-on-surface'] || '';
 
   useEffect(() => {
     if (isNested === false) {
