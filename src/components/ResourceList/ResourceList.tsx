@@ -51,8 +51,6 @@ export interface ResourceListProps {
   /** Item data; each item is passed to renderItem */
   items: Items;
   filterControl?: React.ReactNode;
-  /** The markup to render when no resources exist yet */
-  emptyState?: React.ReactNode;
   /** Name of the resource, such as customers or products */
   resourceName?: {
     singular: string;
@@ -380,9 +378,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       promotedBulkActions,
       bulkActions,
       filterControl,
-      emptyState,
       loading,
-      hasMoreItems,
       showHeader = false,
       sortOptions,
       sortValue,
@@ -475,14 +471,9 @@ class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles['HeaderWrapper-overlay']} />
     ) : null;
 
-    const showNoResults =
-      filterControl && !this.itemsExist() && hasMoreItems && !loading;
+    const showEmptyState = filterControl && !this.itemsExist() && !loading;
 
-    const showEmptyState =
-      emptyState !== undefined && !this.itemsExist() && !hasMoreItems;
-
-    const headerMarkup = !showNoResults &&
-      !showEmptyState &&
+    const headerMarkup = !showEmptyState &&
       (showHeader || needsHeader) &&
       this.listRef.current && (
         <div className={styles.HeaderOuterWrapper}>
@@ -521,13 +512,11 @@ class ResourceList extends React.Component<CombinedProps, State> {
         </div>
       );
 
-    const noResultsMarkup = showNoResults ? (
+    const emptyStateMarkup = showEmptyState ? (
       <div className={styles.EmptySearchResultWrapper}>
         <EmptySearchResult {...this.emptySearchResultText} withIllustration />
       </div>
     ) : null;
-
-    const emptyStateMarkup = showEmptyState ? emptyState : null;
 
     const defaultTopPadding = 8;
     const topPadding =
@@ -572,7 +561,9 @@ class ResourceList extends React.Component<CombinedProps, State> {
         {loadingOverlay}
         {items.map(this.renderItem)}
       </ul>
-    ) : null;
+    ) : (
+      emptyStateMarkup
+    );
 
     const context = {
       selectable: this.selectable,
@@ -590,8 +581,6 @@ class ResourceList extends React.Component<CombinedProps, State> {
           {filterControlMarkup}
           {headerMarkup}
           {listMarkup}
-          {noResultsMarkup}
-          {emptyStateMarkup}
           {loadingWithoutItemsMarkup}
         </div>
       </ResourceListContext.Provider>
