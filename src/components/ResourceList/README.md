@@ -84,7 +84,53 @@ A resource list with simple items and no bulk actions, sorting, or filtering.
 </Card>
 ```
 
-### Resource List with selection and no bulk actions
+### Resource list with empty state
+
+Use to explain the purpose of a list of resources when no resources exist yet. This allows a smooth transition from a list in a loading state to a list where zero, one, or many resources exist.
+
+```jsx
+function ResourceListWithEmptyStateExample() {
+  const filters = [
+    {
+      key: 'fileType',
+      label: 'File type',
+      filter: <TextField label="File type" value="" labelHidden />,
+      shortcut: true,
+    },
+  ];
+
+  const filterControl = (
+    <Filters disabled queryValue="" filters={filters} appliedFilters={[]} />
+  );
+
+  const emptyState = (
+    <EmptyState
+      heading="Upload a file to get started"
+      action={{content: 'Upload files'}}
+      image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+    >
+      <p>
+        You can use the Files section to upload images, videos, and other
+        documents
+      </p>
+    </EmptyState>
+  );
+
+  return (
+    <Card>
+      <ResourceList
+        emptyState={emptyState}
+        items={[]}
+        renderItem={() => {}}
+        filterControl={filterControl}
+        resourceName={{singular: 'file', plural: 'files'}}
+      />
+    </Card>
+  );
+}
+```
+
+### Resource list with selection and no bulk actions
 
 A resource list with simple items and selection.
 

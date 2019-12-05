@@ -53,6 +53,10 @@ export interface ResourceListProps {
   /** Item data; each item is passed to renderItem */
   items: Items;
   filterControl?: React.ReactNode;
+  /** The markup to display when no resources exist yet. Renders when set. */
+  emptyState?: React.ReactNode;
+  /** The markup to display when `filterControl` is set and no results are returned on search or filter of the list. Renders when set. */
+  emptySearchState?: React.ReactNode;
   /** Name of the resource, such as customers or products */
   resourceName?: {
     singular: string;
@@ -90,8 +94,6 @@ export interface ResourceListProps {
   idForItem?(item: any, index: number): string;
   /** Function to resolve an id from a item */
   resolveItemId?(item: any): string;
-  /** React node to display when `filterControl` is set and no results are returned on search or filter of the list. */
-  emptySearchState?: React.ReactNode;
 }
 
 type CombinedProps = ResourceListProps & WithAppProviderProps;
@@ -385,6 +387,7 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
       promotedBulkActions,
       bulkActions,
       filterControl,
+      emptyState,
       loading,
       showHeader = false,
       sortOptions,
@@ -482,7 +485,10 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
     const showEmptySearchState =
       filterControl && !this.itemsExist() && !loading;
 
+    const showEmptyState = emptyState && !this.itemsExist();
+
     const headerMarkup = !showEmptySearchState &&
+      !showEmptyState &&
       (showHeader || needsHeader) &&
       this.listRef.current && (
         <div className={styles.HeaderOuterWrapper}>
@@ -532,6 +538,8 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
         )
       : null;
 
+    const emptyStateMarkup = showEmptyState ? emptyState : null;
+
     const defaultTopPadding = 8;
     const topPadding =
       loadingPosition > 0 ? loadingPosition : defaultTopPadding;
@@ -575,9 +583,7 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
         {loadingOverlay}
         {items.map(this.renderItem)}
       </ul>
-    ) : (
-      emptySearchStateMarkup
-    );
+    ) : null;
 
     const context = {
       selectable: this.selectable(),
@@ -595,6 +601,8 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
           {filterControlMarkup}
           {headerMarkup}
           {listMarkup}
+          {emptySearchStateMarkup}
+          {emptyStateMarkup}
           {loadingWithoutItemsMarkup}
         </div>
       </ResourceListContext.Provider>
