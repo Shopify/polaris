@@ -65,17 +65,10 @@ export function DatePicker({
   const i18n = useI18n();
   const [hoverDate, setHoverDate] = useState<Date | undefined>(undefined);
   const [focusDate, setFocusDate] = useState<Date | undefined>(undefined);
-  const [newRange, setNewRange] = useState<Range | undefined>(undefined);
 
   useEffect(() => {
     setFocusDate(undefined);
   }, [selected]);
-
-  useEffect(() => {
-    if (newRange) {
-      onChange(newRange);
-    }
-  }, [newRange, onChange]);
 
   const handleFocus = useCallback((date: Date) => {
     setFocusDate(date);
@@ -92,13 +85,16 @@ export function DatePicker({
     [onMonthChange],
   );
 
-  const handleDateSelection = useCallback((range: Range) => {
-    const {end} = range;
+  const handleDateSelection = useCallback(
+    (range: Range) => {
+      const {end} = range;
 
-    setHoverDate(end);
-    setFocusDate(new Date(end));
-    setNewRange(range);
-  }, []);
+      setHoverDate(end);
+      setFocusDate(new Date(end));
+      onChange(range);
+    },
+    [onChange],
+  );
 
   const handleMonthChangeClick = useCallback(
     (month: Months, year: Year) => {
