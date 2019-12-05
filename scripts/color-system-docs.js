@@ -64,9 +64,9 @@ const Template = {
       light === dark ? '' : additionalVariants
     }|![](https://www.gifpng.com/${size}/${light}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
       lightColors.surfaceBackground,
-    )}&text=%20)|![](https://www.gifpng.com/${size}/${dark}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
+    )}&text=%20)<br />#${light}|![](https://www.gifpng.com/${size}/${dark}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
       darkColors.surfaceBackground,
-    )}&text=%20)|\n`;
+    )}&text=%20)<br />#${dark}|\n`;
   },
   overrideItem: (name, value) => `|\`${cssify(name)}\`|\`${value}\`|\n`,
 };

@@ -62,7 +62,7 @@ export const roleVariants: RoleVariants = {
     {
       name: 'backdrop',
       description:
-        'For use as the background color of the backdrop component for navigation and modal.',
+        'For use as the background color of the backdrop component for navigation and modal. This color has an alpha of `0.5`.',
       light: {
         hue: 0,
         saturation: 0,
@@ -79,7 +79,7 @@ export const roleVariants: RoleVariants = {
     {
       name: 'shadowFromAmbientLight',
       description:
-        'For use in building shadows for popovers, cards, and modals.',
+        'For use in building shadows for popovers, cards, and modals. This color has an alpha of `0.05`.',
       light: {
         hue: 180,
         saturation: 5,
@@ -96,7 +96,7 @@ export const roleVariants: RoleVariants = {
     {
       name: 'shadowFromDirectLight',
       description:
-        'For use in building shadows for popovers, cards, and modals.',
+        'For use in building shadows for popovers, cards, and modals. This color has an alpha of `0.15`.',
       light: {
         hue: 0,
         saturation: 0,
