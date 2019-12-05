@@ -210,18 +210,18 @@ $range-thumb-shadow-focus: var(
     // match `error` specificity for interaction styles
     .RangeSlider &:focus {
       // repeated so that `focus` can override `error`
-      --progress-lower: #{color('indigo')};
+      --progress-lower: #{var(--p-interactive, color('indigo'))};
 
       @include range-track-selectors {
-        background-color: color('sky', 'dark');
+        background-color: var(--p-border-on-surface, color('sky', 'dark'));
       }
 
       @include range-thumb-selectors {
         background: linear-gradient(
-          color('sky', 'lighter'),
-          color('sky', 'light')
+          var(--p-interactive, color('sky', 'lighter')),
+          var(--p-interactive, color('sky', 'light'))
         );
-        border-color: color('indigo');
+        border-color: var(--p-interactive, color('indigo'));
         box-shadow: $range-thumb-shadow-focus;
       }
     }
