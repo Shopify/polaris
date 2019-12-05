@@ -61,7 +61,7 @@ Banners should:
 
 ## Content guidelines
 
-To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns-and-guides/error-messages).
+To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/experiences/error-messages).
 
 ### Title
 
@@ -572,7 +572,7 @@ When merchants submit long or complex forms with errors, use a critical banner t
 
 Always include [inline error](https://polaris.shopify.com/components/forms/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
 
-To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns-and-guides/error-messages).
+To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/experiences/error-messages).
 
 <!-- usageblock -->
 
