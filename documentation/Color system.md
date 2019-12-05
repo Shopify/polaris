@@ -14,6 +14,7 @@
 - [highlight](#highlight)
 - [success](#success)
 - [decorative](#decorative)
+- [Overrides](#Overrides)
 
 ## surface
 
@@ -215,3 +216,34 @@ Used to decorate elements where color does convey a specific meaning in componen
 | <pre>--p-decorative-five-text</pre>     | For use as a decorative text color that is applied on a decorative surface. `-inverse`, `-light`, and `-dark` variants available. | ![](https://www.gifpng.com/64x64/4e0e1f/FFFFFF?border-width=16&border-type=rectangle&border-color=fafafa&text=%20) | ![](https://www.gifpng.com/64x64/ffffff/FFFFFF?border-width=16&border-type=rectangle&border-color=0c0d0e&text=%20) |
 
 ---
+
+## Overrides
+
+[↑ Back to top](#table-of-contents)
+
+| CSS variable                              | Value                                                                                             |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `--p-border-radius-base`                  | `0.4rem`                                                                                          |
+| `--p-border-radius-wide`                  | `0.8rem`                                                                                          |
+| `--p-card-shadow`                         | `0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)`   |
+| `--p-popover-shadow`                      | `-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)` |
+| `--p-modal-shadow`                        | `0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light)`  |
+| `--p-override-none`                       | `none`                                                                                            |
+| `--p-override-transparent`                | `transparent`                                                                                     |
+| `--p-override-one`                        | `1`                                                                                               |
+| `--p-override-visible`                    | `visible`                                                                                         |
+| `--p-override-zero`                       | `0`                                                                                               |
+| `--p-override-loading-z-index`            | `514`                                                                                             |
+| `--p-button-font-weight`                  | `500`                                                                                             |
+| `--p-non-null-content`                    | `''`                                                                                              |
+| `--p-banner-default-border`               | `inset 0 0.2rem 0 0 var(--p-border-on-surface), inset 0 0 0 0.2rem var(--p-border-on-surface)`    |
+| `--p-banner-success-border`               | `inset 0 0.2rem 0 0 var(--p-success-border), inset 0 0 0 0.2rem var(--p-success-border)`          |
+| `--p-banner-highlight-border`             | `inset 0 0.2rem 0 0 var(--p-highlight-border), inset 0 0 0 0.2rem var(--p-highlight-border)`      |
+| `--p-banner-warning-border`               | `inset 0 0.2rem 0 0 var(--p-warning-border), inset 0 0 0 0.2rem var(--p-warning-border)`          |
+| `--p-banner-critical-border`              | `inset 0 0.2rem 0 0 var(--p-critical-border), inset 0 0 0 0.2rem var(--p-critical-border)`        |
+| `--p-badge-mix-blend-mode`                | `luminosity`                                                                                      |
+| `--p-border-subdued`                      | `0.1rem solid var(--p-border-subdued-on-surface)`                                                 |
+| `--p-text-field-spinner-offset`           | `0.2rem`                                                                                          |
+| `--p-text-field-focus-ring-offset`        | `-0.4rem`                                                                                         |
+| `--p-text-field-focus-ring-border-radius` | `0.7rem`                                                                                          |
+| `--p-button-group-item-spacing`           | `0.2rem`                                                                                          |
