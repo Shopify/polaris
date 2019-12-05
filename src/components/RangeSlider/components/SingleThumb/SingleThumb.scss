@@ -206,6 +206,25 @@ $range-thumb-shadow-focus: var(
         );
       }
     }
+
+    // match `error` specificity for interaction styles
+    .RangeSlider &:focus {
+      // repeated so that `focus` can override `error`
+      --progress-lower: #{color('indigo')};
+
+      @include range-track-selectors {
+        background-color: color('sky', 'dark');
+      }
+
+      @include range-thumb-selectors {
+        background: linear-gradient(
+          color('sky', 'lighter'),
+          color('sky', 'light')
+        );
+        border-color: color('indigo');
+        box-shadow: $range-thumb-shadow-focus;
+      }
+    }
   }
 }
 
