@@ -124,6 +124,7 @@ describe('buildThemeContext', () => {
       logo: {},
       UNSTABLE_cssCustomProperties: 'foo:bar',
       UNSTABLE_colors: undefined,
+      mode: 'light',
     });
   });
 });

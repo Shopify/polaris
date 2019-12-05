@@ -7,7 +7,6 @@ import {
   UNSTABLE_Color,
   Tokens,
   customPropertyTransformer,
-  Mode,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
 
@@ -23,12 +22,13 @@ export function ThemeProvider({
   children,
 }: ThemeProviderProps) {
   const rawContext = useContext(ThemeContext);
-  const {mode: parentMode} = rawContext || {};
   const isNested = Boolean(rawContext);
   const {UNSTABLE_colors, mode, ...rest} = themeConfig;
   const processedThemeConfig: ThemeConfig = {
     ...rest,
-    ...(isNested === true && {mode: mode !== undefined ? mode : parentMode}),
+    ...(isNested === true && {
+      mode: mode !== undefined ? mode : rawContext!.mode,
+    }),
     UNSTABLE_colors: {
       ...(isNested === false && {
         surface: UNSTABLE_Color.Surface,
