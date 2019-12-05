@@ -23,6 +23,7 @@ import {
   HslaSetting,
 } from './types';
 import {roleVariants, UNSTABLE_Color} from './role-variants';
+import {Tokens} from './tokens';
 
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
@@ -31,7 +32,7 @@ export function buildCustomProperties(
   return globalTheming
     ? customPropertyTransformer({
         ...buildColors(themeConfig, roleVariants),
-        ...overrides(),
+        ...Tokens,
       })
     : buildLegacyColors(themeConfig);
 }
@@ -132,38 +133,6 @@ export function buildColors(
   );
 }
 
-function overrides() {
-  return {
-    overrideNone: 'none',
-    overrideTransparent: 'transparent',
-    overrideOne: '1',
-    overrideVisible: 'visible',
-    overrideZero: '0',
-    overrideLoadingZIndex: '514',
-    buttonFontWeight: '500',
-    nonNullContent: "''",
-    borderRadiusBase: rem('4px'),
-    borderRadiusWide: rem('8px'),
-    bannerDefaultBorder: buildBannerBorder('--p-border-on-surface'),
-    bannerSuccessBorder: buildBannerBorder('--p-success-border'),
-    bannerHighlightBorder: buildBannerBorder('--p-highlight-border'),
-    bannerWarningBorder: buildBannerBorder('--p-warning-border'),
-    bannerCriticalBorder: buildBannerBorder('--p-critical-border'),
-    badgeMixBlendMode: 'luminosity',
-    borderSubdued: `${rem('1px')} solid var(--p-border-subdued-on-surface)`,
-    textFieldSpinnerOffset: rem('2px'),
-    textFieldFocusRingOffset: rem('-4px'),
-    textFieldFocusRingBorderRadius: rem('7px'),
-    cardShadow:
-      '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
-    popoverShadow:
-      '-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)',
-    modalShadow:
-      '0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light)',
-    buttonGroupItemSpacing: rem('2px'),
-  };
-}
-
 function customPropertyTransformer(
   properties: Record<string, HSLAColor | string>,
 ) {
@@ -178,17 +147,6 @@ function customPropertyTransformer(
 
 export function toCssCustomPropertySyntax(camelCase: string) {
   return `--p-${camelCase.replace(/([A-Z0-9])/g, '-$1').toLowerCase()}`;
-}
-
-function rem(px: string) {
-  const baseFontSize = 10;
-  return `${parseInt(px, 10) / baseFontSize}rem`;
-}
-
-function buildBannerBorder(cssVar: string) {
-  return `inset 0 ${rem('2px')} 0 0 var(${cssVar}), inset 0 0 0 ${rem(
-    '2px',
-  )} var(${cssVar})`;
 }
 
 function buildLegacyColors(theme?: ThemeConfig): CustomPropertiesLike {
