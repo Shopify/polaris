@@ -180,7 +180,7 @@ $stacking-order: (
   @include recolor-icon(color('white'));
 
   &.globalTheming {
-    @include recolor-icon(var(--p-icon-on-branded));
+    @include recolor-icon(var(--p-button-text));
   }
 
   &.disabled {
@@ -217,6 +217,10 @@ $stacking-order: (
       $destructive-pressed-darkest
     );
   }
+
+  &.globalTheming {
+    @include recolor-icon(var(--p-button-text));
+  }
 }
 
 .outline {
@@ -229,7 +233,6 @@ $stacking-order: (
 
 .destructive.outline {
   @include button-outline(color('red'));
-  @include recolor-icon(color('red', 'dark'));
 
   &.pressed {
     @include button-outline(
@@ -671,7 +674,19 @@ $stacking-order: (
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 
-  &:focus {
+  // Because the outline border color has a 40% opacity, the left border appears darker than the rest of the borders because they are layered over one another. Reducing the opacity to zero for the connected disclosure when not focused gives us the expected border color.
+  &.outline:not(:focus) {
+    border-left-color: rgba(color('ink', 'lighter'), 0);
+  }
+
+  &:focus,
+  &:active {
     z-index: z-index(focused, $stacking-order);
+  }
+
+  &.globalTheming {
+    margin-left: rem(1px);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }

@@ -242,6 +242,7 @@ export function Button({
       connectedDisclosure.disabled && styles.disabled,
       styles.iconOnly,
       styles.ConnectedDisclosure,
+      unstableGlobalTheming && styles.globalTheming,
     );
 
     const defaultLabel = i18n.translate(
