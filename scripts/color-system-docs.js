@@ -58,11 +58,10 @@ const Template = {
   variant: (name, description, light, dark) => {
     const {Width, Height, Padding} = ColorSwatch;
     const size = `${Width + Padding * 2}x${Height + Padding * 2}`;
-    const additionalVariants = `\`-inverse\`, \`-light\`, and \`-dark\` variants available.`;
 
-    return `|<pre>${cssify(name)}</pre>|${description} ${
-      light === dark ? '' : additionalVariants
-    }|![](https://www.gifpng.com/${size}/${light}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
+    return `|<pre>${cssify(
+      name,
+    )}</pre>|${description} |![](https://www.gifpng.com/${size}/${light}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
       lightColors.surfaceBackground,
     )}&text=%20)<br />#${light}|![](https://www.gifpng.com/${size}/${dark}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
       darkColors.surfaceBackground,
