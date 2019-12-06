@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
-import {useTheme} from '../../../../utilities/theme';
+import {useTheme, inverse} from '../../../../utilities/theme';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
 import {ThemeProvider} from '../../../ThemeProvider';
@@ -71,9 +71,7 @@ export function Toast({
   const className = classNames(styles.Toast, error && styles.error);
 
   return (
-    <ThemeProvider
-      theme={{mode: useTheme().mode === 'light' ? 'dark' : 'light'}}
-    >
+    <ThemeProvider theme={{mode: inverse(useTheme().mode)}}>
       <div className={className}>
         <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
         {content}
