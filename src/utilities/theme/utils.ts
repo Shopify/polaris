@@ -21,8 +21,6 @@ import {
 
 import {roleVariants} from './role-variants';
 
-const DEFAULT_MODE = 'light';
-
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
   globalTheming: boolean,
@@ -39,7 +37,7 @@ export function buildThemeContext(
   themeConfig: ThemeConfig,
   cssCustomProperties?: CustomPropertiesLike,
 ): Theme {
-  const {logo, UNSTABLE_colors, mode = DEFAULT_MODE} = themeConfig;
+  const {logo, UNSTABLE_colors, mode = 'light'} = themeConfig;
   return {
     logo,
     UNSTABLE_cssCustomProperties: toString(cssCustomProperties),
@@ -71,7 +69,7 @@ function hexToHsluvObj(hex: string) {
 export function buildColors(
   colors: Partial<RoleColors>,
   roleVariants: Partial<RoleVariants>,
-  mode: Mode = DEFAULT_MODE,
+  mode: Mode,
 ) {
   return Object.entries(colors).reduce((acc1, [role, hex]: [Role, string]) => {
     const base = hexToHsluvObj(hex);

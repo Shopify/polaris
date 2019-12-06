@@ -1,8 +1,10 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mount} from 'enzyme';
 import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext, useTheme} from '../../../utilities/theme';
+import {FeaturesContext} from '../../../utilities/features';
 
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
@@ -122,26 +124,24 @@ describe('<ThemeProvider />', () => {
   });
 
   it('sets color system properties when global theming is enabled', () => {
-    const themeProvider = mountWithAppProvider(
+    const wrapper = mountWithGlobalTheming(
       <ThemeProvider theme={{UNSTABLE_colors: {surface: '#ffffff'}}}>
         <p>Hello</p>
       </ThemeProvider>,
-      {features: {unstableGlobalTheming: true}},
+      true,
     );
 
-    const styleKeys = Object.keys(
-      themeProvider.find('div').props().style || {},
-    );
+    const styleKeys = Object.keys(wrapper.find('div').props().style || {});
 
     expect(styleKeys).toContain('--p-surface-background');
   });
 
   it('sets color system properties in context when global theming is enabled', () => {
-    mountWithAppProvider(
+    mountWithGlobalTheming(
       <ThemeProvider theme={{UNSTABLE_colors: {surface: '#ffffff'}}}>
         <Child />
       </ThemeProvider>,
-      {features: {unstableGlobalTheming: true}},
+      true,
     );
 
     function Child() {
@@ -152,10 +152,11 @@ describe('<ThemeProvider />', () => {
   });
 
   it('does not set color system properties in context by default', () => {
-    mountWithAppProvider(
+    mountWithGlobalTheming(
       <ThemeProvider theme={{}}>
         <Child />
       </ThemeProvider>,
+      false,
     );
 
     function Child() {
@@ -165,23 +166,32 @@ describe('<ThemeProvider />', () => {
     }
   });
 
-  // since we mount each `ThemeProvider` withApp, each mounted `ThemeProvider` is a nested one
-  // we may need some sort of escape hatch to rendering a theme provider by default
-  it.todo('does set overrides');
+  it('does set overrides', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      true,
+    );
+
+    const styleKeys = Object.keys(wrapper.find('div').props().style || {});
+
+    expect(styleKeys).toContain('--p-override-zero');
+  });
 
   describe('when nested', () => {
     it('does not set a default theme', () => {
-      const themeProvider = mountWithAppProvider(
+      const wrapper = mountWithGlobalTheming(
         <ThemeProvider theme={{}}>
           <ThemeProvider theme={{}}>
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        {features: {unstableGlobalTheming: true}},
+        true,
       );
 
       expect(
-        themeProvider
+        wrapper
           .find('div')
           .last()
           .props().style,
@@ -189,17 +199,17 @@ describe('<ThemeProvider />', () => {
     });
 
     it('does not set overrides', () => {
-      const themeProvider = mountWithAppProvider(
+      const wrapper = mountWithGlobalTheming(
         <ThemeProvider theme={{}}>
           <ThemeProvider theme={{}}>
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        {features: {unstableGlobalTheming: true}},
+        true,
       );
 
       const styleKeys = Object.keys(
-        themeProvider
+        wrapper
           .find('div')
           .last()
           .props().style || {},
@@ -208,7 +218,7 @@ describe('<ThemeProvider />', () => {
       expect(styleKeys).not.toContain('--p-override-zero');
     });
     it('adds css custom properties for color roles provided', () => {
-      const themeProvider = mountWithAppProvider(
+      const wrapper = mountWithGlobalTheming(
         <ThemeProvider
           theme={{
             UNSTABLE_colors: {surface: '#FFFFFF'},
@@ -222,11 +232,11 @@ describe('<ThemeProvider />', () => {
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        {features: {unstableGlobalTheming: true}},
+        true,
       );
 
       expect(
-        themeProvider
+        wrapper
           .find('div')
           .last()
           .props().style,
@@ -236,7 +246,7 @@ describe('<ThemeProvider />', () => {
     });
 
     it('inherits mode from parent <ThemeProvider>', () => {
-      const themeProvider = mountWithAppProvider(
+      const wrapper = mountWithGlobalTheming(
         <ThemeProvider theme={{mode: 'dark'}}>
           <ThemeProvider
             theme={{
@@ -246,10 +256,10 @@ describe('<ThemeProvider />', () => {
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        {features: {unstableGlobalTheming: true}},
+        true,
       );
 
-      const {style} = themeProvider
+      const {style} = wrapper
         .find('div')
         .last()
         .props();
@@ -267,7 +277,7 @@ describe('<ThemeProvider />', () => {
     });
 
     it('overrides mode from parent <ThemeProvider> when provided a mode', () => {
-      const themeProvider = mountWithAppProvider(
+      const wrapper = mountWithGlobalTheming(
         <ThemeProvider theme={{mode: 'dark'}}>
           <ThemeProvider
             theme={{
@@ -278,10 +288,10 @@ describe('<ThemeProvider />', () => {
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        {features: {unstableGlobalTheming: true}},
+        true,
       );
 
-      const {style} = themeProvider
+      const {style} = wrapper
         .find('div')
         .last()
         .props();
@@ -299,3 +309,16 @@ describe('<ThemeProvider />', () => {
     });
   });
 });
+
+function mountWithGlobalTheming(
+  children: React.ReactNode,
+  globalThemingEnabled: boolean,
+) {
+  return mount(
+    <FeaturesContext.Provider
+      value={{unstableGlobalTheming: globalThemingEnabled}}
+    >
+      {children}
+    </FeaturesContext.Provider>,
+  );
+}

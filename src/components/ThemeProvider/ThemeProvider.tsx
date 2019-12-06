@@ -26,9 +26,9 @@ export function ThemeProvider({
   const {UNSTABLE_colors, mode, ...rest} = themeConfig;
   const processedThemeConfig: ThemeConfig = {
     ...rest,
-    ...(isNested === true && {
-      mode: mode !== undefined ? mode : rawContext!.mode,
-    }),
+    ...(mode !== undefined
+      ? {mode}
+      : {mode: rawContext && rawContext.mode ? rawContext.mode : undefined}),
     UNSTABLE_colors: {
       ...(isNested === false && {
         surface: UNSTABLE_Color.Surface,
