@@ -8,7 +8,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
-## 4.9.0 - 2019-12-05
+## 4.9.0 - 2019-12-06
 
 ### Enhancements
 
