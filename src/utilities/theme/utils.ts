@@ -1,6 +1,5 @@
 import tokens from '@shopify/polaris-tokens';
 import {hexToHsluv, hsluvToHex} from 'hsluv';
-import isEqual from 'lodash/isEqual';
 import {HSLColor, HSLAColor} from '../color-types';
 import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
 import {isLight} from '../color-validation';
@@ -15,7 +14,6 @@ import {
   RoleVariants,
   Role,
   RoleColors,
-  HslaSetting,
   Mode,
 } from './types';
 
@@ -79,37 +77,19 @@ export function buildColors(
     return {
       ...acc1,
       ...variants.reduce((acc2, {name, light, dark}) => {
-        const configs: Record<string, HslaSetting> = {
-          default: mode === 'light' ? light : dark,
-        };
-
-        if (!isEqual(light, dark)) {
-          configs.Inverse = mode === 'dark' ? dark : light;
-          configs.Light = light;
-          configs.Dark = dark;
-        }
+        const {
+          hue = base.hue,
+          saturation = base.saturation,
+          lightness = base.lightness,
+          alpha = 1,
+        } = mode === 'light' ? light : dark;
 
         return {
           ...acc2,
-          ...Object.entries(configs).reduce((acc3, [variant, config]) => {
-            const {
-              hue = base.hue,
-              saturation = base.saturation,
-              lightness = base.lightness,
-              alpha = 1,
-            } = config;
-
-            const displayName =
-              variant === 'default' ? name : `${name}${variant}`;
-
-            return {
-              ...acc3,
-              [displayName]: hslToString({
-                ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
-                alpha,
-              }),
-            };
-          }, {}),
+          [name]: hslToString({
+            ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
+            alpha,
+          }),
         };
       }, {}),
     };
