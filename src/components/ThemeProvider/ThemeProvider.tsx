@@ -6,7 +6,6 @@ import {
   buildCustomProperties,
   UNSTABLE_Color,
   Tokens,
-  customPropertyTransformer,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
 
@@ -21,39 +20,52 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
-  const rawContext = useContext(ThemeContext);
-  const isNested = Boolean(rawContext);
+  const {unstableGlobalTheming = false} = useFeatures();
+
+  const parentContext = useContext(ThemeContext);
+  const isParentThemeProvider = parentContext === undefined;
+  const parentMode = parentContext && parentContext.mode && parentContext.mode;
+  const parentColors =
+    parentContext &&
+    parentContext.UNSTABLE_colors &&
+    parentContext.UNSTABLE_colors;
+
   const {UNSTABLE_colors, mode, ...rest} = themeConfig;
+
+  const childShouldInheritParentColors =
+    !isParentThemeProvider && mode !== undefined && mode !== parentMode;
+
+  const defaultColors = {
+    surface: UNSTABLE_Color.Surface,
+    onSurface: UNSTABLE_Color.OnSurface,
+    interactive: UNSTABLE_Color.Interactive,
+    neutral: UNSTABLE_Color.Neutral,
+    primary: UNSTABLE_Color.Primary,
+    critical: UNSTABLE_Color.Critical,
+    warning: UNSTABLE_Color.Warning,
+    highlight: UNSTABLE_Color.Highlight,
+    success: UNSTABLE_Color.Success,
+  };
+
   const processedThemeConfig: ThemeConfig = {
     ...rest,
-    ...(mode !== undefined
-      ? {mode}
-      : {mode: rawContext && rawContext.mode ? rawContext.mode : undefined}),
+    ...(mode !== undefined ? {mode} : {mode: parentMode}),
     UNSTABLE_colors: {
-      ...(isNested === false && {
-        surface: UNSTABLE_Color.Surface,
-        onSurface: UNSTABLE_Color.OnSurface,
-        interactive: UNSTABLE_Color.Interactive,
-        neutral: UNSTABLE_Color.Neutral,
-        primary: UNSTABLE_Color.Primary,
-        critical: UNSTABLE_Color.Critical,
-        warning: UNSTABLE_Color.Warning,
-        highlight: UNSTABLE_Color.Highlight,
-        success: UNSTABLE_Color.Success,
-      }),
+      ...(isParentThemeProvider && defaultColors),
+      ...(childShouldInheritParentColors && parentColors),
       ...UNSTABLE_colors,
     },
   };
-  const {unstableGlobalTheming = false} = useFeatures();
 
-  const customProperties = useMemo(() => {
-    return {
-      ...buildCustomProperties(processedThemeConfig, unstableGlobalTheming),
-      ...(unstableGlobalTheming === true &&
-        isNested === false &&
-        customPropertyTransformer(Tokens)),
-    };
-  }, [isNested, processedThemeConfig, unstableGlobalTheming]);
+  const customProperties = useMemo(
+    () =>
+      buildCustomProperties(
+        processedThemeConfig,
+        unstableGlobalTheming,
+        isParentThemeProvider ? Tokens : undefined,
+      ),
+    [isParentThemeProvider, processedThemeConfig, unstableGlobalTheming],
+  );
 
   const theme = useMemo(
     () =>
@@ -70,11 +82,11 @@ export function ThemeProvider({
   const color = customProperties['--p-text-on-surface'] || '';
 
   useEffect(() => {
-    if (isNested === false) {
+    if (isParentThemeProvider) {
       document.body.style.backgroundColor = backgroundColor;
       document.body.style.color = color;
     }
-  }, [backgroundColor, color, isNested]);
+  }, [backgroundColor, color, isParentThemeProvider]);
 
   return (
     <ThemeContext.Provider value={theme}>

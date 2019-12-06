@@ -307,6 +307,67 @@ describe('<ThemeProvider />', () => {
         }),
       );
     });
+
+    it('inherits colors from parent <ThemeProvider> when their modes differ', () => {
+      const wrapper = mountWithGlobalTheming(
+        <ThemeProvider theme={{mode: 'dark'}}>
+          <ThemeProvider
+            theme={{
+              mode: 'light',
+            }}
+          >
+            <p>Hello</p>
+          </ThemeProvider>
+        </ThemeProvider>,
+        true,
+      );
+
+      const {style} = wrapper
+        .find('div')
+        .last()
+        .props();
+      expect(style).toStrictEqual(
+        expect.objectContaining({
+          '--p-surface-background': 'hsla(0, 0%, 98%, 1)',
+        }),
+      );
+    });
+  });
+
+  it('overrides inherited colors from parent <ThemeProvider> with provided colors when their modes differ', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider
+        theme={{
+          mode: 'dark',
+          UNSTABLE_colors: {critical: '#000000'},
+        }}
+      >
+        <ThemeProvider
+          theme={{
+            mode: 'light',
+            UNSTABLE_colors: {critical: '#FFFEEE'},
+          }}
+        >
+          <p>Hello</p>
+        </ThemeProvider>
+      </ThemeProvider>,
+      true,
+    );
+
+    const {style} = wrapper
+      .find('div')
+      .last()
+      .props();
+    expect(style).toStrictEqual(
+      expect.objectContaining({
+        '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
+      }),
+    );
+    expect(style).not.toStrictEqual(
+      expect.objectContaining({
+        '--p-critical-surface': 'hsla(0, 0%, 98%, 1)',
+      }),
+    );
   });
 });
 

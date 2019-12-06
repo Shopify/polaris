@@ -24,12 +24,14 @@ import {roleVariants} from './role-variants';
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
   globalTheming: boolean,
+  tokens?: Record<string, string>,
 ): CustomPropertiesLike {
   const {UNSTABLE_colors = {}, mode = 'light'} = themeConfig;
   return globalTheming
-    ? customPropertyTransformer(
-        buildColors(UNSTABLE_colors, roleVariants, mode),
-      )
+    ? customPropertyTransformer({
+        ...buildColors(UNSTABLE_colors, roleVariants, mode),
+        ...tokens,
+      })
     : buildLegacyColors(themeConfig);
 }
 
@@ -114,7 +116,7 @@ export function buildColors(
   }, {});
 }
 
-export function customPropertyTransformer(
+function customPropertyTransformer(
   properties: Record<string, HSLAColor | string>,
 ) {
   return Object.entries(properties).reduce(
