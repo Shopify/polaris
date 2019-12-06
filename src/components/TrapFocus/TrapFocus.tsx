@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {
   focusFirstFocusableNode,
@@ -7,6 +7,7 @@ import {
 } from '@shopify/javascript-utilities/focus';
 import {write} from '@shopify/javascript-utilities/fastdom';
 
+import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {EventListener} from '../EventListener';
 import {Focus} from '../Focus';
 
@@ -15,63 +16,35 @@ export interface TrapFocusProps {
   children?: React.ReactNode;
 }
 
-interface State {
-  shouldFocusSelf: boolean | undefined;
-}
+export function TrapFocus({trapping = true, children}: TrapFocusProps) {
+  const [shouldFocusSelf, setFocusSelf] = useState<boolean | undefined>(
+    undefined,
+  );
 
-export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
-  state: State = {
-    shouldFocusSelf: undefined,
+  const focusTrapWrapper = useRef<HTMLDivElement>(null);
+
+  const handleTrappingChange = () => {
+    if (
+      focusTrapWrapper.current &&
+      focusTrapWrapper.current.contains(document.activeElement)
+    ) {
+      return false;
+    }
+    return trapping;
   };
 
-  private focusTrapWrapper: HTMLElement;
+  useComponentDidMount(() => setFocusSelf(handleTrappingChange()));
 
-  componentDidMount() {
-    this.setState(this.handleTrappingChange());
-  }
-
-  handleTrappingChange() {
-    const {trapping = true} = this.props;
-
-    if (this.focusTrapWrapper.contains(document.activeElement)) {
-      return {shouldFocusSelf: false};
-    }
-
-    return {shouldFocusSelf: trapping};
-  }
-
-  render() {
-    const {children} = this.props;
-
-    return (
-      <Focus disabled={this.shouldDisable} root={this.focusTrapWrapper}>
-        <div ref={this.setFocusTrapWrapper}>
-          <EventListener event="focusout" handler={this.handleBlur} />
-          {children}
-        </div>
-      </Focus>
-    );
-  }
-
-  private get shouldDisable() {
-    const {trapping = true} = this.props;
-    const {shouldFocusSelf} = this.state;
-
+  const shouldDisable = () => {
     if (shouldFocusSelf === undefined) {
       return true;
     }
 
     return shouldFocusSelf ? !trapping : !shouldFocusSelf;
-  }
-
-  private setFocusTrapWrapper = (node: HTMLDivElement) => {
-    this.focusTrapWrapper = node;
   };
 
-  private handleBlur = (event: FocusEvent) => {
+  const handleBlur = (event: FocusEvent) => {
     const {relatedTarget} = event;
-    const {focusTrapWrapper} = this;
-    const {trapping = true} = this.props;
 
     if (trapping === false) {
       return;
@@ -79,17 +52,33 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
 
     if (
       focusTrapWrapper &&
-      !focusTrapWrapper.contains(relatedTarget as HTMLElement) &&
+      focusTrapWrapper.current &&
+      !focusTrapWrapper.current.contains(relatedTarget as HTMLElement) &&
       (!relatedTarget ||
         !closest(relatedTarget as HTMLElement, '[data-polaris-overlay]'))
     ) {
       event.preventDefault();
 
-      if (event.srcElement === findFirstFocusableNode(focusTrapWrapper)) {
-        return write(() => focusLastFocusableNode(focusTrapWrapper));
+      if (
+        event.srcElement === findFirstFocusableNode(focusTrapWrapper.current)
+      ) {
+        return write(() =>
+          focusLastFocusableNode(focusTrapWrapper.current as HTMLDivElement),
+        );
       }
-      const firstNode = findFirstFocusableNode(focusTrapWrapper) as HTMLElement;
-      write(() => focusFirstFocusableNode(firstNode));
+      const firstNode = findFirstFocusableNode(
+        focusTrapWrapper.current,
+      ) as HTMLElement;
+      write(() => focusFirstFocusableNode(firstNode, true));
     }
   };
+
+  return (
+    <Focus disabled={shouldDisable()} root={focusTrapWrapper.current}>
+      <div ref={focusTrapWrapper}>
+        <EventListener event="focusout" handler={handleBlur} />
+        {children}
+      </div>
+    </Focus>
+  );
 }
