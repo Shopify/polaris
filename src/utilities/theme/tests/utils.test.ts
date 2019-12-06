@@ -6,7 +6,22 @@ import {
   setTheme,
   buildThemeContext,
   buildCustomProperties,
+  inverse,
 } from '../utils';
+
+describe('inverse', () => {
+  it('inverts light to dark', () => {
+    expect(inverse('light')).toBe('dark');
+  });
+
+  it('inverts dark to light', () => {
+    expect(inverse('dark')).toBe('light');
+  });
+
+  it('returns light when given no mode', () => {
+    expect(inverse(undefined)).toBe('light');
+  });
+});
 
 describe('setTextColor', () => {
   it('sets a css variable to white if the variant is dark', () => {

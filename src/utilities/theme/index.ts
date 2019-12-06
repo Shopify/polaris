@@ -11,6 +11,7 @@ export {
   buildColors,
   buildThemeContext,
   toCssCustomPropertySyntax,
+  inverse,
 } from './utils';
 
 export {Tokens} from './tokens';

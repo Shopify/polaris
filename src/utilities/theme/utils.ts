@@ -19,12 +19,24 @@ import {
 
 import {roleVariants} from './role-variants';
 
+const DEFAULT_MODE = 'light';
+
+export function inverse(mode?: Mode) {
+  if (mode == null) return DEFAULT_MODE;
+
+  if (mode === 'light') {
+    return 'dark';
+  } else {
+    return 'light';
+  }
+}
+
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
   globalTheming: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
-  const {UNSTABLE_colors = {}, mode = 'light'} = themeConfig;
+  const {UNSTABLE_colors = {}, mode = DEFAULT_MODE} = themeConfig;
   return globalTheming
     ? customPropertyTransformer({
         ...buildColors(UNSTABLE_colors, roleVariants, mode),
@@ -37,7 +49,7 @@ export function buildThemeContext(
   themeConfig: ThemeConfig,
   cssCustomProperties?: CustomPropertiesLike,
 ): Theme {
-  const {logo, UNSTABLE_colors, mode = 'light'} = themeConfig;
+  const {logo, UNSTABLE_colors, mode = DEFAULT_MODE} = themeConfig;
   return {
     logo,
     UNSTABLE_cssCustomProperties: toString(cssCustomProperties),
