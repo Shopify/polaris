@@ -102,7 +102,14 @@ export interface DropZoneProps {
   onFileDialogClose?(): void;
 }
 
-export function DropZone({
+// TypeScript can't generate types that correctly infer the typing of
+// subcomponents so explicitly state the subcomponents in the type definition.
+// Letting this be implicit works in this project but fails in projects that use
+// generated *.d.ts files.
+
+export const DropZone: React.FunctionComponent<DropZoneProps> & {
+  FileUpload: typeof FileUpload;
+} = function DropZone({
   dropOnPage,
   label,
   labelAction,
@@ -420,7 +427,7 @@ export function DropZone({
 
     return onClick ? onClick(event) : open();
   }
-}
+};
 
 function stopEvent(event: DragEvent | React.DragEvent) {
   event.preventDefault();

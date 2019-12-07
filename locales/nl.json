@@ -132,8 +132,8 @@
     },
     "ResourceList": {
       "sortingLabel": "Sorteer op",
-      "defaultItemSingular": "item",
-      "defaultItemPlural": "items",
+      "defaultItemSingular": "artikel",
+      "defaultItemPlural": "artikelen",
       "showing": "Weergave {itemsCount} {resource}",
       "loading": "{resource} aan het laden",
       "selected": "{selectedItemsCount} geselecteerd",

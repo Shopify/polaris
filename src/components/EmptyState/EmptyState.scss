@@ -31,15 +31,6 @@ $illustration-width-cropped: calc(
   max-width: $page-max-width;
 }
 
-.imageContained {
-  .Image {
-    @include page-content-when-not-partially-condensed {
-      position: initial;
-      width: 100%;
-    }
-  }
-}
-
 .Section {
   position: relative;
   display: flex;
@@ -132,6 +123,15 @@ $illustration-width-cropped: calc(
       margin-top: 0;
       margin-left: $illustration-left-margin;
       width: $illustration-width;
+    }
+  }
+}
+
+.imageContained {
+  .Image {
+    @include page-content-when-not-partially-condensed {
+      position: initial;
+      width: 100%;
     }
   }
 }

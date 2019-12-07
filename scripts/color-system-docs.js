@@ -6,6 +6,7 @@ const {
   UNSTABLE_toCssCustomPropertySyntax: cssify,
   UNSTABLE_roleVariants: roleVariants,
   UNSTABLE_buildColors: colorFactory,
+  UNSTABLE_Tokens: Tokens,
 } = require('../');
 
 const ColorSwatch = {
@@ -46,9 +47,11 @@ const darkColors = colorFactory(
 );
 
 const Template = {
-  anchor: (name) => `- [${name}](#${name})\n`,
-  role: (name, description) =>
-    `## ${name}\n\n[↑ Back to top](#table-of-contents)\n\n${description}\n\n`,
+  tocItem: (name) => `- [${name}](#${name})\n`,
+  section: (name, description) =>
+    `## ${name}\n\n[↑ Back to top](#table-of-contents)\n\n${
+      description ? `${description}\n\n` : ''
+    }`,
   heading:
     '|CSS variable|Description|Light mode|Dark mode|\n|---|---|---|---|\n',
   hr: '\n\n---\n\n',
@@ -61,10 +64,11 @@ const Template = {
       light === dark ? '' : additionalVariants
     }|![](https://www.gifpng.com/${size}/${light}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
       lightColors.surfaceBackground,
-    )}&text=%20)|![](https://www.gifpng.com/${size}/${dark}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
+    )}&text=%20)<br />#${light}|![](https://www.gifpng.com/${size}/${dark}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
       darkColors.surfaceBackground,
-    )}&text=%20)|\n`;
+    )}&text=%20)<br />#${dark}|\n`;
   },
+  overrideItem: (name, value) => `|\`${cssify(name)}\`|\`${value}\`|\n`,
 };
 
 const boilerplate =
@@ -72,24 +76,25 @@ const boilerplate =
 const tocTitle = '## Table of contents\n\n';
 
 const tocContents = Object.keys(roleVariants).reduce(
-  (acc1, role) => acc1 + Template.anchor(role),
+  (accumulator, role) => accumulator + Template.tocItem(role),
   '',
 );
 
 const contents = Object.entries(roleVariants).reduce(
-  (acc1, [role, variants]) => {
-    const children = variants.reduce((acc2, variant) => {
+  (tableMarkdown, [role, variants]) => {
+    const children = variants.reduce((rowMarkdown, variant) => {
       const light = toHex(lightColors[variant.name]);
       const dark = toHex(darkColors[variant.name]);
 
       return (
-        acc2 + Template.variant(variant.name, variant.description, light, dark)
+        rowMarkdown +
+        Template.variant(variant.name, variant.description, light, dark)
       );
     }, '');
 
     return (
-      acc1 +
-      Template.role(role, RoleDescription[role]) +
+      tableMarkdown +
+      Template.section(role, RoleDescription[role]) +
       Template.heading +
       children +
       Template.hr
@@ -98,7 +103,21 @@ const contents = Object.entries(roleVariants).reduce(
   '',
 );
 
-const data = boilerplate + tocTitle + tocContents + contents;
+const overridesContents = Object.entries(Tokens).reduce(
+  (accumulator, [override, value]) => {
+    return accumulator + Template.overrideItem(override, value);
+  },
+  '|CSS variable|Value|\n|---|---|\n',
+);
+
+const data =
+  boilerplate +
+  tocTitle +
+  tocContents +
+  Template.tocItem('Overrides') +
+  contents +
+  Template.section('Overrides') +
+  overridesContents;
 
 writeFileSync(resolvePath('documentation/Color system.md'), data);
 

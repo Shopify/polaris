@@ -40,6 +40,7 @@ export interface PopoverOverlayProps {
   children?: React.ReactNode;
   fullWidth?: boolean;
   fullHeight?: boolean;
+  fluidContent?: boolean;
   preferredPosition?: PreferredPosition;
   preferredAlignment?: PreferredAlignment;
   active: boolean;
@@ -179,7 +180,14 @@ export class PopoverOverlay extends React.PureComponent<
   private renderPopover = (overlayDetails: OverlayDetails) => {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
-    const {id, children, sectioned, fullWidth, fullHeight} = this.props;
+    const {
+      id,
+      children,
+      sectioned,
+      fullWidth,
+      fullHeight,
+      fluidContent,
+    } = this.props;
 
     const className = classNames(
       styles.Popover,
@@ -193,6 +201,7 @@ export class PopoverOverlay extends React.PureComponent<
     const contentClassNames = classNames(
       styles.Content,
       fullHeight && styles['Content-fullHeight'],
+      fluidContent && styles['Content-fluidContent'],
     );
 
     const content = (

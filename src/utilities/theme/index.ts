@@ -12,3 +12,5 @@ export {
   buildColors,
   toCssCustomPropertySyntax,
 } from './utils';
+
+export {Tokens} from './tokens';
