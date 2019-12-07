@@ -27,6 +27,8 @@ $control-vertical-adjustment: rem(2px);
 }
 
 .disabled {
+	cursor: default;
+
   > .Label {
     color: color('ink', 'lightest');
 
