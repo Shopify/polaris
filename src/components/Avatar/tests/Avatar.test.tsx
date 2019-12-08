@@ -1,7 +1,9 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Avatar, Image} from 'components';
+import {STYLE_CLASSES} from '../Avatar';
 
 describe('<Avatar />', () => {
   describe('intials', () => {
@@ -110,6 +112,28 @@ describe('<Avatar />', () => {
           .first()
           .prop('aria-label'),
       ).toBe('Hello World');
+    });
+  });
+
+  describe('styleClass', () => {
+    it('defaults to five styles', () => {
+      expect(STYLE_CLASSES).toHaveLength(5);
+    });
+
+    it('renders a sixth style when unstableGlobalTheming is false', () => {
+      const avatar = mountWithApp(<Avatar name="e" />, {
+        features: {unstableGlobalTheming: false},
+      });
+
+      expect(avatar.domNodes[0].classList).toContain('styleSix');
+    });
+
+    it('does not render a sixth style when unstableGlobalTheming is true', () => {
+      const avatar = mountWithApp(<Avatar name="e" />, {
+        features: {unstableGlobalTheming: true},
+      });
+
+      expect(avatar.domNodes[0].classList).not.toContain('styleSix');
     });
   });
 });

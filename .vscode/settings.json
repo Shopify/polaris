@@ -29,7 +29,6 @@
   },
   "javascript.validate.enable": false,
   "jest.autoEnable": false,
-  "prettier.stylelintIntegration": true,
   "scss.validate": false,
   "search.exclude": {
     "**/bower_components": true,
@@ -45,6 +44,6 @@
     "styles/": true,
     "types/": true
   },
-  "stylelint.enable": true,
+  "stylelint.autoFixOnSave": true,
   "typescript.tsdk": "./node_modules/typescript/lib"
 }

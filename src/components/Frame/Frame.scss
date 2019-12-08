@@ -104,6 +104,7 @@ $skip-vertical-offset: rem(10px);
   top: 0;
   left: 0;
   width: 100%;
+  height: top-bar-height();
 }
 
 .ContextualSaveBar {

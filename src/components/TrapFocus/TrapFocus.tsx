@@ -5,6 +5,7 @@ import {
   findFirstFocusableNode,
   focusLastFocusableNode,
 } from '@shopify/javascript-utilities/focus';
+import {write} from '@shopify/javascript-utilities/fastdom';
 
 import {EventListener} from '../EventListener';
 import {Focus} from '../Focus';
@@ -72,21 +73,23 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
     const {focusTrapWrapper} = this;
     const {trapping = true} = this.props;
 
-    if (relatedTarget == null || trapping === false) {
+    if (trapping === false) {
       return;
     }
 
     if (
       focusTrapWrapper &&
       !focusTrapWrapper.contains(relatedTarget as HTMLElement) &&
-      !closest(relatedTarget as HTMLElement, '[data-polaris-overlay]')
+      (!relatedTarget ||
+        !closest(relatedTarget as HTMLElement, '[data-polaris-overlay]'))
     ) {
       event.preventDefault();
 
       if (event.srcElement === findFirstFocusableNode(focusTrapWrapper)) {
-        return focusLastFocusableNode(focusTrapWrapper);
+        return write(() => focusLastFocusableNode(focusTrapWrapper));
       }
-      focusFirstFocusableNode(focusTrapWrapper);
+      const firstNode = findFirstFocusableNode(focusTrapWrapper) as HTMLElement;
+      write(() => focusFirstFocusableNode(firstNode));
     }
   };
 }

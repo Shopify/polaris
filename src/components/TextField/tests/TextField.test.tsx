@@ -1,4 +1,5 @@
 import React, {ReactElement} from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {InlineError, Labelled, Connected, Select} from 'components';
 import {mountWithApp} from 'test-utilities';
@@ -57,6 +58,15 @@ describe('<TextField />', () => {
     ).find('input');
 
     expect(input.prop('prefix')).toBeUndefined();
+  });
+
+  it('always has an `aria-labelledby` property', () => {
+    const textField = mountWithAppProvider(
+      <TextField label="TextField" onChange={noop} />,
+    );
+    const property = textField.find('input').prop('aria-labelledby');
+
+    expect(property).not.toHaveLength(0);
   });
 
   describe('onChange()', () => {

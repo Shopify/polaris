@@ -4,6 +4,13 @@ export {useTheme} from './hooks';
 
 export {Theme, ThemeConfig, CustomPropertiesLike} from './types';
 
-export {UNSTABLE_Color} from './color-adjustments';
+export {UNSTABLE_Color, roleVariants} from './role-variants';
 
-export {buildCustomProperties, buildThemeContext} from './utils';
+export {
+  buildCustomProperties,
+  buildThemeContext,
+  buildColors,
+  toCssCustomPropertySyntax,
+} from './utils';
+
+export {Tokens} from './tokens';

@@ -1,5 +1,6 @@
 import React from 'react';
 import {ReactWrapper} from 'enzyme';
+// eslint-disable-next-line no-restricted-imports
 import {
   trigger,
   findByTestID,

@@ -29,16 +29,19 @@ export function merge<TResult>(...objs: any[]): TResult;
 export function merge<TSource1, TSource2, TSource3, TSource4, TSource5>(
   ...objs: (TSource1 | TSource2 | TSource3 | TSource4 | TSource5)[]
 ) {
-  const final = {};
+  let final = {};
 
   for (const obj of objs) {
-    mergeRecursively(final, obj);
+    final = mergeRecursively(final, obj);
   }
 
   return final;
 }
 
-function mergeRecursively(objA: GeneralObject, objB: GeneralObject) {
+function mergeRecursively(inputObjA: GeneralObject, objB: GeneralObject) {
+  const objA: GeneralObject = Array.isArray(inputObjA)
+    ? [...inputObjA]
+    : {...inputObjA};
   for (const key in objB) {
     if (!Object.prototype.hasOwnProperty.call(objB, key)) {
       continue;

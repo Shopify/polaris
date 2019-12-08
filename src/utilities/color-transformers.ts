@@ -249,7 +249,7 @@ export function hslToString(hslColor: HSLAColor | string) {
   }
 
   const {alpha = 1, hue, lightness, saturation} = hslColor;
-  return `hsl(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
+  return `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
 }
 
 function rgbToObject(color: string): RGBAColor {
@@ -270,10 +270,7 @@ function rgbToObject(color: string): RGBAColor {
   return objColor;
 }
 
-const hexToHsla: (color: string) => HSLAColor = compose(
-  rgbToHsl,
-  hexToRgb,
-);
+const hexToHsla: (color: string) => HSLAColor = compose(rgbToHsl, hexToRgb);
 
 const rbgStringToHsla: (color: string) => HSLAColor = compose(
   rgbToHsl,

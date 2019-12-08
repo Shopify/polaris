@@ -56,8 +56,8 @@ $disabled-fade: 0.6;
 
 .Item-selected {
   font-weight: 600;
-  color: var(--p-branded-action, color('indigo', 'dark'));
-  background-color: var(--p-branded-selected, $item-selected-background);
+  color: var(--p-primary-action, color('indigo', 'dark'));
+  background-color: var(--p-primary-selected, $item-selected-background);
   @media (-ms-high-contrast: active) {
     background-color: ms-high-contrast-color('selected-text-background');
   }
@@ -65,7 +65,7 @@ $disabled-fade: 0.6;
   .Icon,
   &:focus .Icon {
     @include recolor-icon(
-      var(--p-branded-action, color('indigo')),
+      var(--p-primary-action, color('indigo')),
       var(--p-override-transparent, color('white'))
     );
   }
@@ -73,21 +73,21 @@ $disabled-fade: 0.6;
 
   &:hover {
     background-color: var(
-      --p-branded-selected-hovered,
+      --p-primary-selected-hovered,
       $item-selected-background
     );
-    color: var(--p-branded-action-hovered, color('indigo', 'dark'));
+    color: var(--p-primary-action-hovered, color('indigo', 'dark'));
   }
   &:focus {
-    color: var(--p-branded-action, color('indigo', 'dark'));
+    color: var(--p-primary-action, color('indigo', 'dark'));
     @include focus-ring;
   }
   &:active {
     background-color: var(
-      --p-branded-selected-pressed,
+      --p-primary-selected-pressed,
       $item-selected-background
     );
-    color: var(--p-branded-action-pressed, color('indigo', 'dark'));
+    color: var(--p-primary-action-pressed, color('indigo', 'dark'));
     @include no-focus-ring;
   }
 }
@@ -158,7 +158,7 @@ $disabled-fade: 0.6;
 
   &:hover {
     @include recolor-icon(
-      var(--p-branded-action, color('indigo')),
+      var(--p-primary-action, color('indigo')),
       var(--p-override-transparent, color('white')),
       filter('indigo')
     );
@@ -184,7 +184,7 @@ $disabled-fade: 0.6;
 
   &:focus:hover {
     @include recolor-icon(
-      var(--p-branded-action, color('indigo')),
+      var(--p-primary-action, color('indigo')),
       var(--p-override-transparent, color('white')),
       filter('indigo')
     );
@@ -192,7 +192,7 @@ $disabled-fade: 0.6;
 
   &:active {
     @include recolor-icon(
-      var(--p-branded-action, color('indigo')),
+      var(--p-primary-action, color('indigo')),
       var(--p-override-transparent, color('white')),
       filter('indigo')
     );
@@ -229,7 +229,7 @@ $secondary-item-font-size: rem(15px);
     line-height: nav(item-line-height);
     color: var(--p-text-on-surface, color('ink', 'light'));
     &:hover {
-      color: var(--p-branded-action, color('indigo', 'dark'));
+      color: var(--p-primary-action, color('indigo', 'dark'));
     }
     &:focus {
       color: var(--p-text-on-surface, color('indigo', 'dark'));
@@ -237,11 +237,11 @@ $secondary-item-font-size: rem(15px);
     }
     // stylelint-disable selector-max-specificity
     &:focus:hover {
-      color: var(--p-branded-action, color('indigo', 'dark'));
+      color: var(--p-primary-action, color('indigo', 'dark'));
     }
     &:active,
     &:active:hover {
-      color: var(--p-branded-action-pressed, color('indigo', 'dark'));
+      color: var(--p-primary-action-pressed, color('indigo', 'dark'));
       @include no-focus-ring;
     }
     // stylelint-enable selector-max-specificity
@@ -261,16 +261,16 @@ $secondary-item-font-size: rem(15px);
   }
   .Item-selected {
     font-weight: 600;
-    color: var(--p-branded-action, color('indigo', 'dark'));
+    color: var(--p-primary-action, color('indigo', 'dark'));
     &:hover {
-      color: var(--p-branded-action-hovered, color('indigo', 'dark'));
+      color: var(--p-primary-action-hovered, color('indigo', 'dark'));
     }
     &:focus {
-      color: var(--p-branded-action, color('indigo', 'dark'));
+      color: var(--p-primary-action, color('indigo', 'dark'));
       @include focus-ring;
     }
     &:active {
-      color: var(--p-branded-action-pressed, color('indigo', 'dark'));
+      color: var(--p-primary-action-pressed, color('indigo', 'dark'));
       @include no-focus-ring;
     }
   }
@@ -328,7 +328,7 @@ $secondary-item-font-size: rem(15px);
 
     &:hover {
       @include recolor-icon(
-        var(--p-branded-action, color('indigo')),
+        var(--p-primary-action, color('indigo')),
         var(--p-override-transparent, color('white')),
         filter('indigo')
       );
@@ -355,7 +355,7 @@ $secondary-item-font-size: rem(15px);
     // stylelint-disable-next-line selector-max-specificity
     &:focus:hover {
       @include recolor-icon(
-        var(--p-branded-action, color('indigo')),
+        var(--p-primary-action, color('indigo')),
         var(--p-override-transparent, color('white')),
         filter('indigo')
       );
@@ -363,7 +363,7 @@ $secondary-item-font-size: rem(15px);
 
     &:active {
       @include recolor-icon(
-        var(--p-branded-action, color('indigo')),
+        var(--p-primary-action, color('indigo')),
         var(--p-override-transparent, color('white')),
         filter('indigo')
       );
@@ -388,11 +388,11 @@ $secondary-item-font-size: rem(15px);
 
   &:hover {
     @include recolor-icon(
-      var(--p-branded-action, color('indigo')),
+      var(--p-primary-action, color('indigo')),
       null,
       filter('indigo')
     );
-    color: var(--p-branded-action, color('indigo'));
+    color: var(--p-primary-action, color('indigo'));
   }
 
   &:focus {

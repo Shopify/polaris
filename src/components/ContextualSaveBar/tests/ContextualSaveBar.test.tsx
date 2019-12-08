@@ -1,5 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {ContextualSaveBar} from '../ContextualSaveBar';
 

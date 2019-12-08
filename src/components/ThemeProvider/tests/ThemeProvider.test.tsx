@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext, useTheme} from '../../../utilities/theme';
@@ -79,7 +80,7 @@ describe('<ThemeProvider />', () => {
     expect(wrapper.find('div').props().style).toStrictEqual(
       expect.objectContaining({
         '--top-bar-background': '#108043',
-        '--top-bar-background-lighter': 'hsl(147, 63%, 43%, 1)',
+        '--top-bar-background-lighter': 'hsla(147, 63%, 43%, 1)',
         '--top-bar-color': 'rgb(255, 255, 255)',
       }),
     );
@@ -114,7 +115,7 @@ describe('<ThemeProvider />', () => {
     expect(wrapper.find('div').props().style).toStrictEqual(
       expect.objectContaining({
         '--top-bar-background': '#021123',
-        '--top-bar-background-lighter': 'hsl(213, 74%, 22%, 1)',
+        '--top-bar-background-lighter': 'hsla(213, 74%, 22%, 1)',
         '--top-bar-color': 'rgb(255, 255, 255)',
       }),
     );
@@ -130,7 +131,7 @@ describe('<ThemeProvider />', () => {
 
     expect(themeProvider.find('div').props().style).toStrictEqual(
       expect.objectContaining({
-        '--p-surface-background': 'hsl(0, 0%, 98%, 1)',
+        '--p-surface-background': 'hsla(0, 0%, 98%, 1)',
       }),
     );
   });

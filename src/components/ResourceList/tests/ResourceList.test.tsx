@@ -9,6 +9,7 @@ import {
   EventListener,
   Button,
 } from 'components';
+// eslint-disable-next-line no-restricted-imports
 import {
   findByTestID,
   mountWithAppProvider,
@@ -878,7 +879,7 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          trigger(resourceList.find(Button), 'onClick');
+          trigger(resourceList.find(Button).first(), 'onClick');
 
           const selectAllCheckableButton = bulkActionsCheckableButton(
             resourceList,
@@ -1110,7 +1111,7 @@ function setSmallScreen() {
   Object.defineProperty(window, 'innerWidth', {
     configurable: true,
     writable: true,
-    value: 458,
+    value: 457,
   });
 }
 

@@ -1,4 +1,10 @@
-import React, {useRef, useEffect, useCallback, useState} from 'react';
+import React, {
+  useRef,
+  useEffect,
+  useCallback,
+  useState,
+  AriaAttributes,
+} from 'react';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {focusNextFocusableNode} from '../../utilities/focus';
 
@@ -7,6 +13,7 @@ import {Portal} from '../Portal';
 import {portal} from '../shared';
 import {useUniqueId} from '../../utilities/unique-id';
 import {CloseSource, Pane, PopoverOverlay, Section} from './components';
+import {setActivatorAttributes} from './set-activator-attributes';
 
 export {CloseSource};
 
@@ -34,8 +41,12 @@ export interface PopoverProps {
   fullWidth?: boolean;
   /** Allow popover to stretch to fit content vertically */
   fullHeight?: boolean;
+  /** Allow popover content to determine the overlay width and height */
+  fluidContent?: boolean;
   /** Remains in a fixed position */
   fixed?: boolean;
+  /** Used to illustrate the type of popover element */
+  ariaHaspopup?: AriaAttributes['aria-haspopup'];
   /** Callback when popover is closed */
   onClose(source: CloseSource): void;
 }
@@ -55,6 +66,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
   activator,
   active,
   fixed,
+  ariaHaspopup,
   ...rest
 }: PopoverProps) {
   const [activatorNode, setActivatorNode] = useState();
@@ -69,12 +81,8 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
 
     const firstFocusable = findFirstFocusableNode(activatorContainer.current);
     const focusableActivator = firstFocusable || activatorContainer.current;
-    focusableActivator.tabIndex = focusableActivator.tabIndex || 0;
-    focusableActivator.setAttribute('aria-controls', id);
-    focusableActivator.setAttribute('aria-owns', id);
-    focusableActivator.setAttribute('aria-haspopup', 'true');
-    focusableActivator.setAttribute('aria-expanded', String(active));
-  }, [active, id]);
+    setActivatorAttributes(focusableActivator, {id, active, ariaHaspopup});
+  }, [active, ariaHaspopup, id]);
 
   const handleClose = (source: CloseSource) => {
     onClose(source);

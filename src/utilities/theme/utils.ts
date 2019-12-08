@@ -1,5 +1,6 @@
 import tokens from '@shopify/polaris-tokens';
 import {hexToHsluv, hsluvToHex} from 'hsluv';
+import isEqual from 'lodash/isEqual';
 import {HSLColor, HSLAColor} from '../color-types';
 import {
   colorToHsla,
@@ -12,15 +13,27 @@ import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
 import {compose} from '../compose';
 import {needsVariantList} from './config';
-import {ThemeConfig, Theme, CustomPropertiesLike} from './types';
-import {colorAdjustments, UNSTABLE_Color} from './color-adjustments';
+import {
+  ThemeConfig,
+  Theme,
+  CustomPropertiesLike,
+  RoleVariants,
+  Role,
+  Variant,
+  HslaSetting,
+} from './types';
+import {roleVariants, UNSTABLE_Color} from './role-variants';
+import {Tokens} from './tokens';
 
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
   globalTheming: boolean,
 ): CustomPropertiesLike {
   return globalTheming
-    ? buildColors(themeConfig)
+    ? customPropertyTransformer({
+        ...buildColors(themeConfig, roleVariants),
+        ...Tokens,
+      })
     : buildLegacyColors(themeConfig);
 }
 
@@ -55,80 +68,69 @@ function hexToHsluvObj(hex: string) {
   };
 }
 
-export function buildColors(theme: ThemeConfig) {
+export function buildColors(
+  theme: ThemeConfig,
+  roleVariants: Partial<RoleVariants>,
+) {
   const colors = {
     surface: UNSTABLE_Color.Surface,
     onSurface: UNSTABLE_Color.OnSurface,
     interactive: UNSTABLE_Color.Interactive,
     neutral: UNSTABLE_Color.Neutral,
-    branded: UNSTABLE_Color.Branded,
+    primary: UNSTABLE_Color.Primary,
     critical: UNSTABLE_Color.Critical,
     warning: UNSTABLE_Color.Warning,
     highlight: UNSTABLE_Color.Highlight,
     success: UNSTABLE_Color.Success,
+    decorative: UNSTABLE_Color.Decorative,
     ...theme.UNSTABLE_colors,
   };
 
   const lightSurface = isLight(hexToRgb(colors.surface));
 
-  const allColors = Object.entries(colorAdjustments).reduce(
-    (accumulator, [colorRole, colorAdjustment]) => {
-      if (colorAdjustment == null) return accumulator;
-
-      const baseColor = hexToHsluvObj(colors[colorAdjustment.baseColor]);
-      const {
-        hue = baseColor.hue,
-        saturation = baseColor.saturation,
-        lightness = baseColor.lightness,
-        alpha = 1,
-      } = colorAdjustment[lightSurface ? 'light' : 'dark'];
-
+  return Object.entries(roleVariants).reduce(
+    (acc1, [role, variants]: [Role, Variant[]]) => {
+      const base = hexToHsluvObj(colors[role]);
       return {
-        ...accumulator,
-        [colorRole]: hslToString({
-          ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
-          alpha,
-        }),
+        ...acc1,
+        ...variants.reduce((acc2, {name, light, dark}) => {
+          const configs: Record<string, HslaSetting> = {
+            default: lightSurface ? light : dark,
+          };
+
+          if (!isEqual(light, dark)) {
+            configs.Inverse = lightSurface ? dark : light;
+            configs.Light = light;
+            configs.Dark = dark;
+          }
+
+          return {
+            ...acc2,
+            ...Object.entries(configs).reduce((acc3, [variant, config]) => {
+              const {
+                hue = base.hue,
+                saturation = base.saturation,
+                lightness = base.lightness,
+                alpha = 1,
+              } = config;
+
+              const displayName =
+                variant === 'default' ? name : `${name}${variant}`;
+
+              return {
+                ...acc3,
+                [displayName]: hslToString({
+                  ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
+                  alpha,
+                }),
+              };
+            }, {}),
+          };
+        }, {}),
       };
     },
     {},
   );
-
-  return customPropertyTransformer({
-    ...allColors,
-    ...overrides(),
-  });
-}
-
-function overrides() {
-  return {
-    overrideNone: 'none',
-    overrideTransparent: 'transparent',
-    overrideOne: '1',
-    overrideVisible: 'visible',
-    overrideZero: '0',
-    overrideLoadingZIndex: '514',
-    buttonFontWeight: '500',
-    nonNullContent: "''",
-    borderRadiusBase: rem('4px'),
-    borderRadiusWide: rem('8px'),
-    bannerDefaultBorder: buildBannerBorder('--p-border-on-surface'),
-    bannerSuccessBorder: buildBannerBorder('--p-success-border'),
-    bannerHighlightBorder: buildBannerBorder('--p-highlight-border'),
-    bannerWarningBorder: buildBannerBorder('--p-warning-border'),
-    bannerCriticalBorder: buildBannerBorder('--p-critical-border'),
-    badgeMixBlendMode: 'luminosity',
-    borderSubdued: `${rem('1px')} solid var(--p-border-subdued-on-surface)`,
-    textFieldSpinnerOffset: rem('2px'),
-    textFieldFocusRingOffset: rem('-4px'),
-    textFieldFocusRingBorderRadius: rem('7px'),
-    cardShadow:
-      '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
-    popoverShadow:
-      '-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)',
-    modalShadow:
-      '0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light)',
-  };
 }
 
 function customPropertyTransformer(
@@ -143,19 +145,8 @@ function customPropertyTransformer(
   );
 }
 
-function toCssCustomPropertySyntax(camelCase: string) {
+export function toCssCustomPropertySyntax(camelCase: string) {
   return `--p-${camelCase.replace(/([A-Z0-9])/g, '-$1').toLowerCase()}`;
-}
-
-function rem(px: string) {
-  const baseFontSize = 10;
-  return `${parseInt(px, 10) / baseFontSize}rem`;
-}
-
-function buildBannerBorder(cssVar: string) {
-  return `inset 0 ${rem('2px')} 0 0 var(${cssVar}), inset 0 0 0 ${rem(
-    '2px',
-  )} var(${cssVar})`;
 }
 
 function buildLegacyColors(theme?: ThemeConfig): CustomPropertiesLike {
@@ -190,10 +181,7 @@ const lightenToString: (
   color: HSLColor | string,
   lightness: number,
   saturation: number,
-) => string = compose(
-  hslToString,
-  createLightColor,
-);
+) => string = compose(hslToString, createLightColor);
 
 export function setTextColor(
   name: string,

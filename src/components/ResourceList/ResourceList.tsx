@@ -814,7 +814,7 @@ function defaultIdForItem(item: any, index: number) {
 function isSmallScreen() {
   return typeof window === 'undefined'
     ? false
-    : window.innerWidth <= SMALL_SCREEN_WIDTH;
+    : window.innerWidth < SMALL_SCREEN_WIDTH;
 }
 
 // Use named export once withAppProvider is refactored away

@@ -1,7 +1,7 @@
 {
   "name": "@joinarthur/polaris",
   "description": "Shopify’s product component library",
-  "version": "4.8.0-fork.1",
+  "version": "4.9.0-fork.1",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -34,7 +34,9 @@
     "format": "sewing-kit format",
     "type-check": "sewing-kit type-check",
     "test": "sewing-kit test",
-    "test:coverage": "yarn test --coverage",
+    "test:coverage": "CI=true yarn test --coverage",
+    "posttest:coverage": "yarn open:coverage",
+    "open:coverage": "open build/coverage/index.html",
     "test:ci": "yarn test --coverage",
     "check": "npm-run-all lint type-check test",
     "check:ci": "npm-run-all lint type-check test:ci",
@@ -62,7 +64,10 @@
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
     "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static",
-    "splash": "babel-node --extensions '.tsx','.ts' ./scripts/splash/index.tsx"
+    "splash": "babel-node --extensions '.tsx','.ts' ./scripts/splash/index.tsx",
+    "precolordocs": "yarn run build",
+    "colordocs": "node ./scripts/color-system-docs",
+    "postcolordocs": "yarn run format"
   },
   "stylelint": {
     "extends": [
@@ -94,8 +99,9 @@
     "@babel/node": "^7.6.1",
     "@percy/storybook": "^3.2.0",
     "@shopify/jest-dom-mocks": "^2.1.1",
-    "@shopify/react-testing": "^1.7.8",
+    "@shopify/react-testing": "^1.8.0",
     "@shopify/sewing-kit": "^0.112.0",
+    "@shopify/splash": "^0.0.8",
     "@storybook/addon-a11y": "^5.2.4",
     "@storybook/addon-actions": "^5.2.4",
     "@storybook/addon-console": "^1.2.1",

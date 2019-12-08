@@ -1,11 +1,8 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {TextContainer} from 'components';
 import {Section} from '../Section';
-
-// section: ActionListSection;
-// hasMultipleSections: boolean;
-// onActionAnyItem?: ActionListItemDescriptor['onAction'];
 
 describe('<Section />', () => {
   const children = (

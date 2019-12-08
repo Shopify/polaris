@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities/react-testing';
 import {MediaQueryProvider} from 'components/MediaQueryProvider';

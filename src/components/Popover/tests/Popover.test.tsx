@@ -1,11 +1,36 @@
 import React, {useState, useCallback} from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Popover} from '../Popover';
 import {PopoverOverlay} from '../components';
+import * as setActivatorAttributes from '../set-activator-attributes';
 
 describe('<Popover />', () => {
   const spy = jest.fn();
+  let setActivatorAttributesSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    setActivatorAttributesSpy = jest.spyOn(
+      setActivatorAttributes,
+      'setActivatorAttributes',
+    );
+  });
+
+  afterEach(() => {
+    setActivatorAttributesSpy.mockRestore();
+  });
+
+  it('invokes setActivatorAttributes with active, ariaHasPopup and id', () => {
+    mountWithAppProvider(
+      <Popover active={false} activator={<div>Activator</div>} onClose={spy} />,
+    );
+
+    expect(setActivatorAttributesSpy).toHaveBeenLastCalledWith(
+      expect.any(Object),
+      {active: false, ariaHaspopup: undefined, id: 'Polarispopover1'},
+    );
+  });
 
   it('renders a portal', () => {
     const popover = mountWithAppProvider(
@@ -132,6 +157,19 @@ describe('<Popover />', () => {
     );
     const popoverOverlay = findByTestID(popover, 'popoverOverlay');
     expect(popoverOverlay.prop('fullWidth')).toBe(true);
+  });
+
+  it('passes fluidContent to PopoverOverlay', () => {
+    const popover = mountWithAppProvider(
+      <Popover
+        active
+        fluidContent
+        activator={<div>Activator</div>}
+        onClose={spy}
+      />,
+    );
+    const popoverOverlay = findByTestID(popover, 'popoverOverlay');
+    expect(popoverOverlay.prop('fluidContent')).toBe(true);
   });
 
   it('calls onClose when you click outside the Popover', () => {

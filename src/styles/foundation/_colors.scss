@@ -54,7 +54,6 @@ $color-palette-data: map-extend(
     @return $fetched-color;
   } @else {
     // stylelint-disable string-no-newline
-    // prettier-ignore
     $error: "
 Color `#{$hue}, #{$value}` not found. Make sure arguments are strings.
 GOOD: color('yellow')
@@ -127,7 +126,6 @@ $ms-high-contrast-color-data: (
     @return $fetched-color;
   } @else {
     // stylelint-disable string-no-newline
-    // prettier-ignore
     $error: "
 Color `#{$color}` not found. Make sure argument is a string.
 GOOD: ms-high-contrast-color('selected-text')

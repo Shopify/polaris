@@ -1,6 +1,7 @@
 import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {mountWithApp} from 'test-utilities';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {RadioButton, Checkbox, InlineError, errorTextID} from 'components';
 import {ChoiceList, ChoiceDescriptor} from '../ChoiceList';
