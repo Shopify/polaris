@@ -67,7 +67,7 @@ $dropzone-stacking-order: (
   &:not(.isDisabled) {
     background-color: $dropzone-overlay-background;
 
-    &::after {
+    &.hasOutline::after {
       border: border-width(thick) $dropzone-border-style
         $dropzone-overlay-border-color;
 
