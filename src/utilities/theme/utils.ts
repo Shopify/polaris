@@ -83,29 +83,31 @@ export function buildColors(
   roleVariants: Partial<RoleVariants>,
   mode: Mode,
 ) {
-  return Object.entries(colors).reduce((acc1, [role, hex]: [Role, string]) => {
-    const base = hexToHsluvObj(hex);
-    const variants = roleVariants[role] || [];
-    return {
-      ...acc1,
-      ...variants.reduce((acc2, {name, light, dark}) => {
-        const {
-          hue = base.hue,
-          saturation = base.saturation,
-          lightness = base.lightness,
-          alpha = 1,
-        } = mode === 'light' ? light : dark;
+  return Object.assign(
+    {},
+    ...Object.entries(colors).map(([role, hex]: [Role, string]) => {
+      const base = hexToHsluvObj(hex);
+      const variants = roleVariants[role] || [];
+      return {
+        ...variants.reduce((accumulator, {name, ...settings}) => {
+          const {
+            hue = base.hue,
+            saturation = base.saturation,
+            lightness = base.lightness,
+            alpha = 1,
+          } = settings[mode];
 
-        return {
-          ...acc2,
-          [name]: hslToString({
-            ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
-            alpha,
-          }),
-        };
-      }, {}),
-    };
-  }, {});
+          return {
+            ...accumulator,
+            [name]: hslToString({
+              ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
+              alpha,
+            }),
+          };
+        }, {}),
+      };
+    }),
+  );
 }
 
 function customPropertyTransformer(
