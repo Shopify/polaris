@@ -1,6 +1,10 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {
+  mountWithAppProvider,
+  trigger,
+  ReactWrapper,
+} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {
   EventListener,
@@ -10,7 +14,9 @@ import {
   Button,
 } from 'components';
 import * as focusUtilities from '@shopify/javascript-utilities/focus';
+import * as focusUtils from '../../../utilities/focus';
 import {TrapFocus} from '../TrapFocus';
+import {Key} from '../../../types';
 
 jest.mock('@shopify/javascript-utilities/fastdom', () => ({
   ...require.requireActual('@shopify/javascript-utilities/fastdom'),
@@ -19,16 +25,30 @@ jest.mock('@shopify/javascript-utilities/fastdom', () => ({
 
 describe('<TrapFocus />', () => {
   let focusFirstFocusableNodeSpy: jest.SpyInstance;
+  let focusFirstKeyboardFocusableNodeSpy: jest.SpyInstance;
+  let focusLastKeyboardFocusableNodeSpy: jest.SpyInstance;
 
   beforeEach(() => {
     focusFirstFocusableNodeSpy = jest.spyOn(
       focusUtilities,
       'focusFirstFocusableNode',
     );
+
+    focusFirstKeyboardFocusableNodeSpy = jest.spyOn(
+      focusUtils,
+      'focusFirstKeyboardFocusableNode',
+    );
+
+    focusLastKeyboardFocusableNodeSpy = jest.spyOn(
+      focusUtils,
+      'focusLastKeyboardFocusableNode',
+    );
   });
 
   afterEach(() => {
     focusFirstFocusableNodeSpy.mockRestore();
+    focusFirstKeyboardFocusableNodeSpy.mockRestore();
+    focusLastKeyboardFocusableNodeSpy.mockRestore();
     (document.activeElement as HTMLElement).blur();
   });
 
@@ -49,7 +69,7 @@ describe('<TrapFocus />', () => {
 
     // Renders an event listener
     expect(trapFocus.find(EventListener)).toHaveLength(1);
-    expect(trapFocus.find(EventListener).prop('event')).toBe('focusout');
+    expect(trapFocus.find(EventListener).prop('event')).toBe('focusin');
   });
 
   it('renders a Focus component with a `disabled` prop set to false by default', () => {
@@ -169,6 +189,128 @@ describe('<TrapFocus />', () => {
       );
     });
   });
+
+  describe('handleTab', () => {
+    beforeEach(() => {
+      jest
+        .spyOn(document, 'addEventListener')
+        .mockImplementation((event, cb) => {
+          listenerMap[event] = cb;
+        });
+
+      jest
+        .spyOn(document, 'removeEventListener')
+        .mockImplementation((event) => {
+          listenerMap[event] = noop;
+        });
+    });
+
+    afterEach(() => {
+      (document.addEventListener as jest.Mock).mockRestore();
+      (document.removeEventListener as jest.Mock).mockRestore();
+    });
+
+    interface HandlerMap {
+      [eventName: string]: any;
+    }
+
+    const listenerMap: HandlerMap = {};
+
+    it('does nothing if trapping is false', () => {
+      const trapFocus = mountWithAppProvider(<TrapFocus trapping={false} />);
+      const activeElement = document.activeElement;
+
+      listenerMap.keydown({keyCode: Key.Tab, element: trapFocus});
+
+      expect(activeElement).toBe(document.activeElement);
+      expect(focusUtils.focusFirstKeyboardFocusableNode).not.toHaveBeenCalled();
+      expect(focusUtils.focusLastKeyboardFocusableNode).not.toHaveBeenCalled();
+    });
+
+    it('prevents default if the target is the last element and the shift key is not pressed', () => {
+      const preventDefaultSpy = jest.fn();
+
+      const trapFocus = mountWithAppProvider(
+        <TrapFocus>
+          <button />
+          <input />
+        </TrapFocus>,
+      );
+
+      listenerMap.keydown({
+        keyCode: Key.Tab,
+        target: lastNode(trapFocus),
+        preventDefault: preventDefaultSpy,
+      });
+
+      expect(preventDefaultSpy).toHaveBeenCalled();
+    });
+
+    it('focuses the first keyboard focusable node', () => {
+      const trapFocus = mountWithAppProvider(
+        <TrapFocus>
+          <button />
+          <input />
+        </TrapFocus>,
+      );
+
+      listenerMap.keydown({
+        keyCode: Key.Tab,
+        target: lastNode(trapFocus),
+        preventDefault: noop,
+      });
+
+      expect(document.activeElement).toBe(firstNode(trapFocus));
+      expect(focusUtils.focusFirstKeyboardFocusableNode).toHaveBeenCalled();
+    });
+
+    it('prevents default if the target is the first element and the shift key is pressed', () => {
+      const preventDefaultSpy = jest.fn();
+
+      const trapFocus = mountWithAppProvider(
+        <TrapFocus>
+          <button />
+          <input />
+        </TrapFocus>,
+      );
+
+      listenerMap.keydown({
+        keyCode: Key.Tab,
+        shiftKey: Key.Shift,
+        target: firstNode(trapFocus),
+        preventDefault: preventDefaultSpy,
+      });
+
+      expect(preventDefaultSpy).toHaveBeenCalled();
+    });
+
+    it('focuses the last keyboard focusable node', () => {
+      const trapFocus = mountWithAppProvider(
+        <TrapFocus>
+          <button />
+          <input />
+        </TrapFocus>,
+      );
+
+      listenerMap.keydown({
+        keyCode: Key.Tab,
+        shiftKey: Key.Shift,
+        target: firstNode(trapFocus),
+        preventDefault: noop,
+      });
+
+      expect(document.activeElement).toBe(lastNode(trapFocus));
+      expect(focusUtils.focusLastKeyboardFocusableNode).toHaveBeenCalled();
+    });
+  });
 });
 
 function noop() {}
+
+function firstNode(element: ReactWrapper) {
+  return focusUtils.findFirstKeyboardFocusableNode(element.getDOMNode());
+}
+
+function lastNode(element: ReactWrapper) {
+  return focusUtils.findLastKeyboardFocusableNode(element.getDOMNode());
+}

@@ -22,6 +22,9 @@ $large-width: rem(980px);
     justify-content: center;
   }
 }
+.Dialog:focus {
+  outline: 0;
+}
 
 .Modal {
   position: fixed;
@@ -42,10 +45,6 @@ $large-width: rem(980px);
   @include frame-when-nav-hidden {
     bottom: 0;
     max-height: 100%;
-  }
-
-  &:focus {
-    outline: 0;
   }
 
   @include breakpoint-after(layout-width(page-with-nav)) {
