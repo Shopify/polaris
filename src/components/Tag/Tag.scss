@@ -30,9 +30,7 @@ $icon-size: rem(16px);
 }
 
 .Button {
-  @include recolor-icon(
-    var(--p-icon-subdued-on-surface, color('ink', 'lighter'))
-  );
+  @include recolor-icon(color('ink', 'lighter'));
   @include unstyled-button;
   display: block;
   height: $height;
@@ -40,36 +38,48 @@ $icon-size: rem(16px);
   margin-left: spacing(extra-tight);
   border-radius: 0 border-radius() border-radius() 0;
 
+  // Start - Delete below me during global theming rollout
   &:hover,
   &:focus,
   &:active {
-    @include recolor-icon(var(--p-icon-on-surface, color('ink')));
-  }
-
-  &:hover {
-    background: var(--p-neutral-action-hovered, color('sky', 'dark'));
-  }
-
-  &:focus:not(.globalTheming) {
-    background: color('sky', 'dark');
-  }
-
-  &:focus.globalTheming {
-    @include focus-ring;
+    @include recolor-icon(color('ink'));
   }
 
   &:disabled {
-    @include recolor-icon(
-      var(--p-icon-disabled-on-surface, color('ink', 'lightest'))
-    );
+    @include recolor-icon(color('ink', 'lightest'));
     cursor: default;
     pointer-events: none;
   }
 
   &:active {
-    background: var(
-      --p-neutral-action-pressed,
-      rgba(color('ink', 'lightest'), 0.6)
-    );
+    background: rgba(color('ink', 'lightest'), 0.6);
+  }
+  // End - Delete above me during global theming rollout
+
+  &.globalTheming {
+    @include recolor-icon(var(--p-icon-on-surface));
+
+    &:hover {
+      background: var(--p-neutral-action-hovered);
+    }
+
+    &:focus {
+      background-color: transparent;
+    }
+
+    // stylelint-disable-next-line selector-max-specificity
+    &:focus:not(:active) {
+      @include focus-ring;
+    }
+
+    &:active {
+      background: var(--p-neutral-action-pressed);
+    }
+
+    &:disabled {
+      @include recolor-icon(var(--p-icon-disabled-on-surface));
+      cursor: default;
+      pointer-events: none;
+    }
   }
 }
