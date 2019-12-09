@@ -50,7 +50,7 @@ export function ThemeProvider({
 
   const processedThemeConfig: ThemeConfig = {
     ...rest,
-    ...(mode !== undefined ? {mode} : {mode: parentMode}),
+    ...{mode: mode || parentMode},
     UNSTABLE_colors: {
       ...(isParentThemeProvider && defaultColors),
       ...(childShouldInheritParentColors && parentColors),
