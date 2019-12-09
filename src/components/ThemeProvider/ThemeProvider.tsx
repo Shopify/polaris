@@ -45,6 +45,7 @@ export function ThemeProvider({
     warning: UNSTABLE_Color.Warning,
     highlight: UNSTABLE_Color.Highlight,
     success: UNSTABLE_Color.Success,
+    decorative: UNSTABLE_Color.Decorative,
   };
 
   const processedThemeConfig: ThemeConfig = {
