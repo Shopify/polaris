@@ -4,9 +4,11 @@ import {
   focusFirstFocusableNode,
   findFirstFocusableNode,
   focusLastFocusableNode,
+  findLastFocusableNode,
 } from '@shopify/javascript-utilities/focus';
 import {write} from '@shopify/javascript-utilities/fastdom';
 
+import {Key} from '../../types';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {EventListener} from '../EventListener';
 import {Focus} from '../Focus';
@@ -43,11 +45,44 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
     return shouldFocusSelf ? !trapping : !shouldFocusSelf;
   };
 
+  const handleKeyDownLastElement = (event: any) => {
+    if (event.keyCode === Key.Tab && focusTrapWrapper.current) {
+      !event.shiftKey && focusFirstFocusableNode(focusTrapWrapper.current);
+
+      document.removeEventListener('keydown', handleKeyDownLastElement);
+    }
+  };
+
+  const handleKeyDownFirstElement = (event: any) => {
+    if (event.keyCode === Key.Tab && focusTrapWrapper.current) {
+      event.shiftKey && focusLastFocusableNode(focusTrapWrapper.current);
+
+      document.removeEventListener('keydown', handleKeyDownFirstElement);
+    }
+  };
+
   const handleBlur = (event: FocusEvent) => {
     const {relatedTarget} = event;
 
     if (trapping === false) {
       return;
+    }
+
+    const firstElement = findFirstFocusableNode(
+      findFirstFocusableNode(
+        focusTrapWrapper.current as HTMLElement,
+      ) as HTMLElement,
+    );
+
+    if (
+      focusTrapWrapper.current &&
+      relatedTarget === findLastFocusableNode(focusTrapWrapper.current)
+    ) {
+      document.addEventListener('keydown', handleKeyDownLastElement);
+    }
+
+    if (focusTrapWrapper.current && relatedTarget === firstElement) {
+      document.addEventListener('keydown', handleKeyDownFirstElement);
     }
 
     if (
@@ -69,7 +104,7 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
       const firstNode = findFirstFocusableNode(
         focusTrapWrapper.current,
       ) as HTMLElement;
-      write(() => focusFirstFocusableNode(firstNode, true));
+      write(() => focusFirstFocusableNode(firstNode));
     }
   };
 
