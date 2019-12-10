@@ -330,10 +330,7 @@ export function normalizeColorString(value: string) {
   return value.toLowerCase().replace(/\s/g, '');
 }
 
-export const hexToHsb: (hex: string) => HSBColor = compose(
-  rgbToHsb,
-  hexToRgb,
-);
+export const hexToHsb: (hex: string) => HSBColor = compose(rgbToHsb, hexToRgb);
 
 export function expandHex(hex: string) {
   if (hex.length === 4) {
@@ -348,6 +345,7 @@ export function nameToHex(value: string) {
 }
 
 export function rgbStringToHex(value: string) {
+  // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
   const rgb = normalizeColorString(value).match(RGB_STRING_TO_HEX_REGEX) || [
     undefined,
     '0',
