@@ -55,7 +55,7 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
 
   const handleKeyDownFirstElement = (event: any) => {
     if (event.keyCode === Key.Tab && focusTrapWrapper.current) {
-      event.shiftKey && focusLastFocusableNode(focusTrapWrapper.current);
+      event.shiftKey && focusFirstFocusableNode(focusTrapWrapper.current);
 
       document.removeEventListener('keydown', handleKeyDownFirstElement);
     }
@@ -68,25 +68,21 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
       return;
     }
 
-    const firstElement = findFirstFocusableNode(
-      findFirstFocusableNode(
-        focusTrapWrapper.current as HTMLElement,
-      ) as HTMLElement,
-    );
+    if (focusTrapWrapper.current) {
+      const firstElement = findFirstFocusableNode(
+        findFirstFocusableNode(
+          focusTrapWrapper.current as HTMLElement,
+        ) as HTMLElement,
+      );
 
-    if (
-      focusTrapWrapper.current &&
-      relatedTarget === findLastFocusableNode(focusTrapWrapper.current)
-    ) {
-      document.addEventListener('keydown', handleKeyDownLastElement);
-    }
+      relatedTarget === findLastFocusableNode(focusTrapWrapper.current) &&
+        document.addEventListener('keydown', handleKeyDownLastElement);
 
-    if (focusTrapWrapper.current && relatedTarget === firstElement) {
-      document.addEventListener('keydown', handleKeyDownFirstElement);
+      relatedTarget === firstElement &&
+        document.addEventListener('keydown', handleKeyDownFirstElement);
     }
 
     if (
-      focusTrapWrapper &&
       focusTrapWrapper.current &&
       !focusTrapWrapper.current.contains(relatedTarget as HTMLElement) &&
       (!relatedTarget ||
