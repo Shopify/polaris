@@ -51,7 +51,7 @@ describe('<TextPicker />', () => {
       const colorValue = 'white';
       const expectedHex = nameToHex(normalizeColorString(colorValue));
 
-      textField.find('input').getDOMNode().value = colorValue;
+      (textField.find('input') as any).instance().value = colorValue;
       textField
         .find('input')
         .simulate('change')
@@ -69,7 +69,7 @@ describe('<TextPicker />', () => {
       const colorValue = 'rgb(255, 255, 255)';
       const expectedHex = rgbStringToHex(normalizeColorString(colorValue));
 
-      textField.find('input').getDOMNode().value = colorValue;
+      (textField.find('input') as any).instance().value = colorValue;
       textField
         .find('input')
         .simulate('change')
@@ -87,7 +87,7 @@ describe('<TextPicker />', () => {
       const colorValue = 'ffffff';
       const expectedHex = expandHex(`#${normalizeColorString(colorValue)}`);
 
-      textField.find('input').getDOMNode().value = colorValue;
+      (textField.find('input') as any).instance().value = colorValue;
       textField
         .find('input')
         .simulate('change')
@@ -105,7 +105,7 @@ describe('<TextPicker />', () => {
       const colorValue = '#fff';
       const expectedHex = expandHex(normalizeColorString(colorValue));
 
-      textField.find('input').getDOMNode().value = colorValue;
+      (textField.find('input') as any).instance().value = colorValue;
       textField
         .find('input')
         .simulate('change')
@@ -123,7 +123,7 @@ describe('<TextPicker />', () => {
       const colorValue = 'fff';
       const expectedHex = expandHex(`#${normalizeColorString(colorValue)}`);
 
-      textField.find('input').getDOMNode().value = colorValue;
+      (textField.find('input') as any).instance().value = colorValue;
       textField
         .find('input')
         .simulate('change')
@@ -140,7 +140,7 @@ describe('<TextPicker />', () => {
       const textField = textPicker.find(TextField);
       const colorValue = '#00000z';
 
-      textField.find('input').getDOMNode().value = colorValue;
+      (textField.find('input') as any).instance().value = colorValue;
       textField
         .find('input')
         .simulate('change')
