@@ -73,7 +73,7 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
     const {focusTrapWrapper} = this;
     const {trapping = true} = this.props;
 
-    if (trapping === false) {
+    if (relatedTarget == null || trapping === false) {
       return;
     }
 
