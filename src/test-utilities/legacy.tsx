@@ -9,7 +9,7 @@ import {
   WithPolarisTestProviderOptions,
 } from '../components';
 
-export {mount, ReactWrapper};
+export {ReactWrapper};
 
 type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 

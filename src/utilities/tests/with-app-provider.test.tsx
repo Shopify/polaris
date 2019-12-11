@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mount} from 'test-utilities/legacy';
+import {mount} from 'test-utilities';
 import {withAppProvider} from '../with-app-provider';
 
 describe('withAppProvider', () => {
