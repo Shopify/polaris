@@ -1,4 +1,4 @@
-import {ReactWrapper, CommonWrapper, mount} from 'enzyme';
+import {mount, shallow, ReactWrapper, CommonWrapper} from 'enzyme';
 import React from 'react';
 import {act} from 'react-dom/test-utils';
 import {get} from '../utilities/get';
@@ -9,7 +9,9 @@ import {
   WithPolarisTestProviderOptions,
 } from '../components';
 
-export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
+export {mount, shallow, ReactWrapper};
+
+type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
 export function findByTestID(root: ReactWrapper<any, any>, id: string) {
   function hasTestID(wrapper: ReactWrapper<any, any>) {

@@ -1,8 +1,7 @@
 import React from 'react';
-import {shallow} from 'enzyme';
 import {OptionList, ActionList, Popover} from 'components';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithAppProvider, shallow, trigger} from 'test-utilities/legacy';
 import {TextField} from '../../TextField';
 import {Key} from '../../../../../types';
 import {ComboBox} from '..';

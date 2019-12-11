@@ -1,5 +1,4 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
 import {
   ResourceList,
   Select,
@@ -14,6 +13,7 @@ import {
   findByTestID,
   mountWithAppProvider,
   trigger,
+  ReactWrapper,
 } from 'test-utilities/legacy';
 
 import {BulkActions, CheckableButton} from '../components';

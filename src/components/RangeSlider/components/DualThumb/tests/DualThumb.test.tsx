@@ -1,7 +1,10 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+import {
+  mountWithAppProvider,
+  findByTestID,
+  ReactWrapper,
+} from 'test-utilities/legacy';
 import {Key} from 'types';
 import {DualThumb, DualThumbProps} from '../DualThumb';
 
@@ -1032,14 +1035,14 @@ describe('<DualThumb />', () => {
 
 function noop() {}
 
-function findThumbLower(containerComponent: ReactWrapper): ReactWrapper {
+function findThumbLower(containerComponent: ReactWrapper) {
   return containerComponent.find('button').first();
 }
 
-function findThumbUpper(containerComponent: ReactWrapper): ReactWrapper {
+function findThumbUpper(containerComponent: ReactWrapper) {
   return containerComponent.find('button').last();
 }
 
-function findTrack(containerComponent: ReactWrapper): ReactWrapper {
+function findTrack(containerComponent: ReactWrapper) {
   return findByTestID(containerComponent, 'trackWrapper');
 }

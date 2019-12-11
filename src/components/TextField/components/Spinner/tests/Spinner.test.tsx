@@ -1,5 +1,6 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+// eslint-disable-next-line no-restricted-imports
+import {shallow} from 'test-utilities/legacy';
 import {Spinner} from '../Spinner';
 
 describe('<Spinner />', () => {

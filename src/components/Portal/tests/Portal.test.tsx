@@ -1,7 +1,6 @@
 import React from 'react';
-import {mount} from 'enzyme';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mount, mountWithAppProvider} from 'test-utilities/legacy';
 import {Portal} from '../Portal';
 import {portal} from '../../shared';
 
