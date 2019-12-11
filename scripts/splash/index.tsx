@@ -2,7 +2,7 @@ import path from 'path';
 import React, {useState, useEffect} from 'react';
 import {Box, Text, Color, render} from 'ink';
 import sortBy from 'lodash/sortBy';
-import {getGitStagedFiles, getDependencies} from './treebuilder';
+import {getGitStagedFiles, getDependencies} from '@shopify/splash';
 
 if (process.env.DISABLE_SPLASH) {
   process.exit(0);

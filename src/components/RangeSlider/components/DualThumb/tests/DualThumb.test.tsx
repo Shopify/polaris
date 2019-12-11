@@ -1,5 +1,6 @@
 import React from 'react';
 import {ReactWrapper} from 'enzyme';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Key} from 'types';
 import {DualThumb, DualThumbProps} from '../DualThumb';
@@ -489,7 +490,16 @@ describe('<DualThumb />', () => {
         });
       getBoundingClientRectSpy = jest
         .spyOn(Element.prototype, 'getBoundingClientRect')
-        .mockImplementation(mockGetBoundingClientRect);
+        .mockImplementation(() => {
+          return {
+            width: 124,
+            height: 0,
+            top: 0,
+            left: -12,
+            bottom: 0,
+            right: 0,
+          };
+        });
     });
 
     afterAll(() => {
@@ -693,7 +703,16 @@ describe('<DualThumb />', () => {
         });
       getBoundingClientRectSpy = jest
         .spyOn(Element.prototype, 'getBoundingClientRect')
-        .mockImplementation(mockGetBoundingClientRect);
+        .mockImplementation(() => {
+          return {
+            width: 124,
+            height: 0,
+            top: 0,
+            left: -12,
+            bottom: 0,
+            right: 0,
+          };
+        });
     });
 
     afterAll(() => {
@@ -1023,20 +1042,4 @@ function findThumbUpper(containerComponent: ReactWrapper): ReactWrapper {
 
 function findTrack(containerComponent: ReactWrapper): ReactWrapper {
   return findByTestID(containerComponent, 'trackWrapper');
-}
-
-function mockGetBoundingClientRect(): ReturnType<
-  Element['getBoundingClientRect']
-> {
-  return {
-    width: 124,
-    height: 0,
-    top: 0,
-    left: -12,
-    bottom: 0,
-    right: 0,
-    x: 0,
-    y: 0,
-    toJSON() {},
-  };
 }

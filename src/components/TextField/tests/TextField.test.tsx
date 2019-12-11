@@ -1,4 +1,5 @@
 import React, {ReactElement} from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {InlineError, Labelled, Connected, Select} from 'components';
 import {mountWithApp} from 'test-utilities';

@@ -50,7 +50,7 @@ describe('build', () => {
 
   it('generates fully namespaced CSS for nested components', () => {
     expect(fs.readFileSync('./styles/components.scss', 'utf8')).toMatch(
-      '.Polaris-ResourceList-BulkActions__Button{',
+      '.Polaris-ResourceList-BulkActions__BulkActionButton{',
     );
   });
 

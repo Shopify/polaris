@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Tab, Panel, TabMeasurer} from '../components';
 import Tabs, {TabsProps} from '../Tabs';

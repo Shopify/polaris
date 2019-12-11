@@ -86,6 +86,11 @@ $content-max-width: rem(400px);
   max-height: none;
 }
 
+.Content-fluidContent {
+  max-height: none;
+  max-width: none;
+}
+
 .Pane {
   flex: 1 1 0%;
   max-width: 100%;

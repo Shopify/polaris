@@ -1,5 +1,6 @@
 import React from 'react';
 import {Icon, Caption, TextStyle} from 'components';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';

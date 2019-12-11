@@ -93,11 +93,15 @@
 
 .Footer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   padding: 0 spacing() spacing();
 
   @include page-content-when-not-fully-condensed {
     padding: 0 spacing(loose) spacing(loose);
+  }
+
+  &.LeftJustified {
+    justify-content: flex-start;
   }
 
   .Section-subdued + & {

@@ -10,11 +10,11 @@ $Backdrop-opacity: 0.88;
   padding: spacing(tight) spacing();
   border-radius: var(--p-border-radius-wide, border-radius());
   background: var(
-    --p-surface-inverse-foreground,
+    --p-surface-foreground-inverse,
     rgba(color('black'), $Backdrop-opacity)
   );
   box-shadow: var(--p-override-none, shadow());
-  color: var(--p-text-on-inverse, color('white'));
+  color: var(--p-text-on-surface-inverse, color('white'));
   margin-bottom: spacing(loose);
 
   @include breakpoint-after($breakpoint) {
@@ -32,7 +32,7 @@ $Backdrop-opacity: 0.88;
 }
 
 .error {
-  $error-color: var(--p-text-on-dark, color('white'));
+  $error-color: var(--p-text-on-surface-dark, color('white'));
   background: var(
     --p-critical-action,
     rgba(color('red', 'dark'), $Backdrop-opacity)
@@ -54,7 +54,7 @@ $Backdrop-opacity: 0.88;
   border: none;
   appearance: none;
   background: transparent;
-  fill: var(--p-text-on-inverse, color('white'));
+  fill: var(--p-text-on-surface-inverse, color('white'));
   cursor: pointer;
 
   &:focus {

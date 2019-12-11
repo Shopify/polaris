@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
 import {Select, TextField} from 'components';
 import {FilterValueSelector} from '../FilterValueSelector';

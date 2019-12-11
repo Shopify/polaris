@@ -6,7 +6,7 @@
     "dbaeumer.vscode-eslint",
     "EditorConfig.editorconfig",
     "esbenp.prettier-vscode",
-    "mrmlnc.vscode-scss",
-    "shinnn.stylelint"
+    "hex-ci.stylelint-plus",
+    "mrmlnc.vscode-scss"
   ]
 }

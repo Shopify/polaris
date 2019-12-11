@@ -1,11 +1,17 @@
 import {useEffect, RefObject} from 'react';
 
 /**
- * Attachs and removes event listeners from the target
+ * Attaches and removes event listeners from the target
  * @param target Defines a target for the listener to be placed on
  * @param type Defines the type of event, i.e blur or focus
  * @param handler Defines a callback to be invoked when the event type occurs
- * @param options Object that specificies event properties
+ * @param options Object that specifies event properties
+ * @example
+ * function Playground() {
+ *  useEventListener(window, 'resize', () => console.log('resize'));
+ *
+ *  return null;
+ * }
  */
 export function useEventListener<K extends keyof WindowEventMap>(
   target: RefObject<HTMLElement> | Window | Document,

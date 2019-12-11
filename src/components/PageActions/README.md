@@ -96,6 +96,7 @@ Used on a resource page (such as an individual order or product page) to let mer
   secondaryActions={[
     {
       content: 'Delete',
+      destructive: true,
     },
   ]}
 />

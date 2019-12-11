@@ -44,8 +44,8 @@
       "totalsRowHeading": "Totaux"
     },
     "DatePicker": {
-      "previousMonth": "Montrer le mois précédent, {previousMonthName} {showPreviousYear}",
-      "nextMonth": "Montrer le mois suivant, {nextMonth} {nextYear}",
+      "previousMonth": "Afficher le mois précédent, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Afficher le mois suivant, {nextMonth} {nextYear}",
       "today": "Aujourd'hui ",
       "months": {
         "january": "Janvier",

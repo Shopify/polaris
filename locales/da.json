@@ -18,7 +18,7 @@
         "success": "Succes",
         "warning": "Advarsel",
         "attention": "Bemærk",
-        "new": "Nyt"
+        "new": "Nye"
       }
     },
     "Button": {
@@ -132,8 +132,8 @@
     },
     "ResourceList": {
       "sortingLabel": "Sortér efter",
-      "defaultItemSingular": "genstand",
-      "defaultItemPlural": "genstande",
+      "defaultItemSingular": "vare",
+      "defaultItemPlural": "varer",
       "showing": "Viser {itemsCount} {resource}",
       "loading": "Indlæser {resource}",
       "selected": "{selectedItemsCount} valgt",
@@ -147,7 +147,7 @@
       "a11yCheckboxDeselectAllMultiple": "Fravælg alle {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Vælg alle {itemsLength} {resourceNamePlural}",
       "ariaLiveSingular": "{itemsLength} vare",
-      "ariaLivePlural": "{itemsLength} genstande",
+      "ariaLivePlural": "{itemsLength} varer",
       "Item": {
         "actionsDropdownLabel": "Handlinger for {accessibilityLabel}",
         "actionsDropdown": "Rulleliste med handlinger",
