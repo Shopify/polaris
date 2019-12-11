@@ -1,11 +1,21 @@
 import {useEffect, RefObject} from 'react';
 
+interface Options {
+  defaultToWindow: boolean;
+}
+
 /**
  * Attaches and removes event listeners from the target
- * @param target Defines a target for the listener to be placed on
+ * @param target Defines a target for the listener to be placed on. Defaults to window.
  * @param type Defines the type of event, i.e blur or focus
  * @param handler Defines a callback to be invoked when the event type occurs
- * @param options Object that specifies event properties
+ * @param listenerOptions Object that specifies event properties
+ * @param options Object that defines properties used in the hook
+ *                interface Options {
+ *                  // Uses window as a back up event target when the current
+ *                  // target is falsy
+ *                  defaultToWindow: boolean;
+ *                }
  * @example
  * function Playground() {
  *  useEventListener(window, 'resize', () => console.log('resize'));
@@ -14,15 +24,24 @@ import {useEffect, RefObject} from 'react';
  * }
  */
 export function useEventListener<K extends keyof WindowEventMap>(
-  target: RefObject<HTMLElement> | Window | Document,
+  target: RefObject<HTMLElement> | Window | Document | null,
   type: K,
   handler: (ev: WindowEventMap[K]) => any,
-  options?: boolean | AddEventListenerOptions,
+  listenerOptions?: boolean | AddEventListenerOptions,
+  options?: Options,
 ) {
   useEffect(() => {
-    const eventTarget = target && 'current' in target ? target.current : target;
+    let eventTarget = target && 'current' in target ? target.current : target;
+    if (!eventTarget && options && options.defaultToWindow) {
+      eventTarget = window;
+    }
+
     if (!eventTarget) return;
-    eventTarget.addEventListener(type, handler, options);
-    return () => eventTarget.removeEventListener(type, handler, options);
-  }, [handler, options, target, type]);
+
+    eventTarget.addEventListener(type, handler, listenerOptions);
+    return () => {
+      eventTarget &&
+        eventTarget.removeEventListener(type, handler, listenerOptions);
+    };
+  }, [handler, listenerOptions, options, target, type]);
 }

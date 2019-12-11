@@ -300,7 +300,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   useEventListener(dropNode, 'dragover', handleDragOver);
   useEventListener(dropNode, 'dragenter', handleDragEnter);
   useEventListener(dropNode, 'dragleave', handleDragLeave);
-  useEventListener(window, 'resize', adjustSize);
+  useEventListener(null, 'resize', adjustSize, {}, {defaultToWindow: true});
 
   useComponentDidMount(() => {
     adjustSize();
