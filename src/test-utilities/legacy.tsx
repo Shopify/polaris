@@ -1,4 +1,4 @@
-import {mount, shallow, ReactWrapper, CommonWrapper} from 'enzyme';
+import {mount, ReactWrapper, CommonWrapper} from 'enzyme';
 import React from 'react';
 import {act} from 'react-dom/test-utils';
 import {get} from '../utilities/get';
@@ -9,7 +9,7 @@ import {
   WithPolarisTestProviderOptions,
 } from '../components';
 
-export {mount, shallow, ReactWrapper};
+export {mount, ReactWrapper};
 
 type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -19,15 +19,6 @@ export function findByTestID(root: ReactWrapper<any, any>, id: string) {
   }
 
   return root.findWhere(hasTestID).first();
-}
-
-export function matchByTestID(root: ReactWrapper<any, any>, regexp: RegExp) {
-  function matchesTestID(wrapper: ReactWrapper<any, any>) {
-    const id = wrapper.prop('testID');
-    return typeof id === 'string' && regexp.test(id);
-  }
-
-  return root.findWhere(matchesTestID);
 }
 
 const reactAct = act as (func: () => void | Promise<void>) => Promise<void>;

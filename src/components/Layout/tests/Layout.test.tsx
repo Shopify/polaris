@@ -1,10 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
-import {
-  findByTestID,
-  matchByTestID,
-  mountWithAppProvider,
-} from 'test-utilities/legacy';
+import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
 import {Section} from '../components';
 import {Layout} from '../Layout';
 
@@ -82,9 +78,9 @@ describe('<Layout />', () => {
           <MyComponent />
         </Layout.AnnotatedSection>,
       );
-      const description = matchByTestID(
+      const description = findByTestID(
         annotatedSection,
-        /AnnotationDescription/,
+        'AnnotationDescription',
       );
 
       expect(description.exists()).toBe(false);
