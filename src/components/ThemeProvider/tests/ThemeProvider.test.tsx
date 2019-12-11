@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mount} from 'enzyme';
+import {mount} from 'test-utilities';
 import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext, useTheme} from '../../../utilities/theme';
 import {FeaturesContext} from '../../../utilities/features';
@@ -131,7 +131,7 @@ describe('<ThemeProvider />', () => {
       true,
     );
 
-    const styleKeys = Object.keys(wrapper.find('div').props().style || {});
+    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
 
     expect(styleKeys).toContain('--p-surface-background');
   });
@@ -166,7 +166,7 @@ describe('<ThemeProvider />', () => {
     }
   });
 
-  it('does set overrides', () => {
+  it('sets overrides', () => {
     const wrapper = mountWithGlobalTheming(
       <ThemeProvider theme={{}}>
         <p>Hello</p>
@@ -174,7 +174,7 @@ describe('<ThemeProvider />', () => {
       true,
     );
 
-    const styleKeys = Object.keys(wrapper.find('div').props().style || {});
+    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
 
     expect(styleKeys).toContain('--p-override-zero');
   });
@@ -190,12 +190,7 @@ describe('<ThemeProvider />', () => {
         true,
       );
 
-      expect(
-        wrapper
-          .find('div')
-          .last()
-          .props().style,
-      ).toStrictEqual({});
+      expect(wrapper.findAll('div')![1].props.style).toStrictEqual({});
     });
 
     it('does not set overrides', () => {
@@ -209,10 +204,7 @@ describe('<ThemeProvider />', () => {
       );
 
       const styleKeys = Object.keys(
-        wrapper
-          .find('div')
-          .last()
-          .props().style || {},
+        wrapper.findAll('div')![1].props.style || {},
       );
 
       expect(styleKeys).not.toContain('--p-override-zero');
@@ -235,12 +227,7 @@ describe('<ThemeProvider />', () => {
         true,
       );
 
-      expect(
-        wrapper
-          .find('div')
-          .last()
-          .props().style,
-      ).toStrictEqual(
+      expect(wrapper.findAll('div')![1].props.style).toStrictEqual(
         expect.objectContaining({'--p-surface': 'hsla(0, 0%, 0%, 1)'}),
       );
     });
@@ -259,10 +246,7 @@ describe('<ThemeProvider />', () => {
         true,
       );
 
-      const {style} = wrapper
-        .find('div')
-        .last()
-        .props();
+      const {style} = wrapper.findAll('div')![1].props;
       expect(style).toStrictEqual(
         expect.objectContaining({
           '--p-critical-surface-subdued':
@@ -291,10 +275,7 @@ describe('<ThemeProvider />', () => {
         true,
       );
 
-      const {style} = wrapper
-        .find('div')
-        .last()
-        .props();
+      const {style} = wrapper.findAll('div')![1].props;
       expect(style).toStrictEqual(
         expect.objectContaining({
           '--p-critical-surface-subdued': 'hsla(57, 100%, 89%, 1)',
@@ -322,10 +303,7 @@ describe('<ThemeProvider />', () => {
         true,
       );
 
-      const {style} = wrapper
-        .find('div')
-        .last()
-        .props();
+      const {style} = wrapper.findAll('div')![1].props;
       expect(style).toStrictEqual(
         expect.objectContaining({
           '--p-surface-background': 'hsla(0, 0%, 98%, 1)',
@@ -354,10 +332,7 @@ describe('<ThemeProvider />', () => {
       true,
     );
 
-    const {style} = wrapper
-      .find('div')
-      .last()
-      .props();
+    const {style} = wrapper.findAll('div')![1].props;
     expect(style).toStrictEqual(
       expect.objectContaining({
         '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
