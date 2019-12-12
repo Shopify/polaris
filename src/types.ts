@@ -1,5 +1,3 @@
-export {UNSTABLE_Color} from './utilities/theme';
-
 export type Color =
   | 'white'
   | 'black'

@@ -7,7 +7,7 @@ const {
   UNSTABLE_roleVariants: roleVariants,
   UNSTABLE_buildColors: colorFactory,
   UNSTABLE_Tokens: Tokens,
-  UNSTABLE_Color: Color,
+  UNSTABLE_DEFAULT_COLOR: Color,
 } = require('../');
 
 const ColorSwatch = {
@@ -39,21 +39,8 @@ const RoleDescription = {
     'Used to decorate elements where color does convey a specific meaning in components like avatars',
 };
 
-const colors = {
-  surface: Color.Surface,
-  onSurface: Color.OnSurface,
-  interactive: Color.Interactive,
-  neutral: Color.Neutral,
-  primary: Color.Primary,
-  critical: Color.Critical,
-  warning: Color.Warning,
-  highlight: Color.Highlight,
-  success: Color.Success,
-  decorative: Color.Decorative,
-};
-
-const lightColors = colorFactory(colors, roleVariants, 'light');
-const darkColors = colorFactory(colors, roleVariants, 'dark');
+const lightColors = colorFactory(Color, roleVariants, 'light');
+const darkColors = colorFactory(Color, roleVariants, 'dark');
 
 const Template = {
   tocItem: (name) => `- [${name}](#${name})\n`,

@@ -4,7 +4,7 @@ import {
   ThemeProviderThemeConfig,
   buildThemeContext,
   buildCustomProperties,
-  UNSTABLE_Color,
+  DEFAULT_COLOR,
   Tokens,
   ColorScheme,
   ThemeProviderColorScheme,
@@ -43,19 +43,6 @@ export function ThemeProvider({
     colorScheme !== undefined &&
     colorScheme !== parentColorScheme;
 
-  const defaultColors = {
-    surface: UNSTABLE_Color.Surface,
-    onSurface: UNSTABLE_Color.OnSurface,
-    interactive: UNSTABLE_Color.Interactive,
-    neutral: UNSTABLE_Color.Neutral,
-    primary: UNSTABLE_Color.Primary,
-    critical: UNSTABLE_Color.Critical,
-    warning: UNSTABLE_Color.Warning,
-    highlight: UNSTABLE_Color.Highlight,
-    success: UNSTABLE_Color.Success,
-    decorative: UNSTABLE_Color.Decorative,
-  };
-
   let processedColorScheme: ColorScheme | undefined;
 
   if (colorScheme === 'inverse' && parentColorScheme === 'dark') {
@@ -73,7 +60,7 @@ export function ThemeProvider({
     ...rest,
     ...{colorScheme: processedColorScheme || parentColorScheme},
     UNSTABLE_colors: {
-      ...(isParentThemeProvider && defaultColors),
+      ...(isParentThemeProvider && DEFAULT_COLOR),
       ...(childShouldInheritParentColors && parentColors),
       ...UNSTABLE_colors,
     },

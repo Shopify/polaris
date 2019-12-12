@@ -6,7 +6,6 @@ import {create} from '@storybook/theming';
 import tokens from '@shopify/polaris-tokens';
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
-import {UNSTABLE_Color} from '../src/utilities/theme';
 
 addParameters({
   options: {
