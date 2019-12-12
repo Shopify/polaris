@@ -112,15 +112,7 @@ export function ThemeProvider({
 
   return (
     <ThemeContext.Provider value={theme}>
-      <div
-        style={{
-          ...(unstableGlobalTheming &&
-            !isParentThemeProvider && {color, backgroundColor}),
-          ...customProperties,
-        }}
-      >
-        {children}
-      </div>
+      <div style={customProperties}>{children}</div>
     </ThemeContext.Provider>
   );
 }
