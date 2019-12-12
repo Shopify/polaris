@@ -179,6 +179,136 @@ describe('<ThemeProvider />', () => {
     expect(styleKeys).toContain('--p-override-zero');
   });
 
+  it('sets surface', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      true,
+    );
+
+    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
+
+    expect(styleKeys).toContain('--p-surface-background');
+  });
+
+  it('sets onSurface', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      true,
+    );
+
+    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
+
+    expect(styleKeys).toContain('--p-text-on-surface');
+  });
+
+  it('sets interactive', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      true,
+    );
+
+    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
+
+    expect(styleKeys).toContain('--p-interactive-action');
+  });
+
+  it('sets neutral', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      true,
+    );
+
+    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
+
+    expect(styleKeys).toContain('--p-neutral-action');
+  });
+
+  it('sets primary', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      true,
+    );
+
+    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
+
+    expect(styleKeys).toContain('--p-primary-action');
+  });
+
+  it('sets critical', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      true,
+    );
+
+    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
+
+    expect(styleKeys).toContain('--p-critical-action');
+  });
+
+  it('sets warning', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      true,
+    );
+
+    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
+
+    expect(styleKeys).toContain('--p-warning-surface');
+  });
+
+  it('sets highlight', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      true,
+    );
+
+    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
+
+    expect(styleKeys).toContain('--p-highlight-surface');
+  });
+
+  it('sets success', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      true,
+    );
+
+    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
+
+    expect(styleKeys).toContain('--p-success-surface');
+  });
+
+  it('sets decorative', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      true,
+    );
+
+    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
+
+    expect(styleKeys).toContain('--p-decorative-one-text');
+  });
+
   describe('when nested', () => {
     it('does not set a default theme', () => {
       const wrapper = mountWithGlobalTheming(
