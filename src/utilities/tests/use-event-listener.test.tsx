@@ -72,4 +72,22 @@ describe('useEventListener', () => {
     component.unmount();
     expect(removeEventListenerSpy).toHaveBeenCalledTimes(1);
   });
+
+  it('defaults to window when the option is set', () => {
+    const spy = jest.fn();
+    function Component() {
+      const div = useRef<HTMLDivElement>(null);
+
+      useEventListener(div, 'blur', spy, {}, {defaultToWindow: true});
+
+      useEffect(() => {
+        window.dispatchEvent(new Event('blur'));
+      });
+
+      return <div />;
+    }
+
+    mount(<Component />);
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
 });

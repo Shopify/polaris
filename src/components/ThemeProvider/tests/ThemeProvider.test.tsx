@@ -1,33 +1,42 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mount} from 'test-utilities';
+import {createMount} from 'test-utilities';
 import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext, useTheme} from '../../../utilities/theme';
 import {FeaturesContext} from '../../../utilities/features';
 
+const mountWithGlobalTheming = createMount<
+  {globalTheming?: boolean},
+  {features: React.ContextType<typeof FeaturesContext>}
+>({
+  context({globalTheming = false}) {
+    return {features: {unstableGlobalTheming: globalTheming}};
+  },
+  render(element, context) {
+    return (
+      <FeaturesContext.Provider value={context.features}>
+        {element}
+      </FeaturesContext.Provider>
+    );
+  },
+});
+
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
-    const themeProvider = mountWithAppProvider(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider theme={{logo: {}}}>
         <p>Hello</p>
       </ThemeProvider>,
     );
-    expect(themeProvider.exists()).toBe(true);
+    expect(themeProvider).not.toBeNull();
   });
 
   it('passes context', () => {
-    const Child: React.SFC = (_props) => {
-      return (
-        <ThemeContext.Consumer>
-          {(polarisTheme) => {
-            return polarisTheme && polarisTheme.logo ? <div /> : null;
-          }}
-        </ThemeContext.Consumer>
-      );
+    const Child: React.SFC = () => {
+      const polarisTheme = React.useContext(ThemeContext);
+      return polarisTheme && polarisTheme.logo ? <div /> : null;
     };
 
-    const wrapper = mountWithAppProvider(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
           logo: {
@@ -43,29 +52,27 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    const div = wrapper.find(Child).find('div');
-
-    expect(div.exists()).toBe(true);
+    expect(themeProvider.find(Child)).toContainReactComponent('div');
   });
 
   it('has a default theme', () => {
-    const wrapper = mountWithAppProvider(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider theme={{}}>
         <p />
       </ThemeProvider>,
     );
 
-    expect(wrapper.find('div').props().style).toStrictEqual(
-      expect.objectContaining({
+    expect(themeProvider.find('div')).toHaveReactProps({
+      style: expect.objectContaining({
         '--top-bar-background': '#00848e',
         '--top-bar-background-lighter': '#1d9ba4',
         '--top-bar-color': '#f9fafb',
       }),
-    );
+    });
   });
 
   it('sets a provided theme', () => {
-    const wrapper = mountWithAppProvider(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
           colors: {
@@ -79,17 +86,17 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(wrapper.find('div').props().style).toStrictEqual(
-      expect.objectContaining({
+    expect(themeProvider.find('div')).toHaveReactProps({
+      style: expect.objectContaining({
         '--top-bar-background': '#108043',
         '--top-bar-background-lighter': 'hsla(147, 63%, 43%, 1)',
         '--top-bar-color': 'rgb(255, 255, 255)',
       }),
-    );
+    });
   });
 
   it('updates themes', () => {
-    const wrapper = mountWithAppProvider(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
           colors: {
@@ -103,7 +110,7 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    wrapper.setProps({
+    themeProvider.setProps({
       theme: {
         colors: {
           topBar: {
@@ -112,43 +119,29 @@ describe('<ThemeProvider />', () => {
         },
       },
     });
-    wrapper.update();
 
-    expect(wrapper.find('div').props().style).toStrictEqual(
-      expect.objectContaining({
+    expect(themeProvider.find('div')).toHaveReactProps({
+      style: expect.objectContaining({
         '--top-bar-background': '#021123',
         '--top-bar-background-lighter': 'hsla(213, 74%, 22%, 1)',
         '--top-bar-color': 'rgb(255, 255, 255)',
       }),
-    );
+    });
   });
 
   it('sets color system properties when global theming is enabled', () => {
-    const wrapper = mountWithGlobalTheming(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider theme={{UNSTABLE_colors: {surface: '#ffffff'}}}>
         <p>Hello</p>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
-    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
-
-    expect(styleKeys).toContain('--p-surface-background');
-  });
-
-  it('sets color system properties in context when global theming is enabled', () => {
-    mountWithGlobalTheming(
-      <ThemeProvider theme={{UNSTABLE_colors: {surface: '#ffffff'}}}>
-        <Child />
-      </ThemeProvider>,
-      true,
-    );
-
-    function Child() {
-      const {UNSTABLE_cssCustomProperties} = useTheme();
-      expect(UNSTABLE_cssCustomProperties).toBeTruthy();
-      return null;
-    }
+    expect(themeProvider.find('div')).toHaveReactProps({
+      style: expect.objectContaining({
+        '--p-surface-background': 'hsla(0, 0%, 98%, 1)',
+      }),
+    });
   });
 
   it('does not set color system properties in context by default', () => {
@@ -156,7 +149,7 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider theme={{}}>
         <Child />
       </ThemeProvider>,
-      false,
+      {globalTheming: false},
     );
 
     function Child() {
@@ -171,7 +164,7 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
@@ -184,7 +177,7 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
@@ -197,7 +190,7 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
@@ -210,7 +203,7 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
@@ -223,7 +216,7 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
@@ -236,7 +229,7 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
@@ -249,7 +242,7 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
@@ -262,7 +255,7 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
@@ -275,7 +268,7 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
@@ -288,7 +281,7 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
@@ -301,7 +294,7 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
@@ -317,7 +310,7 @@ describe('<ThemeProvider />', () => {
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        true,
+        {globalTheming: true},
       );
 
       expect(wrapper.findAll('div')![1].props.style).toStrictEqual({
@@ -332,7 +325,7 @@ describe('<ThemeProvider />', () => {
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        true,
+        {globalTheming: true},
       );
 
       const styleKeys = Object.keys(
@@ -356,7 +349,7 @@ describe('<ThemeProvider />', () => {
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        true,
+        {globalTheming: true},
       );
 
       expect(wrapper.findAll('div')![1].props.style).toStrictEqual(
@@ -375,7 +368,7 @@ describe('<ThemeProvider />', () => {
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        true,
+        {globalTheming: true},
       );
 
       const {style} = wrapper.findAll('div')![1].props;
@@ -404,7 +397,7 @@ describe('<ThemeProvider />', () => {
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        true,
+        {globalTheming: true},
       );
 
       const {style} = wrapper.findAll('div')![1].props;
@@ -428,7 +421,7 @@ describe('<ThemeProvider />', () => {
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        true,
+        {globalTheming: true},
       );
 
       const {style} = wrapper.findAll('div')![1].props;
@@ -457,7 +450,7 @@ describe('<ThemeProvider />', () => {
           <p>Hello</p>
         </ThemeProvider>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const {style} = wrapper.findAll('div')![1].props;
@@ -490,7 +483,7 @@ describe('<ThemeProvider />', () => {
           <p>Hello</p>
         </ThemeProvider>
       </ThemeProvider>,
-      true,
+      {globalTheming: true},
     );
 
     const {style} = wrapper.findAll('div')![1].props;
@@ -506,16 +499,3 @@ describe('<ThemeProvider />', () => {
     );
   });
 });
-
-function mountWithGlobalTheming(
-  children: React.ReactNode,
-  globalThemingEnabled: boolean,
-) {
-  return mount(
-    <FeaturesContext.Provider
-      value={{unstableGlobalTheming: globalThemingEnabled}}
-    >
-      {children}
-    </FeaturesContext.Provider>,
-  );
-}

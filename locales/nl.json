@@ -62,13 +62,13 @@
         "december": "december"
       },
       "daysAbbreviated": {
-        "monday": "Ma.",
-        "tuesday": "Di.",
-        "wednesday": "Wo.",
-        "thursday": "Do.",
-        "friday": "Vr.",
-        "saturday": "Za.",
-        "sunday": "Zo."
+        "monday": "ma.",
+        "tuesday": "di.",
+        "wednesday": "wo.",
+        "thursday": "do.",
+        "friday": "vr.",
+        "saturday": "za.",
+        "sunday": "zo."
       }
     },
     "DiscardConfirmationModal": {
