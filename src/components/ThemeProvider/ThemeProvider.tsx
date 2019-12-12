@@ -43,17 +43,17 @@ export function ThemeProvider({
     colorScheme !== undefined &&
     colorScheme !== parentColorScheme;
 
-  let processedColorScheme: ColorScheme | undefined;
+  const inverseParentColorScheme =
+    parentColorScheme === 'dark' ? 'light' : 'dark';
 
-  if (colorScheme === 'inverse' && parentColorScheme === 'dark') {
-    processedColorScheme = 'light';
-  } else if (
-    (colorScheme === 'inverse' && parentColorScheme === 'light') ||
-    (colorScheme === 'inverse' && parentColorScheme === undefined)
-  ) {
-    processedColorScheme = 'dark';
-  } else if (colorScheme !== 'inverse') {
-    processedColorScheme = colorScheme;
+  const processedColorScheme = isColorScheme(colorScheme)
+    ? colorScheme
+    : inverseParentColorScheme;
+
+  function isColorScheme(
+    colorScheme: ThemeProviderColorScheme | ColorScheme,
+  ): colorScheme is ColorScheme {
+    return colorScheme !== 'inverse';
   }
 
   const processedThemeConfig = {

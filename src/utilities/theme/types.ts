@@ -38,7 +38,7 @@ export type Role = keyof RoleColors;
 
 export type ColorScheme = 'light' | 'dark';
 
-export type ThemeProviderColorScheme = ColorScheme | 'inverse';
+export type ThemeProviderColorScheme = ColorScheme | 'inverse' | undefined;
 
 // The value that is passed into the ThemeProvider
 export interface ThemeConfig {
