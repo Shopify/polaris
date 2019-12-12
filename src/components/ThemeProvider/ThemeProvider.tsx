@@ -11,7 +11,6 @@ import {
   ThemeProviderColorScheme,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
-import {classNames} from '../../utilities/css';
 
 interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
@@ -109,14 +108,15 @@ export function ThemeProvider({
     }
   }, [backgroundColor, color, isParentThemeProvider]);
 
-  const className = classNames(
-    'ThemeProvider',
-    unstableGlobalTheming && 'globalTheming',
-  );
-
   return (
     <ThemeContext.Provider value={theme}>
-      <div style={customProperties} className={className}>
+      <div
+        style={{
+          ...(unstableGlobalTheming &&
+            !isParentThemeProvider && {color, backgroundColor}),
+          ...customProperties,
+        }}
+      >
         {children}
       </div>
     </ThemeContext.Provider>
