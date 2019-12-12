@@ -131,7 +131,7 @@ describe('<ThemeProvider />', () => {
 
   it('sets color system properties when global theming is enabled', () => {
     const themeProvider = mountWithGlobalTheming(
-      <ThemeProvider theme={{UNSTABLE_colors: {surface: '#ffffff'}}}>
+      <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
       {globalTheming: true},
@@ -144,7 +144,22 @@ describe('<ThemeProvider />', () => {
     });
   });
 
-  it('does not set color system properties in context by default', () => {
+  it('sets color system properties in context when global theming is enabled', () => {
+    mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <Child />
+      </ThemeProvider>,
+      {globalTheming: true},
+    );
+
+    function Child() {
+      const {UNSTABLE_cssCustomProperties} = useTheme();
+      expect(UNSTABLE_cssCustomProperties).toBeTruthy();
+      return null;
+    }
+  });
+
+  it('does not set color system properties in context when global theming is disabled', () => {
     mountWithGlobalTheming(
       <ThemeProvider theme={{}}>
         <Child />
@@ -334,6 +349,7 @@ describe('<ThemeProvider />', () => {
 
       expect(styleKeys).not.toContain('--p-override-zero');
     });
+
     it('adds css custom properties for color roles provided', () => {
       const wrapper = mountWithGlobalTheming(
         <ThemeProvider
