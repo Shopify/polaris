@@ -4,7 +4,7 @@ export const DefaultThemeColors = {
   surface: '#111213',
   onSurface: '#111213',
   interactive: '#2E72D2',
-  neutral: '#111213',
+  secondary: '#111213',
   primary: '#008060',
   critical: '#D82C0D',
   warning: '#FFC453',
@@ -18,30 +18,23 @@ export const DefaultColorScheme: ColorScheme = 'light';
 export const roleVariants: RoleVariants = {
   surface: [
     {
-      name: 'surface',
+      name: 'background',
       description:
-        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
-      light: {},
-      dark: {},
-    },
-    {
-      name: 'surfaceBackground',
-      description:
-        'For use in the background of our UIs as a background color, in components such as Page and Frame backgrounds.',
+        'For use as a background color, in components such as Page and Frame backgrounds.',
       light: {lightness: 98.3},
       dark: {lightness: 3.3},
     },
     {
-      name: 'surfaceForeground',
+      name: 'surface',
       description:
-        'For use in the foreground of our UIs as a background color, in components such as Card, Modal, and Popover.',
+        'For use as a background color, in components such as Card, Modal, and Popover.',
       light: {lightness: 100},
       dark: {lightness: 12.7},
     },
     {
-      name: 'surfaceForegroundSubdued',
+      name: 'surfaceSubdued',
       description:
-        'For use in the foreground of our UIs as a subdued background color, in components such as Card, Modal, and Popover.',
+        'For use as a subdued background color, in components such as Card, Modal, and Popover.',
       light: {lightness: 98.3},
       dark: {lightness: 10},
     },
@@ -113,176 +106,148 @@ export const roleVariants: RoleVariants = {
   ],
   onSurface: [
     {
-      name: 'onSurface',
-      description:
-        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
-      light: {},
-      dark: {},
-    },
-    {
-      name: 'borderOnSurface',
+      name: 'border',
       description: 'For use as a border (border or interactive outline).',
       light: {lightness: 75},
       dark: {lightness: 35},
     },
     {
-      name: 'borderDisabledOnSurface',
+      name: 'borderDisabled',
       description: 'For use as a an interactive outline on disabled elements.',
       light: {lightness: 95},
       dark: {lightness: 70},
     },
     {
-      name: 'borderSubduedOnSurface',
+      name: 'borderSubdued',
       description:
         'For use as a subdued border (border or interactive outline).',
       light: {lightness: 85},
       dark: {lightness: 32},
     },
     {
-      name: 'iconOnSurface',
-      description: 'For use as the fill color of neutral icons.',
+      name: 'icon',
+      description: 'For use as the fill color of secondary icons.',
       light: {lightness: 40.1},
       dark: {lightness: 70.1},
     },
     {
-      name: 'iconDisabledOnSurface',
-      description: 'For use as the fill color of disabled neutral icons.',
+      name: 'iconDisabled',
+      description: 'For use as the fill color of disabled secondary icons.',
       light: {lightness: 76.9},
       dark: {lightness: 36.8},
     },
     {
-      name: 'iconSubduedOnSurface',
-      description: 'For use as the fill color of subdued neutral icons.',
+      name: 'iconSubdued',
+      description: 'For use as the fill color of subdued secondary icons.',
       light: {lightness: 59.8},
       dark: {lightness: 52.1},
     },
     {
-      name: 'textOnSurface',
-      description: 'For use as a neutral text color.',
+      name: 'text',
+      description: 'For use as a secondary text color.',
       light: {lightness: 13.1},
       dark: {lightness: 90.8},
     },
     {
-      name: 'textDisabledOnSurface',
-      description: 'For use as a disabled neutral text color.',
+      name: 'textDisabled',
+      description: 'For use as a disabled secondary text color.',
       light: {lightness: 61.3},
       dark: {lightness: 48.2},
     },
     {
-      name: 'textSubduedOnSurface',
-      description: 'For use as a subdued neutral text color.',
+      name: 'textSubdued',
+      description: 'For use as a subdued secondary text color.',
       light: {lightness: 47.4},
       dark: {lightness: 65.1},
     },
   ],
   interactive: [
     {
-      name: 'interactive',
-      description:
-        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
-      light: {},
-      dark: {},
-    },
-    {
-      name: 'interactiveAction',
+      name: 'actionInteractive',
       description: 'Used for links and plain buttons.',
       light: {lightness: 48.6},
       dark: {lightness: 65, saturation: 100, hue: 247.6},
     },
     {
-      name: 'interactiveActionDisabled',
+      name: 'actionInteractiveDisabled',
       description: 'Used for disabled links and plain buttons.',
       light: {lightness: 58},
       dark: {lightness: 42},
     },
     {
-      name: 'interactiveActionHovered',
+      name: 'actionInteractiveHovered',
       description: 'Used for hovered links and plain buttons.',
       light: {lightness: 37},
       dark: {lightness: 70, saturation: 100, hue: 247.6},
     },
     {
-      name: 'interactiveActionSubdued',
+      name: 'actionInteractiveSubdued',
       description: 'Used for subdued links and plain buttons.',
       light: {lightness: 51},
       dark: {lightness: 49},
     },
     {
-      name: 'interactiveActionPressed',
+      name: 'actionInteractivePressed',
       description: 'Used for pressed links and plain buttons.',
       light: {lightness: 31},
       dark: {lightness: 75, saturation: 100, hue: 247.6},
     },
     {
-      name: 'interactiveFocus',
+      name: 'focused',
       description: 'For use in the focus ring on interactive elements.',
       light: {lightness: 58},
       dark: {lightness: 42},
     },
     {
-      name: 'interactiveSelected',
+      name: 'surfaceSelected',
       description:
         'For use as a surface color in selected interactive elements, in components such as option list and resource list.',
       light: {lightness: 96},
       dark: {lightness: 4},
     },
     {
-      name: 'interactiveSelectedHovered',
+      name: 'surfaceSelectedHovered',
       description:
         'For use as a surface color in selected interactive elements that are hovered, in components such as option list and resource list.',
       light: {lightness: 89},
       dark: {lightness: 11},
     },
     {
-      name: 'interactiveSelectedPressed',
+      name: 'surfaceSelectedPressed',
       description:
         'For use as a surface color in selected interactive elements that are pressed, in components such as option list and resource list.',
       light: {lightness: 82},
       dark: {lightness: 18},
     },
   ],
-  neutral: [
+  secondary: [
     {
-      name: 'neutral',
+      name: 'actionSecondary',
       description:
-        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
-      light: {},
-      dark: {},
-    },
-    {
-      name: 'neutralAction',
-      description:
-        'Used for secondary buttons and tertiary buttons, as well as in form elements as a background color and pontentially other neutral surfaces.',
+        'Used for secondary buttons and tertiary buttons, as well as in form elements as a background color and pontentially other secondary surfaces.',
       light: {lightness: 93},
       dark: {lightness: 22},
     },
     {
-      name: 'neutralActionDisabled',
+      name: 'actionSecondaryDisabled',
       description: 'Used as a disabled state for secondary buttons',
       light: {lightness: 94},
       dark: {lightness: 13},
     },
     {
-      name: 'neutralActionHovered',
+      name: 'actionSecondaryHovered',
       description: 'Used as a hovered state for secondary buttons',
       light: {lightness: 90},
       dark: {lightness: 37},
     },
     {
-      name: 'neutralActionPressed',
+      name: 'actionSecondaryPressed',
       description: 'Used as a pressed state for secondary buttons',
       light: {lightness: 87},
       dark: {lightness: 42},
     },
   ],
   primary: [
-    {
-      name: 'primary',
-      description:
-        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
-      light: {},
-      dark: {},
-    },
     {
       name: 'primaryAction',
       description:
@@ -348,13 +313,6 @@ export const roleVariants: RoleVariants = {
     },
   ],
   critical: [
-    {
-      name: 'critical',
-      description:
-        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
-      light: {},
-      dark: {},
-    },
     {
       name: 'criticalBorder',
       description:
@@ -481,13 +439,6 @@ export const roleVariants: RoleVariants = {
   ],
   warning: [
     {
-      name: 'warning',
-      description:
-        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
-      light: {},
-      dark: {},
-    },
-    {
       name: 'warningBorder',
       description: 'For use as a border on warning components such as banners.',
       light: {lightness: 76.6},
@@ -522,13 +473,6 @@ export const roleVariants: RoleVariants = {
     },
   ],
   highlight: [
-    {
-      name: 'highlight',
-      description:
-        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
-      light: {},
-      dark: {},
-    },
     {
       name: 'highlightBorder',
       description:
@@ -566,13 +510,6 @@ export const roleVariants: RoleVariants = {
     },
   ],
   success: [
-    {
-      name: 'success',
-      description:
-        'While use directly in our components is discouraged, the base variant is unmodified from the original role input color.',
-      light: {},
-      dark: {},
-    },
     {
       name: 'successBorder',
       description: 'For use as a border on success components such as banners.',

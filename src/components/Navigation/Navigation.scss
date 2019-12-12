@@ -12,7 +12,7 @@ $nav-max-width: rem(360px);
   max-width: $nav-max-width;
   height: 100%;
   min-height: 100%;
-  background-color: var(--p-surface-foreground, color('sky', 'light'));
+  background-color: var(--p-surface, color('sky', 'light'));
   -webkit-overflow-scrolling: touch;
 
   @include safe-area-for(padding-bottom, 0, bottom);
@@ -93,13 +93,13 @@ $disabled-fade: 0.6;
 }
 
 .Item-disabled {
-  color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
+  color: var(--p-text-disabled, color('ink', 'lightest'));
   pointer-events: none;
   opacity: var(--p-override-one, $disabled-fade);
 
   .Icon {
     @include recolor-icon(
-      var(--p-icon-disabled-on-surface, color('ink', 'lightest')),
+      var(--p-icon-disabled, color('ink', 'lightest')),
       var(--p-override-transparent, color('white'))
     );
   }
@@ -141,7 +141,7 @@ $disabled-fade: 0.6;
 
 .SecondaryAction {
   @include recolor-icon(
-    var(--p-icon-subdued-on-surface, color('ink', 'lightest')),
+    var(--p-icon-subdued, color('ink', 'lightest')),
     var(--p-override-transparent, color('white')),
     filter('ink', 'lightest')
   );
@@ -171,7 +171,7 @@ $disabled-fade: 0.6;
 
   &:focus {
     @include recolor-icon(
-      var(--p-icon-subdued-on-surface, color('indigo')),
+      var(--p-icon-subdued, color('indigo')),
       var(--p-override-transparent, color('white')),
       filter('indigo')
     );
@@ -227,12 +227,12 @@ $secondary-item-font-size: rem(15px);
     font-size: $secondary-item-font-size;
     font-weight: 400;
     line-height: nav(item-line-height);
-    color: var(--p-text-on-surface, color('ink', 'light'));
+    color: var(--p-text, color('ink', 'light'));
     &:hover {
       color: var(--p-primary-action, color('indigo', 'dark'));
     }
     &:focus {
-      color: var(--p-text-on-surface, color('indigo', 'dark'));
+      color: var(--p-text, color('indigo', 'dark'));
       @include focus-ring;
     }
     // stylelint-disable selector-max-specificity
@@ -276,7 +276,7 @@ $secondary-item-font-size: rem(15px);
   }
   .Item-disabled {
     font-weight: 400;
-    color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
+    color: var(--p-text-disabled, color('ink', 'lightest'));
   }
 }
 
@@ -306,12 +306,12 @@ $secondary-item-font-size: rem(15px);
   align-items: center;
   min-height: nav(desktop-nav-height);
   padding-left: spacing();
-  color: var(--p-text-subdued-on-surface, color('ink', 'lighter'));
+  color: var(--p-text-subdued, color('ink', 'lighter'));
 
   .Action {
     @include unstyled-button;
     @include recolor-icon(
-      var(--p-icon-subdued-on-surface, color('ink', 'lightest')),
+      var(--p-icon-subdued, color('ink', 'lightest')),
       var(--p-override-transparent, color('white')),
       filter('ink', 'lightest')
     );
@@ -341,7 +341,7 @@ $secondary-item-font-size: rem(15px);
 
     &:focus {
       @include recolor-icon(
-        var(--p-icon-subdued-on-surface, color('indigo')),
+        var(--p-icon-subdued, color('indigo')),
         var(--p-override-transparent, color('white')),
         filter('indigo')
       );

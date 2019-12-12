@@ -9,12 +9,9 @@ $Backdrop-opacity: 0.88;
   max-width: rem(500px);
   padding: spacing(tight) spacing();
   border-radius: var(--p-border-radius-wide, border-radius());
-  background: var(
-    --p-surface-foreground,
-    rgba(color('black'), $Backdrop-opacity)
-  );
+  background: var(--p-surface, rgba(color('black'), $Backdrop-opacity));
   box-shadow: var(--p-override-none, shadow());
-  color: var(--p-text-on-surface, color('white'));
+  color: var(--p-text, color('white'));
   margin-bottom: spacing(loose);
 
   @include breakpoint-after($breakpoint) {
@@ -54,7 +51,7 @@ $Backdrop-opacity: 0.88;
   border: none;
   appearance: none;
   background: transparent;
-  fill: var(--p-text-on-surface, color('white'));
+  fill: var(--p-text, color('white'));
   cursor: pointer;
 
   &:focus {

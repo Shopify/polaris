@@ -5,7 +5,7 @@ $height: rem(3px);
 .Loading {
   overflow: hidden;
   height: rem($height);
-  background-color: var(--p-surface-background, color('sky'));
+  background-color: var(--p-background, color('sky'));
   opacity: 1;
 }
 

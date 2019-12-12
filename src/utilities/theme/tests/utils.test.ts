@@ -108,7 +108,7 @@ describe('buildCustomProperties', () => {
       ),
     ).toStrictEqual(
       expect.objectContaining({
-        '--p-surface-background': 'hsla(0, 0%, 98%, 1)',
+        '--p-background': 'hsla(0, 0%, 98%, 1)',
       }),
     );
   });
@@ -133,7 +133,7 @@ describe('buildCustomProperties', () => {
       ),
     ).toStrictEqual(
       expect.objectContaining({
-        '--p-surface-background': 'hsla(0, 0%, 5%, 1)',
+        '--p-background': 'hsla(0, 0%, 5%, 1)',
       }),
     );
   });

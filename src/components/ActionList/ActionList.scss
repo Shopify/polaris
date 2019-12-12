@@ -264,9 +264,9 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     // Disabled (.disabled)
     &.disabled {
       background-image: none;
-      color: var(--p-text-disabled-on-surface);
+      color: var(--p-text-disabled);
       .Image {
-        @include recolor-icon(var(--p-icon-disabled-on-surface));
+        @include recolor-icon(var(--p-icon-disabled));
       }
     }
   }

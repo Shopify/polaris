@@ -170,10 +170,10 @@ describe('<ThemeProvider />', () => {
     expect(themeProvider.find('div')).toHaveReactProps({
       style: expect.objectContaining({
         '--p-override-zero': expect.any(String),
-        '--p-surface-background': expect.any(String),
-        '--p-text-on-surface': expect.any(String),
-        '--p-interactive-action': expect.any(String),
-        '--p-neutral-action': expect.any(String),
+        '--p-background': expect.any(String),
+        '--p-text': expect.any(String),
+        '--p-active-interaction': expect.any(String),
+        '--p-action-secondary': expect.any(String),
         '--p-primary-action': expect.any(String),
         '--p-critical-action': expect.any(String),
         '--p-warning-surface': expect.any(String),
@@ -197,10 +197,10 @@ describe('<ThemeProvider />', () => {
 
       expect(themeProvider.findAll('div')[1]).not.toHaveReactProps({
         style: expect.objectContaining({
-          '--p-surface-background': expect.any(String),
-          '--p-text-on-surface': expect.any(String),
-          '--p-interactive-action': expect.any(String),
-          '--p-neutral-action': expect.any(String),
+          '--p-background': expect.any(String),
+          '--p-text': expect.any(String),
+          '--p-active-interaction': expect.any(String),
+          '--p-action-secondary': expect.any(String),
           '--p-primary-action': expect.any(String),
           '--p-critical-action': expect.any(String),
           '--p-warning-surface': expect.any(String),

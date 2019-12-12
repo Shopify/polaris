@@ -384,8 +384,8 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     background: transparent;
     border: 0;
     box-shadow: none;
-    @include recolor-icon(var(--p-interactive-action));
-    color: var(--p-interactive-action);
+    @include recolor-icon(var(--p-action-interactive));
+    color: var(--p-action-interactive);
 
     &:hover,
     &:focus,
@@ -400,21 +400,21 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     }
 
     &:hover {
-      @include recolor-icon(var(--p-interactive-action-hovered));
-      color: var(--p-interactive-action-hovered);
+      @include recolor-icon(var(--p-action-interactive-hovered));
+      color: var(--p-action-interactive-hovered);
       text-decoration: underline;
     }
 
     &:focus {
-      @include recolor-icon(var(--p-interactive-action));
-      color: var(--p-interactive-action);
+      @include recolor-icon(var(--p-action-interactive));
+      color: var(--p-action-interactive);
       text-decoration: none;
       @include no-focus-ring;
     }
 
     &:active {
-      @include recolor-icon(var(--p-interactive-action-pressed));
-      color: var(--p-interactive-action-pressed);
+      @include recolor-icon(var(--p-action-interactive-pressed));
+      color: var(--p-action-interactive-pressed);
       text-decoration: none;
     }
 
@@ -427,7 +427,7 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     }
 
     &:active:not(.iconOnly) > .Content {
-      @include plain-button-backdrop(var(--p-neutral-action));
+      @include plain-button-backdrop(var(--p-action-secondary));
     }
 
     &.destructive {
@@ -446,27 +446,27 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     }
 
     &.disabled {
-      color: var(--p-text-disabled-on-surface);
+      color: var(--p-text-disabled);
       background: none;
     }
 
     &.iconOnly {
-      @include recolor-icon(var(--p-interactive-action));
+      @include recolor-icon(var(--p-action-interactive));
 
       &:hover {
-        @include recolor-icon(var(--p-interactive-action-hovered));
+        @include recolor-icon(var(--p-action-interactive-hovered));
       }
 
       &:focus {
-        @include recolor-icon(var(--p-interactive-action));
+        @include recolor-icon(var(--p-action-interactive));
       }
 
       &:active {
-        @include recolor-icon(var(--p-interactive-action-pressed));
+        @include recolor-icon(var(--p-action-interactive-pressed));
       }
 
       &.disabled {
-        @include recolor-icon(var(--p-interactive-action-disabled));
+        @include recolor-icon(var(--p-action-interactive-disabled));
       }
     }
 

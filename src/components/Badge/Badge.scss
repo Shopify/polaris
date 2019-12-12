@@ -14,16 +14,16 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .Badge {
-  @include pip-color(var(--p-icon-on-surface, color('ink', 'lightest')));
+  @include pip-color(var(--p-icon, color('ink', 'lightest')));
   display: inline-flex;
   align-items: center;
   padding: 0 $horizontal-padding;
-  background-color: var(--p-neutral-action-disabled, color('sky'));
-  border: border-width(thick) solid var(--p-surface-foreground, color('white'));
+  background-color: var(--p-action-secondary-disabled, color('sky'));
+  border: border-width(thick) solid var(--p-surface, color('white'));
   border-radius: $height;
   font-size: rem(13px);
   line-height: $height;
-  color: var(--p-text-on-surface, color('ink', 'light'));
+  color: var(--p-text, color('ink', 'light'));
 }
 
 .sizeSmall {
@@ -37,7 +37,7 @@ $pip-spacing: ($height - $pip-size) / 2;
   color: color('green', 'text');
 
   .Content {
-    color: var(--p-text-on-surface);
+    color: var(--p-text);
     mix-blend-mode: var(--p-luminosity);
   }
 }
@@ -48,7 +48,7 @@ $pip-spacing: ($height - $pip-size) / 2;
   color: color('blue', 'text');
 
   .Content {
-    color: var(--p-text-on-surface);
+    color: var(--p-text);
     mix-blend-mode: var(--p-luminosity);
   }
 }
@@ -65,7 +65,7 @@ $pip-spacing: ($height - $pip-size) / 2;
   color: color('orange', 'text');
 
   .Content {
-    color: var(--p-text-on-surface);
+    color: var(--p-text);
     mix-blend-mode: var(--p-luminosity);
   }
 }
