@@ -514,4 +514,37 @@ describe('<ThemeProvider />', () => {
       }),
     );
   });
+
+  it('inverts the parent colorScheme from light to dark when given an inverse colorScheme', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider
+        theme={{
+          UNSTABLE_colors: {critical: '#000000'},
+        }}
+        colorScheme="light"
+      >
+        <ThemeProvider
+          theme={{
+            UNSTABLE_colors: {critical: '#FFFEEE'},
+          }}
+          colorScheme="inverse"
+        >
+          <p>Hello</p>
+        </ThemeProvider>
+      </ThemeProvider>,
+      {globalTheming: true},
+    );
+
+    const {style} = wrapper.findAll('div')![1].props;
+    expect(style).toStrictEqual(
+      expect.objectContaining({
+        '--p-critical-surface': 'hsla(58, 100%, 7.000000000000001%, 1)',
+      }),
+    );
+    expect(style).not.toStrictEqual(
+      expect.objectContaining({
+        '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
+      }),
+    );
+  });
 });
