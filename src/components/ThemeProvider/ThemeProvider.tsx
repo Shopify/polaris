@@ -97,9 +97,11 @@ export function ThemeProvider({
     }
   }, [backgroundColor, color, isParentThemeProvider]);
 
+  const style = {...customProperties, ...(!isParentThemeProvider && {color})};
+
   return (
     <ThemeContext.Provider value={theme}>
-      <div style={{...customProperties, color}}>{children}</div>
+      <div style={style}>{children}</div>
     </ThemeContext.Provider>
   );
 }
