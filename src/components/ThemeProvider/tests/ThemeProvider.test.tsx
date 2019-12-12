@@ -234,7 +234,7 @@ describe('<ThemeProvider />', () => {
 
     it('inherits colorScheme from parent <ThemeProvider>', () => {
       const wrapper = mountWithGlobalTheming(
-        <ThemeProvider theme={{colorScheme: 'dark'}}>
+        <ThemeProvider theme={{}} colorScheme="dark">
           <ThemeProvider
             theme={{
               UNSTABLE_colors: {critical: '#FFFEEE'},
@@ -262,12 +262,12 @@ describe('<ThemeProvider />', () => {
 
     it('overrides colorScheme from parent <ThemeProvider> when provided a colorScheme', () => {
       const wrapper = mountWithGlobalTheming(
-        <ThemeProvider theme={{colorScheme: 'dark'}}>
+        <ThemeProvider theme={{}} colorScheme="dark">
           <ThemeProvider
             theme={{
               UNSTABLE_colors: {critical: '#FFFEEE'},
-              colorScheme: 'light',
             }}
+            colorScheme="light"
           >
             <p>Hello</p>
           </ThemeProvider>
@@ -291,12 +291,8 @@ describe('<ThemeProvider />', () => {
 
     it('inherits colors from parent <ThemeProvider> when their colorSchemes differ', () => {
       const wrapper = mountWithGlobalTheming(
-        <ThemeProvider theme={{colorScheme: 'dark'}}>
-          <ThemeProvider
-            theme={{
-              colorScheme: 'light',
-            }}
-          >
+        <ThemeProvider theme={{}} colorScheme="dark">
+          <ThemeProvider theme={{}} colorScheme="light">
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
@@ -316,15 +312,15 @@ describe('<ThemeProvider />', () => {
     const wrapper = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
-          colorScheme: 'dark',
           UNSTABLE_colors: {critical: '#000000'},
         }}
+        colorScheme="dark"
       >
         <ThemeProvider
           theme={{
-            colorScheme: 'light',
             UNSTABLE_colors: {critical: '#FFFEEE'},
           }}
+          colorScheme="light"
         >
           <p>Hello</p>
         </ThemeProvider>
@@ -349,15 +345,15 @@ describe('<ThemeProvider />', () => {
     const wrapper = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
-          colorScheme: 'dark',
           UNSTABLE_colors: {critical: '#000000'},
         }}
+        colorScheme="dark"
       >
         <ThemeProvider
           theme={{
-            colorScheme: 'inverse',
             UNSTABLE_colors: {critical: '#FFFEEE'},
           }}
+          colorScheme="inverse"
         >
           <p>Hello</p>
         </ThemeProvider>

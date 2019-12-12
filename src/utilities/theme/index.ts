@@ -8,6 +8,7 @@ export {
   ThemeProviderThemeConfig,
   CustomPropertiesLike,
   ColorScheme,
+  ThemeProviderColorScheme,
 } from './types';
 
 export {UNSTABLE_Color, roleVariants} from './role-variants';

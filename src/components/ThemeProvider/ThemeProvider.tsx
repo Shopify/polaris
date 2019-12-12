@@ -8,6 +8,7 @@ import {
   UNSTABLE_Color,
   Tokens,
   ColorScheme,
+  ThemeProviderColorScheme,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
@@ -15,6 +16,8 @@ import {classNames} from '../../utilities/css';
 interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
   theme: ThemeProviderThemeConfig;
+  /** Whether to display a light, dark, or inverse of the parent color scheme */
+  colorScheme?: ThemeProviderColorScheme;
   /** The content to display */
   children?: React.ReactNode;
 }
@@ -22,6 +25,7 @@ interface ThemeProviderProps {
 export function ThemeProvider({
   theme: themeConfig,
   children,
+  colorScheme,
 }: ThemeProviderProps) {
   const {unstableGlobalTheming = false} = useFeatures();
 
@@ -34,7 +38,7 @@ export function ThemeProvider({
     parentContext.UNSTABLE_colors &&
     parentContext.UNSTABLE_colors;
 
-  const {UNSTABLE_colors, colorScheme, ...rest} = themeConfig;
+  const {UNSTABLE_colors, ...rest} = themeConfig;
 
   const childShouldInheritParentColors =
     !isParentThemeProvider &&

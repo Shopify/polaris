@@ -53,9 +53,7 @@ export interface ThemeConfig {
 }
 
 export interface ThemeProviderThemeConfig
-  extends Omit<ThemeConfig, 'colorScheme'> {
-  colorScheme?: ThemeProviderColorScheme;
-}
+  extends Omit<ThemeConfig, 'colorScheme'> {}
 
 export type CustomPropertiesLike = Record<string, string>;
 
