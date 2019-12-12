@@ -14,22 +14,25 @@ import {
   RoleVariants,
   Role,
   RoleColors,
-  Mode,
+  ColorScheme,
 } from './types';
 
 import {roleVariants} from './role-variants';
 
-const DEFAULT_MODE = 'light';
+const DEFAULT_COLOR_SCHEME = 'light';
 
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
   globalTheming: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
-  const {UNSTABLE_colors = {}, mode = DEFAULT_MODE} = themeConfig;
+  const {
+    UNSTABLE_colors = {},
+    colorScheme = DEFAULT_COLOR_SCHEME,
+  } = themeConfig;
   return globalTheming
     ? customPropertyTransformer({
-        ...buildColors(UNSTABLE_colors, roleVariants, mode),
+        ...buildColors(UNSTABLE_colors, roleVariants, colorScheme),
         ...tokens,
       })
     : buildLegacyColors(themeConfig);
@@ -39,12 +42,16 @@ export function buildThemeContext(
   themeConfig: ThemeConfig,
   cssCustomProperties?: CustomPropertiesLike,
 ): Theme {
-  const {logo, UNSTABLE_colors, mode = DEFAULT_MODE} = themeConfig;
+  const {
+    logo,
+    UNSTABLE_colors,
+    colorScheme = DEFAULT_COLOR_SCHEME,
+  } = themeConfig;
   return {
     logo,
     UNSTABLE_cssCustomProperties: toString(cssCustomProperties),
     UNSTABLE_colors,
-    mode,
+    colorScheme,
   };
 }
 
@@ -71,7 +78,7 @@ function hexToHsluvObj(hex: string) {
 export function buildColors(
   colors: Partial<RoleColors>,
   roleVariants: Partial<RoleVariants>,
-  mode: Mode,
+  colorScheme: ColorScheme,
 ) {
   return Object.assign(
     {},
@@ -85,7 +92,7 @@ export function buildColors(
             saturation = base.saturation,
             lightness = base.lightness,
             alpha = 1,
-          } = settings[mode];
+          } = settings[colorScheme];
 
           return {
             ...accumulator,

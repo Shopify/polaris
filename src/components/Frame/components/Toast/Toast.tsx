@@ -70,7 +70,7 @@ export function Toast({
   const className = classNames(styles.Toast, error && styles.error);
 
   return (
-    <ThemeProvider theme={{mode: 'inverse'}}>
+    <ThemeProvider theme={{colorScheme: 'inverse'}}>
       <div className={className}>
         <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
         {content}

@@ -102,10 +102,10 @@ describe('buildCustomProperties', () => {
     );
   });
 
-  it('uses dark adjustments if the mode is dark', () => {
+  it('uses dark adjustments if the colorScheme is dark', () => {
     expect(
       buildCustomProperties(
-        {UNSTABLE_colors: {surface: '#333333'}, mode: 'dark'},
+        {UNSTABLE_colors: {surface: '#333333'}, colorScheme: 'dark'},
         true,
       ),
     ).toStrictEqual(
@@ -124,7 +124,7 @@ describe('buildThemeContext', () => {
       logo: {},
       UNSTABLE_cssCustomProperties: 'foo:bar',
       UNSTABLE_colors: undefined,
-      mode: 'light',
+      colorScheme: 'light',
     });
   });
 });

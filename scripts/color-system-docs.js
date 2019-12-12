@@ -18,7 +18,7 @@ const ColorSwatch = {
 
 const RoleDescription = {
   surface:
-    'The surface role is used for the backgrounds of the UI. In light mode, surface colors are nearly white, while in dark mode, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts.',
+    'The surface role is used for the backgrounds of the UI. With a light color scheme, surface colors are nearly white, while in a dark color scheme, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts.',
   onSurface:
     'The onSurface role is made up of elements which appear on top of a surface, including borders, neutral icons, and text. When a light surface is provided, onSurface values will be dark. When a dark surface is provided, onSurface values will be light.',
   interactive:

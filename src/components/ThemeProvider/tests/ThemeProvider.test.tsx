@@ -232,9 +232,9 @@ describe('<ThemeProvider />', () => {
       );
     });
 
-    it('inherits mode from parent <ThemeProvider>', () => {
+    it('inherits colorScheme from parent <ThemeProvider>', () => {
       const wrapper = mountWithGlobalTheming(
-        <ThemeProvider theme={{mode: 'dark'}}>
+        <ThemeProvider theme={{colorScheme: 'dark'}}>
           <ThemeProvider
             theme={{
               UNSTABLE_colors: {critical: '#FFFEEE'},
@@ -260,13 +260,13 @@ describe('<ThemeProvider />', () => {
       );
     });
 
-    it('overrides mode from parent <ThemeProvider> when provided a mode', () => {
+    it('overrides colorScheme from parent <ThemeProvider> when provided a colorScheme', () => {
       const wrapper = mountWithGlobalTheming(
-        <ThemeProvider theme={{mode: 'dark'}}>
+        <ThemeProvider theme={{colorScheme: 'dark'}}>
           <ThemeProvider
             theme={{
               UNSTABLE_colors: {critical: '#FFFEEE'},
-              mode: 'light',
+              colorScheme: 'light',
             }}
           >
             <p>Hello</p>
@@ -289,12 +289,12 @@ describe('<ThemeProvider />', () => {
       );
     });
 
-    it('inherits colors from parent <ThemeProvider> when their modes differ', () => {
+    it('inherits colors from parent <ThemeProvider> when their colorSchemes differ', () => {
       const wrapper = mountWithGlobalTheming(
-        <ThemeProvider theme={{mode: 'dark'}}>
+        <ThemeProvider theme={{colorScheme: 'dark'}}>
           <ThemeProvider
             theme={{
-              mode: 'light',
+              colorScheme: 'light',
             }}
           >
             <p>Hello</p>
@@ -312,17 +312,17 @@ describe('<ThemeProvider />', () => {
     });
   });
 
-  it('overrides inherited colors from parent <ThemeProvider> with provided colors when their modes differ', () => {
+  it('overrides inherited colors from parent <ThemeProvider> with provided colors when their colorSchemes differ', () => {
     const wrapper = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
-          mode: 'dark',
+          colorScheme: 'dark',
           UNSTABLE_colors: {critical: '#000000'},
         }}
       >
         <ThemeProvider
           theme={{
-            mode: 'light',
+            colorScheme: 'light',
             UNSTABLE_colors: {critical: '#FFFEEE'},
           }}
         >
@@ -345,17 +345,17 @@ describe('<ThemeProvider />', () => {
     );
   });
 
-  it('inverts the parent mode from dark to light when given an inverse mode', () => {
+  it('inverts the parent colorScheme from dark to light when given an inverse colorScheme', () => {
     const wrapper = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
-          mode: 'dark',
+          colorScheme: 'dark',
           UNSTABLE_colors: {critical: '#000000'},
         }}
       >
         <ThemeProvider
           theme={{
-            mode: 'inverse',
+            colorScheme: 'inverse',
             UNSTABLE_colors: {critical: '#FFFEEE'},
           }}
         >

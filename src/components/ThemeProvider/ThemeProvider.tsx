@@ -7,7 +7,7 @@ import {
   buildCustomProperties,
   UNSTABLE_Color,
   Tokens,
-  Mode,
+  ColorScheme,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
@@ -27,16 +27,19 @@ export function ThemeProvider({
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
-  const parentMode = parentContext && parentContext.mode && parentContext.mode;
+  const parentColorScheme =
+    parentContext && parentContext.colorScheme && parentContext.colorScheme;
   const parentColors =
     parentContext &&
     parentContext.UNSTABLE_colors &&
     parentContext.UNSTABLE_colors;
 
-  const {UNSTABLE_colors, mode, ...rest} = themeConfig;
+  const {UNSTABLE_colors, colorScheme, ...rest} = themeConfig;
 
   const childShouldInheritParentColors =
-    !isParentThemeProvider && mode !== undefined && mode !== parentMode;
+    !isParentThemeProvider &&
+    colorScheme !== undefined &&
+    colorScheme !== parentColorScheme;
 
   const defaultColors = {
     surface: UNSTABLE_Color.Surface,
@@ -51,19 +54,19 @@ export function ThemeProvider({
     decorative: UNSTABLE_Color.Decorative,
   };
 
-  let processedMode: Mode | undefined;
+  let processedColorScheme: ColorScheme | undefined;
 
-  if (mode === 'inverse' && parentMode === 'dark') {
-    processedMode = 'light';
-  } else if (mode === 'inverse' && parentMode === 'light') {
-    processedMode = 'dark';
-  } else if (mode !== 'inverse') {
-    processedMode = mode;
+  if (colorScheme === 'inverse' && parentColorScheme === 'dark') {
+    processedColorScheme = 'light';
+  } else if (colorScheme === 'inverse' && parentColorScheme === 'light') {
+    processedColorScheme = 'dark';
+  } else if (colorScheme !== 'inverse') {
+    processedColorScheme = colorScheme;
   }
 
   const processedThemeConfig: ThemeConfig = {
     ...rest,
-    ...{mode: processedMode || parentMode},
+    ...{colorScheme: processedColorScheme || parentColorScheme},
     UNSTABLE_colors: {
       ...(isParentThemeProvider && defaultColors),
       ...(childShouldInheritParentColors && parentColors),
