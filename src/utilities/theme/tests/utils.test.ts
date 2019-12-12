@@ -7,6 +7,7 @@ import {
   buildThemeContext,
   buildCustomProperties,
 } from '../utils';
+import {ThemeConfig} from '../types';
 
 describe('setTextColor', () => {
   it('sets a css variable to white if the variant is dark', () => {
@@ -100,6 +101,15 @@ describe('buildCustomProperties', () => {
         '--p-surface-background': 'hsla(0, 0%, 98%, 1)',
       }),
     );
+  });
+
+  it('does not throw when given a color role that does not exist', () => {
+    expect(() => {
+      buildCustomProperties(
+        {UNSTABLE_colors: {blarp: '#CCCCCC'}} as ThemeConfig,
+        true,
+      );
+    }).not.toThrow();
   });
 
   it('uses dark adjustments if the colorScheme is dark', () => {
