@@ -63,7 +63,7 @@ addDecorator(
           props: {
             i18n: enTranslations,
             features: {unstableGlobalTheming: true},
-            theme: {mode: 'light'},
+            theme: {colorScheme: 'light'},
           },
         },
         {
@@ -71,7 +71,7 @@ addDecorator(
           props: {
             i18n: enTranslations,
             features: {unstableGlobalTheming: true},
-            theme: {mode: 'dark'},
+            theme: {colorScheme: 'dark'},
           },
         },
       ],
