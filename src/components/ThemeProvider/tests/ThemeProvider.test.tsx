@@ -344,6 +344,39 @@ describe('<ThemeProvider />', () => {
       }),
     );
   });
+
+  it('inverts the parent mode from dark to light when given an inverse mode', () => {
+    const wrapper = mountWithGlobalTheming(
+      <ThemeProvider
+        theme={{
+          mode: 'dark',
+          UNSTABLE_colors: {critical: '#000000'},
+        }}
+      >
+        <ThemeProvider
+          theme={{
+            mode: 'inverse',
+            UNSTABLE_colors: {critical: '#FFFEEE'},
+          }}
+        >
+          <p>Hello</p>
+        </ThemeProvider>
+      </ThemeProvider>,
+      true,
+    );
+
+    const {style} = wrapper.findAll('div')![1].props;
+    expect(style).toStrictEqual(
+      expect.objectContaining({
+        '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
+      }),
+    );
+    expect(style).not.toStrictEqual(
+      expect.objectContaining({
+        '--p-critical-surface': 'hsla(0, 0%, 98%, 1)',
+      }),
+    );
+  });
 });
 
 function mountWithGlobalTheming(

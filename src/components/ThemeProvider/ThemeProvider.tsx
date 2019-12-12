@@ -1,18 +1,20 @@
 import React, {useMemo, useEffect, useContext} from 'react';
 import {
   ThemeContext,
+  ThemeProviderThemeConfig,
   ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
   UNSTABLE_Color,
   Tokens,
+  Mode,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
 
 interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
-  theme: ThemeConfig;
+  theme: ThemeProviderThemeConfig;
   /** The content to display */
   children?: React.ReactNode;
 }
@@ -49,9 +51,19 @@ export function ThemeProvider({
     decorative: UNSTABLE_Color.Decorative,
   };
 
+  let processedMode: Mode | undefined;
+
+  if (mode === 'inverse' && parentMode === 'dark') {
+    processedMode = 'light';
+  } else if (mode === 'inverse' && parentMode === 'light') {
+    processedMode = 'dark';
+  } else if (mode !== 'inverse') {
+    processedMode = mode;
+  }
+
   const processedThemeConfig: ThemeConfig = {
     ...rest,
-    ...{mode: mode || parentMode},
+    ...{mode: processedMode || parentMode},
     UNSTABLE_colors: {
       ...(isParentThemeProvider && defaultColors),
       ...(childShouldInheritParentColors && parentColors),

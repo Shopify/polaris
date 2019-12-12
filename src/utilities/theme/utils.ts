@@ -21,16 +21,6 @@ import {roleVariants} from './role-variants';
 
 const DEFAULT_MODE = 'light';
 
-export function inverse(mode?: Mode) {
-  if (mode == null) return DEFAULT_MODE;
-
-  if (mode === 'light') {
-    return 'dark';
-  } else {
-    return 'light';
-  }
-}
-
 export function buildCustomProperties(
   themeConfig: ThemeConfig,
   globalTheming: boolean,

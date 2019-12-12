@@ -2,7 +2,13 @@ export {ThemeContext} from './context';
 
 export {useTheme} from './hooks';
 
-export {Theme, ThemeConfig, CustomPropertiesLike, Mode} from './types';
+export {
+  Theme,
+  ThemeConfig,
+  ThemeProviderThemeConfig,
+  CustomPropertiesLike,
+  Mode,
+} from './types';
 
 export {UNSTABLE_Color, roleVariants} from './role-variants';
 
@@ -11,7 +17,6 @@ export {
   buildColors,
   buildThemeContext,
   toCssCustomPropertySyntax,
-  inverse,
 } from './utils';
 
 export {Tokens} from './tokens';

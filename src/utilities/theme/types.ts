@@ -38,6 +38,8 @@ export type Role = keyof RoleColors;
 
 export type Mode = 'light' | 'dark';
 
+export type ThemeProviderMode = Mode | 'inverse';
+
 // The value that is passed into the ThemeProvider
 export interface ThemeConfig {
   /** Sets the logo for the top bar and contextual save bar components*/
@@ -48,6 +50,10 @@ export interface ThemeConfig {
   };
   UNSTABLE_colors?: Partial<RoleColors>;
   mode?: Mode;
+}
+
+export interface ThemeProviderThemeConfig extends Omit<ThemeConfig, 'mode'> {
+  mode?: ThemeProviderMode;
 }
 
 export type CustomPropertiesLike = Record<string, string>;
