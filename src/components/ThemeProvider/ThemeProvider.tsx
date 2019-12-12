@@ -2,7 +2,6 @@ import React, {useMemo, useEffect, useContext} from 'react';
 import {
   ThemeContext,
   ThemeProviderThemeConfig,
-  ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
   UNSTABLE_Color,
@@ -61,13 +60,16 @@ export function ThemeProvider({
 
   if (colorScheme === 'inverse' && parentColorScheme === 'dark') {
     processedColorScheme = 'light';
-  } else if (colorScheme === 'inverse' && parentColorScheme === 'light') {
+  } else if (
+    (colorScheme === 'inverse' && parentColorScheme === 'light') ||
+    (colorScheme === 'inverse' && parentColorScheme === undefined)
+  ) {
     processedColorScheme = 'dark';
   } else if (colorScheme !== 'inverse') {
     processedColorScheme = colorScheme;
   }
 
-  const processedThemeConfig: ThemeConfig = {
+  const processedThemeConfig = {
     ...rest,
     ...{colorScheme: processedColorScheme || parentColorScheme},
     UNSTABLE_colors: {

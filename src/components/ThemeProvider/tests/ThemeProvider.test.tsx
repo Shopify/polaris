@@ -190,7 +190,10 @@ describe('<ThemeProvider />', () => {
         true,
       );
 
-      expect(wrapper.findAll('div')![1].props.style).toStrictEqual({});
+      expect(wrapper.findAll('div')![1].props.style).toStrictEqual({
+        backgroundColor: '',
+        color: '',
+      });
     });
 
     it('does not set overrides', () => {
