@@ -191,7 +191,6 @@ describe('<ThemeProvider />', () => {
       );
 
       expect(wrapper.findAll('div')![1].props.style).toStrictEqual({
-        backgroundColor: '',
         color: '',
       });
     });

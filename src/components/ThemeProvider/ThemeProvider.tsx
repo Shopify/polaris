@@ -112,7 +112,7 @@ export function ThemeProvider({
 
   return (
     <ThemeContext.Provider value={theme}>
-      <div style={customProperties}>{children}</div>
+      <div style={{...customProperties, color}}>{children}</div>
     </ThemeContext.Provider>
   );
 }
