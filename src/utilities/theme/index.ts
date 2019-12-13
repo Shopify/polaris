@@ -4,7 +4,11 @@ export {useTheme} from './hooks';
 
 export {Theme, ThemeConfig, CustomPropertiesLike, ColorScheme} from './types';
 
-export {DefaultTheme, DefaultColorScheme, roleVariants} from './role-variants';
+export {
+  DefaultThemeColors,
+  DefaultColorScheme,
+  roleVariants,
+} from './role-variants';
 
 export {
   buildCustomProperties,

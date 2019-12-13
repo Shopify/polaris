@@ -4,7 +4,7 @@ import {
   ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
-  DefaultTheme,
+  DefaultThemeColors,
   DefaultColorScheme,
   Tokens,
   ColorScheme,
@@ -41,44 +41,16 @@ export function ThemeProvider({
 
   const {UNSTABLE_colors, colorScheme, ...rest} = themeConfig;
 
-  function isInverseColorScheme(
-    colorScheme?: ColorScheme | Inverse,
-  ): colorScheme is Inverse {
-    return colorScheme === 'inverse';
-  }
-
-  function shouldInheritParentColors() {
-    if (isParentThemeProvider) {
-      return false;
-    } else if (
-      isInverseColorScheme(colorScheme) ||
-      (colorScheme === 'dark' && parentColorScheme === 'light') ||
-      (colorScheme === 'light' && parentColorScheme === 'dark')
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  function getColorScheme() {
-    if (colorScheme == null) {
-      return parentColorScheme || DefaultColorScheme;
-    } else if (isInverseColorScheme(colorScheme)) {
-      return parentColorScheme === 'dark' || parentColorScheme === undefined
-        ? 'light'
-        : 'dark';
-    } else {
-      return colorScheme;
-    }
-  }
-
   const processedThemeConfig = {
     ...rest,
     ...{colorScheme: getColorScheme()},
     UNSTABLE_colors: {
-      ...(isParentThemeProvider && DefaultTheme),
-      ...(shouldInheritParentColors() && parentColors),
+      ...(isParentThemeProvider && DefaultThemeColors),
+      ...(shouldInheritParentColors(
+        isParentThemeProvider,
+        colorScheme,
+        parentColorScheme,
+      ) && parentColors),
       ...UNSTABLE_colors,
     },
   };
@@ -117,8 +89,47 @@ export function ThemeProvider({
   const style = {...customProperties, ...(!isParentThemeProvider && {color})};
 
   return (
-    <ThemeContext.Provider value={{...theme, rootElementColor: color}}>
+    <ThemeContext.Provider value={{...theme, textColor: color}}>
       <div style={style}>{children}</div>
     </ThemeContext.Provider>
   );
+}
+
+function isInverseColorScheme(
+  colorScheme?: ColorScheme | Inverse,
+): colorScheme is Inverse {
+  return colorScheme === 'inverse';
+}
+
+function shouldInheritParentColors(
+  isParentThemeProvider: boolean,
+  colorScheme?: ColorScheme | Inverse,
+  parentColorScheme?: ColorScheme,
+) {
+  if (isParentThemeProvider) {
+    return false;
+  } else if (
+    isInverseColorScheme(colorScheme) ||
+    (colorScheme === 'dark' && parentColorScheme === 'light') ||
+    (colorScheme === 'light' && parentColorScheme === 'dark')
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function getColorScheme(
+  colorScheme?: ColorScheme | Inverse,
+  parentColorScheme?: ColorScheme,
+) {
+  if (colorScheme == null) {
+    return parentColorScheme || DefaultColorScheme;
+  } else if (isInverseColorScheme(colorScheme)) {
+    return parentColorScheme === 'dark' || parentColorScheme === undefined
+      ? 'light'
+      : 'dark';
+  } else {
+    return colorScheme;
+  }
 }

@@ -7,7 +7,7 @@ const {
   UNSTABLE_roleVariants: roleVariants,
   UNSTABLE_buildColors: colorFactory,
   UNSTABLE_Tokens: Tokens,
-  UNSTABLE_DefaultTheme: Color,
+  UNSTABLE_DefaultThemeColors: Color,
 } = require('../');
 
 const ColorSwatch = {

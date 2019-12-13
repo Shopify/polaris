@@ -50,9 +50,9 @@ export class Portal extends React.PureComponent<PortalProps, State> {
     const {onPortalCreated = noop} = this.props;
 
     if (this.context != null) {
-      const {UNSTABLE_cssCustomProperties, rootElementColor} = this.context;
+      const {UNSTABLE_cssCustomProperties, textColor} = this.context;
       if (UNSTABLE_cssCustomProperties != null) {
-        const style = `${UNSTABLE_cssCustomProperties};color:${rootElementColor};`;
+        const style = `${UNSTABLE_cssCustomProperties};color:${textColor};`;
         this.portalNode.setAttribute('style', style);
       } else {
         this.portalNode.removeAttribute('style');
