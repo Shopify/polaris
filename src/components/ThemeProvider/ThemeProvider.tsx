@@ -5,6 +5,7 @@ import {
   buildThemeContext,
   buildCustomProperties,
   DefaultTheme,
+  DefaultColorScheme,
   Tokens,
   ColorScheme,
   ThemeProviderColorScheme,
@@ -38,30 +39,42 @@ export function ThemeProvider({
 
   const {UNSTABLE_colors, ...rest} = themeConfig;
 
-  const childShouldInheritParentColors =
-    !isParentThemeProvider &&
-    colorScheme !== undefined &&
-    colorScheme !== parentColorScheme;
-
-  const inverseParentColorScheme =
-    parentColorScheme === 'dark' ? 'light' : 'dark';
-
-  const processedColorScheme = isColorScheme(colorScheme)
-    ? colorScheme
-    : inverseParentColorScheme;
-
-  function isColorScheme(
+  function isInverseColorScheme(
     colorScheme: ThemeProviderColorScheme | ColorScheme,
-  ): colorScheme is ColorScheme {
-    return colorScheme !== 'inverse';
+  ): colorScheme is 'inverse' {
+    return colorScheme === 'inverse';
+  }
+
+  function shouldInheritParentColors() {
+    if (isParentThemeProvider) {
+      return false;
+    } else if (
+      isInverseColorScheme(colorScheme) ||
+      (colorScheme === 'dark' && parentColorScheme === 'light') ||
+      (colorScheme === 'light' && parentColorScheme === 'dark')
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function getColorScheme() {
+    if (colorScheme == null) {
+      return parentColorScheme || DefaultColorScheme;
+    } else if (isInverseColorScheme(colorScheme)) {
+      return parentColorScheme === 'dark' ? 'light' : 'dark';
+    } else {
+      return colorScheme;
+    }
   }
 
   const processedThemeConfig = {
     ...rest,
-    ...{colorScheme: processedColorScheme || parentColorScheme},
+    ...{colorScheme: getColorScheme()},
     UNSTABLE_colors: {
       ...(isParentThemeProvider && DefaultTheme),
-      ...(childShouldInheritParentColors && parentColors),
+      ...(shouldInheritParentColors() && parentColors),
       ...UNSTABLE_colors,
     },
   };

@@ -7,7 +7,8 @@ import {
   buildThemeContext,
   buildCustomProperties,
 } from '../utils';
-import {ThemeConfig} from '../types';
+import {RoleColors} from '../types';
+import {DefaultColorScheme} from '..';
 
 describe('setTextColor', () => {
   it('sets a css variable to white if the variant is dark', () => {
@@ -60,6 +61,7 @@ describe('buildCustomProperties', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}},
       UNSTABLE_colors: {surface: '#ffffff'},
+      colorScheme: DefaultColorScheme,
     };
 
     const colors = buildCustomProperties(theme, false);
@@ -73,6 +75,7 @@ describe('buildCustomProperties', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}},
       UNSTABLE_colors: {surface: '#ffffff'},
+      colorScheme: DefaultColorScheme,
     };
 
     const colors = buildCustomProperties(theme, false);
@@ -86,6 +89,7 @@ describe('buildCustomProperties', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}},
       UNSTABLE_colors: {surface: '#ffffff'},
+      colorScheme: DefaultColorScheme,
     };
 
     const colors = Object.keys(buildCustomProperties(theme, true));
@@ -95,7 +99,13 @@ describe('buildCustomProperties', () => {
 
   it('uses light adjustments by default', () => {
     expect(
-      buildCustomProperties({UNSTABLE_colors: {surface: '#CCCCCC'}}, true),
+      buildCustomProperties(
+        {
+          UNSTABLE_colors: {surface: '#CCCCCC'},
+          colorScheme: DefaultColorScheme,
+        },
+        true,
+      ),
     ).toStrictEqual(
       expect.objectContaining({
         '--p-surface-background': 'hsla(0, 0%, 98%, 1)',
@@ -106,7 +116,10 @@ describe('buildCustomProperties', () => {
   it('does not throw when given a color role that does not exist', () => {
     expect(() => {
       buildCustomProperties(
-        {UNSTABLE_colors: {blarp: '#CCCCCC'}} as ThemeConfig,
+        {
+          UNSTABLE_colors: {blarp: '#CCCCCC'} as Partial<RoleColors>,
+          colorScheme: DefaultColorScheme,
+        },
         true,
       );
     }).not.toThrow();
@@ -134,7 +147,7 @@ describe('buildThemeContext', () => {
       logo: {},
       UNSTABLE_cssCustomProperties: 'foo:bar',
       UNSTABLE_colors: undefined,
-      colorScheme: 'light',
+      colorScheme: undefined,
     });
   });
 });

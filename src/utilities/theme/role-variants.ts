@@ -1,4 +1,4 @@
-import {RoleVariants} from './types';
+import {RoleVariants, ColorScheme} from './types';
 
 export const DefaultTheme = {
   surface: '#111213',
@@ -12,6 +12,8 @@ export const DefaultTheme = {
   success: '#008060',
   decorative: '#FDC7CE',
 };
+
+export const DefaultColorScheme: ColorScheme = 'light';
 
 export const roleVariants: RoleVariants = {
   surface: [

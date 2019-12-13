@@ -19,17 +19,16 @@ import {
 
 import {roleVariants} from './role-variants';
 
-const DEFAULT_COLOR_SCHEME = 'light';
+interface CustomPropertiesConfig extends ThemeConfig {
+  colorScheme: ColorScheme;
+}
 
 export function buildCustomProperties(
-  themeConfig: ThemeConfig,
+  themeConfig: CustomPropertiesConfig,
   globalTheming: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
-  const {
-    UNSTABLE_colors = {},
-    colorScheme = DEFAULT_COLOR_SCHEME,
-  } = themeConfig;
+  const {UNSTABLE_colors = {}, colorScheme} = themeConfig;
   return globalTheming
     ? customPropertyTransformer({
         ...buildColors(UNSTABLE_colors, roleVariants, colorScheme),
@@ -42,11 +41,7 @@ export function buildThemeContext(
   themeConfig: ThemeConfig,
   cssCustomProperties?: CustomPropertiesLike,
 ): Theme {
-  const {
-    logo,
-    UNSTABLE_colors,
-    colorScheme = DEFAULT_COLOR_SCHEME,
-  } = themeConfig;
+  const {logo, UNSTABLE_colors, colorScheme} = themeConfig;
   return {
     logo,
     UNSTABLE_cssCustomProperties: toString(cssCustomProperties),
