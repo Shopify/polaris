@@ -1,10 +1,9 @@
 import React from 'react';
 import {act} from 'react-dom/test-utils';
-import {ReactWrapper} from 'enzyme';
 import {clock} from '@shopify/jest-dom-mocks';
 import {Label, Labelled, DisplayText, Caption} from 'components';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {DropZone} from '../DropZone';
 import {DropZoneContext} from '../context';
@@ -486,7 +485,7 @@ function fireEvent({
   testFiles = files,
   spy,
 }: {
-  element: ReactWrapper<any, any>;
+  element: ReactWrapper;
   eventType?: string;
   spy?: jest.Mock;
   testFiles?: object[];

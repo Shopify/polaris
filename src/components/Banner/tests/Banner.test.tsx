@@ -7,7 +7,6 @@ import {
   CircleInformationMajorTwotone,
   FlagMajorTwotone,
 } from '@shopify/polaris-icons';
-import {ReactWrapper} from 'enzyme';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {BannerContext} from 'utilities/banner-context';
@@ -54,16 +53,12 @@ describe('<Banner />', () => {
   it('disables aria-live when stopAnnouncements is enabled', () => {
     const politeBanner = mountWithAppProvider(<Banner />)
       .find('div')
-      .filterWhere(
-        (element: ReactWrapper) => element.prop('aria-live') === 'polite',
-      );
+      .filterWhere((element) => element.prop('aria-live') === 'polite');
     expect(politeBanner).toBeTruthy();
 
     const quietBanner = mountWithAppProvider(<Banner stopAnnouncements />)
       .find('div')
-      .filterWhere(
-        (element: ReactWrapper) => element.prop('aria-live') === 'off',
-      );
+      .filterWhere((element) => element.prop('aria-live') === 'off');
     expect(quietBanner).toBeTruthy();
   });
 
@@ -145,7 +140,7 @@ describe('<Banner />', () => {
 
       const div = mountWithAppProvider(<Test />)
         .find('div')
-        .filterWhere((element: ReactWrapper) => element.prop('tabIndex') === 0);
+        .filterWhere((element) => element.prop('tabIndex') === 0);
 
       expect(div.getDOMNode()).toBe(document.activeElement);
     });

@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount} from 'enzyme';
+import {mount} from 'test-utilities';
 import {withAppProvider} from '../with-app-provider';
 
 describe('withAppProvider', () => {
