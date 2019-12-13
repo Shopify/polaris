@@ -59,6 +59,7 @@ export interface Theme {
   UNSTABLE_cssCustomProperties?: string;
   UNSTABLE_colors?: Partial<RoleColors>;
   colorScheme?: ColorScheme;
+  rootElementColor?: string;
 }
 
 export interface HslaSetting {
