@@ -109,7 +109,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     {trailing: true},
   );
 
-  private get numberOfPromotedActionsToRender(): number {
+  private numberOfPromotedActionsToRender(): number {
     const {promotedActions} = this.props;
     const {containerWidth, measuring} = this.state;
 
@@ -141,7 +141,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     return counter;
   }
 
-  private get hasActions() {
+  private hasActions() {
     const {promotedActions, actions} = this.props;
     return Boolean(
       (promotedActions && promotedActions.length > 0) ||
@@ -149,7 +149,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  private get actionSections(): BulkActionListSection[] | undefined {
+  private actionSections(): BulkActionListSection[] | undefined {
     const {actions} = this.props;
 
     if (!actions || actions.length === 0) {
@@ -169,6 +169,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   componentDidMount() {
     const {actions, promotedActions} = this.props;
 
@@ -189,6 +190,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   render() {
     const {
       selectMode,
@@ -203,6 +205,8 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
       paginatedSelectAllAction,
       polaris: {intl},
     } = this.props;
+
+    const actionSections = this.actionSections();
 
     if (promotedActions && promotedActions.length > MAX_PROMOTED_ACTIONS) {
       // eslint-disable-next-line no-console
@@ -257,10 +261,9 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
       </Button>
     );
 
-    const numberOfPromotedActionsToRender = this
-      .numberOfPromotedActionsToRender;
+    const numberOfPromotedActionsToRender = this.numberOfPromotedActionsToRender();
 
-    const allActionsPopover = this.hasActions ? (
+    const allActionsPopover = this.hasActions() ? (
       <div className={styles.Popover} ref={this.setMoreActionsNode}>
         <Popover
           active={smallScreenPopoverVisible}
@@ -278,7 +281,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
         >
           <ActionList
             items={promotedActions}
-            sections={this.actionSections}
+            sections={actionSections}
             onActionAnyItem={this.toggleSmallScreenPopover}
           />
         </Popover>
@@ -317,19 +320,16 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
 
     let combinedActions: ActionListSection[] = [];
 
-    if (this.actionSections && rolledInPromotedActions.length > 0) {
-      combinedActions = [
-        {items: rolledInPromotedActions},
-        ...this.actionSections,
-      ];
-    } else if (this.actionSections) {
-      combinedActions = this.actionSections;
+    if (actionSections && rolledInPromotedActions.length > 0) {
+      combinedActions = [{items: rolledInPromotedActions}, ...actionSections];
+    } else if (actionSections) {
+      combinedActions = actionSections;
     } else if (rolledInPromotedActions.length > 0) {
       combinedActions = [{items: rolledInPromotedActions}];
     }
 
     const actionsPopover =
-      this.actionSections || rolledInPromotedActions.length > 0 || measuring ? (
+      actionSections || rolledInPromotedActions.length > 0 || measuring ? (
         <div className={styles.Popover} ref={this.setMoreActionsNode}>
           <Popover
             active={largeScreenPopoverVisible}
