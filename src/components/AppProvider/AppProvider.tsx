@@ -107,7 +107,6 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
       children,
     } = this.props;
     const {intl, appBridge, link} = this.state;
-    const {colorScheme, ...restOfTheme} = theme;
 
     return (
       <FeaturesContext.Provider value={features}>
@@ -117,10 +116,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
                 <AppBridgeContext.Provider value={appBridge}>
                   <LinkContext.Provider value={link}>
-                    <ThemeProvider
-                      theme={restOfTheme}
-                      colorScheme={colorScheme}
-                    >
+                    <ThemeProvider theme={theme}>
                       <TelemetryContext.Provider value={UNSTABLE_telemetry}>
                         <MediaQueryProvider>{children}</MediaQueryProvider>
                       </TelemetryContext.Provider>

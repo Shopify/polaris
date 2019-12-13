@@ -244,7 +244,7 @@ describe('<ThemeProvider />', () => {
 
     it('inherits colorScheme from parent <ThemeProvider>', () => {
       const themeProvider = mountWithGlobalTheming(
-        <ThemeProvider theme={{}} colorScheme="dark">
+        <ThemeProvider theme={{colorScheme: 'dark'}}>
           <ThemeProvider
             theme={{
               UNSTABLE_colors: {critical: '#FFFEEE'},
@@ -272,12 +272,12 @@ describe('<ThemeProvider />', () => {
 
     it('overrides colorScheme from parent <ThemeProvider> when provided a colorScheme', () => {
       const themeProvider = mountWithGlobalTheming(
-        <ThemeProvider theme={{}} colorScheme="dark">
+        <ThemeProvider theme={{colorScheme: 'dark'}}>
           <ThemeProvider
             theme={{
               UNSTABLE_colors: {critical: '#FFFEEE'},
+              colorScheme: 'light',
             }}
-            colorScheme="light"
           >
             <p>Hello</p>
           </ThemeProvider>
@@ -301,8 +301,8 @@ describe('<ThemeProvider />', () => {
 
     it('inherits colors from parent <ThemeProvider> when their colorSchemes differ', () => {
       const themeProvider = mountWithGlobalTheming(
-        <ThemeProvider theme={{}} colorScheme="dark">
-          <ThemeProvider theme={{}} colorScheme="light">
+        <ThemeProvider theme={{colorScheme: 'dark'}}>
+          <ThemeProvider theme={{colorScheme: 'light'}}>
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
@@ -322,14 +322,14 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider
         theme={{
           UNSTABLE_colors: {critical: '#000000'},
+          colorScheme: 'dark',
         }}
-        colorScheme="dark"
       >
         <ThemeProvider
           theme={{
             UNSTABLE_colors: {critical: '#FFFEEE'},
+            colorScheme: 'light',
           }}
-          colorScheme="light"
         >
           <p>Hello</p>
         </ThemeProvider>
@@ -355,14 +355,14 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider
         theme={{
           UNSTABLE_colors: {critical: '#000000'},
+          colorScheme: 'dark',
         }}
-        colorScheme="dark"
       >
         <ThemeProvider
           theme={{
             UNSTABLE_colors: {critical: '#FFFEEE'},
+            colorScheme: 'inverse',
           }}
-          colorScheme="inverse"
         >
           <p>Hello</p>
         </ThemeProvider>
@@ -388,14 +388,14 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider
         theme={{
           UNSTABLE_colors: {critical: '#000000'},
+          colorScheme: 'light',
         }}
-        colorScheme="light"
       >
         <ThemeProvider
           theme={{
             UNSTABLE_colors: {critical: '#FFFEEE'},
+            colorScheme: 'inverse',
           }}
-          colorScheme="inverse"
         >
           <p>Hello</p>
         </ThemeProvider>
@@ -426,8 +426,8 @@ describe('<ThemeProvider />', () => {
         <ThemeProvider
           theme={{
             UNSTABLE_colors: {critical: '#FFFEEE'},
+            colorScheme: 'inverse',
           }}
-          colorScheme="inverse"
         >
           <p>Hello</p>
         </ThemeProvider>

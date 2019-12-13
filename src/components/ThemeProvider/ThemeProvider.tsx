@@ -1,22 +1,25 @@
 import React, {useMemo, useEffect, useContext} from 'react';
 import {
   ThemeContext,
-  ThemeProviderThemeConfig,
+  ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
   DefaultTheme,
   DefaultColorScheme,
   Tokens,
   ColorScheme,
-  ThemeProviderColorScheme,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
+
+type Inverse = 'inverse';
+
+interface ThemeProviderThemeConfig extends Omit<ThemeConfig, 'colorScheme'> {
+  colorScheme?: ColorScheme | Inverse;
+}
 
 interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
   theme: ThemeProviderThemeConfig;
-  /** Whether to display a light, dark, or inverse of the parent color scheme */
-  colorScheme?: ThemeProviderColorScheme;
   /** The content to display */
   children?: React.ReactNode;
 }
@@ -24,7 +27,6 @@ interface ThemeProviderProps {
 export function ThemeProvider({
   theme: themeConfig,
   children,
-  colorScheme,
 }: ThemeProviderProps) {
   const {unstableGlobalTheming = false} = useFeatures();
 
@@ -37,11 +39,11 @@ export function ThemeProvider({
     parentContext.UNSTABLE_colors &&
     parentContext.UNSTABLE_colors;
 
-  const {UNSTABLE_colors, ...rest} = themeConfig;
+  const {UNSTABLE_colors, colorScheme, ...rest} = themeConfig;
 
   function isInverseColorScheme(
-    colorScheme: ThemeProviderColorScheme | ColorScheme,
-  ): colorScheme is 'inverse' {
+    colorScheme?: ColorScheme | Inverse,
+  ): colorScheme is Inverse {
     return colorScheme === 'inverse';
   }
 

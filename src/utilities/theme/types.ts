@@ -38,8 +38,6 @@ export type Role = keyof RoleColors;
 
 export type ColorScheme = 'light' | 'dark';
 
-export type ThemeProviderColorScheme = ColorScheme | 'inverse' | undefined;
-
 // The value that is passed into the ThemeProvider
 export interface ThemeConfig {
   /** Sets the logo for the top bar and contextual save bar components*/
@@ -51,9 +49,6 @@ export interface ThemeConfig {
   UNSTABLE_colors?: Partial<RoleColors>;
   colorScheme?: ColorScheme;
 }
-
-export interface ThemeProviderThemeConfig
-  extends Omit<ThemeConfig, 'colorScheme'> {}
 
 export type CustomPropertiesLike = Record<string, string>;
 

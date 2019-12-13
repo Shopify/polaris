@@ -2,14 +2,7 @@ export {ThemeContext} from './context';
 
 export {useTheme} from './hooks';
 
-export {
-  Theme,
-  ThemeConfig,
-  ThemeProviderThemeConfig,
-  CustomPropertiesLike,
-  ColorScheme,
-  ThemeProviderColorScheme,
-} from './types';
+export {Theme, ThemeConfig, CustomPropertiesLike, ColorScheme} from './types';
 
 export {DefaultTheme, DefaultColorScheme, roleVariants} from './role-variants';
 
