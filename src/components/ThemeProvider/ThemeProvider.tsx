@@ -88,9 +88,9 @@ export function ThemeProvider({
       buildCustomProperties(
         processedThemeConfig,
         unstableGlobalTheming,
-        isParentThemeProvider ? Tokens : undefined,
+        Tokens,
       ),
-    [isParentThemeProvider, processedThemeConfig, unstableGlobalTheming],
+    [processedThemeConfig, unstableGlobalTheming],
   );
 
   const theme = useMemo(

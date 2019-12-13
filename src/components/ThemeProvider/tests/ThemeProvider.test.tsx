@@ -195,24 +195,18 @@ describe('<ThemeProvider />', () => {
         {globalTheming: true},
       );
 
-      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
-        style: {color: expect.any(String)},
-      });
-    });
-
-    it('does not set overrides', () => {
-      const themeProvider = mountWithGlobalTheming(
-        <ThemeProvider theme={{}}>
-          <ThemeProvider theme={{}}>
-            <p>Hello</p>
-          </ThemeProvider>
-        </ThemeProvider>,
-        {globalTheming: true},
-      );
-
       expect(themeProvider.findAll('div')[1]).not.toHaveReactProps({
         style: expect.objectContaining({
-          '--p-override-zero': expect.any(String),
+          '--p-surface-background': expect.any(String),
+          '--p-text-on-surface': expect.any(String),
+          '--p-interactive-action': expect.any(String),
+          '--p-neutral-action': expect.any(String),
+          '--p-primary-action': expect.any(String),
+          '--p-critical-action': expect.any(String),
+          '--p-warning-surface': expect.any(String),
+          '--p-highlight-surface': expect.any(String),
+          '--p-success-surface': expect.any(String),
+          '--p-decorative-one-text': expect.any(String),
         }),
       });
     });
