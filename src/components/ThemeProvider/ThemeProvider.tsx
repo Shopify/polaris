@@ -43,7 +43,7 @@ export function ThemeProvider({
 
   const processedThemeConfig = {
     ...rest,
-    ...{colorScheme: getColorScheme()},
+    ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
     UNSTABLE_colors: {
       ...(isParentThemeProvider && DefaultThemeColors),
       ...(shouldInheritParentColors(
@@ -101,10 +101,25 @@ function isInverseColorScheme(
   return colorScheme === 'inverse';
 }
 
+function getColorScheme(
+  colorScheme: ColorScheme | Inverse | undefined,
+  parentColorScheme: ColorScheme | undefined,
+) {
+  if (colorScheme == null) {
+    return parentColorScheme || DefaultColorScheme;
+  } else if (isInverseColorScheme(colorScheme)) {
+    return parentColorScheme === 'dark' || parentColorScheme === undefined
+      ? 'light'
+      : 'dark';
+  } else {
+    return colorScheme;
+  }
+}
+
 function shouldInheritParentColors(
   isParentThemeProvider: boolean,
-  colorScheme?: ColorScheme | Inverse,
-  parentColorScheme?: ColorScheme,
+  colorScheme: ColorScheme | Inverse | undefined,
+  parentColorScheme: ColorScheme | undefined,
 ) {
   if (isParentThemeProvider) {
     return false;
@@ -116,20 +131,5 @@ function shouldInheritParentColors(
     return true;
   } else {
     return false;
-  }
-}
-
-function getColorScheme(
-  colorScheme?: ColorScheme | Inverse,
-  parentColorScheme?: ColorScheme,
-) {
-  if (colorScheme == null) {
-    return parentColorScheme || DefaultColorScheme;
-  } else if (isInverseColorScheme(colorScheme)) {
-    return parentColorScheme === 'dark' || parentColorScheme === undefined
-      ? 'light'
-      : 'dark';
-  } else {
-    return colorScheme;
   }
 }
