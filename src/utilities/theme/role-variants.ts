@@ -1,19 +1,19 @@
-import {RoleVariants} from './types';
+import {RoleVariants, ColorScheme} from './types';
 
-// eslint-disable-next-line shopify/typescript/prefer-pascal-case-enums
-export enum UNSTABLE_Color {
-  Surface = '#FAFAFA',
-  DarkSurface = '#111213',
-  OnSurface = '#111213',
-  Interactive = '#2E72D2',
-  Neutral = '#111213',
-  Primary = '#008060',
-  Critical = '#D82C0D',
-  Warning = '#FFC453',
-  Highlight = '#5BCDDA',
-  Success = '#008060',
-  Decorative = '#FDC7CE',
-}
+export const DefaultThemeColors = {
+  surface: '#111213',
+  onSurface: '#111213',
+  interactive: '#2E72D2',
+  neutral: '#111213',
+  primary: '#008060',
+  critical: '#D82C0D',
+  warning: '#FFC453',
+  highlight: '#5BCDDA',
+  success: '#008060',
+  decorative: '#FDC7CE',
+};
+
+export const DefaultColorScheme: ColorScheme = 'light';
 
 export const roleVariants: RoleVariants = {
   surface: [
