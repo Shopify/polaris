@@ -4,7 +4,7 @@ import {
   ThemeProviderThemeConfig,
   buildThemeContext,
   buildCustomProperties,
-  DEFAULT_COLOR,
+  DefaultTheme,
   Tokens,
   ColorScheme,
   ThemeProviderColorScheme,
@@ -60,7 +60,7 @@ export function ThemeProvider({
     ...rest,
     ...{colorScheme: processedColorScheme || parentColorScheme},
     UNSTABLE_colors: {
-      ...(isParentThemeProvider && DEFAULT_COLOR),
+      ...(isParentThemeProvider && DefaultTheme),
       ...(childShouldInheritParentColors && parentColors),
       ...UNSTABLE_colors,
     },

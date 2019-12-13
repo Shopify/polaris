@@ -16,6 +16,6 @@ export {
   roleVariants as UNSTABLE_roleVariants,
   toCssCustomPropertySyntax as UNSTABLE_toCssCustomPropertySyntax,
   Tokens as UNSTABLE_Tokens,
-  DEFAULT_COLOR as UNSTABLE_DEFAULT_COLOR,
+  DefaultTheme as UNSTABLE_DefaultTheme,
 } from './utilities/theme';
 /* eslint-enable @typescript-eslint/camelcase */

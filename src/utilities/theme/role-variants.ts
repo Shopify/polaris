@@ -1,6 +1,6 @@
 import {RoleVariants} from './types';
 
-export const DEFAULT_COLOR = {
+export const DefaultTheme = {
   surface: '#111213',
   onSurface: '#111213',
   interactive: '#2E72D2',

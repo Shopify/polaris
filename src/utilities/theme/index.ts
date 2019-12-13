@@ -11,7 +11,7 @@ export {
   ThemeProviderColorScheme,
 } from './types';
 
-export {DEFAULT_COLOR, roleVariants} from './role-variants';
+export {DefaultTheme, roleVariants} from './role-variants';
 
 export {
   buildCustomProperties,
