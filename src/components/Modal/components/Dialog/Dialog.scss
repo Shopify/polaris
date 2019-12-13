@@ -52,7 +52,7 @@ $large-width: rem(980px);
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
-    border-radius: border-radius(large);
+    border-radius: var(--p-border-radius-wide, border-radius(large));
   }
 
   &.limitHeight {
