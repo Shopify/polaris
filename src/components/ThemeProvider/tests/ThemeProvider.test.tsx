@@ -129,21 +129,6 @@ describe('<ThemeProvider />', () => {
     });
   });
 
-  it('sets color system properties when global theming is enabled', () => {
-    const themeProvider = mountWithGlobalTheming(
-      <ThemeProvider theme={{}}>
-        <p>Hello</p>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    expect(themeProvider.find('div')).toHaveReactProps({
-      style: expect.objectContaining({
-        '--p-surface-background': 'hsla(0, 0%, 98%, 1)',
-      }),
-    });
-  });
-
   it('sets color system properties in context when global theming is enabled', () => {
     mountWithGlobalTheming(
       <ThemeProvider theme={{}}>
@@ -174,152 +159,34 @@ describe('<ThemeProvider />', () => {
     }
   });
 
-  it('sets overrides', () => {
-    const wrapper = mountWithGlobalTheming(
+  it('sets defaults with global theming enabled', () => {
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
       {globalTheming: true},
     );
 
-    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
-
-    expect(styleKeys).toContain('--p-override-zero');
-  });
-
-  it('sets surface', () => {
-    const wrapper = mountWithGlobalTheming(
-      <ThemeProvider theme={{}}>
-        <p>Hello</p>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
-
-    expect(styleKeys).toContain('--p-surface-background');
-  });
-
-  it('sets onSurface', () => {
-    const wrapper = mountWithGlobalTheming(
-      <ThemeProvider theme={{}}>
-        <p>Hello</p>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
-
-    expect(styleKeys).toContain('--p-text-on-surface');
-  });
-
-  it('sets interactive', () => {
-    const wrapper = mountWithGlobalTheming(
-      <ThemeProvider theme={{}}>
-        <p>Hello</p>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
-
-    expect(styleKeys).toContain('--p-interactive-action');
-  });
-
-  it('sets neutral', () => {
-    const wrapper = mountWithGlobalTheming(
-      <ThemeProvider theme={{}}>
-        <p>Hello</p>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
-
-    expect(styleKeys).toContain('--p-neutral-action');
-  });
-
-  it('sets primary', () => {
-    const wrapper = mountWithGlobalTheming(
-      <ThemeProvider theme={{}}>
-        <p>Hello</p>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
-
-    expect(styleKeys).toContain('--p-primary-action');
-  });
-
-  it('sets critical', () => {
-    const wrapper = mountWithGlobalTheming(
-      <ThemeProvider theme={{}}>
-        <p>Hello</p>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
-
-    expect(styleKeys).toContain('--p-critical-action');
-  });
-
-  it('sets warning', () => {
-    const wrapper = mountWithGlobalTheming(
-      <ThemeProvider theme={{}}>
-        <p>Hello</p>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
-
-    expect(styleKeys).toContain('--p-warning-surface');
-  });
-
-  it('sets highlight', () => {
-    const wrapper = mountWithGlobalTheming(
-      <ThemeProvider theme={{}}>
-        <p>Hello</p>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
-
-    expect(styleKeys).toContain('--p-highlight-surface');
-  });
-
-  it('sets success', () => {
-    const wrapper = mountWithGlobalTheming(
-      <ThemeProvider theme={{}}>
-        <p>Hello</p>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
-
-    expect(styleKeys).toContain('--p-success-surface');
-  });
-
-  it('sets decorative', () => {
-    const wrapper = mountWithGlobalTheming(
-      <ThemeProvider theme={{}}>
-        <p>Hello</p>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const styleKeys = Object.keys(wrapper.find('div')!.props.style || {});
-
-    expect(styleKeys).toContain('--p-decorative-one-text');
+    expect(themeProvider.find('div')).toHaveReactProps({
+      style: expect.objectContaining({
+        '--p-override-zero': expect.any(String),
+        '--p-surface-background': expect.any(String),
+        '--p-text-on-surface': expect.any(String),
+        '--p-interactive-action': expect.any(String),
+        '--p-neutral-action': expect.any(String),
+        '--p-primary-action': expect.any(String),
+        '--p-critical-action': expect.any(String),
+        '--p-warning-surface': expect.any(String),
+        '--p-highlight-surface': expect.any(String),
+        '--p-success-surface': expect.any(String),
+        '--p-decorative-one-text': expect.any(String),
+      }),
+    });
   });
 
   describe('when nested', () => {
     it('does not set a default theme', () => {
-      const wrapper = mountWithGlobalTheming(
+      const themeProvider = mountWithGlobalTheming(
         <ThemeProvider theme={{}}>
           <ThemeProvider theme={{}}>
             <p>Hello</p>
@@ -328,13 +195,13 @@ describe('<ThemeProvider />', () => {
         {globalTheming: true},
       );
 
-      expect(wrapper.findAll('div')![1].props.style).toStrictEqual({
-        color: '',
+      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
+        style: {color: expect.any(String)},
       });
     });
 
     it('does not set overrides', () => {
-      const wrapper = mountWithGlobalTheming(
+      const themeProvider = mountWithGlobalTheming(
         <ThemeProvider theme={{}}>
           <ThemeProvider theme={{}}>
             <p>Hello</p>
@@ -343,15 +210,15 @@ describe('<ThemeProvider />', () => {
         {globalTheming: true},
       );
 
-      const styleKeys = Object.keys(
-        wrapper.findAll('div')![1].props.style || {},
-      );
-
-      expect(styleKeys).not.toContain('--p-override-zero');
+      expect(themeProvider.findAll('div')[1]).not.toHaveReactProps({
+        style: expect.objectContaining({
+          '--p-override-zero': expect.any(String),
+        }),
+      });
     });
 
     it('adds css custom properties for color roles provided', () => {
-      const wrapper = mountWithGlobalTheming(
+      const themeProvider = mountWithGlobalTheming(
         <ThemeProvider
           theme={{
             UNSTABLE_colors: {surface: '#FFFFFF'},
@@ -368,13 +235,15 @@ describe('<ThemeProvider />', () => {
         {globalTheming: true},
       );
 
-      expect(wrapper.findAll('div')![1].props.style).toStrictEqual(
-        expect.objectContaining({'--p-surface': 'hsla(0, 0%, 0%, 1)'}),
-      );
+      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
+        style: expect.objectContaining({
+          '--p-surface': 'hsla(0, 0%, 0%, 1)',
+        }),
+      });
     });
 
     it('inherits colorScheme from parent <ThemeProvider>', () => {
-      const wrapper = mountWithGlobalTheming(
+      const themeProvider = mountWithGlobalTheming(
         <ThemeProvider theme={{}} colorScheme="dark">
           <ThemeProvider
             theme={{
@@ -387,22 +256,22 @@ describe('<ThemeProvider />', () => {
         {globalTheming: true},
       );
 
-      const {style} = wrapper.findAll('div')![1].props;
-      expect(style).toStrictEqual(
-        expect.objectContaining({
+      const element = themeProvider.findAll('div')[1];
+      expect(element).toHaveReactProps({
+        style: expect.objectContaining({
           '--p-critical-surface-subdued':
             'hsla(58, 100%, 7.000000000000001%, 1)',
         }),
-      );
-      expect(style).not.toStrictEqual(
-        expect.objectContaining({
+      });
+      expect(element).not.toHaveReactProps({
+        style: expect.objectContaining({
           '--p-critical-surface-subdued': 'hsla(57, 100%, 89%, 1)',
         }),
-      );
+      });
     });
 
     it('overrides colorScheme from parent <ThemeProvider> when provided a colorScheme', () => {
-      const wrapper = mountWithGlobalTheming(
+      const themeProvider = mountWithGlobalTheming(
         <ThemeProvider theme={{}} colorScheme="dark">
           <ThemeProvider
             theme={{
@@ -416,22 +285,22 @@ describe('<ThemeProvider />', () => {
         {globalTheming: true},
       );
 
-      const {style} = wrapper.findAll('div')![1].props;
-      expect(style).toStrictEqual(
-        expect.objectContaining({
+      const element = themeProvider.findAll('div')[1];
+      expect(element).toHaveReactProps({
+        style: expect.objectContaining({
           '--p-critical-surface-subdued': 'hsla(57, 100%, 89%, 1)',
         }),
-      );
-      expect(style).not.toStrictEqual(
-        expect.objectContaining({
+      });
+      expect(element).not.toHaveReactProps({
+        style: expect.objectContaining({
           '--p-critical-surface-subdued':
             'hsla(58, 100%, 7.000000000000001%, 1)',
         }),
-      );
+      });
     });
 
     it('inherits colors from parent <ThemeProvider> when their colorSchemes differ', () => {
-      const wrapper = mountWithGlobalTheming(
+      const themeProvider = mountWithGlobalTheming(
         <ThemeProvider theme={{}} colorScheme="dark">
           <ThemeProvider theme={{}} colorScheme="light">
             <p>Hello</p>
@@ -440,17 +309,16 @@ describe('<ThemeProvider />', () => {
         {globalTheming: true},
       );
 
-      const {style} = wrapper.findAll('div')![1].props;
-      expect(style).toStrictEqual(
-        expect.objectContaining({
-          '--p-surface-background': 'hsla(0, 0%, 98%, 1)',
+      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
+        style: expect.objectContaining({
+          '--p-surface-background': expect.any(String),
         }),
-      );
+      });
     });
   });
 
   it('overrides inherited colors from parent <ThemeProvider> with provided colors when their colorSchemes differ', () => {
-    const wrapper = mountWithGlobalTheming(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
           UNSTABLE_colors: {critical: '#000000'},
@@ -469,21 +337,21 @@ describe('<ThemeProvider />', () => {
       {globalTheming: true},
     );
 
-    const {style} = wrapper.findAll('div')![1].props;
-    expect(style).toStrictEqual(
-      expect.objectContaining({
+    const element = themeProvider.findAll('div')[1];
+    expect(element).toHaveReactProps({
+      style: expect.objectContaining({
         '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
       }),
-    );
-    expect(style).not.toStrictEqual(
-      expect.objectContaining({
+    });
+    expect(element).not.toHaveReactProps({
+      style: expect.objectContaining({
         '--p-critical-surface': 'hsla(0, 0%, 98%, 1)',
       }),
-    );
+    });
   });
 
   it('inverts the parent colorScheme from dark to light when given an inverse colorScheme', () => {
-    const wrapper = mountWithGlobalTheming(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
           UNSTABLE_colors: {critical: '#000000'},
@@ -502,21 +370,21 @@ describe('<ThemeProvider />', () => {
       {globalTheming: true},
     );
 
-    const {style} = wrapper.findAll('div')![1].props;
-    expect(style).toStrictEqual(
-      expect.objectContaining({
+    const element = themeProvider.findAll('div')[1];
+    expect(element).toHaveReactProps({
+      style: expect.objectContaining({
         '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
       }),
-    );
-    expect(style).not.toStrictEqual(
-      expect.objectContaining({
+    });
+    expect(element).not.toHaveReactProps({
+      style: expect.objectContaining({
         '--p-critical-surface': 'hsla(0, 0%, 98%, 1)',
       }),
-    );
+    });
   });
 
   it('inverts the parent colorScheme from light to dark when given an inverse colorScheme', () => {
-    const wrapper = mountWithGlobalTheming(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
           UNSTABLE_colors: {critical: '#000000'},
@@ -535,21 +403,21 @@ describe('<ThemeProvider />', () => {
       {globalTheming: true},
     );
 
-    const {style} = wrapper.findAll('div')![1].props;
-    expect(style).toStrictEqual(
-      expect.objectContaining({
+    const element = themeProvider.findAll('div')[1];
+    expect(element).toHaveReactProps({
+      style: expect.objectContaining({
         '--p-critical-surface': 'hsla(58, 100%, 7.000000000000001%, 1)',
       }),
-    );
-    expect(style).not.toStrictEqual(
-      expect.objectContaining({
+    });
+    expect(element).not.toHaveReactProps({
+      style: expect.objectContaining({
         '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
       }),
-    );
+    });
   });
 
   it('sets the color scheme to light when the child color scheme is inverse and the parent has none', () => {
-    const wrapper = mountWithGlobalTheming(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
           UNSTABLE_colors: {critical: '#000000'},
@@ -567,16 +435,16 @@ describe('<ThemeProvider />', () => {
       {globalTheming: true},
     );
 
-    const {style} = wrapper.findAll('div')![1].props;
-    expect(style).toStrictEqual(
-      expect.objectContaining({
+    const element = themeProvider.findAll('div')[1];
+    expect(element).toHaveReactProps({
+      style: expect.objectContaining({
         '--p-critical-surface': 'hsla(58, 100%, 7.000000000000001%, 1)',
       }),
-    );
-    expect(style).not.toStrictEqual(
-      expect.objectContaining({
+    });
+    expect(element).not.toHaveReactProps({
+      style: expect.objectContaining({
         '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
       }),
-    );
+    });
   });
 });
