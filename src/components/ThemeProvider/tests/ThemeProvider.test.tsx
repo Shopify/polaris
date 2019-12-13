@@ -236,226 +236,114 @@ describe('<ThemeProvider />', () => {
       });
     });
 
-    it('inherits colorScheme from parent <ThemeProvider>', () => {
-      const themeProvider = mountWithGlobalTheming(
-        <ThemeProvider theme={{colorScheme: 'dark'}}>
-          <ThemeProvider
-            theme={{
-              UNSTABLE_colors: {critical: '#FFFEEE'},
-            }}
-          >
-            <p>Hello</p>
-          </ThemeProvider>
-        </ThemeProvider>,
-        {globalTheming: true},
-      );
+    it.each([
+      [
+        'Dark parent, undefined child, child has colors',
+        {colorScheme: 'dark'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}},
+        'hsla(58, 100%, 7.000000000000001%, 1)',
+      ],
+      [
+        'Light parent, undefined child, child has colors',
+        {colorScheme: 'light'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}},
+        'hsla(57, 100%, 89%, 1)',
+      ],
+      [
+        'Dark parent, light child, child has colors',
+        {colorScheme: 'dark'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
+        'hsla(57, 100%, 89%, 1)',
+      ],
+      [
+        'Light parent, dark child, child has colors',
+        {colorScheme: 'light'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
+        'hsla(58, 100%, 7.000000000000001%, 1)',
+      ],
+      [
+        'Dark parent, undefined child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}},
+        'hsla(58, 100%, 7.000000000000001%, 1)',
+      ],
+      [
+        'Light parent, undefined child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}},
+        'hsla(57, 100%, 89%, 1)',
+      ],
+      [
+        'Dark parent, light child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
+        'hsla(57, 100%, 89%, 1)',
+      ],
+      [
+        'Dark parent, light child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
+        'hsla(57, 100%, 89%, 1)',
+      ],
+      [
+        'Light parent, dark child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
+        'hsla(58, 100%, 7.000000000000001%, 1)',
+      ],
+      [
+        'Dark parent, inverse child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
+        'hsla(57, 100%, 89%, 1)',
+      ],
+      [
+        'Light parent, inverse child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
+        'hsla(58, 100%, 7.000000000000001%, 1)',
+      ],
+      [
+        'Undefined parent, inverse child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
+        'hsla(58, 100%, 7.000000000000001%, 1)',
+      ],
+      [
+        'Dark parent, light child with no colors',
+        {colorScheme: 'dark'},
+        {colorScheme: 'light'},
+        expect.any(String),
+      ],
+      [
+        'Light parent, dark child with no colors',
+        {colorScheme: 'light'},
+        {colorScheme: 'dark'},
+        expect.any(String),
+      ],
+    ])(
+      'Inherits color scheme from parent where: %s',
+      (
+        _: any,
+        topLevelTheme: any,
+        childTheme: any,
+        expectedCritialSurfaceSubdued: any,
+      ) => {
+        const themeProvider = mountWithGlobalTheming(
+          <ThemeProvider theme={topLevelTheme}>
+            <ThemeProvider theme={childTheme}>
+              <p>Hello</p>
+            </ThemeProvider>
+          </ThemeProvider>,
+          {globalTheming: true},
+        );
 
-      const element = themeProvider.findAll('div')[1];
-      expect(element).toHaveReactProps({
-        style: expect.objectContaining({
-          '--p-critical-surface-subdued':
-            'hsla(58, 100%, 7.000000000000001%, 1)',
-        }),
-      });
-      expect(element).not.toHaveReactProps({
-        style: expect.objectContaining({
-          '--p-critical-surface-subdued': 'hsla(57, 100%, 89%, 1)',
-        }),
-      });
-    });
-
-    it('overrides colorScheme from parent <ThemeProvider> when provided a colorScheme', () => {
-      const themeProvider = mountWithGlobalTheming(
-        <ThemeProvider theme={{colorScheme: 'dark'}}>
-          <ThemeProvider
-            theme={{
-              UNSTABLE_colors: {critical: '#FFFEEE'},
-              colorScheme: 'light',
-            }}
-          >
-            <p>Hello</p>
-          </ThemeProvider>
-        </ThemeProvider>,
-        {globalTheming: true},
-      );
-
-      const element = themeProvider.findAll('div')[1];
-      expect(element).toHaveReactProps({
-        style: expect.objectContaining({
-          '--p-critical-surface-subdued': 'hsla(57, 100%, 89%, 1)',
-        }),
-      });
-      expect(element).not.toHaveReactProps({
-        style: expect.objectContaining({
-          '--p-critical-surface-subdued':
-            'hsla(58, 100%, 7.000000000000001%, 1)',
-        }),
-      });
-    });
-
-    it('inherits colors from parent <ThemeProvider> when the parent has a dark scheme and the child has a light scheme', () => {
-      const themeProvider = mountWithGlobalTheming(
-        <ThemeProvider theme={{colorScheme: 'dark'}}>
-          <ThemeProvider theme={{colorScheme: 'light'}}>
-            <p>Hello</p>
-          </ThemeProvider>
-        </ThemeProvider>,
-        {globalTheming: true},
-      );
-
-      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
-        style: expect.objectContaining({
-          '--p-surface-background': expect.any(String),
-        }),
-      });
-    });
-
-    it('inherits colors from parent <ThemeProvider> when the parent has a light scheme and the child has a dark scheme', () => {
-      const themeProvider = mountWithGlobalTheming(
-        <ThemeProvider theme={{colorScheme: 'light'}}>
-          <ThemeProvider theme={{colorScheme: 'dark'}}>
-            <p>Hello</p>
-          </ThemeProvider>
-        </ThemeProvider>,
-        {globalTheming: true},
-      );
-
-      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
-        style: expect.objectContaining({
-          '--p-surface-background': expect.any(String),
-        }),
-      });
-    });
-  });
-
-  it('overrides inherited colors from parent <ThemeProvider> with provided colors when their colorSchemes differ', () => {
-    const themeProvider = mountWithGlobalTheming(
-      <ThemeProvider
-        theme={{
-          UNSTABLE_colors: {critical: '#000000'},
-          colorScheme: 'dark',
-        }}
-      >
-        <ThemeProvider
-          theme={{
-            UNSTABLE_colors: {critical: '#FFFEEE'},
-            colorScheme: 'light',
-          }}
-        >
-          <p>Hello</p>
-        </ThemeProvider>
-      </ThemeProvider>,
-      {globalTheming: true},
+        expect(themeProvider.findAll('div')[1]).toHaveReactProps({
+          style: expect.objectContaining({
+            '--p-critical-surface-subdued': expectedCritialSurfaceSubdued,
+          }),
+        });
+      },
     );
-
-    const element = themeProvider.findAll('div')[1];
-    expect(element).toHaveReactProps({
-      style: expect.objectContaining({
-        '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
-      }),
-    });
-    expect(element).not.toHaveReactProps({
-      style: expect.objectContaining({
-        '--p-critical-surface': 'hsla(0, 0%, 98%, 1)',
-      }),
-    });
-  });
-
-  it('inverts the parent colorScheme from dark to light when given an inverse colorScheme', () => {
-    const themeProvider = mountWithGlobalTheming(
-      <ThemeProvider
-        theme={{
-          UNSTABLE_colors: {critical: '#000000'},
-          colorScheme: 'dark',
-        }}
-      >
-        <ThemeProvider
-          theme={{
-            UNSTABLE_colors: {critical: '#FFFEEE'},
-            colorScheme: 'inverse',
-          }}
-        >
-          <p>Hello</p>
-        </ThemeProvider>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const element = themeProvider.findAll('div')[1];
-    expect(element).toHaveReactProps({
-      style: expect.objectContaining({
-        '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
-      }),
-    });
-    expect(element).not.toHaveReactProps({
-      style: expect.objectContaining({
-        '--p-critical-surface': 'hsla(0, 0%, 98%, 1)',
-      }),
-    });
-  });
-
-  it('inverts the parent colorScheme from light to dark when given an inverse colorScheme', () => {
-    const themeProvider = mountWithGlobalTheming(
-      <ThemeProvider
-        theme={{
-          UNSTABLE_colors: {critical: '#000000'},
-          colorScheme: 'light',
-        }}
-      >
-        <ThemeProvider
-          theme={{
-            UNSTABLE_colors: {critical: '#FFFEEE'},
-            colorScheme: 'inverse',
-          }}
-        >
-          <p>Hello</p>
-        </ThemeProvider>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const element = themeProvider.findAll('div')[1];
-    expect(element).toHaveReactProps({
-      style: expect.objectContaining({
-        '--p-critical-surface': 'hsla(58, 100%, 7.000000000000001%, 1)',
-      }),
-    });
-    expect(element).not.toHaveReactProps({
-      style: expect.objectContaining({
-        '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
-      }),
-    });
-  });
-
-  it('sets the color scheme to light when the child color scheme is inverse and the parent has none', () => {
-    const themeProvider = mountWithGlobalTheming(
-      <ThemeProvider
-        theme={{
-          UNSTABLE_colors: {critical: '#000000'},
-        }}
-      >
-        <ThemeProvider
-          theme={{
-            UNSTABLE_colors: {critical: '#FFFEEE'},
-            colorScheme: 'inverse',
-          }}
-        >
-          <p>Hello</p>
-        </ThemeProvider>
-      </ThemeProvider>,
-      {globalTheming: true},
-    );
-
-    const element = themeProvider.findAll('div')[1];
-    expect(element).toHaveReactProps({
-      style: expect.objectContaining({
-        '--p-critical-surface': 'hsla(58, 100%, 7.000000000000001%, 1)',
-      }),
-    });
-    expect(element).not.toHaveReactProps({
-      style: expect.objectContaining({
-        '--p-critical-surface': 'hsla(57, 100%, 93%, 1)',
-      }),
-    });
   });
 });
