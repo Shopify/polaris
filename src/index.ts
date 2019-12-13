@@ -12,7 +12,6 @@ export {AppBridgeContext} from './utilities/app-bridge';
 
 /* eslint-disable @typescript-eslint/camelcase */
 export {
-  buildCustomProperties as UNSTABLE_buildCustomProperties,
   buildColors as UNSTABLE_buildColors,
   roleVariants as UNSTABLE_roleVariants,
   toCssCustomPropertySyntax as UNSTABLE_toCssCustomPropertySyntax,
