@@ -299,10 +299,27 @@ describe('<ThemeProvider />', () => {
       });
     });
 
-    it('inherits colors from parent <ThemeProvider> when their colorSchemes differ', () => {
+    it('inherits colors from parent <ThemeProvider> when the parent has a dark scheme and the child has a light scheme', () => {
       const themeProvider = mountWithGlobalTheming(
         <ThemeProvider theme={{colorScheme: 'dark'}}>
           <ThemeProvider theme={{colorScheme: 'light'}}>
+            <p>Hello</p>
+          </ThemeProvider>
+        </ThemeProvider>,
+        {globalTheming: true},
+      );
+
+      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
+        style: expect.objectContaining({
+          '--p-surface-background': expect.any(String),
+        }),
+      });
+    });
+
+    it('inherits colors from parent <ThemeProvider> when the parent has a light scheme and the child has a dark scheme', () => {
+      const themeProvider = mountWithGlobalTheming(
+        <ThemeProvider theme={{colorScheme: 'light'}}>
+          <ThemeProvider theme={{colorScheme: 'dark'}}>
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,

@@ -65,7 +65,9 @@ export function ThemeProvider({
     if (colorScheme == null) {
       return parentColorScheme || DefaultColorScheme;
     } else if (isInverseColorScheme(colorScheme)) {
-      return parentColorScheme === 'dark' ? 'light' : 'dark';
+      return parentColorScheme === 'dark' || parentColorScheme === undefined
+        ? 'light'
+        : 'dark';
     } else {
       return colorScheme;
     }
