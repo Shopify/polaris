@@ -24,7 +24,7 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
     shouldFocusSelf: undefined,
   };
 
-  private focusTrapWrapper: HTMLElement;
+  private focusTrapWrapper: HTMLElement | null = null;
 
   componentDidMount() {
     this.setState(this.handleTrappingChange());
@@ -33,7 +33,10 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
   handleTrappingChange() {
     const {trapping = true} = this.props;
 
-    if (this.focusTrapWrapper.contains(document.activeElement)) {
+    if (
+      this.focusTrapWrapper &&
+      this.focusTrapWrapper.contains(document.activeElement)
+    ) {
       return {shouldFocusSelf: false};
     }
 
