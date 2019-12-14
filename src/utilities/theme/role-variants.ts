@@ -249,28 +249,28 @@ export const roleVariants: RoleVariants = {
   ],
   primary: [
     {
-      name: 'primaryAction',
+      name: 'actionPrimary',
       description:
         'Used as the background color for primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.',
       light: {lightness: 47.3},
       dark: {lightness: 47.3},
     },
     {
-      name: 'primaryActionDisabled',
+      name: 'actionPrimaryDisabled',
       description:
         'Used as the background color for disabled primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.',
       light: {lightness: 32},
       dark: {lightness: 32},
     },
     {
-      name: 'primaryActionHovered',
+      name: 'actionPrimaryHovered',
       description:
         'Used as the background color for hovered primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.',
       light: {lightness: 42.3},
       dark: {lightness: 55},
     },
     {
-      name: 'primaryActionPressed',
+      name: 'actionPrimaryPressed',
       description:
         'Used as the background color for pressed primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.',
       light: {lightness: 37.3},
@@ -314,83 +314,83 @@ export const roleVariants: RoleVariants = {
   ],
   critical: [
     {
-      name: 'criticalBorder',
+      name: 'borderCritical',
       description:
         'For use as a border on critical components such as banners, and as an outline on interactive elements in an error state.',
       light: {lightness: 50},
       dark: {lightness: 50},
     },
     {
-      name: 'criticalBorderDisabled',
+      name: 'borderCriticalDisabled',
       description:
         'For use as a disabled border on critical components such as banners, and as an outline on interactive elements in an error state.',
       light: {lightness: 82},
       dark: {lightness: 28},
     },
     {
-      name: 'criticalIcon',
+      name: 'iconCritical',
       description: 'For use as an icon fill color on top of critical elements.',
       light: {lightness: 52},
       dark: {lightness: 48},
     },
     {
-      name: 'criticalSurface',
+      name: 'surfaceCritical',
       description:
         'For use as a surface color on critical elements including badges.',
       light: {lightness: 98.6},
       dark: {lightness: 12},
     },
     {
-      name: 'criticalSurfaceSubdued',
+      name: 'surfaceCriticalSubdued',
       description:
         'For use as a subdued surface color on critical elements including banners.',
       light: {lightness: 98},
       dark: {lightness: 12},
     },
     {
-      name: 'criticalSurfaceSubduedHovered',
+      name: 'surfaceCriticalSubduedHovered',
       description:
         'For use as a surface color on critical interactive elements including action list items in a hovered state.',
       light: {lightness: 96},
       dark: {lightness: 15, saturation: 60},
     },
     {
-      name: 'criticalSurfaceSubduedPressed',
+      name: 'surfaceCriticalSubduedPressed',
       description:
         'For use as a surface color on critical interactive elements including action list items in a pressed state.',
       light: {lightness: 88},
       dark: {lightness: 22},
     },
     {
-      name: 'criticalText',
+      name: 'textCritical',
       description:
         'For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.',
       light: {lightness: 47.3},
       dark: {lightness: 65, saturation: 70},
     },
     {
-      name: 'criticalAction',
+      name: 'actionCritical',
       description:
         'For use as the background color for destructive buttons, and as the background color for error toast messages.',
       light: {lightness: 47.5},
       dark: {lightness: 45},
     },
     {
-      name: 'criticalActionDisabled',
+      name: 'actionCriticalDisabled',
       description:
         'For use as the background color for disabled destructive buttons, and as the background color for error toast messages.',
       light: {lightness: 59},
       dark: {lightness: 41},
     },
     {
-      name: 'criticalActionHovered',
+      name: 'actionCriticalHovered',
       description:
         'For use as the background color for hovered destructive buttons, and as the background color for error toast messages.',
       light: {lightness: 42.5},
       dark: {lightness: 50},
     },
     {
-      name: 'criticalActionPressed',
+      name: 'actionCriticalPressed',
       description:
         'For use as the background color for pressed destructive buttons, and as the background color for error toast messages.',
       light: {lightness: 37.5},
@@ -439,33 +439,33 @@ export const roleVariants: RoleVariants = {
   ],
   warning: [
     {
-      name: 'warningBorder',
+      name: 'borderWarning',
       description: 'For use as a border on warning components such as banners.',
       light: {lightness: 76.6},
       dark: {lightness: 50},
     },
     {
-      name: 'warningIcon',
+      name: 'iconWarning',
       description: 'For use as an icon fill color on top of warning elements.',
       light: {lightness: 66},
       dark: {lightness: 34},
     },
     {
-      name: 'warningSurface',
+      name: 'surfaceWarning',
       description:
         'For use as a surface color on warning elements including badges.',
       light: {lightness: 84.5},
       dark: {lightness: 50},
     },
     {
-      name: 'warningSurfaceSubdued',
+      name: 'surfaceWarningSubdued',
       description:
         'For use as a subdued surface color on warning elements including banners.',
       light: {lightness: 96},
       dark: {lightness: 26, saturation: 71},
     },
     {
-      name: 'warningText',
+      name: 'textWarning',
       description:
         'For use as a text color in inert critical elements such as exception list. Not for use as a text color on banners and badges.',
       light: {lightness: 47.4},
@@ -474,35 +474,35 @@ export const roleVariants: RoleVariants = {
   ],
   highlight: [
     {
-      name: 'highlightBorder',
+      name: 'borderHighlight',
       description:
         'For use as a border on informational components such as banners.',
       light: {lightness: 60},
       dark: {lightness: 60},
     },
     {
-      name: 'highlightIcon',
+      name: 'iconHighlight',
       description:
         'For use as an icon fill color on top of informational elements.',
       light: {lightness: 58},
       dark: {lightness: 42},
     },
     {
-      name: 'highlightSurface',
+      name: 'surfaceHighlight',
       description:
         'For use as a surface color on information elements including badges.',
       light: {lightness: 84.5, saturation: 60},
       dark: {lightness: 40, saturation: 100},
     },
     {
-      name: 'highlightSurfaceSubdued',
+      name: 'surfaceHighlightSubdued',
       description:
         'For use as a surface color on information elements including banners.',
       light: {lightness: 98.6},
       dark: {lightness: 20},
     },
     {
-      name: 'highlightext',
+      name: 'textHighlight',
       description:
         'For use as a text color in inert informational elements. Not for use as a text color on banners and badges.',
       light: {lightness: 10},
@@ -511,26 +511,26 @@ export const roleVariants: RoleVariants = {
   ],
   success: [
     {
-      name: 'successBorder',
+      name: 'borderSuccess',
       description: 'For use as a border on success components such as banners.',
       light: {lightness: 50},
       dark: {lightness: 50},
     },
     {
-      name: 'successIcon',
+      name: 'iconSuccess',
       description: 'For use as an icon fill color on top of success elements.',
       light: {lightness: 25},
       dark: {lightness: 35},
     },
     {
-      name: 'successSurface',
+      name: 'surfaceSuccess',
       description:
         'For use as a surface color on success elements including badges.',
       light: {lightness: 84.5, saturation: 60},
       dark: {lightness: 35},
     },
     {
-      name: 'successSurfaceSubdued',
+      name: 'surfaceSuccessSubdued',
       description:
         'For use as a surface color on information elements including banners.',
       light: {lightness: 99, saturation: 60},

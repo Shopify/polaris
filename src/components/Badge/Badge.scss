@@ -32,8 +32,8 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .statusSuccess {
-  @include pip-color(var(--p-success-icon, color('green', 'dark')));
-  background-color: var(--p-success-surface, color('green', 'light'));
+  @include pip-color(var(--p-icon-success, color('green', 'dark')));
+  background-color: var(--p-surface-success, color('green', 'light'));
   color: color('green', 'text');
 
   .Content {
@@ -43,8 +43,8 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .statusInfo {
-  @include pip-color(var(--p-highlight-icon, color('blue', 'dark')));
-  background-color: var(--p-highlight-surface, color('blue', 'light'));
+  @include pip-color(var(--p-icon-highlight, color('blue', 'dark')));
+  background-color: var(--p-surface-highlight, color('blue', 'light'));
   color: color('blue', 'text');
 
   .Content {
@@ -60,8 +60,8 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .statusWarning {
-  @include pip-color(var(--p-warning-icon, color('orange', 'dark')));
-  background-color: var(--p-warning-surface, color('orange', 'light'));
+  @include pip-color(var(--p-icon-warning, color('orange', 'dark')));
+  background-color: var(--p-surface-warning, color('orange', 'light'));
   color: color('orange', 'text');
 
   .Content {

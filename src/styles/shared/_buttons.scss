@@ -245,27 +245,27 @@
 
     &.destructive {
       background: transparent;
-      box-shadow: 0 0 0 border-width('base') var(--p-critical-border);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
       color: var(--p-critical-link);
 
       &:hover {
-        box-shadow: 0 0 0 border-width('base') var(--p-critical-border);
-        background: var(--p-critical-surface-subdued);
+        box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+        background: var(--p-surface-critical-subdued);
       }
 
       &:focus {
-        box-shadow: 0 0 0 border-width('thick') var(--p-critical-border);
+        box-shadow: 0 0 0 border-width('thick') var(--p-border-critical);
         @include no-focus-ring;
       }
 
       &:active {
-        box-shadow: 0 0 0 border-width('base') var(--p-critical-border);
-        background: var(--p-critical-surface-subdued);
+        box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+        background: var(--p-surface-critical-subdued);
       }
 
       // stylelint-disable-next-line selector-max-class
       &.disabled {
-        box-shadow: 0 0 0 border-width('base') var(--p-critical-border-disabled);
+        box-shadow: 0 0 0 border-width('base') var(--p-border-critical-disabled);
         background: transparent;
         color: var(--p-critical-link-disabled);
       }

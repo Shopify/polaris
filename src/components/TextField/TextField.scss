@@ -334,8 +334,8 @@ $stacking-order: (
 
   &.error {
     > .Input ~ .Backdrop {
-      background-color: var(--p-critical-surface-subdued);
-      border-color: var(--p-critical-border);
+      background-color: var(--p-surface-critical-subdued);
+      border-color: var(--p-border-critical);
 
       &::after {
         border-color: var(--p-focused);

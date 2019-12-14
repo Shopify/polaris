@@ -4,11 +4,11 @@ $code-padding: 0 spacing(extra-tight);
 $code-font-size: 1.15em;
 
 .variationPositive {
-  color: var(--p-success-text, color('green', 'dark'));
+  color: var(--p-text-success, color('green', 'dark'));
 }
 
 .variationNegative {
-  color: var(--p-critical-text, color('red', 'dark'));
+  color: var(--p-text-critical, color('red', 'dark'));
 }
 
 .variationCode {

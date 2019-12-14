@@ -157,10 +157,10 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 }
 
 .primary {
-  --p-button-color: var(--p-primary-action);
+  --p-button-color: var(--p-action-primary);
   --p-button-text: var(--p-text-on-primary);
-  --p-button-color-hover: var(--p-primary-action-hovered);
-  --p-button-color-active: var(--p-primary-action-pressed);
+  --p-button-color-hover: var(--p-action-primary-hovered);
+  --p-button-color-active: var(--p-action-primary-pressed);
   @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(color('white'));
 
@@ -183,10 +183,10 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 }
 
 .destructive {
-  --p-button-color: var(--p-critical-action);
+  --p-button-color: var(--p-action-critical);
   --p-button-text: var(--p-text-on-critical);
-  --p-button-color-hover: var(--p-critical-action-hovered);
-  --p-button-color-active: var(--p-critical-action-pressed);
+  --p-button-color-hover: var(--p-action-critical-hovered);
+  --p-button-color-active: var(--p-action-critical-pressed);
   @include button-filled(color('red'), color('red', 'dark'));
   @include recolor-icon(color('white'));
 
@@ -471,22 +471,22 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     }
 
     &.destructive.iconOnly {
-      @include recolor-icon(var(--p-critical-action));
+      @include recolor-icon(var(--p-action-critical));
 
       &:hover {
-        @include recolor-icon(var(--p-critical-action-hovered));
+        @include recolor-icon(var(--p-action-critical-hovered));
       }
 
       &:focus {
-        @include recolor-icon(var(--p-critical-action));
+        @include recolor-icon(var(--p-action-critical));
       }
 
       &:active {
-        @include recolor-icon(var(--p-critical-action-pressed));
+        @include recolor-icon(var(--p-action-critical-pressed));
       }
 
       &.disabled {
-        @include recolor-icon(var(--p-critical-action-disabled));
+        @include recolor-icon(var(--p-action-critical-disabled));
       }
     }
   }

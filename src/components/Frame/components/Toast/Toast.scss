@@ -31,7 +31,7 @@ $Backdrop-opacity: 0.88;
 .error {
   $error-color: var(--p-text-on-critical, color('white'));
   background: var(
-    --p-critical-action,
+    --p-action-critical,
     rgba(color('red', 'dark'), $Backdrop-opacity)
   );
   color: $error-color;

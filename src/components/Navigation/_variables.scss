@@ -47,12 +47,12 @@ $nav-animation-variables: (
       linear-gradient(color(state, hover), color(state, hover))
     );
     background-color: var(--p-surface-hovered);
-    color: var(--p-primary-action, color('indigo', 'dark'));
+    color: var(--p-action-primary, color('indigo', 'dark'));
     text-decoration: none;
 
     .Icon {
       @include recolor-icon(
-        var(--p-primary-action, color('indigo')),
+        var(--p-action-primary, color('indigo')),
         var(--p-override-transparent, color('white')),
         filter('indigo')
       );
@@ -78,11 +78,11 @@ $nav-animation-variables: (
   }
 
   &:focus:hover {
-    color: var(--p-primary-action, color('indigo', 'dark'));
+    color: var(--p-action-primary, color('indigo', 'dark'));
 
     .Icon {
       @include recolor-icon(
-        var(--p-primary-action, color('indigo')),
+        var(--p-action-primary, color('indigo')),
         var(--p-override-transparent, color('white')),
         filter('indigo')
       );
@@ -91,12 +91,12 @@ $nav-animation-variables: (
 
   &:active,
   &:active:hover {
-    color: var(--p-primary-action-pressed, color('indigo', 'dark'));
+    color: var(--p-action-primary-pressed, color('indigo', 'dark'));
     @include no-focus-ring;
 
     .Icon {
       @include recolor-icon(
-        var(--p-primary-action-pressed, color('indigo')),
+        var(--p-action-primary-pressed, color('indigo')),
         var(--p-override-transparent, color('white')),
         filter('indigo')
       );
@@ -137,7 +137,7 @@ $nav-animation-variables: (
   .subNavigationActive:hover &,
   .subNavigationActive:focus & {
     @include recolor-icon(
-      var(--p-primary-action, color('indigo')),
+      var(--p-action-primary, color('indigo')),
       var(--p-override-transparent, color('white')),
       filter('indigo')
     );

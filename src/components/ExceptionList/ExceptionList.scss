@@ -30,11 +30,11 @@
   @include recolor-icon(var(--p-icon-subdued, color('ink', 'lightest')));
 
   .statusWarning & {
-    @include recolor-icon(var(--p-warning-icon, color('yellow', 'dark')));
+    @include recolor-icon(var(--p-icon-warning, color('yellow', 'dark')));
   }
 
   .statusCritical & {
-    @include recolor-icon(var(--p-critical-icon, color('red', 'dark')));
+    @include recolor-icon(var(--p-icon-critical, color('red', 'dark')));
   }
 }
 
@@ -45,11 +45,11 @@
   background-color: var(--p-icon-subdued, color('ink', 'lightest'));
 
   .statusWarning & {
-    background-color: var(--p-warning-icon, color('yellow', 'dark'));
+    background-color: var(--p-icon-warning, color('yellow', 'dark'));
   }
 
   .statusCritical & {
-    background-color: var(--p-critical-icon, color('red', 'dark'));
+    background-color: var(--p-icon-critical, color('red', 'dark'));
   }
 }
 
@@ -65,10 +65,10 @@
   }
 
   .statusWarning & {
-    color: var(--p-warning-text, color('yellow', 'dark'));
+    color: var(--p-text-warning, color('yellow', 'dark'));
   }
 
   .statusCritical & {
-    color: var(--p-critical-text, color('red', 'dark'));
+    color: var(--p-text-critical, color('red', 'dark'));
   }
 }
