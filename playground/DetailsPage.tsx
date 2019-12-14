@@ -36,7 +36,6 @@ import {
   Stack,
   Caption,
   Thumbnail,
-  ThemeProvider,
 } from '../src';
 
 export function DetailsPage() {
@@ -185,59 +184,57 @@ export function DetailsPage() {
 
   // ---- Navigation ----
   const navigationMarkup = (
-    <ThemeProvider theme={{colorScheme: 'inverse'}}>
-      <Navigation location="/">
-        <Navigation.Section
-          items={[
-            {
-              label: 'Home',
-              icon: HomeMajorTwotone,
-              onClick: toggleIsLoading,
-            },
-            {
-              label: 'Orders',
-              icon: OrdersMajorTwotone,
-              onClick: toggleIsLoading,
-            },
-            {
-              label: 'Products',
-              icon: ProductsMajorTwotone,
-              onClick: toggleIsLoading,
-            },
-            {
-              label: 'Customers',
-              icon: CustomersMajorTwotone,
-              onClick: toggleIsLoading,
-            },
-            {
-              label: 'Analytics',
-              icon: AnalyticsMajorTwotone,
-              onClick: toggleIsLoading,
-            },
-            {
-              label: 'Marketing',
-              icon: MarketingMajorTwotone,
-              onClick: toggleIsLoading,
-            },
-            {
-              label: 'Discounts',
-              icon: DiscountsMajorTwotone,
-              onClick: toggleIsLoading,
-            },
-            {
-              label: 'Apps',
-              icon: AppsMajorTwotone,
-              onClick: toggleIsLoading,
-            },
-          ]}
-          action={{
-            icon: ConversationMinor,
-            accessibilityLabel: 'Contact support',
-            onClick: toggleModalActive,
-          }}
-        />
-      </Navigation>
-    </ThemeProvider>
+    <Navigation location="/">
+      <Navigation.Section
+        items={[
+          {
+            label: 'Home',
+            icon: HomeMajorTwotone,
+            onClick: toggleIsLoading,
+          },
+          {
+            label: 'Orders',
+            icon: OrdersMajorTwotone,
+            onClick: toggleIsLoading,
+          },
+          {
+            label: 'Products',
+            icon: ProductsMajorTwotone,
+            onClick: toggleIsLoading,
+          },
+          {
+            label: 'Customers',
+            icon: CustomersMajorTwotone,
+            onClick: toggleIsLoading,
+          },
+          {
+            label: 'Analytics',
+            icon: AnalyticsMajorTwotone,
+            onClick: toggleIsLoading,
+          },
+          {
+            label: 'Marketing',
+            icon: MarketingMajorTwotone,
+            onClick: toggleIsLoading,
+          },
+          {
+            label: 'Discounts',
+            icon: DiscountsMajorTwotone,
+            onClick: toggleIsLoading,
+          },
+          {
+            label: 'Apps',
+            icon: AppsMajorTwotone,
+            onClick: toggleIsLoading,
+          },
+        ]}
+        action={{
+          icon: ConversationMinor,
+          accessibilityLabel: 'Contact support',
+          onClick: toggleModalActive,
+        }}
+      />
+    </Navigation>
   );
 
   const loadingMarkup = isLoading ? <Loading /> : null;
