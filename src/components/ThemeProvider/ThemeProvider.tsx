@@ -76,8 +76,8 @@ export function ThemeProvider({
 
   // We want these values to be empty string instead of `undefined` when not set.
   // Otherwise, setting a style property to `undefined` does not remove it from the DOM.
-  const backgroundColor = customProperties['--p-surface-background'] || '';
-  const color = customProperties['--p-text-on-surface'] || '';
+  const backgroundColor = customProperties['--p-background'] || '';
+  const color = customProperties['--p-text'] || '';
 
   useEffect(() => {
     if (isParentThemeProvider) {

@@ -1,6 +1,6 @@
 $borders-data: (
-  base: border-width() solid var(--p-border-subdued-on-surface, color('sky')),
-  dark: border-width() solid var(--p-border-on-surface, color('sky', 'dark')),
+  base: border-width() solid var(--p-border-subdued, color('sky')),
+  dark: border-width() solid var(--p-border, color('sky', 'dark')),
   transparent: border-width() solid transparent,
 );
 

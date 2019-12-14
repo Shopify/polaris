@@ -170,15 +170,15 @@ describe('<ThemeProvider />', () => {
     expect(themeProvider.find('div')).toHaveReactProps({
       style: expect.objectContaining({
         '--p-override-zero': expect.any(String),
-        '--p-surface-background': expect.any(String),
-        '--p-text-on-surface': expect.any(String),
-        '--p-interactive-action': expect.any(String),
-        '--p-neutral-action': expect.any(String),
-        '--p-primary-action': expect.any(String),
-        '--p-critical-action': expect.any(String),
-        '--p-warning-surface': expect.any(String),
-        '--p-highlight-surface': expect.any(String),
-        '--p-success-surface': expect.any(String),
+        '--p-background': expect.any(String),
+        '--p-text': expect.any(String),
+        '--p-action-interactive': expect.any(String),
+        '--p-action-secondary': expect.any(String),
+        '--p-action-primary': expect.any(String),
+        '--p-action-critical': expect.any(String),
+        '--p-surface-warning': expect.any(String),
+        '--p-surface-highlight': expect.any(String),
+        '--p-surface-success': expect.any(String),
         '--p-decorative-one-text': expect.any(String),
       }),
     });
@@ -197,15 +197,15 @@ describe('<ThemeProvider />', () => {
 
       expect(themeProvider.findAll('div')[1]).not.toHaveReactProps({
         style: expect.objectContaining({
-          '--p-surface-background': expect.any(String),
-          '--p-text-on-surface': expect.any(String),
-          '--p-interactive-action': expect.any(String),
-          '--p-neutral-action': expect.any(String),
-          '--p-primary-action': expect.any(String),
-          '--p-critical-action': expect.any(String),
-          '--p-warning-surface': expect.any(String),
-          '--p-highlight-surface': expect.any(String),
-          '--p-success-surface': expect.any(String),
+          '--p-background': expect.any(String),
+          '--p-text': expect.any(String),
+          '--p-action-interactive': expect.any(String),
+          '--p-action-secondary': expect.any(String),
+          '--p-action-primary': expect.any(String),
+          '--p-action-critical': expect.any(String),
+          '--p-surface-warning': expect.any(String),
+          '--p-surface-highlight': expect.any(String),
+          '--p-surface-success': expect.any(String),
           '--p-decorative-one-text': expect.any(String),
         }),
       });
@@ -231,7 +231,7 @@ describe('<ThemeProvider />', () => {
 
       expect(themeProvider.findAll('div')[1]).toHaveReactProps({
         style: expect.objectContaining({
-          '--p-surface': 'hsla(0, 0%, 0%, 1)',
+          '--p-surface': 'hsla(0, 0%, 100%, 1)',
         }),
       });
     });
@@ -340,7 +340,7 @@ describe('<ThemeProvider />', () => {
 
         expect(themeProvider.findAll('div')[1]).toHaveReactProps({
           style: expect.objectContaining({
-            '--p-critical-surface-subdued': expectedCritialSurfaceSubdued,
+            '--p-surface-critical-subdued': expectedCritialSurfaceSubdued,
           }),
         });
       },

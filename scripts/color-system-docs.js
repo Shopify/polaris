@@ -20,11 +20,11 @@ const RoleDescription = {
   surface:
     'The surface role is used for the backgrounds of the UI. With a light color scheme, surface colors are nearly white, while in a dark color scheme, surface colors are nearly black. The color passed to the surface role impacts the rest of the color roles and their variants, adjusting them for light or dark contexts.',
   onSurface:
-    'The onSurface role is made up of elements which appear on top of a surface, including borders, neutral icons, and text. When a light surface is provided, onSurface values will be dark. When a dark surface is provided, onSurface values will be light.',
+    'The onSurface role is made up of elements which appear on top of a surface, including borders, secondary icons, and text. When a light surface is provided, onSurface values will be dark. When a dark surface is provided, onSurface values will be light.',
   interactive:
     'The interactive role is used to express interactivity in components. It is used in links, as an indicator of focus, and as an indicator of selected interactive states.',
-  neutral:
-    'A neutral interactive color role, for use in secondary and tertiary buttons as a background color, as well as in form elements as a background color.',
+  secondary:
+    'A secondary interactive color role, for use in secondary and tertiary buttons as a background color, as well as in form elements as a background color.',
   primary:
     'A primary interactive color, for use in primary buttons as a background color. Also used in navigation and tabs for icons, and for a surface color when in a selected state.',
   critical:
@@ -58,9 +58,9 @@ const Template = {
     return `|<pre>${cssify(
       name,
     )}</pre>|${description} |![](https://www.gifpng.com/${size}/${light}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
-      lightColors.surfaceBackground,
+      lightColors.background,
     )}&text=%20)<br />#${light}|![](https://www.gifpng.com/${size}/${dark}/FFFFFF?border-width=${Padding}&border-type=rectangle&border-color=${toHex(
-      darkColors.surfaceBackground,
+      darkColors.background,
     )}&text=%20)<br />#${dark}|\n`;
   },
   overrideItem: (name, value) => `|\`${cssify(name)}\`|\`${value}\`|\n`,
