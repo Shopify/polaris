@@ -537,7 +537,7 @@ export const roleVariants: RoleVariants = {
       dark: {lightness: 20, saturation: 60},
     },
     {
-      name: 'successText',
+      name: 'textSuccess',
       description:
         'For use as a text color in inert success elements. Not for use as a text color on banners and badges.',
       light: {lightness: 47.3},
