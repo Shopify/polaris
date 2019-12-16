@@ -24,7 +24,7 @@ import {useI18n} from '../../utilities/i18n';
 import {useEventListener} from '../../utilities/use-event-listener';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
-import {useForcibleToggle} from '../../utilities/use-toggle';
+import {useToggle} from '../../utilities/use-toggle';
 
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
@@ -170,10 +170,11 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
   const [dragging, setDragging] = useState(false);
   const [internalError, setInternalError] = useState(false);
-  const [
-    focused,
-    {forceTrue: handleFocus, forceFalse: handleBlur},
-  ] = useForcibleToggle(false);
+  const {
+    value: focused,
+    setTrue: handleFocus,
+    setFalse: handleBlur,
+  } = useToggle(false);
   const [numFiles, setNumFiles] = useState(0);
   const [size, setSize] = useState('extraLarge');
   const [measuring, setMeasuring] = useState(true);

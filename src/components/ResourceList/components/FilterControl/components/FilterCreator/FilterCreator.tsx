@@ -4,7 +4,7 @@ import {Popover} from '../../../../../Popover';
 import {Select} from '../../../../../Select';
 import {FormLayout} from '../../../../../FormLayout';
 import {Form} from '../../../../../Form';
-import {useForcibleToggle} from '../../../../../../utilities/use-toggle';
+import {useToggle} from '../../../../../../utilities/use-toggle';
 import {useI18n} from '../../../../../../utilities/i18n';
 
 import {FilterValueSelector} from '../FilterValueSelector';
@@ -26,10 +26,11 @@ export function FilterCreator({
   disabled,
   onAddFilter,
 }: FilterCreatorProps) {
-  const [
-    popoverActive,
-    {toggle: togglePopoverActive, forceFalse: setPopoverActiveFalse},
-  ] = useForcibleToggle(false);
+  const {
+    value: popoverActive,
+    toggle: togglePopoverActive,
+    setFalse: setPopoverActiveFalse,
+  } = useToggle(false);
   const [selectedFilter, setSelectedFilter] = useState<Filter>();
   const [selectedFilterKey, setSelectedFilterKey] = useState<
     AppliedFilter['key']
