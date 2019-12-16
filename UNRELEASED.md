@@ -28,5 +28,6 @@
 - Converted `BulkActionButton` into a functional component ([#2542](https://github.com/Shopify/polaris-react/pull/2542))
 - Converted `Focus` into a functional component ([#2540](https://github.com/Shopify/polaris-react/pull/2540))
 - Converted `Tooltip` into a functional component ([#2543](https://github.com/Shopify/polaris-react/pull/2543))
+- Converted `Option` into a functional component ([#2541](https://github.com/Shopify/polaris-react/pull/2541))
 
 ### Deprecations
