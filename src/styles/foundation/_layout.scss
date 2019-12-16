@@ -46,7 +46,7 @@ $layout-width-data: (
 @function layout-width($name, $value: base) {
   $fetched-value: map-get(map-get($layout-width-data, $name), $value);
 
-  @if type-of($fetched-value) != null {
+  @if type-of($fetched-value) {
     @return $fetched-value;
   } @else {
     @error 'Column `#{$name} - #{$value}` not found. Available columns: #{available-names($layout-width-data)}';

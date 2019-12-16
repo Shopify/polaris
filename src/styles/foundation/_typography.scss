@@ -110,7 +110,7 @@ $font-size-data: (
 @function font-family($family: base) {
   $fetched-value: map-get($font-family-data, $family);
 
-  @if $fetched-value != null {
+  @if $fetched-value {
     @return $fetched-value;
   } @else {
     @error 'Font family `#{$family}` not found. Available font families: #{available-names($font-family-data)}';
@@ -126,7 +126,7 @@ $font-size-data: (
 @function line-height($style, $variant: base) {
   $fetched-line-height: map-get(map-get($line-height-data, $style), $variant);
 
-  @if type-of($fetched-line-height) != null {
+  @if type-of($fetched-line-height) {
     @return $fetched-line-height;
   } @else {
     @error 'Line height `#{$style} - #{$variant}` not found. Available line heights: #{available-names($line-height-data)}';
@@ -142,7 +142,7 @@ $font-size-data: (
 @function font-size($style, $variant: base) {
   $fetched-font-size: map-get(map-get($font-size-data, $style), $variant);
 
-  @if type-of($fetched-font-size) != null {
+  @if type-of($fetched-font-size) {
     @return $fetched-font-size;
   } @else {
     @error 'Font size `#{$style} - #{$variant}` not found. Available font sizes: #{available-names($line-height-data)}';
