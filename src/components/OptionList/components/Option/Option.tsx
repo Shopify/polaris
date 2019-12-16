@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 
-import {useToggle} from 'utilities/use-toggle';
+import {useToggle} from '../../../../utilities/use-toggle';
 import {classNames} from '../../../../utilities/css';
 import {IconProps} from '../../../../types';
 import {ThumbnailProps} from '../../../Thumbnail';
