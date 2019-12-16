@@ -16,4 +16,6 @@
 
 ### Code quality
 
+- Converted `Option` into a functional component ([#2541](https://github.com/Shopify/polaris-react/pull/2541))
+
 ### Deprecations
