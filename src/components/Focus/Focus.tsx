@@ -13,13 +13,8 @@ export const Focus = memo(function Focus({
   root,
 }: FocusProps) {
   useEffect(() => {
-    if (disabled) return;
-
-    if (root) {
-      if (!root.querySelector('[autofocus]')) {
-        focusFirstFocusableNode(root, false);
-      }
-    }
+    if (disabled || !root || root.querySelector('[autofocus]')) return;
+    focusFirstFocusableNode(root, false);
   }, [disabled, root]);
 
   return <React.Fragment>{children}</React.Fragment>;
