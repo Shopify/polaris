@@ -1,18 +1,10 @@
-import React, {
-  memo,
-  useEffect,
-  useState,
-  useRef,
-  RefObject,
-  useCallback,
-} from 'react';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import React, {useEffect, useState, useRef, useCallback} from 'react';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {PreferredPosition} from '../PositionedOverlay';
 import {Portal} from '../Portal';
 import {useUniqueId} from '../../utilities/unique-id';
-import {useFocused} from '../../utilities/use-focused';
+import {useToggle} from '../../utilities/use-toggle';
 import {TooltipOverlay} from './components';
 import styles from './Tooltip.scss';
 
@@ -46,7 +38,7 @@ export function Tooltip({
   activatorWrapper = 'span',
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
-  const [active, {handleFocus, handleBlur}] = useFocused(
+  const {value: active, setTrue: handleFocus, setFalse: handleBlur} = useToggle(
     Boolean(originalActive),
   );
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
