@@ -14,4 +14,6 @@
 
 ### Code quality
 
+- Converted `MenuGroup` into a functional component ([#2536](https://github.com/Shopify/polaris-react/pull/2536))
+
 ### Deprecations
