@@ -47,8 +47,7 @@ export function Tooltip({
   const activatorContainer = useRef<HTMLElement>(null);
   const mouseEntered = useRef(false);
 
-  // Check this impl
-  const setAccessibilityAttributes = useCallback(() => {
+  useEffect(() => {
     if (activatorContainer == null) {
       return;
     }
@@ -62,11 +61,7 @@ export function Tooltip({
 
     accessibilityNode.tabIndex = 0;
     accessibilityNode.setAttribute('aria-describedby', id);
-  }, [id]);
-
-  useEffect(() => {
-    setAccessibilityAttributes();
-  }, [setAccessibilityAttributes]);
+  }, [id, children]);
 
   const portal = activatorNode ? (
     <Portal idPrefix="tooltip">
