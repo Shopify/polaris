@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef, useCallback} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {PreferredPosition} from '../PositionedOverlay';
