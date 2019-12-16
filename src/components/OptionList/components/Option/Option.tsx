@@ -39,7 +39,7 @@ export function Option({
   section,
   index,
 }: OptionProps) {
-  const [focused, toggleFocused] = useToggle(false);
+  const {value: focused, toggle: toggleFocused} = useToggle(false);
 
   const handleClick = useCallback(() => {
     if (disabled) {
