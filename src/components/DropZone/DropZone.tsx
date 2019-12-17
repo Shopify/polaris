@@ -297,7 +297,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
       onDragLeave && onDragLeave();
     },
-    [allowMultiple, disabled, numFiles, onDragLeave],
+    [allowMultiple, dropOnPage, disabled, numFiles, onDragLeave],
   );
 
   useEffect(() => {
@@ -318,7 +318,14 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
       removeEventListener(dropNode, 'dragleave', handleDragLeave);
       removeEventListener(window, 'resize', adjustSize);
     };
-  });
+  }, [
+    dropOnPage,
+    handleDrop,
+    handleDragOver,
+    handleDragEnter,
+    handleDragLeave,
+    adjustSize,
+  ]);
 
   useComponentDidMount(() => {
     adjustSize();
