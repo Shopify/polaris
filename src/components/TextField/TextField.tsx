@@ -144,11 +144,11 @@ export function TextField({
   name,
   id: idProp,
   role,
-  step = 1,
+  step,
   autoComplete,
-  max = Infinity,
+  max,
   maxLength,
-  min = -Infinity,
+  min,
   minLength,
   pattern,
   spellCheck,
@@ -183,6 +183,11 @@ export function TextField({
 
   const normalizedValue = value != null ? value : '';
   const {unstableGlobalTheming = false} = useFeatures();
+
+  const normalizedStep = step != null ? step : 1;
+  const normalizedMax = max != null ? max : Infinity;
+  const normalizedMin = min != null ? min : -Infinity;
+
   const className = classNames(
     styles.TextField,
     Boolean(normalizedValue) && styles.hasValue,
@@ -268,16 +273,16 @@ export function TextField({
 
       // Making sure the new value has the same length of decimal places as the
       // step / value has.
-      const decimalPlaces = Math.max(dpl(numericValue), dpl(step));
+      const decimalPlaces = Math.max(dpl(numericValue), dpl(normalizedStep));
 
       const newValue = Math.min(
-        Number(max),
-        Math.max(numericValue + steps * step, Number(min)),
+        Number(normalizedMax),
+        Math.max(numericValue + steps * normalizedStep, Number(normalizedMin)),
       );
 
       onChange(String(newValue.toFixed(decimalPlaces)), id);
     },
-    [id, max, min, onChange, step, value],
+    [id, normalizedMax, normalizedMin, onChange, normalizedStep, value],
   );
 
   const handleButtonRelease = useCallback(() => {
