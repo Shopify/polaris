@@ -40,6 +40,5 @@
     "styles/": true,
     "types/": true
   },
-  "stylelint.autoFixOnSave": true,
   "typescript.tsdk": "./node_modules/typescript/lib"
 }
