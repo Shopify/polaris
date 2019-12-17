@@ -8,6 +8,10 @@ import React, {
 } from 'react';
 import debounce from 'lodash/debounce';
 import {
+  addEventListener,
+  removeEventListener,
+} from '@shopify/javascript-utilities/events';
+import {
   DragDropMajorMonotone,
   CircleAlertMajorMonotone,
 } from '@shopify/polaris-icons';
@@ -21,7 +25,7 @@ import {DisplayText} from '../DisplayText';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {Labelled, Action} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
-import {useEventListener} from '../../utilities/use-event-listener';
+import {isServer} from '../../utilities/target';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
@@ -180,9 +184,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   const [measuring, setMeasuring] = useState(true);
 
   const i18n = useI18n();
-  const dropNode = dropOnPage
-    ? (typeof document !== undefined && document) || null
-    : node;
 
   const getValidatedFiles = useCallback(
     (files: File[] | DataTransferItem[]) => {
@@ -284,8 +285,8 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
       if (disabled || (!allowMultiple && numFiles > 0)) return;
 
       dragTargets.current = dragTargets.current.filter((el: Node) => {
-        const compareNode =
-          dropNode && 'current' in dropNode ? dropNode.current : document;
+        const compareNode = dropOnPage && !isServer ? document : node.current;
+
         return el !== event.target && compareNode && compareNode.contains(el);
       });
 
@@ -296,38 +297,28 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
       onDragLeave && onDragLeave();
     },
-    [allowMultiple, disabled, dropNode, numFiles, onDragLeave],
+    [allowMultiple, disabled, numFiles, onDragLeave],
   );
 
-  useEventListener(
-    dropNode,
-    'drop',
-    handleDrop,
-    {},
-    {defaultToDocument: dropOnPage},
-  );
-  useEventListener(
-    dropNode,
-    'dragover',
-    handleDragOver,
-    {},
-    {defaultToDocument: dropOnPage},
-  );
-  useEventListener(
-    dropNode,
-    'dragenter',
-    handleDragEnter,
-    {},
-    {defaultToDocument: dropOnPage},
-  );
-  useEventListener(
-    dropNode,
-    'dragleave',
-    handleDragLeave,
-    {},
-    {defaultToDocument: dropOnPage},
-  );
-  useEventListener(null, 'resize', adjustSize, {}, {defaultToWindow: true});
+  useEffect(() => {
+    const dropNode = dropOnPage ? document : node.current;
+
+    if (!dropNode) return;
+
+    addEventListener(dropNode, 'drop', handleDrop);
+    addEventListener(dropNode, 'dragover', handleDragOver);
+    addEventListener(dropNode, 'dragenter', handleDragEnter);
+    addEventListener(dropNode, 'dragleave', handleDragLeave);
+    addEventListener(window, 'resize', adjustSize);
+
+    return () => {
+      removeEventListener(dropNode, 'drop', handleDrop);
+      removeEventListener(dropNode, 'dragover', handleDragOver);
+      removeEventListener(dropNode, 'dragenter', handleDragEnter);
+      removeEventListener(dropNode, 'dragleave', handleDragLeave);
+      removeEventListener(window, 'resize', adjustSize);
+    };
+  });
 
   useComponentDidMount(() => {
     adjustSize();
