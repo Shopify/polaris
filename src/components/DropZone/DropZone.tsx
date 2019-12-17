@@ -180,7 +180,9 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   const [measuring, setMeasuring] = useState(true);
 
   const i18n = useI18n();
-  const dropNode = dropOnPage ? document : node;
+  const dropNode = dropOnPage
+    ? (typeof document !== undefined && document) || null
+    : node;
 
   const getValidatedFiles = useCallback(
     (files: File[] | DataTransferItem[]) => {
@@ -297,10 +299,34 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     [allowMultiple, disabled, dropNode, numFiles, onDragLeave],
   );
 
-  useEventListener(dropNode, 'drop', handleDrop);
-  useEventListener(dropNode, 'dragover', handleDragOver);
-  useEventListener(dropNode, 'dragenter', handleDragEnter);
-  useEventListener(dropNode, 'dragleave', handleDragLeave);
+  useEventListener(
+    dropNode,
+    'drop',
+    handleDrop,
+    {},
+    {defaultToDocument: dropOnPage},
+  );
+  useEventListener(
+    dropNode,
+    'dragover',
+    handleDragOver,
+    {},
+    {defaultToDocument: dropOnPage},
+  );
+  useEventListener(
+    dropNode,
+    'dragenter',
+    handleDragEnter,
+    {},
+    {defaultToDocument: dropOnPage},
+  );
+  useEventListener(
+    dropNode,
+    'dragleave',
+    handleDragLeave,
+    {},
+    {defaultToDocument: dropOnPage},
+  );
   useEventListener(null, 'resize', adjustSize, {}, {defaultToWindow: true});
 
   useComponentDidMount(() => {

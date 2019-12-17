@@ -1,7 +1,8 @@
 import {useEffect, RefObject} from 'react';
 
 interface Options {
-  defaultToWindow: boolean;
+  defaultToWindow?: boolean;
+  defaultToDocument?: boolean;
 }
 
 /**
@@ -32,8 +33,9 @@ export function useEventListener<K extends keyof WindowEventMap>(
 ) {
   useEffect(() => {
     let eventTarget = target && 'current' in target ? target.current : target;
-    if (!eventTarget && options && options.defaultToWindow) {
-      eventTarget = window;
+    if (!eventTarget && options) {
+      if (options.defaultToWindow) eventTarget = window;
+      else if (options.defaultToDocument) eventTarget = document;
     }
 
     if (!eventTarget) return;
