@@ -1,6 +1,8 @@
 import React from 'react';
 import {createPortal} from 'react-dom';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {ThemeContext} from '../../utilities/theme';
+import {portal} from '../shared';
 
 export interface PortalProps {
   children?: React.ReactNode;
@@ -16,6 +18,8 @@ const getUniqueID = createUniqueIDFactory('portal-');
 
 export class Portal extends React.PureComponent<PortalProps, State> {
   static defaultProps = {idPrefix: ''};
+  static contextType = ThemeContext;
+  context!: React.ContextType<typeof ThemeContext>;
 
   state: State = {isMounted: false};
 
@@ -28,13 +32,32 @@ export class Portal extends React.PureComponent<PortalProps, State> {
 
   componentDidMount() {
     this.portalNode = document.createElement('div');
-    this.portalNode.setAttribute('data-portal-id', this.portalId);
+    this.portalNode.setAttribute(portal.props[0], this.portalId);
+
+    if (this.context != null) {
+      const {UNSTABLE_cssCustomProperties} = this.context;
+      if (UNSTABLE_cssCustomProperties != null) {
+        this.portalNode.setAttribute('style', UNSTABLE_cssCustomProperties);
+      } else {
+        this.portalNode.removeAttribute('style');
+      }
+    }
     document.body.appendChild(this.portalNode);
     this.setState({isMounted: true});
   }
 
   componentDidUpdate(_: PortalProps, prevState: State) {
     const {onPortalCreated = noop} = this.props;
+
+    if (this.context != null) {
+      const {UNSTABLE_cssCustomProperties, textColor} = this.context;
+      if (UNSTABLE_cssCustomProperties != null) {
+        const style = `${UNSTABLE_cssCustomProperties};color:${textColor};`;
+        this.portalNode.setAttribute('style', style);
+      } else {
+        this.portalNode.removeAttribute('style');
+      }
+    }
     if (!prevState.isMounted && this.state.isMounted) {
       onPortalCreated();
     }

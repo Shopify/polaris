@@ -9,7 +9,7 @@
   ],
   "settings": {
     "react": {
-      "version": "16.3"
+      "version": "16.8"
     }
   },
   "rules": {
@@ -17,6 +17,7 @@
     "no-process-env": "off",
     "no-warning-comments": "off",
     "no-negated-condition": "off",
+    "no-console": "error",
     "consistent-return": "off",
     "match-default-export-name": "off",
     "jsx-use-translation-function": "off",
@@ -54,14 +55,46 @@
     "jsx-a11y/mouse-events-have-key-events": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
-    "jsx-a11y/no-noninteractive-element-to-interactive-role": "off"
+    "jsx-a11y/no-noninteractive-element-to-interactive-role": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "test-utilities/legacy",
+            "message": "Please import the modern testing library from 'test-utilities' instead"
+          }
+        ]
+      }
+    ],
+    "@typescript-eslint/camelcase": [
+      "error",
+      {
+        "allow": [
+          "UNSTABLE_colors",
+          "UNSTABLE_cssCustomProperties",
+          "UNSTABLE_telemetry"
+        ]
+      }
+    ]
   },
   "overrides": [
+    {
+      "files": ["src/**/*.{ts,tsx}"],
+      "extends": ["plugin:shopify/typescript-type-checking"],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "@typescript-eslint/prefer-readonly": "off",
+        "@typescript-eslint/no-unnecessary-condition": "off",
+        "@typescript-eslint/unbound-method": "off"
+      }
+    },
     {
       "files": ["**/*.test.{ts,tsx}"],
       "rules": {
         "jest/no-truthy-falsy": "off",
-        "shopify/jsx-no-hardcoded-content": "off",
         "shopify/no-ancestor-directory-import": "off"
       }
     },

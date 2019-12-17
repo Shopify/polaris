@@ -254,6 +254,7 @@ function PopoverFormExample() {
         active={popoverActive}
         activator={activator}
         onClose={togglePopoverActive}
+        ariaHaspopup={false}
         sectioned
       >
         <FormLayout>
@@ -338,6 +339,7 @@ function PopoverLazyLoadExample() {
           active={popoverActive}
           activator={activator}
           onClose={togglePopoverActive}
+          ariaHaspopup={false}
         >
           <Popover.Pane onScrolledToBottom={handleScrolledToBottom}>
             <ResourceList items={staffList} renderItem={renderItem} />
@@ -414,6 +416,8 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 <!-- content-for: web -->
 
 Popovers usually contain an [option list](https://polaris.shopify.com/components/lists-and-tables/option-list) or an [action list](https://polaris.shopify.com/components/actions/action-list), but can also contain other controls or content.
+
+A popover can contain many numerous types of content. Whether it's a menu, grid or something entirely different! When `aria-expanded` is applied to an element, `aria-haspopup` will default to `menu`. To assist screen readers you'll need to pass `ariaHaspopup` to `Popover`.
 
 ### Keyboard support
 

@@ -1,6 +1,7 @@
 @import '../../styles/common';
 
-$indicator-size: rem(8px);
+$indicator-size: rem(12px);
+$indicator-position: rem(-3px);
 
 .MessageIndicatorWrapper {
   position: relative;
@@ -9,10 +10,11 @@ $indicator-size: rem(8px);
 .MessageIndicator {
   position: absolute;
   z-index: 1;
-  top: 0;
-  right: 0;
+  top: $indicator-position;
+  right: $indicator-position;
   width: $indicator-size;
   height: $indicator-size;
   border-radius: 100%;
-  background-color: color('teal');
+  background-color: var(--p-icon-highlight, color('teal'));
+  border: solid rem(2px) var(--p-background, var(--top-bar-background));
 }

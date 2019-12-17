@@ -50,12 +50,8 @@ describe('build', () => {
 
   it('generates fully namespaced CSS for nested components', () => {
     expect(fs.readFileSync('./styles/components.scss', 'utf8')).toMatch(
-      '.Polaris-ResourceList-BulkActions__Button{',
+      '.Polaris-ResourceList-BulkActions__BulkActionButton{',
     );
-  });
-
-  it('generates a zip of ./build/sass', () => {
-    expect(fs.existsSync('./build/Sass.zip')).toBe(true);
   });
 
   it('generates the typescript definition files', () => {

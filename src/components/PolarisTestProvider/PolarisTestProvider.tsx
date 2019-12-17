@@ -1,7 +1,13 @@
 import React from 'react';
 import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
-import {Theme, ThemeContext} from '../../utilities/theme';
+import {
+  ThemeContext,
+  ThemeConfig,
+  buildThemeContext,
+  buildCustomProperties,
+  DefaultColorScheme,
+} from '../../utilities/theme';
 import {MediaQueryContext} from '../../utilities/media-query';
 import {
   ScrollLockManager,
@@ -13,6 +19,7 @@ import {
 } from '../../utilities/sticky-manager';
 import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
+import {Features, FeaturesContext} from '../../utilities/features';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -29,15 +36,16 @@ type MediaQueryContextType = NonNullable<
  * this is the type of the options object. These values are customizable when
  * you call the app
  */
-export type WithPolarisTestProviderOptions = {
+export interface WithPolarisTestProviderOptions {
   // Contexts provided by AppProvider
   i18n?: TranslationDictionary | TranslationDictionary[];
   link?: LinkLikeComponent;
-  theme?: Partial<Theme>;
+  theme?: ThemeConfig;
   mediaQuery?: Partial<MediaQueryContextType>;
+  features?: Features;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
-};
+}
 
 export interface PolarisTestProviderProps
   extends WithPolarisTestProviderOptions {
@@ -54,9 +62,10 @@ export function PolarisTestProvider({
   children,
   i18n,
   link,
-  theme,
-  frame,
+  theme = {},
   mediaQuery,
+  features = {},
+  frame,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
 
@@ -68,7 +77,14 @@ export function PolarisTestProvider({
 
   const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-  const mergedTheme = createThemeContext(theme);
+  const {unstableGlobalTheming = false} = features;
+  const customProperties = unstableGlobalTheming
+    ? buildCustomProperties(
+        {...theme, colorScheme: DefaultColorScheme},
+        unstableGlobalTheming,
+      )
+    : undefined;
+  const mergedTheme = buildThemeContext(theme, customProperties);
 
   const mergedFrame = createFrameContext(frame);
 
@@ -76,33 +92,30 @@ export function PolarisTestProvider({
 
   return (
     <Wrapper>
-      <I18nContext.Provider value={intl}>
-        <ScrollLockManagerContext.Provider value={scrollLockManager}>
-          <StickyManagerContext.Provider value={stickyManager}>
-            <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
-              <LinkContext.Provider value={link}>
-                <ThemeContext.Provider value={mergedTheme}>
-                  <FrameContext.Provider value={mergedFrame}>
+      <FeaturesContext.Provider value={features}>
+        <I18nContext.Provider value={intl}>
+          <ScrollLockManagerContext.Provider value={scrollLockManager}>
+            <StickyManagerContext.Provider value={stickyManager}>
+              <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
+                <LinkContext.Provider value={link}>
+                  <ThemeContext.Provider value={mergedTheme}>
                     <MediaQueryContext.Provider value={mergedMediaQuery}>
-                      {children}
+                      <FrameContext.Provider value={mergedFrame}>
+                        {children}
+                      </FrameContext.Provider>
                     </MediaQueryContext.Provider>
-                  </FrameContext.Provider>
-                </ThemeContext.Provider>
-              </LinkContext.Provider>
-            </UniqueIdFactoryContext.Provider>
-          </StickyManagerContext.Provider>
-        </ScrollLockManagerContext.Provider>
-      </I18nContext.Provider>
+                  </ThemeContext.Provider>
+                </LinkContext.Provider>
+              </UniqueIdFactoryContext.Provider>
+            </StickyManagerContext.Provider>
+          </ScrollLockManagerContext.Provider>
+        </I18nContext.Provider>
+      </FeaturesContext.Provider>
     </Wrapper>
   );
 }
 
 function noop() {}
-
-function createThemeContext(theme: Partial<Theme> = {}): Theme {
-  const {logo = null} = theme;
-  return {logo};
-}
 
 function createFrameContext({
   showToast = noop,

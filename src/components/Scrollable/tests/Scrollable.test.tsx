@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Scrollable} from '../Scrollable';
 import {ScrollableContext} from '../context';
@@ -30,10 +31,9 @@ describe('<Scrollable />', () => {
   });
 
   it('provides scrollToPosition callback to children', () => {
-    const Child: React.SFC<{}> = (_) => (
+    const Child: React.SFC = (_) => (
       <ScrollableContext.Consumer>
         {(scrollToPosition) => {
-          // eslint-disable-next-line shopify/jest/no-if
           return scrollToPosition ? <div /> : null;
         }}
       </ScrollableContext.Consumer>

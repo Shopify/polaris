@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount} from 'enzyme';
+import {mount} from 'test-utilities';
 import {withAppProvider} from '../with-app-provider';
 
 describe('withAppProvider', () => {
@@ -8,7 +8,7 @@ describe('withAppProvider', () => {
       .spyOn(console, 'error')
       .mockImplementation(() => {});
 
-    const Child: React.SFC<{}> = (_props) => <div />;
+    const Child: React.SFC = (_props) => <div />;
 
     const WrappedComponent = withAppProvider<any>()(Child);
 
@@ -17,7 +17,7 @@ describe('withAppProvider', () => {
       consoleSpy.mockRestore();
     };
     expect(fn).toThrow(
-      `No Theme was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.`,
+      `No i18n was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.`,
     );
   });
 });

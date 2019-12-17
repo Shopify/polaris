@@ -112,7 +112,7 @@
       "filter": "筛选 {resourceName}",
       "noFiltersApplied": "未应用筛选条件",
       "cancel": "取消",
-      "done": "已完成",
+      "done": "完成",
       "clearAllFilters": "清除所有筛选条件",
       "clear": "清除",
       "clearLabel": "清除 {filterName}"
@@ -190,7 +190,8 @@
           "on_or_before": "{date} 之前",
           "on_or_after": "{date} 之后"
         }
-      }
+      },
+      "showingTotalCount": "显示 {itemsCount} 项 {resource}（共 {totalItemsCount} 项）"
     },
     "SkeletonPage": {
       "loadingLabel": "页面加载"

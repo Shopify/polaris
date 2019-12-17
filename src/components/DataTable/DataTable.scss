@@ -54,7 +54,7 @@ $breakpoint: 768px;
 .TableRow {
   &:hover .Cell {
     @include breakpoint-after($breakpoint) {
-      background: color('sky', 'lighter');
+      background: var(--p-surface-hovered, color('sky', 'lighter'));
     }
   }
 }
@@ -151,13 +151,18 @@ $breakpoint: 768px;
 
 .Cell-total {
   @include text-emphasis-strong;
-  background: color('sky', 'lighter');
+  background: var(--p-surface-subdued, color('sky', 'lighter'));
   border-bottom: border();
+}
+
+.Cell-total-footer {
+  border-top: border();
+  border-bottom: none;
 }
 
 .Footer {
   padding: spacing();
-  background: color('sky', 'light');
-  color: color('ink', 'lighter');
+  background: var(--p-surface-subdued, color('sky', 'light'));
+  color: var(--p-text-subdued, color('ink', 'lighter'));
   text-align: center;
 }

@@ -5,6 +5,7 @@ import {
   findFirstFocusableNode,
   focusLastFocusableNode,
 } from '@shopify/javascript-utilities/focus';
+import {write} from '@shopify/javascript-utilities/fastdom';
 
 import {EventListener} from '../EventListener';
 import {Focus} from '../Focus';
@@ -43,7 +44,7 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
     const {children} = this.props;
 
     return (
-      <Focus disabled={this.shouldDisable} root={this.focusTrapWrapper}>
+      <Focus disabled={this.shouldDisable()} root={this.focusTrapWrapper}>
         <div ref={this.setFocusTrapWrapper}>
           <EventListener event="focusout" handler={this.handleBlur} />
           {children}
@@ -52,7 +53,7 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
     );
   }
 
-  private get shouldDisable() {
+  private shouldDisable() {
     const {trapping = true} = this.props;
     const {shouldFocusSelf} = this.state;
 
@@ -79,14 +80,16 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
     if (
       focusTrapWrapper &&
       !focusTrapWrapper.contains(relatedTarget as HTMLElement) &&
-      !closest(relatedTarget as HTMLElement, '[data-polaris-overlay]')
+      (!relatedTarget ||
+        !closest(relatedTarget as HTMLElement, '[data-polaris-overlay]'))
     ) {
       event.preventDefault();
 
       if (event.srcElement === findFirstFocusableNode(focusTrapWrapper)) {
-        return focusLastFocusableNode(focusTrapWrapper);
+        return write(() => focusLastFocusableNode(focusTrapWrapper));
       }
-      focusFirstFocusableNode(focusTrapWrapper);
+      const firstNode = findFirstFocusableNode(focusTrapWrapper) as HTMLElement;
+      write(() => focusFirstFocusableNode(firstNode));
     }
   };
 }

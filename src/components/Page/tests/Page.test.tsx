@@ -1,5 +1,6 @@
 import React from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Page, PageProps, Card, Avatar, Badge} from 'components';
 import {Header} from '../components';

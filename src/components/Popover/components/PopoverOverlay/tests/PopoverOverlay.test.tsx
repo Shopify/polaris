@@ -1,9 +1,15 @@
 import React from 'react';
-import {mountWithAppProvider} from 'test-utilities/legacy';
+// eslint-disable-next-line no-restricted-imports
+import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {TextContainer} from 'components';
 import {Key} from '../../../../../types';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
+
+jest.mock('@shopify/javascript-utilities/fastdom', () => ({
+  ...require.requireActual('@shopify/javascript-utilities/fastdom'),
+  write: jest.fn((callback) => callback()),
+}));
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -154,6 +160,112 @@ describe('<PopoverOverlay />', () => {
     listenerMap.keyup({keyCode: Key.Escape});
     expect(spy).toHaveBeenCalledTimes(1);
   });
+
+  it('starts animating in immediately', () => {
+    const popoverOverlay = mountWithAppProvider(
+      <PopoverOverlay
+        active={false}
+        id="PopoverOverlay-1"
+        activator={activator}
+        onClose={noop}
+        fullWidth
+      >
+        {children}
+      </PopoverOverlay>,
+    );
+
+    popoverOverlay.setProps({active: true});
+    popoverOverlay.update();
+    expect(popoverOverlay.find(PositionedOverlay).prop('classNames')).toMatch(
+      /PopoverOverlay-entering/,
+    );
+  });
+
+  it('does not render after exiting when the component is updated during exit', () => {
+    jest.useFakeTimers();
+
+    const popoverOverlay = mountWithAppProvider(
+      <PopoverOverlay
+        active
+        id="PopoverOverlay-1"
+        activator={activator}
+        onClose={noop}
+      >
+        {children}
+      </PopoverOverlay>,
+    );
+
+    // Start exiting
+    close(popoverOverlay);
+
+    // Update before exiting is complete
+    triggerSomeUpdate(popoverOverlay);
+
+    // Run any timers and a final update for changed state
+    jest.runOnlyPendingTimers();
+    popoverOverlay.update();
+
+    expect(popoverOverlay.find(PositionedOverlay)).toHaveLength(0);
+  });
+
+  describe('focus', () => {
+    const oldEnv = process.env;
+
+    beforeEach(() => {
+      process.env = {...oldEnv};
+      delete process.env.NODE_ENV;
+    });
+
+    afterEach(() => {
+      process.env = oldEnv;
+      jest.clearAllMocks();
+    });
+
+    it('focuses the content on mount', () => {
+      const focusSpy = jest.spyOn(HTMLElement.prototype, 'focus');
+      mountWithAppProvider(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={noop}
+        >
+          {children}
+        </PopoverOverlay>,
+      );
+
+      expect(focusSpy).toHaveBeenCalledTimes(1);
+      expect(focusSpy).toHaveBeenCalledWith({preventScroll: false});
+    });
+
+    it('focuses the content on mount and prevents scroll in development', () => {
+      process.env.NODE_ENV = 'development';
+      const focusSpy = jest.spyOn(HTMLElement.prototype, 'focus');
+      mountWithAppProvider(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={noop}
+        >
+          {children}
+        </PopoverOverlay>,
+      );
+
+      expect(focusSpy).toHaveBeenCalledTimes(1);
+      expect(focusSpy).toHaveBeenCalledWith({preventScroll: true});
+    });
+  });
 });
 
 function noop() {}
+
+function close(wrapper: ReactWrapper) {
+  wrapper.setProps({active: false});
+  wrapper.update();
+}
+
+function triggerSomeUpdate(wrapper: ReactWrapper) {
+  wrapper.setProps({fullWidth: true});
+  wrapper.update();
+}

@@ -36,7 +36,7 @@
     },
     "ContextualSaveBar": {
       "save": "Opslaan",
-      "discard": "Verwerpen"
+      "discard": "Verwijderen"
     },
     "DataTable": {
       "sortAccessibilityLabel": "sorteer {direction} op",
@@ -62,13 +62,13 @@
         "december": "december"
       },
       "daysAbbreviated": {
-        "monday": "Ma.",
-        "tuesday": "Di.",
-        "wednesday": "Wo.",
-        "thursday": "Do.",
-        "friday": "Vr.",
-        "saturday": "Za.",
-        "sunday": "Zo."
+        "monday": "ma.",
+        "tuesday": "di.",
+        "wednesday": "wo.",
+        "thursday": "do.",
+        "friday": "vr.",
+        "saturday": "za.",
+        "sunday": "zo."
       }
     },
     "DiscardConfirmationModal": {
@@ -119,7 +119,7 @@
     },
     "Modal": {
       "iFrameTitle": "opmaak platte tekst",
-      "modalWarning": "Deze verplichte onderdelen ontbreken op Modal: {missingProps}"
+      "modalWarning": "Deze verplichte onderdelen ontbreken op het modale dialoogvenster: {missingProps}"
     },
     "Pagination": {
       "previous": "Vorige",
@@ -132,8 +132,8 @@
     },
     "ResourceList": {
       "sortingLabel": "Sorteer op",
-      "defaultItemSingular": "item",
-      "defaultItemPlural": "items",
+      "defaultItemSingular": "artikel",
+      "defaultItemPlural": "artikelen",
       "showing": "Weergave {itemsCount} {resource}",
       "loading": "{resource} aan het laden",
       "selected": "{selectedItemsCount} geselecteerd",
@@ -190,7 +190,8 @@
           "on_or_before": "vóór {date}",
           "on_or_after": "na {date}"
         }
-      }
+      },
+      "showingTotalCount": "{itemsCount} weergeven van {totalItemsCount} {resource}"
     },
     "SkeletonPage": {
       "loadingLabel": "Pagina is aan het laden"

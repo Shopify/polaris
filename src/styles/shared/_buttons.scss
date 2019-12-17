@@ -65,6 +65,36 @@
       inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
       inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2);
   }
+
+  &.globalTheming {
+    @include recolor-icon(var(--p-icon));
+    background: var(--p-action-secondary);
+    border: none;
+    box-shadow: none;
+    border-radius: var(--p-border-radius-base);
+    color: var(--p-text);
+
+    &:hover {
+      background: var(--p-action-secondary-hovered);
+      border-color: transparent;
+    }
+
+    &:focus {
+      border-color: transparent;
+      box-shadow: none;
+      @include focus-ring;
+    }
+
+    &:active {
+      background: var(--p-action-secondary-pressed);
+      border-color: transparent;
+      box-shadow: none;
+
+      &::after {
+        border: none;
+      }
+    }
+  }
 }
 
 @mixin base-button-disabled {
@@ -76,6 +106,12 @@
     color('sky', 'light')
   );
   color: color('ink', 'lightest');
+
+  &.globalTheming {
+    @include recolor-icon(var(--p-icon-disabled));
+    background: var(--p-action-secondary-disabled);
+    color: var(--p-text-disabled);
+  }
 }
 
 @mixin button-filled($button-color, $focus-color, $outline-color: null) {
@@ -114,6 +150,30 @@
     box-shadow: inset 0 0 0 0 transparent, shadow(faint),
       0 0 1px 0 $active-color;
   }
+
+  &.globalTheming {
+    background: var(--p-button-color);
+    border-color: transparent;
+    box-shadow: none;
+    color: var(--p-button-text);
+
+    &:hover {
+      background: var(--p-button-color-hover);
+      border-color: transparent;
+      color: var(--p-button-text);
+    }
+
+    &:focus {
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    &:active {
+      background: var(--p-button-color-active);
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
 }
 
 @mixin button-filled-disabled($button-color) {
@@ -127,10 +187,17 @@
   border-color: lighten($button-color, 20%);
   box-shadow: none;
   color: color('white');
+
+  &.globalTheming {
+    @include recolor-icon(var(--p-icon-disabled));
+    border-color: transparent;
+    background: var(--p-action-secondary-disabled);
+    color: var(--p-text-disabled);
+  }
 }
 
-@mixin button-outline($outline-color) {
-  background: transparent;
+@mixin button-outline($outline-color, $background-color: transparent) {
+  background: $background-color;
   border-color: rgba($outline-color, 0.4);
   box-shadow: none;
   color: darken($outline-color, 20%);
@@ -148,6 +215,61 @@
   &:active {
     background: rgba($outline-color, 0.1);
     box-shadow: none;
+  }
+
+  &.globalTheming {
+    background: transparent;
+    box-shadow: 0 0 0 border-width('base') var(--p-border-subdued);
+    color: var(--p-text);
+
+    &:hover {
+      box-shadow: 0 0 0 border-width('base') var(--p-border-subdued);
+      background: var(--p-surface-hovered);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 border-width('thick') var(--p-border-subdued);
+      @include no-focus-ring;
+    }
+
+    &:active {
+      box-shadow: 0 0 0 border-width('base') var(--p-border-subdued);
+      background: var(--p-surface-pressed);
+    }
+
+    &.disabled {
+      box-shadow: 0 0 0 border-width('base') var(--p-border-disabled);
+      background: transparent;
+      color: var(--p-text-disabled);
+    }
+
+    &.destructive {
+      background: transparent;
+      box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+      color: var(--p-critical-link);
+
+      &:hover {
+        box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+        background: var(--p-surface-critical-subdued);
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 border-width('thick') var(--p-border-critical);
+        @include no-focus-ring;
+      }
+
+      &:active {
+        box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+        background: var(--p-surface-critical-subdued);
+      }
+
+      // stylelint-disable-next-line selector-max-class
+      &.disabled {
+        box-shadow: 0 0 0 border-width('base') var(--p-border-critical-disabled);
+        background: transparent;
+        color: var(--p-critical-link-disabled);
+      }
+    }
   }
 }
 
@@ -169,10 +291,10 @@
   @return rgba(color('ink'), 0.1);
 }
 
-@mixin plain-button-backdrop() {
+@mixin plain-button-backdrop($background-color: plain-button-background()) {
   padding: 2px 5px;
   margin: -2px -5px;
-  background: plain-button-background();
+  background: $background-color;
   border-radius: border-radius();
   transition: opacity duration() easing();
 }

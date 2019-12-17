@@ -1,7 +1,7 @@
 import React from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
-import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider} from 'test-utilities/legacy';
+// eslint-disable-next-line no-restricted-imports
+import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {SearchField} from '../SearchField';
 
 describe('<TextField />', () => {

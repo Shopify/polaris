@@ -23,54 +23,35 @@ keywords:
 
 # Link
 
-Links are used to embed actions or pathways to more information in a sentence.
+Links take users to another place, and usually appear within or directly following a sentence.
+
+For actions that aren’t related to navigation, use the [button component](https://polaris.shopify.com/components/actions/button).
 
 ---
 
 ## Best practices
 
-Links should:
+### Buttons versus links
 
-- Consist of text that clearly describes either the action that merchants will take or the location they’ll navigate to.
-- Only be used in a sentence. For stand-alone navigational actions, [use the button component](https://polaris.shopify.com/components/actions/button).
+Links are used primarily for navigation, and usually appear within or directly following a sentence.
+
+Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as “view shipping settings”.
+
+The HTML that renders for the `Button` and `Link` components carries meaning. Using these components intentionally and consistently results in:
+
+- a more inclusive experience for assistive technology users
+- a more cohesive visual experience for sighted users
+- products that are easier to maintain at scale
+
+### Unstyled links
+
+If the existing link styles don’t meet the needs of your project, then use the `UnstyledLink` component to create a custom link style.
 
 ---
 
 ## Content guidelines
 
-The link component should follow the general [content guidelines](https://polaris.shopify.com/content/actionable-language#section-links) for links.
-
-### Links
-
-Links should:
-
-- Set the expectation of where merchants will be taken or what action will be performed.
-- Be consistent with the content they point to. If a navigational link leads to a page called Orders, label the link “orders”.
-- Use descriptive text and avoid using generic content such as “click here”.
-
-<!-- usageblock -->
-
-#### Do
-
-Learn more about <a>fulfilling orders</a> at the Shopify Help Center
-
-#### Don’t
-
-<a>Click here</a> to learn more about fulfilling orders
-
-<!-- end -->
-
-<!-- usagelist -->
-
-#### Do
-
-- Orders
-
-#### Don’t
-
-- To orders section
-
-<!-- end -->
+The link component should follow the content guidelines for [links](https://polaris.shopify.com/content/actionable-language#section-links).
 
 ---
 
@@ -119,7 +100,7 @@ Use for text links that should open in a new browser tab (or window, depending o
 
 ## Related components
 
-- To create navigational actions that aren’t part of a line of text, [use the button component](https://polaris.shopify.com/components/actions/button)
+- For actions that don’t appear within or directly following a sentence, use the [button component](https://polaris.shopify.com/components/actions/button)
 
 ---
 

@@ -1,5 +1,7 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {UnstyledLink} from 'components';
 import {Item} from '../Item';
 import {TextStyle} from '../../../../TextStyle';
@@ -64,6 +66,26 @@ describe('<Item />', () => {
     expect(item.find(UnstyledLink).prop('aria-label')).toBe(
       mockAccessibilityLabel,
     );
+  });
+
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled', () => {
+      const item = mountWithApp(<Item />, {
+        features: {unstableGlobalTheming: true},
+      });
+      expect(item).toContainReactComponent('button', {
+        className: 'Item globalTheming',
+      });
+    });
+
+    it('does not add a global theming class when global theming is disabled', () => {
+      const item = mountWithApp(<Item />, {
+        features: {unstableGlobalTheming: false},
+      });
+      expect(item).not.toContainReactComponent('button', {
+        className: 'Item globalTheming',
+      });
+    });
   });
 });
 

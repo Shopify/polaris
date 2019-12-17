@@ -1,12 +1,12 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {Button, Popover, Sheet, Tag, TextField} from 'components';
-
+import {Button, Popover, Sheet, Tag, TextField, TextStyle} from 'components';
+// eslint-disable-next-line no-restricted-imports
 import {
   mountWithAppProvider,
   trigger,
   findByTestID,
+  ReactWrapper,
 } from 'test-utilities/legacy';
 
 import Filters, {FiltersProps} from '../Filters';
@@ -28,6 +28,7 @@ const mockProps: FiltersProps = {
       key: 'filterTwo',
       label: 'Filter Two',
       filter: <MockFilter id="filterTwo" />,
+      disabled: true,
     },
     {
       key: 'filterThree',
@@ -291,6 +292,131 @@ describe('<Filters />', () => {
 
       expect(spy).toHaveBeenCalledTimes(1);
       expect(spy).toHaveBeenCalledWith('filterOne');
+    });
+  });
+
+  describe('disabled', () => {
+    it('disables the search field when true', () => {
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} queryValue="bar" disabled />,
+      );
+
+      expect(resourceFilters.find(TextField).prop('disabled')).toBe(true);
+    });
+
+    it('disables <ConnectedFilterControl /> when true', () => {
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} disabled />,
+      );
+      const rightActionButton = findByTestID(
+        resourceFilters,
+        'SheetToggleButton',
+      );
+
+      expect(rightActionButton.prop('disabled')).toBe(true);
+    });
+
+    it('passes disabled prop to connected filters', () => {
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} queryValue="bar" disabled />,
+      );
+
+      expect(
+        resourceFilters.find(ConnectedFilterControl).prop('disabled'),
+      ).toBe(true);
+    });
+
+    it('subdues each filter headings <Filter /> is mounted with prop disabled as true', () => {
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} disabled />,
+      );
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+
+      mockProps.filters.forEach((filter) => {
+        const toggleButton = findById(
+          resourceFilters,
+          `${filter.key}ToggleButton`,
+        );
+
+        expect(toggleButton.find(TextStyle).prop('variation')).toBe('subdued');
+      });
+    });
+
+    it('is passed to <Tag /> with set value', () => {
+      const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: noop}];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} appliedFilters={appliedFilters} disabled />,
+      );
+
+      resourceFilters.find(Tag).forEach((tag) => {
+        expect(tag.prop('disabled')).toBe(true);
+      });
+    });
+
+    describe('individual filters', () => {
+      it('subdues disabled filters heading', () => {
+        const resourceFilters = mountWithAppProvider(
+          <Filters {...mockProps} />,
+        );
+
+        trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+
+        mockProps.filters
+          .filter(({disabled}) => disabled)
+          .forEach((filter) => {
+            const toggleButton = findById(
+              resourceFilters,
+              `${filter.key}ToggleButton`,
+            );
+
+            expect(toggleButton.find(TextStyle).prop('variation')).toBe(
+              'subdued',
+            );
+          });
+      });
+
+      it('does not subdue active filters heading', () => {
+        const resourceFilters = mountWithAppProvider(
+          <Filters {...mockProps} />,
+        );
+
+        trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+
+        mockProps.filters
+          .filter(({disabled}) => !disabled)
+          .forEach((filter) => {
+            const toggleButton = findById(
+              resourceFilters,
+              `${filter.key}ToggleButton`,
+            );
+
+            expect(
+              toggleButton.find(TextStyle).prop('variation'),
+            ).toBeUndefined();
+          });
+      });
+    });
+  });
+
+  describe('helpText', () => {
+    it('renders a subdued <TextStyle /> when provided', () => {
+      const helpText = 'Important filters information';
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} helpText={helpText} />,
+      );
+
+      const helpTextMarkup = findById(resourceFilters, 'FiltersHelpText');
+      expect(helpTextMarkup).toHaveLength(1);
+      expect(helpTextMarkup.text()).toBe(helpText);
+    });
+
+    it('is not rendered when not provided', () => {
+      const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />);
+
+      const helpTextMarkup = findById(resourceFilters, 'FiltersHelpText');
+      expect(helpTextMarkup).toHaveLength(0);
     });
   });
 });

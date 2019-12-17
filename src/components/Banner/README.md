@@ -61,11 +61,11 @@ Banners should:
 
 ## Content guidelines
 
-To learn about writing helpful and accessible error message text, see the guidelines for [error messages](/patterns-and-guides/error-messages).
+To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns-and-guides/error-messages).
 
 ### Title
 
-Banner titles should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
+Banner titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 
@@ -454,7 +454,7 @@ function BannerInModalExample() {
 
 <!-- example-for: web -->
 
-Banner can programmatically receive focus. Use this functionality to draw the merchant's attention to the banner.
+Banner can programmatically receive focus. Use this functionality to draw the merchant’s attention to the banner.
 
 ```jsx
 function BannerWithFocusExample() {

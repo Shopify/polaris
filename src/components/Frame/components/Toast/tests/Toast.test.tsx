@@ -1,5 +1,6 @@
 import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
+// eslint-disable-next-line no-restricted-imports
 import {
   mountWithAppProvider,
   trigger,
@@ -32,6 +33,11 @@ describe('<Toast />', () => {
   it('renders its content', () => {
     const message = mountWithAppProvider(<Toast {...mockProps} />);
     expect(message.text()).toStrictEqual('Image uploaded');
+  });
+
+  it('renders an error Toast when error is true', () => {
+    const message = mountWithAppProvider(<Toast {...mockProps} error />);
+    expect(message.find('.Toast').hasClass('error')).toBe(true);
   });
 
   describe('dismiss button', () => {

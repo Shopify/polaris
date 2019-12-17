@@ -40,6 +40,7 @@ export interface PopoverOverlayProps {
   children?: React.ReactNode;
   fullWidth?: boolean;
   fullHeight?: boolean;
+  fluidContent?: boolean;
   preferredPosition?: PreferredPosition;
   preferredAlignment?: PreferredAlignment;
   active: boolean;
@@ -88,6 +89,7 @@ export class PopoverOverlay extends React.PureComponent<
     if (this.props.active && !oldProps.active) {
       this.focusContent();
       this.changeTransitionStatus(TransitionStatus.Entering, () => {
+        this.clearTransitionTimeout();
         this.enteringTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Entered});
         }, durationBase);
@@ -96,6 +98,7 @@ export class PopoverOverlay extends React.PureComponent<
 
     if (!this.props.active && oldProps.active) {
       this.changeTransitionStatus(TransitionStatus.Exiting, () => {
+        this.clearTransitionTimeout();
         this.exitingTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Exited});
         }, durationBase);
@@ -121,6 +124,8 @@ export class PopoverOverlay extends React.PureComponent<
 
     const className = classNames(
       styles.PopoverOverlay,
+      transitionStatus === TransitionStatus.Entering &&
+        styles['PopoverOverlay-entering'],
       transitionStatus === TransitionStatus.Entered &&
         styles['PopoverOverlay-open'],
       transitionStatus === TransitionStatus.Exiting &&
@@ -166,14 +171,23 @@ export class PopoverOverlay extends React.PureComponent<
         return;
       }
 
-      this.contentNode.current.focus();
+      this.contentNode.current.focus({
+        preventScroll: process.env.NODE_ENV === 'development',
+      });
     });
   }
 
   private renderPopover = (overlayDetails: OverlayDetails) => {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
-    const {id, children, sectioned, fullWidth, fullHeight} = this.props;
+    const {
+      id,
+      children,
+      sectioned,
+      fullWidth,
+      fullHeight,
+      fluidContent,
+    } = this.props;
 
     const className = classNames(
       styles.Popover,
@@ -187,6 +201,7 @@ export class PopoverOverlay extends React.PureComponent<
     const contentClassNames = classNames(
       styles.Content,
       fullHeight && styles['Content-fullHeight'],
+      fluidContent && styles['Content-fluidContent'],
     );
 
     const content = (

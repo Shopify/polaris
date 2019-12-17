@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Avatar, buttonFrom} from 'components';
 import {AccountConnection} from '../AccountConnection';
@@ -28,7 +29,7 @@ describe('<AccountConnection />', () => {
     it('is shown on the card when provided', () => {
       const TermsOfService = () => (
         <p>
-          By clicking <strong>Connect</strong>, you agree to accept Sample App’s{' '}
+          By clicking <strong>Connect</strong>, you agree to accept Sample App’s
           terms and conditions. You’ll pay a commission rate of 15% on sales
           made through Sample App.
         </p>

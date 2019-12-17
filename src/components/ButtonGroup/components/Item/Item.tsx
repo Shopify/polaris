@@ -1,47 +1,33 @@
 import React from 'react';
-
+import {useToggle} from '../../../../utilities/use-toggle';
 import {classNames} from '../../../../utilities/css';
-import {ButtonProps} from '../../../Button';
 
 import styles from '../../ButtonGroup.scss';
 
 export interface ItemProps {
-  button: React.ReactElement<ButtonProps>;
+  button: React.ReactElement;
 }
 
-interface State {
-  focused: boolean;
-}
+export function Item({button}: ItemProps) {
+  const {
+    value: focused,
+    setTrue: forceTrueFocused,
+    setFalse: forceFalseFocused,
+  } = useToggle(false);
 
-export class Item extends React.PureComponent<ItemProps, State> {
-  state: State = {focused: false};
+  const className = classNames(
+    styles.Item,
+    focused && styles['Item-focused'],
+    button.props.plain && styles['Item-plain'],
+  );
 
-  render() {
-    const {button} = this.props;
-    const {focused} = this.state;
-
-    const className = classNames(
-      styles.Item,
-      focused && styles['Item-focused'],
-      button.props.plain && styles['Item-plain'],
-    );
-
-    return (
-      <div
-        className={className}
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}
-      >
-        {button}
-      </div>
-    );
-  }
-
-  private handleFocus = () => {
-    this.setState({focused: true});
-  };
-
-  private handleBlur = () => {
-    this.setState({focused: false});
-  };
+  return (
+    <div
+      className={className}
+      onFocus={forceTrueFocused}
+      onBlur={forceFalseFocused}
+    >
+      {button}
+    </div>
+  );
 }

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
 import {classNames, variationName} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
+import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {UnstyledLink} from '../UnstyledLink';
 import {Icon} from '../Icon';
@@ -39,10 +40,12 @@ export interface ButtonProps {
   textAlign?: TextAlign;
   /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
   outline?: boolean;
+  /** Gives the button the appearance of being pressed */
+  pressed?: boolean;
   /** Allows the button to grow to the width of its container */
   fullWidth?: boolean;
-  /** Displays the button with a disclosure icon */
-  disclosure?: boolean;
+  /** Displays the button with a disclosure icon. Defaults to `down` when set to true */
+  disclosure?: 'down' | 'up' | boolean;
   /** Allows the button to submit a form */
   submit?: boolean;
   /** Renders a button that looks like a link */
@@ -61,7 +64,10 @@ export interface ButtonProps {
   ariaControls?: string;
   /** Tells screen reader the controlled element is expanded */
   ariaExpanded?: boolean;
-  /** Tells screen reader the element is pressed */
+  /**
+   * @deprecated As of release 4.7.0, replaced by {@link https://polaris.shopify.com/components/structure/page#props-pressed}
+   * Tells screen reader the element is pressed
+   */
   ariaPressed?: boolean;
   /** Callback when clicked */
   onClick?(): void;
@@ -75,6 +81,10 @@ export interface ButtonProps {
   onKeyUp?(event: React.KeyboardEvent<HTMLButtonElement>): void;
   /** Callback when a keydown event is registered on the button */
   onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  /** Callback when mouse enter */
+  onMouseEnter?(): void;
+  /** Callback when element is touched */
+  onTouchStart?(): void;
 }
 
 const DEFAULT_SIZE = 'medium';
@@ -95,6 +105,8 @@ export function Button({
   onKeyDown,
   onKeyPress,
   onKeyUp,
+  onMouseEnter,
+  onTouchStart,
   external,
   download,
   icon,
@@ -108,19 +120,33 @@ export function Button({
   size = DEFAULT_SIZE,
   textAlign,
   fullWidth,
+  pressed,
 }: ButtonProps) {
-  const intl = useI18n();
+  const {unstableGlobalTheming = false} = useFeatures();
+  const hasGivenDeprecationWarning = useRef(false);
+
+  if (ariaPressed && !hasGivenDeprecationWarning.current) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The ariaPressed prop has been replaced with pressed',
+    );
+    hasGivenDeprecationWarning.current = true;
+  }
+
+  const i18n = useI18n();
 
   const isDisabled = disabled || loading;
 
   const className = classNames(
     styles.Button,
+    unstableGlobalTheming && styles.globalTheming,
     primary && styles.primary,
     outline && styles.outline,
     destructive && styles.destructive,
     isDisabled && styles.disabled,
     loading && styles.loading,
     plain && styles.plain,
+    pressed && !disabled && !url && styles.pressed,
     monochrome && styles.monochrome,
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
     textAlign && styles[variationName('textAlign', textAlign)],
@@ -128,9 +154,20 @@ export function Button({
     icon && children == null && styles.iconOnly,
   );
 
+  const disclosureIcon = (
+    <Icon source={loading ? 'placeholder' : CaretDownMinor} />
+  );
+
   const disclosureIconMarkup = disclosure ? (
     <IconWrapper>
-      <Icon source={loading ? 'placeholder' : CaretDownMinor} />
+      <div
+        className={classNames(
+          styles.DisclosureIcon,
+          disclosure === 'up' && styles.DisclosureIconFacingUp,
+        )}
+      >
+        {disclosureIcon}
+      </div>
     </IconWrapper>
   ) : null;
 
@@ -156,7 +193,7 @@ export function Button({
       <Spinner
         size="small"
         color={spinnerColor}
-        accessibilityLabel={intl.translate(
+        accessibilityLabel={i18n.translate(
           'Polaris.Button.spinnerAccessibilityLabel',
         )}
       />
@@ -198,6 +235,8 @@ export function Button({
         onFocus={onFocus}
         onBlur={onBlur}
         onMouseUp={handleMouseUpByBlurring}
+        onMouseEnter={onMouseEnter}
+        onTouchStart={onTouchStart}
         className={className}
         aria-label={accessibilityLabel}
       >
@@ -205,6 +244,8 @@ export function Button({
       </UnstyledLink>
     );
   }
+
+  const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
 
   return (
     <button
@@ -217,12 +258,14 @@ export function Button({
       onKeyUp={onKeyUp}
       onKeyPress={onKeyPress}
       onMouseUp={handleMouseUpByBlurring}
+      onMouseEnter={onMouseEnter}
+      onTouchStart={onTouchStart}
       className={className}
       disabled={isDisabled}
       aria-label={accessibilityLabel}
       aria-controls={ariaControls}
       aria-expanded={ariaExpanded}
-      aria-pressed={ariaPressed}
+      aria-pressed={ariaPressedStatus}
       role={loading ? 'alert' : undefined}
       aria-busy={loading ? true : undefined}
     >

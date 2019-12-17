@@ -14,7 +14,7 @@ export interface ChoiceDescriptor {
   /** Value of the choice */
   value: string;
   /** Label for the choice */
-  label: string;
+  label: React.ReactNode;
   /** Disable choice */
   disabled?: boolean;
   /** Additional text to aide in use */
@@ -29,7 +29,7 @@ export type Choice = ChoiceDescriptor;
 
 export interface ChoiceListProps {
   /** Label for list of choices */
-  title: string;
+  title: React.ReactNode;
   /** Collection of choices */
   choices: Choice[];
   /** Collection of selected choices */
@@ -136,7 +136,7 @@ export function ChoiceList({
 function noop() {}
 
 function choiceIsSelected({value}: Choice, selected: string[]) {
-  return selected.indexOf(value) >= 0;
+  return selected.includes(value);
 }
 
 function updateSelectedChoices(

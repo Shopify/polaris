@@ -14,7 +14,7 @@ export interface ItemProps {
 }
 
 export class Item extends React.PureComponent<ItemProps, never> {
-  private focusedNode: HTMLElement | React.ReactElement<any> | null = null;
+  private focusedNode: HTMLElement | React.ReactElement | null = null;
 
   componentDidMount() {
     const {focusedNode} = this;
@@ -67,9 +67,7 @@ export class Item extends React.PureComponent<ItemProps, never> {
     return <li>{markup}</li>;
   }
 
-  private setFocusedNode = (
-    node: HTMLElement | React.ReactElement<any> | null,
-  ) => {
+  private setFocusedNode = (node: HTMLElement | React.ReactElement | null) => {
     this.focusedNode = node;
   };
 }

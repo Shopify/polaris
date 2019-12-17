@@ -7,7 +7,7 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   min-height: 100vh;
   display: flex;
-  background-color: color('sky', 'light');
+  background-color: var(--p-background, color('sky', 'light'));
 
   @include when-printing {
     background-color: none;
@@ -104,6 +104,7 @@ $skip-vertical-offset: rem(10px);
   top: 0;
   left: 0;
   width: 100%;
+  height: top-bar-height();
 }
 
 .ContextualSaveBar {
@@ -173,8 +174,11 @@ $skip-vertical-offset: rem(10px);
 
   @include frame-when-nav-displayed {
     .hasTopBar & {
-      top: top-bar-height();
-      z-index: z-index(loading-bar, $fixed-element-stacking-order);
+      top: var(--p-override-zero, top-bar-height());
+      z-index: var(
+        --p-override-loading-z-index,
+        z-index(loading-bar, $fixed-element-stacking-order)
+      );
     }
   }
 }

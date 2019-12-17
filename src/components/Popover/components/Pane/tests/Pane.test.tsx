@@ -1,19 +1,20 @@
 import React from 'react';
 import {TextContainer, Scrollable} from 'components';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Pane} from '../Pane';
 import {Section} from '../../Section';
 
 describe('<Pane />', () => {
   describe('fixed', () => {
-    it('does not render content in a Scrollable when set to true', async () => {
+    it('does not render content in a Scrollable when set to true', () => {
       const Children = () => (
         <TextContainer>
           <p>Text</p>
         </TextContainer>
       );
 
-      const popoverPane = await mountWithAppProvider(
+      const popoverPane = mountWithAppProvider(
         <Pane fixed>
           <Children />
         </Pane>,
@@ -22,14 +23,14 @@ describe('<Pane />', () => {
       expect(popoverPane.find(Scrollable)).toHaveLength(0);
     });
 
-    it('renders content in a Scrollable when set to false', async () => {
+    it('renders content in a Scrollable when set to false', () => {
       const Children = () => (
         <TextContainer>
           <p>Text</p>
         </TextContainer>
       );
 
-      const popoverPane = await mountWithAppProvider(
+      const popoverPane = mountWithAppProvider(
         <Pane fixed={false}>
           <Children />
         </Pane>,
@@ -38,14 +39,14 @@ describe('<Pane />', () => {
       expect(popoverPane.find(Scrollable)).toHaveLength(1);
     });
 
-    it('renders content in a Scrollable when unset', async () => {
+    it('renders content in a Scrollable when unset', () => {
       const Children = () => (
         <TextContainer>
           <p>Text</p>
         </TextContainer>
       );
 
-      const popoverPane = await mountWithAppProvider(
+      const popoverPane = mountWithAppProvider(
         <Pane>
           <Children />
         </Pane>,
@@ -56,14 +57,14 @@ describe('<Pane />', () => {
   });
 
   describe('sectioned', () => {
-    it('renders children in a Section when set to true', async () => {
+    it('renders children in a Section when set to true', () => {
       const Children = () => (
         <TextContainer>
           <p>Text</p>
         </TextContainer>
       );
 
-      const popoverPane = await mountWithAppProvider(
+      const popoverPane = mountWithAppProvider(
         <Pane sectioned>
           <Children />
         </Pane>,
@@ -72,14 +73,14 @@ describe('<Pane />', () => {
       expect(popoverPane.find(Section)).toHaveLength(1);
     });
 
-    it('does not render content in a Section when set to false', async () => {
+    it('does not render content in a Section when set to false', () => {
       const Children = () => (
         <TextContainer>
           <p>Text</p>
         </TextContainer>
       );
 
-      const popoverPane = await mountWithAppProvider(
+      const popoverPane = mountWithAppProvider(
         <Pane sectioned={false}>
           <Children />
         </Pane>,
@@ -88,14 +89,14 @@ describe('<Pane />', () => {
       expect(popoverPane.find(Section)).toHaveLength(0);
     });
 
-    it('does not render content in a Section when unset', async () => {
+    it('does not render content in a Section when unset', () => {
       const Children = () => (
         <TextContainer>
           <p>Text</p>
         </TextContainer>
       );
 
-      const popoverPane = await mountWithAppProvider(
+      const popoverPane = mountWithAppProvider(
         <Pane>
           <Children />
         </Pane>,
@@ -106,7 +107,7 @@ describe('<Pane />', () => {
   });
 
   describe('onScrolledToBottom', () => {
-    it('is set on the Scrollable when provided', async () => {
+    it('is set on the Scrollable when provided', () => {
       const onScrolledToBottom = jest.fn();
       const Children = () => (
         <TextContainer>
@@ -114,7 +115,7 @@ describe('<Pane />', () => {
         </TextContainer>
       );
 
-      const popoverPane = await mountWithAppProvider(
+      const popoverPane = mountWithAppProvider(
         <Pane onScrolledToBottom={onScrolledToBottom}>
           <Children />
         </Pane>,

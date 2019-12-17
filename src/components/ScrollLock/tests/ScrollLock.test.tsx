@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {SCROLL_LOCKING_ATTRIBUTE} from '../../../utilities/scroll-lock-manager';
 import {ScrollLock} from '../ScrollLock';
@@ -15,29 +16,20 @@ describe('ScrollLock', () => {
   });
 
   it('does not remove the data attribute from the body when two scrolllocks are mounted and one unmounts', () => {
-    class DummyFrame extends React.Component {
-      state = {
-        showScrollLock: true,
-      };
+    function DummyFrame() {
+      const [showScrollLock, setScrollLock] = useState(true);
 
-      setScollLockFalse = () => {
-        this.setState({showScrollLock: false});
-      };
+      const setScollLockFalse = useCallback(() => setScrollLock(false), []);
 
-      render() {
-        const {showScrollLock} = this.state;
+      const scrollLockMarkup = showScrollLock ? <ScrollLock /> : null;
 
-        // eslint-disable-next-line shopify/jest/no-if
-        const scrollLockMarkup = showScrollLock ? <ScrollLock /> : null;
-
-        return (
-          <React.Fragment>
-            <button onClick={this.setScollLockFalse} />
-            {scrollLockMarkup}
-            <ScrollLock />
-          </React.Fragment>
-        );
-      }
+      return (
+        <React.Fragment>
+          <button onClick={setScollLockFalse} />
+          {scrollLockMarkup}
+          <ScrollLock />
+        </React.Fragment>
+      );
     }
 
     const scrollLockContainer = mountWithAppProvider(<DummyFrame />);

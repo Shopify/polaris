@@ -49,6 +49,7 @@ export {
   rgbToHsl,
   hsbToRgb,
   hsbToHex,
+  hslToRgb,
   rgbString,
   rgbaString,
 } from './ColorPicker';

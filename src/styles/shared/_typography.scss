@@ -35,7 +35,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-subheading {
   font-size: font-size(subheading);
-  font-weight: 700;
+  font-weight: 600;
   line-height: line-height(subheading);
   text-transform: uppercase;
 
@@ -72,7 +72,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-button {
   font-size: font-size(button);
-  font-weight: 400;
+  font-weight: var(--p-button-font-weight, 400);
   line-height: line-height(button);
 
   text-transform: initial;
@@ -85,7 +85,7 @@ $typography-condensed: em(640px);
 
 @mixin text-style-button-large {
   font-size: font-size(button-large);
-  font-weight: 400;
+  font-weight: var(--p-button-font-weight, 400);
   line-height: line-height(button-large);
 
   text-transform: initial;
@@ -145,7 +145,10 @@ $typography-condensed: em(640px);
 }
 
 @mixin text-emphasis-subdued($for-background: null) {
-  color: color('ink', 'lighter', $for-background: $for-background);
+  color: var(
+    --p-text-subdued,
+    color('ink', 'lighter', $for-background: $for-background)
+  );
 }
 
 @mixin text-emphasis-strong {
@@ -154,7 +157,7 @@ $typography-condensed: em(640px);
 
 @mixin text-emphasis-normal($for-background: null) {
   font-weight: 400;
-  color: color(ink, $for-background: $for-background);
+  color: var(--p-text, color(ink, $for-background: $for-background));
 }
 
 @mixin text-breakword {

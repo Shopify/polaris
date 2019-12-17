@@ -1,7 +1,14 @@
 import tokens from '@shopify/polaris-tokens';
-
-import {needsVariant, setColors, setTextColor, setTheme} from '../utils';
 import {needsVariantList} from '../config';
+import {
+  needsVariant,
+  setTextColor,
+  setTheme,
+  buildThemeContext,
+  buildCustomProperties,
+} from '../utils';
+import {RoleColors} from '../types';
+import {DefaultColorScheme} from '..';
 
 describe('setTextColor', () => {
   it('sets a css variable to white if the variant is dark', () => {
@@ -26,7 +33,7 @@ describe('setTheme', () => {
 
     expect(theme).toStrictEqual([
       ['--top-bar-color', 'rgb(255, 255, 255)'],
-      ['--top-bar-background-lighter', 'hsl(184, 85%, 43%, 1)'],
+      ['--top-bar-background-lighter', 'hsla(184, 85%, 43%, 1)'],
     ]);
   });
 });
@@ -43,11 +50,104 @@ describe('needsVariant', () => {
   });
 });
 
-describe('setColors', () => {
-  it('iterates over colors when a theme is passed', () => {
-    const theme = {colors: {topBar: {background: '#eeeeee'}}};
-    const spy = jest.spyOn(Object, 'entries');
-    setColors(theme);
-    expect(spy).toHaveBeenCalledWith(theme.colors);
+describe('buildCustomProperties', () => {
+  const legacyCustomProperties = {
+    '--top-bar-background': '#eeeeee',
+    '--top-bar-background-lighter': 'hsla(0, 10%, 100%, 1)',
+    '--top-bar-color': 'rgb(33, 43, 54)',
+  };
+
+  it('creates legacy custom properties but ignores new custom properties when global theming is disabled', () => {
+    const theme = {
+      colors: {topBar: {background: '#eeeeee'}},
+      UNSTABLE_colors: {surface: '#ffffff'},
+      colorScheme: DefaultColorScheme,
+    };
+
+    const colors = buildCustomProperties(theme, false);
+    expect(colors).toStrictEqual(legacyCustomProperties);
+    expect(colors).not.toStrictEqual(
+      expect.objectContaining({'--p-surface': 'hsla(0, 0%, 100%, 1)'}),
+    );
+  });
+
+  it('creates legacy custom properties but ignores new custom properties when global theming is disabled without defaults', () => {
+    const theme = {
+      colors: {topBar: {background: '#eeeeee'}},
+      UNSTABLE_colors: {surface: '#ffffff'},
+      colorScheme: DefaultColorScheme,
+    };
+
+    const colors = buildCustomProperties(theme, false);
+    expect(colors).toStrictEqual(legacyCustomProperties);
+    expect(colors).not.toStrictEqual(
+      expect.objectContaining({'--p-surface': 'hsla(0, 0%, 100%, 1)'}),
+    );
+  });
+
+  it('creates new custom properties when global theming is enabled but ignores legacy colors', () => {
+    const theme = {
+      colors: {topBar: {background: '#eeeeee'}},
+      UNSTABLE_colors: {surface: '#ffffff'},
+      colorScheme: DefaultColorScheme,
+    };
+
+    const colors = Object.keys(buildCustomProperties(theme, true));
+    expect(colors).toContain('--p-surface');
+    expect(colors).not.toContain('--top-bar-background');
+  });
+
+  it('uses light adjustments by default', () => {
+    expect(
+      buildCustomProperties(
+        {
+          UNSTABLE_colors: {surface: '#CCCCCC'},
+          colorScheme: DefaultColorScheme,
+        },
+        true,
+      ),
+    ).toStrictEqual(
+      expect.objectContaining({
+        '--p-background': 'hsla(0, 0%, 98%, 1)',
+      }),
+    );
+  });
+
+  it('does not throw when given a color role that does not exist', () => {
+    expect(() => {
+      buildCustomProperties(
+        {
+          UNSTABLE_colors: {blarp: '#CCCCCC'} as Partial<RoleColors>,
+          colorScheme: DefaultColorScheme,
+        },
+        true,
+      );
+    }).not.toThrow();
+  });
+
+  it('uses dark adjustments if the colorScheme is dark', () => {
+    expect(
+      buildCustomProperties(
+        {UNSTABLE_colors: {surface: '#333333'}, colorScheme: 'dark'},
+        true,
+      ),
+    ).toStrictEqual(
+      expect.objectContaining({
+        '--p-background': 'hsla(0, 0%, 5%, 1)',
+      }),
+    );
+  });
+});
+
+describe('buildThemeContext', () => {
+  it('reduces theme config down to a theme', () => {
+    expect(
+      buildThemeContext({colors: {}, logo: {}}, {foo: 'bar'}),
+    ).toStrictEqual({
+      logo: {},
+      UNSTABLE_cssCustomProperties: 'foo:bar',
+      UNSTABLE_colors: undefined,
+      colorScheme: undefined,
+    });
   });
 });

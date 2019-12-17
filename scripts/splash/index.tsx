@@ -2,7 +2,11 @@ import path from 'path';
 import React, {useState, useEffect} from 'react';
 import {Box, Text, Color, render} from 'ink';
 import sortBy from 'lodash/sortBy';
-import {getGitStagedFiles, getDependencies} from './treebuilder';
+import {getGitStagedFiles, getDependencies} from '@shopify/splash';
+
+if (process.env.DISABLE_SPLASH) {
+  process.exit(0);
+}
 
 const excludedFileNames = (fileName) =>
   !fileName.includes('test') && !fileName.includes('types');
@@ -15,7 +19,7 @@ const getEmojiForExtension = (extension) => {
     case '.scss':
       return '🎨';
     default:
-      return '❔';
+      return '📄';
   }
 };
 
@@ -77,7 +81,7 @@ const Components = ({components, status}) => (
   <React.Fragment>
     {status === 'loading' && (
       <Box marginLeft={4} marginBottom={1}>
-        ⏳{'  '}Please wait during compilation… Beep boop beep 🤖
+        ⏳ Please wait during compilation… Beep boop beep 🤖
       </Box>
     )}
 
@@ -193,6 +197,17 @@ const App = () => {
           </Box>
         </Color>
       </Box>
+      {process.argv.includes('--show-disable-tip') && (
+        <Box>
+          <Color dim>
+            <Box width={3}>💡</Box>
+            <Box>
+              Tip: to disable these reports, run
+              <Text bold> DISABLE_SPLASH=1 yarn dev</Text>
+            </Box>
+          </Color>
+        </Box>
+      )}
     </React.Fragment>
   );
 };

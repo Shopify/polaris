@@ -1,6 +1,7 @@
 import React from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import * as focusUtils from '@shopify/javascript-utilities/focus';
+// eslint-disable-next-line no-restricted-imports
 import {
   findByTestID,
   mountWithAppProvider,

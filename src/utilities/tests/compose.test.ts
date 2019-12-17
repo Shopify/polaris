@@ -32,11 +32,7 @@ describe('compose', () => {
     const sanitizeSpy = jest.fn();
     const toSnakeCaseFromUpperSpy = jest.fn();
     const toUpperCaseSpy = jest.fn();
-    compose(
-      toUpperCaseSpy,
-      toSnakeCaseFromUpperSpy,
-      sanitizeSpy,
-    )();
+    compose(toUpperCaseSpy, toSnakeCaseFromUpperSpy, sanitizeSpy)();
 
     expect(sanitizeSpy).toHaveBeenCalledTimes(1);
     expect(toSnakeCaseFromUpperSpy).toHaveBeenCalledTimes(1);

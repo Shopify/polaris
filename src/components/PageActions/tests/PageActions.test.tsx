@@ -1,9 +1,10 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {PageActions} from '..';
 import {ButtonGroup} from '../../ButtonGroup';
 import {Stack} from '../../Stack';
 import {buttonsFrom} from '../../Button';
+import {PageActions} from '..';
 
 jest.mock('../../Button', () => ({
   ...require.requireActual('../../Button'),

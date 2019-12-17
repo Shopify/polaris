@@ -1,7 +1,11 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
 import {SaveMinor} from '@shopify/polaris-icons';
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+// eslint-disable-next-line no-restricted-imports
+import {
+  mountWithAppProvider,
+  trigger,
+  ReactWrapper,
+} from 'test-utilities/legacy';
 
 import {Popover, ActionList} from 'components';
 import {MenuAction} from '../../MenuAction';
@@ -10,13 +14,20 @@ import {MenuGroup} from '../MenuGroup';
 describe('<MenuGroup />', () => {
   const mockProps = {
     title: 'title',
-    actions: [],
+    actions: [{content: 'mock content 1'}],
     active: undefined,
     onOpen: noop,
     onClose: noop,
   };
 
   describe('<MenuAction />', () => {
+    it('does not render <MenuGroup /> when no actions are passed', () => {
+      const wrapper = mountWithAppProvider(
+        <MenuGroup {...mockProps} actions={[]} />,
+      );
+      expect(wrapper.find(MenuAction)).toHaveLength(0);
+    });
+
     it('passes `title` as the `content` for the <Popover /> activator', () => {
       const mockTitle = 'mock title';
       const wrapper = mountWithAppProvider(

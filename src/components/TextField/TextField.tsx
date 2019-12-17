@@ -3,8 +3,10 @@ import {addEventListener} from '@shopify/javascript-utilities/events';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {useUniqueId} from '../../utilities/unique-id';
+import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {Labelled, Action, helpTextID, labelID} from '../Labelled';
 import {Connected} from '../Connected';
 
@@ -117,7 +119,8 @@ export type TextFieldProps = NonMutuallyExclusiveProps &
   (
     | {readOnly: true}
     | {disabled: true}
-    | {onChange(value: string, id: string): void});
+    | {onChange(value: string, id: string): void}
+  );
 
 export function TextField({
   prefix,
@@ -160,10 +163,10 @@ export function TextField({
   onFocus,
   onBlur,
 }: TextFieldProps) {
-  const intl = useI18n();
+  const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
-  const [isMounted, setIsMounted] = useState(false);
+  const isAfterInitial = useIsAfterInitialMount();
 
   const id = useUniqueId('TextField', idProp);
 
@@ -173,17 +176,13 @@ export function TextField({
   const buttonPressTimer = useRef<number>();
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
     const input = inputRef.current;
     if (!input || focused === undefined) return;
     focused ? input.focus() : input.blur();
   }, [focused]);
 
   const normalizedValue = value != null ? value : '';
-
+  const {unstableGlobalTheming = false} = useFeatures();
   const className = classNames(
     styles.TextField,
     Boolean(normalizedValue) && styles.hasValue,
@@ -192,6 +191,7 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && styles.focus,
+    unstableGlobalTheming && styles.globalTheming,
   );
 
   const inputType = type === 'currency' ? 'text' : type;
@@ -209,7 +209,7 @@ export function TextField({
   ) : null;
 
   const characterCount = normalizedValue.length;
-  const characterCountLabel = intl.translate(
+  const characterCountLabel = i18n.translate(
     maxLength
       ? 'Polaris.TextField.characterCountWithMaxLength'
       : 'Polaris.TextField.characterCount',
@@ -240,13 +240,14 @@ export function TextField({
   const clearButtonMarkup =
     clearButton && normalizedValue !== '' ? (
       <button
+        type="button"
         testID="clearButton"
         className={styles.ClearButton}
         onClick={handleClearButtonPress}
         disabled={disabled}
       >
         <VisuallyHidden>
-          {intl.translate('Polaris.Common.clear')}
+          {i18n.translate('Polaris.Common.clear')}
         </VisuallyHidden>
         <Icon source={CircleCancelMinor} color="inkLightest" />
       </button>
@@ -323,7 +324,7 @@ export function TextField({
   }, []);
 
   const resizer =
-    multiline && isMounted ? (
+    multiline && isAfterInitial ? (
       <Resizer
         contents={normalizedValue || placeholder}
         currentHeight={height}
@@ -353,9 +354,7 @@ export function TextField({
     labelledBy.push(`${id}Suffix`);
   }
 
-  if (labelledBy.length) {
-    labelledBy.unshift(labelID(id));
-  }
+  labelledBy.unshift(labelID(id));
 
   const inputClassName = classNames(
     styles.Input,
@@ -390,13 +389,13 @@ export function TextField({
     pattern,
     type: inputType,
     'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
-    'aria-labelledby': labelledBy.length ? labelledBy.join(' ') : undefined,
+    'aria-labelledby': labelledBy.join(' '),
     'aria-invalid': Boolean(error),
     'aria-owns': ariaOwns,
     'aria-activedescendant': ariaActiveDescendant,
     'aria-autocomplete': ariaAutocomplete,
     'aria-controls': ariaControls,
-    'aria-multiline': multiline,
+    'aria-multiline': normalizeAriaMultiline(multiline),
   });
 
   return (
@@ -435,7 +434,7 @@ export function TextField({
   function handleKeyPress(event: React.KeyboardEvent) {
     const {key, which} = event;
     const numbersSpec = /[\d.eE+-]$/;
-    if (type !== 'number' || which === Key.Enter || key.match(numbersSpec)) {
+    if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
       return;
     }
     event.preventDefault();
@@ -481,5 +480,16 @@ function normalizeAutoComplete(autoComplete?: boolean | string) {
     return 'off';
   } else {
     return autoComplete;
+  }
+}
+
+function normalizeAriaMultiline(multiline?: boolean | number) {
+  switch (typeof multiline) {
+    case 'undefined':
+      return false;
+    case 'boolean':
+      return multiline;
+    case 'number':
+      return Boolean(multiline > 0);
   }
 }

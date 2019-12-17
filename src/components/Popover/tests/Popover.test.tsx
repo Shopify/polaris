@@ -1,9 +1,36 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Popover} from '../Popover';
+import {PopoverOverlay} from '../components';
+import * as setActivatorAttributes from '../set-activator-attributes';
 
 describe('<Popover />', () => {
   const spy = jest.fn();
+  let setActivatorAttributesSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    setActivatorAttributesSpy = jest.spyOn(
+      setActivatorAttributes,
+      'setActivatorAttributes',
+    );
+  });
+
+  afterEach(() => {
+    setActivatorAttributesSpy.mockRestore();
+  });
+
+  it('invokes setActivatorAttributes with active, ariaHasPopup and id', () => {
+    mountWithAppProvider(
+      <Popover active={false} activator={<div>Activator</div>} onClose={spy} />,
+    );
+
+    expect(setActivatorAttributesSpy).toHaveBeenLastCalledWith(
+      expect.any(Object),
+      {active: false, ariaHaspopup: undefined, id: 'Polarispopover1'},
+    );
+  });
 
   it('renders a portal', () => {
     const popover = mountWithAppProvider(
@@ -77,8 +104,7 @@ describe('<Popover />', () => {
         onClose={spy}
       />,
     );
-    const activatorWrapper = findByTestID(popover, 'wrapper-component');
-    expect(activatorWrapper.type()).toBe('div');
+    expect(popover.childAt(0).type()).toBe('div');
   });
 
   it('has a span as activatorWrapper when activatorWrapper prop is set to span', () => {
@@ -91,8 +117,7 @@ describe('<Popover />', () => {
         onClose={spy}
       />,
     );
-    const activatorWrapper = findByTestID(popover, 'wrapper-component');
-    expect(activatorWrapper.type()).toBe('span');
+    expect(popover.childAt(0).type()).toBe('span');
   });
 
   it('passes preventAutofocus to PopoverOverlay', () => {
@@ -134,6 +159,19 @@ describe('<Popover />', () => {
     expect(popoverOverlay.prop('fullWidth')).toBe(true);
   });
 
+  it('passes fluidContent to PopoverOverlay', () => {
+    const popover = mountWithAppProvider(
+      <Popover
+        active
+        fluidContent
+        activator={<div>Activator</div>}
+        onClose={spy}
+      />,
+    );
+    const popoverOverlay = findByTestID(popover, 'popoverOverlay');
+    expect(popoverOverlay.prop('fluidContent')).toBe(true);
+  });
+
   it('calls onClose when you click outside the Popover', () => {
     mountWithAppProvider(
       <Popover
@@ -149,25 +187,16 @@ describe('<Popover />', () => {
   });
 
   it('does not call onClose when Popover is opening and trigger was not the activator', () => {
-    class PopoverWithDisconnectedActivator extends React.Component {
-      state = {
-        active: false,
-      };
+    function PopoverWithDisconnectedActivator() {
+      const [active, setActive] = useState(false);
+      const handleActivatorClick = useCallback(() => setActive(true), []);
 
-      handleActivatorClick = () => this.setState({active: true});
-
-      render() {
-        return (
-          <React.Fragment>
-            <button onClick={this.handleActivatorClick}>Activator</button>
-            <Popover
-              active={this.state.active}
-              activator={<div />}
-              onClose={onCloseSpy}
-            />
-          </React.Fragment>
-        );
-      }
+      return (
+        <React.Fragment>
+          <button onClick={handleActivatorClick}>Activator</button>
+          <Popover active={active} activator={<div />} onClose={onCloseSpy} />
+        </React.Fragment>
+      );
     }
 
     const onCloseSpy = jest.fn();
@@ -182,4 +211,45 @@ describe('<Popover />', () => {
 
     expect(onCloseSpy).not.toHaveBeenCalled();
   });
+
+  it('focuses the next available element when the popover is closed', () => {
+    const id = 'focus-target';
+    function PopoverTest() {
+      return (
+        <React.Fragment>
+          <div>
+            <Popover active activator={<div />} onClose={noop} />
+          </div>
+          <button id={id} />
+        </React.Fragment>
+      );
+    }
+
+    const popover = mountWithApp(<PopoverTest />);
+
+    popover.find(PopoverOverlay)!.trigger('onClose', 1);
+    const focusTarget = popover.find('button', {id})!.domNode;
+
+    expect(document.activeElement).toBe(focusTarget);
+  });
+
+  it('focuses the activator when another focusable element is not available when the popover is closed', () => {
+    const id = 'activator';
+    function PopoverTest() {
+      return (
+        <React.Fragment>
+          <Popover active activator={<button id={id} />} onClose={noop} />
+        </React.Fragment>
+      );
+    }
+
+    const popover = mountWithApp(<PopoverTest />);
+
+    popover.find(PopoverOverlay)!.trigger('onClose', 1);
+    const focusTarget = popover.find('button', {id})!.domNode;
+
+    expect(document.activeElement).toBe(focusTarget);
+  });
 });
+
+function noop() {}

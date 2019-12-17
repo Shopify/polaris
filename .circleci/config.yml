@@ -32,7 +32,7 @@ jobs:
           paths:
             - node_modules
       - run: yarn run test:percy
-  chromaui:
+  chroma:
     docker:
       - image: circleci/node:10.13.0-browsers
     steps:
@@ -46,7 +46,7 @@ jobs:
           key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
           paths:
             - node_modules
-      - run: npx chroma publish --build-script-name='storybook:build'
+      - run: yarn run chromatic publish --build-script-name='storybook:build'
   a11y:
     docker:
       - image: circleci/node:10.13.0-browsers
@@ -69,5 +69,5 @@ workflows:
     jobs:
       - check
       - percy
-      - chromaui
+      - chroma
       - a11y

@@ -1,12 +1,14 @@
 import React from 'react';
 import {Transition, CSSTransition} from '@material-ui/react-transition-group';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Popover} from 'components';
 import {CheckableButton} from '../../CheckableButton';
 import {BulkActionButton} from '../components';
 import BulkActions, {BulkAction} from '../BulkActions';
 
-export interface Props {
+interface Props {
   bulkActions: BulkAction[];
   promotedActions: BulkAction[];
   paginatedSelectAllText: string;
@@ -16,7 +18,7 @@ export interface Props {
   disabled: boolean;
 }
 
-export type TestValue = BulkAction[] | string | boolean;
+type TestValue = BulkAction[] | string | boolean;
 
 const bulkActionProps: Props = {
   bulkActions: [
@@ -92,9 +94,9 @@ describe('<BulkActions />', () => {
       expect(count).toBe(0);
     });
 
-    it('renders a Popover', () => {
+    it('renders a Popover when smallScreen is true', () => {
       const bulkActionsElement = mountWithAppProvider(
-        <BulkActions {...bulkActionProps} />,
+        <BulkActions {...bulkActionProps} smallScreen />,
       );
       const popover = bulkActionsElement.find(Popover);
       expect(popover).toHaveLength(1);
@@ -120,7 +122,7 @@ describe('<BulkActions />', () => {
         bulkActionsElement
           .find('button')
           .filterWhere((element) => Boolean(element.prop('disabled'))),
-      ).toHaveLength(5);
+      ).toHaveLength(2);
     });
   });
 
@@ -227,7 +229,7 @@ describe('<BulkActions />', () => {
     });
 
     describe('promotedActions', () => {
-      it('renders a BulkActionButton for actions and one for each item in promotedActions', () => {
+      it('renders a BulkActionButton for each item in promotedActions', () => {
         const warnSpy = jest.spyOn(console, 'warn');
         warnSpy.mockImplementation(() => {});
         const bulkActionProps: Props = {
@@ -253,7 +255,7 @@ describe('<BulkActions />', () => {
           <BulkActions {...bulkActionProps} />,
         );
         const bulkActionButtons = bulkActions.find(BulkActionButton);
-        expect(bulkActionButtons).toHaveLength(4);
+        expect(bulkActionButtons).toHaveLength(3);
         warnSpy.mockRestore();
       });
     });
@@ -353,6 +355,47 @@ describe('<BulkActions />', () => {
         findByTestID(bulkActions, 'paginated-action').simulate('click');
         expect(spy).toHaveBeenCalled();
       });
+    });
+
+    describe('smallScreen', () => {
+      it('renders only the large screen bulkactions if smallScreen is false', () => {
+        const bulkActions = mountWithAppProvider(
+          <BulkActions {...bulkActionProps} selectMode />,
+        );
+        const smallGroup = findByTestID(bulkActions, 'smallGroup');
+        const largeGroup = findByTestID(bulkActions, 'largeGroup');
+
+        expect(smallGroup.exists()).toBe(false);
+        expect(largeGroup.exists()).toBe(true);
+      });
+
+      it('renders only the small screen bulkactions if smallScreen is true', () => {
+        const bulkActions = mountWithAppProvider(
+          <BulkActions {...bulkActionProps} selectMode smallScreen />,
+        );
+        const smallGroup = findByTestID(bulkActions, 'smallGroup');
+        const largeGroup = findByTestID(bulkActions, 'largeGroup');
+
+        expect(smallGroup.exists()).toBe(true);
+        expect(largeGroup.exists()).toBe(false);
+      });
+    });
+  });
+
+  describe('buttongroup', () => {
+    // Since we need to break our component model and reach into ButtonGroup to access the CheckableButton
+    // and ensure only the first element flex grows, we add this test to ensure the mark-up does not change
+    it('has the mark-up structure to target the CheckableButton', () => {
+      const bulkActions = mountWithApp(
+        <BulkActions {...bulkActionProps} selectMode smallScreen />,
+      );
+
+      const checkableButton = bulkActions!
+        .find('div', {
+          className: 'ButtonGroupWrapper',
+        })!
+        .domNode!.querySelector('div > div.Item:first-child');
+      expect(checkableButton).not.toBeNull();
     });
   });
 });

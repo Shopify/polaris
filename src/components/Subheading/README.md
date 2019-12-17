@@ -40,7 +40,7 @@ Subheadings should:
 
 ## Content guidelines
 
-Subheadings should follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings).
+Subheadings should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
 
 ---
 

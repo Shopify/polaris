@@ -2,8 +2,8 @@
 
 .Card {
   overflow: hidden;
-  background-color: color('white');
-  box-shadow: shadow();
+  background-color: var(--p-surface, color('white'));
+  box-shadow: var(--p-card-shadow, shadow());
 
   + .Card {
     margin-top: spacing(loose);
@@ -19,7 +19,7 @@
 }
 
 .subdued {
-  background-color: color('sky', 'lighter');
+  background-color: var(--p-surface-subdued, color('sky', 'lighter'));
 }
 
 .Header {
@@ -43,11 +43,15 @@
 }
 
 .Section-fullWidth {
-  padding: spacing(loose) spacing(none);
+  padding: spacing() spacing(none);
+
+  @include page-content-when-not-fully-condensed {
+    padding: spacing(loose) spacing(none);
+  }
 }
 
 .Section-subdued {
-  background-color: color('sky', 'lighter');
+  background-color: var(--p-surface-subdued, color('sky', 'lighter'));
 
   @media (-ms-high-contrast: active) {
     background-color: transparent;
@@ -83,11 +87,15 @@
 
 .Footer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   padding: 0 spacing() spacing();
 
   @include page-content-when-not-fully-condensed {
     padding: 0 spacing(loose) spacing(loose);
+  }
+
+  &.LeftJustified {
+    justify-content: flex-start;
   }
 
   .Section-subdued + & {

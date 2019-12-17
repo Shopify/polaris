@@ -1,6 +1,7 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
+// eslint-disable-next-line no-restricted-imports
+import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {RadioButton, Checkbox, InlineError, errorTextID} from 'components';
 import {ChoiceList, ChoiceDescriptor} from '../ChoiceList';
 
@@ -29,6 +30,23 @@ describe('<ChoiceList />', () => {
       );
       expect(element.find('legend').text()).toBe('My title');
     });
+
+    it('renders a legend containing JSX for the fieldset', () => {
+      const TitleComponent = () => (
+        <React.Fragment>
+          JSX <b>title</b>
+        </React.Fragment>
+      );
+
+      const element = mountWithApp(
+        <ChoiceList
+          title={<TitleComponent />}
+          selected={[]}
+          choices={choices}
+        />,
+      );
+      expect(element.find('legend')).toContainReactComponent(TitleComponent);
+    });
   });
 
   describe('choices', () => {
@@ -36,6 +54,31 @@ describe('<ChoiceList />', () => {
       choices = [
         choices[0],
         choices[1],
+        {...choices[2], helpText: 'Some help text'},
+      ];
+
+      const choiceElements = mountWithAppProvider(
+        <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
+      ).find(RadioButton);
+
+      choiceElements.forEach((choiceElement, index) => {
+        expect(choiceElement.prop('label')).toBe(choices[index].label);
+        expect(choiceElement.prop('value')).toBe(choices[index].value);
+        expect(choiceElement.prop('helpText')).toBe(choices[index].helpText);
+      });
+    });
+
+    it('renders choices with labels containing JSX', () => {
+      const jsxLabel = <b>Two</b>;
+      const ComponentLabel = () => (
+        <React.Fragment>
+          Label <i>one</i>
+        </React.Fragment>
+      );
+
+      choices = [
+        {label: <ComponentLabel />, value: 'one'},
+        {label: jsxLabel, value: 'two'},
         {...choices[2], helpText: 'Some help text'},
       ];
 
@@ -285,7 +328,7 @@ describe('<ChoiceList />', () => {
       choiceList.setProps({selected});
     });
 
-    function changeCheckedForChoice(choice: ReactWrapper<any, any>) {
+    function changeCheckedForChoice(choice: ReactWrapper) {
       choice.simulate('click');
     }
   });

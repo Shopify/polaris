@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {
   EventListener,
@@ -91,22 +92,10 @@ describe('<TrapFocus />', () => {
       .find('button')
       .getDOMNode();
 
-    it('prevents default when focus moves to an external node', () => {
-      const trapFocus = mountWithAppProvider(
-        <TrapFocus>
-          <TextField label="" value="" onChange={noop} autoFocus />
-        </TrapFocus>,
-      );
-
-      const event: FocusEvent = new FocusEvent('focusout', {
-        relatedTarget: externalDomNode,
-      });
-      Object.assign(event, {preventDefault: jest.fn()});
-
-      trigger(trapFocus.find(EventListener), 'handler', event);
-
-      expect(event.preventDefault).toHaveBeenCalled();
+    const event: FocusEvent = new FocusEvent('focusout', {
+      relatedTarget: externalDomNode,
     });
+    Object.assign(event, {preventDefault: jest.fn()});
 
     it('allows default when trapping is false', () => {
       const trapFocus = mountWithAppProvider(

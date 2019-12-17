@@ -55,7 +55,7 @@ export function translate(
     return text.replace(REPLACE_REGEX, (match: string) => {
       const replacement: string = match.substring(1, match.length - 1);
 
-      if (!replacements.hasOwnProperty(replacement)) {
+      if (!Object.prototype.hasOwnProperty.call(replacements, replacement)) {
         throw new Error(
           `No replacement found for key '${replacement}'. The following replacements were passed: ${Object.keys(
             replacements,

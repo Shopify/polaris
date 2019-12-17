@@ -7,6 +7,7 @@ import {DisableableAction, Action, ActionListSection} from '../../../../types';
 import {ActionList} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
+import {ButtonGroup} from '../../../ButtonGroup';
 import {EventListener} from '../../../EventListener';
 import {
   withAppProvider,
@@ -27,6 +28,8 @@ const MAX_PROMOTED_ACTIONS = 2;
 export interface BulkActionsProps {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** Whether to render the small screen BulkActions or not */
+  smallScreen?: boolean;
   /** Label for the bulk actions */
   label?: string;
   /** State of the bulk actions checkbox */
@@ -106,7 +109,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     {trailing: true},
   );
 
-  private get numberOfPromotedActionsToRender(): number {
+  private numberOfPromotedActionsToRender(): number {
     const {promotedActions} = this.props;
     const {containerWidth, measuring} = this.state;
 
@@ -138,7 +141,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     return counter;
   }
 
-  private get hasActions() {
+  private hasActions() {
     const {promotedActions, actions} = this.props;
     return Boolean(
       (promotedActions && promotedActions.length > 0) ||
@@ -146,7 +149,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  private get actionSections(): BulkActionListSection[] | undefined {
+  private actionSections(): BulkActionListSection[] | undefined {
     const {actions} = this.props;
 
     if (!actions || actions.length === 0) {
@@ -166,6 +169,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   componentDidMount() {
     const {actions, promotedActions} = this.props;
 
@@ -186,6 +190,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   render() {
     const {
       selectMode,
@@ -193,12 +198,15 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
       label = '',
       onToggleAll,
       selected,
+      smallScreen,
       disabled,
       promotedActions,
       paginatedSelectAllText = null,
       paginatedSelectAllAction,
       polaris: {intl},
     } = this.props;
+
+    const actionSections = this.actionSections();
 
     if (promotedActions && promotedActions.length > MAX_PROMOTED_ACTIONS) {
       // eslint-disable-next-line no-console
@@ -243,26 +251,19 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
         </div>
       ) : null;
 
-    const cancelButtonClassName = classNames(
-      styles.Button,
-      styles['Button-cancel'],
-      disabled && styles.disabled,
-    );
     const cancelButton = (
-      <button
-        className={cancelButtonClassName}
+      <Button
         onClick={this.setSelectMode.bind(this, false)}
         testID="btn-cancel"
         disabled={disabled}
       >
         {intl.translate('Polaris.Common.cancel')}
-      </button>
+      </Button>
     );
 
-    const numberOfPromotedActionsToRender = this
-      .numberOfPromotedActionsToRender;
+    const numberOfPromotedActionsToRender = this.numberOfPromotedActionsToRender();
 
-    const allActionsPopover = this.hasActions ? (
+    const allActionsPopover = this.hasActions() ? (
       <div className={styles.Popover} ref={this.setMoreActionsNode}>
         <Popover
           active={smallScreenPopoverVisible}
@@ -280,7 +281,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
         >
           <ActionList
             items={promotedActions}
-            sections={this.actionSections}
+            sections={actionSections}
             onActionAnyItem={this.toggleSmallScreenPopover}
           />
         </Popover>
@@ -319,19 +320,16 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
 
     let combinedActions: ActionListSection[] = [];
 
-    if (this.actionSections && rolledInPromotedActions.length > 0) {
-      combinedActions = [
-        {items: rolledInPromotedActions},
-        ...this.actionSections,
-      ];
-    } else if (this.actionSections) {
-      combinedActions = this.actionSections;
+    if (actionSections && rolledInPromotedActions.length > 0) {
+      combinedActions = [{items: rolledInPromotedActions}, ...actionSections];
+    } else if (actionSections) {
+      combinedActions = actionSections;
     } else if (rolledInPromotedActions.length > 0) {
       combinedActions = [{items: rolledInPromotedActions}];
     }
 
     const actionsPopover =
-      this.actionSections || rolledInPromotedActions.length > 0 || measuring ? (
+      actionSections || rolledInPromotedActions.length > 0 || measuring ? (
         <div className={styles.Popover} ref={this.setMoreActionsNode}>
           <Popover
             active={largeScreenPopoverVisible}
@@ -363,11 +361,12 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
       disabled,
     };
 
-    const smallScreenGroup = (
+    const smallScreenGroup = smallScreen ? (
       <Transition
         timeout={0}
         in={selectMode}
         key="smallGroup"
+        testID="smallGroup"
         findDOMNode={this.findSmallScreenGroupNode}
       >
         {(status: TransitionStatus) => {
@@ -381,37 +380,51 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
               className={smallScreenGroupClassName}
               ref={this.smallScreenGroupNode}
             >
-              <div className={styles.ButtonGroup}>
-                <CSSTransition
-                  findDOMNode={this.findCheckableWrapperNode}
-                  in={selectMode}
-                  timeout={durationBase}
-                  classNames={slideClasses}
-                  appear
-                >
-                  <div
-                    className={styles.CheckableContainer}
-                    ref={this.checkableWrapperNode}
+              <div className={styles.ButtonGroupWrapper}>
+                <ButtonGroup segmented>
+                  <CSSTransition
+                    findDOMNode={this.findCheckableWrapperNode}
+                    in={selectMode}
+                    timeout={durationBase}
+                    classNames={slideClasses}
+                    appear={!selectMode}
                   >
-                    <CheckableButton {...checkableButtonProps} />
-                  </div>
-                </CSSTransition>
-                {allActionsPopover}
-                {cancelButton}
+                    <div
+                      className={styles.CheckableContainer}
+                      ref={this.checkableWrapperNode}
+                    >
+                      <CheckableButton {...checkableButtonProps} smallScreen />
+                    </div>
+                  </CSSTransition>
+                  {allActionsPopover}
+                  {cancelButton}
+                </ButtonGroup>
               </div>
               {paginatedSelectAllMarkup}
             </div>
           );
         }}
       </Transition>
-    );
+    ) : null;
 
-    const largeScreenGroup = (
+    const largeGroupContent =
+      promotedActionsMarkup || actionsPopover ? (
+        <ButtonGroup segmented>
+          <CheckableButton {...checkableButtonProps} />
+          {promotedActionsMarkup}
+          {actionsPopover}
+        </ButtonGroup>
+      ) : (
+        <CheckableButton {...checkableButtonProps} />
+      );
+
+    const largeScreenGroup = smallScreen ? null : (
       <Transition
         timeout={0}
         in={selectMode}
         key="largeGroup"
         findDOMNode={this.findLargeScreenGroupNode}
+        testID="largeGroup"
       >
         {(status: TransitionStatus) => {
           const largeScreenGroupClassName = classNames(
@@ -427,12 +440,10 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
             >
               <EventListener event="resize" handler={this.handleResize} />
               <div
-                className={styles.ButtonGroup}
+                className={styles.ButtonGroupWrapper}
                 ref={this.setLargeScreenButtonsNode}
               >
-                <CheckableButton {...checkableButtonProps} />
-                {promotedActionsMarkup}
-                {actionsPopover}
+                {largeGroupContent}
               </div>
               {paginatedSelectAllMarkup}
             </div>

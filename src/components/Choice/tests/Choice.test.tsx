@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {InlineError} from 'components';
 import {Choice} from '../Choice';
@@ -82,8 +83,8 @@ describe('<Choice />', () => {
       <Choice id="MyChoice" label="Label" />,
     );
     const label = element.find('label');
-    for (let i = 0; i < blockLevelElements.length; i++) {
-      expect(label.find(blockLevelElements[i])).toHaveLength(0);
+    for (const blockLevelElement of blockLevelElements) {
+      expect(label.find(blockLevelElement)).toHaveLength(0);
     }
   });
 });

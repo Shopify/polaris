@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {classNames} from '../../utilities/css';
+import {WithinContentContext} from '../../utilities/within-content-context';
 
 import {Action} from '../../types';
 import {Image} from '../Image';
@@ -13,11 +14,13 @@ import styles from './EmptyState.scss';
 export interface EmptyStateProps {
   /** The empty state heading */
   heading?: string;
-  /** The image to use for small screens */
+  /** The path to the image to display */
   image: string;
-  /** The image to use for large screens */
+  /** The path to the image to display on large screens */
   largeImage?: string;
-  /** The image to use for large screens */
+  /**
+   * Whether or not to limit the image to the size of its container on large screens.
+   */
   imageContained?: boolean;
   /** Elements to display inside empty state */
   children?: React.ReactNode;
@@ -29,105 +32,101 @@ export interface EmptyStateProps {
   footerContent?: React.ReactNode;
 }
 
-export class EmptyState extends React.PureComponent<EmptyStateProps, never> {
-  render() {
-    const {
-      children,
-      heading,
-      image,
-      largeImage,
-      imageContained,
-      action,
-      secondaryAction,
-      footerContent,
-    } = this.props;
+export function EmptyState({
+  children,
+  heading,
+  image,
+  largeImage,
+  imageContained,
+  action,
+  secondaryAction,
+  footerContent,
+}: EmptyStateProps) {
+  const withinContentContainer = useContext(WithinContentContext);
+  const className = classNames(
+    styles.EmptyState,
+    imageContained && styles.imageContained,
+    withinContentContainer ? styles.withinContentContainer : styles.withinPage,
+  );
 
-    const className = classNames(
-      styles.EmptyState,
-      imageContained && styles.imageContained,
-    );
+  const imageMarkup = largeImage ? (
+    <Image
+      alt=""
+      role="presentation"
+      className={styles.Image}
+      source={largeImage}
+      sourceSet={[
+        {source: image, descriptor: '568w'},
+        {source: largeImage, descriptor: '1136w'},
+      ]}
+      sizes="(max-width: 568px) 60vw"
+    />
+  ) : (
+    <Image role="presentation" alt="" className={styles.Image} source={image} />
+  );
 
-    const imageMarkup = largeImage ? (
-      <Image
-        alt=""
-        role="presentation"
-        className={styles.Image}
-        source={largeImage}
-        sourceSet={[
-          {source: image, descriptor: '568w'},
-          {source: largeImage, descriptor: '1136w'},
-        ]}
-        sizes="(max-width: 568px) 60vw"
-      />
+  const secondaryActionMarkup = secondaryAction
+    ? buttonFrom(secondaryAction, {plain: true})
+    : null;
+
+  const footerContentMarkup = footerContent ? (
+    <div className={styles.FooterContent}>
+      <TextContainer>{footerContent}</TextContainer>
+    </div>
+  ) : null;
+
+  const headingSize = withinContentContainer ? 'small' : 'medium';
+  const primaryActionSize = withinContentContainer ? 'medium' : 'large';
+
+  const primaryActionMarkup = action
+    ? buttonFrom(action, {primary: true, size: primaryActionSize})
+    : null;
+
+  const headingMarkup = heading ? (
+    <DisplayText size={headingSize}>{heading}</DisplayText>
+  ) : null;
+
+  const childrenMarkup = children ? (
+    <div className={styles.Content}>{children}</div>
+  ) : null;
+
+  const textContentMarkup =
+    headingMarkup || children ? (
+      <TextContainer>
+        {headingMarkup}
+        {childrenMarkup}
+      </TextContainer>
+    ) : null;
+
+  const actionsMarkup =
+    primaryActionMarkup || secondaryActionMarkup ? (
+      <div className={styles.Actions}>
+        <Stack alignment="center">
+          {primaryActionMarkup}
+          {secondaryActionMarkup}
+        </Stack>
+      </div>
+    ) : null;
+
+  const detailsMarkup =
+    textContentMarkup || actionsMarkup || footerContentMarkup ? (
+      <div className={styles.DetailsContainer}>
+        <div className={styles.Details}>
+          {textContentMarkup}
+          {actionsMarkup}
+          {footerContentMarkup}
+        </div>
+      </div>
     ) : (
-      <Image
-        role="presentation"
-        alt=""
-        className={styles.Image}
-        source={image}
-      />
+      <div className={styles.DetailsContainer} />
     );
 
-    const secondaryActionMarkup = secondaryAction
-      ? buttonFrom(secondaryAction, {plain: true})
-      : null;
-
-    const footerContentMarkup = footerContent ? (
-      <div className={styles.FooterContent}>
-        <TextContainer>{footerContent}</TextContainer>
+  return (
+    <div className={className}>
+      <div className={styles.Section}>
+        {detailsMarkup}
+        <div className={styles.ImageContainer}>{imageMarkup}</div>
       </div>
-    ) : null;
-
-    const primaryActionMarkup = action
-      ? buttonFrom(action, {primary: true, size: 'large'})
-      : null;
-
-    const headingMarkup = heading ? (
-      <DisplayText size="medium">{heading}</DisplayText>
-    ) : null;
-
-    const childrenMarkup = children ? (
-      <div className={styles.Content}>{children}</div>
-    ) : null;
-
-    const textContentMarkup =
-      headingMarkup || children ? (
-        <TextContainer>
-          {headingMarkup}
-          {childrenMarkup}
-        </TextContainer>
-      ) : null;
-
-    const actionsMarkup =
-      primaryActionMarkup || secondaryActionMarkup ? (
-        <div className={styles.Actions}>
-          <Stack alignment="center">
-            {primaryActionMarkup}
-            {secondaryActionMarkup}
-          </Stack>
-        </div>
-      ) : null;
-
-    const detailsMarkup =
-      textContentMarkup || actionsMarkup || footerContentMarkup ? (
-        <div className={styles.DetailsContainer}>
-          <div className={styles.Details}>
-            {textContentMarkup}
-            {actionsMarkup}
-            {footerContentMarkup}
-          </div>
-        </div>
-      ) : (
-        <div className={styles.DetailsContainer} />
-      );
-
-    return (
-      <div className={className}>
-        <div className={styles.Section}>
-          {detailsMarkup}
-          <div className={styles.ImageContainer}>{imageMarkup}</div>
-        </div>
-      </div>
-    );
-  }
+    </div>
+  );
 }

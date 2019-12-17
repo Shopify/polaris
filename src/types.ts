@@ -56,8 +56,8 @@ export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 
 export type Error =
   | string
-  | React.ReactElement<any>
-  | (string | React.ReactElement<any>)[];
+  | React.ReactElement
+  | (string | React.ReactElement)[];
 
 export interface BaseAction {
   /** A unique identifier for the action */
@@ -72,6 +72,10 @@ export interface BaseAction {
   external?: boolean;
   /** Callback when an action takes place */
   onAction?(): void;
+  /** Callback when mouse enter */
+  onMouseEnter?(): void;
+  /** Callback when element is touched */
+  onTouchStart?(): void;
 }
 
 export interface Action extends BaseAction {}
@@ -294,8 +298,8 @@ export interface GeneralObject {
 }
 
 export type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends Array<infer U>
-    ? Array<DeepPartial<U>>
+  [P in keyof T]?: T[P] extends (infer U)[]
+    ? DeepPartial<U>[]
     : T[P] extends ReadonlyArray<infer U>
     ? ReadonlyArray<DeepPartial<U>>
     : DeepPartial<T[P]>;
@@ -308,3 +312,7 @@ export type EffectCallback = () => void | (() => void | undefined);
 export type DependencyList = ReadonlyArray<unknown>;
 
 export type Comparator = (a: DependencyList, b: DependencyList) => boolean;
+
+export interface CheckboxHandles {
+  focus(): void;
+}

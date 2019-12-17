@@ -5,16 +5,16 @@
 @mixin recolor-icon($fill-color, $secondary-color: null, $filter-color: null) {
   svg {
     fill: $fill-color;
-  }
 
-  @if $filter-color != null {
-    img {
-      filter: $filter-color;
+    @if $secondary-color {
+      color: $secondary-color;
     }
   }
 
-  @if $secondary-color != null {
-    color: $secondary-color;
+  @if $filter-color {
+    img {
+      filter: $filter-color;
+    }
   }
 }
 

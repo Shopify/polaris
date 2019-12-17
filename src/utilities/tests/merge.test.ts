@@ -6,6 +6,7 @@ describe('merge', () => {
   });
 
   it('does not merge prototypes', () => {
+    // eslint-disable-next-line @typescript-eslint/no-extraneous-class
     class Obj {}
     (Obj.prototype as any).prototypeVal = 'val';
     expect(merge(new Obj(), {})).toStrictEqual({});
@@ -19,12 +20,40 @@ describe('merge', () => {
     expect(merge(objA, objB, objC)).toStrictEqual(expectedObject);
   });
 
+  it('does not mutate deeply nested objects', () => {
+    const objA = {
+      keyA: {nestedA: {nestedB: {nestedC: {}, nestedD: [{nestedE: {}}, []]}}},
+    };
+    const objB = {keyA: {nestedA: {nestedB: {nestedD: {}}}}};
+    const objC = {keyA: {nestedA: {nestedB: {nestedE: [[], {nestedD: {}}]}}}};
+    merge(objA, objB, objC);
+    expect(objA).toStrictEqual({
+      keyA: {nestedA: {nestedB: {nestedC: {}, nestedD: [{nestedE: {}}, []]}}},
+    });
+    expect(objB).toStrictEqual({keyA: {nestedA: {nestedB: {nestedD: {}}}}});
+    expect(objC).toStrictEqual({
+      keyA: {nestedA: {nestedB: {nestedE: [[], {nestedD: {}}]}}},
+    });
+  });
+
   it('does not mutate the provided arguments', () => {
-    const objA = {keyA: 1};
-    const objB = {keyB: 2};
+    const objA = {keyA: {nestedA: 1}};
+    const objB = {keyA: {nestedA: 2}};
     const mergedObject = merge(objA, objB);
     expect(mergedObject).not.toBe(objA);
     expect(mergedObject).not.toBe(objB);
+    expect(objA).toStrictEqual({keyA: {nestedA: 1}});
+    expect(objB).toStrictEqual({keyA: {nestedA: 2}});
+  });
+
+  it('does not mutate arrays in the provided arguments', () => {
+    const objA = {keyA: [{nestedA: 1}]};
+    const objB = {keyA: [{nestedA: 2}]};
+    const mergedObject = merge(objA, objB);
+    expect(mergedObject).not.toBe(objA);
+    expect(mergedObject).not.toBe(objB);
+    expect(objA).toStrictEqual({keyA: [{nestedA: 1}]});
+    expect(objB).toStrictEqual({keyA: [{nestedA: 2}]});
   });
 
   it('merges complex objects', () => {

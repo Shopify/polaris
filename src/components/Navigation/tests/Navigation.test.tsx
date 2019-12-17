@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Navigation} from '../Navigation';
 import {NavigationContext} from '../context';
@@ -12,11 +13,10 @@ describe('<Navigation />', () => {
 
   describe('context', () => {
     it('passes location context', () => {
-      const Child: React.SFC<{}> = (_props) => {
+      const Child: React.SFC = (_props) => {
         return (
           <NavigationContext.Consumer>
             {({location}) => {
-              // eslint-disable-next-line shopify/jest/no-if
               return location ? <div /> : null;
             }}
           </NavigationContext.Consumer>
@@ -40,11 +40,10 @@ describe('<Navigation />', () => {
     });
 
     it('has a child with contentContext', () => {
-      const Child: React.SFC<{}> = (_props) => {
+      const Child: React.SFC = (_props) => {
         return (
           <WithinContentContext.Consumer>
             {(withinContentContainer) => {
-              // eslint-disable-next-line shopify/jest/no-if
               return withinContentContainer ? <div /> : null;
             }}
           </WithinContentContext.Consumer>

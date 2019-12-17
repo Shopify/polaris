@@ -7,6 +7,7 @@ import {
   Badge,
   Avatar,
 } from 'components';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {LinkAction} from '../../../../../types';
 import {HeaderPrimaryAction} from '../../../types';

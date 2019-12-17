@@ -70,7 +70,7 @@ Empty state titles should:
 
 <!-- end -->
 
-- Follow the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings)
+- Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings)
 
 ### Subtitle
 
@@ -197,6 +197,29 @@ Use to provide additional but non-critical context for a new product or feature.
 </EmptyState>
 ```
 
+### Empty state within a content context
+
+<!-- example-for: web -->
+
+Use to explain a section or feature before merchants have used it within the context of a content container like a card or a resource list.
+
+```jsx
+<Card>
+  <Card.Section>
+    <EmptyState
+      heading="Upload a file to get started"
+      action={{content: 'Upload files'}}
+      image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+    >
+      <p>
+        You can use the Files section to upload images, videos, and other
+        documents
+      </p>
+    </EmptyState>
+  </Card.Section>
+</Card>
+```
+
 ---
 
 ## Related components
@@ -204,3 +227,31 @@ Use to provide additional but non-critical context for a new product or feature.
 - To learn more about illustrations for empty states, [read the illustration guidelines](https://polaris.shopify.com/design/illustrations)
 - To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
 - To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/structure/callout-card)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+Empty state illustrations are implemented as decorative images, so they use an empty `alt` attribute and are skipped by technologies like screen readers.
+
+<!-- /content-for -->

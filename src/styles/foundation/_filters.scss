@@ -30,7 +30,6 @@ $color-filter-palette-data: $polaris-color-filters;
     @return $fetched-color;
   } @else {
     // stylelint-disable string-no-newline
-    // prettier-ignore
     $error: "
 Filter `#{$hue}, #{$value}` not found. Make sure arguments are strings.
 GOOD: filter('yellow')

@@ -1,6 +1,10 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+// eslint-disable-next-line no-restricted-imports
+import {
+  mountWithAppProvider,
+  findByTestID,
+  ReactWrapper,
+} from 'test-utilities/legacy';
 import {Tooltip, TextField} from 'components';
 import {Key} from '../../../types';
 import {Pagination} from '../Pagination';
@@ -160,7 +164,7 @@ describe('<Pagination />', () => {
 
   describe('nextURL/previousURL', () => {
     let getElementById: jest.SpyInstance;
-    let pagination: ReactWrapper<any, any>;
+    let pagination: ReactWrapper;
 
     beforeEach(() => {
       getElementById = jest.spyOn(document, 'getElementById');
@@ -217,7 +221,7 @@ describe('<Pagination />', () => {
 function noop() {}
 
 function focusElement(
-  wrapper: ReactWrapper<any, any>,
+  wrapper: ReactWrapper,
   element: 'input' | 'textarea' | 'select',
 ) {
   const inputElement = wrapper

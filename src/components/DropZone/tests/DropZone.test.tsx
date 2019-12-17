@@ -1,10 +1,11 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
+import {act} from 'react-dom/test-utils';
 import {clock} from '@shopify/jest-dom-mocks';
 import {Label, Labelled, DisplayText, Caption} from 'components';
-import {mountWithAppProvider} from 'test-utilities/legacy';
+// eslint-disable-next-line no-restricted-imports
+import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
-import DropZone from '../DropZone';
+import {DropZone} from '../DropZone';
 import {DropZoneContext} from '../context';
 
 const files = [
@@ -71,7 +72,9 @@ describe('<DropZone />', () => {
   it('calls the onDrop callback with files when a drop event is fired on document', () => {
     mountWithAppProvider(<DropZone dropOnPage onDrop={spy} />);
     const event = createEvent('drop', files);
-    document.dispatchEvent(event);
+    act(() => {
+      document.dispatchEvent(event);
+    });
     expect(spy).toHaveBeenCalledWith(files, files, []);
   });
 
@@ -360,7 +363,6 @@ describe('<DropZone />', () => {
           <DropZone type="image">
             <DropZoneContext.Consumer>
               {(ctx) => {
-                // eslint-disable-next-line shopify/jest/no-if
                 return type === ctx.type ? <div /> : null;
               }}
             </DropZoneContext.Consumer>
@@ -470,6 +472,9 @@ function setBoundingClientRect(size: keyof typeof widths) {
         left: 0,
         bottom: 0,
         right: 0,
+        x: 0,
+        y: 0,
+        toJSON() {},
       };
     });
 }
@@ -480,22 +485,26 @@ function fireEvent({
   testFiles = files,
   spy,
 }: {
-  element: ReactWrapper<any, any>;
+  element: ReactWrapper;
   eventType?: string;
   spy?: jest.Mock;
-  testFiles?: Array<Object>;
+  testFiles?: object[];
 }) {
-  if (spy) {
-    spy.mockReset();
-  }
-  const event = createEvent(eventType, testFiles);
-  element
-    .find('div')
-    .at(3)
-    .getDOMNode()
-    .dispatchEvent(event);
-  if (eventType === 'dragenter') {
-    clock.tick(50);
-  }
+  act(() => {
+    if (spy) {
+      spy.mockReset();
+    }
+    const event = createEvent(eventType, testFiles);
+
+    element
+      .find('div')
+      .at(3)
+      .getDOMNode()
+      .dispatchEvent(event);
+
+    if (eventType === 'dragenter') {
+      clock.tick(50);
+    }
+  });
   element.update();
 }

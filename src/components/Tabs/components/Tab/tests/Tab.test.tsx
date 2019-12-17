@@ -1,6 +1,7 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Tab from '../Tab';
+import {Tab} from '../Tab';
 
 describe('<Tab />', () => {
   it('has the tab role', () => {

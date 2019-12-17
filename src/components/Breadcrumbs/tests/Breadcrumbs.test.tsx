@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {CallbackAction, LinkAction} from '../../../types';
 import {Breadcrumbs} from '../Breadcrumbs';
@@ -19,6 +20,24 @@ describe('<Breadcrumbs />', () => {
 
       expect(breadcrumbs.find('a')).toHaveLength(1);
     });
+
+    it('passes the accessibilityLabel through to <a> tag', () => {
+      const linkBreadcrumbs: LinkAction[] = [
+        {
+          content: 'Products',
+          url: 'https://shopify.com',
+          accessibilityLabel: 'Go to Products',
+        },
+      ];
+
+      const breadcrumbs = mountWithAppProvider(
+        <Breadcrumbs breadcrumbs={linkBreadcrumbs} />,
+      );
+
+      expect(breadcrumbs.find('a').prop('aria-label')).toStrictEqual(
+        'Go to Products',
+      );
+    });
   });
 
   describe('onAction()', () => {
@@ -35,6 +54,24 @@ describe('<Breadcrumbs />', () => {
       );
 
       expect(breadcrumbs.find('button')).toHaveLength(1);
+    });
+
+    it('passes accessibilityLabel through to <button> tag', () => {
+      const callbackBreadcrumbs: CallbackAction[] = [
+        {
+          content: 'Products',
+          onAction: noop,
+          accessibilityLabel: 'Go to Products',
+        },
+      ];
+
+      const breadcrumbs = mountWithAppProvider(
+        <Breadcrumbs breadcrumbs={callbackBreadcrumbs} />,
+      );
+
+      expect(breadcrumbs.find('button').prop('aria-label')).toStrictEqual(
+        'Go to Products',
+      );
     });
 
     it('triggers the callback function when clicked', () => {

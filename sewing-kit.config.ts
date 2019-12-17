@@ -19,9 +19,6 @@ export default function sewingKitConfig(
       plugins.jest((config: InitialOptions) => {
         config.roots = [join(__dirname, 'src'), join(__dirname, 'tests')];
 
-        config.setupFiles.push(join(tests, 'setup.ts'));
-        config.setupFilesAfterEnv = [join(tests, 'each-test.ts')];
-
         // Code coverage
         config.collectCoverageFrom = [
           'src/**/*.{ts,tsx}',

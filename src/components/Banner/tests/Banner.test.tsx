@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {
   CirclePlusMinor,
   CircleAlertMajorTwotone,
@@ -7,12 +7,12 @@ import {
   CircleInformationMajorTwotone,
   FlagMajorTwotone,
 } from '@shopify/polaris-icons';
-import {ReactWrapper} from 'enzyme';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {BannerContext} from 'utilities/banner-context';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
-import {Banner} from '..';
 import {WithinContentContext} from '../../../utilities/within-content-context';
+import {Banner} from '..';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -53,16 +53,12 @@ describe('<Banner />', () => {
   it('disables aria-live when stopAnnouncements is enabled', () => {
     const politeBanner = mountWithAppProvider(<Banner />)
       .find('div')
-      .filterWhere(
-        (element: ReactWrapper) => element.prop('aria-live') === 'polite',
-      );
+      .filterWhere((element) => element.prop('aria-live') === 'polite');
     expect(politeBanner).toBeTruthy();
 
     const quietBanner = mountWithAppProvider(<Banner stopAnnouncements />)
       .find('div')
-      .filterWhere(
-        (element: ReactWrapper) => element.prop('aria-live') === 'off',
-      );
+      .filterWhere((element) => element.prop('aria-live') === 'off');
     expect(quietBanner).toBeTruthy();
   });
 
@@ -132,21 +128,19 @@ describe('<Banner />', () => {
 
   describe('focus', () => {
     it('exposes a function that allows the banner to be programmatically focused', () => {
-      class Test extends React.Component {
-        banner = React.createRef<any>();
+      function Test() {
+        const banner = useRef<Banner>(null);
 
-        componentDidMount() {
-          this.banner.current.focus();
-        }
+        useEffect(() => {
+          banner.current && banner.current.focus();
+        }, []);
 
-        render() {
-          return <Banner ref={this.banner} status="critical" />;
-        }
+        return <Banner ref={banner} status="critical" />;
       }
 
       const div = mountWithAppProvider(<Test />)
         .find('div')
-        .filterWhere((element: ReactWrapper) => element.prop('tabIndex') === 0);
+        .filterWhere((element) => element.prop('tabIndex') === 0);
 
       expect(div.getDOMNode()).toBe(document.activeElement);
     });
@@ -154,11 +148,10 @@ describe('<Banner />', () => {
 
   describe('context', () => {
     it('passes the within banner context', () => {
-      const Child: React.SFC<{}> = (_props) => {
+      const Child: React.SFC = (_props) => {
         return (
           <BannerContext.Consumer>
             {(BannerContext) => {
-              // eslint-disable-next-line shopify/jest/no-if
               return BannerContext ? <div /> : null;
             }}
           </BannerContext.Consumer>

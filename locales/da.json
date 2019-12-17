@@ -1,0 +1,229 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar med initialer {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Indlæser"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Ufuldstændig",
+        "partiallyComplete": "Delvist fuldført",
+        "complete": "Fuldført"
+      },
+      "STATUS_LABELS": {
+        "info": "Info",
+        "success": "Succes",
+        "warning": "Advarsel",
+        "attention": "Bemærk",
+        "new": "Nye"
+      }
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Indlæser"
+    },
+    "Common": {
+      "checkbox": "afkrydsningsfelt",
+      "undo": "Fortryd",
+      "cancel": "Annullér",
+      "newWindowAccessibilityHint": "(åbner et nyt vindue)",
+      "clear": "Ryd",
+      "close": "Luk",
+      "submit": "Indsend",
+      "more": "Mere"
+    },
+    "ContextualSaveBar": {
+      "save": "Gem",
+      "discard": "Fortryd"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "sortér {direction} efter",
+      "navAccessibilityLabel": "Rul tabel én kolonne mod {direction}",
+      "totalsRowHeading": "I alt"
+    },
+    "DatePicker": {
+      "previousMonth": "Vis tidligere måned, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Vis næste måned, {nextMonth} {nextYear}",
+      "today": "I dag ",
+      "months": {
+        "january": "Januar",
+        "february": "Februar",
+        "march": "Marts",
+        "april": "April",
+        "may": "Maj",
+        "june": "Juni",
+        "july": "Juli",
+        "august": "August",
+        "september": "September",
+        "october": "Oktober",
+        "november": "November",
+        "december": "December"
+      },
+      "daysAbbreviated": {
+        "monday": "Ma",
+        "tuesday": "Ti",
+        "wednesday": "On",
+        "thursday": "To",
+        "friday": "Fr",
+        "saturday": "Lø",
+        "sunday": "Sø"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Fortryd alle ændringer, der ikke er gemt",
+      "message": "Hvis du fortryder ændringer, sletter du alle ændringer, du har foretaget, siden du gemte sidste gang.",
+      "primaryAction": "Fortryd ændringer",
+      "secondaryAction": "Fortsæt redigering"
+    },
+    "DropZone": {
+      "overlayTextFile": "Slip fil for at uploade",
+      "overlayTextImage": "Slip billede for at uploade",
+      "errorOverlayTextFile": "Filtype er ikke gyldig",
+      "errorOverlayTextImage": "Billedtype er ikke gyldig",
+      "FileUpload": {
+        "actionTitleFile": "Tilføj fil",
+        "actionTitleImage": "Tilføj billede",
+        "actionHintFile": "eller slip filer for at uploade",
+        "actionHintImage": "eller slip billeder for at uploade",
+        "label": "Upload fil"
+      }
+    },
+    "EmptySearchResult": {
+      "altText": "Tøm søgeresultater"
+    },
+    "Frame": {
+      "skipToContent": "Skip til indhold",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Luk navigation"
+      }
+    },
+    "Icon": {
+      "backdropWarning": "{color}-ikonet accepterer ikke baggrunde. De ikonfarver, der har baggrunde, er: {colorsWithBackDrops}"
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Handlinger"
+      }
+    },
+    "Filters": {
+      "moreFilters": "Flere filtre",
+      "filter": "Filtrer {resourceName}",
+      "noFiltersApplied": "Der blev ikke anvendt nogen filtre",
+      "cancel": "Annuller",
+      "done": "Udført",
+      "clearAllFilters": "Ryd alle filtre",
+      "clear": "Ryd",
+      "clearLabel": "Ryd {filterName}"
+    },
+    "Modal": {
+      "iFrameTitle": "markering af brødtekst",
+      "modalWarning": "Disse krævede egenskaber mangler fra modus: {missingProps}"
+    },
+    "Pagination": {
+      "previous": "Forrige",
+      "next": "Næste",
+      "pagination": "Sidenummerering"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Værdier, der overføres til statusegenskab, må ikke være negative. Angiver {progress} til 0.",
+      "exceedWarningMessage": "Værdier, der overføres til statusegenskab, må ikke overstige 100. Indstiller {progress} til 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Sortér efter",
+      "defaultItemSingular": "vare",
+      "defaultItemPlural": "varer",
+      "showing": "Viser {itemsCount} {resource}",
+      "loading": "Indlæser {resource}",
+      "selected": "{selectedItemsCount} valgt",
+      "allItemsSelected": "Al {itemsLength} + {resourceNamePlural} i din butik er valgt.",
+      "selectAllItems": "Vælg alle {itemsLength} + {resourceNamePlural} i butikken",
+      "emptySearchResultTitle": "Ingen {resourceNamePlural} blev fundet",
+      "emptySearchResultDescription": "Prøv et andet filter eller søgeord",
+      "selectButtonText": "Vælg",
+      "a11yCheckboxDeselectAllSingle": "Fravælg {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Vælg {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Fravælg alle {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Vælg alle {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} vare",
+      "ariaLivePlural": "{itemsLength} varer",
+      "Item": {
+        "actionsDropdownLabel": "Handlinger for {accessibilityLabel}",
+        "actionsDropdown": "Rulleliste med handlinger",
+        "viewItem": "Se detaljer for {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Handlinger",
+        "moreActionsActivatorLabel": "Flere handlinger",
+        "warningMessage": "Sikring af en bedre brugeroplevelse. Der bør maksimalt være {maxPromotedActions} handlinger, der promoveres."
+      },
+      "FilterCreator": {
+        "filterButtonLabel": "Filtrér",
+        "selectFilterKeyPlaceholder": "Vælg et filter ...",
+        "addFilterButtonLabel": "Tilføj filter",
+        "showAllWhere": "Vis alle {resourceNamePlural}, hvor:"
+      },
+      "FilterControl": {
+        "textFieldLabel": "Søg efter {resourceNamePlural}"
+      },
+      "FilterValueSelector": {
+        "selectFilterValuePlaceholder": "Vælg et filter ..."
+      },
+      "DateSelector": {
+        "dateFilterLabel": "Vælg en værdi",
+        "dateValueLabel": "Dato",
+        "dateValueError": "Match ÅÅÅÅ-MM-DD-format",
+        "dateValuePlaceholder": "ÅÅÅÅ-MM-DD",
+        "SelectOptions": {
+          "PastWeek": "i den sidste uge",
+          "PastMonth": "i den sidste måned",
+          "PastQuarter": "i de sidste 3 måneder",
+          "PastYear": "i det sidste år",
+          "ComingWeek": "næste uge",
+          "ComingMonth": "næste måned",
+          "ComingQuarter": "i de næste 3 måneder",
+          "ComingYear": "i det næste år",
+          "OnOrBefore": "på eller før",
+          "OnOrAfter": "på eller efter"
+        },
+        "FilterLabelForValue": {
+          "past_week": "i den sidste uge",
+          "past_month": "i den sidste måned",
+          "past_quarter": "i de sidste 3 måneder",
+          "past_year": "i det sidste år",
+          "coming_week": "næste uge",
+          "coming_month": "næste måned",
+          "coming_quarter": "i de næste 3 måneder",
+          "coming_year": "i det næste år",
+          "on_or_before": "før {date}",
+          "on_or_after": "efter {date}"
+        }
+      },
+      "showingTotalCount": "Viser {itemsCount} af {totalItemsCount} {resource}"
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Indlæser side"
+    },
+    "Spinner": {
+      "warningMessage": "Farven {color} er ikke beregnet til at blive anvendt til {size} spinnere. Tilgængelige farver på store spinnere er: {colors}"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "Flere faner"
+    },
+    "Tag": {
+      "ariaLabel": "Fjern {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} tegn",
+      "characterCountWithMaxLength": "{count} af {limit} benyttede tegn"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Slå menu til/fra",
+      "SearchField": {
+        "clearButtonLabel": "Ryd",
+        "search": "Søg"
+      }
+    }
+  }
+}

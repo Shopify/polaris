@@ -1,5 +1,6 @@
 import React from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Weekday} from '../../Weekday';
 import {Day} from '../../Day';

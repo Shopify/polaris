@@ -1,11 +1,11 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "4.3.0",
+  "version": "4.9.1",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
-  "homepage": "https://github.com/Shopify/polaris-react#readme",
+  "homepage": "https://polaris.shopify.com/components",
   "repository": "https://github.com/Shopify/polaris-react",
   "bugs": {
     "url": "https://github.com/Shopify/polaris-react/issues"
@@ -34,7 +34,9 @@
     "format": "sewing-kit format",
     "type-check": "sewing-kit type-check",
     "test": "sewing-kit test",
-    "test:coverage": "yarn test --coverage",
+    "test:coverage": "CI=true yarn test --coverage",
+    "posttest:coverage": "yarn open:coverage",
+    "open:coverage": "open build/coverage/index.html",
     "test:ci": "yarn test --coverage",
     "check": "npm-run-all lint type-check test",
     "check:ci": "npm-run-all lint type-check test:ci",
@@ -61,7 +63,10 @@
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
     "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static",
-    "splash": "babel-node --extensions '.tsx','.ts' ./scripts/splash/index.tsx"
+    "splash": "babel-node --extensions '.tsx','.ts' ./scripts/splash/index.tsx",
+    "precolordocs": "yarn run build",
+    "colordocs": "node ./scripts/color-system-docs",
+    "postcolordocs": "yarn run format"
   },
   "stylelint": {
     "extends": [
@@ -93,21 +98,22 @@
     "@babel/node": "^7.6.1",
     "@percy/storybook": "^3.2.0",
     "@shopify/jest-dom-mocks": "^2.1.1",
-    "@shopify/react-testing": "^1.7.8",
-    "@shopify/sewing-kit": "^0.92.3",
-    "@storybook/addon-a11y": "^5.2.1",
-    "@storybook/addon-actions": "^5.2.1",
-    "@storybook/addon-backgrounds": "^5.2.1",
+    "@shopify/react-testing": "^1.8.0",
+    "@shopify/sewing-kit": "^0.112.0",
+    "@shopify/shrink-ray": "^1.0.0",
+    "@shopify/splash": "^0.0.8",
+    "@storybook/addon-a11y": "^5.2.4",
+    "@storybook/addon-actions": "^5.2.4",
     "@storybook/addon-console": "^1.2.1",
-    "@storybook/addon-notes": "^5.2.1",
-    "@storybook/addon-viewport": "^5.2.1",
-    "@storybook/react": "^5.2.1",
-    "@storybook/theming": "^5.2.1",
+    "@storybook/addon-contexts": "^5.2.4",
+    "@storybook/addon-notes": "^5.2.4",
+    "@storybook/addon-viewport": "^5.2.4",
+    "@storybook/react": "^5.2.4",
+    "@storybook/theming": "^5.2.4",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/lodash": "^4.14.138",
     "@types/node": "^12.7.5",
-    "archiver": "^3.1.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.0.6",
     "babel-preset-shopify": "^20.1.0",
@@ -155,16 +161,13 @@
     "serve": "^11.1.0",
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
-    "storybook-chroma": "^2.2.2",
+    "storybook-chromatic": "^3.1.0",
     "svgo": "^1.3.0",
-    "typescript": "~3.5.1"
+    "typescript": "~3.7.2"
   },
   "peerDependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
-  },
-  "resolutions": {
-    "typescript-eslint-parser": "npm:@typescript-eslint/parser@1.10.2"
   },
   "files": [
     "esnext",
@@ -190,6 +193,7 @@
     "@types/react-dom": "^16.9.4",
     "@types/react-transition-group": "^2.0.7",
     "hoist-non-react-statics": "^3.3.0",
+    "hsluv": "^0.0.3",
     "lodash": "^4.17.4",
     "tslib": "^1.9.3"
   }

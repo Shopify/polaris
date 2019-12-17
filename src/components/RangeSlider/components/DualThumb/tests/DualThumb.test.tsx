@@ -1,6 +1,10 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+// eslint-disable-next-line no-restricted-imports
+import {
+  mountWithAppProvider,
+  findByTestID,
+  ReactWrapper,
+} from 'test-utilities/legacy';
 import {Key} from 'types';
 import {DualThumb, DualThumbProps} from '../DualThumb';
 
@@ -489,16 +493,7 @@ describe('<DualThumb />', () => {
         });
       getBoundingClientRectSpy = jest
         .spyOn(Element.prototype, 'getBoundingClientRect')
-        .mockImplementation(() => {
-          return {
-            width: 124,
-            height: 0,
-            top: 0,
-            left: -12,
-            bottom: 0,
-            right: 0,
-          };
-        });
+        .mockImplementation(mockGetBoundingClientRect);
     });
 
     afterAll(() => {
@@ -702,16 +697,7 @@ describe('<DualThumb />', () => {
         });
       getBoundingClientRectSpy = jest
         .spyOn(Element.prototype, 'getBoundingClientRect')
-        .mockImplementation(() => {
-          return {
-            width: 124,
-            height: 0,
-            top: 0,
-            left: -12,
-            bottom: 0,
-            right: 0,
-          };
-        });
+        .mockImplementation(mockGetBoundingClientRect);
     });
 
     afterAll(() => {
@@ -1031,14 +1017,30 @@ describe('<DualThumb />', () => {
 
 function noop() {}
 
-function findThumbLower(containerComponent: ReactWrapper): ReactWrapper {
+function findThumbLower(containerComponent: ReactWrapper) {
   return containerComponent.find('button').first();
 }
 
-function findThumbUpper(containerComponent: ReactWrapper): ReactWrapper {
+function findThumbUpper(containerComponent: ReactWrapper) {
   return containerComponent.find('button').last();
 }
 
-function findTrack(containerComponent: ReactWrapper): ReactWrapper {
+function findTrack(containerComponent: ReactWrapper) {
   return findByTestID(containerComponent, 'trackWrapper');
+}
+
+function mockGetBoundingClientRect(): ReturnType<
+  Element['getBoundingClientRect']
+> {
+  return {
+    width: 124,
+    height: 0,
+    top: 0,
+    left: -12,
+    bottom: 0,
+    right: 0,
+    x: 0,
+    y: 0,
+    toJSON() {},
+  };
 }

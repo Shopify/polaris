@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Cell} from '../components';
 import DataTable, {DataTableProps} from '../DataTable';
@@ -154,6 +155,15 @@ describe('<DataTable />', () => {
         );
 
       totalsCells.forEach((total) => expect(total.text()).toBe(''));
+    });
+
+    it('renders totals in the footer with a showTotalsInFooter prop', () => {
+      const totals = ['', '', ''];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} showTotalsInFooter />,
+      );
+
+      expect(dataTable.find('tfoot')).toHaveLength(1);
     });
   });
 

@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Tab, Panel, TabMeasurer} from '../components';
 import Tabs, {TabsProps} from '../Tabs';
@@ -133,7 +134,7 @@ describe('<Tabs />', () => {
 
   describe('selected', () => {
     let getElementById: jest.SpyInstance;
-    let panelStub: {focus: jest.Mock<any>};
+    let panelStub: {focus: jest.Mock};
 
     beforeEach(() => {
       panelStub = {focus: jest.fn()};

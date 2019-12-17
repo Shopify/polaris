@@ -46,7 +46,7 @@ $color-palette-data: map-extend(
     );
   }
 
-  @if $for-background != null {
+  @if $for-background {
     $fetched-color: color-multiply($fetched-color, $for-background);
   }
 
@@ -54,7 +54,6 @@ $color-palette-data: map-extend(
     @return $fetched-color;
   } @else {
     // stylelint-disable string-no-newline
-    // prettier-ignore
     $error: "
 Color `#{$hue}, #{$value}` not found. Make sure arguments are strings.
 GOOD: color('yellow')
@@ -76,7 +75,7 @@ Available options: #{available-names($color-palette-data)}
 /// @return {Color} The modified color.
 
 @function color-multiply($foreground, $background: null) {
-  @if $background == null {
+  @if $background {
     $background: rgb(255, 255, 255);
   }
 
@@ -123,11 +122,10 @@ $ms-high-contrast-color-data: (
 @function ms-high-contrast-color($color) {
   $fetched-color: map-get($ms-high-contrast-color-data, $color);
 
-  @if ($fetched-color) {
+  @if $fetched-color {
     @return $fetched-color;
   } @else {
     // stylelint-disable string-no-newline
-    // prettier-ignore
     $error: "
 Color `#{$color}` not found. Make sure argument is a string.
 GOOD: ms-high-contrast-color('selected-text')

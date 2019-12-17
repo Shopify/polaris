@@ -48,6 +48,8 @@ export interface BaseProps {
   sortOrder?: number;
   /** URL for the resource’s details page (required unless onClick is provided) */
   url?: string;
+  /** Allows url to open in a new tab */
+  external?: boolean;
   /** Callback when clicked (required if url is omitted) */
   onClick?(id?: string): void;
   /** Content for the details area */
@@ -130,6 +132,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
     const {
       children,
       url,
+      external,
       media,
       shortcutActions,
       ariaControls,
@@ -280,6 +283,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
         aria-label={ariaLabel}
         className={styles.Link}
         url={url}
+        external={external}
         tabIndex={tabIndex}
         id={this.overlayId}
       />
@@ -356,7 +360,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       return;
     }
 
-    this.setState({focused: true, focusedInner: true});
+    this.setState({focused: value, focusedInner: value});
     onSelectionChange(value, id, sortOrder, shiftKey);
   };
 

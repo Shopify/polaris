@@ -1,6 +1,7 @@
 import React, {useState, useCallback, useEffect} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {isServer} from '../../utilities/target';
 import {Image} from '../Image';
@@ -16,7 +17,7 @@ enum Status {
   Errored = 'ERRORED',
 }
 
-const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five', 'six'];
+export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'];
 const AVATAR_IMAGES = Object.keys(avatars).map(
   // import/namespace does not allow computed values by default
   // eslint-disable-next-line import/namespace
@@ -50,6 +51,16 @@ export function Avatar({
   accessibilityLabel,
 }: AvatarProps) {
   const i18n = useI18n();
+  const {unstableGlobalTheming = false} = useFeatures();
+
+  function styleClass(name?: string) {
+    const finalStyleClasses = unstableGlobalTheming
+      ? STYLE_CLASSES
+      : [...STYLE_CLASSES, 'six'];
+    return name
+      ? finalStyleClasses[name.charCodeAt(0) % finalStyleClasses.length]
+      : finalStyleClasses[0];
+  }
 
   const [status, setStatus] = useState<Status>(Status.Pending);
 
@@ -138,12 +149,6 @@ export function Avatar({
       {imageMarkUp}
     </span>
   );
-}
-
-function styleClass(name?: string) {
-  return name
-    ? STYLE_CLASSES[name.charCodeAt(0) % STYLE_CLASSES.length]
-    : STYLE_CLASSES[0];
 }
 
 function customerPlaceholder(name?: string) {

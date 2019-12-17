@@ -13,10 +13,6 @@ export interface ConnectedProps {
 }
 
 export function Connected({children, left, right}: ConnectedProps) {
-  if (left == null && right == null) {
-    return <React.Fragment>{children}</React.Fragment>;
-  }
-
   const leftConnectionMarkup = left ? (
     <Item position={ItemPosition.Left}>{left}</Item>
   ) : null;

@@ -1,18 +1,12 @@
 import React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import {useI18n} from './i18n';
-import {useLink} from './link';
-import {useScrollLockManager} from './scroll-lock-manager';
-import {useTheme} from './theme';
 import {useStickyManager} from './sticky-manager';
 import {useMediaQuery} from './media-query';
 
 export interface WithAppProviderProps {
   polaris: {
-    link: ReturnType<typeof useLink>;
-    theme: ReturnType<typeof useTheme>;
     intl: ReturnType<typeof useI18n>;
-    scrollLockManager: ReturnType<typeof useScrollLockManager>;
     stickyManager: ReturnType<typeof useStickyManager>;
     mediaQuery: ReturnType<typeof useMediaQuery>;
   };
@@ -24,10 +18,7 @@ export function withAppProvider<OwnProps>() {
   ) {
     const WithAppProvider: React.FunctionComponent<OwnProps> = (props) => {
       const polaris: WithAppProviderProps['polaris'] = {
-        link: useLink(),
-        theme: useTheme(),
         intl: useI18n(),
-        scrollLockManager: useScrollLockManager(),
         stickyManager: useStickyManager(),
         mediaQuery: useMediaQuery(),
       };

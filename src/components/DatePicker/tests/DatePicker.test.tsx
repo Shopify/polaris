@@ -1,5 +1,6 @@
 import React from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Day, Month, Weekday} from '../components';
 import {DatePicker} from '../DatePicker';

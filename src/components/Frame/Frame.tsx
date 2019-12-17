@@ -52,7 +52,7 @@ interface State {
   skipFocused?: boolean;
   globalRibbonHeight: number;
   loadingStack: number;
-  toastMessages: (ToastPropsWithID)[];
+  toastMessages: ToastPropsWithID[];
   showContextualSaveBar: boolean;
 }
 

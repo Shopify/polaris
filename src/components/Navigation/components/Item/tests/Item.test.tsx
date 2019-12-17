@@ -2,6 +2,7 @@ import React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
+// eslint-disable-next-line no-restricted-imports
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
 import {NavigationContext} from '../../../context';
 
@@ -463,7 +464,7 @@ function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {
 }
 
 function mountWithNavigationProvider(
-  node: React.ReactElement<any>,
+  node: React.ReactElement,
   context: React.ContextType<typeof NavigationContext> = {location: ''},
 ) {
   return mountWithAppProvider(

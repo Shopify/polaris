@@ -2,7 +2,7 @@ import React from 'react';
 import debounce from 'lodash/debounce';
 import {classNames} from '../../../../utilities/css';
 
-import {Action, BaseAction} from '../../../../types';
+import {DisableableAction} from '../../../../types';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
 import {EventListener} from '../../../EventListener';
@@ -10,7 +10,7 @@ import {Item} from './components';
 
 import styles from './ConnectedFilterControl.scss';
 
-export interface PopoverableAction extends Action {
+export interface PopoverableAction extends DisableableAction {
   popoverOpen: boolean;
   popoverContent: React.ReactNode;
   key: string;
@@ -23,6 +23,7 @@ export interface ConnectedFilterControlProps {
   rightPopoverableActions?: PopoverableAction[] | null;
   rightAction?: React.ReactNode;
   auxiliary?: React.ReactNode;
+  disabled?: boolean;
 }
 
 interface ComputedProperty {
@@ -79,7 +80,7 @@ export class ConnectedFilterControl extends React.Component<
 
     const rightMarkup = rightPopoverableActions ? (
       <div className={styles.RightContainer} testID="FilterShortcutContainer">
-        {popoverFrom(this.getActionsToRender(rightPopoverableActions))}
+        {this.popoverFrom(this.getActionsToRender(rightPopoverableActions))}
       </div>
     ) : null;
 
@@ -100,7 +101,7 @@ export class ConnectedFilterControl extends React.Component<
       >
         {rightPopoverableActions.map((action) => (
           <div key={action.key} data-key={action.key}>
-            {activatorButtonFrom(action)}
+            {this.activatorButtonFrom(action)}
           </div>
         ))}
       </div>
@@ -183,30 +184,35 @@ export class ConnectedFilterControl extends React.Component<
     }
     return actionsToReturn;
   }
-}
 
-function popoverFrom(actions: PopoverableAction[]): React.ReactElement<any>[] {
-  return actions.map((action) => {
+  private activatorButtonFrom(action: PopoverableAction): React.ReactElement {
     return (
-      <Item key={action.key}>
-        <Popover
-          active={action.popoverOpen}
-          activator={activatorButtonFrom(action)}
-          onClose={action.onAction}
-          preferredAlignment="left"
-          sectioned
-        >
-          {action.popoverContent}
-        </Popover>
-      </Item>
+      <Button
+        onClick={action.onAction}
+        disclosure
+        disabled={this.props.disabled || action.disabled}
+        id={`Activator-${action.key}`}
+      >
+        {action.content}
+      </Button>
     );
-  });
-}
+  }
 
-function activatorButtonFrom(action: BaseAction): React.ReactElement<any> {
-  return (
-    <Button onClick={action.onAction} disclosure>
-      {action.content}
-    </Button>
-  );
+  private popoverFrom(actions: PopoverableAction[]): React.ReactElement[] {
+    return actions.map((action) => {
+      return (
+        <Item key={action.key}>
+          <Popover
+            active={action.popoverOpen}
+            activator={this.activatorButtonFrom(action)}
+            onClose={action.onAction}
+            preferredAlignment="left"
+            sectioned
+          >
+            {action.popoverContent}
+          </Popover>
+        </Item>
+      );
+    });
+  }
 }

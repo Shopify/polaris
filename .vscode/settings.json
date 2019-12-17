@@ -1,13 +1,11 @@
 // Place your settings in this file to overwrite default and user settings.
 {
   "css.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
@@ -27,8 +25,6 @@
   },
   "javascript.validate.enable": false,
   "jest.autoEnable": false,
-  "prettier.eslintIntegration": true,
-  "prettier.stylelintIntegration": true,
   "scss.validate": false,
   "search.exclude": {
     "**/bower_components": true,
@@ -44,6 +40,5 @@
     "styles/": true,
     "types/": true
   },
-  "stylelint.enable": true,
   "typescript.tsdk": "./node_modules/typescript/lib"
 }

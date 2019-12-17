@@ -2,7 +2,7 @@ import React from 'react';
 
 import debounce from 'lodash/debounce';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
-
+import {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
 import {Button} from '../Button';
 import {EventListener} from '../EventListener';
@@ -16,6 +16,8 @@ import {
   ResourceListContext,
   ResourceListSelectedItems,
   SELECT_ALL_ITEMS,
+  CheckableButtonKey,
+  CheckableButtons,
 } from '../../utilities/resource-list';
 import {Select, SelectOption} from '../Select';
 import {EmptySearchResult} from '../EmptySearchResult';
@@ -36,6 +38,7 @@ interface State {
   loadingPosition: number;
   lastSelected: number | null;
   smallScreen: boolean;
+  checkableButtons: CheckableButtons;
 }
 
 export interface ResourceListProps {
@@ -61,6 +64,8 @@ export interface ResourceListProps {
   loading?: boolean;
   /** Boolean to show or hide the header */
   showHeader?: boolean;
+  /** Total number of resources */
+  totalItemsCount?: number;
   /** Current value of the sort control */
   sortValue?: string;
   /** Collection of sort options to choose from */
@@ -129,10 +134,11 @@ class ResourceList extends React.Component<CombinedProps, State> {
       loadingPosition: 0,
       lastSelected: null,
       smallScreen: isSmallScreen(),
+      checkableButtons: new Map(),
     };
   }
 
-  private get selectable() {
+  private selectable() {
     const {promotedBulkActions, bulkActions, selectable} = this.props;
 
     return Boolean(
@@ -142,7 +148,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     );
   }
 
-  private get bulkSelectState(): boolean | 'indeterminate' {
+  private bulkSelectState(): boolean | 'indeterminate' {
     const {selectedItems, items} = this.props;
     let selectState: boolean | 'indeterminate' = 'indeterminate';
     if (
@@ -159,31 +165,39 @@ class ResourceList extends React.Component<CombinedProps, State> {
     return selectState;
   }
 
-  private get headerTitle() {
+  private headerTitle() {
     const {
       resourceName = this.defaultResourceName,
       items,
       polaris: {intl},
       loading,
+      totalItemsCount,
     } = this.props;
 
     const itemsCount = items.length;
     const resource =
-      itemsCount === 1 && !loading
+      !loading &&
+      ((!totalItemsCount && itemsCount === 1) || totalItemsCount === 1)
         ? resourceName.singular
         : resourceName.plural;
 
-    const headerTitleMarkup = loading
-      ? intl.translate('Polaris.ResourceList.loading', {resource})
-      : intl.translate('Polaris.ResourceList.showing', {
-          itemsCount,
-          resource,
-        });
-
-    return headerTitleMarkup;
+    if (loading) {
+      return intl.translate('Polaris.ResourceList.loading', {resource});
+    } else if (totalItemsCount) {
+      return intl.translate('Polaris.ResourceList.showingTotalCount', {
+        itemsCount,
+        totalItemsCount,
+        resource,
+      });
+    } else {
+      return intl.translate('Polaris.ResourceList.showing', {
+        itemsCount,
+        resource,
+      });
+    }
   }
 
-  private get bulkActionsLabel() {
+  private bulkActionsLabel() {
     const {
       selectedItems = [],
       items,
@@ -200,7 +214,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     });
   }
 
-  private get bulkActionsAccessibilityLabel() {
+  private bulkActionsAccessibilityLabel() {
     const {
       resourceName = this.defaultResourceName,
       selectedItems = [],
@@ -243,7 +257,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
-  private get paginatedSelectAllText() {
+  private paginatedSelectAllText() {
     const {
       hasMoreItems,
       selectedItems,
@@ -252,7 +266,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       polaris: {intl},
     } = this.props;
 
-    if (!this.selectable || !hasMoreItems) {
+    if (!this.selectable() || !hasMoreItems) {
       return;
     }
 
@@ -264,7 +278,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
-  private get paginatedSelectAllAction() {
+  private paginatedSelectAllAction() {
     const {
       hasMoreItems,
       selectedItems,
@@ -273,7 +287,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       polaris: {intl},
     } = this.props;
 
-    if (!this.selectable || !hasMoreItems) {
+    if (!this.selectable() || !hasMoreItems) {
       return;
     }
 
@@ -291,7 +305,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
-  private get emptySearchResultText() {
+  private emptySearchResultText() {
     const {
       polaris: {intl},
       resourceName = this.defaultResourceName,
@@ -307,6 +321,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   componentDidMount() {
     this.forceUpdate();
     if (this.props.loading) {
@@ -314,6 +329,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   componentDidUpdate({
     loading: prevLoading,
     items: prevItems,
@@ -350,6 +366,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   render() {
     const {
       items,
@@ -367,25 +384,25 @@ class ResourceList extends React.Component<CombinedProps, State> {
       polaris: {intl},
     } = this.props;
     const {selectMode, loadingPosition, smallScreen} = this.state;
-
     const filterControlMarkup = filterControl ? (
       <div className={styles.FiltersWrapper}>{filterControl}</div>
     ) : null;
 
-    const bulkActionsMarkup = this.selectable ? (
+    const bulkActionsMarkup = this.selectable() ? (
       <div className={styles.BulkActionsWrapper}>
         <BulkActions
-          label={this.bulkActionsLabel}
-          accessibilityLabel={this.bulkActionsAccessibilityLabel}
-          selected={this.bulkSelectState}
+          label={this.bulkActionsLabel()}
+          accessibilityLabel={this.bulkActionsAccessibilityLabel()}
+          selected={this.bulkSelectState()}
           onToggleAll={this.handleToggleAll}
           selectMode={selectMode}
           onSelectModeToggle={this.handleSelectMode}
           promotedActions={promotedBulkActions}
-          paginatedSelectAllAction={this.paginatedSelectAllAction}
-          paginatedSelectAllText={this.paginatedSelectAllText}
+          paginatedSelectAllAction={this.paginatedSelectAllAction()}
+          paginatedSelectAllText={this.paginatedSelectAllText()}
           actions={bulkActions}
           disabled={loading}
+          smallScreen={smallScreen}
         />
       </div>
     ) : null;
@@ -412,11 +429,11 @@ class ResourceList extends React.Component<CombinedProps, State> {
 
     const headerTitleMarkup = (
       <div className={styles.HeaderTitleWrapper} testID="headerTitleWrapper">
-        {this.headerTitle}
+        {this.headerTitle()}
       </div>
     );
 
-    const selectButtonMarkup = this.selectable ? (
+    const selectButtonMarkup = this.selectable() ? (
       <div className={styles.SelectButtonWrapper}>
         <Button
           disabled={selectMode}
@@ -428,11 +445,11 @@ class ResourceList extends React.Component<CombinedProps, State> {
       </div>
     ) : null;
 
-    const checkableButtonMarkup = this.selectable ? (
+    const checkableButtonMarkup = this.selectable() ? (
       <div className={styles.CheckableButtonWrapper}>
         <CheckableButton
-          accessibilityLabel={this.bulkActionsAccessibilityLabel}
-          label={this.headerTitle}
+          accessibilityLabel={this.bulkActionsAccessibilityLabel()}
+          label={this.headerTitle()}
           onToggleAll={this.handleToggleAll}
           plain
           disabled={loading}
@@ -441,7 +458,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     ) : null;
 
     const needsHeader =
-      this.selectable ||
+      this.selectable() ||
       (sortOptions && sortOptions.length > 0) ||
       alternateTool;
 
@@ -464,9 +481,9 @@ class ResourceList extends React.Component<CombinedProps, State> {
                   !alternateTool &&
                   styles['HeaderWrapper-hasSort'],
                 alternateTool && styles['HeaderWrapper-hasAlternateTool'],
-                this.selectable && styles['HeaderWrapper-hasSelect'],
+                this.selectable() && styles['HeaderWrapper-hasSelect'],
                 loading && styles['HeaderWrapper-disabled'],
-                this.selectable &&
+                this.selectable() &&
                   selectMode &&
                   styles['HeaderWrapper-inSelectMode'],
                 isSticky && styles['HeaderWrapper-isSticky'],
@@ -492,7 +509,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
 
     const emptyStateMarkup = showEmptyState ? (
       <div className={styles.EmptySearchResultWrapper}>
-        <EmptySearchResult {...this.emptySearchResultText} withIllustration />
+        <EmptySearchResult {...this.emptySearchResultText()} withIllustration />
       </div>
     ) : null;
 
@@ -544,12 +561,13 @@ class ResourceList extends React.Component<CombinedProps, State> {
     );
 
     const context = {
-      selectable: this.selectable,
+      selectable: this.selectable(),
       selectedItems,
       selectMode,
       resourceName,
       loading,
       onSelectionChange: this.handleSelectionChange,
+      registerCheckableButtons: this.handleCheckableButtonRegistration,
     };
 
     return (
@@ -635,6 +653,17 @@ class ResourceList extends React.Component<CombinedProps, State> {
     return this.props.items.slice(min, max + 1).map(resolveItemId);
   };
 
+  private handleCheckableButtonRegistration = (
+    key: CheckableButtonKey,
+    button: CheckboxHandles,
+  ) => {
+    this.setState(({checkableButtons}) => {
+      return {
+        checkableButtons: new Map(checkableButtons).set(key, button),
+      };
+    });
+  };
+
   private handleSelectionChange = (
     selected: boolean,
     id: string,
@@ -680,11 +709,8 @@ class ResourceList extends React.Component<CombinedProps, State> {
     newlySelectedItems = [...new Set([...newlySelectedItems, ...selectedIds])];
 
     if (!selected) {
-      for (let i = 0; i < selectedIds.length; i++) {
-        newlySelectedItems.splice(
-          newlySelectedItems.indexOf(selectedIds[i]),
-          1,
-        );
+      for (const selectedId of selectedIds) {
+        newlySelectedItems.splice(newlySelectedItems.indexOf(selectedId), 1);
       }
     }
 
@@ -715,6 +741,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       idForItem = defaultIdForItem,
     } = this.props;
 
+    const {checkableButtons} = this.state;
     let newlySelectedItems: string[] = [];
 
     if (
@@ -735,9 +762,24 @@ class ResourceList extends React.Component<CombinedProps, State> {
       this.handleSelectMode(true);
     }
 
+    let checkbox: CheckboxHandles | undefined;
+
+    if (isSmallScreen()) {
+      checkbox = checkableButtons.get('bulkSm');
+    } else if (newlySelectedItems.length === 0) {
+      checkbox = checkableButtons.get('plain');
+    } else {
+      checkbox = checkableButtons.get('bulkLg');
+    }
+
     if (onSelectionChange) {
       onSelectionChange(newlySelectedItems);
     }
+
+    // setTimeout ensures execution after the Transition on BulkActions
+    setTimeout(() => {
+      checkbox && checkbox.focus();
+    }, 0);
   };
 }
 
@@ -751,13 +793,15 @@ function getAllItemsOnPage(
 }
 
 function defaultIdForItem(item: any, index: number) {
-  return item.hasOwnProperty('id') ? item.id : index.toString();
+  return Object.prototype.hasOwnProperty.call(item, 'id')
+    ? item.id
+    : index.toString();
 }
 
 function isSmallScreen() {
   return typeof window === 'undefined'
     ? false
-    : window.innerWidth <= SMALL_SCREEN_WIDTH;
+    : window.innerWidth < SMALL_SCREEN_WIDTH;
 }
 
 // Use named export once withAppProvider is refactored away

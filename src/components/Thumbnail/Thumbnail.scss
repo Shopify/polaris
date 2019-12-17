@@ -9,7 +9,7 @@ $stacking-order: (
   position: relative;
   display: block;
   overflow: hidden;
-  background: color('white');
+  background: var(--p-surface, color('white'));
   min-width: thumbnail-size(small);
   max-width: 100%;
   border-radius: border-radius();

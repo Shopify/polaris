@@ -7,6 +7,9 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 .FileUpload {
   padding: $fileupload-padding;
   text-align: center;
+  &.measuring {
+    display: none;
+  }
 }
 
 .Button {

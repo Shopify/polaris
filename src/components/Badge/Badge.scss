@@ -14,16 +14,16 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .Badge {
-  @include pip-color(color('ink', 'lightest'));
+  @include pip-color(var(--p-icon, color('ink', 'lightest')));
   display: inline-flex;
   align-items: center;
   padding: 0 $horizontal-padding;
-  background-color: color('sky');
-  border: border-width(thick) solid color('white');
+  background-color: var(--p-action-secondary-disabled, color('sky'));
+  border: border-width(thick) solid var(--p-surface, color('white'));
   border-radius: $height;
   font-size: rem(13px);
   line-height: $height;
-  color: color('ink', 'light');
+  color: var(--p-text, color('ink', 'light'));
 }
 
 .sizeSmall {
@@ -32,15 +32,25 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .statusSuccess {
-  @include pip-color(color('green', 'dark'));
-  background-color: color('green', 'light');
+  @include pip-color(var(--p-icon-success, color('green', 'dark')));
+  background-color: var(--p-surface-success, color('green', 'light'));
   color: color('green', 'text');
+
+  .Content {
+    color: var(--p-text);
+    mix-blend-mode: var(--p-luminosity);
+  }
 }
 
 .statusInfo {
-  @include pip-color(color('blue', 'dark'));
-  background-color: color('blue', 'light');
+  @include pip-color(var(--p-icon-highlight, color('blue', 'dark')));
+  background-color: var(--p-surface-highlight, color('blue', 'light'));
   color: color('blue', 'text');
+
+  .Content {
+    color: var(--p-text);
+    mix-blend-mode: var(--p-luminosity);
+  }
 }
 
 .statusAttention {
@@ -50,9 +60,14 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .statusWarning {
-  @include pip-color(color('orange', 'dark'));
-  background-color: color('orange', 'light');
+  @include pip-color(var(--p-icon-warning, color('orange', 'dark')));
+  background-color: var(--p-surface-warning, color('orange', 'light'));
   color: color('orange', 'text');
+
+  .Content {
+    color: var(--p-text);
+    mix-blend-mode: var(--p-luminosity);
+  }
 }
 
 .statusNew {

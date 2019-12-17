@@ -36,9 +36,9 @@ function accepts(file: File, acceptedFiles: string | string[] | undefined) {
 
     return acceptedFilesArray.some((type) => {
       const validType = type.trim();
-      if (validType.charAt(0) === '.') {
+      if (validType.startsWith('.')) {
         return fileName.toLowerCase().endsWith(validType.toLowerCase());
-      } else if (/\/\*$/.test(validType)) {
+      } else if (validType.endsWith('/*')) {
         // This is something like a image/* mime type
         return baseMimeType === validType.replace(/\/.*$/, '');
       }
@@ -55,5 +55,5 @@ function isDragEvent(event: DropZoneEvent): event is DragEvent {
 function isChangeEvent(
   event: DropZoneEvent,
 ): event is React.ChangeEvent<HTMLInputElement> {
-  return event.hasOwnProperty('target');
+  return Object.prototype.hasOwnProperty.call(event, 'target');
 }

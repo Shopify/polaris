@@ -1,6 +1,9 @@
 import React from 'react';
+import {mount} from 'test-utilities';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Portal} from '../Portal';
+import {portal} from '../../shared';
 
 jest.mock('react-dom', () => ({
   ...require.requireActual('react-dom'),
@@ -33,7 +36,7 @@ describe('<Portal />', () => {
       const idPrefix = 'test';
       mountWithAppProvider(<Portal idPrefix={idPrefix} />);
       const [, portalNode] = lastSpyCall(createPortalSpy);
-      expect(portalNode.getAttribute('data-portal-id')).toMatch(
+      expect(portalNode.getAttribute(portal.props[0])).toMatch(
         new RegExp(`^${idPrefix}-portal`),
       );
     });
@@ -41,7 +44,7 @@ describe('<Portal />', () => {
     it('is ignored when not defined', () => {
       mountWithAppProvider(<Portal />);
       const [, portalNode] = lastSpyCall(createPortalSpy);
-      expect(portalNode.getAttribute('data-portal-id')).toMatch(/^portal/);
+      expect(portalNode.getAttribute(portal.props[0])).toMatch(/^portal/);
     });
   });
 
@@ -77,17 +80,41 @@ describe('<Portal />', () => {
       expect(ref.current).not.toBeNull(),
     );
 
-    class PortalParent extends React.Component {
-      render() {
-        return (
-          <Portal onPortalCreated={handlePortalCreated}>
-            <div ref={ref} />
-          </Portal>
-        );
-      }
+    function PortalParent() {
+      return (
+        <Portal onPortalCreated={handlePortalCreated}>
+          <div ref={ref} />
+        </Portal>
+      );
     }
 
     mountWithAppProvider(<PortalParent />);
     expect(handlePortalCreated).toHaveBeenCalledTimes(1);
+  });
+
+  it('renders okay when theme context is undefined', () => {
+    expect(() => {
+      mount(<Portal />);
+    }).not.toThrow();
+  });
+
+  it('sets CSS custom properties on the portal node', () => {
+    const setSpy = jest.spyOn(Element.prototype, 'setAttribute');
+    const portal = mountWithAppProvider(<Portal />, {
+      features: {unstableGlobalTheming: true},
+      theme: {
+        UNSTABLE_colors: {surface: '#000000'},
+      },
+    });
+    expect(setSpy).toHaveBeenCalledWith(
+      'style',
+      portal.context().UNSTABLE_cssCustomProperties,
+    );
+  });
+
+  it('removes CSS custom properties from the portal node', () => {
+    const removeSpy = jest.spyOn(Element.prototype, 'removeAttribute');
+    mountWithAppProvider(<Portal />);
+    expect(removeSpy).toHaveBeenCalledWith('style');
   });
 });

@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import Sticky from '../Sticky';
 
@@ -41,6 +42,6 @@ function functionItem(isSticky: boolean) {
   if (isSticky === false) {
     return <h1>it worked!</h1>;
   } else {
-    return <h2> {'it didn’t'} </h2>;
+    return <h2>it didn’t work</h2>;
   }
 }

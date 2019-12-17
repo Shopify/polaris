@@ -115,7 +115,7 @@ module.exports = ({config, mode}) => {
   config.plugins.push({
     apply: (compiler) => {
       compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
-        const spawnedProcess = spawn('yarn splash', {
+        spawn('yarn splash --show-disable-tip', {
           shell: true,
           stdio: 'inherit',
         });

@@ -1,17 +1,11 @@
-import 'storybook-chroma';
 import React from 'react';
-import {
-  configure,
-  addParameters,
-  addDecorator,
-  storiesOf,
-} from '@storybook/react';
+import {configure, addParameters, addDecorator} from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
+import {withContexts} from '@storybook/addon-contexts/react';
 import {create} from '@storybook/theming';
 import tokens from '@shopify/polaris-tokens';
 import {AppProvider} from '../src';
-import {Playground} from '../playground/Playground';
-import en from '../locales/en.json';
+import enTranslations from '../locales/en.json';
 
 addParameters({
   options: {
@@ -29,27 +23,60 @@ addParameters({
       // SEE https://github.com/storybooks/storybook/blob/next/docs/src/pages/configurations/theming/index.md
     }),
   },
-  backgrounds: [
-    {name: 'Sky Light', value: tokens.colorSkyLight, default: true},
-    {name: 'White', value: '#fff'},
-  ],
   percy: {
     skip: true,
     widths: [375, 1280],
   },
 });
 
-addDecorator(function StrictModeDecorator(story) {
-  return <React.StrictMode>{story()}</React.StrictMode>;
+addDecorator(function PaddingDecorator(story) {
+  return <div style={{padding: '8px'}}>{story()}</div>;
 });
 
-addDecorator(function AppProviderDecorator(story) {
-  return (
-    <div style={{padding: '8px'}}>
-      <AppProvider i18n={en}>{story()}</AppProvider>
-    </div>
-  );
-});
+function StrictModeToggle({isStrict = false, children}) {
+  const Wrapper = isStrict ? React.StrictMode : React.Fragment;
+  return <Wrapper>{children}</Wrapper>;
+}
+
+addDecorator(
+  withContexts([
+    {
+      title: 'Strict Mode',
+      components: [StrictModeToggle],
+      params: [
+        {name: 'Disabled', props: {isStrict: false}},
+        {name: 'Enabled', default: true, props: {isStrict: true}},
+      ],
+    },
+    {
+      title: 'Global Theming',
+      components: [AppProvider],
+      params: [
+        {
+          name: 'Disabled',
+          default: true,
+          props: {i18n: enTranslations},
+        },
+        {
+          name: 'Enabled - Light Mode',
+          props: {
+            i18n: enTranslations,
+            features: {unstableGlobalTheming: true},
+            theme: {colorScheme: 'light'},
+          },
+        },
+        {
+          name: 'Enabled - Dark Mode',
+          props: {
+            i18n: enTranslations,
+            features: {unstableGlobalTheming: true},
+            theme: {colorScheme: 'dark'},
+          },
+        },
+      ],
+    },
+  ]),
+);
 
 // addon-console
 setConsoleOptions((opts) => {
@@ -65,24 +92,12 @@ setConsoleOptions((opts) => {
   return opts;
 });
 
-function addPlaygroundStory() {
-  storiesOf('Playground|Playground', module)
-    .addParameters({
-      chromatic: {disable: true},
-    })
-    .add('Playground', () => <Playground />);
-}
-
-// import all README.md files within component folders
-const readmeReq = require.context(
-  '../src/components',
-  true,
-  /\/.+\/README.md$/,
+configure(
+  [
+    // Playground stories
+    require.context('../playground', true, /stories.tsx$/),
+    // Component readme stories
+    require.context('../src/components', true, /\/.+\/README.md$/),
+  ],
+  module,
 );
-function loadStories() {
-  addPlaygroundStory();
-
-  return readmeReq.keys().map((filename) => readmeReq(filename));
-}
-
-configure(loadStories, module);

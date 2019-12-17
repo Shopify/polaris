@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
+// eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities/react-testing';
 import {MediaQueryProvider} from 'components/MediaQueryProvider';
@@ -16,8 +17,7 @@ describe('<AppProvider />', () => {
   });
 
   it('updates context when props change', () => {
-    const Child: React.SFC<{}> = () => {
-      // eslint-disable-next-line shopify/jest/no-if
+    const Child: React.SFC = () => {
       return useContext(LinkContext) ? <div id="child" /> : null;
     };
     const LinkComponent = () => <div />;

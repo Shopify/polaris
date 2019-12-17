@@ -10,7 +10,7 @@ import styles from './Breadcrumbs.scss';
 
 export interface BreadcrumbsProps {
   /** Collection of breadcrumbs */
-  breadcrumbs: Array<CallbackAction | LinkAction>;
+  breadcrumbs: (CallbackAction | LinkAction)[];
 }
 
 export class Breadcrumbs extends React.PureComponent<BreadcrumbsProps, never> {
@@ -24,12 +24,12 @@ export class Breadcrumbs extends React.PureComponent<BreadcrumbsProps, never> {
     const {content} = breadcrumb;
 
     const contentMarkup = (
-      <React.Fragment>
+      <span className={styles.ContentWrapper}>
         <span className={styles.Icon}>
           <Icon source={ChevronLeftMinor} />
         </span>
         <span className={styles.Content}>{content}</span>
-      </React.Fragment>
+      </span>
     );
 
     const breadcrumbMarkup =
@@ -39,6 +39,7 @@ export class Breadcrumbs extends React.PureComponent<BreadcrumbsProps, never> {
           url={breadcrumb.url}
           className={styles.Breadcrumb}
           onMouseUp={handleMouseUpByBlurring}
+          aria-label={breadcrumb.accessibilityLabel}
         >
           {contentMarkup}
         </UnstyledLink>
@@ -49,6 +50,7 @@ export class Breadcrumbs extends React.PureComponent<BreadcrumbsProps, never> {
           onClick={breadcrumb.onAction}
           onMouseUp={handleMouseUpByBlurring}
           type="button"
+          aria-label={breadcrumb.accessibilityLabel}
         >
           {contentMarkup}
         </button>
