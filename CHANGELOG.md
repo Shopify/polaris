@@ -8,6 +8,19 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.10.0 - 2019-12-18
+
+### Bug fixes
+
+- Fixed `TextField` to no longer render `aria-invalid="false"` ([#2339](https://github.com/Shopify/polaris-react/pull/2339))
+- Fixed `TextField` to only render `min` ,`max` and `step` attributes when explicitly passed ([#2339](https://github.com/Shopify/polaris-react/pull/2339))
+- Removed reference to `document` in `DropZone` ([#2560](https://github.com/Shopify/polaris-react/pull/2560))
+
+### Dependency upgrades
+
+- Update to TypeScript 3.7 ([#2549](https://github.com/Shopify/polaris-react/pull/2549))
+- Update stylelint-config-shopify to 7.4.0 ([#2558](https://github.com/Shopify/polaris-react/pull/2558))
+
 ## 4.9.1 - 2019-12-11
 
 ### Bug fixes
