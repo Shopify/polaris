@@ -90,42 +90,49 @@ Use to explain the purpose of a list of resources when no resources exist yet. T
 
 ```jsx
 function ResourceListWithEmptyStateExample() {
-  const filters = [
-    {
-      key: 'fileType',
-      label: 'File type',
-      filter: <TextField label="File type" value="" labelHidden />,
-      shortcut: true,
-    },
-  ];
+  const items = [];
+  const appliedFilters = [];
+  const filters = [];
 
   const filterControl = (
-    <Filters disabled queryValue="" filters={filters} appliedFilters={[]} />
+    <Filters
+      disabled={!items.length}
+      queryValue=""
+      filters={filters}
+      appliedFilters={appliedFilters}
+    />
   );
 
-  const emptyState = (
-    <EmptyState
-      heading="Upload a file to get started"
-      action={{content: 'Upload files'}}
-      image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
-    >
-      <p>
-        You can use the Files section to upload images, videos, and other
-        documents
-      </p>
-    </EmptyState>
-  );
+  const emptyStateMarkup =
+    !appliedFilters.length && !items.length ? (
+      <EmptyState
+        heading="Upload a file to get started"
+        action={{content: 'Upload files'}}
+        image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
+      >
+        <p>
+          You can use the Files section to upload images, videos, and other
+          documents
+        </p>
+      </EmptyState>
+    ) : undefined;
 
   return (
-    <Card>
-      <ResourceList
-        emptyState={emptyState}
-        items={[]}
-        renderItem={() => {}}
-        filterControl={filterControl}
-        resourceName={{singular: 'file', plural: 'files'}}
-      />
-    </Card>
+    <Page title="Files">
+      <Layout>
+        <Layout.Section>
+          <Card>
+            <ResourceList
+              emptyState={emptyStateMarkup}
+              items={items}
+              renderItem={() => {}}
+              filterControl={filterControl}
+              resourceName={{singular: 'file', plural: 'files'}}
+            />
+          </Card>
+        </Layout.Section>
+      </Layout>
+    </Page>
   );
 }
 ```
