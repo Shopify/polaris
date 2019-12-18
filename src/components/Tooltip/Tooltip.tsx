@@ -42,7 +42,7 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
   };
 
   private id = getUniqueID();
-  private activatorContainer: HTMLElement | null;
+  private activatorContainer: HTMLElement | null = null;
   private mouseEntered = false;
 
   componentDidMount() {

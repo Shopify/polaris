@@ -23,7 +23,7 @@ export class Portal extends React.PureComponent<PortalProps, State> {
 
   state: State = {isMounted: false};
 
-  private portalNode: HTMLElement;
+  private portalNode: HTMLElement | null = null;
 
   private portalId =
     this.props.idPrefix !== ''
@@ -49,7 +49,7 @@ export class Portal extends React.PureComponent<PortalProps, State> {
   componentDidUpdate(_: PortalProps, prevState: State) {
     const {onPortalCreated = noop} = this.props;
 
-    if (this.context != null) {
+    if (this.portalNode && this.context != null) {
       const {UNSTABLE_cssCustomProperties, textColor} = this.context;
       if (UNSTABLE_cssCustomProperties != null) {
         const style = `${UNSTABLE_cssCustomProperties};color:${textColor};`;
@@ -64,11 +64,13 @@ export class Portal extends React.PureComponent<PortalProps, State> {
   }
 
   componentWillUnmount() {
-    document.body.removeChild(this.portalNode);
+    if (this.portalNode) {
+      document.body.removeChild(this.portalNode);
+    }
   }
 
   render() {
-    return this.state.isMounted
+    return this.portalNode && this.state.isMounted
       ? createPortal(this.props.children, this.portalNode)
       : null;
   }
