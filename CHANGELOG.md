@@ -18,8 +18,8 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Dependency upgrades
 
-- Update to TypeScript 3.7 ([#2549](https://github.com/Shopify/polaris-react/pull/2549))
-- Update stylelint-config-shopify to 7.4.0 ([#2558](https://github.com/Shopify/polaris-react/pull/2558))
+- Updated to TypeScript 3.7 ([#2549](https://github.com/Shopify/polaris-react/pull/2549))
+- Updated stylelint-config-shopify to 7.4.0 ([#2558](https://github.com/Shopify/polaris-react/pull/2558))
 
 ## 4.9.1 - 2019-12-11
 
