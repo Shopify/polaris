@@ -1,10 +1,12 @@
+// AppProvider contains CSS that affects element level CSS (e.g. `html`, `button`)
+// It should be first to ensure its CSS is first in compiled output
+export {AppProvider, AppProviderProps} from './AppProvider';
+
 export {AccountConnection, AccountConnectionProps} from './AccountConnection';
 
 export {ActionList, ActionListProps} from './ActionList';
 
 export {ActionMenu, ActionMenuProps} from './ActionMenu';
-
-export {AppProvider, AppProviderProps} from './AppProvider';
 
 export {Autocomplete, AutocompleteProps} from './Autocomplete';
 

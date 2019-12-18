@@ -45,7 +45,10 @@ copy(['./src/**/*.md', docs], {up: 1}).catch((error) => {
 copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
   .then(() => {
     [
-      resolvePath(intermediateBuild, './styles/global.scss'),
+      resolvePath(
+        intermediateBuild,
+        './components/AppProvider/AppProvider.scss',
+      ),
       resolvePath(intermediateBuild, './configure.js'),
     ].forEach((file) => {
       writeFileSync(
