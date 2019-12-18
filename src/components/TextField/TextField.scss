@@ -230,10 +230,11 @@ $stacking-order: (
   @include unstyled-button;
   z-index: z-index(contents, $stacking-order);
   margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
+  @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
 
   &:hover:enabled,
   &:focus:enabled {
-    @include color-icon('ink', 'lighter');
+    @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
   }
 
   &:disabled {

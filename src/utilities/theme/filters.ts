@@ -1,3 +1,5 @@
+import {hexToRgb} from '../color-transformers';
+
 interface ColorType {
   r: number;
   g: number;
@@ -115,6 +117,7 @@ class Color implements ColorType {
   brightness(value = 1) {
     this.linear(value);
   }
+
   contrast(value = 1) {
     this.linear(value, -(0.5 * value) + 0.5);
   }
@@ -138,9 +141,9 @@ class Color implements ColorType {
     const b = this.b / 255;
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
-    let h,
-      s,
-      l = (max + min) / 2;
+    let h;
+    let s;
+    const l = (max + min) / 2;
 
     if (max === min) {
       h = s = 0;
@@ -199,16 +202,19 @@ class Solver {
     return {
       values: result.values,
       loss: result.loss,
-      filter: this.css(result.values),
+      filter: this.css(result.values || []),
     };
   }
 
-  solveWide(): {loss: number; values: number[] | null} {
+  solveWide(): {loss: number; values: number[]} {
     const A = 5;
     const c = 15;
     const a = [60, 180, 18000, 600, 1.2, 1.2];
 
-    let best = {loss: Infinity};
+    let best: {loss: number; values: number[] | null} = {
+      loss: Infinity,
+      values: null,
+    };
     for (let i = 0; best.loss > 25 && i < 3; i++) {
       const initial = [50, 20, 3750, 50, 100, 100];
       const result = this.spsa(A, a, c, initial, 1000);
@@ -216,7 +222,7 @@ class Solver {
         best = result;
       }
     }
-    return best;
+    return best as {loss: number; values: number[]};
   }
 
   solveNarrow(wide: {loss: number; values: number[]}) {
@@ -233,7 +239,7 @@ class Solver {
     c: number,
     values: number[],
     iterations: number,
-  ): {values: number[]} {
+  ): {values: number[] | null; loss: number} {
     const alpha = 1;
     const gamma = 0.16666666666666666;
 
@@ -316,53 +322,20 @@ class Solver {
     function fmt(idx: number, multiplier = 1) {
       return Math.round(filters[idx] * multiplier);
     }
-    return `filter: brightness(0) saturate(100%) invert(${fmt(0)}%) sepia(${fmt(
+    return `brightness(0) saturate(100%) invert(${fmt(0)}%) sepia(${fmt(
       1,
     )}%) saturate(${fmt(2)}%) hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(
       4,
-    )}%) contrast(${fmt(5)}%);`;
+    )}%) contrast(${fmt(5)}%)`;
   }
 }
 
-// function executeUntil($element, mininumLossLevel) {
-//   $('.hideOnLoad').show();
-//   let rgb = $('#target').val();
-//   rgb = rgb.substr(4, rgb.length);
-//   rgb = rgb.substr(0, rgb.length - 1);
-//   rgb = rgb.split(', ');
+export function hexToFilter(hex: string): string {
+  const {red, green, blue} = hexToRgb(hex);
 
-//   if (rgb.length !== 3) {
-//     alert('Invalid format!');
-//     return;
-//   }
+  const color = new Color(red, green, blue);
+  const solver = new Solver(color);
+  const result = solver.solve();
 
-//   const color = new Color(rgb[0], rgb[1], rgb[2]);
-//   const solver = new Solver(color);
-//   const result = solver.solve();
-
-//   if (result.loss >= mininumLossLevel) {
-//     // this could blow up, but whatever
-//     $element.click();
-//     return;
-//   } else if (result.loss > 0.2) {
-//     $('#lossSuccess').hide();
-//     $('#lossWarning').show();
-//   } else {
-//     $('#lossSuccess').show();
-//     $('#lossWarning').hide();
-//   }
-
-//   $('#realPixel .pixel__apply').css('background-color', color.toString());
-//   $('#filterPixel .pixel__apply').attr('style', result.filter);
-//   $('#filterDetail').text(result.filter);
-//   $('#lossDetailText').show();
-//   $('.lossDetailText').html(result.loss.toFixed(1));
-// }
-
-// $(document).ready(() => {
-//   $('form').submit((evt) => {
-//      evt.preventDefault();
-//   });
-//   $('#execute').click(() => executeUntil($('#execute'), 1));
-//   $('#execute01loss').click(() => executeUntil($('#execute01loss'), 0.1));
-// });
+  return result.filter;
+}

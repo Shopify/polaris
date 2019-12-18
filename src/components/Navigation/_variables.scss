@@ -54,7 +54,7 @@ $nav-animation-variables: (
       @include recolor-icon(
         var(--p-action-primary, color('indigo')),
         var(--p-override-transparent, color('white')),
-        filter('indigo')
+        var(--p-icon-primary-filter, filter('indigo'))
       );
     }
   }
@@ -72,7 +72,7 @@ $nav-animation-variables: (
       @include recolor-icon(
         var(--p-icon, color('indigo')),
         var(--p-override-transparent, color('white')),
-        filter('indigo')
+        var(--p-icon-primary-filter, filter('indigo'))
       );
     }
   }
@@ -84,7 +84,7 @@ $nav-animation-variables: (
       @include recolor-icon(
         var(--p-action-primary, color('indigo')),
         var(--p-override-transparent, color('white')),
-        filter('indigo')
+        var(--p-icon-primary-filter, filter('indigo'))
       );
     }
   }
@@ -98,7 +98,7 @@ $nav-animation-variables: (
       @include recolor-icon(
         var(--p-action-primary-pressed, color('indigo')),
         var(--p-override-transparent, color('white')),
-        filter('indigo')
+        var(--p-icon-primary-pressed-filter, filter('indigo'))
       );
     }
   }
@@ -117,7 +117,7 @@ $nav-animation-variables: (
   @include recolor-icon(
     var(--p-icon, color('ink', 'lightest')),
     var(--p-override-transparent, color('white')),
-    filter('ink', 'lightest')
+    var(--p-icon-filter, filter('ink', 'lightest'))
   );
   flex-shrink: 0;
   align-self: flex-start;
@@ -139,7 +139,7 @@ $nav-animation-variables: (
     @include recolor-icon(
       var(--p-action-primary, color('indigo')),
       var(--p-override-transparent, color('white')),
-      filter('indigo')
+      var(--p-icon-primary-filter, filter('indigo'))
     );
   } // The regular nav items are wrapped in polaris icon components which add
   // the styles we're missing which causes the channel items to shift down

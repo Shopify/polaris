@@ -18,6 +18,7 @@ import {
 } from './types';
 
 import {roleVariants} from './role-variants';
+import {hexToFilter} from './filters';
 
 interface CustomPropertiesConfig extends ThemeConfig {
   colorScheme: ColorScheme;
@@ -75,6 +76,7 @@ export function buildColors(
   roleVariants: Partial<RoleVariants>,
   colorScheme: ColorScheme,
 ) {
+  const needFilterValues = ['icon', 'iconPrimary', 'iconPrimaryPressed'];
   return Object.assign(
     {},
     ...Object.entries(colors).map(([role, hex]: [Role, string]) => {
@@ -88,11 +90,18 @@ export function buildColors(
             lightness = base.lightness,
             alpha = 1,
           } = settings[colorScheme];
+          const variantHex = hsluvToHex([hue, saturation, lightness]);
+          const filter: Record<string, string> = {};
+
+          if (needFilterValues.includes(name)) {
+            filter[`${name}Filter`] = hexToFilter(variantHex);
+          }
 
           return {
             ...accumulator,
+            ...filter,
             [name]: hslToString({
-              ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
+              ...colorToHsla(variantHex),
               alpha,
             }),
           };

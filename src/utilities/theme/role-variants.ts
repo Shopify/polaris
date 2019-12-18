@@ -277,6 +277,20 @@ export const roleVariants: RoleVariants = {
       dark: {lightness: 60},
     },
     {
+      name: 'iconPrimary',
+      description:
+        'For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs.',
+      light: {lightness: 47.3},
+      dark: {lightness: 47.3},
+    },
+    {
+      name: 'iconPrimaryPressed',
+      description:
+        'For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs.',
+      light: {lightness: 37.3},
+      dark: {lightness: 60},
+    },
+    {
       name: 'iconOnPrimary',
       description:
         'For use as a fill color for icons on primary actions. Not for use in icons on navigation and tabs.',

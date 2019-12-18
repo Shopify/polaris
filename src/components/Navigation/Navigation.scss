@@ -143,7 +143,7 @@ $disabled-fade: 0.6;
   @include recolor-icon(
     var(--p-icon-subdued, color('ink', 'lightest')),
     var(--p-override-transparent, color('white')),
-    filter('ink', 'lightest')
+    var(--p-icon-filter, filter('ink', 'lightest'))
   );
   display: flex;
   align-items: center;
@@ -160,7 +160,7 @@ $disabled-fade: 0.6;
     @include recolor-icon(
       var(--p-action-primary, color('indigo')),
       var(--p-override-transparent, color('white')),
-      filter('indigo')
+      var(--p-icon-primary-filter, filter('indigo'))
     );
     background-image: var(
       --p-override-none,
@@ -173,7 +173,7 @@ $disabled-fade: 0.6;
     @include recolor-icon(
       var(--p-icon-subdued, color('indigo')),
       var(--p-override-transparent, color('white')),
-      filter('indigo')
+      var(--p-icon-primary-filter, filter('indigo'))
     );
     background-image: var(
       --p-override-none,
@@ -186,7 +186,7 @@ $disabled-fade: 0.6;
     @include recolor-icon(
       var(--p-action-primary, color('indigo')),
       var(--p-override-transparent, color('white')),
-      filter('indigo')
+      var(--p-icon-primary-filter, filter('indigo'))
     );
   }
 
@@ -194,7 +194,7 @@ $disabled-fade: 0.6;
     @include recolor-icon(
       var(--p-action-primary, color('indigo')),
       var(--p-override-transparent, color('white')),
-      filter('indigo')
+      var(--p-icon-primary-filter, filter('indigo'))
     );
     background-image: var(
       --p-override-none,
@@ -313,7 +313,7 @@ $secondary-item-font-size: rem(15px);
     @include recolor-icon(
       var(--p-icon-subdued, color('ink', 'lightest')),
       var(--p-override-transparent, color('white')),
-      filter('ink', 'lightest')
+      var(--p-icon-filter, filter('ink', 'lightest'))
     );
     display: flex;
     align-items: center;
@@ -330,7 +330,7 @@ $secondary-item-font-size: rem(15px);
       @include recolor-icon(
         var(--p-action-primary, color('indigo')),
         var(--p-override-transparent, color('white')),
-        filter('indigo')
+        var(--p-icon-primary-filter, filter('indigo'))
       );
       background-image: var(
         --p-override-none,
@@ -343,7 +343,7 @@ $secondary-item-font-size: rem(15px);
       @include recolor-icon(
         var(--p-icon-subdued, color('indigo')),
         var(--p-override-transparent, color('white')),
-        filter('indigo')
+        var(--p-icon-primary-filter, filter('indigo'))
       );
       background-image: var(
         --p-override-none,
@@ -357,7 +357,7 @@ $secondary-item-font-size: rem(15px);
       @include recolor-icon(
         var(--p-action-primary, color('indigo')),
         var(--p-override-transparent, color('white')),
-        filter('indigo')
+        var(--p-icon-primary-filter, filter('indigo'))
       );
     }
 
@@ -365,7 +365,7 @@ $secondary-item-font-size: rem(15px);
       @include recolor-icon(
         var(--p-action-primary, color('indigo')),
         var(--p-override-transparent, color('white')),
-        filter('indigo')
+        var(--p-icon-primary-filter, filter('indigo'))
       );
       background-image: var(
         --p-override-none,
@@ -390,7 +390,7 @@ $secondary-item-font-size: rem(15px);
     @include recolor-icon(
       var(--p-action-primary, color('indigo')),
       null,
-      filter('indigo')
+      var(--p-icon-primary-filter, filter('indigo'))
     );
     color: var(--p-action-primary, color('indigo'));
   }
