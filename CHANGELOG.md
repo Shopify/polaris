@@ -12,8 +12,8 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Bug fixes
 
-- Fixed `TextField` to no longer render `aria-invalid="false"` ([#2339](https://github.com/Shopify/polaris-react/pull/2339))
-- Fixed `TextField` to only render `min` ,`max` and `step` attributes when explicitly passed ([#2339](https://github.com/Shopify/polaris-react/pull/2339))
+- Fixed `TextField` to no longer render `aria-invalid="false"`. Thank you to [@alexcleduc](https://github.com/AlexCLeduc) for the contribution ([#2339](https://github.com/Shopify/polaris-react/pull/2339)).
+- Fixed `TextField` to only render `min` ,`max` and `step` attributes when explicitly passed. Thank you to [@alexcleduc](https://github.com/AlexCLeduc) for the contribution ([#2339](https://github.com/Shopify/polaris-react/pull/2339)).
 - Removed reference to `document` in `DropZone` ([#2560](https://github.com/Shopify/polaris-react/pull/2560))
 
 ### Dependency upgrades
