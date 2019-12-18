@@ -468,7 +468,7 @@ interface DropZoneInputProps {
   type: Type;
   multiple: boolean;
   openFileDialog?: boolean;
-  onChange(event: DragEvent): void;
+  onChange(event: DragEvent | React.ChangeEvent<HTMLInputElement>): void;
   onFocus(): void;
   onBlur(): void;
   onFileDialogClose?(): void;
