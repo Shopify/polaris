@@ -214,12 +214,14 @@ export function TextField({
   ) : null;
 
   const characterCount = normalizedValue.length;
-  const characterCountLabel = i18n.translate(
-    maxLength
-      ? 'Polaris.TextField.characterCountWithMaxLength'
-      : 'Polaris.TextField.characterCount',
-    {count: characterCount, limit: maxLength},
-  );
+  const characterCountLabel = maxLength
+    ? i18n.translate('Polaris.TextField.characterCountWithMaxLength', {
+        count: characterCount,
+        limit: maxLength,
+      })
+    : i18n.translate('Polaris.TextField.characterCount', {
+        count: characterCount,
+      });
 
   const characterCountClassName = classNames(
     styles.CharacterCount,
