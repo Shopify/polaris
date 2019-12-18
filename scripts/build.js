@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 const {execSync} = require('child_process');
-const {join, resolve: resolvePath} = require('path');
+const {resolve: resolvePath} = require('path');
 const {ensureDirSync, writeFileSync, readFileSync} = require('fs-extra');
 const {rollup} = require('rollup');
 const {cp, mv, rm} = require('shelljs');
@@ -63,14 +63,6 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
   // including imports/ exports for better tree shaking.
   .then(() => ensureDirSync(finalEsnext))
   .then(() => cp('-R', `${intermediateBuild}/*`, finalEsnext))
-  .then(() => {
-    const indexPath = join(finalEsnext, 'index.js');
-    const esnextIndex = readFileSync(indexPath, 'utf8');
-    writeFileSync(
-      indexPath,
-      esnextIndex.replace(/import '.\/styles\/global\.scss';/g, ''),
-    );
-  })
   // Main CJS and ES modules bundles: supports all our supported browsers and
   // uses the full class names for any Sass imports
   .then(() => runRollup())
