@@ -5,6 +5,7 @@ import React, {
   FunctionComponent,
   useMemo,
   useEffect,
+  Component,
 } from 'react';
 import debounce from 'lodash/debounce';
 import {
@@ -142,7 +143,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   onDragLeave,
 }: DropZoneProps) {
   const node = useRef<HTMLDivElement>(null);
-  const fileInputNode = useRef<HTMLInputElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
 
   const adjustSize = useCallback(
@@ -331,12 +331,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     adjustSize();
   });
 
-  useEffect(() => {
-    if (!openFileDialog) return;
-    open();
-    onFileDialogClose && onFileDialogClose();
-  }, [onFileDialogClose, openFileDialog]);
-
   const id = useUniqueId('DropZone', idProp);
   const suffix = capitalize(type);
   const overlayTextWithDefault =
@@ -347,15 +341,14 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     errorOverlayText === undefined
       ? i18n.translate(`Polaris.DropZone.errorOverlayText${suffix}`)
       : errorOverlayText;
-  const inputAttributes: object = {
+
+  const inputAttributes = {
     id,
     accept,
     disabled,
-    type: 'file',
+    type: 'file' as const,
     multiple: allowMultiple,
-    ref: fileInputNode,
     onChange: handleDrop,
-    autoComplete: 'off',
     onFocus: handleFocus,
     onBlur: handleBlur,
   };
@@ -416,7 +409,11 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
           {dragErrorOverlay}
           <div className={styles.Container}>{children}</div>
           <VisuallyHidden>
-            <input {...inputAttributes} />
+            <DropZoneInput
+              {...inputAttributes}
+              openFileDialog={openFileDialog}
+              onFileDialogClose={onFileDialogClose}
+            />
           </VisuallyHidden>
         </div>
       </Labelled>
@@ -444,7 +441,10 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   }
 
   function open() {
-    fileInputNode.current && fileInputNode.current.click();
+    const fileInputNode = node.current && node.current.querySelector(`#${id}`);
+    fileInputNode &&
+      fileInputNode instanceof HTMLElement &&
+      fileInputNode.click();
   }
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
@@ -460,3 +460,45 @@ function stopEvent(event: DragEvent | React.DragEvent) {
 }
 
 DropZone.FileUpload = FileUpload;
+
+interface DropZoneInputProps {
+  id: string;
+  accept?: string;
+  disabled: boolean;
+  type: Type;
+  multiple: boolean;
+  openFileDialog?: boolean;
+  onChange(event: DragEvent): void;
+  onFocus(): void;
+  onBlur(): void;
+  onFileDialogClose?(): void;
+}
+
+class DropZoneInput extends Component<DropZoneInputProps, never> {
+  private fileInputNode = React.createRef<HTMLInputElement>();
+
+  componentDidMount() {
+    this.props.openFileDialog && this.triggerFileDialog();
+  }
+
+  componentDidUpdate() {
+    this.props.openFileDialog && this.triggerFileDialog();
+  }
+
+  render() {
+    const {openFileDialog, onFileDialogClose, ...inputProps} = this.props;
+    return (
+      <input {...inputProps} ref={this.fileInputNode} autoComplete="off" />
+    );
+  }
+
+  private triggerFileDialog = () => {
+    this.open();
+    this.props.onFileDialogClose && this.props.onFileDialogClose();
+  };
+
+  private open = () => {
+    if (!this.fileInputNode.current) return;
+    this.fileInputNode.current.click();
+  };
+}
