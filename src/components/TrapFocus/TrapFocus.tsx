@@ -88,7 +88,8 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
       if (event.srcElement === findFirstFocusableNode(focusTrapWrapper)) {
         return write(() => focusLastFocusableNode(focusTrapWrapper));
       }
-      const firstNode = findFirstFocusableNode(focusTrapWrapper) as HTMLElement;
+      const firstNode =
+        findFirstFocusableNode(focusTrapWrapper) || focusTrapWrapper;
       write(() => focusFirstFocusableNode(firstNode));
     }
   };
