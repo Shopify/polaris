@@ -12,6 +12,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed `AppBridge`, `ResourcePicker` and `Loading`, `Modal`, `Page`, `Toast` App Bridge render delegation ([#2046](https://github.com/Shopify/polaris-react/pull/2046))
 - Drop support for iOS 9 ([#2195](https://github.com/Shopify/polaris-react/pull/2195))
 - The styles in global.scss have been moved into AppProvider. This only affects apps using the 'esnext' build; if you import `@shopify/polaris/styles.css` you are unaffected. Any applications using the 'esnext' build no longer needs to import the `@shopify/polaris/esnext/global.scss` file as it does nothing. An empty global.scss is provided in order to not break existing integration with sewing-kit versions < 0.113.0. ([#2392](https://github.com/Shopify/polaris-react/pull/2392))
+- Reversed the precedence of the language dictionaries passed into the `AppProvider`'s `i18n` prop. When passing an array of dictionaries the first dictionary should be your prefered language, followed by any fallback languages. ([]())
 
 ### Enhancements
 

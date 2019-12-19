@@ -459,13 +459,8 @@ function App() {
 
   // i18n.translations is an array of translation dictionaries, where the first
   // dictionary is the desired language, and the second is the fallback.
-  // AppProvider however expects that the first dictionary is the fallback
-  // and the second is the desired language. Thus we need to reverse the array
-  // to ensure the dictionaries are in the order desired by AppProvider
   return (
-    <AppProvider i18n={i18n.translations.reverse()}>
-      {/* App content */}
-    </AppProvider>
+    <AppProvider i18n={i18n.translations}>{/* App content */}</AppProvider>
   );
 }
 ```
