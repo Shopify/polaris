@@ -81,6 +81,8 @@ export interface FiltersProps {
   disabled?: boolean;
   /** Additional hint text to display below the filters */
   helpText?: string | React.ReactNode;
+  /** Experimental: Hide tags for applied filters */
+  suppressTagOutput?: boolean;
 }
 
 type ComposedProps = FiltersProps & WithAppProviderProps;
@@ -134,6 +136,7 @@ class Filters extends React.Component<ComposedProps, State> {
       children,
       disabled = false,
       helpText,
+      suppressTagOutput,
     } = this.props;
     const {resourceName} = this.context;
     const {open, readyForFocus} = this.state;
@@ -212,6 +215,12 @@ class Filters extends React.Component<ComposedProps, State> {
       );
     });
 
+    const appliedFiltersCount = appliedFilters ? appliedFilters.length : 0;
+    const filterCountMarkup =
+      suppressTagOutput && appliedFiltersCount > 0
+        ? ` (${appliedFiltersCount})`
+        : '';
+
     const rightActionMarkup = (
       <div ref={this.moreFiltersButtonContainer}>
         <Button
@@ -220,6 +229,7 @@ class Filters extends React.Component<ComposedProps, State> {
           disabled={disabled}
         >
           {intl.translate('Polaris.Filters.moreFilters')}
+          {filterCountMarkup}
         </Button>
       </div>
     );
@@ -271,6 +281,7 @@ class Filters extends React.Component<ComposedProps, State> {
       <div className={styles.FiltersContainerHeader}>
         <DisplayText size="small">
           {intl.translate('Polaris.Filters.moreFilters')}
+          {filterCountMarkup}
         </DisplayText>
         <Button
           icon={CancelSmallMinor}
@@ -291,6 +302,7 @@ class Filters extends React.Component<ComposedProps, State> {
         />
         <DisplayText size="small">
           {intl.translate('Polaris.Filters.moreFilters')}
+          {filterCountMarkup}
         </DisplayText>
         <Button onClick={this.closeFilters} primary>
           {intl.translate('Polaris.Filters.done')}
@@ -326,7 +338,7 @@ class Filters extends React.Component<ComposedProps, State> {
     );
 
     const tagsMarkup =
-      appliedFilters && appliedFilters.length ? (
+      !suppressTagOutput && appliedFilters && appliedFilters.length ? (
         <div className={styles.TagsContainer}>
           {appliedFilters.map((filter) => {
             return (
