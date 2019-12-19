@@ -22,11 +22,15 @@ $chekbox-label-margin: rem(20px);
   text-align: left;
   background: transparent;
   border: var(--p-override-none, border(dark));
-  border-radius: var(--p-border-radius-base, border-radius()) 0 0
-    var(--p-border-radius-base, border-radius());
-  border-right: none;
+  border-radius: var(--p-border-radius-base, border-radius());
   width: 100%;
   box-shadow: var(--p-override-none, shadow(faint));
+
+  [data-buttongroup-segmented] & {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+  }
 
   &.globalTheming {
     @include recolor-icon(var(--p-icon-on-surface));

@@ -69,8 +69,5 @@ function mockGetBoundingClientRect({
     right,
     height,
     width,
-    x: 0,
-    y: 0,
-    toJSON() {},
   });
 }

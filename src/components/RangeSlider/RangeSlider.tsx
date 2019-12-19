@@ -6,9 +6,9 @@ import {RangeSliderDefault} from './utilities';
 import {SingleThumb, DualThumb} from './components';
 
 // The script in the styleguide that generates the Props Explorer data expects
-// that the interface defining the props is defined in this file, not imported
-// from elsewhere. This silly workaround ensures that the Props Explorer table
-// is generated correctly.
+// a component's props to be found in the Props interface. This silly workaround
+// ensures that the Props Explorer table is generated correctly, instead of
+// crashing if we write `RangeSlider extends React.Component<RangeSliderProps>`
 interface Props extends RangeSliderProps {}
 
 export function RangeSlider({
