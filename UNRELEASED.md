@@ -3,6 +3,7 @@
 ### Breaking changes
 
 ### Enhancements
+
 - Added `cursor: pointer` to `Choice` ([#2491](https://github.com/Shopify/polaris-react/pull/2491))
 - Added `external` prop to `ResourceList` ([#2408](https://github.com/Shopify/polaris-react/pull/2408))
 - Added `onMouseEnter` and `onTouchStart` props to `Button` ([#2409](https://github.com/Shopify/polaris-react/pull/2409))
@@ -17,6 +18,7 @@
 - `Page` no longer renders navigation or actions in print mode ([#2469](https://github.com/Shopify/polaris-react/pull/2469))
 - Added an `emptyState` prop to `ResourceList` ([#2160](https://github.com/Shopify/polaris-react/pull/2160))
 - Migrated `Dropzone` to a functional component and reduce complexity ([#2360](https://github.com/Shopify/polaris-react/pull/2360))
+
 ### Bug fixes
 
 ### Documentation
