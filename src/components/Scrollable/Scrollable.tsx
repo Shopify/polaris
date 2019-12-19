@@ -60,7 +60,7 @@ export class Scrollable extends React.Component<ScrollableProps, State> {
 
   private stickyManager = new StickyManager();
 
-  private scrollArea: HTMLElement | null;
+  private scrollArea: HTMLElement | null = null;
 
   private handleResize = debounce(
     () => {

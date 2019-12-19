@@ -107,14 +107,6 @@ class Filters extends React.Component<ComposedProps, State> {
   private moreFiltersButtonContainer = createRef<HTMLDivElement>();
   private focusNode = createRef<HTMLDivElement>();
 
-  private get hasAppliedFilters(): boolean {
-    const {appliedFilters, queryValue} = this.props;
-    const filtersApplied = Boolean(appliedFilters && appliedFilters.length > 0);
-    const queryApplied = Boolean(queryValue && queryValue !== '');
-
-    return filtersApplied || queryApplied;
-  }
-
   render() {
     const {
       filters,
@@ -300,7 +292,7 @@ class Filters extends React.Component<ComposedProps, State> {
 
     const filtersDesktopFooterMarkup = (
       <div className={styles.FiltersContainerFooter}>
-        <Button onClick={onClearAll} disabled={!this.hasAppliedFilters}>
+        <Button onClick={onClearAll} disabled={!this.hasAppliedFilters()}>
           {intl.translate('Polaris.Filters.clearAllFilters')}
         </Button>
         <Button onClick={this.closeFilters} primary>
@@ -311,7 +303,7 @@ class Filters extends React.Component<ComposedProps, State> {
 
     const filtersMobileFooterMarkup = (
       <div className={styles.FiltersMobileContainerFooter}>
-        {this.hasAppliedFilters ? (
+        {this.hasAppliedFilters() ? (
           <Button onClick={onClearAll} fullWidth>
             {intl.translate('Polaris.Filters.clearAllFilters')}
           </Button>
@@ -390,6 +382,14 @@ class Filters extends React.Component<ComposedProps, State> {
         <KeypressListener keyCode={Key.Escape} handler={this.closeFilters} />
       </div>
     );
+  }
+
+  private hasAppliedFilters(): boolean {
+    const {appliedFilters, queryValue} = this.props;
+    const filtersApplied = Boolean(appliedFilters && appliedFilters.length > 0);
+    const queryApplied = Boolean(queryValue && queryValue !== '');
+
+    return filtersApplied || queryApplied;
   }
 
   private getAppliedFilterContent(key: string): string | undefined {

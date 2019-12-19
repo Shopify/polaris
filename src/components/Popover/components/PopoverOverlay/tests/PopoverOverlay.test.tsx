@@ -1,7 +1,6 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {TextContainer} from 'components';
 import {Key} from '../../../../../types';
 import {PositionedOverlay} from '../../../../PositionedOverlay';

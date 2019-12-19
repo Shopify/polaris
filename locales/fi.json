@@ -78,7 +78,7 @@
       "secondaryAction": "Jatka muokkausta"
     },
     "DropZone": {
-      "overlayTextFile": "Pudota lähetettävä tiedosto",
+      "overlayTextFile": "Pudota ladattava tiedosto",
       "overlayTextImage": "Pudota lähetettävä kuva",
       "errorOverlayTextFile": "Tiedostotyyppi ei kelpaa",
       "errorOverlayTextImage": "Kuvan tyyppi ei kelpaa",

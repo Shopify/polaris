@@ -6,6 +6,7 @@ import {
   ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
+  DefaultColorScheme,
 } from '../../utilities/theme';
 import {MediaQueryContext} from '../../utilities/media-query';
 import {
@@ -17,7 +18,7 @@ import {
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
 import {AppBridgeContext, AppBridgeOptions} from '../../utilities/app-bridge';
-import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
+import {I18n, I18nContext} from '../../utilities/i18n';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
 import {Features, FeaturesContext} from '../../utilities/features';
 import {
@@ -38,7 +39,7 @@ type MediaQueryContextType = NonNullable<
  */
 export interface WithPolarisTestProviderOptions {
   // Contexts provided by AppProvider
-  i18n?: TranslationDictionary | TranslationDictionary[];
+  i18n?: ConstructorParameters<typeof I18n>[0];
   appBridge?: AppBridgeOptions;
   link?: LinkLikeComponent;
   theme?: ThemeConfig;
@@ -85,7 +86,10 @@ export function PolarisTestProvider({
 
   const {unstableGlobalTheming = false} = features;
   const customProperties = unstableGlobalTheming
-    ? buildCustomProperties(theme, unstableGlobalTheming)
+    ? buildCustomProperties(
+        {...theme, colorScheme: DefaultColorScheme},
+        unstableGlobalTheming,
+      )
     : undefined;
   const mergedTheme = buildThemeContext(theme, customProperties);
 

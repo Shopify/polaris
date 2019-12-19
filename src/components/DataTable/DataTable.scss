@@ -151,7 +151,7 @@ $breakpoint: 768px;
 
 .Cell-total {
   @include text-emphasis-strong;
-  background: var(--p-surface-foreground-subdued, color('sky', 'lighter'));
+  background: var(--p-surface-subdued, color('sky', 'lighter'));
   border-bottom: border();
 }
 
@@ -162,7 +162,7 @@ $breakpoint: 768px;
 
 .Footer {
   padding: spacing();
-  background: var(--p-surface-foreground-subdued, color('sky', 'light'));
-  color: var(--p-text-subdued-on-surface, color('ink', 'lighter'));
+  background: var(--p-surface-subdued, color('sky', 'light'));
+  color: var(--p-text-subdued, color('ink', 'lighter'));
   text-align: center;
 }

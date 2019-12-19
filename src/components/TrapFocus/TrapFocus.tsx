@@ -24,7 +24,7 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
     shouldFocusSelf: undefined,
   };
 
-  private focusTrapWrapper: HTMLElement;
+  private focusTrapWrapper: HTMLElement | null = null;
 
   componentDidMount() {
     this.setState(this.handleTrappingChange());
@@ -33,7 +33,10 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
   handleTrappingChange() {
     const {trapping = true} = this.props;
 
-    if (this.focusTrapWrapper.contains(document.activeElement)) {
+    if (
+      this.focusTrapWrapper &&
+      this.focusTrapWrapper.contains(document.activeElement)
+    ) {
       return {shouldFocusSelf: false};
     }
 
@@ -44,7 +47,7 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
     const {children} = this.props;
 
     return (
-      <Focus disabled={this.shouldDisable} root={this.focusTrapWrapper}>
+      <Focus disabled={this.shouldDisable()} root={this.focusTrapWrapper}>
         <div ref={this.setFocusTrapWrapper}>
           <EventListener event="focusout" handler={this.handleBlur} />
           {children}
@@ -53,7 +56,7 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
     );
   }
 
-  private get shouldDisable() {
+  private shouldDisable() {
     const {trapping = true} = this.props;
     const {shouldFocusSelf} = this.state;
 
@@ -73,7 +76,7 @@ export class TrapFocus extends React.PureComponent<TrapFocusProps, State> {
     const {focusTrapWrapper} = this;
     const {trapping = true} = this.props;
 
-    if (trapping === false) {
+    if (relatedTarget == null || trapping === false) {
       return;
     }
 

@@ -6,7 +6,7 @@ import {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {Button} from '../../../Button';
 import {useI18n} from '../../../../utilities/i18n';
 import {useTheme} from '../../../../utilities/theme';
-import {useForcibleToggle} from '../../../../utilities/use-toggle';
+import {useToggle} from '../../../../utilities/use-toggle';
 import {Image} from '../../../Image';
 import {Stack} from '../../../Stack';
 
@@ -23,13 +23,11 @@ export function ContextualSaveBar({
   const i18n = useI18n();
   const {logo} = useTheme();
 
-  const [
-    discardConfirmationModalVisible,
-    {
-      toggle: toggleDiscardConfirmationModal,
-      forceFalse: closeDiscardConfirmationModal,
-    },
-  ] = useForcibleToggle(false);
+  const {
+    value: discardConfirmationModalVisible,
+    toggle: toggleDiscardConfirmationModal,
+    setFalse: closeDiscardConfirmationModal,
+  } = useToggle(false);
 
   const handleDiscardAction = useCallback(() => {
     if (discardAction && discardAction.onAction) {
