@@ -29,9 +29,12 @@ $skip-vertical-offset: rem(10px);
 
   @include frame-when-nav-displayed {
     z-index: 1;
-    top: top-bar-height();
     display: flex;
-    height: calc(100% - #{top-bar-height()});
+
+    &:not(.Navigation-globalTheming) {
+      top: top-bar-height();
+      height: calc(100% - #{top-bar-height()});
+    }
   }
 
   &:focus {
@@ -105,6 +108,12 @@ $skip-vertical-offset: rem(10px);
   left: 0;
   width: 100%;
   height: top-bar-height();
+
+  &.TopBar-globalTheming {
+    @include frame-when-nav-displayed {
+      left: layout-width(nav);
+    }
+  }
 }
 
 .ContextualSaveBar {

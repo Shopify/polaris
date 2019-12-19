@@ -21,7 +21,6 @@ $stacking-order: (
   width: 100%;
   max-width: $search-max-width;
 }
-
 // We have both a focused class and a focus pseudo selector here
 // because we allow "faked" focus for when the search is still
 // active, but is not actually the focused element in the DOM
@@ -125,7 +124,7 @@ $stacking-order: (
   );
   will-change: background-color;
   transition: background-color duration() easing();
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-wide, border-radius());
   animation: toLightBackground 0.01ms;
 }
 

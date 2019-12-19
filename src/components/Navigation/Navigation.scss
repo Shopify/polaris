@@ -32,9 +32,13 @@ $nav-max-width: rem(360px);
   flex: 0 0 auto;
 }
 
-.ContextControl {
-  @include breakpoint-after(nav-min-window-corrected()) {
+@include breakpoint-after(nav-min-window-corrected()) {
+  .ContextControl {
     display: none;
+
+    .Navigation-globalTheming & {
+      display: block;
+    }
   }
 }
 
@@ -294,11 +298,11 @@ $secondary-item-font-size: rem(15px);
 .Section {
   @include unstyled-list;
   flex: 0 0 auto;
-  padding: spacing() 0;
   @include safe-area-for(padding-left, 0, left);
 
   + .Section {
     padding-top: spacing(extra-tight);
+    padding-bottom: spacing();
   }
 }
 

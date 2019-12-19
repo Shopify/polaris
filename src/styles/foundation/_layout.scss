@@ -59,6 +59,10 @@ $dismiss-icon-size: 32px;
   @return rem(56px);
 }
 
+@function unstable-top-bar-height() {
+  @return rem(68px);
+}
+
 @function mobile-nav-width() {
   @return calc(100vw - #{rem($dismiss-icon-size) + spacing() * 2});
 }

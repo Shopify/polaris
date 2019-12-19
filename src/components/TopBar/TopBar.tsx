@@ -4,6 +4,7 @@ import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useI18n} from '../../utilities/i18n';
 import {useTheme} from '../../utilities/theme';
+import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
@@ -58,6 +59,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
 }: TopBarProps) {
   const i18n = useI18n();
   const {logo} = useTheme();
+  const {unstableGlobalTheming = false} = useFeatures();
 
   const {
     value: focused,
@@ -65,7 +67,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     setFalse: forceFalseFocused,
   } = useToggle(false);
 
-  const className = classNames(
+  const iconClassName = classNames(
     styles.NavigationIcon,
     focused && styles.focused,
   );
@@ -73,20 +75,23 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   const navigationButtonMarkup = showNavigationToggle ? (
     <button
       type="button"
-      className={className}
+      className={iconClassName}
       onClick={onNavigationToggle}
       onFocus={forceTrueFocused}
       onBlur={forceFalseFocused}
       aria-label={i18n.translate('Polaris.TopBar.toggleMenuLabel')}
     >
-      <Icon source={MobileHamburgerMajorMonotone} color="white" />
+      <Icon
+        source={MobileHamburgerMajorMonotone}
+        color={unstableGlobalTheming ? 'black' : 'white'}
+      />
     </button>
   ) : null;
 
   const width = getWidth(logo, 104);
   let contextMarkup;
 
-  if (contextControl) {
+  if (contextControl && !unstableGlobalTheming) {
     contextMarkup = (
       <div testID="ContextControl" className={styles.ContextControl}>
         {contextControl}
@@ -124,8 +129,13 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     </React.Fragment>
   ) : null;
 
+  const className = classNames(
+    styles.TopBar,
+    unstableGlobalTheming && styles['Topbar-globalTheming'],
+  );
+
   return (
-    <div className={styles.TopBar}>
+    <div className={className}>
       {navigationButtonMarkup}
       {contextMarkup}
       <div className={styles.Contents}>

@@ -20,6 +20,10 @@ $context-control-expand-after: 1400px;
   }
 }
 
+.Topbar-globalTheming {
+  height: unstable-top-bar-height();
+}
+
 .LogoContainer {
   display: none;
   @include breakpoint-after(nav-min-window-corrected()) {
