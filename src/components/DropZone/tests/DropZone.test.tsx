@@ -31,6 +31,7 @@ const duplicateFiles = [
 const acceptedFiles = [files[0]];
 const rejectedFiles = [files[1]];
 const origGetBoundingClientRect = Element.prototype.getBoundingClientRect;
+const origClick = HTMLElement.prototype.click;
 const widths = {
   small: 99,
   medium: 159,
@@ -48,6 +49,7 @@ describe('<DropZone />', () => {
 
   afterEach(() => {
     clock.restore();
+    HTMLElement.prototype.click = origClick;
   });
 
   afterAll(() => {
@@ -218,20 +220,12 @@ describe('<DropZone />', () => {
     });
 
     it('triggers the file input click event if no onClick is provided', () => {
-      const dropZone = mountWithAppProvider(
-        <DropZone label="My DropZone label" />,
-      );
+      const dropZone = mountWithApp(<DropZone label="My DropZone label" />);
 
-      const fileInput = dropZone
-        .find('input[type="file"]')
-        .getDOMNode() as HTMLInputElement;
+      const fileInput = dropZone.find('input')!.domNode;
 
-      const spy = jest.spyOn(fileInput, 'click');
-
-      dropZone
-        .find('div')
-        .at(4)
-        .simulate('click');
+      const spy = jest.spyOn(fileInput as HTMLElement, 'click');
+      dropZone.find('div', {'aria-disabled': false})!.trigger('onClick');
 
       expect(spy).toHaveBeenCalled();
     });
@@ -354,6 +348,20 @@ describe('<DropZone />', () => {
     });
   });
 
+  describe('onFileDialogClose', () => {
+    it('triggers onFileDialogClose when openFileDialog is true', () => {
+      const spy = jest.fn();
+      mountWithApp(
+        <DropZone
+          label="My DropZone label"
+          openFileDialog
+          onFileDialogClose={spy}
+        />,
+      );
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
   describe('context', () => {
     it('sets type from props on context', () => {
       const type = 'image';
@@ -434,6 +442,13 @@ describe('<DropZone />', () => {
   });
 
   describe('lifecycle', () => {
+    it('triggers the file input dialog on mount when openFileDialog is true', () => {
+      const spy = jest.spyOn(HTMLElement.prototype, 'click');
+
+      mountWithApp(<DropZone label="My DropZone label" openFileDialog />);
+      expect(spy).toHaveBeenCalled();
+    });
+
     it('updates safely', () => {
       const dropZone = mountWithAppProvider(<DropZone />);
 

@@ -2,7 +2,6 @@ import React, {useRef, useState, useEffect} from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Focus, FocusProps} from '../Focus';
-import {Discard} from '../../../types';
 
 describe('<Focus />', () => {
   it('mounts', () => {
@@ -44,7 +43,7 @@ describe('<Focus />', () => {
   });
 });
 
-function FocusTestWrapper({children, ...props}: Discard<FocusProps, 'root'>) {
+function FocusTestWrapper({children, ...props}: Omit<FocusProps, 'root'>) {
   const root = useRef<HTMLDivElement>(null);
   const [, setMount] = useState(false);
 

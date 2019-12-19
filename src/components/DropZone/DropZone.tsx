@@ -5,8 +5,13 @@ import React, {
   FunctionComponent,
   useMemo,
   useEffect,
+  Component,
 } from 'react';
 import debounce from 'lodash/debounce';
+import {
+  addEventListener,
+  removeEventListener,
+} from '@shopify/javascript-utilities/events';
 import {
   DragDropMajorMonotone,
   CircleAlertMajorMonotone,
@@ -21,7 +26,7 @@ import {DisplayText} from '../DisplayText';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {Labelled, Action} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
-import {useEventListener} from '../../utilities/use-event-listener';
+import {isServer} from '../../utilities/target';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
@@ -138,7 +143,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   onDragLeave,
 }: DropZoneProps) {
   const node = useRef<HTMLDivElement>(null);
-  const fileInputNode = useRef<HTMLInputElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
 
   const adjustSize = useCallback(
@@ -180,7 +184,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   const [measuring, setMeasuring] = useState(true);
 
   const i18n = useI18n();
-  const dropNode = dropOnPage ? document : node;
 
   const getValidatedFiles = useCallback(
     (files: File[] | DataTransferItem[]) => {
@@ -282,8 +285,8 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
       if (disabled || (!allowMultiple && numFiles > 0)) return;
 
       dragTargets.current = dragTargets.current.filter((el: Node) => {
-        const compareNode =
-          dropNode && 'current' in dropNode ? dropNode.current : document;
+        const compareNode = dropOnPage && !isServer ? document : node.current;
+
         return el !== event.target && compareNode && compareNode.contains(el);
       });
 
@@ -294,24 +297,39 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
       onDragLeave && onDragLeave();
     },
-    [allowMultiple, disabled, dropNode, numFiles, onDragLeave],
+    [allowMultiple, dropOnPage, disabled, numFiles, onDragLeave],
   );
 
-  useEventListener(dropNode, 'drop', handleDrop);
-  useEventListener(dropNode, 'dragover', handleDragOver);
-  useEventListener(dropNode, 'dragenter', handleDragEnter);
-  useEventListener(dropNode, 'dragleave', handleDragLeave);
-  useEventListener(null, 'resize', adjustSize, {}, {defaultToWindow: true});
+  useEffect(() => {
+    const dropNode = dropOnPage ? document : node.current;
+
+    if (!dropNode) return;
+
+    addEventListener(dropNode, 'drop', handleDrop);
+    addEventListener(dropNode, 'dragover', handleDragOver);
+    addEventListener(dropNode, 'dragenter', handleDragEnter);
+    addEventListener(dropNode, 'dragleave', handleDragLeave);
+    addEventListener(window, 'resize', adjustSize);
+
+    return () => {
+      removeEventListener(dropNode, 'drop', handleDrop);
+      removeEventListener(dropNode, 'dragover', handleDragOver);
+      removeEventListener(dropNode, 'dragenter', handleDragEnter);
+      removeEventListener(dropNode, 'dragleave', handleDragLeave);
+      removeEventListener(window, 'resize', adjustSize);
+    };
+  }, [
+    dropOnPage,
+    handleDrop,
+    handleDragOver,
+    handleDragEnter,
+    handleDragLeave,
+    adjustSize,
+  ]);
 
   useComponentDidMount(() => {
     adjustSize();
   });
-
-  useEffect(() => {
-    if (!openFileDialog) return;
-    open();
-    onFileDialogClose && onFileDialogClose();
-  }, [onFileDialogClose, openFileDialog]);
 
   const id = useUniqueId('DropZone', idProp);
   const suffix = capitalize(type);
@@ -323,15 +341,14 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     errorOverlayText === undefined
       ? i18n.translate(`Polaris.DropZone.errorOverlayText${suffix}`)
       : errorOverlayText;
-  const inputAttributes: object = {
+
+  const inputAttributes = {
     id,
     accept,
     disabled,
-    type: 'file',
+    type: 'file' as const,
     multiple: allowMultiple,
-    ref: fileInputNode,
     onChange: handleDrop,
-    autoComplete: 'off',
     onFocus: handleFocus,
     onBlur: handleBlur,
   };
@@ -392,7 +409,11 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
           {dragErrorOverlay}
           <div className={styles.Container}>{children}</div>
           <VisuallyHidden>
-            <input {...inputAttributes} />
+            <DropZoneInput
+              {...inputAttributes}
+              openFileDialog={openFileDialog}
+              onFileDialogClose={onFileDialogClose}
+            />
           </VisuallyHidden>
         </div>
       </Labelled>
@@ -420,7 +441,10 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   }
 
   function open() {
-    fileInputNode.current && fileInputNode.current.click();
+    const fileInputNode = node.current && node.current.querySelector(`#${id}`);
+    fileInputNode &&
+      fileInputNode instanceof HTMLElement &&
+      fileInputNode.click();
   }
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
@@ -436,3 +460,47 @@ function stopEvent(event: DragEvent | React.DragEvent) {
 }
 
 DropZone.FileUpload = FileUpload;
+
+interface DropZoneInputProps {
+  id: string;
+  accept?: string;
+  disabled: boolean;
+  type: Type;
+  multiple: boolean;
+  openFileDialog?: boolean;
+  onChange(event: DragEvent | React.ChangeEvent<HTMLInputElement>): void;
+  onFocus(): void;
+  onBlur(): void;
+  onFileDialogClose?(): void;
+}
+
+// Due to security reasons, browsers do not allow file inputs to be opened artificially.
+// For example `useEffect(() => { ref.click() })`. Oddly enough react class-based components bi-pass this.
+class DropZoneInput extends Component<DropZoneInputProps, never> {
+  private fileInputNode = React.createRef<HTMLInputElement>();
+
+  componentDidMount() {
+    this.props.openFileDialog && this.triggerFileDialog();
+  }
+
+  componentDidUpdate() {
+    this.props.openFileDialog && this.triggerFileDialog();
+  }
+
+  render() {
+    const {openFileDialog, onFileDialogClose, ...inputProps} = this.props;
+    return (
+      <input {...inputProps} ref={this.fileInputNode} autoComplete="off" />
+    );
+  }
+
+  private triggerFileDialog = () => {
+    this.open();
+    this.props.onFileDialogClose && this.props.onFileDialogClose();
+  };
+
+  private open = () => {
+    if (!this.fileInputNode.current) return;
+    this.fileInputNode.current.click();
+  };
+}

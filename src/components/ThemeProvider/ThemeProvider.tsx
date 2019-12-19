@@ -13,7 +13,12 @@ import {useFeatures} from '../../utilities/features';
 
 type Inverse = 'inverse';
 
-interface ThemeProviderThemeConfig extends Omit<ThemeConfig, 'colorScheme'> {
+// TS 3.5+ includes the built-in Omit type which does the same thing. But if we
+// use that then we break consumers on older versions of TS. Consider removing
+// this when we drop support for consumers using TS <3.5 (in v5?)
+type Discard<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+interface ThemeProviderThemeConfig extends Discard<ThemeConfig, 'colorScheme'> {
   colorScheme?: ColorScheme | Inverse;
 }
 

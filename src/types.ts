@@ -305,8 +305,6 @@ export type DeepPartial<T> = {
     : DeepPartial<T[P]>;
 };
 
-export type Discard<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-
 export type EffectCallback = () => void | (() => void | undefined);
 
 export type DependencyList = ReadonlyArray<unknown>;

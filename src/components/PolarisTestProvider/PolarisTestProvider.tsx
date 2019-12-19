@@ -17,7 +17,7 @@ import {
   StickyManager,
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
-import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
+import {I18n, I18nContext} from '../../utilities/i18n';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
 import {Features, FeaturesContext} from '../../utilities/features';
 import {
@@ -38,7 +38,7 @@ type MediaQueryContextType = NonNullable<
  */
 export interface WithPolarisTestProviderOptions {
   // Contexts provided by AppProvider
-  i18n?: TranslationDictionary | TranslationDictionary[];
+  i18n?: ConstructorParameters<typeof I18n>[0];
   link?: LinkLikeComponent;
   theme?: ThemeConfig;
   mediaQuery?: Partial<MediaQueryContextType>;

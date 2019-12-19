@@ -77,9 +77,9 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     measuring: true,
   };
 
-  private containerNode: HTMLElement | null;
-  private largeScreenButtonsNode: HTMLElement | null;
-  private moreActionsNode: HTMLElement | null;
+  private containerNode: HTMLElement | null = null;
+  private largeScreenButtonsNode: HTMLElement | null = null;
+  private moreActionsNode: HTMLElement | null = null;
   private checkableWrapperNode = createRef<HTMLDivElement>();
   private largeScreenGroupNode = createRef<HTMLDivElement>();
   private smallScreenGroupNode = createRef<HTMLDivElement>();
