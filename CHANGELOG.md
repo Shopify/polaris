@@ -8,6 +8,16 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.10.1 - 2019-12-20
+
+### Bug fixes
+
+- Fixed type-error in `TrapFocus` that caused `querySelector` to run on null ([#2574](https://github.com/Shopify/polaris-react/pull/2574))
+
+### Development workflow
+
+- Refactored I18n class ([#2562](https://github.com/Shopify/polaris-react/pull/2562))
+
 ## 4.10.0 - 2019-12-18
 
 ### Bug fixes
