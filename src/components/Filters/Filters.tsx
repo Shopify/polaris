@@ -81,8 +81,8 @@ export interface FiltersProps {
   disabled?: boolean;
   /** Additional hint text to display below the filters */
   helpText?: string | React.ReactNode;
-  /** Experimental: Hide tags for applied filters */
-  suppressTagOutput?: boolean;
+  /** Hide tags for applied filters */
+  hideTags?: boolean;
 }
 
 type ComposedProps = FiltersProps & WithAppProviderProps;
@@ -136,7 +136,7 @@ class Filters extends React.Component<ComposedProps, State> {
       children,
       disabled = false,
       helpText,
-      suppressTagOutput,
+      hideTags,
     } = this.props;
     const {resourceName} = this.context;
     const {open, readyForFocus} = this.state;
@@ -216,10 +216,12 @@ class Filters extends React.Component<ComposedProps, State> {
     });
 
     const appliedFiltersCount = appliedFilters ? appliedFilters.length : 0;
-    const filterCountMarkup =
-      suppressTagOutput && appliedFiltersCount > 0
-        ? ` (${appliedFiltersCount})`
-        : '';
+    const moreFiltersLabel =
+      hideTags && appliedFiltersCount > 0
+        ? intl.translate('Polaris.Filters.moreFiltersWithCount', {
+            count: appliedFiltersCount,
+          })
+        : intl.translate('Polaris.Filters.moreFilters');
 
     const rightActionMarkup = (
       <div ref={this.moreFiltersButtonContainer}>
@@ -228,8 +230,7 @@ class Filters extends React.Component<ComposedProps, State> {
           testID="SheetToggleButton"
           disabled={disabled}
         >
-          {intl.translate('Polaris.Filters.moreFilters')}
-          {filterCountMarkup}
+          {moreFiltersLabel}
         </Button>
       </div>
     );
@@ -279,10 +280,7 @@ class Filters extends React.Component<ComposedProps, State> {
 
     const filtersDesktopHeaderMarkup = (
       <div className={styles.FiltersContainerHeader}>
-        <DisplayText size="small">
-          {intl.translate('Polaris.Filters.moreFilters')}
-          {filterCountMarkup}
-        </DisplayText>
+        <DisplayText size="small">{moreFiltersLabel}</DisplayText>
         <Button
           icon={CancelSmallMinor}
           plain
@@ -300,10 +298,7 @@ class Filters extends React.Component<ComposedProps, State> {
           accessibilityLabel={intl.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
         />
-        <DisplayText size="small">
-          {intl.translate('Polaris.Filters.moreFilters')}
-          {filterCountMarkup}
-        </DisplayText>
+        <DisplayText size="small">{moreFiltersLabel}</DisplayText>
         <Button onClick={this.closeFilters} primary>
           {intl.translate('Polaris.Filters.done')}
         </Button>
@@ -338,7 +333,7 @@ class Filters extends React.Component<ComposedProps, State> {
     );
 
     const tagsMarkup =
-      !suppressTagOutput && appliedFilters && appliedFilters.length ? (
+      !hideTags && appliedFilters && appliedFilters.length ? (
         <div className={styles.TagsContainer}>
           {appliedFilters.map((filter) => {
             return (
