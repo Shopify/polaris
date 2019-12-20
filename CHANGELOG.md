@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.10.2 - 2019-12-20
+
+### Bug fixes
+
+- Fixed errors when consuming apps manage to pass `undefined` as a value into an translation replacements object ([#2579](https://github.com/Shopify/polaris-react/pull/2579))
+
 ## 4.10.1 - 2019-12-20
 
 ### Bug fixes
