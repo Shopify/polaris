@@ -182,6 +182,58 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   }
 }
 
+.success {
+  --p-button-color: var(--p-action-primary);
+  --p-button-text: var(--p-text-on-primary);
+  --p-button-color-hover: var(--p-action-primary-hovered);
+  --p-button-color-active: var(--p-action-primary-pressed);
+  @include button-filled(color('green'), color('green', 'dark'));
+  @include recolor-icon(color('white'));
+
+  &.globalTheming {
+    @include recolor-icon(var(--p-icon-on-branded));
+  }
+
+  &.disabled {
+    @include button-filled-disabled(color('green'));
+  }
+
+  &.pressed {
+    @include button-filled-pressed(
+      $primary-pressed-lightest,
+      $primary-pressed-light,
+      $primary-pressed-dark,
+      $primary-pressed-darkest
+    );
+  }
+}
+
+.warning {
+  --p-button-color: var(--p-action-on-primary);
+  --p-button-text: var(--p-text-on-primary);
+  --p-button-color-hover: var(--p-action-primary-hovered);
+  --p-button-color-active: var(--p-action-primary-pressed);
+  @include button-filled(color('yellow'), color('yellow', 'dark'));
+  @include recolor-icon(color('white'));
+
+  &.globalTheming {
+    @include recolor-icon(var(--p-icon-on-branded));
+  }
+
+  &.disabled {
+    @include button-filled-disabled(color('yellow'));
+  }
+
+  &.pressed {
+    @include button-filled-pressed(
+      $primary-pressed-lightest,
+      $primary-pressed-light,
+      $primary-pressed-dark,
+      $primary-pressed-darkest
+    );
+  }
+}
+
 .destructive {
   --p-button-color: var(--p-action-critical);
   --p-button-text: var(--p-text-on-critical);

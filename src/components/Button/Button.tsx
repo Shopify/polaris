@@ -25,6 +25,10 @@ export interface ButtonProps {
   id?: string;
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
+  /** Provides extra visual weight and identifies the success state of the button */
+  success?: boolean;
+  /** Provides extra visual weight and identifies the warning state of the button */
+  warning?: boolean;
   /** Indicates a dangerous or potentially negative action */
   destructive?: boolean;
   /** Disables the button, disallowing merchant interaction */
@@ -111,6 +115,8 @@ export function Button({
   download,
   icon,
   primary,
+  success,
+  warning,
   outline,
   destructive,
   disclosure,
@@ -141,6 +147,8 @@ export function Button({
     styles.Button,
     unstableGlobalTheming && styles.globalTheming,
     primary && styles.primary,
+    success && styles.success,
+    warning && styles.warning,
     outline && styles.outline,
     destructive && styles.destructive,
     isDisabled && styles.disabled,
@@ -186,7 +194,8 @@ export function Button({
     <span className={styles.Text}>{children}</span>
   ) : null;
 
-  const spinnerColor = primary || destructive ? 'white' : 'inkLightest';
+  const spinnerColor =
+    primary || success || warning || destructive ? 'white' : 'inkLightest';
 
   const spinnerSVGMarkup = loading ? (
     <span className={styles.Spinner}>
