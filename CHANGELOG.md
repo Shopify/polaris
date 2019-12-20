@@ -12,7 +12,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Bug fixes
 
-- Fixed type-error in `TrapFocus` that was causing `querySelector` being ran on null ([#2574](https://github.com/Shopify/polaris-react/pull/2574))
+- Fixed type-error in `TrapFocus` that caused `querySelector` to run on null ([#2574](https://github.com/Shopify/polaris-react/pull/2574))
 
 ### Development workflow
 
