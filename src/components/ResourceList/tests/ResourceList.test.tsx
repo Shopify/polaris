@@ -488,7 +488,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('emptyState', () => {
-    it('renders when no items are provided and hasMoreItems is unset', () => {
+    it('renders when exists', () => {
       const emptyState = (
         <EmptyState
           heading="Upload a file to get started"
@@ -538,7 +538,7 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(EmptyState)).toHaveLength(0);
     });
 
-    it('does not render when exists but hasMoreItems is true', () => {
+    it('does not render when exists, items is empty, but loading is true', () => {
       const emptyState = (
         <EmptyState
           heading="Upload a file to get started"
@@ -554,7 +554,7 @@ describe('<ResourceList />', () => {
 
       const resourceList = mountWithAppProvider(
         <ResourceList
-          hasMoreItems
+          loading
           items={[]}
           renderItem={renderItem}
           emptyState={emptyState}
@@ -565,7 +565,7 @@ describe('<ResourceList />', () => {
     });
   });
 
-  describe('emptySearchResult', () => {
+  describe('<EmptySearchResult />', () => {
     it('renders when filterControl exists and items is empty', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
@@ -605,6 +605,32 @@ describe('<ResourceList />', () => {
           loading
         />,
       );
+      expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
+    });
+
+    it('does not render when filterControl exists, items is empty, and emptyState is set', () => {
+      const emptyStateMarkup = (
+        <EmptyState
+          heading="Upload a file to get started"
+          action={{content: 'Upload files'}}
+          image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+        >
+          <p>
+            You can use the Files section to upload images, videos, and other
+            documents
+          </p>
+        </EmptyState>
+      );
+
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={[]}
+          renderItem={renderItem}
+          filterControl={<div>fake filterControl</div>}
+          emptyState={emptyStateMarkup}
+        />,
+      );
+
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
     });
 
