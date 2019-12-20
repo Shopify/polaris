@@ -9,7 +9,7 @@ $sheet-large-max-desktop-width: rem(1200px);
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--p-surface-foreground, color('white'));
+  background-color: var(--p-surface, color('white'));
   box-shadow: var(--p-modal-shadow, shadow(layer));
 
   @media screen and (-ms-high-contrast: active) {

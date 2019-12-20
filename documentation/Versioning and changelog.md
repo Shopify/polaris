@@ -56,7 +56,7 @@ The possible groups in which to categorize changes are:
 Generally, changes related to these topics can be omitted:
 
 - Style guide (update the [“What’s new” page](https://github.com/Shopify/polaris-styleguide/tree/master/pages/whats-new) instead)
-- Sketch UIKit (unless noteworthy)
+- UI Kit (unless noteworthy)
 - Dev dependencies upgrades
 - Chores (infrastructure, release process…)
 

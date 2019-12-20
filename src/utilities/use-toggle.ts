@@ -1,24 +1,16 @@
 import {useState, useCallback} from 'react';
 
+/**
+ * Returns a stateful value, and a set of memoized functions to toggle it,
+ * set it to true and set it to false
+ */
 export function useToggle(initialState: boolean) {
-  const [state, setState] = useState(initialState);
-  const toggle = useCallback(() => setState((state) => !state), []);
+  const [value, setState] = useState(initialState);
 
-  // cast needed to say this returns a two item array with the items in
-  // their specific positions instead of `(typeof state | typeof toggle)[]`
-  return [state, toggle] as [typeof state, typeof toggle];
-}
-
-export function useForcibleToggle(initialState: boolean) {
-  const [state, setState] = useState(initialState);
-
-  const toggles = {
+  return {
+    value,
     toggle: useCallback(() => setState((state) => !state), []),
-    forceTrue: useCallback(() => setState(true), []),
-    forceFalse: useCallback(() => setState(false), []),
+    setTrue: useCallback(() => setState(true), []),
+    setFalse: useCallback(() => setState(false), []),
   };
-
-  // cast needed to say this returns a two item array with the items in
-  // their specific positions instead of `(typeof state | typeof toggles)[]`
-  return [state, toggles] as [typeof state, typeof toggles];
 }

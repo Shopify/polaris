@@ -22,7 +22,7 @@ export function FilterValueSelector({
   onChange,
   onFilterKeyChange,
 }: FilterValueSelectorProps) {
-  const {translate} = useI18n();
+  const i18n = useI18n();
   const isMounted = useIsMountedRef();
   const {operatorText, type, label} = filter;
   const showOperatorOptions =
@@ -68,7 +68,7 @@ export function FilterValueSelector({
           <Select
             label={selectedFilterLabel}
             options={filter.options}
-            placeholder={translate(
+            placeholder={i18n.translate(
               'Polaris.ResourceList.FilterValueSelector.selectFilterValuePlaceholder',
             )}
             value={value}

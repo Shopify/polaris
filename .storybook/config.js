@@ -6,7 +6,6 @@ import {create} from '@storybook/theming';
 import tokens from '@shopify/polaris-tokens';
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
-import {UNSTABLE_Color} from '../src/utilities/theme';
 
 addParameters({
   options: {
@@ -62,10 +61,8 @@ addDecorator(
           name: 'Enabled - Light Mode',
           props: {
             i18n: enTranslations,
-            features: {
-              unstableGlobalTheming: true,
-              theme: {UNSTABLE_colors: {surface: UNSTABLE_Color.Surface}},
-            },
+            features: {unstableGlobalTheming: true},
+            theme: {colorScheme: 'light'},
           },
         },
         {
@@ -73,9 +70,7 @@ addDecorator(
           props: {
             i18n: enTranslations,
             features: {unstableGlobalTheming: true},
-            theme: {
-              UNSTABLE_colors: {surface: UNSTABLE_Color.DarkSurface},
-            },
+            theme: {colorScheme: 'dark'},
           },
         },
       ],

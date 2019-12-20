@@ -17,7 +17,7 @@
     bottom: -$position;
     left: -$position;
     display: block;
-    border: $stroke solid var(--p-interactive-focus);
+    border: $stroke solid var(--p-focused);
     @if $size == 'wide' {
       border-radius: calc(var(--p-border-radius-wide) + #{$position});
     } @else {

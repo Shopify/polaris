@@ -146,7 +146,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
-  private get selectable() {
+  private selectable() {
     const {promotedBulkActions, bulkActions, selectable} = this.props;
 
     return Boolean(
@@ -156,7 +156,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     );
   }
 
-  private get bulkSelectState(): boolean | 'indeterminate' {
+  private bulkSelectState(): boolean | 'indeterminate' {
     const {selectedItems, items} = this.props;
     let selectState: boolean | 'indeterminate' = 'indeterminate';
     if (
@@ -173,7 +173,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     return selectState;
   }
 
-  private get headerTitle() {
+  private headerTitle() {
     const {
       resourceName = this.defaultResourceName,
       items,
@@ -205,7 +205,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
-  private get bulkActionsLabel() {
+  private bulkActionsLabel() {
     const {
       selectedItems = [],
       items,
@@ -222,7 +222,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     });
   }
 
-  private get bulkActionsAccessibilityLabel() {
+  private bulkActionsAccessibilityLabel() {
     const {
       resourceName = this.defaultResourceName,
       selectedItems = [],
@@ -265,7 +265,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
-  private get paginatedSelectAllText() {
+  private paginatedSelectAllText() {
     const {
       hasMoreItems,
       selectedItems,
@@ -275,7 +275,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       polaris: {intl},
     } = this.props;
 
-    if (!this.selectable || !hasMoreItems) {
+    if (!this.selectable() || !hasMoreItems) {
       return;
     }
 
@@ -290,7 +290,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
-  private get paginatedSelectAllAction() {
+  private paginatedSelectAllAction() {
     const {
       hasMoreItems,
       selectedItems,
@@ -300,7 +300,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
       polaris: {intl},
     } = this.props;
 
-    if (!this.selectable || !hasMoreItems) {
+    if (!this.selectable() || !hasMoreItems) {
       return;
     }
 
@@ -321,7 +321,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
-  private get emptySearchResultText() {
+  private emptySearchResultText() {
     const {
       polaris: {intl},
       resourceName = this.defaultResourceName,
@@ -337,6 +337,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   componentDidMount() {
     this.forceUpdate();
     if (this.props.loading) {
@@ -344,6 +345,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   componentDidUpdate({
     loading: prevLoading,
     items: prevItems,
@@ -380,6 +382,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   render() {
     const {
       items,
@@ -401,18 +404,18 @@ class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles.FiltersWrapper}>{filterControl}</div>
     ) : null;
 
-    const bulkActionsMarkup = this.selectable ? (
+    const bulkActionsMarkup = this.selectable() ? (
       <div className={styles.BulkActionsWrapper}>
         <BulkActions
-          label={this.bulkActionsLabel}
-          accessibilityLabel={this.bulkActionsAccessibilityLabel}
-          selected={this.bulkSelectState}
+          label={this.bulkActionsLabel()}
+          accessibilityLabel={this.bulkActionsAccessibilityLabel()}
+          selected={this.bulkSelectState()}
           onToggleAll={this.handleToggleAll}
           selectMode={selectMode}
           onSelectModeToggle={this.handleSelectMode}
           promotedActions={promotedBulkActions}
-          paginatedSelectAllAction={this.paginatedSelectAllAction}
-          paginatedSelectAllText={this.paginatedSelectAllText}
+          paginatedSelectAllAction={this.paginatedSelectAllAction()}
+          paginatedSelectAllText={this.paginatedSelectAllText()}
           actions={bulkActions}
           disabled={loading}
           smallScreen={smallScreen}
@@ -442,11 +445,11 @@ class ResourceList extends React.Component<CombinedProps, State> {
 
     const headerTitleMarkup = (
       <div className={styles.HeaderTitleWrapper} testID="headerTitleWrapper">
-        {this.headerTitle}
+        {this.headerTitle()}
       </div>
     );
 
-    const selectButtonMarkup = this.selectable ? (
+    const selectButtonMarkup = this.selectable() ? (
       <div className={styles.SelectButtonWrapper}>
         <Button
           disabled={selectMode}
@@ -458,11 +461,11 @@ class ResourceList extends React.Component<CombinedProps, State> {
       </div>
     ) : null;
 
-    const checkableButtonMarkup = this.selectable ? (
+    const checkableButtonMarkup = this.selectable() ? (
       <div className={styles.CheckableButtonWrapper}>
         <CheckableButton
-          accessibilityLabel={this.bulkActionsAccessibilityLabel}
-          label={this.headerTitle}
+          accessibilityLabel={this.bulkActionsAccessibilityLabel()}
+          label={this.headerTitle()}
           onToggleAll={this.handleToggleAll}
           plain
           disabled={loading}
@@ -471,7 +474,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     ) : null;
 
     const needsHeader =
-      this.selectable ||
+      this.selectable() ||
       (sortOptions && sortOptions.length > 0) ||
       alternateTool;
 
@@ -494,9 +497,9 @@ class ResourceList extends React.Component<CombinedProps, State> {
                   !alternateTool &&
                   styles['HeaderWrapper-hasSort'],
                 alternateTool && styles['HeaderWrapper-hasAlternateTool'],
-                this.selectable && styles['HeaderWrapper-hasSelect'],
+                this.selectable() && styles['HeaderWrapper-hasSelect'],
                 loading && styles['HeaderWrapper-disabled'],
-                this.selectable &&
+                this.selectable() &&
                   selectMode &&
                   styles['HeaderWrapper-inSelectMode'],
                 isSticky && styles['HeaderWrapper-isSticky'],
@@ -522,7 +525,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
 
     const emptyStateMarkup = showEmptyState ? (
       <div className={styles.EmptySearchResultWrapper}>
-        <EmptySearchResult {...this.emptySearchResultText} withIllustration />
+        <EmptySearchResult {...this.emptySearchResultText()} withIllustration />
       </div>
     ) : null;
 
@@ -574,7 +577,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     );
 
     const context = {
-      selectable: this.selectable,
+      selectable: this.selectable(),
       selectedItems,
       selectMode,
       resourceName,

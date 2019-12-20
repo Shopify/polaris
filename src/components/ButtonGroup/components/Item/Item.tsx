@@ -1,5 +1,5 @@
 import React from 'react';
-import {useForcibleToggle} from '../../../../utilities/use-toggle';
+import {useToggle} from '../../../../utilities/use-toggle';
 import {classNames} from '../../../../utilities/css';
 
 import styles from '../../ButtonGroup.scss';
@@ -9,10 +9,11 @@ export interface ItemProps {
 }
 
 export function Item({button}: ItemProps) {
-  const [
-    focused,
-    {forceTrue: forceTrueFocused, forceFalse: forceFalseFocused},
-  ] = useForcibleToggle(false);
+  const {
+    value: focused,
+    setTrue: forceTrueFocused,
+    setFalse: forceFalseFocused,
+  } = useToggle(false);
 
   const className = classNames(
     styles.Item,

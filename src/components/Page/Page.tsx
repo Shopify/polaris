@@ -53,7 +53,7 @@ class Page extends React.PureComponent<ComposedProps, never> {
   private titlebar: AppBridgeTitleBar.TitleBar | undefined;
 
   componentDidMount() {
-    if (this.delegateToAppbridge === false || !this.props.polaris.appBridge) {
+    if (this.delegateToAppbridge() === false || !this.props.polaris.appBridge) {
       return;
     }
 
@@ -72,7 +72,7 @@ class Page extends React.PureComponent<ComposedProps, never> {
   }
 
   componentDidUpdate(prevProps: ComposedProps) {
-    if (this.titlebar == null || this.delegateToAppbridge === false) {
+    if (this.titlebar == null || this.delegateToAppbridge() === false) {
       return;
     }
 
@@ -89,7 +89,7 @@ class Page extends React.PureComponent<ComposedProps, never> {
   }
 
   componentWillUnmount() {
-    if (this.titlebar == null || this.delegateToAppbridge === false) {
+    if (this.titlebar == null || this.delegateToAppbridge() === false) {
       return;
     }
 
@@ -119,7 +119,7 @@ class Page extends React.PureComponent<ComposedProps, never> {
     );
 
     const headerMarkup =
-      this.delegateToAppbridge || this.hasHeaderContent() === false ? null : (
+      this.delegateToAppbridge() || this.hasHeaderContent() === false ? null : (
         <Header {...rest} />
       );
 
@@ -131,7 +131,7 @@ class Page extends React.PureComponent<ComposedProps, never> {
     );
   }
 
-  private get delegateToAppbridge(): boolean {
+  private delegateToAppbridge(): boolean {
     const {
       polaris: {appBridge},
       forceRender = false,

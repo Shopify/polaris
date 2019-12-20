@@ -17,6 +17,7 @@
 /// If overriding an existing padding / margin that value should be used as
 /// $spacing.
 @mixin safe-area-for($property, $spacing, $area) {
+  // stylelint-disable-next-line scss/dimension-no-non-numeric-values
   $spacing: if($spacing == 0, #{$spacing}px, $spacing);
   #{$property}: #{$spacing};
   #{$property}: calc(#{$spacing} + constant(safe-area-inset-#{$area}));

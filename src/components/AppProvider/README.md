@@ -465,9 +465,11 @@ function App() {
   // dictionary is the desired language, and the second is the fallback.
   // AppProvider however expects that the first dictionary is the fallback
   // and the second is the desired language. Thus we need to reverse the array
-  // to ensure the dictionaries are in the order desired by AppProvider
+  // to ensure the dictionaries are in the order desired by AppProvider.
+  // The slice is to ensure we don't manipulate the original translations array
+  // as reverse() modifies the array in-place.
   return (
-    <AppProvider i18n={i18n.translations.reverse()}>
+    <AppProvider i18n={i18n.translations.slice().reverse()}>
       {/* App content */}
     </AppProvider>
   );

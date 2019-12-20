@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount} from 'enzyme';
+import {mount} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {ContextualSaveBar} from '../ContextualSaveBar';
@@ -91,11 +91,9 @@ describe('<ContextualSaveBar />', () => {
     });
 
     it('throws when no Frame or appBridge is provided', () => {
-      function fn() {
+      expect(() => {
         mount(<ContextualSaveBar {...props} />);
-      }
-
-      expect(fn).toThrow(
+      }).toThrow(
         'No Frame context was provided. Your component must be wrapped in a <Frame> component, or be used within an embedded application by setting the apiKey and shopOrigin properties on <AppProvider>. See https://polaris.shopify.com/components/structure/frame for implementation instructions.',
       );
     });
