@@ -43,8 +43,12 @@ export class I18n {
           );
         }
 
-        // Replacement values may be numbers, so stringify
-        return replacements[replacement].toString();
+        // Bringing back an old bit of oddness to expedite a release.
+        // {foo: undefined} is allowed in calling apps but won't trigger type
+        // warnings and won't get caught in the above check so let it through
+        // for now as JS can handle it ok. We should work out how to be
+        // stricter, or deliberatly allow undefined as a value
+        return replacements[replacement] as string;
       });
     }
 
