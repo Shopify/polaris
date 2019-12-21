@@ -19,6 +19,8 @@ export interface CardProps {
   children?: React.ReactNode;
   /** A less prominent card */
   subdued?: boolean;
+  /** A recessed card */
+  recessed?: boolean;
   /** Auto wrap content in section */
   sectioned?: boolean;
   /** Card header actions */
@@ -46,6 +48,7 @@ export const Card: React.FunctionComponent<CardProps> & {
   children,
   title,
   subdued,
+  recessed,
   sectioned,
   actions,
   primaryFooterAction,
@@ -60,7 +63,11 @@ export const Card: React.FunctionComponent<CardProps> & {
     toggle: toggleSecondaryActionsPopoverOpen,
   } = useToggle(false);
 
-  const className = classNames(styles.Card, subdued && styles.subdued);
+  const className = classNames(
+    styles.Card,
+    subdued && styles.subdued,
+    recessed && styles.recessed,
+  );
 
   const headerMarkup =
     title || actions ? <Header actions={actions} title={title} /> : null;

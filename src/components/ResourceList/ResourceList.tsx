@@ -877,3 +877,5 @@ const ResourceListWithAppProvider = withAppProvider<
 export default function ResourceList<T>(props: ResourceListProps<T>) {
   return <ResourceListWithAppProvider {...props} />;
 }
+
+ResourceList.FilterControl = FilterControl;
