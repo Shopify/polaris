@@ -47,9 +47,15 @@ interface State {
   checkableButtons: CheckableButtons;
 }
 
-export interface ResourceListProps {
+export interface ResourceSection {
+  id: string;
+  title: string;
+}
+
+export interface ResourceListProps<T> {
   /** Item data; each item is passed to renderItem */
-  items: Items;
+  items: T[];
+  sections?: ResourceSection[];
   filterControl?: React.ReactNode;
   /** Name of the resource, such as customers or products */
   resourceName?: {
@@ -83,16 +89,24 @@ export interface ResourceListProps {
   /** Callback when selection is changed */
   onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
   /** Function to render each list item	 */
-  renderItem(item: any, id: string, index: number): React.ReactNode;
+  renderItem(item: T, id: string, index: number): React.ReactNode;
+  /** Function to render each list item	 */
+  renderSectionHeader?(
+    section: ResourceSection,
+    id: string,
+    index: number,
+  ): React.ReactNode;
   /** Function to customize the unique ID for each item */
-  idForItem?(item: any, index: number): string;
+  idForItem?(item: T, index: number): string;
+  /** Function to customize the unique ID for each item */
+  sectionIdForItem?(item: T, index: number): string;
   /** Function to resolve an id from a item */
-  resolveItemId?(item: any): string;
+  resolveItemId?(item: T): string;
 }
 
-type CombinedProps = ResourceListProps & WithAppProviderProps;
+type CombinedProps<T> = ResourceListProps<T> & WithAppProviderProps;
 
-class ResourceList extends React.Component<CombinedProps, State> {
+class BaseResourceList<T> extends React.Component<CombinedProps<T>, State> {
   static Item = ResourceItem;
   // eslint-disable-next-line import/no-deprecated
   static FilterControl = FilterControl;
@@ -123,7 +137,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     {leading: true, trailing: true, maxWait: 50},
   );
 
-  constructor(props: CombinedProps) {
+  constructor(props: CombinedProps<T>) {
     super(props);
 
     const {
@@ -350,7 +364,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     loading: prevLoading,
     items: prevItems,
     selectedItems: prevSelectedItems,
-  }: ResourceListProps) {
+  }: ResourceListProps<T>) {
     const {selectedItems, loading} = this.props;
 
     if (
@@ -386,6 +400,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
   render() {
     const {
       items,
+      sections,
       promotedBulkActions,
       bulkActions,
       filterControl,
@@ -570,7 +585,9 @@ class ResourceList extends React.Component<CombinedProps, State> {
         aria-busy={loading}
       >
         {loadingOverlay}
-        {items.map(this.renderItem)}
+        {sections
+          ? sections.map(this.renderSection)
+          : items.map(this.renderItem)}
       </ul>
     ) : (
       emptyStateMarkup
@@ -648,7 +665,7 @@ class ResourceList extends React.Component<CombinedProps, State> {
     }
   };
 
-  private renderItem = (item: any, index: number) => {
+  private renderItem = (item: T, index: number) => {
     const {renderItem, idForItem = defaultIdForItem} = this.props;
     const id = idForItem(item, index);
 
@@ -659,10 +676,35 @@ class ResourceList extends React.Component<CombinedProps, State> {
     );
   };
 
+  private renderSection = (section: ResourceSection, index: number) => {
+    const {
+      items,
+      renderSectionHeader,
+      sectionIdForItem = defaultSectionIdForItem,
+    } = this.props;
+
+    const itemsForSection = items.filter(
+      (item, idx) => sectionIdForItem(item, idx) === section.id,
+    );
+
+    return (
+      <li key={section.id} className={styles.SectionWrapper}>
+        <div className={styles.SectionHeader}>
+          {renderSectionHeader
+            ? renderSectionHeader(section, section.id, index)
+            : null}
+        </div>
+        <ul className={styles.ResourceSectionList}>
+          {itemsForSection.map(this.renderItem)}
+        </ul>
+      </li>
+    );
+  };
+
   private handleMultiSelectionChange = (
     lastSelected: number,
     currentSelected: number,
-    resolveItemId: (item: any) => string,
+    resolveItemId: (item: T) => string,
   ) => {
     const min = Math.min(lastSelected, currentSelected);
     const max = Math.max(lastSelected, currentSelected);
@@ -814,6 +856,12 @@ function defaultIdForItem(item: any, index: number) {
     : index.toString();
 }
 
+function defaultSectionIdForItem(item: any, index: number) {
+  return Object.prototype.hasOwnProperty.call(item, 'sectionId')
+    ? item.sectionId
+    : index.toString();
+}
+
 function isSmallScreen() {
   return typeof window === 'undefined'
     ? false
@@ -821,5 +869,11 @@ function isSmallScreen() {
 }
 
 // Use named export once withAppProvider is refactored away
+const ResourceListWithAppProvider = withAppProvider<
+  ResourceListProps<unknown>
+>()(BaseResourceList);
+
 // eslint-disable-next-line import/no-default-export
-export default withAppProvider<ResourceListProps>()(ResourceList);
+export default function ResourceList<T>(props: ResourceListProps<T>) {
+  return <ResourceListWithAppProvider {...props} />;
+}

@@ -195,6 +195,32 @@ $item-wrapper-loading-height: rem(64px);
   list-style: none;
 }
 
+.SectionWrapper {
+  padding: 1rem 0 0 0;
+  background-color: color('sky', 'lighter');
+
+  > .SectionHeader {
+    background-color: color('white');
+    border-bottom: border();
+    border-top: border();
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+  }
+
+  &:not(:first-child) {
+    border-top: border();
+    .SectionHeader {
+      border-top: border();
+    }
+  }
+}
+
+.ResourceSectionList {
+  padding: 0;
+  background-color: color('white');
+}
+
 .ItemWrapper {
   position: relative;
   z-index: resource-list(list-stacking-order);
