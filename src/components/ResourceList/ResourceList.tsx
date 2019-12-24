@@ -90,8 +90,14 @@ export interface ResourceListProps<T> {
   onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
   /** Function to render each list item	 */
   renderItem(item: T, id: string, index: number): React.ReactNode;
-  /** Function to render each list item	 */
+  /** Function to render each section header	 */
   renderSectionHeader?(
+    section: ResourceSection,
+    id: string,
+    index: number,
+  ): React.ReactNode;
+  /** Function to render each section footer	 */
+  renderSectionFooter?(
     section: ResourceSection,
     id: string,
     index: number,
@@ -680,6 +686,7 @@ class BaseResourceList<T> extends React.Component<CombinedProps<T>, State> {
     const {
       items,
       renderSectionHeader,
+      renderSectionFooter,
       sectionIdForItem = defaultSectionIdForItem,
     } = this.props;
 
@@ -689,14 +696,19 @@ class BaseResourceList<T> extends React.Component<CombinedProps<T>, State> {
 
     return (
       <li key={section.id} className={styles.SectionWrapper}>
-        <div className={styles.SectionHeader}>
-          {renderSectionHeader
-            ? renderSectionHeader(section, section.id, index)
-            : null}
-        </div>
+        {renderSectionHeader ? (
+          <div className={styles.SectionHeader}>
+            {renderSectionHeader(section, section.id, index)}
+          </div>
+        ) : null}
         <ul className={styles.ResourceSectionList}>
           {itemsForSection.map(this.renderItem)}
         </ul>
+        {renderSectionFooter ? (
+          <div className={styles.SectionFooter}>
+            {renderSectionFooter(section, section.id, index)}
+          </div>
+        ) : null}
       </li>
     );
   };

@@ -193,6 +193,7 @@ $item-wrapper-loading-height: rem(64px);
   margin: 0;
   padding: 0;
   list-style: none;
+  background-color: color('sky', 'lighter');
 }
 
 .SectionWrapper {
@@ -201,23 +202,25 @@ $item-wrapper-loading-height: rem(64px);
 
   > .SectionHeader {
     background-color: color('white');
-    border-bottom: border();
     border-top: border();
     padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
   }
 
-  &:not(:first-child) {
-    border-top: border();
-    .SectionHeader {
-      border-top: border();
-    }
+  > .SectionFooter {
+    background-color: color('white');
+    border-bottom: border();
+    padding: 1rem 2rem;
+  }
+
+  &:last-child {
+    padding: 1rem 0 1rem 0;
   }
 }
 
 .ResourceSectionList {
   padding: 0;
+  border-bottom: border();
+  border-top: border();
   background-color: color('white');
 }
 
