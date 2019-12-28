@@ -459,9 +459,7 @@ function assignOptionIds(
     (
       option: OptionDescriptor | ActionListItemDescriptor,
       optionIndex: number,
-    ) => {
-      option.id = `${comboBoxId}-${optionIndex}`;
-    },
+    ) => Object.assign({id: `${comboBoxId}-${optionIndex}`}, option),
   );
   return options;
 }
