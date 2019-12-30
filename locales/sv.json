@@ -115,7 +115,8 @@
       "done": "Klar",
       "clearAllFilters": "Rensa filter",
       "clear": "Rensa",
-      "clearLabel": "Rensa {filterName}"
+      "clearLabel": "Rensa {filterName}",
+      "moreFiltersWithCount": "Fler filter ({count})"
     },
     "Modal": {
       "iFrameTitle": "markering av brödtext",
