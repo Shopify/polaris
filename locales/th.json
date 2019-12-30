@@ -115,7 +115,8 @@
       "done": "เสร็จสิ้น",
       "clearAllFilters": "ล้างตัวกรองทั้งหมด",
       "clear": "ล้าง",
-      "clearLabel": "ล้าง {filterName}"
+      "clearLabel": "ล้าง {filterName}",
+      "moreFiltersWithCount": "ตัวกรองเพิ่มเติม ({count})"
     },
     "Modal": {
       "iFrameTitle": "การแสดงผลเนื้อหา",
