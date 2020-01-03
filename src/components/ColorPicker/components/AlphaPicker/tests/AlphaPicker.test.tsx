@@ -54,6 +54,50 @@ describe('<AlphaPicker />', () => {
       });
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHue);
     });
+
+    it('is called on ArrowUp keyup event', () => {
+      const onChangeSpy = jest.fn();
+      const alphaPicker = mountWithAppProvider(
+        <AlphaPicker {...mockProps} onChange={onChangeSpy} />,
+      );
+      alphaPicker.find('[role="application"]').simulate('keyup', {
+        key: 'ArrowUp',
+      });
+      expect(onChangeSpy).toHaveBeenCalled();
+    });
+
+    it('is called on ArrowDown keyup event', () => {
+      const onChangeSpy = jest.fn();
+      const alphaPicker = mountWithAppProvider(
+        <AlphaPicker {...mockProps} onChange={onChangeSpy} />,
+      );
+      alphaPicker.find('[role="application"]').simulate('keyup', {
+        key: 'ArrowDown',
+      });
+      expect(onChangeSpy).toHaveBeenCalled();
+    });
+
+    it('is not called on ArrowLeft keyup event', () => {
+      const onChangeSpy = jest.fn();
+      const alphaPicker = mountWithAppProvider(
+        <AlphaPicker {...mockProps} onChange={onChangeSpy} />,
+      );
+      alphaPicker.find('[role="application"]').simulate('keyup', {
+        key: 'ArrowLeft',
+      });
+      expect(onChangeSpy).not.toHaveBeenCalled();
+    });
+
+    it('is not called on ArrowRight keyup event', () => {
+      const onChangeSpy = jest.fn();
+      const alphaPicker = mountWithAppProvider(
+        <AlphaPicker {...mockProps} onChange={onChangeSpy} />,
+      );
+      alphaPicker.find('[role="application"]').simulate('keyup', {
+        key: 'ArrowRight',
+      });
+      expect(onChangeSpy).not.toHaveBeenCalled();
+    });
   });
 
   describe('<Slidable />', () => {
