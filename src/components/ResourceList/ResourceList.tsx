@@ -581,6 +581,7 @@ class BaseResourceList<T> extends React.Component<CombinedProps<T>, State> {
       styles.ResourceList,
       loading && styles.disabledPointerEvents,
       selectMode && styles.disableTextSelection,
+      sections && styles.SectionedResourceList,
     );
 
     const listMarkup = this.itemsExist() ? (
@@ -694,20 +695,24 @@ class BaseResourceList<T> extends React.Component<CombinedProps<T>, State> {
       (item, idx) => sectionIdForItem(item, idx) === section.id,
     );
 
+    const sectionHeader = renderSectionHeader
+      ? renderSectionHeader(section, section.id, index)
+      : null;
+
+    const sectionFooter = renderSectionFooter
+      ? renderSectionFooter(section, section.id, index)
+      : null;
+
     return (
       <li key={section.id} className={styles.SectionWrapper}>
-        {renderSectionHeader ? (
-          <div className={styles.SectionHeader}>
-            {renderSectionHeader(section, section.id, index)}
-          </div>
+        {sectionHeader ? (
+          <div className={styles.SectionHeader}>{sectionHeader}</div>
         ) : null}
         <ul className={styles.ResourceSectionList}>
           {itemsForSection.map(this.renderItem)}
         </ul>
-        {renderSectionFooter ? (
-          <div className={styles.SectionFooter}>
-            {renderSectionFooter(section, section.id, index)}
-          </div>
+        {sectionFooter ? (
+          <div className={styles.SectionFooter}>{sectionFooter}</div>
         ) : null}
       </li>
     );
