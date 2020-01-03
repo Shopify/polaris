@@ -118,7 +118,7 @@ export class Slidable extends React.PureComponent<SlidableProps, State> {
         {touchEndListener}
         {touchCancelListener}
         <div
-          role="slider"
+          role="application"
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={0}
@@ -126,6 +126,7 @@ export class Slidable extends React.PureComponent<SlidableProps, State> {
           style={draggerPositioning}
           className={styles.Dragger}
           ref={this.setDraggerNode}
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
           tabIndex={0}
         />
       </div>
@@ -196,6 +197,7 @@ export class Slidable extends React.PureComponent<SlidableProps, State> {
       return;
     }
     const {key, shiftKey} = event;
+    const twoDimensional = this.props.draggerX !== undefined;
     const {draggerX = 0, draggerY = 0, onChange} = this.props;
     const rect = this.node.getBoundingClientRect();
     const stepX = shiftKey ? rect.width / 20 : rect.width / 100;
@@ -209,10 +211,14 @@ export class Slidable extends React.PureComponent<SlidableProps, State> {
         onChange({x: draggerX, y: draggerY + stepY});
         break;
       case 'ArrowRight':
-        onChange({x: draggerX + stepX, y: draggerY});
+        if (twoDimensional) {
+          onChange({x: draggerX + stepX, y: draggerY});
+        }
         break;
       case 'ArrowLeft':
-        onChange({x: draggerX - stepX, y: draggerY});
+        if (twoDimensional) {
+          onChange({x: draggerX - stepX, y: draggerY});
+        }
         break;
     }
   };

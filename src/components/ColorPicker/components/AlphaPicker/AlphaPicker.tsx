@@ -34,7 +34,6 @@ export class AlphaPicker extends React.PureComponent<AlphaPickerProps, State> {
         <div className={styles.ColorLayer} style={{background}} />
         <Slidable
           draggerY={draggerY}
-          draggerX={0}
           onChange={this.handleChange}
           onDraggerHeight={this.setDraggerHeight}
         />

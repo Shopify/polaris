@@ -28,7 +28,6 @@ export class HuePicker extends React.PureComponent<HuePickerProps, State> {
       <div className={styles.HuePicker} ref={this.setSliderHeight}>
         <Slidable
           draggerY={draggerY}
-          draggerX={0}
           onChange={this.handleChange}
           onDraggerHeight={this.setDraggerHeight}
         />
