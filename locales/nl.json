@@ -115,7 +115,8 @@
       "done": "Gereed",
       "clearAllFilters": "Alle filters wissen",
       "clear": "Wissen",
-      "clearLabel": "{filterName} wissen"
+      "clearLabel": "{filterName} wissen",
+      "moreFiltersWithCount": "Meer filters ({count})"
     },
     "Modal": {
       "iFrameTitle": "opmaak platte tekst",

@@ -115,7 +115,8 @@
       "done": "Valmis",
       "clearAllFilters": "Tyhjennä kaikki suodattimet",
       "clear": "Tyhjennä",
-      "clearLabel": "Tyhjennä {filterName}"
+      "clearLabel": "Tyhjennä {filterName}",
+      "moreFiltersWithCount": "Lisää suodattimia ({count})"
     },
     "Modal": {
       "iFrameTitle": "tekstin merkintä",

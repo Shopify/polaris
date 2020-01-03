@@ -293,6 +293,41 @@ describe('<Filters />', () => {
       expect(spy).toHaveBeenCalledTimes(1);
       expect(spy).toHaveBeenCalledWith('filterOne');
     });
+
+    it('tags are not shown if hideTags prop is given', () => {
+      const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: noop}];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters
+          {...mockProps}
+          queryValue=""
+          appliedFilters={appliedFilters}
+          hideTags
+        />,
+      );
+      expect(resourceFilters.find(Tag)).toHaveLength(0);
+    });
+
+    it('applied filter count is shown if hideTags prop is given', () => {
+      const appliedFilters = [
+        {key: 'filterOne', label: 'foo', onRemove: noop},
+        {key: 'filterTwo', label: 'bar', onRemove: noop},
+      ];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters
+          {...mockProps}
+          queryValue=""
+          appliedFilters={appliedFilters}
+          hideTags
+        />,
+      );
+      const rightActionButton = findByTestID(
+        resourceFilters,
+        'SheetToggleButton',
+      );
+      expect(rightActionButton.text()).toBe('More filters (2)');
+    });
   });
 
   describe('disabled', () => {

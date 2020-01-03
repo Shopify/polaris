@@ -115,7 +115,8 @@
       "done": "पूरा हुआ",
       "clearAllFilters": "सभी फ़िल्टर मिटाएं",
       "clear": "मिटाएं",
-      "clearLabel": "{filterName} मिटाएं"
+      "clearLabel": "{filterName} मिटाएं",
+      "moreFiltersWithCount": "और फ़िल्टर्स ({count})"
     },
     "Modal": {
       "iFrameTitle": "बॉडी मार्कअप",
