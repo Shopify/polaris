@@ -59,11 +59,6 @@ describe('<HuePicker />', () => {
       trigger(huePicker.find(Slidable), 'onDraggerHeight', newDraggerHeight);
       expect(huePicker.find(Slidable).prop('draggerY')).toBe(expectedNewHue);
     });
-
-    it('passes draggerX to Slidable with value 0', () => {
-      const huePicker = mountWithAppProvider(<HuePicker {...mockProps} />);
-      expect(huePicker.find(Slidable).prop('draggerX')).toBe(0);
-    });
   });
 });
 

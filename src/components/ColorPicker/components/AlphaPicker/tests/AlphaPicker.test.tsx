@@ -67,11 +67,6 @@ describe('<AlphaPicker />', () => {
       trigger(alphaPicker.find(Slidable), 'onDraggerHeight', newDraggerHeight);
       expect(alphaPicker.find(Slidable).prop('draggerY')).toBe(expectedNewHue);
     });
-
-    it('passes draggerX to Slidable with value 0', () => {
-      const alphaPicker = mountWithAppProvider(<AlphaPicker {...mockProps} />);
-      expect(alphaPicker.find(Slidable).prop('draggerX')).toBe(0);
-    });
   });
 });
 
