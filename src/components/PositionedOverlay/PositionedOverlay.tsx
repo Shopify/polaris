@@ -22,7 +22,8 @@ export {PreferredPosition, PreferredAlignment};
 export type Positioning = 'above' | 'below';
 
 export interface OverlayDetails {
-  left: number;
+  left?: number;
+  right?: number;
   desiredHeight: number;
   positioning: Positioning;
   measuring: boolean;
@@ -44,7 +45,8 @@ export interface PositionedOverlayProps {
 interface State {
   measuring: boolean;
   activatorRect: Rect;
-  left: number;
+  left?: number;
+  right?: number;
   top: number;
   height: number;
   width: number | null;
@@ -63,7 +65,8 @@ export class PositionedOverlay extends React.PureComponent<
   state: State = {
     measuring: true,
     activatorRect: getRectForNode(this.props.activator),
-    left: 0,
+    right: undefined,
+    left: undefined,
     top: 0,
     height: 0,
     width: null,
@@ -118,14 +121,18 @@ export class PositionedOverlay extends React.PureComponent<
   }
 
   render() {
-    const {left, top, zIndex, width} = this.state;
+    const {left, right, top, zIndex, width} = this.state;
     const {render, fixed, classNames: propClassNames} = this.props;
 
     const style = {
+      // stylelint-disable function-name-case
       top: top == null || isNaN(top) ? undefined : top,
       left: left == null || isNaN(left) ? undefined : left,
+      right: right == null || isNaN(right) ? undefined : right,
       width: width == null || isNaN(width) ? undefined : width,
+      // stylelint-disable-next-line value-keyword-case
       zIndex: zIndex == null || isNaN(zIndex) ? undefined : zIndex,
+      // stylelint-enable function-name-case
     };
 
     const className = classNames(
@@ -143,11 +150,19 @@ export class PositionedOverlay extends React.PureComponent<
   }
 
   private overlayDetails = (): OverlayDetails => {
-    const {measuring, left, positioning, height, activatorRect} = this.state;
+    const {
+      measuring,
+      left,
+      right,
+      positioning,
+      height,
+      activatorRect,
+    } = this.state;
 
     return {
       measuring,
       left,
+      right,
       desiredHeight: height,
       positioning,
       activatorRect,
@@ -164,8 +179,9 @@ export class PositionedOverlay extends React.PureComponent<
     this.observer.disconnect();
 
     this.setState(
-      ({left, top}) => ({
+      ({left, top, right}) => ({
         left,
+        right,
         top,
         height: 0,
         positioning: 'below',
@@ -209,6 +225,7 @@ export class PositionedOverlay extends React.PureComponent<
         const overlayMargins = this.overlay.firstElementChild
           ? getMarginsForNode(this.overlay.firstElementChild as HTMLElement)
           : {activator: 0, container: 0, horizontal: 0};
+
         const containerRect = windowRect();
         const zIndexForLayer = getZIndexForLayerFromNode(activator);
         const zIndex =
@@ -234,7 +251,10 @@ export class PositionedOverlay extends React.PureComponent<
           {
             measuring: false,
             activatorRect: getRectForNode(activator),
-            left: horizontalPosition,
+            left:
+              preferredAlignment !== 'right' ? horizontalPosition : undefined,
+            right:
+              preferredAlignment === 'right' ? horizontalPosition : undefined,
             top: lockPosition ? top : verticalPosition.top,
             lockPosition: Boolean(fixed),
             height: verticalPosition.height || 0,
@@ -278,9 +298,9 @@ export function intersectionWithViewport(
 function getMarginsForNode(node: HTMLElement) {
   const nodeStyles = window.getComputedStyle(node);
   return {
-    activator: parseFloat(nodeStyles.marginTop || ''),
-    container: parseFloat(nodeStyles.marginBottom || ''),
-    horizontal: parseFloat(nodeStyles.marginLeft || ''),
+    activator: parseFloat(nodeStyles.marginTop || '0'),
+    container: parseFloat(nodeStyles.marginBottom || '0'),
+    horizontal: parseFloat(nodeStyles.marginLeft || '0'),
   };
 }
 
@@ -298,7 +318,7 @@ function windowRect() {
     top: window.scrollY,
     left: window.scrollX,
     height: window.innerHeight,
-    width: window.innerWidth,
+    width: document.body.clientWidth,
   });
 }
 
