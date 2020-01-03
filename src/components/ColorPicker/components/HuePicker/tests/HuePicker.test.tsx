@@ -62,10 +62,10 @@ describe('<HuePicker />', () => {
 
     it('is called on ArrowUp keyup event', () => {
       const onChangeSpy = jest.fn();
-      const alphaPicker = mountWithAppProvider(
+      const huePicker = mountWithAppProvider(
         <HuePicker {...mockProps} onChange={onChangeSpy} />,
       );
-      alphaPicker.find('[role="application"]').simulate('keyup', {
+      huePicker.find('[role="application"]').simulate('keyup', {
         key: 'ArrowUp',
       });
       expect(onChangeSpy).toHaveBeenCalled();
@@ -73,10 +73,10 @@ describe('<HuePicker />', () => {
 
     it('is called on ArrowDown keyup event', () => {
       const onChangeSpy = jest.fn();
-      const alphaPicker = mountWithAppProvider(
+      const huePicker = mountWithAppProvider(
         <HuePicker {...mockProps} onChange={onChangeSpy} />,
       );
-      alphaPicker.find('[role="application"]').simulate('keyup', {
+      huePicker.find('[role="application"]').simulate('keyup', {
         key: 'ArrowDown',
       });
       expect(onChangeSpy).toHaveBeenCalled();
@@ -84,10 +84,10 @@ describe('<HuePicker />', () => {
 
     it('is not called on ArrowLeft keyup event', () => {
       const onChangeSpy = jest.fn();
-      const alphaPicker = mountWithAppProvider(
+      const huePicker = mountWithAppProvider(
         <HuePicker {...mockProps} onChange={onChangeSpy} />,
       );
-      alphaPicker.find('[role="application"]').simulate('keyup', {
+      huePicker.find('[role="application"]').simulate('keyup', {
         key: 'ArrowLeft',
       });
       expect(onChangeSpy).not.toHaveBeenCalled();
@@ -95,10 +95,10 @@ describe('<HuePicker />', () => {
 
     it('is not called on ArrowRight keyup event', () => {
       const onChangeSpy = jest.fn();
-      const alphaPicker = mountWithAppProvider(
+      const huePicker = mountWithAppProvider(
         <HuePicker {...mockProps} onChange={onChangeSpy} />,
       );
-      alphaPicker.find('[role="application"]').simulate('keyup', {
+      huePicker.find('[role="application"]').simulate('keyup', {
         key: 'ArrowRight',
       });
       expect(onChangeSpy).not.toHaveBeenCalled();

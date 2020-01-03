@@ -58,6 +58,62 @@ describe('<ColorPicker />', () => {
         window.dispatchEvent(new Event('mousemove'));
         expect(spy).not.toHaveBeenCalled();
       });
+
+      it('is called on ArrowUp keyup event', () => {
+        const onChangeSpy = jest.fn();
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={onChangeSpy} />,
+        );
+        colorPicker
+          .find('[role="application"]')
+          .first()
+          .simulate('keyup', {
+            key: 'ArrowUp',
+          });
+        expect(onChangeSpy).toHaveBeenCalled();
+      });
+
+      it('is called on ArrowDown keyup event', () => {
+        const onChangeSpy = jest.fn();
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={onChangeSpy} />,
+        );
+        colorPicker
+          .find('[role="application"]')
+          .first()
+          .simulate('keyup', {
+            key: 'ArrowDown',
+          });
+        expect(onChangeSpy).toHaveBeenCalled();
+      });
+
+      it('is called on ArrowLeft keyup event', () => {
+        const onChangeSpy = jest.fn();
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={onChangeSpy} />,
+        );
+        colorPicker
+          .find('[role="application"]')
+          .first()
+          .simulate('keyup', {
+            key: 'ArrowLeft',
+          });
+        expect(onChangeSpy).toHaveBeenCalled();
+      });
+
+      it('is called on ArrowRight keyup event', () => {
+        const onChangeSpy = jest.fn();
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={onChangeSpy} />,
+        );
+        colorPicker
+          .find('[role="application"]')
+          .first()
+          .simulate('keyup', {
+            key: 'ArrowRight',
+          });
+        expect(onChangeSpy).toHaveBeenCalled();
+      });
     });
   });
 
