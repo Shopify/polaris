@@ -20,7 +20,7 @@ export class Item extends React.PureComponent<ItemProps, never> {
     const {focusedNode} = this;
     const {focused} = this.props;
 
-    if (focusedNode && focusedNode instanceof HTMLElement && focused) {
+    if (focusedNode && focusedNode instanceof HTMLButtonElement && focused) {
       focusedNode.focus();
     }
   }
@@ -29,7 +29,7 @@ export class Item extends React.PureComponent<ItemProps, never> {
     const {focusedNode} = this;
     const {focused} = this.props;
 
-    if (focusedNode && focusedNode instanceof HTMLElement && focused) {
+    if (focusedNode && focusedNode instanceof HTMLButtonElement && focused) {
       focusedNode.focus();
     }
   }
