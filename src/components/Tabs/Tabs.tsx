@@ -27,6 +27,8 @@ export interface TabsProps {
   fitted?: boolean;
   /** Callback when tab is selected */
   onSelect?(selectedTabIndex: number): void;
+  /** Suppress tab header if there is only one tab */
+  optionalSingleTab?: boolean;
 }
 
 type CombinedProps = TabsProps & WithAppProviderProps;
@@ -74,11 +76,14 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
       tabs,
       selected,
       fitted,
+      optionalSingleTab,
       children,
       polaris: {intl},
     } = this.props;
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
+
+    const skipTabs = optionalSingleTab && visibleTabs.length <= 1;
 
     const panelMarkup = children
       ? tabs.map((_tab, index) => {
@@ -131,7 +136,9 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
       </button>
     );
 
-    return (
+    return skipTabs ? (
+      <div>{children}</div>
+    ) : (
       <div>
         <ul
           role="tablist"
