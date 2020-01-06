@@ -111,7 +111,7 @@ $skip-vertical-offset: rem(10px);
 
   &.TopBar-globalTheming {
     @include frame-when-nav-displayed {
-      left: layout-width(nav);
+      left: layout-width(unstable-nav);
     }
   }
 }

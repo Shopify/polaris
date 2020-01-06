@@ -3,6 +3,7 @@
 
 // Base Navigation styles
 $nav-max-width: rem(360px);
+$unstable-nav-max-width: rem(258px);
 .Navigation {
   display: flex;
   flex-direction: column;
@@ -25,6 +26,10 @@ $nav-max-width: rem(360px);
     max-width: layout-width(nav);
     border-right: var(--p-override-none, border());
     @include safe-area-for(max-width, layout-width(nav), left);
+  }
+
+  &.Navigation-globalTheming {
+    max-width: $unstable-nav-max-width;
   }
 }
 
