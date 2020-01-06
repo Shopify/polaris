@@ -1,10 +1,10 @@
-import React, {useEffect, useRef, useCallback} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {classNames} from '../../../../utilities/css';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
-import {useToggle, useForcibleToggle} from '../../../../utilities/use-toggle';
+import {useToggle} from '../../../../utilities/use-toggle';
 import {Collapsible} from '../../../Collapsible';
 import {Icon} from '../../../Icon';
 import {IconProps} from '../../../../types';
@@ -42,32 +42,31 @@ export function Section({
   rollup,
   separator,
 }: SectionProps) {
-  const [
-    expanded,
-    {toggle: toggleExpanded, forceFalse: forceExpandedFalse},
-  ] = useForcibleToggle(false);
+  const {
+    value: expanded,
+    toggle: toggleExpanded,
+    setFalse: setExpandedFalse,
+  } = useToggle(false);
   const animationFrame = useRef<number | null>(null);
 
-  // remove usecallback -- pointless since it's not being passed to item
-  // the result of calling it it
-  const handleClick = useCallback(
-    (onClick: ItemProps['onClick'], hasSubNavItems: boolean) => {
-      return () => {
-        if (onClick) {
-          onClick();
-        }
+  const handleClick = (
+    onClick: ItemProps['onClick'],
+    hasSubNavItems: boolean,
+  ) => {
+    return () => {
+      if (onClick) {
+        onClick();
+      }
 
-        if (animationFrame.current) {
-          cancelAnimationFrame(animationFrame.current);
-        }
+      if (animationFrame.current) {
+        cancelAnimationFrame(animationFrame.current);
+      }
 
-        if (!hasSubNavItems || !navigationBarCollapsed().matches) {
-          animationFrame.current = requestAnimationFrame(forceExpandedFalse);
-        }
-      };
-    },
-    [forceExpandedFalse],
-  );
+      if (!hasSubNavItems || !navigationBarCollapsed().matches) {
+        animationFrame.current = requestAnimationFrame(setExpandedFalse);
+      }
+    };
+  };
 
   useEffect(() => {
     return () => {
