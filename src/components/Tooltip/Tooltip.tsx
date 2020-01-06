@@ -48,10 +48,6 @@ export function Tooltip({
   const mouseEntered = useRef(false);
 
   useEffect(() => {
-    if (activatorContainer == null) {
-      return;
-    }
-
     const firstFocusable = activatorContainer.current
       ? findFirstFocusableNode(activatorContainer.current)
       : null;
@@ -106,7 +102,6 @@ export function Tooltip({
     activatorContainerRef.current = node;
   }
 
-  // maybe add pre focus and pre blur????
   function handleMouseEnter() {
     mouseEntered.current = true;
     handleFocus();
