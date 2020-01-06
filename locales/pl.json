@@ -115,7 +115,8 @@
       "done": "Gotowe",
       "clearAllFilters": "Wyczyść wszystkie filtry",
       "clear": "Wyczyść",
-      "clearLabel": "Wyczyść {filterName}"
+      "clearLabel": "Wyczyść {filterName}",
+      "moreFiltersWithCount": "Więcej filtrów ({count})"
     },
     "Modal": {
       "iFrameTitle": "treść - marża",

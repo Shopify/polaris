@@ -3,7 +3,7 @@ import {ThemeConfig} from '../../utilities/theme';
 import {TelemetryContext, TelemetryObject} from '../../utilities/telemetry';
 import {ThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
-import {I18n, I18nContext, TranslationDictionary} from '../../utilities/i18n';
+import {I18n, I18nContext} from '../../utilities/i18n';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -32,8 +32,8 @@ interface State {
 }
 
 export interface AppProviderProps extends AppBridgeOptions {
-  /** A locale object or array of locale objects that overrides default translations */
-  i18n: TranslationDictionary | TranslationDictionary[];
+  /** A locale object or array of locale objects that overrides default translations. If specifying an array then your fallback language dictionaries should come first, followed by your primary language dictionary */
+  i18n: ConstructorParameters<typeof I18n>[0];
   /** A custom component to use for all links used by Polaris components */
   linkComponent?: LinkLikeComponent;
   /** Custom logos and colors provided to select components */

@@ -77,7 +77,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     showContextualSaveBar: false,
   };
 
-  private contextualSaveBar: ContextualSaveBarProps | null;
+  private contextualSaveBar: ContextualSaveBarProps | null = null;
   private globalRibbonContainer: HTMLDivElement | null = null;
   private navigationNode = createRef<HTMLDivElement>();
   private skipToMainContentTargetNode =

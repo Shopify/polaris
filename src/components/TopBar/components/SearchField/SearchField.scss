@@ -30,34 +30,30 @@ $stacking-order: (
 .focused .Input,
 .Input:focus {
   border: none;
-  color: var(--p-text-on-surface, color('ink'));
+  color: var(--p-text, color('ink'));
 
   &::placeholder {
-    color: var(--p-text-subdued-on-surface, color('ink', 'lightest'));
+    color: var(--p-text-subdued, color('ink', 'lightest'));
   }
 }
 
 .Input:focus {
   ~ .Backdrop {
-    background-color: var(--p-surface-foreground, color('white'));
+    background-color: var(--p-surface, color('white'));
   }
 
   ~ .Icon {
-    @include recolor-icon(
-      var(--p-icon-subdued-on-surface, color('ink', 'lightest'))
-    );
+    @include recolor-icon(var(--p-icon-subdued, color('ink', 'lightest')));
   }
 }
 
 .focused {
   .Backdrop {
-    background-color: var(--p-surface-foreground, color('white'));
+    background-color: var(--p-surface, color('white'));
   }
 
   .Icon {
-    @include recolor-icon(
-      var(--p-icon-subdued-on-surface, color('ink', 'lightest'))
-    );
+    @include recolor-icon(var(--p-icon-subdued, color('ink', 'lightest')));
   }
 }
 
@@ -70,13 +66,13 @@ $stacking-order: (
   border: none;
   background-color: transparent;
   outline: none;
-  color: var(--p-text-on-surface, var(--top-bar-color));
+  color: var(--p-text, var(--top-bar-color));
   will-change: fill, color;
   transition: fill duration() easing(), color duration() easing();
   appearance: textfield;
 
   &::placeholder {
-    color: var(--p-text-on-surface, var(--top-bar-color));
+    color: var(--p-text, var(--top-bar-color));
   }
 
   &::-webkit-search-decoration,
@@ -86,7 +82,7 @@ $stacking-order: (
 }
 
 .Icon {
-  @include recolor-icon(var(--p-icon-on-surface, var(--top-bar-color)));
+  @include recolor-icon(var(--p-icon, var(--top-bar-color)));
   position: absolute;
   z-index: z-index(icon, $stacking-order);
   top: 50%;
@@ -98,7 +94,7 @@ $stacking-order: (
 }
 
 .Clear {
-  @include recolor-icon(var(--p-neutral-action, color('ink', 'lightest')));
+  @include recolor-icon(var(--p-action-secondary, color('ink', 'lightest')));
   position: relative;
   z-index: z-index(action, $stacking-order);
   align-self: stretch;
@@ -110,7 +106,7 @@ $stacking-order: (
   &:focus,
   &:hover {
     @include recolor-icon(
-      var(--p-neutral-action-hovered, color('ink', 'lighter'))
+      var(--p-action-secondary-hovered, color('ink', 'lighter'))
     );
     outline: none;
   }
@@ -123,7 +119,10 @@ $stacking-order: (
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--p-neutral-action, var(--top-bar-background-lighter));
+  background-color: var(
+    --p-action-secondary,
+    var(--top-bar-background-lighter)
+  );
   will-change: background-color;
   transition: background-color duration() easing();
   border-radius: border-radius();
@@ -133,7 +132,7 @@ $stacking-order: (
 @keyframes toLightBackground {
   to {
     background-color: var(
-      --p-neutral-action,
+      --p-action-secondary,
       var(--top-bar-background-lighter)
     );
   }

@@ -31,7 +31,7 @@ export interface StickyItem {
 export class StickyManager {
   private stickyItems: StickyItem[] = [];
   private stuckItems: StickyItem[] = [];
-  private container: Document | HTMLElement;
+  private container: Document | HTMLElement | null = null;
   private topBarOffset = 0;
 
   private handleResize = debounce(
@@ -70,7 +70,7 @@ export class StickyManager {
   setContainer(el: Document | HTMLElement) {
     this.container = el;
     if (isDocument(el)) {
-      this.setTopBarOffset();
+      this.setTopBarOffset(el);
     }
     addEventListener(this.container, 'scroll', this.handleScroll);
     addEventListener(window, 'resize', this.handleResize);
@@ -89,7 +89,7 @@ export class StickyManager {
       return;
     }
 
-    const scrollTop = scrollTopFor(this.container);
+    const scrollTop = this.container ? scrollTopFor(this.container) : 0;
     const containerTop = getRectForNode(this.container).top + this.topBarOffset;
 
     this.stickyItems.forEach((stickyItem) => {
@@ -225,8 +225,8 @@ export class StickyManager {
     return nodeFound >= 0;
   }
 
-  private setTopBarOffset() {
-    const topbarElement = this.container.querySelector(
+  private setTopBarOffset(container: Document) {
+    const topbarElement = container.querySelector(
       `:not(${scrollable.selector}) ${dataPolarisTopBar.selector}`,
     );
     this.topBarOffset = topbarElement ? topbarElement.clientHeight : 0;

@@ -115,7 +115,8 @@
       "done": "Bitti",
       "clearAllFilters": "Tüm filtreleri temizle",
       "clear": "Temizle",
-      "clearLabel": "{filterName} filtresini temizle"
+      "clearLabel": "{filterName} filtresini temizle",
+      "moreFiltersWithCount": "Daha fazla filtre ({count})"
     },
     "Modal": {
       "iFrameTitle": "gövde işaretlemesi",

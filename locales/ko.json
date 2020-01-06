@@ -115,7 +115,8 @@
       "done": "완료",
       "clearAllFilters": "모든 필터 지우기",
       "clear": "지우기",
-      "clearLabel": "{filterName} 지우기"
+      "clearLabel": "{filterName} 지우기",
+      "moreFiltersWithCount": "추가 필터({count}개)"
     },
     "Modal": {
       "iFrameTitle": "본문 표시",

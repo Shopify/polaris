@@ -1,10 +1,9 @@
 import React from 'react';
 import {act} from 'react-dom/test-utils';
-import {ReactWrapper} from 'enzyme';
 import {clock} from '@shopify/jest-dom-mocks';
 import {Label, Labelled, DisplayText, Caption} from 'components';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {DropZone} from '../DropZone';
 import {DropZoneContext} from '../context';
@@ -32,6 +31,7 @@ const duplicateFiles = [
 const acceptedFiles = [files[0]];
 const rejectedFiles = [files[1]];
 const origGetBoundingClientRect = Element.prototype.getBoundingClientRect;
+const origClick = HTMLElement.prototype.click;
 const widths = {
   small: 99,
   medium: 159,
@@ -49,6 +49,7 @@ describe('<DropZone />', () => {
 
   afterEach(() => {
     clock.restore();
+    HTMLElement.prototype.click = origClick;
   });
 
   afterAll(() => {
@@ -219,20 +220,12 @@ describe('<DropZone />', () => {
     });
 
     it('triggers the file input click event if no onClick is provided', () => {
-      const dropZone = mountWithAppProvider(
-        <DropZone label="My DropZone label" />,
-      );
+      const dropZone = mountWithApp(<DropZone label="My DropZone label" />);
 
-      const fileInput = dropZone
-        .find('input[type="file"]')
-        .getDOMNode() as HTMLInputElement;
+      const fileInput = dropZone.find('input')!.domNode;
 
-      const spy = jest.spyOn(fileInput, 'click');
-
-      dropZone
-        .find('div')
-        .at(4)
-        .simulate('click');
+      const spy = jest.spyOn(fileInput as HTMLElement, 'click');
+      dropZone.find('div', {'aria-disabled': false})!.trigger('onClick');
 
       expect(spy).toHaveBeenCalled();
     });
@@ -355,6 +348,20 @@ describe('<DropZone />', () => {
     });
   });
 
+  describe('onFileDialogClose', () => {
+    it('triggers onFileDialogClose when openFileDialog is true', () => {
+      const spy = jest.fn();
+      mountWithApp(
+        <DropZone
+          label="My DropZone label"
+          openFileDialog
+          onFileDialogClose={spy}
+        />,
+      );
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
   describe('context', () => {
     it('sets type from props on context', () => {
       const type = 'image';
@@ -435,6 +442,13 @@ describe('<DropZone />', () => {
   });
 
   describe('lifecycle', () => {
+    it('triggers the file input dialog on mount when openFileDialog is true', () => {
+      const spy = jest.spyOn(HTMLElement.prototype, 'click');
+
+      mountWithApp(<DropZone label="My DropZone label" openFileDialog />);
+      expect(spy).toHaveBeenCalled();
+    });
+
     it('updates safely', () => {
       const dropZone = mountWithAppProvider(<DropZone />);
 
@@ -473,6 +487,9 @@ function setBoundingClientRect(size: keyof typeof widths) {
         left: 0,
         bottom: 0,
         right: 0,
+        x: 0,
+        y: 0,
+        toJSON() {},
       };
     });
 }
@@ -483,7 +500,7 @@ function fireEvent({
   testFiles = files,
   spy,
 }: {
-  element: ReactWrapper<any, any>;
+  element: ReactWrapper;
   eventType?: string;
   spy?: jest.Mock;
   testFiles?: object[];
