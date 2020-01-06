@@ -1,25 +1,23 @@
 @import '../../../../styles/common';
 @import '../../variables';
 
-$page-layout-when-not-partially-condensed-absolute: rem(743px);
-$search-results-min-width: 45rem;
-
 .Search {
-  position: absolute;
-  z-index: z-index(search, $stacking-order);
-  left: 0;
-  right: 0;
-  top: top-bar-height();
-  height: calc(100vh - #{top-bar-height()});
+  position: fixed;
   visibility: hidden;
   pointer-events: none;
-  padding: 0;
-  width: 100%;
+  top: top-bar-height();
+  left: 0;
+  right: 0;
 
-  @include breakpoint-after($not-condensed-content) {
-    top: top-bar-height() - spacing();
-    left: auto;
-    right: auto;
+  @include page-content-when-not-fully-condensed {
+    position: absolute;
+    top: 100%;
+    max-width: $search-max-width;
+    margin: spacing(extra-tight) spacing(loose) 0;
+  }
+
+  @include page-content-when-not-partially-condensed {
+    margin: spacing(extra-tight) spacing(extra-loose) 0;
   }
 }
 
@@ -28,32 +26,15 @@ $search-results-min-width: 45rem;
   pointer-events: all;
 }
 
-.Overlay {
-  position: absolute;
-  left: 0;
-  right: 0;
+.Results {
+  position: relative;
+  z-index: z-index(search, $stacking-order);
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  width: 100%;
-  max-width: $search-max-width;
-  min-width: $search-results-min-width;
-  max-height: 100%;
-
-  > * {
-    flex: 1 1 auto;
-    width: 100%;
-  }
-
-  @include breakpoint-after($not-condensed-content) {
-    position: relative;
-  }
+  max-height: calc(100vh - #{top-bar-height()});
+  margin: 0;
 
   @include page-content-when-not-fully-condensed {
     max-height: 60vh;
-  }
-
-  @include page-content-when-fully-condensed {
-    min-width: 100%;
   }
 }

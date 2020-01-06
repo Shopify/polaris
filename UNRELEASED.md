@@ -5,6 +5,7 @@
 ### Enhancements
 
 - Added `hideTags` prop to `Filters` ([#2573](https://github.com/Shopify/polaris-react/pull/2573))
+- Added `searchResultsOverlayVisible` prop to `TopBar` which adds a translucent background to the search dismissal overlay when results are displayed ([#2440](https://github.com/Shopify/polaris-react/pull/2440))
 
 ### Bug fixes
 
@@ -22,6 +23,9 @@
 - Fixed an issue with the `Filters` component where the `aria-expanded` attribute was `undefined` on mount ([#2589]https://github.com/Shopify/polaris-react/pull/2589)
 - Fixed `TrapFocus` from tabbing out of the container ([#2555](https://github.com/Shopify/polaris-react/pull/2555))
 - Fixed `PositionedOverlay` not correctly getting its position when aligned to the right of the activator ([#2587](https://github.com/Shopify/polaris-react/pull/2587))
+- Search dismissal overlay now covers the entire screen ([#2440](https://github.com/Shopify/polaris-react/pull/2440))
+- Search results component will no longer unmount when hidden ([#2440](https://github.com/Shopify/polaris-react/pull/2440))
+- Search results will now match the width of the search field ([#2440](https://github.com/Shopify/polaris-react/pull/2440))
 
 ### Documentation
 

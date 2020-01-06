@@ -102,6 +102,18 @@ describe('<TopBar />', () => {
       expect(topBar.find(Search)).toHaveLength(1);
     });
 
+    it('renders the search results when `searchResultsVisible` is false', () => {
+      const topBar = mountWithAppProvider(
+        <TopBar
+          searchResults={searchResults}
+          searchResultsVisible={false}
+          searchField={searchField}
+        />,
+      );
+
+      expect(topBar.find(Search)).toHaveLength(1);
+    });
+
     it('renders the search prop', () => {
       const topBar = mountWithAppProvider(
         <TopBar
@@ -124,6 +136,18 @@ describe('<TopBar />', () => {
       );
 
       expect(topBar.find(Search).prop('visible')).toBe(true);
+    });
+
+    it('passes the searchResultsOverlayVisible prop to search', () => {
+      const topBar = mountWithAppProvider(
+        <TopBar
+          searchResults={searchResults}
+          searchField={searchField}
+          searchResultsOverlayVisible
+        />,
+      );
+
+      expect(topBar.find(Search).prop('overlayVisible')).toBe(true);
     });
 
     it('passes the onSearchDismiss prop to search', () => {

@@ -1,0 +1,14 @@
+@import '../../../../styles/common';
+@import '../../variables';
+
+.SearchDismissOverlay {
+  position: fixed;
+  top: top-bar-height();
+  left: 0;
+  right: 0;
+  height: calc(100vh - #{top-bar-height()});
+}
+
+.visible {
+  background: rgba(color('sky'), 0.8);
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import {classNames} from '../../../../utilities/css';
+import {SearchDismissOverlay} from '../SearchDismissOverlay';
 import styles from './Search.scss';
 
 export interface SearchProps {
@@ -7,37 +8,26 @@ export interface SearchProps {
   visible?: boolean;
   /** The content to display inside the search */
   children?: React.ReactNode;
+  /** Determines whether the dismiss overlay should be visible */
+  overlayVisible?: boolean;
   /** Callback when the search is dismissed */
   onDismiss?(): void;
 }
 
-export class Search extends React.PureComponent<SearchProps, never> {
-  private node = React.createRef<HTMLDivElement>();
-
-  render() {
-    const {visible, children} = this.props;
-
-    const searchClassName = classNames(
-      styles.Search,
-      visible && styles.visible,
-    );
-
-    return (
-      <div
-        ref={this.node}
-        className={searchClassName}
-        onClick={this.handleDismiss}
-      >
-        <div className={styles.Overlay}>{children}</div>
-      </div>
-    );
+export function Search({
+  visible,
+  children,
+  onDismiss,
+  overlayVisible = false,
+}: SearchProps) {
+  if (children == null) {
+    return null;
   }
 
-  private handleDismiss = ({target}: React.MouseEvent<HTMLElement>) => {
-    const {onDismiss} = this.props;
-
-    if (onDismiss != null && target === this.node.current) {
-      onDismiss();
-    }
-  };
+  return (
+    <div className={classNames(styles.Search, visible && styles.visible)}>
+      <SearchDismissOverlay onDismiss={onDismiss} visible={overlayVisible} />
+      <div className={styles.Results}>{children}</div>
+    </div>
+  );
 }
