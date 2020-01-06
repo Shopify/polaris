@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {
   EventListener,
   Focus,
@@ -8,14 +9,26 @@ import {
   TextField,
   Button,
 } from 'components';
-import {
-  findFirstFocusableNode,
-  findLastFocusableNode,
-} from '@shopify/javascript-utilities/focus';
+import * as focusUtilities from '@shopify/javascript-utilities/focus';
 import {TrapFocus} from '../TrapFocus';
 
+jest.mock('@shopify/javascript-utilities/fastdom', () => ({
+  ...require.requireActual('@shopify/javascript-utilities/fastdom'),
+  write: (cb: () => void) => cb(),
+}));
+
 describe('<TrapFocus />', () => {
+  let focusFirstFocusableNodeSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    focusFirstFocusableNodeSpy = jest.spyOn(
+      focusUtilities,
+      'focusFirstFocusableNode',
+    );
+  });
+
   afterEach(() => {
+    focusFirstFocusableNodeSpy.mockRestore();
     (document.activeElement as HTMLElement).blur();
   });
 
@@ -96,48 +109,10 @@ describe('<TrapFocus />', () => {
       .find('button')
       .getDOMNode();
 
-    const trapFocus = mountWithAppProvider(
-      <TrapFocus>
-        <TextField label="" value="" onChange={noop} autoFocus />
-        <TextField label="" value="" onChange={noop} autoFocus />
-      </TrapFocus>,
-    );
-
     const event: FocusEvent = new FocusEvent('focusout', {
       relatedTarget: externalDomNode,
     });
     Object.assign(event, {preventDefault: jest.fn()});
-
-    describe('prevents default when focus moves to an external node', () => {
-      let rafSpy: jest.SpyInstance;
-
-      beforeEach(() => {
-        rafSpy = jest.spyOn(window, 'requestAnimationFrame');
-        rafSpy.mockImplementation((callback) => callback());
-      });
-
-      afterEach(() => {
-        rafSpy.mockRestore();
-      });
-
-      it('has one focusable node', () => {
-        trigger(trapFocus.find(EventListener), 'handler', {
-          ...event,
-          srcElement: findFirstFocusableNode(trapFocus.getDOMNode()),
-        });
-
-        expect(event.preventDefault).toHaveBeenCalled();
-      });
-
-      it('it has multiple focusable nodes', () => {
-        trigger(trapFocus.find(EventListener), 'handler', {
-          ...event,
-          srcElement: findLastFocusableNode(trapFocus.getDOMNode()),
-        });
-
-        expect(event.preventDefault).toHaveBeenCalled();
-      });
-    });
 
     it('allows default when trapping is false', () => {
       const trapFocus = mountWithAppProvider(
@@ -173,6 +148,25 @@ describe('<TrapFocus />', () => {
       trigger(trapFocus.find(EventListener), 'handler', event);
 
       expect(event.preventDefault).not.toHaveBeenCalled();
+    });
+
+    it('focuses focusTrapWrapper when focusTrapWrapper does not contain a focusable element and the event target is not the firstFocusableNode', () => {
+      const trapFocus = mountWithApp(
+        <TrapFocus>
+          <div id="other" />
+        </TrapFocus>,
+      );
+
+      const event: Partial<FocusEvent> = {
+        relatedTarget: externalDomNode,
+        srcElement: externalDomNode,
+        preventDefault: () => {},
+      };
+      trapFocus.find(EventListener)!.trigger('handler', event);
+
+      expect(focusFirstFocusableNodeSpy).toHaveBeenCalledWith(
+        trapFocus.find('div')!.domNode,
+      );
     });
   });
 });

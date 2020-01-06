@@ -115,7 +115,8 @@
       "done": "Terminé",
       "clearAllFilters": "Effacer tous les filtres",
       "clear": "Effacer",
-      "clearLabel": "Effacer {filterName}"
+      "clearLabel": "Effacer {filterName}",
+      "moreFiltersWithCount": "Plus de filtres ({count})"
     },
     "Modal": {
       "iFrameTitle": "balisage du corps",

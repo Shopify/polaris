@@ -4,6 +4,7 @@ import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
+import {ThemeProvider} from '../../../ThemeProvider';
 
 import {Icon} from '../../../Icon';
 import {KeypressListener} from '../../../KeypressListener';
@@ -69,11 +70,13 @@ export function Toast({
   const className = classNames(styles.Toast, error && styles.error);
 
   return (
-    <div className={className}>
-      <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
-      {content}
-      {actionMarkup}
-      {dismissMarkup}
-    </div>
+    <ThemeProvider theme={{colorScheme: 'inverse'}}>
+      <div className={className}>
+        <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
+        {content}
+        {actionMarkup}
+        {dismissMarkup}
+      </div>
+    </ThemeProvider>
   );
 }

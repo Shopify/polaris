@@ -55,10 +55,10 @@ export const Card: React.FunctionComponent<CardProps> & {
 }: CardProps) {
   const i18n = useI18n();
 
-  const [
-    secondaryActionsPopoverOpen,
-    toggleSecondaryActionsPopoverOpen,
-  ] = useToggle(false);
+  const {
+    value: secondaryActionsPopoverOpen,
+    toggle: toggleSecondaryActionsPopoverOpen,
+  } = useToggle(false);
 
   const className = classNames(styles.Card, subdued && styles.subdued);
 

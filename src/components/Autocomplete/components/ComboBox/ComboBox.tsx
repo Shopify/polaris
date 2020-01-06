@@ -214,7 +214,7 @@ export class ComboBox extends React.PureComponent<ComboBoxProps, State> {
 
     const context = {
       comboBoxId,
-      selectedOptionId: this.selectedOptionId,
+      selectedOptionId: this.selectedOptionId(),
     };
 
     return (
@@ -445,7 +445,7 @@ export class ComboBox extends React.PureComponent<ComboBoxProps, State> {
     }
   };
 
-  private get selectedOptionId(): string | undefined {
+  private selectedOptionId(): string | undefined {
     const {selectedOption, selectedIndex, comboBoxId} = this.state;
     return selectedOption ? `${comboBoxId}-${selectedIndex}` : undefined;
   }

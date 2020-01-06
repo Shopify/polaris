@@ -110,7 +110,7 @@ $base-font-size: 10px;
         )
       );
 
-      @if (type-of($value) == map) and (type-of(map-get($map, $key)) == map) {
+      @if type-of($value) == map and type-of(map-get($map, $key)) == map {
         $value: map-extend(map-get($map, $key), $value);
       }
     }

@@ -18,7 +18,7 @@
         "success": "Succes",
         "warning": "Advarsel",
         "attention": "Bemærk",
-        "new": "Nyt"
+        "new": "Nye"
       }
     },
     "Button": {
@@ -115,7 +115,8 @@
       "done": "Udført",
       "clearAllFilters": "Ryd alle filtre",
       "clear": "Ryd",
-      "clearLabel": "Ryd {filterName}"
+      "clearLabel": "Ryd {filterName}",
+      "moreFiltersWithCount": "Flere filtre: ({count})"
     },
     "Modal": {
       "iFrameTitle": "markering af brødtekst",

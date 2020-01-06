@@ -33,16 +33,16 @@ $chekbox-label-margin: rem(20px);
   }
 
   &.globalTheming {
-    @include recolor-icon(var(--p-icon-on-surface));
-    background: var(--p-neutral-action);
-    color: var(--p-text-on-surface);
+    @include recolor-icon(var(--p-icon));
+    background: var(--p-action-secondary);
+    color: var(--p-text);
 
     &:hover {
-      background: var(--p-neutral-action-hovered);
+      background: var(--p-action-secondary-hovered);
     }
 
     &:active {
-      background: var(--p-neutral-action-pressed);
+      background: var(--p-action-secondary-pressed);
     }
     // stylelint-disable-next-line selector-max-class
     &.CheckableButton-selectMode {
@@ -87,7 +87,7 @@ $chekbox-label-margin: rem(20px);
   }
 
   &.CheckableButton-selected {
-    color: var(--p-text-on-surface, color('indigo'));
+    color: var(--p-text, color('indigo'));
 
     @include breakpoint-after(resource-list(breakpoint-small)) {
       border-color: color('sky', 'dark');
