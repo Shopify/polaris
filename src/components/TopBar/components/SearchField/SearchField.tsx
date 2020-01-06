@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useRef} from 'react';
 import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
+import {useFeatures} from '../../../../utilities/features';
 import {useUniqueId} from '../../../../utilities/unique-id';
 
 import {Icon} from '../../../Icon';
@@ -39,6 +40,7 @@ export function SearchField({
   onCancel,
 }: SearchFieldProps) {
   const i18n = useI18n();
+  const {unstableGlobalTheming = false} = useFeatures();
 
   const input = useRef<HTMLInputElement>(null);
   const searchId = useUniqueId('SearchField');
@@ -92,6 +94,7 @@ export function SearchField({
   const className = classNames(
     styles.SearchField,
     (focused || active) && styles.focused,
+    unstableGlobalTheming && styles['SearchField-globalTheming'],
   );
 
   return (

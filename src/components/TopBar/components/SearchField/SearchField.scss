@@ -3,7 +3,9 @@
 
 $icon-size: rem(20px);
 $input-height: rem(34px);
+$unstable-input-height: rem(36px);
 $clear-button-width: $icon-size + spacing();
+$unstable-search-max-width: rem(580px);
 
 $stacking-order: (
   backdrop: 1,
@@ -20,6 +22,15 @@ $stacking-order: (
   border: 1px solid transparent;
   width: 100%;
   max-width: $search-max-width;
+}
+
+.SearchField-globalTheming {
+  max-width: $unstable-search-max-width;
+  // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
+  .Input:focus ~ .Backdrop {
+    @include focus-ring('wide');
+    position: absolute;
+  }
 }
 // We have both a focused class and a focus pseudo selector here
 // because we allow "faked" focus for when the search is still
@@ -38,7 +49,7 @@ $stacking-order: (
 
 .Input:focus {
   ~ .Backdrop {
-    background-color: var(--p-surface, color('white'));
+    background-color: var(--p-action-secondary, color('white'));
   }
 
   ~ .Icon {
@@ -48,7 +59,7 @@ $stacking-order: (
 
 .focused {
   .Backdrop {
-    background-color: var(--p-surface, color('white'));
+    background-color: var(--p-action-secondary, color('white'));
   }
 
   .Icon {
@@ -77,6 +88,10 @@ $stacking-order: (
   &::-webkit-search-decoration,
   &::-webkit-search-cancel-button {
     appearance: none;
+  }
+
+  .SearchField-globalTheming & {
+    height: $unstable-input-height;
   }
 }
 

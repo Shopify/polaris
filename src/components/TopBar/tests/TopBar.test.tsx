@@ -1,7 +1,8 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
-import {Image, UnstyledLink} from 'components';
+import {mountWithApp} from 'test-utilities';
+import {EventListener, Image, UnstyledLink} from 'components';
 import {TopBar} from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
 
@@ -247,6 +248,22 @@ describe('<TopBar />', () => {
     it('doesn’t render the wrapper when not defined and no logo is available', () => {
       const topBar = mountWithAppProvider(<TopBar />);
       expect(findByTestID(topBar, 'ContextControl').exists()).toBe(false);
+    });
+  });
+
+  describe('globalTheming', () => {
+    it('does not render an EventListener by default', () => {
+      const topBar = mountWithApp(<TopBar />);
+
+      expect(topBar).not.toContainReactComponent(EventListener);
+    });
+
+    it('renders an EventListener when globalTheming is enabled', () => {
+      const topBar = mountWithApp(<TopBar />, {
+        features: {unstableGlobalTheming: true},
+      });
+
+      expect(topBar).toContainReactComponent(EventListener);
     });
   });
 });

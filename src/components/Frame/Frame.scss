@@ -28,7 +28,6 @@ $skip-vertical-offset: rem(10px);
   transform: translateX(0%);
 
   @include frame-when-nav-displayed {
-    z-index: 1;
     display: flex;
 
     &:not(.Navigation-globalTheming) {
@@ -89,14 +88,31 @@ $skip-vertical-offset: rem(10px);
     opacity: 1;
   }
 
+  &:hover {
+    background-color: var(--p-overlay);
+  }
+
   &:focus {
     border-radius: border-radius();
-    background-color: rgba(color('white'), 0.16);
+    background-color: var(--p-override-transparent, rgba(color('white'), 0.16));
     outline: none;
+  }
+
+  &:active {
+    background-color: var(--p-overlay);
   }
 
   @include frame-when-nav-displayed {
     display: none;
+  }
+
+  .Navigation-globalTheming & {
+    border-radius: 50%;
+
+    &:focus {
+      @include focus-ring;
+      position: absolute;
+    }
   }
 }
 
@@ -112,6 +128,7 @@ $skip-vertical-offset: rem(10px);
   &.TopBar-globalTheming {
     @include frame-when-nav-displayed {
       left: layout-width(unstable-nav);
+      width: calc(100% - #{layout-width(unstable-nav)});
     }
   }
 }
@@ -146,6 +163,15 @@ $skip-vertical-offset: rem(10px);
 
   .hasTopBar & {
     padding-top: top-bar-height();
+    @include when-printing {
+      padding-top: 0;
+    }
+  }
+}
+
+.Main-globalTheming {
+  .hasTopBar & {
+    padding-top: unstable-top-bar-height();
     @include when-printing {
       padding-top: 0;
     }

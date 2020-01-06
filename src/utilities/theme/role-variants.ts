@@ -125,7 +125,7 @@ export const roleVariants: RoleVariants = {
       dark: {
         hue: 0,
         saturation: 0,
-        lightness: 0,
+        lightness: 100,
         alpha: 0.15,
       },
     },
@@ -157,7 +157,7 @@ export const roleVariants: RoleVariants = {
       name: 'borderDisabled',
       description: 'For use as a an interactive outline on disabled elements.',
       light: {lightness: 95},
-      dark: {lightness: 70},
+      dark: {lightness: 30},
     },
     {
       name: 'borderSubdued',

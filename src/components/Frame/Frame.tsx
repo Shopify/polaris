@@ -248,6 +248,11 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
       topBar && styles.hasTopBar,
     );
 
+    const mainClassName = classNames(
+      styles.Main,
+      unstableGlobalTheming && styles['Main-globalTheming'],
+    );
+
     const navigationOverlayMarkup =
       showMobileNavigation && isNavigationCollapsed ? (
         <Backdrop
@@ -289,7 +294,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
           {loadingMarkup}
           {navigationOverlayMarkup}
           <main
-            className={styles.Main}
+            className={mainClassName}
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
           >

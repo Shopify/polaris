@@ -30,6 +30,7 @@ $unstable-nav-max-width: rem(258px);
 
   &.Navigation-globalTheming {
     max-width: $unstable-nav-max-width;
+    border-right: 1px solid var(--p-border-disabled);
   }
 }
 
@@ -303,7 +304,12 @@ $secondary-item-font-size: rem(15px);
 .Section {
   @include unstyled-list;
   flex: 0 0 auto;
+  padding: spacing() 0;
   @include safe-area-for(padding-left, 0, left);
+
+  .Navigation-globalTheming & {
+    padding-top: 0;
+  }
 
   + .Section {
     padding-top: spacing(extra-tight);

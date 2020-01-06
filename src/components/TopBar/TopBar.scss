@@ -5,6 +5,13 @@ $icon-size: rem(20px);
 $page-left-alignment-breakpoint-max: 1268px;
 $context-control-extra-spacing: rem(40px);
 $context-control-expand-after: 1400px;
+$top-bar-scroll-shadow: 0 1px 2px var(--p-shadow-from-direct-light);
+$top-bar-scroll-shadow-transition-timing-function: cubic-bezier(
+  0.4,
+  0.22,
+  0.28,
+  1
+);
 
 .TopBar {
   position: relative;
@@ -22,6 +29,11 @@ $context-control-expand-after: 1400px;
 
 .Topbar-globalTheming {
   height: unstable-top-bar-height();
+  transition: box-shadow 100ms $top-bar-scroll-shadow-transition-timing-function;
+
+  &.isScrolled {
+    box-shadow: $top-bar-scroll-shadow;
+  }
 }
 
 .LogoContainer {
@@ -62,15 +74,17 @@ $context-control-expand-after: 1400px;
   margin-right: spacing(tight);
   padding: spacing(tight);
   border-radius: border-radius();
+  fill: var(--p-icon, color('white')); // Icon will inherit this fill
   &.focused {
-    background-color: rgba(color('white'), 0.16);
+    background-color: var(--p-override-transparent, rgba(color('white'), 0.16));
   }
   &.focused:active {
-    background-color: rgba(color('black'), 0.28);
+    background-color: var(--p-surface-pressed, rgba(color('black'), 0.28));
   }
   &:hover {
-    background-color: rgba(color('white'), 0.08);
-  } // This increases hit point size.
+    background-color: var(--p-surface-hovered, rgba(color('white'), 0.08));
+  }
+  // This increases hit point size.
   &::after {
     content: '';
     position: absolute;
@@ -114,6 +128,17 @@ $context-control-expand-after: 1400px;
   @media (max-width: $page-left-alignment-breakpoint-max) {
     margin-left: 0;
   }
+<<<<<<< HEAD
+=======
+
+  @include breakpoint-after($not-condensed-content) {
+    position: relative;
+  }
+
+  .Topbar-globalTheming & {
+    margin-left: 0;
+  }
+>>>>>>> More top bar styling
 }
 
 .SecondaryMenu {

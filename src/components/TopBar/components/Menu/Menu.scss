@@ -36,17 +36,20 @@ $activator-variables: (
   border-radius: border-radius();
 
   &:focus {
-    background-color: menu(focus-background-color);
+    background-color: var(
+      --p-override-transparent,
+      menu(focus-background-color)
+    );
     outline: none;
   }
 
   &:hover {
-    background-color: menu(hover-background-color);
+    background-color: var(--p-surface-hovered, menu(hover-background-color));
   }
 
   &:active,
   &[aria-expanded='true'] {
-    background-color: menu(active-background-color);
+    background-color: var(--p-surface-pressed, menu(active-background-color));
     outline: none;
     transition: none;
   }

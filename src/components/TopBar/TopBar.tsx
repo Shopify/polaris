@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
@@ -6,11 +6,13 @@ import {useI18n} from '../../utilities/i18n';
 import {useTheme} from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
+import {EventListener} from '../EventListener';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
 
 import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
+
 import styles from './TopBar.scss';
 
 export interface TopBarProps {
@@ -59,6 +61,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
 }: TopBarProps) {
   const i18n = useI18n();
   const {logo} = useTheme();
+  const [scrolled, setScrolled] = useState(false);
   const {unstableGlobalTheming = false} = useFeatures();
 
   const {
@@ -66,6 +69,17 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     setTrue: forceTrueFocused,
     setFalse: forceFalseFocused,
   } = useToggle(false);
+
+  function handleScroll() {
+    const scrollDistance = window.scrollY;
+    const isScrolled = scrollDistance >= 1;
+
+    if (scrolled && isScrolled) {
+      return;
+    }
+
+    setScrolled(Boolean(isScrolled));
+  }
 
   const iconClassName = classNames(
     styles.NavigationIcon,
@@ -81,10 +95,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       onBlur={forceFalseFocused}
       aria-label={i18n.translate('Polaris.TopBar.toggleMenuLabel')}
     >
-      <Icon
-        source={MobileHamburgerMajorMonotone}
-        color={unstableGlobalTheming ? 'black' : 'white'}
-      />
+      <Icon source={MobileHamburgerMajorMonotone} />
     </button>
   ) : null;
 
@@ -129,9 +140,14 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     </React.Fragment>
   ) : null;
 
+  const scrollListenerMarkup = unstableGlobalTheming ? (
+    <EventListener event="scroll" handler={handleScroll} passive />
+  ) : null;
+
   const className = classNames(
     styles.TopBar,
     unstableGlobalTheming && styles['Topbar-globalTheming'],
+    scrolled && styles.isScrolled,
   );
 
   return (
@@ -143,6 +159,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
         <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
         {userMenu}
       </div>
+      {scrollListenerMarkup}
     </div>
   );
 };
