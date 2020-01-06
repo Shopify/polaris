@@ -37,6 +37,21 @@ describe('<ColorPicker />', () => {
         expect(spy).not.toHaveBeenCalled();
       });
     });
+
+    describe('onFocus', () => {
+      it('prevents scrolling of MainColor when onFocus called', () => {
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={noop} />,
+        );
+        const mainColor = colorPicker.childAt(0);
+        const mainColorNode = mainColor.getDOMNode();
+
+        mainColor.simulate('focus');
+
+        expect(mainColorNode.scrollTop).toBe(0);
+        expect(mainColorNode.scrollLeft).toBe(0);
+      });
+    });
   });
 
   describe('Hue slider', () => {
@@ -70,7 +85,7 @@ describe('<ColorPicker />', () => {
           .simulate('keyup', {
             key: 'ArrowUp',
           });
-        expect(onChangeSpy).toHaveBeenCalled();
+        expect(onChangeSpy).toHaveBeenCalledTimes(1);
       });
 
       it('is called on ArrowDown keyup event', () => {
@@ -84,7 +99,7 @@ describe('<ColorPicker />', () => {
           .simulate('keyup', {
             key: 'ArrowDown',
           });
-        expect(onChangeSpy).toHaveBeenCalled();
+        expect(onChangeSpy).toHaveBeenCalledTimes(1);
       });
 
       it('is called on ArrowLeft keyup event', () => {
@@ -98,7 +113,7 @@ describe('<ColorPicker />', () => {
           .simulate('keyup', {
             key: 'ArrowLeft',
           });
-        expect(onChangeSpy).toHaveBeenCalled();
+        expect(onChangeSpy).toHaveBeenCalledTimes(1);
       });
 
       it('is called on ArrowRight keyup event', () => {
@@ -112,7 +127,7 @@ describe('<ColorPicker />', () => {
           .simulate('keyup', {
             key: 'ArrowRight',
           });
-        expect(onChangeSpy).toHaveBeenCalled();
+        expect(onChangeSpy).toHaveBeenCalledTimes(1);
       });
     });
   });

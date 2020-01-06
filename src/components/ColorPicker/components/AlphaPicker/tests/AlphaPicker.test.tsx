@@ -54,6 +54,19 @@ describe('<AlphaPicker />', () => {
       });
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHue);
     });
+  });
+
+  describe('<Slidable />', () => {
+    it('receives dragger height changes and uses them to calculate draggerY', () => {
+      const alpha = 0.7;
+      const alphaPicker = mountWithAppProvider(
+        <AlphaPicker {...mockProps} alpha={alpha} />,
+      );
+      const newDraggerHeight = 7;
+      const expectedNewHue = calculateDraggerY(alpha, 0, newDraggerHeight);
+      trigger(alphaPicker.find(Slidable), 'onDraggerHeight', newDraggerHeight);
+      expect(alphaPicker.find(Slidable).prop('draggerY')).toBe(expectedNewHue);
+    });
 
     it('is called on ArrowUp keyup event', () => {
       const onChangeSpy = jest.fn();
@@ -63,7 +76,7 @@ describe('<AlphaPicker />', () => {
       alphaPicker.find('[role="application"]').simulate('keyup', {
         key: 'ArrowUp',
       });
-      expect(onChangeSpy).toHaveBeenCalled();
+      expect(onChangeSpy).toHaveBeenCalledTimes(1);
     });
 
     it('is called on ArrowDown keyup event', () => {
@@ -74,7 +87,7 @@ describe('<AlphaPicker />', () => {
       alphaPicker.find('[role="application"]').simulate('keyup', {
         key: 'ArrowDown',
       });
-      expect(onChangeSpy).toHaveBeenCalled();
+      expect(onChangeSpy).toHaveBeenCalledTimes(1);
     });
 
     it('is not called on ArrowLeft keyup event', () => {
@@ -97,19 +110,6 @@ describe('<AlphaPicker />', () => {
         key: 'ArrowRight',
       });
       expect(onChangeSpy).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('<Slidable />', () => {
-    it('receives dragger height changes and uses them to calculate draggerY', () => {
-      const alpha = 0.7;
-      const alphaPicker = mountWithAppProvider(
-        <AlphaPicker {...mockProps} alpha={alpha} />,
-      );
-      const newDraggerHeight = 7;
-      const expectedNewHue = calculateDraggerY(alpha, 0, newDraggerHeight);
-      trigger(alphaPicker.find(Slidable), 'onDraggerHeight', newDraggerHeight);
-      expect(alphaPicker.find(Slidable).prop('draggerY')).toBe(expectedNewHue);
     });
   });
 });

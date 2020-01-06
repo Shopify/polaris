@@ -68,7 +68,7 @@ describe('<HuePicker />', () => {
       huePicker.find('[role="application"]').simulate('keyup', {
         key: 'ArrowUp',
       });
-      expect(onChangeSpy).toHaveBeenCalled();
+      expect(onChangeSpy).toHaveBeenCalledTimes(1);
     });
 
     it('is called on ArrowDown keyup event', () => {
@@ -79,7 +79,7 @@ describe('<HuePicker />', () => {
       huePicker.find('[role="application"]').simulate('keyup', {
         key: 'ArrowDown',
       });
-      expect(onChangeSpy).toHaveBeenCalled();
+      expect(onChangeSpy).toHaveBeenCalledTimes(1);
     });
 
     it('is not called on ArrowLeft keyup event', () => {
