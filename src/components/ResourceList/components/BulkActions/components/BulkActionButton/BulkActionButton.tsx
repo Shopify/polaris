@@ -1,6 +1,8 @@
-import React, {createRef} from 'react';
+import React, {useRef} from 'react';
 import {DisableableAction} from '../../../../../../types';
 import {Button} from '../../../../../Button';
+import {useComponentDidMount} from '../../../../../../utilities/use-component-did-mount';
+
 import styles from '../../BulkActions.scss';
 
 export type BulkActionButtonProps = {
@@ -8,44 +10,37 @@ export type BulkActionButtonProps = {
   handleMeasurement?(width: number): void;
 } & DisableableAction;
 
-export class BulkActionButton extends React.PureComponent<
-  BulkActionButtonProps,
-  never
-> {
-  private bulkActionButton = createRef<HTMLDivElement>();
+export function BulkActionButton({
+  handleMeasurement,
+  url,
+  external,
+  onAction,
+  content,
+  disclosure,
+  accessibilityLabel,
+  disabled,
+}: BulkActionButtonProps) {
+  const bulkActionButton = useRef<HTMLDivElement>(null);
 
-  componentDidMount() {
-    const {handleMeasurement} = this.props;
-    if (handleMeasurement && this.bulkActionButton.current) {
-      const width = this.bulkActionButton.current.getBoundingClientRect().width;
+  useComponentDidMount(() => {
+    if (handleMeasurement && bulkActionButton.current) {
+      const width = bulkActionButton.current.getBoundingClientRect().width;
       handleMeasurement(width);
     }
-  }
+  });
 
-  render() {
-    const {
-      url,
-      external,
-      onAction,
-      content,
-      disclosure,
-      accessibilityLabel,
-      disabled,
-    } = this.props;
-
-    return (
-      <div className={styles.BulkActionButton} ref={this.bulkActionButton}>
-        <Button
-          external={external}
-          url={url}
-          aria-label={accessibilityLabel}
-          onClick={onAction}
-          disabled={disabled}
-          disclosure={disclosure}
-        >
-          {content}
-        </Button>
-      </div>
-    );
-  }
+  return (
+    <div className={styles.BulkActionButton} ref={bulkActionButton}>
+      <Button
+        external={external}
+        url={url}
+        aria-label={accessibilityLabel}
+        onClick={onAction}
+        disabled={disabled}
+        disclosure={disclosure}
+      >
+        {content}
+      </Button>
+    </div>
+  );
 }
