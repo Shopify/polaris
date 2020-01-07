@@ -18,7 +18,7 @@ $icon-size: rem(16px);
       var(--p-icon-disabled, color('ink', 'lightest'))
     );
     transition: none;
-    background: var(--p-neutral-action-disabled, color('sky', 'light'));
+  background: var(--p-action-secondary-disabled, color('sky', 'light'));
     color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
   }
 
