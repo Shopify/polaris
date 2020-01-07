@@ -44,7 +44,7 @@
   height: inherit;
   width: 0;
   will-change: width;
-  background-color: var(--p-highlight-border, color('teal'));
+  background-color: var(--p-border-highlight, color('teal'));
   animation: fillup duration(slowest) easing();
   transition: width duration(slowest) easing();
 
