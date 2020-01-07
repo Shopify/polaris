@@ -19,7 +19,7 @@ $icon-size: rem(16px);
     );
     transition: none;
   background: var(--p-action-secondary-disabled, color('sky', 'light'));
-    color: var(--p-text-disabled-on-surface, color('ink', 'lightest'));
+  color: var(--p-text-disabled, color('ink', 'lightest')); 
   }
 
   .TagText {
