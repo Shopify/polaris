@@ -316,7 +316,7 @@ Use to present actionable content that is optional or not the primary purpose of
         to your account. A special code will be required each time you log in,
         ensuring only you can access your account.
       </p>
-      <Stack distribution='trailing'>
+      <Stack distribution="trailing">
         <ButtonGroup>
           <Button>Enable two-step authentication</Button>
           <Button plain>Learn more</Button>
