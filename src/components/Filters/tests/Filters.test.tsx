@@ -217,6 +217,20 @@ describe('<Filters />', () => {
       ).toHaveLength(2);
     });
 
+    it('receives shortcut filters with popoverOpen set to false on mount', () => {
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockPropsWithShortcuts} />,
+      );
+
+      const rightPopoverableActions = resourceFilters
+        .find(ConnectedFilterControl)
+        .props().rightPopoverableActions;
+
+      rightPopoverableActions!.forEach((action) => {
+        expect(action.popoverOpen).toBe(false);
+      });
+    });
+
     it('toggles a shortcut filter', () => {
       const resourceFilters = mountWithAppProvider(
         <Filters {...mockPropsWithShortcuts} />,
