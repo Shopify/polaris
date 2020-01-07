@@ -14,12 +14,10 @@ $icon-size: rem(16px);
   color: var(--p-text, color('ink'));
 
   &.disabled {
-    @include recolor-icon(
-      var(--p-icon-disabled, color('ink', 'lightest'))
-    );
+    @include recolor-icon(var(--p-icon-disabled, color('ink', 'lightest')));
     transition: none;
-  background: var(--p-action-secondary-disabled, color('sky', 'light'));
-  color: var(--p-text-disabled, color('ink', 'lightest')); 
+    background: var(--p-action-secondary-disabled, color('sky', 'light'));
+    color: var(--p-text-disabled, color('ink', 'lightest'));
   }
 
   .TagText {
