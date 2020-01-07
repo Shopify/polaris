@@ -57,7 +57,7 @@ $icon-size: rem(16px);
   // End - Delete above me during global theming rollout
 
   &.globalTheming {
-    @include recolor-icon(var(--p-icon-on-surface));
+    @include recolor-icon(var(--p-icon));
 
     &:hover {
       background: var(--p-neutral-action-hovered);
