@@ -15,7 +15,7 @@ $icon-size: rem(16px);
 
   &.disabled {
     @include recolor-icon(
-      var(--p-icon-disabled-on-surface, color('ink', 'lightest'))
+      var(--p-icon-disabled, color('ink', 'lightest'))
     );
     transition: none;
     background: var(--p-neutral-action-disabled, color('sky', 'light'));
