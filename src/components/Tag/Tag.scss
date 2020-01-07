@@ -77,7 +77,7 @@ $icon-size: rem(16px);
     }
 
     &:disabled {
-      @include recolor-icon(var(--p-icon-disabled-on-surface));
+      @include recolor-icon(var(--p-icon-disabled));
       cursor: default;
       pointer-events: none;
     }
