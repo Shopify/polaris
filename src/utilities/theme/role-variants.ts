@@ -103,6 +103,22 @@ export const roleVariants: RoleVariants = {
         alpha: 0.15,
       },
     },
+    {
+      name: 'hintFromDirectLight',
+      description: 'For use in building shadows scrollables.',
+      light: {
+        hue: 0,
+        saturation: 0,
+        lightness: 0,
+        alpha: 0.15,
+      },
+      dark: {
+        hue: 0,
+        saturation: 0,
+        lightness: 75,
+        alpha: 0.2,
+      },
+    },
   ],
   onSurface: [
     {
