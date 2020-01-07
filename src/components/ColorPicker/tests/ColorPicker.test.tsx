@@ -82,107 +82,107 @@ describe('<ColorPicker />', () => {
         expect(spy).not.toHaveBeenCalled();
       });
     });
+  });
 
-    describe('Recently selected', () => {
-      describe('colors', () => {
-        it('color is added to recently selected when it is entered into TextPicker', () => {
-          const colorPicker = mountWithAppProvider(
-            <ColorPicker color={red} onChange={noop} />,
-          );
-
-          const textPicker = colorPicker.find(TextPicker);
-
-          textPicker.find('input').getDOMNode().value = 'white';
-          textPicker
-            .find('input')
-            .simulate('change')
-            .simulate('blur');
-
-          const recentlySelected = colorPicker.find(RecentlySelected);
-
-          expect(recentlySelected.prop('colors')[0]).toStrictEqual(white);
-        });
-
-        it('color is added to recently selected when Slidable onDraggingEnd is called', () => {
-          const colorPicker = mountWithAppProvider(
-            <ColorPicker color={red} onChange={noop} />,
-          );
-
-          const slidable = colorPicker
-            .find(Slidable)
-            .at(SlidableType.BrightnessSaturation);
-
-          trigger(slidable, 'onDraggingEnd');
-
-          const recentlySelected = colorPicker.find(RecentlySelected);
-
-          expect(recentlySelected.prop('colors')[0]).toStrictEqual(red);
-        });
-
-        it('color is added to recently selected when HuePicker onDraggingEnd is called', () => {
-          const colorPicker = mountWithAppProvider(
-            <ColorPicker color={red} onChange={noop} />,
-          );
-
-          const slidable = colorPicker.find(Slidable).at(SlidableType.Hue);
-
-          trigger(slidable, 'onDraggingEnd');
-
-          const recentlySelected = colorPicker.find(RecentlySelected);
-
-          expect(recentlySelected.prop('colors')[0]).toStrictEqual(red);
-        });
-
-        it('color is added to recently selected when AlphaPicker onDraggingEnd is called', () => {
-          const colorPicker = mountWithAppProvider(
-            <ColorPicker color={red} onChange={noop} allowAlpha />,
-          );
-
-          const slidable = colorPicker.find(Slidable).at(SlidableType.Alpha);
-
-          trigger(slidable, 'onDraggingEnd');
-
-          const recentlySelected = colorPicker.find(RecentlySelected);
-
-          expect(recentlySelected.prop('colors')[0]).toStrictEqual(red);
-        });
-      });
-
-      describe('onChange()', () => {
-        it('onChange is called with color when RecentlySelected swatch is clicked', () => {
-          const spy = jest.fn();
-          const colorPicker = mountWithAppProvider(
-            <ColorPicker color={red} onChange={spy} />,
-          );
-
-          const textPicker = colorPicker.find(TextPicker);
-
-          textPicker.find('input').getDOMNode().value = 'white';
-          textPicker
-            .find('input')
-            .simulate('change')
-            .simulate('blur');
-
-          const recentlySelected = colorPicker.find(RecentlySelected);
-
-          recentlySelected
-            .find('button')
-            .at(0)
-            .simulate('click');
-
-          expect(spy).toHaveBeenCalledWith(white);
-        });
-      });
-
-      it('no recently selected component exists before a color has been selected', () => {
+  describe('Recently selected', () => {
+    describe('colors', () => {
+      it('color is added to recently selected when it is entered into TextPicker', () => {
         const colorPicker = mountWithAppProvider(
           <ColorPicker color={red} onChange={noop} />,
         );
 
+        const textPicker = colorPicker.find(TextPicker);
+
+        textPicker.find('input').getDOMNode().value = 'white';
+        textPicker
+          .find('input')
+          .simulate('change')
+          .simulate('blur');
+
         const recentlySelected = colorPicker.find(RecentlySelected);
 
-        expect(recentlySelected).toHaveLength(0);
+        expect(recentlySelected.prop('colors')[0]).toStrictEqual(white);
       });
+
+      it('color is added to recently selected when Slidable onDraggingEnd is called', () => {
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={noop} />,
+        );
+
+        const slidable = colorPicker
+          .find(Slidable)
+          .at(SlidableType.BrightnessSaturation);
+
+        trigger(slidable, 'onDraggingEnd');
+
+        const recentlySelected = colorPicker.find(RecentlySelected);
+
+        expect(recentlySelected.prop('colors')[0]).toStrictEqual(red);
+      });
+
+      it('color is added to recently selected when HuePicker onDraggingEnd is called', () => {
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={noop} />,
+        );
+
+        const slidable = colorPicker.find(Slidable).at(SlidableType.Hue);
+
+        trigger(slidable, 'onDraggingEnd');
+
+        const recentlySelected = colorPicker.find(RecentlySelected);
+
+        expect(recentlySelected.prop('colors')[0]).toStrictEqual(red);
+      });
+
+      it('color is added to recently selected when AlphaPicker onDraggingEnd is called', () => {
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={noop} allowAlpha />,
+        );
+
+        const slidable = colorPicker.find(Slidable).at(SlidableType.Alpha);
+
+        trigger(slidable, 'onDraggingEnd');
+
+        const recentlySelected = colorPicker.find(RecentlySelected);
+
+        expect(recentlySelected.prop('colors')[0]).toStrictEqual(red);
+      });
+    });
+
+    describe('onChange()', () => {
+      it('onChange is called with color when RecentlySelected swatch is clicked', () => {
+        const spy = jest.fn();
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={spy} />,
+        );
+
+        const textPicker = colorPicker.find(TextPicker);
+
+        textPicker.find('input').getDOMNode().value = 'white';
+        textPicker
+          .find('input')
+          .simulate('change')
+          .simulate('blur');
+
+        const recentlySelected = colorPicker.find(RecentlySelected);
+
+        recentlySelected
+          .find('button')
+          .at(0)
+          .simulate('click');
+
+        expect(spy).toHaveBeenCalledWith(white);
+      });
+    });
+
+    it('no recently selected component exists before a color has been selected', () => {
+      const colorPicker = mountWithAppProvider(
+        <ColorPicker color={red} onChange={noop} />,
+      );
+
+      const recentlySelected = colorPicker.find(RecentlySelected);
+
+      expect(recentlySelected).toHaveLength(0);
     });
   });
 
