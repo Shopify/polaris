@@ -93,7 +93,8 @@ describe('<ColorPicker />', () => {
 
         const textPicker = colorPicker.find(TextPicker);
 
-        textPicker.find('input').getDOMNode().value = 'white';
+        (textPicker.find('input').getDOMNode() as HTMLInputElement).value =
+          'white';
         textPicker
           .find('input')
           .simulate('change')
@@ -158,7 +159,8 @@ describe('<ColorPicker />', () => {
 
         const textPicker = colorPicker.find(TextPicker);
 
-        textPicker.find('input').getDOMNode().value = 'white';
+        (textPicker.find('input').getDOMNode() as HTMLInputElement).value =
+          'white';
         textPicker
           .find('input')
           .simulate('change')
