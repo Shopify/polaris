@@ -1,3 +1,1 @@
-import {RecentlySelected, RecentlySelectedProps} from './RecentlySelected';
-
-export {RecentlySelected, RecentlySelectedProps};
+export {RecentlySelected, RecentlySelectedProps} from './RecentlySelected';
