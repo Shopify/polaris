@@ -9,7 +9,6 @@ import {
   hsbToString,
   rgbStringToHex,
   nameToHex,
-  TRANSPARENT,
   hexToHsb,
 } from '../../../../utilities/color-transformers';
 import {
@@ -23,11 +22,8 @@ import {TextField} from '../../../TextField';
 import styles from '../../ColorPicker.scss';
 
 export interface TextPickerProps {
-  /** The currently selected color */
   color: HSBColor;
-  /** Allow user to select an alpha value */
   allowAlpha?: boolean;
-  /** Callback when value is changed */
   onChange(hex: string): void;
 }
 
