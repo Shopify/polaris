@@ -70,6 +70,23 @@ export const roleVariants: RoleVariants = {
       },
     },
     {
+      name: 'overlay',
+      description:
+        'For use as the background color of elements which lay on top of surfaces to obscure their contents. This color has an alpha of `0.5`.',
+      light: {
+        hue: 0,
+        saturation: 0,
+        lightness: 100,
+        alpha: 0.5,
+      },
+      dark: {
+        hue: 0,
+        saturation: 0,
+        lightness: 12.7,
+        alpha: 0.5,
+      },
+    },
+    {
       name: 'shadowFromAmbientLight',
       description:
         'For use in building shadows for popovers, cards, and modals. This color has an alpha of `0.05`.',
