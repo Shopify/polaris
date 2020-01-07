@@ -11,7 +11,7 @@ $icon-size: rem(16px);
   padding-left: spacing(tight);
   background-color: var(--p-action-secondary, color('sky'));
   border-radius: border-radius();
-  color: var(--p-text-on-surface, color('ink'));
+  color: var(--p-text, color('ink'));
 
   &.disabled {
     @include recolor-icon(
