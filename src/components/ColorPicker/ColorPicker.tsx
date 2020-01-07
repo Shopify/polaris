@@ -2,6 +2,7 @@ import React from 'react';
 import debounce from 'lodash/debounce';
 import {clamp} from '@shopify/javascript-utilities/math';
 
+import {typographyCondensed} from '../../utilities/breakpoints';
 import {classNames} from '../../utilities/css';
 import {hsbToRgb, hexToHsb} from '../../utilities/color-transformers';
 import {HSBColor, HSBAColor} from '../../utilities/color-types';
@@ -10,13 +11,16 @@ import {
   AlphaField,
   AlphaPicker,
   HuePicker,
-  Slidable,
   Position,
+  RecentlySelected,
+  Slidable,
   TextPicker,
 } from './components';
 import styles from './ColorPicker.scss';
 
 interface State {
+  recentlySelectedColors: Color[];
+  maxRecentlySelectedLength: number;
   pickerWidth: number;
   pickerHeight: number;
 }
@@ -41,6 +45,8 @@ export interface ColorPickerProps extends BaseProps {}
 
 export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
   state: State = {
+    recentlySelectedColors: [],
+    maxRecentlySelectedLength: 0,
     pickerWidth: 0,
     pickerHeight: 0,
   };
@@ -50,10 +56,22 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
   private handleResize = debounce(
     () => {
       if (this.colorNode == null) return;
+      const {recentlySelectedColors} = this.state;
+      const newMaxRecentlySelectedLength = this.getMaxRecentlySelectedLength();
+
       this.setState({
+        maxRecentlySelectedLength: newMaxRecentlySelectedLength,
         pickerWidth: this.colorNode.clientWidth,
         pickerHeight: this.colorNode.clientHeight,
       });
+
+      if (recentlySelectedColors.length > newMaxRecentlySelectedLength)
+        this.setState({
+          recentlySelectedColors: recentlySelectedColors.slice(
+            0,
+            newMaxRecentlySelectedLength,
+          ),
+        });
     },
     50,
     {trailing: true},
@@ -66,6 +84,8 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
     }
 
     this.setState({
+      recentlySelectedColors: [],
+      maxRecentlySelectedLength: this.getMaxRecentlySelectedLength(),
       pickerWidth: colorNode.clientWidth,
       pickerHeight: colorNode.clientHeight,
     });
@@ -83,7 +103,7 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
   render() {
     const {id, color, allowAlpha} = this.props;
     const {hue, saturation, brightness, alpha: providedAlpha} = color;
-    const {pickerWidth, pickerHeight} = this.state;
+    const {recentlySelectedColors, pickerWidth, pickerHeight} = this.state;
 
     const alpha = providedAlpha != null && allowAlpha ? providedAlpha : 1;
     const {red, green, blue} = hsbToRgb({hue, saturation: 1, brightness: 1});
@@ -105,6 +125,7 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
         alpha={alpha}
         color={color}
         onChange={this.handleAlphaChange}
+        onDraggingEnd={this.handleDraggingEnd}
       />
     ) : null;
 
@@ -118,6 +139,15 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
 
     const alphaFieldMarkup = allowAlpha ? (
       <AlphaField alpha={alpha} onChange={this.handleAlphaChange} />
+    ) : null;
+
+    const recentlySelectedMarkup = recentlySelectedColors.length ? (
+      <RecentlySelected
+        colors={recentlySelectedColors}
+        currentColor={color}
+        allowAlpha={allowAlpha}
+        onChange={this.updateColor}
+      />
     ) : null;
 
     return (
@@ -134,17 +164,23 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
             />
             <Slidable
               onChange={this.handleDraggerMove}
+              onDraggingEnd={this.handleDraggingEnd}
               draggerX={draggerX}
               draggerY={draggerY}
             />
           </div>
-          <HuePicker hue={hue} onChange={this.handleHueChange} />
+          <HuePicker
+            hue={hue}
+            onChange={this.handleHueChange}
+            onDraggingEnd={this.handleDraggingEnd}
+          />
           {alphaSliderMarkup}
         </div>
         <div className={styles.TextFields}>
           {hexPickerMarkup}
           {alphaFieldMarkup}
         </div>
+        {recentlySelectedMarkup}
         <EventListener event="resize" handler={this.handleResize} />
       </div>
     );
@@ -173,10 +209,9 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
   private handleHexChange = (hex: string) => {
     const {
       color: {alpha = 1},
-      onChange,
     } = this.props;
     const newColor = hexToHsb(hex);
-    onChange({...newColor, alpha});
+    this.updateColor({...newColor, alpha});
   };
 
   private handleDraggerMove = ({x, y}: Position) => {
@@ -197,5 +232,56 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
   ) => {
     // prevents external elements from being selected
     event.preventDefault();
+  };
+
+  private handleDraggingEnd = () => {
+    const {color} = this.props;
+
+    this.updateRecentlySelected(color);
+  };
+
+  private updateColor = (color: Color) => {
+    const {onChange} = this.props;
+    const {hue, brightness, saturation, alpha = 1} = color;
+
+    this.updateRecentlySelected(color);
+    onChange({hue, brightness, saturation, alpha});
+  };
+
+  private updateRecentlySelected = (color: Color) => {
+    const {recentlySelectedColors, maxRecentlySelectedLength} = this.state;
+    const colorAlreadyRepresented = recentlySelectedColors.find(
+      (recentlySelectedColor) =>
+        color.alpha === recentlySelectedColor.alpha &&
+        color.brightness === recentlySelectedColor.brightness &&
+        color.hue === recentlySelectedColor.hue &&
+        color.saturation === recentlySelectedColor.saturation,
+    );
+
+    if (!colorAlreadyRepresented) {
+      if (recentlySelectedColors.length >= maxRecentlySelectedLength) {
+        this.setState({
+          recentlySelectedColors: [
+            color,
+            ...recentlySelectedColors.slice(0, maxRecentlySelectedLength - 1),
+          ],
+        });
+        return;
+      }
+      this.setState({
+        recentlySelectedColors: [color, ...recentlySelectedColors],
+      });
+    }
+  };
+
+  private getMaxRecentlySelectedLength = () => {
+    const {allowAlpha} = this.props;
+    let maxRecentlySelectedLength = 0;
+
+    if (typographyCondensed().matches)
+      maxRecentlySelectedLength = allowAlpha ? 8 : 6;
+    else maxRecentlySelectedLength = allowAlpha ? 5 : 4;
+
+    return maxRecentlySelectedLength;
   };
 }
