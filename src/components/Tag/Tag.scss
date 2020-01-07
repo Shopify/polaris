@@ -41,6 +41,7 @@ $icon-size: rem(16px);
   &:focus,
   &:active {
     @include recolor-icon(color('ink'));
+    background: color('sky', 'dark');
   }
 
   &:disabled {
