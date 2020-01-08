@@ -181,8 +181,12 @@ export function TextField({
     focused ? input.focus() : input.blur();
   }, [focused]);
 
-  const normalizedValue = value != null ? value : '';
   const {unstableGlobalTheming = false} = useFeatures();
+
+  // Use a typeof check here as Typescript mostly protects us from non-stringy
+  // values but overzealous usage of `any` in consuming apps means people have
+  // been known to pass a number in, so make it clear that doesn't work.
+  const normalizedValue = typeof value === 'string' ? value : '';
 
   const normalizedStep = step != null ? step : 1;
   const normalizedMax = max != null ? max : Infinity;
@@ -213,36 +217,39 @@ export function TextField({
     </div>
   ) : null;
 
-  const characterCount = normalizedValue.length;
-  const characterCountLabel = maxLength
-    ? i18n.translate('Polaris.TextField.characterCountWithMaxLength', {
-        count: characterCount,
-        limit: maxLength,
-      })
-    : i18n.translate('Polaris.TextField.characterCount', {
-        count: characterCount,
-      });
+  let characterCountMarkup = null;
+  if (showCharacterCount) {
+    const characterCount = normalizedValue.length;
+    const characterCountLabel = maxLength
+      ? i18n.translate('Polaris.TextField.characterCountWithMaxLength', {
+          count: characterCount,
+          limit: maxLength,
+        })
+      : i18n.translate('Polaris.TextField.characterCount', {
+          count: characterCount,
+        });
 
-  const characterCountClassName = classNames(
-    styles.CharacterCount,
-    multiline && styles.AlignFieldBottom,
-  );
+    const characterCountClassName = classNames(
+      styles.CharacterCount,
+      multiline && styles.AlignFieldBottom,
+    );
 
-  const characterCountText = !maxLength
-    ? characterCount
-    : `${characterCount}/${maxLength}`;
+    const characterCountText = !maxLength
+      ? characterCount
+      : `${characterCount}/${maxLength}`;
 
-  const characterCountMarkup = showCharacterCount ? (
-    <div
-      id={`${id}CharacterCounter`}
-      className={characterCountClassName}
-      aria-label={characterCountLabel}
-      aria-live={focus ? 'polite' : 'off'}
-      aria-atomic="true"
-    >
-      {characterCountText}
-    </div>
-  ) : null;
+    characterCountMarkup = (
+      <div
+        id={`${id}CharacterCounter`}
+        className={characterCountClassName}
+        aria-label={characterCountLabel}
+        aria-live={focus ? 'polite' : 'off'}
+        aria-atomic="true"
+      >
+        {characterCountText}
+      </div>
+    );
+  }
 
   const clearButtonMarkup =
     clearButton && normalizedValue !== '' ? (
