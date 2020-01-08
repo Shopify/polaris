@@ -10,7 +10,7 @@ export const DefaultThemeColors = {
   warning: '#FFC453',
   highlight: '#5BCDDA',
   success: '#008060',
-  decorative: '#FDC7CE',
+  decorative: '#FFC96B',
 };
 
 export const DefaultColorScheme: ColorScheme = 'light';
@@ -549,8 +549,6 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeOneSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: 56,
-        saturation: 100,
         lightness: 84,
       },
       dark: {
@@ -574,8 +572,7 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeTwoSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: 30,
-        saturation: 100,
+        hue: (hue) => (((hue - 26) % 360) + 360) % 360,
         lightness: 84,
       },
       dark: {
@@ -599,8 +596,8 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeThreeSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: 144,
-        saturation: 54,
+        hue: (hue) => (((hue + 88) % 360) + 360) % 360,
+        saturation: (sat) => Math.max(sat - 46, 0),
         lightness: 84,
       },
       dark: {
@@ -624,8 +621,8 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeFourSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: 180,
-        saturation: 56,
+        hue: (hue) => (((hue + 124) % 360) + 360) % 360,
+        saturation: (sat) => Math.max(sat - 44, 0),
         lightness: 84,
       },
       dark: {
@@ -648,7 +645,11 @@ export const roleVariants: RoleVariants = {
     {
       name: 'decorativeFiveSurface',
       description: 'For use as a decorative surface color.',
-      light: {},
+      light: {
+        hue: (hue) => (((hue - 52) % 360) + 360) % 360,
+        saturation: (sat) => Math.max(sat - 5, 0),
+        lightness: 84,
+      },
       dark: {
         hue: 363,
         saturation: 77,
