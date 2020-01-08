@@ -5,7 +5,6 @@
 ### Enhancements
 
 - Added `hideTags` prop to `Filters` ([#2573](https://github.com/Shopify/polaris-react/pull/2573))
-- Updated `Card` with custom footer actions example to be right aligned [#2603](https://github.com/Shopify/polaris-react/pull/2603))
 
 ### Bug fixes
 
@@ -18,6 +17,8 @@
 - Fixed `RangeSlider` focus state style issues ([#1926](https://github.com/Shopify/polaris-react/pull/1926))
 
 ### Documentation
+
+- Updated `Card` with custom footer actions example to be right-aligned ([#2603](https://github.com/Shopify/polaris-react/pull/2603))
 
 ### Development workflow
 
