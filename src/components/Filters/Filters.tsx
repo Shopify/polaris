@@ -81,6 +81,8 @@ export interface FiltersProps {
   disabled?: boolean;
   /** Additional hint text to display below the filters */
   helpText?: string | React.ReactNode;
+  /** Hide tags for applied filters */
+  hideTags?: boolean;
 }
 
 type ComposedProps = FiltersProps & WithAppProviderProps;
@@ -107,14 +109,6 @@ class Filters extends React.Component<ComposedProps, State> {
   private moreFiltersButtonContainer = createRef<HTMLDivElement>();
   private focusNode = createRef<HTMLDivElement>();
 
-  private get hasAppliedFilters(): boolean {
-    const {appliedFilters, queryValue} = this.props;
-    const filtersApplied = Boolean(appliedFilters && appliedFilters.length > 0);
-    const queryApplied = Boolean(queryValue && queryValue !== '');
-
-    return filtersApplied || queryApplied;
-  }
-
   render() {
     const {
       filters,
@@ -134,6 +128,7 @@ class Filters extends React.Component<ComposedProps, State> {
       children,
       disabled = false,
       helpText,
+      hideTags,
     } = this.props;
     const {resourceName} = this.context;
     const {open, readyForFocus} = this.state;
@@ -212,6 +207,14 @@ class Filters extends React.Component<ComposedProps, State> {
       );
     });
 
+    const appliedFiltersCount = appliedFilters ? appliedFilters.length : 0;
+    const moreFiltersLabel =
+      hideTags && appliedFiltersCount > 0
+        ? intl.translate('Polaris.Filters.moreFiltersWithCount', {
+            count: appliedFiltersCount,
+          })
+        : intl.translate('Polaris.Filters.moreFilters');
+
     const rightActionMarkup = (
       <div ref={this.moreFiltersButtonContainer}>
         <Button
@@ -219,7 +222,7 @@ class Filters extends React.Component<ComposedProps, State> {
           testID="SheetToggleButton"
           disabled={disabled}
         >
-          {intl.translate('Polaris.Filters.moreFilters')}
+          {moreFiltersLabel}
         </Button>
       </div>
     );
@@ -269,9 +272,7 @@ class Filters extends React.Component<ComposedProps, State> {
 
     const filtersDesktopHeaderMarkup = (
       <div className={styles.FiltersContainerHeader}>
-        <DisplayText size="small">
-          {intl.translate('Polaris.Filters.moreFilters')}
-        </DisplayText>
+        <DisplayText size="small">{moreFiltersLabel}</DisplayText>
         <Button
           icon={CancelSmallMinor}
           plain
@@ -289,9 +290,7 @@ class Filters extends React.Component<ComposedProps, State> {
           accessibilityLabel={intl.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
         />
-        <DisplayText size="small">
-          {intl.translate('Polaris.Filters.moreFilters')}
-        </DisplayText>
+        <DisplayText size="small">{moreFiltersLabel}</DisplayText>
         <Button onClick={this.closeFilters} primary>
           {intl.translate('Polaris.Filters.done')}
         </Button>
@@ -300,7 +299,7 @@ class Filters extends React.Component<ComposedProps, State> {
 
     const filtersDesktopFooterMarkup = (
       <div className={styles.FiltersContainerFooter}>
-        <Button onClick={onClearAll} disabled={!this.hasAppliedFilters}>
+        <Button onClick={onClearAll} disabled={!this.hasAppliedFilters()}>
           {intl.translate('Polaris.Filters.clearAllFilters')}
         </Button>
         <Button onClick={this.closeFilters} primary>
@@ -311,7 +310,7 @@ class Filters extends React.Component<ComposedProps, State> {
 
     const filtersMobileFooterMarkup = (
       <div className={styles.FiltersMobileContainerFooter}>
-        {this.hasAppliedFilters ? (
+        {this.hasAppliedFilters() ? (
           <Button onClick={onClearAll} fullWidth>
             {intl.translate('Polaris.Filters.clearAllFilters')}
           </Button>
@@ -326,7 +325,7 @@ class Filters extends React.Component<ComposedProps, State> {
     );
 
     const tagsMarkup =
-      appliedFilters && appliedFilters.length ? (
+      !hideTags && appliedFilters && appliedFilters.length ? (
         <div className={styles.TagsContainer}>
           {appliedFilters.map((filter) => {
             return (
@@ -390,6 +389,14 @@ class Filters extends React.Component<ComposedProps, State> {
         <KeypressListener keyCode={Key.Escape} handler={this.closeFilters} />
       </div>
     );
+  }
+
+  private hasAppliedFilters(): boolean {
+    const {appliedFilters, queryValue} = this.props;
+    const filtersApplied = Boolean(appliedFilters && appliedFilters.length > 0);
+    const queryApplied = Boolean(queryValue && queryValue !== '');
+
+    return filtersApplied || queryApplied;
   }
 
   private getAppliedFilterContent(key: string): string | undefined {
@@ -482,7 +489,7 @@ class Filters extends React.Component<ComposedProps, State> {
 
       transformedActions.push({
         popoverContent: this.generateFilterMarkup(filter),
-        popoverOpen: this.state[`${key}${Suffix.Shortcut}`],
+        popoverOpen: Boolean(this.state[`${key}${Suffix.Shortcut}`]),
         key,
         content: label,
         disabled,

@@ -1,8 +1,11 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {
+  mountWithAppProvider,
+  trigger,
+  ReactWrapper,
+} from 'test-utilities/legacy';
 
 import {Button, Popover} from 'components';
 
@@ -13,8 +16,6 @@ import {
 } from '../../../../ActionList/components';
 
 import {RollupActions, RollupActionsProps} from '../RollupActions';
-
-type Wrapper = ReactWrapper<RollupActionsProps, any>;
 
 describe('<RollupActions />', () => {
   const mockProps = {
@@ -100,13 +101,13 @@ describe('<RollupActions />', () => {
   });
 });
 
-function findPopoverActivator(wrapper: Wrapper) {
+function findPopoverActivator(wrapper: ReactWrapper<RollupActionsProps>) {
   return wrapper
     .find(Button)
     .filterWhere((button) => button.prop('icon') === HorizontalDotsMinor);
 }
 
-function activatePopover(wrapper: Wrapper) {
+function activatePopover(wrapper: ReactWrapper<RollupActionsProps>) {
   const activator = findPopoverActivator(wrapper);
   trigger(activator, 'onClick');
 }

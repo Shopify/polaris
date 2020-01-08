@@ -61,7 +61,8 @@ export function Cell({
   );
 
   const iconClassName = classNames(sortable && styles.Icon);
-  const direction = sorted ? sortDirection : defaultSortDirection;
+  const direction =
+    sorted && sortDirection ? sortDirection : defaultSortDirection;
   const source = direction === 'descending' ? CaretDownMinor : CaretUpMinor;
   const oppositeDirection =
     sortDirection === 'ascending' ? 'descending' : 'ascending';

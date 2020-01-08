@@ -1,7 +1,10 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+import {
+  mountWithAppProvider,
+  findByTestID,
+  ReactWrapper,
+} from 'test-utilities/legacy';
 import {Key} from 'types';
 import {DualThumb, DualThumbProps} from '../DualThumb';
 
@@ -79,36 +82,40 @@ describe('<DualThumb />', () => {
   });
 
   describe('disabled', () => {
-    it('sets aria-disabled to false by default on the lower thumb', () => {
+    it('sets aria-disabled and disabled to false by default on the lower thumb', () => {
       const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
 
       const thumbLower = findThumbLower(dualThumb);
       expect(thumbLower.prop('aria-disabled')).toBe(false);
+      expect(thumbLower.prop('disabled')).toBe(false);
     });
 
-    it('sets aria-disabled to false by default on the upper thumb', () => {
+    it('sets aria-disabled and disabled to false by default on the upper thumb', () => {
       const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
 
       const thumbUpper = findThumbUpper(dualThumb);
       expect(thumbUpper.prop('aria-disabled')).toBe(false);
+      expect(thumbUpper.prop('disabled')).toBe(false);
     });
 
-    it('sets aria-disabled to true on the lower thumb', () => {
+    it('sets aria-disabled and disabled to true on the lower thumb', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} disabled />,
       );
 
       const thumbLower = findThumbLower(dualThumb);
       expect(thumbLower.prop('aria-disabled')).toBe(true);
+      expect(thumbLower.prop('disabled')).toBe(true);
     });
 
-    it('sets aria-disabled to true on the upper thumb', () => {
+    it('sets aria-disabled and disabled to true on the upper thumb', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} disabled />,
       );
 
       const thumbUpper = findThumbUpper(dualThumb);
       expect(thumbUpper.prop('aria-disabled')).toBe(true);
+      expect(thumbUpper.prop('disabled')).toBe(true);
     });
   });
 
@@ -490,16 +497,7 @@ describe('<DualThumb />', () => {
         });
       getBoundingClientRectSpy = jest
         .spyOn(Element.prototype, 'getBoundingClientRect')
-        .mockImplementation(() => {
-          return {
-            width: 124,
-            height: 0,
-            top: 0,
-            left: -12,
-            bottom: 0,
-            right: 0,
-          };
-        });
+        .mockImplementation(mockGetBoundingClientRect);
     });
 
     afterAll(() => {
@@ -703,16 +701,7 @@ describe('<DualThumb />', () => {
         });
       getBoundingClientRectSpy = jest
         .spyOn(Element.prototype, 'getBoundingClientRect')
-        .mockImplementation(() => {
-          return {
-            width: 124,
-            height: 0,
-            top: 0,
-            left: -12,
-            bottom: 0,
-            right: 0,
-          };
-        });
+        .mockImplementation(mockGetBoundingClientRect);
     });
 
     afterAll(() => {
@@ -1032,14 +1021,30 @@ describe('<DualThumb />', () => {
 
 function noop() {}
 
-function findThumbLower(containerComponent: ReactWrapper): ReactWrapper {
+function findThumbLower(containerComponent: ReactWrapper) {
   return containerComponent.find('button').first();
 }
 
-function findThumbUpper(containerComponent: ReactWrapper): ReactWrapper {
+function findThumbUpper(containerComponent: ReactWrapper) {
   return containerComponent.find('button').last();
 }
 
-function findTrack(containerComponent: ReactWrapper): ReactWrapper {
+function findTrack(containerComponent: ReactWrapper) {
   return findByTestID(containerComponent, 'trackWrapper');
+}
+
+function mockGetBoundingClientRect(): ReturnType<
+  Element['getBoundingClientRect']
+> {
+  return {
+    width: 124,
+    height: 0,
+    top: 0,
+    left: -12,
+    bottom: 0,
+    right: 0,
+    x: 0,
+    y: 0,
+    toJSON() {},
+  };
 }

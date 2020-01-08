@@ -4,6 +4,8 @@ import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
+import {useFeatures} from '../../utilities/features';
+
 import styles from './Tag.scss';
 
 export interface TagProps {
@@ -17,8 +19,16 @@ export interface TagProps {
 
 export function Tag({children, disabled = false, onRemove}: TagProps) {
   const i18n = useI18n();
+  const {unstableGlobalTheming} = useFeatures();
   const className = classNames(disabled && styles.disabled, styles.Tag);
-  const ariaLabel = i18n.translate('Polaris.Tag.ariaLabel', {children});
+  const ariaLabel = i18n.translate('Polaris.Tag.ariaLabel', {
+    children: children || '',
+  });
+
+  const buttonClassName = classNames(
+    styles.Button,
+    unstableGlobalTheming && styles.globalTheming,
+  );
 
   return (
     <span className={className}>
@@ -28,7 +38,7 @@ export function Tag({children, disabled = false, onRemove}: TagProps) {
       <button
         type="button"
         aria-label={ariaLabel}
-        className={styles.Button}
+        className={buttonClassName}
         onClick={onRemove}
         onMouseUp={handleMouseUpByBlurring}
         disabled={disabled}

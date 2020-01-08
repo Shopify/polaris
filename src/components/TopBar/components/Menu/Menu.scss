@@ -22,7 +22,7 @@ $activator-variables: (
 
 .Activator {
   @include unstyled-button;
-  color: var(--p-text-on-surface, var(--top-bar-color));
+  color: var(--p-text, var(--top-bar-color));
   position: relative;
   display: flex;
   justify-content: center;

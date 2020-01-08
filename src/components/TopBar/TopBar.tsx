@@ -4,7 +4,7 @@ import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useI18n} from '../../utilities/i18n';
 import {useTheme} from '../../utilities/theme';
-import {useForcibleToggle} from '../../utilities/use-toggle';
+import {useToggle} from '../../utilities/use-toggle';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
@@ -56,10 +56,11 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   const i18n = useI18n();
   const {logo} = useTheme();
 
-  const [
-    focused,
-    {forceTrue: forceTrueFocused, forceFalse: forceFalseFocused},
-  ] = useForcibleToggle(false);
+  const {
+    value: focused,
+    setTrue: forceTrueFocused,
+    setFalse: forceFalseFocused,
+  } = useToggle(false);
 
   const className = classNames(
     styles.NavigationIcon,

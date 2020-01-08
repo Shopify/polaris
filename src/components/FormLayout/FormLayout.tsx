@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo, NamedExoticComponent} from 'react';
 import {wrapWithComponent, isElementOfType} from '../../utilities/components';
 
 import {Group, Item} from './components';
@@ -9,19 +9,19 @@ export interface FormLayoutProps {
   children?: React.ReactNode;
 }
 
-export class FormLayout extends React.PureComponent<FormLayoutProps, never> {
-  static Group = Group;
+export const FormLayout = memo(function FormLayout({
+  children,
+}: FormLayoutProps) {
+  return (
+    <div className={styles.FormLayout}>
+      {React.Children.map(children, wrapChildren)}
+    </div>
+  );
+}) as NamedExoticComponent<FormLayoutProps> & {
+  Group: typeof Group;
+};
 
-  render() {
-    const {children} = this.props;
-
-    return (
-      <div className={styles.FormLayout}>
-        {React.Children.map(children, wrapChildren)}
-      </div>
-    );
-  }
-}
+FormLayout.Group = Group;
 
 function wrapChildren(child: React.ReactElement<{}>, index: number) {
   if (isElementOfType(child, Group)) {

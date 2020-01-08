@@ -6,12 +6,12 @@
   svg {
     fill: $fill-color;
 
-    @if $secondary-color != null {
+    @if $secondary-color {
       color: $secondary-color;
     }
   }
 
-  @if $filter-color != null {
+  @if $filter-color {
     img {
       filter: $filter-color;
     }

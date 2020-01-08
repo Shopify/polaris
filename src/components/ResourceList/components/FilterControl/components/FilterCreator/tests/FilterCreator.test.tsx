@@ -1,10 +1,10 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
 // eslint-disable-next-line no-restricted-imports
 import {
   trigger,
   findByTestID,
   mountWithAppProvider,
+  ReactWrapper,
 } from 'test-utilities/legacy';
 import {Button, Select, Popover} from 'components';
 import {FilterCreator, FilterCreatorProps} from '../FilterCreator';
@@ -294,28 +294,28 @@ describe('<FilterCreator />', () => {
   });
 });
 
-function activatePopover(wrapper: ReactWrapper<FilterCreatorProps, any>) {
+function activatePopover(wrapper: ReactWrapper<FilterCreatorProps>) {
   trigger(findByTestID(wrapper, 'FilterCreator-FilterActivator'), 'onClick');
 }
 
-function findFilterKeySelect(popover: ReactWrapper<FilterCreatorProps, any>) {
+function findFilterKeySelect(popover: ReactWrapper<FilterCreatorProps>) {
   return popover.find(Select);
 }
 
 function selectFilterKey(
-  wrapper: ReactWrapper<FilterCreatorProps, any>,
+  wrapper: ReactWrapper<FilterCreatorProps>,
   filterKey: string,
 ) {
   trigger(wrapper.find(Select), 'onChange', filterKey);
 }
 
 function selectFilterValue(
-  wrapper: ReactWrapper<FilterCreatorProps, any>,
+  wrapper: ReactWrapper<FilterCreatorProps>,
   filterValue: string,
 ) {
   trigger(wrapper.find(FilterValueSelector), 'onChange', filterValue);
 }
 
-function clickAddFilter(wrapper: ReactWrapper<FilterCreatorProps, any>) {
+function clickAddFilter(wrapper: ReactWrapper<FilterCreatorProps>) {
   trigger(findByTestID(wrapper, 'FilterCreator-AddFilterButton'), 'onClick');
 }

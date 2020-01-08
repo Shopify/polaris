@@ -21,7 +21,7 @@ export interface RollupActionsProps {
 export function RollupActions({items = [], sections = []}: RollupActionsProps) {
   const i18n = useI18n();
 
-  const [rollupOpen, toggleRollupOpen] = useToggle(false);
+  const {value: rollupOpen, toggle: toggleRollupOpen} = useToggle(false);
 
   if (items.length === 0 && sections.length === 0) {
     return null;
