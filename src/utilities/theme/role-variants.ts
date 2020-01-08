@@ -651,9 +651,9 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeFiveSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: hueRotationFn(-52.5),
-        saturation: saturationAdjustmentFn(-5),
-        lightness: 84,
+        hue: hueRotationFn(-53.4),
+        saturation: saturationAdjustmentFn(-5.4),
+        lightness: 85.6,
       },
       dark: {
         hue: hueRotationFn(306.5),
