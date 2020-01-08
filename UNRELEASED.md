@@ -22,6 +22,8 @@
 
 ### Documentation
 
+- Updated `Card` with custom footer actions example to be right-aligned ([#2603](https://github.com/Shopify/polaris-react/pull/2603))
+
 ### Development workflow
 
 ### Dependency upgrades
