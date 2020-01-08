@@ -181,8 +181,12 @@ export function TextField({
     focused ? input.focus() : input.blur();
   }, [focused]);
 
-  const normalizedValue = value != null ? value : '';
   const {unstableGlobalTheming = false} = useFeatures();
+
+  // Use a typeof check here as Typescript mostly protects us from non-stringy
+  // values but overzealous usage of `any` in consuming apps means people have
+  // been known to pass a number in, so make it clear that doesn't work.
+  const normalizedValue = typeof value === 'string' ? value : '';
 
   const normalizedStep = step != null ? step : 1;
   const normalizedMax = max != null ? max : Infinity;
