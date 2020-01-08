@@ -6,6 +6,8 @@
 
 ### Enhancements
 
+- Added an `emptyState` prop to `ResourceList` to support in context empty states in list views ([#2569](https://github.com/Shopify/polaris-react/pull/2569))
+
 ### Bug fixes
 
 ### Documentation
