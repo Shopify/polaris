@@ -15,6 +15,15 @@ export const DefaultThemeColors = {
 
 export const DefaultColorScheme: ColorScheme = 'light';
 
+function hueRotationFn(rotation: number) {
+  return (hue: number) => (360 + hue + rotation) % 360;
+}
+
+function saturationAdjustmentFn(adjustment: number) {
+  return (saturation: number) =>
+    Math.min(Math.max(saturation + adjustment, 0), 100);
+}
+
 export const roleVariants: RoleVariants = {
   surface: [
     {
@@ -552,8 +561,8 @@ export const roleVariants: RoleVariants = {
         lightness: 84,
       },
       dark: {
-        hue: 54,
-        saturation: 98,
+        hue: hueRotationFn(-2.5),
+        saturation: saturationAdjustmentFn(-2),
         lightness: 46,
       },
     },
@@ -562,8 +571,7 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a decorative text color that is applied on a decorative surface.',
       light: {
-        hue: 52,
-        saturation: 100,
+        hue: hueRotationFn(-4.5),
         lightness: 18,
       },
       dark: {lightness: 100},
@@ -572,12 +580,12 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeTwoSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: (hue) => (((hue - 26) % 360) + 360) % 360,
+        hue: hueRotationFn(-26.5),
         lightness: 84,
       },
       dark: {
-        hue: 24,
-        saturation: 96,
+        hue: hueRotationFn(-32.5),
+        saturation: saturationAdjustmentFn(-4),
         lightness: 52,
       },
     },
@@ -586,8 +594,8 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a decorative text color that is applied on a decorative surface.',
       light: {
-        hue: 362,
-        saturation: 80,
+        hue: hueRotationFn(305.5),
+        saturation: saturationAdjustmentFn(-20),
         lightness: 14,
       },
       dark: {lightness: 100},
@@ -596,13 +604,12 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeThreeSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: (hue) => (((hue + 88) % 360) + 360) % 360,
-        saturation: (sat) => Math.max(sat - 46, 0),
+        hue: hueRotationFn(87.5),
+        saturation: saturationAdjustmentFn(-46),
         lightness: 84,
       },
       dark: {
-        hue: 154,
-        saturation: 100,
+        hue: hueRotationFn(97.5),
         lightness: 46,
       },
     },
@@ -611,8 +618,7 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a decorative text color that is applied on a decorative surface.',
       light: {
-        hue: 144,
-        saturation: 100,
+        hue: hueRotationFn(87.5),
         lightness: 16,
       },
       dark: {lightness: 100},
@@ -621,13 +627,13 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeFourSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: (hue) => (((hue + 124) % 360) + 360) % 360,
-        saturation: (sat) => Math.max(sat - 44, 0),
+        hue: hueRotationFn(123.5),
+        saturation: saturationAdjustmentFn(-44),
         lightness: 84,
       },
       dark: {
-        hue: 188,
-        saturation: 95,
+        hue: hueRotationFn(131.5),
+        saturation: saturationAdjustmentFn(-5),
         lightness: 47,
       },
     },
@@ -636,8 +642,7 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a decorative text color that is applied on a decorative surface.',
       light: {
-        hue: 190,
-        saturation: 100,
+        hue: hueRotationFn(133.5),
         lightness: 16,
       },
       dark: {lightness: 100},
@@ -646,13 +651,13 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeFiveSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: (hue) => (((hue - 52) % 360) + 360) % 360,
-        saturation: (sat) => Math.max(sat - 5, 0),
+        hue: hueRotationFn(-52.5),
+        saturation: saturationAdjustmentFn(-5),
         lightness: 84,
       },
       dark: {
-        hue: 363,
-        saturation: 77,
+        hue: hueRotationFn(306.5),
+        saturation: saturationAdjustmentFn(-23),
         lightness: 45,
       },
     },
@@ -661,8 +666,8 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a decorative text color that is applied on a decorative surface.',
       light: {
-        hue: 363,
-        saturation: 78,
+        hue: hueRotationFn(306.5),
+        saturation: saturationAdjustmentFn(-22),
         lightness: 16,
       },
       dark: {lightness: 100},
