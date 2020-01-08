@@ -28,6 +28,7 @@
 
 - Converted `Layout` into a functional component ([#2538](https://github.com/Shopify/polaris-react/pull/2538))
 - Converted `FormLayout` into a functional component ([#2539](https://github.com/Shopify/polaris-react/pull/2539))
+- Converted `Stack` into a functional component ([#2534](https://github.com/Shopify/polaris-react/pull/2534))
 - Converted `BulkActionButton` into a functional component ([#2542](https://github.com/Shopify/polaris-react/pull/2542))
 - Converted `Focus` into a functional component ([#2540](https://github.com/Shopify/polaris-react/pull/2540))
 - Converted `Tooltip` into a functional component ([#2543](https://github.com/Shopify/polaris-react/pull/2543))
