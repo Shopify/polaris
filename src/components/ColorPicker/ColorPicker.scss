@@ -25,6 +25,9 @@ $stacking-order: (
   display: flex;
 }
 
+// stylelint-disable selector-max-class
+// stylelint-disable selector-max-combinators
+
 .MainColor {
   @include checkers;
   position: relative;
@@ -33,7 +36,7 @@ $stacking-order: (
   width: $picker-size;
 
   // Need an extra pixel to avoid a small color bleed from happening
-  border-radius: border-radius() + 1px;
+  border-radius: var(--p-border-radius-base, border-radius() + 1px);
   cursor: pointer;
 
   .Dragger {
@@ -42,8 +45,8 @@ $stacking-order: (
   }
 
   .ColorLayer {
-    box-shadow: inset shadow(deep);
-    border-radius: border-radius() + 1px;
+    box-shadow: inset var(--p-override-none, shadow(deep));
+    border-radius: var(--p-border-radius-base, border-radius() + 1px);
   }
 
   &::after,
@@ -57,7 +60,7 @@ $stacking-order: (
     height: 100%;
     width: 100%;
     pointer-events: none;
-    border-radius: border-radius();
+    border-radius: var(--p-border-radius-base, border-radius());
   }
 
   &::before {
@@ -66,7 +69,7 @@ $stacking-order: (
 
   &::after {
     background-image: linear-gradient(to top, black, transparent);
-    box-shadow: inset shadow(deep);
+    box-shadow: inset var(--p-override-none, shadow(deep));
   }
 }
 
@@ -80,8 +83,10 @@ $stacking-order: (
   margin: 0 auto;
   will-change: transform;
   background: transparent;
-  border: border-radius() solid color('white');
-  box-shadow: shadow(deep), inset shadow(deep);
+  border: var(--p-border-radius-base, border-radius()) solid
+    var(--p-white, color('white'));
+  box-shadow: var(--p-override-none, shadow(deep)),
+    inset var(--p-override-none, shadow(deep));
   border-radius: 50%;
   pointer-events: none;
 }
@@ -98,7 +103,7 @@ $huepicker-bottom-padding-start: $picker-size - $dragger-size;
   height: $picker-size;
   width: rem(24px);
   margin-left: spacing(tight);
-  border-width: border-radius();
+  border-width: var(--p-border-radius-base, border-radius());
   border-radius: $picker-size * 0.5;
 }
 
@@ -113,14 +118,14 @@ $huepicker-bottom-padding-start: $picker-size - $dragger-size;
     $purple,
     red $huepicker-bottom-padding-start
   );
-  box-shadow: $inner-shadow;
+  box-shadow: var(--p-override-none, $inner-shadow);
 }
 
 .AlphaPicker {
   @include checkers;
 
   .ColorLayer {
-    border-radius: $picker-size * 0.5;
+    border-radius: var(--p-override-none, $picker-size * 0.5);
   }
 }
 
@@ -131,7 +136,7 @@ $huepicker-bottom-padding-start: $picker-size - $dragger-size;
   left: 0;
   height: 100%;
   width: 100%;
-  box-shadow: $inner-shadow;
+  box-shadow: var(--p-override-none, $inner-shadow);
   pointer-events: none;
 }
 
