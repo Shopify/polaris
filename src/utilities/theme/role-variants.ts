@@ -175,19 +175,29 @@ export const roleVariants: RoleVariants = {
       name: 'actionInteractive',
       description: 'Used for links and plain buttons.',
       light: {lightness: 48.6},
-      dark: {lightness: 65, saturation: 100, hue: 247.6},
+      dark: {
+        lightness: 65,
+        saturation: saturationAdjustmentFn(11.2),
+        hue: hueRotationFn(-7.1),
+      },
     },
     {
       name: 'actionInteractiveDisabled',
       description: 'Used for disabled links and plain buttons.',
       light: {lightness: 58},
-      dark: {lightness: 42},
+      dark: {
+        lightness: 42,
+      },
     },
     {
       name: 'actionInteractiveHovered',
       description: 'Used for hovered links and plain buttons.',
       light: {lightness: 37},
-      dark: {lightness: 70, saturation: 100, hue: 247.6},
+      dark: {
+        lightness: 70,
+        saturation: saturationAdjustmentFn(11.2),
+        hue: hueRotationFn(-7.1),
+      },
     },
     {
       name: 'actionInteractiveSubdued',
@@ -199,7 +209,11 @@ export const roleVariants: RoleVariants = {
       name: 'actionInteractivePressed',
       description: 'Used for pressed links and plain buttons.',
       light: {lightness: 31},
-      dark: {lightness: 75, saturation: 100, hue: 247.6},
+      dark: {
+        lightness: 75,
+        saturation: saturationAdjustmentFn(11.2),
+        hue: hueRotationFn(-7.1),
+      },
     },
     {
       name: 'focused',
