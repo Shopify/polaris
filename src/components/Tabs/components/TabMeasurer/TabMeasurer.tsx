@@ -1,4 +1,4 @@
-import React, {Fragment, memo, useEffect, useRef, useCallback} from 'react';
+import React, {memo, useEffect, useRef, useCallback} from 'react';
 import {EventListener} from '../../../EventListener';
 import {classNames} from '../../../../utilities/css';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
@@ -71,20 +71,18 @@ export const TabMeasurer = memo(function TabMeasurer({
 
   const tabsMarkup = tabs.map((tab, index) => {
     return (
-      <Fragment key={`${index}${tab.id}Hidden`}>
-        <EventListener event="resize" handler={handleMeasurement} />
-        <Tab
-          measuring
-          id={`${tab.id}Measurer`}
-          siblingTabHasFocus={siblingTabHasFocus}
-          focused={index === tabToFocus}
-          selected={index === selected}
-          onClick={noop}
-          url={tab.url}
-        >
-          {tab.content}
-        </Tab>
-      </Fragment>
+      <Tab
+        measuring
+        key={`${index}${tab.id}Hidden`}
+        id={`${tab.id}Measurer`}
+        siblingTabHasFocus={siblingTabHasFocus}
+        focused={index === tabToFocus}
+        selected={index === selected}
+        onClick={noop}
+        url={tab.url}
+      >
+        {tab.content}
+      </Tab>
     );
   });
 
@@ -92,6 +90,7 @@ export const TabMeasurer = memo(function TabMeasurer({
 
   return (
     <div className={classname} ref={containerNode}>
+      <EventListener event="resize" handler={handleMeasurement} />
       {tabsMarkup}
       {activator}
     </div>
