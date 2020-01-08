@@ -391,8 +391,15 @@ class Frame extends React.PureComponent<CombinedProps, State> {
 
   private handleNavKeydown = (event: React.KeyboardEvent<HTMLElement>) => {
     const {key} = event;
+    const {
+      polaris: {
+        mediaQuery: {isNavigationCollapsed},
+      },
+      showMobileNavigation,
+    } = this.props;
 
-    if (key === 'Escape') {
+    const mobileNavShowing = isNavigationCollapsed && showMobileNavigation;
+    if (mobileNavShowing && key === 'Escape') {
       this.handleNavigationDismiss();
     }
   };
