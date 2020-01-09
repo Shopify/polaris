@@ -2,6 +2,7 @@ import React from 'react';
 import {CaretDownMinor, SaveMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Icon} from '../../../../Icon';
 import {UnstyledLink} from '../../../../UnstyledLink';
@@ -117,6 +118,26 @@ describe('<MenuAction />', () => {
       trigger(wrapper.find('button'), 'onClick');
 
       expect(onActionSpy).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled', () => {
+      const menuAction = mountWithApp(<MenuAction />, {
+        features: {unstableGlobalTheming: true},
+      });
+      expect(menuAction).toContainReactComponent('button', {
+        className: 'MenuAction globalTheming',
+      });
+    });
+
+    it('does not add a global theming class when global theming is disabled', () => {
+      const menuAction = mountWithApp(<MenuAction />, {
+        features: {unstableGlobalTheming: true},
+      });
+      expect(menuAction).toContainReactComponent('button', {
+        className: 'MenuAction globalTheming',
+      });
     });
   });
 });
