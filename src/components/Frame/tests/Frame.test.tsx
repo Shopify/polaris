@@ -9,7 +9,7 @@ import {
   ContextualSaveBar as PolarisContextualSavebar,
   Loading as PolarisLoading,
 } from 'components';
-import Frame, {FrameProps} from '../Frame';
+import Frame from '../Frame';
 import {
   ContextualSaveBar as FrameContextualSavebar,
   Loading as FrameLoading,
@@ -202,8 +202,6 @@ describe('<Frame />', () => {
         .find('div', {id: 'AppFrameNav'})!
         .trigger('onKeyDown', {key: 'Escape'});
 
-      const {onNavigationDismiss} = frame.props as FrameProps;
-
       expect(spy).not.toHaveBeenCalled();
     });
 
@@ -221,9 +219,7 @@ describe('<Frame />', () => {
         .find('div', {id: 'AppFrameNav'})!
         .trigger('onKeyDown', {key: 'Escape'});
 
-      const {onNavigationDismiss} = frame.props as FrameProps;
-
-      expect(onNavigationDismiss).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledTimes(1);
     });
   });
 
