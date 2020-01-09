@@ -204,7 +204,7 @@ describe('<Frame />', () => {
 
       const {onNavigationDismiss} = frame.props as FrameProps;
 
-      expect(onNavigationDismiss).not.toHaveBeenCalled();
+      expect(spy).not.toHaveBeenCalled();
     });
 
     it('calls onNavigationDismiss when escape is pressed and screen size is small', () => {
