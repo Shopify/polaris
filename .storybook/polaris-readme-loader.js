@@ -12,10 +12,12 @@ const HOOK_PREFIX = 'use';
  * contained in the readme.
  *
  * We don't know what Polaris exports are needed by a given component, so we
- * import all of Polaris (using `import * as Polaris`) then create a component
- * that has has the individual values in scope using eval (as we're in strict
- * mode so we can't use `with {}`), so that examples can state `<Button>`
- * instead of `<Polaris.Button>`.
+ * import all of Polaris into the scope. This means that any time we add
+ * examples for a new component we need to add it to the list of components that
+ * are imported in this loader.
+ * Eventually each README should define some metadata describing the imports it
+ * requires, so we don't have to blindly import all the Polaris components and a
+ * subset of Polaris icons.
  */
 module.exports = function loader(source) {
   this.cacheable();
@@ -26,7 +28,7 @@ module.exports = function loader(source) {
 
   const csfExports = readme.examples.map((example) => {
     return `
-const ${example.storyName}Component = codeInvoker(${example.code});
+const ${example.storyName}Component = (${example.code})();
 export function ${example.storyName}() {
   return <${example.storyName}Component/>;
 }
@@ -52,7 +54,7 @@ ${example.storyName}.story = {
     borderBottom: '1px solid #000',
     marginBottom: '8px',
   }}>
-  <Polaris.Heading>${example.name}</Polaris.Heading>
+  <Heading>${example.name}</Heading>
   <${example.storyName}Component />
 </div>
 `.trim();
@@ -74,31 +76,6 @@ AllExamples.story = {
 }`);
   }
 
-  // Example code does not have any scope attached to it by default. It boldly
-  // states `<Button>An example Button</Button>`, blindly trusting that `Button`
-  // is available in its scope.
-  //
-  // codeInvoker is responsible for injecting Polaris into the scope for a
-  // function so that it will work.
-  //
-  // Given a function with no parameters, it will create a new function with all
-  // the Polaris exports defined as parameters and then return the result of
-  // calling that new function.
-  const codeInvoker = function(fn) {
-    const scope = Object.assign({}, Polaris);
-
-    // Replace the empty parameter list with a list based upon the scope.
-    // We can't use a placeholder in the parmeter list and search/replace that
-    // because the placeholder's name may be mangled when the code is minified.
-    const args = Object.keys(scope).join(', ');
-    const fnString = fn
-      .toString()
-      .replace(/^function(\s*)\(\)/, `function$1(${args})`);
-
-    // eslint-disable-next-line no-eval
-    return eval(`(${fnString})`).apply(null, Object.values(scope));
-  };
-
   const hooks = Object.keys(React)
     .filter((key) => key.startsWith(HOOK_PREFIX))
     .join(', ');
@@ -106,7 +83,102 @@ AllExamples.story = {
   return `
 import React, {${hooks}} from 'react';
 import {withA11y} from '@storybook/addon-a11y';
-import * as Polaris from '@shopify/polaris';
+// In production mode webpack shakes this away, so explitly include it.
+// The following import can be removed in v5, where global CSS has been removed:
+import '@shopify/polaris/styles/global.scss';
+import {
+  AccountConnection,
+  ActionList,
+  ActionMenu,
+  AppProvider,
+  Autocomplete,
+  Avatar,
+  Backdrop,
+  Badge,
+  Banner,
+  Breadcrumbs,
+  Button,
+  ButtonGroup,
+  CalloutCard,
+  Caption,
+  Card,
+  Checkbox,
+  ChoiceList,
+  Collapsible,
+  ColorPicker,
+  Connected,
+  ContextualSaveBar,
+  DataTable,
+  DatePicker,
+  DescriptionList,
+  DisplayText,
+  DropZone,
+  EmptySearchResult,
+  EmptyState,
+  EventListener,
+  ExceptionList,
+  Filters,
+  Focus,
+  FooterHelp,
+  Form,
+  FormLayout,
+  Frame,
+  Heading,
+  Icon,
+  Image,
+  Indicator,
+  InlineError,
+  KeyboardKey,
+  KeypressListener,
+  Label,
+  Labelled,
+  Layout,
+  Link,
+  List,
+  Loading,
+  Modal,
+  Navigation,
+  OptionList,
+  Page,
+  PageActions,
+  Pagination,
+  PolarisTestProvider,
+  Popover,
+  Portal,
+  ProgressBar,
+  RadioButton,
+  RangeSlider,
+  ResourceItem,
+  ResourceList,
+  ResourcePicker,
+  Scrollable,
+  ScrollLock,
+  Select,
+  SettingToggle,
+  Sheet,
+  SkeletonBodyText,
+  SkeletonDisplayText,
+  SkeletonPage,
+  SkeletonThumbnail,
+  Spinner,
+  Stack,
+  Sticky,
+  Subheading,
+  Tabs,
+  Tag,
+  TextContainer,
+  TextField,
+  TextStyle,
+  ThemeProvider,
+  Thumbnail,
+  Toast,
+  Tooltip,
+  TopBar,
+  TrapFocus,
+  Truncate,
+  UnstyledLink,
+  VisuallyHidden
+} from '@shopify/polaris';
 import {
   PlusMinor,
   AlertMinor,
@@ -161,8 +233,6 @@ import {
   MinusMinor,
   ViewMinor,
 } from '@shopify/polaris-icons';
-
-const codeInvoker = ${codeInvoker};
 
 export default { title: ${JSON.stringify(`All Components|${readme.name}`)} };
 
@@ -314,10 +384,9 @@ function filterMarkdownForPlatform(markdown, platform) {
 }
 
 /**
- * Wraps example code in a function so that it can be passed to codeInvoker to get
- * the full Polaris scope.
+ * Wraps example code in a function so that we encapsulate each example.
  *
- * Returns a string that is a parsable function that retuns a React Component
+ * Returns a string representation of a function that returns a React Component
  * If the example is a function or class then we return that function or class.
  * If the example is plain JSX then return a function component that renders
  * that JSX .
