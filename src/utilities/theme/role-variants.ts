@@ -10,10 +10,19 @@ export const DefaultThemeColors = {
   warning: '#FFC453',
   highlight: '#5BCDDA',
   success: '#008060',
-  decorative: '#FDC7CE',
+  decorative: '#FFC96B',
 };
 
 export const DefaultColorScheme: ColorScheme = 'light';
+
+function hueRotationFn(rotation: number) {
+  return (hue: number) => (360 + hue + rotation) % 360;
+}
+
+function saturationAdjustmentFn(adjustment: number) {
+  return (saturation: number) =>
+    Math.min(Math.max(saturation + adjustment, 0), 100);
+}
 
 export const roleVariants: RoleVariants = {
   surface: [
@@ -199,19 +208,29 @@ export const roleVariants: RoleVariants = {
       name: 'actionInteractive',
       description: 'Used for links and plain buttons.',
       light: {lightness: 48.6},
-      dark: {lightness: 65, saturation: 100, hue: 247.6},
+      dark: {
+        lightness: 65,
+        saturation: saturationAdjustmentFn(11.2),
+        hue: hueRotationFn(-7.1),
+      },
     },
     {
       name: 'actionInteractiveDisabled',
       description: 'Used for disabled links and plain buttons.',
       light: {lightness: 58},
-      dark: {lightness: 42},
+      dark: {
+        lightness: 42,
+      },
     },
     {
       name: 'actionInteractiveHovered',
       description: 'Used for hovered links and plain buttons.',
       light: {lightness: 37},
-      dark: {lightness: 70, saturation: 100, hue: 247.6},
+      dark: {
+        lightness: 70,
+        saturation: saturationAdjustmentFn(11.2),
+        hue: hueRotationFn(-7.1),
+      },
     },
     {
       name: 'actionInteractiveSubdued',
@@ -223,7 +242,11 @@ export const roleVariants: RoleVariants = {
       name: 'actionInteractivePressed',
       description: 'Used for pressed links and plain buttons.',
       light: {lightness: 31},
-      dark: {lightness: 75, saturation: 100, hue: 247.6},
+      dark: {
+        lightness: 75,
+        saturation: saturationAdjustmentFn(11.2),
+        hue: hueRotationFn(-7.1),
+      },
     },
     {
       name: 'focused',
@@ -582,13 +605,11 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeOneSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: 56,
-        saturation: 100,
         lightness: 84,
       },
       dark: {
-        hue: 54,
-        saturation: 98,
+        hue: hueRotationFn(-2.5),
+        saturation: saturationAdjustmentFn(-2),
         lightness: 46,
       },
     },
@@ -597,8 +618,7 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a decorative text color that is applied on a decorative surface.',
       light: {
-        hue: 52,
-        saturation: 100,
+        hue: hueRotationFn(-4.5),
         lightness: 18,
       },
       dark: {lightness: 100},
@@ -607,13 +627,12 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeTwoSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: 30,
-        saturation: 100,
+        hue: hueRotationFn(-26.5),
         lightness: 84,
       },
       dark: {
-        hue: 24,
-        saturation: 96,
+        hue: hueRotationFn(-32.5),
+        saturation: saturationAdjustmentFn(-4),
         lightness: 52,
       },
     },
@@ -622,8 +641,8 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a decorative text color that is applied on a decorative surface.',
       light: {
-        hue: 362,
-        saturation: 80,
+        hue: hueRotationFn(305.5),
+        saturation: saturationAdjustmentFn(-20),
         lightness: 14,
       },
       dark: {lightness: 100},
@@ -632,13 +651,12 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeThreeSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: 144,
-        saturation: 54,
+        hue: hueRotationFn(87.5),
+        saturation: saturationAdjustmentFn(-46),
         lightness: 84,
       },
       dark: {
-        hue: 154,
-        saturation: 100,
+        hue: hueRotationFn(97.5),
         lightness: 46,
       },
     },
@@ -647,8 +665,7 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a decorative text color that is applied on a decorative surface.',
       light: {
-        hue: 144,
-        saturation: 100,
+        hue: hueRotationFn(87.5),
         lightness: 16,
       },
       dark: {lightness: 100},
@@ -657,13 +674,13 @@ export const roleVariants: RoleVariants = {
       name: 'decorativeFourSurface',
       description: 'For use as a decorative surface color.',
       light: {
-        hue: 180,
-        saturation: 56,
+        hue: hueRotationFn(123.5),
+        saturation: saturationAdjustmentFn(-44),
         lightness: 84,
       },
       dark: {
-        hue: 188,
-        saturation: 95,
+        hue: hueRotationFn(131.5),
+        saturation: saturationAdjustmentFn(-5),
         lightness: 47,
       },
     },
@@ -672,8 +689,7 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a decorative text color that is applied on a decorative surface.',
       light: {
-        hue: 190,
-        saturation: 100,
+        hue: hueRotationFn(133.5),
         lightness: 16,
       },
       dark: {lightness: 100},
@@ -681,10 +697,14 @@ export const roleVariants: RoleVariants = {
     {
       name: 'decorativeFiveSurface',
       description: 'For use as a decorative surface color.',
-      light: {},
+      light: {
+        hue: hueRotationFn(-53.4),
+        saturation: saturationAdjustmentFn(-5.4),
+        lightness: 85.6,
+      },
       dark: {
-        hue: 363,
-        saturation: 77,
+        hue: hueRotationFn(306.5),
+        saturation: saturationAdjustmentFn(-23),
         lightness: 45,
       },
     },
@@ -693,8 +713,8 @@ export const roleVariants: RoleVariants = {
       description:
         'For use as a decorative text color that is applied on a decorative surface.',
       light: {
-        hue: 363,
-        saturation: 78,
+        hue: hueRotationFn(306.5),
+        saturation: saturationAdjustmentFn(-22),
         lightness: 16,
       },
       dark: {lightness: 100},
