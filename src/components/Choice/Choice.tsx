@@ -1,9 +1,7 @@
 import React from 'react';
 import {classNames} from '../../utilities/css';
-
 import {Error} from '../../types';
 import {InlineError} from '../InlineError';
-
 import styles from './Choice.scss';
 
 export interface ChoiceProps {
@@ -23,6 +21,10 @@ export interface ChoiceProps {
   helpText?: React.ReactNode;
   /** Callback when clicked */
   onClick?(): void;
+  /** Callback when mouse over */
+  onMouseOver?(): void;
+  /** Callback when mouse out */
+  onMouseOut?(): void;
 }
 
 export function Choice({
@@ -34,6 +36,8 @@ export function Choice({
   labelHidden,
   helpText,
   onClick,
+  onMouseOut,
+  onMouseOver,
 }: ChoiceProps) {
   const className = classNames(
     styles.Choice,
@@ -42,7 +46,13 @@ export function Choice({
   );
 
   const labelMarkup = (
-    <label className={className} htmlFor={id} onClick={onClick}>
+    <label
+      className={className}
+      htmlFor={id}
+      onClick={onClick}
+      onMouseOver={onMouseOver}
+      onMouseOut={onMouseOut}
+    >
       <span className={styles.Control}>{children}</span>
       <span className={styles.Label}>{label}</span>
     </label>

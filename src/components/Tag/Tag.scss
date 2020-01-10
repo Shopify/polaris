@@ -66,9 +66,10 @@ $icon-size: rem(16px);
       background-color: transparent;
     }
 
+    @include focus-ring;
     // stylelint-disable-next-line selector-max-specificity
     &:focus:not(:active) {
-      @include focus-ring;
+      @include focus-ring($style: 'focused');
     }
 
     &:active {
