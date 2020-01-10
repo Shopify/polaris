@@ -8,6 +8,7 @@
 
 ### Bug fixes
 
+- Fixed a bug where `DropZone` would show an outline on drag when `outline` is false ([#2527](https://github.com/Shopify/polaris-react/pull/2527))
 - Fixed a bug where `Navigation` calls `onNavigationDismiss` on large screens when focused and the escape key is pressed ([#2607](https://github.com/Shopify/polaris-react/pull/2607))
 - Fixed issue with `Filters` component displaying an undesired margin top and bottom on the button element on Safari ([#2292](https://github.com/Shopify/polaris-react/pull/2292))
 - Doesn't render `MenuActions` if no actions are passed to an `actionGroups` item inside `Page` ([#2266](https://github.com/Shopify/polaris-react/pull/2266))
