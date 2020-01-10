@@ -67,7 +67,7 @@ $dropzone-stacking-order: (
   &:not(.isDisabled) {
     background-color: $dropzone-overlay-background;
 
-    &.hasOutline::after {
+    &::after {
       border: border-width(thick) $dropzone-border-style
         $dropzone-overlay-border-color;
 
@@ -83,7 +83,7 @@ $dropzone-stacking-order: (
   &:not(.isDisabled) {
     background-color: $dropzone-overlay-background;
 
-    &::after {
+    &.hasOutline::after {
       border-color: $dropzone-overlay-border-color;
     }
   }
@@ -92,7 +92,7 @@ $dropzone-stacking-order: (
 .isDisabled {
   cursor: not-allowed;
 
-  &::after {
+  &.hasOutline::after {
     border-color: $dropzone-border-color-disabled;
   }
 }
