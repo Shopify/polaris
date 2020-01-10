@@ -1,6 +1,6 @@
 import tokens from '@shopify/polaris-tokens';
 import {hexToHsluv, hsluvToHex} from 'hsluv';
-import {HSLColor, HSLAColor} from '../color-types';
+import {HSLColor, HSLAColor, RGBAColor} from '../color-types';
 import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
 import {isLight} from '../color-validation';
 import {constructColorName} from '../color-names';
@@ -24,15 +24,20 @@ interface CustomPropertiesConfig extends ThemeConfig {
   colorScheme: ColorScheme;
 }
 
+type Colors = Record<string, string>;
+
 export function buildCustomProperties(
   themeConfig: CustomPropertiesConfig,
   globalTheming: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
   const {UNSTABLE_colors = {}, colorScheme} = themeConfig;
+  const builtColors = buildColors(UNSTABLE_colors, roleVariants, colorScheme);
+  compareContrast(builtColors);
+
   return globalTheming
     ? customPropertyTransformer({
-        ...buildColors(UNSTABLE_colors, roleVariants, colorScheme),
+        ...builtColors,
         ...tokens,
       })
     : buildLegacyColors(themeConfig);
@@ -110,6 +115,33 @@ export function buildColors(
       };
     }),
   );
+}
+
+// function getLuminance(rgbaColor: RGBAColor) {
+
+//   $rgba: red( $colour ), green( $colour ), blue( $colour );
+//   $rgba2: ();
+
+//   Object.values(rgbaColor).forEach(value => {
+//     const rgbPercent = value / 255;
+//     const isContrast =  $rgb < .03928 || $rgb / 12.92 || AU-pow( ( $rgb + .055 ) / 1.055 || 2.4 );
+//   });
+
+//   @for $i from 1 through 3 {
+
+//     $rgb: if( $rgb < .03928, $rgb / 12.92, AU-pow( ( $rgb + .055 ) / 1.055, 2.4 ) );
+//     $rgba2: append( $rgba2, $rgb );
+//   }
+
+//   @return .2126 * nth( $rgba2, 1 ) + .7152 * nth( $rgba2, 2 ) + 0.0722 * nth( $rgba2, 3 );
+// }
+
+function compareContrast(colors: Colors) {
+  const {text, surface} = colors;
+
+  const rgbText = hslToRgb(colorToHsla(text));
+
+  console.log(rgbText);
 }
 
 function customPropertyTransformer(
