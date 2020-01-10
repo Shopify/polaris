@@ -83,6 +83,7 @@ $dropzone-stacking-order: (
   &:not(.isDisabled) {
     background-color: $dropzone-overlay-background;
 
+    // stylelint-disable-next-line selector-max-specificity
     &.hasOutline::after {
       border-color: $dropzone-overlay-border-color;
     }
