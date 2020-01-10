@@ -71,27 +71,24 @@
     }
     &:active:not(:disabled),
     &:checked {
-      // stylelint-disable-next-line selector-max-specificity
       + .Backdrop {
         @include control-backdrop(active, $global-theming: true);
       }
-      // stylelint-disable-next-line selector-max-specificity, selector-max-class
+
       ~ .Icon {
         transform: translate(-50%, -50%) scale(1);
       }
     }
 
     &:disabled {
-      // stylelint-disable-next-line selector-max-specificity
       + .Backdrop {
         @include control-backdrop(disabled, $global-theming: true);
       }
     }
     &:disabled:checked {
-      // stylelint-disable-next-line selector-max-specificity,
       + .Backdrop {
         background: var(--p-border-secondary-disabled);
-        // stylelint-disable-next-line selector-max-specificity, selector-max-class, max-nesting-depth, selector-max-combinators
+
         &::before {
           background: var(--p-border-secondary-disabled);
         }
