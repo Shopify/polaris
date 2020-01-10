@@ -308,9 +308,17 @@ describe('<TrapFocus />', () => {
 function noop() {}
 
 function firstNode(element: ReactWrapper) {
-  return focusUtils.findFirstKeyboardFocusableNode(element.getDOMNode());
+  const elementNode = element.getDOMNode();
+
+  if (Array.isArray(elementNode))
+    return focusUtils.findFirstKeyboardFocusableNode(elementNode[0]);
+  return focusUtils.findFirstKeyboardFocusableNode(elementNode as HTMLElement);
 }
 
 function lastNode(element: ReactWrapper) {
-  return focusUtils.findLastKeyboardFocusableNode(element.getDOMNode());
+  const elementNode = element.getDOMNode();
+
+  if (Array.isArray(elementNode))
+    return focusUtils.findLastKeyboardFocusableNode(elementNode[0]);
+  return focusUtils.findLastKeyboardFocusableNode(elementNode as HTMLElement);
 }
