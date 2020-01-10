@@ -1686,10 +1686,10 @@
   dependencies:
     tslib "^1.9.3"
 
-"@shopify/polaris-icons@^3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-3.3.0.tgz#7031791d44bfe60e2f999c8fbf0ea67ab7a047c8"
-  integrity sha512-+nB2rthx6vS8vlJms5unGbThwrdGXAPMCD2PoQG/Eq5uQU1EmhkVOIFaEK7AS62J2m+HaqbLw/zrlbBkZHZUrQ==
+"@shopify/polaris-icons@^3.9.0":
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-3.9.0.tgz#7064b234824788972593efcda9ae7b87f2a2da43"
+  integrity sha512-isGvHpkH57IsQl6iAZA81LaIPdGi8gNSON5hLWXSERvP9SwgTenfDrkOD3UvzLY09Hh7m8lkFBMUVv/ta33xrg==
 
 "@shopify/polaris-tokens@^2.6.0":
   version "2.6.0"
