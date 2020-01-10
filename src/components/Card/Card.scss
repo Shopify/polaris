@@ -2,7 +2,7 @@
 
 .Card {
   overflow: hidden;
-  background-color: var(--p-surface-foreground, color('white'));
+  background-color: var(--p-surface, color('white'));
   box-shadow: var(--p-card-shadow, shadow());
 
   + .Card {
@@ -10,7 +10,7 @@
   }
 
   @include page-content-when-not-fully-condensed {
-    border-radius: border-radius();
+    border-radius: var(--p-border-radius-wide, border-radius());
   }
 
   @media (-ms-high-contrast: active) {
@@ -19,10 +19,7 @@
 }
 
 .subdued {
-  background-color: var(
-    --p-surface-foreground-subdued,
-    color('sky', 'lighter')
-  );
+  background-color: var(--p-surface-subdued, color('sky', 'lighter'));
 }
 
 .Header {
@@ -54,10 +51,7 @@
 }
 
 .Section-subdued {
-  background-color: var(
-    --p-surface-foreground-subdued,
-    color('sky', 'lighter')
-  );
+  background-color: var(--p-surface-subdued, color('sky', 'lighter'));
 
   @media (-ms-high-contrast: active) {
     background-color: transparent;

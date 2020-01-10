@@ -144,11 +144,11 @@ export function TextField({
   name,
   id: idProp,
   role,
-  step = 1,
+  step,
   autoComplete,
-  max = Infinity,
+  max,
   maxLength,
-  min = -Infinity,
+  min,
   minLength,
   pattern,
   spellCheck,
@@ -181,8 +181,17 @@ export function TextField({
     focused ? input.focus() : input.blur();
   }, [focused]);
 
-  const normalizedValue = value != null ? value : '';
   const {unstableGlobalTheming = false} = useFeatures();
+
+  // Use a typeof check here as Typescript mostly protects us from non-stringy
+  // values but overzealous usage of `any` in consuming apps means people have
+  // been known to pass a number in, so make it clear that doesn't work.
+  const normalizedValue = typeof value === 'string' ? value : '';
+
+  const normalizedStep = step != null ? step : 1;
+  const normalizedMax = max != null ? max : Infinity;
+  const normalizedMin = min != null ? min : -Infinity;
+
   const className = classNames(
     styles.TextField,
     Boolean(normalizedValue) && styles.hasValue,
@@ -208,34 +217,39 @@ export function TextField({
     </div>
   ) : null;
 
-  const characterCount = normalizedValue.length;
-  const characterCountLabel = i18n.translate(
-    maxLength
-      ? 'Polaris.TextField.characterCountWithMaxLength'
-      : 'Polaris.TextField.characterCount',
-    {count: characterCount, limit: maxLength},
-  );
+  let characterCountMarkup = null;
+  if (showCharacterCount) {
+    const characterCount = normalizedValue.length;
+    const characterCountLabel = maxLength
+      ? i18n.translate('Polaris.TextField.characterCountWithMaxLength', {
+          count: characterCount,
+          limit: maxLength,
+        })
+      : i18n.translate('Polaris.TextField.characterCount', {
+          count: characterCount,
+        });
 
-  const characterCountClassName = classNames(
-    styles.CharacterCount,
-    multiline && styles.AlignFieldBottom,
-  );
+    const characterCountClassName = classNames(
+      styles.CharacterCount,
+      multiline && styles.AlignFieldBottom,
+    );
 
-  const characterCountText = !maxLength
-    ? characterCount
-    : `${characterCount}/${maxLength}`;
+    const characterCountText = !maxLength
+      ? characterCount
+      : `${characterCount}/${maxLength}`;
 
-  const characterCountMarkup = showCharacterCount ? (
-    <div
-      id={`${id}CharacterCounter`}
-      className={characterCountClassName}
-      aria-label={characterCountLabel}
-      aria-live={focus ? 'polite' : 'off'}
-      aria-atomic="true"
-    >
-      {characterCountText}
-    </div>
-  ) : null;
+    characterCountMarkup = (
+      <div
+        id={`${id}CharacterCounter`}
+        className={characterCountClassName}
+        aria-label={characterCountLabel}
+        aria-live={focus ? 'polite' : 'off'}
+        aria-atomic="true"
+      >
+        {characterCountText}
+      </div>
+    );
+  }
 
   const clearButtonMarkup =
     clearButton && normalizedValue !== '' ? (
@@ -268,16 +282,16 @@ export function TextField({
 
       // Making sure the new value has the same length of decimal places as the
       // step / value has.
-      const decimalPlaces = Math.max(dpl(numericValue), dpl(step));
+      const decimalPlaces = Math.max(dpl(numericValue), dpl(normalizedStep));
 
       const newValue = Math.min(
-        Number(max),
-        Math.max(numericValue + steps * step, Number(min)),
+        Number(normalizedMax),
+        Math.max(numericValue + steps * normalizedStep, Number(normalizedMin)),
       );
 
       onChange(String(newValue.toFixed(decimalPlaces)), id);
     },
-    [id, max, min, onChange, step, value],
+    [id, normalizedMax, normalizedMin, onChange, normalizedStep, value],
   );
 
   const handleButtonRelease = useCallback(() => {

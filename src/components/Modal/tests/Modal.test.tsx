@@ -1,5 +1,6 @@
 import React from 'react';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
+import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {
@@ -51,6 +52,13 @@ describe('<Modal>', () => {
     expect(component.find(TestComponent).prop('withinContentContainer')).toBe(
       true,
     );
+  });
+
+  it('focuses the next focusable node on mount', () => {
+    const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
+    const focusedNode = findFirstFocusableNode(modal.find(Dialog).getDOMNode());
+
+    expect(focusedNode).toBe(document.activeElement);
   });
 
   describe('src', () => {

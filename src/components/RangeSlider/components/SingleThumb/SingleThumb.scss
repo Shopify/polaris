@@ -143,11 +143,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     }
   }
 
-  // match `error` specificity for interaction styles
-  .RangeSlider &:focus {
-    // repeated so that `focus` can override `error`
-    --progress-lower: #{color('indigo')};
-
+  &:focus {
     @include range-track-selectors {
       background-color: color('sky', 'dark');
     }
@@ -159,6 +155,10 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
       );
       border-color: color('indigo');
       box-shadow: $range-thumb-shadow-focus;
+    }
+
+    @media (-ms-high-contrast: active) {
+      outline: 1px solid ms-high-contrast-color('text');
     }
   }
 }

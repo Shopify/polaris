@@ -67,15 +67,15 @@
   }
 
   &.globalTheming {
-    @include recolor-icon(var(--p-icon-on-surface));
-    background: var(--p-neutral-action);
+    @include recolor-icon(var(--p-icon));
+    background: var(--p-action-secondary);
     border: none;
     box-shadow: none;
     border-radius: var(--p-border-radius-base);
-    color: var(--p-text-on-surface);
+    color: var(--p-text);
 
     &:hover {
-      background: var(--p-neutral-action-hovered);
+      background: var(--p-action-secondary-hovered);
       border-color: transparent;
     }
 
@@ -86,7 +86,7 @@
     }
 
     &:active {
-      background: var(--p-neutral-action-pressed);
+      background: var(--p-action-secondary-pressed);
       border-color: transparent;
       box-shadow: none;
 
@@ -108,9 +108,9 @@
   color: color('ink', 'lightest');
 
   &.globalTheming {
-    @include recolor-icon(var(--p-icon-disabled-on-surface));
-    background: var(--p-neutral-action-disabled);
-    color: var(--p-text-disabled-on-surface);
+    @include recolor-icon(var(--p-icon-disabled));
+    background: var(--p-action-secondary-disabled);
+    color: var(--p-text-disabled);
   }
 }
 
@@ -189,10 +189,10 @@
   color: color('white');
 
   &.globalTheming {
-    @include recolor-icon(var(--p-icon-disabled-on-surface));
+    @include recolor-icon(var(--p-icon-disabled));
     border-color: transparent;
-    background: var(--p-neutral-action-disabled);
-    color: var(--p-text-disabled-on-surface);
+    background: var(--p-action-secondary-disabled);
+    color: var(--p-text-disabled);
   }
 }
 
@@ -219,53 +219,53 @@
 
   &.globalTheming {
     background: transparent;
-    box-shadow: 0 0 0 border-width('base') var(--p-border-subdued-on-surface);
-    color: var(--p-text-on-surface);
+    box-shadow: 0 0 0 border-width('base') var(--p-border-subdued);
+    color: var(--p-text);
 
     &:hover {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-subdued-on-surface);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-subdued);
       background: var(--p-surface-hovered);
     }
 
     &:focus {
-      box-shadow: 0 0 0 border-width('thick') var(--p-border-subdued-on-surface);
+      box-shadow: 0 0 0 border-width('thick') var(--p-border-subdued);
       @include no-focus-ring;
     }
 
     &:active {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-subdued-on-surface);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-subdued);
       background: var(--p-surface-pressed);
     }
 
     &.disabled {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-disabled-on-surface);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-disabled);
       background: transparent;
-      color: var(--p-text-disabled-on-surface);
+      color: var(--p-text-disabled);
     }
 
     &.destructive {
       background: transparent;
-      box-shadow: 0 0 0 border-width('base') var(--p-critical-border);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
       color: var(--p-critical-link);
 
       &:hover {
-        box-shadow: 0 0 0 border-width('base') var(--p-critical-border);
-        background: var(--p-critical-surface-subdued);
+        box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+        background: var(--p-surface-critical-subdued);
       }
 
       &:focus {
-        box-shadow: 0 0 0 border-width('thick') var(--p-critical-border);
+        box-shadow: 0 0 0 border-width('thick') var(--p-border-critical);
         @include no-focus-ring;
       }
 
       &:active {
-        box-shadow: 0 0 0 border-width('base') var(--p-critical-border);
-        background: var(--p-critical-surface-subdued);
+        box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+        background: var(--p-surface-critical-subdued);
       }
 
       // stylelint-disable-next-line selector-max-class
       &.disabled {
-        box-shadow: 0 0 0 border-width('base') var(--p-critical-border-disabled);
+        box-shadow: 0 0 0 border-width('base') var(--p-border-critical-disabled);
         background: transparent;
         color: var(--p-critical-link-disabled);
       }

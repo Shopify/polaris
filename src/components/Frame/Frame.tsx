@@ -77,7 +77,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
     showContextualSaveBar: false,
   };
 
-  private contextualSaveBar: ContextualSaveBarProps | null;
+  private contextualSaveBar: ContextualSaveBarProps | null = null;
   private globalRibbonContainer: HTMLDivElement | null = null;
   private navigationNode = createRef<HTMLDivElement>();
   private skipToMainContentTargetNode =
@@ -391,8 +391,15 @@ class Frame extends React.PureComponent<CombinedProps, State> {
 
   private handleNavKeydown = (event: React.KeyboardEvent<HTMLElement>) => {
     const {key} = event;
+    const {
+      polaris: {
+        mediaQuery: {isNavigationCollapsed},
+      },
+      showMobileNavigation,
+    } = this.props;
 
-    if (key === 'Escape') {
+    const mobileNavShowing = isNavigationCollapsed && showMobileNavigation;
+    if (mobileNavShowing && key === 'Escape') {
       this.handleNavigationDismiss();
     }
   };

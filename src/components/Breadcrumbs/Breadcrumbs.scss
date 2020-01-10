@@ -21,16 +21,16 @@ $difference-between-touch-area-and-backdrop: control-height() -
     (-0.5 * $difference-between-touch-area-and-backdrop)
     (-0.5 * $horizontal-padding);
 
-  color: var(--p-text-subdued-on-surface, color('ink', 'lighter'));
+  color: var(--p-text-subdued, color('ink', 'lighter'));
   text-decoration: none;
 
   &:hover,
   &:active {
-    color: var(--p-text-on-surface, color('ink'));
+    color: var(--p-text, color('ink'));
     text-decoration: none;
 
     .Icon {
-      @include recolor-icon(var(--p-icon-on-surface, color('ink')));
+      @include recolor-icon(var(--p-icon, color('ink')));
     }
   }
   // stylelint-disable selector-max-specificity
@@ -73,9 +73,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
 }
 
 .Icon {
-  @include recolor-icon(
-    var(--p-icon-subdued-on-surface, color('ink', 'lighter'))
-  );
+  @include recolor-icon(var(--p-icon-subdued, color('ink', 'lighter')));
   width: $icon-size;
   height: $icon-size;
   margin: (-0.5 * $icon-size) 0 (-0.5 * $icon-size) rem(-8px);

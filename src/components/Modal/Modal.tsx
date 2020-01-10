@@ -97,7 +97,7 @@ const APP_BRIDGE_PROPS: (keyof ModalProps)[] = [
 
 class Modal extends React.Component<CombinedProps, State> {
   static Section = Section;
-  focusReturnPointNode: HTMLElement;
+  focusReturnPointNode: HTMLElement | null = null;
 
   state: State = {
     iframeHeight: IFRAME_LOADING_HEIGHT,
@@ -331,7 +331,11 @@ class Modal extends React.Component<CombinedProps, State> {
     });
 
     if (this.focusReturnPointNode) {
-      write(() => focusFirstFocusableNode(this.focusReturnPointNode, false));
+      write(
+        () =>
+          this.focusReturnPointNode &&
+          focusFirstFocusableNode(this.focusReturnPointNode, false),
+      );
     }
   };
 

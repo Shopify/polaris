@@ -1,8 +1,8 @@
 import React from 'react';
-import {shallow} from 'enzyme';
 import {OptionList, ActionList, Popover} from 'components';
+import {mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {TextField} from '../../TextField';
 import {Key} from '../../../../../types';
 import {ComboBox} from '..';
@@ -391,7 +391,7 @@ describe('<ComboBox/>', () => {
   describe('onEndReached', () => {
     it('gets called when the end of the option list is reached', () => {
       const spy = jest.fn();
-      const comboBox = shallow(
+      const comboBox = mountWithApp(
         <ComboBox
           options={options}
           selected={[]}
@@ -401,9 +401,10 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      const pane = comboBox.find(Popover.Pane);
-      trigger(pane, 'onScrolledToBottom');
+      // Focus the combobox so that the popover pane is rendered
+      comboBox.find('div', {role: 'combobox'})!.trigger('onFocus');
 
+      comboBox.find(Popover.Pane)!.trigger('onScrolledToBottom');
       expect(spy).toHaveBeenCalledTimes(1);
     });
   });

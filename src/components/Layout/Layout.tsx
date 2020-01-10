@@ -9,15 +9,14 @@ export interface LayoutProps {
   children?: React.ReactNode;
 }
 
-export class Layout extends React.Component<LayoutProps, never> {
-  static AnnotatedSection = AnnotatedSection;
-  static Section = Section;
+export const Layout: React.FunctionComponent<LayoutProps> & {
+  AnnotatedSection: typeof AnnotatedSection;
+  Section: typeof Section;
+} = function Layout({sectioned, children}: LayoutProps) {
+  const content = sectioned ? <Section>{children}</Section> : children;
 
-  render() {
-    const {children, sectioned} = this.props;
+  return <div className={styles.Layout}>{content}</div>;
+};
 
-    const content = sectioned ? <Section>{children}</Section> : children;
-
-    return <div className={styles.Layout}>{content}</div>;
-  }
-}
+Layout.AnnotatedSection = AnnotatedSection;
+Layout.Section = Section;

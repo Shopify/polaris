@@ -1,31 +1,42 @@
 import React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {createMount} from 'test-utilities';
 import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext, useTheme} from '../../../utilities/theme';
+import {FeaturesContext} from '../../../utilities/features';
+
+const mountWithGlobalTheming = createMount<
+  {globalTheming?: boolean},
+  {features: React.ContextType<typeof FeaturesContext>}
+>({
+  context({globalTheming = false}) {
+    return {features: {unstableGlobalTheming: globalTheming}};
+  },
+  render(element, context) {
+    return (
+      <FeaturesContext.Provider value={context.features}>
+        {element}
+      </FeaturesContext.Provider>
+    );
+  },
+});
 
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
-    const themeProvider = mountWithAppProvider(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider theme={{logo: {}}}>
         <p>Hello</p>
       </ThemeProvider>,
     );
-    expect(themeProvider.exists()).toBe(true);
+    expect(themeProvider).not.toBeNull();
   });
 
   it('passes context', () => {
-    const Child: React.SFC = (_props) => {
-      return (
-        <ThemeContext.Consumer>
-          {(polarisTheme) => {
-            return polarisTheme && polarisTheme.logo ? <div /> : null;
-          }}
-        </ThemeContext.Consumer>
-      );
+    const Child: React.SFC = () => {
+      const polarisTheme = React.useContext(ThemeContext);
+      return polarisTheme && polarisTheme.logo ? <div /> : null;
     };
 
-    const wrapper = mountWithAppProvider(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
           logo: {
@@ -41,29 +52,27 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    const div = wrapper.find(Child).find('div');
-
-    expect(div.exists()).toBe(true);
+    expect(themeProvider.find(Child)).toContainReactComponent('div');
   });
 
   it('has a default theme', () => {
-    const wrapper = mountWithAppProvider(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider theme={{}}>
         <p />
       </ThemeProvider>,
     );
 
-    expect(wrapper.find('div').props().style).toStrictEqual(
-      expect.objectContaining({
+    expect(themeProvider.find('div')).toHaveReactProps({
+      style: expect.objectContaining({
         '--top-bar-background': '#00848e',
         '--top-bar-background-lighter': '#1d9ba4',
         '--top-bar-color': '#f9fafb',
       }),
-    );
+    });
   });
 
   it('sets a provided theme', () => {
-    const wrapper = mountWithAppProvider(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
           colors: {
@@ -77,17 +86,17 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(wrapper.find('div').props().style).toStrictEqual(
-      expect.objectContaining({
+    expect(themeProvider.find('div')).toHaveReactProps({
+      style: expect.objectContaining({
         '--top-bar-background': '#108043',
         '--top-bar-background-lighter': 'hsla(147, 63%, 43%, 1)',
         '--top-bar-color': 'rgb(255, 255, 255)',
       }),
-    );
+    });
   });
 
   it('updates themes', () => {
-    const wrapper = mountWithAppProvider(
+    const themeProvider = mountWithGlobalTheming(
       <ThemeProvider
         theme={{
           colors: {
@@ -101,7 +110,7 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    wrapper.setProps({
+    themeProvider.setProps({
       theme: {
         colors: {
           topBar: {
@@ -110,38 +119,22 @@ describe('<ThemeProvider />', () => {
         },
       },
     });
-    wrapper.update();
 
-    expect(wrapper.find('div').props().style).toStrictEqual(
-      expect.objectContaining({
+    expect(themeProvider.find('div')).toHaveReactProps({
+      style: expect.objectContaining({
         '--top-bar-background': '#021123',
         '--top-bar-background-lighter': 'hsla(213, 74%, 22%, 1)',
         '--top-bar-color': 'rgb(255, 255, 255)',
       }),
-    );
-  });
-
-  it('sets color system properties when global theming is enabled', () => {
-    const themeProvider = mountWithAppProvider(
-      <ThemeProvider theme={{}}>
-        <p>Hello</p>
-      </ThemeProvider>,
-      {features: {unstableGlobalTheming: true}},
-    );
-
-    expect(themeProvider.find('div').props().style).toStrictEqual(
-      expect.objectContaining({
-        '--p-surface-background': 'hsla(0, 0%, 98%, 1)',
-      }),
-    );
+    });
   });
 
   it('sets color system properties in context when global theming is enabled', () => {
-    mountWithAppProvider(
+    mountWithGlobalTheming(
       <ThemeProvider theme={{}}>
         <Child />
       </ThemeProvider>,
-      {features: {unstableGlobalTheming: true}},
+      {globalTheming: true},
     );
 
     function Child() {
@@ -151,11 +144,12 @@ describe('<ThemeProvider />', () => {
     }
   });
 
-  it('does not set color system properties in context by default', () => {
-    mountWithAppProvider(
+  it('does not set color system properties in context when global theming is disabled', () => {
+    mountWithGlobalTheming(
       <ThemeProvider theme={{}}>
         <Child />
       </ThemeProvider>,
+      {globalTheming: false},
     );
 
     function Child() {
@@ -163,5 +157,193 @@ describe('<ThemeProvider />', () => {
       expect(UNSTABLE_cssCustomProperties).toBeUndefined();
       return null;
     }
+  });
+
+  it('sets defaults with global theming enabled', () => {
+    const themeProvider = mountWithGlobalTheming(
+      <ThemeProvider theme={{}}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      {globalTheming: true},
+    );
+
+    expect(themeProvider.find('div')).toHaveReactProps({
+      style: expect.objectContaining({
+        '--p-override-zero': expect.any(String),
+        '--p-background': expect.any(String),
+        '--p-text': expect.any(String),
+        '--p-action-interactive': expect.any(String),
+        '--p-action-secondary': expect.any(String),
+        '--p-action-primary': expect.any(String),
+        '--p-action-critical': expect.any(String),
+        '--p-surface-warning': expect.any(String),
+        '--p-surface-highlight': expect.any(String),
+        '--p-surface-success': expect.any(String),
+        '--p-decorative-one-text': expect.any(String),
+      }),
+    });
+  });
+
+  describe('when nested', () => {
+    it('does not set a default theme', () => {
+      const themeProvider = mountWithGlobalTheming(
+        <ThemeProvider theme={{}}>
+          <ThemeProvider theme={{}}>
+            <p>Hello</p>
+          </ThemeProvider>
+        </ThemeProvider>,
+        {globalTheming: true},
+      );
+
+      expect(themeProvider.findAll('div')[1]).not.toHaveReactProps({
+        style: expect.objectContaining({
+          '--p-background': expect.any(String),
+          '--p-text': expect.any(String),
+          '--p-action-interactive': expect.any(String),
+          '--p-action-secondary': expect.any(String),
+          '--p-action-primary': expect.any(String),
+          '--p-action-critical': expect.any(String),
+          '--p-surface-warning': expect.any(String),
+          '--p-surface-highlight': expect.any(String),
+          '--p-surface-success': expect.any(String),
+          '--p-decorative-one-text': expect.any(String),
+        }),
+      });
+    });
+
+    it('adds css custom properties for color roles provided', () => {
+      const themeProvider = mountWithGlobalTheming(
+        <ThemeProvider
+          theme={{
+            UNSTABLE_colors: {surface: '#FFFFFF'},
+          }}
+        >
+          <ThemeProvider
+            theme={{
+              UNSTABLE_colors: {surface: '#000000'},
+            }}
+          >
+            <p>Hello</p>
+          </ThemeProvider>
+        </ThemeProvider>,
+        {globalTheming: true},
+      );
+
+      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
+        style: expect.objectContaining({
+          '--p-surface': 'hsla(0, 0%, 100%, 1)',
+        }),
+      });
+    });
+
+    it.each([
+      [
+        'Dark parent, undefined child, child has colors',
+        {colorScheme: 'dark'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}},
+        'hsla(58, 100%, 7.000000000000001%, 1)',
+      ],
+      [
+        'Light parent, undefined child, child has colors',
+        {colorScheme: 'light'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}},
+        'hsla(57, 100%, 89%, 1)',
+      ],
+      [
+        'Dark parent, light child, child has colors',
+        {colorScheme: 'dark'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
+        'hsla(57, 100%, 89%, 1)',
+      ],
+      [
+        'Light parent, dark child, child has colors',
+        {colorScheme: 'light'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
+        'hsla(58, 100%, 7.000000000000001%, 1)',
+      ],
+      [
+        'Dark parent, undefined child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}},
+        'hsla(58, 100%, 7.000000000000001%, 1)',
+      ],
+      [
+        'Light parent, undefined child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}},
+        'hsla(57, 100%, 89%, 1)',
+      ],
+      [
+        'Dark parent, light child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
+        'hsla(57, 100%, 89%, 1)',
+      ],
+      [
+        'Dark parent, light child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
+        'hsla(57, 100%, 89%, 1)',
+      ],
+      [
+        'Light parent, dark child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
+        'hsla(58, 100%, 7.000000000000001%, 1)',
+      ],
+      [
+        'Dark parent, inverse child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
+        'hsla(57, 100%, 89%, 1)',
+      ],
+      [
+        'Light parent, inverse child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
+        'hsla(58, 100%, 7.000000000000001%, 1)',
+      ],
+      [
+        'Undefined parent, inverse child, both have colors',
+        {UNSTABLE_colors: {critical: '#000000'}},
+        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
+        'hsla(58, 100%, 7.000000000000001%, 1)',
+      ],
+      [
+        'Dark parent, light child with no colors',
+        {colorScheme: 'dark'},
+        {colorScheme: 'light'},
+        expect.any(String),
+      ],
+      [
+        'Light parent, dark child with no colors',
+        {colorScheme: 'light'},
+        {colorScheme: 'dark'},
+        expect.any(String),
+      ],
+    ])(
+      'Inherits color scheme from parent where: %s',
+      (
+        _: any,
+        topLevelTheme: any,
+        childTheme: any,
+        expectedCritialSurfaceSubdued: any,
+      ) => {
+        const themeProvider = mountWithGlobalTheming(
+          <ThemeProvider theme={topLevelTheme}>
+            <ThemeProvider theme={childTheme}>
+              <p>Hello</p>
+            </ThemeProvider>
+          </ThemeProvider>,
+          {globalTheming: true},
+        );
+
+        expect(themeProvider.findAll('div')[1]).toHaveReactProps({
+          style: expect.objectContaining({
+            '--p-surface-critical-subdued': expectedCritialSurfaceSubdued,
+          }),
+        });
+      },
+    );
   });
 });
