@@ -20,6 +20,7 @@
 - Ensure the normalizedValue within `TextField` is a string (this was already ensured through type-checking at the TypeScript level, but people could force through with casting to `any`, which caused problems) ([#2598](https://github.com/Shopify/polaris-react/pull/2598))
 
 - Fixed an issue with the `Filters` component where the `aria-expanded` attribute was `undefined` on mount ([#2589]https://github.com/Shopify/polaris-react/pull/2589)
+- Fixed `TrapFocus` from tabbing out of the container ([#2555](https://github.com/Shopify/polaris-react/pull/2555))
 
 ### Documentation
 
