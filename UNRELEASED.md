@@ -32,6 +32,7 @@
 
 ### Code quality
 
+- Converted `MenuGroup` into a functional component ([#2536](https://github.com/Shopify/polaris-react/pull/2536))
 - Converted `Layout` into a functional component ([#2538](https://github.com/Shopify/polaris-react/pull/2538))
 - Converted `FormLayout` into a functional component ([#2539](https://github.com/Shopify/polaris-react/pull/2539))
 - Converted `Stack` into a functional component ([#2534](https://github.com/Shopify/polaris-react/pull/2534))
