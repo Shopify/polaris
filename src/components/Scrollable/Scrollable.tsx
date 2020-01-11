@@ -125,9 +125,8 @@ export class Scrollable extends React.Component<ScrollableProps, State> {
       horizontal && styles.horizontal,
       topShadow && styles.hasTopShadow,
       bottomShadow && styles.hasBottomShadow,
+      vertical && canScroll && styles.verticalHasScrolling,
     );
-
-    const overflowY = vertical && canScroll ? 'scroll' : undefined;
 
     return (
       <ScrollableContext.Provider value={this.scrollToPosition}>
@@ -137,7 +136,6 @@ export class Scrollable extends React.Component<ScrollableProps, State> {
             {...scrollable.props}
             {...rest}
             ref={this.setScrollArea}
-            style={{overflowY}}
           >
             {children}
           </div>
