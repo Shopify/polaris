@@ -125,14 +125,11 @@ export class PositionedOverlay extends React.PureComponent<
     const {render, fixed, classNames: propClassNames} = this.props;
 
     const style = {
-      // stylelint-disable function-name-case
       top: top == null || isNaN(top) ? undefined : top,
       left: left == null || isNaN(left) ? undefined : left,
       right: right == null || isNaN(right) ? undefined : right,
       width: width == null || isNaN(width) ? undefined : width,
-      // stylelint-disable-next-line value-keyword-case
       zIndex: zIndex == null || isNaN(zIndex) ? undefined : zIndex,
-      // stylelint-enable function-name-case
     };
 
     const className = classNames(
