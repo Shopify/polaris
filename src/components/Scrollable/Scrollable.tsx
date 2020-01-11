@@ -163,7 +163,6 @@ export class Scrollable extends React.Component<ScrollableProps, State> {
     const shouldTopShadow = Boolean(shadow && scrollTop > 0);
 
     const canScroll = scrollHeight > clientHeight;
-
     const hasScrolledToBottom = scrollHeight - scrollTop === clientHeight;
 
     if (canScroll && hasScrolledToBottom && onScrolledToBottom) {
