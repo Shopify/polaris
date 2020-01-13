@@ -32,6 +32,7 @@
 
 ### Code quality
 
+- Converted `/tests/build.test.js` to TypeScript ([#2617](https://github.com/Shopify/polaris-react/pull/2617))
 - Converted `MenuGroup` into a functional component ([#2536](https://github.com/Shopify/polaris-react/pull/2536))
 - Converted `Layout` into a functional component ([#2538](https://github.com/Shopify/polaris-react/pull/2538))
 - Converted `FormLayout` into a functional component ([#2539](https://github.com/Shopify/polaris-react/pull/2539))
