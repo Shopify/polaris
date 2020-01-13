@@ -1,11 +1,11 @@
 import React from 'react';
-
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {
   findByTestID,
   trigger,
   mountWithAppProvider,
+  act,
 } from 'test-utilities/legacy';
 
 import {Collapsible} from '../../../../Collapsible';
@@ -17,6 +17,7 @@ import channelResults from './fixtures/AdminNavQuery/multiple-channels.json';
 
 describe('<Navigation.Section />', () => {
   let context: React.ContextType<typeof NavigationContext>;
+  let cancelAnimationFrameSpy: jest.SpyInstance;
 
   beforeEach(() => {
     matchMedia.mock();
@@ -25,17 +26,40 @@ describe('<Navigation.Section />', () => {
       location: '/admin/products',
       onNavigationDismiss: jest.fn(),
     };
+    cancelAnimationFrameSpy = jest.spyOn(window, 'cancelAnimationFrame');
   });
 
   afterEach(() => {
     matchMedia.restore();
     animationFrame.restore();
+    cancelAnimationFrameSpy.mockRestore();
+  });
+
+  it('cancels the current animation frame when clicked', () => {
+    const section = mountWithNavigationProvider(
+      <Section
+        items={[
+          {
+            label: 'some label',
+            url: '/admin',
+            disabled: false,
+          },
+        ]}
+      />,
+      {...context},
+    );
+
+    trigger(section.find(Item), 'onClick');
+    trigger(section.find(Item), 'onClick');
+
+    expect(cancelAnimationFrameSpy).toHaveBeenCalledTimes(1);
   });
 
   it('passes the right accessibilityLabel to its Button', () => {
     const mountedSection = mountWithNavigationProvider(
       <Section
         title="test"
+        fill
         items={[
           {
             label: 'some label',
@@ -128,7 +152,9 @@ describe('<Navigation.Section />', () => {
       .first()
       .simulate('click');
 
-    animationFrame.runFrame();
+    act(() => {
+      animationFrame.runFrame();
+    });
     channels.update();
     expect(channels.find(Collapsible).prop('open')).toBe(false);
   });

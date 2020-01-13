@@ -1,1 +1,5 @@
-export {KeypressListener, KeypressListenerProps} from './KeypressListener';
+export {
+  KeypressListener,
+  KeypressListenerProps,
+  KeyEvent,
+} from './KeypressListener';

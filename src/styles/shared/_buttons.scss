@@ -79,10 +79,12 @@
       border-color: transparent;
     }
 
+    @include focus-ring;
+
     &:focus {
       border-color: transparent;
       box-shadow: none;
-      @include focus-ring;
+      @include focus-ring($style: 'focused');
     }
 
     &:active {

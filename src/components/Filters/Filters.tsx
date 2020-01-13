@@ -489,7 +489,7 @@ class Filters extends React.Component<ComposedProps, State> {
 
       transformedActions.push({
         popoverContent: this.generateFilterMarkup(filter),
-        popoverOpen: this.state[`${key}${Suffix.Shortcut}`],
+        popoverOpen: Boolean(this.state[`${key}${Suffix.Shortcut}`]),
         key,
         content: label,
         disabled,

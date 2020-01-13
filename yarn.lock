@@ -1648,10 +1648,20 @@
   resolved "https://registry.yarnpkg.com/@shopify/integrity-sha-utils/-/integrity-sha-utils-1.0.3.tgz#0d767d419fc1709ce7f8601fd8f61a0caa89a946"
   integrity sha512-VMr+48xgk3RxRRNkXcU5tN5t+Zfr4vvJJo9Y2+WLEWdvGgwF1ZXtrxDGmxBGoDa31AsJQZ+Gsda9Sl9F9iDg+A==
 
-"@shopify/javascript-utilities@^2.1.0", "@shopify/javascript-utilities@^2.2.1":
+"@shopify/javascript-utilities@^2.1.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-2.4.0.tgz#2ffd528b0632af0392b860f33b4c5ed5c72cdafa"
   integrity sha512-ZfQo1i87iKsSR7mkJOk3/7aPgfuXPrTTbM0dUJTlzdyf13ftJ2Val/WdMicaCVFu2r60uSsqoq/QpF0fLFVlcQ==
+  dependencies:
+    "@types/lodash" "^4.14.65"
+    "@types/react" "^16.0.2"
+    lodash "^4.17.4"
+    lodash-decorators "^4.3.5"
+
+"@shopify/javascript-utilities@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-2.4.1.tgz#99e1994381fc33a2609f7792b6812feee32362fa"
+  integrity sha512-CDp4nWHjVXTr+rYV5RMBs8aJ5PbXUdbz47jnKisBWa9GFwJktZFj2PxefXqfLd51KpIuQpFnA/NMvq4M5tdTlw==
   dependencies:
     "@types/lodash" "^4.14.65"
     "@types/react" "^16.0.2"

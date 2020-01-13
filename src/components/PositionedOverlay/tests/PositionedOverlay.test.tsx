@@ -70,6 +70,20 @@ describe('<PositionedOverlay />', () => {
         <PositionedOverlay {...mockProps} preferredAlignment="left" />,
       );
 
+      expect((positionedOverlay.find('div').prop('style') as any).left).toBe(0);
+      expect(
+        (positionedOverlay.find('div').prop('style') as any).right,
+      ).toBeUndefined();
+    });
+
+    it('aligns right if preferredAlignment is given', () => {
+      const positionedOverlay = mountWithAppProvider(
+        <PositionedOverlay {...mockProps} preferredAlignment="right" />,
+      );
+
+      expect((positionedOverlay.find('div').prop('style') as any).right).toBe(
+        0,
+      );
       expect(
         (positionedOverlay.find('div').prop('style') as any).left,
       ).toBeUndefined();
