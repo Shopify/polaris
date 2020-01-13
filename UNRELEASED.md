@@ -39,6 +39,7 @@
 - Converted `Stack` into a functional component ([#2534](https://github.com/Shopify/polaris-react/pull/2534))
 - Converted `BulkActionButton` into a functional component ([#2542](https://github.com/Shopify/polaris-react/pull/2542))
 - Converted `Focus` into a functional component ([#2540](https://github.com/Shopify/polaris-react/pull/2540))
+- Converted `Tabmeasurer` into a functional component ([#2535](https://github.com/Shopify/polaris-react/pull/2535))
 - Converted `Section` into a functional component ([#2537](https://github.com/Shopify/polaris-react/pull/2537))
 - Converted `Tooltip` into a functional component ([#2543](https://github.com/Shopify/polaris-react/pull/2543))
 - Converted `Option` into a functional component ([#2541](https://github.com/Shopify/polaris-react/pull/2541))
