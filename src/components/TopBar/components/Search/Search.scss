@@ -28,7 +28,7 @@
 
 .Results {
   position: relative;
-  z-index: z-index(search, $stacking-order);
+  z-index: z-index(nav, $fixed-element-stacking-order);
   display: flex;
   flex-direction: column;
   max-height: calc(100vh - #{top-bar-height()});

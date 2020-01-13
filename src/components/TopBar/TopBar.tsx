@@ -27,7 +27,7 @@ export interface TopBarProps {
   searchResults?: React.ReactNode;
   /** A boolean property indicating whether search results are currently visible. */
   searchResultsVisible?: boolean;
-  /** Determines whether the search dismiss overlay should be visible */
+  /** Whether or not the search results overlay has a visible backdrop */
   searchResultsOverlayVisible?: boolean;
   /** A callback function that handles the dismissal of search results */
   onSearchResultsDismiss?: SearchProps['onDismiss'];

@@ -8,7 +8,7 @@ export interface SearchProps {
   visible?: boolean;
   /** The content to display inside the search */
   children?: React.ReactNode;
-  /** Determines whether the dismiss overlay should be visible */
+  /** Whether or not the search results overlay has a visible backdrop */
   overlayVisible?: boolean;
   /** Callback when the search is dismissed */
   onDismiss?(): void;
