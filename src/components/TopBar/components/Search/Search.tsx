@@ -24,9 +24,13 @@ export function Search({
     return null;
   }
 
+  const overlayMarkup = visible ? (
+    <SearchDismissOverlay onDismiss={onDismiss} visible={overlayVisible} />
+  ) : null;
+
   return (
     <div className={classNames(styles.Search, visible && styles.visible)}>
-      <SearchDismissOverlay onDismiss={onDismiss} visible={overlayVisible} />
+      {overlayMarkup}
       <div className={styles.Results}>{children}</div>
     </div>
   );

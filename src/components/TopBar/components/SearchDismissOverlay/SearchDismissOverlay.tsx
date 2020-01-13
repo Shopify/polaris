@@ -1,4 +1,5 @@
 import React, {useCallback, useRef} from 'react';
+import {ScrollLock} from '../../../ScrollLock';
 import {classNames} from '../../../../utilities/css';
 import * as styles from './SearchDismissOverlay.scss';
 
@@ -25,14 +26,17 @@ export function SearchDismissOverlay({
   );
 
   return (
-    <div
-      ref={node}
-      className={classNames(
-        styles.SearchDismissOverlay,
-        visible && styles.visible,
-      )}
-      onClick={handleDismiss}
-    />
+    <React.Fragment>
+      {visible ? <ScrollLock /> : null}
+      <div
+        ref={node}
+        className={classNames(
+          styles.SearchDismissOverlay,
+          visible && styles.visible,
+        )}
+        onClick={handleDismiss}
+      />
+    </React.Fragment>
   );
 }
 
