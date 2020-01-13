@@ -16,13 +16,15 @@ describe('<Search />', () => {
   });
 
   it('renders a SearchDismissOverlay', () => {
-    const search = mountWithAppProvider(<Search>Hello Polaris</Search>);
+    const search = mountWithAppProvider(<Search visible>Hello Polaris</Search>);
     expect(search.find(SearchDismissOverlay)).toHaveLength(1);
   });
 
   it('passes the overlayVisible prop to SearchDismissOverlay', () => {
     const search = mountWithAppProvider(
-      <Search overlayVisible>Hello Polaris</Search>,
+      <Search visible overlayVisible>
+        Hello Polaris
+      </Search>,
     );
 
     expect(search.find(SearchDismissOverlay).prop('visible')).toBe(true);
