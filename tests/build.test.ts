@@ -1,7 +1,7 @@
-const execSync = require('child_process').execSync;
-const fs = require('fs-extra');
-const glob = require('glob');
-const packageJSON = require('../package.json');
+import {execSync} from 'child_process';
+import fs from 'fs-extra';
+import glob from 'glob';
+import packageJSON from '../package.json';
 
 describe('build', () => {
   beforeAll(() => {
