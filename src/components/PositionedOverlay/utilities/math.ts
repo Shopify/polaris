@@ -98,13 +98,12 @@ export function calculateHorizontalPosition(
       Math.max(0, activatorRect.left - overlayMargins.horizontal),
     );
   } else if (preferredAlignment === 'right') {
-    const activatorRight = activatorRect.left + activatorRect.width;
+    const activatorRight =
+      containerRect.width - (activatorRect.left + activatorRect.width);
+
     return Math.min(
       maximum,
-      Math.max(
-        0,
-        activatorRight - overlayRect.width + overlayMargins.horizontal,
-      ),
+      Math.max(0, activatorRight - overlayMargins.horizontal),
     );
   }
 

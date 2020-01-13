@@ -20,6 +20,10 @@ $shadow-top: inset 0 $shadow-size $shadow-size (-1 * $shadow-size)
   overflow-y: auto;
 }
 
+.verticalHasScrolling {
+  overflow-y: scroll;
+}
+
 .hasTopShadow {
   box-shadow: $shadow-top;
 }
