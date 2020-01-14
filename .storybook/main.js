@@ -21,8 +21,8 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-contexts',
   ],
-  webpackFinal: (config, mode) => {
-    const isProduction = mode === 'PRODUCTION';
+  webpackFinal: (config) => {
+    const isProduction = config.mode === 'production';
 
     // When transpiling TS using isolatedModules, the compiler doesn't strip
     // out exported types as it doesn't know if an item is a type or not.
