@@ -49,6 +49,11 @@ $top-bar-scroll-shadow-transition-timing-function: cubic-bezier(
   }
 }
 
+.Logo,
+.LogoLink {
+  display: block;
+}
+
 .ContextControl {
   display: none;
   @include breakpoint-after(nav-min-window-corrected()) {
@@ -59,11 +64,6 @@ $top-bar-scroll-shadow-transition-timing-function: cubic-bezier(
   @include breakpoint-after($context-control-expand-after) {
     width: layout-width(nav) + $context-control-extra-spacing;
   }
-}
-
-.Logo,
-.LogoLink {
-  display: block;
 }
 
 .NavigationIcon {

@@ -57,6 +57,24 @@ $unstable-nav-max-width: rem(258px);
   max-width: 100%;
 }
 
+.LogoContainer {
+  display: none;
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: flex;
+    flex: 0 0 unstable-top-bar-height();
+    align-items: center;
+    height: 100%;
+    padding: 0 spacing(tight) 0 spacing(base);
+    @include safe-area-for(flex-basis, unstable-top-bar-height(), left);
+    @include safe-area-for(padding-left, spacing(), left);
+  }
+}
+
+.Logo,
+.LogoLink {
+  display: block;
+}
+
 // Item styles
 $disabled-fade: 0.6;
 

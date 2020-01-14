@@ -176,6 +176,16 @@ $skip-vertical-offset: rem(10px);
       padding-top: 0;
     }
   }
+  @include frame-when-nav-displayed {
+    .hasNav & {
+      padding-left: layout-width(unstable-nav);
+      @include safe-area-for(padding-left, layout-width(unstable-nav), left);
+
+      @include when-printing {
+        padding-left: 0;
+      }
+    }
+  }
 }
 
 .Content {
@@ -195,6 +205,7 @@ $skip-vertical-offset: rem(10px);
       left: layout-width(nav);
       @include safe-area-for(left, layout-width(nav), left);
       width: calc(100% - #{layout-width(nav)});
+      // Todo: Add class for global theming
     }
   }
 }
