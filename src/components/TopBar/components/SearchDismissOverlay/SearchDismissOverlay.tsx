@@ -7,18 +7,15 @@ interface Props {
   /** Callback when the search is dismissed */
   onDismiss?(): void;
   /** Determines whether the overlay should be visible */
-  visible?: boolean;
+  visible: boolean;
 }
 
-export function SearchDismissOverlay({
-  onDismiss = noop,
-  visible = false,
-}: Props) {
-  const node = useRef(null);
+export function SearchDismissOverlay({onDismiss, visible}: Props) {
+  const node = useRef<HTMLDivElement>(null);
 
   const handleDismiss = useCallback(
-    ({target}: React.MouseEvent<HTMLElement>) => {
-      if (target === node.current) {
+    ({target}: React.MouseEvent<HTMLDivElement>) => {
+      if (target === node.current && onDismiss != null) {
         onDismiss();
       }
     },
@@ -39,5 +36,3 @@ export function SearchDismissOverlay({
     </React.Fragment>
   );
 }
-
-function noop() {}
