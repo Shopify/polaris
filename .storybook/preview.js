@@ -8,7 +8,7 @@ import enTranslations from '../locales/en.json';
 
 addParameters({
   options: {
-    showRoots: true,
+    // showRoots: true,
   },
   percy: {
     skip: true,
