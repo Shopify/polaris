@@ -31,6 +31,8 @@
 
 ### Development workflow
 
+- Updated Storybook to v5.3.2 ([#2618](https://github.com/Shopify/polaris-react/pull/2618))
+
 ### Dependency upgrades
 
 - Updated `@shopify/polaris-icons` to v3.9.0 ([#2610](https://github.com/Shopify/polaris-react/pull/2610))
