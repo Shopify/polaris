@@ -265,6 +265,24 @@ describe('<TopBar />', () => {
 
       expect(topBar).toContainReactComponent(EventListener);
     });
+
+    it('does not render a div with globalTheming className when globalTheming is undefined', () => {
+      const topBar = mountWithApp(<TopBar />);
+
+      expect(topBar).not.toContainReactComponent('div', {
+        className: 'TopBar TopBar-globalTheming',
+      });
+    });
+
+    it('renders a div with globalTheming className when globalTheming is enabled', () => {
+      const topBar = mountWithApp(<TopBar />, {
+        features: {unstableGlobalTheming: true},
+      });
+
+      expect(topBar).toContainReactComponent('div', {
+        className: 'TopBar TopBar-globalTheming',
+      });
+    });
   });
 });
 

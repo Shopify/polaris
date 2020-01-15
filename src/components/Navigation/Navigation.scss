@@ -34,6 +34,10 @@ $unstable-nav-max-width: rem(258px);
   }
 }
 
+.Navigation-noMedia {
+  padding-top: spacing();
+}
+
 .UserMenu {
   flex: 0 0 auto;
 }

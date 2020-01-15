@@ -146,7 +146,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
 
   const className = classNames(
     styles.TopBar,
-    unstableGlobalTheming && styles['Topbar-globalTheming'],
+    unstableGlobalTheming && styles['TopBar-globalTheming'],
     scrolled && styles.isScrolled,
   );
 

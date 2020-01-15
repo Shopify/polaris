@@ -26,10 +26,17 @@ $stacking-order: (
 
 .SearchField-globalTheming {
   max-width: $unstable-search-max-width;
-  // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
-  .Input:focus ~ .Backdrop {
-    @include focus-ring('wide');
+
+  .Backdrop {
+    @include focus-ring($size: 'wide');
     position: absolute;
+  }
+
+  .Input:focus {
+    // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
+    ~ .Backdrop {
+      @include focus-ring($size: 'wide', $style: 'focused');
+    }
   }
 }
 // We have both a focused class and a focus pseudo selector here
@@ -109,6 +116,7 @@ $stacking-order: (
 
 .Clear {
   @include recolor-icon(var(--p-icon, color('ink', 'lightest')));
+  @include focus-ring($size: 'wide');
   position: relative;
   z-index: z-index(action, $stacking-order);
   align-self: stretch;
@@ -119,8 +127,22 @@ $stacking-order: (
 
   &:focus,
   &:hover {
-    @include recolor-icon(var(--p-icon-hovered, color('ink', 'lighter')));
+    @include recolor-icon(
+      var(--p-icon-action-hovered, color('ink', 'lighter'))
+    );
     outline: none;
+  }
+
+  &:focus {
+    @include focus-ring($size: 'wide', $style: 'focused');
+  }
+
+  &:active {
+    @include recolor-icon(var(--p-icon-action-pressed));
+
+    &::after {
+      border: none;
+    }
   }
 }
 

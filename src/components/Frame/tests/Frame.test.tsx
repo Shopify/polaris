@@ -5,9 +5,9 @@ import {documentHasStyle, mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {
-  TrapFocus,
   ContextualSaveBar as PolarisContextualSavebar,
   Loading as PolarisLoading,
+  TrapFocus,
 } from 'components';
 import {Frame} from '../Frame';
 import {
@@ -272,6 +272,63 @@ describe('<Frame />', () => {
         </Frame>,
       );
       expect(frame.find(FrameLoading).exists()).toBe(true);
+    });
+  });
+  describe('unstableGlobalTheming', () => {
+    it('renders a Nav with a globalTheming class when unstableGlobalTheming is true', () => {
+      const frame = mountWithApp(
+        <Frame navigation={<div />}>
+          <PolarisLoading />
+        </Frame>,
+        {
+          features: {unstableGlobalTheming: true},
+        },
+      );
+      expect(frame).toContainReactComponent('div', {
+        className: 'Navigation Navigation-globalTheming',
+      });
+    });
+
+    it('renders a TopBar with a globalTheming class when unstableGlobalTheming is true', () => {
+      const frame = mountWithApp(
+        <Frame topBar={<div />}>
+          <PolarisLoading />
+        </Frame>,
+        {
+          features: {unstableGlobalTheming: true},
+        },
+      );
+      expect(frame).toContainReactComponent('div', {
+        className: 'TopBar TopBar-globalTheming',
+      });
+    });
+
+    it('renders a GlobalRibbon container with a globalTheming class when unstableGlobalTheming is true', () => {
+      const frame = mountWithApp(
+        <Frame globalRibbon={<div />}>
+          <PolarisLoading />
+        </Frame>,
+        {
+          features: {unstableGlobalTheming: true},
+        },
+      );
+      expect(frame).toContainReactComponent('div', {
+        className: 'GlobalRibbonContainer GlobalRibbonContainer-globalTheming',
+      });
+    });
+
+    it('renders a content container with a globalTheming class when unstableGlobalTheming is true', () => {
+      const frame = mountWithApp(
+        <Frame>
+          <PolarisLoading />
+        </Frame>,
+        {
+          features: {unstableGlobalTheming: true},
+        },
+      );
+      expect(frame).toContainReactComponent('main', {
+        className: 'Main Main-globalTheming',
+      });
     });
   });
 });

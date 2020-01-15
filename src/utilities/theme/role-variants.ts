@@ -173,10 +173,16 @@ export const roleVariants: RoleVariants = {
       dark: {lightness: 70.1},
     },
     {
-      name: 'iconHovered',
+      name: 'iconActionHovered',
       description: 'For use as the fill color of hovered secondary icons.',
       light: {lightness: 10},
       dark: {lightness: 90},
+    },
+    {
+      name: 'iconActionPressed',
+      description: 'For use as the fill color of hovered secondary icons.',
+      light: {lightness: 30},
+      dark: {lightness: 70},
     },
     {
       name: 'iconDisabled',

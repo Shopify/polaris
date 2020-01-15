@@ -53,7 +53,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
       </div>
     ) : null;
 
-  const contextControlMarkup = contextControl ? (
+  const mediaMarkup = contextControl ? (
     <div className={styles.ContextControl}>{contextControl}</div>
   ) : (
     logoMarkup
@@ -61,6 +61,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
 
   const className = classNames(
     styles.Navigation,
+    !mediaMarkup && unstableGlobalTheming && styles['Navigation-noMedia'],
     unstableGlobalTheming && styles['Navigation-globalTheming'],
   );
 
@@ -73,7 +74,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
     <NavigationContext.Provider value={context}>
       <WithinContentContext.Provider value>
         <nav className={className}>
-          {contextControlMarkup}
+          {mediaMarkup}
           <Scrollable className={styles.PrimaryNavigation}>
             {children}
           </Scrollable>

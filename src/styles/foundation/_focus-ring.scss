@@ -5,10 +5,10 @@
 ///
 
 @mixin focus-ring($size: 'base', $offset: rem(1px), $style: 'base') {
+  $stroke: rem(2px);
+  $position: calc(#{$offset} + #{$stroke});
+
   @if $style == 'base' {
-    $easing: cubic-bezier(0.4, 0.22, 0.28, 1);
-    $stroke: rem(2px);
-    $position: calc(#{$offset} + #{$stroke});
     position: relative;
 
     &::after {

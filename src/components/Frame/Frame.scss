@@ -28,11 +28,10 @@ $skip-vertical-offset: rem(10px);
   transform: translateX(0%);
 
   @include frame-when-nav-displayed {
-    z-index: 0;
+    z-index: 1;
     display: flex;
 
     &:not(.Navigation-globalTheming) {
-      z-index: 1;
       top: top-bar-height();
       height: calc(100% - #{top-bar-height()});
     }
@@ -90,18 +89,10 @@ $skip-vertical-offset: rem(10px);
     opacity: 1;
   }
 
-  &:hover {
-    background-color: var(--p-overlay);
-  }
-
   &:focus {
     border-radius: border-radius();
     background-color: var(--p-override-transparent, rgba(color('white'), 0.16));
     outline: none;
-  }
-
-  &:active {
-    background-color: var(--p-overlay);
   }
 
   @include frame-when-nav-displayed {
@@ -111,9 +102,17 @@ $skip-vertical-offset: rem(10px);
   .Navigation-globalTheming & {
     border-radius: 50%;
 
+    &:hover {
+      background-color: var(--p-overlay);
+    }
+
     &:focus {
       @include focus-ring;
       position: absolute;
+    }
+
+    &:active {
+      background-color: var(--p-overlay);
     }
   }
 }
