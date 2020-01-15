@@ -33,7 +33,9 @@ describe('<AlphaField />', () => {
       const percentageValue = 70;
       const expectedAlpha = percentageValue / 100;
 
-      textField.find('input').getDOMNode().value = percentageValue;
+      (textField
+        .find('input')
+        .getDOMNode() as HTMLInputElement).value = percentageValue.toString();
       textField
         .find('input')
         .simulate('change')
@@ -51,7 +53,9 @@ describe('<AlphaField />', () => {
       const percentageValue = 150;
       const expectedAlpha = 1;
 
-      textField.find('input').getDOMNode().value = percentageValue;
+      (textField
+        .find('input')
+        .getDOMNode() as HTMLInputElement).value = percentageValue.toString();
       textField
         .find('input')
         .simulate('change')
