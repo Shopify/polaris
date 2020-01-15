@@ -31,6 +31,7 @@ $skip-vertical-offset: rem(10px);
     display: flex;
 
     &:not(.Navigation-globalTheming) {
+      z-index: 1;
       top: top-bar-height();
       height: calc(100% - #{top-bar-height()});
     }
