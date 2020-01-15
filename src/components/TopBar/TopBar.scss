@@ -95,6 +95,7 @@ $context-control-expand-after: 1400px;
 
 .SearchField {
   @include page-layout;
+  position: relative;
   width: 100%;
   margin: 0;
   max-width: none;
@@ -108,10 +109,6 @@ $context-control-expand-after: 1400px;
 
   @media (max-width: $page-left-alignment-breakpoint-max) {
     margin-left: 0;
-  }
-
-  @include breakpoint-after($not-condensed-content) {
-    position: relative;
   }
 }
 
