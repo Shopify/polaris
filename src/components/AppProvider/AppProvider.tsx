@@ -1,6 +1,5 @@
 import React from 'react';
 import {ThemeConfig} from '../../utilities/theme';
-import {TelemetryContext, TelemetryObject} from '../../utilities/telemetry';
 import {ThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {I18n, I18nContext} from '../../utilities/i18n';
@@ -42,7 +41,6 @@ export interface AppProviderProps extends AppBridgeOptions {
   features?: Features;
   /** Inner content of the application */
   children?: React.ReactNode;
-  UNSTABLE_telemetry?: TelemetryObject;
 }
 
 export class AppProvider extends React.Component<AppProviderProps, State> {
@@ -100,12 +98,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
   }
 
   render() {
-    const {
-      theme = {},
-      features = {},
-      UNSTABLE_telemetry,
-      children,
-    } = this.props;
+    const {theme = {}, features = {}, children} = this.props;
     const {intl, appBridge, link} = this.state;
 
     return (
@@ -117,9 +110,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
                 <AppBridgeContext.Provider value={appBridge}>
                   <LinkContext.Provider value={link}>
                     <ThemeProvider theme={theme}>
-                      <TelemetryContext.Provider value={UNSTABLE_telemetry}>
-                        <MediaQueryProvider>{children}</MediaQueryProvider>
-                      </TelemetryContext.Provider>
+                      <MediaQueryProvider>{children}</MediaQueryProvider>
                     </ThemeProvider>
                   </LinkContext.Provider>
                 </AppBridgeContext.Provider>

@@ -2,6 +2,8 @@
 
 ### Breaking changes
 
+- Remove unstable telemetry API for icons ([#]())
+
 ### Enhancements
 
 - Added `hideTags` prop to `Filters` ([#2573](https://github.com/Shopify/polaris-react/pull/2573))
