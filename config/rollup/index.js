@@ -30,9 +30,7 @@ module.exports = function createRollupConfig({entry, cssPath}) {
       babel({
         // We need to specify an environment name as leaving it blank defaults
         // to "development", which ends up including a bunch of debug helpers.
-        // We don't want to use "production" as that enables the
-        // babel-plugin-transform-react-constant-elements plugin which we don't want
-        envName: 'not-production',
+        envName: 'production',
         include: '**/*.js',
         exclude: 'node_modules/**',
         runtimeHelpers: true,
