@@ -12,6 +12,7 @@ const HASHLESS_HEX_REGEX = new RegExp(
   `(^${SIX_DIGIT_HEX})|(^${THREE_DIGIT_HEX})`,
   'i',
 );
+
 // implements: https://www.w3.org/WAI/ER/WD-AERT/#color-contrast
 export function isLight({red, green, blue}: RGBColor | RGBAColor): boolean {
   const contrast = (red * 299 + green * 587 + blue * 114) / 1000;
