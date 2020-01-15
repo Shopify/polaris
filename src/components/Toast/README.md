@@ -306,7 +306,7 @@ On iOS, icons are available for cases where you want to re-inforce the message.
 
 <!-- example-for: android, ios, web -->
 
-Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](https://polaris.shopify.com/patterns/error-messages).
+Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](https://polaris.shopify.com/experiences/error-messages).
 
 <!-- content-for: web -->
 

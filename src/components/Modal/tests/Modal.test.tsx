@@ -62,6 +62,15 @@ describe('<Modal>', () => {
     );
   });
 
+  it('focuses the next focusable node on mount', () => {
+    const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
+    const focusedNode = focusUtils.findFirstFocusableNode(
+      modal.find(Dialog).getDOMNode(),
+    );
+
+    expect(focusedNode).toBe(document.activeElement);
+  });
+
   describe('src', () => {
     it('renders an iframe if src is provided', () => {
       const modal = mountWithAppProvider(

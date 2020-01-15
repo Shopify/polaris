@@ -115,7 +115,8 @@
       "done": "Pronto",
       "clearAllFilters": "Limpar todos os filtros",
       "clear": "Limpar",
-      "clearLabel": "Limpar {filterName}"
+      "clearLabel": "Limpar {filterName}",
+      "moreFiltersWithCount": "Mais filtros ({count})"
     },
     "Modal": {
       "iFrameTitle": "marcação de corpo",

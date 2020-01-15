@@ -40,7 +40,16 @@ describe('I18n.translate', () => {
     expect(() => {
       i18n.translate('key', {notString: 'bar'});
     }).toThrow(
-      `No replacement found for key 'string'. The following replacements were passed: 'notString'`,
+      `Error in translation for key 'key'. No replacement found for key 'string'. The following replacements were passed: '{"notString":"bar"}'`,
+    );
+
+    expect(() => {
+      // Cast because while typescript should guard against this, people have
+      // been known to misuse `any` and undefined can get passed into the
+      //  replacements
+      i18n.translate('key', {string: undefined as any});
+    }).toThrow(
+      `Error in translation for key 'key'. No replacement found for key 'string'. The following replacements were passed: '{}'`,
     );
   });
 });

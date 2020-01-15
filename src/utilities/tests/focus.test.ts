@@ -3,6 +3,9 @@ import {
   handleMouseUpByBlurring,
   focusNextFocusableNode,
   nextFocusableNode,
+  findFirstKeyboardFocusableNode,
+  focusFirstKeyboardFocusableNode,
+  findLastKeyboardFocusableNode,
 } from '../focus';
 
 describe('handleMouseUpByBlurring()', () => {
@@ -80,6 +83,94 @@ describe('focusNextFocusableNode', () => {
     focusNextFocusableNode(activator);
 
     expect(document.activeElement).toBe(otherNode);
+  });
+});
+
+describe('findFirstKeyboardFocusableNode', () => {
+  it('returns the element if the element is focusable and onlyDescendants is false', () => {
+    const {activator} = domSetup();
+
+    expect(findFirstKeyboardFocusableNode(activator, false)).toBe(activator);
+  });
+
+  it('returns the first keyboard focusable child if the parent element cannot be focused', () => {
+    const {activator, otherNodeNested} = domSetup({activatorTag: 'div'});
+
+    expect(findFirstKeyboardFocusableNode(activator, false)).toBe(
+      otherNodeNested,
+    );
+  });
+
+  it('returns the first keyboard focusable child if onlyDescendants is true', () => {
+    const {activator, otherNodeNested} = domSetup();
+
+    expect(findFirstKeyboardFocusableNode(activator, true)).toBe(
+      otherNodeNested,
+    );
+  });
+});
+
+describe('focusFirstKeyboardFocusableNode', () => {
+  it('returns true when the node is focused', () => {
+    const {activator} = domSetup();
+
+    expect(focusFirstKeyboardFocusableNode(activator, false)).toBe(true);
+  });
+
+  it('returns false when the node is not focused', () => {
+    const {activator} = domSetup({otherNodeTag: 'div'});
+
+    expect(focusFirstKeyboardFocusableNode(activator)).toBe(false);
+  });
+
+  it('focuses the node', () => {
+    const {activator, otherNode} = domSetup();
+
+    focusFirstKeyboardFocusableNode(activator);
+
+    expect(document.activeElement).toStrictEqual(otherNode);
+  });
+});
+
+describe('findLastKeyboardFocusableNode', () => {
+  it('returns the element if the element is focusable and onlyDescendants is false', () => {
+    const {activator} = domSetup();
+
+    expect(findLastKeyboardFocusableNode(activator, false)).toBe(activator);
+  });
+
+  it('returns the last keyboard focusable child if the parent element cannot be focused', () => {
+    const {wrapper, otherNode} = domSetup();
+
+    expect(findLastKeyboardFocusableNode(wrapper, false)).toBe(otherNode);
+  });
+
+  it('returns the last focusable child if onlyDescendants is true', () => {
+    const {wrapper, otherNode} = domSetup();
+
+    expect(findLastKeyboardFocusableNode(wrapper, true)).toBe(otherNode);
+  });
+});
+
+describe('focusLastKeyboardFocusableNode', () => {
+  it('returns true when the node is focused', () => {
+    const {activator} = domSetup();
+
+    expect(focusFirstKeyboardFocusableNode(activator, false)).toBe(true);
+  });
+
+  it('returns false when the node is not focused', () => {
+    const {activator} = domSetup({otherNodeTag: 'div'});
+
+    expect(focusFirstKeyboardFocusableNode(activator)).toBe(false);
+  });
+
+  it('focuses the node', () => {
+    const {activator, otherNode} = domSetup();
+
+    focusFirstKeyboardFocusableNode(activator);
+
+    expect(document.activeElement).toStrictEqual(otherNode);
   });
 });
 

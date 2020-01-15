@@ -115,7 +115,8 @@
       "done": "Listo",
       "clearAllFilters": "Borrar todos los filtros",
       "clear": "Borrar",
-      "clearLabel": "Borrar {filterName}"
+      "clearLabel": "Borrar {filterName}",
+      "moreFiltersWithCount": "Más filtros ({count})"
     },
     "Modal": {
       "iFrameTitle": "etiqueta body",

@@ -115,7 +115,8 @@
       "done": "Selesai",
       "clearAllFilters": "Kosongkan semua penapis",
       "clear": "Kosongkan",
-      "clearLabel": "Kosongkan {filterName}"
+      "clearLabel": "Kosongkan {filterName}",
+      "moreFiltersWithCount": "Lebih banyak penapis ({count})"
     },
     "Modal": {
       "iFrameTitle": "penanda badan",

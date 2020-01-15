@@ -10,7 +10,7 @@
   }
 
   @include page-content-when-not-fully-condensed {
-    border-radius: border-radius();
+    border-radius: var(--p-border-radius-wide, border-radius());
   }
 
   @media (-ms-high-contrast: active) {

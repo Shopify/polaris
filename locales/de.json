@@ -115,7 +115,8 @@
       "done": "Fertig",
       "clearAllFilters": "Alle Filter löschen",
       "clear": "Löschen",
-      "clearLabel": "{filterName} löschen"
+      "clearLabel": "{filterName} löschen",
+      "moreFiltersWithCount": "Weitere Filter ({count})"
     },
     "Modal": {
       "iFrameTitle": "Text-Markup",

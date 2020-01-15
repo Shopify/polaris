@@ -115,7 +115,8 @@
       "done": "Ferdig",
       "clearAllFilters": "Fjern alle filtrene",
       "clear": "Fjern",
-      "clearLabel": "Fjern {filterName}"
+      "clearLabel": "Fjern {filterName}",
+      "moreFiltersWithCount": "Flere filtre ({count})"
     },
     "Modal": {
       "iFrameTitle": "brødtekstpåslag",

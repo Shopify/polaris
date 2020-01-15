@@ -103,10 +103,10 @@ describe('build', () => {
     });
 
     it('preserves classes to facilitate class-level tree shaking', () => {
-      // `Stack` is a foundation class, so is unlikely to disappear from the build.
+      // `Collapsible` deeply ties into the react class based life-cycles methods, so is likely to be one of the last components converted to a function.
       expect(
-        fs.readFileSync('esnext/components/Stack/Stack.js', 'utf8'),
-      ).toMatch('class Stack');
+        fs.readFileSync('esnext/components/Collapsible/Collapsible.js', 'utf8'),
+      ).toMatch('class Collapsible');
     });
 
     it('preserves jsx to give consumers control over Babel transforms', () => {

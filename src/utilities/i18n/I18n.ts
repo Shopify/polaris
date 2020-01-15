@@ -35,18 +35,18 @@ export class I18n {
       return text.replace(REPLACE_REGEX, (match: string) => {
         const replacement: string = match.substring(1, match.length - 1)!;
 
-        if (!Object.prototype.hasOwnProperty.call(replacements, replacement)) {
-          const replacementKeys = Object.keys(replacements)
-            .map((key) => `'${key}'`)
-            .join(', ');
+        if (replacements[replacement] === undefined) {
+          const replacementData = JSON.stringify(replacements);
 
           throw new Error(
-            `No replacement found for key '${replacement}'. The following replacements were passed: ${replacementKeys}`,
+            `Error in translation for key '${id}'. No replacement found for key '${replacement}'. The following replacements were passed: '${replacementData}'`,
           );
         }
 
-        // Replacement values may be numbers, so stringify
-        return replacements[replacement].toString();
+        // This could be a string or a number, but JS doesn't mind which it gets
+        // and can handle that cast internally. So let it, to save us calling
+        // toString() on what's already a string in 90% of cases.
+        return replacements[replacement] as string;
       });
     }
 

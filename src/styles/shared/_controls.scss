@@ -11,87 +11,150 @@
 }
 
 @function control-icon-transition() {
-  @return transform duration(fast) easing(in) easing(out);
+  @return transform duration(fast) easing(in);
 }
 
-@mixin control-backdrop($style: base) {
-  @if $style == base {
-    background-color: color('sky', 'dark');
-    border: border(transparent);
-    box-shadow: 0 0 0 1px transparent, shadow(faint);
-    border-radius: border-radius();
-    transition-property: box-shadow, background-color;
-    transition-duration: duration();
-    transition-timing-function: easing();
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: block;
-      background: linear-gradient(
-        to bottom,
-        color('white'),
-        color('sky', 'lighter')
-      );
-      border-radius: border-radius() - 1px;
-    }
-
-    @media (-ms-high-contrast: active) {
-      background: transparent;
-      border: 2px solid ms-high-contrast-color('button-text');
-      transition: none;
-      color: color('state', 'hover');
+@mixin control-backdrop($style: base, $global-theming: false) {
+  // original purpler
+  @if $global-theming == false {
+    @if $style == base {
+      background-color: color('sky', 'dark');
+      border: border(transparent);
+      box-shadow: 0 0 0 1px transparent, shadow(faint);
+      border-radius: border-radius();
+      transition-property: box-shadow, background-color;
+      transition-duration: duration();
+      transition-timing-function: easing();
 
       &::after {
-        top: -4px;
-        right: -4px;
-        bottom: -4px;
-        left: -4px;
-        background: none;
-        border-radius: border-radius() + 1px;
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: block;
+        background: linear-gradient(
+          to bottom,
+          color('white'),
+          color('sky', 'lighter')
+        );
+        border-radius: border-radius() - 1px;
       }
-    }
-  } @else if $style == focused {
-    background: color('indigo');
-    box-shadow: 0 0 0 1px color('indigo'), shadow(transparent);
 
-    &::after {
-      background: color('white');
-    }
+      @media (-ms-high-contrast: active) {
+        background: transparent;
+        border: 2px solid ms-high-contrast-color('button-text');
+        transition: none;
+        color: color('state', 'hover');
 
-    @media (-ms-high-contrast: active) {
+        &::after {
+          top: -4px;
+          right: -4px;
+          bottom: -4px;
+          left: -4px;
+          background: none;
+          border-radius: border-radius() + 1px;
+        }
+      }
+    } @else if $style == focused {
+      background: color('indigo');
+      box-shadow: 0 0 0 1px color('indigo'), shadow(transparent);
+      border-color: transparent;
+
       &::after {
-        border: 1px dashed ms-high-contrast-color('button-text');
+        background: color('white');
+      }
+
+      @media (-ms-high-contrast: active) {
+        &::after {
+          border: 1px dashed ms-high-contrast-color('button-text');
+        }
+      }
+    } @else if $style == error {
+      background: color('red', 'dark');
+      box-shadow: 0 0 0 1px transparent;
+
+      &::after {
+        background: color('red', 'lighter');
+      }
+    } @else if $style == disabled {
+      background: color('sky');
+      box-shadow: none;
+
+      &::after {
+        background: color('sky', 'lighter');
+      }
+
+      @media (-ms-high-contrast: active) {
+        color: ms-high-contrast-color('disabled-text');
+      }
+    } @else if $style == focused-error {
+      background: color('indigo');
+      box-shadow: 0 0 0 1px color('indigo');
+
+      &::after {
+        background: color('red', 'lighter');
       }
     }
-  } @else if $style == error {
-    background: color('red', 'dark');
-    box-shadow: 0 0 0 1px transparent;
+    // design-language
+  } @else if $global-theming == true {
+    --control-border-width: #{rem(2px)};
 
-    &::after {
-      background: color('red', 'lighter');
-    }
-  } @else if $style == disabled {
-    background: color('sky');
-    box-shadow: none;
+    @if $style == base {
+      position: relative;
+      border: var(--control-border-width) solid var(--p-border-secondary);
+      background-color: var(--p-surface);
+      border-radius: var(--p-border-radius-base);
 
-    &::after {
-      background: color('sky', 'lighter');
-    }
+      &::before {
+        content: '';
+        position: absolute;
+        top: calc(var(--control-border-width) * -1);
+        right: calc(var(--control-border-width) * -1);
+        bottom: calc(var(--control-border-width) * -1);
+        left: calc(var(--control-border-width) * -1);
+        border-radius: var(--p-border-radius-base);
+        background-color: var(--p-action-interactive);
+        opacity: 0;
+        transform: scale(0.25);
+        transition: opacity var(--p-duration-1-0-0) var(--p-ease),
+          transform var(--p-duration-1-0-0) var(--p-ease);
+      }
 
-    @media (-ms-high-contrast: active) {
-      color: ms-high-contrast-color('disabled-text');
-    }
-  } @else if $style == focused-error {
-    background: color('indigo');
-    box-shadow: 0 0 0 1px color('indigo');
+      &.hover,
+      &:hover {
+        cursor: pointer;
+        border-color: var(--p-border-secondary-hovered);
+      }
+    } @else if $style == active {
+      border-color: var(--p-action-interactive);
+      &::before {
+        opacity: 1;
+        transform: scale(1);
+      }
+    } @else if $style == disabled {
+      border-color: var(--p-border-secondary-disabled);
 
-    &::after {
-      background: color('red', 'lighter');
+      &::before {
+        background-color: var(--p-action-secondary-disabled);
+      }
+
+      &:hover {
+        cursor: default;
+      }
+    } @else if $style == error {
+      border-color: var(--p-border-critical);
+      background-color: var(--p-surface-critical);
+
+      &.hover,
+      &:hover {
+        border-color: var(--p-border-critical);
+      }
+
+      &::before {
+        background-color: var(--p-border-critical);
+      }
     }
   }
 }

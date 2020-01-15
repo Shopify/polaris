@@ -115,7 +115,8 @@
       "done": "完成",
       "clearAllFilters": "清除所有篩選條件",
       "clear": "清除",
-      "clearLabel": "清除 {filterName}"
+      "clearLabel": "清除 {filterName}",
+      "moreFiltersWithCount": "更多篩選條件 ({count})"
     },
     "Modal": {
       "iFrameTitle": "本文標記",

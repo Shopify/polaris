@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Checkbox} from '../../Checkbox';
 import {Option, OptionProps} from '../Option';
 
@@ -86,6 +87,15 @@ describe('<Option />', () => {
     expect(checkbox.prop('value')).toBe(value);
     expect(checkbox.prop('checked')).toBe(select);
     expect(checkbox.prop('disabled')).toBe(disabled);
+  });
+
+  it('renders media content when provided', () => {
+    const id = 'media';
+    const option = mountWithApp(
+      <Option {...defaultProps} media={<div id={id} />} />,
+    );
+
+    expect(option).toContainReactComponent('div', {id});
   });
 });
 
