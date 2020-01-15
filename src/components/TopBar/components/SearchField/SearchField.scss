@@ -108,7 +108,7 @@ $stacking-order: (
 }
 
 .Clear {
-  @include recolor-icon(var(--p-action-secondary, color('ink', 'lightest')));
+  @include recolor-icon(var(--p-icon, color('ink', 'lightest')));
   position: relative;
   z-index: z-index(action, $stacking-order);
   align-self: stretch;
@@ -119,9 +119,7 @@ $stacking-order: (
 
   &:focus,
   &:hover {
-    @include recolor-icon(
-      var(--p-action-secondary-hovered, color('ink', 'lighter'))
-    );
+    @include recolor-icon(var(--p-icon-hovered, color('ink', 'lighter')));
     outline: none;
   }
 }

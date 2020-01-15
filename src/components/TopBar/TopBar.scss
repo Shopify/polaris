@@ -128,17 +128,10 @@ $top-bar-scroll-shadow-transition-timing-function: cubic-bezier(
   @media (max-width: $page-left-alignment-breakpoint-max) {
     margin-left: 0;
   }
-<<<<<<< HEAD
-=======
-
-  @include breakpoint-after($not-condensed-content) {
-    position: relative;
-  }
 
   .Topbar-globalTheming & {
     margin-left: 0;
   }
->>>>>>> More top bar styling
 }
 
 .SecondaryMenu {

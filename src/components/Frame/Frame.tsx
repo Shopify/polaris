@@ -204,9 +204,14 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
+    const globalRibbonClassName = classNames(
+      styles.GlobalRibbonContainer,
+      unstableGlobalTheming && styles['GlobalRibbonContainer-globalTheming'],
+    );
+
     const globalRibbonMarkup = globalRibbon ? (
       <div
-        className={styles.GlobalRibbonContainer}
+        className={globalRibbonClassName}
         ref={this.setGlobalRibbonContainer}
       >
         {globalRibbon}

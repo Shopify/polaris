@@ -28,6 +28,7 @@ $skip-vertical-offset: rem(10px);
   transform: translateX(0%);
 
   @include frame-when-nav-displayed {
+    z-index: 0;
     display: flex;
 
     &:not(.Navigation-globalTheming) {
@@ -206,7 +207,16 @@ $skip-vertical-offset: rem(10px);
       left: layout-width(nav);
       @include safe-area-for(left, layout-width(nav), left);
       width: calc(100% - #{layout-width(nav)});
-      // Todo: Add class for global theming
+    }
+  }
+}
+
+.GlobalRibbonContainer-globalTheming {
+  @include frame-when-nav-displayed {
+    .hasNav & {
+      left: layout-width(unstable-nav);
+      @include safe-area-for(left, layout-width(unstable-nav), left);
+      width: calc(100% - #{layout-width(unstable-nav)});
     }
   }
 }
