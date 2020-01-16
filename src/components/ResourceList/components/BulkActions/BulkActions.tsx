@@ -17,11 +17,11 @@ import {CheckableButton} from '../CheckableButton';
 import {BulkActionButton} from './components';
 import styles from './BulkActions.scss';
 
-export type BulkAction = DisableableAction;
+type BulkAction = DisableableAction;
 
-export type BulkActionListSection = ActionListSection;
+type BulkActionListSection = ActionListSection;
 
-export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
+type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 const MAX_PROMOTED_ACTIONS = 2;
 

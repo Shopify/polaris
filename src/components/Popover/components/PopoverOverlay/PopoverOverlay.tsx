@@ -22,7 +22,7 @@ import {
 import {Pane, PaneProps} from '../Pane';
 import styles from '../../Popover.scss';
 
-export enum CloseSource {
+export enum PopoverCloseSource {
   Click,
   EscapeKeypress,
   FocusOut,
@@ -49,7 +49,7 @@ export interface PopoverOverlayProps {
   preventAutofocus?: boolean;
   sectioned?: boolean;
   fixed?: boolean;
-  onClose(source: CloseSource): void;
+  onClose(source: PopoverCloseSource): void;
 }
 
 interface State {
@@ -255,23 +255,23 @@ export class PopoverOverlay extends React.PureComponent<
     ) {
       return;
     }
-    onClose(CloseSource.Click);
+    onClose(PopoverCloseSource.Click);
   };
 
   private handleScrollOut = () => {
-    this.props.onClose(CloseSource.ScrollOut);
+    this.props.onClose(PopoverCloseSource.ScrollOut);
   };
 
   private handleEscape = () => {
-    this.props.onClose(CloseSource.EscapeKeypress);
+    this.props.onClose(PopoverCloseSource.EscapeKeypress);
   };
 
   private handleFocusFirstItem = () => {
-    this.props.onClose(CloseSource.FocusOut);
+    this.props.onClose(PopoverCloseSource.FocusOut);
   };
 
   private handleFocusLastItem = () => {
-    this.props.onClose(CloseSource.FocusOut);
+    this.props.onClose(PopoverCloseSource.FocusOut);
   };
 }
 

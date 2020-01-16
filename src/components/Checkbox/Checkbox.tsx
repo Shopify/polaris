@@ -11,7 +11,7 @@ import {Error, Key, CheckboxHandles} from '../../types';
 
 import styles from './Checkbox.scss';
 
-export interface BaseProps {
+export interface CheckboxProps {
   /** Indicates the ID of the element that describes the checkbox*/
   ariaDescribedBy?: string;
   /** Label for the checkbox */
@@ -39,8 +39,6 @@ export interface BaseProps {
   /** Callback when focus is removed */
   onBlur?(): void;
 }
-
-export interface CheckboxProps extends BaseProps {}
 
 export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
   function Checkbox(

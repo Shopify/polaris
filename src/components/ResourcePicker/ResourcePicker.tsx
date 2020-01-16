@@ -6,7 +6,7 @@ import {
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
 
-export interface SelectPayload {
+interface SelectPayload {
   /** The selected resources
    * @see {@link https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/resourcepicker|resource picker documentation} for more information
    */

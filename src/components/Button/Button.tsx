@@ -10,11 +10,11 @@ import {IconProps} from '../../types';
 import {Spinner} from '../Spinner';
 import styles from './Button.scss';
 
-export type Size = 'slim' | 'medium' | 'large';
+type Size = 'slim' | 'medium' | 'large';
 
-export type TextAlign = 'left' | 'right' | 'center';
+type TextAlign = 'left' | 'right' | 'center';
 
-export type IconSource = IconProps['source'];
+type IconSource = IconProps['source'];
 
 export interface ButtonProps {
   /** The content to display inside the button */
@@ -274,7 +274,7 @@ export function Button({
   );
 }
 
-export function IconWrapper({children}: any) {
+function IconWrapper({children}: any) {
   return <span className={styles.Icon}>{children}</span>;
 }
 

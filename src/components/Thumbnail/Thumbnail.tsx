@@ -3,7 +3,7 @@ import {classNames, variationName} from '../../utilities/css';
 import {Image} from '../Image';
 import styles from './Thumbnail.scss';
 
-export type Size = 'small' | 'medium' | 'large';
+type Size = 'small' | 'medium' | 'large';
 
 export interface ThumbnailProps {
   /**

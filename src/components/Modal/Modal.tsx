@@ -33,7 +33,7 @@ import styles from './Modal.scss';
 const IFRAME_LOADING_HEIGHT = 200;
 const DEFAULT_IFRAME_CONTENT_HEIGHT = 400;
 
-export type Size = 'Small' | 'Medium' | 'Large' | 'Full';
+type Size = 'Small' | 'Medium' | 'Large' | 'Full';
 
 export interface ModalProps extends FooterProps {
   /** Whether the modal is open or not */

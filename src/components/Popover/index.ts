@@ -1,5 +1,1 @@
-export {
-  Popover,
-  PopoverProps,
-  CloseSource as PopoverCloseSource,
-} from './Popover';
+export {Popover, PopoverProps, PopoverCloseSource} from './Popover';

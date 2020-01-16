@@ -38,7 +38,7 @@ import {fileAccepted, getDataTransferFiles} from './utils';
 
 import styles from './DropZone.scss';
 
-export type Type = 'file' | 'image';
+type Type = 'file' | 'image';
 
 export interface DropZoneProps {
   /** Label for the file input */

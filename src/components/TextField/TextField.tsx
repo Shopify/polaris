@@ -32,7 +32,7 @@ export type Type =
 
 type Alignment = 'left' | 'center' | 'right';
 
-export interface BaseProps {
+interface NonMutuallyExclusiveProps {
   /** Text to display before value */
   prefix?: React.ReactNode;
   /** Text to display after value */
@@ -112,8 +112,6 @@ export interface BaseProps {
   /** Callback when focus is removed */
   onBlur?(): void;
 }
-
-interface NonMutuallyExclusiveProps extends BaseProps {}
 
 export type TextFieldProps = NonMutuallyExclusiveProps &
   (

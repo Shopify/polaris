@@ -19,7 +19,7 @@ import styles from './PositionedOverlay.scss';
 
 export {PreferredPosition, PreferredAlignment};
 
-export type Positioning = 'above' | 'below';
+type Positioning = 'above' | 'below';
 
 export interface OverlayDetails {
   left?: number;

@@ -3,7 +3,6 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Avatar, Image} from 'components';
-import {STYLE_CLASSES} from '../Avatar';
 
 describe('<Avatar />', () => {
   describe('intials', () => {
@@ -116,10 +115,6 @@ describe('<Avatar />', () => {
   });
 
   describe('styleClass', () => {
-    it('defaults to five styles', () => {
-      expect(STYLE_CLASSES).toHaveLength(5);
-    });
-
     it('renders a sixth style when unstableGlobalTheming is false', () => {
       const avatar = mountWithApp(<Avatar name="e" />, {
         features: {unstableGlobalTheming: false},

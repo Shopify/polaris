@@ -12,10 +12,10 @@ import {PreferredPosition, PreferredAlignment} from '../PositionedOverlay';
 import {Portal} from '../Portal';
 import {portal} from '../shared';
 import {useUniqueId} from '../../utilities/unique-id';
-import {CloseSource, Pane, PopoverOverlay, Section} from './components';
+import {PopoverCloseSource, Pane, PopoverOverlay, Section} from './components';
 import {setActivatorAttributes} from './set-activator-attributes';
 
-export {CloseSource};
+export {PopoverCloseSource};
 
 export interface PopoverProps {
   /** The content to display inside the popover */
@@ -48,7 +48,7 @@ export interface PopoverProps {
   /** Used to illustrate the type of popover element */
   ariaHaspopup?: AriaAttributes['aria-haspopup'];
   /** Callback when popover is closed */
-  onClose(source: CloseSource): void;
+  onClose(source: PopoverCloseSource): void;
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -84,7 +84,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
     setActivatorAttributes(focusableActivator, {id, active, ariaHaspopup});
   }, [active, ariaHaspopup, id]);
 
-  const handleClose = (source: CloseSource) => {
+  const handleClose = (source: PopoverCloseSource) => {
     onClose(source);
 
     if (activatorContainer.current == null) {
@@ -92,8 +92,8 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
     }
 
     if (
-      (source === CloseSource.FocusOut ||
-        source === CloseSource.EscapeKeypress) &&
+      (source === PopoverCloseSource.FocusOut ||
+        source === PopoverCloseSource.EscapeKeypress) &&
       activatorNode
     ) {
       const focusableActivator =

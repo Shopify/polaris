@@ -1,1 +1,1 @@
-export {CSSAnimation, AnimationType} from './CSSAnimation';
+export {CSSAnimation, CSSAnimationProps, AnimationType} from './CSSAnimation';

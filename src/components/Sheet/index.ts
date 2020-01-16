@@ -1,1 +1,1 @@
-export {Sheet} from './Sheet';
+export {Sheet, SheetProps} from './Sheet';

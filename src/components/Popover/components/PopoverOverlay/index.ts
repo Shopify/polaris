@@ -1,5 +1,5 @@
 export {
   PopoverOverlay,
   PopoverOverlayProps,
-  CloseSource,
+  PopoverCloseSource,
 } from './PopoverOverlay';

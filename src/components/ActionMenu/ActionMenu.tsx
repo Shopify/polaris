@@ -106,7 +106,7 @@ export function hasGroupsWithActions(groups: ActionMenuProps['groups'] = []) {
     : groups.some((group) => group.actions.length > 0);
 }
 
-export function convertGroupToSection({
+function convertGroupToSection({
   title,
   actions,
 }: MenuGroupDescriptor): ActionListSection {

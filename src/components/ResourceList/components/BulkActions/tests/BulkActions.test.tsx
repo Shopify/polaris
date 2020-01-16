@@ -5,12 +5,12 @@ import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Popover} from 'components';
 import {CheckableButton} from '../../CheckableButton';
-import {BulkActionButton} from '../components';
-import BulkActions, {BulkAction} from '../BulkActions';
+import {BulkActionButton, BulkActionButtonProps} from '../components';
+import BulkActions, {BulkActionsProps} from '../BulkActions';
 
 interface Props {
-  bulkActions: BulkAction[];
-  promotedActions: BulkAction[];
+  bulkActions: BulkActionButtonProps['content'][];
+  promotedActions: NonNullable<BulkActionsProps['promotedActions']>;
   paginatedSelectAllText: string;
   selected: boolean;
   accessibilityLabel: string;
@@ -18,20 +18,10 @@ interface Props {
   disabled: boolean;
 }
 
-type TestValue = BulkAction[] | string | boolean;
+type TestValue =  string | boolean;
 
 const bulkActionProps: Props = {
-  bulkActions: [
-    {
-      content: 'button 3',
-    },
-    {
-      content: 'button 4',
-    },
-    {
-      content: 'button 5',
-    },
-  ],
+  bulkActions: ['button 3', 'button 4', 'button 5'],
   promotedActions: [
     {
       content: 'button 1',
@@ -86,9 +76,9 @@ describe('<BulkActions />', () => {
         .filterWhere((el: any) => {
           const content = el.props().content;
           return (
-            content === bulkActions[0].content ||
-            content === bulkActions[1].content ||
-            content === bulkActions[2].content
+            content === bulkActions[0] ||
+            content === bulkActions[1] ||
+            content === bulkActions[2]
           );
         }).length;
       expect(count).toBe(0);
@@ -262,17 +252,7 @@ describe('<BulkActions />', () => {
 
     describe('disabled', () => {
       const bulkActionProps: Props = {
-        bulkActions: [
-          {
-            content: 'button 3',
-          },
-          {
-            content: 'button 4',
-          },
-          {
-            content: 'button 5',
-          },
-        ],
+        bulkActions: ['button 3', 'button 4', 'button 5'],
         promotedActions: [
           {
             content: 'button 1',

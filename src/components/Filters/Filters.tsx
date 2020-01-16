@@ -20,7 +20,7 @@ import {ScrollLock} from '../ScrollLock';
 import {Icon} from '../Icon';
 import {TextField} from '../TextField';
 import {Tag} from '../Tag';
-import {TextStyle, VariationValue} from '../TextStyle';
+import {TextStyle} from '../TextStyle';
 import {Badge} from '../Badge';
 import {Focus} from '../Focus';
 import {Sheet} from '../Sheet';
@@ -180,7 +180,7 @@ class Filters extends React.Component<ComposedProps, State> {
                 <TextStyle
                   variation={
                     this.props.disabled || filter.disabled
-                      ? VariationValue.Subdued
+                      ? 'subdued'
                       : undefined
                   }
                 >

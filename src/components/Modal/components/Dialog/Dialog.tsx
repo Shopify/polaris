@@ -12,7 +12,7 @@ import {TrapFocus} from '../../../TrapFocus';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
 import styles from './Dialog.scss';
 
-export interface BaseDialogProps {
+interface BaseDialogProps {
   labelledBy?: string;
   instant?: boolean;
   children?: React.ReactNode;

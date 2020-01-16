@@ -192,7 +192,7 @@ export {SettingToggle, SettingToggleProps} from './SettingToggle';
 
 export {DATA_ATTRIBUTE} from './shared';
 
-export {Sheet} from './Sheet';
+export {Sheet, SheetProps} from './Sheet';
 
 export {SkeletonBodyText, SkeletonBodyTextProps} from './SkeletonBodyText';
 

@@ -37,7 +37,7 @@ const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
-export type Items = any[];
+type Items = any[];
 
 interface State {
   selectMode: boolean;

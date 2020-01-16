@@ -18,7 +18,7 @@ export interface CollapsibleProps {
   children?: React.ReactNode;
 }
 
-export type AnimationState =
+type AnimationState =
   | 'idle'
   | 'measuring'
   | 'closingStart'

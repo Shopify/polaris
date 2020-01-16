@@ -39,7 +39,7 @@ export interface PageProps extends HeaderProps {
   singleColumn?: boolean;
 }
 
-export type ComposedProps = PageProps & WithAppProviderProps;
+type ComposedProps = PageProps & WithAppProviderProps;
 
 const APP_BRIDGE_PROPS: (keyof PageProps)[] = [
   'title',

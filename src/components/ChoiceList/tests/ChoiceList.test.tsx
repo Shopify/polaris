@@ -3,10 +3,10 @@ import {mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {RadioButton, Checkbox, InlineError, errorTextID} from 'components';
-import {ChoiceList, ChoiceDescriptor} from '../ChoiceList';
+import {ChoiceList, ChoiceListProps} from '../ChoiceList';
 
 describe('<ChoiceList />', () => {
-  let choices: ChoiceDescriptor[];
+  let choices: ChoiceListProps['choices'];
 
   beforeEach(() => {
     choices = [

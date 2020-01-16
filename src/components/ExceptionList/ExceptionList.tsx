@@ -7,12 +7,12 @@ import {Truncate} from '../Truncate';
 
 import styles from './ExceptionList.scss';
 
-export type Description =
+type Description =
   | string
   | React.ReactElement
   | (string | React.ReactElement)[];
 
-export interface Item {
+interface Item {
   /** Set the color of the icon and title for the given item. */
   status?: 'critical' | 'warning';
   /** Icon displayed by the list item */
