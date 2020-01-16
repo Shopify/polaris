@@ -8,6 +8,7 @@
 
 - Added `hideTags` prop to `Filters` ([#2573](https://github.com/Shopify/polaris-react/pull/2573))
 - Added `searchResultsOverlayVisible` prop to `TopBar` which adds a translucent background to the search dismissal overlay when results are displayed ([#2440](https://github.com/Shopify/polaris-react/pull/2440))
+- Added `autoComplete` prop to `Filters` ([#2624](https://github.com/Shopify/polaris-react/pull/2624))
 
 ### Bug fixes
 

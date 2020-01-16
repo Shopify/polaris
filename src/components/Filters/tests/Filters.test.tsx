@@ -468,6 +468,28 @@ describe('<Filters />', () => {
       expect(helpTextMarkup).toHaveLength(0);
     });
   });
+
+  describe('autoComplete', () => {
+    it('enables autoComplete in the search field when true', () => {
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} autoComplete />,
+      );
+
+      expect(resourceFilters.find(TextField).prop('autoComplete')).toBe(true);
+    });
+
+    it("doesn't enable autoComplete in the search field when false", () => {
+      const autoCompleteFalse = false;
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} autoComplete={autoCompleteFalse} />,
+      );
+
+      expect(resourceFilters.find(TextField).prop('autoComplete')).toBe(
+        autoCompleteFalse,
+      );
+    });
+  });
 });
 
 function noop() {}

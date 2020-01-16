@@ -274,6 +274,7 @@ function ResourceListFiltersExample() {
               onQueryChange={handleFiltersQueryChange}
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleFiltersClearAll}
+              autoComplete
             />
           }
           items={[

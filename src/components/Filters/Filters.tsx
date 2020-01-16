@@ -83,6 +83,8 @@ export interface FiltersProps {
   helpText?: string | React.ReactNode;
   /** Hide tags for applied filters */
   hideTags?: boolean;
+  /** Enable browser autofill in the query field */
+  autoComplete?: boolean;
 }
 
 type ComposedProps = FiltersProps & WithAppProviderProps;
@@ -129,6 +131,7 @@ class Filters extends React.Component<ComposedProps, State> {
       disabled = false,
       helpText,
       hideTags,
+      autoComplete = false,
     } = this.props;
     const {resourceName} = this.context;
     const {open, readyForFocus} = this.state;
@@ -266,6 +269,7 @@ class Filters extends React.Component<ComposedProps, State> {
           clearButton
           onClearButtonClick={onQueryClear}
           disabled={disabled}
+          autoComplete={autoComplete}
         />
       </ConnectedFilterControl>
     );
