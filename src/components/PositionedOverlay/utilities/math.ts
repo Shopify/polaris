@@ -118,3 +118,29 @@ export function rectIsOutsideOfRect(inner: Rect, outer: Rect) {
 
   return center.y < outer.top || center.y > outer.top + outer.height;
 }
+
+export function intersectionWithViewport(
+  rect: Rect,
+  viewport: Rect = windowRect(),
+) {
+  const top = Math.max(rect.top, 0);
+  const left = Math.max(rect.left, 0);
+  const bottom = Math.min(rect.top + rect.height, viewport.height);
+  const right = Math.min(rect.left + rect.width, viewport.width);
+
+  return new Rect({
+    top,
+    left,
+    height: bottom - top,
+    width: right - left,
+  });
+}
+
+export function windowRect() {
+  return new Rect({
+    top: window.scrollY,
+    left: window.scrollX,
+    height: window.innerHeight,
+    width: document.body.clientWidth,
+  });
+}

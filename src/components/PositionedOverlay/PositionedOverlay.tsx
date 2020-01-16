@@ -13,6 +13,8 @@ import {
   calculateVerticalPosition,
   calculateHorizontalPosition,
   rectIsOutsideOfRect,
+  intersectionWithViewport,
+  windowRect,
 } from './utilities/math';
 
 import styles from './PositionedOverlay.scss';
@@ -275,23 +277,6 @@ export class PositionedOverlay extends React.PureComponent<
   };
 }
 
-export function intersectionWithViewport(
-  rect: Rect,
-  viewport: Rect = windowRect(),
-) {
-  const top = Math.max(rect.top, 0);
-  const left = Math.max(rect.left, 0);
-  const bottom = Math.min(rect.top + rect.height, viewport.height);
-  const right = Math.min(rect.left + rect.width, viewport.width);
-
-  return new Rect({
-    top,
-    left,
-    height: bottom - top,
-    width: right - left,
-  });
-}
-
 function getMarginsForNode(node: HTMLElement) {
   const nodeStyles = window.getComputedStyle(node);
   return {
@@ -308,15 +293,6 @@ function getZIndexForLayerFromNode(node: HTMLElement) {
       ? 'auto'
       : parseInt(window.getComputedStyle(layerNode).zIndex || '0', 10);
   return zIndex === 'auto' || isNaN(zIndex) ? null : zIndex;
-}
-
-function windowRect() {
-  return new Rect({
-    top: window.scrollY,
-    left: window.scrollX,
-    height: window.innerHeight,
-    width: document.body.clientWidth,
-  });
 }
 
 function isDocument(node: HTMLElement | Document): node is Document {
