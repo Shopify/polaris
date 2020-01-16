@@ -1,1 +1,1 @@
-export {Item, ItemProps, ItemPosition} from './Item';
+export * from './Item';

@@ -1,5 +1,1 @@
-export {
-  ConnectedFilterControl,
-  ConnectedFilterControlProps,
-  PopoverableAction,
-} from './ConnectedFilterControl';
+export * from './ConnectedFilterControl';

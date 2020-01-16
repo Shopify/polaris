@@ -1,9 +1,5 @@
-export {Pane, PaneProps} from './Pane';
+export * from './Pane';
 
-export {
-  PopoverOverlay,
-  PopoverOverlayProps,
-  PopoverCloseSource,
-} from './PopoverOverlay';
+export * from './PopoverOverlay';
 
-export {Section, SectionProps} from './Section';
+export * from './Section';

@@ -1,9 +1,9 @@
-export {Dialog, DialogProps} from './Dialog';
+export * from './Dialog';
 
-export {Footer, FooterProps} from './Footer';
+export * from './Footer';
 
-export {Header, HeaderProps} from './Header';
+export * from './Header';
 
-export {CloseButton} from './CloseButton';
+export * from './CloseButton';
 
-export {Section, SectionProps} from './Section';
+export * from './Section';

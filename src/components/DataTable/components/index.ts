@@ -1,3 +1,3 @@
-export {Cell, CellProps} from './Cell';
+export * from './Cell';
 
-export {Navigation, NavigationProps} from './Navigation';
+export * from './Navigation';
