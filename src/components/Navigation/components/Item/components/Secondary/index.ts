@@ -1,1 +1,1 @@
-export {Secondary} from './Secondary';
+export * from './Secondary';

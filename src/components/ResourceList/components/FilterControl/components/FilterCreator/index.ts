@@ -1,1 +1,1 @@
-export {FilterCreator, FilterCreatorProps} from './FilterCreator';
+export * from './FilterCreator';

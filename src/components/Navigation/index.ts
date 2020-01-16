@@ -1,4 +1,4 @@
-export {Navigation, NavigationProps} from './Navigation';
+export * from './Navigation';
 
 export {
   ItemProps as NavigationItemProps,

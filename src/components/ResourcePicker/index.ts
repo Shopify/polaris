@@ -1,1 +1,1 @@
-export {ResourcePicker, ResourcePickerProps} from './ResourcePicker';
+export * from './ResourcePicker';

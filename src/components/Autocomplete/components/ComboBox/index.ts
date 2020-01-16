@@ -1,1 +1,1 @@
-export {ComboBox, ComboBoxProps} from './ComboBox';
+export * from './ComboBox';

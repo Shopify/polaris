@@ -1,1 +1,1 @@
-export {CloseButton, CloseButtonProps} from './CloseButton';
+export * from './CloseButton';

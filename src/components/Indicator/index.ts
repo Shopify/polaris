@@ -1,1 +1,1 @@
-export {Indicator, IndicatorProps} from './Indicator';
+export * from './Indicator';

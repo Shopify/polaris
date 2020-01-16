@@ -1,1 +1,1 @@
-export {Truncate, TruncateProps} from './Truncate';
+export * from './Truncate';

@@ -1,1 +1,1 @@
-export {Pagination, PaginationProps, PaginationDescriptor} from './Pagination';
+export * from './Pagination';

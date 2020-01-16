@@ -1,1 +1,1 @@
-export {AlphaPicker, AlphaPickerProps} from './AlphaPicker';
+export * from './AlphaPicker';

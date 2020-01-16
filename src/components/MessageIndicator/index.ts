@@ -1,1 +1,1 @@
-export {MessageIndicator, MessageIndicatorProps} from './MessageIndicator';
+export * from './MessageIndicator';

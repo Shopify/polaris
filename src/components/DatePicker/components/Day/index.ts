@@ -1,1 +1,1 @@
-export {Day, DayProps} from './Day';
+export * from './Day';

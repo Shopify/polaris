@@ -1,1 +1,1 @@
-export {BulkActions, BulkActionsProps} from './BulkActions';
+export * from './BulkActions';

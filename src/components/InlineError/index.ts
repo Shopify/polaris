@@ -1,1 +1,1 @@
-export {InlineError, InlineErrorProps, errorTextID} from './InlineError';
+export * from './InlineError';

@@ -1,1 +1,1 @@
-export {TextStyle, TextStyleProps} from './TextStyle';
+export * from './TextStyle';

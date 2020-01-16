@@ -1,6 +1,1 @@
-export {
-  Filters,
-  FiltersProps,
-  AppliedFilterInterface,
-  FilterInterface,
-} from './Filters';
+export * from './Filters';

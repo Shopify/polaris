@@ -1,1 +1,1 @@
-export {TextContainer, TextContainerProps} from './TextContainer';
+export * from './TextContainer';

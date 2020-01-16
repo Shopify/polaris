@@ -1,1 +1,1 @@
-export {Collapsible, CollapsibleProps} from './Collapsible';
+export * from './Collapsible';

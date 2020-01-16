@@ -1,1 +1,1 @@
-export {Pane, PaneProps} from './Pane';
+export * from './Pane';

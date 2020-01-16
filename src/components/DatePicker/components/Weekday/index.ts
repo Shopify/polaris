@@ -1,1 +1,1 @@
-export {Weekday, WeekdayProps} from './Weekday';
+export * from './Weekday';

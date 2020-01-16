@@ -1,1 +1,1 @@
-export {CheckableButton, CheckableButtonProps} from './CheckableButton';
+export * from './CheckableButton';

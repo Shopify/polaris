@@ -1,4 +1,4 @@
-export {Frame, FrameProps} from './Frame';
+export * from './Frame';
 
 export {
   DEFAULT_TOAST_DURATION,

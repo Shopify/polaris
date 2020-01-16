@@ -1,1 +1,1 @@
-export {SkeletonPage, SkeletonPageProps} from './SkeletonPage';
+export * from './SkeletonPage';

@@ -1,1 +1,1 @@
-export {AccountConnection, AccountConnectionProps} from './AccountConnection';
+export * from './AccountConnection';

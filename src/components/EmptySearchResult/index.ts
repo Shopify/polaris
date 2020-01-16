@@ -1,1 +1,1 @@
-export {EmptySearchResult, EmptySearchResultProps} from './EmptySearchResult';
+export * from './EmptySearchResult';

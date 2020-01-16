@@ -1,9 +1,3 @@
-export {
-  DataTable,
-  DataTableProps,
-  TableRow,
-  TableData,
-  ColumnContentType,
-} from './DataTable';
+export * from './DataTable';
 
 export {SortDirection} from './types';

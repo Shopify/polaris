@@ -1,1 +1,1 @@
-export {Form, FormProps, Enctype, Method, Target} from './Form';
+export * from './Form';

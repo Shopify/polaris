@@ -1,1 +1,1 @@
-export {Focus, FocusProps} from './Focus';
+export * from './Focus';
