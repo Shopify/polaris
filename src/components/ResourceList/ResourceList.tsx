@@ -92,7 +92,7 @@ export interface ResourceListProps {
 
 type CombinedProps = ResourceListProps & WithAppProviderProps;
 
-class ResourceList extends React.Component<CombinedProps, State> {
+class ResourceListInner extends React.Component<CombinedProps, State> {
   static Item = ResourceItem;
   // eslint-disable-next-line import/no-deprecated
   static FilterControl = FilterControl;
@@ -812,6 +812,6 @@ function isSmallScreen() {
     : window.innerWidth < SMALL_SCREEN_WIDTH;
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<ResourceListProps>()(ResourceList);
+export const ResourceList = withAppProvider<ResourceListProps>()(
+  ResourceListInner,
+);

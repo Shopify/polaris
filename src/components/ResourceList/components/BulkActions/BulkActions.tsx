@@ -69,7 +69,7 @@ const slideClasses = {
 
 type CombinedProps = BulkActionsProps & WithAppProviderProps;
 
-class BulkActions extends React.PureComponent<CombinedProps, State> {
+class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
   state: State = {
     smallScreenPopoverVisible: false,
     largeScreenPopoverVisible: false,
@@ -531,6 +531,6 @@ function instanceOfBulkActionArray(
   return actions.length === validList.length;
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<BulkActionsProps>()(BulkActions);
+export const BulkActions = withAppProvider<BulkActionsProps>()(
+  BulkActionsInner,
+);

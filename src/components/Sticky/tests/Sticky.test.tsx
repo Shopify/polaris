@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Sticky from '../Sticky';
+import {Sticky} from '../Sticky';
 
 describe('<Sticky />', () => {
   it('renders children component', () => {

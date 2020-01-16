@@ -6,7 +6,7 @@ import {mountWithApp} from 'test-utilities';
 import {Popover} from 'components';
 import {CheckableButton} from '../../CheckableButton';
 import {BulkActionButton, BulkActionButtonProps} from '../components';
-import BulkActions, {BulkActionsProps} from '../BulkActions';
+import {BulkActions, BulkActionsProps} from '../BulkActions';
 
 interface Props {
   bulkActions: BulkActionButtonProps['content'][];
@@ -18,7 +18,7 @@ interface Props {
   disabled: boolean;
 }
 
-type TestValue =  string | boolean;
+type TestValue = string | boolean;
 
 const bulkActionProps: Props = {
   bulkActions: ['button 3', 'button 4', 'button 5'],

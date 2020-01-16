@@ -9,7 +9,7 @@ import {
   ContextualSaveBar as PolarisContextualSavebar,
   Loading as PolarisLoading,
 } from 'components';
-import Frame from '../Frame';
+import {Frame} from '../Frame';
 import {
   ContextualSaveBar as FrameContextualSavebar,
   Loading as FrameLoading,

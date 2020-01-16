@@ -1,3 +1,1 @@
-import Page, {PageProps} from './Page';
-
-export {Page, PageProps};
+export {Page, PageProps} from './Page';

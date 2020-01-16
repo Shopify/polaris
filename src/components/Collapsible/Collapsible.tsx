@@ -34,7 +34,7 @@ interface State {
 
 const ParentCollapsibleExpandingContext = createContext(false);
 
-class Collapsible extends React.Component<CollapsibleProps, State> {
+class CollapsibleInner extends React.Component<CollapsibleProps, State> {
   static contextType = ParentCollapsibleExpandingContext;
 
   static getDerivedStateFromProps(
@@ -165,7 +165,7 @@ function collapsibleHeight(
   return `${height || 0}px`;
 }
 
-// Use named export once we work out why not casting this breaks web
-// eslint-disable-next-line import/no-default-export
-export default Collapsible as ComponentClass<CollapsibleProps> &
-  typeof Collapsible;
+export const Collapsible = CollapsibleInner as ComponentClass<
+  CollapsibleProps
+> &
+  typeof CollapsibleInner;

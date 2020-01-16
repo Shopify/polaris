@@ -98,7 +98,7 @@ enum Suffix {
   Shortcut = 'Shortcut',
 }
 
-class Filters extends React.Component<ComposedProps, State> {
+class FiltersInner extends React.Component<ComposedProps, State> {
   static contextType = ResourceListContext;
 
   state: State = {
@@ -532,6 +532,4 @@ function getShortcutFilters(filters: FilterInterface[]) {
   return filters.filter((filter) => filter.shortcut === true);
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<FiltersProps>()(Filters);
+export const Filters = withAppProvider<FiltersProps>()(FiltersInner);

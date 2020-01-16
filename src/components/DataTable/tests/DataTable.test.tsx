@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Cell} from '../components';
-import DataTable, {DataTableProps} from '../DataTable';
+import {DataTable, DataTableProps} from '../DataTable';
 
 describe('<DataTable />', () => {
   const headings = ['Product', 'Price', 'Order Number', 'Quantity', 'Subtotal'];

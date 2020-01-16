@@ -49,7 +49,7 @@ const APP_BRIDGE_PROPS: (keyof PageProps)[] = [
   'primaryAction',
 ];
 
-class Page extends React.PureComponent<ComposedProps, never> {
+class PageInner extends React.PureComponent<ComposedProps, never> {
   private titlebar: AppBridgeTitleBar.TitleBar | undefined;
 
   componentDidMount() {
@@ -200,6 +200,4 @@ class Page extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<PageProps>()(Page);
+export const Page = withAppProvider<PageProps>()(PageInner);

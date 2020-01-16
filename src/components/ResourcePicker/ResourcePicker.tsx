@@ -43,7 +43,7 @@ export interface ResourcePickerProps {
 type CombinedProps = ResourcePickerProps & WithAppProviderProps;
 
 /** @deprecated Use `ResourcePicker` from `@shopify/app-bridge-react` instead. */
-class ResourcePicker extends React.PureComponent<CombinedProps, never> {
+class ResourcePickerInner extends React.PureComponent<CombinedProps, never> {
   private focusReturnPoint: HTMLElement | null = null;
   private appBridgeResourcePicker:
     | AppBridgeResourcePicker.ResourcePicker
@@ -197,6 +197,6 @@ class ResourcePicker extends React.PureComponent<CombinedProps, never> {
   }
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<ResourcePickerProps>()(ResourcePicker);
+export const ResourcePicker = withAppProvider<ResourcePickerProps>()(
+  ResourcePickerInner,
+);
