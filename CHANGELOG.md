@@ -12,7 +12,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Breaking changes
 
-- Remove unstable telemetry API for icons ([#]())
+- Remove unstable telemetry API for icons ([#2561](https://github.com/Shopify/polaris-react/pull/2561))
 
 ### Enhancements
 
