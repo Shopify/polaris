@@ -30,7 +30,7 @@ $unstable-nav-max-width: rem(258px);
 
   &.Navigation-globalTheming {
     max-width: $unstable-nav-max-width;
-    border-right: 1px solid var(--p-border-disabled);
+    border-right: 1px solid var(--p-border-subdued);
   }
 }
 
