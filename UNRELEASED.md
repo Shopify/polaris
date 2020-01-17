@@ -14,4 +14,6 @@
 
 ### Code quality
 
+- Converted `/tests/build.test.js` to TypeScript ([#2617](https://github.com/Shopify/polaris-react/pull/2617))
+
 ### Deprecations
