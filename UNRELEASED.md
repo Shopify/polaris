@@ -9,6 +9,8 @@
 
 ### Bug fixes
 
+- Fixed scrolling with scrollbar not working in Popover when content changes on scroll ([#2627](https://github.com/Shopify/polaris-react/pull/2627))
+
 ### Documentation
 
 ### Development workflow
