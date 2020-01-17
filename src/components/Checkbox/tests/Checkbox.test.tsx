@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Key} from '../../../types';
 import {Checkbox} from '../Checkbox';
 
@@ -259,6 +260,31 @@ describe('<Checkbox />', () => {
       const ariaDescribedBy = checkBox.find('input').prop('aria-describedby');
 
       expect(ariaDescribedBy).toBe('SomeId');
+    });
+  });
+
+  describe('Hovering the label', () => {
+    it('adds the hover class to the Backdrop onMouseOver the label', () => {
+      const checkBox = mountWithApp(<Checkbox label="checkbox" />);
+
+      const label = checkBox.find('label');
+      label!.trigger('onMouseOver');
+
+      expect(checkBox).toContainReactComponent('span', {
+        className: 'Backdrop hover',
+      });
+    });
+
+    it('removes the hover class from the Backdrop onMouseOut the label', () => {
+      const checkBox = mountWithApp(<Checkbox label="checkbox" />);
+
+      const label = checkBox.find('label');
+      label!.trigger('onMouseOver');
+      label!.trigger('onMouseOut');
+
+      expect(checkBox).toContainReactComponent('span', {
+        className: 'Backdrop',
+      });
     });
   });
 });

@@ -21,6 +21,8 @@ const Overrides = {
   overrideLoadingZIndex: '514',
   buttonFontWeight: '500',
   nonNullContent: "''",
+  choiceSize: rem('20px'),
+  choiceMargin: rem('1px'),
   bannerBorderDefault: buildBannerBorder('--p-border'),
   bannerBorderSuccess: buildBannerBorder('--p-border-success'),
   bannerBorderHighlight: buildBannerBorder('--p-border-highlight'),
@@ -31,7 +33,12 @@ const Overrides = {
   textFieldSpinnerOffset: rem('2px'),
   textFieldFocusRingOffset: rem('-4px'),
   textFieldFocusRingBorderRadius: rem('7px'),
+  checkboxRadioButtonFocusRingOffset: rem('3px'),
   buttonGroupItemSpacing: rem('2px'),
+  duration100: '100ms',
+  duration150: '150ms',
+  easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',
+  ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
 };
 
 export const Tokens = {

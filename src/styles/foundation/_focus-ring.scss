@@ -1,34 +1,52 @@
 /// Sets the focus ring for an interactive element
 /// @param {String} $size - The size of the border radius on the focus ring.
+/// @param {String} $offset - Focus ring offset border width + 1px.
+/// @param {String} $style - Focus ring state.
 ///
 
-@mixin focus-ring($size: 'base') {
-  $offset: rem(1px);
-  $stroke: rem(2px);
-  $position: $offset + $stroke;
-  position: relative;
+@mixin focus-ring($size: 'base', $offset: rem(1px), $style: 'base') {
+  @if $style == 'base' {
+    $easing: cubic-bezier(0.4, 0.22, 0.28, 1);
+    $stroke: rem(2px);
+    $position: calc(#{$offset} + #{$stroke});
+    position: relative;
 
-  &::after {
-    content: var(--p-non-null-content, none);
-    position: absolute;
-    z-index: 1;
-    top: -$position;
-    right: -$position;
-    bottom: -$position;
-    left: -$position;
-    display: block;
-    border: $stroke solid var(--p-focused);
-    @if $size == 'wide' {
-      border-radius: calc(var(--p-border-radius-wide) + #{$position});
-    } @else {
-      border-radius: calc(var(--p-border-radius-base) + #{$position});
+    &::after {
+      content: var(--p-non-null-content, none);
+      position: absolute;
+      z-index: 1;
+      top: calc(-1 * #{$position});
+      right: calc(-1 * #{$position});
+      bottom: calc(-1 * #{$position});
+      left: calc(-1 * #{$position});
+      display: block;
+      border: $stroke solid var(--p-focused);
+      transition: opacity duration(fast) var(--p-ease),
+        transform duration(fast) var(--p-ease);
+      opacity: 0;
+      transform: scale(0.8);
+
+      @if $size == 'wide' {
+        border-radius: calc(
+          var(--p-border-radius-wide) + #{$position} - #{$offset} + #{rem(1px)}
+        );
+      } @else {
+        border-radius: calc(
+          var(--p-border-radius-base) + #{$position} - #{$offset} + #{rem(1px)}
+        );
+      }
+      pointer-events: none;
     }
-    pointer-events: none;
+  } @else if $style == 'focused' {
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }
 
 @mixin no-focus-ring {
   &::after {
-    border: none;
+    content: none;
   }
 }

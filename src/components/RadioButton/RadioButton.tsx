@@ -1,5 +1,7 @@
 import React from 'react';
 import {useUniqueId} from '../../utilities/unique-id';
+import {useFeatures} from '../../utilities/features';
+import {classNames} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
 import styles from './RadioButton.scss';
 
@@ -48,6 +50,7 @@ export function RadioButton({
 }: RadioButtonProps) {
   const id = useUniqueId('RadioButton', idProp);
   const name = nameProp || id;
+  const {unstableGlobalTheming = false} = useFeatures();
 
   function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
     onChange && onChange(currentTarget.checked, id);
@@ -64,6 +67,15 @@ export function RadioButton({
     ? describedBy.join(' ')
     : undefined;
 
+  const inputClassName = classNames(styles.Input);
+
+  const backdropClassName = classNames(styles.Backdrop);
+
+  const wrapperClassName = classNames(
+    styles.RadioButton,
+    unstableGlobalTheming && styles.globalTheming,
+  );
+
   return (
     <Choice
       label={label}
@@ -72,7 +84,7 @@ export function RadioButton({
       id={id}
       helpText={helpText}
     >
-      <span className={styles.RadioButton}>
+      <span className={wrapperClassName}>
         <input
           id={id}
           name={name}
@@ -80,13 +92,13 @@ export function RadioButton({
           type="radio"
           checked={checked}
           disabled={disabled}
-          className={styles.Input}
+          className={inputClassName}
           onChange={handleChange}
           onFocus={onFocus}
           onBlur={onBlur}
           aria-describedby={ariaDescribedBy}
         />
-        <span className={styles.Backdrop} />
+        <span className={backdropClassName} />
         <span className={styles.Icon} />
       </span>
     </Choice>
