@@ -59,10 +59,6 @@ export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
     const {activeMenuGroup} = this.state;
     const menuActions = [...actions, ...groups];
 
-    if (menuActions.length === 0) {
-      return null;
-    }
-
     const overriddenActions = sortAndOverrideActionOrder(menuActions);
 
     const actionMarkup = overriddenActions.map((action, index) => {
