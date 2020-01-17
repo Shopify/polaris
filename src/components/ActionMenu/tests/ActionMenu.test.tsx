@@ -4,11 +4,7 @@ import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
 import {MenuGroupDescriptor, ActionListItemDescriptor} from '../../../types';
 import {MenuAction, MenuGroup, RollupActions} from '../components';
-import {
-  ActionMenu,
-  ActionMenuProps,
-  convertGroupToSection,
-} from '../ActionMenu';
+import {ActionMenu, ActionMenuProps} from '../ActionMenu';
 
 describe('<ActionMenu />', () => {
   const mockProps: ActionMenuProps = {
@@ -72,9 +68,9 @@ describe('<ActionMenu />', () => {
     });
 
     it('renders as <RollupActions /> `sections` when `rollup` is `true`', () => {
-      const convertedSections = mockGroups.map((group) =>
-        convertGroupToSection(group),
-      );
+      const convertedSections = mockGroups.map((group) => {
+        return {title: group.title, items: group.actions};
+      });
       const wrapper = mountWithAppProvider(
         <ActionMenu {...mockProps} groups={mockGroups} rollup />,
       );

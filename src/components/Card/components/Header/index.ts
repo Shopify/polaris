@@ -1,1 +1,1 @@
-export {Header, HeaderProps} from './Header';
+export * from './Header';

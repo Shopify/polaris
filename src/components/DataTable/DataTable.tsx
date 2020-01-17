@@ -62,7 +62,10 @@ export interface DataTableProps {
   onSort?(headingIndex: number, direction: SortDirection): void;
 }
 
-class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
+class DataTableInner extends React.PureComponent<
+  CombinedProps,
+  DataTableState
+> {
   state: DataTableState = {
     condensed: false,
     columnVisibilityData: [],
@@ -411,6 +414,4 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   };
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<DataTableProps>()(DataTable);
+export const DataTable = withAppProvider<DataTableProps>()(DataTableInner);

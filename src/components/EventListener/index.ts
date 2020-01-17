@@ -1,1 +1,1 @@
-export {EventListener, EventListenerProps} from './EventListener';
+export * from './EventListener';

@@ -14,14 +14,14 @@ import {KeypressListener} from '../KeypressListener';
 
 import styles from './Sheet.scss';
 
-export const BOTTOM_CLASS_NAMES = {
+const BOTTOM_CLASS_NAMES = {
   enter: classNames(styles.Bottom, styles.enterBottom),
   enterActive: classNames(styles.Bottom, styles.enterBottomActive),
   exit: classNames(styles.Bottom, styles.exitBottom),
   exitActive: classNames(styles.Bottom, styles.exitBottomActive),
 };
 
-export const RIGHT_CLASS_NAMES = {
+const RIGHT_CLASS_NAMES = {
   enter: classNames(styles.Right, styles.enterRight),
   enterActive: classNames(styles.Right, styles.enterRightActive),
   exit: classNames(styles.Right, styles.exitRight),

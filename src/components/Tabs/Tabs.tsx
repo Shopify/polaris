@@ -41,7 +41,7 @@ interface State {
   tabToFocus: number;
 }
 
-class Tabs extends React.PureComponent<CombinedProps, State> {
+class TabsInner extends React.PureComponent<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: TabsProps, prevState: State) {
     const {disclosureWidth, tabWidths, containerWidth} = prevState;
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
@@ -354,6 +354,4 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   }
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<TabsProps>()(Tabs);
+export const Tabs = withAppProvider<TabsProps>()(TabsInner);

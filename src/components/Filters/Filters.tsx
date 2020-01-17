@@ -20,7 +20,7 @@ import {ScrollLock} from '../ScrollLock';
 import {Icon} from '../Icon';
 import {TextField} from '../TextField';
 import {Tag} from '../Tag';
-import {TextStyle, VariationValue} from '../TextStyle';
+import {TextStyle} from '../TextStyle';
 import {Badge} from '../Badge';
 import {Focus} from '../Focus';
 import {Sheet} from '../Sheet';
@@ -98,7 +98,7 @@ enum Suffix {
   Shortcut = 'Shortcut',
 }
 
-class Filters extends React.Component<ComposedProps, State> {
+class FiltersInner extends React.Component<ComposedProps, State> {
   static contextType = ResourceListContext;
 
   state: State = {
@@ -180,7 +180,7 @@ class Filters extends React.Component<ComposedProps, State> {
                 <TextStyle
                   variation={
                     this.props.disabled || filter.disabled
-                      ? VariationValue.Subdued
+                      ? 'subdued'
                       : undefined
                   }
                 >
@@ -532,6 +532,4 @@ function getShortcutFilters(filters: FilterInterface[]) {
   return filters.filter((filter) => filter.shortcut === true);
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<FiltersProps>()(Filters);
+export const Filters = withAppProvider<FiltersProps>()(FiltersInner);

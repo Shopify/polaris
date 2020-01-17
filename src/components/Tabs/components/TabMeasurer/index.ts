@@ -1,1 +1,1 @@
-export {TabMeasurer, TabMeasurerProps, TabMeasurements} from './TabMeasurer';
+export * from './TabMeasurer';

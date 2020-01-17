@@ -35,9 +35,7 @@ interface State {
   proxyButtonsWidth: ComputedProperty;
 }
 
-export const FILTER_FIELD_MIN_WIDTH = 150;
-
-export const FILTER_FIELD_CUSTOM_PROPERTY = '--textfield-min-width';
+const FILTER_FIELD_MIN_WIDTH = 150;
 
 export class ConnectedFilterControl extends React.Component<
   ConnectedFilterControlProps,

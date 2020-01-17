@@ -1,1 +1,1 @@
-export {UserMenu, UserMenuProps} from './UserMenu';
+export * from './UserMenu';

@@ -24,7 +24,7 @@ export type StickyProps = {
 
 type CombinedProps = StickyProps & WithAppProviderProps;
 
-class Sticky extends React.Component<CombinedProps, State> {
+class StickyInner extends React.Component<CombinedProps, State> {
   state: State = {
     isSticky: false,
     style: {},
@@ -123,6 +123,4 @@ function isFunction(arg: any): arg is Function {
   return typeof arg === 'function';
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<StickyProps>()(Sticky);
+export const Sticky = withAppProvider<StickyProps>()(StickyInner);

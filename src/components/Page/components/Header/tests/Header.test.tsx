@@ -10,7 +10,6 @@ import {
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {LinkAction} from '../../../../../types';
-import {HeaderPrimaryAction} from '../../../types';
 import {Header, HeaderProps} from '../Header';
 
 describe('<Header />', () => {
@@ -70,7 +69,7 @@ describe('<Header />', () => {
 
   describe('primaryAction', () => {
     it('renders a `primary` button based on the given action', () => {
-      const primaryAction: HeaderPrimaryAction = {
+      const primaryAction: HeaderProps['primaryAction'] = {
         content: 'Click me!',
       };
 
@@ -83,7 +82,7 @@ describe('<Header />', () => {
     });
 
     it('renders a regular button based on the given action when primary is set to false', () => {
-      const primaryAction: HeaderPrimaryAction = {
+      const primaryAction: HeaderProps['primaryAction'] = {
         content: 'Click me!',
         primary: false,
       };

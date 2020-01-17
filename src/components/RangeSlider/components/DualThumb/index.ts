@@ -1,1 +1,1 @@
-export {DualThumb, DualThumbProps} from './DualThumb';
+export * from './DualThumb';

@@ -1,5 +1,1 @@
-export {
-  PopoverOverlay,
-  PopoverOverlayProps,
-  CloseSource,
-} from './PopoverOverlay';
+export * from './PopoverOverlay';

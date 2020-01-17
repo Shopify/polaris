@@ -23,7 +23,7 @@ interface State {
   popoverWasActive: boolean;
 }
 
-export interface ComboBoxProps {
+interface ComboBoxProps {
   /** A unique identifier for the ComboBox */
   id?: string;
   /** Collection of options to be listed */

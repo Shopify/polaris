@@ -33,7 +33,7 @@ import styles from './Modal.scss';
 const IFRAME_LOADING_HEIGHT = 200;
 const DEFAULT_IFRAME_CONTENT_HEIGHT = 400;
 
-export type Size = 'Small' | 'Medium' | 'Large' | 'Full';
+type Size = 'Small' | 'Medium' | 'Large' | 'Full';
 
 export interface ModalProps extends FooterProps {
   /** Whether the modal is open or not */
@@ -95,7 +95,7 @@ const APP_BRIDGE_PROPS: (keyof ModalProps)[] = [
   'secondaryActions',
 ];
 
-class Modal extends React.Component<CombinedProps, State> {
+class ModalInner extends React.Component<CombinedProps, State> {
   static Section = Section;
   focusReturnPointNode: HTMLElement | null = null;
 
@@ -413,6 +413,4 @@ function isIframeModal(
   );
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<ModalProps>()(Modal);
+export const Modal = withAppProvider<ModalProps>()(ModalInner);

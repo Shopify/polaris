@@ -1,1 +1,1 @@
-export {PageActions, PageActionsProps} from './PageActions';
+export * from './PageActions';

@@ -9,7 +9,7 @@ import {Image} from '../Image';
 import styles from './Avatar.scss';
 import * as avatars from './images';
 
-export type Size = 'small' | 'medium' | 'large';
+type Size = 'small' | 'medium' | 'large';
 
 enum Status {
   Pending = 'PENDING',
@@ -17,7 +17,7 @@ enum Status {
   Errored = 'ERRORED',
 }
 
-export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'];
+const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'];
 const AVATAR_IMAGES = Object.keys(avatars).map(
   // import/namespace does not allow computed values by default
   // eslint-disable-next-line import/namespace

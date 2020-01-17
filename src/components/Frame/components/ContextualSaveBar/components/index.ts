@@ -1,4 +1,1 @@
-export {
-  DiscardConfirmationModal,
-  DiscardConfirmationModalProps,
-} from './DiscardConfirmationModal';
+export * from './DiscardConfirmationModal';

@@ -1,1 +1,1 @@
-export {UnstyledLink, UnstyledLinkProps} from './UnstyledLink';
+export * from './UnstyledLink';

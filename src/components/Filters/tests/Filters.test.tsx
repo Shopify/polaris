@@ -9,7 +9,7 @@ import {
   ReactWrapper,
 } from 'test-utilities/legacy';
 
-import Filters, {FiltersProps} from '../Filters';
+import {Filters, FiltersProps} from '../Filters';
 import {ConnectedFilterControl} from '../components';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;

@@ -130,7 +130,7 @@ describe('build', () => {
         'esnext/components/Avatar/index.js',
         'utf8',
       );
-      expect(contents).toMatch("export { Avatar } from './Avatar'");
+      expect(contents).toMatch("export * from './Avatar'");
     });
 
     it('preserves ES scss imports', () => {

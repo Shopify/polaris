@@ -21,13 +21,7 @@ import {
 } from '../../utilities/resource-list';
 import styles from './ResourceItem.scss';
 
-export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
-
-export type MediaSize = 'small' | 'medium' | 'large';
-
-export type MediaType = 'avatar' | 'thumbnail';
-
-export interface BaseProps {
+interface BaseProps {
   /** Visually hidden text for screen readers used for item link*/
   accessibilityLabel?: string;
   /** Individual item name used by various text labels */
@@ -56,12 +50,12 @@ export interface BaseProps {
   children?: React.ReactNode;
 }
 
-export interface PropsWithUrl extends BaseProps {
+interface PropsWithUrl extends BaseProps {
   url: string;
   onClick?(id?: string): void;
 }
 
-export interface PropsWithClick extends BaseProps {
+interface PropsWithClick extends BaseProps {
   url?: string;
   onClick(id?: string): void;
 }
@@ -80,7 +74,7 @@ interface State {
   selected: boolean;
 }
 
-export type CombinedProps = PropsFromWrapper & (PropsWithUrl | PropsWithClick);
+type CombinedProps = PropsFromWrapper & (PropsWithUrl | PropsWithClick);
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 const getUniqueOverlayID = createUniqueIDFactory('ResourceListItemOverlay');

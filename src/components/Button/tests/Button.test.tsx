@@ -4,7 +4,7 @@ import {PlusMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {UnstyledLink, Icon, Spinner} from 'components';
-import {Button, IconWrapper} from '../Button';
+import {Button} from '../Button';
 
 describe('<Button />', () => {
   describe('url', () => {
@@ -168,7 +168,7 @@ describe('<Button />', () => {
 
     it('does not render the markup for the icon if none is provided', () => {
       const button = mountWithAppProvider(<Button />);
-      expect(button.find(IconWrapper).exists()).toBe(false);
+      expect(button.find('svg').exists()).toBe(false);
     });
   });
 

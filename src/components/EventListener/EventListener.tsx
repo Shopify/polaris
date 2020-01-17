@@ -4,7 +4,7 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 
-export interface BaseEventProps {
+interface BaseEventProps {
   event: string;
   capture?: boolean;
   handler(event: Event): void;

@@ -1,1 +1,1 @@
-export {BulkActionButton, BulkActionButtonProps} from './BulkActionButton';
+export * from './BulkActionButton';

@@ -1,1 +1,1 @@
-export {ContextualSaveBar, ContextualSaveBarProps} from './ContextualSaveBar';
+export * from './ContextualSaveBar';

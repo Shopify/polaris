@@ -1,1 +1,1 @@
-export {Label, LabelProps, labelID} from './Label';
+export * from './Label';

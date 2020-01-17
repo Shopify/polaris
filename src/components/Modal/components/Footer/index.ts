@@ -1,1 +1,1 @@
-export {Footer, FooterProps} from './Footer';
+export * from './Footer';

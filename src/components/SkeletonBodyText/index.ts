@@ -1,1 +1,1 @@
-export {SkeletonBodyText, SkeletonBodyTextProps} from './SkeletonBodyText';
+export * from './SkeletonBodyText';

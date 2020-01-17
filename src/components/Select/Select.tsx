@@ -35,7 +35,7 @@ export interface SelectGroup {
   options: SelectOption[];
 }
 
-export interface BaseProps {
+export interface SelectProps {
   /** List of options or option groups to choose from */
   options?: (SelectOption | SelectGroup)[];
   /** Label for the select */
@@ -67,8 +67,6 @@ export interface BaseProps {
   /** Callback when focus is removed */
   onBlur?(): void;
 }
-
-export interface SelectProps extends BaseProps {}
 
 const PLACEHOLDER_VALUE = '';
 

@@ -3,7 +3,7 @@ import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import styles from './ProgressBar.scss';
 
-export type Size = 'small' | 'medium' | 'large';
+type Size = 'small' | 'medium' | 'large';
 
 export interface ProgressBarProps {
   /**

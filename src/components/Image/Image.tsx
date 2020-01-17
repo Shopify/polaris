@@ -1,11 +1,11 @@
 import React from 'react';
 
-export interface SourceSet {
+interface SourceSet {
   source: string;
   descriptor?: string;
 }
 
-export type CrossOrigin = 'anonymous' | 'use-credentials' | '' | undefined;
+type CrossOrigin = 'anonymous' | 'use-credentials' | '' | undefined;
 
 export interface ImageProps extends React.HTMLProps<HTMLImageElement> {
   alt: string;

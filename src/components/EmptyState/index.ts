@@ -1,1 +1,1 @@
-export {EmptyState, EmptyStateProps} from './EmptyState';
+export * from './EmptyState';

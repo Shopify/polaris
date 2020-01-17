@@ -1,1 +1,1 @@
-export {AppProvider, AppProviderProps} from './AppProvider';
+export * from './AppProvider';

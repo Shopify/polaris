@@ -1,3 +1,3 @@
-export {FilterControl, FilterControlProps} from './FilterControl';
+export * from './FilterControl';
 
 export * from './types';

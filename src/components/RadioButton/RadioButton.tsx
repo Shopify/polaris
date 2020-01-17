@@ -5,7 +5,7 @@ import {classNames} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
 import styles from './RadioButton.scss';
 
-export interface BaseProps {
+export interface RadioButtonProps {
   /** Indicates the ID of the element that describes the the radio button*/
   ariaDescribedBy?: string;
   /** Label for the radio button */
@@ -31,8 +31,6 @@ export interface BaseProps {
   /** Callback when focus is removed */
   onBlur?(): void;
 }
-
-export interface RadioButtonProps extends BaseProps {}
 
 export function RadioButton({
   ariaDescribedBy: ariaDescribedByProp,

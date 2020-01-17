@@ -1,1 +1,1 @@
-export {SearchDismissOverlay} from './SearchDismissOverlay';
+export * from './SearchDismissOverlay';

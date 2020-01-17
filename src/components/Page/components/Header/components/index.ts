@@ -1,1 +1,1 @@
-export {Title, TitleProps} from './Title';
+export * from './Title';

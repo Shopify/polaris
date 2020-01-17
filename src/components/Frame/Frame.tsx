@@ -56,11 +56,11 @@ interface State {
   showContextualSaveBar: boolean;
 }
 
-export const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
+const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
 
-export const APP_FRAME_MAIN = 'AppFrameMain';
+const APP_FRAME_MAIN = 'AppFrameMain';
 
-export const APP_FRAME_MAIN_ANCHOR_TARGET = 'AppFrameMainContent';
+const APP_FRAME_MAIN_ANCHOR_TARGET = 'AppFrameMainContent';
 
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
@@ -68,7 +68,7 @@ const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 
 type CombinedProps = FrameProps & WithAppProviderProps;
 
-class Frame extends React.PureComponent<CombinedProps, State> {
+class FrameInner extends React.PureComponent<CombinedProps, State> {
   state: State = {
     skipFocused: false,
     globalRibbonHeight: 0,
@@ -417,6 +417,4 @@ const navTransitionClasses = {
   exitActive: classNames(styles['Navigation-exitActive']),
 };
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<FrameProps>()(Frame);
+export const Frame = withAppProvider<FrameProps>()(FrameInner);

@@ -3,7 +3,7 @@ import {classNames, variationName} from '../../utilities/css';
 import {HeadingTagName} from '../../types';
 import styles from './DisplayText.scss';
 
-export type Size = 'small' | 'medium' | 'large' | 'extraLarge';
+type Size = 'small' | 'medium' | 'large' | 'extraLarge';
 
 export interface DisplayTextProps {
   /**

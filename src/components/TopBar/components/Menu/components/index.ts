@@ -1,1 +1,1 @@
-export {Message, MessageProps} from './Message';
+export * from './Message';
