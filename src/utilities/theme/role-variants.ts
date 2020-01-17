@@ -353,7 +353,7 @@ export const roleVariants: RoleVariants = {
       name: 'actionPrimaryPressed',
       description:
         'Used as the background color for pressed primary actions, and as the fill color for icons and the text color in navigation and tabs to communicate interaction states.',
-      light: {lightness: 37.3},
+      light: {lightness: 35.3},
       dark: {lightness: 60},
     },
     {
@@ -489,28 +489,28 @@ export const roleVariants: RoleVariants = {
       dark: {lightness: 100},
     },
     {
-      name: 'criticalLink',
+      name: 'linkCritical',
       description:
         'For use as a text color in destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.',
       light: {lightness: 48.5},
       dark: {lightness: 65},
     },
     {
-      name: 'criticalLinkDisabled',
+      name: 'linkCriticalDisabled',
       description:
         'For use as a text color in disabled destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.',
       light: {lightness: 72},
       dark: {lightness: 78},
     },
     {
-      name: 'criticalLinkHovered',
+      name: 'linkCriticalHovered',
       description:
         'For use as a text color in hovered destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.',
       light: {lightness: 45},
       dark: {lightness: 70},
     },
     {
-      name: 'criticalLinkPressed',
+      name: 'linkCriticalPressed',
       description:
         'For use as a text color in pressed destructive plain buttons, as well as a text color on destructive action list items. Not for use on critical banners and badges.',
       light: {lightness: 21},

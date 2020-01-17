@@ -229,7 +229,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     // Destructive (.destructive)
     &.destructive {
       @include recolor-icon(var(--p-icon-critical));
-      color: var(--p-critical-link);
+      color: var(--p-link-critical);
     }
 
     // Hovered (:hover)
