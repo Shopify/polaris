@@ -4,7 +4,7 @@ import {isServer} from '../../../../utilities/target';
 import {EventListener} from '../../../EventListener';
 import styles from '../../ColorPicker.scss';
 
-export interface Position {
+interface Position {
   x: number;
   y: number;
 }

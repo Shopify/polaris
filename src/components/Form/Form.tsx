@@ -3,14 +3,14 @@ import React, {useCallback} from 'react';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {useI18n} from '../../utilities/i18n';
 
-export type Enctype =
+type Enctype =
   | 'application/x-www-form-urlencoded'
   | 'multipart/form-data'
   | 'text/plain';
 
-export type Method = 'post' | 'get' | 'action';
+type Method = 'post' | 'get' | 'action';
 
-export type Target = '_blank' | '_self' | '_parent' | '_top' | string;
+type Target = '_blank' | '_self' | '_parent' | '_top' | string;
 
 export interface FormProps {
   /** Space separated list of character encodings */

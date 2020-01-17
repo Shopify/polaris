@@ -12,7 +12,7 @@ import {
 import {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 
-import {List, Panel, Tab, TabMeasurer, TabMeasurements} from './components';
+import {List, Panel, Tab, TabMeasurer, TabMeasurerProps} from './components';
 
 import styles from './Tabs.scss';
 
@@ -298,7 +298,9 @@ class TabsInner extends React.PureComponent<CombinedProps, State> {
     });
   };
 
-  private handleMeasurement = (measurements: TabMeasurements) => {
+  private handleMeasurement: TabMeasurerProps['handleMeasurement'] = (
+    measurements,
+  ) => {
     const {tabs, selected} = this.props;
     const {tabToFocus} = this.state;
     const {

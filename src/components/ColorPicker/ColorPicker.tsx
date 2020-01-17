@@ -3,7 +3,7 @@ import {clamp} from '@shopify/javascript-utilities/math';
 
 import {hsbToRgb} from '../../utilities/color-transformers';
 import {HSBColor, HSBAColor} from '../../utilities/color-types';
-import {AlphaPicker, HuePicker, Slidable, Position} from './components';
+import {AlphaPicker, HuePicker, Slidable, SlidableProps} from './components';
 import styles from './ColorPicker.scss';
 
 interface State {
@@ -110,7 +110,7 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
     onChange({hue, brightness, saturation, alpha});
   };
 
-  private handleDraggerMove = ({x, y}: Position) => {
+  private handleDraggerMove: SlidableProps['onChange'] = ({x, y}) => {
     const {pickerSize} = this.state;
     const {
       color: {hue, alpha = 1},
