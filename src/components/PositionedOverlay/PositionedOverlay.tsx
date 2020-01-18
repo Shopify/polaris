@@ -19,11 +19,9 @@ import {
 
 import styles from './PositionedOverlay.scss';
 
-export {PreferredPosition, PreferredAlignment};
-
 type Positioning = 'above' | 'below';
 
-export interface OverlayDetails {
+interface OverlayDetails {
   left?: number;
   right?: number;
   desiredHeight: number;

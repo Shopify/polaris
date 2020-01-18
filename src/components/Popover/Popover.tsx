@@ -7,12 +7,16 @@ import React, {
 } from 'react';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {focusNextFocusableNode} from '../../utilities/focus';
-
-import {PreferredPosition, PreferredAlignment} from '../PositionedOverlay';
 import {Portal} from '../Portal';
 import {portal} from '../shared';
 import {useUniqueId} from '../../utilities/unique-id';
-import {PopoverCloseSource, Pane, PopoverOverlay, Section} from './components';
+import {
+  PopoverCloseSource,
+  Pane,
+  PopoverOverlay,
+  PopoverOverlayProps,
+  Section,
+} from './components';
 import {setActivatorAttributes} from './set-activator-attributes';
 
 export {PopoverCloseSource};
@@ -21,9 +25,9 @@ export interface PopoverProps {
   /** The content to display inside the popover */
   children?: React.ReactNode;
   /** The preferred direction to open the popover */
-  preferredPosition?: PreferredPosition;
+  preferredPosition?: PopoverOverlayProps['preferredPosition'];
   /** The preferred alignment of the popover relative to its activator */
-  preferredAlignment?: PreferredAlignment;
+  preferredAlignment?: PopoverOverlayProps['preferredAlignment'];
   /** Show or hide the Popover */
   active: boolean;
   /** The element to activate the Popover */
