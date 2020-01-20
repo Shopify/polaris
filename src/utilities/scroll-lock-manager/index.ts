@@ -1,8 +1,5 @@
-export {ScrollLockManagerContext} from './context';
+export * from './context';
 
-export {useScrollLockManager} from './hooks';
+export * from './hooks';
 
-export {
-  ScrollLockManager,
-  SCROLL_LOCKING_ATTRIBUTE,
-} from './scroll-lock-manager';
+export * from './scroll-lock-manager';

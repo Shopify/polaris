@@ -1,5 +1,5 @@
-export {LinkLikeComponentProps, LinkLikeComponent} from './types';
+export * from './types';
 
-export {useLink} from './hooks';
+export * from './hooks';
 
-export {LinkContext} from './context';
+export * from './context';

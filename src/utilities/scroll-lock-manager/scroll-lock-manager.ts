@@ -2,9 +2,7 @@ import {isServer} from '../target';
 
 export const SCROLL_LOCKING_ATTRIBUTE = 'data-lock-scrolling';
 
-export const SCROLL_LOCKING_WRAPPER_ATTRIBUTE = 'data-lock-scrolling-wrapper';
-
-export const SCROLL_LOCKING_CUSTOM_PROPERTY = '--scroll-lock-body-padding';
+const SCROLL_LOCKING_WRAPPER_ATTRIBUTE = 'data-lock-scrolling-wrapper';
 
 let scrollPosition = 0;
 
