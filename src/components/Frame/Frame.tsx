@@ -2,6 +2,7 @@ import React, {createRef} from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from '@material-ui/react-transition-group';
+import {FeaturesContext} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {EventListener} from '../EventListener';
@@ -69,6 +70,9 @@ const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 type CombinedProps = FrameProps & WithAppProviderProps;
 
 class FrameInner extends React.PureComponent<CombinedProps, State> {
+  static contextType = FeaturesContext;
+  context!: React.ContextType<typeof FeaturesContext>;
+
   state: State = {
     skipFocused: false,
     globalRibbonHeight: 0,
@@ -116,10 +120,12 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
         mediaQuery: {isNavigationCollapsed},
       },
     } = this.props;
+    const {unstableGlobalTheming} = this.context || {};
 
     const navClassName = classNames(
       styles.Navigation,
       showMobileNavigation && styles['Navigation-visible'],
+      unstableGlobalTheming && styles['Navigation-globalTheming'],
     );
 
     const mobileNavHidden = isNavigationCollapsed && !showMobileNavigation;
@@ -182,9 +188,14 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
       </CSSAnimation>
     );
 
+    const topBarClassName = classNames(
+      styles.TopBar,
+      unstableGlobalTheming && styles['TopBar-globalTheming'],
+    );
+
     const topBarMarkup = topBar ? (
       <div
-        className={styles.TopBar}
+        className={topBarClassName}
         {...layer.props}
         {...dataPolarisTopBar.props}
         id={APP_FRAME_TOP_BAR}
@@ -193,9 +204,14 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
+    const globalRibbonClassName = classNames(
+      styles.GlobalRibbonContainer,
+      unstableGlobalTheming && styles['GlobalRibbonContainer-globalTheming'],
+    );
+
     const globalRibbonMarkup = globalRibbon ? (
       <div
-        className={styles.GlobalRibbonContainer}
+        className={globalRibbonClassName}
         ref={this.setGlobalRibbonContainer}
       >
         {globalRibbon}
@@ -235,6 +251,11 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
       styles.Frame,
       navigation && styles.hasNav,
       topBar && styles.hasTopBar,
+    );
+
+    const mainClassName = classNames(
+      styles.Main,
+      unstableGlobalTheming && styles['Main-globalTheming'],
     );
 
     const navigationOverlayMarkup =
@@ -278,7 +299,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
           {loadingMarkup}
           {navigationOverlayMarkup}
           <main
-            className={styles.Main}
+            className={mainClassName}
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
           >
