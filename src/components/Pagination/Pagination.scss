@@ -42,6 +42,7 @@ $stacking-order: (
     appearance: none;
     box-shadow: none;
 
+    // Start - Delete below me when removing globalTheming
     &:hover,
     &:active {
       @include recolor-icon(color('ink'));
@@ -55,7 +56,7 @@ $stacking-order: (
       box-shadow: none;
 
       // stylelint-disable-next-line selector-max-specificity
-      &::after {
+      &::after:not(.globalTheming) {
         background: plain-button-background();
       }
     }
@@ -67,7 +68,8 @@ $stacking-order: (
       box-shadow: none;
     }
 
-    &::after {
+    // stylelint-disable-next-line selector-max-specificity
+    &::after:not(.globalTheming) {
       content: '';
       position: absolute;
       top: 0.5 * $difference-between-touch-area-and-backdrop;
@@ -80,6 +82,38 @@ $stacking-order: (
       transition-property: background;
       transition-duration: duration();
       transition-timing-function: easing();
+    }
+    // End - Delete after me when removing globalTheming
+
+    // stylelint-disable selector-max-specificity, selector-max-class
+    &.globalTheming {
+      @include recolor-icon(var(--p-icon));
+      @include focus-ring;
+
+      &:hover,
+      &:active,
+      &:disabled {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+      }
+
+      &:hover {
+        background: var(--p-action-secondary-hovered);
+      }
+
+      &:active {
+        background: var(--p-action-secondary-pressed);
+      }
+
+      &:focus:not(:active) {
+        // background: transparent;
+        @include focus-ring($style: 'focused');
+      }
+
+      &:disabled {
+        @include recolor-icon(var(--p-icon-disabled));
+      }
     }
   }
 
@@ -94,23 +128,22 @@ $stacking-order: (
 }
 
 .Button {
-  @include recolor-icon(color('ink', 'lighter'));
+  @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
   position: relative;
   z-index: z-index(item, $stacking-order);
   display: inline-block;
   min-width: $min-height;
   margin: 0;
   padding: $vertical-padding spacing(tight);
-  background: linear-gradient(
-    to bottom,
-    color('white'),
-    color('sky', 'lighter')
+  background: var(
+    --p-action-secondary,
+    linear-gradient(to bottom, color('white'), color('sky', 'lighter'))
   );
   border: border(dark);
   border-radius: border-radius();
 
   line-height: 1;
-  color: color('ink');
+  color: var(--p-text, color('ink'));
   text-align: center;
   cursor: pointer;
   user-select: none;
@@ -119,6 +152,7 @@ $stacking-order: (
   transition-duration: duration();
   transition-timing-function: easing();
 
+  // Delete - Below me during global theming rollout
   &:hover {
     background: linear-gradient(
       to bottom,
@@ -154,6 +188,43 @@ $stacking-order: (
     color: color('ink', 'lightest');
     cursor: default;
     box-shadow: none;
+  }
+  // Delete above me during global theming rollout
+
+  &.globalTheming {
+    @include focus-ring;
+    box-shadow: none;
+    border-color: transparent;
+    border-radius: var(--p-border-radius-base);
+
+    &.rightButton {
+      margin-left: spacing('tight');
+    }
+
+    &:hover {
+      background: var(--p-action-secondary-hovered);
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:focus:not(:active) {
+      z-index: z-index(focused, $stacking-order);
+      @include focus-ring($style: 'focused');
+    }
+
+    &:active {
+      background: var(--p-action-secondary-pressed);
+    }
+
+    &:disabled {
+      @include recolor-icon(var(--p-icon-disabled));
+      background: var(--p-action-secondary-disabled);
+      color: var(--p-text-disabled);
+      cursor: default;
+      box-shadow: none;
+    }
   }
 }
 
