@@ -107,7 +107,6 @@ $stacking-order: (
       }
 
       &:focus:not(:active) {
-        // background: transparent;
         @include focus-ring($style: 'focused');
       }
 
