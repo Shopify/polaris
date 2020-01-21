@@ -5,9 +5,11 @@ import {
   findByTestID,
   ReactWrapper,
 } from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Tooltip, TextField} from 'components';
 import {Key} from '../../../types';
 import {Pagination} from '../Pagination';
+import {UnstyledLink} from '../../UnstyledLink';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -214,6 +216,40 @@ describe('<Pagination />', () => {
       listenerMap.keyup({keyCode: Key.KeyJ});
 
       expect(anchorClickSpy).toHaveBeenCalledTimes(0);
+    });
+  });
+
+  describe('globalTheming', () => {
+    it('adds a global theming & rightButton class when global theming is enabled', () => {
+      const pagination = mountWithApp(
+        <Pagination nextURL="/" previousURL="/" />,
+        {
+          features: {unstableGlobalTheming: true},
+        },
+      );
+
+      expect(pagination).toContainReactComponent(UnstyledLink, {
+        className: 'Button globalTheming rightButton NextButton',
+      });
+      expect(pagination).toContainReactComponent(UnstyledLink, {
+        className: 'Button globalTheming PreviousButton',
+      });
+    });
+
+    it('does not add a global theming class when global theming is disabled', () => {
+      const pagination = mountWithApp(
+        <Pagination nextURL="/" previousURL="/" />,
+        {
+          features: {unstableGlobalTheming: false},
+        },
+      );
+
+      expect(pagination).not.toContainReactComponent(UnstyledLink, {
+        className: 'Button globalTheming rightButton NextButton',
+      });
+      expect(pagination).not.toContainReactComponent(UnstyledLink, {
+        className: 'Button globalTheming PreviousButton',
+      });
     });
   });
 });
