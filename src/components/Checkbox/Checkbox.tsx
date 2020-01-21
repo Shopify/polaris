@@ -64,8 +64,8 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     const id = useUniqueId('Checkbox', idProp);
     const {
       value: mouseOver,
-      setTrue: forceTrueMouseOver,
-      setFalse: forceFalseMouseOver,
+      setTrue: handleMouseOver,
+      setFalse: handleMouseOut,
     } = useToggle(false);
 
     useImperativeHandle(ref, () => ({
@@ -140,8 +140,8 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
         error={error}
         disabled={disabled}
         onClick={handleInput}
-        onMouseOver={forceTrueMouseOver}
-        onMouseOut={forceFalseMouseOver}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
       >
         <span className={wrapperClassName}>
           <input

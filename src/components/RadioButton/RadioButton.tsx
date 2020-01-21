@@ -1,6 +1,7 @@
 import React from 'react';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useFeatures} from '../../utilities/features';
+import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
 import styles from './RadioButton.scss';
@@ -49,6 +50,11 @@ export function RadioButton({
   const id = useUniqueId('RadioButton', idProp);
   const name = nameProp || id;
   const {unstableGlobalTheming = false} = useFeatures();
+  const {
+    value: mouseOver,
+    setTrue: handleMouseOver,
+    setFalse: handleMouseOut,
+  } = useToggle(false);
 
   function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
     onChange && onChange(currentTarget.checked, id);
@@ -67,11 +73,16 @@ export function RadioButton({
 
   const inputClassName = classNames(styles.Input);
 
-  const backdropClassName = classNames(styles.Backdrop);
-
   const wrapperClassName = classNames(
     styles.RadioButton,
     unstableGlobalTheming && styles.globalTheming,
+  );
+
+  const iconMarkup = !unstableGlobalTheming && <span className={styles.Icon} />;
+
+  const backdropClassName = classNames(
+    styles.Backdrop,
+    mouseOver && styles.hover,
   );
 
   return (
@@ -81,6 +92,8 @@ export function RadioButton({
       disabled={disabled}
       id={id}
       helpText={helpText}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
     >
       <span className={wrapperClassName}>
         <input
@@ -97,7 +110,7 @@ export function RadioButton({
           aria-describedby={ariaDescribedBy}
         />
         <span className={backdropClassName} />
-        <span className={styles.Icon} />
+        {iconMarkup}
       </span>
     </Choice>
   );
