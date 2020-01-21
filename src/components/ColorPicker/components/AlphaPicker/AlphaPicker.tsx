@@ -1,5 +1,5 @@
 import React from 'react';
-import {Slidable, Position} from '../Slidable';
+import {Slidable, SlidableProps} from '../Slidable';
 import {HSBColor} from '../../../../utilities/color-types';
 import {hsbToRgb} from '../../../../utilities/color-transformers';
 import styles from '../../ColorPicker.scss';
@@ -62,7 +62,7 @@ export class AlphaPicker extends React.PureComponent<AlphaPickerProps, State> {
     });
   };
 
-  private handleChange = ({y}: Position) => {
+  private handleChange: SlidableProps['onChange'] = ({y}) => {
     const {onChange} = this.props;
     const {sliderHeight} = this.state;
     const alpha = alphaForDraggerY(y, sliderHeight);

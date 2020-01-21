@@ -7,7 +7,7 @@ import {TabDescriptor} from '../../types';
 import {Tab} from '../Tab';
 import styles from '../../Tabs.scss';
 
-export interface TabMeasurements {
+interface TabMeasurements {
   containerWidth: number;
   disclosureWidth: number;
   hiddenTabWidths: number[];

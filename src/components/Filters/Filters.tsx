@@ -28,7 +28,10 @@ import {Stack} from '../Stack';
 import {Key} from '../../types';
 
 import {KeypressListener} from '../KeypressListener';
-import {ConnectedFilterControl, PopoverableAction} from './components';
+import {
+  ConnectedFilterControl,
+  ConnectedFilterControlProps,
+} from './components';
 
 import styles from './Filters.scss';
 
@@ -481,8 +484,8 @@ class FiltersInner extends React.Component<ComposedProps, State> {
 
   private transformFilters(
     filters: FilterInterface[],
-  ): PopoverableAction[] | null {
-    const transformedActions: PopoverableAction[] = [];
+  ): ConnectedFilterControlProps['rightPopoverableActions'] | null {
+    const transformedActions: ConnectedFilterControlProps['rightPopoverableActions'] = [];
 
     getShortcutFilters(filters).forEach((filter) => {
       const {key, label, disabled} = filter;

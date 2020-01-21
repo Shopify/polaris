@@ -10,7 +10,7 @@ import {Item} from './components';
 
 import styles from './ConnectedFilterControl.scss';
 
-export interface PopoverableAction extends DisableableAction {
+interface PopoverableAction extends DisableableAction {
   popoverOpen: boolean;
   popoverContent: React.ReactNode;
   key: string;

@@ -14,9 +14,7 @@ import {EventListener} from '../../../EventListener';
 import {KeypressListener} from '../../../KeypressListener';
 import {
   PositionedOverlay,
-  OverlayDetails,
-  PreferredPosition,
-  PreferredAlignment,
+  PositionedOverlayProps,
 } from '../../../PositionedOverlay';
 
 import {Pane, PaneProps} from '../Pane';
@@ -41,8 +39,8 @@ export interface PopoverOverlayProps {
   fullWidth?: boolean;
   fullHeight?: boolean;
   fluidContent?: boolean;
-  preferredPosition?: PreferredPosition;
-  preferredAlignment?: PreferredAlignment;
+  preferredPosition?: PositionedOverlayProps['preferredPosition'];
+  preferredAlignment?: PositionedOverlayProps['preferredAlignment'];
   active: boolean;
   id: string;
   activator: HTMLElement;
@@ -177,7 +175,9 @@ export class PopoverOverlay extends React.PureComponent<
     });
   }
 
-  private renderPopover = (overlayDetails: OverlayDetails) => {
+  private renderPopover: PositionedOverlayProps['render'] = (
+    overlayDetails,
+  ) => {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
     const {
