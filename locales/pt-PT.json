@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Carregar"
+      "spinnerAccessibilityLabel": "Carregar",
+      "connectedDisclosureAccessibilityLabel": "Ações relacionadas"
     },
     "Common": {
       "checkbox": "caixa de verificação",

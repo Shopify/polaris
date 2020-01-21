@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Memuatkan"
+      "spinnerAccessibilityLabel": "Memuatkan",
+      "connectedDisclosureAccessibilityLabel": "Tindakan yang berkaitan"
     },
     "Common": {
       "checkbox": "kotak semak",

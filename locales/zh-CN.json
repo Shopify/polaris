@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "正在加载"
+      "spinnerAccessibilityLabel": "正在加载",
+      "connectedDisclosureAccessibilityLabel": "相关操作"
     },
     "Common": {
       "checkbox": "复选框",

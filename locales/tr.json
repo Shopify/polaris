@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Yükleniyor"
+      "spinnerAccessibilityLabel": "Yükleniyor",
+      "connectedDisclosureAccessibilityLabel": "İlgili işlemler"
     },
     "Common": {
       "checkbox": "onay kutusu",

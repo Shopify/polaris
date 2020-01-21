@@ -4,6 +4,8 @@
 
 ### Enhancements
 
+- Added a split variant to `Button` ([#2329](https://github.com/Shopify/polaris-react/pull/2329))
+
 ### Bug fixes
 
 ### Documentation

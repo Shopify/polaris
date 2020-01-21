@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "載入中"
+      "spinnerAccessibilityLabel": "載入中",
+      "connectedDisclosureAccessibilityLabel": "相關動作"
     },
     "Common": {
       "checkbox": "核取方塊",

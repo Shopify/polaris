@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "読み込んでいます"
+      "spinnerAccessibilityLabel": "読み込んでいます",
+      "connectedDisclosureAccessibilityLabel": "関連したアクション"
     },
     "Common": {
       "checkbox": "チェックボックス",

@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Chargement"
+      "spinnerAccessibilityLabel": "Chargement",
+      "connectedDisclosureAccessibilityLabel": "Actions associées"
     },
     "Common": {
       "checkbox": "case à cocher",

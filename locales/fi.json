@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Ladataan"
+      "spinnerAccessibilityLabel": "Ladataan",
+      "connectedDisclosureAccessibilityLabel": "Aiheeseen liittyvät toimenpiteet"
     },
     "Common": {
       "checkbox": "valintaruutu",

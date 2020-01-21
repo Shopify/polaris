@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Laster inn"
+      "spinnerAccessibilityLabel": "Laster inn",
+      "connectedDisclosureAccessibilityLabel": "Relaterte handlinger"
     },
     "Common": {
       "checkbox": "avmerkingsboks",

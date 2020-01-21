@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Cargando"
+      "spinnerAccessibilityLabel": "Cargando",
+      "connectedDisclosureAccessibilityLabel": "Acciones relacionadas"
     },
     "Common": {
       "checkbox": "casilla de verificación",
