@@ -83,10 +83,6 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
     }
   }
 
-  &:visited {
-    color: color('ink', 'lighter');
-  }
-
   &.Tab-selected {
     // stylelint-disable-next-line selector-max-class
     .Title {
