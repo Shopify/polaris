@@ -220,36 +220,36 @@ Used to decorate elements where color does convey a specific meaning in componen
 
 [↑ Back to top](#table-of-contents)
 
-| CSS variable                                  | Value                                                                                             |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `--p-border-radius-base`                      | `0.4rem`                                                                                          |
-| `--p-border-radius-wide`                      | `0.8rem`                                                                                          |
-| `--p-card-shadow`                             | `0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)`   |
-| `--p-popover-shadow`                          | `-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)` |
-| `--p-modal-shadow`                            | `0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light)`  |
-| `--p-override-none`                           | `none`                                                                                            |
-| `--p-override-transparent`                    | `transparent`                                                                                     |
-| `--p-override-one`                            | `1`                                                                                               |
-| `--p-override-visible`                        | `visible`                                                                                         |
-| `--p-override-zero`                           | `0`                                                                                               |
-| `--p-override-loading-z-index`                | `514`                                                                                             |
-| `--p-button-font-weight`                      | `500`                                                                                             |
-| `--p-non-null-content`                        | `''`                                                                                              |
-| `--p-choice-size`                             | `2rem`                                                                                            |
-| `--p-choice-margin`                           | `0.1rem`                                                                                          |
-| `--p-banner-border-default`                   | `inset 0 0.2rem 0 0 var(--p-border), inset 0 0 0 0.2rem var(--p-border)`                          |
-| `--p-banner-border-success`                   | `inset 0 0.2rem 0 0 var(--p-border-success), inset 0 0 0 0.2rem var(--p-border-success)`          |
-| `--p-banner-border-highlight`                 | `inset 0 0.2rem 0 0 var(--p-border-highlight), inset 0 0 0 0.2rem var(--p-border-highlight)`      |
-| `--p-banner-border-warning`                   | `inset 0 0.2rem 0 0 var(--p-border-warning), inset 0 0 0 0.2rem var(--p-border-warning)`          |
-| `--p-banner-border-critical`                  | `inset 0 0.2rem 0 0 var(--p-border-critical), inset 0 0 0 0.2rem var(--p-border-critical)`        |
-| `--p-badge-mix-blend-mode`                    | `luminosity`                                                                                      |
-| `--p-thin-border-subdued`                     | `0.1rem solid var(--p-border-subdued)`                                                            |
-| `--p-text-field-spinner-offset`               | `0.2rem`                                                                                          |
-| `--p-text-field-focus-ring-offset`            | `-0.4rem`                                                                                         |
-| `--p-text-field-focus-ring-border-radius`     | `0.7rem`                                                                                          |
-| `--p-checkbox-radio-button-focus-ring-offset` | `0.3rem`                                                                                          |
-| `--p-button-group-item-spacing`               | `0.2rem`                                                                                          |
-| `--p-duration-1-0-0`                          | `100ms`                                                                                           |
-| `--p-duration-1-5-0`                          | `150ms`                                                                                           |
-| `--p-ease-in`                                 | `cubic-bezier(0.5, 0.1, 1, 1)`                                                                    |
-| `--p-ease`                                    | `cubic-bezier(0.4, 0.22, 0.28, 1)`                                                                |
+| CSS variable                              | Value                                                                                             |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `--p-border-radius-base`                  | `0.4rem`                                                                                          |
+| `--p-border-radius-wide`                  | `0.8rem`                                                                                          |
+| `--p-card-shadow`                         | `0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)`   |
+| `--p-popover-shadow`                      | `-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)` |
+| `--p-modal-shadow`                        | `0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light)`  |
+| `--p-top-bar-shadow`                      | `0 2px 2px -1px var(--p-shadow-from-direct-light)`                                                |
+| `--p-override-none`                       | `none`                                                                                            |
+| `--p-override-transparent`                | `transparent`                                                                                     |
+| `--p-override-one`                        | `1`                                                                                               |
+| `--p-override-visible`                    | `visible`                                                                                         |
+| `--p-override-zero`                       | `0`                                                                                               |
+| `--p-override-loading-z-index`            | `514`                                                                                             |
+| `--p-button-font-weight`                  | `500`                                                                                             |
+| `--p-non-null-content`                    | `''`                                                                                              |
+| `--p-choice-size`                         | `2rem`                                                                                            |
+| `--p-choice-margin`                       | `0.1rem`                                                                                          |
+| `--p-banner-border-default`               | `inset 0 0.2rem 0 0 var(--p-border), inset 0 0 0 0.2rem var(--p-border)`                          |
+| `--p-banner-border-success`               | `inset 0 0.2rem 0 0 var(--p-border-success), inset 0 0 0 0.2rem var(--p-border-success)`          |
+| `--p-banner-border-highlight`             | `inset 0 0.2rem 0 0 var(--p-border-highlight), inset 0 0 0 0.2rem var(--p-border-highlight)`      |
+| `--p-banner-border-warning`               | `inset 0 0.2rem 0 0 var(--p-border-warning), inset 0 0 0 0.2rem var(--p-border-warning)`          |
+| `--p-banner-border-critical`              | `inset 0 0.2rem 0 0 var(--p-border-critical), inset 0 0 0 0.2rem var(--p-border-critical)`        |
+| `--p-badge-mix-blend-mode`                | `luminosity`                                                                                      |
+| `--p-thin-border-subdued`                 | `0.1rem solid var(--p-border-subdued)`                                                            |
+| `--p-text-field-spinner-offset`           | `0.2rem`                                                                                          |
+| `--p-text-field-focus-ring-offset`        | `-0.4rem`                                                                                         |
+| `--p-text-field-focus-ring-border-radius` | `0.7rem`                                                                                          |
+| `--p-button-group-item-spacing`           | `0.2rem`                                                                                          |
+| `--p-duration-1-0-0`                      | `100ms`                                                                                           |
+| `--p-duration-1-5-0`                      | `150ms`                                                                                           |
+| `--p-ease-in`                             | `cubic-bezier(0.5, 0.1, 1, 1)`                                                                    |
+| `--p-ease`                                | `cubic-bezier(0.4, 0.22, 0.28, 1)`                                                                |

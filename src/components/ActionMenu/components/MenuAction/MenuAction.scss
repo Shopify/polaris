@@ -60,6 +60,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
   // End - Delete after me when rolling out global theming
 
   &.globalTheming {
+    @include focus-ring;
     border-radius: var(--p-border-radius-base);
 
     &:hover {
@@ -72,7 +73,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
 
     // stylelint-disable-next-line selector-max-specificity
     &:focus:not(:active) {
-      @include focus-ring;
+      @include focus-ring($style: 'focused');
     }
 
     &:active {

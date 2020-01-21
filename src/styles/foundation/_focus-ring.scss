@@ -1,12 +1,17 @@
 /// Sets the focus ring for an interactive element
 /// @param {String} $size - The size of the border radius on the focus ring.
-/// @param {String} $offset - Focus ring offset border width + 1px.
+/// @param {String} $border-width - The border width of your element in rems.
 /// @param {String} $style - Focus ring state.
 ///
 
-@mixin focus-ring($size: 'base', $offset: rem(1px), $style: 'base') {
+@mixin focus-ring($size: 'base', $border-width: rem(0), $style: 'base') {
   $stroke: rem(2px);
-  $position: calc(#{$offset} + #{$stroke});
+  $offset: calc(#{$border-width} + #{rem(1px)});
+  $border-radius: if(
+    $size == 'wide',
+    var(--p-border-radius-wide),
+    var(--p-border-radius-base)
+  );
 
   @if $style == 'base' {
     position: relative;
@@ -15,32 +20,19 @@
       content: var(--p-non-null-content, none);
       position: absolute;
       z-index: 1;
-      top: calc(-1 * #{$position});
-      right: calc(-1 * #{$position});
-      bottom: calc(-1 * #{$position});
-      left: calc(-1 * #{$position});
+      top: calc(-1 * #{$offset});
+      right: calc(-1 * #{$offset});
+      bottom: calc(-1 * #{$offset});
+      left: calc(-1 * #{$offset});
       display: block;
-      border: $stroke solid var(--p-focused);
-      transition: opacity duration(fast) var(--p-ease),
-        transform duration(fast) var(--p-ease);
-      opacity: 0;
-      transform: scale(0.8);
-
-      @if $size == 'wide' {
-        border-radius: calc(
-          var(--p-border-radius-wide) + #{$position} - #{$offset} + #{rem(1px)}
-        );
-      } @else {
-        border-radius: calc(
-          var(--p-border-radius-base) + #{$position} - #{$offset} + #{rem(1px)}
-        );
-      }
       pointer-events: none;
+      box-shadow: 0 0 0 (-1 * #{$offset}) var(--p-focused);
+      transition: box-shadow duration(fast) var(--p-ease);
+      border-radius: calc(#{$border-radius} + #{rem(1px)});
     }
   } @else if $style == 'focused' {
     &::after {
-      opacity: 1;
-      transform: scale(1);
+      box-shadow: 0 0 0 $stroke var(--p-focused);
     }
   }
 }

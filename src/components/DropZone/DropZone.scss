@@ -176,14 +176,16 @@ $dropzone-stacking-order: (
 
 .globalTheming {
   &.DropZone {
-    @include focus-ring;
-
     &:not(.focused) {
       // stylelint-disable-next-line selector-max-specificity
       &::after {
         @include reset-after;
       }
     }
+  }
+
+  .Container {
+    @include focus-ring($border-width: rem(2px));
   }
 
   &.Overlay {
@@ -204,7 +206,10 @@ $dropzone-stacking-order: (
 
   &.focused {
     &:not(.isDisabled) {
-      @include focus-ring($style: 'focused');
+      // stylelint-disable-next-line selector-max-specificity
+      .Container {
+        @include focus-ring($style: 'focused');
+      }
     }
   }
 }
