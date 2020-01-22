@@ -36,8 +36,12 @@ export interface DataTableProps {
   showTotalsInFooter?: boolean;
   /** Lists of data points which map to table body rows. */
   rows: TableData[][];
-  /** Truncate content in first column instead of wrapping.
+  /** Hide column visibility and navigation buttons above the header when the table horizontally collapses to be scrollable.
    * @default false
+   */
+  hideScrollIndicator?: boolean;
+  /** Truncate content in first column instead of wrapping.
+   * @default true
    */
   truncate?: boolean;
   /** Vertical alignment of content in the cells.
@@ -131,6 +135,7 @@ class DataTableInner extends React.PureComponent<
       showTotalsInFooter,
       rows,
       footerContent,
+      hideScrollIndicator = false,
     } = this.props;
     const {
       condensed,
@@ -166,15 +171,19 @@ class DataTableInner extends React.PureComponent<
       <tfoot>{totalsMarkup}</tfoot>
     ) : null;
 
+    const navigationMarkup = hideScrollIndicator ? null : (
+      <Navigation
+        columnVisibilityData={columnVisibilityData}
+        isScrolledFarthestLeft={isScrolledFarthestLeft}
+        isScrolledFarthestRight={isScrolledFarthestRight}
+        navigateTableLeft={this.navigateTable('left')}
+        navigateTableRight={this.navigateTable('right')}
+      />
+    );
+
     return (
       <div className={wrapperClassName}>
-        <Navigation
-          columnVisibilityData={columnVisibilityData}
-          isScrolledFarthestLeft={isScrolledFarthestLeft}
-          isScrolledFarthestRight={isScrolledFarthestRight}
-          navigateTableLeft={this.navigateTable('left')}
-          navigateTableRight={this.navigateTable('right')}
-        />
+        {navigationMarkup}
         <div className={className} ref={this.dataTable}>
           <div className={styles.ScrollContainer} ref={this.scrollContainer}>
             <EventListener event="resize" handler={this.handleResize} />
