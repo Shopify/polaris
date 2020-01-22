@@ -2,7 +2,7 @@ import React from 'react';
 import {ArrowUpDownMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {useUniqueId} from '../../utilities/unique-id';
-import {Labelled, Action, helpTextID} from '../Labelled';
+import {Labelled, LabelledProps, helpTextID} from '../Labelled';
 import {Icon} from '../Icon';
 import {Error} from '../../types';
 
@@ -41,7 +41,7 @@ export interface SelectProps {
   /** Label for the select */
   label: string;
   /** Adds an action to the label */
-  labelAction?: Action;
+  labelAction?: LabelledProps['action'];
   /** Visually hide the label */
   labelHidden?: boolean;
   /** Show the label to the left of the value, inside the control */

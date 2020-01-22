@@ -1,4 +1,4 @@
-import {Action} from '../Labelled';
+import {LabelledProps} from '../Labelled';
 
 import {Error} from '../../types';
 
@@ -10,7 +10,7 @@ export interface RangeSliderProps {
   /** Label for the range input */
   label: string;
   /** Adds an action to the label */
-  labelAction?: Action;
+  labelAction?: LabelledProps['action'];
   /** Visually hide the label */
   labelHidden?: boolean;
   /** ID for range input */
