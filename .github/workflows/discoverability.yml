@@ -18,3 +18,5 @@ jobs:
         codebaseGlob: src/**/*.tsx
         ignoreGlob: '{src/**/*.test.tsx,src/test-utilities/*}'
         githubToken: ${{ secrets.GITHUB_TOKEN }}
+        firstQuartile: 3
+        thirdQuartile: 69
