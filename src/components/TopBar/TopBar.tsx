@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
+import debounce from 'lodash/debounce';
 import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
@@ -70,16 +71,19 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     setFalse: forceFalseFocused,
   } = useToggle(false);
 
-  function handleScroll() {
-    const scrollDistance = window.scrollY;
-    const isScrolled = scrollDistance >= 1;
+  const handleScroll = useCallback(
+    debounce(() => {
+      const scrollDistance = window.scrollY;
+      const isScrolled = scrollDistance >= 1;
 
-    if (scrolled && isScrolled) {
-      return;
-    }
+      if (scrolled && isScrolled) {
+        return;
+      }
 
-    setScrolled(Boolean(isScrolled));
-  }
+      window.requestAnimationFrame(() => setScrolled(Boolean(isScrolled)));
+    }, 20),
+    [],
+  );
 
   const iconClassName = classNames(
     styles.NavigationIcon,
