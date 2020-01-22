@@ -29,7 +29,7 @@ export interface DataTableProps {
   /** List of data types, which determines content alignment for each column. Data types are "text," which aligns left, or "numeric," which aligns right. */
   columnContentTypes: ColumnContentType[];
   /** List of column headings. */
-  headings: string[];
+  headings: React.ReactNode[];
   /** List of numeric column totals, highlighted in the table’s header below column headings. Use empty strings as placeholders for columns with no total. */
   totals?: TableData[];
   /** Placement of totals row within table */

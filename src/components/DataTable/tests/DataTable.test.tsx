@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {Checkbox} from 'components';
 import {Cell} from '../components';
 import {DataTable, DataTableProps} from '../DataTable';
 
@@ -87,6 +88,22 @@ describe('<DataTable />', () => {
       headingCells.forEach((headingCell, headingCellIndex) =>
         expect(headingCell.text()).toBe(headings[headingCellIndex]),
       );
+    });
+
+    it('renders JSX in header cell', () => {
+      const headings = [
+        <Checkbox key="123" label="Heading 1" />,
+        'Heading 2',
+        'Heading 3',
+      ];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} headings={headings} />,
+      );
+
+      const checkbox = dataTable.find('thead tr').find(Checkbox);
+
+      expect(checkbox).toHaveLength(1);
+      expect(checkbox.prop('label')).toBe('Heading 1');
     });
   });
 
