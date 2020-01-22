@@ -1,7 +1,6 @@
 import React from 'react';
 import {useUniqueId} from '../../utilities/unique-id';
 import {RangeSliderProps, RangeSliderValue, DualValue} from './types';
-import {RangeSliderDefault} from './utilities';
 
 import {SingleThumb, DualThumb} from './components';
 
@@ -14,9 +13,9 @@ export {RangeSliderProps};
 interface Props extends RangeSliderProps {}
 
 export function RangeSlider({
-  min = RangeSliderDefault.Min,
-  max = RangeSliderDefault.Max,
-  step = RangeSliderDefault.Step,
+  min = 0,
+  max = 100,
+  step = 1,
   value,
   ...rest
 }: Props) {

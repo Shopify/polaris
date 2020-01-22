@@ -4,7 +4,7 @@ import {Key} from '../../types';
 
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {EventListener} from '../EventListener';
-import {KeypressListener, KeyEvent} from '../KeypressListener';
+import {KeypressListener} from '../KeypressListener';
 import {Focus} from '../Focus';
 
 import {
@@ -99,7 +99,7 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
         <EventListener event="focusin" handler={handleFocusIn} />
         <KeypressListener
           keyCode={Key.Tab}
-          keyEvent={KeyEvent.KeyDown}
+          keyEvent="keydown"
           handler={handleTab}
         />
         {children}

@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'test-utilities';
 
 import {Connected} from '../Connected';
-import {Item, ItemPosition} from '../components';
+import {Item} from '../components';
 
 describe('<Connected />', () => {
   describe('<Item />', () => {
@@ -10,9 +10,9 @@ describe('<Connected />', () => {
       const expectedContent = 'foo';
       const connected = mountWithApp(<Connected>{expectedContent}</Connected>);
 
-      expect(
-        connected.find(Item, {position: ItemPosition.Primary}),
-      ).toContainReactText(expectedContent);
+      expect(connected.find(Item, {position: 'primary'})).toContainReactText(
+        expectedContent,
+      );
     });
 
     it('includes `rightConnected` markup in an Item component', () => {
@@ -21,18 +21,18 @@ describe('<Connected />', () => {
         <Connected right={rightConnectedContent} />,
       );
 
-      expect(
-        connected.find(Item, {position: ItemPosition.Right}),
-      ).toContainReactText(rightConnectedContent);
+      expect(connected.find(Item, {position: 'right'})).toContainReactText(
+        rightConnectedContent,
+      );
     });
 
     it('includes `leftConnected` markup in an Item component', () => {
       const leftConnectedContent = 'foo';
       const connected = mountWithApp(<Connected left={leftConnectedContent} />);
 
-      expect(
-        connected.find(Item, {position: ItemPosition.Left}),
-      ).toContainReactText(leftConnectedContent);
+      expect(connected.find(Item, {position: 'left'})).toContainReactText(
+        leftConnectedContent,
+      );
     });
 
     it('`leftConnected` and `rightConnected` are not mutually exclusive', () => {
@@ -42,13 +42,13 @@ describe('<Connected />', () => {
         <Connected right={rightConnectedContent} left={leftConnectedContent} />,
       );
 
-      expect(
-        connected.find(Item, {position: ItemPosition.Right}),
-      ).toContainReactText(rightConnectedContent);
+      expect(connected.find(Item, {position: 'right'})).toContainReactText(
+        rightConnectedContent,
+      );
 
-      expect(
-        connected.find(Item, {position: ItemPosition.Left}),
-      ).toContainReactText(leftConnectedContent);
+      expect(connected.find(Item, {position: 'left'})).toContainReactText(
+        leftConnectedContent,
+      );
     });
   });
 });
