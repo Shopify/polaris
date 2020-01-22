@@ -110,10 +110,10 @@
       &::before {
         content: '';
         position: absolute;
-        top: calc(var(--control-border-width) * -1);
-        right: calc(var(--control-border-width) * -1);
-        bottom: calc(var(--control-border-width) * -1);
-        left: calc(var(--control-border-width) * -1);
+        top: calc(-1 * var(--control-border-width));
+        right: calc(-1 * var(--control-border-width));
+        bottom: calc(-1 * var(--control-border-width));
+        left: calc(-1 * var(--control-border-width));
         border-radius: var(--p-border-radius-base);
         background-color: var(--p-action-interactive);
         opacity: 0;
