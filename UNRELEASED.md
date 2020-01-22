@@ -7,6 +7,7 @@
 - Added a split variant to `Button` ([#2329](https://github.com/Shopify/polaris-react/pull/2329))
 - Allow DataTable headers to be React Elements ([#2635](https://github.com/Shopify/polaris-react/pull/2635))
 - Added support for explicit order of items in `ActionMenu` ([2057](https://github.com/Shopify/polaris-react/pull/2057))
+- Made the `DataTable` horizontal `Navigation` optional ([#2647](https://github.com/Shopify/polaris-react/pull/2647))
 
 ### Bug fixes
 

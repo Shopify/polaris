@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Checkbox} from 'components';
-import {Cell} from '../components';
+import {Cell, Navigation} from '../components';
 import {DataTable, DataTableProps} from '../DataTable';
 
 describe('<DataTable />', () => {
@@ -220,6 +220,30 @@ describe('<DataTable />', () => {
       firstColumnCells.forEach((cell) =>
         expect(cell.prop('truncate')).toBe(true),
       );
+    });
+  });
+
+  describe('hideScrollIndicator', () => {
+    it('shows <Navigation /> by default', () => {
+      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
+
+      expect(dataTable.find(Navigation)).toHaveLength(1);
+    });
+
+    it('hide <Navigation /> when true', () => {
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} hideScrollIndicator />,
+      );
+
+      expect(dataTable.find(Navigation)).toHaveLength(0);
+    });
+
+    it('show <Navigation /> when false', () => {
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} hideScrollIndicator={false} />,
+      );
+
+      expect(dataTable.find(Navigation)).toHaveLength(1);
     });
   });
 
