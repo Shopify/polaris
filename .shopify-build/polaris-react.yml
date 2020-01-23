@@ -41,6 +41,4 @@ shared:
 
 steps:
   - <<: *build-styleguide
-  # Skip running web unit tests until they're happy running the newer node version
-  # See https://github.com/Shopify/web/pull/21936
-  # - <<: *unit-tests
+  - <<: *unit-tests
