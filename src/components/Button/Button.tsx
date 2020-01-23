@@ -263,9 +263,9 @@ export function Button({
         onClick={toggleDisclosureActive}
         onMouseUp={handleMouseUpByBlurring}
       >
-        <IconWrapper>
+        <span className={styles.Icon}>
           <Icon source={CaretDownMinor} />
-        </IconWrapper>
+        </span>
       </button>
     );
 
