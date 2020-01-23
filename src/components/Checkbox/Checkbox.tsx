@@ -1,46 +1,16 @@
-import React, {
-  useRef,
-  useImperativeHandle,
-  useEffect,
-  useCallback,
-} from 'react';
+import React, {useRef, useImperativeHandle} from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
 import {useUniqueId} from '../../utilities/unique-id';
+import {useFocusRing} from '../../utilities/focus-ring';
 import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
 import {Error, Key, CheckboxHandles} from '../../types';
 
 import styles from './Checkbox.scss';
-
-function useFocusRing(
-  target: React.RefObject<HTMLElement>,
-  trigger?: React.RefObject<HTMLInputElement>,
-) {
-  const {current: targetEl} = target;
-  const triggerEl = trigger && trigger.current ? trigger.current : targetEl;
-
-  const handleFocus = useCallback(() => {
-    console.log('focused: ', triggerEl);
-  }, [triggerEl]);
-
-  const handleBlur = useCallback(() => {
-    console.log('blur: ', triggerEl);
-  }, [triggerEl]);
-
-  useEffect(() => {
-    if (!triggerEl) return;
-    triggerEl.addEventListener('focus', handleFocus);
-    triggerEl.addEventListener('blur', handleBlur);
-    return () => {
-      triggerEl.removeEventListener('focus', handleFocus);
-      triggerEl.removeEventListener('blur', handleBlur);
-    };
-  }, [handleBlur, handleFocus, triggerEl]);
-}
 
 export interface CheckboxProps {
   /** Indicates the ID of the element that describes the checkbox*/
@@ -99,9 +69,9 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
       setFalse: forceFalseMouseOver,
     } = useToggle(false);
 
-    const wrapperNode = useRef<HTMLDivElement>(null);
+    const backdropNode = useRef<HTMLSpanElement>(null);
 
-    const focusRing = useFocusRing(wrapperNode);
+    useFocusRing(backdropNode, inputNode);
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -178,7 +148,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
         onMouseOver={forceTrueMouseOver}
         onMouseOut={forceFalseMouseOver}
       >
-        <span className={wrapperClassName} ref={wrapperNode} tabIndex={-1}>
+        <span className={wrapperClassName}>
           <input
             onKeyUp={handleKeyUp}
             ref={inputNode}
@@ -198,7 +168,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
             role="checkbox"
             {...indeterminateAttributes}
           />
-          <span className={backdropClassName} />
+          <span className={backdropClassName} ref={backdropNode} />
           <span className={styles.Icon}>
             <Icon source={iconSource} />
           </span>

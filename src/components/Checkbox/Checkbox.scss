@@ -64,15 +64,6 @@ $control-size: rem(16px);
 
 .Checkbox.globalTheming {
   .Input {
-    &:focus {
-      + .Backdrop {
-        @include focus-ring(
-          $style: 'focused',
-          $offset: var(--p-checkbox-radio-button-focus-ring-offset)
-        );
-      }
-    }
-
     &:active:not(:disabled),
     &:checked,
     &.Input-indeterminate {
@@ -110,9 +101,6 @@ $control-size: rem(16px);
     display: block;
     width: 100%;
     height: 100%;
-    @include focus-ring(
-      $offset: var(--p-checkbox-radio-button-focus-ring-offset)
-    );
   }
 
   .Icon {
