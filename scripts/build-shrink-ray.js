@@ -8,7 +8,7 @@ const {postReport, sendCommitStatus} = require('@shopify/shrink-ray');
 
 const BASE_BRANCH = 'master';
 const repo = 'polaris-react';
-const sha = process.env.CIRCLE_SHA1;
+const sha = process.env.TRAVIS_COMMIT || process.env.CIRCLE_SHA1;
 
 const report = resolve(
   __dirname,
@@ -29,7 +29,7 @@ if (sha) {
 }
 
 function buildPackages() {
-  execSync('yarn run storybook:build', {
+  execSync('yarn run storybook:build --quiet', {
     stdio: 'inherit',
   });
 }
@@ -37,8 +37,11 @@ function buildPackages() {
 function setupShrinkRay() {
   console.log('[shrink-ray] Running shrink-ray prebuild script...');
 
-  // fetch latest in BuildKite pipeline
-  execSync('git fetch origin master');
+  // fetch latest in pipeline. Travis does a shallow clone by default,
+  // --unshallow makes sure we can fetch the master commit
+  execSync('git fetch --unshallow origin master:refs/remotes/origin/master', {
+    encoding: 'utf8',
+  });
 
   const masterSha = execSync(`git merge-base HEAD origin/${BASE_BRANCH}`, {
     encoding: 'utf8',
