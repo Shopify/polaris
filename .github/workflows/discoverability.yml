@@ -13,8 +13,10 @@ jobs:
       run: yarn
 
     - name: Add a comment with known areas to test
-      uses: shopify/discoverability-action@docker-beta-2
+      uses: shopify/discoverability-action@average-impact-update
       with:
         codebaseGlob: src/**/*.tsx
         ignoreGlob: '{src/**/*.test.tsx,src/test-utilities/*}'
         githubToken: ${{ secrets.GITHUB_TOKEN }}
+        firstQuartile: 3
+        thirdQuartile: 69
