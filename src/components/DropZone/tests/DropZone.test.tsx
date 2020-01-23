@@ -465,6 +465,51 @@ describe('<DropZone />', () => {
       }).not.toThrow();
     });
   });
+
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled', () => {
+      const dropZone = mountWithApp(<DropZone />, {
+        features: {unstableGlobalTheming: true},
+      });
+
+      act(() => {
+        dropZone
+          .find('div', {'aria-disabled': false})!
+          .domNode!.dispatchEvent(new Event('dragenter'));
+      });
+
+      dropZone.forceUpdate();
+
+      expect(dropZone).toContainReactComponent('div', {
+        className:
+          'DropZone hasOutline isDragging globalTheming sizeExtraLarge measuring',
+      });
+      expect(dropZone).toContainReactComponent('div', {
+        className: 'Overlay globalTheming',
+      });
+    });
+
+    it('does not add a global theming class when global theming is disabled', () => {
+      const dropZone = mountWithApp(<DropZone />, {
+        features: {unstableGlobalTheming: false},
+      });
+      act(() => {
+        dropZone
+          .find('div', {'aria-disabled': false})!
+          .domNode!.dispatchEvent(new Event('dragenter'));
+      });
+
+      dropZone.forceUpdate();
+
+      expect(dropZone).not.toContainReactComponent('div', {
+        className:
+          'DropZone hasOutline isDragging globalTheming sizeExtraLarge measuring',
+      });
+      expect(dropZone).not.toContainReactComponent('div', {
+        className: 'Overlay globalTheming',
+      });
+    });
+  });
 });
 
 function createEvent(name: string, files: any) {
