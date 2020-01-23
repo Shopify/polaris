@@ -13,7 +13,7 @@ jobs:
       run: yarn
 
     - name: Add a comment with known areas to test
-      uses: shopify/discoverability-action@update-comment-impact
+      uses: shopify/discoverability-action@average-impact-update
       with:
         codebaseGlob: src/**/*.tsx
         ignoreGlob: '{src/**/*.test.tsx,src/test-utilities/*}'
