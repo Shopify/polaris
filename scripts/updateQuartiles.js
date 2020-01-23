@@ -26,7 +26,8 @@ async function main() {
 
   fs.writeFileSync(
     'prImpactData.json',
-    JSON.stringify(totalImpactData, undefined, 2),
+    `${JSON.stringify(totalImpactData, undefined, 2)}
+`,
   );
 
   const quartiles = calculateQuartiles(totalImpactData);
