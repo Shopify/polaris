@@ -37,7 +37,7 @@ shared:
       - cd ./web
       - node ./.shopify-build/balancer.js
       - CI=true yarn run sewing-kit test --maxWorkers 2 --coverage $(./.shopify-build/balancer.js)
-    parallelism: 8
+    parallelism: 24
 
 steps:
   - <<: *build-styleguide
