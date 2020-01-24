@@ -38,6 +38,9 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
   &:focus {
     outline: none;
+  }
+
+  &.keyFocused {
     box-shadow: var(
       --p-banner-border,
       (

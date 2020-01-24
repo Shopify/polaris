@@ -28,6 +28,10 @@ import styles from './Banner.scss';
 
 export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
 
+interface State {
+  showFocus: boolean;
+}
+
 export interface BannerProps {
   /** Title content for the banner. */
   title?: string;
@@ -47,14 +51,39 @@ export interface BannerProps {
   stopAnnouncements?: boolean;
 }
 
-export class Banner extends React.PureComponent<BannerProps, never> {
+export class Banner extends React.PureComponent<BannerProps, State> {
+  state: State = {
+    showFocus: false,
+  };
+
   private wrapper = React.createRef<HTMLDivElement>();
 
   public focus() {
     this.wrapper.current && this.wrapper.current.focus();
+    this.setState({showFocus: true});
   }
 
   render() {
+    const {showFocus} = this.state;
+
+    const handleKeyUp = (evt: React.KeyboardEvent<HTMLDivElement>) => {
+      if (evt.target === this.wrapper.current) {
+        this.setState({showFocus: true});
+      }
+    };
+
+    const handleBlur = () => {
+      this.setState({showFocus: false});
+    };
+
+    const handleMouseUp = ({
+      currentTarget,
+    }: React.MouseEvent<HTMLDivElement>) => {
+      const {showFocus} = this.state;
+      currentTarget.blur();
+      showFocus && this.setState({showFocus: false});
+    };
+
     return (
       <BannerContext.Provider value>
         <WithinContentContext.Consumer>
@@ -100,6 +129,7 @@ export class Banner extends React.PureComponent<BannerProps, never> {
               styles.Banner,
               status && styles[variationName('status', status)],
               onDismiss && styles.hasDismiss,
+              showFocus && styles.keyFocused,
               withinContentContainer
                 ? styles.withinContentContainer
                 : styles.withinPage,
@@ -170,6 +200,8 @@ export class Banner extends React.PureComponent<BannerProps, never> {
                 role={ariaRoleType}
                 aria-live={stopAnnouncements ? 'off' : 'polite'}
                 onMouseUp={handleMouseUp}
+                onKeyUp={handleKeyUp}
+                onBlur={handleBlur}
                 aria-labelledby={headingID}
                 aria-describedby={contentID}
               >
@@ -193,10 +225,6 @@ export class Banner extends React.PureComponent<BannerProps, never> {
 let index = 1;
 function uniqueID() {
   return `Banner${index++}`;
-}
-
-function handleMouseUp({currentTarget}: React.MouseEvent<HTMLDivElement>) {
-  currentTarget.blur();
 }
 
 function secondaryActionFrom(action: Action) {
