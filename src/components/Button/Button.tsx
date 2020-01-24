@@ -165,7 +165,7 @@ export function Button({
   );
 
   const disclosureIconMarkup = disclosure ? (
-    <IconWrapper>
+    <span className={styles.Icon}>
       <div
         className={classNames(
           styles.DisclosureIcon,
@@ -174,7 +174,7 @@ export function Button({
       >
         {disclosureIcon}
       </div>
-    </IconWrapper>
+    </span>
   ) : null;
 
   let iconMarkup;
@@ -185,7 +185,7 @@ export function Button({
     ) : (
       icon
     );
-    iconMarkup = <IconWrapper>{iconInner}</IconWrapper>;
+    iconMarkup = <span className={styles.Icon}>{iconInner}</span>;
   }
 
   const childMarkup = children ? (
@@ -263,9 +263,9 @@ export function Button({
         onClick={toggleDisclosureActive}
         onMouseUp={handleMouseUpByBlurring}
       >
-        <IconWrapper>
+        <span className={styles.Icon}>
           <Icon source={CaretDownMinor} />
-        </IconWrapper>
+        </span>
       </button>
     );
 
@@ -348,10 +348,6 @@ export function Button({
   ) : (
     buttonMarkup
   );
-}
-
-function IconWrapper({children}: any) {
-  return <span className={styles.Icon}>{children}</span>;
 }
 
 function isIconSource(x: any): x is IconSource {
