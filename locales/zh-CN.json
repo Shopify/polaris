@@ -42,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "向 {direction} 排序",
       "navAccessibilityLabel": "将表向 {direction} 滚动一列",
-      "totalsRowHeading": "总计"
+      "totalsRowHeading": "总计",
+      "totalRowHeading": "总计"
     },
     "DatePicker": {
       "previousMonth": "显示上个月，{showPreviousYear} 年 {previousMonthName}",

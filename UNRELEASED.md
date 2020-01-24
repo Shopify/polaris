@@ -5,11 +5,13 @@
 ### Enhancements
 
 - Replaced customer avatar images ([#2453](https://github.com/Shopify/polaris-react/pull/2453/files))
+- Added an optional `totalsLabel` prop to `DataTable` to support custom headings in the totals row ([#2660](https://github.com/Shopify/polaris-react/pull/2660))
 
 ### Bug fixes
 
 - Fixed `Uncaught TypeError: Cannot read property 'rightEdge' of undefined` in `DataTable` ([#2672](https://github.com/Shopify/polaris-react/pull/2672))
 - Fixed excessive rendering in `DatePicker` ([#2671](https://github.com/Shopify/polaris-react/pull/2671))
+- Fixed plurality of `DataTable` totals row heading ([#2660](https://github.com/Shopify/polaris-react/pull/2660))
 
 ### Documentation
 

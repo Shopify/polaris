@@ -42,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "{direction} tarafı şuna göre sırala:",
       "navAccessibilityLabel": "Tabloyu bir sütun {direction} tarafa kaydır",
-      "totalsRowHeading": "Toplamlar"
+      "totalsRowHeading": "Toplamlar",
+      "totalRowHeading": "Toplam"
     },
     "DatePicker": {
       "previousMonth": "Önceki ayı göster, {previousMonthName} {showPreviousYear}",
