@@ -28,7 +28,7 @@ shared:
   unit-tests: &unit-tests
     label: '🤓 Web unit tests'
     container: default
-    timeout: 15m
+    timeout: 20m
     dependencies:
       - yarn
     run:
