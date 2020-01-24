@@ -45,7 +45,9 @@ export function Dialog({
   const TransitionChild = instant ? Transition : FadeUp;
 
   useEffect(() => {
-    containerNode.current && focusFirstFocusableNode(containerNode.current);
+    containerNode.current &&
+      !containerNode.current.contains(document.activeElement) &&
+      focusFirstFocusableNode(containerNode.current);
   }, []);
 
   return (
