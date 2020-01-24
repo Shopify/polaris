@@ -83,6 +83,7 @@ $resource-list-item-variables: (
       ),
       linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
 
+    // stylelint-disable-next-line selector-max-specificity
     &:hover {
       box-shadow: inset 0.2rem 0 0 color('indigo');
       background-image: linear-gradient(
