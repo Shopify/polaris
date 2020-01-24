@@ -22,6 +22,7 @@
 ### Development workflow
 
 - Reworked the yarn splash Github comment and added average splash zone information ([#2649](https://github.com/Shopify/polaris-react/pull/2649))
+- Re-enabled the web unit tests in the consumer build test ([#2663](https://github.com/Shopify/polaris-react/pull/2663))
 
 ### Dependency upgrades
 
