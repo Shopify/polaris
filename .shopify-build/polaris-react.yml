@@ -35,8 +35,7 @@ shared:
       - yarn run build
       - ./.shopify-build/setup-consumer-test.sh web
       - cd ./web
-      - pwd
-      - CI=true yarn run sewing-kit test --maxWorkers 2 $(./.shopify-build/balancer.js)
+      - CI=true yarn run sewing-kit test --maxWorkers 2 $(/app/web/.shopify-build/balancer.js)
     parallelism: 24
 
 steps:
