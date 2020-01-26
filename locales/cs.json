@@ -115,7 +115,8 @@
       "done": "Hotovo",
       "clearAllFilters": "Vymazat všechny filtry",
       "clear": "Vymazat",
-      "clearLabel": "Vymazat {filterName}"
+      "clearLabel": "Vymazat {filterName}",
+      "moreFiltersWithCount": "Další filtry ({count})"
     },
     "Modal": {
       "iFrameTitle": "značka těla",

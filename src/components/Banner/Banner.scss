@@ -34,6 +34,8 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     background-color: var(--p-banner-background, $background);
   }
 
+  @include focus-ring('wide');
+
   &:focus {
     outline: none;
     box-shadow: var(
@@ -45,7 +47,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
       )
     );
 
-    @include focus-ring('wide');
+    @include focus-ring('wide', $style: 'focused');
   }
 }
 

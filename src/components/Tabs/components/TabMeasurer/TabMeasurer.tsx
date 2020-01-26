@@ -1,6 +1,7 @@
-import React from 'react';
-import {classNames} from '../../../../utilities/css';
+import React, {memo, useEffect, useRef, useCallback} from 'react';
 import {EventListener} from '../../../EventListener';
+import {classNames} from '../../../../utilities/css';
+import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
 
 import {TabDescriptor} from '../../types';
 import {Tab} from '../Tab';
@@ -21,89 +22,79 @@ export interface TabMeasurerProps {
   handleMeasurement(measurements: TabMeasurements): void;
 }
 
-export class TabMeasurer extends React.PureComponent<TabMeasurerProps, never> {
-  private containerNode: React.RefObject<HTMLDivElement> = React.createRef();
-  private animationFrame: number | null = null;
+export const TabMeasurer = memo(function TabMeasurer({
+  selected,
+  tabs,
+  activator,
+  tabToFocus,
+  siblingTabHasFocus,
+  handleMeasurement: handleMeasurementProp,
+}: TabMeasurerProps) {
+  const containerNode = useRef<HTMLDivElement>(null);
+  const animationFrame = useRef<number | null>(null);
 
-  componentDidMount() {
-    this.handleMeasurement();
-
-    if (process.env.NODE_ENV === 'development') {
-      // We need to defer the calculation in development so the
-      // styles have time to be injected.
-      setTimeout(this.handleMeasurement, 0);
-    }
-  }
-
-  componentDidUpdate(prevProps: TabMeasurerProps) {
-    if (prevProps.tabs !== this.props.tabs) {
-      this.handleMeasurement();
-    }
-  }
-
-  render() {
-    const {
-      selected,
-      tabs,
-      activator,
-      tabToFocus,
-      siblingTabHasFocus,
-    } = this.props;
-
-    const tabsMarkup = tabs.map((tab, index) => {
-      return (
-        <Tab
-          measuring
-          key={`${index}${tab.id}Hidden`}
-          id={`${tab.id}Measurer`}
-          siblingTabHasFocus={siblingTabHasFocus}
-          focused={index === tabToFocus}
-          selected={index === selected}
-          onClick={noop}
-          url={tab.url}
-        >
-          {tab.content}
-        </Tab>
-      );
-    });
-
-    const classname = classNames(styles.Tabs, styles.TabMeasurer);
-
-    return (
-      <div className={classname} ref={this.containerNode}>
-        <EventListener event="resize" handler={this.handleMeasurement} />
-        {tabsMarkup}
-        {activator}
-      </div>
-    );
-  }
-
-  private handleMeasurement = () => {
-    if (this.animationFrame) {
-      cancelAnimationFrame(this.animationFrame);
+  const handleMeasurement = useCallback(() => {
+    if (animationFrame.current) {
+      cancelAnimationFrame(animationFrame.current);
     }
 
-    this.animationFrame = requestAnimationFrame(() => {
-      if (!this.containerNode.current) {
+    animationFrame.current = requestAnimationFrame(() => {
+      if (!containerNode.current) {
         return;
       }
 
-      const {handleMeasurement} = this.props;
-      const containerWidth = this.containerNode.current.offsetWidth;
-      const hiddenTabNodes = this.containerNode.current.children;
+      const containerWidth = containerNode.current.offsetWidth;
+      const hiddenTabNodes = containerNode.current.children;
       const hiddenTabNodesArray = Array.from(hiddenTabNodes);
       const hiddenTabWidths = hiddenTabNodesArray.map((node) => {
         return node.getBoundingClientRect().width;
       });
       const disclosureWidth = hiddenTabWidths.pop() as number;
 
-      handleMeasurement({
+      handleMeasurementProp({
         containerWidth,
         disclosureWidth,
         hiddenTabWidths,
       });
     });
-  };
-}
+  }, [handleMeasurementProp]);
+
+  useEffect(() => {
+    handleMeasurement();
+  }, [handleMeasurement, tabs]);
+
+  useComponentDidMount(() => {
+    if (process.env.NODE_ENV === 'development') {
+      setTimeout(handleMeasurement, 0);
+    }
+  });
+
+  const tabsMarkup = tabs.map((tab, index) => {
+    return (
+      <Tab
+        measuring
+        key={`${index}${tab.id}Hidden`}
+        id={`${tab.id}Measurer`}
+        siblingTabHasFocus={siblingTabHasFocus}
+        focused={index === tabToFocus}
+        selected={index === selected}
+        onClick={noop}
+        url={tab.url}
+      >
+        {tab.content}
+      </Tab>
+    );
+  });
+
+  const classname = classNames(styles.Tabs, styles.TabMeasurer);
+
+  return (
+    <div className={classname} ref={containerNode}>
+      <EventListener event="resize" handler={handleMeasurement} />
+      {tabsMarkup}
+      {activator}
+    </div>
+  );
+});
 
 function noop() {}

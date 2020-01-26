@@ -42,6 +42,7 @@ interface State {
   topShadow: boolean;
   bottomShadow: boolean;
   scrollPosition: number;
+  canScroll: boolean;
 }
 
 export class Scrollable extends React.Component<ScrollableProps, State> {
@@ -56,6 +57,7 @@ export class Scrollable extends React.Component<ScrollableProps, State> {
     topShadow: false,
     bottomShadow: false,
     scrollPosition: 0,
+    canScroll: false,
   };
 
   private stickyManager = new StickyManager();
@@ -104,7 +106,7 @@ export class Scrollable extends React.Component<ScrollableProps, State> {
   }
 
   render() {
-    const {topShadow, bottomShadow} = this.state;
+    const {topShadow, bottomShadow, canScroll} = this.state;
     const {
       children,
       className,
@@ -123,6 +125,7 @@ export class Scrollable extends React.Component<ScrollableProps, State> {
       horizontal && styles.horizontal,
       topShadow && styles.hasTopShadow,
       bottomShadow && styles.hasBottomShadow,
+      vertical && canScroll && styles.verticalHasScrolling,
     );
 
     return (
@@ -168,6 +171,7 @@ export class Scrollable extends React.Component<ScrollableProps, State> {
       topShadow: shouldTopShadow,
       bottomShadow: shouldBottomShadow,
       scrollPosition: scrollTop,
+      canScroll,
     });
   };
 

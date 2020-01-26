@@ -15,6 +15,7 @@ import {
   Role,
   RoleColors,
   ColorScheme,
+  Lambda,
 } from './types';
 
 import {roleVariants} from './role-variants';
@@ -89,10 +90,19 @@ export function buildColors(
             alpha = 1,
           } = settings[colorScheme];
 
+          const resolve = (value: number | Lambda, base: number) =>
+            typeof value === 'number' ? value : value(base);
+
           return {
             ...accumulator,
             [name]: hslToString({
-              ...colorToHsla(hsluvToHex([hue, saturation, lightness])),
+              ...colorToHsla(
+                hsluvToHex([
+                  resolve(hue, base.hue),
+                  resolve(saturation, base.saturation),
+                  resolve(lightness, base.lightness),
+                ]),
+              ),
               alpha,
             }),
           };

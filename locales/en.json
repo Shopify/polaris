@@ -124,6 +124,7 @@
 
     "Filters": {
       "moreFilters": "More filters",
+      "moreFiltersWithCount": "More filters ({count})",
       "filter": "Filter {resourceName}",
       "noFiltersApplied": "No filters applied",
       "cancel": "Cancel",

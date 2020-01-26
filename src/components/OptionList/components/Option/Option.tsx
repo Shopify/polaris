@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 
+import {useToggle} from '../../../../utilities/use-toggle';
 import {classNames} from '../../../../utilities/css';
 import {IconProps} from '../../../../types';
 import {ThumbnailProps} from '../../../Thumbnail';
@@ -24,106 +25,92 @@ export interface OptionProps {
   onClick(section: number, option: number): void;
 }
 
-interface State {
-  focused: boolean;
-}
+export function Option({
+  label,
+  value,
+  id,
+  select,
+  active,
+  allowMultiple,
+  disabled,
+  role,
+  media,
+  onClick,
+  section,
+  index,
+}: OptionProps) {
+  const {value: focused, toggle: toggleFocused} = useToggle(false);
 
-export class Option extends React.Component<OptionProps, State> {
-  state: State = {
-    focused: false,
-  };
-
-  render() {
-    const {
-      label,
-      value,
-      id,
-      select,
-      active,
-      allowMultiple,
-      disabled,
-      role,
-      media,
-    } = this.props;
-    const {focused} = this.state;
-
-    const mediaMarkup = media ? (
-      <div className={styles.Media}>{media}</div>
-    ) : null;
-
-    const singleSelectClassName = classNames(
-      styles.SingleSelectOption,
-      focused && styles.focused,
-      disabled && styles.disabled,
-      select && styles.select,
-      active && styles.active,
-    );
-
-    const multiSelectClassName = classNames(
-      styles.Label,
-      active && styles.active,
-    );
-
-    const checkBoxRole = role === 'option' ? 'presentation' : undefined;
-
-    const optionMarkup = allowMultiple ? (
-      <label htmlFor={id} className={multiSelectClassName}>
-        <div className={styles.Checkbox}>
-          <Checkbox
-            id={id}
-            value={value}
-            checked={select}
-            active={active}
-            disabled={disabled}
-            onChange={this.handleClick}
-            role={checkBoxRole}
-          />
-        </div>
-        {mediaMarkup}
-        {label}
-      </label>
-    ) : (
-      <button
-        id={id}
-        type="button"
-        className={singleSelectClassName}
-        onClick={this.handleClick}
-        disabled={disabled}
-        onFocus={this.toggleFocus}
-        onBlur={this.toggleFocus}
-      >
-        {mediaMarkup}
-        {label}
-      </button>
-    );
-
-    const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
-
-    return (
-      <li
-        key={id}
-        className={styles.Option}
-        tabIndex={-1}
-        aria-selected={active}
-        role={role}
-      >
-        {scrollMarkup}
-        {optionMarkup}
-      </li>
-    );
-  }
-
-  private handleClick = () => {
-    const {onClick, section, index, disabled} = this.props;
-
+  const handleClick = useCallback(() => {
     if (disabled) {
       return;
     }
 
     onClick(section, index);
-  };
+  }, [disabled, index, onClick, section]);
 
-  private toggleFocus = () => {
-    this.setState((prevState) => ({focused: !prevState.focused}));
-  };
+  const mediaMarkup = media ? (
+    <div className={styles.Media}>{media}</div>
+  ) : null;
+
+  const singleSelectClassName = classNames(
+    styles.SingleSelectOption,
+    focused && styles.focused,
+    disabled && styles.disabled,
+    select && styles.select,
+    active && styles.active,
+  );
+
+  const multiSelectClassName = classNames(
+    styles.Label,
+    active && styles.active,
+  );
+
+  const checkBoxRole = role === 'option' ? 'presentation' : undefined;
+
+  const optionMarkup = allowMultiple ? (
+    <label htmlFor={id} className={multiSelectClassName}>
+      <div className={styles.Checkbox}>
+        <Checkbox
+          id={id}
+          value={value}
+          checked={select}
+          active={active}
+          disabled={disabled}
+          onChange={handleClick}
+          role={checkBoxRole}
+        />
+      </div>
+      {mediaMarkup}
+      {label}
+    </label>
+  ) : (
+    <button
+      id={id}
+      type="button"
+      className={singleSelectClassName}
+      onClick={handleClick}
+      disabled={disabled}
+      onFocus={toggleFocused}
+      onBlur={toggleFocused}
+    >
+      {mediaMarkup}
+      {label}
+    </button>
+  );
+
+  const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
+
+  return (
+    <li
+      key={id}
+      className={styles.Option}
+      tabIndex={-1}
+      aria-selected={active}
+      role={role}
+    >
+      {scrollMarkup}
+      {optionMarkup}
+    </li>
+  );
 }

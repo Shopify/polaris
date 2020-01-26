@@ -82,36 +82,40 @@ describe('<DualThumb />', () => {
   });
 
   describe('disabled', () => {
-    it('sets aria-disabled to false by default on the lower thumb', () => {
+    it('sets aria-disabled and disabled to false by default on the lower thumb', () => {
       const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
 
       const thumbLower = findThumbLower(dualThumb);
       expect(thumbLower.prop('aria-disabled')).toBe(false);
+      expect(thumbLower.prop('disabled')).toBe(false);
     });
 
-    it('sets aria-disabled to false by default on the upper thumb', () => {
+    it('sets aria-disabled and disabled to false by default on the upper thumb', () => {
       const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
 
       const thumbUpper = findThumbUpper(dualThumb);
       expect(thumbUpper.prop('aria-disabled')).toBe(false);
+      expect(thumbUpper.prop('disabled')).toBe(false);
     });
 
-    it('sets aria-disabled to true on the lower thumb', () => {
+    it('sets aria-disabled and disabled to true on the lower thumb', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} disabled />,
       );
 
       const thumbLower = findThumbLower(dualThumb);
       expect(thumbLower.prop('aria-disabled')).toBe(true);
+      expect(thumbLower.prop('disabled')).toBe(true);
     });
 
-    it('sets aria-disabled to true on the upper thumb', () => {
+    it('sets aria-disabled and disabled to true on the upper thumb', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} disabled />,
       );
 
       const thumbUpper = findThumbUpper(dualThumb);
       expect(thumbUpper.prop('aria-disabled')).toBe(true);
+      expect(thumbUpper.prop('disabled')).toBe(true);
     });
   });
 

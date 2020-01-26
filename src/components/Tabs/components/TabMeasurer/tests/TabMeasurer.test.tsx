@@ -1,11 +1,33 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {TabMeasurer} from '../TabMeasurer';
 import {Tab} from '../../Tab';
 import {Item} from '../../Item';
 
+const originalNodeEnv = process.env.NODE_ENV;
+
 describe('<TabMeasurer />', () => {
+  let requestAnimationFrameSpy: jest.SpyInstance;
+  let setTimeoutSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    requestAnimationFrameSpy = jest.spyOn(window, 'requestAnimationFrame');
+    requestAnimationFrameSpy.mockImplementation((cb: () => number) => {
+      cb();
+      return 1;
+    });
+    setTimeoutSpy = jest.spyOn(window, 'setTimeout');
+    setTimeoutSpy.mockImplementation((cb: () => void, _delay: number) => cb());
+  });
+
+  afterEach(() => {
+    requestAnimationFrameSpy.mockRestore();
+    setTimeoutSpy.mockRestore();
+    process.env.NODE_ENV = originalNodeEnv;
+  });
+
   const mockProps = {
     tabToFocus: 0,
     activator: <Item id="id" focused />,
@@ -23,6 +45,14 @@ describe('<TabMeasurer />', () => {
     siblingTabHasFocus: false,
     handleMeasurement: noop,
   };
+
+  it('calls setTimeout in development to delay measurements', () => {
+    process.env.NODE_ENV = 'development';
+    mountWithApp(<TabMeasurer {...mockProps} tabToFocus={0} />);
+    // The second invocation is from the react scheduler
+    // https://github.com/facebook/react/blob/0cf22a56a18790ef34c71bef14f64695c0498619/packages/scheduler/src/forks/SchedulerHostConfig.default.js#L53
+    expect(setTimeoutSpy).toHaveBeenCalledTimes(2);
+  });
 
   describe('tabToFocus', () => {
     const tabToFocus = 0;

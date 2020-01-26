@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 
 import {MenuGroupDescriptor} from '../../../../types';
 
@@ -19,51 +19,47 @@ export interface MenuGroupProps extends MenuGroupDescriptor {
   onClose(title: string): void;
 }
 
-export class MenuGroup extends React.Component<MenuGroupProps, never> {
-  render() {
-    const {
-      accessibilityLabel,
-      active,
-      actions,
-      details,
-      title,
-      icon,
-    } = this.props;
+export function MenuGroup({
+  accessibilityLabel,
+  active,
+  actions,
+  details,
+  title,
+  icon,
+  onClose,
+  onOpen,
+}: MenuGroupProps) {
+  const handleClose = useCallback(() => {
+    onClose(title);
+  }, [onClose, title]);
 
-    if (!actions.length) {
-      return null;
-    }
+  const handleOpen = useCallback(() => {
+    onOpen(title);
+  }, [onOpen, title]);
 
-    const popoverActivator = (
-      <MenuAction
-        disclosure
-        content={title}
-        icon={icon}
-        accessibilityLabel={accessibilityLabel}
-        onAction={this.handleOpen}
-      />
-    );
-
-    return (
-      <Popover
-        active={Boolean(active)}
-        activator={popoverActivator}
-        preferredAlignment="left"
-        onClose={this.handleClose}
-      >
-        <ActionList items={actions} onActionAnyItem={this.handleClose} />
-        {details && <div className={styles.Details}>{details}</div>}
-      </Popover>
-    );
+  if (!actions.length) {
+    return null;
   }
 
-  private handleClose = () => {
-    const {title, onClose} = this.props;
-    onClose(title);
-  };
+  const popoverActivator = (
+    <MenuAction
+      disclosure
+      content={title}
+      icon={icon}
+      accessibilityLabel={accessibilityLabel}
+      onAction={handleOpen}
+    />
+  );
 
-  private handleOpen = () => {
-    const {title, onOpen} = this.props;
-    onOpen(title);
-  };
+  return (
+    <Popover
+      active={Boolean(active)}
+      activator={popoverActivator}
+      preferredAlignment="left"
+      onClose={handleClose}
+    >
+      <ActionList items={actions} onActionAnyItem={handleClose} />
+      {details && <div className={styles.Details}>{details}</div>}
+    </Popover>
+  );
 }

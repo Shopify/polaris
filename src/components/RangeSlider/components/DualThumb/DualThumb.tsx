@@ -260,6 +260,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
                 onMouseDown={this.handleMouseDownThumbLower}
                 onTouchStart={this.handleTouchStartThumbLower}
                 ref={this.thumbLower}
+                disabled={disabled}
               />
               {outputMarkupLower}
               <button
@@ -282,6 +283,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
                 onMouseDown={this.handleMouseDownThumbUpper}
                 onTouchStart={this.handleTouchStartThumbUpper}
                 ref={this.thumbUpper}
+                disabled={disabled}
               />
               {outputMarkupUpper}
             </div>
