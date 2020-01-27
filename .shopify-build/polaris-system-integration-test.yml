@@ -1,0 +1,27 @@
+containers:
+  default:
+    docker: gcr.io/shopify-docker-images/apps/production/web-platform-ci-node:10.18.0-yarn-1.21.1
+
+shared:
+  build-polaris: &build-polaris
+    label: 'Build polaris'
+    container: default
+    timeout: 35m
+    dependencies:
+      - yarn
+    run:
+      - ./.shopify-build/build-and-upload-to-gcp.sh
+  build-web: &build-web
+    label: 'Build polaris'
+    trigger: 'web-polaris-builder'
+    build:
+      branch: add-polaris-build-pipeline
+      commit: HEAD
+      env:
+        POLARIS_ARTIFACT_FILENAME: 'shopify-polaris-${BUILDKITE_COMMIT}.tgz'
+
+steps:
+  - <<: *build-polaris
+  - wait: ~
+    continue_on_failure: false
+  - <<: *build-web
