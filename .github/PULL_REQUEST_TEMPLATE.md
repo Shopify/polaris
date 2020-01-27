@@ -1,4 +1,4 @@
-<!-- PR title: [ComponentName] *Verb*ing a ... -->
+<!-- PR title: [ComponentName] *Verb* a ... -->
 
 ### WHY are these changes introduced?
 
