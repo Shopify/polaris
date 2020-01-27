@@ -1,8 +1,7 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {Key} from '../../types';
 
-import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {EventListener} from '../EventListener';
 import {KeypressListener, KeyEvent} from '../KeypressListener';
 import {Focus} from '../Focus';
@@ -26,17 +25,14 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
 
   const focusTrapWrapper = useRef<HTMLDivElement>(null);
 
-  const handleTrappingChange = () => {
-    if (
-      focusTrapWrapper.current &&
-      focusTrapWrapper.current.contains(document.activeElement)
-    ) {
-      return false;
-    }
-    return trapping;
-  };
-
-  useComponentDidMount(() => setFocusSelf(handleTrappingChange()));
+  useEffect(() => {
+    setFocusSelf(
+      !(
+        focusTrapWrapper.current &&
+        focusTrapWrapper.current.contains(document.activeElement)
+      ),
+    );
+  }, []);
 
   const shouldDisableFirstElementFocus = () => {
     if (shouldFocusSelf === undefined) {

@@ -2,6 +2,7 @@ import React from 'react';
 import {Icon, Caption, TextStyle} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';
 import {fileUpload as fileUploadImage, imageUpload} from '../../../images';
@@ -148,5 +149,57 @@ describe('<FileUpload />', () => {
 
     fileUpload.setProps({children: <FileUpload />});
     expect(fileUpload.find(TextStyle).text()).toBe('or drop files to upload');
+  });
+
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled', () => {
+      const fileUpload = mountWithApp(
+        <DropZoneContext.Provider
+          value={{
+            size: 'extraLarge',
+            type: 'file',
+            ...defaultStates,
+            measuring: true,
+          }}
+        >
+          <FileUpload />
+        </DropZoneContext.Provider>,
+        {
+          features: {unstableGlobalTheming: true},
+        },
+      );
+
+      expect(fileUpload).toContainReactComponent('div', {
+        className: 'FileUpload globalTheming measuring',
+      });
+      expect(fileUpload).toContainReactComponent('div', {
+        className: 'Button globalTheming',
+      });
+    });
+
+    it('does not add a global theming class when global theming is disabled', () => {
+      const fileUpload = mountWithApp(
+        <DropZoneContext.Provider
+          value={{
+            size: 'extraLarge',
+            type: 'file',
+            ...defaultStates,
+            measuring: true,
+          }}
+        >
+          <FileUpload />
+        </DropZoneContext.Provider>,
+        {
+          features: {unstableGlobalTheming: false},
+        },
+      );
+
+      expect(fileUpload).not.toContainReactComponent('div', {
+        className: 'FileUpload globalTheming measuring',
+      });
+      expect(fileUpload).not.toContainReactComponent('div', {
+        className: 'Button globalTheming',
+      });
+    });
   });
 });

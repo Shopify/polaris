@@ -40,10 +40,12 @@ $resource-list-item-variables: (
   cursor: pointer;
 
   &:hover {
-    background-image: linear-gradient(
-      rgba(223, 227, 232, 0.3),
-      rgba(223, 227, 232, 0.3)
-    );
+    &:not(.globalTheming) {
+      background-image: linear-gradient(
+        rgba(223, 227, 232, 0.3),
+        rgba(223, 227, 232, 0.3)
+      );
+    }
 
     &:not(.persistActions) {
       // stylelint-disable-next-line selector-max-specificity
@@ -59,7 +61,7 @@ $resource-list-item-variables: (
     }
   }
 
-  &:active {
+  &:active:not(.globalTheming) {
     background-image: linear-gradient(
       rgba(179, 188, 245, 0.1),
       rgba(179, 188, 245, 0.1)
@@ -67,7 +69,7 @@ $resource-list-item-variables: (
   }
 }
 
-.selected {
+.selected:not(.globalTheming) {
   background-image: linear-gradient(
     rgba(179, 188, 245, 0.15),
     rgba(179, 188, 245, 0.15)
@@ -81,6 +83,7 @@ $resource-list-item-variables: (
       ),
       linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
 
+    // stylelint-disable-next-line selector-max-specificity
     &:hover {
       box-shadow: inset 0.2rem 0 0 color('indigo');
       background-image: linear-gradient(
@@ -109,7 +112,7 @@ $resource-list-item-variables: (
   }
 }
 
-.focused {
+.focused:not(.globalTheming) {
   box-shadow: inset 0.2rem 0 0 color('indigo');
   background-image: linear-gradient(
     rgba(223, 227, 232, 0.3),
@@ -283,5 +286,32 @@ $resource-list-item-variables: (
     flex: 0 0 resource-list-item(disclosure-width);
     justify-content: center;
     align-items: center;
+  }
+}
+
+.globalTheming {
+  @include focus-ring;
+
+  // stylelint-disable selector-max-specificity
+  &.focused:not(:active):not(.focusedInner) {
+    @include breakpoint-after(resource-list-item(breakpoint-small)) {
+      @include focus-ring($style: 'focused');
+    }
+
+    @include breakpoint-before(resource-list-item(breakpoint-small), false) {
+      box-shadow: inset 0.2rem 0 0 var(--p-focused);
+    }
+  }
+
+  &.selected {
+    background-color: var(--p-surface-selected);
+  }
+
+  &:hover {
+    background-color: var(--p-surface-selected-hovered);
+  }
+
+  &:active {
+    background-color: var(--p-surface-selected-pressed);
   }
 }

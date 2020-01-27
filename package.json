@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "4.11.0",
+  "version": "4.12.0-rc.2",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -96,6 +96,7 @@
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/node": "^7.6.1",
+    "@octokit/rest": "^16.36.0",
     "@percy/storybook": "^3.2.0",
     "@shopify/jest-dom-mocks": "^2.1.1",
     "@shopify/react-testing": "^1.8.0",

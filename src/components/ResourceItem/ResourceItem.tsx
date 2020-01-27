@@ -4,6 +4,7 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
+import {useFeatures} from '../../utilities/features';
 import {DisableableAction} from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
@@ -65,6 +66,7 @@ export type ResourceItemProps = PropsWithUrl | PropsWithClick;
 interface PropsFromWrapper {
   context: React.ContextType<typeof ResourceListContext>;
   i18n: ReturnType<typeof useI18n>;
+  features: ReturnType<typeof useFeatures>;
 }
 
 interface State {
@@ -136,6 +138,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       name,
       context: {selectable, selectMode, loading, resourceName},
       i18n,
+      features: {unstableGlobalTheming},
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -186,6 +189,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
 
     const className = classNames(
       styles.ResourceItem,
+      unstableGlobalTheming && styles.globalTheming,
       focused && styles.focused,
       selectable && styles.selectable,
       selected && styles.selected,
@@ -435,6 +439,7 @@ export function ResourceItem(props: ResourceItemProps) {
     <BaseResourceItem
       {...props}
       context={useContext(ResourceListContext)}
+      features={useFeatures()}
       i18n={useI18n()}
     />
   );

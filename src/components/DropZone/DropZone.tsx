@@ -30,6 +30,7 @@ import {isServer} from '../../utilities/target';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
+import {useFeatures} from '../../utilities/features';
 
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
@@ -142,6 +143,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   onDragOver,
   onDragLeave,
 }: DropZoneProps) {
+  const {unstableGlobalTheming} = useFeatures();
   const node = useRef<HTMLDivElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
 
@@ -359,6 +361,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     focused && styles.focused,
     (active || dragging) && styles.isDragging,
     disabled && styles.isDisabled,
+    unstableGlobalTheming && styles.globalTheming,
     (internalError || error) && styles.hasError,
     styles[variationName('size', size)],
     measuring && styles.measuring,
@@ -425,8 +428,13 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     color: 'red' | 'indigo',
     text: string,
   ) {
+    const overlayClass = classNames(
+      styles.Overlay,
+      unstableGlobalTheming && styles.globalTheming,
+    );
+
     return (
-      <div className={styles.Overlay}>
+      <div className={overlayClass}>
         <Stack vertical spacing="tight">
           <Icon source={icon} color={color} />
           {size === 'extraLarge' && (
