@@ -6,7 +6,9 @@ Fixes #0000
 
 ### WHAT is this pull request doing?
 
-Before / after screenshots and gifs are appreciated for UI changes
+Before / after screenshots are appreciated for UI changes.
+Include alt text that describes the screenshot.
+Put any gifs inside a `<details>` block.
 
 ### Playground code
 
