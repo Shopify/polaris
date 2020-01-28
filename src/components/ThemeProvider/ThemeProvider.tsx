@@ -1,11 +1,10 @@
 import React, {useMemo, useEffect, useContext} from 'react';
+import DefaultThemeColors from '@shopify/polaris-tokens/dist/base.json';
 import {
   ThemeContext,
   ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
-  DefaultThemeColors,
-  DefaultColorScheme,
   Tokens,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
@@ -112,7 +111,7 @@ function getColorScheme(
   parentColorScheme: OriginalColorScheme | undefined,
 ) {
   if (colorScheme == null) {
-    return parentColorScheme || DefaultColorScheme;
+    return parentColorScheme || 'light';
   } else if (isInverseColorScheme(colorScheme)) {
     return parentColorScheme === 'dark' || parentColorScheme === undefined
       ? 'light'

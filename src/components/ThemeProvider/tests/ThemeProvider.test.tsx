@@ -231,7 +231,7 @@ describe('<ThemeProvider />', () => {
 
       expect(themeProvider.findAll('div')[1]).toHaveReactProps({
         style: expect.objectContaining({
-          '--p-surface': 'hsla(0, 0%, 100%, 1)',
+          '--p-surface': 'rgba(255, 255, 255, 1)',
         }),
       });
     });
@@ -241,73 +241,67 @@ describe('<ThemeProvider />', () => {
         'Dark parent, undefined child, child has colors',
         {colorScheme: 'dark'},
         {UNSTABLE_colors: {critical: '#FFFEEE'}},
-        'hsla(58, 100%, 7.000000000000001%, 1)',
+        'rgba(34, 33, 0, 1)',
       ],
       [
         'Light parent, undefined child, child has colors',
         {colorScheme: 'light'},
         {UNSTABLE_colors: {critical: '#FFFEEE'}},
-        'hsla(57, 100%, 89%, 1)',
+        'rgba(255, 252, 198, 1)',
       ],
       [
         'Dark parent, light child, child has colors',
         {colorScheme: 'dark'},
         {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
-        'hsla(57, 100%, 89%, 1)',
+        'rgba(255, 252, 198, 1)',
       ],
       [
         'Light parent, dark child, child has colors',
         {colorScheme: 'light'},
         {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
-        'hsla(58, 100%, 7.000000000000001%, 1)',
+        'rgba(34, 33, 0, 1)',
       ],
       [
         'Dark parent, undefined child, both have colors',
         {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
         {UNSTABLE_colors: {critical: '#FFFEEE'}},
-        'hsla(58, 100%, 7.000000000000001%, 1)',
+        'rgba(34, 33, 0, 1)',
       ],
       [
         'Light parent, undefined child, both have colors',
         {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
         {UNSTABLE_colors: {critical: '#FFFEEE'}},
-        'hsla(57, 100%, 89%, 1)',
+        'rgba(255, 252, 198, 1)',
       ],
       [
         'Dark parent, light child, both have colors',
         {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
         {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
-        'hsla(57, 100%, 89%, 1)',
-      ],
-      [
-        'Dark parent, light child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
-        'hsla(57, 100%, 89%, 1)',
+        'rgba(255, 252, 198, 1)',
       ],
       [
         'Light parent, dark child, both have colors',
         {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
         {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
-        'hsla(58, 100%, 7.000000000000001%, 1)',
+        'rgba(34, 33, 0, 1)',
       ],
       [
         'Dark parent, inverse child, both have colors',
         {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
         {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
-        'hsla(57, 100%, 89%, 1)',
+        'rgba(255, 252, 198, 1)',
       ],
       [
         'Light parent, inverse child, both have colors',
         {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
         {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
-        'hsla(58, 100%, 7.000000000000001%, 1)',
+        'rgba(34, 33, 0, 1)',
       ],
       [
         'Undefined parent, inverse child, both have colors',
         {UNSTABLE_colors: {critical: '#000000'}},
         {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
-        'hsla(58, 100%, 7.000000000000001%, 1)',
+        'rgba(34, 33, 0, 1)',
       ],
       [
         'Dark parent, light child with no colors',

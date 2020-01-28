@@ -1,5 +1,5 @@
 import tokens from '@shopify/polaris-tokens';
-import {hexToHsluv, hsluvToHex} from 'hsluv';
+import {colorFactory} from '@shopify/polaris-tokens/color-factory';
 import {HSLColor, HSLAColor} from '../color-types';
 import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
 import {isLight} from '../color-validation';
@@ -7,18 +7,7 @@ import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
 import {compose} from '../compose';
 import {needsVariantList} from './config';
-import {
-  ThemeConfig,
-  Theme,
-  CustomPropertiesLike,
-  RoleVariants,
-  Role,
-  RoleColors,
-  ColorScheme,
-  Lambda,
-} from './types';
-
-import {roleVariants} from './role-variants';
+import {ThemeConfig, Theme, CustomPropertiesLike, ColorScheme} from './types';
 
 interface CustomPropertiesConfig extends ThemeConfig {
   colorScheme: ColorScheme;
@@ -32,7 +21,7 @@ export function buildCustomProperties(
   const {UNSTABLE_colors = {}, colorScheme} = themeConfig;
   return globalTheming
     ? customPropertyTransformer({
-        ...buildColors(UNSTABLE_colors, roleVariants, colorScheme),
+        ...colorFactory(UNSTABLE_colors, colorScheme),
         ...tokens,
       })
     : buildLegacyColors(themeConfig);
@@ -59,57 +48,6 @@ function toString(obj?: CustomPropertiesLike) {
   } else {
     return undefined;
   }
-}
-
-function hexToHsluvObj(hex: string) {
-  const [hue, saturation, lightness] = hexToHsluv(hex);
-
-  return {
-    hue,
-    saturation,
-    lightness,
-  };
-}
-
-export function buildColors(
-  colors: Partial<RoleColors>,
-  roleVariants: Partial<RoleVariants>,
-  colorScheme: ColorScheme,
-) {
-  return Object.assign(
-    {},
-    ...Object.entries(colors).map(([role, hex]: [Role, string]) => {
-      const base = hexToHsluvObj(hex);
-      const variants = roleVariants[role] || [];
-      return {
-        ...variants.reduce((accumulator, {name, ...settings}) => {
-          const {
-            hue = base.hue,
-            saturation = base.saturation,
-            lightness = base.lightness,
-            alpha = 1,
-          } = settings[colorScheme];
-
-          const resolve = (value: number | Lambda, base: number) =>
-            typeof value === 'number' ? value : value(base);
-
-          return {
-            ...accumulator,
-            [name]: hslToString({
-              ...colorToHsla(
-                hsluvToHex([
-                  resolve(hue, base.hue),
-                  resolve(saturation, base.saturation),
-                  resolve(lightness, base.lightness),
-                ]),
-              ),
-              alpha,
-            }),
-          };
-        }, {}),
-      };
-    }),
-  );
 }
 
 function customPropertyTransformer(
