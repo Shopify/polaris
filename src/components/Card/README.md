@@ -249,7 +249,7 @@ Use footer actions for a card’s most important actions, or actions merchants s
 >
   <Card.Section title="Items">
     <List>
-      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
+      <List.Item>1 × Oasis Glass, 4-Pack</List.Item>
       <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
     </List>
   </Card.Section>
@@ -294,7 +294,7 @@ When multiple secondary footer actions are provided, they will render in an acti
 >
   <Card.Section title="Items">
     <List>
-      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
+      <List.Item>1 × Oasis Glass, 4-Pack</List.Item>
       <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
     </List>
   </Card.Section>
@@ -341,7 +341,7 @@ Use when a card action will delete merchant data or be otherwise difficult to re
 >
   <Card.Section title="Items">
     <List>
-      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
+      <List.Item>1 × Oasis Glass, 4-Pack</List.Item>
       <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
     </List>
   </Card.Section>
