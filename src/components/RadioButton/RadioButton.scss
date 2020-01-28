@@ -111,9 +111,7 @@
       background: ms-high-contrast-color('text');
     }
 
-    @include focus-ring(
-      $offset: var(--p-checkbox-radio-button-focus-ring-offset)
-    );
+    @include focus-ring($border-width: var(--control-border-width));
 
     &::after {
       border-radius: 50%;
@@ -129,10 +127,7 @@
   .Input {
     &:focus {
       + .Backdrop {
-        @include focus-ring(
-          $offset: var(--p-checkbox-radio-button-focus-ring-offset),
-          $style: 'focused'
-        );
+        @include focus-ring($style: 'focused');
         &::after {
           border-radius: 50%;
         }
