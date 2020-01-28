@@ -185,7 +185,7 @@ $dropzone-stacking-order: (
   }
 
   .Container {
-    @include focus-ring($border-width: rem(2px));
+    @include focus-ring($border-width: border-width(thick));
   }
 
   &.Overlay {
