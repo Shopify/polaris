@@ -34,7 +34,6 @@ const Overrides = {
   textFieldSpinnerOffset: rem('2px'),
   textFieldFocusRingOffset: rem('-4px'),
   textFieldFocusRingBorderRadius: rem('7px'),
-  checkboxRadioButtonFocusRingOffset: rem('3px'),
   buttonGroupItemSpacing: rem('2px'),
   duration100: '100ms',
   duration150: '150ms',

@@ -9,7 +9,7 @@ import {InlineError} from '../InlineError';
 
 import styles from './Labelled.scss';
 
-export {Action, labelID};
+export {labelID};
 
 export interface LabelledProps {
   /** A unique identifier for the label */

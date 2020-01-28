@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Item, ItemPosition} from './components';
+import {Item} from './components';
 import styles from './Connected.scss';
 
 export interface ConnectedProps {
@@ -14,17 +14,17 @@ export interface ConnectedProps {
 
 export function Connected({children, left, right}: ConnectedProps) {
   const leftConnectionMarkup = left ? (
-    <Item position={ItemPosition.Left}>{left}</Item>
+    <Item position="left">{left}</Item>
   ) : null;
 
   const rightConnectionMarkup = right ? (
-    <Item position={ItemPosition.Right}>{right}</Item>
+    <Item position="right">{right}</Item>
   ) : null;
 
   return (
     <div className={styles.Connected}>
       {leftConnectionMarkup}
-      <Item position={ItemPosition.Primary}>{children}</Item>
+      <Item position="primary">{children}</Item>
       {rightConnectionMarkup}
     </div>
   );
