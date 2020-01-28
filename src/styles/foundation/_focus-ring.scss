@@ -1,7 +1,7 @@
 /// Sets the focus ring for an interactive element
 /// @param {String} $size - The size of the border radius on the focus ring.
-/// @param {String} $border-width - The border width of your element in rems.
 /// @param {String} $style - Focus ring state.
+/// @param {Number} $border-width - The border width of your element in rems.
 ///
 
 @mixin focus-ring($size: 'base', $border-width: rem(0), $style: 'base') {
