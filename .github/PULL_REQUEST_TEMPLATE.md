@@ -8,7 +8,7 @@ Fixes #0000
 
 Before / after screenshots are appreciated for UI changes.
 Include alt text that describes the screenshot.
-Put any gifs inside a `<details>` block.
+Put any gifs inside a `<details>` block with a `<summary>` to create a toggle.
 
 ### Playground code
 
