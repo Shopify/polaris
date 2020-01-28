@@ -1,6 +1,8 @@
 import React from 'react';
+import {timer} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Checkbox} from 'components';
 import {Cell, Navigation} from '../components';
 import {DataTable, DataTableProps} from '../DataTable';
@@ -28,6 +30,34 @@ describe('<DataTable />', () => {
   ];
 
   const defaultProps: DataTableProps = {columnContentTypes, headings, rows};
+
+  beforeEach(() => {
+    timer.mock();
+  });
+
+  afterEach(() => {
+    timer.restore();
+  });
+
+  it('does not throw an error when there are no header cells', () => {
+    function test() {
+      const dataTable = mountWithApp(
+        <DataTable columnContentTypes={[]} headings={[]} rows={[]} />,
+      );
+      const table = dataTable.find('table')!.domNode;
+
+      Object.defineProperty(table, 'scrollWidth', {
+        value: 1,
+        writable: true,
+        configurable: true,
+      });
+
+      window.dispatchEvent(new Event('resize'));
+      timer.runAllTimers();
+    }
+
+    expect(test).not.toThrow();
+  });
 
   describe('columnContentTypes', () => {
     it('sets the provided contentType of Cells in each column', () => {
