@@ -25,7 +25,6 @@ import {
   Loading,
   ContextualSaveBar,
   CSSAnimation,
-  AnimationType,
 } from './components';
 
 import styles from './Frame.scss';
@@ -182,7 +181,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
       <CSSAnimation
         in={showContextualSaveBar}
         className={styles.ContextualSaveBar}
-        type={AnimationType.Fade}
+        type="fade"
       >
         <ContextualSaveBar {...this.contextualSaveBar} />
       </CSSAnimation>

@@ -24,7 +24,7 @@ import {Stack} from '../Stack';
 import {Caption} from '../Caption';
 import {DisplayText} from '../DisplayText';
 import {VisuallyHidden} from '../VisuallyHidden';
-import {Labelled, Action} from '../Labelled';
+import {Labelled, LabelledProps} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
 import {isServer} from '../../utilities/target';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -45,7 +45,7 @@ export interface DropZoneProps {
   /** Label for the file input */
   label?: string;
   /** Adds an action to the label */
-  labelAction?: Action;
+  labelAction?: LabelledProps['action'];
   /** Visually hide the label */
   labelHidden?: boolean;
   /** ID for file input */

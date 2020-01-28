@@ -1,9 +1,10 @@
 import React from 'react';
 import {useUniqueId} from '../../utilities/unique-id';
 import {RangeSliderProps, RangeSliderValue, DualValue} from './types';
-import {RangeSliderDefault} from './utilities';
 
 import {SingleThumb, DualThumb} from './components';
+
+export {RangeSliderProps};
 
 // The script in the styleguide that generates the Props Explorer data expects
 // that the interface defining the props is defined in this file, not imported
@@ -12,9 +13,9 @@ import {SingleThumb, DualThumb} from './components';
 interface Props extends RangeSliderProps {}
 
 export function RangeSlider({
-  min = RangeSliderDefault.Min,
-  max = RangeSliderDefault.Max,
-  step = RangeSliderDefault.Step,
+  min = 0,
+  max = 100,
+  step = 1,
   value,
   ...rest
 }: Props) {
