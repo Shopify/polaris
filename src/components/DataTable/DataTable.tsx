@@ -217,34 +217,36 @@ class DataTableInner extends React.PureComponent<
     } = this;
 
     if (condensed && table && scrollContainer && dataTable) {
-      const headerCells = table.querySelectorAll(
-        headerCell.selector,
-      ) as NodeListOf<HTMLElement>;
+      const headerCells = table.querySelectorAll(headerCell.selector);
 
-      const firstVisibleColumnIndex = headerCells.length - 1;
-      const tableLeftVisibleEdge = scrollContainer.scrollLeft;
+      if (headerCells.length > 0) {
+        const firstVisibleColumnIndex = headerCells.length - 1;
+        const tableLeftVisibleEdge = scrollContainer.scrollLeft;
 
-      const tableRightVisibleEdge =
-        scrollContainer.scrollLeft + dataTable.offsetWidth;
+        const tableRightVisibleEdge =
+          scrollContainer.scrollLeft + dataTable.offsetWidth;
 
-      const tableData = {
-        firstVisibleColumnIndex,
-        tableLeftVisibleEdge,
-        tableRightVisibleEdge,
-      };
+        const tableData = {
+          firstVisibleColumnIndex,
+          tableLeftVisibleEdge,
+          tableRightVisibleEdge,
+        };
 
-      const columnVisibilityData = [...headerCells].map(
-        measureColumn(tableData),
-      );
+        const columnVisibilityData = [...headerCells].map(
+          measureColumn(tableData),
+        );
 
-      const lastColumn = columnVisibilityData[columnVisibilityData.length - 1];
+        const lastColumn =
+          columnVisibilityData[columnVisibilityData.length - 1];
 
-      return {
-        columnVisibilityData,
-        ...getPrevAndCurrentColumns(tableData, columnVisibilityData),
-        isScrolledFarthestLeft: tableLeftVisibleEdge === 0,
-        isScrolledFarthestRight: lastColumn.rightEdge <= tableRightVisibleEdge,
-      };
+        return {
+          columnVisibilityData,
+          ...getPrevAndCurrentColumns(tableData, columnVisibilityData),
+          isScrolledFarthestLeft: tableLeftVisibleEdge === 0,
+          isScrolledFarthestRight:
+            lastColumn.rightEdge <= tableRightVisibleEdge,
+        };
+      }
     }
 
     return {
