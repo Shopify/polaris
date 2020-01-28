@@ -3,9 +3,7 @@ import {classNames, variationName} from '../../../../utilities/css';
 
 import styles from './CSSAnimation.scss';
 
-export enum AnimationType {
-  Fade = 'fade',
-}
+type AnimationType = 'fade';
 
 export interface CSSAnimationProps {
   in: boolean;

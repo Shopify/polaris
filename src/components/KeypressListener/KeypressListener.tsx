@@ -11,15 +11,12 @@ export interface KeypressListenerProps {
   keyEvent?: KeyEvent;
 }
 
-export enum KeyEvent {
-  KeyDown = 'keydown',
-  KeyUp = 'keyup',
-}
+type KeyEvent = 'keydown' | 'keyup';
 
 export function KeypressListener({
   keyCode,
   handler,
-  keyEvent = KeyEvent.KeyUp,
+  keyEvent = 'keyup',
 }: KeypressListenerProps) {
   const handleKeyEvent = (event: KeyboardEvent) => {
     if (event.keyCode === keyCode) {

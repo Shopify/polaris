@@ -2,12 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Option} from '../components';
-import {
-  OptionList,
-  OptionListProps,
-  OptionDescriptor,
-  SectionDescriptor,
-} from '../OptionList';
+import {OptionList, OptionListProps, OptionDescriptor} from '../OptionList';
 
 describe('<OptionList />', () => {
   const defaultProps: OptionListProps = {
@@ -81,7 +76,7 @@ describe('<OptionList />', () => {
 
   it('renders options', () => {
     const {options} = defaultProps;
-    const sections: SectionDescriptor[] = [];
+    const sections: OptionListProps['sections'] = [];
     const optionWrappers = mountWithAppProvider<OptionListProps>(
       <OptionList {...defaultProps} sections={sections} />,
     ).find(Option);
@@ -119,7 +114,7 @@ describe('<OptionList />', () => {
       <OptionList {...defaultProps} />,
     );
 
-    const newSections: SectionDescriptor[] = [
+    const newSections: OptionListProps['sections'] = [
       {
         title: 'Other products',
         options: [
@@ -158,7 +153,7 @@ describe('<OptionList />', () => {
       },
     ];
 
-    const newSections: SectionDescriptor[] = [
+    const newSections: OptionListProps['sections'] = [
       {
         title: 'Other products',
         options: [
@@ -209,7 +204,7 @@ describe('<OptionList />', () => {
       <OptionList {...defaultProps} />,
     );
 
-    const newSections: SectionDescriptor[] = [
+    const newSections: OptionListProps['sections'] = [
       {
         title: 'Other products',
         options: [
@@ -290,7 +285,7 @@ describe('<OptionList />', () => {
 
     it('renders options', () => {
       const {options} = defaultProps;
-      const sections: SectionDescriptor[] = [];
+      const sections: OptionListProps['sections'] = [];
       const optionWrappers = mountWithAppProvider<OptionListProps>(
         <OptionList {...defaultProps} sections={sections} allowMultiple />,
       ).find(Option);
@@ -328,7 +323,7 @@ describe('<OptionList />', () => {
         <OptionList {...defaultProps} allowMultiple />,
       );
 
-      const newSections: SectionDescriptor[] = [
+      const newSections: OptionListProps['sections'] = [
         {
           title: 'Other products',
           options: [
@@ -367,7 +362,7 @@ describe('<OptionList />', () => {
         },
       ];
 
-      const newSections: SectionDescriptor[] = [
+      const newSections: OptionListProps['sections'] = [
         {
           title: 'Other products',
           options: [
@@ -420,7 +415,7 @@ describe('<OptionList />', () => {
         <OptionList {...defaultProps} allowMultiple />,
       );
 
-      const newSections: SectionDescriptor[] = [
+      const newSections: OptionListProps['sections'] = [
         {
           title: 'Other products',
           options: [
@@ -533,7 +528,7 @@ function noop() {}
 
 function firstOption(
   options?: OptionDescriptor[],
-  sections?: SectionDescriptor[],
+  sections?: OptionListProps['sections'],
 ): string {
   const firstOptionsValue =
     options == null || options === [] ? '' : options[0].value;
@@ -546,7 +541,7 @@ function firstOption(
 
 function totalOptions(
   options?: OptionDescriptor[],
-  sections?: SectionDescriptor[],
+  sections?: OptionListProps['sections'],
 ): number {
   return (
     (options == null ? 0 : options.length) +

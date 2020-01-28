@@ -2,11 +2,7 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import styles from '../../Connected.scss';
 
-export enum ItemPosition {
-  Left,
-  Primary,
-  Right,
-}
+type ItemPosition = 'left' | 'right' | 'primary';
 
 export interface ItemProps {
   /** Position of the item */
@@ -28,7 +24,7 @@ export class Item extends React.PureComponent<ItemProps, State> {
     const className = classNames(
       styles.Item,
       focused && styles['Item-focused'],
-      position === ItemPosition.Primary
+      position === 'primary'
         ? styles['Item-primary']
         : styles['Item-connection'],
     );
