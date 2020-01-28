@@ -26,10 +26,14 @@ import {
   UniqueIdFactoryContext,
   globalIdGeneratorFactory,
 } from '../../utilities/unique-id';
+import {FocusManagerContext} from '../../utilities/focus-manager';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
 type MediaQueryContextType = NonNullable<
   React.ContextType<typeof MediaQueryContext>
+>;
+type FocusManagerContextType = NonNullable<
+  React.ContextType<typeof FocusManagerContext>
 >;
 
 /**
@@ -45,6 +49,7 @@ export interface WithPolarisTestProviderOptions {
   theme?: ThemeConfig;
   mediaQuery?: Partial<MediaQueryContextType>;
   features?: Features;
+  focusManager?: Partial<FocusManagerContextType>;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
 }
@@ -59,6 +64,12 @@ const defaultMediaQuery: MediaQueryContextType = {
   isNavigationCollapsed: false,
 };
 
+const defaultFocusManager: FocusManagerContextType = {
+  add: (_) => {},
+  remove: (_) => true,
+  trapFocusList: [],
+};
+
 export function PolarisTestProvider({
   strict,
   children,
@@ -69,6 +80,7 @@ export function PolarisTestProvider({
   mediaQuery,
   features = {},
   frame,
+  focusManager,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
 
@@ -97,6 +109,8 @@ export function PolarisTestProvider({
 
   const mergedMediaQuery = merge(defaultMediaQuery, mediaQuery);
 
+  const mergedFocusManager = merge(defaultFocusManager, focusManager);
+
   return (
     <Wrapper>
       <FeaturesContext.Provider value={features}>
@@ -108,9 +122,13 @@ export function PolarisTestProvider({
                   <LinkContext.Provider value={link}>
                     <ThemeContext.Provider value={mergedTheme}>
                       <MediaQueryContext.Provider value={mergedMediaQuery}>
-                        <FrameContext.Provider value={mergedFrame}>
-                          {children}
-                        </FrameContext.Provider>
+                        <FocusManagerContext.Provider
+                          value={mergedFocusManager}
+                        >
+                          <FrameContext.Provider value={mergedFrame}>
+                            {children}
+                          </FrameContext.Provider>
+                        </FocusManagerContext.Provider>
                       </MediaQueryContext.Provider>
                     </ThemeContext.Provider>
                   </LinkContext.Provider>

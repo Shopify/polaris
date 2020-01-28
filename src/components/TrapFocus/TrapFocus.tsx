@@ -12,6 +12,7 @@ import {
   findLastKeyboardFocusableNode,
   focusLastKeyboardFocusableNode,
 } from '../../utilities/focus';
+import {useFocusManager} from '../../utilities/focus-manager';
 
 export interface TrapFocusProps {
   trapping?: boolean;
@@ -22,20 +23,21 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
   const [shouldFocusSelf, setFocusSelf] = useState<boolean | undefined>(
     undefined,
   );
-
+  const {canSafelyFocus} = useFocusManager();
   const focusTrapWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setFocusSelf(
       !(
+        canSafelyFocus &&
         focusTrapWrapper.current &&
         focusTrapWrapper.current.contains(document.activeElement)
       ),
     );
-  }, []);
+  }, [canSafelyFocus]);
 
   const shouldDisableFirstElementFocus = () => {
-    if (shouldFocusSelf === undefined) {
+    if (shouldFocusSelf === undefined || !canSafelyFocus) {
       return true;
     }
 
@@ -56,6 +58,7 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
     }
 
     if (
+      canSafelyFocus &&
       focusTrapWrapper.current !== event.target &&
       !focusTrapWrapper.current.contains(event.target as Node)
     ) {
