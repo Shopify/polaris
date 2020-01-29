@@ -74,7 +74,6 @@
 }
 
 .RadioButton.globalTheming {
-  --control-border-width: #{rem(2px)};
   --icon-size: #{rem(10px)};
   margin: var(--p-choice-margin, 0);
 
@@ -86,7 +85,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    border: var(--control-border-width) solid var(--p-border-secondary);
+    border: var(--p-control-border-width) solid var(--p-border-secondary);
     border-radius: 50%;
     background-color: var(--p-surface);
     transition: border-color var(--p-duration-1-0-0) var(--p-ease);
@@ -111,7 +110,7 @@
       background: ms-high-contrast-color('text');
     }
 
-    @include focus-ring($border-width: var(--control-border-width));
+    @include focus-ring($border-width: var(--p-control-border-width));
 
     &::after {
       border-radius: 50%;

@@ -24,6 +24,7 @@ const Overrides = {
   nonNullContent: "''",
   choiceSize: rem('20px'),
   choiceMargin: rem('1px'),
+  controlBorderWidth: rem('2px'),
   bannerBorderDefault: buildBannerBorder('--p-border'),
   bannerBorderSuccess: buildBannerBorder('--p-border-success'),
   bannerBorderHighlight: buildBannerBorder('--p-border-highlight'),

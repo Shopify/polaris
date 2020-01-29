@@ -75,6 +75,10 @@ $chekbox-label-margin: rem(20px);
     border-radius: border-radius();
     box-shadow: none;
     background: transparent;
+    // stylelint-disable-next-line selector-max-class
+    &.globalTheming {
+      border: none;
+    }
 
     &:hover {
       background: transparent;
@@ -100,6 +104,12 @@ $chekbox-label-margin: rem(20px);
   height: $control-size;
   width: $control-size;
   margin-left: (-1 * (spacing(tight) + rem(1px))); // 1px accounts for border
+
+  .globalTheming & {
+    height: var(--p-choice-size);
+    width: var(--p-choice-size);
+    margin-left: calc(-1 * #{spacing(tight)} - var(--p-control-border-width));
+  }
 }
 
 .Label {
@@ -111,4 +121,7 @@ $chekbox-label-margin: rem(20px);
   text-overflow: ellipsis;
   // padding to fix the bottom of letters being cutoff by overflow: hidden
   padding: rem(1px) 0;
+  .globalTheming & {
+    margin-left: calc(#{$chekbox-label-margin} - var(--p-control-border-width));
+  }
 }
