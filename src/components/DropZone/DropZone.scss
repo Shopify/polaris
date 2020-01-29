@@ -193,7 +193,9 @@ $dropzone-stacking-order: (
 
   &.Overlay {
     // Same calculation used for focus-ring
-    border-radius: calc(var(--p-border-radius-base) + rem(3px));
+    border-radius: calc(
+      var(--p-border-radius-base) + #{border-width(thick)} + #{rem(1px)}
+    );
   }
 
   &.hasOutline {
