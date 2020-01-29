@@ -30,9 +30,7 @@ export {WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT} from '.
 
 export {AppBridgeContext} from './utilities/app-bridge';
 
-/* eslint-disable @typescript-eslint/camelcase */
 export {
   toCssCustomPropertySyntax as UNSTABLE_toCssCustomPropertySyntax,
   Tokens as UNSTABLE_Tokens,
 } from './utilities/theme';
-/* eslint-enable @typescript-eslint/camelcase */

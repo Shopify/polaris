@@ -108,7 +108,7 @@ describe('<Portal />', () => {
     });
     expect(setSpy).toHaveBeenCalledWith(
       'style',
-      portal.context().UNSTABLE_cssCustomProperties,
+      portal.context().cssCustomProperties,
     );
   });
 

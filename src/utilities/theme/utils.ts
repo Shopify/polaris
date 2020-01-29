@@ -36,7 +36,7 @@ export function buildThemeContext(
   const {topBar, ...newDesignLanguageColors} = colors;
   return {
     logo,
-    UNSTABLE_cssCustomProperties: toString(cssCustomProperties),
+    cssCustomProperties: toString(cssCustomProperties),
     colors: newDesignLanguageColors,
     colorScheme,
   };

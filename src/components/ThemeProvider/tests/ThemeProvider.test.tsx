@@ -138,8 +138,8 @@ describe('<ThemeProvider />', () => {
     );
 
     function Child() {
-      const {UNSTABLE_cssCustomProperties} = useTheme();
-      expect(UNSTABLE_cssCustomProperties).toBeTruthy();
+      const {cssCustomProperties} = useTheme();
+      expect(cssCustomProperties).toBeTruthy();
       return null;
     }
   });
@@ -153,8 +153,8 @@ describe('<ThemeProvider />', () => {
     );
 
     function Child() {
-      const {UNSTABLE_cssCustomProperties} = useTheme();
-      expect(UNSTABLE_cssCustomProperties).toBeUndefined();
+      const {cssCustomProperties} = useTheme();
+      expect(cssCustomProperties).toBeUndefined();
       return null;
     }
   });

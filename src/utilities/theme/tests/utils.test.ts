@@ -143,7 +143,7 @@ describe('buildThemeContext', () => {
       buildThemeContext({colors: {}, logo: {}}, {foo: 'bar'}),
     ).toStrictEqual({
       logo: {},
-      UNSTABLE_cssCustomProperties: 'foo:bar',
+      cssCustomProperties: 'foo:bar',
       colors: {},
       colorScheme: undefined,
     });

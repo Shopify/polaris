@@ -57,7 +57,7 @@ export type CustomPropertiesLike = Record<string, string>;
 export interface Theme {
   /** Sets the logo for the top bar and contextual save bar components*/
   logo?: ThemeLogo;
-  UNSTABLE_cssCustomProperties?: string;
+  cssCustomProperties?: string;
   colors?: Partial<RoleColors>;
   colorScheme?: ColorScheme;
   textColor?: string;
