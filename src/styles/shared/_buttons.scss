@@ -222,26 +222,26 @@
 
   &.newDesignLanguage {
     background: transparent;
-    box-shadow: 0 0 0 border-width('base') var(--p-border-subdued);
+    box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
     color: var(--p-text);
 
     &:hover {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-subdued);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
       background: var(--p-surface-hovered);
     }
 
     &:focus {
-      box-shadow: 0 0 0 border-width('thick') var(--p-border-subdued);
+      box-shadow: 0 0 0 border-width('thick') var(--p-border-secondary);
       @include no-focus-ring;
     }
 
     &:active {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-subdued);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
       background: var(--p-surface-pressed);
     }
 
     &.disabled {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-disabled);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary-disabled);
       background: transparent;
       color: var(--p-text-disabled);
     }
@@ -249,7 +249,7 @@
     &.destructive {
       background: transparent;
       box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
-      color: var(--p-critical-link);
+      color: var(--p-link-critical);
       @include recolor-icon(var(--p-icon-critical));
 
       &:hover {
