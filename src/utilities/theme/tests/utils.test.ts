@@ -60,8 +60,7 @@ describe('buildCustomProperties', () => {
 
   it('creates legacy custom properties but ignores new custom properties when global theming is disabled', () => {
     const theme = {
-      colors: {topBar: {background: '#eeeeee'}},
-      UNSTABLE_colors: {surface: '#ffffff'},
+      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
     };
 
@@ -74,8 +73,7 @@ describe('buildCustomProperties', () => {
 
   it('creates legacy custom properties but ignores new custom properties when global theming is disabled without defaults', () => {
     const theme = {
-      colors: {topBar: {background: '#eeeeee'}},
-      UNSTABLE_colors: {surface: '#ffffff'},
+      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
     };
 
@@ -88,8 +86,7 @@ describe('buildCustomProperties', () => {
 
   it('creates new custom properties when global theming is enabled but ignores legacy colors', () => {
     const theme = {
-      colors: {topBar: {background: '#eeeeee'}},
-      UNSTABLE_colors: {surface: '#ffffff'},
+      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
     };
 
@@ -102,7 +99,7 @@ describe('buildCustomProperties', () => {
     expect(
       buildCustomProperties(
         {
-          UNSTABLE_colors: {surface: '#CCCCCC'},
+          colors: {surface: '#CCCCCC'},
           colorScheme: DefaultColorScheme,
         },
         true,
@@ -118,7 +115,7 @@ describe('buildCustomProperties', () => {
     expect(() => {
       buildCustomProperties(
         {
-          UNSTABLE_colors: {blarp: '#CCCCCC'} as Partial<RoleColors>,
+          colors: {blarp: '#CCCCCC'} as Partial<RoleColors>,
           colorScheme: DefaultColorScheme,
         },
         true,
@@ -129,7 +126,7 @@ describe('buildCustomProperties', () => {
   it('uses dark adjustments if the colorScheme is dark', () => {
     expect(
       buildCustomProperties(
-        {UNSTABLE_colors: {surface: '#333333'}, colorScheme: 'dark'},
+        {colors: {surface: '#333333'}, colorScheme: 'dark'},
         true,
       ),
     ).toStrictEqual(
@@ -147,7 +144,7 @@ describe('buildThemeContext', () => {
     ).toStrictEqual({
       logo: {},
       UNSTABLE_cssCustomProperties: 'foo:bar',
-      UNSTABLE_colors: undefined,
+      colors: {},
       colorScheme: undefined,
     });
   });

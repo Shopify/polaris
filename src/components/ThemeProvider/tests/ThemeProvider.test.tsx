@@ -215,12 +215,12 @@ describe('<ThemeProvider />', () => {
       const themeProvider = mountWithGlobalTheming(
         <ThemeProvider
           theme={{
-            UNSTABLE_colors: {surface: '#FFFFFF'},
+            colors: {surface: '#FFFFFF'},
           }}
         >
           <ThemeProvider
             theme={{
-              UNSTABLE_colors: {surface: '#000000'},
+              colors: {surface: '#000000'},
             }}
           >
             <p>Hello</p>
@@ -240,67 +240,67 @@ describe('<ThemeProvider />', () => {
       [
         'Dark parent, undefined child, child has colors',
         {colorScheme: 'dark'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}},
+        {colors: {critical: '#FFFEEE'}},
         'rgba(34, 33, 0, 1)',
       ],
       [
         'Light parent, undefined child, child has colors',
         {colorScheme: 'light'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}},
+        {colors: {critical: '#FFFEEE'}},
         'rgba(255, 252, 198, 1)',
       ],
       [
         'Dark parent, light child, child has colors',
         {colorScheme: 'dark'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
         'rgba(255, 252, 198, 1)',
       ],
       [
         'Light parent, dark child, child has colors',
         {colorScheme: 'light'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
         'rgba(34, 33, 0, 1)',
       ],
       [
         'Dark parent, undefined child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}},
+        {colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {colors: {critical: '#FFFEEE'}},
         'rgba(34, 33, 0, 1)',
       ],
       [
         'Light parent, undefined child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}},
+        {colors: {critical: '#000000'}, colorScheme: 'light'},
+        {colors: {critical: '#FFFEEE'}},
         'rgba(255, 252, 198, 1)',
       ],
       [
         'Dark parent, light child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
+        {colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
         'rgba(255, 252, 198, 1)',
       ],
       [
         'Light parent, dark child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
+        {colors: {critical: '#000000'}, colorScheme: 'light'},
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
         'rgba(34, 33, 0, 1)',
       ],
       [
         'Dark parent, inverse child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
+        {colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
         'rgba(255, 252, 198, 1)',
       ],
       [
         'Light parent, inverse child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
+        {colors: {critical: '#000000'}, colorScheme: 'light'},
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
         'rgba(34, 33, 0, 1)',
       ],
       [
         'Undefined parent, inverse child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
+        {colors: {critical: '#000000'}},
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
         'rgba(34, 33, 0, 1)',
       ],
       [

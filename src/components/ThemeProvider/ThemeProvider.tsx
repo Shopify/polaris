@@ -40,23 +40,21 @@ export function ThemeProvider({
   const parentColorScheme =
     parentContext && parentContext.colorScheme && parentContext.colorScheme;
   const parentColors =
-    parentContext &&
-    parentContext.UNSTABLE_colors &&
-    parentContext.UNSTABLE_colors;
+    parentContext && parentContext.colors && parentContext.colors;
 
-  const {UNSTABLE_colors, colorScheme, ...rest} = themeConfig;
+  const {colors, colorScheme, ...rest} = themeConfig;
 
   const processedThemeConfig = {
     ...rest,
     ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
-    UNSTABLE_colors: {
+    colors: {
       ...(isParentThemeProvider && DefaultThemeColors),
       ...(shouldInheritParentColors(
         isParentThemeProvider,
         colorScheme,
         parentColorScheme,
       ) && parentColors),
-      ...UNSTABLE_colors,
+      ...colors,
     },
   };
 

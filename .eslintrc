@@ -70,11 +70,7 @@
     "@typescript-eslint/camelcase": [
       "error",
       {
-        "allow": [
-          "UNSTABLE_colors",
-          "UNSTABLE_cssCustomProperties",
-          "UNSTABLE_telemetry"
-        ]
+        "allow": ["UNSTABLE_cssCustomProperties", "UNSTABLE_telemetry"]
       }
     ]
   },

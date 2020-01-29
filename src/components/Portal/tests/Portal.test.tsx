@@ -103,7 +103,7 @@ describe('<Portal />', () => {
     const portal = mountWithAppProvider(<Portal />, {
       features: {unstableGlobalTheming: true},
       theme: {
-        UNSTABLE_colors: {surface: '#000000'},
+        colors: {surface: '#000000'},
       },
     });
     expect(setSpy).toHaveBeenCalledWith(

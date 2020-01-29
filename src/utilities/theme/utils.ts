@@ -18,10 +18,11 @@ export function buildCustomProperties(
   globalTheming: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
-  const {UNSTABLE_colors = {}, colorScheme} = themeConfig;
+  const {colors = {}, colorScheme} = themeConfig;
+  const {topBar, ...newDesignLanguageColors} = colors;
   return globalTheming
     ? customPropertyTransformer({
-        ...colorFactory(UNSTABLE_colors, colorScheme),
+        ...colorFactory(newDesignLanguageColors, colorScheme),
         ...tokens,
       })
     : buildLegacyColors(themeConfig);
@@ -31,11 +32,12 @@ export function buildThemeContext(
   themeConfig: ThemeConfig,
   cssCustomProperties?: CustomPropertiesLike,
 ): Theme {
-  const {logo, UNSTABLE_colors, colorScheme} = themeConfig;
+  const {logo, colors = {}, colorScheme} = themeConfig;
+  const {topBar, ...newDesignLanguageColors} = colors;
   return {
     logo,
     UNSTABLE_cssCustomProperties: toString(cssCustomProperties),
-    UNSTABLE_colors,
+    colors: newDesignLanguageColors,
     colorScheme,
   };
 }
