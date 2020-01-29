@@ -42,7 +42,7 @@ $stacking-order: (
     appearance: none;
     box-shadow: none;
 
-    // Start - Delete below me when removing globalTheming
+    // Start - Delete below me when removing newDesignLanguage
     &:hover,
     &:active {
       @include recolor-icon(color('ink'));
@@ -56,7 +56,7 @@ $stacking-order: (
       box-shadow: none;
 
       // stylelint-disable-next-line selector-max-specificity
-      &::after:not(.globalTheming) {
+      &::after:not(.newDesignLanguage) {
         background: plain-button-background();
       }
     }
@@ -69,7 +69,7 @@ $stacking-order: (
     }
 
     // stylelint-disable-next-line selector-max-specificity
-    &::after:not(.globalTheming) {
+    &::after:not(.newDesignLanguage) {
       content: '';
       position: absolute;
       top: 0.5 * $difference-between-touch-area-and-backdrop;
@@ -83,10 +83,10 @@ $stacking-order: (
       transition-duration: duration();
       transition-timing-function: easing();
     }
-    // End - Delete after me when removing globalTheming
+    // End - Delete after me when removing newDesignLanguage
 
     // stylelint-disable selector-max-specificity, selector-max-class
-    &.globalTheming {
+    &.newDesignLanguage {
       @include recolor-icon(var(--p-icon));
       @include focus-ring;
 
@@ -190,7 +190,7 @@ $stacking-order: (
   }
   // Delete above me during global theming rollout
 
-  &.globalTheming {
+  &.newDesignLanguage {
     @include focus-ring;
     box-shadow: none;
     border-color: transparent;

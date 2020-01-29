@@ -4,12 +4,12 @@ import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext, useTheme} from '../../../utilities/theme';
 import {FeaturesContext} from '../../../utilities/features';
 
-const mountWithGlobalTheming = createMount<
-  {globalTheming?: boolean},
+const mountWithnewDesignLanguage = createMount<
+  {newDesignLanguage?: boolean},
   {features: React.ContextType<typeof FeaturesContext>}
 >({
-  context({globalTheming = false}) {
-    return {features: {unstableGlobalTheming: globalTheming}};
+  context({newDesignLanguage = false}) {
+    return {features: {newDesignLanguage}};
   },
   render(element, context) {
     return (
@@ -22,7 +22,7 @@ const mountWithGlobalTheming = createMount<
 
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
-    const themeProvider = mountWithGlobalTheming(
+    const themeProvider = mountWithnewDesignLanguage(
       <ThemeProvider theme={{logo: {}}}>
         <p>Hello</p>
       </ThemeProvider>,
@@ -36,7 +36,7 @@ describe('<ThemeProvider />', () => {
       return polarisTheme && polarisTheme.logo ? <div /> : null;
     };
 
-    const themeProvider = mountWithGlobalTheming(
+    const themeProvider = mountWithnewDesignLanguage(
       <ThemeProvider
         theme={{
           logo: {
@@ -56,7 +56,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('has a default theme', () => {
-    const themeProvider = mountWithGlobalTheming(
+    const themeProvider = mountWithnewDesignLanguage(
       <ThemeProvider theme={{}}>
         <p />
       </ThemeProvider>,
@@ -72,7 +72,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('sets a provided theme', () => {
-    const themeProvider = mountWithGlobalTheming(
+    const themeProvider = mountWithnewDesignLanguage(
       <ThemeProvider
         theme={{
           colors: {
@@ -96,7 +96,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('updates themes', () => {
-    const themeProvider = mountWithGlobalTheming(
+    const themeProvider = mountWithnewDesignLanguage(
       <ThemeProvider
         theme={{
           colors: {
@@ -130,11 +130,11 @@ describe('<ThemeProvider />', () => {
   });
 
   it('sets color system properties in context when global theming is enabled', () => {
-    mountWithGlobalTheming(
+    mountWithnewDesignLanguage(
       <ThemeProvider theme={{}}>
         <Child />
       </ThemeProvider>,
-      {globalTheming: true},
+      {newDesignLanguage: true},
     );
 
     function Child() {
@@ -145,11 +145,11 @@ describe('<ThemeProvider />', () => {
   });
 
   it('does not set color system properties in context when global theming is disabled', () => {
-    mountWithGlobalTheming(
+    mountWithnewDesignLanguage(
       <ThemeProvider theme={{}}>
         <Child />
       </ThemeProvider>,
-      {globalTheming: false},
+      {newDesignLanguage: false},
     );
 
     function Child() {
@@ -160,11 +160,11 @@ describe('<ThemeProvider />', () => {
   });
 
   it('sets defaults with global theming enabled', () => {
-    const themeProvider = mountWithGlobalTheming(
+    const themeProvider = mountWithnewDesignLanguage(
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      {globalTheming: true},
+      {newDesignLanguage: true},
     );
 
     expect(themeProvider.find('div')).toHaveReactProps({
@@ -186,13 +186,13 @@ describe('<ThemeProvider />', () => {
 
   describe('when nested', () => {
     it('does not set a default theme', () => {
-      const themeProvider = mountWithGlobalTheming(
+      const themeProvider = mountWithnewDesignLanguage(
         <ThemeProvider theme={{}}>
           <ThemeProvider theme={{}}>
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        {globalTheming: true},
+        {newDesignLanguage: true},
       );
 
       expect(themeProvider.findAll('div')[1]).not.toHaveReactProps({
@@ -212,7 +212,7 @@ describe('<ThemeProvider />', () => {
     });
 
     it('adds css custom properties for color roles provided', () => {
-      const themeProvider = mountWithGlobalTheming(
+      const themeProvider = mountWithnewDesignLanguage(
         <ThemeProvider
           theme={{
             colors: {surface: '#FFFFFF'},
@@ -226,7 +226,7 @@ describe('<ThemeProvider />', () => {
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        {globalTheming: true},
+        {newDesignLanguage: true},
       );
 
       expect(themeProvider.findAll('div')[1]).toHaveReactProps({
@@ -323,13 +323,13 @@ describe('<ThemeProvider />', () => {
         childTheme: any,
         expectedCritialSurfaceSubdued: any,
       ) => {
-        const themeProvider = mountWithGlobalTheming(
+        const themeProvider = mountWithnewDesignLanguage(
           <ThemeProvider theme={topLevelTheme}>
             <ThemeProvider theme={childTheme}>
               <p>Hello</p>
             </ThemeProvider>
           </ThemeProvider>,
-          {globalTheming: true},
+          {newDesignLanguage: true},
         );
 
         expect(themeProvider.findAll('div')[1]).toHaveReactProps({

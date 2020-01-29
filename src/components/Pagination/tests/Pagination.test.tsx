@@ -219,20 +219,20 @@ describe('<Pagination />', () => {
     });
   });
 
-  describe('globalTheming', () => {
+  describe('newDesignLanguage', () => {
     it('adds a global theming & rightButton class when global theming is enabled', () => {
       const pagination = mountWithApp(
         <Pagination nextURL="/" previousURL="/" />,
         {
-          features: {unstableGlobalTheming: true},
+          features: {newDesignLanguage: true},
         },
       );
 
       expect(pagination).toContainReactComponent(UnstyledLink, {
-        className: 'Button globalTheming rightButton NextButton',
+        className: 'Button newDesignLanguage rightButton NextButton',
       });
       expect(pagination).toContainReactComponent(UnstyledLink, {
-        className: 'Button globalTheming PreviousButton',
+        className: 'Button newDesignLanguage PreviousButton',
       });
     });
 
@@ -240,15 +240,15 @@ describe('<Pagination />', () => {
       const pagination = mountWithApp(
         <Pagination nextURL="/" previousURL="/" />,
         {
-          features: {unstableGlobalTheming: false},
+          features: {newDesignLanguage: false},
         },
       );
 
       expect(pagination).not.toContainReactComponent(UnstyledLink, {
-        className: 'Button globalTheming rightButton NextButton',
+        className: 'Button newDesignLanguage rightButton NextButton',
       });
       expect(pagination).not.toContainReactComponent(UnstyledLink, {
-        className: 'Button globalTheming PreviousButton',
+        className: 'Button newDesignLanguage PreviousButton',
       });
     });
   });

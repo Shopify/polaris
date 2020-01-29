@@ -15,12 +15,12 @@ interface CustomPropertiesConfig extends ThemeConfig {
 
 export function buildCustomProperties(
   themeConfig: CustomPropertiesConfig,
-  globalTheming: boolean,
+  newDesignLanguage: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
   const {colors = {}, colorScheme} = themeConfig;
   const {topBar, ...newDesignLanguageColors} = colors;
-  return globalTheming
+  return newDesignLanguage
     ? customPropertyTransformer({
         ...colorFactory(newDesignLanguageColors, colorScheme),
         ...tokens,

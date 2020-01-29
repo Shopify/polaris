@@ -59,7 +59,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
   }
   // End - Delete after me when rolling out global theming
 
-  &.globalTheming {
+  &.newDesignLanguage {
     @include focus-ring;
     border-radius: var(--p-border-radius-base);
 

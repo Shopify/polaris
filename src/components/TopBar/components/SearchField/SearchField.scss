@@ -24,7 +24,7 @@ $stacking-order: (
   max-width: $search-max-width;
 }
 
-.SearchField-globalTheming {
+.SearchField-newDesignLanguage {
   max-width: $unstable-search-max-width;
 
   .Backdrop {
@@ -97,7 +97,7 @@ $stacking-order: (
     appearance: none;
   }
 
-  .SearchField-globalTheming & {
+  .SearchField-newDesignLanguage & {
     height: $unstable-input-height;
     width: 100%;
   }

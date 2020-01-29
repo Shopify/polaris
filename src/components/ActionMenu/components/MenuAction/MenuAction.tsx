@@ -26,7 +26,7 @@ export function MenuAction({
   disabled,
   onAction,
 }: MenuActionProps) {
-  const {unstableGlobalTheming} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const iconMarkup = icon && (
     <span className={styles.IconWrapper}>
@@ -53,7 +53,7 @@ export function MenuAction({
 
   const menuActionClassNames = classNames(
     styles.MenuAction,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
     disabled && styles.disabled,
   );
 

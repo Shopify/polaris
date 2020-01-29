@@ -55,7 +55,7 @@ $icon-size: rem(16px);
   }
   // End - Delete above me during global theming rollout
 
-  &.globalTheming {
+  &.newDesignLanguage {
     @include recolor-icon(var(--p-icon));
 
     &:hover {

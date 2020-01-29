@@ -1156,16 +1156,16 @@ describe('<TextField />', () => {
     });
   });
 
-  describe('globalTheming', () => {
+  describe('newDesignLanguage', () => {
     it('adds a global theming class when global theming is enabled', () => {
       const textField = mountWithApp(
         <TextField label="TextField" onChange={noop} />,
         {
-          features: {unstableGlobalTheming: true},
+          features: {newDesignLanguage: true},
         },
       );
       expect(textField).toContainReactComponent('div', {
-        className: 'TextField globalTheming',
+        className: 'TextField newDesignLanguage',
       });
     });
 
@@ -1173,11 +1173,11 @@ describe('<TextField />', () => {
       const textField = mountWithApp(
         <TextField label="TextField" onChange={noop} />,
         {
-          features: {unstableGlobalTheming: false},
+          features: {newDesignLanguage: false},
         },
       );
       expect(textField).not.toContainReactComponent('div', {
-        className: 'TextField globalTheming',
+        className: 'TextField newDesignLanguage',
       });
     });
   });

@@ -9,7 +9,7 @@
   @include visually-hidden;
 }
 // stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
-.RadioButton:not(.globalTheming) {
+.RadioButton:not(.newDesignLanguage) {
   .Input {
     &:focus,
     &:active,
@@ -73,8 +73,7 @@
   }
 }
 
-.RadioButton.globalTheming {
-  --icon-size: #{rem(10px)};
+.RadioButton.newDesignLanguage {
   margin: var(--p-choice-margin, 0);
 
   .Backdrop {

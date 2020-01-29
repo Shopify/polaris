@@ -30,13 +30,13 @@ export function Item({
   active,
   role,
 }: ItemProps) {
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage = false} = useFeatures();
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,
     destructive && styles.destructive,
     active && styles.active,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
   );
 
   let imageElement = null;

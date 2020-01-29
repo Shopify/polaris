@@ -33,7 +33,7 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage = false} = useFeatures();
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
@@ -60,21 +60,17 @@ export function ThemeProvider({
 
   const customProperties = useMemo(
     () =>
-      buildCustomProperties(
-        processedThemeConfig,
-        unstableGlobalTheming,
-        Tokens,
-      ),
-    [processedThemeConfig, unstableGlobalTheming],
+      buildCustomProperties(processedThemeConfig, newDesignLanguage, Tokens),
+    [processedThemeConfig, newDesignLanguage],
   );
 
   const theme = useMemo(
     () =>
       buildThemeContext(
         processedThemeConfig,
-        unstableGlobalTheming ? customProperties : undefined,
+        newDesignLanguage ? customProperties : undefined,
       ),
-    [customProperties, processedThemeConfig, unstableGlobalTheming],
+    [customProperties, processedThemeConfig, newDesignLanguage],
   );
 
   // We want these values to be empty string instead of `undefined` when not set.

@@ -32,7 +32,7 @@ $chekbox-label-margin: rem(20px);
     border-right: none;
   }
 
-  &.globalTheming {
+  &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-on-interactive));
     background: var(--p-action-secondary);
     color: var(--p-text);

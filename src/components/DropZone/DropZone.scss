@@ -73,13 +73,13 @@ $dropzone-stacking-order: (
     }
 
     // stylelint-disable-next-line selector-max-specificity
-    &:hover:not(.globalTheming)::after {
+    &:hover:not(.newDesignLanguage)::after {
       border-color: $dropzone-overlay-border-color;
     }
   }
 }
 
-.focused:not(.globalTheming) {
+.focused:not(.newDesignLanguage) {
   &:not(.isDisabled) {
     background-color: $dropzone-overlay-background;
 
@@ -100,7 +100,7 @@ $dropzone-stacking-order: (
   &:not(.isDisabled) {
     background-color: $dropzone-overlay-background;
 
-    &:not(.globalTheming) {
+    &:not(.newDesignLanguage) {
       // stylelint-disable-next-line selector-max-specificity
       &::after {
         border-color: $dropzone-overlay-border-color;
@@ -174,7 +174,7 @@ $dropzone-stacking-order: (
   }
 }
 
-.globalTheming {
+.newDesignLanguage {
   &.DropZone {
     &:not(.focused) {
       // stylelint-disable-next-line selector-max-specificity

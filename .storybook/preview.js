@@ -48,7 +48,7 @@ addDecorator(
           name: 'Enabled - Light Mode',
           props: {
             i18n: enTranslations,
-            features: {unstableGlobalTheming: true},
+            features: {newDesignLanguage: true},
             theme: {colorScheme: 'light'},
           },
         },
@@ -56,7 +56,7 @@ addDecorator(
           name: 'Enabled - Dark Mode',
           props: {
             i18n: enTranslations,
-            features: {unstableGlobalTheming: true},
+            features: {newDesignLanguage: true},
             theme: {colorScheme: 'dark'},
           },
         },

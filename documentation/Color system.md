@@ -1,7 +1,5 @@
 # Color system
 
-⚠️ The color system is currently an unstable API, and is subject to change in non-major releases of Polaris react. Please use with caution.
-
 ## Table of contents
 
 - [surface](#surface)
