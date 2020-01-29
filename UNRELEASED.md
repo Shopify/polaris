@@ -15,6 +15,8 @@
 
 ### Development workflow
 
+- Added first implementation of custom property validation ([#2616](https://github.com/Shopify/polaris-react/pull/2616))
+
 ### Dependency upgrades
 
 ### Code quality
