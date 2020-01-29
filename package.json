@@ -201,6 +201,7 @@
     "@types/react-transition-group": "^2.0.7",
     "hoist-non-react-statics": "^3.3.0",
     "lodash": "^4.17.4",
-    "tslib": "^1.9.3"
+    "tslib": "^1.9.3",
+    "use-sticky": "^0.1.2"
   }
 }

@@ -33,6 +33,15 @@ export default function sewingKitConfig(
           '!src/**/*.test.{ts,tsx}',
         ];
 
+        if (!config.transformIgnorePatterns) {
+          config.transformIgnorePatterns = [];
+        }
+        // babel-jest does not transpile import/export in node_modules when Babel 7 is used
+        // https://github.com/facebook/jest/issues/6229
+        config.transformIgnorePatterns.push(
+          '/node_modules/(?!use-sticky).+\\.js$',
+        );
+
         return config;
       }),
     ],

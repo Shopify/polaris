@@ -457,7 +457,7 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
     ) : null;
 
     const checkableButtonMarkup = this.selectable() ? (
-      <div className={styles.CheckableButtonWrapper}>
+      <div className={styles.CheckableButtonWrapper} id="find-me">
         <CheckableButton
           accessibilityLabel={this.bulkActionsAccessibilityLabel()}
           label={this.headerTitle()}
@@ -751,7 +751,6 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
       items,
       idForItem = defaultIdForItem,
     } = this.props;
-
     const {checkableButtons} = this.state;
     let newlySelectedItems: string[] = [];
 

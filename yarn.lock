@@ -18426,6 +18426,11 @@ use-sidecar@^1.0.1:
     detect-node "^2.0.4"
     tslib "^1.9.3"
 
+use-sticky@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/use-sticky/-/use-sticky-0.1.2.tgz#ab8edb936b93834e2c2a917e83a2fc7f044b5f7f"
+  integrity sha512-i04CCH14A1eu7vf091g25Wcjg6ypLfHcKWbBQmZtLumMZZ+E99OlNqfVTKRF+UqNJ/wVzHVF6f9XcuwguCbfDQ==
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"

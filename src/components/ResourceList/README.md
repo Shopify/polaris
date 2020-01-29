@@ -152,7 +152,7 @@ Allows merchants to select items and perform an action on the selection.
 
 ```jsx
 function ResourceListWithBulkActionsExample() {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([341]);
 
   const resourceName = {
     singular: 'customer',
@@ -175,6 +175,14 @@ function ResourceListWithBulkActionsExample() {
   ];
 
   const promotedBulkActions = [
+    {
+      content: 'Edit customers Edit customers Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
+    },
+    {
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
+    },
     {
       content: 'Edit customers',
       onAction: () => console.log('Todo: implement bulk edit'),
@@ -201,6 +209,7 @@ function ResourceListWithBulkActionsExample() {
       <ResourceList
         resourceName={resourceName}
         items={items}
+        hasMoreItems
         renderItem={renderItem}
         selectedItems={selectedItems}
         onSelectionChange={setSelectedItems}

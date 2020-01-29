@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ContextType} from 'react';
 import {ThemeConfig} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
@@ -48,6 +48,7 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
   private uniqueIdFactory: UniqueIdFactory;
+  private features: NonNullable<ContextType<typeof FeaturesContext>>;
 
   constructor(props: AppProviderProps) {
     super(props);
@@ -55,7 +56,15 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
     this.scrollLockManager = new ScrollLockManager();
     this.uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-    const {i18n, apiKey, shopOrigin, forceRedirect, linkComponent} = this.props;
+    const {
+      i18n,
+      apiKey,
+      shopOrigin,
+      forceRedirect,
+      linkComponent,
+      features,
+    } = this.props;
+    this.features = {newDesignLanguage: false, ...features};
 
     // eslint-disable-next-line react/state-in-constructor
     this.state = {
@@ -77,8 +86,25 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
     apiKey: prevApiKey,
     shopOrigin: prevShopOrigin,
     forceRedirect: prevForceRedirect,
+    features: prevFeatures,
   }: AppProviderProps) {
-    const {i18n, linkComponent, apiKey, shopOrigin, forceRedirect} = this.props;
+    const {
+      i18n,
+      linkComponent,
+      apiKey,
+      shopOrigin,
+      forceRedirect,
+      features,
+    } = this.props;
+
+    if (features === prevFeatures) {
+      for (const feature in features) {
+        if (!Object.prototype.hasOwnProperty.call(features, feature)) {
+          continue;
+        }
+        this.features[feature] = features[feature];
+      }
+    }
 
     if (
       i18n === prevI18n &&
@@ -102,10 +128,9 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
     const {theme = {}, children} = this.props;
 
     const {intl, appBridge, link} = this.state;
-    const features = {newDesignLanguage: false, ...this.props.features};
 
     return (
-      <FeaturesContext.Provider value={features}>
+      <FeaturesContext.Provider value={this.features}>
         <I18nContext.Provider value={intl}>
           <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
             <StickyManagerContext.Provider value={this.stickyManager}>

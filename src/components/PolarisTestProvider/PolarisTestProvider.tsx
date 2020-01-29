@@ -57,6 +57,7 @@ export interface PolarisTestProviderProps
 
 const defaultMediaQuery: MediaQueryContextType = {
   isNavigationCollapsed: false,
+  resourceListSmallScreen: false,
 };
 
 export function PolarisTestProvider({

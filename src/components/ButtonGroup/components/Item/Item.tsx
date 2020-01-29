@@ -26,6 +26,7 @@ export function Item({button}: ItemProps) {
       className={className}
       onFocus={forceTrueFocused}
       onBlur={forceFalseFocused}
+      data-polaris-button-group-item
     >
       {button}
     </div>

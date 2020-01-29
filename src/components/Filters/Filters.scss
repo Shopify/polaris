@@ -6,6 +6,7 @@ $seperator-color: var(--p-border, color('sky'));
 
 .Filters {
   position: relative;
+  flex: 1;
 }
 
 .FiltersContainer {

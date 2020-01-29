@@ -1,5 +1,25 @@
-@import '../../../../styles/common';
-@import '../../variables';
+@import '../../styles/common';
+
+$resource-list-variables: (
+  breakpoint-small: 458px,
+  header-min-height: rem(56px),
+  header-padding-small: rem(12px),
+  header-vertical-padding: rem(10px),
+  button-min-height: control-height(),
+  header-content-min-height: control-height(),
+  content-wrapper-stacking-order: 1,
+  bulk-actions-wrapper-stacking-order: 2,
+  header-outer-wrapper-stacking-order: 2,
+  header-overlay-stacking-order: 4,
+  spinner-stacking-order: 3,
+  overlay-stacking-order: 2,
+  list-stacking-order: 1,
+  overlay-background: var(--p-overlay, rgba(color('white'), 0.5)),
+);
+
+@function resource-list($variable) {
+  @return map-get($resource-list-variables, $variable);
+}
 
 $button-vertical-padding: (
     resource-list(button-min-height) - line-height(body) - rem(2px)
@@ -32,7 +52,7 @@ $chekbox-label-margin: rem(20px);
     border-right: none;
   }
 
-  &.newDesignLanguage {
+  &.globalTheming {
     @include recolor-icon(var(--p-icon-on-interactive));
     background: var(--p-action-secondary);
     color: var(--p-text);
@@ -47,10 +67,6 @@ $chekbox-label-margin: rem(20px);
     // stylelint-disable-next-line selector-max-class
     &.CheckableButton-selectMode {
       font-weight: 500;
-    }
-
-    @media (-ms-high-contrast: active) {
-      border: border-width(base) solid;
     }
   }
 
@@ -79,10 +95,6 @@ $chekbox-label-margin: rem(20px);
     border-radius: border-radius();
     box-shadow: none;
     background: transparent;
-    // stylelint-disable-next-line selector-max-class
-    &.newDesignLanguage {
-      border: none;
-    }
 
     &:hover {
       background: transparent;
@@ -108,12 +120,6 @@ $chekbox-label-margin: rem(20px);
   height: $control-size;
   width: $control-size;
   margin-left: (-1 * (spacing(tight) + rem(1px))); // 1px accounts for border
-
-  .newDesignLanguage & {
-    height: var(--p-choice-size);
-    width: var(--p-choice-size);
-    margin-left: calc(-1 * #{spacing(tight)} - var(--p-control-border-width));
-  }
 }
 
 .Label {
@@ -125,10 +131,6 @@ $chekbox-label-margin: rem(20px);
   text-overflow: ellipsis;
   // padding to fix the bottom of letters being cutoff by overflow: hidden
   padding: rem(1px) 0;
-
-  .newDesignLanguage & {
-    margin-left: calc(#{$chekbox-label-margin} - var(--p-control-border-width));
-  }
 
   &.isHidden {
     @include breakpoint-after(458px) {

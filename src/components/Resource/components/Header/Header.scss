@@ -1,0 +1,214 @@
+@import '../../../../styles/common';
+
+@mixin resource-list-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin disabled-pointer-events {
+  pointer-events: none;
+}
+
+.HeaderOuterWrapper {
+  background-color: color('white');
+  z-index: 2;
+}
+
+.stickyHeader {
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05),
+    0 1px 3px 0 rgba(63, 63, 68, 0.15);
+}
+
+.FiltersWrapper {
+  padding: rem(12px) rem(12px) spacing();
+
+  @include breakpoint-after(458px) {
+    padding: spacing();
+  }
+}
+
+.LoadingPanel {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background: color('sky', 'lighter');
+  box-shadow: shadow();
+}
+
+.BulkActionsWrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+
+  @include breakpoint-after(458px) {
+    flex: 0 1 auto;
+    align-self: flex-start;
+  }
+}
+
+.SortWrapper,
+.AlternateToolWrapper {
+  position: relative;
+  flex: 1;
+
+  .HeaderWrapper-hasSelect & {
+    padding-right: spacing(tight);
+  }
+
+  @include breakpoint-after(458px) {
+    position: relative;
+    left: auto;
+    flex: 0 1 auto;
+    margin-left: spacing();
+
+    // stylelint-disable-next-line selector-max-class
+    .HeaderWrapper-hasAlternateTool.HeaderWrapper-hasSelect &,
+    .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
+      padding-right: 0;
+    }
+  }
+}
+
+.AlternateToolWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.HeaderWrapper-disabled {
+  @include disabled-pointer-events;
+}
+
+.HeaderTitleWrapper {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+  padding-left: spacing(extra-tight);
+  align-self: center;
+
+  .HeaderWrapper-hasAlternateTool &,
+  .HeaderWrapper-hasSort & {
+    display: none;
+  }
+
+  @include breakpoint-after(458px) {
+    // stylelint-disable-next-line selector-max-class
+    .HeaderWrapper-hasSelect &,
+    .HeaderWrapper-hasAlternateTool.HeaderWrapper-hasSelect &,
+    .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
+      display: none;
+    }
+    .HeaderWrapper-hasAlternateTool &,
+    .HeaderWrapper-hasSort & {
+      display: block;
+    }
+  }
+}
+
+.CheckableButtonWrapper {
+  display: none;
+
+  @include breakpoint-after(458px) {
+    flex: 1;
+    display: block;
+
+    .HeaderWrapper-hasHeadings & {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+.SelectButtonWrapper {
+  position: relative;
+  flex: none;
+
+  @include breakpoint-after(458px) {
+    display: none;
+  }
+}
+
+.HeaderWrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  min-height: rem(56px);
+  padding: rem(10px) rem(12px);
+  background-color: var(--p-surface-foreground, color('white'));
+
+  @include breakpoint-after(458px) {
+    flex-direction: row;
+    padding: rem(10px) spacing();
+  }
+}
+
+.HeaderContentWrapper {
+  position: absolute;
+  z-index: 1;
+  right: rem(12px);
+  left: rem(12px);
+  display: flex;
+  min-height: control-height();
+  opacity: 1;
+  transition: opacity easing() duration();
+
+  .HeaderWrapper-inSelectMode & {
+    opacity: 0;
+  }
+
+  @include breakpoint-after(458px) {
+    right: spacing();
+    left: spacing();
+    align-self: flex-start;
+  }
+}
+
+.ColumnHeaders {
+  display: none;
+
+  @include breakpoint-after(458px) {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+  }
+}
+
+.HeaderWrapper-inSelectMode {
+  .ColumnHeaders {
+    display: none;
+  }
+}
+
+.SortWrapper {
+  @include breakpoint-after(458px) {
+    flex: 1 1 auto;
+
+    .HeaderWrapper-hasHeadings & {
+      display: none;
+    }
+  }
+}
+
+.FilterControl {
+  // This fix is to prevent the adjacent bulk action control from
+  // overlapping the focus rings on the save and sort buttons
+  padding-bottom: rem(1px);
+
+  display: flex;
+
+  @media print {
+    display: none;
+  }
+}
+
+.FilterSort {
+  margin-left: spacing();
+}

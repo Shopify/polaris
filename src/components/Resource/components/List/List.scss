@@ -1,0 +1,15 @@
+@import '../../../../styles/common';
+
+.List {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: border();
+  overflow: hidden;
+}
+
+.disableTextSelection {
+  user-select: none;
+}
