@@ -61,21 +61,3 @@ export interface Theme {
   colorScheme?: ColorScheme;
   textColor?: string;
 }
-
-export type Lambda = (value: number) => number;
-
-export interface HslaSetting {
-  hue?: number | Lambda;
-  saturation?: number | Lambda;
-  lightness?: number | Lambda;
-  alpha?: number;
-}
-
-export interface Variant {
-  name: string;
-  description?: string;
-  light: HslaSetting;
-  dark: HslaSetting;
-}
-
-export type RoleVariants = Record<Role, Variant[]>;
