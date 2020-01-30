@@ -1,5 +1,5 @@
 @import '../../../../styles/common';
-
+$height: rem(64px);
 $off-white: rgb(250, 251, 252);
 $off-white-border: rgb(235, 238, 240);
 $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -68,9 +68,9 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-left: spacing(tight);
 }
 
-.ContextualSaveBar-globalTheming {
+.newDesignLanguage {
   background: var(--p-surface);
-  height: unstable-top-bar-height();
+  height: $height;
   margin: spacing(tight);
   border-radius: var(--p-border-radius-wide);
 

@@ -142,7 +142,7 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
 }
 
-.ContextualSaveBar-globalTheming {
+.ContextualSaveBar-newDesignLanguage {
   @include frame-when-nav-displayed {
     left: layout-width(unstable-nav);
     max-width: calc(100% - #{layout-width(unstable-nav)});

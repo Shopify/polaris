@@ -11,3 +11,20 @@
   opacity: 1;
   pointer-events: auto;
 }
+
+.startFadeUp {
+  opacity: 0;
+  will-change: opacity, transform;
+  transform: translateY(#{rem(25px)});
+  transition: transform var(--p-duration-1-5-0) var(--p-ease),
+    opacity var(--p-duration-1-5-0) var(--p-ease);
+  pointer-events: none;
+}
+
+.endFadeUp {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: transform var(--p-duration-1-0-0) var(--p-ease),
+    opacity var(--p-duration-1-5-0) var(--p-ease);
+}

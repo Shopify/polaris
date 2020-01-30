@@ -24,7 +24,7 @@ export function ContextualSaveBar({
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
   const {logo} = useTheme();
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage = false} = useFeatures();
   const {
     value: discardConfirmationModalVisible,
     toggle: toggleDiscardConfirmationModal,
@@ -104,7 +104,7 @@ export function ContextualSaveBar({
 
   const contexualSaveBarClassName = classNames(
     styles.ContextualSaveBar,
-    unstableGlobalTheming && styles['ContextualSaveBar-globalTheming'],
+    newDesignLanguage && styles.newDesignLanguage,
   );
 
   return (
