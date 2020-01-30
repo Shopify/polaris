@@ -67,3 +67,32 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 .Action {
   margin-left: spacing(tight);
 }
+
+.ContextualSaveBar-globalTheming {
+  background: var(--p-surface);
+  height: unstable-top-bar-height();
+  margin: spacing(tight);
+  border-radius: var(--p-border-radius-wide);
+
+  .LogoContainer {
+    display: none;
+  }
+
+  .Contents {
+    margin: 0;
+    padding: 0 spacing();
+    max-width: 100%;
+
+    @include page-content-when-not-fully-condensed {
+      padding: 0 spacing();
+    }
+
+    @include page-content-when-not-partially-condensed {
+      padding: 0 spacing();
+    }
+  }
+
+  .Message {
+    color: var(--p-text);
+  }
+}

@@ -1,14 +1,16 @@
 import React, {useCallback} from 'react';
 
-import {getWidth} from '../../../../utilities/get-width';
-
-import {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {Button} from '../../../Button';
+import {Image} from '../../../Image';
+import {Stack} from '../../../Stack';
+import {ThemeProvider} from '../../../ThemeProvider';
+import {classNames} from '../../../../utilities/css';
+import {useFeatures} from '../../../../utilities/features';
+import {ContextualSaveBarProps} from '../../../../utilities/frame';
+import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useTheme} from '../../../../utilities/theme';
 import {useToggle} from '../../../../utilities/use-toggle';
-import {Image} from '../../../Image';
-import {Stack} from '../../../Stack';
 
 import {DiscardConfirmationModal} from './components';
 
@@ -22,7 +24,7 @@ export function ContextualSaveBar({
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
   const {logo} = useTheme();
-
+  const {unstableGlobalTheming = false} = useFeatures();
   const {
     value: discardConfirmationModalVisible,
     toggle: toggleDiscardConfirmationModal,
@@ -100,9 +102,14 @@ export function ContextualSaveBar({
     </div>
   );
 
+  const contexualSaveBarClassName = classNames(
+    styles.ContextualSaveBar,
+    unstableGlobalTheming && styles['ContextualSaveBar-globalTheming'],
+  );
+
   return (
-    <React.Fragment>
-      <div className={styles.ContextualSaveBar}>
+    <ThemeProvider theme={{colorScheme: 'inverse'}}>
+      <div className={contexualSaveBarClassName}>
         {logoMarkup}
         <div className={styles.Contents}>
           <h2 className={styles.Message}>{message}</h2>
@@ -115,6 +122,6 @@ export function ContextualSaveBar({
         </div>
       </div>
       {discardConfirmationModalMarkup}
-    </React.Fragment>
+    </ThemeProvider>
   );
 }
