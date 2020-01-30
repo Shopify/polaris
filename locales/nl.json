@@ -42,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "sorteer {direction} op",
       "navAccessibilityLabel": "Scroll tabel {direction} één kolom",
-      "totalsRowHeading": "Totalen"
+      "totalsRowHeading": "Totalen",
+      "totalRowHeading": "Totaal"
     },
     "DatePicker": {
       "previousMonth": "Vorige maand weergeven, {previousMonthName} {showPreviousYear}",

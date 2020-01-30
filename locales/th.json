@@ -42,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "จัดเรียง {direction} ตาม",
       "navAccessibilityLabel": "เลื่อนตาราง {direction} หนึ่งคอลัมน์",
-      "totalsRowHeading": "รวม"
+      "totalsRowHeading": "รวม",
+      "totalRowHeading": "ยอดรวม"
     },
     "DatePicker": {
       "previousMonth": "แสดงเดือนก่อนหน้า {previousMonthName} {showPreviousYear}",

@@ -42,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "von {direction} sortieren nach",
       "navAccessibilityLabel": "Tabelle eine Spalte nach {direction} scrollen",
-      "totalsRowHeading": "Gesamt"
+      "totalsRowHeading": "Gesamt",
+      "totalRowHeading": "Gesamtsumme"
     },
     "DatePicker": {
       "previousMonth": "Vormonat anzeigen, {previousMonthName} {showPreviousYear}",

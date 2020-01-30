@@ -42,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "trier {direction} par",
       "navAccessibilityLabel": "Faire défiler le tableau {direction} une colonne",
-      "totalsRowHeading": "Totaux"
+      "totalsRowHeading": "Totaux",
+      "totalRowHeading": "total"
     },
     "DatePicker": {
       "previousMonth": "Afficher le mois précédent, {previousMonthName} {showPreviousYear}",

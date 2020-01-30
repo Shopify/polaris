@@ -42,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "ordina per {direction}",
       "navAccessibilityLabel": "Scorri la tabella {direction} una colonna",
-      "totalsRowHeading": "Totali"
+      "totalsRowHeading": "Totali",
+      "totalRowHeading": "totale"
     },
     "DatePicker": {
       "previousMonth": "Mostra il mese precedente, {previousMonthName} {showPreviousYear}",

@@ -151,8 +151,24 @@ describe('<DataTable />', () => {
       expect(totalsRow.text()).toContain(totals.join(''));
     });
 
-    it('sets the content of the first total Cell to the totals row heading', () => {
-      const totals = ['', '', ''];
+    it('renders the singular default totals row label when only one total is provided', () => {
+      const totals = ['', '', '', '', '$155,830.00'];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(2);
+
+      const firstTotalCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('total') === true)
+        .first();
+
+      expect(firstTotalCell.prop('content')).toBe('Total');
+    });
+
+    it('renders the plural default totals label when more than one total is provided', () => {
+      const totals = ['', '', '', '255', '$155,830.00'];
       const dataTable = mountWithAppProvider(
         <DataTable {...defaultProps} totals={totals} />,
       );
@@ -211,6 +227,50 @@ describe('<DataTable />', () => {
       );
 
       expect(dataTable.find('tfoot')).toHaveLength(1);
+    });
+  });
+
+  describe('totalsName', () => {
+    it('renders the singular custom totals label when only one total provided', () => {
+      const totals = ['', '', '', '', '$155,830.00'];
+      const totalsName = {
+        singular: 'Price',
+        plural: 'Prices',
+      };
+
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} totalsName={totalsName} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(2);
+
+      const firstTotalCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('total') === true)
+        .first();
+
+      expect(firstTotalCell.prop('content')).toBe('Price');
+    });
+
+    it('renders the plural custom totals label when more than one total is provided', () => {
+      const totals = ['', '', '', '255', '$155,830.00'];
+      const totalsName = {
+        singular: 'Price',
+        plural: 'Prices',
+      };
+
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} totalsName={totalsName} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(2);
+
+      const firstTotalCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('total') === true)
+        .first();
+
+      expect(firstTotalCell.prop('content')).toBe('Prices');
     });
   });
 

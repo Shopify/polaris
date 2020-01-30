@@ -34,6 +34,11 @@ export interface DataTableProps {
   headings: React.ReactNode[];
   /** List of numeric column totals, highlighted in the table’s header below column headings. Use empty strings as placeholders for columns with no total. */
   totals?: TableData[];
+  /** Custom totals row heading */
+  totalsName?: {
+    singular: string;
+    plural: string;
+  };
   /** Placement of totals row within table */
   showTotalsInFooter?: boolean;
   /** Lists of data points which map to table body rows. */
@@ -82,7 +87,6 @@ class DataTableInner extends React.PureComponent<
   private dataTable = React.createRef<HTMLDivElement>();
   private scrollContainer = React.createRef<HTMLDivElement>();
   private table = React.createRef<HTMLTableElement>();
-  private totalsRowHeading: string;
 
   private handleResize = debounce(() => {
     const {
@@ -101,16 +105,6 @@ class DataTableInner extends React.PureComponent<
       ...this.calculateColumnVisibilityData(condensed),
     });
   });
-
-  constructor(props: CombinedProps) {
-    super(props);
-    const {
-      polaris: {intl},
-    } = props;
-    this.totalsRowHeading = intl.translate(
-      'Polaris.DataTable.totalsRowHeading',
-    );
-  }
 
   componentDidMount() {
     // We need to defer the calculation in development so the styles have time to be injected.
@@ -334,6 +328,25 @@ class DataTableInner extends React.PureComponent<
     );
   };
 
+  private totalsRowHeading = () => {
+    const {
+      polaris: {intl},
+      totals,
+      totalsName,
+    } = this.props;
+
+    const totalsLabel = totalsName
+      ? totalsName
+      : {
+          singular: intl.translate('Polaris.DataTable.totalRowHeading'),
+          plural: intl.translate('Polaris.DataTable.totalsRowHeading'),
+        };
+
+    return totals && totals.filter((total) => total !== '').length > 1
+      ? totalsLabel.plural
+      : totalsLabel.singular;
+  };
+
   private renderTotals = (total: TableData, index: number) => {
     const id = `totals-cell-${index}`;
     const {truncate = false, verticalAlign} = this.props;
@@ -342,7 +355,7 @@ class DataTableInner extends React.PureComponent<
     let contentType;
 
     if (index === 0) {
-      content = this.totalsRowHeading;
+      content = this.totalsRowHeading();
     }
 
     if (total !== '' && index > 0) {

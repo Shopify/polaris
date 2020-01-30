@@ -42,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "{direction} 정렬 기준",
       "navAccessibilityLabel": "표를 {direction} 방향으로 1열 스크롤",
-      "totalsRowHeading": "총계"
+      "totalsRowHeading": "총계",
+      "totalRowHeading": "총계"
     },
     "DatePicker": {
       "previousMonth": "지난 달, {previousMonthName} {showPreviousYear} 표시",

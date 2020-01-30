@@ -42,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "seřadit {direction} podle",
       "navAccessibilityLabel": "Posunout tabulku o jeden sloupec {direction}",
-      "totalsRowHeading": "Celkem"
+      "totalsRowHeading": "Celkem",
+      "totalRowHeading": "Celkem"
     },
     "DatePicker": {
       "previousMonth": "Zobrazit předchozí měsíc, {previousMonthName} {showPreviousYear}",
