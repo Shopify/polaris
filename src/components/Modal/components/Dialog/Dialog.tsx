@@ -1,6 +1,7 @@
-import React, {useRef, useCallback} from 'react';
+import React, {useRef, useCallback, useEffect} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
 import {Transition, CSSTransition} from '@material-ui/react-transition-group';
+import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {classNames} from '../../../../utilities/css';
 
 import {AnimationProps, Key} from '../../../../types';
@@ -10,7 +11,7 @@ import {TrapFocus} from '../../../TrapFocus';
 
 import styles from './Dialog.scss';
 
-export interface BaseDialogProps {
+interface BaseDialogProps {
   labelledBy?: string;
   instant?: boolean;
   children?: React.ReactNode;
@@ -43,6 +44,12 @@ export function Dialog({
   );
   const TransitionChild = instant ? Transition : FadeUp;
 
+  useEffect(() => {
+    containerNode.current &&
+      !containerNode.current.contains(document.activeElement) &&
+      focusFirstFocusableNode(containerNode.current);
+  }, []);
+
   return (
     <TransitionChild
       {...props}
@@ -61,17 +68,19 @@ export function Dialog({
       >
         <TrapFocus>
           <div
-            className={classes}
             role="dialog"
             aria-labelledby={labelledBy}
             tabIndex={-1}
+            className={styles.Dialog}
           >
-            <KeypressListener
-              keyCode={Key.Escape}
-              handler={onClose}
-              testID="CloseKeypressListener"
-            />
-            {children}
+            <div className={classes}>
+              <KeypressListener
+                keyCode={Key.Escape}
+                handler={onClose}
+                testID="CloseKeypressListener"
+              />
+              {children}
+            </div>
           </div>
         </TrapFocus>
       </div>

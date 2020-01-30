@@ -59,8 +59,10 @@ $nav-animation-variables: (
     }
   }
 
+  @include focus-ring;
+
   &:focus {
-    @include focus-ring;
+    @include focus-ring($style: 'focused');
     background-image: var(
       --p-override-none,
       linear-gradient(color(state, hover), color(state, hover))

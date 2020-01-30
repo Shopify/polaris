@@ -1,2 +1,2 @@
-export {MediaQueryContext} from './context';
-export {useMediaQuery} from './hooks';
+export * from './context';
+export * from './hooks';

@@ -11,7 +11,7 @@
       "PROGRESS_LABELS": {
         "incomplete": "Incompleto",
         "partiallyComplete": "Parzialmente completato",
-        "complete": "Completo"
+        "complete": "Completare"
       },
       "STATUS_LABELS": {
         "info": "Info",
@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Caricamento"
+      "spinnerAccessibilityLabel": "Caricamento",
+      "connectedDisclosureAccessibilityLabel": "Azioni correlate"
     },
     "Common": {
       "checkbox": "casella di spunta",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "ordina per {direction}",
       "navAccessibilityLabel": "Scorri la tabella {direction} una colonna",
-      "totalsRowHeading": "Totali"
+      "totalsRowHeading": "Totali",
+      "totalRowHeading": "totale"
     },
     "DatePicker": {
       "previousMonth": "Mostra il mese precedente, {previousMonthName} {showPreviousYear}",
@@ -115,7 +117,8 @@
       "done": "Fatto",
       "clearAllFilters": "Cancella tutti i filtri",
       "clear": "Cancella",
-      "clearLabel": "Cancella {filterName}"
+      "clearLabel": "Cancella {filterName}",
+      "moreFiltersWithCount": "Altri filtri ({count})"
     },
     "Modal": {
       "iFrameTitle": "markup del testo",

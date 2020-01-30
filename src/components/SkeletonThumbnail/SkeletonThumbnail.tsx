@@ -2,7 +2,7 @@ import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import styles from './SkeletonThumbnail.scss';
 
-export type Size = 'small' | 'medium' | 'large';
+type Size = 'small' | 'medium' | 'large';
 
 export interface SkeletonThumbnailProps {
   /**

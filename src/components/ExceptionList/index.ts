@@ -1,1 +1,1 @@
-export {ExceptionList, ExceptionListProps} from './ExceptionList';
+export * from './ExceptionList';

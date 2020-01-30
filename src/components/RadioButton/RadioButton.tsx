@@ -1,9 +1,12 @@
 import React from 'react';
 import {useUniqueId} from '../../utilities/unique-id';
+import {useFeatures} from '../../utilities/features';
+import {useToggle} from '../../utilities/use-toggle';
+import {classNames} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
 import styles from './RadioButton.scss';
 
-export interface BaseProps {
+export interface RadioButtonProps {
   /** Indicates the ID of the element that describes the the radio button*/
   ariaDescribedBy?: string;
   /** Label for the radio button */
@@ -30,8 +33,6 @@ export interface BaseProps {
   onBlur?(): void;
 }
 
-export interface RadioButtonProps extends BaseProps {}
-
 export function RadioButton({
   ariaDescribedBy: ariaDescribedByProp,
   label,
@@ -48,6 +49,12 @@ export function RadioButton({
 }: RadioButtonProps) {
   const id = useUniqueId('RadioButton', idProp);
   const name = nameProp || id;
+  const {unstableGlobalTheming = false} = useFeatures();
+  const {
+    value: mouseOver,
+    setTrue: handleMouseOver,
+    setFalse: handleMouseOut,
+  } = useToggle(false);
 
   function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
     onChange && onChange(currentTarget.checked, id);
@@ -64,6 +71,20 @@ export function RadioButton({
     ? describedBy.join(' ')
     : undefined;
 
+  const inputClassName = classNames(styles.Input);
+
+  const wrapperClassName = classNames(
+    styles.RadioButton,
+    unstableGlobalTheming && styles.globalTheming,
+  );
+
+  const iconMarkup = !unstableGlobalTheming && <span className={styles.Icon} />;
+
+  const backdropClassName = classNames(
+    styles.Backdrop,
+    mouseOver && styles.hover,
+  );
+
   return (
     <Choice
       label={label}
@@ -71,8 +92,10 @@ export function RadioButton({
       disabled={disabled}
       id={id}
       helpText={helpText}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
     >
-      <span className={styles.RadioButton}>
+      <span className={wrapperClassName}>
         <input
           id={id}
           name={name}
@@ -80,14 +103,14 @@ export function RadioButton({
           type="radio"
           checked={checked}
           disabled={disabled}
-          className={styles.Input}
+          className={inputClassName}
           onChange={handleChange}
           onFocus={onFocus}
           onBlur={onBlur}
           aria-describedby={ariaDescribedBy}
         />
-        <span className={styles.Backdrop} />
-        <span className={styles.Icon} />
+        <span className={backdropClassName} />
+        {iconMarkup}
       </span>
     </Choice>
   );

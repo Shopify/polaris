@@ -249,7 +249,7 @@ Use footer actions for a card’s most important actions, or actions merchants s
 >
   <Card.Section title="Items">
     <List>
-      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
+      <List.Item>1 × Oasis Glass, 4-Pack</List.Item>
       <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
     </List>
   </Card.Section>
@@ -294,7 +294,7 @@ When multiple secondary footer actions are provided, they will render in an acti
 >
   <Card.Section title="Items">
     <List>
-      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
+      <List.Item>1 × Oasis Glass, 4-Pack</List.Item>
       <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
     </List>
   </Card.Section>
@@ -316,10 +316,12 @@ Use to present actionable content that is optional or not the primary purpose of
         to your account. A special code will be required each time you log in,
         ensuring only you can access your account.
       </p>
-      <ButtonGroup>
-        <Button>Enable two-step authentication</Button>
-        <Button plain>Learn more</Button>
-      </ButtonGroup>
+      <Stack distribution="trailing">
+        <ButtonGroup>
+          <Button>Enable two-step authentication</Button>
+          <Button plain>Learn more</Button>
+        </ButtonGroup>
+      </Stack>
     </Stack>
   </Card.Section>
 </Card>
@@ -339,7 +341,7 @@ Use when a card action will delete merchant data or be otherwise difficult to re
 >
   <Card.Section title="Items">
     <List>
-      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
+      <List.Item>1 × Oasis Glass, 4-Pack</List.Item>
       <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
     </List>
   </Card.Section>

@@ -1,1 +1,1 @@
-export {Portal, PortalProps} from './Portal';
+export * from './Portal';

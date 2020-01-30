@@ -9,7 +9,6 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Page, PageProps, Card, Avatar, Badge} from 'components';
 import {Header} from '../components';
 import {LinkAction} from '../../../types';
-import {HeaderPrimaryAction} from '../types';
 
 window.matchMedia =
   window.matchMedia ||
@@ -318,7 +317,7 @@ describe('<Page />', () => {
     });
 
     it('receives neccesary transformed props', () => {
-      const primaryAction: HeaderPrimaryAction = {
+      const primaryAction: PageProps['primaryAction'] = {
         content: 'Foo',
         url: '/foo',
         target: 'APP',

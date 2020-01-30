@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {
   Range,
   Weekdays,
@@ -69,7 +69,11 @@ export function Month({
     styles.Title,
     current && styles['Month-current'],
   );
-  const weeks = getWeeksForMonth(month, year, weekStartsOn);
+  const weeks = useMemo(() => getWeeksForMonth(month, year, weekStartsOn), [
+    month,
+    weekStartsOn,
+    year,
+  ]);
   const weekdays = getWeekdaysOrdered(weekStartsOn).map((weekday) => (
     <Weekday
       key={weekday}
@@ -81,15 +85,22 @@ export function Month({
     />
   ));
 
-  function handleDateClick(selectedDate: Date) {
-    onChange(getNewRange(allowRange ? selected : undefined, selectedDate));
-  }
+  const handleDateClick = useCallback(
+    (selectedDate: Date) => {
+      onChange(getNewRange(allowRange ? selected : undefined, selectedDate));
+    },
+    [allowRange, onChange, selected],
+  );
+
+  const lastDayOfMonth = useMemo(
+    () => new Date(year, (month as number) + 1, 0),
+    [month, year],
+  );
 
   function renderWeek(day: Date, dayIndex: number) {
     if (day == null) {
-      const lastDayOfMonth = new Date(year, (month as number) + 1, 0);
       return (
-        <Day key={dayIndex} onHover={onHover.bind(null, lastDayOfMonth)} />
+        <Day key={dayIndex} onHover={onHover} lastDayOfMonth={lastDayOfMonth} />
       );
     }
 

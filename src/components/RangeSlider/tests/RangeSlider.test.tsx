@@ -3,7 +3,6 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {RangeSlider} from '../RangeSlider';
 import {DualThumb, SingleThumb} from '../components';
-import {RangeSliderDefault} from '../utilities';
 
 const mockRangeSliderProps = {
   label: 'RangeSlider',
@@ -27,15 +26,7 @@ describe('<RangeSlider />', () => {
 
       const {min, max, step} = element.find(DualThumb).props();
 
-      expect({
-        min,
-        max,
-        step,
-      }).toStrictEqual({
-        min: RangeSliderDefault.Min,
-        max: RangeSliderDefault.Max,
-        step: RangeSliderDefault.Step,
-      });
+      expect({min, max, step}).toStrictEqual({min: 0, max: 100, step: 1});
     });
 
     it('passes overrides to default props to dual thumb', () => {
@@ -88,15 +79,7 @@ describe('<RangeSlider />', () => {
 
       const {min, max, step} = element.find(SingleThumb).props();
 
-      expect({
-        min,
-        max,
-        step,
-      }).toStrictEqual({
-        min: RangeSliderDefault.Min,
-        max: RangeSliderDefault.Max,
-        step: RangeSliderDefault.Step,
-      });
+      expect({min, max, step}).toStrictEqual({min: 0, max: 100, step: 1});
     });
 
     it('passes an id to single thumb', () => {

@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {memo, NamedExoticComponent} from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {elementChildren, wrapWithComponent} from '../../utilities/components';
 
 import {Item} from './components';
 import styles from './Stack.scss';
 
-export type Spacing = 'extraTight' | 'tight' | 'loose' | 'extraLoose' | 'none';
+type Spacing = 'extraTight' | 'tight' | 'loose' | 'extraLoose' | 'none';
 
-export type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
+type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
 
-export type Distribution =
+type Distribution =
   | 'equalSpacing'
   | 'leading'
   | 'trailing'
@@ -32,33 +32,31 @@ export interface StackProps {
   distribution?: Distribution;
 }
 
-export class Stack extends React.PureComponent<StackProps, never> {
-  static Item = Item;
+export const Stack = memo(function Stack({
+  children,
+  vertical,
+  spacing,
+  distribution,
+  alignment,
+  wrap,
+}: StackProps) {
+  const className = classNames(
+    styles.Stack,
+    vertical && styles.vertical,
+    spacing && styles[variationName('spacing', spacing)],
+    distribution && styles[variationName('distribution', distribution)],
+    alignment && styles[variationName('alignment', alignment)],
+    wrap === false && styles.noWrap,
+  );
 
-  render() {
-    const {
-      children,
-      vertical,
-      spacing,
-      distribution,
-      alignment,
-      wrap,
-    } = this.props;
+  const itemMarkup = elementChildren(children).map((child, index) => {
+    const props = {key: index};
+    return wrapWithComponent(child, Item, props);
+  });
 
-    const className = classNames(
-      styles.Stack,
-      vertical && styles.vertical,
-      spacing && styles[variationName('spacing', spacing)],
-      distribution && styles[variationName('distribution', distribution)],
-      alignment && styles[variationName('alignment', alignment)],
-      wrap === false && styles.noWrap,
-    );
+  return <div className={className}>{itemMarkup}</div>;
+}) as NamedExoticComponent<StackProps> & {
+  Item: typeof Item;
+};
 
-    const itemMarkup = elementChildren(children).map((child, index) => {
-      const props = {key: index};
-      return wrapWithComponent(child, Item, props);
-    });
-
-    return <div className={className}>{itemMarkup}</div>;
-  }
-}
+Stack.Item = Item;

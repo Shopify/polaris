@@ -1,3 +1,3 @@
-export {DualThumb} from './DualThumb';
+export * from './DualThumb';
 
-export {SingleThumb} from './SingleThumb';
+export * from './SingleThumb';

@@ -1,1 +1,1 @@
-export {MenuGroup, MenuGroupProps} from './MenuGroup';
+export * from './MenuGroup';

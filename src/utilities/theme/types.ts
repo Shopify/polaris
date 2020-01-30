@@ -61,19 +61,3 @@ export interface Theme {
   colorScheme?: ColorScheme;
   textColor?: string;
 }
-
-export interface HslaSetting {
-  hue?: number;
-  saturation?: number;
-  lightness?: number;
-  alpha?: number;
-}
-
-export interface Variant {
-  name: string;
-  description?: string;
-  light: HslaSetting;
-  dark: HslaSetting;
-}
-
-export type RoleVariants = Record<Role, Variant[]>;

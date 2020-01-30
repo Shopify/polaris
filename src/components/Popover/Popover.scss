@@ -45,14 +45,8 @@ $content-max-width: rem(400px);
   }
 }
 
-.measuring {
-  .Content {
-    display: block;
-  }
-}
-
 .positionedAbove {
-  margin: spacing() 0 $visible-portion-of-arrow spacing(tight);
+  margin: spacing() spacing(tight) $visible-portion-of-arrow;
 
   &.fullWidth {
     margin: 0 0 $visible-portion-of-arrow;

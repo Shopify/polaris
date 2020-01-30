@@ -1,4 +1,5 @@
 @import '../../../../styles/common';
+@import '../../RangeSlider';
 
 $stacking-order: (
   output: 10,
@@ -6,14 +7,13 @@ $stacking-order: (
 );
 
 $range-wrapper: rem(28px);
-$range-track-height: rem(4px);
-$range-thumb-size: rem(24px);
 
 $range-thumb-border-error: rem(2px) solid color('red');
 
 $range-thumb-shadow: (0 0 0 rem(1px) rgba(black, 0.2), shadow(faint));
 $range-thumb-shadow-hover: (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint));
 $range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
+$range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 
 .Wrapper {
   position: relative;
@@ -38,12 +38,13 @@ $range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
 
 .Track {
   position: absolute;
+  z-index: 1;
   width: 100%;
   height: $range-track-height;
   border-radius: $range-thumb-size;
 
-  --unselected-range: #{color('sky', 'dark')};
-  --selected-range: #{color('indigo')};
+  --unselected-range: #{var(--p-override-transparent, color('sky', 'dark'))};
+  --selected-range: #{var(--p-action-interactive, color('indigo'))};
   --gradient-colors: var(--unselected-range, transparent) 0%,
     var(--unselected-range, transparent)
       var(--Polaris-RangeSlider-progress-lower),
@@ -55,7 +56,7 @@ $range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
   background-image: linear-gradient(to right, var(--gradient-colors));
 
   .error & {
-    --selected-range: #{color('red')};
+    --selected-range: #{var(--p-action-critical, color('red'))};
     --gradient-colors: var(--unselected-range, transparent) 0%,
       var(--unselected-range, transparent)
         var(--Polaris-RangeSlider-progress-lower),
@@ -71,8 +72,12 @@ $range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
 
   .disabled & {
     background-image: none;
-    background: color('sky', 'dark');
+    background: var(--p-border-secondary-disabled, color('sky', 'dark'));
   }
+}
+
+.Track--dashed {
+  @include track-dashed;
 }
 
 .Thumbs {
@@ -94,20 +99,25 @@ $range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
     border-color: color('sky', 'dark');
   }
 
-  .error & {
-    border-color: color('red');
-    box-shadow: $range-thumb-shadow-error;
-
-    &:hover,
-    &:focus {
-      border-color: color('red');
-      box-shadow: $range-thumb-shadow-error;
-    }
-  }
-
   &:hover {
     background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
     box-shadow: $range-thumb-shadow-hover;
+  }
+
+  .error & {
+    border-color: color('red');
+    box-shadow: $range-thumb-shadow-error;
+  }
+
+  &:focus {
+    outline: 0;
+    background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
+    border-color: color('indigo');
+    box-shadow: $range-thumb-shadow-focus;
+
+    @media (-ms-high-contrast: active) {
+      outline: 1px solid ms-high-contrast-color('text');
+    }
   }
 }
 

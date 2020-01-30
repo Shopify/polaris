@@ -10,6 +10,7 @@ const Shadow = {
     '-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)',
   modalShadow:
     '0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light)',
+  topBarShadow: '0 2px 2px -1px var(--p-shadow-from-direct-light)',
 };
 
 const Overrides = {
@@ -21,6 +22,8 @@ const Overrides = {
   overrideLoadingZIndex: '514',
   buttonFontWeight: '500',
   nonNullContent: "''",
+  choiceSize: rem('20px'),
+  choiceMargin: rem('1px'),
   bannerBorderDefault: buildBannerBorder('--p-border'),
   bannerBorderSuccess: buildBannerBorder('--p-border-success'),
   bannerBorderHighlight: buildBannerBorder('--p-border-highlight'),
@@ -32,6 +35,10 @@ const Overrides = {
   textFieldFocusRingOffset: rem('-4px'),
   textFieldFocusRingBorderRadius: rem('7px'),
   buttonGroupItemSpacing: rem('2px'),
+  duration100: '100ms',
+  duration150: '150ms',
+  easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',
+  ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
 };
 
 export const Tokens = {

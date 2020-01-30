@@ -10,7 +10,4 @@ export default {
   },
 };
 
-(KitchenSink as any).story = {name: 'Kitchen sink'};
-(DetailsPage as any).story = {name: 'Details page'};
-
 export {Playground, KitchenSink, DetailsPage};

@@ -6,7 +6,6 @@ import {
   ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
-  DefaultColorScheme,
 } from '../../utilities/theme';
 import {MediaQueryContext} from '../../utilities/media-query';
 import {
@@ -87,7 +86,7 @@ export function PolarisTestProvider({
   const {unstableGlobalTheming = false} = features;
   const customProperties = unstableGlobalTheming
     ? buildCustomProperties(
-        {...theme, colorScheme: DefaultColorScheme},
+        {...theme, colorScheme: 'light'},
         unstableGlobalTheming,
       )
     : undefined;

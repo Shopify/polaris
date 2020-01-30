@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Carregar"
+      "spinnerAccessibilityLabel": "Carregar",
+      "connectedDisclosureAccessibilityLabel": "Ações relacionadas"
     },
     "Common": {
       "checkbox": "caixa de verificação",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "ordenar {direction} por",
       "navAccessibilityLabel": "Deslocar tabela {direction} de uma coluna",
-      "totalsRowHeading": "Totais"
+      "totalsRowHeading": "Totais",
+      "totalRowHeading": "Total"
     },
     "DatePicker": {
       "previousMonth": "Mostrar mês anterior, {previousMonthName} {showPreviousYear}",
@@ -115,7 +117,8 @@
       "done": "Concluído",
       "clearAllFilters": "Limpar todos os filtros",
       "clear": "Limpar",
-      "clearLabel": "Limpar {filterName}"
+      "clearLabel": "Limpar {filterName}",
+      "moreFiltersWithCount": "Mais filtros ({count})"
     },
     "Modal": {
       "iFrameTitle": "marcação de corpo",

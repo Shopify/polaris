@@ -1,3 +1,3 @@
-export {Item, ItemProps} from './Item';
+export * from './Item';
 
-export {Section, SectionProps} from './Section';
+export * from './Section';

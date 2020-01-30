@@ -1,1 +1,1 @@
-export {SearchField, SearchFieldProps} from './SearchField';
+export * from './SearchField';

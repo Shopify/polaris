@@ -13,8 +13,9 @@ $difference-between-touch-area-and-backdrop: control-height() -
   padding: 0 $menu-action-padding-x;
   min-height: control-height();
   text-decoration: none;
-  color: color('ink', 'light');
+  color: var(--p-text, color('ink', 'light'));
 
+  // Start - Delete below me when rolling out global theming
   &:hover,
   &:active {
     color: color('ink');
@@ -56,6 +57,68 @@ $difference-between-touch-area-and-backdrop: control-height() -
       @include recolor-icon(color('ink', 'lightest'));
     }
   }
+  // End - Delete after me when rolling out global theming
+
+  &.globalTheming {
+    @include focus-ring;
+    border-radius: var(--p-border-radius-base);
+
+    &:hover {
+      background: var(--p-action-secondary-hovered);
+    }
+
+    &:focus {
+      background-color: transparent;
+    }
+
+    // stylelint-disable-next-line selector-max-specificity
+    &:focus:not(:active) {
+      @include focus-ring($style: 'focused');
+    }
+
+    &:active {
+      background: var(--p-action-secondary-pressed);
+    }
+
+    &.disabled {
+      color: var(--p-text-disabled);
+      cursor: default;
+      pointer-events: none;
+
+      // stylelint-disable-next-line selector-max-specificity
+      .IconWrapper {
+        @include recolor-icon(var(--p-icon-disabled));
+      }
+    }
+
+    .IconWrapper {
+      @include recolor-icon(--p-icon);
+    }
+
+    // Start - overrides than can be deleted during global theming rollout
+    &:hover,
+    &:active {
+      color: var(--p-text);
+
+      // stylelint-disable-next-line selector-max-specificity
+      .IconWrapper {
+        @include recolor-icon(var(--p-icon));
+      }
+    }
+
+    &:focus,
+    &:active {
+      // stylelint-disable-next-line selector-max-specificity
+      &::after {
+        background: transparent;
+      }
+    }
+
+    &::after {
+      height: auto;
+    }
+    // End - overrides than can be deleted during global theming rollout
+  }
 }
 
 .ContentWrapper {
@@ -64,7 +127,10 @@ $difference-between-touch-area-and-backdrop: control-height() -
 }
 
 .IconWrapper {
-  @include recolor-icon(color('ink', 'lighter'), color('white'));
+  @include recolor-icon(
+    var(--p-icon, color('ink', 'lighter')),
+    var(--p-override-transparent, color('white'))
+  );
   display: inline-block;
 
   &:first-child {
@@ -81,6 +147,6 @@ $difference-between-touch-area-and-backdrop: control-height() -
   }
 
   &.disabled {
-    @include recolor-icon(color('ink', 'lightest'));
+    @include recolor-icon(var(--p-icon-disabled, color('ink', 'lightest')));
   }
 }

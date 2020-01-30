@@ -240,6 +240,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
                 ref={this.track}
                 testID="track"
               />
+              <div className={styles['Track--dashed']} />
               <button
                 id={idLower}
                 className={thumbLowerClassName}
@@ -260,6 +261,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
                 onMouseDown={this.handleMouseDownThumbLower}
                 onTouchStart={this.handleTouchStartThumbLower}
                 ref={this.thumbLower}
+                disabled={disabled}
               />
               {outputMarkupLower}
               <button
@@ -282,6 +284,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
                 onMouseDown={this.handleMouseDownThumbUpper}
                 onTouchStart={this.handleTouchStartThumbUpper}
                 ref={this.thumbUpper}
+                disabled={disabled}
               />
               {outputMarkupUpper}
             </div>

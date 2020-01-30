@@ -1,1 +1,1 @@
-export {MediaQueryProvider} from './MediaQueryProvider';
+export * from './MediaQueryProvider';

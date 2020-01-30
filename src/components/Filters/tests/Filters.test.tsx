@@ -9,7 +9,7 @@ import {
   ReactWrapper,
 } from 'test-utilities/legacy';
 
-import Filters, {FiltersProps} from '../Filters';
+import {Filters, FiltersProps} from '../Filters';
 import {ConnectedFilterControl} from '../components';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;
@@ -217,6 +217,20 @@ describe('<Filters />', () => {
       ).toHaveLength(2);
     });
 
+    it('receives shortcut filters with popoverOpen set to false on mount', () => {
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockPropsWithShortcuts} />,
+      );
+
+      const rightPopoverableActions = resourceFilters
+        .find(ConnectedFilterControl)
+        .props().rightPopoverableActions;
+
+      rightPopoverableActions!.forEach((action) => {
+        expect(action.popoverOpen).toBe(false);
+      });
+    });
+
     it('toggles a shortcut filter', () => {
       const resourceFilters = mountWithAppProvider(
         <Filters {...mockPropsWithShortcuts} />,
@@ -292,6 +306,41 @@ describe('<Filters />', () => {
 
       expect(spy).toHaveBeenCalledTimes(1);
       expect(spy).toHaveBeenCalledWith('filterOne');
+    });
+
+    it('tags are not shown if hideTags prop is given', () => {
+      const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: noop}];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters
+          {...mockProps}
+          queryValue=""
+          appliedFilters={appliedFilters}
+          hideTags
+        />,
+      );
+      expect(resourceFilters.find(Tag)).toHaveLength(0);
+    });
+
+    it('applied filter count is shown if hideTags prop is given', () => {
+      const appliedFilters = [
+        {key: 'filterOne', label: 'foo', onRemove: noop},
+        {key: 'filterTwo', label: 'bar', onRemove: noop},
+      ];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters
+          {...mockProps}
+          queryValue=""
+          appliedFilters={appliedFilters}
+          hideTags
+        />,
+      );
+      const rightActionButton = findByTestID(
+        resourceFilters,
+        'SheetToggleButton',
+      );
+      expect(rightActionButton.text()).toBe('More filters (2)');
     });
   });
 

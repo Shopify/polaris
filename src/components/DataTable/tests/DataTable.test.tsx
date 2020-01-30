@@ -1,8 +1,11 @@
 import React from 'react';
+import {timer} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import {Cell} from '../components';
-import DataTable, {DataTableProps} from '../DataTable';
+import {mountWithApp} from 'test-utilities';
+import {Checkbox} from 'components';
+import {Cell, Navigation} from '../components';
+import {DataTable, DataTableProps} from '../DataTable';
 
 describe('<DataTable />', () => {
   const headings = ['Product', 'Price', 'Order Number', 'Quantity', 'Subtotal'];
@@ -27,6 +30,34 @@ describe('<DataTable />', () => {
   ];
 
   const defaultProps: DataTableProps = {columnContentTypes, headings, rows};
+
+  beforeEach(() => {
+    timer.mock();
+  });
+
+  afterEach(() => {
+    timer.restore();
+  });
+
+  it('does not throw an error when there are no header cells', () => {
+    function test() {
+      const dataTable = mountWithApp(
+        <DataTable columnContentTypes={[]} headings={[]} rows={[]} />,
+      );
+      const table = dataTable.find('table')!.domNode;
+
+      Object.defineProperty(table, 'scrollWidth', {
+        value: 1,
+        writable: true,
+        configurable: true,
+      });
+
+      window.dispatchEvent(new Event('resize'));
+      timer.runAllTimers();
+    }
+
+    expect(test).not.toThrow();
+  });
 
   describe('columnContentTypes', () => {
     it('sets the provided contentType of Cells in each column', () => {
@@ -88,6 +119,22 @@ describe('<DataTable />', () => {
         expect(headingCell.text()).toBe(headings[headingCellIndex]),
       );
     });
+
+    it('renders JSX in header cell', () => {
+      const headings = [
+        <Checkbox key="123" label="Heading 1" />,
+        'Heading 2',
+        'Heading 3',
+      ];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} headings={headings} />,
+      );
+
+      const checkbox = dataTable.find('thead tr').find(Checkbox);
+
+      expect(checkbox).toHaveLength(1);
+      expect(checkbox.prop('label')).toBe('Heading 1');
+    });
   });
 
   describe('totals', () => {
@@ -104,8 +151,24 @@ describe('<DataTable />', () => {
       expect(totalsRow.text()).toContain(totals.join(''));
     });
 
-    it('sets the content of the first total Cell to the totals row heading', () => {
-      const totals = ['', '', ''];
+    it('renders the singular default totals row label when only one total is provided', () => {
+      const totals = ['', '', '', '', '$155,830.00'];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(2);
+
+      const firstTotalCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('total') === true)
+        .first();
+
+      expect(firstTotalCell.prop('content')).toBe('Total');
+    });
+
+    it('renders the plural default totals label when more than one total is provided', () => {
+      const totals = ['', '', '', '255', '$155,830.00'];
       const dataTable = mountWithAppProvider(
         <DataTable {...defaultProps} totals={totals} />,
       );
@@ -167,6 +230,50 @@ describe('<DataTable />', () => {
     });
   });
 
+  describe('totalsName', () => {
+    it('renders the singular custom totals label when only one total provided', () => {
+      const totals = ['', '', '', '', '$155,830.00'];
+      const totalsName = {
+        singular: 'Price',
+        plural: 'Prices',
+      };
+
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} totalsName={totalsName} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(2);
+
+      const firstTotalCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('total') === true)
+        .first();
+
+      expect(firstTotalCell.prop('content')).toBe('Price');
+    });
+
+    it('renders the plural custom totals label when more than one total is provided', () => {
+      const totals = ['', '', '', '255', '$155,830.00'];
+      const totalsName = {
+        singular: 'Price',
+        plural: 'Prices',
+      };
+
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} totalsName={totalsName} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(2);
+
+      const firstTotalCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('total') === true)
+        .first();
+
+      expect(firstTotalCell.prop('content')).toBe('Prices');
+    });
+  });
+
   describe('rows', () => {
     it('renders a table body row for each list of table data provided', () => {
       const rows = [['First row'], ['Second row'], ['Third row']];
@@ -203,6 +310,30 @@ describe('<DataTable />', () => {
       firstColumnCells.forEach((cell) =>
         expect(cell.prop('truncate')).toBe(true),
       );
+    });
+  });
+
+  describe('hideScrollIndicator', () => {
+    it('shows <Navigation /> by default', () => {
+      const dataTable = mountWithAppProvider(<DataTable {...defaultProps} />);
+
+      expect(dataTable.find(Navigation)).toHaveLength(1);
+    });
+
+    it('hide <Navigation /> when true', () => {
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} hideScrollIndicator />,
+      );
+
+      expect(dataTable.find(Navigation)).toHaveLength(0);
+    });
+
+    it('show <Navigation /> when false', () => {
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} hideScrollIndicator={false} />,
+      );
+
+      expect(dataTable.find(Navigation)).toHaveLength(1);
     });
   });
 

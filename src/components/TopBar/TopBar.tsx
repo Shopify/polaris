@@ -1,16 +1,30 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
+import debounce from 'lodash/debounce';
 import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useI18n} from '../../utilities/i18n';
 import {useTheme} from '../../utilities/theme';
+import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
+import {EventListener} from '../EventListener';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
 
-import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
+import {
+  SearchField,
+  SearchFieldProps,
+  UserMenu,
+  UserMenuProps,
+  Search,
+  SearchProps,
+  Menu,
+} from './components';
+
 import styles from './TopBar.scss';
+
+export {UserMenuProps, SearchFieldProps};
 
 export interface TopBarProps {
   /** Toggles whether or not a navigation component has been provided. Controls the presence of the mobile nav toggle button */
@@ -27,6 +41,8 @@ export interface TopBarProps {
   searchResults?: React.ReactNode;
   /** A boolean property indicating whether search results are currently visible. */
   searchResultsVisible?: boolean;
+  /** Whether or not the search results overlay has a visible backdrop */
+  searchResultsOverlayVisible?: boolean;
   /** A callback function that handles the dismissal of search results */
   onSearchResultsDismiss?: SearchProps['onDismiss'];
   /** A callback function that handles hiding and showing mobile navigation */
@@ -49,12 +65,15 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   searchField,
   secondaryMenu,
   searchResultsVisible,
+  searchResultsOverlayVisible = false,
   onNavigationToggle,
   onSearchResultsDismiss,
   contextControl,
 }: TopBarProps) {
   const i18n = useI18n();
   const {logo} = useTheme();
+  const [scrolled, setScrolled] = useState(false);
+  const {unstableGlobalTheming = false} = useFeatures();
 
   const {
     value: focused,
@@ -62,7 +81,21 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     setFalse: forceFalseFocused,
   } = useToggle(false);
 
-  const className = classNames(
+  const handleScroll = useCallback(
+    debounce(() => {
+      const scrollDistance = window.scrollY;
+      const isScrolled = scrollDistance >= 1;
+
+      if (scrolled && isScrolled) {
+        return;
+      }
+
+      window.requestAnimationFrame(() => setScrolled(Boolean(isScrolled)));
+    }, 20),
+    [],
+  );
+
+  const iconClassName = classNames(
     styles.NavigationIcon,
     focused && styles.focused,
   );
@@ -70,26 +103,26 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   const navigationButtonMarkup = showNavigationToggle ? (
     <button
       type="button"
-      className={className}
+      className={iconClassName}
       onClick={onNavigationToggle}
       onFocus={forceTrueFocused}
       onBlur={forceFalseFocused}
       aria-label={i18n.translate('Polaris.TopBar.toggleMenuLabel')}
     >
-      <Icon source={MobileHamburgerMajorMonotone} color="white" />
+      <Icon source={MobileHamburgerMajorMonotone} />
     </button>
   ) : null;
 
   const width = getWidth(logo, 104);
   let contextMarkup;
 
-  if (contextControl) {
+  if (contextControl && !unstableGlobalTheming) {
     contextMarkup = (
       <div testID="ContextControl" className={styles.ContextControl}>
         {contextControl}
       </div>
     );
-  } else if (logo) {
+  } else if (logo && !unstableGlobalTheming) {
     contextMarkup = (
       <div className={styles.LogoContainer}>
         <UnstyledLink
@@ -108,22 +141,31 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     );
   }
 
-  const searchResultsMarkup =
-    searchResults && searchResultsVisible ? (
-      <Search visible={searchResultsVisible} onDismiss={onSearchResultsDismiss}>
-        {searchResults}
-      </Search>
-    ) : null;
-
   const searchMarkup = searchField ? (
     <React.Fragment>
       {searchField}
-      {searchResultsMarkup}
+      <Search
+        visible={searchResultsVisible}
+        onDismiss={onSearchResultsDismiss}
+        overlayVisible={searchResultsOverlayVisible}
+      >
+        {searchResults}
+      </Search>
     </React.Fragment>
   ) : null;
 
+  const scrollListenerMarkup = unstableGlobalTheming ? (
+    <EventListener event="scroll" handler={handleScroll} passive />
+  ) : null;
+
+  const className = classNames(
+    styles.TopBar,
+    unstableGlobalTheming && styles['TopBar-globalTheming'],
+    scrolled && styles.isScrolled,
+  );
+
   return (
-    <div className={styles.TopBar}>
+    <div className={className}>
       {navigationButtonMarkup}
       {contextMarkup}
       <div className={styles.Contents}>
@@ -131,6 +173,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
         <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
         {userMenu}
       </div>
+      {scrollListenerMarkup}
     </div>
   );
 };

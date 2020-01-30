@@ -1,11 +1,11 @@
 import React, {useCallback, useRef} from 'react';
-
+import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from '@material-ui/react-transition-group';
 import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
 
 import {Key} from '../../types';
-import {layer, overlay, Duration} from '../shared';
+import {layer, overlay} from '../shared';
 
 import {Backdrop} from '../Backdrop';
 import {TrapFocus} from '../TrapFocus';
@@ -14,14 +14,14 @@ import {KeypressListener} from '../KeypressListener';
 
 import styles from './Sheet.scss';
 
-export const BOTTOM_CLASS_NAMES = {
+const BOTTOM_CLASS_NAMES = {
   enter: classNames(styles.Bottom, styles.enterBottom),
   enterActive: classNames(styles.Bottom, styles.enterBottomActive),
   exit: classNames(styles.Bottom, styles.exitBottom),
   exitActive: classNames(styles.Bottom, styles.exitBottomActive),
 };
 
-export const RIGHT_CLASS_NAMES = {
+const RIGHT_CLASS_NAMES = {
   enter: classNames(styles.Right, styles.enterRight),
   enterActive: classNames(styles.Right, styles.enterRightActive),
   exit: classNames(styles.Right, styles.exitRight),
@@ -62,7 +62,7 @@ export function Sheet({
         classNames={
           isNavigationCollapsed ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES
         }
-        timeout={Duration.Slow}
+        timeout={durationSlow}
         in={open}
         mountOnEnter
         unmountOnExit

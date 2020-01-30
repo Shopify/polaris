@@ -228,11 +228,15 @@ export function DetailsPage() {
             onClick: toggleIsLoading,
           },
         ]}
+      />
+      <Navigation.Section
+        title="Contact support"
         action={{
           icon: ConversationMinor,
           accessibilityLabel: 'Contact support',
           onClick: toggleModalActive,
         }}
+        items={[]}
       />
     </Navigation>
   );

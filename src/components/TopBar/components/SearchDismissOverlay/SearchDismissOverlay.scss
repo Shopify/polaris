@@ -1,0 +1,29 @@
+@import '../../../../styles/common';
+@import '../../variables';
+
+$entry-iterations: 1;
+$backdrop-color: rgba(33, 43, 54, 0.4);
+
+.SearchDismissOverlay {
+  position: fixed;
+  top: top-bar-height();
+  left: 0;
+  right: 0;
+  z-index: z-index(nav-backdrop, $fixed-element-stacking-order);
+  height: calc(100vh - #{top-bar-height()});
+}
+
+.visible {
+  background-color: var(--p-backdrop, $backdrop-color);
+  animation: fade-in duration() $entry-iterations forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

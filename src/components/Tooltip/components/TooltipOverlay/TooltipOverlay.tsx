@@ -3,9 +3,8 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import {layer} from '../../../shared';
 import {
+  PositionedOverlayProps,
   PositionedOverlay,
-  OverlayDetails,
-  PreferredPosition,
 } from '../../../PositionedOverlay';
 
 import styles from '../../Tooltip.scss';
@@ -14,7 +13,7 @@ export interface TooltipOverlayProps {
   id: string;
   active: boolean;
   light?: boolean;
-  preferredPosition?: PreferredPosition;
+  preferredPosition?: PositionedOverlayProps['preferredPosition'];
   children?: React.ReactNode;
   activator: HTMLElement;
   onClose(): void;
@@ -43,7 +42,9 @@ export class TooltipOverlay extends React.PureComponent<
     );
   };
 
-  private renderTooltip = (overlayDetails: OverlayDetails) => {
+  private renderTooltip: PositionedOverlayProps['render'] = (
+    overlayDetails,
+  ) => {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
     const {id, children, light} = this.props;

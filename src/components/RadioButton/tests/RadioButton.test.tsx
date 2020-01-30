@@ -150,4 +150,29 @@ describe('<RadioButton />', () => {
       });
     });
   });
+
+  describe('Hovering the label', () => {
+    it('adds the hover class to the Backdrop onMouseOver the label', () => {
+      const radioButton = mountWithApp(<RadioButton label="radioButton" />);
+
+      const label = radioButton.find('label');
+      label!.trigger('onMouseOver');
+
+      expect(radioButton).toContainReactComponent('span', {
+        className: 'Backdrop hover',
+      });
+    });
+
+    it('removes the hover class from the Backdrop onMouseOut the label', () => {
+      const radioButton = mountWithApp(<RadioButton label="radioButton" />);
+
+      const label = radioButton.find('label');
+      label!.trigger('onMouseOver');
+      label!.trigger('onMouseOut');
+
+      expect(radioButton).toContainReactComponent('span', {
+        className: 'Backdrop',
+      });
+    });
+  });
 });

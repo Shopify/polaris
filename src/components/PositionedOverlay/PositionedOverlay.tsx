@@ -13,16 +13,17 @@ import {
   calculateVerticalPosition,
   calculateHorizontalPosition,
   rectIsOutsideOfRect,
+  intersectionWithViewport,
+  windowRect,
 } from './utilities/math';
 
 import styles from './PositionedOverlay.scss';
 
-export {PreferredPosition, PreferredAlignment};
+type Positioning = 'above' | 'below';
 
-export type Positioning = 'above' | 'below';
-
-export interface OverlayDetails {
-  left: number;
+interface OverlayDetails {
+  left?: number;
+  right?: number;
   desiredHeight: number;
   positioning: Positioning;
   measuring: boolean;
@@ -44,7 +45,8 @@ export interface PositionedOverlayProps {
 interface State {
   measuring: boolean;
   activatorRect: Rect;
-  left: number;
+  left?: number;
+  right?: number;
   top: number;
   height: number;
   width: number | null;
@@ -63,7 +65,8 @@ export class PositionedOverlay extends React.PureComponent<
   state: State = {
     measuring: true,
     activatorRect: getRectForNode(this.props.activator),
-    left: 0,
+    right: undefined,
+    left: undefined,
     top: 0,
     height: 0,
     width: null,
@@ -118,12 +121,13 @@ export class PositionedOverlay extends React.PureComponent<
   }
 
   render() {
-    const {left, top, zIndex, width} = this.state;
+    const {left, right, top, zIndex, width} = this.state;
     const {render, fixed, classNames: propClassNames} = this.props;
 
     const style = {
       top: top == null || isNaN(top) ? undefined : top,
       left: left == null || isNaN(left) ? undefined : left,
+      right: right == null || isNaN(right) ? undefined : right,
       width: width == null || isNaN(width) ? undefined : width,
       zIndex: zIndex == null || isNaN(zIndex) ? undefined : zIndex,
     };
@@ -143,11 +147,19 @@ export class PositionedOverlay extends React.PureComponent<
   }
 
   private overlayDetails = (): OverlayDetails => {
-    const {measuring, left, positioning, height, activatorRect} = this.state;
+    const {
+      measuring,
+      left,
+      right,
+      positioning,
+      height,
+      activatorRect,
+    } = this.state;
 
     return {
       measuring,
       left,
+      right,
       desiredHeight: height,
       positioning,
       activatorRect,
@@ -164,8 +176,9 @@ export class PositionedOverlay extends React.PureComponent<
     this.observer.disconnect();
 
     this.setState(
-      ({left, top}) => ({
+      ({left, top, right}) => ({
         left,
+        right,
         top,
         height: 0,
         positioning: 'below',
@@ -209,6 +222,7 @@ export class PositionedOverlay extends React.PureComponent<
         const overlayMargins = this.overlay.firstElementChild
           ? getMarginsForNode(this.overlay.firstElementChild as HTMLElement)
           : {activator: 0, container: 0, horizontal: 0};
+
         const containerRect = windowRect();
         const zIndexForLayer = getZIndexForLayerFromNode(activator);
         const zIndex =
@@ -234,7 +248,10 @@ export class PositionedOverlay extends React.PureComponent<
           {
             measuring: false,
             activatorRect: getRectForNode(activator),
-            left: horizontalPosition,
+            left:
+              preferredAlignment !== 'right' ? horizontalPosition : undefined,
+            right:
+              preferredAlignment === 'right' ? horizontalPosition : undefined,
             top: lockPosition ? top : verticalPosition.top,
             lockPosition: Boolean(fixed),
             height: verticalPosition.height || 0,
@@ -258,29 +275,12 @@ export class PositionedOverlay extends React.PureComponent<
   };
 }
 
-export function intersectionWithViewport(
-  rect: Rect,
-  viewport: Rect = windowRect(),
-) {
-  const top = Math.max(rect.top, 0);
-  const left = Math.max(rect.left, 0);
-  const bottom = Math.min(rect.top + rect.height, viewport.height);
-  const right = Math.min(rect.left + rect.width, viewport.width);
-
-  return new Rect({
-    top,
-    left,
-    height: bottom - top,
-    width: right - left,
-  });
-}
-
 function getMarginsForNode(node: HTMLElement) {
   const nodeStyles = window.getComputedStyle(node);
   return {
-    activator: parseFloat(nodeStyles.marginTop || ''),
-    container: parseFloat(nodeStyles.marginBottom || ''),
-    horizontal: parseFloat(nodeStyles.marginLeft || ''),
+    activator: parseFloat(nodeStyles.marginTop || '0'),
+    container: parseFloat(nodeStyles.marginBottom || '0'),
+    horizontal: parseFloat(nodeStyles.marginLeft || '0'),
   };
 }
 
@@ -291,15 +291,6 @@ function getZIndexForLayerFromNode(node: HTMLElement) {
       ? 'auto'
       : parseInt(window.getComputedStyle(layerNode).zIndex || '0', 10);
   return zIndex === 'auto' || isNaN(zIndex) ? null : zIndex;
-}
-
-function windowRect() {
-  return new Rect({
-    top: window.scrollY,
-    left: window.scrollX,
-    height: window.innerHeight,
-    width: window.innerWidth,
-  });
 }
 
 function isDocument(node: HTMLElement | Document): node is Document {

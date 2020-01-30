@@ -32,6 +32,10 @@ $control-vertical-adjustment: rem(2px);
   > .Label {
     color: color('ink', 'lightest');
 
+    &:hover {
+      cursor: default;
+    }
+
     @media (-ms-high-contrast: active) {
       color: ms-high-contrast-color('disabled-text');
     }
@@ -42,9 +46,9 @@ $control-vertical-adjustment: rem(2px);
   display: flex;
   flex: 0 0 auto;
   align-items: stretch;
-  width: $control-size;
-  height: $control-size;
-  margin-top: $control-vertical-adjustment;
+  width: var(--p-choice-size, $control-size);
+  height: var(--p-choice-size, $control-size);
+  margin-top: var(--p-override-none, $control-vertical-adjustment);
   margin-right: spacing(tight);
 
   > * {
@@ -55,10 +59,16 @@ $control-vertical-adjustment: rem(2px);
 .Label {
   @include text-style-body;
   -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .Descriptions {
-  padding-left: spacing(tight) + $control-size;
+  padding-left: calc(
+    #{spacing(tight)} + var(--p-choice-size, #{$control-size})
+  );
 }
 
 .HelpText {

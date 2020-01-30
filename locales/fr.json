@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Chargement"
+      "spinnerAccessibilityLabel": "Chargement",
+      "connectedDisclosureAccessibilityLabel": "Actions associées"
     },
     "Common": {
       "checkbox": "case à cocher",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "trier {direction} par",
       "navAccessibilityLabel": "Faire défiler le tableau {direction} une colonne",
-      "totalsRowHeading": "Totaux"
+      "totalsRowHeading": "Totaux",
+      "totalRowHeading": "total"
     },
     "DatePicker": {
       "previousMonth": "Afficher le mois précédent, {previousMonthName} {showPreviousYear}",
@@ -115,7 +117,8 @@
       "done": "Terminé",
       "clearAllFilters": "Effacer tous les filtres",
       "clear": "Effacer",
-      "clearLabel": "Effacer {filterName}"
+      "clearLabel": "Effacer {filterName}",
+      "moreFiltersWithCount": "Plus de filtres ({count})"
     },
     "Modal": {
       "iFrameTitle": "balisage du corps",

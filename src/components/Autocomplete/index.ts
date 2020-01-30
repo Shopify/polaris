@@ -1,1 +1,1 @@
-export {Autocomplete, AutocompleteProps} from './Autocomplete';
+export * from './Autocomplete';

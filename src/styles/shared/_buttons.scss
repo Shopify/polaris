@@ -79,10 +79,12 @@
       border-color: transparent;
     }
 
+    @include focus-ring;
+
     &:focus {
       border-color: transparent;
       box-shadow: none;
-      @include focus-ring;
+      @include focus-ring($style: 'focused');
     }
 
     &:active {
@@ -201,6 +203,7 @@
   border-color: rgba($outline-color, 0.4);
   box-shadow: none;
   color: darken($outline-color, 20%);
+  @include recolor-icon(darken($outline-color, 20%));
 
   &:hover {
     background: rgba($outline-color, 0.05);
@@ -247,6 +250,7 @@
       background: transparent;
       box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
       color: var(--p-critical-link);
+      @include recolor-icon(var(--p-icon-critical));
 
       &:hover {
         box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
@@ -267,7 +271,7 @@
       &.disabled {
         box-shadow: 0 0 0 border-width('base') var(--p-border-critical-disabled);
         background: transparent;
-        color: var(--p-critical-link-disabled);
+        color: var(--p-link-critical-disabled);
       }
     }
   }

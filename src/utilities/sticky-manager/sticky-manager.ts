@@ -8,7 +8,7 @@ import tokens from '@shopify/polaris-tokens';
 import {dataPolarisTopBar, scrollable} from '../../components/shared';
 import {stackedContent} from '../breakpoints';
 
-export interface StickyItem {
+interface StickyItem {
   /** Node of the sticky element */
   stickyNode: HTMLElement;
   /** Placeholder element */

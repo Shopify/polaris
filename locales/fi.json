@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Ladataan"
+      "spinnerAccessibilityLabel": "Ladataan",
+      "connectedDisclosureAccessibilityLabel": "Aiheeseen liittyvät toimenpiteet"
     },
     "Common": {
       "checkbox": "valintaruutu",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "lajittele {direction}:",
       "navAccessibilityLabel": "Selaa taulukkoa {direction} yksi sarake",
-      "totalsRowHeading": "Yhteenlasketut"
+      "totalsRowHeading": "Yhteenlasketut",
+      "totalRowHeading": "Yhteensä"
     },
     "DatePicker": {
       "previousMonth": "Näytä edellinen kuukausi, {previousMonthName} {showPreviousYear}",
@@ -115,7 +117,8 @@
       "done": "Valmis",
       "clearAllFilters": "Tyhjennä kaikki suodattimet",
       "clear": "Tyhjennä",
-      "clearLabel": "Tyhjennä {filterName}"
+      "clearLabel": "Tyhjennä {filterName}",
+      "moreFiltersWithCount": "Lisää suodattimia ({count})"
     },
     "Modal": {
       "iFrameTitle": "tekstin merkintä",

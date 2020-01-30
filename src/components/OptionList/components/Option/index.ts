@@ -1,1 +1,1 @@
-export {Option, OptionProps} from './Option';
+export * from './Option';

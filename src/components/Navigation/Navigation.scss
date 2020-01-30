@@ -3,6 +3,7 @@
 
 // Base Navigation styles
 $nav-max-width: rem(360px);
+$unstable-nav-max-width: rem(258px);
 .Navigation {
   display: flex;
   flex-direction: column;
@@ -26,15 +27,28 @@ $nav-max-width: rem(360px);
     border-right: var(--p-override-none, border());
     @include safe-area-for(max-width, layout-width(nav), left);
   }
+
+  &.Navigation-globalTheming {
+    max-width: $unstable-nav-max-width;
+    border-right: 1px solid var(--p-border-subdued);
+  }
+}
+
+.Navigation-noMedia {
+  padding-top: spacing();
 }
 
 .UserMenu {
   flex: 0 0 auto;
 }
 
-.ContextControl {
-  @include breakpoint-after(nav-min-window-corrected()) {
+@include breakpoint-after(nav-min-window-corrected()) {
+  .ContextControl {
     display: none;
+
+    .Navigation-globalTheming & {
+      display: block;
+    }
   }
 }
 
@@ -45,6 +59,24 @@ $nav-max-width: rem(360px);
   flex-direction: column;
   align-items: stretch;
   max-width: 100%;
+}
+
+.LogoContainer {
+  display: none;
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: flex;
+    flex: 0 0 unstable-top-bar-height();
+    align-items: center;
+    height: 100%;
+    padding: 0 spacing(tight) 0 spacing(base);
+    @include safe-area-for(flex-basis, unstable-top-bar-height(), left);
+    @include safe-area-for(padding-left, spacing(), left);
+  }
+}
+
+.Logo,
+.LogoLink {
+  display: block;
 }
 
 // Item styles
@@ -78,9 +110,12 @@ $disabled-fade: 0.6;
     );
     color: var(--p-action-primary-hovered, color('indigo', 'dark'));
   }
+
+  @include focus-ring;
+
   &:focus {
     color: var(--p-action-primary, color('indigo', 'dark'));
-    @include focus-ring;
+    @include focus-ring($style: 'focused');
   }
   &:active {
     background-color: var(
@@ -169,6 +204,8 @@ $disabled-fade: 0.6;
     background-color: var(--p-surface-hovered);
   }
 
+  @include focus-ring;
+
   &:focus {
     @include recolor-icon(
       var(--p-icon-subdued, color('indigo')),
@@ -179,7 +216,7 @@ $disabled-fade: 0.6;
       --p-override-none,
       linear-gradient(color(state, hover), color(state, hover))
     );
-    @include focus-ring;
+    @include focus-ring($style: 'focused');
   }
 
   &:focus:hover {
@@ -231,9 +268,12 @@ $secondary-item-font-size: rem(15px);
     &:hover {
       color: var(--p-action-primary, color('indigo', 'dark'));
     }
+
+    @include focus-ring;
+
     &:focus {
       color: var(--p-text, color('indigo', 'dark'));
-      @include focus-ring;
+      @include focus-ring($style: 'focused');
     }
     // stylelint-disable selector-max-specificity
     &:focus:hover {
@@ -262,12 +302,14 @@ $secondary-item-font-size: rem(15px);
   .Item-selected {
     font-weight: 600;
     color: var(--p-action-primary, color('indigo', 'dark'));
+    @include focus-ring;
+
     &:hover {
       color: var(--p-action-primary-hovered, color('indigo', 'dark'));
     }
     &:focus {
       color: var(--p-action-primary, color('indigo', 'dark'));
-      @include focus-ring;
+      @include focus-ring($style: 'focused');
     }
     &:active {
       color: var(--p-action-primary-pressed, color('indigo', 'dark'));
@@ -287,8 +329,13 @@ $secondary-item-font-size: rem(15px);
   padding: spacing() 0;
   @include safe-area-for(padding-left, 0, left);
 
+  .Navigation-globalTheming & {
+    padding-top: 0;
+  }
+
   + .Section {
     padding-top: spacing(extra-tight);
+    padding-bottom: spacing();
   }
 }
 
@@ -339,6 +386,8 @@ $secondary-item-font-size: rem(15px);
       background-color: var(--p-surface-hovered);
     }
 
+    @include focus-ring;
+
     &:focus {
       @include recolor-icon(
         var(--p-icon-subdued, color('indigo')),
@@ -349,7 +398,7 @@ $secondary-item-font-size: rem(15px);
         --p-override-none,
         linear-gradient(color(state, hover), color(state, hover))
       );
-      @include focus-ring;
+      @include focus-ring($style: 'focused');
     }
 
     // stylelint-disable-next-line selector-max-specificity
@@ -397,7 +446,7 @@ $secondary-item-font-size: rem(15px);
 
   &:focus {
     outline: none;
-    @include focus-ring;
+    @include focus-ring($style: 'focused');
   }
 }
 

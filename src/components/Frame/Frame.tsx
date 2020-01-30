@@ -2,6 +2,7 @@ import React, {createRef} from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from '@material-ui/react-transition-group';
+import {FeaturesContext} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {EventListener} from '../EventListener';
@@ -24,7 +25,6 @@ import {
   Loading,
   ContextualSaveBar,
   CSSAnimation,
-  AnimationType,
 } from './components';
 
 import styles from './Frame.scss';
@@ -56,11 +56,11 @@ interface State {
   showContextualSaveBar: boolean;
 }
 
-export const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
+const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
 
-export const APP_FRAME_MAIN = 'AppFrameMain';
+const APP_FRAME_MAIN = 'AppFrameMain';
 
-export const APP_FRAME_MAIN_ANCHOR_TARGET = 'AppFrameMainContent';
+const APP_FRAME_MAIN_ANCHOR_TARGET = 'AppFrameMainContent';
 
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
@@ -68,7 +68,10 @@ const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 
 type CombinedProps = FrameProps & WithAppProviderProps;
 
-class Frame extends React.PureComponent<CombinedProps, State> {
+class FrameInner extends React.PureComponent<CombinedProps, State> {
+  static contextType = FeaturesContext;
+  context!: React.ContextType<typeof FeaturesContext>;
+
   state: State = {
     skipFocused: false,
     globalRibbonHeight: 0,
@@ -116,10 +119,12 @@ class Frame extends React.PureComponent<CombinedProps, State> {
         mediaQuery: {isNavigationCollapsed},
       },
     } = this.props;
+    const {unstableGlobalTheming} = this.context || {};
 
     const navClassName = classNames(
       styles.Navigation,
       showMobileNavigation && styles['Navigation-visible'],
+      unstableGlobalTheming && styles['Navigation-globalTheming'],
     );
 
     const mobileNavHidden = isNavigationCollapsed && !showMobileNavigation;
@@ -176,15 +181,20 @@ class Frame extends React.PureComponent<CombinedProps, State> {
       <CSSAnimation
         in={showContextualSaveBar}
         className={styles.ContextualSaveBar}
-        type={AnimationType.Fade}
+        type="fade"
       >
         <ContextualSaveBar {...this.contextualSaveBar} />
       </CSSAnimation>
     );
 
+    const topBarClassName = classNames(
+      styles.TopBar,
+      unstableGlobalTheming && styles['TopBar-globalTheming'],
+    );
+
     const topBarMarkup = topBar ? (
       <div
-        className={styles.TopBar}
+        className={topBarClassName}
         {...layer.props}
         {...dataPolarisTopBar.props}
         id={APP_FRAME_TOP_BAR}
@@ -193,9 +203,14 @@ class Frame extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
+    const globalRibbonClassName = classNames(
+      styles.GlobalRibbonContainer,
+      unstableGlobalTheming && styles['GlobalRibbonContainer-globalTheming'],
+    );
+
     const globalRibbonMarkup = globalRibbon ? (
       <div
-        className={styles.GlobalRibbonContainer}
+        className={globalRibbonClassName}
         ref={this.setGlobalRibbonContainer}
       >
         {globalRibbon}
@@ -235,6 +250,11 @@ class Frame extends React.PureComponent<CombinedProps, State> {
       styles.Frame,
       navigation && styles.hasNav,
       topBar && styles.hasTopBar,
+    );
+
+    const mainClassName = classNames(
+      styles.Main,
+      unstableGlobalTheming && styles['Main-globalTheming'],
     );
 
     const navigationOverlayMarkup =
@@ -278,7 +298,7 @@ class Frame extends React.PureComponent<CombinedProps, State> {
           {loadingMarkup}
           {navigationOverlayMarkup}
           <main
-            className={styles.Main}
+            className={mainClassName}
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
           >
@@ -391,8 +411,15 @@ class Frame extends React.PureComponent<CombinedProps, State> {
 
   private handleNavKeydown = (event: React.KeyboardEvent<HTMLElement>) => {
     const {key} = event;
+    const {
+      polaris: {
+        mediaQuery: {isNavigationCollapsed},
+      },
+      showMobileNavigation,
+    } = this.props;
 
-    if (key === 'Escape') {
+    const mobileNavShowing = isNavigationCollapsed && showMobileNavigation;
+    if (mobileNavShowing && key === 'Escape') {
       this.handleNavigationDismiss();
     }
   };
@@ -410,6 +437,4 @@ const navTransitionClasses = {
   exitActive: classNames(styles['Navigation-exitActive']),
 };
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<FrameProps>()(Frame);
+export const Frame = withAppProvider<FrameProps>()(FrameInner);

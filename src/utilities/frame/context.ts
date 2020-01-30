@@ -1,6 +1,7 @@
 import React from 'react';
 import {ToastPropsWithID, ToastID, ContextualSaveBarProps} from './types';
 
+// This is internal, but TS throws a build-time error if we don't export it
 export interface FrameContextType {
   showToast(toast: ToastPropsWithID): void;
   hideToast(toast: ToastID): void;

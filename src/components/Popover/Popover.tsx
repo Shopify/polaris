@@ -7,23 +7,27 @@ import React, {
 } from 'react';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {focusNextFocusableNode} from '../../utilities/focus';
-
-import {PreferredPosition, PreferredAlignment} from '../PositionedOverlay';
 import {Portal} from '../Portal';
 import {portal} from '../shared';
 import {useUniqueId} from '../../utilities/unique-id';
-import {CloseSource, Pane, PopoverOverlay, Section} from './components';
+import {
+  PopoverCloseSource,
+  Pane,
+  PopoverOverlay,
+  PopoverOverlayProps,
+  Section,
+} from './components';
 import {setActivatorAttributes} from './set-activator-attributes';
 
-export {CloseSource};
+export {PopoverCloseSource};
 
 export interface PopoverProps {
   /** The content to display inside the popover */
   children?: React.ReactNode;
   /** The preferred direction to open the popover */
-  preferredPosition?: PreferredPosition;
+  preferredPosition?: PopoverOverlayProps['preferredPosition'];
   /** The preferred alignment of the popover relative to its activator */
-  preferredAlignment?: PreferredAlignment;
+  preferredAlignment?: PopoverOverlayProps['preferredAlignment'];
   /** Show or hide the Popover */
   active: boolean;
   /** The element to activate the Popover */
@@ -48,7 +52,7 @@ export interface PopoverProps {
   /** Used to illustrate the type of popover element */
   ariaHaspopup?: AriaAttributes['aria-haspopup'];
   /** Callback when popover is closed */
-  onClose(source: CloseSource): void;
+  onClose(source: PopoverCloseSource): void;
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -84,7 +88,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
     setActivatorAttributes(focusableActivator, {id, active, ariaHaspopup});
   }, [active, ariaHaspopup, id]);
 
-  const handleClose = (source: CloseSource) => {
+  const handleClose = (source: PopoverCloseSource) => {
     onClose(source);
 
     if (activatorContainer.current == null) {
@@ -92,8 +96,8 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
     }
 
     if (
-      (source === CloseSource.FocusOut ||
-        source === CloseSource.EscapeKeypress) &&
+      (source === PopoverCloseSource.FocusOut ||
+        source === PopoverCloseSource.EscapeKeypress) &&
       activatorNode
     ) {
       const focusableActivator =

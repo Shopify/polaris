@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "กำลังโหลด"
+      "spinnerAccessibilityLabel": "กำลังโหลด",
+      "connectedDisclosureAccessibilityLabel": "การดำเนินการที่เกี่ยวข้อง"
     },
     "Common": {
       "checkbox": "ช่องทำเครื่องหมาย",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "จัดเรียง {direction} ตาม",
       "navAccessibilityLabel": "เลื่อนตาราง {direction} หนึ่งคอลัมน์",
-      "totalsRowHeading": "รวม"
+      "totalsRowHeading": "รวม",
+      "totalRowHeading": "ยอดรวม"
     },
     "DatePicker": {
       "previousMonth": "แสดงเดือนก่อนหน้า {previousMonthName} {showPreviousYear}",
@@ -115,7 +117,8 @@
       "done": "เสร็จสิ้น",
       "clearAllFilters": "ล้างตัวกรองทั้งหมด",
       "clear": "ล้าง",
-      "clearLabel": "ล้าง {filterName}"
+      "clearLabel": "ล้าง {filterName}",
+      "moreFiltersWithCount": "ตัวกรองเพิ่มเติม ({count})"
     },
     "Modal": {
       "iFrameTitle": "การแสดงผลเนื้อหา",

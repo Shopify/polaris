@@ -1,1 +1,1 @@
-export {Subheading, SubheadingProps} from './Subheading';
+export * from './Subheading';

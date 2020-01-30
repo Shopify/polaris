@@ -1,4 +1,4 @@
-export enum EditableTarget {
+enum EditableTarget {
   Input = 'INPUT',
   Textarea = 'TEXTAREA',
   Select = 'SELECT',

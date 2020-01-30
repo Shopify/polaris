@@ -1,1 +1,1 @@
-export {Slidable, SlidableProps, Position} from './Slidable';
+export * from './Slidable';

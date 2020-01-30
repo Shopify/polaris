@@ -9,19 +9,15 @@ $icon-size: rem(16px);
   align-items: center;
   min-height: $height;
   padding-left: spacing(tight);
-  background-color: color('sky');
+  background-color: var(--p-action-secondary, color('sky'));
   border-radius: border-radius();
-  color: color('ink');
+  color: var(--p-text, color('ink'));
 
   &.disabled {
-    @include recolor-icon(color('ink', 'lightest'));
+    @include recolor-icon(var(--p-icon-disabled, color('ink', 'lightest')));
     transition: none;
-    background: linear-gradient(
-      to bottom,
-      color('sky', 'light'),
-      color('sky', 'light')
-    );
-    color: color('ink', 'lightest');
+    background: var(--p-action-secondary-disabled, color('sky', 'light'));
+    color: var(--p-text-disabled, color('ink', 'lightest'));
   }
 
   .TagText {
@@ -40,6 +36,7 @@ $icon-size: rem(16px);
   margin-left: spacing(extra-tight);
   border-radius: 0 border-radius() border-radius() 0;
 
+  // Start - Delete below me during global theming rollout
   &:hover,
   &:focus,
   &:active {
@@ -55,5 +52,34 @@ $icon-size: rem(16px);
 
   &:active {
     background: rgba(color('ink', 'lightest'), 0.6);
+  }
+  // End - Delete above me during global theming rollout
+
+  &.globalTheming {
+    @include recolor-icon(var(--p-icon));
+
+    &:hover {
+      background: var(--p-action-secondary-hovered);
+    }
+
+    &:focus {
+      background-color: transparent;
+    }
+
+    @include focus-ring;
+    // stylelint-disable-next-line selector-max-specificity
+    &:focus:not(:active) {
+      @include focus-ring($style: 'focused');
+    }
+
+    &:active {
+      background: var(--p-action-secondary-pressed);
+    }
+
+    &:disabled {
+      @include recolor-icon(var(--p-icon-disabled));
+      cursor: default;
+      pointer-events: none;
+    }
   }
 }

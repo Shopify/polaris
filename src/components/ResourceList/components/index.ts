@@ -1,5 +1,5 @@
-export {BulkActions, BulkActionsProps} from './BulkActions';
+export * from './BulkActions';
 
-export {CheckableButton, CheckableButtonProps} from './CheckableButton';
+export * from './CheckableButton';
 
-export {FilterControl, FilterControlProps} from './FilterControl';
+export * from './FilterControl';

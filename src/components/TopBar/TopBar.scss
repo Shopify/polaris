@@ -20,6 +20,15 @@ $context-control-expand-after: 1400px;
   }
 }
 
+.TopBar-globalTheming {
+  height: unstable-top-bar-height();
+  transition: box-shadow 100ms var(--p-ease);
+
+  &.isScrolled {
+    box-shadow: var(--p-top-bar-shadow);
+  }
+}
+
 .LogoContainer {
   display: none;
   @include breakpoint-after(nav-min-window-corrected()) {
@@ -31,6 +40,11 @@ $context-control-expand-after: 1400px;
     @include safe-area-for(flex-basis, layout-width(nav), left);
     @include safe-area-for(padding-left, spacing(), left);
   }
+}
+
+.Logo,
+.LogoLink {
+  display: block;
 }
 
 .ContextControl {
@@ -45,11 +59,6 @@ $context-control-expand-after: 1400px;
   }
 }
 
-.Logo,
-.LogoLink {
-  display: block;
-}
-
 .NavigationIcon {
   @include unstyled-button;
   position: relative;
@@ -58,15 +67,17 @@ $context-control-expand-after: 1400px;
   margin-right: spacing(tight);
   padding: spacing(tight);
   border-radius: border-radius();
+  fill: var(--p-icon, color('white')); // Icon will inherit this fill
   &.focused {
-    background-color: rgba(color('white'), 0.16);
+    background-color: var(--p-override-transparent, rgba(color('white'), 0.16));
   }
   &.focused:active {
-    background-color: rgba(color('black'), 0.28);
+    background-color: var(--p-surface-pressed, rgba(color('black'), 0.28));
   }
   &:hover {
-    background-color: rgba(color('white'), 0.08);
-  } // This increases hit point size.
+    background-color: var(--p-surface-hovered, rgba(color('white'), 0.08));
+  }
+  // This increases hit point size.
   &::after {
     content: '';
     position: absolute;
@@ -95,6 +106,7 @@ $context-control-expand-after: 1400px;
 
 .SearchField {
   @include page-layout;
+  position: relative;
   width: 100%;
   margin: 0;
   max-width: none;
@@ -110,8 +122,8 @@ $context-control-expand-after: 1400px;
     margin-left: 0;
   }
 
-  @include breakpoint-after($not-condensed-content) {
-    position: relative;
+  .TopBar-globalTheming & {
+    margin-left: 0;
   }
 }
 

@@ -12,6 +12,7 @@ import {fileUpload, imageUpload} from '../../images';
 
 import {DropZoneContext} from '../../context';
 import {useI18n} from '../../../../utilities/i18n';
+import {useFeatures} from '../../../../utilities/features';
 
 import styles from './FileUpload.scss';
 
@@ -22,6 +23,7 @@ export interface FileUploadProps {
 
 export function FileUpload(props: FileUploadProps) {
   const i18n = useI18n();
+  const {unstableGlobalTheming} = useFeatures();
   const {size, measuring, type, focused, disabled} = useContext(
     DropZoneContext,
   );
@@ -45,6 +47,7 @@ export function FileUpload(props: FileUploadProps) {
     size === 'extraLarge' || size === 'large'
       ? classNames(
           styles.Button,
+          unstableGlobalTheming && styles.globalTheming,
           size && size !== 'extraLarge' && styles.slim,
           focused && styles.focused,
           disabled && styles.disabled,
@@ -119,6 +122,7 @@ export function FileUpload(props: FileUploadProps) {
 
   const fileUploadClassName = classNames(
     styles.FileUpload,
+    unstableGlobalTheming && styles.globalTheming,
     measuring && styles.measuring,
   );
 

@@ -1,5 +1,5 @@
 import {SelectOption} from '../../../Select';
-import {Type} from '../../../TextField';
+import {TextFieldProps} from '../../../TextField';
 
 export interface Operator {
   key: string;
@@ -34,7 +34,7 @@ export interface FilterSelect<FilterKeys = {}> extends FilterBase<FilterKeys> {
 export interface FilterTextField<FilterKeys = {}>
   extends FilterBase<FilterKeys> {
   type: FilterType.TextField;
-  textFieldType?: Type;
+  textFieldType?: TextFieldProps['type'];
 }
 
 export interface FilterDateSelector<FilterKeys = {}>

@@ -1,1 +1,1 @@
-export {DescriptionList, DescriptionListProps} from './DescriptionList';
+export * from './DescriptionList';

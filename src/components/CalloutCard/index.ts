@@ -1,1 +1,1 @@
-export {CalloutCard, CalloutCardProps} from './CalloutCard';
+export * from './CalloutCard';

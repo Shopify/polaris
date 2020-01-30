@@ -1,1 +1,1 @@
-export {Banner, BannerProps, BannerStatus} from './Banner';
+export * from './Banner';

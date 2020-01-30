@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "लोड हो रहा है"
+      "spinnerAccessibilityLabel": "लोड हो रहा है",
+      "connectedDisclosureAccessibilityLabel": "संबंधित कार्रवाइयाँ"
     },
     "Common": {
       "checkbox": "चेकबॉक्स",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "{direction} के अनुसार क्रमबद्ध करें",
       "navAccessibilityLabel": "तालिका को एक कॉलम {direction} ओर स्क्रॉल करें",
-      "totalsRowHeading": "कुल"
+      "totalsRowHeading": "कुल",
+      "totalRowHeading": "कुल"
     },
     "DatePicker": {
       "previousMonth": "पिछला महीना दिखाएं, {previousMonthName} {showPreviousYear}",
@@ -115,7 +117,8 @@
       "done": "पूरा हुआ",
       "clearAllFilters": "सभी फ़िल्टर मिटाएं",
       "clear": "मिटाएं",
-      "clearLabel": "{filterName} मिटाएं"
+      "clearLabel": "{filterName} मिटाएं",
+      "moreFiltersWithCount": "और फ़िल्टर्स ({count})"
     },
     "Modal": {
       "iFrameTitle": "बॉडी मार्कअप",

@@ -1,1 +1,1 @@
-export {Connected, ConnectedProps} from './Connected';
+export * from './Connected';

@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import {Image, SourceSet} from '../Image';
+import {Image} from '../Image';
 
 describe('<Image />', () => {
   describe('img attributes', () => {
@@ -33,7 +33,7 @@ describe('<Image />', () => {
     it('renders an img with a srcSet', () => {
       const src =
         'https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg';
-      const srcSet: SourceSet[] = [
+      const srcSet = [
         {
           source:
             'https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg',

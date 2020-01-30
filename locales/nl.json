@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Laden"
+      "spinnerAccessibilityLabel": "Laden",
+      "connectedDisclosureAccessibilityLabel": "Gerelateerde acties"
     },
     "Common": {
       "checkbox": "selectievakje",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "sorteer {direction} op",
       "navAccessibilityLabel": "Scroll tabel {direction} één kolom",
-      "totalsRowHeading": "Totalen"
+      "totalsRowHeading": "Totalen",
+      "totalRowHeading": "Totaal"
     },
     "DatePicker": {
       "previousMonth": "Vorige maand weergeven, {previousMonthName} {showPreviousYear}",
@@ -73,7 +75,7 @@
     },
     "DiscardConfirmationModal": {
       "title": "Verwijder alle niet-opgeslagen wijzigingen",
-      "message": "Als u alle niet-opgeslagen wijzigingen verwijdert, wist u alle bewerkingen die u aangebracht sinds u voor het laatst hebt opgeslagen.",
+      "message": "Als u alle niet-opgeslagen wijzigingen verwijdert, wist u alle bewerkingen die u had aangebracht na het opslaan.",
       "primaryAction": "Wijzigingen verwijderen",
       "secondaryAction": "Doorgaan met bewerken"
     },
@@ -115,7 +117,8 @@
       "done": "Gereed",
       "clearAllFilters": "Alle filters wissen",
       "clear": "Wissen",
-      "clearLabel": "{filterName} wissen"
+      "clearLabel": "{filterName} wissen",
+      "moreFiltersWithCount": "Meer filters ({count})"
     },
     "Modal": {
       "iFrameTitle": "opmaak platte tekst",

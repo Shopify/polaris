@@ -1,1 +1,1 @@
-export {Choice, ChoiceProps, helpTextID} from './Choice';
+export * from './Choice';

@@ -57,6 +57,7 @@ export function Menu(props: MenuProps) {
       onClose={onClose}
       fixed
       fullHeight={isFullHeight}
+      preferredAlignment="right"
     >
       <ActionList onActionAnyItem={onClose} sections={actions} />
       {messageMarkup}

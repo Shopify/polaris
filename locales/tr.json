@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Yükleniyor"
+      "spinnerAccessibilityLabel": "Yükleniyor",
+      "connectedDisclosureAccessibilityLabel": "İlgili işlemler"
     },
     "Common": {
       "checkbox": "onay kutusu",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "{direction} tarafı şuna göre sırala:",
       "navAccessibilityLabel": "Tabloyu bir sütun {direction} tarafa kaydır",
-      "totalsRowHeading": "Toplamlar"
+      "totalsRowHeading": "Toplamlar",
+      "totalRowHeading": "Toplam"
     },
     "DatePicker": {
       "previousMonth": "Önceki ayı göster, {previousMonthName} {showPreviousYear}",
@@ -115,7 +117,8 @@
       "done": "Bitti",
       "clearAllFilters": "Tüm filtreleri temizle",
       "clear": "Temizle",
-      "clearLabel": "{filterName} filtresini temizle"
+      "clearLabel": "{filterName} filtresini temizle",
+      "moreFiltersWithCount": "Daha fazla filtre ({count})"
     },
     "Modal": {
       "iFrameTitle": "gövde işaretlemesi",

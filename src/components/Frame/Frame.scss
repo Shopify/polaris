@@ -29,9 +29,12 @@ $skip-vertical-offset: rem(10px);
 
   @include frame-when-nav-displayed {
     z-index: 1;
-    top: top-bar-height();
     display: flex;
-    height: calc(100% - #{top-bar-height()});
+
+    &:not(.Navigation-globalTheming) {
+      top: top-bar-height();
+      height: calc(100% - #{top-bar-height()});
+    }
   }
 
   &:focus {
@@ -88,12 +91,29 @@ $skip-vertical-offset: rem(10px);
 
   &:focus {
     border-radius: border-radius();
-    background-color: rgba(color('white'), 0.16);
+    background-color: var(--p-override-transparent, rgba(color('white'), 0.16));
     outline: none;
   }
 
   @include frame-when-nav-displayed {
     display: none;
+  }
+
+  .Navigation-globalTheming & {
+    border-radius: 50%;
+
+    &:hover {
+      background-color: var(--p-overlay);
+    }
+
+    &:focus {
+      @include focus-ring;
+      position: absolute;
+    }
+
+    &:active {
+      background-color: var(--p-overlay);
+    }
   }
 }
 
@@ -105,6 +125,13 @@ $skip-vertical-offset: rem(10px);
   left: 0;
   width: 100%;
   height: top-bar-height();
+
+  &.TopBar-globalTheming {
+    @include frame-when-nav-displayed {
+      left: layout-width(unstable-nav);
+      width: calc(100% - #{layout-width(unstable-nav)});
+    }
+  }
 }
 
 .ContextualSaveBar {
@@ -143,6 +170,25 @@ $skip-vertical-offset: rem(10px);
   }
 }
 
+.Main-globalTheming {
+  .hasTopBar & {
+    padding-top: unstable-top-bar-height();
+    @include when-printing {
+      padding-top: 0;
+    }
+  }
+  @include frame-when-nav-displayed {
+    .hasNav & {
+      padding-left: layout-width(unstable-nav);
+      @include safe-area-for(padding-left, layout-width(unstable-nav), left);
+
+      @include when-printing {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
 .Content {
   padding-bottom: var(--global-ribbon-height, 0);
   flex: 1;
@@ -160,6 +206,16 @@ $skip-vertical-offset: rem(10px);
       left: layout-width(nav);
       @include safe-area-for(left, layout-width(nav), left);
       width: calc(100% - #{layout-width(nav)});
+    }
+  }
+}
+
+.GlobalRibbonContainer-globalTheming {
+  @include frame-when-nav-displayed {
+    .hasNav & {
+      left: layout-width(unstable-nav);
+      @include safe-area-for(left, layout-width(unstable-nav), left);
+      width: calc(100% - #{layout-width(unstable-nav)});
     }
   }
 }

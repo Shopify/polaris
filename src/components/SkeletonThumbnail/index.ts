@@ -1,1 +1,1 @@
-export {SkeletonThumbnail, SkeletonThumbnailProps} from './SkeletonThumbnail';
+export * from './SkeletonThumbnail';

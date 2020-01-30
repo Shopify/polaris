@@ -25,7 +25,8 @@
     },
 
     "Button": {
-      "spinnerAccessibilityLabel": "Loading"
+      "spinnerAccessibilityLabel": "Loading",
+      "connectedDisclosureAccessibilityLabel": "Related actions"
     },
 
     "Common": {
@@ -47,7 +48,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "sort {direction} by",
       "navAccessibilityLabel": "Scroll table {direction} one column",
-      "totalsRowHeading": "Totals"
+      "totalsRowHeading": "Totals",
+      "totalRowHeading": "Total"
     },
 
     "DatePicker": {
@@ -124,6 +126,7 @@
 
     "Filters": {
       "moreFilters": "More filters",
+      "moreFiltersWithCount": "More filters ({count})",
       "filter": "Filter {resourceName}",
       "noFiltersApplied": "No filters applied",
       "cancel": "Cancel",

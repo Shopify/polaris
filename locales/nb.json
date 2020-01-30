@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Laster inn"
+      "spinnerAccessibilityLabel": "Laster inn",
+      "connectedDisclosureAccessibilityLabel": "Relaterte handlinger"
     },
     "Common": {
       "checkbox": "avmerkingsboks",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "sortere {direction} etter",
       "navAccessibilityLabel": "Rull tabell {direction} en kolonne",
-      "totalsRowHeading": "Totalt"
+      "totalsRowHeading": "Totalt",
+      "totalRowHeading": "Totalt"
     },
     "DatePicker": {
       "previousMonth": "Vis forrige måned, {previousMonthName} {showPreviousYear}",
@@ -115,7 +117,8 @@
       "done": "Ferdig",
       "clearAllFilters": "Fjern alle filtrene",
       "clear": "Fjern",
-      "clearLabel": "Fjern {filterName}"
+      "clearLabel": "Fjern {filterName}",
+      "moreFiltersWithCount": "Flere filtre ({count})"
     },
     "Modal": {
       "iFrameTitle": "brødtekstpåslag",

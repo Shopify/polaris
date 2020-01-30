@@ -29,15 +29,18 @@ import {
   CheckableButton,
   // eslint-disable-next-line import/no-deprecated
   FilterControl,
+  FilterControlProps,
 } from './components';
 
 import styles from './ResourceList.scss';
+
+export {FilterControlProps};
 
 const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
-export type Items = any[];
+type Items = any[];
 
 interface State {
   selectMode: boolean;
@@ -92,7 +95,7 @@ export interface ResourceListProps {
 
 type CombinedProps = ResourceListProps & WithAppProviderProps;
 
-class ResourceList extends React.Component<CombinedProps, State> {
+class ResourceListInner extends React.Component<CombinedProps, State> {
   static Item = ResourceItem;
   // eslint-disable-next-line import/no-deprecated
   static FilterControl = FilterControl;
@@ -812,6 +815,6 @@ function isSmallScreen() {
     : window.innerWidth < SMALL_SCREEN_WIDTH;
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<ResourceListProps>()(ResourceList);
+export const ResourceList = withAppProvider<ResourceListProps>()(
+  ResourceListInner,
+);

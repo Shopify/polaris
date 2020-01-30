@@ -20,7 +20,7 @@ import {ScrollLock} from '../ScrollLock';
 import {Icon} from '../Icon';
 import {TextField} from '../TextField';
 import {Tag} from '../Tag';
-import {TextStyle, VariationValue} from '../TextStyle';
+import {TextStyle} from '../TextStyle';
 import {Badge} from '../Badge';
 import {Focus} from '../Focus';
 import {Sheet} from '../Sheet';
@@ -28,7 +28,10 @@ import {Stack} from '../Stack';
 import {Key} from '../../types';
 
 import {KeypressListener} from '../KeypressListener';
-import {ConnectedFilterControl, PopoverableAction} from './components';
+import {
+  ConnectedFilterControl,
+  ConnectedFilterControlProps,
+} from './components';
 
 import styles from './Filters.scss';
 
@@ -81,6 +84,8 @@ export interface FiltersProps {
   disabled?: boolean;
   /** Additional hint text to display below the filters */
   helpText?: string | React.ReactNode;
+  /** Hide tags for applied filters */
+  hideTags?: boolean;
 }
 
 type ComposedProps = FiltersProps & WithAppProviderProps;
@@ -96,7 +101,7 @@ enum Suffix {
   Shortcut = 'Shortcut',
 }
 
-class Filters extends React.Component<ComposedProps, State> {
+class FiltersInner extends React.Component<ComposedProps, State> {
   static contextType = ResourceListContext;
 
   state: State = {
@@ -126,6 +131,7 @@ class Filters extends React.Component<ComposedProps, State> {
       children,
       disabled = false,
       helpText,
+      hideTags,
     } = this.props;
     const {resourceName} = this.context;
     const {open, readyForFocus} = this.state;
@@ -177,7 +183,7 @@ class Filters extends React.Component<ComposedProps, State> {
                 <TextStyle
                   variation={
                     this.props.disabled || filter.disabled
-                      ? VariationValue.Subdued
+                      ? 'subdued'
                       : undefined
                   }
                 >
@@ -204,6 +210,14 @@ class Filters extends React.Component<ComposedProps, State> {
       );
     });
 
+    const appliedFiltersCount = appliedFilters ? appliedFilters.length : 0;
+    const moreFiltersLabel =
+      hideTags && appliedFiltersCount > 0
+        ? intl.translate('Polaris.Filters.moreFiltersWithCount', {
+            count: appliedFiltersCount,
+          })
+        : intl.translate('Polaris.Filters.moreFilters');
+
     const rightActionMarkup = (
       <div ref={this.moreFiltersButtonContainer}>
         <Button
@@ -211,7 +225,7 @@ class Filters extends React.Component<ComposedProps, State> {
           testID="SheetToggleButton"
           disabled={disabled}
         >
-          {intl.translate('Polaris.Filters.moreFilters')}
+          {moreFiltersLabel}
         </Button>
       </div>
     );
@@ -261,9 +275,7 @@ class Filters extends React.Component<ComposedProps, State> {
 
     const filtersDesktopHeaderMarkup = (
       <div className={styles.FiltersContainerHeader}>
-        <DisplayText size="small">
-          {intl.translate('Polaris.Filters.moreFilters')}
-        </DisplayText>
+        <DisplayText size="small">{moreFiltersLabel}</DisplayText>
         <Button
           icon={CancelSmallMinor}
           plain
@@ -281,9 +293,7 @@ class Filters extends React.Component<ComposedProps, State> {
           accessibilityLabel={intl.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
         />
-        <DisplayText size="small">
-          {intl.translate('Polaris.Filters.moreFilters')}
-        </DisplayText>
+        <DisplayText size="small">{moreFiltersLabel}</DisplayText>
         <Button onClick={this.closeFilters} primary>
           {intl.translate('Polaris.Filters.done')}
         </Button>
@@ -318,7 +328,7 @@ class Filters extends React.Component<ComposedProps, State> {
     );
 
     const tagsMarkup =
-      appliedFilters && appliedFilters.length ? (
+      !hideTags && appliedFilters && appliedFilters.length ? (
         <div className={styles.TagsContainer}>
           {appliedFilters.map((filter) => {
             return (
@@ -474,15 +484,15 @@ class Filters extends React.Component<ComposedProps, State> {
 
   private transformFilters(
     filters: FilterInterface[],
-  ): PopoverableAction[] | null {
-    const transformedActions: PopoverableAction[] = [];
+  ): ConnectedFilterControlProps['rightPopoverableActions'] | null {
+    const transformedActions: ConnectedFilterControlProps['rightPopoverableActions'] = [];
 
     getShortcutFilters(filters).forEach((filter) => {
       const {key, label, disabled} = filter;
 
       transformedActions.push({
         popoverContent: this.generateFilterMarkup(filter),
-        popoverOpen: this.state[`${key}${Suffix.Shortcut}`],
+        popoverOpen: Boolean(this.state[`${key}${Suffix.Shortcut}`]),
         key,
         content: label,
         disabled,
@@ -525,6 +535,4 @@ function getShortcutFilters(filters: FilterInterface[]) {
   return filters.filter((filter) => filter.shortcut === true);
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<FiltersProps>()(Filters);
+export const Filters = withAppProvider<FiltersProps>()(FiltersInner);

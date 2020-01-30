@@ -1,7 +1,7 @@
-const execSync = require('child_process').execSync;
-const fs = require('fs-extra');
-const glob = require('glob');
-const packageJSON = require('../package.json');
+import {execSync} from 'child_process';
+import fs from 'fs-extra';
+import glob from 'glob';
+import packageJSON from '../package.json';
 
 describe('build', () => {
   beforeAll(() => {
@@ -103,10 +103,10 @@ describe('build', () => {
     });
 
     it('preserves classes to facilitate class-level tree shaking', () => {
-      // `Stack` is a foundation class, so is unlikely to disappear from the build.
+      // `Collapsible` deeply ties into the react class based life-cycles methods, so is likely to be one of the last components converted to a function.
       expect(
-        fs.readFileSync('esnext/components/Stack/Stack.js', 'utf8'),
-      ).toMatch('class Stack');
+        fs.readFileSync('esnext/components/Collapsible/Collapsible.js', 'utf8'),
+      ).toMatch('class Collapsible');
     });
 
     it('preserves jsx to give consumers control over Babel transforms', () => {
@@ -130,7 +130,7 @@ describe('build', () => {
         'esnext/components/Avatar/index.js',
         'utf8',
       );
-      expect(contents).toMatch("export { Avatar } from './Avatar'");
+      expect(contents).toMatch("export * from './Avatar'");
     });
 
     it('preserves ES scss imports', () => {
