@@ -6,6 +6,7 @@
 
 - Replaced customer avatar images ([#2453](https://github.com/Shopify/polaris-react/pull/2453/files))
 - Added an optional `totalsLabel` prop to `DataTable` to support custom headings in the totals row ([#2660](https://github.com/Shopify/polaris-react/pull/2660))
+- Added `cursor: pointer` to `Choice` ([#2491](https://github.com/Shopify/polaris-react/pull/2491))
 
 ### Bug fixes
 
