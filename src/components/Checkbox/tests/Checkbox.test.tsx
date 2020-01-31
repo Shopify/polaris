@@ -287,6 +287,54 @@ describe('<Checkbox />', () => {
       });
     });
   });
+
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled', () => {
+      const checkBox = mountWithApp(<Checkbox label="checkbox" />, {
+        features: {unstableGlobalTheming: true},
+      });
+      expect(checkBox).toContainReactComponent('span', {
+        className: 'Checkbox globalTheming',
+      });
+    });
+
+    it('does not add a global theming class when global theming is disabled', () => {
+      const checkBox = mountWithApp(<Checkbox label="checkbox" />, {
+        features: {unstableGlobalTheming: false},
+      });
+      expect(checkBox).not.toContainReactComponent('span', {
+        className: 'Checkbox globalTheming',
+      });
+    });
+  });
+
+  describe('Focus className', () => {
+    it('on keyUp adds a keyFocused class to the input', () => {
+      const checkbox = mountWithApp(<Checkbox label="Checkbox" />, {
+        features: {unstableGlobalTheming: true},
+      });
+      const event: KeyboardEventInit & {keyCode: Key} = {
+        keyCode: Key.Space,
+      };
+      checkbox.find('input')!.trigger('onKeyUp', event);
+      expect(checkbox).toContainReactComponent('input', {
+        className: 'Input keyFocused',
+      });
+    });
+
+    it('on change does not add a keyFocused class to the input', () => {
+      const checkbox = mountWithApp(<Checkbox label="Checkbox" />, {
+        features: {unstableGlobalTheming: true},
+      });
+      const checkboxInput = checkbox.find('input');
+      checkboxInput!.trigger('onChange', {
+        currentTarget: checkboxInput!.domNode as HTMLInputElement,
+      });
+      expect(checkbox).not.toContainReactComponent('input', {
+        className: 'Input keyFocused',
+      });
+    });
+  });
 });
 
 function noop() {}

@@ -1,4 +1,4 @@
-import React, {useRef, useImperativeHandle} from 'react';
+import React, {useRef, useImperativeHandle, useState} from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {useFeatures} from '../../utilities/features';
@@ -67,6 +67,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
       setTrue: handleMouseOver,
       setFalse: handleMouseOut,
     } = useToggle(false);
+    const [keyFocused, setKeyFocused] = useState(false);
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -75,6 +76,11 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
         }
       },
     }));
+
+    const handleBlur = () => {
+      onBlur && onBlur();
+      setKeyFocused(false);
+    };
 
     const handleInput = () => {
       if (onChange == null || inputNode.current == null || disabled) {
@@ -86,9 +92,10 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
 
     const handleKeyUp = (event: React.KeyboardEvent) => {
       const {keyCode} = event;
-
-      if (keyCode !== Key.Space) return;
-      handleInput();
+      !keyFocused && setKeyFocused(true);
+      if (keyCode === Key.Space) {
+        handleInput();
+      }
     };
 
     const describedBy: string[] = [];
@@ -128,6 +135,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     const inputClassName = classNames(
       styles.Input,
       isIndeterminate && styles['Input-indeterminate'],
+      unstableGlobalTheming && keyFocused && styles.keyFocused,
     );
 
     return (
@@ -155,7 +163,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
             disabled={disabled}
             className={inputClassName}
             onFocus={onFocus}
-            onBlur={onBlur}
+            onBlur={handleBlur}
             onClick={stopPropagation}
             onChange={noop}
             aria-invalid={error != null}

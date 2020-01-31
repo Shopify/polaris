@@ -64,7 +64,7 @@ $control-size: rem(16px);
 
 .Checkbox.globalTheming {
   .Input {
-    &:focus {
+    &.keyFocused {
       + .Backdrop {
         @include focus-ring($style: 'focused');
       }

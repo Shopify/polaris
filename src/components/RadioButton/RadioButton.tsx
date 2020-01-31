@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
@@ -50,11 +50,23 @@ export function RadioButton({
   const id = useUniqueId('RadioButton', idProp);
   const name = nameProp || id;
   const {unstableGlobalTheming = false} = useFeatures();
+  const inputNode = useRef<HTMLInputElement>(null);
+  const [keyFocused, setKeyFocused] = useState(false);
+
   const {
     value: mouseOver,
     setTrue: handleMouseOver,
     setFalse: handleMouseOut,
   } = useToggle(false);
+
+  const handleKeyUp = () => {
+    !keyFocused && setKeyFocused(true);
+  };
+
+  const handleBlur = () => {
+    onBlur && onBlur();
+    setKeyFocused(false);
+  };
 
   function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
     onChange && onChange(currentTarget.checked, id);
@@ -71,7 +83,10 @@ export function RadioButton({
     ? describedBy.join(' ')
     : undefined;
 
-  const inputClassName = classNames(styles.Input);
+  const inputClassName = classNames(
+    styles.Input,
+    unstableGlobalTheming && keyFocused && styles.keyFocused,
+  );
 
   const wrapperClassName = classNames(
     styles.RadioButton,
@@ -106,8 +121,10 @@ export function RadioButton({
           className={inputClassName}
           onChange={handleChange}
           onFocus={onFocus}
-          onBlur={onBlur}
+          onKeyUp={handleKeyUp}
+          onBlur={handleBlur}
           aria-describedby={ariaDescribedBy}
+          ref={inputNode}
         />
         <span className={backdropClassName} />
         {iconMarkup}

@@ -7,6 +7,7 @@ import {
   CircleInformationMajorTwotone,
   FlagMajorTwotone,
 } from '@shopify/polaris-icons';
+import {mountWithApp} from 'test-utilities/react-testing';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {BannerContext} from 'utilities/banner-context';
@@ -143,6 +144,44 @@ describe('<Banner />', () => {
         .filterWhere((element) => element.prop('tabIndex') === 0);
 
       expect(div.getDOMNode()).toBe(document.activeElement);
+    });
+
+    describe('Focus className', () => {
+      it('adds a keyFocused class to the banner on keyUp', () => {
+        const banner = mountWithApp(<Banner />, {
+          features: {unstableGlobalTheming: true},
+        });
+
+        const bannerDiv = banner.find('div', {
+          className: 'Banner withinPage',
+        });
+
+        bannerDiv!.trigger('onKeyUp', {
+          target: bannerDiv!.domNode as HTMLDivElement,
+        });
+
+        expect(banner).toContainReactComponent('div', {
+          className: 'Banner keyFocused withinPage',
+        });
+      });
+
+      it('does not add a keyFocused class onMouseUp', () => {
+        const banner = mountWithApp(<Banner />, {
+          features: {unstableGlobalTheming: true},
+        });
+
+        const bannerDiv = banner.find('div', {
+          className: 'Banner withinPage',
+        });
+
+        bannerDiv!.trigger('onMouseUp', {
+          currentTarget: bannerDiv!.domNode as HTMLDivElement,
+        });
+
+        expect(banner).toContainReactComponent('div', {
+          className: 'Banner withinPage',
+        });
+      });
     });
   });
 
