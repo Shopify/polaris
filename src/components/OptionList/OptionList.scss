@@ -2,6 +2,10 @@
 
 .OptionList {
   @include unstyled-list;
+
+  &.newDesignLanguage {
+    padding: spacing(tight);
+  }
 }
 
 .Options {
@@ -11,5 +15,10 @@
 .Title {
   @include text-style-subheading;
   padding: spacing(tight) spacing();
-  border-bottom: border();
+  border-bottom: var(--p-override-none, border());
+
+  .newDesignLanguage & {
+    padding: spacing(tight);
+    color: var(--p-text-subdued);
+  }
 }

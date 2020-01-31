@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import {classNames} from '../../../../utilities/css';
+import {useFeatures} from '../../../../utilities/features';
 import {IconProps} from '../../../../types';
 import {ThumbnailProps} from '../../../Thumbnail';
 import {AvatarProps} from '../../../Avatar';
@@ -40,6 +41,7 @@ export function Option({
   index,
 }: OptionProps) {
   const {value: focused, toggle: toggleFocused} = useToggle(false);
+  const {newDesignLanguage} = useFeatures();
 
   const handleClick = useCallback(() => {
     if (disabled) {
@@ -63,7 +65,9 @@ export function Option({
 
   const multiSelectClassName = classNames(
     styles.Label,
+    disabled && styles.disabled,
     active && styles.active,
+    newDesignLanguage && select && styles.select,
   );
 
   const checkBoxRole = role === 'option' ? 'presentation' : undefined;
@@ -101,10 +105,15 @@ export function Option({
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
 
+  const optionClassName = classNames(
+    styles.Option,
+    newDesignLanguage && styles.newDesignLanguage,
+  );
+
   return (
     <li
       key={id}
-      className={styles.Option}
+      className={optionClassName}
       tabIndex={-1}
       aria-selected={active}
       role={role}
