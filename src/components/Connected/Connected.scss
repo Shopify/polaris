@@ -23,6 +23,7 @@ $stacking-order: (
 
 // This is a violation of our component model, but it’s the cleanest
 // way to remove the border radii on connected elements.
+// TextField.scss has a dependency due to this override.
 // stylelint-disable declaration-no-important
 
 .Item-primary {
