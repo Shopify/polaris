@@ -19,10 +19,9 @@ export function buildCustomProperties(
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
   const {colors = {}, colorScheme} = themeConfig;
-  const {topBar, ...newDesignLanguageColors} = colors;
   return newDesignLanguage
     ? customPropertyTransformer({
-        ...colorFactory(newDesignLanguageColors, colorScheme),
+        ...colorFactory(colors, colorScheme),
         ...tokens,
       })
     : buildLegacyColors(themeConfig);
