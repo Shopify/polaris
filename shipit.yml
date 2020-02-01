@@ -1,20 +1,18 @@
 ci:
+  require:
+    - 'Travis CI - Branch'
   hide:
     - shrink-ray
-    - 'ci/circleci: percy'
     - percy/polaris-react
     - codecov/patch
     - 'Add new issues to project'
     - 'Move assigned issue to column'
-  require:
-    - 'ci/circleci: check'
   allow_failures:
     - 'buildkite/polaris-react'
 
 merge:
   require:
-    - 'ci/circleci: check'
-    - shrink-ray
+    - 'Travis CI - Branch'
   ignore:
     - codecov/patch
 
