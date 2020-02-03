@@ -19,7 +19,7 @@ export interface TagProps {
 
 export function Tag({children, disabled = false, onRemove}: TagProps) {
   const i18n = useI18n();
-  const {unstableGlobalTheming} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
   const className = classNames(disabled && styles.disabled, styles.Tag);
   const ariaLabel = i18n.translate('Polaris.Tag.ariaLabel', {
     children: children || '',
@@ -27,7 +27,7 @@ export function Tag({children, disabled = false, onRemove}: TagProps) {
 
   const buttonClassName = classNames(
     styles.Button,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
   );
 
   return (

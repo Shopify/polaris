@@ -23,7 +23,7 @@ export interface FileUploadProps {
 
 export function FileUpload(props: FileUploadProps) {
   const i18n = useI18n();
-  const {unstableGlobalTheming} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
   const {size, measuring, type, focused, disabled} = useContext(
     DropZoneContext,
   );
@@ -47,7 +47,7 @@ export function FileUpload(props: FileUploadProps) {
     size === 'extraLarge' || size === 'large'
       ? classNames(
           styles.Button,
-          unstableGlobalTheming && styles.globalTheming,
+          newDesignLanguage && styles.newDesignLanguage,
           size && size !== 'extraLarge' && styles.slim,
           focused && styles.focused,
           disabled && styles.disabled,
@@ -122,7 +122,7 @@ export function FileUpload(props: FileUploadProps) {
 
   const fileUploadClassName = classNames(
     styles.FileUpload,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
     measuring && styles.measuring,
   );
 

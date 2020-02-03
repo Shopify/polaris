@@ -627,28 +627,28 @@ describe('<ResourceItem />', () => {
     });
   });
 
-  describe('globalTheming', () => {
-    it('adds a global theming class when global theming is enabled', () => {
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const resourceItem = mountWithApp(
         <ResourceItem id={itemId} url={url} />,
         {
-          features: {unstableGlobalTheming: true},
+          features: {newDesignLanguage: true},
         },
       );
       expect(resourceItem).toContainReactComponent('div', {
-        className: 'ResourceItem globalTheming',
+        className: 'ResourceItem newDesignLanguage',
       });
     });
 
-    it('does not add a global theming class when global theming is disabled', () => {
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const resourceItem = mountWithApp(
         <ResourceItem id={itemId} url={url} />,
         {
-          features: {unstableGlobalTheming: false},
+          features: {newDesignLanguage: false},
         },
       );
       expect(resourceItem).not.toContainReactComponent('div', {
-        className: 'ResourceItem globalTheming',
+        className: 'ResourceItem newDesignLanguage',
       });
     });
   });

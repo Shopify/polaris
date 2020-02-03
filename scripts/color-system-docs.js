@@ -65,8 +65,6 @@ const Template = {
   overrideItem: (name, value) => `|\`${cssify(name)}\`|\`${value}\`|\n`,
 };
 
-const boilerplate =
-  '# Color system\n\n⚠️ The color system is currently an unstable API, and is subject to change in non-major releases of Polaris react. Please use with caution.\n\n';
 const tocTitle = '## Table of contents\n\n';
 
 const tocContents = Object.keys(roleVariants).reduce(
@@ -105,7 +103,6 @@ const overridesContents = Object.entries(Tokens).reduce(
 );
 
 const data =
-  boilerplate +
   tocTitle +
   tocContents +
   Template.tocItem('Overrides') +
