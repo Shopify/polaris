@@ -13,7 +13,7 @@ describe('<Tag />', () => {
   });
 
   describe('newDesignLanguage', () => {
-    it('adds a global theming class when global theming is enabled', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const tag = mountWithApp(<Tag />, {
         features: {newDesignLanguage: true},
       });
@@ -22,7 +22,7 @@ describe('<Tag />', () => {
       });
     });
 
-    it('does not add a global theming class when global theming is disabled', () => {
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const tag = mountWithApp(<Tag />, {
         features: {newDesignLanguage: false},
       });

@@ -135,7 +135,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     const inputClassName = classNames(
       styles.Input,
       isIndeterminate && styles['Input-indeterminate'],
-      unstableGlobalTheming && keyFocused && styles.keyFocused,
+      newDesignLanguage && keyFocused && styles.keyFocused,
     );
 
     return (

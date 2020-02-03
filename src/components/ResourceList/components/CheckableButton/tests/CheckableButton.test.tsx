@@ -99,7 +99,7 @@ describe('<CheckableButton />', () => {
   });
 
   describe('newDesignLanguage', () => {
-    it('adds a global theming class when global theming is enabled and the button is selected', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled and the button is selected', () => {
       const checkableButton = mountWithApp(
         <CheckableButton {...CheckableButtonProps} />,
         {
@@ -111,7 +111,7 @@ describe('<CheckableButton />', () => {
       });
     });
 
-    it('adds a global theming class when global theming is enabled and the button is not selected', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled and the button is not selected', () => {
       const checkableButton = mountWithApp(
         <CheckableButton {...CheckableButtonProps} plain selected={false} />,
         {

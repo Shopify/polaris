@@ -36,7 +36,7 @@ addDecorator(
       ],
     },
     {
-      title: 'Global Theming',
+      title: 'New Design Language',
       components: [AppProvider],
       params: [
         {

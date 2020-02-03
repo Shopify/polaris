@@ -122,7 +122,7 @@ describe('<MenuAction />', () => {
   });
 
   describe('newDesignLanguage', () => {
-    it('adds a global theming class when global theming is enabled', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const menuAction = mountWithApp(<MenuAction />, {
         features: {newDesignLanguage: true},
       });
@@ -131,7 +131,7 @@ describe('<MenuAction />', () => {
       });
     });
 
-    it('does not add a global theming class when global theming is disabled', () => {
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const menuAction = mountWithApp(<MenuAction />, {
         features: {newDesignLanguage: true},
       });

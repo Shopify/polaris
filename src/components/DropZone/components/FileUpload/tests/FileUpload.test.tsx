@@ -152,7 +152,7 @@ describe('<FileUpload />', () => {
   });
 
   describe('newDesignLanguage', () => {
-    it('adds a global theming class when global theming is enabled', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const fileUpload = mountWithApp(
         <DropZoneContext.Provider
           value={{
@@ -177,7 +177,7 @@ describe('<FileUpload />', () => {
       });
     });
 
-    it('does not add a global theming class when global theming is disabled', () => {
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const fileUpload = mountWithApp(
         <DropZoneContext.Provider
           value={{

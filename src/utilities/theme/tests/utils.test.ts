@@ -58,7 +58,7 @@ describe('buildCustomProperties', () => {
     '--top-bar-color': 'rgb(33, 43, 54)',
   };
 
-  it('creates legacy custom properties but ignores new custom properties when global theming is disabled', () => {
+  it('creates legacy custom properties but ignores new custom properties when newDesignLanguage is disabled', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
@@ -71,7 +71,7 @@ describe('buildCustomProperties', () => {
     );
   });
 
-  it('creates legacy custom properties but ignores new custom properties when global theming is disabled without defaults', () => {
+  it('creates legacy custom properties but ignores new custom properties when newDesignLanguage is disabled without defaults', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
@@ -84,7 +84,7 @@ describe('buildCustomProperties', () => {
     );
   });
 
-  it('creates new custom properties when global theming is enabled but ignores legacy colors', () => {
+  it('creates new custom properties when newDesignLanguage is enabled but ignores legacy colors', () => {
     const theme = {
       colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,

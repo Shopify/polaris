@@ -129,7 +129,7 @@ describe('<ThemeProvider />', () => {
     });
   });
 
-  it('sets color system properties in context when global theming is enabled', () => {
+  it('sets color system properties in context when newDesignLanguage is enabled', () => {
     mountWithNewDesignLanguage(
       <ThemeProvider theme={{}}>
         <Child />
@@ -144,7 +144,7 @@ describe('<ThemeProvider />', () => {
     }
   });
 
-  it('does not set color system properties in context when global theming is disabled', () => {
+  it('does not set color system properties in context when newDesignLanguage is disabled', () => {
     mountWithNewDesignLanguage(
       <ThemeProvider theme={{}}>
         <Child />
@@ -159,7 +159,7 @@ describe('<ThemeProvider />', () => {
     }
   });
 
-  it('sets defaults with global theming enabled', () => {
+  it('sets defaults with newDesignLanguage enabled', () => {
     const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider theme={{}}>
         <p>Hello</p>

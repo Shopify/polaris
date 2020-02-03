@@ -220,7 +220,7 @@ describe('<Pagination />', () => {
   });
 
   describe('newDesignLanguage', () => {
-    it('adds a global theming & rightButton class when global theming is enabled', () => {
+    it('adds a newDesignLanguage & rightButton class when newDesignLanguage is enabled', () => {
       const pagination = mountWithApp(
         <Pagination nextURL="/" previousURL="/" />,
         {
@@ -236,7 +236,7 @@ describe('<Pagination />', () => {
       });
     });
 
-    it('does not add a global theming class when global theming is disabled', () => {
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const pagination = mountWithApp(
         <Pagination nextURL="/" previousURL="/" />,
         {

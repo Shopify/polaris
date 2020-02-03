@@ -1157,7 +1157,7 @@ describe('<TextField />', () => {
   });
 
   describe('newDesignLanguage', () => {
-    it('adds a global theming class when global theming is enabled', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const textField = mountWithApp(
         <TextField label="TextField" onChange={noop} />,
         {
@@ -1169,7 +1169,7 @@ describe('<TextField />', () => {
       });
     });
 
-    it('does not add a global theming class when global theming is disabled', () => {
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const textField = mountWithApp(
         <TextField label="TextField" onChange={noop} />,
         {

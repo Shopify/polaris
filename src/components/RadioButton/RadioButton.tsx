@@ -85,7 +85,7 @@ export function RadioButton({
 
   const inputClassName = classNames(
     styles.Input,
-    unstableGlobalTheming && keyFocused && styles.keyFocused,
+    newDesignLanguage && keyFocused && styles.keyFocused,
   );
 
   const wrapperClassName = classNames(

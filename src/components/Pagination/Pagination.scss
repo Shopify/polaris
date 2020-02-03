@@ -151,7 +151,7 @@ $stacking-order: (
   transition-duration: duration();
   transition-timing-function: easing();
 
-  // Delete - Below me during global theming rollout
+  // Delete - Below me during newDesignLanguage rollout
   &:hover {
     background: linear-gradient(
       to bottom,
@@ -188,7 +188,7 @@ $stacking-order: (
     cursor: default;
     box-shadow: none;
   }
-  // Delete above me during global theming rollout
+  // Delete above me during newDesignLanguage rollout
 
   &.newDesignLanguage {
     @include focus-ring;
