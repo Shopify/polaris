@@ -4,7 +4,7 @@ import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext, useTheme} from '../../../utilities/theme';
 import {FeaturesContext} from '../../../utilities/features';
 
-const mountWithnewDesignLanguage = createMount<
+const mountWithNewDesignLanguage = createMount<
   {newDesignLanguage?: boolean},
   {features: React.ContextType<typeof FeaturesContext>}
 >({
@@ -22,7 +22,7 @@ const mountWithnewDesignLanguage = createMount<
 
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
-    const themeProvider = mountWithnewDesignLanguage(
+    const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider theme={{logo: {}}}>
         <p>Hello</p>
       </ThemeProvider>,
@@ -36,7 +36,7 @@ describe('<ThemeProvider />', () => {
       return polarisTheme && polarisTheme.logo ? <div /> : null;
     };
 
-    const themeProvider = mountWithnewDesignLanguage(
+    const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider
         theme={{
           logo: {
@@ -56,7 +56,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('has a default theme', () => {
-    const themeProvider = mountWithnewDesignLanguage(
+    const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider theme={{}}>
         <p />
       </ThemeProvider>,
@@ -72,7 +72,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('sets a provided theme', () => {
-    const themeProvider = mountWithnewDesignLanguage(
+    const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider
         theme={{
           colors: {
@@ -96,7 +96,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('updates themes', () => {
-    const themeProvider = mountWithnewDesignLanguage(
+    const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider
         theme={{
           colors: {
@@ -130,7 +130,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('sets color system properties in context when global theming is enabled', () => {
-    mountWithnewDesignLanguage(
+    mountWithNewDesignLanguage(
       <ThemeProvider theme={{}}>
         <Child />
       </ThemeProvider>,
@@ -145,7 +145,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('does not set color system properties in context when global theming is disabled', () => {
-    mountWithnewDesignLanguage(
+    mountWithNewDesignLanguage(
       <ThemeProvider theme={{}}>
         <Child />
       </ThemeProvider>,
@@ -160,7 +160,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('sets defaults with global theming enabled', () => {
-    const themeProvider = mountWithnewDesignLanguage(
+    const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
@@ -186,7 +186,7 @@ describe('<ThemeProvider />', () => {
 
   describe('when nested', () => {
     it('does not set a default theme', () => {
-      const themeProvider = mountWithnewDesignLanguage(
+      const themeProvider = mountWithNewDesignLanguage(
         <ThemeProvider theme={{}}>
           <ThemeProvider theme={{}}>
             <p>Hello</p>
@@ -212,7 +212,7 @@ describe('<ThemeProvider />', () => {
     });
 
     it('adds css custom properties for color roles provided', () => {
-      const themeProvider = mountWithnewDesignLanguage(
+      const themeProvider = mountWithNewDesignLanguage(
         <ThemeProvider
           theme={{
             colors: {surface: '#FFFFFF'},
@@ -323,7 +323,7 @@ describe('<ThemeProvider />', () => {
         childTheme: any,
         expectedCritialSurfaceSubdued: any,
       ) => {
-        const themeProvider = mountWithnewDesignLanguage(
+        const themeProvider = mountWithNewDesignLanguage(
           <ThemeProvider theme={topLevelTheme}>
             <ThemeProvider theme={childTheme}>
               <p>Hello</p>
