@@ -33,6 +33,7 @@ import {
   Badge,
   Select,
   DropZone,
+  DropZoneProps,
   Stack,
   Caption,
   Thumbnail,
@@ -45,7 +46,7 @@ export function DetailsPage() {
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
   });
-  const skipToContentRef = useRef(null);
+  const skipToContentRef = useRef<HTMLAnchorElement>(null);
   const [toastActive, setToastActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
@@ -299,9 +300,9 @@ export function DetailsPage() {
   const handleChange = useCallback((newValue) => setValue(newValue), []);
 
   // ---- Dropzone ----
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<File[]>([]);
 
-  const handleDropZoneDrop = useCallback(
+  const handleDropZoneDrop = useCallback<NonNullable<DropZoneProps['onDrop']>>(
     (_dropFiles, acceptedFiles, _rejectedFiles) =>
       setFiles((files) => [...files, ...acceptedFiles]),
     [],
@@ -462,7 +463,7 @@ export function DetailsPage() {
       navigation={navigationMarkup}
       showMobileNavigation={mobileNavigationActive}
       onNavigationDismiss={toggleMobileNavigationActive}
-      skipToContentTarget={skipToContentRef.current}
+      skipToContentTarget={skipToContentRef}
     >
       {contextualSaveBarMarkup}
       {loadingMarkup}
