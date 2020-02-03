@@ -466,10 +466,10 @@ describe('<DropZone />', () => {
     });
   });
 
-  describe('globalTheming', () => {
-    it('adds a global theming class when global theming is enabled', () => {
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const dropZone = mountWithApp(<DropZone />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
 
       act(() => {
@@ -482,16 +482,16 @@ describe('<DropZone />', () => {
 
       expect(dropZone).toContainReactComponent('div', {
         className:
-          'DropZone hasOutline isDragging globalTheming sizeExtraLarge measuring',
+          'DropZone hasOutline isDragging newDesignLanguage sizeExtraLarge measuring',
       });
       expect(dropZone).toContainReactComponent('div', {
-        className: 'Overlay globalTheming',
+        className: 'Overlay newDesignLanguage',
       });
     });
 
-    it('does not add a global theming class when global theming is disabled', () => {
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const dropZone = mountWithApp(<DropZone />, {
-        features: {unstableGlobalTheming: false},
+        features: {newDesignLanguage: false},
       });
       act(() => {
         dropZone
@@ -503,10 +503,10 @@ describe('<DropZone />', () => {
 
       expect(dropZone).not.toContainReactComponent('div', {
         className:
-          'DropZone hasOutline isDragging globalTheming sizeExtraLarge measuring',
+          'DropZone hasOutline isDragging newDesignLanguage sizeExtraLarge measuring',
       });
       expect(dropZone).not.toContainReactComponent('div', {
-        className: 'Overlay globalTheming',
+        className: 'Overlay newDesignLanguage',
       });
     });
   });

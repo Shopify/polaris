@@ -130,25 +130,25 @@ describe('<TextField />', () => {
     });
   });
 
-  describe('unstableGlobalTheming', () => {
-    it('does not render a container with globalTheming className by default', () => {
+  describe('newDesignLanguage', () => {
+    it('does not render a container with newDesignLanguage className by default', () => {
       const textField = mountWithApp(
         <SearchField value="hello polaris" onChange={noop} />,
       );
       expect(textField).not.toContainReactComponent('div', {
-        className: 'SearchField SearchField-globalTheming',
+        className: 'SearchField SearchField-newDesignLanguage',
       });
     });
 
-    it('renders a container with globalTheming className when unstableGlobalTheming is true', () => {
+    it('renders a container with newDesignLanguage className when newDesignLanguage is true', () => {
       const textField = mountWithApp(
         <SearchField value="hello polaris" onChange={noop} />,
         {
-          features: {unstableGlobalTheming: true},
+          features: {newDesignLanguage: true},
         },
       );
       expect(textField).toContainReactComponent('div', {
-        className: 'SearchField SearchField-globalTheming',
+        className: 'SearchField SearchField-newDesignLanguage',
       });
     });
   });

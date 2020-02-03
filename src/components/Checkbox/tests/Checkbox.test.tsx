@@ -288,22 +288,22 @@ describe('<Checkbox />', () => {
     });
   });
 
-  describe('globalTheming', () => {
-    it('adds a global theming class when global theming is enabled', () => {
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const checkBox = mountWithApp(<Checkbox label="checkbox" />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
       expect(checkBox).toContainReactComponent('span', {
-        className: 'Checkbox globalTheming',
+        className: 'Checkbox newDesignLanguage',
       });
     });
 
-    it('does not add a global theming class when global theming is disabled', () => {
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const checkBox = mountWithApp(<Checkbox label="checkbox" />, {
-        features: {unstableGlobalTheming: false},
+        features: {newDesignLanguage: false},
       });
       expect(checkBox).not.toContainReactComponent('span', {
-        className: 'Checkbox globalTheming',
+        className: 'Checkbox newDesignLanguage',
       });
     });
   });
@@ -311,7 +311,7 @@ describe('<Checkbox />', () => {
   describe('Focus className', () => {
     it('on keyUp adds a keyFocused class to the input', () => {
       const checkbox = mountWithApp(<Checkbox label="Checkbox" />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
       const event: KeyboardEventInit & {keyCode: Key} = {
         keyCode: Key.Space,
@@ -324,7 +324,7 @@ describe('<Checkbox />', () => {
 
     it('on change does not add a keyFocused class to the input', () => {
       const checkbox = mountWithApp(<Checkbox label="Checkbox" />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
       const checkboxInput = checkbox.find('input');
       checkboxInput!.trigger('onChange', {

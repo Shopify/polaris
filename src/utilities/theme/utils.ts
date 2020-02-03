@@ -15,13 +15,13 @@ interface CustomPropertiesConfig extends ThemeConfig {
 
 export function buildCustomProperties(
   themeConfig: CustomPropertiesConfig,
-  globalTheming: boolean,
+  newDesignLanguage: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
-  const {UNSTABLE_colors = {}, colorScheme} = themeConfig;
-  return globalTheming
+  const {colors = {}, colorScheme} = themeConfig;
+  return newDesignLanguage
     ? customPropertyTransformer({
-        ...colorFactory(UNSTABLE_colors, colorScheme),
+        ...colorFactory(colors, colorScheme),
         ...tokens,
       })
     : buildLegacyColors(themeConfig);
@@ -31,11 +31,12 @@ export function buildThemeContext(
   themeConfig: ThemeConfig,
   cssCustomProperties?: CustomPropertiesLike,
 ): Theme {
-  const {logo, UNSTABLE_colors, colorScheme} = themeConfig;
+  const {logo, colors = {}, colorScheme} = themeConfig;
+  const {topBar, ...newDesignLanguageColors} = colors;
   return {
     logo,
-    UNSTABLE_cssCustomProperties: toString(cssCustomProperties),
-    UNSTABLE_colors,
+    cssCustomProperties: toString(cssCustomProperties),
+    colors: newDesignLanguageColors,
     colorScheme,
   };
 }

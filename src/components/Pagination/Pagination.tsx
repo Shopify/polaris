@@ -62,7 +62,7 @@ export function Pagination({
   label,
 }: PaginationProps) {
   const i18n = useI18n();
-  const {unstableGlobalTheming} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const node: React.RefObject<HTMLElement> = React.createRef();
 
@@ -73,14 +73,14 @@ export function Pagination({
 
   const previousClassName = classNames(
     styles.Button,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
     !label && styles.PreviousButton,
   );
 
   const nextClassName = classNames(
     styles.Button,
-    unstableGlobalTheming && styles.globalTheming,
-    unstableGlobalTheming && styles.rightButton,
+    newDesignLanguage && styles.newDesignLanguage,
+    newDesignLanguage && styles.rightButton,
     !label && styles.NextButton,
   );
 

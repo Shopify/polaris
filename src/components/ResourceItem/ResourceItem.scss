@@ -40,7 +40,7 @@ $resource-list-item-variables: (
   cursor: pointer;
 
   &:hover {
-    &:not(.globalTheming) {
+    &:not(.newDesignLanguage) {
       background-image: linear-gradient(
         rgba(223, 227, 232, 0.3),
         rgba(223, 227, 232, 0.3)
@@ -61,7 +61,7 @@ $resource-list-item-variables: (
     }
   }
 
-  &:active:not(.globalTheming) {
+  &:active:not(.newDesignLanguage) {
     background-image: linear-gradient(
       rgba(179, 188, 245, 0.1),
       rgba(179, 188, 245, 0.1)
@@ -69,7 +69,7 @@ $resource-list-item-variables: (
   }
 }
 
-.selected:not(.globalTheming) {
+.selected:not(.newDesignLanguage) {
   background-image: linear-gradient(
     rgba(179, 188, 245, 0.15),
     rgba(179, 188, 245, 0.15)
@@ -112,7 +112,7 @@ $resource-list-item-variables: (
   }
 }
 
-.focused:not(.globalTheming) {
+.focused:not(.newDesignLanguage) {
   box-shadow: inset 0.2rem 0 0 color('indigo');
   background-image: linear-gradient(
     rgba(223, 227, 232, 0.3),
@@ -289,7 +289,7 @@ $resource-list-item-variables: (
   }
 }
 
-.globalTheming {
+.newDesignLanguage {
   @include focus-ring;
 
   // stylelint-disable selector-max-specificity

@@ -113,17 +113,17 @@ describe('<Avatar />', () => {
   });
 
   describe('styleClass', () => {
-    it('renders a sixth style when unstableGlobalTheming is false', () => {
+    it('renders a sixth style when newDesignLanguage is false', () => {
       const avatar = mountWithApp(<Avatar name="e" />, {
-        features: {unstableGlobalTheming: false},
+        features: {newDesignLanguage: false},
       });
 
       expect(avatar.domNodes[0].classList).toContain('styleSix');
     });
 
-    it('does not render a sixth style when unstableGlobalTheming is true', () => {
+    it('does not render a sixth style when newDesignLanguage is true', () => {
       const avatar = mountWithApp(<Avatar name="e" />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
 
       expect(avatar.domNodes[0].classList).not.toContain('styleSix');

@@ -31,10 +31,10 @@ export function ActionList({
     finalSections = sections;
   }
 
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage = false} = useFeatures();
   const className = classNames(
     styles.ActionList,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const hasMultipleSections = finalSections.length > 1;
