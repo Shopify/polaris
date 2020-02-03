@@ -36,7 +36,7 @@ addDecorator(
       ],
     },
     {
-      title: 'New Design Language',
+      title: 'Global Theming',
       components: [AppProvider],
       params: [
         {
@@ -48,7 +48,7 @@ addDecorator(
           name: 'Enabled - Light Mode',
           props: {
             i18n: enTranslations,
-            features: {newDesignLanguage: true},
+            features: {unstableGlobalTheming: true},
             theme: {colorScheme: 'light'},
           },
         },
@@ -56,7 +56,7 @@ addDecorator(
           name: 'Enabled - Dark Mode',
           props: {
             i18n: enTranslations,
-            features: {newDesignLanguage: true},
+            features: {unstableGlobalTheming: true},
             theme: {colorScheme: 'dark'},
           },
         },

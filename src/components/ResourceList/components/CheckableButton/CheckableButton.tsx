@@ -34,7 +34,7 @@ export function CheckableButton({
   smallScreen,
 }: CheckableButtonProps) {
   const checkBoxRef = useRef<CheckboxHandles>(null);
-  const {newDesignLanguage = false} = useFeatures();
+  const {unstableGlobalTheming = false} = useFeatures();
 
   const {registerCheckableButtons} = React.useContext(ResourceListContext);
 
@@ -56,11 +56,11 @@ export function CheckableButton({
     ? classNames(
         styles.CheckableButton,
         styles['CheckableButton-plain'],
-        newDesignLanguage && styles.newDesignLanguage,
+        unstableGlobalTheming && styles.globalTheming,
       )
     : classNames(
         styles.CheckableButton,
-        newDesignLanguage && styles.newDesignLanguage,
+        unstableGlobalTheming && styles.globalTheming,
         selectMode && styles['CheckableButton-selectMode'],
         selected && styles['CheckableButton-selected'],
         measuring && styles['CheckableButton-measuring'],

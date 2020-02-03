@@ -33,44 +33,50 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
-  const {newDesignLanguage = false} = useFeatures();
+  const {unstableGlobalTheming = false} = useFeatures();
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
   const parentColorScheme =
     parentContext && parentContext.colorScheme && parentContext.colorScheme;
   const parentColors =
-    parentContext && parentContext.colors && parentContext.colors;
+    parentContext &&
+    parentContext.UNSTABLE_colors &&
+    parentContext.UNSTABLE_colors;
 
-  const {colors, colorScheme, ...rest} = themeConfig;
+  const {UNSTABLE_colors, colorScheme, ...rest} = themeConfig;
 
   const processedThemeConfig = {
     ...rest,
     ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
-    colors: {
+    UNSTABLE_colors: {
       ...(isParentThemeProvider && DefaultThemeColors),
       ...(shouldInheritParentColors(
         isParentThemeProvider,
         colorScheme,
         parentColorScheme,
       ) && parentColors),
-      ...colors,
+      ...UNSTABLE_colors,
     },
   };
 
   const customProperties = useMemo(
     () =>
-      buildCustomProperties(processedThemeConfig, newDesignLanguage, Tokens),
-    [processedThemeConfig, newDesignLanguage],
+      buildCustomProperties(
+        processedThemeConfig,
+        unstableGlobalTheming,
+        Tokens,
+      ),
+    [processedThemeConfig, unstableGlobalTheming],
   );
 
   const theme = useMemo(
     () =>
       buildThemeContext(
         processedThemeConfig,
-        newDesignLanguage ? customProperties : undefined,
+        unstableGlobalTheming ? customProperties : undefined,
       ),
-    [customProperties, processedThemeConfig, newDesignLanguage],
+    [customProperties, processedThemeConfig, unstableGlobalTheming],
   );
 
   // We want these values to be empty string instead of `undefined` when not set.

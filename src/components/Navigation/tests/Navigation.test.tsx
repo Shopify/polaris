@@ -78,38 +78,38 @@ describe('<Navigation />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('renders an image if newDesignLanguage is true and a logo from the theme provider is present', () => {
+  describe('unstableGlobalTheming', () => {
+    it('renders an image if unstableGlobalTheming is true and a logo from the theme provider is present', () => {
       const navigation = mountWithApp(<Navigation location="/" />, {
         theme: {logo: {url: 'https://shopify.com/logo'}},
-        features: {newDesignLanguage: true},
+        features: {unstableGlobalTheming: true},
       });
       expect(navigation).toContainReactComponent(Image);
     });
 
-    it('does not render a nav element with newDesignLanguage className if newDesignLanguage is undefined', () => {
+    it('does not render a nav element with globalTheming className if unstableGlobalTheming is undefined', () => {
       const navigation = mountWithApp(<Navigation location="/" />);
       expect(navigation).not.toContainReactComponent('nav', {
-        className: 'Navigation Navigation-newDesignLanguage',
+        className: 'Navigation Navigation-globalTheming',
       });
     });
 
-    it('renders a nav element with newDesignLanguage className if newDesignLanguage is true', () => {
+    it('renders a nav element with globalTheming className if unstableGlobalTheming is true', () => {
       const navigation = mountWithApp(<Navigation location="/" />, {
-        features: {newDesignLanguage: true},
+        features: {unstableGlobalTheming: true},
         theme: {logo: {}},
       });
       expect(navigation).toContainReactComponent('nav', {
-        className: 'Navigation Navigation-newDesignLanguage',
+        className: 'Navigation Navigation-globalTheming',
       });
     });
 
-    it('renders a nav element with noMedia className if no media element is present and newDesignLanguage is true', () => {
+    it('renders a nav element with noMedia className if no media element is present and unstableGlobalTheming is true', () => {
       const navigation = mountWithApp(<Navigation location="/" />, {
-        features: {newDesignLanguage: true},
+        features: {unstableGlobalTheming: true},
       });
       expect(navigation).toContainReactComponent('nav', {
-        className: 'Navigation Navigation-noMedia Navigation-newDesignLanguage',
+        className: 'Navigation Navigation-noMedia Navigation-globalTheming',
       });
     });
   });

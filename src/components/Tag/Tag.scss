@@ -36,7 +36,7 @@ $icon-size: rem(16px);
   margin-left: spacing(extra-tight);
   border-radius: 0 border-radius() border-radius() 0;
 
-  // Start - Delete below me during newDesignLanguage rollout
+  // Start - Delete below me during global theming rollout
   &:hover,
   &:focus,
   &:active {
@@ -53,9 +53,9 @@ $icon-size: rem(16px);
   &:active {
     background: rgba(color('ink', 'lightest'), 0.6);
   }
-  // End - Delete above me during newDesignLanguage rollout
+  // End - Delete above me during global theming rollout
 
-  &.newDesignLanguage {
+  &.globalTheming {
     @include recolor-icon(var(--p-icon));
 
     &:hover {

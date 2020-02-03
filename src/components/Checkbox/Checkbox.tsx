@@ -60,7 +60,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     ref,
   ) {
     const inputNode = useRef<HTMLInputElement>(null);
-    const {newDesignLanguage = false} = useFeatures();
+    const {unstableGlobalTheming = false} = useFeatures();
     const id = useUniqueId('Checkbox', idProp);
     const {
       value: mouseOver,
@@ -115,7 +115,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     const wrapperClassName = classNames(
       styles.Checkbox,
       error && styles.error,
-      newDesignLanguage && styles.newDesignLanguage,
+      unstableGlobalTheming && styles.globalTheming,
     );
 
     const backdropClassName = classNames(
@@ -135,7 +135,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     const inputClassName = classNames(
       styles.Input,
       isIndeterminate && styles['Input-indeterminate'],
-      newDesignLanguage && keyFocused && styles.keyFocused,
+      unstableGlobalTheming && keyFocused && styles.keyFocused,
     );
 
     return (

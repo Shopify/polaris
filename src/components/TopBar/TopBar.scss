@@ -20,7 +20,7 @@ $context-control-expand-after: 1400px;
   }
 }
 
-.TopBar-newDesignLanguage {
+.TopBar-globalTheming {
   height: unstable-top-bar-height();
   transition: box-shadow 100ms var(--p-ease);
 
@@ -122,7 +122,7 @@ $context-control-expand-after: 1400px;
     margin-left: 0;
   }
 
-  .TopBar-newDesignLanguage & {
+  .TopBar-globalTheming & {
     margin-left: 0;
   }
 }

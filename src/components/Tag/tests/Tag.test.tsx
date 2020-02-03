@@ -12,22 +12,22 @@ describe('<Tag />', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled', () => {
       const tag = mountWithApp(<Tag />, {
-        features: {newDesignLanguage: true},
+        features: {unstableGlobalTheming: true},
       });
       expect(tag).toContainReactComponent('button', {
-        className: 'Button newDesignLanguage',
+        className: 'Button globalTheming',
       });
     });
 
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+    it('does not add a global theming class when global theming is disabled', () => {
       const tag = mountWithApp(<Tag />, {
-        features: {newDesignLanguage: false},
+        features: {unstableGlobalTheming: false},
       });
       expect(tag).not.toContainReactComponent('button', {
-        className: 'Button newDesignLanguage',
+        className: 'Button globalTheming',
       });
     });
   });

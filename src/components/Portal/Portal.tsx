@@ -35,9 +35,9 @@ export class Portal extends React.PureComponent<PortalProps, State> {
     this.portalNode.setAttribute(portal.props[0], this.portalId);
 
     if (this.context != null) {
-      const {cssCustomProperties} = this.context;
-      if (cssCustomProperties != null) {
-        this.portalNode.setAttribute('style', cssCustomProperties);
+      const {UNSTABLE_cssCustomProperties} = this.context;
+      if (UNSTABLE_cssCustomProperties != null) {
+        this.portalNode.setAttribute('style', UNSTABLE_cssCustomProperties);
       } else {
         this.portalNode.removeAttribute('style');
       }
@@ -50,9 +50,9 @@ export class Portal extends React.PureComponent<PortalProps, State> {
     const {onPortalCreated = noop} = this.props;
 
     if (this.portalNode && this.context != null) {
-      const {cssCustomProperties, textColor} = this.context;
-      if (cssCustomProperties != null) {
-        const style = `${cssCustomProperties};color:${textColor};`;
+      const {UNSTABLE_cssCustomProperties, textColor} = this.context;
+      if (UNSTABLE_cssCustomProperties != null) {
+        const style = `${UNSTABLE_cssCustomProperties};color:${textColor};`;
         this.portalNode.setAttribute('style', style);
       } else {
         this.portalNode.removeAttribute('style');

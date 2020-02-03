@@ -151,8 +151,8 @@ describe('<FileUpload />', () => {
     expect(fileUpload.find(TextStyle).text()).toBe('or drop files to upload');
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled', () => {
       const fileUpload = mountWithApp(
         <DropZoneContext.Provider
           value={{
@@ -165,19 +165,19 @@ describe('<FileUpload />', () => {
           <FileUpload />
         </DropZoneContext.Provider>,
         {
-          features: {newDesignLanguage: true},
+          features: {unstableGlobalTheming: true},
         },
       );
 
       expect(fileUpload).toContainReactComponent('div', {
-        className: 'FileUpload newDesignLanguage measuring',
+        className: 'FileUpload globalTheming measuring',
       });
       expect(fileUpload).toContainReactComponent('div', {
-        className: 'Button newDesignLanguage',
+        className: 'Button globalTheming',
       });
     });
 
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+    it('does not add a global theming class when global theming is disabled', () => {
       const fileUpload = mountWithApp(
         <DropZoneContext.Provider
           value={{
@@ -190,15 +190,15 @@ describe('<FileUpload />', () => {
           <FileUpload />
         </DropZoneContext.Provider>,
         {
-          features: {newDesignLanguage: false},
+          features: {unstableGlobalTheming: false},
         },
       );
 
       expect(fileUpload).not.toContainReactComponent('div', {
-        className: 'FileUpload newDesignLanguage measuring',
+        className: 'FileUpload globalTheming measuring',
       });
       expect(fileUpload).not.toContainReactComponent('div', {
-        className: 'Button newDesignLanguage',
+        className: 'Button globalTheming',
       });
     });
   });

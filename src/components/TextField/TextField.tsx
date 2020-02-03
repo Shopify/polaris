@@ -179,7 +179,7 @@ export function TextField({
     focused ? input.focus() : input.blur();
   }, [focused]);
 
-  const {newDesignLanguage = false} = useFeatures();
+  const {unstableGlobalTheming = false} = useFeatures();
 
   // Use a typeof check here as Typescript mostly protects us from non-stringy
   // values but overzealous usage of `any` in consuming apps means people have
@@ -198,7 +198,7 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && styles.focus,
-    newDesignLanguage && styles.newDesignLanguage,
+    unstableGlobalTheming && styles.globalTheming,
   );
 
   const inputType = type === 'currency' ? 'text' : type;

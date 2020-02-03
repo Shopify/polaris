@@ -28,7 +28,7 @@ $unstable-nav-max-width: rem(258px);
     @include safe-area-for(max-width, layout-width(nav), left);
   }
 
-  &.Navigation-newDesignLanguage {
+  &.Navigation-globalTheming {
     max-width: $unstable-nav-max-width;
     border-right: 1px solid var(--p-border-subdued);
   }
@@ -46,7 +46,7 @@ $unstable-nav-max-width: rem(258px);
   .ContextControl {
     display: none;
 
-    .Navigation-newDesignLanguage & {
+    .Navigation-globalTheming & {
       display: block;
     }
   }
@@ -329,7 +329,7 @@ $secondary-item-font-size: rem(15px);
   padding: spacing() 0;
   @include safe-area-for(padding-left, 0, left);
 
-  .Navigation-newDesignLanguage & {
+  .Navigation-globalTheming & {
     padding-top: 0;
   }
 

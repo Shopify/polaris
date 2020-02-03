@@ -121,22 +121,22 @@ describe('<MenuAction />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled', () => {
       const menuAction = mountWithApp(<MenuAction />, {
-        features: {newDesignLanguage: true},
+        features: {unstableGlobalTheming: true},
       });
       expect(menuAction).toContainReactComponent('button', {
-        className: 'MenuAction newDesignLanguage',
+        className: 'MenuAction globalTheming',
       });
     });
 
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+    it('does not add a global theming class when global theming is disabled', () => {
       const menuAction = mountWithApp(<MenuAction />, {
-        features: {newDesignLanguage: true},
+        features: {unstableGlobalTheming: true},
       });
       expect(menuAction).toContainReactComponent('button', {
-        className: 'MenuAction newDesignLanguage',
+        className: 'MenuAction globalTheming',
       });
     });
   });

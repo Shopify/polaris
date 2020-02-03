@@ -68,22 +68,22 @@ describe('<Item />', () => {
     );
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+  describe('globalTheming', () => {
+    it('adds a global theming class when global theming is enabled', () => {
       const item = mountWithApp(<Item />, {
-        features: {newDesignLanguage: true},
+        features: {unstableGlobalTheming: true},
       });
       expect(item).toContainReactComponent('button', {
-        className: 'Item newDesignLanguage',
+        className: 'Item globalTheming',
       });
     });
 
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+    it('does not add a global theming class when global theming is disabled', () => {
       const item = mountWithApp(<Item />, {
-        features: {newDesignLanguage: false},
+        features: {unstableGlobalTheming: false},
       });
       expect(item).not.toContainReactComponent('button', {
-        className: 'Item newDesignLanguage',
+        className: 'Item globalTheming',
       });
     });
   });
