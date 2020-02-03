@@ -143,7 +143,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   onDragOver,
   onDragLeave,
 }: DropZoneProps) {
-  const {newDesignLanguage} = useFeatures();
+  const {unstableGlobalTheming} = useFeatures();
   const node = useRef<HTMLDivElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
 
@@ -361,7 +361,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     focused && styles.focused,
     (active || dragging) && styles.isDragging,
     disabled && styles.isDisabled,
-    newDesignLanguage && styles.newDesignLanguage,
+    unstableGlobalTheming && styles.globalTheming,
     (internalError || error) && styles.hasError,
     styles[variationName('size', size)],
     measuring && styles.measuring,
@@ -430,7 +430,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   ) {
     const overlayClass = classNames(
       styles.Overlay,
-      newDesignLanguage && styles.newDesignLanguage,
+      unstableGlobalTheming && styles.globalTheming,
     );
 
     return (

@@ -66,6 +66,16 @@
           }
         ]
       }
+    ],
+    "@typescript-eslint/camelcase": [
+      "error",
+      {
+        "allow": [
+          "UNSTABLE_colors",
+          "UNSTABLE_cssCustomProperties",
+          "UNSTABLE_telemetry"
+        ]
+      }
     ]
   },
   "overrides": [

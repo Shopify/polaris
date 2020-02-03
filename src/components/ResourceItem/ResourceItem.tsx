@@ -138,7 +138,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       name,
       context: {selectable, selectMode, loading, resourceName},
       i18n,
-      features: {newDesignLanguage},
+      features: {unstableGlobalTheming},
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -189,7 +189,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
 
     const className = classNames(
       styles.ResourceItem,
-      newDesignLanguage && styles.newDesignLanguage,
+      unstableGlobalTheming && styles.globalTheming,
       focused && styles.focused,
       selectable && styles.selectable,
       selected && styles.selected,

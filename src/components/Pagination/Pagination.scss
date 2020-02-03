@@ -42,7 +42,7 @@ $stacking-order: (
     appearance: none;
     box-shadow: none;
 
-    // Start - Delete below me when removing newDesignLanguage
+    // Start - Delete below me when removing globalTheming
     &:hover,
     &:active {
       @include recolor-icon(color('ink'));
@@ -56,7 +56,7 @@ $stacking-order: (
       box-shadow: none;
 
       // stylelint-disable-next-line selector-max-specificity
-      &::after:not(.newDesignLanguage) {
+      &::after:not(.globalTheming) {
         background: plain-button-background();
       }
     }
@@ -69,7 +69,7 @@ $stacking-order: (
     }
 
     // stylelint-disable-next-line selector-max-specificity
-    &::after:not(.newDesignLanguage) {
+    &::after:not(.globalTheming) {
       content: '';
       position: absolute;
       top: 0.5 * $difference-between-touch-area-and-backdrop;
@@ -83,10 +83,10 @@ $stacking-order: (
       transition-duration: duration();
       transition-timing-function: easing();
     }
-    // End - Delete after me when removing newDesignLanguage
+    // End - Delete after me when removing globalTheming
 
     // stylelint-disable selector-max-specificity, selector-max-class
-    &.newDesignLanguage {
+    &.globalTheming {
       @include recolor-icon(var(--p-icon));
       @include focus-ring;
 
@@ -151,7 +151,7 @@ $stacking-order: (
   transition-duration: duration();
   transition-timing-function: easing();
 
-  // Delete - Below me during newDesignLanguage rollout
+  // Delete - Below me during global theming rollout
   &:hover {
     background: linear-gradient(
       to bottom,
@@ -188,9 +188,9 @@ $stacking-order: (
     cursor: default;
     box-shadow: none;
   }
-  // Delete above me during newDesignLanguage rollout
+  // Delete above me during global theming rollout
 
-  &.newDesignLanguage {
+  &.globalTheming {
     @include focus-ring;
     box-shadow: none;
     border-color: transparent;

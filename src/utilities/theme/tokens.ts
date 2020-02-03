@@ -23,7 +23,6 @@ const Overrides = {
   buttonFontWeight: '500',
   nonNullContent: "''",
   choiceSize: rem('20px'),
-  iconSize: rem('10px'),
   choiceMargin: rem('1px'),
   controlBorderWidth: rem('2px'),
   bannerBorderDefault: buildBannerBorder('--p-border'),

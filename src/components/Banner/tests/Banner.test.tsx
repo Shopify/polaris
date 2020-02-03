@@ -149,7 +149,7 @@ describe('<Banner />', () => {
     describe('Focus className', () => {
       it('adds a keyFocused class to the banner on keyUp', () => {
         const banner = mountWithApp(<Banner />, {
-          features: {newDesignLanguage: true},
+          features: {unstableGlobalTheming: true},
         });
 
         const bannerDiv = banner.find('div', {
@@ -167,7 +167,7 @@ describe('<Banner />', () => {
 
       it('does not add a keyFocused class onMouseUp', () => {
         const banner = mountWithApp(<Banner />, {
-          features: {newDesignLanguage: true},
+          features: {unstableGlobalTheming: true},
         });
 
         const bannerDiv = banner.find('div', {

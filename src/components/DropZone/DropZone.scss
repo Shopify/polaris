@@ -2,11 +2,8 @@
 
 $dropzone-padding: rem(15px);
 $dropzone-border-style: dashed;
-$dropzone-border-color: var(--p-border-secondary, color('ink', 'lightest'));
-$dropzone-border-color-disabled: var(
-  --p-border-secondary-disabled,
-  color('sky')
-);
+$dropzone-border-color: var(--p-border, color('ink', 'lightest'));
+$dropzone-border-color-disabled: var(--p-border-disabled, color('sky'));
 $dropzone-border-radius: var(--p-border-radius-base, border-radius());
 $dropzone-background: var(--p-surface, color('white'));
 $dropzone-min-height-extra-large: rem(205px);
@@ -16,7 +13,7 @@ $dropzone-min-height-small: rem(50px);
 
 $dropzone-overlay-text-color: var(--p-text, color('indigo'));
 $dropzone-overlay-text-color-error: var(--p-text-critical, color('red'));
-$dropzone-overlay-border-color: var(--p-border-secondary, color('indigo'));
+$dropzone-overlay-border-color: var(--p-border, color('indigo'));
 $dropzone-overlay-border-color-error: var(--p-border-critical, color('red'));
 $dropzone-overlay-background: var(
   --p-surface-hovered,
@@ -76,13 +73,13 @@ $dropzone-stacking-order: (
     }
 
     // stylelint-disable-next-line selector-max-specificity
-    &:hover:not(.newDesignLanguage)::after {
+    &:hover:not(.globalTheming)::after {
       border-color: $dropzone-overlay-border-color;
     }
   }
 }
 
-.focused:not(.newDesignLanguage) {
+.focused:not(.globalTheming) {
   &:not(.isDisabled) {
     background-color: $dropzone-overlay-background;
 
@@ -103,7 +100,7 @@ $dropzone-stacking-order: (
   &:not(.isDisabled) {
     background-color: $dropzone-overlay-background;
 
-    &:not(.newDesignLanguage) {
+    &:not(.globalTheming) {
       // stylelint-disable-next-line selector-max-specificity
       &::after {
         border-color: $dropzone-overlay-border-color;
@@ -177,7 +174,7 @@ $dropzone-stacking-order: (
   }
 }
 
-.newDesignLanguage {
+.globalTheming {
   &.DropZone {
     &:not(.focused) {
       // stylelint-disable-next-line selector-max-specificity
@@ -193,9 +190,7 @@ $dropzone-stacking-order: (
 
   &.Overlay {
     // Same calculation used for focus-ring
-    border-radius: calc(
-      var(--p-border-radius-base) + #{border-width(thick)} + #{rem(1px)}
-    );
+    border-radius: calc(var(--p-border-radius-base) + 3px - 1px + #{rem(1px)});
   }
 
   &.hasOutline {

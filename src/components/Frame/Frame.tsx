@@ -119,12 +119,12 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
         mediaQuery: {isNavigationCollapsed},
       },
     } = this.props;
-    const {newDesignLanguage} = this.context || {};
+    const {unstableGlobalTheming} = this.context || {};
 
     const navClassName = classNames(
       styles.Navigation,
       showMobileNavigation && styles['Navigation-visible'],
-      newDesignLanguage && styles['Navigation-newDesignLanguage'],
+      unstableGlobalTheming && styles['Navigation-globalTheming'],
     );
 
     const mobileNavHidden = isNavigationCollapsed && !showMobileNavigation;
@@ -189,7 +189,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
 
     const topBarClassName = classNames(
       styles.TopBar,
-      newDesignLanguage && styles['TopBar-newDesignLanguage'],
+      unstableGlobalTheming && styles['TopBar-globalTheming'],
     );
 
     const topBarMarkup = topBar ? (
@@ -205,7 +205,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
 
     const globalRibbonClassName = classNames(
       styles.GlobalRibbonContainer,
-      newDesignLanguage && styles['GlobalRibbonContainer-newDesignLanguage'],
+      unstableGlobalTheming && styles['GlobalRibbonContainer-globalTheming'],
     );
 
     const globalRibbonMarkup = globalRibbon ? (
@@ -254,7 +254,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
 
     const mainClassName = classNames(
       styles.Main,
-      newDesignLanguage && styles['Main-newDesignLanguage'],
+      unstableGlobalTheming && styles['Main-globalTheming'],
     );
 
     const navigationOverlayMarkup =

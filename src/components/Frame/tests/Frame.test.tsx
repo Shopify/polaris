@@ -274,61 +274,60 @@ describe('<Frame />', () => {
       expect(frame.find(FrameLoading).exists()).toBe(true);
     });
   });
-  describe('newDesignLanguage', () => {
-    it('renders a Nav with a newDesignLanguage class when newDesignLanguage is true', () => {
+  describe('unstableGlobalTheming', () => {
+    it('renders a Nav with a globalTheming class when unstableGlobalTheming is true', () => {
       const frame = mountWithApp(
         <Frame navigation={<div />}>
           <PolarisLoading />
         </Frame>,
         {
-          features: {newDesignLanguage: true},
+          features: {unstableGlobalTheming: true},
         },
       );
       expect(frame).toContainReactComponent('div', {
-        className: 'Navigation Navigation-newDesignLanguage',
+        className: 'Navigation Navigation-globalTheming',
       });
     });
 
-    it('renders a TopBar with a newDesignLanguage class when newDesignLanguage is true', () => {
+    it('renders a TopBar with a globalTheming class when unstableGlobalTheming is true', () => {
       const frame = mountWithApp(
         <Frame topBar={<div />}>
           <PolarisLoading />
         </Frame>,
         {
-          features: {newDesignLanguage: true},
+          features: {unstableGlobalTheming: true},
         },
       );
       expect(frame).toContainReactComponent('div', {
-        className: 'TopBar TopBar-newDesignLanguage',
+        className: 'TopBar TopBar-globalTheming',
       });
     });
 
-    it('renders a GlobalRibbon container with a newDesignLanguage class when newDesignLanguage is true', () => {
+    it('renders a GlobalRibbon container with a globalTheming class when unstableGlobalTheming is true', () => {
       const frame = mountWithApp(
         <Frame globalRibbon={<div />}>
           <PolarisLoading />
         </Frame>,
         {
-          features: {newDesignLanguage: true},
+          features: {unstableGlobalTheming: true},
         },
       );
       expect(frame).toContainReactComponent('div', {
-        className:
-          'GlobalRibbonContainer GlobalRibbonContainer-newDesignLanguage',
+        className: 'GlobalRibbonContainer GlobalRibbonContainer-globalTheming',
       });
     });
 
-    it('renders a content container with a newDesignLanguage class when newDesignLanguage is true', () => {
+    it('renders a content container with a globalTheming class when unstableGlobalTheming is true', () => {
       const frame = mountWithApp(
         <Frame>
           <PolarisLoading />
         </Frame>,
         {
-          features: {newDesignLanguage: true},
+          features: {unstableGlobalTheming: true},
         },
       );
       expect(frame).toContainReactComponent('main', {
-        className: 'Main Main-newDesignLanguage',
+        className: 'Main Main-globalTheming',
       });
     });
   });

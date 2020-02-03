@@ -127,7 +127,7 @@ export function Button({
   pressed,
   connectedDisclosure,
 }: ButtonProps) {
-  const {newDesignLanguage = false} = useFeatures();
+  const {unstableGlobalTheming = false} = useFeatures();
   const hasGivenDeprecationWarning = useRef(false);
 
   if (ariaPressed && !hasGivenDeprecationWarning.current) {
@@ -144,7 +144,7 @@ export function Button({
 
   const className = classNames(
     styles.Button,
-    newDesignLanguage && styles.newDesignLanguage,
+    unstableGlobalTheming && styles.globalTheming,
     primary && styles.primary,
     outline && styles.outline,
     destructive && styles.destructive,
@@ -242,7 +242,7 @@ export function Button({
       connectedDisclosure.disabled && styles.disabled,
       styles.iconOnly,
       styles.ConnectedDisclosure,
-      newDesignLanguage && styles.newDesignLanguage,
+      unstableGlobalTheming && styles.globalTheming,
     );
 
     const defaultLabel = i18n.translate(

@@ -45,10 +45,10 @@ export function Avatar({
   accessibilityLabel,
 }: AvatarProps) {
   const i18n = useI18n();
-  const {newDesignLanguage = false} = useFeatures();
+  const {unstableGlobalTheming = false} = useFeatures();
 
   function styleClass(name?: string) {
-    const finalStyleClasses = newDesignLanguage
+    const finalStyleClasses = unstableGlobalTheming
       ? STYLE_CLASSES
       : [...STYLE_CLASSES, 'six'];
     return name
