@@ -238,6 +238,7 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-non-null-content`                    | `''`                                                                                              |
 | `--p-choice-size`                         | `2rem`                                                                                            |
 | `--p-choice-margin`                       | `0.1rem`                                                                                          |
+| `--p-control-border-width`                | `0.2rem`                                                                                          |
 | `--p-banner-border-default`               | `inset 0 0.2rem 0 0 var(--p-border), inset 0 0 0 0.2rem var(--p-border)`                          |
 | `--p-banner-border-success`               | `inset 0 0.2rem 0 0 var(--p-border-success), inset 0 0 0 0.2rem var(--p-border-success)`          |
 | `--p-banner-border-highlight`             | `inset 0 0.2rem 0 0 var(--p-border-highlight), inset 0 0 0 0.2rem var(--p-border-highlight)`      |
