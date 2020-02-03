@@ -12,5 +12,5 @@
     "importHelpers": true,
     "skipLibCheck": false
   },
-  "include": ["./config/typescript/**/*", "./src/**/*", "./tests/**/*"]
+  "include": ["./config/typescript", "./src", "./tests", "./playground"]
 }
