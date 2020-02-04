@@ -1,4 +1,4 @@
-import React, {ReactElement, Fragment} from 'react';
+import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {
   mountWithAppProvider,
@@ -16,7 +16,6 @@ import {
 import * as focusUtilities from '@shopify/javascript-utilities/focus';
 import * as focusUtils from '../../../utilities/focus';
 import {TrapFocus} from '../TrapFocus';
-import {FocusManager} from '../../FocusManager';
 import {Key} from '../../../types';
 
 jest.mock('@shopify/javascript-utilities/fastdom', () => ({
@@ -54,7 +53,7 @@ describe('<TrapFocus />', () => {
   });
 
   it('mounts', () => {
-    const trapFocus = mountWithAppProviderFocusManager(
+    const trapFocus = mountWithAppProvider(
       <TrapFocus>
         <TextContainer>Test</TextContainer>
       </TrapFocus>,
@@ -74,7 +73,7 @@ describe('<TrapFocus />', () => {
   });
 
   it('renders a Focus component with a `disabled` prop set to false by default', () => {
-    const focus = mountWithAppProviderFocusManager(
+    const focus = mountWithAppProvider(
       <TrapFocus>
         <div />
       </TrapFocus>,
@@ -83,7 +82,7 @@ describe('<TrapFocus />', () => {
   });
 
   it('renders a Focus component with a `disabled` prop set to true when `trapping` is false', () => {
-    const focus = mountWithAppProviderFocusManager(
+    const focus = mountWithAppProvider(
       <TrapFocus trapping={false}>
         <div />
       </TrapFocus>,
@@ -93,7 +92,7 @@ describe('<TrapFocus />', () => {
   });
 
   it('renders a Focus component with a `disabled` prop set to false when `trapping` is true', () => {
-    const focus = mountWithAppProviderFocusManager(
+    const focus = mountWithAppProvider(
       <TrapFocus trapping>
         <div />
       </TrapFocus>,
@@ -103,7 +102,7 @@ describe('<TrapFocus />', () => {
   });
 
   it('keeps focus on nodes contained inside trap focus during mount', () => {
-    const trapFocus = mountWithAppProviderFocusManager(
+    const trapFocus = mountWithAppProvider(
       <TrapFocus>
         <TextField label="" value="" onChange={noop} autoFocus />
       </TrapFocus>,
@@ -113,7 +112,7 @@ describe('<TrapFocus />', () => {
   });
 
   it('focuses the first focused node when nodes contained in trap focus are not in focus', () => {
-    const trapFocus = mountWithAppProviderFocusManager(
+    const trapFocus = mountWithAppProvider(
       <TrapFocus>
         <a href="/">
           <TextField label="" value="" onChange={noop} />
@@ -127,22 +126,22 @@ describe('<TrapFocus />', () => {
 
   it(`doesn't trade steal focus from another TrapFocus when multiple are rendered`, () => {
     const id = 'input';
-    const trapFocus = mountWithFocusManager(
-      <Fragment>
+    const trapFocus = mountWithApp(
+      <div>
         <TrapFocus>
           <input autoFocus id={id} />
         </TrapFocus>
         <TrapFocus>
           <input autoFocus />
         </TrapFocus>
-      </Fragment>,
+      </div>,
     );
 
     expect(trapFocus.find('input', {id})!.domNode).toBe(document.activeElement);
   });
 
   describe('handleBlur', () => {
-    const externalDomNode = mountWithAppProviderFocusManager(<Button />)
+    const externalDomNode = mountWithAppProvider(<Button />)
       .find('button')
       .getDOMNode();
 
@@ -152,7 +151,7 @@ describe('<TrapFocus />', () => {
     Object.assign(event, {preventDefault: jest.fn()});
 
     it('allows default when trapping is false', () => {
-      const trapFocus = mountWithAppProviderFocusManager(
+      const trapFocus = mountWithAppProvider(
         <TrapFocus trapping={false}>
           <TextField label="" value="" onChange={noop} autoFocus />
         </TrapFocus>,
@@ -169,7 +168,7 @@ describe('<TrapFocus />', () => {
     });
 
     it('allows default when the related target is a child', () => {
-      const trapFocus = mountWithAppProviderFocusManager(
+      const trapFocus = mountWithAppProvider(
         <TrapFocus>
           <TextField label="" value="" onChange={noop} autoFocus />
         </TrapFocus>,
@@ -188,7 +187,7 @@ describe('<TrapFocus />', () => {
     });
 
     it('focuses focusTrapWrapper when focusTrapWrapper does not contain a focusable element and the event target is not the firstFocusableNode', () => {
-      const trapFocus = mountWithFocusManager(
+      const trapFocus = mountWithApp(
         <TrapFocus>
           <div id="other" />
         </TrapFocus>,
@@ -234,9 +233,7 @@ describe('<TrapFocus />', () => {
     const listenerMap: HandlerMap = {};
 
     it('does nothing if trapping is false', () => {
-      const trapFocus = mountWithAppProviderFocusManager(
-        <TrapFocus trapping={false} />,
-      );
+      const trapFocus = mountWithAppProvider(<TrapFocus trapping={false} />);
       const activeElement = document.activeElement;
 
       listenerMap.keydown({keyCode: Key.Tab, element: trapFocus});
@@ -249,7 +246,7 @@ describe('<TrapFocus />', () => {
     it('prevents default if the target is the last element and the shift key is not pressed', () => {
       const preventDefaultSpy = jest.fn();
 
-      const trapFocus = mountWithAppProviderFocusManager(
+      const trapFocus = mountWithAppProvider(
         <TrapFocus>
           <button />
           <input />
@@ -266,7 +263,7 @@ describe('<TrapFocus />', () => {
     });
 
     it('focuses the first keyboard focusable node', () => {
-      const trapFocus = mountWithAppProviderFocusManager(
+      const trapFocus = mountWithAppProvider(
         <TrapFocus>
           <button />
           <input />
@@ -286,7 +283,7 @@ describe('<TrapFocus />', () => {
     it('prevents default if the target is the first element and the shift key is pressed', () => {
       const preventDefaultSpy = jest.fn();
 
-      const trapFocus = mountWithAppProviderFocusManager(
+      const trapFocus = mountWithAppProvider(
         <TrapFocus>
           <button />
           <input />
@@ -304,7 +301,7 @@ describe('<TrapFocus />', () => {
     });
 
     it('focuses the last keyboard focusable node', () => {
-      const trapFocus = mountWithAppProviderFocusManager(
+      const trapFocus = mountWithAppProvider(
         <TrapFocus>
           <button />
           <input />
@@ -340,12 +337,4 @@ function lastNode(element: ReactWrapper) {
   if (Array.isArray(elementNode))
     return focusUtils.findLastKeyboardFocusableNode(elementNode[0]);
   return focusUtils.findLastKeyboardFocusableNode(elementNode as HTMLElement);
-}
-
-function mountWithFocusManager(node: ReactElement) {
-  return mountWithApp(<FocusManager>{node}</FocusManager>);
-}
-
-function mountWithAppProviderFocusManager(node: ReactElement) {
-  return mountWithAppProvider(<FocusManager>{node}</FocusManager>);
 }

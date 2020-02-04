@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useRef} from 'react';
 import {mountWithApp} from 'test-utilities';
-import {FocusManager} from '../FocusManager';
 import {
   useFocusManager,
   FocusManagerContext,
@@ -13,10 +12,10 @@ describe('FocusManager', () => {
   it('allows the first component added to be safely focused', () => {
     const id = 'one';
     const component = mountWithApp(
-      <FocusManager>
+      <div>
         <Component id={id} />
         <Component id="two" />
-      </FocusManager>,
+      </div>,
     );
     expect(component).toContainReactComponentTimes('div', 1, {id});
   });
@@ -24,10 +23,10 @@ describe('FocusManager', () => {
   it('does not allow the second component added to be safely focused', () => {
     const id = 'two';
     const component = mountWithApp(
-      <FocusManager>
+      <div>
         <Component id="one" />
         <Component id={id} />
-      </FocusManager>,
+      </div>,
     );
     expect(component).not.toContainReactComponent('div', {id});
   });
@@ -44,11 +43,7 @@ describe('FocusManager', () => {
 
         return wasRemoved.current ? <div /> : null;
       };
-      const component = mountWithApp(
-        <FocusManager>
-          <Component />
-        </FocusManager>,
-      );
+      const component = mountWithApp(<Component />);
       expect(component).not.toContainReactComponent('div');
     });
 
@@ -65,11 +60,7 @@ describe('FocusManager', () => {
 
         return wasRemoved.current ? <div /> : null;
       };
-      const component = mountWithApp(
-        <FocusManager>
-          <Component />
-        </FocusManager>,
-      );
+      const component = mountWithApp(<Component />);
       expect(component).toContainReactComponentTimes('div', 1);
     });
   });
