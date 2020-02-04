@@ -12,7 +12,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Bug fixes
 
-- Fixed a Sass build error ((#2453)[https://github.com/Shopify/polaris-react/pull/2703])
+- Fixed a Sass build error ([#2453](https://github.com/Shopify/polaris-react/pull/2703))
 
 ---
 
