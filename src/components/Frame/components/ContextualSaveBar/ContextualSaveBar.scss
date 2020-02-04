@@ -74,6 +74,14 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: spacing(tight);
   border-radius: var(--p-border-radius-wide);
 
+  &::after {
+    border-bottom: none;
+  }
+
+  @media (-ms-high-contrast: active) {
+    border: 1px solid ms-high-contrast-color('text');
+  }
+
   .LogoContainer {
     display: none;
   }
