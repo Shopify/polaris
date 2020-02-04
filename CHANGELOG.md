@@ -8,7 +8,15 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
-## 4.13.0 - 2020-01-30
+## 4.13.1 - 2020-02-02
+
+### Bug fixes
+
+- Fixed a Sass build error ((#2453)[https://github.com/Shopify/polaris-react/pull/2703])
+
+---
+
+## 4.13.0 - 2020-02-02
 
 ### Enhancements
 
