@@ -78,7 +78,7 @@ describe('<RadioButton />', () => {
   describe('Focus className', () => {
     it('on keyUp adds a keyFocused class to the input', () => {
       const radioButton = mountWithApp(<RadioButton label="Radio" />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
 
       radioButton.find('input')!.trigger('onKeyUp');
@@ -89,7 +89,7 @@ describe('<RadioButton />', () => {
 
     it('on change does not add a keyFocused class to the input', () => {
       const radioButton = mountWithApp(<RadioButton label="Radio" />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
       const radioInput = radioButton.find('input');
       radioInput!.trigger('onChange', {
@@ -202,22 +202,22 @@ describe('<RadioButton />', () => {
     });
   });
 
-  describe('globalTheming', () => {
-    it('adds a global theming class when global theming is enabled', () => {
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const radioButton = mountWithApp(<RadioButton label="Radio" />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
       expect(radioButton).toContainReactComponent('span', {
-        className: 'RadioButton globalTheming',
+        className: 'RadioButton newDesignLanguage',
       });
     });
 
-    it('does not add a global theming class when global theming is disabled', () => {
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const radioButton = mountWithApp(<RadioButton label="Radio" />, {
-        features: {unstableGlobalTheming: false},
+        features: {newDesignLanguage: false},
       });
       expect(radioButton).not.toContainReactComponent('span', {
-        className: 'RadioButton globalTheming',
+        className: 'RadioButton newDesignLanguage',
       });
     });
   });

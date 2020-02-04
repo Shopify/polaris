@@ -32,11 +32,11 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   onDismiss,
 }: NavigationProps) {
   const {logo} = useTheme();
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage = false} = useFeatures();
   const width = getWidth(logo, 104);
 
   const logoMarkup =
-    logo && unstableGlobalTheming ? (
+    logo && newDesignLanguage ? (
       <div className={styles.LogoContainer}>
         <UnstyledLink
           url={logo.url || ''}
@@ -61,8 +61,8 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
 
   const className = classNames(
     styles.Navigation,
-    !mediaMarkup && unstableGlobalTheming && styles['Navigation-noMedia'],
-    unstableGlobalTheming && styles['Navigation-globalTheming'],
+    !mediaMarkup && newDesignLanguage && styles['Navigation-noMedia'],
+    newDesignLanguage && styles['Navigation-newDesignLanguage'],
   );
 
   const context = {

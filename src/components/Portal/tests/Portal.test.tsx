@@ -101,14 +101,14 @@ describe('<Portal />', () => {
   it('sets CSS custom properties on the portal node', () => {
     const setSpy = jest.spyOn(Element.prototype, 'setAttribute');
     const portal = mountWithAppProvider(<Portal />, {
-      features: {unstableGlobalTheming: true},
+      features: {newDesignLanguage: true},
       theme: {
-        UNSTABLE_colors: {surface: '#000000'},
+        colors: {surface: '#000000'},
       },
     });
     expect(setSpy).toHaveBeenCalledWith(
       'style',
-      portal.context().UNSTABLE_cssCustomProperties,
+      portal.context().cssCustomProperties,
     );
   });
 

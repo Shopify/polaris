@@ -9,7 +9,7 @@
   @include visually-hidden;
 }
 // stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
-.Checkbox:not(.globalTheming) {
+.Checkbox:not(.newDesignLanguage) {
   .Input {
     &:focus,
     &:active,
@@ -61,7 +61,7 @@
   }
 }
 
-.Checkbox.globalTheming {
+.Checkbox.newDesignLanguage {
   .Input {
     &.keyFocused {
       + .Backdrop {
@@ -130,7 +130,7 @@
   }
 }
 
-.error:not(.globalTheming) {
+.error:not(.newDesignLanguage) {
   // The basic checked styles have more specificity than this, so need to
   // basically duplicate that selector here, too.
   .Input:checked + .Backdrop,
@@ -146,7 +146,7 @@
   }
 }
 
-.error.globalTheming {
+.error.newDesignLanguage {
   .Backdrop {
     @include control-backdrop(error, $global-theming: true);
   }

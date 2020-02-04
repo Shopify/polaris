@@ -219,36 +219,36 @@ describe('<Pagination />', () => {
     });
   });
 
-  describe('globalTheming', () => {
-    it('adds a global theming & rightButton class when global theming is enabled', () => {
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage & rightButton class when newDesignLanguage is enabled', () => {
       const pagination = mountWithApp(
         <Pagination nextURL="/" previousURL="/" />,
         {
-          features: {unstableGlobalTheming: true},
+          features: {newDesignLanguage: true},
         },
       );
 
       expect(pagination).toContainReactComponent(UnstyledLink, {
-        className: 'Button globalTheming rightButton NextButton',
+        className: 'Button newDesignLanguage rightButton NextButton',
       });
       expect(pagination).toContainReactComponent(UnstyledLink, {
-        className: 'Button globalTheming PreviousButton',
+        className: 'Button newDesignLanguage PreviousButton',
       });
     });
 
-    it('does not add a global theming class when global theming is disabled', () => {
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const pagination = mountWithApp(
         <Pagination nextURL="/" previousURL="/" />,
         {
-          features: {unstableGlobalTheming: false},
+          features: {newDesignLanguage: false},
         },
       );
 
       expect(pagination).not.toContainReactComponent(UnstyledLink, {
-        className: 'Button globalTheming rightButton NextButton',
+        className: 'Button newDesignLanguage rightButton NextButton',
       });
       expect(pagination).not.toContainReactComponent(UnstyledLink, {
-        className: 'Button globalTheming PreviousButton',
+        className: 'Button newDesignLanguage PreviousButton',
       });
     });
   });

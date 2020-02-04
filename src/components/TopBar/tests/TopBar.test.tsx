@@ -251,36 +251,36 @@ describe('<TopBar />', () => {
     });
   });
 
-  describe('globalTheming', () => {
+  describe('newDesignLanguage', () => {
     it('does not render an EventListener by default', () => {
       const topBar = mountWithApp(<TopBar />);
 
       expect(topBar).not.toContainReactComponent(EventListener);
     });
 
-    it('renders an EventListener when globalTheming is enabled', () => {
+    it('renders an EventListener when newDesignLanguage is enabled', () => {
       const topBar = mountWithApp(<TopBar />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
 
       expect(topBar).toContainReactComponent(EventListener);
     });
 
-    it('does not render a div with globalTheming className when globalTheming is undefined', () => {
+    it('does not render a div with newDesignLanguage className when newDesignLanguage is undefined', () => {
       const topBar = mountWithApp(<TopBar />);
 
       expect(topBar).not.toContainReactComponent('div', {
-        className: 'TopBar TopBar-globalTheming',
+        className: 'TopBar TopBar-newDesignLanguage',
       });
     });
 
-    it('renders a div with globalTheming className when globalTheming is enabled', () => {
+    it('renders a div with newDesignLanguage className when newDesignLanguage is enabled', () => {
       const topBar = mountWithApp(<TopBar />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
 
       expect(topBar).toContainReactComponent('div', {
-        className: 'TopBar TopBar-globalTheming',
+        className: 'TopBar TopBar-newDesignLanguage',
       });
     });
   });
