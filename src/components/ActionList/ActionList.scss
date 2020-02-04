@@ -192,6 +192,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     &:hover {
       background-image: none;
       background-color: var(--p-surface-hovered);
+
+      @media (-ms-high-contrast: active) {
+        outline: 1px solid ms-high-contrast-color('text');
+      }
     }
     // Active (.active, :active)
     // We need to decide if the .active state appears as pressed or focused
