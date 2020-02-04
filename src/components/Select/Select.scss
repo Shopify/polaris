@@ -26,7 +26,7 @@ $stacking-order: (
 
   .Icon {
     opacity: var(--override-one, 0.4);
-    @include recolor-icon(var(--p-icon-disabled, color('ink', 'lightest')));
+    @include recolor-icon(var(--p-icon-disabled, color('ink', 'lighter')));
   }
 
   &.globalTheming {
