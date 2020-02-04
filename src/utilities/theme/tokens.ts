@@ -38,6 +38,7 @@ const Overrides = {
   textFieldFocusRingBorderRadius: rem('7px'),
   buttonGroupItemSpacing: rem('2px'),
   topBarHeight: '68px',
+  contextualSaveBarHeight: '64px',
   duration100: '100ms',
   duration150: '150ms',
   easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',

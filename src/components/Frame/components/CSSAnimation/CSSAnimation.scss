@@ -1,5 +1,7 @@
 @import '../../../../styles/common';
 
+$fade-up-offset: rem(25px);
+
 .startFade {
   opacity: 0;
   will-change: opacity;
@@ -15,7 +17,7 @@
 .startFadeUp {
   opacity: 0;
   will-change: opacity, transform;
-  transform: translateY(#{rem(25px)});
+  transform: translateY(#{$fade-up-offset});
   transition: transform var(--p-duration-1-5-0) var(--p-ease),
     opacity var(--p-duration-1-5-0) var(--p-ease);
   pointer-events: none;
