@@ -127,7 +127,7 @@ export function Button({
   pressed,
   connectedDisclosure,
 }: ButtonProps) {
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
   const hasGivenDeprecationWarning = useRef(false);
 
   if (ariaPressed && !hasGivenDeprecationWarning.current) {

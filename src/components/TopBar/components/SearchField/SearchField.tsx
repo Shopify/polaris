@@ -41,7 +41,7 @@ export function SearchField({
 }: SearchFieldProps) {
   const i18n = useI18n();
   const [forceActive, setForceActive] = useState(false);
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const input = useRef<HTMLInputElement>(null);
   const searchId = useUniqueId('SearchField');

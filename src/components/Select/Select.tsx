@@ -90,7 +90,7 @@ export function Select({
 }: SelectProps) {
   const id = useUniqueId('Select', idProp);
   const labelHidden = labelInline ? true : labelHiddenProp;
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const className = classNames(
     styles.Select,

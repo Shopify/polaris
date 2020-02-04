@@ -32,7 +32,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   onDismiss,
 }: NavigationProps) {
   const {logo} = useTheme();
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
   const width = getWidth(logo, 104);
 
   const logoMarkup =

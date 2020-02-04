@@ -33,7 +33,7 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
