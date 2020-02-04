@@ -14,15 +14,13 @@ import {EventListener} from '../../../EventListener';
 import {KeypressListener} from '../../../KeypressListener';
 import {
   PositionedOverlay,
-  OverlayDetails,
-  PreferredPosition,
-  PreferredAlignment,
+  PositionedOverlayProps,
 } from '../../../PositionedOverlay';
 
 import {Pane, PaneProps} from '../Pane';
 import styles from '../../Popover.scss';
 
-export enum CloseSource {
+export enum PopoverCloseSource {
   Click,
   EscapeKeypress,
   FocusOut,
@@ -41,15 +39,15 @@ export interface PopoverOverlayProps {
   fullWidth?: boolean;
   fullHeight?: boolean;
   fluidContent?: boolean;
-  preferredPosition?: PreferredPosition;
-  preferredAlignment?: PreferredAlignment;
+  preferredPosition?: PositionedOverlayProps['preferredPosition'];
+  preferredAlignment?: PositionedOverlayProps['preferredAlignment'];
   active: boolean;
   id: string;
   activator: HTMLElement;
   preventAutofocus?: boolean;
   sectioned?: boolean;
   fixed?: boolean;
-  onClose(source: CloseSource): void;
+  onClose(source: PopoverCloseSource): void;
 }
 
 interface State {
@@ -177,7 +175,9 @@ export class PopoverOverlay extends React.PureComponent<
     });
   }
 
-  private renderPopover = (overlayDetails: OverlayDetails) => {
+  private renderPopover: PositionedOverlayProps['render'] = (
+    overlayDetails,
+  ) => {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
     const {
@@ -255,23 +255,23 @@ export class PopoverOverlay extends React.PureComponent<
     ) {
       return;
     }
-    onClose(CloseSource.Click);
+    onClose(PopoverCloseSource.Click);
   };
 
   private handleScrollOut = () => {
-    this.props.onClose(CloseSource.ScrollOut);
+    this.props.onClose(PopoverCloseSource.ScrollOut);
   };
 
   private handleEscape = () => {
-    this.props.onClose(CloseSource.EscapeKeypress);
+    this.props.onClose(PopoverCloseSource.EscapeKeypress);
   };
 
   private handleFocusFirstItem = () => {
-    this.props.onClose(CloseSource.FocusOut);
+    this.props.onClose(PopoverCloseSource.FocusOut);
   };
 
   private handleFocusLastItem = () => {
-    this.props.onClose(CloseSource.FocusOut);
+    this.props.onClose(PopoverCloseSource.FocusOut);
   };
 }
 

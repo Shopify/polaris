@@ -8,6 +8,54 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.13.0 - 2020-01-30
+
+### Enhancements
+
+- Replaced customer avatar images ([#2453](https://github.com/Shopify/polaris-react/pull/2453))
+- Added an optional `totalsName` prop to `DataTable` to support custom headings in the totals row ([#2660](https://github.com/Shopify/polaris-react/pull/2660))
+- Added `cursor: pointer` to `Choice` ([#2491](https://github.com/Shopify/polaris-react/pull/2491))
+
+### Bug fixes
+
+- Fixed `Uncaught TypeError: Cannot read property 'rightEdge' of undefined` in `DataTable` ([#2672](https://github.com/Shopify/polaris-react/pull/2672))
+- Fixed excessive rendering in `DatePicker` ([#2671](https://github.com/Shopify/polaris-react/pull/2671))
+- Fixed plurality of `DataTable` totals row heading ([#2660](https://github.com/Shopify/polaris-react/pull/2660))
+
+### Documentation
+
+- Changed placeholder product names in `Card` code examples ([#2677](https://github.com/Shopify/polaris-react/pull/2677))
+
+---
+
+## 4.12.0 - 2020-01-27
+
+### Enhancements
+
+- Added a split variant to `Button` ([#2329](https://github.com/Shopify/polaris-react/pull/2329))
+- Allow DataTable headers to be React Elements ([#2635](https://github.com/Shopify/polaris-react/pull/2635))
+- Added support for explicit order of items in `ActionMenu` ([2057](https://github.com/Shopify/polaris-react/pull/2057))
+- Made the `DataTable` horizontal `Navigation` optional ([#2647](https://github.com/Shopify/polaris-react/pull/2647))
+
+### Bug fixes
+
+- Fixed `ReferenceError: React is not defined` in `Button` for the `esnext` build ([#2657](https://github.com/Shopify/polaris-react/pull/2657))
+- Fixed scrolling with scrollbar not working in Popover when content changes on scroll ([#2627](https://github.com/Shopify/polaris-react/pull/2627))
+- Fixed side-effects from being create during `Modal`s render ([#2644](https://github.com/Shopify/polaris-react/pull/2644))
+- Work around a build crash when using create-react-app due to a bug in css parsing in `postcss-custom-properties` ([#2643](https://github.com/Shopify/polaris-react/pull/2643))
+- Removed the `visited` CSS styling for tabs using the `url` prop ([#2639](https://github.com/Shopify/polaris-react/pull/2639))
+
+### Development workflow
+
+- Reworked the yarn splash Github comment and added average splash zone information ([#2649](https://github.com/Shopify/polaris-react/pull/2649))
+- Re-enabled the web unit tests in the consumer build test ([#2663](https://github.com/Shopify/polaris-react/pull/2663))
+
+### Code quality
+
+- Converted `/tests/build.test.js` to TypeScript ([#2617](https://github.com/Shopify/polaris-react/pull/2617))
+- Use `export *` to rexport component content in component indexs and subcomponent listings ([#2625](https://github.com/Shopify/polaris-react/pull/2625))
+- Use `export *` to rexport utility content ([#2636](https://github.com/Shopify/polaris-react/pull/2636))
+
 ## 4.11.0 - 2020-01-17
 
 ### Breaking changes
@@ -23,16 +71,11 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 - Fixed a bug where `Navigation` calls `onNavigationDismiss` on large screens when focused and the escape key is pressed ([#2607](https://github.com/Shopify/polaris-react/pull/2607))
 - Fixed issue with `Filters` component displaying an undesired margin top and bottom on the button element on Safari ([#2292](https://github.com/Shopify/polaris-react/pull/2292))
-- Doesn't render `MenuActions` if no actions are passed to an `actionGroups` item inside `Page` ([#2266](https://github.com/Shopify/polaris-react/pull/2266))
-- Fixed `PositionedOverlay` incorrectly calculating `Topbar.UserMenu` `Popover` width ([#1692](https://github.com/Shopify/polaris-react/pull/1692))
-- Fixed `recolor-icon` Sass mixin to properly scope `$secondary-color` to the child `svg` ([#2298](https://github.com/Shopify/polaris-react/pull/2298))
-- Fixed a regression with the positioning of the `Popover` component ([#2305](https://github.com/Shopify/polaris-react/pull/2305))
-- Fixed Stack Item proportion when shrinking ([#2319](https://github.com/Shopify/polaris-react/pull/2319))
 - Fixed `RangeSlider` focus state style issues ([#1926](https://github.com/Shopify/polaris-react/pull/1926))
 - Ensure passing `{key: undefined}` into i18n will throw a runtime error in the same way as not passing in the key at all (this was ensured through type-checking at the TypeScript level but people could force through with casting to `any`) ([#2598](https://github.com/Shopify/polaris-react/pull/2598))
 - Ensure the normalizedValue within `TextField` is a string (this was already ensured through type-checking at the TypeScript level, but people could force through with casting to `any`, which caused problems) ([#2598](https://github.com/Shopify/polaris-react/pull/2598))
 
-- Fixed an issue with the `Filters` component where the `aria-expanded` attribute was `undefined` on mount ([#2589](https://github.com/Shopify/polaris-react/pull/2589)
+- Fixed an issue with the `Filters` component where the `aria-expanded` attribute was `undefined` on mount ([#2589](https://github.com/Shopify/polaris-react/pull/2589))
 - Fixed `TrapFocus` from tabbing out of the container ([#2555](https://github.com/Shopify/polaris-react/pull/2555))
 - Fixed `PositionedOverlay` not correctly getting its position when aligned to the right of the activator ([#2587](https://github.com/Shopify/polaris-react/pull/2587))
 - Search dismissal overlay now covers the entire screen ([#2440](https://github.com/Shopify/polaris-react/pull/2440))

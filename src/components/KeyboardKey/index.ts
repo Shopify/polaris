@@ -1,1 +1,1 @@
-export {KeyboardKey, KeyboardKeyProps} from './KeyboardKey';
+export * from './KeyboardKey';

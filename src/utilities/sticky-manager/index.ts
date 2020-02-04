@@ -1,5 +1,5 @@
-export {StickyManagerContext} from './context';
+export * from './context';
 
-export {useStickyManager} from './hooks';
+export * from './hooks';
 
-export {StickyManager} from './sticky-manager';
+export * from './sticky-manager';

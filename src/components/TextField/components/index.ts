@@ -1,3 +1,3 @@
-export {Resizer, ResizerProps} from './Resizer';
+export * from './Resizer';
 
-export {Spinner, SpinnerProps} from './Spinner';
+export * from './Spinner';

@@ -1,1 +1,1 @@
-export {ActionMenu, ActionMenuProps, hasGroupsWithActions} from './ActionMenu';
+export * from './ActionMenu';

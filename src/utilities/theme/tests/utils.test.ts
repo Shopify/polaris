@@ -7,8 +7,9 @@ import {
   buildThemeContext,
   buildCustomProperties,
 } from '../utils';
-import {RoleColors} from '../types';
-import {DefaultColorScheme} from '..';
+import {ColorScheme, RoleColors} from '../types';
+
+const DefaultColorScheme: ColorScheme = 'light';
 
 describe('setTextColor', () => {
   it('sets a css variable to white if the variant is dark', () => {
@@ -108,7 +109,7 @@ describe('buildCustomProperties', () => {
       ),
     ).toStrictEqual(
       expect.objectContaining({
-        '--p-background': 'hsla(0, 0%, 98%, 1)',
+        '--p-background': 'rgba(250, 250, 250, 1)',
       }),
     );
   });
@@ -133,7 +134,7 @@ describe('buildCustomProperties', () => {
       ),
     ).toStrictEqual(
       expect.objectContaining({
-        '--p-background': 'hsla(0, 0%, 5%, 1)',
+        '--p-background': 'rgba(12, 12, 12, 1)',
       }),
     );
   });

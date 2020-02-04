@@ -1,1 +1,1 @@
-export {Toast, ToastProps} from './Toast';
+export * from './Toast';

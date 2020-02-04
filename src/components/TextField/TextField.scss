@@ -174,7 +174,7 @@ $stacking-order: (
   left: 0;
   background-color: color('white');
   border: border(dark);
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base, border-radius());
   box-shadow: inset 0 1px 0 0 rgba(color('ink', 'lighter'), 0.05);
   pointer-events: none;
 
@@ -185,7 +185,7 @@ $stacking-order: (
     right: $textfield-backdrop-offset;
     bottom: $textfield-backdrop-offset;
     left: $textfield-backdrop-offset;
-    border: border-width(thick) solid color('indigo');
+    border: var(--p-override-none, border-width(thick) solid color('indigo'));
     border-radius: inherit;
     opacity: 0;
     transition: opacity duration() easing();
@@ -323,9 +323,11 @@ $stacking-order: (
 }
 
 // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors
-.globalTheming {
-  &.TextField {
-    color: var(--p-text);
+.globalTheming.TextField {
+  color: var(--p-text);
+
+  svg {
+    fill: var(--p-icon);
   }
 
   .hasValue {
@@ -343,11 +345,11 @@ $stacking-order: (
     }
   }
 
-  .readOnly > .Backdrop {
+  &.readOnly > .Backdrop {
     background-color: var(--p-action-secondary-disabled);
   }
 
-  .disabled {
+  &.disabled {
     color: var(--p-text-disabled);
 
     > .Backdrop {
@@ -370,23 +372,19 @@ $stacking-order: (
     &::placeholder {
       color: var(--p-text-subdued);
     }
+
+    &:focus ~ .Backdrop {
+      @include focus-ring($style: 'focused');
+    }
   }
 
   .Backdrop {
+    @include focus-ring($border-width: border-width());
     background-color: var(--p-surface);
-    border: border-width() solid var(--p-border-subdued);
-    border-top-color: var(--p-border);
-    border-radius: var(--p-border-radius-base);
-    box-shadow: none;
+    position: absolute;
 
     &::after {
-      top: var(--p-text-field-focus-ring-offset);
-      right: var(--p-text-field-focus-ring-offset);
-      bottom: var(--p-text-field-focus-ring-offset);
-      left: var(--p-text-field-focus-ring-offset);
-      border: border-width('thick') solid var(--p-focused);
-      border-radius: var(--p-text-field-focus-ring-border-radius);
-      transition: none;
+      opacity: 1;
     }
   }
 
@@ -420,13 +418,21 @@ $stacking-order: (
       border-top: none;
     }
 
+    // This is a violation of our component model, but necessary
+    // due to Connected.scss overriding these values.
+    // stylelint-disable declaration-no-important
+
     &:first-child {
-      border-top-right-radius: var(--p-text-field-spinner-border-radius);
+      border-top-right-radius: var(
+        --p-text-field-spinner-border-radius
+      ) !important;
       margin-bottom: var(--p-text-field-spinner-offset);
     }
 
     &:last-child {
-      border-bottom-right-radius: var(--p-text-field-spinner-border-radius);
+      border-bottom-right-radius: var(
+        --p-text-field-spinner-border-radius
+      ) !important;
     }
   }
 }

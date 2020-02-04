@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Memuatkan"
+      "spinnerAccessibilityLabel": "Memuatkan",
+      "connectedDisclosureAccessibilityLabel": "Tindakan yang berkaitan"
     },
     "Common": {
       "checkbox": "kotak semak",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "isih {direction} mengikut",
       "navAccessibilityLabel": "Tatal jadual {direction} satu lajur",
-      "totalsRowHeading": "Jumlah"
+      "totalsRowHeading": "Jumlah",
+      "totalRowHeading": "Jumlah"
     },
     "DatePicker": {
       "previousMonth": "Tunjuk bulan sebelumnya, {previousMonthName} {showPreviousYear}",

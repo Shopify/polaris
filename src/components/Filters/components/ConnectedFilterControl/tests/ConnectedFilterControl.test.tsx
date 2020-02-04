@@ -1,16 +1,21 @@
 import React from 'react';
 import {Popover, Button} from 'components';
+import {ArrayElement} from '@shopify/useful-types';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 
 import {
   ConnectedFilterControl,
-  PopoverableAction,
+  ConnectedFilterControlProps,
 } from '../ConnectedFilterControl';
 
 const MockChild = () => <div />;
 const MockFilter = () => <div />;
 const MockAux = () => <div />;
+
+type PopoverableAction = ArrayElement<
+  ConnectedFilterControlProps['rightPopoverableActions']
+>;
 
 const mockRightOpenPopoverableAction: PopoverableAction = {
   popoverOpen: true,

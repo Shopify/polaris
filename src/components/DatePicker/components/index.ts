@@ -1,5 +1,5 @@
-export {Day, DayProps} from './Day';
+export * from './Day';
 
-export {Month, MonthProps} from './Month';
+export * from './Month';
 
-export {Weekday, WeekdayProps} from './Weekday';
+export * from './Weekday';

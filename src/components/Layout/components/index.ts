@@ -1,3 +1,3 @@
-export {AnnotatedSection, AnnotatedSectionProps} from './AnnotatedSection';
+export * from './AnnotatedSection';
 
-export {Section, SectionProps} from './Section';
+export * from './Section';

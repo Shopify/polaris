@@ -1,1 +1,1 @@
-export {SettingAction, SettingActionProps} from './SettingAction';
+export * from './SettingAction';

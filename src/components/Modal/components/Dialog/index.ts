@@ -1,1 +1,1 @@
-export {Dialog, DialogProps} from './Dialog';
+export * from './Dialog';

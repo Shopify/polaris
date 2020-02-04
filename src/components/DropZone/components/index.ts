@@ -1,1 +1,1 @@
-export {FileUpload, FileUploadProps} from './FileUpload';
+export * from './FileUpload';

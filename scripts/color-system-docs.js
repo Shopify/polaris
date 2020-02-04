@@ -1,13 +1,12 @@
 const {resolve: resolvePath} = require('path');
 const {writeFileSync} = require('fs-extra');
+const roleVariants = require('@shopify/polaris-tokens/formats/utils/color-factory/configs/base');
+const theme = require('@shopify/polaris-tokens/dist/base.json');
+const {colorFactory} = require('@shopify/polaris-tokens/color-factory');
 const {
   rgbToHex,
-  hslToRgb,
   UNSTABLE_toCssCustomPropertySyntax: cssify,
-  UNSTABLE_roleVariants: roleVariants,
-  UNSTABLE_buildColors: colorFactory,
   UNSTABLE_Tokens: Tokens,
-  UNSTABLE_DefaultThemeColors: Color,
 } = require('../');
 
 const ColorSwatch = {
@@ -39,8 +38,8 @@ const RoleDescription = {
     'Used to decorate elements where color does convey a specific meaning in components like avatars',
 };
 
-const lightColors = colorFactory(Color, roleVariants, 'light');
-const darkColors = colorFactory(Color, roleVariants, 'dark');
+const lightColors = colorFactory(theme, 'light');
+const darkColors = colorFactory(theme, 'dark');
 
 const Template = {
   tocItem: (name) => `- [${name}](#${name})\n`,
@@ -116,20 +115,20 @@ const data =
 
 writeFileSync(resolvePath('documentation/Color system.md'), data);
 
-function stringToHsla(hsla) {
-  const [hue, saturation, lightness] = hsla
+function stringToRgba(rgba) {
+  const [red, green, blue] = rgba
     .substring(5)
     .slice(0, -1)
-    .split(', ');
+    .split(', ')
+    .map((num) => Number(num));
 
   return {
-    hue,
-    saturation: saturation.slice(0, -1),
-    lightness: lightness.slice(0, -1),
-    alpha: 1,
+    red,
+    green,
+    blue,
   };
 }
 
 function toHex(color) {
-  return rgbToHex(hslToRgb(stringToHsla(color))).substr(1);
+  return rgbToHex(stringToRgba(color)).substr(1);
 }

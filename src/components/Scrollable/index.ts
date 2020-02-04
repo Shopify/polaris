@@ -1,1 +1,1 @@
-export {Scrollable, ScrollableProps} from './Scrollable';
+export * from './Scrollable';

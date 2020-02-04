@@ -1,3 +1,3 @@
-export {Group, GroupProps} from './Group';
+export * from './Group';
 
-export {Item, ItemProps} from './Item';
+export * from './Item';

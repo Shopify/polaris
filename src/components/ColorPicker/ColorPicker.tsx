@@ -3,19 +3,19 @@ import {clamp} from '@shopify/javascript-utilities/math';
 
 import {hsbToRgb} from '../../utilities/color-transformers';
 import {HSBColor, HSBAColor} from '../../utilities/color-types';
-import {AlphaPicker, HuePicker, Slidable, Position} from './components';
+import {AlphaPicker, HuePicker, Slidable, SlidableProps} from './components';
 import styles from './ColorPicker.scss';
 
 interface State {
   pickerSize: number;
 }
 
-export interface Color extends HSBColor {
+interface Color extends HSBColor {
   /** Level of transparency */
   alpha?: HSBAColor['alpha'];
 }
 
-export interface BaseProps {
+export interface ColorPickerProps {
   /** ID for the element */
   id?: string;
   /** The currently selected color */
@@ -25,8 +25,6 @@ export interface BaseProps {
   /** Callback when color is selected */
   onChange(color: HSBAColor): void;
 }
-
-export interface ColorPickerProps extends BaseProps {}
 
 export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
   state: State = {
@@ -112,7 +110,7 @@ export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
     onChange({hue, brightness, saturation, alpha});
   };
 
-  private handleDraggerMove = ({x, y}: Position) => {
+  private handleDraggerMove: SlidableProps['onChange'] = ({x, y}) => {
     const {pickerSize} = this.state;
     const {
       color: {hue, alpha = 1},

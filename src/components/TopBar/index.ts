@@ -1,2 +1,1 @@
-export {TopBar, TopBarProps} from './TopBar';
-export {UserMenuProps, SearchFieldProps} from './components';
+export * from './TopBar';

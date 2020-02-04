@@ -240,6 +240,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
                 ref={this.track}
                 testID="track"
               />
+              <div className={styles['Track--dashed']} />
               <button
                 id={idLower}
                 className={thumbLowerClassName}

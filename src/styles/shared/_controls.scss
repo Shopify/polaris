@@ -99,21 +99,19 @@
     }
     // design-language
   } @else if $global-theming == true {
-    --control-border-width: #{rem(2px)};
-
     @if $style == base {
       position: relative;
-      border: var(--control-border-width) solid var(--p-border-secondary);
+      border: var(--p-control-border-width) solid var(--p-border-secondary);
       background-color: var(--p-surface);
       border-radius: var(--p-border-radius-base);
 
       &::before {
         content: '';
         position: absolute;
-        top: calc(var(--control-border-width) * -1);
-        right: calc(var(--control-border-width) * -1);
-        bottom: calc(var(--control-border-width) * -1);
-        left: calc(var(--control-border-width) * -1);
+        top: calc(-1 * var(--p-control-border-width));
+        right: calc(-1 * var(--p-control-border-width));
+        bottom: calc(-1 * var(--p-control-border-width));
+        left: calc(-1 * var(--p-control-border-width));
         border-radius: var(--p-border-radius-base);
         background-color: var(--p-action-interactive);
         opacity: 0;

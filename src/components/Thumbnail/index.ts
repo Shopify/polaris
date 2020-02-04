@@ -1,1 +1,1 @@
-export {Thumbnail, ThumbnailProps} from './Thumbnail';
+export * from './Thumbnail';

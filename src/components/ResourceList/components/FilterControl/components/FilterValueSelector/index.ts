@@ -1,4 +1,1 @@
-export {
-  FilterValueSelector,
-  FilterValueSelectorProps,
-} from './FilterValueSelector';
+export * from './FilterValueSelector';

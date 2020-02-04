@@ -1,1 +1,1 @@
-export {TrapFocus, TrapFocusProps} from './TrapFocus';
+export * from './TrapFocus';

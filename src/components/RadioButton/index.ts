@@ -1,1 +1,1 @@
-export {RadioButton, RadioButtonProps} from './RadioButton';
+export * from './RadioButton';

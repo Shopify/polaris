@@ -34,7 +34,9 @@ $control-size: rem(16px);
 
 .ChoiceChildren {
   margin-bottom: spacing(tight);
-  padding-left: spacing(tight) + $control-size;
+  padding-left: calc(
+    #{spacing(tight)} + var(--p-choice-size, #{$control-size})
+  );
 }
 
 .ChoiceError {

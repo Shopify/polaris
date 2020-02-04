@@ -1,1 +1,1 @@
-export {MenuAction, MenuActionProps} from './MenuAction';
+export * from './MenuAction';

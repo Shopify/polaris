@@ -1,1 +1,1 @@
-export {Section, SectionProps} from './Section';
+export * from './Section';

@@ -11,7 +11,7 @@
       "PROGRESS_LABELS": {
         "incomplete": "Incompleto",
         "partiallyComplete": "Parcialmente completo",
-        "complete": "Concluído"
+        "complete": "Preencher"
       },
       "STATUS_LABELS": {
         "info": "Informações",
@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Carregando"
+      "spinnerAccessibilityLabel": "Carregando",
+      "connectedDisclosureAccessibilityLabel": "Ações relacionadas"
     },
     "Common": {
       "checkbox": "caixa de seleção",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "organizar {direction} por",
       "navAccessibilityLabel": "Rolar tabela uma coluna para {direction}",
-      "totalsRowHeading": "Totais"
+      "totalsRowHeading": "Totais",
+      "totalRowHeading": "total"
     },
     "DatePicker": {
       "previousMonth": "Mostrar mês anterior, {previousMonthName} {showPreviousYear}",

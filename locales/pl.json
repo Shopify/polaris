@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Ładowanie"
+      "spinnerAccessibilityLabel": "Ładowanie",
+      "connectedDisclosureAccessibilityLabel": "Powiązane czynności"
     },
     "Common": {
       "checkbox": "pole wyboru",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "sortuj {direction} według",
       "navAccessibilityLabel": "Przewiń tabelę {direction} - jedna kolumna",
-      "totalsRowHeading": "Sumy"
+      "totalsRowHeading": "Sumy",
+      "totalRowHeading": "Suma"
     },
     "DatePicker": {
       "previousMonth": "Pokaż poprzedni miesiąc, {previousMonthName} {showPreviousYear}",

@@ -1,17 +1,17 @@
 import React, {useMemo, useEffect, useContext} from 'react';
+import DefaultThemeColors from '@shopify/polaris-tokens/dist/base.json';
 import {
   ThemeContext,
   ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
-  DefaultThemeColors,
-  DefaultColorScheme,
   Tokens,
-  ColorScheme,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
 
+type OriginalColorScheme = Required<ThemeConfig['colorScheme']>;
 type Inverse = 'inverse';
+type InversableColorScheme = OriginalColorScheme | Inverse;
 
 // TS 3.5+ includes the built-in Omit type which does the same thing. But if we
 // use that then we break consumers on older versions of TS. Consider removing
@@ -19,7 +19,7 @@ type Inverse = 'inverse';
 type Discard<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 interface ThemeProviderThemeConfig extends Discard<ThemeConfig, 'colorScheme'> {
-  colorScheme?: ColorScheme | Inverse;
+  colorScheme?: InversableColorScheme;
 }
 
 interface ThemeProviderProps {
@@ -101,17 +101,17 @@ export function ThemeProvider({
 }
 
 function isInverseColorScheme(
-  colorScheme?: ColorScheme | Inverse,
+  colorScheme?: InversableColorScheme,
 ): colorScheme is Inverse {
   return colorScheme === 'inverse';
 }
 
 function getColorScheme(
-  colorScheme: ColorScheme | Inverse | undefined,
-  parentColorScheme: ColorScheme | undefined,
+  colorScheme: InversableColorScheme | undefined,
+  parentColorScheme: OriginalColorScheme | undefined,
 ) {
   if (colorScheme == null) {
-    return parentColorScheme || DefaultColorScheme;
+    return parentColorScheme || 'light';
   } else if (isInverseColorScheme(colorScheme)) {
     return parentColorScheme === 'dark' || parentColorScheme === undefined
       ? 'light'
@@ -123,8 +123,8 @@ function getColorScheme(
 
 function shouldInheritParentColors(
   isParentThemeProvider: boolean,
-  colorScheme: ColorScheme | Inverse | undefined,
-  parentColorScheme: ColorScheme | undefined,
+  colorScheme: InversableColorScheme | undefined,
+  parentColorScheme: OriginalColorScheme | undefined,
 ) {
   if (isParentThemeProvider) {
     return false;

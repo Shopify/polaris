@@ -10,6 +10,7 @@ const Shadow = {
     '-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)',
   modalShadow:
     '0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light)',
+  topBarShadow: '0 2px 2px -1px var(--p-shadow-from-direct-light)',
 };
 
 const Overrides = {
@@ -23,6 +24,7 @@ const Overrides = {
   nonNullContent: "''",
   choiceSize: rem('20px'),
   choiceMargin: rem('1px'),
+  controlBorderWidth: rem('2px'),
   bannerBorderDefault: buildBannerBorder('--p-border'),
   bannerBorderSuccess: buildBannerBorder('--p-border-success'),
   bannerBorderHighlight: buildBannerBorder('--p-border-highlight'),
@@ -33,7 +35,6 @@ const Overrides = {
   textFieldSpinnerOffset: rem('2px'),
   textFieldFocusRingOffset: rem('-4px'),
   textFieldFocusRingBorderRadius: rem('7px'),
-  checkboxRadioButtonFocusRingOffset: rem('3px'),
   buttonGroupItemSpacing: rem('2px'),
   duration100: '100ms',
   duration150: '150ms',

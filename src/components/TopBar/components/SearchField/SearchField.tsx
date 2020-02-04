@@ -1,7 +1,8 @@
-import React, {useCallback, useEffect, useRef} from 'react';
+import React, {useCallback, useEffect, useState, useRef} from 'react';
 import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
+import {useFeatures} from '../../../../utilities/features';
 import {useUniqueId} from '../../../../utilities/unique-id';
 
 import {Icon} from '../../../Icon';
@@ -39,6 +40,8 @@ export function SearchField({
   onCancel,
 }: SearchFieldProps) {
   const i18n = useI18n();
+  const [forceActive, setForceActive] = useState(false);
+  const {unstableGlobalTheming = false} = useFeatures();
 
   const input = useRef<HTMLInputElement>(null);
   const searchId = useUniqueId('SearchField');
@@ -84,6 +87,14 @@ export function SearchField({
       aria-label={i18n.translate('Polaris.TopBar.SearchField.clearButtonLabel')}
       className={styles.Clear}
       onClick={handleClear}
+      onBlur={() => {
+        setForceActive(false);
+        handleClear();
+      }}
+      onFocus={() => {
+        handleFocus();
+        setForceActive(true);
+      }}
     >
       <Icon source={CircleCancelMinor} />
     </button>
@@ -91,7 +102,8 @@ export function SearchField({
 
   const className = classNames(
     styles.SearchField,
-    (focused || active) && styles.focused,
+    (focused || active || forceActive) && styles.focused,
+    unstableGlobalTheming && styles['SearchField-globalTheming'],
   );
 
   return (

@@ -2,6 +2,7 @@ import React from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {SearchField} from '../SearchField';
 
 describe('<TextField />', () => {
@@ -126,6 +127,29 @@ describe('<TextField />', () => {
         preventDefault: spy,
       });
       expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('unstableGlobalTheming', () => {
+    it('does not render a container with globalTheming className by default', () => {
+      const textField = mountWithApp(
+        <SearchField value="hello polaris" onChange={noop} />,
+      );
+      expect(textField).not.toContainReactComponent('div', {
+        className: 'SearchField SearchField-globalTheming',
+      });
+    });
+
+    it('renders a container with globalTheming className when unstableGlobalTheming is true', () => {
+      const textField = mountWithApp(
+        <SearchField value="hello polaris" onChange={noop} />,
+        {
+          features: {unstableGlobalTheming: true},
+        },
+      );
+      expect(textField).toContainReactComponent('div', {
+        className: 'SearchField SearchField-globalTheming',
+      });
     });
   });
 });

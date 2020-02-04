@@ -16,6 +16,8 @@ import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 import {DataTableState, SortDirection, VerticalAlign} from './types';
 import styles from './DataTable.scss';
 
+export {SortDirection};
+
 type CombinedProps = DataTableProps & WithAppProviderProps;
 export type TableRow =
   | DataTableProps['headings']
@@ -29,15 +31,24 @@ export interface DataTableProps {
   /** List of data types, which determines content alignment for each column. Data types are "text," which aligns left, or "numeric," which aligns right. */
   columnContentTypes: ColumnContentType[];
   /** List of column headings. */
-  headings: string[];
+  headings: React.ReactNode[];
   /** List of numeric column totals, highlighted in the table’s header below column headings. Use empty strings as placeholders for columns with no total. */
   totals?: TableData[];
+  /** Custom totals row heading */
+  totalsName?: {
+    singular: string;
+    plural: string;
+  };
   /** Placement of totals row within table */
   showTotalsInFooter?: boolean;
   /** Lists of data points which map to table body rows. */
   rows: TableData[][];
-  /** Truncate content in first column instead of wrapping.
+  /** Hide column visibility and navigation buttons above the header when the table horizontally collapses to be scrollable.
    * @default false
+   */
+  hideScrollIndicator?: boolean;
+  /** Truncate content in first column instead of wrapping.
+   * @default true
    */
   truncate?: boolean;
   /** Vertical alignment of content in the cells.
@@ -62,7 +73,10 @@ export interface DataTableProps {
   onSort?(headingIndex: number, direction: SortDirection): void;
 }
 
-class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
+class DataTableInner extends React.PureComponent<
+  CombinedProps,
+  DataTableState
+> {
   state: DataTableState = {
     condensed: false,
     columnVisibilityData: [],
@@ -73,7 +87,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   private dataTable = React.createRef<HTMLDivElement>();
   private scrollContainer = React.createRef<HTMLDivElement>();
   private table = React.createRef<HTMLTableElement>();
-  private totalsRowHeading: string;
 
   private handleResize = debounce(() => {
     const {
@@ -92,16 +105,6 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       ...this.calculateColumnVisibilityData(condensed),
     });
   });
-
-  constructor(props: CombinedProps) {
-    super(props);
-    const {
-      polaris: {intl},
-    } = props;
-    this.totalsRowHeading = intl.translate(
-      'Polaris.DataTable.totalsRowHeading',
-    );
-  }
 
   componentDidMount() {
     // We need to defer the calculation in development so the styles have time to be injected.
@@ -128,6 +131,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       showTotalsInFooter,
       rows,
       footerContent,
+      hideScrollIndicator = false,
     } = this.props;
     const {
       condensed,
@@ -163,15 +167,19 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
       <tfoot>{totalsMarkup}</tfoot>
     ) : null;
 
+    const navigationMarkup = hideScrollIndicator ? null : (
+      <Navigation
+        columnVisibilityData={columnVisibilityData}
+        isScrolledFarthestLeft={isScrolledFarthestLeft}
+        isScrolledFarthestRight={isScrolledFarthestRight}
+        navigateTableLeft={this.navigateTable('left')}
+        navigateTableRight={this.navigateTable('right')}
+      />
+    );
+
     return (
       <div className={wrapperClassName}>
-        <Navigation
-          columnVisibilityData={columnVisibilityData}
-          isScrolledFarthestLeft={isScrolledFarthestLeft}
-          isScrolledFarthestRight={isScrolledFarthestRight}
-          navigateTableLeft={this.navigateTable('left')}
-          navigateTableRight={this.navigateTable('right')}
-        />
+        {navigationMarkup}
         <div className={className} ref={this.dataTable}>
           <div className={styles.ScrollContainer} ref={this.scrollContainer}>
             <EventListener event="resize" handler={this.handleResize} />
@@ -203,34 +211,36 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     } = this;
 
     if (condensed && table && scrollContainer && dataTable) {
-      const headerCells = table.querySelectorAll(
-        headerCell.selector,
-      ) as NodeListOf<HTMLElement>;
+      const headerCells = table.querySelectorAll(headerCell.selector);
 
-      const firstVisibleColumnIndex = headerCells.length - 1;
-      const tableLeftVisibleEdge = scrollContainer.scrollLeft;
+      if (headerCells.length > 0) {
+        const firstVisibleColumnIndex = headerCells.length - 1;
+        const tableLeftVisibleEdge = scrollContainer.scrollLeft;
 
-      const tableRightVisibleEdge =
-        scrollContainer.scrollLeft + dataTable.offsetWidth;
+        const tableRightVisibleEdge =
+          scrollContainer.scrollLeft + dataTable.offsetWidth;
 
-      const tableData = {
-        firstVisibleColumnIndex,
-        tableLeftVisibleEdge,
-        tableRightVisibleEdge,
-      };
+        const tableData = {
+          firstVisibleColumnIndex,
+          tableLeftVisibleEdge,
+          tableRightVisibleEdge,
+        };
 
-      const columnVisibilityData = [...headerCells].map(
-        measureColumn(tableData),
-      );
+        const columnVisibilityData = [...headerCells].map(
+          measureColumn(tableData),
+        );
 
-      const lastColumn = columnVisibilityData[columnVisibilityData.length - 1];
+        const lastColumn =
+          columnVisibilityData[columnVisibilityData.length - 1];
 
-      return {
-        columnVisibilityData,
-        ...getPrevAndCurrentColumns(tableData, columnVisibilityData),
-        isScrolledFarthestLeft: tableLeftVisibleEdge === 0,
-        isScrolledFarthestRight: lastColumn.rightEdge <= tableRightVisibleEdge,
-      };
+        return {
+          columnVisibilityData,
+          ...getPrevAndCurrentColumns(tableData, columnVisibilityData),
+          isScrolledFarthestLeft: tableLeftVisibleEdge === 0,
+          isScrolledFarthestRight:
+            lastColumn.rightEdge <= tableRightVisibleEdge,
+        };
+      }
     }
 
     return {
@@ -318,6 +328,25 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     );
   };
 
+  private totalsRowHeading = () => {
+    const {
+      polaris: {intl},
+      totals,
+      totalsName,
+    } = this.props;
+
+    const totalsLabel = totalsName
+      ? totalsName
+      : {
+          singular: intl.translate('Polaris.DataTable.totalRowHeading'),
+          plural: intl.translate('Polaris.DataTable.totalsRowHeading'),
+        };
+
+    return totals && totals.filter((total) => total !== '').length > 1
+      ? totalsLabel.plural
+      : totalsLabel.singular;
+  };
+
   private renderTotals = (total: TableData, index: number) => {
     const id = `totals-cell-${index}`;
     const {truncate = false, verticalAlign} = this.props;
@@ -326,7 +355,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     let contentType;
 
     if (index === 0) {
-      content = this.totalsRowHeading;
+      content = this.totalsRowHeading();
     }
 
     if (total !== '' && index > 0) {
@@ -411,6 +440,4 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
   };
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<DataTableProps>()(DataTable);
+export const DataTable = withAppProvider<DataTableProps>()(DataTableInner);

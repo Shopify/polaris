@@ -2,9 +2,9 @@ import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import styles from './TextStyle.scss';
 
-export type Variation = 'positive' | 'negative' | 'strong' | 'subdued' | 'code';
+type Variation = 'positive' | 'negative' | 'strong' | 'subdued' | 'code';
 
-export enum VariationValue {
+enum VariationValue {
   Positive = 'positive',
   Negative = 'negative',
   Strong = 'strong',

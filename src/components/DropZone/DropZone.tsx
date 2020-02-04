@@ -24,12 +24,13 @@ import {Stack} from '../Stack';
 import {Caption} from '../Caption';
 import {DisplayText} from '../DisplayText';
 import {VisuallyHidden} from '../VisuallyHidden';
-import {Labelled, Action} from '../Labelled';
+import {Labelled, LabelledProps} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
 import {isServer} from '../../utilities/target';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
+import {useFeatures} from '../../utilities/features';
 
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
@@ -38,13 +39,13 @@ import {fileAccepted, getDataTransferFiles} from './utils';
 
 import styles from './DropZone.scss';
 
-export type Type = 'file' | 'image';
+type Type = 'file' | 'image';
 
 export interface DropZoneProps {
   /** Label for the file input */
   label?: string;
   /** Adds an action to the label */
-  labelAction?: Action;
+  labelAction?: LabelledProps['action'];
   /** Visually hide the label */
   labelHidden?: boolean;
   /** ID for file input */
@@ -142,6 +143,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   onDragOver,
   onDragLeave,
 }: DropZoneProps) {
+  const {unstableGlobalTheming} = useFeatures();
   const node = useRef<HTMLDivElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
 
@@ -359,6 +361,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     focused && styles.focused,
     (active || dragging) && styles.isDragging,
     disabled && styles.isDisabled,
+    unstableGlobalTheming && styles.globalTheming,
     (internalError || error) && styles.hasError,
     styles[variationName('size', size)],
     measuring && styles.measuring,
@@ -425,8 +428,13 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     color: 'red' | 'indigo',
     text: string,
   ) {
+    const overlayClass = classNames(
+      styles.Overlay,
+      unstableGlobalTheming && styles.globalTheming,
+    );
+
     return (
-      <div className={styles.Overlay}>
+      <div className={overlayClass}>
         <Stack vertical spacing="tight">
           <Icon source={icon} color={color} />
           {size === 'extraLarge' && (

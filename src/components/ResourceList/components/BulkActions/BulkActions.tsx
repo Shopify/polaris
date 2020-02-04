@@ -17,11 +17,11 @@ import {CheckableButton} from '../CheckableButton';
 import {BulkActionButton} from './components';
 import styles from './BulkActions.scss';
 
-export type BulkAction = DisableableAction;
+type BulkAction = DisableableAction;
 
-export type BulkActionListSection = ActionListSection;
+type BulkActionListSection = ActionListSection;
 
-export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
+type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 const MAX_PROMOTED_ACTIONS = 2;
 
@@ -69,7 +69,7 @@ const slideClasses = {
 
 type CombinedProps = BulkActionsProps & WithAppProviderProps;
 
-class BulkActions extends React.PureComponent<CombinedProps, State> {
+class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
   state: State = {
     smallScreenPopoverVisible: false,
     largeScreenPopoverVisible: false,
@@ -531,6 +531,6 @@ function instanceOfBulkActionArray(
   return actions.length === validList.length;
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<BulkActionsProps>()(BulkActions);
+export const BulkActions = withAppProvider<BulkActionsProps>()(
+  BulkActionsInner,
+);

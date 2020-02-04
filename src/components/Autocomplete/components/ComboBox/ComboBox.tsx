@@ -2,8 +2,7 @@ import React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {OptionList, OptionDescriptor} from '../../../OptionList';
 import {ActionList} from '../../../ActionList';
-import {Popover} from '../../../Popover';
-import {PreferredPosition} from '../../../PositionedOverlay';
+import {Popover, PopoverProps} from '../../../Popover';
 import {ActionListItemDescriptor, Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {EventListener} from '../../../EventListener';
@@ -33,7 +32,7 @@ export interface ComboBoxProps {
   /** The text field component attached to the list of options */
   textField: React.ReactElement;
   /** The preferred direction to open the popover */
-  preferredPosition?: PreferredPosition;
+  preferredPosition?: PopoverProps['preferredPosition'];
   /** Title of the list of options */
   listTitle?: string;
   /** Allow more than one option to be selected */

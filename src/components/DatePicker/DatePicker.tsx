@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useMemo} from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
 import {
   Range,
@@ -22,7 +22,7 @@ import styles from './DatePicker.scss';
 
 export {Range, Months, Year};
 
-export interface BaseProps {
+export interface DatePickerProps {
   /** ID for the element */
   id?: string;
   /** The selected date or range of dates */
@@ -46,8 +46,6 @@ export interface BaseProps {
   /** Callback when month is changed. */
   onMonthChange?(month: Months, year: Year): void;
 }
-
-export interface DatePickerProps extends BaseProps {}
 
 export function DatePicker({
   id,
@@ -188,13 +186,15 @@ export function DatePicker({
     : i18n.translate(`Polaris.DatePicker.months.${monthName(showNextMonth)}`);
   const nextYear = multiMonth ? showNextToNextYear : showNextYear;
 
+  const monthIsSelected = useMemo(() => deriveRange(selected), [selected]);
+
   const secondDatePicker = multiMonth ? (
     <Month
       onFocus={handleFocus}
       focusedDate={focusDate}
       month={showNextMonth}
       year={showNextYear}
-      selected={deriveRange(selected)}
+      selected={monthIsSelected}
       hoverDate={hoverDate}
       onChange={handleDateSelection}
       onHover={handleHover}

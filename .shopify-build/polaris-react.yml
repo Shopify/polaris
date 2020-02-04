@@ -1,8 +1,8 @@
 containers:
   default:
-    docker: gcr.io/shopify-docker-images/apps/production/web-platform-ci-node:10.17.0-yarn-1.19.1
+    docker: gcr.io/shopify-docker-images/apps/production/web-platform-ci-node:10.18.0-yarn-1.21.1
   styleguide:
-    docker: circleci/node:10.13.0
+    docker: gcr.io/shopify-docker-images/apps/production/web-platform-ci-node:10.13.0-yarn-1.21.1
 
 shared:
   build-web: &build-web
@@ -28,19 +28,16 @@ shared:
   unit-tests: &unit-tests
     label: '🤓 Web unit tests'
     container: default
-    timeout: 15m
+    timeout: 20m
     dependencies:
       - yarn
     run:
       - yarn run build
       - ./.shopify-build/setup-consumer-test.sh web
       - cd ./web
-      - node ./.shopify-build/balancer.js
-      - CI=true yarn run sewing-kit test --maxWorkers 2 --coverage $(./.shopify-build/balancer.js)
-    parallelism: 8
+      - CI=true yarn run sewing-kit test --maxWorkers 2 $(/app/web/.shopify-build/balancer.js)
+    parallelism: 24
 
 steps:
   - <<: *build-styleguide
-  # Skip running web unit tests until they're happy running the newer node version
-  # See https://github.com/Shopify/web/pull/21936
-  # - <<: *unit-tests
+  - <<: *unit-tests

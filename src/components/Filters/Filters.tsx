@@ -20,7 +20,7 @@ import {ScrollLock} from '../ScrollLock';
 import {Icon} from '../Icon';
 import {TextField} from '../TextField';
 import {Tag} from '../Tag';
-import {TextStyle, VariationValue} from '../TextStyle';
+import {TextStyle} from '../TextStyle';
 import {Badge} from '../Badge';
 import {Focus} from '../Focus';
 import {Sheet} from '../Sheet';
@@ -28,7 +28,10 @@ import {Stack} from '../Stack';
 import {Key} from '../../types';
 
 import {KeypressListener} from '../KeypressListener';
-import {ConnectedFilterControl, PopoverableAction} from './components';
+import {
+  ConnectedFilterControl,
+  ConnectedFilterControlProps,
+} from './components';
 
 import styles from './Filters.scss';
 
@@ -98,7 +101,7 @@ enum Suffix {
   Shortcut = 'Shortcut',
 }
 
-class Filters extends React.Component<ComposedProps, State> {
+class FiltersInner extends React.Component<ComposedProps, State> {
   static contextType = ResourceListContext;
 
   state: State = {
@@ -180,7 +183,7 @@ class Filters extends React.Component<ComposedProps, State> {
                 <TextStyle
                   variation={
                     this.props.disabled || filter.disabled
-                      ? VariationValue.Subdued
+                      ? 'subdued'
                       : undefined
                   }
                 >
@@ -481,8 +484,8 @@ class Filters extends React.Component<ComposedProps, State> {
 
   private transformFilters(
     filters: FilterInterface[],
-  ): PopoverableAction[] | null {
-    const transformedActions: PopoverableAction[] = [];
+  ): ConnectedFilterControlProps['rightPopoverableActions'] | null {
+    const transformedActions: ConnectedFilterControlProps['rightPopoverableActions'] = [];
 
     getShortcutFilters(filters).forEach((filter) => {
       const {key, label, disabled} = filter;
@@ -532,6 +535,4 @@ function getShortcutFilters(filters: FilterInterface[]) {
   return filters.filter((filter) => filter.shortcut === true);
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<FiltersProps>()(Filters);
+export const Filters = withAppProvider<FiltersProps>()(FiltersInner);

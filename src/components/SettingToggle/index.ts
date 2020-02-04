@@ -1,1 +1,1 @@
-export {SettingToggle, SettingToggleProps} from './SettingToggle';
+export * from './SettingToggle';

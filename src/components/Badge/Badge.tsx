@@ -4,9 +4,9 @@ import {useI18n} from '../../utilities/i18n';
 import {VisuallyHidden} from '../VisuallyHidden';
 import styles from './Badge.scss';
 
-export type Status = 'success' | 'info' | 'attention' | 'warning' | 'new';
-export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
-export type Size = 'small' | 'medium';
+type Status = 'success' | 'info' | 'attention' | 'warning' | 'new';
+type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
+type Size = 'small' | 'medium';
 
 export interface BadgeProps {
   /** The content to display inside the badge. */
@@ -22,13 +22,13 @@ export interface BadgeProps {
   size?: Size;
 }
 
-export const PROGRESS_LABELS: {[key in Progress]: Progress} = {
+const PROGRESS_LABELS: {[key in Progress]: Progress} = {
   incomplete: 'incomplete',
   partiallyComplete: 'partiallyComplete',
   complete: 'complete',
 };
 
-export const STATUS_LABELS: {[key in Status]: Status} = {
+const STATUS_LABELS: {[key in Status]: Status} = {
   info: 'info',
   success: 'success',
   warning: 'warning',

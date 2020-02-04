@@ -1,20 +1,13 @@
-export {ThemeContext} from './context';
+export * from './context';
 
-export {useTheme} from './hooks';
+export * from './hooks';
 
-export {Theme, ThemeConfig, CustomPropertiesLike, ColorScheme} from './types';
-
-export {
-  DefaultThemeColors,
-  DefaultColorScheme,
-  roleVariants,
-} from './role-variants';
+export {ThemeConfig} from './types';
 
 export {
   buildCustomProperties,
-  buildColors,
   buildThemeContext,
   toCssCustomPropertySyntax,
 } from './utils';
 
-export {Tokens} from './tokens';
+export * from './tokens';

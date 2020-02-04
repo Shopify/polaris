@@ -1,5 +1,5 @@
-export {MenuAction, MenuActionProps} from './MenuAction';
+export * from './MenuAction';
 
-export {MenuGroup, MenuGroupProps} from './MenuGroup';
+export * from './MenuGroup';
 
-export {RollupActions, RollupActionsProps} from './RollupActions';
+export * from './RollupActions';

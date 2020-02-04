@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "載入中"
+      "spinnerAccessibilityLabel": "載入中",
+      "connectedDisclosureAccessibilityLabel": "相關動作"
     },
     "Common": {
       "checkbox": "核取方塊",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "向 {direction} 排序，依據",
       "navAccessibilityLabel": "向 {direction} 捲動表格一欄",
-      "totalsRowHeading": "總計"
+      "totalsRowHeading": "總計",
+      "totalRowHeading": "總計"
     },
     "DatePicker": {
       "previousMonth": "顯示上個月，{previousMonthName} {showPreviousYear}",

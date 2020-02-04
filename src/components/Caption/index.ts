@@ -1,1 +1,1 @@
-export {Caption, CaptionProps} from './Caption';
+export * from './Caption';

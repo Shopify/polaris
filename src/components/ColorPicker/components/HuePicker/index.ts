@@ -1,1 +1,1 @@
-export {HuePicker, HuePickerProps} from './HuePicker';
+export * from './HuePicker';

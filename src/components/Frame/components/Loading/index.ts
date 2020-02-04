@@ -1,1 +1,1 @@
-export {Loading, LoadingProps} from './Loading';
+export * from './Loading';

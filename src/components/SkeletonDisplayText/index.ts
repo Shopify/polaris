@@ -1,4 +1,1 @@
-export {
-  SkeletonDisplayText,
-  SkeletonDisplayTextProps,
-} from './SkeletonDisplayText';
+export * from './SkeletonDisplayText';

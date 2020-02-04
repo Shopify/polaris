@@ -37,13 +37,3 @@ export const DATA_ATTRIBUTE = {
   overlay,
   layer,
 };
-
-// these match our values in duration.scss
-export enum Duration {
-  Instant = 0,
-  Fast = 100,
-  Base = 200,
-  Slow = 300,
-  Slower = 400,
-  Slowest = 500,
-}

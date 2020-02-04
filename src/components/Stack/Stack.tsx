@@ -5,11 +5,11 @@ import {elementChildren, wrapWithComponent} from '../../utilities/components';
 import {Item} from './components';
 import styles from './Stack.scss';
 
-export type Spacing = 'extraTight' | 'tight' | 'loose' | 'extraLoose' | 'none';
+type Spacing = 'extraTight' | 'tight' | 'loose' | 'extraLoose' | 'none';
 
-export type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
+type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
 
-export type Distribution =
+type Distribution =
   | 'equalSpacing'
   | 'leading'
   | 'trailing'

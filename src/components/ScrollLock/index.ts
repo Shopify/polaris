@@ -1,1 +1,1 @@
-export {ScrollLock} from './ScrollLock';
+export * from './ScrollLock';
