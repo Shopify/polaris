@@ -618,7 +618,6 @@ function ModalWithScrollListenerExample() {
         title="Scrollable content"
         onClose={handleChange}
         onScrolledToBottom={handleScrollBottom}
-        fixedToBottom={true}
       >
         {Array.from({length: 50}, (_, index) => (
           <Modal.Section key={index}>

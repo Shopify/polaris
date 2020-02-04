@@ -56,8 +56,6 @@ export interface ModalProps extends FooterProps {
   large?: boolean;
   /** Limits modal height on large sceens with scrolling (stand-alone app use only) */
   limitHeight?: boolean;
-  /** Fixes the modal to the bottom of the screen */
-  fixedToBottom?: boolean;
   /** Replaces modal content with a spinner while a background action is being performed (stand-alone app use only) */
   loading?: boolean;
   /**
@@ -217,7 +215,6 @@ class ModalInner extends React.Component<CombinedProps, State> {
       loading,
       large,
       limitHeight,
-      fixedToBottom,
       onClose,
       footer,
       primaryAction,
@@ -297,7 +294,6 @@ class ModalInner extends React.Component<CombinedProps, State> {
           onExited={this.handleExited}
           large={large}
           limitHeight={limitHeight}
-          fixedToBottom={fixedToBottom}
         >
           {headerMarkup}
           <div className={styles.BodyWrapper}>{bodyMarkup}</div>

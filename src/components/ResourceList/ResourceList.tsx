@@ -894,7 +894,7 @@ const ResourceListWithAppProvider = withAppProvider<
 >()(ResourceListInner);
 
 // eslint-disable-next-line import/no-default-export
-export default function ResourceList<T>(props: ResourceListProps<T>) {
+export function ResourceList<T>(props: ResourceListProps<T>) {
   return <ResourceListWithAppProvider {...props} />;
 }
 
