@@ -1,1 +1,1 @@
-export {TextStyle, TextStyleProps, VariationValue} from './TextStyle';
+export * from './TextStyle';

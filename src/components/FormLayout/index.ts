@@ -1,1 +1,1 @@
-export {FormLayout, FormLayoutProps} from './FormLayout';
+export * from './FormLayout';

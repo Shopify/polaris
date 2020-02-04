@@ -1,1 +1,1 @@
-export {SingleThumb, SingleThumbProps} from './SingleThumb';
+export * from './SingleThumb';

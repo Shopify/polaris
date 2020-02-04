@@ -9,7 +9,7 @@
   @include visually-hidden;
 }
 // stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
-.RadioButton:not(.globalTheming) {
+.RadioButton:not(.newDesignLanguage) {
   .Input {
     &:focus,
     &:active,
@@ -54,80 +54,111 @@
       border-radius: 50%;
     }
   }
+
+  .Icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: 50% 50%;
+    height: 50%;
+    width: 50%;
+    background: var(--p-icon-on-interactive, color('indigo'));
+    border-radius: 50%;
+    transition: control-icon-transition();
+
+    @media (-ms-high-contrast: active) {
+      background: ms-high-contrast-color('text');
+    }
+  }
 }
 
-.RadioButton.globalTheming {
+.RadioButton.newDesignLanguage {
+  margin: var(--p-choice-margin, 0);
+
+  .Backdrop {
+    // ::before is the selected dot, ::after the focus-ring
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: var(--p-control-border-width) solid var(--p-border-secondary);
+    border-radius: 50%;
+    background-color: var(--p-surface);
+    transition: border-color var(--p-duration-1-0-0) var(--p-ease);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.1);
+      transform-origin: 50% 50%;
+      height: var(--p-icon-size);
+      width: var(--p-icon-size);
+      background-color: var(--p-action-interactive);
+      border-radius: 50%;
+      transition: opacity var(--p-duration-1-0-0) var(--p-ease),
+        transform var(--p-duration-1-0-0) var(--p-ease);
+    }
+
+    @media (-ms-high-contrast: active) {
+      background: ms-high-contrast-color('text');
+    }
+
+    @include focus-ring($border-width: var(--p-control-border-width));
+
+    &::after {
+      border-radius: 50%;
+    }
+
+    &.hover,
+    &:hover {
+      cursor: pointer;
+      border-color: var(--p-border-secondary-hovered);
+    }
+  }
+
   .Input {
-    &:focus {
+    &.keyFocused {
       + .Backdrop {
-        @include focus-ring(
-          $offset: var(--p-checkbox-radio-button-focus-ring-offset),
-          $style: 'focused'
-        );
+        @include focus-ring($style: 'focused');
         &::after {
           border-radius: 50%;
         }
       }
     }
-    &:active:not(:disabled),
+
     &:checked {
       + .Backdrop {
-        @include control-backdrop(active, $global-theming: true);
-      }
+        border-color: var(--p-action-interactive);
 
-      ~ .Icon {
-        transform: translate(-50%, -50%) scale(1);
+        &::before {
+          transition: opacity var(--p-duration-1-5-0) var(--p-ease),
+            transform var(--p-duration-1-5-0) var(--p-ease);
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
       }
     }
 
     &:disabled {
       + .Backdrop {
-        @include control-backdrop(disabled, $global-theming: true);
-      }
-    }
-    &:disabled:checked {
-      + .Backdrop {
-        background: var(--p-border-secondary-disabled);
+        border-color: var(--p-border-secondary-disabled);
 
         &::before {
-          background: var(--p-border-secondary-disabled);
+          background-color: var(--p-border-secondary-disabled);
+        }
+
+        &.hover,
+        &:hover {
+          cursor: default;
         }
       }
     }
   }
-
-  .Backdrop {
-    @include control-backdrop($global-theming: true);
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    @include focus-ring(
-      $offset: var(--p-checkbox-radio-button-focus-ring-offset)
-    );
-    &::before {
-      border-radius: 50%;
-    }
-    &::after {
-      border-radius: 50%;
-    }
-  }
 }
 // stylelint-enable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
-.Icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transform-origin: 50% 50%;
-  height: 50%;
-  width: 50%;
-  background: var(--p-icon-on-interactive, color('indigo'));
-  border-radius: 50%;
-  transition: control-icon-transition();
-
-  @media (-ms-high-contrast: active) {
-    background: ms-high-contrast-color('text');
-  }
-}

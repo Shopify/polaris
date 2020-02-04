@@ -1,8 +1,13 @@
 import React from 'react';
 
 import {Scrollable} from '../Scrollable';
-
+import {classNames} from '../../utilities/css';
+import {useTheme} from '../../utilities/theme';
+import {useFeatures} from '../../utilities/features';
 import {WithinContentContext} from '../../utilities/within-content-context';
+import {Image} from '../Image';
+import {UnstyledLink} from '../UnstyledLink';
+import {getWidth} from '../../utilities/get-width';
 import {NavigationContext} from './context';
 import {Section, Item} from './components';
 import {SectionType} from './types';
@@ -17,33 +22,67 @@ export interface NavigationProps {
   onDismiss?(): void;
 }
 
-export class Navigation extends React.Component<NavigationProps, never> {
-  static Item = Item;
-  static Section = Section;
+export const Navigation: React.FunctionComponent<NavigationProps> & {
+  Item: typeof Item;
+  Section: typeof Section;
+} = function Navigation({
+  children,
+  contextControl,
+  location,
+  onDismiss,
+}: NavigationProps) {
+  const {logo} = useTheme();
+  const {newDesignLanguage = false} = useFeatures();
+  const width = getWidth(logo, 104);
 
-  render() {
-    const {children, contextControl, location, onDismiss} = this.props;
+  const logoMarkup =
+    logo && newDesignLanguage ? (
+      <div className={styles.LogoContainer}>
+        <UnstyledLink
+          url={logo.url || ''}
+          className={styles.LogoLink}
+          style={{width}}
+        >
+          <Image
+            source={logo.topBarSource || ''}
+            alt={logo.accessibilityLabel || ''}
+            className={styles.Logo}
+            style={{width}}
+          />
+        </UnstyledLink>
+      </div>
+    ) : null;
 
-    const contextControlMarkup = contextControl && (
-      <div className={styles.ContextControl}>{contextControl}</div>
-    );
+  const mediaMarkup = contextControl ? (
+    <div className={styles.ContextControl}>{contextControl}</div>
+  ) : (
+    logoMarkup
+  );
 
-    const context = {
-      location,
-      onNavigationDismiss: onDismiss,
-    };
+  const className = classNames(
+    styles.Navigation,
+    !mediaMarkup && newDesignLanguage && styles['Navigation-noMedia'],
+    newDesignLanguage && styles['Navigation-newDesignLanguage'],
+  );
 
-    return (
-      <NavigationContext.Provider value={context}>
-        <WithinContentContext.Provider value>
-          <nav className={styles.Navigation}>
-            {contextControlMarkup}
-            <Scrollable className={styles.PrimaryNavigation}>
-              {children}
-            </Scrollable>
-          </nav>
-        </WithinContentContext.Provider>
-      </NavigationContext.Provider>
-    );
-  }
-}
+  const context = {
+    location,
+    onNavigationDismiss: onDismiss,
+  };
+
+  return (
+    <NavigationContext.Provider value={context}>
+      <WithinContentContext.Provider value>
+        <nav className={className}>
+          {mediaMarkup}
+          <Scrollable className={styles.PrimaryNavigation}>
+            {children}
+          </Scrollable>
+        </nav>
+      </WithinContentContext.Provider>
+    </NavigationContext.Provider>
+  );
+};
+
+Navigation.Item = Item;
+Navigation.Section = Section;

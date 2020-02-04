@@ -4,6 +4,7 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
+import {useFeatures} from '../../utilities/features';
 import {DisableableAction} from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
@@ -21,13 +22,7 @@ import {
 } from '../../utilities/resource-list';
 import styles from './ResourceItem.scss';
 
-export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
-
-export type MediaSize = 'small' | 'medium' | 'large';
-
-export type MediaType = 'avatar' | 'thumbnail';
-
-export interface BaseProps {
+interface BaseProps {
   /** Visually hidden text for screen readers used for item link*/
   accessibilityLabel?: string;
   /** Individual item name used by various text labels */
@@ -56,12 +51,12 @@ export interface BaseProps {
   children?: React.ReactNode;
 }
 
-export interface PropsWithUrl extends BaseProps {
+interface PropsWithUrl extends BaseProps {
   url: string;
   onClick?(id?: string): void;
 }
 
-export interface PropsWithClick extends BaseProps {
+interface PropsWithClick extends BaseProps {
   url?: string;
   onClick(id?: string): void;
 }
@@ -71,6 +66,7 @@ export type ResourceItemProps = PropsWithUrl | PropsWithClick;
 interface PropsFromWrapper {
   context: React.ContextType<typeof ResourceListContext>;
   i18n: ReturnType<typeof useI18n>;
+  features: ReturnType<typeof useFeatures>;
 }
 
 interface State {
@@ -80,7 +76,7 @@ interface State {
   selected: boolean;
 }
 
-export type CombinedProps = PropsFromWrapper & (PropsWithUrl | PropsWithClick);
+type CombinedProps = PropsFromWrapper & (PropsWithUrl | PropsWithClick);
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 const getUniqueOverlayID = createUniqueIDFactory('ResourceListItemOverlay');
@@ -142,6 +138,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       name,
       context: {selectable, selectMode, loading, resourceName},
       i18n,
+      features: {newDesignLanguage},
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -192,6 +189,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
 
     const className = classNames(
       styles.ResourceItem,
+      newDesignLanguage && styles.newDesignLanguage,
       focused && styles.focused,
       selectable && styles.selectable,
       selected && styles.selected,
@@ -441,6 +439,7 @@ export function ResourceItem(props: ResourceItemProps) {
     <BaseResourceItem
       {...props}
       context={useContext(ResourceListContext)}
+      features={useFeatures()}
       i18n={useI18n()}
     />
   );

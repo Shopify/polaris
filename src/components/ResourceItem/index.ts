@@ -1,1 +1,1 @@
-export {ResourceItem, ResourceItemProps} from './ResourceItem';
+export * from './ResourceItem';

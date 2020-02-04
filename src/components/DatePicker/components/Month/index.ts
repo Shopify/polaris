@@ -1,1 +1,1 @@
-export {Month, MonthProps} from './Month';
+export * from './Month';

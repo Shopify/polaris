@@ -2,24 +2,22 @@ import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {ActionListItemDescriptor} from '../../types';
-import {PreferredPosition} from '../PositionedOverlay';
-import {OptionDescriptor} from '../OptionList';
 import {Spinner} from '../Spinner';
 
-import {TextField, ComboBox} from './components';
+import {TextField, ComboBox, ComboBoxProps} from './components';
 import styles from './Autocomplete.scss';
 
 export interface AutocompleteProps {
   /** A unique identifier for the Autocomplete */
   id?: string;
   /** Collection of options to be listed */
-  options: OptionDescriptor[];
+  options: ComboBoxProps['options'];
   /** The selected options */
   selected: string[];
   /** The text field component attached to the list of options */
   textField: React.ReactElement;
   /** The preferred direction to open the popover */
-  preferredPosition?: PreferredPosition;
+  preferredPosition?: ComboBoxProps['preferredPosition'];
   /** Title of the list of options */
   listTitle?: string;
   /** Allow more than one option to be selected */

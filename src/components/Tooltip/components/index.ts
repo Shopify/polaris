@@ -1,1 +1,1 @@
-export {TooltipOverlay, TooltipOverlayProps} from './TooltipOverlay';
+export * from './TooltipOverlay';

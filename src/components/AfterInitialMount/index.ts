@@ -1,1 +1,1 @@
-export {AfterInitialMount} from './AfterInitialMount';
+export * from './AfterInitialMount';

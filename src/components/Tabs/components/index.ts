@@ -1,9 +1,9 @@
-export {Item, ItemProps} from './Item';
+export * from './Item';
 
-export {List, ListProps} from './List';
+export * from './List';
 
-export {Panel, PanelProps} from './Panel';
+export * from './Panel';
 
-export {Tab, TabProps} from './Tab';
+export * from './Tab';
 
-export {TabMeasurer, TabMeasurerProps, TabMeasurements} from './TabMeasurer';
+export * from './TabMeasurer';

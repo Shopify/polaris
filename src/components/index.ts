@@ -36,25 +36,7 @@ export {ChoiceList, ChoiceListProps} from './ChoiceList';
 
 export {Collapsible, CollapsibleProps} from './Collapsible';
 
-export {
-  ColorPicker,
-  ColorPickerProps,
-  RGBColor,
-  HSBColor,
-  RGBAColor,
-  HSBAColor,
-  HSLColor,
-  HSLAColor,
-  HSBLAColor,
-  rgbToHex,
-  rgbToHsb,
-  rgbToHsl,
-  hsbToRgb,
-  hsbToHex,
-  hslToRgb,
-  rgbString,
-  rgbaString,
-} from './ColorPicker';
+export {ColorPicker, ColorPickerProps} from './ColorPicker';
 
 export {Connected, ConnectedProps} from './Connected';
 
@@ -182,7 +164,7 @@ export {SettingToggle, SettingToggleProps} from './SettingToggle';
 
 export {DATA_ATTRIBUTE} from './shared';
 
-export {Sheet} from './Sheet';
+export {Sheet, SheetProps} from './Sheet';
 
 export {SkeletonBodyText, SkeletonBodyTextProps} from './SkeletonBodyText';
 

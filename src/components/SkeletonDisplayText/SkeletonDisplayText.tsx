@@ -2,7 +2,7 @@ import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import styles from './SkeletonDisplayText.scss';
 
-export type Size = 'small' | 'medium' | 'large' | 'extraLarge';
+type Size = 'small' | 'medium' | 'large' | 'extraLarge';
 
 export interface SkeletonDisplayTextProps {
   /**

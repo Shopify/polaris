@@ -18,9 +18,9 @@ export interface PageProps extends HeaderProps {
   narrowWidth?: boolean;
 }
 
-export type ComposedProps = PageProps & WithAppProviderProps;
+type ComposedProps = PageProps & WithAppProviderProps;
 
-class Page extends React.PureComponent<ComposedProps, never> {
+class PageInner extends React.PureComponent<ComposedProps, never> {
   render() {
     const {children, fullWidth, narrowWidth, ...rest} = this.props;
 
@@ -60,6 +60,4 @@ class Page extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<PageProps>()(Page);
+export const Page = withAppProvider<PageProps>()(PageInner);

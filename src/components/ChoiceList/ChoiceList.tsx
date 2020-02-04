@@ -10,7 +10,7 @@ import {Error} from '../../types';
 
 import styles from './ChoiceList.scss';
 
-export interface ChoiceDescriptor {
+interface Choice {
   /** Value of the choice */
   value: string;
   /** Label for the choice */
@@ -24,8 +24,6 @@ export interface ChoiceDescriptor {
   /**  Method to render children with a choice */
   renderChildren?(isSelected: boolean): React.ReactNode | false;
 }
-
-export type Choice = ChoiceDescriptor;
 
 export interface ChoiceListProps {
   /** Label for list of choices */

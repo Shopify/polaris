@@ -2,6 +2,7 @@ import React from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {SearchField} from '../SearchField';
 
 describe('<TextField />', () => {
@@ -126,6 +127,29 @@ describe('<TextField />', () => {
         preventDefault: spy,
       });
       expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('does not render a container with newDesignLanguage className by default', () => {
+      const textField = mountWithApp(
+        <SearchField value="hello polaris" onChange={noop} />,
+      );
+      expect(textField).not.toContainReactComponent('div', {
+        className: 'SearchField SearchField-newDesignLanguage',
+      });
+    });
+
+    it('renders a container with newDesignLanguage className when newDesignLanguage is true', () => {
+      const textField = mountWithApp(
+        <SearchField value="hello polaris" onChange={noop} />,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+      expect(textField).toContainReactComponent('div', {
+        className: 'SearchField SearchField-newDesignLanguage',
+      });
     });
   });
 });

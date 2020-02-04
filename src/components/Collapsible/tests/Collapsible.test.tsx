@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import Collapsible from '../Collapsible';
+import {Collapsible} from '../Collapsible';
 
 describe('<Collapsible />', () => {
   const ariaHiddenSelector = '[aria-hidden=true]';

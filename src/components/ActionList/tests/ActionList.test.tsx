@@ -141,22 +141,22 @@ describe('<ActionList />', () => {
     });
   });
 
-  describe('globalTheming', () => {
-    it('adds a global theming class when global theming is enabled', () => {
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const actionList = mountWithApp(<ActionList />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
       expect(actionList).toContainReactComponent('div', {
-        className: 'ActionList globalTheming',
+        className: 'ActionList newDesignLanguage',
       });
     });
 
-    it('does not add a global theming class when global theming is disabled', () => {
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const actionList = mountWithApp(<ActionList />, {
-        features: {unstableGlobalTheming: false},
+        features: {newDesignLanguage: false},
       });
       expect(actionList).not.toContainReactComponent('div', {
-        className: 'ActionList globalTheming',
+        className: 'ActionList newDesignLanguage',
       });
     });
   });

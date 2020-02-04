@@ -1,8 +1,9 @@
 import React from 'react';
 import {ArrowUpDownMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 import {useUniqueId} from '../../utilities/unique-id';
-import {Labelled, Action, helpTextID} from '../Labelled';
+import {Labelled, LabelledProps, helpTextID} from '../Labelled';
 import {Icon} from '../Icon';
 import {Error} from '../../types';
 
@@ -35,13 +36,13 @@ export interface SelectGroup {
   options: SelectOption[];
 }
 
-export interface BaseProps {
+export interface SelectProps {
   /** List of options or option groups to choose from */
   options?: (SelectOption | SelectGroup)[];
   /** Label for the select */
   label: string;
   /** Adds an action to the label */
-  labelAction?: Action;
+  labelAction?: LabelledProps['action'];
   /** Visually hide the label */
   labelHidden?: boolean;
   /** Show the label to the left of the value, inside the control */
@@ -68,8 +69,6 @@ export interface BaseProps {
   onBlur?(): void;
 }
 
-export interface SelectProps extends BaseProps {}
-
 const PLACEHOLDER_VALUE = '';
 
 export function Select({
@@ -90,13 +89,14 @@ export function Select({
   onBlur,
 }: SelectProps) {
   const id = useUniqueId('Select', idProp);
-
   const labelHidden = labelInline ? true : labelHiddenProp;
+  const {newDesignLanguage = false} = useFeatures();
 
   const className = classNames(
     styles.Select,
     error && styles.error,
     disabled && styles.disabled,
+    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const handleChange = onChange

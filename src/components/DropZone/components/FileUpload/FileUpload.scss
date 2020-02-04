@@ -65,3 +65,42 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
     width: 60px;
   }
 }
+
+.newDesignLanguage {
+  .Button {
+    @include focus-ring;
+
+    &.focused {
+      border-color: transparent;
+      box-shadow: none;
+
+      @include focus-ring($style: 'focused');
+      @include high-contrast-button-outline;
+    }
+  }
+
+  .ActionTitle {
+    color: var(--p-action-interactive);
+    text-decoration: none;
+
+    &:not(.ActionTitle-disabled) {
+      cursor: pointer;
+
+      // stylelint-disable-next-line selector-max-specificity
+      &:hover,
+      &:active {
+        color: color('blue', 'dark');
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .ActionTitle-focused {
+    color: var(--p-action-interactive);
+    text-decoration: underline;
+  }
+
+  .ActionTitle-disabled {
+    color: --p-action-interactive;
+  }
+}

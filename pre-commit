@@ -1,7 +1,7 @@
 #!/usr/bin/ruby --disable-gems
 
 NON_COMMITTABLE_FILE_PATHS = ['playground/Playground.tsx']
-COLOR_DOC_SOURCE_FILE_PATHS = ['src/utilities/theme/role-variants.ts', 'src/utilities/theme/tokens.ts']
+COLOR_DOC_SOURCE_FILE_PATHS = ['src/utilities/theme/tokens.ts']
 
 module PreCommit
   extend self

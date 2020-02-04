@@ -1,5 +1,5 @@
-export {Header, HeaderProps} from './Header';
+export * from './Header';
 
-export {Section, SectionProps} from './Section';
+export * from './Section';
 
-export {Subsection, SubsectionProps} from './Subsection';
+export * from './Subsection';

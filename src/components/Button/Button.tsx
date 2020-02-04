@@ -1,20 +1,22 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState, useCallback} from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
+
 import {classNames, variationName} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {UnstyledLink} from '../UnstyledLink';
 import {Icon} from '../Icon';
-import {IconProps} from '../../types';
+import {IconProps, ConnectedDisclosure} from '../../types';
 import {Spinner} from '../Spinner';
+import {Popover} from '../Popover';
+import {ActionList} from '../ActionList';
+
 import styles from './Button.scss';
 
-export type Size = 'slim' | 'medium' | 'large';
-
-export type TextAlign = 'left' | 'right' | 'center';
-
-export type IconSource = IconProps['source'];
+type Size = 'slim' | 'medium' | 'large';
+type TextAlign = 'left' | 'right' | 'center';
+type IconSource = IconProps['source'];
 
 export interface ButtonProps {
   /** The content to display inside the button */
@@ -69,6 +71,8 @@ export interface ButtonProps {
    * Tells screen reader the element is pressed
    */
   ariaPressed?: boolean;
+  /** Disclosure button connected right of the button. Toggles a popover action list. */
+  connectedDisclosure?: ConnectedDisclosure;
   /** Callback when clicked */
   onClick?(): void;
   /** Callback when button becomes focussed */
@@ -121,8 +125,9 @@ export function Button({
   textAlign,
   fullWidth,
   pressed,
+  connectedDisclosure,
 }: ButtonProps) {
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage = false} = useFeatures();
   const hasGivenDeprecationWarning = useRef(false);
 
   if (ariaPressed && !hasGivenDeprecationWarning.current) {
@@ -139,7 +144,7 @@ export function Button({
 
   const className = classNames(
     styles.Button,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
     primary && styles.primary,
     outline && styles.outline,
     destructive && styles.destructive,
@@ -152,6 +157,7 @@ export function Button({
     textAlign && styles[variationName('textAlign', textAlign)],
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
+    connectedDisclosure && styles.connectedDisclosure,
   );
 
   const disclosureIcon = (
@@ -159,7 +165,7 @@ export function Button({
   );
 
   const disclosureIconMarkup = disclosure ? (
-    <IconWrapper>
+    <span className={styles.Icon}>
       <div
         className={classNames(
           styles.DisclosureIcon,
@@ -168,7 +174,7 @@ export function Button({
       >
         {disclosureIcon}
       </div>
-    </IconWrapper>
+    </span>
   ) : null;
 
   let iconMarkup;
@@ -179,7 +185,7 @@ export function Button({
     ) : (
       icon
     );
-    iconMarkup = <IconWrapper>{iconInner}</IconWrapper>;
+    iconMarkup = <span className={styles.Icon}>{iconInner}</span>;
   }
 
   const childMarkup = children ? (
@@ -216,9 +222,72 @@ export function Button({
     );
 
   const type = submit ? 'submit' : 'button';
+  const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
+
+  const [disclosureActive, setDisclosureActive] = useState(false);
+  const toggleDisclosureActive = useCallback(() => {
+    setDisclosureActive((disclosureActive) => !disclosureActive);
+  }, []);
+
+  let connectedDisclosureMarkup;
+
+  if (connectedDisclosure) {
+    const connectedDisclosureClassName = classNames(
+      styles.Button,
+      primary && styles.primary,
+      outline && styles.outline,
+      size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
+      textAlign && styles[variationName('textAlign', textAlign)],
+      destructive && styles.destructive,
+      connectedDisclosure.disabled && styles.disabled,
+      styles.iconOnly,
+      styles.ConnectedDisclosure,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
+    const defaultLabel = i18n.translate(
+      'Polaris.Button.connectedDisclosureAccessibilityLabel',
+    );
+
+    const {
+      disabled,
+      accessibilityLabel: disclosureLabel = defaultLabel,
+    } = connectedDisclosure;
+
+    const connectedDisclosureActivator = (
+      <button
+        type="button"
+        className={connectedDisclosureClassName}
+        disabled={disabled}
+        aria-label={disclosureLabel}
+        onClick={toggleDisclosureActive}
+        onMouseUp={handleMouseUpByBlurring}
+      >
+        <span className={styles.Icon}>
+          <Icon source={CaretDownMinor} />
+        </span>
+      </button>
+    );
+
+    connectedDisclosureMarkup = (
+      <Popover
+        active={disclosureActive}
+        onClose={toggleDisclosureActive}
+        activator={connectedDisclosureActivator}
+        preferredAlignment="right"
+      >
+        <ActionList
+          items={connectedDisclosure.actions}
+          onActionAnyItem={toggleDisclosureActive}
+        />
+      </Popover>
+    );
+  }
+
+  let buttonMarkup;
 
   if (url) {
-    return isDisabled ? (
+    buttonMarkup = isDisabled ? (
       // Render an `<a>` so toggling disabled/enabled state changes only the
       // `href` attribute instead of replacing the whole element.
       // eslint-disable-next-line jsx-a11y/anchor-is-valid
@@ -243,39 +312,42 @@ export function Button({
         {content}
       </UnstyledLink>
     );
+  } else {
+    buttonMarkup = (
+      <button
+        id={id}
+        type={type}
+        onClick={onClick}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onKeyDown={onKeyDown}
+        onKeyUp={onKeyUp}
+        onKeyPress={onKeyPress}
+        onMouseUp={handleMouseUpByBlurring}
+        onMouseEnter={onMouseEnter}
+        onTouchStart={onTouchStart}
+        className={className}
+        disabled={isDisabled}
+        aria-label={accessibilityLabel}
+        aria-controls={ariaControls}
+        aria-expanded={ariaExpanded}
+        aria-pressed={ariaPressedStatus}
+        role={loading ? 'alert' : undefined}
+        aria-busy={loading ? true : undefined}
+      >
+        {content}
+      </button>
+    );
   }
 
-  const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
-
-  return (
-    <button
-      id={id}
-      type={type}
-      onClick={onClick}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onKeyDown={onKeyDown}
-      onKeyUp={onKeyUp}
-      onKeyPress={onKeyPress}
-      onMouseUp={handleMouseUpByBlurring}
-      onMouseEnter={onMouseEnter}
-      onTouchStart={onTouchStart}
-      className={className}
-      disabled={isDisabled}
-      aria-label={accessibilityLabel}
-      aria-controls={ariaControls}
-      aria-expanded={ariaExpanded}
-      aria-pressed={ariaPressedStatus}
-      role={loading ? 'alert' : undefined}
-      aria-busy={loading ? true : undefined}
-    >
-      {content}
-    </button>
+  return connectedDisclosureMarkup ? (
+    <div className={styles.ConnectedDisclosureWrapper}>
+      {buttonMarkup}
+      {connectedDisclosureMarkup}
+    </div>
+  ) : (
+    buttonMarkup
   );
-}
-
-export function IconWrapper({children}: any) {
-  return <span className={styles.Icon}>{children}</span>;
 }
 
 function isIconSource(x: any): x is IconSource {

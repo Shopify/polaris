@@ -1,7 +1,8 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
-import {Image, UnstyledLink} from 'components';
+import {mountWithApp} from 'test-utilities';
+import {EventListener, Image, UnstyledLink} from 'components';
 import {TopBar} from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
 
@@ -102,6 +103,18 @@ describe('<TopBar />', () => {
       expect(topBar.find(Search)).toHaveLength(1);
     });
 
+    it('renders the search results when `searchResultsVisible` is false', () => {
+      const topBar = mountWithAppProvider(
+        <TopBar
+          searchResults={searchResults}
+          searchResultsVisible={false}
+          searchField={searchField}
+        />,
+      );
+
+      expect(topBar.find(Search)).toHaveLength(1);
+    });
+
     it('renders the search prop', () => {
       const topBar = mountWithAppProvider(
         <TopBar
@@ -124,6 +137,18 @@ describe('<TopBar />', () => {
       );
 
       expect(topBar.find(Search).prop('visible')).toBe(true);
+    });
+
+    it('passes the searchResultsOverlayVisible prop to search', () => {
+      const topBar = mountWithAppProvider(
+        <TopBar
+          searchResults={searchResults}
+          searchField={searchField}
+          searchResultsOverlayVisible
+        />,
+      );
+
+      expect(topBar.find(Search).prop('overlayVisible')).toBe(true);
     });
 
     it('passes the onSearchDismiss prop to search', () => {
@@ -223,6 +248,40 @@ describe('<TopBar />', () => {
     it('doesn’t render the wrapper when not defined and no logo is available', () => {
       const topBar = mountWithAppProvider(<TopBar />);
       expect(findByTestID(topBar, 'ContextControl').exists()).toBe(false);
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('does not render an EventListener by default', () => {
+      const topBar = mountWithApp(<TopBar />);
+
+      expect(topBar).not.toContainReactComponent(EventListener);
+    });
+
+    it('renders an EventListener when newDesignLanguage is enabled', () => {
+      const topBar = mountWithApp(<TopBar />, {
+        features: {newDesignLanguage: true},
+      });
+
+      expect(topBar).toContainReactComponent(EventListener);
+    });
+
+    it('does not render a div with newDesignLanguage className when newDesignLanguage is undefined', () => {
+      const topBar = mountWithApp(<TopBar />);
+
+      expect(topBar).not.toContainReactComponent('div', {
+        className: 'TopBar TopBar-newDesignLanguage',
+      });
+    });
+
+    it('renders a div with newDesignLanguage className when newDesignLanguage is enabled', () => {
+      const topBar = mountWithApp(<TopBar />, {
+        features: {newDesignLanguage: true},
+      });
+
+      expect(topBar).toContainReactComponent('div', {
+        className: 'TopBar TopBar-newDesignLanguage',
+      });
     });
   });
 });

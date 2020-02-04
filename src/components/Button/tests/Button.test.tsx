@@ -1,10 +1,12 @@
 import React from 'react';
-import {PlusMinor} from '@shopify/polaris-icons';
+import {PlusMinor, CaretDownMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
-import {UnstyledLink, Icon, Spinner} from 'components';
-import {Button, IconWrapper} from '../Button';
+import {UnstyledLink, Icon, Spinner, ActionList, Popover} from 'components';
+import {Button} from '../Button';
+
+import en from '../../../../locales/en.json';
 
 describe('<Button />', () => {
   describe('url', () => {
@@ -168,7 +170,7 @@ describe('<Button />', () => {
 
     it('does not render the markup for the icon if none is provided', () => {
       const button = mountWithAppProvider(<Button />);
-      expect(button.find(IconWrapper).exists()).toBe(false);
+      expect(button.find('svg').exists()).toBe(false);
     });
   });
 
@@ -215,6 +217,117 @@ describe('<Button />', () => {
       expect(button.find('button').prop('aria-pressed')).toBeTruthy();
 
       warningSpy.mockRestore();
+    });
+  });
+
+  describe('connectedDisclosure', () => {
+    it('connects a disclosure icon button to the button', () => {
+      const disclosure = {
+        actions: [
+          {
+            content: 'Save and mark as ordered',
+          },
+        ],
+      };
+
+      const button = mountWithAppProvider(
+        <Button connectedDisclosure={disclosure} />,
+      );
+
+      expect(button.find('button')).toHaveLength(2);
+
+      const disclosureButton = button.find('button').at(1);
+
+      expect(disclosureButton.find(Icon).props().source).toBe(CaretDownMinor);
+    });
+
+    it('sets a custom aria-label on the disclosure button when accessibilityLabel is provided', () => {
+      const connectedDisclosureLabel = 'More save actions';
+      const disclosure = {
+        accessibilityLabel: connectedDisclosureLabel,
+        actions: [
+          {
+            content: 'Save and mark as ordered',
+          },
+        ],
+      };
+
+      const button = mountWithAppProvider(
+        <Button connectedDisclosure={disclosure} />,
+      );
+
+      const disclosureButton = button.find('button').at(1);
+      const disclosureButtonProps = disclosureButton.props();
+
+      expect(disclosureButtonProps['aria-label']).toBe(
+        connectedDisclosureLabel,
+      );
+    });
+
+    it('sets a default aria-label on the disclosure button when accessibilityLabel is not provided', () => {
+      const connectedDisclosureLabel =
+        en.Polaris.Button.connectedDisclosureAccessibilityLabel;
+
+      const disclosure = {
+        actions: [
+          {
+            content: 'Save and mark as ordered',
+          },
+        ],
+      };
+
+      const button = mountWithAppProvider(
+        <Button connectedDisclosure={disclosure} />,
+      );
+
+      const disclosureButton = button.find('button').at(1);
+      const disclosureButtonProps = disclosureButton.props();
+
+      expect(disclosureButtonProps['aria-label']).toBe(
+        connectedDisclosureLabel,
+      );
+    });
+
+    it('disables the disclosure button when disabled is true', () => {
+      const disclosure = {
+        disabled: true,
+        actions: [
+          {
+            content: 'Save and mark as ordered',
+          },
+        ],
+      };
+
+      const button = mountWithAppProvider(
+        <Button connectedDisclosure={disclosure} />,
+      );
+
+      const disclosureButton = button.find('button').at(1);
+
+      expect(disclosureButton.props().disabled).toBe(true);
+    });
+
+    it('renders an ActionList with the actions set', () => {
+      const actions = [
+        {
+          content: 'Save and mark as ordered',
+        },
+      ];
+
+      const disclosure = {actions};
+
+      const button = mountWithAppProvider(
+        <Button connectedDisclosure={disclosure} />,
+      );
+
+      const disclosureButton = button.find('button').at(1);
+      disclosureButton.simulate('click');
+
+      const actionList = button.find(Popover).find(ActionList);
+
+      expect(actionList.prop('items')).toStrictEqual(
+        expect.arrayContaining(actions),
+      );
     });
   });
 
@@ -405,22 +518,22 @@ describe('<Button />', () => {
     });
   });
 
-  describe('globalTheming', () => {
-    it('adds a global theming class when global theming is enabled', () => {
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const button = mountWithApp(<Button />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
       expect(button).toContainReactComponent('button', {
-        className: 'Button globalTheming',
+        className: 'Button newDesignLanguage',
       });
     });
 
-    it('does not add a global theming class when global theming is disabled', () => {
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const button = mountWithApp(<Button />, {
-        features: {unstableGlobalTheming: false},
+        features: {newDesignLanguage: false},
       });
       expect(button).not.toContainReactComponent('button', {
-        className: 'Button globalTheming',
+        className: 'Button newDesignLanguage',
       });
     });
   });

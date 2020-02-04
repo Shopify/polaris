@@ -4,7 +4,7 @@ import {CSSTransition} from '@material-ui/react-transition-group';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
 import {Backdrop} from 'components/Backdrop';
-import {Sheet, BOTTOM_CLASS_NAMES, RIGHT_CLASS_NAMES} from '../Sheet';
+import {Sheet} from '../Sheet';
 
 describe('<Sheet />', () => {
   const mockProps = {
@@ -41,9 +41,12 @@ describe('<Sheet />', () => {
       {mediaQuery: {isNavigationCollapsed: true}},
     );
 
-    expect(sheet.find(CSSTransition).props().classNames).toStrictEqual(
-      BOTTOM_CLASS_NAMES,
-    );
+    expect(sheet.find(CSSTransition).props().classNames).toStrictEqual({
+      enter: 'Bottom enterBottom',
+      enterActive: 'Bottom enterBottomActive',
+      exit: 'Bottom exitBottom',
+      exitActive: 'Bottom exitBottomActive',
+    });
   });
 
   it('renders a css transition component with right class names at desktop sizes', () => {
@@ -53,9 +56,12 @@ describe('<Sheet />', () => {
       </Sheet>,
     );
 
-    expect(sheet.find(CSSTransition).props().classNames).toStrictEqual(
-      RIGHT_CLASS_NAMES,
-    );
+    expect(sheet.find(CSSTransition).props().classNames).toStrictEqual({
+      enter: 'Right enterRight',
+      enterActive: 'Right enterRightActive',
+      exit: 'Right exitRight',
+      exitActive: 'Right exitRightActive',
+    });
   });
 });
 

@@ -12,7 +12,7 @@ import {
 import {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 
-import {List, Panel, Tab, TabMeasurer, TabMeasurements} from './components';
+import {List, Panel, Tab, TabMeasurer, TabMeasurerProps} from './components';
 
 import styles from './Tabs.scss';
 
@@ -41,7 +41,7 @@ interface State {
   tabToFocus: number;
 }
 
-class Tabs extends React.PureComponent<CombinedProps, State> {
+class TabsInner extends React.PureComponent<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: TabsProps, prevState: State) {
     const {disclosureWidth, tabWidths, containerWidth} = prevState;
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
@@ -298,7 +298,9 @@ class Tabs extends React.PureComponent<CombinedProps, State> {
     });
   };
 
-  private handleMeasurement = (measurements: TabMeasurements) => {
+  private handleMeasurement: TabMeasurerProps['handleMeasurement'] = (
+    measurements,
+  ) => {
     const {tabs, selected} = this.props;
     const {tabToFocus} = this.state;
     const {
@@ -354,6 +356,4 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   }
 }
 
-// Use named export once withAppProvider is refactored away
-// eslint-disable-next-line import/no-default-export
-export default withAppProvider<TabsProps>()(Tabs);
+export const Tabs = withAppProvider<TabsProps>()(TabsInner);

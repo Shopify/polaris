@@ -22,7 +22,8 @@
       }
     },
     "Button": {
-      "spinnerAccessibilityLabel": "กำลังโหลด"
+      "spinnerAccessibilityLabel": "กำลังโหลด",
+      "connectedDisclosureAccessibilityLabel": "การดำเนินการที่เกี่ยวข้อง"
     },
     "Common": {
       "checkbox": "ช่องทำเครื่องหมาย",
@@ -41,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "จัดเรียง {direction} ตาม",
       "navAccessibilityLabel": "เลื่อนตาราง {direction} หนึ่งคอลัมน์",
-      "totalsRowHeading": "รวม"
+      "totalsRowHeading": "รวม",
+      "totalRowHeading": "ยอดรวม"
     },
     "DatePicker": {
       "previousMonth": "แสดงเดือนก่อนหน้า {previousMonthName} {showPreviousYear}",

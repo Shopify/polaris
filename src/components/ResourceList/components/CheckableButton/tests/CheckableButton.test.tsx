@@ -98,28 +98,28 @@ describe('<CheckableButton />', () => {
     });
   });
 
-  describe('globalTheming', () => {
-    it('adds a global theming class when global theming is enabled and the button is selected', () => {
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled and the button is selected', () => {
       const checkableButton = mountWithApp(
         <CheckableButton {...CheckableButtonProps} />,
         {
-          features: {unstableGlobalTheming: true},
+          features: {newDesignLanguage: true},
         },
       );
       expect(checkableButton).toContainReactComponent('div', {
-        className: 'CheckableButton globalTheming CheckableButton-selected',
+        className: 'CheckableButton newDesignLanguage CheckableButton-selected',
       });
     });
 
-    it('adds a global theming class when global theming is enabled and the button is not selected', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled and the button is not selected', () => {
       const checkableButton = mountWithApp(
         <CheckableButton {...CheckableButtonProps} plain selected={false} />,
         {
-          features: {unstableGlobalTheming: true},
+          features: {newDesignLanguage: true},
         },
       );
       expect(checkableButton).toContainReactComponent('div', {
-        className: 'CheckableButton CheckableButton-plain globalTheming',
+        className: 'CheckableButton CheckableButton-plain newDesignLanguage',
       });
     });
   });

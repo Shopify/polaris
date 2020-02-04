@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, memo} from 'react';
 import {Months, isSameDay} from '@shopify/javascript-utilities/dates';
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
@@ -12,12 +12,13 @@ export interface DayProps {
   inRange?: boolean;
   inHoveringRange?: boolean;
   disabled?: boolean;
+  lastDayOfMonth?: any;
   onClick?(day: Date): void;
   onHover?(day?: Date): void;
   onFocus?(day: Date): void;
 }
 
-export function Day({
+export const Day = memo(function Day({
   day,
   focused,
   onClick,
@@ -27,9 +28,11 @@ export function Day({
   inRange,
   inHoveringRange,
   disabled,
+  lastDayOfMonth,
 }: DayProps) {
   const i18n = useI18n();
   const dayNode = useRef<HTMLButtonElement>(null);
+  const hoverValue = lastDayOfMonth || day;
 
   useEffect(() => {
     if (focused && dayNode.current) {
@@ -38,7 +41,12 @@ export function Day({
   }, [focused]);
 
   if (!day) {
-    return <div className={styles.EmptyDay} onMouseOver={() => onHover(day)} />;
+    return (
+      <div
+        className={styles.EmptyDay}
+        onMouseOver={() => onHover(hoverValue)}
+      />
+    );
   }
   const handleClick = onClick && !disabled ? onClick.bind(null, day) : noop;
   const today = isSameDay(new Date(), day);
@@ -66,7 +74,7 @@ export function Day({
       ref={dayNode}
       tabIndex={tabIndex}
       className={className}
-      onMouseOver={() => onHover(day)}
+      onMouseOver={() => onHover(hoverValue)}
       onClick={handleClick}
       aria-label={ariaLabel}
       aria-selected={selected}
@@ -76,6 +84,6 @@ export function Day({
       {date}
     </button>
   );
-}
+});
 
 function noop() {}

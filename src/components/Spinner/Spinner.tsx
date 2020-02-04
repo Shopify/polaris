@@ -7,9 +7,9 @@ import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount
 import styles from './Spinner.scss';
 import {spinnerLarge, spinnerSmall} from './images';
 
-export type Color = 'white' | 'teal' | 'inkLightest';
+type Color = 'white' | 'teal' | 'inkLightest';
 
-export type Size = 'small' | 'large';
+type Size = 'small' | 'large';
 
 const COLORS_FOR_LARGE_SPINNER = ['teal', 'inkLightest'];
 

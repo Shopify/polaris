@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
-import {Spinner, Color} from '../Spinner';
+import {Spinner} from '../Spinner';
 import {Image} from '../../Image';
 import {VisuallyHidden} from '../../VisuallyHidden';
 
@@ -75,12 +75,10 @@ describe('<Spinner />', () => {
     it('a large spinner with an unavailable color warns in development', () => {
       process.env.NODE_ENV = 'development';
 
-      const color = 'black' as Color;
-
-      mountWithAppProvider(<Spinner size="large" color={color} />);
+      mountWithAppProvider(<Spinner size="large" color="white" />);
 
       expect(warnSpy).toHaveBeenCalledWith(
-        'The color black is not meant to be used on large spinners. The colors available on large spinners are: teal, inkLightest',
+        'The color white is not meant to be used on large spinners. The colors available on large spinners are: teal, inkLightest',
       );
     });
   });

@@ -1,17 +1,17 @@
 import React, {useMemo, useEffect, useContext} from 'react';
+import DefaultThemeColors from '@shopify/polaris-tokens/dist/base.json';
 import {
   ThemeContext,
   ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
-  DefaultThemeColors,
-  DefaultColorScheme,
   Tokens,
-  ColorScheme,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
 
+type OriginalColorScheme = Required<ThemeConfig['colorScheme']>;
 type Inverse = 'inverse';
+type InversableColorScheme = OriginalColorScheme | Inverse;
 
 // TS 3.5+ includes the built-in Omit type which does the same thing. But if we
 // use that then we break consumers on older versions of TS. Consider removing
@@ -19,7 +19,7 @@ type Inverse = 'inverse';
 type Discard<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 interface ThemeProviderThemeConfig extends Discard<ThemeConfig, 'colorScheme'> {
-  colorScheme?: ColorScheme | Inverse;
+  colorScheme?: InversableColorScheme;
 }
 
 interface ThemeProviderProps {
@@ -33,50 +33,44 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage = false} = useFeatures();
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
   const parentColorScheme =
     parentContext && parentContext.colorScheme && parentContext.colorScheme;
   const parentColors =
-    parentContext &&
-    parentContext.UNSTABLE_colors &&
-    parentContext.UNSTABLE_colors;
+    parentContext && parentContext.colors && parentContext.colors;
 
-  const {UNSTABLE_colors, colorScheme, ...rest} = themeConfig;
+  const {colors, colorScheme, ...rest} = themeConfig;
 
   const processedThemeConfig = {
     ...rest,
     ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
-    UNSTABLE_colors: {
+    colors: {
       ...(isParentThemeProvider && DefaultThemeColors),
       ...(shouldInheritParentColors(
         isParentThemeProvider,
         colorScheme,
         parentColorScheme,
       ) && parentColors),
-      ...UNSTABLE_colors,
+      ...colors,
     },
   };
 
   const customProperties = useMemo(
     () =>
-      buildCustomProperties(
-        processedThemeConfig,
-        unstableGlobalTheming,
-        Tokens,
-      ),
-    [processedThemeConfig, unstableGlobalTheming],
+      buildCustomProperties(processedThemeConfig, newDesignLanguage, Tokens),
+    [processedThemeConfig, newDesignLanguage],
   );
 
   const theme = useMemo(
     () =>
       buildThemeContext(
         processedThemeConfig,
-        unstableGlobalTheming ? customProperties : undefined,
+        newDesignLanguage ? customProperties : undefined,
       ),
-    [customProperties, processedThemeConfig, unstableGlobalTheming],
+    [customProperties, processedThemeConfig, newDesignLanguage],
   );
 
   // We want these values to be empty string instead of `undefined` when not set.
@@ -101,17 +95,17 @@ export function ThemeProvider({
 }
 
 function isInverseColorScheme(
-  colorScheme?: ColorScheme | Inverse,
+  colorScheme?: InversableColorScheme,
 ): colorScheme is Inverse {
   return colorScheme === 'inverse';
 }
 
 function getColorScheme(
-  colorScheme: ColorScheme | Inverse | undefined,
-  parentColorScheme: ColorScheme | undefined,
+  colorScheme: InversableColorScheme | undefined,
+  parentColorScheme: OriginalColorScheme | undefined,
 ) {
   if (colorScheme == null) {
-    return parentColorScheme || DefaultColorScheme;
+    return parentColorScheme || 'light';
   } else if (isInverseColorScheme(colorScheme)) {
     return parentColorScheme === 'dark' || parentColorScheme === undefined
       ? 'light'
@@ -123,8 +117,8 @@ function getColorScheme(
 
 function shouldInheritParentColors(
   isParentThemeProvider: boolean,
-  colorScheme: ColorScheme | Inverse | undefined,
-  parentColorScheme: ColorScheme | undefined,
+  colorScheme: InversableColorScheme | undefined,
+  parentColorScheme: OriginalColorScheme | undefined,
 ) {
   if (isParentThemeProvider) {
     return false;

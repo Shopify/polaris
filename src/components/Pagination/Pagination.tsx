@@ -10,6 +10,7 @@ import {Tooltip} from '../Tooltip';
 import {KeypressListener} from '../KeypressListener';
 import {Key} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Pagination.scss';
 
@@ -61,6 +62,7 @@ export function Pagination({
   label,
 }: PaginationProps) {
   const i18n = useI18n();
+  const {newDesignLanguage} = useFeatures();
 
   const node: React.RefObject<HTMLElement> = React.createRef();
 
@@ -71,10 +73,16 @@ export function Pagination({
 
   const previousClassName = classNames(
     styles.Button,
+    newDesignLanguage && styles.newDesignLanguage,
     !label && styles.PreviousButton,
   );
 
-  const nextClassName = classNames(styles.Button, !label && styles.NextButton);
+  const nextClassName = classNames(
+    styles.Button,
+    newDesignLanguage && styles.newDesignLanguage,
+    newDesignLanguage && styles.rightButton,
+    !label && styles.NextButton,
+  );
 
   const previousButton = previousURL ? (
     <UnstyledLink

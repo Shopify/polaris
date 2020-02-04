@@ -1,1 +1,1 @@
-export {ToastManager, ToastManagerProps} from './ToastManager';
+export * from './ToastManager';

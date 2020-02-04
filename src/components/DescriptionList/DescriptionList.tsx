@@ -2,7 +2,7 @@ import React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import styles from './DescriptionList.scss';
 
-export interface Item {
+interface Item {
   /** Title of the item */
   term: React.ReactNode;
   /**  Item content */

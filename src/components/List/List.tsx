@@ -3,7 +3,7 @@ import {classNames, variationName} from '../../utilities/css';
 import {Item} from './components';
 import styles from './List.scss';
 
-export type Type = 'bullet' | 'number';
+type Type = 'bullet' | 'number';
 
 export interface ListProps {
   /**

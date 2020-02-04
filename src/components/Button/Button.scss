@@ -63,34 +63,60 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   }
 }
 
+$stacking-order: (
+  segment: 10,
+  focused: 20,
+);
+
 .Button {
   @include button-base;
 
   &.disabled {
     @include base-button-disabled;
   }
+
+  &.connectedDisclosure {
+    z-index: z-index(segment, $stacking-order);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &::after {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:focus {
+      z-index: z-index(focused, $stacking-order);
+    }
+  }
 }
-// stylelint-disable selector-max-combinators
+
+// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
 [data-buttongroup-segmented] {
-  .Button {
+  .Button,
+  .Button::after {
     border-radius: 0;
   }
-  > :first-child .Button {
+  > :first-child .Button,
+  > :first-child .Button::after {
     border-top-left-radius: var(--p-border-radius-base, border-radius());
     border-bottom-left-radius: var(--p-border-radius-base, border-radius());
   }
-  > :last-child .Button {
+  > :last-child .Button,
+  > :last-child .Button::after {
     border-top-right-radius: var(--p-border-radius-base, border-radius());
     border-bottom-right-radius: var(--p-border-radius-base, border-radius());
   }
 }
 
 [data-buttongroup-connected-top] {
-  > :first-child .Button {
+  > :first-child .Button,
+  > :first-child .Button::after {
     border-top-left-radius: 0;
   }
 
-  > :last-child .Button {
+  > :last-child .Button,
+  > :last-child .Button::after {
     border-top-right-radius: 0;
   }
 }
@@ -100,7 +126,7 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     @include button-full-width;
   }
 }
-// stylelint-enable selector-max-combinators
+// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
 .Content {
   @include text-style-button;
   position: relative;
@@ -164,8 +190,8 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(color('white'));
 
-  &.globalTheming {
-    @include recolor-icon(var(--p-icon-on-branded));
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-button-text));
   }
 
   &.disabled {
@@ -202,6 +228,10 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
       $destructive-pressed-darkest
     );
   }
+
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-button-text));
+  }
 }
 
 .outline {
@@ -214,7 +244,6 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 
 .destructive.outline {
   @include button-outline(color('red'));
-  @include recolor-icon(color('red', 'dark'));
 
   &.pressed {
     @include button-outline(
@@ -237,7 +266,7 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 }
 
 .loading,
-.globalTheming.loading {
+.newDesignLanguage.loading {
   position: relative;
   transition: border-color duration() easing();
 
@@ -379,7 +408,7 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
   }
 
   // stylelint-disable selector-max-class
-  &.globalTheming {
+  &.newDesignLanguage {
     // redeclaring these styles here for specificity
     background: transparent;
     border: 0;
@@ -432,17 +461,17 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
     }
 
     &.destructive {
-      @include recolor-icon(var(--p-critical-link));
-      color: var(--p-critical-link);
+      @include recolor-icon(var(--p-link-critical));
+      color: var(--p-link-critical);
       &:hover {
-        color: var(--p-critical-link-hovered);
+        color: var(--p-link-critical-hovered);
       }
       &:active {
-        color: var(--p-critical-link-pressed);
+        color: var(--p-link-critical-pressed);
       }
 
       &.disabled {
-        color: var(--p-critical-link-disabled);
+        color: var(--p-link-critical-disabled);
       }
     }
 
@@ -622,7 +651,11 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
       }
     }
 
-    &.globalTheming {
+    &:focus {
+      box-shadow: 0 0 0 1px currentColor;
+    }
+
+    &.newDesignLanguage {
       box-shadow: 0 0 0 border-width('base') currentColor;
 
       &:focus {
@@ -643,4 +676,37 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 
 .DisclosureIconFacingUp {
   transform: rotate(-180deg);
+}
+
+.ConnectedDisclosureWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.ConnectedDisclosure {
+  z-index: z-index(segment, $stacking-order);
+  margin-left: -(border-width());
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  // Because the outline border color has a 40% opacity, the left border appears darker than the rest of the borders because they are layered over one another. Reducing the opacity to zero for the connected disclosure when not focused gives us the expected border color.
+  &.outline:not(:focus) {
+    border-left-color: rgba(color('ink', 'lighter'), 0);
+  }
+
+  &:focus,
+  &:active {
+    z-index: z-index(focused, $stacking-order);
+  }
+
+  &.newDesignLanguage {
+    margin-left: rem(1px);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    &::after {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
 }

@@ -7,8 +7,9 @@ import {
   buildThemeContext,
   buildCustomProperties,
 } from '../utils';
-import {RoleColors} from '../types';
-import {DefaultColorScheme} from '..';
+import {ColorScheme, RoleColors} from '../types';
+
+const DefaultColorScheme: ColorScheme = 'light';
 
 describe('setTextColor', () => {
   it('sets a css variable to white if the variant is dark', () => {
@@ -57,10 +58,9 @@ describe('buildCustomProperties', () => {
     '--top-bar-color': 'rgb(33, 43, 54)',
   };
 
-  it('creates legacy custom properties but ignores new custom properties when global theming is disabled', () => {
+  it('creates legacy custom properties but ignores new custom properties when newDesignLanguage is disabled', () => {
     const theme = {
-      colors: {topBar: {background: '#eeeeee'}},
-      UNSTABLE_colors: {surface: '#ffffff'},
+      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
     };
 
@@ -71,10 +71,9 @@ describe('buildCustomProperties', () => {
     );
   });
 
-  it('creates legacy custom properties but ignores new custom properties when global theming is disabled without defaults', () => {
+  it('creates legacy custom properties but ignores new custom properties when newDesignLanguage is disabled without defaults', () => {
     const theme = {
-      colors: {topBar: {background: '#eeeeee'}},
-      UNSTABLE_colors: {surface: '#ffffff'},
+      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
     };
 
@@ -85,10 +84,9 @@ describe('buildCustomProperties', () => {
     );
   });
 
-  it('creates new custom properties when global theming is enabled but ignores legacy colors', () => {
+  it('creates new custom properties when newDesignLanguage is enabled but ignores legacy colors', () => {
     const theme = {
-      colors: {topBar: {background: '#eeeeee'}},
-      UNSTABLE_colors: {surface: '#ffffff'},
+      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
       colorScheme: DefaultColorScheme,
     };
 
@@ -101,14 +99,14 @@ describe('buildCustomProperties', () => {
     expect(
       buildCustomProperties(
         {
-          UNSTABLE_colors: {surface: '#CCCCCC'},
+          colors: {surface: '#CCCCCC'},
           colorScheme: DefaultColorScheme,
         },
         true,
       ),
     ).toStrictEqual(
       expect.objectContaining({
-        '--p-background': 'hsla(0, 0%, 98%, 1)',
+        '--p-background': 'rgba(250, 250, 250, 1)',
       }),
     );
   });
@@ -117,7 +115,7 @@ describe('buildCustomProperties', () => {
     expect(() => {
       buildCustomProperties(
         {
-          UNSTABLE_colors: {blarp: '#CCCCCC'} as Partial<RoleColors>,
+          colors: {blarp: '#CCCCCC'} as Partial<RoleColors>,
           colorScheme: DefaultColorScheme,
         },
         true,
@@ -128,12 +126,12 @@ describe('buildCustomProperties', () => {
   it('uses dark adjustments if the colorScheme is dark', () => {
     expect(
       buildCustomProperties(
-        {UNSTABLE_colors: {surface: '#333333'}, colorScheme: 'dark'},
+        {colors: {surface: '#333333'}, colorScheme: 'dark'},
         true,
       ),
     ).toStrictEqual(
       expect.objectContaining({
-        '--p-background': 'hsla(0, 0%, 5%, 1)',
+        '--p-background': 'rgba(12, 12, 12, 1)',
       }),
     );
   });
@@ -145,8 +143,8 @@ describe('buildThemeContext', () => {
       buildThemeContext({colors: {}, logo: {}}, {foo: 'bar'}),
     ).toStrictEqual({
       logo: {},
-      UNSTABLE_cssCustomProperties: 'foo:bar',
-      UNSTABLE_colors: undefined,
+      cssCustomProperties: 'foo:bar',
+      colors: {},
       colorScheme: undefined,
     });
   });

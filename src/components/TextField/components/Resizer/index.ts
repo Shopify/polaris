@@ -1,1 +1,1 @@
-export {Resizer, ResizerProps} from './Resizer';
+export * from './Resizer';

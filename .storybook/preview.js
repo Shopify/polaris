@@ -1,27 +1,14 @@
 import React from 'react';
-import {configure, addParameters, addDecorator} from '@storybook/react';
+import {addParameters, addDecorator} from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
 import {withContexts} from '@storybook/addon-contexts/react';
-import {create} from '@storybook/theming';
-import tokens from '@shopify/polaris-tokens';
+
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 
 addParameters({
   options: {
-    panelPosition: 'bottom',
-    theme: create({
-      base: 'light',
-      brandTitle: 'Shopify Polaris Storybook',
-      brandUrl: '/',
-      brandImage: null,
-      appBorderRadius: 0,
-      appBg: tokens.colorSkyLight,
-      contentBg: tokens.colorSkyLight,
-      textColor: tokens.colorInk,
-      // TODO more pretty brand colors?
-      // SEE https://github.com/storybooks/storybook/blob/next/docs/src/pages/configurations/theming/index.md
-    }),
+    // showRoots: true,
   },
   percy: {
     skip: true,
@@ -49,7 +36,7 @@ addDecorator(
       ],
     },
     {
-      title: 'Global Theming',
+      title: 'New Design Language',
       components: [AppProvider],
       params: [
         {
@@ -61,7 +48,7 @@ addDecorator(
           name: 'Enabled - Light Mode',
           props: {
             i18n: enTranslations,
-            features: {unstableGlobalTheming: true},
+            features: {newDesignLanguage: true},
             theme: {colorScheme: 'light'},
           },
         },
@@ -69,7 +56,7 @@ addDecorator(
           name: 'Enabled - Dark Mode',
           props: {
             i18n: enTranslations,
-            features: {unstableGlobalTheming: true},
+            features: {newDesignLanguage: true},
             theme: {colorScheme: 'dark'},
           },
         },
@@ -91,13 +78,3 @@ setConsoleOptions((opts) => {
   ];
   return opts;
 });
-
-configure(
-  [
-    // Playground stories
-    require.context('../playground', true, /stories.tsx$/),
-    // Component readme stories
-    require.context('../src/components', true, /\/.+\/README.md$/),
-  ],
-  module,
-);

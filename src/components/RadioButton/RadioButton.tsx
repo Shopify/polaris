@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useFeatures} from '../../utilities/features';
+import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
 import styles from './RadioButton.scss';
 
-export interface BaseProps {
+export interface RadioButtonProps {
   /** Indicates the ID of the element that describes the the radio button*/
   ariaDescribedBy?: string;
   /** Label for the radio button */
@@ -32,8 +33,6 @@ export interface BaseProps {
   onBlur?(): void;
 }
 
-export interface RadioButtonProps extends BaseProps {}
-
 export function RadioButton({
   ariaDescribedBy: ariaDescribedByProp,
   label,
@@ -50,7 +49,24 @@ export function RadioButton({
 }: RadioButtonProps) {
   const id = useUniqueId('RadioButton', idProp);
   const name = nameProp || id;
-  const {unstableGlobalTheming = false} = useFeatures();
+  const inputNode = useRef<HTMLInputElement>(null);
+  const [keyFocused, setKeyFocused] = useState(false);
+  const {newDesignLanguage = false} = useFeatures();
+
+  const {
+    value: mouseOver,
+    setTrue: handleMouseOver,
+    setFalse: handleMouseOut,
+  } = useToggle(false);
+
+  const handleKeyUp = () => {
+    !keyFocused && setKeyFocused(true);
+  };
+
+  const handleBlur = () => {
+    onBlur && onBlur();
+    setKeyFocused(false);
+  };
 
   function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
     onChange && onChange(currentTarget.checked, id);
@@ -67,13 +83,21 @@ export function RadioButton({
     ? describedBy.join(' ')
     : undefined;
 
-  const inputClassName = classNames(styles.Input);
-
-  const backdropClassName = classNames(styles.Backdrop);
+  const inputClassName = classNames(
+    styles.Input,
+    newDesignLanguage && keyFocused && styles.keyFocused,
+  );
 
   const wrapperClassName = classNames(
     styles.RadioButton,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
+  );
+
+  const iconMarkup = !newDesignLanguage && <span className={styles.Icon} />;
+
+  const backdropClassName = classNames(
+    styles.Backdrop,
+    mouseOver && styles.hover,
   );
 
   return (
@@ -83,6 +107,8 @@ export function RadioButton({
       disabled={disabled}
       id={id}
       helpText={helpText}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
     >
       <span className={wrapperClassName}>
         <input
@@ -95,11 +121,13 @@ export function RadioButton({
           className={inputClassName}
           onChange={handleChange}
           onFocus={onFocus}
-          onBlur={onBlur}
+          onKeyUp={handleKeyUp}
+          onBlur={handleBlur}
           aria-describedby={ariaDescribedBy}
+          ref={inputNode}
         />
         <span className={backdropClassName} />
-        <span className={styles.Icon} />
+        {iconMarkup}
       </span>
     </Choice>
   );

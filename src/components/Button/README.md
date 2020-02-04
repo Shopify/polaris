@@ -290,11 +290,11 @@ function PressedButton() {
 }
 ```
 
-### Button with disclosure
+### Plain disclosure button
 
 <!-- example-for: web -->
 
-Use to denote something that can be progressively disclosed to the user on click.
+Use to indicate that more content can be disclosed on click, like text in a collapsible.
 
 ```jsx
 function DisclosureButtion() {
@@ -312,6 +312,24 @@ function DisclosureButtion() {
     </Button>
   );
 }
+```
+
+### Split button
+
+<!-- example-for: web -->
+
+Use when there is only one primary action but other related actions can be taken.
+
+```jsx
+<Button
+  primary
+  connectedDisclosure={{
+    accessibilityLabel: 'Other save actions',
+    actions: [{content: 'Save as draft'}],
+  }}
+>
+  Save
+</Button>
 ```
 
 ### Disabled state

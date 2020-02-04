@@ -1,11 +1,10 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
-import {PreferredPosition} from '../PositionedOverlay';
 import {Portal} from '../Portal';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
-import {TooltipOverlay} from './components';
+import {TooltipOverlay, TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
 
 export interface TooltipProps {
@@ -21,7 +20,7 @@ export interface TooltipProps {
    * The direction the tooltip tries to display
    * @default 'below'
    */
-  preferredPosition?: PreferredPosition;
+  preferredPosition?: TooltipOverlayProps['preferredPosition'];
   /**
    * The element type to wrap the activator in
    * @default 'span'

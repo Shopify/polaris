@@ -1,5 +1,5 @@
-export {AlphaPicker, AlphaPickerProps} from './AlphaPicker';
+export * from './AlphaPicker';
 
-export {HuePicker, HuePickerProps} from './HuePicker';
+export * from './HuePicker';
 
-export {Slidable, SlidableProps, Position} from './Slidable';
+export * from './Slidable';

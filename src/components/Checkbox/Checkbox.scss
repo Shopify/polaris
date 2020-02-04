@@ -1,5 +1,4 @@
 @import '../../styles/common';
-$control-size: rem(16px);
 
 .Checkbox {
   position: relative;
@@ -10,7 +9,7 @@ $control-size: rem(16px);
   @include visually-hidden;
 }
 // stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
-.Checkbox:not(.globalTheming) {
+.Checkbox:not(.newDesignLanguage) {
   .Input {
     &:focus,
     &:active,
@@ -62,14 +61,11 @@ $control-size: rem(16px);
   }
 }
 
-.Checkbox.globalTheming {
+.Checkbox.newDesignLanguage {
   .Input {
-    &:focus {
+    &.keyFocused {
       + .Backdrop {
-        @include focus-ring(
-          $style: 'focused',
-          $offset: var(--p-checkbox-radio-button-focus-ring-offset)
-        );
+        @include focus-ring($style: 'focused');
       }
     }
 
@@ -110,9 +106,7 @@ $control-size: rem(16px);
     display: block;
     width: 100%;
     height: 100%;
-    @include focus-ring(
-      $offset: var(--p-checkbox-radio-button-focus-ring-offset)
-    );
+    @include focus-ring($border-width: var(--p-control-border-width));
   }
 
   .Icon {
@@ -136,7 +130,7 @@ $control-size: rem(16px);
   }
 }
 
-.error:not(.globalTheming) {
+.error:not(.newDesignLanguage) {
   // The basic checked styles have more specificity than this, so need to
   // basically duplicate that selector here, too.
   .Input:checked + .Backdrop,
@@ -152,7 +146,7 @@ $control-size: rem(16px);
   }
 }
 
-.error.globalTheming {
+.error.newDesignLanguage {
   .Backdrop {
     @include control-backdrop(error, $global-theming: true);
   }

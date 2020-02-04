@@ -116,7 +116,7 @@ export interface BaseCallbackAction {
 export interface CallbackAction extends BaseCallbackAction {}
 
 export interface DisableableAction extends Action {
-  /** Should the action be disabled */
+  /** Whether or not the action is disabled */
   disabled?: boolean;
 }
 
@@ -168,6 +168,11 @@ export interface ComplexAction
     IconableAction,
     LoadableAction {}
 
+export interface MenuActionDescriptor extends ComplexAction {
+  /** Zero-indexed numerical position. Overrides the action's order in the menu */
+  index?: number;
+}
+
 export interface MenuGroupDescriptor extends BadgeAction {
   /** Menu group title */
   title: string;
@@ -177,8 +182,21 @@ export interface MenuGroupDescriptor extends BadgeAction {
   icon?: IconableAction['icon'];
   /** Action details */
   details?: React.ReactNode;
+  /** Zero-indexed numerical position. Overrides the group's order in the menu. */
+  index?: number;
   /** Callback when any action takes place */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
+}
+
+export interface ConnectedDisclosure {
+  /** Visually hidden label for the connected disclosure button.
+   * @default 'Related actions'
+   */
+  accessibilityLabel?: string;
+  /** Whether or not the disclosure is disabled */
+  disabled?: boolean;
+  /** List of actions */
+  actions: ActionListItemDescriptor[];
 }
 
 export enum Key {

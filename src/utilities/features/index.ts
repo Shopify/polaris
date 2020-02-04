@@ -1,5 +1,5 @@
-export {FeaturesContext} from './context';
+export * from './context';
 
-export {Features} from './types';
+export * from './types';
 
-export {useFeatures} from './hooks';
+export * from './hooks';

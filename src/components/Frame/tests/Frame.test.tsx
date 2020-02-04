@@ -5,11 +5,11 @@ import {documentHasStyle, mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {
-  TrapFocus,
   ContextualSaveBar as PolarisContextualSavebar,
   Loading as PolarisLoading,
+  TrapFocus,
 } from 'components';
-import Frame from '../Frame';
+import {Frame} from '../Frame';
 import {
   ContextualSaveBar as FrameContextualSavebar,
   Loading as FrameLoading,
@@ -272,6 +272,64 @@ describe('<Frame />', () => {
         </Frame>,
       );
       expect(frame.find(FrameLoading).exists()).toBe(true);
+    });
+  });
+  describe('newDesignLanguage', () => {
+    it('renders a Nav with a newDesignLanguage class when newDesignLanguage is true', () => {
+      const frame = mountWithApp(
+        <Frame navigation={<div />}>
+          <PolarisLoading />
+        </Frame>,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+      expect(frame).toContainReactComponent('div', {
+        className: 'Navigation Navigation-newDesignLanguage',
+      });
+    });
+
+    it('renders a TopBar with a newDesignLanguage class when newDesignLanguage is true', () => {
+      const frame = mountWithApp(
+        <Frame topBar={<div />}>
+          <PolarisLoading />
+        </Frame>,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+      expect(frame).toContainReactComponent('div', {
+        className: 'TopBar TopBar-newDesignLanguage',
+      });
+    });
+
+    it('renders a GlobalRibbon container with a newDesignLanguage class when newDesignLanguage is true', () => {
+      const frame = mountWithApp(
+        <Frame globalRibbon={<div />}>
+          <PolarisLoading />
+        </Frame>,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+      expect(frame).toContainReactComponent('div', {
+        className:
+          'GlobalRibbonContainer GlobalRibbonContainer-newDesignLanguage',
+      });
+    });
+
+    it('renders a content container with a newDesignLanguage class when newDesignLanguage is true', () => {
+      const frame = mountWithApp(
+        <Frame>
+          <PolarisLoading />
+        </Frame>,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+      expect(frame).toContainReactComponent('main', {
+        className: 'Main Main-newDesignLanguage',
+      });
     });
   });
 });

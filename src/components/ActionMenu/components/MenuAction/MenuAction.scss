@@ -15,7 +15,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
   text-decoration: none;
   color: var(--p-text, color('ink', 'light'));
 
-  // Start - Delete below me when rolling out global theming
+  // Start - Delete below me when rolling out newDesignLanguage
   &:hover,
   &:active {
     color: color('ink');
@@ -57,9 +57,10 @@ $difference-between-touch-area-and-backdrop: control-height() -
       @include recolor-icon(color('ink', 'lightest'));
     }
   }
-  // End - Delete after me when rolling out global theming
+  // End - Delete after me when rolling out newDesignLanguage
 
-  &.globalTheming {
+  &.newDesignLanguage {
+    @include focus-ring;
     border-radius: var(--p-border-radius-base);
 
     &:hover {
@@ -72,7 +73,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
 
     // stylelint-disable-next-line selector-max-specificity
     &:focus:not(:active) {
-      @include focus-ring;
+      @include focus-ring($style: 'focused');
     }
 
     &:active {
@@ -94,7 +95,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
       @include recolor-icon(--p-icon);
     }
 
-    // Start - overrides than can be deleted during global theming rollout
+    // Start - overrides than can be deleted during newDesignLanguage rollout
     &:hover,
     &:active {
       color: var(--p-text);
@@ -116,7 +117,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
     &::after {
       height: auto;
     }
-    // End - overrides than can be deleted during global theming rollout
+    // End - overrides than can be deleted during newDesignLanguage rollout
   }
 }
 

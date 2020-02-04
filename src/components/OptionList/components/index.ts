@@ -1,3 +1,3 @@
-export {Option, OptionProps} from './Option';
+export * from './Option';
 
-export {Checkbox, CheckboxProps} from './Checkbox';
+export * from './Checkbox';

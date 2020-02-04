@@ -1,1 +1,1 @@
-export {FooterHelp, FooterHelpProps} from './FooterHelp';
+export * from './FooterHelp';

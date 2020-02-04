@@ -5,6 +5,7 @@ import {
   mountWithAppProvider,
   trigger,
 } from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {
   Avatar,
   ButtonGroup,
@@ -623,6 +624,32 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
       expect(wrapper.find(UnstyledLink).prop('tabIndex')).toBe(0);
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} />,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'ResourceItem newDesignLanguage',
+      });
+    });
+
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} />,
+        {
+          features: {newDesignLanguage: false},
+        },
+      );
+      expect(resourceItem).not.toContainReactComponent('div', {
+        className: 'ResourceItem newDesignLanguage',
+      });
     });
   });
 });

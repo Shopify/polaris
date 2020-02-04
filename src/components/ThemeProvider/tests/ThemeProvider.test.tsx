@@ -4,12 +4,12 @@ import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext, useTheme} from '../../../utilities/theme';
 import {FeaturesContext} from '../../../utilities/features';
 
-const mountWithGlobalTheming = createMount<
-  {globalTheming?: boolean},
+const mountWithNewDesignLanguage = createMount<
+  {newDesignLanguage?: boolean},
   {features: React.ContextType<typeof FeaturesContext>}
 >({
-  context({globalTheming = false}) {
-    return {features: {unstableGlobalTheming: globalTheming}};
+  context({newDesignLanguage = false}) {
+    return {features: {newDesignLanguage}};
   },
   render(element, context) {
     return (
@@ -22,7 +22,7 @@ const mountWithGlobalTheming = createMount<
 
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
-    const themeProvider = mountWithGlobalTheming(
+    const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider theme={{logo: {}}}>
         <p>Hello</p>
       </ThemeProvider>,
@@ -36,7 +36,7 @@ describe('<ThemeProvider />', () => {
       return polarisTheme && polarisTheme.logo ? <div /> : null;
     };
 
-    const themeProvider = mountWithGlobalTheming(
+    const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider
         theme={{
           logo: {
@@ -56,7 +56,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('has a default theme', () => {
-    const themeProvider = mountWithGlobalTheming(
+    const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider theme={{}}>
         <p />
       </ThemeProvider>,
@@ -72,7 +72,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('sets a provided theme', () => {
-    const themeProvider = mountWithGlobalTheming(
+    const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider
         theme={{
           colors: {
@@ -96,7 +96,7 @@ describe('<ThemeProvider />', () => {
   });
 
   it('updates themes', () => {
-    const themeProvider = mountWithGlobalTheming(
+    const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider
         theme={{
           colors: {
@@ -129,42 +129,42 @@ describe('<ThemeProvider />', () => {
     });
   });
 
-  it('sets color system properties in context when global theming is enabled', () => {
-    mountWithGlobalTheming(
+  it('sets color system properties in context when newDesignLanguage is enabled', () => {
+    mountWithNewDesignLanguage(
       <ThemeProvider theme={{}}>
         <Child />
       </ThemeProvider>,
-      {globalTheming: true},
+      {newDesignLanguage: true},
     );
 
     function Child() {
-      const {UNSTABLE_cssCustomProperties} = useTheme();
-      expect(UNSTABLE_cssCustomProperties).toBeTruthy();
+      const {cssCustomProperties} = useTheme();
+      expect(cssCustomProperties).toBeTruthy();
       return null;
     }
   });
 
-  it('does not set color system properties in context when global theming is disabled', () => {
-    mountWithGlobalTheming(
+  it('does not set color system properties in context when newDesignLanguage is disabled', () => {
+    mountWithNewDesignLanguage(
       <ThemeProvider theme={{}}>
         <Child />
       </ThemeProvider>,
-      {globalTheming: false},
+      {newDesignLanguage: false},
     );
 
     function Child() {
-      const {UNSTABLE_cssCustomProperties} = useTheme();
-      expect(UNSTABLE_cssCustomProperties).toBeUndefined();
+      const {cssCustomProperties} = useTheme();
+      expect(cssCustomProperties).toBeUndefined();
       return null;
     }
   });
 
-  it('sets defaults with global theming enabled', () => {
-    const themeProvider = mountWithGlobalTheming(
+  it('sets defaults with newDesignLanguage enabled', () => {
+    const themeProvider = mountWithNewDesignLanguage(
       <ThemeProvider theme={{}}>
         <p>Hello</p>
       </ThemeProvider>,
-      {globalTheming: true},
+      {newDesignLanguage: true},
     );
 
     expect(themeProvider.find('div')).toHaveReactProps({
@@ -186,13 +186,13 @@ describe('<ThemeProvider />', () => {
 
   describe('when nested', () => {
     it('does not set a default theme', () => {
-      const themeProvider = mountWithGlobalTheming(
+      const themeProvider = mountWithNewDesignLanguage(
         <ThemeProvider theme={{}}>
           <ThemeProvider theme={{}}>
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        {globalTheming: true},
+        {newDesignLanguage: true},
       );
 
       expect(themeProvider.findAll('div')[1]).not.toHaveReactProps({
@@ -212,26 +212,26 @@ describe('<ThemeProvider />', () => {
     });
 
     it('adds css custom properties for color roles provided', () => {
-      const themeProvider = mountWithGlobalTheming(
+      const themeProvider = mountWithNewDesignLanguage(
         <ThemeProvider
           theme={{
-            UNSTABLE_colors: {surface: '#FFFFFF'},
+            colors: {surface: '#FFFFFF'},
           }}
         >
           <ThemeProvider
             theme={{
-              UNSTABLE_colors: {surface: '#000000'},
+              colors: {surface: '#000000'},
             }}
           >
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
-        {globalTheming: true},
+        {newDesignLanguage: true},
       );
 
       expect(themeProvider.findAll('div')[1]).toHaveReactProps({
         style: expect.objectContaining({
-          '--p-surface': 'hsla(0, 0%, 100%, 1)',
+          '--p-surface': 'rgba(255, 255, 255, 1)',
         }),
       });
     });
@@ -240,74 +240,68 @@ describe('<ThemeProvider />', () => {
       [
         'Dark parent, undefined child, child has colors',
         {colorScheme: 'dark'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}},
-        'hsla(58, 100%, 7.000000000000001%, 1)',
+        {colors: {critical: '#FFFEEE'}},
+        'rgba(34, 33, 0, 1)',
       ],
       [
         'Light parent, undefined child, child has colors',
         {colorScheme: 'light'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}},
-        'hsla(57, 100%, 89%, 1)',
+        {colors: {critical: '#FFFEEE'}},
+        'rgba(255, 252, 198, 1)',
       ],
       [
         'Dark parent, light child, child has colors',
         {colorScheme: 'dark'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
-        'hsla(57, 100%, 89%, 1)',
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
+        'rgba(255, 252, 198, 1)',
       ],
       [
         'Light parent, dark child, child has colors',
         {colorScheme: 'light'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
-        'hsla(58, 100%, 7.000000000000001%, 1)',
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
+        'rgba(34, 33, 0, 1)',
       ],
       [
         'Dark parent, undefined child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}},
-        'hsla(58, 100%, 7.000000000000001%, 1)',
+        {colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {colors: {critical: '#FFFEEE'}},
+        'rgba(34, 33, 0, 1)',
       ],
       [
         'Light parent, undefined child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}},
-        'hsla(57, 100%, 89%, 1)',
+        {colors: {critical: '#000000'}, colorScheme: 'light'},
+        {colors: {critical: '#FFFEEE'}},
+        'rgba(255, 252, 198, 1)',
       ],
       [
         'Dark parent, light child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
-        'hsla(57, 100%, 89%, 1)',
-      ],
-      [
-        'Dark parent, light child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
-        'hsla(57, 100%, 89%, 1)',
+        {colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'light'},
+        'rgba(255, 252, 198, 1)',
       ],
       [
         'Light parent, dark child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
-        'hsla(58, 100%, 7.000000000000001%, 1)',
+        {colors: {critical: '#000000'}, colorScheme: 'light'},
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'dark'},
+        'rgba(34, 33, 0, 1)',
       ],
       [
         'Dark parent, inverse child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'dark'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
-        'hsla(57, 100%, 89%, 1)',
+        {colors: {critical: '#000000'}, colorScheme: 'dark'},
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
+        'rgba(255, 252, 198, 1)',
       ],
       [
         'Light parent, inverse child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}, colorScheme: 'light'},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
-        'hsla(58, 100%, 7.000000000000001%, 1)',
+        {colors: {critical: '#000000'}, colorScheme: 'light'},
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
+        'rgba(34, 33, 0, 1)',
       ],
       [
         'Undefined parent, inverse child, both have colors',
-        {UNSTABLE_colors: {critical: '#000000'}},
-        {UNSTABLE_colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
-        'hsla(58, 100%, 7.000000000000001%, 1)',
+        {colors: {critical: '#000000'}},
+        {colors: {critical: '#FFFEEE'}, colorScheme: 'inverse'},
+        'rgba(34, 33, 0, 1)',
       ],
       [
         'Dark parent, light child with no colors',
@@ -329,13 +323,13 @@ describe('<ThemeProvider />', () => {
         childTheme: any,
         expectedCritialSurfaceSubdued: any,
       ) => {
-        const themeProvider = mountWithGlobalTheming(
+        const themeProvider = mountWithNewDesignLanguage(
           <ThemeProvider theme={topLevelTheme}>
             <ThemeProvider theme={childTheme}>
               <p>Hello</p>
             </ThemeProvider>
           </ThemeProvider>,
-          {globalTheming: true},
+          {newDesignLanguage: true},
         );
 
         expect(themeProvider.findAll('div')[1]).toHaveReactProps({

@@ -2,15 +2,29 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
 import {useMediaQuery} from '../../../../utilities/media-query';
-import {ComplexAction, MenuGroupDescriptor} from '../../../../types';
+import {
+  MenuGroupDescriptor,
+  MenuActionDescriptor,
+  AppBridgeAction,
+  DestructableAction,
+  DisableableAction,
+  LoadableAction,
+} from '../../../../types';
 import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
-
 import {Pagination, PaginationDescriptor} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 
-import {HeaderPrimaryAction} from '../../types';
 import {Title, TitleProps} from './components';
 import styles from './Header.scss';
+
+interface PrimaryAction
+  extends DestructableAction,
+    DisableableAction,
+    LoadableAction,
+    AppBridgeAction {
+  /** Provides extra visual weight and identifies the primary action in a set of buttons */
+  primary?: boolean;
+}
 
 export interface HeaderProps extends TitleProps {
   /** Visually hide the title */
@@ -18,13 +32,13 @@ export interface HeaderProps extends TitleProps {
   /** Adds a border to the bottom of the page header */
   separator?: boolean;
   /** Primary page-level action */
-  primaryAction?: HeaderPrimaryAction;
+  primaryAction?: PrimaryAction;
   /** Page-level pagination */
   pagination?: PaginationDescriptor;
   /** Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
   /** Collection of secondary page-level actions */
-  secondaryActions?: ComplexAction[];
+  secondaryActions?: MenuActionDescriptor[];
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
 }

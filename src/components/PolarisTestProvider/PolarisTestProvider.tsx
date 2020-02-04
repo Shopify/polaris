@@ -6,7 +6,6 @@ import {
   ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
-  DefaultColorScheme,
 } from '../../utilities/theme';
 import {MediaQueryContext} from '../../utilities/media-query';
 import {
@@ -77,12 +76,9 @@ export function PolarisTestProvider({
 
   const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-  const {unstableGlobalTheming = false} = features;
-  const customProperties = unstableGlobalTheming
-    ? buildCustomProperties(
-        {...theme, colorScheme: DefaultColorScheme},
-        unstableGlobalTheming,
-      )
+  const {newDesignLanguage = false} = features;
+  const customProperties = newDesignLanguage
+    ? buildCustomProperties({...theme, colorScheme: 'light'}, newDesignLanguage)
     : undefined;
   const mergedTheme = buildThemeContext(theme, customProperties);
 
