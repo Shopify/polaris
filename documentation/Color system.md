@@ -1,3 +1,9 @@
+# Color system
+
+The Polaris color system helps designers and developers create user interfaces that look familiar and feel like Shopify, while giving them the flexibility to be creative.
+
+As a part of our visual design language, we use colors purposefully to establish brand presence and to communicate the interactive state, hierarchy, and emphasis of elements on the screen. The color palette is optimized for contrast between different kinds of elements, and helps to ensure an accessible experience.
+
 ## Table of contents
 
 - [surface](#surface)
