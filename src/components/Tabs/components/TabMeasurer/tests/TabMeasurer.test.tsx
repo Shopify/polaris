@@ -19,7 +19,6 @@ describe('<TabMeasurer />', () => {
       return 1;
     });
     setTimeoutSpy = jest.spyOn(window, 'setTimeout');
-    setTimeoutSpy.mockImplementation((cb: () => void, _delay: number) => cb());
   });
 
   afterEach(() => {
