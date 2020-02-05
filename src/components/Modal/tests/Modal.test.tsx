@@ -391,7 +391,7 @@ describe('<Modal>', () => {
       modal.find(Dialog)!.trigger('onExited');
 
       expect(document.activeElement).toBe(modal.find(Button)!.domNode);
-      expect(focusSpy).toHaveBeenCalledTimes(2);
+      expect(focusSpy).toHaveBeenCalledTimes(3);
     });
   });
 });

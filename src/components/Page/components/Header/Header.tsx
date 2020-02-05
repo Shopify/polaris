@@ -5,7 +5,6 @@ import {useMediaQuery} from '../../../../utilities/media-query';
 import {
   MenuGroupDescriptor,
   MenuActionDescriptor,
-  AppBridgeAction,
   DestructableAction,
   DisableableAction,
   LoadableAction,
@@ -20,8 +19,7 @@ import styles from './Header.scss';
 interface PrimaryAction
   extends DestructableAction,
     DisableableAction,
-    LoadableAction,
-    AppBridgeAction {
+    LoadableAction {
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
 }
