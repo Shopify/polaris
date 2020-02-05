@@ -1,4 +1,5 @@
 import React from 'react';
+import {FocusManager} from '../FocusManager';
 import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
 import {
@@ -104,9 +105,11 @@ export function PolarisTestProvider({
                   <LinkContext.Provider value={link}>
                     <ThemeContext.Provider value={mergedTheme}>
                       <MediaQueryContext.Provider value={mergedMediaQuery}>
-                        <FrameContext.Provider value={mergedFrame}>
-                          {children}
-                        </FrameContext.Provider>
+                        <FocusManager>
+                          <FrameContext.Provider value={mergedFrame}>
+                            {children}
+                          </FrameContext.Provider>
+                        </FocusManager>
                       </MediaQueryContext.Provider>
                     </ThemeContext.Provider>
                   </LinkContext.Provider>
