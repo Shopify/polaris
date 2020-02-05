@@ -17,11 +17,16 @@ export default function sewingKitConfig(
     library: true,
     plugins: [
       plugins.jest((config: InitialOptions) => {
-        config.roots = [join(__dirname, 'src'), join(__dirname, 'tests')];
+        config.roots = [
+          join(__dirname, 'src'),
+          join(__dirname, 'tests'),
+          join(__dirname, 'scripts'),
+        ];
 
         // Code coverage
         config.collectCoverageFrom = [
           'src/**/*.{ts,tsx}',
+          'scripts/**/*.{ts,tsx}',
           '!src/test-utilities/**/*.*',
           '!src/**/index.{ts,tsx}',
           '!src/**/*.d.ts',

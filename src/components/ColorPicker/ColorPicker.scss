@@ -84,7 +84,7 @@ $stacking-order: (
   will-change: transform;
   background: transparent;
   border: var(--p-border-radius-base, border-radius()) solid
-    var(--p-white, color('white'));
+    var(--p-surface, color('white'));
   box-shadow: var(--p-override-none, shadow(deep)),
     inset var(--p-override-none, shadow(deep));
   border-radius: 50%;

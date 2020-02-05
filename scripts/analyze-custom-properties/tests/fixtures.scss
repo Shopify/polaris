@@ -1,0 +1,13 @@
+@import '../../some/file';
+
+$some-var: functioncall(20px);
+
+.BaseClass {
+  --declatation-var: 1px;
+  list-style: var(--declatation-var);
+  color: var(--declatation-var, red);
+
+  &.nesting {
+    padding: otherfunctioncall(tight);
+  }
+}
