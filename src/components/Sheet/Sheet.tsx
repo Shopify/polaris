@@ -1,11 +1,11 @@
 import React, {useCallback, useRef} from 'react';
-
+import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from '@material-ui/react-transition-group';
 import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
 
 import {Key} from '../../types';
-import {layer, overlay, Duration} from '../shared';
+import {layer, overlay} from '../shared';
 
 import {Backdrop} from '../Backdrop';
 import {TrapFocus} from '../TrapFocus';
@@ -62,7 +62,7 @@ export function Sheet({
         classNames={
           isNavigationCollapsed ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES
         }
-        timeout={Duration.Slow}
+        timeout={durationSlow}
         in={open}
         mountOnEnter
         unmountOnExit

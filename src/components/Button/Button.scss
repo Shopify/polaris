@@ -80,32 +80,43 @@ $stacking-order: (
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
+    &::after {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
     &:focus {
       z-index: z-index(focused, $stacking-order);
     }
   }
 }
-// stylelint-disable selector-max-combinators
+
+// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
 [data-buttongroup-segmented] {
-  .Button {
+  .Button,
+  .Button::after {
     border-radius: 0;
   }
-  > :first-child .Button {
+  > :first-child .Button,
+  > :first-child .Button::after {
     border-top-left-radius: var(--p-border-radius-base, border-radius());
     border-bottom-left-radius: var(--p-border-radius-base, border-radius());
   }
-  > :last-child .Button {
+  > :last-child .Button,
+  > :last-child .Button::after {
     border-top-right-radius: var(--p-border-radius-base, border-radius());
     border-bottom-right-radius: var(--p-border-radius-base, border-radius());
   }
 }
 
 [data-buttongroup-connected-top] {
-  > :first-child .Button {
+  > :first-child .Button,
+  > :first-child .Button::after {
     border-top-left-radius: 0;
   }
 
-  > :last-child .Button {
+  > :last-child .Button,
+  > :last-child .Button::after {
     border-top-right-radius: 0;
   }
 }
@@ -115,7 +126,7 @@ $stacking-order: (
     @include button-full-width;
   }
 }
-// stylelint-enable selector-max-combinators
+// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
 .Content {
   @include text-style-button;
   position: relative;
@@ -179,7 +190,7 @@ $stacking-order: (
   @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(color('white'));
 
-  &.globalTheming {
+  &.newDesignLanguage {
     @include recolor-icon(var(--p-button-text));
   }
 
@@ -218,7 +229,7 @@ $stacking-order: (
     );
   }
 
-  &.globalTheming {
+  &.newDesignLanguage {
     @include recolor-icon(var(--p-button-text));
   }
 }
@@ -255,7 +266,7 @@ $stacking-order: (
 }
 
 .loading,
-.globalTheming.loading {
+.newDesignLanguage.loading {
   position: relative;
   transition: border-color duration() easing();
 
@@ -397,7 +408,7 @@ $stacking-order: (
   }
 
   // stylelint-disable selector-max-class
-  &.globalTheming {
+  &.newDesignLanguage {
     // redeclaring these styles here for specificity
     background: transparent;
     border: 0;
@@ -640,7 +651,11 @@ $stacking-order: (
       }
     }
 
-    &.globalTheming {
+    &:focus {
+      box-shadow: 0 0 0 1px currentColor;
+    }
+
+    &.newDesignLanguage {
       box-shadow: 0 0 0 border-width('base') currentColor;
 
       &:focus {
@@ -684,9 +699,14 @@ $stacking-order: (
     z-index: z-index(focused, $stacking-order);
   }
 
-  &.globalTheming {
+  &.newDesignLanguage {
     margin-left: rem(1px);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+
+    &::after {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 }

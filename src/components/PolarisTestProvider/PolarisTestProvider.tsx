@@ -7,7 +7,6 @@ import {
   ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
-  DefaultColorScheme,
 } from '../../utilities/theme';
 import {MediaQueryContext} from '../../utilities/media-query';
 import {
@@ -85,12 +84,9 @@ export function PolarisTestProvider({
   // I'm not that worried about it
   const appBridgeApp = appBridge as React.ContextType<typeof AppBridgeContext>;
 
-  const {unstableGlobalTheming = false} = features;
-  const customProperties = unstableGlobalTheming
-    ? buildCustomProperties(
-        {...theme, colorScheme: DefaultColorScheme},
-        unstableGlobalTheming,
-      )
+  const {newDesignLanguage = false} = features;
+  const customProperties = newDesignLanguage
+    ? buildCustomProperties({...theme, colorScheme: 'light'}, newDesignLanguage)
     : undefined;
   const mergedTheme = buildThemeContext(theme, customProperties);
 

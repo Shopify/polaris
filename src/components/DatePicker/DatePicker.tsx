@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useMemo} from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
 import {
   Range,
@@ -186,13 +186,15 @@ export function DatePicker({
     : i18n.translate(`Polaris.DatePicker.months.${monthName(showNextMonth)}`);
   const nextYear = multiMonth ? showNextToNextYear : showNextYear;
 
+  const monthIsSelected = useMemo(() => deriveRange(selected), [selected]);
+
   const secondDatePicker = multiMonth ? (
     <Month
       onFocus={handleFocus}
       focusedDate={focusDate}
       month={showNextMonth}
       year={showNextYear}
-      selected={deriveRange(selected)}
+      selected={monthIsSelected}
       hoverDate={hoverDate}
       onChange={handleDateSelection}
       onHover={handleHover}

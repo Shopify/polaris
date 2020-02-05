@@ -29,9 +29,12 @@ import {
   CheckableButton,
   // eslint-disable-next-line import/no-deprecated
   FilterControl,
+  FilterControlProps,
 } from './components';
 
 import styles from './ResourceList.scss';
+
+export {FilterControlProps};
 
 const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;

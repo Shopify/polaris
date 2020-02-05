@@ -30,17 +30,15 @@ describe('<Avatar />', () => {
   });
 
   describe('customer', () => {
-    it('renders an Image component with a customer Avatar if the customer prop is true', () => {
+    it('renders an inline svg', () => {
       const avatar = mountWithAppProvider(<Avatar customer />);
-      const image = avatar.find(Image);
-      expect(image.prop('source')).toContain('avatar-');
+      expect(avatar.find('svg').exists()).toBe(true);
     });
 
     it('does not render a customer Avatar if a source is provided', () => {
       const src = 'image/path/';
       const avatar = mountWithAppProvider(<Avatar customer source={src} />);
-      const image = avatar.find(Image);
-      expect(image.prop('source')).not.toContain('avatar-');
+      expect(avatar.find('svg').exists()).toBe(false);
     });
   });
 
@@ -115,17 +113,17 @@ describe('<Avatar />', () => {
   });
 
   describe('styleClass', () => {
-    it('renders a sixth style when unstableGlobalTheming is false', () => {
+    it('renders a sixth style when newDesignLanguage is false', () => {
       const avatar = mountWithApp(<Avatar name="e" />, {
-        features: {unstableGlobalTheming: false},
+        features: {newDesignLanguage: false},
       });
 
       expect(avatar.domNodes[0].classList).toContain('styleSix');
     });
 
-    it('does not render a sixth style when unstableGlobalTheming is true', () => {
+    it('does not render a sixth style when newDesignLanguage is true', () => {
       const avatar = mountWithApp(<Avatar name="e" />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
 
       expect(avatar.domNodes[0].classList).not.toContain('styleSix');

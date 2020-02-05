@@ -42,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "sortér {direction} efter",
       "navAccessibilityLabel": "Rul tabel én kolonne mod {direction}",
-      "totalsRowHeading": "I alt"
+      "totalsRowHeading": "I alt",
+      "totalRowHeading": "I alt"
     },
     "DatePicker": {
       "previousMonth": "Vis tidligere måned, {previousMonthName} {showPreviousYear}",

@@ -1,4 +1,4 @@
-import React, {useRef, useImperativeHandle} from 'react';
+import React, {useRef, useImperativeHandle, useState} from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {useFeatures} from '../../utilities/features';
@@ -60,13 +60,14 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     ref,
   ) {
     const inputNode = useRef<HTMLInputElement>(null);
-    const {unstableGlobalTheming = false} = useFeatures();
+    const {newDesignLanguage = false} = useFeatures();
     const id = useUniqueId('Checkbox', idProp);
     const {
       value: mouseOver,
       setTrue: handleMouseOver,
       setFalse: handleMouseOut,
     } = useToggle(false);
+    const [keyFocused, setKeyFocused] = useState(false);
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -75,6 +76,11 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
         }
       },
     }));
+
+    const handleBlur = () => {
+      onBlur && onBlur();
+      setKeyFocused(false);
+    };
 
     const handleInput = () => {
       if (onChange == null || inputNode.current == null || disabled) {
@@ -86,9 +92,10 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
 
     const handleKeyUp = (event: React.KeyboardEvent) => {
       const {keyCode} = event;
-
-      if (keyCode !== Key.Space) return;
-      handleInput();
+      !keyFocused && setKeyFocused(true);
+      if (keyCode === Key.Space) {
+        handleInput();
+      }
     };
 
     const describedBy: string[] = [];
@@ -108,7 +115,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     const wrapperClassName = classNames(
       styles.Checkbox,
       error && styles.error,
-      unstableGlobalTheming && styles.globalTheming,
+      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const backdropClassName = classNames(
@@ -128,6 +135,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     const inputClassName = classNames(
       styles.Input,
       isIndeterminate && styles['Input-indeterminate'],
+      newDesignLanguage && keyFocused && styles.keyFocused,
     );
 
     return (
@@ -155,7 +163,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
             disabled={disabled}
             className={inputClassName}
             onFocus={onFocus}
-            onBlur={onBlur}
+            onBlur={handleBlur}
             onClick={stopPropagation}
             onChange={noop}
             aria-invalid={error != null}

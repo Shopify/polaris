@@ -24,7 +24,7 @@ import {Stack} from '../Stack';
 import {Caption} from '../Caption';
 import {DisplayText} from '../DisplayText';
 import {VisuallyHidden} from '../VisuallyHidden';
-import {Labelled, Action} from '../Labelled';
+import {Labelled, LabelledProps} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
 import {isServer} from '../../utilities/target';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -45,7 +45,7 @@ export interface DropZoneProps {
   /** Label for the file input */
   label?: string;
   /** Adds an action to the label */
-  labelAction?: Action;
+  labelAction?: LabelledProps['action'];
   /** Visually hide the label */
   labelHidden?: boolean;
   /** ID for file input */
@@ -143,7 +143,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   onDragOver,
   onDragLeave,
 }: DropZoneProps) {
-  const {unstableGlobalTheming} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
   const node = useRef<HTMLDivElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
 
@@ -361,7 +361,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     focused && styles.focused,
     (active || dragging) && styles.isDragging,
     disabled && styles.isDisabled,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
     (internalError || error) && styles.hasError,
     styles[variationName('size', size)],
     measuring && styles.measuring,
@@ -430,7 +430,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   ) {
     const overlayClass = classNames(
       styles.Overlay,
-      unstableGlobalTheming && styles.globalTheming,
+      newDesignLanguage && styles.newDesignLanguage,
     );
 
     return (

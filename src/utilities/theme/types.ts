@@ -38,15 +38,16 @@ export type Role = keyof RoleColors;
 
 export type ColorScheme = 'light' | 'dark';
 
+export interface LegacyColors {
+  /** Sets the background color of the top bar component. Complimentary and typography colors are determined programmatically */
+  topBar?: Record<string, string>;
+}
+
 // The value that is passed into the ThemeProvider
 export interface ThemeConfig {
   /** Sets the logo for the top bar and contextual save bar components*/
   logo?: ThemeLogo;
-  colors?: {
-    /** Sets the background color of the top bar component. Complimentary and typography colors are determined programmatically */
-    topBar?: Record<string, string>;
-  };
-  UNSTABLE_colors?: Partial<RoleColors>;
+  colors?: Partial<RoleColors> & LegacyColors;
   colorScheme?: ColorScheme;
 }
 
@@ -56,26 +57,8 @@ export type CustomPropertiesLike = Record<string, string>;
 export interface Theme {
   /** Sets the logo for the top bar and contextual save bar components*/
   logo?: ThemeLogo;
-  UNSTABLE_cssCustomProperties?: string;
-  UNSTABLE_colors?: Partial<RoleColors>;
+  cssCustomProperties?: string;
+  colors?: Partial<RoleColors>;
   colorScheme?: ColorScheme;
   textColor?: string;
 }
-
-export type Lambda = (value: number) => number;
-
-export interface HslaSetting {
-  hue?: number | Lambda;
-  saturation?: number | Lambda;
-  lightness?: number | Lambda;
-  alpha?: number;
-}
-
-export interface Variant {
-  name: string;
-  description?: string;
-  light: HslaSetting;
-  dark: HslaSetting;
-}
-
-export type RoleVariants = Record<Role, Variant[]>;

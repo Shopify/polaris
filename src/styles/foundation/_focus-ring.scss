@@ -12,6 +12,7 @@
     var(--p-border-radius-wide),
     var(--p-border-radius-base)
   );
+  $negative-offset: calc(-1 * #{$offset});
 
   @if $style == 'base' {
     position: relative;
@@ -20,13 +21,13 @@
       content: var(--p-non-null-content, none);
       position: absolute;
       z-index: 1;
-      top: calc(-1 * #{$offset});
-      right: calc(-1 * #{$offset});
-      bottom: calc(-1 * #{$offset});
-      left: calc(-1 * #{$offset});
+      top: $negative-offset;
+      right: $negative-offset;
+      bottom: $negative-offset;
+      left: $negative-offset;
       display: block;
       pointer-events: none;
-      box-shadow: 0 0 0 (-1 * #{$offset}) var(--p-focused);
+      box-shadow: 0 0 0 $negative-offset var(--p-focused);
       transition: box-shadow duration(fast) var(--p-ease);
       border-radius: calc(#{$border-radius} + #{rem(1px)});
     }

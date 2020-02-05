@@ -7,7 +7,7 @@ import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
-import {Labelled, Action, helpTextID, labelID} from '../Labelled';
+import {Labelled, LabelledProps, helpTextID, labelID} from '../Labelled';
 import {Connected} from '../Connected';
 
 import {Error, Key} from '../../types';
@@ -15,7 +15,7 @@ import {Icon} from '../Icon';
 import {Resizer, Spinner} from './components';
 import styles from './TextField.scss';
 
-export type Type =
+type Type =
   | 'text'
   | 'email'
   | 'number'
@@ -46,7 +46,7 @@ interface NonMutuallyExclusiveProps {
   /** Label for the input */
   label: string;
   /** Adds an action to the label */
-  labelAction?: Action;
+  labelAction?: LabelledProps['action'];
   /** Visually hide the label */
   labelHidden?: boolean;
   /** Disable the input */
@@ -179,7 +179,7 @@ export function TextField({
     focused ? input.focus() : input.blur();
   }, [focused]);
 
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage = false} = useFeatures();
 
   // Use a typeof check here as Typescript mostly protects us from non-stringy
   // values but overzealous usage of `any` in consuming apps means people have
@@ -198,7 +198,7 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && styles.focus,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const inputType = type === 'currency' ? 'text' : type;

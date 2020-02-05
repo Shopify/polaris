@@ -71,7 +71,7 @@ ${prodAssetChecklist}
 ---
 
 <details>
-<summary>🚨 What to do if you see “Your tests failed on CircleCI”?</summary>
+<summary>🚨 What to do if you see “Your tests failed on Travis”?</summary>
 
 If tests fail, you may have to troubleshoot the problem locally.
 

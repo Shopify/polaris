@@ -323,8 +323,12 @@ $stacking-order: (
 }
 
 // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors
-.globalTheming.TextField {
+.newDesignLanguage.TextField {
   color: var(--p-text);
+
+  svg {
+    fill: var(--p-icon);
+  }
 
   .hasValue {
     color: var(--p-text);
@@ -414,13 +418,21 @@ $stacking-order: (
       border-top: none;
     }
 
+    // This is a violation of our component model, but necessary
+    // due to Connected.scss overriding these values.
+    // stylelint-disable declaration-no-important
+
     &:first-child {
-      border-top-right-radius: var(--p-text-field-spinner-border-radius);
+      border-top-right-radius: var(
+        --p-text-field-spinner-border-radius
+      ) !important;
       margin-bottom: var(--p-text-field-spinner-offset);
     }
 
     &:last-child {
-      border-bottom-right-radius: var(--p-text-field-spinner-border-radius);
+      border-bottom-right-radius: var(
+        --p-text-field-spinner-border-radius
+      ) !important;
     }
   }
 }

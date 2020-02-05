@@ -41,7 +41,7 @@ export function SearchField({
 }: SearchFieldProps) {
   const i18n = useI18n();
   const [forceActive, setForceActive] = useState(false);
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage = false} = useFeatures();
 
   const input = useRef<HTMLInputElement>(null);
   const searchId = useUniqueId('SearchField');
@@ -103,7 +103,7 @@ export function SearchField({
   const className = classNames(
     styles.SearchField,
     (focused || active || forceActive) && styles.focused,
-    unstableGlobalTheming && styles['SearchField-globalTheming'],
+    newDesignLanguage && styles['SearchField-newDesignLanguage'],
   );
 
   return (

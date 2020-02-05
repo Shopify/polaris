@@ -42,7 +42,8 @@
     "DataTable": {
       "sortAccessibilityLabel": "lajittele {direction}:",
       "navAccessibilityLabel": "Selaa taulukkoa {direction} yksi sarake",
-      "totalsRowHeading": "Yhteenlasketut"
+      "totalsRowHeading": "Yhteenlasketut",
+      "totalRowHeading": "Yhteensä"
     },
     "DatePicker": {
       "previousMonth": "Näytä edellinen kuukausi, {previousMonthName} {showPreviousYear}",

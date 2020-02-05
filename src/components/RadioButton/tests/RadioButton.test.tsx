@@ -75,6 +75,32 @@ describe('<RadioButton />', () => {
     });
   });
 
+  describe('Focus className', () => {
+    it('on keyUp adds a keyFocused class to the input', () => {
+      const radioButton = mountWithApp(<RadioButton label="Radio" />, {
+        features: {newDesignLanguage: true},
+      });
+
+      radioButton.find('input')!.trigger('onKeyUp');
+      expect(radioButton).toContainReactComponent('input', {
+        className: 'Input keyFocused',
+      });
+    });
+
+    it('on change does not add a keyFocused class to the input', () => {
+      const radioButton = mountWithApp(<RadioButton label="Radio" />, {
+        features: {newDesignLanguage: true},
+      });
+      const radioInput = radioButton.find('input');
+      radioInput!.trigger('onChange', {
+        currentTarget: radioInput!.domNode as HTMLInputElement,
+      });
+      expect(radioButton).not.toContainReactComponent('input', {
+        className: 'Input keyFocused',
+      });
+    });
+  });
+
   describe('onBlur()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
@@ -172,6 +198,26 @@ describe('<RadioButton />', () => {
 
       expect(radioButton).toContainReactComponent('span', {
         className: 'Backdrop',
+      });
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+      const radioButton = mountWithApp(<RadioButton label="Radio" />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(radioButton).toContainReactComponent('span', {
+        className: 'RadioButton newDesignLanguage',
+      });
+    });
+
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+      const radioButton = mountWithApp(<RadioButton label="Radio" />, {
+        features: {newDesignLanguage: false},
+      });
+      expect(radioButton).not.toContainReactComponent('span', {
+        className: 'RadioButton newDesignLanguage',
       });
     });
   });

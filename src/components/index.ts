@@ -34,25 +34,7 @@ export {ChoiceList, ChoiceListProps} from './ChoiceList';
 
 export {Collapsible, CollapsibleProps} from './Collapsible';
 
-export {
-  ColorPicker,
-  ColorPickerProps,
-  RGBColor,
-  HSBColor,
-  RGBAColor,
-  HSBAColor,
-  HSLColor,
-  HSLAColor,
-  HSBLAColor,
-  rgbToHex,
-  rgbToHsb,
-  rgbToHsl,
-  hsbToRgb,
-  hsbToHex,
-  hslToRgb,
-  rgbString,
-  rgbaString,
-} from './ColorPicker';
+export {ColorPicker, ColorPickerProps} from './ColorPicker';
 
 export {Connected, ConnectedProps} from './Connected';
 

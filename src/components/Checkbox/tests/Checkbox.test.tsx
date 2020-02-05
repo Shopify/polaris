@@ -287,6 +287,54 @@ describe('<Checkbox />', () => {
       });
     });
   });
+
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+      const checkBox = mountWithApp(<Checkbox label="checkbox" />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(checkBox).toContainReactComponent('span', {
+        className: 'Checkbox newDesignLanguage',
+      });
+    });
+
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+      const checkBox = mountWithApp(<Checkbox label="checkbox" />, {
+        features: {newDesignLanguage: false},
+      });
+      expect(checkBox).not.toContainReactComponent('span', {
+        className: 'Checkbox newDesignLanguage',
+      });
+    });
+  });
+
+  describe('Focus className', () => {
+    it('on keyUp adds a keyFocused class to the input', () => {
+      const checkbox = mountWithApp(<Checkbox label="Checkbox" />, {
+        features: {newDesignLanguage: true},
+      });
+      const event: KeyboardEventInit & {keyCode: Key} = {
+        keyCode: Key.Space,
+      };
+      checkbox.find('input')!.trigger('onKeyUp', event);
+      expect(checkbox).toContainReactComponent('input', {
+        className: 'Input keyFocused',
+      });
+    });
+
+    it('on change does not add a keyFocused class to the input', () => {
+      const checkbox = mountWithApp(<Checkbox label="Checkbox" />, {
+        features: {newDesignLanguage: true},
+      });
+      const checkboxInput = checkbox.find('input');
+      checkboxInput!.trigger('onChange', {
+        currentTarget: checkboxInput!.domNode as HTMLInputElement,
+      });
+      expect(checkbox).not.toContainReactComponent('input', {
+        className: 'Input keyFocused',
+      });
+    });
+  });
 });
 
 function noop() {}

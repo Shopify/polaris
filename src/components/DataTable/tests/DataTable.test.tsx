@@ -1,6 +1,8 @@
 import React from 'react';
+import {timer} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Checkbox} from 'components';
 import {Cell, Navigation} from '../components';
 import {DataTable, DataTableProps} from '../DataTable';
@@ -28,6 +30,34 @@ describe('<DataTable />', () => {
   ];
 
   const defaultProps: DataTableProps = {columnContentTypes, headings, rows};
+
+  beforeEach(() => {
+    timer.mock();
+  });
+
+  afterEach(() => {
+    timer.restore();
+  });
+
+  it('does not throw an error when there are no header cells', () => {
+    function test() {
+      const dataTable = mountWithApp(
+        <DataTable columnContentTypes={[]} headings={[]} rows={[]} />,
+      );
+      const table = dataTable.find('table')!.domNode;
+
+      Object.defineProperty(table, 'scrollWidth', {
+        value: 1,
+        writable: true,
+        configurable: true,
+      });
+
+      window.dispatchEvent(new Event('resize'));
+      timer.runAllTimers();
+    }
+
+    expect(test).not.toThrow();
+  });
 
   describe('columnContentTypes', () => {
     it('sets the provided contentType of Cells in each column', () => {
@@ -121,8 +151,24 @@ describe('<DataTable />', () => {
       expect(totalsRow.text()).toContain(totals.join(''));
     });
 
-    it('sets the content of the first total Cell to the totals row heading', () => {
-      const totals = ['', '', ''];
+    it('renders the singular default totals row label when only one total is provided', () => {
+      const totals = ['', '', '', '', '$155,830.00'];
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(2);
+
+      const firstTotalCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('total') === true)
+        .first();
+
+      expect(firstTotalCell.prop('content')).toBe('Total');
+    });
+
+    it('renders the plural default totals label when more than one total is provided', () => {
+      const totals = ['', '', '', '255', '$155,830.00'];
       const dataTable = mountWithAppProvider(
         <DataTable {...defaultProps} totals={totals} />,
       );
@@ -181,6 +227,50 @@ describe('<DataTable />', () => {
       );
 
       expect(dataTable.find('tfoot')).toHaveLength(1);
+    });
+  });
+
+  describe('totalsName', () => {
+    it('renders the singular custom totals label when only one total provided', () => {
+      const totals = ['', '', '', '', '$155,830.00'];
+      const totalsName = {
+        singular: 'Price',
+        plural: 'Prices',
+      };
+
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} totalsName={totalsName} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(2);
+
+      const firstTotalCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('total') === true)
+        .first();
+
+      expect(firstTotalCell.prop('content')).toBe('Price');
+    });
+
+    it('renders the plural custom totals label when more than one total is provided', () => {
+      const totals = ['', '', '', '255', '$155,830.00'];
+      const totalsName = {
+        singular: 'Price',
+        plural: 'Prices',
+      };
+
+      const dataTable = mountWithAppProvider(
+        <DataTable {...defaultProps} totals={totals} totalsName={totalsName} />,
+      );
+
+      expect(dataTable.find('thead tr')).toHaveLength(2);
+
+      const firstTotalCell = dataTable
+        .find(Cell)
+        .filterWhere((cell) => cell.prop('total') === true)
+        .first();
+
+      expect(firstTotalCell.prop('content')).toBe('Prices');
     });
   });
 

@@ -1,6 +1,6 @@
 # [Polaris React](https://polaris.shopify.com/)
 
-[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) [![CircleCI build status](https://circleci.com/gh/Shopify/polaris-react.svg?style=shield&circle-token=c8498f3af1d113fe3974c8881c4ce32ef09423c2)](https://circleci.com/gh/Shopify/polaris-react) [![codecov](https://codecov.io/gh/Shopify/polaris-react/branch/master/graph/badge.svg?token=IKyeKcpRs1)](https://codecov.io/gh/Shopify/polaris-react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md#your-first-pull-request)
+[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) [![Travis build status](https://travis-ci.com/Shopify/polaris-react.svg?branch=master)](https://travis-ci.com/Shopify/polaris-react) [![codecov](https://codecov.io/gh/Shopify/polaris-react/branch/master/graph/badge.svg?token=IKyeKcpRs1)](https://codecov.io/gh/Shopify/polaris-react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md#your-first-pull-request)
 
 Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
 
@@ -39,7 +39,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@4.12.0/styles.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.13.1/styles.min.css"
 />
 ```
 
@@ -82,7 +82,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@4.12.0/styles.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.13.1/styles.min.css"
 />
 ```
 

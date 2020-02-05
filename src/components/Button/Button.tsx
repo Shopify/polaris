@@ -14,9 +14,9 @@ import {ActionList} from '../ActionList';
 
 import styles from './Button.scss';
 
-export type Size = 'slim' | 'medium' | 'large';
-export type TextAlign = 'left' | 'right' | 'center';
-export type IconSource = IconProps['source'];
+type Size = 'slim' | 'medium' | 'large';
+type TextAlign = 'left' | 'right' | 'center';
+type IconSource = IconProps['source'];
 
 export interface ButtonProps {
   /** The content to display inside the button */
@@ -127,7 +127,7 @@ export function Button({
   pressed,
   connectedDisclosure,
 }: ButtonProps) {
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage = false} = useFeatures();
   const hasGivenDeprecationWarning = useRef(false);
 
   if (ariaPressed && !hasGivenDeprecationWarning.current) {
@@ -144,7 +144,7 @@ export function Button({
 
   const className = classNames(
     styles.Button,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
     primary && styles.primary,
     outline && styles.outline,
     destructive && styles.destructive,
@@ -242,7 +242,7 @@ export function Button({
       connectedDisclosure.disabled && styles.disabled,
       styles.iconOnly,
       styles.ConnectedDisclosure,
-      unstableGlobalTheming && styles.globalTheming,
+      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const defaultLabel = i18n.translate(

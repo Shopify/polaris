@@ -1,4 +1,4 @@
-/* eslint-disable no-console, babel/camelcase, @typescript-eslint/camelcase */
+/* eslint-disable no-console, babel/camelcase */
 const fs = require('fs');
 const Octokit = require('@octokit/rest');
 
