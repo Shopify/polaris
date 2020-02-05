@@ -41,7 +41,7 @@
     "build:known-custom-properties": "node ./scripts/build-analyze-custom-properties",
     "precheck:custom-properties": "yarn run build:known-custom-properties",
     "preoutput-custom-properties": "yarn run build:known-custom-properties",
-    "output-custom-properties": "node ./scripts/analyze-custom-properties/dist/cli.js -o custom-properties-data.json -i build/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
+    "output-custom-properties": "node ./scripts/analyze-custom-properties/dist/cli.js -o build/custom-properties-data.json -i build/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
     "check:custom-properties": "node ./scripts/analyze-custom-properties/dist/cli.js -l error -i build/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
     "clean": "rimraf build esnext styles types docs \"build-intermediate\" \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,min.css,scss}\"",
     "clean:build": "rimraf \"build/!(cache|coverage|storybook)\" esnext styles types docs \"build-intermediate\" \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,min.css,scss}\"",

@@ -1,4 +1,5 @@
-import {roleVariants, toCssCustomPropertySyntax, Tokens} from '../theme';
+import roleVariants from '@shopify/polaris-tokens/formats/utils/color-factory/configs/base';
+import {toCssCustomPropertySyntax, Tokens} from '../theme';
 
 export const nonDesignLangaugeCustomProperties = [
   '--global-ribbon-height',

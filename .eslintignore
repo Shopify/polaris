@@ -12,4 +12,3 @@ node_modules
 /styles
 /src/styles/polaris-tokens
 /scripts/analyze-custom-properties/dist
-custom-properties-data.json
