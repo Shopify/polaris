@@ -5,6 +5,7 @@
 ### Enhancements
 
 - Added high contrast border to `Button` ([#2712](https://github.com/Shopify/polaris-react/pull/2712))
+- Added styled placeholder image to `Avatar` when initials are blank ([#2693](https://github.com/Shopify/polaris-react/pull/2693))
 
 ### Bug fixes
 
