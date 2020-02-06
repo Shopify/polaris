@@ -33,7 +33,7 @@ $large-width: rem(980px);
   left: 0;
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   max-height: calc(100vh - #{$vertical-spacing});
   background: var(--p-surface, color('white'));
   box-shadow: var(--p-modal-shadow, shadow(layer));
@@ -64,7 +64,7 @@ $large-width: rem(980px);
 
   &.sizeLarge {
     @include breakpoint-after(layout-width(page-with-nav)) {
-      max-width: calc(100vw - #{$horizontal-spacing});
+      max-width: calc(100% - #{$horizontal-spacing});
     }
 
     @include breakpoint-after($large-width + $horizontal-spacing) {
