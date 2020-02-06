@@ -33,12 +33,9 @@ export default function App() {
     [],
   );
 
-  const toggleConnection = useCallback(
-    () => {
-      setConnected(!connected);
-    },
-    [connected],
-  );
+  const toggleConnection = useCallback(() => {
+    setConnected(!connected);
+  }, [connected]);
 
   const breadcrumbs = [
     {content: 'Sample apps', url: '/sample-apps'},
