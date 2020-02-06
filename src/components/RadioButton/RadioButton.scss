@@ -99,7 +99,7 @@
       transform-origin: 50% 50%;
       height: var(--p-icon-size);
       width: var(--p-icon-size);
-      background-color: var(--p-action-interactive);
+      background-color: var(--p-interactive);
       border-radius: 50%;
       transition: opacity var(--p-duration-1-0-0) var(--p-ease),
         transform var(--p-duration-1-0-0) var(--p-ease);
@@ -134,7 +134,7 @@
 
     &:checked {
       + .Backdrop {
-        border-color: var(--p-action-interactive);
+        border-color: var(--p-interactive);
 
         &::before {
           transition: opacity var(--p-duration-1-5-0) var(--p-ease),

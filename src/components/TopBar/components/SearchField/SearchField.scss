@@ -128,9 +128,7 @@ $stacking-order: (
 
   &:focus,
   &:hover {
-    @include recolor-icon(
-      var(--p-icon-action-hovered, color('ink', 'lighter'))
-    );
+    @include recolor-icon(var(--p-icon-hovered, color('ink', 'lighter')));
     outline: none;
   }
 
@@ -139,7 +137,7 @@ $stacking-order: (
   }
 
   &:active {
-    @include recolor-icon(var(--p-icon-action-pressed));
+    @include recolor-icon(var(--p-icon-pressed));
 
     &::after {
       border: none;

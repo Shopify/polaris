@@ -172,7 +172,7 @@ describe('<ThemeProvider />', () => {
         '--p-override-zero': expect.any(String),
         '--p-background': expect.any(String),
         '--p-text': expect.any(String),
-        '--p-action-interactive': expect.any(String),
+        '--p-interactive': expect.any(String),
         '--p-action-secondary': expect.any(String),
         '--p-action-primary': expect.any(String),
         '--p-action-critical': expect.any(String),
@@ -199,7 +199,7 @@ describe('<ThemeProvider />', () => {
         style: expect.objectContaining({
           '--p-background': expect.any(String),
           '--p-text': expect.any(String),
-          '--p-action-interactive': expect.any(String),
+          '--p-interactive': expect.any(String),
           '--p-action-secondary': expect.any(String),
           '--p-action-primary': expect.any(String),
           '--p-action-critical': expect.any(String),
