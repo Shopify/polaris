@@ -34,7 +34,7 @@ export function CheckableButton({
   smallScreen,
 }: CheckableButtonProps) {
   const checkBoxRef = useRef<CheckboxHandles>(null);
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const {registerCheckableButtons} = React.useContext(ResourceListContext);
 

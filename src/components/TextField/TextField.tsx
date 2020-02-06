@@ -179,7 +179,7 @@ export function TextField({
     focused ? input.focus() : input.blur();
   }, [focused]);
 
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   // Use a typeof check here as Typescript mostly protects us from non-stringy
   // values but overzealous usage of `any` in consuming apps means people have

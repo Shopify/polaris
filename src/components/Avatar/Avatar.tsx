@@ -45,7 +45,7 @@ export function Avatar({
   accessibilityLabel,
 }: AvatarProps) {
   const i18n = useI18n();
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   function styleClass(name?: string) {
     const finalStyleClasses = newDesignLanguage

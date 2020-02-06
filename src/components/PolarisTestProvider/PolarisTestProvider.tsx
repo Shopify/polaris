@@ -20,7 +20,7 @@ import {
 import {AppBridgeContext, AppBridgeOptions} from '../../utilities/app-bridge';
 import {I18n, I18nContext} from '../../utilities/i18n';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
-import {Features, FeaturesContext} from '../../utilities/features';
+import {FeaturesConfig, FeaturesContext} from '../../utilities/features';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -44,7 +44,7 @@ export interface WithPolarisTestProviderOptions {
   link?: LinkLikeComponent;
   theme?: ThemeConfig;
   mediaQuery?: Partial<MediaQueryContextType>;
-  features?: Features;
+  features?: FeaturesConfig;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
 }
@@ -67,13 +67,11 @@ export function PolarisTestProvider({
   link,
   theme = {},
   mediaQuery,
-  features = {},
+  features: featuresProp = {},
   frame,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
-
   const intl = new I18n(i18n || {});
-
   const scrollLockManager = new ScrollLockManager();
 
   const stickyManager = new StickyManager();
@@ -84,9 +82,13 @@ export function PolarisTestProvider({
   // I'm not that worried about it
   const appBridgeApp = appBridge as React.ContextType<typeof AppBridgeContext>;
 
-  const {newDesignLanguage = false} = features;
-  const customProperties = newDesignLanguage
-    ? buildCustomProperties({...theme, colorScheme: 'light'}, newDesignLanguage)
+  const features = {newDesignLanguage: false, ...featuresProp};
+
+  const customProperties = features.newDesignLanguage
+    ? buildCustomProperties(
+        {...theme, colorScheme: 'light'},
+        features.newDesignLanguage,
+      )
     : undefined;
   const mergedTheme = buildThemeContext(theme, customProperties);
 

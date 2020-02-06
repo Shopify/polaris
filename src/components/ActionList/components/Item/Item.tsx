@@ -30,7 +30,7 @@ export function Item({
   active,
   role,
 }: ItemProps) {
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,

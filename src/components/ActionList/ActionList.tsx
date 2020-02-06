@@ -31,7 +31,7 @@ export function ActionList({
     finalSections = sections;
   }
 
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
   const className = classNames(
     styles.ActionList,
     newDesignLanguage && styles.newDesignLanguage,

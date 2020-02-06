@@ -73,7 +73,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   const i18n = useI18n();
   const {logo} = useTheme();
   const [scrolled, setScrolled] = useState(false);
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const {
     value: focused,

@@ -51,7 +51,7 @@ export function RadioButton({
   const name = nameProp || id;
   const inputNode = useRef<HTMLInputElement>(null);
   const [keyFocused, setKeyFocused] = useState(false);
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const {
     value: mouseOver,

@@ -60,7 +60,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     ref,
   ) {
     const inputNode = useRef<HTMLInputElement>(null);
-    const {newDesignLanguage = false} = useFeatures();
+    const {newDesignLanguage} = useFeatures();
     const id = useUniqueId('Checkbox', idProp);
     const {
       value: mouseOver,
