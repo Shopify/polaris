@@ -44,7 +44,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
   border-radius: $range-thumb-size;
 
   --unselected-range: #{var(--p-override-transparent, color('sky', 'dark'))};
-  --selected-range: #{var(--p-action-interactive, color('indigo'))};
+  --selected-range: #{var(--p-interactive, color('indigo'))};
   --gradient-colors: var(--unselected-range, transparent) 0%,
     var(--unselected-range, transparent)
       var(--Polaris-RangeSlider-progress-lower),

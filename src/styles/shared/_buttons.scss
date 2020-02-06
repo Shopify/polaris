@@ -253,7 +253,7 @@
     &.destructive {
       background: transparent;
       box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
-      color: var(--p-link-critical);
+      color: var(--p-interactive-critical);
       @include recolor-icon(var(--p-icon-critical));
 
       &:hover {
@@ -275,7 +275,7 @@
       &.disabled {
         box-shadow: 0 0 0 border-width('base') var(--p-border-critical-disabled);
         background: transparent;
-        color: var(--p-link-critical-disabled);
+        color: var(--p-interactive-critical-disabled);
       }
     }
   }

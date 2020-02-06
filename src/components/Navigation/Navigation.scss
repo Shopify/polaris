@@ -89,7 +89,10 @@ $disabled-fade: 0.6;
 .Item-selected {
   font-weight: 600;
   color: var(--p-action-primary, color('indigo', 'dark'));
-  background-color: var(--p-primary-selected, $item-selected-background);
+  background-color: var(
+    --p-surface-primary-selected,
+    $item-selected-background
+  );
   @media (-ms-high-contrast: active) {
     background-color: ms-high-contrast-color('selected-text-background');
   }
@@ -105,7 +108,7 @@ $disabled-fade: 0.6;
 
   &:hover {
     background-color: var(
-      --p-primary-selected-hovered,
+      --p-surface-primary-selected-hovered,
       $item-selected-background
     );
     color: var(--p-action-primary-hovered, color('indigo', 'dark'));
@@ -119,7 +122,7 @@ $disabled-fade: 0.6;
   }
   &:active {
     background-color: var(
-      --p-primary-selected-pressed,
+      --p-surface-primary-selected-pressed,
       $item-selected-background
     );
     color: var(--p-action-primary-pressed, color('indigo', 'dark'));

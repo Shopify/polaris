@@ -55,7 +55,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 }
 
 .Input {
-  --progress-lower: #{var(--p-action-interactive, color('indigo'))};
+  --progress-lower: #{var(--p-interactive, color('indigo'))};
   --progress-upper: #{var(--p-override-transparent, color('sky', 'dark'))};
   // create-react-app v2 leverages postcss-preset-env to transpile modern CSS
   // into something kinda supported by older browsers. Unfortunatly its
