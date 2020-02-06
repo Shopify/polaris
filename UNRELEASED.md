@@ -23,6 +23,7 @@
 
 ### Code quality
 
+- Update example dependencies ([#2722](https://github.com/Shopify/polaris-react/pull/2722))
 - Fixed `Tabs` tests that were preventing `React` updates ([#2702](https://github.com/Shopify/polaris-react/pull/2702))
 - Move to Travis for CI ([#2652](https://github.com/Shopify/polaris-react/pull/2652))
 
