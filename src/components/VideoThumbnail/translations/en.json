@@ -1,0 +1,18 @@
+{
+  "VideoThumbnail": {
+    "playButtonDefault": "Play video",
+    "playButtonWithTime": "Play video of length ",
+    "hoursLabel": {
+      "one": "{count} hour",
+      "other": "{count} hours"
+    },
+    "minutesLabel": {
+      "one": "{count} minute",
+      "other": "{count} minutes"
+    },
+    "secondsLabel": {
+      "one": "{count} second",
+      "other": "{count} seconds"
+    }
+  }
+}

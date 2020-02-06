@@ -1,0 +1,54 @@
+$breakpoint: 804px;
+
+.Container {
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+
+  @media screen and (max-width: $breakpoint) {
+    flex-flow: column nowrap;
+  }
+}
+
+.PortraitContainer {
+  flex-flow: column nowrap;
+}
+
+.InfoContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.PortraitInfoContainer {
+  position: relative;
+}
+
+.VideoContainer {
+  flex-basis: 40%;
+}
+
+.Popover {
+  position: absolute;
+  z-index: z-index(overlay);
+  top: 0;
+  right: 0;
+}
+
+.InfoWrapper {
+  position: relative;
+  flex-basis: 60%;
+}
+
+.ContentIndented {
+  padding-right: spacing();
+}
+
+.Description {
+  padding-top: spacing(tight);
+}
+
+.PrimaryAction {
+  padding-top: spacing();
+}
