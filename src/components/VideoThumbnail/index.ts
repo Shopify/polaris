@@ -1,1 +1,1 @@
-export { VideoThumbnail } from "./VideoThumbnail";
+export {VideoThumbnail} from './VideoThumbnail';

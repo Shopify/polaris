@@ -189,7 +189,9 @@ import {
   TrapFocus,
   Truncate,
   UnstyledLink,
-  VisuallyHidden
+  VisuallyHidden,
+  VideoCard,
+  VideoThumbnail
 } from '@shopify/polaris';
 import {
   PlusMinor,

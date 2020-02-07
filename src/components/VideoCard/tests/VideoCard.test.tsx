@@ -1,27 +1,28 @@
 import React from 'react';
-import {Heading, Popover, Button, ActionList} from '@shopify/polaris';
-import faker from 'faker';
-import {mountWithAppContext} from 'tests/modern';
+import {Heading, Popover, Button, ActionList} from 'components';
+// eslint-disable-next-line no-restricted-imports
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
-import VideoCard from '../VideoCard';
+import {VideoCard} from '../VideoCard';
 
 function createVideoCard() {
   return {
-    title: faker.random.words(),
+    title: '',
     primaryActions: createPrimaryAction(),
-    description: faker.random.words(),
-    popoverActions: createPopoverActions(faker.random.number(3)),
+    description: '',
+    popoverActions: createPopoverActions(2),
   };
 }
 
 function createPrimaryAction() {
   return [
     {
-      content: faker.random.words(),
+      content: '',
       onAction: () => {},
-      url: faker.internet.url(),
+      url: '',
       external: true,
-      accessibilityLabel: faker.random.words(),
+      accessibilityLabel: '',
     },
   ];
 }
@@ -32,25 +33,25 @@ function createPopoverActions(num: number) {
 
 function createPopoverAction() {
   return {
-    content: faker.random.words(),
+    content: '',
     onAction: () => {},
   };
 }
 
 describe('<VideoCard>', () => {
-  it('renders title and checks contents', async () => {
+  it('renders title and checks contents', () => {
     const titleText = 'Getting Started';
-    const videoCard = await mountWithAppContext(
+    const videoCard = mountWithApp(
       <VideoCard {...createVideoCard()} title={titleText} />,
     );
     expect(videoCard.find(Heading)).not.toBeNull();
     expect(videoCard.find(Heading)!).toContainReactText(titleText);
   });
 
-  it('renders description and checks contents', async () => {
+  it('renders description and checks contents', () => {
     const descriptionLabel =
       'Discover how Shopify can power up your entrepreneurial journey.';
-    const videoCard = await mountWithAppContext(
+    const videoCard = mountWithApp(
       <VideoCard {...createVideoCard()} description={descriptionLabel} />,
     );
     expect(videoCard.find('p', {className: 'Description'})).not.toBeNull();
@@ -59,11 +60,11 @@ describe('<VideoCard>', () => {
     );
   });
 
-  it('renders CTA and checks contents', async () => {
+  it('renders CTA and checks contents', () => {
     const mainCTALabel = 'Learn about getting started and more';
-    const mainCTAUrl = faker.internet.url();
+    const mainCTAUrl = '';
     const accesssibilityLabel = 'button1';
-    const videoCard = await mountWithAppContext(
+    const videoCard = mountWithApp(
       <VideoCard
         {...createVideoCard()}
         primaryActions={[
@@ -89,19 +90,19 @@ describe('<VideoCard>', () => {
     ).toContainReactText(mainCTALabel);
   });
 
-  it('renders CTA and plain button and checks contents', async () => {
+  it('renders CTA and plain button and checks contents', () => {
     const secondaryCTALabel = 'Additional Info';
-    const secondaryCTAUrl = faker.internet.url();
+    const secondaryCTAUrl = '';
     const accesssibilityLabel = 'button2';
-    const videoCard = await mountWithAppContext(
+    const videoCard = mountWithApp(
       <VideoCard
         {...createVideoCard()}
         primaryActions={[
           {
-            content: faker.random.words(),
-            url: faker.internet.url(),
+            content: '',
+            url: '',
             external: true,
-            accessibilityLabel: faker.random.words(),
+            accessibilityLabel: '',
           },
           {
             content: secondaryCTALabel,
@@ -125,9 +126,9 @@ describe('<VideoCard>', () => {
     ).toContainReactText(secondaryCTALabel);
   });
 
-  it('calls the onAction callback when the CTA is clicked', async () => {
+  it('calls the onAction callback when the CTA is clicked', () => {
     const spy = jest.fn();
-    const videoCard = await mountWithAppContext(
+    const videoCard = mountWithAppProvider(
       <VideoCard
         {...createVideoCard()}
         primaryActions={[
@@ -137,18 +138,21 @@ describe('<VideoCard>', () => {
         ]}
       />,
     );
-    videoCard.findAll(Button)[1].trigger('onClick');
+    videoCard
+      .find('button')
+      .last()
+      .simulate('click');
     expect(spy).toHaveBeenCalled();
   });
 
-  it('calls the onAction callback when the plain button is clicked', async () => {
+  it('calls the onAction callback when the plain button is clicked', () => {
     const spy = jest.fn();
-    const videoCard = await mountWithAppContext(
+    const videoCard = mountWithAppProvider(
       <VideoCard
         {...createVideoCard()}
         primaryActions={[
           {
-            content: faker.random.words(),
+            content: '',
           },
           {
             onAction: spy,
@@ -156,51 +160,67 @@ describe('<VideoCard>', () => {
         ]}
       />,
     );
-    videoCard.findAll(Button)[2].trigger('onClick');
+
+    videoCard
+      .find('button')
+      .last()
+      .simulate('click');
     expect(spy).toHaveBeenCalled();
   });
 
-  it('toggles the popover menu when clicked and calls the first action item', async () => {
-    const spy = jest.fn();
-    const videoCard = await mountWithAppContext(
+  it('toggles the popover menu when clicked and calls the first action item', () => {
+    const spyDismiss = jest.fn();
+    const spyFeedback = jest.fn();
+    const videoCard = mountWithAppProvider(
       <VideoCard
         {...createVideoCard()}
         popoverActions={[
           {
             content: 'Dismiss',
-            onAction: spy,
+            onAction: spyDismiss,
+          },
+          {
+            content: 'Feedback',
+            onAction: spyFeedback,
           },
         ]}
       />,
     );
+    trigger(videoCard.find(Popover)!.find(Button)!, 'onClick');
+    expect(videoCard.find(Popover)!.prop('active')).toBe(true);
 
-    videoCard
-      .find(Popover)!
-      .find(Button)!
-      .trigger('onClick');
-    expect(videoCard.find(Popover)!.prop('active')).toBeTrue();
-
-    videoCard
-      .find(Popover)!
-      .find(Button)!
-      .trigger('onClick');
-    expect(videoCard.find(Popover)!.prop('active')).toBeFalse();
+    trigger(videoCard.find(Popover)!.find(Button)!, 'onClick');
+    expect(videoCard.find(Popover)!.prop('active')).toBe(false);
 
     const actionList = videoCard.find(ActionList)!;
-    expect(actionList.prop('items')).toHaveLength(1);
-    actionList.triggerKeypath('items[0].onAction');
-    expect(spy).toHaveBeenCalled();
+    expect(actionList.prop('items')).toHaveLength(2);
+
+    actionList
+      .find('button')
+      .first()
+      .simulate('click');
+    expect(spyDismiss).toHaveBeenCalled();
+    actionList
+      .find('button')
+      .last()
+      .simulate('click');
+    expect(spyFeedback).toHaveBeenCalled();
   });
 
-  it('renders in landscape mode by default', async () => {
-    const videoCard = await mountWithAppContext(
-      <VideoCard {...createVideoCard()} />,
+  it('does not render popover menu if secondary actions are empty', () => {
+    const videoCard = mountWithApp(
+      <VideoCard {...createVideoCard()} popoverActions={[]} />,
     );
+    expect(videoCard).not.toContainReactComponent(Popover);
+  });
+
+  it('renders in landscape mode by default', () => {
+    const videoCard = mountWithApp(<VideoCard {...createVideoCard()} />);
     expect(videoCard.find('div', {className: 'PortraitContainer'})).toBeNull();
   });
 
-  it('renders in portrait mode if specified', async () => {
-    const videoCard = await mountWithAppContext(
+  it('renders in portrait mode if specified', () => {
+    const videoCard = mountWithApp(
       <VideoCard {...createVideoCard()} portrait />,
     );
     expect(

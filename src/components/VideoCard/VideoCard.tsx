@@ -1,6 +1,7 @@
 import React, {useState, useCallback} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
 import {Action, ActionListItemDescriptor} from '../../types';
 
 import {Card} from '../Card';
@@ -26,9 +27,10 @@ export function VideoCard({
   children,
   primaryActions,
   description,
-  popoverActions,
+  popoverActions = [],
   portrait = false,
 }: VideoCardProps) {
+  const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
 
   const togglePopoverActive = useCallback(
@@ -42,23 +44,25 @@ export function VideoCard({
       onClick={togglePopoverActive}
       size="slim"
       plain
+      accessibilityLabel={i18n.translate('Polaris.VideoCard.popoverButton')}
     />
   );
 
-  const popoverActionsMarkup = popoverActions ? (
-    <div className={styles.Popover}>
-      <Popover
-        active={popoverActive}
-        activator={popoverActivator}
-        onClose={togglePopoverActive}
-        preferredAlignment="left"
-        preferredPosition="below"
-        preventAutofocus
-      >
-        <ActionList items={popoverActions} />
-      </Popover>
-    </div>
-  ) : null;
+  const popoverActionsMarkup =
+    popoverActions.length > 0 ? (
+      <div className={styles.Popover}>
+        <Popover
+          active={popoverActive}
+          activator={popoverActivator}
+          onClose={togglePopoverActive}
+          preferredAlignment="left"
+          preferredPosition="below"
+          preventAutofocus
+        >
+          <ActionList items={popoverActions} />
+        </Popover>
+      </div>
+    ) : null;
 
   const primaryActionsMarkup = primaryActions.map(
     (
@@ -99,45 +103,52 @@ export function VideoCard({
           styles.Container,
           portrait && styles.PortraitContainer,
         )}
-      />
-      <div className={classNames(!portrait && styles.VideoContainer)}>
-        {children}
-      </div>
-      <div
-        className={classNames(
-          styles.InfoWrapper,
-          children == null && styles.InfoWrapperFull,
-        )}
       >
-        <Card.Section>
-          <div
-            className={classNames(
-              styles.InfoContainer,
-              portrait && styles.PortraitInfoContainer,
-            )}
-          >
-            {popoverActionsMarkup}
-            <Stack spacing="tight" vertical>
-              <div
-                className={classNames(popoverActions && styles.ContentIndented)}
-              >
-                <div className={styles.Heading}>
-                  <Heading>{title}</Heading>
+        <div className={classNames(!portrait && styles.VideoContainer)}>
+          {children}
+        </div>
+        <div
+          className={classNames(
+            styles.InfoWrapper,
+            children == null && styles.InfoWrapperFull,
+          )}
+        >
+          <Card.Section>
+            <div
+              className={classNames(
+                styles.InfoContainer,
+                portrait && styles.PortraitInfoContainer,
+              )}
+            >
+              {popoverActionsMarkup}
+              <Stack spacing="tight" vertical>
+                <div
+                  className={classNames(
+                    popoverActions && styles.ContentIndented,
+                  )}
+                >
+                  <div className={styles.Heading}>
+                    <Heading>{title}</Heading>
+                  </div>
                 </div>
-              </div>
-              <p className={styles.Description}>{description}</p>
-              <div className={styles.PrimaryAction}>
-                <Stack alignment="trailing" distribution="leading" wrap={false}>
-                  {primaryActions.length > 0 ? (
-                    <Stack.Item fill>
-                      <ButtonGroup>{primaryActionsMarkup}</ButtonGroup>
-                    </Stack.Item>
-                  ) : null}
-                </Stack>
-              </div>
-            </Stack>
-          </div>
-        </Card.Section>
+                <p className={styles.Description}>{description}</p>
+                <div className={styles.PrimaryAction}>
+                  <Stack
+                    alignment="trailing"
+                    distribution="leading"
+                    wrap={false}
+                  >
+                    {primaryActions.length > 0 ? (
+                      <Stack.Item fill>
+                        <ButtonGroup>{primaryActionsMarkup}</ButtonGroup>
+                      </Stack.Item>
+                    ) : null}
+                  </Stack>
+                </div>
+              </Stack>
+            </div>
+          </Card.Section>
+        </div>
       </div>
     </Card>
   );
