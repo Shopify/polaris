@@ -178,7 +178,9 @@ Use for actions that will delete merchant data or be otherwise difficult to reco
 Use to highlight the most important actions in any experience. Don’t use more than one primary button in a section or screen to avoid overwhelming merchants.
 
 ```jsx
-<Button primary>Save theme</Button>
+<Button success outline>
+  Save theme
+</Button>
 ```
 
 <!-- content-for: android -->

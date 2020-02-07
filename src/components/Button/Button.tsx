@@ -29,6 +29,10 @@ export interface ButtonProps {
   primary?: boolean;
   /** Provides extra visual weight and identifies the success state of the button */
   success?: boolean;
+  /** Provides extra visual weight and identifies the attention state of the button */
+  attention?: boolean;
+  /** Provides extra visual weight and identifies the info state of the button */
+  info?: boolean;
   /** Provides extra visual weight and identifies the warning state of the button */
   warning?: boolean;
   /** Indicates a dangerous or potentially negative action */
@@ -120,6 +124,8 @@ export function Button({
   icon,
   primary,
   success,
+  attention,
+  info,
   warning,
   outline,
   destructive,
@@ -153,6 +159,8 @@ export function Button({
     unstableGlobalTheming && styles.globalTheming,
     primary && styles.primary,
     success && styles.success,
+    attention && styles.attention,
+    info && styles.info,
     warning && styles.warning,
     outline && styles.outline,
     destructive && styles.destructive,
@@ -201,7 +209,7 @@ export function Button({
   ) : null;
 
   const spinnerColor =
-    primary || success || warning || destructive ? 'white' : 'inkLightest';
+    primary || success || attention || destructive ? 'white' : 'inkLightest';
 
   const spinnerSVGMarkup = loading ? (
     <span className={styles.Spinner}>
@@ -244,6 +252,10 @@ export function Button({
     const connectedDisclosureClassName = classNames(
       styles.Button,
       primary && styles.primary,
+      success && styles.success,
+      attention && styles.attention,
+      info && styles.info,
+      warning && styles.warning,
       outline && styles.outline,
       size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
       textAlign && styles[variationName('textAlign', textAlign)],
