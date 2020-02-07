@@ -239,8 +239,7 @@ function isDocument(node: HTMLElement | Document): node is Document {
 
 function scrollTopFor(container: HTMLElement | Document) {
   return isDocument(container)
-    ? document.body.scrollTop ||
-        (document.documentElement as HTMLElement).scrollTop
+    ? document.body.scrollTop || document.documentElement.scrollTop
     : container.scrollTop;
 }
 

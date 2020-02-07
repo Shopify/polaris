@@ -127,7 +127,7 @@ export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
     const isChecked = !isIndeterminate && Boolean(checked);
 
     const indeterminateAttributes = isIndeterminate
-      ? {indeterminate: 'true', 'aria-checked': 'mixed' as 'mixed'}
+      ? {indeterminate: 'true', 'aria-checked': 'mixed' as const}
       : {'aria-checked': isChecked};
 
     const iconSource = isIndeterminate ? MinusMinor : TickSmallMinor;

@@ -97,7 +97,7 @@ const APP_BRIDGE_PROPS: (keyof ModalProps)[] = [
 
 class ModalInner extends React.Component<CombinedProps, State> {
   static Section = Section;
-  focusReturnPointNode: HTMLElement | null = null;
+  focusReturnPointNode: HTMLElement | Element | null = null;
 
   state: State = {
     iframeHeight: IFRAME_LOADING_HEIGHT,
@@ -137,7 +137,7 @@ class ModalInner extends React.Component<CombinedProps, State> {
     const {open} = this.props;
 
     if (open) {
-      this.focusReturnPointNode = document.activeElement as HTMLElement;
+      this.focusReturnPointNode = document.activeElement;
       this.appBridgeModal &&
         this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
     }
@@ -159,15 +159,7 @@ class ModalInner extends React.Component<CombinedProps, State> {
       !isEqual(prevAppBridgeProps, currentAppBridgeProps) &&
       transformedProps
     ) {
-      if (isIframeModal(transformedProps)) {
-        (this.appBridgeModal as AppBridgeModal.ModalIframe).set(
-          transformedProps,
-        );
-      } else {
-        (this.appBridgeModal as AppBridgeModal.ModalMessage).set(
-          transformedProps,
-        );
-      }
+      this.appBridgeModal.set(transformedProps);
     }
 
     if (wasOpen !== open) {
@@ -179,15 +171,15 @@ class ModalInner extends React.Component<CombinedProps, State> {
     }
 
     if (!wasOpen && open) {
-      this.focusReturnPointNode = document.activeElement as HTMLElement;
+      this.focusReturnPointNode = document.activeElement;
     } else if (
       wasOpen &&
       !open &&
-      this.focusReturnPointNode != null &&
+      this.focusReturnPointNode instanceof HTMLElement &&
       document.contains(this.focusReturnPointNode)
     ) {
       this.focusReturnPointNode.focus();
-      this.focusReturnPointNode = null as any;
+      this.focusReturnPointNode = null;
     }
   }
 
@@ -330,13 +322,13 @@ class ModalInner extends React.Component<CombinedProps, State> {
       iframeHeight: IFRAME_LOADING_HEIGHT,
     });
 
-    if (this.focusReturnPointNode) {
+    this.focusReturnPointNode &&
       write(
         () =>
           this.focusReturnPointNode &&
+          this.focusReturnPointNode instanceof HTMLElement &&
           focusFirstFocusableNode(this.focusReturnPointNode, false),
       );
-    }
   };
 
   private handleIFrameLoad = (evt: React.SyntheticEvent<HTMLIFrameElement>) => {
@@ -399,18 +391,6 @@ class ModalInner extends React.Component<CombinedProps, State> {
       },
     };
   }
-}
-
-function isIframeModal(
-  options:
-    | AppBridgeModal.MessagePayload
-    | AppBridgeModal.IframePayload
-    | object,
-): options is AppBridgeModal.IframePayload {
-  return (
-    typeof (options as AppBridgeModal.IframePayload).url === 'string' ||
-    typeof (options as AppBridgeModal.IframePayload).path === 'string'
-  );
 }
 
 export const Modal = withAppProvider<ModalProps>()(ModalInner);

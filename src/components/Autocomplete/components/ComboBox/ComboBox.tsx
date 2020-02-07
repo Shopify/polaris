@@ -493,11 +493,11 @@ function optionsAreEqual(
 function isOption(
   navigableOption: OptionDescriptor | ActionListItemDescriptor,
 ): navigableOption is OptionDescriptor {
-  return (navigableOption as OptionDescriptor).value !== undefined;
+  return 'value' in navigableOption && navigableOption.value !== undefined;
 }
 
 function filterForOptions(
   mixedArray: (ActionListItemDescriptor | OptionDescriptor)[],
 ): OptionDescriptor[] {
-  return mixedArray.filter((item) => isOption(item)) as OptionDescriptor[];
+  return mixedArray.filter(isOption);
 }

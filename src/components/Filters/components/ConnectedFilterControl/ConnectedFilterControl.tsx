@@ -137,7 +137,8 @@ export class ConnectedFilterControl extends React.Component<
           (element: Element) => {
             const buttonWidth =
               element.getBoundingClientRect().width + tolerance;
-            const buttonKey = (element as HTMLElement).dataset.key;
+            const buttonKey =
+              element instanceof HTMLElement && element.dataset.key;
             if (buttonKey) {
               proxyButtonsWidth[buttonKey] = buttonWidth;
             }

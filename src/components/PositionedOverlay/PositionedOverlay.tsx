@@ -219,9 +219,11 @@ export class PositionedOverlay extends React.PureComponent<
           scrollableContainerRect.height = document.body.scrollHeight;
         }
 
-        const overlayMargins = this.overlay.firstElementChild
-          ? getMarginsForNode(this.overlay.firstElementChild as HTMLElement)
-          : {activator: 0, container: 0, horizontal: 0};
+        const overlayMargins =
+          this.overlay.firstElementChild &&
+          this.overlay.firstChild instanceof HTMLElement
+            ? getMarginsForNode(this.overlay.firstElementChild as HTMLElement)
+            : {activator: 0, container: 0, horizontal: 0};
 
         const containerRect = windowRect();
         const zIndexForLayer = getZIndexForLayerFromNode(activator);

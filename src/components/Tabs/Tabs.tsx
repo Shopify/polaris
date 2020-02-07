@@ -226,7 +226,7 @@ class TabsInner extends React.PureComponent<CombinedProps, State> {
     const {selected, tabs} = this.props;
 
     // If we are explicitly focusing a non-selected tab, this focuses it
-    const target = event.target as HTMLElement;
+    const target = event.target;
 
     if (
       target.classList.contains(styles.Tab) ||
@@ -259,9 +259,10 @@ class TabsInner extends React.PureComponent<CombinedProps, State> {
       return;
     }
 
-    const relatedTarget = event.relatedTarget as HTMLElement;
+    const relatedTarget = event.relatedTarget;
 
     if (
+      relatedTarget instanceof HTMLElement &&
       !relatedTarget.classList.contains(styles.Tab) &&
       !relatedTarget.classList.contains(styles.Item) &&
       !relatedTarget.classList.contains(styles.DisclosureActivator)
@@ -277,10 +278,11 @@ class TabsInner extends React.PureComponent<CombinedProps, State> {
       return;
     }
 
-    const target = event.relatedTarget as HTMLElement;
+    const target = event.relatedTarget;
 
     // If we are going to anywhere other than another tab, lose the last focused tab
     if (
+      target instanceof HTMLElement &&
       !target.classList.contains(styles.Tab) &&
       !target.classList.contains(styles.Item)
     ) {
