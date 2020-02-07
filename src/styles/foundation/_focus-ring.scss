@@ -1,18 +1,17 @@
 /// Sets the focus ring for an interactive element
 /// @param {String} $size - The size of the border radius on the focus ring.
 /// @param {String} $style - Focus ring state.
-/// @param {Number} $border-width - The border width of your element in rems.
+/// @param {Number} $border-width - The border width of your element in px.
 ///
 
-@mixin focus-ring($size: 'base', $border-width: rem(0), $style: 'base') {
+@mixin focus-ring($size: 'base', $border-width: '0px', $style: 'base') {
   $stroke: rem(2px);
-  $offset: calc(#{$border-width} + #{rem(1px)});
+  $offset: calc(-1 * calc(#{$border-width} + #{rem(1px)}));
   $border-radius: if(
     $size == 'wide',
     var(--p-border-radius-wide),
     var(--p-border-radius-base)
   );
-  $negative-offset: calc(-1 * #{$offset});
 
   @if $style == 'base' {
     position: relative;
@@ -21,13 +20,13 @@
       content: var(--p-non-null-content, none);
       position: absolute;
       z-index: 1;
-      top: $negative-offset;
-      right: $negative-offset;
-      bottom: $negative-offset;
-      left: $negative-offset;
+      top: $offset;
+      right: $offset;
+      bottom: $offset;
+      left: $offset;
       display: block;
       pointer-events: none;
-      box-shadow: 0 0 0 $negative-offset var(--p-focused);
+      box-shadow: 0 0 0 $offset var(--p-focused);
       transition: box-shadow duration(fast) var(--p-ease);
       border-radius: calc(#{$border-radius} + #{rem(1px)});
     }

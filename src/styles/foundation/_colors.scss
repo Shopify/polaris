@@ -58,7 +58,6 @@ $color-palette-data: map-extend(
 Color `#{$hue}, #{$value}` not found. Make sure arguments are strings.
 GOOD: color('yellow')
 BAD: color(yellow)
-
 Available options: #{available-names($color-palette-data)}
 ";
     // stylelint-enable
@@ -130,7 +129,6 @@ $ms-high-contrast-color-data: (
 Color `#{$color}` not found. Make sure argument is a string.
 GOOD: ms-high-contrast-color('selected-text')
 BAD: ms-high-contrast-color(selected-text).
-
 Available options: #{available-names($ms-high-contrast-color-data)}
 ";
     // stylelint-enable

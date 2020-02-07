@@ -359,9 +359,10 @@ $stacking-order: (
   }
 
   &.destructive {
-    color: color('red', 'dark');
-    &:hover {
-      color: color('red', 'darker');
+    color: var(--p-action-critical, color('red', 'dark'));
+    &:focus,
+    &:active {
+      color: var(--p-action-critical-pressed, color('red', 'darker'));
     }
   }
 
@@ -410,11 +411,15 @@ $stacking-order: (
   // stylelint-disable selector-max-class
   &.newDesignLanguage {
     // redeclaring these styles here for specificity
+    @include recolor-icon(var(--p-action-interactive));
     background: transparent;
     border: 0;
     box-shadow: none;
-    @include recolor-icon(var(--p-interactive));
-    color: var(--p-interactive);
+    color: var(--p-action-interactive);
+
+    &::after {
+      content: none;
+    }
 
     &:hover,
     &:focus,
@@ -430,26 +435,27 @@ $stacking-order: (
     }
 
     &:hover {
-      @include recolor-icon(var(--p-interactive-hovered));
-      color: var(--p-interactive-hovered);
+      @include recolor-icon(var(--p-action-interactive-hovered));
+      color: var(--p-action-interactive-hovered);
       text-decoration: underline;
     }
 
     &:focus {
-      @include recolor-icon(var(--p-interactive));
-      color: var(--p-interactive);
-      text-decoration: none;
+      @include recolor-icon(var(--p-action-interactive));
+      color: var(--p-action-interactive);
       @include no-focus-ring;
     }
 
     &:active {
-      @include recolor-icon(var(--p-interactive-pressed));
-      color: var(--p-interactive-pressed);
-      text-decoration: none;
+      @include recolor-icon(var(--p-action-interactive-pressed));
+      color: var(--p-action-interactive-pressed);
     }
 
-    &:focus:not(:active) > .Content {
-      @include focus-ring($style: 'focused');
+    &:focus:not(:active) {
+      text-decoration: none;
+      > .Content {
+        @include focus-ring($style: 'focused');
+      }
     }
 
     &:focus:not(.iconOnly) > .Content {
@@ -461,17 +467,17 @@ $stacking-order: (
     }
 
     &.destructive {
-      @include recolor-icon(var(--p-interactive-critical));
-      color: var(--p-interactive-critical);
+      @include recolor-icon(var(--p-action-critical));
+      color: var(--p-action-critical);
       &:hover {
-        color: var(--p-interactive-critical-hovered);
+        color: var(--p-action-critical-hovered);
       }
       &:active {
-        color: var(--p-interactive-critical-pressed);
+        color: var(--p-action-critical-pressed);
       }
 
       &.disabled {
-        color: var(--p-interactive-critical-disabled);
+        color: var(--p-action-critical-disabled);
       }
     }
 
@@ -481,22 +487,22 @@ $stacking-order: (
     }
 
     &.iconOnly {
-      @include recolor-icon(var(--p-interactive));
+      @include recolor-icon(var(--p-action-interactive));
 
       &:hover {
-        @include recolor-icon(var(--p-interactive-hovered));
+        @include recolor-icon(var(--p-action-interactive-hovered));
       }
 
       &:focus {
-        @include recolor-icon(var(--p-interactive));
+        @include recolor-icon(var(--p-action-interactive));
       }
 
       &:active {
-        @include recolor-icon(var(--p-interactive-pressed));
+        @include recolor-icon(var(--p-action-interactive-pressed));
       }
 
       &.disabled {
-        @include recolor-icon(var(--p-interactive-disabled));
+        @include recolor-icon(var(--p-action-interactive-disabled));
       }
     }
 
@@ -656,11 +662,15 @@ $stacking-order: (
     }
 
     &.newDesignLanguage {
+      @include focus-ring($border-width: border-width('base'));
       box-shadow: 0 0 0 border-width('base') currentColor;
 
       &:focus {
-        box-shadow: 0 0 0 border-width('thick') currentColor;
-        @include no-focus-ring;
+        @include focus-ring($style: 'focused');
+      }
+
+      &:active::after {
+        box-shadow: none;
       }
     }
     // stylelint-enable selector-max-class
