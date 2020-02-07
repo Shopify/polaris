@@ -1195,7 +1195,7 @@ describe('<TextField />', () => {
       },
     );
     expect(textField).toContainReactComponent('div', {
-      className: 'Backdrop ConnectedLeft ConnectedRight',
+      className: 'Backdrop Backdrop-connectedLeft Backdrop-connectedRight',
     });
   });
 });
