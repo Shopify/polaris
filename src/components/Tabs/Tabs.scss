@@ -87,11 +87,11 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
     // stylelint-disable-next-line selector-max-class
     .Title {
       border-bottom: border-width(thicker) solid color('indigo');
-
-      @media (-ms-high-contrast: active) {
-        background: ms-high-contrast-color('selected-text-background');
-        border-bottom-color: ms-high-contrast-color('selected-text-background');
-      }
+    }
+    @media (-ms-high-contrast: active) {
+      outline: 1px solid ms-high-contrast-color('selected-text');
+      background: ms-high-contrast-color('selected-text-background');
+      border-bottom-color: ms-high-contrast-color('selected-text-background');
     }
   }
 }

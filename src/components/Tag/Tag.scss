@@ -25,6 +25,10 @@ $icon-size: rem(16px);
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  @media (-ms-high-contrast: active) {
+    outline: 1px solid ms-high-contrast-color('text');
+  }
 }
 
 .Button {
