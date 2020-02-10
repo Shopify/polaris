@@ -39,8 +39,8 @@ export interface SheetProps {
   onEntered?(): void;
   /** Callback when the sheet has started to exit */
   onExit?(): void;
-  /** Show a larger sheet */
-  large?: boolean;
+  /** Show a different sized sheet */
+  size?: 'small' | 'medium' | 'large';
   /** Show a transparent backdrop */
   transparentBackdrop?: boolean;
 }
@@ -52,7 +52,7 @@ export function Sheet({
   onEntered,
   onExit,
   transparentBackdrop = true,
-  large = false,
+  size = 'small',
 }: SheetProps) {
   const {isNavigationCollapsed} = useMediaQuery();
   const container = useRef<HTMLDivElement>(null);
@@ -76,7 +76,11 @@ export function Sheet({
         onExit={onExit}
       >
         <div
-          className={classNames(styles.Container, large && styles.sizeLarge)}
+          className={classNames(
+            styles.Container,
+            size === 'large' && styles.sizeLarge,
+            size === 'medium' && styles.sizeMedium,
+          )}
           {...layer.props}
           {...overlay.props}
           ref={container}
@@ -85,7 +89,11 @@ export function Sheet({
             <div
               role="dialog"
               tabIndex={-1}
-              className={classNames(styles.Sheet, large && styles.sizeLarge)}
+              className={classNames(
+                styles.Sheet,
+                size === 'large' && styles.sizeLarge,
+                size === 'medium' && styles.sizeMedium,
+              )}
             >
               {children}
             </div>

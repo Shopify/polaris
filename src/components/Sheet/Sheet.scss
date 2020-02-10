@@ -1,6 +1,7 @@
 @import '../../styles/common';
 
 $sheet-desktop-width: rem(380px);
+$sheet-medium-desktop-width: rem(700px);
 $sheet-large-desktop-width: calc(100vw - #{rem(50px)});
 $sheet-large-max-desktop-width: rem(1200px);
 
@@ -25,6 +26,12 @@ $sheet-large-max-desktop-width: rem(1200px);
     outline: 0;
   }
 
+  &.sizeMedium {
+    @include frame-when-nav-displayed {
+      width: $sheet-medium-desktop-width;
+    }
+  }
+
   &.sizeLarge {
     @include frame-when-nav-displayed {
       width: $sheet-large-desktop-width;
@@ -44,6 +51,12 @@ $sheet-large-max-desktop-width: rem(1200px);
   @include frame-when-nav-displayed {
     left: auto;
     width: $sheet-desktop-width;
+  }
+
+  &.sizeMedium {
+    @include frame-when-nav-displayed {
+      width: $sheet-medium-desktop-width;
+    }
   }
 
   &.sizeLarge {

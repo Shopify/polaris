@@ -138,7 +138,7 @@ function SheetExample() {
       >
         {salesChannelsCardMarkup}
       </Card>
-      <Sheet open={sheetActive} onClose={toggleSheetActive}>
+      <Sheet size="medium" open={sheetActive} onClose={toggleSheetActive}>
         <div
           style={{
             display: 'flex',
