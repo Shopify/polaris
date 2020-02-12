@@ -18,6 +18,9 @@
 - Fixed the position property for the backdrop on `Select` from being overwritten by the focus ring ([#2748](https://github.com/Shopify/polaris-react/pull/2748))
 - Fixed `ResourceItem` `Actions` visibility on mouse out ([#2742](https://github.com/Shopify/polaris-react/pull/2742))
 - Fixed initial server / client render mismatch in `Avatar` ([#2751](https://github.com/Shopify/polaris-react/pull/2751))
+- Allow changing the `DropZone` file if allowMultiple is false ([#2737](https://github.com/Shopify/polaris-react/pull/2737))
+- Fixed `DropZone` not supporting new file selection when `allowMultiple` is `false` ([#2737](https://github.com/Shopify/polaris-react/pull/2737)) ([#2737](https://github.com/Shopify/polaris-react/pull/2737))
+- Fixed `DropZone` not supporting new file selection when `allowMultiple` is `false` ([#2737](https://github.com/Shopify/polaris-react/pull/2737))
 
 ### Documentation
 

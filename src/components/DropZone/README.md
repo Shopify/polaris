@@ -197,6 +197,49 @@ function DropZoneWithImageFileUpload() {
 }
 ```
 
+### Drop zone with single file upload
+
+Use to accept only one file.
+
+```jsx
+function DropZoneExample() {
+  const [file, setFile] = useState();
+
+  const handleDropZoneDrop = useCallback(
+    (_dropFiles, acceptedFiles, _rejectedFiles) =>
+      setFile((file) => acceptedFiles[0]),
+    [],
+  );
+
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+
+  const fileUpload = !file && <DropZone.FileUpload />;
+  const uploadedFile = file && (
+    <Stack>
+      <Thumbnail
+        size="small"
+        alt={file.name}
+        source={
+          validImageTypes.indexOf(file.type) > 0
+            ? window.URL.createObjectURL(file)
+            : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+        }
+      />
+      <div>
+        {file.name} <Caption>{file.size} bytes</Caption>
+      </div>
+    </Stack>
+  );
+
+  return (
+    <DropZone allowMultiple={false} onDrop={handleDropZoneDrop}>
+      {uploadedFile}
+      {fileUpload}
+    </DropZone>
+  );
+}
+```
+
 ### Drop zone with drop on page
 
 Use to accept files for upload when dropped anywhere on the page.

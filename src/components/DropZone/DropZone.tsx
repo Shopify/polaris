@@ -76,7 +76,7 @@ export interface DropZoneProps {
   /** Text that appears in the overlay when set in error state */
   errorOverlayText?: string;
   /**
-   * Allows multiple files to be uploaded
+   * Allows multiple files to be uploaded at once
    * @default true
    */
   allowMultiple?: boolean;
@@ -181,7 +181,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     setTrue: handleFocus,
     setFalse: handleBlur,
   } = useToggle(false);
-  const [numFiles, setNumFiles] = useState(0);
   const [size, setSize] = useState('extraLarge');
   const [measuring, setMeasuring] = useState(true);
 
@@ -212,7 +211,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   const handleDrop = useCallback(
     (event: DragEvent) => {
       stopEvent(event);
-      if (disabled || (!allowMultiple && numFiles > 0)) return;
+      if (disabled) return;
 
       const fileList = getDataTransferFiles(event);
 
@@ -222,7 +221,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
       setDragging(false);
       setInternalError(rejectedFiles.length > 0);
-      setNumFiles((numFiles) => numFiles + acceptedFiles.length);
 
       onDrop && onDrop(files as File[], acceptedFiles, rejectedFiles);
       onDropAccepted && acceptedFiles.length && onDropAccepted(acceptedFiles);
@@ -230,21 +228,13 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
       (event.target as HTMLInputElement).value = '';
     },
-    [
-      allowMultiple,
-      disabled,
-      getValidatedFiles,
-      numFiles,
-      onDrop,
-      onDropAccepted,
-      onDropRejected,
-    ],
+    [disabled, getValidatedFiles, onDrop, onDropAccepted, onDropRejected],
   );
 
   const handleDragEnter = useCallback(
     (event: DragEvent) => {
       stopEvent(event);
-      if (disabled || (!allowMultiple && numFiles > 0)) return;
+      if (disabled) return;
 
       const fileList = getDataTransferFiles(event);
 
@@ -261,30 +251,23 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
       onDragEnter && onDragEnter();
     },
-    [
-      allowMultiple,
-      disabled,
-      dragging,
-      getValidatedFiles,
-      numFiles,
-      onDragEnter,
-    ],
+    [disabled, dragging, getValidatedFiles, onDragEnter],
   );
 
   const handleDragOver = useCallback(
     (event: DragEvent) => {
       stopEvent(event);
-      if (disabled || (!allowMultiple && numFiles > 0)) return;
+      if (disabled) return;
       onDragOver && onDragOver();
     },
-    [allowMultiple, disabled, numFiles, onDragOver],
+    [disabled, onDragOver],
   );
 
   const handleDragLeave = useCallback(
     (event: DragEvent) => {
       event.preventDefault();
 
-      if (disabled || (!allowMultiple && numFiles > 0)) return;
+      if (disabled) return;
 
       dragTargets.current = dragTargets.current.filter((el: Node) => {
         const compareNode = dropOnPage && !isServer ? document : node.current;
@@ -299,7 +282,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
       onDragLeave && onDragLeave();
     },
-    [allowMultiple, dropOnPage, disabled, numFiles, onDragLeave],
+    [dropOnPage, disabled, onDragLeave],
   );
 
   useEffect(() => {
@@ -456,7 +439,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   }
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
-    if (disabled || (!allowMultiple && numFiles > 0)) return;
+    if (disabled) return;
 
     return onClick ? onClick(event) : open();
   }
