@@ -1,17 +1,18 @@
 {
-  "name": "@joinarthur/polaris",
+  "name": "@endearhq/polaris",
   "description": "Shopify’s product component library",
   "version": "4.13.1-fork.2",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
-  "author": "Shopify <dev@shopify.com>",
+  "author": "Endear <developers@endearhq.com>",
   "homepage": "https://polaris.shopify.com/components",
-  "repository": "https://github.com/Shopify/polaris-react",
+  "repository": "git@github.com:endearhq/polaris-react.git",
   "bugs": {
     "url": "https://github.com/Shopify/polaris-react/issues"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry":"https://npm.pkg.github.com/"
   },
   "sideEffects": [
     "**/*.css",

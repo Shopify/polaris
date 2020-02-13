@@ -14,3 +14,4 @@ node_modules
 .DS_Store
 *.scss.d.ts
 /src/styles/polaris-tokens
+.npmrc
