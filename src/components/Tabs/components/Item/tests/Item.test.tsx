@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {UnstyledLink} from 'components';
 import {Item} from '../Item';
 
@@ -24,5 +25,25 @@ describe('<Item />', () => {
 
     expect(item.find('button').exists()).toBe(true);
     expect(item.find(UnstyledLink).exists()).toBe(false);
+  });
+
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+      const item = mountWithApp(<Item {...mockProps} />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(item).toContainReactComponent('button', {
+        className: 'Item newDesignLanguage',
+      });
+    });
+
+    it('does not add a newDesignLanguage class when newDesignLanguage is not enabled', () => {
+      const item = mountWithApp(<Item {...mockProps} />, {
+        features: {newDesignLanguage: false},
+      });
+      expect(item).toContainReactComponent('button', {
+        className: 'Item',
+      });
+    });
   });
 });

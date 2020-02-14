@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {classNames} from '../../../../utilities/css';
+import {FeaturesContext} from '../../../../utilities/features';
 import styles from '../../Tabs.scss';
 import {UnstyledLink} from '../../../UnstyledLink';
 
@@ -14,6 +16,9 @@ export interface ItemProps {
 }
 
 export class Item extends React.PureComponent<ItemProps, never> {
+  static contextType = FeaturesContext;
+  context!: React.ContextType<typeof FeaturesContext>;
+
   private focusedNode: HTMLElement | React.ReactElement | null = null;
 
   componentDidMount() {
@@ -44,11 +49,18 @@ export class Item extends React.PureComponent<ItemProps, never> {
       onClick = noop,
     } = this.props;
 
+    const {newDesignLanguage} = this.context || {};
+
+    const classname = classNames(
+      styles.Item,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     const sharedProps = {
       id,
       ref: this.setFocusedNode,
       onClick,
-      className: styles.Item,
+      className: classname,
       'aria-controls': panelID,
       'aria-selected': false,
       'aria-label': accessibilityLabel,

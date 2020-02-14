@@ -44,7 +44,7 @@ describe('<Icon />', () => {
       });
     });
 
-    it('warns when an untrusted SVG is used with a color option from the new design langauge', () => {
+    it('warns when an untrusted SVG is used with a color option from the new design language', () => {
       const warningSpy = jest
         .spyOn(console, 'warn')
         .mockImplementation(() => {});
