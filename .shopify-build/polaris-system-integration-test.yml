@@ -8,7 +8,7 @@ shared:
   build-polaris: &build-polaris
     label: 'Build polaris'
     container: default
-    timeout: 35m
+    timeout: 5m
     dependencies:
       - yarn
     run:

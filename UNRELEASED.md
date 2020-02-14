@@ -22,8 +22,6 @@
 ### Development workflow
 
 - Added first implementation of custom property validation ([#2616](https://github.com/Shopify/polaris-react/pull/2616))
-- Reworked the yarn splash Github comment and added average splash zone information ([#2649](https://github.com/Shopify/polaris-react/pull/2649))
-- Re-enabled the web unit tests in the consumer build test ([#2663](https://github.com/Shopify/polaris-react/pull/2663))
 - Refactor consumer build test (renamed to system integration test) ([#2735](https://github.com/Shopify/polaris-react/pull/2735))
 
 ### Dependency upgrades
