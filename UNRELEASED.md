@@ -13,6 +13,7 @@
 - Fixed `TrapFocus` stealing focus from other `TrapFocus`'s ([#2681](https://github.com/Shopify/polaris-react/pull/2681))
 - Fixed focus state color on monochrome `Buttons` ([#2684](https://github.com/Shopify/polaris-react/pull/2684))
 - Fixed container's width on `Modal` ([#2692](https://github.com/Shopify/polaris-react/pull/2692))
+- Fixed the position property for the backdrop on `Select` from being overwritten by the focus ring ([#2748](https://github.com/Shopify/polaris-react/pull/2748))
 
 ### Documentation
 
