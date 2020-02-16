@@ -3,7 +3,8 @@ import React, {useState, useCallback, useEffect} from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
-import {isServer} from '../../utilities/target';
+import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
+
 import {Image} from '../Image';
 
 import styles from './Avatar.scss';
@@ -46,6 +47,7 @@ export function Avatar({
 }: AvatarProps) {
   const i18n = useI18n();
   const {newDesignLanguage} = useFeatures();
+  const isAfterInitialMount = useIsAfterInitialMount();
 
   function styleClass(name?: string) {
     const finalStyleClasses = newDesignLanguage
@@ -100,7 +102,7 @@ export function Avatar({
   );
 
   const imageMarkUp =
-    source && !isServer && status !== Status.Errored ? (
+    source && isAfterInitialMount && status !== Status.Errored ? (
       <Image
         className={styles.Image}
         source={source}
