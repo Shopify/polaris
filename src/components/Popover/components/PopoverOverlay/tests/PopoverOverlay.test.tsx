@@ -143,6 +143,25 @@ describe('<PopoverOverlay />', () => {
     ).toBe('center');
   });
 
+  it('passes preferInputActivator to PositionedOverlay when false', () => {
+    const popoverOverlay = mountWithAppProvider(
+      <PopoverOverlay
+        active
+        id="PopoverOverlay-1"
+        activator={activator}
+        onClose={noop}
+        fixed
+        preferInputActivator={false}
+      >
+        {children}
+      </PopoverOverlay>,
+    );
+
+    expect(
+      popoverOverlay.find(PositionedOverlay).prop('preferInputActivator'),
+    ).toBe(false);
+  });
+
   it('calls the onClose callback when the escape key is pressed', () => {
     const spy = jest.fn();
 
