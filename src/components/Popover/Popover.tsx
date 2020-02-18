@@ -32,6 +32,7 @@ export interface PopoverProps {
   active: boolean;
   /** The element to activate the Popover */
   activator: React.ReactElement;
+  preferInputActivator?: PopoverOverlayProps['preferInputActivator'];
   /**
    * The element type to wrap the activator with
    * @default 'div'
@@ -71,6 +72,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
   active,
   fixed,
   ariaHaspopup,
+  preferInputActivator = true,
   ...rest
 }: PopoverProps) {
   const [activatorNode, setActivatorNode] = useState();
@@ -136,6 +138,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
         testID="popoverOverlay"
         id={id}
         activator={activatorNode}
+        preferInputActivator={preferInputActivator}
         onClose={handleClose}
         active={active}
         fixed={fixed}

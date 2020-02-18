@@ -95,6 +95,21 @@ describe('<Popover />', () => {
     expect(popoverOverlay.prop('preferredAlignment')).toBe('left');
   });
 
+  it("passes 'preferInputActivator' to PopoverOverlay", () => {
+    const popover = mountWithAppProvider(
+      <Popover
+        active={false}
+        preferredPosition="above"
+        activator={<div>Activator</div>}
+        onClose={spy}
+        preferInputActivator={false}
+      />,
+    );
+
+    const popoverOverlay = findByTestID(popover, 'popoverOverlay');
+    expect(popoverOverlay.prop('preferInputActivator')).toBe(false);
+  });
+
   it('has a div as activatorWrapper by default', () => {
     const popover = mountWithAppProvider(
       <Popover
