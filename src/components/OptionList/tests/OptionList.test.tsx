@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Option} from '../components';
 import {OptionList, OptionListProps, OptionDescriptor} from '../OptionList';
 
@@ -519,6 +520,28 @@ describe('<OptionList />', () => {
 
         expect(spy).toHaveBeenCalledTimes(1);
         expect(spy).toHaveBeenCalledWith(newSelected);
+      });
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('adds a `newDesignLanguage` class to the `OptionList` when `newDesignLanguage` is enabled', () => {
+      const option = mountWithApp(<OptionList {...defaultProps} />, {
+        features: {newDesignLanguage: true},
+      });
+
+      expect(option).toContainReactComponent('ul', {
+        className: 'OptionList newDesignLanguage',
+      });
+    });
+
+    it('does not add a `newDesignLanguage` class to the `OptionList` when `newDesignLanguage` is disabled', () => {
+      const checkBox = mountWithApp(<OptionList {...defaultProps} />, {
+        features: {newDesignLanguage: false},
+      });
+
+      expect(checkBox).not.toContainReactComponent('ul', {
+        className: 'OptionList newDesignLanguage',
       });
     });
   });
