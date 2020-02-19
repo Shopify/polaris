@@ -31,7 +31,7 @@ function AppProviderWithKnobs({newDesignLanguage, colorScheme, children}) {
   const colors = Object.entries(DefaultThemeColors).reduce(
     (accumulator, [key, value]) => ({
       ...accumulator,
-      [key]: color(key, value, 'Theme'),
+      [key]: strToHex(color(key, value, 'Theme')),
     }),
     {},
   );
