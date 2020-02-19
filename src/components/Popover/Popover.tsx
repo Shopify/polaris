@@ -133,9 +133,8 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
   }, [activatorNode, setAccessibilityAttributes]);
 
   const portal = activatorNode ? (
-    <Portal idPrefix="popover" testID="portal">
+    <Portal idPrefix="popover">
       <PopoverOverlay
-        testID="popoverOverlay"
         id={id}
         activator={activatorNode}
         preferInputActivator={preferInputActivator}
