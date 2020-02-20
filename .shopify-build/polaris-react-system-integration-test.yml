@@ -4,7 +4,7 @@ containers:
 
 steps:
   - label: 'Build polaris'
-    timeout: 5m
+    timeout: 8m
     run:
       - yarn: ~
       - ./.shopify-build/build-and-upload-to-gcp.sh
@@ -13,5 +13,6 @@ steps:
     trigger: 'web-polaris-builder'
     build:
       branch: add-polaris-build-pipeline
+      commit: HEAD
       env:
         POLARIS_ARTIFACT_FILENAME: 'shopify-polaris-${BUILDKITE_COMMIT}.tgz'
