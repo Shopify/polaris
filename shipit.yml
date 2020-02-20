@@ -9,7 +9,7 @@ ci:
     - 'Move assigned issue to column'
   allow_failures:
     - 'buildkite/polaris-react'
-    - 'buildkite/polaris-system-integration-test'
+    - 'buildkite/polaris-react-system-integration-test'
 
 merge:
   require:
