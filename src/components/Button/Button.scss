@@ -411,11 +411,11 @@ $stacking-order: (
   // stylelint-disable selector-max-class
   &.newDesignLanguage {
     // redeclaring these styles here for specificity
-    @include recolor-icon(var(--p-action-interactive));
+    @include recolor-icon(var(--p-interactive));
     background: transparent;
     border: 0;
     box-shadow: none;
-    color: var(--p-action-interactive);
+    color: var(--p-interactive);
 
     &::after {
       content: none;
@@ -435,20 +435,20 @@ $stacking-order: (
     }
 
     &:hover {
-      @include recolor-icon(var(--p-action-interactive-hovered));
-      color: var(--p-action-interactive-hovered);
+      @include recolor-icon(var(--p-interactive-hovered));
+      color: var(--p-interactive-hovered);
       text-decoration: underline;
     }
 
     &:focus {
-      @include recolor-icon(var(--p-action-interactive));
-      color: var(--p-action-interactive);
+      @include recolor-icon(var(--p-interactive));
+      color: var(--p-interactive);
       @include no-focus-ring;
     }
 
     &:active {
-      @include recolor-icon(var(--p-action-interactive-pressed));
-      color: var(--p-action-interactive-pressed);
+      @include recolor-icon(var(--p-interactive-pressed));
+      color: var(--p-interactive-pressed);
     }
 
     &:focus:not(:active) {
@@ -467,17 +467,17 @@ $stacking-order: (
     }
 
     &.destructive {
-      @include recolor-icon(var(--p-action-critical));
-      color: var(--p-action-critical);
+      @include recolor-icon(var(--p-interactive-critical));
+      color: var(--p-interactive-critical);
       &:hover {
-        color: var(--p-action-critical-hovered);
+        color: var(--p-interactive-critical-hovered);
       }
       &:active {
-        color: var(--p-action-critical-pressed);
+        color: var(--p-interactive-critical-pressed);
       }
 
       &.disabled {
-        color: var(--p-action-critical-disabled);
+        color: var(--p-interactive-critical-disabled);
       }
     }
 
@@ -487,22 +487,22 @@ $stacking-order: (
     }
 
     &.iconOnly {
-      @include recolor-icon(var(--p-action-interactive));
+      @include recolor-icon(var(--p-interactive));
 
       &:hover {
-        @include recolor-icon(var(--p-action-interactive-hovered));
+        @include recolor-icon(var(--p-interactive-hovered));
       }
 
       &:focus {
-        @include recolor-icon(var(--p-action-interactive));
+        @include recolor-icon(var(--p-interactive));
       }
 
       &:active {
-        @include recolor-icon(var(--p-action-interactive-pressed));
+        @include recolor-icon(var(--p-interactive-pressed));
       }
 
       &.disabled {
-        @include recolor-icon(var(--p-action-interactive-disabled));
+        @include recolor-icon(var(--p-interactive-disabled));
       }
     }
 
@@ -534,6 +534,12 @@ $stacking-order: (
 .sizeSlim {
   min-height: $slim-min-height;
   padding: $slim-vertical-padding spacing(base-tight);
+
+  &.newDesignLanguage {
+    // Local override for slim button height.
+    $slim-min-height: rem(28px);
+    min-height: $slim-min-height;
+  }
 }
 
 .sizeLarge {
