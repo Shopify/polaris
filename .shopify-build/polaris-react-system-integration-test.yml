@@ -9,7 +9,7 @@ steps:
       - yarn: ~
       - ./.shopify-build/build-and-upload-to-gcp.sh
   - wait: ~
-  - label: 'Build polaris'
+  - label: 'Web integration test'
     trigger: 'web-polaris-builder'
     build:
       branch: add-polaris-build-pipeline
