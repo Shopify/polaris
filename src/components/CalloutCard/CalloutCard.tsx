@@ -52,6 +52,7 @@ export function CalloutCard({
   const dismissButton = onDismiss ? (
     <div className={styles.Dismiss}>
       <Button
+        id="lol"
         plain
         icon={CancelSmallMinor}
         onClick={onDismiss}

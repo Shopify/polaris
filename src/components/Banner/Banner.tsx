@@ -183,6 +183,7 @@ export class Banner extends React.PureComponent<BannerProps, State> {
             const dismissButton = onDismiss ? (
               <div className={styles.Dismiss}>
                 <Button
+                  id="lol"
                   plain
                   icon={CancelSmallMinor}
                   onClick={onDismiss}

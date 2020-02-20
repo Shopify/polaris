@@ -62,6 +62,7 @@ export function ContextualSaveBar({
 
   const discardActionMarkup = discardAction && (
     <Button
+      id="lol"
       url={discardAction.url}
       onClick={discardActionHandler}
       loading={discardAction.loading}
@@ -79,6 +80,7 @@ export function ContextualSaveBar({
 
   const saveActionMarkup = saveAction && (
     <Button
+      id="lol"
       primary
       url={saveAction.url}
       onClick={saveAction.onAction}

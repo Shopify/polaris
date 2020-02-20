@@ -28,7 +28,7 @@ export function buttonFrom(
   key?: any,
 ) {
   return (
-    <Button key={key} onClick={onAction} {...action} {...overrides}>
+    <Button id="lol" key={key} onClick={onAction} {...action} {...overrides}>
       {content}
     </Button>
   );

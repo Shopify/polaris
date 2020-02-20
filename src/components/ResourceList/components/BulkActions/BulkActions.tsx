@@ -225,6 +225,7 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
 
     const paginatedSelectAllActionMarkup = paginatedSelectAllAction ? (
       <Button
+        id="lol"
         onClick={paginatedSelectAllAction.onAction}
         plain
         testID="paginated-action"
@@ -253,6 +254,7 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
 
     const cancelButton = (
       <Button
+        id="lol"
         onClick={this.setSelectMode.bind(this, false)}
         testID="btn-cancel"
         disabled={disabled}

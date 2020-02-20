@@ -81,7 +81,11 @@ export const Card: React.FunctionComponent<CardProps> & {
           <Popover
             active={secondaryActionsPopoverOpen}
             activator={
-              <Button disclosure onClick={toggleSecondaryActionsPopoverOpen}>
+              <Button
+                id="lol"
+                disclosure
+                onClick={toggleSecondaryActionsPopoverOpen}
+              >
                 {secondaryFooterActionsDisclosureText ||
                   i18n.translate('Polaris.Common.more')}
               </Button>

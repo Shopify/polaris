@@ -13,17 +13,17 @@ describe('<Button />', () => {
     const mockUrl = 'http://google.com';
 
     it('renders a link when present', () => {
-      const button = mountWithAppProvider(<Button url={mockUrl} />);
+      const button = mountWithAppProvider(<Button id="lol" url={mockUrl} />);
       expect(button.find(UnstyledLink).exists()).toBeTruthy();
     });
 
     it('gets passed into the link', () => {
-      const button = mountWithAppProvider(<Button url={mockUrl} />);
+      const button = mountWithAppProvider(<Button id="lol" url={mockUrl} />);
       expect(button.find(UnstyledLink).prop('url')).toBe(mockUrl);
     });
 
     it('renders a button when not present', () => {
-      const button = mountWithAppProvider(<Button />);
+      const button = mountWithAppProvider(<Button id="lol" />);
       expect(button.find('button').exists()).toBeTruthy();
     });
   });
@@ -31,14 +31,16 @@ describe('<Button />', () => {
   describe('children', () => {
     it('renders the given children into the button', () => {
       const label = 'Click me!';
-      const button = mountWithAppProvider(<Button>{label}</Button>);
+      const button = mountWithAppProvider(<Button id="lol">{label}</Button>);
       expect(button.text()).toContain(label);
     });
 
     it('renders the given children into the link', () => {
       const label = 'Click me!';
       const button = mountWithAppProvider(
-        <Button url="http://google.com">{label}</Button>,
+        <Button id="lol" url="http://google.com">
+          {label}
+        </Button>,
       );
       expect(button.text()).toContain(label);
     });
@@ -62,13 +64,13 @@ describe('<Button />', () => {
 
   describe('disabled', () => {
     it('disable without a url renders <button disabled>', () => {
-      const button = mountWithAppProvider(<Button disabled />);
+      const button = mountWithAppProvider(<Button id="lol" disabled />);
       expect(button.find('button').prop('disabled')).toBeTruthy();
     });
 
     it('disable with a url renders <a> without an href (as <a disabled> is invalid HTML)>', () => {
       const button = mountWithAppProvider(
-        <Button disabled url="http://google.com" />,
+        <Button id="lol" disabled url="http://google.com" />,
       );
       expect(button.find('a').prop('href')).toBeFalsy();
     });
@@ -76,24 +78,24 @@ describe('<Button />', () => {
 
   describe('loading', () => {
     it('loading without a url renders <button disabled>', () => {
-      const button = mountWithAppProvider(<Button loading />);
+      const button = mountWithAppProvider(<Button id="lol" loading />);
       expect(button.find('button').prop('disabled')).toBe(true);
     });
 
     it('loading with a url renders <a> without an href (as <a disabled> is invalid HTML)', () => {
       const button = mountWithAppProvider(
-        <Button loading url="http://google.com" />,
+        <Button id="lol" loading url="http://google.com" />,
       );
       expect(button.find('a').prop('href')).toBeFalsy();
     });
 
     it('renders a spinner into the button', () => {
-      const button = mountWithAppProvider(<Button loading />);
+      const button = mountWithAppProvider(<Button id="lol" loading />);
       expect(button.find(Spinner).exists()).toBeTruthy();
     });
     it('renders a spinner into the link', () => {
       const button = mountWithAppProvider(
-        <Button loading url="http://google.com">
+        <Button id="lol" loading url="http://google.com">
           Click me!
         </Button>,
       );
@@ -101,24 +103,24 @@ describe('<Button />', () => {
     });
 
     it('sets an alert role on the button', () => {
-      const button = mountWithAppProvider(<Button loading />);
+      const button = mountWithAppProvider(<Button id="lol" loading />);
       expect(button.find('button').prop('role')).toBe('alert');
     });
 
     it('sets aria-busy on the button', () => {
-      const button = mountWithAppProvider(<Button loading />);
+      const button = mountWithAppProvider(<Button id="lol" loading />);
       expect(button.find('button').prop('aria-busy')).toBeTruthy();
     });
   });
 
   describe('submit', () => {
     it('sets a submit type on the button when present', () => {
-      const button = mountWithAppProvider(<Button submit />);
+      const button = mountWithAppProvider(<Button id="lol" submit />);
       expect(button.find('button').prop('type')).toBe('submit');
     });
 
     it('sets a button type on the button when not present', () => {
-      const button = mountWithAppProvider(<Button />);
+      const button = mountWithAppProvider(<Button id="lol" />);
       expect(button.find('button').prop('type')).toBe('button');
     });
   });
@@ -126,50 +128,56 @@ describe('<Button />', () => {
   describe('external', () => {
     it('gets passed into the link', () => {
       const button = mountWithAppProvider(
-        <Button url="http://google.com" external />,
+        <Button id="lol" url="http://google.com" external />,
       );
       expect(button.find(UnstyledLink).prop('external')).toBeTruthy();
     });
 
     it('is false when not set', () => {
-      const button = mountWithAppProvider(<Button url="http://google.com" />);
+      const button = mountWithAppProvider(
+        <Button id="lol" url="http://google.com" />,
+      );
       expect(button.find(UnstyledLink).prop('external')).toBeFalsy();
     });
   });
 
   describe('download', () => {
     it('gets passed into the link as a boolean', () => {
-      const button = mountWithAppProvider(<Button url="/foo" download />);
+      const button = mountWithAppProvider(
+        <Button id="lol" url="/foo" download />,
+      );
       expect(button.find(UnstyledLink).prop('download')).toBe(true);
     });
 
     it('gets passed into the link as a string', () => {
       const button = mountWithAppProvider(
-        <Button url="/foo" download="file.txt" />,
+        <Button id="lol" url="/foo" download="file.txt" />,
       );
       expect(button.find(UnstyledLink).prop('download')).toBe('file.txt');
     });
 
     it('is false when not set', () => {
-      const button = mountWithAppProvider(<Button url="http://google.com" />);
+      const button = mountWithAppProvider(
+        <Button id="lol" url="http://google.com" />,
+      );
       expect(button.find(UnstyledLink).prop('download')).toBeFalsy();
     });
   });
 
   describe('icon', () => {
     it('renders an icon if it’s a component', () => {
-      const button = mountWithAppProvider(<Button icon={PlusMinor} />);
+      const button = mountWithAppProvider(<Button id="lol" icon={PlusMinor} />);
       expect(button.find(Icon).prop('source')).toBe(PlusMinor);
     });
 
     it('renders a react node if it is one', () => {
       const Icon = () => <div>Hi there!</div>;
-      const button = mountWithAppProvider(<Button icon={<Icon />} />);
+      const button = mountWithAppProvider(<Button id="lol" icon={<Icon />} />);
       expect(button.find(Icon).exists()).toBeTruthy();
     });
 
     it('does not render the markup for the icon if none is provided', () => {
-      const button = mountWithAppProvider(<Button />);
+      const button = mountWithAppProvider(<Button id="lol" />);
       expect(button.find('svg').exists()).toBe(false);
     });
   });
@@ -178,7 +186,7 @@ describe('<Button />', () => {
     it('sets an aria-label on the button', () => {
       const label = 'This deletes a thing';
       const button = mountWithAppProvider(
-        <Button accessibilityLabel={label} />,
+        <Button id="lol" accessibilityLabel={label} />,
       );
       expect(button.find('button').prop('aria-label')).toBe(label);
     });
@@ -186,7 +194,7 @@ describe('<Button />', () => {
     it('sets an aria-label on the link', () => {
       const label = 'This deletes a thing';
       const button = mountWithAppProvider(
-        <Button accessibilityLabel={label} url="http://google.com" />,
+        <Button id="lol" accessibilityLabel={label} url="http://google.com" />,
       );
       expect(button.find(UnstyledLink).prop('aria-label')).toBe(label);
     });
@@ -195,14 +203,16 @@ describe('<Button />', () => {
   describe('ariaControls', () => {
     it('sets an aria-controls on the button', () => {
       const id = 'panel1';
-      const button = mountWithAppProvider(<Button ariaControls={id} />);
+      const button = mountWithAppProvider(
+        <Button id="lol" ariaControls={id} />,
+      );
       expect(button.find('button').prop('aria-controls')).toBe(id);
     });
   });
 
   describe('ariaExpanded', () => {
     it('sets an aria-expended on the button', () => {
-      const button = mountWithAppProvider(<Button ariaExpanded />);
+      const button = mountWithAppProvider(<Button id="lol" ariaExpanded />);
       expect(button.find('button').prop('aria-expanded')).toBeTruthy();
     });
   });
@@ -213,7 +223,7 @@ describe('<Button />', () => {
         .spyOn(console, 'warn')
         .mockImplementation(() => {});
 
-      const button = mountWithAppProvider(<Button ariaPressed />);
+      const button = mountWithAppProvider(<Button id="lol" ariaPressed />);
       expect(button.find('button').prop('aria-pressed')).toBeTruthy();
 
       warningSpy.mockRestore();
@@ -231,7 +241,7 @@ describe('<Button />', () => {
       };
 
       const button = mountWithAppProvider(
-        <Button connectedDisclosure={disclosure} />,
+        <Button id="lol" connectedDisclosure={disclosure} />,
       );
 
       expect(button.find('button')).toHaveLength(2);
@@ -253,7 +263,7 @@ describe('<Button />', () => {
       };
 
       const button = mountWithAppProvider(
-        <Button connectedDisclosure={disclosure} />,
+        <Button id="lol" connectedDisclosure={disclosure} />,
       );
 
       const disclosureButton = button.find('button').at(1);
@@ -277,7 +287,7 @@ describe('<Button />', () => {
       };
 
       const button = mountWithAppProvider(
-        <Button connectedDisclosure={disclosure} />,
+        <Button id="lol" connectedDisclosure={disclosure} />,
       );
 
       const disclosureButton = button.find('button').at(1);
@@ -299,7 +309,7 @@ describe('<Button />', () => {
       };
 
       const button = mountWithAppProvider(
-        <Button connectedDisclosure={disclosure} />,
+        <Button id="lol" connectedDisclosure={disclosure} />,
       );
 
       const disclosureButton = button.find('button').at(1);
@@ -317,7 +327,7 @@ describe('<Button />', () => {
       const disclosure = {actions};
 
       const button = mountWithAppProvider(
-        <Button connectedDisclosure={disclosure} />,
+        <Button id="lol" connectedDisclosure={disclosure} />,
       );
 
       const disclosureButton = button.find('button').at(1);
@@ -334,7 +344,9 @@ describe('<Button />', () => {
   describe('onClick()', () => {
     it('is called when the button is clicked', () => {
       const onClickSpy = jest.fn();
-      const button = mountWithAppProvider(<Button onClick={onClickSpy} />);
+      const button = mountWithAppProvider(
+        <Button id="lol" onClick={onClickSpy} />,
+      );
       trigger(button.find('button'), 'onClick');
       expect(onClickSpy).toHaveBeenCalledTimes(1);
     });
@@ -342,7 +354,7 @@ describe('<Button />', () => {
     it('is called when the link is clicked', () => {
       const onClickSpy = jest.fn();
       const button = mountWithAppProvider(
-        <Button onClick={onClickSpy} url="http://google.com" />,
+        <Button id="lol" onClick={onClickSpy} url="http://google.com" />,
       );
       trigger(button.find(UnstyledLink), 'onClick');
       expect(onClickSpy).toHaveBeenCalledTimes(1);
@@ -353,7 +365,7 @@ describe('<Button />', () => {
     it('is called when the mouse enters button', () => {
       const onMouseEnterSpy = jest.fn();
       const button = mountWithAppProvider(
-        <Button onMouseEnter={onMouseEnterSpy} />,
+        <Button id="lol" onMouseEnter={onMouseEnterSpy} />,
       );
       trigger(button.find('button'), 'onMouseEnter');
       expect(onMouseEnterSpy).toHaveBeenCalledTimes(1);
@@ -362,7 +374,11 @@ describe('<Button />', () => {
     it('is called when the mouse enters link', () => {
       const onMouseEnterSpy = jest.fn();
       const button = mountWithAppProvider(
-        <Button onMouseEnter={onMouseEnterSpy} url="http://google.com" />,
+        <Button
+          id="lol"
+          onMouseEnter={onMouseEnterSpy}
+          url="http://google.com"
+        />,
       );
       trigger(button.find(UnstyledLink), 'onMouseEnter');
       expect(onMouseEnterSpy).toHaveBeenCalledTimes(1);
@@ -373,7 +389,7 @@ describe('<Button />', () => {
     it('is called when button is pressed', () => {
       const onTouchStartSpy = jest.fn();
       const button = mountWithAppProvider(
-        <Button onTouchStart={onTouchStartSpy} />,
+        <Button id="lol" onTouchStart={onTouchStartSpy} />,
       );
       trigger(button.find('button'), 'onTouchStart');
       expect(onTouchStartSpy).toHaveBeenCalledTimes(1);
@@ -382,7 +398,11 @@ describe('<Button />', () => {
     it('is called when link is pressed', () => {
       const onTouchStartSpy = jest.fn();
       const button = mountWithAppProvider(
-        <Button onTouchStart={onTouchStartSpy} url="http://google.com" />,
+        <Button
+          id="lol"
+          onTouchStart={onTouchStartSpy}
+          url="http://google.com"
+        />,
       );
       trigger(button.find(UnstyledLink), 'onTouchStart');
       expect(onTouchStartSpy).toHaveBeenCalledTimes(1);
@@ -392,7 +412,9 @@ describe('<Button />', () => {
   describe('onFocus()', () => {
     it('is called when the button is focussed', () => {
       const onFocusSpy = jest.fn();
-      const button = mountWithAppProvider(<Button onFocus={onFocusSpy} />);
+      const button = mountWithAppProvider(
+        <Button id="lol" onFocus={onFocusSpy} />,
+      );
       trigger(button.find('button'), 'onFocus');
       expect(onFocusSpy).toHaveBeenCalledTimes(1);
     });
@@ -400,7 +422,7 @@ describe('<Button />', () => {
     it('is called when the link is focussed', () => {
       const onFocusSpy = jest.fn();
       const button = mountWithAppProvider(
-        <Button onFocus={onFocusSpy} url="http://google.com" />,
+        <Button id="lol" onFocus={onFocusSpy} url="http://google.com" />,
       );
       trigger(button.find(UnstyledLink), 'onFocus');
       expect(onFocusSpy).toHaveBeenCalledTimes(1);
@@ -410,7 +432,9 @@ describe('<Button />', () => {
   describe('onBlur()', () => {
     it('is called when the button is blurred', () => {
       const onBlurSpy = jest.fn();
-      const button = mountWithAppProvider(<Button onBlur={onBlurSpy} />);
+      const button = mountWithAppProvider(
+        <Button id="lol" onBlur={onBlurSpy} />,
+      );
       trigger(button.find('button'), 'onBlur');
       expect(onBlurSpy).toHaveBeenCalledTimes(1);
     });
@@ -418,7 +442,7 @@ describe('<Button />', () => {
     it('is called when the link is blurred', () => {
       const onBlurSpy = jest.fn();
       const button = mountWithAppProvider(
-        <Button onBlur={onBlurSpy} url="http://google.com" />,
+        <Button id="lol" onBlur={onBlurSpy} url="http://google.com" />,
       );
       trigger(button.find(UnstyledLink), 'onBlur');
       expect(onBlurSpy).toHaveBeenCalledTimes(1);
@@ -429,7 +453,9 @@ describe('<Button />', () => {
     it('is called when a keypress event is registered on the button', () => {
       const spy = jest.fn();
       const button = mountWithAppProvider(
-        <Button onKeyPress={spy}>Test</Button>,
+        <Button id="lol" onKeyPress={spy}>
+          Test
+        </Button>,
       ).find('button');
       trigger(button, 'onKeyPress');
 
@@ -441,7 +467,9 @@ describe('<Button />', () => {
     it('is called when a keyup event is registered on the button', () => {
       const spy = jest.fn();
       const button = mountWithAppProvider(
-        <Button onKeyUp={spy}>Test</Button>,
+        <Button id="lol" onKeyUp={spy}>
+          Test
+        </Button>,
       ).find('button');
       trigger(button, 'onKeyUp');
       expect(spy).toHaveBeenCalled();
@@ -452,7 +480,9 @@ describe('<Button />', () => {
     it('is called when a keydown event is registered on the button', () => {
       const spy = jest.fn();
       const button = mountWithAppProvider(
-        <Button onKeyDown={spy}>Test</Button>,
+        <Button id="lol" onKeyDown={spy}>
+          Test
+        </Button>,
       ).find('button');
       trigger(button, 'onKeyDown');
       expect(spy).toHaveBeenCalled();
@@ -463,21 +493,21 @@ describe('<Button />', () => {
     const buttonPressedClasses = 'Button pressed';
 
     it('outputs a pressed button', () => {
-      const button = mountWithApp(<Button pressed />);
+      const button = mountWithApp(<Button id="lol" pressed />);
       expect(button).toContainReactComponent('button', {
         className: buttonPressedClasses,
       });
     });
 
     it("doesn't output a pressed button when disabled", () => {
-      const button = mountWithApp(<Button pressed disabled />);
+      const button = mountWithApp(<Button id="lol" pressed disabled />);
       expect(button).not.toContainReactComponent('button', {
         className: buttonPressedClasses,
       });
     });
 
     it("doesn't output a pressed button when a url is present", () => {
-      const button = mountWithApp(<Button pressed url="/" />);
+      const button = mountWithApp(<Button id="lol" pressed url="/" />);
       expect(button).not.toContainReactComponent('button', {
         className: buttonPressedClasses,
       });
@@ -486,19 +516,21 @@ describe('<Button />', () => {
 
   describe('disclosure', () => {
     it('assumes "down" if set to true', () => {
-      const button = mountWithAppProvider(<Button disclosure />);
+      const button = mountWithAppProvider(<Button id="lol" disclosure />);
       const disclosureIcon = button.find('.DisclosureIcon');
       expect(disclosureIcon!.hasClass('DisclosureIconFacingUp')).toBe(false);
     });
 
     it('is facing down if set to "down"', () => {
-      const button = mountWithAppProvider(<Button disclosure="down" />);
+      const button = mountWithAppProvider(
+        <Button id="lol" disclosure="down" />,
+      );
       const disclosureIcon = button.find('.DisclosureIcon');
       expect(disclosureIcon!.hasClass('DisclosureIconFacingUp')).toBe(false);
     });
 
     it('is facing up if set to "up"', () => {
-      const button = mountWithAppProvider(<Button disclosure="up" />);
+      const button = mountWithAppProvider(<Button id="lol" disclosure="up" />);
       const disclosureIcon = button.find('.DisclosureIcon');
       expect(disclosureIcon!.hasClass('DisclosureIconFacingUp')).toBe(true);
     });
@@ -509,7 +541,7 @@ describe('<Button />', () => {
       const warningSpy = jest
         .spyOn(console, 'warn')
         .mockImplementation(() => {});
-      mountWithApp(<Button ariaPressed />);
+      mountWithApp(<Button id="lol" ariaPressed />);
 
       expect(warningSpy).toHaveBeenCalledWith(
         'Deprecation: The ariaPressed prop has been replaced with pressed',
@@ -520,7 +552,7 @@ describe('<Button />', () => {
 
   describe('newDesignLanguage', () => {
     it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const button = mountWithApp(<Button />, {
+      const button = mountWithApp(<Button id="lol" />, {
         features: {newDesignLanguage: true},
       });
       expect(button).toContainReactComponent('button', {
@@ -529,7 +561,7 @@ describe('<Button />', () => {
     });
 
     it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const button = mountWithApp(<Button />, {
+      const button = mountWithApp(<Button id="lol" />, {
         features: {newDesignLanguage: false},
       });
       expect(button).not.toContainReactComponent('button', {

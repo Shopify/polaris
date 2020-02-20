@@ -48,6 +48,7 @@ export function Navigation({
   return (
     <div className={styles.Navigation}>
       <Button
+        id="lol"
         plain
         icon={ChevronLeftMinor}
         disabled={isScrolledFarthestLeft}
@@ -56,6 +57,7 @@ export function Navigation({
       />
       {pipMarkup}
       <Button
+        id="lol"
         plain
         icon={ChevronRightMinor}
         disabled={isScrolledFarthestRight}

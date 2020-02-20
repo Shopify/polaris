@@ -12,8 +12,10 @@ describe('<ButtonGroup />', () => {
     it('renders each child as an item', () => {
       const buttonGroup = mountWithAppProvider(
         <ButtonGroup>
-          <Button>Cancel</Button>
-          <Button primary>Save</Button>
+          <Button id="lol">Cancel</Button>
+          <Button id="lol" primary>
+            Save
+          </Button>
         </ButtonGroup>,
       );
       expect(buttonGroup.find(Item)).toHaveLength(2);
@@ -23,7 +25,9 @@ describe('<ButtonGroup />', () => {
       const key = 'cancel-button';
       const buttonGroup = mountWithAppProvider(
         <ButtonGroup>
-          <Button key={key}>Cancel</Button>
+          <Button id="lol" key={key}>
+            Cancel
+          </Button>
         </ButtonGroup>,
       );
       expect(buttonGroup.find(Item).prop('button').key).toContain(key);
@@ -32,7 +36,7 @@ describe('<ButtonGroup />', () => {
     it('adds a data-buttongroup-segmented to the outter div when segmented', () => {
       const buttonGroup = mountWithApp(
         <ButtonGroup segmented>
-          <Button />
+          <Button id="lol" />
         </ButtonGroup>,
       );
       const selector: any = {
@@ -44,7 +48,7 @@ describe('<ButtonGroup />', () => {
     it('adds a data-buttongroup-full-width to the outter div when fullWidth', () => {
       const buttonGroup = mountWithApp(
         <ButtonGroup fullWidth>
-          <Button />
+          <Button id="lol" />
         </ButtonGroup>,
       );
       const selector: any = {
@@ -56,7 +60,7 @@ describe('<ButtonGroup />', () => {
     it('adds a data-buttongroup-connected-top to the outter div when connectedTop', () => {
       const buttonGroup = mountWithApp(
         <ButtonGroup connectedTop>
-          <Button />
+          <Button id="lol" />
         </ButtonGroup>,
       );
       const selector: any = {

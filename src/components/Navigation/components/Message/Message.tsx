@@ -41,7 +41,7 @@ export function Message({
 
         <Link url={link.to}>{link.content}</Link>
 
-        <Button onClick={action.onClick} plain>
+        <Button id="lol" onClick={action.onClick} plain>
           {action.content}
         </Button>
       </Stack>

@@ -19,7 +19,7 @@ describe('<Subheading />', () => {
     it('does not set aria-label if children is a React component', () => {
       const subheading = mountWithAppProvider(
         <Subheading>
-          <Button>Button</Button>
+          <Button id="lol">Button</Button>
         </Subheading>,
       );
       expect(subheading.find('h3').prop('aria-label')).toBeUndefined();

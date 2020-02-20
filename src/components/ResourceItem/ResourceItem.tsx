@@ -224,6 +224,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
             <Popover
               activator={
                 <Button
+                  id="lol"
                   accessibilityLabel={disclosureAccessibilityLabel}
                   onClick={this.handleActionsClick}
                   plain

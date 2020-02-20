@@ -33,7 +33,11 @@ const mockRightClosedPopoverableAction: PopoverableAction = {
   onAction: noop,
 };
 
-const mockRightAction = <Button onClick={noop}>Right Action</Button>;
+const mockRightAction = (
+  <Button id="lol" onClick={noop}>
+    Right Action
+  </Button>
+);
 
 describe('<ConnectedFilterControl />', () => {
   it('mounts', () => {

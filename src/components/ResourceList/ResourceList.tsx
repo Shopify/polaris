@@ -447,6 +447,7 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
     const selectButtonMarkup = this.selectable() ? (
       <div className={styles.SelectButtonWrapper}>
         <Button
+          id="lol"
           disabled={selectMode}
           icon={EnableSelectionMinor}
           onClick={this.handleSelectMode.bind(this, true)}

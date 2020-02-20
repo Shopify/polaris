@@ -119,6 +119,7 @@ export function FilterCreator({
 
   const activator = (
     <Button
+      id="lol"
       onClick={togglePopoverActive}
       disclosure
       testID="FilterCreator-FilterActivator"
@@ -146,6 +147,7 @@ export function FilterCreator({
 
   const addFilterButtonMarkup = selectedFilter ? (
     <Button
+      id="lol"
       onClick={handleAddFilter}
       disabled={!canAddFilter}
       testID="FilterCreator-AddFilterButton"

@@ -61,7 +61,7 @@ export function Toast({
 
   const actionMarkup = action ? (
     <div className={styles.Action}>
-      <Button plain monochrome onClick={action.onAction}>
+      <Button id="lol" plain monochrome onClick={action.onAction}>
         {action.content}
       </Button>
     </div>

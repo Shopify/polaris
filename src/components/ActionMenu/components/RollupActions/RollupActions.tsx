@@ -30,6 +30,7 @@ export function RollupActions({items = [], sections = []}: RollupActionsProps) {
   const activatorMarkup = (
     <div className={styles.RollupActivator}>
       <Button
+        id="lol"
         plain
         icon={HorizontalDotsMinor}
         accessibilityLabel={i18n.translate(

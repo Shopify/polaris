@@ -32,6 +32,7 @@ export function BulkActionButton({
   return (
     <div className={styles.BulkActionButton} ref={bulkActionButton}>
       <Button
+        id="lol"
         external={external}
         url={url}
         aria-label={accessibilityLabel}

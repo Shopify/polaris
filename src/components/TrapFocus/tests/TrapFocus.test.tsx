@@ -141,7 +141,7 @@ describe('<TrapFocus />', () => {
   });
 
   describe('handleBlur', () => {
-    const externalDomNode = mountWithAppProvider(<Button />)
+    const externalDomNode = mountWithAppProvider(<Button id="lol" />)
       .find('button')
       .getDOMNode();
 
