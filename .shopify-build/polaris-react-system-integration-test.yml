@@ -15,6 +15,5 @@ steps:
     trigger: 'web-polaris-builder'
     build:
       branch: add-polaris-build-pipeline
-      commit: HEAD
       env:
         POLARIS_ARTIFACT_FILENAME: 'shopify-polaris-${BUILDKITE_COMMIT}.tgz'
