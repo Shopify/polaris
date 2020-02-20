@@ -32,6 +32,10 @@ export interface PopoverProps {
   active: boolean;
   /** The element to activate the Popover */
   activator: React.ReactElement;
+  /**
+   * Use the activator's input element to calculate the Popover position
+   * @default true
+   */
   preferInputActivator?: PopoverOverlayProps['preferInputActivator'];
   /**
    * The element type to wrap the activator with
