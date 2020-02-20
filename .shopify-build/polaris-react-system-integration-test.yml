@@ -3,15 +3,14 @@ containers:
     docker: gcr.io/shopify-docker-images/apps/production/web-platform-ci-node:10.18.0-yarn-1.21.1
 
 steps:
-  - build-polaris: &build-polaris
+  - build-polaris:
     label: 'Build polaris'
     timeout: 5m
     run:
       - yarn: ~
       - ./.shopify-build/build-and-upload-to-gcp.sh
   - wait: ~
-    continue_on_failure: false
-  - build-web: &build-web
+  - build-web:
     label: 'Build polaris'
     trigger: 'web-polaris-builder'
     build:
