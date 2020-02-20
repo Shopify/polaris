@@ -7,6 +7,7 @@
 - Added high contrast outline to `ActionList` ([#2713](https://github.com/Shopify/polaris-react/pull/2713))
 - Added high contrast border to `Button` ([#2712](https://github.com/Shopify/polaris-react/pull/2712))
 - Added styled placeholder image to `Avatar` when initials are blank ([#2693](https://github.com/Shopify/polaris-react/pull/2693))
+- Added a `preferInputActivator` prop to `Popover` to allow better positioning of the overlay ([#2754](https://github.com/Shopify/polaris-react/pull/2754))
 
 ### Bug fixes
 
@@ -17,7 +18,6 @@
 - Fixed the position property for the backdrop on `Select` from being overwritten by the focus ring ([#2748](https://github.com/Shopify/polaris-react/pull/2748))
 - Fixed `ResourceItem` `Actions` visibility on mouse out ([#2742](https://github.com/Shopify/polaris-react/pull/2742))
 - Fixed initial server / client render mismatch in `Avatar` ([#2751](https://github.com/Shopify/polaris-react/pull/2751))
-- Fixed the `Popover` reference position calculation ([#2752](https://github.com/Shopify/polaris-react/issues/2752)) ([#1415](https://github.com/Shopify/polaris-react/issues/1415))
 
 ### Documentation
 
