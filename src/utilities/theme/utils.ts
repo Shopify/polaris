@@ -1,5 +1,5 @@
 import tokens from '@shopify/polaris-tokens';
-import {colorFactory} from '@shopify/polaris-tokens/color-factory';
+import {colorFactory} from '@shopify/polaris-tokens/dist-modern';
 import {HSLColor, HSLAColor} from '../color-types';
 import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
 import {isLight} from '../color-validation';
