@@ -22,7 +22,7 @@
 ### Development workflow
 
 - Added first implementation of custom property validation ([#2616](https://github.com/Shopify/polaris-react/pull/2616))
-- Refactor consumer build test (renamed to system integration test) ([#2735](https://github.com/Shopify/polaris-react/pull/2735))
+- Refactored consumer build test (renamed to system integration test) ([#2735](https://github.com/Shopify/polaris-react/pull/2735))
 
 ### Dependency upgrades
 
