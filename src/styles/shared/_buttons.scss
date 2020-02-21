@@ -32,8 +32,8 @@
   user-select: none;
   text-decoration: none;
   transition-property: background, border, box-shadow;
-  transition-duration: duration();
-  transition-timing-function: easing();
+  transition-duration: var(--p-override-none, duration());
+  transition-timing-function: var(--p-override-none, easing());
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
@@ -68,6 +68,7 @@
 
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon));
+    @include focus-ring;
     background: var(--p-action-secondary);
     border: none;
     box-shadow: none;
@@ -78,8 +79,6 @@
       background: var(--p-action-secondary-hovered);
       border-color: transparent;
     }
-
-    @include focus-ring;
 
     &:focus {
       border-color: transparent;
@@ -94,6 +93,7 @@
 
       &::after {
         border: none;
+        box-shadow: none;
       }
     }
 
@@ -226,6 +226,7 @@
 
   &.newDesignLanguage {
     background: transparent;
+    @include focus-ring($border-width: border-width('base'));
     box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
     color: var(--p-text);
 
@@ -235,13 +236,16 @@
     }
 
     &:focus {
-      box-shadow: 0 0 0 border-width('thick') var(--p-border-secondary);
-      @include no-focus-ring;
+      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
+      @include focus-ring($style: 'focused');
     }
 
     &:active {
       box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
       background: var(--p-surface-pressed);
+      &::after {
+        box-shadow: none;
+      }
     }
 
     &.disabled {
