@@ -3,7 +3,7 @@ import {addParameters, addDecorator} from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
 import {withContexts} from '@storybook/addon-contexts/react';
 import {color, withKnobs} from '@storybook/addon-knobs';
-import DefaultThemeColors from '@shopify/polaris-tokens/dist/base.json';
+import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
