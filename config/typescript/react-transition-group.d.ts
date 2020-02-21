@@ -2,6 +2,7 @@ declare module '@material-ui/react-transition-group' {
   import {Component} from 'react';
 
   import CSSTransitionNameSpace = require('react-transition-group/CSSTransition');
+  // eslint-disable-next-line import/no-extraneous-dependencies
   import {TransitionProps} from 'react-transition-group/Transition';
 
   type FindDOMNode = () => HTMLElement | null;
