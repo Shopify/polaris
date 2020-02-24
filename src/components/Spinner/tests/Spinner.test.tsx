@@ -8,13 +8,18 @@ import {VisuallyHidden} from '../../VisuallyHidden';
 
 describe('<Spinner />', () => {
   describe('accessibilityLabel', () => {
-    it('uses the label as the aria-label for the spinner', () => {
+    it('does not render by default', () => {
+      const spinner = mountWithApp(<Spinner />);
+      expect(spinner).not.toContainReactComponent(VisuallyHidden);
+    });
+
+    it('renders when provided', () => {
       const spinner = mountWithApp(
         <Spinner accessibilityLabel="Content is loading" />,
       );
-      expect(spinner.find(VisuallyHidden)).toContainReactText(
-        'Content is loading',
-      );
+      expect(spinner).toContainReactComponent(VisuallyHidden, {
+        children: 'Content is loading',
+      });
     });
   });
 
@@ -43,13 +48,24 @@ describe('<Spinner />', () => {
   });
 
   describe('role', () => {
+    const mockAccessibilityLabel = 'mock a11y label';
     it('sets the role to status to denote advisory information to screen readers when a live region is not active', () => {
-      const spinner = mountWithApp(<Spinner hasFocusableParent={false} />);
+      const spinner = mountWithApp(
+        <Spinner
+          accessibilityLabel={mockAccessibilityLabel}
+          hasFocusableParent={false}
+        />,
+      );
       expect(spinner).toContainReactComponentTimes('span', 1, {role: 'status'});
     });
 
     it('does not set role to status when a live region is active', () => {
-      const spinner = mountWithApp(<Spinner hasFocusableParent />);
+      const spinner = mountWithApp(
+        <Spinner
+          accessibilityLabel={mockAccessibilityLabel}
+          hasFocusableParent
+        />,
+      );
       expect(spinner).not.toContainReactComponent('span', {role: 'status'});
     });
   });

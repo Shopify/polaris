@@ -63,14 +63,12 @@ export function Spinner({
 
   const spinnerSVG = size === 'large' ? spinnerLarge : spinnerSmall;
 
-  const spanAttributes = {
-    ...(!hasFocusableParent && {role: 'status'}),
-  };
-
-  const accessibilityLabelMarkup = (isAfterInitialMount ||
-    !hasFocusableParent) && (
-    <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
-  );
+  const accessibilityLabelMarkup =
+    (isAfterInitialMount || !hasFocusableParent) && accessibilityLabel ? (
+      <span role={!hasFocusableParent ? 'status' : undefined}>
+        <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
+      </span>
+    ) : null;
 
   return (
     <React.Fragment>
@@ -80,7 +78,7 @@ export function Spinner({
         className={className}
         draggable={false}
       />
-      <span {...spanAttributes}>{accessibilityLabelMarkup}</span>
+      {accessibilityLabelMarkup}
     </React.Fragment>
   );
 }
