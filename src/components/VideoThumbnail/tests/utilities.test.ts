@@ -1,4 +1,4 @@
-import {secondsToFormatPretty} from './time';
+import {secondsToFormatPretty} from '../utilities';
 
 describe('VideoThummbnail utilities', () => {
   describe('secondsToFormatPretty', () => {

@@ -1,230 +1,86 @@
 import React from 'react';
 import {Heading, Popover, Button, ActionList} from 'components';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {VideoCard} from '../VideoCard';
 
-function createVideoCard() {
-  return {
-    title: '',
-    primaryActions: createPrimaryAction(),
-    description: '',
-    popoverActions: createPopoverActions(2),
-  };
-}
-
-function createPrimaryAction() {
-  return [
-    {
-      content: '',
-      onAction: () => {},
-      url: '',
-      external: true,
-      accessibilityLabel: '',
-    },
-  ];
-}
-
-function createPopoverActions(num: number) {
-  return new Array(num).fill({}).map(createPopoverAction);
-}
-
-function createPopoverAction() {
-  return {
-    content: '',
+const mockProps = {
+  title: 'test title',
+  description: 'test description',
+  primaryAction: {
+    content: 'test primary action',
     onAction: () => {},
-  };
-}
+  },
+};
 
 describe('<VideoCard>', () => {
-  it('renders title and checks contents', () => {
-    const titleText = 'Getting Started';
-    const videoCard = mountWithApp(
-      <VideoCard {...createVideoCard()} title={titleText} />,
-    );
-    expect(videoCard.find(Heading)).not.toBeNull();
-    expect(videoCard.find(Heading)!).toContainReactText(titleText);
+  it('renders the title as a Heading', () => {
+    const title = 'Getting Started';
+    const videoCard = mountWithApp(<VideoCard {...mockProps} title={title} />);
+
+    expect(videoCard).toContainReactComponent(Heading, {children: title});
   });
 
-  it('renders description and checks contents', () => {
-    const descriptionLabel =
-      'Discover how Shopify can power up your entrepreneurial journey.';
+  it('renders the description as a paragraph', () => {
+    const description = 'test';
     const videoCard = mountWithApp(
-      <VideoCard {...createVideoCard()} description={descriptionLabel} />,
+      <VideoCard {...mockProps} description={description} />,
     );
-    expect(videoCard.find('p', {className: 'Description'})).not.toBeNull();
-    expect(videoCard.find('p', {className: 'Description'})).toContainReactText(
-      descriptionLabel,
-    );
+
+    expect(videoCard).toContainReactComponent('p', {children: description});
   });
 
-  it('renders CTA and checks contents', () => {
-    const mainCTALabel = 'Learn about getting started and more';
-    const mainCTAUrl = '';
-    const accesssibilityLabel = 'button1';
+  it('renders a Button with the primaryAction', () => {
+    const primaryAction = {content: 'test primary action'};
     const videoCard = mountWithApp(
-      <VideoCard
-        {...createVideoCard()}
-        primaryActions={[
-          {
-            content: mainCTALabel,
-            url: mainCTAUrl,
-            external: true,
-            accessibilityLabel: accesssibilityLabel,
-          },
-        ]}
-      />,
+      <VideoCard {...mockProps} primaryAction={primaryAction} />,
     );
-    expect(videoCard.find(Button)).not.toBeNull();
+
     expect(videoCard).toContainReactComponent(Button, {
-      url: mainCTAUrl,
-      external: true,
-      accessibilityLabel: accesssibilityLabel,
+      children: primaryAction.content,
     });
-    expect(
-      videoCard.find(Button, {
-        children: mainCTALabel,
-      })!,
-    ).toContainReactText(mainCTALabel);
   });
 
-  it('renders CTA and plain button and checks contents', () => {
-    const secondaryCTALabel = 'Additional Info';
-    const secondaryCTAUrl = '';
-    const accesssibilityLabel = 'button2';
+  it('renders secondaryAction as a plain Button', () => {
+    const secondaryAction = {content: 'test'};
     const videoCard = mountWithApp(
-      <VideoCard
-        {...createVideoCard()}
-        primaryActions={[
-          {
-            content: '',
-            url: '',
-            external: true,
-            accessibilityLabel: '',
-          },
-          {
-            content: secondaryCTALabel,
-            url: secondaryCTAUrl,
-            external: true,
-            accessibilityLabel: accesssibilityLabel,
-          },
-        ]}
-      />,
+      <VideoCard {...mockProps} secondaryAction={secondaryAction} />,
     );
-    expect(videoCard.find(Button)).not.toBeNull();
+
     expect(videoCard).toContainReactComponent(Button, {
-      url: secondaryCTAUrl,
-      external: true,
-      accessibilityLabel: accesssibilityLabel,
+      children: secondaryAction.content,
     });
-    expect(
-      videoCard.find(Button, {
-        children: secondaryCTALabel,
-      })!,
-    ).toContainReactText(secondaryCTALabel);
   });
 
-  it('calls the onAction callback when the CTA is clicked', () => {
-    const spy = jest.fn();
-    const videoCard = mountWithAppProvider(
-      <VideoCard
-        {...createVideoCard()}
-        primaryActions={[
-          {
-            onAction: spy,
-          },
-        ]}
-      />,
-    );
-    videoCard
-      .find('button')
-      .last()
-      .simulate('click');
-    expect(spy).toHaveBeenCalled();
-  });
-
-  it('calls the onAction callback when the plain button is clicked', () => {
-    const spy = jest.fn();
-    const videoCard = mountWithAppProvider(
-      <VideoCard
-        {...createVideoCard()}
-        primaryActions={[
-          {
-            content: '',
-          },
-          {
-            onAction: spy,
-          },
-        ]}
-      />,
-    );
-
-    videoCard
-      .find('button')
-      .last()
-      .simulate('click');
-    expect(spy).toHaveBeenCalled();
-  });
-
-  it('toggles the popover menu when clicked and calls the first action item', () => {
-    const spyDismiss = jest.fn();
-    const spyFeedback = jest.fn();
-    const videoCard = mountWithAppProvider(
-      <VideoCard
-        {...createVideoCard()}
-        popoverActions={[
-          {
-            content: 'Dismiss',
-            onAction: spyDismiss,
-          },
-          {
-            content: 'Feedback',
-            onAction: spyFeedback,
-          },
-        ]}
-      />,
-    );
-    trigger(videoCard.find(Popover)!.find(Button)!, 'onClick');
-    expect(videoCard.find(Popover)!.prop('active')).toBe(true);
-
-    trigger(videoCard.find(Popover)!.find(Button)!, 'onClick');
-    expect(videoCard.find(Popover)!.prop('active')).toBe(false);
-
-    const actionList = videoCard.find(ActionList)!;
-    expect(actionList.prop('items')).toHaveLength(2);
-
-    actionList
-      .find('button')
-      .first()
-      .simulate('click');
-    expect(spyDismiss).toHaveBeenCalled();
-    actionList
-      .find('button')
-      .last()
-      .simulate('click');
-    expect(spyFeedback).toHaveBeenCalled();
-  });
-
-  it('does not render popover menu if secondary actions are empty', () => {
+  it('renders a Popover and ActionList when popoverActions are provided', () => {
+    const actions = [{content: 'Dismiss'}];
     const videoCard = mountWithApp(
-      <VideoCard {...createVideoCard()} popoverActions={[]} />,
+      <VideoCard {...mockProps} popoverActions={actions} />,
     );
+
+    expect(videoCard).toContainReactComponentTimes(Popover, 1);
+
+    const popoverActivator = videoCard.find(Popover)!.find(Button);
+    popoverActivator!.trigger('onClick');
+
+    expect(videoCard).toContainReactComponent(ActionList, {
+      items: actions,
+    });
+  });
+
+  it('does not render a Popover if popoverActions are empty', () => {
+    const videoCard = mountWithApp(
+      <VideoCard {...mockProps} popoverActions={[]} />,
+    );
+
     expect(videoCard).not.toContainReactComponent(Popover);
   });
 
   it('renders in landscape mode by default', () => {
-    const videoCard = mountWithApp(<VideoCard {...createVideoCard()} />);
-    expect(videoCard.find('div', {className: 'PortraitContainer'})).toBeNull();
-  });
+    const videoCard = mountWithApp(<VideoCard {...mockProps} />);
 
-  it('renders in portrait mode if specified', () => {
-    const videoCard = mountWithApp(
-      <VideoCard {...createVideoCard()} portrait />,
-    );
-    expect(
-      videoCard.find('div', {className: 'Container PortraitContainer'}),
-    ).not.toBeNull();
+    expect(videoCard.find('div')).toContainReactComponentTimes('div', 0, {
+      className: 'portrait',
+    });
   });
 });

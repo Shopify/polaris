@@ -1,13 +1,17 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {useI18n} from '../../utilities/i18n';
 
 import {PlayIcon} from './illustrations';
-import {secondsToFormatPretty} from './utilities/time';
+import {secondsToFormatPretty} from './utilities';
+
 import styles from './VideoThumbnail.scss';
 
 export interface VideoThumbnailProps {
   thumbnailUrl: string;
   videoLength?: number;
+  /** Custom ARIA label for play button.
+   * @default 'Play video'
+   */
   accessibilityLabel?: string;
   onClick(): void;
   onBeforeStartPlaying?(): void;
@@ -16,54 +20,53 @@ export interface VideoThumbnailProps {
 export const VideoThumbnail = ({
   thumbnailUrl,
   videoLength,
+  /** Custom ARIA label for play button.
+   * @default 'Play video'
+   */
   accessibilityLabel,
   onClick,
-  onBeforeStartPlaying = noop,
+  onBeforeStartPlaying,
 }: VideoThumbnailProps) => {
   const i18n = useI18n();
-  const videoLengthParsed = videoLength
-    ? secondsToFormatPretty(videoLength)
+  const videoLengthParsed = secondsToFormatPretty(videoLength);
+  const length = videoLengthParsed
+    ? `${
+        videoLengthParsed!.hours
+          ? i18n.translate('Polaris.VideoThumbnail.hoursLabel', {
+              hours: videoLengthParsed!.hours,
+            })
+          : ''
+      } ${
+        videoLengthParsed!.minutes
+          ? i18n.translate('Polaris.VideoThumbnail.minutesLabel', {
+              minutes: videoLengthParsed!.minutes,
+            })
+          : ''
+      } ${
+        videoLengthParsed!.seconds
+          ? i18n.translate('Polaris.VideoThumbnail.secondsLabel', {
+              seconds: videoLengthParsed!.seconds,
+            })
+          : ''
+      }`
     : null;
 
-  const getTimeLabel = useCallback(() => {
-    return `${
-      videoLengthParsed && videoLengthParsed!.hours
-        ? i18n.translate('Polaris.VideoThumbnail.hoursLabel', {
-            hours: videoLengthParsed!.hours,
-          })
-        : ''
-    } ${
-      videoLengthParsed && videoLengthParsed!.minutes
-        ? i18n.translate('Polaris.VideoThumbnail.minutesLabel', {
-            minutes: videoLengthParsed!.minutes,
-          })
-        : ''
-    } ${
-      videoLengthParsed && videoLengthParsed!.seconds
-        ? i18n.translate('Polaris.VideoThumbnail.secondsLabel', {
-            seconds: videoLengthParsed!.seconds,
-          })
-        : ''
-    }`;
-  }, [i18n, videoLengthParsed]);
+  const defaultLabel = length
+    ? i18n.translate('Polaris.VideoThumbnail.playButtonWithTime', {
+        length,
+      })
+    : i18n.translate('Polaris.VideoThumbnail.playButtonDefault');
 
-  const buttonLabel =
-    accessibilityLabel ||
-    (videoLengthParsed
-      ? `${i18n.translate(
-          'Polaris.VideoThumbnail.playButtonWithTime',
-        )}${getTimeLabel()}`
-      : i18n.translate('Polaris.VideoThumbnail.playButtonDefault'));
-  const videoLengthMarkup = videoLength ? (
+  const buttonLabel = accessibilityLabel ? accessibilityLabel : defaultLabel;
+
+  const videoLengthMarkup = videoLengthParsed ? (
     <p className={styles.Timestamp}>{videoLengthParsed!.timeLabel}</p>
   ) : null;
 
   return (
     <div
       className={styles.Thumbnail}
-      style={{
-        backgroundImage: `url(${thumbnailUrl})`,
-      }}
+      style={{backgroundImage: `url(${thumbnailUrl})`}}
     >
       <button
         type="button"
@@ -79,5 +82,3 @@ export const VideoThumbnail = ({
     </div>
   );
 };
-
-function noop() {}

@@ -1,25 +1,20 @@
 ---
 name: Video thumbnail
-category: Structure
+category: Images and icons
 keywords:
-  - Videothumbnail
-  - actionable
+  - video
+  - VideoThumbnail
   - updates
   - new features
   - video thumbnail
   - feature thumbnail
-  - video thumbnail url
-  - video thumbnail length
-  - video thumbnail accessibility label
-  - video thumbnail onClick
+  - education
+  - contextual learning system
 ---
 
 # Video thumbnail
 
-The Video thumbnail is used to surface a thumbnail image, play button icon, and timestamp for a
-contextual video in the contextual learning system. This component is used when an implementer decides
-that they would like to have a thumbnail visible to the user, and only when the user clicks the play button,
-then they will surface their video player of choice in the format that they desire (modal, separate div, etc.).
+Video thumbnails provide consistent controls for video cards in the contextual learning system. When clicked, conditionally present a video player in the format of your choice. For example, within a modal or a full screen container.
 
 ---
 
@@ -64,7 +59,7 @@ Omit the timestamp
 
 ## Examples
 
-### Default video thumbnail
+### Basic video thumbnail
 
 ```jsx
 <VideoThumbnail
@@ -77,9 +72,8 @@ Omit the timestamp
 
 ## Related components
 
-- To group similar concepts and tasks together, [use the thumbnail component](https://polaris.shopify.com/components/structure/thumbnail)
-- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
-- To explain a feature that merchants haven’t tried yet, [use the empty state component](https://polaris.shopify.com/components/structure/empty-state)
+- To surface educational learning content in-context, [use the video card component](https://polaris.shopify.com/components/structure/video-card)
+- To present a small visual anchor for an object, [use the thumbnail component](https://polaris.shopify.com/components/images-and-icons/thumbnail)
 
 ---
 
@@ -105,8 +99,8 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-Images included in video thumbnails are implemented as decorative images so that they’re skipped by screen readers.
+Images included in video thumbnails are implemented as decorative background images so that they’re skipped by screen readers.
 
-The play button is screen-reader friendly. When tabbed onto by a screen-reader, a video of length 1:20 is read as “Play video of length 1 minute and 20 seconds”, and if no time is provided then the defaulted accessibilityLabel reads “Play video”.
+The play button is keyboard accessible and the `aria-label` includes the video length when provided. For example, a video of length 1:20 is read as “Play video of length 1 minute and 20 seconds”. If no video length is provided, the default label reads “Play video”.
 
 <!-- /content-for -->

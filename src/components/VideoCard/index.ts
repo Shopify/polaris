@@ -1,1 +1,1 @@
-export {VideoCard} from './VideoCard';
+export * from './VideoCard';

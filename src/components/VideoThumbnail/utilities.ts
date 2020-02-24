@@ -7,20 +7,23 @@ interface TimeProps {
   minutes: number | null;
   seconds: number | null;
 }
-export function secondsToFormatPretty(numSeconds: number): TimeProps | null {
-  if (isNaN(numSeconds) || numSeconds < 0) {
+
+export function secondsToFormatPretty(numSeconds?: number): TimeProps | null {
+  if (!numSeconds || isNaN(numSeconds) || numSeconds < 0) {
     return null;
   }
 
   const {hours, minutes, seconds} = secondsToTimeComponents(numSeconds);
+  const hasHours = numSeconds > HOUR;
+  const hoursText = hasHours ? `${hours}:` : '';
+  const minutesText = `${hasHours ? ensureTwoDigits(minutes) : minutes}:`;
+  const secondsText = `${ensureTwoDigits(seconds)}`;
 
   return {
-    timeLabel: `${numSeconds > HOUR ? `${hours}:` : ''}${
-      numSeconds > HOUR ? `${ensureTwoDigits(minutes)}` : `${minutes}`
-    }:${ensureTwoDigits(seconds)}`,
-    hours: numSeconds > HOUR ? hours : null,
-    minutes,
     seconds,
+    minutes,
+    hours: hasHours ? hours : null,
+    timeLabel: `${hoursText}${minutesText}${secondsText}`,
   };
 }
 

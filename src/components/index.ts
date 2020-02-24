@@ -295,8 +295,8 @@ export type {TruncateProps} from './Truncate';
 export {UnstyledLink} from './UnstyledLink';
 export type {UnstyledLinkProps} from './UnstyledLink';
 
-export {VisuallyHidden, VisuallyHiddenProps} from './VisuallyHidden';
-
 export {VideoCard} from './VideoCard';
 
 export {VideoThumbnail} from './VideoThumbnail';
+
+export {VisuallyHidden, VisuallyHiddenProps} from './VisuallyHidden';

@@ -1,54 +1,63 @@
-$breakpoint: 804px;
+@import '../../styles/common';
 
-.Container {
+$portrait-breakpoint: 804px;
+
+.VideoCard {
   height: 100%;
+  width: 100%;
   display: flex;
   flex-flow: row wrap;
 
-  @media screen and (max-width: $breakpoint) {
+  &.portrait {
+    flex-flow: column nowrap;
+  }
+
+  @include breakpoint-before($portrait-breakpoint, inclusive) {
     flex-flow: column nowrap;
   }
 }
 
-.PortraitContainer {
-  flex-flow: column nowrap;
+.VideoContainer {
+  &:not(.portrait) {
+    flex-basis: 40%;
+  }
 }
 
 .InfoContainer {
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-}
 
-.PortraitInfoContainer {
-  position: relative;
-}
-
-.VideoContainer {
-  flex-basis: 40%;
+  &:not(.portrait) {
+    flex-basis: 60%;
+  }
 }
 
 .Popover {
   position: absolute;
   z-index: z-index(overlay);
-  top: 0;
-  right: 0;
+  top: spacing();
+  right: spacing();
 }
 
-.InfoWrapper {
-  position: relative;
-  flex-basis: 60%;
-}
-
-.ContentIndented {
-  padding-right: spacing();
-}
-
-.Description {
-  padding-top: spacing(tight);
+.Heading {
+  margin-right: spacing(extra-loose);
 }
 
 .PrimaryAction {
-  padding-top: spacing();
+  margin-right: spacing(tight);
+}
+
+.SecondaryAction {
+  margin-left: -spacing(tight);
+}
+
+.ActionContainer {
+  padding-top: spacing(tight);
+
+  &.portrait {
+    padding-top: spacing(extra-loose);
+  }
+
+  @include breakpoint-before($portrait-breakpoint, inclusive) {
+    padding-top: spacing(extra-loose);
+  }
 }

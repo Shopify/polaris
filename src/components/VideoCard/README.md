@@ -8,24 +8,13 @@ keywords:
   - new features
   - video card
   - feature card
-  - video card heading
-  - video card body content
-  - video card text
-  - video card cta
-  - video card call to action
-  - video card button
-  - video card with secondary cta
-  - video card with secondary button
-  - dismissible video card
   - card with thumbnail
   - thumbnail card
 ---
 
 # Video card
 
-Video cards are used to surface contextual videos and provide layouts and controls introduced
-in the contextual learning system. This component makes presenting educational videos to merchants
-more consistent, while providing the flexibility to configure a video player and its behaviour outside of the component.
+Video cards provide a consistent layout for contextual learning system content. Use to wrap thumbnails of educational videos about Shopify admin features in context.
 
 ---
 
@@ -33,21 +22,18 @@ more consistent, while providing the flexibility to configure a video player and
 
 Video cards should:
 
-- Clearly articulate the benefit of the feature and what it does
+- Clearly articulate the benefit of the feature and what it does in the context of where it is managed
 - Provide merchants with a clear call to action
 - Show targeted content toward specific user types where possible to maximize relevance and impact
-- Use a thumbnail that helps to communicate the subject of the video or merchant benefit
-- Can be displayed higher on the page in Empty States, but should be positioned at the bottom of the page
-  in Non-Empty States to avoid getting in the way of a merchant task
-- Video Cards should generally be dismissable
-- Suggested Duration: Keep contextual learning videos generally short (1-5 mins)
+- Use a video player with a thumbnail that helps to communicate the subject of the video or merchant benefit
+- Be positioned at the bottom of the page to avoid getting in the way of a merchant task, unless used within an empty state
+- Be dismissable
 
 ---
 
 ## Content guidelines
 
-- Do not use video cards as advertisements for your feature. Instead they should educate the merchant about how to
-  accomplish tasks related to the section they’re in.
+- Do not use video cards as advertisements for your feature. Instead they should educate the merchant about how to accomplish tasks related to the section they’re in.
 
 ### Title
 
@@ -57,19 +43,17 @@ Video card titles should follow the content guidelines for [headings and subhead
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling merchants
-  what actions are available to them (especially something new). Don’t use
-  permissive language like “you can”.
+- Actionable: start sentences with imperative verbs when telling merchants what actions are available to them, especially something new. Don’t use permissive language like “you can”.
 
 <!-- usagelist -->
 
 #### Do
 
-Get performance data for all your sales channels.
+Get performance data for all of your sales channels.
 
 #### Don’t
 
-Now you can get performance data for all your sales channels.
+Now you can get performance data for all of your sales channels.
 
 <!-- end -->
 
@@ -146,27 +130,20 @@ Add a menu item
 - Follow the 16:9 ratio, otherwise the image may appear cropped
 - If the thumbnail shows a person, avoid cropping the person’s head off
 
-### Character Limits
-
-- Single Line Headline approx 14 characters
-- Two Line Headline approx 28 characters
-- Body 50 characters
-- CTA 14 characters
-
 ---
 
 ## Examples
 
-### Portrait video card
+### Basic video card
 
-Use to help merchants know what clear, single action to take in the section the video card is displayed.
+Use to surface educational information about a feature or opportunity in the context of where it is managed.
 
 ```jsx
 <VideoCard
   title="Getting Started"
-  primaryActions={[
+  primaryAction={[
     {
-      content: 'Learn about getting started and more',
+      content: 'Learn about getting started',
       onAction: () => {},
     },
   ]}
@@ -183,24 +160,21 @@ Use to help merchants know what clear, single action to take in the section the 
 
 ### Video card with secondary action
 
-Use to let merchants know about a feature or opportunity where there are two distinct actions they can take on the information.
+Use when there are two distinct actions merchants can take on the information in the video.
 
 ```jsx
 <VideoCard
   title="Getting Started"
-  primaryActions={[
-    {
-      content: 'Learn about getting started and more',
-      onAction: () => {},
-    },
-    {
-      content: 'Click here',
-      onAction: () => {},
-    },
-  ]}
+  primaryAction={{
+    content: 'Learn about getting started',
+    onAction: () => {},
+  }}
+  secondaryAction={{
+    content: 'Click here',
+    onAction: () => {},
+  }}
   description="Discover how Shopify can power up your entrepreneurial journey."
   popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
-  portrait
 >
   <VideoThumbnail
     videoLength={80}
@@ -209,19 +183,18 @@ Use to let merchants know about a feature or opportunity where there are two dis
 </VideoCard>
 ```
 
-### Landscape video card
+### Portrait video card
 
-Use when you would like to surface a video card but not take up too much screen space or push critical content below the fold.
+Use when vertical screen space is not limited or when the video card comprises the page's primary content. For example, in an empty state.
 
 ```jsx
 <VideoCard
+  portrait
   title="Getting Started"
-  primaryActions={[
-    {
-      content: 'Learn about getting started and more',
-      onAction: () => {},
-    },
-  ]}
+  primaryAction={{
+    content: 'Learn about getting started',
+    onAction: () => {},
+  }}
   description="Discover how Shopify can power up your entrepreneurial journey."
   popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
 >

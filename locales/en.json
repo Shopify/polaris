@@ -233,7 +233,7 @@
     },
     "VideoThumbnail": {
       "playButtonDefault": "Play video",
-      "playButtonWithTime": "Play video of length ",
+      "playButtonWithTime": "Play video of length {length}",
       "hoursLabel": "{hours} hours",
       "minutesLabel": "{minutes} minutes",
       "secondsLabel": "{seconds} seconds"
