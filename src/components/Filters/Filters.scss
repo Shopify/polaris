@@ -103,8 +103,12 @@ $seperator-color: var(--p-border, color('sky'));
     );
   }
 
-  &:focus:not(:active) {
-    box-shadow: inset 0.2rem 0 0 var(--p-focused, color('indigo'));
+  &.newDesignLanguage {
+    @include focus-ring;
+
+    &:focus:not(:active) {
+      @include focus-ring($style: 'focused');
+    }
   }
 }
 
