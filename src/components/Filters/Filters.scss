@@ -106,6 +106,7 @@ $seperator-color: var(--p-border, color('sky'));
   &.newDesignLanguage {
     @include focus-ring;
 
+    // stylelint-disable-next-line selector-max-specificity
     &:focus:not(:active) {
       @include focus-ring($style: 'focused');
     }
