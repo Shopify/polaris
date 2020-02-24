@@ -187,6 +187,11 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   &.newDesignLanguage {
     padding: $item-vertical-padding spacing(tight);
     border-radius: var(--p-border-radius-base);
+
+    @media (-ms-high-contrast: active) {
+      @include recolor-icon(var(--p-icon-on-interactive));
+    }
+
     // States
     // Hovered (:hover)
     &:hover {
@@ -222,6 +227,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     &:focus {
       box-shadow: none;
       background-image: none;
+
+      @media (-ms-high-contrast: active) {
+        outline: 1px solid ms-high-contrast-color('text');
+      }
     }
 
     @include focus-ring;
@@ -234,6 +243,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     &.destructive {
       @include recolor-icon(var(--p-icon-critical));
       color: var(--p-interactive-critical);
+
+      @media (-ms-high-contrast: active) {
+        @include recolor-icon(var(--p-icon-on-critical));
+      }
     }
 
     // Hovered (:hover)
@@ -270,6 +283,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     // Disabled (.disabled)
     &.disabled {
       background-image: none;
+      background-color: var(--p-surface-disabled);
       color: var(--p-text-disabled);
       .Image {
         @include recolor-icon(var(--p-icon-disabled));
