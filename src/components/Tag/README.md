@@ -39,6 +39,20 @@ Use to allow merchants to add attributes to, and remove attributes from, an obje
 <Tag>Wholesale</Tag>
 ```
 
+### Clickable tag
+
+Use to allow merchants to add attributes to an object.
+
+```jsx
+<Tag
+  onClick={() => {
+    console.log('Clicked');
+  }}
+>
+  Wholesale
+</Tag>
+```
+
 <!-- content-for: android -->
 
 ![Tag for Android](/public_images/components/Tag/android/default@2x.png)
