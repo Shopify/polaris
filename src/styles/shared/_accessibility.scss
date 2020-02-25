@@ -14,3 +14,9 @@
   border: 0 !important;
   // stylelint-enable declaration-no-important
 }
+
+@mixin high-contrast-outline {
+  @media (-ms-high-contrast: active) {
+    outline: 1px solid ms-high-contrast-color('text');
+  }
+}
