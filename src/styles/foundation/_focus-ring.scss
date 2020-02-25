@@ -1,3 +1,6 @@
+// stylelint-disable-next-line scss/partial-no-import
+@import './accessibility';
+
 /// Sets the focus ring for an interactive element
 /// @param {String} $size - The size of the border radius on the focus ring.
 /// @param {String} $style - Focus ring state.
