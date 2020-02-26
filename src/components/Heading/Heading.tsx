@@ -1,5 +1,6 @@
 import React from 'react';
 import {HeadingTagName} from '../../types';
+import {preventOrphans} from '../../utilities/string';
 import styles from './Heading.scss';
 
 export interface HeadingProps {
@@ -13,5 +14,8 @@ export interface HeadingProps {
 }
 
 export function Heading({element: Element = 'h2', children}: HeadingProps) {
-  return <Element className={styles.Heading}>{children}</Element>;
+  const content = React.Children.map(children, (child) => {
+    return typeof child === 'string' ? preventOrphans(child) : child;
+  });
+  return <Element className={styles.Heading}>{content}</Element>;
 }
