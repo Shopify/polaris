@@ -266,6 +266,7 @@ export function Item({
   function getClickHandler(onClick: ItemProps['onClick']) {
     return (event: MouseEvent<HTMLElement>) => {
       const {currentTarget} = event;
+      currentTarget.blur();
 
       if (currentTarget.getAttribute('href') === location) {
         event.preventDefault();

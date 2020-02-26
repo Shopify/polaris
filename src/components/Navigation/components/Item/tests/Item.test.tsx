@@ -45,6 +45,7 @@ describe('<Nav.Item />', () => {
     trigger(item.find(UnstyledLink).first(), 'onClick', {
       preventDefault: jest.fn(),
       currentTarget: {
+        blur: jest.fn(),
         getAttribute: () => '/admin/orders',
       },
     });
@@ -65,6 +66,7 @@ describe('<Nav.Item />', () => {
     trigger(item.find(UnstyledLink).first(), 'onClick', {
       preventDefault: jest.fn(),
       currentTarget: {
+        blur: jest.fn(),
         getAttribute: () => '/admin/orders',
       },
     });

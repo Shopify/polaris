@@ -55,6 +55,7 @@ export function DetailsPage() {
   const [userMenuActive, setUserMenuActive] = useState(false);
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
+  const [navItemActive, setNavItemActive] = useState('');
   const [nameFieldValue, setNameFieldValue] = useState(
     defaultState.current.nameFieldValue,
   );
@@ -210,7 +211,6 @@ export function DetailsPage() {
       contextControl={contextControlMarkup}
     />
   );
-
   // ---- Navigation ----
   const navigationMarkup = (
     <Navigation location="/" contextControl={contextControlMarkup}>
@@ -219,42 +219,103 @@ export function DetailsPage() {
           {
             label: 'Home',
             icon: HomeMajorTwotone,
-            onClick: toggleIsLoading,
+            onClick: () => {
+              toggleIsLoading();
+              setNavItemActive('home');
+            },
+            matches: navItemActive === 'home',
+            url: '#',
           },
           {
             label: 'Orders',
             icon: OrdersMajorTwotone,
-            onClick: toggleIsLoading,
+            onClick: () => {
+              toggleIsLoading();
+              setNavItemActive('orders');
+            },
+            matches: navItemActive === 'orders',
+            url: '#',
           },
           {
             label: 'Products',
             icon: ProductsMajorTwotone,
-            onClick: toggleIsLoading,
+            onClick: () => {
+              toggleIsLoading();
+              setNavItemActive('products');
+            },
+            matches: navItemActive === 'products',
+            url: '#',
+            subNavigationItems: [
+              {
+                label: 'All products',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('all-products');
+                },
+                matches: navItemActive.includes('products'),
+                url: '#',
+              },
+              {
+                url: '#',
+                label: 'Drafts',
+
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('drafts');
+                },
+                matches: navItemActive === 'drafts',
+              },
+            ],
           },
           {
             label: 'Customers',
             icon: CustomersMajorTwotone,
-            onClick: toggleIsLoading,
+            onClick: () => {
+              toggleIsLoading();
+              setNavItemActive('customers');
+            },
+            matches: navItemActive === 'customers',
+            url: '#',
           },
           {
             label: 'Analytics',
             icon: AnalyticsMajorTwotone,
-            onClick: toggleIsLoading,
+            onClick: () => {
+              toggleIsLoading();
+              setNavItemActive('analytics');
+            },
+            matches: navItemActive === 'analytics',
+            url: '#',
           },
           {
             label: 'Marketing',
             icon: MarketingMajorTwotone,
-            onClick: toggleIsLoading,
+            onClick: () => {
+              toggleIsLoading();
+              setNavItemActive('marketing');
+            },
+            matches: navItemActive === 'marketing',
+            url: '#',
           },
           {
             label: 'Discounts',
             icon: DiscountsMajorTwotone,
-            onClick: toggleIsLoading,
+            onClick: () => {
+              toggleIsLoading();
+              setNavItemActive('discounts');
+            },
+            matches: navItemActive === 'discounts',
+            url: '#',
           },
           {
             label: 'Apps',
             icon: AppsMajorTwotone,
-            onClick: toggleIsLoading,
+            onClick: () => {
+              toggleIsLoading();
+              setNavItemActive('apps');
+            },
+            matches: navItemActive === 'apps',
+            url: '#',
           },
         ]}
       />
