@@ -26,6 +26,7 @@
 - Added first implementation of custom property validation ([#2616](https://github.com/Shopify/polaris-react/pull/2616))
 - Refactored consumer build test (renamed to system integration test) ([#2735](https://github.com/Shopify/polaris-react/pull/2735))
 - Added Storybook Knobs for customizing theme ([#2674](https://github.com/Shopify/polaris-react/pull/2674))
+- Export missing OptionListProps ([#2777](https://github.com/Shopify/polaris-react/pull/2777))
 
 ### Dependency upgrades
 
