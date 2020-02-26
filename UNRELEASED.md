@@ -11,6 +11,7 @@
 
 ### Bug fixes
 
+- Fixed incorrect used while importing from `polaris-tokens` ([#2778](https://github.com/Shopify/polaris-react/pull/2778))
 - Updated Polaris Tokens, which now builds modern tokens using TypeScript, fixing issues where Edge threw errors related to modern JavaScript features ([#2763](https://github.com/Shopify/polaris-react/pull/2763))
 - Fixed `TrapFocus` stealing focus from other `TrapFocus`'s ([#2681](https://github.com/Shopify/polaris-react/pull/2681))
 - Fixed focus state color on monochrome `Buttons` ([#2684](https://github.com/Shopify/polaris-react/pull/2684))
@@ -23,6 +24,7 @@
 
 ### Development workflow
 
+- Added `check:custom-property` job in travis ([#2778](https://github.com/Shopify/polaris-react/pull/2778))
 - Added first implementation of custom property validation ([#2616](https://github.com/Shopify/polaris-react/pull/2616))
 - Refactored consumer build test (renamed to system integration test) ([#2735](https://github.com/Shopify/polaris-react/pull/2735))
 - Added Storybook Knobs for customizing theme ([#2674](https://github.com/Shopify/polaris-react/pull/2674))
