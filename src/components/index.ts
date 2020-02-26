@@ -124,7 +124,7 @@ export {
   isNavigationItemActive,
 } from './Navigation';
 
-export {OptionList} from './OptionList';
+export {OptionList, OptionListProps} from './OptionList';
 
 export {Page, PageProps} from './Page';
 
