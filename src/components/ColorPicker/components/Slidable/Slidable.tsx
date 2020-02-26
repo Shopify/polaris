@@ -180,7 +180,7 @@ export class Slidable extends React.PureComponent<SlidableProps, State> {
   };
 }
 
-function isMouseMoveEvent(event: MouseEvent | TouchEvent): event is MouseEvent {
+function isMouseMoveEvent(event: Event): event is MouseEvent {
   return event.type === 'mousemove';
 }
 
