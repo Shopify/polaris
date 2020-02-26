@@ -37,7 +37,7 @@ $Backdrop-opacity: 0.88;
   color: $error-color;
 
   .CloseButton {
-    fill: $error-color;
+    fill: var(--p-icon-on-critical, $error-color);
   }
 }
 
@@ -51,7 +51,7 @@ $Backdrop-opacity: 0.88;
   border: none;
   appearance: none;
   background: transparent;
-  fill: var(--p-text, color('white'));
+  fill: var(--p-icon, color('white'));
   cursor: pointer;
 
   &:focus {
