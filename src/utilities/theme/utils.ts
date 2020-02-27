@@ -18,10 +18,10 @@ export function buildCustomProperties(
   newDesignLanguage: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
-  const {colors = {}, colorScheme} = themeConfig;
+  const {colors = {}, colorScheme, config} = themeConfig;
   return newDesignLanguage
     ? customPropertyTransformer({
-        ...colorFactory(colors, colorScheme),
+        ...colorFactory(colors, colorScheme, config),
         ...tokens,
       })
     : buildLegacyColors(themeConfig);
