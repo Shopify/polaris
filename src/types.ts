@@ -7,7 +7,6 @@ export type NewDesignLanguageColor =
   | 'critical'
   | 'warning'
   | 'highlight'
-  | 'interactive'
   | 'success'
   | 'primary'
   | 'primaryDisabled'

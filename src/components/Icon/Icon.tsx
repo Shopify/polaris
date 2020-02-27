@@ -25,7 +25,6 @@ const NEW_DESIGN_LANGUAGE_COLORS = [
   'critical',
   'warning',
   'highlight',
-  'interactive',
   'success',
   'primary',
   'primaryDisabled',

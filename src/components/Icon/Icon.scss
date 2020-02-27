@@ -397,10 +397,6 @@
   @include recolor-icon(var(--p-icon-success));
 }
 
-.colorInteractive {
-  @include recolor-icon(var(--p-interactive));
-}
-
 .colorPrimary {
   @include recolor-icon(var(--p-action-primary));
 }
