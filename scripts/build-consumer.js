@@ -33,7 +33,7 @@ console.log('Cleaning up old build...');
 rm('-rf', projectPolarisDir);
 
 console.log('Creating new build directory...');
-mkdir(projectPolarisDir);
+mkdir('-p', projectPolarisDir);
 
 console.log('Copying build to node_modules...');
 cp('-R', files, projectPolarisDir);
