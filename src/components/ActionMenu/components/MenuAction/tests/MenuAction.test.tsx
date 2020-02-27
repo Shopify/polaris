@@ -133,10 +133,10 @@ describe('<MenuAction />', () => {
 
     it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const menuAction = mountWithApp(<MenuAction />, {
-        features: {newDesignLanguage: true},
+        features: {newDesignLanguage: false},
       });
       expect(menuAction).toContainReactComponent('button', {
-        className: 'MenuAction newDesignLanguage',
+        className: 'MenuAction',
       });
     });
   });
