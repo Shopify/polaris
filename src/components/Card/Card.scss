@@ -4,6 +4,7 @@
   overflow: var(--p-override-visible, hidden);
   background-color: var(--p-surface, color('white'));
   box-shadow: var(--p-card-shadow, shadow());
+  outline: border-width(base) solid transparent;
 
   + .Card {
     margin-top: spacing(loose);
@@ -11,10 +12,6 @@
 
   @include page-content-when-not-fully-condensed {
     border-radius: var(--p-border-radius-wide, border-radius());
-  }
-
-  @media (-ms-high-contrast: active) {
-    box-shadow: inset 0 0 0 border-width(base) ms-high-contrast-color('text');
   }
 }
 
