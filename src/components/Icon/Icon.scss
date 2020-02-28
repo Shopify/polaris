@@ -27,7 +27,7 @@
 }
 
 .isColored {
-  color: var(--p-text-on-interactive, color('white'));
+  color: var(--p-surface, color('white'));
 }
 
 .colorWhite {
@@ -355,7 +355,7 @@
   @include color-icon('purple');
 
   &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon));
+    @include recolor-icon(var(--p-icon-highlight));
   }
 }
 
