@@ -2,7 +2,7 @@ import React from 'react';
 import {useFeatures} from '../../utilities/features';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {IconProps} from '../../types';
+import {IconProps, isNewDesignLanguageColor} from '../../types';
 
 import styles from './Icon.scss';
 
@@ -14,22 +14,6 @@ const COLORS_WITH_BACKDROPS = [
   'yellowDark',
   'ink',
   'inkLighter',
-];
-
-const NEW_DESIGN_LANGUAGE_COLORS = [
-  'base',
-  'disabled',
-  'hovered',
-  'pressed',
-  'subdued',
-  'critical',
-  'warning',
-  'highlight',
-  'success',
-  'primary',
-  'primaryDisabled',
-  'primaryHovered',
-  'primaryPressed',
 ];
 
 // This is needed for the polaris
@@ -73,7 +57,7 @@ export function Icon({
     color &&
     sourceType === 'external' &&
     newDesignLanguage === true &&
-    NEW_DESIGN_LANGUAGE_COLORS.includes(color)
+    isNewDesignLanguageColor(color)
   ) {
     // eslint-disable-next-line no-console
     console.warn(
