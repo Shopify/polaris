@@ -104,7 +104,7 @@
     "@shopify/react-testing": "^1.8.0",
     "@shopify/sewing-kit": "^0.112.0",
     "@shopify/shrink-ray": "^1.0.0",
-    "@shopify/splash": "^0.0.8",
+    "@shopify/splash": "^0.0.10",
     "@storybook/addon-a11y": "^5.3.2",
     "@storybook/addon-actions": "^5.3.2",
     "@storybook/addon-console": "^1.2.1",
