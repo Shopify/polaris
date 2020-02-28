@@ -43,6 +43,9 @@ const Overrides = {
   duration150: '150ms',
   easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',
   ease: 'cubic-bezier(0.4, 0.22, 0.28, 1)',
+  rangeSliderThumbSizeBase: rem('16px'),
+  rangeSliderThumbSizeActive: rem('24px'),
+  rangeSliderThumbScale: '1.5',
 };
 
 export const Tokens = {

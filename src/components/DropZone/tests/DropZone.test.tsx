@@ -155,7 +155,7 @@ describe('<DropZone />', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('does not call callbacks when not allowed multiple and a file is uploaded', () => {
+  it('calls callbacks when not allowed multiple and a replacement file is uploaded', () => {
     const dropZone = mountWithAppProvider(
       <DropZone
         allowMultiple={false}
@@ -171,15 +171,15 @@ describe('<DropZone />', () => {
     fireEvent({element: dropZone, spy});
     expect(spy).toHaveBeenCalledWith(files, acceptedFiles, rejectedFiles);
 
-    // All events should now be ignored
+    // Attempt to replace the current file
     fireEvent({element: dropZone, spy});
-    expect(spy).not.toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith(files, acceptedFiles, rejectedFiles);
     fireEvent({element: dropZone, eventType: 'dragenter', spy});
-    expect(spy).not.toHaveBeenCalled();
+    expect(spy).toHaveBeenCalled();
     fireEvent({element: dropZone, eventType: 'dragleave', spy});
-    expect(spy).not.toHaveBeenCalled();
+    expect(spy).toHaveBeenCalled();
     fireEvent({element: dropZone, eventType: 'dragover', spy});
-    expect(spy).not.toHaveBeenCalled();
+    expect(spy).toHaveBeenCalled();
   });
 
   it('renders <Labelled /> when `label` is provided', () => {
@@ -217,6 +217,19 @@ describe('<DropZone />', () => {
         .at(4)
         .simulate('click');
       expect(spy).toHaveBeenCalled();
+    });
+
+    it('does not calls the onClick when the dropzone is disabled', () => {
+      const spy = jest.fn();
+      const dropZone = mountWithAppProvider(
+        <DropZone disabled label="My DropZone label" onClick={spy} />,
+      );
+
+      dropZone
+        .find('div')
+        .at(4)
+        .simulate('click');
+      expect(spy).not.toHaveBeenCalled();
     });
 
     it('triggers the file input click event if no onClick is provided', () => {

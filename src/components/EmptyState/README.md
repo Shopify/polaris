@@ -209,7 +209,7 @@ Use to explain a section or feature before merchants have used it within the con
     <EmptyState
       heading="Upload a file to get started"
       action={{content: 'Upload files'}}
-      image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+      image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
     >
       <p>
         You can use the Files section to upload images, videos, and other
