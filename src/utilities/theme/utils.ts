@@ -1,5 +1,7 @@
 import tokens from '@shopify/polaris-tokens';
 import {colorFactory} from '@shopify/polaris-tokens/dist-modern';
+import {mergeConfigs} from '@shopify/polaris-tokens/dist-modern/utils';
+import {config as base} from '@shopify/polaris-tokens/dist-modern/configs/base';
 import {HSLColor, HSLAColor} from '../color-types';
 import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
 import {isLight} from '../color-validation';
@@ -19,9 +21,11 @@ export function buildCustomProperties(
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
   const {colors = {}, colorScheme, config} = themeConfig;
+  const mergedConfig = mergeConfigs(base, config || {});
+
   return newDesignLanguage
     ? customPropertyTransformer({
-        ...colorFactory(colors, colorScheme, config),
+        ...colorFactory(colors, colorScheme, mergedConfig),
         ...tokens,
       })
     : buildLegacyColors(themeConfig);
