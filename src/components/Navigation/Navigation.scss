@@ -2,7 +2,7 @@
 @import './variables';
 
 // Base Navigation styles
-$active-indicator: rem(3px);
+$active-indicator-width: rem(3px);
 $nav-max-width: rem(360px);
 $unstable-nav-max-width: rem(258px);
 .Navigation {
@@ -93,9 +93,9 @@ $disabled-fade: 0.6;
       position: absolute;
       top: 0;
       bottom: 0;
-      left: -8px;
+      left: -1 * spacing(tight);
       height: 100%;
-      width: $active-indicator;
+      width: $active-indicator-width;
       background-color: var(--p-action-primary);
       border-top-right-radius: var(--p-border-radius-base);
       border-bottom-right-radius: var(--p-border-radius-base);
