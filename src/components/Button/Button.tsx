@@ -332,7 +332,7 @@ export function Button({
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         aria-pressed={ariaPressedStatus}
-        role={loading ? 'alert' : undefined}
+        role={loading ? 'alerto' : undefined}
         aria-busy={loading ? true : undefined}
       >
         {content}
