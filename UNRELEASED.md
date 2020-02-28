@@ -4,6 +4,8 @@
 
 ### Enhancements
 
+- Added high contrast outline to `Popover`, `Card` and `Indicator` ([#2792](https://github.com/Shopify/polaris-react/pull/2792))
+
 ### Bug fixes
 
 - Allow changing the `DropZone` file if allowMultiple is false ([#2737](https://github.com/Shopify/polaris-react/pull/2737))
