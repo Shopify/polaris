@@ -4,6 +4,8 @@
 
 ### Enhancements
 
+- Added high contrast outline to `Popover`, `Card` and `Indicator` ([#2792](https://github.com/Shopify/polaris-react/pull/2792))
+
 ### Bug fixes
 
 - Fixed incorrect used while importing from `polaris-tokens` ([#2778](https://github.com/Shopify/polaris-react/pull/2778))

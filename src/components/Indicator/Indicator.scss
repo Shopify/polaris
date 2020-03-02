@@ -14,6 +14,7 @@ $base-position: rem(-4px);
     width: $size;
     height: $size;
     border-radius: 100%;
+    border: calc(#{$size} / 2) solid transparent;
   }
 }
 
