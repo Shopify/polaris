@@ -64,6 +64,7 @@ $icon-size: rem(16px);
 
     &:hover {
       background: var(--p-action-secondary-hovered);
+      @include high-contrast-outline;
     }
 
     &:focus {

@@ -110,6 +110,10 @@ $seperator-color: var(--p-border, color('sky'));
     &:focus:not(:active) {
       @include focus-ring($style: 'focused');
     }
+
+    &:hover {
+      @include high-contrast-outline;
+    }
   }
 }
 

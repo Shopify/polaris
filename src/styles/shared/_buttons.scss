@@ -78,6 +78,7 @@
     &:hover {
       background: var(--p-action-secondary-hovered);
       border-color: transparent;
+      @include high-contrast-outline;
     }
 
     &:focus {

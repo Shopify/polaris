@@ -65,6 +65,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
 
     &:hover {
       background: var(--p-action-secondary-hovered);
+      @include high-contrast-outline;
     }
 
     &:focus {
