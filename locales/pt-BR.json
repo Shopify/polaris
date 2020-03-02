@@ -165,7 +165,7 @@
         "filterButtonLabel": "Filtrar",
         "selectFilterKeyPlaceholder": "Selecione um filtro...",
         "addFilterButtonLabel": "Adicionar filtro",
-        "showAllWhere": "Exibir todos os {resourceNamePlural} nos quais:"
+        "showAllWhere": "Exibir todo {resourceNamePlural} no qual:"
       },
       "FilterControl": {
         "textFieldLabel": "Pesquisar {resourceNamePlural}"
