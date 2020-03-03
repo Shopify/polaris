@@ -1,4 +1,4 @@
-import roleVariants from '@shopify/polaris-tokens/formats/utils/color-factory/configs/base';
+import {config} from '@shopify/polaris-tokens/dist-modern/configs/base';
 import {toCssCustomPropertySyntax, Tokens} from '../theme';
 
 export const nonDesignLangaugeCustomProperties = [
@@ -13,7 +13,7 @@ export const nonDesignLangaugeCustomProperties = [
 ];
 
 export const designLangaugeCustomProperties = ([] as string[]).concat(
-  ...Object.values(roleVariants).map((variant) =>
+  ...Object.values(config).map((variant) =>
     variant.map(({name}) => toCssCustomPropertySyntax(name)),
   ),
   ...Object.keys(Tokens).map(toCssCustomPropertySyntax),

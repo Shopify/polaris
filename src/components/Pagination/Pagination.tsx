@@ -132,14 +132,18 @@ export function Pagination({
 
   const constructedPrevious =
     previousTooltip && hasPrevious ? (
-      <Tooltip content={previousTooltip}>{previousButton}</Tooltip>
+      <Tooltip activatorWrapper="span" content={previousTooltip}>
+        {previousButton}
+      </Tooltip>
     ) : (
       previousButton
     );
 
   const constructedNext =
     nextTooltip && hasNext ? (
-      <Tooltip content={nextTooltip}>{nextButton}</Tooltip>
+      <Tooltip activatorWrapper="span" content={nextTooltip}>
+        {nextButton}
+      </Tooltip>
     ) : (
       nextButton
     );

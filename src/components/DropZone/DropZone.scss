@@ -185,6 +185,10 @@ $dropzone-stacking-order: (
         @include reset-after;
       }
     }
+
+    &:hover {
+      @include high-contrast-outline;
+    }
   }
 
   .Container {

@@ -191,7 +191,7 @@ $stacking-order: (
   @include recolor-icon(color('white'));
 
   &.newDesignLanguage {
-    @include recolor-icon(var(--p-button-text));
+    @include recolor-icon(var(--p-icon-on-primary));
   }
 
   &.disabled {
@@ -230,7 +230,7 @@ $stacking-order: (
   }
 
   &.newDesignLanguage {
-    @include recolor-icon(var(--p-button-text));
+    @include recolor-icon(var(--p-icon-on-critical));
   }
 }
 
@@ -359,9 +359,10 @@ $stacking-order: (
   }
 
   &.destructive {
-    color: color('red', 'dark');
-    &:hover {
-      color: color('red', 'darker');
+    color: var(--p-action-critical, color('red', 'dark'));
+    &:focus,
+    &:active {
+      color: var(--p-action-critical-pressed, color('red', 'darker'));
     }
   }
 
@@ -410,11 +411,15 @@ $stacking-order: (
   // stylelint-disable selector-max-class
   &.newDesignLanguage {
     // redeclaring these styles here for specificity
+    @include recolor-icon(var(--p-interactive));
     background: transparent;
     border: 0;
     box-shadow: none;
-    @include recolor-icon(var(--p-interactive));
     color: var(--p-interactive);
+
+    &::after {
+      content: none;
+    }
 
     &:hover,
     &:focus,
@@ -438,18 +443,19 @@ $stacking-order: (
     &:focus {
       @include recolor-icon(var(--p-interactive));
       color: var(--p-interactive);
-      text-decoration: none;
       @include no-focus-ring;
     }
 
     &:active {
       @include recolor-icon(var(--p-interactive-pressed));
       color: var(--p-interactive-pressed);
-      text-decoration: none;
     }
 
-    &:focus:not(:active) > .Content {
-      @include focus-ring($style: 'focused');
+    &:focus:not(:active) {
+      text-decoration: none;
+      > .Content {
+        @include focus-ring($style: 'focused');
+      }
     }
 
     &:focus:not(.iconOnly) > .Content {
@@ -528,6 +534,12 @@ $stacking-order: (
 .sizeSlim {
   min-height: $slim-min-height;
   padding: $slim-vertical-padding spacing(base-tight);
+
+  &.newDesignLanguage {
+    // Local override for slim button height.
+    $slim-min-height: rem(28px);
+    min-height: $slim-min-height;
+  }
 }
 
 .sizeLarge {
@@ -656,11 +668,15 @@ $stacking-order: (
     }
 
     &.newDesignLanguage {
+      @include focus-ring($border-width: border-width('base'));
       box-shadow: 0 0 0 border-width('base') currentColor;
 
       &:focus {
-        box-shadow: 0 0 0 border-width('thick') currentColor;
-        @include no-focus-ring;
+        @include focus-ring($style: 'focused');
+      }
+
+      &:active::after {
+        box-shadow: none;
       }
     }
     // stylelint-enable selector-max-class

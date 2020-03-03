@@ -44,6 +44,7 @@ export interface PopoverOverlayProps {
   active: boolean;
   id: string;
   activator: HTMLElement;
+  preferInputActivator?: PositionedOverlayProps['preferInputActivator'];
   preventAutofocus?: boolean;
   sectioned?: boolean;
   fixed?: boolean;
@@ -115,6 +116,7 @@ export class PopoverOverlay extends React.PureComponent<
       fullWidth,
       preferredPosition = 'below',
       preferredAlignment = 'center',
+      preferInputActivator = true,
       fixed,
     } = this.props;
     const {transitionStatus} = this.state;
@@ -136,6 +138,7 @@ export class PopoverOverlay extends React.PureComponent<
         fullWidth={fullWidth}
         active={active}
         activator={activator}
+        preferInputActivator={preferInputActivator}
         preferredPosition={preferredPosition}
         preferredAlignment={preferredAlignment}
         render={this.renderPopover.bind(this)}

@@ -652,6 +652,31 @@ describe('<ResourceItem />', () => {
       });
     });
   });
+
+  describe('focused', () => {
+    it('removes the focus state when mousing out a focused item', () => {
+      const resourceItem = mountWithApp(
+        <ResourceListContext.Provider value={mockSelectModeContext}>
+          <ResourceItem id={itemId} url={url} />
+        </ResourceListContext.Provider>,
+      );
+      const wrapperDiv = resourceItem.find('div');
+
+      wrapperDiv!.trigger('onFocus', {
+        target: wrapperDiv!.domNode as HTMLDivElement,
+      });
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'ResourceItem focused selectable selectMode focusedInner',
+      });
+
+      wrapperDiv!.trigger('onMouseOut');
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'ResourceItem selectable selectMode',
+      });
+    });
+  });
 });
 
 function noop() {}

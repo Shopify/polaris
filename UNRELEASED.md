@@ -4,29 +4,25 @@
 
 ### Enhancements
 
-- Added high contrast outline to `ActionList` ([#2713](https://github.com/Shopify/polaris-react/pull/2713))
-- Added high contrast border to `Button` ([#2712](https://github.com/Shopify/polaris-react/pull/2712))
-- Added styled placeholder image to `Avatar` when initials are blank ([#2693](https://github.com/Shopify/polaris-react/pull/2693))
+- Added high contrast outline to `Popover`, `Card` and `Indicator` ([#2792](https://github.com/Shopify/polaris-react/pull/2792))
 
 ### Bug fixes
 
-- Fixed `TrapFocus` stealing focus from other `TrapFocus`'s ([#2681](https://github.com/Shopify/polaris-react/pull/2681))
-- Fixed focus state color on monochrome `Buttons` ([#2684](https://github.com/Shopify/polaris-react/pull/2684))
-- Fixed container's width on `Modal` ([#2692](https://github.com/Shopify/polaris-react/pull/2692))
+- Fixed incorrect used while importing from `polaris-tokens` ([#2778](https://github.com/Shopify/polaris-react/pull/2778))
+- Fixed `DropZone` not supporting new file selection when `allowMultiple` is `false` ([#2737](https://github.com/Shopify/polaris-react/pull/2737))
+- Fixed `Pagination` sizing on small screens with tooltips ([2747](https://github.com/Shopify/polaris-react/pull/2747))
 
 ### Documentation
 
 ### Development workflow
 
-- Added first implementation of custom property validation ([#2616](https://github.com/Shopify/polaris-react/pull/2616))
+- Added `check:custom-property` job in travis ([#2778](https://github.com/Shopify/polaris-react/pull/2778))
+- Exported missing OptionListProps ([#2777](https://github.com/Shopify/polaris-react/pull/2777))
 
 ### Dependency upgrades
 
 ### Code quality
 
-- Updated dependencies in example apps ([#2722](https://github.com/Shopify/polaris-react/pull/2722))
-- Fixed `Tabs` tests that were preventing `React` updates ([#2702](https://github.com/Shopify/polaris-react/pull/2702))
-- Moved to Travis for CI ([#2652](https://github.com/Shopify/polaris-react/pull/2652))
 - Removed various type assertions and bumped test coverage ([#2638](https://github.com/Shopify/polaris-react/pull/2638))
 
 ### Deprecations

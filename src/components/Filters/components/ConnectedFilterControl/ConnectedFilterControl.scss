@@ -53,7 +53,8 @@ $stacking-order: (
   display: flex;
 
   .Item > * > * {
-    margin-left: -1px;
+    margin-right: var(--p-button-group-item-spacing, 0);
+    margin-left: var(--p-override-none, -1px);
     border-radius: 0 !important;
   }
 
@@ -69,7 +70,7 @@ $stacking-order: (
   white-space: nowrap;
 
   > div {
-    margin-left: -1px;
+    margin-left: var(--p-override-none, -1px);
   }
 }
 

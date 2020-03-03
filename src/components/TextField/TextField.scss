@@ -388,6 +388,16 @@ $stacking-order: (
     }
   }
 
+  .Backdrop-connectedLeft::after {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .Backdrop-connectedRight::after {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
   .Spinner {
     --p-text-field-spinner-offset-large: calc(
       var(--p-text-field-spinner-offset) + #{border-width()}

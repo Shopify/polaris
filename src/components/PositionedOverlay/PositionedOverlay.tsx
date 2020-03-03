@@ -33,6 +33,7 @@ interface OverlayDetails {
 export interface PositionedOverlayProps {
   active: boolean;
   activator: HTMLElement;
+  preferInputActivator?: boolean;
   preferredPosition?: PreferredPosition;
   preferredAlignment?: PreferredAlignment;
   fullWidth?: boolean;
@@ -195,14 +196,14 @@ export class PositionedOverlay extends React.PureComponent<
           onScrollOut,
           fullWidth,
           fixed,
+          preferInputActivator = true,
         } = this.props;
 
-        const textFieldActivator = activator.querySelector('input');
+        const preferredActivator = preferInputActivator
+          ? activator.querySelector('input') || activator
+          : activator;
 
-        const activatorRect =
-          textFieldActivator != null
-            ? getRectForNode(textFieldActivator)
-            : getRectForNode(activator);
+        const activatorRect = getRectForNode(preferredActivator);
 
         const currentOverlayRect = getRectForNode(this.overlay);
         const scrollableElement = isDocument(this.scrollableContainer)
