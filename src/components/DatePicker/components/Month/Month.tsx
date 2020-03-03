@@ -7,6 +7,7 @@ import {
   isDateBefore,
   isDateAfter,
   isSameDay,
+  isSameDate,
   getWeeksForMonth,
   dateIsInRange,
   dateIsSelected,
@@ -29,6 +30,7 @@ export interface MonthProps {
   disableDatesAfter?: Date;
   allowRange?: boolean;
   weekStartsOn: Weekdays;
+  newDesignLanguage?: boolean;
   onChange?(date: Range): void;
   onHover?(hoverEnd: Date): void;
   onFocus?(date: Date): void;
@@ -108,6 +110,24 @@ export function Month({
       (disableDatesBefore && isDateBefore(day, disableDatesBefore)) ||
       (disableDatesAfter && isDateAfter(day, disableDatesAfter));
 
+    const isFirstSelectedDay =
+      allowRange && selected && isDateStart(day, selected);
+    const isLastSelectedDay =
+      allowRange &&
+      selected &&
+      ((!isSameDate(selected.start, selected.end) &&
+        isDateEnd(day, selected)) ||
+        (hoverDate &&
+          isSameDate(selected.start, selected.end) &&
+          isDateAfter(hoverDate, selected.start) &&
+          isSameDay(day, hoverDate) &&
+          !isFirstSelectedDay));
+    const rangeIsDifferent = !(
+      selected && isSameDate(selected.start, selected.end)
+    );
+    const isHoveringRight = hoverDate && isDateBefore(day, hoverDate);
+    const isHoveringLeft = hoverDate && isDateAfter(day, hoverDate);
+
     return (
       <Day
         focused={focusedDate != null && isSameDay(day, focusedDate)}
@@ -124,6 +144,11 @@ export function Month({
           hoverDate != null &&
           isInHoveringRange(day, selected, hoverDate)
         }
+        isLastSelectedDay={isLastSelectedDay}
+        isFirstSelectedDay={isFirstSelectedDay}
+        isHoveringRight={isHoveringRight}
+        isHoveringLeft={isHoveringLeft}
+        rangeIsDifferent={rangeIsDifferent}
       />
     );
   }
@@ -165,4 +190,18 @@ function getWeekdaysOrdered(weekStartsOn: Weekdays): Weekdays[] {
   const weekDays = [...WEEKDAYS];
   const restOfDays = weekDays.splice(weekStartsOn);
   return [...restOfDays, ...weekDays];
+}
+
+function isDateEnd(day: Date | null, range: Range) {
+  if (day == null) return false;
+  const {end} = range;
+
+  return Boolean(end && isSameDay(end, day));
+}
+
+function isDateStart(day: Date | null, range: Range) {
+  if (day == null) return false;
+  const {start} = range;
+
+  return Boolean(start && isSameDay(start, day));
 }

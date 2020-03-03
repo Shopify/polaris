@@ -11,6 +11,23 @@ $font-size: rem(12px);
 // stylelint-disable-next-line color-no-hex
 $in-range-border-color: #9ca6de;
 
+@mixin left-half-circle {
+  border-radius: 50% 0 0 50%;
+}
+
+@mixin right-half-circle {
+  border-radius: 0 50% 50% 0;
+}
+
+@mixin radius-with-focus-ring {
+  @content;
+  &:focus:not(:active) {
+    &::after {
+      @content;
+    }
+  }
+}
+
 .DatePicker {
   position: relative;
 }
@@ -168,4 +185,76 @@ $in-range-border-color: #9ca6de;
   margin-top: rem(2px);
   padding-bottom: spacing(extra-tight);
   text-align: center;
+}
+
+.newDesignLanguage {
+  .Day {
+    box-shadow: none;
+
+    &:hover {
+      background: var(--p-interactive-hovered);
+      color: var(--p-text-on-interactive);
+    }
+
+    @include focus-ring;
+    // stylelint-disable-next-line selector-max-specificity
+    &:focus:not(:active) {
+      @include focus-ring($style: 'focused');
+      box-shadow: none;
+    }
+  }
+
+  .Day-selected {
+    background: var(--p-interactive);
+    border: none;
+    color: var(--p-text-on-interactive);
+  }
+
+  // stylelint-disable-next-line selector-max-specificity
+  .Day:not(.Day-lastInRange):not(.Day-firstInRange):not(.Day-inRange) {
+    border-radius: spacing(extra-tight);
+  }
+
+  .Day-firstInRange {
+    @include radius-with-focus-ring {
+      border-radius: spacing(extra-tight);
+    }
+
+    &.Day-hasRange,
+    &.Day-hoverRight {
+      @include radius-with-focus-ring {
+        @include left-half-circle;
+      }
+    }
+  }
+
+  .Day-lastInRange {
+    @include radius-with-focus-ring {
+      @include right-half-circle;
+    }
+  }
+
+  .Week {
+    margin-bottom: rem(2px);
+
+    // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+    > .Day-inRange:first-child:not(.Day-firstInRange):not(.Day-lastInRange) {
+      border-radius: spacing(extra-tight) 0 0 spacing(extra-tight);
+    }
+
+    // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+    > .Day-inRange:last-child:not(.Day-firstInRange):not(.Day-lastInRange) {
+      border-radius: 0 spacing(extra-tight) spacing(extra-tight) 0;
+    }
+  }
+
+  .Day,
+  .EmptyDay {
+    border: none;
+  }
+
+  .Day-inRange {
+    z-index: auto;
+    background: var(--p-surface-selected);
+  }
 }
