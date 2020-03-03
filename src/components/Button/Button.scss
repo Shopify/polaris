@@ -191,7 +191,7 @@ $stacking-order: (
   @include recolor-icon(color('white'));
 
   &.newDesignLanguage {
-    @include recolor-icon(var(--p-button-text));
+    @include recolor-icon(var(--p-icon-on-primary));
   }
 
   &.disabled {
@@ -230,7 +230,7 @@ $stacking-order: (
   }
 
   &.newDesignLanguage {
-    @include recolor-icon(var(--p-button-text));
+    @include recolor-icon(var(--p-icon-on-critical));
   }
 }
 
