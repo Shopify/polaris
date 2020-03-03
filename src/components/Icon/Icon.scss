@@ -365,20 +365,8 @@
   @include recolor-icon(var(--p-icon));
 }
 
-.colorDisabled {
-  @include recolor-icon(var(--p-icon-disabled));
-}
-
 .colorSubdued {
   @include recolor-icon(var(--p-icon-subdued));
-}
-
-.colorHovered {
-  @include recolor-icon(var(--p-icon-hovered));
-}
-
-.colorPressed {
-  @include recolor-icon(var(--p-icon-pressed));
 }
 
 .colorCritical {
@@ -399,18 +387,6 @@
 
 .colorPrimary {
   @include recolor-icon(var(--p-action-primary));
-}
-
-.colorPrimaryDisabled {
-  @include recolor-icon(var(--p-action-primary-disabled));
-}
-
-.colorPrimaryHovered {
-  @include recolor-icon(var(--p-action-primary-hovered));
-}
-
-.colorPrimaryPressed {
-  @include recolor-icon(var(--p-action-primary-pressed));
 }
 
 .Svg,

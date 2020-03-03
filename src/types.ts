@@ -38,18 +38,12 @@ export type Color =
 
 const NEW_DESIGN_LANGUAGE_COLORS = [
   'base',
-  'disabled',
-  'hovered',
-  'pressed',
   'subdued',
   'critical',
   'warning',
   'highlight',
   'success',
   'primary',
-  'primaryDisabled',
-  'primaryHovered',
-  'primaryPressed',
 ] as const;
 type NewDesignLanguageColor = typeof NEW_DESIGN_LANGUAGE_COLORS[number];
 export function isNewDesignLanguageColor(
