@@ -380,7 +380,8 @@
 .colorHighlight {
   @include recolor-icon(var(--p-icon-highlight));
 }
-👍 .colorSuccess {
+
+.colorSuccess {
   @include recolor-icon(var(--p-icon-success));
 }
 
