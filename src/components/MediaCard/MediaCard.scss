@@ -17,7 +17,7 @@ $portrait-breakpoint: 804px;
   }
 }
 
-.VideoContainer {
+.MediaContainer {
   &:not(.portrait) {
     flex-basis: 40%;
   }

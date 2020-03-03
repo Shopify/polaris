@@ -101,13 +101,13 @@ export function MediaCard({
     </div>
   );
 
-  const videoCardClassName = classNames(
+  const mediaCardClassName = classNames(
     styles.MediaCard,
     portrait && styles.portrait,
   );
 
-  const videoContainerClassName = classNames(
-    styles.VideoContainer,
+  const mediaContainerClassName = classNames(
+    styles.MediaContainer,
     portrait && styles.portrait,
   );
 
@@ -118,8 +118,8 @@ export function MediaCard({
 
   return (
     <Card>
-      <div className={videoCardClassName}>
-        <div className={videoContainerClassName}>{children}</div>
+      <div className={mediaCardClassName}>
+        <div className={mediaContainerClassName}>{children}</div>
         <div className={infoContainerClassName}>
           <Card.Section>
             {popoverActionsMarkup}
