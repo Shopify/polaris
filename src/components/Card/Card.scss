@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .Card {
-  overflow: var(--p-override-visible, hidden);
+  overflow: var(--p-override-visible, visible);
   background-color: var(--p-surface, color('white'));
   box-shadow: var(--p-card-shadow, shadow());
   outline: border-width(base) solid transparent;
@@ -29,6 +29,8 @@
 
 .Section {
   padding: spacing();
+  border-bottom-left-radius: border-radius();
+  border-bottom-right-radius: border-radius();
 
   @include page-content-when-not-fully-condensed {
     padding: spacing(loose);
