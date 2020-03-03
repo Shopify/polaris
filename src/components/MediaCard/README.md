@@ -15,13 +15,13 @@ keywords:
 
 # Media card
 
-## Media cards provide a consistent layout to present the merchants with information.
+## Media cards provide a consistent layout to present visual information to merchants. The visual media is used to provide additional context to the written information it's paired with.
 
 ## Best practices
 
 Media cards should:
 
-- Clearly articulate the benefit of the feature and what it does in the context of where it is managed
+- Clearly articulate the benefit of the feature or opportunity presented to merchants
 - Provide merchants with a clear call to action
 - Show targeted content toward specific user types where possible to maximize relevance and impact
 - Be dismissable
@@ -147,8 +147,6 @@ Use to surface educational information about a feature or opportunity.
     style={{
       objectFit: 'cover',
       objectPosition: 'center',
-      maxHeight: '321px',
-      maxWidth: '570px',
     }}
     src="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
   />
