@@ -21,6 +21,8 @@ Video thumbnails provide consistent controls for video cards in the contextual l
 ## Best practices
 
 - Use a thumbnail that helps to communicate the subject of the video or merchant benefit
+- Use a video player with a thumbnail that helps to communicate the subject of the video or merchant benefit
+- Be positioned at the bottom of the page to avoid getting in the way of a merchant task, unless used within an empty state
 
 ---
 

@@ -1,43 +1,40 @@
 ---
-name: Video card
+name: Media card
 category: Structure
 keywords:
   - MediaCard
   - actionable
   - updates
   - new features
-  - video card
+  - Media card
+  - image card
   - feature card
   - card with thumbnail
   - thumbnail card
 ---
 
-# Video card
+# Media card
 
-Video cards provide a consistent layout for contextual learning system content. Use to wrap thumbnails of educational videos about Shopify admin features in context.
-
----
+## Media cards provide a consistent layout to present the merchants with information.
 
 ## Best practices
 
-Video cards should:
+Media cards should:
 
 - Clearly articulate the benefit of the feature and what it does in the context of where it is managed
 - Provide merchants with a clear call to action
 - Show targeted content toward specific user types where possible to maximize relevance and impact
-- Use a video player with a thumbnail that helps to communicate the subject of the video or merchant benefit
-- Be positioned at the bottom of the page to avoid getting in the way of a merchant task, unless used within an empty state
 - Be dismissable
 
 ---
 
 ## Content guidelines
 
-- Do not use video cards as advertisements for your feature. Instead they should educate the merchant about how to accomplish tasks related to the section they’re in.
+- Do not use Media cards as advertisements for your feature. Instead they should educate the merchant about how to accomplish tasks related to the section they’re in.
 
 ### Title
 
-Video card titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
+Media card titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
 
 ### Body content
 
@@ -124,19 +121,13 @@ Add a menu item
 
 <!-- end -->
 
-### Thumbnail
-
-- Relevant: should describe the video through the use of images or be an image of a section in the video
-- Follow the 16:9 ratio, otherwise the image may appear cropped
-- If the thumbnail shows a person, avoid cropping the person’s head off
-
 ---
 
 ## Examples
 
-### Basic video card
+### Basic Media card
 
-Use to surface educational information about a feature or opportunity in the context of where it is managed.
+Use to surface educational information about a feature or opportunity.
 
 ```jsx
 <MediaCard
@@ -151,16 +142,47 @@ Use to surface educational information about a feature or opportunity in the con
   popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
   portrait
 >
-  <VideoThumbnail
-    videoLength={80}
-    thumbnailUrl="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+  <img
+    alt=""
+    width="100%"
+    height="100%"
+    style={{objectFit: 'cover', objectPosition: 'center'}}
+    src="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
   />
 </MediaCard>
 ```
 
-### Video card with secondary action
+### Media card with secondary action
 
-Use when there are two distinct actions merchants can take on the information in the video.
+Use when there are two distinct actions merchants can take on the information in the card.
+
+```jsx
+<MediaCard
+  title="Getting Started"
+  primaryAction={{
+    content: 'Learn about getting started',
+    onAction: () => {},
+  }}
+  secondaryAction={{
+    content: 'Click here',
+    onAction: () => {},
+  }}
+  description="Discover how Shopify can power up your entrepreneurial journey."
+  popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
+>
+  <img
+    alt=""
+    width="100%"
+    height="100%"
+    style={{objectFit: 'cover', objectPosition: 'center'}}
+    src="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+  />
+</MediaCard>
+```
+
+### Video card
+
+Video cards provide a consistent layout for contextual learning system content. Use to wrap thumbnails of educational videos about Shopify admin features in context.
 
 ```jsx
 <MediaCard
@@ -237,8 +259,8 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-The required `title` prop gives the video card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users.
+The required `title` prop gives the media card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users.
 
-Use [actionable language](https://polaris.shopify.com/content/actionable-language#navigation) to ensure that the purpose of the video card is clear to all merchants, including those with issues related to reading and language.
+Use [actionable language](https://polaris.shopify.com/content/actionable-language#navigation) to ensure that the purpose of the media card is clear to all merchants, including those with issues related to reading and language.
 
 <!-- /content-for -->
