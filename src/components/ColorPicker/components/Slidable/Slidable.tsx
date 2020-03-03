@@ -137,9 +137,8 @@ export class Slidable extends React.PureComponent<SlidableProps, State> {
   private startDrag = (
     event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
   ) => {
-    if (event.type === 'mousedown') {
-      const mouseEvent = event as React.MouseEvent<HTMLDivElement>;
-      this.handleDraggerMove(mouseEvent.clientX, mouseEvent.clientY);
+    if (isMouseDownEvent(event)) {
+      this.handleDraggerMove(event.clientX, event.clientY);
     }
 
     isDragging = true;
@@ -159,17 +158,12 @@ export class Slidable extends React.PureComponent<SlidableProps, State> {
       event.preventDefault();
     }
 
-    if (event.type === 'mousemove') {
-      const mouseEvent = event as MouseEvent;
-      this.handleDraggerMove(mouseEvent.clientX, mouseEvent.clientY);
+    if (isMouseMoveEvent(event)) {
+      this.handleDraggerMove(event.clientX, event.clientY);
       return;
     }
 
-    const touchEvent = event as TouchEvent;
-    this.handleDraggerMove(
-      touchEvent.touches[0].clientX,
-      touchEvent.touches[0].clientY,
-    );
+    this.handleDraggerMove(event.touches[0].clientX, event.touches[0].clientY);
   };
 
   private handleDraggerMove = (x: number, y: number) => {
@@ -184,4 +178,14 @@ export class Slidable extends React.PureComponent<SlidableProps, State> {
     const offsetY = y - rect.top;
     onChange({x: offsetX, y: offsetY});
   };
+}
+
+function isMouseMoveEvent(event: Event): event is MouseEvent {
+  return event.type === 'mousemove';
+}
+
+function isMouseDownEvent(
+  event: React.MouseEvent | React.TouchEvent,
+): event is React.MouseEvent {
+  return event.type === 'mousedown';
 }

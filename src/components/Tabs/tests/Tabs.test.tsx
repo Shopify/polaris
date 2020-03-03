@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Tab, Panel, TabMeasurer} from '../components';
 import {Tabs, TabsProps} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
@@ -22,6 +23,62 @@ describe('<Tabs />', () => {
     if (document.activeElement) {
       (document.activeElement as HTMLElement).blur();
     }
+  });
+
+  it('passes focus index to tab measurer', () => {
+    const tabToFocus = 1;
+    const relatedTarget = document.createElement('div');
+    const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+    const ul = wrapper.find('ul')!;
+    const target = ul.find('button', {id: tabs[tabToFocus].id})!.domNode!;
+    ul.trigger('onFocus', {target, relatedTarget});
+    expect(wrapper).toContainReactComponent(TabMeasurer, {tabToFocus});
+  });
+
+  it('does not change the focus index passed to tab measurer when the focus target is not a tab', () => {
+    const tabToFocus = 0;
+    const relatedTarget = document.createElement('div');
+    const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+    const ul = wrapper.find('ul')!;
+    const target = ul.domNode!;
+    ul.trigger('onFocus', {target, relatedTarget});
+    expect(wrapper).toContainReactComponent(TabMeasurer, {tabToFocus});
+  });
+
+  it('does not change the focus index passed to tab measurer when the focus is coming in from somewhere other than another tab', () => {
+    const tabToFocus = 0;
+    const relatedTarget = null;
+    const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+    const ul = wrapper.find('ul')!;
+    const target = ul.domNode!;
+    ul.trigger('onFocus', {target, relatedTarget});
+    expect(wrapper).toContainReactComponent(TabMeasurer, {tabToFocus});
+  });
+
+  it('forgets the focus position if we blur the target and it is not another tab', () => {
+    const tabToFocus = -1;
+    const relatedTarget = null;
+    const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+    wrapper.find('ul')!.trigger('onBlur', {relatedTarget});
+    expect(wrapper).toContainReactComponent(TabMeasurer, {tabToFocus});
+  });
+
+  it('loses focus if we are going to anywhere other than another tab', () => {
+    const tabToFocus = -1;
+    const relatedTarget = document.createElement('div');
+    const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+    wrapper.find('ul')!.trigger('onBlur', {relatedTarget});
+    expect(wrapper).toContainReactComponent(TabMeasurer, {tabToFocus});
+  });
+
+  it('does not change the focus index passed to tab measurer when the target losing focus in a tab and the target is the list', () => {
+    const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+    const tabToFocus = wrapper.find(TabMeasurer)!.prop('tabToFocus');
+    const ul = wrapper.find('ul')!;
+    const target = ul.domNode!;
+    const relatedTarget = ul.find('button', {id: tabs[0].id})!.domNode!;
+    ul.trigger('onFocus', {target, relatedTarget});
+    expect(wrapper).toContainReactComponent(TabMeasurer, {tabToFocus});
   });
 
   describe('tabs', () => {

@@ -39,7 +39,7 @@ export function FilterCreator({
     AppliedFilter['value']
   >();
   const i18n = useI18n();
-  const node = useRef<HTMLButtonElement>(null);
+  const node = useRef<HTMLButtonElement | null>(null);
 
   const canAddFilter = Boolean(
     selectedFilter && selectedFilterKey && selectedFilterValue,
@@ -49,8 +49,7 @@ export function FilterCreator({
     (...args: React.FocusEvent<HTMLButtonElement>[]) => {
       const event = args[0];
       if (!node.current && event) {
-        // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/31065
-        (node as any).current = event.target as HTMLButtonElement;
+        node.current = event.target;
       }
     },
     [],
