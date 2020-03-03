@@ -2,7 +2,7 @@
 name: Video card
 category: Structure
 keywords:
-  - VideoCard
+  - MediaCard
   - actionable
   - updates
   - new features
@@ -139,7 +139,7 @@ Add a menu item
 Use to surface educational information about a feature or opportunity in the context of where it is managed.
 
 ```jsx
-<VideoCard
+<MediaCard
   title="Getting Started"
   primaryAction={[
     {
@@ -155,7 +155,7 @@ Use to surface educational information about a feature or opportunity in the con
     videoLength={80}
     thumbnailUrl="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
   />
-</VideoCard>
+</MediaCard>
 ```
 
 ### Video card with secondary action
@@ -163,7 +163,7 @@ Use to surface educational information about a feature or opportunity in the con
 Use when there are two distinct actions merchants can take on the information in the video.
 
 ```jsx
-<VideoCard
+<MediaCard
   title="Getting Started"
   primaryAction={{
     content: 'Learn about getting started',
@@ -180,7 +180,7 @@ Use when there are two distinct actions merchants can take on the information in
     videoLength={80}
     thumbnailUrl="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
   />
-</VideoCard>
+</MediaCard>
 ```
 
 ### Portrait video card
@@ -188,7 +188,7 @@ Use when there are two distinct actions merchants can take on the information in
 Use when vertical screen space is not limited or when the video card comprises the page's primary content. For example, in an empty state.
 
 ```jsx
-<VideoCard
+<MediaCard
   portrait
   title="Getting Started"
   primaryAction={{
@@ -202,7 +202,7 @@ Use when vertical screen space is not limited or when the video card comprises t
     videoLength={80}
     thumbnailUrl="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
   />
-</VideoCard>
+</MediaCard>
 ```
 
 ---

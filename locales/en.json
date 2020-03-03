@@ -228,7 +228,7 @@
         "search": "Search"
       }
     },
-    "VideoCard": {
+    "MediaCard": {
       "popoverButton": "Actions"
     },
     "VideoThumbnail": {

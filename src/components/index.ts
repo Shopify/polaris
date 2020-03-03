@@ -295,7 +295,7 @@ export type {TruncateProps} from './Truncate';
 export {UnstyledLink} from './UnstyledLink';
 export type {UnstyledLinkProps} from './UnstyledLink';
 
-export {VideoCard} from './VideoCard';
+export {MediaCard} from './MediaCard';
 
 export {VideoThumbnail} from './VideoThumbnail';
 

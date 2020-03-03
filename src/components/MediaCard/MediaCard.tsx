@@ -13,9 +13,9 @@ import {ActionList} from '../ActionList';
 import {ButtonGroup} from '../ButtonGroup';
 import {Stack} from '../Stack';
 
-import styles from './VideoCard.scss';
+import styles from './MediaCard.scss';
 
-interface VideoCardProps {
+interface MediaCardProps {
   /** describe prop here */
   children?: React.ReactNode;
   /** Heading content */
@@ -34,7 +34,7 @@ interface VideoCardProps {
   portrait?: boolean;
 }
 
-export function VideoCard({
+export function MediaCard({
   title,
   children,
   primaryAction,
@@ -42,7 +42,7 @@ export function VideoCard({
   description,
   popoverActions = [],
   portrait = false,
-}: VideoCardProps) {
+}: MediaCardProps) {
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
 
@@ -57,7 +57,7 @@ export function VideoCard({
       onClick={togglePopoverActive}
       size="slim"
       plain
-      accessibilityLabel={i18n.translate('Polaris.VideoCard.popoverButton')}
+      accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}
     />
   );
 
@@ -102,7 +102,7 @@ export function VideoCard({
   );
 
   const videoCardClassName = classNames(
-    styles.VideoCard,
+    styles.MediaCard,
     portrait && styles.portrait,
   );
 
