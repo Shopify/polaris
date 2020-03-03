@@ -35,7 +35,7 @@
   color: transparent;
 
   &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon));
+    @include recolor-icon(var(--p-icon-subdued));
   }
 }
 
@@ -51,7 +51,7 @@
   @include color-icon('sky', 'lighter');
 
   &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon));
+    @include recolor-icon(var(--p-icon-subdued));
   }
 }
 
@@ -59,7 +59,7 @@
   @include color-icon('sky', 'light');
 
   &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon));
+    @include recolor-icon(var(--p-icon-subdued));
   }
 }
 
@@ -67,7 +67,7 @@
   @include color-icon('sky');
 
   &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon));
+    @include recolor-icon(var(--p-icon-subdued));
   }
 }
 
@@ -75,7 +75,7 @@
   @include color-icon('sky', 'dark');
 
   &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon));
+    @include recolor-icon(var(--p-icon-subdued));
   }
 }
 
@@ -380,8 +380,7 @@
 .colorHighlight {
   @include recolor-icon(var(--p-icon-highlight));
 }
-
-.colorSuccess {
+👍 .colorSuccess {
   @include recolor-icon(var(--p-icon-success));
 }
 
