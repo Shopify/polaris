@@ -27,7 +27,24 @@ function StrictModeToggle({isStrict = false, children}) {
   return <Wrapper>{children}</Wrapper>;
 }
 
+const COMPONENTS_TO_OMIT_APP_PROVIDER = [
+  'Top bar',
+  'App provider',
+  'Contextual save bar',
+  'Frame',
+];
+
 function AppProviderWithKnobs({newDesignLanguage, colorScheme, children}) {
+  const componentName = (() => {
+    try {
+      return children.props.children.key;
+    } catch (e) {
+      return undefined;
+    }
+  })();
+
+  if (COMPONENTS_TO_OMIT_APP_PROVIDER.includes(componentName)) return children;
+
   const colors = Object.entries(DefaultThemeColors).reduce(
     (accumulator, [key, value]) => ({
       ...accumulator,
