@@ -126,7 +126,6 @@ export function Month({
       selected && isSameDate(selected.start, selected.end)
     );
     const isHoveringRight = hoverDate && isDateBefore(day, hoverDate);
-    const isHoveringLeft = hoverDate && isDateAfter(day, hoverDate);
 
     return (
       <Day
@@ -147,7 +146,6 @@ export function Month({
         isLastSelectedDay={isLastSelectedDay}
         isFirstSelectedDay={isFirstSelectedDay}
         isHoveringRight={isHoveringRight}
-        isHoveringLeft={isHoveringLeft}
         rangeIsDifferent={rangeIsDifferent}
       />
     );

@@ -16,7 +16,6 @@ export interface DayProps {
   isLastSelectedDay?: boolean;
   isFirstSelectedDay?: boolean;
   isHoveringRight?: boolean;
-  isHoveringLeft?: boolean;
   rangeIsDifferent?: boolean;
   onClick?(day: Date): void;
   onHover?(day?: Date): void;
@@ -37,7 +36,6 @@ export const Day = memo(function Day({
   isLastSelectedDay,
   isFirstSelectedDay,
   isHoveringRight,
-  isHoveringLeft,
   rangeIsDifferent,
 }: DayProps) {
   const i18n = useI18n();
@@ -69,7 +67,6 @@ export const Day = memo(function Day({
     isLastSelectedDay && styles['Day-lastInRange'],
     isFirstSelectedDay && styles['Day-firstInRange'],
     isHoveringRight && styles['Day-hoverRight'],
-    isHoveringLeft && styles['Day-hoverLeft'],
     rangeIsDifferent && styles['Day-hasRange'],
   );
   const date = day.getDate();

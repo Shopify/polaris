@@ -259,4 +259,13 @@ $in-range-border-color: #9ca6de;
   .Weekday-current {
     color: var(--p-text);
   }
+
+  // stylelint-disable-next-line selector-max-specificity
+  .Day-inRange,
+  .Day-inRange:not(:hover) + .Day {
+    // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+    &::after {
+      border-radius: 0 50% 50% 0;
+    }
+  }
 }
