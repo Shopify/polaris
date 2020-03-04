@@ -11,23 +11,6 @@ $font-size: rem(12px);
 // stylelint-disable-next-line color-no-hex
 $in-range-border-color: #9ca6de;
 
-@mixin left-half-circle {
-  border-radius: 50% 0 0 50%;
-}
-
-@mixin right-half-circle {
-  border-radius: 0 50% 50% 0;
-}
-
-@mixin radius-with-focus-ring {
-  @content;
-  &:focus:not(:active) {
-    &::after {
-      @content;
-    }
-  }
-}
-
 .DatePicker {
   position: relative;
 }
@@ -190,6 +173,7 @@ $in-range-border-color: #9ca6de;
 .newDesignLanguage {
   .Day {
     box-shadow: none;
+    border-radius: var(--p-border-radius-base);
 
     &:hover {
       background: var(--p-interactive-hovered);
@@ -210,27 +194,27 @@ $in-range-border-color: #9ca6de;
     color: var(--p-text-on-interactive);
   }
 
-  // stylelint-disable-next-line selector-max-specificity
-  .Day:not(.Day-lastInRange):not(.Day-firstInRange):not(.Day-inRange) {
-    border-radius: spacing(extra-tight);
+  .Day-inRange {
+    z-index: auto;
+    border-radius: 0;
+    background: var(--p-surface-selected);
   }
 
   .Day-firstInRange {
-    @include radius-with-focus-ring {
-      border-radius: spacing(extra-tight);
-    }
-
+    border-radius: var(--p-border-radius-base);
     &.Day-hasRange,
     &.Day-hoverRight {
-      @include radius-with-focus-ring {
-        @include left-half-circle;
+      border-radius: 50% 0 0 50%;
+      // stylelint-disable-next-line selector-max-specificity, selector-max-class
+      &::after {
+        border-radius: 50% 0 0 50%;
       }
     }
   }
-
   .Day-lastInRange {
-    @include radius-with-focus-ring {
-      @include right-half-circle;
+    border-radius: 0 50% 50% 0;
+    &::after {
+      border-radius: 0 50% 50% 0;
     }
   }
 
@@ -239,22 +223,17 @@ $in-range-border-color: #9ca6de;
 
     // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
     > .Day-inRange:first-child:not(.Day-firstInRange):not(.Day-lastInRange) {
-      border-radius: spacing(extra-tight) 0 0 spacing(extra-tight);
+      border-radius: var(--p-border-radius-base) 0 0 var(--p-border-radius-base);
     }
 
     // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
     > .Day-inRange:last-child:not(.Day-firstInRange):not(.Day-lastInRange) {
-      border-radius: 0 spacing(extra-tight) spacing(extra-tight) 0;
+      border-radius: 0 var(--p-border-radius-base) var(--p-border-radius-base) 0;
     }
   }
 
   .Day,
   .EmptyDay {
     border: none;
-  }
-
-  .Day-inRange {
-    z-index: auto;
-    background: var(--p-surface-selected);
   }
 }
