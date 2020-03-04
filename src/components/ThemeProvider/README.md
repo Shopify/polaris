@@ -198,7 +198,7 @@ Using the `linear-gradient()` function as a fallback to the `var()` function cau
 
 ```scss
 .Button {
-  background-color: linear-gradient(
+  background-image: linear-gradient(
     to bottom,
     color('indigo'),
     color('indigo', 'dark')
@@ -206,6 +206,7 @@ Using the `linear-gradient()` function as a fallback to the `var()` function cau
 }
 
 .Button.newDesignLanguage {
+  background-image: var(--p-override-none);
   background-color: var(--p-action-primary);
 }
 ```
