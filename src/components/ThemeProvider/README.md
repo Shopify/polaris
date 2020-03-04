@@ -9,6 +9,7 @@ keywords:
   - color scheme
   - light mode
   - dark mode
+omitAppProvider: true
 ---
 
 # Theme provider
@@ -42,7 +43,7 @@ The app provider component renders a theme provider component and a theme. By de
 
 ### Theme provider with theme colors rendered by the app provider
 
-A custom theme can be passed to the theme prop on the app provider to override one or more of the default theme colors at a global level. 
+A custom theme can be passed to the theme prop on the app provider to override one or more of the default theme colors at a global level.
 
 ```jsx
 <AppProvider

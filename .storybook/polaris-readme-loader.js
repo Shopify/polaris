@@ -33,6 +33,7 @@ module.exports = function loader(source) {
     'Frame',
     'Loading',
     'Sheet',
+    'Theme provider',
   ].includes(readme.name);
 
   const csfExports = readme.examples.map((example) => {
