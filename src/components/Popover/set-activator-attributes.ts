@@ -4,15 +4,20 @@ export function setActivatorAttributes(
   activator: HTMLElement,
   {
     id,
-    active,
+    active = false,
     ariaHaspopup,
+    activatorDisabled = false,
   }: {
     id: string;
     active: boolean;
     ariaHaspopup: AriaAttributes['aria-haspopup'];
+    activatorDisabled: boolean;
   },
 ) {
-  activator.tabIndex = activator.tabIndex || 0;
+  if (!activatorDisabled) {
+    activator.tabIndex = activator.tabIndex || 0;
+  }
+
   activator.setAttribute('aria-controls', id);
   activator.setAttribute('aria-owns', id);
   activator.setAttribute('aria-expanded', String(active));
