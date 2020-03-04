@@ -35,14 +35,6 @@ const COMPONENTS_TO_OMIT_APP_PROVIDER = [
 ];
 
 function AppProviderWithKnobs({newDesignLanguage, colorScheme, children}) {
-  const colors = Object.entries(DefaultThemeColors).reduce(
-    (accumulator, [key, value]) => ({
-      ...accumulator,
-      [key]: strToHex(color(key, value, 'Theme')),
-    }),
-    {},
-  );
-
   const componentName = (() => {
     try {
       return children.props.children.key;
@@ -51,9 +43,17 @@ function AppProviderWithKnobs({newDesignLanguage, colorScheme, children}) {
     }
   })();
 
-  return COMPONENTS_TO_OMIT_APP_PROVIDER.includes(componentName) ? (
-    children
-  ) : (
+  if (COMPONENTS_TO_OMIT_APP_PROVIDER.includes(componentName)) return children;
+
+  const colors = Object.entries(DefaultThemeColors).reduce(
+    (accumulator, [key, value]) => ({
+      ...accumulator,
+      [key]: strToHex(color(key, value, 'Theme')),
+    }),
+    {},
+  );
+
+  return (
     <AppProvider
       i18n={enTranslations}
       features={{newDesignLanguage}}
