@@ -42,7 +42,7 @@ describe('<Avatar />', () => {
     });
   });
 
-  describe('on Error with Initials', () => {
+  describe('Initials', () => {
     it('renders initials if the Image onError prop is triggered and the Intials are provided', () => {
       const avatar = mountWithApp(
         <Avatar size="large" initials="DL" source="image/path/" />,
@@ -59,6 +59,11 @@ describe('<Avatar />', () => {
       expect(avatar).toContainReactComponent('span', {
         className: 'Initials',
       });
+    });
+
+    it('renders an inline svg if initials are blank', () => {
+      const avatar = mountWithAppProvider(<Avatar initials="" />);
+      expect(avatar.find('svg').exists()).toBe(true);
     });
   });
 
@@ -113,17 +118,17 @@ describe('<Avatar />', () => {
   });
 
   describe('styleClass', () => {
-    it('renders a sixth style when unstableGlobalTheming is false', () => {
+    it('renders a sixth style when newDesignLanguage is false', () => {
       const avatar = mountWithApp(<Avatar name="e" />, {
-        features: {unstableGlobalTheming: false},
+        features: {newDesignLanguage: false},
       });
 
       expect(avatar.domNodes[0].classList).toContain('styleSix');
     });
 
-    it('does not render a sixth style when unstableGlobalTheming is true', () => {
+    it('does not render a sixth style when newDesignLanguage is true', () => {
       const avatar = mountWithApp(<Avatar name="e" />, {
-        features: {unstableGlobalTheming: true},
+        features: {newDesignLanguage: true},
       });
 
       expect(avatar.domNodes[0].classList).not.toContain('styleSix');

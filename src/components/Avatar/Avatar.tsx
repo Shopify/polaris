@@ -3,7 +3,8 @@ import React, {useState, useCallback, useEffect} from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
-import {isServer} from '../../utilities/target';
+import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
+
 import {Image} from '../Image';
 
 import styles from './Avatar.scss';
@@ -45,10 +46,11 @@ export function Avatar({
   accessibilityLabel,
 }: AvatarProps) {
   const i18n = useI18n();
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
+  const isAfterInitialMount = useIsAfterInitialMount();
 
   function styleClass(name?: string) {
-    const finalStyleClasses = unstableGlobalTheming
+    const finalStyleClasses = newDesignLanguage
       ? STYLE_CLASSES
       : [...STYLE_CLASSES, 'six'];
     return name
@@ -100,7 +102,7 @@ export function Avatar({
   );
 
   const imageMarkUp =
-    source && !isServer && status !== Status.Errored ? (
+    source && isAfterInitialMount && status !== Status.Errored ? (
       <Image
         className={styles.Image}
         source={source}
@@ -114,22 +116,24 @@ export function Avatar({
   // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
   const verticalOffset = '0.35em';
 
-  const avatarBody = customer ? (
-    <g fill="currentColor" fillRule="nonzero">
-      <path d="M8.28 27.5A14.95 14.95 0 0120 21.8c4.76 0 8.97 2.24 11.72 5.7a14.02 14.02 0 01-8.25 5.91 14.82 14.82 0 01-6.94 0 14.02 14.02 0 01-8.25-5.9zM13.99 12.78a6.02 6.02 0 1112.03 0 6.02 6.02 0 01-12.03 0z" />
-    </g>
-  ) : (
-    <text
-      x="50%"
-      y="50%"
-      dy={verticalOffset}
-      fill="currentColor"
-      fontSize="20"
-      textAnchor="middle"
-    >
-      {initials}
-    </text>
-  );
+  const avatarBody =
+    customer || !initials ? (
+      <path
+        fill="currentColor"
+        d="M8.28 27.5A14.95 14.95 0 0120 21.8c4.76 0 8.97 2.24 11.72 5.7a14.02 14.02 0 01-8.25 5.91 14.82 14.82 0 01-6.94 0 14.02 14.02 0 01-8.25-5.9zM13.99 12.78a6.02 6.02 0 1112.03 0 6.02 6.02 0 01-12.03 0z"
+      />
+    ) : (
+      <text
+        x="50%"
+        y="50%"
+        dy={verticalOffset}
+        fill="currentColor"
+        fontSize="20"
+        textAnchor="middle"
+      >
+        {initials}
+      </text>
+    );
 
   const svgMarkup = !hasImage ? (
     <span className={styles.Initials}>

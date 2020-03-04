@@ -8,12 +8,12 @@
   background: none;
   border: 0;
   font-size: inherit;
-  color: var(--p-action-interactive, color('blue'));
+  color: var(--p-interactive, color('blue'));
   text-decoration: none;
   cursor: pointer;
 
   &:hover {
-    color: var(--p-action-interactive-hovered, color('blue', 'dark'));
+    color: var(--p-interactive-hovered, color('blue', 'dark'));
     text-decoration: underline;
   }
 
@@ -45,7 +45,7 @@
       border-radius: border-radius();
       background: var(--p-action-secondary, none);
     }
-    color: var(--p-action-interactive-pressed, color('blue', 'dark'));
+    color: var(--p-interactive-pressed, color('blue', 'dark'));
     text-decoration: var(--p-override-none, underline);
   }
 }

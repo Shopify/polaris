@@ -1,8 +1,10 @@
 const {resolve: resolvePath} = require('path');
 const {writeFileSync} = require('fs-extra');
-const roleVariants = require('@shopify/polaris-tokens/formats/utils/color-factory/configs/base');
-const theme = require('@shopify/polaris-tokens/dist/base.json');
-const {colorFactory} = require('@shopify/polaris-tokens/color-factory');
+const {
+  config: roleVariants,
+} = require('@shopify/polaris-tokens/dist-modern/configs/base');
+const theme = require('@shopify/polaris-tokens/dist-modern/theme/base.json');
+const {colorFactory} = require('@shopify/polaris-tokens/dist-modern');
 const {
   rgbToHex,
   UNSTABLE_toCssCustomPropertySyntax: cssify,
@@ -65,8 +67,6 @@ const Template = {
   overrideItem: (name, value) => `|\`${cssify(name)}\`|\`${value}\`|\n`,
 };
 
-const boilerplate =
-  '# Color system\n\n⚠️ The color system is currently an unstable API, and is subject to change in non-major releases of Polaris react. Please use with caution.\n\n';
 const tocTitle = '## Table of contents\n\n';
 
 const tocContents = Object.keys(roleVariants).reduce(
@@ -105,7 +105,6 @@ const overridesContents = Object.entries(Tokens).reduce(
 );
 
 const data =
-  boilerplate +
   tocTitle +
   tocContents +
   Template.tocItem('Overrides') +

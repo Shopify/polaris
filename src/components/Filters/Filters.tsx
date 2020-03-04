@@ -12,6 +12,7 @@ import {
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
 import {ResourceListContext} from '../../utilities/resource-list';
+import {useFeatures} from '../../utilities/features';
 import {Button} from '../Button';
 import {DisplayText} from '../DisplayText';
 import {Collapsible} from '../Collapsible';
@@ -88,7 +89,8 @@ export interface FiltersProps {
   hideTags?: boolean;
 }
 
-type ComposedProps = FiltersProps & WithAppProviderProps;
+type ComposedProps = FiltersProps &
+  WithAppProviderProps & {newDesignLanguage: boolean};
 
 interface State {
   open: boolean;
@@ -132,6 +134,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       disabled = false,
       helpText,
       hideTags,
+      newDesignLanguage,
     } = this.props;
     const {resourceName} = this.context;
     const {open, readyForFocus} = this.state;
@@ -168,11 +171,16 @@ class FiltersInner extends React.Component<ComposedProps, State> {
 
       const collapsibleID = `${filter.key}Collapsible`;
 
+      const buttonClassName = classNames(
+        styles.FilterTrigger,
+        newDesignLanguage && styles.newDesignLanguage,
+      );
+
       return (
         <div key={filter.key} className={className}>
           <button
             onClick={() => this.toggleFilter(filter.key)}
-            className={styles.FilterTrigger}
+            className={buttonClassName}
             id={`${filter.key}ToggleButton`}
             type="button"
             aria-controls={collapsibleID}
@@ -535,4 +543,9 @@ function getShortcutFilters(filters: FilterInterface[]) {
   return filters.filter((filter) => filter.shortcut === true);
 }
 
-export const Filters = withAppProvider<FiltersProps>()(FiltersInner);
+function FiltersInnerWrapper(props: ComposedProps) {
+  const {newDesignLanguage} = useFeatures();
+  return <FiltersInner {...props} newDesignLanguage={newDesignLanguage} />;
+}
+
+export const Filters = withAppProvider<FiltersProps>()(FiltersInnerWrapper);

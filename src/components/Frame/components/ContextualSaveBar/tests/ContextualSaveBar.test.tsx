@@ -1,7 +1,8 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import {Button, Image} from 'components';
+import {Button, Image, ThemeProvider} from 'components';
+import {mountWithApp} from 'test-utilities';
 import {ContextualSaveBar} from '../ContextualSaveBar';
 import {DiscardConfirmationModal} from '../components';
 
@@ -269,6 +270,26 @@ describe('<ContextualSaveBar />', () => {
       );
 
       expect(contextualSaveBar.find(Image).exists()).toBeFalsy();
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('renders a ThemeProvider with inverted theme', () => {
+      const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(contextualSaveBar).toContainReactComponent(ThemeProvider, {
+        theme: {colorScheme: 'inverse'},
+      });
+    });
+
+    it('renders a container with a newDesignLanguage className', () => {
+      const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(contextualSaveBar).toContainReactComponent('div', {
+        className: 'ContextualSaveBar newDesignLanguage',
+      });
     });
   });
 });

@@ -15,6 +15,7 @@
     ".{dev,shadowenv.d}": true,
     "build-intermediate/": true,
     "build/": true,
+    "scripts/analyze-custom-properties/dist/": true,
     "docs/": true,
     "esnext/": true,
     "index.*": true,
@@ -38,7 +39,8 @@
     "sandbox": true,
     "styles.{css,min.css,scss}": true,
     "styles/": true,
-    "types/": true
+    "types/": true,
+    "scripts/analyze-custom-properties/dist/": true
   },
   "typescript.tsdk": "./node_modules/typescript/lib"
 }

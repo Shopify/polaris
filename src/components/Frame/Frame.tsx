@@ -119,12 +119,12 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
         mediaQuery: {isNavigationCollapsed},
       },
     } = this.props;
-    const {unstableGlobalTheming} = this.context || {};
+    const {newDesignLanguage} = this.context || {};
 
     const navClassName = classNames(
       styles.Navigation,
       showMobileNavigation && styles['Navigation-visible'],
-      unstableGlobalTheming && styles['Navigation-globalTheming'],
+      newDesignLanguage && styles['Navigation-newDesignLanguage'],
     );
 
     const mobileNavHidden = isNavigationCollapsed && !showMobileNavigation;
@@ -177,11 +177,16 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
         </div>
       ) : null;
 
+    const contextualSaveBarClassName = classNames(
+      styles.ContextualSaveBar,
+      newDesignLanguage && styles['ContextualSaveBar-newDesignLanguage'],
+    );
+
     const contextualSaveBarMarkup = (
       <CSSAnimation
         in={showContextualSaveBar}
-        className={styles.ContextualSaveBar}
-        type="fade"
+        className={contextualSaveBarClassName}
+        type={newDesignLanguage ? 'fadeUp' : 'fade'}
       >
         <ContextualSaveBar {...this.contextualSaveBar} />
       </CSSAnimation>
@@ -189,7 +194,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
 
     const topBarClassName = classNames(
       styles.TopBar,
-      unstableGlobalTheming && styles['TopBar-globalTheming'],
+      newDesignLanguage && styles['TopBar-newDesignLanguage'],
     );
 
     const topBarMarkup = topBar ? (
@@ -205,7 +210,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
 
     const globalRibbonClassName = classNames(
       styles.GlobalRibbonContainer,
-      unstableGlobalTheming && styles['GlobalRibbonContainer-globalTheming'],
+      newDesignLanguage && styles['GlobalRibbonContainer-newDesignLanguage'],
     );
 
     const globalRibbonMarkup = globalRibbon ? (
@@ -254,7 +259,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
 
     const mainClassName = classNames(
       styles.Main,
-      unstableGlobalTheming && styles['Main-globalTheming'],
+      newDesignLanguage && styles['Main-newDesignLanguage'],
     );
 
     const navigationOverlayMarkup =

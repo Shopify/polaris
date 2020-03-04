@@ -28,7 +28,7 @@ $unstable-nav-max-width: rem(258px);
     @include safe-area-for(max-width, layout-width(nav), left);
   }
 
-  &.Navigation-globalTheming {
+  &.Navigation-newDesignLanguage {
     max-width: $unstable-nav-max-width;
     border-right: 1px solid var(--p-border-subdued);
   }
@@ -46,7 +46,7 @@ $unstable-nav-max-width: rem(258px);
   .ContextControl {
     display: none;
 
-    .Navigation-globalTheming & {
+    .Navigation-newDesignLanguage & {
       display: block;
     }
   }
@@ -89,7 +89,10 @@ $disabled-fade: 0.6;
 .Item-selected {
   font-weight: 600;
   color: var(--p-action-primary, color('indigo', 'dark'));
-  background-color: var(--p-primary-selected, $item-selected-background);
+  background-color: var(
+    --p-surface-primary-selected,
+    $item-selected-background
+  );
   @media (-ms-high-contrast: active) {
     background-color: ms-high-contrast-color('selected-text-background');
   }
@@ -105,7 +108,7 @@ $disabled-fade: 0.6;
 
   &:hover {
     background-color: var(
-      --p-primary-selected-hovered,
+      --p-surface-primary-selected-hovered,
       $item-selected-background
     );
     color: var(--p-action-primary-hovered, color('indigo', 'dark'));
@@ -119,7 +122,7 @@ $disabled-fade: 0.6;
   }
   &:active {
     background-color: var(
-      --p-primary-selected-pressed,
+      --p-surface-primary-selected-pressed,
       $item-selected-background
     );
     color: var(--p-action-primary-pressed, color('indigo', 'dark'));
@@ -329,7 +332,7 @@ $secondary-item-font-size: rem(15px);
   padding: spacing() 0;
   @include safe-area-for(padding-left, 0, left);
 
-  .Navigation-globalTheming & {
+  .Navigation-newDesignLanguage & {
     padding-top: 0;
   }
 

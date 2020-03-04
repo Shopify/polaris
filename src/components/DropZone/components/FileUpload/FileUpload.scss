@@ -66,7 +66,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   }
 }
 
-.globalTheming {
+.newDesignLanguage {
   .Button {
     @include focus-ring;
 
@@ -80,7 +80,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   }
 
   .ActionTitle {
-    color: var(--p-action-interactive);
+    color: var(--p-interactive);
     text-decoration: none;
 
     &:not(.ActionTitle-disabled) {
@@ -96,11 +96,11 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   }
 
   .ActionTitle-focused {
-    color: var(--p-action-interactive);
+    color: var(--p-interactive);
     text-decoration: underline;
   }
 
   .ActionTitle-disabled {
-    color: --p-action-interactive;
+    color: --p-interactive;
   }
 }

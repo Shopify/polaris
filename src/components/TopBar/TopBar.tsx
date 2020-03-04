@@ -73,7 +73,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   const i18n = useI18n();
   const {logo} = useTheme();
   const [scrolled, setScrolled] = useState(false);
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const {
     value: focused,
@@ -116,13 +116,13 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   const width = getWidth(logo, 104);
   let contextMarkup;
 
-  if (contextControl && !unstableGlobalTheming) {
+  if (contextControl && !newDesignLanguage) {
     contextMarkup = (
       <div testID="ContextControl" className={styles.ContextControl}>
         {contextControl}
       </div>
     );
-  } else if (logo && !unstableGlobalTheming) {
+  } else if (logo && !newDesignLanguage) {
     contextMarkup = (
       <div className={styles.LogoContainer}>
         <UnstyledLink
@@ -154,13 +154,13 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     </React.Fragment>
   ) : null;
 
-  const scrollListenerMarkup = unstableGlobalTheming ? (
+  const scrollListenerMarkup = newDesignLanguage ? (
     <EventListener event="scroll" handler={handleScroll} passive />
   ) : null;
 
   const className = classNames(
     styles.TopBar,
-    unstableGlobalTheming && styles['TopBar-globalTheming'],
+    newDesignLanguage && styles['TopBar-newDesignLanguage'],
     scrolled && styles.isScrolled,
   );
 

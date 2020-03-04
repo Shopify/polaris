@@ -9,7 +9,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   margin: 0;
   padding: spacing(tight) 0;
 
-  &.globalTheming {
+  &.newDesignLanguage {
     padding: spacing(tight);
   }
 }
@@ -184,7 +184,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
   // stylelint-disable selector-max-class
   // stylelint-disable selector-max-specificity
-  &.globalTheming {
+  &.newDesignLanguage {
     padding: $item-vertical-padding spacing(tight);
     border-radius: var(--p-border-radius-base);
     // States
@@ -192,6 +192,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     &:hover {
       background-image: none;
       background-color: var(--p-surface-hovered);
+
+      @media (-ms-high-contrast: active) {
+        outline: 1px solid ms-high-contrast-color('text');
+      }
     }
     // Active (.active, :active)
     // We need to decide if the .active state appears as pressed or focused
@@ -229,7 +233,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     // Destructive (.destructive)
     &.destructive {
       @include recolor-icon(var(--p-icon-critical));
-      color: var(--p-link-critical);
+      color: var(--p-interactive-critical);
     }
 
     // Hovered (:hover)

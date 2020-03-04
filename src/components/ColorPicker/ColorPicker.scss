@@ -11,10 +11,14 @@ $stacking-order: (
 );
 
 @mixin checkers {
-  background-image: linear-gradient(45deg, color('sky') 25%, transparent 25%),
-    linear-gradient(-45deg, color('sky') 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, color('sky') 75%),
-    linear-gradient(-45deg, transparent 75%, color('sky') 75%);
+  background-image: linear-gradient(
+      45deg,
+      var(--p-surface, color('sky')) 25%,
+      transparent 25%
+    ),
+    linear-gradient(-45deg, var(--p-surface, color('sky')) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--p-surface, color('sky')) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--p-surface, color('sky')) 75%);
   background-size: spacing() spacing();
   background-position: 0 0, 0 spacing(tight), spacing(tight) -1 * spacing(tight),
     -1 * spacing(tight) 0;
@@ -84,7 +88,7 @@ $stacking-order: (
   will-change: transform;
   background: transparent;
   border: var(--p-border-radius-base, border-radius()) solid
-    var(--p-white, color('white'));
+    var(--p-surface, color('white'));
   box-shadow: var(--p-override-none, shadow(deep)),
     inset var(--p-override-none, shadow(deep));
   border-radius: 50%;

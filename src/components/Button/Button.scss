@@ -190,7 +190,7 @@ $stacking-order: (
   @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(color('white'));
 
-  &.globalTheming {
+  &.newDesignLanguage {
     @include recolor-icon(var(--p-button-text));
   }
 
@@ -333,7 +333,7 @@ $stacking-order: (
     );
   }
 
-  &.globalTheming {
+  &.newDesignLanguage {
     @include recolor-icon(var(--p-button-text));
   }
 }
@@ -406,7 +406,7 @@ $stacking-order: (
 }
 
 .loading,
-.globalTheming.loading {
+.newDesignLanguage.loading {
   position: relative;
   transition: border-color duration() easing();
 
@@ -499,9 +499,10 @@ $stacking-order: (
   }
 
   &.destructive {
-    color: color('red', 'dark');
-    &:hover {
-      color: color('red', 'darker');
+    color: var(--p-action-critical, color('red', 'dark'));
+    &:focus,
+    &:active {
+      color: var(--p-action-critical-pressed, color('red', 'darker'));
     }
   }
 
@@ -548,13 +549,17 @@ $stacking-order: (
   }
 
   // stylelint-disable selector-max-class
-  &.globalTheming {
+  &.newDesignLanguage {
     // redeclaring these styles here for specificity
+    @include recolor-icon(var(--p-interactive));
     background: transparent;
     border: 0;
     box-shadow: none;
-    @include recolor-icon(var(--p-action-interactive));
-    color: var(--p-action-interactive);
+    color: var(--p-interactive);
+
+    &::after {
+      content: none;
+    }
 
     &:hover,
     &:focus,
@@ -570,26 +575,27 @@ $stacking-order: (
     }
 
     &:hover {
-      @include recolor-icon(var(--p-action-interactive-hovered));
-      color: var(--p-action-interactive-hovered);
+      @include recolor-icon(var(--p-interactive-hovered));
+      color: var(--p-interactive-hovered);
       text-decoration: underline;
     }
 
     &:focus {
-      @include recolor-icon(var(--p-action-interactive));
-      color: var(--p-action-interactive);
-      text-decoration: none;
+      @include recolor-icon(var(--p-interactive));
+      color: var(--p-interactive);
       @include no-focus-ring;
     }
 
     &:active {
-      @include recolor-icon(var(--p-action-interactive-pressed));
-      color: var(--p-action-interactive-pressed);
-      text-decoration: none;
+      @include recolor-icon(var(--p-interactive-pressed));
+      color: var(--p-interactive-pressed);
     }
 
-    &:focus:not(:active) > .Content {
-      @include focus-ring($style: 'focused');
+    &:focus:not(:active) {
+      text-decoration: none;
+      > .Content {
+        @include focus-ring($style: 'focused');
+      }
     }
 
     &:focus:not(.iconOnly) > .Content {
@@ -601,17 +607,17 @@ $stacking-order: (
     }
 
     &.destructive {
-      @include recolor-icon(var(--p-link-critical));
-      color: var(--p-link-critical);
+      @include recolor-icon(var(--p-interactive-critical));
+      color: var(--p-interactive-critical);
       &:hover {
-        color: var(--p-link-critical-hovered);
+        color: var(--p-interactive-critical-hovered);
       }
       &:active {
-        color: var(--p-link-critical-pressed);
+        color: var(--p-interactive-critical-pressed);
       }
 
       &.disabled {
-        color: var(--p-link-critical-disabled);
+        color: var(--p-interactive-critical-disabled);
       }
     }
 
@@ -621,22 +627,22 @@ $stacking-order: (
     }
 
     &.iconOnly {
-      @include recolor-icon(var(--p-action-interactive));
+      @include recolor-icon(var(--p-interactive));
 
       &:hover {
-        @include recolor-icon(var(--p-action-interactive-hovered));
+        @include recolor-icon(var(--p-interactive-hovered));
       }
 
       &:focus {
-        @include recolor-icon(var(--p-action-interactive));
+        @include recolor-icon(var(--p-interactive));
       }
 
       &:active {
-        @include recolor-icon(var(--p-action-interactive-pressed));
+        @include recolor-icon(var(--p-interactive-pressed));
       }
 
       &.disabled {
-        @include recolor-icon(var(--p-action-interactive-disabled));
+        @include recolor-icon(var(--p-interactive-disabled));
       }
     }
 
@@ -668,6 +674,12 @@ $stacking-order: (
 .sizeSlim {
   min-height: $slim-min-height;
   padding: $slim-vertical-padding spacing(base-tight);
+
+  &.newDesignLanguage {
+    // Local override for slim button height.
+    $slim-min-height: rem(28px);
+    min-height: $slim-min-height;
+  }
 }
 
 .sizeLarge {
@@ -795,12 +807,16 @@ $stacking-order: (
       box-shadow: 0 0 0 1px currentColor;
     }
 
-    &.globalTheming {
+    &.newDesignLanguage {
+      @include focus-ring($border-width: border-width('base'));
       box-shadow: 0 0 0 border-width('base') currentColor;
 
       &:focus {
-        box-shadow: 0 0 0 border-width('thick') currentColor;
-        @include no-focus-ring;
+        @include focus-ring($style: 'focused');
+      }
+
+      &:active::after {
+        box-shadow: none;
       }
     }
     // stylelint-enable selector-max-class
@@ -839,7 +855,7 @@ $stacking-order: (
     z-index: z-index(focused, $stacking-order);
   }
 
-  &.globalTheming {
+  &.newDesignLanguage {
     margin-left: rem(1px);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;

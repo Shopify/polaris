@@ -179,7 +179,7 @@ export function TextField({
     focused ? input.focus() : input.blur();
   }, [focused]);
 
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   // Use a typeof check here as Typescript mostly protects us from non-stringy
   // values but overzealous usage of `any` in consuming apps means people have
@@ -198,7 +198,7 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && styles.focus,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const inputType = type === 'currency' ? 'text' : type;
@@ -410,6 +410,12 @@ export function TextField({
     'aria-multiline': normalizeAriaMultiline(multiline),
   });
 
+  const backdropClassName = classNames(
+    styles.Backdrop,
+    newDesignLanguage && connectedLeft && styles['Backdrop-connectedLeft'],
+    newDesignLanguage && connectedRight && styles['Backdrop-connectedRight'],
+  );
+
   return (
     <Labelled
       label={label}
@@ -432,7 +438,7 @@ export function TextField({
           {characterCountMarkup}
           {clearButtonMarkup}
           {spinnerMarkup}
-          <div className={styles.Backdrop} />
+          <div className={backdropClassName} />
           {resizer}
         </div>
       </Connected>

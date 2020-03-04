@@ -9,7 +9,7 @@ const Shadow = {
   popoverShadow:
     '-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)',
   modalShadow:
-    '0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light)',
+    '0px 26px 80px var(--p-shadow-from-dim-light), 0px 0px 1px var(--p-shadow-from-dim-light)',
   topBarShadow: '0 2px 2px -1px var(--p-shadow-from-direct-light)',
 };
 
@@ -23,6 +23,7 @@ const Overrides = {
   buttonFontWeight: '500',
   nonNullContent: "''",
   choiceSize: rem('20px'),
+  iconSize: rem('10px'),
   choiceMargin: rem('1px'),
   controlBorderWidth: rem('2px'),
   bannerBorderDefault: buildBannerBorder('--p-border'),
@@ -36,6 +37,8 @@ const Overrides = {
   textFieldFocusRingOffset: rem('-4px'),
   textFieldFocusRingBorderRadius: rem('7px'),
   buttonGroupItemSpacing: rem('2px'),
+  topBarHeight: '68px',
+  contextualSaveBarHeight: '64px',
   duration100: '100ms',
   duration150: '150ms',
   easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',

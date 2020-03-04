@@ -323,7 +323,7 @@ $stacking-order: (
 }
 
 // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors
-.globalTheming.TextField {
+.newDesignLanguage.TextField {
   color: var(--p-text);
 
   svg {
@@ -386,6 +386,16 @@ $stacking-order: (
     &::after {
       opacity: 1;
     }
+  }
+
+  .Backdrop-connectedLeft::after {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .Backdrop-connectedRight::after {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .Spinner {

@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .Card {
-  overflow: hidden;
+  overflow: var(--p-override-visible, hidden);
   background-color: var(--p-surface, color('white'));
   box-shadow: var(--p-card-shadow, shadow());
 

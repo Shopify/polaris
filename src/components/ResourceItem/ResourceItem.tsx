@@ -138,7 +138,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       name,
       context: {selectable, selectMode, loading, resourceName},
       i18n,
-      features: {unstableGlobalTheming},
+      features: {newDesignLanguage},
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -189,7 +189,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
 
     const className = classNames(
       styles.ResourceItem,
-      unstableGlobalTheming && styles.globalTheming,
+      newDesignLanguage && styles.newDesignLanguage,
       focused && styles.focused,
       selectable && styles.selectable,
       selected && styles.selected,
@@ -305,6 +305,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         onKeyUp={this.handleKeyUp}
+        onMouseOut={this.handleMouseOut}
         testID="Item-Wrapper"
         data-href={url}
       >
@@ -340,6 +341,10 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
     }
 
     this.setState({focused: false, focusedInner: false});
+  };
+
+  private handleMouseOut = () => {
+    this.state.focused && this.setState({focused: false, focusedInner: false});
   };
 
   private handleLargerSelectionArea = (event: React.MouseEvent<any>) => {

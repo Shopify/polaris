@@ -124,6 +124,22 @@ describe('<TrapFocus />', () => {
     expect(document.activeElement).toBe(focusedElement);
   });
 
+  it(`doesn't trade steal focus from another TrapFocus when multiple are rendered`, () => {
+    const id = 'input';
+    const trapFocus = mountWithApp(
+      <div>
+        <TrapFocus>
+          <input autoFocus id={id} />
+        </TrapFocus>
+        <TrapFocus>
+          <input autoFocus />
+        </TrapFocus>
+      </div>,
+    );
+
+    expect(trapFocus.find('input', {id})!.domNode).toBe(document.activeElement);
+  });
+
   describe('handleBlur', () => {
     const externalDomNode = mountWithAppProvider(<Button />)
       .find('button')

@@ -32,8 +32,8 @@
   user-select: none;
   text-decoration: none;
   transition-property: background, border, box-shadow;
-  transition-duration: duration();
-  transition-timing-function: easing();
+  transition-duration: var(--p-override-none, duration());
+  transition-timing-function: var(--p-override-none, easing());
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
@@ -66,8 +66,9 @@
       inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2);
   }
 
-  &.globalTheming {
+  &.newDesignLanguage {
     @include recolor-icon(var(--p-icon));
+    @include focus-ring;
     background: var(--p-action-secondary);
     border: none;
     box-shadow: none;
@@ -78,8 +79,6 @@
       background: var(--p-action-secondary-hovered);
       border-color: transparent;
     }
-
-    @include focus-ring;
 
     &:focus {
       border-color: transparent;
@@ -94,7 +93,12 @@
 
       &::after {
         border: none;
+        box-shadow: none;
       }
+    }
+
+    @media (-ms-high-contrast: active) {
+      border: 1px solid ms-high-contrast-color('text');
     }
   }
 }
@@ -109,7 +113,7 @@
   );
   color: color('ink', 'lightest');
 
-  &.globalTheming {
+  &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-disabled));
     background: var(--p-action-secondary-disabled);
     color: var(--p-text-disabled);
@@ -153,7 +157,7 @@
       0 0 1px 0 $active-color;
   }
 
-  &.globalTheming {
+  &.newDesignLanguage {
     background: var(--p-button-color);
     border-color: transparent;
     box-shadow: none;
@@ -190,7 +194,7 @@
   box-shadow: none;
   color: color('white');
 
-  &.globalTheming {
+  &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-disabled));
     border-color: transparent;
     background: var(--p-action-secondary-disabled);
@@ -220,28 +224,32 @@
     box-shadow: none;
   }
 
-  &.globalTheming {
+  &.newDesignLanguage {
     background: transparent;
-    box-shadow: 0 0 0 border-width('base') var(--p-border-subdued);
+    @include focus-ring($border-width: border-width('base'));
+    box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
     color: var(--p-text);
 
     &:hover {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-subdued);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
       background: var(--p-surface-hovered);
     }
 
     &:focus {
-      box-shadow: 0 0 0 border-width('thick') var(--p-border-subdued);
-      @include no-focus-ring;
+      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
+      @include focus-ring($style: 'focused');
     }
 
     &:active {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-subdued);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
       background: var(--p-surface-pressed);
+      &::after {
+        box-shadow: none;
+      }
     }
 
     &.disabled {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-disabled);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary-disabled);
       background: transparent;
       color: var(--p-text-disabled);
     }
@@ -249,7 +257,7 @@
     &.destructive {
       background: transparent;
       box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
-      color: var(--p-critical-link);
+      color: var(--p-interactive-critical);
       @include recolor-icon(var(--p-icon-critical));
 
       &:hover {
@@ -271,7 +279,7 @@
       &.disabled {
         box-shadow: 0 0 0 border-width('base') var(--p-border-critical-disabled);
         background: transparent;
-        color: var(--p-link-critical-disabled);
+        color: var(--p-interactive-critical-disabled);
       }
     }
   }

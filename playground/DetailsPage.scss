@@ -1,0 +1,20 @@
+$nav-collapsed: 769px;
+$top-bar-height: 56px;
+
+.ContextControl {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: var(--p-top-bar-height, $top-bar-height);
+}
+
+.ShopName {
+  margin-left: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--p-text, black);
+
+  @media only screen and (min-width: $nav-collapsed) {
+    color: var(--p-text, white);
+  }
+}

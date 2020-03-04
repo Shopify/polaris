@@ -49,9 +49,9 @@ export function RadioButton({
 }: RadioButtonProps) {
   const id = useUniqueId('RadioButton', idProp);
   const name = nameProp || id;
-  const {unstableGlobalTheming = false} = useFeatures();
   const inputNode = useRef<HTMLInputElement>(null);
   const [keyFocused, setKeyFocused] = useState(false);
+  const {newDesignLanguage} = useFeatures();
 
   const {
     value: mouseOver,
@@ -85,15 +85,15 @@ export function RadioButton({
 
   const inputClassName = classNames(
     styles.Input,
-    unstableGlobalTheming && keyFocused && styles.keyFocused,
+    newDesignLanguage && keyFocused && styles.keyFocused,
   );
 
   const wrapperClassName = classNames(
     styles.RadioButton,
-    unstableGlobalTheming && styles.globalTheming,
+    newDesignLanguage && styles.newDesignLanguage,
   );
 
-  const iconMarkup = !unstableGlobalTheming && <span className={styles.Icon} />;
+  const iconMarkup = !newDesignLanguage && <span className={styles.Icon} />;
 
   const backdropClassName = classNames(
     styles.Backdrop,

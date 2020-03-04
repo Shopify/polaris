@@ -1,5 +1,5 @@
 import React, {useMemo, useEffect, useContext} from 'react';
-import DefaultThemeColors from '@shopify/polaris-tokens/dist/base.json';
+import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
 import {
   ThemeContext,
   ThemeConfig,
@@ -33,50 +33,44 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
-  const {unstableGlobalTheming = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
   const parentColorScheme =
     parentContext && parentContext.colorScheme && parentContext.colorScheme;
   const parentColors =
-    parentContext &&
-    parentContext.UNSTABLE_colors &&
-    parentContext.UNSTABLE_colors;
+    parentContext && parentContext.colors && parentContext.colors;
 
-  const {UNSTABLE_colors, colorScheme, ...rest} = themeConfig;
+  const {colors, colorScheme, ...rest} = themeConfig;
 
   const processedThemeConfig = {
     ...rest,
     ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
-    UNSTABLE_colors: {
+    colors: {
       ...(isParentThemeProvider && DefaultThemeColors),
       ...(shouldInheritParentColors(
         isParentThemeProvider,
         colorScheme,
         parentColorScheme,
       ) && parentColors),
-      ...UNSTABLE_colors,
+      ...colors,
     },
   };
 
   const customProperties = useMemo(
     () =>
-      buildCustomProperties(
-        processedThemeConfig,
-        unstableGlobalTheming,
-        Tokens,
-      ),
-    [processedThemeConfig, unstableGlobalTheming],
+      buildCustomProperties(processedThemeConfig, newDesignLanguage, Tokens),
+    [processedThemeConfig, newDesignLanguage],
   );
 
   const theme = useMemo(
     () =>
       buildThemeContext(
         processedThemeConfig,
-        unstableGlobalTheming ? customProperties : undefined,
+        newDesignLanguage ? customProperties : undefined,
       ),
-    [customProperties, processedThemeConfig, unstableGlobalTheming],
+    [customProperties, processedThemeConfig, newDesignLanguage],
   );
 
   // We want these values to be empty string instead of `undefined` when not set.

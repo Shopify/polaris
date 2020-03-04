@@ -1,5 +1,4 @@
 @import '../../../../styles/common';
-
 $off-white: rgb(250, 251, 252);
 $off-white-border: rgb(235, 238, 240);
 $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -66,4 +65,41 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 .Action {
   margin-left: spacing(tight);
+}
+
+.newDesignLanguage {
+  background: var(--p-surface);
+  height: var(--p-contextual-save-bar-height);
+  margin: spacing(tight);
+  border-radius: var(--p-border-radius-wide);
+
+  &::after {
+    border-bottom: none;
+  }
+
+  @media (-ms-high-contrast: active) {
+    border: 1px solid ms-high-contrast-color('text');
+  }
+
+  .LogoContainer {
+    display: none;
+  }
+
+  .Contents {
+    margin: 0;
+    padding: 0 spacing();
+    max-width: 100%;
+
+    @include page-content-when-not-fully-condensed {
+      padding: 0 spacing();
+    }
+
+    @include page-content-when-not-partially-condensed {
+      padding: 0 spacing();
+    }
+  }
+
+  .Message {
+    color: var(--p-text);
+  }
 }
