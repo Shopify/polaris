@@ -348,8 +348,8 @@ $secondary-item-font-size: rem(15px);
     }
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
     .Navigation-newDesignLanguage & {
-      margin-top: spacing(tight);
-      margin-bottom: spacing(tight);
+      margin-top: rem(6px);
+      margin-bottom: rem(6px);
     }
   }
 
