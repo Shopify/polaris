@@ -1,7 +1,6 @@
 @import '../../styles/common';
 
 .Card {
-  overflow: var(--p-override-visible, hidden);
   background-color: var(--p-surface, color('white'));
   box-shadow: var(--p-card-shadow, shadow());
   outline: border-width(base) solid transparent;
@@ -37,6 +36,16 @@
   + .Section {
     border-top: border();
   }
+}
+
+.Section:first-child {
+  border-top-left-radius: border-radius();
+  border-top-right-radius: border-radius();
+}
+
+.Section:last-child {
+  border-bottom-left-radius: border-radius();
+  border-bottom-right-radius: border-radius();
 }
 
 .Section-fullWidth {

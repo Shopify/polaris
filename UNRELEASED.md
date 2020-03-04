@@ -5,6 +5,7 @@
 ### Enhancements
 
 - Added high contrast outline to `Popover`, `Card` and `Indicator` ([#2792](https://github.com/Shopify/polaris-react/pull/2792))
+- Removed `overflow: hidden` from `Card` ([#2806](https://github.com/Shopify/polaris-react/pull/2806))
 
 ### Bug fixes
 
