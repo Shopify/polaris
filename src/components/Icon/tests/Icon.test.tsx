@@ -35,12 +35,12 @@ describe('<Icon />', () => {
   });
 
   describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled, and sets a default color', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const icon = mountWithApp(<Icon source={PlusMinor} />, {
         features: {newDesignLanguage: true},
       });
       expect(icon).toContainReactComponent('span', {
-        className: 'Icon colorBase isColored newDesignLanguage',
+        className: 'Icon newDesignLanguage',
       });
     });
 
