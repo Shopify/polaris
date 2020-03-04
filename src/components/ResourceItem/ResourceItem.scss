@@ -181,9 +181,28 @@ $resource-list-item-variables: (
   }
 }
 
+.alignmentLeading {
+  align-items: flex-start;
+}
+
+.alignmentTrailing {
+  align-items: flex-end;
+}
+
+.alignmentCenter {
+  align-items: center;
+}
+
+.alignmentFill {
+  align-items: stretch;
+}
+
+.alignmentBaseline {
+  align-items: baseline;
+}
+
 .Owned {
   display: flex;
-  align-self: flex-start;
 }
 
 // Item handle
@@ -233,7 +252,6 @@ $resource-list-item-variables: (
 .Content {
   @include layout-flex-fix;
   flex: 1 1 auto;
-  align-self: center;
 }
 
 // Item actions

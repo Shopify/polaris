@@ -677,6 +677,66 @@ describe('<ResourceItem />', () => {
       });
     });
   });
+
+  describe('verticalAlignment', () => {
+    it('renders with default flex-start alignment if not provided', () => {
+      const resourceItem = mountWithApp(<ResourceItem id={itemId} url={url} />);
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container',
+      });
+    });
+
+    it('renders with leading vertical alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} verticalAlignment="leading" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentLeading',
+      });
+    });
+
+    it('renders with center vertical alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} verticalAlignment="center" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentCenter',
+      });
+    });
+
+    it('renders with trailing vertical alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} verticalAlignment="trailing" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentTrailing',
+      });
+    });
+
+    it('renders with stretch vertical alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} verticalAlignment="fill" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentFill',
+      });
+    });
+
+    it('renders with baseline vertical alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} verticalAlignment="baseline" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentBaseline',
+      });
+    });
+  });
 });
 
 function noop() {}
