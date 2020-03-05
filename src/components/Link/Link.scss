@@ -12,6 +12,10 @@
   text-decoration: none;
   cursor: pointer;
 
+  &.newDesignLanguage {
+    text-decoration: underline;
+  }
+
   &:hover {
     color: var(--p-interactive-hovered, color('blue', 'dark'));
     text-decoration: underline;
@@ -19,7 +23,6 @@
 
   &:focus {
     $chrome-default-outline: rgba(0, 103, 244, 0.247) auto rem(4.5px);
-    text-decoration: var(--p-override-none, underline);
     outline: var(--p-override-none, $chrome-default-outline);
   }
 
@@ -43,10 +46,9 @@
       display: block;
 
       border-radius: border-radius();
-      background: var(--p-action-secondary, none);
     }
     color: var(--p-interactive-pressed, color('blue', 'dark'));
-    text-decoration: var(--p-override-none, underline);
+    text-decoration: underline;
   }
 }
 

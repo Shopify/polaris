@@ -20,19 +20,9 @@ const COLORS_WITH_BACKDROPS = [
 // styleguide to generate the props explorer
 interface Props extends IconProps {}
 
-export function Icon({
-  source,
-  color: colorFromProps,
-  backdrop,
-  accessibilityLabel,
-}: Props) {
+export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   const i18n = useI18n();
   const {newDesignLanguage} = useFeatures();
-
-  const color =
-    colorFromProps == null && newDesignLanguage === true
-      ? 'base'
-      : colorFromProps;
 
   let sourceType: 'function' | 'placeholder' | 'external';
   if (typeof source === 'function') {

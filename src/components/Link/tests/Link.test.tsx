@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Banner, UnstyledLink, Icon} from 'components';
 import en from '../../../../locales/en.json';
 import {Link} from '../Link';
@@ -118,6 +119,17 @@ describe('<Link />', () => {
       );
 
       expect(button.hasClass('monochrome')).toBe(false);
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled, and sets a default color', () => {
+      const link = mountWithApp(<Link url="MyThing" />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(link).toContainReactComponent('a', {
+        className: 'Link newDesignLanguage',
+      });
     });
   });
 });
