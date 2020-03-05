@@ -100,9 +100,9 @@
 
     &:disabled:checked {
       + .Backdrop {
-        background: var(--p-border-secondary-disabled);
+        background: var(--p-border-disabled);
         &::before {
-          background: var(--p-border-secondary-disabled);
+          background: var(--p-border-disabled);
         }
       }
     }

@@ -81,7 +81,7 @@ $range-thumb-shadow-focus: var(
 
   .disabled & {
     background-image: none;
-    background: var(--p-border-secondary-disabled, color('sky', 'dark'));
+    background: var(--p-border-disabled, color('sky', 'dark'));
   }
 }
 
@@ -111,8 +111,8 @@ $range-thumb-shadow-focus: var(
 
   &.disabled {
     cursor: not-allowed;
-    border-color: var(--p-border-secondary-disabled, color('sky', 'dark'));
-    background: var(--p-border-secondary-disabled, color('white'));
+    border-color: var(--p-border-disabled, color('sky', 'dark'));
+    background: var(--p-border-disabled, color('white'));
   }
 
   &:hover {

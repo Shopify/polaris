@@ -173,16 +173,13 @@ $range-thumb-shadow-focus: var(
     @include range-track-selectors {
       cursor: auto;
       background-image: none;
-      background-color: var(
-        --p-border-secondary-disabled,
-        color('sky', 'dark')
-      );
+      background-color: var(--p-border-disabled, color('sky', 'dark'));
     }
 
     @include range-thumb-selectors {
       cursor: not-allowed;
-      border-color: var(--p-border-secondary-disabled, color('sky', 'dark'));
-      background: var(--p-border-secondary-disabled, color('white'));
+      border-color: var(--p-border-disabled, color('sky', 'dark'));
+      background: var(--p-border-disabled, color('white'));
     }
   }
 }
