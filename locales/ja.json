@@ -110,7 +110,7 @@
       }
     },
     "Filters": {
-      "moreFilters": "細かい絞り込み",
+      "moreFilters": "詳細な絞り込み",
       "filter": "フィルター{resourceName}",
       "noFiltersApplied": "絞り込みが適用されていません",
       "cancel": "キャンセルする",
