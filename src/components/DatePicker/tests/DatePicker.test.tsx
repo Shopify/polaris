@@ -2,6 +2,7 @@ import React from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Day, Month, Weekday} from '../components';
 import {DatePicker} from '../DatePicker';
 
@@ -178,6 +179,47 @@ describe('<DatePicker />', () => {
         .first()
         .prop('focused'),
     ).toBe(false);
+  });
+
+  it('it passes isLastSelectedDay to Day when there is a range', () => {
+    const selected = {
+      start: new Date(2016, 11, 8),
+      end: new Date(2016, 11, 18),
+    };
+    const month = 11;
+    const year = 2016;
+
+    const datePicker = mountWithApp(
+      <DatePicker
+        allowRange
+        selected={selected}
+        month={month}
+        year={year}
+        onChange={noop}
+      />,
+    );
+
+    expect(datePicker).toContainReactComponent(Day, {isLastSelectedDay: true});
+  });
+
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+      const datePicker = mountWithApp(<DatePicker month={1} year={2020} />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(datePicker).toContainReactComponent('div', {
+        className: 'DatePicker newDesignLanguage',
+      });
+    });
+
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+      const datePicker = mountWithApp(<DatePicker month={1} year={2020} />, {
+        features: {newDesignLanguage: false},
+      });
+      expect(datePicker).not.toContainReactComponent('div', {
+        className: 'DatePicker newDesignLanguage',
+      });
+    });
   });
 });
 
