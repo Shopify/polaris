@@ -118,7 +118,7 @@
       "clearAllFilters": "すべての絞り込みをクリアする",
       "clear": "クリア",
       "clearLabel": "{filterName}をクリアする",
-      "moreFiltersWithCount": "細かい絞り込み ({count})"
+      "moreFiltersWithCount": "詳細な絞り込み ({count})"
     },
     "Modal": {
       "iFrameTitle": "ボディのマークアップ",
