@@ -2,6 +2,8 @@
 
 ### Breaking changes
 
+- Update references to border color variants ([#2811](https://github.com/Shopify/polaris-react/pull/2811))
+
 ### Enhancements
 
 - Added high contrast outline to `Popover`, `Card` and `Indicator` ([#2792](https://github.com/Shopify/polaris-react/pull/2792))
