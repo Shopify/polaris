@@ -228,21 +228,21 @@
   &.newDesignLanguage {
     background: transparent;
     @include focus-ring($border-width: border-width('base'));
-    box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
+    box-shadow: 0 0 0 border-width('base') var(--p-border);
     color: var(--p-text);
 
     &:hover {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
+      box-shadow: 0 0 0 border-width('base') var(--p-border);
       background: var(--p-surface-hovered);
     }
 
     &:focus {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
+      box-shadow: 0 0 0 border-width('base') var(--p-border);
       @include focus-ring($style: 'focused');
     }
 
     &:active {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
+      box-shadow: 0 0 0 border-width('base') var(--p-border);
       background: var(--p-surface-pressed);
       &::after {
         box-shadow: none;
@@ -250,7 +250,7 @@
     }
 
     &.disabled {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary-disabled);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-disabled);
       background: transparent;
       color: var(--p-text-disabled);
     }
