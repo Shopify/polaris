@@ -179,6 +179,7 @@ $in-range-border-color: #9ca6de;
     &:hover {
       background: var(--p-interactive-hovered);
       color: var(--p-text-on-interactive);
+      @include high-contrast-outline;
     }
 
     @include focus-ring;
@@ -186,6 +187,13 @@ $in-range-border-color: #9ca6de;
     &:focus:not(:active) {
       @include focus-ring($style: 'focused');
       box-shadow: none;
+
+      @media (-ms-high-contrast: active) {
+        // stylelint-disable-next-line selector-max-specificity, max-nesting-depth
+        &::after {
+          box-shadow: none;
+        }
+      }
     }
   }
 
@@ -193,12 +201,36 @@ $in-range-border-color: #9ca6de;
     background: var(--p-interactive);
     border: none;
     color: var(--p-text-on-interactive);
+
+    @media (-ms-high-contrast: active) {
+      -ms-high-contrast-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+
+      &:hover {
+        background-color: HighlightText;
+        color: Highlight;
+        outline: 2px solid Highlight;
+      }
+    }
   }
 
   .Day-inRange {
     z-index: auto;
     border-radius: 0;
     background: var(--p-surface-selected);
+
+    @media (-ms-high-contrast: active) {
+      -ms-high-contrast-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+
+      &:hover {
+        background-color: HighlightText;
+        color: Highlight;
+        outline: 2px solid Highlight;
+      }
+    }
   }
 
   .Day-firstInRange {
@@ -245,6 +277,16 @@ $in-range-border-color: #9ca6de;
     &:hover {
       background-color: transparent;
       color: var(--p-text-disabled);
+    }
+
+    @media (-ms-high-contrast) {
+      -ms-high-contrast-adjust: none;
+      color: grayText;
+
+      &:hover {
+        color: grayText;
+        outline: none;
+      }
     }
 
     &:focus {
