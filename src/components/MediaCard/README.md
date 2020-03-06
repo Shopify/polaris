@@ -15,22 +15,23 @@ keywords:
 
 # Media card
 
-## Media cards provide a consistent layout to present visual information to merchants. The visual media is used to provide additional context to the written information it's paired with.
+## Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with.
 
 ## Best practices
 
 Media cards should:
 
-- Clearly articulate the benefit of the feature or opportunity presented to merchants
-- Provide merchants with a clear call to action
-- Show targeted content toward specific user types where possible to maximize relevance and impact
-- Be dismissable
+- Provide merchants with a clear call to action.
+- Always pair text with a visual component, for example, body text paired with an image, video, etc.
+- Use media to enhance the written content. The written content should be able to stand alone without an explanation from the paired media.
+- Show targeted content toward specific audiences to maximize relevance.
+- Be dismissable.
 
 ---
 
 ## Content guidelines
 
-- Do not use Media cards as advertisements for your feature. Instead they should educate the merchant about how to accomplish tasks related to the section they’re in.
+- Don’t use media cards as advertisements for your feature. Instead they should educate the merchant about how to accomplish tasks related to the section they’re in.
 
 ### Title
 
@@ -125,7 +126,7 @@ Add a menu item
 
 ## Examples
 
-### Basic Media card
+### Basic media card
 
 Use to surface educational information about a feature or opportunity.
 
@@ -155,20 +156,20 @@ Use to surface educational information about a feature or opportunity.
 
 ### Media card with secondary action
 
-Use when there are two distinct actions merchants can take on the information in the video.
+Use when there are two distinct actions merchants can take on the information in the card.
 
 ```jsx
 <MediaCard
-  title="Getting Started"
+  title="Get closer to launching your store"
   primaryAction={{
-    content: 'Learn about getting started',
+    content: 'Add a product',
     onAction: () => {},
   }}
   secondaryAction={{
-    content: 'Click here',
+    content: 'Learn more',
     onAction: () => {},
   }}
-  description="Discover how Shopify can power up your entrepreneurial journey."
+  description="Start your business with eye-catching inventory."
   popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
 >
   <img
@@ -183,20 +184,16 @@ Use when there are two distinct actions merchants can take on the information in
 
 ### Video card
 
-Video cards provide a consistent layout for contextual learning system content. Use to wrap thumbnails of educational videos about Shopify admin features in context.
+Use to provide a consistent layout for contextual learning content. Use to wrap thumbnails of educational videos about Shopify features in context.
 
 ```jsx
 <MediaCard
-  title="Getting Started"
+  title="Turn your side-project into a business"
   primaryAction={{
-    content: 'Learn about getting started',
+    content: 'Learn more',
     onAction: () => {},
   }}
-  secondaryAction={{
-    content: 'Click here',
-    onAction: () => {},
-  }}
-  description="Discover how Shopify can power up your entrepreneurial journey."
+  description="In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business."
   popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
 >
   <VideoThumbnail
@@ -208,17 +205,17 @@ Video cards provide a consistent layout for contextual learning system content. 
 
 ### Portrait video card
 
-Use when vertical screen space is not limited or when the video card comprises the page's primary content. For example, in an empty state.
+Use when vertical screen space is not limited or when the video card is the page’s primary content. For example, in an empty state.
 
 ```jsx
 <MediaCard
   portrait
-  title="Getting Started"
+  title="Turn your side-project into a business"
   primaryAction={{
-    content: 'Learn about getting started',
+    content: 'Learn more',
     onAction: () => {},
   }}
-  description="Discover how Shopify can power up your entrepreneurial journey."
+  description="In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business."
   popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
 >
   <VideoThumbnail
@@ -232,6 +229,7 @@ Use when vertical screen space is not limited or when the video card comprises t
 
 ## Related components
 
+- To create a card with a video placeholder, [use the video thumbnail component](https://polaris.shopify.com/components/images-and-icons/video-thumbnail)
 - To group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/structure/card)
 - To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
 - To explain a feature that merchants haven’t tried yet, [use the empty state component](https://polaris.shopify.com/components/structure/empty-state)
