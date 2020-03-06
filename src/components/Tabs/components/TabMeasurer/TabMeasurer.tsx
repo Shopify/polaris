@@ -2,7 +2,6 @@ import React, {memo, useEffect, useRef, useCallback} from 'react';
 import {EventListener} from '../../../EventListener';
 import {classNames} from '../../../../utilities/css';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
-
 import {TabDescriptor} from '../../types';
 import {Tab} from '../Tab';
 import styles from '../../Tabs.scss';

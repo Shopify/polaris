@@ -5,6 +5,7 @@ import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {Popover} from '../Popover';
 
+import {FeaturesContext} from '../../utilities/features';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -42,6 +43,7 @@ interface State {
 }
 
 class TabsInner extends React.PureComponent<CombinedProps, State> {
+  static contextType = FeaturesContext;
   static getDerivedStateFromProps(nextProps: TabsProps, prevState: State) {
     const {disclosureWidth, tabWidths, containerWidth} = prevState;
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
@@ -58,6 +60,8 @@ class TabsInner extends React.PureComponent<CombinedProps, State> {
       selected: nextProps.selected,
     };
   }
+
+  context!: React.ContextType<typeof FeaturesContext>;
 
   state: State = {
     disclosureWidth: 0,
@@ -79,6 +83,7 @@ class TabsInner extends React.PureComponent<CombinedProps, State> {
     } = this.props;
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
+    const {newDesignLanguage} = this.context || {};
 
     const panelMarkup = children
       ? tabs.map((_tab, index) => {
@@ -111,6 +116,12 @@ class TabsInner extends React.PureComponent<CombinedProps, State> {
       styles.Tabs,
       fitted && styles.fitted,
       disclosureActivatorVisible && styles.fillSpace,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
+    const wrapperClassName = classNames(
+      styles.Wrapper,
+      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const disclosureTabClassName = classNames(
@@ -133,39 +144,41 @@ class TabsInner extends React.PureComponent<CombinedProps, State> {
 
     return (
       <div>
-        <ul
-          role="tablist"
-          className={classname}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onKeyDown={handleKeyDown}
-          onKeyUp={this.handleKeyPress}
-        >
-          {tabsMarkup}
-          <li className={disclosureTabClassName}>
-            <Popover
-              preferredPosition="below"
-              activator={activator}
-              active={disclosureActivatorVisible && showDisclosure}
-              onClose={this.handleClose}
-            >
-              <List
-                focusIndex={hiddenTabs.indexOf(tabToFocus)}
-                disclosureTabs={disclosureTabs}
-                onClick={this.handleTabClick}
-                onKeyPress={this.handleKeyPress}
-              />
-            </Popover>
-          </li>
-        </ul>
-        <TabMeasurer
-          tabToFocus={tabToFocus}
-          activator={activator}
-          selected={selected}
-          tabs={tabs}
-          siblingTabHasFocus={tabToFocus > -1}
-          handleMeasurement={this.handleMeasurement}
-        />
+        <div className={wrapperClassName}>
+          <ul
+            role="tablist"
+            className={classname}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onKeyDown={handleKeyDown}
+            onKeyUp={this.handleKeyPress}
+          >
+            {tabsMarkup}
+            <li className={disclosureTabClassName}>
+              <Popover
+                preferredPosition="below"
+                activator={activator}
+                active={disclosureActivatorVisible && showDisclosure}
+                onClose={this.handleClose}
+              >
+                <List
+                  focusIndex={hiddenTabs.indexOf(tabToFocus)}
+                  disclosureTabs={disclosureTabs}
+                  onClick={this.handleTabClick}
+                  onKeyPress={this.handleKeyPress}
+                />
+              </Popover>
+            </li>
+          </ul>
+          <TabMeasurer
+            tabToFocus={tabToFocus}
+            activator={activator}
+            selected={selected}
+            tabs={tabs}
+            siblingTabHasFocus={tabToFocus > -1}
+            handleMeasurement={this.handleMeasurement}
+          />
+        </div>
         {panelMarkup}
       </div>
     );
