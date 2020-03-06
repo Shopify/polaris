@@ -119,6 +119,11 @@ class TabsInner extends React.PureComponent<CombinedProps, State> {
       newDesignLanguage && styles.newDesignLanguage,
     );
 
+    const wrapperClassName = classNames(
+      styles.Wrapper,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     const disclosureTabClassName = classNames(
       styles.DisclosureTab,
       disclosureActivatorVisible && styles['DisclosureTab-visible'],
@@ -139,39 +144,41 @@ class TabsInner extends React.PureComponent<CombinedProps, State> {
 
     return (
       <div>
-        <ul
-          role="tablist"
-          className={classname}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onKeyDown={handleKeyDown}
-          onKeyUp={this.handleKeyPress}
-        >
-          {tabsMarkup}
-          <li className={disclosureTabClassName}>
-            <Popover
-              preferredPosition="below"
-              activator={activator}
-              active={disclosureActivatorVisible && showDisclosure}
-              onClose={this.handleClose}
-            >
-              <List
-                focusIndex={hiddenTabs.indexOf(tabToFocus)}
-                disclosureTabs={disclosureTabs}
-                onClick={this.handleTabClick}
-                onKeyPress={this.handleKeyPress}
-              />
-            </Popover>
-          </li>
-        </ul>
-        <TabMeasurer
-          tabToFocus={tabToFocus}
-          activator={activator}
-          selected={selected}
-          tabs={tabs}
-          siblingTabHasFocus={tabToFocus > -1}
-          handleMeasurement={this.handleMeasurement}
-        />
+        <div className={wrapperClassName}>
+          <ul
+            role="tablist"
+            className={classname}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onKeyDown={handleKeyDown}
+            onKeyUp={this.handleKeyPress}
+          >
+            {tabsMarkup}
+            <li className={disclosureTabClassName}>
+              <Popover
+                preferredPosition="below"
+                activator={activator}
+                active={disclosureActivatorVisible && showDisclosure}
+                onClose={this.handleClose}
+              >
+                <List
+                  focusIndex={hiddenTabs.indexOf(tabToFocus)}
+                  disclosureTabs={disclosureTabs}
+                  onClick={this.handleTabClick}
+                  onKeyPress={this.handleKeyPress}
+                />
+              </Popover>
+            </li>
+          </ul>
+          <TabMeasurer
+            tabToFocus={tabToFocus}
+            activator={activator}
+            selected={selected}
+            tabs={tabs}
+            siblingTabHasFocus={tabToFocus > -1}
+            handleMeasurement={this.handleMeasurement}
+          />
+        </div>
         {panelMarkup}
       </div>
     );
