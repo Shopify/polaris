@@ -17,6 +17,7 @@ keywords:
   - shopify app bridge
   - embedded app sdk
   - sdk
+omitAppProvider: true
 ---
 
 # App provider

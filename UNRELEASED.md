@@ -22,7 +22,8 @@
 
 - Added `check:custom-property` job in travis ([#2778](https://github.com/Shopify/polaris-react/pull/2778))
 - Exported missing OptionListProps ([#2777](https://github.com/Shopify/polaris-react/pull/2777))
-- Omitted the Storybook `AppProvider` decorator for examples which already contain an `AppProvider` ([#2807](https://github.com/Shopify/polaris-react/pull/2807))
+- Omitted the Storybook `AppProvider` decorator for component examples which already contain an `AppProvider` ([#2807](https://github.com/Shopify/polaris-react/pull/2807))
+- Added an `omitAppProvider` front matter concept to prevent automatic wrapping of component examples with an `AppProvider` ([#2815](https://github.com/Shopify/polaris-react/pull/2815))
 
 ### Dependency upgrades
 
