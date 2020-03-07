@@ -432,85 +432,35 @@ The new design language is enabled by passing `{newDesignLanguage: true}` to the
 ```jsx
 function NewDesignLanguageExample() {
   const [isDirty, setIsDirty] = useState(false);
-  const [searchFieldValue, setSearchFieldValue] = useState('');
-
-  const handleSearchChange = useCallback(
-    (searchFieldValue) => setSearchFieldValue(searchFieldValue),
-    [],
-  );
 
   const toggleIsDirty = useCallback(
     () => setIsDirty((isDirty) => !isDirty),
     [],
   );
 
-  const searchFieldMarkup = (
-    <TopBar.SearchField
-      placeholder="Search"
-      value={searchFieldValue}
-      onChange={handleSearchChange}
-    />
-  );
-
-  const topBarMarkup = <TopBar searchField={searchFieldMarkup} />;
-
   const contentStatus = isDirty ? 'Disable' : 'Enable';
   const textStatus = isDirty ? 'enabled' : 'disabled';
 
-  const pageMarkup = (
-    <Page title="Account">
-      <Layout>
-        <Layout.Section>
-          <SettingToggle
-            action={{
-              content: contentStatus,
-              onAction: toggleIsDirty,
-            }}
-            enabled={isDirty}
-          >
-            This setting is{' '}
-            <TextStyle variation="strong">{textStatus}</TextStyle>.
-          </SettingToggle>
-        </Layout.Section>
-      </Layout>
-    </Page>
-  );
-
-  const contextualSaveBarMarkup = isDirty ? (
-    <ContextualSaveBar
-      message="Unsaved changes"
-      saveAction={{
-        onAction: toggleIsDirty,
-      }}
-      discardAction={{
-        onAction: toggleIsDirty,
-      }}
-    />
-  ) : null;
-
   return (
     <div style={{height: '250px'}}>
-      <AppProvider
-        features={{newDesignLanguage: true}}
-        i18n={{
-          Polaris: {
-            Frame: {skipToContent: 'Skip to content'},
-            ContextualSaveBar: {
-              save: 'Save',
-              discard: 'Discard',
-            },
-            TopBar: {
-              SearchField: {
-                clearButtonLabel: 'Clear',
-                search: 'Search',
-              },
-            },
-          },
-        }}
-      >
-        <Frame topBar={topBarMarkup}>
-          {contextualSaveBarMarkup}
-          {pageMarkup}
+      <AppProvider features={{newDesignLanguage: true}} i18n={{}}>
+        <Frame>
+          <Page title="Account">
+            <Layout>
+              <Layout.Section>
+                <SettingToggle
+                  action={{
+                    content: contentStatus,
+                    onAction: toggleIsDirty,
+                  }}
+                  enabled={isDirty}
+                >
+                  This setting is{' '}
+                  <TextStyle variation="strong">{textStatus}</TextStyle>.
+                </SettingToggle>
+              </Layout.Section>
+            </Layout>
+          </Page>
         </Frame>
       </AppProvider>
     </div>
