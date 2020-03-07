@@ -9,6 +9,7 @@ keywords:
   - save
   - cancel
   - logo
+omitAppProvider: true
 ---
 
 # Contextual Save Bar

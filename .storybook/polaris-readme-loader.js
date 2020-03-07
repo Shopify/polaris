@@ -39,7 +39,9 @@ module.exports = function loader(source) {
     return `
 const ${example.storyName}Component = (${example.code})();
 export function ${example.storyName}() {
-  return <${example.storyName}Component key="${readme.name}"/>;
+  return <div data-omit-app-provider="${readme.omitAppProvider}"><${
+      example.storyName
+    }Component /></div>;
 }
 ${example.storyName}.story = {
   name: ${JSON.stringify(example.name)},
@@ -281,6 +283,7 @@ function parseCodeExamples(data) {
     name: matter.data.name,
     category: matter.data.category,
     examples: generateExamples(matter),
+    omitAppProvider: matter.data.omitAppProvider || false,
   };
 }
 
