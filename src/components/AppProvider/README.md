@@ -444,24 +444,22 @@ function NewDesignLanguageExample() {
   return (
     <div style={{height: '250px'}}>
       <AppProvider features={{newDesignLanguage: true}} i18n={{}}>
-        <Frame>
-          <Page title="Account">
-            <Layout>
-              <Layout.Section>
-                <SettingToggle
-                  action={{
-                    content: contentStatus,
-                    onAction: toggleIsDirty,
-                  }}
-                  enabled={isDirty}
-                >
-                  This setting is{' '}
-                  <TextStyle variation="strong">{textStatus}</TextStyle>.
-                </SettingToggle>
-              </Layout.Section>
-            </Layout>
-          </Page>
-        </Frame>
+        <Page title="Account">
+          <Layout>
+            <Layout.Section>
+              <SettingToggle
+                action={{
+                  content: contentStatus,
+                  onAction: toggleIsDirty,
+                }}
+                enabled={isDirty}
+              >
+                This setting is{' '}
+                <TextStyle variation="strong">{textStatus}</TextStyle>.
+              </SettingToggle>
+            </Layout.Section>
+          </Layout>
+        </Page>
       </AppProvider>
     </div>
   );
