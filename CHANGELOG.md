@@ -8,6 +8,13 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.15.1 - 2020-03-07
+
+### Bug fixes
+
+- Reverted const context type to support older versions of typescript in consuming apps ([e7c5e16](https://github.com/Shopify/polaris-react/commit/e7c5e16e8e7b2e70993c5e33c6e34bea428b35b8))
+- Fixed broken link in `ThemeProvider` docs ([0ff672d](https://github.com/Shopify/polaris-react/commit/0ff672d2802cb6f4832176de889fe2ab39b101f0))
+
 ## 4.15.0 - 2020-03-06
 
 ### Enhancements
