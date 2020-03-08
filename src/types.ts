@@ -44,8 +44,15 @@ const NEW_DESIGN_LANGUAGE_COLORS = [
   'highlight',
   'success',
   'primary',
-] as const;
-type NewDesignLanguageColor = typeof NEW_DESIGN_LANGUAGE_COLORS[number];
+];
+type NewDesignLanguageColor =
+  | 'base'
+  | 'subdued'
+  | 'critical'
+  | 'warning'
+  | 'highlight'
+  | 'success'
+  | 'primary';
 export function isNewDesignLanguageColor(
   color: Color | NewDesignLanguageColor,
 ): color is NewDesignLanguageColor {
