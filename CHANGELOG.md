@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.15.2 - 2020-03-09
+
+### Code quality
+
+- Updated shrink-ray to v2 ([#2800](https://github.com/Shopify/polaris-react/pull/2800))
+
 ## 4.15.1 - 2020-03-07
 
 ### Bug fixes
