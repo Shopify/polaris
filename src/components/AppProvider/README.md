@@ -427,7 +427,7 @@ function AppProviderWithAllThemeKeysExample() {
 
 ### With the new design language enabled
 
-The new design language is enabled by passing `{newDesignLanguage: true}` to the `features` prop on the app provider component.
+The new design language is enabled by passing `{newDesignLanguage: true}` to the `features` prop on the app provider component. This feature is currently meant for development and quality assurance usage only. The new design language is not yet meant for production experiences.
 
 ```jsx
 function NewDesignLanguageExample() {
