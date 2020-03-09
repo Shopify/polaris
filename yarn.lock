@@ -1744,10 +1744,10 @@
     whatwg-url "^6.1.0"
     yargs "^12.0.2"
 
-"@shopify/shrink-ray@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/shrink-ray/-/shrink-ray-1.0.0.tgz#30d6ac0ef6c57257058877afa9c468f667e5e4f1"
-  integrity sha512-v6GP+7f/YezQ5cQy0nasjKN15PFfroQtE22aW9EGfzbt+8pdMbpNLqQ6Da9CW6/rY1ec/4Pa79uZgzdyCyqYxw==
+"@shopify/shrink-ray@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@shopify/shrink-ray/-/shrink-ray-2.3.1.tgz#38c2c7933d46d2e8721a9dac19c67adc2798a1b4"
+  integrity sha512-YO9lgIkcsmDybMJV4+qQI6BVt2ZJ0lM1oAJhxMOmlJaaPN7FJC6heA9xvAyGT1ivLMHgR7F4DZJWOxWpc7pDzw==
   dependencies:
     "@shopify/network" "^1.4.2"
     async "^3.1.0"
