@@ -14,27 +14,34 @@ $large-size: rem(44px);
   width: $size;
 }
 
+@mixin animationColor($color) {
+  svg {
+    animation: loading duration(slowest) linear infinite;
+    fill: $color;
+  }
+}
+
 .Spinner {
-  animation: loading duration(slowest) linear infinite;
   color: transparent;
 }
 
-.sizeSmall {
+.sizeSmall svg {
   @include spinnerSize($small-size);
 }
 
-.sizeLarge {
+.sizeLarge svg {
   @include spinnerSize($large-size);
 }
 
 .colorWhite {
-  filter: filter('white');
+  @include animationColor(var(--p-border-highlight, color('white')));
 }
 
-.colorTeal {
-  filter: filter('teal');
+.colorTeal,
+.colorHighlight {
+  @include animationColor(var(--p-border-highlight, color('teal')));
 }
 
 .colorInkLightest {
-  filter: filter('ink', 'lightest');
+  @include animationColor(var(--p-border-highlight, color('ink', 'lightest')));
 }
