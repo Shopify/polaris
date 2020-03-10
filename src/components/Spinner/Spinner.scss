@@ -2,7 +2,6 @@
 
 $small-size: rem(20px);
 $large-size: rem(44px);
-$animation: loading duration(slowest) linear infinite;
 
 @keyframes loading {
   to {
@@ -15,45 +14,34 @@ $animation: loading duration(slowest) linear infinite;
   width: $size;
 }
 
-@mixin new-design-language-svg {
-  &.newDesignLanguage {
-    svg {
-      animation: $animation;
-      fill: var(--p-border-highlight);
-    }
+@mixin animationColor($color) {
+  svg {
+    animation: loading duration(slowest) linear infinite;
+    fill: $color;
   }
-}
-
-.Spinner:not(.newDesignLanguage) {
-  animation: $animation;
 }
 
 .Spinner {
   color: transparent;
 }
 
-.sizeSmall:not(.newDesignLanguage),
-.sizeSmall.newDesignLanguage svg {
+.sizeSmall svg {
   @include spinnerSize($small-size);
 }
 
-.sizeLarge:not(.newDesignLanguage),
-.sizeLarge.newDesignLanguage svg {
+.sizeLarge svg {
   @include spinnerSize($large-size);
 }
 
 .colorWhite {
-  filter: var(--p-override-none, filter('white'));
-  @include new-design-language-svg;
+  @include animationColor(var(--p-border-highlight, color('white')));
 }
 
 .colorTeal,
 .colorHighlight {
-  filter: var(--p-override-none, filter('teal'));
-  @include new-design-language-svg;
+  @include animationColor(var(--p-border-highlight, color('teal')));
 }
 
 .colorInkLightest {
-  filter: var(--p-override-none, filter('ink', 'lightest'));
-  @include new-design-language-svg;
+  @include animationColor(var(--p-border-highlight, color('ink', 'lightest')));
 }

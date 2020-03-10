@@ -6,7 +6,6 @@ import {VisuallyHidden} from '../VisuallyHidden';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {useFeatures} from '../../utilities/features';
 import styles from './Spinner.scss';
-import {spinnerLarge, spinnerSmall} from './images';
 
 type Color = 'white' | 'teal' | 'inkLightest';
 
@@ -66,8 +65,6 @@ export function Spinner({
     newDesignLanguage && styles.newDesignLanguage,
   );
 
-  const spinnerSVG = size === 'large' ? spinnerLarge : spinnerSmall;
-
   const spinnerSVGMarkup =
     size === 'large' ? (
       <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
@@ -78,12 +75,6 @@ export function Spinner({
         <path d="M7.229 1.173a9.25 9.25 0 1011.655 11.412 1.25 1.25 0 10-2.4-.698 6.75 6.75 0 11-8.506-8.329 1.25 1.25 0 10-.75-2.385z" />
       </svg>
     );
-
-  const imageMarkup = newDesignLanguage ? (
-    <span className={className}>{spinnerSVGMarkup}</span>
-  ) : (
-    <Image alt="" source={spinnerSVG} className={className} draggable={false} />
-  );
 
   const spanAttributes = {
     ...(!hasFocusableParent && {role: 'status'}),
@@ -96,7 +87,7 @@ export function Spinner({
 
   return (
     <React.Fragment>
-      {imageMarkup}
+      <span className={className}>{spinnerSVGMarkup}</span>
       <span {...spanAttributes}>{accessibilityLabelMarkup}</span>
     </React.Fragment>
   );

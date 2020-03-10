@@ -21,24 +21,44 @@ describe('<Spinner />', () => {
   describe('size', () => {
     it('renders a large spinner by default', () => {
       const spinner = mountWithAppProvider(<Spinner />);
-      expect(spinner.find(Image).hasClass('sizeLarge')).toBeTruthy();
+      expect(
+        spinner
+          .find('span')
+          .first()
+          .hasClass('sizeLarge'),
+      ).toBeTruthy();
     });
 
     it('renders a large spinner when size is large', () => {
       const spinner = mountWithAppProvider(<Spinner size="large" />);
-      expect(spinner.find(Image).hasClass('sizeLarge')).toBeTruthy();
+      expect(
+        spinner
+          .find('span')
+          .first()
+          .hasClass('sizeLarge'),
+      ).toBeTruthy();
     });
 
     it('renders a small spinner when size is small', () => {
       const spinner = mountWithAppProvider(<Spinner size="small" />);
-      expect(spinner.find(Image).hasClass('sizeSmall')).toBeTruthy();
+      expect(
+        spinner
+          .find('span')
+          .first()
+          .hasClass('sizeSmall'),
+      ).toBeTruthy();
     });
 
     it('renders a small spinner when color is white even if size is large', () => {
       const spinner = mountWithAppProvider(
         <Spinner size="large" color="white" />,
       );
-      expect(spinner.find(Image).hasClass('sizeSmall')).toBeTruthy();
+      expect(
+        spinner
+          .find('span')
+          .first()
+          .hasClass('sizeSmall'),
+      ).toBeTruthy();
     });
   });
 
@@ -97,7 +117,7 @@ describe('<Spinner />', () => {
       const spinner = mountWithApp(<Spinner color="teal" size="large" />, {
         features: {newDesignLanguage: false},
       });
-      expect(spinner).toContainReactComponent('img', {
+      expect(spinner).toContainReactComponent('span', {
         className: 'Spinner colorTeal sizeLarge',
       });
     });
