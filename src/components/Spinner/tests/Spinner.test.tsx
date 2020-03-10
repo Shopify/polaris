@@ -3,7 +3,6 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Spinner} from '../Spinner';
-import {Image} from '../../Image';
 import {VisuallyHidden} from '../../VisuallyHidden';
 
 describe('<Spinner />', () => {
