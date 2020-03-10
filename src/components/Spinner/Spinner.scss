@@ -2,6 +2,7 @@
 
 $small-size: rem(20px);
 $large-size: rem(44px);
+$animation: loading duration(slowest) linear infinite;
 
 @keyframes loading {
   to {
@@ -14,27 +15,45 @@ $large-size: rem(44px);
   width: $size;
 }
 
+@mixin new-design-language-svg {
+  &.newDesignLanguage {
+    svg {
+      animation: $animation;
+      fill: var(--p-border-highlight);
+    }
+  }
+}
+
+.Spinner:not(.newDesignLanguage) {
+  animation: $animation;
+}
+
 .Spinner {
-  animation: loading duration(slowest) linear infinite;
   color: transparent;
 }
 
-.sizeSmall {
+.sizeSmall:not(.newDesignLanguage),
+.sizeSmall.newDesignLanguage svg {
   @include spinnerSize($small-size);
 }
 
-.sizeLarge {
+.sizeLarge:not(.newDesignLanguage),
+.sizeLarge.newDesignLanguage svg {
   @include spinnerSize($large-size);
 }
 
 .colorWhite {
-  filter: filter('white');
+  filter: var(--p-override-none, filter('white'));
+  @include new-design-language-svg;
 }
 
-.colorTeal {
-  filter: filter('teal');
+.colorTeal,
+.colorHighlight {
+  filter: var(--p-override-none, filter('teal'));
+  @include new-design-language-svg;
 }
 
 .colorInkLightest {
-  filter: filter('ink', 'lightest');
+  filter: var(--p-override-none, filter('ink', 'lightest'));
+  @include new-design-language-svg;
 }

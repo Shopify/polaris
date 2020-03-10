@@ -78,8 +78,28 @@ describe('<Spinner />', () => {
       mountWithAppProvider(<Spinner size="large" color="white" />);
 
       expect(warnSpy).toHaveBeenCalledWith(
-        'The color white is not meant to be used on large spinners. The colors available on large spinners are: teal, inkLightest',
+        'The color white is not meant to be used on large spinners. The colors available on large spinners are: teal, inkLightest, highlight',
       );
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+      const spinner = mountWithApp(<Spinner color="highlight" size="large" />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(spinner).toContainReactComponent('span', {
+        className: 'Spinner colorHighlight sizeLarge newDesignLanguage',
+      });
+    });
+
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+      const spinner = mountWithApp(<Spinner color="teal" size="large" />, {
+        features: {newDesignLanguage: false},
+      });
+      expect(spinner).toContainReactComponent('img', {
+        className: 'Spinner colorTeal sizeLarge',
+      });
     });
   });
 });
