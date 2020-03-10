@@ -49,11 +49,7 @@ export function ThemeProvider({
     ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
     colors: {
       ...(isParentThemeProvider && DefaultThemeColors),
-      ...(shouldInheritParentColors(
-        isParentThemeProvider,
-        colorScheme,
-        parentColorScheme,
-      ) && parentColors),
+      ...(parentColors != null && parentColors),
       ...colors,
     },
   };
@@ -112,23 +108,5 @@ function getColorScheme(
       : 'dark';
   } else {
     return colorScheme;
-  }
-}
-
-function shouldInheritParentColors(
-  isParentThemeProvider: boolean,
-  colorScheme: InversableColorScheme | undefined,
-  parentColorScheme: OriginalColorScheme | undefined,
-) {
-  if (isParentThemeProvider) {
-    return false;
-  } else if (
-    isInverseColorScheme(colorScheme) ||
-    (colorScheme === 'dark' && parentColorScheme === 'light') ||
-    (colorScheme === 'light' && parentColorScheme === 'dark')
-  ) {
-    return true;
-  } else {
-    return false;
   }
 }

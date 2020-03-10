@@ -186,7 +186,7 @@ describe('<ThemeProvider />', () => {
   });
 
   describe('when nested', () => {
-    it('does not set a default theme', () => {
+    it('sets a default theme', () => {
       const themeProvider = mountWithNewDesignLanguage(
         <ThemeProvider theme={{}}>
           <ThemeProvider theme={{}}>
@@ -196,7 +196,7 @@ describe('<ThemeProvider />', () => {
         {newDesignLanguage: true},
       );
 
-      expect(themeProvider.findAll('div')[1]).not.toHaveReactProps({
+      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
         style: expect.objectContaining({
           '--p-background': expect.any(String),
           '--p-text': expect.any(String),
