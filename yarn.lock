@@ -1589,10 +1589,10 @@
   resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-3.9.0.tgz#7064b234824788972593efcda9ae7b87f2a2da43"
   integrity sha512-isGvHpkH57IsQl6iAZA81LaIPdGi8gNSON5hLWXSERvP9SwgTenfDrkOD3UvzLY09Hh7m8lkFBMUVv/ta33xrg==
 
-"@shopify/polaris-tokens@^2.10.0":
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.10.0.tgz#e47371aac86ce61b1bd013ccfdd66efebfb04207"
-  integrity sha512-zMRD7WFPhiB1MKiqJ05V6IeXzlDenq8plIRtHjyrDz4eyAqWvshz5SFefzzPOrcHeT12cU7UKEYbMkA9bxLmSg==
+"@shopify/polaris-tokens@^2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.11.0.tgz#1037def9535d1fc62bfaf1eb819443afa238bcb6"
+  integrity sha512-ND2yNqxijRJH70Zq87HRTfWIeuxXyTeTbrqUp/85cVoUBTwHuxXVWhGj98UAT/E9L8cmxwxnQsQM6hk0zQfbqw==
   dependencies:
     hsluv "^0.1.0"
     tslib "^1.10.0"
