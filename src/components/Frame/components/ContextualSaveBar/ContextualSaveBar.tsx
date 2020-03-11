@@ -4,6 +4,7 @@ import {Button} from '../../../Button';
 import {Image} from '../../../Image';
 import {Stack} from '../../../Stack';
 import {ThemeProvider} from '../../../ThemeProvider';
+import {ContextualSaveBarContext} from '../../../../utilities/contextualsavebar-context';
 import {classNames} from '../../../../utilities/css';
 import {useFeatures} from '../../../../utilities/features';
 import type {ContextualSaveBarProps} from '../../../../utilities/frame';
@@ -120,7 +121,7 @@ export function ContextualSaveBar({
   );
 
   return (
-    <>
+    <ContextualSaveBarContext.Provider value>
       <ThemeProvider theme={{colorScheme: 'inverse'}}>
         <div className={contexualSaveBarClassName}>
           {contextControlMarkup}
@@ -135,8 +136,8 @@ export function ContextualSaveBar({
             </div>
           </div>
         </div>
+        {discardConfirmationModalMarkup}
       </ThemeProvider>
-      {discardConfirmationModalMarkup}
-    </>
+    </ContextualSaveBarContext.Provider>
   );
 }
