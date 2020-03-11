@@ -10,6 +10,7 @@
 ### Bug fixes
 
 - Fixed issue with passed to `ComboBox` component options prop was mutated ([#2818](https://github.com/Shopify/polaris-react/pull/2818))
+- Revert to type assertion in `PopoverOverlay` to handle SVGElements ([#2827]https://github.com/Shopify/polaris-react/pull/2827)
 
 ### Documentation
 
