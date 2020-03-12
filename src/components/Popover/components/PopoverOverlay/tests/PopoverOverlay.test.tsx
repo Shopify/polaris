@@ -1,7 +1,11 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
-import {TextContainer} from 'components';
+import {
+  mountWithAppProvider,
+  ReactWrapper,
+  trigger,
+} from 'test-utilities/legacy';
+import {TextContainer, TextField, EventListener} from 'components';
 import {Key} from '../../../../../types';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
@@ -178,6 +182,72 @@ describe('<PopoverOverlay />', () => {
 
     listenerMap.keyup({keyCode: Key.Escape});
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not call the onClose callback when a descendent HTMLElement is clicked', () => {
+    const spy = jest.fn();
+
+    const popoverOverlay = mountWithAppProvider(
+      <PopoverOverlay
+        active
+        id="PopoverOverlay-1"
+        activator={activator}
+        onClose={spy}
+      >
+        (<TextField label="Store name" value="Click me" onChange={() => {}} />)
+      </PopoverOverlay>,
+    );
+
+    const target = popoverOverlay
+      .find(TextField)
+      .find('input')
+      .getDOMNode();
+
+    const clickEventListener = popoverOverlay
+      .find(EventListener)
+      .findWhere((node) => node.prop('event') === 'click');
+
+    trigger(clickEventListener, 'handler', {target});
+
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  it('does not call the onClose callback when a descendent SVGElement is clicked', () => {
+    const spy = jest.fn();
+
+    const popoverOverlay = mountWithAppProvider(
+      <PopoverOverlay
+        active
+        id="PopoverOverlay-1"
+        activator={activator}
+        onClose={spy}
+      >
+        (
+        <TextField
+          type="number"
+          label="Store name"
+          value="Click me"
+          onChange={() => {}}
+        />
+        )
+      </PopoverOverlay>,
+    );
+
+    const target = popoverOverlay
+      .find(TextField)
+      .find('svg')
+      .first()
+      .getDOMNode();
+
+    const clickEventListener = popoverOverlay
+      .find(EventListener)
+      .findWhere((node) => node.prop('event') === 'click');
+
+    trigger(clickEventListener, 'handler', {
+      target,
+    });
+
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('starts animating in immediately', () => {
