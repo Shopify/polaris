@@ -308,6 +308,7 @@
         color: var(--p-interactive-critical-disabled);
       }
 
+      // stylelint-disable-next-line selector-max-class
       &.pressed {
         background: var(--p-surface-critical-subdued-depressed);
         box-shadow: 0 0 0 border-width('base') var(--p-border-critical);

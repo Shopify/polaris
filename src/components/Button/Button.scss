@@ -637,6 +637,7 @@ $stacking-order: (
   }
 
   &.plain {
+    // stylelint-disable-next-line selector-max-class
     &.newDesignLanguage {
       color: currentColor;
     }
@@ -703,6 +704,7 @@ $stacking-order: (
 
       &:hover,
       &:active {
+        // stylelint-disable-next-line max-nesting-depth
         &::before {
           opacity: 0.05;
         }
@@ -711,6 +713,7 @@ $stacking-order: (
       &.pressed {
         color: currentColor;
 
+        // stylelint-disable-next-line max-nesting-depth
         &::before {
           opacity: 0.3;
         }
