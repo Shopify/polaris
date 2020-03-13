@@ -187,6 +187,7 @@ $stacking-order: (
   --p-button-text: var(--p-text-on-primary);
   --p-button-color-hover: var(--p-action-primary-hovered);
   --p-button-color-active: var(--p-action-primary-pressed);
+  --p-button-color-depressed: var(--p-action-primary-depressed);
   @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(color('white'));
 
@@ -213,6 +214,7 @@ $stacking-order: (
   --p-button-text: var(--p-text-on-critical);
   --p-button-color-hover: var(--p-action-critical-hovered);
   --p-button-color-active: var(--p-action-critical-pressed);
+  --p-button-color-depressed: var(--p-action-critical-depressed);
   @include button-filled(color('red'), color('red', 'dark'));
   @include recolor-icon(color('white'));
 
@@ -444,6 +446,7 @@ $stacking-order: (
       @include recolor-icon(var(--p-interactive));
       color: var(--p-interactive);
       @include no-focus-ring;
+      text-decoration: underline;
     }
 
     &:active {
@@ -452,10 +455,15 @@ $stacking-order: (
     }
 
     &:focus:not(:active) {
-      text-decoration: none;
       > .Content {
         @include focus-ring($style: 'focused');
       }
+    }
+
+    &.pressed {
+      background: none;
+      @include recolor-icon(var(--p-interactive-pressed));
+      color: var(--p-interactive-pressed);
     }
 
     &:focus:not(.iconOnly) > .Content {
@@ -466,14 +474,25 @@ $stacking-order: (
       @include plain-button-backdrop(var(--p-action-secondary));
     }
 
+    &.pressed:not(.iconOnly) > .Content {
+      @include plain-button-backdrop(var(--p-action-secondary));
+    }
+
     &.destructive {
       @include recolor-icon(var(--p-interactive-critical));
       color: var(--p-interactive-critical);
+
       &:hover {
         color: var(--p-interactive-critical-hovered);
       }
+
       &:active {
         color: var(--p-interactive-critical-pressed);
+      }
+
+      &.pressed {
+        color: var(--p-interactive-critical-pressed);
+        background: transparent;
       }
 
       &.disabled {
@@ -618,6 +637,11 @@ $stacking-order: (
   }
 
   &.plain {
+    // stylelint-disable-next-line selector-max-class
+    &.newDesignLanguage {
+      color: currentColor;
+    }
+
     // stylelint-disable selector-max-class, max-nesting-depth
     .Text {
       text-decoration: underline;
@@ -644,7 +668,6 @@ $stacking-order: (
 
     &.pressed {
       background: transparent;
-      border-color: currentColor;
       box-shadow: none;
 
       // stylelint-disable selector-max-class
@@ -677,6 +700,23 @@ $stacking-order: (
 
       &:active::after {
         box-shadow: none;
+      }
+
+      &:hover,
+      &:active {
+        // stylelint-disable-next-line max-nesting-depth
+        &::before {
+          opacity: 0.05;
+        }
+      }
+
+      &.pressed {
+        color: currentColor;
+
+        // stylelint-disable-next-line max-nesting-depth
+        &::before {
+          opacity: 0.2;
+        }
       }
     }
     // stylelint-enable selector-max-class
