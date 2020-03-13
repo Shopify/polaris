@@ -490,9 +490,7 @@ export function TextField({
 }
 
 function normalizeAutoComplete(autoComplete?: boolean | string) {
-  if (autoComplete == null) {
-    return autoComplete;
-  } else if (autoComplete === true) {
+  if (autoComplete === true) {
     return 'on';
   } else if (autoComplete === false) {
     return 'off';
