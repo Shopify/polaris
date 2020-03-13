@@ -5,6 +5,7 @@
 ### Enhancements
 
 - Added optional `onClick` prop to `Tag` ([#2774](https://github.com/Shopify/polaris-react/pull/2774))
+- Added transition properties to `Collapsible` ([#2835](https://github.com/Shopify/polaris-react/pull/2835))
 
 ### Bug fixes
 

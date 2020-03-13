@@ -72,7 +72,11 @@ function CollapsibleExample() {
           >
             Toggle
           </Button>
-          <Collapsible open={active} id="basic-collapsible">
+          <Collapsible
+            open={active}
+            id="basic-collapsible"
+            transition={{duration: '150ms', timingFunction: 'ease'}}
+          >
             <TextContainer>
               Your mailing list lets you contact customers or visitors who have
               shown an interest in your store. Reach out to them with exclusive
