@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {Tokens} from 'utilities/theme';
 import {Collapsible} from '../Collapsible';
 
 describe('<Collapsible />', () => {
@@ -43,5 +44,29 @@ describe('<Collapsible />', () => {
     const hidden = collapsible.find(ariaHiddenSelector);
     expect(hidden.exists()).toBe(false);
     expect(collapsible.contains('content')).toBe(true);
+  });
+
+  describe('Transition', () => {
+    it('passes a duration property', () => {
+      const duration = Tokens.duration150;
+      const collapsible = mountWithAppProvider(
+        <Collapsible id="test-collapsible" open transition={{duration}} />,
+      );
+
+      expect(collapsible.props()).toMatchObject({transition: {duration}});
+    });
+
+    it('passes a timingFunction property', () => {
+      const timingFunction = Tokens.ease;
+      const collapsible = mountWithAppProvider(
+        <Collapsible
+          id="test-collapsible"
+          open
+          transition={{timingFunction}}
+        />,
+      );
+
+      expect(collapsible.props()).toMatchObject({transition: {timingFunction}});
+    });
   });
 });
