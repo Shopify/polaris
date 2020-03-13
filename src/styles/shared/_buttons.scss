@@ -310,7 +310,7 @@
 
       // stylelint-disable-next-line selector-max-class
       &.pressed {
-        background: var(--p-surface-critical-subdued-depressed);
+        background: var(--p-surface-critical-subdued);
         box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
         color: var(--p-interactive-critical);
       }
