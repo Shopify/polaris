@@ -144,8 +144,10 @@ $skip-vertical-offset: rem(10px);
 
 .ContextualSaveBar-newDesignLanguage {
   @include frame-when-nav-displayed {
-    left: layout-width(unstable-nav);
-    max-width: calc(100% - #{layout-width(unstable-nav)});
+    .hasNav & {
+      left: layout-width(unstable-nav);
+      max-width: calc(100% - #{layout-width(unstable-nav)});
+    }
   }
 }
 
