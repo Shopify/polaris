@@ -32,6 +32,10 @@ $item-wrapper-loading-height: rem(64px);
   + .ResourceList {
     border-top: border();
   }
+
+  + .SubHeaderWrapper {
+    border-top: border();
+  }
 }
 
 .HeaderOuterWrapper {
