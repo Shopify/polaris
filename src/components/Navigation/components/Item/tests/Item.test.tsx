@@ -440,6 +440,32 @@ describe('<Nav.Item />', () => {
       });
     });
   });
+
+  describe('keyFocused', () => {
+    it('adds and removes a class to button when item was tabbed into focus and then blurred', () => {
+      const item = mountWithNavigationProvider(
+        <Item label="some label" disabled={false} />,
+      );
+
+      item.find('button').simulate('keyup', {keyCode: 9});
+      expect(item.find('button').hasClass('keyFocused')).toBe(true);
+
+      item.find('button').simulate('blur');
+      expect(item.find('button').hasClass('keyFocused')).toBe(false);
+    });
+
+    it('adds and removes a class to a link when item was tabbed into focus and then blurred', () => {
+      const item = mountWithNavigationProvider(
+        <Item label="some label" disabled={false} url="https://shopify.com" />,
+      );
+
+      item.find('a').simulate('keyup', {keyCode: 9});
+      expect(item.find('a').hasClass('keyFocused')).toBe(true);
+
+      item.find('a').simulate('blur');
+      expect(item.find('a').hasClass('keyFocused')).toBe(false);
+    });
+  });
 });
 
 function noop() {}
