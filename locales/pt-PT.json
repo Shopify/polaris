@@ -159,7 +159,7 @@
       "BulkActions": {
         "actionsActivatorLabel": "Ações",
         "moreActionsActivatorLabel": "Mais ações",
-        "warningMessage": "Para oferecer uma melhor experiência ao utilizador. Deve existir apenas um máximo de {maxPromotedActions} ações promovidas."
+        "warningMessage": "Para oferecer uma melhor experiência de utilizador. Deve existir apenas um máximo de {maxPromotedActions} ações promovidas."
       },
       "FilterCreator": {
         "filterButtonLabel": "Filtro",

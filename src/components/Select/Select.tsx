@@ -182,7 +182,9 @@ function isString(option: SelectOption | SelectGroup): option is string {
 }
 
 function isGroup(option: SelectOption | SelectGroup): option is SelectGroup {
-  return (option as SelectGroup).options != null;
+  return (
+    typeof option === 'object' && 'options' in option && option.options != null
+  );
 }
 
 function normalizeStringOption(option: string): StrictOption {

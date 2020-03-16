@@ -1,12 +1,14 @@
 /* eslint-disable no-console */
 
 const {resolve} = require('path');
-const {cp, mkdir, rm} = require('shelljs');
+const {config, cp, mkdir, rm} = require('shelljs');
 
 const packageJSON = require('../package.json');
 
 const root = resolve(__dirname, '..');
 const projectDir = process.argv[2];
+
+config.fatal = true;
 
 if (!projectDir) {
   console.log(
@@ -31,7 +33,7 @@ console.log('Cleaning up old build...');
 rm('-rf', projectPolarisDir);
 
 console.log('Creating new build directory...');
-mkdir(projectPolarisDir);
+mkdir('-p', projectPolarisDir);
 
 console.log('Copying build to node_modules...');
 cp('-R', files, projectPolarisDir);

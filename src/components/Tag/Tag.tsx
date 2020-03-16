@@ -8,19 +8,34 @@ import {useFeatures} from '../../utilities/features';
 
 import styles from './Tag.scss';
 
-export interface TagProps {
+export interface NonMutuallyExclusiveProps {
   /** Content to display in the tag */
   children?: string;
   /** Disables the tag  */
   disabled?: boolean;
-  /** Callback when tag is removed */
+  /** Callback when tag is clicked or keypressed */
+  onClick?(): void;
+  /** Callback when remove button is clicked or keypressed */
   onRemove?(): void;
 }
 
-export function Tag({children, disabled = false, onRemove}: TagProps) {
+export type TagProps = NonMutuallyExclusiveProps &
+  (
+    | {onClick?(): void; onRemove?: undefined}
+    | {onClick?: undefined; onRemove?(): void}
+  );
+
+export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
   const i18n = useI18n();
   const {newDesignLanguage} = useFeatures();
-  const className = classNames(disabled && styles.disabled, styles.Tag);
+
+  const className = classNames(
+    styles.Tag,
+    disabled && styles.disabled,
+    onClick && styles.clickable,
+    newDesignLanguage && styles.newDesignLanguage,
+  );
+
   const ariaLabel = i18n.translate('Polaris.Tag.ariaLabel', {
     children: children || '',
   });
@@ -30,21 +45,30 @@ export function Tag({children, disabled = false, onRemove}: TagProps) {
     newDesignLanguage && styles.newDesignLanguage,
   );
 
-  return (
+  const removeButton = onRemove ? (
+    <button
+      type="button"
+      aria-label={ariaLabel}
+      className={buttonClassName}
+      onClick={onRemove}
+      onMouseUp={handleMouseUpByBlurring}
+      disabled={disabled}
+    >
+      <Icon source={CancelSmallMinor} />
+    </button>
+  ) : null;
+
+  const tagMarkup = onClick ? (
+    <button disabled={disabled} className={className} onClick={onClick}>
+      {children}
+    </button>
+  ) : (
     <span className={className}>
       <span title={children} className={styles.TagText}>
         {children}
       </span>
-      <button
-        type="button"
-        aria-label={ariaLabel}
-        className={buttonClassName}
-        onClick={onRemove}
-        onMouseUp={handleMouseUpByBlurring}
-        disabled={disabled}
-      >
-        <Icon source={CancelSmallMinor} />
-      </button>
+      {removeButton}
     </span>
   );
+  return tagMarkup;
 }

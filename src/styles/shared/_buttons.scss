@@ -78,6 +78,7 @@
     &:hover {
       background: var(--p-action-secondary-hovered);
       border-color: transparent;
+      @include high-contrast-outline;
     }
 
     &:focus {
@@ -95,6 +96,12 @@
         border: none;
         box-shadow: none;
       }
+    }
+
+    &.pressed {
+      background: var(--p-action-secondary-depressed);
+      box-shadow: none;
+      color: var(--p-text-on-interactive);
     }
 
     @media (-ms-high-contrast: active) {
@@ -179,6 +186,19 @@
       border-color: transparent;
       box-shadow: none;
     }
+
+    &.pressed {
+      background: var(--p-button-color-depressed);
+      border-color: transparent;
+      box-shadow: none;
+
+      &:hover,
+      &:focus {
+        background: var(--p-button-color-depressed);
+        border-color: transparent;
+        box-shadow: none;
+      }
+    }
   }
 }
 
@@ -227,29 +247,35 @@
   &.newDesignLanguage {
     background: transparent;
     @include focus-ring($border-width: border-width('base'));
-    box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
+    box-shadow: 0 0 0 border-width('base') var(--p-border);
     color: var(--p-text);
 
     &:hover {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
+      box-shadow: 0 0 0 border-width('base') var(--p-border);
       background: var(--p-surface-hovered);
     }
 
     &:focus {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
+      box-shadow: 0 0 0 border-width('base') var(--p-border);
       @include focus-ring($style: 'focused');
     }
 
     &:active {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary);
+      box-shadow: 0 0 0 border-width('base') var(--p-border);
       background: var(--p-surface-pressed);
       &::after {
         box-shadow: none;
       }
     }
 
+    &.pressed {
+      background: var(--p-surface-depressed);
+      box-shadow: 0 0 0 border-width('base') var(--p-border);
+      color: var(--p-text-on-interactive);
+    }
+
     &.disabled {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-secondary-disabled);
+      box-shadow: 0 0 0 border-width('base') var(--p-border-disabled);
       background: transparent;
       color: var(--p-text-disabled);
     }
@@ -266,8 +292,8 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 border-width('thick') var(--p-border-critical);
-        @include no-focus-ring;
+        box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+        @include focus-ring($style: 'focused');
       }
 
       &:active {
@@ -280,6 +306,13 @@
         box-shadow: 0 0 0 border-width('base') var(--p-border-critical-disabled);
         background: transparent;
         color: var(--p-interactive-critical-disabled);
+      }
+
+      // stylelint-disable-next-line selector-max-class
+      &.pressed {
+        background: var(--p-surface-critical-subdued);
+        box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+        color: var(--p-interactive-critical);
       }
     }
   }

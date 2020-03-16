@@ -323,15 +323,17 @@ function DisclosureButtion() {
 Use when there is only one primary action but other related actions can be taken.
 
 ```jsx
-<Button
-  primary
-  connectedDisclosure={{
-    accessibilityLabel: 'Other save actions',
-    actions: [{content: 'Save as draft'}],
-  }}
->
-  Save
-</Button>
+<div style={{height: '100px'}}>
+  <Button
+    primary
+    connectedDisclosure={{
+      accessibilityLabel: 'Other save actions',
+      actions: [{content: 'Save as draft'}],
+    }}
+  >
+    Save
+  </Button>
+</div>
 ```
 
 ### Disabled state

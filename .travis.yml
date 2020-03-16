@@ -13,6 +13,10 @@ jobs:
       script:
         - yarn run lint
 
+    - name: 'Check Custom Properties'
+      script:
+        - yarn run check:custom-properties
+
     - name: 'Unit Tests'
       script:
         - yarn run test --coverage

@@ -87,9 +87,9 @@ $seperator-color: var(--p-border, color('sky'));
 
   &:hover {
     cursor: pointer;
-    background-image: var(
-      --p-override-none,
-      linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3))
+    background-image: linear-gradient(
+      rgba(223, 227, 232, 0.3),
+      rgba(223, 227, 232, 0.3)
     );
     background-color: var(--p-surface-hovered);
   }
@@ -97,18 +97,27 @@ $seperator-color: var(--p-border, color('sky'));
   &:focus {
     outline: none;
     box-shadow: inset 0.2rem 0 0 var(--p-override-none, color('indigo'));
-    background-image: var(
-      --p-override-none,
-      linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3))
+    background-image: linear-gradient(
+      rgba(223, 227, 232, 0.3),
+      rgba(223, 227, 232, 0.3)
     );
   }
 
   &.newDesignLanguage {
     @include focus-ring;
 
+    &:focus,
+    &:hover {
+      background-image: none;
+    }
+
     // stylelint-disable-next-line selector-max-specificity
     &:focus:not(:active) {
       @include focus-ring($style: 'focused');
+    }
+
+    &:hover {
+      @include high-contrast-outline;
     }
   }
 }

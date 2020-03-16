@@ -1,6 +1,6 @@
 import React from 'react';
 import {ExternalSmallMinor} from '@shopify/polaris-icons';
-
+import {useFeatures} from '../../utilities/features';
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -34,6 +34,7 @@ export function Link({
 }: LinkProps) {
   const i18n = useI18n();
   let childrenMarkup = children;
+  const {newDesignLanguage} = useFeatures();
 
   if (external && typeof children === 'string') {
     const iconLabel = i18n.translate(
@@ -60,6 +61,7 @@ export function Link({
         const className = classNames(
           styles.Link,
           shouldBeMonochrome && styles.monochrome,
+          newDesignLanguage && styles.newDesignLanguage,
         );
 
         return url ? (

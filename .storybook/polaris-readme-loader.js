@@ -24,13 +24,25 @@ module.exports = function loader(source) {
 
   const readme = parseCodeExamples(source);
 
-  const testIndividualExamples = ['Modal', 'Card'].includes(readme.name);
+  const testIndividualExamples = [
+    'Modal',
+    'Card',
+    'Top bar',
+    'App provider',
+    'Contextual save bar',
+    'Frame',
+    'Loading',
+    'Sheet',
+    'Theme provider',
+  ].includes(readme.name);
 
   const csfExports = readme.examples.map((example) => {
     return `
 const ${example.storyName}Component = (${example.code})();
 export function ${example.storyName}() {
-  return <${example.storyName}Component/>;
+  return <div data-omit-app-provider="${readme.omitAppProvider}"><${
+      example.storyName
+    }Component /></div>;
 }
 ${example.storyName}.story = {
   name: ${JSON.stringify(example.name)},
@@ -272,6 +284,7 @@ function parseCodeExamples(data) {
     name: matter.data.name,
     category: matter.data.category,
     examples: generateExamples(matter),
+    omitAppProvider: matter.data.omitAppProvider || false,
   };
 }
 

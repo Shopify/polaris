@@ -138,12 +138,14 @@ $selected-option-identifier-width: rem(3px);
 
     &:hover:not(.disabled) {
       background: var(--p-surface-hovered);
+      outline: border-width(base) solid transparent;
     }
 
     &.select,
     &.select:hover:not(.disabled),
     &:active:not(.disabled) {
       background: var(--p-surface-selected);
+      outline: border-width(base) solid transparent;
     }
 
     &.disabled {

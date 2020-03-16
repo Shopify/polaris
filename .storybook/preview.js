@@ -28,6 +28,16 @@ function StrictModeToggle({isStrict = false, children}) {
 }
 
 function AppProviderWithKnobs({newDesignLanguage, colorScheme, children}) {
+  const omitAppProvider = (() => {
+    try {
+      return children.props.children.props['data-omit-app-provider'];
+    } catch (e) {
+      return null;
+    }
+  })();
+
+  if (omitAppProvider === 'true') return children;
+
   const colors = Object.entries(DefaultThemeColors).reduce(
     (accumulator, [key, value]) => ({
       ...accumulator,

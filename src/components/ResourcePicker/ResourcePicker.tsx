@@ -44,7 +44,7 @@ type CombinedProps = ResourcePickerProps & WithAppProviderProps;
 
 /** @deprecated Use `ResourcePicker` from `@shopify/app-bridge-react` instead. */
 class ResourcePickerInner extends React.PureComponent<CombinedProps, never> {
-  private focusReturnPoint: HTMLElement | null = null;
+  private focusReturnPoint: HTMLElement | Element | null = null;
   private appBridgeResourcePicker:
     | AppBridgeResourcePicker.ResourcePicker
     | undefined;
@@ -98,7 +98,7 @@ class ResourcePickerInner extends React.PureComponent<CombinedProps, never> {
     }
 
     if (open) {
-      this.focusReturnPoint = document.activeElement as HTMLElement;
+      this.focusReturnPoint = document.activeElement;
       this.appBridgeResourcePicker.dispatch(
         AppBridgeResourcePicker.Action.OPEN,
       );
@@ -172,11 +172,11 @@ class ResourcePickerInner extends React.PureComponent<CombinedProps, never> {
     }
 
     if (!wasOpen && open) {
-      this.focusReturnPoint = document.activeElement as HTMLElement;
+      this.focusReturnPoint = document.activeElement;
     } else if (
       wasOpen &&
       !open &&
-      this.focusReturnPoint != null &&
+      this.focusReturnPoint instanceof HTMLElement &&
       document.contains(this.focusReturnPoint)
     ) {
       this.focusReturnPoint.focus();

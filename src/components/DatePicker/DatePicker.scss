@@ -169,3 +169,145 @@ $in-range-border-color: #9ca6de;
   padding-bottom: spacing(extra-tight);
   text-align: center;
 }
+
+.newDesignLanguage {
+  .Day {
+    box-shadow: none;
+    border-radius: var(--p-border-radius-base);
+    color: var(--p-text);
+
+    &:hover {
+      background: var(--p-interactive-hovered);
+      color: var(--p-text-on-interactive);
+      @include high-contrast-outline;
+    }
+
+    @include focus-ring;
+    // stylelint-disable-next-line selector-max-specificity
+    &:focus:not(:active) {
+      @include focus-ring($style: 'focused');
+      box-shadow: none;
+
+      @media (-ms-high-contrast: active) {
+        // stylelint-disable-next-line selector-max-specificity, max-nesting-depth
+        &::after {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  .Day-selected {
+    background: var(--p-interactive);
+    border: none;
+    color: var(--p-text-on-interactive);
+
+    @media (-ms-high-contrast: active) {
+      -ms-high-contrast-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+
+      &:hover {
+        background-color: HighlightText;
+        color: Highlight;
+        outline: 2px solid Highlight;
+      }
+    }
+  }
+
+  .Day-inRange {
+    z-index: auto;
+    border-radius: 0;
+    background: var(--p-surface-selected);
+
+    @media (-ms-high-contrast: active) {
+      -ms-high-contrast-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+
+      &:hover {
+        background-color: HighlightText;
+        color: Highlight;
+        outline: 2px solid Highlight;
+      }
+    }
+  }
+
+  .Day-firstInRange {
+    border-radius: var(--p-border-radius-base);
+    &.Day-hasRange,
+    &.Day-hoverRight {
+      border-radius: 50% 0 0 50%;
+      // stylelint-disable-next-line selector-max-specificity, selector-max-class
+      &::after {
+        border-radius: 50% 0 0 50%;
+      }
+    }
+  }
+  .Day-lastInRange {
+    border-radius: 0 50% 50% 0;
+    &::after {
+      border-radius: 0 50% 50% 0;
+    }
+  }
+
+  .Week {
+    margin-bottom: rem(2px);
+
+    // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+    > .Day-inRange:first-child:not(.Day-firstInRange):not(.Day-lastInRange) {
+      border-radius: var(--p-border-radius-base) 0 0 var(--p-border-radius-base);
+    }
+
+    // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+    > .Day-inRange:last-child:not(.Day-firstInRange):not(.Day-lastInRange) {
+      border-radius: 0 var(--p-border-radius-base) var(--p-border-radius-base) 0;
+    }
+  }
+
+  .Day,
+  .EmptyDay {
+    border: none;
+  }
+
+  .Day-disabled {
+    background-color: transparent;
+    color: var(--p-text-disabled);
+
+    &:hover {
+      background-color: transparent;
+      color: var(--p-text-disabled);
+    }
+
+    @media (-ms-high-contrast) {
+      -ms-high-contrast-adjust: none;
+      color: grayText;
+
+      &:hover {
+        color: grayText;
+        outline: none;
+      }
+    }
+
+    &:focus {
+      @include no-focus-ring;
+    }
+  }
+
+  .Weekday {
+    color: var(--p-text-subdued);
+  }
+
+  .Weekday-current {
+    color: var(--p-text);
+  }
+
+  // stylelint-disable-next-line selector-max-specificity
+  .Day-inRange,
+  .Day-inRange:not(:hover) + .Day {
+    // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators
+    &::after {
+      border-radius: 0 50% 50% 0;
+    }
+  }
+}

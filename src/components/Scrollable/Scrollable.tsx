@@ -48,9 +48,8 @@ interface State {
 export class Scrollable extends React.Component<ScrollableProps, State> {
   static ScrollTo = ScrollTo;
   static forNode(node: HTMLElement): HTMLElement | Document {
-    return (
-      (closest(node, scrollable.selector) as HTMLElement | null) || document
-    );
+    const closestElement = closest(node, scrollable.selector);
+    return closestElement instanceof HTMLElement ? closestElement : document;
   }
 
   state: State = {

@@ -84,7 +84,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    border: var(--p-control-border-width) solid var(--p-border-secondary);
+    border: var(--p-control-border-width) solid var(--p-border);
     border-radius: 50%;
     background-color: var(--p-surface);
     transition: border-color var(--p-duration-1-0-0) var(--p-ease);
@@ -118,7 +118,7 @@
     &.hover,
     &:hover {
       cursor: pointer;
-      border-color: var(--p-border-secondary-hovered);
+      border-color: var(--p-border-hovered);
     }
   }
 
@@ -147,10 +147,10 @@
 
     &:disabled {
       + .Backdrop {
-        border-color: var(--p-border-secondary-disabled);
+        border-color: var(--p-border-disabled);
 
         &::before {
-          background-color: var(--p-border-secondary-disabled);
+          background-color: var(--p-border-disabled);
         }
 
         &.hover,

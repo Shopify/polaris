@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {classNames} from '../../../../utilities/css';
+import {useFeatures} from '../../../../utilities/features';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 
@@ -35,6 +36,7 @@ export function Tab({
   const wasSelected = useRef(selected);
   const panelFocused = useRef(false);
   const node = useRef<HTMLLIElement | null>(null);
+  const {newDesignLanguage} = useFeatures();
 
   // A tab can start selected when it is moved from the disclosure dropdown
   // into the main list, so we need to send focus from the tab to the panel
@@ -80,6 +82,17 @@ export function Tab({
     tabIndex = -1;
   }
 
+  const tabContainerClassNames = classNames(
+    styles.TabContainer,
+    selected && styles.Underline,
+    newDesignLanguage && styles.newDesignLanguage,
+  );
+
+  const tabTitleClassNames = classNames(
+    styles.Title,
+    newDesignLanguage && styles.newDesignLanguage,
+  );
+
   const markup = url ? (
     <UnstyledLink
       id={id}
@@ -93,7 +106,7 @@ export function Tab({
       aria-label={accessibilityLabel}
       onMouseUp={handleMouseUpByBlurring}
     >
-      <span className={styles.Title}>{children}</span>
+      <span className={tabTitleClassNames}>{children}</span>
     </UnstyledLink>
   ) : (
     <button
@@ -108,12 +121,12 @@ export function Tab({
       aria-label={accessibilityLabel}
       onMouseUp={handleMouseUpByBlurring}
     >
-      <span className={styles.Title}>{children}</span>
+      <span className={tabTitleClassNames}>{children}</span>
     </button>
   );
 
   return (
-    <li className={styles.TabContainer} ref={node}>
+    <li className={tabContainerClassNames} ref={node}>
       {markup}
     </li>
   );

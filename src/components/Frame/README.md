@@ -16,6 +16,7 @@ keywords:
   - menu
   - toast
 fullSizeExamples: true
+omitAppProvider: true
 ---
 
 # Frame

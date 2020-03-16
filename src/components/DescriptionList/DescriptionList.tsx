@@ -28,7 +28,7 @@ export function DescriptionList({items}: DescriptionListProps) {
         {description}
       </dd>,
     ],
-    [] as React.ReactNode[],
+    [],
   );
 
   return <dl className={styles.DescriptionList}>{terms}</dl>;

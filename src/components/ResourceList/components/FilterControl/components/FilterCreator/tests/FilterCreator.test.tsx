@@ -11,6 +11,12 @@ import {FilterCreator, FilterCreatorProps} from '../FilterCreator';
 import {FilterValueSelector} from '../../FilterValueSelector';
 import {FilterType} from '../../../types';
 
+jest.mock('../../../../../../Popover/components', () => ({
+  PopoverOverlay: function PopoverOverlay({children}: any) {
+    return children;
+  },
+}));
+
 describe('<FilterCreator />', () => {
   const mockDefaultProps: FilterCreatorProps = {
     filters: [
@@ -60,6 +66,52 @@ describe('<FilterCreator />', () => {
     disabled: false,
   };
 
+  it('focuses the activator after adding a filter', () => {
+    const filterCreator = mountWithAppProvider(
+      <FilterCreator {...mockDefaultProps} onAddFilter={() => {}} />,
+    );
+    trigger(
+      filterCreator.find(Select),
+      'onChange',
+      mockDefaultProps.filters[0].key,
+    );
+    const activator = findByTestID(
+      filterCreator,
+      'FilterCreator-FilterActivator',
+    );
+    trigger(activator, 'onFocus', {target: activator.getDOMNode()});
+    trigger(filterCreator.find(FilterValueSelector), 'onChange', 'x');
+    trigger(
+      findByTestID(filterCreator, 'FilterCreator-AddFilterButton'),
+      'onClick',
+    );
+
+    expect(activator.getDOMNode()).toBe(document.activeElement);
+  });
+
+  it('does not focus the activator after adding a filter if focus was never originally received by the by activator', () => {
+    const filterCreator = mountWithAppProvider(
+      <FilterCreator {...mockDefaultProps} onAddFilter={() => {}} />,
+    );
+    trigger(
+      filterCreator.find(Select),
+      'onChange',
+      mockDefaultProps.filters[0].key,
+    );
+    const activator = findByTestID(
+      filterCreator,
+      'FilterCreator-FilterActivator',
+    );
+    trigger(activator, 'onFocus');
+    trigger(filterCreator.find(FilterValueSelector), 'onChange', 'x');
+    trigger(
+      findByTestID(filterCreator, 'FilterCreator-AddFilterButton'),
+      'onClick',
+    );
+
+    expect(activator.getDOMNode()).not.toBe(document.activeElement);
+  });
+
   it('renders just a button by default', () => {
     const wrapper = mountWithAppProvider(
       <FilterCreator {...mockDefaultProps} />,
@@ -69,7 +121,6 @@ describe('<FilterCreator />', () => {
       findByTestID(wrapper, 'FilterCreator-FilterActivator').exists(),
     ).toBe(true);
     expect(wrapper.find(Button)).toHaveLength(1);
-    expect(wrapper.find(Select).exists()).toBe(false);
   });
 
   it('renders a non-active popover on default', () => {

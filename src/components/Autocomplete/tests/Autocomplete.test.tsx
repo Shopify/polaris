@@ -42,13 +42,11 @@ describe('<Autocomplete/>', () => {
 
   describe('<Combobox />', () => {
     it('passes props to ComboBox', () => {
-      const actionBefore = [
-        {
-          content: "Add 'f'",
-          icon: CirclePlusMinor,
-          id: 'Autocomplete-ID-0',
-        },
-      ];
+      const actionBefore = {
+        content: "Add 'f'",
+        icon: CirclePlusMinor,
+        id: 'ComboBox3-0',
+      };
 
       const EmptyState = () => <span>No results</span>;
 
@@ -61,11 +59,7 @@ describe('<Autocomplete/>', () => {
           preferredPosition="mostSpace"
           listTitle="List title"
           allowMultiple
-          actionBefore={{
-            content: "Add 'f'",
-            icon: CirclePlusMinor,
-            id: 'ComboBox3-0',
-          }}
+          actionBefore={actionBefore}
           onSelect={handleOnSelect}
           emptyState={<EmptyState />}
         />,
@@ -84,9 +78,9 @@ describe('<Autocomplete/>', () => {
       );
       expect(autocomplete.find(ComboBox).prop('listTitle')).toBe('List title');
       expect(autocomplete.find(ComboBox).prop('allowMultiple')).toBe(true);
-      expect(autocomplete.find(ComboBox).prop('actionsBefore')).toStrictEqual(
+      expect(autocomplete.find(ComboBox).prop('actionsBefore')).toStrictEqual([
         actionBefore,
-      );
+      ]);
       expect(autocomplete.find(ComboBox).prop('onSelect')).toBe(handleOnSelect);
       expect(autocomplete.find(ComboBox).prop('emptyState')).toStrictEqual(
         <EmptyState />,

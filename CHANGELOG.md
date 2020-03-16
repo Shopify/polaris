@@ -8,6 +8,62 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.16.0 - 2020-03-13
+
+### Enhancements
+
+- Added optional `onClick` prop to `Tag` ([#2774](https://github.com/Shopify/polaris-react/pull/2774))
+- Added transition properties to `Collapsible` ([#2835](https://github.com/Shopify/polaris-react/pull/2835))
+
+### Bug fixes
+
+- Fixed issue with passed to `ComboBox` component options prop was mutated ([#2818](https://github.com/Shopify/polaris-react/pull/2818))
+- Fixed an issue which caused `Popover` to close when clicking on a descendant SVG ([#2827](https://github.com/Shopify/polaris-react/pull/2827))
+
+### Code quality
+
+- Removed redundant null check in `TextField` ([#2783](https://github.com/Shopify/polaris-react/pull/2783))
+
+## 4.15.2 - 2020-03-09
+
+### Code quality
+
+- Updated shrink-ray to v2 ([#2800](https://github.com/Shopify/polaris-react/pull/2800))
+
+## 4.15.1 - 2020-03-07
+
+### Bug fixes
+
+- Reverted const context type to support older versions of typescript in consuming apps ([e7c5e16](https://github.com/Shopify/polaris-react/commit/e7c5e16e8e7b2e70993c5e33c6e34bea428b35b8))
+- Fixed broken link in `ThemeProvider` docs ([0ff672d](https://github.com/Shopify/polaris-react/commit/0ff672d2802cb6f4832176de889fe2ab39b101f0))
+
+## 4.15.0 - 2020-03-06
+
+### Enhancements
+
+- Added high contrast outline to `Popover`, `Card` and `Indicator` ([#2792](https://github.com/Shopify/polaris-react/pull/2792))
+- Removed `overflow: hidden` from `Card` ([#2806](https://github.com/Shopify/polaris-react/pull/2806))
+- Truncated long sort options in `ResourceList` ([#2809](https://github.com/Shopify/polaris-react/pull/2809)
+
+### Bug fixes
+
+- Fixed incorrect used while importing from `polaris-tokens` ([#2778](https://github.com/Shopify/polaris-react/pull/2778))
+- Fixed `DropZone` not supporting new file selection when `allowMultiple` is `false` ([#2737](https://github.com/Shopify/polaris-react/pull/2737))
+- Fixed `Pagination` sizing on small screens with tooltips ([2747](https://github.com/Shopify/polaris-react/pull/2747))
+- Fixed `Popover` setting a `tabindex` and other accessibility attributes on the activator wrapper when the `activator` is disabled ([#2473](https://github.com/Shopify/polaris-react/pull/2473))
+- Added a `verticalAlignment` prop to `ResourceItem` to support control of content alignment ([#2743](https://github.com/Shopify/polaris-react/pull/2743)
+
+### Development workflow
+
+- Added `check:custom-property` job in travis ([#2778](https://github.com/Shopify/polaris-react/pull/2778))
+- Exported missing OptionListProps ([#2777](https://github.com/Shopify/polaris-react/pull/2777))
+- Omitted the Storybook `AppProvider` decorator for component examples which already contain an `AppProvider` ([#2807](https://github.com/Shopify/polaris-react/pull/2807))
+- Added an `omitAppProvider` front matter concept to prevent automatic wrapping of component examples with an `AppProvider` ([#2815](https://github.com/Shopify/polaris-react/pull/2815))
+
+### Code quality
+
+- Removed various type assertions and bumped test coverage ([#2638](https://github.com/Shopify/polaris-react/pull/2638))
+
 ## 4.14.0 - 2020-02-26
 
 ### Enhancements
