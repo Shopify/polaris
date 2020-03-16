@@ -429,9 +429,10 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
     const filterControlMarkup = filterControl ? (
       <div className={styles.FiltersWrapper}>{filterControl}</div>
     ) : null;
-    const subHeaderMarkup = subHeader ? (
-      <div className={styles.SubHeaderWrapper}>{subHeader}</div>
-    ) : null;
+    const subHeaderMarkup =
+      !loading && subHeader && this.itemsExist() ? (
+        <div className={styles.SubHeaderWrapper}>{subHeader}</div>
+      ) : null;
 
     const bulkActionsMarkup = this.selectable() ? (
       <div className={styles.BulkActionsWrapper}>
