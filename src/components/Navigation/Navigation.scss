@@ -49,6 +49,7 @@ $unstable-nav-max-width: rem(258px);
 
     .Navigation-newDesignLanguage & {
       display: block;
+      min-height: unstable-top-bar-height();
     }
   }
 }
