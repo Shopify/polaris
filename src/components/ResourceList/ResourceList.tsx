@@ -60,6 +60,7 @@ export interface ResourceListProps<T> {
   items: T[];
   sections?: ResourceSection[];
   filterControl?: React.ReactNode;
+  subHeader?: React.ReactNode;
   /** Name of the resource, such as customers or products */
   resourceName?: {
     singular: string;
@@ -413,6 +414,7 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
       promotedBulkActions,
       bulkActions,
       filterControl,
+      subHeader,
       loading,
       showHeader = false,
       sortOptions,
@@ -426,6 +428,9 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
     const {selectMode, loadingPosition, smallScreen} = this.state;
     const filterControlMarkup = filterControl ? (
       <div className={styles.FiltersWrapper}>{filterControl}</div>
+    ) : null;
+    const subHeaderMarkup = subHeader ? (
+      <div className={styles.SubHeaderWrapper}>{subHeader}</div>
     ) : null;
 
     const bulkActionsMarkup = this.selectable() ? (
@@ -618,6 +623,7 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
         <div className={styles.ResourceListWrapper}>
           {filterControlMarkup}
           {headerMarkup}
+          {subHeaderMarkup}
           {listMarkup}
           {loadingWithoutItemsMarkup}
         </div>

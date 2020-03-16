@@ -15,6 +15,12 @@ $item-wrapper-loading-height: rem(64px);
   left: 0;
 }
 
+.SubHeaderWrapper {
+  + .ResourceList {
+    border-top: border();
+  }
+}
+
 .FiltersWrapper {
   padding: resource-list(header-padding-small)
     resource-list(header-padding-small) spacing();
@@ -34,6 +40,10 @@ $item-wrapper-loading-height: rem(64px);
   z-index: resource-list(header-outer-wrapper-stacking-order);
 
   + .ResourceList {
+    border-top: border();
+  }
+
+  + .SubHeaderWrapper {
     border-top: border();
   }
 }
