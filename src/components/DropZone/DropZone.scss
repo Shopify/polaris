@@ -38,9 +38,20 @@ $dropzone-stacking-order: (
   border: border-width(thick) $dropzone-border-style transparent;
 }
 
+.DropZoneWrapper {
+  height: 100%;
+
+  & > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .DropZone {
-  position: relative;
+  flex: 1;
   display: flex;
+  position: relative;
   justify-content: center;
   background-color: $dropzone-background;
   border-radius: $dropzone-border-radius;
