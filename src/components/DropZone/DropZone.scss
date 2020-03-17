@@ -49,6 +49,7 @@ $dropzone-stacking-order: (
 }
 
 .DropZone {
+  position: relative;
   flex: 1;
   display: flex;
   position: relative;
