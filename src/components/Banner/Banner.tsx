@@ -113,33 +113,33 @@ export class Banner extends React.PureComponent<BannerProps, State> {
 
             switch (status) {
               case 'success':
-                color = 'greenDark';
+                color = newDesignLanguage ? 'success' : 'greenDark';
                 defaultIcon = newDesignLanguage
                   ? CircleTickMajorFilled
                   : CircleTickMajorTwotone;
                 break;
               case 'info':
-                color = 'tealDark';
+                color = newDesignLanguage ? 'highlight' : 'tealDark';
                 defaultIcon = newDesignLanguage
                   ? CircleInformationMajorFilled
                   : CircleInformationMajorTwotone;
                 break;
               case 'warning':
-                color = 'yellowDark';
+                color = newDesignLanguage ? 'warning' : 'yellowDark';
                 defaultIcon = newDesignLanguage
                   ? CircleAlertMajorFilled
                   : CircleAlertMajorTwotone;
                 ariaRoleType = 'alert';
                 break;
               case 'critical':
-                color = 'redDark';
+                color = newDesignLanguage ? 'critical' : 'redDark';
                 defaultIcon = newDesignLanguage
                   ? CircleDisabledMajorFilled
                   : CircleDisabledMajorTwotone;
                 ariaRoleType = 'alert';
                 break;
               default:
-                color = 'inkLighter';
+                color = newDesignLanguage ? 'base' : 'inkLighter';
                 defaultIcon = newDesignLanguage
                   ? CircleInformationMajorFilled
                   : FlagMajorTwotone;
