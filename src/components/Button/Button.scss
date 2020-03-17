@@ -506,22 +506,22 @@ $stacking-order: (
     }
 
     &.iconOnly {
-      @include recolor-icon(var(--p-interactive));
+      @include recolor-icon(var(--p-icon));
 
       &:hover {
-        @include recolor-icon(var(--p-interactive-hovered));
+        @include recolor-icon(var(--p-icon-hovered));
       }
 
       &:focus {
-        @include recolor-icon(var(--p-interactive));
+        @include recolor-icon(var(--p-icon));
       }
 
       &:active {
-        @include recolor-icon(var(--p-interactive-pressed));
+        @include recolor-icon(var(--p-icon-pressed));
       }
 
       &.disabled {
-        @include recolor-icon(var(--p-interactive-disabled));
+        @include recolor-icon(var(--p-icon-disabled));
       }
     }
 
