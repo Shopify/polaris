@@ -80,7 +80,7 @@
       "secondaryAction": "編集を続ける"
     },
     "DropZone": {
-      "overlayTextFile": "ファイルをドロップしてアップロードする",
+      "overlayTextFile": "ファイルをドロップしてアップロード",
       "overlayTextImage": "画像をドロップしてアップロードする",
       "errorOverlayTextFile": "ファイルタイプが有効ではありません",
       "errorOverlayTextImage": "画像タイプが有効ではありません",
