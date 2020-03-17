@@ -115,12 +115,12 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .withinContentContainer {
-  $newDesignLanguageSpacing: rem(14px);
-  $newDesignLanguageOffset: $newDesignLanguageSpacing - spacing();
   border-radius: var(--p-border-radius-wide, border-radius());
   padding: spacing(tight) $intermediate-spacing;
 
   &.newDesignLanguage {
+    $newDesignLanguageSpacing: rem(14px);
+    $newDesignLanguageOffset: $newDesignLanguageSpacing - spacing();
     padding: spacing() spacing() $newDesignLanguageSpacing;
 
     // stylelint-disable-next-line selector-max-class
@@ -156,12 +156,12 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .withinPage {
-  $newDesignLanguageSpacing: rem(18px);
-  $newDesignLanguageOffset: $newDesignLanguageSpacing - spacing(loose);
   border-radius: 0 0 border-radius() border-radius();
   padding: spacing();
 
   &.newDesignLanguage {
+    $newDesignLanguageSpacing: rem(18px);
+    $newDesignLanguageOffset: $newDesignLanguageSpacing - spacing(loose);
     padding: spacing(loose) spacing(loose) $newDesignLanguageSpacing;
 
     // stylelint-disable-next-line selector-max-class
