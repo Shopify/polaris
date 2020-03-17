@@ -41,7 +41,7 @@ $dropzone-stacking-order: (
 .DropZoneWrapper {
   height: 100%;
 
-  & > div {
+  > div {
     height: 100%;
     display: flex;
     flex-direction: column;
