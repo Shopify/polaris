@@ -152,6 +152,7 @@ export class Banner extends React.PureComponent<BannerProps, State> {
               withinContentContainer
                 ? styles.withinContentContainer
                 : styles.withinPage,
+              newDesignLanguage && styles.newDesignLanguage,
             );
 
             const id = uniqueID();
@@ -232,7 +233,7 @@ export class Banner extends React.PureComponent<BannerProps, State> {
                     backdrop={!newDesignLanguage}
                   />
                 </div>
-                <div>
+                <div className={styles.ContentWrapper}>
                   {headingMarkup}
                   {contentMarkup}
                 </div>

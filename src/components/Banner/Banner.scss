@@ -68,7 +68,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     --p-banner-background: var(--p-surface-success-subdued);
     --p-banner-border: var(--p-banner-border-success);
     @include banner-attributes(
-      var(--p-border-success, color('green')),
+      var(--p-override-none, color('green')),
       color('green', 'lighter'),
       $in-page,
       true
@@ -79,7 +79,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     --p-banner-background: var(--p-surface-highlight-subdued);
     --p-banner-border: var(--p-banner-border-highlight);
     @include banner-attributes(
-      var(--p-border-highlight, color('teal')),
+      var(--p-override-none, color('teal')),
       color('teal', 'lighter'),
       $in-page,
       true
@@ -90,7 +90,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     --p-banner-background: var(--p-surface-warning-subdued);
     --p-banner-border: var(--p-banner-border-warning);
     @include banner-attributes(
-      var(--p-border-warning, color('yellow')),
+      var(--p-override-none, color('yellow')),
       color('yellow', 'lighter'),
       $in-page,
       true
@@ -101,7 +101,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     --p-banner-background: var(--p-surface-critical-subdued);
     --p-banner-border: var(--p-banner-border-critical);
     @include banner-attributes(
-      var(--p-border-critical, color('red')),
+      var(--p-override-none, color('red')),
       color('red', 'lighter'),
       $in-page,
       true
@@ -115,8 +115,19 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .withinContentContainer {
+  $newDesignLanguageSpacing: rem(14px);
+  $newDesignLanguageOffset: $newDesignLanguageSpacing - spacing();
   border-radius: var(--p-border-radius-wide, border-radius());
   padding: spacing(tight) $intermediate-spacing;
+
+  &.newDesignLanguage {
+    padding: spacing() spacing() $newDesignLanguageSpacing;
+
+    // stylelint-disable-next-line selector-max-class
+    .ContentWrapper {
+      margin-top: $newDesignLanguageOffset;
+    }
+  }
 
   @include banner-variants;
 
@@ -140,8 +151,19 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .withinPage {
+  $newDesignLanguageSpacing: rem(18px);
+  $newDesignLanguageOffset: $newDesignLanguageSpacing - spacing(loose);
   border-radius: 0 0 border-radius() border-radius();
   padding: spacing();
+
+  &.newDesignLanguage {
+    padding: spacing(loose) spacing(loose) $newDesignLanguageSpacing;
+
+    // stylelint-disable-next-line selector-max-class
+    .ContentWrapper {
+      margin-top: $newDesignLanguageOffset;
+    }
+  }
 
   @include banner-variants(true);
 
@@ -169,13 +191,17 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .Heading {
-  padding-top: $heading-offset;
+  padding-top: var(--p-override-none, $heading-offset);
   word-break: break-word;
 }
 
 .Content {
   @include text-breakword;
   padding: spacing(extra-tight) 0;
+
+  .newDesignLanguage & {
+    padding: rem(2px) 0;
+  }
 }
 
 .Ribbon {
