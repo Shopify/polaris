@@ -22,8 +22,14 @@ import {BulkActions, CheckableButton} from '../components';
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
 const singleItemWithID = [{id: '1', url: 'item 1'}];
+interface Item {
+  id: string;
+  name: string;
+  url: string;
+  title: string;
+}
 
-const itemsWithID = [
+const itemsWithID: Item[] = [
   {id: '5', name: 'item 1', url: 'www.test.com', title: 'title 1'},
   {id: '6', name: 'item 2', url: 'www.test.com', title: 'title 2'},
   {id: '7', name: 'item 3', url: 'www.test.com', title: 'title 3'},
@@ -89,6 +95,7 @@ describe('<ResourceList />', () => {
           promotedBulkActions={promotedBulkActions}
         />,
       );
+
       expect(resourceList.find(BulkActions).exists()).toBe(true);
     });
 
@@ -942,7 +949,7 @@ describe('<ResourceList />', () => {
           expect(deselectAllCheckbox.getDOMNode()).toBe(document.activeElement);
         });
 
-        it('focuses the plain CheckableButton checkbox when items are selected and the deselect Checkable button the is clicked', () => {
+        it('focuses the plain CheckableButton checkbox when items are selected and the deselect Checkable button is clicked', () => {
           const resourceList = mountWithAppProvider(
             <ResourceList
               items={itemsWithID}
