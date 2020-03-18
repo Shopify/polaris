@@ -87,8 +87,6 @@ export interface FiltersProps {
   helpText?: string | React.ReactNode;
   /** Hide tags for applied filters */
   hideTags?: boolean;
-  /** Hide "More filters" button **/
-  hideMoreFiltersButton?: boolean;
 }
 
 type ComposedProps = FiltersProps &
@@ -137,7 +135,6 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       helpText,
       hideTags,
       newDesignLanguage,
-      hideMoreFiltersButton,
     } = this.props;
     const {resourceName} = this.context;
     const {open, readyForFocus} = this.state;
@@ -246,13 +243,15 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       plural: intl.translate('Polaris.ResourceList.defaultItemPlural'),
     };
 
+    const transformedFilters = this.transformFilters(filters);
+
     const filtersControlMarkup = (
       <ConnectedFilterControl
-        rightPopoverableActions={this.transformFilters(filters)}
+        rightPopoverableActions={transformedFilters}
         rightAction={rightActionMarkup}
         auxiliary={children}
         disabled={disabled}
-        hideMoreFiltersButton={hideMoreFiltersButton}
+        forceShowMorefiltersButton={filters.length > transformedFilters.length}
       >
         <TextField
           placeholder={
@@ -517,10 +516,8 @@ class FiltersInner extends React.Component<ComposedProps, State> {
     }
   }
 
-  private transformFilters(
-    filters: FilterInterface[],
-  ): ConnectedFilterControlProps['rightPopoverableActions'] | null {
-    const transformedActions: ConnectedFilterControlProps['rightPopoverableActions'] = [];
+  private transformFilters(filters: FilterInterface[]) {
+    const transformedActions: Required<ConnectedFilterControlProps['rightPopoverableActions']> = [];
 
     getShortcutFilters(filters).forEach((filter) => {
       const {key, label, disabled} = filter;
