@@ -1,6 +1,7 @@
 import React from 'react';
 import debounce from 'lodash/debounce';
 import {classNames} from '../../../../utilities/css';
+import {FeaturesContext} from '../../../../utilities/features';
 
 import {DisableableAction} from '../../../../types';
 import {Popover} from '../../../Popover';
@@ -41,6 +42,9 @@ export class ConnectedFilterControl extends React.Component<
   ConnectedFilterControlProps,
   State
 > {
+  static contextType = FeaturesContext;
+  context!: React.ContextType<typeof FeaturesContext>;
+
   state: State = {
     availableWidth: 0,
     proxyButtonsWidth: {},
@@ -64,6 +68,7 @@ export class ConnectedFilterControl extends React.Component<
   }
 
   render() {
+    const {newDesignLanguage} = this.context || {};
     const {
       children,
       rightPopoverableActions,
@@ -74,6 +79,7 @@ export class ConnectedFilterControl extends React.Component<
     const className = classNames(
       styles.ConnectedFilterControl,
       rightPopoverableActions && styles.right,
+      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const rightMarkup = rightPopoverableActions ? (

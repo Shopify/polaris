@@ -2,7 +2,7 @@
 
 $list-filters-header-height: rem(56px);
 $list-filters-footer-height: rem(70px);
-$seperator-color: var(--p-border, color('sky'));
+$seperator-color: var(--p-border-subdued, color('sky'));
 
 .Filters {
   position: relative;
@@ -35,11 +35,19 @@ $seperator-color: var(--p-border, color('sky'));
         $list-filters-header-height
       )}
   );
+
+  &.newDesignLanguage {
+    padding: spacing(tight);
+  }
 }
 
 .FiltersMobileContainerContent {
   width: 100%;
   height: calc(100% - #{rem($list-filters-header-height)});
+
+  &.newDesignLanguage {
+    padding: spacing(tight);
+  }
 }
 
 .FiltersContainerFooter {
@@ -84,6 +92,7 @@ $seperator-color: var(--p-border, color('sky'));
   border: none;
   background: none;
   color: var(--p-text, color(ink));
+  border-radius: var(--p-border-radius-base, none);
 
   &:hover {
     cursor: pointer;
@@ -109,6 +118,10 @@ $seperator-color: var(--p-border, color('sky'));
     &:focus,
     &:hover {
       background-image: none;
+    }
+
+    &:active {
+      background-color: var(--p-surface-pressed);
     }
 
     // stylelint-disable-next-line selector-max-specificity
