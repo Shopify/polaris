@@ -354,6 +354,16 @@ class FiltersInner extends React.Component<ComposedProps, State> {
         </div>
       ) : null;
 
+    const filtersMobileContainerContentClassName = classNames(
+      styles.FiltersMobileContainerContent,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
+    const filtersDesktopContainerContentClassName = classNames(
+      styles.FiltersDesktopContainerContent,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     const filtersContainerMarkup = isNavigationCollapsed ? (
       <Sheet
         open={open}
@@ -362,7 +372,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
         onExit={this.setReadyForFocus(false)}
       >
         {filtersMobileHeaderMarkup}
-        <Scrollable className={styles.FiltersMobileContainerContent} shadow>
+        <Scrollable className={filtersMobileContainerContentClassName} shadow>
           {filtersContentMarkup}
           {filtersMobileFooterMarkup}
         </Scrollable>
@@ -376,7 +386,10 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       >
         <div className={styles.FiltersContainer}>
           {filtersDesktopHeaderMarkup}
-          <Scrollable className={styles.FiltersDesktopContainerContent} shadow>
+          <Scrollable
+            className={filtersDesktopContainerContentClassName}
+            shadow
+          >
             {filtersContentMarkup}
           </Scrollable>
           {filtersDesktopFooterMarkup}
