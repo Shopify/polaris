@@ -87,6 +87,8 @@ export interface FiltersProps {
   helpText?: string | React.ReactNode;
   /** Hide tags for applied filters */
   hideTags?: boolean;
+  /** Hide "More filters" button **/
+  hideMoreFiltersButton?: boolean;
 }
 
 type ComposedProps = FiltersProps &
@@ -135,6 +137,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       helpText,
       hideTags,
       newDesignLanguage,
+      hideMoreFiltersButton,
     } = this.props;
     const {resourceName} = this.context;
     const {open, readyForFocus} = this.state;
@@ -249,6 +252,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
         rightAction={rightActionMarkup}
         auxiliary={children}
         disabled={disabled}
+        hideMoreFiltersButton={hideMoreFiltersButton}
       >
         <TextField
           placeholder={

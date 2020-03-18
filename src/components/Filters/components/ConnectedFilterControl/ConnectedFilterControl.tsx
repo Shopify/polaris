@@ -25,6 +25,7 @@ export interface ConnectedFilterControlProps {
   rightAction?: React.ReactNode;
   auxiliary?: React.ReactNode;
   disabled?: boolean;
+  hideMoreFiltersButton?: boolean;
 }
 
 interface ComputedProperty {
@@ -74,6 +75,7 @@ export class ConnectedFilterControl extends React.Component<
       rightPopoverableActions,
       rightAction,
       auxiliary,
+      hideMoreFiltersButton,
     } = this.props;
 
     const actionsToRender =
@@ -86,6 +88,15 @@ export class ConnectedFilterControl extends React.Component<
       rightPopoverableActions && styles.right,
       newDesignLanguage && styles.newDesignLanguage,
     );
+
+    // If there's only one action, and it fits we don't show the "More filters" button
+    const moreFilterButton =
+      rightPopoverableActions &&
+      rightPopoverableActions.length === 1 &&
+      this.getActionsToRender(rightPopoverableActions).length > 0 &&
+      hideMoreFiltersButton ? null : (
+        <Item>{rightAction}</Item>
+      );
 
     const rightMarkup = rightPopoverableActions ? (
       <div className={styles.RightContainer} testID="FilterShortcutContainer">
@@ -105,7 +116,7 @@ export class ConnectedFilterControl extends React.Component<
         ref={this.moreFiltersButtonContainer}
         className={moreFiltersButtonContainerClassname}
       >
-        <Item>{rightAction}</Item>
+        {moreFilterButton}
       </div>
     ) : null;
 
