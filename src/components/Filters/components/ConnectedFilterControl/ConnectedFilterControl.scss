@@ -56,6 +56,12 @@ $stacking-order: (
   }
 }
 
+.newDesignLanguage {
+  .CenterContainer + .RightContainer {
+    margin-left: spacing(extra-tight);
+  }
+}
+
 .RightContainer {
   display: flex;
 
@@ -72,8 +78,6 @@ $stacking-order: (
 
 .newDesignLanguage .RightContainer {
   .Item:first-of-type > * > * {
-    margin-left: spacing(extra-tight);
-
     border-top-left-radius: var(--p-border-radius-base) !important;
     border-bottom-left-radius: var(--p-border-radius-base) !important;
   }
@@ -88,6 +92,10 @@ $stacking-order: (
   > div {
     margin-left: var(--p-override-none, -1px);
   }
+}
+
+.MoreFiltersButtonContainer.onlyButtonVisible * {
+  border-radius: var(--p-border-radius-base) !important;
 }
 
 .Wrapper {
