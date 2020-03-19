@@ -33,6 +33,7 @@ export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
     styles.Tag,
     disabled && styles.disabled,
     onClick && styles.clickable,
+    onRemove && styles.removable,
     newDesignLanguage && styles.newDesignLanguage,
   );
 
