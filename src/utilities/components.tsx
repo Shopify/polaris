@@ -63,6 +63,20 @@ export function elementChildren<T extends React.ReactElement<{}>>(
   ) as T[];
 }
 
+interface ConditionalWrapperProps {
+  children: any;
+  condition: boolean;
+  wrapper: (children: any) => any;
+}
+
+export function ConditionalWrapper({
+  condition,
+  wrapper,
+  children,
+}: ConditionalWrapperProps): JSX.Element {
+  return condition ? wrapper(children) : children;
+}
+
 function hotReloadComponentCheck(
   AComponent: React.ComponentType<any>,
   AnotherComponent: React.ComponentType<any>,

@@ -51,7 +51,6 @@ $stacking-order: (
     appearance: none;
     box-shadow: none;
 
-    // Start - Delete below me when removing newDesignLanguage
     &:hover,
     &:active {
       @include recolor-icon(color('ink'));
@@ -91,38 +90,6 @@ $stacking-order: (
       transition-property: background;
       transition-duration: duration();
       transition-timing-function: easing();
-    }
-    // End - Delete after me when removing newDesignLanguage
-
-    // stylelint-disable selector-max-specificity, selector-max-class
-    &.newDesignLanguage {
-      @include recolor-icon(var(--p-icon));
-      @include focus-ring;
-
-      &:hover,
-      &:active,
-      &:disabled {
-        background: transparent;
-        border: none;
-        box-shadow: none;
-      }
-
-      &:hover {
-        background: var(--p-action-secondary-hovered);
-        @include high-contrast-outline;
-      }
-
-      &:active {
-        background: var(--p-action-secondary-pressed);
-      }
-
-      &:focus:not(:active) {
-        @include focus-ring($style: 'focused');
-      }
-
-      &:disabled {
-        @include recolor-icon(var(--p-icon-disabled));
-      }
     }
   }
 
@@ -199,43 +166,6 @@ $stacking-order: (
     box-shadow: none;
   }
   // Delete above me during newDesignLanguage rollout
-
-  &.newDesignLanguage {
-    @include focus-ring;
-    box-shadow: none;
-    border-color: transparent;
-    border-radius: var(--p-border-radius-base);
-
-    &.rightButton {
-      margin-left: spacing('tight');
-    }
-
-    &:hover {
-      background: var(--p-action-secondary-hovered);
-      @include high-contrast-outline;
-    }
-
-    &:focus {
-      outline: 0;
-    }
-
-    &:focus:not(:active) {
-      z-index: z-index(focused, $stacking-order);
-      @include focus-ring($style: 'focused');
-    }
-
-    &:active {
-      background: var(--p-action-secondary-pressed);
-    }
-
-    &:disabled {
-      @include recolor-icon(var(--p-icon-disabled));
-      background: var(--p-action-secondary-disabled);
-      color: var(--p-text-disabled);
-      cursor: default;
-      box-shadow: none;
-    }
-  }
 }
 
 .PreviousButton {

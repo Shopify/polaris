@@ -1,10 +1,11 @@
 import React from 'react';
-import {ChevronLeftMinor} from '@shopify/polaris-icons';
+import {ChevronLeftMinor, ArrowLeftMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../Icon';
 import {UnstyledLink} from '../UnstyledLink';
 import {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
+import {FeaturesContext} from '../../utilities/features';
 
 import styles from './Breadcrumbs.scss';
 
@@ -14,7 +15,11 @@ export interface BreadcrumbsProps {
 }
 
 export class Breadcrumbs extends React.PureComponent<BreadcrumbsProps, never> {
+  static contextType = FeaturesContext;
+  context!: React.ContextType<typeof FeaturesContext>;
+
   render() {
+    const {newDesignLanguage} = this.context || {};
     const {breadcrumbs} = this.props;
     const breadcrumb = breadcrumbs[breadcrumbs.length - 1];
     if (breadcrumb == null) {
@@ -26,9 +31,13 @@ export class Breadcrumbs extends React.PureComponent<BreadcrumbsProps, never> {
     const contentMarkup = (
       <span className={styles.ContentWrapper}>
         <span className={styles.Icon}>
-          <Icon source={ChevronLeftMinor} />
+          <Icon
+            source={newDesignLanguage ? ArrowLeftMinor : ChevronLeftMinor}
+          />
         </span>
-        <span className={styles.Content}>{content}</span>
+        {newDesignLanguage ? null : (
+          <span className={styles.Content}>{content}</span>
+        )}
       </span>
     );
 
