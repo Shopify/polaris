@@ -281,8 +281,13 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       </ConnectedFilterControl>
     );
 
+    const filtersContainerHeaderClassname = classNames(
+      styles.FiltersContainerHeader,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     const filtersDesktopHeaderMarkup = (
-      <div className={styles.FiltersContainerHeader}>
+      <div className={filtersContainerHeaderClassname}>
         <DisplayText size="small">{moreFiltersLabel}</DisplayText>
         <Button
           icon={CancelSmallMinor}
@@ -294,7 +299,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
     );
 
     const filtersMobileHeaderMarkup = (
-      <div className={styles.FiltersContainerHeader}>
+      <div className={filtersContainerHeaderClassname}>
         <Button
           icon={CancelSmallMinor}
           plain
@@ -308,8 +313,13 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       </div>
     );
 
+    const filtersDesktopFooterClassname = classNames(
+      styles.FiltersContainerFooter,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     const filtersDesktopFooterMarkup = (
-      <div className={styles.FiltersContainerFooter}>
+      <div className={filtersDesktopFooterClassname}>
         <Button onClick={onClearAll} disabled={!this.hasAppliedFilters()}>
           {intl.translate('Polaris.Filters.clearAllFilters')}
         </Button>

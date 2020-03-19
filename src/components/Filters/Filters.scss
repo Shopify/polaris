@@ -19,33 +19,41 @@ $seperator-color: var(--p-border-subdued, color('sky'));
 .FiltersContainerHeader {
   top: 0;
   width: 100%;
-  padding: rem(16px) rem(20px);
+  padding: spacing(base) spacing(loose);
   border-bottom: rem(1px) solid $seperator-color;
-  height: rem($list-filters-header-height);
+  height: $list-filters-header-height;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &.newDesignLanguage {
+    height: unstable-top-bar-height();
+    padding: spacing(base) rem(26px);
+  }
 }
 
 .FiltersDesktopContainerContent {
   width: 100%;
   height: calc(
-    100% - #{rem($list-filters-footer-height)} - #{rem(
-        $list-filters-header-height
-      )}
+    100% - #{$list-filters-footer-height} - #{$list-filters-header-height}
   );
 
   &.newDesignLanguage {
+    height: calc(
+      100% - #{$list-filters-footer-height} - #{unstable-top-bar-height()}
+    );
+
     padding: spacing(tight);
   }
 }
 
 .FiltersMobileContainerContent {
   width: 100%;
-  height: calc(100% - #{rem($list-filters-header-height)});
+  height: calc(100% - #{$list-filters-header-height});
 
   &.newDesignLanguage {
+    height: calc(100% - #{unstable-top-bar-height()});
     padding: spacing(tight);
   }
 }
@@ -54,19 +62,23 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: rem(14px) rem(16px);
+  padding: rem(14px) spacing(base);
   border-top: rem(1px) solid $seperator-color;
-  height: rem($list-filters-footer-height);
+  height: $list-filters-footer-height;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &.newDesignLanguage {
+    padding: rem(14px) spacing(loose);
+  }
 }
 
 .FiltersMobileContainerFooter {
   width: 100%;
-  padding: rem(14px) rem(16px);
-  height: rem($list-filters-footer-height);
+  padding: rem(14px) spacing(base);
+  height: $list-filters-footer-height;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -160,7 +172,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   &::after {
     content: '';
     position: relative;
-    left: rem(16px);
+    left: spacing(base);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
     background-color: $seperator-color;
@@ -181,7 +193,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
     content: '';
     bottom: 0;
     position: relative;
-    left: rem(16px);
+    left: spacing(base);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
     background-color: $seperator-color;
@@ -204,7 +216,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
     content: '';
     top: 0;
     position: relative;
-    left: rem(16px);
+    left: spacing(base);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
     background-color: $seperator-color;
@@ -223,7 +235,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
 }
 
 .FilterNodeContainer {
-  padding: rem(8px) rem(20px) rem(20px) rem(20px);
+  padding: rem(8px) spacing(loose) spacing(loose) spacing(loose);
 }
 
 .SearchIcon {
