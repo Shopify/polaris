@@ -76,6 +76,11 @@ export class ConnectedFilterControl extends React.Component<
       auxiliary,
     } = this.props;
 
+    const actionsToRender =
+      rightPopoverableActions != null
+        ? this.getActionsToRender(rightPopoverableActions)
+        : [];
+
     const className = classNames(
       styles.ConnectedFilterControl,
       rightPopoverableActions && styles.right,
@@ -84,14 +89,21 @@ export class ConnectedFilterControl extends React.Component<
 
     const rightMarkup = rightPopoverableActions ? (
       <div className={styles.RightContainer} testID="FilterShortcutContainer">
-        {this.popoverFrom(this.getActionsToRender(rightPopoverableActions))}
+        {this.popoverFrom(actionsToRender)}
       </div>
     ) : null;
+
+    const moreFiltersButtonContainerClassname = classNames(
+      styles.MoreFiltersButtonContainer,
+      actionsToRender.length === 0 &&
+        newDesignLanguage &&
+        styles.onlyButtonVisible,
+    );
 
     const rightActionMarkup = rightAction ? (
       <div
         ref={this.moreFiltersButtonContainer}
-        className={styles.MoreFiltersButtonContainer}
+        className={moreFiltersButtonContainerClassname}
       >
         <Item>{rightAction}</Item>
       </div>
@@ -137,7 +149,7 @@ export class ConnectedFilterControl extends React.Component<
     if (this.proxyButtonContainer.current) {
       const proxyButtonsWidth: ComputedProperty = {};
       // this number is magical, but tweaking it solved the problem of items overlapping
-      const tolerance = 52;
+      const tolerance = 78;
       if (this.proxyButtonContainer.current) {
         Array.from(this.proxyButtonContainer.current.children).forEach(
           (element: Element) => {
