@@ -8,6 +8,10 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.16.1 - 2020-03-19
+
+- Made no noteworthy changes
+
 ## 4.16.0 - 2020-03-13
 
 ### Enhancements
