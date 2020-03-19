@@ -12,7 +12,6 @@ import {
   AlphaPicker,
   HuePicker,
   Slidable,
-  Position,
   TextPicker,
 } from './components';
 import styles from './ColorPicker.scss';
@@ -20,6 +19,11 @@ import styles from './ColorPicker.scss';
 interface State {
   pickerWidth: number;
   pickerHeight: number;
+}
+
+interface Position {
+  x: number;
+  y: number;
 }
 
 interface Color extends HSBColor {
