@@ -32,7 +32,7 @@ $stacking-order: (
   &.newDesignLanguage {
     .Backdrop {
       border-color: var(--p-border-disabled);
-      background: var(--p-surface-subdued);
+      background-color: var(--p-surface-subdued);
       // stylelint-disable-next-line selector-max-class, selector-max-specificity
       &::before {
         background-color: var(--p-action-secondary-disabled);
