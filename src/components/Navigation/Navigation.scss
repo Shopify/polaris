@@ -282,6 +282,7 @@ $disabled-fade: 0.6;
 $secondary-item-font-size: rem(15px);
 .SecondaryNavigation {
   flex-basis: 100%;
+  margin-bottom: spacing(tight);
   margin-left: nav(icon-size) + spacing(loose);
   overflow-x: var(--p-override-visible, hidden);
 
@@ -295,11 +296,6 @@ $secondary-item-font-size: rem(15px);
 
   .List {
     @include unstyled-list;
-    margin-bottom: spacing(tight);
-    // stylelint-disable-next-line selector-max-combinators, selector-max-class
-    .Navigation-newDesignLanguage & {
-      margin-bottom: 0;
-    }
   }
 
   .Item {

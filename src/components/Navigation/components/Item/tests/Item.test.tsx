@@ -164,12 +164,11 @@ describe('<Nav.Item />', () => {
       expect(secondary.exists()).toBe(true);
     });
 
-    it('renders with expanded: false when parent and children both have no match on the location', () => {
+    it('does not render expanded when parent and children both have no match on the location', () => {
       const item = itemForLocation('/admin/notARealRoute');
 
       const secondary = item.find(Secondary);
-      expect(secondary.exists()).toBe(true);
-      expect(secondary.prop('expanded')).toBe(false);
+      expect(secondary.exists()).toBe(false);
     });
   });
 
@@ -181,12 +180,11 @@ describe('<Nav.Item />', () => {
       expect(secondary.exists()).toBe(true);
     });
 
-    it('renders with expanded: false when no exact match on url', () => {
+    it('does not render expanded when no exact match on url', () => {
       const item = itemForLocation('/admin/orders/1', {exactMatch: true});
 
       const secondary = item.find(Secondary);
-      expect(secondary.exists()).toBe(true);
-      expect(secondary.prop('expanded')).toBe(false);
+      expect(secondary.exists()).toBe(false);
     });
 
     it('still renders expanded when there is a match on url for one of it`s children', () => {

@@ -233,7 +233,7 @@ export function Item({
 
   let secondaryNavigationMarkup: ReactNode = null;
 
-  if (subNavigationItems.length > 0) {
+  if (subNavigationItems.length > 0 && showExpanded) {
     const longestMatch = matchingSubNavigationItems.sort(
       ({url: firstUrl}, {url: secondUrl}) => secondUrl.length - firstUrl.length,
     )[0];
