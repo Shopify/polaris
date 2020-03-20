@@ -8,7 +8,7 @@ $icon-size: rem(16px);
   max-width: 100%;
   align-items: center;
   min-height: $height;
-  padding-left: spacing(tight);
+  padding: 0 spacing(tight);
   background-color: var(--p-action-secondary, color('sky'));
   border-radius: border-radius();
   color: var(--p-text, color('ink'));
@@ -18,6 +18,10 @@ $icon-size: rem(16px);
     transition: none;
     background: var(--p-action-secondary-disabled, color('sky', 'light'));
     color: var(--p-text-disabled, color('ink', 'lightest'));
+  }
+
+  &.removable {
+    padding-right: 0;
   }
 
   &.clickable {
