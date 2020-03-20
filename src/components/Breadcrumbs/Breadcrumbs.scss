@@ -24,6 +24,10 @@ $difference-between-touch-area-and-backdrop: control-height() -
   color: var(--p-text-subdued, color('ink', 'lighter'));
   text-decoration: none;
 
+  &.newDesignLanguage {
+    margin-left: 0;
+  }
+
   &:hover,
   &:active {
     color: var(--p-text, color('ink'));

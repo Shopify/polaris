@@ -37,6 +37,10 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
 .BreadcrumbWrapper {
   flex: 0 1 auto;
   max-width: 100%;
+
+  &.newDesignLanguage {
+    margin-right: spacing();
+  }
 }
 
 .PaginationWrapper {
@@ -98,4 +102,29 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
   }
 
   @include print-hidden;
+
+  &.newDesignLanguage {
+    margin-top: 0;
+  }
+}
+
+.Row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Bottom {
+  margin-top: spacing();
+}
+
+.LeftAlign {
+  display: flex;
+  align-content: flex-start;
+  align-items: center;
+}
+
+.RightAlign {
+  display: flex;
+  align-content: flex-end;
+  align-items: center;
 }

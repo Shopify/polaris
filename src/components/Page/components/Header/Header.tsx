@@ -3,6 +3,7 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
 import {useMediaQuery} from '../../../../utilities/media-query';
+import {useFeatures} from '../../../../utilities/features';
 import {
   MenuGroupDescriptor,
   MenuActionDescriptor,
@@ -58,10 +59,16 @@ export function Header({
   actionGroups = [],
 }: HeaderProps) {
   const {isNavigationCollapsed} = useMediaQuery();
+  const {newDesignLanguage} = useFeatures();
 
   const breadcrumbMarkup =
     breadcrumbs.length > 0 ? (
-      <div className={styles.BreadcrumbWrapper}>
+      <div
+        className={classNames(
+          styles.BreadcrumbWrapper,
+          newDesignLanguage && styles.newDesignLanguage,
+        )}
+      >
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </div>
     ) : null;
@@ -102,7 +109,12 @@ export function Header({
 
   const actionMenuMarkup =
     secondaryActions.length > 0 || hasGroupsWithActions(actionGroups) ? (
-      <div className={styles.ActionMenuWrapper}>
+      <div
+        className={classNames(
+          styles.ActionMenuWrapper,
+          newDesignLanguage && styles.newDesignLanguage,
+        )}
+      >
         <ActionMenu
           actions={secondaryActions}
           groups={actionGroups}
@@ -119,6 +131,24 @@ export function Header({
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
   );
+
+  if (newDesignLanguage) {
+    return (
+      <div className={headerClassNames}>
+        <div className={styles.Row}>
+          <div className={styles.LeftAlign}>
+            {breadcrumbMarkup}
+            {pageTitleMarkup}
+          </div>
+          <div className={styles.RightAlign}>{paginationMarkup}</div>
+        </div>
+        <div className={classNames(styles.Row, styles.Bottom)}>
+          <div className={styles.LeftAlign}>{actionMenuMarkup}</div>
+          <div className={styles.RightAlign}>{primaryActionMarkup}</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={headerClassNames}>

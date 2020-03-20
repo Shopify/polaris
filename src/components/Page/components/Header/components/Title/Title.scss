@@ -6,6 +6,7 @@
 
 .SubTitle {
   margin-top: spacing(tight);
+  color: var(--p-text-subdued, inherit);
 }
 
 .hasThumbnail {
@@ -34,5 +35,11 @@
   .TitleMetadata {
     margin-top: spacing(tight);
     display: inline-block;
+
+    // stylelint-disable-next-line selector-max-class
+    &.newDesignLanguage {
+      margin-top: spacing(extra-tight);
+      vertical-align: bottom;
+    }
   }
 }

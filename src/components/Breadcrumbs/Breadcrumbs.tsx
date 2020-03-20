@@ -6,6 +6,7 @@ import {UnstyledLink} from '../UnstyledLink';
 import {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {FeaturesContext} from '../../utilities/features';
+import {classNames} from '../../utilities/css';
 
 import styles from './Breadcrumbs.scss';
 
@@ -41,12 +42,17 @@ export class Breadcrumbs extends React.PureComponent<BreadcrumbsProps, never> {
       </span>
     );
 
+    const breadcrumbClassNames = classNames(
+      styles.Breadcrumb,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     const breadcrumbMarkup =
       'url' in breadcrumb ? (
         <UnstyledLink
           key={content}
           url={breadcrumb.url}
-          className={styles.Breadcrumb}
+          className={breadcrumbClassNames}
           onMouseUp={handleMouseUpByBlurring}
           aria-label={breadcrumb.accessibilityLabel}
         >
@@ -55,7 +61,7 @@ export class Breadcrumbs extends React.PureComponent<BreadcrumbsProps, never> {
       ) : (
         <button
           key={content}
-          className={styles.Breadcrumb}
+          className={breadcrumbClassNames}
           onClick={breadcrumb.onAction}
           onMouseUp={handleMouseUpByBlurring}
           type="button"
