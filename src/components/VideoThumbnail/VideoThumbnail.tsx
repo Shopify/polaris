@@ -7,22 +7,23 @@ import {secondsToFormatPretty} from './utilities';
 import styles from './VideoThumbnail.scss';
 
 export interface VideoThumbnailProps {
+  /** URL source for thumbnail image. */
   thumbnailUrl: string;
+  /** Length of video in seconds. */
   videoLength?: number;
   /** Custom ARIA label for play button.
    * @default 'Play video'
    */
   accessibilityLabel?: string;
+  /** Callback on click or keypress of thumbnail. Use to trigger render of the video player in your chosen format, for example within a modal or fullscreen container. */
   onClick(): void;
+  /** Callback on mouse enter or touch start of thumbnail. Use to trigger video preload. */
   onBeforeStartPlaying?(): void;
 }
 
 export const VideoThumbnail = ({
   thumbnailUrl,
   videoLength,
-  /** Custom ARIA label for play button.
-   * @default 'Play video'
-   */
   accessibilityLabel,
   onClick,
   onBeforeStartPlaying,

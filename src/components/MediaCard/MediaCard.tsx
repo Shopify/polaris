@@ -16,7 +16,7 @@ import {Stack} from '../Stack';
 import styles from './MediaCard.scss';
 
 interface MediaCardProps {
-  /** The  */
+  /** The visual media to display in the card */
   children: React.ReactNode;
   /** Heading content */
   title: string;
