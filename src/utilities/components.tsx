@@ -77,6 +77,18 @@ export function ConditionalWrapper({
   return condition ? wrapper(children) : children;
 }
 
+interface ConditionalRenderProps {
+  condition: boolean;
+  children: any;
+}
+
+export function ConditionalRender({
+  condition,
+  children,
+}: ConditionalRenderProps): JSX.Element {
+  return condition ? children : null;
+}
+
 function hotReloadComponentCheck(
   AComponent: React.ComponentType<any>,
   AnotherComponent: React.ComponentType<any>,

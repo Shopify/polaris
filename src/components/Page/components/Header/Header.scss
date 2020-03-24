@@ -11,6 +11,11 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
 .separator {
   padding-bottom: spacing();
   border-bottom: border();
+
+  &.newDesignLanguage {
+    padding-bottom: spacing();
+    border-bottom: border();
+  }
 }
 
 .titleHidden {
@@ -111,10 +116,15 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
 .Row {
   display: flex;
   justify-content: space-between;
-}
 
-.Bottom {
-  margin-top: spacing();
+  + .Row {
+    margin-top: spacing();
+
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class
+    .mobileView & {
+      margin-top: spacing(tight);
+    }
+  }
 }
 
 .LeftAlign {
@@ -127,4 +137,5 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
   display: flex;
   align-content: flex-end;
   align-items: center;
+  margin-left: spacing(tight);
 }
