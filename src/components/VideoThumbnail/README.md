@@ -92,6 +92,6 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 Images included in video thumbnails are implemented as decorative background images so that they’re skipped by screen readers.
 
-The play button is keyboard accessible and the `aria-label` includes a timestamp when the `videoLength` prop is set. For example, a video of length 1:20 is read as “Play video of length 1 minute and 20 seconds”. If no `videoLength` prop is provided, the default label reads “Play video”.
+The play button is keyboard accessible and the `aria-label` includes a timestamp when the `videoLength` prop is set. For example, a video of length 80 is read as “Play video of length 1 minute and 20 seconds”. If no `videoLength` prop is provided, the default label reads “Play video”.
 
 <!-- /content-for -->
