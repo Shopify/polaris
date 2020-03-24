@@ -25,6 +25,8 @@ import {ButtonGroup} from '../../../ButtonGroup';
 import {Title, TitleProps} from './components';
 import styles from './Header.scss';
 
+type MaybeJSX = JSX.Element | null;
+
 interface PrimaryAction
   extends DestructableAction,
     DisableableAction,
@@ -110,7 +112,7 @@ export function Header({
 
   const primaryActionMarkup = primaryAction ? (
     <ConditionalWrapper
-      condition={!newDesignLanguage}
+      condition={newDesignLanguage === false}
       wrapper={(children) => (
         <div className={styles.PrimaryActionWrapper}>{children}</div>
       )}
@@ -131,7 +133,7 @@ export function Header({
   const actionMenuMarkup =
     secondaryActions.length > 0 || hasGroupsWithActions(actionGroups) ? (
       <ConditionalWrapper
-        condition={!newDesignLanguage}
+        condition={newDesignLanguage === false}
         wrapper={(children) => (
           <div className={styles.ActionMenuWrapper}>{children}</div>
         )}
@@ -155,24 +157,40 @@ export function Header({
   );
 
   if (newDesignLanguage) {
+    //
+    //    Header Layout
+    // |----------------------------------------------------|
+    // | slot1 | slot2 |                    | slot3 | slot4 |
+    // |----------------------------------------------------|
+    // | slot5 |                                    | slot6 |
+    // |----------------------------------------------------|
+
     const slot1 = breadcrumbMarkup;
-    let slot2: JSX.Element | null = null;
-    let slot3: JSX.Element | null = null;
-    let slot4: JSX.Element | null = null;
-    let slot5: JSX.Element | null = null;
-    let slot6: JSX.Element | null = null;
+    let slot2: MaybeJSX = null;
+    let slot3: MaybeJSX = null;
+    let slot4: MaybeJSX = null;
+    let slot5: MaybeJSX = null;
+    let slot6: MaybeJSX = null;
+
+    const maxEmsMobile = 8;
+    const maxEmsDesktop = 20;
 
     if (isNavigationCollapsed) {
       slot3 = actionMenuMarkup;
       slot4 = primaryActionMarkup;
-      if (breadcrumbMarkup == null && title && title.length <= 8) {
+      if (breadcrumbMarkup == null && title && title.length <= maxEmsMobile) {
         slot2 = pageTitleMarkup;
       } else {
         slot5 = pageTitleMarkup;
       }
     } else {
       slot2 = pageTitleMarkup;
-      if (paginationMarkup == null && actionMenuMarkup == null) {
+      if (
+        paginationMarkup == null &&
+        actionMenuMarkup == null &&
+        title &&
+        title.length <= maxEmsDesktop
+      ) {
         slot4 = primaryActionMarkup;
       } else {
         slot4 = paginationMarkup;
@@ -184,17 +202,17 @@ export function Header({
     return (
       <div className={headerClassNames}>
         <ConditionalRender
-          condition={[slot1, slot2, slot3, slot4].some((slot) => slot != null)}
+          condition={[slot1, slot2, slot3, slot4].some(notNull)}
         >
           <div className={styles.Row}>
             <div className={styles.LeftAlign}>
               {slot1}
               {slot2}
             </div>
-            <ConditionalRender condition={slot3 != null || slot4 != null}>
+            <ConditionalRender condition={[slot3, slot4].some(notNull)}>
               <div className={styles.RightAlign}>
                 <ConditionalWrapper
-                  condition={slot3 != null && slot4 != null}
+                  condition={[slot3, slot4].every(notNull)}
                   wrapper={(children) => <ButtonGroup>{children}</ButtonGroup>}
                 >
                   {slot3}
@@ -204,10 +222,12 @@ export function Header({
             </ConditionalRender>
           </div>
         </ConditionalRender>
-        <ConditionalRender condition={slot5 != null || slot6 != null}>
+        <ConditionalRender condition={[slot5, slot6].some(notNull)}>
           <div className={styles.Row}>
             <div className={styles.LeftAlign}>{slot5}</div>
-            <div className={styles.RightAlign}>{slot6}</div>
+            <ConditionalRender condition={slot6 != null}>
+              <div className={styles.RightAlign}>{slot6}</div>
+            </ConditionalRender>
           </div>
         </ConditionalRender>
       </div>
@@ -251,4 +271,8 @@ function shouldShowIconOnly(
     accessibilityLabel,
     icon,
   };
+}
+
+function notNull(value: any) {
+  return value != null;
 }
