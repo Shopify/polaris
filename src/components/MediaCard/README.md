@@ -15,7 +15,9 @@ keywords:
 
 # Media card
 
-## Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with.
+Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with.
+
+---
 
 ## Best practices
 
@@ -139,7 +141,6 @@ Use to surface educational information about a feature or opportunity.
   }}
   description="Discover how Shopify can power up your entrepreneurial journey."
   popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
-  portrait
 >
   <img
     alt=""
@@ -193,7 +194,7 @@ Use to provide a consistent layout for contextual learning content. Use to wrap 
     content: 'Learn more',
     onAction: () => {},
   }}
-  description="In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business."
+  description={`In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.`}
   popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
 >
   <VideoThumbnail
