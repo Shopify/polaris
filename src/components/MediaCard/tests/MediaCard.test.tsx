@@ -5,6 +5,7 @@ import {mountWithApp} from 'test-utilities';
 import {MediaCard} from '../MediaCard';
 
 const mockProps = {
+  children: <img alt="" />,
   title: 'test title',
   description: 'test description',
   primaryAction: {

@@ -72,7 +72,10 @@ export function MediaCard({
           preferredAlignment="left"
           preferredPosition="below"
         >
-          <ActionList items={popoverActions} />
+          <ActionList
+            items={popoverActions}
+            onActionAnyItem={togglePopoverActive}
+          />
         </Popover>
       </div>
     ) : null;

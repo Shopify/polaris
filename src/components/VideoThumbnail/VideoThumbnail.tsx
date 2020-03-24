@@ -17,7 +17,7 @@ export interface VideoThumbnailProps {
   accessibilityLabel?: string;
   /** Callback on click or keypress of thumbnail. Use to trigger render of the video player in your chosen format, for example within a modal or fullscreen container. */
   onClick(): void;
-  /** Callback on mouse enter or touch start of thumbnail. Use to trigger video preload. */
+  /** Callback on mouse enter, focus, or touch start of thumbnail. Use to trigger video preload. */
   onBeforeStartPlaying?(): void;
 }
 
@@ -74,6 +74,7 @@ export const VideoThumbnail = ({
         className={styles.PlayButton}
         onClick={onClick}
         onMouseEnter={onBeforeStartPlaying}
+        onFocus={onBeforeStartPlaying}
         onTouchStart={onBeforeStartPlaying}
         aria-label={buttonLabel}
       >

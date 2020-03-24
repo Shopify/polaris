@@ -22,12 +22,12 @@ Video thumbnails are a clickable placeholder image. When clicked, it opens a vid
 
 Video thumbnails should:
 
-Be used with a media card
-Use an image that communicates the subject of the video
-Include a video timestamp
-Capture an image from the video to give a preview of the video content
-Be cropped to a 16:9 aspect ratio
-Be centered on the subject and avoid cropping of important details, like a person’s head
+- Be used with a media card
+- Use an image that communicates the subject of the video
+- Include a video timestamp
+- Capture an image from the video to give a preview of the video content
+- Be cropped to a 16:9 aspect ratio
+- Be centered on the subject and avoid cropping of important details, like a person’s head
 
 ---
 
@@ -58,7 +58,7 @@ Use as a play button for a video player within a media card.
 
 ## Required components
 
-- The video thumbnail should be wrapped in the [media card](https://polaris.shopify.com/components/structure/video-card) component.
+- The video thumbnail should be wrapped in the [media card](https://polaris.shopify.com/components/structure/media-card) component.
 
 ---
 
@@ -92,6 +92,6 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 Images included in video thumbnails are implemented as decorative background images so that they’re skipped by screen readers.
 
-The play button is keyboard accessible and the `aria-label` includes a timestamp when the `videoLength` prop is set. For example, a video of length 80 is read as “Play video of length 1 minute and 20 seconds”. If no `videoLength` prop is provided, the default label reads “Play video”.
+The play button is keyboard accessible and the `aria-label` includes a timestamp when the `videoLength` prop is set. For example, an 80 second video reads as “Play video of length 1 minute and 20 seconds”. If no `videoLength` prop is provided, the default label reads “Play video”.
 
 <!-- /content-for -->
