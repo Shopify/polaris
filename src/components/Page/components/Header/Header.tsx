@@ -133,19 +133,35 @@ export function Header({
   );
 
   if (newDesignLanguage) {
+    const slot1 = breadcrumbMarkup;
+    const slot2 = pageTitleMarkup;
+    let slot3: JSX.Element | null = null;
+    let slot4: JSX.Element | null = null;
+    let slot5: JSX.Element | null = null;
+
+    if (paginationMarkup == null && actionMenuMarkup == null) {
+      slot3 = primaryActionMarkup;
+    } else if (paginationMarkup != null) {
+      slot3 = paginationMarkup;
+      slot4 = actionMenuMarkup;
+      slot5 = primaryActionMarkup;
+    }
+
     return (
       <div className={headerClassNames}>
         <div className={styles.Row}>
           <div className={styles.LeftAlign}>
-            {breadcrumbMarkup}
-            {pageTitleMarkup}
+            {slot1}
+            {slot2}
           </div>
-          <div className={styles.RightAlign}>{paginationMarkup}</div>
+          <div className={styles.RightAlign}>{slot3}</div>
         </div>
-        <div className={classNames(styles.Row, styles.Bottom)}>
-          <div className={styles.LeftAlign}>{actionMenuMarkup}</div>
-          <div className={styles.RightAlign}>{primaryActionMarkup}</div>
-        </div>
+        {slot4 || slot5 ? (
+          <div className={classNames(styles.Row, styles.Bottom)}>
+            <div className={styles.LeftAlign}>{slot4}</div>
+            <div className={styles.RightAlign}>{slot5}</div>
+          </div>
+        ) : null}
       </div>
     );
   }
