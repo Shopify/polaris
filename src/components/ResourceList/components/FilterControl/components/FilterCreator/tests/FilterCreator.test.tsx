@@ -7,6 +7,7 @@ import {
   ReactWrapper,
 } from 'test-utilities/legacy';
 import {Button, Select, Popover} from 'components';
+
 import {FilterCreator, FilterCreatorProps} from '../FilterCreator';
 import {FilterValueSelector} from '../../FilterValueSelector';
 import {FilterType} from '../../../types';
@@ -182,19 +183,9 @@ describe('<FilterCreator />', () => {
     selectFilterKey(wrapper, mockDefaultProps.filters[0].key);
     selectFilterValue(wrapper, 'Bundle');
 
-    expect(
-      wrapper
-        .find(Select)
-        .at(0)
-        .prop('value'),
-    ).toBeDefined();
+    expect(wrapper.find(Select).at(0).prop('value')).toBeDefined();
     clickAddFilter(wrapper);
-    expect(
-      wrapper
-        .find(Select)
-        .at(0)
-        .prop('value'),
-    ).toBeUndefined();
+    expect(wrapper.find(Select).at(0).prop('value')).toBeUndefined();
   });
 
   describe('filters', () => {

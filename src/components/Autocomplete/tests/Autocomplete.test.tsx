@@ -3,8 +3,10 @@ import {CirclePlusMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Spinner} from 'components';
+
 import {Key} from '../../../types';
 import {ComboBox} from '../components';
+
 import {Autocomplete} from '..';
 
 describe('<Autocomplete/>', () => {

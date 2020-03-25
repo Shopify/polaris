@@ -312,7 +312,7 @@ $secondary-item-font-size: rem(15px);
       @include breakpoint-after(nav-min-window-corrected()) {
         font-size: $item-font-size-small;
       }
-      // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
+      // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, selector-max-class
       &.keyFocused {
         @include focus-ring($style: 'focused');
       }

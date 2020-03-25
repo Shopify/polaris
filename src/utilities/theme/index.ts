@@ -2,7 +2,7 @@ export * from './context';
 
 export * from './hooks';
 
-export {ThemeConfig} from './types';
+export type {ThemeConfig} from './types';
 
 export {
   buildCustomProperties,

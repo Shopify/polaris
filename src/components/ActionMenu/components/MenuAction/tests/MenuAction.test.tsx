@@ -6,7 +6,6 @@ import {mountWithApp} from 'test-utilities';
 
 import {Icon} from '../../../../Icon';
 import {UnstyledLink} from '../../../../UnstyledLink';
-
 import {MenuAction} from '../MenuAction';
 
 describe('<MenuAction />', () => {

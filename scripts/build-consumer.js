@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 
 const {resolve} = require('path');
+
 const {config, cp, mkdir, rm} = require('shelljs');
 
 const packageJSON = require('../package.json');

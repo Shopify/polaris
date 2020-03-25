@@ -6,6 +6,7 @@ import {
   trigger,
 } from 'test-utilities/legacy';
 import {TextContainer, TextField, EventListener} from 'components';
+
 import {Key} from '../../../../../types';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
@@ -198,10 +199,7 @@ describe('<PopoverOverlay />', () => {
       </PopoverOverlay>,
     );
 
-    const target = popoverOverlay
-      .find(TextField)
-      .find('input')
-      .getDOMNode();
+    const target = popoverOverlay.find(TextField).find('input').getDOMNode();
 
     const clickEventListener = popoverOverlay
       .find(EventListener)

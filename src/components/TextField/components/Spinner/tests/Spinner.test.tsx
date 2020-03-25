@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'test-utilities';
+
 import {Spinner} from '../Spinner';
 
 describe('<Spinner />', () => {

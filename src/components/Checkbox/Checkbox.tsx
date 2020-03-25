@@ -1,5 +1,6 @@
 import React, {useRef, useImperativeHandle, useState} from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
+
 import {classNames} from '../../utilities/css';
 import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';

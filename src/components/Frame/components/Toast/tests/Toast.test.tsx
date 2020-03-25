@@ -6,6 +6,7 @@ import {
   trigger,
   findByTestID,
 } from 'test-utilities/legacy';
+
 import {Button} from '../../../../Button';
 import {Toast, ToastProps} from '../Toast';
 import {Key} from '../../../../../types';

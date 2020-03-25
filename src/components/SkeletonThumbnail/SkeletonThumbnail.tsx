@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {classNames, variationName} from '../../utilities/css';
+
 import styles from './SkeletonThumbnail.scss';
 
 type Size = 'small' | 'medium' | 'large';

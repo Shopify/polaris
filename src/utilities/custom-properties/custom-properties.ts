@@ -1,4 +1,5 @@
 import {config} from '@shopify/polaris-tokens/dist-modern/configs/base';
+
 import {toCssCustomPropertySyntax, Tokens} from '../theme';
 
 export const nonDesignLangaugeCustomProperties = [

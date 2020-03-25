@@ -1,6 +1,8 @@
 import {execSync} from 'child_process';
+
 import fs from 'fs-extra';
 import glob from 'glob';
+
 import packageJSON from '../package.json';
 
 describe('build', () => {

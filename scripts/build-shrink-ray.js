@@ -1,5 +1,6 @@
 const {resolve} = require('path');
 const {execSync} = require('child_process');
+
 const {readFileSync} = require('fs-extra');
 const {Logger, Build, ShrinkRayAPI, Check} = require('@shopify/shrink-ray');
 

@@ -1,13 +1,14 @@
 import React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+
 import {OptionList, OptionDescriptor} from '../../../OptionList';
 import {ActionList} from '../../../ActionList';
 import {Popover, PopoverProps} from '../../../Popover';
 import {ActionListItemDescriptor, Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {EventListener} from '../../../EventListener';
-import {ComboBoxContext} from './context';
 
+import {ComboBoxContext} from './context';
 import styles from './ComboBox.scss';
 
 const getUniqueId = createUniqueIDFactory('ComboBox');

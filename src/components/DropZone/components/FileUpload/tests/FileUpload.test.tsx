@@ -3,6 +3,7 @@ import {Icon, Caption, TextStyle} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';
 import {fileUpload as fileUploadImage, imageUpload} from '../../../images';

@@ -1,4 +1,5 @@
 import {clamp} from '@shopify/javascript-utilities/math';
+
 import {
   RGBColor,
   RGBAColor,

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {mount} from 'test-utilities';
+
 import {useLazyRef} from '../use-lazy-ref';
 
 describe('useLazyRef', () => {

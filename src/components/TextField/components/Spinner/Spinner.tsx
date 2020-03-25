@@ -1,7 +1,7 @@
 import React from 'react';
 import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
-import {Icon} from '../../../Icon';
 
+import {Icon} from '../../../Icon';
 import styles from '../../TextField.scss';
 
 export interface SpinnerProps {

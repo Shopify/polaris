@@ -3,20 +3,19 @@ import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 
 import {classNames} from '../../utilities/css';
-
 import {headerCell} from '../shared';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
 import {EventListener} from '../EventListener';
+
 import {Cell, CellProps, Navigation} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
-
 import {DataTableState, SortDirection, VerticalAlign} from './types';
 import styles from './DataTable.scss';
 
-export {SortDirection};
+export type {SortDirection};
 
 type CombinedProps = DataTableProps & WithAppProviderProps;
 export type TableRow =

@@ -1,4 +1,5 @@
 import * as appBridge from '@shopify/app-bridge';
+
 import {createAppBridge, setClientInterfaceHook} from '../app-bridge';
 
 describe('createAppBridge()', () => {

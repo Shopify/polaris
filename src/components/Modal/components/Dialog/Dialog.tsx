@@ -2,10 +2,9 @@ import React, {useRef, useCallback, useEffect} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
 import {Transition, CSSTransition} from '@material-ui/react-transition-group';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+
 import {classNames} from '../../../../utilities/css';
-
 import {AnimationProps, Key} from '../../../../types';
-
 import {KeypressListener} from '../../../KeypressListener';
 import {TrapFocus} from '../../../TrapFocus';
 

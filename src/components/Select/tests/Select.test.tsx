@@ -3,6 +3,7 @@ import {InlineError} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+
 import {Select} from '../Select';
 
 describe('<Select />', () => {

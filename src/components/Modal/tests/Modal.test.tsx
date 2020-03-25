@@ -9,9 +9,9 @@ import {
   trigger,
 } from 'test-utilities/legacy';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
+
 import {Footer, Dialog} from '../components';
 import {Modal} from '../Modal';
-
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({

@@ -212,7 +212,7 @@ $dropzone-stacking-order: (
 
   &.focused {
     &:not(.isDisabled) {
-      // stylelint-disable-next-line selector-max-specificity
+      // stylelint-disable-next-line selector-max-specificity, selector-max-class
       .Container {
         @include focus-ring($style: 'focused');
       }

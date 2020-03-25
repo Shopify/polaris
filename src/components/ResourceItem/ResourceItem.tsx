@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
+
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useFeatures} from '../../utilities/features';
@@ -14,12 +15,12 @@ import {ThumbnailProps} from '../Thumbnail';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
 import {Button, buttonsFrom} from '../Button';
-
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
   ResourceListSelectedItems,
 } from '../../utilities/resource-list';
+
 import styles from './ResourceItem.scss';
 
 type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';

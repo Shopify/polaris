@@ -3,6 +3,7 @@ import {CirclePlusMinor, NoteMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Icon} from 'components';
+
 import {ExceptionList} from '../ExceptionList';
 import {Truncate} from '../../Truncate';
 

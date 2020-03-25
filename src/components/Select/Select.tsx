@@ -1,5 +1,6 @@
 import React from 'react';
 import {ArrowUpDownMinor} from '@shopify/polaris-icons';
+
 import {classNames} from '../../utilities/css';
 import {useFeatures} from '../../utilities/features';
 import {useUniqueId} from '../../utilities/unique-id';

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {useAppBridge} from '../../utilities/app-bridge';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';

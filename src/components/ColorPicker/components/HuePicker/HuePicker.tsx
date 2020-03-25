@@ -1,6 +1,8 @@
 import React from 'react';
+
 import {Slidable, SlidableProps} from '../Slidable';
 import styles from '../../ColorPicker.scss';
+
 import {calculateDraggerY, hueForDraggerY} from './utilities';
 
 interface State {

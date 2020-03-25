@@ -1,5 +1,7 @@
 import {readFileSync, writeFileSync} from 'fs';
+
 import program from 'commander';
+
 import {analyzeCustomProperties} from './analyze-custom-properties';
 
 type LogLevel = 'verbose' | 'info' | 'error' | 'never';

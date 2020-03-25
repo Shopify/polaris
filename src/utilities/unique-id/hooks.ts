@@ -1,5 +1,7 @@
 import {useContext, useRef} from 'react';
+
 import {MissingAppProviderError} from '../errors';
+
 import {UniqueIdFactoryContext} from './context';
 
 /**

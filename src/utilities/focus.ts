@@ -1,4 +1,5 @@
 import {FOCUSABLE_SELECTOR} from '@shopify/javascript-utilities/focus';
+
 import {isElementInViewport} from './is-element-in-viewport';
 
 type Filter = (element: Element) => void;

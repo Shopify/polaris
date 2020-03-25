@@ -2,6 +2,7 @@ import * as React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Badge, DisplayText, Avatar} from 'components';
+
 import {Title} from '../Title';
 
 describe('<Title />', () => {

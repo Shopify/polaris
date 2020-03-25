@@ -6,6 +6,7 @@ import {
   ChevronDownMinor,
   CancelSmallMinor,
 } from '@shopify/polaris-icons';
+
 import {classNames} from '../../utilities/css';
 import {
   withAppProvider,
@@ -27,13 +28,12 @@ import {Focus} from '../Focus';
 import {Sheet} from '../Sheet';
 import {Stack} from '../Stack';
 import {Key} from '../../types';
-
 import {KeypressListener} from '../KeypressListener';
+
 import {
   ConnectedFilterControl,
   ConnectedFilterControlProps,
 } from './components';
-
 import styles from './Filters.scss';
 
 export interface AppliedFilterInterface {

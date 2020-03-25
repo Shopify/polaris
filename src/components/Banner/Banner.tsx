@@ -26,7 +26,6 @@ import {Heading} from '../Heading';
 import {ButtonGroup} from '../ButtonGroup';
 import {UnstyledLink} from '../UnstyledLink';
 import {Icon} from '../Icon';
-
 import {WithinContentContext} from '../../utilities/within-content-context';
 
 import styles from './Banner.scss';

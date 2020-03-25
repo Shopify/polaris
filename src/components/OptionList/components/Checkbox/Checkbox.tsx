@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {TickSmallMinor} from '@shopify/polaris-icons';
+
 import {classNames} from '../../../../utilities/css';
 import {useFeatures} from '../../../../utilities/features';
 import {useUniqueId} from '../../../../utilities/unique-id';

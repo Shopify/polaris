@@ -2,6 +2,7 @@ import React, {createRef} from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from '@material-ui/react-transition-group';
+
 import {FeaturesContext} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
@@ -20,13 +21,13 @@ import {
   ToastID,
   ToastPropsWithID,
 } from '../../utilities/frame';
+
 import {
   ToastManager,
   Loading,
   ContextualSaveBar,
   CSSAnimation,
 } from './components';
-
 import styles from './Frame.scss';
 
 export interface FrameProps {

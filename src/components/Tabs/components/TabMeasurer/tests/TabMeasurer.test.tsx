@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+
 import {TabMeasurer} from '../TabMeasurer';
 import {Tab} from '../../Tab';
 import {Item} from '../../Item';

@@ -1,14 +1,14 @@
 import React from 'react';
 import debounce from 'lodash/debounce';
+
 import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
-
 import {DisableableAction} from '../../../../types';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
 import {EventListener} from '../../../EventListener';
-import {Item} from './components';
 
+import {Item} from './components';
 import styles from './ConnectedFilterControl.scss';
 
 interface PopoverableAction extends DisableableAction {

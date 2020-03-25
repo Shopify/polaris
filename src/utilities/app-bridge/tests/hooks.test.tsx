@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {mountWithApp} from 'test-utilities';
+
 import {useAppBridge} from '../hooks';
 import {AppBridgeContext} from '../context';
 

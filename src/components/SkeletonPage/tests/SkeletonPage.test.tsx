@@ -8,6 +8,7 @@ import {
   DisplayText,
   SkeletonDisplayText,
 } from 'components';
+
 import {SkeletonPage} from '../SkeletonPage';
 
 describe('<SkeletonPage />', () => {

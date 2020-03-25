@@ -1,10 +1,10 @@
 import React, {useCallback, useEffect, useState, useRef} from 'react';
 import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
+
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import {useFeatures} from '../../../../utilities/features';
 import {useUniqueId} from '../../../../utilities/unique-id';
-
 import {Icon} from '../../../Icon';
 import {VisuallyHidden} from '../../../VisuallyHidden';
 

@@ -3,6 +3,7 @@ import {ImportMinor, ExportMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+
 import {ActionList} from '../ActionList';
 import {Badge} from '../../Badge';
 import {Item, Section} from '../components';
@@ -72,7 +73,7 @@ describe('<ActionList />', () => {
     });
   });
 
-  it('it passes actionRole to Section', () => {
+  it('passes actionRole to Section', () => {
     const actionList = mountWithAppProvider(
       <ActionList
         items={[{content: 'Add discount'}]}
@@ -125,7 +126,7 @@ describe('<ActionList />', () => {
     expect(actionList.find(Section).text()).toContain('File option');
   });
 
-  it('it renders an item with a badge', () => {
+  it('renders an item with a badge', () => {
     const actionList = mountWithAppProvider(
       <ActionList
         items={[

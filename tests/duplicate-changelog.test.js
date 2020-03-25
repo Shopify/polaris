@@ -1,15 +1,17 @@
 const fs = require('fs-extra');
 
-test('the latest release in CHANGELOG.md does not contain any entries currently in UNRELEASED.md', () => {
-  const changelogEntries = parseEntries(
-    fs.readFileSync('CHANGELOG.md', 'utf8').split('\n## ')[1],
-  );
-  const unreleasedEntries = parseEntries(
-    fs.readFileSync('UNRELEASED.md', 'utf8'),
-  );
+describe('CHANGELOG deduplication', () => {
+  it('the latest release in CHANGELOG.md does not contain any entries currently in UNRELEASED.md', () => {
+    const changelogEntries = parseEntries(
+      fs.readFileSync('CHANGELOG.md', 'utf8').split('\n## ')[1],
+    );
+    const unreleasedEntries = parseEntries(
+      fs.readFileSync('UNRELEASED.md', 'utf8'),
+    );
 
-  unreleasedEntries.forEach((unreleasedEntry) => {
-    expect(changelogEntries).not.toContain(unreleasedEntry);
+    unreleasedEntries.forEach((unreleasedEntry) => {
+      expect(changelogEntries).not.toContain(unreleasedEntry);
+    });
   });
 });
 

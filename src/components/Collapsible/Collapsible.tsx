@@ -5,6 +5,7 @@ import React, {
   ComponentClass,
 } from 'react';
 import {read} from '@shopify/javascript-utilities/fastdom';
+
 import {classNames} from '../../utilities/css';
 
 import styles from './Collapsible.scss';

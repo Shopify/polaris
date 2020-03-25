@@ -1,4 +1,6 @@
 declare module '@material-ui/react-transition-group' {
+  // Import order rule doesn't like doing asignment with require
+  // eslint-disable-next-line import/order
   import {Component} from 'react';
 
   import CSSTransitionNameSpace = require('react-transition-group/CSSTransition');

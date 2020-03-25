@@ -1,5 +1,6 @@
 import React from 'react';
 import {ExternalSmallMinor} from '@shopify/polaris-icons';
+
 import {useFeatures} from '../../utilities/features';
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';

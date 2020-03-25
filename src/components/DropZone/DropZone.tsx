@@ -34,9 +34,7 @@ import {useFeatures} from '../../utilities/features';
 
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
-
 import {fileAccepted, getDataTransferFiles} from './utils';
-
 import styles from './DropZone.scss';
 
 type Type = 'file' | 'image';

@@ -2,6 +2,7 @@ import React, {createRef} from 'react';
 import debounce from 'lodash/debounce';
 import {durationBase} from '@shopify/polaris-tokens';
 import {CSSTransition, Transition} from '@material-ui/react-transition-group';
+
 import {classNames} from '../../../../utilities/css';
 import {DisableableAction, Action, ActionListSection} from '../../../../types';
 import {ActionList} from '../../../ActionList';
@@ -14,6 +15,7 @@ import {
   WithAppProviderProps,
 } from '../../../../utilities/with-app-provider';
 import {CheckableButton} from '../CheckableButton';
+
 import {BulkActionButton} from './components';
 import styles from './BulkActions.scss';
 

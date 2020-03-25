@@ -5,6 +5,7 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import isEqual from 'lodash/isEqual';
+
 import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
 import {CSS_VAR_PREFIX} from '../../utilities';

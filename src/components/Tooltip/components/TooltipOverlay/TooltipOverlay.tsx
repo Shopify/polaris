@@ -6,7 +6,6 @@ import {
   PositionedOverlayProps,
   PositionedOverlay,
 } from '../../../PositionedOverlay';
-
 import styles from '../../Tooltip.scss';
 
 export interface TooltipOverlayProps {

@@ -1,5 +1,6 @@
 const {readFileSync} = require('fs');
 const {extname} = require('path');
+
 const {createFilter} = require('rollup-pluginutils');
 
 const MIME_TYPES = {

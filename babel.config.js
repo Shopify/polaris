@@ -1,4 +1,4 @@
-module.exports = function(api) {
+module.exports = function (api) {
   // When building (using rollup) or running storybook (using babel-loader) we
   // want to compile for the web otherwise compile for node usage (within jest)
   const isWeb = api.caller((caller = {}) => {

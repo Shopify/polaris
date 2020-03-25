@@ -4,8 +4,8 @@ import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
-import {NavigationContext} from '../../../context';
 
+import {NavigationContext} from '../../../context';
 import {Item, ItemProps} from '../Item';
 import {Secondary} from '../components';
 
@@ -264,10 +264,7 @@ describe('<Nav.Item />', () => {
         {location: 'bar'},
       );
 
-      item
-        .find(UnstyledLink)
-        .find('a')
-        .simulate('click');
+      item.find(UnstyledLink).find('a').simulate('click');
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
@@ -298,10 +295,7 @@ describe('<Nav.Item />', () => {
         <Item label="some label" url="foo" disabled={false} />,
         {...context},
       );
-      item
-        .find(UnstyledLink)
-        .find('a')
-        .simulate('click');
+      item.find(UnstyledLink).find('a').simulate('click');
       expect(context.onNavigationDismiss).toHaveBeenCalledTimes(1);
     });
 
@@ -326,11 +320,7 @@ describe('<Nav.Item />', () => {
         />,
         {...context},
       );
-      item
-        .find(UnstyledLink)
-        .last()
-        .find('a')
-        .simulate('click');
+      item.find(UnstyledLink).last().find('a').simulate('click');
       expect(context.onNavigationDismiss).toHaveBeenCalledTimes(1);
     });
   });
@@ -385,13 +375,7 @@ describe('<Nav.Item />', () => {
       },
     );
 
-    expect(
-      item
-        .find(Item)
-        .last()
-        .find(Badge)
-        .exists(),
-    ).toBe(true);
+    expect(item.find(Item).last().find(Badge).exists()).toBe(true);
   });
 
   describe('small screens', () => {

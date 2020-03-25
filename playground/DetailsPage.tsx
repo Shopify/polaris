@@ -12,6 +12,7 @@ import {
   DuplicateMinor,
   ViewMinor,
 } from '@shopify/polaris-icons';
+
 import {
   ActionList,
   Card,

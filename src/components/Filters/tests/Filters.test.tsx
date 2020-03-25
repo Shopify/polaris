@@ -244,19 +244,9 @@ describe('<Filters />', () => {
         .first();
 
       trigger(shortcut, 'onClick');
-      expect(
-        resourceFilters
-          .find(Popover)
-          .first()
-          .props().active,
-      ).toBe(true);
+      expect(resourceFilters.find(Popover).first().props().active).toBe(true);
       trigger(shortcut, 'onClick');
-      expect(
-        resourceFilters
-          .find(Popover)
-          .first()
-          .props().active,
-      ).toBe(false);
+      expect(resourceFilters.find(Popover).first().props().active).toBe(false);
     });
 
     it('receives the expected props when there are no shortcut filters', () => {
