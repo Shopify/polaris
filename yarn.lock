@@ -1668,10 +1668,10 @@
   resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-3.10.0.tgz#01fa32853c304c58d768209a74f88ac9d7a51098"
   integrity sha512-Y8cTtFwIfkUDlCHonCimSxPdHk9AE11PYsh9JqzTKLjsAv6p3De/JQR/gZfAifmAAhg0XBmaaV5K4Y6Z5J6xAw==
 
-"@shopify/polaris-tokens@^2.12.0":
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.12.0.tgz#3671afb17057659af91566f880b5d4faa7e1b9d6"
-  integrity sha512-C3UMaex8+6lcKfN5ivH1owmx37V9Y0H3iaXaptGyG7MSf64Tftk3zY38v6y+8QdpyUTrqV831DcN9uYWbJMRtQ==
+"@shopify/polaris-tokens@^2.12.2":
+  version "2.12.2"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.12.2.tgz#22bfdf6f9864364885135c333aa8dd2f161a093d"
+  integrity sha512-1avL28ie6WMiVd+NXEt8TAdUBhvTlKVlw2px9WoPZktXvS+ebwK+pce7piovzFfrd4WCHweATGn2S50kjl1uUw==
   dependencies:
     hsluv "^0.1.0"
     tslib "^1.10.0"
@@ -1703,12 +1703,12 @@
     "@shopify/ast-utilities" "^0.0.6"
     webpack-virtual-modules "^0.1.12"
 
-"@shopify/react-testing@^1.8.0":
-  version "1.8.6"
-  resolved "https://registry.yarnpkg.com/@shopify/react-testing/-/react-testing-1.8.6.tgz#910a90910d443812dba6f4067a7e55ff44fe4a14"
-  integrity sha512-9QagkYVOUiIjsHQG6yuGITUZErMDaKjpARPqSCa3tiIASZuRpNdXIy0B881zSWlKsVahV/u+8Z+uRl7bVL698w==
+"@shopify/react-testing@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/react-testing/-/react-testing-2.0.0.tgz#2224ca1fefebf8900f6b3e9f951ccc03a017b0bc"
+  integrity sha512-87e+RNfr8dzgXK4sk2r7RjbAonZqq0cqgFTg8Nl66erBd4RXV2VNfFiRR4DcVZpRaObwqa/rA8zvmUTvqANbyA==
   dependencies:
-    "@shopify/useful-types" "^2.1.2"
+    "@shopify/useful-types" "^2.1.4"
     jest-matcher-utils "^24.5.0"
     react-reconciler "^0.20.2"
 
@@ -1889,13 +1889,6 @@
   integrity sha512-BQw5KFuDm7aAH1bPECxnC1bPyaLSmZP0ecs0XwzKtgltBHWGvgu8dpqNXvY+sDfG5tnF+79EjiytRCOsTElyIg==
   dependencies:
     "@types/react" ">=16.4.0"
-    tslib "^1.9.3"
-
-"@shopify/useful-types@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@shopify/useful-types/-/useful-types-2.1.2.tgz#b489005c8ee72c0d22c89bb1114aca2aaf0059b4"
-  integrity sha512-2gBvMeY5J6nyJBm3mLZS+P4LOT3aVi0kE1OIYNfCbonr8jiWquBI4YqJ4n2nhG1rmSW1bizSe0xz0ZZXgfGkBg==
-  dependencies:
     tslib "^1.9.3"
 
 "@shopify/useful-types@^2.1.4":
@@ -2740,17 +2733,12 @@
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
 
-"@types/jest-diff@*":
-  version "20.0.1"
-  resolved "https://registry.yarnpkg.com/@types/jest-diff/-/jest-diff-20.0.1.tgz#35cc15b9c4f30a18ef21852e255fdb02f6d59b89"
-  integrity sha512-yALhelO3i0hqZwhjtcr6dYyaLoCHbAMshwtj6cGxTvHZAKXHsYGdff6E8EPw3xLKY0ELUTQ69Q1rQiJENnccMA==
-
 "@types/jest@^24.0.18":
-  version "24.0.19"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.19.tgz#f7036058d2a5844fe922609187c0ad8be430aff5"
-  integrity sha512-YYiqfSjocv7lk5H/T+v5MjATYjaTMsUkbDnjGqSMoO88jWdtJXJV4ST/7DKZcoMHMBvB2SeSfyOzZfkxXHR5xg==
+  version "24.9.1"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.9.1.tgz#02baf9573c78f1b9974a5f36778b366aa77bd534"
+  integrity sha512-Fb38HkXSVA4L8fGKEZ6le5bB8r6MRWlOCZbVuWZcmOMSCd2wCYOwN1ibj8daIoV9naq7aaOZjrLCoCMptKU/4Q==
   dependencies:
-    "@types/jest-diff" "*"
+    jest-diff "^24.3.0"
 
 "@types/json-schema@^7.0.3":
   version "7.0.3"
@@ -10525,7 +10513,7 @@ jest-config@^24.9.0:
     pretty-format "^24.9.0"
     realpath-native "^1.1.0"
 
-jest-diff@^24.9.0:
+jest-diff@^24.3.0, jest-diff@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-diff/-/jest-diff-24.9.0.tgz#931b7d0d5778a1baf7452cb816e325e3724055da"
   integrity sha512-qMfrTs8AdJE2iqrTp0hzh7kTd2PQWrsFyj9tORoKmu32xjPjeE4NyjVRDz8ybYwqS2ik8N4hsIpiVTyFeo2lBQ==
@@ -17845,10 +17833,15 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.7.2, typescript@~3.7.2:
+typescript@^3.7.2:
   version "3.7.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.3.tgz#b36840668a16458a7025b9eabfad11b66ab85c69"
   integrity sha512-Mcr/Qk7hXqFBXMN7p7Lusj1ktCBydylfQM/FZCk5glCNQJrCUKPkMHdo9R0MTFWsC/4kPFvDS0fDPvukfCkFsw==
+
+typescript@~3.8.3:
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.3.tgz#409eb8544ea0335711205869ec458ab109ee1061"
+  integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
 
 ua-parser-js@^0.7.18:
   version "0.7.19"
