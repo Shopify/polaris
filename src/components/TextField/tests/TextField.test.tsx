@@ -3,6 +3,7 @@ import React, {ReactElement} from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {InlineError, Labelled, Connected, Select} from 'components';
 import {mountWithApp} from 'test-utilities';
+
 import {Resizer, Spinner} from '../components';
 import {TextField} from '../TextField';
 
@@ -517,10 +518,7 @@ describe('<TextField />', () => {
             onChange={spy}
           />,
         );
-        element
-          .find('[role="button"]')
-          .first()
-          .simulate('click');
+        element.find('[role="button"]').first().simulate('click');
         expect(spy).toHaveBeenCalledWith('4', 'MyTextField');
       });
 
@@ -535,10 +533,7 @@ describe('<TextField />', () => {
             onChange={spy}
           />,
         );
-        element
-          .find('[role="button"]')
-          .last()
-          .simulate('click');
+        element.find('[role="button"]').last().simulate('click');
         expect(spy).toHaveBeenCalledWith('2', 'MyTextField');
       });
 
@@ -573,10 +568,7 @@ describe('<TextField />', () => {
             onChange={spy}
           />,
         );
-        element
-          .find('[role="button"]')
-          .first()
-          .simulate('click');
+        element.find('[role="button"]').first().simulate('click');
         expect(spy).toHaveBeenCalledWith('1', 'MyTextField');
       });
 
@@ -606,10 +598,7 @@ describe('<TextField />', () => {
             onChange={spy}
           />,
         );
-        element
-          .find('[role="button"]')
-          .first()
-          .simulate('click');
+        element.find('[role="button"]').first().simulate('click');
         expect(spy).toHaveBeenCalledWith('1.75', 'MyTextField');
       });
 
@@ -626,16 +615,10 @@ describe('<TextField />', () => {
           />,
         );
 
-        element
-          .find('[role="button"]')
-          .last()
-          .simulate('click');
+        element.find('[role="button"]').last().simulate('click');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
 
-        element
-          .find('[role="button"]')
-          .first()
-          .simulate('click');
+        element.find('[role="button"]').first().simulate('click');
         expect(spy).toHaveBeenLastCalledWith('3', 'MyTextField');
       });
 
@@ -652,16 +635,10 @@ describe('<TextField />', () => {
           />,
         );
 
-        element
-          .find('[role="button"]')
-          .first()
-          .simulate('click');
+        element.find('[role="button"]').first().simulate('click');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
 
-        element
-          .find('[role="button"]')
-          .last()
-          .simulate('click');
+        element.find('[role="button"]').last().simulate('click');
         expect(spy).toHaveBeenLastCalledWith('1', 'MyTextField');
       });
 
@@ -678,16 +655,10 @@ describe('<TextField />', () => {
           />,
         );
 
-        element
-          .find('[role="button"]')
-          .first()
-          .simulate('click');
+        element.find('[role="button"]').first().simulate('click');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
 
-        element
-          .find('[role="button"]')
-          .last()
-          .simulate('click');
+        element.find('[role="button"]').last().simulate('click');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
       });
 
@@ -704,16 +675,10 @@ describe('<TextField />', () => {
           />,
         );
 
-        element
-          .find('[role="button"]')
-          .first()
-          .simulate('click');
+        element.find('[role="button"]').first().simulate('click');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
 
-        element
-          .find('[role="button"]')
-          .last()
-          .simulate('click');
+        element.find('[role="button"]').last().simulate('click');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
       });
 
@@ -754,10 +719,7 @@ describe('<TextField />', () => {
             onChange={spy}
           />,
         );
-        element
-          .find('[role="button"]')
-          .first()
-          .simulate('click');
+        element.find('[role="button"]').first().simulate('click');
         expect(spy).toHaveBeenCalledWith('4.064', 'MyTextField');
       });
 
@@ -773,10 +735,7 @@ describe('<TextField />', () => {
             onChange={spy}
           />,
         );
-        element
-          .find('[role="button"]')
-          .last()
-          .simulate('click');
+        element.find('[role="button"]').last().simulate('click');
         expect(spy).toHaveBeenCalledWith('1.976', 'MyTextField');
       });
 
@@ -817,10 +776,7 @@ describe('<TextField />', () => {
           .find('[role="button"]')
           .last()
           .simulate('mousedown', {button: 0});
-        element
-          .find('[role="button"]')
-          .last()
-          .simulate('mouseup');
+        element.find('[role="button"]').last().simulate('mouseup');
 
         jest.runOnlyPendingTimers();
         expect(spy).not.toHaveBeenCalled();

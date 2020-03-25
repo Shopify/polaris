@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {classNames, variationName} from '../../utilities/css';
 
 import styles from './TextContainer.scss';

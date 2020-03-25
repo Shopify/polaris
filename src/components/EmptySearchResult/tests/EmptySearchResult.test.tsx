@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {DisplayText, TextStyle} from 'components';
+
 import {EmptySearchResult} from '../EmptySearchResult';
 import {emptySearch} from '../illustrations';
 

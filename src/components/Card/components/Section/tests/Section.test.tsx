@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Badge, Subheading, ButtonGroup, Button} from 'components';
+
 import {Section} from '../Section';
 
 describe('<Card.Section />', () => {

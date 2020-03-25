@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useRef} from 'react';
 import {mountWithApp} from 'test-utilities';
+
 import {
   useFocusManager,
   FocusManagerContext,

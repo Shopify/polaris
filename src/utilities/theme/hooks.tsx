@@ -1,5 +1,7 @@
 import {useContext} from 'react';
+
 import {MissingAppProviderError} from '../errors';
+
 import {ThemeContext} from './context';
 
 export function useTheme() {

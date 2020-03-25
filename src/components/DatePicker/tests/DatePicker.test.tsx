@@ -3,6 +3,7 @@ import {Weekdays} from '@shopify/javascript-utilities/dates';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+
 import {Day, Month, Weekday} from '../components';
 import {DatePicker} from '../DatePicker';
 
@@ -121,10 +122,7 @@ describe('<DatePicker />', () => {
         <DatePicker month={3} year={2018} />,
       );
       const dateObject = new Date('2018-04-01T00:00:00');
-      datePicker
-        .find(Day)
-        .first()
-        .simulate('focus');
+      datePicker.find(Day).first().simulate('focus');
       expect(datePicker.find(Month).prop('focusedDate')).toStrictEqual(
         dateObject,
       );
@@ -159,29 +157,16 @@ describe('<DatePicker />', () => {
       />,
     );
 
-    datePicker
-      .find(Day)
-      .first()
-      .simulate('click');
+    datePicker.find(Day).first().simulate('click');
 
-    expect(
-      datePicker
-        .find(Day)
-        .first()
-        .prop('focused'),
-    ).toBe(true);
+    expect(datePicker.find(Day).first().prop('focused')).toBe(true);
 
     datePicker.setProps({selected: new Date(2016, 11, 8)}).update();
 
-    expect(
-      datePicker
-        .find(Day)
-        .first()
-        .prop('focused'),
-    ).toBe(false);
+    expect(datePicker.find(Day).first().prop('focused')).toBe(false);
   });
 
-  it('it passes isLastSelectedDay to Day when there is a range', () => {
+  it('passes isLastSelectedDay to Day when there is a range', () => {
     const selected = {
       start: new Date(2016, 11, 8),
       end: new Date(2016, 11, 18),

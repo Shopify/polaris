@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
+
 import {Section} from '../components';
 import {Layout} from '../Layout';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import {createPortal} from 'react-dom';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+
 import {ThemeContext} from '../../utilities/theme';
 import {portal} from '../shared';
 

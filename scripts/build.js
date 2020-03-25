@@ -2,6 +2,7 @@
 
 const {execSync} = require('child_process');
 const {join, resolve: resolvePath} = require('path');
+
 const {ensureDirSync, writeFileSync, readFileSync} = require('fs-extra');
 const {rollup} = require('rollup');
 const {cp, mv, rm} = require('shelljs');

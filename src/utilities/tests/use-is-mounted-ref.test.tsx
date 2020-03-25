@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {mount} from 'test-utilities';
+
 import {useIsMountedRef} from '../use-is-mounted-ref';
 
 describe('useIsMountedRef', () => {

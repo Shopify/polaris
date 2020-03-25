@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
+
 import {useFrame} from '../../utilities/frame';
 import {useAppBridge} from '../../utilities/app-bridge';
 

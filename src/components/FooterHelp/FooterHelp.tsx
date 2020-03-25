@@ -1,9 +1,11 @@
 import React from 'react';
 import {QuestionMarkMajorTwotone, InfoMinor} from '@shopify/polaris-icons';
+
 import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
 import {IconProps} from '../../types';
 import {Icon} from '../Icon';
+
 import styles from './FooterHelp.scss';
 
 export interface FooterHelpProps {

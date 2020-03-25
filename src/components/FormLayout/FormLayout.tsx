@@ -1,4 +1,5 @@
 import React, {memo, NamedExoticComponent} from 'react';
+
 import {wrapWithComponent, isElementOfType} from '../../utilities/components';
 
 import {Group, Item} from './components';

@@ -4,7 +4,6 @@ import {classNames, variationName} from '../../utilities/css';
 import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
-
 import {Image} from '../Image';
 
 import styles from './Avatar.scss';

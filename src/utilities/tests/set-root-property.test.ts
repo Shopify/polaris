@@ -1,4 +1,5 @@
 import {documentHasStyle} from 'test-utilities';
+
 import {setRootProperty} from '../set-root-property';
 
 describe('setRootProperty', () => {

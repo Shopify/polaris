@@ -1,6 +1,8 @@
 import {useContext, useMemo, useEffect} from 'react';
+
 import {useUniqueId} from '../unique-id';
 import {MissingAppProviderError} from '../errors';
+
 import {FocusManagerContext} from './context';
 
 export function useFocusManager() {

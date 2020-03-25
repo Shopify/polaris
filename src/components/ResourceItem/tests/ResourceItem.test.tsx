@@ -14,6 +14,7 @@ import {
   UnstyledLink,
   Button,
 } from 'components';
+
 import {ResourceListContext} from '../../../utilities/resource-list';
 import {ResourceItem} from '../ResourceItem';
 
@@ -520,11 +521,7 @@ describe('<ResourceItem />', () => {
           <ResourceItem id={itemId} url={url} media={<Avatar customer />} />
         </ResourceListContext.Provider>,
       );
-      expect(
-        findByTestID(wrapper, 'Media')
-          .find(Avatar)
-          .exists(),
-      ).toBe(true);
+      expect(findByTestID(wrapper, 'Media').find(Avatar).exists()).toBe(true);
     });
 
     it('includes a <Thumbnail /> if one is provided', () => {
@@ -537,11 +534,9 @@ describe('<ResourceItem />', () => {
           />
         </ResourceListContext.Provider>,
       );
-      expect(
-        findByTestID(wrapper, 'Media')
-          .find(Thumbnail)
-          .exists(),
-      ).toBe(true);
+      expect(findByTestID(wrapper, 'Media').find(Thumbnail).exists()).toBe(
+        true,
+      );
     });
   });
 

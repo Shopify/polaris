@@ -1,4 +1,5 @@
 import {isVarFunction} from '../analyze-custom-properties';
+
 import {mockVarNode, mockPunctuation, mockArguments} from './fixtures';
 
 describe('isVarFunction', () => {

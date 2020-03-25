@@ -9,6 +9,7 @@ import {
   Loading as PolarisLoading,
   TrapFocus,
 } from 'components';
+
 import {Frame} from '../Frame';
 import {
   ContextualSaveBar as FrameContextualSavebar,
@@ -17,7 +18,7 @@ import {
 
 window.matchMedia =
   window.matchMedia ||
-  function() {
+  function () {
     return {
       matches: window.innerWidth <= 769,
       addListener() {},

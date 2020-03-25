@@ -2,12 +2,14 @@ import tokens from '@shopify/polaris-tokens';
 import {colorFactory} from '@shopify/polaris-tokens/dist-modern';
 import {mergeConfigs} from '@shopify/polaris-tokens/dist-modern/utils';
 import {config as base} from '@shopify/polaris-tokens/dist-modern/configs/base';
+
 import {HSLColor, HSLAColor} from '../color-types';
 import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
 import {isLight} from '../color-validation';
 import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
 import {compose} from '../compose';
+
 import {needsVariantList} from './config';
 import {ThemeConfig, Theme, CustomPropertiesLike, ColorScheme} from './types';
 

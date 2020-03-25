@@ -2,6 +2,7 @@ import React, {useState, useCallback} from 'react';
 import {mountWithApp} from 'test-utilities';
 import {PositionedOverlay} from 'components/PositionedOverlay';
 import {Portal} from 'components';
+
 import {Popover} from '../Popover';
 import {PopoverOverlay} from '../components';
 import * as setActivatorAttributes from '../set-activator-attributes';

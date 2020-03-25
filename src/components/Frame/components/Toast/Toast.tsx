@@ -5,7 +5,6 @@ import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
 import {ThemeProvider} from '../../../ThemeProvider';
-
 import {Icon} from '../../../Icon';
 import {KeypressListener} from '../../../KeypressListener';
 import {ToastProps} from '../../../../utilities/frame';

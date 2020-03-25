@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+
 import {Tab, Panel, TabMeasurer} from '../components';
 import {Tabs, TabsProps} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
@@ -117,12 +118,7 @@ describe('<Tabs />', () => {
       const wrapper = mountWithAppProvider(<Tabs {...mockProps} tabs={tabs} />);
 
       tabs.forEach((tab, index) => {
-        expect(
-          wrapper
-            .find(Tab)
-            .at(index)
-            .prop('id'),
-        ).toBe(tab.id);
+        expect(wrapper.find(Tab).at(index).prop('id')).toBe(tab.id);
       });
     });
 
@@ -136,12 +132,7 @@ describe('<Tabs />', () => {
       );
 
       panelIDedTabs.forEach((tab, index) => {
-        expect(
-          wrapper
-            .find(Tab)
-            .at(index)
-            .prop('panelID'),
-        ).toBe(tab.panelID);
+        expect(wrapper.find(Tab).at(index).prop('panelID')).toBe(tab.panelID);
       });
     });
 
@@ -149,10 +140,7 @@ describe('<Tabs />', () => {
       const wrapper = mountWithAppProvider(<Tabs {...mockProps} />);
 
       tabs.forEach((_, index) => {
-        const panelID = wrapper
-          .find(Tab)
-          .at(index)
-          .prop('panelID');
+        const panelID = wrapper.find(Tab).at(index).prop('panelID');
         expect(typeof panelID).toBe('string');
         expect(panelID).not.toBe('');
       });
@@ -168,12 +156,7 @@ describe('<Tabs />', () => {
       );
 
       urlTabs.forEach((tab, index) => {
-        expect(
-          wrapper
-            .find(Tab)
-            .at(index)
-            .prop('url'),
-        ).toStrictEqual(tab.url);
+        expect(wrapper.find(Tab).at(index).prop('url')).toStrictEqual(tab.url);
       });
     });
 
@@ -188,10 +171,7 @@ describe('<Tabs />', () => {
 
       labelledTabs.forEach((tab, index) => {
         expect(
-          wrapper
-            .find(Tab)
-            .at(index)
-            .prop('accessibilityLabel'),
+          wrapper.find(Tab).at(index).prop('accessibilityLabel'),
         ).toStrictEqual(tab.accessibilityLabel);
       });
     });
@@ -206,12 +186,9 @@ describe('<Tabs />', () => {
       );
 
       tabsWithContent.forEach((tab, index) => {
-        expect(
-          wrapper
-            .find(Tab)
-            .at(index)
-            .prop('children'),
-        ).toStrictEqual(tab.content);
+        expect(wrapper.find(Tab).at(index).prop('children')).toStrictEqual(
+          tab.content,
+        );
       });
     });
   });
@@ -304,11 +281,7 @@ describe('<Tabs />', () => {
       const wrapper = mountWithAppProvider(
         <Tabs {...mockProps} onSelect={spy} />,
       );
-      wrapper
-        .find(Tab)
-        .at(1)
-        .find('button')
-        .simulate('click');
+      wrapper.find(Tab).at(1).find('button').simulate('click');
       expect(spy).toHaveBeenCalledWith(1);
     });
   });

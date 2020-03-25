@@ -1,4 +1,5 @@
 import React, {useRef, useState, useCallback} from 'react';
+
 import {Button} from '../../../../../Button';
 import {Popover} from '../../../../../Popover';
 import {Select} from '../../../../../Select';
@@ -6,7 +7,6 @@ import {FormLayout} from '../../../../../FormLayout';
 import {Form} from '../../../../../Form';
 import {useToggle} from '../../../../../../utilities/use-toggle';
 import {useI18n} from '../../../../../../utilities/i18n';
-
 import {FilterValueSelector} from '../FilterValueSelector';
 import {AppliedFilter, Filter, Operator} from '../../types';
 

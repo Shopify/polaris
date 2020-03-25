@@ -4,8 +4,8 @@ import {PlusMinor, CaretDownMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {UnstyledLink, Icon, Spinner, ActionList, Popover} from 'components';
-import {Button} from '../Button';
 
+import {Button} from '../Button';
 import en from '../../../../locales/en.json';
 
 describe('<Button />', () => {

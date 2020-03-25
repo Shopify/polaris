@@ -4,7 +4,6 @@ import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {ActionListSection, ActionListItemDescriptor} from '../../../../types';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
-
 import {ActionList} from '../../../ActionList';
 import {Button} from '../../../Button';
 import {Popover} from '../../../Popover';

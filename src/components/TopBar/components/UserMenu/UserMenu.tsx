@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {IconableAction} from '../../../../types';
 import {Avatar, AvatarProps} from '../../../Avatar';
 import {MessageIndicator} from '../../../MessageIndicator';

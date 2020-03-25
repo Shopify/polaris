@@ -1,4 +1,5 @@
 import {handleMessage} from '../analyze-custom-properties';
+
 import {mockCustomProperties, mockCustomPropertyErrors} from './fixtures';
 
 describe('handleMessage', () => {

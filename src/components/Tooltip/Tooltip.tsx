@@ -4,6 +4,7 @@ import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {Portal} from '../Portal';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
+
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
 

@@ -16,7 +16,6 @@ import {
   PositionedOverlay,
   PositionedOverlayProps,
 } from '../../../PositionedOverlay';
-
 import {Pane, PaneProps} from '../Pane';
 import styles from '../../Popover.scss';
 

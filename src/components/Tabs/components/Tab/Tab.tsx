@@ -5,7 +5,6 @@ import {classNames} from '../../../../utilities/css';
 import {useFeatures} from '../../../../utilities/features';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
-
 import styles from '../../Tabs.scss';
 
 export interface TabProps {

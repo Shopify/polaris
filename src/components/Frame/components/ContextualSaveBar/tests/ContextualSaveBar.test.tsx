@@ -3,6 +3,7 @@ import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Button, Image, ThemeProvider} from 'components';
 import {mountWithApp} from 'test-utilities';
+
 import {ContextualSaveBar} from '../ContextualSaveBar';
 import {DiscardConfirmationModal} from '../components';
 

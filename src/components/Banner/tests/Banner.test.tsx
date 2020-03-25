@@ -16,7 +16,9 @@ import {mountWithApp} from 'test-utilities/react-testing';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {BannerContext} from 'utilities/banner-context';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
+
 import {WithinContentContext} from '../../../utilities/within-content-context';
+
 import {Banner} from '..';
 
 describe('<Banner />', () => {
@@ -207,10 +209,7 @@ describe('<Banner />', () => {
         </Banner>,
       );
 
-      const div = banner
-        .find(Child)
-        .find('div')
-        .first();
+      const div = banner.find(Child).find('div').first();
 
       expect(div.exists()).toBe(true);
     });

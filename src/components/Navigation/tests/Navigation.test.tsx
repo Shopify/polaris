@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+
 import {Navigation} from '../Navigation';
 import {NavigationContext} from '../context';
 import {Image} from '../../Image';
@@ -33,10 +34,7 @@ describe('<Navigation />', () => {
         </NavigationContext.Provider>,
       );
 
-      const div = navigation
-        .find(Child)
-        .find('div')
-        .first();
+      const div = navigation.find(Child).find('div').first();
 
       expect(div.exists()).toBe(true);
     });

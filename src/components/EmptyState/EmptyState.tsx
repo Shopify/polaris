@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
+
 import {classNames} from '../../utilities/css';
 import {WithinContentContext} from '../../utilities/within-content-context';
-
 import {Action} from '../../types';
 import {Image} from '../Image';
 import {buttonFrom} from '../Button';

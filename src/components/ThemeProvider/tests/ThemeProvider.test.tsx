@@ -1,5 +1,6 @@
 import React from 'react';
 import {createMount} from 'test-utilities';
+
 import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext, useTheme} from '../../../utilities/theme';
 import {FeaturesContext} from '../../../utilities/features';

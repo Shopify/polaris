@@ -1,7 +1,7 @@
 import React from 'react';
-
 import debounce from 'lodash/debounce';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
+
 import {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
 import {Button} from '../Button';
@@ -31,7 +31,6 @@ import {
   FilterControl,
   FilterControlProps,
 } from './components';
-
 import styles from './ResourceList.scss';
 
 export {FilterControlProps};

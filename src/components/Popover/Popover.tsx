@@ -5,6 +5,7 @@ import React, {
   useState,
   AriaAttributes,
 } from 'react';
+
 import {
   findFirstFocusableNode,
   focusNextFocusableNode,
@@ -12,6 +13,7 @@ import {
 import {Portal} from '../Portal';
 import {portal} from '../shared';
 import {useUniqueId} from '../../utilities/unique-id';
+
 import {
   PopoverCloseSource,
   Pane,

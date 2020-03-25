@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'test-utilities';
+
 import {Slidable} from '../Slidable';
 
 describe('<Slidable />', () => {

@@ -1,5 +1,6 @@
 import {ClientApplication} from '@shopify/app-bridge';
 import {Button, ButtonGroup, Redirect} from '@shopify/app-bridge/actions';
+
 import {generateRedirect, transformActions} from '../app-bridge-transformers';
 
 function noop() {}

@@ -4,6 +4,7 @@ import {QuestionMarkMajorTwotone} from '@shopify/polaris-icons';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Icon} from 'components';
+
 import {FooterHelp} from '../FooterHelp';
 
 describe('<FooterHelp />', () => {

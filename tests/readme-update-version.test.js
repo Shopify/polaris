@@ -1,4 +1,5 @@
 const fs = require('fs-extra');
+
 const {semverRegExp, readmes} = require('../scripts/utilities');
 
 describe('readme-update-version', () => {

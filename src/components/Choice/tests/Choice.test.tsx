@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {InlineError} from 'components';
+
 import {Choice} from '../Choice';
 
 describe('<Choice />', () => {

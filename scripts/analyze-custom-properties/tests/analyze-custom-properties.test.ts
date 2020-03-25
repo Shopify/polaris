@@ -1,4 +1,5 @@
 import glob from 'glob';
+
 import {analyzeCustomProperties} from '../analyze-custom-properties';
 
 jest.mock('glob', () => ({

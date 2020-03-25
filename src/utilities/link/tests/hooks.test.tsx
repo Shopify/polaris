@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {mountWithApp} from 'test-utilities';
+
 import {useLink} from '../hooks';
 import {LinkContext} from '../context';
 

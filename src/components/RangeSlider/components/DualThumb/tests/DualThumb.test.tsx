@@ -6,6 +6,7 @@ import {
   ReactWrapper,
 } from 'test-utilities/legacy';
 import {Key} from 'types';
+
 import {DualThumb, DualThumbProps} from '../DualThumb';
 import {FeaturesContext} from '../../../../../utilities/features';
 
@@ -909,9 +910,7 @@ describe('<DualThumb />', () => {
       } as TouchEventInit);
       Object.assign(event, {preventDefault: noop});
 
-      findTrack(component)
-        .getDOMNode()
-        .dispatchEvent(event);
+      findTrack(component).getDOMNode().dispatchEvent(event);
     }
 
     function moveLowerThumb(

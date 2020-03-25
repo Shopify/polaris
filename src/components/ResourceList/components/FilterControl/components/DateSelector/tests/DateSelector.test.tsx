@@ -2,6 +2,7 @@ import React from 'react';
 import {DatePicker, Select, TextField} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
+
 import {
   DateSelector,
   DateSelectorProps,

@@ -1,4 +1,5 @@
 import {clamp} from '@shopify/javascript-utilities/math';
+
 import {HSLColor, HSBColor} from './color-types';
 
 export function lightenColor(color: HSLColor | string, lighten = 0) {

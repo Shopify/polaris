@@ -1,5 +1,6 @@
 import React from 'react';
 import {getRectForNode} from '@shopify/javascript-utilities/geometry';
+
 import {
   WithAppProviderProps,
   withAppProvider,

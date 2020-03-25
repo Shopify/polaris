@@ -3,6 +3,7 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Checkbox} from 'components';
+
 import {CheckableButton} from '../CheckableButton';
 import {Key} from '../../../../../types';
 
@@ -31,12 +32,7 @@ describe('<CheckableButton />', () => {
       const element = mountWithAppProvider(
         <CheckableButton {...CheckableButtonProps} />,
       );
-      expect(
-        element
-          .find('span')
-          .last()
-          .text(),
-      ).toStrictEqual(label);
+      expect(element.find('span').last().text()).toStrictEqual(label);
     });
   });
 
@@ -46,12 +42,9 @@ describe('<CheckableButton />', () => {
       const element = mountWithAppProvider(
         <CheckableButton {...CheckableButtonProps} />,
       );
-      expect(
-        element
-          .find(Checkbox)
-          .first()
-          .prop('label'),
-      ).toStrictEqual(accessibilityLabel);
+      expect(element.find(Checkbox).first().prop('label')).toStrictEqual(
+        accessibilityLabel,
+      );
     });
 
     describe('disabled', () => {
@@ -60,12 +53,9 @@ describe('<CheckableButton />', () => {
         const element = mountWithAppProvider(
           <CheckableButton {...CheckableButtonProps} />,
         );
-        expect(
-          element
-            .find(Checkbox)
-            .first()
-            .prop('disabled'),
-        ).toStrictEqual(disabled);
+        expect(element.find(Checkbox).first().prop('disabled')).toStrictEqual(
+          disabled,
+        );
       });
     });
   });
@@ -76,10 +66,7 @@ describe('<CheckableButton />', () => {
       const element = mountWithAppProvider(
         <CheckableButton {...CheckableButtonProps} onToggleAll={spy} />,
       );
-      element
-        .find('div')
-        .first()
-        .simulate('click');
+      element.find('div').first().simulate('click');
       expect(spy).toHaveBeenCalled();
     });
 
@@ -88,12 +75,9 @@ describe('<CheckableButton />', () => {
       const element = mountWithAppProvider(
         <CheckableButton {...CheckableButtonProps} onToggleAll={spy} />,
       );
-      element
-        .find(Checkbox)
-        .first()
-        .simulate('click', {
-          keyCode: Key.Space,
-        });
+      element.find(Checkbox).first().simulate('click', {
+        keyCode: Key.Space,
+      });
       expect(spy).toHaveBeenCalled();
     });
   });

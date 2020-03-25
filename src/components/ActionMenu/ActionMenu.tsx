@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {classNames} from '../../utilities/css';
 import {
   ActionListSection,
@@ -8,7 +9,6 @@ import {
 
 import {sortAndOverrideActionOrder} from './utilities';
 import {MenuAction, MenuGroup, RollupActions} from './components';
-
 import styles from './ActionMenu.scss';
 
 export interface ActionMenuProps {

@@ -17,8 +17,8 @@ import {Button} from '../Button';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useFeatures} from '../../utilities/features';
-import {monthName} from './utilities';
 
+import {monthName} from './utilities';
 import {Month} from './components';
 import styles from './DatePicker.scss';
 

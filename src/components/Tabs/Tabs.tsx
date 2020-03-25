@@ -1,20 +1,18 @@
 import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import {classNames} from '../../utilities/css';
 
+import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {Popover} from '../Popover';
-
 import {FeaturesContext} from '../../utilities/features';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
+
 import {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
-
 import {List, Panel, Tab, TabMeasurer, TabMeasurerProps} from './components';
-
 import styles from './Tabs.scss';
 
 export interface TabsProps {

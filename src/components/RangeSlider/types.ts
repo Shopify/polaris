@@ -1,5 +1,4 @@
 import {LabelledProps} from '../Labelled';
-
 import {Error} from '../../types';
 
 export type DualValue = [number, number];
