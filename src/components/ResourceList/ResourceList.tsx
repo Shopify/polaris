@@ -33,7 +33,7 @@ import {
 } from './components';
 import styles from './ResourceList.scss';
 
-export {FilterControlProps};
+export type {FilterControlProps};
 
 const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;

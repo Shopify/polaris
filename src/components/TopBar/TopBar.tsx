@@ -24,7 +24,7 @@ import {
 } from './components';
 import styles from './TopBar.scss';
 
-export {UserMenuProps, SearchFieldProps};
+export type {UserMenuProps, SearchFieldProps};
 
 export interface TopBarProps {
   /** Toggles whether or not a navigation component has been provided. Controls the presence of the mobile nav toggle button */

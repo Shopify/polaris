@@ -6,6 +6,7 @@
     "declarationDir": "types",
     "declarationMap": false,
     "jsx": "react-native",
+    "isolatedModules": true,
     // strictFunctionTypes is implictly enabled by strict mode but
     // we're not yet compliant, so disable for now
     "strictFunctionTypes": false,

@@ -22,7 +22,8 @@ import {monthName} from './utilities';
 import {Month} from './components';
 import styles from './DatePicker.scss';
 
-export {Range, Months, Year};
+export {Months};
+export type {Range, Year};
 
 export interface DatePickerProps {
   /** ID for the element */

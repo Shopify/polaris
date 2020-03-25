@@ -15,7 +15,7 @@ import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 import {DataTableState, SortDirection, VerticalAlign} from './types';
 import styles from './DataTable.scss';
 
-export {SortDirection};
+export type {SortDirection};
 
 type CombinedProps = DataTableProps & WithAppProviderProps;
 export type TableRow =

@@ -11,7 +11,7 @@ import {ToastProps} from '../../../../utilities/frame';
 
 import styles from './Toast.scss';
 
-export {ToastProps};
+export type {ToastProps};
 
 export const DEFAULT_TOAST_DURATION = 5000;
 
