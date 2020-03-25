@@ -5,6 +5,7 @@ import {analyzeCustomProperties} from '../analyze-custom-properties';
 jest.mock('glob', () => ({
   __esModule: true,
   default: jest.fn((_a, _b, cb) =>
+    // eslint-disable-next-line node/no-callback-literal
     cb(false, ['scripts/analyze-custom-properties/tests/fixtures.scss']),
   ),
 }));
@@ -39,6 +40,7 @@ describe('analyzeCustomProperties', () => {
   });
 
   it(`catches errors rather than throwing`, async () => {
+    // eslint-disable-next-line node/no-callback-literal
     globSpy.mockImplementationOnce((_a, _b, cb) => cb(true, []));
     let error = false;
     await analyzeCustomProperties({}).catch((err) => {
