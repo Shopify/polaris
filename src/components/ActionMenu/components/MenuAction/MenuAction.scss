@@ -53,6 +53,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
     cursor: default;
     pointer-events: none;
 
+    // stylelint-disable-next-line selector-max-class
     .IconWrapper {
       @include recolor-icon(color('ink', 'lightest'));
     }
@@ -81,17 +82,19 @@ $difference-between-touch-area-and-backdrop: control-height() -
       background: var(--p-action-secondary-pressed);
     }
 
+    // stylelint-disable-next-line selector-max-class
     &.disabled {
       color: var(--p-text-disabled);
       cursor: default;
       pointer-events: none;
 
-      // stylelint-disable-next-line selector-max-specificity
+      // stylelint-disable-next-line selector-max-specificity, selector-max-class
       .IconWrapper {
         @include recolor-icon(var(--p-icon-disabled));
       }
     }
 
+    // stylelint-disable-next-line selector-max-class
     .IconWrapper {
       @include recolor-icon(--p-icon);
     }
@@ -101,7 +104,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
     &:active {
       color: var(--p-text);
 
-      // stylelint-disable-next-line selector-max-specificity
+      // stylelint-disable-next-line selector-max-specificity, selector-max-class
       .IconWrapper {
         @include recolor-icon(var(--p-icon));
       }

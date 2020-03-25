@@ -33,7 +33,7 @@ $stacking-order: (
   }
 
   .Input:focus {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
+    // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, selector-max-class
     ~ .Backdrop {
       @include focus-ring($style: 'focused');
     }

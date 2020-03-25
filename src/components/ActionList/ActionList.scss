@@ -173,6 +173,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     color: color('ink', 'lightest');
     pointer-events: none;
 
+    // stylelint-disable-next-line selector-max-class
     .Image {
       @include recolor-icon(color('ink', 'lightest'), color('white'));
     }

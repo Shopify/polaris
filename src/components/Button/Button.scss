@@ -247,6 +247,7 @@ $stacking-order: (
 .destructive.outline {
   @include button-outline(color('red'));
 
+  // stylelint-disable-next-line selector-max-class
   &.pressed {
     @include button-outline(
       color('red', 'dark'),
@@ -345,10 +346,12 @@ $stacking-order: (
     @include high-contrast-button-outline;
   }
 
+  // stylelint-disable-next-line selector-max-class
   &.pressed > .Content {
     @include plain-button-backdrop(rgba(color('ink', 'lighter'), 0.1));
   }
 
+  // stylelint-disable-next-line selector-max-class
   &.pressed:hover:not(.iconOnly) > .Content,
   &.pressed:active:not(.iconOnly) > .Content,
   &:focus:not(.iconOnly) > .Content {
@@ -400,6 +403,7 @@ $stacking-order: (
       display: none;
     }
 
+    // stylelint-disable-next-line selector-max-class
     &.disabled {
       @include recolor-icon(color('sky', 'dark'));
     }
@@ -616,6 +620,7 @@ $stacking-order: (
       color: currentColor;
     }
 
+    // stylelint-disable selector-max-class
     &.disabled {
       color: currentColor;
       @include recolor-icon(currentColor);
@@ -634,6 +639,7 @@ $stacking-order: (
         @include recolor-icon(currentColor);
       }
     }
+    // stylelint-enable selector-max-class
   }
 
   &.plain {
@@ -666,6 +672,7 @@ $stacking-order: (
       z-index: 0;
     }
 
+    // stylelint-disable-next-line selector-max-class
     &.pressed {
       background: transparent;
       box-shadow: none;

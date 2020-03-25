@@ -30,6 +30,7 @@ $stacking-order: (
   }
 
   &.newDesignLanguage {
+    // stylelint-disable-next-line selector-max-class
     .Backdrop {
       border-color: var(--p-border-disabled);
       // stylelint-disable-next-line selector-max-class, selector-max-specificity
@@ -118,21 +119,21 @@ $stacking-order: (
   }
 
   &.error {
-    // stylelint-disable-next-line selector-max-specificity
+    // stylelint-disable-next-line selector-max-specificity, selector-max-class
     .Backdrop {
       @include control-backdrop(error);
     }
 
     // Need to override the higher specificity of the sibling selector
     // so that errors still have red borders.
-    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
+    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity, selector-max-class
     .Input:focus ~ .Backdrop {
       @include control-backdrop(focused-error);
     }
   }
 
   &.disabled {
-    // stylelint-disable-next-line selector-max-specificity
+    // stylelint-disable-next-line selector-max-specificity, selector-max-class
     .Backdrop {
       @include control-backdrop(disabled);
     }
@@ -140,7 +141,7 @@ $stacking-order: (
 
   // stylelint-disable-next-line selector-max-specificity
   .Input:focus {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
+    // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, selector-max-class
     ~ .Backdrop {
       @include control-backdrop(focused);
     }
@@ -166,6 +167,7 @@ $stacking-order: (
   }
 
   &.error {
+    // stylelint-disable-next-line selector-max-class
     .Backdrop {
       border-color: var(--p-border-critical);
       background-color: var(--p-surface-critical);
@@ -178,14 +180,14 @@ $stacking-order: (
 
     // Need to override the higher specificity of the sibling selector
     // so that errors still have red borders.
-    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
+    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity, selector-max-class
     .Input:focus ~ .Backdrop {
       @include focus-ring($style: 'focused');
     }
   }
 
   .Input:focus {
-    // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
+    // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, selector-max-class
     ~ .Backdrop {
       @include focus-ring($style: 'focused');
     }
