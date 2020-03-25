@@ -157,47 +157,15 @@ export function Header({
   );
 
   if (newDesignLanguage) {
-    //
-    //    Header Layout
-    // |----------------------------------------------------|
-    // | slot1 | slot2 |                    | slot3 | slot4 |
-    // |----------------------------------------------------|
-    // | slot5 |                                    | slot6 |
-    // |----------------------------------------------------|
-
-    const slot1 = breadcrumbMarkup;
-    let slot2: MaybeJSX = null;
-    let slot3: MaybeJSX = null;
-    let slot4: MaybeJSX = null;
-    let slot5: MaybeJSX = null;
-    let slot6: MaybeJSX = null;
-
-    const maxEmsMobile = 8;
-    const maxEmsDesktop = 20;
-
-    if (isNavigationCollapsed) {
-      slot3 = actionMenuMarkup;
-      slot4 = primaryActionMarkup;
-      if (breadcrumbMarkup == null && title && title.length <= maxEmsMobile) {
-        slot2 = pageTitleMarkup;
-      } else {
-        slot5 = pageTitleMarkup;
-      }
-    } else {
-      slot2 = pageTitleMarkup;
-      if (
-        paginationMarkup == null &&
-        actionMenuMarkup == null &&
-        title &&
-        title.length <= maxEmsDesktop
-      ) {
-        slot4 = primaryActionMarkup;
-      } else {
-        slot4 = paginationMarkup;
-        slot5 = actionMenuMarkup;
-        slot6 = primaryActionMarkup;
-      }
-    }
+    const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
+      breadcrumbMarkup,
+      pageTitleMarkup,
+      paginationMarkup,
+      actionMenuMarkup,
+      primaryActionMarkup,
+      title,
+      isNavigationCollapsed,
+    });
 
     return (
       <div className={headerClassNames}>
@@ -275,4 +243,94 @@ function shouldShowIconOnly(
 
 function notNull(value: any) {
   return value != null;
+}
+
+function determineLayout({
+  breadcrumbMarkup,
+  pageTitleMarkup,
+  title,
+  paginationMarkup,
+  actionMenuMarkup,
+  primaryActionMarkup,
+  isNavigationCollapsed,
+}: {
+  breadcrumbMarkup: MaybeJSX;
+  pageTitleMarkup: JSX.Element;
+  title?: string;
+  paginationMarkup: MaybeJSX;
+  actionMenuMarkup: MaybeJSX;
+  primaryActionMarkup: MaybeJSX;
+  isNavigationCollapsed: boolean;
+}) {
+  const shortTitle = 20;
+  const reallyShortTitle = 8;
+
+  //    Header Layout
+  // |----------------------------------------------------|
+  // | slot1 | slot2 |                    | slot3 | slot4 |
+  // |----------------------------------------------------|
+  // | slot5 |                                    | slot6 |
+  // |----------------------------------------------------|
+  //
+  const layouts = {
+    mobileCompact: {
+      slots: {
+        slot1: null,
+        slot2: pageTitleMarkup,
+        slot3: actionMenuMarkup,
+        slot4: primaryActionMarkup,
+        slot5: null,
+        slot6: null,
+      },
+      condition:
+        isNavigationCollapsed &&
+        breadcrumbMarkup == null &&
+        title != null &&
+        title.length <= reallyShortTitle,
+    },
+    mobileDefault: {
+      slots: {
+        slot1: breadcrumbMarkup,
+        slot2: null,
+        slot3: actionMenuMarkup,
+        slot4: primaryActionMarkup,
+        slot5: pageTitleMarkup,
+        slot6: null,
+      },
+      condition: isNavigationCollapsed,
+    },
+    desktopCompact: {
+      slots: {
+        slot1: breadcrumbMarkup,
+        slot2: pageTitleMarkup,
+        slot3: null,
+        slot4: primaryActionMarkup,
+        slot5: null,
+        slot6: null,
+      },
+      condition:
+        !isNavigationCollapsed &&
+        paginationMarkup == null &&
+        actionMenuMarkup == null &&
+        title != null &&
+        title.length <= shortTitle,
+    },
+    desktopDefault: {
+      slots: {
+        slot1: breadcrumbMarkup,
+        slot2: pageTitleMarkup,
+        slot3: null,
+        slot4: paginationMarkup,
+        slot5: actionMenuMarkup,
+        slot6: primaryActionMarkup,
+      },
+      condition: !isNavigationCollapsed,
+    },
+  };
+
+  const layout =
+    Object.values(layouts).find((layout) => layout.condition) ||
+    layouts.desktopDefault;
+
+  return layout.slots;
 }
