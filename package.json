@@ -162,6 +162,7 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^4.2.3",
     "rollup-pluginutils": "^2.8.2",
+    "sass-loader": "^8.0.0",
     "scss-parser": "^1.0.3",
     "semver": "^6.3.0",
     "serve": "^11.1.0",

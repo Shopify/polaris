@@ -89,9 +89,10 @@ module.exports = {
             loader: 'css-loader',
             query: {
               sourceMap: false,
-              modules: true,
               importLoaders: 1,
-              localIdentName: '[name]-[local]_[hash:base64:5]',
+              modules: {
+                localIdentName: '[name]-[local]_[hash:base64:5]',
+              },
             },
           },
           {
