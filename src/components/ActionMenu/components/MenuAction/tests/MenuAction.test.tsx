@@ -119,24 +119,4 @@ describe('<MenuAction />', () => {
       expect(onActionSpy).toHaveBeenCalledTimes(1);
     });
   });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const menuAction = mountWithApp(<MenuAction />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(menuAction).toContainReactComponent('button', {
-        className: 'MenuAction newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const menuAction = mountWithApp(<MenuAction />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(menuAction).toContainReactComponent('button', {
-        className: 'MenuAction',
-      });
-    });
-  });
 });
