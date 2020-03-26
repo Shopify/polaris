@@ -6,10 +6,10 @@ import {
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../types';
-
 import {FeaturesContext} from '../../utilities/features';
 import {Button} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
+
 import {sortAndOverrideActionOrder} from './utilities';
 import {MenuAction, MenuGroup, RollupActions} from './components';
 import styles from './ActionMenu.scss';

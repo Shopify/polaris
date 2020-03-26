@@ -6,8 +6,8 @@ import {
   trigger,
   ReactWrapper,
 } from 'test-utilities/legacy';
-
 import {Popover, ActionList, Button} from 'components';
+
 import {MenuAction} from '../../MenuAction';
 import {MenuGroup} from '../MenuGroup';
 

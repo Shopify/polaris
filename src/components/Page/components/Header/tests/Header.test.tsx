@@ -249,24 +249,16 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(<Header title="Hello, world!" />, {
         features: {newDesignLanguage: true},
       });
-      expect(
-        header
-          .find('div')
-          .first()
-          .prop('className'),
-      ).toBe('Header newDesignLanguage');
+      expect(header.find('div').first().prop('className')).toBe(
+        'Header newDesignLanguage',
+      );
     });
 
     it('does not add a newDesignLanguage class if disabled', () => {
       const header = mountWithAppProvider(<Header title="Hello, world!" />, {
         features: {newDesignLanguage: false},
       });
-      expect(
-        header
-          .find('div')
-          .first()
-          .prop('className'),
-      ).toBe('Header');
+      expect(header.find('div').first().prop('className')).toBe('Header');
     });
 
     it('removes primary and secondary action wrapper divs', () => {
