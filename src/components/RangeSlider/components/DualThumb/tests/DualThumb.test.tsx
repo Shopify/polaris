@@ -6,7 +6,9 @@ import {
   ReactWrapper,
 } from 'test-utilities/legacy';
 import {Key} from 'types';
+
 import {DualThumb, DualThumbProps} from '../DualThumb';
+import {FeaturesContext} from '../../../../../utilities/features';
 
 describe('<DualThumb />', () => {
   const mockProps: DualThumbProps = {
@@ -20,6 +22,28 @@ describe('<DualThumb />', () => {
     onChange: noop,
     label: 'Dual thumb range slider',
   };
+
+  it('has a different track width and left value when the design system is used', () => {
+    const dualThumbWithDesignLanguage = mountWithAppProvider(
+      <FeaturesContext.Provider value={{newDesignLanguage: true}}>
+        <DualThumb {...mockProps} />
+      </FeaturesContext.Provider>,
+    );
+
+    const dualThumbWithoutDesignLanguage = mountWithAppProvider(
+      <DualThumb {...mockProps} />,
+    );
+
+    const stateWithDesignLanguage = dualThumbWithDesignLanguage.state();
+    const stateWithoutDesignLanguage = dualThumbWithoutDesignLanguage.state();
+
+    expect(stateWithDesignLanguage.trackWidth).not.toStrictEqual(
+      stateWithoutDesignLanguage.trackWidth,
+    );
+    expect(stateWithDesignLanguage.trackLeft).not.toStrictEqual(
+      stateWithoutDesignLanguage.trackLeft,
+    );
+  });
 
   describe('id', () => {
     it('is used on the lower thumb', () => {
@@ -886,9 +910,7 @@ describe('<DualThumb />', () => {
       } as TouchEventInit);
       Object.assign(event, {preventDefault: noop});
 
-      findTrack(component)
-        .getDOMNode()
-        .dispatchEvent(event);
+      findTrack(component).getDOMNode().dispatchEvent(event);
     }
 
     function moveLowerThumb(

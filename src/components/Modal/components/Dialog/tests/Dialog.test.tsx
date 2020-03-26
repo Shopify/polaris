@@ -3,6 +3,7 @@ import {animationFrame} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
 import {KeypressListener} from 'components';
+
 import {Dialog} from '../Dialog';
 
 describe('<Dialog>', () => {

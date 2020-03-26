@@ -2,13 +2,15 @@ import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+
 import {Toast} from '../../Toast';
 import {Frame} from '../../../Frame';
+
 import {ToastManager} from '..';
 
 window.matchMedia =
   window.matchMedia ||
-  function() {
+  function () {
     return {
       matches: false,
       addListener() {},
@@ -38,12 +40,7 @@ describe('<ToastManager />', () => {
       />,
     );
 
-    expect(
-      toastManager
-        .find('div')
-        .at(0)
-        .prop('aria-live'),
-    ).toBe('polite');
+    expect(toastManager.find('div').at(0).prop('aria-live')).toBe('polite');
   });
 });
 

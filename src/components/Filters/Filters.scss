@@ -2,6 +2,7 @@
 
 $list-filters-header-height: rem(56px);
 $list-filters-footer-height: rem(70px);
+$seperator-color: var(--p-border-subdued, color('sky'));
 
 .Filters {
   position: relative;
@@ -18,46 +19,66 @@ $list-filters-footer-height: rem(70px);
 .FiltersContainerHeader {
   top: 0;
   width: 100%;
-  padding: rem(16px) rem(20px);
-  border-bottom: rem(1px) solid color('sky');
-  height: rem($list-filters-header-height);
+  padding: spacing(base) spacing(loose);
+  border-bottom: rem(1px) solid $seperator-color;
+  height: $list-filters-header-height;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &.newDesignLanguage {
+    height: unstable-top-bar-height();
+    padding: spacing(base) rem(26px);
+  }
 }
 
 .FiltersDesktopContainerContent {
   width: 100%;
   height: calc(
-    100% - #{rem($list-filters-footer-height)} - #{rem(
-        $list-filters-header-height
-      )}
+    100% - #{$list-filters-footer-height} - #{$list-filters-header-height}
   );
+
+  &.newDesignLanguage {
+    height: calc(
+      100% - #{$list-filters-footer-height} - #{unstable-top-bar-height()}
+    );
+
+    padding: spacing(tight);
+  }
 }
 
 .FiltersMobileContainerContent {
   width: 100%;
-  height: calc(100% - #{rem($list-filters-header-height)});
+  height: calc(100% - #{$list-filters-header-height});
+
+  &.newDesignLanguage {
+    height: calc(100% - #{unstable-top-bar-height()});
+    padding: spacing(tight);
+  }
 }
 
 .FiltersContainerFooter {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: rem(14px) rem(16px);
-  border-top: rem(1px) solid color('sky');
-  height: rem($list-filters-footer-height);
+  padding: rem(14px) spacing(base);
+  border-top: rem(1px) solid $seperator-color;
+  height: $list-filters-footer-height;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &.newDesignLanguage {
+    padding: rem(14px) spacing(loose);
+  }
 }
 
 .FiltersMobileContainerFooter {
   width: 100%;
-  padding: rem(14px) rem(16px);
-  height: rem($list-filters-footer-height);
+  padding: rem(14px) spacing(base);
+  height: $list-filters-footer-height;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -82,7 +103,8 @@ $list-filters-footer-height: rem(70px);
   padding: rem(14px) spacing(loose);
   border: none;
   background: none;
-  color: color(ink);
+  color: var(--p-text, color(ink));
+  border-radius: var(--p-border-radius-base, none);
 
   &:hover {
     cursor: pointer;
@@ -90,15 +112,38 @@ $list-filters-footer-height: rem(70px);
       rgba(223, 227, 232, 0.3),
       rgba(223, 227, 232, 0.3)
     );
+    background-color: var(--p-surface-hovered);
   }
 
   &:focus {
     outline: none;
-    box-shadow: inset 0.2rem 0 0 color('indigo');
+    box-shadow: inset 0.2rem 0 0 var(--p-override-none, color('indigo'));
     background-image: linear-gradient(
       rgba(223, 227, 232, 0.3),
       rgba(223, 227, 232, 0.3)
     );
+  }
+
+  &.newDesignLanguage {
+    @include focus-ring;
+
+    &:focus,
+    &:hover {
+      background-image: none;
+    }
+
+    &:active {
+      background-color: var(--p-surface-pressed);
+    }
+
+    // stylelint-disable-next-line selector-max-specificity
+    &:focus:not(:active) {
+      @include focus-ring($style: 'focused');
+    }
+
+    &:hover {
+      @include high-contrast-outline;
+    }
   }
 }
 
@@ -127,10 +172,10 @@ $list-filters-footer-height: rem(70px);
   &::after {
     content: '';
     position: relative;
-    left: rem(16px);
+    left: spacing(base);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
-    background-color: color('sky');
+    background-color: $seperator-color;
     display: block;
   }
 
@@ -148,10 +193,10 @@ $list-filters-footer-height: rem(70px);
     content: '';
     bottom: 0;
     position: relative;
-    left: rem(16px);
+    left: spacing(base);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
-    background-color: color('sky');
+    background-color: $seperator-color;
     display: block;
   }
 
@@ -171,10 +216,10 @@ $list-filters-footer-height: rem(70px);
     content: '';
     top: 0;
     position: relative;
-    left: rem(16px);
+    left: spacing(base);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
-    background-color: color('sky');
+    background-color: $seperator-color;
     display: block;
   }
 
@@ -190,7 +235,7 @@ $list-filters-footer-height: rem(70px);
 }
 
 .FilterNodeContainer {
-  padding: rem(8px) rem(20px) rem(20px) rem(20px);
+  padding: rem(8px) spacing(loose) spacing(loose) spacing(loose);
 }
 
 .SearchIcon {

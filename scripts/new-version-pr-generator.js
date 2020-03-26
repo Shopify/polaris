@@ -2,12 +2,14 @@
 const {execSync} = require('child_process');
 const {readFileSync} = require('fs');
 const path = require('path');
+
 const {mkdir} = require('shelljs');
 const yaml = require('js-yaml');
 const semver = require('semver');
 
 const {version: PACKAGE_VERSION} = require('../package.json');
 const secrets = require('../secrets.json');
+
 const retry = require('./utilities/retry');
 
 const repositories = ['polaris-styleguide', 'web'];

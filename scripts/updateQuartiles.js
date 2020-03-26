@@ -1,5 +1,6 @@
 /* eslint-disable no-console, babel/camelcase */
 const fs = require('fs');
+
 const Octokit = require('@octokit/rest');
 
 const LATEST_PR = new Date('2020-01-17T16:30:44Z');

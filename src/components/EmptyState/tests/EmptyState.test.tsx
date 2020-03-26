@@ -8,6 +8,7 @@ import {
 } from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {EmptyState} from '../EmptyState';
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {classNames} from '../../../../../../utilities/css';
 import {AvatarProps} from '../../../../../Avatar';
 import {ThumbnailProps} from '../../../../../Thumbnail';

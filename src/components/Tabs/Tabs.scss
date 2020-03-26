@@ -3,15 +3,23 @@
 $item-min-height: rem(16px);
 $item-min-width: rem(50px);
 $item-vertical-padding: $item-min-height / 2;
-$focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
+$underline-height: border-width(thicker);
+$focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
 .Tabs {
   display: flex;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
-  border-bottom: border();
   list-style: none;
+}
+
+.Wrapper {
+  border-bottom: border();
+
+  &.newDesignLanguage {
+    padding: 0 spacing(tight);
+  }
 }
 
 .fitted {
@@ -48,6 +56,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   @include unstyled-button;
   @include text-style-body;
   @include text-emphasis-subdued;
+  color: var(--p-text, color('ink', 'lighter'));
   position: relative;
   justify-content: center;
   width: 100%;
@@ -62,35 +71,51 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   cursor: pointer;
 
   &:hover {
+    text-decoration: none;
+
     .Title {
       @include text-emphasis-normal;
-      text-decoration: none;
-      border-bottom: border-width(thicker) solid color('sky');
+      background-color: var(--p-surface-hovered, transparent);
+      border-bottom: var(--p-override-none, $underline-height) solid
+        color('sky');
+    }
+  }
 
-      @media (-ms-high-contrast: active) {
-        border-bottom-color: ms-high-contrast-color('selected-text-background');
-      }
+  &:active {
+    .Title {
+      background-color: var(--p-surface-pressed, transparent);
     }
   }
 
   &:focus {
-    box-shadow: inset 0 0 2px 0 $focus-state-box-shadow-color,
-      0 0 2px 0 $focus-state-box-shadow-color;
+    box-shadow: var(
+      --p-override-none,
+      inset 0 0 2px 0 $focus-state-box-shadow-color,
+      0 0 2px 0 $focus-state-box-shadow-color
+    );
 
     .Title {
       @include text-emphasis-normal;
-      border-bottom: border-width(thicker) solid color('indigo', 'light');
+      border-bottom: var(--p-override-none, $underline-height) solid
+        color('indigo', 'light');
+    }
+
+    &:not(:active) {
+      // stylelint-disable-next-line  selector-max-specificity
+      .Title {
+        @include focus-ring($style: 'focused');
+      }
     }
   }
 
   &.Tab-selected {
     // stylelint-disable-next-line selector-max-class
     .Title {
-      border-bottom: border-width(thicker) solid color('indigo');
+      border-bottom: var(--p-override-none, $underline-height) solid
+        color('indigo');
 
       @media (-ms-high-contrast: active) {
-        background: ms-high-contrast-color('selected-text-background');
-        border-bottom-color: ms-high-contrast-color('selected-text-background');
+        outline: 1px solid;
       }
     }
   }
@@ -101,9 +126,11 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 }
 
 .Title {
+  @include focus-ring;
+  border-radius: var(--p-border-radius-base, 0);
   display: block;
   padding: spacing() 0 (spacing() - border-width(thicker)) 0;
-  border-bottom: border-width(thicker) solid transparent;
+  border-bottom: var(--p-override-none, $underline-height) solid transparent;
   min-width: $item-min-width;
 }
 
@@ -123,6 +150,10 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   list-style: none;
   margin: 0;
   padding: spacing(tight) 0;
+
+  &.newDesignLanguage {
+    padding: spacing(tight);
+  }
 }
 
 .Item {
@@ -135,12 +166,18 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   text-align: left;
   cursor: pointer;
 
+  &::-moz-focus-inner {
+    border: none;
+  }
+}
+
+.Item:not(.newDesignLanguage) {
   &:active {
     background-image: linear-gradient(
       rgba(179, 188, 245, 0.1),
       rgba(179, 188, 245, 0.1)
     );
-
+    // stylelint-disable-next-line selector-max-specificity
     &:hover {
       background-image: linear-gradient(
           rgba(179, 188, 245, 0.1),
@@ -167,6 +204,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
       rgba(223, 227, 232, 0.3)
     );
 
+    // stylelint-disable-next-line selector-max-specificity
     &:focus {
       box-shadow: inset 0.2rem 0 0 color('indigo');
       background-image: linear-gradient(
@@ -184,9 +222,22 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
       rgba(223, 227, 232, 0.3)
     );
   }
+}
 
-  &::-moz-focus-inner {
-    border: none;
+.Item.newDesignLanguage {
+  border-radius: var(--p-border-radius-base);
+  &:hover {
+    background-color: var(--p-surface-hovered);
+  }
+  &:active {
+    background-color: var(--p-surface-pressed);
+  }
+
+  @include focus-ring;
+
+  // stylelint-disable-next-line selector-max-specificity
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
   }
 }
 
@@ -199,13 +250,14 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 }
 
 .DisclosureActivator {
-  @include recolor-icon(color('ink', 'lighter'));
+  @include recolor-icon(var(--p-icon-subdued, color('ink', 'lighter')));
   position: relative;
   display: block;
   justify-content: center;
   height: 100%;
   margin: 1px 1px -1px 0;
   padding: 0 spacing();
+
   background-color: transparent;
   cursor: pointer;
   border: none;
@@ -214,27 +266,29 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 
   &:hover {
     .Title {
-      @include recolor-icon(color('ink'));
-      border-bottom: border-width(thicker) solid color('sky');
-
-      @media (-ms-high-contrast: active) {
-        @include recolor-icon(color('black'));
-        background-image: linear-gradient(
-            rgba(179, 188, 245, 0.1),
-            rgba(179, 188, 245, 0.1)
-          ),
-          linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
-        border-bottom-color: ms-high-contrast-color('selected-text-background');
-      }
+      @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
+      background-color: var(--p-surface-hovered, transparent);
+      border-bottom: var(--p-override-none, $underline-height) solid
+        color('sky');
     }
   }
 
   &:focus {
-    box-shadow: inset 0 0 2px 0 $focus-state-box-shadow-color,
-      0 0 2px 0 $focus-state-box-shadow-color;
+    box-shadow: var(
+      --p-override-none,
+      inset 0 0 2px 0 $focus-state-box-shadow-color,
+      0 0 2px 0 $focus-state-box-shadow-color
+    );
 
     .Title {
-      border-bottom: border-width(thicker) solid color('indigo', 'light');
+      border-bottom: var(--p-override-none, $underline-height) solid
+        color('indigo', 'light');
+    }
+  }
+
+  &:active {
+    .Title {
+      background-color: var(--p-surface-pressed, transparent);
     }
   }
 }
@@ -244,3 +298,49 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   visibility: hidden;
   height: 0;
 }
+
+// stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
+.newDesignLanguage {
+  .Title {
+    padding: spacing(tight) spacing();
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -1 * spacing(tight);
+      left: 0;
+      right: 0;
+      height: $underline-height;
+      border-top-left-radius: var(--p-border-radius-base);
+      border-top-right-radius: var(--p-border-radius-base);
+    }
+  }
+
+  .Tab {
+    padding: spacing(tight) spacing(extra-tight);
+  }
+
+  .DisclosureActivator {
+    margin: 1px 0 -1px;
+    padding: spacing(tight) spacing(tight) spacing(tight) 0;
+  }
+
+  .Tab-selected {
+    .Title {
+      background-color: var(--p-surface-primary-selected);
+      color: var(--p-action-primary);
+
+      &::before {
+        background: var(--p-action-primary);
+      }
+
+      @media (-ms-high-contrast: active) {
+        // stylelint-disable-next-line max-nesting-depth
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+}
+// stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity

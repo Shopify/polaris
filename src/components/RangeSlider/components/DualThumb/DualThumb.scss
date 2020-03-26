@@ -2,18 +2,27 @@
 @import '../../RangeSlider';
 
 $stacking-order: (
-  output: 10,
-  input: 20,
+  input: 10,
+  output: 20,
 );
 
 $range-wrapper: rem(28px);
 
 $range-thumb-border-error: rem(2px) solid color('red');
 
-$range-thumb-shadow: (0 0 0 rem(1px) rgba(black, 0.2), shadow(faint));
-$range-thumb-shadow-hover: (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint));
-$range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
-$range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
+$range-thumb-shadow: var(
+  --p-override-none,
+  (0 0 0 rem(1px) rgba(black, 0.2), shadow(faint))
+);
+$range-thumb-shadow-hover: var(
+  --p-override-none,
+  (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint))
+);
+$range-thumb-shadow-error: var(--p-override-none, 0 0 0 rem(1px) color('red'));
+$range-thumb-shadow-focus: var(
+  --p-override-none,
+  0 0 0 rem(1px) color('indigo')
+);
 
 .Wrapper {
   position: relative;
@@ -44,7 +53,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
   border-radius: $range-thumb-size;
 
   --unselected-range: #{var(--p-override-transparent, color('sky', 'dark'))};
-  --selected-range: #{var(--p-action-interactive, color('indigo'))};
+  --selected-range: #{var(--p-interactive, color('indigo'))};
   --gradient-colors: var(--unselected-range, transparent) 0%,
     var(--unselected-range, transparent)
       var(--Polaris-RangeSlider-progress-lower),
@@ -72,7 +81,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 
   .disabled & {
     background-image: none;
-    background: var(--p-border-secondary-disabled, color('sky', 'dark'));
+    background: var(--p-border-disabled, color('sky', 'dark'));
   }
 }
 
@@ -83,41 +92,54 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 .Thumbs {
   position: absolute;
   z-index: z-index('input', $stacking-order);
+  padding: 0;
   width: $range-thumb-size;
   height: $range-thumb-size;
   border-radius: 50%;
-  border: border-width() solid color('sky', 'lighter');
+  border: border-width() solid var(--p-interactive, color('sky', 'lighter'));
   box-shadow: $range-thumb-shadow;
-  background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
+  background: linear-gradient(
+    var(--p-interactive, color('sky', 'lighter')),
+    var(--p-interactive, color('sky', 'light'))
+  );
   -webkit-tap-highlight-color: transparent;
 
   // stylelint-disable-next-line value-no-vendor-prefix
   cursor: -webkit-grab;
+  transition: transform var(--p-duration-1-5-0, duration())
+    var(--p-ease, easing());
 
   &.disabled {
     cursor: not-allowed;
-    border-color: color('sky', 'dark');
+    border-color: var(--p-border-disabled, color('sky', 'dark'));
+    background: var(--p-border-disabled, color('white'));
   }
 
   &:hover {
-    background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
     box-shadow: $range-thumb-shadow-hover;
   }
 
-  .error & {
-    border-color: color('red');
-    box-shadow: $range-thumb-shadow-error;
+  &:active {
+    transform: scale(var(--p-range-slider-thumb-scale, 1));
   }
 
   &:focus {
     outline: 0;
-    background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
-    border-color: color('indigo');
-    box-shadow: $range-thumb-shadow-focus;
+    border-color: var(--p-override-transparent, color('indigo'));
+    box-shadow: var(--p-override-none, $range-thumb-shadow-focus);
 
     @media (-ms-high-contrast: active) {
       outline: 1px solid ms-high-contrast-color('text');
     }
+  }
+
+  .error & {
+    border-color: var(--p-action-critical, color('red'));
+    background: linear-gradient(
+      var(--p-action-critical, color('sky', 'lighter')),
+      var(--p-action-critical, color('sky', 'light'))
+    );
+    box-shadow: $range-thumb-shadow-error;
   }
 }
 
@@ -137,20 +159,31 @@ $range-output-spacing: rem(16px);
 .Output {
   position: absolute;
   z-index: z-index('output', $stacking-order);
-  bottom: $range-thumb-size;
+  bottom: var(--p-range-slider-thumb-size-active, $range-thumb-size);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition-property: opacity, visibility;
-  transition-duration: duration();
-  transition-timing-function: easing();
+  transition-property: opacity, visibility, bottom;
+  transition-duration: var(--p-duration-1-5-0, duration());
+  transition-timing-function: var(--p-ease, easing());
   transform: translateX(calc(-50% + #{$range-thumb-size / 2}));
 
   .Thumbs:hover + &,
-  .Thumbs:active + &,
   .Thumbs:focus + & {
+    opacity: var(--p-override-zero, 1);
+    visibility: var(--p-override-none, visible);
+  }
+
+  .Thumbs:active + & {
+    $range-thumb-size-difference: var(
+        --p-range-slider-thumb-size-active,
+        $range-thumb-size
+      ) - var(--p-range-slider-thumb-size-base, $range-thumb-size);
     opacity: 1;
     visibility: visible;
+    bottom: calc(
+      #{var(--p-range-slider-thumb-size-active, $range-thumb-size)} + #{$range-thumb-size-difference}
+    );
   }
 }
 
@@ -160,13 +193,14 @@ $range-output-spacing: rem(16px);
   padding: 0 spacing(tight);
   min-width: $range-output-size;
   height: $range-output-size;
-  background-color: color('ink');
+  background-color: var(--p-surface, color('ink'));
+  box-shadow: var(--p-popover-shadow, --p-override-none);
   border-radius: border-radius();
   transition-property: transform;
-  transition-duration: duration();
-  transition-timing-function: easing();
+  transition-duration: var(--p-duration-1-5-0, duration());
+  transition-timing-function: var(--p-ease, easing());
 
-  // stylelint-disable selector-max-specificity
+  // stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-class
   .Thumbs:hover + .Output &,
   .Thumbs:active + .Output &,
   .Thumbs:focus + .Output & {
@@ -176,7 +210,7 @@ $range-output-spacing: rem(16px);
       transform: translateY(-($range-output-spacing / 2));
     }
   }
-  // stylelint-enable selector-max-specificity
+  // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class
 }
 
 .OutputText {
@@ -185,5 +219,5 @@ $range-output-spacing: rem(16px);
   flex: 1 1 auto;
   margin: auto;
   text-align: center;
-  color: color('white');
+  color: var(--p-text, color('white'));
 }

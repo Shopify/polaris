@@ -2,6 +2,7 @@ import React, {createRef} from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from '@material-ui/react-transition-group';
+
 import {FeaturesContext} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
@@ -20,13 +21,13 @@ import {
   ToastID,
   ToastPropsWithID,
 } from '../../utilities/frame';
+
 import {
   ToastManager,
   Loading,
   ContextualSaveBar,
   CSSAnimation,
 } from './components';
-
 import styles from './Frame.scss';
 
 export interface FrameProps {
@@ -177,11 +178,16 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
         </div>
       ) : null;
 
+    const contextualSaveBarClassName = classNames(
+      styles.ContextualSaveBar,
+      newDesignLanguage && styles['ContextualSaveBar-newDesignLanguage'],
+    );
+
     const contextualSaveBarMarkup = (
       <CSSAnimation
         in={showContextualSaveBar}
-        className={styles.ContextualSaveBar}
-        type="fade"
+        className={contextualSaveBarClassName}
+        type={newDesignLanguage ? 'fadeUp' : 'fade'}
       >
         <ContextualSaveBar {...this.contextualSaveBar} />
       </CSSAnimation>

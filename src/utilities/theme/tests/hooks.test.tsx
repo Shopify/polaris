@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {mount, mountWithApp} from 'test-utilities';
+
 import {useTheme} from '../hooks';
 import {ThemeContext} from '../context';
 

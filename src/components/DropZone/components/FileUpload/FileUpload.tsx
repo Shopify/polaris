@@ -7,9 +7,7 @@ import {Icon} from '../../../Icon';
 import {Stack} from '../../../Stack';
 import {Caption} from '../../../Caption';
 import {TextStyle} from '../../../TextStyle';
-
 import {fileUpload, imageUpload} from '../../images';
-
 import {DropZoneContext} from '../../context';
 import {useI18n} from '../../../../utilities/i18n';
 import {useFeatures} from '../../../../utilities/features';

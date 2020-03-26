@@ -4,7 +4,7 @@ export * from './types';
 
 export * from './components';
 
-export {
+export type {
   RGBColor,
   HSBColor,
   RGBAColor,

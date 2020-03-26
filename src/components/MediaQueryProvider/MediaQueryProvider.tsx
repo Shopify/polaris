@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import debounce from 'lodash/debounce';
+
 import {MediaQueryContext} from '../../utilities/media-query';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {EventListener} from '../EventListener';

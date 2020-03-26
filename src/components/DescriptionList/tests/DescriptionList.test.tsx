@@ -25,18 +25,10 @@ describe('<DescriptionList />', () => {
       <DescriptionList items={items} />,
     );
 
-    expect(
-      descriptionList
-        .find('dt')
-        .first()
-        .contains('Term 1'),
-    ).toBe(true);
+    expect(descriptionList.find('dt').first().contains('Term 1')).toBe(true);
 
-    expect(
-      descriptionList
-        .find('dd')
-        .first()
-        .contains('Description 1'),
-    ).toBe(true);
+    expect(descriptionList.find('dd').first().contains('Description 1')).toBe(
+      true,
+    );
   });
 });

@@ -2,6 +2,7 @@ import React from 'react';
 import {ViewMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+
 import {UserMenu} from '../UserMenu';
 
 describe('<UserMenu />', () => {

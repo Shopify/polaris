@@ -1,12 +1,12 @@
 const util = require('util');
 const path = require('path');
+
 const postcss = require('postcss');
 const {ensureDir, outputFile, readFileSync, writeFile} = require('fs-extra');
 const glob = require('glob');
 const nodeSass = require('node-sass');
 const {createFilter} = require('rollup-pluginutils');
 const cssnano = require('cssnano');
-
 const cssModulesExtractImports = require('postcss-modules-extract-imports');
 const cssModulesLocalByDefault = require('postcss-modules-local-by-default');
 const cssModulesScope = require('postcss-modules-scope');

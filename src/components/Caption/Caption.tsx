@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from './Caption.scss';
 
 export interface CaptionProps {

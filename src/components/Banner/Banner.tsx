@@ -6,8 +6,13 @@ import {
   CircleAlertMajorTwotone,
   CircleDisabledMajorTwotone,
   CircleInformationMajorTwotone,
+  CircleInformationMajorFilled,
+  CircleTickMajorFilled,
+  CircleAlertMajorFilled,
+  CircleDisabledMajorFilled,
 } from '@shopify/polaris-icons';
 
+import {FeaturesContext} from '../../utilities/features';
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames, variationName} from '../../utilities/css';
 import {
@@ -21,7 +26,6 @@ import {Heading} from '../Heading';
 import {ButtonGroup} from '../ButtonGroup';
 import {UnstyledLink} from '../UnstyledLink';
 import {Icon} from '../Icon';
-
 import {WithinContentContext} from '../../utilities/within-content-context';
 
 import styles from './Banner.scss';
@@ -52,6 +56,9 @@ export interface BannerProps {
 }
 
 export class Banner extends React.PureComponent<BannerProps, State> {
+  static contextType = FeaturesContext;
+  context!: React.ContextType<typeof FeaturesContext>;
+
   state: State = {
     showFocus: false,
   };
@@ -64,6 +71,7 @@ export class Banner extends React.PureComponent<BannerProps, State> {
   }
 
   render() {
+    const {newDesignLanguage} = this.context || {};
     const {showFocus} = this.state;
 
     const handleKeyUp = (evt: React.KeyboardEvent<HTMLDivElement>) => {
@@ -104,26 +112,36 @@ export class Banner extends React.PureComponent<BannerProps, State> {
 
             switch (status) {
               case 'success':
-                color = 'greenDark';
-                defaultIcon = CircleTickMajorTwotone;
+                color = newDesignLanguage ? 'success' : 'greenDark';
+                defaultIcon = newDesignLanguage
+                  ? CircleTickMajorFilled
+                  : CircleTickMajorTwotone;
                 break;
               case 'info':
-                color = 'tealDark';
-                defaultIcon = CircleInformationMajorTwotone;
+                color = newDesignLanguage ? 'highlight' : 'tealDark';
+                defaultIcon = newDesignLanguage
+                  ? CircleInformationMajorFilled
+                  : CircleInformationMajorTwotone;
                 break;
               case 'warning':
-                color = 'yellowDark';
-                defaultIcon = CircleAlertMajorTwotone;
+                color = newDesignLanguage ? 'warning' : 'yellowDark';
+                defaultIcon = newDesignLanguage
+                  ? CircleAlertMajorFilled
+                  : CircleAlertMajorTwotone;
                 ariaRoleType = 'alert';
                 break;
               case 'critical':
-                color = 'redDark';
-                defaultIcon = CircleDisabledMajorTwotone;
+                color = newDesignLanguage ? 'critical' : 'redDark';
+                defaultIcon = newDesignLanguage
+                  ? CircleDisabledMajorFilled
+                  : CircleDisabledMajorTwotone;
                 ariaRoleType = 'alert';
                 break;
               default:
-                color = 'inkLighter';
-                defaultIcon = FlagMajorTwotone;
+                color = newDesignLanguage ? 'base' : 'inkLighter';
+                defaultIcon = newDesignLanguage
+                  ? CircleInformationMajorFilled
+                  : FlagMajorTwotone;
             }
             const className = classNames(
               styles.Banner,
@@ -133,6 +151,7 @@ export class Banner extends React.PureComponent<BannerProps, State> {
               withinContentContainer
                 ? styles.withinContentContainer
                 : styles.withinPage,
+              newDesignLanguage && styles.newDesignLanguage,
             );
 
             const id = uniqueID();
@@ -207,9 +226,13 @@ export class Banner extends React.PureComponent<BannerProps, State> {
               >
                 {dismissButton}
                 <div className={styles.Ribbon}>
-                  <Icon source={iconName} color={color} backdrop />
+                  <Icon
+                    source={iconName}
+                    color={color}
+                    backdrop={!newDesignLanguage}
+                  />
                 </div>
-                <div>
+                <div className={styles.ContentWrapper}>
                   {headingMarkup}
                   {contentMarkup}
                 </div>

@@ -1,6 +1,8 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import * as geometry from '@shopify/javascript-utilities/geometry';
+
 import {EventListener} from '../../EventListener';
 import {PositionedOverlay} from '../PositionedOverlay';
 import * as mathModule from '../utilities/math';
@@ -129,6 +131,51 @@ describe('<PositionedOverlay />', () => {
       expect(positionedOverlay.find(EventListener).prop('event')).toBe(
         'resize',
       );
+    });
+  });
+
+  describe('preferInputActivator', () => {
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('uses the input to calculate its dimensions when true', () => {
+      const getRectForNodeSpy = jest.spyOn(geometry, 'getRectForNode');
+
+      const activator = document.createElement('div');
+      const input = document.createElement('input');
+      activator.appendChild(input);
+
+      mountWithAppProvider(
+        <PositionedOverlay
+          {...mockProps}
+          preferInputActivator
+          activator={activator}
+        />,
+      );
+
+      expect(
+        getRectForNodeSpy.mock.calls.some(([node]) => node === input),
+      ).toBe(true);
+    });
+
+    it('does not use the input to calculate its dimensions when false', () => {
+      const getRectForNodeSpy = jest.spyOn(geometry, 'getRectForNode');
+      const activator = document.createElement('div');
+      const input = document.createElement('input');
+      activator.appendChild(input);
+
+      mountWithAppProvider(
+        <PositionedOverlay
+          {...mockProps}
+          preferInputActivator={false}
+          activator={activator}
+        />,
+      );
+
+      expect(
+        getRectForNodeSpy.mock.calls.some(([node]) => node === input),
+      ).toBe(false);
     });
   });
 });

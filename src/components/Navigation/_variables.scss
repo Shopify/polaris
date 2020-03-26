@@ -1,6 +1,7 @@
 $item-font-size: rem(16px);
 $item-font-size-small: rem(14px);
 $item-line-height-small: rem(32px);
+$item-line-height-large: rem(36px);
 // This is the only place this color is used.
 // stylelint-disable-next-line color-no-hex
 $item-selected-background: rgba(color('indigo'), 0.12);
@@ -41,32 +42,15 @@ $nav-animation-variables: (
   text-decoration: none;
   text-align: left;
 
-  &:hover {
-    background-image: var(
-      --p-override-none,
-      linear-gradient(color(state, hover), color(state, hover))
-    );
-    background-color: var(--p-surface-hovered);
-    color: var(--p-action-primary, color('indigo', 'dark'));
-    text-decoration: none;
-
-    .Icon {
-      @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
-      );
-    }
+  .Navigation-newDesignLanguage & {
+    font-weight: 600;
+    line-height: $item-line-height-large;
+    padding-left: spacing();
   }
 
-  @include focus-ring;
-
-  &:focus {
-    @include focus-ring($style: 'focused');
-    background-image: var(
-      --p-override-none,
-      linear-gradient(color(state, hover), color(state, hover))
-    );
+  &:hover {
+    background-image: linear-gradient(color(state, hover), color(state, hover));
+    background-color: var(--p-surface-hovered);
     color: var(--p-text, color('indigo', 'dark'));
     text-decoration: none;
 
@@ -77,14 +61,42 @@ $nav-animation-variables: (
         filter('indigo')
       );
     }
+
+    .Navigation-newDesignLanguage & {
+      background-image: var(--p-override-none);
+    }
   }
 
-  &:focus:hover {
-    color: var(--p-action-primary, color('indigo', 'dark'));
+  @include focus-ring;
+
+  &.keyFocused {
+    @include focus-ring($style: 'focused');
+  }
+
+  &:focus {
+    background-image: linear-gradient(color(state, hover), color(state, hover));
+    color: var(--p-text, color('indigo', 'dark'));
+    text-decoration: none;
 
     .Icon {
       @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
+        var(--p-icon, color('indigo')),
+        var(--p-override-transparent, color('white')),
+        filter('indigo')
+      );
+    }
+
+    .Navigation-newDesignLanguage & {
+      background-image: var(--p-override-none);
+    }
+  }
+
+  &:focus:hover {
+    color: var(--p-text, color('indigo', 'dark'));
+
+    .Icon {
+      @include recolor-icon(
+        var(--p-icon, color('indigo')),
         var(--p-override-transparent, color('white')),
         filter('indigo')
       );
@@ -93,12 +105,13 @@ $nav-animation-variables: (
 
   &:active,
   &:active:hover {
-    color: var(--p-action-primary-pressed, color('indigo', 'dark'));
+    color: var(--p-text, color('indigo', 'dark'));
+    background-color: var(--p-surface-pressed);
     @include no-focus-ring;
 
     .Icon {
       @include recolor-icon(
-        var(--p-action-primary-pressed, color('indigo')),
+        var(--p-icon, color('indigo')),
         var(--p-override-transparent, color('white')),
         filter('indigo')
       );
@@ -109,6 +122,12 @@ $nav-animation-variables: (
     font-size: $item-font-size-small;
     font-weight: 500;
     line-height: $item-line-height-small;
+
+    .Navigation-newDesignLanguage & {
+      font-size: $item-font-size;
+      font-weight: 600;
+      line-height: $item-line-height-small;
+    }
   }
   &::-moz-focus-inner {
     border: 0;
@@ -132,6 +151,10 @@ $nav-animation-variables: (
     margin-top: nav(desktop-spacing);
     margin-right: spacing();
     margin-bottom: nav(desktop-spacing);
+  }
+  .Navigation-newDesignLanguage & {
+    margin-top: spacing(tight);
+    margin-bottom: spacing(tight);
   }
   .Item-selected &,
   .Item-selected:hover &,
@@ -158,6 +181,11 @@ $nav-animation-variables: (
   .SecondaryNavigation & {
     opacity: 0;
     animation: fade-in duration(slowest) 1 forwards;
+    // stylelint-disable-next-line selector-max-combinators
+    .Navigation-newDesignLanguage & {
+      opacity: 1;
+      animation: none;
+    }
   }
   @for $i from 1 through nav-animation(items-to-stagger) {
     &:nth-child(#{$i}) {
@@ -175,6 +203,11 @@ $nav-animation-variables: (
   @include breakpoint-after(nav-min-window-corrected()) {
     margin-top: nav(desktop-spacing);
     margin-bottom: nav(desktop-spacing);
+  }
+
+  .Navigation-newDesignLanguage & {
+    margin-top: spacing(tight);
+    margin-bottom: spacing(tight);
   }
 }
 

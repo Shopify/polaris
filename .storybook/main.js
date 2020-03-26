@@ -20,6 +20,7 @@ module.exports = {
     '@storybook/addon-notes',
     '@storybook/addon-a11y',
     '@storybook/addon-contexts',
+    '@storybook/addon-knobs',
   ],
   webpackFinal: (config) => {
     const isProduction = config.mode === 'production';
@@ -88,9 +89,10 @@ module.exports = {
             loader: 'css-loader',
             query: {
               sourceMap: false,
-              modules: true,
               importLoaders: 1,
-              localIdentName: '[name]-[local]_[hash:base64:5]',
+              modules: {
+                localIdentName: '[name]-[local]_[hash:base64:5]',
+              },
             },
           },
           {

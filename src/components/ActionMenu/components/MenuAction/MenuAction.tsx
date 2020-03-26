@@ -5,7 +5,6 @@ import {classNames} from '../../../../utilities/css';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {useFeatures} from '../../../../utilities/features';
 import {ComplexAction} from '../../../../types';
-
 import {Icon} from '../../../Icon';
 import {UnstyledLink} from '../../../UnstyledLink';
 

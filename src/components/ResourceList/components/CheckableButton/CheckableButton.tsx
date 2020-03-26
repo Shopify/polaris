@@ -1,4 +1,5 @@
 import React, {useRef, useEffect} from 'react';
+
 import {CheckboxHandles} from '../../../../types';
 import {useFeatures} from '../../../../utilities/features';
 import {classNames} from '../../../../utilities/css';
@@ -34,7 +35,7 @@ export function CheckableButton({
   smallScreen,
 }: CheckableButtonProps) {
   const checkBoxRef = useRef<CheckboxHandles>(null);
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const {registerCheckableButtons} = React.useContext(ResourceListContext);
 

@@ -5,14 +5,13 @@ import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
 import {ThemeProvider} from '../../../ThemeProvider';
-
 import {Icon} from '../../../Icon';
 import {KeypressListener} from '../../../KeypressListener';
 import {ToastProps} from '../../../../utilities/frame';
 
 import styles from './Toast.scss';
 
-export {ToastProps};
+export type {ToastProps};
 
 export const DEFAULT_TOAST_DURATION = 5000;
 

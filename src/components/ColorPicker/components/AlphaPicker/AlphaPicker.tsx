@@ -1,8 +1,10 @@
 import React from 'react';
+
 import {Slidable, SlidableProps} from '../Slidable';
 import {HSBColor} from '../../../../utilities/color-types';
 import {hsbToRgb} from '../../../../utilities/color-transformers';
 import styles from '../../ColorPicker.scss';
+
 import {calculateDraggerY, alphaForDraggerY} from './utilities';
 
 interface State {

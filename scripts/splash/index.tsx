@@ -1,4 +1,5 @@
 import path from 'path';
+
 import React, {useState, useEffect} from 'react';
 import {Box, Text, Color, render} from 'ink';
 import sortBy from 'lodash/sortBy';

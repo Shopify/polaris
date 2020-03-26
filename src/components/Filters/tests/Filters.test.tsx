@@ -8,6 +8,7 @@ import {
   findByTestID,
   ReactWrapper,
 } from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Filters, FiltersProps} from '../Filters';
 import {ConnectedFilterControl} from '../components';
@@ -243,19 +244,9 @@ describe('<Filters />', () => {
         .first();
 
       trigger(shortcut, 'onClick');
-      expect(
-        resourceFilters
-          .find(Popover)
-          .first()
-          .props().active,
-      ).toBe(true);
+      expect(resourceFilters.find(Popover).first().props().active).toBe(true);
       trigger(shortcut, 'onClick');
-      expect(
-        resourceFilters
-          .find(Popover)
-          .first()
-          .props().active,
-      ).toBe(false);
+      expect(resourceFilters.find(Popover).first().props().active).toBe(false);
     });
 
     it('receives the expected props when there are no shortcut filters', () => {
@@ -466,6 +457,32 @@ describe('<Filters />', () => {
 
       const helpTextMarkup = findById(resourceFilters, 'FiltersHelpText');
       expect(helpTextMarkup).toHaveLength(0);
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+      const filters = mountWithApp(<Filters {...mockProps} disabled />, {
+        features: {newDesignLanguage: true},
+      });
+
+      filters.find('button', {disabled: true})!.trigger('onClick');
+
+      expect(filters).toContainReactComponent('button', {
+        className: 'FilterTrigger newDesignLanguage',
+      });
+    });
+
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+      const filters = mountWithApp(<Filters {...mockProps} disabled />, {
+        features: {newDesignLanguage: false},
+      });
+
+      filters.find('button', {disabled: true})!.trigger('onClick');
+
+      expect(filters).not.toContainReactComponent('button', {
+        className: 'FilterTrigger newDesignLanguage',
+      });
     });
   });
 });

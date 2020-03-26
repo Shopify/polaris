@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {VisuallyHidden} from 'components';
+
 import {Badge} from '../Badge';
 
 describe('<Badge />', () => {

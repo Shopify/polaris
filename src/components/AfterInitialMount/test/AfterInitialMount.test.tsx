@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {mount} from 'test-utilities';
+
 import {AfterInitialMount} from '../AfterInitialMount';
 
 describe('AfterInitialMount', () => {

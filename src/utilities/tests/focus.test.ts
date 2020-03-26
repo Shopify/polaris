@@ -1,4 +1,5 @@
 import {MouseEvent} from 'react';
+
 import {
   handleMouseUpByBlurring,
   focusNextFocusableNode,

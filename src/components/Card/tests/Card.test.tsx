@@ -1,12 +1,9 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
-import {
-  mountWithAppProvider,
-  trigger,
-  findByTestID,
-} from 'test-utilities/legacy';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Card, Badge, Button, Popover, ActionList} from 'components';
+
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {Section} from '../components';
 
@@ -177,35 +174,28 @@ describe('<Card />', () => {
         {content: 'Most important action'},
         {content: 'Second most important action'},
       ];
-      const card = mountWithAppProvider(
+      const card = mountWithApp(
         <Card secondaryFooterActions={footerActions}>
           <p>Some card content.</p>
         </Card>,
       );
 
-      const disclosureButton = card.find(Button).first();
-      expect(disclosureButton).toHaveLength(1);
-      expect(disclosureButton.text()).toBe('More');
+      const disclosureButton = card.findAll(Button)[0];
+      expect(disclosureButton).toContainReactText('More');
 
-      const popover = card.find(Popover).first();
-      expect(popover).toHaveLength(1);
-      expect(popover.prop('active')).toBe(false);
+      expect(card).toContainReactComponent(Popover, {
+        active: false,
+      });
 
-      trigger(disclosureButton, 'onClick');
+      disclosureButton.trigger('onClick');
 
-      expect(
-        card
-          .find(Popover)
-          .first()
-          .prop('active'),
-      ).toBe(true);
+      expect(card).toContainReactComponent(Popover, {
+        active: true,
+      });
 
-      const overlay = findByTestID(card, 'popoverOverlay');
-      expect(overlay).toHaveLength(1);
-
-      const actionList = overlay.find(ActionList).first();
-      expect(actionList).toHaveLength(1);
-      expect(actionList.prop('items')).toBe(footerActions);
+      expect(card).toContainReactComponent(ActionList, {
+        items: footerActions,
+      });
     });
 
     it('sets the disclosure button content to the value set on secondaryFooterActionsDisclosureText', () => {

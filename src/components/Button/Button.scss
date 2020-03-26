@@ -187,11 +187,12 @@ $stacking-order: (
   --p-button-text: var(--p-text-on-primary);
   --p-button-color-hover: var(--p-action-primary-hovered);
   --p-button-color-active: var(--p-action-primary-pressed);
+  --p-button-color-depressed: var(--p-action-primary-depressed);
   @include button-filled(color('indigo'), color('indigo', 'dark'));
   @include recolor-icon(color('white'));
 
   &.newDesignLanguage {
-    @include recolor-icon(var(--p-button-text));
+    @include recolor-icon(var(--p-icon-on-primary));
   }
 
   &.disabled {
@@ -213,6 +214,7 @@ $stacking-order: (
   --p-button-text: var(--p-text-on-critical);
   --p-button-color-hover: var(--p-action-critical-hovered);
   --p-button-color-active: var(--p-action-critical-pressed);
+  --p-button-color-depressed: var(--p-action-critical-depressed);
   @include button-filled(color('red'), color('red', 'dark'));
   @include recolor-icon(color('white'));
 
@@ -230,7 +232,7 @@ $stacking-order: (
   }
 
   &.newDesignLanguage {
-    @include recolor-icon(var(--p-button-text));
+    @include recolor-icon(var(--p-icon-on-critical));
   }
 }
 
@@ -245,6 +247,7 @@ $stacking-order: (
 .destructive.outline {
   @include button-outline(color('red'));
 
+  // stylelint-disable-next-line selector-max-class
   &.pressed {
     @include button-outline(
       color('red', 'dark'),
@@ -343,10 +346,12 @@ $stacking-order: (
     @include high-contrast-button-outline;
   }
 
+  // stylelint-disable-next-line selector-max-class
   &.pressed > .Content {
     @include plain-button-backdrop(rgba(color('ink', 'lighter'), 0.1));
   }
 
+  // stylelint-disable-next-line selector-max-class
   &.pressed:hover:not(.iconOnly) > .Content,
   &.pressed:active:not(.iconOnly) > .Content,
   &:focus:not(.iconOnly) > .Content {
@@ -359,9 +364,10 @@ $stacking-order: (
   }
 
   &.destructive {
-    color: color('red', 'dark');
-    &:hover {
-      color: color('red', 'darker');
+    color: var(--p-action-critical, color('red', 'dark'));
+    &:focus,
+    &:active {
+      color: var(--p-action-critical-pressed, color('red', 'darker'));
     }
   }
 
@@ -397,6 +403,7 @@ $stacking-order: (
       display: none;
     }
 
+    // stylelint-disable-next-line selector-max-class
     &.disabled {
       @include recolor-icon(color('sky', 'dark'));
     }
@@ -410,11 +417,15 @@ $stacking-order: (
   // stylelint-disable selector-max-class
   &.newDesignLanguage {
     // redeclaring these styles here for specificity
+    @include recolor-icon(var(--p-interactive));
     background: transparent;
     border: 0;
     box-shadow: none;
-    @include recolor-icon(var(--p-action-interactive));
-    color: var(--p-action-interactive);
+    color: var(--p-interactive);
+
+    &::after {
+      content: none;
+    }
 
     &:hover,
     &:focus,
@@ -430,26 +441,33 @@ $stacking-order: (
     }
 
     &:hover {
-      @include recolor-icon(var(--p-action-interactive-hovered));
-      color: var(--p-action-interactive-hovered);
+      @include recolor-icon(var(--p-interactive-hovered));
+      color: var(--p-interactive-hovered);
       text-decoration: underline;
     }
 
     &:focus {
-      @include recolor-icon(var(--p-action-interactive));
-      color: var(--p-action-interactive);
-      text-decoration: none;
+      @include recolor-icon(var(--p-interactive));
+      color: var(--p-interactive);
       @include no-focus-ring;
+      text-decoration: underline;
     }
 
     &:active {
-      @include recolor-icon(var(--p-action-interactive-pressed));
-      color: var(--p-action-interactive-pressed);
-      text-decoration: none;
+      @include recolor-icon(var(--p-interactive-pressed));
+      color: var(--p-interactive-pressed);
     }
 
-    &:focus:not(:active) > .Content {
-      @include focus-ring($style: 'focused');
+    &:focus:not(:active) {
+      > .Content {
+        @include focus-ring($style: 'focused');
+      }
+    }
+
+    &.pressed {
+      background: none;
+      @include recolor-icon(var(--p-interactive-pressed));
+      color: var(--p-interactive-pressed);
     }
 
     &:focus:not(.iconOnly) > .Content {
@@ -460,18 +478,29 @@ $stacking-order: (
       @include plain-button-backdrop(var(--p-action-secondary));
     }
 
+    &.pressed:not(.iconOnly) > .Content {
+      @include plain-button-backdrop(var(--p-action-secondary));
+    }
+
     &.destructive {
-      @include recolor-icon(var(--p-link-critical));
-      color: var(--p-link-critical);
+      @include recolor-icon(var(--p-interactive-critical));
+      color: var(--p-interactive-critical);
+
       &:hover {
-        color: var(--p-link-critical-hovered);
+        color: var(--p-interactive-critical-hovered);
       }
+
       &:active {
-        color: var(--p-link-critical-pressed);
+        color: var(--p-interactive-critical-pressed);
+      }
+
+      &.pressed {
+        color: var(--p-interactive-critical-pressed);
+        background: transparent;
       }
 
       &.disabled {
-        color: var(--p-link-critical-disabled);
+        color: var(--p-interactive-critical-disabled);
       }
     }
 
@@ -481,22 +510,22 @@ $stacking-order: (
     }
 
     &.iconOnly {
-      @include recolor-icon(var(--p-action-interactive));
+      @include recolor-icon(var(--p-icon));
 
       &:hover {
-        @include recolor-icon(var(--p-action-interactive-hovered));
+        @include recolor-icon(var(--p-icon-hovered));
       }
 
       &:focus {
-        @include recolor-icon(var(--p-action-interactive));
+        @include recolor-icon(var(--p-icon));
       }
 
       &:active {
-        @include recolor-icon(var(--p-action-interactive-pressed));
+        @include recolor-icon(var(--p-icon-pressed));
       }
 
       &.disabled {
-        @include recolor-icon(var(--p-action-interactive-disabled));
+        @include recolor-icon(var(--p-icon-disabled));
       }
     }
 
@@ -528,6 +557,12 @@ $stacking-order: (
 .sizeSlim {
   min-height: $slim-min-height;
   padding: $slim-vertical-padding spacing(base-tight);
+
+  &.newDesignLanguage {
+    // Local override for slim button height.
+    $slim-min-height: rem(28px);
+    min-height: $slim-min-height;
+  }
 }
 
 .sizeLarge {
@@ -585,6 +620,7 @@ $stacking-order: (
       color: currentColor;
     }
 
+    // stylelint-disable selector-max-class
     &.disabled {
       color: currentColor;
       @include recolor-icon(currentColor);
@@ -603,9 +639,15 @@ $stacking-order: (
         @include recolor-icon(currentColor);
       }
     }
+    // stylelint-enable selector-max-class
   }
 
   &.plain {
+    // stylelint-disable-next-line selector-max-class
+    &.newDesignLanguage {
+      color: currentColor;
+    }
+
     // stylelint-disable selector-max-class, max-nesting-depth
     .Text {
       text-decoration: underline;
@@ -630,9 +672,9 @@ $stacking-order: (
       z-index: 0;
     }
 
+    // stylelint-disable-next-line selector-max-class
     &.pressed {
       background: transparent;
-      border-color: currentColor;
       box-shadow: none;
 
       // stylelint-disable selector-max-class
@@ -656,11 +698,32 @@ $stacking-order: (
     }
 
     &.newDesignLanguage {
+      @include focus-ring($border-width: border-width('base'));
       box-shadow: 0 0 0 border-width('base') currentColor;
 
       &:focus {
-        box-shadow: 0 0 0 border-width('thick') currentColor;
-        @include no-focus-ring;
+        @include focus-ring($style: 'focused');
+      }
+
+      &:active::after {
+        box-shadow: none;
+      }
+
+      &:hover,
+      &:active {
+        // stylelint-disable-next-line max-nesting-depth
+        &::before {
+          opacity: 0.05;
+        }
+      }
+
+      &.pressed {
+        color: currentColor;
+
+        // stylelint-disable-next-line max-nesting-depth
+        &::before {
+          opacity: 0.2;
+        }
       }
     }
     // stylelint-enable selector-max-class

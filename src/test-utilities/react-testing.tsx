@@ -1,7 +1,7 @@
 import React from 'react';
 import {createMount, mount} from '@shopify/react-testing';
-import translations from '../../locales/en.json';
 
+import translations from '../../locales/en.json';
 import {
   PolarisTestProvider,
   WithPolarisTestProviderOptions,

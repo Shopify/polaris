@@ -14,6 +14,7 @@ import {
   Button,
 } from 'components';
 import * as focusUtilities from '@shopify/javascript-utilities/focus';
+
 import * as focusUtils from '../../../utilities/focus';
 import {TrapFocus} from '../TrapFocus';
 import {Key} from '../../../types';
@@ -124,6 +125,22 @@ describe('<TrapFocus />', () => {
     expect(document.activeElement).toBe(focusedElement);
   });
 
+  it(`doesn't trade steal focus from another TrapFocus when multiple are rendered`, () => {
+    const id = 'input';
+    const trapFocus = mountWithApp(
+      <div>
+        <TrapFocus>
+          <input autoFocus id={id} />
+        </TrapFocus>
+        <TrapFocus>
+          <input autoFocus />
+        </TrapFocus>
+      </div>,
+    );
+
+    expect(trapFocus.find('input', {id})!.domNode).toBe(document.activeElement);
+  });
+
   describe('handleBlur', () => {
     const externalDomNode = mountWithAppProvider(<Button />)
       .find('button')
@@ -180,6 +197,7 @@ describe('<TrapFocus />', () => {
       const event: Partial<FocusEvent> = {
         relatedTarget: externalDomNode,
         srcElement: externalDomNode,
+        target: document.createElement('div'),
         preventDefault: () => {},
       };
       trapFocus.find(EventListener)!.trigger('handler', event);

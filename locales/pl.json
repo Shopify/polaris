@@ -11,7 +11,7 @@
       "PROGRESS_LABELS": {
         "incomplete": "Niekompletne",
         "partiallyComplete": "Częściowo kompletne",
-        "complete": "Kompletne"
+        "complete": "Zakończ"
       },
       "STATUS_LABELS": {
         "info": "Informacja",

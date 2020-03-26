@@ -4,6 +4,7 @@ import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Checkbox} from 'components';
+
 import {Cell, Navigation} from '../components';
 import {DataTable, DataTableProps} from '../DataTable';
 

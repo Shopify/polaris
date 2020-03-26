@@ -1,4 +1,5 @@
 const {basename} = require('path');
+
 const {camelCase} = require('change-case');
 
 const cache = {

@@ -57,12 +57,9 @@ describe('<ActionMenu />', () => {
 
       const wrapper = mountWithAppProvider(<ActionMenu actions={actions} />);
 
-      expect(
-        wrapper
-          .find(MenuAction)
-          .at(overrideIndex)
-          .prop('content'),
-      ).toBe(actionWithIndex.content);
+      expect(wrapper.find(MenuAction).at(overrideIndex).prop('content')).toBe(
+        actionWithIndex.content,
+      );
     });
 
     it('renders all actions in their overridden order when multiple indexes are set', () => {
@@ -185,12 +182,9 @@ describe('<ActionMenu />', () => {
       const groups = [...mockGroups, groupWithIndex];
       const wrapper = mountWithAppProvider(<ActionMenu groups={groups} />);
 
-      expect(
-        wrapper
-          .find(MenuGroup)
-          .at(overrideIndex)
-          .prop('title'),
-      ).toBe(groupWithIndex.title);
+      expect(wrapper.find(MenuGroup).at(overrideIndex).prop('title')).toBe(
+        groupWithIndex.title,
+      );
     });
 
     it('renders all groups in their overridden order when multiple indexes are set', () => {

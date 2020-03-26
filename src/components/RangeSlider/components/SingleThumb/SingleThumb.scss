@@ -2,14 +2,23 @@
 @import '../../RangeSlider';
 
 $stacking-order: (
-  output: 10,
-  input: 20,
+  input: 10,
+  output: 20,
 );
 
-$range-thumb-shadow: (0 0 0 rem(1px) rgba(black, 0.2), shadow(faint));
-$range-thumb-shadow-hover: (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint));
-$range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
-$range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
+$range-thumb-shadow: var(
+  --p-override-none,
+  (0 0 0 rem(1px) rgba(black, 0.2), shadow(faint))
+);
+$range-thumb-shadow-hover: var(
+  --p-override-none,
+  (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint))
+);
+$range-thumb-shadow-error: var(--p-override-none, 0 0 0 rem(1px) color('red'));
+$range-thumb-shadow-focus: var(
+  --p-override-none,
+  0 0 0 rem(1px) color('indigo')
+);
 
 .SingleThumb {
   display: flex;
@@ -55,7 +64,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 }
 
 .Input {
-  --progress-lower: #{var(--p-action-interactive, color('indigo'))};
+  --progress-lower: #{var(--p-interactive, color('indigo'))};
   --progress-upper: #{var(--p-override-transparent, color('sky', 'dark'))};
   // create-react-app v2 leverages postcss-preset-env to transpile modern CSS
   // into something kinda supported by older browsers. Unfortunatly its
@@ -69,6 +78,10 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     var(--progress-lower, transparent) var(--Polaris-RangeSlider-progress, 0%),
     var(--progress-upper, transparent) var(--Polaris-RangeSlider-progress, 100%),
     var(--progress-upper, transparent) 100%;
+
+  @mixin rangeSliderThumbPosition($size) {
+    margin-top: calc(-1 * (#{$size} - #{$range-track-height}) / 2);
+  }
 
   &::-ms-tooltip {
     display: none;
@@ -93,19 +106,24 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     cursor: -webkit-grab;
     width: $range-thumb-size;
     height: $range-thumb-size;
-    border: border-width() solid color('sky', 'lighter');
+    border: border-width() solid var(--p-interactive, color('sky', 'lighter'));
     border-radius: 50%;
-    background: linear-gradient(color('white'), color('sky', 'lighter'));
+    background: linear-gradient(
+      var(--p-interactive, color('white')),
+      var(--p-interactive, color('sky', 'lighter'))
+    );
     box-shadow: $range-thumb-shadow;
     appearance: none;
-    transition-property: border-color, box-shadow;
+    transition-property: border-color, box-shadow, transform;
     transition-duration: duration();
     transition-timing-function: easing();
 
+    @include rangeSliderThumbPosition($range-thumb-size);
+
     &:hover {
       background: linear-gradient(
-        color('sky', 'lighter'),
-        color('sky', 'light')
+        var(--p-interactive, color('sky', 'lighter')),
+        var(--p-interactive, color('sky', 'light'))
       );
       box-shadow: $range-thumb-shadow-hover;
     }
@@ -120,6 +138,23 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     margin-top: -($range-thumb-size - $range-track-height) / 2;
   }
 
+  &:active {
+    @include range-thumb-selectors {
+      transform: scale(var(--p-range-slider-thumb-scale, 1));
+    }
+  }
+
+  &:focus {
+    @include range-thumb-selectors {
+      box-shadow: $range-thumb-shadow-focus;
+      border-color: var(--p-override-transparent, color('indigo'));
+    }
+
+    @media (-ms-high-contrast: active) {
+      outline: 1px solid ms-high-contrast-color('text');
+    }
+  }
+
   .error & {
     --progress-lower: #{var(--p-action-critical, color('red'))};
 
@@ -128,7 +163,8 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     }
 
     @include range-thumb-selectors {
-      border-color: color('red');
+      border-color: var(--p-action-critical, color('red'));
+      background: var(--p-action-critical, color('white'));
       box-shadow: $range-thumb-shadow-error;
     }
   }
@@ -137,30 +173,13 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     @include range-track-selectors {
       cursor: auto;
       background-image: none;
-      background-color: var(
-        --p-border-secondary-disabled,
-        color('sky', 'dark')
-      );
+      background-color: var(--p-border-disabled, color('sky', 'dark'));
     }
 
     @include range-thumb-selectors {
       cursor: not-allowed;
-      border-color: color('sky', 'dark');
-    }
-  }
-
-  &:focus {
-    @include range-thumb-selectors {
-      background: linear-gradient(
-        color('sky', 'lighter'),
-        color('sky', 'light')
-      );
-      border-color: color('indigo');
-      box-shadow: $range-thumb-shadow-focus;
-    }
-
-    @media (-ms-high-contrast: active) {
-      outline: 1px solid ms-high-contrast-color('text');
+      border-color: var(--p-border-disabled, color('sky', 'dark'));
+      background: var(--p-border-disabled, color('white'));
     }
   }
 }
@@ -171,6 +190,7 @@ $range-output-size: rem(32px);
 $range-output-translate-x: calc(
   -50% + var(--Polaris-RangeSlider-output-factor, 0) * #{$range-thumb-size}
 );
+
 $range-output-spacing: rem(16px);
 
 .Output {
@@ -182,31 +202,41 @@ $range-output-spacing: rem(16px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition-property: opacity, visibility;
+  transition-property: opacity, visibility, bottom;
   transition-duration: duration();
   transition-timing-function: easing();
 
   .Input:hover + &,
-  .Input:active + &,
   .Input:focus + & {
+    opacity: var(--p-override-zero, 1);
+    visibility: var(--p-override-none, visible);
+  }
+
+  .Input:active + & {
+    $range-thumb-size-difference: var(
+        --p-range-slider-thumb-size-active,
+        $range-thumb-size
+      ) - var(--p-range-slider-thumb-size-base, $range-thumb-size);
     opacity: 1;
     visibility: visible;
+    bottom: calc(#{$range-thumb-size} + #{$range-thumb-size-difference});
   }
 }
 
 .OutputBubble {
   position: relative;
   display: flex;
+  box-shadow: var(--p-popover-shadow, --p-override-none);
   padding: 0 spacing(tight);
   min-width: $range-output-size;
   height: $range-output-size;
-  background-color: color('ink');
+  background-color: var(--p-surface, color('ink'));
   border-radius: border-radius();
   transition-property: transform;
   transition-duration: duration();
   transition-timing-function: easing();
 
-  // stylelint-disable selector-max-specificity
+  // stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-class
   .Input:hover + .Output &,
   .Input:active + .Output &,
   .Input:focus + .Output & {
@@ -216,7 +246,7 @@ $range-output-spacing: rem(16px);
       transform: translateY(-($range-output-spacing / 2));
     }
   }
-  // stylelint-enable selector-max-specificity
+  // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class
 }
 
 .OutputText {
@@ -225,5 +255,5 @@ $range-output-spacing: rem(16px);
   flex: 1 1 auto;
   margin: auto;
   text-align: center;
-  color: color('white');
+  color: var(--p-text, color('white'));
 }

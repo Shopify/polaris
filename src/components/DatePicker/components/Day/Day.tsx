@@ -1,8 +1,8 @@
 import React, {useRef, useEffect, memo} from 'react';
 import {Months, isSameDay} from '@shopify/javascript-utilities/dates';
+
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
-
 import styles from '../../DatePicker.scss';
 
 export interface DayProps {
@@ -13,6 +13,10 @@ export interface DayProps {
   inHoveringRange?: boolean;
   disabled?: boolean;
   lastDayOfMonth?: any;
+  isLastSelectedDay?: boolean;
+  isFirstSelectedDay?: boolean;
+  isHoveringRight?: boolean;
+  rangeIsDifferent?: boolean;
   onClick?(day: Date): void;
   onHover?(day?: Date): void;
   onFocus?(day: Date): void;
@@ -29,6 +33,10 @@ export const Day = memo(function Day({
   inHoveringRange,
   disabled,
   lastDayOfMonth,
+  isLastSelectedDay,
+  isFirstSelectedDay,
+  isHoveringRight,
+  rangeIsDifferent,
 }: DayProps) {
   const i18n = useI18n();
   const dayNode = useRef<HTMLButtonElement>(null);
@@ -56,6 +64,10 @@ export const Day = memo(function Day({
     disabled && styles['Day-disabled'],
     today && styles['Day-today'],
     (inRange || inHoveringRange) && !disabled && styles['Day-inRange'],
+    isLastSelectedDay && styles['Day-lastInRange'],
+    isFirstSelectedDay && styles['Day-firstInRange'],
+    isHoveringRight && styles['Day-hoverRight'],
+    rangeIsDifferent && styles['Day-hasRange'],
   );
   const date = day.getDate();
   const tabIndex =

@@ -173,6 +173,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     color: color('ink', 'lightest');
     pointer-events: none;
 
+    // stylelint-disable-next-line selector-max-class
     .Image {
       @include recolor-icon(color('ink', 'lightest'), color('white'));
     }
@@ -192,6 +193,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     &:hover {
       background-image: none;
       background-color: var(--p-surface-hovered);
+
+      @media (-ms-high-contrast: active) {
+        outline: 1px solid ms-high-contrast-color('text');
+      }
     }
     // Active (.active, :active)
     // We need to decide if the .active state appears as pressed or focused
@@ -229,7 +234,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     // Destructive (.destructive)
     &.destructive {
       @include recolor-icon(var(--p-icon-critical));
-      color: var(--p-link-critical);
+      color: var(--p-interactive-critical);
     }
 
     // Hovered (:hover)

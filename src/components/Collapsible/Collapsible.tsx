@@ -5,15 +5,25 @@ import React, {
   ComponentClass,
 } from 'react';
 import {read} from '@shopify/javascript-utilities/fastdom';
+
 import {classNames} from '../../utilities/css';
 
 import styles from './Collapsible.scss';
+
+interface Transition {
+  /** Assign a transition duration to the collapsible animation. */
+  duration?: string;
+  /** Assign a transition timing function to the collapsible animation */
+  timingFunction?: string;
+}
 
 export interface CollapsibleProps {
   /** Assign a unique ID to the collapsible. For accessibility, pass this ID as the value of the triggering component’s aria-controls prop. */
   id: string;
   /** Toggle whether the collapsible is expanded or not. */
   open: boolean;
+  /** Assign transition properties to the collapsible */
+  transition?: Transition;
   /** The content to display inside the collapsible. */
   children?: React.ReactNode;
 }
@@ -104,7 +114,7 @@ class CollapsibleInner extends React.Component<CollapsibleProps, State> {
   }
 
   render() {
-    const {id, open, children} = this.props;
+    const {id, open, children, transition} = this.props;
     const {animationState, height} = this.state;
     const parentCollapsibleExpanding = this.context;
 
@@ -121,6 +131,13 @@ class CollapsibleInner extends React.Component<CollapsibleProps, State> {
 
     const content = animating || open ? children : null;
 
+    const transitionProperties = transition
+      ? {
+          transitionDuration: `${transition.duration}`,
+          transitionTimingFunction: `${transition.timingFunction}`,
+        }
+      : null;
+
     return (
       <ParentCollapsibleExpandingContext.Provider
         value={
@@ -130,7 +147,10 @@ class CollapsibleInner extends React.Component<CollapsibleProps, State> {
         <div
           id={id}
           aria-hidden={!open}
-          style={{maxHeight: displayHeight}}
+          style={{
+            maxHeight: `${displayHeight}`,
+            ...transitionProperties,
+          }}
           className={wrapperClassName}
           ref={this.node}
           onTransitionEnd={this.handleTransitionEnd}

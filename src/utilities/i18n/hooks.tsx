@@ -1,5 +1,7 @@
 import {useContext} from 'react';
+
 import {MissingAppProviderError} from '../errors';
+
 import {I18nContext} from './context';
 
 export function useI18n() {

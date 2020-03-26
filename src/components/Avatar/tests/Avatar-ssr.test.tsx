@@ -3,11 +3,13 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Avatar, Image} from 'components';
 
-jest.mock('../../../utilities/target', () => ({
-  get isServer() {
-    return true;
-  },
-}));
+jest.mock('../../../utilities/use-is-after-initial-mount', () => {
+  return {
+    useIsAfterInitialMount: () => {
+      return false;
+    },
+  };
+});
 
 describe('<Avatar /> Server-side only', () => {
   it('does not render an Image', () => {

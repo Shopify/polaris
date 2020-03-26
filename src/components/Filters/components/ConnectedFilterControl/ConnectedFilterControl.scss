@@ -47,18 +47,39 @@ $stacking-order: (
       border-bottom-right-radius: 0 !important;
     }
   }
+
+  &.right.newDesignLanguage {
+    .CenterContainer * {
+      border-top-right-radius: var(--p-border-radius-base) !important;
+      border-bottom-right-radius: var(--p-border-radius-base) !important;
+    }
+  }
+}
+
+.newDesignLanguage {
+  .CenterContainer + .RightContainer {
+    margin-left: spacing(extra-tight);
+  }
 }
 
 .RightContainer {
   display: flex;
 
   .Item > * > * {
-    margin-left: -1px;
+    margin-right: var(--p-button-group-item-spacing, 0);
+    margin-left: var(--p-override-none, -1px);
     border-radius: 0 !important;
   }
 
   .Item {
     flex-shrink: 0;
+  }
+}
+
+.newDesignLanguage .RightContainer {
+  .Item:first-of-type > * > * {
+    border-top-left-radius: var(--p-border-radius-base) !important;
+    border-bottom-left-radius: var(--p-border-radius-base) !important;
   }
 }
 
@@ -69,8 +90,12 @@ $stacking-order: (
   white-space: nowrap;
 
   > div {
-    margin-left: -1px;
+    margin-left: var(--p-override-none, -1px);
   }
+}
+
+.MoreFiltersButtonContainer.onlyButtonVisible * {
+  border-radius: var(--p-border-radius-base) !important;
 }
 
 .Wrapper {

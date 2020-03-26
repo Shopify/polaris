@@ -1,8 +1,12 @@
 const {resolve: resolvePath} = require('path');
+
 const {writeFileSync} = require('fs-extra');
-const roleVariants = require('@shopify/polaris-tokens/formats/utils/color-factory/configs/base');
-const theme = require('@shopify/polaris-tokens/dist/base.json');
-const {colorFactory} = require('@shopify/polaris-tokens/color-factory');
+const {
+  config: roleVariants,
+} = require('@shopify/polaris-tokens/dist-modern/configs/base');
+const theme = require('@shopify/polaris-tokens/dist-modern/theme/base.json');
+const {colorFactory} = require('@shopify/polaris-tokens/dist-modern');
+
 const {
   rgbToHex,
   UNSTABLE_toCssCustomPropertySyntax: cssify,

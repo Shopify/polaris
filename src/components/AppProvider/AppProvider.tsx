@@ -1,7 +1,9 @@
 import React from 'react';
+
 import {ThemeConfig} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
+import {FocusManager} from '../FocusManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
 import {
   ScrollLockManager,
@@ -12,7 +14,7 @@ import {
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
-import {Features, FeaturesContext} from '../../utilities/features';
+import {FeaturesConfig, FeaturesContext} from '../../utilities/features';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -34,7 +36,7 @@ export interface AppProviderProps {
   /** Custom logos and colors provided to select components */
   theme?: ThemeConfig;
   /** For toggling features */
-  features?: Features;
+  features?: FeaturesConfig;
   /** Inner content of the application */
   children?: React.ReactNode;
 }
@@ -83,8 +85,10 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
   }
 
   render() {
-    const {theme = {}, features = {}, children} = this.props;
+    const {theme = {}, children} = this.props;
+
     const {intl, link} = this.state;
+    const features = {newDesignLanguage: false, ...this.props.features};
 
     return (
       <FeaturesContext.Provider value={features}>
@@ -94,7 +98,9 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
                   <ThemeProvider theme={theme}>
-                    <MediaQueryProvider>{children}</MediaQueryProvider>
+                    <MediaQueryProvider>
+                      <FocusManager>{children}</FocusManager>
+                    </MediaQueryProvider>
                   </ThemeProvider>
                 </LinkContext.Provider>
               </UniqueIdFactoryContext.Provider>

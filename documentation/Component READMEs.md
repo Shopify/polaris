@@ -26,7 +26,10 @@ keywords:
 # Indicates the component takes over the entire viewport
 fullSizeExamples: false # Optional, default: false
 
-# Hides the playground, mostly useful for components that don’t have a matching React source
+# Prevents automatic wrapping of examples with an AppProvider
+omitAppProvider: false # Optional, default: false
+
+# Hides the playground, mostly useful for components which only render in an embedded app context that don’t have a matching React source
 hidePlayground: false # Optional, default: false
 ---
 

@@ -11,3 +11,4 @@ node_modules
 /styles.scss
 /styles
 /src/styles/polaris-tokens
+/scripts/analyze-custom-properties/dist

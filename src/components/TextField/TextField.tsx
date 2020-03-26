@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {addEventListener} from '@shopify/javascript-utilities/events';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
+
 import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
 import {useFeatures} from '../../utilities/features';
@@ -9,9 +10,9 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {Labelled, LabelledProps, helpTextID, labelID} from '../Labelled';
 import {Connected} from '../Connected';
-
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
+
 import {Resizer, Spinner} from './components';
 import styles from './TextField.scss';
 
@@ -179,7 +180,7 @@ export function TextField({
     focused ? input.focus() : input.blur();
   }, [focused]);
 
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   // Use a typeof check here as Typescript mostly protects us from non-stringy
   // values but overzealous usage of `any` in consuming apps means people have
@@ -410,6 +411,12 @@ export function TextField({
     'aria-multiline': normalizeAriaMultiline(multiline),
   });
 
+  const backdropClassName = classNames(
+    styles.Backdrop,
+    newDesignLanguage && connectedLeft && styles['Backdrop-connectedLeft'],
+    newDesignLanguage && connectedRight && styles['Backdrop-connectedRight'],
+  );
+
   return (
     <Labelled
       label={label}
@@ -432,7 +439,7 @@ export function TextField({
           {characterCountMarkup}
           {clearButtonMarkup}
           {spinnerMarkup}
-          <div className={styles.Backdrop} />
+          <div className={backdropClassName} />
           {resizer}
         </div>
       </Connected>
@@ -484,9 +491,7 @@ export function TextField({
 }
 
 function normalizeAutoComplete(autoComplete?: boolean | string) {
-  if (autoComplete == null) {
-    return autoComplete;
-  } else if (autoComplete === true) {
+  if (autoComplete === true) {
     return 'on';
   } else if (autoComplete === false) {
     return 'off';

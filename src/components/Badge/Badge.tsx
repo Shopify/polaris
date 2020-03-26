@@ -1,7 +1,9 @@
 import React from 'react';
+
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {VisuallyHidden} from '../VisuallyHidden';
+
 import styles from './Badge.scss';
 
 type Status = 'success' | 'info' | 'attention' | 'warning' | 'new';

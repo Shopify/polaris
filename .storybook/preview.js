@@ -2,6 +2,8 @@ import React from 'react';
 import {addParameters, addDecorator} from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
 import {withContexts} from '@storybook/addon-contexts/react';
+import {color, withKnobs} from '@storybook/addon-knobs';
+import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
@@ -25,6 +27,39 @@ function StrictModeToggle({isStrict = false, children}) {
   return <Wrapper>{children}</Wrapper>;
 }
 
+function AppProviderWithKnobs({newDesignLanguage, colorScheme, children}) {
+  const omitAppProvider = (() => {
+    try {
+      return children.props.children.props['data-omit-app-provider'];
+    } catch (e) {
+      return null;
+    }
+  })();
+
+  if (omitAppProvider === 'true') return children;
+
+  const colors = Object.entries(DefaultThemeColors).reduce(
+    (accumulator, [key, value]) => ({
+      ...accumulator,
+      [key]: strToHex(color(key, value, 'Theme')),
+    }),
+    {},
+  );
+
+  return (
+    <AppProvider
+      i18n={enTranslations}
+      features={{newDesignLanguage}}
+      theme={{
+        colors,
+        colorScheme,
+      }}
+    >
+      {children}
+    </AppProvider>
+  );
+}
+
 addDecorator(
   withContexts([
     {
@@ -37,33 +72,27 @@ addDecorator(
     },
     {
       title: 'New Design Language',
-      components: [AppProvider],
+      components: [AppProviderWithKnobs],
       params: [
         {
           name: 'Disabled',
           default: true,
-          props: {i18n: enTranslations},
+          props: {newDesignLanguage: false},
         },
         {
           name: 'Enabled - Light Mode',
-          props: {
-            i18n: enTranslations,
-            features: {newDesignLanguage: true},
-            theme: {colorScheme: 'light'},
-          },
+          props: {newDesignLanguage: true, colorScheme: 'light'},
         },
         {
           name: 'Enabled - Dark Mode',
-          props: {
-            i18n: enTranslations,
-            features: {newDesignLanguage: true},
-            theme: {colorScheme: 'dark'},
-          },
+          props: {newDesignLanguage: true, colorScheme: 'dark'},
         },
       ],
     },
   ]),
 );
+
+addDecorator(withKnobs);
 
 // addon-console
 setConsoleOptions((opts) => {
@@ -78,3 +107,16 @@ setConsoleOptions((opts) => {
   ];
   return opts;
 });
+
+function strToHex(str) {
+  if (str.charAt(0) === '#') return str;
+
+  return `#${str
+    .slice(5, -1)
+    .split(',')
+    .slice(0, 3)
+    .map(Number)
+    .map((n) => n.toString(16))
+    .map((n) => n.padStart(2, '0'))
+    .join('')}`;
+}

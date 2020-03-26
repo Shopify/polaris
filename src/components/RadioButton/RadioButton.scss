@@ -84,7 +84,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    border: var(--p-control-border-width) solid var(--p-border-secondary);
+    border: var(--p-control-border-width) solid var(--p-border);
     border-radius: 50%;
     background-color: var(--p-surface);
     transition: border-color var(--p-duration-1-0-0) var(--p-ease);
@@ -99,14 +99,14 @@
       transform-origin: 50% 50%;
       height: var(--p-icon-size);
       width: var(--p-icon-size);
-      background-color: var(--p-action-interactive);
+      background-color: var(--p-interactive);
       border-radius: 50%;
       transition: opacity var(--p-duration-1-0-0) var(--p-ease),
         transform var(--p-duration-1-0-0) var(--p-ease);
-    }
 
-    @media (-ms-high-contrast: active) {
-      background: ms-high-contrast-color('text');
+      @media (-ms-high-contrast: active) {
+        border: rem(5px) solid ms-high-contrast-color('text');
+      }
     }
 
     @include focus-ring($border-width: var(--p-control-border-width));
@@ -118,7 +118,7 @@
     &.hover,
     &:hover {
       cursor: pointer;
-      border-color: var(--p-border-secondary-hovered);
+      border-color: var(--p-border-hovered);
     }
   }
 
@@ -134,7 +134,7 @@
 
     &:checked {
       + .Backdrop {
-        border-color: var(--p-action-interactive);
+        border-color: var(--p-interactive);
 
         &::before {
           transition: opacity var(--p-duration-1-5-0) var(--p-ease),
@@ -147,10 +147,10 @@
 
     &:disabled {
       + .Backdrop {
-        border-color: var(--p-border-secondary-disabled);
+        border-color: var(--p-border-disabled);
 
         &::before {
-          background-color: var(--p-border-secondary-disabled);
+          background-color: var(--p-border-disabled);
         }
 
         &.hover,

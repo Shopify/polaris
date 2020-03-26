@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+
 import {Slidable} from '../components';
 import {ColorPicker} from '../ColorPicker';
 
@@ -22,10 +23,7 @@ describe('<ColorPicker /> Server-side only', () => {
       <ColorPicker color={red} onChange={noop} />,
     );
 
-    colorPicker
-      .find(Slidable)
-      .first()
-      .simulate('mousedown');
+    colorPicker.find(Slidable).first().simulate('mousedown');
 
     const touch = {clientX: 0, clientY: 0};
     const event = new TouchEvent('touchmove', {

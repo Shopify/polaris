@@ -1,4 +1,6 @@
 import React from 'react';
+
+import {FocusManager} from '../FocusManager';
 import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
 import {
@@ -18,7 +20,7 @@ import {
 } from '../../utilities/sticky-manager';
 import {I18n, I18nContext} from '../../utilities/i18n';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
-import {Features, FeaturesContext} from '../../utilities/features';
+import {FeaturesConfig, FeaturesContext} from '../../utilities/features';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -41,7 +43,7 @@ export interface WithPolarisTestProviderOptions {
   link?: LinkLikeComponent;
   theme?: ThemeConfig;
   mediaQuery?: Partial<MediaQueryContextType>;
-  features?: Features;
+  features?: FeaturesConfig;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
 }
@@ -63,22 +65,24 @@ export function PolarisTestProvider({
   link,
   theme = {},
   mediaQuery,
-  features = {},
+  features: featuresProp = {},
   frame,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? React.StrictMode : React.Fragment;
-
   const intl = new I18n(i18n || {});
-
   const scrollLockManager = new ScrollLockManager();
 
   const stickyManager = new StickyManager();
 
   const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-  const {newDesignLanguage = false} = features;
-  const customProperties = newDesignLanguage
-    ? buildCustomProperties({...theme, colorScheme: 'light'}, newDesignLanguage)
+  const features = {newDesignLanguage: false, ...featuresProp};
+
+  const customProperties = features.newDesignLanguage
+    ? buildCustomProperties(
+        {...theme, colorScheme: 'light'},
+        features.newDesignLanguage,
+      )
     : undefined;
   const mergedTheme = buildThemeContext(theme, customProperties);
 
@@ -96,9 +100,11 @@ export function PolarisTestProvider({
                 <LinkContext.Provider value={link}>
                   <ThemeContext.Provider value={mergedTheme}>
                     <MediaQueryContext.Provider value={mergedMediaQuery}>
-                      <FrameContext.Provider value={mergedFrame}>
-                        {children}
-                      </FrameContext.Provider>
+                      <FocusManager>
+                        <FrameContext.Provider value={mergedFrame}>
+                          {children}
+                        </FrameContext.Provider>
+                      </FocusManager>
                     </MediaQueryContext.Provider>
                   </ThemeContext.Provider>
                 </LinkContext.Provider>

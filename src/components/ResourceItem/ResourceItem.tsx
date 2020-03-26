@@ -2,7 +2,8 @@ import React, {useContext} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
-import {classNames} from '../../utilities/css';
+
+import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useFeatures} from '../../utilities/features';
 import {DisableableAction} from '../../types';
@@ -14,13 +15,15 @@ import {ThumbnailProps} from '../Thumbnail';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
 import {Button, buttonsFrom} from '../Button';
-
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
   ResourceListSelectedItems,
 } from '../../utilities/resource-list';
+
 import styles from './ResourceItem.scss';
+
+type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
 
 interface BaseProps {
   /** Visually hidden text for screen readers used for item link*/
@@ -49,6 +52,8 @@ interface BaseProps {
   onClick?(id?: string): void;
   /** Content for the details area */
   children?: React.ReactNode;
+  /** Adjust vertical alignment of elements */
+  verticalAlignment?: Alignment;
 }
 
 interface PropsWithUrl extends BaseProps {
@@ -139,6 +144,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       context: {selectable, selectMode, loading, resourceName},
       i18n,
       features: {newDesignLanguage},
+      verticalAlignment,
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -254,10 +260,16 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       <div className={styles.Content}>{children}</div>
     ) : null;
 
+    const containerClassName = classNames(
+      styles.Container,
+      verticalAlignment &&
+        styles[variationName('alignment', verticalAlignment)],
+    );
+
     const containerMarkup = (
       <div
         testID="Item-Content"
-        className={styles.Container}
+        className={containerClassName}
         id={this.props.id}
       >
         {ownedMarkup}
@@ -305,6 +317,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         onKeyUp={this.handleKeyUp}
+        onMouseOut={this.handleMouseOut}
         testID="Item-Wrapper"
         data-href={url}
       >
@@ -340,6 +353,10 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
     }
 
     this.setState({focused: false, focusedInner: false});
+  };
+
+  private handleMouseOut = () => {
+    this.state.focused && this.setState({focused: false, focusedInner: false});
   };
 
   private handleLargerSelectionArea = (event: React.MouseEvent<any>) => {

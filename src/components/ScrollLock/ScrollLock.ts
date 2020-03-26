@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+
 import {useScrollLockManager} from '../../utilities/scroll-lock-manager';
 import './ScrollLock.scss';
 

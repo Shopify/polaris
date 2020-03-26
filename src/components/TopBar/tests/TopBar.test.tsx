@@ -3,6 +3,7 @@ import React from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {EventListener, Image, UnstyledLink} from 'components';
+
 import {TopBar} from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
 

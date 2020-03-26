@@ -101,7 +101,7 @@
   } @else if $global-theming == true {
     @if $style == base {
       position: relative;
-      border: var(--p-control-border-width) solid var(--p-border-secondary);
+      border: var(--p-control-border-width) solid var(--p-border);
       background-color: var(--p-surface);
       border-radius: var(--p-border-radius-base);
 
@@ -113,7 +113,7 @@
         bottom: calc(-1 * var(--p-control-border-width));
         left: calc(-1 * var(--p-control-border-width));
         border-radius: var(--p-border-radius-base);
-        background-color: var(--p-action-interactive);
+        background-color: var(--p-interactive);
         opacity: 0;
         transform: scale(0.25);
         transition: opacity var(--p-duration-1-0-0) var(--p-ease),
@@ -123,16 +123,19 @@
       &.hover,
       &:hover {
         cursor: pointer;
-        border-color: var(--p-border-secondary-hovered);
+        border-color: var(--p-border-hovered);
       }
     } @else if $style == active {
-      border-color: var(--p-action-interactive);
+      border-color: var(--p-interactive);
       &::before {
         opacity: 1;
         transform: scale(1);
+        @media (-ms-high-contrast: active) {
+          border: 2px solid ms-high-contrast-color('text');
+        }
       }
     } @else if $style == disabled {
-      border-color: var(--p-border-secondary-disabled);
+      border-color: var(--p-border-disabled);
 
       &::before {
         background-color: var(--p-action-secondary-disabled);

@@ -39,6 +39,13 @@ $resource-list-item-variables: (
   outline: none;
   cursor: pointer;
 
+  &:not(.persistActions) {
+    // stylelint-disable-next-line selector-max-combinators
+    .Actions {
+      right: spacing();
+    }
+  }
+
   &:hover {
     &:not(.newDesignLanguage) {
       background-image: linear-gradient(
@@ -51,7 +58,6 @@ $resource-list-item-variables: (
       // stylelint-disable-next-line selector-max-specificity
       .Actions {
         @include action-unhide;
-        right: spacing();
 
         // stylelint-disable-next-line max-nesting-depth
         @include page-content-when-partially-condensed {
@@ -175,9 +181,28 @@ $resource-list-item-variables: (
   }
 }
 
+.alignmentLeading {
+  align-items: flex-start;
+}
+
+.alignmentTrailing {
+  align-items: flex-end;
+}
+
+.alignmentCenter {
+  align-items: center;
+}
+
+.alignmentFill {
+  align-items: stretch;
+}
+
+.alignmentBaseline {
+  align-items: baseline;
+}
+
 .Owned {
   display: flex;
-  align-self: flex-start;
 }
 
 // Item handle
@@ -227,7 +252,6 @@ $resource-list-item-variables: (
 .Content {
   @include layout-flex-fix;
   flex: 1 1 auto;
-  align-self: center;
 }
 
 // Item actions

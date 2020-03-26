@@ -159,7 +159,7 @@
       "BulkActions": {
         "actionsActivatorLabel": "Akce",
         "moreActionsActivatorLabel": "Další akce",
-        "warningMessage": "K zajištění lepšího uživatelského komfortu, by promo akcí mělo být maximálně {maxPromotedActions}."
+        "warningMessage": "Za účelem zlepšení uživatelské zkušenosti. Promo akcí by mělo být maximálně {maxPromotedActions}."
       },
       "FilterCreator": {
         "filterButtonLabel": "Filtr",

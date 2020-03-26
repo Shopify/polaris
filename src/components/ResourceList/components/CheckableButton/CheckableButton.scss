@@ -48,6 +48,10 @@ $chekbox-label-margin: rem(20px);
     &.CheckableButton-selectMode {
       font-weight: 500;
     }
+
+    @media (-ms-high-contrast: active) {
+      border: border-width(base) solid;
+    }
   }
 
   &.CheckableButton-measuring {

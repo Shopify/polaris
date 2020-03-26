@@ -1,4 +1,5 @@
 import tokens from '@shopify/polaris-tokens';
+
 import {needsVariantList} from '../config';
 import {
   needsVariant,

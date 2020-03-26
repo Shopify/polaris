@@ -126,10 +126,7 @@ describe('<Navigation.Section />', () => {
       },
     );
 
-    channels
-      .find('a')
-      .first()
-      .simulate('click');
+    channels.find('a').first().simulate('click');
     animationFrame.runFrame();
 
     expect(context.onNavigationDismiss).toHaveBeenCalledTimes(1);
@@ -147,10 +144,7 @@ describe('<Navigation.Section />', () => {
     );
     findByTestID(channels, 'ToggleViewAll').simulate('click');
 
-    channels
-      .find('a')
-      .first()
-      .simulate('click');
+    channels.find('a').first().simulate('click');
 
     act(() => {
       animationFrame.runFrame();
@@ -193,19 +187,11 @@ describe('<Navigation.Section />', () => {
 
     findByTestID(withSubNav, 'ToggleViewAll').simulate('click');
 
-    withSubNav
-      .find('a[href="/other"]')
-      .first()
-      .simulate('click');
+    withSubNav.find('a[href="/other"]').first().simulate('click');
 
     animationFrame.runFrame();
 
-    expect(
-      withSubNav
-        .find(Collapsible)
-        .first()
-        .prop('open'),
-    ).toBe(true);
+    expect(withSubNav.find(Collapsible).first().prop('open')).toBe(true);
   });
 
   it('adds a toggle button if rollupAfter has a value', () => {

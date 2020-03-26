@@ -6,12 +6,14 @@ import {
   ChevronDownMinor,
   CancelSmallMinor,
 } from '@shopify/polaris-icons';
+
 import {classNames} from '../../utilities/css';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
 import {ResourceListContext} from '../../utilities/resource-list';
+import {useFeatures} from '../../utilities/features';
 import {Button} from '../Button';
 import {DisplayText} from '../DisplayText';
 import {Collapsible} from '../Collapsible';
@@ -26,13 +28,12 @@ import {Focus} from '../Focus';
 import {Sheet} from '../Sheet';
 import {Stack} from '../Stack';
 import {Key} from '../../types';
-
 import {KeypressListener} from '../KeypressListener';
+
 import {
   ConnectedFilterControl,
   ConnectedFilterControlProps,
 } from './components';
-
 import styles from './Filters.scss';
 
 export interface AppliedFilterInterface {
@@ -88,7 +89,8 @@ export interface FiltersProps {
   hideTags?: boolean;
 }
 
-type ComposedProps = FiltersProps & WithAppProviderProps;
+type ComposedProps = FiltersProps &
+  WithAppProviderProps & {newDesignLanguage: boolean};
 
 interface State {
   open: boolean;
@@ -132,6 +134,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       disabled = false,
       helpText,
       hideTags,
+      newDesignLanguage,
     } = this.props;
     const {resourceName} = this.context;
     const {open, readyForFocus} = this.state;
@@ -168,11 +171,16 @@ class FiltersInner extends React.Component<ComposedProps, State> {
 
       const collapsibleID = `${filter.key}Collapsible`;
 
+      const buttonClassName = classNames(
+        styles.FilterTrigger,
+        newDesignLanguage && styles.newDesignLanguage,
+      );
+
       return (
         <div key={filter.key} className={className}>
           <button
             onClick={() => this.toggleFilter(filter.key)}
-            className={styles.FilterTrigger}
+            className={buttonClassName}
             id={`${filter.key}ToggleButton`}
             type="button"
             aria-controls={collapsibleID}
@@ -273,8 +281,13 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       </ConnectedFilterControl>
     );
 
+    const filtersContainerHeaderClassname = classNames(
+      styles.FiltersContainerHeader,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     const filtersDesktopHeaderMarkup = (
-      <div className={styles.FiltersContainerHeader}>
+      <div className={filtersContainerHeaderClassname}>
         <DisplayText size="small">{moreFiltersLabel}</DisplayText>
         <Button
           icon={CancelSmallMinor}
@@ -286,7 +299,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
     );
 
     const filtersMobileHeaderMarkup = (
-      <div className={styles.FiltersContainerHeader}>
+      <div className={filtersContainerHeaderClassname}>
         <Button
           icon={CancelSmallMinor}
           plain
@@ -300,8 +313,13 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       </div>
     );
 
+    const filtersDesktopFooterClassname = classNames(
+      styles.FiltersContainerFooter,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     const filtersDesktopFooterMarkup = (
-      <div className={styles.FiltersContainerFooter}>
+      <div className={filtersDesktopFooterClassname}>
         <Button onClick={onClearAll} disabled={!this.hasAppliedFilters()}>
           {intl.translate('Polaris.Filters.clearAllFilters')}
         </Button>
@@ -346,6 +364,16 @@ class FiltersInner extends React.Component<ComposedProps, State> {
         </div>
       ) : null;
 
+    const filtersMobileContainerContentClassName = classNames(
+      styles.FiltersMobileContainerContent,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
+    const filtersDesktopContainerContentClassName = classNames(
+      styles.FiltersDesktopContainerContent,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     const filtersContainerMarkup = isNavigationCollapsed ? (
       <Sheet
         open={open}
@@ -354,7 +382,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
         onExit={this.setReadyForFocus(false)}
       >
         {filtersMobileHeaderMarkup}
-        <Scrollable className={styles.FiltersMobileContainerContent} shadow>
+        <Scrollable className={filtersMobileContainerContentClassName} shadow>
           {filtersContentMarkup}
           {filtersMobileFooterMarkup}
         </Scrollable>
@@ -368,7 +396,10 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       >
         <div className={styles.FiltersContainer}>
           {filtersDesktopHeaderMarkup}
-          <Scrollable className={styles.FiltersDesktopContainerContent} shadow>
+          <Scrollable
+            className={filtersDesktopContainerContentClassName}
+            shadow
+          >
             {filtersContentMarkup}
           </Scrollable>
           {filtersDesktopFooterMarkup}
@@ -535,4 +566,9 @@ function getShortcutFilters(filters: FilterInterface[]) {
   return filters.filter((filter) => filter.shortcut === true);
 }
 
-export const Filters = withAppProvider<FiltersProps>()(FiltersInner);
+function FiltersInnerWrapper(props: ComposedProps) {
+  const {newDesignLanguage} = useFeatures();
+  return <FiltersInner {...props} newDesignLanguage={newDesignLanguage} />;
+}
+
+export const Filters = withAppProvider<FiltersProps>()(FiltersInnerWrapper);

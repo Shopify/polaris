@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
 import {Link} from 'components';
+
 import {Tooltip} from '../Tooltip';
 
 describe('<Tooltip />', () => {

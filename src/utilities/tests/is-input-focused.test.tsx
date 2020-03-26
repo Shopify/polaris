@@ -1,5 +1,6 @@
 import React from 'react';
 import {mount} from 'test-utilities';
+
 import {isInputFocused} from '../is-input-focused';
 
 describe('isInputFocused', () => {

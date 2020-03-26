@@ -6,13 +6,19 @@ import {
   CircleTickMajorTwotone,
   CircleInformationMajorTwotone,
   FlagMajorTwotone,
+  CircleTickMajorFilled,
+  CircleInformationMajorFilled,
+  CircleAlertMajorFilled,
+  CircleDisabledMajorFilled,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'test-utilities/react-testing';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {BannerContext} from 'utilities/banner-context';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
+
 import {WithinContentContext} from '../../../utilities/within-content-context';
+
 import {Banner} from '..';
 
 describe('<Banner />', () => {
@@ -153,7 +159,7 @@ describe('<Banner />', () => {
         });
 
         const bannerDiv = banner.find('div', {
-          className: 'Banner withinPage',
+          className: 'Banner withinPage newDesignLanguage',
         });
 
         bannerDiv!.trigger('onKeyUp', {
@@ -161,7 +167,7 @@ describe('<Banner />', () => {
         });
 
         expect(banner).toContainReactComponent('div', {
-          className: 'Banner keyFocused withinPage',
+          className: 'Banner keyFocused withinPage newDesignLanguage',
         });
       });
 
@@ -171,7 +177,7 @@ describe('<Banner />', () => {
         });
 
         const bannerDiv = banner.find('div', {
-          className: 'Banner withinPage',
+          className: 'Banner withinPage newDesignLanguage',
         });
 
         bannerDiv!.trigger('onMouseUp', {
@@ -179,7 +185,7 @@ describe('<Banner />', () => {
         });
 
         expect(banner).toContainReactComponent('div', {
-          className: 'Banner withinPage',
+          className: 'Banner withinPage newDesignLanguage',
         });
       });
     });
@@ -203,12 +209,57 @@ describe('<Banner />', () => {
         </Banner>,
       );
 
-      const div = banner
-        .find(Child)
-        .find('div')
-        .first();
+      const div = banner.find(Child).find('div').first();
 
       expect(div.exists()).toBe(true);
     });
+  });
+
+  describe('Icon', () => {
+    it.each([
+      [
+        'Banner has a default status',
+        null,
+        'base',
+        CircleInformationMajorFilled,
+      ],
+      [
+        'Banner has a success status',
+        'success',
+        'success',
+        CircleTickMajorFilled,
+      ],
+      [
+        'Banner has an info status',
+        'info',
+        'highlight',
+        CircleInformationMajorFilled,
+      ],
+      [
+        'Banner has a warning status',
+        'warning',
+        'warning',
+        CircleAlertMajorFilled,
+      ],
+      [
+        'Banner has a critical status',
+        'critical',
+        'critical',
+        CircleDisabledMajorFilled,
+      ],
+    ])(
+      'Sets Icon props when: %s',
+      (_: any, status: any, color: any, iconSource: any) => {
+        const banner = mountWithApp(<Banner status={status} />, {
+          features: {newDesignLanguage: true},
+        });
+
+        expect(banner.find(Icon)!.props).toStrictEqual({
+          backdrop: false,
+          color,
+          source: iconSource,
+        });
+      },
+    );
   });
 });

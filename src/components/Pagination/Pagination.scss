@@ -25,6 +25,15 @@ $stacking-order: (
       .Button {
         flex: 1 0 auto;
       }
+
+      span {
+        flex: 1 0 auto;
+
+        // stylelint-disable-next-line selector-max-specificity, max-nesting-depth, selector-max-combinators
+        .Button {
+          width: 100%;
+        }
+      }
     }
   }
 }
@@ -100,6 +109,7 @@ $stacking-order: (
 
       &:hover {
         background: var(--p-action-secondary-hovered);
+        @include high-contrast-outline;
       }
 
       &:active {
@@ -202,6 +212,7 @@ $stacking-order: (
 
     &:hover {
       background: var(--p-action-secondary-hovered);
+      @include high-contrast-outline;
     }
 
     &:focus {

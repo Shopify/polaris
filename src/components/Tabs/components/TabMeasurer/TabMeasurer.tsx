@@ -1,8 +1,8 @@
 import React, {memo, useEffect, useRef, useCallback} from 'react';
+
 import {EventListener} from '../../../EventListener';
 import {classNames} from '../../../../utilities/css';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
-
 import {TabDescriptor} from '../../types';
 import {Tab} from '../Tab';
 import styles from '../../Tabs.scss';
@@ -49,7 +49,7 @@ export const TabMeasurer = memo(function TabMeasurer({
       const hiddenTabWidths = hiddenTabNodesArray.map((node) => {
         return node.getBoundingClientRect().width;
       });
-      const disclosureWidth = hiddenTabWidths.pop() as number;
+      const disclosureWidth = hiddenTabWidths.pop() || 0;
 
       handleMeasurementProp({
         containerWidth,

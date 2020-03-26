@@ -14,6 +14,7 @@ import {
   UnstyledLink,
   Button,
 } from 'components';
+
 import {ResourceListContext} from '../../../utilities/resource-list';
 import {ResourceItem} from '../ResourceItem';
 
@@ -520,11 +521,7 @@ describe('<ResourceItem />', () => {
           <ResourceItem id={itemId} url={url} media={<Avatar customer />} />
         </ResourceListContext.Provider>,
       );
-      expect(
-        findByTestID(wrapper, 'Media')
-          .find(Avatar)
-          .exists(),
-      ).toBe(true);
+      expect(findByTestID(wrapper, 'Media').find(Avatar).exists()).toBe(true);
     });
 
     it('includes a <Thumbnail /> if one is provided', () => {
@@ -537,11 +534,9 @@ describe('<ResourceItem />', () => {
           />
         </ResourceListContext.Provider>,
       );
-      expect(
-        findByTestID(wrapper, 'Media')
-          .find(Thumbnail)
-          .exists(),
-      ).toBe(true);
+      expect(findByTestID(wrapper, 'Media').find(Thumbnail).exists()).toBe(
+        true,
+      );
     });
   });
 
@@ -649,6 +644,91 @@ describe('<ResourceItem />', () => {
       );
       expect(resourceItem).not.toContainReactComponent('div', {
         className: 'ResourceItem newDesignLanguage',
+      });
+    });
+  });
+
+  describe('focused', () => {
+    it('removes the focus state when mousing out a focused item', () => {
+      const resourceItem = mountWithApp(
+        <ResourceListContext.Provider value={mockSelectModeContext}>
+          <ResourceItem id={itemId} url={url} />
+        </ResourceListContext.Provider>,
+      );
+      const wrapperDiv = resourceItem.find('div');
+
+      wrapperDiv!.trigger('onFocus', {
+        target: wrapperDiv!.domNode as HTMLDivElement,
+      });
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'ResourceItem focused selectable selectMode focusedInner',
+      });
+
+      wrapperDiv!.trigger('onMouseOut');
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'ResourceItem selectable selectMode',
+      });
+    });
+  });
+
+  describe('verticalAlignment', () => {
+    it('renders with default flex-start alignment if not provided', () => {
+      const resourceItem = mountWithApp(<ResourceItem id={itemId} url={url} />);
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container',
+      });
+    });
+
+    it('renders with leading vertical alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} verticalAlignment="leading" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentLeading',
+      });
+    });
+
+    it('renders with center vertical alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} verticalAlignment="center" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentCenter',
+      });
+    });
+
+    it('renders with trailing vertical alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} verticalAlignment="trailing" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentTrailing',
+      });
+    });
+
+    it('renders with stretch vertical alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} verticalAlignment="fill" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentFill',
+      });
+    });
+
+    it('renders with baseline vertical alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} verticalAlignment="baseline" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentBaseline',
       });
     });
   });

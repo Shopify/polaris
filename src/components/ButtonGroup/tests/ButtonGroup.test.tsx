@@ -2,8 +2,8 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
-
 import {Button} from 'components';
+
 import {Item} from '../components';
 import {ButtonGroup} from '../ButtonGroup';
 

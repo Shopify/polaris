@@ -5,6 +5,7 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import tokens from '@shopify/polaris-tokens';
+
 import {dataPolarisTopBar, scrollable} from '../../components/shared';
 import {stackedContent} from '../breakpoints';
 
@@ -239,8 +240,7 @@ function isDocument(node: HTMLElement | Document): node is Document {
 
 function scrollTopFor(container: HTMLElement | Document) {
   return isDocument(container)
-    ? document.body.scrollTop ||
-        (document.documentElement as HTMLElement).scrollTop
+    ? document.body.scrollTop || document.documentElement.scrollTop
     : container.scrollTop;
 }
 

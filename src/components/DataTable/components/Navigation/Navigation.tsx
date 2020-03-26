@@ -4,9 +4,7 @@ import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import {Button} from '../../../Button';
-
 import {ColumnVisibilityData} from '../../types';
-
 import styles from '../../DataTable.scss';
 
 export interface NavigationProps {

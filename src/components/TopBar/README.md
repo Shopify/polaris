@@ -14,6 +14,7 @@ keywords:
   - user
   - menu
   - logo
+omitAppProvider: true
 ---
 
 # Top bar

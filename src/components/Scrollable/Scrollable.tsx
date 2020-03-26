@@ -5,6 +5,7 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
+
 import {classNames} from '../../utilities/css';
 import {
   StickyManager,
@@ -14,7 +15,6 @@ import {scrollable} from '../shared';
 
 import {ScrollTo} from './components';
 import {ScrollableContext} from './context';
-
 import styles from './Scrollable.scss';
 
 const MAX_SCROLL_DISTANCE = 100;
@@ -48,9 +48,8 @@ interface State {
 export class Scrollable extends React.Component<ScrollableProps, State> {
   static ScrollTo = ScrollTo;
   static forNode(node: HTMLElement): HTMLElement | Document {
-    return (
-      (closest(node, scrollable.selector) as HTMLElement | null) || document
-    );
+    const closestElement = closest(node, scrollable.selector);
+    return closestElement instanceof HTMLElement ? closestElement : document;
   }
 
   state: State = {

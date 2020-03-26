@@ -1,5 +1,6 @@
 import React, {memo} from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
+
 import {classNames} from '../../../../utilities/css';
 import styles from '../../DatePicker.scss';
 

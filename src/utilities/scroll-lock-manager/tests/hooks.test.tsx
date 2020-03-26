@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {mount, mountWithApp} from 'test-utilities';
+
 import {useScrollLockManager} from '../hooks';
 import {ScrollLockManagerContext} from '../context';
 
@@ -25,7 +26,7 @@ describe('useScrollLockManager', () => {
     expect(component).toContainReactComponent('div');
   });
 
-  it('throws an error if context is not set ', () => {
+  it('throws an error if context is not set', () => {
     const attemptMount = () => mount(<Component />);
     expect(attemptMount).toThrow(
       'No ScrollLockManager was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.',

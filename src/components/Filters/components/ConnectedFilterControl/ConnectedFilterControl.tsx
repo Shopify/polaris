@@ -1,13 +1,14 @@
 import React from 'react';
 import debounce from 'lodash/debounce';
-import {classNames} from '../../../../utilities/css';
 
+import {classNames} from '../../../../utilities/css';
+import {FeaturesContext} from '../../../../utilities/features';
 import {DisableableAction} from '../../../../types';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
 import {EventListener} from '../../../EventListener';
-import {Item} from './components';
 
+import {Item} from './components';
 import styles from './ConnectedFilterControl.scss';
 
 interface PopoverableAction extends DisableableAction {
@@ -41,6 +42,9 @@ export class ConnectedFilterControl extends React.Component<
   ConnectedFilterControlProps,
   State
 > {
+  static contextType = FeaturesContext;
+  context!: React.ContextType<typeof FeaturesContext>;
+
   state: State = {
     availableWidth: 0,
     proxyButtonsWidth: {},
@@ -64,6 +68,7 @@ export class ConnectedFilterControl extends React.Component<
   }
 
   render() {
+    const {newDesignLanguage} = this.context || {};
     const {
       children,
       rightPopoverableActions,
@@ -71,21 +76,34 @@ export class ConnectedFilterControl extends React.Component<
       auxiliary,
     } = this.props;
 
+    const actionsToRender =
+      rightPopoverableActions != null
+        ? this.getActionsToRender(rightPopoverableActions)
+        : [];
+
     const className = classNames(
       styles.ConnectedFilterControl,
       rightPopoverableActions && styles.right,
+      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const rightMarkup = rightPopoverableActions ? (
       <div className={styles.RightContainer} testID="FilterShortcutContainer">
-        {this.popoverFrom(this.getActionsToRender(rightPopoverableActions))}
+        {this.popoverFrom(actionsToRender)}
       </div>
     ) : null;
+
+    const moreFiltersButtonContainerClassname = classNames(
+      styles.MoreFiltersButtonContainer,
+      actionsToRender.length === 0 &&
+        newDesignLanguage &&
+        styles.onlyButtonVisible,
+    );
 
     const rightActionMarkup = rightAction ? (
       <div
         ref={this.moreFiltersButtonContainer}
-        className={styles.MoreFiltersButtonContainer}
+        className={moreFiltersButtonContainerClassname}
       >
         <Item>{rightAction}</Item>
       </div>
@@ -131,13 +149,14 @@ export class ConnectedFilterControl extends React.Component<
     if (this.proxyButtonContainer.current) {
       const proxyButtonsWidth: ComputedProperty = {};
       // this number is magical, but tweaking it solved the problem of items overlapping
-      const tolerance = 52;
+      const tolerance = 78;
       if (this.proxyButtonContainer.current) {
         Array.from(this.proxyButtonContainer.current.children).forEach(
           (element: Element) => {
             const buttonWidth =
               element.getBoundingClientRect().width + tolerance;
-            const buttonKey = (element as HTMLElement).dataset.key;
+            const buttonKey =
+              element instanceof HTMLElement && element.dataset.key;
             if (buttonKey) {
               proxyButtonsWidth[buttonKey] = buttonWidth;
             }

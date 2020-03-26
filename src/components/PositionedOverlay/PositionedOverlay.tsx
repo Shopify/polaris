@@ -16,7 +16,6 @@ import {
   intersectionWithViewport,
   windowRect,
 } from './utilities/math';
-
 import styles from './PositionedOverlay.scss';
 
 type Positioning = 'above' | 'below';
@@ -33,6 +32,7 @@ interface OverlayDetails {
 export interface PositionedOverlayProps {
   active: boolean;
   activator: HTMLElement;
+  preferInputActivator?: boolean;
   preferredPosition?: PreferredPosition;
   preferredAlignment?: PreferredAlignment;
   fullWidth?: boolean;
@@ -195,14 +195,14 @@ export class PositionedOverlay extends React.PureComponent<
           onScrollOut,
           fullWidth,
           fixed,
+          preferInputActivator = true,
         } = this.props;
 
-        const textFieldActivator = activator.querySelector('input');
+        const preferredActivator = preferInputActivator
+          ? activator.querySelector('input') || activator
+          : activator;
 
-        const activatorRect =
-          textFieldActivator != null
-            ? getRectForNode(textFieldActivator)
-            : getRectForNode(activator);
+        const activatorRect = getRectForNode(preferredActivator);
 
         const currentOverlayRect = getRectForNode(this.overlay);
         const scrollableElement = isDocument(this.scrollableContainer)
@@ -219,9 +219,11 @@ export class PositionedOverlay extends React.PureComponent<
           scrollableContainerRect.height = document.body.scrollHeight;
         }
 
-        const overlayMargins = this.overlay.firstElementChild
-          ? getMarginsForNode(this.overlay.firstElementChild as HTMLElement)
-          : {activator: 0, container: 0, horizontal: 0};
+        const overlayMargins =
+          this.overlay.firstElementChild &&
+          this.overlay.firstChild instanceof HTMLElement
+            ? getMarginsForNode(this.overlay.firstElementChild as HTMLElement)
+            : {activator: 0, container: 0, horizontal: 0};
 
         const containerRect = windowRect();
         const zIndexForLayer = getZIndexForLayerFromNode(activator);

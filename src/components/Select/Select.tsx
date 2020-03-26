@@ -1,5 +1,6 @@
 import React from 'react';
 import {ArrowUpDownMinor} from '@shopify/polaris-icons';
+
 import {classNames} from '../../utilities/css';
 import {useFeatures} from '../../utilities/features';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -90,7 +91,7 @@ export function Select({
 }: SelectProps) {
   const id = useUniqueId('Select', idProp);
   const labelHidden = labelInline ? true : labelHiddenProp;
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const className = classNames(
     styles.Select,
@@ -182,7 +183,9 @@ function isString(option: SelectOption | SelectGroup): option is string {
 }
 
 function isGroup(option: SelectOption | SelectGroup): option is SelectGroup {
-  return (option as SelectGroup).options != null;
+  return (
+    typeof option === 'object' && 'options' in option && option.options != null
+  );
 }
 
 function normalizeStringOption(option: string): StrictOption {

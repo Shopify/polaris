@@ -1,13 +1,14 @@
 import React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+
 import {OptionList, OptionDescriptor} from '../../../OptionList';
 import {ActionList} from '../../../ActionList';
 import {Popover, PopoverProps} from '../../../Popover';
 import {ActionListItemDescriptor, Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {EventListener} from '../../../EventListener';
-import {ComboBoxContext} from './context';
 
+import {ComboBoxContext} from './context';
 import styles from './ComboBox.scss';
 
 const getUniqueId = createUniqueIDFactory('ComboBox');
@@ -168,6 +169,19 @@ export class ComboBox extends React.PureComponent<ComboBoxProps, State> {
     return this.props.id || getUniqueId();
   }
 
+  getActionsWithIds(
+    actions: ActionListItemDescriptor[],
+    before?: boolean,
+  ): ActionListItemDescriptor[] {
+    const {navigableOptions} = this.state;
+
+    if (before) {
+      return navigableOptions.slice(0, actions.length);
+    } else {
+      return navigableOptions.slice(-actions.length);
+    }
+  }
+
   render() {
     const {
       options,
@@ -184,13 +198,25 @@ export class ComboBox extends React.PureComponent<ComboBoxProps, State> {
     } = this.props;
     const {comboBoxId, navigableOptions, selectedOptions} = this.state;
 
-    const actionsBeforeMarkup = actionsBefore && actionsBefore.length > 0 && (
-      <ActionList actionRole="option" items={actionsBefore} />
-    );
+    let actionsBeforeMarkup: JSX.Element | undefined;
+    if (actionsBefore && actionsBefore.length > 0) {
+      actionsBeforeMarkup = (
+        <ActionList
+          actionRole="option"
+          items={this.getActionsWithIds(actionsBefore, true)}
+        />
+      );
+    }
 
-    const actionsAfterMarkup = actionsAfter && actionsAfter.length > 0 && (
-      <ActionList actionRole="option" items={actionsAfter} />
-    );
+    let actionsAfterMarkup: JSX.Element | undefined;
+    if (actionsAfter && actionsAfter.length > 0) {
+      actionsAfterMarkup = (
+        <ActionList
+          actionRole="option"
+          items={this.getActionsWithIds(actionsAfter)}
+        />
+      );
+    }
 
     const optionsMarkup = options.length > 0 && (
       <OptionList
@@ -454,15 +480,15 @@ function assignOptionIds(
   options: (OptionDescriptor | ActionListItemDescriptor)[],
   comboBoxId: string,
 ): OptionDescriptor[] | ActionListItemDescriptor[] {
-  options.map(
+  return options.map(
     (
       option: OptionDescriptor | ActionListItemDescriptor,
       optionIndex: number,
-    ) => {
-      option.id = `${comboBoxId}-${optionIndex}`;
-    },
+    ) => ({
+      ...option,
+      id: `${comboBoxId}-${optionIndex}`,
+    }),
   );
-  return options;
 }
 
 function optionsAreEqual(
@@ -493,11 +519,11 @@ function optionsAreEqual(
 function isOption(
   navigableOption: OptionDescriptor | ActionListItemDescriptor,
 ): navigableOption is OptionDescriptor {
-  return (navigableOption as OptionDescriptor).value !== undefined;
+  return 'value' in navigableOption && navigableOption.value !== undefined;
 }
 
 function filterForOptions(
   mixedArray: (ActionListItemDescriptor | OptionDescriptor)[],
 ): OptionDescriptor[] {
-  return mixedArray.filter((item) => isOption(item)) as OptionDescriptor[];
+  return mixedArray.filter(isOption);
 }

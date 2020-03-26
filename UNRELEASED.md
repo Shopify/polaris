@@ -6,7 +6,7 @@
 
 ### Bug fixes
 
-- Fixed focus state color on monochrome `Buttons` ([#2684](https://github.com/Shopify/polaris-react/pull/2684))
+- Fixed right padding styling issue with the `Tag` component and remove right padding on a removable `Tag` ([#2860](https://github.com/Shopify/polaris-react/pull/2860)).
 
 ### Documentation
 
@@ -14,9 +14,8 @@
 
 ### Dependency upgrades
 
-### Code quality
+- Updated sewing-kit to v0.120.0, and typescript to 3.8.3 ([#2873](https://github.com/Shopify/polaris-react/pull/2873))
 
-- Fixed `Tabs` tests that were preventing `React` updates ([#2702](https://github.com/Shopify/polaris-react/pull/2702))
-- Move to Travis for CI ([#2652](https://github.com/Shopify/polaris-react/pull/2652))
+### Code quality
 
 ### Deprecations

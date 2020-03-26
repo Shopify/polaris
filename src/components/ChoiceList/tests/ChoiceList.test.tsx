@@ -3,6 +3,7 @@ import {mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {RadioButton, Checkbox, InlineError, errorTextID} from 'components';
+
 import {ChoiceList, ChoiceListProps} from '../ChoiceList';
 
 describe('<ChoiceList />', () => {
@@ -123,7 +124,7 @@ describe('<ChoiceList />', () => {
     describe('with valid children property returning node when current choice is selected', () => {
       const children = <span>Child</span>;
 
-      it('renders a choice with children content when choice is selected ', () => {
+      it('renders a choice with children content when choice is selected', () => {
         const selectedIndexes = [2];
         const selected = selectedIndexes.map((index) => choices[index].value);
         const renderChildrenSpy = jest.fn(
@@ -177,11 +178,7 @@ describe('<ChoiceList />', () => {
 
         expect(renderChildrenSpy).toHaveBeenCalled();
         expect(
-          choiceElements
-            .find('li')
-            .at(selectedIndex)
-            .find('div')
-            .exists(),
+          choiceElements.find('li').at(selectedIndex).find('div').exists(),
         ).toBeTruthy();
       });
 
@@ -239,11 +236,7 @@ describe('<ChoiceList />', () => {
 
         expect(renderChildrenSpy).toHaveBeenCalled();
         expect(
-          choiceElements
-            .find('li')
-            .at(indexWithChildren)
-            .find('div')
-            .exists(),
+          choiceElements.find('li').at(indexWithChildren).find('div').exists(),
         ).toBeFalsy();
       });
     });

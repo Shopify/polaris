@@ -1,9 +1,10 @@
 import React from 'react';
+
 import {ActionListItemDescriptor, ActionListSection} from '../../types';
 import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
-import {Section} from './components';
 
+import {Section} from './components';
 import styles from './ActionList.scss';
 
 export interface ActionListProps {
@@ -31,7 +32,7 @@ export function ActionList({
     finalSections = sections;
   }
 
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
   const className = classNames(
     styles.ActionList,
     newDesignLanguage && styles.newDesignLanguage,

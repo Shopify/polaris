@@ -1,7 +1,7 @@
 export * from './Navigation';
 
-export {
+export {isNavigationItemActive} from './components';
+export type {
   ItemProps as NavigationItemProps,
   SubNavigationItem,
-  isNavigationItemActive,
 } from './components';

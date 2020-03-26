@@ -2,8 +2,8 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+
 import {Spinner} from '../Spinner';
-import {Image} from '../../Image';
 import {VisuallyHidden} from '../../VisuallyHidden';
 
 describe('<Spinner />', () => {
@@ -21,24 +21,24 @@ describe('<Spinner />', () => {
   describe('size', () => {
     it('renders a large spinner by default', () => {
       const spinner = mountWithAppProvider(<Spinner />);
-      expect(spinner.find(Image).hasClass('sizeLarge')).toBeTruthy();
+      expect(spinner.find('span').first().hasClass('sizeLarge')).toBeTruthy();
     });
 
     it('renders a large spinner when size is large', () => {
       const spinner = mountWithAppProvider(<Spinner size="large" />);
-      expect(spinner.find(Image).hasClass('sizeLarge')).toBeTruthy();
+      expect(spinner.find('span').first().hasClass('sizeLarge')).toBeTruthy();
     });
 
     it('renders a small spinner when size is small', () => {
       const spinner = mountWithAppProvider(<Spinner size="small" />);
-      expect(spinner.find(Image).hasClass('sizeSmall')).toBeTruthy();
+      expect(spinner.find('span').first().hasClass('sizeSmall')).toBeTruthy();
     });
 
     it('renders a small spinner when color is white even if size is large', () => {
       const spinner = mountWithAppProvider(
         <Spinner size="large" color="white" />,
       );
-      expect(spinner.find(Image).hasClass('sizeSmall')).toBeTruthy();
+      expect(spinner.find('span').first().hasClass('sizeSmall')).toBeTruthy();
     });
   });
 
@@ -78,8 +78,28 @@ describe('<Spinner />', () => {
       mountWithAppProvider(<Spinner size="large" color="white" />);
 
       expect(warnSpy).toHaveBeenCalledWith(
-        'The color white is not meant to be used on large spinners. The colors available on large spinners are: teal, inkLightest',
+        'The color white is not meant to be used on large spinners. The colors available on large spinners are: teal, inkLightest, highlight',
       );
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+      const spinner = mountWithApp(<Spinner color="highlight" size="large" />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(spinner).toContainReactComponent('span', {
+        className: 'Spinner colorHighlight sizeLarge newDesignLanguage',
+      });
+    });
+
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+      const spinner = mountWithApp(<Spinner color="teal" size="large" />, {
+        features: {newDesignLanguage: false},
+      });
+      expect(spinner).toContainReactComponent('span', {
+        className: 'Spinner colorTeal sizeLarge',
+      });
     });
   });
 });

@@ -1,7 +1,9 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Banner, UnstyledLink, Icon} from 'components';
+
 import en from '../../../../locales/en.json';
 import {Link} from '../Link';
 
@@ -48,13 +50,7 @@ describe('<Link />', () => {
           Shopify Help Center
         </Link>,
       );
-      expect(
-        link
-          .children()
-          .last()
-          .find(Icon)
-          .exists(),
-      ).toBe(true);
+      expect(link.children().last().find(Icon).exists()).toBe(true);
     });
 
     it('informs screen readers that it opens in a new window', () => {
@@ -64,13 +60,9 @@ describe('<Link />', () => {
         </Link>,
       );
       const hintText = en.Polaris.Common.newWindowAccessibilityHint;
-      expect(
-        link
-          .children()
-          .last()
-          .find(Icon)
-          .prop('accessibilityLabel'),
-      ).toBe(hintText);
+      expect(link.children().last().find(Icon).prop('accessibilityLabel')).toBe(
+        hintText,
+      );
     });
 
     it('doesn’t have a trailing icon for non-string children', () => {
@@ -118,6 +110,17 @@ describe('<Link />', () => {
       );
 
       expect(button.hasClass('monochrome')).toBe(false);
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled, and sets a default color', () => {
+      const link = mountWithApp(<Link url="MyThing" />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(link).toContainReactComponent('a', {
+        className: 'Link newDesignLanguage',
+      });
     });
   });
 });

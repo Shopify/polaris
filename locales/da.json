@@ -162,7 +162,7 @@
         "warningMessage": "Sikring af en bedre brugeroplevelse. Der bør maksimalt være {maxPromotedActions} handlinger, der promoveres."
       },
       "FilterCreator": {
-        "filterButtonLabel": "Filtrér",
+        "filterButtonLabel": "Filtrer",
         "selectFilterKeyPlaceholder": "Vælg et filter ...",
         "addFilterButtonLabel": "Tilføj filter",
         "showAllWhere": "Vis alle {resourceNamePlural}, hvor:"

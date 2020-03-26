@@ -1,3 +1,6 @@
+// stylelint-disable-next-line scss/partial-no-import
+@import './accessibility';
+
 /// Sets the focus ring for an interactive element
 /// @param {String} $size - The size of the border radius on the focus ring.
 /// @param {String} $style - Focus ring state.
@@ -34,6 +37,7 @@
   } @else if $style == 'focused' {
     &::after {
       box-shadow: 0 0 0 $stroke var(--p-focused);
+      @include high-contrast-outline;
     }
   }
 }

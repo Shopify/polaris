@@ -2,11 +2,11 @@ import React, {useState, useCallback} from 'react';
 import {TransitionGroup} from '@material-ui/react-transition-group';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+
 import {useUniqueId} from '../../utilities/unique-id/hooks';
 import {useI18n} from '../../utilities/i18n';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {wrapWithComponent} from '../../utilities/components';
-
 import {Backdrop} from '../Backdrop';
 import {Scrollable} from '../Scrollable';
 import {Spinner} from '../Spinner';

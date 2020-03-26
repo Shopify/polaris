@@ -1,5 +1,6 @@
 import React from 'react';
 import {mount} from 'test-utilities';
+
 import {useComponentDidMount} from '../use-component-did-mount';
 import {useIsAfterInitialMount} from '../use-is-after-initial-mount';
 

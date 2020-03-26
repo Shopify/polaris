@@ -9,9 +9,9 @@ import {
 } from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
+
 import {Footer, Dialog} from '../components';
 import {Modal} from '../Modal';
-
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
 jest.mock('@material-ui/react-transition-group', () => {

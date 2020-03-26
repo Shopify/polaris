@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {classNames, variationName} from '../../utilities/css';
+
 import styles from './TextStyle.scss';
 
 type Variation = 'positive' | 'negative' | 'strong' | 'subdued' | 'code';

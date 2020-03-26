@@ -6,7 +6,6 @@ import {mountWithApp} from 'test-utilities';
 
 import {Icon} from '../../../../Icon';
 import {UnstyledLink} from '../../../../UnstyledLink';
-
 import {MenuAction} from '../MenuAction';
 
 describe('<MenuAction />', () => {
@@ -133,10 +132,10 @@ describe('<MenuAction />', () => {
 
     it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const menuAction = mountWithApp(<MenuAction />, {
-        features: {newDesignLanguage: true},
+        features: {newDesignLanguage: false},
       });
       expect(menuAction).toContainReactComponent('button', {
-        className: 'MenuAction newDesignLanguage',
+        className: 'MenuAction',
       });
     });
   });

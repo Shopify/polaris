@@ -70,6 +70,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   .Button {
     @include focus-ring;
 
+    // stylelint-disable-next-line selector-max-class
     &.focused {
       border-color: transparent;
       box-shadow: none;
@@ -80,7 +81,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   }
 
   .ActionTitle {
-    color: var(--p-action-interactive);
+    color: var(--p-interactive);
     text-decoration: none;
 
     &:not(.ActionTitle-disabled) {
@@ -96,11 +97,11 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   }
 
   .ActionTitle-focused {
-    color: var(--p-action-interactive);
+    color: var(--p-interactive);
     text-decoration: underline;
   }
 
   .ActionTitle-disabled {
-    color: --p-action-interactive;
+    color: --p-interactive;
   }
 }

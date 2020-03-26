@@ -1,4 +1,5 @@
 import {join} from 'path';
+
 import {ConfigurationCallback, Env, Plugins} from '@shopify/sewing-kit';
 
 const tests = join(__dirname, 'tests');
@@ -17,11 +18,16 @@ export default function sewingKitConfig(
     library: true,
     plugins: [
       plugins.jest((config: InitialOptions) => {
-        config.roots = [join(__dirname, 'src'), join(__dirname, 'tests')];
+        config.roots = [
+          join(__dirname, 'src'),
+          join(__dirname, 'tests'),
+          join(__dirname, 'scripts'),
+        ];
 
         // Code coverage
         config.collectCoverageFrom = [
           'src/**/*.{ts,tsx}',
+          'scripts/**/*.{ts,tsx}',
           '!src/test-utilities/**/*.*',
           '!src/**/index.{ts,tsx}',
           '!src/**/*.d.ts',

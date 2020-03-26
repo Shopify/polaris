@@ -9,6 +9,7 @@ import {
   Loading as PolarisLoading,
   TrapFocus,
 } from 'components';
+
 import {Frame} from '../Frame';
 import {
   ContextualSaveBar as FrameContextualSavebar,
@@ -17,7 +18,7 @@ import {
 
 window.matchMedia =
   window.matchMedia ||
-  function() {
+  function () {
     return {
       matches: window.innerWidth <= 769,
       addListener() {},
@@ -300,6 +301,21 @@ describe('<Frame />', () => {
       );
       expect(frame).toContainReactComponent('div', {
         className: 'TopBar TopBar-newDesignLanguage',
+      });
+    });
+
+    it('renders a ContextualSaveBar with a newDesignLanguage class when newDesignLanguage is true', () => {
+      const frame = mountWithApp(
+        <Frame topBar={<div />}>
+          <PolarisLoading />
+        </Frame>,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+      expect(frame).toContainReactComponent('div', {
+        className:
+          'ContextualSaveBar ContextualSaveBar-newDesignLanguage startFadeUp',
       });
     });
 

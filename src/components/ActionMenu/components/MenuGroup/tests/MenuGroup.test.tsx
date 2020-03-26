@@ -6,8 +6,8 @@ import {
   trigger,
   ReactWrapper,
 } from 'test-utilities/legacy';
-
 import {Popover, ActionList} from 'components';
+
 import {MenuAction} from '../../MenuAction';
 import {MenuGroup} from '../MenuGroup';
 
@@ -116,7 +116,7 @@ describe('<MenuGroup />', () => {
       expect(onCloseSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('triggers `onClose` after an action ', () => {
+    it('triggers `onClose` after an action', () => {
       const mockTitle = 'mock title';
       const onCloseSpy = jest.fn();
       const wrapper = mountWithAppProvider(

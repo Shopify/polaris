@@ -36,6 +36,29 @@ export type Color =
   | 'redDark'
   | 'purple';
 
+const NEW_DESIGN_LANGUAGE_COLORS = [
+  'base',
+  'subdued',
+  'critical',
+  'warning',
+  'highlight',
+  'success',
+  'primary',
+];
+type NewDesignLanguageColor =
+  | 'base'
+  | 'subdued'
+  | 'critical'
+  | 'warning'
+  | 'highlight'
+  | 'success'
+  | 'primary';
+export function isNewDesignLanguageColor(
+  color: Color | NewDesignLanguageColor,
+): color is NewDesignLanguageColor {
+  return NEW_DESIGN_LANGUAGE_COLORS.includes(color as NewDesignLanguageColor);
+}
+
 export type IconSource =
   | React.SFC<React.SVGProps<SVGSVGElement>>
   | 'placeholder'
@@ -45,7 +68,7 @@ export interface IconProps {
   /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
   source: IconSource;
   /** Set the color for the SVG fill */
-  color?: Color;
+  color?: Color | NewDesignLanguageColor;
   /** Show a backdrop behind the icon */
   backdrop?: boolean;
   /** Descriptive text to be read to screenreaders */

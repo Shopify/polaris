@@ -96,7 +96,7 @@
       "altText": "Geen zoekresultaten"
     },
     "Frame": {
-      "skipToContent": "Meteen naar de inhoud",
+      "skipToContent": "Meteen naar de content",
       "Navigation": {
         "closeMobileNavigationLabel": "Navigatie sluiten"
       }
@@ -122,7 +122,7 @@
     },
     "Modal": {
       "iFrameTitle": "opmaak platte tekst",
-      "modalWarning": "Deze verplichte onderdelen ontbreken op het modale dialoogvenster: {missingProps}"
+      "modalWarning": "Deze verplichte onderdelen ontbreken ophet modale venster: {missingProps}"
     },
     "Pagination": {
       "previous": "Vorige",

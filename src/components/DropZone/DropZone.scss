@@ -2,11 +2,8 @@
 
 $dropzone-padding: rem(15px);
 $dropzone-border-style: dashed;
-$dropzone-border-color: var(--p-border-secondary, color('ink', 'lightest'));
-$dropzone-border-color-disabled: var(
-  --p-border-secondary-disabled,
-  color('sky')
-);
+$dropzone-border-color: var(--p-border, color('ink', 'lightest'));
+$dropzone-border-color-disabled: var(--p-border-disabled, color('sky'));
 $dropzone-border-radius: var(--p-border-radius-base, border-radius());
 $dropzone-background: var(--p-surface, color('white'));
 $dropzone-min-height-extra-large: rem(205px);
@@ -16,7 +13,7 @@ $dropzone-min-height-small: rem(50px);
 
 $dropzone-overlay-text-color: var(--p-text, color('indigo'));
 $dropzone-overlay-text-color-error: var(--p-text-critical, color('red'));
-$dropzone-overlay-border-color: var(--p-border-secondary, color('indigo'));
+$dropzone-overlay-border-color: var(--p-border, color('indigo'));
 $dropzone-overlay-border-color-error: var(--p-border-critical, color('red'));
 $dropzone-overlay-background: var(
   --p-surface-hovered,
@@ -185,6 +182,10 @@ $dropzone-stacking-order: (
         @include reset-after;
       }
     }
+
+    &:hover {
+      @include high-contrast-outline;
+    }
   }
 
   .Container {
@@ -211,7 +212,7 @@ $dropzone-stacking-order: (
 
   &.focused {
     &:not(.isDisabled) {
-      // stylelint-disable-next-line selector-max-specificity
+      // stylelint-disable-next-line selector-max-specificity, selector-max-class
       .Container {
         @include focus-ring($style: 'focused');
       }

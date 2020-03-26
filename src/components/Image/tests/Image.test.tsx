@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+
 import {Image} from '../Image';
 
 describe('<Image />', () => {
@@ -12,7 +13,7 @@ describe('<Image />', () => {
       src =
         'https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg';
       image = mountWithAppProvider(
-        <Image alt="alt text" source={src} crossOrigin="Anonymous" />,
+        <Image alt="alt text" source={src} crossOrigin="anonymous" />,
       );
     });
 
@@ -25,7 +26,7 @@ describe('<Image />', () => {
     });
 
     it('renders the crossOrigin', () => {
-      expect(image.find('img').prop('crossOrigin')).toBe('Anonymous');
+      expect(image.find('img').prop('crossOrigin')).toBe('anonymous');
     });
   });
 
@@ -45,7 +46,7 @@ describe('<Image />', () => {
           alt="alt text"
           source={src}
           sourceSet={srcSet}
-          crossOrigin="Anonymous"
+          crossOrigin="anonymous"
         />,
       );
 

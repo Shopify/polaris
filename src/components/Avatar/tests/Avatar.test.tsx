@@ -42,7 +42,7 @@ describe('<Avatar />', () => {
     });
   });
 
-  describe('on Error with Initials', () => {
+  describe('Initials', () => {
     it('renders initials if the Image onError prop is triggered and the Intials are provided', () => {
       const avatar = mountWithApp(
         <Avatar size="large" initials="DL" source="image/path/" />,
@@ -59,6 +59,11 @@ describe('<Avatar />', () => {
       expect(avatar).toContainReactComponent('span', {
         className: 'Initials',
       });
+    });
+
+    it('renders an inline svg if initials are blank', () => {
+      const avatar = mountWithAppProvider(<Avatar initials="" />);
+      expect(avatar.find('svg').exists()).toBe(true);
     });
   });
 
@@ -91,24 +96,18 @@ describe('<Avatar />', () => {
       const avatar = mountWithAppProvider(
         <Avatar accessibilityLabel="Hello World" />,
       );
-      expect(
-        avatar
-          .find('span')
-          .first()
-          .prop('aria-label'),
-      ).toBe('Hello World');
+      expect(avatar.find('span').first().prop('aria-label')).toBe(
+        'Hello World',
+      );
     });
   });
 
   describe('name', () => {
     it('is passed to the aria-label', () => {
       const avatar = mountWithAppProvider(<Avatar name="Hello World" />);
-      expect(
-        avatar
-          .find('span')
-          .first()
-          .prop('aria-label'),
-      ).toBe('Hello World');
+      expect(avatar.find('span').first().prop('aria-label')).toBe(
+        'Hello World',
+      );
     });
   });
 

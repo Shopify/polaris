@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
 .Card {
-  overflow: hidden;
   background-color: var(--p-surface, color('white'));
   box-shadow: var(--p-card-shadow, shadow());
+  outline: border-width(base) solid transparent;
 
   + .Card {
     margin-top: spacing(loose);
@@ -11,10 +11,6 @@
 
   @include page-content-when-not-fully-condensed {
     border-radius: var(--p-border-radius-wide, border-radius());
-  }
-
-  @media (-ms-high-contrast: active) {
-    box-shadow: inset 0 0 0 border-width(base) ms-high-contrast-color('text');
   }
 }
 
@@ -40,6 +36,16 @@
   + .Section {
     border-top: border();
   }
+}
+
+.Section:first-child {
+  border-top-left-radius: border-radius();
+  border-top-right-radius: border-radius();
+}
+
+.Section:last-child {
+  border-bottom-left-radius: border-radius();
+  border-bottom-right-radius: border-radius();
 }
 
 .Section-fullWidth {

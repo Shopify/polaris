@@ -1,19 +1,15 @@
 import React, {useEffect, useRef} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {classNames} from '../../../../utilities/css';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
+import {useUniqueId} from '../../../../utilities/unique-id';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {Collapsible} from '../../../Collapsible';
 import {Icon} from '../../../Icon';
 import {IconProps} from '../../../../types';
-
 import {Item, ItemProps} from '../Item';
-
 import styles from '../../Navigation.scss';
-
-const createAdditionalItemsId = createUniqueIDFactory('AdditionalItems');
 
 export interface SectionProps {
   items: ItemProps[];
@@ -161,7 +157,7 @@ export function Section({
     );
   }
 
-  const additionalItemsId = createAdditionalItemsId();
+  const additionalItemsId = useUniqueId('AdditionalItems');
 
   const activeItemsMarkup = rollup && additionalItems.length > 0 && (
     <li className={styles.RollupSection}>

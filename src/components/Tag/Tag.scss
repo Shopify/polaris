@@ -8,7 +8,7 @@ $icon-size: rem(16px);
   max-width: 100%;
   align-items: center;
   min-height: $height;
-  padding-left: spacing(tight);
+  padding: 0 spacing(tight);
   background-color: var(--p-action-secondary, color('sky'));
   border-radius: border-radius();
   color: var(--p-text, color('ink'));
@@ -20,11 +20,66 @@ $icon-size: rem(16px);
     color: var(--p-text-disabled, color('ink', 'lightest'));
   }
 
-  .TagText {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  &.removable {
+    padding-right: 0;
   }
+
+  &.clickable {
+    @include unstyled-button;
+    cursor: pointer;
+    padding: 0 spacing(tight);
+    background-color: color('sky');
+
+    // Start - Delete below me during newDesignLanguage rollout
+    &:hover,
+    &:focus,
+    &:active {
+      background: color('sky', 'dark');
+    }
+    // End - Delete above me during newDesignLanguage rollout
+
+    &:disabled {
+      cursor: default;
+      pointer-events: none;
+      background: none;
+    }
+
+    // stylelint-disable selector-max-specificity
+    // stylelint-disable selector-max-class
+
+    &.newDesignLanguage {
+      background-color: var(--p-action-secondary);
+
+      &:hover {
+        background: var(--p-action-secondary-hovered);
+      }
+
+      @include focus-ring;
+
+      &:focus:not(:active) {
+        @include focus-ring($style: 'focused');
+      }
+
+      &:active {
+        background: var(--p-action-secondary-pressed);
+      }
+
+      &:disabled {
+        background: var(--p-action-secondary-disabled);
+      }
+      // stylelint-enable
+    }
+  }
+}
+
+.TagText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (-ms-high-contrast: active) {
+  outline: 1px solid ms-high-contrast-color('text');
 }
 
 .Button {
@@ -60,6 +115,7 @@ $icon-size: rem(16px);
 
     &:hover {
       background: var(--p-action-secondary-hovered);
+      @include high-contrast-outline;
     }
 
     &:focus {

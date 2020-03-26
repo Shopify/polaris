@@ -1,5 +1,6 @@
 import React, {useMemo, useEffect, useContext} from 'react';
-import DefaultThemeColors from '@shopify/polaris-tokens/dist/base.json';
+import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
+
 import {
   ThemeContext,
   ThemeConfig,
@@ -33,7 +34,7 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
@@ -49,11 +50,7 @@ export function ThemeProvider({
     ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
     colors: {
       ...(isParentThemeProvider && DefaultThemeColors),
-      ...(shouldInheritParentColors(
-        isParentThemeProvider,
-        colorScheme,
-        parentColorScheme,
-      ) && parentColors),
+      ...(parentColors != null && parentColors),
       ...colors,
     },
   };
@@ -112,23 +109,5 @@ function getColorScheme(
       : 'dark';
   } else {
     return colorScheme;
-  }
-}
-
-function shouldInheritParentColors(
-  isParentThemeProvider: boolean,
-  colorScheme: InversableColorScheme | undefined,
-  parentColorScheme: OriginalColorScheme | undefined,
-) {
-  if (isParentThemeProvider) {
-    return false;
-  } else if (
-    isInverseColorScheme(colorScheme) ||
-    (colorScheme === 'dark' && parentColorScheme === 'light') ||
-    (colorScheme === 'light' && parentColorScheme === 'dark')
-  ) {
-    return true;
-  } else {
-    return false;
   }
 }

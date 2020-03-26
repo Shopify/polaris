@@ -1,9 +1,12 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
+
 import {Tab, Panel, TabMeasurer} from '../components';
 import {Tabs, TabsProps} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
+import {FeaturesContext} from '../../../utilities/features';
 import {Popover} from '../../Popover';
 
 describe('<Tabs />', () => {
@@ -24,7 +27,89 @@ describe('<Tabs />', () => {
     }
   });
 
+  it('passes focus index to tab measurer', () => {
+    const tabToFocus = 1;
+    const relatedTarget = document.createElement('div');
+    const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+    const ul = wrapper.find('ul')!;
+    const target = ul.find('button', {id: tabs[tabToFocus].id})!.domNode!;
+    ul.trigger('onFocus', {target, relatedTarget});
+    expect(wrapper).toContainReactComponent(TabMeasurer, {tabToFocus});
+  });
+
+  it('does not change the focus index passed to tab measurer when the focus target is not a tab', () => {
+    const tabToFocus = 0;
+    const relatedTarget = document.createElement('div');
+    const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+    const ul = wrapper.find('ul')!;
+    const target = ul.domNode!;
+    ul.trigger('onFocus', {target, relatedTarget});
+    expect(wrapper).toContainReactComponent(TabMeasurer, {tabToFocus});
+  });
+
+  it('does not change the focus index passed to tab measurer when the focus is coming in from somewhere other than another tab', () => {
+    const tabToFocus = 0;
+    const relatedTarget = null;
+    const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+    const ul = wrapper.find('ul')!;
+    const target = ul.domNode!;
+    ul.trigger('onFocus', {target, relatedTarget});
+    expect(wrapper).toContainReactComponent(TabMeasurer, {tabToFocus});
+  });
+
+  it('forgets the focus position if we blur the target and it is not another tab', () => {
+    const tabToFocus = -1;
+    const relatedTarget = null;
+    const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+    wrapper.find('ul')!.trigger('onBlur', {relatedTarget});
+    expect(wrapper).toContainReactComponent(TabMeasurer, {tabToFocus});
+  });
+
+  it('loses focus if we are going to anywhere other than another tab', () => {
+    const tabToFocus = -1;
+    const relatedTarget = document.createElement('div');
+    const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+    wrapper.find('ul')!.trigger('onBlur', {relatedTarget});
+    expect(wrapper).toContainReactComponent(TabMeasurer, {tabToFocus});
+  });
+
+  it('does not change the focus index passed to tab measurer when the target losing focus in a tab and the target is the list', () => {
+    const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+    const tabToFocus = wrapper.find(TabMeasurer)!.prop('tabToFocus');
+    const ul = wrapper.find('ul')!;
+    const target = ul.domNode!;
+    const relatedTarget = ul.find('button', {id: tabs[0].id})!.domNode!;
+    ul.trigger('onFocus', {target, relatedTarget});
+    expect(wrapper).toContainReactComponent(TabMeasurer, {tabToFocus});
+  });
+
   describe('tabs', () => {
+    it('newDesignLanguage class is present on ul element', () => {
+      const tabs: TabsProps['tabs'] = [
+        {content: 'Tab 1', id: 'tab-1'},
+        {content: 'Tab 2', id: 'tab-2'},
+      ];
+
+      const component = <Tabs {...mockProps} tabs={tabs} />;
+
+      const tabsWithoutDesignLanguage = mountWithAppProvider(component);
+      const tabsWithDesignLanguage = mountWithAppProvider(
+        <FeaturesContext.Provider value={{newDesignLanguage: true}}>
+          {component}
+        </FeaturesContext.Provider>,
+      );
+
+      expect(tabsWithDesignLanguage.find('ul')).toHaveLength(1);
+
+      expect(
+        tabsWithoutDesignLanguage.find('ul').prop('className'),
+      ).not.toContain('newDesignLanguage');
+
+      expect(tabsWithDesignLanguage.find('ul').prop('className')).toContain(
+        'newDesignLanguage',
+      );
+    });
+
     it('uses the IDs passed in for the tabs', () => {
       const tabs: TabsProps['tabs'] = [
         {content: 'Tab 1', id: 'tab-1'},
@@ -33,12 +118,7 @@ describe('<Tabs />', () => {
       const wrapper = mountWithAppProvider(<Tabs {...mockProps} tabs={tabs} />);
 
       tabs.forEach((tab, index) => {
-        expect(
-          wrapper
-            .find(Tab)
-            .at(index)
-            .prop('id'),
-        ).toBe(tab.id);
+        expect(wrapper.find(Tab).at(index).prop('id')).toBe(tab.id);
       });
     });
 
@@ -52,12 +132,7 @@ describe('<Tabs />', () => {
       );
 
       panelIDedTabs.forEach((tab, index) => {
-        expect(
-          wrapper
-            .find(Tab)
-            .at(index)
-            .prop('panelID'),
-        ).toBe(tab.panelID);
+        expect(wrapper.find(Tab).at(index).prop('panelID')).toBe(tab.panelID);
       });
     });
 
@@ -65,10 +140,7 @@ describe('<Tabs />', () => {
       const wrapper = mountWithAppProvider(<Tabs {...mockProps} />);
 
       tabs.forEach((_, index) => {
-        const panelID = wrapper
-          .find(Tab)
-          .at(index)
-          .prop('panelID');
+        const panelID = wrapper.find(Tab).at(index).prop('panelID');
         expect(typeof panelID).toBe('string');
         expect(panelID).not.toBe('');
       });
@@ -84,12 +156,7 @@ describe('<Tabs />', () => {
       );
 
       urlTabs.forEach((tab, index) => {
-        expect(
-          wrapper
-            .find(Tab)
-            .at(index)
-            .prop('url'),
-        ).toStrictEqual(tab.url);
+        expect(wrapper.find(Tab).at(index).prop('url')).toStrictEqual(tab.url);
       });
     });
 
@@ -104,10 +171,7 @@ describe('<Tabs />', () => {
 
       labelledTabs.forEach((tab, index) => {
         expect(
-          wrapper
-            .find(Tab)
-            .at(index)
-            .prop('accessibilityLabel'),
+          wrapper.find(Tab).at(index).prop('accessibilityLabel'),
         ).toStrictEqual(tab.accessibilityLabel);
       });
     });
@@ -122,12 +186,9 @@ describe('<Tabs />', () => {
       );
 
       tabsWithContent.forEach((tab, index) => {
-        expect(
-          wrapper
-            .find(Tab)
-            .at(index)
-            .prop('children'),
-        ).toStrictEqual(tab.content);
+        expect(wrapper.find(Tab).at(index).prop('children')).toStrictEqual(
+          tab.content,
+        );
       });
     });
   });
@@ -220,11 +281,7 @@ describe('<Tabs />', () => {
       const wrapper = mountWithAppProvider(
         <Tabs {...mockProps} onSelect={spy} />,
       );
-      wrapper
-        .find(Tab)
-        .at(1)
-        .find('button')
-        .simulate('click');
+      wrapper.find(Tab).at(1).find('button').simulate('click');
       expect(spy).toHaveBeenCalledWith(1);
     });
   });

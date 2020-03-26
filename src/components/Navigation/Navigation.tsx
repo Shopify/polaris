@@ -8,10 +8,10 @@ import {WithinContentContext} from '../../utilities/within-content-context';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
 import {getWidth} from '../../utilities/get-width';
+
 import {NavigationContext} from './context';
 import {Section, Item} from './components';
 import {SectionType} from './types';
-
 import styles from './Navigation.scss';
 
 export interface NavigationProps {
@@ -32,7 +32,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   onDismiss,
 }: NavigationProps) {
   const {logo} = useTheme();
-  const {newDesignLanguage = false} = useFeatures();
+  const {newDesignLanguage} = useFeatures();
   const width = getWidth(logo, 104);
 
   const logoMarkup =

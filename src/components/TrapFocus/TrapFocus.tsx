@@ -1,17 +1,17 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
-import {Key} from '../../types';
 
+import {Key} from '../../types';
 import {EventListener} from '../EventListener';
 import {KeypressListener} from '../KeypressListener';
 import {Focus} from '../Focus';
-
 import {
   findFirstKeyboardFocusableNode,
   focusFirstKeyboardFocusableNode,
   findLastKeyboardFocusableNode,
   focusLastKeyboardFocusableNode,
 } from '../../utilities/focus';
+import {useFocusManager} from '../../utilities/focus-manager';
 
 export interface TrapFocusProps {
   trapping?: boolean;
@@ -22,20 +22,21 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
   const [shouldFocusSelf, setFocusSelf] = useState<boolean | undefined>(
     undefined,
   );
-
+  const {canSafelyFocus} = useFocusManager();
   const focusTrapWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setFocusSelf(
       !(
+        canSafelyFocus &&
         focusTrapWrapper.current &&
         focusTrapWrapper.current.contains(document.activeElement)
       ),
     );
-  }, []);
+  }, [canSafelyFocus]);
 
   const shouldDisableFirstElementFocus = () => {
-    if (shouldFocusSelf === undefined) {
+    if (shouldFocusSelf === undefined || !canSafelyFocus) {
       return true;
     }
 
@@ -56,8 +57,10 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
     }
 
     if (
+      canSafelyFocus &&
+      event.target instanceof HTMLElement &&
       focusTrapWrapper.current !== event.target &&
-      !focusTrapWrapper.current.contains(event.target as Node)
+      !focusTrapWrapper.current.contains(event.target)
     ) {
       focusFirstFocusableNode(focusTrapWrapper.current);
     }
