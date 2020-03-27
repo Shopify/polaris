@@ -378,6 +378,10 @@ $secondary-item-font-size: rem(15px);
   }
 }
 
+.SecondaryNavigation-noIcon {
+  margin-left: spacing();
+}
+
 // Section styles
 .Section {
   @include unstyled-list;
