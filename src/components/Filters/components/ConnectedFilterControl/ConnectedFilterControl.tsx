@@ -99,8 +99,13 @@ export class ConnectedFilterControl extends React.Component<
         actionsToRender &&
         rightPopoverableActions.length !== actionsToRender.length);
 
+    const RightContainerClassName = classNames(
+      styles.RightContainer,
+      !shouldRenderMoreFiltersButton && styles.RightContainerWithoutMoreFilters,
+    );
+
     const rightMarkup = actionsToRender ? (
-      <div className={styles.RightContainer} testID="FilterShortcutContainer">
+      <div className={RightContainerClassName} testID="FilterShortcutContainer">
         {this.popoverFrom(actionsToRender)}
       </div>
     ) : null;
@@ -209,6 +214,10 @@ export class ConnectedFilterControl extends React.Component<
       if (actionWidth <= remainingWidth) {
         actionsToReturn.push(action);
         remainingWidth -= actionWidth;
+      } else {
+        // When we can't fit an action, we break the loop.
+        // The ones that didn't fit will be accessible through the "More filters" button
+        break;
       }
     }
     return actionsToReturn;
