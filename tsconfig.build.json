@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "declarationDir": "types/latest",
+    "declarationMap": false,
+    "emitDeclarationOnly": true,
+    "incremental": true,
+    "tsBuildInfoFile": "build/.tsbuildinfo"
+  },
+  "include": ["./config/typescript", "./src"],
+  "exclude": ["..src/**/*.test.ts", "./src/**/*.test.tsx"]
+}
