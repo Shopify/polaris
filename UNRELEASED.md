@@ -10,6 +10,8 @@
 
 ### Documentation
 
+- Fixed two typos in the `Form` documentation.
+
 ### Development workflow
 
 ### Dependency upgrades

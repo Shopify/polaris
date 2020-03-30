@@ -17,11 +17,11 @@ export interface FormProps {
   acceptCharset?: string;
   /** Where to send form-data on submittal */
   action?: string;
-  /** Grants the broswer the ability to autocomplete input elements */
+  /** Grants the browser the ability to autocomplete input elements */
   autoComplete?: boolean;
   /** The content to display inside the form. */
   children?: React.ReactNode;
-  /** Media type when submiting content to server */
+  /** Media type when submitting content to server */
   encType?: Enctype;
   /** Toggles if form submits on Enter keypress. Defaults to true. */
   implicitSubmit?: boolean;
