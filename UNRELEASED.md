@@ -19,4 +19,6 @@
 
 ### Code quality
 
+- Use `downlevel-dts` to produce compatible type definitions for consuming apps using older TypeScript versions ([#2875](https://github.com/Shopify/polaris-react/pull/2875))
+
 ### Deprecations
