@@ -76,6 +76,19 @@ $stacking-order: (
   }
 }
 
+.RightContainerWithoutMoreFilters {
+  .Item:last-child > * > * {
+    border-top-right-radius: var(
+      --p-border-radius-base,
+      border-radius()
+    ) !important;
+    border-bottom-right-radius: var(
+      --p-border-radius-base,
+      border-radius()
+    ) !important;
+  }
+}
+
 .newDesignLanguage .RightContainer {
   .Item:first-of-type > * > * {
     border-top-left-radius: var(--p-border-radius-base) !important;
