@@ -46,6 +46,7 @@ const Overrides = {
   rangeSliderThumbSizeBase: rem('16px'),
   rangeSliderThumbSizeActive: rem('24px'),
   rangeSliderThumbScale: '1.5',
+  badgeFontWeight: '500',
 };
 
 export const Tokens = {

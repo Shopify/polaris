@@ -24,13 +24,17 @@ $difference-between-touch-area-and-backdrop: control-height() -
   color: var(--p-text-subdued, color('ink', 'lighter'));
   text-decoration: none;
 
+  &.newDesignLanguage {
+    margin-left: 0;
+  }
+
   &:hover,
   &:active {
     color: var(--p-text, color('ink'));
     text-decoration: none;
 
     .Icon {
-      @include recolor-icon(var(--p-icon, color('ink')));
+      @include recolor-icon(var(--p-icon-pressed, color('ink')));
     }
   }
   // stylelint-disable selector-max-specificity
@@ -74,7 +78,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
 }
 
 .Icon {
-  @include recolor-icon(var(--p-icon-subdued, color('ink', 'lighter')));
+  @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
   width: $icon-size;
   height: $icon-size;
   margin: (-0.5 * $icon-size) 0 (-0.5 * $icon-size) rem(-8px);
