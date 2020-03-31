@@ -1,6 +1,6 @@
 import {clamp} from '@shopify/javascript-utilities/math';
 
-import {nameHexMap} from './color-validation';
+import {names} from './color-map';
 import type {
   RGBColor,
   RGBAColor,
@@ -11,6 +11,8 @@ import type {
   HSBLAColor,
 } from './color-types';
 import {compose} from './compose';
+
+const nameHexMap: Record<string, string> = names;
 
 const RGB_STRING_TO_HEX_REGEX = /^rgb[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i;
 

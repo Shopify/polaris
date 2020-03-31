@@ -3,19 +3,13 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {classNames} from '../../../../utilities/css';
 import {HSBColor} from '../../../../utilities/color-types';
 import {
-  normalizeColorString,
-  expandHex,
   hsbToHex,
   hsbToString,
-  rgbStringToHex,
-  nameToHex,
   hexToHsb,
 } from '../../../../utilities/color-transformers';
 import {
-  isColorName,
   isHexString,
-  isHashlessHex,
-  isRgbString,
+  coerceToValidUserInput,
 } from '../../../../utilities/color-validation';
 import {useI18n} from '../../../../utilities/i18n';
 import {TextField} from '../../../TextField';
@@ -31,7 +25,7 @@ export function TextPicker({color, allowAlpha, onChange}: TextPickerProps) {
   const i18n = useI18n();
 
   const [text, setText] = useState('');
-  const lastValidValue = useRef<string>('');
+  const lastValidValue = useRef('');
 
   const handleTextChange = useCallback((value) => {
     setText(value);
@@ -83,20 +77,6 @@ export function TextPicker({color, allowAlpha, onChange}: TextPickerProps) {
       <div style={prefixStyle} className={styles.SwatchBackground} />
     </div>
   );
-
-  const coerceToValidUserInput = (value: string) => {
-    const normalizedValue = normalizeColorString(value);
-    switch (true) {
-      case isHexString(normalizedValue):
-        return expandHex(normalizedValue);
-      case isHashlessHex(normalizedValue):
-        return expandHex(`#${normalizedValue}`);
-      case isRgbString(normalizedValue):
-        return rgbStringToHex(normalizedValue);
-      case isColorName(normalizedValue):
-        return nameToHex(normalizedValue);
-    }
-  };
 
   return (
     <div className={className}>
