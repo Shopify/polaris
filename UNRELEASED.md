@@ -4,6 +4,8 @@
 
 ### Enhancements
 
+- Removed unnecessary `left: 0` property from Frame > Navigation class ([#2884](https://github.com/Shopify/polaris-react/pull/2884))
+
 ### Bug fixes
 
 - Fixed right padding styling issue with the `Tag` component and remove right padding on a removable `Tag` ([#2860](https://github.com/Shopify/polaris-react/pull/2860)).

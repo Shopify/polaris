@@ -19,7 +19,6 @@ $skip-vertical-offset: rem(10px);
   position: fixed;
   z-index: z-index(nav, $fixed-element-stacking-order);
   top: 0;
-  left: 0;
   display: none;
   flex: 0 0 auto;
   align-items: stretch;
@@ -144,10 +143,8 @@ $skip-vertical-offset: rem(10px);
 
 .ContextualSaveBar-newDesignLanguage {
   @include frame-when-nav-displayed {
-    .hasNav & {
-      left: layout-width(unstable-nav);
-      max-width: calc(100% - #{layout-width(unstable-nav)});
-    }
+    left: layout-width(unstable-nav);
+    max-width: calc(100% - #{layout-width(unstable-nav)});
   }
 }
 
