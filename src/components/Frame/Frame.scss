@@ -8,15 +8,21 @@ $skip-vertical-offset: rem(10px);
   min-height: 100vh;
   display: flex;
   background-color: var(--p-background, color('sky', 'light'));
+  flex-direction: column;
 
   @include when-printing {
     background-color: none;
   }
 }
 
+.ContentContainer {
+  display: flex;
+  flex-direction: row;
+}
+
 .Navigation {
   @include hidden-when-printing;
-  position: fixed;
+  position: sticky;
   z-index: z-index(nav, $fixed-element-stacking-order);
   top: 0;
   left: 0;
@@ -33,7 +39,7 @@ $skip-vertical-offset: rem(10px);
 
     &:not(.Navigation-newDesignLanguage) {
       top: top-bar-height();
-      height: calc(100% - #{top-bar-height()});
+      height: calc(100vh - #{top-bar-height()});
     }
   }
 
@@ -119,7 +125,7 @@ $skip-vertical-offset: rem(10px);
 
 .TopBar {
   @include hidden-when-printing;
-  position: fixed;
+  position: sticky;
   z-index: z-index(top-bar, $fixed-element-stacking-order);
   top: 0;
   left: 0;
@@ -163,16 +169,16 @@ $skip-vertical-offset: rem(10px);
 
   @include frame-when-nav-displayed {
     .hasNav & {
-      padding-left: layout-width(nav);
+      // padding-left: layout-width(nav);
       @include when-printing {
         padding-left: 0;
       }
-      @include safe-area-for(padding-left, layout-width(nav), left);
+      // @include safe-area-for(padding-left, layout-width(nav), left);
     }
   }
 
   .hasTopBar & {
-    padding-top: top-bar-height();
+    // padding-top: top-bar-height();
     @include when-printing {
       padding-top: 0;
     }

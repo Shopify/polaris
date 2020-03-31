@@ -299,18 +299,22 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
         >
           {skipMarkup}
           {topBarMarkup}
-          {navigationMarkup}
+          <div className={styles.ContentContainer}>
+            {navigationMarkup}
+            <main
+              className={mainClassName}
+              id={APP_FRAME_MAIN}
+              data-has-global-ribbon={Boolean(globalRibbon)}
+            >
+              {skipToMainContentTarget}
+              <div className={styles.Content}>{children}</div>
+            </main>
+          </div>
+
           {contextualSaveBarMarkup}
           {loadingMarkup}
           {navigationOverlayMarkup}
-          <main
-            className={mainClassName}
-            id={APP_FRAME_MAIN}
-            data-has-global-ribbon={Boolean(globalRibbon)}
-          >
-            {skipToMainContentTarget}
-            <div className={styles.Content}>{children}</div>
-          </main>
+
           <ToastManager toastMessages={toastMessages} />
           {globalRibbonMarkup}
           <EventListener event="resize" handler={this.handleResize} />

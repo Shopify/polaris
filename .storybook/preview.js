@@ -19,7 +19,7 @@ addParameters({
 });
 
 addDecorator(function PaddingDecorator(story) {
-  return <div style={{padding: '8px'}}>{story()}</div>;
+  return <>{story()}</>;
 });
 
 function StrictModeToggle({isStrict = false, children}) {
