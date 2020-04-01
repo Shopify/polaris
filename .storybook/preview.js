@@ -19,7 +19,17 @@ addParameters({
 });
 
 addDecorator(function PaddingDecorator(story) {
-  return <div style={{padding: '8px'}}>{story()}</div>;
+  const props = story().props;
+  const containsFrame =
+    props &&
+    props.hasOwnProperty('topBar') &&
+    props.hasOwnProperty('navigation');
+
+  return containsFrame ? (
+    story()
+  ) : (
+    <div style={{padding: '8px'}}>{story()}</div>
+  );
 });
 
 function StrictModeToggle({isStrict = false, children}) {
