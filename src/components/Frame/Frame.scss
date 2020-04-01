@@ -7,10 +7,16 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   min-height: 100vh;
   display: flex;
+
   background-color: var(--p-background, color('sky', 'light'));
 
   @include when-printing {
     background-color: none;
+  }
+
+  @include frame-when-nav-displayed {
+    width: calc(100% - var(--p-frame-offset));
+    margin-left: var(--p-frame-offset);
   }
 }
 
@@ -125,6 +131,11 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   height: top-bar-height();
 
+  @include frame-when-nav-displayed {
+    left: var(--p-frame-offset);
+    width: calc(100% - var(--p-frame-offset));
+  }
+
   &.TopBar-newDesignLanguage {
     @include frame-when-nav-displayed {
       left: layout-width(unstable-nav);
@@ -137,8 +148,12 @@ $skip-vertical-offset: rem(10px);
   position: fixed;
   z-index: z-index(context-bar, $fixed-element-stacking-order);
   top: 0;
-  left: 0;
   width: 100%;
+
+  @include frame-when-nav-displayed {
+    left: var(--p-frame-offset);
+    width: calc(100% - var(--p-frame-offset));
+  }
 }
 
 .ContextualSaveBar-newDesignLanguage {
@@ -154,11 +169,14 @@ $skip-vertical-offset: rem(10px);
   align-items: stretch;
 
   @include layout-flex-fix;
+
   @include safe-area-for(padding-right, 0, right);
   @include safe-area-for(padding-left, 0, left);
   @include safe-area-for(padding-bottom, 0, bottom);
 
   @include frame-when-nav-displayed {
+    max-width: calc(100% - var(--p-frame-offset));
+
     .hasNav & {
       padding-left: layout-width(nav);
       @include when-printing {
@@ -208,10 +226,16 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
 
   @include frame-when-nav-displayed {
+    left: var(--p-frame-offset);
+
     .hasNav & {
-      left: layout-width(nav);
-      @include safe-area-for(left, layout-width(nav), left);
-      width: calc(100% - #{layout-width(nav)});
+      left: calc(#{layout-width(nav)} + var(--p-frame-offset));
+      @include safe-area-for(
+        left,
+        calc(#{layout-width(nav)} + var(--p-frame-offset)),
+        left
+      );
+      width: calc(100% - #{layout-width(nav)} - var(--p-frame-offset));
     }
   }
 }

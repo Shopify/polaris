@@ -11,6 +11,7 @@ import {
   AppsMajorTwotone,
   DuplicateMinor,
   ViewMinor,
+  SettingsMajorMonotone,
 } from '@shopify/polaris-icons';
 import {
   ActionList,
@@ -37,6 +38,7 @@ import {
   Stack,
   Caption,
   Thumbnail,
+  ThemeProvider,
 } from '../src';
 
 import styles from './DetailsPage.scss';
@@ -320,6 +322,7 @@ export function DetailsPage() {
         ]}
       />
       <Navigation.Section
+        fill
         title="Contact support"
         action={{
           icon: ConversationMinor,
@@ -327,6 +330,15 @@ export function DetailsPage() {
           onClick: toggleModalActive,
         }}
         items={[]}
+      />
+      <Navigation.Section
+        items={[
+          {
+            icon: SettingsMajorMonotone,
+            label: 'Settings',
+            onClick: toggleModalActive,
+          },
+        ]}
       />
     </Navigation>
   );
@@ -523,18 +535,31 @@ export function DetailsPage() {
   );
 
   return (
-    <Frame
-      topBar={topBarMarkup}
-      navigation={navigationMarkup}
-      showMobileNavigation={mobileNavigationActive}
-      onNavigationDismiss={toggleMobileNavigationActive}
-      skipToContentTarget={skipToContentRef}
-    >
-      {contextualSaveBarMarkup}
-      {loadingMarkup}
-      {pageMarkup}
-      {toastMarkup}
-      {modalMarkup}
-    </Frame>
+    <div style={{background: 'red'}}>
+      <ThemeProvider
+        theme={{
+          frameOffset: '20px',
+        }}
+      >
+        <Frame
+          globalRibbon={
+            <div style={{background: 'red', padding: '30px'}}>
+              Global ribbon
+            </div>
+          }
+          topBar={topBarMarkup}
+          navigation={navigationMarkup}
+          showMobileNavigation={mobileNavigationActive}
+          onNavigationDismiss={toggleMobileNavigationActive}
+          skipToContentTarget={skipToContentRef}
+        >
+          {contextualSaveBarMarkup}
+          {loadingMarkup}
+          {pageMarkup}
+          {toastMarkup}
+          {modalMarkup}
+        </Frame>
+      </ThemeProvider>
+    </div>
   );
 }

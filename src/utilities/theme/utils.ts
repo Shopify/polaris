@@ -35,13 +35,14 @@ export function buildThemeContext(
   themeConfig: ThemeConfig,
   cssCustomProperties?: CustomPropertiesLike,
 ): Theme {
-  const {logo, colors = {}, colorScheme} = themeConfig;
+  const {logo, colors = {}, colorScheme, frameOffset = '0px'} = themeConfig;
   const {topBar, ...newDesignLanguageColors} = colors;
   return {
     logo,
     cssCustomProperties: toString(cssCustomProperties),
     colors: newDesignLanguageColors,
     colorScheme,
+    frameOffset,
   };
 }
 

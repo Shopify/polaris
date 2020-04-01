@@ -25,7 +25,7 @@ addDecorator(function PaddingDecorator(story) {
     props.hasOwnProperty('topBar') &&
     props.hasOwnProperty('navigation');
 
-  return containsFrame ? (
+  return !containsFrame ? (
     story()
   ) : (
     <div style={{padding: '8px'}}>{story()}</div>

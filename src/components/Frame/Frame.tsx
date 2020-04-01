@@ -3,6 +3,7 @@ import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from '@material-ui/react-transition-group';
 import {FeaturesContext} from '../../utilities/features';
+import {ThemeContext} from '../../utilities/theme';
 import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {EventListener} from '../EventListener';
@@ -291,29 +292,40 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
 
     return (
       <FrameContext.Provider value={context}>
-        <div
-          className={frameClassName}
-          {...layer.props}
-          {...navigationAttributes}
-        >
-          {skipMarkup}
-          {topBarMarkup}
-          {navigationMarkup}
-          {contextualSaveBarMarkup}
-          {loadingMarkup}
-          {navigationOverlayMarkup}
-          <main
-            className={mainClassName}
-            id={APP_FRAME_MAIN}
-            data-has-global-ribbon={Boolean(globalRibbon)}
-          >
-            {skipToMainContentTarget}
-            <div className={styles.Content}>{children}</div>
-          </main>
-          <ToastManager toastMessages={toastMessages} />
-          {globalRibbonMarkup}
-          <EventListener event="resize" handler={this.handleResize} />
-        </div>
+        <ThemeContext.Consumer>
+          {(theme) => {
+            const style = {
+              '--p-frame-offset':
+                theme && theme.frameOffset ? theme.frameOffset : '0px',
+            } as React.CSSProperties;
+            return (
+              <div
+                style={{...style}}
+                className={frameClassName}
+                {...layer.props}
+                {...navigationAttributes}
+              >
+                {skipMarkup}
+                {topBarMarkup}
+                {navigationMarkup}
+                {contextualSaveBarMarkup}
+                {loadingMarkup}
+                {navigationOverlayMarkup}
+                <main
+                  className={mainClassName}
+                  id={APP_FRAME_MAIN}
+                  data-has-global-ribbon={Boolean(globalRibbon)}
+                >
+                  {skipToMainContentTarget}
+                  <div className={styles.Content}>{children}</div>
+                </main>
+                <ToastManager toastMessages={toastMessages} />
+                {globalRibbonMarkup}
+                <EventListener event="resize" handler={this.handleResize} />
+              </div>
+            );
+          }}
+        </ThemeContext.Consumer>
       </FrameContext.Provider>
     );
   }
