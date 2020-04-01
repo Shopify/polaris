@@ -6,6 +6,9 @@ import {
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../types';
+import {FeaturesContext} from '../../utilities/features';
+import {Button} from '../Button';
+import {ButtonGroup} from '../ButtonGroup';
 
 import {sortAndOverrideActionOrder} from './utilities';
 import {MenuAction, MenuGroup, RollupActions} from './components';
@@ -25,6 +28,9 @@ interface State {
 }
 
 export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
+  static contextType = FeaturesContext;
+  context!: React.ContextType<typeof FeaturesContext>;
+
   state: State = {
     activeMenuGroup: undefined,
   };
@@ -55,6 +61,7 @@ export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
   }
 
   private renderActions = () => {
+    const {newDesignLanguage} = this.context || {};
     const {actions = [], groups = []} = this.props;
     const {activeMenuGroup} = this.state;
     const menuActions = [...actions, ...groups];
@@ -79,12 +86,24 @@ export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
       }
 
       const {content, ...rest} = action;
-      return (
+      return newDesignLanguage ? (
+        <Button key={index} {...rest}>
+          {content}
+        </Button>
+      ) : (
         <MenuAction key={`MenuAction-${index}`} content={content} {...rest} />
       );
     });
 
-    return <div className={styles.ActionsLayout}>{actionMarkup}</div>;
+    return (
+      <div className={styles.ActionsLayout}>
+        {newDesignLanguage ? (
+          <ButtonGroup>{actionMarkup}</ButtonGroup>
+        ) : (
+          actionMarkup
+        )}
+      </div>
+    );
   };
 
   private handleMenuGroupToggle = (group: string) => {

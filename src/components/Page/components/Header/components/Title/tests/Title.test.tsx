@@ -1,6 +1,7 @@
 import * as React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Badge, DisplayText, Avatar} from 'components';
 
 import {Title} from '../Title';
@@ -59,6 +60,31 @@ describe('<Title />', () => {
     it('renders the thumbnail when defined', () => {
       const pageTitle = mountWithAppProvider(<Title {...propsWithThumbail} />);
       expect(pageTitle.find(Avatar).exists()).toBe(true);
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    const propsWithMetadata = {
+      ...mockProps,
+      titleMetadata: <Badge>Sold</Badge>,
+    };
+
+    it('adds a newDesignLanguage class when enabled', () => {
+      const title = mountWithApp(<Title {...propsWithMetadata} />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(title).toContainReactComponent('div', {
+        className: 'TitleMetadata newDesignLanguage',
+      });
+    });
+
+    it('does not add a newDesignLanguage class when disabled', () => {
+      const title = mountWithApp(<Title {...propsWithMetadata} />, {
+        features: {newDesignLanguage: false},
+      });
+      expect(title).toContainReactComponent('div', {
+        className: 'TitleMetadata',
+      });
     });
   });
 });

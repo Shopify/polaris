@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "rootDir": "./",
-    "declarationDir": "types",
+    "declarationDir": "types/latest",
     "declarationMap": false,
     "jsx": "react-native",
     "isolatedModules": true,

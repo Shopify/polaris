@@ -236,8 +236,13 @@ export function Item({
       ({url: firstUrl}, {url: secondUrl}) => secondUrl.length - firstUrl.length,
     )[0];
 
+    const SecondaryNavigationClassName = classNames(
+      styles.SecondaryNavigation,
+      !icon && styles['SecondaryNavigation-noIcon'],
+    );
+
     secondaryNavigationMarkup = (
-      <div className={styles.SecondaryNavigation}>
+      <div className={SecondaryNavigationClassName}>
         <Secondary expanded={showExpanded}>
           {subNavigationItems.map((item) => {
             const {label, ...rest} = item;

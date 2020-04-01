@@ -26,7 +26,7 @@ $chekbox-label-margin: rem(20px);
   width: 100%;
   box-shadow: var(--p-override-none, shadow(faint));
 
-  [data-buttongroup-segmented] & {
+  [data-buttongroup-segmented='true'] & {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right: none;

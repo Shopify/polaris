@@ -92,7 +92,7 @@ $stacking-order: (
 }
 
 // stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
-[data-buttongroup-segmented] {
+[data-buttongroup-segmented='true'] {
   .Button,
   .Button::after {
     border-radius: 0;

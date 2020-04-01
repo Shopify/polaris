@@ -6,7 +6,7 @@ import {
   trigger,
   ReactWrapper,
 } from 'test-utilities/legacy';
-import {Popover, ActionList} from 'components';
+import {Popover, ActionList, Button} from 'components';
 
 import {MenuAction} from '../../MenuAction';
 import {MenuGroup} from '../MenuGroup';
@@ -131,6 +131,26 @@ describe('<MenuGroup />', () => {
       trigger(wrapper.find(ActionList), 'onActionAnyItem');
 
       expect(onCloseSpy).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('uses Button instead of MenuAction as subcomponents', () => {
+      const wrapper = mountWithAppProvider(<MenuGroup {...mockProps} />, {
+        features: {newDesignLanguage: true},
+      });
+
+      expect(wrapper.find(Button)).toHaveLength(1);
+      expect(wrapper.find(MenuAction)).toHaveLength(0);
+    });
+
+    it('uses MenuAction instead of Button as subcomponents when disabled', () => {
+      const wrapper = mountWithAppProvider(<MenuGroup {...mockProps} />, {
+        features: {newDesignLanguage: false},
+      });
+
+      expect(wrapper.find(MenuAction)).toHaveLength(1);
+      expect(wrapper.find(Button)).toHaveLength(0);
     });
   });
 });

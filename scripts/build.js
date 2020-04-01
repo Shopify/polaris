@@ -5,7 +5,7 @@ const {resolve: resolvePath} = require('path');
 
 const {ensureDirSync, writeFileSync, readFileSync} = require('fs-extra');
 const {rollup} = require('rollup');
-const {cp, mv, rm} = require('shelljs');
+const {cp, mv} = require('shelljs');
 const copyfiles = require('copyfiles');
 
 const createRollupConfig = require('../config/rollup');
@@ -20,21 +20,18 @@ const intermediateBuild = resolvePath(root, './build-intermediate');
 const mainEntry = resolvePath(intermediateBuild, './index.js');
 
 const scripts = resolvePath(root, 'scripts');
-const types = resolvePath(root, 'types');
 const tsBuild = resolvePath(scripts, 'tsconfig.json');
 
+const execOptions = {stdio: 'inherit', cwd: root};
+
 execSync(
-  `${resolvePath(
-    root,
-    './node_modules/.bin/tsc',
-  )} --outDir ${intermediateBuild} --project ${tsBuild}`,
-  {
-    stdio: 'inherit',
-  },
+  `yarn run tsc --outDir ${intermediateBuild} --project ${tsBuild}`,
+  execOptions,
 );
 
-mv(resolvePath(root, 'types/src/*'), types);
-rm('-rf', resolvePath(root, 'types/src'));
+// Downlevel type declarations to support consuming apps that use older versions
+// of typescript
+execSync(`yarn run downlevel-dts types/latest types/3.4`, execOptions);
 
 mv(resolvePath(intermediateBuild, 'src/*'), intermediateBuild);
 

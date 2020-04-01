@@ -3,24 +3,34 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
 import {useMediaQuery} from '../../../../utilities/media-query';
+import {useFeatures} from '../../../../utilities/features';
+import {
+  ConditionalRender,
+  ConditionalWrapper,
+} from '../../../../utilities/components';
 import {
   MenuGroupDescriptor,
   MenuActionDescriptor,
   DestructableAction,
   DisableableAction,
   LoadableAction,
+  IconableAction,
 } from '../../../../types';
 import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
 import {Pagination, PaginationDescriptor} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
+import {ButtonGroup} from '../../../ButtonGroup';
 
 import {Title, TitleProps} from './components';
 import styles from './Header.scss';
 
+type MaybeJSX = JSX.Element | null;
+
 interface PrimaryAction
   extends DestructableAction,
     DisableableAction,
-    LoadableAction {
+    LoadableAction,
+    IconableAction {
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
 }
@@ -56,10 +66,16 @@ export function Header({
   actionGroups = [],
 }: HeaderProps) {
   const {isNavigationCollapsed} = useMediaQuery();
+  const {newDesignLanguage} = useFeatures();
 
   const breadcrumbMarkup =
     breadcrumbs.length > 0 ? (
-      <div className={styles.BreadcrumbWrapper}>
+      <div
+        className={classNames(
+          styles.BreadcrumbWrapper,
+          newDesignLanguage && styles.newDesignLanguage,
+        )}
+      >
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </div>
     ) : null;
@@ -93,20 +109,39 @@ export function Header({
     (primaryAction.primary === undefined ? true : primaryAction.primary);
 
   const primaryActionMarkup = primaryAction ? (
-    <div className={styles.PrimaryActionWrapper}>
-      {buttonsFrom(primaryAction, {primary})}
-    </div>
+    <ConditionalWrapper
+      condition={newDesignLanguage === false}
+      wrapper={(children) => (
+        <div className={styles.PrimaryActionWrapper}>{children}</div>
+      )}
+    >
+      {buttonsFrom(
+        shouldShowIconOnly(
+          newDesignLanguage,
+          isNavigationCollapsed,
+          primaryAction,
+        ),
+        {
+          primary,
+        },
+      )}
+    </ConditionalWrapper>
   ) : null;
 
   const actionMenuMarkup =
     secondaryActions.length > 0 || hasGroupsWithActions(actionGroups) ? (
-      <div className={styles.ActionMenuWrapper}>
+      <ConditionalWrapper
+        condition={newDesignLanguage === false}
+        wrapper={(children) => (
+          <div className={styles.ActionMenuWrapper}>{children}</div>
+        )}
+      >
         <ActionMenu
           actions={secondaryActions}
           groups={actionGroups}
           rollup={isNavigationCollapsed}
         />
-      </div>
+      </ConditionalWrapper>
     ) : null;
 
   const headerClassNames = classNames(
@@ -116,7 +151,54 @@ export function Header({
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
+    newDesignLanguage && styles.newDesignLanguage,
   );
+
+  if (newDesignLanguage) {
+    const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
+      breadcrumbMarkup,
+      pageTitleMarkup,
+      paginationMarkup,
+      actionMenuMarkup,
+      primaryActionMarkup,
+      title,
+      isNavigationCollapsed,
+    });
+
+    return (
+      <div className={headerClassNames}>
+        <ConditionalRender
+          condition={[slot1, slot2, slot3, slot4].some(notNull)}
+        >
+          <div className={styles.Row}>
+            <div className={styles.LeftAlign}>
+              {slot1}
+              {slot2}
+            </div>
+            <ConditionalRender condition={[slot3, slot4].some(notNull)}>
+              <div className={styles.RightAlign}>
+                <ConditionalWrapper
+                  condition={[slot3, slot4].every(notNull)}
+                  wrapper={(children) => <ButtonGroup>{children}</ButtonGroup>}
+                >
+                  {slot3}
+                  {slot4}
+                </ConditionalWrapper>
+              </div>
+            </ConditionalRender>
+          </div>
+        </ConditionalRender>
+        <ConditionalRender condition={[slot5, slot6].some(notNull)}>
+          <div className={styles.Row}>
+            <div className={styles.LeftAlign}>{slot5}</div>
+            <ConditionalRender condition={slot6 != null}>
+              <div className={styles.RightAlign}>{slot6}</div>
+            </ConditionalRender>
+          </div>
+        </ConditionalRender>
+      </div>
+    );
+  }
 
   return (
     <div className={headerClassNames}>
@@ -132,4 +214,121 @@ export function Header({
       </div>
     </div>
   );
+}
+
+function shouldShowIconOnly(
+  newDesignLanguage: boolean,
+  isMobile: boolean,
+  action: PrimaryAction,
+): PrimaryAction {
+  let {content, accessibilityLabel, icon} = action;
+  if (!newDesignLanguage || icon == null) return {...action, icon: undefined};
+
+  if (isMobile) {
+    accessibilityLabel = accessibilityLabel || content;
+    content = undefined;
+  } else {
+    icon = undefined;
+  }
+
+  return {
+    ...action,
+    content,
+    accessibilityLabel,
+    icon,
+  };
+}
+
+function notNull(value: any) {
+  return value != null;
+}
+
+function determineLayout({
+  breadcrumbMarkup,
+  pageTitleMarkup,
+  title,
+  paginationMarkup,
+  actionMenuMarkup,
+  primaryActionMarkup,
+  isNavigationCollapsed,
+}: {
+  breadcrumbMarkup: MaybeJSX;
+  pageTitleMarkup: JSX.Element;
+  title?: string;
+  paginationMarkup: MaybeJSX;
+  actionMenuMarkup: MaybeJSX;
+  primaryActionMarkup: MaybeJSX;
+  isNavigationCollapsed: boolean;
+}) {
+  const shortTitle = 20;
+  const reallyShortTitle = 8;
+
+  //    Header Layout
+  // |----------------------------------------------------|
+  // | slot1 | slot2 |                    | slot3 | slot4 |
+  // |----------------------------------------------------|
+  // | slot5 |                                    | slot6 |
+  // |----------------------------------------------------|
+  //
+  const layouts = {
+    mobileCompact: {
+      slots: {
+        slot1: null,
+        slot2: pageTitleMarkup,
+        slot3: actionMenuMarkup,
+        slot4: primaryActionMarkup,
+        slot5: null,
+        slot6: null,
+      },
+      condition:
+        isNavigationCollapsed &&
+        breadcrumbMarkup == null &&
+        title != null &&
+        title.length <= reallyShortTitle,
+    },
+    mobileDefault: {
+      slots: {
+        slot1: breadcrumbMarkup,
+        slot2: null,
+        slot3: actionMenuMarkup,
+        slot4: primaryActionMarkup,
+        slot5: pageTitleMarkup,
+        slot6: null,
+      },
+      condition: isNavigationCollapsed,
+    },
+    desktopCompact: {
+      slots: {
+        slot1: breadcrumbMarkup,
+        slot2: pageTitleMarkup,
+        slot3: null,
+        slot4: primaryActionMarkup,
+        slot5: null,
+        slot6: null,
+      },
+      condition:
+        !isNavigationCollapsed &&
+        paginationMarkup == null &&
+        actionMenuMarkup == null &&
+        title != null &&
+        title.length <= shortTitle,
+    },
+    desktopDefault: {
+      slots: {
+        slot1: breadcrumbMarkup,
+        slot2: pageTitleMarkup,
+        slot3: null,
+        slot4: paginationMarkup,
+        slot5: actionMenuMarkup,
+        slot6: primaryActionMarkup,
+      },
+      condition: !isNavigationCollapsed,
+    },
+  };
+
+  const layout =
+    Object.values(layouts).find((layout) => layout.condition) ||
+    layouts.desktopDefault;
+
+  return layout.slots;
 }

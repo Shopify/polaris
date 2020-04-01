@@ -28,7 +28,10 @@
   "main": "index.js",
   "module": "index.es.js",
   "jsnext:main": "index.es.js",
-  "types": "types/index.d.ts",
+  "types": "types/latest/src/index.d.ts",
+  "typesVersions": {
+    "<3.8": { "types/latest/*": ["types/3.4/*"] }
+  },
   "scripts": {
     "lint": "sewing-kit lint",
     "format": "sewing-kit format",
@@ -129,6 +132,7 @@
     "copyfiles": "^2.1.1",
     "core-js": "^2.6.7",
     "cssnano": "^4.1.10",
+    "downlevel-dts": "^0.4.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "fs-extra": "^7.0.1",
