@@ -22,15 +22,19 @@ export function buildCustomProperties(
   newDesignLanguage: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
-  const {colors = {}, colorScheme, config} = themeConfig;
+  const {colors = {}, colorScheme, config, frameOffset = '0px'} = themeConfig;
   const mergedConfig = mergeConfigs(base, config || {});
 
   return newDesignLanguage
     ? customPropertyTransformer({
         ...colorFactory(colors, colorScheme, mergedConfig),
         ...tokens,
+        frameOffset,
       })
-    : buildLegacyColors(themeConfig);
+    : {
+        ...buildLegacyColors(themeConfig),
+        ...(frameOffset ? customPropertyTransformer({frameOffset}) : null),
+      };
 }
 
 export function buildThemeContext(

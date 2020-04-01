@@ -4,7 +4,7 @@
 
 ### Enhancements
 
-- Removed unnecessary `left: 0` property from Frame > Navigation class ([#2884](https://github.com/Shopify/polaris-react/pull/2884))
+- Added a theme prop for `frameOffset` ([#2887](https://github.com/Shopify/polaris-react/pull/2887))
 
 ### Bug fixes
 
