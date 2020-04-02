@@ -31,17 +31,17 @@ describe('setTextColor', () => {
 });
 
 describe('setBorderColor', () => {
-  it('sets a css variable to white if the variant is dark', () => {
+  it('sets a css variable to sky dark if the variant is dark', () => {
     const textColor = setBorderColor('topBar', 'dark');
     expect(textColor).toStrictEqual(['topBar', tokens.colorSkyDark]);
   });
 
-  it('sets a css variable to white if the variant has no value', () => {
+  it('sets a css variable to sky dark if the variant has no value', () => {
     const textColor = setBorderColor('topBar');
     expect(textColor).toStrictEqual(['topBar', tokens.colorSkyDark]);
   });
 
-  it('sets a css variable to inkLighter if the variant is light', () => {
+  it('sets a css variable to ink lighter if the variant is light', () => {
     const textColor = setBorderColor('topBar', 'light');
     expect(textColor).toStrictEqual(['topBar', tokens.colorInkLighter]);
   });
