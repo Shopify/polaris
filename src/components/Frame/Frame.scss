@@ -34,9 +34,7 @@ $skip-vertical-offset: rem(10px);
 
   @include frame-when-nav-displayed {
     z-index: 1;
-    // `calc()` needs the px value below.
-    // stylelint-disable-next-line length-zero-no-unit
-    left: calc(0px + var(--p-frame-offset));
+    left: var(--p-frame-offset);
     display: flex;
 
     &:not(.Navigation-newDesignLanguage) {
