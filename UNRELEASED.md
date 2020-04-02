@@ -4,7 +4,7 @@
 
 ### Enhancements
 
-- When a user provides a `focusBorder` in the theme a border is rendered around the `TopBar` search field back drop when focusing the SearchField input ([#2886](#2886)).
+- Added `showFocusBorder` prop to the `TopBar.SearchField` to allow users to add show a border on focus ([#2886](#2886)).
 
 ### Bug fixes
 
