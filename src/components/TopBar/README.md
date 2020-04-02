@@ -298,7 +298,7 @@ function TopBarExample() {
       topBar: {
         background: '#357997',
         backgroundLighter: '#6192a9',
-        color: '#FFFFFF'
+        color: '#FFFFFF',
       },
     },
     logo: {
