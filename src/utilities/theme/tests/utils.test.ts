@@ -54,6 +54,7 @@ describe('needsVariant', () => {
 
 describe('buildCustomProperties', () => {
   const legacyCustomProperties = {
+    '--p-frame-offset': '0px',
     '--top-bar-background': '#eeeeee',
     '--top-bar-background-lighter': 'hsla(0, 10%, 100%, 1)',
     '--top-bar-color': 'rgb(33, 43, 54)',

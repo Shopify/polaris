@@ -672,7 +672,8 @@ function FrameExample() {
 
   return (
     <div style={{background: '#DE1373', margin: '-8px'}}>
-      <h3 style={{
+      <h3
+        style={{
           position: 'absolute',
           transform: 'rotate(-90deg) translate(-50%, -50%)',
         }}
