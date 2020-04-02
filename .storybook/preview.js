@@ -19,10 +19,12 @@ addParameters({
 });
 
 addDecorator(function PaddingDecorator(story) {
-  const props = story().props;
+  const storyProps = story().storyProps;
   const containsFrame =
-    props &&
-    (props.hasOwnProperty('topBar') || props.hasOwnProperty('navigation'));
+    storyProps &&
+    (storyProps.hasOwnProperty('topBar') ||
+      storyProps.hasOwnProperty('navigation') ||
+      storyProps.hasOwnProperty('data-has-frame'));
 
   return containsFrame ? (
     story()

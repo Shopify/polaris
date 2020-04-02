@@ -25,6 +25,7 @@ $skip-vertical-offset: rem(10px);
   position: fixed;
   z-index: z-index(nav, $fixed-element-stacking-order);
   top: 0;
+  left: 0;
   display: none;
   flex: 0 0 auto;
   align-items: stretch;
@@ -148,6 +149,7 @@ $skip-vertical-offset: rem(10px);
   position: fixed;
   z-index: z-index(context-bar, $fixed-element-stacking-order);
   top: 0;
+  left: 0;
   width: 100%;
 
   @include frame-when-nav-displayed {
