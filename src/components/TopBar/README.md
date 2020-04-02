@@ -220,6 +220,7 @@ function TopBarExample() {
       onChange={handleSearchChange}
       value={searchValue}
       placeholder="Search"
+      showFocusBorder
     />
   );
 
@@ -297,8 +298,7 @@ function TopBarExample() {
       topBar: {
         background: '#357997',
         backgroundLighter: '#6192a9',
-        color: '#FFFFFF',
-        focusBorder: '#5c6ac4',
+        color: '#FFFFFF'
       },
     },
     logo: {

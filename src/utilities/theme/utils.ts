@@ -118,6 +118,16 @@ export function setTextColor(
   return [name, tokens.colorWhite];
 }
 
+export function setBorderColor(
+  name: string,
+  variant: 'light' | 'dark' = 'dark',
+): string[] {
+  if (variant === 'light') {
+    return [name, tokens.colorInkLighter];
+  }
+  return [name, tokens.colorSkyDark];
+}
+
 export function setTheme(
   color: string | HSLColor,
   baseName: string,
@@ -131,6 +141,10 @@ export function setTheme(
         setTextColor(constructColorName(baseName, null, 'color'), 'light'),
       );
 
+      colorPairs.push(
+        setBorderColor(constructColorName(baseName, null, 'border'), 'light'),
+      );
+
       colorPairs.push([
         constructColorName(baseName, key, 'lighter'),
         lightenToString(color, 7, -10),
@@ -140,6 +154,10 @@ export function setTheme(
     case 'dark':
       colorPairs.push(
         setTextColor(constructColorName(baseName, null, 'color'), 'dark'),
+      );
+
+      colorPairs.push(
+        setBorderColor(constructColorName(baseName, null, 'border'), 'dark'),
       );
 
       colorPairs.push([
