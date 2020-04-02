@@ -4,6 +4,7 @@ import {needsVariantList} from '../config';
 import {
   needsVariant,
   setTextColor,
+  setBorderColor,
   setTheme,
   buildThemeContext,
   buildCustomProperties,
@@ -21,6 +22,18 @@ describe('setTextColor', () => {
   it('sets a css variable to ink if the variant is light', () => {
     const textColor = setTextColor('topBar', 'light');
     expect(textColor).toStrictEqual(['topBar', tokens.colorInk]);
+  });
+});
+
+describe('setBorderColor', () => {
+  it('sets a css variable to white if the variant is dark', () => {
+    const textColor = setBorderColor('topBar', 'dark');
+    expect(textColor).toStrictEqual(['topBar', tokens.colorSkyDark]);
+  });
+
+  it('sets a css variable to inkLighter if the variant is light', () => {
+    const textColor = setBorderColor('topBar', 'light');
+    expect(textColor).toStrictEqual(['topBar', tokens.colorInkLighter]);
   });
 });
 
