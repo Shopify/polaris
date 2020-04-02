@@ -35,6 +35,7 @@ describe('setTheme', () => {
 
     expect(theme).toStrictEqual([
       ['--top-bar-color', 'rgb(255, 255, 255)'],
+      ['--top-bar-border', 'rgb(196, 205, 213)'],
       ['--top-bar-background-lighter', 'hsla(184, 85%, 43%, 1)'],
     ]);
   });
@@ -56,6 +57,7 @@ describe('buildCustomProperties', () => {
   const legacyCustomProperties = {
     '--top-bar-background': '#eeeeee',
     '--top-bar-background-lighter': 'hsla(0, 10%, 100%, 1)',
+    '--top-bar-border': 'rgb(99, 115, 129)',
     '--top-bar-color': 'rgb(33, 43, 54)',
   };
 

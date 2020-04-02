@@ -93,6 +93,7 @@ describe('<ThemeProvider />', () => {
         '--top-bar-background': '#108043',
         '--top-bar-background-lighter': 'hsla(147, 63%, 43%, 1)',
         '--top-bar-color': 'rgb(255, 255, 255)',
+        '--top-bar-border': 'rgb(196, 205, 213)',
       }),
     });
   });
@@ -127,6 +128,7 @@ describe('<ThemeProvider />', () => {
         '--top-bar-background': '#021123',
         '--top-bar-background-lighter': 'hsla(213, 74%, 22%, 1)',
         '--top-bar-color': 'rgb(255, 255, 255)',
+        '--top-bar-border': 'rgb(196, 205, 213)',
       }),
     });
   });
