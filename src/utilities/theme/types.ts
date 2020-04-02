@@ -52,7 +52,7 @@ export interface ThemeConfig {
   colors?: Partial<RoleColors> & LegacyColors;
   colorScheme?: ColorScheme;
   config?: Config;
-  frameOffset?: string;
+  frameOffset?: number;
 }
 
 export type CustomPropertiesLike = Record<string, string>;
@@ -65,5 +65,4 @@ export interface Theme {
   colors?: Partial<RoleColors>;
   colorScheme?: ColorScheme;
   textColor?: string;
-  frameOffset?: string;
 }
