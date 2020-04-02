@@ -134,7 +134,6 @@ export function SearchField({
       </span>
 
       {clearMarkup}
-      <h1>{showFocusBorder}</h1>
       <div
         className={classNames(
           styles.Backdrop,
