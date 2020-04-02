@@ -327,7 +327,7 @@ function FrameExample() {
   };
 
   return (
-    <div style={{background: '#DE1373'}} data-has-frame>
+    <div style={{height: '500px'}}>
       <AppProvider
         theme={theme}
         i18n={{

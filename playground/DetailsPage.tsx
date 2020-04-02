@@ -39,7 +39,6 @@ import {
   Stack,
   Caption,
   Thumbnail,
-  ThemeProvider,
 } from '../src';
 
 import styles from './DetailsPage.scss';
@@ -536,28 +535,18 @@ export function DetailsPage() {
   );
 
   return (
-    // TODO remove wrapper so story works properly and removes 8px padding
-    <div style={{background: '#DE1373'}} data-has-frame>
-      <ThemeProvider theme={{frameOffset: '60px'}}>
-        <Frame
-          globalRibbon={
-            <div style={{background: '#C0FFEE', padding: '30px'}}>
-              Global ribbon
-            </div>
-          }
-          topBar={topBarMarkup}
-          navigation={navigationMarkup}
-          showMobileNavigation={mobileNavigationActive}
-          onNavigationDismiss={toggleMobileNavigationActive}
-          skipToContentTarget={skipToContentRef}
-        >
-          {contextualSaveBarMarkup}
-          {loadingMarkup}
-          {pageMarkup}
-          {toastMarkup}
-          {modalMarkup}
-        </Frame>
-      </ThemeProvider>
-    </div>
+    <Frame
+      topBar={topBarMarkup}
+      navigation={navigationMarkup}
+      showMobileNavigation={mobileNavigationActive}
+      onNavigationDismiss={toggleMobileNavigationActive}
+      skipToContentTarget={skipToContentRef}
+    >
+      {contextualSaveBarMarkup}
+      {loadingMarkup}
+      {pageMarkup}
+      {toastMarkup}
+      {modalMarkup}
+    </Frame>
   );
 }
