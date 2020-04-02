@@ -298,7 +298,7 @@ function TopBarExample() {
         background: '#357997',
         backgroundLighter: '#6192a9',
         color: '#FFFFFF',
-        focusBorder: '#5c6ac4'
+        focusBorder: '#5c6ac4',
       },
     },
     logo: {
