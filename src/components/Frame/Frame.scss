@@ -276,6 +276,10 @@ $skip-vertical-offset: rem(10px);
   left: 0;
 
   @include frame-when-nav-displayed {
+    .hasNav & {
+      left: var(--p-frame-offset);
+    }
+
     .hasTopBar & {
       top: var(--p-override-zero, top-bar-height());
       z-index: var(
