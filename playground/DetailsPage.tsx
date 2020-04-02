@@ -537,11 +537,11 @@ export function DetailsPage() {
 
   return (
     // TODO remove wrapper so story works properly and removes 8px padding
-    <div style={{background: 'red'}} data-has-frame>
+    <div style={{background: '#DE1373'}} data-has-frame>
       <ThemeProvider theme={{frameOffset: '60px'}}>
         <Frame
           globalRibbon={
-            <div style={{background: 'red', padding: '30px'}}>
+            <div style={{background: '#C0FFEE', padding: '30px'}}>
               Global ribbon
             </div>
           }

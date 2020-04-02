@@ -19,7 +19,7 @@ addParameters({
 });
 
 addDecorator(function PaddingDecorator(story) {
-  const storyProps = story().storyProps;
+  const storyProps = story().props;
   const containsFrame =
     storyProps &&
     (storyProps.hasOwnProperty('topBar') ||

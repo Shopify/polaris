@@ -7,7 +7,6 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   min-height: 100vh;
   display: flex;
-
   background-color: var(--p-background, color('sky', 'light'));
 
   @include when-printing {
@@ -35,11 +34,16 @@ $skip-vertical-offset: rem(10px);
 
   @include frame-when-nav-displayed {
     z-index: 1;
+    // `calc()` needs the px value below.
+    // stylelint-disable-next-line length-zero-no-unit
+    left: calc(0px + var(--p-frame-offset));
     display: flex;
 
     &:not(.Navigation-newDesignLanguage) {
-      top: top-bar-height();
-      height: calc(100% - #{top-bar-height()});
+      .hasTopBar & {
+        top: top-bar-height();
+        height: calc(100% - #{top-bar-height()});
+      }
     }
   }
 
@@ -139,8 +143,13 @@ $skip-vertical-offset: rem(10px);
 
   &.TopBar-newDesignLanguage {
     @include frame-when-nav-displayed {
-      left: calc(#{layout-width(unstable-nav)} + var(--p-frame-offset));
-      width: calc(100% - #{layout-width(unstable-nav)} - var(--p-frame-offset));
+      // stylelint-disable-next-line selector-max-class
+      .hasNav & {
+        left: calc(#{layout-width(unstable-nav)} + var(--p-frame-offset));
+        width: calc(
+          100% - #{layout-width(unstable-nav)} - var(--p-frame-offset)
+        );
+      }
     }
   }
 }
@@ -160,10 +169,12 @@ $skip-vertical-offset: rem(10px);
 
 .ContextualSaveBar-newDesignLanguage {
   @include frame-when-nav-displayed {
-    left: calc(#{layout-width(unstable-nav)} + var(--p-frame-offset));
-    max-width: calc(
-      100% - #{layout-width(unstable-nav)} - var(--p-frame-offset)
-    );
+    .hasNav & {
+      left: calc(#{layout-width(unstable-nav)} + var(--p-frame-offset));
+      max-width: calc(
+        100% - #{layout-width(unstable-nav)} - var(--p-frame-offset)
+      );
+    }
   }
 }
 
@@ -179,8 +190,6 @@ $skip-vertical-offset: rem(10px);
   @include safe-area-for(padding-bottom, 0, bottom);
 
   @include frame-when-nav-displayed {
-    // max-width: calc(100% - var(--p-frame-offset));
-
     .hasNav & {
       padding-left: layout-width(nav);
       @include when-printing {
