@@ -1,6 +1,20 @@
 const MINUTE = 60;
 const HOUR = MINUTE * 60;
 
+export function ensureTwoDigits(num: number): string {
+  return num > 9 ? String(num) : `0${num}`;
+}
+
+export function secondsToTimeComponents(
+  seconds: number,
+): {hours: number; minutes: number; seconds: number} {
+  return {
+    hours: Math.floor(seconds / HOUR),
+    minutes: Math.floor((seconds % HOUR) / MINUTE),
+    seconds: seconds % MINUTE,
+  };
+}
+
 export function secondsToTimestamp(numSeconds: number) {
   const {hours, minutes, seconds} = secondsToTimeComponents(numSeconds);
   const hasHours = numSeconds > HOUR;
@@ -11,12 +25,12 @@ export function secondsToTimestamp(numSeconds: number) {
   return `${hoursText}${minutesText}${secondsText}`;
 }
 
-export function secondsToDurationKey(numSeconds: number) {
+export function secondsToDurationTranslationKey(numSeconds: number) {
   const {hours, minutes, seconds} = secondsToTimeComponents(numSeconds);
   let durationKey = 'Polaris.VideoThumbnail.playButtonA11yLabel.duration';
 
   if (hours) {
-    durationKey += `.hours.${hours > 1 ? 'plural' : 'singular'}`;
+    durationKey += `.hours.${hours > 1 ? 'other' : 'one'}`;
 
     if (seconds) {
       if (minutes > 1) {
@@ -36,7 +50,7 @@ export function secondsToDurationKey(numSeconds: number) {
       durationKey += '.only';
     }
   } else if (minutes) {
-    durationKey += `.minutes.${minutes > 1 ? 'plural' : 'singular'}`;
+    durationKey += `.minutes.${minutes > 1 ? 'other' : 'one'}`;
 
     if (seconds) {
       durationKey += `${seconds > 1 ? '.andSeconds' : '.andSecond'}`;
@@ -44,22 +58,8 @@ export function secondsToDurationKey(numSeconds: number) {
       durationKey += '.only';
     }
   } else if (seconds) {
-    durationKey += seconds > 1 ? '.seconds.plural' : '.seconds.singular';
+    durationKey += seconds > 1 ? '.seconds.other' : '.seconds.one';
   }
 
   return durationKey;
-}
-
-export function secondsToTimeComponents(
-  seconds: number,
-): {hours: number; minutes: number; seconds: number} {
-  return {
-    hours: Math.floor(seconds / HOUR),
-    minutes: Math.floor((seconds % HOUR) / MINUTE),
-    seconds: seconds % MINUTE,
-  };
-}
-
-function ensureTwoDigits(num: number): string {
-  return num > 9 ? String(num) : `0${num}`;
 }

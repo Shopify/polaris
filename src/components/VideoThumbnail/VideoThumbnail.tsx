@@ -1,12 +1,12 @@
 import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
-
 import {
   secondsToTimeComponents,
   secondsToTimestamp,
-  secondsToDurationKey,
-} from './utilities';
+  secondsToDurationTranslationKey,
+} from '../../utilities/duration';
+
 import {PlayIcon} from './illustrations';
 import styles from './VideoThumbnail.scss';
 
@@ -43,7 +43,7 @@ export const VideoThumbnail = ({
     defaultLabel = i18n.translate(
       'Polaris.VideoThumbnail.playButtonA11yLabel.defaultWithDuration',
       {
-        duration: i18n.translate(secondsToDurationKey(videoLength), {
+        duration: i18n.translate(secondsToDurationTranslationKey(videoLength), {
           hourCount: hours,
           minuteCount: minutes,
           secondCount: seconds,

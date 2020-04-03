@@ -237,7 +237,7 @@
         "defaultWithDuration": "Play video of length {duration}",
         "duration": {
           "hours": {
-            "plural": {
+            "other": {
               "only": "{hourCount} hours",
               "andMinutes": "{hourCount} hours and {minuteCount} minutes",
               "andMinute": "{hourCount} hours and {minuteCount} minute",
@@ -248,7 +248,7 @@
               "andSeconds": "{hourCount} hours and {secondCount} seconds",
               "andSecond": "{hourCount} hours and {secondCount} second"
             },
-            "singular": {
+            "one": {
               "only": "{hourCount} hour",
               "andMinutes": "{hourCount} hour and {minuteCount} minutes",
               "andMinute": "{hourCount} hour and {minuteCount} minute",
@@ -261,20 +261,20 @@
             }
           },
           "minutes": {
-            "plural": {
+            "other": {
               "only": "{minuteCount} minutes",
               "andSeconds": "{minuteCount} minutes and {secondCount} seconds",
               "andSecond": "{minuteCount} minutes and {secondCount} second"
             },
-            "singular": {
+            "one": {
               "only": "{minuteCount} minute",
               "andSeconds": "{minuteCount} minute and {secondCount} seconds",
               "andSecond": "{minuteCount} minute and {secondCount} second"
             }
           },
           "seconds": {
-            "plural": "{secondCount} seconds",
-            "singular": "{secondCount} second"
+            "other": "{secondCount} seconds",
+            "one": "{secondCount} second"
           }
         }
       }
