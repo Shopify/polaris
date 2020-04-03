@@ -147,7 +147,7 @@ const jobs = repositories.map((repository) => {
           body: pullRequestTemplate(repository, releaseVersion),
           head: `update-polaris-${releaseVersion}`,
           base: baseBranch,
-        })}' -X POST https://api.github.com/repos/shopify/${repository}/pulls?access_token=${polarisBotToken}`,
+        })}' -H 'Authorization: token ${polarisBotToken}' -X POST https://api.github.com/repos/shopify/${repository}/pulls`,
       ];
 
       for (const command of commands) {
