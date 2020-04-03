@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "4.16.1",
+  "version": "4.17.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -30,7 +30,11 @@
   "jsnext:main": "index.es.js",
   "types": "types/latest/src/index.d.ts",
   "typesVersions": {
-    "<3.8": { "types/latest/*": ["types/3.4/*"] }
+    "<3.8": {
+      "types/latest/*": [
+        "types/3.4/*"
+      ]
+    }
   },
   "scripts": {
     "lint": "sewing-kit lint",
