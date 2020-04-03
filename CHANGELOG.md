@@ -18,7 +18,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 - Added optional `onClick` prop to `Tag` ([#2774](https://github.com/Shopify/polaris-react/pull/2774))
 - Added transition properties to `Collapsible` ([#2835](https://github.com/Shopify/polaris-react/pull/2835))
-- Updated the font stack to put `Segoe UI` before `Roboto` ([#2891](https://github.com/Shopify/polaris-react/pull/2891))
 
 ### Bug fixes
 
