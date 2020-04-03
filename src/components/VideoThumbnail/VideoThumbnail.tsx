@@ -1,9 +1,13 @@
 import React from 'react';
+
 import {useI18n} from '../../utilities/i18n';
 
+import {
+  secondsToTimeComponents,
+  secondsToTimestamp,
+  secondsToDurationKey,
+} from './utilities';
 import {PlayIcon} from './illustrations';
-import {secondsToFormatPretty} from './utilities';
-
 import styles from './VideoThumbnail.scss';
 
 export interface VideoThumbnailProps {
@@ -12,7 +16,7 @@ export interface VideoThumbnailProps {
   /** Length of video in seconds. */
   videoLength?: number;
   /** Custom ARIA label for play button.
-   * @default 'Play video'
+   * @default 'Play video of length {human readable duration}'
    */
   accessibilityLabel?: string;
   /** Callback on click or keypress of thumbnail. Use to trigger render of the video player in your chosen format, for example within a modal or fullscreen container. */
@@ -29,39 +33,29 @@ export const VideoThumbnail = ({
   onBeforeStartPlaying,
 }: VideoThumbnailProps) => {
   const i18n = useI18n();
-  const videoLengthParsed = secondsToFormatPretty(videoLength);
-  const length = videoLengthParsed
-    ? `${
-        videoLengthParsed!.hours
-          ? i18n.translate('Polaris.VideoThumbnail.hoursLabel', {
-              hours: videoLengthParsed!.hours,
-            })
-          : ''
-      } ${
-        videoLengthParsed!.minutes
-          ? i18n.translate('Polaris.VideoThumbnail.minutesLabel', {
-              minutes: videoLengthParsed!.minutes,
-            })
-          : ''
-      } ${
-        videoLengthParsed!.seconds
-          ? i18n.translate('Polaris.VideoThumbnail.secondsLabel', {
-              seconds: videoLengthParsed!.seconds,
-            })
-          : ''
-      }`
-    : null;
+  let defaultLabel = i18n.translate(
+    'Polaris.VideoThumbnail.playButtonA11yLabel.default',
+  );
 
-  const defaultLabel = length
-    ? i18n.translate('Polaris.VideoThumbnail.playButtonWithTime', {
-        length,
-      })
-    : i18n.translate('Polaris.VideoThumbnail.playButtonDefault');
+  if (videoLength) {
+    const {hours, minutes, seconds} = secondsToTimeComponents(videoLength);
+
+    defaultLabel = i18n.translate(
+      'Polaris.VideoThumbnail.playButtonA11yLabel.defaultWithDuration',
+      {
+        duration: i18n.translate(secondsToDurationKey(videoLength), {
+          hourCount: hours,
+          minuteCount: minutes,
+          secondCount: seconds,
+        }),
+      },
+    );
+  }
 
   const buttonLabel = accessibilityLabel ? accessibilityLabel : defaultLabel;
 
-  const videoLengthMarkup = videoLengthParsed ? (
-    <p className={styles.Timestamp}>{videoLengthParsed!.timeLabel}</p>
+  const timeStampMarkup = videoLength ? (
+    <p className={styles.Timestamp}>{secondsToTimestamp(videoLength)}</p>
   ) : null;
 
   return (
@@ -72,15 +66,15 @@ export const VideoThumbnail = ({
       <button
         type="button"
         className={styles.PlayButton}
+        aria-label={buttonLabel}
         onClick={onClick}
         onMouseEnter={onBeforeStartPlaying}
         onFocus={onBeforeStartPlaying}
         onTouchStart={onBeforeStartPlaying}
-        aria-label={buttonLabel}
       >
         <img className={styles.PlayIcon} src={PlayIcon} alt="" />
       </button>
-      {videoLengthMarkup}
+      {timeStampMarkup}
     </div>
   );
 };

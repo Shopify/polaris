@@ -232,11 +232,52 @@
       "popoverButton": "Actions"
     },
     "VideoThumbnail": {
-      "playButtonDefault": "Play video",
-      "playButtonWithTime": "Play video of length {length}",
-      "hoursLabel": "{hours} hours",
-      "minutesLabel": "{minutes} minutes",
-      "secondsLabel": "{seconds} seconds"
+      "playButtonA11yLabel": {
+        "default": "Play video",
+        "defaultWithDuration": "Play video of length {duration}",
+        "duration": {
+          "hours": {
+            "plural": {
+              "only": "{hourCount} hours",
+              "andMinutes": "{hourCount} hours and {minuteCount} minutes",
+              "andMinute": "{hourCount} hours and {minuteCount} minute",
+              "minutesAndSeconds": "{hourCount} hours, {minuteCount} minutes, and {secondCount} seconds",
+              "minutesAndSecond": "{hourCount} hours, {minuteCount} minutes, and {secondCount} second",
+              "minuteAndSeconds": "{hourCount} hours, {minuteCount} minute, and {secondCount} seconds",
+              "minuteAndSecond": "{hourCount} hours, {minuteCount} minute, and {secondCount} second",
+              "andSeconds": "{hourCount} hours and {secondCount} seconds",
+              "andSecond": "{hourCount} hours and {secondCount} second"
+            },
+            "singular": {
+              "only": "{hourCount} hour",
+              "andMinutes": "{hourCount} hour and {minuteCount} minutes",
+              "andMinute": "{hourCount} hour and {minuteCount} minute",
+              "minutesAndSeconds": "{hourCount} hour, {minuteCount} minutes, and {secondCount} seconds",
+              "minutesAndSecond": "{hourCount} hour, {minuteCount} minutes, and {secondCount} second",
+              "minuteAndSeconds": "{hourCount} hour, {minuteCount} minute, and {secondCount} seconds",
+              "minuteAndSecond": "{hourCount} hour, {minuteCount} minute, and {secondCount} second",
+              "andSeconds": "{hourCount} hour and {secondCount} seconds",
+              "andSecond": "{hourCount} hour and {secondCount} second"
+            }
+          },
+          "minutes": {
+            "plural": {
+              "only": "{minuteCount} minutes",
+              "andSeconds": "{minuteCount} minutes and {secondCount} seconds",
+              "andSecond": "{minuteCount} minutes and {secondCount} second"
+            },
+            "singular": {
+              "only": "{minuteCount} minute",
+              "andSeconds": "{minuteCount} minute and {secondCount} seconds",
+              "andSecond": "{minuteCount} minute and {secondCount} second"
+            }
+          },
+          "seconds": {
+            "plural": "{secondCount} seconds",
+            "singular": "{secondCount} second"
+          }
+        }
+      }
     }
   }
 }

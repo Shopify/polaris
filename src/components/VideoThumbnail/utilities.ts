@@ -1,37 +1,56 @@
 const MINUTE = 60;
 const HOUR = MINUTE * 60;
 
-interface TimeProps {
-  timeLabel: string | null;
-  hours: number | null;
-  minutes: number | null;
-  seconds: number | null;
-}
-
-export function secondsToFormatPretty(numSeconds?: number): TimeProps | null {
-  if (!numSeconds || isNaN(numSeconds) || numSeconds < 0) {
-    return null;
-  }
-
+export function secondsToTimestamp(numSeconds: number) {
   const {hours, minutes, seconds} = secondsToTimeComponents(numSeconds);
   const hasHours = numSeconds > HOUR;
   const hoursText = hasHours ? `${hours}:` : '';
   const minutesText = `${hasHours ? ensureTwoDigits(minutes) : minutes}:`;
   const secondsText = `${ensureTwoDigits(seconds)}`;
 
-  return {
-    seconds,
-    minutes,
-    hours: hasHours ? hours : null,
-    timeLabel: `${hoursText}${minutesText}${secondsText}`,
-  };
+  return `${hoursText}${minutesText}${secondsText}`;
 }
 
-function ensureTwoDigits(num: number): string {
-  return num > 9 ? String(num) : `0${num}`;
+export function secondsToDurationKey(numSeconds: number) {
+  const {hours, minutes, seconds} = secondsToTimeComponents(numSeconds);
+  let durationKey = 'Polaris.VideoThumbnail.playButtonA11yLabel.duration';
+
+  if (hours) {
+    durationKey += `.hours.${hours > 1 ? 'plural' : 'singular'}`;
+
+    if (seconds) {
+      if (minutes > 1) {
+        durationKey += `${
+          seconds > 1 ? '.minutesAndSeconds' : '.minutesAndSecond'
+        }`;
+      } else if (minutes === 1) {
+        durationKey += `${
+          seconds > 1 ? '.minuteAndSeconds' : '.minuteAndSecond'
+        }`;
+      } else {
+        durationKey += `${seconds > 1 ? '.andSeconds' : '.andSecond'}`;
+      }
+    } else if (minutes) {
+      durationKey += `${minutes > 1 ? '.andMinutes' : '.andMinute'}`;
+    } else {
+      durationKey += '.only';
+    }
+  } else if (minutes) {
+    durationKey += `.minutes.${minutes > 1 ? 'plural' : 'singular'}`;
+
+    if (seconds) {
+      durationKey += `${seconds > 1 ? '.andSeconds' : '.andSecond'}`;
+    } else {
+      durationKey += '.only';
+    }
+  } else if (seconds) {
+    durationKey += seconds > 1 ? '.seconds.plural' : '.seconds.singular';
+  }
+
+  return durationKey;
 }
 
-function secondsToTimeComponents(
+export function secondsToTimeComponents(
   seconds: number,
 ): {hours: number; minutes: number; seconds: number} {
   return {
@@ -39,4 +58,8 @@ function secondsToTimeComponents(
     minutes: Math.floor((seconds % HOUR) / MINUTE),
     seconds: seconds % MINUTE,
   };
+}
+
+function ensureTwoDigits(num: number): string {
+  return num > 9 ? String(num) : `0${num}`;
 }
