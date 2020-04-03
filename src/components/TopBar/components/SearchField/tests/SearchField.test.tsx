@@ -131,7 +131,7 @@ describe('<TextField />', () => {
     });
   });
 
-  it('showFocusBorder', () => {
+  it('adds a "BackdropShowFocusBorder" class when "showFocusBorder" is passed', () => {
     const textField = mountWithAppProvider(
       <SearchField value="" onChange={noop} showFocusBorder />,
     );
