@@ -78,6 +78,7 @@ describe('needsVariant', () => {
 
 describe('buildCustomProperties', () => {
   const legacyCustomProperties = {
+    '--p-frame-offset': '0px',
     '--top-bar-background': '#eeeeee',
     '--top-bar-background-lighter': 'hsla(0, 10%, 100%, 1)',
     '--top-bar-border': 'rgb(99, 115, 129)',
@@ -119,6 +120,48 @@ describe('buildCustomProperties', () => {
     const colors = Object.keys(buildCustomProperties(theme, true));
     expect(colors).toContain('--p-surface');
     expect(colors).not.toContain('--top-bar-background');
+  });
+
+  it('creates default custom property of 0px for frameOffset when frameOffset is undefined and newDesignLanguage is false', () => {
+    const theme = {
+      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
+      colorScheme: DefaultColorScheme,
+    };
+
+    const colors = buildCustomProperties(theme, false);
+    expect(colors).toMatchObject({'--p-frame-offset': '0px'});
+  });
+
+  it('creates default custom property of 0px for frameOffset when frameOffset is undefined and newDesignLanguage is true', () => {
+    const theme = {
+      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
+      colorScheme: DefaultColorScheme,
+    };
+
+    const colors = buildCustomProperties(theme, true);
+    expect(colors).toMatchObject({'--p-frame-offset': '0px'});
+  });
+
+  it('creates custom property with value for frameOffset when frameOffset is provided and newDesignLanguage is false', () => {
+    const theme = {
+      frameOffset: 60,
+      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
+      colorScheme: DefaultColorScheme,
+    };
+
+    const colors = buildCustomProperties(theme, false);
+    expect(colors).toMatchObject({'--p-frame-offset': '60px'});
+  });
+
+  it('creates custom property with value for frameOffset when frameOffset is provided and newDesignLanguage is true', () => {
+    const theme = {
+      frameOffset: 80,
+      colors: {topBar: {background: '#eeeeee'}, surface: '#ffffff'},
+      colorScheme: DefaultColorScheme,
+    };
+
+    const colors = buildCustomProperties(theme, true);
+    expect(colors).toMatchObject({'--p-frame-offset': '80px'});
   });
 
   it('uses light adjustments by default', () => {
