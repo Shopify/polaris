@@ -4,6 +4,7 @@ import {needsVariantList} from '../config';
 import {
   needsVariant,
   setTextColor,
+  setBorderColor,
   setTheme,
   buildThemeContext,
   buildCustomProperties,
@@ -18,9 +19,31 @@ describe('setTextColor', () => {
     expect(textColor).toStrictEqual(['topBar', tokens.colorWhite]);
   });
 
+  it('sets a css variable to white if the variant has no value', () => {
+    const textColor = setTextColor('topBar');
+    expect(textColor).toStrictEqual(['topBar', tokens.colorWhite]);
+  });
+
   it('sets a css variable to ink if the variant is light', () => {
     const textColor = setTextColor('topBar', 'light');
     expect(textColor).toStrictEqual(['topBar', tokens.colorInk]);
+  });
+});
+
+describe('setBorderColor', () => {
+  it('sets a css variable to sky dark if the variant is dark', () => {
+    const textColor = setBorderColor('topBar', 'dark');
+    expect(textColor).toStrictEqual(['topBar', tokens.colorSkyDark]);
+  });
+
+  it('sets a css variable to sky dark if the variant has no value', () => {
+    const textColor = setBorderColor('topBar');
+    expect(textColor).toStrictEqual(['topBar', tokens.colorSkyDark]);
+  });
+
+  it('sets a css variable to ink lighter if the variant is light', () => {
+    const textColor = setBorderColor('topBar', 'light');
+    expect(textColor).toStrictEqual(['topBar', tokens.colorInkLighter]);
   });
 });
 
@@ -35,6 +58,7 @@ describe('setTheme', () => {
 
     expect(theme).toStrictEqual([
       ['--top-bar-color', 'rgb(255, 255, 255)'],
+      ['--top-bar-border', 'rgb(196, 205, 213)'],
       ['--top-bar-background-lighter', 'hsla(184, 85%, 43%, 1)'],
     ]);
   });
@@ -57,6 +81,7 @@ describe('buildCustomProperties', () => {
     '--p-frame-offset': '0px',
     '--top-bar-background': '#eeeeee',
     '--top-bar-background-lighter': 'hsla(0, 10%, 100%, 1)',
+    '--top-bar-border': 'rgb(99, 115, 129)',
     '--top-bar-color': 'rgb(33, 43, 54)',
   };
 

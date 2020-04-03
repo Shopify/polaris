@@ -131,6 +131,16 @@ describe('<TextField />', () => {
     });
   });
 
+  it('adds a "BackdropShowFocusBorder" class when "showFocusBorder" is passed', () => {
+    const textField = mountWithAppProvider(
+      <SearchField value="" onChange={noop} showFocusBorder />,
+    );
+
+    expect(textField.find('div').last().prop('className')).toBe(
+      'Backdrop BackdropShowFocusBorder',
+    );
+  });
+
   describe('newDesignLanguage', () => {
     it('does not render a container with newDesignLanguage className by default', () => {
       const textField = mountWithApp(

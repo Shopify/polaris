@@ -59,6 +59,10 @@ $stacking-order: (
     background-color: var(--p-action-secondary, color('white'));
   }
 
+  ~ .BackdropShowFocusBorder {
+    border: 1px solid var(--top-bar-border, transparent);
+  }
+
   ~ .Icon {
     @include recolor-icon(var(--p-icon-subdued, color('ink', 'lightest')));
   }
@@ -67,6 +71,10 @@ $stacking-order: (
 .focused {
   .Backdrop {
     background-color: var(--p-action-secondary, color('white'));
+  }
+
+  .BackdropShowFocusBorder {
+    border: 1px solid var(--top-bar-border, transparent);
   }
 
   .Icon {
