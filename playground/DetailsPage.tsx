@@ -11,6 +11,7 @@ import {
   AppsMajorTwotone,
   DuplicateMinor,
   ViewMinor,
+  SettingsMajorMonotone,
 } from '@shopify/polaris-icons';
 
 import {
@@ -321,6 +322,7 @@ export function DetailsPage() {
         ]}
       />
       <Navigation.Section
+        fill
         title="Contact support"
         action={{
           icon: ConversationMinor,
@@ -328,6 +330,15 @@ export function DetailsPage() {
           onClick: toggleModalActive,
         }}
         items={[]}
+      />
+      <Navigation.Section
+        items={[
+          {
+            icon: SettingsMajorMonotone,
+            label: 'Settings',
+            onClick: toggleModalActive,
+          },
+        ]}
       />
     </Navigation>
   );
