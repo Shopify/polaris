@@ -299,4 +299,5 @@ export {MediaCard} from './MediaCard';
 
 export {VideoThumbnail} from './VideoThumbnail';
 
-export {VisuallyHidden, VisuallyHiddenProps} from './VisuallyHidden';
+export {VisuallyHidden} from './VisuallyHidden';
+export type {VisuallyHiddenProps} from './VisuallyHidden';

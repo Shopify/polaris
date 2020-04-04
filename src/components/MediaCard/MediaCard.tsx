@@ -4,7 +4,6 @@ import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {Action, ActionListItemDescriptor} from '../../types';
-
 import {Card} from '../Card';
 import {Button, buttonFrom} from '../Button';
 import {Heading} from '../Heading';
