@@ -60,6 +60,7 @@ export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
     );
   }
 
+  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderActions = () => {
     const {newDesignLanguage} = this.context || {};
     const {actions = [], groups = []} = this.props;

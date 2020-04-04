@@ -15,6 +15,8 @@
 
 ### Development workflow
 
+- Updated sewing-kit to v0.132.2 ((#3072)[https://github.com/Shopify/polaris-react/pull/3072])
+
 ### Dependency upgrades
 
 ### Code quality

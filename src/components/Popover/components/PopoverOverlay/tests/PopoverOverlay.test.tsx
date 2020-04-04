@@ -12,7 +12,7 @@ import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
 
 jest.mock('@shopify/javascript-utilities/fastdom', () => ({
-  ...jest.requireActual('@shopify/javascript-utilities/fastdom'),
+  ...(jest.requireActual('@shopify/javascript-utilities/fastdom') as any),
   write: jest.fn((callback) => callback()),
 }));
 

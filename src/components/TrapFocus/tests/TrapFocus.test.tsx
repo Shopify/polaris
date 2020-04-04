@@ -14,7 +14,7 @@ import {TrapFocus} from '../TrapFocus';
 import {Key} from '../../../types';
 
 jest.mock('@shopify/javascript-utilities/fastdom', () => ({
-  ...jest.requireActual('@shopify/javascript-utilities/fastdom'),
+  ...(jest.requireActual('@shopify/javascript-utilities/fastdom') as any),
   write: (cb: () => void) => cb(),
 }));
 

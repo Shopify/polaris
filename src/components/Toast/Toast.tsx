@@ -52,6 +52,7 @@ export const Toast = React.memo(function Toast(props: ToastProps) {
         appBridgeToast.current.unsubscribe();
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appBridge, props]);
 
   return null;

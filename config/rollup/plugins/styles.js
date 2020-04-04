@@ -12,7 +12,7 @@ const cssModulesLocalByDefault = require('postcss-modules-local-by-default');
 const cssModulesScope = require('postcss-modules-scope');
 const cssModulesValues = require('postcss-modules-values');
 const Parser = require('postcss-modules-parser');
-const postcssShopify = require('postcss-shopify');
+const postcssShopify = require('@shopify/postcss-plugin');
 
 const generateScopedName = require('../namespaced-classname');
 
