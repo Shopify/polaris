@@ -6,7 +6,7 @@
 
 ### Bug fixes
 
-- `TopBar` navigation icon to use the `var(--top-bar-color)` ([#](https://github.com/Shopify/polaris-react/pull/)).
+- `TopBar` navigation icon to use the `var(--top-bar-color)` ([#2898](https://github.com/Shopify/polaris-react/pull/2898)).
 
 ### Documentation
 
