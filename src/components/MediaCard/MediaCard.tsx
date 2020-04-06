@@ -64,7 +64,6 @@ export function MediaCard({
     popoverActions.length > 0 ? (
       <div className={styles.Popover}>
         <Popover
-          preventAutofocus
           active={popoverActive}
           activator={popoverActivator}
           onClose={togglePopoverActive}
