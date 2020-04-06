@@ -18,4 +18,6 @@
 
 ### Code quality
 
+- Don't use `export *` when exporting from type-only files as importing empty files causes webpack to produce unwanted boilerplate ([#2897](https://github.com/Shopify/polaris-react/pull/2897))
+
 ### Deprecations
