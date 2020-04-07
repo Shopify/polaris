@@ -9,7 +9,7 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Page, PageProps, Card, Avatar, Badge} from 'components';
 
 import {Header} from '../components';
-import {LinkAction} from '../../../types';
+import type {LinkAction} from '../../../types';
 
 window.matchMedia =
   window.matchMedia ||

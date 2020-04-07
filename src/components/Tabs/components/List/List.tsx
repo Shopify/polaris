@@ -3,7 +3,7 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
 import {Item} from '../Item';
-import {TabDescriptor} from '../../types';
+import type {TabDescriptor} from '../../types';
 import styles from '../../Tabs.scss';
 
 export interface ListProps {

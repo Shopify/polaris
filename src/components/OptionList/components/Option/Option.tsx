@@ -3,9 +3,9 @@ import React, {useCallback} from 'react';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {classNames} from '../../../../utilities/css';
 import {useFeatures} from '../../../../utilities/features';
-import {IconProps} from '../../../../types';
-import {ThumbnailProps} from '../../../Thumbnail';
-import {AvatarProps} from '../../../Avatar';
+import type {IconProps} from '../../../../types';
+import type {ThumbnailProps} from '../../../Thumbnail';
+import type {AvatarProps} from '../../../Avatar';
 import {Scrollable} from '../../../Scrollable';
 import {Checkbox} from '../Checkbox';
 

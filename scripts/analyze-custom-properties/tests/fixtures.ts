@@ -1,4 +1,4 @@
-import {Node} from '../analyze-custom-properties';
+import type {Node} from '../analyze-custom-properties';
 
 const mockStart = {cursor: 6810, line: 270, column: 15};
 const mockNext = {cursor: 6841, line: 270, column: 46};

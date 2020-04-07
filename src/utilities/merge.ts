@@ -1,4 +1,4 @@
-import {GeneralObject} from '../types';
+import type {GeneralObject} from '../types';
 
 // Unfortunately, this is how we have to type this at the moment.
 // There is currently a proposal to support variadic kinds.

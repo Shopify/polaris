@@ -8,7 +8,7 @@ import {Form} from '../../../../../Form';
 import {useToggle} from '../../../../../../utilities/use-toggle';
 import {useI18n} from '../../../../../../utilities/i18n';
 import {FilterValueSelector} from '../FilterValueSelector';
-import {AppliedFilter, Filter, Operator} from '../../types';
+import type {AppliedFilter, Filter, Operator} from '../../types';
 
 export interface FilterCreatorProps {
   filters: Filter[];

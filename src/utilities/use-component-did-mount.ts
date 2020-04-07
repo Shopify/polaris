@@ -1,6 +1,6 @@
 import {useRef} from 'react';
 
-import {EffectCallback} from '../types';
+import type {EffectCallback} from '../types';
 
 import {useIsAfterInitialMount} from './use-is-after-initial-mount';
 
