@@ -25,22 +25,22 @@ export interface VideoThumbnailProps {
   onBeforeStartPlaying?(): void;
 }
 
-export const VideoThumbnail = ({
+export function VideoThumbnail({
   thumbnailUrl,
   videoLength,
   accessibilityLabel,
   onClick,
   onBeforeStartPlaying,
-}: VideoThumbnailProps) => {
+}: VideoThumbnailProps) {
   const i18n = useI18n();
-  let defaultLabel = i18n.translate(
-    'Polaris.VideoThumbnail.playButtonA11yLabel.default',
-  );
+  let buttonLabel;
 
-  if (videoLength) {
+  if (accessibilityLabel) {
+    buttonLabel = accessibilityLabel;
+  } else if (videoLength) {
     const {hours, minutes, seconds} = secondsToTimeComponents(videoLength);
 
-    defaultLabel = i18n.translate(
+    buttonLabel = i18n.translate(
       'Polaris.VideoThumbnail.playButtonA11yLabel.defaultWithDuration',
       {
         duration: i18n.translate(secondsToDurationTranslationKey(videoLength), {
@@ -50,9 +50,11 @@ export const VideoThumbnail = ({
         }),
       },
     );
+  } else {
+    buttonLabel = i18n.translate(
+      'Polaris.VideoThumbnail.playButtonA11yLabel.default',
+    );
   }
-
-  const buttonLabel = accessibilityLabel ? accessibilityLabel : defaultLabel;
 
   const timeStampMarkup = videoLength ? (
     <p className={styles.Timestamp}>{secondsToTimestamp(videoLength)}</p>
@@ -77,4 +79,4 @@ export const VideoThumbnail = ({
       {timeStampMarkup}
     </div>
   );
-};
+}

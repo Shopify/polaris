@@ -148,6 +148,7 @@ import {
   Link,
   List,
   Loading,
+  MediaCard,
   Modal,
   Navigation,
   OptionList,
@@ -190,7 +191,6 @@ import {
   Truncate,
   UnstyledLink,
   VisuallyHidden,
-  MediaCard,
   VideoThumbnail
 } from '@shopify/polaris';
 import {

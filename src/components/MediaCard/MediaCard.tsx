@@ -1,6 +1,7 @@
-import React, {useState, useCallback} from 'react';
+import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
+import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {Action, ActionListItemDescriptor} from '../../types';
@@ -43,12 +44,7 @@ export function MediaCard({
   portrait = false,
 }: MediaCardProps) {
   const i18n = useI18n();
-  const [popoverActive, setPopoverActive] = useState(false);
-
-  const togglePopoverActive = useCallback(
-    () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
-  );
+  const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
 
   const popoverActivator = (
     <Button
