@@ -158,6 +158,8 @@ export type {ListProps} from './List';
 export {Loading} from './Loading';
 export type {LoadingProps} from './Loading';
 
+export {MediaCard} from './MediaCard';
+
 export {Modal} from './Modal';
 export type {ModalProps} from './Modal';
 
@@ -294,6 +296,8 @@ export type {TruncateProps} from './Truncate';
 
 export {UnstyledLink} from './UnstyledLink';
 export type {UnstyledLinkProps} from './UnstyledLink';
+
+export {VideoThumbnail} from './VideoThumbnail';
 
 export {VisuallyHidden} from './VisuallyHidden';
 export type {VisuallyHiddenProps} from './VisuallyHidden';
