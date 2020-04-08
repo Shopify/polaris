@@ -93,6 +93,19 @@ describe('<ConnectedFilterControl />', () => {
     expect(connectedFilterControl.find(Button).exists()).toBe(true);
   });
 
+  it('does not render a RightAction there are no actions hidden', () => {
+    const connectedFilterControl = mountWithAppProvider(
+      <ConnectedFilterControl
+        rightAction={mockRightAction}
+        forceShowMorefiltersButton={false}
+      >
+        <MockChild />
+      </ConnectedFilterControl>,
+    );
+
+    expect(connectedFilterControl.find(Button).exists()).toBe(false);
+  });
+
   it('does render a button with a popoverable action', () => {
     const connectedFilterControl = mountWithAppProvider(
       <ConnectedFilterControl
@@ -119,6 +132,24 @@ describe('<ConnectedFilterControl />', () => {
     );
 
     expect(connectedFilterControl.find(Button)).toHaveLength(3);
+  });
+
+  it('hides an action if it does not fit', () => {
+    const connectedFilterControl = mountWithAppProvider(
+      <ConnectedFilterControl
+        rightPopoverableActions={[
+          mockRightOpenPopoverableAction,
+          mockRightClosedPopoverableAction,
+        ]}
+        rightAction={mockRightAction}
+      >
+        <MockChild />
+      </ConnectedFilterControl>,
+    );
+
+    connectedFilterControl.setState({availableWidth: 100});
+
+    expect(findActions(connectedFilterControl)).toHaveLength(2);
   });
 
   it('renders auxiliary content', () => {
@@ -187,4 +218,9 @@ function noop() {}
 
 function findById(wrapper: ReactWrapper, id: string) {
   return wrapper.find(`#${id}`).first();
+}
+
+function findActions(wrapper: ReactWrapper) {
+  // this omits the invisible proxy actions used for measuring width
+  return wrapper.find('.Wrapper Button');
 }
