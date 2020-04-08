@@ -10,8 +10,6 @@
 ### Enhancements
 
 - Added utilities for parsing video duration (https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
-
-### Bug fixes
 - Updated `Filters` to only show the "More filters" button if necessary ([#2856](https://github.com/Shopify/polaris-react/pull/2856)).
 
 ### Bug fixes
