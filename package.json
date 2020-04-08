@@ -202,7 +202,7 @@
     "@shopify/app-bridge": "^1.3.0",
     "@shopify/javascript-utilities": "^2.4.1",
     "@shopify/polaris-icons": "^3.10.0",
-    "@shopify/polaris-tokens": "^2.12.2",
+    "@shopify/polaris-tokens": "^2.12.3",
     "@shopify/useful-types": "^1.2.4",
     "@types/hoist-non-react-statics": "^3.3.1",
     "@types/react": "^16.8.15",

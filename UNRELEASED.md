@@ -19,6 +19,8 @@
 
 ### Dependency upgrades
 
+- Updated polaris-tokens to use new font stack ([#2906](https://github.com/Shopify/polaris-react/pull/2906))
+
 ### Code quality
 
 ### Deprecations
