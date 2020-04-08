@@ -517,7 +517,9 @@ class FiltersInner extends React.Component<ComposedProps, State> {
   }
 
   private transformFilters(filters: FilterInterface[]) {
-    const transformedActions: Required<ConnectedFilterControlProps['rightPopoverableActions']> = [];
+    const transformedActions: Required<
+      ConnectedFilterControlProps['rightPopoverableActions']
+    > = [];
 
     getShortcutFilters(filters).forEach((filter) => {
       const {key, label, disabled} = filter;

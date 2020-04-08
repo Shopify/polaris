@@ -66,9 +66,26 @@ describe('<ConnectedFilterControl />', () => {
     expect(connectedFilterControl.find(Popover).exists()).toBe(false);
   });
 
-  it('does render a button with a right action', () => {
+  it('always render a RightAction if forceShowMorefiltersButton is true', () => {
     const connectedFilterControl = mountWithAppProvider(
-      <ConnectedFilterControl rightAction={mockRightAction}>
+      <ConnectedFilterControl
+        rightAction={mockRightAction}
+        forceShowMorefiltersButton
+      >
+        <MockChild />
+      </ConnectedFilterControl>,
+    );
+
+    expect(connectedFilterControl.find(Button).exists()).toBe(true);
+  });
+
+  it('renders a RightAction if forceShowMorefiltersButton is false and rightPopoverableActions do not fit on the "right action" container', () => {
+    const connectedFilterControl = mountWithAppProvider(
+      <ConnectedFilterControl
+        rightAction={mockRightAction}
+        rightPopoverableActions={[mockRightOpenPopoverableAction]}
+        forceShowMorefiltersButton={false}
+      >
         <MockChild />
       </ConnectedFilterControl>,
     );
