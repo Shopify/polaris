@@ -150,6 +150,11 @@ $stacking-order: (
 
 .newDesignLanguage {
   .Backdrop {
+
+    // 'position' needs to sit below focus-ring since it will be overwritten
+    // with relative when the focus ring style is 'base'
+    // stylelint-disable-next-line order/properties-order
+    position: absolute;
     z-index: z-index(backdrop, $stacking-order);
     top: 0;
     right: 0;
@@ -159,11 +164,6 @@ $stacking-order: (
     border-radius: var(--p-border-radius-base);
     background-color: var(--p-surface);
     @include focus-ring($border-width: rem(1px));
-
-    // 'position' needs to sit below focus-ring since it will be overwritten
-    // with relative when the focus ring style is 'base'
-    // stylelint-disable-next-line order/properties-order
-    position: absolute;
   }
 
   &.error {
