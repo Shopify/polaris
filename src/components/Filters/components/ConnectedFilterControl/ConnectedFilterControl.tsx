@@ -92,7 +92,6 @@ export class ConnectedFilterControl extends React.Component<
     const shouldRenderMoreFiltersButton =
       forceShowMorefiltersButton ||
       (rightPopoverableActions &&
-        actionsToRender &&
         rightPopoverableActions.length !== actionsToRender.length);
 
     const RightContainerClassName = classNames(
@@ -100,11 +99,15 @@ export class ConnectedFilterControl extends React.Component<
       !shouldRenderMoreFiltersButton && styles.RightContainerWithoutMoreFilters,
     );
 
-    const rightMarkup = actionsToRender ? (
-      <div className={RightContainerClassName} testID="FilterShortcutContainer">
-        {this.popoverFrom(actionsToRender)}
-      </div>
-    ) : null;
+    const rightMarkup =
+      actionsToRender.length > 0 ? (
+        <div
+          className={RightContainerClassName}
+          testID="FilterShortcutContainer"
+        >
+          {this.popoverFrom(actionsToRender)}
+        </div>
+      ) : null;
 
     const moreFiltersButtonContainerClassname = classNames(
       styles.MoreFiltersButtonContainer,
