@@ -96,13 +96,6 @@ $stacking-order: (
   }
 }
 
-.RightContainerWithoutMoreFilters {
-  .Item > * > * {
-    border-top-right-radius: border-radius() !important;
-    border-bottom-right-radius: border-radius() !important;
-  }
-}
-
 .MoreFiltersButtonContainer * {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;

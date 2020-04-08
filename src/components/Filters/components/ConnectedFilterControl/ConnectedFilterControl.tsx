@@ -89,10 +89,6 @@ export class ConnectedFilterControl extends React.Component<
       newDesignLanguage && styles.newDesignLanguage,
     );
 
-    const actionsToRender =
-      rightPopoverableActions &&
-      this.getActionsToRender(rightPopoverableActions);
-
     const shouldRenderMoreFiltersButton =
       forceShowMorefiltersButton ||
       (rightPopoverableActions &&
