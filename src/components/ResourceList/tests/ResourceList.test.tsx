@@ -371,6 +371,20 @@ describe('<ResourceList />', () => {
       );
     });
 
+    it('doesn’t render header markup if the list is selectable but the showHeader prop is false', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          showHeader={false}
+          selectable
+          items={itemsWithID}
+          renderItem={renderItem}
+        />,
+      );
+      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
+        false,
+      );
+    });
+
     it('does not render when items is empty', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList items={[]} renderItem={renderItem} />,
