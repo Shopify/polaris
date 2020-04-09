@@ -1,6 +1,6 @@
 import React from 'react';
 import {Popover, Button} from 'components';
-import {ArrayElement} from '@shopify/useful-types';
+import type {ArrayElement} from '@shopify/useful-types';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 

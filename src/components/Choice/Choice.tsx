@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
-import {Error} from '../../types';
+import type {Error} from '../../types';
 import {InlineError} from '../InlineError';
 
 import styles from './Choice.scss';

@@ -6,7 +6,7 @@ import {useFeatures} from '../../utilities/features';
 import {useUniqueId} from '../../utilities/unique-id';
 import {Labelled, LabelledProps, helpTextID} from '../Labelled';
 import {Icon} from '../Icon';
-import {Error} from '../../types';
+import type {Error} from '../../types';
 
 import styles from './Select.scss';
 

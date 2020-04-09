@@ -1,4 +1,4 @@
-import {MenuActionDescriptor, MenuGroupDescriptor} from '../../types';
+import type {MenuActionDescriptor, MenuGroupDescriptor} from '../../types';
 
 type MenuDescriptorWithIndex = (MenuActionDescriptor | MenuGroupDescriptor) & {
   index: number;

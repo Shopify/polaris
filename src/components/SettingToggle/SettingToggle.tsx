@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ComplexAction} from '../../types';
+import type {ComplexAction} from '../../types';
 import {SettingAction} from '../SettingAction';
 import {buttonFrom} from '../Button';
 import {Card} from '../Card';

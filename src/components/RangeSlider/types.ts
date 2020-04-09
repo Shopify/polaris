@@ -1,5 +1,5 @@
-import {LabelledProps} from '../Labelled';
-import {Error} from '../../types';
+import type {LabelledProps} from '../Labelled';
+import type {Error} from '../../types';
 
 export type DualValue = [number, number];
 

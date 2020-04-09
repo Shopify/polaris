@@ -9,7 +9,7 @@ import isEqual from 'lodash/isEqual';
 import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
 import {CSS_VAR_PREFIX} from '../../utilities';
-import {RangeSliderProps, DualValue} from '../../types';
+import type {RangeSliderProps, DualValue} from '../../types';
 import {Labelled, labelID} from '../../../Labelled';
 import {EventListener} from '../../../EventListener';
 import {Key} from '../../../../types';

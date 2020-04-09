@@ -5,7 +5,7 @@ import {classNames, variationName} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import {headerCell} from '../../../shared';
 import {Icon} from '../../../Icon';
-import {SortDirection, VerticalAlign} from '../../types';
+import type {SortDirection, VerticalAlign} from '../../types';
 import styles from '../../DataTable.scss';
 
 export interface CellProps {

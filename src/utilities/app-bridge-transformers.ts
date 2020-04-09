@@ -1,7 +1,7 @@
-import {ClientApplication} from '@shopify/app-bridge';
+import type {ClientApplication} from '@shopify/app-bridge';
 import {Redirect, Button, ButtonGroup} from '@shopify/app-bridge/actions';
 
-import {
+import type {
   AppBridgeTarget,
   ComplexAction,
   ActionListItemDescriptor,
