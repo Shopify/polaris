@@ -23,7 +23,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 - Updated polaris-tokens to use new font stack ([#2906](https://github.com/Shopify/polaris-react/pull/2906))
 
-
 ## 4.17.1 - 2020-04-06
 
 ### Bug fixes
