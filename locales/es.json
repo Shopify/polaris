@@ -228,6 +228,57 @@
         "clearButtonLabel": "Borrar",
         "search": "Búsqueda"
       }
+    },
+    "MediaCard": {
+      "popoverButton": "Acciones"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Reproduce el video",
+        "defaultWithDuration": "Reproducir video de {duration} de duración",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} horas",
+              "andMinutes": "{hourCount} horas y {minuteCount} minutos",
+              "andMinute": "{hourCount} horas y {minuteCount} minuto",
+              "minutesAndSeconds": "{hourCount} horas, {minuteCount} minutos y {secondCount} segundos",
+              "minutesAndSecond": "{hourCount} horas, {minuteCount} minutos y {secondCount} segundo",
+              "minuteAndSeconds": "{hourCount} horas, {minuteCount} minuto y {secondCount} segundos",
+              "minuteAndSecond": "{hourCount} horas, {minuteCount} minuto y {secondCount} segundo",
+              "andSeconds": "{hourCount} horas y {secondCount} segundos",
+              "andSecond": "{hourCount} horas y {secondCount} segundo"
+            },
+            "one": {
+              "only": "{hourCount} hora",
+              "andMinutes": "{hourCount} hora y {minuteCount} minutos",
+              "andMinute": "{hourCount} hora y {minuteCount} minuto",
+              "minutesAndSeconds": "{hourCount} hora, {minuteCount} minutos y {secondCount} segundos",
+              "minutesAndSecond": "{hourCount} hora, {minuteCount} minutos y {secondCount} segundo",
+              "minuteAndSeconds": "{hourCount} hora, {minuteCount} minuto y {secondCount} segundos",
+              "minuteAndSecond": "{hourCount} hora, {minuteCount} minuto y {secondCount} segundo",
+              "andSeconds": "{hourCount} hora y {secondCount} segundos",
+              "andSecond": "{hourCount} hora y {secondCount} segundo"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} minutos",
+              "andSeconds": "{minuteCount} minutos y {secondCount} segundos",
+              "andSecond": "{minuteCount} minutos y {secondCount} segundo"
+            },
+            "one": {
+              "only": "{minuteCount} minuto",
+              "andSeconds": "{minuteCount} minuto y {secondCount} segundos",
+              "andSecond": "{minuteCount} minuto y {secondCount} segundo"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} segundos",
+            "one": "{secondCount} segundo"
+          }
+        }
+      }
     }
   }
 }
