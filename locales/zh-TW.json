@@ -228,6 +228,57 @@
         "clearButtonLabel": "清除",
         "search": "搜尋"
       }
+    },
+    "MediaCard": {
+      "popoverButton": "動作"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "撥放影片",
+        "defaultWithDuration": "播放長度為 {duration} 的影片",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} 小時",
+              "andMinutes": "{hourCount} 小時 {minuteCount} 分鐘",
+              "andMinute": "{hourCount} 小時 {minuteCount} 分鐘",
+              "minutesAndSeconds": "{hourCount} 小時 {minuteCount} 分鐘 {secondCount} 秒",
+              "minutesAndSecond": "{hourCount} 小時 {minuteCount} 分鐘 {secondCount} 秒",
+              "minuteAndSeconds": "{hourCount} 小時 {minuteCount} 分鐘 {secondCount} 秒",
+              "minuteAndSecond": "{hourCount} 小時 {minuteCount} 分鐘 {secondCount} 秒",
+              "andSeconds": "{hourCount} 小時 {secondCount} 秒",
+              "andSecond": "{hourCount} 小時 {secondCount} 秒"
+            },
+            "one": {
+              "only": "{hourCount} 小時",
+              "andMinutes": "{hourCount} 小時 {minuteCount} 分鐘",
+              "andMinute": "{hourCount} 小時 {minuteCount} 分鐘",
+              "minutesAndSeconds": "{hourCount} 小時 {minuteCount} 分鐘 {secondCount} 秒",
+              "minutesAndSecond": "{hourCount} 小時 {minuteCount} 分鐘 {secondCount} 秒",
+              "minuteAndSeconds": "{hourCount} 小時 {minuteCount} 分鐘 {secondCount} 秒",
+              "minuteAndSecond": "{hourCount} 小時 {minuteCount} 分鐘 {secondCount} 秒",
+              "andSeconds": "{hourCount} 小時 {secondCount} 秒",
+              "andSecond": "{hourCount} 小時 {secondCount} 秒"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} 分鐘",
+              "andSeconds": "{minuteCount} 分鐘 {secondCount} 秒",
+              "andSecond": "{minuteCount} 分鐘 {secondCount} 秒"
+            },
+            "one": {
+              "only": "{minuteCount} 分鐘",
+              "andSeconds": "{minuteCount} 分鐘 {secondCount} 秒",
+              "andSecond": "{minuteCount} 分鐘 {secondCount} 秒"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} 秒",
+            "one": "{secondCount} 秒"
+          }
+        }
+      }
     }
   }
 }
