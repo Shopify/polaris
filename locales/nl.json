@@ -228,6 +228,57 @@
         "clearButtonLabel": "Wissen",
         "search": "Zoeken"
       }
+    },
+    "MediaCard": {
+      "popoverButton": "Acties"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Video afspelen",
+        "defaultWithDuration": "Video van {duration} afspelen",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} uur",
+              "andMinutes": "{hourCount} uur en {minuteCount} minuten",
+              "andMinute": "{hourCount} uur en {minuteCount} minuut",
+              "minutesAndSeconds": "{hourCount} uur, {minuteCount} minuten en {secondCount} seconden",
+              "minutesAndSecond": "{hourCount} uur, {minuteCount} minuten en {secondCount} seconde",
+              "minuteAndSeconds": "{hourCount} uur, {minuteCount} minuut en {secondCount} seconden",
+              "minuteAndSecond": "{hourCount} uur, {minuteCount} minuut en {secondCount} seconde",
+              "andSeconds": "{hourCount} uur en {secondCount} seconden",
+              "andSecond": "{hourCount} uur en {secondCount} seconde"
+            },
+            "one": {
+              "only": "{hourCount} uur",
+              "andMinutes": "{hourCount} uur en {minuteCount} minuten",
+              "andMinute": "{hourCount} uur en {minuteCount} minuut",
+              "minutesAndSeconds": "{hourCount} uur, {minuteCount} minuten en {secondCount} seconden",
+              "minutesAndSecond": "{hourCount} uur, {minuteCount} minuten en {secondCount} seconde",
+              "minuteAndSeconds": "{hourCount} uur, {minuteCount} minuut en {secondCount} seconden",
+              "minuteAndSecond": "{hourCount} uur, {minuteCount} minuut en {secondCount} seconde",
+              "andSeconds": "{hourCount} uur en {secondCount} seconden",
+              "andSecond": "{hourCount} uur en {secondCount} seconde"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} minuten",
+              "andSeconds": "{minuteCount} minuten en {secondCount} seconden",
+              "andSecond": "{minuteCount} minuten en {secondCount} seconde"
+            },
+            "one": {
+              "only": "{minuteCount} minuut",
+              "andSeconds": "{minuteCount} minuut en {secondCount} seconden",
+              "andSecond": "{minuteCount} minuut en {secondCount} seconde"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} seconden",
+            "one": "{secondCount} seconde"
+          }
+        }
+      }
     }
   }
 }
