@@ -2,7 +2,7 @@ import React from 'react';
 
 import {useUniqueId} from '../../utilities/unique-id';
 
-import {RangeSliderProps, RangeSliderValue, DualValue} from './types';
+import type {RangeSliderProps, RangeSliderValue, DualValue} from './types';
 import {SingleThumb, DualThumb} from './components';
 
 export type {RangeSliderProps};

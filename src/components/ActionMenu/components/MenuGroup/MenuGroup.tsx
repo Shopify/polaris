@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 
-import {MenuGroupDescriptor} from '../../../../types';
+import type {MenuGroupDescriptor} from '../../../../types';
 import {useFeatures} from '../../../../utilities/features';
 import {ActionList} from '../../../ActionList';
 import {Popover} from '../../../Popover';

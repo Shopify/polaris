@@ -2,7 +2,10 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
-import {MenuGroupDescriptor, ActionListItemDescriptor} from '../../../types';
+import type {
+  MenuGroupDescriptor,
+  ActionListItemDescriptor,
+} from '../../../types';
 import {MenuAction, MenuGroup, RollupActions} from '../components';
 import {ActionMenu, ActionMenuProps} from '../ActionMenu';
 import {Button} from '../../Button';

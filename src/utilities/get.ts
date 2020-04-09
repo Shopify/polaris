@@ -1,4 +1,4 @@
-import {GeneralObject} from '../types';
+import type {GeneralObject} from '../types';
 
 const OBJECT_NOTATION_MATCHER = /\[(.*?)\]|(\w+)/g;
 

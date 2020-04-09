@@ -8,6 +8,21 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.18.0 - 2020-04-09
+
+### New components
+
+- Added [`MediaCard`](https://polaris.shopify.com/components/structure/video-card) and [`VideoThumbnail`](https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
+- Added [`VideoThumbnail`](https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
+
+### Enhancements
+
+- Added utilities for parsing video duration (https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
+
+### Dependency upgrades
+
+- Updated polaris-tokens to use new font stack ([#2906](https://github.com/Shopify/polaris-react/pull/2906))
+
 ## 4.17.1 - 2020-04-06
 
 ### Bug fixes

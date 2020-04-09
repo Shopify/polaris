@@ -15,7 +15,7 @@ import {
 import {FeaturesContext} from '../../utilities/features';
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames, variationName} from '../../utilities/css';
-import {
+import type {
   Action,
   DisableableAction,
   LoadableAction,

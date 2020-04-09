@@ -5,7 +5,7 @@ import {classNames} from '../../utilities/css';
 import {useToggle} from '../../utilities/use-toggle';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {ButtonGroup} from '../ButtonGroup';
-import {DisableableAction, ComplexAction} from '../../types';
+import type {DisableableAction, ComplexAction} from '../../types';
 import {ActionList} from '../ActionList';
 import {Button, buttonFrom} from '../Button';
 import {Popover} from '../Popover';
