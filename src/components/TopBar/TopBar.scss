@@ -21,7 +21,7 @@ $context-control-expand-after: 1400px;
 }
 
 .TopBar-newDesignLanguage {
-  height: unstable-top-bar-height();
+  height: new-top-bar-height();
   transition: box-shadow 100ms var(--p-ease);
 
   &.isScrolled {
