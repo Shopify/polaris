@@ -6,6 +6,8 @@
 
 ### Enhancements
 
+- Updated `Filters` to only show the "More filters" button if necessary ([#2856](https://github.com/Shopify/polaris-react/pull/2856)).
+
 ### Bug fixes
 
 ### Documentation

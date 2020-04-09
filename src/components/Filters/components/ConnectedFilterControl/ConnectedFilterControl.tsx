@@ -25,6 +25,7 @@ export interface ConnectedFilterControlProps {
   rightAction?: React.ReactNode;
   auxiliary?: React.ReactNode;
   disabled?: boolean;
+  forceShowMorefiltersButton?: boolean;
 }
 
 interface ComputedProperty {
@@ -74,6 +75,7 @@ export class ConnectedFilterControl extends React.Component<
       rightPopoverableActions,
       rightAction,
       auxiliary,
+      forceShowMorefiltersButton = true,
     } = this.props;
 
     const actionsToRender =
@@ -87,11 +89,25 @@ export class ConnectedFilterControl extends React.Component<
       newDesignLanguage && styles.newDesignLanguage,
     );
 
-    const rightMarkup = rightPopoverableActions ? (
-      <div className={styles.RightContainer} testID="FilterShortcutContainer">
-        {this.popoverFrom(actionsToRender)}
-      </div>
-    ) : null;
+    const shouldRenderMoreFiltersButton =
+      forceShowMorefiltersButton ||
+      (rightPopoverableActions &&
+        rightPopoverableActions.length !== actionsToRender.length);
+
+    const RightContainerClassName = classNames(
+      styles.RightContainer,
+      !shouldRenderMoreFiltersButton && styles.RightContainerWithoutMoreFilters,
+    );
+
+    const rightMarkup =
+      actionsToRender.length > 0 ? (
+        <div
+          className={RightContainerClassName}
+          testID="FilterShortcutContainer"
+        >
+          {this.popoverFrom(actionsToRender)}
+        </div>
+      ) : null;
 
     const moreFiltersButtonContainerClassname = classNames(
       styles.MoreFiltersButtonContainer,
@@ -105,7 +121,7 @@ export class ConnectedFilterControl extends React.Component<
         ref={this.moreFiltersButtonContainer}
         className={moreFiltersButtonContainerClassname}
       >
-        <Item>{rightAction}</Item>
+        {shouldRenderMoreFiltersButton && <Item>{rightAction}</Item>}
       </div>
     ) : null;
 
@@ -197,6 +213,10 @@ export class ConnectedFilterControl extends React.Component<
       if (actionWidth <= remainingWidth) {
         actionsToReturn.push(action);
         remainingWidth -= actionWidth;
+      } else {
+        // When we can't fit an action, we break the loop.
+        // The ones that didn't fit will be accessible through the "More filters" button
+        break;
       }
     }
     return actionsToReturn;
