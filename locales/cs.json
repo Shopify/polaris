@@ -27,7 +27,7 @@
       "connectedDisclosureAccessibilityLabel": "Související akce"
     },
     "Common": {
-      "checkbox": "zaškrtávací políčko",
+      "checkbox": "zaškrtávací pole",
       "undo": "Vrátit zpět",
       "cancel": "Zrušit",
       "newWindowAccessibilityHint": "(otevře nové okno)",
