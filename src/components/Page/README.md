@@ -391,7 +391,7 @@ Use for layouts that benefit from more screen width, such as wide tables or list
 <Page
   fullWidth
   title="Orders"
-  primaryAction={{content: 'Create order'}}
+  primaryAction={{content: 'Create order', icon: PlusMinor}}
   secondaryActions={[{content: 'Export'}]}
   pagination={{
     hasNext: true,

@@ -11,6 +11,11 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
 .separator {
   padding-bottom: spacing();
   border-bottom: border();
+
+  &.newDesignLanguage {
+    padding-bottom: spacing();
+    border-bottom: border();
+  }
 }
 
 .titleHidden {
@@ -37,6 +42,10 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
 .BreadcrumbWrapper {
   flex: 0 1 auto;
   max-width: 100%;
+
+  &.newDesignLanguage {
+    margin-right: spacing();
+  }
 }
 
 .PaginationWrapper {
@@ -98,4 +107,35 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
   }
 
   @include print-hidden;
+
+  &.newDesignLanguage {
+    margin-top: 0;
+  }
+}
+
+.Row {
+  display: flex;
+  justify-content: space-between;
+
+  + .Row {
+    margin-top: spacing();
+
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class
+    .mobileView & {
+      margin-top: spacing(tight);
+    }
+  }
+}
+
+.LeftAlign {
+  display: flex;
+  align-content: flex-start;
+  align-items: center;
+}
+
+.RightAlign {
+  display: flex;
+  align-content: flex-end;
+  align-items: center;
+  margin-left: spacing(tight);
 }

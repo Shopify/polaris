@@ -2,6 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../utilities/css';
 import {ScrollLock} from '../ScrollLock';
+
 import styles from './Backdrop.scss';
 
 export interface BackdropProps {

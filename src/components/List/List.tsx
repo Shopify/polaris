@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {classNames, variationName} from '../../utilities/css';
+
 import {Item} from './components';
 import styles from './List.scss';
 

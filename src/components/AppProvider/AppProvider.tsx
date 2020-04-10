@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {ThemeConfig} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';

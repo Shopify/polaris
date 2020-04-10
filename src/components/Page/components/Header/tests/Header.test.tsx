@@ -1,4 +1,5 @@
 import React from 'react';
+import {PlusMinor} from '@shopify/polaris-icons';
 import {
   ActionMenu,
   Breadcrumbs,
@@ -6,9 +7,12 @@ import {
   Pagination,
   Badge,
   Avatar,
+  Button,
+  ButtonGroup,
 } from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+
 import {LinkAction} from '../../../../../types';
 import {Header, HeaderProps} from '../Header';
 
@@ -219,6 +223,135 @@ describe('<Header />', () => {
       );
 
       expect(wrapper.find(ActionMenu).prop('rollup')).toBe(true);
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    const primaryAction: HeaderProps['primaryAction'] = {
+      content: 'Click me!',
+      icon: PlusMinor,
+    };
+
+    const secondaryActions: HeaderProps['secondaryActions'] = [
+      {content: 'mock content 1'},
+      {content: 'mock content 2'},
+    ];
+
+    const breadcrumbs: LinkAction[] = [
+      {
+        content: 'Products',
+        url: 'https://www.google.com',
+        target: 'REMOTE',
+      },
+    ];
+
+    it('adds a newDesignLanguage class', () => {
+      const header = mountWithAppProvider(<Header title="Hello, world!" />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(header.find('div').first().prop('className')).toBe(
+        'Header newDesignLanguage',
+      );
+    });
+
+    it('does not add a newDesignLanguage class if disabled', () => {
+      const header = mountWithAppProvider(<Header title="Hello, world!" />, {
+        features: {newDesignLanguage: false},
+      });
+      expect(header.find('div').first().prop('className')).toBe('Header');
+    });
+
+    it('removes primary and secondary action wrapper divs', () => {
+      const header = mountWithAppProvider(
+        <Header
+          title="Hello, world!"
+          primaryAction={primaryAction}
+          secondaryActions={secondaryActions}
+        />,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+      expect(header.find('.PrimaryActionWrapper')).toHaveLength(0);
+      expect(header.find('.ActionMenuWrapper')).toHaveLength(0);
+    });
+
+    it('adds primary and secondary action wrapper divs when disabled', () => {
+      const header = mountWithAppProvider(
+        <Header
+          title="Hello, world!"
+          primaryAction={primaryAction}
+          secondaryActions={secondaryActions}
+        />,
+        {
+          features: {newDesignLanguage: false},
+        },
+      );
+      expect(header.find('.PrimaryActionWrapper')).toHaveLength(1);
+      expect(header.find('.ActionMenuWrapper')).toHaveLength(1);
+    });
+
+    it('renders a compact mobile layout with icon-only primary action', () => {
+      const header = mountWithAppProvider(
+        <Header title="mmmmmmmm" primaryAction={primaryAction} />,
+        {
+          features: {newDesignLanguage: true},
+          mediaQuery: {isNavigationCollapsed: true},
+        },
+      );
+      expect(header.find('.Row')).toHaveLength(1);
+      expect(header.find(Button).prop('icon')).toStrictEqual(PlusMinor);
+      expect(header.find(Button).text()).toStrictEqual('');
+    });
+
+    it('renders a compact desktop layout and hides primary action icon', () => {
+      const header = mountWithAppProvider(
+        <Header title="mmmmmmmm" primaryAction={primaryAction} />,
+        {
+          features: {newDesignLanguage: true},
+          mediaQuery: {isNavigationCollapsed: false},
+        },
+      );
+      expect(header.find('.Row')).toHaveLength(1);
+      expect(header.find(Button).prop('icon')).toBeUndefined();
+      expect(header.find(Button).text()).toStrictEqual('Click me!');
+    });
+
+    it('renders a default mobile layout', () => {
+      const header = mountWithAppProvider(
+        <Header title="mmmmmmmmm" breadcrumbs={breadcrumbs} />,
+        {
+          features: {newDesignLanguage: true},
+          mediaQuery: {isNavigationCollapsed: true},
+        },
+      );
+      expect(header.find('.Row')).toHaveLength(2);
+    });
+
+    it('renders a default desktop layout', () => {
+      const header = mountWithAppProvider(
+        <Header title="mmmmmmmmmmmmmmmmmmmmm" primaryAction={primaryAction} />,
+        {
+          features: {newDesignLanguage: true},
+          mediaQuery: {isNavigationCollapsed: false},
+        },
+      );
+      expect(header.find('.Row')).toHaveLength(2);
+    });
+
+    it('wraps the secondary activator and primary buttons in a ButtonGroup', () => {
+      const header = mountWithAppProvider(
+        <Header
+          title="Hello, world!"
+          primaryAction={primaryAction}
+          secondaryActions={secondaryActions}
+        />,
+        {
+          features: {newDesignLanguage: true},
+          mediaQuery: {isNavigationCollapsed: true},
+        },
+      );
+      expect(header.find(ButtonGroup)).toHaveLength(1);
     });
   });
 });

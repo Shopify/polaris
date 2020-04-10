@@ -67,7 +67,7 @@ $context-control-expand-after: 1400px;
   margin-right: spacing(tight);
   padding: spacing(tight);
   border-radius: border-radius();
-  fill: var(--p-icon, color('white')); // Icon will inherit this fill
+  fill: var(--p-icon, var(--top-bar-color)); // Icon will inherit this fill
   &.focused {
     background-color: var(--p-override-transparent, rgba(color('white'), 0.16));
   }

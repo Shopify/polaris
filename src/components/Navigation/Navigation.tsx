@@ -8,10 +8,10 @@ import {WithinContentContext} from '../../utilities/within-content-context';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
 import {getWidth} from '../../utilities/get-width';
+
 import {NavigationContext} from './context';
 import {Section, Item} from './components';
 import {SectionType} from './types';
-
 import styles from './Navigation.scss';
 
 export interface NavigationProps {

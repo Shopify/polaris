@@ -5,7 +5,6 @@ import {buttonsFrom} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {Stack} from '../../../Stack';
 import {Heading} from '../../../Heading';
-
 import styles from '../../Card.scss';
 
 export interface HeaderProps {

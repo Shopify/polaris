@@ -1,7 +1,7 @@
 import React from 'react';
+
 import {useToggle} from '../../../../utilities/use-toggle';
 import {classNames} from '../../../../utilities/css';
-
 import styles from '../../ButtonGroup.scss';
 
 export interface ItemProps {

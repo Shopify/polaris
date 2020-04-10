@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from '../../List.scss';
 
 export interface ItemProps {

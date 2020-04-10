@@ -1,10 +1,11 @@
 import React, {useCallback} from 'react';
 
 import {MenuGroupDescriptor} from '../../../../types';
-
+import {useFeatures} from '../../../../utilities/features';
 import {ActionList} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 import {MenuAction} from '../MenuAction';
+import {Button} from '../../../Button';
 
 import styles from './MenuGroup.scss';
 
@@ -29,6 +30,7 @@ export function MenuGroup({
   onClose,
   onOpen,
 }: MenuGroupProps) {
+  const {newDesignLanguage} = useFeatures();
   const handleClose = useCallback(() => {
     onClose(title);
   }, [onClose, title]);
@@ -41,7 +43,16 @@ export function MenuGroup({
     return null;
   }
 
-  const popoverActivator = (
+  const popoverActivator = newDesignLanguage ? (
+    <Button
+      disclosure
+      icon={icon}
+      accessibilityLabel={accessibilityLabel}
+      onClick={handleOpen}
+    >
+      {title}
+    </Button>
+  ) : (
     <MenuAction
       disclosure
       content={title}

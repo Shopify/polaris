@@ -1,6 +1,8 @@
 import React from 'react';
+
 import {classNames} from '../../../../utilities/css';
 import {SearchDismissOverlay} from '../SearchDismissOverlay';
+
 import styles from './Search.scss';
 
 export interface SearchProps {

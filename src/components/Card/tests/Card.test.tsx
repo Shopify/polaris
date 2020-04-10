@@ -3,6 +3,7 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Card, Badge, Button, Popover, ActionList} from 'components';
+
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {Section} from '../components';
 

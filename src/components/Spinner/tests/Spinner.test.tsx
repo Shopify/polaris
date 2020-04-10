@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+
 import {Spinner} from '../Spinner';
 import {VisuallyHidden} from '../../VisuallyHidden';
 
@@ -20,44 +21,24 @@ describe('<Spinner />', () => {
   describe('size', () => {
     it('renders a large spinner by default', () => {
       const spinner = mountWithAppProvider(<Spinner />);
-      expect(
-        spinner
-          .find('span')
-          .first()
-          .hasClass('sizeLarge'),
-      ).toBeTruthy();
+      expect(spinner.find('span').first().hasClass('sizeLarge')).toBeTruthy();
     });
 
     it('renders a large spinner when size is large', () => {
       const spinner = mountWithAppProvider(<Spinner size="large" />);
-      expect(
-        spinner
-          .find('span')
-          .first()
-          .hasClass('sizeLarge'),
-      ).toBeTruthy();
+      expect(spinner.find('span').first().hasClass('sizeLarge')).toBeTruthy();
     });
 
     it('renders a small spinner when size is small', () => {
       const spinner = mountWithAppProvider(<Spinner size="small" />);
-      expect(
-        spinner
-          .find('span')
-          .first()
-          .hasClass('sizeSmall'),
-      ).toBeTruthy();
+      expect(spinner.find('span').first().hasClass('sizeSmall')).toBeTruthy();
     });
 
     it('renders a small spinner when color is white even if size is large', () => {
       const spinner = mountWithAppProvider(
         <Spinner size="large" color="white" />,
       );
-      expect(
-        spinner
-          .find('span')
-          .first()
-          .hasClass('sizeSmall'),
-      ).toBeTruthy();
+      expect(spinner.find('span').first().hasClass('sizeSmall')).toBeTruthy();
     });
   });
 

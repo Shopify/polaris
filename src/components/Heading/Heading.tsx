@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {HeadingTagName} from '../../types';
+
 import styles from './Heading.scss';
 
 export interface HeadingProps {

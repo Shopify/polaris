@@ -3,6 +3,7 @@ import {matchMedia} from '@shopify/jest-dom-mocks';
 import {act} from 'react-dom/test-utils';
 import {mountWithApp} from 'test-utilities';
 import {EventListener} from 'components';
+
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {useMediaQuery} from '../../../utilities/media-query';
 

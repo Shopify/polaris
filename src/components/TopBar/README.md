@@ -220,6 +220,7 @@ function TopBarExample() {
       onChange={handleSearchChange}
       value={searchValue}
       placeholder="Search"
+      showFocusBorder
     />
   );
 

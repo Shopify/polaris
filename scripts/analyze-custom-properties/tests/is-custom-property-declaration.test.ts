@@ -1,4 +1,5 @@
 import {isCustomPropertyDeclaration} from '../analyze-custom-properties';
+
 import {
   mockVarNode,
   mockPunctuation,

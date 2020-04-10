@@ -2,7 +2,6 @@ import React from 'react';
 
 import {useUniqueId} from '../../../../../../utilities/unique-id';
 import {Collapsible} from '../../../../../Collapsible';
-
 import styles from '../../../../Navigation.scss';
 
 interface SecondaryProps {

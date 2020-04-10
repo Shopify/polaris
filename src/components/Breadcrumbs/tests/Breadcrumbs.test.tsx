@@ -1,6 +1,8 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+
+import {UnstyledLink} from '../../UnstyledLink';
 import {CallbackAction, LinkAction} from '../../../types';
 import {Breadcrumbs} from '../Breadcrumbs';
 
@@ -91,6 +93,42 @@ describe('<Breadcrumbs />', () => {
 
       breadcrumbs.find('button').simulate('click');
       expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    const linkBreadcrumbs: LinkAction[] = [
+      {
+        content: 'Products',
+        url: 'https://www.shopify.com',
+        target: 'REMOTE',
+      },
+    ];
+
+    it('adds a newDesignLanguage class', () => {
+      const wrapper = mountWithAppProvider(
+        <Breadcrumbs breadcrumbs={linkBreadcrumbs} />,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+
+      expect(wrapper.find(UnstyledLink).prop('className')).toStrictEqual(
+        'Breadcrumb newDesignLanguage',
+      );
+    });
+
+    it('does not add a newDesignLanguage class', () => {
+      const wrapper = mountWithAppProvider(
+        <Breadcrumbs breadcrumbs={linkBreadcrumbs} />,
+        {
+          features: {newDesignLanguage: false},
+        },
+      );
+
+      expect(wrapper.find(UnstyledLink).prop('className')).toStrictEqual(
+        'Breadcrumb',
+      );
     });
   });
 });

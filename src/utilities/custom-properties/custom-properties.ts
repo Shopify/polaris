@@ -1,4 +1,5 @@
 import {config} from '@shopify/polaris-tokens/dist-modern/configs/base';
+
 import {toCssCustomPropertySyntax, Tokens} from '../theme';
 
 export const nonDesignLangaugeCustomProperties = [
@@ -10,6 +11,8 @@ export const nonDesignLangaugeCustomProperties = [
   '--Polaris-RangeSlider-output-factor',
   '--top-bar-color',
   '--top-bar-background-lighter',
+  '--top-bar-border',
+  '--p-frame-offset',
 ];
 
 export const designLangaugeCustomProperties = ([] as string[]).concat(

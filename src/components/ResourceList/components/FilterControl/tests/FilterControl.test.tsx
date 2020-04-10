@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {trigger, mountWithAppProvider} from 'test-utilities/legacy';
 import {TextField, Tag, Button} from 'components';
+
 import {ResourceListContext} from '../../../../../utilities/resource-list';
 import {
   Filter,

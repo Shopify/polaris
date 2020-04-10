@@ -1,5 +1,6 @@
 import React from 'react';
 import {mount} from 'test-utilities';
+
 import {useIsAfterInitialMount} from '../use-is-after-initial-mount';
 
 describe('useIsAfterInitialMount', () => {

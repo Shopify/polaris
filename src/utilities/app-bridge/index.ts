@@ -2,4 +2,5 @@ export * from './context';
 
 export * from './hooks';
 
-export {createAppBridge, AppBridgeOptions} from './app-bridge';
+export {createAppBridge} from './app-bridge';
+export type {AppBridgeOptions} from './app-bridge';

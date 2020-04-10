@@ -1,9 +1,11 @@
 import React from 'react';
+
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {useFeatures} from '../../utilities/features';
+
 import styles from './Spinner.scss';
 
 type Color = 'white' | 'teal' | 'inkLightest';

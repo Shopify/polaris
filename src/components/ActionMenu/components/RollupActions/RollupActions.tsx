@@ -4,7 +4,7 @@ import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {ActionListSection, ActionListItemDescriptor} from '../../../../types';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
-
+import {useFeatures} from '../../../../utilities/features';
 import {ActionList} from '../../../ActionList';
 import {Button} from '../../../Button';
 import {Popover} from '../../../Popover';
@@ -20,6 +20,7 @@ export interface RollupActionsProps {
 
 export function RollupActions({items = [], sections = []}: RollupActionsProps) {
   const i18n = useI18n();
+  const {newDesignLanguage} = useFeatures();
 
   const {value: rollupOpen, toggle: toggleRollupOpen} = useToggle(false);
 
@@ -30,7 +31,7 @@ export function RollupActions({items = [], sections = []}: RollupActionsProps) {
   const activatorMarkup = (
     <div className={styles.RollupActivator}>
       <Button
-        plain
+        plain={!newDesignLanguage}
         icon={HorizontalDotsMinor}
         accessibilityLabel={i18n.translate(
           'Polaris.ActionMenu.RollupActions.rollupButton',

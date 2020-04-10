@@ -16,7 +16,6 @@ import {
   intersectionWithViewport,
   windowRect,
 } from './utilities/math';
-
 import styles from './PositionedOverlay.scss';
 
 type Positioning = 'above' | 'below';

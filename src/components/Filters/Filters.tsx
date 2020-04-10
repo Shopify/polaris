@@ -6,6 +6,7 @@ import {
   ChevronDownMinor,
   CancelSmallMinor,
 } from '@shopify/polaris-icons';
+
 import {classNames} from '../../utilities/css';
 import {
   withAppProvider,
@@ -27,13 +28,12 @@ import {Focus} from '../Focus';
 import {Sheet} from '../Sheet';
 import {Stack} from '../Stack';
 import {Key} from '../../types';
-
 import {KeypressListener} from '../KeypressListener';
+
 import {
   ConnectedFilterControl,
   ConnectedFilterControlProps,
 } from './components';
-
 import styles from './Filters.scss';
 
 export interface AppliedFilterInterface {
@@ -281,8 +281,13 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       </ConnectedFilterControl>
     );
 
+    const filtersContainerHeaderClassname = classNames(
+      styles.FiltersContainerHeader,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     const filtersDesktopHeaderMarkup = (
-      <div className={styles.FiltersContainerHeader}>
+      <div className={filtersContainerHeaderClassname}>
         <DisplayText size="small">{moreFiltersLabel}</DisplayText>
         <Button
           icon={CancelSmallMinor}
@@ -294,7 +299,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
     );
 
     const filtersMobileHeaderMarkup = (
-      <div className={styles.FiltersContainerHeader}>
+      <div className={filtersContainerHeaderClassname}>
         <Button
           icon={CancelSmallMinor}
           plain
@@ -308,8 +313,13 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       </div>
     );
 
+    const filtersDesktopFooterClassname = classNames(
+      styles.FiltersContainerFooter,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     const filtersDesktopFooterMarkup = (
-      <div className={styles.FiltersContainerFooter}>
+      <div className={filtersDesktopFooterClassname}>
         <Button onClick={onClearAll} disabled={!this.hasAppliedFilters()}>
           {intl.translate('Polaris.Filters.clearAllFilters')}
         </Button>
@@ -354,6 +364,16 @@ class FiltersInner extends React.Component<ComposedProps, State> {
         </div>
       ) : null;
 
+    const filtersMobileContainerContentClassName = classNames(
+      styles.FiltersMobileContainerContent,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
+    const filtersDesktopContainerContentClassName = classNames(
+      styles.FiltersDesktopContainerContent,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     const filtersContainerMarkup = isNavigationCollapsed ? (
       <Sheet
         open={open}
@@ -362,7 +382,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
         onExit={this.setReadyForFocus(false)}
       >
         {filtersMobileHeaderMarkup}
-        <Scrollable className={styles.FiltersMobileContainerContent} shadow>
+        <Scrollable className={filtersMobileContainerContentClassName} shadow>
           {filtersContentMarkup}
           {filtersMobileFooterMarkup}
         </Scrollable>
@@ -376,7 +396,10 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       >
         <div className={styles.FiltersContainer}>
           {filtersDesktopHeaderMarkup}
-          <Scrollable className={styles.FiltersDesktopContainerContent} shadow>
+          <Scrollable
+            className={filtersDesktopContainerContentClassName}
+            shadow
+          >
             {filtersContentMarkup}
           </Scrollable>
           {filtersDesktopFooterMarkup}

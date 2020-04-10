@@ -1,6 +1,8 @@
 import {execSync} from 'child_process';
+
 import fs from 'fs-extra';
 import glob from 'glob';
+
 import packageJSON from '../package.json';
 
 describe('build', () => {
@@ -54,8 +56,11 @@ describe('build', () => {
     );
   });
 
-  it('generates the typescript definition files', () => {
-    expect(fs.existsSync('./types/index.d.ts')).toBe(true);
+  it('generates typescript definition files', () => {
+    expect(fs.existsSync('./types/latest/src/index.d.ts')).toBe(true);
+
+    // Downleveled for consumers on older TypeScript versions
+    expect(fs.existsSync('./types/3.4/src/index.d.ts')).toBe(true);
   });
 
   it('replaces occurrences of POLARIS_VERSION', () => {

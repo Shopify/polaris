@@ -3,6 +3,7 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Banner, UnstyledLink, Icon} from 'components';
+
 import en from '../../../../locales/en.json';
 import {Link} from '../Link';
 
@@ -49,13 +50,7 @@ describe('<Link />', () => {
           Shopify Help Center
         </Link>,
       );
-      expect(
-        link
-          .children()
-          .last()
-          .find(Icon)
-          .exists(),
-      ).toBe(true);
+      expect(link.children().last().find(Icon).exists()).toBe(true);
     });
 
     it('informs screen readers that it opens in a new window', () => {
@@ -65,13 +60,9 @@ describe('<Link />', () => {
         </Link>,
       );
       const hintText = en.Polaris.Common.newWindowAccessibilityHint;
-      expect(
-        link
-          .children()
-          .last()
-          .find(Icon)
-          .prop('accessibilityLabel'),
-      ).toBe(hintText);
+      expect(link.children().last().find(Icon).prop('accessibilityLabel')).toBe(
+        hintText,
+      );
     });
 
     it('doesn’t have a trailing icon for non-string children', () => {

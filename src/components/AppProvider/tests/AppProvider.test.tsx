@@ -4,6 +4,7 @@ import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities/react-testing';
 import {MediaQueryProvider} from 'components/MediaQueryProvider';
+
 import {LinkContext} from '../../../utilities/link';
 import {AppProvider} from '../AppProvider';
 import {FocusManager} from '../../FocusManager';

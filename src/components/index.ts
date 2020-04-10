@@ -1,47 +1,68 @@
-export {AccountConnection, AccountConnectionProps} from './AccountConnection';
+export {AccountConnection} from './AccountConnection';
+export type {AccountConnectionProps} from './AccountConnection';
 
-export {ActionList, ActionListProps} from './ActionList';
+export {ActionList} from './ActionList';
+export type {ActionListProps} from './ActionList';
 
-export {ActionMenu, ActionMenuProps} from './ActionMenu';
+export {ActionMenu} from './ActionMenu';
+export type {ActionMenuProps} from './ActionMenu';
 
-export {AppProvider, AppProviderProps} from './AppProvider';
+export {AppProvider} from './AppProvider';
+export type {AppProviderProps} from './AppProvider';
 
-export {Autocomplete, AutocompleteProps} from './Autocomplete';
+export {Autocomplete} from './Autocomplete';
+export type {AutocompleteProps} from './Autocomplete';
 
-export {Avatar, AvatarProps} from './Avatar';
+export {Avatar} from './Avatar';
+export type {AvatarProps} from './Avatar';
 
-export {Backdrop, BackdropProps} from './Backdrop';
+export {Backdrop} from './Backdrop';
+export type {BackdropProps} from './Backdrop';
 
-export {Badge, BadgeProps} from './Badge';
+export {Badge} from './Badge';
+export type {BadgeProps} from './Badge';
 
-export {Banner, BannerProps, BannerStatus} from './Banner';
+export {Banner} from './Banner';
+export type {BannerProps, BannerStatus} from './Banner';
 
-export {Breadcrumbs, BreadcrumbsProps} from './Breadcrumbs';
+export {Breadcrumbs} from './Breadcrumbs';
+export type {BreadcrumbsProps} from './Breadcrumbs';
 
-export {Button, ButtonProps, buttonFrom, buttonsFrom} from './Button';
+export {Button, buttonFrom, buttonsFrom} from './Button';
+export type {ButtonProps} from './Button';
 
-export {ButtonGroup, ButtonGroupProps} from './ButtonGroup';
+export {ButtonGroup} from './ButtonGroup';
+export type {ButtonGroupProps} from './ButtonGroup';
 
-export {CalloutCard, CalloutCardProps} from './CalloutCard';
+export {CalloutCard} from './CalloutCard';
+export type {CalloutCardProps} from './CalloutCard';
 
-export {Caption, CaptionProps} from './Caption';
+export {Caption} from './Caption';
+export type {CaptionProps} from './Caption';
 
-export {Card, CardProps} from './Card';
+export {Card} from './Card';
+export type {CardProps} from './Card';
 
-export {Checkbox, CheckboxProps} from './Checkbox';
+export {Checkbox} from './Checkbox';
+export type {CheckboxProps} from './Checkbox';
 
-export {ChoiceList, ChoiceListProps} from './ChoiceList';
+export {ChoiceList} from './ChoiceList';
+export type {ChoiceListProps} from './ChoiceList';
 
-export {Collapsible, CollapsibleProps} from './Collapsible';
+export {Collapsible} from './Collapsible';
+export type {CollapsibleProps} from './Collapsible';
 
-export {ColorPicker, ColorPickerProps} from './ColorPicker';
+export {ColorPicker} from './ColorPicker';
+export type {ColorPickerProps} from './ColorPicker';
 
-export {Connected, ConnectedProps} from './Connected';
+export {Connected} from './Connected';
+export type {ConnectedProps} from './Connected';
 
-export {ContextualSaveBar, ContextualSaveBarProps} from './ContextualSaveBar';
+export {ContextualSaveBar} from './ContextualSaveBar';
+export type {ContextualSaveBarProps} from './ContextualSaveBar';
 
-export {
-  DataTable,
+export {DataTable} from './DataTable';
+export type {
   DataTableProps,
   TableData,
   TableRow,
@@ -49,176 +70,230 @@ export {
   ColumnContentType,
 } from './DataTable';
 
-export {DatePicker, DatePickerProps, Range, Months, Year} from './DatePicker';
+export {DatePicker, Months} from './DatePicker';
+export type {DatePickerProps, Range, Year} from './DatePicker';
 
-export {DescriptionList, DescriptionListProps} from './DescriptionList';
+export {DescriptionList} from './DescriptionList';
+export type {DescriptionListProps} from './DescriptionList';
 
-export {DisplayText, DisplayTextProps} from './DisplayText';
+export {DisplayText} from './DisplayText';
+export type {DisplayTextProps} from './DisplayText';
 
-export {DropZone, DropZoneProps} from './DropZone';
+export {DropZone} from './DropZone';
+export type {DropZoneProps} from './DropZone';
 
-export {EmptySearchResult, EmptySearchResultProps} from './EmptySearchResult';
+export {EmptySearchResult} from './EmptySearchResult';
+export type {EmptySearchResultProps} from './EmptySearchResult';
 
-export {EmptyState, EmptyStateProps} from './EmptyState';
+export {EmptyState} from './EmptyState';
+export type {EmptyStateProps} from './EmptyState';
 
-export {EventListener, EventListenerProps} from './EventListener';
+export {EventListener} from './EventListener';
+export type {EventListenerProps} from './EventListener';
 
-export {ExceptionList, ExceptionListProps} from './ExceptionList';
+export {ExceptionList} from './ExceptionList';
+export type {ExceptionListProps} from './ExceptionList';
 
-export {
-  Filters,
+export {Filters} from './Filters';
+export type {
   FiltersProps,
   AppliedFilterInterface,
   FilterInterface,
 } from './Filters';
 
-export {Focus, FocusProps} from './Focus';
+export {Focus} from './Focus';
+export type {FocusProps} from './Focus';
 
-export {FooterHelp, FooterHelpProps} from './FooterHelp';
+export {FooterHelp} from './FooterHelp';
+export type {FooterHelpProps} from './FooterHelp';
 
-export {Form, FormProps} from './Form';
+export {Form} from './Form';
+export type {FormProps} from './Form';
 
-export {FormLayout, FormLayoutProps} from './FormLayout';
+export {FormLayout} from './FormLayout';
+export type {FormLayoutProps} from './FormLayout';
 
 export {
   Frame,
-  FrameProps,
   DEFAULT_TOAST_DURATION,
   DEFAULT_TOAST_DURATION_WITH_ACTION,
 } from './Frame';
+export type {FrameProps} from './Frame';
 
-export {Heading, HeadingProps} from './Heading';
+export {Heading} from './Heading';
+export type {HeadingProps} from './Heading';
 
 export {Icon} from './Icon';
 
-export {Image, ImageProps} from './Image';
+export {Image} from './Image';
+export type {ImageProps} from './Image';
 
-export {Indicator, IndicatorProps} from './Indicator';
+export {Indicator} from './Indicator';
+export type {IndicatorProps} from './Indicator';
 
-export {InlineError, InlineErrorProps, errorTextID} from './InlineError';
+export {InlineError, errorTextID} from './InlineError';
+export type {InlineErrorProps} from './InlineError';
 
-export {KeyboardKey, KeyboardKeyProps} from './KeyboardKey';
+export {KeyboardKey} from './KeyboardKey';
+export type {KeyboardKeyProps} from './KeyboardKey';
 
-export {KeypressListener, KeypressListenerProps} from './KeypressListener';
+export {KeypressListener} from './KeypressListener';
+export type {KeypressListenerProps} from './KeypressListener';
 
-export {Label, LabelProps} from './Label';
+export {Label} from './Label';
+export type {LabelProps} from './Label';
 
-export {Labelled, LabelledProps} from './Labelled';
+export {Labelled} from './Labelled';
+export type {LabelledProps} from './Labelled';
 
-export {Layout, LayoutProps} from './Layout';
+export {Layout} from './Layout';
+export type {LayoutProps} from './Layout';
 
-export {Link, LinkProps} from './Link';
+export {Link} from './Link';
+export type {LinkProps} from './Link';
 
-export {List, ListProps} from './List';
+export {List} from './List';
+export type {ListProps} from './List';
 
-export {Loading, LoadingProps} from './Loading';
+export {Loading} from './Loading';
+export type {LoadingProps} from './Loading';
 
-export {Modal, ModalProps} from './Modal';
+export {Modal} from './Modal';
+export type {ModalProps} from './Modal';
 
-export {
-  Navigation,
+export {Navigation, isNavigationItemActive} from './Navigation';
+export type {
   NavigationProps,
   NavigationItemProps,
   NavigationMessageProps,
   SubNavigationItem,
-  isNavigationItemActive,
 } from './Navigation';
 
-export {OptionList, OptionListProps} from './OptionList';
+export {OptionList} from './OptionList';
+export type {OptionListProps} from './OptionList';
 
-export {Page, PageProps} from './Page';
+export {Page} from './Page';
+export type {PageProps} from './Page';
 
-export {PageActions, PageActionsProps} from './PageActions';
+export {PageActions} from './PageActions';
+export type {PageActionsProps} from './PageActions';
 
-export {Pagination, PaginationProps} from './Pagination';
+export {Pagination} from './Pagination';
+export type {PaginationProps} from './Pagination';
 
-export {
-  PolarisTestProvider,
-  WithPolarisTestProviderOptions,
-} from './PolarisTestProvider';
+export {PolarisTestProvider} from './PolarisTestProvider';
+export type {WithPolarisTestProviderOptions} from './PolarisTestProvider';
 
-export {Popover, PopoverProps, PopoverCloseSource} from './Popover';
+export {Popover, PopoverCloseSource} from './Popover';
+export type {PopoverProps} from './Popover';
 
-export {Portal, PortalProps} from './Portal';
+export {Portal} from './Portal';
+export type {PortalProps} from './Portal';
 
-export {ProgressBar, ProgressBarProps} from './ProgressBar';
+export {ProgressBar} from './ProgressBar';
+export type {ProgressBarProps} from './ProgressBar';
 
-export {RadioButton, RadioButtonProps} from './RadioButton';
+export {RadioButton} from './RadioButton';
+export type {RadioButtonProps} from './RadioButton';
 
-export {RangeSlider, RangeSliderProps} from './RangeSlider';
+export {RangeSlider} from './RangeSlider';
+export type {RangeSliderProps} from './RangeSlider';
 
-export {ResourceItem, ResourceItemProps} from './ResourceItem';
+export {ResourceItem} from './ResourceItem';
+export type {ResourceItemProps} from './ResourceItem';
 
-export {
-  ResourceList,
+export {ResourceList, FilterType} from './ResourceList';
+export type {
   ResourceListProps,
   FilterControlProps,
   Filter,
   AppliedFilter,
-  FilterType,
   FilterSelect,
   FilterTextField,
 } from './ResourceList';
 
-export {ResourceListSelectedItems} from '../utilities/resource-list';
+export type {ResourceListSelectedItems} from '../utilities/resource-list';
 
-export {ResourcePicker, ResourcePickerProps} from './ResourcePicker';
+export {ResourcePicker} from './ResourcePicker';
+export type {ResourcePickerProps} from './ResourcePicker';
 
-export {Scrollable, ScrollableProps} from './Scrollable';
+export {Scrollable} from './Scrollable';
+export type {ScrollableProps} from './Scrollable';
 
 export {ScrollLock} from './ScrollLock';
 
-export {Select, SelectProps, SelectOption, SelectGroup} from './Select';
+export {Select} from './Select';
+export type {SelectProps, SelectOption, SelectGroup} from './Select';
 
-export {SettingToggle, SettingToggleProps} from './SettingToggle';
+export {SettingToggle} from './SettingToggle';
+export type {SettingToggleProps} from './SettingToggle';
 
 export {DATA_ATTRIBUTE} from './shared';
 
-export {Sheet, SheetProps} from './Sheet';
+export {Sheet} from './Sheet';
+export type {SheetProps} from './Sheet';
 
-export {SkeletonBodyText, SkeletonBodyTextProps} from './SkeletonBodyText';
+export {SkeletonBodyText} from './SkeletonBodyText';
+export type {SkeletonBodyTextProps} from './SkeletonBodyText';
 
-export {
-  SkeletonDisplayText,
-  SkeletonDisplayTextProps,
-} from './SkeletonDisplayText';
+export {SkeletonDisplayText} from './SkeletonDisplayText';
+export type {SkeletonDisplayTextProps} from './SkeletonDisplayText';
 
-export {SkeletonPage, SkeletonPageProps} from './SkeletonPage';
+export {SkeletonPage} from './SkeletonPage';
+export type {SkeletonPageProps} from './SkeletonPage';
 
-export {SkeletonThumbnail, SkeletonThumbnailProps} from './SkeletonThumbnail';
+export {SkeletonThumbnail} from './SkeletonThumbnail';
+export type {SkeletonThumbnailProps} from './SkeletonThumbnail';
 
-export {Spinner, SpinnerProps} from './Spinner';
+export {Spinner} from './Spinner';
+export type {SpinnerProps} from './Spinner';
 
-export {Stack, StackProps} from './Stack';
+export {Stack} from './Stack';
+export type {StackProps} from './Stack';
 
-export {Sticky, StickyProps} from './Sticky';
+export {Sticky} from './Sticky';
+export type {StickyProps} from './Sticky';
 
-export {Subheading, SubheadingProps} from './Subheading';
+export {Subheading} from './Subheading';
+export type {SubheadingProps} from './Subheading';
 
-export {Tabs, TabsProps} from './Tabs';
+export {Tabs} from './Tabs';
+export type {TabsProps} from './Tabs';
 
-export {Tag, TagProps} from './Tag';
+export {Tag} from './Tag';
+export type {TagProps} from './Tag';
 
-export {TextContainer, TextContainerProps} from './TextContainer';
+export {TextContainer} from './TextContainer';
+export type {TextContainerProps} from './TextContainer';
 
-export {TextField, TextFieldProps} from './TextField';
+export {TextField} from './TextField';
+export type {TextFieldProps} from './TextField';
 
-export {TextStyle, TextStyleProps} from './TextStyle';
+export {TextStyle} from './TextStyle';
+export type {TextStyleProps} from './TextStyle';
 
 export {ThemeProvider} from './ThemeProvider';
 
-export {Thumbnail, ThumbnailProps} from './Thumbnail';
+export {Thumbnail} from './Thumbnail';
+export type {ThumbnailProps} from './Thumbnail';
 
-export {Toast, ToastProps} from './Toast';
+export {Toast} from './Toast';
+export type {ToastProps} from './Toast';
 
-export {Tooltip, TooltipProps} from './Tooltip';
+export {Tooltip} from './Tooltip';
+export type {TooltipProps} from './Tooltip';
 
-export {TopBar, TopBarProps} from './TopBar';
+export {TopBar} from './TopBar';
+export type {TopBarProps} from './TopBar';
 
-export {TrapFocus, TrapFocusProps} from './TrapFocus';
+export {TrapFocus} from './TrapFocus';
+export type {TrapFocusProps} from './TrapFocus';
 
-export {Truncate, TruncateProps} from './Truncate';
+export {Truncate} from './Truncate';
+export type {TruncateProps} from './Truncate';
 
-export {UnstyledLink, UnstyledLinkProps} from './UnstyledLink';
+export {UnstyledLink} from './UnstyledLink';
+export type {UnstyledLinkProps} from './UnstyledLink';
 
-export {VisuallyHidden, VisuallyHiddenProps} from './VisuallyHidden';
+export {VisuallyHidden} from './VisuallyHidden';
+export type {VisuallyHiddenProps} from './VisuallyHidden';

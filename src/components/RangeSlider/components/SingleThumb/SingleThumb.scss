@@ -236,7 +236,7 @@ $range-output-spacing: rem(16px);
   transition-duration: duration();
   transition-timing-function: easing();
 
-  // stylelint-disable selector-max-specificity
+  // stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-class
   .Input:hover + .Output &,
   .Input:active + .Output &,
   .Input:focus + .Output & {
@@ -246,7 +246,7 @@ $range-output-spacing: rem(16px);
       transform: translateY(-($range-output-spacing / 2));
     }
   }
-  // stylelint-enable selector-max-specificity
+  // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class
 }
 
 .OutputText {

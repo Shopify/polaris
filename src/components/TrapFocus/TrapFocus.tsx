@@ -1,11 +1,10 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
-import {Key} from '../../types';
 
+import {Key} from '../../types';
 import {EventListener} from '../EventListener';
 import {KeypressListener} from '../KeypressListener';
 import {Focus} from '../Focus';
-
 import {
   findFirstKeyboardFocusableNode,
   focusFirstKeyboardFocusableNode,

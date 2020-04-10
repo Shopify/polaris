@@ -13,7 +13,6 @@ import {useTheme} from '../../../../utilities/theme';
 import {useToggle} from '../../../../utilities/use-toggle';
 
 import {DiscardConfirmationModal} from './components';
-
 import styles from './ContextualSaveBar.scss';
 
 export function ContextualSaveBar({

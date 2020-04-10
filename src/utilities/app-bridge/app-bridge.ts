@@ -3,6 +3,7 @@ import createApp, {
   LifecycleHook,
   DispatchActionHook,
 } from '@shopify/app-bridge';
+
 import {polarisVersion} from '../../configure';
 
 export interface AppBridgeOptions {
@@ -45,8 +46,8 @@ export function createAppBridge({
   return appBridge;
 }
 
-export const setClientInterfaceHook: DispatchActionHook = function(next) {
-  return function(action) {
+export const setClientInterfaceHook: DispatchActionHook = function (next) {
+  return function (action) {
     action.clientInterface = {
       name: '@shopify/polaris',
       version: polarisVersion,

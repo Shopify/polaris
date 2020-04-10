@@ -2,6 +2,7 @@ import React from 'react';
 import {ResourcePicker as AppBridgeResourcePicker} from '@shopify/app-bridge/actions';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+
 import {ResourcePicker} from '../ResourcePicker';
 
 describe('<ResourcePicker />', () => {

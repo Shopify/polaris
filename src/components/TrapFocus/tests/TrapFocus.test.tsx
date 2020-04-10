@@ -14,6 +14,7 @@ import {
   Button,
 } from 'components';
 import * as focusUtilities from '@shopify/javascript-utilities/focus';
+
 import * as focusUtils from '../../../utilities/focus';
 import {TrapFocus} from '../TrapFocus';
 import {Key} from '../../../types';

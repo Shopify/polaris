@@ -2,6 +2,7 @@ import React from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+
 import {Weekday} from '../../Weekday';
 import {Day} from '../../Day';
 import {Month} from '../Month';
@@ -12,12 +13,7 @@ describe('<Month />', () => {
       const month = mountWithAppProvider(
         <Month month={0} year={2018} weekStartsOn={Weekdays.Monday} />,
       );
-      expect(
-        month
-          .find(Weekday)
-          .first()
-          .prop('title'),
-      ).toBe('Mo');
+      expect(month.find(Weekday).first().prop('title')).toBe('Mo');
     });
   });
 
@@ -26,12 +22,7 @@ describe('<Month />', () => {
       const month = mountWithAppProvider(
         <Month month={0} year={2018} weekStartsOn={Weekdays.Monday} />,
       );
-      expect(
-        month
-          .find(Weekday)
-          .first()
-          .prop('label'),
-      ).toBe(1);
+      expect(month.find(Weekday).first().prop('label')).toBe(1);
     });
   });
 
@@ -48,24 +39,14 @@ describe('<Month />', () => {
     );
 
     it('passes true to Weekday if month year and weekStartsOn are today', () => {
-      expect(
-        month
-          .find(Weekday)
-          .first()
-          .prop('current'),
-      ).toBe(true);
+      expect(month.find(Weekday).first().prop('current')).toBe(true);
     });
 
     it('passes false to Weekday if month year and weekStartsOn are not today', () => {
       const month = mountWithAppProvider(
         <Month month={1} year={2016} weekStartsOn={Weekdays.Monday} />,
       );
-      expect(
-        month
-          .find(Weekday)
-          .first()
-          .prop('current'),
-      ).toBe(false);
+      expect(month.find(Weekday).first().prop('current')).toBe(false);
     });
   });
 

@@ -26,11 +26,11 @@ const Overrides = {
   iconSize: rem('10px'),
   choiceMargin: rem('1px'),
   controlBorderWidth: rem('2px'),
-  bannerBorderDefault: buildBannerBorder('--p-border'),
-  bannerBorderSuccess: buildBannerBorder('--p-border-success'),
-  bannerBorderHighlight: buildBannerBorder('--p-border-highlight'),
-  bannerBorderWarning: buildBannerBorder('--p-border-warning'),
-  bannerBorderCritical: buildBannerBorder('--p-border-critical'),
+  bannerBorderDefault: buildBannerBorder('--p-border-neutral-subdued'),
+  bannerBorderSuccess: buildBannerBorder('--p-border-success-subdued'),
+  bannerBorderHighlight: buildBannerBorder('--p-border-highlight-subdued'),
+  bannerBorderWarning: buildBannerBorder('--p-border-warning-subdued'),
+  bannerBorderCritical: buildBannerBorder('--p-border-critical-subdued'),
   badgeMixBlendMode: 'luminosity',
   thinBorderSubdued: `${rem('1px')} solid var(--p-border-subdued)`,
   textFieldSpinnerOffset: rem('2px'),
@@ -46,6 +46,7 @@ const Overrides = {
   rangeSliderThumbSizeBase: rem('16px'),
   rangeSliderThumbSizeActive: rem('24px'),
   rangeSliderThumbScale: '1.5',
+  badgeFontWeight: '500',
 };
 
 export const Tokens = {
@@ -60,7 +61,7 @@ function rem(px: string) {
 }
 
 function buildBannerBorder(cssVar: string) {
-  return `inset 0 ${rem('2px')} 0 0 var(${cssVar}), inset 0 0 0 ${rem(
-    '2px',
+  return `inset 0 ${rem('1px')} 0 0 var(${cssVar}), inset 0 0 0 ${rem(
+    '1px',
   )} var(${cssVar})`;
 }

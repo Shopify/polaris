@@ -70,6 +70,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   .Button {
     @include focus-ring;
 
+    // stylelint-disable-next-line selector-max-class
     &.focused {
       border-color: transparent;
       box-shadow: none;

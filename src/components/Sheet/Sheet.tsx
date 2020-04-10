@@ -1,12 +1,11 @@
 import React, {useCallback, useRef} from 'react';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from '@material-ui/react-transition-group';
+
 import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
-
 import {Key} from '../../types';
 import {layer, overlay} from '../shared';
-
 import {Backdrop} from '../Backdrop';
 import {TrapFocus} from '../TrapFocus';
 import {Portal} from '../Portal';

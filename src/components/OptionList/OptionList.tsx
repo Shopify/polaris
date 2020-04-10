@@ -6,7 +6,6 @@ import {classNames} from '../../utilities/css';
 import {IconProps} from '../../types';
 import {AvatarProps} from '../Avatar';
 import {ThumbnailProps} from '../Thumbnail';
-
 import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
 

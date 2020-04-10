@@ -2,11 +2,9 @@ import React from 'react';
 import {CaretDownMinor, SaveMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
 
 import {Icon} from '../../../../Icon';
 import {UnstyledLink} from '../../../../UnstyledLink';
-
 import {MenuAction} from '../MenuAction';
 
 describe('<MenuAction />', () => {
@@ -118,26 +116,6 @@ describe('<MenuAction />', () => {
       trigger(wrapper.find('button'), 'onClick');
 
       expect(onActionSpy).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const menuAction = mountWithApp(<MenuAction />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(menuAction).toContainReactComponent('button', {
-        className: 'MenuAction newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const menuAction = mountWithApp(<MenuAction />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(menuAction).toContainReactComponent('button', {
-        className: 'MenuAction',
-      });
     });
   });
 });

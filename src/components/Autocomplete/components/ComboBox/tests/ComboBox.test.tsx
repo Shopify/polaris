@@ -3,8 +3,10 @@ import {OptionList, ActionList, Popover} from 'components';
 import {mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+
 import {TextField} from '../../TextField';
 import {Key} from '../../../../../types';
+
 import {ComboBox} from '..';
 
 describe('<ComboBox/>', () => {
@@ -137,12 +139,7 @@ describe('<ComboBox/>', () => {
         />,
       );
       comboBox.simulate('click');
-      expect(
-        comboBox
-          .find('button')
-          .at(0)
-          .prop('id'),
-      ).toBe('TestId-0');
+      expect(comboBox.find('button').at(0).prop('id')).toBe('TestId-0');
     });
 
     it('passes an id to the actions in ActionList', () => {
@@ -157,12 +154,7 @@ describe('<ComboBox/>', () => {
         />,
       );
       comboBox.simulate('click');
-      expect(
-        comboBox
-          .find('button')
-          .at(0)
-          .prop('id'),
-      ).toBe('TestId-0');
+      expect(comboBox.find('button').at(0).prop('id')).toBe('TestId-0');
     });
   });
 
@@ -180,12 +172,7 @@ describe('<ComboBox/>', () => {
 
       comboBox.simulate('click');
 
-      expect(
-        comboBox
-          .find('button')
-          .at(0)
-          .text(),
-      ).toBe('Add tag');
+      expect(comboBox.find('button').at(0).text()).toBe('Add tag');
     });
 
     it('renders an action in actionsAfter', () => {
@@ -199,12 +186,7 @@ describe('<ComboBox/>', () => {
         />,
       );
       comboBox.simulate('click');
-      expect(
-        comboBox
-          .find('button')
-          .at(3)
-          .text(),
-      ).toBe('Add tag');
+      expect(comboBox.find('button').at(3).text()).toBe('Add tag');
     });
   });
 
@@ -361,10 +343,7 @@ describe('<ComboBox/>', () => {
         />,
       );
       comboBox.simulate('click');
-      comboBox
-        .find('button')
-        .at(0)
-        .simulate('click');
+      comboBox.find('button').at(0).simulate('click');
       expect(spy).toHaveBeenCalledTimes(1);
     });
 

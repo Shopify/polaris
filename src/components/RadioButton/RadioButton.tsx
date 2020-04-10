@@ -1,9 +1,11 @@
 import React, {useRef, useState} from 'react';
+
 import {useUniqueId} from '../../utilities/unique-id';
 import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
+
 import styles from './RadioButton.scss';
 
 export interface RadioButtonProps {

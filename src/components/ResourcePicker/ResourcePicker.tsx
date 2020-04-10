@@ -1,6 +1,7 @@
 import React from 'react';
 import {ResourcePicker as AppBridgeResourcePicker} from '@shopify/app-bridge/actions';
 import isEqual from 'lodash/isEqual';
+
 import {
   withAppProvider,
   WithAppProviderProps,

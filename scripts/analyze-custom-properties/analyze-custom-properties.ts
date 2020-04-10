@@ -1,4 +1,5 @@
 import {readFileSync} from 'fs';
+
 import glob from 'glob';
 import {parse, InputStreamPosition} from 'scss-parser';
 import chalk from 'chalk';
@@ -103,7 +104,7 @@ export function analyzeCustomProperties({
       totalCustomProperties: 0,
     };
 
-    glob(pattern, {}, function(err, files) {
+    glob(pattern, {}, function (err, files) {
       if (err) reject(err);
 
       for (const file of files) {

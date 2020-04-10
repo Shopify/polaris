@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {AnnotatedSection, Section} from './components';
 import styles from './Layout.scss';
 

@@ -69,8 +69,11 @@ $nav-animation-variables: (
 
   @include focus-ring;
 
-  &:focus {
+  &.keyFocused {
     @include focus-ring($style: 'focused');
+  }
+
+  &:focus {
     background-image: linear-gradient(color(state, hover), color(state, hover));
     color: var(--p-text, color('indigo', 'dark'));
     text-decoration: none;

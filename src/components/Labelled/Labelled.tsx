@@ -1,8 +1,7 @@
 import React from 'react';
+
 import {classNames} from '../../utilities/css';
-
 import {Action, Error} from '../../types';
-
 import {buttonFrom} from '../Button';
 import {Label, LabelProps, labelID} from '../Label';
 import {InlineError} from '../InlineError';

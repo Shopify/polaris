@@ -1,4 +1,5 @@
 import {visitAll} from '../analyze-custom-properties';
+
 import {mockVarNode, mockPunctuation, mockStringSingle} from './fixtures';
 
 describe('visitAll', () => {

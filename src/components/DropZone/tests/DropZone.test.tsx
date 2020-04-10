@@ -5,6 +5,7 @@ import {Label, Labelled, DisplayText, Caption} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+
 import {DropZone} from '../DropZone';
 import {DropZoneContext} from '../context';
 
@@ -212,10 +213,7 @@ describe('<DropZone />', () => {
         <DropZone label="My DropZone label" onClick={spy} />,
       );
 
-      dropZone
-        .find('div')
-        .at(4)
-        .simulate('click');
+      dropZone.find('div').at(4).simulate('click');
       expect(spy).toHaveBeenCalled();
     });
 
@@ -225,10 +223,7 @@ describe('<DropZone />', () => {
         <DropZone disabled label="My DropZone label" onClick={spy} />,
       );
 
-      dropZone
-        .find('div')
-        .at(4)
-        .simulate('click');
+      dropZone.find('div').at(4).simulate('click');
       expect(spy).not.toHaveBeenCalled();
     });
 
@@ -316,7 +311,7 @@ describe('<DropZone />', () => {
     });
   });
 
-  describe('errorOverlayText ', () => {
+  describe('errorOverlayText', () => {
     const errorOverlayText = "can't drop this";
     it("doesn't render the overlayText on small screens", () => {
       setBoundingClientRect('small');
@@ -569,11 +564,7 @@ function fireEvent({
     }
     const event = createEvent(eventType, testFiles);
 
-    element
-      .find('div')
-      .at(3)
-      .getDOMNode()
-      .dispatchEvent(event);
+    element.find('div').at(3).getDOMNode().dispatchEvent(event);
 
     if (eventType === 'dragenter') {
       clock.tick(50);

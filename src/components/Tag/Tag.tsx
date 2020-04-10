@@ -1,5 +1,6 @@
 import React from 'react';
 import {CancelSmallMinor} from '@shopify/polaris-icons';
+
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
@@ -33,6 +34,7 @@ export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
     styles.Tag,
     disabled && styles.disabled,
     onClick && styles.clickable,
+    onRemove && styles.removable,
     newDesignLanguage && styles.newDesignLanguage,
   );
 

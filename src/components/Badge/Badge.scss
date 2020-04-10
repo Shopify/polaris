@@ -24,6 +24,7 @@ $pip-spacing: ($height - $pip-size) / 2;
   font-size: rem(13px);
   line-height: $height;
   color: var(--p-text, color('ink', 'light'));
+  font-weight: var(--p-badge-font-weight, 400);
 }
 
 .sizeSmall {

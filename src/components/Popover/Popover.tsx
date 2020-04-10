@@ -5,6 +5,7 @@ import React, {
   useState,
   AriaAttributes,
 } from 'react';
+
 import {
   findFirstFocusableNode,
   focusNextFocusableNode,
@@ -12,6 +13,7 @@ import {
 import {Portal} from '../Portal';
 import {portal} from '../shared';
 import {useUniqueId} from '../../utilities/unique-id';
+
 import {
   PopoverCloseSource,
   Pane,
@@ -81,7 +83,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
   preferInputActivator = true,
   ...rest
 }: PopoverProps) {
-  const [activatorNode, setActivatorNode] = useState();
+  const [activatorNode, setActivatorNode] = useState<HTMLElement>();
   const activatorContainer = useRef<HTMLElement>(null);
   const WrapperComponent: any = activatorWrapper;
   const id = useUniqueId('popover');
@@ -131,20 +133,26 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
 
   useEffect(() => {
     if (!activatorNode && activatorContainer.current) {
-      setActivatorNode(activatorContainer.current.firstElementChild);
+      setActivatorNode(
+        activatorContainer.current.firstElementChild as HTMLElement,
+      );
     } else if (
       activatorNode &&
       activatorContainer.current &&
       !activatorContainer.current.contains(activatorNode)
     ) {
-      setActivatorNode(activatorContainer.current.firstElementChild);
+      setActivatorNode(
+        activatorContainer.current.firstElementChild as HTMLElement,
+      );
     }
     setAccessibilityAttributes();
   }, [activatorNode, setAccessibilityAttributes]);
 
   useEffect(() => {
     if (activatorNode && activatorContainer.current) {
-      setActivatorNode(activatorContainer.current.firstElementChild);
+      setActivatorNode(
+        activatorContainer.current.firstElementChild as HTMLElement,
+      );
     }
     setAccessibilityAttributes();
   }, [activatorNode, setAccessibilityAttributes]);

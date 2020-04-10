@@ -3,6 +3,7 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {UnstyledLink} from 'components';
+
 import {Item} from '../Item';
 
 describe('<Item />', () => {

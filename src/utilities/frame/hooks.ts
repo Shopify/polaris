@@ -1,5 +1,7 @@
 import {useContext} from 'react';
+
 import {useAppBridge} from '../app-bridge';
+
 import {FrameContext} from './context';
 
 // TODO: Delete this when removing appBridge

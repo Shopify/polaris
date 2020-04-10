@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+
 import {Scrollable} from '../Scrollable';
 import {ScrollableContext} from '../context';
 
@@ -47,10 +48,7 @@ describe('<Scrollable />', () => {
       </ScrollableContext.Provider>,
     );
 
-    const div = scrollableContainer
-      .find(Child)
-      .find('div')
-      .first();
+    const div = scrollableContainer.find(Child).find('div').first();
     expect(div.exists()).toBe(true);
   });
 

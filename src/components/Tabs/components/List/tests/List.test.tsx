@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+
 import {List} from '../List';
 import {Item} from '../../Item';
 
@@ -68,12 +69,7 @@ describe('<List />', () => {
       const list = mountWithAppProvider(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
-      expect(
-        list
-          .find('button')
-          .first()
-          .prop('id'),
-      ).toBe('repeat-customers');
+      expect(list.find('button').first().prop('id')).toBe('repeat-customers');
     });
   });
 

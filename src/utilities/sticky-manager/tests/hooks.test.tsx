@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {mount, mountWithApp} from 'test-utilities';
+
 import {useStickyManager} from '../hooks';
 import {StickyManagerContext} from '../context';
 

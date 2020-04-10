@@ -3,9 +3,7 @@ import {CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
-import {useFeatures} from '../../../../utilities/features';
 import {ComplexAction} from '../../../../types';
-
 import {Icon} from '../../../Icon';
 import {UnstyledLink} from '../../../UnstyledLink';
 
@@ -26,8 +24,6 @@ export function MenuAction({
   disabled,
   onAction,
 }: MenuActionProps) {
-  const {newDesignLanguage} = useFeatures();
-
   const iconMarkup = icon && (
     <span className={styles.IconWrapper}>
       <Icon source={icon} />
@@ -53,7 +49,6 @@ export function MenuAction({
 
   const menuActionClassNames = classNames(
     styles.MenuAction,
-    newDesignLanguage && styles.newDesignLanguage,
     disabled && styles.disabled,
   );
 

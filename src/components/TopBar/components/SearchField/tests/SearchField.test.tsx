@@ -3,6 +3,7 @@ import {CircleCancelMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+
 import {SearchField} from '../SearchField';
 
 describe('<TextField />', () => {
@@ -128,6 +129,16 @@ describe('<TextField />', () => {
       });
       expect(spy).toHaveBeenCalled();
     });
+  });
+
+  it('adds a "BackdropShowFocusBorder" class when "showFocusBorder" is passed', () => {
+    const textField = mountWithAppProvider(
+      <SearchField value="" onChange={noop} showFocusBorder />,
+    );
+
+    expect(textField.find('div').last().prop('className')).toBe(
+      'Backdrop BackdropShowFocusBorder',
+    );
   });
 
   describe('newDesignLanguage', () => {

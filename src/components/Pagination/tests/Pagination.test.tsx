@@ -7,9 +7,12 @@ import {
 } from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Tooltip, TextField} from 'components';
+
 import {Key} from '../../../types';
 import {Pagination} from '../Pagination';
 import {UnstyledLink} from '../../UnstyledLink';
+import {Button} from '../../Button';
+import {ButtonGroup} from '../../ButtonGroup';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -109,10 +112,7 @@ describe('<Pagination />', () => {
     it('has subdued text without next and previous pages', () => {
       const pagination = mountWithAppProvider(<Pagination label="test" />);
       expect(
-        pagination
-          .find('.Label')
-          .children()
-          .prop('variation'),
+        pagination.find('.Label').children().prop('variation'),
       ).toStrictEqual('subdued');
     });
   });
@@ -171,10 +171,7 @@ describe('<Pagination />', () => {
     beforeEach(() => {
       getElementById = jest.spyOn(document, 'getElementById');
       getElementById.mockImplementation((id) => {
-        return pagination
-          .find(`#${id}`)
-          .at(0)
-          .getDOMNode();
+        return pagination.find(`#${id}`).at(0).getDOMNode();
       });
     });
 
@@ -220,23 +217,39 @@ describe('<Pagination />', () => {
   });
 
   describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage & rightButton class when newDesignLanguage is enabled', () => {
+    it('uses Button and ButtonGroup as subcomponents', () => {
       const pagination = mountWithApp(
-        <Pagination nextURL="/" previousURL="/" />,
+        <Pagination nextURL="/next" previousURL="/prev" />,
         {
           features: {newDesignLanguage: true},
         },
       );
 
-      expect(pagination).toContainReactComponent(UnstyledLink, {
-        className: 'Button newDesignLanguage rightButton NextButton',
+      expect(pagination).toContainReactComponent(ButtonGroup, {
+        segmented: true,
       });
-      expect(pagination).toContainReactComponent(UnstyledLink, {
-        className: 'Button newDesignLanguage PreviousButton',
+      expect(pagination).toContainReactComponent(Button, {url: '/prev'});
+      expect(pagination).toContainReactComponent(Button, {url: '/next'});
+    });
+
+    it('the ButtonGroup is not segmented when there is a label', () => {
+      const pagination = mountWithApp(
+        <Pagination
+          nextURL="/next"
+          previousURL="/prev"
+          label="Hello, world!"
+        />,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+
+      expect(pagination).toContainReactComponent(ButtonGroup, {
+        segmented: false,
       });
     });
 
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+    it('does not use Button and ButtonGroup as subcomponents when disabled', () => {
       const pagination = mountWithApp(
         <Pagination nextURL="/" previousURL="/" />,
         {
@@ -244,11 +257,11 @@ describe('<Pagination />', () => {
         },
       );
 
-      expect(pagination).not.toContainReactComponent(UnstyledLink, {
-        className: 'Button newDesignLanguage rightButton NextButton',
+      expect(pagination).toContainReactComponent(UnstyledLink, {
+        className: 'Button NextButton',
       });
-      expect(pagination).not.toContainReactComponent(UnstyledLink, {
-        className: 'Button newDesignLanguage PreviousButton',
+      expect(pagination).toContainReactComponent(UnstyledLink, {
+        className: 'Button PreviousButton',
       });
     });
   });

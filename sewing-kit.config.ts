@@ -1,4 +1,5 @@
 import {join} from 'path';
+
 import {ConfigurationCallback, Env, Plugins} from '@shopify/sewing-kit';
 
 const tests = join(__dirname, 'tests');

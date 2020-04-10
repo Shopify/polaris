@@ -1,5 +1,6 @@
 import React, {useMemo, useEffect, useContext} from 'react';
 import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
+
 import {
   ThemeContext,
   ThemeConfig,

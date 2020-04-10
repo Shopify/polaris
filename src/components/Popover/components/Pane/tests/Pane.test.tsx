@@ -2,6 +2,7 @@ import React from 'react';
 import {TextContainer, Scrollable} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+
 import {Pane} from '../Pane';
 import {Section} from '../../Section';
 

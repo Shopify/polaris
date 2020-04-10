@@ -1,6 +1,7 @@
 import React, {useState, useCallback} from 'react';
 import debounce from 'lodash/debounce';
 import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
+
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useI18n} from '../../utilities/i18n';
@@ -21,10 +22,9 @@ import {
   SearchProps,
   Menu,
 } from './components';
-
 import styles from './TopBar.scss';
 
-export {UserMenuProps, SearchFieldProps};
+export type {UserMenuProps, SearchFieldProps};
 
 export interface TopBarProps {
   /** Toggles whether or not a navigation component has been provided. Controls the presence of the mobile nav toggle button */

@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+
 import {Item} from '../../Item';
 import {Section} from '../Section';
 
@@ -68,12 +69,7 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(
-      section
-        .find(Item)
-        .first()
-        .prop('content'),
-    ).toBe('Import file');
+    expect(section.find(Item).first().prop('content')).toBe('Import file');
   });
 
   it('passes helpText to Item', () => {
@@ -89,12 +85,7 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(
-      section
-        .find(Item)
-        .first()
-        .prop('helpText'),
-    ).toBe('Foo');
+    expect(section.find(Item).first().prop('helpText')).toBe('Foo');
   });
 
   it('passes the onActionAnyItem callback to Item', () => {
@@ -112,10 +103,7 @@ describe('<Section />', () => {
       />,
     );
 
-    section
-      .find('Item button')
-      .first()
-      .simulate('click');
+    section.find('Item button').first().simulate('click');
 
     expect(spy).toHaveBeenCalledTimes(1);
   });

@@ -96,24 +96,18 @@ describe('<Avatar />', () => {
       const avatar = mountWithAppProvider(
         <Avatar accessibilityLabel="Hello World" />,
       );
-      expect(
-        avatar
-          .find('span')
-          .first()
-          .prop('aria-label'),
-      ).toBe('Hello World');
+      expect(avatar.find('span').first().prop('aria-label')).toBe(
+        'Hello World',
+      );
     });
   });
 
   describe('name', () => {
     it('is passed to the aria-label', () => {
       const avatar = mountWithAppProvider(<Avatar name="Hello World" />);
-      expect(
-        avatar
-          .find('span')
-          .first()
-          .prop('aria-label'),
-      ).toBe('Hello World');
+      expect(avatar.find('span').first().prop('aria-label')).toBe(
+        'Hello World',
+      );
     });
   });
 

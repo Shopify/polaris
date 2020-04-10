@@ -200,7 +200,7 @@ $range-output-spacing: rem(16px);
   transition-duration: var(--p-duration-1-5-0, duration());
   transition-timing-function: var(--p-ease, easing());
 
-  // stylelint-disable selector-max-specificity
+  // stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-class
   .Thumbs:hover + .Output &,
   .Thumbs:active + .Output &,
   .Thumbs:focus + .Output & {
@@ -210,7 +210,7 @@ $range-output-spacing: rem(16px);
       transform: translateY(-($range-output-spacing / 2));
     }
   }
-  // stylelint-enable selector-max-specificity
+  // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class
 }
 
 .OutputText {

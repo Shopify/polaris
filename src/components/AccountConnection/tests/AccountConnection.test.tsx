@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Avatar, buttonFrom} from 'components';
+
 import {AccountConnection} from '../AccountConnection';
 
 describe('<AccountConnection />', () => {
