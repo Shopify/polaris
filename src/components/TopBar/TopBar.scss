@@ -129,8 +129,5 @@ $context-control-expand-after: 1400px;
 }
 
 .SecondaryMenu {
-  svg {
-    color: transparent;
-    fill: var(--p-icon, var(--top-bar-color));
-  }
+  @include recolor-icon(var(--p-icon, var(--top-bar-color)), transparent);
 }
