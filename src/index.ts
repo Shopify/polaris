@@ -36,3 +36,5 @@ export {
   Tokens as UNSTABLE_Tokens,
 } from './utilities/theme';
 /* eslint-enable @typescript-eslint/camelcase */
+
+export {useResourceSelection} from './utilities/resources';
