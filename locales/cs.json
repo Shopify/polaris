@@ -18,7 +18,8 @@
         "success": "Zdařilo se",
         "warning": "Varování",
         "attention": "Upozornění",
-        "new": "Nové"
+        "new": "Nové",
+        "critical": "Kritický"
       }
     },
     "Button": {

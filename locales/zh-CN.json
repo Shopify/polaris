@@ -18,7 +18,8 @@
         "success": "成功",
         "warning": "警告",
         "attention": "注意",
-        "new": "新建"
+        "new": "新建",
+        "critical": "重要信息"
       }
     },
     "Button": {

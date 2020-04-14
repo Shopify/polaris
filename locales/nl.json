@@ -18,7 +18,8 @@
         "success": "Geslaagd",
         "warning": "Waarschuwing",
         "attention": "Attentie",
-        "new": "Nieuw"
+        "new": "Nieuw",
+        "critical": "Kritiek"
       }
     },
     "Button": {

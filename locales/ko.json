@@ -18,7 +18,8 @@
         "success": "성공",
         "warning": "경고",
         "attention": "주의",
-        "new": "신규"
+        "new": "신규",
+        "critical": "중요"
       }
     },
     "Button": {

@@ -18,7 +18,8 @@
         "success": "Erfolg",
         "warning": "Achtung",
         "attention": "Prüfung erforderlich",
-        "new": "Neu"
+        "new": "Neu",
+        "critical": "Kritisch"
       }
     },
     "Button": {
