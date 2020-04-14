@@ -18,7 +18,8 @@
         "success": "Onnistui",
         "warning": "Varoitus",
         "attention": "Huomio",
-        "new": "Uusi"
+        "new": "Uusi",
+        "critical": "Kriittinen"
       }
     },
     "Button": {

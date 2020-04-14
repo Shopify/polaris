@@ -18,7 +18,8 @@
         "success": "सफल",
         "warning": "चेतावनी",
         "attention": "ध्यान दें",
-        "new": "नया"
+        "new": "नया",
+        "critical": "महत्वपूर्ण"
       }
     },
     "Button": {

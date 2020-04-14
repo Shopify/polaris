@@ -13,6 +13,7 @@ keywords:
   - success badge
   - attention badge
   - warning badge
+  - critical badge
   - object status
   - status
   - alert
@@ -182,11 +183,13 @@ Keep in mind that seeing this badge can feel stressful for merchants so it shoul
 
 ### Critical badge
 
-<!-- example-for: android, ios -->
-
 Use for critical and irreversible issues that require merchants’ attention and potential action.
 
 Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
+
+```jsx
+<Badge status="critical">Not approved</Badge>
+```
 
 <!-- content-for: android -->
 

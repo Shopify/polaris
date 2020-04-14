@@ -18,7 +18,8 @@
         "success": "Genomfört",
         "warning": "Varning",
         "attention": "Observera",
-        "new": "Ny"
+        "new": "Ny",
+        "critical": "Kritisk"
       }
     },
     "Button": {
