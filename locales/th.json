@@ -18,7 +18,8 @@
         "success": "สำเร็จ",
         "warning": "คำเตือน",
         "attention": "ระวัง",
-        "new": "ใหม่"
+        "new": "ใหม่",
+        "critical": "ร้ายแรง"
       }
     },
     "Button": {

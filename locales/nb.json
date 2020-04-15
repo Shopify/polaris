@@ -18,7 +18,8 @@
         "success": "Vellykket",
         "warning": "Advarsel",
         "attention": "Obs",
-        "new": "Ny"
+        "new": "Ny",
+        "critical": "Kritisk"
       }
     },
     "Button": {

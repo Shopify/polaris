@@ -3,7 +3,7 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
 import {UnstyledLink} from '../../UnstyledLink';
-import {CallbackAction, LinkAction} from '../../../types';
+import type {CallbackAction, LinkAction} from '../../../types';
 import {Breadcrumbs} from '../Breadcrumbs';
 
 describe('<Breadcrumbs />', () => {

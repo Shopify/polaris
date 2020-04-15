@@ -7,7 +7,7 @@ import {Button} from '../../../Button';
 import {ThemeProvider} from '../../../ThemeProvider';
 import {Icon} from '../../../Icon';
 import {KeypressListener} from '../../../KeypressListener';
-import {ToastProps} from '../../../../utilities/frame';
+import type {ToastProps} from '../../../../utilities/frame';
 
 import styles from './Toast.scss';
 

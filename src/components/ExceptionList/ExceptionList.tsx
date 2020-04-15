@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import {Icon} from '../Icon';
-import {IconProps} from '../../types';
+import type {IconProps} from '../../types';
 import {Truncate} from '../Truncate';
 
 import styles from './ExceptionList.scss';

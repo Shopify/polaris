@@ -14,7 +14,7 @@ import {Icon} from '../Icon';
 import {UnstyledLink} from '../UnstyledLink';
 import {Tooltip} from '../Tooltip';
 import {KeypressListener} from '../KeypressListener';
-import {Key} from '../../types';
+import type {Key} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {useFeatures} from '../../utilities/features';
 import {Button} from '../Button';

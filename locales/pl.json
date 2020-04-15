@@ -18,7 +18,8 @@
         "success": "Udało się",
         "warning": "Ostrzeżenie",
         "attention": "Uwaga",
-        "new": "Nowe"
+        "new": "Nowe",
+        "critical": "Krytyczny"
       }
     },
     "Button": {

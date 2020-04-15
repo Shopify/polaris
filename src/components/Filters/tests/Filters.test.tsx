@@ -218,6 +218,46 @@ describe('<Filters />', () => {
       ).toHaveLength(2);
     });
 
+    it('forces showing the "More Filters" button if there are filters without shortcuts', () => {
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockPropsWithShortcuts} />,
+      );
+
+      expect(
+        resourceFilters.find(ConnectedFilterControl).props()
+          .forceShowMorefiltersButton,
+      ).toBe(true);
+    });
+
+    it('does not force showing the "More Filters" button if all the filters have shorcuts', () => {
+      const mockPropsWithShortcuts: FiltersProps = {
+        onQueryChange: noop,
+        onQueryClear: noop,
+        onClearAll: noop,
+        filters: [
+          {
+            key: 'filterOne',
+            label: 'Filter One',
+            filter: <MockFilter id="filterOne" />,
+            shortcut: true,
+          },
+          {
+            key: 'filterTwo',
+            label: 'Filter Two',
+            filter: <MockFilter id="filterTwo" />,
+            shortcut: true,
+          },
+        ],
+      };
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockPropsWithShortcuts} />,
+      );
+      expect(
+        resourceFilters.find(ConnectedFilterControl).props()
+          .forceShowMorefiltersButton,
+      ).toBe(false);
+    });
+
     it('receives shortcut filters with popoverOpen set to false on mount', () => {
       const resourceFilters = mountWithAppProvider(
         <Filters {...mockPropsWithShortcuts} />,

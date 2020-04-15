@@ -1,5 +1,5 @@
 import {mount, ReactWrapper, CommonWrapper} from 'enzyme';
-import React from 'react';
+import type {ReactElement} from 'react';
 import {act} from 'react-dom/test-utils';
 
 import {get} from '../utilities/get';
@@ -83,7 +83,7 @@ function updateRoot(wrapper: AnyWrapper) {
 }
 
 export function mountWithAppProvider<P>(
-  node: React.ReactElement<P>,
+  node: ReactElement<P>,
   context: WithPolarisTestProviderOptions = {},
 ) {
   return mount<P>(node, {

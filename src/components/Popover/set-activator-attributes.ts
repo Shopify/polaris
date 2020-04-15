@@ -1,4 +1,4 @@
-import {AriaAttributes} from 'react';
+import type {AriaAttributes} from 'react';
 
 export function setActivatorAttributes(
   activator: HTMLElement,

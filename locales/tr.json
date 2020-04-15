@@ -18,7 +18,8 @@
         "success": "Başarılı",
         "warning": "Uyarı",
         "attention": "Dikkat",
-        "new": "Yeni"
+        "new": "Yeni",
+        "critical": "Kritik"
       }
     },
     "Button": {
