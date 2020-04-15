@@ -12,7 +12,7 @@
 
 ### Bug fixes
 
-- `VideoThumbnail` add the top left and top right `border-radius` ([#2919](https://github.com/Shopify/polaris-react/pull/2919))
+- `MediaThumbnail` add the correct `border-radius` to the container ([#2919](https://github.com/Shopify/polaris-react/pull/2919))
 
 ### Documentation
 
