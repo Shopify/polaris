@@ -21,6 +21,10 @@ $portrait-breakpoint: 804px;
 .MediaContainer {
   overflow: hidden;
 
+  &:not(.portrait) {
+    flex-basis: 40%;
+  }
+
   @include breakpoint-after($portrait-breakpoint, inclusive) {
     &.portrait {
       border-top-left-radius: border-radius();
@@ -28,8 +32,6 @@ $portrait-breakpoint: 804px;
     }
 
     &:not(.portrait) {
-      flex-basis: 40%;
-      border-top-right-radius: 0;
       border-top-left-radius: border-radius();
       border-bottom-left-radius: border-radius();
     }
