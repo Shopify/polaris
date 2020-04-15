@@ -42,7 +42,7 @@ export interface ComboBoxProps {
   onEndReached?(): void;
 }
 export function ComboBox({
-  id,
+  id: idProp,
   options,
   selected,
   textField,
@@ -57,9 +57,6 @@ export function ComboBox({
   onSelect,
   onEndReached,
 }: ComboBoxProps) {
-  const [comboBoxId, setComboBoxId] = useState<string>(
-    useUniqueId('ComboBox', id),
-  );
   const [selectedOption, setSelectedOption] = useState<
     OptionDescriptor | ActionListItemDescriptor | undefined
   >(undefined);
@@ -70,6 +67,8 @@ export function ComboBox({
   >([]);
   const [popoverActive, setPopoverActive] = useState<boolean>(false);
   const [popoverWasActive, setPopoverWasActive] = useState<boolean>(false);
+
+  const id = useUniqueId('ComboBox', idProp);
 
   const getActionsWithIds = useCallback(
     (
@@ -266,10 +265,6 @@ export function ComboBox({
   );
 
   useEffect(() => {
-    id && setComboBoxId(id);
-  }, [id]);
-
-  useEffect(() => {
     if (selectedOptions !== selected) {
       setSelectedOptions(selected);
     }
@@ -289,9 +284,9 @@ export function ComboBox({
     if (actionsAfter) {
       newNavigableOptions = newNavigableOptions.concat(actionsAfter);
     }
-    newNavigableOptions = assignOptionIds(newNavigableOptions, comboBoxId);
+    newNavigableOptions = assignOptionIds(newNavigableOptions, id);
     setNavigableOptions(newNavigableOptions);
-  }, [actionsAfter, actionsBefore, comboBoxId, options]);
+  }, [actionsAfter, actionsBefore, id, options]);
 
   useEffect(() => {
     updateIndexOfSelectedOption(navigableOptions);
@@ -358,11 +353,11 @@ export function ComboBox({
     emptyState && <div className={styles.EmptyState}>{emptyState}</div>;
 
   const selectedOptionId = selectedOption
-    ? `${comboBoxId}-${selectedIndex}`
+    ? `${id}-${selectedIndex}`
     : undefined;
 
   const context = {
-    comboBoxId,
+    id,
     selectedOptionId,
   };
 
@@ -372,8 +367,8 @@ export function ComboBox({
         onClick={handleClick}
         role="combobox"
         aria-expanded={popoverActive}
-        aria-owns={comboBoxId}
-        aria-controls={comboBoxId}
+        aria-owns={id}
+        aria-controls={id}
         aria-haspopup
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -392,11 +387,7 @@ export function ComboBox({
           preventAutofocus
         >
           <Popover.Pane onScrolledToBottom={onEndReached}>
-            <div
-              id={comboBoxId}
-              role="listbox"
-              aria-multiselectable={allowMultiple}
-            >
+            <div id={id} role="listbox" aria-multiselectable={allowMultiple}>
               {contentBefore}
               {actionsBeforeMarkup}
               {optionsMarkup}
@@ -413,7 +404,7 @@ export function ComboBox({
 
 function assignOptionIds(
   options: (OptionDescriptor | ActionListItemDescriptor)[],
-  comboBoxId: string,
+  id: string,
 ): OptionDescriptor[] | ActionListItemDescriptor[] {
   return options.map(
     (
@@ -421,7 +412,7 @@ function assignOptionIds(
       optionIndex: number,
     ) => ({
       ...option,
-      id: `${comboBoxId}-${optionIndex}`,
+      id: `${id}-${optionIndex}`,
     }),
   );
 }
