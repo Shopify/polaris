@@ -82,9 +82,8 @@ export function ComboBox({
     ): ActionListItemDescriptor[] => {
       if (before) {
         return navigableOptions.slice(0, actions.length);
-      } else {
-        return navigableOptions.slice(-actions.length);
       }
+      return navigableOptions.slice(-actions.length);
     },
     [navigableOptions],
   );
@@ -95,7 +94,7 @@ export function ComboBox({
   }, [forcePopoverActiveFalse]);
 
   const handlePopoverOpen = useCallback(() => {
-    if (!popoverActive && navigableOptions && navigableOptions.length > 0) {
+    if (!popoverActive && navigableOptions.length > 0) {
       forcePopoverActiveTrue();
       setPopoverWasActive(true);
     }
@@ -119,12 +118,9 @@ export function ComboBox({
   const resetVisuallySelectedOptions = useCallback(() => {
     setSelectedOption(undefined);
     setSelectedIndex(-1);
-    navigableOptions &&
-      navigableOptions.forEach(
-        (option: OptionDescriptor | ActionListItemDescriptor) => {
-          option.active = false;
-        },
-      );
+    navigableOptions.forEach((option) => {
+      option.active = false;
+    });
   }, [navigableOptions]);
 
   const selectOptionAtIndex = useCallback(
@@ -144,7 +140,7 @@ export function ComboBox({
   );
 
   const selectNextOption = useCallback(() => {
-    if (!navigableOptions || navigableOptions.length === 0) {
+    if (navigableOptions.length === 0) {
       return;
     }
 
@@ -160,7 +156,7 @@ export function ComboBox({
   }, [navigableOptions, selectOptionAtIndex, selectedIndex]);
 
   const selectPreviousOption = useCallback(() => {
-    if (!navigableOptions || navigableOptions.length === 0) {
+    if (navigableOptions.length === 0) {
       return;
     }
 
@@ -213,13 +209,11 @@ export function ComboBox({
 
   const handleDownArrow = useCallback(() => {
     selectNextOption();
-    handlePopoverOpen;
-  }, [handlePopoverOpen, selectNextOption]);
+  }, [selectNextOption]);
 
   const handleUpArrow = useCallback(() => {
     selectPreviousOption();
-    handlePopoverOpen;
-  }, [handlePopoverOpen, selectPreviousOption]);
+  }, [selectPreviousOption]);
 
   const handleEnter = useCallback(
     (event: KeyboardEvent) => {
@@ -235,10 +229,8 @@ export function ComboBox({
           selectedOption.onAction && selectedOption.onAction();
         }
       }
-
-      handlePopoverOpen;
     },
-    [handlePopoverOpen, handleSelection, popoverActive, selectedOption],
+    [handleSelection, popoverActive, selectedOption],
   );
 
   const handleFocus = useCallback(() => {
@@ -304,18 +296,13 @@ export function ComboBox({
 
   useEffect(() => {
     if (
-      navigableOptions &&
       navigableOptions.length === 0 &&
       !contentBefore &&
       !contentAfter &&
       !emptyState
     ) {
       forcePopoverActiveFalse();
-    } else if (
-      popoverWasActive &&
-      navigableOptions &&
-      navigableOptions.length !== 0
-    ) {
+    } else if (popoverWasActive && navigableOptions.length !== 0) {
       forcePopoverActiveTrue();
     }
   }, [
@@ -418,15 +405,10 @@ function assignOptionIds(
   options: (OptionDescriptor | ActionListItemDescriptor)[],
   id: string,
 ): OptionDescriptor[] | ActionListItemDescriptor[] {
-  return options.map(
-    (
-      option: OptionDescriptor | ActionListItemDescriptor,
-      optionIndex: number,
-    ) => ({
-      ...option,
-      id: `${id}-${optionIndex}`,
-    }),
-  );
+  return options.map((option, optionIndex) => ({
+    ...option,
+    id: `${id}-${optionIndex}`,
+  }));
 }
 
 function isOption(
