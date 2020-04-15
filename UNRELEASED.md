@@ -12,7 +12,7 @@
 
 ### Bug fixes
 
-- `MediaThumbnail` add the correct `border-radius` to the container ([#2919](https://github.com/Shopify/polaris-react/pull/2919))
+- `MediaCard` add the correct `border-radius` to the container ([#2919](https://github.com/Shopify/polaris-react/pull/2919))
 
 ### Documentation
 
