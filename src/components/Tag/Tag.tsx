@@ -61,7 +61,7 @@ export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
   ) : null;
 
   const tagMarkup = onClick ? (
-    <button 
+    <button
       type="button"
       disabled={disabled}
       className={className}
