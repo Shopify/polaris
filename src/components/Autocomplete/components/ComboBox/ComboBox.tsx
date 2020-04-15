@@ -60,13 +60,13 @@ export function ComboBox({
   const [selectedOption, setSelectedOption] = useState<
     OptionDescriptor | ActionListItemDescriptor | undefined
   >(undefined);
-  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>(selected);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [selectedOptions, setSelectedOptions] = useState(selected);
   const [navigableOptions, setNavigableOptions] = useState<
     (OptionDescriptor | ActionListItemDescriptor)[]
   >([]);
-  const [popoverActive, setPopoverActive] = useState<boolean>(false);
-  const [popoverWasActive, setPopoverWasActive] = useState<boolean>(false);
+  const [popoverActive, setPopoverActive] = useState(false);
+  const [popoverWasActive, setPopoverWasActive] = useState(false);
 
   const id = useUniqueId('ComboBox', idProp);
 
