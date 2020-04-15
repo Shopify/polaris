@@ -12,6 +12,8 @@
 
 ### Bug fixes
 
+- Fixed `MediaCard` children overflowing due border radius ([#2920](https://github.com/Shopify/polaris-react/pull/2920))
+
 ### Documentation
 
 ### Development workflow

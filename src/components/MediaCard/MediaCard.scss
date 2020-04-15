@@ -1,7 +1,5 @@
 @import '../../styles/common';
 
-$portrait-breakpoint: 804px;
-
 .MediaCard {
   height: 100%;
   width: 100%;
@@ -11,15 +9,18 @@ $portrait-breakpoint: 804px;
   &.portrait {
     flex-flow: column nowrap;
   }
-
-  @include breakpoint-before($portrait-breakpoint, inclusive) {
-    flex-flow: column nowrap;
-  }
 }
 
 .MediaContainer {
-  &:not(.portrait) {
-    flex-basis: 40%;
+  border-top-left-radius: var(--p-border-radius-base, border-radius());
+  border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  overflow: hidden;
+  flex-basis: 40%;
+
+  &.portrait {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: var(--p-border-radius-base, border-radius());
+    flex-basis: unset;
   }
 }
 

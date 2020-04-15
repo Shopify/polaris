@@ -1,6 +1,7 @@
 import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
+import {useMediaQuery} from '../../utilities/media-query';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -44,6 +45,7 @@ export function MediaCard({
   portrait = false,
 }: MediaCardProps) {
   const i18n = useI18n();
+  const {isNavigationCollapsed} = useMediaQuery();
   const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
 
   const popoverActivator = (
@@ -86,7 +88,7 @@ export function MediaCard({
 
   const actionClassName = classNames(
     styles.ActionContainer,
-    portrait && styles.portrait,
+    (portrait || isNavigationCollapsed) && styles.portrait,
   );
 
   const actionMarkup = (
