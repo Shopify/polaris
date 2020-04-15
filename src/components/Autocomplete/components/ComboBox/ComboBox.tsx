@@ -71,7 +71,6 @@ export function ComboBox({
     setTrue: forcePopoverActiveTrue,
     setFalse: forcePopoverActiveFalse,
   } = useToggle(false);
-  const [popoverWasActive, setPopoverWasActive] = useState(false);
 
   const id = useUniqueId('ComboBox', idProp);
 
@@ -90,15 +89,7 @@ export function ComboBox({
 
   const handlePopoverClose = useCallback(() => {
     forcePopoverActiveFalse();
-    setPopoverWasActive(false);
   }, [forcePopoverActiveFalse]);
-
-  const handlePopoverOpen = useCallback(() => {
-    if (!popoverActive && navigableOptions.length > 0) {
-      forcePopoverActiveTrue();
-      setPopoverWasActive(true);
-    }
-  }, [forcePopoverActiveTrue, navigableOptions, popoverActive]);
 
   const visuallyUpdateSelectedOption = useCallback(
     (
@@ -177,7 +168,6 @@ export function ComboBox({
       if (!allowMultiple) {
         resetVisuallySelectedOptions();
         forcePopoverActiveFalse();
-        setPopoverWasActive(false);
       }
     },
     [
@@ -235,12 +225,10 @@ export function ComboBox({
 
   const handleFocus = useCallback(() => {
     forcePopoverActiveTrue();
-    setPopoverWasActive(true);
   }, [forcePopoverActiveTrue]);
 
   const handleBlur = useCallback(() => {
     forcePopoverActiveFalse();
-    setPopoverWasActive(false);
     resetVisuallySelectedOptions();
   }, [forcePopoverActiveFalse, resetVisuallySelectedOptions]);
 
@@ -293,27 +281,6 @@ export function ComboBox({
   useEffect(() => {
     updateIndexOfSelectedOption(navigableOptions);
   }, [navigableOptions, updateIndexOfSelectedOption]);
-
-  useEffect(() => {
-    if (
-      navigableOptions.length === 0 &&
-      !contentBefore &&
-      !contentAfter &&
-      !emptyState
-    ) {
-      forcePopoverActiveFalse();
-    } else if (popoverWasActive && navigableOptions.length !== 0) {
-      forcePopoverActiveTrue();
-    }
-  }, [
-    contentAfter,
-    contentBefore,
-    emptyState,
-    forcePopoverActiveFalse,
-    forcePopoverActiveTrue,
-    navigableOptions,
-    popoverWasActive,
-  ]);
 
   let actionsBeforeMarkup: JSX.Element | undefined;
   if (actionsBefore && actionsBefore.length > 0) {
