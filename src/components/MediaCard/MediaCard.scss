@@ -18,13 +18,13 @@ $portrait-breakpoint: 804px;
 }
 
 .MediaContainer {
-  overflow: hidden;
-
   &:not(.portrait) {
     flex-basis: 40%;
   }
 
   @include breakpoint-after($portrait-breakpoint, inclusive) {
+    overflow: hidden;
+
     &.portrait {
       border-top-left-radius: border-radius();
       border-top-right-radius: border-radius();
