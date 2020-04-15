@@ -7,7 +7,6 @@ $portrait-breakpoint: 804px;
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-  overflow: hidden;
 
   &.portrait {
     flex-flow: column nowrap;
