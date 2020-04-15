@@ -58,9 +58,6 @@ export function ComboBox({
   onSelect,
   onEndReached,
 }: ComboBoxProps) {
-  const [selectedOption, setSelectedOption] = useState<
-    OptionDescriptor | ActionListItemDescriptor | undefined
-  >(undefined);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [selectedOptions, setSelectedOptions] = useState(selected);
   const [navigableOptions, setNavigableOptions] = useState<
@@ -107,7 +104,6 @@ export function ComboBox({
   );
 
   const resetVisuallySelectedOptions = useCallback(() => {
-    setSelectedOption(undefined);
     setSelectedIndex(-1);
     navigableOptions.forEach((option) => {
       option.active = false;
@@ -116,18 +112,18 @@ export function ComboBox({
 
   const selectOptionAtIndex = useCallback(
     (newOptionIndex: number) => {
-      if (!navigableOptions || navigableOptions.length === 0) {
+      if (navigableOptions.length === 0) {
         return;
       }
 
+      const oldSelectedOption = navigableOptions[selectedIndex];
       const newSelectedOption = navigableOptions[newOptionIndex];
 
-      visuallyUpdateSelectedOption(newSelectedOption, selectedOption);
+      visuallyUpdateSelectedOption(newSelectedOption, oldSelectedOption);
 
-      setSelectedOption(newSelectedOption);
       setSelectedIndex(newOptionIndex);
     },
-    [navigableOptions, selectedOption, visuallyUpdateSelectedOption],
+    [navigableOptions, selectedIndex, visuallyUpdateSelectedOption],
   );
 
   const selectNextOption = useCallback(() => {
@@ -211,7 +207,8 @@ export function ComboBox({
         return;
       }
 
-      if (popoverActive && selectedOption) {
+      if (popoverActive && selectedIndex > -1) {
+        const selectedOption = navigableOptions[selectedIndex];
         if (isOption(selectedOption)) {
           event.preventDefault();
           handleSelection(selectedOption.value);
@@ -220,7 +217,7 @@ export function ComboBox({
         }
       }
     },
-    [handleSelection, popoverActive, selectedOption],
+    [handleSelection, navigableOptions, popoverActive, selectedIndex],
   );
 
   const handleFocus = useCallback(() => {
@@ -238,6 +235,7 @@ export function ComboBox({
 
   const updateIndexOfSelectedOption = useCallback(
     (newOptions: (OptionDescriptor | ActionListItemDescriptor)[]) => {
+      const selectedOption = navigableOptions[selectedIndex];
       if (selectedOption && newOptions.includes(selectedOption)) {
         selectOptionAtIndex(newOptions.indexOf(selectedOption));
       } else if (selectedIndex > newOptions.length - 1) {
@@ -247,10 +245,10 @@ export function ComboBox({
       }
     },
     [
+      navigableOptions,
       resetVisuallySelectedOptions,
       selectOptionAtIndex,
       selectedIndex,
-      selectedOption,
     ],
   );
 
@@ -318,9 +316,8 @@ export function ComboBox({
     options.length === 0 &&
     emptyState && <div className={styles.EmptyState}>{emptyState}</div>;
 
-  const selectedOptionId = selectedOption
-    ? `${id}-${selectedIndex}`
-    : undefined;
+  const selectedOptionId =
+    selectedIndex > -1 ? `${id}-${selectedIndex}` : undefined;
 
   const context = {
     id,
