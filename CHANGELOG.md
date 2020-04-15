@@ -8,6 +8,22 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.19.0 - 2020-04-15
+
+### Enhancements
+
+- Updated `Filters` to only show the "More filters" button if necessary ([#2856](https://github.com/Shopify/polaris-react/pull/2856)).
+- Updated `TopBar` component to show `secondaryMenu` on small screens ([#2913](https://github.com/Shopify/polaris-react/pull/2913))
+- `Badge` adds `critical` status prop styling ([#2902](https://github.com/Shopify/polaris-react/pull/2902))
+
+### Bug fixes
+
+- `MediaCard` add the correct `border-radius` to the container ([#2919](https://github.com/Shopify/polaris-react/pull/2919))
+
+### Code quality
+
+- Set `importsNotUsedAsValues` to `error` in typescript configuration to force us to be explicit when importing types ([#2901](https://github.com/Shopify/polaris-react/pull/2901))
+
 ## 4.18.0 - 2020-04-09
 
 ### New components
