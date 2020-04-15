@@ -12,6 +12,8 @@
 
 ### Bug fixes
 
+- `VideoThumbnail` has top left and top right `border-radius` ([#](https://github.com/Shopify/polaris-react/pull/))
+
 ### Documentation
 
 ### Development workflow
