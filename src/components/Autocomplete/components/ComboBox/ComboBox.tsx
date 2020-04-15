@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
 
 import {useUniqueId} from '../../../../utilities/unique-id';
+import {useToggle} from '../../../../utilities/use-toggle';
 import {OptionList, OptionDescriptor} from '../../../OptionList';
 import {ActionList} from '../../../ActionList';
 import {Popover, PopoverProps} from '../../../Popover';
@@ -65,7 +66,11 @@ export function ComboBox({
   const [navigableOptions, setNavigableOptions] = useState<
     (OptionDescriptor | ActionListItemDescriptor)[]
   >([]);
-  const [popoverActive, setPopoverActive] = useState(false);
+  const {
+    value: popoverActive,
+    setTrue: forcePopoverActiveTrue,
+    setFalse: forcePopoverActiveFalse,
+  } = useToggle(false);
   const [popoverWasActive, setPopoverWasActive] = useState(false);
 
   const id = useUniqueId('ComboBox', idProp);
@@ -85,16 +90,16 @@ export function ComboBox({
   );
 
   const handlePopoverClose = useCallback(() => {
-    setPopoverActive(false);
+    forcePopoverActiveFalse();
     setPopoverWasActive(false);
-  }, []);
+  }, [forcePopoverActiveFalse]);
 
   const handlePopoverOpen = useCallback(() => {
     if (!popoverActive && navigableOptions && navigableOptions.length > 0) {
-      setPopoverActive(true);
+      forcePopoverActiveTrue();
       setPopoverWasActive(true);
     }
-  }, [navigableOptions, popoverActive]);
+  }, [forcePopoverActiveTrue, navigableOptions, popoverActive]);
 
   const visuallyUpdateSelectedOption = useCallback(
     (
@@ -175,11 +180,16 @@ export function ComboBox({
       selected && onSelect(selected);
       if (!allowMultiple) {
         resetVisuallySelectedOptions();
-        setPopoverActive(false);
+        forcePopoverActiveFalse();
         setPopoverWasActive(false);
       }
     },
-    [allowMultiple, onSelect, resetVisuallySelectedOptions],
+    [
+      allowMultiple,
+      forcePopoverActiveFalse,
+      onSelect,
+      resetVisuallySelectedOptions,
+    ],
   );
 
   const handleSelection = useCallback(
@@ -232,19 +242,19 @@ export function ComboBox({
   );
 
   const handleFocus = useCallback(() => {
-    setPopoverActive(true);
+    forcePopoverActiveTrue();
     setPopoverWasActive(true);
-  }, []);
+  }, [forcePopoverActiveTrue]);
 
   const handleBlur = useCallback(() => {
-    setPopoverActive(false);
+    forcePopoverActiveFalse();
     setPopoverWasActive(false);
     resetVisuallySelectedOptions();
-  }, [resetVisuallySelectedOptions]);
+  }, [forcePopoverActiveFalse, resetVisuallySelectedOptions]);
 
   const handleClick = useCallback(() => {
-    !popoverActive && setPopoverActive(true);
-  }, [popoverActive]);
+    !popoverActive && forcePopoverActiveTrue();
+  }, [forcePopoverActiveTrue, popoverActive]);
 
   const updateIndexOfSelectedOption = useCallback(
     (newOptions: (OptionDescriptor | ActionListItemDescriptor)[]) => {
@@ -300,18 +310,20 @@ export function ComboBox({
       !contentAfter &&
       !emptyState
     ) {
-      setPopoverActive(false);
+      forcePopoverActiveFalse();
     } else if (
       popoverWasActive &&
       navigableOptions &&
       navigableOptions.length !== 0
     ) {
-      setPopoverActive(true);
+      forcePopoverActiveTrue();
     }
   }, [
     contentAfter,
     contentBefore,
     emptyState,
+    forcePopoverActiveFalse,
+    forcePopoverActiveTrue,
     navigableOptions,
     popoverWasActive,
   ]);
