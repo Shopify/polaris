@@ -22,7 +22,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Code quality
 
-- Set `importsNotUsedAsValues` to `error` in typescript configuration to force us to be explicit when importing types ([#2901](https://github.com/Shopify/polaris-react/pull/2901))
+- Set `importsNotUsedAsValues` to `error` in TypeScript configuration to force us to be explicit when importing types ([#2901](https://github.com/Shopify/polaris-react/pull/2901))
 
 ## 4.18.0 - 2020-04-09
 
