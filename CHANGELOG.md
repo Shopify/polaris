@@ -18,7 +18,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Bug fixes
 
-- `MediaCard` add the correct `border-radius` to the container ([#2919](https://github.com/Shopify/polaris-react/pull/2919))
+- Added `border-radius` to the `MediaCard` container ([#2919](https://github.com/Shopify/polaris-react/pull/2919))
 
 ### Code quality
 
