@@ -14,6 +14,8 @@
 
 ### Development workflow
 
+- Fixed automatic pull request generation for `web` and `styelguide` when updating Polaris ([#](https://github.com/Shopify/polaris-react/pull/))
+
 ### Dependency upgrades
 
 ### Code quality
