@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
-const {execSync} = require('child_process');
-const {readFileSync} = require('fs');
+const { execSync } = require('child_process');
+const { readFileSync } = require('fs');
 const path = require('path');
 
-const {mkdir} = require('shelljs');
+const { mkdir } = require('shelljs');
 const yaml = require('js-yaml');
 const semver = require('semver');
 
-const {version: PACKAGE_VERSION} = require('../package.json');
+const { version: PACKAGE_VERSION } = require('../package.json');
 const secrets = require('../secrets.json');
 
 const retry = require('./utilities/retry');
@@ -139,6 +139,7 @@ const jobs = repositories.map((repository) => {
           'v',
           '',
         )} --no-progress --ignore-engines`,
+        'npx yarn-deduplicate --packages @shopify/polaris-icons,@shopify/polaris-tokens yarn.lock',
         `git add package.json yarn.lock`,
         `${shopifyPolarisBotGitOverride} git commit -m "Update @shopify/polaris to ${releaseVersion}" --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}" --allow-empty`,
         `git push origin update-polaris-${releaseVersion}`,
