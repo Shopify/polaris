@@ -18,7 +18,8 @@
         "success": "Udało się",
         "warning": "Ostrzeżenie",
         "attention": "Uwaga",
-        "new": "Nowe"
+        "new": "Nowe",
+        "critical": "Krytyczny"
       }
     },
     "Button": {
@@ -226,6 +227,57 @@
       "SearchField": {
         "clearButtonLabel": "Wyczyść",
         "search": "Szukaj"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "Czynności"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Odtwórz film",
+        "defaultWithDuration": "Odtwórz film o długości {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "Liczba godzin: {hourCount}",
+              "andMinutes": "{hourCount} godz. i {minuteCount} min.",
+              "andMinute": "{hourCount} godz. i {minuteCount} min.",
+              "minutesAndSeconds": "{hourCount} godz., {minuteCount} min. i {secondCount} sek.",
+              "minutesAndSecond": "{hourCount} godz., {minuteCount} min. i {secondCount} sek.",
+              "minuteAndSeconds": "{hourCount} godz., {minuteCount} min. i {secondCount} sek.",
+              "minuteAndSecond": "{hourCount} godz., {minuteCount} min. i {secondCount} sek.",
+              "andSeconds": "{hourCount} godz. i {secondCount} sek.",
+              "andSecond": "{hourCount} godz. i {secondCount} sek."
+            },
+            "one": {
+              "only": "{hourCount} godzina",
+              "andMinutes": "{hourCount} godz. i {minuteCount} min.",
+              "andMinute": "{hourCount} godz. i {minuteCount} min.",
+              "minutesAndSeconds": "{hourCount} godz., {minuteCount} min. i {secondCount} sek.",
+              "minutesAndSecond": "{hourCount} godz., {minuteCount} min. i {secondCount} sek.",
+              "minuteAndSeconds": "{hourCount} godz., {minuteCount} min. i {secondCount} sek.",
+              "minuteAndSecond": "{hourCount} godz., {minuteCount} min. i {secondCount} sek.",
+              "andSeconds": "{hourCount} godz. i {secondCount} sek.",
+              "andSecond": "{hourCount} godz. i {secondCount} sek."
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "Liczba minut: {minuteCount}",
+              "andSeconds": "{minuteCount} min. i {secondCount} sek.",
+              "andSecond": "{minuteCount} min. i {secondCount} sek."
+            },
+            "one": {
+              "only": "{minuteCount} minuta",
+              "andSeconds": "{minuteCount} min. i {secondCount} sek.",
+              "andSecond": "{minuteCount} min. i {secondCount} sek."
+            }
+          },
+          "seconds": {
+            "other": "Liczba sekund: {secondCount}",
+            "one": "{secondCount} sekunda"
+          }
+        }
       }
     }
   }

@@ -1,6 +1,6 @@
 import {clamp} from '@shopify/javascript-utilities/math';
 
-import {
+import type {
   RGBColor,
   RGBAColor,
   HSBColor,

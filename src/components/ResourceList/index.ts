@@ -1,2 +1,9 @@
 export * from './ResourceList';
-export * from './components/FilterControl/types';
+
+export {FilterType} from './components/FilterControl/types';
+export type {
+  Filter,
+  AppliedFilter,
+  FilterSelect,
+  FilterTextField,
+} from './components/FilterControl/types';

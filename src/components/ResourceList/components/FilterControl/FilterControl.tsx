@@ -1,7 +1,7 @@
 import React from 'react';
 import {SearchMinor} from '@shopify/polaris-icons';
 
-import {ComplexAction} from '../../../../types';
+import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {Icon} from '../../../Icon';
 import {FormLayout} from '../../../FormLayout';

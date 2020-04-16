@@ -18,7 +18,8 @@
         "success": "成功",
         "warning": "警告",
         "attention": "注意",
-        "new": "新建"
+        "new": "新建",
+        "critical": "重要信息"
       }
     },
     "Button": {
@@ -226,6 +227,57 @@
       "SearchField": {
         "clearButtonLabel": "清除",
         "search": "搜索"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "编辑"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "播放视频",
+        "defaultWithDuration": "播放时长为 {duration} 的视频",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} 小时",
+              "andMinutes": "{hourCount} 小时 {minuteCount} 分",
+              "andMinute": "{hourCount} 小时 {minuteCount} 分",
+              "minutesAndSeconds": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "minutesAndSecond": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "minuteAndSeconds": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "minuteAndSecond": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "andSeconds": "{hourCount} 小时 {secondCount} 秒",
+              "andSecond": "{hourCount} 小时 {secondCount} 秒"
+            },
+            "one": {
+              "only": "{hourCount} 小时",
+              "andMinutes": "{hourCount} 小时 {minuteCount} 分",
+              "andMinute": "{hourCount} 小时 {minuteCount} 分",
+              "minutesAndSeconds": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "minutesAndSecond": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "minuteAndSeconds": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "minuteAndSecond": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "andSeconds": "{hourCount} 小时 {secondCount} 秒",
+              "andSecond": "{hourCount} 小时 {secondCount} 秒"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} 分钟",
+              "andSeconds": "{minuteCount} 分 {secondCount} 秒",
+              "andSecond": "{minuteCount} 分 {secondCount} 秒"
+            },
+            "one": {
+              "only": "{minuteCount} 分钟",
+              "andSeconds": "{minuteCount} 分 {secondCount} 秒",
+              "andSecond": "{minuteCount} 分 {secondCount} 秒"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} 秒",
+            "one": "{secondCount} 秒"
+          }
+        }
       }
     }
   }

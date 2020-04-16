@@ -7,7 +7,7 @@ import {
 import {classNames} from '../../../../utilities/css';
 import {EventListener} from '../../../EventListener';
 import {Portal} from '../../../Portal';
-import {ToastPropsWithID} from '../../../../utilities/frame';
+import type {ToastPropsWithID} from '../../../../utilities/frame';
 import {Toast} from '../Toast';
 import {useDeepEffect} from '../../../../utilities/use-deep-effect';
 import {useDeepCallback} from '../../../../utilities/use-deep-callback';

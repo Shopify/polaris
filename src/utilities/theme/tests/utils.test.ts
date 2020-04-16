@@ -9,7 +9,7 @@ import {
   buildThemeContext,
   buildCustomProperties,
 } from '../utils';
-import {ColorScheme, RoleColors} from '../types';
+import type {ColorScheme, RoleColors} from '../types';
 
 const DefaultColorScheme: ColorScheme = 'light';
 

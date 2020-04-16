@@ -3,9 +3,9 @@ import React, {useState, useCallback} from 'react';
 import {arraysAreEqual} from '../../utilities/arrays';
 import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
-import {IconProps} from '../../types';
-import {AvatarProps} from '../Avatar';
-import {ThumbnailProps} from '../Thumbnail';
+import type {IconProps} from '../../types';
+import type {AvatarProps} from '../Avatar';
+import type {ThumbnailProps} from '../Thumbnail';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
 

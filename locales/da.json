@@ -18,7 +18,8 @@
         "success": "Succes",
         "warning": "Advarsel",
         "attention": "Bemærk",
-        "new": "Nye"
+        "new": "Nye",
+        "critical": "Kritisk"
       }
     },
     "Button": {
@@ -226,6 +227,57 @@
       "SearchField": {
         "clearButtonLabel": "Ryd",
         "search": "Søg"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "Handlinger"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Afspil video",
+        "defaultWithDuration": "Afspil video med en længde på {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} timer",
+              "andMinutes": "{hourCount} timer og {minuteCount} minutter",
+              "andMinute": "{hourCount} timer og {minuteCount} minut",
+              "minutesAndSeconds": "{hourCount} timer, {minuteCount} minutter og {secondCount} sekunder",
+              "minutesAndSecond": "{hourCount} timer, {minuteCount} minutter og {secondCount} sekund",
+              "minuteAndSeconds": "{hourCount} timer, {minuteCount} minut og {secondCount} sekunder",
+              "minuteAndSecond": "{hourCount} timer, {minuteCount} minut og {secondCount} sekund",
+              "andSeconds": "{hourCount} timer og {secondCount} sekunder",
+              "andSecond": "{hourCount} timer og {secondCount} sekund"
+            },
+            "one": {
+              "only": "{hourCount} time",
+              "andMinutes": "{hourCount} time og {minuteCount} minutter",
+              "andMinute": "{hourCount} time og {minuteCount} minut",
+              "minutesAndSeconds": "{hourCount} time, {minuteCount} minutter og {secondCount} sekunder",
+              "minutesAndSecond": "{hourCount} time, {minuteCount} minutter og {secondCount} sekund",
+              "minuteAndSeconds": "{hourCount} time, {minuteCount} minut og {secondCount} sekunder",
+              "minuteAndSecond": "{hourCount} time, {minuteCount} minut og {secondCount} sekund",
+              "andSeconds": "{hourCount} time og {secondCount} sekunder",
+              "andSecond": "{hourCount} time og {secondCount} sekund"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} minutter",
+              "andSeconds": "{minuteCount} minutter og {secondCount} sekunder",
+              "andSecond": "{minuteCount} minutter og {secondCount} sekund"
+            },
+            "one": {
+              "only": "{minuteCount} minut",
+              "andSeconds": "{minuteCount} minut og {secondCount} sekunder",
+              "andSecond": "{minuteCount} minut og {secondCount} sekund"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} sekunder",
+            "one": "{secondCount} sekund"
+          }
+        }
       }
     }
   }

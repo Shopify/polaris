@@ -1,5 +1,5 @@
 export * from './context';
 
-export * from './types';
+export type {Features, FeaturesConfig} from './types';
 
 export * from './hooks';

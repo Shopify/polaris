@@ -1,7 +1,10 @@
 import React from 'react';
 
 import {Item} from '../Item';
-import {ActionListItemDescriptor, ActionListSection} from '../../../../types';
+import type {
+  ActionListItemDescriptor,
+  ActionListSection,
+} from '../../../../types';
 import styles from '../../ActionList.scss';
 
 export interface SectionProps {

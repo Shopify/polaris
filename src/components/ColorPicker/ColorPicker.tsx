@@ -2,7 +2,7 @@ import React from 'react';
 import {clamp} from '@shopify/javascript-utilities/math';
 
 import {hsbToRgb} from '../../utilities/color-transformers';
-import {HSBColor, HSBAColor} from '../../utilities/color-types';
+import type {HSBColor, HSBAColor} from '../../utilities/color-types';
 
 import {AlphaPicker, HuePicker, Slidable, SlidableProps} from './components';
 import styles from './ColorPicker.scss';
