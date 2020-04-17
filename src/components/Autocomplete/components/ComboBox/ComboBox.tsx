@@ -72,10 +72,7 @@ export function ComboBox({
   const id = useUniqueId('ComboBox', idProp);
 
   const getActionsWithIds = useCallback(
-    (
-      actions: ActionListItemDescriptor[],
-      before?: boolean,
-    ): ActionListItemDescriptor[] => {
+    (actions: ActionListItemDescriptor[], before?: boolean) => {
       if (before) {
         return navigableOptions.slice(0, actions.length);
       }
@@ -83,10 +80,6 @@ export function ComboBox({
     },
     [navigableOptions],
   );
-
-  const handlePopoverClose = useCallback(() => {
-    forcePopoverActiveFalse();
-  }, [forcePopoverActiveFalse]);
 
   const visuallyUpdateSelectedOption = useCallback(
     (
@@ -193,14 +186,6 @@ export function ComboBox({
     [allowMultiple, selectOptions, selected],
   );
 
-  const handleDownArrow = useCallback(() => {
-    selectNextOption();
-  }, [selectNextOption]);
-
-  const handleUpArrow = useCallback(() => {
-    selectPreviousOption();
-  }, [selectPreviousOption]);
-
   const handleEnter = useCallback(
     (event: KeyboardEvent) => {
       if (event.keyCode !== Key.Enter) {
@@ -219,10 +204,6 @@ export function ComboBox({
     },
     [handleSelection, navigableOptions, popoverActive, selectedIndex],
   );
-
-  const handleFocus = useCallback(() => {
-    forcePopoverActiveTrue();
-  }, [forcePopoverActiveTrue]);
 
   const handleBlur = useCallback(() => {
     forcePopoverActiveFalse();
@@ -333,18 +314,24 @@ export function ComboBox({
         aria-owns={id}
         aria-controls={id}
         aria-haspopup
-        onFocus={handleFocus}
+        onFocus={forcePopoverActiveTrue}
         onBlur={handleBlur}
         tabIndex={0}
       >
-        <KeypressListener keyCode={Key.DownArrow} handler={handleDownArrow} />
-        <KeypressListener keyCode={Key.UpArrow} handler={handleUpArrow} />
+        <KeypressListener keyCode={Key.DownArrow} handler={selectNextOption} />
+        <KeypressListener
+          keyCode={Key.UpArrow}
+          handler={selectPreviousOption}
+        />
         <EventListener event="keydown" handler={handleEnter} />
-        <KeypressListener keyCode={Key.Escape} handler={handlePopoverClose} />
+        <KeypressListener
+          keyCode={Key.Escape}
+          handler={forcePopoverActiveFalse}
+        />
         <Popover
           activator={textField}
           active={popoverActive}
-          onClose={handlePopoverClose}
+          onClose={forcePopoverActiveFalse}
           preferredPosition={preferredPosition}
           fullWidth
           preventAutofocus
