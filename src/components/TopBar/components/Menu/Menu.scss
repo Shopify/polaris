@@ -4,8 +4,8 @@ $activator-variables: (
   min-width: rem(36px),
   border-left: 1px solid rgba(color('black'), 0.42),
   transition: background-color 0.1s,
-  focus-background-color: rgba(color('black'), 0.16),
-  hover-background-color: rgba(color('black'), 0.08),
+  focus-background-color: color('sky'),
+  hover-background-color: color('sky', 'light'),
   active-background-color: rgba(color('black'), 0.28),
   focus-opacity: 0.85,
 );
