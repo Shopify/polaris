@@ -176,7 +176,7 @@ describe('<ActionMenu />', () => {
       );
     });
 
-    it('renders a group at its overriden order when index is set', () => {
+    it('renders a group at its overridden order when index is set', () => {
       const overrideIndex = 1;
       const groupWithIndex = {
         title: 'group with explicit order in menu',
