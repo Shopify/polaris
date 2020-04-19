@@ -80,7 +80,7 @@ describe('useUniqueId', () => {
     expect(harness.find('div')).toHaveReactProps({id: 'overridden'});
   });
 
-  it('uses an override if specified and the override does not interupt the count', () => {
+  it('uses an override if specified and the override does not interrupt the count', () => {
     const HasOverride = ({idOverride}: {idOverride?: string}) => (
       <div id={useUniqueId('', idOverride)} />
     );

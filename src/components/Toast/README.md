@@ -233,7 +233,7 @@ function MultipleToastExample() {
 
 <!-- example-for: web -->
 
-Use to shorten or lengthen the default duration of 5000 miliseconds.
+Use to shorten or lengthen the default duration of 5000 milliseconds.
 
 ```jsx
 function ToastWithCustomDurationExample() {
