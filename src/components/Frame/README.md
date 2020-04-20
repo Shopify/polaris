@@ -671,7 +671,7 @@ function FrameExample() {
   };
 
   return (
-    <div style={{background: '#DE1373', margin: '-8px'}}>
+    <div style={{height: '500px', background: '#DE1373'}}>
       <h3
         style={{
           position: 'absolute',
