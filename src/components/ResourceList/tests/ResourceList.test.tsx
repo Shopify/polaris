@@ -22,18 +22,13 @@ import {BulkActions, CheckableButton} from '../components';
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
 const singleItemWithID = [{id: '1', url: 'item 1'}];
-interface Item {
-  id: string;
-  name: string;
-  url: string;
-  title: string;
-}
 
-const itemsWithID: Item[] = [
+const itemsWithID = [
   {id: '5', name: 'item 1', url: 'www.test.com', title: 'title 1'},
   {id: '6', name: 'item 2', url: 'www.test.com', title: 'title 2'},
   {id: '7', name: 'item 3', url: 'www.test.com', title: 'title 3'},
 ];
+
 const allSelectedIDs = ['5', '6', '7'];
 const promotedBulkActions = [{content: 'action'}, {content: 'action 2'}];
 const bulkActions = [{content: 'action 3'}, {content: 'action 4'}];
