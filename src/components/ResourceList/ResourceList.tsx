@@ -43,6 +43,21 @@ const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
+const getAllItemsOnPage = (
+  items: any,
+  idForItem: (item: any, index: number) => string,
+) => {
+  return items.map((item: any, index: number) => {
+    return idForItem(item, index);
+  });
+};
+
+const isSmallScreen = () => {
+  return typeof window === 'undefined'
+    ? false
+    : window.innerWidth < SMALL_SCREEN_WIDTH;
+};
+
 export interface ResourceListProps<ItemType> {
   /** Item data; each item is passed to renderItem */
   items: ItemType[];
@@ -322,21 +337,6 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     }
   };
 
-  function getAllItemsOnPage(
-    items: any,
-    idForItem: (item: any, index: number) => string,
-  ) {
-    return items.map((item: any, index: number) => {
-      return idForItem(item, index);
-    });
-  }
-
-  function isSmallScreen() {
-    return typeof window === 'undefined'
-      ? false
-      : window.innerWidth < SMALL_SCREEN_WIDTH;
-  }
-
   const setLoadingPosition = useCallback(() => {
     if (listRef.current != null) {
       if (typeof window === 'undefined') {
@@ -363,12 +363,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     }
   }, [listRef, items.length]);
 
-  const itemsExist = useCallback(
-    (itemsParam?: ItemType[]) => {
-      return (itemsParam || items).length > 0;
-    },
-    [items],
-  );
+  const itemsExist = items.length > 0;
 
   useEffect(() => {
     if (loading) {
@@ -588,15 +583,15 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     <div className={styles['HeaderWrapper-overlay']} />
   ) : null;
 
-  const showEmptyState = emptyState && !itemsExist() && !loading;
+  const showEmptyState = emptyState && !itemsExist && !loading;
 
   const showEmptySearchState =
-    !showEmptyState && filterControl && !this.itemsExist() && !loading;
+    !showEmptyState && filterControl && !itemsExist && !loading;
 
   const headerMarkup = !showEmptyState &&
     !showEmptySearchState &&
     (showHeader || needsHeader) &&
-    itemsExist() && (
+    itemsExist && (
       <div className={styles.HeaderOuterWrapper}>
         <Sticky boundingElement={listRef.current}>
           {(isSticky: boolean) => {
@@ -663,7 +658,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     loading && styles['ItemWrapper-isLoading'],
   );
   const loadingWithoutItemsMarkup =
-    loading && !itemsExist() ? (
+    loading && !itemsExist ? (
       <div className={className} tabIndex={-1}>
         {loadingOverlay}
       </div>
@@ -675,18 +670,17 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     selectMode && styles.disableTextSelection,
   );
 
-  const listMarkup =
-    itemsExist() && !emptySearchStateMarkup && !emptyStateMarkup ? (
-      <ul
-        className={resourceListClassName}
-        ref={listRef}
-        aria-live="polite"
-        aria-busy={loading}
-      >
-        {loadingOverlay}
-        {items.map(renderItemWithId)}
-      </ul>
-    ) : null;
+  const listMarkup = itemsExist ? (
+    <ul
+      className={resourceListClassName}
+      ref={listRef}
+      aria-live="polite"
+      aria-busy={loading}
+    >
+      {loadingOverlay}
+      {items.map(renderItemWithId)}
+    </ul>
+  ) : null;
 
   const context = {
     selectable: isSelectable,
