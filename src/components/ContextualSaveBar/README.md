@@ -217,6 +217,6 @@ repurpose that space to extend the message contents fully to the left side of th
 
 ## Related components
 
-- To wrap your entire application, [use the frame component](https://polaris.shopify.com/components/structure//frame)
+- To wrap your entire application, [use the frame component](https://polaris.shopify.com/components/structure/frame)
 - To build the outer wrapper of a page, including page title and associated actions, [use the page component](https://polaris.shopify.com/components/structure/page)
 - To wrap form elements and handle the submission of a form, [use the form component](https://polaris.shopify.com/components/forms/form)
