@@ -3,9 +3,9 @@
 
 $icon-size: rem(20px);
 $input-height: rem(34px);
-$unstable-input-height: rem(36px);
+$new-input-height: rem(36px);
 $clear-button-width: $icon-size + spacing();
-$unstable-search-max-width: rem(580px);
+$new-search-max-width: rem(580px);
 
 $stacking-order: (
   backdrop: 1,
@@ -25,7 +25,7 @@ $stacking-order: (
 }
 
 .SearchField-newDesignLanguage {
-  max-width: $unstable-search-max-width;
+  max-width: $new-search-max-width;
 
   .Backdrop {
     @include focus-ring($size: 'wide');
@@ -106,7 +106,7 @@ $stacking-order: (
   }
 
   .SearchField-newDesignLanguage & {
-    height: $unstable-input-height;
+    height: $new-input-height;
     width: 100%;
   }
 }

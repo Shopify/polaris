@@ -13,7 +13,7 @@ import {
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
-import {LinkAction} from '../../../../../types';
+import type {LinkAction} from '../../../../../types';
 import {Header, HeaderProps} from '../Header';
 
 describe('<Header />', () => {
@@ -183,7 +183,7 @@ describe('<Header />', () => {
       expect(wrapper.find(ActionMenu).exists()).toBe(false);
     });
 
-    it('renders with atleast valid `secondaryActions`', () => {
+    it('renders with at least valid `secondaryActions`', () => {
       const mockSecondaryActions: HeaderProps['secondaryActions'] = [
         {content: 'mock content'},
       ];
@@ -194,7 +194,7 @@ describe('<Header />', () => {
       expect(wrapper.find(ActionMenu).exists()).toBe(true);
     });
 
-    it('renders with atleast valid `actionGroups`', () => {
+    it('renders with at least valid `actionGroups`', () => {
       const mockActionGroups: HeaderProps['actionGroups'] = [
         {
           title: 'mock title',

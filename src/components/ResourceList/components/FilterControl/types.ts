@@ -1,5 +1,5 @@
-import {SelectOption} from '../../../Select';
-import {TextFieldProps} from '../../../TextField';
+import type {SelectOption} from '../../../Select';
+import type {TextFieldProps} from '../../../TextField';
 
 export interface Operator {
   key: string;

@@ -3,7 +3,7 @@ import {ChevronLeftMinor, ArrowLeftMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../Icon';
 import {UnstyledLink} from '../UnstyledLink';
-import {CallbackAction, LinkAction} from '../../types';
+import type {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {FeaturesContext} from '../../utilities/features';
 import {classNames} from '../../utilities/css';

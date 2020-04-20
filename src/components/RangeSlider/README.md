@@ -219,7 +219,7 @@ function RangeSliderWithPreciseRangeControlExample() {
 
 Use when the start or end of the range input benefits from additional content.
 
-The height of the range slider component varies based on the presence or absense of props like `label` and `helpText`. Setting a React element on the `prefix` and `suffix` props is supported to enable control of spacing and alignment.
+The height of the range slider component varies based on the presence or absence of props like `label` and `helpText`. Setting a React element on the `prefix` and `suffix` props is supported to enable control of spacing and alignment.
 
 ```jsx
 function RangeSliderWithPrefixAndSuffixExample() {

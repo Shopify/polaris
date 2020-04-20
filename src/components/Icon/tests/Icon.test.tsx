@@ -57,7 +57,7 @@ describe('<Icon />', () => {
       });
 
       expect(warningSpy).toHaveBeenCalledWith(
-        'Recoloring external SVGs is not supported with colors in the new design langauge. Set the intended color on your SVG instead.',
+        'Recoloring external SVGs is not supported with colors in the new design language. Set the intended color on your SVG instead.',
       );
       warningSpy.mockRestore();
     });

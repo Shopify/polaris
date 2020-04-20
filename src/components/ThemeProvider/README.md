@@ -28,7 +28,7 @@ Theme provider is currently meant for development and quality assurance usage on
 
 ### Theme provider rendered by the app provider
 
-The app provider component renders a theme provider component and a theme. By default, theme falls back to the current design language. The new design language is enabled by passing `{newDesignLanguage: true}` to the `features` prop on the app provider component. This feature is currently meant for development and quality assurance use only. The new design langauge is not yet meant for production experiences.
+The app provider component renders a theme provider component and a theme. By default, theme falls back to the current design language. The new design language is enabled by passing `{newDesignLanguage: true}` to the `features` prop on the app provider component. This feature is currently meant for development and quality assurance use only. The new design language is not yet meant for production experiences.
 
 ```jsx
 <AppProvider i18n={{}} features={{newDesignLanguage: true}}>

@@ -28,7 +28,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   justify-content: space-between;
 
   &.newDesignLanguage {
-    height: unstable-top-bar-height();
+    height: new-top-bar-height();
     padding: spacing(base) rem(26px);
   }
 }
@@ -41,7 +41,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
 
   &.newDesignLanguage {
     height: calc(
-      100% - #{$list-filters-footer-height} - #{unstable-top-bar-height()}
+      100% - #{$list-filters-footer-height} - #{new-top-bar-height()}
     );
 
     padding: spacing(tight);
@@ -53,7 +53,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   height: calc(100% - #{$list-filters-header-height});
 
   &.newDesignLanguage {
-    height: calc(100% - #{unstable-top-bar-height()});
+    height: calc(100% - #{new-top-bar-height()});
     padding: spacing(tight);
   }
 }

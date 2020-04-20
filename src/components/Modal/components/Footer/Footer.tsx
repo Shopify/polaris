@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ComplexAction, AppBridgeAction} from '../../../../types';
+import type {ComplexAction, AppBridgeAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {Stack} from '../../../Stack';

@@ -1,4 +1,4 @@
-import {CheckboxHandles} from '../../types';
+import type {CheckboxHandles} from '../../types';
 
 export type ResourceListSelectedItems = string[] | 'All';
 export type CheckableButtonKey = 'plain' | 'bulkSm' | 'bulkLg';

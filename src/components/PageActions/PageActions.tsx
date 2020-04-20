@@ -1,6 +1,10 @@
 import React from 'react';
 
-import {ComplexAction, DisableableAction, LoadableAction} from '../../types';
+import type {
+  ComplexAction,
+  DisableableAction,
+  LoadableAction,
+} from '../../types';
 import {Stack} from '../Stack';
 import {ButtonGroup} from '../ButtonGroup';
 import {buttonsFrom} from '../Button';

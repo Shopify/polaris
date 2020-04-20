@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {HeadingTagName} from '../../types';
+import type {HeadingTagName} from '../../types';
 
 import styles from './Subheading.scss';
 

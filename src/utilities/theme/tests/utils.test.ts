@@ -9,7 +9,7 @@ import {
   buildThemeContext,
   buildCustomProperties,
 } from '../utils';
-import {ColorScheme, RoleColors} from '../types';
+import type {ColorScheme, RoleColors} from '../types';
 
 const DefaultColorScheme: ColorScheme = 'light';
 
@@ -70,7 +70,7 @@ describe('needsVariant', () => {
     expect(hasVariant).toBe(needsVariantList.includes('frame'));
   });
 
-  it('will return true if the paramater is on the list', () => {
+  it('will return true if the parameter is on the list', () => {
     const hasVariant = needsVariant('topBar');
     expect(hasVariant).toBe(needsVariantList.includes('topBar'));
   });
