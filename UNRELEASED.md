@@ -10,6 +10,8 @@
 
 ### Bug fixes
 
+- Fixed `DescriptionList` content overflowing when `term` or `description` have long unbroken words ([#2880](https://github.com/Shopify/polaris-react/pull/2880))
+
 ### Documentation
 
 ### Development workflow
