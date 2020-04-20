@@ -671,15 +671,7 @@ function FrameExample() {
   };
 
   return (
-    <div style={{height: '500px', background: '#DE1373'}}>
-      <h3
-        style={{
-          position: 'absolute',
-          transform: 'rotate(-90deg) translate(-50%, -50%)',
-        }}
-      >
-        Frame offset
-      </h3>
+    <div style={{height: '500px', background: '#DE1373', margin: '-8px'}}>
       <AppProvider
         theme={theme}
         i18n={{
