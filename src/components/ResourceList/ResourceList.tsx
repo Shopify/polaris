@@ -58,6 +58,15 @@ const isSmallScreen = () => {
     : window.innerWidth < SMALL_SCREEN_WIDTH;
 };
 
+function defaultIdForItem<ItemType extends {id?: any}>(
+  item: ItemType,
+  index: number,
+) {
+  return Object.prototype.hasOwnProperty.call(item, 'id')
+    ? item.id
+    : index.toString();
+}
+
 export interface ResourceListProps<ItemType> {
   /** Item data; each item is passed to renderItem */
   items: ItemType[];
@@ -135,10 +144,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   onSortChange,
   onSelectionChange,
   renderItem,
-  idForItem = (item: ItemType, index: number) =>
-    Object.prototype.hasOwnProperty.call(item, 'id')
-      ? item.id
-      : index.toString(),
+  idForItem = defaultIdForItem,
   resolveItemId,
 }: ResourceListProps<ItemType>) {
   const i18n = useI18n();
