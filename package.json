@@ -50,10 +50,8 @@
     "preoutput-custom-properties": "yarn run build:known-custom-properties",
     "output-custom-properties": "node ./scripts/analyze-custom-properties/dist/cli.js -o build/custom-properties-data.json -i build/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
     "check:custom-properties": "node ./scripts/analyze-custom-properties/dist/cli.js -l error -i build/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
-    "clean": "rimraf build esnext styles types docs \"build-intermediate\" \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,min.css,scss}\"",
-    "clean:build": "rimraf \"build/!(cache|coverage|storybook)\" esnext styles types docs \"build-intermediate\" \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,min.css,scss}\"",
-    "optimize": "sewing-kit optimize",
-    "prebuild": "npm-run-all clean:build optimize copy-polaris-tokens",
+    "clean": "rimraf build esnext styles types docs \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,min.css,scss}\"",
+    "clean:build": "rimraf \"build/.tsbuildinfo\" esnext styles types docs \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,min.css,scss}\"",
     "build": "node ./scripts/build.js",
     "prebuild-consumer": "yarn run build",
     "build-consumer": "node ./scripts/build-consumer",
@@ -171,7 +169,6 @@
     "react-test-renderer": "^16.9.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.32.1",
-    "rollup-plugin-node-externals": "^2.1.3",
     "sass-loader": "^8.0.0",
     "scss-parser": "^1.0.3",
     "semver": "^6.3.0",
@@ -198,7 +195,6 @@
     "styles.scss"
   ],
   "dependencies": {
-    "@babel/runtime": "^7.1.6",
     "@material-ui/react-transition-group": "^4.2.0",
     "@shopify/javascript-utilities": "^2.4.1",
     "@shopify/polaris-icons": "^3.10.0",
@@ -209,7 +205,6 @@
     "@types/react-dom": "^16.9.4",
     "@types/react-transition-group": "^2.0.7",
     "hoist-non-react-statics": "^3.3.0",
-    "lodash": "^4.17.4",
-    "tslib": "^1.9.3"
+    "lodash": "^4.17.4"
   }
 }

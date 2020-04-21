@@ -1,7 +1,6 @@
 *.log
 node_modules
 /build
-/build-intermediate
 /docs
 /esnext
 /types
