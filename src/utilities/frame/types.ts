@@ -1,4 +1,4 @@
-import {Action} from '../../types';
+import type {Action} from '../../types';
 
 interface ContextualSaveBarAction {
   /** A destination to link to */

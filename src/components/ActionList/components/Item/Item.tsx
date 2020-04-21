@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {useFeatures} from '../../../../utilities/features';
-import {ActionListItemDescriptor} from '../../../../types';
+import type {ActionListItemDescriptor} from '../../../../types';
 import {Scrollable} from '../../../Scrollable';
 import {Icon} from '../../../Icon';
 import {UnstyledLink} from '../../../UnstyledLink';

@@ -149,11 +149,17 @@ Use to provide structure for the top of an application. Style the top bar compon
 ```jsx
 function TopBarExample() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
   const toggleIsUserMenuOpen = useCallback(
     () => setIsUserMenuOpen((isUserMenuOpen) => !isUserMenuOpen),
+    [],
+  );
+
+  const toggleIsSecondaryMenuOpen = useCallback(
+    () => setIsSecondaryMenuOpen((isSecondaryMenuOpen) => !isSecondaryMenuOpen),
     [],
   );
 
@@ -220,6 +226,26 @@ function TopBarExample() {
       onChange={handleSearchChange}
       value={searchValue}
       placeholder="Search"
+      showFocusBorder
+    />
+  );
+
+  const secondaryMenuMarkup = (
+    <TopBar.Menu
+      activatorContent={
+        <span>
+          <Icon source={QuestionMarkMajorTwotone} />
+          <VisuallyHidden>Secondary menu</VisuallyHidden>
+        </span>
+      }
+      open={isSecondaryMenuOpen}
+      onOpen={toggleIsSecondaryMenuOpen}
+      onClose={toggleIsSecondaryMenuOpen}
+      actions={[
+        {
+          items: [{content: 'Community forums'}],
+        },
+      ]}
     />
   );
 
@@ -227,6 +253,7 @@ function TopBarExample() {
     <TopBar
       showNavigationToggle
       userMenu={userMenuMarkup}
+      secondaryMenu={secondaryMenuMarkup}
       searchResultsVisible={isSearchActive}
       searchField={searchFieldMarkup}
       searchResults={searchResultsMarkup}
@@ -295,9 +322,11 @@ function TopBarExample() {
   const theme = {
     colors: {
       topBar: {
-        background: '#357997',
-        backgroundLighter: '#6192a9',
-        color: '#FFFFFF',
+        background: '#fff',
+        backgroundLighter: '#F4F6F8',
+        backgroundDarker: '#DFE3E8',
+        border: '#C4CDD5',
+        color: '#212B36',
       },
     },
     logo: {
@@ -343,6 +372,7 @@ function TopBarExample() {
       onChange={handleSearchChange}
       value={searchValue}
       placeholder="Search"
+      showFocusBorder
     />
   );
 

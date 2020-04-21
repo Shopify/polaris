@@ -27,6 +27,8 @@ export interface SearchFieldProps {
   onBlur?(): void;
   /** Callback when search field cancel button is clicked */
   onCancel?(): void;
+  /** Show a border when the search field is focused */
+  showFocusBorder?: boolean;
 }
 
 export function SearchField({
@@ -38,6 +40,7 @@ export function SearchField({
   onFocus,
   onBlur,
   onCancel,
+  showFocusBorder,
 }: SearchFieldProps) {
   const i18n = useI18n();
   const [forceActive, setForceActive] = useState(false);
@@ -131,7 +134,12 @@ export function SearchField({
       </span>
 
       {clearMarkup}
-      <div className={styles.Backdrop} />
+      <div
+        className={classNames(
+          styles.Backdrop,
+          showFocusBorder && styles.BackdropShowFocusBorder,
+        )}
+      />
     </div>
   );
 }

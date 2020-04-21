@@ -8,6 +8,72 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.19.0 - 2020-04-15
+
+### Enhancements
+
+- Updated `Filters` to only show the "More filters" button if necessary ([#2856](https://github.com/Shopify/polaris-react/pull/2856)).
+- Updated `TopBar` component to show `secondaryMenu` on small screens ([#2913](https://github.com/Shopify/polaris-react/pull/2913))
+- `Badge` adds `critical` status prop styling ([#2902](https://github.com/Shopify/polaris-react/pull/2902))
+
+### Bug fixes
+
+- Added `border-radius` to the `MediaCard` container ([#2919](https://github.com/Shopify/polaris-react/pull/2919))
+
+### Code quality
+
+- Set `importsNotUsedAsValues` to `error` in TypeScript configuration to force us to be explicit when importing types ([#2901](https://github.com/Shopify/polaris-react/pull/2901))
+
+## 4.18.0 - 2020-04-09
+
+### New components
+
+- Added [`MediaCard`](https://polaris.shopify.com/components/structure/video-card) and [`VideoThumbnail`](https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
+- Added [`VideoThumbnail`](https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
+
+### Enhancements
+
+- Added utilities for parsing video duration (https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
+
+### Dependency upgrades
+
+- Updated polaris-tokens to use new font stack ([#2906](https://github.com/Shopify/polaris-react/pull/2906))
+
+## 4.17.1 - 2020-04-06
+
+### Bug fixes
+
+- `TopBar` navigation icon to use the `var(--top-bar-color)` ([#2898](https://github.com/Shopify/polaris-react/pull/2898)).
+
+### Documentation
+
+- Fixed two typos in the `Form` documentation ([#2879](https://github.com/Shopify/polaris-react/pull/2879))
+
+### Code quality
+
+- Don't use `export *` when exporting from type-only files as importing empty files causes webpack to produce unwanted boilerplate ([#2897](https://github.com/Shopify/polaris-react/pull/2897))
+
+## 4.17.0 - 2020-04-03
+
+### Enhancements
+
+- Added `showFocusBorder` prop to the `TopBar.SearchField` to allow users to add show a border on focus ([#2886](https://github.com/Shopify/polaris-react/pull/2886)).
+- Added a theme prop for `frameOffset` ([#2887](https://github.com/Shopify/polaris-react/pull/2887))
+- Updated the font stack to put `Segoe UI` before `Roboto` ([#2891](https://github.com/Shopify/polaris-react/pull/2891))
+
+### Bug fixes
+
+- Fixed right padding styling issue with the `Tag` component and remove right padding on a removable `Tag` ([#2860](https://github.com/Shopify/polaris-react/pull/2860)).
+- Fixed secondary navigation spacing when no icon is present ([#2874](https://github.com/Shopify/polaris-react/pull/2874)).
+
+### Dependency upgrades
+
+- Updated sewing-kit to v0.120.0, and typescript to 3.8.3 ([#2873](https://github.com/Shopify/polaris-react/pull/2873))
+
+### Code quality
+
+- Use `downlevel-dts` to produce compatible type definitions for consuming apps using older TypeScript versions ([#2875](https://github.com/Shopify/polaris-react/pull/2875))
+
 ## 4.16.1 - 2020-03-19
 
 - Made no noteworthy changes

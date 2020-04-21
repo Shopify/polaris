@@ -42,7 +42,7 @@ Short introduction about the component.
 
 ## Sections
 
-Break content into sections by using a heading level 2 (`##`) preceeded by a horizontal rule (`---`):
+Break content into sections by using a heading level 2 (`##`) preceded by a horizontal rule (`---`):
 
 ```markdown
 ---

@@ -8,7 +8,7 @@ import {
   ConditionalRender,
   ConditionalWrapper,
 } from '../../../../utilities/components';
-import {
+import type {
   MenuGroupDescriptor,
   MenuActionDescriptor,
   DestructableAction,

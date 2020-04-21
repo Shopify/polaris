@@ -18,7 +18,8 @@
         "success": "สำเร็จ",
         "warning": "คำเตือน",
         "attention": "ระวัง",
-        "new": "ใหม่"
+        "new": "ใหม่",
+        "critical": "ร้ายแรง"
       }
     },
     "Button": {
@@ -226,6 +227,57 @@
       "SearchField": {
         "clearButtonLabel": "ล้าง",
         "search": "ค้นหา"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "การดำเนินการ"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "เล่นวิดีโอ",
+        "defaultWithDuration": "เล่นวิดีโอความยาว {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} ชั่วโมง",
+              "andMinutes": "{hourCount} ชั่วโมง {minuteCount} นาที",
+              "andMinute": "{hourCount} ชั่วโมง {minuteCount} นาที",
+              "minutesAndSeconds": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "minutesAndSecond": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "minuteAndSeconds": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "minuteAndSecond": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "andSeconds": "{hourCount} ชั่วโมง {secondCount} วินาที",
+              "andSecond": "{hourCount} ชั่วโมง {secondCount} วินาที"
+            },
+            "one": {
+              "only": "{hourCount} ชั่วโมง",
+              "andMinutes": "{hourCount} ชั่วโมง {minuteCount} นาที",
+              "andMinute": "{hourCount} ชั่วโมง {minuteCount} นาที",
+              "minutesAndSeconds": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "minutesAndSecond": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "minuteAndSeconds": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "minuteAndSecond": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "andSeconds": "{hourCount} ชั่วโมง {secondCount} วินาที",
+              "andSecond": "{hourCount} ชั่วโมง {secondCount} วินาที"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} นาที",
+              "andSeconds": "{minuteCount} นาที {secondCount} วินาที",
+              "andSecond": "{minuteCount} นาที {secondCount} วินาที"
+            },
+            "one": {
+              "only": "{minuteCount} นาที",
+              "andSeconds": "{minuteCount} นาที {secondCount} วินาที",
+              "andSecond": "{minuteCount} นาที {secondCount} วินาที"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} วินาที",
+            "one": "{secondCount} วินาที"
+          }
+        }
       }
     }
   }

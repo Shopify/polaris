@@ -11,6 +11,9 @@ export const nonDesignLangaugeCustomProperties = [
   '--Polaris-RangeSlider-output-factor',
   '--top-bar-color',
   '--top-bar-background-lighter',
+  '--top-bar-background-darker',
+  '--top-bar-border',
+  '--p-frame-offset',
 ];
 
 export const designLangaugeCustomProperties = ([] as string[]).concat(

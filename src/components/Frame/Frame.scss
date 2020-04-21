@@ -12,6 +12,11 @@ $skip-vertical-offset: rem(10px);
   @include when-printing {
     background-color: none;
   }
+
+  @include frame-when-nav-displayed {
+    width: calc(100% - var(--p-frame-offset));
+    margin-left: var(--p-frame-offset);
+  }
 }
 
 .Navigation {
@@ -29,11 +34,14 @@ $skip-vertical-offset: rem(10px);
 
   @include frame-when-nav-displayed {
     z-index: 1;
+    left: var(--p-frame-offset);
     display: flex;
 
     &:not(.Navigation-newDesignLanguage) {
-      top: top-bar-height();
-      height: calc(100% - #{top-bar-height()});
+      .hasTopBar & {
+        top: top-bar-height();
+        height: calc(100% - #{top-bar-height()});
+      }
     }
   }
 
@@ -126,10 +134,18 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   height: top-bar-height();
 
+  @include frame-when-nav-displayed {
+    left: var(--p-frame-offset);
+    width: calc(100% - var(--p-frame-offset));
+  }
+
   &.TopBar-newDesignLanguage {
     @include frame-when-nav-displayed {
-      left: layout-width(unstable-nav);
-      width: calc(100% - #{layout-width(unstable-nav)});
+      // stylelint-disable-next-line selector-max-class
+      .hasNav & {
+        left: calc(#{layout-width(new-nav)} + var(--p-frame-offset));
+        width: calc(100% - #{layout-width(new-nav)} - var(--p-frame-offset));
+      }
     }
   }
 }
@@ -140,13 +156,18 @@ $skip-vertical-offset: rem(10px);
   top: 0;
   left: 0;
   width: 100%;
+
+  @include frame-when-nav-displayed {
+    left: var(--p-frame-offset);
+    width: calc(100% - var(--p-frame-offset));
+  }
 }
 
 .ContextualSaveBar-newDesignLanguage {
   @include frame-when-nav-displayed {
     .hasNav & {
-      left: layout-width(unstable-nav);
-      max-width: calc(100% - #{layout-width(unstable-nav)});
+      left: calc(#{layout-width(new-nav)} + var(--p-frame-offset));
+      max-width: calc(100% - #{layout-width(new-nav)} - var(--p-frame-offset));
     }
   }
 }
@@ -157,6 +178,7 @@ $skip-vertical-offset: rem(10px);
   align-items: stretch;
 
   @include layout-flex-fix;
+
   @include safe-area-for(padding-right, 0, right);
   @include safe-area-for(padding-left, 0, left);
   @include safe-area-for(padding-bottom, 0, bottom);
@@ -181,15 +203,15 @@ $skip-vertical-offset: rem(10px);
 
 .Main-newDesignLanguage {
   .hasTopBar & {
-    padding-top: unstable-top-bar-height();
+    padding-top: new-top-bar-height();
     @include when-printing {
       padding-top: 0;
     }
   }
   @include frame-when-nav-displayed {
     .hasNav & {
-      padding-left: layout-width(unstable-nav);
-      @include safe-area-for(padding-left, layout-width(unstable-nav), left);
+      padding-left: layout-width(new-nav);
+      @include safe-area-for(padding-left, layout-width(new-nav), left);
 
       @include when-printing {
         padding-left: 0;
@@ -211,10 +233,16 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
 
   @include frame-when-nav-displayed {
+    left: var(--p-frame-offset);
+
     .hasNav & {
-      left: layout-width(nav);
-      @include safe-area-for(left, layout-width(nav), left);
-      width: calc(100% - #{layout-width(nav)});
+      left: calc(#{layout-width(nav)} + var(--p-frame-offset));
+      @include safe-area-for(
+        left,
+        calc(#{layout-width(nav)} + var(--p-frame-offset)),
+        left
+      );
+      width: calc(100% - #{layout-width(nav)} - var(--p-frame-offset));
     }
   }
 }
@@ -222,9 +250,13 @@ $skip-vertical-offset: rem(10px);
 .GlobalRibbonContainer-newDesignLanguage {
   @include frame-when-nav-displayed {
     .hasNav & {
-      left: layout-width(unstable-nav);
-      @include safe-area-for(left, layout-width(unstable-nav), left);
-      width: calc(100% - #{layout-width(unstable-nav)});
+      left: calc(#{layout-width(new-nav)} + var(--p-frame-offset));
+      @include safe-area-for(
+        left,
+        calc(#{layout-width(new-nav)} + var(--p-frame-offset)),
+        left
+      );
+      width: calc(100% - #{layout-width(new-nav)} - var(--p-frame-offset));
     }
   }
 }
@@ -238,6 +270,10 @@ $skip-vertical-offset: rem(10px);
   left: 0;
 
   @include frame-when-nav-displayed {
+    .hasNav & {
+      left: var(--p-frame-offset);
+    }
+
     .hasTopBar & {
       top: var(--p-override-zero, top-bar-height());
       z-index: var(
@@ -252,7 +288,7 @@ $skip-vertical-offset: rem(10px);
   position: fixed;
   z-index: z-index(skip-to-content, $fixed-element-stacking-order);
   top: $skip-vertical-offset;
-  left: spacing(tight);
+  left: calc(#{spacing(tight)} + var(--p-frame-offset));
   opacity: 0;
   pointer-events: none;
 

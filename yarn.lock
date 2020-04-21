@@ -1663,10 +1663,10 @@
   resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-3.10.0.tgz#01fa32853c304c58d768209a74f88ac9d7a51098"
   integrity sha512-Y8cTtFwIfkUDlCHonCimSxPdHk9AE11PYsh9JqzTKLjsAv6p3De/JQR/gZfAifmAAhg0XBmaaV5K4Y6Z5J6xAw==
 
-"@shopify/polaris-tokens@^2.12.2":
-  version "2.12.2"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.12.2.tgz#22bfdf6f9864364885135c333aa8dd2f161a093d"
-  integrity sha512-1avL28ie6WMiVd+NXEt8TAdUBhvTlKVlw2px9WoPZktXvS+ebwK+pce7piovzFfrd4WCHweATGn2S50kjl1uUw==
+"@shopify/polaris-tokens@^2.12.3":
+  version "2.12.3"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.12.3.tgz#f34991fd70d90dce569072964b9482df22950053"
+  integrity sha512-3xBJxJqdMOE61SWjNFHaRGegoYSc4SOlAkwQ/VnZgSn/2AoG72m7OFQ+vA/tWR87Z9L3QKggymBxQR9aqBJ7FA==
   dependencies:
     hsluv "^0.1.0"
     tslib "^1.10.0"
@@ -17763,10 +17763,15 @@ ts-pnp@^1.1.2:
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.1.2.tgz#be8e4bfce5d00f0f58e0666a82260c34a57af552"
   integrity sha512-f5Knjh7XCyRIzoC/z1Su1yLLRrPrFCgtUAh/9fCSP6NKbATwpOL1+idQVXQokK9GRFURn/jYPGPfegIctwunoA==
 
-tslib@1.10.0, tslib@^1, tslib@^1.10.0, tslib@^1.7.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
+tslib@1.10.0, tslib@^1, tslib@^1.7.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
+
+tslib@^1.10.0:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.1.tgz#eb15d128827fbee2841549e171f45ed338ac7e35"
+  integrity sha512-aZW88SY8kQbU7gpV19lN24LtXh/yD4ZZg6qieAJDDg+YBsJcSmLGK9QpnUjAKVG/xefmvJGd1WUmfpT/g6AJGA==
 
 tsutils@^3.17.1:
   version "3.17.1"

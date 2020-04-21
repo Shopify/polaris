@@ -3,7 +3,7 @@ import {CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
-import {ComplexAction} from '../../../../types';
+import type {ComplexAction} from '../../../../types';
 import {Icon} from '../../../Icon';
 import {UnstyledLink} from '../../../UnstyledLink';
 

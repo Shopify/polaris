@@ -18,7 +18,8 @@
         "success": "सफल",
         "warning": "चेतावनी",
         "attention": "ध्यान दें",
-        "new": "नया"
+        "new": "नया",
+        "critical": "महत्वपूर्ण"
       }
     },
     "Button": {
@@ -217,6 +218,57 @@
       "SearchField": {
         "clearButtonLabel": "मिटाएं",
         "search": "खोजें"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "कार्रवाई"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "वीडियो चलाएं",
+        "defaultWithDuration": "{duration} लंबा वीडियो चलाएं",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} घंटे",
+              "andMinutes": "{hourCount} घंटे और {minuteCount} मिनट",
+              "andMinute": "{hourCount} घंटे और {minuteCount} मिनट",
+              "minutesAndSeconds": "{hourCount} घंटे, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "minutesAndSecond": "{hourCount} घंटे, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "minuteAndSeconds": "{hourCount} घंटे, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "minuteAndSecond": "{hourCount} घंटे, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "andSeconds": "{hourCount} घंटे और {secondCount} सेकंड",
+              "andSecond": "{hourCount} घंटे और {secondCount} सेकंड"
+            },
+            "one": {
+              "only": "{hourCount} घंटा",
+              "andMinutes": "{hourCount} घंटे और {minuteCount} मिनट",
+              "andMinute": "{hourCount} घंटे और {minuteCount} मिनट",
+              "minutesAndSeconds": "{hourCount} घंटे, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "minutesAndSecond": "{hourCount} घंटे, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "minuteAndSeconds": "{hourCount} घंटे, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "minuteAndSecond": "{hourCount} घंटे, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "andSeconds": "{hourCount} घंटे और {secondCount} सेकंड",
+              "andSecond": "{hourCount} घंटे और {secondCount} सेकंड"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} मिनट",
+              "andSeconds": "{minuteCount} मिनट और {secondCount} सेकंड",
+              "andSecond": "{minuteCount} मिनट और {secondCount} सेकंड"
+            },
+            "one": {
+              "only": "{minuteCount} मिनट",
+              "andSeconds": "{minuteCount} मिनट और {secondCount} सेकंड",
+              "andSecond": "{minuteCount} मिनट और {secondCount} सेकंड"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} सेकंड",
+            "one": "{secondCount} सेकंड"
+          }
+        }
       }
     }
   }

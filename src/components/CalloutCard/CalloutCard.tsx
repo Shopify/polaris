@@ -2,7 +2,7 @@ import React from 'react';
 import {CancelSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import {Action} from '../../types';
+import type {Action} from '../../types';
 import {Card} from '../Card';
 import {TextContainer} from '../TextContainer';
 import {ButtonGroup} from '../ButtonGroup';

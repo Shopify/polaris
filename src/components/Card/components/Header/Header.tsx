@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {DisableableAction} from '../../../../types';
+import type {DisableableAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {Stack} from '../../../Stack';

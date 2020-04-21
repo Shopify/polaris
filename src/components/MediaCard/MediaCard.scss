@@ -1,0 +1,77 @@
+@import '../../styles/common';
+
+$portrait-breakpoint: 804px;
+
+.MediaCard {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+
+  &.portrait {
+    flex-flow: column nowrap;
+  }
+
+  @include breakpoint-before($portrait-breakpoint, inclusive) {
+    flex-flow: column nowrap;
+  }
+}
+
+.MediaContainer {
+  &:not(.portrait) {
+    flex-basis: 40%;
+  }
+
+  @include breakpoint-after($portrait-breakpoint, inclusive) {
+    overflow: hidden;
+
+    &.portrait {
+      border-top-left-radius: border-radius();
+      border-top-right-radius: border-radius();
+    }
+
+    &:not(.portrait) {
+      border-top-left-radius: border-radius();
+      border-bottom-left-radius: border-radius();
+    }
+  }
+}
+
+.InfoContainer {
+  position: relative;
+
+  &:not(.portrait) {
+    flex-basis: 60%;
+  }
+}
+
+.Popover {
+  position: absolute;
+  z-index: z-index(overlay);
+  top: spacing();
+  right: spacing();
+}
+
+.Heading {
+  margin-right: spacing(extra-loose);
+}
+
+.PrimaryAction {
+  margin-right: spacing(tight);
+}
+
+.SecondaryAction {
+  margin-left: -spacing(tight);
+}
+
+.ActionContainer {
+  padding-top: spacing(tight);
+
+  &.portrait {
+    padding-top: spacing(extra-loose);
+  }
+
+  @include breakpoint-before($portrait-breakpoint, inclusive) {
+    padding-top: spacing(extra-loose);
+  }
+}

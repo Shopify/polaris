@@ -18,7 +18,8 @@
         "success": "成功",
         "warning": "警告",
         "attention": "注意",
-        "new": "新規"
+        "new": "新規",
+        "critical": "クリティカル"
       }
     },
     "Button": {
@@ -98,7 +99,7 @@
     "Frame": {
       "skipToContent": "コンテンツにスキップする",
       "Navigation": {
-        "closeMobileNavigationLabel": "ナビゲーションを閉じる"
+        "closeMobileNavigationLabel": "メニューを閉じる"
       }
     },
     "Icon": {
@@ -217,6 +218,57 @@
       "SearchField": {
         "clearButtonLabel": "クリア",
         "search": "検索"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "アクション"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "ビデオを見る",
+        "defaultWithDuration": "長さ{duration}の動画を再生する",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount}時間",
+              "andMinutes": "{hourCount}時間{minuteCount}分",
+              "andMinute": "{hourCount}時間{minuteCount}分",
+              "minutesAndSeconds": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "minutesAndSecond": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "minuteAndSeconds": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "minuteAndSecond": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "andSeconds": "{hourCount}時間{secondCount}秒",
+              "andSecond": "{hourCount}時間{secondCount}秒"
+            },
+            "one": {
+              "only": "{hourCount}時間",
+              "andMinutes": "{hourCount}時間{minuteCount}分",
+              "andMinute": "{hourCount}時間{minuteCount}分",
+              "minutesAndSeconds": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "minutesAndSecond": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "minuteAndSeconds": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "minuteAndSecond": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "andSeconds": "{hourCount}時間{secondCount}秒",
+              "andSecond": "{hourCount}時間{secondCount}秒"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount}分",
+              "andSeconds": "{minuteCount}分{secondCount}秒",
+              "andSecond": "{minuteCount}分{secondCount}秒"
+            },
+            "one": {
+              "only": "{minuteCount}分",
+              "andSeconds": "{minuteCount}分{secondCount}秒",
+              "andSecond": "{minuteCount}分{secondCount}秒"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount}秒",
+            "one": "{secondCount}秒"
+          }
+        }
       }
     }
   }
