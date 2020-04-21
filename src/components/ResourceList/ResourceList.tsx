@@ -43,14 +43,14 @@ const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
-const getAllItemsOnPage = (
-  items: any,
-  idForItem: (item: any, index: number) => string,
-) => {
-  return items.map((item: any, index: number) => {
+function getAllItemsOnPage<ItemType>(
+  items: ItemType[],
+  idForItem: (item: ItemType, index: number) => string,
+) {
+  return items.map((item: ItemType, index: number) => {
     return idForItem(item, index);
   });
-};
+}
 
 const isSmallScreen = () => {
   return typeof window === 'undefined'
@@ -386,7 +386,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     }
   }, [selectedItems, selectMode]);
 
-  const renderItemWithId = (item: any, index: number) => {
+  const renderItemWithId = (item: ItemType, index: number) => {
     const id = idForItem(item, index);
 
     return (
@@ -399,7 +399,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const handleMultiSelectionChange = (
     lastSelected: number,
     currentSelected: number,
-    resolveItemId: (item: any) => string,
+    resolveItemId: (item: ItemType) => string,
   ) => {
     const min = Math.min(lastSelected, currentSelected);
     const max = Math.max(lastSelected, currentSelected);
