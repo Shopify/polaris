@@ -10,7 +10,7 @@ const COMPONENT_REGEX = /^[A-Z]\w+$/;
 const SUBCOMPONENT_VARIATION_SELECTOR = /^\w+-\w+$/;
 const NESTED_COMPONENT_PATH_REGEX = /.*\/components\/(.*)\/components/;
 
-module.exports = function getNamespacedClassName(localName, filePath) {
+export function getNamespacedClassName(localName, filePath) {
   const file = cache.files[filePath] || {};
   const componentName = basename(filePath, '.scss');
   const nestedComponentMatch = NESTED_COMPONENT_PATH_REGEX.exec(filePath);
@@ -46,7 +46,7 @@ module.exports = function getNamespacedClassName(localName, filePath) {
   file[localName] = className;
   cache.files[filePath] = file;
   return className;
-};
+}
 
 function isComponent(className) {
   return COMPONENT_REGEX.test(className);

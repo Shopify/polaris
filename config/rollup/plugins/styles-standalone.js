@@ -14,7 +14,7 @@ import cssModulesValues from 'postcss-modules-values';
 import Parser from 'postcss-modules-parser';
 import postcssShopify from '@shopify/postcss-plugin';
 
-import {getNamespacedClassName} from '../namespaced-classname-modern';
+import {getNamespacedClassName} from '../namespaced-classname';
 
 const renderSass = promisify(nodeSass.render);
 
@@ -182,8 +182,7 @@ function generateSass(emitFile, inputFolder, cssByFile) {
   emitFile({
     type: 'asset',
     fileName: `styles.scss`,
-    source: `@import 'styles/foundation';
-@import 'styles/shared';
+    source: `@import 'styles/public-api';
 @import 'styles/components';
 `,
   });
