@@ -246,4 +246,15 @@ describe('<EmptyState />', () => {
       });
     });
   });
+
+  describe('newDesignLanguage', () => {
+    it('adds a centeredLayout classname to the root component', () => {
+      const emptyState = mountWithApp(<EmptyState image={imgSrc} />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(emptyState).toContainReactComponent('div', {
+        className: 'EmptyState centeredLayout withinPage',
+      });
+    });
+  });
 });
