@@ -1,7 +1,9 @@
+import fs from 'fs';
 import path from 'path';
 import {promisify} from 'util';
 
 import {createFilter} from '@rollup/pluginutils';
+import glob from 'glob';
 import nodeSass from 'node-sass';
 
 const renderSass = promisify(nodeSass.render);
@@ -61,6 +63,23 @@ export function stylesEsNext(options = {}) {
       return {
         code: `export {default} from './${relativePath}'`,
       };
+    },
+
+    // Generate the esnext/styles folder.
+    // This is only needed because we allow consuming apps to use our helper
+    // functions and mixins in shared.scss/foundations.scss
+    // We can't point SK consumers to use the versions living in the top level
+    // generated styles folder (as build in styles-standalone) because those
+    // SK consumers need to have the raw contents, instead of the ones that have
+    // :global declarations stripped out of them
+    generateBundle() {
+      const globOptions = {cwd: inputRoot, ignore: 'styles/_common.scss'};
+
+      glob.sync(`styles/**/*.scss`, globOptions).forEach((filePath) => {
+        const file = fs.readFileSync(`${inputRoot}/${filePath}`, 'utf8');
+
+        this.emitFile({type: 'asset', fileName: filePath, source: file});
+      });
     },
   };
 }
