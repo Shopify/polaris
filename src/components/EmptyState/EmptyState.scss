@@ -142,6 +142,7 @@ $centered-illustration-width: rem(226px);
   .Section {
     flex-direction: column-reverse;
     justify-content: center;
+    align-items: center;
   }
 
   .ImageContainer,
