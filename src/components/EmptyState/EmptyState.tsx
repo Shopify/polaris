@@ -23,7 +23,7 @@ export interface EmptyStateProps {
    * Whether or not to limit the image to the size of its container on large screens.
    */
   imageContained?: boolean;
-  /** Whether or not the layout is stacked and centred vs justified apart */
+  /** Whether or not the layout is stacked and centered vs justified apart */
   centeredLayout?: boolean;
   /** Elements to display inside empty state */
   children?: React.ReactNode;

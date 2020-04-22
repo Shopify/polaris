@@ -222,7 +222,7 @@ Use to provide additional but non-critical context for a new product or feature.
 
 <!-- example-for: web -->
 
-Use to explain a section or feature before merchants have used it within the context of a content container like a card or a resource list.
+Stacked image over centered content and actions
 
 ```jsx
 <EmptyState
