@@ -8,6 +8,7 @@
 
 - Removed `max-height` property from `Tooltip` ([#2908](https://github.com/Shopify/polaris-react/pull/2908))
 - Update `TopBar.Menu` to be properly themed in active, hover and focused state ([#2928](https://github.com/Shopify/polaris-react/pull/2928))
+- Added a centeredLayout prop to `EmptyState` ([#2939](https://github.com/Shopify/polaris-react/pull/2939))
 
 ### Bug fixes
 
