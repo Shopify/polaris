@@ -139,8 +139,6 @@ $centered-illustration-width: rem(226px);
 }
 
 .centeredLayout {
-  min-height: 80vh;
-
   .Section {
     flex-direction: column-reverse;
     justify-content: center;
