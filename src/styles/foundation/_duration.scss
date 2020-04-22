@@ -6,7 +6,7 @@ $duration-data: $polaris-duration-map;
 /// Returns the duration value for a given variant.
 ///
 /// @param {String} $variant - The key for the given variant.
-/// @return {Number} The duration for the variant (in miliseconds).
+/// @return {Number} The duration for the variant (in milliseconds).
 
 @function duration($variant: base) {
   $interpolated-value: 'duration-' + $variant;

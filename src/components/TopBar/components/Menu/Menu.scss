@@ -2,11 +2,7 @@
 
 $activator-variables: (
   min-width: rem(36px),
-  border-left: 1px solid rgba(color('black'), 0.42),
   transition: background-color 0.1s,
-  focus-background-color: rgba(color('white'), 0.16),
-  hover-background-color: rgba(color('white'), 0.08),
-  active-background-color: rgba(color('black'), 0.28),
   focus-opacity: 0.85,
 );
 
@@ -39,19 +35,25 @@ $activator-variables: (
   &:focus {
     @include focus-ring($style: 'focused');
     background-color: var(
-      --p-override-transparent,
-      menu(focus-background-color)
+      --top-bar-background-lighter,
+      var(--p-override-transparent, rgba(color('white'), 0.16))
     );
     outline: none;
   }
 
   &:hover {
-    background-color: var(--p-surface-hovered, menu(hover-background-color));
+    background-color: var(
+      --top-bar-background-lighter,
+      var(--p-surface-hovered, rgba(color('white'), 0.08))
+    );
   }
 
   &:active,
   &[aria-expanded='true'] {
-    background-color: var(--p-surface-pressed, menu(active-background-color));
+    background-color: var(
+      --top-bar-background-darker,
+      var(--p-surface-pressed, rgba(color('black'), 0.28))
+    );
     outline: none;
     transition: none;
 

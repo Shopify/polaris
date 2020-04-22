@@ -208,7 +208,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
             <div className={styles.FilterNodeContainer}>
               <Focus
                 disabled={!filterIsOpen || !readyForFocus || !open}
-                root={this.focusNode.current}
+                root={this.focusNode}
               >
                 {this.generateFilterMarkup(filter)}
               </Focus>

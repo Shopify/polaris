@@ -5,7 +5,7 @@ describe('isObject', () => {
     expect(isObject(null)).toBe(false);
   });
 
-  it('returns false for primative values', () => {
+  it('returns false for primitive values', () => {
     expect(isObject(4)).toBe(false);
   });
 

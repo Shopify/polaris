@@ -21,6 +21,8 @@ $illustration-width-cropped: calc(
   #{$illustration-width} + #{$right-offset} * 2
 );
 
+$centered-illustration-width: rem(226px);
+
 .EmptyState {
   display: flex;
   flex-direction: column;
@@ -133,6 +135,30 @@ $illustration-width-cropped: calc(
       position: initial;
       width: 100%;
     }
+  }
+}
+
+.centeredLayout {
+  .Section {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ImageContainer,
+  .DetailsContainer {
+    flex: 0;
+  }
+
+  .Image {
+    margin: unset;
+    width: $centered-illustration-width;
+    max-width: 100%;
+  }
+
+  .Details {
+    text-align: center;
+    width: 100%;
   }
 }
 

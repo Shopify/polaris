@@ -52,7 +52,7 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   ) {
     // eslint-disable-next-line no-console
     console.warn(
-      'Recoloring external SVGs is not supported with colors in the new design langauge. Set the intended color on your SVG instead.',
+      'Recoloring external SVGs is not supported with colors in the new design language. Set the intended color on your SVG instead.',
     );
   }
 
