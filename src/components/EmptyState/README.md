@@ -201,8 +201,6 @@ Use to provide additional but non-critical context for a new product or feature.
 
 <!-- example-for: web -->
 
-Use to explain a section or feature before merchants have used it within the context of a content container like a card or a resource list.
-
 ```jsx
 <Card>
   <Card.Section>
@@ -218,6 +216,26 @@ Use to explain a section or feature before merchants have used it within the con
     </EmptyState>
   </Card.Section>
 </Card>
+```
+
+### Empty state with centered layout
+
+<!-- example-for: web -->
+
+Use to explain a section or feature before merchants have used it within the context of a content container like a card or a resource list.
+
+```jsx
+<EmptyState
+  centeredLayout
+  heading="Upload a file to get started"
+  action={{content: 'Upload files'}}
+  image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
+>
+  <p>
+    You can use the Files section to upload images, videos, and other
+    documents
+  </p>
+</EmptyState>
 ```
 
 ---
