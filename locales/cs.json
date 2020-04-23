@@ -154,7 +154,7 @@
       "ariaLivePlural": "{itemsLength} položek",
       "Item": {
         "actionsDropdownLabel": "Akce pro: {accessibilityLabel}",
-        "actionsDropdown": "Rozbalovací nabídka akcí",
+        "actionsDropdown": "Rozevírací nabídka akcí",
         "viewItem": "Zobrazit podrobnosti pro: {itemName}"
       },
       "BulkActions": {
