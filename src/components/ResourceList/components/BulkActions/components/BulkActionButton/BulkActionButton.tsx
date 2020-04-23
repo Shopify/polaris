@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 
-import {DisableableAction} from '../../../../../../types';
+import type {DisableableAction} from '../../../../../../types';
 import {Button} from '../../../../../Button';
 import {useComponentDidMount} from '../../../../../../utilities/use-component-did-mount';
 import styles from '../../BulkActions.scss';

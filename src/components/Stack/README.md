@@ -54,7 +54,7 @@ Use to quickly lay out a horizontal row of components and maintain their relativ
 
 ### Non-wrapping Stacks
 
-Use to create a stack where the children will not wrap to new rows on small screens. As noted above, the wrap option defaults to true. This means you must explitly set it to false to turn it off.
+Use to create a stack where the children will not wrap to new rows on small screens. As noted above, the wrap option defaults to true. This means you must explicitly set it to false to turn it off.
 
 ```jsx
 <Stack wrap={false}>

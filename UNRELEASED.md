@@ -2,6 +2,8 @@
 
 ### Breaking changes
 
+### New components
+
 ### Enhancements
 
 ### Bug fixes

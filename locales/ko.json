@@ -18,7 +18,8 @@
         "success": "성공",
         "warning": "경고",
         "attention": "주의",
-        "new": "신규"
+        "new": "신규",
+        "critical": "중요"
       }
     },
     "Button": {
@@ -226,6 +227,57 @@
       "SearchField": {
         "clearButtonLabel": "지우기",
         "search": "검색"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "작업"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "동영상 재생",
+        "defaultWithDuration": "동영상 재생(길이: {duration})",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount}시간",
+              "andMinutes": "{hourCount}시간 {minuteCount}분",
+              "andMinute": "{hourCount}시간 {minuteCount}분",
+              "minutesAndSeconds": "{hourCount}시간 {minuteCount}분 {secondCount}초",
+              "minutesAndSecond": "{hourCount}시간 {minuteCount}분 {secondCount}초",
+              "minuteAndSeconds": "{hourCount}시간 {minuteCount}분 {secondCount}초",
+              "minuteAndSecond": "{hourCount}시간 {minuteCount}분 {secondCount}초",
+              "andSeconds": "{hourCount}시간 {secondCount}초",
+              "andSecond": "{hourCount}시간 {secondCount}초"
+            },
+            "one": {
+              "only": "{hourCount}시간",
+              "andMinutes": "{hourCount}시간 {minuteCount}분",
+              "andMinute": "{hourCount}시간 {minuteCount}분",
+              "minutesAndSeconds": "{hourCount}시간 {minuteCount}분 {secondCount}초",
+              "minutesAndSecond": "{hourCount}시간 {minuteCount}분 {secondCount}초",
+              "minuteAndSeconds": "{hourCount}시간 {minuteCount}분 {secondCount}초",
+              "minuteAndSecond": "{hourCount}시간 {minuteCount}분 {secondCount}초",
+              "andSeconds": "{hourCount}시간 {secondCount}초",
+              "andSecond": "{hourCount}시간 {secondCount}초"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount}분",
+              "andSeconds": "{minuteCount}분 {secondCount}초",
+              "andSecond": "{minuteCount}분 {secondCount}초"
+            },
+            "one": {
+              "only": "{minuteCount}분",
+              "andSeconds": "{minuteCount}분 {secondCount}초",
+              "andSecond": "{minuteCount}분 {secondCount}초"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount}초",
+            "one": "{secondCount}초"
+          }
+        }
       }
     }
   }

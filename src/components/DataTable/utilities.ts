@@ -1,4 +1,4 @@
-import {DataTableState} from './types';
+import type {DataTableState} from './types';
 
 interface TableMeasurements {
   firstVisibleColumnIndex: number;

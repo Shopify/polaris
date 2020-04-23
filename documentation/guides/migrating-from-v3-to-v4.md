@@ -271,7 +271,7 @@ class Test extends React.Component {
 
 ### WithRef <a name="polaris-withref"></a>
 
-The `WithRef` component has been removed. It was used as a utlity to place refs on components wrapped in higher-order components. Use functional components instead.
+The `WithRef` component has been removed. It was used as a utility to place refs on components wrapped in higher-order components. Use functional components instead.
 
 ### LinkLikeComponent <a name="polaris-linklikecomponent"></a>
 

@@ -1,7 +1,10 @@
 import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
-import {ActionListSection, ActionListItemDescriptor} from '../../../../types';
+import type {
+  ActionListSection,
+  ActionListItemDescriptor,
+} from '../../../../types';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {useFeatures} from '../../../../utilities/features';

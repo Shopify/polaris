@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
-import {AvatarProps} from '../../../../../Avatar';
-import {ThumbnailProps} from '../../../../../Thumbnail';
+import type {AvatarProps} from '../../../../../Avatar';
+import type {ThumbnailProps} from '../../../../../Thumbnail';
 import {DisplayText} from '../../../../../DisplayText';
 import {useFeatures} from '../../../../../../utilities/features';
 

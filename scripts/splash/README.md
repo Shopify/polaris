@@ -19,4 +19,4 @@ It answers the question:
 
 Found an issue or want to share feedback?
 
-Reach out on Slack in [#polaris-tooling](https://shopify.slack.com/messages/CCNUS0FML).
+Reach out on Slack in [#polaris](https://shopify.slack.com/archives/C4Y8N30KD).

@@ -1,6 +1,6 @@
 import React, {useRef, useEffect} from 'react';
 
-import {CheckboxHandles} from '../../../../types';
+import type {CheckboxHandles} from '../../../../types';
 import {useFeatures} from '../../../../utilities/features';
 import {classNames} from '../../../../utilities/css';
 import {Checkbox} from '../../../Checkbox';

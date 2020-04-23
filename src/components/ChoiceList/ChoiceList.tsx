@@ -2,10 +2,10 @@ import React from 'react';
 
 import {classNames} from '../../utilities/css';
 import {useUniqueId} from '../../utilities/unique-id';
+import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
 import {InlineError, errorTextID} from '../InlineError';
-import {Error} from '../../types';
 
 import styles from './ChoiceList.scss';
 

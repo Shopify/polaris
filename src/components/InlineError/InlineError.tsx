@@ -2,7 +2,7 @@ import React from 'react';
 import {AlertMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../Icon';
-import {Error} from '../../types';
+import type {Error} from '../../types';
 
 import styles from './InlineError.scss';
 

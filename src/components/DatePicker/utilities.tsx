@@ -1,4 +1,4 @@
-import {Months, Weekdays} from '@shopify/javascript-utilities/dates';
+import type {Months, Weekdays} from '@shopify/javascript-utilities/dates';
 
 export function monthName(month: Months) {
   switch (month) {

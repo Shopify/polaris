@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ActionListItemDescriptor, ActionListSection} from '../../types';
+import type {ActionListItemDescriptor, ActionListSection} from '../../types';
 import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
 

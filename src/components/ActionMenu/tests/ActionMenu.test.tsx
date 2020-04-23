@@ -2,7 +2,10 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
-import {MenuGroupDescriptor, ActionListItemDescriptor} from '../../../types';
+import type {
+  MenuGroupDescriptor,
+  ActionListItemDescriptor,
+} from '../../../types';
 import {MenuAction, MenuGroup, RollupActions} from '../components';
 import {ActionMenu, ActionMenuProps} from '../ActionMenu';
 import {Button} from '../../Button';
@@ -173,7 +176,7 @@ describe('<ActionMenu />', () => {
       );
     });
 
-    it('renders a group at its overriden order when index is set', () => {
+    it('renders a group at its overridden order when index is set', () => {
       const overrideIndex = 1;
       const groupWithIndex = {
         title: 'group with explicit order in menu',

@@ -71,6 +71,17 @@ $pip-spacing: ($height - $pip-size) / 2;
   }
 }
 
+.statusCritical {
+  @include pip-color(var(--p-icon-critical, color('red', 'dark')));
+  background-color: var(--p-surface-critical, color('red', 'light'));
+  color: color('red', 'text');
+
+  .Content {
+    color: var(--p-text);
+    mix-blend-mode: var(--p-badge-mix-blend-mode);
+  }
+}
+
 .statusNew {
   background-color: color('sky');
   color: color('ink');

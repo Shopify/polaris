@@ -6,7 +6,7 @@ import {Stack} from '../../../Stack';
 import {ThemeProvider} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import {useFeatures} from '../../../../utilities/features';
-import {ContextualSaveBarProps} from '../../../../utilities/frame';
+import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useTheme} from '../../../../utilities/theme';

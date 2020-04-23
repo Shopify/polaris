@@ -21,7 +21,7 @@ $context-control-expand-after: 1400px;
 }
 
 .TopBar-newDesignLanguage {
-  height: unstable-top-bar-height();
+  height: new-top-bar-height();
   transition: box-shadow 100ms var(--p-ease);
 
   &.isScrolled {
@@ -120,6 +120,7 @@ $context-control-expand-after: 1400px;
 
   @media (max-width: $page-left-alignment-breakpoint-max) {
     margin-left: 0;
+    margin-right: spacing(extra-tight);
   }
 
   .TopBar-newDesignLanguage & {
@@ -128,7 +129,5 @@ $context-control-expand-after: 1400px;
 }
 
 .SecondaryMenu {
-  @include breakpoint-before(layout-width(page-with-nav), false) {
-    display: none;
-  }
+  @include recolor-icon(var(--p-icon, var(--top-bar-color)), transparent);
 }

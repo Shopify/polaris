@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import {Node} from '@shopify/react-testing';
+import type {Node} from '@shopify/react-testing';
 
 export function toBeDisabled(received: Node<any>) {
   const pass = received.prop('disabled') === true;

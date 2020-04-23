@@ -18,7 +18,8 @@
         "success": "Başarılı",
         "warning": "Uyarı",
         "attention": "Dikkat",
-        "new": "Yeni"
+        "new": "Yeni",
+        "critical": "Kritik"
       }
     },
     "Button": {
@@ -226,6 +227,57 @@
       "SearchField": {
         "clearButtonLabel": "Temizle",
         "search": "Ara"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "İşlemler"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Videoyu oynat",
+        "defaultWithDuration": "{duration} uzunluğundaki videoyu oynat",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} saat",
+              "andMinutes": "{hourCount} saat {minuteCount} dakika",
+              "andMinute": "{hourCount} saat {minuteCount} dakika",
+              "minutesAndSeconds": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "minutesAndSecond": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "minuteAndSeconds": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "minuteAndSecond": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "andSeconds": "{hourCount} saat {secondCount} saniye",
+              "andSecond": "{hourCount} saat {secondCount} saniye"
+            },
+            "one": {
+              "only": "{hourCount} saat",
+              "andMinutes": "{hourCount} saat {minuteCount} dakika",
+              "andMinute": "{hourCount} saat {minuteCount} dakika",
+              "minutesAndSeconds": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "minutesAndSecond": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "minuteAndSeconds": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "minuteAndSecond": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "andSeconds": "{hourCount} saat {secondCount} saniye",
+              "andSecond": "{hourCount} saat {secondCount} saniye"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} dakika",
+              "andSeconds": "{minuteCount} dakika {secondCount} saniye",
+              "andSecond": "{minuteCount} dakika {secondCount} saniye"
+            },
+            "one": {
+              "only": "{minuteCount} dakika",
+              "andSeconds": "{minuteCount} dakika {secondCount} saniye",
+              "andSecond": "{minuteCount} dakika {secondCount} saniye"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} saniye",
+            "one": "{secondCount} saniye"
+          }
+        }
       }
     }
   }

@@ -4,7 +4,7 @@
 // Base Navigation styles
 $active-indicator-width: rem(3px);
 $nav-max-width: rem(360px);
-$unstable-nav-max-width: rem(258px);
+$new-nav-max-width: rem(258px);
 .Navigation {
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@ $unstable-nav-max-width: rem(258px);
   }
 
   &.Navigation-newDesignLanguage {
-    max-width: $unstable-nav-max-width;
+    max-width: $new-nav-max-width;
     border-right: 1px solid var(--p-border-subdued);
   }
 }
@@ -49,7 +49,7 @@ $unstable-nav-max-width: rem(258px);
 
     .Navigation-newDesignLanguage & {
       display: block;
-      min-height: unstable-top-bar-height();
+      min-height: new-top-bar-height();
     }
   }
 }
@@ -67,11 +67,11 @@ $unstable-nav-max-width: rem(258px);
   display: none;
   @include breakpoint-after(nav-min-window-corrected()) {
     display: flex;
-    flex: 0 0 unstable-top-bar-height();
+    flex: 0 0 new-top-bar-height();
     align-items: center;
     height: 100%;
     padding: 0 spacing(tight) 0 spacing(base);
-    @include safe-area-for(flex-basis, unstable-top-bar-height(), left);
+    @include safe-area-for(flex-basis, new-top-bar-height(), left);
     @include safe-area-for(padding-left, spacing(), left);
   }
 }

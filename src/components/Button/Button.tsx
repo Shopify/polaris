@@ -7,7 +7,7 @@ import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {UnstyledLink} from '../UnstyledLink';
 import {Icon} from '../Icon';
-import {IconProps, ConnectedDisclosure} from '../../types';
+import type {IconProps, ConnectedDisclosure} from '../../types';
 import {Spinner} from '../Spinner';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';

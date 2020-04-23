@@ -1,5 +1,5 @@
 $navigation-width: 240px !default;
-$unstable-navigation-width: 258px;
+$new-navigation-width: 258px;
 
 ////
 /// Layout
@@ -24,8 +24,8 @@ $layout-width-data: (
   nav: (
     base: rem($navigation-width),
   ),
-  unstable-nav: (
-    base: rem($unstable-navigation-width),
+  new-nav: (
+    base: rem($new-navigation-width),
   ),
   page-with-nav: (
     base: rem(769px),
@@ -63,7 +63,7 @@ $dismiss-icon-size: 32px;
   @return rem(56px);
 }
 
-@function unstable-top-bar-height() {
+@function new-top-bar-height() {
   @return rem(68px);
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
-import {ActionListItemDescriptor} from '../../types';
+import type {ActionListItemDescriptor} from '../../types';
 import {Spinner} from '../Spinner';
 
 import {TextField, ComboBox, ComboBoxProps} from './components';

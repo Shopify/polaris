@@ -10,7 +10,7 @@ import {
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
 
-import {TabDescriptor} from './types';
+import type {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 import {List, Panel, Tab, TabMeasurer, TabMeasurerProps} from './components';
 import styles from './Tabs.scss';

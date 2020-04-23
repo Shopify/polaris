@@ -4,7 +4,7 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 
-import {Key} from '../../types';
+import type {Key} from '../../types';
 
 export interface KeypressListenerProps {
   keyCode: Key;
