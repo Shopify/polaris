@@ -59,6 +59,10 @@ $action-menu-rollup-computed-width: icon-size();
   margin: 0 spacing(tight);
   display: flex;
   justify-content: flex-end;
+
+  @include page-content-when-not-fully-condensed {
+    margin: 0 spacing(extra-loose);
+  }
 }
 
 ///
