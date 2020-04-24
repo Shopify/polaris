@@ -99,7 +99,7 @@ export function Header({
   ) : null;
 
   const navigationMarkup =
-    breadcrumbMarkup || paginationMarkup ? (
+    breadcrumbMarkup || paginationMarkup || additionalNavigationMarkup ? (
       <div className={styles.Navigation}>
         {breadcrumbMarkup}
         {additionalNavigationMarkup}
