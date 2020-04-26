@@ -7,10 +7,10 @@ import {
 } from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
-import {Button} from '../../Button';
-import {ButtonGroup} from '../../ButtonGroup';
 import {Key} from '../../../types';
 import {Pagination} from '../Pagination';
+import {Button} from '../../Button';
+import {ButtonGroup} from '../../ButtonGroup';
 import {TextField} from '../../TextField';
 import {Tooltip} from '../../Tooltip';
 import {Spinner} from '../../Spinner';
@@ -114,10 +114,7 @@ describe('<Pagination />', () => {
     it('has subdued text without next and previous pages', () => {
       const pagination = mountWithAppProvider(<Pagination label="test" />);
       expect(
-        pagination
-          .find('.Label')
-          .children()
-          .prop('variation'),
+        pagination.find('.Label').children().prop('variation'),
       ).toStrictEqual('subdued');
     });
   });
@@ -183,10 +180,7 @@ describe('<Pagination />', () => {
     beforeEach(() => {
       getElementById = jest.spyOn(document, 'getElementById');
       getElementById.mockImplementation((id) => {
-        return pagination
-          .find(`#${id}`)
-          .at(0)
-          .getDOMNode();
+        return pagination.find(`#${id}`).at(0).getDOMNode();
       });
     });
 
