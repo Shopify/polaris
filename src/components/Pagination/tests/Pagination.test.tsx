@@ -6,13 +6,15 @@ import {
   ReactWrapper,
 } from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
-import {Tooltip, TextField} from 'components';
 
-import {Key} from '../../../types';
-import {Pagination} from '../Pagination';
-import {UnstyledLink} from '../../UnstyledLink';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
+import {Key} from '../../../types';
+import {Pagination} from '../Pagination';
+import {TextField} from '../../TextField';
+import {Tooltip} from '../../Tooltip';
+import {Spinner} from '../../Spinner';
+import {UnstyledLink} from '../../UnstyledLink';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -112,8 +114,18 @@ describe('<Pagination />', () => {
     it('has subdued text without next and previous pages', () => {
       const pagination = mountWithAppProvider(<Pagination label="test" />);
       expect(
-        pagination.find('.Label').children().prop('variation'),
+        pagination
+          .find('.Label')
+          .children()
+          .prop('variation'),
       ).toStrictEqual('subdued');
+    });
+  });
+
+  describe('loading', () => {
+    it('renders a spinner', () => {
+      const pagination = mountWithApp(<Pagination loading />);
+      expect(pagination).toContainReactComponent(Spinner);
     });
   });
 
@@ -171,7 +183,10 @@ describe('<Pagination />', () => {
     beforeEach(() => {
       getElementById = jest.spyOn(document, 'getElementById');
       getElementById.mockImplementation((id) => {
-        return pagination.find(`#${id}`).at(0).getDOMNode();
+        return pagination
+          .find(`#${id}`)
+          .at(0)
+          .getDOMNode();
       });
     });
 

@@ -82,6 +82,9 @@ export function Pagination({
   const navLabel =
     accessibilityLabel || i18n.translate('Polaris.Pagination.pagination');
 
+  const loadingLabel =
+    accessibilityLabel || i18n.translate('Polaris.Pagination.loading');
+
   const className = classNames(
     styles.Pagination,
     plain && styles.plain,
@@ -90,7 +93,7 @@ export function Pagination({
 
   if (loading) {
     return (
-      <div className={className} aria-label={navLabel}>
+      <div className={className} aria-label={loadingLabel}>
         <Spinner size="small" />
       </div>
     );
