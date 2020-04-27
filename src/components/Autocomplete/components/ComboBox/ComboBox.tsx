@@ -42,6 +42,7 @@ export interface ComboBoxProps {
   /** Callback when the end of the list is reached */
   onEndReached?(): void;
 }
+
 export function ComboBox({
   id: idProp,
   options,
