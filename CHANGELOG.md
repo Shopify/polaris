@@ -8,6 +8,18 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.21.0 - 2020-04-28
+
+### Enhancements
+
+- Added `additionalNavigation` prop to `Page` ([#2942](https://github.com/Shopify/polaris-react/pull/2942))
+
+## 4.20.1 - 2020-04-23
+
+### Bug fixes
+
+- Fixed performance of `ResourceItem` due to inclusion of `children` in deep prop comparison within `shouldComponentUpdate` ([#2936](https://github.com/Shopify/polaris-react/pull/2936))
+
 ## 4.20.0 - 2020-04-22
 
 ### Enhancements
