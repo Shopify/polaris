@@ -158,6 +158,18 @@ describe('<Header />', () => {
     });
   });
 
+  describe('additionalNavigation', () => {
+    it('renders element if passed', () => {
+      const TestComponent = () => <div />;
+
+      const header = mountWithAppProvider(
+        <Header {...mockProps} additionalNavigation={<TestComponent />} />,
+      );
+
+      expect(header.find(TestComponent).exists()).toBe(true);
+    });
+  });
+
   describe('<ActionMenu />', () => {
     const mockSecondaryActions: HeaderProps['secondaryActions'] = [
       {content: 'mock content 1'},
@@ -183,7 +195,7 @@ describe('<Header />', () => {
       expect(wrapper.find(ActionMenu).exists()).toBe(false);
     });
 
-    it('renders with atleast valid `secondaryActions`', () => {
+    it('renders with at least valid `secondaryActions`', () => {
       const mockSecondaryActions: HeaderProps['secondaryActions'] = [
         {content: 'mock content'},
       ];
@@ -194,7 +206,7 @@ describe('<Header />', () => {
       expect(wrapper.find(ActionMenu).exists()).toBe(true);
     });
 
-    it('renders with atleast valid `actionGroups`', () => {
+    it('renders with at least valid `actionGroups`', () => {
       const mockActionGroups: HeaderProps['actionGroups'] = [
         {
           title: 'mock title',

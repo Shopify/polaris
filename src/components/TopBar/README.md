@@ -322,9 +322,11 @@ function TopBarExample() {
   const theme = {
     colors: {
       topBar: {
-        background: '#357997',
-        backgroundLighter: '#6192a9',
-        color: '#FFFFFF',
+        background: '#fff',
+        backgroundLighter: '#F4F6F8',
+        backgroundDarker: '#DFE3E8',
+        border: '#C4CDD5',
+        color: '#212B36',
       },
     },
     logo: {
@@ -370,6 +372,7 @@ function TopBarExample() {
       onChange={handleSearchChange}
       value={searchValue}
       placeholder="Search"
+      showFocusBorder
     />
   );
 

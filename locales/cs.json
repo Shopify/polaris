@@ -27,7 +27,7 @@
       "connectedDisclosureAccessibilityLabel": "Související akce"
     },
     "Common": {
-      "checkbox": "zaškrtávací políčko",
+      "checkbox": "zaškrtávací pole",
       "undo": "Vrátit zpět",
       "cancel": "Zrušit",
       "newWindowAccessibilityHint": "(otevře nové okno)",
@@ -154,7 +154,7 @@
       "ariaLivePlural": "{itemsLength} položek",
       "Item": {
         "actionsDropdownLabel": "Akce pro: {accessibilityLabel}",
-        "actionsDropdown": "Rozbalovací nabídka akcí",
+        "actionsDropdown": "Rozevírací nabídka akcí",
         "viewItem": "Zobrazit podrobnosti pro: {itemName}"
       },
       "BulkActions": {
@@ -227,6 +227,57 @@
       "SearchField": {
         "clearButtonLabel": "Vymazat",
         "search": "Hledat"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "Akce"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Přehrát video",
+        "defaultWithDuration": "Přehrát video o délce: {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} h",
+              "andMinutes": "hodiny: {hourCount}, minuty: {minuteCount}",
+              "andMinute": "hodiny: {hourCount}, minuty: {minuteCount}",
+              "minutesAndSeconds": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
+              "minutesAndSecond": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
+              "minuteAndSeconds": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
+              "minuteAndSecond": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
+              "andSeconds": "hodiny: {hourCount}, sekundy: {secondCount}",
+              "andSecond": "hodiny: {hourCount}, sekundy: {secondCount}"
+            },
+            "one": {
+              "only": "{hourCount} h",
+              "andMinutes": "hodiny: {hourCount}, minuty: {minuteCount}",
+              "andMinute": "hodiny: {hourCount}, minuty: {minuteCount}",
+              "minutesAndSeconds": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
+              "minutesAndSecond": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
+              "minuteAndSeconds": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
+              "minuteAndSecond": "hodiny: {hourCount}, minuty: {minuteCount}, sekundy: {secondCount}",
+              "andSeconds": "hodiny: {hourCount}, sekundy: {secondCount}",
+              "andSecond": "hodiny: {hourCount}, sekundy: {secondCount}"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} min",
+              "andSeconds": "minuty: {minuteCount}, sekundy: {secondCount}",
+              "andSecond": "minuty: {minuteCount}, sekundy: {secondCount}"
+            },
+            "one": {
+              "only": "{minuteCount} min",
+              "andSeconds": "minuty: {minuteCount}, sekundy: {secondCount}",
+              "andSecond": "minuty: {minuteCount}, sekundy: {secondCount}"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} s",
+            "one": "{secondCount} s"
+          }
+        }
       }
     }
   }

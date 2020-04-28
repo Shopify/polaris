@@ -8,6 +8,41 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.20.0 - 2020-04-22
+
+### Enhancements
+
+- Removed `max-height` property from `Tooltip` (thanks to [@thayannevls](https://github.com/thayannevls) for the [pull request](https://github.com/Shopify/polaris-react/pull/2908))
+- Update `TopBar.Menu` to be properly themed in active, hover and focused state ([#2928](https://github.com/Shopify/polaris-react/pull/2928))
+- Added a centeredLayout prop to `EmptyState` ([#2939](https://github.com/Shopify/polaris-react/pull/2939))
+
+### Bug fixes
+
+- Fixed `Tag` submitting forms when `onClick` is set ([#2895](https://github.com/Shopify/polaris-react/pull/2895))
+- Fixed `DescriptionList` content overflowing when `term` or `description` have long unbroken words ([#2880](https://github.com/Shopify/polaris-react/pull/2880))
+- Fixed focusing bug on Filters where a newly opened filter would not initially focus the first input, and a newly opened filter would incorrectly focus after an input selection ([#2871](https://github.com/Shopify/polaris-react/pull/2871))
+
+### Development workflow
+
+- Fixed automatic pull request generation for `web` and `styleguide` when updating Polaris ([#2892](https://github.com/Shopify/polaris-react/pull/2892))
+- Added an example to `Layout` that showcases how to space a banner ([#2929](https://github.com/Shopify/polaris-react/pull/2929))
+
+## 4.19.0 - 2020-04-15
+
+### Enhancements
+
+- Updated `Filters` to only show the "More filters" button if necessary ([#2856](https://github.com/Shopify/polaris-react/pull/2856)).
+- Updated `TopBar` component to show `secondaryMenu` on small screens ([#2913](https://github.com/Shopify/polaris-react/pull/2913))
+- `Badge` adds `critical` status prop styling ([#2902](https://github.com/Shopify/polaris-react/pull/2902))
+
+### Bug fixes
+
+- Added `border-radius` to the `MediaCard` container ([#2919](https://github.com/Shopify/polaris-react/pull/2919))
+
+### Code quality
+
+- Set `importsNotUsedAsValues` to `error` in TypeScript configuration to force us to be explicit when importing types ([#2901](https://github.com/Shopify/polaris-react/pull/2901))
+
 ## 4.18.0 - 2020-04-09
 
 ### New components

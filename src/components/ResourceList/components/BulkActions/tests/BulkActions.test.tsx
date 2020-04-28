@@ -50,7 +50,7 @@ function searchCheckableButton(
 
 describe('<BulkActions />', () => {
   describe('actions', () => {
-    it('promotedActions render in the last position on intial load', () => {
+    it('promotedActions render in the last position on initial load', () => {
       const {promotedActions} = bulkActionProps;
       const bulkActions = mountWithAppProvider(
         <BulkActions {...bulkActionProps} promotedActions={promotedActions} />,

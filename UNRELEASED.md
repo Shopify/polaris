@@ -6,11 +6,11 @@
 
 ### Enhancements
 
-- Updated `Filters` to only show the "More filters" button if necessary ([#2856](https://github.com/Shopify/polaris-react/pull/2856)).
-- Updated `TopBar` component to show `secondaryMenu` on small screens ([#2913](https://github.com/Shopify/polaris-react/pull/2913))
-- `Badge` adds `critical` status prop styling ([#2902](https://github.com/Shopify/polaris-react/pull/2902))
+- Added `additionalNavigation` prop to `Page` ([#2942](https://github.com/Shopify/polaris-react/pull/2942))
 
 ### Bug fixes
+
+- Fixed performance of `ResourceItem` due to inclusion of `children` in deep prop comparison within `shouldComponentUpdate` ([#2936](https://github.com/Shopify/polaris-react/pull/2936))
 
 ### Documentation
 
@@ -20,7 +20,6 @@
 
 ### Code quality
 
-- Set `importsNotUsedAsValues` to `error` in typescript configuration to force us to be explicit when importing types ([#2901](https://github.com/Shopify/polaris-react/pull/2901))
 - Converted `ComboBox` to a functional component ([#2918](https://github.com/Shopify/polaris-react/pull/2918))
 
 ### Deprecations

@@ -228,6 +228,57 @@
         "clearButtonLabel": "Rensa",
         "search": "Sök"
       }
+    },
+    "MediaCard": {
+      "popoverButton": "Åtgärder"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Spela video",
+        "defaultWithDuration": "Spela video som är {duration} lång",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} timmar",
+              "andMinutes": "{hourCount} timmar och {minuteCount} minuter",
+              "andMinute": "{hourCount} timmar och {minuteCount} minut",
+              "minutesAndSeconds": "{hourCount} timme, {minuteCount} minuter och {secondCount} sekunder",
+              "minutesAndSecond": "{hourCount} timmar, {minuteCount} minuter och {secondCount} sekund",
+              "minuteAndSeconds": "{hourCount} timmar, {minuteCount} minut och {secondCount} sekunder",
+              "minuteAndSecond": "{hourCount} timmar, {minuteCount} minut och {secondCount} sekund",
+              "andSeconds": "{hourCount} timme och {secondCount} sekunder",
+              "andSecond": "{hourCount} timmar och {secondCount} sekund"
+            },
+            "one": {
+              "only": "{hourCount} timme",
+              "andMinutes": "{hourCount} timme och {minuteCount} minuter",
+              "andMinute": "{hourCount} timme och {minuteCount} minut",
+              "minutesAndSeconds": "{hourCount} timme, {minuteCount} minuter och {secondCount} sekunder",
+              "minutesAndSecond": "{hourCount} timme, {minuteCount} minuter och {secondCount} sekund",
+              "minuteAndSeconds": "{hourCount} timme, {minuteCount} minut och {secondCount} sekunder",
+              "minuteAndSecond": "{hourCount} timme, {minuteCount} minut och {secondCount} sekund",
+              "andSeconds": "{hourCount} timme och {secondCount} sekunder",
+              "andSecond": "{hourCount} timme och {secondCount} sekund"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} minuter",
+              "andSeconds": "{minuteCount} minuter och {secondCount} sekunder",
+              "andSecond": "{minuteCount} minuter och {secondCount} sekund"
+            },
+            "one": {
+              "only": "{minuteCount} minut",
+              "andSeconds": "{minuteCount} minut och {secondCount} sekunder",
+              "andSecond": "{minuteCount} minut och {secondCount} sekund"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} sekunder",
+            "one": "{secondCount} sekund"
+          }
+        }
+      }
     }
   }
 }

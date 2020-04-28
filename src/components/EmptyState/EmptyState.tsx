@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 
 import {classNames} from '../../utilities/css';
 import {WithinContentContext} from '../../utilities/within-content-context';
+import {useFeatures} from '../../utilities/features';
 import type {Action} from '../../types';
 import {Image} from '../Image';
 import {buttonFrom} from '../Button';
@@ -22,6 +23,8 @@ export interface EmptyStateProps {
    * Whether or not to limit the image to the size of its container on large screens.
    */
   imageContained?: boolean;
+  /** Whether or not the layout is stacked and centered vs justified apart */
+  centeredLayout?: boolean;
   /** Elements to display inside empty state */
   children?: React.ReactNode;
   /** Primary action for empty state */
@@ -38,13 +41,17 @@ export function EmptyState({
   image,
   largeImage,
   imageContained,
+  centeredLayout = false,
   action,
   secondaryAction,
   footerContent,
 }: EmptyStateProps) {
   const withinContentContainer = useContext(WithinContentContext);
+  const {newDesignLanguage = false} = useFeatures();
+  const newLayout = centeredLayout || newDesignLanguage;
   const className = classNames(
     styles.EmptyState,
+    newLayout && styles.centeredLayout,
     imageContained && styles.imageContained,
     withinContentContainer ? styles.withinContentContainer : styles.withinPage,
   );
@@ -66,7 +73,7 @@ export function EmptyState({
   );
 
   const secondaryActionMarkup = secondaryAction
-    ? buttonFrom(secondaryAction, {plain: true})
+    ? buttonFrom(secondaryAction, newLayout ? {} : {plain: true})
     : null;
 
   const footerContentMarkup = footerContent ? (
@@ -76,7 +83,8 @@ export function EmptyState({
   ) : null;
 
   const headingSize = withinContentContainer ? 'small' : 'medium';
-  const primaryActionSize = withinContentContainer ? 'medium' : 'large';
+  const primaryActionSize =
+    withinContentContainer || newLayout ? 'medium' : 'large';
 
   const primaryActionMarkup = action
     ? buttonFrom(action, {primary: true, size: primaryActionSize})
@@ -92,7 +100,7 @@ export function EmptyState({
 
   const textContentMarkup =
     headingMarkup || children ? (
-      <TextContainer>
+      <TextContainer spacing={newLayout ? 'tight' : undefined}>
         {headingMarkup}
         {childrenMarkup}
       </TextContainer>
@@ -101,7 +109,11 @@ export function EmptyState({
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (
       <div className={styles.Actions}>
-        <Stack alignment="center">
+        <Stack
+          alignment="center"
+          distribution={newLayout ? 'center' : undefined}
+          spacing={newLayout ? 'tight' : undefined}
+        >
           {primaryActionMarkup}
           {secondaryActionMarkup}
         </Stack>
