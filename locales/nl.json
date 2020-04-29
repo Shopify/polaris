@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "Vorige",
       "next": "Volgende",
-      "pagination": "Paginering"
+      "pagination": "Paginering",
+      "loading": "Laden"
     },
     "ProgressBar": {
       "negativeWarningMessage": "Waardes die worden doorgegeven naar de voortgangsinstelling mogen niet negatief zijn {progress} opnieuw instellen op 0.",
