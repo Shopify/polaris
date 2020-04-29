@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "Předchozí",
       "next": "Další",
-      "pagination": "Stránkování"
+      "pagination": "Stránkování",
+      "loading": "Načítání"
     },
     "ProgressBar": {
       "negativeWarningMessage": "Hodnoty předané dál by neměly být záporné. {progress}: vynulování",
