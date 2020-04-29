@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "Forrige",
       "next": "Neste",
-      "pagination": "Sideinndeling"
+      "pagination": "Sideinndeling",
+      "loading": "Laster inn"
     },
     "ProgressBar": {
       "negativeWarningMessage": "Verdier som er overført til fremgangsrekvisitten, bør ikke være negative. Tilbakestiller {progress} til 0.",
