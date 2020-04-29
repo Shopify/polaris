@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "ก่อนหน้า",
       "next": "ถัดไป",
-      "pagination": "การแบ่งหน้า"
+      "pagination": "การแบ่งหน้า",
+      "loading": "กำลังโหลด"
     },
     "ProgressBar": {
       "negativeWarningMessage": "ค่าที่ส่งไปยังคุณสมบัติความคืบหน้าไม่ควรเป็นลบ กำลังรีเซ็ต {progress} เป็น 0",
