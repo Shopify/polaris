@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "前へ",
       "next": "次へ",
-      "pagination": "ページネーション"
+      "pagination": "ページネーション",
+      "loading": "読み込んでいます"
     },
     "ProgressBar": {
       "negativeWarningMessage": "進行中のプロパティに渡される値にマイナスは使用できません。{progress}を0にリセットする。",
