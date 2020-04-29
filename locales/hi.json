@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "पिछला",
       "next": "अगला",
-      "pagination": "पेज क्रमांक डालना"
+      "pagination": "पेज क्रमांक डालना",
+      "loading": "लोड हो रहा है"
     },
     "ProgressBar": {
       "negativeWarningMessage": "प्रगति विशेषता में भेजे गए मूल्य नकारात्मक नहीं होने चाहिए. {progress} को 0 पर सेट किया जा रहा",
