@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "Poprzedni",
       "next": "Kolejny",
-      "pagination": "Paginacja"
+      "pagination": "Paginacja",
+      "loading": "Ładowanie"
     },
     "ProgressBar": {
       "negativeWarningMessage": "Wartości przekazywane do właściwości postępu nie powinny być negatywne. Resetowanie {progress} do 0.",
