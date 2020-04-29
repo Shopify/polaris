@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "上一页",
       "next": "下一页",
-      "pagination": "分页"
+      "pagination": "分页",
+      "loading": "正在加载"
     },
     "ProgressBar": {
       "negativeWarningMessage": "传递给进度条的值不可为负数。将 {progress} 重置为 0。",
