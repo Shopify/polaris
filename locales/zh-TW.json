@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "上一頁",
       "next": "下一頁",
-      "pagination": "分頁"
+      "pagination": "分頁",
+      "loading": "載入中"
     },
     "ProgressBar": {
       "negativeWarningMessage": "傳送至進度條屬性的數值不應為負值。將 {progress} 重設為 0。",
