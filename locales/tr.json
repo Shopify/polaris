@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "Önceki",
       "next": "Sonraki",
-      "pagination": "Sayfa numaralama"
+      "pagination": "Sayfa numaralama",
+      "loading": "Yükleniyor"
     },
     "ProgressBar": {
       "negativeWarningMessage": "İlerleme özelliğine geçirilen değerler negatif olmamalıdır. {progress} 0 olarak sıfırlanıyor.",
