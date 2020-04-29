@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "Anterior",
       "next": "Próximo",
-      "pagination": "Paginação"
+      "pagination": "Paginação",
+      "loading": "Carregando"
     },
     "ProgressBar": {
       "negativeWarningMessage": "Os valores passados para o prop de progresso não devem ser negativos. Redefinindo {progress} como 0.",
