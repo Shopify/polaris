@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "Forrige",
       "next": "Næste",
-      "pagination": "Sidenummerering"
+      "pagination": "Sidenummerering",
+      "loading": "Indlæser"
     },
     "ProgressBar": {
       "negativeWarningMessage": "Værdier, der overføres til statusegenskab, må ikke være negative. Angiver {progress} til 0.",
