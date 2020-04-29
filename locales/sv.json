@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "Föregående",
       "next": "Nästa",
-      "pagination": "Paginering"
+      "pagination": "Paginering",
+      "loading": "Laddar"
     },
     "ProgressBar": {
       "negativeWarningMessage": "Värden som skickas till \"progress prop\" bör inte vara negativa. Återställer {progress} till 0.",
