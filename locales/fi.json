@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "Edellinen",
       "next": "Seuraava",
-      "pagination": "Sivunumerointi"
+      "pagination": "Sivunumerointi",
+      "loading": "Ladataan"
     },
     "ProgressBar": {
       "negativeWarningMessage": "Edistymistietoihin siirretyt arvot eivät saa olla negatiivisia. Palautetaan {progress} arvoon 0.",
