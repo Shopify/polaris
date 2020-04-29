@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "이전",
       "next": "다음",
-      "pagination": "페이지 매김"
+      "pagination": "페이지 매김",
+      "loading": "로드 중"
     },
     "ProgressBar": {
       "negativeWarningMessage": "progress 속성으로 전달되는 값은 음수일 수 없습니다. {progress}을(를) 0으로 재설정합니다.",
