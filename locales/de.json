@@ -128,7 +128,8 @@
     "Pagination": {
       "previous": "Zurück",
       "next": "Nächste",
-      "pagination": "Seitennummerierung"
+      "pagination": "Seitennummerierung",
+      "loading": "Wird geladen"
     },
     "ProgressBar": {
       "negativeWarningMessage": "Werte, die an die Statusanzeige übergeben werden, sollten nicht negativ sein. {progress} wird auf 0 zurückgesetzt.",
