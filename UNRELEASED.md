@@ -6,6 +6,8 @@
 
 ### Enhancements
 
+- Truncated long sort options in `ResourceList` ([#2957](https://github.com/Shopify/polaris-react/pull/2957)
+
 ### Bug fixes
 
 ### Documentation
