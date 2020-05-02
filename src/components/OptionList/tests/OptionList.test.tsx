@@ -5,6 +5,7 @@ import {mountWithApp} from 'test-utilities';
 
 import {Option} from '../components';
 import {OptionList, OptionListProps, OptionDescriptor} from '../OptionList';
+import styles from '../OptionList.scss';
 
 describe('<OptionList />', () => {
   const defaultProps: OptionListProps = {
@@ -84,6 +85,20 @@ describe('<OptionList />', () => {
     ).find(Option);
 
     expect(optionWrappers).toHaveLength(totalOptions(options, sections));
+  });
+
+  describe('when there are two sections and no options included in props', () => {
+    // This is a regression test to make sure that the correct amount of
+    // ul.Options lists are rendered. (https://github.com/Shopify/polaris-react/issues/2955)
+    it('renders two ul.Options lists', () => {
+      const options: OptionDescriptor[] = [];
+      const mountedComponent = mountWithAppProvider<OptionListProps>(
+        <OptionList {...defaultProps} options={options} />,
+      );
+
+      // 2 is the amount of sections there are in the defaultProps object.
+      expect(mountedComponent.find(`ul.${styles.Options}`)).toHaveLength(2);
+    });
   });
 
   it('re-renders with new options passed in', () => {

@@ -69,7 +69,7 @@ export function OptionList({
   id: idProp,
 }: OptionListProps) {
   const [normalizedOptions, setNormalizedOptions] = useState(
-    createNormalizedOptions(options, sections, title),
+    createNormalizedOptions(options, sections),
   );
   const id = useUniqueId('OptionList', idProp);
   const {newDesignLanguage} = useFeatures();
@@ -77,12 +77,20 @@ export function OptionList({
   useDeepEffect(
     () => {
       setNormalizedOptions(
-        createNormalizedOptions(options || [], sections || [], title),
+        createNormalizedOptions(options || [], sections || []),
       );
     },
     [options, sections, title],
     optionArraysAreEqual,
   );
+
+  const renderTitle = (title: string | undefined) => {
+    return title ? (
+      <p className={styles.Title} role={role}>
+        {title}
+      </p>
+    ) : null;
+  };
 
   const handleClick = useCallback(
     (sectionIndex: number, optionIndex: number) => {
@@ -109,11 +117,6 @@ export function OptionList({
 
   const optionsMarkup = optionsExist
     ? normalizedOptions.map(({title, options}, sectionIndex) => {
-        const titleMarkup = title ? (
-          <p className={styles.Title} role={role}>
-            {title}
-          </p>
-        ) : null;
         const optionsMarkup =
           options &&
           options.map((option, optionIndex) => {
@@ -138,7 +141,7 @@ export function OptionList({
 
         return (
           <li key={title || `noTitle-${sectionIndex}`}>
-            {titleMarkup}
+            {renderTitle(title)}
             <ul
               className={styles.Options}
               id={`${id}-${sectionIndex}`}
@@ -159,6 +162,7 @@ export function OptionList({
 
   return (
     <ul className={optionListClassName} role={role}>
+      {renderTitle(title)}
       {optionsMarkup}
     </ul>
   );
@@ -167,23 +171,19 @@ export function OptionList({
 function createNormalizedOptions(
   options?: OptionDescriptor[],
   sections?: SectionDescriptor[],
-  title?: string,
 ): SectionDescriptor[] {
-  if (options == null) {
-    const section = {options: [], title};
-    return sections == null ? [] : [section, ...sections];
+  if (options == null || options.length < 1) {
+    return sections == null ? [] : sections;
   }
-  if (sections == null) {
+  if (sections == null || sections.length < 1) {
     return [
       {
-        title,
         options,
       },
     ];
   }
   return [
     {
-      title,
       options,
     },
     ...sections,
