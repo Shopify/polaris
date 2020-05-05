@@ -7,13 +7,13 @@ import {Portal} from '../Portal';
 import {portal} from '../../shared';
 
 jest.mock('react-dom', () => ({
-  ...require.requireActual('react-dom'),
+  ...jest.requireActual('react-dom'),
   createPortal: jest.fn(),
 }));
 
 const {
   createPortal: createPortalSpy,
-}: {[key: string]: jest.Mock} = require.requireMock('react-dom');
+}: {[key: string]: jest.Mock} = jest.requireMock('react-dom');
 
 function lastSpyCall(spy: jest.Mock) {
   return spy.mock.calls.pop() as any[];
@@ -74,7 +74,7 @@ describe('<Portal />', () => {
 
   it('has a child ref defined when onPortalCreated callback is called', () => {
     createPortalSpy.mockImplementation(
-      require.requireActual('react-dom').createPortal,
+      jest.requireActual('react-dom').createPortal,
     );
     const ref: React.RefObject<HTMLDivElement> = React.createRef();
     const handlePortalCreated = jest.fn(() =>
