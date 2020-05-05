@@ -317,7 +317,7 @@ export function ComboBox({
         aria-haspopup
         onFocus={forcePopoverActiveTrue}
         onBlur={handleBlur}
-        tabIndex={0}
+        tabIndex={options.length === 0 ? -1 : 0}
       >
         <KeypressListener keyCode={Key.DownArrow} handler={selectNextOption} />
         <KeypressListener
