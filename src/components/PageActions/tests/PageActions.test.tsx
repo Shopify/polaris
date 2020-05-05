@@ -9,7 +9,7 @@ import {buttonsFrom} from '../../Button';
 import {PageActions} from '..';
 
 jest.mock('../../Button', () => ({
-  ...require.requireActual('../../Button'),
+  ...jest.requireActual('../../Button'),
   buttonsFrom: jest.fn(),
 }));
 
