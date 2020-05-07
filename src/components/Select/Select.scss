@@ -150,7 +150,6 @@ $stacking-order: (
 
 .newDesignLanguage {
   .Backdrop {
-
     // 'position' needs to sit below focus-ring since it will be overwritten
     // with relative when the focus ring style is 'base'
     // stylelint-disable-next-line order/properties-order
