@@ -7,6 +7,7 @@
 ### Enhancements
 
 - Truncated long sort options in `ResourceList` ([#2957](https://github.com/Shopify/polaris-react/pull/2957)
+- Updated type restrictions for `Pagination` to allow its `label` prop to accept `React.ReactNode` instead of `string` ([#2972](https://github.com/Shopify/polaris-react/pull/2972))
 
 ### Bug fixes
 
