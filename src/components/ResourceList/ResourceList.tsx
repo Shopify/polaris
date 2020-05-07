@@ -90,6 +90,8 @@ export interface ResourceListProps {
   idForItem?(item: any, index: number): string;
   /** Function to resolve an id from a item */
   resolveItemId?(item: any): string;
+  /** React node to display instead of the default empty state */
+  alternateEmptyState?: React.ReactNode;
 }
 
 type CombinedProps = ResourceListProps & WithAppProviderProps;
@@ -391,6 +393,7 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
       selectedItems,
       resourceName = this.defaultResourceName,
       onSortChange,
+      alternateEmptyState,
       polaris: {intl},
     } = this.props;
     const {selectMode, loadingPosition, smallScreen} = this.state;
@@ -518,6 +521,7 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
       );
 
     const emptyStateMarkup = showEmptyState ? (
+      alternateEmptyState ||
       <div className={styles.EmptySearchResultWrapper}>
         <EmptySearchResult {...this.emptySearchResultText()} withIllustration />
       </div>
