@@ -507,7 +507,8 @@ function ResourceListWithFilteringExample() {
     [],
   );
   const handleQueryValueChange = useCallback(
-    (value) => setQueryValue(value),
+    (value) =>
+      setQueryValue(value),
     [],
   );
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
@@ -534,7 +535,7 @@ function ResourceListWithFilteringExample() {
       url: 'customers/256',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
-    },
+    }
   ];
 
   const filters = [
@@ -585,6 +586,128 @@ function ResourceListWithFilteringExample() {
         items={items}
         renderItem={renderItem}
         filterControl={filterControl}
+      />
+    </Card>
+  );
+
+  function renderItem(item) {
+    const {id, url, name, location} = item;
+    const media = <Avatar customer size="medium" name={name} />;
+
+    return (
+      <ResourceItem id={id} url={url} media={media}>
+        <h3>
+          <TextStyle variation="strong">{name}</TextStyle>
+        </h3>
+        <div>{location}</div>
+      </ResourceItem>
+    );
+  }
+
+  function disambiguateLabel(key, value) {
+    switch (key) {
+      case 'taggedWith':
+        return `Tagged with ${value}`;
+      default:
+        return value;
+    }
+  }
+
+  function isEmpty(value) {
+    if (Array.isArray(value)) {
+      return value.length === 0;
+    } else {
+      return value === '' || value == null;
+    }
+  }
+}
+```
+
+### Resource list with a custom empty state
+
+Allows merchants to narrow the resource list to a subset of the original items.
+
+```jsx
+function ResourceListWithFilteringExample() {
+  const [taggedWith, setTaggedWith] = useState('VIP');
+  const [queryValue, setQueryValue] = useState(null);
+  const [items, setItems] = useState([
+  ]);
+
+  const handleTaggedWithChange = useCallback(
+    (value) => setTaggedWith(value),
+    [],
+  );
+  const handleQueryValueChange = useCallback(
+    (value) => {
+      setQueryValue(value);
+      setItems([]);
+    },
+    [],
+  );
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleClearAll = useCallback(() => {
+    handleTaggedWithRemove();
+    handleQueryValueRemove();
+  }, [handleQueryValueRemove, handleTaggedWithRemove]);
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const filters = [
+    {
+      key: 'taggedWith',
+      label: 'Tagged with',
+      filter: (
+        <TextField
+          label="Tagged with"
+          value={taggedWith}
+          onChange={handleTaggedWithChange}
+          labelHidden
+        />
+      ),
+      shortcut: true,
+    },
+  ];
+
+  const appliedFilters = !isEmpty(taggedWith)
+    ? [
+        {
+          key: 'taggedWith',
+          label: disambiguateLabel('taggedWith', taggedWith),
+          onRemove: handleTaggedWithRemove,
+        },
+      ]
+    : [];
+
+  const filterControl = (
+    <Filters
+      queryValue={queryValue}
+      filters={filters}
+      appliedFilters={appliedFilters}
+      onQueryChange={handleQueryValueChange}
+      onQueryClear={handleQueryValueRemove}
+      onClearAll={handleClearAll}
+    >
+      <div style={{paddingLeft: '8px'}}>
+        <Button onClick={() => console.log('New filter saved')}>Save</Button>
+      </div>
+    </Filters>
+  );
+
+  return (
+    <Card>
+      <ResourceList
+        resourceName={resourceName}
+        items={items}
+        renderItem={renderItem}
+        filterControl={filterControl}
+        alternateEmptyState={
+          <div>This is a custom empty state</div>
+        }
       />
     </Card>
   );
