@@ -59,13 +59,9 @@ describe('<ResourceList />', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderCustomMarkup} />,
       );
-      expect(
-        resourceList
-          .find('li')
-          .first()
-          .children()
-          .html(),
-      ).toBe('<p>title 1</p>');
+      expect(resourceList.find('li').first().children().html()).toBe(
+        '<p>title 1</p>',
+      );
     });
   });
 
@@ -323,24 +319,14 @@ describe('<ResourceList />', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsNoID} renderItem={renderItem} />,
       );
-      expect(
-        resourceList
-          .find('li')
-          .first()
-          .key(),
-      ).toBe('0');
+      expect(resourceList.find('li').first().key()).toBe('0');
     });
 
     it('generates a key using the ID if there’s no idForItem prop but there and ID key in the data', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
-      expect(
-        resourceList
-          .find('li')
-          .first()
-          .key(),
-      ).toBe('5');
+      expect(resourceList.find('li').first().key()).toBe('5');
     });
 
     it('generates a key using the idForItem prop callback when one is provided', () => {
@@ -351,12 +337,9 @@ describe('<ResourceList />', () => {
           renderItem={renderItem}
         />,
       );
-      expect(
-        resourceList
-          .find('li')
-          .first()
-          .key(),
-      ).toBe(idForItem(itemsWithID[0]));
+      expect(resourceList.find('li').first().key()).toBe(
+        idForItem(itemsWithID[0]),
+      );
     });
   });
 
@@ -1074,12 +1057,7 @@ describe('<ResourceList />', () => {
       setSmallScreen();
       trigger(resourceList.find(EventListener), 'handler');
 
-      expect(
-        resourceList
-          .find(Select)
-          .first()
-          .prop('labelInline'),
-      ).toBe(false);
+      expect(resourceList.find(Select).first().prop('labelInline')).toBe(false);
     });
 
     it('select mode is turned off on large screen when no items are selected', () => {

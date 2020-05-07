@@ -507,8 +507,7 @@ function ResourceListWithFilteringExample() {
     [],
   );
   const handleQueryValueChange = useCallback(
-    (value) =>
-      setQueryValue(value),
+    (value) => setQueryValue(value),
     [],
   );
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
@@ -535,7 +534,7 @@ function ResourceListWithFilteringExample() {
       url: 'customers/256',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
-    }
+    },
   ];
 
   const filters = [
@@ -631,20 +630,16 @@ Allows merchants to narrow the resource list to a subset of the original items.
 function ResourceListWithFilteringExample() {
   const [taggedWith, setTaggedWith] = useState('VIP');
   const [queryValue, setQueryValue] = useState(null);
-  const [items, setItems] = useState([
-  ]);
+  const [items, setItems] = useState([]);
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
     [],
   );
-  const handleQueryValueChange = useCallback(
-    (value) => {
-      setQueryValue(value);
-      setItems([]);
-    },
-    [],
-  );
+  const handleQueryValueChange = useCallback((value) => {
+    setQueryValue(value);
+    setItems([]);
+  }, []);
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
   const handleClearAll = useCallback(() => {
@@ -705,9 +700,7 @@ function ResourceListWithFilteringExample() {
         items={items}
         renderItem={renderItem}
         filterControl={filterControl}
-        alternateEmptyState={
-          <div>This is a custom empty state</div>
-        }
+        alternateEmptyState={<div>This is a custom empty state</div>}
       />
     </Card>
   );
