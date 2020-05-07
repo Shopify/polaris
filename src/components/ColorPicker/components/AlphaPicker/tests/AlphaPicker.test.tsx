@@ -18,6 +18,7 @@ describe('<AlphaPicker />', () => {
     alpha: 0,
     color,
     onChange: noop,
+    onDraggingEnd: noop,
   };
 
   describe('alpha', () => {
@@ -72,6 +73,57 @@ describe('<AlphaPicker />', () => {
     it('passes draggerX to Slidable with value 0', () => {
       const alphaPicker = mountWithAppProvider(<AlphaPicker {...mockProps} />);
       expect(alphaPicker.find(Slidable).prop('draggerX')).toBe(0);
+    });
+
+    it('onDraggingEnd is called when dragging event ends with mouseup', () => {
+      const spy = jest.fn();
+      mountWithAppProvider(<AlphaPicker {...mockProps} onDraggingEnd={spy} />)
+        .find(Slidable)
+        .simulate('mousedown');
+
+      const event = new MouseEvent('mouseup', {
+        clientX: 0,
+        clientY: 100,
+      } as MouseEventInit);
+      Object.assign(event);
+
+      window.dispatchEvent(event);
+
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('onDraggingEnd is called when dragging event ends with touchend', () => {
+      const spy = jest.fn();
+      mountWithAppProvider(<AlphaPicker {...mockProps} onDraggingEnd={spy} />)
+        .find(Slidable)
+        .simulate('touchstart');
+
+      const event = new MouseEvent('touchend', {
+        clientX: 0,
+        clientY: 100,
+      } as TouchEventInit);
+      Object.assign(event);
+
+      window.dispatchEvent(event);
+
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('onDraggingEnd is called when dragging event ends with touchcancel', () => {
+      const spy = jest.fn();
+      mountWithAppProvider(<AlphaPicker {...mockProps} onDraggingEnd={spy} />)
+        .find(Slidable)
+        .simulate('touchstart');
+
+      const event = new MouseEvent('touchcancel', {
+        clientX: 0,
+        clientY: 100,
+      } as TouchEventInit);
+      Object.assign(event);
+
+      window.dispatchEvent(event);
+
+      expect(spy).toHaveBeenCalled();
     });
   });
 });

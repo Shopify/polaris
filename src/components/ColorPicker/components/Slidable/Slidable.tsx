@@ -17,6 +17,7 @@ export interface SlidableProps {
   draggerX?: number;
   draggerY?: number;
   onChange(position: Position): void;
+  onDraggingEnd(): void;
   onDraggerHeight?(height: number): void;
 }
 
@@ -94,15 +95,18 @@ export class Slidable extends React.PureComponent<SlidableProps, State> {
     ) : null;
 
     const endDragListener = dragging ? (
-      <EventListener event="mouseup" handler={this.handleDragEnd} />
+      <EventListener event="mouseup" handler={this.handleDragEnd.bind(this)} />
     ) : null;
 
     const touchEndListener = dragging ? (
-      <EventListener event="touchend" handler={this.handleDragEnd} />
+      <EventListener event="touchend" handler={this.handleDragEnd.bind(this)} />
     ) : null;
 
     const touchCancelListener = dragging ? (
-      <EventListener event="touchcancel" handler={this.handleDragEnd} />
+      <EventListener
+        event="touchcancel"
+        handler={this.handleDragEnd.bind(this)}
+      />
     ) : null;
 
     return (
@@ -146,8 +150,11 @@ export class Slidable extends React.PureComponent<SlidableProps, State> {
   };
 
   private handleDragEnd = () => {
+    const {onDraggingEnd} = this.props;
+
     isDragging = false;
     this.setState({dragging: false});
+    onDraggingEnd();
   };
 
   private handleMove = (event: MouseEvent | TouchEvent) => {

@@ -29,7 +29,8 @@
 
     "ColorPicker": {
       "textPickerAccessibilityLabel": "HEX color",
-      "alphaFieldAccessibilityLabel": "Alpha"
+      "alphaFieldAccessibilityLabel": "Alpha",
+      "RecentlySelectedAccessibilityLabel": "Recently selected"
     },
 
     "Common": {

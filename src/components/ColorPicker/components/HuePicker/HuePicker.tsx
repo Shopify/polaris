@@ -13,6 +13,7 @@ interface State {
 export interface HuePickerProps {
   hue: number;
   onChange(hue: number): void;
+  onDraggingEnd(): void;
 }
 
 export class HuePicker extends React.PureComponent<HuePickerProps, State> {
@@ -22,7 +23,7 @@ export class HuePicker extends React.PureComponent<HuePickerProps, State> {
   };
 
   render() {
-    const {hue} = this.props;
+    const {hue, onDraggingEnd} = this.props;
     const {sliderHeight, draggerHeight} = this.state;
     const draggerY = calculateDraggerY(hue, sliderHeight, draggerHeight);
 
@@ -33,6 +34,7 @@ export class HuePicker extends React.PureComponent<HuePickerProps, State> {
           draggerX={0}
           onChange={this.handleChange}
           onDraggerHeight={this.setDraggerHeight}
+          onDraggingEnd={onDraggingEnd}
         />
       </div>
     );

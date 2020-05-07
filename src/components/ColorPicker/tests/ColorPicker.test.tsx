@@ -1,23 +1,46 @@
 import React from 'react';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 
 import {EventListener} from '../../EventListener';
-import {Slidable, AlphaPicker} from '../components';
+import {
+  Slidable,
+  TextPicker,
+  AlphaPicker,
+  RecentlySelected,
+} from '../components';
 import {ColorPicker} from '../ColorPicker';
 
 const red = {
+  alpha: 1,
   hue: 0,
   saturation: 1,
+  brightness: 1,
+};
+
+const white = {
+  alpha: 1,
+  hue: 0,
+  saturation: 0,
   brightness: 1,
 };
 
 enum SlidableType {
   BrightnessSaturation,
   Hue,
+  Alpha,
 }
 
 describe('<ColorPicker />', () => {
+  beforeEach(() => {
+    matchMedia.mock();
+  });
+
+  afterEach(() => {
+    matchMedia.restore();
+  });
+
   describe('Saturation/ Brightness pane', () => {
     describe('onChange', () => {
       it('is called when the user mouse downs', () => {
@@ -62,6 +85,101 @@ describe('<ColorPicker />', () => {
     });
   });
 
+  describe('Recently selected', () => {
+    describe('colors', () => {
+      it('color is added to recently selected when it is entered into TextPicker', () => {
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={noop} />,
+        );
+
+        const textPicker = colorPicker.find(TextPicker);
+
+        (textPicker.find('input').getDOMNode() as HTMLInputElement).value =
+          'white';
+        textPicker.find('input').simulate('change').simulate('blur');
+
+        const recentlySelected = colorPicker.find(RecentlySelected);
+
+        expect(recentlySelected.prop('colors')[0]).toStrictEqual(white);
+      });
+
+      it('color is added to recently selected when Slidable onDraggingEnd is called', () => {
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={noop} />,
+        );
+
+        const slidable = colorPicker
+          .find(Slidable)
+          .at(SlidableType.BrightnessSaturation);
+
+        trigger(slidable, 'onDraggingEnd');
+
+        const recentlySelected = colorPicker.find(RecentlySelected);
+
+        expect(recentlySelected.prop('colors')[0]).toStrictEqual(red);
+      });
+
+      it('color is added to recently selected when HuePicker onDraggingEnd is called', () => {
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={noop} />,
+        );
+
+        const slidable = colorPicker.find(Slidable).at(SlidableType.Hue);
+
+        trigger(slidable, 'onDraggingEnd');
+
+        const recentlySelected = colorPicker.find(RecentlySelected);
+
+        expect(recentlySelected.prop('colors')[0]).toStrictEqual(red);
+      });
+
+      it('color is added to recently selected when AlphaPicker onDraggingEnd is called', () => {
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={noop} allowAlpha />,
+        );
+
+        const slidable = colorPicker.find(Slidable).at(SlidableType.Alpha);
+
+        trigger(slidable, 'onDraggingEnd');
+
+        const recentlySelected = colorPicker.find(RecentlySelected);
+
+        expect(recentlySelected.prop('colors')[0]).toStrictEqual(red);
+      });
+    });
+
+    describe('onChange()', () => {
+      it('onChange is called with color when RecentlySelected swatch is clicked', () => {
+        const spy = jest.fn();
+        const colorPicker = mountWithAppProvider(
+          <ColorPicker color={red} onChange={spy} />,
+        );
+
+        const textPicker = colorPicker.find(TextPicker);
+
+        (textPicker.find('input').getDOMNode() as HTMLInputElement).value =
+          'white';
+        textPicker.find('input').simulate('change').simulate('blur');
+
+        const recentlySelected = colorPicker.find(RecentlySelected);
+
+        recentlySelected.find('button').at(0).simulate('click');
+
+        expect(spy).toHaveBeenCalledWith(white);
+      });
+    });
+
+    it('no recently selected component exists before a color has been selected', () => {
+      const colorPicker = mountWithAppProvider(
+        <ColorPicker color={red} onChange={noop} />,
+      );
+
+      const recentlySelected = colorPicker.find(RecentlySelected);
+
+      expect(recentlySelected).toHaveLength(0);
+    });
+  });
+
   describe('id', () => {
     it("is passed down to the first child's first child", () => {
       const id = 'MyID';
@@ -69,12 +187,7 @@ describe('<ColorPicker />', () => {
         <ColorPicker id={id} color={red} onChange={jest.fn()} />,
       );
 
-      expect(
-        colorPicker
-          .childAt(0)
-          .childAt(0)
-          .prop('id'),
-      ).toBe(id);
+      expect(colorPicker.childAt(0).childAt(0).prop('id')).toBe(id);
     });
   });
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
@@ -18,6 +19,14 @@ jest.mock('../../../utilities/target', () => ({
 }));
 
 describe('<ColorPicker /> Server-side only', () => {
+  beforeEach(() => {
+    matchMedia.mock();
+  });
+
+  afterEach(() => {
+    matchMedia.restore();
+  });
+
   it('does not attach the touchmove handler to the window', () => {
     const colorPicker = mountWithAppProvider(
       <ColorPicker color={red} onChange={noop} />,

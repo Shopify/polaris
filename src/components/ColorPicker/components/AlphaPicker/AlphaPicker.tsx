@@ -16,6 +16,7 @@ export interface AlphaPickerProps {
   color: HSBColor;
   alpha: number;
   onChange(hue: number): void;
+  onDraggingEnd(): void;
 }
 
 export class AlphaPicker extends React.PureComponent<AlphaPickerProps, State> {
@@ -25,7 +26,7 @@ export class AlphaPicker extends React.PureComponent<AlphaPickerProps, State> {
   };
 
   render() {
-    const {color, alpha} = this.props;
+    const {color, alpha, onDraggingEnd} = this.props;
     const {sliderHeight, draggerHeight} = this.state;
 
     const draggerY = calculateDraggerY(alpha, sliderHeight, draggerHeight);
@@ -39,6 +40,7 @@ export class AlphaPicker extends React.PureComponent<AlphaPickerProps, State> {
           draggerX={0}
           onChange={this.handleChange}
           onDraggerHeight={this.setDraggerHeight}
+          onDraggingEnd={onDraggingEnd}
         />
       </div>
     );

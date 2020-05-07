@@ -266,7 +266,7 @@ export function hsbToString(hsbColor: HSBColor | string) {
   return rgbString(hsbToRgb(hsbColor));
 }
 
-function rgbToObject(color: string): RGBAColor {
+function rgbToObject(color: string) {
   // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
   const colorMatch = color.match(/\(([^)]+)\)/);
 

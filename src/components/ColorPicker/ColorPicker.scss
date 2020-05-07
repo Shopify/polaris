@@ -19,6 +19,9 @@ $swatch-size: rem(20px);
 $swatch-shadow: inset rgba(0, 0, 0, 0.07) 0 0 0 1px,
   inset rgba(0, 0, 0, 0.15) 0 1px 3px 0;
 
+$palette-size: rem(25px);
+$palette-mobile-size: rem(40px);
+
 @mixin checkers {
   background-image: linear-gradient(
       45deg,
@@ -198,4 +201,34 @@ $huepicker-bottom-padding-start: $picker-width - $dragger-size;
 .AlphaField {
   width: $alpha-size;
   margin: spacing(tight) 0 0 spacing(tight);
+}
+
+.RecentlySelectedTitle {
+  @include text-style-subheading;
+  padding: (spacing(tight) * 1.5) 0 0;
+}
+
+.RecentlySelectedPalettes {
+  display: flex;
+}
+
+.RecentlySelectedPalette {
+  width: $palette-mobile-size;
+  height: $palette-mobile-size;
+  border-radius: 3px;
+  box-shadow: 3px;
+  margin-top: spacing(tight);
+
+  @include when-typography-not-condensed {
+    width: $palette-size;
+    height: $palette-size;
+  }
+
+  &:not(:last-of-type) {
+    margin-right: spacing(tight);
+  }
+
+  &.AlphaAllowed {
+    @include checkers;
+  }
 }
