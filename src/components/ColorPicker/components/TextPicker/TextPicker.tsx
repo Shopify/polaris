@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {HSBColor} from '../../../../utilities/color-types';
+import type {HSBColor} from '../../../../utilities/color-types';
 import {
   hsbToHex,
   hsbToString,

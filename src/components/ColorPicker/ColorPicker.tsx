@@ -4,7 +4,7 @@ import {clamp} from '@shopify/javascript-utilities/math';
 
 import {classNames} from '../../utilities/css';
 import {hsbToRgb, hexToHsb} from '../../utilities/color-transformers';
-import {HSBColor, HSBAColor} from '../../utilities/color-types';
+import type {HSBColor, HSBAColor} from '../../utilities/color-types';
 import {EventListener} from '../EventListener';
 
 import {

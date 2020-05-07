@@ -1,5 +1,5 @@
 import {names} from './color-map';
-import {RGBColor, RGBAColor} from './color-types';
+import type {RGBColor, RGBAColor} from './color-types';
 import {
   normalizeColorString,
   expandHex,
