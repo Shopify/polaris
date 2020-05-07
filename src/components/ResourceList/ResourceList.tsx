@@ -520,12 +520,16 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
         </div>
       );
 
-    const emptyStateMarkup = showEmptyState ? (
-      alternateEmptyState ||
-      <div className={styles.EmptySearchResultWrapper}>
-        <EmptySearchResult {...this.emptySearchResultText()} withIllustration />
-      </div>
-    ) : null;
+    const emptyStateMarkup = showEmptyState
+      ? alternateEmptyState || (
+          <div className={styles.EmptySearchResultWrapper}>
+            <EmptySearchResult
+              {...this.emptySearchResultText()}
+              withIllustration
+            />
+          </div>
+        )
+      : null;
 
     const defaultTopPadding = 8;
     const topPadding =

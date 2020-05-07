@@ -555,8 +555,6 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      console.log(resourceList.debug());
-
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
       expect(resourceList.find('div#alternateEmptyState').exists()).toBe(true);
     });
