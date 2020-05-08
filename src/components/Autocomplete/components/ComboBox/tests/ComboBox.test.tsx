@@ -48,6 +48,24 @@ describe('<ComboBox/>', () => {
       expect(optionListOptions[1].value).toBe('macaroni_pizza');
       expect(optionListOptions[1].label).toBe('Macaroni Pizza');
     });
+
+    it.each([
+      [options, 0],
+      [[], -1],
+    ])('sets tabIndex depending of number of options', (options, tabIndex) => {
+      const comboBox = mountWithApp(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+        />,
+      );
+
+      expect(comboBox.find('div', {role: 'combobox'})).toHaveReactProps({
+        tabIndex,
+      });
+    });
   });
 
   describe('contentBefore and contentAfter', () => {

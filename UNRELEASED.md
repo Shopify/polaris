@@ -12,6 +12,7 @@
 ### Bug fixes
 
 - Added an outline on `Banner` for Windows high contrast mode ([#2878](https://github.com/Shopify/polaris-react/pull/2878))
+- Fixed Autocomplete / ComboBox focus ([#1089](https://github.com/Shopify/polaris-react/issues/1089))
 
 ### Documentation
 
