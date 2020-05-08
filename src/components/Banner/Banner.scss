@@ -10,7 +10,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 @mixin banner-attributes($highlight, $background, $in-page, $tint) {
   transition: box-shadow duration() easing();
   transition-delay: duration(fast);
-  border-radius: var(--p-border-radius-wide, inherit);
   box-shadow: var(--p-banner-border, none);
 
   @media (-ms-high-contrast: active) {
@@ -18,12 +17,18 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   }
 
   @if $in-page {
+    border-radius: var(
+      --p-border-radius-wide,
+      0 0 border-radius() border-radius()
+    );
     box-shadow: var(
       --p-banner-border,
       inset 0 $accent-height 0 0 $highlight,
       inset shadow(transparent),
       shadow()
     );
+  } @else {
+    border-radius: var(--p-border-radius-base, border-radius());
   }
 
   @if $tint {
