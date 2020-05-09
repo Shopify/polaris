@@ -2,6 +2,7 @@ import React, {
   ReactElement,
   useCallback,
   useEffect,
+  useReducer,
   useRef,
   useState,
 } from 'react';
@@ -154,6 +155,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const [loadingPosition, setLoadingPositionState] = useState(0);
   const [lastSelected, setLastSelected] = useState<number>();
   const [smallScreen, setSmallScreen] = useState(isSmallScreen());
+  const forceUpdate = useReducer((x: number) => x + 1, 0)[1];
 
   const [checkableButtons, setCheckableButtons] = useState<CheckableButtons>(
     new Map(),
@@ -385,6 +387,10 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
       setSelectMode(false);
     }
   }, [selectedItems, selectMode]);
+
+  useEffect(() => {
+    forceUpdate(0);
+  }, [items, listRef.current]);
 
   const renderItemWithId = (item: ItemType, index: number) => {
     const id = idForItem(item, index);
@@ -625,7 +631,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const headerMarkup = !showEmptyState &&
     !showEmptySearchState &&
     (showHeader || needsHeader) &&
-    itemsExist && (
+    listRef.current && (
       <div className={styles.HeaderOuterWrapper}>
         <Sticky boundingElement={listRef.current}>{StickyHeader}</Sticky>
       </div>
