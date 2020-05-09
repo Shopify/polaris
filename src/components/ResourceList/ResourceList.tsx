@@ -627,9 +627,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     (showHeader || needsHeader) &&
     itemsExist && (
       <div className={styles.HeaderOuterWrapper}>
-        <Sticky boundingElement={listRef.current}>
-          {StickyHeader(listRef.current !== null)}
-        </Sticky>
+        <Sticky boundingElement={listRef.current}>{StickyHeader}</Sticky>
       </div>
     );
 
