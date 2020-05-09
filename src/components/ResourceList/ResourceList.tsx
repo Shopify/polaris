@@ -155,7 +155,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const [loadingPosition, setLoadingPositionState] = useState(0);
   const [lastSelected, setLastSelected] = useState<number>();
   const [smallScreen, setSmallScreen] = useState(isSmallScreen());
-  const forceUpdate = useReducer((x: number) => x + 1, 0)[1];
+  const forceUpdate = useReducer<(x: number) => number>((x = 0) => x + 1, 0)[1];
 
   const [checkableButtons, setCheckableButtons] = useState<CheckableButtons>(
     new Map(),
@@ -389,7 +389,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   }, [selectedItems, selectMode]);
 
   useEffect(() => {
-    forceUpdate(0);
+    forceUpdate();
   }, [forceUpdate, items]);
 
   const renderItemWithId = (item: ItemType, index: number) => {
