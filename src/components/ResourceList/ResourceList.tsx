@@ -155,7 +155,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const [loadingPosition, setLoadingPositionState] = useState(0);
   const [lastSelected, setLastSelected] = useState<number>();
   const [smallScreen, setSmallScreen] = useState(isSmallScreen());
-  const forceUpdate = useReducer<(x?: number) => number>(
+  const forceUpdate: (x?: number) => void = useReducer<(x?: number) => number>(
     (x = 0) => x + 1,
     0,
   )[1];
