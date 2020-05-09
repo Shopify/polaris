@@ -390,7 +390,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
 
   useEffect(() => {
     forceUpdate(0);
-  }, [items, listRef.current]);
+  }, [forceUpdate, items]);
 
   const renderItemWithId = (item: ItemType, index: number) => {
     const id = idForItem(item, index);
@@ -600,40 +600,43 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const showEmptySearchState =
     !showEmptyState && filterControl && !itemsExist && !loading;
 
-  const StickyHeader = (isSticky: boolean) => {
-    const headerClassName = classNames(
-      styles.HeaderWrapper,
-      sortOptions &&
-        sortOptions.length > 0 &&
-        !alternateTool &&
-        styles['HeaderWrapper-hasSort'],
-      alternateTool && styles['HeaderWrapper-hasAlternateTool'],
-      isSelectable && styles['HeaderWrapper-hasSelect'],
-      loading && styles['HeaderWrapper-disabled'],
-      isSelectable && selectMode && styles['HeaderWrapper-inSelectMode'],
-      isSticky && styles['HeaderWrapper-isSticky'],
-    );
-    return (
-      <div className={headerClassName} testID="ResourceList-Header">
-        <EventListener event="resize" handler={handleResize} />
-        {headerWrapperOverlay}
-        <div className={styles.HeaderContentWrapper}>
-          {headerTitleMarkup}
-          {checkableButtonMarkup}
-          {alternateToolMarkup}
-          {sortingSelectMarkup}
-          {selectButtonMarkup}
-        </div>
-        {bulkActionsMarkup}
-      </div>
-    );
-  };
   const headerMarkup = !showEmptyState &&
     !showEmptySearchState &&
     (showHeader || needsHeader) &&
     listRef.current && (
       <div className={styles.HeaderOuterWrapper}>
-        <Sticky boundingElement={listRef.current}>{StickyHeader}</Sticky>
+        <Sticky boundingElement={listRef.current}>
+          {(isSticky: boolean) => {
+            const headerClassName = classNames(
+              styles.HeaderWrapper,
+              sortOptions &&
+                sortOptions.length > 0 &&
+                !alternateTool &&
+                styles['HeaderWrapper-hasSort'],
+              alternateTool && styles['HeaderWrapper-hasAlternateTool'],
+              isSelectable && styles['HeaderWrapper-hasSelect'],
+              loading && styles['HeaderWrapper-disabled'],
+              isSelectable &&
+                selectMode &&
+                styles['HeaderWrapper-inSelectMode'],
+              isSticky && styles['HeaderWrapper-isSticky'],
+            );
+            return (
+              <div className={headerClassName} testID="ResourceList-Header">
+                <EventListener event="resize" handler={handleResize} />
+                {headerWrapperOverlay}
+                <div className={styles.HeaderContentWrapper}>
+                  {headerTitleMarkup}
+                  {checkableButtonMarkup}
+                  {alternateToolMarkup}
+                  {sortingSelectMarkup}
+                  {selectButtonMarkup}
+                </div>
+                {bulkActionsMarkup}
+              </div>
+            );
+          }}
+        </Sticky>
       </div>
     );
 
