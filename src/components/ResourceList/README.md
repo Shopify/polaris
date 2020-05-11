@@ -506,10 +506,6 @@ function ResourceListWithFilteringExample() {
     (value) => setTaggedWith(value),
     [],
   );
-  const handleQueryValueChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
   const handleClearAll = useCallback(() => {
@@ -568,7 +564,7 @@ function ResourceListWithFilteringExample() {
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
-      onQueryChange={handleQueryValueChange}
+      onQueryChange={setQueryValue}
       onQueryClear={handleQueryValueRemove}
       onClearAll={handleClearAll}
     >
@@ -700,7 +696,7 @@ function ResourceListWithFilteringExample() {
         items={items}
         renderItem={renderItem}
         filterControl={filterControl}
-        alternateEmptyState={<div>This is a custom empty state</div>}
+        emptySearchStateMarkup={<div>This is a custom empty state</div>}
       />
     </Card>
   );

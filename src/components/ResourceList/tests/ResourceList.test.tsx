@@ -526,20 +526,22 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
     });
 
-    it('does not render when alternateEmptyState is set', () => {
+    it('does not render when emptySearchStateMarkup is set', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={[]}
           renderItem={renderItem}
           filterControl={<div>fake filterControl</div>}
-          alternateEmptyState={
-            <div id="alternateEmptyState">Alternate empty state</div>
+          emptySearchStateMarkup={
+            <div id="emptySearchStateMarkup">Alternate empty state</div>
           }
         />,
       );
 
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
-      expect(resourceList.find('div#alternateEmptyState').exists()).toBe(true);
+      expect(resourceList.find('div#emptySearchStateMarkup').exists()).toBe(
+        true,
+      );
     });
   });
 
