@@ -13,7 +13,8 @@
 
 - Added an outline on `Banner` for Windows high contrast mode ([#2878](https://github.com/Shopify/polaris-react/pull/2878))
 - Fixed Autocomplete / ComboBox focus ([#1089](https://github.com/Shopify/polaris-react/issues/1089))
-- Fixed typing for EmptyState action ([#2977](https://github.com/Shopify/polaris-react/pull/2977))
+- Fixed missing rounded corners on `Banner` ([#2975](https://github.com/Shopify/polaris-react/pull/2975))
+- Fixed typing for `EmptyState` action ([#2977](https://github.com/Shopify/polaris-react/pull/2977))
 
 ### Documentation
 
