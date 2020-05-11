@@ -623,7 +623,7 @@ function ResourceListWithFilteringExample() {
 }
 ```
 
-### Resource list with a custom empty state
+### Resource list with a custom empty search result state
 
 Allows merchants to narrow the resource list to a subset of the original items.
 
