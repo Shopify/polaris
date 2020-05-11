@@ -143,8 +143,8 @@ function generateMinifiedCss(sourceFilePath, css) {
  *   this base file.
  * - components.scss and the components folder: a suite of the compiled css for
  *  every component
- * - foundation.scss, shared.scss and the foundation and shared folders: our
- *   public Sass API.
+ * - _public-api.scss, foundation.scss, shared.scss and the foundation and
+ *  shared folders: our public Sass API.
  */
 async function generateSass(inputFolder, outputFolder, cssByFile) {
   // Copy contents of $inputFolder/styles/shared.scss and $inputFolder/styles/foundation.scss
@@ -185,8 +185,7 @@ async function generateSass(inputFolder, outputFolder, cssByFile) {
   const componentsScssContents = componentFilesContent.join('\n\n');
 
   // Generate polaris.scss
-  const polarisScssContent = `@import 'styles/foundation';
-@import 'styles/shared';
+  const polarisScssContent = `@import 'styles/public-api';
 @import 'styles/global';
 @import 'styles/components';
 `;
