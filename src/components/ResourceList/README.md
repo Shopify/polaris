@@ -696,7 +696,7 @@ function ResourceListWithFilteringExample() {
         items={items}
         renderItem={renderItem}
         filterControl={filterControl}
-        emptySearchStateMarkup={<div>This is a custom empty state</div>}
+        emptySearchState={<div>This is a custom empty state</div>}
       />
     </Card>
   );
