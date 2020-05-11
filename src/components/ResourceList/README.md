@@ -620,7 +620,7 @@ function ResourceListWithFilteringExample() {
 
 ### Resource list with a custom empty search result state
 
-Allows merchants to narrow the resource list to a subset of the original items.
+Allows merchants to narrow the resource list to a subset of the original items. If the filters or search applied return no results, then display a custom empty search state.
 
 ```jsx
 function ResourceListWithFilteringExample() {
