@@ -9,11 +9,9 @@ export default class WrappedApp extends App {
     const {Component, pageProps} = this.props;
 
     return (
-      <Container>
-        <AppProvider i18n={enTranslations}>
-          <Component {...pageProps} />
-        </AppProvider>
-      </Container>
+      <AppProvider i18n={enTranslations}>
+        <Component {...pageProps} />
+      </AppProvider>
     );
   }
 }
