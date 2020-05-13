@@ -122,7 +122,7 @@
       "moreFiltersWithCount": "Więcej filtrów ({count})"
     },
     "Modal": {
-      "iFrameTitle": "treść - marża",
+      "iFrameTitle": "znacznik treści",
       "modalWarning": "W oknie modalnym brakuje tych wymaganych właściwości: {missingProps}"
     },
     "Pagination": {

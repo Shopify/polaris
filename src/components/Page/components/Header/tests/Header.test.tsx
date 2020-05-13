@@ -158,6 +158,18 @@ describe('<Header />', () => {
     });
   });
 
+  describe('additionalNavigation', () => {
+    it('renders element if passed', () => {
+      const TestComponent = () => <div />;
+
+      const header = mountWithAppProvider(
+        <Header {...mockProps} additionalNavigation={<TestComponent />} />,
+      );
+
+      expect(header.find(TestComponent).exists()).toBe(true);
+    });
+  });
+
   describe('<ActionMenu />', () => {
     const mockSecondaryActions: HeaderProps['secondaryActions'] = [
       {content: 'mock content 1'},

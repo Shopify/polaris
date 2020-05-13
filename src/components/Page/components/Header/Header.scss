@@ -1,7 +1,7 @@
 @import '../../../../styles/common';
 
 $individual-action-padding-x: (1.5 * spacing(tight));
-$action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
+$action-menu-rollup-computed-width: icon-size();
 
 .Header {
   @include page-header-layout;
@@ -52,6 +52,17 @@ $action-menu-rollup-computed-width: icon-size() + (spacing(tight) * 2);
   flex: 0 0 auto;
   margin-left: auto;
   line-height: 1;
+}
+
+.AdditionalNavigationWrapper {
+  flex: 1 0 auto;
+  margin: 0 spacing(tight);
+  display: flex;
+  justify-content: flex-end;
+
+  @include page-content-when-not-fully-condensed {
+    margin: 0 spacing(extra-loose);
+  }
 }
 
 ///

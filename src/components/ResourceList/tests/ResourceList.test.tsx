@@ -525,6 +525,22 @@ describe('<ResourceList />', () => {
       );
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
     });
+
+    it('renders the provided markup when emptySearchState is set', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={[]}
+          renderItem={renderItem}
+          filterControl={<div>fake filterControl</div>}
+          emptySearchState={
+            <div id="emptySearchState">Alternate empty state</div>
+          }
+        />,
+      );
+
+      expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
+      expect(resourceList.find('div#emptySearchState').exists()).toBe(true);
+    });
   });
 
   describe('Sorting', () => {

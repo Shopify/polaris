@@ -52,6 +52,8 @@ export interface HeaderProps extends TitleProps {
   secondaryActions?: MenuActionDescriptor[];
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
+  /** Additional navigation markup */
+  additionalNavigation?: React.ReactNode;
 }
 
 export function Header({
@@ -63,6 +65,7 @@ export function Header({
   separator,
   primaryAction,
   pagination,
+  additionalNavigation,
   breadcrumbs = [],
   secondaryActions = [],
   actionGroups = [],
@@ -89,10 +92,17 @@ export function Header({
       </div>
     ) : null;
 
+  const additionalNavigationMarkup = additionalNavigation ? (
+    <div className={styles.AdditionalNavigationWrapper}>
+      {additionalNavigation}
+    </div>
+  ) : null;
+
   const navigationMarkup =
-    breadcrumbMarkup || paginationMarkup ? (
+    breadcrumbMarkup || paginationMarkup || additionalNavigationMarkup ? (
       <div className={styles.Navigation}>
         {breadcrumbMarkup}
+        {additionalNavigationMarkup}
         {paginationMarkup}
       </div>
     ) : null;

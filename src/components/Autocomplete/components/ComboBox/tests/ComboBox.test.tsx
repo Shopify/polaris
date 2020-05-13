@@ -2,7 +2,7 @@ import React from 'react';
 import {OptionList, ActionList, Popover} from 'components';
 import {mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithAppProvider, act} from 'test-utilities/legacy';
 
 import {TextField} from '../../TextField';
 import {Key} from '../../../../../types';
@@ -47,6 +47,24 @@ describe('<ComboBox/>', () => {
       expect(optionListOptions[0].label).toBe('Cheese Pizza');
       expect(optionListOptions[1].value).toBe('macaroni_pizza');
       expect(optionListOptions[1].label).toBe('Macaroni Pizza');
+    });
+
+    it.each([
+      [options, 0],
+      [[], -1],
+    ])('sets tabIndex depending of number of options', (options, tabIndex) => {
+      const comboBox = mountWithApp(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+        />,
+      );
+
+      expect(comboBox.find('div', {role: 'combobox'})).toHaveReactProps({
+        tabIndex,
+      });
     });
   });
 
@@ -401,8 +419,12 @@ describe('<ComboBox/>', () => {
         />,
       );
       comboBox.find(TextField).simulate('click');
-      dispatchKeyup(Key.DownArrow);
-      dispatchKeydown(Key.Enter);
+      act(() => {
+        dispatchKeyup(Key.DownArrow);
+      });
+      act(() => {
+        dispatchKeydown(Key.Enter);
+      });
       expect(spy).not.toHaveBeenCalled();
 
       comboBox.setProps({
@@ -414,8 +436,12 @@ describe('<ComboBox/>', () => {
       });
       comboBox.update();
       comboBox.find(TextField).simulate('click');
-      dispatchKeyup(Key.DownArrow);
-      dispatchKeydown(Key.Enter);
+      act(() => {
+        dispatchKeyup(Key.DownArrow);
+      });
+      act(() => {
+        dispatchKeydown(Key.Enter);
+      });
       expect(spy).toHaveBeenCalledWith(['cheese_pizza']);
     });
 
@@ -430,8 +456,12 @@ describe('<ComboBox/>', () => {
         />,
       );
       comboBox.find(TextField).simulate('click');
-      dispatchKeyup(Key.DownArrow);
-      dispatchKeydown(Key.Enter);
+      act(() => {
+        dispatchKeyup(Key.DownArrow);
+      });
+      act(() => {
+        dispatchKeydown(Key.Enter);
+      });
       expect(spy).toHaveBeenCalledWith(['cheese_pizza']);
     });
 
@@ -446,8 +476,12 @@ describe('<ComboBox/>', () => {
         />,
       );
       comboBox.find(TextField).simulate('click');
-      dispatchKeyup(Key.DownArrow);
-      dispatchKeydown(Key.RightArrow);
+      act(() => {
+        dispatchKeyup(Key.DownArrow);
+      });
+      act(() => {
+        dispatchKeydown(Key.RightArrow);
+      });
       expect(spy).not.toHaveBeenCalled();
     });
 
@@ -478,7 +512,10 @@ describe('<ComboBox/>', () => {
       comboBox.find(TextField).simulate('click');
       expect(comboBox.find(Popover).prop('active')).toBe(true);
 
-      dispatchKeyup(Key.Escape);
+      act(() => {
+        dispatchKeyup(Key.Escape);
+      });
+
       comboBox.update();
       expect(comboBox.find(Popover).prop('active')).toBe(false);
     });

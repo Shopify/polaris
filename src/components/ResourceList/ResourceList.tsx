@@ -111,6 +111,8 @@ export interface ResourceListProps<T> {
   sectionIdForItem?(item: T, index: number): string;
   /** Function to resolve an id from a item */
   resolveItemId?(item: T): string;
+  /** React node to display when `filterControl` is set and no results are returned on search or filter of the list. */
+  emptySearchState?: React.ReactNode;
 }
 
 type CombinedProps<T> = ResourceListProps<T> & WithAppProviderProps;
@@ -422,6 +424,7 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
       selectedItems,
       resourceName = this.defaultResourceName,
       onSortChange,
+      emptySearchState,
       polaris: {intl},
     } = this.props;
     const {selectMode, loadingPosition, smallScreen} = this.state;
@@ -511,9 +514,10 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
       <div className={styles['HeaderWrapper-overlay']} />
     ) : null;
 
-    const showEmptyState = filterControl && !this.itemsExist() && !loading;
+    const showEmptySearchState =
+      filterControl && !this.itemsExist() && !loading;
 
-    const headerMarkup = !showEmptyState &&
+    const headerMarkup = !showEmptySearchState &&
       (showHeader || needsHeader) &&
       this.listRef.current && (
         <div className={styles.HeaderOuterWrapper}>
@@ -552,11 +556,16 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
         </div>
       );
 
-    const emptyStateMarkup = showEmptyState ? (
-      <div className={styles.EmptySearchResultWrapper}>
-        <EmptySearchResult {...this.emptySearchResultText()} withIllustration />
-      </div>
-    ) : null;
+    const emptySearchStateMarkup = showEmptySearchState
+      ? emptySearchState || (
+          <div className={styles.EmptySearchResultWrapper}>
+            <EmptySearchResult
+              {...this.emptySearchResultText()}
+              withIllustration
+            />
+          </div>
+        )
+      : null;
 
     const defaultTopPadding = 8;
     const topPadding =
@@ -605,7 +614,7 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
           : items.map(this.renderItem)}
       </ul>
     ) : (
-      emptyStateMarkup
+      emptySearchStateMarkup
     );
 
     const context = {

@@ -3,7 +3,7 @@ import React, {useContext} from 'react';
 import {classNames} from '../../utilities/css';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {useFeatures} from '../../utilities/features';
-import type {Action} from '../../types';
+import type {ComplexAction} from '../../types';
 import {Image} from '../Image';
 import {buttonFrom} from '../Button';
 import {Stack} from '../Stack';
@@ -28,9 +28,9 @@ export interface EmptyStateProps {
   /** Elements to display inside empty state */
   children?: React.ReactNode;
   /** Primary action for empty state */
-  action?: Action;
+  action?: ComplexAction;
   /** Secondary action for empty state */
-  secondaryAction?: Action;
+  secondaryAction?: ComplexAction;
   /** Secondary elements to display below empty state actions */
   footerContent?: React.ReactNode;
 }
