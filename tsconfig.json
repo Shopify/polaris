@@ -11,8 +11,7 @@
     // strictFunctionTypes is implictly enabled by strict mode but
     // we're not yet compliant, so disable for now
     "strictFunctionTypes": false,
-    "importHelpers": true,
-    "skipLibCheck": false
+    "importHelpers": true
   },
   "include": ["./config/typescript", "./src", "./tests", "./playground"]
 }
