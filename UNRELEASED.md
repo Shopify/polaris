@@ -8,6 +8,8 @@
 
 ### Bug fixes
 
+- Fixed responsiveness of empty search state in `ResourceList` to support user text zoom settings ([#2983](https://github.com/Shopify/polaris-react/pull/2983))
+
 ### Documentation
 
 ### Development workflow
