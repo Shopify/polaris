@@ -20,7 +20,7 @@ import styles from './PositionedOverlay.scss';
 
 type Positioning = 'above' | 'below';
 
-const CONTEXTUAL_SAVE_BAR_ZINDEX = 513;
+export const CONTEXTUAL_SAVE_BAR_ZINDEX = 513;
 
 interface OverlayDetails {
   left?: number;
@@ -149,8 +149,8 @@ export class PositionedOverlay extends PureComponent<
 
     return (
       <ContextualSaveBarContext.Consumer>
-        {(ContextualSaveBarContext) => {
-          if (ContextualSaveBarContext) {
+        {(isWithinContextualSaveBar) => {
+          if (isWithinContextualSaveBar) {
             style.zIndex = CONTEXTUAL_SAVE_BAR_ZINDEX;
           }
 
