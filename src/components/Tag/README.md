@@ -33,18 +33,105 @@ Tags should:
 
 ### Default tag
 
-Use to allow merchants to add attributes to, and remove attributes from, an object.
+Use to signify the attributes of an object.
 
 ```jsx
 <Tag>Wholesale</Tag>
 ```
 
-### Remove tag
+### Removable tag
 
 Use to allow merchants to remove attributes from an object.
 
 ```jsx
-<Tag onRemove={() => {}}>Wholesale</Tag>
+function RemovableTagExample() {
+  const allOptions = [
+    {value: 'rustic', label: 'Rustic'},
+    {value: 'antique', label: 'Antique'},
+    {value: 'vinyl', label: 'Vinyl'},
+    {value: 'vintage', label: 'Vintage'},
+    {value: 'refurbished', label: 'Refurbished'},
+  ];
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(allOptions);
+
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
+
+      if (value === '') {
+        setOptions(allOptions);
+        return;
+      }
+
+      const filterRegex = new RegExp(value, 'i');
+      const resultOptions = allOptions.filter((option) =>
+        option.label.match(filterRegex),
+      );
+      let endIndex = resultOptions.length - 1;
+      if (resultOptions.length === 0) {
+        endIndex = 0;
+      }
+      setOptions(resultOptions);
+    },
+    [allOptions],
+  );
+
+  const removeTag = useCallback(
+    (tag) => () => {
+      const options = [...selectedTags];
+      options.splice(options.indexOf(tag), 1);
+      setSelectedTags(options);
+    },
+    [selectedTags],
+  );
+
+  const tagMarkup = selectedTags.map((option) => {
+    let tagLabel = '';
+    tagLabel = option.replace('_', ' ');
+    tagLabel = titleCase(tagLabel);
+    return (
+      <Tag key={`tag-${option}`} onRemove={removeTag(option)}>
+        {tagLabel}
+      </Tag>
+    );
+  });
+
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      placeholder="Vintage, cotton, summer"
+    />
+  );
+
+  return (
+    <div style={{height: '325px'}}>
+      <TextContainer>
+        <Stack>{tagMarkup}</Stack>
+      </TextContainer>
+      <br />
+      <Autocomplete
+        allowMultiple
+        options={options}
+        selected={selectedTags}
+        textField={textField}
+        onSelect={setSelectedTags}
+        listTitle="Suggested Tags"
+      />
+    </div>
+  );
+
+  function titleCase(string) {
+    return string
+      .toLowerCase()
+      .split(' ')
+      .map((word) => word.replace(word[0], word[0].toUpperCase()))
+      .join('');
+  }
+}
 ```
 
 ### Clickable tag
@@ -52,13 +139,7 @@ Use to allow merchants to remove attributes from an object.
 Use to allow merchants to add attributes to an object.
 
 ```jsx
-<Tag
-  onClick={() => {
-    console.log('Clicked');
-  }}
->
-  Wholesale
-</Tag>
+<Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>
 ```
 
 <!-- content-for: android -->
