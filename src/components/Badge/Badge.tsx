@@ -6,7 +6,14 @@ import {VisuallyHidden} from '../VisuallyHidden';
 
 import styles from './Badge.scss';
 
-type Status = 'success' | 'info' | 'attention' | 'critical' | 'warning' | 'new';
+type Status =
+  | 'success'
+  | 'info'
+  | 'attention'
+  | 'critical'
+  | 'warning'
+  | 'new'
+  | 'notice';
 type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
 type Size = 'small' | 'medium';
 
@@ -37,6 +44,7 @@ const STATUS_LABELS: {[key in Status]: Status} = {
   critical: 'critical',
   attention: 'attention',
   new: 'new',
+  notice: 'notice',
 };
 
 const DEFAULT_SIZE = 'medium';
@@ -98,6 +106,9 @@ export function Badge({
       break;
     case STATUS_LABELS.new:
       statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.new');
+      break;
+    case STATUS_LABELS.notice:
+      statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.notice');
       break;
   }
 

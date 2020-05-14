@@ -89,6 +89,12 @@ $pip-spacing: ($height - $pip-size) / 2;
   border: none;
 }
 
+.statusNotice {
+  @include pip-color(color('teal', 'dark'));
+  background-color: color('teal');
+  color: color('white');
+}
+
 .Pip {
   height: $pip-size;
   width: $pip-size;

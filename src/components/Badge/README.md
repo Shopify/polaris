@@ -203,6 +203,14 @@ Keep in mind that seeing this badge can feel stressful for merchants so it shoul
 
 <!-- /content-for -->
 
+### Notice Badge
+
+Use to draw merchants’ attention to some new information/feature . For example, when shopify releases a new feature among a list of existing features.
+
+```jsx
+<Badge status="notice">New</Badge>
+```
+
 ### Incomplete badge
 
 Use to indicate when a given task has not yet been completed. For example, when merchants haven’t fulfilled an order.

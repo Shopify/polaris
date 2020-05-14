@@ -19,7 +19,8 @@
         "warning": "Warning",
         "critical": "Critical",
         "attention": "Attention",
-        "new": "New"
+        "new": "New",
+        "notice": "Notice"
       }
     },
     "Button": {
