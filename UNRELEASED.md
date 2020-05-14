@@ -8,7 +8,7 @@
 
 ### Bug fixes
 
-- Fixed incorrect `icon` color of `Button` when `destructive` and `plain`   ([#2958](https://github.com/Shopify/polaris-react/issues/2958))
+- Fixed incorrect `icon` color of `Button` when `destructive` and `plain` ([#2958](https://github.com/Shopify/polaris-react/issues/2958))
 
 ### Documentation
 
