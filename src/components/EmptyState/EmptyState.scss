@@ -63,6 +63,8 @@ $centered-illustration-width: rem(226px);
 }
 
 .withinContentContainer {
+  margin: 0 auto;
+
   .Section {
     position: unset;
     flex-direction: column-reverse;
