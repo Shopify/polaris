@@ -211,7 +211,7 @@ Use to provide additional but non-critical context for a new product or feature.
     >
       <p>
         You can use the Files section to upload images, videos, and other
-        documents
+        documents!!! This is where we're doing the changes
       </p>
     </EmptyState>
   </Card.Section>
@@ -235,6 +235,29 @@ Stacked image over centered content and actions
     You can use the Files section to upload images, videos, and other documents
   </p>
 </EmptyState>
+```
+
+### Empty state within a content context with centered layout and full width
+
+<!-- example-for: web -->
+
+```jsx
+<Card>
+  <Card.Section>
+    <EmptyState
+      heading="Upload a file to get started"
+      action={{content: 'Upload files'}}
+      image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
+      fullWidth
+      centeredLayout
+    >
+      <p>
+        You can use the Files section to upload images, videos, and other
+        documents!!! This is where we're doing the changes
+      </p>
+    </EmptyState>
+  </Card.Section>
+</Card>
 ```
 
 ---
