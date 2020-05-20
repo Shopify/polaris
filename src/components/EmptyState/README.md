@@ -211,7 +211,7 @@ Use to provide additional but non-critical context for a new product or feature.
     >
       <p>
         You can use the Files section to upload images, videos, and other
-        documents!!! This is where we're doing the changes
+        documents
       </p>
     </EmptyState>
   </Card.Section>
@@ -253,7 +253,7 @@ Stacked image over centered content and actions
     >
       <p>
         You can use the Files section to upload images, videos, and other
-        documents!!! This is where we're doing the changes
+        documents. This shows the content with a centered layout and full width.
       </p>
     </EmptyState>
   </Card.Section>
