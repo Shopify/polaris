@@ -6,6 +6,8 @@
 
 ### Enhancements
 
+- Added a full width property to empty state component with centered layout ([#2992](https://github.com/Shopify/polaris-react/pull/2992))
+
 ### Bug fixes
 
 ### Documentation
