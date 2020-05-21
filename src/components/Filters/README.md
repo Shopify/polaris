@@ -395,7 +395,7 @@ function DataTableFiltersExample() {
           allowMultiple
         />
       ),
-      shortcut: true,
+      shortcut: false,
     },
     {
       key: 'productType',

@@ -41,6 +41,11 @@ $stacking-order: (
     min-width: rem(100px);
   }
 
+  .CenterContainerEmpty {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
   &.right {
     .CenterContainer * {
       border-top-right-radius: 0 !important;
@@ -105,13 +110,13 @@ $stacking-order: (
   }
 }
 
-.MoreFiltersButtonContainer:not(.MoreFiltersButtonOnlyFilters) * {
+.MoreFiltersButtonContainer:not(.onlyButtonVisible) * {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
 .MoreFiltersButtonContainer.onlyButtonVisible * {
-  border-radius: var(--p-border-radius-base) !important;
+  border-radius: var(--p-border-radius-base, border-radius()) !important;
 }
 
 .Wrapper {

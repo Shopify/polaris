@@ -114,9 +114,7 @@ export class ConnectedFilterControl extends React.Component<
       actionsToRender.length === 0 &&
         newDesignLanguage &&
         styles.onlyButtonVisible,
-      !children &&
-        actionsToRender.length === 0 &&
-        styles.MoreFiltersButtonOnlyFilters,
+      !children && actionsToRender.length === 0 && styles.onlyButtonVisible,
     );
 
     const rightActionMarkup = rightAction ? (
@@ -151,7 +149,12 @@ export class ConnectedFilterControl extends React.Component<
         {proxyButtonMarkup}
         <div className={styles.Wrapper}>
           <div className={className} ref={this.container}>
-            <div className={styles.CenterContainer}>
+            <div
+              className={classNames(
+                styles.CenterContainer,
+                !children && styles.CenterContainerEmpty,
+              )}
+            >
               <Item>{children}</Item>
             </div>
             {rightMarkup}
