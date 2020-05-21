@@ -114,6 +114,9 @@ export class ConnectedFilterControl extends React.Component<
       actionsToRender.length === 0 &&
         newDesignLanguage &&
         styles.onlyButtonVisible,
+      !children &&
+        actionsToRender.length === 0 &&
+        styles.MoreFiltersButtonOnlyFilters,
     );
 
     const rightActionMarkup = rightAction ? (

@@ -87,6 +87,8 @@ export interface FiltersProps {
   helpText?: string | React.ReactNode;
   /** Hide tags for applied filters */
   hideTags?: boolean;
+  /** Hide textfield for applied filters */
+  hideTextField?: boolean;
 }
 
 type ComposedProps = FiltersProps &
@@ -134,6 +136,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       disabled = false,
       helpText,
       hideTags,
+      hideTextField,
       newDesignLanguage,
     } = this.props;
     const {resourceName} = this.context;
@@ -219,12 +222,17 @@ class FiltersInner extends React.Component<ComposedProps, State> {
     });
 
     const appliedFiltersCount = appliedFilters ? appliedFilters.length : 0;
-    const moreFiltersLabel =
-      hideTags && appliedFiltersCount > 0
-        ? intl.translate('Polaris.Filters.moreFiltersWithCount', {
+    const moreFiltersLabel = filters.every((f) => !f.shortcut)
+      ? appliedFiltersCount > 0
+        ? intl.translate('Polaris.Filters.editFiltersWithCount', {
             count: appliedFiltersCount,
           })
-        : intl.translate('Polaris.Filters.moreFilters');
+        : intl.translate('Polaris.Filters.editFilters')
+      : hideTags && appliedFiltersCount > 0
+      ? intl.translate('Polaris.Filters.moreFiltersWithCount', {
+          count: appliedFiltersCount,
+        })
+      : intl.translate('Polaris.Filters.moreFilters');
 
     const rightActionMarkup = (
       <div ref={this.moreFiltersButtonContainer}>
@@ -253,34 +261,36 @@ class FiltersInner extends React.Component<ComposedProps, State> {
         disabled={disabled}
         forceShowMorefiltersButton={filters.length > transformedFilters.length}
       >
-        <TextField
-          placeholder={
-            queryPlaceholder ||
-            intl.translate('Polaris.Filters.filter', {
-              resourceName: filterResourceName.plural,
-            })
-          }
-          onChange={onQueryChange}
-          onBlur={onQueryBlur}
-          onFocus={onQueryFocus}
-          value={queryValue}
-          focused={focused}
-          label={
-            queryPlaceholder ||
-            intl.translate('Polaris.Filters.filter', {
-              resourceName: filterResourceName.plural,
-            })
-          }
-          labelHidden
-          prefix={
-            <span className={styles.SearchIcon}>
-              <Icon source={SearchMinor} />
-            </span>
-          }
-          clearButton
-          onClearButtonClick={onQueryClear}
-          disabled={disabled}
-        />
+        {!hideTextField ? (
+          <TextField
+            placeholder={
+              queryPlaceholder ||
+              intl.translate('Polaris.Filters.filter', {
+                resourceName: filterResourceName.plural,
+              })
+            }
+            onChange={onQueryChange}
+            onBlur={onQueryBlur}
+            onFocus={onQueryFocus}
+            value={queryValue}
+            focused={focused}
+            label={
+              queryPlaceholder ||
+              intl.translate('Polaris.Filters.filter', {
+                resourceName: filterResourceName.plural,
+              })
+            }
+            labelHidden
+            prefix={
+              <span className={styles.SearchIcon}>
+                <Icon source={SearchMinor} />
+              </span>
+            }
+            clearButton
+            onClearButtonClick={onQueryClear}
+            disabled={disabled}
+          />
+        ) : null}
       </ConnectedFilterControl>
     );
 

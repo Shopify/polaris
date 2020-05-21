@@ -113,6 +113,8 @@
     "Filters": {
       "moreFilters": "More filters",
       "moreFiltersWithCount": "More filters ({count})",
+      "editFilters": "Edit filters",
+      "editFiltersWithCount": "Edit filters ({count})",
       "filter": "Filter {resourceName}",
       "noFiltersApplied": "No filters applied",
       "cancel": "Cancel",

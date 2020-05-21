@@ -466,6 +466,7 @@ function DataTableFiltersExample() {
             onQueryChange={handleFiltersQueryChange}
             onQueryClear={handleQueryValueRemove}
             onClearAll={handleFiltersClearAll}
+            hideTextField={true}
           />
         </Card.Section>
         <DataTable

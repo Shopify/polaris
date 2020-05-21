@@ -97,14 +97,17 @@ $stacking-order: (
 }
 
 .MoreFiltersButtonContainer * {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
   flex-shrink: 0;
   white-space: nowrap;
 
   > div {
     margin-left: var(--p-override-none, -1px);
   }
+}
+
+.MoreFiltersButtonContainer:not(.MoreFiltersButtonOnlyFilters) * {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
 
 .MoreFiltersButtonContainer.onlyButtonVisible * {
