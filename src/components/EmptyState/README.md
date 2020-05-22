@@ -237,7 +237,7 @@ Stacked image over centered content and actions
 </EmptyState>
 ```
 
-### Empty state within a content context with centered layout and full width
+### Empty state with full width layout in a content context
 
 <!-- example-for: web -->
 
@@ -249,7 +249,6 @@ Stacked image over centered content and actions
       action={{content: 'Upload files'}}
       image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
       fullWidth
-      centeredLayout
     >
       <p>
         You can use the Files section to upload images, videos, and other

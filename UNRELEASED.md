@@ -6,7 +6,7 @@
 
 ### Enhancements
 
-- Added a full width property to empty state component with centered layout ([#2992](https://github.com/Shopify/polaris-react/pull/2992))
+- Added a `fullWidth` prop to `EmptyState` to support full width content within a content context ([#2992](https://github.com/Shopify/polaris-react/pull/2992))
 - Added an `emptyState` prop to `ResourceList` to support in context empty states in list views ([#2569](https://github.com/Shopify/polaris-react/pull/2569))
 
 ### Bug fixes

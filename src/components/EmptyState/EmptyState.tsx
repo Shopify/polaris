@@ -23,7 +23,7 @@ export interface EmptyStateProps {
    * Whether or not to limit the image to the size of its container on large screens.
    */
   imageContained?: boolean;
-  /** Overrides the max-width on the empty state with centered layout within content container */
+  /** Whether or not the content should span the full width of its container  */
   fullWidth?: boolean;
   /** Whether or not the layout is stacked and centered vs justified apart */
   centeredLayout?: boolean;
