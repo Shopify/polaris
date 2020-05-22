@@ -252,7 +252,8 @@ Stacked image over centered content and actions
     >
       <p>
         You can use the Files section to upload images, videos, and other
-        documents. This shows the content with a centered layout and full width.
+        documents. This example shows the content with a centered layout and
+        full width.
       </p>
     </EmptyState>
   </Card.Section>

@@ -165,8 +165,10 @@ $centered-illustration-width: rem(226px);
   }
 }
 
-.fullWidth .Details {
-  max-width: 100%;
+.fullWidth {
+  .Details {
+    max-width: 100%;
+  }
 }
 
 .Content {
