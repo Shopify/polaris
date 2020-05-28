@@ -1,0 +1,49 @@
+// This file is Polaris's public Sass API.
+// Consuming applications may import this file if they wish to use our helper functions
+//
+// In an app that does not use sewing-kit, import from a scss file:
+// `@import '~@shopify/polaris/styles/public-api';`
+//
+// In an app that uses sewing-kit >= 0.113.0 you can explicitly import
+// the esnext folder's public-api from a scss file:
+// `@import '~@shopify/polaris/esnext/styles/public-api';`
+// Or you can tell sewing-kit to automatically add that import to every scss
+// file by configuring the `autoInclude` option in sewing-kit's sass plugin
+// (assuming your sewing-kit.config.js is at the root of your repo):
+// plugins.sass({
+//   autoInclude: [
+//     path.join(__dirname, 'node_modules/@shopify/polaris/esnext/styles/_public-api.scss'),
+//   ],
+// }),
+
+// stylelint-disable scss/partial-no-import
+
+@import './foundation/utilities';
+@import './foundation/colors';
+@import './foundation/filters';
+@import './foundation/spacing';
+@import './foundation/border-width';
+@import './foundation/borders';
+@import './foundation/border-radius';
+@import './foundation/duration';
+@import './foundation/easing';
+@import './foundation/layout';
+@import './foundation/shadows';
+@import './foundation/typography';
+@import './foundation/z-index';
+@import './foundation/focus-ring';
+
+@import './shared/accessibility';
+@import './shared/breakpoints';
+@import './shared/buttons';
+@import './shared/controls';
+@import './shared/forms';
+@import './shared/icons';
+@import './shared/layout';
+@import './shared/links';
+@import './shared/lists';
+@import './shared/page';
+@import './shared/typography';
+@import './shared/skeleton';
+@import './shared/interaction-state';
+@import './shared/printing';

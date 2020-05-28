@@ -122,7 +122,7 @@
       "moreFiltersWithCount": "Další filtry ({count})"
     },
     "Modal": {
-      "iFrameTitle": "značka těla",
+      "iFrameTitle": "kód těla stránky",
       "modalWarning": "V modálním parametru chybí následující povinné vlastnosti: {missingProps}"
     },
     "Pagination": {

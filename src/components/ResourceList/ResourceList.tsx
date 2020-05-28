@@ -53,6 +53,12 @@ export interface ResourceListProps {
   /** Item data; each item is passed to renderItem */
   items: Items;
   filterControl?: React.ReactNode;
+  /** The markup to display when no resources exist yet. Renders when set and items is empty. */
+  emptyState?: React.ReactNode;
+  /** The markup to display when no results are returned on search or filter of the list. Renders when `filterControl` is set, items are empty, and `emptyState` is not set.
+   * @default EmptySearchResult
+   */
+  emptySearchState?: React.ReactNode;
   /** Name of the resource, such as customers or products */
   resourceName?: {
     singular: string;
@@ -66,7 +72,7 @@ export interface ResourceListProps {
   selectedItems?: ResourceListSelectedItems;
   /** Renders a Select All button at the top of the list and checkboxes in front of each list item. For use when bulkActions aren't provided. **/
   selectable?: boolean;
-  /** If there are more items than currently in the list */
+  /** Whether or not there are more items than currently set on the items prop. Determines whether or not to set the paginatedSelectAllAction and paginatedSelectAllText props on the BulkActions component. */
   hasMoreItems?: boolean;
   /** Overlays item list with a spinner while a background action is being performed */
   loading?: boolean;
@@ -88,7 +94,7 @@ export interface ResourceListProps {
   renderItem(item: any, id: string, index: number): React.ReactNode;
   /** Function to customize the unique ID for each item */
   idForItem?(item: any, index: number): string;
-  /** Function to resolve an id from a item */
+  /** Function to resolve the ids of items */
   resolveItemId?(item: any): string;
 }
 
@@ -383,6 +389,8 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
       promotedBulkActions,
       bulkActions,
       filterControl,
+      emptyState,
+      emptySearchState,
       loading,
       showHeader = false,
       sortOptions,
@@ -476,11 +484,16 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
       <div className={styles['HeaderWrapper-overlay']} />
     ) : null;
 
-    const showEmptyState = filterControl && !this.itemsExist() && !loading;
+    const showEmptyState = emptyState && !this.itemsExist() && !loading;
 
-    const headerMarkup = !showEmptyState &&
+    const showEmptySearchState =
+      !showEmptyState && filterControl && !this.itemsExist() && !loading;
+
+    const headerMarkup =
+      !showEmptySearchState &&
+      !showEmptyState &&
       (showHeader || needsHeader) &&
-      this.listRef.current && (
+      this.listRef.current ? (
         <div className={styles.HeaderOuterWrapper}>
           <Sticky boundingElement={this.listRef.current}>
             {(isSticky: boolean) => {
@@ -498,6 +511,7 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
                   styles['HeaderWrapper-inSelectMode'],
                 isSticky && styles['HeaderWrapper-isSticky'],
               );
+
               return (
                 <div className={headerClassName} testID="ResourceList-Header">
                   <EventListener event="resize" handler={this.handleResize} />
@@ -515,19 +529,26 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
             }}
           </Sticky>
         </div>
-      );
+      ) : null;
 
-    const emptyStateMarkup = showEmptyState ? (
-      <div className={styles.EmptySearchResultWrapper}>
-        <EmptySearchResult {...this.emptySearchResultText()} withIllustration />
-      </div>
-    ) : null;
+    const emptySearchStateMarkup = showEmptySearchState
+      ? emptySearchState || (
+          <div className={styles.EmptySearchResultWrapper}>
+            <EmptySearchResult
+              {...this.emptySearchResultText()}
+              withIllustration
+            />
+          </div>
+        )
+      : null;
+
+    const emptyStateMarkup = showEmptyState ? emptyState : null;
 
     const defaultTopPadding = 8;
     const topPadding =
       loadingPosition > 0 ? loadingPosition : defaultTopPadding;
-    const spinnerStyle = {paddingTop: `${topPadding}px`};
 
+    const spinnerStyle = {paddingTop: `${topPadding}px`};
     const spinnerSize = items.length < 2 ? 'small' : 'large';
 
     const loadingOverlay = loading ? (
@@ -556,19 +577,18 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
       selectMode && styles.disableTextSelection,
     );
 
-    const listMarkup = this.itemsExist() ? (
-      <ul
-        className={resourceListClassName}
-        ref={this.listRef}
-        aria-live="polite"
-        aria-busy={loading}
-      >
-        {loadingOverlay}
-        {items.map(this.renderItem)}
-      </ul>
-    ) : (
-      emptyStateMarkup
-    );
+    const listMarkup =
+      this.itemsExist() && !emptySearchStateMarkup && !emptyStateMarkup ? (
+        <ul
+          className={resourceListClassName}
+          ref={this.listRef}
+          aria-live="polite"
+          aria-busy={loading}
+        >
+          {loadingOverlay}
+          {items.map(this.renderItem)}
+        </ul>
+      ) : null;
 
     const context = {
       selectable: this.selectable(),
@@ -586,6 +606,8 @@ class ResourceListInner extends React.Component<CombinedProps, State> {
           {filterControlMarkup}
           {headerMarkup}
           {listMarkup}
+          {emptySearchStateMarkup}
+          {emptyStateMarkup}
           {loadingWithoutItemsMarkup}
         </div>
       </ResourceListContext.Provider>

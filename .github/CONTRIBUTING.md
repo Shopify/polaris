@@ -85,7 +85,7 @@ Each contributor is required to [sign a CLA](https://cla.shopify.com/). This pro
 
 ### Best practices
 
-Take a look at [our best practices](https://github.com/Shopify/web-foundation/tree/master/Best%20practices) which include [testing](https://github.com/Shopify/web-foundation/blob/master/Best%20practices/Testing.md), [React testing](https://github.com/Shopify/web-foundation/blob/master/Best%20practices/React/Testing.md), [Jest](https://github.com/Shopify/web-foundation/blob/master/Best%20practices/Jest.md), and [Enzyme](https://github.com/Shopify/web-foundation/blob/master/Best%20practices/Enzyme.md). We will continue to add best practices here.
+Take a look at [our best practices](https://github.com/Shopify/web-foundation/tree/master/handbook/Best%20practices) which include [testing](https://github.com/Shopify/web-foundation/blob/master/handbook/Best%20practices/Testing.md), [React testing](https://github.com/Shopify/web-foundation/blob/master/handbook/Best%20practices/React/Testing.md), [Jest](https://github.com/Shopify/web-foundation/blob/master/handbook/Best%20practices/Jest.md), and [Enzyme](https://github.com/Shopify/web-foundation/blob/master/handbook/Best%20practices/Enzyme.md). We will continue to add best practices here.
 
 ### Development workflow
 

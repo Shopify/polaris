@@ -47,7 +47,7 @@ export interface PaginationDescriptor {
   /** Callback when previous button is clicked */
   onPrevious?(): void;
   /** Text to provide more context in between the arrow buttons */
-  label?: string;
+  label?: React.ReactNode;
 }
 
 export interface PaginationProps extends PaginationDescriptor {

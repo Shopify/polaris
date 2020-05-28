@@ -37,6 +37,7 @@ describe('build', () => {
     expect(fs.existsSync('./styles/global.scss')).toBe(true);
     expect(fs.existsSync('./styles/foundation.scss')).toBe(true);
     expect(fs.existsSync('./styles/shared.scss')).toBe(true);
+    expect(fs.existsSync('./styles/_public-api.scss')).toBe(true);
     expect(fs.existsSync('./styles/components.scss')).toBe(true);
   });
 

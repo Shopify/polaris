@@ -219,6 +219,7 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
     hasPrevious: true,
     hasNext: true,
   }}
+  additionalNavigation={<Avatar size="small" initials="CD" customer={false} />}
   separator
 >
   <p>Page content</p>

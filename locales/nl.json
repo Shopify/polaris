@@ -76,7 +76,7 @@
     },
     "DiscardConfirmationModal": {
       "title": "Verwijder alle niet-opgeslagen wijzigingen",
-      "message": "Als je alle niet-opgeslagen wijzigingen verwijdert, wist u alle bewerkingen die je had aangebracht na het opslaan.",
+      "message": "Als je de wijzigingen niet opslaat, verlies je alle bewerkingen die je hebt aangebracht sinds je voor het laatst opsloeg.",
       "primaryAction": "Wijzigingen verwijderen",
       "secondaryAction": "Doorgaan met bewerken"
     },

@@ -2,7 +2,7 @@
 @import '../../variables';
 
 $entry-iterations: 1;
-$backdrop-color: rgba(33, 43, 54, 0.4);
+$backdrop-color: rgba(color('ink'), 0.4);
 
 .SearchDismissOverlay {
   position: fixed;

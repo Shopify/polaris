@@ -3,7 +3,7 @@ import React, {useContext} from 'react';
 import {classNames} from '../../utilities/css';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {useFeatures} from '../../utilities/features';
-import type {Action} from '../../types';
+import type {ComplexAction} from '../../types';
 import {Image} from '../Image';
 import {buttonFrom} from '../Button';
 import {Stack} from '../Stack';
@@ -23,14 +23,16 @@ export interface EmptyStateProps {
    * Whether or not to limit the image to the size of its container on large screens.
    */
   imageContained?: boolean;
+  /** Whether or not the content should span the full width of its container  */
+  fullWidth?: boolean;
   /** Whether or not the layout is stacked and centered vs justified apart */
   centeredLayout?: boolean;
   /** Elements to display inside empty state */
   children?: React.ReactNode;
   /** Primary action for empty state */
-  action?: Action;
+  action?: ComplexAction;
   /** Secondary action for empty state */
-  secondaryAction?: Action;
+  secondaryAction?: ComplexAction;
   /** Secondary elements to display below empty state actions */
   footerContent?: React.ReactNode;
 }
@@ -42,6 +44,7 @@ export function EmptyState({
   largeImage,
   imageContained,
   centeredLayout = false,
+  fullWidth = false,
   action,
   secondaryAction,
   footerContent,
@@ -51,6 +54,7 @@ export function EmptyState({
   const newLayout = centeredLayout || newDesignLanguage;
   const className = classNames(
     styles.EmptyState,
+    fullWidth && styles.fullWidth,
     newLayout && styles.centeredLayout,
     imageContained && styles.imageContained,
     withinContentContainer ? styles.withinContentContainer : styles.withinPage,

@@ -63,6 +63,8 @@ $centered-illustration-width: rem(226px);
 }
 
 .withinContentContainer {
+  margin: 0 auto;
+
   .Section {
     position: unset;
     flex-direction: column-reverse;
@@ -140,6 +142,7 @@ $centered-illustration-width: rem(226px);
 
 .centeredLayout {
   .Section {
+    left: 0;
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
@@ -159,6 +162,12 @@ $centered-illustration-width: rem(226px);
   .Details {
     text-align: center;
     width: 100%;
+  }
+}
+
+.fullWidth {
+  .Details {
+    max-width: 100%;
   }
 }
 

@@ -7,6 +7,7 @@ import {
   ResourceItem,
   EventListener,
   Button,
+  EmptyState,
 } from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {
@@ -375,6 +376,7 @@ describe('<ResourceList />', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList items={[]} renderItem={renderItem} />,
       );
+
       expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
         false,
       );
@@ -472,7 +474,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('filterControl', () => {
-    it('renders when exist', () => {
+    it('renders when exists', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsNoID}
@@ -484,7 +486,85 @@ describe('<ResourceList />', () => {
     });
   });
 
-  describe('emptySearchResult', () => {
+  describe('emptyState', () => {
+    it('renders when exists', () => {
+      const emptyState = (
+        <EmptyState
+          heading="Upload a file to get started"
+          action={{content: 'Upload files'}}
+          image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+        >
+          <p>
+            You can use the Files section to upload images, videos, and other
+            documents
+          </p>
+        </EmptyState>
+      );
+
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={[]}
+          renderItem={renderItem}
+          emptyState={emptyState}
+        />,
+      );
+
+      expect(resourceList.find(EmptyState)).toHaveLength(1);
+    });
+
+    it('does not render when exists but items are provided', () => {
+      const emptyState = (
+        <EmptyState
+          heading="Upload a file to get started"
+          action={{content: 'Upload files'}}
+          image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+        >
+          <p>
+            You can use the Files section to upload images, videos, and other
+            documents
+          </p>
+        </EmptyState>
+      );
+
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsNoID}
+          renderItem={renderItem}
+          emptyState={emptyState}
+        />,
+      );
+
+      expect(resourceList.find(EmptyState)).toHaveLength(0);
+    });
+
+    it('does not render when exists, items is empty, but loading is true', () => {
+      const emptyState = (
+        <EmptyState
+          heading="Upload a file to get started"
+          action={{content: 'Upload files'}}
+          image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+        >
+          <p>
+            You can use the Files section to upload images, videos, and other
+            documents
+          </p>
+        </EmptyState>
+      );
+
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          loading
+          items={[]}
+          renderItem={renderItem}
+          emptyState={emptyState}
+        />,
+      );
+
+      expect(resourceList.find(EmptyState)).toHaveLength(0);
+    });
+  });
+
+  describe('<EmptySearchResult />', () => {
     it('renders when filterControl exists and items is empty', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
@@ -524,6 +604,48 @@ describe('<ResourceList />', () => {
         />,
       );
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
+    });
+
+    it('does not render when filterControl exists, items is empty, and emptyState is set', () => {
+      const emptyStateMarkup = (
+        <EmptyState
+          heading="Upload a file to get started"
+          action={{content: 'Upload files'}}
+          image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+        >
+          <p>
+            You can use the Files section to upload images, videos, and other
+            documents
+          </p>
+        </EmptyState>
+      );
+
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={[]}
+          renderItem={renderItem}
+          filterControl={<div>fake filterControl</div>}
+          emptyState={emptyStateMarkup}
+        />,
+      );
+
+      expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
+    });
+
+    it('renders the provided markup when emptySearchState is set', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={[]}
+          renderItem={renderItem}
+          filterControl={<div>fake filterControl</div>}
+          emptySearchState={
+            <div id="emptySearchState">Alternate empty state</div>
+          }
+        />,
+      );
+
+      expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
+      expect(resourceList.find('div#emptySearchState').exists()).toBe(true);
     });
   });
 

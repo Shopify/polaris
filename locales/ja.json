@@ -44,7 +44,7 @@
       "sortAccessibilityLabel": "で{direction}を並び替える",
       "navAccessibilityLabel": "表{direction}を1列スクロールする",
       "totalsRowHeading": "合計",
-      "totalRowHeading": "総"
+      "totalRowHeading": "合計"
     },
     "DatePicker": {
       "previousMonth": "先月{showPreviousYear}{previousMonthName}を表示する",
@@ -122,7 +122,7 @@
       "moreFiltersWithCount": "詳細な絞り込み ({count})"
     },
     "Modal": {
-      "iFrameTitle": "ボディのマークアップ",
+      "iFrameTitle": "ボディマークアップ",
       "modalWarning": "これらの必要なプロパティがモーダルにありません: {missingProps}"
     },
     "Pagination": {
