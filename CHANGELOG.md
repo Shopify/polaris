@@ -8,6 +8,26 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.23.0 - 2020-05-28
+
+### Enhancements
+
+- Added a `fullWidth` prop to `EmptyState` to support full width layout within a content context ([#2992](https://github.com/Shopify/polaris-react/pull/2992))
+- Added an `emptyState` prop to `ResourceList` to support in context empty states in list views ([#2569](https://github.com/Shopify/polaris-react/pull/2569))
+- Improved top bar transitions when theme changes ([#3007](https://github.com/Shopify/polaris-react/pull/3007))
+
+### Bug fixes
+
+- Fixed incorrect `icon` color of `Button` when `destructive` and `plain` ([#2958](https://github.com/Shopify/polaris-react/issues/2958))
+
+### Development workflow
+
+- Improved speed of type-check and build by enabling TypeScript's `skipLibCheck` option ([#2981](https://github.com/Shopify/polaris-react/pull/2981))
+
+### Dependency upgrades
+
+- Updated TypeScript to 3.9.2 ([#2981](https://github.com/Shopify/polaris-react/pull/2981))
+
 ## 4.22.0 - 2020-05-11
 
 ### Enhancements
