@@ -12,6 +12,7 @@
 ### Bug fixes
 
 - Fixed incorrect `icon` color of `Button` when `destructive` and `plain` ([#2958](https://github.com/Shopify/polaris-react/issues/2958))
+- Fixed sizing issue with `CheckableButtonWrapper` on `ResourceList` ([#2961](https://github.com/Shopify/polaris-react/issues/2961))
 
 ### Documentation
 
