@@ -64,9 +64,9 @@ Here are some basic instructions to help you get started for both React and CSS-
 Include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
 
 ```html
-<link rel="stylesheet" <<<<<<< HEAD
-href="https://unpkg.com/@shopify/polaris@4.23.0-rc.1/styles.min.css" =======
-href="https://unpkg.com/@shopify/polaris@4.23.0-rc.1/styles.min.css" >>>>>>> master
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@shopify/polaris@4.23.0-rc.1/styles.min.css"
 />
 ```
 
