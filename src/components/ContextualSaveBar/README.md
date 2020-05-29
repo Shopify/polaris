@@ -213,6 +213,50 @@ repurpose that space to extend the message contents fully to the left side of th
 </div>
 ```
 
+### Contextual save bar full width
+
+Use the fullWidth flag when you want to remove the default max-width set on the contextual save bar.
+
+```jsx
+<div style={{height: '250px'}}>
+  <AppProvider
+    theme={{
+      logo: {
+        width: 124,
+        contextualSaveBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      },
+    }}
+    i18n={{
+      Polaris: {
+        Frame: {
+          skipToContent: 'Skip to content',
+        },
+        ContextualSaveBar: {
+          save: 'Save',
+          discard: 'Discard',
+        },
+      },
+    }}
+  >
+    <Frame>
+      <ContextualSaveBar
+        fullWidth
+        message="Unsaved changes"
+        saveAction={{
+          onAction: () => console.log('add form submit logic'),
+          loading: false,
+          disabled: false,
+        }}
+        discardAction={{
+          onAction: () => console.log('add clear form logic'),
+        }}
+      />
+    </Frame>
+  </AppProvider>
+</div>
+```
+
 ---
 
 ## Related components
