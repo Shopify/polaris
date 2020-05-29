@@ -32,6 +32,10 @@ interface MediaCardProps {
    * @default false
    */
   portrait?: boolean;
+  /** Show a small visual media in the card
+   * @default false
+   */
+  smallMedia?: boolean;
 }
 
 export function MediaCard({
@@ -42,6 +46,7 @@ export function MediaCard({
   description,
   popoverActions = [],
   portrait = false,
+  smallMedia = false,
 }: MediaCardProps) {
   const i18n = useI18n();
   const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
@@ -106,11 +111,13 @@ export function MediaCard({
   const mediaContainerClassName = classNames(
     styles.MediaContainer,
     portrait && styles.portrait,
+    smallMedia && styles.smallMedia,
   );
 
   const infoContainerClassName = classNames(
     styles.InfoContainer,
     portrait && styles.portrait,
+    smallMedia && styles.smallMedia,
   );
 
   return (

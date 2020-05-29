@@ -84,4 +84,15 @@ describe('<MediaCard>', () => {
       className: 'portrait',
     });
   });
+
+  it('renders a smaller media if smallMedia is provided', () => {
+    const videoCard = mountWithApp(<MediaCard {...mockProps} smallMedia />);
+
+    expect(videoCard.find('div')).toContainReactComponentTimes('div', 1, {
+      className: 'MediaContainer smallMedia',
+    });
+    expect(videoCard.find('div')).toContainReactComponentTimes('div', 1, {
+      className: 'InfoContainer smallMedia',
+    });
+  });
 });
