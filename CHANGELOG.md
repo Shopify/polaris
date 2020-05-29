@@ -8,6 +8,13 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.24.0 - 2020-05-28
+
+### Enhancements
+
+- Added a `fullWidth` prop to `ContextualSaveBar` to support full width layout within a content context ([#3014](https://github.com/Shopify/polaris-react/pull/3014))
+- Added an optional `size` prop to `MediaCard` to support varying media sizes in the card [#3013](https://github.com/Shopify/polaris-react/pull/3013)
+
 ## 4.23.0 - 2020-05-28
 
 ### Enhancements
