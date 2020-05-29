@@ -11,6 +11,8 @@ $context-control-expand-after: 1400px;
   display: flex;
   height: top-bar-height();
   background-color: var(--p-background, var(--top-bar-background));
+  transition: duration() background-color ease-in-out;
+
   &::after {
     content: '';
     position: absolute;
@@ -68,6 +70,8 @@ $context-control-expand-after: 1400px;
   padding: spacing(tight);
   border-radius: border-radius();
   fill: var(--p-icon, var(--top-bar-color)); // Icon will inherit this fill
+  transition: (duration() - 33ms) fill easing() 33ms;
+
   &.focused {
     background-color: var(--p-override-transparent, rgba(color('white'), 0.16));
   }

@@ -237,6 +237,29 @@ Stacked image over centered content and actions
 </EmptyState>
 ```
 
+### Empty state with full width layout in a content context
+
+<!-- example-for: web -->
+
+```jsx
+<Card>
+  <Card.Section>
+    <EmptyState
+      heading="Upload a file to get started"
+      action={{content: 'Upload files'}}
+      image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
+      fullWidth
+    >
+      <p>
+        You can use the Files section to upload images, videos, and other
+        documents. This example shows the content with a centered layout and
+        full width.
+      </p>
+    </EmptyState>
+  </Card.Section>
+</Card>
+```
+
 ---
 
 ## Related components
