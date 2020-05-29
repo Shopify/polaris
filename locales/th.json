@@ -122,7 +122,7 @@
       "moreFiltersWithCount": "ตัวกรองเพิ่มเติม ({count})"
     },
     "Modal": {
-      "iFrameTitle": "การแสดงผลเนื้อหา",
+      "iFrameTitle": "มาร์กอัปเนื้อหา",
       "modalWarning": "คุณสมบัติที่กำหนดเหล่านี้ไม่มีอยู่ใน Modal: {missingProps}"
     },
     "Pagination": {
