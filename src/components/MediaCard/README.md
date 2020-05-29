@@ -168,7 +168,7 @@ Use when there are limited vertical space, or when the card should be less promi
   }}
   description="Discover how Shopify can power up your entrepreneurial journey."
   popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
-  smallMedia
+  size="small"
 >
   <img
     alt=""

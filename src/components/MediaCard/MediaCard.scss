@@ -21,7 +21,7 @@ $portrait-breakpoint: 804px;
   &:not(.portrait) {
     flex-basis: 40%;
 
-    &.smallMedia {
+    &.sizeSmall {
       flex-basis: 33%;
     }
   }
@@ -47,7 +47,7 @@ $portrait-breakpoint: 804px;
   &:not(.portrait) {
     flex-basis: 60%;
 
-    &.smallMedia {
+    &.sizeSmall {
       flex-basis: 67%;
     }
   }
