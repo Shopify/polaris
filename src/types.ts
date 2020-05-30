@@ -165,7 +165,9 @@ export interface AppBridgeAction
   extends Action,
     DisableableAction,
     DestructableAction,
-    AppBridgeActionTarget {}
+    AppBridgeActionTarget,
+    IconableAction,
+    LoadableAction {}
 
 export interface IconableAction extends Action {
   /** Source of the icon */
