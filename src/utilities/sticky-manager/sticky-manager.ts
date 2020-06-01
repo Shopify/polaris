@@ -4,7 +4,7 @@ import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
-import tokens from '@shopify/polaris-tokens';
+import {spacingLoose} from '@shopify/polaris-tokens';
 
 import {dataPolarisTopBar, scrollable} from '../../components/shared';
 import {stackedContent} from '../breakpoints';
@@ -136,7 +136,7 @@ export class StickyManager {
     }
 
     const stickyOffset = offset
-      ? this.getOffset(stickyNode) + parseInt(tokens.spacingLoose, 10)
+      ? this.getOffset(stickyNode) + parseInt({spacingLoose}, 10)
       : this.getOffset(stickyNode);
 
     const scrollPosition = scrollTop + stickyOffset;
