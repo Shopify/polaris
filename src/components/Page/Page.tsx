@@ -16,7 +16,7 @@ import {
   WithAppProviderProps,
 } from '../../utilities/with-app-provider';
 
-import {Header, HeaderProps} from './components';
+import {Header, HeaderProps, isPrimaryAction} from './components';
 import styles from './Page.scss';
 
 export interface PageProps extends HeaderProps {
@@ -166,7 +166,7 @@ class PageInner extends React.PureComponent<ComposedProps, never> {
     return {
       title,
       buttons: transformActions(appBridge, {
-        primaryAction,
+        ...(isPrimaryAction(primaryAction) && {primaryAction}),
         secondaryActions,
         actionGroups,
       }),
