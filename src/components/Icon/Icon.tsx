@@ -44,6 +44,13 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
     );
   }
 
+  if (color && !newDesignLanguage && isNewDesignLanguageColor(color)) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'You have selected a color meant to be used in the new design language but new design language is not enabled.',
+    );
+  }
+
   if (
     color &&
     sourceType === 'external' &&
