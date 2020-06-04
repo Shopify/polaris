@@ -4,7 +4,6 @@ ci:
   hide:
     - shrink-ray
     - percy/polaris-react
-    - codecov/patch
     - 'Add new issues to project'
     - 'Move assigned issue to column'
   allow_failures:
@@ -13,8 +12,6 @@ ci:
 merge:
   require:
     - 'Travis CI - Branch'
-  ignore:
-    - codecov/patch
 
 deploy:
   max_commits: false
