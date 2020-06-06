@@ -65,42 +65,40 @@ describe('build', () => {
   });
 
   it('replaces occurrences of POLARIS_VERSION', () => {
-    const files = glob.sync('./build/**/*.{js,scss,css}', {
+    const files = glob.sync('./{build,esnext}/**/*.{js,scss,css}', {
       ignore: './build/cache/**',
     });
 
-    const total = files.reduce((acc, file) => {
-      const contents = fs.readFileSync(file, 'utf-8');
-      return acc + Number(contents.includes('POLARIS_VERSION'));
-    }, 0);
-    expect(total).toBe(0);
-  });
+    expect(files).not.toHaveLength(0);
 
-  it('features the version of Polaris in compiled files', () => {
-    const files = glob.sync('./build/**/*.{js,scss,css}', {
-      ignore: './build/cache/**',
+    const fileBuckets: Record<string, string[]> = {
+      includesTemplateString: [],
+      includesVersion: [],
+    };
+
+    files.forEach((file) => {
+      const fileContent = fs.readFileSync(file, 'utf-8');
+
+      if (fileContent.includes('POLARIS_VERSION')) {
+        fileBuckets.includesTemplateString.push(file);
+      }
+
+      if (fileContent.includes(packageJSON.version)) {
+        fileBuckets.includesVersion.push(file);
+      }
     });
-    const total = files.reduce((acc, file) => {
-      const contents = fs.readFileSync(file, 'utf-8');
-      return acc + Number(contents.includes(packageJSON.version));
-    }, 0);
-    expect(total).toBe(5);
-  });
 
-  it('features the version of Polaris in those specific files', () => {
-    const globFiles = [
-      'polaris.css',
-      'polaris.es.js',
-      'polaris.js',
-      'polaris.min.css',
-      'styles/global.scss',
-    ].join(',');
-    const files = glob.sync(`./build/{${globFiles}}`);
-    const total = files.reduce((acc, file) => {
-      const contents = fs.readFileSync(file, 'utf-8');
-      return acc + Number(contents.includes(packageJSON.version));
-    }, 0);
-    expect(total).toBe(5);
+    expect(fileBuckets.includesTemplateString).toHaveLength(0);
+
+    expect(fileBuckets.includesVersion).toStrictEqual([
+      './build/polaris.css',
+      './build/polaris.es.js',
+      './build/polaris.js',
+      './build/polaris.min.css',
+      './build/styles/global.scss',
+      './esnext/configure.js',
+      './esnext/styles/global.scss',
+    ]);
   });
 
   describe('esnext', () => {
