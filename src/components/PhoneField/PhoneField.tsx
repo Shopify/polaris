@@ -46,14 +46,14 @@ export function PhoneField({
   const [popoverActive, setPopoverActive] = useState(true);
   const [selected, setSelectedCountry] = useState(countries[0].countryName); // Research;
   const [searchBarText, setSearchBarText] = useState('');
-  const allPopoverOptions = countries.map(
+  const allCountries = countries.map(
     ({countryName, image, countryCode}, index) => ({
       content: `${image}  ${countryName} (${countryCode})`,
       onAction: () => handleSelected(index),
     }),
   );
 
-  const [popoverOptions, setPopoverOptions] = useState(allPopoverOptions);
+  const [popoverOptions, setPopoverOptions] = useState(allCountries);
 
   /** Callback function for handling when the text in the phone number changes */
   const handleTextChange = useCallback((newValue) => setValue(newValue), []);
@@ -62,8 +62,8 @@ export function PhoneField({
   const togglePopoverActive = useCallback(() => {
     setPopoverActive((popoverActive) => !popoverActive);
     setSearchBarText('');
-    setPopoverOptions(allPopoverOptions);
-  }, [allPopoverOptions]);
+    setPopoverOptions(allCountries);
+  }, [allCountries]);
 
   const retrieveCountryIndex = useCallback(
     (countryName: string) => {
@@ -94,7 +94,7 @@ export function PhoneField({
         .filter((countryObj) =>
           countryObj.countryName.toLowerCase().startsWith(search.toLowerCase()),
         )
-        .map(({countryName, image, countryCode}, index) => ({
+        .map(({countryName, image, countryCode}) => ({
           content: `${image} ${countryName} (${countryCode})`,
           onAction: () => {
             handleSelected(retrieveCountryIndex(countryName));
