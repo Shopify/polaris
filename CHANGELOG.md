@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.25.0 - 2020-06-04
+
+### Enhancements
+
+- Added `ReactNode` as an accepted prop type to `primaryAction` on the `Page` component ([#3002](https://github.com/Shopify/polaris-react/pull/3002))
+
 ## 4.24.0 - 2020-05-28
 
 ### Enhancements
