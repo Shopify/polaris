@@ -19,4 +19,6 @@
 
 ### Code quality
 
+- Deleted an unused prop and its types in `Navigation` ([#3043](https://github.com/Shopify/polaris-react/pull/3043))
+
 ### Deprecations
