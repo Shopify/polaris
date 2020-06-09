@@ -122,7 +122,7 @@
       "moreFiltersWithCount": "Meer filters ({count})"
     },
     "Modal": {
-      "iFrameTitle": "opmaak platte tekst",
+      "iFrameTitle": "opmaak hoofdtekst",
       "modalWarning": "Deze verplichte onderdelen ontbreken ophet modale venster: {missingProps}"
     },
     "Pagination": {
