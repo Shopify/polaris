@@ -211,7 +211,7 @@ export function ComboBox({
     resetVisuallySelectedOptions();
   }, [forcePopoverActiveFalse, resetVisuallySelectedOptions]);
 
-  const handleClick = useCallback(() => {
+  const activatePopover = useCallback(() => {
     !popoverActive && forcePopoverActiveTrue();
   }, [forcePopoverActiveTrue, popoverActive]);
 
@@ -309,7 +309,8 @@ export function ComboBox({
   return (
     <ComboBoxContext.Provider value={context}>
       <div
-        onClick={handleClick}
+        onClick={activatePopover}
+        onKeyDown={activatePopover}
         role="combobox"
         aria-expanded={popoverActive}
         aria-owns={id}

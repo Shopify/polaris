@@ -28,6 +28,7 @@ const itemsWithID = [
   {id: '6', name: 'item 2', url: 'www.test.com', title: 'title 2'},
   {id: '7', name: 'item 3', url: 'www.test.com', title: 'title 3'},
 ];
+
 const allSelectedIDs = ['5', '6', '7'];
 const promotedBulkActions = [{content: 'action'}, {content: 'action 2'}];
 const bulkActions = [{content: 'action 3'}, {content: 'action 4'}];
@@ -89,6 +90,7 @@ describe('<ResourceList />', () => {
           promotedBulkActions={promotedBulkActions}
         />,
       );
+
       expect(resourceList.find(BulkActions).exists()).toBe(true);
     });
 
@@ -942,7 +944,7 @@ describe('<ResourceList />', () => {
           expect(deselectAllCheckbox.getDOMNode()).toBe(document.activeElement);
         });
 
-        it('focuses the plain CheckableButton checkbox when items are selected and the deselect Checkable button the is clicked', () => {
+        it('focuses the plain CheckableButton checkbox when items are selected and the deselect Checkable button is clicked', () => {
           const resourceList = mountWithAppProvider(
             <ResourceList
               items={itemsWithID}
