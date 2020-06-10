@@ -111,7 +111,7 @@ describe('<Row />', () => {
     triggerOnClick(row, 1, {...defaultEvent, nativeEvent: {ctrlKey: true}});
 
     expect(windowOpenSpy).toHaveBeenCalledWith(
-      `https://shop1.myshopify.io${href}`,
+      `http://localhost${href}`,
       '_blank',
     );
   });
@@ -131,7 +131,7 @@ describe('<Row />', () => {
     triggerOnClick(row, 1, {...defaultEvent, nativeEvent: {metaKey: true}});
 
     expect(windowOpenSpy).toHaveBeenCalledWith(
-      `https://shop1.myshopify.io${href}`,
+      `http://localhost${href}`,
       '_blank',
     );
   });
