@@ -18,7 +18,7 @@
 
 ### Development workflow
 
-- Updated how we reference global animations so we can have one public sass API for all consumers instead one entrypoint (`styles/_public-api.scss`) for consumers using plain scss and one entrypoint (`styles/esnext/_public-api.scss`) for consumers using css modules ([#3032](https://github.com/Shopify/polaris-react/pull/3032))
+- Updated how global animations are referenced, in order to publish a single entrypoint for the public Sass API (`styles/_public-api.scss`), instead of two (`styles/_public-api.scss` for “vanilla” SCSS and `styles/esnext/_public-api.scss` for CSS Modules) ([#3032](https://github.com/Shopify/polaris-react/pull/3032))
 
 ### Dependency upgrades
 
