@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.25.1 - 2020-06-10
+
+### Bug fixes
+
+- Fix latest release on NPM
+
 ## 4.25.0 - 2020-06-04
 
 ### Enhancements
