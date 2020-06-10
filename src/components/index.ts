@@ -128,6 +128,13 @@ export {Icon} from './Icon';
 export {Image} from './Image';
 export type {ImageProps} from './Image';
 
+export {
+  IndexTable,
+  IndexProvider,
+  useIndexTableRowHovered,
+} from './experimental';
+export type {IndexTableProps, IndexProviderProps} from './experimental';
+
 export {Indicator} from './Indicator';
 export type {IndicatorProps} from './Indicator';
 

@@ -1,0 +1,320 @@
+@import '../../../styles/common';
+
+$index-table-stacking-order: (
+  cell: 1,
+  sticky-cell: 30,
+  sticky-table: 31,
+  scroll-bar: 35,
+  bulk-actions: 36,
+  loading-panel: 37,
+);
+
+$breakpoint-small: 458px;
+
+.IndexTable {
+  position: relative;
+  overflow: hidden;
+}
+
+.LoadingContainer-enter {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.LoadingContainer-enter-active {
+  opacity: 1;
+  transition: opacity duration(fast) ease-out, transform duration(fast) ease-out;
+  transform: translateY(0);
+}
+
+.LoadingContainer-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.LoadingContainer-exit-active {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity duration(fast) ease-in, transform duration(fast) ease-in;
+}
+
+$loading-panel-height: rem(53px);
+
+.LoadingPanel {
+  position: absolute;
+  z-index: z-index(loading-panel, $index-table-stacking-order);
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: $loading-panel-height;
+  background: color('sky', 'lighter');
+  box-shadow: shadow();
+}
+
+.Table {
+  width: 100%;
+  min-width: 100%;
+  border-collapse: collapse;
+}
+
+.Table--scrolling {
+  .TableCell--first,
+  .TableCell--second,
+  .TableHeading--first,
+  .TableHeading--second {
+    visibility: visible;
+    background-color: color('white');
+  }
+
+  .TableCell--first,
+  .TableHeading--first {
+    box-shadow: rem(1px) rem(-1px) 0 0 color('sky');
+    @include breakpoint-after($breakpoint-small) {
+      box-shadow: 0 rem(-1px) 0 0 color('sky');
+    }
+  }
+
+  .TableCell--second,
+  .TableHeading--second {
+    @include breakpoint-after($breakpoint-small) {
+      box-shadow: rem(1px) rem(-1px) 0 0 color('sky');
+    }
+  }
+}
+
+.TableRow {
+  background-color: color('white');
+  cursor: pointer;
+}
+
+.TableRow--hovered {
+  background-color: color('sky', 'lighter');
+}
+
+.SubTableRow {
+  background-color: color('sky', 'lighter');
+
+  .TableCell--first,
+  .TableCell--second {
+    background-color: color('sky', 'lighter');
+  }
+}
+
+.TableRow--selected {
+  background-color: color('indigo', 'lighter');
+
+  .TableHeading--first,
+  .TableHeading--second,
+  .TableCell--first,
+  .TableCell--second {
+    background-color: color('indigo', 'lighter');
+  }
+}
+
+.TableRow--subdued {
+  color: color('ink', 'lighter');
+}
+
+.TableHeading {
+  padding: spacing();
+  text-align: left;
+  font-weight: 500;
+  white-space: nowrap;
+  border: 0;
+}
+
+.TableHeading--first {
+  position: sticky;
+  left: 0;
+}
+
+.TableHeading--second {
+  @include breakpoint-after($breakpoint-small) {
+    position: sticky;
+  }
+}
+
+.TableHeading--last {
+  position: sticky;
+  right: 0;
+}
+
+.TableCell {
+  z-index: z-index(cell, $index-table-stacking-order);
+  text-align: left;
+  padding: spacing(tight) spacing();
+  white-space: nowrap;
+  box-shadow: 0 rem(-1px) 0 0 color('sky');
+}
+
+.TableCell--noPadding {
+  padding: 0;
+}
+
+.TableCell--first {
+  position: sticky;
+  left: 0;
+  z-index: z-index(sticky-cell, $index-table-stacking-order);
+  padding: 0;
+}
+
+.TableCell--second {
+  padding-left: 0;
+
+  @include breakpoint-after($breakpoint-small) {
+    position: sticky;
+    z-index: z-index(sticky-cell, $index-table-stacking-order);
+    padding: 0;
+  }
+}
+
+.TableCell--last {
+  position: sticky;
+  right: 0;
+  z-index: z-index(sticky-cell, $index-table-stacking-order);
+  box-shadow: rem(-1px) rem(-1px) 0 0 color('sky');
+  background-color: color('white');
+}
+
+.TableCellContentContainer {
+  display: flex;
+  align-items: center;
+}
+
+.CheckboxTarget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: rem(32px);
+  height: rem(32px);
+  padding-left: spacing();
+}
+
+.StickyTable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  z-index: z-index(sticky-table, $index-table-stacking-order);
+}
+
+.StickyTableHeader {
+  position: absolute;
+  display: flex;
+  width: 100%;
+}
+
+.StickyTableColumnHeader {
+  flex: 0 0 auto;
+}
+
+.StickyTableColumnHeader--isScrolling {
+  box-shadow: 1px 1px 0 0 color('sky'), 1px 0 1px 1px rgba(63, 63, 68, 0.05),
+    1px 0 3px 0 rgba(63, 63, 68, 0.15);
+}
+
+.StickyTableHeadings {
+  overflow: hidden;
+  flex: 1 1 auto;
+  display: flex;
+}
+
+.StickyTableHeading--second {
+  @include breakpoint-after($breakpoint-small) {
+    display: none;
+  }
+}
+
+.StickyTableHeading--second--scrolling {
+  padding: 0 rem(0.6px) 0 spacing();
+  margin-left: spacing();
+  display: none;
+
+  @include breakpoint-after($breakpoint-small) {
+    display: block;
+  }
+}
+
+.StickyTableHeader--isSticky {
+  visibility: visible;
+  background-color: color('white');
+  box-shadow: shadow();
+}
+
+.IndexTable:hover {
+  .ScrollLeft {
+    display: block;
+  }
+
+  .ScrollRight {
+    display: block;
+  }
+}
+
+.IndexTable .ScrollRight--onboarding {
+  display: block;
+}
+
+.BulkActionsWrapper {
+  visibility: visible;
+  position: absolute;
+  z-index: z-index(bulk-actions, $index-table-stacking-order);
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: spacing('tight');
+  background: color('white');
+}
+
+$scroll-bar-size: rem(8px);
+$scroll-bar-border-radius: rem(4px);
+
+.ScrollBarContainer {
+  position: sticky;
+  z-index: z-index(scroll-bar, $index-table-stacking-order);
+  bottom: 0;
+  padding: rem(2px);
+  border-top: border();
+  background-color: color('white');
+}
+
+.ScrollBar {
+  overflow-x: scroll;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.ScrollBar::-webkit-scrollbar-track {
+  border-radius: $scroll-bar-border-radius;
+  background-color: transparent;
+}
+
+.ScrollBar::-webkit-scrollbar {
+  appearance: none;
+  height: $scroll-bar-size;
+  width: $scroll-bar-size;
+  background-color: transparent;
+}
+
+.ScrollBar::-webkit-scrollbar-thumb {
+  border-radius: $scroll-bar-border-radius;
+  background-color: rgba(color('ink', 'light'), 0.3);
+  transition: background-color duration(fast) ease-out;
+}
+
+.ScrollBar:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(color('ink', 'light'), 0.7);
+}
+
+.disableTextSelection {
+  user-select: none;
+}
+
+.EmptySearchResultWrapper {
+  padding: spacing();
+}
