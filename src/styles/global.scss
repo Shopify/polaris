@@ -4,7 +4,7 @@
 @import './common';
 
 :root {
-  --polaris-version-number: '<%= POLARIS_VERSION %>';
+  --polaris-version-number: '{{POLARIS_VERSION}}';
 }
 
 html,
