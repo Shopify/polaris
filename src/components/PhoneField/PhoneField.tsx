@@ -44,7 +44,10 @@ export function PhoneField({
 }: PhoneFieldProps) {
   const [value, setValue] = useState('555-555-5555');
   const [popoverActive, setPopoverActive] = useState(true);
-  const [selected, setSelectedCountry] = useState(countries[0].countryName); // Research;
+  const [selectedCountry, setSelectedCountry] = useState(
+    countries[0].countryName,
+  );
+  // Conduct research on which country appears first
   const [searchBarText, setSearchBarText] = useState('');
   const allCountries = countries.map(
     ({countryName, image, countryCode}, index) => ({
@@ -53,7 +56,7 @@ export function PhoneField({
     }),
   );
 
-  const [popoverOptions, setPopoverOptions] = useState(allCountries);
+  const [countryOptions, setCountryOptions] = useState(allCountries);
 
   /** Callback function for handling when the text in the phone number changes */
   const handleTextChange = useCallback((newValue) => setValue(newValue), []);
@@ -62,20 +65,15 @@ export function PhoneField({
   const togglePopoverActive = useCallback(() => {
     setPopoverActive((popoverActive) => !popoverActive);
     setSearchBarText('');
-    setPopoverOptions(allCountries);
+    setCountryOptions(allCountries);
   }, [allCountries]);
 
   const retrieveCountryIndex = useCallback(
     (countryName: string) => {
-      let index = 0;
-      for (let i = 0; i < countries.length; i++) {
-        if (countries[i].countryName === countryName) {
-          index = i;
-          break;
-        }
-      }
-
-      return index;
+      const foundIndex = countries.findIndex(
+        (element) => element.countryName === countryName,
+      );
+      return foundIndex;
     },
     [countries],
   );
@@ -110,7 +108,7 @@ export function PhoneField({
   const handleSearchBar = useCallback(
     (country) => {
       setSearchBarText(country);
-      setPopoverOptions(retrieveCountries(country));
+      setCountryOptions(retrieveCountries(country));
     },
     [retrieveCountries],
   );
@@ -118,7 +116,7 @@ export function PhoneField({
   /** Handles the button that clicks for the popover */
   const activator = (
     <Button onClick={togglePopoverActive} disclosure>
-      {selected}
+      {selectedCountry}
     </Button>
   );
 
@@ -147,7 +145,7 @@ export function PhoneField({
             />
           </div>
 
-          <ActionList items={popoverOptions} />
+          <ActionList items={countryOptions} />
         </Popover>
       }
     />
