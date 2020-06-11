@@ -15,8 +15,10 @@ import styles from './EmptyState.scss';
 export interface EmptyStateProps {
   /** The empty state heading */
   heading?: string;
-  /** The path to the image to display */
-  /** The image should have ~40px of white space above when empty state is used within a card, modal, or navigation component */
+  /**
+   * The path to the image to display.
+   * The image should have ~40px of white space above when empty state is used within a card, modal, or navigation component
+   */
   image: string;
   /** The path to the image to display on large screens */
   largeImage?: string;
