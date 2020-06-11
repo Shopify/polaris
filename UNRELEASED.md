@@ -6,6 +6,7 @@
 
 ### Enhancements
 
+- Added spacing to `EmptyState` when within content to account for new illustration styles ([#3047](https://github.com/Shopify/polaris-react/pull/3047))
 - Changed Resource List to a generic functional component ([#2843](https://github.com/Shopify/polaris-react/pull/2843))
 - Made the `renderItem` function infer the type of the items prop ([#2843](https://github.com/Shopify/polaris-react/pull/2843))
 - Added a `fullWidth` prop to `EmptyState` to support full width layout within a content context ([#2992](https://github.com/Shopify/polaris-react/pull/2992))

@@ -64,6 +64,8 @@ $centered-illustration-width: rem(226px);
 
 .withinContentContainer {
   margin: 0 auto;
+  padding-top: spacing(loose);
+  padding-bottom: spacing(loose) * 3;
 
   .Section {
     position: unset;

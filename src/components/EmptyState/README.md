@@ -47,6 +47,9 @@ Empty states should:
 - Explain the steps merchants need to take to activate a product or feature
 - Use illustrations thoughtfully as outlined in our [illustration guidelines](https://polaris.shopify.com/design/illustrations)
 - Use only one primary call-to-action button
+- Provide extra spacing at the bottom of an empty state that is within content
+  (card, modal, or navigation) to match the image that was passed into the component
+  with a white space above it of 40px
 
 ---
 
