@@ -1,6 +1,8 @@
 @import '../../styles/common';
 
-$detail-width: rem(336px);
+$within-page-detail-width: rem(336px);
+$detail-width: rem(400px);
+
 $stacking-order: (
   illustration: 0,
   details: 10,
@@ -64,6 +66,8 @@ $centered-illustration-width: rem(226px);
 
 .withinContentContainer {
   margin: 0 auto;
+  padding-top: spacing(loose);
+  padding-bottom: spacing(loose) * 3;
 
   .Section {
     position: unset;
@@ -103,7 +107,7 @@ $centered-illustration-width: rem(226px);
     position: relative;
     z-index: z-index(details, $stacking-order);
     padding: 0 spacing();
-    width: $detail-width;
+    width: $within-page-detail-width;
 
     @include page-content-when-not-fully-condensed {
       padding: 0;
