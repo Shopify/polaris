@@ -67,4 +67,30 @@ $start-button-size: 60px;
   background-color: var(--p-surface, color('ink'));
   opacity: 0.8;
   text-align: center;
+
+  &.WithProgress {
+    margin-bottom: spacing(base-tight);
+  }
+}
+
+.Progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--p-border-highlight, color('indigo', 'light'));
+  height: spacing(extra-tight);
+  overflow: hidden;
+}
+
+.Indicator {
+  height: inherit;
+  width: 0;
+  will-change: width;
+  background-color: var(--p-border-highlight, color('indigo'));
+  transition: width duration(slowest) easing();
+}
+
+.ProgressBar,
+.Label {
+  @include visually-hidden;
 }

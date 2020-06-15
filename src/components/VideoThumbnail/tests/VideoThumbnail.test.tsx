@@ -75,6 +75,89 @@ describe('<VideoThumbnail />', () => {
     });
   });
 
+  describe('videoProgress', () => {
+    const oldEnv = process.env;
+    let warnSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      jest.resetModules();
+      process.env = {...oldEnv};
+      delete process.env.NODE_ENV;
+
+      warnSpy = jest.spyOn(console, 'warn');
+      warnSpy.mockImplementation(() => {});
+    });
+
+    afterEach(() => {
+      process.env = oldEnv;
+      warnSpy.mockRestore();
+    });
+
+    it('does not render a progress bar if progress not provided', () => {
+      const videoThumbnail = mountWithApp(
+        <VideoThumbnail {...mockProps} videoProgress={undefined} />,
+      );
+      expect(videoThumbnail).not.toContainReactComponent('div', {
+        className: 'Progress',
+      });
+    });
+
+    it('does not render a progress bar if video length not provided', () => {
+      const videoThumbnail = mountWithApp(
+        <VideoThumbnail
+          {...mockProps}
+          videoLength={undefined}
+          videoProgress={50}
+        />,
+      );
+      expect(videoThumbnail).not.toContainReactComponent('div', {
+        className: 'Progress',
+      });
+    });
+
+    it('renders progress bar when both video length and progress provided', () => {
+      const videoThumbnail = mountWithApp(
+        <VideoThumbnail {...mockProps} videoLength={120} videoProgress={60} />,
+      );
+
+      expect(videoThumbnail).toContainReactComponent('div', {
+        className: 'Progress',
+      });
+
+      const progressIndicator = videoThumbnail.find('div', {
+        className: 'Indicator',
+      });
+
+      expect(progressIndicator).toHaveReactProps({
+        style: expect.objectContaining({
+          width: '50%',
+        }),
+      });
+    });
+
+    it('warns when video progress exceeds video length in development environment', () => {
+      process.env.NODE_ENV = 'development';
+
+      mountWithApp(
+        <VideoThumbnail {...mockProps} videoLength={100} videoProgress={101} />,
+      );
+
+      expect(warnSpy).toHaveBeenCalledWith(
+        'Value passed to the video progress should not exceed video length. Resetting progress to 100%.',
+      );
+    });
+
+    it('does not warn when video progress exceeds video length in production environment', () => {
+      process.env.NODE_ENV = 'production';
+
+      mountWithApp(
+        <VideoThumbnail {...mockProps} videoLength={100} videoProgress={101} />,
+      );
+
+      expect(warnSpy).not.toHaveBeenCalled();
+    });
+  });
+
   describe('aria-label', () => {
     it('sets the accessibilityLabel on the aria-label attribute when provided', () => {
       const accessibilityLabel = 'test';
