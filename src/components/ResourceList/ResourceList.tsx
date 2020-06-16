@@ -68,7 +68,7 @@ function defaultIdForItem<ItemType extends {id?: any}>(
     : index.toString();
 }
 
-export interface ResourceListProps<ItemType> {
+export interface ResourceListProps<ItemType = any> {
   /** Item data; each item is passed to renderItem */
   items: ItemType[];
   filterControl?: React.ReactNode;

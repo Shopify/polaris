@@ -16,4 +16,6 @@
 
 ### Code quality
 
+- Default to `any` for ItemType in resource list ([#3059](https://github.com/Shopify/polaris-react/pull/3059))
+
 ### Deprecations
