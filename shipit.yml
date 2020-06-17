@@ -12,8 +12,6 @@ ci:
 
 tasks:
   unpublish:
-    override:
-      - echo 'nothing to install'
     variables:
       - name: VERSION
         title: 'Unpublish a version from NPM and remove the tag from GitHub'
