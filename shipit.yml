@@ -12,11 +12,13 @@ ci:
 
 tasks:
   unpublish:
-    action: 'Unpublish latest version'
-    description: 'Unpublish the latest version from NPM and remove the latest git tag from origin.'
+    variables:
+      - name: VERSION
+        title: 'Unpublish a version from NPM and remove the tag from GitHub'
+        default: 'v0.0.0'
+    action: 'Unpublish a version'
     steps:
-      - npm unpublish @shopify/polaris@latest
-      - git push --delete origin `git describe --exact-match --abbrev=0`
+      - npm unpublish @shopify/polaris@${VERSION}
 
 merge:
   require:
