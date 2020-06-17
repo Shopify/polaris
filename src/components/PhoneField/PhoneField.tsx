@@ -4,6 +4,7 @@ import {TextField} from '../TextField';
 import {Button} from '../Button';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
+import {Stack} from '../Stack';
 
 import styles from './PhoneField.scss';
 
@@ -43,7 +44,7 @@ export function PhoneField({
   countries,
 }: PhoneFieldProps) {
   const [value, setValue] = useState('555-555-5555');
-  const [popoverActive, setPopoverActive] = useState(true);
+  const [popoverActive, setPopoverActive] = useState(countries.length > 1);
   const [selectedCountry, setSelectedCountry] = useState(
     countries[0].countryName,
   );
@@ -114,11 +115,14 @@ export function PhoneField({
   );
 
   /** Handles the button that clicks for the popover */
-  const activator = (
-    <Button onClick={togglePopoverActive} disclosure>
-      {selectedCountry}
-    </Button>
-  );
+  const activator =
+    countries.length > 1 ? (
+      <Button onClick={togglePopoverActive} disclosure>
+        {selectedCountry}
+      </Button>
+    ) : (
+      <Button>{selectedCountry}</Button>
+    );
 
   return (
     <TextField
