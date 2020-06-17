@@ -10,6 +10,14 @@ ci:
   allow_failures:
     - 'buildkite/polaris-react-system-integration-test'
 
+tasks:
+  unpublish:
+    action: 'Unpublish latest version'
+    description: 'Unpublish the latest version from NPM and remove the latest git tag from origin.'
+    steps:
+      - npm unpublish @shopify/polaris@latest
+      - git push --delete origin `git describe --exact-match --abbrev=0`
+
 merge:
   require:
     - 'Travis CI - Branch'
