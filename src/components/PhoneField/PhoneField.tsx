@@ -16,7 +16,9 @@ interface Country {
   /** Country area code */
   countryCode: string;
   /** Phone number display format */
-  displayFormat: number[];
+  displayFormat(phoneNumber: number): void;
+  /** Possible area codes for a country. Used to distinguish between countries with same country codes */
+  areaCodes?: number[];
   formatter?(): void;
 }
 
@@ -43,11 +45,17 @@ export function PhoneField({
   optional,
   countries,
 }: PhoneFieldProps) {
-  const [value, setValue] = useState('555-555-5555');
+  const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [popoverActive, setPopoverActive] = useState(countries.length > 1);
   const [selectedCountry, setSelectedCountry] = useState(
     countries[0].countryName,
   );
+
+  const [selectedCountryCode, setSelectedCountryCode] = useState(
+    countries[0].countryCode,
+  );
+
   // Conduct research on which country appears first
   const [searchBarText, setSearchBarText] = useState('');
   const allCountries = countries.map(
@@ -58,9 +66,6 @@ export function PhoneField({
   );
 
   const [countryOptions, setCountryOptions] = useState(allCountries);
-
-  /** Callback function for handling when the text in the phone number changes */
-  const handleTextChange = useCallback((newValue) => setValue(newValue), []);
 
   /** Callback function for handling when the popover is clicked */
   const togglePopoverActive = useCallback(() => {
@@ -82,6 +87,7 @@ export function PhoneField({
   const handleSelected = useCallback(
     (index) => {
       setSelectedCountry(countries[index].countryName);
+      setSelectedCountryCode(countries[index].countryCode);
       togglePopoverActive();
     },
     [countries, togglePopoverActive],
@@ -117,20 +123,30 @@ export function PhoneField({
   /** Handles the button that clicks for the popover */
   const activator =
     countries.length > 1 ? (
+      // eslint-disable-next-line shopify/jsx-no-hardcoded-content
       <Button onClick={togglePopoverActive} disclosure>
-        {selectedCountry}
+        {`${selectedCountry} (${selectedCountryCode})`}
       </Button>
     ) : (
       <Button>{selectedCountry}</Button>
     );
+
+  /** Callback function for handling when the text in the phone number changes */
+  const handlePhoneNumber = useCallback((phoneNum) => {
+    setFormattedPhoneNumber(phoneNum);
+    console.log(phoneNum);
+  }, []);
+
+  const handleAutoFormat = (phoneNumber, displayFormat) =>
+    displayFormat(phoneNumber);
 
   return (
     <TextField
       label={optional ? `${labelName} (optional)` : labelName}
       type="tel"
       placeholder={placeholder}
-      value={value}
-      onChange={handleTextChange}
+      value={formattedPhoneNumber}
+      onChange={handlePhoneNumber}
       labelHidden={labelHidden}
       connectedLeft={
         <Popover
