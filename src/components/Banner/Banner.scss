@@ -117,6 +117,10 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   display: flex;
 }
 
+.ContentWrapper {
+  flex: 1 1 auto;
+}
+
 .withinContentContainer {
   border-radius: var(--p-border-radius-wide, border-radius());
   padding: spacing(tight) $intermediate-spacing;
