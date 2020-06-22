@@ -16,7 +16,7 @@ interface Country {
   /** Country area code */
   countryCode: string;
   /** Phone number display format */
-  displayFormat(phoneNumber: number): void;
+  displayFormat: number[];
   /** Possible area codes for a country. Used to distinguish between countries with same country codes */
   areaCodes?: number[];
   formatter?(): void;
@@ -45,15 +45,21 @@ export function PhoneField({
   optional,
   countries,
 }: PhoneFieldProps) {
-  const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
   const [popoverActive, setPopoverActive] = useState(countries.length > 1);
+
+  // Keeps track of selectedCountry information
   const [selectedCountry, setSelectedCountry] = useState(
     countries[0].countryName,
   );
 
   const [selectedCountryCode, setSelectedCountryCode] = useState(
     countries[0].countryCode,
+  );
+
+  const [selectedDisplayFormat, setSelectedDisplayFormat] = useState(
+    countries[0].displayFormat,
   );
 
   // Conduct research on which country appears first
@@ -83,16 +89,102 @@ export function PhoneField({
     },
     [countries],
   );
-  /** Callback function for handling the selected country */
+
+  /** Callback function for handling when a country is selected */
   const handleSelected = useCallback(
     (index) => {
       setSelectedCountry(countries[index].countryName);
       setSelectedCountryCode(countries[index].countryCode);
+      setSelectedDisplayFormat(countries[index].displayFormat);
       togglePopoverActive();
     },
     [countries, togglePopoverActive],
   );
 
+  /** Given a formatted string, if it includes '+', then it determines what country */
+  const extractNumbersRegex = useCallback(
+    (originalStr: string) => {
+      let numberStr = originalStr;
+      if (numberStr.startsWith('+')) {
+        const filteredCountries = countries
+          .filter(
+            (countryObj) =>
+              countryObj.countryCode.length +
+                countryObj.displayFormat.reduce(
+                  (accumulator, currentValue) => accumulator + currentValue,
+                ) ===
+              numberStr.length,
+          )
+          .filter((countryObj) => numberStr.startsWith(countryObj.countryCode));
+
+        if (filteredCountries.length > 0) {
+          const countryCode = filteredCountries[0].countryCode;
+          numberStr = originalStr.substring(countryCode.length);
+
+          const countryIndex = countries.findIndex(
+            (countryObj) =>
+              countryObj.countryName === filteredCountries[0].countryName,
+          );
+
+          handleSelected(countryIndex);
+        }
+      }
+
+      const extractNumbersRegex = /\d+/g;
+      const numberPresent = extractNumbersRegex.test(numberStr);
+
+      const phoneNum = numberPresent
+        ? numberStr.match(extractNumbersRegex).join('')
+        : '';
+
+      setPhoneNumber(`${selectedCountryCode}${phoneNum}`);
+      return phoneNum;
+    },
+    [countries, handleSelected, selectedCountryCode],
+  );
+
+  /** Callback function converts the phone number using displayFormatter */
+  const convertPhoneNumber = useCallback((phoneNumber, displayFormatter) => {
+    const phoneNumberMaxLength = displayFormatter.reduce(
+      (accumulator: number, currentValue: number) => accumulator + currentValue,
+    );
+    if (phoneNumber === '' || phoneNumber.length > phoneNumberMaxLength) {
+      return phoneNumber;
+    }
+
+    let regexCaptureGroups = '';
+    displayFormatter.forEach((currentValue: number) => {
+      regexCaptureGroups = regexCaptureGroups.concat(
+        `(\\d{0,${currentValue}})`,
+      );
+    });
+
+    const regexExp = new RegExp(`^${regexCaptureGroups}$`);
+    const formattedPhoneNum = phoneNumber
+      .match(regexExp)
+      .slice(1, 1 + displayFormatter.length)
+      .filter(Boolean)
+      .join(' ');
+    return formattedPhoneNum;
+  }, []);
+
+  /** Callback function when the text in the phone number changes */
+  const handlePhoneNumber = useCallback(
+    (phoneNum) => {
+      const allNumbers = extractNumbersRegex(phoneNum);
+      setFormattedPhoneNumber(
+        convertPhoneNumber(allNumbers, selectedDisplayFormat),
+      );
+    },
+    [convertPhoneNumber, extractNumbersRegex, selectedDisplayFormat],
+  );
+
+  /** When the user changes the country, the formatting for phone number changes */
+  useEffect(() => {
+    handlePhoneNumber(formattedPhoneNumber);
+  }, [formattedPhoneNumber, handlePhoneNumber, phoneNumber]);
+
+  /** Given the searchbar, we search for matches for the country name */
   const retrieveCountries = useCallback(
     (search: string) => {
       const results = countries
@@ -130,15 +222,6 @@ export function PhoneField({
     ) : (
       <Button>{selectedCountry}</Button>
     );
-
-  /** Callback function for handling when the text in the phone number changes */
-  const handlePhoneNumber = useCallback((phoneNum) => {
-    setFormattedPhoneNumber(phoneNum);
-    console.log(phoneNum);
-  }, []);
-
-  const handleAutoFormat = (phoneNumber, displayFormat) =>
-    displayFormat(phoneNumber);
 
   return (
     <TextField
