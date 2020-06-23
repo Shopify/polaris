@@ -154,7 +154,7 @@
       "ariaLivePlural": "{itemsLength} tuotteet",
       "Item": {
         "actionsDropdownLabel": "Kohdetta {accessibilityLabel} koskevat toimenpiteet",
-        "actionsDropdown": "Toiminnat-alasvetovalikko",
+        "actionsDropdown": "Toiminnat-pudotusvalikko",
         "viewItem": "Näytä tiedot kohteesta {itemName}"
       },
       "BulkActions": {
