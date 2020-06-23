@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 4.26.2 - 2020-06-24
+
+### Enhancements
+
+- Removed padding from the details container in `EmptyState` to account for new illustration size ([#3069](https://github.com/Shopify/polaris-react/pull/3069))
+
 ## 4.26.1 - 2020-06-16
 
 ### Code quality
