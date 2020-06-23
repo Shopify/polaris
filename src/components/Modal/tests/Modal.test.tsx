@@ -58,7 +58,7 @@ describe('<Modal>', () => {
     const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
     const focusedNode = findFirstFocusableNode(modal.find(Dialog).getDOMNode());
 
-    expect(focusedNode).toBe(document.activeElement);
+    expect(document.activeElement).toBe(focusedNode);
   });
 
   describe('src', () => {

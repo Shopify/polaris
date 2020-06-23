@@ -87,7 +87,7 @@ describe('<FilterCreator />', () => {
       'onClick',
     );
 
-    expect(activator.getDOMNode()).toBe(document.activeElement);
+    expect(document.activeElement).toBe(activator.getDOMNode());
   });
 
   it('does not focus the activator after adding a filter if focus was never originally received by the by activator', () => {
@@ -110,7 +110,7 @@ describe('<FilterCreator />', () => {
       'onClick',
     );
 
-    expect(activator.getDOMNode()).not.toBe(document.activeElement);
+    expect(document.activeElement).not.toBe(activator.getDOMNode());
   });
 
   it('renders just a button by default', () => {

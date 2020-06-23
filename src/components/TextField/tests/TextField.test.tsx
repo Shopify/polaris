@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {InlineError, Labelled, Connected, Select} from 'components';
@@ -85,11 +85,11 @@ describe('<TextField />', () => {
   describe('onFocus()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      mountWithAppProvider(
+      mountWithApp(
         <TextField label="TextField" onFocus={spy} onChange={noop} />,
       )
-        .find('input')
-        .simulate('focus');
+        .find('input')!
+        .trigger('onFocus');
       expect(spy).toHaveBeenCalled();
     });
   });
@@ -147,37 +147,31 @@ describe('<TextField />', () => {
 
   describe('focused', () => {
     it('input is in focus state if focused is true', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <TextField label="TextField" onChange={noop} focused />,
       );
 
-      expect(element.getDOMNode().querySelector('input')).toBe(
-        document.activeElement,
-      );
+      expect(document.activeElement).toBe(element.find('input')!.domNode);
     });
 
     it('focuses input if focused is toggled', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <TextField label="TextField" onChange={noop} />,
       );
 
       element.setProps({focused: true});
 
-      expect(element.getDOMNode().querySelector('input')).toBe(
-        document.activeElement,
-      );
+      expect(document.activeElement).toBe(element.find('input')!.domNode);
     });
 
     it('blurs input if focused is toggled', () => {
-      const element = mountWithAppProvider(
+      const element = mountWithApp(
         <TextField label="TextField" onChange={noop} focused />,
       );
 
       element.setProps({focused: false});
 
-      expect(element.getDOMNode().querySelector('input')).not.toBe(
-        document.activeElement,
-      );
+      expect(document.activeElement).not.toBe(element.find('input')!.domNode);
     });
   });
 
@@ -1034,22 +1028,15 @@ describe('<TextField />', () => {
     });
 
     it('sets focus to the <input /> `onClick`', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <TextField label="TextField" onChange={noop} />,
       );
-      const connectedChild = textField
-        .find(Connected)
-        .prop('children') as ReactElement;
 
-      expect(textField.getDOMNode().querySelector('input')).not.toBe(
-        document.activeElement,
-      );
+      expect(document.activeElement).not.toBe(textField.find('input')!.domNode);
 
-      connectedChild.props.onClick({});
+      textField.find(Connected)!.triggerKeypath('children.props.onClick', {});
 
-      expect(textField.getDOMNode().querySelector('input')).toBe(
-        document.activeElement,
-      );
+      expect(document.activeElement).toBe(textField.find('input')!.domNode);
     });
   });
 
