@@ -3,8 +3,16 @@ import path from 'path';
 import {promisify} from 'util';
 
 import {createFilter} from '@rollup/pluginutils';
-import glob from 'glob';
 import nodeSass from 'node-sass';
+import postcss from 'postcss';
+import cssModulesExtractImports from 'postcss-modules-extract-imports';
+import cssModulesLocalByDefault from 'postcss-modules-local-by-default';
+import cssModulesScope from 'postcss-modules-scope';
+import cssModulesValues from 'postcss-modules-values';
+import Parser from 'postcss-modules-parser';
+import postcssShopify from '@shopify/postcss-plugin';
+
+import {getNamespacedClassName} from '../namespaced-classname';
 
 const renderSass = promisify(nodeSass.render);
 
@@ -14,9 +22,25 @@ export function stylesEsNext(options = {}) {
     options.exclude,
   );
 
-  const processedExt = '.processed.scss';
+  const processedExt = '.css';
 
   let inputRoot;
+
+  const styleProcessor = postcss([
+    cssModulesValues,
+    cssModulesLocalByDefault,
+    cssModulesExtractImports,
+    cssModulesScope({generateScopedName: getNamespacedClassName}),
+    new Parser({
+      fetch(to, from) {
+        const fromDirectoryPath = path.dirname(from);
+        const toPath = path.resolve(fromDirectoryPath, to);
+        const source = fs.readFileSync(toPath, 'utf8');
+        return getPostCSSOutput(styleProcessor, source, toPath);
+      },
+    }),
+    postcssShopify(),
+  ]);
 
   return {
     name: 'styles-esnext',
@@ -25,7 +49,7 @@ export function stylesEsNext(options = {}) {
       inputRoot = path.dirname(input);
     },
 
-    // Treat processed scss files as external - don't try and resolve them within Rollup
+    // Treat CSS files as external - don't try and resolve them within Rollup
     resolveId(source, importer) {
       if (source.endsWith(processedExt)) {
         return {
@@ -45,6 +69,12 @@ export function stylesEsNext(options = {}) {
         includePaths: [path.dirname(id)],
       }).then((result) => result.css.toString());
 
+      const postCssOutput = await getPostCSSOutput(
+        styleProcessor,
+        sassOutput,
+        id,
+      );
+
       const assetFileName = id
         .replace(`${inputRoot}/`, '')
         .replace(/\.scss$/, processedExt);
@@ -57,29 +87,17 @@ export function stylesEsNext(options = {}) {
       this.emitFile({
         type: 'asset',
         fileName: assetFileName,
-        source: sassOutput,
+        source: postCssOutput.css,
       });
 
-      return {
-        code: `export {default} from './${relativePath}'`,
-      };
-    },
-
-    // Generate the esnext/styles folder.
-    // This is only needed because we allow consuming apps to use our helper
-    // functions and mixins in shared.scss/foundations.scss
-    // We can't point SK consumers to use the versions living in the top level
-    // generated styles folder (as build in styles-standalone) because those
-    // SK consumers need to have the raw contents, instead of the ones that have
-    // :global declarations stripped out of them
-    generateBundle() {
-      const globOptions = {cwd: inputRoot, ignore: 'styles/_common.scss'};
-
-      glob.sync(`styles/**/*.scss`, globOptions).forEach((filePath) => {
-        const file = fs.readFileSync(`${inputRoot}/${filePath}`, 'utf8');
-
-        this.emitFile({type: 'asset', fileName: filePath, source: file});
-      });
+      const properties = JSON.stringify(postCssOutput.tokens, null, 2);
+      return `import './${relativePath}';\nexport default ${properties};`;
     },
   };
+}
+
+function getPostCSSOutput(processor, source, fromPath) {
+  return processor
+    .process(source, {from: fromPath})
+    .then(({css, root: {tokens}}) => ({css, tokens}));
 }
