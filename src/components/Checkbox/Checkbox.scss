@@ -76,8 +76,8 @@
         @include control-backdrop(active, $global-theming: true);
       }
       ~ .Icon {
-        transition: opacity var(--p-duration-1-5-0) var(--p-ease-in),
-          transform var(--p-duration-1-5-0) var(--p-ease-in);
+        transition: opacity var(--p-duration-1-5-0) var(--p-ease),
+          transform var(--p-duration-1-5-0) var(--p-ease);
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
       }
