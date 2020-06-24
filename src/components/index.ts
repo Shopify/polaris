@@ -113,6 +113,8 @@ export type {FormProps} from './Form';
 export {FormLayout} from './FormLayout';
 export type {FormLayoutProps} from './FormLayout';
 
+export {OrderDetails} from './OrderDetails';
+
 export {
   Frame,
   DEFAULT_TOAST_DURATION,
