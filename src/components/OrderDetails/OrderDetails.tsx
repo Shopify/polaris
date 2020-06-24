@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import AddressFormatter from '@shopify/address';
+import {greet} from '@shopify/greeting';
 
 import {ThemeProvider} from '../ThemeProvider';
 import {Card} from '../Card';
@@ -11,6 +12,7 @@ import {TextStyle} from '../TextStyle';
 
 export function OrderDetails() {
   const [address, setAddress] = useState('');
+  const [greeting, setGreeting] = useState('No greeting');
 
   useEffect(() => {
     const address = {
@@ -28,6 +30,8 @@ export function OrderDetails() {
 
     const addressFormatter = new AddressFormatter('ja');
 
+    setGreeting(greet());
+
     (async () => {
       try {
         const formattedAddress = await addressFormatter.format(address);
@@ -36,7 +40,7 @@ export function OrderDetails() {
         // Do nothing for now
       }
     })();
-  });
+  }, [greeting]);
 
   return (
     <ThemeProvider
@@ -50,6 +54,7 @@ export function OrderDetails() {
       }}
     >
       <Card title="Order details">
+        <Card.Section>{greeting}</Card.Section>
         <Card.Section title="Unfulfilled">
           <Stack alignment="center" distribution="equalSpacing">
             <Stack alignment="center">
