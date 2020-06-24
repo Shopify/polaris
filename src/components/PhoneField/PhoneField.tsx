@@ -260,7 +260,7 @@ export function PhoneField({
   return (
     <TextField
       label={optional ? `${labelName} (optional)` : labelName}
-      autocomplete="tel"
+      autoComplete="tel"
       type="tel"
       placeholder={placeholder}
       value={formattedPhoneNumber}
