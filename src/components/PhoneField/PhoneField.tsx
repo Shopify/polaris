@@ -48,6 +48,11 @@ export function PhoneField({
   const [phoneNumber, setPhoneNumber] = useState('');
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
   const [popoverActive, setPopoverActive] = useState(countries.length > 1);
+  const [validPhoneNumber, setValidPhoneNumber] = useState<boolean | null>(
+    null,
+  );
+
+  const [error, setError] = useState<string | null>(null);
 
   // Keeps track of selectedCountry information
   const [selectedCountry, setSelectedCountry] = useState(
@@ -137,7 +142,18 @@ export function PhoneField({
         ? numberStr.match(extractNumbersRegex).join('')
         : '';
 
+      // const selectedCountryIndex = countries.findIndex(
+      //   (countryObj) => countryObj.countryName === selectedCountry,
+      // );
+
       setPhoneNumber(`${selectedCountryCode}${phoneNum}`);
+      // setValidPhoneNumber(
+      //   checkValidPhoneNumber(
+      //     `${selectedCountryCode}${phoneNum}`,
+      //     countries,
+      //     selectedCountryIndex,
+      //   ),
+      // );
       return phoneNum;
     },
     [countries, handleSelected, selectedCountryCode],
@@ -224,9 +240,27 @@ export function PhoneField({
       <Button>{selectedCountry}</Button>
     );
 
+  const checkValidPhoneNumber = useCallback((phoneNum, countryArr, index) => {
+    const numDigits: number = countryArr[index].displayFormat.reduce(
+      (accumulator: number, currentValue: number) => accumulator + currentValue,
+    );
+
+    const countryCodeLength: number = countryArr[index].countryCode.length;
+
+    return phoneNum.length === numDigits + countryCodeLength;
+  }, []);
+
+  // const displayErrorMsg =
+  //   ((validPhoneNumber == true) || (validPhoneNumber == null)) ? (
+  //     return null;
+  //   ) : (
+  //     return <p>Please enter a number</p>
+  //   )
+
   return (
     <TextField
       label={optional ? `${labelName} (optional)` : labelName}
+      autocomplete="tel"
       type="tel"
       placeholder={placeholder}
       value={formattedPhoneNumber}
