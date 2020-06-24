@@ -20,6 +20,7 @@ export const Toast = React.memo(function Toast(props: ToastProps) {
     return () => {
       hideToast({id});
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props]);
 
   return null;

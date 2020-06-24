@@ -281,6 +281,7 @@ class DataTableInner extends React.PureComponent<
     return handleScroll;
   };
 
+  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderHeadings = (heading: string, headingIndex: number) => {
     const {
       sortable,
@@ -346,6 +347,7 @@ class DataTableInner extends React.PureComponent<
       : totalsLabel.singular;
   };
 
+  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderTotals = (total: TableData, index: number) => {
     const id = `totals-cell-${index}`;
     const {truncate = false, verticalAlign} = this.props;

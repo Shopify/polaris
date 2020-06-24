@@ -118,11 +118,11 @@ $item-wrapper-loading-height: rem(64px);
   }
 }
 
-// Force long sort options to be truncated
-.SortWrapper,
-.SortWrapper > * {
-  @include breakpoint-before(resource-list(breakpoint-small)) {
-    overflow: hidden;
+.SortWrapper {
+  @include layout-flex-fix;
+
+  > * {
+    max-width: 100%;
   }
 }
 

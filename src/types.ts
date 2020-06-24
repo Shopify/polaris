@@ -53,6 +53,7 @@ type NewDesignLanguageColor =
   | 'highlight'
   | 'success'
   | 'primary';
+
 export function isNewDesignLanguageColor(
   color: Color | NewDesignLanguageColor,
 ): color is NewDesignLanguageColor {

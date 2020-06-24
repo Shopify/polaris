@@ -212,6 +212,7 @@ class TabsInner extends React.PureComponent<CombinedProps, State> {
     });
   };
 
+  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderTabMarkup = (tab: TabDescriptor, index: number) => {
     const {selected} = this.props;
     const {tabToFocus} = this.state;

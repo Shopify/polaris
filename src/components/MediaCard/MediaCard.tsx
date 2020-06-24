@@ -15,6 +15,8 @@ import {Stack} from '../Stack';
 
 import styles from './MediaCard.scss';
 
+type Size = 'small' | 'medium';
+
 interface MediaCardProps {
   /** The visual media to display in the card */
   children: React.ReactNode;
@@ -32,6 +34,10 @@ interface MediaCardProps {
    * @default false
    */
   portrait?: boolean;
+  /** Size of the visual media in the card
+   * @default 'medium'
+   */
+  size?: Size;
 }
 
 export function MediaCard({
@@ -42,6 +48,7 @@ export function MediaCard({
   description,
   popoverActions = [],
   portrait = false,
+  size = 'medium',
 }: MediaCardProps) {
   const i18n = useI18n();
   const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
@@ -106,11 +113,13 @@ export function MediaCard({
   const mediaContainerClassName = classNames(
     styles.MediaContainer,
     portrait && styles.portrait,
+    size === 'small' && styles.sizeSmall,
   );
 
   const infoContainerClassName = classNames(
     styles.InfoContainer,
     portrait && styles.portrait,
+    size === 'small' && styles.sizeSmall,
   );
 
   return (

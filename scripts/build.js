@@ -49,11 +49,10 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
       ),
       resolvePath(intermediateBuild, './configure.js'),
     ].forEach((file) => {
+      const fileContents = readFileSync(file, 'utf8');
       writeFileSync(
         file,
-        readFileSync(file, 'utf8')
-          .replace(/\{\{POLARIS_VERSION\}\}/g, packageJSON.version)
-          .replace(/<%= POLARIS_VERSION %>/g, packageJSON.version),
+        fileContents.replace(/\{\{POLARIS_VERSION\}\}/g, packageJSON.version),
       );
     });
   })

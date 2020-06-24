@@ -38,5 +38,6 @@ export function useDeepCallback(
   dependencies: DependencyList,
   customCompare?: Comparator,
 ) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useCallback(callback, useDeepCompareRef(dependencies, customCompare));
 }

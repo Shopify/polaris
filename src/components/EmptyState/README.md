@@ -47,6 +47,9 @@ Empty states should:
 - Explain the steps merchants need to take to activate a product or feature
 - Use illustrations thoughtfully as outlined in our [illustration guidelines](https://polaris.shopify.com/design/illustrations)
 - Use only one primary call-to-action button
+- Provide extra spacing at the bottom of an empty state that is within content
+  (card, modal, or navigation) to match the image that was passed into the component
+  with a white space above it of 40px
 
 ---
 
@@ -201,7 +204,45 @@ Use to provide additional but non-critical context for a new product or feature.
 
 <!-- example-for: web -->
 
-Use to explain a section or feature before merchants have used it within the context of a content container like a card or a resource list.
+```jsx
+<Card>
+  <Card.Section>
+    <EmptyState
+      heading="Upload a file to get started"
+      action={{content: 'Upload files'}}
+      image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
+    >
+      <p>
+        You can use the Files section to upload images, videos, and other
+        documents
+      </p>
+    </EmptyState>
+  </Card.Section>
+</Card>
+```
+
+### Empty state with centered layout
+
+<!-- example-for: web -->
+
+Stacked image over centered content and actions
+
+```jsx
+<EmptyState
+  centeredLayout
+  heading="Upload a file to get started"
+  action={{content: 'Upload files'}}
+  image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
+>
+  <p>
+    You can use the Files section to upload images, videos, and other documents
+  </p>
+</EmptyState>
+```
+
+### Empty state with full width layout in a content context
+
+<!-- example-for: web -->
 
 ```jsx
 <Card>
@@ -209,11 +250,13 @@ Use to explain a section or feature before merchants have used it within the con
     <EmptyState
       heading="Upload a file to get started"
       action={{content: 'Upload files'}}
-      image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
+      image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
+      fullWidth
     >
       <p>
         You can use the Files section to upload images, videos, and other
-        documents
+        documents. This example shows the content with a centered layout and
+        full width.
       </p>
     </EmptyState>
   </Card.Section>

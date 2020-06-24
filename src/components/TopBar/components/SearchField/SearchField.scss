@@ -98,6 +98,7 @@ $stacking-order: (
 
   &::placeholder {
     color: var(--p-text, var(--top-bar-color));
+    transition: (duration() - 33ms) color easing() 33ms;
   }
 
   &::-webkit-search-decoration,
@@ -121,6 +122,10 @@ $stacking-order: (
   height: $icon-size;
   pointer-events: none;
   transform: translateY(-50%);
+
+  svg {
+    transition: (duration() - 33ms) fill easing() 33ms;
+  }
 }
 
 .Clear {

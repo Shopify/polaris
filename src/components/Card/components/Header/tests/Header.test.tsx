@@ -6,7 +6,7 @@ import {ButtonGroup, Heading, buttonsFrom} from 'components';
 import {Header} from '../Header';
 
 jest.mock('../../../../Button', () => ({
-  ...require.requireActual('../../../../Button'),
+  ...(jest.requireActual('../../../../Button') as any),
   buttonsFrom: jest.fn(),
 }));
 

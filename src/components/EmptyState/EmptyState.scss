@@ -1,6 +1,8 @@
 @import '../../styles/common';
 
-$detail-width: rem(336px);
+$within-page-detail-width: rem(336px);
+$detail-width: rem(400px);
+
 $stacking-order: (
   illustration: 0,
   details: 10,
@@ -20,6 +22,8 @@ $illustration-width: calc(100% + #{$left-offset} * 2);
 $illustration-width-cropped: calc(
   #{$illustration-width} + #{$right-offset} * 2
 );
+
+$centered-illustration-width: rem(226px);
 
 .EmptyState {
   display: flex;
@@ -61,15 +65,15 @@ $illustration-width-cropped: calc(
 }
 
 .withinContentContainer {
+  margin: 0 auto;
+  padding-top: spacing(loose);
+  padding-bottom: spacing(loose) * 3;
+
   .Section {
     position: unset;
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
-  }
-
-  .DetailsContainer {
-    padding-top: spacing();
   }
 
   .Details {
@@ -99,7 +103,7 @@ $illustration-width-cropped: calc(
     position: relative;
     z-index: z-index(details, $stacking-order);
     padding: 0 spacing();
-    width: $detail-width;
+    width: $within-page-detail-width;
 
     @include page-content-when-not-fully-condensed {
       padding: 0;
@@ -133,6 +137,37 @@ $illustration-width-cropped: calc(
       position: initial;
       width: 100%;
     }
+  }
+}
+
+.centeredLayout {
+  .Section {
+    left: 0;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ImageContainer,
+  .DetailsContainer {
+    flex: 0;
+  }
+
+  .Image {
+    margin: unset;
+    width: $centered-illustration-width;
+    max-width: 100%;
+  }
+
+  .Details {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.fullWidth {
+  .Details {
+    max-width: 100%;
   }
 }
 

@@ -30,6 +30,8 @@ export interface ContextualSaveBarProps {
   saveAction?: ContextualSaveBarAction;
   /** Discard or cancel contextual save bar action with text defaulting to 'Discard' */
   discardAction?: ContextualSaveBarCombinedActionProps;
+  /** Remove the normal max-width on the contextual save bar */
+  fullWidth?: boolean;
 }
 
 // Toast

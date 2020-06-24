@@ -144,6 +144,9 @@ export type {KeyboardKeyProps} from './KeyboardKey';
 export {KeypressListener} from './KeypressListener';
 export type {KeypressListenerProps} from './KeypressListener';
 
+export {KonamiCode} from './KonamiCode';
+export type {KonamiCodeProps} from './KonamiCode';
+
 export {Label} from './Label';
 export type {LabelProps} from './Label';
 

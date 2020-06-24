@@ -62,6 +62,21 @@ describe('<Icon />', () => {
       warningSpy.mockRestore();
     });
 
+    it('warns when a new design language color is used and new design language is not enabled', () => {
+      const warningSpy = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(() => {});
+
+      mountWithApp(<Icon source={PlusMinor} color="warning" />, {
+        features: {newDesignLanguage: false},
+      });
+
+      expect(warningSpy).toHaveBeenCalledWith(
+        'You have selected a color meant to be used in the new design language but new design language is not enabled.',
+      );
+      warningSpy.mockRestore();
+    });
+
     it('uses a specified color when newDesignLanguage is enabled', () => {
       const icon = mountWithApp(<Icon source={PlusMinor} color="subdued" />, {
         features: {newDesignLanguage: true},

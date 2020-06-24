@@ -169,6 +169,7 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
     hasPrevious: true,
     hasNext: true,
   }}
+  additionalNavigation={<Avatar size="small" initials="CD" customer={false} />}
   separator
 >
   <p>Page content</p>
@@ -196,6 +197,32 @@ Use for building any page on iOS.
 ![Page on iOS](/public_images/components/Page/ios/with-header@2x.png)
 
 <!-- /content-for -->
+
+### Page with custom primary action
+
+<!-- example-for: web -->
+
+Use to create a custom primary action.
+
+```jsx
+<Page
+  breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+  title="General"
+  primaryAction={
+    <Button
+      primary
+      connectedDisclosure={{
+        accessibilityLabel: 'Other save actions',
+        actions: [{content: 'Save as new'}],
+      }}
+    >
+      Save
+    </Button>
+  }
+>
+  <p>Page content</p>
+</Page>
+```
 
 ### Page without primary action in header
 

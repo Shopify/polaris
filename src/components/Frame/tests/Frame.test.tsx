@@ -3,7 +3,7 @@ import {CSSTransition} from '@material-ui/react-transition-group';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {documentHasStyle, mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {
   ContextualSaveBar as PolarisContextualSavebar,
   Loading as PolarisLoading,
@@ -53,10 +53,12 @@ describe('<Frame />', () => {
     });
 
     it('sets focus to the main content target anchor element when the skip to content link is clicked', () => {
-      const frame = mountWithAppProvider(<Frame />);
-      const mainAnchor = frame.find('main').find('a');
-      trigger(frame.find('a').at(0), 'onClick');
-      expect(mainAnchor.getDOMNode()).toBe(document.activeElement);
+      const frame = mountWithApp(<Frame />);
+
+      frame.find('a', {children: 'Skip to content'})!.trigger('onClick');
+      expect(document.activeElement).toBe(
+        frame.find('a', {id: 'AppFrameMainContent'})!.domNode,
+      );
     });
 
     it('sets focus to target element when the skip to content link is clicked', () => {
@@ -68,19 +70,18 @@ describe('<Frame />', () => {
         <a id={targetId} ref={targetRef} tabIndex={-1} href="" />
       );
 
-      const frame = mountWithAppProvider(
+      const frame = mountWithApp(
         <Frame skipToContentTarget={targetRef}>{skipToContentTarget}</Frame>,
       );
 
-      const triggerAnchor = frame.find('a').at(0);
-      const targetAnchor = frame.find(`#${targetId}`);
-      trigger(triggerAnchor, 'onFocus');
-      trigger(triggerAnchor, 'onClick');
+      const triggerAnchor = frame.findAll('a')[0]!;
 
-      expect(triggerAnchor.getDOMNode().getAttribute('href')).toBe(
-        `#${targetId}`,
+      triggerAnchor.trigger('onFocus');
+      triggerAnchor.trigger('onClick');
+
+      expect(document.activeElement).toBe(
+        frame.find('a', {id: targetId})!.domNode,
       );
-      expect(targetAnchor.getDOMNode()).toBe(document.activeElement);
     });
   });
 

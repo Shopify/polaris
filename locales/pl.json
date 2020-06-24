@@ -122,7 +122,7 @@
       "moreFiltersWithCount": "Więcej filtrów ({count})"
     },
     "Modal": {
-      "iFrameTitle": "treść - marża",
+      "iFrameTitle": "znacznik treści",
       "modalWarning": "W oknie modalnym brakuje tych wymaganych właściwości: {missingProps}"
     },
     "Pagination": {
@@ -182,7 +182,7 @@
         "SelectOptions": {
           "PastWeek": "w ostatnim tygodniu",
           "PastMonth": "w ostatnim miesiącu",
-          "PastQuarter": "w ostatnich 3 miesiącach",
+          "PastQuarter": "w ciągu ostatnich 3 miesięcy",
           "PastYear": "w ostatnim roku",
           "ComingWeek": "w następnym tygodniu",
           "ComingMonth": "w następnym miesiącu",
@@ -194,7 +194,7 @@
         "FilterLabelForValue": {
           "past_week": "w ostatnim tygodniu",
           "past_month": "w ostatnim miesiącu",
-          "past_quarter": "w ostatnich 3 miesiącach",
+          "past_quarter": "w ciągu ostatnich 3 miesięcy",
           "past_year": "w ostatnim roku",
           "coming_week": "w następnym tygodniu",
           "coming_month": "w następnym miesiącu",

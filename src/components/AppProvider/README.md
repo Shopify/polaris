@@ -510,6 +510,51 @@ function App() {
 
 ---
 
+## Using linkComponent
+
+By default Polaris renders `<Link>` elements (and action objects) as `<a>` tags. That works well for simple one-page demos. However for more complex multi-page applications that use a router such as [`react-router`](https://reacttraining.com/react-router/web) you will want links to use the components provided by your router. If you don't then every link will be an `<a>` tag and thus trigger a whole page refresh instead of navigating client-side.
+
+The `linkComponent` prop allows you to customise how links behave within Polaris by allowing you to inject your router's own Link component. The following example demonstrates using react-router's `Link` component.
+
+```jsx
+import {BrowserRouter, Link as ReactRouterLink} from 'react-router-dom';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppProvider linkComponent={Link}>
+        {/* App content including your <Route> components */}
+      </AppProvider>
+    </BrowserRouter>
+  );
+}
+
+const IS_EXTERNAL_LINK_REGEX = /^(?:[a-z][a-z\d+.-]*:|\/\/)/;
+
+function Link({children, url = '', external, ref, ...rest}) {
+  // react-router only supports links to pages it can handle itself. It does not
+  // support arbirary links, so anything that is not a path-based link should
+  // use a reglar old `a` tag
+  if (external || IS_EXTERNAL_LINK_REGEX.test(url)) {
+    rest.target = '_blank';
+    rest.rel = 'noopener noreferrer';
+    return (
+      <a href={url} {...rest}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <ReactRouterLink to={url} {...rest}>
+      {children}
+    </ReactRouterLink>
+  );
+}
+```
+
+---
+
 ## Testing components
 
 You must include Polaris context in your tests when you use Polaris components.

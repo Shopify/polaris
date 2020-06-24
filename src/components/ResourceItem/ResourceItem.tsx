@@ -111,15 +111,19 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
 
   shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
     const {
+      children: nextChildren,
       context: {selectedItems: nextSelectedItems, ...restNextContext},
       ...restNextProps
     } = nextProps;
+
     const {
+      children,
       context: {selectedItems, ...restContext},
       ...restProps
     } = this.props;
 
     const nextSelectMode = nextProps.context.selectMode;
+
     return (
       !isEqual(this.state, nextState) ||
       this.props.context.selectMode !== nextSelectMode ||

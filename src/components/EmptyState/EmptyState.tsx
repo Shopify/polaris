@@ -2,7 +2,8 @@ import React, {useContext} from 'react';
 
 import {classNames} from '../../utilities/css';
 import {WithinContentContext} from '../../utilities/within-content-context';
-import type {Action} from '../../types';
+import {useFeatures} from '../../utilities/features';
+import type {ComplexAction} from '../../types';
 import {Image} from '../Image';
 import {buttonFrom} from '../Button';
 import {Stack} from '../Stack';
@@ -14,20 +15,25 @@ import styles from './EmptyState.scss';
 export interface EmptyStateProps {
   /** The empty state heading */
   heading?: string;
-  /** The path to the image to display */
+  /**
+   * The path to the image to display.
+   * The image should have ~40px of white space above when empty state is used within a card, modal, or navigation component
+   */
   image: string;
   /** The path to the image to display on large screens */
   largeImage?: string;
-  /**
-   * Whether or not to limit the image to the size of its container on large screens.
-   */
+  /** Whether or not to limit the image to the size of its container on large screens */
   imageContained?: boolean;
+  /** Whether or not the content should span the full width of its container  */
+  fullWidth?: boolean;
+  /** Whether or not the layout is stacked and centered vs justified apart */
+  centeredLayout?: boolean;
   /** Elements to display inside empty state */
   children?: React.ReactNode;
   /** Primary action for empty state */
-  action?: Action;
+  action?: ComplexAction;
   /** Secondary action for empty state */
-  secondaryAction?: Action;
+  secondaryAction?: ComplexAction;
   /** Secondary elements to display below empty state actions */
   footerContent?: React.ReactNode;
 }
@@ -38,13 +44,19 @@ export function EmptyState({
   image,
   largeImage,
   imageContained,
+  centeredLayout = false,
+  fullWidth = false,
   action,
   secondaryAction,
   footerContent,
 }: EmptyStateProps) {
   const withinContentContainer = useContext(WithinContentContext);
+  const {newDesignLanguage = false} = useFeatures();
+  const newLayout = centeredLayout || newDesignLanguage;
   const className = classNames(
     styles.EmptyState,
+    fullWidth && styles.fullWidth,
+    newLayout && styles.centeredLayout,
     imageContained && styles.imageContained,
     withinContentContainer ? styles.withinContentContainer : styles.withinPage,
   );
@@ -66,7 +78,7 @@ export function EmptyState({
   );
 
   const secondaryActionMarkup = secondaryAction
-    ? buttonFrom(secondaryAction, {plain: true})
+    ? buttonFrom(secondaryAction, newLayout ? {} : {plain: true})
     : null;
 
   const footerContentMarkup = footerContent ? (
@@ -76,7 +88,8 @@ export function EmptyState({
   ) : null;
 
   const headingSize = withinContentContainer ? 'small' : 'medium';
-  const primaryActionSize = withinContentContainer ? 'medium' : 'large';
+  const primaryActionSize =
+    withinContentContainer || newLayout ? 'medium' : 'large';
 
   const primaryActionMarkup = action
     ? buttonFrom(action, {primary: true, size: primaryActionSize})
@@ -92,7 +105,7 @@ export function EmptyState({
 
   const textContentMarkup =
     headingMarkup || children ? (
-      <TextContainer>
+      <TextContainer spacing={newLayout ? 'tight' : undefined}>
         {headingMarkup}
         {childrenMarkup}
       </TextContainer>
@@ -101,7 +114,11 @@ export function EmptyState({
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (
       <div className={styles.Actions}>
-        <Stack alignment="center">
+        <Stack
+          alignment="center"
+          distribution={newLayout ? 'center' : undefined}
+          spacing={newLayout ? 'tight' : undefined}
+        >
           {primaryActionMarkup}
           {secondaryActionMarkup}
         </Stack>

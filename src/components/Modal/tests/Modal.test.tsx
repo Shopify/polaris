@@ -20,7 +20,7 @@ jest.mock('@material-ui/react-transition-group', () => {
   }
 
   return {
-    ...require.requireActual('@material-ui/react-transition-group'),
+    ...(require.requireActual('@material-ui/react-transition-group') as any),
     TransitionGroup: ChildGroup,
     TransitionChild: ChildGroup,
     CSSTransition: ChildGroup,
@@ -68,7 +68,7 @@ describe('<Modal>', () => {
       modal.find(Dialog).getDOMNode(),
     );
 
-    expect(focusedNode).toBe(document.activeElement);
+    expect(document.activeElement).toBe(focusedNode);
   });
 
   describe('src', () => {

@@ -41,7 +41,7 @@ export interface HeaderProps extends TitleProps {
   /** Adds a border to the bottom of the page header */
   separator?: boolean;
   /** Primary page-level action */
-  primaryAction?: PrimaryAction;
+  primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
   pagination?: PaginationDescriptor;
   /** Collection of breadcrumbs */
@@ -50,6 +50,14 @@ export interface HeaderProps extends TitleProps {
   secondaryActions?: MenuActionDescriptor[];
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
+  /** Additional navigation markup */
+  additionalNavigation?: React.ReactNode;
+}
+
+export function isPrimaryAction(
+  x: PrimaryAction | React.ReactNode,
+): x is PrimaryAction {
+  return !React.isValidElement(x) && x !== undefined;
 }
 
 export function Header({
@@ -61,6 +69,7 @@ export function Header({
   separator,
   primaryAction,
   pagination,
+  additionalNavigation,
   breadcrumbs = [],
   secondaryActions = [],
   actionGroups = [],
@@ -87,10 +96,17 @@ export function Header({
       </div>
     ) : null;
 
+  const additionalNavigationMarkup = additionalNavigation ? (
+    <div className={styles.AdditionalNavigationWrapper}>
+      {additionalNavigation}
+    </div>
+  ) : null;
+
   const navigationMarkup =
-    breadcrumbMarkup || paginationMarkup ? (
+    breadcrumbMarkup || paginationMarkup || additionalNavigationMarkup ? (
       <div className={styles.Navigation}>
         {breadcrumbMarkup}
+        {additionalNavigationMarkup}
         {paginationMarkup}
       </div>
     ) : null;
@@ -104,28 +120,8 @@ export function Header({
     />
   );
 
-  const primary =
-    primaryAction &&
-    (primaryAction.primary === undefined ? true : primaryAction.primary);
-
   const primaryActionMarkup = primaryAction ? (
-    <ConditionalWrapper
-      condition={newDesignLanguage === false}
-      wrapper={(children) => (
-        <div className={styles.PrimaryActionWrapper}>{children}</div>
-      )}
-    >
-      {buttonsFrom(
-        shouldShowIconOnly(
-          newDesignLanguage,
-          isNavigationCollapsed,
-          primaryAction,
-        ),
-        {
-          primary,
-        },
-      )}
-    </ConditionalWrapper>
+    <PrimaryActionMarkup primaryAction={primaryAction} />
   ) : null;
 
   const actionMenuMarkup =
@@ -213,6 +209,42 @@ export function Header({
         {primaryActionMarkup}
       </div>
     </div>
+  );
+}
+
+function PrimaryActionMarkup({
+  primaryAction,
+}: {
+  primaryAction: PrimaryAction | React.ReactNode;
+}) {
+  const {isNavigationCollapsed} = useMediaQuery();
+  const {newDesignLanguage} = useFeatures();
+  let content = primaryAction;
+  if (isPrimaryAction(primaryAction)) {
+    const primary =
+      primaryAction.primary === undefined ? true : primaryAction.primary;
+
+    content = buttonsFrom(
+      shouldShowIconOnly(
+        newDesignLanguage,
+        isNavigationCollapsed,
+        primaryAction,
+      ),
+      {
+        primary,
+      },
+    );
+  }
+
+  return (
+    <ConditionalWrapper
+      condition={newDesignLanguage === false}
+      wrapper={(children) => (
+        <div className={styles.PrimaryActionWrapper}>{children}</div>
+      )}
+    >
+      {content}
+    </ConditionalWrapper>
   );
 }
 
