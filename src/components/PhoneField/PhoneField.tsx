@@ -148,6 +148,7 @@ export function PhoneField({
     const phoneNumberMaxLength = displayFormatter.reduce(
       (accumulator: number, currentValue: number) => accumulator + currentValue,
     );
+
     if (phoneNumber === '' || phoneNumber.length > phoneNumberMaxLength) {
       return phoneNumber;
     }
