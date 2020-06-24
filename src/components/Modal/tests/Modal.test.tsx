@@ -15,7 +15,7 @@ import {Modal} from '../Modal';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
-  ...jest.requireActual('../../../utilities/app-bridge-transformers'),
+  ...(jest.requireActual('../../../utilities/app-bridge-transformers') as any),
   transformActions: jest.fn((...args) => args),
 }));
 

@@ -80,8 +80,7 @@ $range-thumb-shadow-focus: var(
   }
 
   .disabled & {
-    background-image: none;
-    background: var(--p-border-disabled, color('sky', 'dark'));
+    background: var(--p-border-disabled, color('sky', 'dark')) none;
   }
 }
 

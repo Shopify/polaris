@@ -29,5 +29,6 @@ export function useDeepEffect(
   dependencies: DependencyList,
   customCompare?: Comparator,
 ) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(callback, useDeepCompareRef(dependencies, customCompare));
 }

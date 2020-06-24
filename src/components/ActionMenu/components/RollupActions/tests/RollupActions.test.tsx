@@ -8,7 +8,7 @@ import {
 } from 'test-utilities/legacy';
 import {Button, Popover} from 'components';
 
-// eslint-disable-next-line shopify/strict-component-boundaries
+// eslint-disable-next-line @shopify/strict-component-boundaries
 import {
   Item as ActionListItem,
   Section as ActionListSection,

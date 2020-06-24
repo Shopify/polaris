@@ -18,8 +18,7 @@ import {BannerContext} from 'utilities/banner-context';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
-
-import {Banner} from '..';
+import {Banner} from '../Banner';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
