@@ -143,6 +143,7 @@ $stacking-order: (
     border-radius: var(--p-border-radius-base, border-radius());
   }
 
+  // stylelint-disable selector-max-class
   &:-webkit-autofill ~ .Backdrop,
   &:-webkit-autofill:hover ~ .Backdrop,
   &:-webkit-autofill:focus ~ .Backdrop {
