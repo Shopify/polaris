@@ -3,7 +3,7 @@ import {resolve} from 'path';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import externals from 'rollup-plugin-node-externals';
 
 import packageJSON from '../../package.json';
@@ -24,7 +24,6 @@ function plugins(browserslist) {
   return [
     replace({
       '{{POLARIS_VERSION}}': packageJSON.version,
-      '<%= POLARIS_VERSION %>': packageJSON.version,
       delimiters: ['', ''],
     }),
     externals({
@@ -43,7 +42,7 @@ function plugins(browserslist) {
       // to "development", which ends up including a bunch of debug helpers.
       envName: 'production',
       exclude: 'node_modules/**',
-      runtimeHelpers: true,
+      babelHelpers: 'bundled',
       // Don't use config from babel.config.js as we want to customise the
       // browserslist per compile target.
       configFile: false,
