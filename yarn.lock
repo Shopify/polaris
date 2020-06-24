@@ -1574,6 +1574,19 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
+"@shopify/address-consts@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@shopify/address-consts/-/address-consts-2.0.1.tgz#571df5ada7b5bb96cec05eb048e2a2b42842f3db"
+  integrity sha512-atowIAXVy9DcTSC7l8HlP0a/BXGoGuJXFQEZb7BsVsu1H/tTp6O4+3aPgNjCaFSJVFmhdLUa4NTB4cb1/pN4MQ==
+
+"@shopify/address@^2.8.5":
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/@shopify/address/-/address-2.8.5.tgz#474e0d83e2fbce51d8ca6e47926ab52feca201e8"
+  integrity sha512-1IHXnXZ4Kw6k2Q1ihs2RQDKbmB3pr1/ye7vXuLCrT6Cpq2rXtAPe+p6tIAE+D/HiuRs6AWztJv0JXF2zhfYbhQ==
+  dependencies:
+    "@shopify/address-consts" "^2.0.1"
+    tslib "^1.9.3"
+
 "@shopify/app-bridge@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@shopify/app-bridge/-/app-bridge-1.3.0.tgz#1c3dfb1b3e10041a3d639a219bc7010051f5fa97"

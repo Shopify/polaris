@@ -199,6 +199,7 @@
   "dependencies": {
     "@babel/runtime": "^7.1.6",
     "@material-ui/react-transition-group": "^4.2.0",
+    "@shopify/address": "^2.8.5",
     "@shopify/app-bridge": "^1.3.0",
     "@shopify/javascript-utilities": "^2.4.1",
     "@shopify/polaris-icons": "^3.10.0",
