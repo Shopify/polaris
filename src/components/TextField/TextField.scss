@@ -146,7 +146,7 @@ $stacking-order: (
   &:-webkit-autofill ~ .Backdrop,
   &:-webkit-autofill:hover ~ .Backdrop,
   &:-webkit-autofill:focus ~ .Backdrop {
-    box-shadow: 0 0 0 border-width() color('sky', 'dark');
+    box-shadow: 0 0 0 border-width() color('sky');
   }
 }
 
