@@ -74,13 +74,13 @@ describe('build', () => {
     expect(fileBuckets.includesTemplateString).toHaveLength(0);
 
     expect(fileBuckets.includesVersion).toStrictEqual([
-      './build/polaris.css',
-      './build/polaris.es.js',
-      './build/polaris.js',
-      './build/polaris.min.css',
-      './build/styles/components.scss',
-      './esnext/components/AppProvider/AppProvider.scss',
+      './esnext/components/AppProvider/AppProvider.css',
       './esnext/configure.js',
+      './index.es.js',
+      './index.js',
+      './styles.css',
+      './styles.min.css',
+      './styles/components.scss',
     ]);
   });
 
@@ -102,26 +102,22 @@ describe('build', () => {
       ).not.toMatch(/return <div .+?<\/div>/);
     });
 
-    it('provides scss files', () => {
-      expect(
-        fs.existsSync('esnext/components/Stack/Stack.processed.scss'),
-      ).toBe(true);
+    it('provides css files', () => {
+      expect(fs.existsSync('esnext/components/Stack/Stack.css')).toBe(true);
     });
 
-    it('preserves CSS class names to give consumers control over minification', () => {
+    it('converts CSS class names so we have control over minification', () => {
       expect(
-        fs.readFileSync('esnext/components/Stack/Stack.processed.scss', 'utf8'),
-      ).toMatch('.Stack');
+        fs.readFileSync('esnext/components/Stack/Stack.css', 'utf8'),
+      ).toMatch('.Polaris-Stack');
     });
 
-    it('preserves ES scss imports', () => {
+    it('converts ES scss imports', () => {
       const indexContents = fs.readFileSync(
         'esnext/components/Avatar/Avatar.js',
         'utf8',
       );
-      expect(indexContents).toMatch(
-        "import styles from './Avatar.processed.scss';",
-      );
+      expect(indexContents).toMatch("import styles from './Avatar.scss.js';");
     });
 
     it('gives consumers control over global.scss', () => {
