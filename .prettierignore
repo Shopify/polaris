@@ -5,8 +5,6 @@ node_modules
 /types
 /index.*
 /styles.css
-/styles.min.css
-/styles.scss
 /styles
 /src/styles/polaris-tokens
 /scripts/analyze-custom-properties/dist

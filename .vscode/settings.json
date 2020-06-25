@@ -19,7 +19,7 @@
     "esnext/": true,
     "index.*": true,
     "sandbox": true,
-    "styles.{css,min.css,scss}": true,
+    "styles.css": true,
     "styles/": true,
     "types/": true
   },
@@ -35,7 +35,7 @@
     "esnext/": true,
     "index.*": true,
     "sandbox": true,
-    "styles.{css,min.css,scss}": true,
+    "styles.css": true,
     "styles/": true,
     "types/": true,
     "scripts/analyze-custom-properties/dist/": true
