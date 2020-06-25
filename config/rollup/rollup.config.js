@@ -76,7 +76,13 @@ export default [
   },
   {
     input: `${root}/src/index.ts`,
-    output: [{format: 'esm', dir: `${root}/esnext`}],
+    output: [
+      {
+        format: 'esm',
+        dir: `${root}/dist/esnext`,
+        entryFileNames: '[name][extname].esnext',
+      },
+    ],
     preserveModules: true,
     plugins: [
       ...plugins('extends @shopify/browserslist-config/latest-evergreen'),

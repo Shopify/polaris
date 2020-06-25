@@ -1,5 +1,4 @@
 node_modules
 /build
 /dist
-/esnext
 /src/styles/polaris-tokens

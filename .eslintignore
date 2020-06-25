@@ -2,6 +2,5 @@ node_modules
 /examples
 /build
 /dist
-/esnext
 /src/styles/polaris-tokens
 /scripts/analyze-custom-properties/dist

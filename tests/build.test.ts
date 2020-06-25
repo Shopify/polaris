@@ -43,7 +43,7 @@ describe('build', () => {
   });
 
   it('replaces occurrences of POLARIS_VERSION', () => {
-    const files = glob.sync('./{dist,esnext}/**/*.{js,mjs,css,scss}');
+    const files = glob.sync('./dist/**/*.{js,mjs,esnext,css,scss}');
 
     expect(files).not.toHaveLength(0);
 
@@ -67,53 +67,58 @@ describe('build', () => {
     expect(fileBuckets.includesTemplateString).toHaveLength(0);
 
     expect(fileBuckets.includesVersion).toStrictEqual([
+      './dist/esnext/components/AppProvider/AppProvider.css',
+      './dist/esnext/configure.ts.esnext',
       './dist/index.js',
       './dist/index.mjs',
       './dist/styles.css',
-      './esnext/components/AppProvider/AppProvider.css',
-      './esnext/configure.js',
     ]);
   });
 
   describe('esnext', () => {
     it('facilitates production builds without typescript', () => {
-      expect(fs.existsSync('esnext/index.js')).toBe(true);
+      expect(fs.existsSync('./dist/esnext/index.ts.esnext')).toBe(true);
     });
 
     it('preserves classes to facilitate class-level tree shaking', () => {
       // `Collapsible` deeply ties into the react class based life-cycles methods, so is likely to be one of the last components converted to a function.
       expect(
-        fs.readFileSync('esnext/components/Collapsible/Collapsible.js', 'utf8'),
+        fs.readFileSync(
+          './dist/esnext/components/Collapsible/Collapsible.tsx.esnext',
+          'utf8',
+        ),
       ).toMatch('class Collapsible');
     });
 
     it('converts jsx so we have control over Babel transforms', () => {
       expect(
-        fs.readFileSync('esnext/components/Stack/Stack.js', 'utf8'),
+        fs.readFileSync(
+          './dist/esnext/components/Stack/Stack.tsx.esnext',
+          'utf8',
+        ),
       ).not.toMatch(/return <div .+?<\/div>/);
     });
 
     it('provides css files', () => {
-      expect(fs.existsSync('esnext/components/Stack/Stack.css')).toBe(true);
+      expect(fs.existsSync('./dist/esnext/components/Stack/Stack.css')).toBe(
+        true,
+      );
     });
 
     it('converts CSS class names so we have control over minification', () => {
       expect(
-        fs.readFileSync('esnext/components/Stack/Stack.css', 'utf8'),
+        fs.readFileSync('./dist/esnext/components/Stack/Stack.css', 'utf8'),
       ).toMatch('.Polaris-Stack');
     });
 
     it('converts ES scss imports', () => {
       const indexContents = fs.readFileSync(
-        'esnext/components/Avatar/Avatar.js',
+        './dist/esnext/components/Avatar/Avatar.scss.esnext',
         'utf8',
       );
-      expect(indexContents).toMatch("import styles from './Avatar.scss.js';");
-    });
-
-    it('gives consumers control over global.scss', () => {
-      const indexContents = fs.readFileSync('esnext/index.js', 'utf8');
-      expect(indexContents).not.toMatch(/import '.+\.scss'/);
+      expect(indexContents).toMatch("import './Avatar.css';");
+      expect(indexContents).toMatch('Polaris-Avatar');
+      expect(indexContents).toMatch('Polaris-Avatar--hidden');
     });
   });
 
