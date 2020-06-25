@@ -100,7 +100,7 @@ export function PhoneField({
 
   /** Callback function for handling when a country is selected */
   const handleSelected = useCallback(
-    (index, toggle?) => {
+    (index) => {
       setSelectedCountry(countries[index].countryName);
       setSelectedCountryCode(countries[index].countryCode);
       setSelectedDisplayFormat(countries[index].displayFormat);
