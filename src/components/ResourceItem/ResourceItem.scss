@@ -205,6 +205,10 @@ $resource-list-item-variables: (
   display: flex;
 }
 
+.OwnedNoMedia {
+  padding-top: spacing(extra-tight);
+}
+
 // Item handle
 .Handle {
   width: resource-list-item(handle-width);
