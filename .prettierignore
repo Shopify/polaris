@@ -1,7 +1,6 @@
 node_modules
 /build
 /dist
-/esnext
 /src/styles/polaris-tokens
 /scripts/analyze-custom-properties/dist
 

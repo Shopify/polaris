@@ -2,7 +2,6 @@
 node_modules
 /build
 /dist
-/esnext
 .DS_Store
 *.scss.d.ts
 /src/styles/polaris-tokens

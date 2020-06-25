@@ -9,35 +9,18 @@
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
-    "**/.hg": true,
-    "**/.svn": true,
     "**/node_modules": true,
     ".{dev,shadowenv.d}": true,
-    "build/": true,
-    "scripts/analyze-custom-properties/dist/": true,
-    "docs/": true,
-    "esnext/": true,
-    "index.*": true,
-    "sandbox": true,
-    "styles.css": true,
-    "styles/": true,
-    "types/": true
+    "{build,dist}/": true,
+    "scripts/analyze-custom-properties/dist/": true
   },
   "javascript.validate.enable": false,
   "jest.autoEnable": false,
   "scss.validate": false,
   "search.exclude": {
-    "**/bower_components": true,
     "**/node_modules": true,
     ".{dev,shadowenv.d}": true,
-    "build/": true,
-    "docs/": true,
-    "esnext/": true,
-    "index.*": true,
-    "sandbox": true,
-    "styles.css": true,
-    "styles/": true,
-    "types/": true,
+    "{build,dist}/": true,
     "scripts/analyze-custom-properties/dist/": true
   },
   "typescript.tsdk": "./node_modules/typescript/lib"
