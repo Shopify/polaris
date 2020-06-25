@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noEmit": false,
     "declaration": true,
-    "declarationDir": "types/latest",
+    "declarationDir": "dist/types/latest",
     "declarationMap": false,
     "emitDeclarationOnly": true,
     "incremental": true,

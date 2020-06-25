@@ -1,9 +1,5 @@
 node_modules
 /build
-/docs
+/dist
 /esnext
-/types
-/index.*
-/styles.css
-/styles
 /src/styles/polaris-tokens

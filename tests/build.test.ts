@@ -17,33 +17,33 @@ describe('build', () => {
     execSync('yarn run build');
   });
 
-  it('generates lib files in ./', () => {
-    expect(fs.existsSync('./index.js')).toBe(true);
-    expect(fs.existsSync('./index.es.js')).toBe(true);
-    expect(fs.existsSync('./styles.css')).toBe(true);
+  it('generates lib files in dist', () => {
+    expect(fs.existsSync('./dist/index.js')).toBe(true);
+    expect(fs.existsSync('./dist/index.mjs')).toBe(true);
+    expect(fs.existsSync('./dist/styles.css')).toBe(true);
   });
 
   it('generates fully namespaced CSS for root components', () => {
-    expect(fs.readFileSync('./styles.css', 'utf8')).toMatch('.Polaris-Button{');
+    expect(fs.readFileSync('./dist/styles.css', 'utf8')).toMatch(
+      '.Polaris-Button{',
+    );
   });
 
   it('generates fully namespaced CSS for nested components', () => {
-    expect(fs.readFileSync('./styles.css', 'utf8')).toMatch(
+    expect(fs.readFileSync('./dist/styles.css', 'utf8')).toMatch(
       '.Polaris-ResourceList-BulkActions__BulkActionButton{',
     );
   });
 
   it('generates typescript definition files', () => {
-    expect(fs.existsSync('./types/latest/src/index.d.ts')).toBe(true);
+    expect(fs.existsSync('./dist/types/latest/src/index.d.ts')).toBe(true);
 
     // Downleveled for consumers on older TypeScript versions
-    expect(fs.existsSync('./types/3.4/src/index.d.ts')).toBe(true);
+    expect(fs.existsSync('./dist/types/3.4/src/index.d.ts')).toBe(true);
   });
 
   it('replaces occurrences of POLARIS_VERSION', () => {
-    const files = glob.sync(
-      './{index.*,styles.*,esnext/**/*.{js,css,scss},styles/**/*.scss}',
-    );
+    const files = glob.sync('./{dist,esnext}/**/*.{js,mjs,css,scss}');
 
     expect(files).not.toHaveLength(0);
 
@@ -67,11 +67,11 @@ describe('build', () => {
     expect(fileBuckets.includesTemplateString).toHaveLength(0);
 
     expect(fileBuckets.includesVersion).toStrictEqual([
+      './dist/index.js',
+      './dist/index.mjs',
+      './dist/styles.css',
       './esnext/components/AppProvider/AppProvider.css',
       './esnext/configure.js',
-      './index.es.js',
-      './index.js',
-      './styles.css',
     ]);
   });
 
@@ -119,12 +119,14 @@ describe('build', () => {
 
   describe('Sass Public API', () => {
     it('generates sass entries files in ./styles dir', () => {
-      expect(fs.existsSync('./styles/_public-api.scss')).toBe(true);
-      expect(fs.existsSync('./styles/foundation/_spacing.scss')).toBe(true);
+      expect(fs.existsSync('./dist/styles/_public-api.scss')).toBe(true);
+      expect(fs.existsSync('./dist/styles/foundation/_spacing.scss')).toBe(
+        true,
+      );
     });
 
     it('does not contain any :global definitions', () => {
-      const files = glob.sync(`./{styles,esnext/styles}/**/*.scss`);
+      const files = glob.sync(`./{dist,esnext}/styles/**/*.scss`);
 
       expect(files).not.toHaveLength(0);
 
