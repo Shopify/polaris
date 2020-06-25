@@ -25,14 +25,14 @@
     "components",
     "component library"
   ],
-  "main": "index.js",
-  "module": "index.es.js",
-  "jsnext:main": "index.es.js",
-  "types": "types/latest/src/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "jsnext:main": "dist/index.mjs",
+  "types": "dist/types/latest/src/index.d.ts",
   "typesVersions": {
     "<3.8": {
-      "types/latest/*": [
-        "types/3.4/*"
+      "dist/types/latest/*": [
+        "dist/types/3.4/*"
       ]
     }
   },
@@ -50,8 +50,8 @@
     "preoutput-custom-properties": "yarn run build:known-custom-properties",
     "output-custom-properties": "node ./scripts/analyze-custom-properties/dist/cli.js -o build/custom-properties-data.json -i build/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
     "check:custom-properties": "node ./scripts/analyze-custom-properties/dist/cli.js -l error -i build/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
-    "clean": "rimraf build esnext styles types docs \"index.*\" \"./src/styles/polaris-tokens\" \"styles.css\"",
-    "clean:build": "rimraf \"build/.tsbuildinfo\" esnext styles types docs \"index.*\" \"./src/styles/polaris-tokens\" \"styles.css\"",
+    "clean": "rimraf build dist esnext \"./src/styles/polaris-tokens\"",
+    "clean:build": "rimraf \"build/.tsbuildinfo\" dist esnext \"./src/styles/polaris-tokens\"",
     "build": "node ./scripts/build.js",
     "prebuild-consumer": "yarn run build",
     "build-consumer": "node ./scripts/build-consumer",
@@ -182,14 +182,9 @@
     "react-dom": "^16.9.0"
   },
   "files": [
+    "dist",
     "esnext",
-    "styles",
-    "types",
-    "locales",
-    "docs",
-    "index.js",
-    "index.es.js",
-    "styles.css"
+    "locales"
   ],
   "dependencies": {
     "@shopify/javascript-utilities": "^2.4.1",

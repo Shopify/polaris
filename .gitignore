@@ -1,13 +1,8 @@
 *.log
 node_modules
 /build
-/docs
+/dist
 /esnext
-/types
-/index.*
-/styles.css
-/styles
-/sandbox
 .DS_Store
 *.scss.d.ts
 /src/styles/polaris-tokens

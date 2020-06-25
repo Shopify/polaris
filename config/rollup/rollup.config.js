@@ -63,8 +63,8 @@ export default [
   {
     input: `${root}/src/index.ts`,
     output: [
-      {format: 'cjs', file: `${root}/index.js`},
-      {format: 'esm', file: `${root}/index.es.js`},
+      {format: 'cjs', file: `${root}/dist/index.js`},
+      {format: 'esm', file: `${root}/dist/index.mjs`},
     ],
     plugins: [
       // Not specifying a browserslist config here to use the default as
