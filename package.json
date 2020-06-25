@@ -50,8 +50,8 @@
     "preoutput-custom-properties": "yarn run build:known-custom-properties",
     "output-custom-properties": "node ./scripts/analyze-custom-properties/dist/cli.js -o build/custom-properties-data.json -i build/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
     "check:custom-properties": "node ./scripts/analyze-custom-properties/dist/cli.js -l error -i build/known-custom-properties.json --pattern 'src/**/{,!(_utilities|_interaction-state)*}.scss'",
-    "clean": "rimraf build esnext styles types docs \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,min.css,scss}\"",
-    "clean:build": "rimraf \"build/.tsbuildinfo\" esnext styles types docs \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,min.css,scss}\"",
+    "clean": "rimraf build esnext styles types docs \"index.*\" \"./src/styles/polaris-tokens\" \"styles.css\"",
+    "clean:build": "rimraf \"build/.tsbuildinfo\" esnext styles types docs \"index.*\" \"./src/styles/polaris-tokens\" \"styles.css\"",
     "build": "node ./scripts/build.js",
     "prebuild-consumer": "yarn run build",
     "build-consumer": "node ./scripts/build-consumer",
@@ -140,7 +140,6 @@
     "commander": "^4.1.0",
     "copyfiles": "^2.1.1",
     "core-js": "^2.6.7",
-    "cssnano": "^4.1.10",
     "downlevel-dts": "^0.4.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -190,9 +189,7 @@
     "docs",
     "index.js",
     "index.es.js",
-    "styles.css",
-    "styles.min.css",
-    "styles.scss"
+    "styles.css"
   ],
   "dependencies": {
     "@shopify/javascript-utilities": "^2.4.1",

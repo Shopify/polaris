@@ -6,7 +6,6 @@ import {createFilter} from '@rollup/pluginutils';
 import glob from 'glob';
 import nodeSass from 'node-sass';
 import postcss from 'postcss';
-import cssNano from 'cssnano';
 import cssModulesExtractImports from 'postcss-modules-extract-imports';
 import cssModulesLocalByDefault from 'postcss-modules-local-by-default';
 import cssModulesScope from 'postcss-modules-scope';
@@ -73,7 +72,7 @@ export function stylesStandalone(options = {}) {
       return `export default ${properties};`;
     },
 
-    async generateBundle(generateOptions, bundles) {
+    generateBundle(generateOptions, bundles) {
       // generateBundle gets called once per call to bundle.write(). We call
       // that twice - one for the cjs build (polaris.js), one for the esm build
       // (polaris.es.js). We only want to do perform this logic once though
@@ -109,14 +108,6 @@ export function stylesStandalone(options = {}) {
 
       // Regular css file
       this.emitFile({type: 'asset', fileName: output, source: css});
-      // Minified css file
-      this.emitFile({
-        type: 'asset',
-        fileName: output.replace(/\.css$/, '.min.css'),
-        source: await cssNano
-          .process(css, {from: undefined})
-          .then((result) => result.css),
-      });
 
       generateSass(this.emitFile, inputRoot, orderedCssByFile);
     },
@@ -131,59 +122,16 @@ function getPostCSSOutput(processor, source, fromPath) {
 
 /**
  * The Sass build - the styles folder.
- * We precompile our source Sass to avoid the possibility that people may
- * accidentally overwrite some of our Sass variables / mixins / functions.
- * The only Sass feature we use in the built output is the importing of partials
- * to generate fewer entrypoints.
- *
- * - global.scss: previously contained standard css that must be included by all
- *   applications as it contained global styles. This css is now handled by
- *   AppProvider.scss which is imported as a side effect of importing
- *   AppProvider. Exists as an empty file for backwards compatibility with
- *   versions of sewing-kit prior to v0.113.0. Shall be removed in v6.
- * - components.scss and the components folder: a suite of the compiled css for
- *  every component
- * - foundation.scss, shared.scss and the foundation and shared folders: our
- *   public Sass API.
+ * Contains our public Sass API - functions and mixins that consuming apps can use.
+ * - _public-api.scss is the entrypoint that consumer should use
  */
-function generateSass(emitFile, inputFolder, cssByFile) {
-  // Copy contents of $inputFolder/styles/shared.scss and $inputFolder/styles/foundation.scss
-  // and the foundation, shared and polaris-tokens folders into into build/styles
-  // We need to transform the contents of the files as some of them contain
-  // `:global` css modules definitions that we want to strip out
-  const stripGlobalRegex = /:global\s*\(([^)]+)\)|:global\s*{\s*([^}]+)\s*}\s*/g;
+function generateSass(emitFile, inputFolder) {
+  // Copy scss files in the styles folder into the build output
+  // Skip _common.scss as that is a provate API
   const globOptions = {cwd: inputFolder, ignore: 'styles/_common.scss'};
 
   glob.sync(`styles/**/*.scss`, globOptions).forEach((filePath) => {
-    const file = fs
-      .readFileSync(`${inputFolder}/${filePath}`, 'utf8')
-      .replace(stripGlobalRegex, '$1$2');
+    const file = fs.readFileSync(`${inputFolder}/${filePath}`, 'utf8');
     emitFile({type: 'asset', fileName: filePath, source: file});
-  });
-
-  const componentFilesContent = [];
-  cssByFile.forEach((compiledCss, filename) => {
-    // For every referenced file that lives in the components folder:
-    // - make a note of the contents to use in styles/components.scss
-    if (filename.startsWith(`${inputFolder}/components`)) {
-      componentFilesContent.push(compiledCss);
-    }
-  });
-
-  // Generate styles/components.scss
-  // Contains contents for all the individual components that we collected above
-  emitFile({
-    type: 'asset',
-    fileName: `styles/components.scss`,
-    source: componentFilesContent.join('\n\n'),
-  });
-
-  // Generate styles.scss
-  emitFile({
-    type: 'asset',
-    fileName: `styles.scss`,
-    source: `@import 'styles/public-api';
-@import 'styles/components';
-`,
   });
 }
