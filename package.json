@@ -27,7 +27,6 @@
   ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "jsnext:main": "dist/index.mjs",
   "types": "dist/types/latest/src/index.d.ts",
   "typesVersions": {
     "<3.8": {
