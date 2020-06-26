@@ -1,17 +1,14 @@
-import {resolve} from 'path';
-
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import babel from '@rollup/plugin-babel';
 
-import packageJSON from '../../package.json';
+import packageJSON from './package.json';
+import {stylesStandalone} from './config/rollup/plugin-styles-standalone';
+import {stylesEsNext} from './config/rollup/plugin-styles-esnext';
+import {images} from './config/rollup/plugin-images';
 
-import {stylesStandalone} from './plugins/styles-standalone';
-import {stylesEsNext} from './plugins/styles-esnext';
-import {images} from './plugins/images';
-
-const root = resolve(__dirname, '../..');
+const root = __dirname;
 
 const externalPackages = [
   ...Object.keys(packageJSON.dependencies),
@@ -39,7 +36,6 @@ function plugins(browserslist) {
     }),
     commonjs(),
     babel({
-      root: resolve(`${__dirname}../../..`),
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       // We need to specify an environment name as leaving it blank defaults
       // to "development", which ends up including a bunch of debug helpers.

@@ -15,7 +15,7 @@ run(`yarn run tsc -p tsconfig.build.json`);
 run(`yarn run downlevel-dts dist/types/latest dist/types/3.4`);
 
 // Run a Rollup build to generate JS and styles
-run(`yarn run rollup -c config/rollup/rollup.config.js`);
+run(`yarn run rollup -c`);
 
 // Copy documentation into the docs folder
 run(`yarn run copyfiles './src/**/*.md' './dist/docs' --up=1`);
