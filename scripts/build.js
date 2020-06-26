@@ -19,3 +19,6 @@ run(`yarn run rollup -c`);
 
 // Copy documentation into the docs folder
 run(`yarn run copyfiles './src/**/*.md' './dist/docs' --up=1`);
+
+// Copy sass files that make up our public API into the styles folder
+run(`yarn run copyfiles './src/styles/**/*.scss' './dist/styles' --up=2`);
