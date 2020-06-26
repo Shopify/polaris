@@ -17,29 +17,95 @@ describe('build', () => {
     execSync('yarn run build');
   });
 
-  it('generates lib files in dist', () => {
-    expect(fs.existsSync('./dist/index.js')).toBe(true);
-    expect(fs.existsSync('./dist/index.mjs')).toBe(true);
-    expect(fs.existsSync('./dist/styles.css')).toBe(true);
+  describe('standard build', () => {
+    it('generates .js and .css files', () => {
+      expect(fs.existsSync('./dist/index.js')).toBe(true);
+      expect(fs.existsSync('./dist/index.mjs')).toBe(true);
+      expect(fs.existsSync('./dist/styles.css')).toBe(true);
+    });
+
+    it('generates namespaced CSS classes', () => {
+      const cssContent = fs.readFileSync('./dist/styles.css', 'utf8');
+
+      expect(cssContent).toMatch('.Polaris-Avatar{');
+
+      expect(cssContent).toMatch(
+        '.Polaris-ResourceList-BulkActions__BulkActionButton{',
+      );
+    });
   });
 
-  it('generates fully namespaced CSS for root components', () => {
-    expect(fs.readFileSync('./dist/styles.css', 'utf8')).toMatch(
-      '.Polaris-Button{',
-    );
+  describe('esnext build', () => {
+    it('generates .esnext  and .css files', () => {
+      expect(fs.existsSync('./dist/esnext/index.ts.esnext')).toBe(true);
+
+      expect(
+        fs.existsSync('./dist/esnext/components/Avatar/Avatar.tsx.esnext'),
+      ).toBe(true);
+
+      expect(fs.existsSync('./dist/esnext/components/Avatar/Avatar.css')).toBe(
+        true,
+      );
+    });
+
+    it('generates namespaced CSS classes', () => {
+      const cssContent = fs.readFileSync(
+        './dist/esnext/components/Avatar/Avatar.css',
+        'utf8',
+      );
+
+      expect(cssContent).toMatch('.Polaris-Avatar{');
+    });
+
+    it('generates CSS modules classname mappings', () => {
+      const jsContent = fs.readFileSync(
+        './dist/esnext/components/Avatar/Avatar.scss.esnext',
+        'utf8',
+      );
+      expect(jsContent).toMatch("import './Avatar.css';");
+      expect(jsContent).toMatch('Polaris-Avatar');
+      expect(jsContent).toMatch('Polaris-Avatar--hidden');
+    });
+
+    it('preserves classes to facilitate class-level tree shaking', () => {
+      // `Collapsible` deeply ties into the react class based life-cycles methods, so is likely to be one of the last components converted to a function.
+      expect(
+        fs.readFileSync(
+          './dist/esnext/components/Collapsible/Collapsible.tsx.esnext',
+          'utf8',
+        ),
+      ).toMatch('class Collapsible');
+    });
   });
 
-  it('generates fully namespaced CSS for nested components', () => {
-    expect(fs.readFileSync('./dist/styles.css', 'utf8')).toMatch(
-      '.Polaris-ResourceList-BulkActions__BulkActionButton{',
-    );
+  describe('sass public api', () => {
+    it('generates sass files in ./styles dir', () => {
+      expect(fs.existsSync('./dist/styles/_public-api.scss')).toBe(true);
+      expect(fs.existsSync('./dist/styles/foundation/_spacing.scss')).toBe(
+        true,
+      );
+    });
+
+    it('does not contain any :global definitions', () => {
+      const files = glob.sync(`./dist/styles/**/*.scss`);
+
+      expect(files).not.toHaveLength(0);
+
+      const filesWithGlobalDefinitions = files.filter((file) => {
+        return fs.readFileSync(file, 'utf-8').includes(':global');
+      });
+
+      expect(filesWithGlobalDefinitions).toStrictEqual([]);
+    });
   });
 
-  it('generates typescript definition files', () => {
-    expect(fs.existsSync('./dist/types/latest/src/index.d.ts')).toBe(true);
+  describe('ancillary output', () => {
+    it('generates typescript definition files', () => {
+      expect(fs.existsSync('./dist/types/latest/src/index.d.ts')).toBe(true);
 
-    // Downleveled for consumers on older TypeScript versions
-    expect(fs.existsSync('./dist/types/3.4/src/index.d.ts')).toBe(true);
+      // Downleveled for consumers on older TypeScript versions
+      expect(fs.existsSync('./dist/types/3.4/src/index.d.ts')).toBe(true);
+    });
   });
 
   it('replaces occurrences of POLARIS_VERSION', () => {
@@ -73,73 +139,5 @@ describe('build', () => {
       './dist/index.mjs',
       './dist/styles.css',
     ]);
-  });
-
-  describe('esnext', () => {
-    it('facilitates production builds without typescript', () => {
-      expect(fs.existsSync('./dist/esnext/index.ts.esnext')).toBe(true);
-    });
-
-    it('preserves classes to facilitate class-level tree shaking', () => {
-      // `Collapsible` deeply ties into the react class based life-cycles methods, so is likely to be one of the last components converted to a function.
-      expect(
-        fs.readFileSync(
-          './dist/esnext/components/Collapsible/Collapsible.tsx.esnext',
-          'utf8',
-        ),
-      ).toMatch('class Collapsible');
-    });
-
-    it('converts jsx so we have control over Babel transforms', () => {
-      expect(
-        fs.readFileSync(
-          './dist/esnext/components/Stack/Stack.tsx.esnext',
-          'utf8',
-        ),
-      ).not.toMatch(/return <div .+?<\/div>/);
-    });
-
-    it('provides css files', () => {
-      expect(fs.existsSync('./dist/esnext/components/Stack/Stack.css')).toBe(
-        true,
-      );
-    });
-
-    it('converts CSS class names so we have control over minification', () => {
-      expect(
-        fs.readFileSync('./dist/esnext/components/Stack/Stack.css', 'utf8'),
-      ).toMatch('.Polaris-Stack');
-    });
-
-    it('converts ES scss imports', () => {
-      const indexContents = fs.readFileSync(
-        './dist/esnext/components/Avatar/Avatar.scss.esnext',
-        'utf8',
-      );
-      expect(indexContents).toMatch("import './Avatar.css';");
-      expect(indexContents).toMatch('Polaris-Avatar');
-      expect(indexContents).toMatch('Polaris-Avatar--hidden');
-    });
-  });
-
-  describe('Sass Public API', () => {
-    it('generates sass entries files in ./styles dir', () => {
-      expect(fs.existsSync('./dist/styles/_public-api.scss')).toBe(true);
-      expect(fs.existsSync('./dist/styles/foundation/_spacing.scss')).toBe(
-        true,
-      );
-    });
-
-    it('does not contain any :global definitions', () => {
-      const files = glob.sync(`./{dist,esnext}/styles/**/*.scss`);
-
-      expect(files).not.toHaveLength(0);
-
-      const filesWithGlobalDefinitions = files.filter((file) => {
-        return fs.readFileSync(file, 'utf-8').includes(':global');
-      });
-
-      expect(filesWithGlobalDefinitions).toStrictEqual([]);
-    });
   });
 });
