@@ -2,11 +2,11 @@ import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import babel from '@rollup/plugin-babel';
+import image from '@rollup/plugin-image';
 
 import packageJSON from './package.json';
 import {stylesStandalone} from './config/rollup/plugin-styles-standalone';
 import {stylesEsNext} from './config/rollup/plugin-styles-esnext';
-import {images} from './config/rollup/plugin-images';
 
 const root = __dirname;
 
@@ -50,7 +50,7 @@ function plugins(browserslist) {
         ['@shopify/babel-preset/react'],
       ],
     }),
-    images(),
+    image(),
   ];
 }
 
