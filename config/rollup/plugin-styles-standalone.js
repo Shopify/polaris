@@ -13,7 +13,7 @@ import cssModulesValues from 'postcss-modules-values';
 import Parser from 'postcss-modules-parser';
 import postcssShopify from '@shopify/postcss-plugin';
 
-import {getNamespacedClassName} from '../namespaced-classname';
+import {getNamespacedClassName} from './namespaced-classname';
 
 const renderSass = promisify(nodeSass.render);
 
