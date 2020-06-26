@@ -6,11 +6,7 @@ import {createFilter} from '@rollup/pluginutils';
 import glob from 'glob';
 import nodeSass from 'node-sass';
 import postcss from 'postcss';
-import cssModulesExtractImports from 'postcss-modules-extract-imports';
-import cssModulesLocalByDefault from 'postcss-modules-local-by-default';
-import cssModulesScope from 'postcss-modules-scope';
-import cssModulesValues from 'postcss-modules-values';
-import Parser from 'postcss-modules-parser';
+import cssModules from 'postcss-modules';
 import postcssShopify from '@shopify/postcss-plugin';
 
 import {getNamespacedClassName} from './namespaced-classname';
@@ -29,17 +25,10 @@ export function stylesStandalone(options = {}) {
   let inputRoot;
 
   const styleProcessor = postcss([
-    cssModulesValues,
-    cssModulesLocalByDefault,
-    cssModulesExtractImports,
-    cssModulesScope({generateScopedName: getNamespacedClassName}),
-    new Parser({
-      fetch(to, from) {
-        const fromDirectoryPath = path.dirname(from);
-        const toPath = path.resolve(fromDirectoryPath, to);
-        const source = fs.readFileSync(toPath, 'utf8');
-        return getPostCSSOutput(styleProcessor, source, toPath);
-      },
+    cssModules({
+      generateScopedName: getNamespacedClassName,
+      // eslint-disable-next-line no-empty-function
+      getJSON() {},
     }),
     postcssShopify(),
   ]);
@@ -60,11 +49,9 @@ export function stylesStandalone(options = {}) {
         includePaths: [path.dirname(id)],
       }).then((result) => result.css.toString());
 
-      const postCssOutput = await getPostCSSOutput(
-        styleProcessor,
-        sassOutput,
-        id,
-      );
+      const postCssOutput = await styleProcessor
+        .process(sassOutput, {from: id})
+        .then(({css, root: {tokens}}) => ({css, tokens}));
 
       cssByFile[id] = postCssOutput.css;
 
@@ -112,12 +99,6 @@ export function stylesStandalone(options = {}) {
       generateSass(this.emitFile, inputRoot, orderedCssByFile);
     },
   };
-}
-
-function getPostCSSOutput(processor, source, fromPath) {
-  return processor
-    .process(source, {from: fromPath})
-    .then(({css, root: {tokens}}) => ({css, tokens}));
 }
 
 /**
