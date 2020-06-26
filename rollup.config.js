@@ -3,10 +3,10 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import babel from '@rollup/plugin-babel';
 import image from '@rollup/plugin-image';
+import postcssShopify from '@shopify/postcss-plugin';
 
 import packageJSON from './package.json';
-import {stylesStandalone} from './config/rollup/plugin-styles-standalone';
-import {stylesEsNext} from './config/rollup/plugin-styles-esnext';
+import {styles} from './config/rollup/plugin-styles';
 
 const root = __dirname;
 
@@ -19,7 +19,7 @@ function external(id) {
   return externalPackages.some((aPackage) => id.startsWith(aPackage));
 }
 
-function plugins(browserslist) {
+function plugins({browserslist, stylesConfig}) {
   const babelWebPresetOptions = {
     modules: 'auto',
     typescript: true,
@@ -50,6 +50,7 @@ function plugins(browserslist) {
         ['@shopify/babel-preset/react'],
       ],
     }),
+    styles({...stylesConfig, plugins: [postcssShopify]}),
     image(),
   ];
 }
@@ -62,12 +63,11 @@ export default [
       {format: 'cjs', file: `${root}/dist/index.js`},
       {format: 'esm', file: `${root}/dist/index.mjs`},
     ],
-    plugins: [
+    plugins: plugins({
       // Not specifying a browserslist config here to use the default as
       // defined in our package.json
-      ...plugins(),
-      stylesStandalone({output: 'styles.css'}),
-    ],
+      stylesConfig: {mode: 'standalone', output: 'styles.css'},
+    }),
     external,
   },
   {
@@ -80,10 +80,11 @@ export default [
       },
     ],
     preserveModules: true,
-    plugins: [
-      ...plugins('extends @shopify/browserslist-config/latest-evergreen'),
-      stylesEsNext(),
-    ],
+    plugins: plugins({
+      browserslist: 'extends @shopify/browserslist-config/latest-evergreen',
+      stylesConfig: {mode: 'esnext'},
+    }),
+
     external,
   },
 ];
