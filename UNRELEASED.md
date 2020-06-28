@@ -8,6 +8,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added a `dismissOnMouseOut` prop to `Tooltip` to dismiss Tooltip once pointer is no longer over children ([#3086](https://github.com/Shopify/polaris-react/pull/3086))
+
 ### Bug fixes
 
 - Fixed case where `DatePicker` did not translate the weekday name in an aria label ([#3113](https://github.com/Shopify/polaris-react/pull/3113))
