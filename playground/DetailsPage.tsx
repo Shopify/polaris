@@ -479,8 +479,8 @@ export function DetailsPage() {
                 value={selected}
               />
             </Card.Section>
-            <Card.Section title="Collections"></Card.Section>
-            <Card.Section title="Tags"></Card.Section>
+            <Card.Section title="Collections" />
+            <Card.Section title="Tags" />
           </Card>
         </Layout.Section>
       </Layout>

@@ -1,7 +1,7 @@
 const path = require('path');
 const spawn = require('child_process').spawn;
 
-const postcssShopify = require('postcss-shopify');
+const postcssShopify = require('@shopify/postcss-plugin');
 
 // Use the version of webpack-bundle-analyzer (and other plugins/loaders) from
 // sewing-kit in order avoid a bunch of duplication in our devDependencies

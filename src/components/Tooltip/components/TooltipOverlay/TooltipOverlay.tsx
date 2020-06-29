@@ -28,6 +28,7 @@ export class TooltipOverlay extends React.PureComponent<
     return markup;
   }
 
+  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderOverlay = () => {
     const {active, activator, preferredPosition = 'below'} = this.props;
 
@@ -41,6 +42,7 @@ export class TooltipOverlay extends React.PureComponent<
     );
   };
 
+  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderTooltip: PositionedOverlayProps['render'] = (
     overlayDetails,
   ) => {

@@ -177,6 +177,7 @@ export class PopoverOverlay extends React.PureComponent<
     });
   }
 
+  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderPopover: PositionedOverlayProps['render'] = (
     overlayDetails,
   ) => {

@@ -5,8 +5,7 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 
 import {Toast} from '../../Toast';
 import {Frame} from '../../../Frame';
-
-import {ToastManager} from '..';
+import {ToastManager} from '../ToastManager';
 
 window.matchMedia =
   window.matchMedia ||
