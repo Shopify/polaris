@@ -6,11 +6,10 @@ import nodeSass from 'node-sass';
 import postcss from 'postcss';
 import cssModules from 'postcss-modules';
 
-import {getNamespacedClassName} from './namespaced-classname';
-
 export function styles({
   output,
   plugins = [],
+  modules = {},
   mode,
   include = ['**/*.css', '**/*.scss'],
   exclude,
@@ -27,7 +26,7 @@ export function styles({
 
   const styleProcessor = postcss([
     cssModules({
-      generateScopedName: getNamespacedClassName,
+      ...modules,
       // eslint-disable-next-line no-empty-function
       getJSON() {},
     }),
