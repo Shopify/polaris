@@ -82,6 +82,11 @@ export function styles({
     // The contents of the emitted css file should use the order in which the
     // files were referenced in the compiled javascript, which can be obtained
     // by looking at bundles[].modules.
+    // Rollup v2.0 changes the behaviour of bundles[].modules so that it no
+    // longer includes tree-shaken modules - which includes CSS files that don't
+    // expose any classnames via css-modules. So we can't update till we have a
+    // better mechanism to build this list.
+    // See https://github.com/rollup/rollup/issues/3651
 
     const bundleModuleIds = flatMap(Object.values(bundle), (fileInfo) =>
       Object.keys(fileInfo.modules),
