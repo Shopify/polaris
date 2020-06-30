@@ -70,6 +70,7 @@
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
+    "build-storybook": "build-storybook -s public",
     "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static",
     "splash": "babel-node --extensions '.tsx','.ts' ./scripts/splash/index.tsx",
     "precolordocs": "yarn run build",
