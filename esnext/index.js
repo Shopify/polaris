@@ -3,5 +3,4 @@
 // folder and there's no way to tell it otherwise currently.
 // So have this little redirect file for the sake of keeping SK happy until we
 // have a better mechanism defining the esnext entrypoint
-// eslint-disable-next-line import/no-unresolved
-export * from '../dist/esnext';
+export * from '../dist/esnext/index.ts.esnext';
