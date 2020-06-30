@@ -65,7 +65,7 @@ export function styles({
     return `import './${relativePath}';\nexport default ${properties};`;
   }
 
-  function generateBundleStandalone(rollup, generateOptions, bundles) {
+  function generateBundleStandalone(rollup, generateOptions, bundle) {
     // generateBundle gets called once per call to bundle.write(). We call
     // that twice - one for the cjs build (index.js), one for the esm build
     // (index.mjs). We only want to do perform this logic once though
@@ -77,27 +77,31 @@ export function styles({
       return;
     }
 
-    // Items are added to cssAndTokensByFile in an unspecified order as
-    // whatever transform gets resolved first appears first. The contents of
-    // the css file should use the order in which scss files were referenced
-    // in the compiled javascript file.
-    const styleIds = Object.keys(cssByFile);
-    const includedStyleIds = Array.from(
-      Object.values(bundles).reduce((memo, bundle) => {
-        Object.keys(bundle.modules).forEach((moduleName) => {
-          if (styleIds.includes(moduleName)) {
-            memo.add(moduleName);
-          }
-        });
-        return memo;
-      }, new Set()),
+    // Items are added to cssByFile based on the order that transforms are
+    // resolved. This may change between runs so we can't rely on it.
+    // The contents of the emitted css file should use the order in which the
+    // files were referenced in the compiled javascript, which can be obtained
+    // by looking at bundles[].modules.
+
+    const bundleModuleIds = flatMap(Object.values(bundle), (fileInfo) =>
+      Object.keys(fileInfo.modules),
     );
 
-    const orderedCssByFile = includedStyleIds.reduce((memo, id) => {
-      return memo.set(id, cssByFile[id]);
-    }, new Map());
+    const missingReferences = Object.keys(cssByFile).filter(
+      (id) => !bundleModuleIds.includes(id),
+    );
 
-    const css = Array.from(orderedCssByFile.values()).join('\n\n');
+    if (missingReferences.length) {
+      const formatedMissingIds = missingReferences.join('\n');
+      rollup.warn(
+        `cssByFile contains ids not present in bundleModuleIds. Your output may be incomplete. Missing:\n${formatedMissingIds} `,
+      );
+    }
+
+    const css = bundleModuleIds
+      .filter((id) => id in cssByFile)
+      .map((id) => cssByFile[id])
+      .join('\n\n');
 
     // Regular css file
     rollup.emitFile({type: 'asset', fileName: output, source: css});
@@ -154,4 +158,9 @@ export function styles({
       }
     },
   };
+}
+
+// We're still using node 10. Array.flat(fn)/Array.flatMap(fn) are added in v11
+function flatMap(array, fn) {
+  return array.reduce((memo, item) => memo.concat(fn(item)), []);
 }
