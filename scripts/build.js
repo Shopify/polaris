@@ -22,3 +22,6 @@ run(`yarn run copyfiles './src/**/*.md' './dist/docs' --up=1`);
 
 // Copy sass files that make up our public API into the styles folder
 run(`yarn run copyfiles './src/styles/**/*.scss' './dist/styles' --up=2`);
+
+// Run build validation tests to ensure build content is as we expect
+run(`node scripts/build-validate.js`);
