@@ -7,6 +7,7 @@ import postcssShopify from '@shopify/postcss-plugin';
 
 import packageJSON from './package.json';
 import {styles} from './config/rollup/plugin-styles';
+import {generateScopedName} from './config/rollup/namespaced-classname';
 
 const root = __dirname;
 
@@ -50,7 +51,10 @@ function plugins({browserslist, stylesConfig}) {
         ['@shopify/babel-preset/react'],
       ],
     }),
-    styles({...stylesConfig, plugins: [postcssShopify]}),
+    styles({
+      ...stylesConfig,
+      plugins: [postcssShopify],
+    }),
     image(),
   ];
 }
@@ -66,7 +70,13 @@ export default [
     plugins: plugins({
       // Not specifying a browserslist config here to use the default as
       // defined in our package.json
-      stylesConfig: {mode: 'standalone', output: 'styles.css'},
+      stylesConfig: {
+        mode: 'standalone',
+        output: 'styles.css',
+        modules: {
+          generateScopedName: generateScopedName({includeHash: false}),
+        },
+      },
     }),
     external,
   },
@@ -82,7 +92,12 @@ export default [
     preserveModules: true,
     plugins: plugins({
       browserslist: 'extends @shopify/browserslist-config/latest-evergreen',
-      stylesConfig: {mode: 'esnext'},
+      stylesConfig: {
+        mode: 'esnext',
+        modules: {
+          generateScopedName: generateScopedName({includeHash: true}),
+        },
+      },
     }),
 
     external,

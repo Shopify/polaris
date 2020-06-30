@@ -39,7 +39,7 @@ function validateEsNextBuild() {
     './dist/esnext/components/Avatar/Avatar.css',
     'utf-8',
   );
-  assert.ok(cssContent.includes('.Polaris-Avatar{'));
+  assert.ok(cssContent.includes('.Polaris-Avatar_z763p{'));
 
   const jsContent = fs.readFileSync(
     './dist/esnext/components/Avatar/Avatar.scss.esnext',
@@ -47,8 +47,8 @@ function validateEsNextBuild() {
   );
 
   assert.ok(jsContent.includes("import './Avatar.css';"));
-  assert.ok(jsContent.includes('Polaris-Avatar'));
-  assert.ok(jsContent.includes('Polaris-Avatar--hidden'));
+  assert.ok(jsContent.includes('"Avatar": "Polaris-Avatar_z763p"'));
+  assert.ok(jsContent.includes('"hidden": "Polaris-Avatar--hidden_riqie"'));
 
   assert.ok(
     fs
