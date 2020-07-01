@@ -11,8 +11,7 @@
     "**/.git": true,
     "**/node_modules": true,
     ".{dev,shadowenv.d}": true,
-    "{build,dist}/": true,
-    "scripts/analyze-custom-properties/dist/": true
+    "{build,dist}/": true
   },
   "javascript.validate.enable": false,
   "jest.autoEnable": false,
@@ -20,8 +19,7 @@
   "search.exclude": {
     "**/node_modules": true,
     ".{dev,shadowenv.d}": true,
-    "{build,dist}/": true,
-    "scripts/analyze-custom-properties/dist/": true
+    "{build,dist}/": true
   },
   "typescript.tsdk": "./node_modules/typescript/lib"
 }
