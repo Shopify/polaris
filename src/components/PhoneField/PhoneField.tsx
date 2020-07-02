@@ -93,9 +93,10 @@ export function PhoneField({
     (index) => {
       setSelectedCountry(countries[index].countryName);
       setSelectedCountryCode(countries[index].countryCode);
+      handleTextChange(countries[index].countryCode);
       togglePopoverActive();
     },
-    [countries, togglePopoverActive],
+    [countries, handleTextChange, togglePopoverActive],
   );
 
   const retrieveCountries = useCallback(
@@ -316,6 +317,7 @@ export function PhoneField({
   return (
     <TextField
       label={optional ? `${labelName} (optional)` : labelName}
+      autoComplete="tel"
       type="tel"
       placeholder={placeholder}
       value={formattedPhoneNumber}
