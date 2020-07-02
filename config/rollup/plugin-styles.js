@@ -136,6 +136,7 @@ export function styles({
 
       const sassOutput = await renderSass({
         data: source,
+        outputStyle: 'compact',
         includePaths: [path.dirname(id)],
       }).then((result) => result.css.toString());
 
