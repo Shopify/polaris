@@ -17,7 +17,7 @@ validateVersionReplacement();
 function validateStandardBuild() {
   // Standard build
   assert.ok(fs.existsSync('./dist/index.js'));
-  assert.ok(fs.existsSync('./dist/index.mjs'));
+  assert.ok(fs.existsSync('./dist/index.es.js'));
   assert.ok(fs.existsSync('./dist/styles.css'));
 
   // Standard build css contains namespaced classes
@@ -109,8 +109,8 @@ function validateVersionReplacement() {
   assert.deepStrictEqual(fileBuckets.includesVersion, [
     './dist/esnext/components/AppProvider/AppProvider.css',
     './dist/esnext/configure.ts.esnext',
+    './dist/index.es.js',
     './dist/index.js',
-    './dist/index.mjs',
     './dist/styles.css',
   ]);
 }

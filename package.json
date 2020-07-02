@@ -26,7 +26,7 @@
     "component library"
   ],
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.es.js",
   "types": "dist/types/latest/src/index.d.ts",
   "typesVersions": {
     "<3.8": {
