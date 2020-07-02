@@ -16,7 +16,7 @@
   "sideEffects": [
     "**/*.css",
     "**/*.scss",
-    "**/configure.{js,ts}"
+    "**/configure.{js,ts,ts.esnext}"
   ],
   "keywords": [
     "shopify",
