@@ -46,13 +46,17 @@ export function PhoneField({
 }: PhoneFieldProps) {
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
   const [popoverActive, setPopoverActive] = useState(countries.length > 1);
-  const [selectedCountry, setSelectedCountry] = useState(
-    countries[3].countryName,
+  const [selectedCountryObject, setSelectedCountryObject] = useState(
+    countries[3],
   );
 
-  const [selectedCountryCode, setSelectedCountryCode] = useState(
-    countries[3].countryCode,
-  );
+  // const [selectedCountry, setSelectedCountry] = useState(
+  //   countries[3].countryName,
+  // );
+
+  // const [selectedCountryCode, setSelectedCountryCode] = useState(
+  //   countries[3].countryCode,
+  // );
 
   // Conduct research on which country appears first
   const [searchBarText, setSearchBarText] = useState('');
@@ -91,8 +95,9 @@ export function PhoneField({
   /** Callback function for handling the selected country */
   const handleSelected = useCallback(
     (index) => {
-      setSelectedCountry(countries[index].countryName);
-      setSelectedCountryCode(countries[index].countryCode);
+      setSelectedCountryObject(countries[index]);
+      // setSelectedCountry(countries[index].countryName);
+      // setSelectedCountryCode(countries[index].countryCode);
       handleTextChange(countries[index].countryCode);
       togglePopoverActive();
     },
@@ -129,11 +134,12 @@ export function PhoneField({
   /** Handles the button that clicks for the popover */
   const activator =
     countries.length > 1 ? (
+      // eslint-disable-next-line shopify/jsx-no-hardcoded-content
       <Button onClick={togglePopoverActive} disclosure>
-        {`${selectedCountry} (${selectedCountryCode})`}
+        {`${selectedCountryObject.countryName} (${selectedCountryObject.countryCode})`}
       </Button>
     ) : (
-      <Button>{selectedCountry}</Button>
+      <Button>{selectedCountryObject.countryName}</Button>
     );
 
   const extractNumberFormat = useCallback((numberStr) => {
@@ -196,8 +202,7 @@ export function PhoneField({
             countryObj.countryName === selectedCountryObj.countryName,
         );
 
-        setSelectedCountry(countries[countryIndex].countryName);
-        setSelectedCountryCode(countries[countryIndex].countryCode);
+        setSelectedCountryObject(countries[countryIndex]);
 
         // Selected Country, Number of Digits
         const countryMaxDigits = selectedCountryObj.displayFormat.reduce(
@@ -271,8 +276,7 @@ export function PhoneField({
                   countryObj.countryName === selectedCountryObj.countryName,
               );
 
-              setSelectedCountry(countries[countryIndex].countryName);
-              setSelectedCountryCode(countries[countryIndex].countryCode);
+              setSelectedCountryObject(countries[countryIndex]);
             }
           }
         }
