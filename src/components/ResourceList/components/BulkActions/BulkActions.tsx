@@ -1,7 +1,7 @@
 import React, {createRef} from 'react';
 import debounce from 'lodash/debounce';
 import {durationBase} from '@shopify/polaris-tokens';
-import {CSSTransition, Transition} from '@material-ui/react-transition-group';
+import {CSSTransition, Transition} from 'react-transition-group';
 
 import {classNames} from '../../../../utilities/css';
 import type {
@@ -373,7 +373,7 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
         in={selectMode}
         key="smallGroup"
         testID="smallGroup"
-        findDOMNode={this.findSmallScreenGroupNode}
+        nodeRef={this.smallScreenGroupNode}
       >
         {(status: TransitionStatus) => {
           const smallScreenGroupClassName = classNames(
@@ -389,7 +389,7 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
               <div className={styles.ButtonGroupWrapper}>
                 <ButtonGroup segmented>
                   <CSSTransition
-                    findDOMNode={this.findCheckableWrapperNode}
+                    nodeRef={this.checkableWrapperNode}
                     in={selectMode}
                     timeout={durationBase}
                     classNames={slideClasses}
@@ -429,7 +429,7 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
         timeout={0}
         in={selectMode}
         key="largeGroup"
-        findDOMNode={this.findLargeScreenGroupNode}
+        nodeRef={this.largeScreenGroupNode}
         testID="largeGroup"
       >
         {(status: TransitionStatus) => {
@@ -502,18 +502,6 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
     if (measuring) {
       this.promotedActionsWidths.push(width);
     }
-  };
-
-  private findLargeScreenGroupNode = () => {
-    return this.largeScreenGroupNode.current;
-  };
-
-  private findCheckableWrapperNode = () => {
-    return this.checkableWrapperNode.current;
-  };
-
-  private findSmallScreenGroupNode = () => {
-    return this.smallScreenGroupNode.current;
   };
 }
 

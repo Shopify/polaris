@@ -1,7 +1,7 @@
 import React, {createRef} from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
-import {CSSTransition} from '@material-ui/react-transition-group';
+import {CSSTransition} from 'react-transition-group';
 
 import {FeaturesContext} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
@@ -135,7 +135,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
     const navigationMarkup = navigation ? (
       <TrapFocus trapping={mobileNavShowing}>
         <CSSTransition
-          findDOMNode={this.findNavigationNode}
+          nodeRef={this.navigationNode}
           appear={isNavigationCollapsed}
           exit={isNavigationCollapsed}
           in={showMobileNavigation}
@@ -428,10 +428,6 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
     if (mobileNavShowing && key === 'Escape') {
       this.handleNavigationDismiss();
     }
-  };
-
-  private findNavigationNode = () => {
-    return this.navigationNode.current;
   };
 }
 
