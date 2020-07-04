@@ -1,4 +1,11 @@
-import React from 'react';
+import React, {
+  ReactElement,
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 import debounce from 'lodash/debounce';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
@@ -9,19 +16,17 @@ import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
-import {
+  CheckableButtonKey,
+  CheckableButtons,
   ResourceListContext,
   ResourceListSelectedItems,
   SELECT_ALL_ITEMS,
-  CheckableButtonKey,
-  CheckableButtons,
 } from '../../utilities/resource-list';
 import {Select, SelectOption} from '../Select';
 import {EmptySearchResult} from '../EmptySearchResult';
+import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
+import {useLazyRef} from '../../utilities/use-lazy-ref';
 
 import {
   BulkActions,
@@ -39,14 +44,37 @@ const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
-type Items = any[];
+function getAllItemsOnPage<ItemType>(
+  items: ItemType[],
+  idForItem: (item: ItemType, index: number) => string,
+) {
+  return items.map((item: ItemType, index: number) => {
+    return idForItem(item, index);
+  });
+}
 
-interface State {
-  selectMode: boolean;
-  loadingPosition: number;
-  lastSelected: number | null;
-  smallScreen: boolean;
-  checkableButtons: CheckableButtons;
+const isSmallScreen = () => {
+  return typeof window === 'undefined'
+    ? false
+    : window.innerWidth < SMALL_SCREEN_WIDTH;
+};
+
+function defaultIdForItem<ItemType extends {id?: any}>(
+  item: ItemType,
+  index: number,
+) {
+  return Object.prototype.hasOwnProperty.call(item, 'id')
+    ? item.id
+    : index.toString();
+}
+
+function defaultSectionIdForItem<ItemType extends {id?: any; sectionId?: any}>(
+  item: ItemType,
+  index: number,
+) {
+  return Object.prototype.hasOwnProperty.call(item, 'sectionId')
+    ? item.sectionId
+    : index.toString();
 }
 
 export interface ResourceSection {
@@ -54,12 +82,18 @@ export interface ResourceSection {
   title: string;
 }
 
-export interface ResourceListProps<T> {
+export interface ResourceListProps<ItemType = any> {
   /** Item data; each item is passed to renderItem */
-  items: T[];
+  items: ItemType[];
   sections?: ResourceSection[];
   filterControl?: React.ReactNode;
   subHeader?: React.ReactNode;
+  /** The markup to display when no resources exist yet. Renders when set and items is empty. */
+  emptyState?: React.ReactNode;
+  /** The markup to display when no results are returned on search or filter of the list. Renders when `filterControl` is set, items are empty, and `emptyState` is not set.
+   * @default EmptySearchResult
+   */
+  emptySearchState?: React.ReactNode;
   /** Name of the resource, such as customers or products */
   resourceName?: {
     singular: string;
@@ -73,7 +107,7 @@ export interface ResourceListProps<T> {
   selectedItems?: ResourceListSelectedItems;
   /** Renders a Select All button at the top of the list and checkboxes in front of each list item. For use when bulkActions aren't provided. **/
   selectable?: boolean;
-  /** If there are more items than currently in the list */
+  /** Whether or not there are more items than currently set on the items prop. Determines whether or not to set the paginatedSelectAllAction and paginatedSelectAllText props on the BulkActions component. */
   hasMoreItems?: boolean;
   /** Overlays item list with a spinner while a background action is being performed */
   loading?: boolean;
@@ -91,8 +125,8 @@ export interface ResourceListProps<T> {
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
   onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
-  /** Function to render each list item	 */
-  renderItem(item: T, id: string, index: number): React.ReactNode;
+  /** Function to render each list item   */
+  renderItem(item: ItemType, id: string, index: number): React.ReactNode;
   /** Function to render each section header	 */
   renderSectionHeader?(
     section: ResourceSection,
@@ -106,83 +140,105 @@ export interface ResourceListProps<T> {
     index: number,
   ): React.ReactNode;
   /** Function to customize the unique ID for each item */
-  idForItem?(item: T, index: number): string;
+  idForItem?(item: ItemType, index: number): string;
   /** Function to customize the unique ID for each item */
-  sectionIdForItem?(item: T, index: number): string;
-  /** Function to resolve an id from a item */
-  resolveItemId?(item: T): string;
-  /** React node to display when `filterControl` is set and no results are returned on search or filter of the list. */
-  emptySearchState?: React.ReactNode;
+  sectionIdForItem?(item: ItemType, index: number): string;
+  /** Function to resolve the ids of items */
+  resolveItemId?(item: ItemType): string;
 }
 
-type CombinedProps<T> = ResourceListProps<T> & WithAppProviderProps;
-
-class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
-  static Item = ResourceItem;
+type ResourceListType = (<ItemType>(
+  value: ResourceListProps<ItemType>,
+) => ReactElement) & {
+  Item: typeof ResourceItem;
   // eslint-disable-next-line import/no-deprecated
-  static FilterControl = FilterControl;
+  FilterControl: typeof FilterControl;
+};
 
-  private defaultResourceName: {singular: string; plural: string};
-  private listRef: React.RefObject<HTMLUListElement> = React.createRef();
+export const ResourceList: ResourceListType = function ResourceList<ItemType>({
+  items,
+  sections,
+  renderSectionHeader,
+  renderSectionFooter,
+  sectionIdForItem = defaultSectionIdForItem,
+  subHeader,
+  filterControl,
+  emptyState,
+  emptySearchState,
+  resourceName: resourceNameProp,
+  promotedBulkActions,
+  bulkActions,
+  selectedItems = [],
+  selectable,
+  hasMoreItems,
+  loading,
+  showHeader = false,
+  totalItemsCount,
+  sortValue,
+  sortOptions,
+  alternateTool,
+  onSortChange,
+  onSelectionChange,
+  renderItem,
+  idForItem = defaultIdForItem,
+  resolveItemId,
+}: ResourceListProps<ItemType>) {
+  const i18n = useI18n();
+  const [selectMode, setSelectMode] = useState(
+    Boolean(selectedItems && selectedItems.length > 0),
+  );
+  const [loadingPosition, setLoadingPositionState] = useState(0);
+  const [lastSelected, setLastSelected] = useState<number>();
+  const [smallScreen, setSmallScreen] = useState(isSmallScreen());
+  const forceUpdate: (x?: number) => void = useReducer<(x?: number) => number>(
+    (x = 0) => x + 1,
+    0,
+  )[1];
 
-  private handleResize = debounce(
+  const [checkableButtons, setCheckableButtons] = useState<CheckableButtons>(
+    new Map(),
+  );
+
+  const defaultResourceName = useLazyRef(() => ({
+    singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
+    plural: i18n.translate('Polaris.ResourceList.defaultItemPlural'),
+  }));
+  const listRef: React.RefObject<HTMLUListElement> = useRef(null);
+
+  const handleSelectMode = (selectMode: boolean) => {
+    setSelectMode(selectMode);
+    if (!selectMode && onSelectionChange) {
+      onSelectionChange([]);
+    }
+  };
+
+  const handleResize = debounce(
     () => {
-      const {selectedItems} = this.props;
-      const {selectMode, smallScreen} = this.state;
       const newSmallScreen = isSmallScreen();
-
       if (
         selectedItems &&
         selectedItems.length === 0 &&
         selectMode &&
         !newSmallScreen
       ) {
-        this.handleSelectMode(false);
+        handleSelectMode(false);
       }
 
       if (smallScreen !== newSmallScreen) {
-        this.setState({smallScreen: newSmallScreen});
+        setSmallScreen(newSmallScreen);
       }
     },
     50,
     {leading: true, trailing: true, maxWait: 50},
   );
 
-  constructor(props: CombinedProps<T>) {
-    super(props);
+  const isSelectable = Boolean(
+    (promotedBulkActions && promotedBulkActions.length > 0) ||
+      (bulkActions && bulkActions.length > 0) ||
+      selectable,
+  );
 
-    const {
-      selectedItems,
-      polaris: {intl},
-    } = props;
-
-    this.defaultResourceName = {
-      singular: intl.translate('Polaris.ResourceList.defaultItemSingular'),
-      plural: intl.translate('Polaris.ResourceList.defaultItemPlural'),
-    };
-
-    // eslint-disable-next-line react/state-in-constructor
-    this.state = {
-      selectMode: Boolean(selectedItems && selectedItems.length > 0),
-      loadingPosition: 0,
-      lastSelected: null,
-      smallScreen: isSmallScreen(),
-      checkableButtons: new Map(),
-    };
-  }
-
-  private selectable() {
-    const {promotedBulkActions, bulkActions, selectable} = this.props;
-
-    return Boolean(
-      (promotedBulkActions && promotedBulkActions.length > 0) ||
-        (bulkActions && bulkActions.length > 0) ||
-        selectable,
-    );
-  }
-
-  private bulkSelectState(): boolean | 'indeterminate' {
-    const {selectedItems, items} = this.props;
+  const bulkSelectState = (): boolean | 'indeterminate' => {
     let selectState: boolean | 'indeterminate' = 'indeterminate';
     if (
       !selectedItems ||
@@ -196,17 +252,13 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
       selectState = true;
     }
     return selectState;
-  }
+  };
 
-  private headerTitle() {
-    const {
-      resourceName = this.defaultResourceName,
-      items,
-      polaris: {intl},
-      loading,
-      totalItemsCount,
-    } = this.props;
+  const resourceName = resourceNameProp
+    ? resourceNameProp
+    : defaultResourceName.current;
 
+  const headerTitle = () => {
     const itemsCount = items.length;
     const resource =
       !loading &&
@@ -215,64 +267,53 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
         : resourceName.plural;
 
     if (loading) {
-      return intl.translate('Polaris.ResourceList.loading', {resource});
+      return i18n.translate('Polaris.ResourceList.loading', {resource});
     } else if (totalItemsCount) {
-      return intl.translate('Polaris.ResourceList.showingTotalCount', {
+      return i18n.translate('Polaris.ResourceList.showingTotalCount', {
         itemsCount: itemsCount.toLocaleString(),
         totalItemsCount: totalItemsCount.toLocaleString(),
         resource,
       });
     } else {
-      return intl.translate('Polaris.ResourceList.showing', {
+      return i18n.translate('Polaris.ResourceList.showing', {
         itemsCount: itemsCount.toLocaleString(),
         resource,
       });
     }
-  }
+  };
 
-  private bulkActionsLabel() {
-    const {
-      selectedItems = [],
-      items,
-      polaris: {intl},
-    } = this.props;
-
+  const bulkActionsLabel = () => {
     const selectedItemsCount =
       selectedItems === SELECT_ALL_ITEMS
         ? `${items.length}+`
         : selectedItems.length;
 
-    return intl.translate('Polaris.ResourceList.selected', {
+    return i18n.translate('Polaris.ResourceList.selected', {
       selectedItemsCount,
     });
-  }
+  };
 
-  private bulkActionsAccessibilityLabel() {
-    const {
-      resourceName = this.defaultResourceName,
-      selectedItems = [],
-      items,
-      polaris: {intl},
-    } = this.props;
-
+  const bulkActionsAccessibilityLabel = () => {
     const selectedItemsCount = selectedItems.length;
     const totalItemsCount = items.length;
     const allSelected = selectedItemsCount === totalItemsCount;
 
     if (totalItemsCount === 1 && allSelected) {
-      return intl.translate(
+      return i18n.translate(
         'Polaris.ResourceList.a11yCheckboxDeselectAllSingle',
-        {resourceNameSingular: resourceName.singular},
+        {
+          resourceNameSingular: resourceName.singular,
+        },
       );
     } else if (totalItemsCount === 1) {
-      return intl.translate(
+      return i18n.translate(
         'Polaris.ResourceList.a11yCheckboxSelectAllSingle',
         {
           resourceNameSingular: resourceName.singular,
         },
       );
     } else if (allSelected) {
-      return intl.translate(
+      return i18n.translate(
         'Polaris.ResourceList.a11yCheckboxDeselectAllMultiple',
         {
           itemsLength: items.length,
@@ -280,7 +321,7 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
         },
       );
     } else {
-      return intl.translate(
+      return i18n.translate(
         'Polaris.ResourceList.a11yCheckboxSelectAllMultiple',
         {
           itemsLength: items.length,
@@ -288,24 +329,15 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
         },
       );
     }
-  }
+  };
 
-  private paginatedSelectAllText() {
-    const {
-      hasMoreItems,
-      selectedItems,
-      items,
-      totalItemsCount,
-      resourceName = this.defaultResourceName,
-      polaris: {intl},
-    } = this.props;
-
-    if (!this.selectable() || !hasMoreItems) {
+  const paginatedSelectAllText = () => {
+    if (!isSelectable || !hasMoreItems) {
       return;
     }
 
     if (selectedItems === SELECT_ALL_ITEMS) {
-      return intl.translate('Polaris.ResourceList.allItemsSelected', {
+      return i18n.translate('Polaris.ResourceList.allItemsSelected', {
         itemsLength:
           typeof totalItemsCount === 'number'
             ? totalItemsCount.toLocaleString()
@@ -313,26 +345,17 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
         resourceNamePlural: resourceName.plural,
       });
     }
-  }
+  };
 
-  private paginatedSelectAllAction() {
-    const {
-      hasMoreItems,
-      selectedItems,
-      items,
-      totalItemsCount,
-      resourceName = this.defaultResourceName,
-      polaris: {intl},
-    } = this.props;
-
-    if (!this.selectable() || !hasMoreItems) {
+  const paginatedSelectAllAction = () => {
+    if (!isSelectable || !hasMoreItems) {
       return;
     }
 
     const actionText =
       selectedItems === SELECT_ALL_ITEMS
-        ? intl.translate('Polaris.Common.undo')
-        : intl.translate('Polaris.ResourceList.selectAllItems', {
+        ? i18n.translate('Polaris.Common.undo')
+        : i18n.translate('Polaris.ResourceList.selectAllItems', {
             itemsLength:
               typeof totalItemsCount === 'number'
                 ? totalItemsCount.toLocaleString()
@@ -342,344 +365,20 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
 
     return {
       content: actionText,
-      onAction: this.handleSelectAllItemsInStore,
+      onAction: handleSelectAllItemsInStore,
     };
-  }
-
-  private emptySearchResultText() {
-    const {
-      polaris: {intl},
-      resourceName = this.defaultResourceName,
-    } = this.props;
-
-    return {
-      title: intl.translate('Polaris.ResourceList.emptySearchResultTitle', {
-        resourceNamePlural: resourceName.plural,
-      }),
-      description: intl.translate(
-        'Polaris.ResourceList.emptySearchResultDescription',
-      ),
-    };
-  }
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  componentDidMount() {
-    this.forceUpdate();
-    if (this.props.loading) {
-      this.setLoadingPosition();
-    }
-  }
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  componentDidUpdate({
-    loading: prevLoading,
-    items: prevItems,
-    selectedItems: prevSelectedItems,
-  }: ResourceListProps<T>) {
-    const {selectedItems, loading} = this.props;
-
-    if (
-      this.listRef.current &&
-      this.itemsExist() &&
-      !this.itemsExist(prevItems)
-    ) {
-      this.forceUpdate();
-    }
-
-    if (loading && !prevLoading) {
-      this.setLoadingPosition();
-    }
-
-    if (selectedItems && selectedItems.length > 0 && !this.state.selectMode) {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({selectMode: true});
-      return;
-    }
-
-    if (
-      prevSelectedItems &&
-      prevSelectedItems.length > 0 &&
-      (!selectedItems || selectedItems.length === 0) &&
-      !isSmallScreen()
-    ) {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({selectMode: false});
-    }
-  }
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  render() {
-    const {
-      items,
-      sections,
-      promotedBulkActions,
-      bulkActions,
-      filterControl,
-      subHeader,
-      loading,
-      showHeader = false,
-      sortOptions,
-      sortValue,
-      alternateTool,
-      selectedItems,
-      resourceName = this.defaultResourceName,
-      onSortChange,
-      emptySearchState,
-      polaris: {intl},
-    } = this.props;
-    const {selectMode, loadingPosition, smallScreen} = this.state;
-    const filterControlMarkup = filterControl ? (
-      <div className={styles.FiltersWrapper}>{filterControl}</div>
-    ) : null;
-    const subHeaderMarkup =
-      !loading && subHeader && this.itemsExist() ? (
-        <div className={styles.SubHeaderWrapper}>{subHeader}</div>
-      ) : null;
-
-    const bulkActionsMarkup = this.selectable() ? (
-      <div className={styles.BulkActionsWrapper}>
-        <BulkActions
-          label={this.bulkActionsLabel()}
-          accessibilityLabel={this.bulkActionsAccessibilityLabel()}
-          selected={this.bulkSelectState()}
-          onToggleAll={this.handleToggleAll}
-          selectMode={selectMode}
-          onSelectModeToggle={this.handleSelectMode}
-          promotedActions={promotedBulkActions}
-          paginatedSelectAllAction={this.paginatedSelectAllAction()}
-          paginatedSelectAllText={this.paginatedSelectAllText()}
-          actions={bulkActions}
-          disabled={loading}
-          smallScreen={smallScreen}
-        />
-      </div>
-    ) : null;
-
-    const sortingSelectMarkup =
-      sortOptions && sortOptions.length > 0 && !alternateTool ? (
-        <div className={styles.SortWrapper}>
-          <Select
-            label={intl.translate('Polaris.ResourceList.sortingLabel')}
-            labelInline={!smallScreen}
-            labelHidden={smallScreen}
-            options={sortOptions}
-            onChange={onSortChange}
-            value={sortValue}
-            disabled={selectMode}
-          />
-        </div>
-      ) : null;
-
-    const alternateToolMarkup =
-      alternateTool && !sortingSelectMarkup ? (
-        <div className={styles.AlternateToolWrapper}>{alternateTool}</div>
-      ) : null;
-
-    const headerTitleMarkup = (
-      <div className={styles.HeaderTitleWrapper} testID="headerTitleWrapper">
-        {this.headerTitle()}
-      </div>
-    );
-
-    const selectButtonMarkup = this.selectable() ? (
-      <div className={styles.SelectButtonWrapper}>
-        <Button
-          disabled={selectMode}
-          icon={EnableSelectionMinor}
-          onClick={this.handleSelectMode.bind(this, true)}
-        >
-          {intl.translate('Polaris.ResourceList.selectButtonText')}
-        </Button>
-      </div>
-    ) : null;
-
-    const checkableButtonMarkup = this.selectable() ? (
-      <div className={styles.CheckableButtonWrapper}>
-        <CheckableButton
-          accessibilityLabel={this.bulkActionsAccessibilityLabel()}
-          label={this.headerTitle()}
-          onToggleAll={this.handleToggleAll}
-          plain
-          disabled={loading}
-        />
-      </div>
-    ) : null;
-
-    const needsHeader =
-      this.selectable() ||
-      (sortOptions && sortOptions.length > 0) ||
-      alternateTool;
-
-    const headerWrapperOverlay = loading ? (
-      <div className={styles['HeaderWrapper-overlay']} />
-    ) : null;
-
-    const showEmptySearchState =
-      filterControl && !this.itemsExist() && !loading;
-
-    const headerMarkup = !showEmptySearchState &&
-      (showHeader || needsHeader) &&
-      this.listRef.current && (
-        <div className={styles.HeaderOuterWrapper}>
-          <Sticky boundingElement={this.listRef.current}>
-            {(isSticky: boolean) => {
-              const headerClassName = classNames(
-                styles.HeaderWrapper,
-                sortOptions &&
-                  sortOptions.length > 0 &&
-                  !alternateTool &&
-                  styles['HeaderWrapper-hasSort'],
-                alternateTool && styles['HeaderWrapper-hasAlternateTool'],
-                this.selectable() && styles['HeaderWrapper-hasSelect'],
-                loading && styles['HeaderWrapper-disabled'],
-                this.selectable() &&
-                  selectMode &&
-                  styles['HeaderWrapper-inSelectMode'],
-                isSticky && styles['HeaderWrapper-isSticky'],
-              );
-              return (
-                <div className={headerClassName} testID="ResourceList-Header">
-                  <EventListener event="resize" handler={this.handleResize} />
-                  {headerWrapperOverlay}
-                  <div className={styles.HeaderContentWrapper}>
-                    {headerTitleMarkup}
-                    {checkableButtonMarkup}
-                    {alternateToolMarkup}
-                    {sortingSelectMarkup}
-                    {selectButtonMarkup}
-                  </div>
-                  {bulkActionsMarkup}
-                </div>
-              );
-            }}
-          </Sticky>
-        </div>
-      );
-
-    const emptySearchStateMarkup = showEmptySearchState
-      ? emptySearchState || (
-          <div className={styles.EmptySearchResultWrapper}>
-            <EmptySearchResult
-              {...this.emptySearchResultText()}
-              withIllustration
-            />
-          </div>
-        )
-      : null;
-
-    const defaultTopPadding = 8;
-    const topPadding =
-      loadingPosition > 0 ? loadingPosition : defaultTopPadding;
-    const spinnerStyle = {paddingTop: `${topPadding}px`};
-
-    const spinnerSize = items.length < 2 ? 'small' : 'large';
-
-    const loadingOverlay = loading ? (
-      <React.Fragment>
-        <div className={styles.SpinnerContainer} style={spinnerStyle}>
-          <Spinner size={spinnerSize} accessibilityLabel="Items are loading" />
-        </div>
-        <div className={styles.LoadingOverlay} />
-      </React.Fragment>
-    ) : null;
-
-    const className = classNames(
-      styles.ItemWrapper,
-      loading && styles['ItemWrapper-isLoading'],
-    );
-    const loadingWithoutItemsMarkup =
-      loading && !this.itemsExist() ? (
-        <div className={className} tabIndex={-1}>
-          {loadingOverlay}
-        </div>
-      ) : null;
-
-    const resourceListClassName = classNames(
-      styles.ResourceList,
-      loading && styles.disabledPointerEvents,
-      selectMode && styles.disableTextSelection,
-      sections && styles.SectionedResourceList,
-    );
-
-    const listMarkup = this.itemsExist() ? (
-      <ul
-        className={resourceListClassName}
-        ref={this.listRef}
-        aria-live="polite"
-        aria-busy={loading}
-      >
-        {loadingOverlay}
-        {sections
-          ? sections.map(this.renderSection)
-          : items.map(this.renderItem)}
-      </ul>
-    ) : (
-      emptySearchStateMarkup
-    );
-
-    const context = {
-      selectable: this.selectable(),
-      selectedItems,
-      selectMode,
-      resourceName,
-      loading,
-      onSelectionChange: this.handleSelectionChange,
-      registerCheckableButtons: this.handleCheckableButtonRegistration,
-    };
-
-    return (
-      <ResourceListContext.Provider value={context}>
-        <div className={styles.ResourceListWrapper}>
-          {filterControlMarkup}
-          {headerMarkup}
-          {subHeaderMarkup}
-          {listMarkup}
-          {loadingWithoutItemsMarkup}
-        </div>
-      </ResourceListContext.Provider>
-    );
-  }
-
-  private itemsExist(items?: Items) {
-    return (items || this.props.items).length > 0;
-  }
-
-  private setLoadingPosition = () => {
-    if (this.listRef.current != null) {
-      if (typeof window === 'undefined') {
-        return;
-      }
-
-      const overlay = this.listRef.current.getBoundingClientRect();
-      const viewportHeight = Math.max(
-        document.documentElement ? document.documentElement.clientHeight : 0,
-        window.innerHeight || 0,
-      );
-
-      const overflow = viewportHeight - overlay.height;
-
-      const spinnerHeight =
-        this.props.items.length === 1
-          ? SMALL_SPINNER_HEIGHT
-          : LARGE_SPINNER_HEIGHT;
-
-      const spinnerPosition =
-        overflow > 0
-          ? (overlay.height - spinnerHeight) / 2
-          : (viewportHeight - overlay.top - spinnerHeight) / 2;
-
-      this.setState({loadingPosition: spinnerPosition});
-    }
   };
 
-  private handleSelectAllItemsInStore = () => {
-    const {
-      onSelectionChange,
-      selectedItems,
-      items,
-      idForItem = defaultIdForItem,
-    } = this.props;
+  const emptySearchResultText = {
+    title: i18n.translate('Polaris.ResourceList.emptySearchResultTitle', {
+      resourceNamePlural: resourceName.plural,
+    }),
+    description: i18n.translate(
+      'Polaris.ResourceList.emptySearchResultDescription',
+    ),
+  };
 
+  const handleSelectAllItemsInStore = () => {
     const newlySelectedItems =
       selectedItems === SELECT_ALL_ITEMS
         ? getAllItemsOnPage(items, idForItem)
@@ -690,8 +389,54 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
     }
   };
 
-  private renderItem = (item: T, index: number) => {
-    const {renderItem, idForItem = defaultIdForItem} = this.props;
+  const setLoadingPosition = useCallback(() => {
+    if (listRef.current != null) {
+      if (typeof window === 'undefined') {
+        return;
+      }
+
+      const overlay = listRef.current.getBoundingClientRect();
+      const viewportHeight = Math.max(
+        document.documentElement ? document.documentElement.clientHeight : 0,
+        window.innerHeight || 0,
+      );
+
+      const overflow = viewportHeight - overlay.height;
+
+      const spinnerHeight =
+        items.length === 1 ? SMALL_SPINNER_HEIGHT : LARGE_SPINNER_HEIGHT;
+
+      const spinnerPosition =
+        overflow > 0
+          ? (overlay.height - spinnerHeight) / 2
+          : (viewportHeight - overlay.top - spinnerHeight) / 2;
+
+      setLoadingPositionState(spinnerPosition);
+    }
+  }, [listRef, items.length]);
+
+  const itemsExist = items.length > 0;
+
+  useEffect(() => {
+    if (loading) {
+      setLoadingPosition();
+    }
+  }, [loading, setLoadingPosition]);
+
+  useEffect(() => {
+    if (selectedItems && selectedItems.length > 0 && !selectMode) {
+      setSelectMode(true);
+    }
+    if ((!selectedItems || selectedItems.length === 0) && !isSmallScreen()) {
+      setSelectMode(false);
+    }
+  }, [selectedItems, selectMode]);
+
+  useEffect(() => {
+    forceUpdate();
+  }, [forceUpdate, items]);
+
+  const renderItemWithId = (item: ItemType, index: number) => {
     const id = idForItem(item, index);
 
     return (
@@ -701,14 +446,7 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
     );
   };
 
-  private renderSection = (section: ResourceSection, index: number) => {
-    const {
-      items,
-      renderSectionHeader,
-      renderSectionFooter,
-      sectionIdForItem = defaultSectionIdForItem,
-    } = this.props;
-
+  const renderSectionWithId = (section: ResourceSection, index: number) => {
     const itemsForSection = items.filter(
       (item, idx) => sectionIdForItem(item, idx) === section.id,
     );
@@ -727,7 +465,7 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
           <div className={styles.SectionHeader}>{sectionHeader}</div>
         ) : null}
         <ul className={styles.ResourceSectionList}>
-          {itemsForSection.map(this.renderItem)}
+          {itemsForSection.map(renderItemWithId)}
         </ul>
         {sectionFooter ? (
           <div className={styles.SectionFooter}>{sectionFooter}</div>
@@ -736,42 +474,31 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
     );
   };
 
-  private handleMultiSelectionChange = (
+  const handleMultiSelectionChange = (
     lastSelected: number,
     currentSelected: number,
-    resolveItemId: (item: T) => string,
+    resolveItemId: (item: ItemType) => string,
   ) => {
     const min = Math.min(lastSelected, currentSelected);
     const max = Math.max(lastSelected, currentSelected);
-    return this.props.items.slice(min, max + 1).map(resolveItemId);
+    return items.slice(min, max + 1).map(resolveItemId);
   };
 
-  private handleCheckableButtonRegistration = (
+  const handleCheckableButtonRegistration = (
     key: CheckableButtonKey,
     button: CheckboxHandles,
   ) => {
-    this.setState(({checkableButtons}) => {
-      return {
-        checkableButtons: new Map(checkableButtons).set(key, button),
-      };
-    });
+    if (!checkableButtons.get(key)) {
+      setCheckableButtons(new Map(checkableButtons).set(key, button));
+    }
   };
 
-  private handleSelectionChange = (
+  const handleSelectionChange = (
     selected: boolean,
     id: string,
     sortOrder: number | undefined,
     shiftKey: boolean,
   ) => {
-    const {
-      onSelectionChange,
-      selectedItems,
-      items,
-      idForItem = defaultIdForItem,
-      resolveItemId,
-    } = this.props;
-    const {lastSelected} = this.state;
-
     if (selectedItems == null || onSelectionChange == null) {
       return;
     }
@@ -782,19 +509,21 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
         : [...selectedItems];
 
     if (sortOrder !== undefined) {
-      this.setState({lastSelected: sortOrder});
+      setLastSelected(sortOrder);
     }
+
+    const lastSelectedFromState = lastSelected;
 
     let selectedIds: string[] = [id];
 
     if (
       shiftKey &&
-      lastSelected != null &&
+      lastSelectedFromState != null &&
       sortOrder !== undefined &&
       resolveItemId
     ) {
-      selectedIds = this.handleMultiSelectionChange(
-        lastSelected,
+      selectedIds = handleMultiSelectionChange(
+        lastSelectedFromState,
         sortOrder,
         resolveItemId,
       );
@@ -808,9 +537,9 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
     }
 
     if (newlySelectedItems.length === 0 && !isSmallScreen()) {
-      this.handleSelectMode(false);
+      handleSelectMode(false);
     } else if (newlySelectedItems.length > 0) {
-      this.handleSelectMode(true);
+      handleSelectMode(true);
     }
 
     if (onSelectionChange) {
@@ -818,24 +547,8 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
     }
   };
 
-  private handleSelectMode = (selectMode: boolean) => {
-    const {onSelectionChange} = this.props;
-    this.setState({selectMode});
-    if (!selectMode && onSelectionChange) {
-      onSelectionChange([]);
-    }
-  };
-
-  private handleToggleAll = () => {
-    const {
-      onSelectionChange,
-      selectedItems,
-      items,
-      idForItem = defaultIdForItem,
-    } = this.props;
-
-    const {checkableButtons} = this.state;
-    let newlySelectedItems: string[] = [];
+  const handleToggleAll = () => {
+    let newlySelectedItems: string[];
 
     if (
       (Array.isArray(selectedItems) && selectedItems.length === items.length) ||
@@ -844,15 +557,14 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
       newlySelectedItems = [];
     } else {
       newlySelectedItems = items.map((item, index) => {
-        const id = idForItem(item, index);
-        return id;
+        return idForItem(item, index);
       });
     }
 
     if (newlySelectedItems.length === 0 && !isSmallScreen()) {
-      this.handleSelectMode(false);
+      handleSelectMode(false);
     } else if (newlySelectedItems.length > 0) {
-      this.handleSelectMode(true);
+      handleSelectMode(true);
     }
 
     let checkbox: CheckboxHandles | undefined;
@@ -874,44 +586,219 @@ class ResourceListInner<T> extends React.Component<CombinedProps<T>, State> {
       checkbox && checkbox.focus();
     }, 0);
   };
-}
 
-function getAllItemsOnPage(
-  items: any,
-  idForItem: (item: any, index: number) => string,
-) {
-  return items.map((item: any, index: number) => {
-    return idForItem(item, index);
-  });
-}
+  const bulkActionsMarkup = isSelectable ? (
+    <div className={styles.BulkActionsWrapper}>
+      <BulkActions
+        label={bulkActionsLabel()}
+        accessibilityLabel={bulkActionsAccessibilityLabel()}
+        selected={bulkSelectState()}
+        onToggleAll={handleToggleAll}
+        selectMode={selectMode}
+        onSelectModeToggle={handleSelectMode}
+        promotedActions={promotedBulkActions}
+        paginatedSelectAllAction={paginatedSelectAllAction()}
+        paginatedSelectAllText={paginatedSelectAllText()}
+        actions={bulkActions}
+        disabled={loading}
+        smallScreen={smallScreen}
+      />
+    </div>
+  ) : null;
 
-function defaultIdForItem(item: any, index: number) {
-  return Object.prototype.hasOwnProperty.call(item, 'id')
-    ? item.id
-    : index.toString();
-}
+  const subHeaderMarkup =
+    !loading && subHeader && itemsExist ? (
+      <div className={styles.SubHeaderWrapper}>{subHeader}</div>
+    ) : null;
 
-function defaultSectionIdForItem(item: any, index: number) {
-  return Object.prototype.hasOwnProperty.call(item, 'sectionId')
-    ? item.sectionId
-    : index.toString();
-}
+  const filterControlMarkup = filterControl ? (
+    <div className={styles.FiltersWrapper}>{filterControl}</div>
+  ) : null;
 
-function isSmallScreen() {
-  return typeof window === 'undefined'
-    ? false
-    : window.innerWidth < SMALL_SCREEN_WIDTH;
-}
+  const sortingSelectMarkup =
+    sortOptions && sortOptions.length > 0 && !alternateTool ? (
+      <div className={styles.SortWrapper}>
+        <Select
+          label={i18n.translate('Polaris.ResourceList.sortingLabel')}
+          labelInline={!smallScreen}
+          labelHidden={smallScreen}
+          options={sortOptions}
+          onChange={onSortChange}
+          value={sortValue}
+          disabled={selectMode}
+        />
+      </div>
+    ) : null;
 
-// Use named export once withAppProvider is refactored away
-const ResourceListWithAppProvider = withAppProvider<
-  ResourceListProps<unknown>
->()(ResourceListInner);
+  const alternateToolMarkup =
+    alternateTool && !sortingSelectMarkup ? (
+      <div className={styles.AlternateToolWrapper}>{alternateTool}</div>
+    ) : null;
 
-// eslint-disable-next-line import/no-default-export
-export function ResourceList<T>(props: ResourceListProps<T>) {
-  return <ResourceListWithAppProvider {...props} />;
-}
+  const headerTitleMarkup = (
+    <div className={styles.HeaderTitleWrapper} testID="headerTitleWrapper">
+      {headerTitle()}
+    </div>
+  );
 
+  const selectButtonMarkup = isSelectable ? (
+    <div className={styles.SelectButtonWrapper}>
+      <Button
+        disabled={selectMode}
+        icon={EnableSelectionMinor}
+        onClick={() => handleSelectMode(true)}
+      >
+        {i18n.translate('Polaris.ResourceList.selectButtonText')}
+      </Button>
+    </div>
+  ) : null;
+
+  const checkableButtonMarkup = isSelectable ? (
+    <div className={styles.CheckableButtonWrapper}>
+      <CheckableButton
+        accessibilityLabel={bulkActionsAccessibilityLabel()}
+        label={headerTitle()}
+        onToggleAll={handleToggleAll}
+        plain
+        disabled={loading}
+      />
+    </div>
+  ) : null;
+
+  const needsHeader =
+    isSelectable || (sortOptions && sortOptions.length > 0) || alternateTool;
+
+  const headerWrapperOverlay = loading ? (
+    <div className={styles['HeaderWrapper-overlay']} />
+  ) : null;
+
+  const showEmptyState = emptyState && !itemsExist && !loading;
+
+  const showEmptySearchState =
+    !showEmptyState && filterControl && !itemsExist && !loading;
+
+  const headerMarkup = !showEmptyState &&
+    !showEmptySearchState &&
+    (showHeader || needsHeader) &&
+    listRef.current && (
+      <div className={styles.HeaderOuterWrapper}>
+        <Sticky boundingElement={listRef.current}>
+          {(isSticky: boolean) => {
+            const headerClassName = classNames(
+              styles.HeaderWrapper,
+              sortOptions &&
+                sortOptions.length > 0 &&
+                !alternateTool &&
+                styles['HeaderWrapper-hasSort'],
+              alternateTool && styles['HeaderWrapper-hasAlternateTool'],
+              isSelectable && styles['HeaderWrapper-hasSelect'],
+              loading && styles['HeaderWrapper-disabled'],
+              isSelectable &&
+                selectMode &&
+                styles['HeaderWrapper-inSelectMode'],
+              isSticky && styles['HeaderWrapper-isSticky'],
+            );
+            return (
+              <div className={headerClassName} testID="ResourceList-Header">
+                <EventListener event="resize" handler={handleResize} />
+                {headerWrapperOverlay}
+                <div className={styles.HeaderContentWrapper}>
+                  {headerTitleMarkup}
+                  {checkableButtonMarkup}
+                  {alternateToolMarkup}
+                  {sortingSelectMarkup}
+                  {selectButtonMarkup}
+                </div>
+                {bulkActionsMarkup}
+              </div>
+            );
+          }}
+        </Sticky>
+      </div>
+    );
+
+  const emptySearchStateMarkup = showEmptySearchState
+    ? emptySearchState || (
+        <div className={styles.EmptySearchResultWrapper}>
+          <EmptySearchResult {...emptySearchResultText} withIllustration />
+        </div>
+      )
+    : null;
+
+  const emptyStateMarkup = showEmptyState ? emptyState : null;
+
+  const defaultTopPadding = 8;
+  const topPadding = loadingPosition > 0 ? loadingPosition : defaultTopPadding;
+  const spinnerStyle = {paddingTop: `${topPadding}px`};
+
+  const spinnerSize = items.length < 2 ? 'small' : 'large';
+
+  const loadingOverlay = loading ? (
+    <React.Fragment>
+      <div className={styles.SpinnerContainer} style={spinnerStyle}>
+        <Spinner size={spinnerSize} accessibilityLabel="Items are loading" />
+      </div>
+      <div className={styles.LoadingOverlay} />
+    </React.Fragment>
+  ) : null;
+
+  const className = classNames(
+    styles.ItemWrapper,
+    loading && styles['ItemWrapper-isLoading'],
+  );
+  const loadingWithoutItemsMarkup =
+    loading && !itemsExist ? (
+      <div className={className} tabIndex={-1}>
+        {loadingOverlay}
+      </div>
+    ) : null;
+
+  const resourceListClassName = classNames(
+    styles.ResourceList,
+    loading && styles.disabledPointerEvents,
+    selectMode && styles.disableTextSelection,
+    sections && styles.SectionedResourceList,
+  );
+
+  const listMarkup = itemsExist ? (
+    <ul
+      className={resourceListClassName}
+      ref={listRef}
+      aria-live="polite"
+      aria-busy={loading}
+    >
+      {loadingOverlay}
+      {sections
+        ? sections.map(renderSectionWithId)
+        : items.map(renderItemWithId)}
+    </ul>
+  ) : null;
+
+  const context = {
+    selectable: isSelectable,
+    selectedItems,
+    selectMode,
+    resourceName,
+    loading,
+    onSelectionChange: handleSelectionChange,
+    registerCheckableButtons: handleCheckableButtonRegistration,
+  };
+
+  return (
+    <ResourceListContext.Provider value={context}>
+      <div className={styles.ResourceListWrapper}>
+        {filterControlMarkup}
+        {headerMarkup}
+        {subHeaderMarkup}
+        {listMarkup}
+        {emptySearchStateMarkup}
+        {emptyStateMarkup}
+        {loadingWithoutItemsMarkup}
+      </div>
+    </ResourceListContext.Provider>
+  );
+};
+
+ResourceList.Item = ResourceItem;
 // eslint-disable-next-line import/no-deprecated
 ResourceList.FilterControl = FilterControl;
