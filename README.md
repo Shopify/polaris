@@ -39,7 +39,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@4.22.0/styles.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.26.1/styles.min.css"
 />
 ```
 
@@ -82,7 +82,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@4.22.0/styles.min.css"
+  href="https://unpkg.com/@shopify/polaris@4.26.1/styles.min.css"
 />
 ```
 
@@ -141,7 +141,7 @@ Also, when running `yarn install`, copied builds will be overwritten and will re
 
 [Percy](https://percy.io/) runs for every pull request. Percy is a tool that compares screenshots for every single component we have in the library.
 
-Percy is not always 100% accurate. Since it uses screenshot comparison, even browser sub-pixel rendering differences can cause Percy to ask for user confirmation of whether a change was intended or not. In cases like that, use your best judgement to determine whether you need to address it or not. This is why the choice to approve something or not is always manual. While everyone can view changes, only members of the Shopify team an approve changes.
+Percy is not always 100% accurate. Since it uses screenshot comparison, even browser sub-pixel rendering differences can cause Percy to ask for user confirmation of whether a change was intended or not. In cases like that, use your best judgment to determine whether you need to address it or not. This is why the choice to approve something or not is always manual. While everyone can view changes, only members of the Shopify team can approve changes.
 
 #### Manual visual regression testing
 

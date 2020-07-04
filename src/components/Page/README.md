@@ -248,6 +248,32 @@ Use for building any page on iOS.
 
 <!-- /content-for -->
 
+### Page with custom primary action
+
+<!-- example-for: web -->
+
+Use to create a custom primary action.
+
+```jsx
+<Page
+  breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+  title="General"
+  primaryAction={
+    <Button
+      primary
+      connectedDisclosure={{
+        accessibilityLabel: 'Other save actions',
+        actions: [{content: 'Save as new'}],
+      }}
+    >
+      Save
+    </Button>
+  }
+>
+  <p>Page content</p>
+</Page>
+```
+
 ### Page without primary action in header
 
 <!-- example-for: web -->

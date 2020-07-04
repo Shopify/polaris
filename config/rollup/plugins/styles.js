@@ -149,16 +149,10 @@ function generateMinifiedCss(sourceFilePath, css) {
 async function generateSass(inputFolder, outputFolder, cssByFile) {
   // Copy contents of $inputFolder/styles/shared.scss and $inputFolder/styles/foundation.scss
   // and the foundation, shared and polaris-tokens folders into into build/styles
-  // We need to transform the contents of the files as some of them contain
-  // `:global` css modules definitions that we want to strip out
-  const stripGlobalRegex = /:global\s*\(([^)]+)\)|:global\s*{\s*([^}]+)\s*}\s*/g;
   const globOptions = {cwd: inputFolder, ignore: 'styles/_common.scss'};
   await Promise.all(
     glob.sync(`styles/**/*.scss`, globOptions).map((filePath) => {
-      const file = readFileSync(`${inputFolder}/${filePath}`, 'utf8').replace(
-        stripGlobalRegex,
-        '$1$2',
-      );
+      const file = readFileSync(`${inputFolder}/${filePath}`, 'utf8');
       return outputFile(`${outputFolder}/${filePath}`, file);
     }),
   );

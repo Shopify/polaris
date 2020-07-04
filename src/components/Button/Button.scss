@@ -504,6 +504,7 @@ $stacking-order: (
   }
 
   &.destructive {
+    @include recolor-icon(color('red', 'dark'));
     color: var(--p-action-critical, color('red', 'dark'));
     &:focus,
     &:active {

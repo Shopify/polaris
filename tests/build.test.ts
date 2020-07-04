@@ -29,18 +29,6 @@ describe('build', () => {
     expect(fs.existsSync('./styles.min.css')).toBe(true);
   });
 
-  it('generates a ./styles/foundation dir with spacing.scss', () => {
-    expect(fs.existsSync('./styles/foundation/_spacing.scss')).toBe(true);
-  });
-
-  it('generates sass entries files in ./styles dir', () => {
-    expect(fs.existsSync('./styles/global.scss')).toBe(true);
-    expect(fs.existsSync('./styles/foundation.scss')).toBe(true);
-    expect(fs.existsSync('./styles/shared.scss')).toBe(true);
-    expect(fs.existsSync('./styles/_public-api.scss')).toBe(true);
-    expect(fs.existsSync('./styles/components.scss')).toBe(true);
-  });
-
   it('generates a ./styles.scss sass entry point in root', () => {
     expect(fs.existsSync('./styles.scss')).toBe(true);
   });
@@ -65,42 +53,40 @@ describe('build', () => {
   });
 
   it('replaces occurrences of POLARIS_VERSION', () => {
-    const files = glob.sync('./build/**/*.{js,scss,css}', {
+    const files = glob.sync('./{build,esnext}/**/*.{js,scss,css}', {
       ignore: './build/cache/**',
     });
 
-    const total = files.reduce((acc, file) => {
-      const contents = fs.readFileSync(file, 'utf-8');
-      return acc + Number(contents.includes('POLARIS_VERSION'));
-    }, 0);
-    expect(total).toBe(0);
-  });
+    expect(files).not.toHaveLength(0);
 
-  it('features the version of Polaris in compiled files', () => {
-    const files = glob.sync('./build/**/*.{js,scss,css}', {
-      ignore: './build/cache/**',
+    const fileBuckets: Record<string, string[]> = {
+      includesTemplateString: [],
+      includesVersion: [],
+    };
+
+    files.forEach((file) => {
+      const fileContent = fs.readFileSync(file, 'utf-8');
+
+      if (fileContent.includes('POLARIS_VERSION')) {
+        fileBuckets.includesTemplateString.push(file);
+      }
+
+      if (fileContent.includes(packageJSON.version)) {
+        fileBuckets.includesVersion.push(file);
+      }
     });
-    const total = files.reduce((acc, file) => {
-      const contents = fs.readFileSync(file, 'utf-8');
-      return acc + Number(contents.includes(packageJSON.version));
-    }, 0);
-    expect(total).toBe(5);
-  });
 
-  it('features the version of Polaris in those specific files', () => {
-    const globFiles = [
-      'polaris.css',
-      'polaris.es.js',
-      'polaris.js',
-      'polaris.min.css',
-      'styles/global.scss',
-    ].join(',');
-    const files = glob.sync(`./build/{${globFiles}}`);
-    const total = files.reduce((acc, file) => {
-      const contents = fs.readFileSync(file, 'utf-8');
-      return acc + Number(contents.includes(packageJSON.version));
-    }, 0);
-    expect(total).toBe(5);
+    expect(fileBuckets.includesTemplateString).toHaveLength(0);
+
+    expect(fileBuckets.includesVersion).toStrictEqual([
+      './build/polaris.css',
+      './build/polaris.es.js',
+      './build/polaris.js',
+      './build/polaris.min.css',
+      './build/styles/global.scss',
+      './esnext/configure.js',
+      './esnext/styles/global.scss',
+    ]);
   });
 
   describe('esnext', () => {
@@ -150,6 +136,36 @@ describe('build', () => {
     it('gives consumers control over global.scss', () => {
       const indexContents = fs.readFileSync('esnext/index.js', 'utf8');
       expect(indexContents).not.toMatch(/import '.+\.scss'/);
+    });
+  });
+
+  describe('Sass Public API', () => {
+    it('generates a ./styles/foundation dir with spacing.scss', () => {
+      expect(fs.existsSync('./styles/foundation/_spacing.scss')).toBe(true);
+    });
+
+    it('generates sass entries files in ./styles dir', () => {
+      expect(fs.existsSync('./styles/global.scss')).toBe(true);
+      expect(fs.existsSync('./styles/foundation.scss')).toBe(true);
+      expect(fs.existsSync('./styles/shared.scss')).toBe(true);
+      expect(fs.existsSync('./styles/_public-api.scss')).toBe(true);
+      expect(fs.existsSync('./styles/components.scss')).toBe(true);
+    });
+
+    it('does not contain any :global definitions', () => {
+      const files = glob.sync(`./{styles,esnext/styles}/**/*.scss`);
+
+      expect(files).not.toHaveLength(0);
+
+      const filesWithGlobalDefinitions = files.filter((file) => {
+        return fs.readFileSync(file, 'utf-8').includes(':global');
+      });
+
+      // esnext/styles/global.scss is expected to have a :global definition for now
+      // When that is moved into AppProvider.scss in v5 this will become an empty array
+      expect(filesWithGlobalDefinitions).toStrictEqual([
+        './esnext/styles/global.scss',
+      ]);
     });
   });
 });

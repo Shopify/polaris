@@ -53,6 +53,11 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 }
 
+.fullWidth {
+  max-width: none;
+  padding: 0 spacing();
+}
+
 .Message {
   @include truncate;
   @include text-style-heading;

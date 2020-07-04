@@ -155,6 +155,34 @@ Use to surface educational information about a feature or opportunity.
 </MediaCard>
 ```
 
+### Basic media card with small visual
+
+Use when there are limited vertical space, or when the card should be less prominent.
+
+```jsx
+<MediaCard
+  title="Getting Started"
+  primaryAction={{
+    content: 'Learn about getting started',
+    onAction: () => {},
+  }}
+  description="Discover how Shopify can power up your entrepreneurial journey."
+  popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
+  size="small"
+>
+  <img
+    alt=""
+    width="100%"
+    height="100%"
+    style={{
+      objectFit: 'cover',
+      objectPosition: 'center',
+    }}
+    src="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+  />
+</MediaCard>
+```
+
 ### Media card with secondary action
 
 Use when there are two distinct actions merchants can take on the information in the card.

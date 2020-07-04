@@ -304,6 +304,11 @@ describe('<ComboBox/>', () => {
       expect(comboBox.find(Popover).prop('active')).toBe(true);
     });
 
+    it('sets Popover to active on keyDown', () => {
+      comboBox.simulate('keydown');
+      expect(comboBox.find(Popover).prop('active')).toBe(true);
+    });
+
     it('sets Popover to fullWidth', () => {
       expect(comboBox.find(Popover).prop('fullWidth')).toBe(true);
     });
