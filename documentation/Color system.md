@@ -274,4 +274,3 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-range-slider-thumb-size-active`      | `2.4rem`                                                                                                     |
 | `--p-range-slider-thumb-scale`            | `1.5`                                                                                                        |
 | `--p-badge-font-weight`                   | `500`                                                                                                        |
-| `--p-rgb-text`                            | `33, 43, 54`                                                                                                 |

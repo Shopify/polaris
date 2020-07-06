@@ -13,10 +13,6 @@ const Shadow = {
   topBarShadow: '0 2px 2px -1px var(--p-shadow-from-direct-light)',
 };
 
-const RGB = {
-  rgbText: '33, 43, 54',
-};
-
 const Overrides = {
   overrideNone: 'none',
   overrideTransparent: 'transparent',
@@ -57,7 +53,6 @@ export const Tokens = {
   ...BorderRadius,
   ...Shadow,
   ...Overrides,
-  ...RGB,
 };
 
 function rem(px: string) {
