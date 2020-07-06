@@ -19,6 +19,7 @@ export function ScrollContainer({
     scrollableContainerRef.current.dispatchEvent(new Event('scroll'));
   }, [scrollableContainerRef]);
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   const handleScroll = useCallback(
     throttle(() => {
       if (!scrollableContainerRef.current) {
@@ -36,6 +37,7 @@ export function ScrollContainer({
     }, 20),
     [onScroll, scrollableContainerRef],
   );
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   return (
     <div

@@ -21,8 +21,9 @@ import {
   SELECT_ALL_ITEMS,
   SelectionType,
 } from '../IndexProvider';
-// eslint-disable-next-line shopify/strict-component-boundaries
+/* eslint-disable shopify/strict-component-boundaries */
 import {BulkActions, BulkActionsProps} from '../../ResourceList/components';
+/* eslint-enable shopify/strict-component-boundaries */
 
 import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
@@ -140,6 +141,7 @@ export function IndexTable({
     }
   }, [smallScreen]);
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   const handleResize = useCallback(
     debounce(() => {
       resizeTableHeadings();
@@ -147,6 +149,7 @@ export function IndexTable({
     }, 50),
     [resizeTableHeadings, resizeSmallScreen],
   );
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   const handleScrollContainerScroll = useCallback(
     (canScrollLeft, canScrollRight) => {

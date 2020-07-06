@@ -132,6 +132,7 @@ export {
   IndexTable as UnstableIndexTable,
   IndexProvider as UnstableIndexProvider,
   useIndexTableRowHovered as unstableUseIndexTableRowHovered,
+  SelectionType as UnstableSelectionType,
 } from './experimental';
 export type {
   IndexTableProps as UnstableIndexTableProps,
