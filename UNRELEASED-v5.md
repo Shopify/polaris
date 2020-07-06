@@ -29,5 +29,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Code quality
 
 - Converted `Modal` to a functional component ([#2376](https://github.com/Shopify/polaris-react/pull/2376))
+- Migrated to use `react-transition-group` instead of the material-ui fork. ([#3094](https://github.com/Shopify/polaris-react/pull/3094))
 
 ### Deprecations
