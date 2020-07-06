@@ -21,7 +21,7 @@ import {
   SELECT_ALL_ITEMS,
   SelectionType,
 } from '../IndexProvider';
-// eslint-disable-next-line shopify/strict-component-boundaries
+// eslint-disable-next-line @shopify/strict-component-boundaries
 import {BulkActions, BulkActionsProps} from '../../ResourceList/components';
 
 import {ScrollContainer, Cell, Row} from './components';
@@ -145,6 +145,7 @@ export function IndexTable({
       resizeTableHeadings();
       resizeSmallScreen();
     }, 50),
+    //eslint-disable-next-line react-hooks/exhaustive-deps
     [resizeTableHeadings, resizeSmallScreen],
   );
 

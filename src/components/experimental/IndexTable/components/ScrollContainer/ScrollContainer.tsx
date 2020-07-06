@@ -34,6 +34,7 @@ export function ScrollContainer({
         scrollableContainerRef.current.scrollLeft < availableScrollAmount;
       onScroll(canScrollLeft, canScrollRight);
     }, 20),
+    //eslint-disable-next-line react-hooks/exhaustive-deps
     [onScroll, scrollableContainerRef],
   );
 
