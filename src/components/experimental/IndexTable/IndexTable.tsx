@@ -21,9 +21,9 @@ import {
   SELECT_ALL_ITEMS,
   SelectionType,
 } from '../IndexProvider';
-/* eslint-disable shopify/strict-component-boundaries */
+/* eslint-disable @shopify/strict-component-boundaries */
 import {BulkActions, BulkActionsProps} from '../../ResourceList/components';
-/* eslint-enable shopify/strict-component-boundaries */
+/* eslint-enable @shopify/strict-component-boundaries */
 
 import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
