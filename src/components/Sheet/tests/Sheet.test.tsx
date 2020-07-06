@@ -1,5 +1,5 @@
 import React from 'react';
-import {CSSTransition} from '@material-ui/react-transition-group';
+import {CSSTransition} from 'react-transition-group';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Backdrop} from 'components/Backdrop';

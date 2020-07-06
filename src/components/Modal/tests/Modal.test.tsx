@@ -14,13 +14,13 @@ import {Footer, Dialog} from '../components';
 import {Modal} from '../Modal';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
-jest.mock('@material-ui/react-transition-group', () => {
+jest.mock('react-transition-group', () => {
   function ChildGroup({children}: {children: React.ReactNode}) {
     return <div>{children}</div>;
   }
 
   return {
-    ...(require.requireActual('@material-ui/react-transition-group') as any),
+    ...(require.requireActual('react-transition-group') as any),
     TransitionGroup: ChildGroup,
     TransitionChild: ChildGroup,
     CSSTransition: ChildGroup,
