@@ -27,6 +27,7 @@
   ],
   "main": "dist/index.js",
   "module": "dist/index.es.js",
+  "sewing-kit:esnext": "dist/esnext/index.ts.esnext",
   "types": "dist/types/latest/src/index.d.ts",
   "typesVersions": {
     "<3.8": {
