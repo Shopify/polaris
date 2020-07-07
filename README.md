@@ -65,11 +65,13 @@ ReactDOM.render(
 );
 ```
 
-### Building an embedded app
+### Building an embedded app (deprecated)
 
 We provide React wrappers around the Shopify App Bridge (formerly known as the EASDK). You don’t need to go through the initialization of the Shopify App Bridge as described in the docs. Instead, [configure the connection to the Shopify admin through the app provider component](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md).
 
 If you need help using Shopify App Bridge, the Embedded App SDK, or the POS App SDK, please visit our [API & SDK forum](https://community.shopify.com/c/Shopify-APIs-SDKs/bd-p/shopify-apis-and-technology). It is the best place to discuss the libraries, get support, notify us about bugs, or request features.
+
+As of v3.17.0, using Shopify App Bridge through Polaris is deprecated and will be removed in v5.0. Use [`@shopify/app-bridge-react`](https://shopify.dev/tools/app-bridge/react-components#using-app-bridge-react-with-polaris) instead; it provides the same functionality.
 
 ## Using the CSS components
 

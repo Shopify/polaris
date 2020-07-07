@@ -56,7 +56,7 @@ function EmbeddedAppLoadingExample() {
 
 #### Deprecation rationale
 
-As of v3.17.0, using `Loading` in an embedded app is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`Loading`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/loading) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) instead.
+As of v3.17.0, using `Loading` in an embedded app is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`Loading`](https://shopify.dev/tools/app-bridge/react-components/loading) from [`@shopify/app-bridge-react`](https://shopify.dev/tools/app-bridge/react-components) instead.
 
 ---
 

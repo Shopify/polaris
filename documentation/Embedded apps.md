@@ -4,6 +4,8 @@ In addition to the [visual components](https://polaris.shopify.com/components/ge
 
 When using Polaris, you don’t need to go through the initialization of the Shopify App Bridge as described [in the docs](https://help.shopify.com/en/api/embedded-apps/app-bridge#set-up-your-app). Instead, configure the connection to the Shopify admin through the [app provider component](https://polaris.shopify.com/components/structure/app-provider#initializing-the-shopify-app-bridge), which must wrap all components in an embedded app. This component initializes the Shopify App Bridge using the `apiKey` you provide. **The `apiKey` attribute is required** and can be found in the [Shopify Partner Dashboard](https://partners.shopify.com).
 
+As of v3.17.0, using Shopify App Bridge through Polaris is deprecated and will be removed in v5.0. Use [`@shopify/app-bridge-react`](https://shopify.dev/tools/app-bridge/react-components#using-app-bridge-react-with-polaris) instead; it provides the same functionality.
+
 ## Components which wrap Shopify App Bridge
 
 - [`<Toast />`](https://polaris.shopify.com/components/feedback-indicators/toast)

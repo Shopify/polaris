@@ -587,13 +587,13 @@ ReactDOM.render(
 
 #### Deprecation rationale
 
-As of v3.17.0, using `apiKey` and `shopOrigin` on `AppProvider` to initialize the Shopify App Bridge is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`Provider`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/provider) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) instead.
+As of v3.17.0, using `apiKey` and `shopOrigin` on `AppProvider` to initialize the Shopify App Bridge is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`@shopify/app-bridge-react`](https://shopify.dev/tools/app-bridge/react-components#using-app-bridge-react-with-polaris) instead; it provides the same functionality.
 
 ---
 
 ## Access to the Shopify App Bridge instance (deprecated)
 
-To provide access to your initialized Shopify App Bridge instance, we make it available through [React’s `context`](https://facebook.github.io/react/docs/context.html). The example below demonstrates how to access the `appBridge` object from React’s `context`, in order to use the [`Redirect` action](https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/navigation/redirect) to navigate:
+To provide access to your initialized Shopify App Bridge instance, we make it available through [React’s `context`](https://reactjs.org/docs/context.html). The example below demonstrates how to access the `appBridge` object from React’s `context`, in order to use the [`Redirect` action](https://shopify.dev/tools/app-bridge/actions/navigation/redirect) to navigate:
 
 ```js
 import React from 'react';
@@ -630,7 +630,7 @@ render(
 
 #### Deprecation rationale
 
-As of v3.17.0, using the Shopify App Bridge instance in context is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. More information can be found [here](https://github.com/Shopify/polaris-react/issues/814). Use the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) directly instead.
+As of v3.17.0, using the Shopify App Bridge instance in context is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. More information can be found [here](https://github.com/Shopify/polaris-react/issues/814). Use [`@shopify/app-bridge-react`](https://shopify.dev/tools/app-bridge/react-components) instead. Learn [how to access the Shopify App Bridge instance](https://shopify.dev/tools/app-bridge/react-components#using-app-bridge-react-with-polaris) through React’s `context` API in App Bridge React.
 
 ---
 

@@ -29,7 +29,7 @@ keywords:
 
 ## Use in an embedded application (deprecated)
 
-Enable the resource picker component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) by passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge).
+Enable the resource picker component to delegate to the [Shopify App Bridge](https://shopify.dev/tools/app-bridge) by passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge).
 
 Use of the resource picker component is only supported in an embedded application—it will not render in a stand-alone application. To help visualize the resource picker component in an embedded application, we've provided the following screenshot.
 
@@ -37,7 +37,7 @@ Use of the resource picker component is only supported in an embedded applicatio
 
 ### Deprecation rationale
 
-As of v3.17.0, `ResourcePicker` is deprecated. It will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`ResourcePicker`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/resourcepicker) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) instead.
+As of v3.17.0, `ResourcePicker` is deprecated. It will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`ResourcePicker`](https://shopify.dev/tools/app-bridge/react-components/resourcepicker) from [`@shopify/app-bridge-react`](https://shopify.dev/tools/app-bridge/react-components) instead.
 
 ---
 
