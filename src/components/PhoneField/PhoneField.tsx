@@ -4,6 +4,7 @@ import {TextField} from '../TextField';
 import {Button} from '../Button';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
+import {InlineError} from '../InlineError';
 
 import styles from './PhoneField.scss';
 
@@ -44,19 +45,13 @@ export function PhoneField({
   optional,
   countries,
 }: PhoneFieldProps) {
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
+  const [validPhoneNumber, setValidPhoneNumber] = useState(false);
   const [popoverActive, setPopoverActive] = useState(countries.length > 1);
   const [selectedCountryObject, setSelectedCountryObject] = useState(
-    countries[3],
+    countries[0],
   );
-
-  // const [selectedCountry, setSelectedCountry] = useState(
-  //   countries[3].countryName,
-  // );
-
-  // const [selectedCountryCode, setSelectedCountryCode] = useState(
-  //   countries[3].countryCode,
-  // );
 
   // Conduct research on which country appears first
   const [searchBarText, setSearchBarText] = useState('');
@@ -69,13 +64,6 @@ export function PhoneField({
 
   const [countryOptions, setCountryOptions] = useState(allCountries);
 
-  /** Callback function for handling when the text in the phone number changes */
-  const handleTextChange = useCallback(
-    (newValue) =>
-      setFormattedPhoneNumber(phoneNumberFormatter(countries, newValue)),
-    [countries, phoneNumberFormatter],
-  );
-
   /** Callback function for handling when the popover is clicked */
   const togglePopoverActive = useCallback(() => {
     setPopoverActive((popoverActive) => !popoverActive);
@@ -83,7 +71,51 @@ export function PhoneField({
     setCountryOptions(allCountries);
   }, [allCountries]);
 
-  const retrieveCountryIndex = useCallback(
+  /* Checks if there is at least one country with 'area code object' */
+  function checkAreaCodeKeyExists(countryArr: Country[]) {
+    const filteredCountryArr = countryArr.filter(
+      (countryObj) => 'areaCodes' in countryObj,
+    );
+
+    return filteredCountryArr.length !== 0;
+  }
+
+  // Given a countryArr, where the countryCodes are the same, and countryCode where '+1202'
+  function retrieveAreaCodeMatches(countryArr: Country[], phoneNum: string) {
+    // If we have '+120255, we obtain '202'
+    // If we have '+120', we obtain '20'
+    // If we have '+1202', we obtain '202'
+    const retrieveAreaCodeFromPhoneNum =
+      countryArr[0].countryCode.length + countryArr[0].displayFormat[0] <=
+      phoneNum.length
+        ? phoneNum.slice(
+            countryArr[0].countryCode.length,
+            countryArr[0].countryCode.length + countryArr[0].displayFormat[0],
+          )
+        : phoneNum.slice(countryArr[0].countryCode.length);
+
+    const filteredCountryArr = countryArr.filter((countryObj) =>
+      // We always check the array has an 'area code' key in the function that calls this
+      countryObj.areaCodes.includes(parseInt(retrieveAreaCodeFromPhoneNum, 10)),
+    );
+
+    return filteredCountryArr;
+  }
+
+  const extractNumberFormat = useCallback((numberStr: string) => {
+    const extractNumbersRegex = /\d+/g;
+    const numberPresent = extractNumbersRegex.test(numberStr);
+    const startsWithPlus = numberStr.startsWith('+') ? '+' : '';
+
+    /* Since the match function may return 'null', the test function was used to check if there is a match first
+    before using the match function */
+
+    return numberPresent
+      ? `+${numberStr.match(extractNumbersRegex).join('')}`
+      : startsWithPlus;
+  }, []);
+
+  const retrieveCountryObject = useCallback(
     (countryName: string) => {
       const foundIndex = countries.findIndex(
         (element) => element.countryName === countryName,
@@ -92,12 +124,116 @@ export function PhoneField({
     },
     [countries],
   );
+
+  const phoneNumberFormatter = useCallback(
+    (countryArr: Country[], phoneNumber) => {
+      let numberStr = extractNumberFormat(phoneNumber);
+      setPhoneNumber(numberStr);
+
+      // Filter the countries based on country code
+      const filteredCountries = countryArr.filter((countryObj) =>
+        numberStr.startsWith(countryObj.countryCode),
+      );
+
+      // If there are no countries that match based off of countryCode, then no formatting
+      if (filteredCountries.length === 0) return numberStr;
+
+      // Selected Country Object (default)
+      let selectedCountryObj = filteredCountries[0];
+
+      if (filteredCountries.length === 1) {
+        setSelectedCountryObject(
+          countries[retrieveCountryObject(selectedCountryObj.countryName)],
+        );
+      }
+
+      if (filteredCountries.length > 1) {
+        // So, we don't pass in '+1', no need to filter (any country with just countryCode)
+        if (numberStr === filteredCountries[0].countryCode) return numberStr;
+
+        if (checkAreaCodeKeyExists(filteredCountries)) {
+          // Obtains the filtered array of countries with 'key' areaCodes
+          const filteredCountryArr = countryArr.filter(
+            (countryObj) => 'areaCodes' in countryObj,
+          );
+
+          // If it is not equal to [] (there is a country with a area code)
+          // Else, we pick the first one (Line 246)
+          if (filteredCountryArr.length > 0) {
+            // Then, we check if the area code in the numberStr matches one of the
+            // area codes in the list
+            // If not, then we pick first one (Line 246)
+            if (
+              retrieveAreaCodeMatches(filteredCountryArr, numberStr).length !==
+              0
+            ) {
+              selectedCountryObj = retrieveAreaCodeMatches(
+                filteredCountryArr,
+                numberStr,
+              )[0];
+              setSelectedCountryObject(
+                countries[
+                  retrieveCountryObject(selectedCountryObj.countryName)
+                ],
+              );
+            }
+          }
+        }
+      }
+
+      // setValidPhoneNumber(checkValidPhoneNumber(numberStr, selectedCountryObj));
+      // Selected Country, Number of Digits
+      const countryMaxDigits = selectedCountryObj.displayFormat.reduce(
+        (accumulator: number, currentValue: number) =>
+          accumulator + currentValue,
+      );
+
+      // If the length of the string is greater than the sum of selectedCountry's countryCode and maxDigits, return it with no formatting
+      if (
+        numberStr.length >
+        selectedCountryObj.countryCode.length + countryMaxDigits
+      ) {
+        return numberStr;
+      }
+
+      /* This section deals with formatting */
+      let regexCaptureGroups = `([+]\\d{${
+        selectedCountryObj.countryCode.length - 1
+      }})`;
+      selectedCountryObj.displayFormat.forEach((currentValue) => {
+        regexCaptureGroups = regexCaptureGroups.concat(
+          `(\\d{0,${currentValue}})`,
+        );
+      });
+
+      const regexExp = new RegExp(`^${regexCaptureGroups}$`);
+
+      // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
+      const formattedPhoneNum = numberStr.match(regexExp);
+
+      if (formattedPhoneNum !== null) {
+        numberStr = formattedPhoneNum
+          .slice(1, 1 + selectedCountryObj.displayFormat.length + 1)
+          .filter(Boolean)
+          .join(' ');
+      }
+
+      return numberStr;
+    },
+    [countries, extractNumberFormat, retrieveCountryObject],
+  );
+
+  /** Callback function for handling when the text in the phone number changes */
+  const handleTextChange = useCallback(
+    (newValue) =>
+      setFormattedPhoneNumber(phoneNumberFormatter(countries, newValue)),
+    [countries, phoneNumberFormatter],
+  );
+
   /** Callback function for handling the selected country */
   const handleSelected = useCallback(
     (index) => {
       setSelectedCountryObject(countries[index]);
-      // setSelectedCountry(countries[index].countryName);
-      // setSelectedCountryCode(countries[index].countryCode);
       handleTextChange(countries[index].countryCode);
       togglePopoverActive();
     },
@@ -113,13 +249,13 @@ export function PhoneField({
         .map(({countryName, image, countryCode}) => ({
           content: `${image} ${countryName} (${countryCode})`,
           onAction: () => {
-            handleSelected(retrieveCountryIndex(countryName));
+            handleSelected(retrieveCountryObject(countryName));
           },
         }));
 
       return results;
     },
-    [countries, handleSelected, retrieveCountryIndex],
+    [countries, handleSelected, retrieveCountryObject],
   );
 
   /** Callback function for handling when the text in search bar changes */
@@ -130,6 +266,13 @@ export function PhoneField({
     },
     [retrieveCountries],
   );
+
+  useEffect(() => {
+    console.log(checkValidPhoneNumber(phoneNumber, selectedCountryObject));
+    setValidPhoneNumber(
+      checkValidPhoneNumber(phoneNumber, selectedCountryObject),
+    );
+  }, [checkValidPhoneNumber, phoneNumber, selectedCountryObject]);
 
   /** Handles the button that clicks for the popover */
   const activator =
@@ -142,211 +285,77 @@ export function PhoneField({
       <Button>{selectedCountryObject.countryName}</Button>
     );
 
-  const extractNumberFormat = useCallback((numberStr) => {
-    const extractNumbersRegex = /\d+/g;
-    const numberPresent = extractNumbersRegex.test(numberStr);
-    const startsWithPlus = numberStr.startsWith('+') ? '+' : '';
-    return numberPresent
-      ? `+${numberStr.match(extractNumbersRegex).join('')}`
-      : startsWithPlus;
-  }, []);
+  const displayErrorMessage = validPhoneNumber ? null : (
+    <InlineError
+      message={
+        errorMessage ? errorMessage : 'Please enter a valid phone number'
+      }
+      fieldID="myFieldID"
+    />
+  );
 
-  // Checks if there is at least one country with 'area code object'
-  // Passed an array of objects
-  function checkAreaCodeExists(countryArr) {
-    const filteredCountryArr = countryArr.filter(
-      (countryObj) => 'areaCodes' in countryObj,
-    );
+  const checkValidPhoneNumber = useCallback(
+    (phoneNum: string, selectedCountryObject: Country) => {
+      let validPhoneNumber = true;
 
-    return filteredCountryArr !== [];
-  }
+      if (!phoneNum.startsWith(selectedCountryObject.countryCode)) {
+        validPhoneNumber = false;
+      }
 
-  // Given a countryArr, where the countryCodes are the same, and countryCode where '+1202'
-  function retrieveACfromCountry(countryArr, phoneNum) {
-    // If we have '+120255, we obtain '202'
-    // If we have '+120', we obtain '20'
-    // If we have '+1202', we obtain '202'
-    const retrieveAreaCodeFromPhoneNum =
-      countryArr[0].countryCode.length + countryArr[0].displayFormat[0] <=
-      phoneNum.length
-        ? phoneNum.slice(
-            countryArr[0].countryCode.length,
-            countryArr[0].countryCode.length + countryArr[0].displayFormat[0],
-          )
-        : phoneNum.slice(countryArr[0].countryCode.length);
+      if (phoneNum === '' || phoneNum === '+') {
+        validPhoneNumber = false;
+      }
 
-    console.log(retrieveAreaCodeFromPhoneNum);
-    const filteredCountryArr = countryArr.filter((countryObj) =>
-      // countryObj.areaCodes.includes(parseInt(retrieveAreaCodeFromPhoneNum))
-      countryObj.areaCodes.includes(parseInt(retrieveAreaCodeFromPhoneNum)),
-    );
-
-    return filteredCountryArr;
-  }
-
-  const phoneNumberFormatter = useCallback(
-    (countryArr, phoneNumber) => {
-      const numberStr = extractNumberFormat(phoneNumber);
-      console.log(`New Formatted Phone Number: ${numberStr}`);
-
-      // Filter the countries based on country code
-      const filteredCountries = countryArr.filter((countryObj) =>
-        numberStr.startsWith(countryObj.countryCode),
+      const selectedCountryMaxDigits = selectedCountryObject.displayFormat.reduce(
+        (accumulator: number, currentValue: number) =>
+          accumulator + currentValue,
       );
 
-      if (filteredCountries.length === 1) {
-        // Selected Country Object
-        const selectedCountryObj = filteredCountries[0];
-        const countryIndex = countries.findIndex(
-          (countryObj) =>
-            countryObj.countryName === selectedCountryObj.countryName,
-        );
-
-        setSelectedCountryObject(countries[countryIndex]);
-
-        // Selected Country, Number of Digits
-        const countryMaxDigits = selectedCountryObj.displayFormat.reduce(
-          (accumulator: number, currentValue: number) =>
-            accumulator + currentValue,
-        );
-
-        // If the length of the string is greater than the sum of selectedCountry's countryCode and maxDigits, return it with no formatting
-        if (
-          numberStr.length >
-          selectedCountryObj.countryCode.length + countryMaxDigits
-        ) {
-          return numberStr;
-        }
-
-        /* This section deals with formatting */
-        let regexCaptureGroups = `([+]\\d{${
-          selectedCountryObj.countryCode.length - 1
-        }})`;
-        selectedCountryObj.displayFormat.forEach((currentValue) => {
-          regexCaptureGroups = regexCaptureGroups.concat(
-            `(\\d{0,${currentValue}})`,
-          );
-        });
-
-        const regexExp = new RegExp(`^${regexCaptureGroups}$`);
-
-        let formattedPhoneNum = numberStr.match(regexExp);
-        formattedPhoneNum = formattedPhoneNum
-          .slice(1, 1 + selectedCountryObj.displayFormat.length + 1)
-          .filter(Boolean)
-          .join(' ');
-
-        return formattedPhoneNum;
+      if (
+        phoneNum.length !==
+        selectedCountryMaxDigits + selectedCountryObject.countryCode.length
+      ) {
+        validPhoneNumber = false;
       }
 
-      if (filteredCountries.length === 0) {
-        return numberStr;
-      }
-
-      if (filteredCountries.length > 1) {
-        // So, we don't pass in '+1', no need to filter (any country with just countryCode)
-        if (numberStr === filteredCountries[0].countryCode) {
-          return numberStr;
-        }
-
-        let selectedCountryObj = filteredCountries[0];
-        if (checkAreaCodeExists(filteredCountries)) {
-          // Obtains the filtered array of countries with 'key' areaCodes
-          const filteredCountryArr = countryArr.filter(
-            (countryObj) => 'areaCodes' in countryObj,
-          );
-
-          // If it is not equal to [] (there is a country with a area code)
-          // Else, we pick the first one (Line 246)
-          // ** CHANGE TO .LENGTH
-          if (filteredCountryArr !== []) {
-            // Then, we check if the area code in the numberStr matches one of the
-            // area codes in the list
-            // If not, then we pick first one (Line 246)
-            if (
-              retrieveACfromCountry(filteredCountryArr, numberStr).length !== 0
-            ) {
-              selectedCountryObj = retrieveACfromCountry(
-                filteredCountryArr,
-                numberStr,
-              )[0];
-
-              const countryIndex = countries.findIndex(
-                (countryObj) =>
-                  countryObj.countryName === selectedCountryObj.countryName,
-              );
-
-              setSelectedCountryObject(countries[countryIndex]);
-            }
-          }
-        }
-
-        // Selected Country, Number of Digits
-        const countryMaxDigits = selectedCountryObj.displayFormat.reduce(
-          (accumulator, currentValue) => accumulator + currentValue,
-        );
-
-        // If the length of the string is greater than the sum of selectedCountry's countryCode and maxDigits, return it with no formatting
-        if (
-          numberStr.length >
-          selectedCountryObj.countryCode.length + countryMaxDigits
-        ) {
-          return numberStr;
-        }
-
-        /* This section deals with formatting */
-        let regexCaptureGroups = `([+]\\d{${
-          selectedCountryObj.countryCode.length - 1
-        }})`;
-        selectedCountryObj.displayFormat.forEach((currentValue) => {
-          regexCaptureGroups = regexCaptureGroups.concat(
-            `(\\d{0,${currentValue}})`,
-          );
-        });
-
-        const regexExp = new RegExp(`^${regexCaptureGroups}$`);
-
-        let formattedPhoneNum = numberStr.match(regexExp);
-        formattedPhoneNum = formattedPhoneNum
-          .slice(1, 1 + selectedCountryObj.displayFormat.length + 1)
-          .filter(Boolean)
-          .join(' ');
-
-        return formattedPhoneNum;
-      }
+      // Check if 'area code' of phone number exists for countries with same country code
+      return validPhoneNumber;
     },
-    [countries, extractNumberFormat],
+    [],
   );
 
   return (
-    <TextField
-      label={optional ? `${labelName} (optional)` : labelName}
-      autoComplete="tel"
-      type="tel"
-      placeholder={placeholder}
-      value={formattedPhoneNumber}
-      onChange={handleTextChange}
-      labelHidden={labelHidden}
-      connectedLeft={
-        <Popover
-          active={popoverActive}
-          activator={activator}
-          onClose={togglePopoverActive}
-          preferredAlignment="left"
-        >
-          <div className={styles.Searchbar}>
-            <TextField
-              label="Store name"
-              value={searchBarText}
-              labelHidden
-              placeholder="Search for a country"
-              onChange={handleSearchBar}
-            />
-          </div>
+    <div>
+      <TextField
+        label={optional ? `${labelName} (optional)` : labelName}
+        autoComplete="tel"
+        type="tel"
+        placeholder={placeholder}
+        value={formattedPhoneNumber}
+        onChange={handleTextChange}
+        labelHidden={labelHidden}
+        connectedLeft={
+          <Popover
+            active={popoverActive}
+            activator={activator}
+            onClose={togglePopoverActive}
+            preferredAlignment="left"
+          >
+            <div className={styles.Searchbar}>
+              <TextField
+                label="Store name"
+                value={searchBarText}
+                labelHidden
+                placeholder="Search for a country"
+                onChange={handleSearchBar}
+              />
+            </div>
 
-          <ActionList items={countryOptions} />
-        </Popover>
-      }
-    />
+            <ActionList items={countryOptions} />
+          </Popover>
+        }
+      />
+      {displayErrorMessage}
+    </div>
   );
 }
