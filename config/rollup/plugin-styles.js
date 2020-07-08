@@ -43,7 +43,13 @@ export function styles({
     cssByFile[id] = postCssOutput.css;
 
     const properties = JSON.stringify(postCssOutput.tokens, null, 2);
-    return `export default ${properties};`;
+    // no-tresshake to ensure that css files with no exports or unused exports
+    // (e.g. AppProvider that contains global css but no classnames and thus no
+    // exports) still appear in the bundle's list of modules in generateBundle
+    return {
+      code: `export default ${properties};`,
+      moduleSideEffects: 'no-treeshake',
+    };
   }
 
   function transformEsNext(rollup, id, postCssOutput) {
@@ -61,7 +67,11 @@ export function styles({
     });
 
     const properties = JSON.stringify(postCssOutput.tokens, null, 2);
-    return `import './${relativePath}';\nexport default ${properties};`;
+    // No need to specify no-treeshake here as .css files get treated as
+    // external and thus their imports will not be tree shaken away anyway
+    return {
+      code: `import './${relativePath}';\nexport default ${properties};`,
+    };
   }
 
   function generateBundleStandalone(rollup, generateOptions, bundle) {
@@ -81,12 +91,6 @@ export function styles({
     // The contents of the emitted css file should use the order in which the
     // files were referenced in the compiled javascript, which can be obtained
     // by looking at bundles[].modules.
-    // Rollup v2.0 changes the behaviour of bundles[].modules so that it no
-    // longer includes tree-shaken modules - which includes CSS files that don't
-    // expose any classnames via css-modules. So we can't update till we have a
-    // better mechanism to build this list.
-    // See https://github.com/rollup/rollup/issues/3651
-
     const bundleModuleIds = flatMap(Object.values(bundle), (fileInfo) =>
       Object.keys(fileInfo.modules),
     );
@@ -115,7 +119,7 @@ export function styles({
     name: 'styles',
 
     buildStart({input}) {
-      inputRoot = path.dirname(input);
+      inputRoot = path.dirname(input[0]);
     },
 
     // Treat CSS files as external - don't try and resolve them within Rollup
