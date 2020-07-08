@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react';
-import {CircleAlertMajorFilled} from '@shopify/polaris-icons';
 
 import {TextField} from '../TextField';
 import {Button} from '../Button';
@@ -58,16 +57,8 @@ export function PhoneField({
   );
 
   // Keeps track of selectedCountry information
-  const [selectedCountry, setSelectedCountry] = useState(
-    countries[0].countryName,
-  );
-
-  const [selectedCountryCode, setSelectedCountryCode] = useState(
-    countries[0].countryCode,
-  );
-
-  const [selectedDisplayFormat, setSelectedDisplayFormat] = useState(
-    countries[0].displayFormat,
+  const [selectedCountryObject, setSelectedCountryObject] = useState(
+    countries[0],
   );
 
   // Conduct research on which country appears first
@@ -101,9 +92,7 @@ export function PhoneField({
   /** Callback function for handling when a country is selected */
   const handleSelected = useCallback(
     (index) => {
-      setSelectedCountry(countries[index].countryName);
-      setSelectedCountryCode(countries[index].countryCode);
-      setSelectedDisplayFormat(countries[index].displayFormat);
+      setSelectedCountryObject(countries[index]);
       togglePopoverActive();
     },
     [countries, togglePopoverActive],
@@ -156,13 +145,14 @@ export function PhoneField({
         : '';
 
       const selectedCountryIndex = countries.findIndex(
-        (countryObj) => countryObj.countryName === selectedCountry,
+        (countryObj) =>
+          countryObj.countryName === selectedCountryObject.countryName,
       );
 
-      setPhoneNumber(`${selectedCountryCode}${phoneNum}`);
+      setPhoneNumber(`${selectedCountryObject.countryCode}${phoneNum}`);
       setValidPhoneNumber(
         checkValidPhoneNumber(
-          `${selectedCountryCode}${phoneNum}`,
+          `${selectedCountryObject.countryCode}${phoneNum}`,
           countries,
           selectedCountryIndex,
         ),
@@ -173,8 +163,8 @@ export function PhoneField({
       checkValidPhoneNumber,
       countries,
       handleSelected,
-      selectedCountry,
-      selectedCountryCode,
+      selectedCountryObject.countryCode,
+      selectedCountryObject.countryName,
     ],
   );
 
@@ -209,10 +199,14 @@ export function PhoneField({
     (phoneNum) => {
       const allNumbers = extractNumbersRegex(phoneNum);
       setFormattedPhoneNumber(
-        convertPhoneNumber(allNumbers, selectedDisplayFormat),
+        convertPhoneNumber(allNumbers, selectedCountryObject.displayFormat),
       );
     },
-    [convertPhoneNumber, extractNumbersRegex, selectedDisplayFormat],
+    [
+      convertPhoneNumber,
+      extractNumbersRegex,
+      selectedCountryObject.displayFormat,
+    ],
   );
 
   /** When the user changes the country, the formatting for phone number changes */
@@ -253,10 +247,10 @@ export function PhoneField({
     countries.length > 1 ? (
       // eslint-disable-next-line shopify/jsx-no-hardcoded-content
       <Button onClick={togglePopoverActive} disclosure>
-        {`${selectedCountry} (${selectedCountryCode})`}
+        {`${selectedCountryObject.countryName} (${selectedCountryObject.countryCode})`}
       </Button>
     ) : (
-      <Button>{selectedCountry}</Button>
+      <Button>{selectedCountryObject.countryName}</Button>
     );
 
   const displayErrorMessage =
