@@ -8,7 +8,7 @@ import {InlineError} from '../InlineError';
 
 import styles from './PhoneField.scss';
 
-interface Country {
+export interface Country {
   /** The country flag */
   image: string;
   /** Country name */
@@ -35,6 +35,10 @@ export interface PhoneFieldProps {
   errorMessage?: string;
   /** Country list in dropdown */
   countries: Country[];
+  /** The search bar in the dropdown is present */
+  searchBar?: boolean;
+  /** Validator for phone number */
+  validator?(number: string, country: Country): boolean;
 }
 
 export function PhoneField({
@@ -44,10 +48,12 @@ export function PhoneField({
   labelHidden,
   optional,
   countries,
+  validator,
+  searchBar,
 }: PhoneFieldProps) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
-  const [validPhoneNumber, setValidPhoneNumber] = useState(false);
+  const [validPhoneNumber, setValidPhoneNumber] = useState(true);
   const [popoverActive, setPopoverActive] = useState(countries.length > 1);
   const [selectedCountryObject, setSelectedCountryObject] = useState(
     countries[0],
@@ -80,11 +86,11 @@ export function PhoneField({
     return filteredCountryArr.length !== 0;
   }
 
-  // Given a countryArr, where the countryCodes are the same, and countryCode where '+1202'
+  // Given a countryArr, where the countryCodes are the same, and we are retrieving the area codes
   function retrieveAreaCodeMatches(countryArr: Country[], phoneNum: string) {
-    // If we have '+120255, we obtain '202'
-    // If we have '+120', we obtain '20'
-    // If we have '+1202', we obtain '202'
+    // If we have pass in '+120255, we obtain '202'
+    // If we have pass in '+120', we obtain '20'
+    // If we have pass in '+1202', we obtain '202'
     const retrieveAreaCodeFromPhoneNum =
       countryArr[0].countryCode.length + countryArr[0].displayFormat[0] <=
       phoneNum.length
@@ -96,7 +102,9 @@ export function PhoneField({
 
     const filteredCountryArr = countryArr.filter((countryObj) =>
       // We always check the array has an 'area code' key in the function that calls this
-      countryObj.areaCodes.includes(parseInt(retrieveAreaCodeFromPhoneNum, 10)),
+      countryObj.areaCodes?.includes(
+        parseInt(retrieveAreaCodeFromPhoneNum, 10),
+      ),
     );
 
     return filteredCountryArr;
@@ -111,7 +119,7 @@ export function PhoneField({
     before using the match function */
 
     return numberPresent
-      ? `+${numberStr.match(extractNumbersRegex).join('')}`
+      ? `+${numberStr.match(extractNumbersRegex)?.join('')}`
       : startsWithPlus;
   }, []);
 
@@ -268,11 +276,9 @@ export function PhoneField({
   );
 
   useEffect(() => {
-    console.log(checkValidPhoneNumber(phoneNumber, selectedCountryObject));
-    setValidPhoneNumber(
-      checkValidPhoneNumber(phoneNumber, selectedCountryObject),
-    );
-  }, [checkValidPhoneNumber, phoneNumber, selectedCountryObject]);
+    if (!validator) return;
+    setValidPhoneNumber(validator(phoneNumber, selectedCountryObject));
+  }, [phoneNumber, selectedCountryObject, validator]);
 
   /** Handles the button that clicks for the popover */
   const activator =
@@ -294,34 +300,16 @@ export function PhoneField({
     />
   );
 
-  const checkValidPhoneNumber = useCallback(
-    (phoneNum: string, selectedCountryObject: Country) => {
-      let validPhoneNumber = true;
-
-      if (!phoneNum.startsWith(selectedCountryObject.countryCode)) {
-        validPhoneNumber = false;
-      }
-
-      if (phoneNum === '' || phoneNum === '+') {
-        validPhoneNumber = false;
-      }
-
-      const selectedCountryMaxDigits = selectedCountryObject.displayFormat.reduce(
-        (accumulator: number, currentValue: number) =>
-          accumulator + currentValue,
-      );
-
-      if (
-        phoneNum.length !==
-        selectedCountryMaxDigits + selectedCountryObject.countryCode.length
-      ) {
-        validPhoneNumber = false;
-      }
-
-      // Check if 'area code' of phone number exists for countries with same country code
-      return validPhoneNumber;
-    },
-    [],
+  const searchBarField = (
+    <div className={styles.Searchbar}>
+      <TextField
+        label="Store name"
+        value={searchBarText}
+        labelHidden
+        placeholder="Search for a country"
+        onChange={handleSearchBar}
+      />
+    </div>
   );
 
   return (
@@ -341,15 +329,7 @@ export function PhoneField({
             onClose={togglePopoverActive}
             preferredAlignment="left"
           >
-            <div className={styles.Searchbar}>
-              <TextField
-                label="Store name"
-                value={searchBarText}
-                labelHidden
-                placeholder="Search for a country"
-                onChange={handleSearchBar}
-              />
-            </div>
+            {searchBar ? searchBarField : null}
 
             <ActionList items={countryOptions} />
           </Popover>
