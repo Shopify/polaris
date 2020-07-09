@@ -7,7 +7,6 @@ import {
   TextField,
   Button,
 } from 'components';
-import * as focusUtilities from '@shopify/javascript-utilities/focus';
 
 import * as focusUtils from '../../../utilities/focus';
 import {TrapFocus} from '../TrapFocus';
@@ -25,7 +24,7 @@ describe('<TrapFocus />', () => {
 
   beforeEach(() => {
     focusFirstFocusableNodeSpy = jest.spyOn(
-      focusUtilities,
+      focusUtils,
       'focusFirstFocusableNode',
     );
 

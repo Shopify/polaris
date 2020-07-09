@@ -1,6 +1,5 @@
 import React from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import * as focusUtils from '@shopify/javascript-utilities/focus';
 // eslint-disable-next-line no-restricted-imports
 import {
   findByTestID,
@@ -12,6 +11,7 @@ import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
 
 import {Footer, Dialog} from '../components';
 import {Modal} from '../Modal';
+import * as focusUtils from '../../../utilities/focus';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
 jest.mock('react-transition-group', () => {

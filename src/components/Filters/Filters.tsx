@@ -1,5 +1,4 @@
 import React, {createRef} from 'react';
-import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {
   SearchMinor,
   ChevronUpMinor,
@@ -12,6 +11,7 @@ import {ResourceListContext} from '../../utilities/resource-list';
 import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
 import {useFeatures} from '../../utilities/features';
+import {focusFirstFocusableNode} from '../../utilities/focus';
 import {Button} from '../Button';
 import {DisplayText} from '../DisplayText';
 import {Collapsible} from '../Collapsible';
