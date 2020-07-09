@@ -31,6 +31,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Converted `Modal` to a functional component ([#2376](https://github.com/Shopify/polaris-react/pull/2376))
 - Migrated to use `react-transition-group` instead of the material-ui fork. ([#3094](https://github.com/Shopify/polaris-react/pull/3094))
 - Removed `withAppProvider` higher-order component. ([#3098](https://github.com/Shopify/polaris-react/pull/3098))
+- Removed several dependencies on the deprecated `@shopify/javascript-utilities` library ([#3102](https://github.com/Shopify/polaris-react/pull/3102))
 - Removed dependency on `@shopify/useful-types`
 
 ### Deprecations
