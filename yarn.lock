@@ -2199,14 +2199,6 @@
   resolved "https://registry.yarnpkg.com/@shopify/typescript-configs/-/typescript-configs-2.0.2.tgz#0cea1b090451409ccfceb1c6f3a21ae006ef0cee"
   integrity sha512-3NBlqnJxKgLp0P7SwD2nR98BtkdhKmVIyL+UggdG4hwHAm4EJ28q21huhEo3yt3j7CMU0a1eJUWsFlh/NMapUQ==
 
-"@shopify/useful-types@^1.2.4":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@shopify/useful-types/-/useful-types-1.3.0.tgz#79cfb6722d2cc192c05f14e55789bcfe2b40a6de"
-  integrity sha512-BQw5KFuDm7aAH1bPECxnC1bPyaLSmZP0ecs0XwzKtgltBHWGvgu8dpqNXvY+sDfG5tnF+79EjiytRCOsTElyIg==
-  dependencies:
-    "@types/react" ">=16.4.0"
-    tslib "^1.9.3"
-
 "@shopify/useful-types@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@shopify/useful-types/-/useful-types-2.2.0.tgz#811dfb1921e6c781603c90a76622e0292db11321"
@@ -3251,7 +3243,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@>=16.4.0", "@types/react@^16.0.2", "@types/react@^16.8.12", "@types/react@^16.8.6", "@types/react@^16.9.2":
+"@types/react@*", "@types/react@^16.0.2", "@types/react@^16.8.12", "@types/react@^16.8.6", "@types/react@^16.9.2":
   version "16.9.13"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.13.tgz#b3ea5dd443f4a680599e2abba8cc66f5e1ce0059"
   integrity sha512-LikzRslbiufJYHyzbHSW0GrAiff8QYLMBFeZmSxzCYGXKxi8m/1PHX+rsVOwhr7mJNq+VIu2Dhf7U6mjFERK6w==
