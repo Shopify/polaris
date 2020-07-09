@@ -1,9 +1,5 @@
 import React from 'react';
 import debounce from 'lodash/debounce';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
 
 import {classNames} from '../../utilities/css';
@@ -76,10 +72,10 @@ export class Scrollable extends React.Component<ScrollableProps, State> {
       return;
     }
     this.stickyManager.setContainer(this.scrollArea);
-    addEventListener(this.scrollArea, 'scroll', () => {
+    this.scrollArea.addEventListener('scroll', () => {
       window.requestAnimationFrame(this.handleScroll);
     });
-    addEventListener(window, 'resize', this.handleResize);
+    window.addEventListener('resize', this.handleResize);
     window.requestAnimationFrame(() => {
       this.handleScroll();
       if (this.props.hint) {
@@ -92,8 +88,8 @@ export class Scrollable extends React.Component<ScrollableProps, State> {
     if (this.scrollArea == null) {
       return;
     }
-    removeEventListener(this.scrollArea, 'scroll', this.handleScroll);
-    removeEventListener(window, 'resize', this.handleResize);
+    this.scrollArea.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleResize);
     this.stickyManager.removeScrollListener();
   }
 
@@ -229,9 +225,9 @@ export class Scrollable extends React.Component<ScrollableProps, State> {
 
     EVENTS_TO_LOCK.forEach((eventName) => {
       if (shouldLock) {
-        addEventListener(scrollArea, eventName, prevent);
+        scrollArea.addEventListener(eventName, prevent);
       } else {
-        removeEventListener(scrollArea, eventName, prevent);
+        scrollArea.removeEventListener(eventName, prevent);
       }
     });
   }
