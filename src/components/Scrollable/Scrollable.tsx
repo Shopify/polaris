@@ -1,6 +1,5 @@
 import React from 'react';
 import debounce from 'lodash/debounce';
-import {closest} from '@shopify/javascript-utilities/dom';
 
 import {classNames} from '../../utilities/css';
 import {
@@ -44,7 +43,7 @@ interface State {
 export class Scrollable extends React.Component<ScrollableProps, State> {
   static ScrollTo = ScrollTo;
   static forNode(node: HTMLElement): HTMLElement | Document {
-    const closestElement = closest(node, scrollable.selector);
+    const closestElement = node.closest(scrollable.selector);
     return closestElement instanceof HTMLElement ? closestElement : document;
   }
 

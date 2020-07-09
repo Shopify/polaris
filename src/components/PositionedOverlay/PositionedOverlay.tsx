@@ -1,6 +1,5 @@
 import React from 'react';
 import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
-import {closest} from '@shopify/javascript-utilities/dom';
 
 import {classNames} from '../../utilities/css';
 import {EventListener} from '../EventListener';
@@ -287,7 +286,7 @@ function getMarginsForNode(node: HTMLElement) {
 }
 
 function getZIndexForLayerFromNode(node: HTMLElement) {
-  const layerNode = closest(node, layer.selector) || document.body;
+  const layerNode = node.closest(layer.selector) || document.body;
   const zIndex =
     layerNode === document.body
       ? 'auto'
