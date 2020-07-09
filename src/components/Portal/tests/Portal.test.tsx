@@ -38,14 +38,16 @@ describe('<Portal />', () => {
       mountWithAppProvider(<Portal idPrefix={idPrefix} />);
       const [, portalNode] = lastSpyCall(createPortalSpy);
       expect(portalNode.getAttribute(portal.props[0])).toMatch(
-        new RegExp(`^${idPrefix}-portal`),
+        new RegExp(`^${idPrefix}-Polarisportal`),
       );
     });
 
     it('is ignored when not defined', () => {
       mountWithAppProvider(<Portal />);
       const [, portalNode] = lastSpyCall(createPortalSpy);
-      expect(portalNode.getAttribute(portal.props[0])).toMatch(/^portal/);
+      expect(portalNode.getAttribute(portal.props[0])).toMatch(
+        /^Polarisportal/,
+      );
     });
   });
 
