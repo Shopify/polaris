@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 
 import {
-  findFirstFocusableNode,
+  findFirstFocusableNodeIncludingDisabled,
   focusNextFocusableNode,
 } from '../../utilities/focus';
 import {Portal} from '../Portal';
@@ -93,7 +93,9 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
       return;
     }
 
-    const firstFocusable = findFirstFocusableNode(activatorContainer.current);
+    const firstFocusable = findFirstFocusableNodeIncludingDisabled(
+      activatorContainer.current,
+    );
     const focusableActivator: HTMLElement & {
       disabled?: boolean;
     } = firstFocusable || activatorContainer.current;
@@ -122,8 +124,8 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
       activatorNode
     ) {
       const focusableActivator =
-        findFirstFocusableNode(activatorNode) ||
-        findFirstFocusableNode(activatorContainer.current) ||
+        findFirstFocusableNodeIncludingDisabled(activatorNode) ||
+        findFirstFocusableNodeIncludingDisabled(activatorContainer.current) ||
         activatorContainer.current;
       if (!focusNextFocusableNode(focusableActivator, isInPortal)) {
         focusableActivator.focus();

@@ -1,6 +1,4 @@
 import React, {createRef} from 'react';
-import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
-import {write} from '@shopify/javascript-utilities/fastdom';
 import {durationBase} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../../../utilities/css';
@@ -166,7 +164,7 @@ export class PopoverOverlay extends React.PureComponent<
       return;
     }
 
-    write(() => {
+    requestAnimationFrame(() => {
       if (this.contentNode.current == null) {
         return;
       }
@@ -287,4 +285,24 @@ function renderPopoverContent(
     return childrenArray;
   }
   return wrapWithComponent(childrenArray, Pane, props);
+}
+
+export function nodeContainsDescendant(
+  rootNode: HTMLElement,
+  descendant: HTMLElement,
+): boolean {
+  if (rootNode === descendant) {
+    return true;
+  }
+
+  let parent = descendant.parentNode;
+
+  while (parent != null) {
+    if (parent === rootNode) {
+      return true;
+    }
+    parent = parent.parentNode;
+  }
+
+  return false;
 }

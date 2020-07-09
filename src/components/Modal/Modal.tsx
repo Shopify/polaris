@@ -1,8 +1,7 @@
 import React, {useState, useCallback} from 'react';
 import {TransitionGroup} from 'react-transition-group';
-import {write} from '@shopify/javascript-utilities/fastdom';
-import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
+import {focusFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id/hooks';
 import {useI18n} from '../../utilities/i18n';
 import {WithinContentContext} from '../../utilities/within-content-context';
@@ -104,7 +103,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 
     const activatorElement = activatorRef.current;
     if (activatorElement) {
-      write(() => focusFirstFocusableNode(activatorElement));
+      requestAnimationFrame(() => focusFirstFocusableNode(activatorElement));
     }
   }, []);
 
