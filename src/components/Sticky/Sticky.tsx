@@ -1,6 +1,6 @@
 import React from 'react';
-import {getRectForNode} from '@shopify/javascript-utilities/geometry';
 
+import {getRectForNode} from '../../utilities/geometry';
 import {useStickyManager} from '../../utilities/sticky-manager';
 
 interface State {

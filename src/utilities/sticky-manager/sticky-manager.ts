@@ -1,9 +1,9 @@
 import debounce from 'lodash/debounce';
-import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
 import {spacingLoose} from '@shopify/polaris-tokens';
 
 import {dataPolarisTopBar, scrollable} from '../../components/shared';
 import {stackedContent} from '../breakpoints';
+import {getRectForNode, Rect} from '../geometry';
 
 interface StickyItem {
   /** Node of the sticky element */
