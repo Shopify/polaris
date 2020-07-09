@@ -31,7 +31,7 @@ yarn add @shopify/polaris
 1.  Import the CSS directly into your project if your asset packager supports it:
 
 ```js
-import '@shopify/polaris/styles.css';
+import '@shopify/polaris/dist/styles.css';
 ```
 
 Otherwise include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
@@ -39,7 +39,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@4.26.1/styles.min.css"
+  href="https://unpkg.com/@shopify/polaris@5.0.0-alpha-newbuild.4/dist/styles.css"
 />
 ```
 
@@ -76,7 +76,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@4.26.1/styles.min.css"
+  href="https://unpkg.com/@shopify/polaris@5.0.0-alpha-newbuild.4/dist/styles.css"
 />
 ```
 
