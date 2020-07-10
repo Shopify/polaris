@@ -81,6 +81,7 @@ export interface ResourceSection {
   id: string;
   title: string;
   caption?: string;
+  renderWhenEmpty?: boolean;
 }
 
 export interface ResourceListProps<ItemType = any> {
@@ -454,6 +455,10 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     const itemsForSection = items.filter(
       (item, idx) => sectionIdForItem(item, idx) === section.id,
     );
+
+    if (itemsForSection.length === 0 && !section.renderWhenEmpty) {
+      return null;
+    }
 
     const sectionHeader = renderSectionHeader
       ? renderSectionHeader(section, section.id, index)
