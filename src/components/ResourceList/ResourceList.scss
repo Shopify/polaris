@@ -249,6 +249,12 @@ $item-wrapper-loading-height: rem(64px);
   background-color: color('white');
 }
 
+.ResourceSectionListEmpty {
+  border-top: border();
+  border-bottom: border();
+  padding: 1rem;
+}
+
 .ItemWrapper {
   position: relative;
   z-index: resource-list(list-stacking-order);

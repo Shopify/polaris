@@ -80,6 +80,7 @@ function defaultSectionIdForItem<ItemType extends {id?: any; sectionId?: any}>(
 export interface ResourceSection {
   id: string;
   title: string;
+  caption?: string;
 }
 
 export interface ResourceListProps<ItemType = any> {
@@ -88,6 +89,8 @@ export interface ResourceListProps<ItemType = any> {
   sections?: ResourceSection[];
   filterControl?: React.ReactNode;
   subHeader?: React.ReactNode;
+  /** The markup to display when no items in the section exist. */
+  emptySectionState?: React.ReactNode;
   /** The markup to display when no resources exist yet. Renders when set and items is empty. */
   emptyState?: React.ReactNode;
   /** The markup to display when no results are returned on search or filter of the list. Renders when `filterControl` is set, items are empty, and `emptyState` is not set.
@@ -161,6 +164,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   renderSectionHeader,
   renderSectionFooter,
   sectionIdForItem = defaultSectionIdForItem,
+  emptySectionState,
   subHeader,
   filterControl,
   emptyState,
@@ -464,9 +468,15 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
         {sectionHeader ? (
           <div className={styles.SectionHeader}>{sectionHeader}</div>
         ) : null}
-        <ul className={styles.ResourceSectionList}>
-          {itemsForSection.map(renderItemWithId)}
-        </ul>
+        {itemsForSection.length > 0 ? (
+          <ul className={styles.ResourceSectionList}>
+            {itemsForSection.map(renderItemWithId)}
+          </ul>
+        ) : (
+          <div className={styles.ResourceSectionListEmpty}>
+            {emptySectionState}
+          </div>
+        )}
         {sectionFooter ? (
           <div className={styles.SectionFooter}>{sectionFooter}</div>
         ) : null}
