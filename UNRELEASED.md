@@ -21,6 +21,8 @@
 
 ### Documentation
 
+- Updated AppProvider test component information
+
 ### Development workflow
 
 - Updated sewing-kit to v0.132.2 and storybook to v5.3.19 ((#3072)[https://github.com/Shopify/polaris-react/pull/3072])
