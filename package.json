@@ -89,7 +89,9 @@
       ]
     }
   },
-  "browserslist": ["extends @shopify/browserslist-config"],
+  "browserslist": [
+    "extends @shopify/browserslist-config"
+  ],
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/node": "^7.6.1",
@@ -176,7 +178,6 @@
     "!*.tsbuildinfo"
   ],
   "dependencies": {
-    "@shopify/javascript-utilities": "^2.4.1",
     "@shopify/polaris-icons": "^3.10.0",
     "@shopify/polaris-tokens": "^2.12.3",
     "@types/react": "^16.9.12",

@@ -76,7 +76,6 @@ export function focusNextFocusableNode(node: HTMLElement, filter?: Filter) {
   return false;
 }
 
-// https://github.com/Shopify/javascript-utilities/blob/1e705564643d6fe7ffea5ebfbbf3e6b759a66c9b/src/focus.ts
 export function findFirstKeyboardFocusableNode(
   element: HTMLElement,
   onlyDescendants = true,

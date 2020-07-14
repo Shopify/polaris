@@ -1858,7 +1858,7 @@
   resolved "https://registry.yarnpkg.com/@shopify/integrity-sha-utils/-/integrity-sha-utils-1.0.5.tgz#26e32b104950aad49f9531378684782aaec8dc58"
   integrity sha512-w10TkoJgCVTIiLbkCuzb5259PWXpvIwBJAifr4mc6aHEXeJLE+yZ3dW/5wTV7OuMMn/Xa1AsBo3nmgLQVe3ZIQ==
 
-"@shopify/javascript-utilities@^2.1.0", "@shopify/javascript-utilities@^2.4.0", "@shopify/javascript-utilities@^2.4.1":
+"@shopify/javascript-utilities@^2.1.0", "@shopify/javascript-utilities@^2.4.0":
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-2.4.1.tgz#99e1994381fc33a2609f7792b6812feee32362fa"
   integrity sha512-CDp4nWHjVXTr+rYV5RMBs8aJ5PbXUdbz47jnKisBWa9GFwJktZFj2PxefXqfLd51KpIuQpFnA/NMvq4M5tdTlw==

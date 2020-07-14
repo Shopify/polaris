@@ -1,20 +1,19 @@
 import React, {useState, useEffect, useCallback, useMemo} from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
+
+import {Button} from '../Button';
+import {classNames} from '../../utilities/css';
 import {
-  Range,
-  Months,
-  Year,
+  Month as Months,
+  Weekday,
   isDateAfter,
   isDateBefore,
   getNextDisplayYear,
   getNextDisplayMonth,
   getPreviousDisplayYear,
   getPreviousDisplayMonth,
-  Weekdays,
-} from '@shopify/javascript-utilities/dates';
-
-import {Button} from '../Button';
-import {classNames} from '../../utilities/css';
+} from '../../utilities/dates';
+import type {Range, Year} from '../../utilities/dates';
 import {useI18n} from '../../utilities/i18n';
 import {useFeatures} from '../../utilities/features';
 
@@ -22,6 +21,7 @@ import {monthName} from './utilities';
 import {Month} from './components';
 import styles from './DatePicker.scss';
 
+// Export as Months for public facing backwards compat
 export {Months};
 export type {Range, Year};
 
@@ -43,7 +43,7 @@ export interface DatePickerProps {
   /** The selection can span multiple months */
   multiMonth?: boolean;
   /** First day of week. Sunday by default */
-  weekStartsOn?: Weekdays;
+  weekStartsOn?: Weekday;
   /** Callback when date is selected. */
   onChange?(date: Range): void;
   /** Callback when month is changed. */
@@ -59,7 +59,7 @@ export function DatePicker({
   multiMonth,
   disableDatesBefore,
   disableDatesAfter,
-  weekStartsOn = Weekdays.Sunday,
+  weekStartsOn = Weekday.Sunday,
   onMonthChange,
   onChange = noop,
 }: DatePickerProps) {
