@@ -7,7 +7,7 @@ import {Portal} from '../Portal';
 import {portal} from '../../shared';
 
 jest.mock('react-dom', () => ({
-  ...jest.requireActual('react-dom'),
+  ...(jest.requireActual('react-dom') as any),
   createPortal: jest.fn(),
 }));
 

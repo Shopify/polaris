@@ -138,6 +138,17 @@ $stacking-order: (
       margin: 0;
     }
   }
+
+  &:-webkit-autofill {
+    border-radius: var(--p-border-radius-base, border-radius());
+  }
+
+  // stylelint-disable-next-line selector-max-specificity
+  &:-webkit-autofill ~ .Backdrop,
+  &:-webkit-autofill:hover ~ .Backdrop,
+  &:-webkit-autofill:focus ~ .Backdrop {
+    box-shadow: 0 0 0 border-width() color('sky');
+  }
 }
 
 .Input-hasClearButton {

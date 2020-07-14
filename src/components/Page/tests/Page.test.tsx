@@ -22,7 +22,7 @@ window.matchMedia =
   };
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
-  ...jest.requireActual('../../../utilities/app-bridge-transformers'),
+  ...(jest.requireActual('../../../utilities/app-bridge-transformers') as any),
   generateRedirect: jest.fn((...args) => args),
   transformActions: jest.fn((...args) => args),
 }));

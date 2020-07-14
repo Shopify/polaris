@@ -1,6 +1,6 @@
 import React from 'react';
 
-// eslint-disable-next-line shopify/strict-component-boundaries
+// eslint-disable-next-line @shopify/strict-component-boundaries
 import {ComboBoxContext} from '../ComboBox/context';
 import {TextField as BaseTextField, TextFieldProps} from '../../../TextField';
 

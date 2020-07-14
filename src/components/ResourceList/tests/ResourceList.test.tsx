@@ -9,12 +9,12 @@ import {
   Button,
   EmptyState,
 } from 'components';
+import {mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {
   findByTestID,
   mountWithAppProvider,
   trigger,
-  ReactWrapper,
 } from 'test-utilities/legacy';
 
 import {BulkActions, CheckableButton} from '../components';
@@ -925,7 +925,7 @@ describe('<ResourceList />', () => {
 
       describe('large screen', () => {
         it('focuses the checkbox in the bulk action when the plain CheckableButton is clicked', () => {
-          const resourceList = mountWithAppProvider(
+          const resourceList = mountWithApp(
             <ResourceList
               items={itemsWithID}
               renderItem={renderItem}
@@ -933,19 +933,20 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          const selectAllCheckableButton = plainCheckableButton(resourceList);
+          resourceList
+            .find(CheckableButton, {plain: true})!
+            .trigger('onToggleAll');
 
-          trigger(selectAllCheckableButton, 'onToggleAll');
+          const deselectAllCheckbox = resourceList
+            .findAll(CheckableButton)
+            .find((ele) => !ele.prop('plain'))!
+            .find('input', {type: 'checkbox'})!;
 
-          const deselectAllCheckbox = bulkActionsCheckableButton(
-            resourceList,
-          ).find('input[type="checkbox"]');
-
-          expect(deselectAllCheckbox.getDOMNode()).toBe(document.activeElement);
+          expect(document.activeElement).toBe(deselectAllCheckbox.domNode);
         });
 
         it('focuses the plain CheckableButton checkbox when items are selected and the deselect Checkable button is clicked', () => {
-          const resourceList = mountWithAppProvider(
+          const resourceList = mountWithApp(
             <ResourceList
               items={itemsWithID}
               renderItem={renderItem}
@@ -954,18 +955,17 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          const deselectAllCheckableButton = bulkActionsCheckableButton(
-            resourceList,
-          );
+          resourceList
+            .findAll(CheckableButton)
+            .find((ele) => !ele.prop('plain'))!
+            .trigger('onToggleAll');
 
-          trigger(deselectAllCheckableButton, 'onToggleAll');
+          const selectAllCheckableCheckbox = resourceList
+            .find(CheckableButton, {plain: true})!
+            .find('input', {type: 'checkbox'})!;
 
-          const selectAllCheckableCheckbox = plainCheckableButton(
-            resourceList,
-          ).find('input[type="checkbox"]');
-
-          expect(selectAllCheckableCheckbox.getDOMNode()).toBe(
-            document.activeElement,
+          expect(document.activeElement).toBe(
+            selectAllCheckableCheckbox.domNode,
           );
         });
       });
@@ -978,7 +978,7 @@ describe('<ResourceList />', () => {
         it('keeps focus on the CheckableButton checkbox when selecting', () => {
           setSmallScreen();
 
-          const resourceList = mountWithAppProvider(
+          const resourceList = mountWithApp(
             <ResourceList
               items={itemsWithID}
               renderItem={renderItem}
@@ -986,25 +986,25 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          trigger(resourceList.find(Button).first(), 'onClick');
+          resourceList.find(Button)!.trigger('onClick');
 
-          const selectAllCheckableButton = bulkActionsCheckableButton(
-            resourceList,
-          );
+          const selectAllCheckableButton = resourceList
+            .findAll(CheckableButton)
+            .find((ele) => !ele.prop('plain'))!;
 
-          trigger(selectAllCheckableButton, 'onToggleAll');
+          selectAllCheckableButton.trigger('onToggleAll');
 
-          const checkBox = selectAllCheckableButton.find(
-            'input[type="checkbox"]',
-          );
+          const checkBox = selectAllCheckableButton.find('input', {
+            type: 'checkbox',
+          })!;
 
-          expect(checkBox.getDOMNode()).toBe(document.activeElement);
+          expect(document.activeElement).toBe(checkBox.domNode);
         });
 
         it('keeps focus on the CheckableButton checkbox when deselecting', () => {
           setSmallScreen();
 
-          const resourceList = mountWithAppProvider(
+          const resourceList = mountWithApp(
             <ResourceList
               items={itemsWithID}
               selectedItems={allSelectedIDs}
@@ -1013,17 +1013,17 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          const deselectAllCheckableButton = bulkActionsCheckableButton(
-            resourceList,
-          );
+          const deselectAllCheckableButton = resourceList
+            .findAll(CheckableButton)
+            .find((ele) => !ele.prop('plain'))!;
 
-          trigger(deselectAllCheckableButton, 'onToggleAll');
+          deselectAllCheckableButton.trigger('onToggleAll');
 
-          const checkBox = deselectAllCheckableButton.find(
-            'input[type="checkbox"]',
-          );
+          const checkBox = deselectAllCheckableButton.find('input', {
+            type: 'checkbox',
+          })!;
 
-          expect(checkBox.getDOMNode()).toBe(document.activeElement);
+          expect(document.activeElement).toBe(checkBox.domNode);
         });
       });
     });
@@ -1223,16 +1223,4 @@ function setDefaultScreen() {
     writable: true,
     value: defaultWindowWidth,
   });
-}
-
-function bulkActionsCheckableButton(wrapper: ReactWrapper) {
-  return wrapper.findWhere(
-    (wrap) => wrap.is(CheckableButton) && !wrap.prop('plain'),
-  );
-}
-
-function plainCheckableButton(wrapper: ReactWrapper) {
-  return wrapper.findWhere(
-    (wrap) => wrap.is(CheckableButton) && wrap.prop('plain'),
-  );
 }

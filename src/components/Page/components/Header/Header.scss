@@ -1,7 +1,7 @@
 @import '../../../../styles/common';
 
 $individual-action-padding-x: (1.5 * spacing(tight));
-$action-menu-rollup-computed-width: icon-size();
+$action-menu-rollup-computed-width: rem(40px);
 
 .Header {
   @include page-header-layout;
@@ -104,7 +104,7 @@ $action-menu-rollup-computed-width: icon-size();
   .mobileView & {
     position: absolute;
     top: spacing(loose) + (control-height() / 4);
-    right: 0;
+    right: spacing(loose);
     margin-top: 0;
 
     @include page-content-when-not-fully-condensed {

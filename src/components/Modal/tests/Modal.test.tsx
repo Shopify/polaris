@@ -15,7 +15,7 @@ import {Modal} from '../Modal';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
-  ...jest.requireActual('../../../utilities/app-bridge-transformers'),
+  ...(jest.requireActual('../../../utilities/app-bridge-transformers') as any),
   transformActions: jest.fn((...args) => args),
 }));
 
@@ -58,7 +58,7 @@ describe('<Modal>', () => {
     const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
     const focusedNode = findFirstFocusableNode(modal.find(Dialog).getDOMNode());
 
-    expect(focusedNode).toBe(document.activeElement);
+    expect(document.activeElement).toBe(focusedNode);
   });
 
   describe('src', () => {

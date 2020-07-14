@@ -6,8 +6,7 @@ import {Spinner} from 'components';
 
 import {Key} from '../../../types';
 import {ComboBox} from '../components';
-
-import {Autocomplete} from '..';
+import {Autocomplete} from '../Autocomplete';
 
 describe('<Autocomplete/>', () => {
   const options = [
