@@ -33,4 +33,4 @@
 
 ### Deprecations
 
-- Removed `centeredLayout` prop in `EmptyState`. All layouts within the new design language context will be center aligned [#]()
+- Removed `centeredLayout` prop in `EmptyState`. All layouts within the new design language context will be center aligned ([#3111](https://github.com/Shopify/polaris-react/pull/3111))
