@@ -21,12 +21,6 @@ function external(id) {
 }
 
 function plugins({browserslist, stylesConfig}) {
-  const babelWebPresetOptions = {
-    modules: 'auto',
-    typescript: true,
-    browsers: browserslist,
-  };
-
   return [
     replace({
       '{{POLARIS_VERSION}}': packageJSON.version,
@@ -38,18 +32,12 @@ function plugins({browserslist, stylesConfig}) {
     commonjs(),
     babel({
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      // We need to specify an environment name as leaving it blank defaults
-      // to "development", which ends up including a bunch of debug helpers.
       envName: 'production',
       exclude: 'node_modules/**',
       babelHelpers: 'bundled',
-      // Don't use config from babel.config.js as we want to customise the
-      // browserslist per compile target.
-      configFile: false,
-      presets: [
-        ['@shopify/babel-preset/web', babelWebPresetOptions],
-        ['@shopify/babel-preset/react'],
-      ],
+      caller: {
+        browserslistOverride: browserslist,
+      },
     }),
     styles({
       ...stylesConfig,

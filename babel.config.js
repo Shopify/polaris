@@ -5,9 +5,16 @@ module.exports = function (api) {
     return ['babel-loader', '@rollup/plugin-babel'].includes(caller.name);
   });
 
+  // Our esnext rollup build will want to override the browserslist we pass in
+  // instead of using the default as defined in our package.json
+  const browsers = api.caller((caller = {}) => caller.browserslistOverride);
+
   const runtimePreset = isWeb
-    ? ['@shopify/babel-preset/web', {modules: false, typescript: true}]
-    : ['@shopify/babel-preset/node', {modules: 'commonjs', typescript: true}];
+    ? [
+        '@shopify/babel-preset/web',
+        {modules: 'auto', typescript: true, browsers},
+      ]
+    : ['@shopify/babel-preset/node', {modules: 'auto', typescript: true}];
 
   return {
     presets: [runtimePreset, ['@shopify/babel-preset/react']],
