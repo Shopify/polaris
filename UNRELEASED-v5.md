@@ -35,5 +35,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed `withAppProvider` higher-order component. ([#3098](https://github.com/Shopify/polaris-react/pull/3098))
 - Removed several dependencies on the deprecated `@shopify/javascript-utilities` library ([#3102](https://github.com/Shopify/polaris-react/pull/3102))
 - Removed dependency on `@shopify/useful-types`
+- Removed dependency on `@shopify/javascript-utilities` ([#3108](https://github.com/Shopify/polaris-react/pull/3108))
 
 ### Deprecations

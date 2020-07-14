@@ -1,9 +1,9 @@
 import React, {useCallback, useMemo} from 'react';
+
+import {classNames} from '../../../../utilities/css';
 import {
-  Range,
-  Weekdays,
-  Months,
-  Year,
+  Weekday as WeekdayEnum,
+  Month as MonthEnum,
   isDateBefore,
   isDateAfter,
   isSameDay,
@@ -12,9 +12,9 @@ import {
   dateIsInRange,
   dateIsSelected,
   getNewRange,
-} from '@shopify/javascript-utilities/dates';
-
-import {classNames} from '../../../../utilities/css';
+  getOrderedWeekdays,
+} from '../../../../utilities/dates';
+import type {Range, Year} from '../../../../utilities/dates';
 import {useI18n} from '../../../../utilities/i18n';
 import styles from '../../DatePicker.scss';
 import {Day} from '../Day';
@@ -25,29 +25,16 @@ export interface MonthProps {
   focusedDate?: Date;
   selected?: Range;
   hoverDate?: Date;
-  month: Months;
+  month: MonthEnum;
   year: Year;
   disableDatesBefore?: Date;
   disableDatesAfter?: Date;
   allowRange?: boolean;
-  weekStartsOn: Weekdays;
-  newDesignLanguage?: boolean;
+  weekStartsOn: WeekdayEnum;
   onChange?(date: Range): void;
   onHover?(hoverEnd: Date): void;
   onFocus?(date: Date): void;
-  monthName?(month: Months): string;
-  weekdayName?(weekday: Weekdays): string;
 }
-
-const WEEKDAYS = [
-  Weekdays.Sunday,
-  Weekdays.Monday,
-  Weekdays.Tuesday,
-  Weekdays.Wednesday,
-  Weekdays.Thursday,
-  Weekdays.Friday,
-  Weekdays.Saturday,
-];
 
 export function Month({
   focusedDate,
@@ -77,7 +64,7 @@ export function Month({
     weekStartsOn,
     year,
   ]);
-  const weekdays = getWeekdaysOrdered(weekStartsOn).map((weekday) => (
+  const weekdays = getOrderedWeekdays(weekStartsOn).map((weekday) => (
     <Weekday
       key={weekday}
       title={i18n.translate(
@@ -183,12 +170,6 @@ function hoveringDateIsInRange(
   }
   const {start, end} = range;
   return Boolean(isSameDay(start, end) && day > start && day <= hoverEndDate);
-}
-
-function getWeekdaysOrdered(weekStartsOn: Weekdays): Weekdays[] {
-  const weekDays = [...WEEKDAYS];
-  const restOfDays = weekDays.splice(weekStartsOn);
-  return [...restOfDays, ...weekDays];
 }
 
 function isDateEnd(day: Date | null, range: Range) {

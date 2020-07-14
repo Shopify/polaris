@@ -1,7 +1,7 @@
 import React, {useRef, useEffect, memo} from 'react';
-import {Months, isSameDay} from '@shopify/javascript-utilities/dates';
 
 import {classNames} from '../../../../utilities/css';
+import {Month, isSameDay} from '../../../../utilities/dates';
 import {useI18n} from '../../../../utilities/i18n';
 import styles from '../../DatePicker.scss';
 
@@ -74,7 +74,7 @@ export const Day = memo(function Day({
     (focused || selected || today || date === 1) && !disabled ? 0 : -1;
   const ariaLabel = [
     `${today ? i18n.translate('Polaris.DatePicker.today') : ''}`,
-    `${Months[day.getMonth()]} `,
+    `${Month[day.getMonth()]} `,
     `${date} `,
     `${day.getFullYear()}`,
   ].join('');
