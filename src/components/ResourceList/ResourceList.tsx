@@ -28,8 +28,16 @@ import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
 
-import {BulkActions, BulkActionsProps, CheckableButton} from './components';
+import {
+  BulkActions,
+  BulkActionsProps,
+  CheckableButton,
+  FilterControl,
+  FilterControlProps,
+} from './components';
 import styles from './ResourceList.scss';
+
+export type {FilterControlProps};
 
 const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;
@@ -112,6 +120,8 @@ type ResourceListType = (<ItemType>(
   value: ResourceListProps<ItemType>,
 ) => ReactElement) & {
   Item: typeof ResourceItem;
+  // eslint-disable-next-line import/no-deprecated
+  FilterControl: typeof FilterControl;
 };
 
 export const ResourceList: ResourceListType = function ResourceList<ItemType>({
@@ -712,6 +722,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
 };
 
 export * from './components/FilterControl/types';
-export * from './components/FilterControl';
 
 ResourceList.Item = ResourceItem;
+// eslint-disable-next-line import/no-deprecated
+ResourceList.FilterControl = FilterControl;
