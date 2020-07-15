@@ -11,7 +11,12 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed `ResourceList.FilterControl` component. The `FilterControl` component is available under a private name for legacy Shopify applications, but it should not be relied upon and might be deleted at any point ([#2047](https://github.com/Shopify/polaris-react/pull/2047) [#3116](https://github.com/Shopify/polaris-react/pull/3116))
 - Removed `AppBridge`, `ResourcePicker` and `Loading`, `Modal`, `Page`, `Toast` App Bridge render delegation ([#2046](https://github.com/Shopify/polaris-react/pull/2046))
 - Dropped support for iOS 9 ([#2195](https://github.com/Shopify/polaris-react/pull/2195))
-- Moved styles from `global.scss` to `AppProvider`. This change only affects applications using the `esnext` build (applications importing `@shopify/polaris/styles.css` aren’t affected), who no longer need to import the `@shopify/polaris/esnext/global.scss` file. An empty `global.scss` was kept in, to ensure applications using sewing-kit \<v0.113.0 still build ([#2392](https://github.com/Shopify/polaris-react/pull/2392))
+- Radically reworked our built output.
+  - `styles.css` has moved to `dist/styles.css`
+  - `styles.min.css has been removed - import`dist/styles.css` instead
+  - `styles.scss has been removed - import`dist/styles.css`and`dist/styles/\_public-api.scss` instead
+  - Apps built using `@shopify/sewing-kit` will need to update to at least version `0.132.2`. ([#2938](https://github.com/Shopify/polaris-react/pull/2938))
+- Moved styles from `global.scss` to `AppProvider`. This change only affects applications using the `esnext` build (applications importing `@shopify/polaris/styles.css` aren’t affected), who no longer need to import the `@shopify/polaris/esnext/global.scss` file. ([#2392](https://github.com/Shopify/polaris-react/pull/2392))
 - Reversed the precedence of the language dictionaries passed into the `AppProvider`’s `i18n` prop. When passing an array of dictionaries the first dictionary should be your prefered language, followed by any fallback languages. ([#2572](https://github.com/Shopify/polaris-react/pull/2572))
 - Removed `centeredLayout` prop in `EmptyState`. All layouts within the new design language context will be center aligned ([#3111](https://github.com/Shopify/polaris-react/pull/3111))
 - Updated types of `DatePicker` component - `month`,`year` `weekStartsOn` are now typed as plain `number` - functionality remains identical as the former types effectivly ended up being aliases of `number` anyway ([#3113](https://github.com/Shopify/polaris-react/pull/3113))
