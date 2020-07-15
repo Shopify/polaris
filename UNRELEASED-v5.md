@@ -8,7 +8,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Upgraded `react` and `react-dom` peer-dependencies to 16.9.0 to enable the use of `React.Profiler` ([#2462](https://github.com/Shopify/polaris-react/pull/2462))
 - Removed `NavigationMessageProps` as the `Message` component no longer exists ([#2502](https://github.com/Shopify/polaris-react/pull/2502))
-- Removed `FilterControl` component ([#2047](https://github.com/Shopify/polaris-react/pull/2047))
+- Removed `ResourceList.FilterControl` component. The `FilterControl` component is available under a private name for legacy Shopify applications, but it should not be relied upon and might be deleted at any point ([#2047](https://github.com/Shopify/polaris-react/pull/2047) [#3116](https://github.com/Shopify/polaris-react/pull/3116))
 - Removed `AppBridge`, `ResourcePicker` and `Loading`, `Modal`, `Page`, `Toast` App Bridge render delegation ([#2046](https://github.com/Shopify/polaris-react/pull/2046))
 - Dropped support for iOS 9 ([#2195](https://github.com/Shopify/polaris-react/pull/2195))
 - Moved styles from `global.scss` to `AppProvider`. This change only affects applications using the `esnext` build (applications importing `@shopify/polaris/styles.css` aren’t affected), who no longer need to import the `@shopify/polaris/esnext/global.scss` file. An empty `global.scss` was kept in, to ensure applications using sewing-kit \<v0.113.0 still build ([#2392](https://github.com/Shopify/polaris-react/pull/2392))
