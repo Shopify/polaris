@@ -305,3 +305,9 @@ export {VideoThumbnail} from './VideoThumbnail';
 
 export {VisuallyHidden} from './VisuallyHidden';
 export type {VisuallyHiddenProps} from './VisuallyHidden';
+
+// We want to delete this component, but there's one place in web
+// that still relies on it so we have to keep it.
+// We don't want anyone else using it though, use the Filters component instead
+export {FilterControl as _SECRET_INTERNAL_FilterControl} from './FilterControl';
+export {FilterControlProps as _SECRET_INTERNAL_FilterControlProps} from './FilterControl';

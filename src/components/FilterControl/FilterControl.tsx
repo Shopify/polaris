@@ -1,14 +1,14 @@
 import React from 'react';
 import {SearchMinor} from '@shopify/polaris-icons';
 
-import type {ComplexAction} from '../../../../types';
-import {buttonsFrom} from '../../../Button';
-import {Icon} from '../../../Icon';
-import {FormLayout} from '../../../FormLayout';
-import {TextField} from '../../../TextField';
-import {Tag} from '../../../Tag';
-import {useI18n} from '../../../../utilities/i18n';
-import {ResourceListContext} from '../../../../utilities/resource-list';
+import type {ComplexAction} from '../../types';
+import {buttonsFrom} from '../Button';
+import {Icon} from '../Icon';
+import {FormLayout} from '../FormLayout';
+import {TextField} from '../TextField';
+import {Tag} from '../Tag';
+import {useI18n} from '../../utilities/i18n';
+import {ResourceListContext} from '../../utilities/resource-list';
 
 import {FilterCreator} from './components';
 import {AppliedFilter, Filter, FilterType, Operator} from './types';

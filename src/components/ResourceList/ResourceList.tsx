@@ -15,6 +15,8 @@ import {Button} from '../Button';
 import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
+import {FilterControl, FilterControlProps} from '../FilterControl';
+
 import {
   CheckableButtonKey,
   CheckableButtons,
@@ -33,12 +35,8 @@ import {
   BulkActionsProps,
   CheckableButton,
   // eslint-disable-next-line import/no-deprecated
-  FilterControl,
-  FilterControlProps,
 } from './components';
 import styles from './ResourceList.scss';
-
-export type {FilterControlProps};
 
 const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;
@@ -722,8 +720,4 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   );
 };
 
-export * from './components/FilterControl/types';
-
 ResourceList.Item = ResourceItem;
-// eslint-disable-next-line import/no-deprecated
-ResourceList.FilterControl = FilterControl;
