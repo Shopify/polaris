@@ -26,7 +26,7 @@ export interface FilterControlProps {
   onFiltersChange?(appliedFilters: AppliedFilter[]): void;
 }
 
-/** @deprecated Use <Filters /> instead. */
+/** @deprecated This is a private component, do not use it. This component might be removed in a minor version update. Use <Filters /> instead. */
 export function FilterControl({
   searchValue,
   appliedFilters = [],
