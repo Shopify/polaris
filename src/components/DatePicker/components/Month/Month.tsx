@@ -2,8 +2,6 @@ import React, {useCallback, useMemo} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {
-  Weekday as WeekdayEnum,
-  Month as MonthEnum,
   isDateBefore,
   isDateAfter,
   isSameDay,
@@ -14,7 +12,7 @@ import {
   getNewRange,
   getOrderedWeekdays,
 } from '../../../../utilities/dates';
-import type {Range, Year} from '../../../../utilities/dates';
+import type {Range} from '../../../../utilities/dates';
 import {useI18n} from '../../../../utilities/i18n';
 import styles from '../../DatePicker.scss';
 import {Day} from '../Day';
@@ -25,12 +23,12 @@ export interface MonthProps {
   focusedDate?: Date;
   selected?: Range;
   hoverDate?: Date;
-  month: MonthEnum;
-  year: Year;
+  month: number;
+  year: number;
   disableDatesBefore?: Date;
   disableDatesAfter?: Date;
   allowRange?: boolean;
-  weekStartsOn: WeekdayEnum;
+  weekStartsOn: number;
   onChange?(date: Range): void;
   onHover?(hoverEnd: Date): void;
   onFocus?(date: Date): void;
@@ -70,8 +68,8 @@ export function Month({
       title={i18n.translate(
         `Polaris.DatePicker.daysAbbreviated.${weekdayName(weekday)}`,
       )}
+      label={i18n.translate(`Polaris.DatePicker.days.${weekdayName(weekday)}`)}
       current={current && new Date().getDay() === weekday}
-      label={weekday}
     />
   ));
 

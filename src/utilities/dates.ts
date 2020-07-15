@@ -1,43 +1,16 @@
-export enum Weekday {
-  Sunday = 0,
-  Monday = 1,
-  Tuesday = 2,
-  Wednesday = 3,
-  Thursday = 4,
-  Friday = 5,
-  Saturday = 6,
-}
-
-export enum Month {
-  January = 0,
-  February = 1,
-  March = 2,
-  April = 3,
-  May = 4,
-  June = 5,
-  July = 6,
-  August = 7,
-  September = 8,
-  October = 9,
-  November = 10,
-  December = 11,
-}
-
 export interface Range {
   start: Date;
   end: Date;
 }
-
-export type Year = number;
 
 export type Week = (Date | null)[];
 
 const WEEK_LENGTH = 7;
 
 export function getWeeksForMonth(
-  month: Month,
-  year: Year,
-  weekStartsOn: Weekday = Weekday.Sunday,
+  month: number,
+  year: number,
+  weekStartsOn = 0,
 ): Week[] {
   const firstOfMonth = new Date(year, month, 1);
   const firstDayOfWeek = firstOfMonth.getDay();
@@ -125,29 +98,29 @@ export function getNewRange(range: Range | undefined, selected: Date): Range {
   return {start: selected, end: selected};
 }
 
-export function getNextDisplayMonth(month: Month): Month {
-  if (Month[month] === Month[11]) {
+export function getNextDisplayMonth(month: number): number {
+  if (month === 11) {
     return 0;
   }
-  return (month as number) + 1;
+  return month + 1;
 }
 
-export function getNextDisplayYear(month: Month, year: Year): Year {
-  if (Month[month] === Month[11]) {
+export function getNextDisplayYear(month: number, year: number): number {
+  if (month === 11) {
     return year + 1;
   }
   return year;
 }
 
-export function getPreviousDisplayMonth(month: Month): Month {
-  if (Month[month] === Month[0]) {
+export function getPreviousDisplayMonth(month: number): number {
+  if (month === 0) {
     return 11;
   }
-  return (month as number) - 1;
+  return month - 1;
 }
 
-export function getPreviousDisplayYear(month: Month, year: Year): Year {
-  if (Month[month] === Month[0]) {
+export function getPreviousDisplayYear(month: number, year: number): number {
+  if (month === 0) {
     return year - 1;
   }
   return year;
@@ -169,17 +142,9 @@ export function isSameDate(source: Date, target: Date) {
   );
 }
 
-const WEEKDAYS = [
-  Weekday.Sunday,
-  Weekday.Monday,
-  Weekday.Tuesday,
-  Weekday.Wednesday,
-  Weekday.Thursday,
-  Weekday.Friday,
-  Weekday.Saturday,
-];
+const WEEKDAYS: number[] = [0, 1, 2, 3, 4, 5, 6];
 
-export function getOrderedWeekdays(weekStartsOn: Weekday): Weekday[] {
+export function getOrderedWeekdays(weekStartsOn: number): number[] {
   const weekDays = [...WEEKDAYS];
   const restOfDays = weekDays.splice(weekStartsOn);
   return [...restOfDays, ...weekDays];
