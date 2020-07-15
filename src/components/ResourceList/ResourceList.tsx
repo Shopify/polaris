@@ -15,8 +15,6 @@ import {Button} from '../Button';
 import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
-// eslint-disable-next-line import/no-deprecated
-import {FilterControl, FilterControlProps} from '../FilterControl';
 import {
   CheckableButtonKey,
   CheckableButtons,
@@ -114,8 +112,6 @@ type ResourceListType = (<ItemType>(
   value: ResourceListProps<ItemType>,
 ) => ReactElement) & {
   Item: typeof ResourceItem;
-  // eslint-disable-next-line import/no-deprecated
-  FilterControl: typeof FilterControl;
 };
 
 export const ResourceList: ResourceListType = function ResourceList<ItemType>({
@@ -716,3 +712,6 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
 };
 
 ResourceList.Item = ResourceItem;
+
+export {FilterControl} from './components';
+export type {FilterControlProps} from './components';

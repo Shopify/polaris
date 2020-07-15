@@ -211,15 +211,15 @@ export {ResourceItem} from './ResourceItem';
 export type {ResourceItemProps} from './ResourceItem';
 
 export {ResourceList} from './ResourceList';
-export type {
-  ResourceListProps,
-  FilterControlProps,
-  Filter,
-  AppliedFilter,
-  FilterType,
-  FilterSelect,
-  FilterTextField,
-} from './ResourceList';
+export type {ResourceListProps} from './ResourceList';
+
+// We want to delete this component, but there's one place in web
+// that still relies on it so we have to keep it.
+// We don't want anyone else using it though, use the Filters component instead
+/* eslint-disable @typescript-eslint/camelcase */
+export {FilterControl as _SECRET_INTERNAL_FilterControl} from './ResourceList';
+export type {FilterControlProps as _SECRET_INTERNAL_FilterControlProps} from './ResourceList';
+/* eslint-enable @typescript-eslint/camelcase */
 
 export type {ResourceListSelectedItems} from '../utilities/resource-list';
 
@@ -305,11 +305,3 @@ export {VideoThumbnail} from './VideoThumbnail';
 
 export {VisuallyHidden} from './VisuallyHidden';
 export type {VisuallyHiddenProps} from './VisuallyHidden';
-
-// We want to delete this component, but there's one place in web
-// that still relies on it so we have to keep it.
-// We don't want anyone else using it though, use the Filters component instead
-/* eslint-disable @typescript-eslint/camelcase */
-export {FilterControl as _SECRET_INTERNAL_FilterControl} from './FilterControl';
-export {FilterControlProps as _SECRET_INTERNAL_FilterControlProps} from './FilterControl';
-/* eslint-enable @typescript-eslint/camelcase */
