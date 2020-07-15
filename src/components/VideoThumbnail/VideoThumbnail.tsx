@@ -24,6 +24,11 @@ export interface VideoThumbnailProps {
    * @default 0
    */
   videoProgress?: number;
+  /**
+   * Indicate whether to allow video progress to be displayed
+   * @default true
+   */
+  showVideoProgress?: boolean;
   /** Custom ARIA label for play button.
    * @default 'Play video of length {human readable duration}'
    */
@@ -38,6 +43,7 @@ export function VideoThumbnail({
   thumbnailUrl,
   videoLength = 0,
   videoProgress = 0,
+  showVideoProgress = true,
   accessibilityLabel,
   onClick,
   onBeforeStartPlaying,
@@ -67,6 +73,7 @@ export function VideoThumbnail({
   }
 
   const progressValue = calculateProgress(videoLength, videoProgress);
+  const progressValuePercents = Math.round(progressValue * 100);
 
   const timeStampMarkup = videoLength ? (
     <p
@@ -79,18 +86,22 @@ export function VideoThumbnail({
     </p>
   ) : null;
 
-  const progressMarkup = progressValue ? (
-    <div className={styles.Progress}>
-      <progress
-        className={styles.ProgressBar}
-        value={progressValue}
-        max="100"
-      />
-      <div className={styles.Indicator} style={{width: `${progressValue}%`}}>
-        <span className={styles.Label}>{progressValue}%</span>
+  const progressMarkup =
+    showVideoProgress && progressValue ? (
+      <div className={styles.Progress}>
+        <progress
+          className={styles.ProgressBar}
+          value={progressValuePercents}
+          max="100"
+        />
+        <div
+          className={styles.Indicator}
+          style={{transform: `scaleX(${progressValue})`}}
+        >
+          <span className={styles.Label}>{progressValuePercents}%</span>
+        </div>
       </div>
-    </div>
-  ) : null;
+    ) : null;
 
   return (
     <div
@@ -123,7 +134,8 @@ function calculateProgress(videoLength: number, videoProgress: number) {
   }
 
   if (videoProgress > 0 && videoLength > 0) {
-    return Math.round((videoProgress / videoLength) * 100);
+    const progress = parseFloat((videoProgress / videoLength).toFixed(2));
+    return progress > 1 ? 1 : progress;
   }
 
   return 0;

@@ -130,7 +130,7 @@ describe('<VideoThumbnail />', () => {
 
       expect(progressIndicator).toHaveReactProps({
         style: expect.objectContaining({
-          width: '50%',
+          transform: 'scaleX(0.5)',
         }),
       });
     });
@@ -155,6 +155,48 @@ describe('<VideoThumbnail />', () => {
       );
 
       expect(warnSpy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('showVideoProgress', () => {
+    it('renders progress bar when prop is omitted', () => {
+      const videoThumbnail = mountWithApp(
+        <VideoThumbnail {...mockProps} videoLength={120} videoProgress={60} />,
+      );
+
+      expect(videoThumbnail).toContainReactComponent('div', {
+        className: 'Progress',
+      });
+    });
+
+    it('renders progress bar when prop is set to true', () => {
+      const videoThumbnail = mountWithApp(
+        <VideoThumbnail
+          {...mockProps}
+          videoLength={120}
+          videoProgress={60}
+          showVideoProgress
+        />,
+      );
+
+      expect(videoThumbnail).toContainReactComponent('div', {
+        className: 'Progress',
+      });
+    });
+
+    it('does not render progress bar when prop is set to false', () => {
+      const videoThumbnail = mountWithApp(
+        <VideoThumbnail
+          {...mockProps}
+          videoLength={120}
+          videoProgress={60}
+          showVideoProgress={false}
+        />,
+      );
+
+      expect(videoThumbnail).not.toContainReactComponent('div', {
+        className: 'Progress',
+      });
     });
   });
 

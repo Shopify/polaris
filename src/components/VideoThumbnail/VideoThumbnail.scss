@@ -77,17 +77,18 @@ $start-button-size: 60px;
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: var(--p-border-highlight, color('indigo', 'light'));
+  background-color: rgba(color('white'), 0.9);
   height: spacing(extra-tight);
   overflow: hidden;
 }
 
 .Indicator {
   height: inherit;
-  width: 0;
-  will-change: width;
+  width: 100%;
+  transform-origin: left;
+  transform: scaleX(0);
   background-color: var(--p-border-highlight, color('indigo'));
-  transition: width duration(slowest) easing();
+  transition: transform duration(slowest) easing();
 }
 
 .ProgressBar,
