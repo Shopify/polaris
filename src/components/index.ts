@@ -211,7 +211,15 @@ export {ResourceItem} from './ResourceItem';
 export type {ResourceItemProps} from './ResourceItem';
 
 export {ResourceList} from './ResourceList';
-export type {ResourceListProps} from './ResourceList';
+export type {
+  ResourceListProps,
+  FilterControlProps,
+  Filter,
+  AppliedFilter,
+  FilterType,
+  FilterSelect,
+  FilterTextField,
+} from './ResourceList';
 
 export type {ResourceListSelectedItems} from '../utilities/resource-list';
 
