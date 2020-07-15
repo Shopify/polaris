@@ -32,6 +32,7 @@ import {
   BulkActions,
   BulkActionsProps,
   CheckableButton,
+  // eslint-disable-next-line import/no-deprecated
   FilterControl,
   FilterControlProps,
 } from './components';
