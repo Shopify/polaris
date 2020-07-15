@@ -15,8 +15,8 @@ import {Button} from '../Button';
 import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
+// eslint-disable-next-line import/no-deprecated
 import {FilterControl, FilterControlProps} from '../FilterControl';
-
 import {
   CheckableButtonKey,
   CheckableButtons,
@@ -30,12 +30,7 @@ import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
 
-import {
-  BulkActions,
-  BulkActionsProps,
-  CheckableButton,
-  // eslint-disable-next-line import/no-deprecated
-} from './components';
+import {BulkActions, BulkActionsProps, CheckableButton} from './components';
 import styles from './ResourceList.scss';
 
 const SMALL_SCREEN_WIDTH = 458;
