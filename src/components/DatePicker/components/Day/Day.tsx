@@ -1,8 +1,9 @@
 import React, {useRef, useEffect, memo} from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {Month, isSameDay} from '../../../../utilities/dates';
+import {isSameDay} from '../../../../utilities/dates';
 import {useI18n} from '../../../../utilities/i18n';
+import {monthName} from '../../utilities';
 import styles from '../../DatePicker.scss';
 
 export interface DayProps {
@@ -74,7 +75,9 @@ export const Day = memo(function Day({
     (focused || selected || today || date === 1) && !disabled ? 0 : -1;
   const ariaLabel = [
     `${today ? i18n.translate('Polaris.DatePicker.today') : ''}`,
-    `${Month[day.getMonth()]} `,
+    `${i18n.translate(
+      `Polaris.DatePicker.months.${monthName(day.getMonth())}`,
+    )} `,
     `${date} `,
     `${day.getFullYear()}`,
   ].join('');

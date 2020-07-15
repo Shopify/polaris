@@ -1,6 +1,4 @@
-import type {Month, Weekday} from '../../utilities/dates';
-
-export function monthName(month: Month) {
+export function monthName(month: number) {
   switch (month) {
     case 0:
       return 'january';
@@ -29,7 +27,7 @@ export function monthName(month: Month) {
   }
 }
 
-export function weekdayName(weekday: Weekday) {
+export function weekdayName(weekday: number) {
   switch (weekday) {
     case 0:
       return 'sunday';

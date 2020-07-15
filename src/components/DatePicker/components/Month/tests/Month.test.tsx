@@ -8,20 +8,12 @@ import {Month} from '../Month';
 
 describe('<Month />', () => {
   describe('title', () => {
-    it('passes the abbreviated value to the title prop of Weekday', () => {
+    it('passes the label and abbreviated value to Weekday', () => {
       const month = mountWithAppProvider(
         <Month month={0} year={2018} weekStartsOn={1} />,
       );
       expect(month.find(Weekday).first().prop('title')).toBe('Mo');
-    });
-  });
-
-  describe('label', () => {
-    it('passes the numeric value to the label prop of Weekday', () => {
-      const month = mountWithAppProvider(
-        <Month month={0} year={2018} weekStartsOn={1} />,
-      );
-      expect(month.find(Weekday).first().prop('label')).toBe(1);
+      expect(month.find(Weekday).first().prop('label')).toBe('Monday');
     });
   });
 
