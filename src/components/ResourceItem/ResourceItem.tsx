@@ -192,7 +192,12 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
 
     if (media || selectable) {
       ownedMarkup = (
-        <div className={styles.Owned}>
+        <div
+          className={classNames(
+            styles.Owned,
+            !mediaMarkup && styles.OwnedNoMedia,
+          )}
+        >
           {handleMarkup}
           {mediaMarkup}
         </div>

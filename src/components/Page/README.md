@@ -149,8 +149,12 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
     {
       content: 'Duplicate',
       accessibilityLabel: 'Secondary action label',
+      onAction: () => alert('Duplicate action'),
     },
-    {content: 'View on your store'},
+    {
+      content: 'View on your store',
+      onAction: () => alert('View on your store action'),
+    },
   ]}
   actionGroups={[
     {
@@ -160,7 +164,7 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
         {
           content: 'Share on Facebook',
           accessibilityLabel: 'Individual action label',
-          onAction: () => {},
+          onAction: () => alert('Share on Facebook action'),
         },
       ],
     },
