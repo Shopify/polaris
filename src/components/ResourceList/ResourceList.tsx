@@ -712,3 +712,6 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
 };
 
 ResourceList.Item = ResourceItem;
+
+export {FilterControl} from './components';
+export type {FilterControlProps} from './components';

@@ -1,0 +1,52 @@
+@import '../../../../styles/common';
+@import '../../variables';
+
+$spacing: tight;
+
+.AppliedFilters {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: -1 * resource-list(header-padding-small);
+  margin-left: -1 * resource-list(header-padding-small);
+  margin-right: -1 * resource-list(header-padding-small);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  &::after {
+    content: '';
+    flex: 0 0 resource-list(header-padding-small);
+  }
+
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    flex-wrap: wrap;
+    margin-right: 0;
+    margin-left: -1 * spacing($spacing);
+    margin-top: -1 * spacing(base);
+
+    &::after {
+      content: none;
+      flex: none;
+    }
+  }
+
+  @include breakpoint-before(resource-list(breakpoint-small)) {
+    // account for scrollbar
+    padding-bottom: spacing($spacing);
+  }
+}
+
+.AppliedFilter {
+  flex: 1 0 auto;
+  margin-top: spacing($spacing);
+  margin-left: resource-list(header-padding-small);
+  max-width: calc(100% - #{spacing($spacing)});
+
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    flex: 0 1 auto;
+    margin-left: spacing($spacing);
+  }
+}

@@ -13,6 +13,7 @@ const IGNORE_ERROR_REGEXES = [
   /ReactTestUtils has been moved to react-dom\/test-utils/,
   /Shallow renderer has been moved to react-test-renderer\/shallow/,
   /React\.createClass is deprecated and will be removed in version 16/,
+  /Deprecation: <FilterControl \/> is deprecated\. This is a private component, do not use it\. This component might be removed in a minor version update\. Use <Filters \/> instead\./,
 ];
 
 const IGNORE_WARN_REGEXES: RegExp[] = [];
