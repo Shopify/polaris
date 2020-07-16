@@ -94,12 +94,10 @@ Our minified styles file has been removed, and you should use the above file ins
 Our scss entrypoint has been removed, and you should use the above styles file instead. If you require our mixins/functions you should also import the our public-api entrypoint.
 
 ```diff
-
 - @import 'path_to_node_modules/@shopify/polaris/styles';
 + @import 'path_to_node_modules/@shopify/polaris/dist/styles.css';
 + /* Optional - only needed if you use our mixins/functions */
 + @import 'path_to_node_modules/@shopify/polaris/dist/styles/public-api';
-```
 
 ## Build output changes - @shopify/sewing-kit integrations only
 
