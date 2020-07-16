@@ -44,8 +44,7 @@ function MyApp() {
 
 ## AppProvider's i18n translations array is now preferred language first
 
-AppProvider's i18n prop accepts an array of translation dictionaries so that if
-a translation key in one language is not found it can try a fallback language.
+AppProvider's i18n prop accepts an array of translation dictionaries so that if a translation key in one language is not found it can try a fallback language.
 
 In v4 this order was `[fallbackDictionary, preferredDictionary]`. This was unintuitive, and does not align with other translation tools used at Shopify.
 In v5 this order is `[preferredDictionary, fallbackDictionary]`.
