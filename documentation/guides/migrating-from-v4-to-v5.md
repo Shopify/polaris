@@ -25,7 +25,7 @@ function MyApp() {
 }
 
 
-// NEw
+// New
 import {AppProvider} from '@shopify/polaris';
 import {Provider, TitleBar} from '@shopify/app-bridge-react';
 
