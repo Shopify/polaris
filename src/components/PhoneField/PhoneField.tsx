@@ -18,7 +18,24 @@ export interface Country {
   /** Phone number display format */
   displayFormat: number[];
   /** Possible area codes for a country. Used to distinguish between countries with same country codes */
-  areaCodes?: number[];
+  areaCodes?: (number)[];
+  countryAlphaCode?: string;
+  formatter?(): void;
+  population?: number;
+}
+
+export interface CountryWithAreaCode {
+  /** The country flag */
+  image: string;
+  /** Country name */
+  countryName: string;
+  /** Country area code */
+  countryCode: string;
+  /** Phone number display format */
+  displayFormat: number[];
+  /** Possible area codes for a country. Used to distinguish between countries with same country codes */
+  areaCodes: number[];
+  countryAlphaCode?: string;
   formatter?(): void;
 }
 
@@ -91,6 +108,8 @@ export function PhoneField({
     // If we have pass in '+120255, we obtain '202'
     // If we have pass in '+120', we obtain '20'
     // If we have pass in '+1202', we obtain '202'
+    console.log('This is the country array being passed in');
+    console.log(countryArr);
     const retrieveAreaCodeFromPhoneNum =
       countryArr[0].countryCode.length + countryArr[0].displayFormat[0] <=
       phoneNum.length
@@ -179,12 +198,12 @@ export function PhoneField({
                 filteredCountryArr,
                 numberStr,
               )[0];
-              setSelectedCountryObject(
-                countries[
-                  retrieveCountryObject(selectedCountryObj.countryName)
-                ],
-              );
+
+              // console.log(maxCountryPopulationObj(countriesV2));
             }
+            setSelectedCountryObject(
+              countries[retrieveCountryObject(selectedCountryObj.countryName)],
+            );
           }
         }
       }
@@ -311,6 +330,61 @@ export function PhoneField({
       />
     </div>
   );
+
+  const maxCountryPopulationObj = useCallback((countryArr: Country[]) => {
+    const filteredObj = countryArr.filter(
+      (countryObj) => 'population' in countryObj,
+    );
+
+    if (filteredObj.length > 0) {
+      let selectedCountryObj = filteredObj[0];
+
+      filteredObj.forEach((filteredObj) => {
+        if (filteredObj.population && selectedCountryObj.population) {
+          if (filteredObj.population && selectedCountryObj.population)
+            selectedCountryObj = filteredObj;
+        }
+      });
+
+      return selectedCountryObj;
+    }
+
+    return countryArr[0];
+  }, []);
+
+  const countriesV2: Country[] = [
+    {
+      image: '🇺🇸',
+      countryName: 'UK',
+      countryCode: '+44',
+      displayFormat: [3, 3, 4],
+      areaCodes: [201, 202, 408, 409, 412],
+      population: 53333233,
+    },
+    {
+      image: '🇨🇦',
+      countryName: 'Guernesey',
+      countryCode: '+44',
+      displayFormat: [3, 3, 4],
+      areaCodes: [403, 579, 604, 613, 867],
+      population: 5333323,
+    },
+    {
+      image: '🇨🇦',
+      countryName: 'Isle of Man',
+      countryCode: '+44',
+      displayFormat: [3, 3, 4],
+      areaCodes: [403, 579, 604, 613, 867],
+      population: 23332,
+    },
+    {
+      image: '🇮🇳',
+      countryName: 'Hope Island',
+      countryCode: '+44',
+      displayFormat: [5, 5],
+      population: 53,
+    },
+  ];
 
   return (
     <div>
