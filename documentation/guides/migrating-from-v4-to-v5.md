@@ -98,6 +98,7 @@ Our scss entrypoint has been removed, and you should use the above styles file i
 + @import 'path_to_node_modules/@shopify/polaris/dist/styles.css';
 + /* Optional - only needed if you use our mixins/functions */
 + @import 'path_to_node_modules/@shopify/polaris/dist/styles/public-api';
+```
 
 ## Build output changes - @shopify/sewing-kit integrations only
 
