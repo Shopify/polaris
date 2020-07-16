@@ -4,11 +4,16 @@ Polaris v5.0.0 ([full release notes](https://github.com/Shopify/polaris-react/re
 
 ## AppBridge integrations removed
 
-In v3 and v4 `AppProvider` could accept `apiKey` `shopOrigin` and `forceRedirect` props that would configure AppBridge delegation in our `ResourcePicker`, `Loading`, `Modal`, `Page` and `Toast` components.
+In v3 and v4 `AppProvider` could accept `apiKey` `shopOrigin` and `forceRedirect` props that would configure AppBridge delegation in our `ResourcePicker`, `Loading`, `Modal`, `Page` and `Toast` components. This functionality has been removed.
 
-The `ResourcePicker` component has been fully removed is it only had meaning within an AppBridge app. Other components retain their non-app-bridge behaviour.
+In v5 AppBridge integration has been removed from these components:
 
-AppBridge integration has been removed and abstracted into a separate `@shopify/app-bridge-react` package. If you require the AppBridge implementation of these components then use the components from the [`@shopify/app-bridge-react` package](https://shopify.dev/tools/app-bridge/react-components).
+- The `AppProvider` component's `apiKey`, `shopOrigin` and `forceRedirect` have been removed.
+- The `Modal` component's `size` and `message` props have been removed as they only had meaning within an AppBridge app.
+- The `Page` component's `forceRender` prop has been removed as it only had meaning within an AppBridge app.
+- The `ResourcePicker` component has been removed as it only had meaning within an AppBridge app.
+
+AppBridge behavour has been abstracted into a separate `@shopify/app-bridge-react` package. If you require the AppBridge implementation of these components then use the components from the [`@shopify/app-bridge-react` package](https://shopify.dev/tools/app-bridge/react-components).
 
 ```js
 // Old
@@ -47,7 +52,23 @@ function MyApp() {
 AppProvider's i18n prop accepts an array of translation dictionaries so that if a translation key in one language is not found it can try a fallback language.
 
 In v4 this order was `[fallbackDictionary, preferredDictionary]`. This was unintuitive, and does not align with other translation tools used at Shopify.
-In v5 this order is `[preferredDictionary, fallbackDictionary]`.
+
+In v5 this order is `[preferredDictionary, fallbackDictionary]`. You should reverse the order of the array you pass into the i18n prop.
+
+```diff
+import enTranslations from '@shopify/polaris/locales/en.json';
+import frTranslations from '@shopify/polaris/locales/fr.json';
+
+function App() {
+  return (
+    // French translations as the primary language, english as a fallback
+-    <AppProvider i18n={[enTranslations, frTranslations]}>
++    <AppProvider i18n={frTranslations, enTranslations]}>
+      {/* App content */}
+    </AppProvider>
+  );
+}
+```
 
 If you are using `react-i18n` to provide async translations you can now pass translations in the order returned by `react-i18n`:
 
@@ -102,9 +123,9 @@ Our scss entrypoint has been removed, and you should use the above styles file i
 
 ## Build output changes - @shopify/sewing-kit integrations only
 
-Apps using `@shopify/sewing-kit` - Shopify's in-house opinionated build toolkit - will need to update to at least v0.132.2 to make use of the reworked "esnext" build output in polaris v5.
+Apps built using `@shopify/sewing-kit` - Shopify's in-house opinionated build toolkit - will need to update to at least v0.132.2 to make use of the reworked "esnext" build output in polaris v5.
 
-Apps using `@shopify/sewing-kit` and Polaris v4 also had to have an explicit import of `@shopify/polaris/esnext/styles/global.scss` in the same file as they imported and used `AppProvider`. This is no longer required, this import can be removed. The styles in this file will be implicitly imported when you use `AppProvider`.
+Apps built using `@shopify/sewing-kit` and Polaris v4 also had to have an explicit import of `@shopify/polaris/esnext/styles/global.scss` in the same file as they imported and used `AppProvider`. This is no longer required, this import should be removed. The styles in this file will be implicitly imported when you use `AppProvider`.
 
 ```diff
 - import '@shopify/polaris/esnext/styles/global.scss';
@@ -127,6 +148,10 @@ plugins.sass({
 
 The `ResourceList.FilterControl` subcomponent has been removed. You should use the `Filters` component to provide filtering options.
 
+### Page
+
+The `Page` component's `singleColumn` prop has been removed. You should replace any usage of this prop with the `narrowWidth` prop which has identical functionality.
+
 ### EmptyState
 
 The `EmptyState` component's `centeredLayout` prop has been removed as the illustration's location is now handled automatically by opting into the new design language. You should remove any usage of this prop.
@@ -139,9 +164,9 @@ The `NavigationMessageProps` type has been removed, as Navigation's Message inte
 
 ## Dependencies
 
-The peer dependencies on `react` and `react-dom` have been increased to 16.9.0, to allow us to use react's Profiler component in the future. Use the package manager of your choice to install a recent version of these pacakges.
+The peer dependencies on `react` and `react-dom` have been increased to `^16.9.0`, to allow us to use React's Profiler component in the future. Use the package manager of your choice to install a recent version of these pacakges.
 
-Apps built using `@shopify/sewing-kit` - Shopify's in-house opinionated build toolkit - will need to upgrade to at least version `0.132.2`.
+Apps built using `@shopify/sewing-kit` will need to upgrade to at least version `0.132.2`.
 
 ## CDN usage
 
