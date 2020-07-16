@@ -1,5 +1,4 @@
-import {clamp} from '@shopify/javascript-utilities/math';
-
+import {clamp} from './clamp';
 import type {
   RGBColor,
   RGBAColor,
@@ -9,7 +8,6 @@ import type {
   HSLAColor,
   HSBLAColor,
 } from './color-types';
-import {compose} from './compose';
 
 export function rgbString(color: RGBColor | RGBAColor) {
   const {red, green, blue} = color;
@@ -244,12 +242,13 @@ function getColorType(color: string): ColorType {
   }
 }
 
-export function hslToString(hslColor: HSLAColor | string) {
+export function hslToString(hslColor: HSLColor | HSLAColor | string) {
   if (typeof hslColor === 'string') {
     return hslColor;
   }
 
-  const {alpha = 1, hue, lightness, saturation} = hslColor;
+  const alpha = 'alpha' in hslColor ? hslColor.alpha : 1;
+  const {hue, lightness, saturation} = hslColor;
   return `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
 }
 
@@ -271,12 +270,13 @@ function rgbToObject(color: string): RGBAColor {
   return objColor;
 }
 
-const hexToHsla: (color: string) => HSLAColor = compose(rgbToHsl, hexToRgb);
+function hexToHsla(color: string): HSLAColor {
+  return rgbToHsl(hexToRgb(color));
+}
 
-const rbgStringToHsla: (color: string) => HSLAColor = compose(
-  rgbToHsl,
-  rgbToObject,
-);
+function rbgStringToHsla(color: string): HSLAColor {
+  return rgbToHsl(rgbToObject(color));
+}
 
 function hslToObject(color: string): HSLAColor {
   // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec

@@ -1,9 +1,10 @@
 import React, {createRef} from 'react';
 import debounce from 'lodash/debounce';
 import {durationBase} from '@shopify/polaris-tokens';
-import {CSSTransition, Transition} from '@material-ui/react-transition-group';
+import {CSSTransition, Transition} from 'react-transition-group';
 
 import {classNames} from '../../../../utilities/css';
+import {useI18n} from '../../../../utilities/i18n';
 import type {
   DisableableAction,
   Action,
@@ -14,10 +15,6 @@ import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {EventListener} from '../../../EventListener';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../../../utilities/with-app-provider';
 import {CheckableButton} from '../CheckableButton';
 
 import {BulkActionButton} from './components';
@@ -58,6 +55,10 @@ export interface BulkActionsProps {
   onSelectModeToggle?(selectMode: boolean): void;
 }
 
+type CombinedProps = BulkActionsProps & {
+  i18n: ReturnType<typeof useI18n>;
+};
+
 interface State {
   smallScreenPopoverVisible: boolean;
   largeScreenPopoverVisible: boolean;
@@ -72,8 +73,6 @@ const slideClasses = {
   enterActive: classNames(styles.Slide, styles['Slide-entering']),
   exit: classNames(styles.Slide, styles['Slide-exit']),
 };
-
-type CombinedProps = BulkActionsProps & WithAppProviderProps;
 
 class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
   state: State = {
@@ -209,7 +208,7 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
       promotedActions,
       paginatedSelectAllText = null,
       paginatedSelectAllAction,
-      polaris: {intl},
+      i18n,
     } = this.props;
 
     const actionSections = this.actionSections();
@@ -217,7 +216,7 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
     if (promotedActions && promotedActions.length > MAX_PROMOTED_ACTIONS) {
       // eslint-disable-next-line no-console
       console.warn(
-        intl.translate('Polaris.ResourceList.BulkActions.warningMessage', {
+        i18n.translate('Polaris.ResourceList.BulkActions.warningMessage', {
           maxPromotedActions: MAX_PROMOTED_ACTIONS,
         }),
       );
@@ -263,7 +262,7 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
         testID="btn-cancel"
         disabled={disabled}
       >
-        {intl.translate('Polaris.Common.cancel')}
+        {i18n.translate('Polaris.Common.cancel')}
       </Button>
     );
 
@@ -277,7 +276,7 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
             <BulkActionButton
               disclosure
               onAction={this.toggleSmallScreenPopover}
-              content={intl.translate(
+              content={i18n.translate(
                 'Polaris.ResourceList.BulkActions.actionsActivatorLabel',
               )}
               disabled={disabled}
@@ -317,10 +316,10 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
     const activatorLabel =
       !promotedActions ||
       (promotedActions && numberOfPromotedActionsToRender === 0 && !measuring)
-        ? intl.translate(
+        ? i18n.translate(
             'Polaris.ResourceList.BulkActions.actionsActivatorLabel',
           )
-        : intl.translate(
+        : i18n.translate(
             'Polaris.ResourceList.BulkActions.moreActionsActivatorLabel',
           );
 
@@ -373,7 +372,7 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
         in={selectMode}
         key="smallGroup"
         testID="smallGroup"
-        findDOMNode={this.findSmallScreenGroupNode}
+        nodeRef={this.smallScreenGroupNode}
       >
         {(status: TransitionStatus) => {
           const smallScreenGroupClassName = classNames(
@@ -389,7 +388,7 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
               <div className={styles.ButtonGroupWrapper}>
                 <ButtonGroup segmented>
                   <CSSTransition
-                    findDOMNode={this.findCheckableWrapperNode}
+                    nodeRef={this.checkableWrapperNode}
                     in={selectMode}
                     timeout={durationBase}
                     classNames={slideClasses}
@@ -429,7 +428,7 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
         timeout={0}
         in={selectMode}
         key="largeGroup"
-        findDOMNode={this.findLargeScreenGroupNode}
+        nodeRef={this.largeScreenGroupNode}
         testID="largeGroup"
       >
         {(status: TransitionStatus) => {
@@ -503,18 +502,6 @@ class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
       this.promotedActionsWidths.push(width);
     }
   };
-
-  private findLargeScreenGroupNode = () => {
-    return this.largeScreenGroupNode.current;
-  };
-
-  private findCheckableWrapperNode = () => {
-    return this.checkableWrapperNode.current;
-  };
-
-  private findSmallScreenGroupNode = () => {
-    return this.smallScreenGroupNode.current;
-  };
 }
 
 function instanceOfBulkActionListSectionArray(
@@ -537,6 +524,8 @@ function instanceOfBulkActionArray(
   return actions.length === validList.length;
 }
 
-export const BulkActions = withAppProvider<BulkActionsProps>()(
-  BulkActionsInner,
-);
+export function BulkActions(props: BulkActionsProps) {
+  const i18n = useI18n();
+
+  return <BulkActionsInner {...props} i18n={i18n} />;
+}

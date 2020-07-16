@@ -58,7 +58,6 @@ describe('<Header />', () => {
       {
         content: 'Products',
         url: 'https://www.google.com',
-        target: 'REMOTE',
       },
     ];
 
@@ -264,7 +263,6 @@ describe('<Header />', () => {
       {
         content: 'Products',
         url: 'https://www.google.com',
-        target: 'REMOTE',
       },
     ];
 

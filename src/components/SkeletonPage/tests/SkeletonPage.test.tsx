@@ -35,7 +35,7 @@ describe('<SkeletonPage />', () => {
   describe('title', () => {
     it('renders title when a title is provided', () => {
       const skeletonPage = mountWithAppProvider(
-        <SkeletonPage title="Products" />,
+        <SkeletonPage title="Products" narrowWidth />,
       );
       const displayText = skeletonPage.find(DisplayText);
       expect(displayText).toHaveLength(1);
@@ -43,7 +43,7 @@ describe('<SkeletonPage />', () => {
     });
 
     it('does not render a title when a title is not provided', () => {
-      const skeletonPage = mountWithAppProvider(<SkeletonPage />);
+      const skeletonPage = mountWithAppProvider(<SkeletonPage fullWidth />);
       const displayText = skeletonPage.find(DisplayText);
       expect(displayText).toHaveLength(0);
     });
@@ -94,21 +94,6 @@ describe('<SkeletonPage />', () => {
         <SkeletonPage title="Title" primaryAction />,
       );
       expect(skeletonPage.find(SkeletonDisplayText)).toHaveLength(1);
-    });
-  });
-
-  describe('deprecations', () => {
-    it('warns the singleColumn prop has been renamed', () => {
-      const warningSpy = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {});
-
-      mountWithAppProvider(<SkeletonPage title="title" singleColumn />);
-
-      expect(warningSpy).toHaveBeenCalledWith(
-        'Deprecation: The singleColumn prop has been renamed to narrowWidth to better represents its use and will be removed in v5.0.',
-      );
-      warningSpy.mockRestore();
     });
   });
 });

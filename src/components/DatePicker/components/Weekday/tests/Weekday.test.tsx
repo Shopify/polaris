@@ -1,5 +1,4 @@
 import React from 'react';
-import {Weekdays} from '@shopify/javascript-utilities/dates';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
@@ -9,7 +8,7 @@ describe('<Weekday />', () => {
   const mockProps = {
     title: 'Su',
     current: false,
-    label: Weekdays.Sunday,
+    label: 0,
   };
 
   it('uses the title as content', () => {
