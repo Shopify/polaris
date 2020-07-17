@@ -164,7 +164,7 @@ The `NavigationMessageProps` type has been removed, as `Navigation`'s `Message` 
 
 ## Dependencies
 
-The peer dependencies on `react` and `react-dom` have been increased to `^16.9.0`, to allow us to use React's Profiler component in the future. Use the package manager of your choice to install a recent version of these pacakges.
+The peer dependencies on `react` and `react-dom` have been increased to `^16.9.0`, opening the door to using the [React Profiler](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) in the future. Use the package manager of your choice to install a recent version of these packages.
 
 Apps built using `@shopify/sewing-kit` will need to upgrade to at least version `0.132.2`.
 
