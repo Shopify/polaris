@@ -63,7 +63,7 @@ function App() {
   return (
     // French translations as the primary language, english as a fallback
 -    <AppProvider i18n={[enTranslations, frTranslations]}>
-+    <AppProvider i18n={frTranslations, enTranslations]}>
++    <AppProvider i18n={[frTranslations, enTranslations]}>
       {/* App content */}
     </AppProvider>
   );
@@ -98,21 +98,21 @@ function App() {
 
 ## Build output changes - general consumers
 
-Our compiled styles file has moved. Imports must be updated:
+The compiled styles file has moved. Imports must be updated:
 
 ```diff
 - import '@shopify/polaris/styles.css';
 + import '@shopify/polaris/dist/styles.css';
 ```
 
-Our minified styles file has been removed, and you should use the above file instead.
+The minified styles file has been removed, and you should use the above file instead.
 
 ```diff
 - import '@shopify/polaris/styles.min.css';
 + import '@shopify/polaris/dist/styles.css';
 ```
 
-Our scss entrypoint has been removed, and you should use the above styles file instead. If you require our mixins/functions you should also import the our public-api entrypoint.
+The scss entrypoint has been removed, and you should use the above `styles.css` file instead. If you require Polaris React’s Sass mixins and functions, you should also import the `public-api` entrypoint.
 
 ```diff
 - @import 'path_to_node_modules/@shopify/polaris/styles';
@@ -123,7 +123,7 @@ Our scss entrypoint has been removed, and you should use the above styles file i
 
 ## Build output changes - @shopify/sewing-kit integrations only
 
-Apps built using `@shopify/sewing-kit` - Shopify's in-house opinionated build toolkit - will need to update to at least v0.132.2 to make use of the reworked "esnext" build output in polaris v5.
+Apps built using `@shopify/sewing-kit` - Shopify's in-house opinionated build toolkit - will need to update to at least v0.132.2 to make use of the reworked "esnext" build output in Polaris React v5.
 
 Apps built using `@shopify/sewing-kit` and Polaris v4 also had to have an explicit import of `@shopify/polaris/esnext/styles/global.scss` in the same file as they imported and used `AppProvider`. This is no longer required, this import should be removed. The styles in this file will be implicitly imported when you use `AppProvider`.
 
@@ -131,7 +131,7 @@ Apps built using `@shopify/sewing-kit` and Polaris v4 also had to have an explic
 - import '@shopify/polaris/esnext/styles/global.scss';
 ```
 
-Sewing-kit apps can use our sass public API by configuring their sass plugin's autoInclude option. The path to the sass API file has now changed and should be updated accordingly:
+Sewing-kit apps can use Polaris React’s Sass public API by configuring their Sass plugin's `autoInclude` option. The path to the Sass API file has now changed and should be updated accordingly:
 
 ```diff
 plugins.sass({
@@ -160,7 +160,7 @@ The `EmptyState` component's `centeredLayout` prop has been removed as the illus
 
 #### NavigationMessageProps
 
-The `NavigationMessageProps` type has been removed, as Navigation's Message internal subcomponent has been removed.
+The `NavigationMessageProps` type has been removed, as `Navigation`'s `Message` internal subcomponent has been removed.
 
 ## Dependencies
 
@@ -170,7 +170,7 @@ Apps built using `@shopify/sewing-kit` will need to upgrade to at least version 
 
 ## CDN usage
 
-As a result of build output changes, the location of our static stylesheet for CSS-only usage has been moved. Update any stylesheet imports to use the new path:
+As a result of build output changes, the location of the static stylesheet for CSS-only usage has been moved. Update any stylesheet imports to use the new path:
 
 ```diff
 <link
