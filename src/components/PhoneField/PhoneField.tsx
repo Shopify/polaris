@@ -18,7 +18,7 @@ export interface Country {
   /** Phone number display format */
   displayFormat: number[];
   /** Possible area codes for a country. Used to distinguish between countries with same country codes */
-  areaCodes?: (number)[];
+  areaCodes?: number[];
   countryAlphaCode?: string;
   formatter?(): void;
   population?: number;
@@ -75,6 +75,7 @@ export function PhoneField({
   const [selectedCountryObject, setSelectedCountryObject] = useState(
     countries[0],
   );
+  const [clicked, setClicked] = useState(false);
 
   // Conduct research on which country appears first
   const [searchBarText, setSearchBarText] = useState('');
@@ -87,12 +88,34 @@ export function PhoneField({
 
   const [countryOptions, setCountryOptions] = useState(allCountries);
 
+  const handleClicked = useCallback((bool) => setClicked(bool), [setClicked]);
   /** Callback function for handling when the popover is clicked */
   const togglePopoverActive = useCallback(() => {
     setPopoverActive((popoverActive) => !popoverActive);
     setSearchBarText('');
     setCountryOptions(allCountries);
   }, [allCountries]);
+
+  const maxCountryPopulationObj = useCallback((countryArr: Country[]) => {
+    const filteredObj = countryArr.filter(
+      (countryObj) => 'population' in countryObj,
+    );
+
+    if (filteredObj.length > 0) {
+      let selectedCountryObj = filteredObj[0];
+
+      filteredObj.forEach((filteredObj) => {
+        if (filteredObj.population && selectedCountryObj.population) {
+          if (filteredObj.population > selectedCountryObj.population)
+            selectedCountryObj = filteredObj;
+        }
+      });
+
+      return selectedCountryObj;
+    }
+
+    return countryArr[0];
+  }, []);
 
   /* Checks if there is at least one country with 'area code object' */
   function checkAreaCodeKeyExists(countryArr: Country[]) {
@@ -108,8 +131,8 @@ export function PhoneField({
     // If we have pass in '+120255, we obtain '202'
     // If we have pass in '+120', we obtain '20'
     // If we have pass in '+1202', we obtain '202'
-    console.log('This is the country array being passed in');
-    console.log(countryArr);
+    // console.log('This is the country array being passed in');
+    // console.log(countryArr);
     const retrieveAreaCodeFromPhoneNum =
       countryArr[0].countryCode.length + countryArr[0].displayFormat[0] <=
       phoneNum.length
@@ -163,10 +186,14 @@ export function PhoneField({
       );
 
       // If there are no countries that match based off of countryCode, then no formatting
-      if (filteredCountries.length === 0) return numberStr;
+      if (filteredCountries.length === 0) {
+        handleClicked(false);
+        return numberStr;
+      }
 
       // Selected Country Object (default)
-      let selectedCountryObj = filteredCountries[0];
+      let selectedCountryObj = maxCountryPopulationObj(filteredCountries);
+      // console.log(selectedCountryObj);
 
       if (filteredCountries.length === 1) {
         setSelectedCountryObject(
@@ -198,17 +225,25 @@ export function PhoneField({
                 filteredCountryArr,
                 numberStr,
               )[0];
-
-              // console.log(maxCountryPopulationObj(countriesV2));
             }
-            setSelectedCountryObject(
-              countries[retrieveCountryObject(selectedCountryObj.countryName)],
-            );
           }
         }
+
+        /* Deals with the case where if user enters a country code with more than two possible countries */
+
+        if (
+          selectedCountryObject.countryCode ===
+            selectedCountryObj.countryCode &&
+          clicked
+        ) {
+          selectedCountryObj = selectedCountryObject;
+        }
+
+        setSelectedCountryObject(
+          countries[retrieveCountryObject(selectedCountryObj.countryName)],
+        );
       }
 
-      // setValidPhoneNumber(checkValidPhoneNumber(numberStr, selectedCountryObj));
       // Selected Country, Number of Digits
       const countryMaxDigits = selectedCountryObj.displayFormat.reduce(
         (accumulator: number, currentValue: number) =>
@@ -247,7 +282,15 @@ export function PhoneField({
 
       return numberStr;
     },
-    [countries, extractNumberFormat, retrieveCountryObject],
+    [
+      countries,
+      extractNumberFormat,
+      maxCountryPopulationObj,
+      retrieveCountryObject,
+      handleClicked,
+      selectedCountryObject,
+      clicked,
+    ],
   );
 
   /** Callback function for handling when the text in the phone number changes */
@@ -260,11 +303,14 @@ export function PhoneField({
   /** Callback function for handling the selected country */
   const handleSelected = useCallback(
     (index) => {
+      handleClicked(true);
       setSelectedCountryObject(countries[index]);
       handleTextChange(countries[index].countryCode);
       togglePopoverActive();
+      // console.log('Handle Selected');
+      // console.log(countries[index]);
     },
-    [countries, handleTextChange, togglePopoverActive],
+    [countries, handleTextChange, togglePopoverActive, handleClicked],
   );
 
   const retrieveCountries = useCallback(
@@ -301,8 +347,8 @@ export function PhoneField({
 
   /** Handles the button that clicks for the popover */
   const activator =
+    // eslint-disable-next-line shopify/jsx-no-hardcoded-content
     countries.length > 1 ? (
-      // eslint-disable-next-line shopify/jsx-no-hardcoded-content
       <Button onClick={togglePopoverActive} disclosure>
         {`${selectedCountryObject.countryName} (${selectedCountryObject.countryCode})`}
       </Button>
@@ -330,61 +376,6 @@ export function PhoneField({
       />
     </div>
   );
-
-  const maxCountryPopulationObj = useCallback((countryArr: Country[]) => {
-    const filteredObj = countryArr.filter(
-      (countryObj) => 'population' in countryObj,
-    );
-
-    if (filteredObj.length > 0) {
-      let selectedCountryObj = filteredObj[0];
-
-      filteredObj.forEach((filteredObj) => {
-        if (filteredObj.population && selectedCountryObj.population) {
-          if (filteredObj.population && selectedCountryObj.population)
-            selectedCountryObj = filteredObj;
-        }
-      });
-
-      return selectedCountryObj;
-    }
-
-    return countryArr[0];
-  }, []);
-
-  const countriesV2: Country[] = [
-    {
-      image: '🇺🇸',
-      countryName: 'UK',
-      countryCode: '+44',
-      displayFormat: [3, 3, 4],
-      areaCodes: [201, 202, 408, 409, 412],
-      population: 53333233,
-    },
-    {
-      image: '🇨🇦',
-      countryName: 'Guernesey',
-      countryCode: '+44',
-      displayFormat: [3, 3, 4],
-      areaCodes: [403, 579, 604, 613, 867],
-      population: 5333323,
-    },
-    {
-      image: '🇨🇦',
-      countryName: 'Isle of Man',
-      countryCode: '+44',
-      displayFormat: [3, 3, 4],
-      areaCodes: [403, 579, 604, 613, 867],
-      population: 23332,
-    },
-    {
-      image: '🇮🇳',
-      countryName: 'Hope Island',
-      countryCode: '+44',
-      displayFormat: [5, 5],
-      population: 53,
-    },
-  ];
 
   return (
     <div>

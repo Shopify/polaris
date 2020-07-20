@@ -185,7 +185,7 @@
     "@types/react-transition-group": "^4.4.0",
     "lodash": "^4.17.4",
     "react-transition-group": "^4.4.1",
-    "testashwin": "^1.7.0",
+    "testashwin": "^2.0.1",
     "tslib": "^1.9.3"
   },
   "resolutions": {
