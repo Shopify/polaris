@@ -32,7 +32,7 @@ function MyApp() {
 
 // New
 import {AppProvider} from '@shopify/polaris';
-import {Provider, TitleBar} from '@shopify/app-bridge-react';
+import {Provider, Modal} from '@shopify/app-bridge-react';
 
 function MyApp() {
   const config = {apiKey: '12345', shopOrigin: shopOrigin};
@@ -47,7 +47,7 @@ function MyApp() {
 }
 ```
 
-## AppProvider's i18n translations array is now preferred language first
+## AppProvider's i18n translations array is now ordered by preferred language first
 
 AppProvider's i18n prop accepts an array of translation dictionaries so that if a translation key in one language is not found it can try a fallback language.
 
@@ -112,7 +112,7 @@ The minified styles file has been removed, and you should use the above file ins
 + import '@shopify/polaris/dist/styles.css';
 ```
 
-The scss entrypoint has been removed, and you should use the above `styles.css` file instead. If you require Polaris React’s Sass mixins and functions, you should also import the `public-api` entrypoint.
+The scss entry point has been removed, and you should use the above `styles.css` file instead. If you require Polaris React’s Sass mixins and functions, you should also import the `public-api` entry point.
 
 ```diff
 - @import 'path_to_node_modules/@shopify/polaris/styles';
@@ -154,7 +154,7 @@ The `Page` component's `singleColumn` prop has been removed. You should replace 
 
 ### EmptyState
 
-The `EmptyState` component's `centeredLayout` prop has been removed as the illustration's location is now handled automatically by opting into the new design language. You should remove any usage of this prop.
+The `EmptyState` component's `centeredLayout` prop has been removed as the illustration's location is now handled automatically by opting in to the new design language. You should remove any usage of this prop.
 
 ### Removed Exports
 
