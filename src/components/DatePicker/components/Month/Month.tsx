@@ -68,7 +68,7 @@ export function Month({
       title={i18n.translate(
         `Polaris.DatePicker.daysAbbreviated.${weekdayName(weekday)}`,
       )}
-      label={i18n.translate(`Polaris.DatePicker.days.${weekdayName(weekday)}`)}
+      label={WeekdayEnum[weekday]}
       current={current && new Date().getDay() === weekday}
     />
   ));
@@ -182,4 +182,16 @@ function isDateStart(day: Date | null, range: Range) {
   const {start} = range;
 
   return Boolean(start && isSameDay(start, day));
+}
+
+// This is a hack based on previous behaviour as time constraints means we can't
+// wait for translations. This should be converted to use translation keys.
+enum WeekdayEnum {
+  Sunday = 0,
+  Monday = 1,
+  Tuesday = 2,
+  Wednesday = 3,
+  Thursday = 4,
+  Friday = 5,
+  Saturday = 6,
 }
