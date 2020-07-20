@@ -31,6 +31,7 @@ export type Color =
   | 'yellow'
   | 'yellowDark'
   | 'orange'
+  | 'orangeDark'
   | 'redLighter'
   | 'red'
   | 'redDark'
