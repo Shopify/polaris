@@ -38,7 +38,8 @@ export interface DatePickerProps {
   disableDatesAfter?: Date;
   /** The selection can span multiple months */
   multiMonth?: boolean;
-  /** First day of week, from 0 to 6. 0 is Sunday, 1 is Monday ... 6 is Saturday
+  /**
+   * First day of week, from 0 to 6. 0 is Sunday, 1 is Monday ... 6 is Saturday
    * @default 0
    */
   weekStartsOn?: number;
