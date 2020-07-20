@@ -24,21 +24,6 @@ export interface Country {
   population?: number;
 }
 
-export interface CountryWithAreaCode {
-  /** The country flag */
-  image: string;
-  /** Country name */
-  countryName: string;
-  /** Country area code */
-  countryCode: string;
-  /** Phone number display format */
-  displayFormat: number[];
-  /** Possible area codes for a country. Used to distinguish between countries with same country codes */
-  areaCodes: number[];
-  countryAlphaCode?: string;
-  formatter?(): void;
-}
-
 export interface PhoneFieldProps {
   /** Placeholder text  */
   placeholder?: string;
