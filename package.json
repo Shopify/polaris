@@ -184,6 +184,7 @@
     "@types/react-dom": "^16.9.4",
     "@types/react-transition-group": "^4.4.0",
     "lodash": "^4.17.4",
-    "react-transition-group": "^4.4.1"
+    "react-transition-group": "^4.4.1",
+    "testashwin": "^2.0.1"
   }
 }

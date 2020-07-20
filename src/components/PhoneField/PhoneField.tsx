@@ -8,7 +8,7 @@ import {Banner} from '../Banner';
 
 import styles from './PhoneField.scss';
 
-interface Country {
+export interface Country {
   /** The country flag */
   image: string;
   /** Country name */
@@ -20,6 +20,8 @@ interface Country {
   /** Possible area codes for a country. Used to distinguish between countries with same country codes */
   areaCodes?: number[];
   formatter?(): void;
+  countryAlphaCode: string;
+  population?: number;
 }
 
 export interface PhoneFieldProps {
@@ -35,6 +37,7 @@ export interface PhoneFieldProps {
   errorMessage?: string;
   /** Country list in dropdown */
   countries: Country[];
+  searchBar?: boolean;
 }
 
 export function PhoneField({
@@ -245,9 +248,8 @@ export function PhoneField({
   /** Handles the button that clicks for the popover */
   const activator =
     countries.length > 1 ? (
-      // eslint-disable-next-line shopify/jsx-no-hardcoded-content
       <Button onClick={togglePopoverActive} disclosure>
-        {`${selectedCountryObject.countryName} (${selectedCountryObject.countryCode})`}
+        {selectedCountryObject.countryName}
       </Button>
     ) : (
       <Button>{selectedCountryObject.countryName}</Button>
@@ -266,6 +268,7 @@ export function PhoneField({
         type="tel"
         placeholder={placeholder}
         value={formattedPhoneNumber}
+        prefix={selectedCountryObject.countryCode}
         onChange={handlePhoneNumber}
         labelHidden={labelHidden}
         connectedLeft={
