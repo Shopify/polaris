@@ -345,10 +345,9 @@ export function PhoneField({
 
   /** Handles the button that clicks for the popover */
   const activator =
-    // eslint-disable-next-line shopify/jsx-no-hardcoded-content
     countries.length > 1 ? (
       <Button onClick={togglePopoverActive} disclosure>
-        {`${selectedCountryObject.countryName} (${selectedCountryObject.countryCode})`}
+        {selectedCountryObject.countryName}
       </Button>
     ) : (
       <Button>{selectedCountryObject.countryName}</Button>
