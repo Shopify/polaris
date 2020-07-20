@@ -148,6 +148,38 @@ plugins.sass({
 
 The `ResourceList.FilterControl` subcomponent has been removed. You should use the `Filters` component to provide filtering options.
 
+### DatePicker
+
+The `DatePicker` component's `year`, `month` and `weekStartsOn` prop type have changed from `Year`, `Months` and `Weekdays` to all be `number`. This is functionally identical to v4's behaviour as you could always pass a number into these props however you can no longer use the `Months` and `Weekdays` enums.
+
+Replace usage of the `Months` enum with a number between 0 and 11 representing the month. `0` is January, `1` is February, `11` is December etc. This matches the number you get back from `(new Date()).getMonth()`.
+
+Replace usage of the `Weekdays` enum with a number between 0 and 6 representing the day of the week. `0` is Sunday, `1` is Monday, `6` is Saturday etc. This matches the number you get back from `(new Date()).getDay()`.
+
+```diff
+- import {Weekdays} from '@shopify/javascript-utilities';
+- import {DatePicker, Months, Year} from '@shopify/polaris';
++ import {DatePicker} from '@shopify/polaris';
+
+function MyComponent() {
+-   function handleOnMonthChange(month: Month, year: Year) {
++   function handleOnMonthChange(month: number, year: number) {
+    console.log(month, year);
+  }
+
+  return (
+    <DatePicker
+      year={2019}
+-      month={Months.February}
++      month={1}
+-      weekStartsOn={Weekdays.Monday}
++      weekStartsOn={1}
+      onMonthChange={handleOnMonthChange}
+    />
+  );
+}
+```
+
 ### Page
 
 The `Page` component's `singleColumn` prop has been removed. You should replace any usage of this prop with the `narrowWidth` prop which has identical functionality.
@@ -161,6 +193,17 @@ The `EmptyState` component's `centeredLayout` prop has been removed as the illus
 #### NavigationMessageProps
 
 The `NavigationMessageProps` type has been removed, as `Navigation`'s `Message` internal subcomponent has been removed.
+
+#### Months and Year
+
+The `Months` enum and `Year` type have both been removed, as `DatePicker` now uses
+`number` in place of both these types to reduce indirection.
+
+Replace usage of `Year` and `Months` as types with `number`.
+
+Replace usage of the `Months` enum with a number between 0 and 11 representing the month. `0` is January, `1` is February, `11` is December etc. This matches the number you get back from `(new Date()).getMonth()`.
+
+See the DatePicker section above for more information.
 
 ## Dependencies
 
