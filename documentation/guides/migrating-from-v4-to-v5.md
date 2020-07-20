@@ -8,7 +8,7 @@ In v3 and v4 `AppProvider` could accept `apiKey` `shopOrigin` and `forceRedirect
 
 In v5 AppBridge integration has been removed from these components:
 
-- The `AppProvider` component's `apiKey`, `shopOrigin` and `forceRedirect` have been removed.
+- The `AppProvider` component’s `apiKey`, `shopOrigin` and `forceRedirect` have been removed.
 - The `Modal` component's `size` and `message` props have been removed as they only had meaning within an AppBridge app.
 - The `Page` component's `forceRender` prop has been removed as it only had meaning within an AppBridge app.
 - The `ResourcePicker` component has been removed as it only had meaning within an AppBridge app.
