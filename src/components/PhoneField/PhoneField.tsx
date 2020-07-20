@@ -307,8 +307,6 @@ export function PhoneField({
       setSelectedCountryObject(countries[index]);
       handleTextChange(countries[index].countryCode);
       togglePopoverActive();
-      // console.log('Handle Selected');
-      // console.log(countries[index]);
     },
     [countries, handleTextChange, togglePopoverActive, handleClicked],
   );
