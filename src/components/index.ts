@@ -74,8 +74,8 @@ export type {
   ColumnContentType,
 } from './DataTable';
 
-export {DatePicker, Months} from './DatePicker';
-export type {DatePickerProps, Range, Year} from './DatePicker';
+export {DatePicker} from './DatePicker';
+export type {DatePickerProps, Range} from './DatePicker';
 
 export {DescriptionList} from './DescriptionList';
 export type {DescriptionListProps} from './DescriptionList';

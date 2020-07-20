@@ -1,11 +1,10 @@
 import React, {memo} from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {Weekday as WeekdayEnum} from '../../../../utilities/dates';
 import styles from '../../DatePicker.scss';
 
 export interface WeekdayProps {
-  label: WeekdayEnum;
+  label: string;
   title: string;
   current: boolean;
 }
@@ -21,7 +20,7 @@ export const Weekday = memo(function Weekday({
   );
 
   return (
-    <div aria-label={WeekdayEnum[label]} className={className}>
+    <div aria-label={label} className={className}>
       {title}
     </div>
   );

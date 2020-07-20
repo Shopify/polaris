@@ -2,8 +2,6 @@ import React, {useCallback, useMemo} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {
-  Weekday as WeekdayEnum,
-  Month as MonthEnum,
   isDateBefore,
   isDateAfter,
   isSameDay,
@@ -14,7 +12,7 @@ import {
   getNewRange,
   getOrderedWeekdays,
 } from '../../../../utilities/dates';
-import type {Range, Year} from '../../../../utilities/dates';
+import type {Range} from '../../../../utilities/dates';
 import {useI18n} from '../../../../utilities/i18n';
 import styles from '../../DatePicker.scss';
 import {Day} from '../Day';
@@ -25,12 +23,12 @@ export interface MonthProps {
   focusedDate?: Date;
   selected?: Range;
   hoverDate?: Date;
-  month: MonthEnum;
-  year: Year;
+  month: number;
+  year: number;
   disableDatesBefore?: Date;
   disableDatesAfter?: Date;
   allowRange?: boolean;
-  weekStartsOn: WeekdayEnum;
+  weekStartsOn: number;
   onChange?(date: Range): void;
   onHover?(hoverEnd: Date): void;
   onFocus?(date: Date): void;
@@ -70,8 +68,8 @@ export function Month({
       title={i18n.translate(
         `Polaris.DatePicker.daysAbbreviated.${weekdayName(weekday)}`,
       )}
+      label={WeekdayEnum[weekday]}
       current={current && new Date().getDay() === weekday}
-      label={weekday}
     />
   ));
 
@@ -184,4 +182,16 @@ function isDateStart(day: Date | null, range: Range) {
   const {start} = range;
 
   return Boolean(start && isSameDay(start, day));
+}
+
+// This is a hack based on previous behaviour as time constraints means we can't
+// wait for translations. This should be converted to use translation keys.
+enum WeekdayEnum {
+  Sunday = 0,
+  Monday = 1,
+  Tuesday = 2,
+  Wednesday = 3,
+  Thursday = 4,
+  Friday = 5,
+  Saturday = 6,
 }
