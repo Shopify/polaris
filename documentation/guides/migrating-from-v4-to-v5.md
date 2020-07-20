@@ -13,7 +13,7 @@ In v5 AppBridge integration has been removed from these components:
 - The `Page` component's `forceRender` prop has been removed as it only had meaning within an AppBridge app.
 - The `ResourcePicker` component has been removed as it only had meaning within an AppBridge app.
 
-AppBridge behavour has been abstracted into a separate `@shopify/app-bridge-react` package. If you require the AppBridge implementation of these components then use the components from the [`@shopify/app-bridge-react` package](https://shopify.dev/tools/app-bridge/react-components).
+AppBridge behaviour has been abstracted into a separate `@shopify/app-bridge-react` package. If you require the AppBridge implementation of these components then use the components from the [`@shopify/app-bridge-react` package](https://shopify.dev/tools/app-bridge/react-components).
 
 ```js
 // Old
