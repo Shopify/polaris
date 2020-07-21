@@ -13,7 +13,6 @@ describe('<Breadcrumbs />', () => {
         {
           content: 'Products',
           url: 'https://www.shopify.com',
-          target: 'REMOTE',
         },
       ];
 
@@ -29,7 +28,6 @@ describe('<Breadcrumbs />', () => {
         {
           content: 'Products',
           url: 'https://shopify.com',
-          target: 'REMOTE',
           accessibilityLabel: 'Go to Products',
         },
       ];
@@ -101,7 +99,6 @@ describe('<Breadcrumbs />', () => {
       {
         content: 'Products',
         url: 'https://www.shopify.com',
-        target: 'REMOTE',
       },
     ];
 

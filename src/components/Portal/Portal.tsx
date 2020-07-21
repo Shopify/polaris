@@ -1,8 +1,8 @@
 import React from 'react';
 import {createPortal} from 'react-dom';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {ThemeContext} from '../../utilities/theme';
+import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 import {portal} from '../shared';
 
 export interface PortalProps {
@@ -15,7 +15,7 @@ interface State {
   isMounted: boolean;
 }
 
-const getUniqueID = createUniqueIDFactory('portal-');
+const getUniqueID = globalIdGeneratorFactory('portal-');
 
 export class Portal extends React.PureComponent<PortalProps, State> {
   static defaultProps = {idPrefix: ''};

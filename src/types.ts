@@ -78,8 +78,6 @@ export interface IconProps {
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 
-export type AppBridgeTarget = 'ADMIN_PATH' | 'REMOTE' | 'APP';
-
 export type Error =
   | string
   | React.ReactElement
@@ -110,7 +108,7 @@ export interface AnimationProps {
   in?: boolean;
 }
 
-export interface BaseLinkAction {
+export interface LinkAction {
   /** A unique identifier for the action */
   id?: string;
   /** Content the action displays */
@@ -120,17 +118,6 @@ export interface BaseLinkAction {
   /** A destination to link to */
   url: string;
 }
-
-export interface AppBridgeActionTarget {
-  /**
-   * Where to display the target link
-   * @default 'APP'
-   * @embeddedAppOnly
-   */
-  target?: AppBridgeTarget;
-}
-
-export interface LinkAction extends BaseLinkAction, AppBridgeActionTarget {}
 
 export interface BadgeAction {
   badge?: {
@@ -162,12 +149,6 @@ export interface DestructableAction extends Action {
   destructive?: boolean;
 }
 
-export interface AppBridgeAction
-  extends Action,
-    DisableableAction,
-    DestructableAction,
-    AppBridgeActionTarget {}
-
 export interface IconableAction extends Action {
   /** Source of the icon */
   icon?: IconProps['source'];
@@ -182,8 +163,7 @@ export interface ActionListItemDescriptor
   extends IconableAction,
     DisableableAction,
     BadgeAction,
-    DestructableAction,
-    AppBridgeAction {
+    DestructableAction {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Additional hint text to display with item */
@@ -209,7 +189,6 @@ export interface ComplexAction
   extends Action,
     DisableableAction,
     DestructableAction,
-    AppBridgeAction,
     IconableAction,
     LoadableAction {}
 
@@ -345,34 +324,6 @@ export enum Key {
   CloseBracket = 221,
   SingleQuote = 222,
 }
-
-export enum TypeOf {
-  Undefined = 'undefined',
-  Object = 'object',
-  Boolean = 'boolean',
-  Number = 'number',
-  String = 'string',
-  Symbol = 'symbol',
-  Function = 'function',
-}
-
-export interface GeneralObject {
-  [key: string]: any;
-}
-
-export type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends (infer U)[]
-    ? DeepPartial<U>[]
-    : T[P] extends ReadonlyArray<infer U>
-    ? ReadonlyArray<DeepPartial<U>>
-    : DeepPartial<T[P]>;
-};
-
-export type EffectCallback = () => void | (() => void | undefined);
-
-export type DependencyList = ReadonlyArray<unknown>;
-
-export type Comparator = (a: DependencyList, b: DependencyList) => boolean;
 
 export interface CheckboxHandles {
   focus(): void;

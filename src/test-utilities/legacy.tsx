@@ -49,7 +49,7 @@ export function trigger(wrapper: AnyWrapper, keypath: string, ...args: any[]) {
   let returnValue: any;
 
   const promise = reactAct(() => {
-    // eslint-disable-next-line callback-return, node/no-callback-literal
+    // eslint-disable-next-line node/callback-return, node/no-callback-literal
     returnValue = callback(...args);
 
     // The return type of non-async `act()`, DebugPromiseLike, contains a `then` method

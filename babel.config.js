@@ -2,16 +2,21 @@ module.exports = function (api) {
   // When building (using rollup) or running storybook (using babel-loader) we
   // want to compile for the web otherwise compile for node usage (within jest)
   const isWeb = api.caller((caller = {}) => {
-    return ['babel-loader', 'rollup-plugin-babel'].includes(caller.name);
+    return ['babel-loader', '@rollup/plugin-babel'].includes(caller.name);
   });
 
-  const runtimePreset = isWeb
-    ? ['babel-preset-shopify/web', {modules: false, typescript: true}]
-    : ['babel-preset-shopify/node', {modules: 'commonjs', typescript: true}];
+  // Our esnext rollup build will want to override the browserslist we pass in
+  // instead of using the default as defined in our package.json
+  const browsers = api.caller((caller = {}) => caller.browserslistOverride);
 
-  // babel-preset-shopify/react only uses HMR if hot is true and the env is
-  // development or test
+  const runtimePreset = isWeb
+    ? [
+        '@shopify/babel-preset/web',
+        {modules: 'auto', typescript: true, browsers},
+      ]
+    : ['@shopify/babel-preset/node', {modules: 'auto', typescript: true}];
+
   return {
-    presets: [runtimePreset, ['babel-preset-shopify/react', {hot: isWeb}]],
+    presets: [runtimePreset, ['@shopify/babel-preset/react']],
   };
 };

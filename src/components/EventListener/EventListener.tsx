@@ -1,8 +1,4 @@
 import React from 'react';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
 
 interface BaseEventProps {
   event: string;
@@ -38,11 +34,11 @@ export class EventListener extends React.PureComponent<
 
   private attachListener() {
     const {event, handler, capture, passive} = this.props;
-    addEventListener(window, event, handler, {capture, passive});
+    window.addEventListener(event, handler, {capture, passive});
   }
 
   private detachListener(prevProps?: BaseEventProps) {
     const {event, handler, capture} = prevProps || this.props;
-    removeEventListener(window, event, handler, capture);
+    window.removeEventListener(event, handler, capture);
   }
 }

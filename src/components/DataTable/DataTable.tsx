@@ -3,11 +3,8 @@ import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 
 import {classNames} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
 import {headerCell} from '../shared';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
 import {EventListener} from '../EventListener';
 
 import {Cell, CellProps, Navigation} from './components';
@@ -17,11 +14,11 @@ import styles from './DataTable.scss';
 
 export type {SortDirection};
 
-type CombinedProps = DataTableProps & WithAppProviderProps;
 export type TableRow =
   | DataTableProps['headings']
   | DataTableProps['rows']
   | DataTableProps['totals'];
+
 export type TableData = string | number | React.ReactNode;
 
 export type ColumnContentType = 'text' | 'numeric';
@@ -71,6 +68,10 @@ export interface DataTableProps {
   /** Callback fired on click or keypress of a sortable column heading. */
   onSort?(headingIndex: number, direction: SortDirection): void;
 }
+
+type CombinedProps = DataTableProps & {
+  i18n: ReturnType<typeof useI18n>;
+};
 
 class DataTableInner extends React.PureComponent<
   CombinedProps,
@@ -281,6 +282,7 @@ class DataTableInner extends React.PureComponent<
     return handleScroll;
   };
 
+  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderHeadings = (heading: string, headingIndex: number) => {
     const {
       sortable,
@@ -328,17 +330,13 @@ class DataTableInner extends React.PureComponent<
   };
 
   private totalsRowHeading = () => {
-    const {
-      polaris: {intl},
-      totals,
-      totalsName,
-    } = this.props;
+    const {i18n, totals, totalsName} = this.props;
 
     const totalsLabel = totalsName
       ? totalsName
       : {
-          singular: intl.translate('Polaris.DataTable.totalRowHeading'),
-          plural: intl.translate('Polaris.DataTable.totalsRowHeading'),
+          singular: i18n.translate('Polaris.DataTable.totalRowHeading'),
+          plural: i18n.translate('Polaris.DataTable.totalsRowHeading'),
         };
 
     return totals && totals.filter((total) => total !== '').length > 1
@@ -346,6 +344,7 @@ class DataTableInner extends React.PureComponent<
       : totalsLabel.singular;
   };
 
+  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderTotals = (total: TableData, index: number) => {
     const id = `totals-cell-${index}`;
     const {truncate = false, verticalAlign} = this.props;
@@ -439,4 +438,7 @@ class DataTableInner extends React.PureComponent<
   };
 }
 
-export const DataTable = withAppProvider<DataTableProps>()(DataTableInner);
+export function DataTable(props: DataTableProps) {
+  const i18n = useI18n();
+  return <DataTableInner {...props} i18n={i18n} />;
+}

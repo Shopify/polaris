@@ -1,8 +1,7 @@
 import React from 'react';
-import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
-import {closest} from '@shopify/javascript-utilities/dom';
 
 import {classNames} from '../../utilities/css';
+import {getRectForNode, Rect} from '../../utilities/geometry';
 import {EventListener} from '../EventListener';
 import {Scrollable} from '../Scrollable';
 import {layer} from '../shared';
@@ -211,7 +210,7 @@ export class PositionedOverlay extends React.PureComponent<
         const scrollableContainerRect = getRectForNode(scrollableElement);
 
         const overlayRect = fullWidth
-          ? {...currentOverlayRect, width: activatorRect.width}
+          ? new Rect({...currentOverlayRect, width: activatorRect.width})
           : currentOverlayRect;
 
         // If `body` is 100% height, it still acts as though it were not constrained to that size. This adjusts for that.
@@ -287,7 +286,7 @@ function getMarginsForNode(node: HTMLElement) {
 }
 
 function getZIndexForLayerFromNode(node: HTMLElement) {
-  const layerNode = closest(node, layer.selector) || document.body;
+  const layerNode = node.closest(layer.selector) || document.body;
   const zIndex =
     layerNode === document.body
       ? 'auto'

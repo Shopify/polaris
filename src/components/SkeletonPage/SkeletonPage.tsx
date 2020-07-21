@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {useAppBridge} from '../../utilities/app-bridge';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {DisplayText} from '../DisplayText';
@@ -24,36 +23,23 @@ export interface SkeletonPageProps {
   breadcrumbs?: boolean;
   /** The child elements to render in the skeleton page. */
   children?: React.ReactNode;
-  /** Decreases the maximum layout width. Intended for single-column layouts
-   * @deprecated As of release 4.0, replaced by {@link https://polaris.shopify.com/components/feedback-indicators/skeleton-page#props-narrow-width}
-   */
-  singleColumn?: boolean;
 }
 
 export function SkeletonPage({
   children,
   fullWidth,
   narrowWidth,
-  singleColumn,
   primaryAction,
   secondaryActions,
   title = '',
   breadcrumbs,
 }: SkeletonPageProps) {
-  if (singleColumn) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The singleColumn prop has been renamed to narrowWidth to better represents its use and will be removed in v5.0.',
-    );
-  }
-
   const i18n = useI18n();
-  const appBridge = useAppBridge();
 
   const className = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,
-    (narrowWidth || singleColumn) && styles.narrowWidth,
+    narrowWidth && styles.narrowWidth,
   );
 
   const headerClassName = classNames(
@@ -80,24 +66,20 @@ export function SkeletonPage({
     </div>
   ) : null;
 
-  const headerMarkup = !appBridge ? (
-    <div className={headerClassName}>
-      {breadcrumbMarkup}
-      <div className={styles.TitleAndPrimaryAction}>
-        {titleMarkup}
-        {primaryActionMarkup}
-      </div>
-      {secondaryActionsMarkup}
-    </div>
-  ) : null;
-
   return (
     <div
       className={className}
       role="status"
       aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
     >
-      {headerMarkup}
+      <div className={headerClassName}>
+        {breadcrumbMarkup}
+        <div className={styles.TitleAndPrimaryAction}>
+          {titleMarkup}
+          {primaryActionMarkup}
+        </div>
+        {secondaryActionsMarkup}
+      </div>
       <div className={styles.Content}>{children}</div>
     </div>
   );

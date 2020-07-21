@@ -26,8 +26,6 @@ export interface EmptyStateProps {
   imageContained?: boolean;
   /** Whether or not the content should span the full width of its container  */
   fullWidth?: boolean;
-  /** Whether or not the layout is stacked and centered vs justified apart */
-  centeredLayout?: boolean;
   /** Elements to display inside empty state */
   children?: React.ReactNode;
   /** Primary action for empty state */
@@ -44,7 +42,6 @@ export function EmptyState({
   image,
   largeImage,
   imageContained,
-  centeredLayout = false,
   fullWidth = false,
   action,
   secondaryAction,
@@ -52,11 +49,10 @@ export function EmptyState({
 }: EmptyStateProps) {
   const withinContentContainer = useContext(WithinContentContext);
   const {newDesignLanguage = false} = useFeatures();
-  const newLayout = centeredLayout || newDesignLanguage;
   const className = classNames(
     styles.EmptyState,
     fullWidth && styles.fullWidth,
-    newLayout && styles.centeredLayout,
+    newDesignLanguage && styles.newDesignLanguage,
     imageContained && styles.imageContained,
     withinContentContainer ? styles.withinContentContainer : styles.withinPage,
   );
@@ -78,7 +74,7 @@ export function EmptyState({
   );
 
   const secondaryActionMarkup = secondaryAction
-    ? buttonFrom(secondaryAction, newLayout ? {} : {plain: true})
+    ? buttonFrom(secondaryAction, newDesignLanguage ? {} : {plain: true})
     : null;
 
   const footerContentMarkup = footerContent ? (
@@ -89,7 +85,7 @@ export function EmptyState({
 
   const headingSize = withinContentContainer ? 'small' : 'medium';
   const primaryActionSize =
-    withinContentContainer || newLayout ? 'medium' : 'large';
+    withinContentContainer || newDesignLanguage ? 'medium' : 'large';
 
   const primaryActionMarkup = action
     ? buttonFrom(action, {primary: true, size: primaryActionSize})
@@ -105,7 +101,7 @@ export function EmptyState({
 
   const textContentMarkup =
     headingMarkup || children ? (
-      <TextContainer spacing={newLayout ? 'tight' : undefined}>
+      <TextContainer>
         {headingMarkup}
         {childrenMarkup}
       </TextContainer>
@@ -116,8 +112,8 @@ export function EmptyState({
       <div className={styles.Actions}>
         <Stack
           alignment="center"
-          distribution={newLayout ? 'center' : undefined}
-          spacing={newLayout ? 'tight' : undefined}
+          distribution={newDesignLanguage ? 'center' : undefined}
+          spacing={newDesignLanguage ? 'tight' : undefined}
         >
           {primaryActionMarkup}
           {secondaryActionMarkup}

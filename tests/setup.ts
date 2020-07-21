@@ -15,14 +15,8 @@ const IGNORE_ERROR_REGEXES = [
   /React\.createClass is deprecated and will be removed in version 16/,
 ];
 
-const IGNORE_WARN_REGEXES = [
-  /Deprecation: Using `apiKey` and `shopOrigin` on `AppProvider` to initialize the Shopify App Bridge is deprecated. Support for this will be removed in v5\.0\./,
-  /Deprecation: Using `Loading` in an embedded app is deprecated and will be removed in v5\.0\./,
-  /Deprecation: Using `Modal` in an embedded app is deprecated and will be removed in v5\.0\./,
-  /Deprecation: Using `Page` to render an embedded app title bar is deprecated and will be removed in v5\.0\./,
-  /Deprecation: Using `Toast` in an embedded app is deprecated and will be removed in v5\.0\./,
-  /Deprecation: `ResourcePicker` is deprecated and will be removed in v5\.0\./,
-  /Deprecation: <FilterControl \/> is deprecated\. Use <Filters \/> instead\./,
+const IGNORE_WARN_REGEXES: RegExp[] = [
+  /Deprecation: <FilterControl \/> is deprecated\. This is a private component, do not use it\. This component might be removed in a minor version update\. Use <Filters \/> instead\./,
 ];
 
 // eslint-disable-next-line no-console

@@ -1,3 +1,10 @@
+// AppProvider contains CSS that affects element level CSS (e.g. `html`, `button`)
+// It should be first to ensure its CSS is first in compiled output
+// AppProvider contains CSS that affects element level CSS (e.g. `html`, `button`)
+// It should be first to ensure its CSS is first in compiled output
+export {AppProvider} from './AppProvider';
+export type {AppProviderProps} from './AppProvider';
+
 export {AccountConnection} from './AccountConnection';
 export type {AccountConnectionProps} from './AccountConnection';
 
@@ -6,9 +13,6 @@ export type {ActionListProps} from './ActionList';
 
 export {ActionMenu} from './ActionMenu';
 export type {ActionMenuProps} from './ActionMenu';
-
-export {AppProvider} from './AppProvider';
-export type {AppProviderProps} from './AppProvider';
 
 export {Autocomplete} from './Autocomplete';
 export type {AutocompleteProps} from './Autocomplete';
@@ -70,8 +74,8 @@ export type {
   ColumnContentType,
 } from './DataTable';
 
-export {DatePicker, Months} from './DatePicker';
-export type {DatePickerProps, Range, Year} from './DatePicker';
+export {DatePicker} from './DatePicker';
+export type {DatePickerProps, Range} from './DatePicker';
 
 export {DescriptionList} from './DescriptionList';
 export type {DescriptionListProps} from './DescriptionList';
@@ -170,7 +174,6 @@ export {Navigation, isNavigationItemActive} from './Navigation';
 export type {
   NavigationProps,
   NavigationItemProps,
-  NavigationMessageProps,
   SubNavigationItem,
 } from './Navigation';
 
@@ -207,20 +210,18 @@ export type {RangeSliderProps} from './RangeSlider';
 export {ResourceItem} from './ResourceItem';
 export type {ResourceItemProps} from './ResourceItem';
 
-export {ResourceList, FilterType} from './ResourceList';
-export type {
-  ResourceListProps,
-  FilterControlProps,
-  Filter,
-  AppliedFilter,
-  FilterSelect,
-  FilterTextField,
-} from './ResourceList';
+export {ResourceList} from './ResourceList';
+export type {ResourceListProps} from './ResourceList';
+
+// We want to delete this component, but there's one place in web
+// that still relies on it so we have to keep it.
+// We don't want anyone else using it though, use the Filters component instead
+/* eslint-disable @typescript-eslint/camelcase */
+export {FilterControl as _SECRET_INTERNAL_FilterControl} from './ResourceList';
+export type {FilterControlProps as _SECRET_INTERNAL_FilterControlProps} from './ResourceList';
+/* eslint-enable @typescript-eslint/camelcase */
 
 export type {ResourceListSelectedItems} from '../utilities/resource-list';
-
-export {ResourcePicker} from './ResourcePicker';
-export type {ResourcePickerProps} from './ResourcePicker';
 
 export {Scrollable} from './Scrollable';
 export type {ScrollableProps} from './Scrollable';

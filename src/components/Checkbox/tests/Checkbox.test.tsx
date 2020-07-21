@@ -4,6 +4,7 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {Key} from '../../../types';
+import {Choice} from '../../Choice';
 import {Checkbox} from '../Checkbox';
 
 describe('<Checkbox />', () => {
@@ -73,12 +74,12 @@ describe('<Checkbox />', () => {
     });
 
     it('sets focus on the input when checkbox is toggled off', () => {
-      const checkbox = mountWithAppProvider(
+      const checkbox = mountWithApp(
         <Checkbox checked id="checkboxId" label="Checkbox" onChange={noop} />,
       );
-      (checkbox.find('input') as any).instance().checked = false;
-      checkbox.simulate('click');
-      expect(checkbox.find('input').instance()).toBe(document.activeElement);
+      checkbox.find(Choice)!.trigger('onClick');
+
+      expect(document.activeElement).toBe(checkbox.find('input')!.domNode);
     });
 
     it('is not called from keyboard events when disabled', () => {

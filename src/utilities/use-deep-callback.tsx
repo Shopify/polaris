@@ -1,7 +1,5 @@
 import {useCallback} from 'react';
 
-import type {EffectCallback, DependencyList, Comparator} from '../types';
-
 import {useDeepCompareRef} from './use-deep-compare-ref';
 
 /**
@@ -34,9 +32,10 @@ import {useDeepCompareRef} from './use-deep-compare-ref';
  * }
  */
 export function useDeepCallback(
-  callback: EffectCallback,
-  dependencies: DependencyList,
-  customCompare?: Comparator,
+  callback: Parameters<typeof useCallback>[0],
+  dependencies: Parameters<typeof useDeepCompareRef>[0],
+  customCompare?: Parameters<typeof useDeepCompareRef>[1],
 ) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useCallback(callback, useDeepCompareRef(dependencies, customCompare));
 }

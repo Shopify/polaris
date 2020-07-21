@@ -1,8 +1,10 @@
 import {useEffect} from 'react';
 
-import type {EffectCallback, DependencyList, Comparator} from '../types';
-
 import {useDeepCompareRef} from './use-deep-compare-ref';
+
+type DependencyList = ReadonlyArray<unknown>;
+
+type Comparator = (a: DependencyList, b: DependencyList) => boolean;
 
 /**
  * A replacement for React.useEffect that'll allow for custom and deep
@@ -25,9 +27,10 @@ import {useDeepCompareRef} from './use-deep-compare-ref';
  * }
  */
 export function useDeepEffect(
-  callback: EffectCallback,
+  callback: Parameters<typeof useEffect>[0],
   dependencies: DependencyList,
   customCompare?: Comparator,
 ) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(callback, useDeepCompareRef(dependencies, customCompare));
 }

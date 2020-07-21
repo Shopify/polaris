@@ -1,5 +1,6 @@
 import React, {memo, useEffect} from 'react';
-import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+
+import {focusFirstFocusableNode} from '../../utilities/focus';
 
 export interface FocusProps {
   children?: React.ReactNode;

@@ -16,6 +16,7 @@ export const MediaQueryProvider = function MediaQueryProvider({
     navigationBarCollapsed().matches,
   );
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleResize = useCallback(
     debounce(
       () => {

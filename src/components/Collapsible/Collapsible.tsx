@@ -4,7 +4,6 @@ import React, {
   TransitionEvent,
   ComponentClass,
 } from 'react';
-import {read} from '@shopify/javascript-utilities/fastdom';
 
 import {classNames} from '../../utilities/css';
 
@@ -87,7 +86,7 @@ class CollapsibleInner extends React.Component<CollapsibleProps, State> {
       return;
     }
 
-    read(() => {
+    requestAnimationFrame(() => {
       const heightNode = this.heightNode.current;
       switch (animationState) {
         case 'idle':
