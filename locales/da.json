@@ -72,6 +72,15 @@
         "friday": "Fr",
         "saturday": "Lø",
         "sunday": "Sø"
+      },
+      "days": {
+        "monday": "Mandag",
+        "tuesday": "Tirsdag",
+        "wednesday": "Onsdag",
+        "thursday": "Torsdag",
+        "friday": "Fredag",
+        "saturday": "Lørdag",
+        "sunday": "Søndag"
       }
     },
     "DiscardConfirmationModal": {
