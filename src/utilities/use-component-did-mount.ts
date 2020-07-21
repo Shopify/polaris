@@ -1,7 +1,5 @@
 import {useRef} from 'react';
 
-import type {EffectCallback} from '../types';
-
 import {useIsAfterInitialMount} from './use-is-after-initial-mount';
 
 /**
@@ -20,7 +18,7 @@ import {useIsAfterInitialMount} from './use-is-after-initial-mount';
  *  return null;
  * }
  */
-export function useComponentDidMount(callback: EffectCallback) {
+export function useComponentDidMount(callback: () => void) {
   const isAfterInitialMount = useIsAfterInitialMount();
   const hasInvokedLifeCycle = useRef(false);
 

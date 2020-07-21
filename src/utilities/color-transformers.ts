@@ -213,32 +213,25 @@ export function hexToRgb(color: string) {
   return {red, green, blue};
 }
 
-export enum ColorType {
-  Hex = 'hex',
-  Rgb = 'rgb',
-  Rgba = 'rgba',
-  Hsl = 'hsl',
-  Hsla = 'hsla',
-  Default = 'default',
-}
+type ColorType = 'hex' | 'rgb' | 'rgba' | 'hsl' | 'hsla' | 'default';
 
 function getColorType(color: string): ColorType {
   if (color.includes('#')) {
-    return ColorType.Hex;
+    return 'hex';
   } else if (color.includes('rgb')) {
-    return ColorType.Rgb;
+    return 'rgb';
   } else if (color.includes('rgba')) {
-    return ColorType.Rgba;
+    return 'rgba';
   } else if (color.includes('hsl')) {
-    return ColorType.Hsl;
+    return 'hsl';
   } else if (color.includes('hsla')) {
-    return ColorType.Hsla;
+    return 'hsla';
   } else {
     if (process.env.NODE_ENV === 'development') {
       /* eslint-disable-next-line no-console */
       console.warn('Accepted colors formats are: hex, rgb, rgba, hsl and hsla');
     }
-    return ColorType.Default;
+    return 'default';
   }
 }
 
@@ -297,17 +290,17 @@ function hslToObject(color: string): HSLAColor {
 }
 
 export function colorToHsla(color: string): HSLAColor {
-  const type: ColorType = getColorType(color);
+  const type = getColorType(color);
   switch (type) {
-    case ColorType.Hex:
+    case 'hex':
       return hexToHsla(color);
-    case ColorType.Rgb:
-    case ColorType.Rgba:
+    case 'rgb':
+    case 'rgba':
       return rbgStringToHsla(color);
-    case ColorType.Hsla:
-    case ColorType.Hsl:
+    case 'hsl':
+    case 'hsla':
       return hslToObject(color);
-    case ColorType.Default:
+    case 'default':
     default:
       throw new Error(
         'Accepted color formats are: hex, rgb, rgba, hsl and hsla',

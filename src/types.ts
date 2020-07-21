@@ -325,34 +325,6 @@ export enum Key {
   SingleQuote = 222,
 }
 
-export enum TypeOf {
-  Undefined = 'undefined',
-  Object = 'object',
-  Boolean = 'boolean',
-  Number = 'number',
-  String = 'string',
-  Symbol = 'symbol',
-  Function = 'function',
-}
-
-export interface GeneralObject {
-  [key: string]: any;
-}
-
-export type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends (infer U)[]
-    ? DeepPartial<U>[]
-    : T[P] extends ReadonlyArray<infer U>
-    ? ReadonlyArray<DeepPartial<U>>
-    : DeepPartial<T[P]>;
-};
-
-export type EffectCallback = () => void | (() => void | undefined);
-
-export type DependencyList = ReadonlyArray<unknown>;
-
-export type Comparator = (a: DependencyList, b: DependencyList) => boolean;
-
 export interface CheckboxHandles {
   focus(): void;
 }
