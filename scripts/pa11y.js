@@ -50,6 +50,7 @@ async function runPa11y() {
   const setupBrowser = browsers[0].browser;
   const page = await setupBrowser.newPage();
 
+  // eslint-disable-next-line node/no-path-concat
   const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
 
   const stories = await page

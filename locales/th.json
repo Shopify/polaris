@@ -72,6 +72,15 @@
         "friday": "ศ.",
         "saturday": "ส.",
         "sunday": "อา."
+      },
+      "days": {
+        "monday": "วันจันทร์",
+        "tuesday": "วันอังคาร",
+        "wednesday": "วันพุธ",
+        "thursday": "วันพฤหัสบดี",
+        "friday": "วันศุกร์",
+        "saturday": "วันเสาร์",
+        "sunday": "วันอาทิตย์"
       }
     },
     "DiscardConfirmationModal": {

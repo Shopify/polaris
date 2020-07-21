@@ -19,7 +19,7 @@ omitAppProvider: true
 
 # Top bar
 
-Merchants can use the top bar component to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of non-embedded interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/structure/app-provider) component and are required to use their own logo.
+Merchants can use the top bar component to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/structure/app-provider) component and are required to use their own logo.
 
 ---
 
@@ -568,7 +568,7 @@ function TopBarExample() {
 ## Related components
 
 - To provide the structure for the top bar component, as well as the primary navigation use the [frame](https://polaris.shopify.com/components/structure/frame) component.
-- To display the primary navigation within the frame of a non-embedded application, use the [navigation](https://polaris.shopify.com/components/structure/navigation) component.
+- To display the primary navigation within the frame of an application, use the [navigation](https://polaris.shopify.com/components/structure/navigation) component.
 - To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) component.
 - To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/feedback-indicators/toast) component.
 - To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/feedback-indicators/loading) component.

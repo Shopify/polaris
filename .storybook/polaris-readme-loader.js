@@ -95,9 +95,6 @@ AllExamples.story = {
   return `
 import React, {${hooks}} from 'react';
 import {withA11y} from '@storybook/addon-a11y';
-// In production mode webpack shakes this away, so explicitly include it.
-// The following import can be removed in v5, where global CSS has been removed:
-import '@shopify/polaris/styles/global.scss';
 import {
   AccountConnection,
   ActionList,

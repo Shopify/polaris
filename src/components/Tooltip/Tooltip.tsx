@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {Portal} from '../Portal';
+import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 

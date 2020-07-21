@@ -72,6 +72,15 @@
         "friday": "Pá",
         "saturday": "So",
         "sunday": "Ne"
+      },
+      "days": {
+        "monday": "Pondělí",
+        "tuesday": "Úterý",
+        "wednesday": "Středa",
+        "thursday": "Čtvrtek",
+        "friday": "Pátek",
+        "saturday": "Sobota",
+        "sunday": "Neděle"
       }
     },
     "DiscardConfirmationModal": {
@@ -275,7 +284,9 @@
           },
           "seconds": {
             "other": "{secondCount} s",
-            "one": "{secondCount} s"
+            "one": "{secondCount} s",
+            "few": "{secondCount} s",
+            "many": "{secondCount} s"
           }
         }
       }

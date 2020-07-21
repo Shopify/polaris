@@ -1,10 +1,7 @@
 import React from 'react';
-import {getRectForNode} from '@shopify/javascript-utilities/geometry';
 
-import {
-  WithAppProviderProps,
-  withAppProvider,
-} from '../../utilities/with-app-provider';
+import {getRectForNode} from '../../utilities/geometry';
+import {useStickyManager} from '../../utilities/sticky-manager';
 
 interface State {
   isSticky: boolean;
@@ -23,7 +20,9 @@ export type StickyProps = {
   | {children(isSticky: boolean): React.ReactNode}
 );
 
-type CombinedProps = StickyProps & WithAppProviderProps;
+type CombinedProps = StickyProps & {
+  stickyManager: ReturnType<typeof useStickyManager>;
+};
 
 class StickyInner extends React.Component<CombinedProps, State> {
   state: State = {
@@ -39,7 +38,7 @@ class StickyInner extends React.Component<CombinedProps, State> {
       boundingElement,
       offset = false,
       disableWhenStacked = false,
-      polaris: {stickyManager},
+      stickyManager,
     } = this.props;
 
     if (!this.stickyNode || !this.placeHolderNode) return;
@@ -55,7 +54,7 @@ class StickyInner extends React.Component<CombinedProps, State> {
   }
 
   componentWillUnmount() {
-    const {stickyManager} = this.props.polaris;
+    const {stickyManager} = this.props;
     if (!this.stickyNode) return;
     stickyManager.unregisterStickyItem(this.stickyNode);
   }
@@ -124,4 +123,8 @@ function isFunction(arg: any): arg is Function {
   return typeof arg === 'function';
 }
 
-export const Sticky = withAppProvider<StickyProps>()(StickyInner);
+export function Sticky(props: StickyProps) {
+  const stickyManager = useStickyManager();
+
+  return <StickyInner {...props} stickyManager={stickyManager} />;
+}

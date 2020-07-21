@@ -13,15 +13,8 @@ import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
 
-import {
-  SearchField,
-  SearchFieldProps,
-  UserMenu,
-  UserMenuProps,
-  Search,
-  SearchProps,
-  Menu,
-} from './components';
+import {SearchField, UserMenu, Search, Menu} from './components';
+import type {SearchFieldProps, UserMenuProps, SearchProps} from './components';
 import styles from './TopBar.scss';
 
 export type {UserMenuProps, SearchFieldProps};
@@ -81,6 +74,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     setFalse: forceFalseFocused,
   } = useToggle(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = useCallback(
     debounce(() => {
       const scrollDistance = window.scrollY;

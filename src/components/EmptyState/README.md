@@ -210,7 +210,7 @@ Use to provide additional but non-critical context for a new product or feature.
     <EmptyState
       heading="Upload a file to get started"
       action={{content: 'Upload files'}}
-      image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
+      image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
     >
       <p>
         You can use the Files section to upload images, videos, and other
@@ -219,25 +219,6 @@ Use to provide additional but non-critical context for a new product or feature.
     </EmptyState>
   </Card.Section>
 </Card>
-```
-
-### Empty state with centered layout
-
-<!-- example-for: web -->
-
-Stacked image over centered content and actions
-
-```jsx
-<EmptyState
-  centeredLayout
-  heading="Upload a file to get started"
-  action={{content: 'Upload files'}}
-  image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
->
-  <p>
-    You can use the Files section to upload images, videos, and other documents
-  </p>
-</EmptyState>
 ```
 
 ### Empty state with full width layout in a content context
@@ -250,7 +231,7 @@ Stacked image over centered content and actions
     <EmptyState
       heading="Upload a file to get started"
       action={{content: 'Upload files'}}
-      image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
+      image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
       fullWidth
     >
       <p>

@@ -1,13 +1,14 @@
 language: node_js
 node_js:
-  - '10.13.0'
+  - '10.15.0'
 cache: yarn
 
 jobs:
   include:
-    - name: 'Type Check'
+    - name: 'Type Check and Build'
       script:
-        - yarn run type-check
+        # Includes running type checking and build validation tests
+        - yarn run build
 
     - name: 'Lint'
       script:

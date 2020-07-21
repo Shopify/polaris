@@ -1,9 +1,5 @@
 import React from 'react';
 import debounce from 'lodash/debounce';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
 import isEqual from 'lodash/isEqual';
 
 import {classNames} from '../../../../utilities/css';
@@ -106,8 +102,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
     this.setTrackPosition();
 
     if (this.trackWrapper.current != null) {
-      addEventListener(
-        this.trackWrapper.current,
+      this.trackWrapper.current.addEventListener(
         'touchstart',
         this.handleTouchStartTrack,
         {passive: false},
@@ -117,8 +112,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
 
   componentWillUnmount() {
     if (this.trackWrapper.current != null) {
-      removeEventListener(
-        this.trackWrapper.current,
+      this.trackWrapper.current.removeEventListener(
         'touchstart',
         this.handleTouchStartTrack,
       );
@@ -533,12 +527,11 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
 }
 
 function registerMouseMoveHandler(handler: (event: MouseEvent) => void) {
-  addEventListener(document, 'mousemove', handler);
-  addEventListener(
-    document,
+  document.addEventListener('mousemove', handler);
+  document.addEventListener(
     'mouseup',
     () => {
-      removeEventListener(document, 'mousemove', handler);
+      document.removeEventListener('mousemove', handler);
     },
     {once: true},
   );
@@ -546,14 +539,14 @@ function registerMouseMoveHandler(handler: (event: MouseEvent) => void) {
 
 function registerTouchMoveHandler(handler: (event: TouchEvent) => void) {
   const removeHandler = () => {
-    removeEventListener(document, 'touchmove', handler);
-    removeEventListener(document, 'touchend', removeHandler);
-    removeEventListener(document, 'touchcancel', removeHandler);
+    document.removeEventListener('touchmove', handler);
+    document.removeEventListener('touchend', removeHandler);
+    document.removeEventListener('touchcancel', removeHandler);
   };
 
-  addEventListener(document, 'touchmove', handler, {passive: false});
-  addEventListener(document, 'touchend', removeHandler, {once: true});
-  addEventListener(document, 'touchcancel', removeHandler, {once: true});
+  document.addEventListener('touchmove', handler, {passive: false});
+  document.addEventListener('touchend', removeHandler, {once: true});
+  document.addEventListener('touchcancel', removeHandler, {once: true});
 }
 
 function sanitizeValue(

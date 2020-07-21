@@ -18,8 +18,7 @@ import {BannerContext} from 'utilities/banner-context';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
-
-import {Banner} from '..';
+import {Banner} from '../Banner';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -145,11 +144,11 @@ describe('<Banner />', () => {
         return <Banner ref={banner} status="critical" />;
       }
 
-      const div = mountWithAppProvider(<Test />)
-        .find('div')
-        .filterWhere((element) => element.prop('tabIndex') === 0);
+      const testComponent = mountWithApp(<Test />);
 
-      expect(div.getDOMNode()).toBe(document.activeElement);
+      expect(document.activeElement).toBe(
+        testComponent.find('div', {tabIndex: 0})!.domNode,
+      );
     });
 
     describe('Focus className', () => {

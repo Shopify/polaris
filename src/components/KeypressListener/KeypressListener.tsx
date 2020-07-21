@@ -1,8 +1,4 @@
 import {useEffect} from 'react';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
 
 import type {Key} from '../../types';
 
@@ -26,9 +22,9 @@ export function KeypressListener({
   };
 
   useEffect(() => {
-    addEventListener(document, keyEvent, handleKeyEvent);
+    document.addEventListener(keyEvent, handleKeyEvent);
     return () => {
-      removeEventListener(document, keyEvent, handleKeyEvent);
+      document.removeEventListener(keyEvent, handleKeyEvent);
     };
   });
 

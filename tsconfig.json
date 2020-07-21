@@ -3,15 +3,10 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "rootDir": "./",
-    "declarationDir": "types/latest",
-    "declarationMap": false,
-    "jsx": "react-native",
+    "noEmit": true,
     "isolatedModules": true,
     "importsNotUsedAsValues": "error",
-    // strictFunctionTypes is implictly enabled by strict mode but
-    // we're not yet compliant, so disable for now
-    "strictFunctionTypes": false,
-    "importHelpers": true
+    "strictFunctionTypes": false
   },
   "include": ["./config/typescript", "./src", "./tests", "./playground"]
 }

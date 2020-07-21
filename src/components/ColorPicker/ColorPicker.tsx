@@ -1,6 +1,6 @@
 import React from 'react';
-import {clamp} from '@shopify/javascript-utilities/math';
 
+import {clamp} from '../../utilities/clamp';
 import {hsbToRgb} from '../../utilities/color-transformers';
 import type {HSBColor, HSBAColor} from '../../utilities/color-types';
 

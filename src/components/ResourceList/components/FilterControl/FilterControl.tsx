@@ -26,7 +26,7 @@ export interface FilterControlProps {
   onFiltersChange?(appliedFilters: AppliedFilter[]): void;
 }
 
-/** @deprecated Use <Filters /> instead. */
+/** @deprecated This is a private component, do not use it. This component might be removed in a minor version update. Use <Filters /> instead. */
 export function FilterControl({
   searchValue,
   appliedFilters = [],
@@ -40,7 +40,7 @@ export function FilterControl({
 }: FilterControlProps) {
   // eslint-disable-next-line no-console
   console.warn(
-    'Deprecation: <FilterControl /> is deprecated. Use <Filters /> instead.',
+    'Deprecation: <FilterControl /> is deprecated. This is a private component, do not use it. This component might be removed in a minor version update. Use <Filters /> instead.',
   );
 
   const i18n = useI18n();

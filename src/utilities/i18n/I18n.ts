@@ -11,11 +11,13 @@ export class I18n {
   private translation: TranslationDictionary = {};
 
   /**
-   * @param translation A locale object or array of locale objects that overrides default translations. If specifying an array then your fallback language dictionaries should come first, followed by your primary language dictionary
+   * @param translation A locale object or array of locale objects that overrides default translations. If specifying an array then your desired language dictionary should come first, followed by your fallback language dictionaries
    */
   constructor(translation: TranslationDictionary | TranslationDictionary[]) {
+    // slice the array to make a shallow copy of it, so we don't accidentally
+    // modify the original translation array
     this.translation = Array.isArray(translation)
-      ? merge(...translation)
+      ? merge(...translation.slice().reverse())
       : translation;
   }
 

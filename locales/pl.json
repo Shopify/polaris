@@ -72,6 +72,15 @@
         "friday": "Pt",
         "saturday": "Sb",
         "sunday": "Nd"
+      },
+      "days": {
+        "monday": "Poniedziałek",
+        "tuesday": "Wtorek",
+        "wednesday": "Środa",
+        "thursday": "Czwartek",
+        "friday": "Piątek",
+        "saturday": "Sobota",
+        "sunday": "Niedziela"
       }
     },
     "DiscardConfirmationModal": {
@@ -275,7 +284,9 @@
           },
           "seconds": {
             "other": "Liczba sekund: {secondCount}",
-            "one": "{secondCount} sekunda"
+            "one": "{secondCount} sekunda",
+            "few": "Liczba sekund: {secondCount}",
+            "many": "Liczba sekund: {secondCount}"
           }
         }
       }
