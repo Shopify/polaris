@@ -72,6 +72,15 @@
         "friday": "Ven",
         "saturday": "Sam",
         "sunday": "Dim"
+      },
+      "days": {
+        "monday": "Lundi",
+        "tuesday": "Mardi",
+        "wednesday": "Mercredi",
+        "thursday": "Jeudi",
+        "friday": "Vendredi",
+        "saturday": "Samedi",
+        "sunday": "Dimanche"
       }
     },
     "DiscardConfirmationModal": {
