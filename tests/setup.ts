@@ -9,10 +9,6 @@ window.scroll = () => {};
 
 const IGNORE_ERROR_REGEXES = [
   /React does not recognize the `%s` prop on a DOM element/,
-  /Accessing PropTypes via the main React package is deprecated/,
-  /ReactTestUtils has been moved to react-dom\/test-utils/,
-  /Shallow renderer has been moved to react-test-renderer\/shallow/,
-  /React\.createClass is deprecated and will be removed in version 16/,
 ];
 
 const IGNORE_WARN_REGEXES: RegExp[] = [
