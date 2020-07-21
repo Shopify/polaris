@@ -72,6 +72,15 @@
         "friday": "Pt",
         "saturday": "Sb",
         "sunday": "Nd"
+      },
+      "days": {
+        "monday": "Poniedziałek",
+        "tuesday": "Wtorek",
+        "wednesday": "Środa",
+        "thursday": "Czwartek",
+        "friday": "Piątek",
+        "saturday": "Sobota",
+        "sunday": "Niedziela"
       }
     },
     "DiscardConfirmationModal": {
