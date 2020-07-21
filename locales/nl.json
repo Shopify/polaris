@@ -72,6 +72,15 @@
         "friday": "vr.",
         "saturday": "za.",
         "sunday": "zo."
+      },
+      "days": {
+        "monday": "maandag",
+        "tuesday": "dinsdag",
+        "wednesday": "woensdag",
+        "thursday": "donderdag",
+        "friday": "vrijdag",
+        "saturday": "zaterdag",
+        "sunday": "zondag"
       }
     },
     "DiscardConfirmationModal": {
