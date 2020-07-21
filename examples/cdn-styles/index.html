@@ -7,7 +7,7 @@
     <title>Polaris CDN Styles</title>
     <link
       rel="stylesheet"
-      href="https://unpkg.com/@shopify/polaris@4.26.1/styles.min.css"
+      href="https://unpkg.com/@shopify/polaris@5.0.0/dist/styles.css"
     />
   </head>
 
@@ -15,13 +15,14 @@
     <div
       style="
         --top-bar-background: #00848e;
-        --top-bar-color: #f9fafb;
         --top-bar-background-lighter: #1d9ba4;
+        --top-bar-color: #f9fafb;
+        --p-frame-offset: 0px;
       "
     >
       <div class="Polaris-Page">
         <div
-          class="Polaris-Page-Header Polaris-Page-Header--hasNavigation Polaris-Page-Header--hasActionMenu"
+          class="Polaris-Page-Header Polaris-Page-Header--separator Polaris-Page-Header--hasNavigation Polaris-Page-Header--hasActionMenu"
         >
           <div class="Polaris-Page-Header__Navigation">
             <div class="Polaris-Page-Header__BreadcrumbWrapper">
@@ -44,10 +45,73 @@
                             fill-rule="evenodd"
                           ></path></svg></span></span
                     ><span class="Polaris-Breadcrumbs__Content"
-                      >CDN Styles</span
+                      >Products</span
                     ></span
                   ></a
                 >
+              </nav>
+            </div>
+            <div class="Polaris-Page-Header__AdditionalNavigationWrapper">
+              <span
+                aria-label="Avatar with initials C D"
+                role="img"
+                class="Polaris-Avatar Polaris-Avatar--sizeSmall Polaris-Avatar--styleTwo"
+                ><span class="Polaris-Avatar__Initials"
+                  ><svg class="Polaris-Avatar__Svg" viewBox="0 0 40 40">
+                    <text
+                      x="50%"
+                      y="50%"
+                      dy="0.35em"
+                      fill="currentColor"
+                      font-size="20"
+                      text-anchor="middle"
+                    >
+                      CD
+                    </text>
+                  </svg></span
+                ></span
+              >
+            </div>
+            <div class="Polaris-Page-Header__PaginationWrapper">
+              <nav
+                class="Polaris-Pagination Polaris-Pagination--plain"
+                aria-label="Pagination"
+              >
+                <button
+                  type="button"
+                  class="Polaris-Pagination__Button Polaris-Pagination__PreviousButton"
+                  aria-label="Previous"
+                >
+                  <span class="Polaris-Icon"
+                    ><svg
+                      viewBox="0 0 20 20"
+                      class="Polaris-Icon__Svg"
+                      focusable="false"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M17 9H5.414l3.293-3.293a.999.999 0 1 0-1.414-1.414l-5 5a.999.999 0 0 0 0 1.414l5 5a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414L5.414 11H17a1 1 0 1 0 0-2"
+                        fill-rule="evenodd"
+                      ></path></svg
+                  ></span></button
+                ><button
+                  type="button"
+                  class="Polaris-Pagination__Button Polaris-Pagination__NextButton"
+                  aria-label="Next"
+                >
+                  <span class="Polaris-Icon"
+                    ><svg
+                      viewBox="0 0 20 20"
+                      class="Polaris-Icon__Svg"
+                      focusable="false"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M17.707 9.293l-5-5a.999.999 0 1 0-1.414 1.414L14.586 9H3a1 1 0 1 0 0 2h11.586l-3.293 3.293a.999.999 0 1 0 1.414 1.414l5-5a.999.999 0 0 0 0-1.414"
+                        fill-rule="evenodd"
+                      ></path></svg
+                  ></span>
+                </button>
               </nav>
             </div>
           </div>
