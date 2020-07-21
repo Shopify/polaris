@@ -35,23 +35,13 @@ $pip-spacing: ($height - $pip-size) / 2;
 .statusSuccess {
   @include pip-color(var(--p-icon-success, color('green', 'dark')));
   background-color: var(--p-surface-success, color('green', 'light'));
-  color: color('green', 'text');
-
-  .Content {
-    color: var(--p-text);
-    mix-blend-mode: var(--p-badge-mix-blend-mode);
-  }
+  color: var(--p-text, color('green', 'text'));
 }
 
 .statusInfo {
   @include pip-color(var(--p-icon-highlight, color('blue', 'dark')));
   background-color: var(--p-surface-highlight, color('blue', 'light'));
-  color: color('blue', 'text');
-
-  .Content {
-    color: var(--p-text);
-    mix-blend-mode: var(--p-badge-mix-blend-mode);
-  }
+  color: var(--p-text, color('blue', 'text'));
 }
 
 .statusAttention {
@@ -63,23 +53,13 @@ $pip-spacing: ($height - $pip-size) / 2;
 .statusWarning {
   @include pip-color(var(--p-icon-warning, color('orange', 'dark')));
   background-color: var(--p-surface-warning, color('orange', 'light'));
-  color: color('orange', 'text');
-
-  .Content {
-    color: var(--p-text);
-    mix-blend-mode: var(--p-badge-mix-blend-mode);
-  }
+  color: var(--p-text, color('orange', 'text'));
 }
 
 .statusCritical {
   @include pip-color(var(--p-icon-critical, color('red', 'dark')));
   background-color: var(--p-surface-critical, color('red', 'light'));
-  color: color('red', 'text');
-
-  .Content {
-    color: var(--p-text);
-    mix-blend-mode: var(--p-badge-mix-blend-mode);
-  }
+  color: var(--p-text, color('red', 'text'));
 }
 
 .statusNew {
