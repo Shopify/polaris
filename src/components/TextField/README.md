@@ -284,7 +284,7 @@ function MultilineFieldExample() {
       label="Shipping address"
       value={value}
       onChange={handleChange}
-      multiline
+      multiline={4}
     />
   );
 }
