@@ -11,7 +11,7 @@ import {useState, useEffect} from 'react';
  *  const isMounted = useIsAfterInitialMount();
  *  const content = isMounted ? children : null;
  *
- *  return <React.Fragment>{content}</React.Fragment>;
+ *  return <>{content}</>;
  * }
  */
 export function useIsAfterInitialMount() {

@@ -136,7 +136,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   }
 
   const searchMarkup = searchField ? (
-    <React.Fragment>
+    <>
       {searchField}
       <Search
         visible={searchResultsVisible}
@@ -145,7 +145,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       >
         {searchResults}
       </Search>
-    </React.Fragment>
+    </>
   ) : null;
 
   const scrollListenerMarkup = newDesignLanguage ? (

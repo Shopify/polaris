@@ -220,7 +220,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
     );
 
     return (
-      <React.Fragment>
+      <>
         <Labelled
           id={id}
           label={label}
@@ -295,7 +295,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
           </div>
         </Labelled>
         <EventListener event="resize" handler={this.setTrackPosition} />
-      </React.Fragment>
+      </>
     );
   }
 

@@ -139,14 +139,14 @@ class FiltersInner extends React.Component<CombinedProps, State> {
     const {open, readyForFocus} = this.state;
 
     const backdropMarkup = open ? (
-      <React.Fragment>
+      <>
         <ScrollLock />
         <div
           className={styles.Backdrop}
           onClick={this.closeFilters}
           testID="Backdrop"
         />
-      </React.Fragment>
+      </>
     ) : null;
 
     const filtersContentMarkup = filters.map((filter, index) => {

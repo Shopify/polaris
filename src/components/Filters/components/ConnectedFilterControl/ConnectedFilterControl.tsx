@@ -144,7 +144,7 @@ export class ConnectedFilterControl extends React.Component<
     ) : null;
 
     return (
-      <React.Fragment>
+      <>
         {proxyButtonMarkup}
         <div className={styles.Wrapper}>
           <div className={className} ref={this.container}>
@@ -157,7 +157,7 @@ export class ConnectedFilterControl extends React.Component<
           </div>
           {auxMarkup}
         </div>
-      </React.Fragment>
+      </>
     );
   }
 

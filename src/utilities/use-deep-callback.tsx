@@ -24,10 +24,10 @@ import {useDeepCompareRef} from './use-deep-compare-ref';
  *   }, [{}]);
  *
  *   return (
- *     <Fragment>
+ *     <>
  *       <div>Times clicked: {timesClicked}</div>
  *       <Child onClick={handleClick} />
- *     </Fragment>
+ *     </>
  *   );
  * }
  */
