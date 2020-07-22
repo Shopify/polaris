@@ -24,4 +24,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Updated linting to prefer the fragment shorthand `<>` instead of `<React.Fragment> ([#3133](https://github.com/Shopify/polaris-react/pull/3133))
+- Updated how we access React exports such as React.Component and React.PureComponent to help treeshakability ([#3133](https://github.com/Shopify/polaris-react/pull/3133))
+
 ### Deprecations
