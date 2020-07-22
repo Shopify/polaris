@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 
@@ -84,9 +84,9 @@ class DataTableInner extends React.PureComponent<
     isScrolledFarthestRight: false,
   };
 
-  private dataTable = React.createRef<HTMLDivElement>();
-  private scrollContainer = React.createRef<HTMLDivElement>();
-  private table = React.createRef<HTMLTableElement>();
+  private dataTable = createRef<HTMLDivElement>();
+  private scrollContainer = createRef<HTMLDivElement>();
+  private table = createRef<HTMLTableElement>();
 
   private handleResize = debounce(() => {
     const {

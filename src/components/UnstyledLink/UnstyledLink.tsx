@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo, forwardRef} from 'react';
 
 import {unstyled} from '../shared';
 import {useLink, LinkLikeComponentProps} from '../../utilities/link';
@@ -12,11 +12,8 @@ export interface UnstyledLinkProps extends LinkLikeComponentProps {}
 // https://github.com/facebook/react/issues/16722
 // but eslint-plugin-react doesn't know that just yet
 // eslint-disable-next-line react/display-name
-export const UnstyledLink = React.memo(
-  React.forwardRef<unknown, UnstyledLinkProps>(function UnstyledLink(
-    props,
-    _ref,
-  ) {
+export const UnstyledLink = memo(
+  forwardRef<unknown, UnstyledLinkProps>(function UnstyledLink(props, _ref) {
     const LinkComponent = useLink();
     if (LinkComponent) {
       return <LinkComponent {...unstyled.props} {...props} />;

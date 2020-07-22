@@ -84,7 +84,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
   private globalRibbonContainer: HTMLDivElement | null = null;
   private navigationNode = createRef<HTMLDivElement>();
   private skipToMainContentTargetNode =
-    this.props.skipToContentTarget || React.createRef<HTMLAnchorElement>();
+    this.props.skipToContentTarget || createRef<HTMLAnchorElement>();
 
   componentDidMount() {
     this.handleResize();

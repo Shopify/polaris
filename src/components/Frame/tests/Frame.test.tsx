@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'test-utilities';
@@ -63,7 +63,7 @@ describe('<Frame />', () => {
 
     it('sets focus to target element when the skip to content link is clicked', () => {
       const targetId = 'SkipToContentTarget';
-      const targetRef = React.createRef<HTMLAnchorElement>();
+      const targetRef = createRef<HTMLAnchorElement>();
 
       const skipToContentTarget = (
         // eslint-disable-next-line jsx-a11y/anchor-is-valid

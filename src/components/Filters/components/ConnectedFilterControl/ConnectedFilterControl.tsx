@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import debounce from 'lodash/debounce';
 
 import {classNames} from '../../../../utilities/css';
@@ -51,9 +51,9 @@ export class ConnectedFilterControl extends React.Component<
     proxyButtonsWidth: {},
   };
 
-  private container = React.createRef<HTMLDivElement>();
-  private proxyButtonContainer = React.createRef<HTMLDivElement>();
-  private moreFiltersButtonContainer = React.createRef<HTMLDivElement>();
+  private container = createRef<HTMLDivElement>();
+  private proxyButtonContainer = createRef<HTMLDivElement>();
+  private moreFiltersButtonContainer = createRef<HTMLDivElement>();
 
   private handleResize = debounce(
     () => {

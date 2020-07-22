@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {createRef, useContext} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import isEqual from 'lodash/isEqual';
 
@@ -109,7 +109,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
   private node: HTMLDivElement | null = null;
   private checkboxId = getUniqueCheckboxID();
   private overlayId = getUniqueOverlayID();
-  private buttonOverlay = React.createRef<HTMLButtonElement>();
+  private buttonOverlay = createRef<HTMLButtonElement>();
 
   shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
     const {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 import {mountWithApp} from 'test-utilities';
 
 import {useUniqueId} from '../hooks';
@@ -104,8 +104,8 @@ describe('useUniqueId', () => {
     );
 
     const ReRenderingTestHarness = () => {
-      const [count, setCount] = React.useState(1);
-      const incrementCount = React.useCallback(
+      const [count, setCount] = useState(1);
+      const incrementCount = useCallback(
         () => setCount((count) => count + 1),
         [],
       );
@@ -143,8 +143,8 @@ describe('useUniqueId', () => {
     );
 
     const ReRenderingTestHarness = () => {
-      const [count, setCount] = React.useState(1);
-      const incrementCount = React.useCallback(
+      const [count, setCount] = useState(1);
+      const incrementCount = useCallback(
         () => setCount((count) => count + 1),
         [],
       );

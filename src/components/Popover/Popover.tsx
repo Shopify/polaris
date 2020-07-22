@@ -1,4 +1,5 @@
 import React, {
+  Children,
   useRef,
   useEffect,
   useCallback,
@@ -177,7 +178,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
 
   return (
     <WrapperComponent ref={activatorContainer}>
-      {React.Children.only(activator)}
+      {Children.only(activator)}
       {portal}
     </WrapperComponent>
   );

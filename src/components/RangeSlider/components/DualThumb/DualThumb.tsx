@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 
@@ -72,10 +72,10 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
     trackLeft: 0,
   };
 
-  private track = React.createRef<HTMLDivElement>();
-  private trackWrapper = React.createRef<HTMLDivElement>();
-  private thumbLower = React.createRef<HTMLButtonElement>();
-  private thumbUpper = React.createRef<HTMLButtonElement>();
+  private track = createRef<HTMLDivElement>();
+  private trackWrapper = createRef<HTMLDivElement>();
+  private thumbLower = createRef<HTMLButtonElement>();
+  private thumbUpper = createRef<HTMLButtonElement>();
 
   private setTrackPosition = debounce(
     () => {

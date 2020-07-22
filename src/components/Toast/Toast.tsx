@@ -1,4 +1,4 @@
-import React from 'react';
+import {memo} from 'react';
 
 import {ToastProps as ToastProps1, useFrame} from '../../utilities/frame';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -10,7 +10,7 @@ import {useDeepEffect} from '../../utilities/use-deep-effect';
 // is generated correctly.
 export interface ToastProps extends ToastProps1 {}
 
-export const Toast = React.memo(function Toast(props: ToastProps) {
+export const Toast = memo(function Toast(props: ToastProps) {
   const id = useUniqueId('Toast');
   const {showToast, hideToast} = useFrame();
 

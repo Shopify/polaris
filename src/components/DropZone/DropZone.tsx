@@ -1,4 +1,5 @@
 import React, {
+  createRef,
   useState,
   useRef,
   useCallback,
@@ -463,7 +464,7 @@ interface DropZoneInputProps {
 // Due to security reasons, browsers do not allow file inputs to be opened artificially.
 // For example `useEffect(() => { ref.click() })`. Oddly enough react class-based components bi-pass this.
 class DropZoneInput extends Component<DropZoneInputProps, never> {
-  private fileInputNode = React.createRef<HTMLInputElement>();
+  private fileInputNode = createRef<HTMLInputElement>();
 
   componentDidMount() {
     this.props.openFileDialog && this.triggerFileDialog();
