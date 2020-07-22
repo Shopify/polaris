@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import {getRectForNode} from '../../utilities/geometry';
 import {useStickyManager} from '../../utilities/sticky-manager';
@@ -24,7 +24,7 @@ type CombinedProps = StickyProps & {
   stickyManager: ReturnType<typeof useStickyManager>;
 };
 
-class StickyInner extends React.Component<CombinedProps, State> {
+class StickyInner extends Component<CombinedProps, State> {
   state: State = {
     isSticky: false,
     style: {},

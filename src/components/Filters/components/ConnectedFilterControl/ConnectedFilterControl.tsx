@@ -1,4 +1,4 @@
-import React, {createRef} from 'react';
+import React, {Component, createRef} from 'react';
 import debounce from 'lodash/debounce';
 
 import {classNames} from '../../../../utilities/css';
@@ -39,7 +39,7 @@ interface State {
 
 const FILTER_FIELD_MIN_WIDTH = 150;
 
-export class ConnectedFilterControl extends React.Component<
+export class ConnectedFilterControl extends Component<
   ConnectedFilterControlProps,
   State
 > {

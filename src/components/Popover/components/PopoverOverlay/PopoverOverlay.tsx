@@ -1,4 +1,4 @@
-import React, {Children, createRef} from 'react';
+import React, {PureComponent, Children, createRef} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../../../utilities/css';
@@ -52,10 +52,7 @@ interface State {
   transitionStatus: TransitionStatus;
 }
 
-export class PopoverOverlay extends React.PureComponent<
-  PopoverOverlayProps,
-  State
-> {
+export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   state: State = {
     transitionStatus: this.props.active
       ? TransitionStatus.Entering

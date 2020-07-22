@@ -1,4 +1,4 @@
-import React, {createRef} from 'react';
+import React, {PureComponent, createRef} from 'react';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 
@@ -73,10 +73,7 @@ type CombinedProps = DataTableProps & {
   i18n: ReturnType<typeof useI18n>;
 };
 
-class DataTableInner extends React.PureComponent<
-  CombinedProps,
-  DataTableState
-> {
+class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   state: DataTableState = {
     condensed: false,
     columnVisibilityData: [],

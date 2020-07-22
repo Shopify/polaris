@@ -1,4 +1,4 @@
-import React, {createRef, useContext} from 'react';
+import React, {Component, createRef, useContext} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import isEqual from 'lodash/isEqual';
 
@@ -88,7 +88,7 @@ const getUniqueCheckboxID = globalIdGeneratorFactory(
 );
 const getUniqueOverlayID = globalIdGeneratorFactory('ResourceListItemOverlay');
 
-class BaseResourceItem extends React.Component<CombinedProps, State> {
+class BaseResourceItem extends Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
     const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
 

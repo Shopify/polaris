@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import {createPortal} from 'react-dom';
 
 import {ThemeContext} from '../../utilities/theme';
@@ -17,7 +17,7 @@ interface State {
 
 const getUniqueID = globalIdGeneratorFactory('portal-');
 
-export class Portal extends React.PureComponent<PortalProps, State> {
+export class Portal extends PureComponent<PortalProps, State> {
   static defaultProps = {idPrefix: ''};
   static contextType = ThemeContext;
   context!: React.ContextType<typeof ThemeContext>;

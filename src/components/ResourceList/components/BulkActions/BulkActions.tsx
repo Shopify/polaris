@@ -1,4 +1,4 @@
-import React, {createRef} from 'react';
+import React, {PureComponent, createRef} from 'react';
 import debounce from 'lodash/debounce';
 import {durationBase} from '@shopify/polaris-tokens';
 import {CSSTransition, Transition} from 'react-transition-group';
@@ -74,7 +74,7 @@ const slideClasses = {
   exit: classNames(styles.Slide, styles['Slide-exit']),
 };
 
-class BulkActionsInner extends React.PureComponent<CombinedProps, State> {
+class BulkActionsInner extends PureComponent<CombinedProps, State> {
   state: State = {
     smallScreenPopoverVisible: false,
     largeScreenPopoverVisible: false,

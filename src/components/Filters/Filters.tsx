@@ -1,4 +1,4 @@
-import React, {createRef} from 'react';
+import React, {Component, createRef} from 'react';
 import {
   SearchMinor,
   ChevronUpMinor,
@@ -104,7 +104,7 @@ enum Suffix {
   Shortcut = 'Shortcut',
 }
 
-class FiltersInner extends React.Component<CombinedProps, State> {
+class FiltersInner extends Component<CombinedProps, State> {
   static contextType = ResourceListContext;
 
   state: State = {

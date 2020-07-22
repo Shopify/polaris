@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -40,7 +40,7 @@ interface State {
   tabToFocus: number;
 }
 
-class TabsInner extends React.PureComponent<CombinedProps, State> {
+class TabsInner extends PureComponent<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: TabsProps, prevState: State) {
     const {disclosureWidth, tabWidths, containerWidth} = prevState;
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(

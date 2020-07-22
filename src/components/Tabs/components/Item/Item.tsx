@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
@@ -15,7 +15,7 @@ export interface ItemProps {
   onClick?(): void;
 }
 
-export class Item extends React.PureComponent<ItemProps, never> {
+export class Item extends PureComponent<ItemProps, never> {
   static contextType = FeaturesContext;
   context!: React.ContextType<typeof FeaturesContext>;
 

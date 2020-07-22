@@ -2,6 +2,7 @@ import React, {
   createContext,
   createRef,
   TransitionEvent,
+  Component,
   ComponentClass,
 } from 'react';
 
@@ -43,7 +44,7 @@ interface State {
 
 const ParentCollapsibleExpandingContext = createContext(false);
 
-class CollapsibleInner extends React.Component<CollapsibleProps, State> {
+class CollapsibleInner extends Component<CollapsibleProps, State> {
   static contextType = ParentCollapsibleExpandingContext;
 
   static getDerivedStateFromProps(

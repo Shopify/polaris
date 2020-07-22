@@ -1,4 +1,4 @@
-import React, {createRef} from 'react';
+import React, {Component, createRef} from 'react';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 
@@ -36,7 +36,7 @@ enum Control {
   Upper,
 }
 
-export class DualThumb extends React.Component<DualThumbProps, State> {
+export class DualThumb extends Component<DualThumbProps, State> {
   static contextType = FeaturesContext;
 
   static getDerivedStateFromProps(props: DualThumbProps, state: State) {
