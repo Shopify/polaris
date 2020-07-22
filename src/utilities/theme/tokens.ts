@@ -1,9 +1,9 @@
-const BorderRadius = {
+export const Tokens = {
+  // Border Radiuses
   borderRadiusBase: rem('4px'),
   borderRadiusWide: rem('8px'),
-};
 
-const Shadow = {
+  // Shadows
   cardShadow:
     '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
   popoverShadow:
@@ -11,9 +11,8 @@ const Shadow = {
   modalShadow:
     '0px 26px 80px var(--p-shadow-from-dim-light), 0px 0px 1px var(--p-shadow-from-dim-light)',
   topBarShadow: '0 2px 2px -1px var(--p-shadow-from-direct-light)',
-};
 
-const Overrides = {
+  // Overrides
   overrideNone: 'none',
   overrideTransparent: 'transparent',
   overrideOne: '1',
@@ -47,12 +46,6 @@ const Overrides = {
   rangeSliderThumbSizeActive: rem('24px'),
   rangeSliderThumbScale: '1.5',
   badgeFontWeight: '500',
-};
-
-export const Tokens = {
-  ...BorderRadius,
-  ...Shadow,
-  ...Overrides,
 };
 
 function rem(px: string) {
