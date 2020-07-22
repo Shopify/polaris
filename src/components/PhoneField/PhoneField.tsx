@@ -5,6 +5,7 @@ import {Button} from '../Button';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {Banner} from '../Banner';
+import {InlineError} from '../InlineError';
 
 import styles from './PhoneField.scss';
 
@@ -38,6 +39,8 @@ export interface PhoneFieldProps {
   /** Country list in dropdown */
   countries: Country[];
   searchBar?: boolean;
+  validator?(number: string, country: Country): boolean;
+  prefix?: boolean;
 }
 
 export function PhoneField({
@@ -47,17 +50,14 @@ export function PhoneField({
   labelHidden,
   optional,
   countries,
+  validator,
+  searchBar,
+  prefix,
 }: PhoneFieldProps) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
   const [popoverActive, setPopoverActive] = useState(countries.length > 1);
-  const [validPhoneNumber, setValidPhoneNumber] = useState<boolean | null>(
-    null,
-  );
-
-  const [error, setError] = useState(
-    errorMessage ? errorMessage : 'Please enter a valid mobile phone number!',
-  );
+  const [validPhoneNumber, setValidPhoneNumber] = useState(true);
 
   // Keeps track of selectedCountry information
   const [selectedCountryObject, setSelectedCountryObject] = useState(
@@ -101,16 +101,6 @@ export function PhoneField({
     [countries, togglePopoverActive],
   );
 
-  const checkValidPhoneNumber = useCallback((phoneNum, countryArr, index) => {
-    const numDigits: number = countryArr[index].displayFormat.reduce(
-      (accumulator: number, currentValue: number) => accumulator + currentValue,
-    );
-
-    const countryCodeLength: number = countryArr[index].countryCode.length;
-
-    return phoneNum.length === numDigits + countryCodeLength;
-  }, []);
-
   /** Given a formatted string, if it includes '+', then it determines what country */
   const extractNumbersRegex = useCallback(
     (originalStr: string) => {
@@ -144,7 +134,7 @@ export function PhoneField({
       const numberPresent = extractNumbersRegex.test(numberStr);
 
       const phoneNum = numberPresent
-        ? numberStr.match(extractNumbersRegex).join('')
+        ? numberStr.match(extractNumbersRegex)?.join('')
         : '';
 
       const selectedCountryIndex = countries.findIndex(
@@ -153,17 +143,9 @@ export function PhoneField({
       );
 
       setPhoneNumber(`${selectedCountryObject.countryCode}${phoneNum}`);
-      setValidPhoneNumber(
-        checkValidPhoneNumber(
-          `${selectedCountryObject.countryCode}${phoneNum}`,
-          countries,
-          selectedCountryIndex,
-        ),
-      );
       return phoneNum;
     },
     [
-      checkValidPhoneNumber,
       countries,
       handleSelected,
       selectedCountryObject.countryCode,
@@ -215,7 +197,16 @@ export function PhoneField({
   /** When the user changes the country, the formatting for phone number changes */
   useEffect(() => {
     handlePhoneNumber(formattedPhoneNumber);
-  }, [formattedPhoneNumber, handlePhoneNumber, phoneNumber, validPhoneNumber]);
+    if (!validator) return;
+    setValidPhoneNumber(validator(phoneNumber, selectedCountryObject));
+  }, [
+    formattedPhoneNumber,
+    handlePhoneNumber,
+    phoneNumber,
+    validPhoneNumber,
+    validator,
+    selectedCountryObject,
+  ]);
 
   /** Given the searchbar, we search for matches for the country name */
   const retrieveCountries = useCallback(
@@ -249,16 +240,34 @@ export function PhoneField({
   const activator =
     countries.length > 1 ? (
       <Button onClick={togglePopoverActive} disclosure>
-        {selectedCountryObject.countryName}
+        {`${selectedCountryObject.countryName} ${
+          prefix ? '' : `(${selectedCountryObject.countryCode})`
+        }`}
       </Button>
     ) : (
       <Button>{selectedCountryObject.countryName}</Button>
     );
 
-  const displayErrorMessage =
-    validPhoneNumber === true || validPhoneNumber == null ? null : (
-      <p>{error}</p>
-    );
+  const displayErrorMessage = validPhoneNumber ? null : (
+    <InlineError
+      message={
+        errorMessage ? errorMessage : 'Please enter a valid phone number'
+      }
+      fieldID="myFieldID"
+    />
+  );
+
+  const searchBarField = (
+    <div className={styles.Searchbar}>
+      <TextField
+        label="Store name"
+        value={searchBarText}
+        labelHidden
+        placeholder="Search for a country/region"
+        onChange={handleSearchBar}
+      />
+    </div>
+  );
 
   return (
     <div>
@@ -266,9 +275,9 @@ export function PhoneField({
         label={optional ? `${labelName} (optional)` : labelName}
         autoComplete="tel"
         type="tel"
+        prefix={prefix ? selectedCountryObject.countryCode : ''}
         placeholder={placeholder}
         value={formattedPhoneNumber}
-        prefix={selectedCountryObject.countryCode}
         onChange={handlePhoneNumber}
         labelHidden={labelHidden}
         connectedLeft={
@@ -278,15 +287,7 @@ export function PhoneField({
             onClose={togglePopoverActive}
             preferredAlignment="left"
           >
-            <div className={styles.Searchbar}>
-              <TextField
-                label="Store name"
-                value={searchBarText}
-                labelHidden
-                placeholder="Search for a country"
-                onChange={handleSearchBar}
-              />
-            </div>
+            {searchBar ? searchBarField : null}
 
             <ActionList items={countryOptions} />
           </Popover>
