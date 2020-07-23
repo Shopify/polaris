@@ -1,4 +1,4 @@
-import React from 'react';
+import {createContext} from 'react';
 
 interface DropZoneContextType {
   disabled: boolean;
@@ -8,7 +8,7 @@ interface DropZoneContextType {
   type: string;
 }
 
-export const DropZoneContext = React.createContext<DropZoneContextType>({
+export const DropZoneContext = createContext<DropZoneContextType>({
   disabled: false,
   focused: false,
   size: 'extraLarge',

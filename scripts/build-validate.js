@@ -20,6 +20,16 @@ function validateStandardBuild() {
   assert.ok(fs.existsSync('./dist/index.es.js'));
   assert.ok(fs.existsSync('./dist/styles.css'));
 
+  // Assert it uses named exports rather than properties from the React default
+  // export to help tree-shaking.
+  // React.createElement and React.Fragment are the allowed exceptions
+  const esModuleContent = fs.readFileSync('./dist/index.es.js', 'utf-8');
+  const unwantedReactUsageMatches =
+    esModuleContent.match(/React\.(?!createElement|Fragment)[A-Za-z0-9]+/g) ||
+    [];
+
+  assert.deepStrictEqual(unwantedReactUsageMatches, []);
+
   // Standard build css contains namespaced classes
   const cssContent = fs.readFileSync('./dist/styles.css', 'utf-8');
   assert.ok(cssContent.includes('.Polaris-Avatar{'));

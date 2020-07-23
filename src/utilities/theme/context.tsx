@@ -1,5 +1,5 @@
-import React from 'react';
+import {createContext} from 'react';
 
 import type {Theme} from './types';
 
-export const ThemeContext = React.createContext<Theme | undefined>(undefined);
+export const ThemeContext = createContext<Theme | undefined>(undefined);

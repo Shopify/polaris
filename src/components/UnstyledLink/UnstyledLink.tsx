@@ -3,9 +3,10 @@ import React, {memo, forwardRef} from 'react';
 import {unstyled} from '../shared';
 import {useLink, LinkLikeComponentProps} from '../../utilities/link';
 
-// Every component needs a `Props` interface for our styleguide to build the props explorer
-// It'd be great if we could do `type Props = React.ComponentProps<LinkLikeComponent>`
-// but the props explorer isn't smart enough to work that out
+// The script in the styleguide that generates the Props Explorer data expects
+// that the interface defining the props is defined in this file, not imported
+// from elsewhere. This silly workaround ensures that the Props Explorer table
+// is generated correctly.
 export interface UnstyledLinkProps extends LinkLikeComponentProps {}
 
 // Wrapping forwardRef in a memo gets a name set since

@@ -67,11 +67,11 @@ interface State {
 }
 
 const slideClasses = {
-  appear: classNames(styles.Slide, styles['Slide-appear']),
-  appearActive: classNames(styles.Slide, styles['Slide-appearing']),
-  enter: classNames(styles.Slide, styles['Slide-enter']),
-  enterActive: classNames(styles.Slide, styles['Slide-entering']),
-  exit: classNames(styles.Slide, styles['Slide-exit']),
+  appear: `${styles.Slide} ${styles['Slide-appear']}`,
+  appearActive: `${styles.Slide} ${styles['Slide-appearing']}`,
+  enter: `${styles.Slide} ${styles['Slide-enter']}`,
+  enterActive: `${styles.Slide} ${styles['Slide-entering']}`,
+  exit: `${styles.Slide} ${styles['Slide-exit']}`,
 };
 
 class BulkActionsInner extends PureComponent<CombinedProps, State> {
