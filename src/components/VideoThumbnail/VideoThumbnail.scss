@@ -67,10 +67,10 @@ $start-button-size: 60px;
   background-color: var(--p-surface, color('ink'));
   opacity: 0.8;
   text-align: center;
+}
 
-  &.WithProgress {
-    margin-bottom: spacing(base-tight);
-  }
+.withProgress {
+  margin-bottom: spacing(base-tight);
 }
 
 .Progress {
