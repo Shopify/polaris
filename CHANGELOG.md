@@ -10,7 +10,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ## 5.1.0 - 2020-07-23
 
-### Documentation
+### Enhancements
 
 - Added a `dismissOnMouseOut` prop to `Tooltip` to dismiss Tooltip once pointer is no longer over children ([#3086](https://github.com/Shopify/polaris-react/pull/3086))
 

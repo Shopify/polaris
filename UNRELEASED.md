@@ -12,10 +12,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
-### Bug fixes
-
-### Documentation
-
 ### Development workflow
 
 ### Dependency upgrades
