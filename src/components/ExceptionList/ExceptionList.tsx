@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import {Icon} from '../Icon';
@@ -51,7 +51,7 @@ export function ExceptionList({items: itemsList}: ExceptionListProps) {
       <span className={styles.Description}>{description}</span>
     );
 
-    const Element = truncate ? Truncate : React.Fragment;
+    const Element = truncate ? Truncate : Fragment;
 
     return (
       <li className={itemClasses} key={index}>

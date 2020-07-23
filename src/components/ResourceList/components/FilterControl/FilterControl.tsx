@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useContext} from 'react';
 import {SearchMinor} from '@shopify/polaris-icons';
 
 import type {ComplexAction} from '../../../../types';
@@ -44,14 +44,14 @@ export function FilterControl({
   );
 
   const i18n = useI18n();
-  const {selectMode, resourceName} = React.useContext(ResourceListContext);
+  const {selectMode, resourceName} = useContext(ResourceListContext);
 
   const filterResourceName = resourceName || {
     singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
     plural: i18n.translate('Polaris.ResourceList.defaultItemPlural'),
   };
 
-  const handleAddFilter = React.useCallback(
+  const handleAddFilter = useCallback(
     (newFilter: AppliedFilter) => {
       if (!onFiltersChange) {
         return;
@@ -73,7 +73,7 @@ export function FilterControl({
     [onFiltersChange, appliedFilters],
   );
 
-  const handleRemoveFilter = React.useCallback(
+  const handleRemoveFilter = useCallback(
     (filterId: string) => {
       if (!onFiltersChange) {
         return;
@@ -96,7 +96,7 @@ export function FilterControl({
     [appliedFilters, onFiltersChange],
   );
 
-  const getRemoveFilterCallback = React.useCallback(
+  const getRemoveFilterCallback = useCallback(
     (filterId: string) => {
       return () => {
         handleRemoveFilter(filterId);

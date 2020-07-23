@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {layer} from '../../../shared';
@@ -19,10 +19,7 @@ export interface TooltipOverlayProps {
   onClose(): void;
 }
 
-export class TooltipOverlay extends React.PureComponent<
-  TooltipOverlayProps,
-  never
-> {
+export class TooltipOverlay extends PureComponent<TooltipOverlayProps, never> {
   render() {
     const markup = this.props.active ? this.renderOverlay() : null;
 

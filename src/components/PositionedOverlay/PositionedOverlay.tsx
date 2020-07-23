@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import {classNames} from '../../utilities/css';
 import {getRectForNode, Rect} from '../../utilities/geometry';
@@ -58,7 +58,7 @@ interface State {
 
 const OBSERVER_CONFIG = {childList: true, subtree: true};
 
-export class PositionedOverlay extends React.PureComponent<
+export class PositionedOverlay extends PureComponent<
   PositionedOverlayProps,
   State
 > {

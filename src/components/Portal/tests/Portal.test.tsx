@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import {mount} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
@@ -78,7 +78,7 @@ describe('<Portal />', () => {
     createPortalSpy.mockImplementation(
       jest.requireActual('react-dom').createPortal,
     );
-    const ref: React.RefObject<HTMLDivElement> = React.createRef();
+    const ref: React.RefObject<HTMLDivElement> = createRef();
     const handlePortalCreated = jest.fn(() =>
       expect(ref.current).not.toBeNull(),
     );

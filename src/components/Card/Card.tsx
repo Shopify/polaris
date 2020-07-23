@@ -78,7 +78,7 @@ export const Card: React.FunctionComponent<CardProps> & {
       secondaryFooterActionsMarkup = buttonFrom(secondaryFooterActions[0]);
     } else {
       secondaryFooterActionsMarkup = (
-        <React.Fragment>
+        <>
           <Popover
             active={secondaryActionsPopoverOpen}
             activator={
@@ -91,7 +91,7 @@ export const Card: React.FunctionComponent<CardProps> & {
           >
             <ActionList items={secondaryFooterActions} />
           </Popover>
-        </React.Fragment>
+        </>
       );
     }
   }

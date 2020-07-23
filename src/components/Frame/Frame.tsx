@@ -1,4 +1,4 @@
-import React, {createRef} from 'react';
+import React, {PureComponent, createRef} from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
@@ -71,7 +71,7 @@ const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 
-class FrameInner extends React.PureComponent<CombinedProps, State> {
+class FrameInner extends PureComponent<CombinedProps, State> {
   state: State = {
     skipFocused: false,
     globalRibbonHeight: 0,
@@ -84,7 +84,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
   private globalRibbonContainer: HTMLDivElement | null = null;
   private navigationNode = createRef<HTMLDivElement>();
   private skipToMainContentTargetNode =
-    this.props.skipToContentTarget || React.createRef<HTMLAnchorElement>();
+    this.props.skipToContentTarget || createRef<HTMLAnchorElement>();
 
   componentDidMount() {
     this.handleResize();

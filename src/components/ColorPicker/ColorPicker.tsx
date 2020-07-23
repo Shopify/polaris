@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import {clamp} from '../../utilities/clamp';
 import {hsbToRgb} from '../../utilities/color-transformers';
@@ -27,7 +27,7 @@ export interface ColorPickerProps {
   onChange(color: HSBAColor): void;
 }
 
-export class ColorPicker extends React.PureComponent<ColorPickerProps, State> {
+export class ColorPicker extends PureComponent<ColorPickerProps, State> {
   state: State = {
     pickerSize: 0,
   };

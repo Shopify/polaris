@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import {classNames} from '../../utilities/css';
 import type {
@@ -27,7 +27,7 @@ interface State {
   activeMenuGroup?: string;
 }
 
-export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
+export class ActionMenu extends PureComponent<ActionMenuProps, State> {
   static contextType = FeaturesContext;
   context!: React.ContextType<typeof FeaturesContext>;
 

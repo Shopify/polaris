@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {createMount} from 'test-utilities';
 
 import {ThemeProvider} from '../ThemeProvider';
@@ -34,7 +34,7 @@ describe('<ThemeProvider />', () => {
 
   it('passes context', () => {
     const Child: React.SFC = () => {
-      const polarisTheme = React.useContext(ThemeContext);
+      const polarisTheme = useContext(ThemeContext);
       return polarisTheme && polarisTheme.logo ? <div /> : null;
     };
 

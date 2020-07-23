@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment, StrictMode} from 'react';
 
 import {FocusManager} from '../FocusManager';
 import {merge} from '../../utilities/merge';
@@ -68,7 +68,7 @@ export function PolarisTestProvider({
   features: featuresProp = {},
   frame,
 }: PolarisTestProviderProps) {
-  const Wrapper = strict ? React.StrictMode : React.Fragment;
+  const Wrapper = strict ? StrictMode : Fragment;
   const intl = new I18n(i18n || {});
   const scrollLockManager = new ScrollLockManager();
 

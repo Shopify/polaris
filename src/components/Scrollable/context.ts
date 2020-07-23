@@ -1,7 +1,7 @@
-import React from 'react';
+import {createContext} from 'react';
 
 type ScrollToPositionFn = (scrollY: number) => void;
 
-export const ScrollableContext = React.createContext<
-  ScrollToPositionFn | undefined
->(undefined);
+export const ScrollableContext = createContext<ScrollToPositionFn | undefined>(
+  undefined,
+);

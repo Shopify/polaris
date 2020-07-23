@@ -1,4 +1,10 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
+import React, {
+  createElement,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+} from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {VisuallyHidden} from '../VisuallyHidden';
@@ -375,7 +381,7 @@ export function TextField({
     clearButton && styles['Input-hasClearButton'],
   );
 
-  const input = React.createElement(multiline ? 'textarea' : 'input', {
+  const input = createElement(multiline ? 'textarea' : 'input', {
     name,
     id,
     disabled,

@@ -650,12 +650,12 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const spinnerSize = items.length < 2 ? 'small' : 'large';
 
   const loadingOverlay = loading ? (
-    <React.Fragment>
+    <>
       <div className={styles.SpinnerContainer} style={spinnerStyle}>
         <Spinner size={spinnerSize} accessibilityLabel="Items are loading" />
       </div>
       <div className={styles.LoadingOverlay} />
-    </React.Fragment>
+    </>
   ) : null;
 
   const className = classNames(

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {isValidElement} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
@@ -57,7 +57,7 @@ export interface HeaderProps extends TitleProps {
 export function isPrimaryAction(
   x: PrimaryAction | React.ReactNode,
 ): x is PrimaryAction {
-  return !React.isValidElement(x) && x !== undefined;
+  return !isValidElement(x) && x !== undefined;
 }
 
 export function Header({

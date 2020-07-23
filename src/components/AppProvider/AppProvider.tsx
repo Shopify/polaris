@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import type {ThemeConfig} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
@@ -41,7 +41,7 @@ export interface AppProviderProps {
   children?: React.ReactNode;
 }
 
-export class AppProvider extends React.Component<AppProviderProps, State> {
+export class AppProvider extends Component<AppProviderProps, State> {
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
   private uniqueIdFactory: UniqueIdFactory;
