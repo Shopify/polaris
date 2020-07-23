@@ -43,7 +43,7 @@ export function VideoThumbnail({
   thumbnailUrl,
   videoLength = 0,
   videoProgress = 0,
-  showVideoProgress = true,
+  showVideoProgress = false,
   accessibilityLabel,
   onClick,
   onBeforeStartPlaying,
