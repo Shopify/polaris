@@ -1,5 +1,10 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
-import {addEventListener} from '@shopify/javascript-utilities/events';
+import React, {
+  createElement,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+} from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {VisuallyHidden} from '../VisuallyHidden';
@@ -314,7 +319,7 @@ export function TextField({
 
       buttonPressTimer.current = window.setTimeout(onChangeInterval, interval);
 
-      addEventListener(document, 'mouseup', handleButtonRelease, {
+      document.addEventListener('mouseup', handleButtonRelease, {
         once: true,
       });
     },
@@ -376,7 +381,7 @@ export function TextField({
     clearButton && styles['Input-hasClearButton'],
   );
 
-  const input = React.createElement(multiline ? 'textarea' : 'input', {
+  const input = createElement(multiline ? 'textarea' : 'input', {
     name,
     id,
     disabled,

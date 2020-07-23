@@ -1,10 +1,12 @@
 import React, {useEffect, useRef} from 'react';
-import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {classNames} from '../../../../utilities/css';
 import {useFeatures} from '../../../../utilities/features';
 import {UnstyledLink} from '../../../UnstyledLink';
-import {handleMouseUpByBlurring} from '../../../../utilities/focus';
+import {
+  focusFirstFocusableNode,
+  handleMouseUpByBlurring,
+} from '../../../../utilities/focus';
 import styles from '../../Tabs.scss';
 
 export interface TabProps {

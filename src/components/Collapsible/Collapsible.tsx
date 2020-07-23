@@ -2,9 +2,9 @@ import React, {
   createContext,
   createRef,
   TransitionEvent,
+  Component,
   ComponentClass,
 } from 'react';
-import {read} from '@shopify/javascript-utilities/fastdom';
 
 import {classNames} from '../../utilities/css';
 
@@ -44,7 +44,7 @@ interface State {
 
 const ParentCollapsibleExpandingContext = createContext(false);
 
-class CollapsibleInner extends React.Component<CollapsibleProps, State> {
+class CollapsibleInner extends Component<CollapsibleProps, State> {
   static contextType = ParentCollapsibleExpandingContext;
 
   static getDerivedStateFromProps(
@@ -87,7 +87,7 @@ class CollapsibleInner extends React.Component<CollapsibleProps, State> {
       return;
     }
 
-    read(() => {
+    requestAnimationFrame(() => {
       const heightNode = this.heightNode.current;
       switch (animationState) {
         case 'idle':

@@ -15,10 +15,7 @@ keywords:
   - message
   - overlay
   - popup
-  - easdk
-  - shopify app bridge
   - iframe
-  - embedded app
   - duration
   - ios
   - android
@@ -33,37 +30,7 @@ The toast component is a non-disruptive message that appears at the bottom of th
 
 ## Required components
 
-The toast component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component or used in an embedded application.
-
----
-
-## Use in an embedded application (deprecated)
-
-Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the toast component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
-
-Note that when used in an embedded application, the toast component does not support multiple, simultaneous toast messages.
-
-```jsx
-function EmbeddedAppToastExample() {
-  const [active, setActive] = useState(false);
-
-  const handleDismiss = useCallback(() => setActive(false), []);
-
-  const toastMarkup = active && (
-    <Toast content="Message sent" onDismiss={handleDismiss} />
-  );
-
-  return (
-    <AppProvider apiKey="YOUR_API_KEY" i18n={{}} shopOrigin="YOUR_SHOP_ORIGIN">
-      {toastMarkup}
-    </AppProvider>
-  );
-}
-```
-
-#### Deprecation rationale
-
-As of v3.17.0, using `Toast` in an embedded app is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`Toast`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/toast) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) instead.
+The toast component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component.
 
 ---
 

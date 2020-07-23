@@ -1,7 +1,7 @@
-import React from 'react';
-import {CSSTransition} from '@material-ui/react-transition-group';
-import {animationFrame} from '@shopify/jest-dom-mocks';
-import {documentHasStyle, mountWithApp} from 'test-utilities';
+import React, {createRef} from 'react';
+import {CSSTransition} from 'react-transition-group';
+import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
+import {mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {
@@ -63,7 +63,7 @@ describe('<Frame />', () => {
 
     it('sets focus to target element when the skip to content link is clicked', () => {
       const targetId = 'SkipToContentTarget';
-      const targetRef = React.createRef<HTMLAnchorElement>();
+      const targetRef = createRef<HTMLAnchorElement>();
 
       const skipToContentTarget = (
         // eslint-disable-next-line jsx-a11y/anchor-is-valid
@@ -226,32 +226,52 @@ describe('<Frame />', () => {
   });
 
   describe('globalRibbon', () => {
-    // JSDOM 11.12.0 does not support setting/reading custom properties so we are
-    // unable to assert that we set a custom property
-    // See https://github.com/jsdom/jsdom/issues/1895
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('sets a root property with global ribbon height if passed', () => {
-      mountWithAppProvider(<Frame globalRibbon={<div />} />);
-      expect(documentHasStyle('--global-ribbon-height', '0px')).toBe(true);
+    // Frame sets the --global-ribbon-height custom property based off the
+    // offsetHeight of the component passed into globalRibbon. JSDom doesn't
+    // have a layout engine so use a mock value
+    beforeEach(() => {
+      dimension.mock({offsetHeight: 30});
     });
 
-    // JSDOM 11.12.0 does not support setting/reading custom properties so we are
-    // unable to assert that we set a custom property
-    // See https://github.com/jsdom/jsdom/issues/1895
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('sets a root property with global ribbon height if new props are passed', () => {
+    afterEach(() => {
+      dimension.restore();
+    });
+
+    it('sets a root property with global ribbon height if passed', () => {
+      mountWithAppProvider(
+        <Frame globalRibbon={<div />}>I am some content</Frame>,
+      );
+      expect(
+        document.documentElement.style.getPropertyValue(
+          '--global-ribbon-height',
+        ),
+      ).toBe('30px');
+    });
+
+    it('sets a root property with global ribbon height if new props are passed', () => {
       const frame = mountWithAppProvider(<Frame />);
+
+      expect(
+        document.documentElement.style.getPropertyValue(
+          '--global-ribbon-height',
+        ),
+      ).toBe('0px');
+
       frame.setProps({globalRibbon: <div />});
-      expect(documentHasStyle('--global-ribbon-height', '0px')).toBe(true);
+      expect(
+        document.documentElement.style.getPropertyValue(
+          '--global-ribbon-height',
+        ),
+      ).toBe('30px');
     });
 
-    // JSDOM 11.12.0 does not support setting/reading custom properties so we are
-    // unable to assert that we set a custom property
-    // See https://github.com/jsdom/jsdom/issues/1895
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('sets a root property with global ribbon height of 0 if there is no globalRibbon prop', () => {
+    it('sets a root property with global ribbon height of 0 if there is no globalRibbon prop', () => {
       mountWithAppProvider(<Frame />);
-      expect(documentHasStyle('--global-ribbon-height', '0px')).toBe(true);
+      expect(
+        document.documentElement.style.getPropertyValue(
+          '--global-ribbon-height',
+        ),
+      ).toBe('0px');
     });
   });
 

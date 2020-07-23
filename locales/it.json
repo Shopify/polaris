@@ -72,6 +72,15 @@
         "friday": "Ven",
         "saturday": "Sab",
         "sunday": "Dom"
+      },
+      "days": {
+        "monday": "lunedì",
+        "tuesday": "martedì",
+        "wednesday": "mercoledì",
+        "thursday": "giovedì",
+        "friday": "venerdì",
+        "saturday": "sabato",
+        "sunday": "domenica"
       }
     },
     "DiscardConfirmationModal": {

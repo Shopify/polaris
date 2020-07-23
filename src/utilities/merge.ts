@@ -1,5 +1,3 @@
-import type {GeneralObject} from '../types';
-
 // Unfortunately, this is how we have to type this at the moment.
 // There is currently a proposal to support variadic kinds.
 // https://github.com/Microsoft/TypeScript/issues/5453
@@ -37,6 +35,8 @@ export function merge<TSource1, TSource2, TSource3, TSource4, TSource5>(
 
   return final;
 }
+
+type GeneralObject = Record<string, any>;
 
 function mergeRecursively(inputObjA: GeneralObject, objB: GeneralObject) {
   const objA: GeneralObject = Array.isArray(inputObjA)

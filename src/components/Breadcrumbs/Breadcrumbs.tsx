@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import {ChevronLeftMinor, ArrowLeftMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../Icon';
@@ -15,7 +15,7 @@ export interface BreadcrumbsProps {
   breadcrumbs: (CallbackAction | LinkAction)[];
 }
 
-export class Breadcrumbs extends React.PureComponent<BreadcrumbsProps, never> {
+export class Breadcrumbs extends PureComponent<BreadcrumbsProps, never> {
   static contextType = FeaturesContext;
   context!: React.ContextType<typeof FeaturesContext>;
 

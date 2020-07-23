@@ -8,7 +8,6 @@ import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
 import {isLight} from '../color-validation';
 import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
-import {compose} from '../compose';
 
 import {needsVariantList} from './config';
 import type {
@@ -110,11 +109,13 @@ export function needsVariant(name: string) {
   return needsVariantList.includes(name);
 }
 
-const lightenToString: (
+function lightenToString(
   color: HSLColor | string,
   lightness: number,
   saturation: number,
-) => string = compose(hslToString, createLightColor);
+): string {
+  return hslToString(createLightColor(color, lightness, saturation));
+}
 
 export function setTextColor(
   name: string,

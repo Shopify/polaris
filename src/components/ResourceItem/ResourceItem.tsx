@@ -1,6 +1,5 @@
-import React, {useContext} from 'react';
+import React, {Component, createRef, useContext} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
 
 import {classNames, variationName} from '../../utilities/css';
@@ -20,6 +19,7 @@ import {
   SELECT_ALL_ITEMS,
   ResourceListSelectedItems,
 } from '../../utilities/resource-list';
+import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 
 import styles from './ResourceItem.scss';
 
@@ -83,10 +83,12 @@ interface State {
 
 type CombinedProps = PropsFromWrapper & (PropsWithUrl | PropsWithClick);
 
-const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
-const getUniqueOverlayID = createUniqueIDFactory('ResourceListItemOverlay');
+const getUniqueCheckboxID = globalIdGeneratorFactory(
+  'ResourceListItemCheckbox',
+);
+const getUniqueOverlayID = globalIdGeneratorFactory('ResourceListItemOverlay');
 
-class BaseResourceItem extends React.Component<CombinedProps, State> {
+class BaseResourceItem extends Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
     const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
 
@@ -107,7 +109,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
   private node: HTMLDivElement | null = null;
   private checkboxId = getUniqueCheckboxID();
   private overlayId = getUniqueOverlayID();
-  private buttonOverlay = React.createRef<HTMLButtonElement>();
+  private buttonOverlay = createRef<HTMLButtonElement>();
 
   shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
     const {

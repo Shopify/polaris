@@ -11,11 +11,6 @@ import {Key} from '../../../../../types';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
 
-jest.mock('@shopify/javascript-utilities/fastdom', () => ({
-  ...(jest.requireActual('@shopify/javascript-utilities/fastdom') as any),
-  write: jest.fn((callback) => callback()),
-}));
-
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
 }
@@ -25,6 +20,8 @@ const listenerMap: HandlerMap = {};
 describe('<PopoverOverlay />', () => {
   let addEventListener: jest.SpyInstance;
   let removeEventListener: jest.SpyInstance;
+
+  let rafSpy: jest.SpyInstance;
 
   beforeEach(() => {
     addEventListener = jest.spyOn(document, 'addEventListener');
@@ -36,6 +33,9 @@ describe('<PopoverOverlay />', () => {
     removeEventListener.mockImplementation((event) => {
       listenerMap[event] = noop;
     });
+
+    rafSpy = jest.spyOn(window, 'requestAnimationFrame');
+    rafSpy.mockImplementation((callback) => callback());
   });
 
   afterEach(() => {
@@ -45,6 +45,8 @@ describe('<PopoverOverlay />', () => {
 
     addEventListener.mockRestore();
     removeEventListener.mockRestore();
+
+    rafSpy.mockRestore();
   });
 
   const activator = document.createElement('button');

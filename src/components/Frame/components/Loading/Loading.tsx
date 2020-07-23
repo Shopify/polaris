@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import debounce from 'lodash/debounce';
 
 import styles from './Loading.scss';
@@ -14,7 +14,7 @@ interface State {
 const INITIAL_STEP = 10;
 const STUCK_THRESHOLD = 99;
 
-export class Loading extends React.Component<LoadingProps, State> {
+export class Loading extends Component<LoadingProps, State> {
   state: State = {
     progress: 0,
     step: INITIAL_STEP,

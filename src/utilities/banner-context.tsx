@@ -1,3 +1,3 @@
-import React from 'react';
+import {createContext} from 'react';
 
-export const BannerContext = React.createContext(false);
+export const BannerContext = createContext(false);

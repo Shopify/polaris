@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type {ComplexAction, AppBridgeAction} from '../../../../types';
+import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {Stack} from '../../../Stack';
@@ -9,9 +9,9 @@ import styles from './Footer.scss';
 
 export interface FooterProps {
   /** Primary action */
-  primaryAction?: AppBridgeAction | ComplexAction;
+  primaryAction?: ComplexAction;
   /** Collection of secondary actions */
-  secondaryActions?: AppBridgeAction[] | ComplexAction[];
+  secondaryActions?: ComplexAction[];
   /** The content to display inside modal */
   children?: React.ReactNode;
 }

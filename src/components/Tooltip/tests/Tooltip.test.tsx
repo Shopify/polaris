@@ -4,6 +4,7 @@ import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
 import {Link} from 'components';
 
 import {Tooltip} from '../Tooltip';
+import {TooltipOverlay} from '../components';
 
 describe('<Tooltip />', () => {
   const tooltip = mountWithAppProvider(
@@ -31,6 +32,17 @@ describe('<Tooltip />', () => {
     expect(findByTestID(tooltipActive, 'TooltipOverlayLabel').exists()).toBe(
       true,
     );
+  });
+
+  it('passes preventInteraction to TooltipOverlay when dismissOnMouseOut is true', () => {
+    const tooltipPreventInteraction = mountWithAppProvider(
+      <Tooltip content="Inner content" active dismissOnMouseOut>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+    expect(
+      tooltipPreventInteraction.find(TooltipOverlay).prop('preventInteraction'),
+    ).toBe(true);
   });
 
   it('renders on mouseOver', () => {

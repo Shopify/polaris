@@ -7,16 +7,10 @@ import {
   TextField,
   Button,
 } from 'components';
-import * as focusUtilities from '@shopify/javascript-utilities/focus';
 
 import * as focusUtils from '../../../utilities/focus';
 import {TrapFocus} from '../TrapFocus';
 import {Key} from '../../../types';
-
-jest.mock('@shopify/javascript-utilities/fastdom', () => ({
-  ...(jest.requireActual('@shopify/javascript-utilities/fastdom') as any),
-  write: (cb: () => void) => cb(),
-}));
 
 describe('<TrapFocus />', () => {
   let focusFirstFocusableNodeSpy: jest.SpyInstance;
@@ -25,7 +19,7 @@ describe('<TrapFocus />', () => {
 
   beforeEach(() => {
     focusFirstFocusableNodeSpy = jest.spyOn(
-      focusUtilities,
+      focusUtils,
       'focusFirstFocusableNode',
     );
 

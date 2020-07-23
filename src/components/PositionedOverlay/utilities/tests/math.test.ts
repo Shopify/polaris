@@ -1,5 +1,4 @@
-import {Rect} from '@shopify/javascript-utilities/geometry';
-
+import {Rect} from '../../../../utilities/geometry';
 import {intersectionWithViewport} from '../math';
 
 describe('intersectionWithViewport', () => {

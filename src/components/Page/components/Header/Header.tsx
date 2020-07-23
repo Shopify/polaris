@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {isValidElement} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
@@ -11,7 +11,6 @@ import {
 import type {
   MenuGroupDescriptor,
   MenuActionDescriptor,
-  AppBridgeAction,
   DestructableAction,
   DisableableAction,
   LoadableAction,
@@ -31,20 +30,19 @@ interface PrimaryAction
   extends DestructableAction,
     DisableableAction,
     LoadableAction,
-    AppBridgeAction,
     IconableAction {
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
 }
 
 export interface HeaderProps extends TitleProps {
-  /** Visually hide the title (stand-alone app use only) */
+  /** Visually hide the title */
   titleHidden?: boolean;
-  /** Adds a border to the bottom of the page header (stand-alone app use only) */
+  /** Adds a border to the bottom of the page header */
   separator?: boolean;
   /** Primary page-level action */
   primaryAction?: PrimaryAction | React.ReactNode;
-  /** Page-level pagination (stand-alone app use only) */
+  /** Page-level pagination */
   pagination?: PaginationDescriptor;
   /** Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
@@ -59,7 +57,7 @@ export interface HeaderProps extends TitleProps {
 export function isPrimaryAction(
   x: PrimaryAction | React.ReactNode,
 ): x is PrimaryAction {
-  return !React.isValidElement(x) && x !== undefined;
+  return !isValidElement(x) && x !== undefined;
 }
 
 export function Header({

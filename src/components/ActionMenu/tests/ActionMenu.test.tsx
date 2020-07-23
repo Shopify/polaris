@@ -434,7 +434,6 @@ function fillMenuGroup(partialMenuGroup?: Partial<MenuGroupDescriptor>) {
   const mockAction: ActionListItemDescriptor = {
     content: 'mock content',
     url: 'https://shopify.ca',
-    target: 'REMOTE',
   };
 
   return {
