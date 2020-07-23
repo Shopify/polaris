@@ -26,7 +26,7 @@ export interface VideoThumbnailProps {
   videoProgress?: number;
   /**
    * Indicate whether to allow video progress to be displayed
-   * @default true
+   * @default false
    */
   showVideoProgress?: boolean;
   /** Custom ARIA label for play button.
@@ -72,22 +72,24 @@ export function VideoThumbnail({
     );
   }
 
-  const progressValue = calculateProgress(videoLength, videoProgress);
-  const progressValuePercents = Math.round(progressValue * 100);
-
   const timeStampMarkup = videoLength ? (
     <p
       className={classNames(
         styles.Timestamp,
-        progressValue && styles.WithProgress,
+        showVideoProgress && styles.withProgress,
       )}
     >
       {secondsToTimestamp(videoLength)}
     </p>
   ) : null;
 
-  const progressMarkup =
-    showVideoProgress && progressValue ? (
+  let progressMarkup = null;
+
+  if (showVideoProgress) {
+    const progressValue = calculateProgress(videoLength, videoProgress);
+    const progressValuePercents = Math.round(progressValue * 100);
+
+    progressMarkup = (
       <div className={styles.Progress}>
         <progress
           className={styles.ProgressBar}
@@ -101,7 +103,8 @@ export function VideoThumbnail({
           <span className={styles.Label}>{progressValuePercents}%</span>
         </div>
       </div>
-    ) : null;
+    );
+  }
 
   return (
     <div

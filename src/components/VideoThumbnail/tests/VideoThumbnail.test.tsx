@@ -93,31 +93,63 @@ describe('<VideoThumbnail />', () => {
       warnSpy.mockRestore();
     });
 
-    it('does not render a progress bar if progress not provided', () => {
+    it('renders empty progress bar if progress not provided', () => {
       const videoThumbnail = mountWithApp(
-        <VideoThumbnail {...mockProps} videoProgress={undefined} />,
+        <VideoThumbnail
+          {...mockProps}
+          videoProgress={undefined}
+          showVideoProgress
+        />,
       );
-      expect(videoThumbnail).not.toContainReactComponent('div', {
+
+      expect(videoThumbnail).toContainReactComponent('div', {
         className: 'Progress',
+      });
+
+      const progressIndicator = videoThumbnail.find('div', {
+        className: 'Indicator',
+      });
+
+      expect(progressIndicator).toHaveReactProps({
+        style: expect.objectContaining({
+          transform: 'scaleX(0)',
+        }),
       });
     });
 
-    it('does not render a progress bar if video length not provided', () => {
+    it('renders empty progress bar if video length not provided', () => {
       const videoThumbnail = mountWithApp(
         <VideoThumbnail
           {...mockProps}
           videoLength={undefined}
           videoProgress={50}
+          showVideoProgress
         />,
       );
-      expect(videoThumbnail).not.toContainReactComponent('div', {
+
+      expect(videoThumbnail).toContainReactComponent('div', {
         className: 'Progress',
+      });
+
+      const progressIndicator = videoThumbnail.find('div', {
+        className: 'Indicator',
+      });
+
+      expect(progressIndicator).toHaveReactProps({
+        style: expect.objectContaining({
+          transform: 'scaleX(0)',
+        }),
       });
     });
 
-    it('renders progress bar when both video length and progress provided', () => {
+    it('renders non-empty progress bar when both video length and progress provided', () => {
       const videoThumbnail = mountWithApp(
-        <VideoThumbnail {...mockProps} videoLength={120} videoProgress={60} />,
+        <VideoThumbnail
+          {...mockProps}
+          videoLength={120}
+          videoProgress={60}
+          showVideoProgress
+        />,
       );
 
       expect(videoThumbnail).toContainReactComponent('div', {
@@ -139,7 +171,12 @@ describe('<VideoThumbnail />', () => {
       process.env.NODE_ENV = 'development';
 
       mountWithApp(
-        <VideoThumbnail {...mockProps} videoLength={100} videoProgress={101} />,
+        <VideoThumbnail
+          {...mockProps}
+          videoLength={100}
+          videoProgress={101}
+          showVideoProgress
+        />,
       );
 
       expect(warnSpy).toHaveBeenCalledWith(
@@ -151,7 +188,12 @@ describe('<VideoThumbnail />', () => {
       process.env.NODE_ENV = 'production';
 
       mountWithApp(
-        <VideoThumbnail {...mockProps} videoLength={100} videoProgress={101} />,
+        <VideoThumbnail
+          {...mockProps}
+          videoLength={100}
+          videoProgress={101}
+          showVideoProgress
+        />,
       );
 
       expect(warnSpy).not.toHaveBeenCalled();
@@ -159,12 +201,12 @@ describe('<VideoThumbnail />', () => {
   });
 
   describe('showVideoProgress', () => {
-    it('renders progress bar when prop is omitted', () => {
+    it('does not renders progress bar when prop is omitted', () => {
       const videoThumbnail = mountWithApp(
         <VideoThumbnail {...mockProps} videoLength={120} videoProgress={60} />,
       );
 
-      expect(videoThumbnail).toContainReactComponent('div', {
+      expect(videoThumbnail).not.toContainReactComponent('div', {
         className: 'Progress',
       });
     });
