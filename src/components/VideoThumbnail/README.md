@@ -71,6 +71,7 @@ Use to indicate the video’s play progress in relation to its duration.
   <VideoThumbnail
     videoLength={80}
     videoProgress={45}
+    showVideoProgress
     thumbnailUrl="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
   />
 </MediaCard>
