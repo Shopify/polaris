@@ -47,7 +47,7 @@ $pip-spacing: ($height - $pip-size) / 2;
 .statusAttention {
   @include pip-color(color('yellow', 'dark'));
   background-color: color('yellow', 'light');
-  color: color('yellow', 'text');
+  color: var(--p-text, color('yellow', 'text'));
 }
 
 .statusWarning {
