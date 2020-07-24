@@ -17,16 +17,17 @@ validateVersionReplacement();
 function validateStandardBuild() {
   // Standard build
   assert.ok(fs.existsSync('./dist/index.js'));
-  assert.ok(fs.existsSync('./dist/index.es.js'));
+  assert.ok(fs.existsSync('./dist/esm/index.js'));
   assert.ok(fs.existsSync('./dist/styles.css'));
 
   // Assert it uses named exports rather than properties from the React default
   // export to help tree-shaking.
   // React.createElement and React.Fragment are the allowed exceptions
-  const esModuleContent = fs.readFileSync('./dist/index.es.js', 'utf-8');
+  const esModuleContent = fs.readFileSync('./dist/index.js', 'utf-8');
   const unwantedReactUsageMatches =
-    esModuleContent.match(/React\.(?!createElement|Fragment)[A-Za-z0-9]+/g) ||
-    [];
+    esModuleContent.match(
+      /React__default\.(?!createElement|Fragment)[A-Za-z0-9]+/g,
+    ) || [];
 
   assert.deepStrictEqual(unwantedReactUsageMatches, []);
 
@@ -116,9 +117,9 @@ function validateVersionReplacement() {
   assert.strictEqual(fileBuckets.includesTemplateString.length, 0);
 
   assert.deepStrictEqual(fileBuckets.includesVersion, [
+    './dist/esm/configure.js',
     './dist/esnext/components/AppProvider/AppProvider.css',
     './dist/esnext/configure.ts.esnext',
-    './dist/index.es.js',
     './dist/index.js',
     './dist/styles.css',
   ]);
