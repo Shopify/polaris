@@ -134,14 +134,6 @@ export function isDateBefore(date: Date, dateToCompare: Date) {
   return date.getTime() < dateToCompare.getTime();
 }
 
-export function isSameDate(source: Date, target: Date) {
-  return (
-    source.getFullYear() === target.getFullYear() &&
-    source.getMonth() === target.getMonth() &&
-    source.getDate() === target.getDate()
-  );
-}
-
 const WEEKDAYS: number[] = [0, 1, 2, 3, 4, 5, 6];
 
 export function getOrderedWeekdays(weekStartsOn: number): number[] {
