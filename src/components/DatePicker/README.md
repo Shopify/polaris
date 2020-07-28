@@ -45,7 +45,7 @@ Date pickers should:
 
 ### Default date picker
 
-Use when merchants need to select a date range close to today (today is the default starting position for the date picker).
+Use when merchants need to select a single day close to today (today is the default starting position for the date picker).
 
 ```jsx
 function DatePickerExample() {
@@ -86,6 +86,39 @@ function DatePickerExample() {
 ![Date picker on iOS](/public_images/components/DatePicker/ios/default@2x.png)
 
 <!-- /content-for -->
+
+### Multi-select date picker
+
+Use when merchants need to select a range of days close to today (today is the default starting position for the date picker).
+
+```jsx
+function DatePickerExample() {
+  const [{month, year}, setDate] = useState({
+    month: 1,
+    year: 2018,
+  });
+  const [selectedDates, setSelectedDates] = useState({
+    start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+    end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+  });
+
+  const handleMonthChange = useCallback(
+    (month, year) => setDate({month, year}),
+    [],
+  );
+
+  return (
+    <DatePicker
+      month={month}
+      year={year}
+      onChange={setSelectedDates}
+      onMonthChange={handleMonthChange}
+      selected={selectedDates}
+      allowRange
+    />
+  );
+}
+```
 
 ---
 

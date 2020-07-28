@@ -5,7 +5,6 @@ import {
   isDateBefore,
   isDateAfter,
   isSameDay,
-  isSameDate,
   getWeeksForMonth,
   dateIsInRange,
   dateIsSelected,
@@ -101,15 +100,14 @@ export function Month({
     const isLastSelectedDay =
       allowRange &&
       selected &&
-      ((!isSameDate(selected.start, selected.end) &&
-        isDateEnd(day, selected)) ||
+      ((!isSameDay(selected.start, selected.end) && isDateEnd(day, selected)) ||
         (hoverDate &&
-          isSameDate(selected.start, selected.end) &&
+          isSameDay(selected.start, selected.end) &&
           isDateAfter(hoverDate, selected.start) &&
           isSameDay(day, hoverDate) &&
           !isFirstSelectedDay));
     const rangeIsDifferent = !(
-      selected && isSameDate(selected.start, selected.end)
+      selected && isSameDay(selected.start, selected.end)
     );
     const isHoveringRight = hoverDate && isDateBefore(day, hoverDate);
 
