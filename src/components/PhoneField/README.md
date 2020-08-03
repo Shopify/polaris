@@ -88,7 +88,7 @@ function PhoneFieldExample() {
       labelName="Mobile Phone Number"
       countries={allCountries}
       // validator={checkValidPhoneNumber}
-      // searchBar
+      searchBar
     />
   );
 }
