@@ -240,7 +240,7 @@ export function PhoneField({
   const activator =
     countries.length > 1 ? (
       <Button onClick={togglePopoverActive} disclosure>
-        {`${selectedCountryObject.countryName} ${
+        {`${selectedCountryObject.image} ${selectedCountryObject.countryName} ${
           prefix ? '' : `(${selectedCountryObject.countryCode})`
         }`}
       </Button>
