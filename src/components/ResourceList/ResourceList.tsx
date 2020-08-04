@@ -80,6 +80,8 @@ export interface ResourceListProps<ItemType = any> {
   bulkActions?: BulkActionsProps['actions'];
   /** Collection of IDs for the currently selected items */
   selectedItems?: ResourceListSelectedItems;
+  /** Whether or not the list has filter(s) applied */
+  isFiltered?: boolean;
   /** Renders a Select All button at the top of the list and checkboxes in front of each list item. For use when bulkActions aren't provided. **/
   selectable?: boolean;
   /** Whether or not there are more items than currently set on the items prop. Determines whether or not to set the paginatedSelectAllAction and paginatedSelectAllText props on the BulkActions component. */
@@ -123,6 +125,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   promotedBulkActions,
   bulkActions,
   selectedItems = [],
+  isFiltered,
   selectable,
   hasMoreItems,
   loading,
@@ -291,10 +294,15 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     }
 
     if (selectedItems === SELECT_ALL_ITEMS) {
-      return i18n.translate('Polaris.ResourceList.allItemsSelected', {
-        itemsLength: items.length,
-        resourceNamePlural: resourceName.plural,
-      });
+      return i18n.translate(
+        isFiltered
+          ? 'Polaris.ResourceList.allFilteredItemsSelected'
+          : 'Polaris.ResourceList.allItemsSelected',
+        {
+          itemsLength: items.length,
+          resourceNamePlural: resourceName.plural,
+        },
+      );
     }
   };
 
@@ -306,10 +314,15 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     const actionText =
       selectedItems === SELECT_ALL_ITEMS
         ? i18n.translate('Polaris.Common.undo')
-        : i18n.translate('Polaris.ResourceList.selectAllItems', {
-            itemsLength: items.length,
-            resourceNamePlural: resourceName.plural,
-          });
+        : i18n.translate(
+            isFiltered
+              ? 'Polaris.ResourceList.selectAllFilteredItems'
+              : 'Polaris.ResourceList.selectAllItems',
+            {
+              itemsLength: items.length,
+              resourceNamePlural: resourceName.plural,
+            },
+          );
 
     return {
       content: actionText,

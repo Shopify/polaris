@@ -213,7 +213,9 @@
           "on_or_after": "{date} 之后"
         }
       },
-      "showingTotalCount": "显示 {itemsCount} 项 {resource}（共 {totalItemsCount} 项）"
+      "showingTotalCount": "显示 {itemsCount} 项 {resource}（共 {totalItemsCount} 项）",
+      "allFilteredItemsSelected": "已选择此筛选器中的所有 {itemsLength}+ 个{resourceNamePlural}。",
+      "selectAllFilteredItems": "选择此筛选器中的所有 {itemsLength}+ 个 {resourceNamePlural}"
     },
     "SkeletonPage": {
       "loadingLabel": "页面加载"
