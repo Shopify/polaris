@@ -54,12 +54,8 @@ export function PhoneField({
   searchBar,
 }: PhoneFieldProps) {
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
   const [validPhoneNumber, setValidPhoneNumber] = useState(true);
   const [popoverActive, setPopoverActive] = useState(countries.length > 1);
-  const [selectedCountryObject, setSelectedCountryObject] = useState(
-    countries[0],
-  );
   const [clicked, setClicked] = useState(false);
 
   // Conduct research on which country appears first
@@ -70,16 +66,6 @@ export function PhoneField({
       onAction: () => handleSelected(index),
     }),
   );
-
-  const [countryOptions, setCountryOptions] = useState(allCountries);
-
-  const handleClicked = useCallback((bool) => setClicked(bool), [setClicked]);
-  /** Callback function for handling when the popover is clicked */
-  const togglePopoverActive = useCallback(() => {
-    setPopoverActive((popoverActive) => !popoverActive);
-    setSearchBarText('');
-    setCountryOptions(allCountries);
-  }, [allCountries]);
 
   const maxCountryPopulationObj = useCallback((countryArr: Country[]) => {
     const filteredObj = countryArr.filter(
@@ -101,6 +87,24 @@ export function PhoneField({
 
     return countryArr[0];
   }, []);
+
+  const [selectedCountryObject, setSelectedCountryObject] = useState(
+    maxCountryPopulationObj(countries),
+  );
+
+  const [formattedPhoneNumber, setFormattedPhoneNumber] = useState(
+    `${selectedCountryObject.countryCode}`,
+  );
+
+  const [countryOptions, setCountryOptions] = useState(allCountries);
+
+  const handleClicked = useCallback((bool) => setClicked(bool), [setClicked]);
+  /** Callback function for handling when the popover is clicked */
+  const togglePopoverActive = useCallback(() => {
+    setPopoverActive((popoverActive) => !popoverActive);
+    setSearchBarText('');
+    setCountryOptions(allCountries);
+  }, [allCountries]);
 
   /* Checks if there is at least one country with 'area code object' */
   function checkAreaCodeKeyExists(countryArr: Country[]) {
