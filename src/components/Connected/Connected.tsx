@@ -1,7 +1,9 @@
 import React from 'react';
 
+import {classNames} from '../../utilities/css';
 import {Item} from './components';
 import styles from './Connected.scss';
+import {useFeatures} from '../../utilities/features';
 
 export interface ConnectedProps {
   /** Content to display on the left */
@@ -13,6 +15,12 @@ export interface ConnectedProps {
 }
 
 export function Connected({children, left, right}: ConnectedProps) {
+  const {newDesignLanguage} = useFeatures();
+  const className = classNames(
+    styles.Connected,
+    newDesignLanguage && styles.newDesignLanguage,
+  );
+
   const leftConnectionMarkup = left ? (
     <Item position="left">{left}</Item>
   ) : null;
@@ -22,7 +30,7 @@ export function Connected({children, left, right}: ConnectedProps) {
   ) : null;
 
   return (
-    <div className={styles.Connected}>
+    <div className={className}>
       {leftConnectionMarkup}
       <Item position="primary">{children}</Item>
       {rightConnectionMarkup}

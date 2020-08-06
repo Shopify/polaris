@@ -550,7 +550,7 @@ function ConnectedFieldsExample() {
       type="number"
       value={textFieldValue}
       onChange={handleTextFieldChange}
-      connectedRight={
+      connectedLeft={
         <Select
           value={selectValue}
           label="Weight unit"
@@ -559,6 +559,7 @@ function ConnectedFieldsExample() {
           options={['kg', 'lb']}
         />
       }
+      connectedRight={<Button>Submit</Button>}
     />
   );
 }
