@@ -73,11 +73,27 @@ $stacking-order: (
   .Item > * > * {
     margin-right: var(--p-button-group-item-spacing, 0);
     margin-left: var(--p-override-none, -1px);
+  }
+
+  .Item:not(:first-child) > * > * {
     border-radius: 0 !important;
+  }
+
+  .Item:first-child > * > * {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
   }
 
   .Item {
     flex-shrink: 0;
+  }
+}
+
+.CenterContainer + .RightContainer {
+  .Item > * > * {
+    margin-right: var(--p-button-group-item-spacing, 0);
+    margin-left: var(--p-override-none, -1px);
+    border-radius: 0 !important;
   }
 }
 
