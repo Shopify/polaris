@@ -11,7 +11,8 @@
     "**/.git": true,
     "**/node_modules": true,
     ".{dev,shadowenv.d}": true,
-    "{build,dist}/": true
+    "{build,dist}/": true,
+    "examples/*/build": true
   },
   "javascript.validate.enable": false,
   "jest.autoEnable": false,
@@ -19,7 +20,8 @@
   "search.exclude": {
     "**/node_modules": true,
     ".{dev,shadowenv.d}": true,
-    "{build,dist}/": true
+    "{build,dist}/": true,
+    "examples/*/build": true
   },
   "typescript.tsdk": "./node_modules/typescript/lib"
 }
