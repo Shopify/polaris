@@ -89,7 +89,7 @@ $stacking-order: (
   }
 }
 
-.CenterContainer + .RightContainer {
+.CenterContainer:not(.CenterContainerEmpty) + .RightContainer {
   .Item > * > * {
     margin-right: var(--p-button-group-item-spacing, 0);
     margin-left: var(--p-override-none, -1px);

@@ -89,8 +89,6 @@ export interface FiltersProps {
   hideTags?: boolean;
   /** Hide textfield for applied filters */
   hideTextField?: boolean;
-  /** Hide filters for applied filters */
-  hideFilters?: boolean;
 }
 
 type ComposedProps = FiltersProps &
@@ -139,7 +137,6 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       helpText,
       hideTags,
       hideTextField,
-      hideFilters,
       newDesignLanguage,
     } = this.props;
     const {resourceName} = this.context;
@@ -256,7 +253,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
 
     const transformedFilters = this.transformFilters(filters);
 
-    const filtersControlMarkup = !hideFilters ? (
+    const filtersControlMarkup = (
       <ConnectedFilterControl
         rightPopoverableActions={transformedFilters}
         rightAction={rightActionMarkup}
@@ -295,7 +292,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
           />
         ) : null}
       </ConnectedFilterControl>
-    ) : null;
+    );
 
     const filtersContainerHeaderClassname = classNames(
       styles.FiltersContainerHeader,
@@ -363,12 +360,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
 
     const tagsMarkup =
       !hideTags && appliedFilters && appliedFilters.length ? (
-        <div
-          className={classNames(
-            styles.TagsContainer,
-            hideFilters && styles.TagsOnly,
-          )}
-        >
+        <div className={styles.TagsContainer}>
           {appliedFilters.map((filter) => {
             return (
               <Tag
