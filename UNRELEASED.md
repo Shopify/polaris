@@ -23,4 +23,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Removed the `new-top-bar-height` sass function and replaced its usage with the `--p-top-bar-height` custom property (#3158)[https://github.com/Shopify/polaris-react/pull/3158]
+
 ### Deprecations

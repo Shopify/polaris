@@ -203,7 +203,7 @@ $skip-vertical-offset: rem(10px);
 
 .Main-newDesignLanguage {
   .hasTopBar & {
-    padding-top: new-top-bar-height();
+    padding-top: var(--p-top-bar-height);
     @include when-printing {
       padding-top: 0;
     }

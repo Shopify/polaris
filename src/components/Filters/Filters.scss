@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$list-filters-header-height: rem(56px);
+$list-filters-header-height: top-bar-height();
 $list-filters-footer-height: rem(70px);
 $seperator-color: var(--p-border-subdued, color('sky'));
 
@@ -21,14 +21,13 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   width: 100%;
   padding: spacing(base) spacing(loose);
   border-bottom: rem(1px) solid $seperator-color;
-  height: $list-filters-header-height;
+  height: var(--p-top-bar-height, $list-filters-header-height);
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   &.newDesignLanguage {
-    height: new-top-bar-height();
     padding: spacing(base) rem(26px);
   }
 }
@@ -36,24 +35,19 @@ $seperator-color: var(--p-border-subdued, color('sky'));
 .FiltersDesktopContainerContent {
   width: 100%;
   height: calc(
-    100% - #{$list-filters-footer-height} - #{$list-filters-header-height}
+    100% - #{$list-filters-footer-height} - var(--p-top-bar-height, #{$list-filters-header-height})
   );
 
   &.newDesignLanguage {
-    height: calc(
-      100% - #{$list-filters-footer-height} - #{new-top-bar-height()}
-    );
-
     padding: spacing(tight);
   }
 }
 
 .FiltersMobileContainerContent {
   width: 100%;
-  height: calc(100% - #{$list-filters-header-height});
+  height: calc(100% - var(--p-top-bar-height, #{$list-filters-header-height}));
 
   &.newDesignLanguage {
-    height: calc(100% - #{new-top-bar-height()});
     padding: spacing(tight);
   }
 }
