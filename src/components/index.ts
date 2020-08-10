@@ -198,6 +198,9 @@ export type {PopoverProps} from './Popover';
 export {Portal} from './Portal';
 export type {PortalProps} from './Portal';
 
+export {PositionedOverlay} from './PositionedOverlay';
+export type {PositionedOverlayProps} from './PositionedOverlay';
+
 export {ProgressBar} from './ProgressBar';
 export type {ProgressBarProps} from './ProgressBar';
 
