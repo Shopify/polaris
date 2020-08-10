@@ -213,7 +213,9 @@
           "on_or_after": "efter {date}"
         }
       },
-      "showingTotalCount": "Viser {itemsCount} af {totalItemsCount} {resource}"
+      "showingTotalCount": "Viser {itemsCount} af {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} i dette filter er valgt.",
+      "selectAllFilteredItems": "Vælg alle mere end {itemsLength} {resourceNamePlural} i dette filter"
     },
     "SkeletonPage": {
       "loadingLabel": "Indlæser side"

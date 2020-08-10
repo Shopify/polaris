@@ -16,6 +16,7 @@ import {
   mountWithAppProvider,
   trigger,
 } from 'test-utilities/legacy';
+import {SELECT_ALL_ITEMS} from 'utilities/resource-list';
 
 import {BulkActions, CheckableButton} from '../components';
 
@@ -1195,6 +1196,88 @@ describe('<ResourceList />', () => {
       trigger(resourceList.find(BulkActions), 'onSelectModeToggle', true);
       trigger(resourceList.find(EventListener).first(), 'handler');
       expect(resourceList.find(BulkActions).prop('selectMode')).toBe(false);
+    });
+  });
+
+  describe('isFiltered', () => {
+    it('renders `selectAllFilteredItems` label if true', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsNoID}
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          hasMoreItems
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          isFiltered
+        />,
+      );
+
+      expect(
+        resourceList.find(BulkActions).prop('paginatedSelectAllAction'),
+      ).toStrictEqual({
+        content: 'Select all 2+ customers in this filter',
+        onAction: expect.any(Function),
+      });
+    });
+
+    it('renders `allFilteredItemsSelected` label if true and all items are selected', () => {
+      const resourceList = mountWithApp(
+        <ResourceList
+          items={itemsNoID}
+          selectedItems={SELECT_ALL_ITEMS}
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          hasMoreItems
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectable
+          isFiltered
+        />,
+      );
+
+      resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
+
+      expect(
+        resourceList.find(BulkActions)!.prop('paginatedSelectAllText'),
+      ).toBe('All 2+ customers in this filter are selected.');
+    });
+
+    it('renders `selectAllItems` label if not passed', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsNoID}
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          hasMoreItems
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+        />,
+      );
+
+      expect(
+        resourceList.find(BulkActions).prop('paginatedSelectAllAction'),
+      ).toStrictEqual({
+        content: 'Select all 2+ customers in your store',
+        onAction: expect.any(Function),
+      });
+    });
+
+    it('renders `allItemsSelected` label if not passed and all items are selected', () => {
+      const resourceList = mountWithApp(
+        <ResourceList
+          items={itemsNoID}
+          selectedItems={SELECT_ALL_ITEMS}
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          hasMoreItems
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectable
+        />,
+      );
+
+      resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
+
+      expect(
+        resourceList.find(BulkActions)!.prop('paginatedSelectAllText'),
+      ).toBe('All 2+ customers in your store are selected.');
     });
   });
 });
