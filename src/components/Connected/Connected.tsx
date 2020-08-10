@@ -1,9 +1,10 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
+
 import {Item} from './components';
 import styles from './Connected.scss';
-import {useFeatures} from '../../utilities/features';
 
 export interface ConnectedProps {
   /** Content to display on the left */
