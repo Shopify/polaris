@@ -4,7 +4,7 @@
 // Base Navigation styles
 $active-indicator-width: rem(3px);
 $nav-max-width: rem(360px);
-$new-nav-max-width: rem(258px);
+
 .Navigation {
   display: flex;
   flex-direction: column;
@@ -30,7 +30,6 @@ $new-nav-max-width: rem(258px);
   }
 
   &.Navigation-newDesignLanguage {
-    max-width: $new-nav-max-width;
     border-right: 1px solid var(--p-border-subdued);
   }
 }

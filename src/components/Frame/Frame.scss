@@ -143,8 +143,8 @@ $skip-vertical-offset: rem(10px);
     @include frame-when-nav-displayed {
       // stylelint-disable-next-line selector-max-class
       .hasNav & {
-        left: calc(#{layout-width(new-nav)} + var(--p-frame-offset));
-        width: calc(100% - #{layout-width(new-nav)} - var(--p-frame-offset));
+        left: calc(#{layout-width(nav)} + var(--p-frame-offset));
+        width: calc(100% - #{layout-width(nav)} - var(--p-frame-offset));
       }
     }
   }
@@ -166,12 +166,11 @@ $skip-vertical-offset: rem(10px);
 .ContextualSaveBar-newDesignLanguage {
   @include frame-when-nav-displayed {
     .hasNav & {
-      left: calc(#{layout-width(new-nav)} + var(--p-frame-offset));
-      max-width: calc(100% - #{layout-width(new-nav)} - var(--p-frame-offset));
+      left: calc(#{layout-width(nav)} + var(--p-frame-offset));
+      max-width: calc(100% - #{layout-width(nav)} - var(--p-frame-offset));
     }
   }
 }
-
 .Main {
   flex: 1;
   display: flex;
@@ -210,9 +209,6 @@ $skip-vertical-offset: rem(10px);
   }
   @include frame-when-nav-displayed {
     .hasNav & {
-      padding-left: layout-width(new-nav);
-      @include safe-area-for(padding-left, layout-width(new-nav), left);
-
       @include when-printing {
         padding-left: 0;
       }
@@ -243,20 +239,6 @@ $skip-vertical-offset: rem(10px);
         left
       );
       width: calc(100% - #{layout-width(nav)} - var(--p-frame-offset));
-    }
-  }
-}
-
-.GlobalRibbonContainer-newDesignLanguage {
-  @include frame-when-nav-displayed {
-    .hasNav & {
-      left: calc(#{layout-width(new-nav)} + var(--p-frame-offset));
-      @include safe-area-for(
-        left,
-        calc(#{layout-width(new-nav)} + var(--p-frame-offset)),
-        left
-      );
-      width: calc(100% - #{layout-width(new-nav)} - var(--p-frame-offset));
     }
   }
 }
