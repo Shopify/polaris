@@ -160,7 +160,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
               )}
               tabIndex={tabIndex}
             >
-              <Icon source={MobileCancelMajorMonotone} color="white" />
+              <Icon source={MobileCancelMajorMonotone} />
             </button>
           </div>
         </CSSTransition>
