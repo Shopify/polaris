@@ -56,7 +56,7 @@ $layout-width-data: (
 $dismiss-icon-size: 32px;
 
 @function top-bar-height() {
-  @return rem(56px);
+  @return var(--p-top-bar-height, rem(56px));
 }
 
 @function mobile-nav-width() {
