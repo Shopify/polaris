@@ -407,12 +407,15 @@ $secondary-item-font-size: rem(15px);
 }
 
 .SectionHeading {
-  @include text-style-subheading;
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
   padding-left: spacing();
-  color: var(--p-text-subdued, color('ink', 'lighter'));
+
+  .Text {
+    @include text-style-subheading;
+    color: var(--p-text-subdued, color('ink', 'lighter'));
+  }
 
   .Action {
     @include unstyled-button;
