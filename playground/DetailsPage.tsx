@@ -269,6 +269,16 @@ export function DetailsPage() {
                 },
                 matches: navItemActive === 'drafts',
               },
+              {
+                url: '#',
+                label: 'Abandoned checkouts',
+
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('abandoned');
+                },
+                matches: navItemActive === 'abandoned',
+              },
             ],
           },
           {
