@@ -4,7 +4,6 @@ import {TextField} from '../TextField';
 import {Button} from '../Button';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
-import {InlineError} from '../InlineError';
 
 import styles from './PhoneField.scss';
 
@@ -15,20 +14,20 @@ export interface Country {
   countryName: string;
   /** Country area code */
   countryCode: string;
+  countryAlphaCode?: string;
   /** Phone number display format */
   displayFormat: number[];
   /** Possible area codes for a country. Used to distinguish between countries with same country codes */
   areaCodes?: number[];
-  countryAlphaCode?: string;
-  formatter?(): void;
   population?: number;
+  formatter?(): void;
 }
 
 export interface PhoneFieldProps {
   /** Placeholder text  */
   placeholder?: string;
   /** Textfield label  */
-  labelName: string;
+  labelName?: string;
   /** Hides the label for accessibility */
   labelHidden?: boolean;
   /** Is textfield optional */
@@ -55,7 +54,7 @@ export function PhoneField({
 }: PhoneFieldProps) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [validPhoneNumber, setValidPhoneNumber] = useState(true);
-  const [popoverActive, setPopoverActive] = useState(countries.length > 1);
+  const [popoverActive, setPopoverActive] = useState(false);
   const [clicked, setClicked] = useState(false);
 
   // Conduct research on which country appears first
@@ -332,23 +331,14 @@ export function PhoneField({
     setValidPhoneNumber(validator(phoneNumber, selectedCountryObject));
   }, [phoneNumber, selectedCountryObject, validator]);
 
-  /** Handles the button that clicks for the popover */
-  const activator =
-    countries.length > 1 ? (
-      <Button onClick={togglePopoverActive} disclosure>
-        {`${selectedCountryObject.image} ${selectedCountryObject.countryName}`}
-      </Button>
-    ) : (
-      <Button>{selectedCountryObject.countryName}</Button>
-    );
-
-  const displayErrorMessage = validPhoneNumber ? null : (
-    <InlineError
-      message={
-        errorMessage ? errorMessage : 'Please enter a valid phone number'
-      }
-      fieldID="myFieldID"
-    />
+  const activator = (
+    // eslint-disable-next-line @shopify/jsx-no-hardcoded-content
+    <Button
+      onClick={countries.length > 1 ? togglePopoverActive : () => {}}
+      disclosure={countries.length > 1}
+    >
+      {`${selectedCountryObject.image}`}
+    </Button>
   );
 
   const searchBarField = (
@@ -385,8 +375,8 @@ export function PhoneField({
             <ActionList items={countryOptions} />
           </Popover>
         }
+        error={validPhoneNumber ? undefined : errorMessage}
       />
-      {displayErrorMessage}
     </div>
   );
 }
