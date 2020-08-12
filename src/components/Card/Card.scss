@@ -9,15 +9,15 @@
     margin-top: spacing(loose);
   }
 
-  @include page-content-when-not-fully-condensed {
-    border-radius: var(--p-border-radius-wide, border-radius());
-  }
-
   &.newDesignLanguage {
     // stylelint-disable-next-line selector-max-class
     + .Card {
       margin-top: spacing();
     }
+  }
+
+  @include page-content-when-not-fully-condensed {
+    border-radius: var(--p-border-radius-wide, border-radius());
   }
 }
 
