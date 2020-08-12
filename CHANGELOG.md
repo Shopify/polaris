@@ -26,7 +26,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Code quality
 
-- Removed the `new-top-bar-height` sass function and replaced its usage with the `--p-top-bar-height` custom property (#3158)[https://github.com/Shopify/polaris-react/pull/3158]
+- Removed the `new-top-bar-height` sass function and replaced its usage with the `--p-top-bar-height` custom property ([#3158](https://github.com/Shopify/polaris-react/pull/3158))
 
 ## 5.1.0 - 2020-07-23
 
