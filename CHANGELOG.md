@@ -8,12 +8,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
-# Unreleased changes
-
-Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to format new entries. 💜
-
----
-
 ## 5.2.0 - 2020-08-12
 
 ### Enhancements
