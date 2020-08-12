@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {DisplayText} from '../DisplayText';
 import {SkeletonDisplayText} from '../SkeletonDisplayText';
@@ -35,11 +36,13 @@ export function SkeletonPage({
   breadcrumbs,
 }: SkeletonPageProps) {
   const i18n = useI18n();
+  const {newDesignLanguage} = useFeatures();
 
   const className = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,
     narrowWidth && styles.narrowWidth,
+    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const headerClassName = classNames(
