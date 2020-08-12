@@ -108,10 +108,7 @@ $disabled-fade: 0.6;
 .Item-selected {
   font-weight: 600;
   color: var(--p-action-primary, color('indigo', 'dark'));
-  background-color: var(
-    --p-surface-primary-selected,
-    $item-selected-background
-  );
+  background-color: var(--p-surface-hovered, $item-selected-background);
 
   .Navigation-newDesignLanguage & {
     &::before {
@@ -132,10 +129,7 @@ $disabled-fade: 0.6;
   }
   // stylelint-enable selector-max-specificity
   &:hover {
-    background-color: var(
-      --p-surface-primary-selected-hovered,
-      $item-selected-background
-    );
+    background-color: var(--p-surface-hovered, $item-selected-background);
     color: var(--p-action-primary-hovered, color('indigo', 'dark'));
   }
 
@@ -152,7 +146,7 @@ $disabled-fade: 0.6;
     .Navigation-newDesignLanguage & {
       @include recolor-icon(var(--p-action-primary-pressed));
       color: var(--p-action-primary-pressed);
-      background-color: var(--p-surface-primary-selected-pressed);
+      background-color: var(--p-surface-pressed);
     }
   }
 }
@@ -318,7 +312,7 @@ $secondary-item-font-size: rem(15px);
     }
 
     &:hover {
-      color: var(--p-action-primary, color('indigo', 'dark'));
+      color: var(--p-text-subdued, color('indigo', 'dark'));
     }
 
     &:focus {
@@ -330,7 +324,7 @@ $secondary-item-font-size: rem(15px);
     }
     &:active,
     &:active:hover {
-      color: var(--p-action-primary-pressed, color('indigo', 'dark'));
+      color: var(--p-text, color('indigo', 'dark'));
       @include no-focus-ring;
     }
     // stylelint-enable selector-max-specificity
