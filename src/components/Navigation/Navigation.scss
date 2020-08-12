@@ -100,7 +100,6 @@ $disabled-fade: 0.6;
       border-top-right-radius: var(--p-border-radius-base);
       border-bottom-right-radius: var(--p-border-radius-base);
       transform: translateX(-100%);
-      transition: transform var(--p-duration-1-5-0) var(--p-ease);
     }
   }
 }
