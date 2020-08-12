@@ -81,7 +81,7 @@ $actions-vertical-spacing: spacing(tight);
 }
 
 @mixin page-header-has-navigation {
-  // padding-top: rem(32px);
+  padding-top: rem(32px);
 
   &.newDesignLanguage {
     padding-top: spacing();
