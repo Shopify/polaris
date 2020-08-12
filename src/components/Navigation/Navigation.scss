@@ -148,6 +148,13 @@ $disabled-fade: 0.6;
       background-color: var(--p-surface-pressed);
     }
   }
+  &:focus:hover {
+    // stylelint-disable-next-line selector-max-specificity
+    .Navigation-newDesignLanguage & {
+      @include recolor-icon(var(--p-action-primary));
+      color: var(--p-action-primary, color('indigo', 'dark'));
+    }
+  }
 }
 
 .Item-disabled {
@@ -179,6 +186,15 @@ $disabled-fade: 0.6;
 
 .ListItem {
   @include nav-listitem-attributes;
+
+  .Navigation-newDesignLanguage & {
+    &:not(:first-child) {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
+      .Item {
+        border-top: 1px solid var(--p-surface);
+      }
+    }
+  }
 }
 
 .ListItem-hasAction .Item {
@@ -400,6 +416,7 @@ $secondary-item-font-size: rem(15px);
 }
 
 .SectionHeading {
+  @include text-style-subheading;
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
