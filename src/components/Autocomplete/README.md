@@ -454,12 +454,12 @@ function AutocompleteExample() {
   );
 
   const emptyState = (
-    <>
+    <React.Fragment>
       <Icon source={SearchMinor} />
       <div style={{textAlign: 'center'}}>
         <TextContainer>Could not find any results</TextContainer>
       </div>
-    </>
+    </React.Fragment>
   );
 
   return (
