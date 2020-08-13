@@ -218,6 +218,7 @@ $skip-vertical-offset: rem(10px);
 }
 
 .Content {
+  position: relative;
   padding-bottom: var(--global-ribbon-height, 0);
   flex: 1;
   @include layout-flex-fix;
