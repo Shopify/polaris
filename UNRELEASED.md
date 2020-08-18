@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed export function `colorToHsla` ([#3179](https://github.com/Shopify/polaris-react/pull/3179))
+
 ### Documentation
 
 ### Development workflow
