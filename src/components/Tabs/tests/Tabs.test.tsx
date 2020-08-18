@@ -191,6 +191,29 @@ describe('<Tabs />', () => {
         );
       });
     });
+
+    it('sets the content correctly if given React nodes', () => {
+      const tabsWithContent = [
+        {content: <span>Tab 1</span>, id: 'tab-1'},
+        {
+          content: (
+            <span>
+              Tab <b>2</b>
+            </span>
+          ),
+          id: 'tab-2',
+        },
+      ];
+      const wrapper = mountWithAppProvider(
+        <Tabs {...mockProps} tabs={tabsWithContent} />,
+      );
+
+      tabsWithContent.forEach((tab, index) => {
+        expect(wrapper.find(Tab).at(index).prop('children')).toStrictEqual(
+          tab.content,
+        );
+      });
+    });
   });
 
   describe('selected', () => {

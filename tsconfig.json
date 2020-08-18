@@ -3,13 +3,10 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "rootDir": "./",
-    "declarationDir": "types/latest",
-    "declarationMap": false,
-    "jsx": "react-native",
+    "noEmit": true,
     "isolatedModules": true,
     "importsNotUsedAsValues": "error",
-    "strictFunctionTypes": false,
-    "importHelpers": true
+    "strictFunctionTypes": false
   },
   "include": ["./config/typescript", "./src", "./tests", "./playground"]
 }

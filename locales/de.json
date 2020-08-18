@@ -72,6 +72,15 @@
         "friday": "Fr",
         "saturday": "Sa",
         "sunday": "So"
+      },
+      "days": {
+        "monday": "Montag",
+        "tuesday": "Dienstag",
+        "wednesday": "Mittwoch",
+        "thursday": "Donnerstag",
+        "friday": "Freitag",
+        "saturday": "Samstag",
+        "sunday": "Sonntag"
       }
     },
     "DiscardConfirmationModal": {
@@ -204,7 +213,9 @@
           "on_or_after": "nach {date}"
         }
       },
-      "showingTotalCount": "{itemsCount} von {totalItemsCount} {resource} werden angezeigt"
+      "showingTotalCount": "{itemsCount} von {totalItemsCount} {resource} werden angezeigt",
+      "allFilteredItemsSelected": "Alle {itemsLength} und {resourceNamePlural} in diesem Filter sind ausgewählt.",
+      "selectAllFilteredItems": "Alle {itemsLength} und {resourceNamePlural} in diesem Filter auswählen"
     },
     "SkeletonPage": {
       "loadingLabel": "Seite wird geladen"

@@ -64,6 +64,7 @@ $centered-illustration-width: rem(226px);
   }
 }
 
+.newDesignLanguage,
 .withinContentContainer {
   margin: 0 auto;
   padding-top: spacing(loose);
@@ -137,31 +138,6 @@ $centered-illustration-width: rem(226px);
       position: initial;
       width: 100%;
     }
-  }
-}
-
-.centeredLayout {
-  .Section {
-    left: 0;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .ImageContainer,
-  .DetailsContainer {
-    flex: 0;
-  }
-
-  .Image {
-    margin: unset;
-    width: $centered-illustration-width;
-    max-width: 100%;
-  }
-
-  .Details {
-    text-align: center;
-    width: 100%;
   }
 }
 

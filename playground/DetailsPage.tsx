@@ -1,17 +1,8 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {
   ConversationMinor,
-  HomeMajorTwotone,
-  OrdersMajorTwotone,
-  ProductsMajorTwotone,
-  CustomersMajorTwotone,
-  AnalyticsMajorTwotone,
-  MarketingMajorTwotone,
-  DiscountsMajorTwotone,
-  AppsMajorTwotone,
   DuplicateMinor,
   ViewMinor,
-  SettingsMajorMonotone,
 } from '@shopify/polaris-icons';
 
 import {
@@ -41,6 +32,17 @@ import {
   Thumbnail,
 } from '../src';
 
+import {
+  HomeMajorMonotone,
+  OrdersMajorMonotone,
+  ProductsMajorMonotone,
+  CustomersMajorMonotone,
+  AnalyticsMajorMonotone,
+  MarketingMajorMonotone,
+  DiscountsMajorMonotone,
+  AppsMajorMonotone,
+  SettingsMajorMonotone,
+} from './images';
 import styles from './DetailsPage.scss';
 
 export function DetailsPage() {
@@ -220,7 +222,7 @@ export function DetailsPage() {
         items={[
           {
             label: 'Home',
-            icon: HomeMajorTwotone,
+            icon: HomeMajorMonotone,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('home');
@@ -230,7 +232,7 @@ export function DetailsPage() {
           },
           {
             label: 'Orders',
-            icon: OrdersMajorTwotone,
+            icon: OrdersMajorMonotone,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('orders');
@@ -240,7 +242,7 @@ export function DetailsPage() {
           },
           {
             label: 'Products',
-            icon: ProductsMajorTwotone,
+            icon: ProductsMajorMonotone,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('products');
@@ -267,11 +269,21 @@ export function DetailsPage() {
                 },
                 matches: navItemActive === 'drafts',
               },
+              {
+                url: '#',
+                label: 'Abandoned checkouts',
+
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('abandoned');
+                },
+                matches: navItemActive === 'abandoned',
+              },
             ],
           },
           {
             label: 'Customers',
-            icon: CustomersMajorTwotone,
+            icon: CustomersMajorMonotone,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('customers');
@@ -281,7 +293,7 @@ export function DetailsPage() {
           },
           {
             label: 'Analytics',
-            icon: AnalyticsMajorTwotone,
+            icon: AnalyticsMajorMonotone,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('analytics');
@@ -291,7 +303,7 @@ export function DetailsPage() {
           },
           {
             label: 'Marketing',
-            icon: MarketingMajorTwotone,
+            icon: MarketingMajorMonotone,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('marketing');
@@ -301,7 +313,7 @@ export function DetailsPage() {
           },
           {
             label: 'Discounts',
-            icon: DiscountsMajorTwotone,
+            icon: DiscountsMajorMonotone,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('discounts');
@@ -311,7 +323,7 @@ export function DetailsPage() {
           },
           {
             label: 'Apps',
-            icon: AppsMajorTwotone,
+            icon: AppsMajorMonotone,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('apps');

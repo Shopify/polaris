@@ -1,5 +1,4 @@
 import React from 'react';
-import {Weekdays} from '@shopify/javascript-utilities/dates';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
@@ -28,7 +27,7 @@ describe('<DatePicker />', () => {
   describe('when weekStartsOn is passed', () => {
     it('renders Monday as first day of the week', () => {
       const datePicker = mountWithAppProvider(
-        <DatePicker month={0} year={2018} weekStartsOn={Weekdays.Monday} />,
+        <DatePicker month={0} year={2018} weekStartsOn={1} />,
       );
 
       const weekday = datePicker.find(Weekday);
@@ -37,7 +36,7 @@ describe('<DatePicker />', () => {
 
     it('renders Saturday as first day of the week', () => {
       const datePicker = mountWithAppProvider(
-        <DatePicker month={0} year={2018} weekStartsOn={Weekdays.Saturday} />,
+        <DatePicker month={0} year={2018} weekStartsOn={6} />,
       );
 
       const weekday = datePicker.find(Weekday);
@@ -94,7 +93,7 @@ describe('<DatePicker />', () => {
           month={month}
           year={year}
           onChange={spy}
-          weekStartsOn={Weekdays.Sunday}
+          weekStartsOn={0}
         />,
       );
       const day = datePicker.find(Day);

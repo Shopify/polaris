@@ -1,4 +1,5 @@
 import React, {
+  createRef,
   useState,
   useRef,
   useCallback,
@@ -8,10 +9,6 @@ import React, {
   Component,
 } from 'react';
 import debounce from 'lodash/debounce';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
 import {
   DragDropMajorMonotone,
   CircleAlertMajorMonotone,
@@ -289,18 +286,18 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
     if (!dropNode) return;
 
-    addEventListener(dropNode, 'drop', handleDrop);
-    addEventListener(dropNode, 'dragover', handleDragOver);
-    addEventListener(dropNode, 'dragenter', handleDragEnter);
-    addEventListener(dropNode, 'dragleave', handleDragLeave);
-    addEventListener(window, 'resize', adjustSize);
+    dropNode.addEventListener('drop', handleDrop);
+    dropNode.addEventListener('dragover', handleDragOver);
+    dropNode.addEventListener('dragenter', handleDragEnter);
+    dropNode.addEventListener('dragleave', handleDragLeave);
+    window.addEventListener('resize', adjustSize);
 
     return () => {
-      removeEventListener(dropNode, 'drop', handleDrop);
-      removeEventListener(dropNode, 'dragover', handleDragOver);
-      removeEventListener(dropNode, 'dragenter', handleDragEnter);
-      removeEventListener(dropNode, 'dragleave', handleDragLeave);
-      removeEventListener(window, 'resize', adjustSize);
+      dropNode.removeEventListener('drop', handleDrop);
+      dropNode.removeEventListener('dragover', handleDragOver);
+      dropNode.removeEventListener('dragenter', handleDragEnter);
+      dropNode.removeEventListener('dragleave', handleDragLeave);
+      window.removeEventListener('resize', adjustSize);
     };
   }, [
     dropOnPage,
@@ -467,7 +464,7 @@ interface DropZoneInputProps {
 // Due to security reasons, browsers do not allow file inputs to be opened artificially.
 // For example `useEffect(() => { ref.click() })`. Oddly enough react class-based components bi-pass this.
 class DropZoneInput extends Component<DropZoneInputProps, never> {
-  private fileInputNode = React.createRef<HTMLInputElement>();
+  private fileInputNode = createRef<HTMLInputElement>();
 
   componentDidMount() {
     this.props.openFileDialog && this.triggerFileDialog();

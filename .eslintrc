@@ -33,7 +33,6 @@
     "import/no-default-export": ["error"],
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
-    "react/jsx-fragments": ["error", "element"],
     "react/no-unsafe": ["error", {"checkAliases": true}],
     "@shopify/jsx-no-complex-expressions": "off",
     "@shopify/jsx-prefer-fragment-wrappers": "off",
@@ -95,6 +94,12 @@
         "import/no-unresolved": "off",
         "react/prop-types": "off",
         "@shopify/jsx-no-hardcoded-content": "off"
+      }
+    },
+    {
+      "files": ["esnext/index.js"],
+      "rules": {
+        "import/no-unresolved": "off"
       }
     },
     {

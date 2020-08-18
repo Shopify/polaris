@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {StrictMode} from 'react';
 import {mount, mountWithApp} from 'test-utilities';
 import {MediaQueryContext, useMediaQuery} from 'utilities/media-query';
 
@@ -12,7 +12,7 @@ describe('PolarisTestProvider', () => {
       </PolarisTestProvider>,
     );
 
-    expect(polarisTestProvider).not.toContainReactComponent(React.StrictMode);
+    expect(polarisTestProvider).not.toContainReactComponent(StrictMode);
   });
 
   it('renders in strict mode with strict', () => {
@@ -22,7 +22,7 @@ describe('PolarisTestProvider', () => {
       </PolarisTestProvider>,
     );
 
-    expect(polarisTestProvider).toContainReactComponent(React.StrictMode);
+    expect(polarisTestProvider).toContainReactComponent(StrictMode);
   });
 
   describe('MediaQueryContext', () => {

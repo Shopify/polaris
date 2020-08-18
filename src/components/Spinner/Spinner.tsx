@@ -87,9 +87,9 @@ export function Spinner({
   );
 
   return (
-    <React.Fragment>
+    <>
       <span className={className}>{spinnerSVGMarkup}</span>
       <span {...spanAttributes}>{accessibilityLabelMarkup}</span>
-    </React.Fragment>
+    </>
   );
 }

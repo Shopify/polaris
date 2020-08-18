@@ -1,9 +1,9 @@
-import React, {useRef, useCallback, useEffect} from 'react';
+import React, {useRef, useEffect} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
-import {Transition, CSSTransition} from '@material-ui/react-transition-group';
-import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+import {Transition, CSSTransition} from 'react-transition-group';
 
 import {classNames} from '../../../../utilities/css';
+import {focusFirstFocusableNode} from '../../../../utilities/focus';
 import {AnimationProps, Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {TrapFocus} from '../../../TrapFocus';
@@ -35,7 +35,6 @@ export function Dialog({
   ...props
 }: DialogProps) {
   const containerNode = useRef<HTMLDivElement>(null);
-  const findDOMNode = useCallback(() => containerNode.current, []);
   const classes = classNames(
     styles.Modal,
     large && styles.sizeLarge,
@@ -52,7 +51,7 @@ export function Dialog({
   return (
     <TransitionChild
       {...props}
-      findDOMNode={findDOMNode}
+      nodeRef={containerNode}
       mountOnEnter
       unmountOnExit
       timeout={durationBase}

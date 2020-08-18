@@ -303,6 +303,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 .newDesignLanguage {
   .Title {
     padding: spacing(tight) spacing();
+    font-weight: var(--p-button-font-weight);
 
     &::before {
       content: '';
@@ -318,6 +319,14 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .Tab {
     padding: spacing(tight) spacing(extra-tight);
+
+    &:hover,
+    &:active,
+    &:focus {
+      .Title {
+        font-weight: var(--p-button-font-weight);
+      }
+    }
   }
 
   .DisclosureActivator {

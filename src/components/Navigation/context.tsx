@@ -1,4 +1,4 @@
-import React from 'react';
+import {createContext} from 'react';
 
 interface NavigationContextType {
   location: string;
@@ -6,6 +6,6 @@ interface NavigationContextType {
   withinContentContainer?: boolean;
 }
 
-export const NavigationContext = React.createContext<NavigationContextType>({
+export const NavigationContext = createContext<NavigationContextType>({
   location: '',
 });

@@ -17,12 +17,17 @@ describe('I18n.translate', () => {
   });
 
   it('merges multiple dictionaries', () => {
-    const i18n = new I18n([
+    const translations: Record<string, string>[] = [
+      {one: 'un', two: 'deux', three: 'trois'},
       {one: 'one', two: 'two', three: 'three', fallback: 'fallback'},
-      {one: 'uno', two: 'deux', three: 'trois'},
-    ]);
-    expect(i18n.translate('one')).toBe('uno');
+    ];
+
+    const i18n = new I18n(translations);
+    expect(i18n.translate('one')).toBe('un');
     expect(i18n.translate('fallback')).toBe('fallback');
+
+    // Assert the original translations array is not mutated
+    expect(translations[0].two).toBe('deux');
   });
 
   it('uses replacements', () => {

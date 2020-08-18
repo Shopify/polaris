@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 import {mountWithApp} from 'test-utilities';
 
 import {useUniqueId} from '../hooks';
 
 function TestHarness({children}: {children: React.ReactNode}) {
-  return <React.Fragment>{children}</React.Fragment>;
+  return <>{children}</>;
 }
 
 const Component1 = () => <div id={useUniqueId()} />;
@@ -104,17 +104,17 @@ describe('useUniqueId', () => {
     );
 
     const ReRenderingTestHarness = () => {
-      const [count, setCount] = React.useState(1);
-      const incrementCount = React.useCallback(
+      const [count, setCount] = useState(1);
+      const incrementCount = useCallback(
         () => setCount((count) => count + 1),
         [],
       );
 
       return (
-        <React.Fragment>
+        <>
           <button onClick={incrementCount}>Click Me</button>
           <HasProp info={`count${count}`} />
-        </React.Fragment>
+        </>
       );
     };
 
@@ -143,8 +143,8 @@ describe('useUniqueId', () => {
     );
 
     const ReRenderingTestHarness = () => {
-      const [count, setCount] = React.useState(1);
-      const incrementCount = React.useCallback(
+      const [count, setCount] = useState(1);
+      const incrementCount = useCallback(
         () => setCount((count) => count + 1),
         [],
       );
@@ -152,10 +152,10 @@ describe('useUniqueId', () => {
       const override = count % 2 === 0 ? `Override${count}` : undefined;
 
       return (
-        <React.Fragment>
+        <>
           <button onClick={incrementCount}>Click Me</button>
           <HasProp info={`count${count}`} idOverride={override} />
-        </React.Fragment>
+        </>
       );
     };
 

@@ -72,6 +72,15 @@
         "friday": "金",
         "saturday": "土",
         "sunday": "日"
+      },
+      "days": {
+        "monday": "月曜日",
+        "tuesday": "火曜日",
+        "wednesday": "水曜日",
+        "thursday": "木曜日",
+        "friday": "金曜日",
+        "saturday": "土曜日",
+        "sunday": "日曜日"
       }
     },
     "DiscardConfirmationModal": {
@@ -204,7 +213,9 @@
           "on_or_after": "{date}以後"
         }
       },
-      "showingTotalCount": "{totalItemsCount}件の{resource}中、{itemsCount}件を表示中"
+      "showingTotalCount": "{totalItemsCount}件の{resource}中、{itemsCount}件を表示中",
+      "allFilteredItemsSelected": "この絞り込みの{itemsLength}と{resourceNamePlural}がすべて選択されます。",
+      "selectAllFilteredItems": "この絞り込みの{itemsLength}と{resourceNamePlural}をすべて選択する"
     },
     "SkeletonPage": {
       "loadingLabel": "ページの読み込み中"

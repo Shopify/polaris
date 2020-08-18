@@ -2,7 +2,5 @@
 #
 # These people should be aware of any changes made to it
 # to prevent any new helpers from sneaking in.
-/src/styles/foundation @BPScott @danrosenthal @tmlayton
-/src/styles/shared @BPScott @danrosenthal @tmlayton
-/src/styles/foundation.scss @BPScott @danrosenthal @tmlayton
-/src/styles/shared.scss @BPScott @danrosenthal @tmlayton
+/src/styles/foundation @BPScott
+/src/styles/shared @BPScott

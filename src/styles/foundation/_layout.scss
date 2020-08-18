@@ -1,5 +1,4 @@
 $navigation-width: 240px !default;
-$new-navigation-width: 258px;
 
 ////
 /// Layout
@@ -23,9 +22,6 @@ $layout-width-data: (
   ),
   nav: (
     base: rem($navigation-width),
-  ),
-  new-nav: (
-    base: rem($new-navigation-width),
   ),
   page-with-nav: (
     base: rem(769px),
@@ -61,10 +57,6 @@ $dismiss-icon-size: 32px;
 
 @function top-bar-height() {
   @return rem(56px);
-}
-
-@function new-top-bar-height() {
-  @return rem(68px);
 }
 
 @function mobile-nav-width() {

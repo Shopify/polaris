@@ -1,5 +1,6 @@
 @import '../../styles/common';
-$start-button-size: 60px;
+$start-button-size: rem(60px);
+$progress-bar-height: rem(6px);
 
 .Thumbnail {
   position: relative;
@@ -67,4 +68,31 @@ $start-button-size: 60px;
   background-color: var(--p-surface, color('ink'));
   opacity: 0.8;
   text-align: center;
+}
+
+.withProgress {
+  margin-bottom: spacing(base-tight);
+}
+
+.Progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: color('white');
+  height: $progress-bar-height;
+  overflow: hidden;
+}
+
+.Indicator {
+  height: inherit;
+  width: 100%;
+  transform-origin: left;
+  transform: scaleX(0);
+  background-color: var(--p-border-highlight, color('indigo'));
+  transition: transform duration(slowest) easing();
+}
+
+.ProgressBar,
+.Label {
+  @include visually-hidden;
 }

@@ -1,3 +1,3 @@
-import React from 'react';
+import {createContext} from 'react';
 
-export const WithinContentContext = React.createContext(false);
+export const WithinContentContext = createContext(false);
