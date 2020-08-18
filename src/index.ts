@@ -14,6 +14,7 @@ export type {
   HSBLAColor,
 } from './utilities/color-types';
 export {
+  colorToHsla,
   rgbToHex,
   rgbToHsb,
   rgbToHsl,
