@@ -245,7 +245,7 @@ import {
   ViewMinor,
 } from '@shopify/polaris-icons';
 
-export default { title: ${JSON.stringify(`All Components|${readme.name}`)} };
+export default { title: ${JSON.stringify(`All Components/${readme.name}`)} };
 
 ${csfExports.join('\n\n')}
 `;

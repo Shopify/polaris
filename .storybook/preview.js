@@ -1,6 +1,5 @@
 import React from 'react';
 import {addParameters, addDecorator} from '@storybook/react';
-import {setConsoleOptions} from '@storybook/addon-console';
 import {withContexts} from '@storybook/addon-contexts/react';
 import {color, withKnobs} from '@storybook/addon-knobs';
 import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
@@ -10,7 +9,7 @@ import enTranslations from '../locales/en.json';
 
 addParameters({
   options: {
-    // showRoots: true,
+    showRoots: true,
   },
   percy: {
     skip: true,
@@ -29,7 +28,7 @@ addDecorator(function PaddingDecorator(story) {
   return containsFrame ? (
     story()
   ) : (
-    <div style={{padding: '8px'}}>{story()}</div>
+    <div style={{padding: '1rem'}}>{story()}</div>
   );
 });
 
