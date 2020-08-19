@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.2.1 - 2020-08-18
+
+### Enhancements
+
+- Added `position: relative` to content container within Frame ([#3178](https://github.com/Shopify/polaris-react/pull/3178))
+
 ## 5.2.0 - 2020-08-12
 
 ### Enhancements
