@@ -7,7 +7,6 @@ import {Image} from '../Image';
 import {Stack} from '../Stack';
 
 import {emptySearch} from './illustrations';
-import styles from './EmptySearchResult.scss';
 
 export interface EmptySearchResultProps {
   title: string;
@@ -26,12 +25,7 @@ export function EmptySearchResult({
   const descriptionMarkup = description ? <p>{description}</p> : null;
 
   const illustrationMarkup = withIllustration ? (
-    <Image
-      alt={altText}
-      source={emptySearch}
-      className={styles.Image}
-      draggable={false}
-    />
+    <Image alt={altText} source={emptySearch} draggable={false} />
   ) : null;
 
   return (
