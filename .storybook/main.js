@@ -6,18 +6,12 @@ const postcssShopify = require('@shopify/postcss-plugin');
 // Use the version of webpack-bundle-analyzer (and other plugins/loaders) from
 // sewing-kit in order avoid a bunch of duplication in our devDependencies
 // eslint-disable-next-line node/no-extraneous-require, import/no-extraneous-dependencies
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
-
-const ICON_PATH_REGEX = /icons\//;
-const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 
 module.exports = {
   stories: ['../playground/stories.tsx', '../src/components/**/*/README.md'],
   addons: [
-    '@storybook/addon-viewport',
-    '@storybook/addon-actions',
-    '@storybook/addon-notes',
+    '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-contexts',
     '@storybook/addon-knobs',
@@ -29,8 +23,6 @@ module.exports = {
     // Without this there will be lots of "add 1 file and removed 1 file" notices.
     config.output.filename = '[name]-[hash].js';
 
-    const cacheDir = path.resolve(__dirname, '../build/cache/storybook');
-
     const extraRules = [
       {
         test: /src\/components\/.+\/README\.md$/,
@@ -38,37 +30,14 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: `${cacheDir}/markdown`,
+              cacheDirectory: path.resolve(
+                __dirname,
+                '../build/cache/storybook/markdown',
+              ),
             },
           },
           {
             loader: `${__dirname}/polaris-readme-loader.js`,
-          },
-        ],
-      },
-      {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: `${cacheDir}/typescript`,
-            },
-          },
-        ],
-      },
-      {
-        test(resource) {
-          return (
-            IMAGE_PATH_REGEX.test(resource) && !ICON_PATH_REGEX.test(resource)
-          );
-        },
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-            },
           },
         ],
       },
@@ -116,8 +85,6 @@ module.exports = {
       },
     });
 
-    config.module.rules = [config.module.rules[0], ...extraRules];
-
     if (isProduction) {
       config.plugins.push(
         new BundleAnalyzerPlugin({
@@ -136,7 +103,14 @@ module.exports = {
       );
     }
 
-    config.resolve.extensions.push('.ts', '.tsx');
+    config.module.rules = [
+      // Strip out existing rules that apply to md files
+      ...config.module.rules.filter(
+        (rule) => rule.test.toString() !== '/\\.md$/',
+      ),
+      ...extraRules,
+    ];
+
     config.resolve.alias = {
       ...config.resolve.alias,
       '@shopify/polaris': path.resolve(__dirname, '..', 'src'),
