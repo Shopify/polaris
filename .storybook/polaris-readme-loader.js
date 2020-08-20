@@ -86,6 +86,7 @@ ${example.storyName}.parameters = {
   );
 };
 AllExamples.parameters = {
+  docs: {disable: true},
   percy: {skip: false},
   chromatic: {disable: true},
 }`);
