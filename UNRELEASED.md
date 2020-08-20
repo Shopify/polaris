@@ -20,4 +20,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Updated Storybook to v6 ([#3184](https://github.com/Shopify/polaris-react/pull/3184))
+
 ### Deprecations
