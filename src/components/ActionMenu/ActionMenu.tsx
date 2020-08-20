@@ -1,12 +1,12 @@
-import React, {PureComponent} from 'react';
+import React, {useState} from 'react';
 
+import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
 import type {
   ActionListSection,
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../types';
-import {FeaturesContext} from '../../utilities/features';
 import {Button} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 
@@ -23,48 +23,28 @@ export interface ActionMenuProps {
   rollup?: boolean;
 }
 
-interface State {
-  activeMenuGroup?: string;
-}
+export function ActionMenu({
+  actions = [],
+  groups = [],
+  rollup,
+}: ActionMenuProps) {
+  const {newDesignLanguage} = useFeatures();
+  const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
+    undefined,
+  );
 
-export class ActionMenu extends PureComponent<ActionMenuProps, State> {
-  static contextType = FeaturesContext;
-  context!: React.ContextType<typeof FeaturesContext>;
-
-  state: State = {
-    activeMenuGroup: undefined,
-  };
-
-  render() {
-    const {actions = [], groups = [], rollup} = this.props;
-
-    if (actions.length === 0 && groups.length === 0) {
-      return null;
-    }
-
-    const actionMenuClassNames = classNames(
-      styles.ActionMenu,
-      rollup && styles.rollup,
-    );
-
-    const rollupSections = groups.map((group) => convertGroupToSection(group));
-
-    return (
-      <div className={actionMenuClassNames}>
-        {rollup ? (
-          <RollupActions items={actions} sections={rollupSections} />
-        ) : (
-          this.renderActions()
-        )}
-      </div>
-    );
+  if (actions.length === 0 && groups.length === 0) {
+    return null;
   }
 
-  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
-  private renderActions = () => {
-    const {newDesignLanguage} = this.context || {};
-    const {actions = [], groups = []} = this.props;
-    const {activeMenuGroup} = this.state;
+  const actionMenuClassNames = classNames(
+    styles.ActionMenu,
+    rollup && styles.rollup,
+  );
+
+  const rollupSections = groups.map((group) => convertGroupToSection(group));
+
+  function renderActions() {
     const menuActions = [...actions, ...groups];
 
     const overriddenActions = sortAndOverrideActionOrder(menuActions);
@@ -80,8 +60,8 @@ export class ActionMenu extends PureComponent<ActionMenuProps, State> {
             active={title === activeMenuGroup}
             actions={actions}
             {...rest}
-            onOpen={this.handleMenuGroupToggle}
-            onClose={this.handleMenuGroupClose}
+            onOpen={handleMenuGroupToggle}
+            onClose={handleMenuGroupClose}
           />
         ) : null;
       }
@@ -110,17 +90,25 @@ export class ActionMenu extends PureComponent<ActionMenuProps, State> {
         )}
       </div>
     );
-  };
+  }
 
-  private handleMenuGroupToggle = (group: string) => {
-    this.setState(({activeMenuGroup}) => ({
-      activeMenuGroup: activeMenuGroup ? undefined : group,
-    }));
-  };
+  function handleMenuGroupToggle(group: string) {
+    setActiveMenuGroup(activeMenuGroup ? undefined : group);
+  }
 
-  private handleMenuGroupClose = () => {
-    this.setState({activeMenuGroup: undefined});
-  };
+  function handleMenuGroupClose() {
+    setActiveMenuGroup(undefined);
+  }
+
+  return (
+    <div className={actionMenuClassNames}>
+      {rollup ? (
+        <RollupActions items={actions} sections={rollupSections} />
+      ) : (
+        renderActions()
+      )}
+    </div>
+  );
 }
 
 export function hasGroupsWithActions(groups: ActionMenuProps['groups'] = []) {
