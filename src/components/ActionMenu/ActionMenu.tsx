@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import {classNames} from '../../utilities/css';
 import type {
@@ -27,7 +27,7 @@ interface State {
   activeMenuGroup?: string;
 }
 
-export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
+export class ActionMenu extends PureComponent<ActionMenuProps, State> {
   static contextType = FeaturesContext;
   context!: React.ContextType<typeof FeaturesContext>;
 
@@ -60,6 +60,7 @@ export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
     );
   }
 
+  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderActions = () => {
     const {newDesignLanguage} = this.context || {};
     const {actions = [], groups = []} = this.props;
@@ -85,13 +86,18 @@ export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
         ) : null;
       }
 
-      const {content, ...rest} = action;
+      const {content, onAction, ...rest} = action;
       return newDesignLanguage ? (
-        <Button key={index} {...rest}>
+        <Button key={index} onClick={onAction} {...rest}>
           {content}
         </Button>
       ) : (
-        <MenuAction key={`MenuAction-${index}`} content={content} {...rest} />
+        <MenuAction
+          key={`MenuAction-${index}`}
+          content={content}
+          onAction={onAction}
+          {...rest}
+        />
       );
     });
 

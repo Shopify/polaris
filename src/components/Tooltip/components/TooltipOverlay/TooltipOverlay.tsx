@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {layer} from '../../../shared';
@@ -12,35 +12,41 @@ export interface TooltipOverlayProps {
   id: string;
   active: boolean;
   light?: boolean;
+  preventInteraction?: PositionedOverlayProps['preventInteraction'];
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   children?: React.ReactNode;
   activator: HTMLElement;
   onClose(): void;
 }
 
-export class TooltipOverlay extends React.PureComponent<
-  TooltipOverlayProps,
-  never
-> {
+export class TooltipOverlay extends PureComponent<TooltipOverlayProps, never> {
   render() {
     const markup = this.props.active ? this.renderOverlay() : null;
 
     return markup;
   }
 
+  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderOverlay = () => {
-    const {active, activator, preferredPosition = 'below'} = this.props;
+    const {
+      active,
+      activator,
+      preferredPosition = 'below',
+      preventInteraction,
+    } = this.props;
 
     return (
       <PositionedOverlay
         active={active}
         activator={activator}
         preferredPosition={preferredPosition}
+        preventInteraction={preventInteraction}
         render={this.renderTooltip}
       />
     );
   };
 
+  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderTooltip: PositionedOverlayProps['render'] = (
     overlayDetails,
   ) => {

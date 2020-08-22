@@ -14,7 +14,7 @@ keywords:
 
 # Navigation
 
-The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/structure/frame) of any non-embedded application. Navigation includes a list of links that merchants use to move between sections of the application.
+The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/structure/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application.
 
 ---
 

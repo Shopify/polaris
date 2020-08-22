@@ -4,7 +4,7 @@ export interface TabDescriptor {
   /** A destination to link to */
   url?: string;
   /** Content for the tab */
-  content: string;
+  content: React.ReactNode;
   /** A unique identifier for the panel */
   panelID?: string;
   /** Visually hidden text for screen readers */

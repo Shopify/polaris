@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent, createRef} from 'react';
 import {
   CancelSmallMinor,
   CircleTickMajorTwotone,
@@ -55,7 +55,7 @@ export interface BannerProps {
   stopAnnouncements?: boolean;
 }
 
-export class Banner extends React.PureComponent<BannerProps, State> {
+export class Banner extends PureComponent<BannerProps, State> {
   static contextType = FeaturesContext;
   context!: React.ContextType<typeof FeaturesContext>;
 
@@ -63,7 +63,7 @@ export class Banner extends React.PureComponent<BannerProps, State> {
     showFocus: false,
   };
 
-  private wrapper = React.createRef<HTMLDivElement>();
+  private wrapper = createRef<HTMLDivElement>();
 
   public focus() {
     this.wrapper.current && this.wrapper.current.focus();

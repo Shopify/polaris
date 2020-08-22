@@ -1,7 +1,7 @@
 const path = require('path');
 const spawn = require('child_process').spawn;
 
-const postcssShopify = require('postcss-shopify');
+const postcssShopify = require('@shopify/postcss-plugin');
 
 // Use the version of webpack-bundle-analyzer (and other plugins/loaders) from
 // sewing-kit in order avoid a bunch of duplication in our devDependencies
@@ -24,13 +24,6 @@ module.exports = {
   ],
   webpackFinal: (config) => {
     const isProduction = config.mode === 'production';
-
-    // When transpiling TS using isolatedModules, the compiler doesn't strip
-    // out exported types as it doesn't know if an item is a type or not.
-    // Ignore those warnings as we don't care about them.
-    const stats = {warningsFilter: /export .* was not found in/};
-    config.stats = stats;
-    config.devServer = {stats};
 
     // Shrink ray only strips hashes when comparing filenames with this format.
     // Without this there will be lots of "add 1 file and removed 1 file" notices.

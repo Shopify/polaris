@@ -72,6 +72,15 @@
         "friday": "Sex",
         "saturday": "Sáb",
         "sunday": "Dom"
+      },
+      "days": {
+        "monday": "Segunda",
+        "tuesday": "Terça",
+        "wednesday": "Quarta",
+        "thursday": "Quinta",
+        "friday": "Sexta",
+        "saturday": "Sábado",
+        "sunday": "Domingo"
       }
     },
     "DiscardConfirmationModal": {
@@ -204,7 +213,9 @@
           "on_or_after": "depois de {date}"
         }
       },
-      "showingTotalCount": "Mostrando {itemsCount} de {totalItemsCount} {resource}"
+      "showingTotalCount": "Mostrando {itemsCount} de {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Todos os {itemsLength} + {resourceNamePlural} neste filtro estão selecionados.",
+      "selectAllFilteredItems": "Selecionar todos os {itemsLength} + {resourceNamePlural} neste filtro"
     },
     "SkeletonPage": {
       "loadingLabel": "Página carregando"

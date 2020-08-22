@@ -2,6 +2,7 @@ import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {ButtonGroup} from '../ButtonGroup';
@@ -58,7 +59,7 @@ export const Card: React.FunctionComponent<CardProps> & {
   footerActionAlignment = 'right',
 }: CardProps) {
   const i18n = useI18n();
-
+  const {newDesignLanguage} = useFeatures();
   const {
     value: secondaryActionsPopoverOpen,
     toggle: toggleSecondaryActionsPopoverOpen,
@@ -68,6 +69,7 @@ export const Card: React.FunctionComponent<CardProps> & {
     styles.Card,
     subdued && styles.subdued,
     recessed && styles.recessed,
+    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const headerMarkup =
@@ -85,7 +87,7 @@ export const Card: React.FunctionComponent<CardProps> & {
       secondaryFooterActionsMarkup = buttonFrom(secondaryFooterActions[0]);
     } else {
       secondaryFooterActionsMarkup = (
-        <React.Fragment>
+        <>
           <Popover
             active={secondaryActionsPopoverOpen}
             activator={
@@ -98,7 +100,7 @@ export const Card: React.FunctionComponent<CardProps> & {
           >
             <ActionList items={secondaryFooterActions} />
           </Popover>
-        </React.Fragment>
+        </>
       );
     }
   }

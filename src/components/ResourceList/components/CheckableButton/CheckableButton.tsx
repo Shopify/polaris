@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useContext, useRef, useEffect} from 'react';
 
 import type {CheckboxHandles} from '../../../../types';
 import {useFeatures} from '../../../../utilities/features';
@@ -37,7 +37,7 @@ export function CheckableButton({
   const checkBoxRef = useRef<CheckboxHandles>(null);
   const {newDesignLanguage} = useFeatures();
 
-  const {registerCheckableButtons} = React.useContext(ResourceListContext);
+  const {registerCheckableButtons} = useContext(ResourceListContext);
 
   let currentKey: CheckableButtonKey = 'bulkLg';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import {createContext} from 'react';
 
 export interface FocusManagerContextType {
   trapFocusList: string[];
@@ -6,6 +6,6 @@ export interface FocusManagerContextType {
   remove: (id: string) => boolean;
 }
 
-export const FocusManagerContext = React.createContext<
+export const FocusManagerContext = createContext<
   FocusManagerContextType | undefined
 >(undefined);

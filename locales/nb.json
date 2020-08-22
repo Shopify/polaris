@@ -72,6 +72,15 @@
         "friday": "fre",
         "saturday": "lør",
         "sunday": "søn"
+      },
+      "days": {
+        "monday": "Mandag",
+        "tuesday": "Tirsdag",
+        "wednesday": "Onsdag",
+        "thursday": "Torsdag",
+        "friday": "Fredag",
+        "saturday": "Lørdag",
+        "sunday": "Søndag"
       }
     },
     "DiscardConfirmationModal": {
@@ -204,7 +213,9 @@
           "on_or_after": "etter {date}"
         }
       },
-      "showingTotalCount": "Viser {itemsCount} av {totalItemsCount} {resource}"
+      "showingTotalCount": "Viser {itemsCount} av {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} i dette filteret er valgt.",
+      "selectAllFilteredItems": "Velg alle {itemsLength}+ {resourceNamePlural} i dette filteret"
     },
     "SkeletonPage": {
       "loadingLabel": "Siden laster"

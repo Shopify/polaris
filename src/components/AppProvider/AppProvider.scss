@@ -1,7 +1,8 @@
-// This file is the global CSS that must be included by all applications
-// that consume polaris-react. Per component styling relies on these base styles.
+// These are global styles that must be included by all apps that consume
+// polaris-react. As the AppProvider is a required wrapper when using polaris
+// components then this css shall always be present.
 
-@import './common';
+@import '../../styles/common';
 
 :root {
   --polaris-version-number: '{{POLARIS_VERSION}}';

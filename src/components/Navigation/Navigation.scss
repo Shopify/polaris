@@ -4,7 +4,7 @@
 // Base Navigation styles
 $active-indicator-width: rem(3px);
 $nav-max-width: rem(360px);
-$new-nav-max-width: rem(258px);
+
 .Navigation {
   display: flex;
   flex-direction: column;
@@ -30,7 +30,6 @@ $new-nav-max-width: rem(258px);
   }
 
   &.Navigation-newDesignLanguage {
-    max-width: $new-nav-max-width;
     border-right: 1px solid var(--p-border-subdued);
   }
 }
@@ -49,7 +48,7 @@ $new-nav-max-width: rem(258px);
 
     .Navigation-newDesignLanguage & {
       display: block;
-      min-height: new-top-bar-height();
+      min-height: var(--p-top-bar-height);
     }
   }
 }
@@ -67,11 +66,11 @@ $new-nav-max-width: rem(258px);
   display: none;
   @include breakpoint-after(nav-min-window-corrected()) {
     display: flex;
-    flex: 0 0 new-top-bar-height();
+    flex: 0 0 var(--p-top-bar-height);
     align-items: center;
     height: 100%;
     padding: 0 spacing(tight) 0 spacing(base);
-    @include safe-area-for(flex-basis, new-top-bar-height(), left);
+    @include safe-area-for(flex-basis, var(--p-top-bar-height), left);
     @include safe-area-for(padding-left, spacing(), left);
   }
 }
@@ -101,7 +100,6 @@ $disabled-fade: 0.6;
       border-top-right-radius: var(--p-border-radius-base);
       border-bottom-right-radius: var(--p-border-radius-base);
       transform: translateX(-100%);
-      transition: transform var(--p-duration-1-5-0) var(--p-ease);
     }
   }
 }
@@ -109,10 +107,7 @@ $disabled-fade: 0.6;
 .Item-selected {
   font-weight: 600;
   color: var(--p-action-primary, color('indigo', 'dark'));
-  background-color: var(
-    --p-surface-primary-selected,
-    $item-selected-background
-  );
+  background-color: var(--p-surface-hovered, $item-selected-background);
 
   .Navigation-newDesignLanguage & {
     &::before {
@@ -133,10 +128,7 @@ $disabled-fade: 0.6;
   }
   // stylelint-enable selector-max-specificity
   &:hover {
-    background-color: var(
-      --p-surface-primary-selected-hovered,
-      $item-selected-background
-    );
+    background-color: var(--p-surface-hovered, $item-selected-background);
     color: var(--p-action-primary-hovered, color('indigo', 'dark'));
   }
 
@@ -153,7 +145,14 @@ $disabled-fade: 0.6;
     .Navigation-newDesignLanguage & {
       @include recolor-icon(var(--p-action-primary-pressed));
       color: var(--p-action-primary-pressed);
-      background-color: var(--p-surface-primary-selected-pressed);
+      background-color: var(--p-surface-pressed);
+    }
+  }
+  &:focus:hover {
+    // stylelint-disable-next-line selector-max-specificity
+    .Navigation-newDesignLanguage & {
+      @include recolor-icon(var(--p-action-primary));
+      color: var(--p-action-primary, color('indigo', 'dark'));
     }
   }
 }
@@ -187,6 +186,15 @@ $disabled-fade: 0.6;
 
 .ListItem {
   @include nav-listitem-attributes;
+
+  .Navigation-newDesignLanguage & {
+    &:not(:first-child) {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
+      .Item {
+        border-top: 1px solid var(--p-surface);
+      }
+    }
+  }
 }
 
 .ListItem-hasAction .Item {
@@ -319,7 +327,7 @@ $secondary-item-font-size: rem(15px);
     }
 
     &:hover {
-      color: var(--p-action-primary, color('indigo', 'dark'));
+      color: var(--p-text-subdued, color('indigo', 'dark'));
     }
 
     &:focus {
@@ -331,7 +339,7 @@ $secondary-item-font-size: rem(15px);
     }
     &:active,
     &:active:hover {
-      color: var(--p-action-primary-pressed, color('indigo', 'dark'));
+      color: var(--p-text, color('indigo', 'dark'));
       @include no-focus-ring;
     }
     // stylelint-enable selector-max-specificity
@@ -413,7 +421,15 @@ $secondary-item-font-size: rem(15px);
   align-items: center;
   min-height: nav(desktop-nav-height);
   padding-left: spacing();
-  color: var(--p-text-subdued, color('ink', 'lighter'));
+
+  .Text {
+    font-size: font-size(subheading);
+    color: var(--p-text-subdued, color('ink', 'lighter'));
+
+    @include when-typography-not-condensed {
+      font-size: font-size(subheading, large-screen);
+    }
+  }
 
   .Action {
     @include unstyled-button;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';

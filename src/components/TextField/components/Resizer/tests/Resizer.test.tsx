@@ -1,4 +1,5 @@
 import React from 'react';
+import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {
   mountWithAppProvider,
@@ -14,18 +15,13 @@ describe('<Resizer />', () => {
     onHeightChange: noop,
     contents: 'Contents',
   };
-  let requestAnimationFrameSpy: jest.SpyInstance;
 
   beforeEach(() => {
-    requestAnimationFrameSpy = jest.spyOn(window, 'requestAnimationFrame');
-    requestAnimationFrameSpy.mockImplementation((cb) => {
-      cb();
-      return 1;
-    });
+    animationFrame.mock();
   });
 
   afterEach(() => {
-    requestAnimationFrameSpy.mockRestore();
+    animationFrame.restore();
   });
 
   it('cancels existing animationFrame on update', () => {
@@ -112,6 +108,14 @@ describe('<Resizer />', () => {
   });
 
   describe('onHeightChange()', () => {
+    beforeEach(() => {
+      dimension.mock({offsetHeight: 30});
+    });
+
+    afterEach(() => {
+      dimension.restore();
+    });
+
     it('is called on mount if minimumLines is provided', () => {
       const spy = jest.fn();
       mountWithAppProvider(
@@ -122,19 +126,17 @@ describe('<Resizer />', () => {
           minimumLines={3}
         />,
       );
-      expect(spy).toHaveBeenCalledWith(0);
+      animationFrame.runFrame();
+      expect(spy).toHaveBeenCalledWith(30);
     });
 
     it('is not called on mount if minimumLines is not provided', () => {
-      const onHeightChangeSpy = jest.fn();
+      const spy = jest.fn();
       mountWithAppProvider(
-        <Resizer
-          {...mockProps}
-          currentHeight={50}
-          onHeightChange={onHeightChangeSpy}
-        />,
+        <Resizer {...mockProps} currentHeight={50} onHeightChange={spy} />,
       );
-      expect(onHeightChangeSpy).not.toHaveBeenCalled();
+      animationFrame.runFrame();
+      expect(spy).not.toHaveBeenCalled();
     });
 
     it('is not called on mount if currentHeight is the same as DOM height', () => {
@@ -142,17 +144,18 @@ describe('<Resizer />', () => {
       mountWithAppProvider(
         <Resizer
           {...mockProps}
-          currentHeight={0}
+          currentHeight={30}
           onHeightChange={spy}
           minimumLines={3}
         />,
       );
+      animationFrame.runFrame();
       expect(spy).not.toHaveBeenCalled();
     });
 
     it('is called again on resize', () => {
       const spy = jest.fn();
-      const currentHeight = 0;
+      const currentHeight = 50;
       const resizer = mountWithAppProvider(
         <Resizer
           {...mockProps}
@@ -163,7 +166,8 @@ describe('<Resizer />', () => {
       );
       resizer.setProps({currentHeight: 1});
       trigger(resizer.find(EventListener), 'handler');
-      expect(spy).toHaveBeenCalledWith(0);
+      animationFrame.runFrame();
+      expect(spy).toHaveBeenCalledWith(30);
     });
 
     it('is not called again on resize if minimumLines is not provided', () => {
@@ -178,6 +182,7 @@ describe('<Resizer />', () => {
       );
       resizer.setProps({currentHeight: 1});
       trigger(resizer.find(EventListener), 'handler');
+      animationFrame.runFrame();
       expect(spy).toHaveBeenCalledTimes(0);
     });
   });
@@ -194,6 +199,7 @@ describe('<Resizer />', () => {
     );
     resizer.setProps({currentHeight: 1});
     trigger(resizer.find(EventListener), 'handler');
+    animationFrame.runFrame();
     expect(spy).toHaveBeenCalledTimes(0);
   });
 

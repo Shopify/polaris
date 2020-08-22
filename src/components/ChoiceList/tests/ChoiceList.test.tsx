@@ -34,9 +34,9 @@ describe('<ChoiceList />', () => {
 
     it('renders a legend containing JSX for the fieldset', () => {
       const TitleComponent = () => (
-        <React.Fragment>
+        <>
           JSX <b>title</b>
-        </React.Fragment>
+        </>
       );
 
       const element = mountWithApp(
@@ -72,9 +72,9 @@ describe('<ChoiceList />', () => {
     it('renders choices with labels containing JSX', () => {
       const jsxLabel = <b>Two</b>;
       const ComponentLabel = () => (
-        <React.Fragment>
+        <>
           Label <i>one</i>
-        </React.Fragment>
+        </>
       );
 
       choices = [

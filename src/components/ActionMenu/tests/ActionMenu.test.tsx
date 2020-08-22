@@ -388,6 +388,21 @@ describe('<ActionMenu />', () => {
       expect(wrapper.find(MenuAction)).toHaveLength(0);
     });
 
+    it('action callbacks are passed through to Button', () => {
+      const spy = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <ActionMenu
+          {...mockProps}
+          actions={[{content: 'mock', onAction: spy}]}
+        />,
+        {features: {newDesignLanguage: true}},
+      );
+
+      trigger(wrapper.find(Button), 'onClick');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
     it('uses MenuAction instead of Button and ButtonGroup as subcomponents when disabled', () => {
       const wrapper = mountWithAppProvider(
         <ActionMenu {...mockProps} actions={mockActions} />,
@@ -398,6 +413,20 @@ describe('<ActionMenu />', () => {
       expect(wrapper.find(Button)).toHaveLength(0);
       expect(wrapper.find(ButtonGroup)).toHaveLength(0);
     });
+
+    it('action callbacks are passed through to MenuAction', () => {
+      const spy = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <ActionMenu
+          {...mockProps}
+          actions={[{content: 'mock', onAction: spy}]}
+        />,
+      );
+
+      trigger(wrapper.find(MenuAction), 'onAction');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
   });
 });
 
@@ -405,7 +434,6 @@ function fillMenuGroup(partialMenuGroup?: Partial<MenuGroupDescriptor>) {
   const mockAction: ActionListItemDescriptor = {
     content: 'mock content',
     url: 'https://shopify.ca',
-    target: 'REMOTE',
   };
 
   return {

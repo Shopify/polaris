@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Children, isValidElement} from 'react';
 
 // Wraps `element` in `Component`, if it is not already an instance of
 // `Component`. If `props` is passed, those will be added as props on the
@@ -38,7 +38,7 @@ export function isElementOfType<P>(
 ): boolean {
   if (
     element == null ||
-    !React.isValidElement(element) ||
+    !isValidElement(element) ||
     typeof element.type === 'string'
   ) {
     return false;
@@ -58,8 +58,8 @@ export function elementChildren<T extends React.ReactElement<{}>>(
   children: React.ReactNode,
   predicate: (element: T) => boolean = () => true,
 ): T[] {
-  return React.Children.toArray(children).filter(
-    (child) => React.isValidElement(child) && predicate(child as T),
+  return Children.toArray(children).filter(
+    (child) => isValidElement(child) && predicate(child as T),
   ) as T[];
 }
 

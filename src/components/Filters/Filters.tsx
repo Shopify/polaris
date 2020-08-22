@@ -1,5 +1,4 @@
-import React, {createRef} from 'react';
-import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+import React, {Component, createRef} from 'react';
 import {
   SearchMinor,
   ChevronUpMinor,
@@ -8,12 +7,11 @@ import {
 } from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../utilities/with-app-provider';
 import {ResourceListContext} from '../../utilities/resource-list';
+import {useI18n} from '../../utilities/i18n';
+import {useMediaQuery} from '../../utilities/media-query';
 import {useFeatures} from '../../utilities/features';
+import {focusFirstFocusableNode} from '../../utilities/focus';
 import {Button} from '../Button';
 import {DisplayText} from '../DisplayText';
 import {Collapsible} from '../Collapsible';
@@ -91,8 +89,11 @@ export interface FiltersProps {
   hideTextField?: boolean;
 }
 
-type ComposedProps = FiltersProps &
-  WithAppProviderProps & {newDesignLanguage: boolean};
+type CombinedProps = FiltersProps & {
+  i18n: ReturnType<typeof useI18n>;
+  mediaQuery: ReturnType<typeof useMediaQuery>;
+  features: ReturnType<typeof useFeatures>;
+};
 
 interface State {
   open: boolean;
@@ -105,7 +106,7 @@ enum Suffix {
   Shortcut = 'Shortcut',
 }
 
-class FiltersInner extends React.Component<ComposedProps, State> {
+class FiltersInner extends Component<CombinedProps, State> {
   static contextType = ResourceListContext;
 
   state: State = {
@@ -126,10 +127,6 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       focused,
       onClearAll,
       appliedFilters,
-      polaris: {
-        intl,
-        mediaQuery: {isNavigationCollapsed},
-      },
       onQueryClear,
       queryPlaceholder,
       children,
@@ -137,20 +134,22 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       helpText,
       hideTags,
       hideTextField,
-      newDesignLanguage,
+      features: {newDesignLanguage},
+      i18n,
+      mediaQuery: {isNavigationCollapsed},
     } = this.props;
     const {resourceName} = this.context;
     const {open, readyForFocus} = this.state;
 
     const backdropMarkup = open ? (
-      <React.Fragment>
+      <>
         <ScrollLock />
         <div
           className={styles.Backdrop}
           onClick={this.closeFilters}
           testID="Backdrop"
         />
-      </React.Fragment>
+      </>
     ) : null;
 
     const filtersContentMarkup = filters.map((filter, index) => {
@@ -222,17 +221,12 @@ class FiltersInner extends React.Component<ComposedProps, State> {
     });
 
     const appliedFiltersCount = appliedFilters ? appliedFilters.length : 0;
-    const moreFiltersLabel = filters.every((f) => !f.shortcut)
-      ? appliedFiltersCount > 0
-        ? intl.translate('Polaris.Filters.editFiltersWithCount', {
+    const moreFiltersLabel =
+      hideTags && appliedFiltersCount > 0
+        ? i18n.translate('Polaris.Filters.moreFiltersWithCount', {
             count: appliedFiltersCount,
           })
-        : intl.translate('Polaris.Filters.editFilters')
-      : hideTags && appliedFiltersCount > 0
-      ? intl.translate('Polaris.Filters.moreFiltersWithCount', {
-          count: appliedFiltersCount,
-        })
-      : intl.translate('Polaris.Filters.moreFilters');
+        : i18n.translate('Polaris.Filters.moreFilters');
 
     const rightActionMarkup = (
       <div ref={this.moreFiltersButtonContainer}>
@@ -247,8 +241,8 @@ class FiltersInner extends React.Component<ComposedProps, State> {
     );
 
     const filterResourceName = resourceName || {
-      singular: intl.translate('Polaris.ResourceList.defaultItemSingular'),
-      plural: intl.translate('Polaris.ResourceList.defaultItemPlural'),
+      singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
+      plural: i18n.translate('Polaris.ResourceList.defaultItemPlural'),
     };
 
     const transformedFilters = this.transformFilters(filters);
@@ -261,36 +255,34 @@ class FiltersInner extends React.Component<ComposedProps, State> {
         disabled={disabled}
         forceShowMorefiltersButton={filters.length > transformedFilters.length}
       >
-        {!hideTextField ? (
-          <TextField
-            placeholder={
-              queryPlaceholder ||
-              intl.translate('Polaris.Filters.filter', {
-                resourceName: filterResourceName.plural,
-              })
-            }
-            onChange={onQueryChange}
-            onBlur={onQueryBlur}
-            onFocus={onQueryFocus}
-            value={queryValue}
-            focused={focused}
-            label={
-              queryPlaceholder ||
-              intl.translate('Polaris.Filters.filter', {
-                resourceName: filterResourceName.plural,
-              })
-            }
-            labelHidden
-            prefix={
-              <span className={styles.SearchIcon}>
-                <Icon source={SearchMinor} />
-              </span>
-            }
-            clearButton
-            onClearButtonClick={onQueryClear}
-            disabled={disabled}
-          />
-        ) : null}
+        {!hideTextField ? <TextField
+          placeholder={
+            queryPlaceholder ||
+            i18n.translate('Polaris.Filters.filter', {
+              resourceName: filterResourceName.plural,
+            })
+          }
+          onChange={onQueryChange}
+          onBlur={onQueryBlur}
+          onFocus={onQueryFocus}
+          value={queryValue}
+          focused={focused}
+          label={
+            queryPlaceholder ||
+            i18n.translate('Polaris.Filters.filter', {
+              resourceName: filterResourceName.plural,
+            })
+          }
+          labelHidden
+          prefix={
+            <span className={styles.SearchIcon}>
+              <Icon source={SearchMinor} />
+            </span>
+          }
+          clearButton
+          onClearButtonClick={onQueryClear}
+          disabled={disabled}
+        /> : null}
       </ConnectedFilterControl>
     );
 
@@ -305,7 +297,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
         <Button
           icon={CancelSmallMinor}
           plain
-          accessibilityLabel={intl.translate('Polaris.Filters.cancel')}
+          accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
         />
       </div>
@@ -316,12 +308,12 @@ class FiltersInner extends React.Component<ComposedProps, State> {
         <Button
           icon={CancelSmallMinor}
           plain
-          accessibilityLabel={intl.translate('Polaris.Filters.cancel')}
+          accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
         />
         <DisplayText size="small">{moreFiltersLabel}</DisplayText>
         <Button onClick={this.closeFilters} primary>
-          {intl.translate('Polaris.Filters.done')}
+          {i18n.translate('Polaris.Filters.done')}
         </Button>
       </div>
     );
@@ -334,10 +326,10 @@ class FiltersInner extends React.Component<ComposedProps, State> {
     const filtersDesktopFooterMarkup = (
       <div className={filtersDesktopFooterClassname}>
         <Button onClick={onClearAll} disabled={!this.hasAppliedFilters()}>
-          {intl.translate('Polaris.Filters.clearAllFilters')}
+          {i18n.translate('Polaris.Filters.clearAllFilters')}
         </Button>
         <Button onClick={this.closeFilters} primary>
-          {intl.translate('Polaris.Filters.done')}
+          {i18n.translate('Polaris.Filters.done')}
         </Button>
       </div>
     );
@@ -346,12 +338,12 @@ class FiltersInner extends React.Component<ComposedProps, State> {
       <div className={styles.FiltersMobileContainerFooter}>
         {this.hasAppliedFilters() ? (
           <Button onClick={onClearAll} fullWidth>
-            {intl.translate('Polaris.Filters.clearAllFilters')}
+            {i18n.translate('Polaris.Filters.clearAllFilters')}
           </Button>
         ) : (
           <div className={styles.EmptyFooterState}>
             <TextStyle variation="subdued">
-              <p>{intl.translate('Polaris.Filters.noFiltersApplied')}</p>
+              <p>{i18n.translate('Polaris.Filters.noFiltersApplied')}</p>
             </TextStyle>
           </div>
         )}
@@ -547,7 +539,7 @@ class FiltersInner extends React.Component<ComposedProps, State> {
   }
 
   private generateFilterMarkup(filter: FilterInterface) {
-    const intl = this.props.polaris.intl;
+    const i18n = this.props.i18n;
     const removeCallback = this.getAppliedFilterRemoveHandler(filter.key);
     const removeHandler =
       removeCallback == null
@@ -563,11 +555,11 @@ class FiltersInner extends React.Component<ComposedProps, State> {
             plain
             disabled={removeHandler == null}
             onClick={removeHandler}
-            accessibilityLabel={intl.translate('Polaris.Filters.clearLabel', {
+            accessibilityLabel={i18n.translate('Polaris.Filters.clearLabel', {
               filterName: filter.label,
             })}
           >
-            {intl.translate('Polaris.Filters.clear')}
+            {i18n.translate('Polaris.Filters.clear')}
           </Button>
         </Stack>
       </div>
@@ -579,9 +571,17 @@ function getShortcutFilters(filters: FilterInterface[]) {
   return filters.filter((filter) => filter.shortcut === true);
 }
 
-function FiltersInnerWrapper(props: ComposedProps) {
-  const {newDesignLanguage} = useFeatures();
-  return <FiltersInner {...props} newDesignLanguage={newDesignLanguage} />;
-}
+export function Filters(props: FiltersProps) {
+  const i18n = useI18n();
+  const mediaQuery = useMediaQuery();
+  const features = useFeatures();
 
-export const Filters = withAppProvider<FiltersProps>()(FiltersInnerWrapper);
+  return (
+    <FiltersInner
+      {...props}
+      i18n={i18n}
+      mediaQuery={mediaQuery}
+      features={features}
+    />
+  );
+}

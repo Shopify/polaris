@@ -16,6 +16,7 @@
 .HelpText {
   @include text-style-body;
   @include text-emphasis-subdued;
+  @include text-breakword;
   margin-top: spacing(extra-tight);
 }
 

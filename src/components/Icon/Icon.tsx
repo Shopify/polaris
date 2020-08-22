@@ -8,6 +8,7 @@ import {IconProps, isNewDesignLanguageColor} from '../../types';
 import styles from './Icon.scss';
 
 const COLORS_WITH_BACKDROPS = [
+  'blueDark',
   'teal',
   'tealDark',
   'greenDark',

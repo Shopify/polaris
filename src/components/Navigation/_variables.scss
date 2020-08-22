@@ -155,6 +155,7 @@ $nav-animation-variables: (
   .Navigation-newDesignLanguage & {
     margin-top: spacing(tight);
     margin-bottom: spacing(tight);
+    margin-right: spacing();
   }
   .Item-selected &,
   .Item-selected:hover &,
@@ -208,6 +209,7 @@ $nav-animation-variables: (
   .Navigation-newDesignLanguage & {
     margin-top: spacing(tight);
     margin-bottom: spacing(tight);
+    font-size: $item-font-size-small;
   }
 }
 

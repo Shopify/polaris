@@ -25,11 +25,11 @@ describe('ScrollLock', () => {
       const scrollLockMarkup = showScrollLock ? <ScrollLock /> : null;
 
       return (
-        <React.Fragment>
+        <>
           <button onClick={setScollLockFalse} />
           {scrollLockMarkup}
           <ScrollLock />
-        </React.Fragment>
+        </>
       );
     }
 

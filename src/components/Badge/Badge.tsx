@@ -109,7 +109,7 @@ export function Badge({
     <span className={className}>
       {statusLabelMarkup}
       {pipMarkup}
-      <span className={styles.Content}>{children}</span>
+      {children}
     </span>
   );
 }

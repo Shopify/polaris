@@ -72,6 +72,15 @@
         "friday": "Pt",
         "saturday": "Sb",
         "sunday": "Nd"
+      },
+      "days": {
+        "monday": "Poniedziałek",
+        "tuesday": "Wtorek",
+        "wednesday": "Środa",
+        "thursday": "Czwartek",
+        "friday": "Piątek",
+        "saturday": "Sobota",
+        "sunday": "Niedziela"
       }
     },
     "DiscardConfirmationModal": {
@@ -204,7 +213,9 @@
           "on_or_after": "po {date}"
         }
       },
-      "showingTotalCount": "Wyświetlanie {itemsCount} z {totalItemsCount} {resource}"
+      "showingTotalCount": "Wyświetlanie {itemsCount} z {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze są zaznaczone.",
+      "selectAllFilteredItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze"
     },
     "SkeletonPage": {
       "loadingLabel": "Ładowanie strony"
@@ -275,7 +286,9 @@
           },
           "seconds": {
             "other": "Liczba sekund: {secondCount}",
-            "one": "{secondCount} sekunda"
+            "one": "{secondCount} sekunda",
+            "few": "Liczba sekund: {secondCount}",
+            "many": "Liczba sekund: {secondCount}"
           }
         }
       }

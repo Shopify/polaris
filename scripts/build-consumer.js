@@ -27,7 +27,9 @@ const files = [
   'README.md',
   'LICENSE.md',
   'CHANGELOG.md',
-  ...packageJSON.files,
+  // Handle exclusions in the files array by ignoring them
+  // This is a little inefficient but not the end of the world
+  ...packageJSON.files.filter((filename) => !filename.startsWith('!')),
 ];
 
 console.log('Cleaning up old build...');
