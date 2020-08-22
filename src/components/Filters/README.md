@@ -340,7 +340,7 @@ function ResourceListFiltersExample() {
 
 ```jsx
 function DataTableFiltersExample() {
-  const [availability, setAvailability] = useState(['Online Store']);
+  const [availability, setAvailability] = useState(null);
   const [productType, setProductType] = useState(null);
   const [taggedWith, setTaggedWith] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
@@ -400,7 +400,6 @@ function DataTableFiltersExample() {
     {
       key: 'productType',
       label: 'Product type',
-      shortcut: true,
       filter: (
         <ChoiceList
           title="Product type"
@@ -467,7 +466,6 @@ function DataTableFiltersExample() {
             onQueryChange={handleFiltersQueryChange}
             onQueryClear={handleQueryValueRemove}
             onClearAll={handleFiltersClearAll}
-            hideTextField={true}
           />
         </Card.Section>
         <DataTable

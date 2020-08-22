@@ -267,13 +267,13 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
       return i18n.translate('Polaris.ResourceList.loading', {resource});
     } else if (totalItemsCount) {
       return i18n.translate('Polaris.ResourceList.showingTotalCount', {
-        itemsCount: itemsCount.toLocaleString(),
-        totalItemsCount: totalItemsCount.toLocaleString(),
+        itemsCount,
+        totalItemsCount,
         resource,
       });
     } else {
       return i18n.translate('Polaris.ResourceList.showing', {
-        itemsCount: itemsCount.toLocaleString(),
+        itemsCount,
         resource,
       });
     }

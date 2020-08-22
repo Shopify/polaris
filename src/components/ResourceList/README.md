@@ -1130,7 +1130,7 @@ function ResourceListExample() {
     <Card>
       <ResourceList
         resourceName={resourceName}
-        items={[]}
+        items={items}
         renderItem={renderItem}
         selectedItems={selectedItems}
         onSelectionChange={setSelectedItems}
