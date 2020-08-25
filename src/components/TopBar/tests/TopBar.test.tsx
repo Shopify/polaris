@@ -253,20 +253,6 @@ describe('<TopBar />', () => {
   });
 
   describe('newDesignLanguage', () => {
-    it('does not render an EventListener by default', () => {
-      const topBar = mountWithApp(<TopBar />);
-
-      expect(topBar).not.toContainReactComponent(EventListener);
-    });
-
-    it('renders an EventListener when newDesignLanguage is enabled', () => {
-      const topBar = mountWithApp(<TopBar />, {
-        features: {newDesignLanguage: true},
-      });
-
-      expect(topBar).toContainReactComponent(EventListener);
-    });
-
     it('does not render a div with newDesignLanguage className when newDesignLanguage is undefined', () => {
       const topBar = mountWithApp(<TopBar />);
 
