@@ -337,11 +337,6 @@ $stacking-order: (
 .newDesignLanguage.TextField {
   color: var(--p-text);
 
-  .Backdrop {
-    border: 1px solid var(--p-border-neutral-subdued);
-    border-top: border(dark);
-  }
-
   svg {
     fill: var(--p-icon);
   }
@@ -398,6 +393,9 @@ $stacking-order: (
     @include focus-ring($border-width: border-width());
     background-color: var(--p-surface);
     position: absolute;
+    border: 1px solid var(--p-border-neutral-subdued);
+    border-top: border(dark);
+    box-shadow: none;
 
     &::after {
       opacity: 1;
