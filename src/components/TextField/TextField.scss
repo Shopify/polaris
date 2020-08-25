@@ -365,6 +365,7 @@ $stacking-order: (
 
     > .Backdrop {
       background-color: var(--p-action-secondary-disabled);
+      border-top-color: var(--p-border-neutral-subdued);
     }
 
     svg {
