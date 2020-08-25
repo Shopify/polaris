@@ -337,6 +337,11 @@ $stacking-order: (
 .newDesignLanguage.TextField {
   color: var(--p-text);
 
+  .Backdrop {
+    border: 1px solid var(--p-border-neutral-subdued);
+    border-top: border(dark);
+  }
+
   svg {
     fill: var(--p-icon);
   }
