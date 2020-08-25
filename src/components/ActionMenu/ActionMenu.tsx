@@ -1,17 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
 import type {
   ActionListSection,
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../types';
-import {Button} from '../Button';
-import {ButtonGroup} from '../ButtonGroup';
 
-import {sortAndOverrideActionOrder} from './utilities';
-import {MenuAction, MenuGroup, RollupActions} from './components';
+import {Actions, RollupActions} from './components';
 import styles from './ActionMenu.scss';
 
 export interface ActionMenuProps {
@@ -28,11 +24,6 @@ export function ActionMenu({
   groups = [],
   rollup,
 }: ActionMenuProps) {
-  const {newDesignLanguage} = useFeatures();
-  const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
-    undefined,
-  );
-
   if (actions.length === 0 && groups.length === 0) {
     return null;
   }
@@ -44,68 +35,12 @@ export function ActionMenu({
 
   const rollupSections = groups.map((group) => convertGroupToSection(group));
 
-  function renderActions() {
-    const menuActions = [...actions, ...groups];
-
-    const overriddenActions = sortAndOverrideActionOrder(menuActions);
-
-    const actionMarkup = overriddenActions.map((action, index) => {
-      if ('title' in action) {
-        const {title, actions, ...rest} = action;
-
-        return actions.length > 0 ? (
-          <MenuGroup
-            key={`MenuGroup-${index}`}
-            title={title}
-            active={title === activeMenuGroup}
-            actions={actions}
-            {...rest}
-            onOpen={handleMenuGroupToggle}
-            onClose={handleMenuGroupClose}
-          />
-        ) : null;
-      }
-
-      const {content, onAction, ...rest} = action;
-      return newDesignLanguage ? (
-        <Button key={index} onClick={onAction} {...rest}>
-          {content}
-        </Button>
-      ) : (
-        <MenuAction
-          key={`MenuAction-${index}`}
-          content={content}
-          onAction={onAction}
-          {...rest}
-        />
-      );
-    });
-
-    return (
-      <div className={styles.ActionsLayout}>
-        {newDesignLanguage ? (
-          <ButtonGroup>{actionMarkup}</ButtonGroup>
-        ) : (
-          actionMarkup
-        )}
-      </div>
-    );
-  }
-
-  function handleMenuGroupToggle(group: string) {
-    setActiveMenuGroup(activeMenuGroup ? undefined : group);
-  }
-
-  function handleMenuGroupClose() {
-    setActiveMenuGroup(undefined);
-  }
-
   return (
     <div className={actionMenuClassNames}>
       {rollup ? (
         <RollupActions items={actions} sections={rollupSections} />
       ) : (
-        renderActions()
+        <Actions actions={actions} groups={groups} />
       )}
     </div>
   );
