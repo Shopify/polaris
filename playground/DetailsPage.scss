@@ -5,7 +5,7 @@ $top-bar-height: 56px;
   display: flex;
   align-items: center;
   padding: 0 16px;
-  height: var(--p-top-bar-height, $top-bar-height);
+  height: $top-bar-height;
 }
 
 .ShopName {
