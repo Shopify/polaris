@@ -241,6 +241,7 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-popover-shadow`                      | `-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light)`            |
 | `--p-modal-shadow`                        | `0px 26px 80px var(--p-shadow-from-dim-light), 0px 0px 1px var(--p-shadow-from-dim-light)`                   |
 | `--p-top-bar-shadow`                      | `0 2px 2px -1px var(--p-shadow-from-direct-light)`                                                           |
+| `--p-button-shadow`                       | `0px 1px 0px rgba(0, 0, 0, 0.05)`                                                                            |
 | `--p-override-none`                       | `none`                                                                                                       |
 | `--p-override-transparent`                | `transparent`                                                                                                |
 | `--p-override-one`                        | `1`                                                                                                          |

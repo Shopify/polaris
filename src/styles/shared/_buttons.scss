@@ -68,29 +68,26 @@
 
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon));
-    @include focus-ring;
-    background: var(--p-action-secondary);
-    border: none;
-    box-shadow: none;
+    @include focus-ring($border-width: border-width('base'));
+    background: var(--p-surface);
+    border: 1px solid var(--p-border-neutral-subdued);
+    box-shadow: var(--p-button-shadow);
     border-radius: var(--p-border-radius-base);
     color: var(--p-text);
 
     &:hover {
       background: var(--p-action-secondary-hovered);
-      border-color: transparent;
       @include high-contrast-outline;
     }
 
     &:focus {
-      border-color: transparent;
-      box-shadow: none;
+      box-shadow: var(--p-button-shadow);
       @include focus-ring($style: 'focused');
     }
 
     &:active {
       background: var(--p-action-secondary-pressed);
-      border-color: transparent;
-      box-shadow: none;
+      box-shadow: var(--p-button-shadow);
 
       &::after {
         border: none;
@@ -100,7 +97,7 @@
 
     &.pressed {
       background: var(--p-action-secondary-depressed);
-      box-shadow: none;
+      box-shadow: var(--p-button-shadow);
       color: var(--p-text-on-interactive);
     }
 
@@ -247,6 +244,7 @@
   &.newDesignLanguage {
     background: transparent;
     @include focus-ring($border-width: border-width('base'));
+    border: none;
     box-shadow: 0 0 0 border-width('base') var(--p-border);
     color: var(--p-text);
 
