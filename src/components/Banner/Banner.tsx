@@ -18,9 +18,10 @@ import {
   CircleDisabledMajorFilled,
 } from '@shopify/polaris-icons';
 
-import {BannerContext} from '../../utilities/banner-context';
 import {classNames, variationName} from '../../utilities/css';
+import {BannerContext} from '../../utilities/banner-context';
 import {useFeatures} from '../../utilities/features';
+import {useUniqueId} from '../../utilities/unique-id';
 import type {
   Action,
   DisableableAction,
@@ -73,7 +74,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   const {newDesignLanguage} = useFeatures();
   const withinContentContainer = useContext(WithinContentContext);
   const buttonSizeValue = withinContentContainer ? 'slim' : undefined;
-  const id = uniqueID();
+  const id = useUniqueId('Banner');
   const {
     wrapperRef,
     handleKeyUp,
@@ -176,12 +177,6 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     </BannerContext.Provider>
   );
 });
-
-let index = 1;
-
-function uniqueID() {
-  return `Banner${index++}`;
-}
 
 function SecondaryActionFrom({action}: {action: Action}) {
   if (action.url) {
