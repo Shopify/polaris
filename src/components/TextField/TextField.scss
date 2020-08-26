@@ -365,6 +365,7 @@ $stacking-order: (
 
     > .Backdrop {
       background-color: var(--p-action-secondary-disabled);
+      border-top-color: var(--p-border-neutral-subdued);
     }
 
     svg {
@@ -393,6 +394,9 @@ $stacking-order: (
     @include focus-ring($border-width: border-width());
     background-color: var(--p-surface);
     position: absolute;
+    border: 1px solid var(--p-border-neutral-subdued);
+    border-top: border(dark);
+    box-shadow: none;
 
     &::after {
       opacity: 1;
