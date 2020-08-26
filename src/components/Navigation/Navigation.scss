@@ -34,10 +34,6 @@ $nav-max-width: rem(360px);
   }
 }
 
-.Navigation-noMedia {
-  padding-top: spacing();
-}
-
 .UserMenu {
   flex: 0 0 auto;
 }
@@ -60,7 +56,7 @@ $nav-max-width: rem(360px);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     .Navigation-newDesignLanguage & {
-      margin-top: spacing(tight);
+      margin-top: rem(12px);
     }
   }
 }

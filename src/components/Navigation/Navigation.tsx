@@ -58,7 +58,6 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
 
   const className = classNames(
     styles.Navigation,
-    !mediaMarkup && styles['Navigation-noMedia'],
     newDesignLanguage && styles['Navigation-newDesignLanguage'],
   );
 
