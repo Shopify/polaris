@@ -1,1 +1,1 @@
-export {default as dropZone} from './drop-zone.svg';
+export {default as uploadArrow} from './upload-arrow.svg';

@@ -7,7 +7,7 @@ import {Icon} from '../../../Icon';
 import {Stack} from '../../../Stack';
 import {Caption} from '../../../Caption';
 import {TextStyle} from '../../../TextStyle';
-import {fileUpload, imageUpload} from '../../images';
+import {uploadArrow} from '../../images';
 import {DropZoneContext} from '../../context';
 import {useI18n} from '../../../../utilities/i18n';
 import {useFeatures} from '../../../../utilities/features';
@@ -62,12 +62,7 @@ export function FileUpload(props: FileUploadProps) {
   const extraLargeView =
     size === 'extraLarge' ? (
       <Stack vertical>
-        {type === 'file' && (
-          <img className={imageClasses} src={fileUpload} alt="" />
-        )}
-        {type === 'image' && (
-          <img className={imageClasses} src={imageUpload} alt="" />
-        )}
+        <img className={imageClasses} src={uploadArrow} alt="" />
         {buttonMarkup}
         <TextStyle variation="subdued">{actionHint}</TextStyle>
       </Stack>
@@ -76,12 +71,7 @@ export function FileUpload(props: FileUploadProps) {
   const largeView =
     size === 'large' ? (
       <Stack vertical spacing="tight">
-        {type === 'file' && (
-          <img className={imageClasses} src={fileUpload} alt="" />
-        )}
-        {type === 'image' && (
-          <img className={imageClasses} src={imageUpload} alt="" />
-        )}
+        <img className={imageClasses} src={uploadArrow} alt="" />
         {buttonMarkup}
         <Caption>
           <TextStyle variation="subdued">{actionHint}</TextStyle>
