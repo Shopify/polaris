@@ -461,21 +461,14 @@ export function DetailsPage() {
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
       title="M60-A"
       titleMetadata={<Badge status="success">Success badge</Badge>}
+      // additionalMetaData="May 8, 2020 at 7:31 am from Developer Tools (via import)"
       secondaryActions={[
-        {
-          content: 'Duplicate',
-          icon: DuplicateMinor,
-        },
         {
           content: 'View',
           icon: ViewMinor,
         },
       ]}
       actionGroups={[
-        {
-          title: 'Promote',
-          actions: [{content: 'Share on Facebook'}],
-        },
         {
           title: 'More actions',
           actions: [{content: 'Embed on a website'}],

@@ -246,7 +246,6 @@
   &.newDesignLanguage {
     background: transparent;
     @include focus-ring($border-width: border-width('base'));
-    border: none;
     border: border-width() solid var(--p-border);
     box-shadow: none;
     color: var(--p-text);

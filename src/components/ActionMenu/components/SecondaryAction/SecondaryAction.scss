@@ -1,6 +1,25 @@
 @import '../../../../styles/common';
 
+$breakpoint: 1080px;
+
 .SecondaryAction {
-  @include button-base;
-  border: 1px solid red;
+  // Hacks
+  // Eventually pull in button-base and modify
+  // stylelint-disable declaration-no-important
+  button {
+    background: transparent !important;
+    box-shadow: none !important;
+
+    &:hover {
+      background: var(--p-surface-hovered) !important;
+    }
+
+    &:active {
+      background: var(--p-surface-pressed) !important;
+    }
+
+    @include breakpoint-after($breakpoint) {
+      border: none !important;
+    }
+  }
 }
