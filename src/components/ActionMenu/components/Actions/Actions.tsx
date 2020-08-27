@@ -6,10 +6,10 @@ import type {
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../../../types';
-import {Button} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {MenuGroup} from '../MenuGroup';
 import {MenuAction} from '../MenuAction';
+import {SecondaryAction} from '../SecondaryAction';
 
 import styles from './Actions.scss';
 
@@ -58,9 +58,9 @@ export function Actions({actions = [], groups = []}: Props) {
 
     const {content, onAction, ...rest} = action;
     return newDesignLanguage ? (
-      <Button key={index} onClick={onAction} {...rest}>
+      <SecondaryAction key={index} onClick={onAction} {...rest}>
         {content}
-      </Button>
+      </SecondaryAction>
     ) : (
       <MenuAction
         key={`MenuAction-${index}`}

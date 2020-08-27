@@ -1,0 +1,6 @@
+@import '../../../../styles/common';
+
+.SecondaryAction {
+  @include button-base;
+  border: 1px solid red;
+}
