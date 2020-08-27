@@ -56,7 +56,7 @@ $nav-max-width: rem(360px);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     .Navigation-newDesignLanguage & {
-      margin-top: rem(12px);
+      padding-top: rem(12px);
     }
   }
 }
