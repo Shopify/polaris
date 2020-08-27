@@ -45,7 +45,6 @@ export const Tokens = {
   rangeSliderThumbSizeActive: rem('24px'),
   rangeSliderThumbScale: '1.5',
   badgeFontWeight: '500',
-  frameBackground: 'rgb(244, 245, 246)',
 };
 
 function rem(px: string) {

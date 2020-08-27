@@ -14,7 +14,7 @@ $nav-max-width: rem(360px);
   max-width: $nav-max-width;
   height: 100%;
   min-height: 100%;
-  background-color: var(--p-frame-background, color('sky', 'light'));
+  background-color: var(--p-background, color('sky', 'light'));
   -webkit-overflow-scrolling: touch;
 
   @include safe-area-for(padding-bottom, 0, bottom);
@@ -190,7 +190,7 @@ $disabled-fade: 0.6;
     &:not(:first-child) {
       // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
       .Item {
-        border-top: 1px solid var(--p-frame-background);
+        border-top: 1px solid var(--p-background);
       }
     }
   }
