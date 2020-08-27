@@ -9,6 +9,17 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   text-align: center;
 }
 
+.FileUploadSmallView {
+  padding: 1.25rem;
+}
+
+.Content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .Button {
   @include button-base;
 
@@ -54,16 +65,6 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 
 .ActionTitle-disabled {
   color: color('ink', 'lightest');
-}
-
-.Image {
-  &.sizeExtraLarge {
-    width: 90px;
-  }
-
-  &.sizeLarge {
-    width: 60px;
-  }
 }
 
 .newDesignLanguage {

@@ -1,9 +1,7 @@
 import React, {useContext} from 'react';
-import {DragDropMajorMonotone} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {capitalize} from '../../../../utilities/capitalize';
-import {Icon} from '../../../Icon';
 import {Stack} from '../../../Stack';
 import {Caption} from '../../../Caption';
 import {TextStyle} from '../../../TextStyle';
@@ -35,12 +33,6 @@ export function FileUpload(props: FileUploadProps) {
     ),
   } = props;
 
-  const imageClasses = classNames(
-    styles.Image,
-    size && size === 'extraLarge' && styles.sizeExtraLarge,
-    size && size === 'large' && styles.sizeLarge,
-  );
-
   const buttonStyles =
     size === 'extraLarge' || size === 'large'
       ? classNames(
@@ -62,7 +54,7 @@ export function FileUpload(props: FileUploadProps) {
   const extraLargeView =
     size === 'extraLarge' ? (
       <Stack vertical>
-        <img className={imageClasses} src={uploadArrow} alt="" />
+        <img width="40" src={uploadArrow} alt="" />
         {buttonMarkup}
         <TextStyle variation="subdued">{actionHint}</TextStyle>
       </Stack>
@@ -71,7 +63,7 @@ export function FileUpload(props: FileUploadProps) {
   const largeView =
     size === 'large' ? (
       <Stack vertical spacing="tight">
-        <img className={imageClasses} src={uploadArrow} alt="" />
+        <img width="40" src={uploadArrow} alt="" />
         {buttonMarkup}
         <Caption>
           <TextStyle variation="subdued">{actionHint}</TextStyle>
@@ -104,7 +96,7 @@ export function FileUpload(props: FileUploadProps) {
   const smallView =
     size === 'small' ? (
       <Stack vertical spacing="tight">
-        <Icon source={DragDropMajorMonotone} color="inkLightest" />
+        <img width="20" src={uploadArrow} alt="" />
       </Stack>
     ) : null;
 
@@ -112,14 +104,17 @@ export function FileUpload(props: FileUploadProps) {
     styles.FileUpload,
     newDesignLanguage && styles.newDesignLanguage,
     measuring && styles.measuring,
+    size === 'small' && styles.FileUploadSmallView,
   );
 
   return (
-    <div className={fileUploadClassName}>
-      {smallView}
-      {mediumView}
-      {largeView}
-      {extraLargeView}
+    <div className={styles.Content}>
+      <div className={fileUploadClassName}>
+        {smallView}
+        {mediumView}
+        {largeView}
+        {extraLargeView}
+      </div>
     </div>
   );
 }
