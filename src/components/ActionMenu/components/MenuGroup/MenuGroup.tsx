@@ -5,7 +5,7 @@ import {useFeatures} from '../../../../utilities/features';
 import {ActionList} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 import {MenuAction} from '../MenuAction';
-import {Button} from '../../../Button';
+import {SecondaryAction} from '../SecondaryAction';
 
 import styles from './MenuGroup.scss';
 
@@ -44,14 +44,14 @@ export function MenuGroup({
   }
 
   const popoverActivator = newDesignLanguage ? (
-    <Button
+    <SecondaryAction
       disclosure
       icon={icon}
       accessibilityLabel={accessibilityLabel}
       onClick={handleOpen}
     >
       {title}
-    </Button>
+    </SecondaryAction>
   ) : (
     <MenuAction
       disclosure
