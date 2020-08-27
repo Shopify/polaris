@@ -36,7 +36,6 @@ export const Tokens = {
   textFieldFocusRingOffset: rem('-4px'),
   textFieldFocusRingBorderRadius: rem('7px'),
   buttonGroupItemSpacing: rem('2px'),
-  topBarHeight: '68px',
   contextualSaveBarHeight: '64px',
   duration100: '100ms',
   duration150: '150ms',
@@ -46,6 +45,7 @@ export const Tokens = {
   rangeSliderThumbSizeActive: rem('24px'),
   rangeSliderThumbScale: '1.5',
   badgeFontWeight: '500',
+  frameBackground: 'rgb(244, 245, 246)',
 };
 
 function rem(px: string) {

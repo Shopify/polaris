@@ -6,11 +6,11 @@ $backdrop-color: rgba(color('ink'), 0.4);
 
 .SearchDismissOverlay {
   position: fixed;
-  top: var(--p-top-bar-height, top-bar-height());
+  top: top-bar-height();
   left: 0;
   right: 0;
   z-index: z-index(nav-backdrop, $fixed-element-stacking-order);
-  height: calc(100vh - var(--p-top-bar-height, #{top-bar-height()}));
+  height: calc(100vh - #{top-bar-height()});
 }
 
 .visible {

@@ -161,7 +161,8 @@ $nav-animation-variables: (
   .Item-selected:hover &,
   .subNavigationActive &,
   .subNavigationActive:hover &,
-  .subNavigationActive:focus & {
+  .subNavigationActive:focus &,
+  .subNavigationActive:focus:hover & {
     @include recolor-icon(
       var(--p-action-primary, color('indigo')),
       var(--p-override-transparent, color('white')),
