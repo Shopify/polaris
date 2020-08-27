@@ -246,22 +246,19 @@
   &.newDesignLanguage {
     background: transparent;
     @include focus-ring($border-width: border-width('base'));
-    border: none;
-    box-shadow: 0 0 0 border-width('base') var(--p-border);
+    border: 1px solid var(--p-border-neutral-subdued);
+    box-shadow: none;
     color: var(--p-text);
 
     &:hover {
-      box-shadow: 0 0 0 border-width('base') var(--p-border);
       background: var(--p-surface-hovered);
     }
 
     &:focus {
-      box-shadow: 0 0 0 border-width('base') var(--p-border);
       @include focus-ring($style: 'focused');
     }
 
     &:active {
-      box-shadow: 0 0 0 border-width('base') var(--p-border);
       background: var(--p-surface-pressed);
       &::after {
         box-shadow: none;

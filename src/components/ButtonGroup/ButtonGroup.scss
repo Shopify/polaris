@@ -12,6 +12,7 @@ $item-spacing: spacing(tight);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
   margin-top: (-1 * $item-spacing);
   margin-left: (-1 * $item-spacing);
 }

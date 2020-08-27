@@ -1,22 +1,14 @@
 import React from 'react';
 
+import {Button} from '../../../Button';
 import type {ButtonProps} from '../../../Button';
 
 import styles from './SecondaryAction.scss';
 
-export function SecondaryAction({
-  accessibilityLabel,
-  children,
-  onClick,
-}: ButtonProps) {
-  console.log({accessibilityLabel});
+export function SecondaryAction({children, ...rest}: ButtonProps) {
   return (
-    <button
-      // add aria label
-      className={styles.SecondaryAction}
-      onClick={onClick}
-    >
-      {children}
-    </button>
+    <span className={styles.SecondaryAction}>
+      <Button {...rest}>{children}</Button>
+    </span>
   );
 }

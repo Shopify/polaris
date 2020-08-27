@@ -2,6 +2,7 @@ import React, {isValidElement} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
+import {TextStyle} from '../../../TextStyle';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import {useFeatures} from '../../../../utilities/features';
 import {
@@ -52,6 +53,8 @@ export interface HeaderProps extends TitleProps {
   actionGroups?: MenuGroupDescriptor[];
   /** Additional navigation markup */
   additionalNavigation?: React.ReactNode;
+  // Additional meta data
+  additionalMetaData?: React.ReactNode | string;
 }
 
 export function isPrimaryAction(
@@ -64,6 +67,7 @@ export function Header({
   title,
   subtitle,
   titleMetadata,
+  additionalMetaData,
   thumbnail,
   titleHidden = false,
   separator,
@@ -140,6 +144,10 @@ export function Header({
       </ConditionalWrapper>
     ) : null;
 
+  const additionalMetaDataMarkup = additionalMetaData ? (
+    <TextStyle variation="subdued">{additionalMetaData}</TextStyle>
+  ) : null;
+
   const headerClassNames = classNames(
     styles.Header,
     titleHidden && styles.titleHidden,
@@ -154,6 +162,7 @@ export function Header({
     const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
       breadcrumbMarkup,
       pageTitleMarkup,
+      additionalMetaDataMarkup,
       paginationMarkup,
       actionMenuMarkup,
       primaryActionMarkup,
@@ -279,6 +288,7 @@ function determineLayout({
   breadcrumbMarkup,
   pageTitleMarkup,
   title,
+  additionalMetaDataMarkup,
   paginationMarkup,
   actionMenuMarkup,
   primaryActionMarkup,
@@ -287,6 +297,7 @@ function determineLayout({
   breadcrumbMarkup: MaybeJSX;
   pageTitleMarkup: JSX.Element;
   title?: string;
+  additionalMetaDataMarkup: MaybeJSX;
   paginationMarkup: MaybeJSX;
   actionMenuMarkup: MaybeJSX;
   primaryActionMarkup: MaybeJSX;
@@ -309,7 +320,7 @@ function determineLayout({
         slot2: pageTitleMarkup,
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
-        slot5: null,
+        slot5: additionalMetaDataMarkup,
         slot6: null,
       },
       condition:
@@ -321,10 +332,10 @@ function determineLayout({
     mobileDefault: {
       slots: {
         slot1: breadcrumbMarkup,
-        slot2: null,
+        slot2: pageTitleMarkup,
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
-        slot5: pageTitleMarkup,
+        slot5: additionalMetaDataMarkup,
         slot6: null,
       },
       condition: isNavigationCollapsed,
@@ -335,7 +346,7 @@ function determineLayout({
         slot2: pageTitleMarkup,
         slot3: null,
         slot4: primaryActionMarkup,
-        slot5: null,
+        slot5: additionalMetaDataMarkup,
         slot6: null,
       },
       condition:
@@ -349,10 +360,15 @@ function determineLayout({
       slots: {
         slot1: breadcrumbMarkup,
         slot2: pageTitleMarkup,
-        slot3: null,
+        slot3: (
+          <>
+            {actionMenuMarkup}
+            {primaryActionMarkup}
+          </>
+        ),
         slot4: paginationMarkup,
-        slot5: actionMenuMarkup,
-        slot6: primaryActionMarkup,
+        slot5: additionalMetaDataMarkup,
+        slot6: null,
       },
       condition: !isNavigationCollapsed,
     },
