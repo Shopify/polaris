@@ -1,5 +1,5 @@
 import React from 'react';
-import {Icon, Caption, TextStyle} from 'components';
+import {Caption, TextStyle} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
@@ -106,7 +106,7 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
-    expect(fileUpload.find(Icon)).toHaveLength(1);
+    expect(fileUpload.find('img')).toHaveLength(1);
   });
 
   it('sets a default actionTitle if the prop is provided then removed', () => {

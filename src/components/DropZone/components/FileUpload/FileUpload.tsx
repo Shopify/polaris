@@ -51,26 +51,6 @@ export function FileUpload(props: FileUploadProps) {
       </div>
     ) : null;
 
-  const extraLargeView =
-    size === 'extraLarge' ? (
-      <Stack vertical>
-        <img width="40" src={uploadArrow} alt="" />
-        {buttonMarkup}
-        <TextStyle variation="subdued">{actionHint}</TextStyle>
-      </Stack>
-    ) : null;
-
-  const largeView =
-    size === 'large' ? (
-      <Stack vertical spacing="tight">
-        <img width="40" src={uploadArrow} alt="" />
-        {buttonMarkup}
-        <Caption>
-          <TextStyle variation="subdued">{actionHint}</TextStyle>
-        </Caption>
-      </Stack>
-    ) : null;
-
   const actionTitleClassName = classNames(
     styles.ActionTitle,
     focused && !disabled && styles['ActionTitle-focused'],
@@ -83,23 +63,6 @@ export function FileUpload(props: FileUploadProps) {
     </div>
   );
 
-  const mediumView =
-    size === 'medium' ? (
-      <Stack vertical spacing="tight">
-        {actionTitleMarkup}
-        <Caption>
-          <TextStyle variation="subdued">{actionHint}</TextStyle>
-        </Caption>
-      </Stack>
-    ) : null;
-
-  const smallView =
-    size === 'small' ? (
-      <Stack vertical spacing="tight">
-        <img width="20" src={uploadArrow} alt="" />
-      </Stack>
-    ) : null;
-
   const fileUploadClassName = classNames(
     styles.FileUpload,
     newDesignLanguage && styles.newDesignLanguage,
@@ -107,14 +70,42 @@ export function FileUpload(props: FileUploadProps) {
     size === 'small' && styles.FileUploadSmallView,
   );
 
-  return (
-    <div className={styles.Content}>
-      <div className={fileUploadClassName}>
-        {smallView}
-        {mediumView}
-        {largeView}
-        {extraLargeView}
-      </div>
-    </div>
-  );
+  let viewMarkup;
+  switch (size) {
+    case 'extraLarge':
+      viewMarkup = (
+        <Stack vertical>
+          <img width="40" src={uploadArrow} alt="" />
+          {buttonMarkup}
+          <TextStyle variation="subdued">{actionHint}</TextStyle>
+        </Stack>
+      );
+      break;
+    case 'large':
+      viewMarkup = (
+        <Stack vertical spacing="tight">
+          <img width="40" src={uploadArrow} alt="" />
+          {buttonMarkup}
+          <Caption>
+            <TextStyle variation="subdued">{actionHint}</TextStyle>
+          </Caption>
+        </Stack>
+      );
+      break;
+    case 'medium':
+      viewMarkup = (
+        <Stack vertical spacing="tight">
+          {actionTitleMarkup}
+          <Caption>
+            <TextStyle variation="subdued">{actionHint}</TextStyle>
+          </Caption>
+        </Stack>
+      );
+      break;
+    case 'small':
+      viewMarkup = <img width="20" src={uploadArrow} alt="" />;
+      break;
+  }
+
+  return <div className={fileUploadClassName}>{viewMarkup}</div>;
 }

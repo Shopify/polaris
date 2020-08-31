@@ -4,7 +4,7 @@ interface DropZoneContextType {
   disabled: boolean;
   focused: boolean;
   measuring: boolean;
-  size: string;
+  size: 'extraLarge' | 'large' | 'medium' | 'small';
   type: string;
 }
 
