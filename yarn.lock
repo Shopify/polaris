@@ -2023,10 +2023,10 @@
   resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-3.10.0.tgz#01fa32853c304c58d768209a74f88ac9d7a51098"
   integrity sha512-Y8cTtFwIfkUDlCHonCimSxPdHk9AE11PYsh9JqzTKLjsAv6p3De/JQR/gZfAifmAAhg0XBmaaV5K4Y6Z5J6xAw==
 
-"@shopify/polaris-tokens@^2.12.3":
-  version "2.12.3"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.12.3.tgz#f34991fd70d90dce569072964b9482df22950053"
-  integrity sha512-3xBJxJqdMOE61SWjNFHaRGegoYSc4SOlAkwQ/VnZgSn/2AoG72m7OFQ+vA/tWR87Z9L3QKggymBxQR9aqBJ7FA==
+"@shopify/polaris-tokens@^2.12.4":
+  version "2.12.4"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.12.4.tgz#341f1908cd466159b0b625fa6c93427859345390"
+  integrity sha512-MKEn26kTDO9edpAt1S3VVK9X2NitM7z5ZoSdRhSvdmuHiFvEHrtqg5j9xKZNfh5SLSF0LR8UT+5tFEKFKz2inQ==
   dependencies:
     hsluv "^0.1.0"
     tslib "^1.10.0"
@@ -16069,15 +16069,15 @@ react-inspector@^5.0.1:
     is-dom "^1.1.0"
     prop-types "^15.6.1"
 
-react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6, react-is@^16.9.0:
-  version "16.9.0"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
-  integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
-
 react-is@^16.12.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6, react-is@^16.9.0:
+  version "16.9.0"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
+  integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"

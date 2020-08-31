@@ -101,14 +101,5 @@ describe('<Navigation />', () => {
         className: 'Navigation Navigation-newDesignLanguage',
       });
     });
-
-    it('renders a nav element with noMedia className if no media element is present and newDesignLanguage is true', () => {
-      const navigation = mountWithApp(<Navigation location="/" />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(navigation).toContainReactComponent('nav', {
-        className: 'Navigation Navigation-noMedia Navigation-newDesignLanguage',
-      });
-    });
   });
 });

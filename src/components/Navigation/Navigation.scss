@@ -14,7 +14,7 @@ $nav-max-width: rem(360px);
   max-width: $nav-max-width;
   height: 100%;
   min-height: 100%;
-  background-color: var(--p-surface, color('sky', 'light'));
+  background-color: var(--p-background, color('sky', 'light'));
   -webkit-overflow-scrolling: touch;
 
   @include safe-area-for(padding-bottom, 0, bottom);
@@ -34,22 +34,15 @@ $nav-max-width: rem(360px);
   }
 }
 
-.Navigation-noMedia {
-  padding-top: spacing();
-}
-
 .UserMenu {
   flex: 0 0 auto;
 }
 
-@include breakpoint-after(nav-min-window-corrected()) {
-  .ContextControl {
-    display: none;
+.ContextControl {
+  min-height: top-bar-height();
 
-    .Navigation-newDesignLanguage & {
-      display: block;
-      min-height: var(--p-top-bar-height);
-    }
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: none;
   }
 }
 
@@ -60,17 +53,23 @@ $nav-max-width: rem(360px);
   flex-direction: column;
   align-items: stretch;
   max-width: 100%;
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    .Navigation-newDesignLanguage & {
+      padding-top: rem(12px);
+    }
+  }
 }
 
 .LogoContainer {
   display: none;
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-before(nav-min-window-corrected()) {
     display: flex;
-    flex: 0 0 var(--p-top-bar-height);
+    flex: 0 0 top-bar-height();
     align-items: center;
-    height: 100%;
+    height: top-bar-height();
     padding: 0 spacing(tight) 0 spacing(base);
-    @include safe-area-for(flex-basis, var(--p-top-bar-height), left);
+    @include safe-area-for(flex-basis, top-bar-height(), left);
     @include safe-area-for(padding-left, spacing(), left);
   }
 }
@@ -191,7 +190,7 @@ $disabled-fade: 0.6;
     &:not(:first-child) {
       // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
       .Item {
-        border-top: 1px solid var(--p-surface);
+        border-top: 1px solid var(--p-background);
       }
     }
   }
