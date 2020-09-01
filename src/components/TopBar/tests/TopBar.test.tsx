@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
-import {EventListener, Image, UnstyledLink} from 'components';
+import {Image, UnstyledLink} from 'components';
 
 import {TopBar} from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
