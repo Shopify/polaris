@@ -7,6 +7,18 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 .FileUpload {
   padding: $fileupload-padding;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.FileUploadSmallView {
+  padding: 1.25rem;
+}
+
+.FileUpload img {
+  vertical-align: bottom;
 }
 
 .Button {
@@ -54,16 +66,6 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 
 .ActionTitle-disabled {
   color: color('ink', 'lightest');
-}
-
-.Image {
-  &.sizeExtraLarge {
-    width: 90px;
-  }
-
-  &.sizeLarge {
-    width: 60px;
-  }
 }
 
 .newDesignLanguage {
