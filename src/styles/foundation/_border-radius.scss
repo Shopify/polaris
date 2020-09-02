@@ -1,6 +1,6 @@
 $border-radius-data: (
-  base: 3px,
-  large: 6px,
+  base: var(--p-border-radius-base, 3px),
+  large: var(--p-border-radius-wide, 6px),
 );
 
 /// Returns the border radius of the specified size.
