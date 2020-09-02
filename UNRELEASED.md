@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fix `border-radius` scss function to use the new css variables when defined ([#3214](https://github.com/Shopify/polaris-react/pull/3214)).
+
 ### Documentation
 
 ### Development workflow
