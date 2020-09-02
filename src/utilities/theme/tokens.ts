@@ -11,7 +11,8 @@ export const Tokens = {
   modalShadow:
     '0px 26px 80px var(--p-shadow-from-dim-light), 0px 0px 1px var(--p-shadow-from-dim-light)',
   topBarShadow: '0 2px 2px -1px var(--p-shadow-from-direct-light)',
-  buttonShadow: '0px 1px 0px rgba(0, 0, 0, 0.05)',
+  buttonDropShadow: '0px 1px 0px rgba(0, 0, 0, 0.05)',
+  buttonInnerShadow: 'inset 0px -1px 0px rgba(0, 0, 0, 0.2)',
 
   // Overrides
   overrideNone: 'none',

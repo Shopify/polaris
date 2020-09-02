@@ -71,7 +71,7 @@
     @include focus-ring($border-width: border-width('base'));
     background: var(--p-surface);
     border: 1px solid var(--p-border-neutral-subdued);
-    box-shadow: var(--p-button-shadow);
+    box-shadow: var(--p-button-drop-shadow);
     border-radius: var(--p-border-radius-base);
     color: var(--p-text);
 
@@ -165,7 +165,7 @@
     background: var(--p-button-color);
     border-color: transparent;
     border-width: 0;
-    box-shadow: none;
+    box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     color: var(--p-button-text);
 
     &:hover {
@@ -176,7 +176,6 @@
 
     &:focus {
       border-color: transparent;
-      box-shadow: none;
     }
 
     &:active {
