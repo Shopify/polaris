@@ -174,7 +174,8 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     pointer-events: none;
 
     // stylelint-disable-next-line selector-max-class
-    .Image {
+    .Image,
+    .Suffix {
       @include recolor-icon(color('ink', 'lightest'), color('white'));
     }
   }
@@ -272,7 +273,8 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     &.disabled {
       background-image: none;
       color: var(--p-text-disabled);
-      .Image {
+      .Image,
+      .Suffix {
         @include recolor-icon(var(--p-icon-disabled));
       }
     }
@@ -303,11 +305,12 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   background-position: center center;
 }
 
+.Suffix {
+  @include recolor-icon(color('ink', 'light'), color('white'));
+  margin-left: spacing();
+}
+
 .Text {
   @include layout-flex-fix;
   flex: 1 1 auto;
-}
-
-.BadgeWrapper {
-  margin-left: spacing();
 }

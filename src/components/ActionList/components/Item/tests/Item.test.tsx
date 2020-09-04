@@ -36,6 +36,12 @@ describe('<Item />', () => {
     expect(item.text()).toBe('Test…');
   });
 
+  it('renders a suffix when the suffix prop is defined', () => {
+    const Suffix = () => <div>Suffix</div>;
+    const item = mountWithApp(<Item suffix={<Suffix />} />);
+    expect(item).toContainReactComponent(Suffix);
+  });
+
   it('does not render a label when content is undefined and ellipsis is true', () => {
     const item = mountWithAppProvider(<Item ellipsis />);
     expect(item.text()).toBe('');

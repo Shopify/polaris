@@ -22,6 +22,7 @@ export function Item({
   onAction,
   icon,
   image,
+  suffix,
   disabled,
   external,
   destructive,
@@ -38,7 +39,7 @@ export function Item({
     newDesignLanguage && styles.newDesignLanguage,
   );
 
-  let imageElement = null;
+  let imageElement: React.ReactNode | null = null;
 
   if (icon) {
     imageElement = (
@@ -68,9 +69,13 @@ export function Item({
   );
 
   const badgeMarkup = badge && (
-    <span className={styles.BadgeWrapper}>
+    <span className={styles.Suffix}>
       <Badge status={badge.status}>{badge.content}</Badge>
     </span>
+  );
+
+  const suffixMarkup = suffix && (
+    <span className={styles.Suffix}>{suffix}</span>
   );
 
   const textMarkup = imageElement ? (
@@ -84,6 +89,7 @@ export function Item({
       {imageElement}
       {textMarkup}
       {badgeMarkup}
+      {suffixMarkup}
     </div>
   );
 
