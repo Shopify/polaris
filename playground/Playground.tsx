@@ -1,11 +1,5 @@
-import React from 'react';
+import { createAsyncComponent } from '@shopify/react-async';
 
-import {Page} from '../src';
-
-export function Playground() {
-  return (
-    <Page title="Playground">
-      {/* Add the code you want to test in here */}
-    </Page>
-  );
-}
+export const Playground = createAsyncComponent({
+	load: () => import('../src/components/Playground/PlaygroundAsync')
+});

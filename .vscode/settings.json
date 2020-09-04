@@ -23,5 +23,11 @@
     "{build,dist}/": true,
     "examples/*/build": true
   },
-  "typescript.tsdk": "./node_modules/typescript/lib"
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "prettier.tabWidth": 4,
+  "prettier.useTabs": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "explorer.compactFolders": false
 }
