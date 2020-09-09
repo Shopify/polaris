@@ -158,7 +158,7 @@ $stacking-order: (
     border: border-width() solid var(--p-border-neutral-subdued);
     border-bottom-color: var(--p-border-shadow-subdued);
     border-radius: var(--p-border-radius-base);
-    background: var(--p-surface);
+    background-color: var(--p-surface);
     box-shadow: var(--p-button-drop-shadow);
     @include focus-ring($border-width: rem(1px));
     // 'position' needs to sit below focus-ring since it will be overwritten
