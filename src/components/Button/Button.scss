@@ -109,7 +109,7 @@ $stacking-order: (
   }
 }
 
-[data-buttongroup-connected-top] {
+[data-buttongroup-connected-top='true'] {
   > :first-child .Button,
   > :first-child .Button::after {
     border-top-left-radius: 0;
@@ -121,7 +121,7 @@ $stacking-order: (
   }
 }
 
-[data-buttongroup-full-width] {
+[data-buttongroup-full-width='true'] {
   .Button {
     @include button-full-width;
   }
