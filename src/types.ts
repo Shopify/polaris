@@ -170,6 +170,8 @@ export interface ActionListItemDescriptor
   helpText?: string;
   /** Image source */
   image?: string;
+  /** Suffix source */
+  suffix?: React.ReactNode;
   /**  Add an ellipsis suffix to action content */
   ellipsis?: boolean;
   /** Whether the action is active or not */
