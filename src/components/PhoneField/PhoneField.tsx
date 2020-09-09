@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 
 import {TextField} from '../TextField';
 import {Button} from '../Button';
@@ -163,10 +163,92 @@ export function PhoneField({
     [countries],
   );
 
+  /* This function is responsible for identifying the country flag for a phone number */
+  const phoneNumberFormatter = useCallback(
+    (countryArr: Country[], phoneNumber) => {
+      const numberStr = extractNumberFormat(phoneNumber);
+      setPhoneNumber(numberStr);
+
+      // Filter the countries based on country code
+      const filteredCountries = countryArr.filter((countryObj) =>
+        numberStr.startsWith(countryObj.countryCode),
+      );
+
+      // If there are no countries that match based off of countryCode, then no formatting
+      if (filteredCountries.length === 0) {
+        handleClicked(false);
+        return numberStr;
+      }
+
+      // Selected Country Object (default)
+      let selectedCountryObj = maxCountryPopulationObj(filteredCountries);
+
+      if (filteredCountries.length === 1) {
+        setSelectedCountryObject(
+          countries[retrieveCountryObject(selectedCountryObj.countryName)],
+        );
+      }
+
+      if (filteredCountries.length > 1) {
+        // So, we don't pass in '+1', no need to filter (any country with just countryCode)
+        if (numberStr === filteredCountries[0].countryCode) return numberStr;
+
+        if (checkAreaCodeKeyExists(filteredCountries)) {
+          // Obtains the filtered array of countries with 'key' areaCodes
+          const filteredCountryArr = countryArr.filter(
+            (countryObj) => 'areaCodes' in countryObj,
+          );
+
+          // If it is not equal to [] (there is a country with a area code)
+          // Else, we pick the first one (Line 246)
+          if (filteredCountryArr.length > 0) {
+            // Then, we check if the area code in the numberStr matches one of the
+            // area codes in the list
+            // If not, then we pick first one (Line 246)
+            if (
+              retrieveAreaCodeMatches(filteredCountryArr, numberStr).length !==
+              0
+            ) {
+              selectedCountryObj = retrieveAreaCodeMatches(
+                filteredCountryArr,
+                numberStr,
+              )[0];
+            }
+          }
+        }
+
+        /* Deals with the case where if user enters a country code with more than two possible countries */
+        if (
+          selectedCountryObject.countryCode ===
+            selectedCountryObj.countryCode &&
+          clicked
+        ) {
+          selectedCountryObj = selectedCountryObject;
+        }
+
+        setSelectedCountryObject(
+          countries[retrieveCountryObject(selectedCountryObj.countryName)],
+        );
+      }
+
+      return numberStr;
+    },
+    [
+      countries,
+      extractNumberFormat,
+      maxCountryPopulationObj,
+      retrieveCountryObject,
+      handleClicked,
+      selectedCountryObject,
+      clicked,
+    ],
+  );
+
   /** Callback function for handling when the text in the phone number changes */
   const handleTextChange = useCallback(
-    (newValue) => setFormattedPhoneNumber(newValue),
-    [],
+    (newValue) =>
+      setFormattedPhoneNumber(phoneNumberFormatter(countries, newValue)),
+    [phoneNumberFormatter, countries],
   );
 
   /** Callback function for handling the selected country */
