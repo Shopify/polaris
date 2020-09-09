@@ -70,7 +70,7 @@
     @include recolor-icon(var(--p-icon));
     @include focus-ring($border-width: border-width('base'));
     background: var(--p-surface);
-    box-shadow: var(--p-button-shadow);
+    box-shadow: var(--p-button-drop-shadow);
     border-radius: var(--p-border-radius-base);
     color: var(--p-text);
     border: 1px solid var(--p-border-neutral-subdued);
@@ -83,14 +83,14 @@
     }
 
     &:focus {
-      box-shadow: var(--p-button-shadow);
+      box-shadow: var(--p-button-drop-shadow);
       border-color: var(--p-border-neutral-subdued);
       @include focus-ring($style: 'focused');
     }
 
     &:active {
       background: var(--p-action-secondary-pressed);
-      box-shadow: var(--p-button-shadow);
+      box-shadow: var(--p-button-drop-shadow);
 
       &::after {
         border: none;
@@ -165,10 +165,11 @@
   }
 
   &.newDesignLanguage {
+    @include focus-ring($border-width: 0);
     background: var(--p-button-color);
-    border-color: transparent;
     border-width: 0;
-    box-shadow: var(--p-button-shadow), var(--p-button-inner-shadow);
+    border-color: transparent;
+    box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     color: var(--p-button-text);
 
     &:hover {
