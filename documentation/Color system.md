@@ -246,6 +246,7 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-top-bar-shadow`                      | `0 2px 2px -1px var(--p-shadow-from-direct-light)`                                                           |
 | `--p-button-drop-shadow`                  | `0 1px 0 rgba(0, 0, 0, 0.05)`                                                                                |
 | `--p-button-inner-shadow`                 | `inset 0 -1px 0 rgba(0, 0, 0, 0.2)`                                                                          |
+| `--p-button-pressed-inner-shadow`         | `inset 0 2px 0 rgba(0, 0, 0, 0.05)`                                                                          |
 | `--p-override-none`                       | `none`                                                                                                       |
 | `--p-override-transparent`                | `transparent`                                                                                                |
 | `--p-override-one`                        | `1`                                                                                                          |

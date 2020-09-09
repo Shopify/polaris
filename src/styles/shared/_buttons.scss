@@ -100,7 +100,7 @@
 
     &.pressed {
       background: var(--p-action-secondary-depressed);
-      box-shadow: var(--p-button-inner-shadow);
+      box-shadow: var(--p-button-pressed-inner-shadow);
       color: var(--p-text);
     }
 
@@ -180,24 +180,26 @@
 
     &:focus {
       border-color: transparent;
+      box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     }
 
     &:active {
       background: var(--p-button-color-active);
       border-color: transparent;
-      box-shadow: none;
+      box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     }
 
     &.pressed {
+      color: var(--p-button-text);
       background: var(--p-button-color-depressed);
       border-color: transparent;
-      box-shadow: var(--p-button-inner-shadow);
+      box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
 
       &:hover,
       &:focus {
         background: var(--p-button-color-depressed);
         border-color: transparent;
-        box-shadow: var(--p-button-inner-shadow);
+        box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
       }
     }
   }
