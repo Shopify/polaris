@@ -22,3 +22,11 @@
 .fullyOpen {
   overflow: visible;
 }
+
+.expandOnPrint {
+  @include when-printing {
+    opacity: 1;
+    max-height: none !important;
+    overflow: visible;
+  }
+}
