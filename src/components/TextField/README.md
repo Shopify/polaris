@@ -872,6 +872,7 @@ Text fields have standard keyboard support.
 - If the `type` is set to `number`, then merchants can use the up and down arrow keys to adjust the value typed into the field
 - Using the `disabled` prop will prevent the text field from receive keyboard focus or inputs
 - The `readOnly` prop allows focus on the text field but prevents input or editing
+- The `inputMode` prop can be used to bring up a relevant keyboard for merchants on mobile; it’s passed down to the input as an [`inputmode` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)
 
 #### Automatically focusing
 

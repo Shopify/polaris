@@ -38,6 +38,16 @@ type Type =
 
 type Alignment = 'left' | 'center' | 'right';
 
+type InputMode =
+  | 'none'
+  | 'text'
+  | 'decimal'
+  | 'numeric'
+  | 'tel'
+  | 'search'
+  | 'email'
+  | 'url';
+
 interface NonMutuallyExclusiveProps {
   /** Text to display before value */
   prefix?: React.ReactNode;
@@ -95,6 +105,8 @@ interface NonMutuallyExclusiveProps {
   minLength?: number;
   /** A regular expression to check the value against */
   pattern?: string;
+  /** Choose the keyboard that should be used on mobile devices */
+  inputMode?: InputMode;
   /** Indicate whether value should have spelling checked */
   spellCheck?: boolean;
   /** Indicates the id of a component owned by the input */
@@ -155,6 +167,7 @@ export function TextField({
   min,
   minLength,
   pattern,
+  inputMode,
   spellCheck,
   ariaOwns,
   ariaControls,
@@ -405,6 +418,7 @@ export function TextField({
     maxLength,
     spellCheck,
     pattern,
+    inputMode,
     type: inputType,
     'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
     'aria-labelledby': labelledBy.join(' '),

@@ -10,6 +10,7 @@ import {TextField} from '../TextField';
 describe('<TextField />', () => {
   it('allows specific props to pass through properties on the input', () => {
     const pattern = '\\d\\d';
+    const inputMode = 'numeric';
     const input = mountWithAppProvider(
       <TextField
         label="TextField"
@@ -26,6 +27,7 @@ describe('<TextField />', () => {
         maxLength={2}
         spellCheck={false}
         pattern={pattern}
+        inputMode={inputMode}
         align="left"
       />,
     ).find('input');
@@ -42,6 +44,7 @@ describe('<TextField />', () => {
     expect(input.prop('maxLength')).toBe(2);
     expect(input.prop('spellCheck')).toBe(false);
     expect(input.prop('pattern')).toBe(pattern);
+    expect(input.prop('inputMode')).toBe(inputMode);
   });
 
   it('blocks props not listed as component props to pass on the input', () => {
