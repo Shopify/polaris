@@ -57,8 +57,8 @@ $stacking-order: (
 }
 
 .newDesignLanguage {
-  .CenterContainer + .RightContainer {
-    margin-left: spacing(extra-tight);
+  .CenterContainer {
+    margin-right: spacing(extra-tight);
   }
 }
 
