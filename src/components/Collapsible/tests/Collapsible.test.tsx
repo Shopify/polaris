@@ -47,6 +47,26 @@ describe('<Collapsible />', () => {
     expect(collapsible.contains('content')).toBe(true);
   });
 
+  it('renders its children when expandOnPrint is true and open is false', () => {
+    const collapsible = mountWithAppProvider(
+      <Collapsible id="test-collapsible" open={false} expandOnPrint>
+        content
+      </Collapsible>,
+    );
+
+    expect(collapsible.contains('content')).toBe(true);
+  });
+
+  it('renders its children when expandOnPrint is true and open is true', () => {
+    const collapsible = mountWithAppProvider(
+      <Collapsible id="test-collapsible" open expandOnPrint>
+        content
+      </Collapsible>,
+    );
+
+    expect(collapsible.contains('content')).toBe(true);
+  });
+
   describe('Transition', () => {
     it('passes a duration property', () => {
       const duration = Tokens.duration150;

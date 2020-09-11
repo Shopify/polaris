@@ -101,7 +101,8 @@
     &.pressed {
       background: var(--p-action-secondary-depressed);
       box-shadow: var(--p-button-pressed-inner-shadow);
-      color: var(--p-text);
+      color: var(--p-text-on-primary);
+      border-color: var(--p-border-depressed);
     }
 
     @media (-ms-high-contrast: active) {
@@ -273,9 +274,9 @@
     }
 
     &.pressed {
-      background: var(--p-surface-depressed);
+      background: var(--p-action-secondary-pressed);
       box-shadow: 0 0 0 border-width('base') var(--p-border);
-      color: var(--p-text);
+      color: var(--p-button-text);
     }
 
     &.disabled {
