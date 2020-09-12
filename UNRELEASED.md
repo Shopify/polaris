@@ -22,6 +22,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Fix `Autocomplete` documentation example code([#3241](https://github.com/Shopify/polaris-react/pull/3241)).
+
 ### Development workflow
 
 ### Dependency upgrades
