@@ -45,6 +45,7 @@ export interface PopoverOverlayProps {
   preventAutofocus?: boolean;
   sectioned?: boolean;
   fixed?: boolean;
+  hideOnPrint?: boolean;
   onClose(source: PopoverCloseSource): void;
 }
 
@@ -185,6 +186,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       fullWidth,
       fullHeight,
       fluidContent,
+      hideOnPrint,
     } = this.props;
 
     const className = classNames(
@@ -192,6 +194,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       positioning === 'above' && styles.positionedAbove,
       fullWidth && styles.fullWidth,
       measuring && styles.measuring,
+      hideOnPrint && styles.hideOnPrint,
     );
 
     const contentStyles = measuring ? undefined : {height: desiredHeight};
