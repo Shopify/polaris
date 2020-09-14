@@ -13,6 +13,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Update `ActionList` to allow the items to have a suffix ([#3216](https://github.com/Shopify/polaris-react/pull/3216)).
 - Added support for the `inputMode` attribute on the `TextField` component ([#3222](https://github.com/Shopify/polaris-react/pull/3222)).
 - Added `expandOnPrint` prop to `Collapsible` for print support ([#3231](https://github.com/Shopify/polaris-react/pull/3231))
+- Added `hideOnPrint` prop to `Popover` to allow hiding the overlay when printing ([#3242](https://github.com/Shopify/polaris-react/pull/3242))
 
 ### Bug fixes
 
