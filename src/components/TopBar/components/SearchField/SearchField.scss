@@ -28,7 +28,7 @@ $stacking-order: (
   max-width: $new-search-max-width;
 
   .Backdrop {
-    @include focus-ring($size: 'wide');
+    @include focus-ring;
     position: absolute;
   }
 
@@ -166,12 +166,12 @@ $stacking-order: (
   bottom: 0;
   left: 0;
   background-color: var(
-    --p-action-secondary,
+    --p-on-surface-background,
     var(--top-bar-background-lighter)
   );
   will-change: background-color;
   transition: background-color duration() easing();
-  border-radius: var(--p-border-radius-wide, border-radius());
+  border-radius: var(--p-border-radius-base, border-radius());
   animation: toLightBackground 0.01ms;
 }
 

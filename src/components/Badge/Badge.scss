@@ -25,6 +25,11 @@ $pip-spacing: ($height - $pip-size) / 2;
   line-height: $height;
   color: var(--p-text, color('ink', 'light'));
   font-weight: var(--p-badge-font-weight, 400);
+
+  @media print {
+    border: solid rem(0.1px) var(--p-border, color('ink', 'light'));
+    border-radius: $height;
+  }
 }
 
 .sizeSmall {
@@ -92,6 +97,20 @@ $pip-spacing: ($height - $pip-size) / 2;
       transparent 50%,
       transparent
     );
+
+    @media print {
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        transform: translateY(100%);
+        box-shadow: 0 0 0 $pip-size currentColor inset;
+      }
+    }
   }
 }
 
@@ -103,5 +122,9 @@ $pip-spacing: ($height - $pip-size) / 2;
       currentColor 50%,
       currentColor 50%
     );
+
+    @media print {
+      box-shadow: 0 0 0 $pip-size currentColor inset;
+    }
   }
 }

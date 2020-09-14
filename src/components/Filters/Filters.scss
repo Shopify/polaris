@@ -21,7 +21,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   width: 100%;
   padding: spacing(base) spacing(loose);
   border-bottom: rem(1px) solid $seperator-color;
-  height: var(--p-top-bar-height, $list-filters-header-height);
+  height: $list-filters-header-height;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -35,7 +35,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
 .FiltersDesktopContainerContent {
   width: 100%;
   height: calc(
-    100% - #{$list-filters-footer-height} - var(--p-top-bar-height, #{$list-filters-header-height})
+    100% - #{$list-filters-footer-height} - #{$list-filters-header-height}
   );
 
   &.newDesignLanguage {
@@ -45,7 +45,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
 
 .FiltersMobileContainerContent {
   width: 100%;
-  height: calc(100% - var(--p-top-bar-height, #{$list-filters-header-height}));
+  height: calc(100% - #{$list-filters-header-height});
 
   &.newDesignLanguage {
     padding: spacing(tight);

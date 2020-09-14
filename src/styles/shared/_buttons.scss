@@ -68,29 +68,29 @@
 
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon));
-    @include focus-ring;
-    background: var(--p-action-secondary);
-    border: none;
-    box-shadow: none;
+    @include focus-ring($border-width: border-width('base'));
+    background: var(--p-surface);
+    box-shadow: var(--p-button-drop-shadow);
     border-radius: var(--p-border-radius-base);
     color: var(--p-text);
+    border: 1px solid var(--p-border-neutral-subdued);
+    border-top-color: var(--p-border-subdued);
+    border-bottom-color: var(--p-border-shadow-subdued);
 
     &:hover {
       background: var(--p-action-secondary-hovered);
-      border-color: transparent;
       @include high-contrast-outline;
     }
 
     &:focus {
-      border-color: transparent;
-      box-shadow: none;
+      box-shadow: var(--p-button-drop-shadow);
+      border-color: var(--p-border-neutral-subdued);
       @include focus-ring($style: 'focused');
     }
 
     &:active {
       background: var(--p-action-secondary-pressed);
-      border-color: transparent;
-      box-shadow: none;
+      box-shadow: var(--p-button-drop-shadow);
 
       &::after {
         border: none;
@@ -100,8 +100,9 @@
 
     &.pressed {
       background: var(--p-action-secondary-depressed);
-      box-shadow: none;
-      color: var(--p-text-on-interactive);
+      box-shadow: var(--p-button-pressed-inner-shadow);
+      color: var(--p-text-on-primary);
+      border-color: var(--p-border-depressed);
     }
 
     @media (-ms-high-contrast: active) {
@@ -165,9 +166,11 @@
   }
 
   &.newDesignLanguage {
+    @include focus-ring($border-width: 0);
     background: var(--p-button-color);
+    border-width: 0;
     border-color: transparent;
-    box-shadow: none;
+    box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     color: var(--p-button-text);
 
     &:hover {
@@ -178,25 +181,26 @@
 
     &:focus {
       border-color: transparent;
-      box-shadow: none;
+      box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     }
 
     &:active {
       background: var(--p-button-color-active);
       border-color: transparent;
-      box-shadow: none;
+      box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     }
 
     &.pressed {
+      color: var(--p-button-text);
       background: var(--p-button-color-depressed);
       border-color: transparent;
-      box-shadow: none;
+      box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
 
       &:hover,
       &:focus {
         background: var(--p-button-color-depressed);
         border-color: transparent;
-        box-shadow: none;
+        box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
       }
     }
   }
@@ -247,6 +251,7 @@
   &.newDesignLanguage {
     background: transparent;
     @include focus-ring($border-width: border-width('base'));
+    border: none;
     box-shadow: 0 0 0 border-width('base') var(--p-border);
     color: var(--p-text);
 
@@ -269,9 +274,9 @@
     }
 
     &.pressed {
-      background: var(--p-surface-depressed);
+      background: var(--p-action-secondary-pressed);
       box-shadow: 0 0 0 border-width('base') var(--p-border);
-      color: var(--p-text-on-interactive);
+      color: var(--p-button-text);
     }
 
     &.disabled {

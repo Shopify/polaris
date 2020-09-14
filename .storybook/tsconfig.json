@@ -1,9 +1,0 @@
-{
-  "extends": "../tsconfig.json",
-  "compileOnSave": false,
-  "compilerOptions": {
-    "paths": {
-      "@shopify/polaris": ["../src"]
-    }
-  }
-}

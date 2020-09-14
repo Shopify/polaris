@@ -11,6 +11,9 @@ export const Tokens = {
   modalShadow:
     '0px 26px 80px var(--p-shadow-from-dim-light), 0px 0px 1px var(--p-shadow-from-dim-light)',
   topBarShadow: '0 2px 2px -1px var(--p-shadow-from-direct-light)',
+  buttonDropShadow: '0 1px 0 rgba(0, 0, 0, 0.05)',
+  buttonInnerShadow: 'inset 0 -1px 0 rgba(0, 0, 0, 0.2)',
+  buttonPressedInnerShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.15)',
 
   // Overrides
   overrideNone: 'none',
@@ -36,7 +39,6 @@ export const Tokens = {
   textFieldFocusRingOffset: rem('-4px'),
   textFieldFocusRingBorderRadius: rem('7px'),
   buttonGroupItemSpacing: rem('2px'),
-  topBarHeight: '68px',
   contextualSaveBarHeight: '64px',
   duration100: '100ms',
   duration150: '150ms',

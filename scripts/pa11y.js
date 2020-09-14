@@ -60,7 +60,7 @@ async function runPa11y() {
   const storyQueryStrings = stories.reduce((memo, story) => {
     // There is no need to test the Playground, or the "All Examples" stories
     const isSkippedStory =
-      story.kind === 'Playground|Playground' || story.name === 'All Examples';
+      story.kind === 'Playground/Playground' || story.name === 'All Examples';
 
     if (!isSkippedStory) {
       const idParam = `id=${encodeURIComponent(story.id)}`;

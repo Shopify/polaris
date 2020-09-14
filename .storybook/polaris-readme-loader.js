@@ -36,6 +36,10 @@ module.exports = function loader(source) {
     'Theme provider',
   ].includes(readme.name);
 
+  const hasFullscreenLayout = ['App provider', 'Frame', 'Navigation'].includes(
+    readme.name,
+  );
+
   const csfExports = readme.examples.map((example) => {
     return `
 const ${example.storyName}Component = (${example.code})();
@@ -44,13 +48,15 @@ export function ${example.storyName}() {
       example.storyName
     }Component /></div>;
 }
-${example.storyName}.story = {
-  name: ${JSON.stringify(example.name)},
-  decorators: [withA11y],
-  parameters: {
-    notes: ${JSON.stringify(example.description)},
-    percy: {skip: ${JSON.stringify(!testIndividualExamples)}},
-  }
+
+${example.storyName}.storyName = ${JSON.stringify(example.name)};
+${example.storyName}.args = {omitAppProvider: ${readme.omitAppProvider}};
+${example.storyName}.parameters = {
+  layout: '${hasFullscreenLayout ? 'fullscreen' : 'padded'}',
+  docs: {
+    description: {story: ${JSON.stringify(example.description)}},
+  },
+  percy: {skip: ${JSON.stringify(!testIndividualExamples)}},
 };
 `.trim();
   });
@@ -79,12 +85,10 @@ ${example.storyName}.story = {
     </React.Fragment>
   );
 };
-AllExamples.story = {
-  decorators: [withA11y],
-  parameters: {
-    percy: {skip: false},
-    chromatic: {disable: true},
-  }
+AllExamples.parameters = {
+  docs: {disable: true},
+  percy: {skip: false},
+  chromatic: {disable: true},
 }`);
   }
 
@@ -94,7 +98,6 @@ AllExamples.story = {
 
   return `
 import React, {${hooks}} from 'react';
-import {withA11y} from '@storybook/addon-a11y';
 import {
   AccountConnection,
   ActionList,
@@ -245,7 +248,7 @@ import {
   ViewMinor,
 } from '@shopify/polaris-icons';
 
-export default { title: ${JSON.stringify(`All Components|${readme.name}`)} };
+export default { title: ${JSON.stringify(`All Components/${readme.name}`)} };
 
 ${csfExports.join('\n\n')}
 `;

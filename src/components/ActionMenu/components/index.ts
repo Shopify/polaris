@@ -1,3 +1,5 @@
+export * from './Actions';
+
 export * from './MenuAction';
 
 export * from './MenuGroup';

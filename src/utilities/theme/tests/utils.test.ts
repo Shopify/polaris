@@ -175,7 +175,7 @@ describe('buildCustomProperties', () => {
       ),
     ).toStrictEqual(
       expect.objectContaining({
-        '--p-background': 'rgba(250, 250, 250, 1)',
+        '--p-background': 'rgba(246, 246, 246, 1)',
       }),
     );
   });

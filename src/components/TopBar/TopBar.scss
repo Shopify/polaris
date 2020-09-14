@@ -10,7 +10,7 @@ $context-control-expand-after: 1400px;
   position: relative;
   display: flex;
   height: top-bar-height();
-  background-color: var(--p-background, var(--top-bar-background));
+  background-color: var(--p-surface, var(--top-bar-background));
   transition: duration() background-color ease-in-out;
 
   &::after {
@@ -23,12 +23,7 @@ $context-control-expand-after: 1400px;
 }
 
 .TopBar-newDesignLanguage {
-  height: var(--p-top-bar-height);
-  transition: box-shadow 100ms var(--p-ease);
-
-  &.isScrolled {
-    box-shadow: var(--p-top-bar-shadow);
-  }
+  box-shadow: var(--p-top-bar-shadow);
 }
 
 .LogoContainer {
@@ -57,7 +52,7 @@ $context-control-expand-after: 1400px;
   }
 
   @include breakpoint-after($context-control-expand-after) {
-    width: layout-width(nav) + $context-control-extra-spacing;
+    width: layout-width(nav);
   }
 }
 

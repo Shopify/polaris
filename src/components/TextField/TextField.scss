@@ -365,6 +365,7 @@ $stacking-order: (
 
     > .Backdrop {
       background-color: var(--p-action-secondary-disabled);
+      border-top-color: var(--p-border-neutral-subdued);
     }
 
     svg {
@@ -393,20 +394,13 @@ $stacking-order: (
     @include focus-ring($border-width: border-width());
     background-color: var(--p-surface);
     position: absolute;
+    border: 1px solid var(--p-border-neutral-subdued);
+    border-top: border(dark);
+    box-shadow: none;
 
     &::after {
       opacity: 1;
     }
-  }
-
-  .Backdrop-connectedLeft::after {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .Backdrop-connectedRight::after {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
   }
 
   .Spinner {

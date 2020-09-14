@@ -39,9 +39,7 @@ export function ActionList({
   );
 
   const hasMultipleSections = finalSections.length > 1;
-  // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
-  // see https://github.com/Microsoft/TypeScript/issues/28768
-  const Element: any = hasMultipleSections ? 'ul' : 'div';
+  const Element = hasMultipleSections ? 'ul' : 'div';
   const sectionMarkup = finalSections.map((section, index) => {
     return section.items.length > 0 ? (
       <Section

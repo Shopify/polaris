@@ -1,12 +1,12 @@
 import React from 'react';
-import {Icon, Caption, TextStyle} from 'components';
+import {Caption, TextStyle} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';
-import {fileUpload as fileUploadImage, imageUpload} from '../../../images';
+import {uploadArrow as uploadArrowImage} from '../../../images';
 
 describe('<FileUpload />', () => {
   const defaultStates = {
@@ -49,7 +49,7 @@ describe('<FileUpload />', () => {
         </DropZoneContext.Provider>,
       );
 
-      expect(fileUpload.find('img').prop('src')).toBe(fileUploadImage);
+      expect(fileUpload.find('img').prop('src')).toBe(uploadArrowImage);
       expect(findByTestID(fileUpload, 'Button')).toHaveLength(1);
       expect(fileUpload.find(TextStyle)).toHaveLength(1);
     });
@@ -63,14 +63,13 @@ describe('<FileUpload />', () => {
         </DropZoneContext.Provider>,
       );
 
-      expect(fileUpload.find('img').prop('src')).toBe(imageUpload);
       expect(findByTestID(fileUpload, 'Button')).toHaveLength(1);
       expect(fileUpload.find(TextStyle)).toHaveLength(1);
     });
   });
 
   describe('large', () => {
-    it('renders large view for type file', () => {
+    it('renders large view', () => {
       const fileUpload = mountWithAppProvider(
         <DropZoneContext.Provider
           value={{size: 'large', type: 'file', ...defaultStates}}
@@ -79,22 +78,6 @@ describe('<FileUpload />', () => {
         </DropZoneContext.Provider>,
       );
 
-      expect(fileUpload.find('img').prop('src')).toBe(fileUploadImage);
-      expect(findByTestID(fileUpload, 'Button')).toHaveLength(1);
-      expect(fileUpload.find(TextStyle)).toHaveLength(1);
-      expect(fileUpload.find(Caption)).toHaveLength(1);
-    });
-
-    it('renders large view for type image', () => {
-      const fileUpload = mountWithAppProvider(
-        <DropZoneContext.Provider
-          value={{size: 'large', type: 'image', ...defaultStates}}
-        >
-          <FileUpload />
-        </DropZoneContext.Provider>,
-      );
-
-      expect(fileUpload.find('img').prop('src')).toBe(imageUpload);
       expect(findByTestID(fileUpload, 'Button')).toHaveLength(1);
       expect(fileUpload.find(TextStyle)).toHaveLength(1);
       expect(fileUpload.find(Caption)).toHaveLength(1);
@@ -123,7 +106,7 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
-    expect(fileUpload.find(Icon)).toHaveLength(1);
+    expect(fileUpload.find('img')).toHaveLength(1);
   });
 
   it('sets a default actionTitle if the prop is provided then removed', () => {

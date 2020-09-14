@@ -1,5 +1,4 @@
-import React, {useState, useCallback} from 'react';
-import debounce from 'lodash/debounce';
+import React from 'react';
 import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -8,7 +7,6 @@ import {useI18n} from '../../utilities/i18n';
 import {useTheme} from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
-import {EventListener} from '../EventListener';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
@@ -65,7 +63,6 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
 }: TopBarProps) {
   const i18n = useI18n();
   const {logo} = useTheme();
-  const [scrolled, setScrolled] = useState(false);
   const {newDesignLanguage} = useFeatures();
 
   const {
@@ -73,21 +70,6 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     setTrue: forceTrueFocused,
     setFalse: forceFalseFocused,
   } = useToggle(false);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleScroll = useCallback(
-    debounce(() => {
-      const scrollDistance = window.scrollY;
-      const isScrolled = scrollDistance >= 1;
-
-      if (scrolled && isScrolled) {
-        return;
-      }
-
-      window.requestAnimationFrame(() => setScrolled(Boolean(isScrolled)));
-    }, 20),
-    [],
-  );
 
   const iconClassName = classNames(
     styles.NavigationIcon,
@@ -110,13 +92,13 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   const width = getWidth(logo, 104);
   let contextMarkup;
 
-  if (contextControl && !newDesignLanguage) {
+  if (contextControl) {
     contextMarkup = (
       <div testID="ContextControl" className={styles.ContextControl}>
         {contextControl}
       </div>
     );
-  } else if (logo && !newDesignLanguage) {
+  } else if (logo) {
     contextMarkup = (
       <div className={styles.LogoContainer}>
         <UnstyledLink
@@ -148,14 +130,9 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     </>
   ) : null;
 
-  const scrollListenerMarkup = newDesignLanguage ? (
-    <EventListener event="scroll" handler={handleScroll} passive />
-  ) : null;
-
   const className = classNames(
     styles.TopBar,
     newDesignLanguage && styles['TopBar-newDesignLanguage'],
-    scrolled && styles.isScrolled,
   );
 
   return (
@@ -167,7 +144,6 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
         <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
         {userMenu}
       </div>
-      {scrollListenerMarkup}
     </div>
   );
 };
