@@ -45,7 +45,8 @@ $nav-animation-variables: (
   .Navigation-newDesignLanguage & {
     font-weight: 600;
     line-height: $item-line-height-large;
-    padding-left: spacing();
+    padding-left: spacing() - spacing(extra-tight);
+    padding-right: spacing(extra-tight);
   }
 
   &:hover {
