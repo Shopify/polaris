@@ -217,13 +217,6 @@
   border-color: lighten($button-color, 20%);
   box-shadow: none;
   color: color('white');
-
-  &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon-disabled));
-    border-color: transparent;
-    background: var(--p-action-secondary-disabled);
-    color: var(--p-text-disabled);
-  }
 }
 
 @mixin button-outline($outline-color, $background-color: transparent) {

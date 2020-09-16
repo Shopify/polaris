@@ -339,7 +339,17 @@ Use when there is only one primary action but other related actions can be taken
 Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it.
 
 ```jsx
-<Button disabled>Buy shipping label</Button>
+<ButtonGroup>
+  <Button disabled>Buy shipping label</Button>
+  <Button primary disabled>Buy shipping label</Button>
+  <Button destructive disabled>Buy shipping label</Button>
+  <Button outline disabled>Buy shipping label</Button>
+  <span style={{color: '#bf0711'}}>
+    <Button outline monochrome disabled>Buy shipping label</Button>
+  </span>
+  <Button plain disabled>Buy shipping label</Button>
+  <Button plain destructive disabled>Buy shipping label</Button>
+</ButtonGroup>
 ```
 
 <!-- content-for: android -->

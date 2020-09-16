@@ -197,6 +197,13 @@ $stacking-order: (
 
   &.disabled {
     @include button-filled-disabled(color('indigo'));
+    // stylelint-disable-next-line selector-max-class
+    &.newDesignLanguage {
+      @include recolor-icon(var(--p-icon-disabled));
+      background: var(--p-action-primary-disabled);
+      color: var(--p-text-disabled);
+      border-color: transparent;
+    }
   }
 
   &.pressed {
@@ -220,6 +227,13 @@ $stacking-order: (
 
   &.disabled {
     @include button-filled-disabled(color('red'));
+    // stylelint-disable-next-line selector-max-class
+    &.newDesignLanguage {
+      @include recolor-icon(var(--p-icon-disabled));
+      background: var(--p-action-critical-disabled);
+      color: var(--p-text-disabled);
+      border-color: transparent;
+    }
   }
 
   &.pressed {
@@ -508,6 +522,10 @@ $stacking-order: (
     &.disabled {
       color: var(--p-text-disabled);
       background: none;
+
+      .Content {
+        @include plain-button-backdrop(var(--p-action-secondary));
+      }
     }
 
     &.iconOnly {
@@ -659,6 +677,10 @@ $stacking-order: (
   &.outline {
     position: relative;
     border-color: currentColor;
+    // stylelint-disable selector-max-class
+    &.newDesignLanguage {
+      border-color: currentColor;
+    }
 
     &::before {
       content: '';
