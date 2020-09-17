@@ -522,10 +522,6 @@ $stacking-order: (
     &.disabled {
       color: var(--p-text-disabled);
       background: none;
-
-      .Content {
-        @include plain-button-backdrop(var(--p-action-secondary));
-      }
     }
 
     &.iconOnly {
@@ -695,12 +691,10 @@ $stacking-order: (
       z-index: 0;
     }
 
-    // stylelint-disable-next-line selector-max-class
     &.pressed {
       background: transparent;
       box-shadow: none;
 
-      // stylelint-disable selector-max-class
       &::before {
         opacity: 0.05;
       }
