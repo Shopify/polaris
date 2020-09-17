@@ -127,7 +127,6 @@ export function ContextualSaveBar({
             </div>
           </div>
         </div>
-
       </ThemeProvider>
       {discardConfirmationModalMarkup}
     </>
