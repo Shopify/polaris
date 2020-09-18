@@ -184,7 +184,11 @@ export function Header({
               <div className={styles.RightAlign}>
                 <ConditionalWrapper
                   condition={[slot3, slot4].every(notNull)}
-                  wrapper={(children) => <ButtonGroup>{children}</ButtonGroup>}
+                  wrapper={(children) => (
+                    <ButtonGroup noWrap={newDesignLanguage}>
+                      {children}
+                    </ButtonGroup>
+                  )}
                 >
                   {slot3}
                   {slot4}
