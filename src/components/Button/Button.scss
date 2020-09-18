@@ -674,9 +674,6 @@ $stacking-order: (
     position: relative;
     border-color: currentColor;
     // stylelint-disable selector-max-class
-    &.newDesignLanguage {
-      border-color: currentColor;
-    }
 
     &::before {
       content: '';
@@ -716,6 +713,7 @@ $stacking-order: (
 
     &.newDesignLanguage {
       @include focus-ring($border-width: border-width('base'));
+      border-color: currentColor;
       box-shadow: 0 0 0 border-width('base') currentColor;
 
       &:focus {
