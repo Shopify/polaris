@@ -9,6 +9,8 @@ import styles from './ButtonGroup.scss';
 export interface ButtonGroupProps {
   /** Join buttons as segmented group */
   segmented?: boolean;
+  /** Force buttons to render in a row */
+  noWrap?: boolean;
   /** Buttons will stretch/shrink to occupy the full width */
   fullWidth?: boolean;
   /** Remove top left and right border radius */
@@ -20,11 +22,13 @@ export interface ButtonGroupProps {
 export function ButtonGroup({
   children,
   segmented,
+  noWrap,
   fullWidth,
   connectedTop,
 }: ButtonGroupProps) {
   const className = classNames(
     styles.ButtonGroup,
+    noWrap && styles.noWrap,
     segmented && styles.segmented,
     fullWidth && styles.fullWidth,
   );

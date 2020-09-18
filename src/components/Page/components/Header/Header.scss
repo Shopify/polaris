@@ -131,7 +131,7 @@ $action-menu-rollup-computed-width: rem(40px);
   + .Row {
     margin-top: spacing();
     // stylelint-disable-next-line selector-max-combinators, selector-max-class
-    .newDesignLanuage & {
+    .newDesignLanguage & {
       margin-top: spacing(extra-tight);
     }
 
@@ -146,6 +146,10 @@ $action-menu-rollup-computed-width: rem(40px);
   display: flex;
   align-content: flex-start;
   align-items: center;
+
+  .newDesignLanguage & {
+    flex: 1;
+  }
 }
 
 .RightAlign {
@@ -153,4 +157,8 @@ $action-menu-rollup-computed-width: rem(40px);
   align-content: flex-end;
   align-items: center;
   margin-left: spacing(tight);
+
+  .newDesignLanguage & {
+    flex: 0;
+  }
 }
