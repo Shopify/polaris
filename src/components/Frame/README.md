@@ -668,6 +668,7 @@ function FrameExample() {
       url: 'http://jadedpixel.com',
       accessibilityLabel: 'Jaded Pixel',
     },
+    navWidth: 90,
   };
 
   return (
