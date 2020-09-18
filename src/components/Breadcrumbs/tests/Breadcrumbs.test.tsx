@@ -5,6 +5,7 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 import {UnstyledLink} from '../../UnstyledLink';
 import type {CallbackAction, LinkAction} from '../../../types';
 import {Breadcrumbs} from '../Breadcrumbs';
+import {VisuallyHidden} from '../../VisuallyHidden';
 
 describe('<Breadcrumbs />', () => {
   describe('url', () => {
@@ -126,6 +127,29 @@ describe('<Breadcrumbs />', () => {
       expect(wrapper.find(UnstyledLink).prop('className')).toStrictEqual(
         'Breadcrumb',
       );
+    });
+
+    it('renders breadcrumb content as a visually hidden label when the new design language is enabled', () => {
+      const wrapper = mountWithAppProvider(
+        <Breadcrumbs breadcrumbs={linkBreadcrumbs} />,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+
+      expect(wrapper.find(VisuallyHidden).text()).toStrictEqual('Products');
+    });
+
+    it('does not render breadcrumb content as a visually hidden label when the new design language is enabled', () => {
+      const wrapper = mountWithAppProvider(
+        <Breadcrumbs breadcrumbs={linkBreadcrumbs} />,
+        {
+          features: {newDesignLanguage: false},
+        },
+      );
+
+      expect(wrapper.find(VisuallyHidden)).toHaveLength(0);
+      expect(wrapper.find('.Content').text()).toStrictEqual('Products');
     });
   });
 });
