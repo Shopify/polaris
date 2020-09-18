@@ -32,7 +32,6 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   const {logo} = useTheme();
   const {newDesignLanguage} = useFeatures();
   const width = getWidth(logo, 104);
-
   const logoMarkup = logo ? (
     <div className={styles.LogoContainer}>
       <UnstyledLink
