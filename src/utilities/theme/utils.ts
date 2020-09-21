@@ -211,6 +211,7 @@ function parseColors([baseName, colors]: [
   return colorPairs;
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 function memoize(fnToMemoize: Function) {
   const cache: Map<string, any> = new Map();
   return function (...args: any[]) {
