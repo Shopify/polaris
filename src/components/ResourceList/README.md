@@ -50,14 +50,14 @@ A resource list with simple items and no bulk actions, sorting, or filtering.
     resourceName={{singular: 'customer', plural: 'customers'}}
     items={[
       {
-        id: 341,
-        url: 'customers/341',
+        id: 350,
+        url: 'customers/350',
         name: 'Mae Jemison',
         location: 'Decatur, USA',
       },
       {
-        id: 256,
-        url: 'customers/256',
+        id: 264,
+        url: 'customers/264',
         name: 'Ellen Ochoa',
         location: 'Los Angeles, USA',
       },
@@ -152,14 +152,14 @@ function ResourceListWithSelectionExample() {
 
   const items = [
     {
-      id: 341,
-      url: 'customers/341',
+      id: 351,
+      url: 'customers/351',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 256,
-      url: 'customers/256',
+      id: 265,
+      url: 'customers/265',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -214,14 +214,14 @@ function ResourceListWithBulkActionsExample() {
 
   const items = [
     {
-      id: 341,
-      url: 'customers/341',
+      id: 352,
+      url: 'customers/352',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 256,
-      url: 'customers/256',
+      id: 267,
+      url: 'customers/267',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -299,14 +299,14 @@ function ResourceListWithLoadingExample() {
 
   const items = [
     {
-      id: 341,
-      url: 'customers/341',
+      id: 353,
+      url: 'customers/353',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 256,
-      url: 'customers/256',
+      id: 268,
+      url: 'customers/268',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -382,14 +382,14 @@ function ResourceListWithTotalItemsCount() {
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
-            id: 341,
-            url: 'customers/341',
+            id: 354,
+            url: 'customers/354',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
           },
           {
-            id: 256,
-            url: 'customers/256',
+            id: 269,
+            url: 'customers/269',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
           },
@@ -435,14 +435,14 @@ function ResourceListWithSortingExample() {
 
   const items = [
     {
-      id: 341,
-      url: 'customers/341',
+      id: 355,
+      url: 'customers/355',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 256,
-      url: 'customers/256',
+      id: 270,
+      url: 'customers/270',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -501,14 +501,14 @@ function ResourceListWithAlternateToolExample() {
 
   const items = [
     {
-      id: 341,
-      url: 'customers/341',
+      id: 356,
+      url: 'customers/356',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 256,
-      url: 'customers/256',
+      id: 271,
+      url: 'customers/271',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -573,14 +573,14 @@ function ResourceListWithFilteringExample() {
 
   const items = [
     {
-      id: 341,
-      url: 'customers/341',
+      id: 357,
+      url: 'customers/357',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 256,
-      url: 'customers/256',
+      id: 272,
+      url: 'customers/272',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -588,7 +588,7 @@ function ResourceListWithFilteringExample() {
 
   const filters = [
     {
-      key: 'taggedWith',
+      key: 'taggedWith10',
       label: 'Tagged with',
       filter: (
         <TextField
@@ -605,7 +605,7 @@ function ResourceListWithFilteringExample() {
   const appliedFilters = !isEmpty(taggedWith)
     ? [
         {
-          key: 'taggedWith',
+          key: 'taggedWith11',
           label: disambiguateLabel('taggedWith', taggedWith),
           onRemove: handleTaggedWithRemove,
         },
@@ -703,7 +703,7 @@ function ResourceListWithFilteringExample() {
 
   const filters = [
     {
-      key: 'taggedWith',
+      key: 'taggedWith12',
       label: 'Tagged with',
       filter: (
         <TextField
@@ -720,7 +720,7 @@ function ResourceListWithFilteringExample() {
   const appliedFilters = !isEmpty(taggedWith)
     ? [
         {
-          key: 'taggedWith',
+          key: 'taggedWith13',
           label: disambiguateLabel('taggedWith', taggedWith),
           onRemove: handleTaggedWithRemove,
         },
@@ -797,15 +797,15 @@ Shortcut actions are intended to provide quick access to popular actions from th
     resourceName={{singular: 'customer', plural: 'customers'}}
     items={[
       {
-        id: 341,
-        url: 'customers/341',
+        id: 358,
+        url: 'customers/358',
         name: 'Mae Jemison',
         location: 'Decatur, USA',
         latestOrderUrl: 'orders/1456',
       },
       {
-        id: 256,
-        url: 'customers/256',
+        id: 273,
+        url: 'customers/273',
         name: 'Ellen Ochoa',
         location: 'Los Angeles, USA',
         latestOrderUrl: 'orders/1457',
@@ -853,15 +853,15 @@ Use persistent shortcut actions in rare cases when the action cannot be made ava
     resourceName={{singular: 'customer', plural: 'customers'}}
     items={[
       {
-        id: 341,
-        url: 'customers/341',
+        id: 359,
+        url: 'customers/359',
         name: 'Mae Jemison',
         location: 'Decatur, USA',
         latestOrderUrl: 'orders/1456',
       },
       {
-        id: 256,
-        url: 'customers/256',
+        id: 274,
+        url: 'customers/274',
         name: 'Ellen Ochoa',
         location: 'Los Angeles, USA',
         latestOrderUrl: 'orders/1457',
@@ -1048,15 +1048,15 @@ function ResourceListExample() {
 
   const items = [
     {
-      id: 341,
-      url: 'customers/341',
+      id: 360,
+      url: 'customers/360',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       latestOrderUrl: 'orders/1456',
     },
     {
-      id: 256,
-      url: 'customers/256',
+      id: 275,
+      url: 'customers/275',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       latestOrderUrl: 'orders/1457',
@@ -1087,7 +1087,7 @@ function ResourceListExample() {
 
   const filters = [
     {
-      key: 'taggedWith',
+      key: 'taggedWith14',
       label: 'Tagged with',
       filter: (
         <TextField
@@ -1104,7 +1104,7 @@ function ResourceListExample() {
   const appliedFilters = !isEmpty(taggedWith)
     ? [
         {
-          key: 'taggedWith',
+          key: 'taggedWith15',
           label: disambiguateLabel('taggedWith', taggedWith),
           onRemove: handleTaggedWithRemove,
         },

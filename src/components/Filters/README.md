@@ -184,7 +184,7 @@ function ResourceListFiltersExample() {
 
   const filters = [
     {
-      key: 'accountStatus',
+      key: 'accountStatus1',
       label: 'Account status',
       filter: (
         <ChoiceList
@@ -204,7 +204,7 @@ function ResourceListFiltersExample() {
       shortcut: true,
     },
     {
-      key: 'taggedWith',
+      key: 'taggedWith1',
       label: 'Tagged with',
       filter: (
         <TextField
@@ -278,14 +278,14 @@ function ResourceListFiltersExample() {
           }
           items={[
             {
-              id: 341,
-              url: 'customers/341',
+              id: 338,
+              url: 'customers/338',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
-              url: 'customers/256',
+              id: 253,
+              url: 'customers/253',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
@@ -416,7 +416,7 @@ function DataTableFiltersExample() {
       ),
     },
     {
-      key: 'taggedWith',
+      key: 'taggedWith2',
       label: 'Tagged with',
       filter: (
         <TextField
@@ -548,7 +548,7 @@ function FiltersExample() {
 
   const filters = [
     {
-      key: 'taggedWith',
+      key: 'taggedWith3',
       label: 'Tagged with',
       filter: (
         <TextField
@@ -565,7 +565,7 @@ function FiltersExample() {
   const appliedFilters = !isEmpty(taggedWith)
     ? [
         {
-          key: 'taggedWith',
+          key: 'taggedWith4',
           label: disambiguateLabel('taggedWith', taggedWith),
           onRemove: handleTaggedWithRemove,
         },
@@ -595,14 +595,14 @@ function FiltersExample() {
           }
           items={[
             {
-              id: 341,
-              url: 'customers/341',
+              id: 337,
+              url: 'customers/337',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
-              url: 'customers/256',
+              id: 277,
+              url: 'customers/277',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
@@ -674,7 +674,7 @@ function DisableAllFiltersExample() {
 
   const filters = [
     {
-      key: 'taggedWith',
+      key: 'taggedWith5',
       label: 'Tagged with',
       filter: (
         <TextField
@@ -691,7 +691,7 @@ function DisableAllFiltersExample() {
   const appliedFilters = !isEmpty(taggedWith)
     ? [
         {
-          key: 'taggedWith',
+          key: 'taggedWith6',
           label: disambiguateLabel('taggedWith', taggedWith),
           onRemove: handleTaggedWithRemove,
         },
@@ -725,14 +725,14 @@ function DisableAllFiltersExample() {
           }
           items={[
             {
-              id: 341,
-              url: 'customers/341',
+              id: 346,
+              url: 'customers/346',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
-              url: 'customers/256',
+              id: 252,
+              url: 'customers/252',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
@@ -809,7 +809,7 @@ function DisableSomeFiltersExample() {
 
   const filters = [
     {
-      key: 'taggedWith',
+      key: 'taggedWith7',
       label: 'Tagged with',
       filter: (
         <TextField
@@ -840,7 +840,7 @@ function DisableSomeFiltersExample() {
   const appliedFilters = !isEmpty(taggedWith)
     ? [
         {
-          key: 'taggedWith',
+          key: 'taggedWith8',
           label: disambiguateLabel('taggedWith', taggedWith),
           onRemove: handleTaggedWithRemove,
         },
@@ -873,14 +873,14 @@ function DisableSomeFiltersExample() {
           }
           items={[
             {
-              id: 341,
-              url: 'customers/341',
+              id: 347,
+              url: 'customers/347',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
-              url: 'customers/256',
+              id: 261,
+              url: 'customers/261',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
@@ -973,7 +973,7 @@ function ResourceListFiltersExample() {
 
   const filters = [
     {
-      key: 'accountStatus',
+      key: 'accountStatus2',
       label: 'Account status',
       filter: (
         <ChoiceList
@@ -993,7 +993,7 @@ function ResourceListFiltersExample() {
       shortcut: true,
     },
     {
-      key: 'taggedWith',
+      key: 'taggedWith9',
       label: 'Tagged with',
       filter: (
         <TextField
@@ -1069,14 +1069,14 @@ function ResourceListFiltersExample() {
           }
           items={[
             {
-              id: 341,
-              url: 'customers/341',
+              id: 348,
+              url: 'customers/348',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
-              url: 'customers/256',
+              id: 262,
+              url: 'customers/262',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },

@@ -60,8 +60,8 @@ AppProvider works by default without any additional options passed to it.
         showHeader
         items={[
           {
-            id: 341,
-            url: 'customers/341',
+            id: 340,
+            url: 'customers/340',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
           },
@@ -126,8 +126,8 @@ With an `i18n`, `AppProvider` will provide these translations to polaris compone
             location: 'Decatur, USA',
           },
           {
-            id: 256,
-            url: 'customers/256',
+            id: 255,
+            url: 'customers/255',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
           },

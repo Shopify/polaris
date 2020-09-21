@@ -88,8 +88,8 @@ The media element can hold an [avatar](https://polaris.shopify.com/components/im
     resourceName={{singular: 'customer', plural: 'customers'}}
     items={[
       {
-        id: 145,
-        url: 'customers/145',
+        id: 144,
+        url: 'customers/144',
         avatarSource:
           'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
         name: 'Yi So-Yeon',
@@ -177,8 +177,8 @@ Use to adjust the vertical alignment of item content.
     resourceName={{singular: 'customer', plural: 'customers'}}
     items={[
       {
-        id: 145,
-        url: 'customers/145',
+        id: 146,
+        url: 'customers/146',
         avatarSource:
           'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
         name: 'Yi So-Yeon',

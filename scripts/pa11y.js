@@ -1,151 +1,66 @@
-/* eslint-disable no-console */
 const puppeteer = require('puppeteer');
 const pa11y = require('pa11y');
+const chalk = require('chalk');
 
-const NUMBER_OF_BROWSERS = 5;
+const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
+const sinkUrl = `${iframePath}?id=playground-playground--kitchen-sink&viewMode=story`;
 
-async function runPa11y() {
-  const browsers = [
-    {
-      browser: await puppeteer.launch(),
-      taken: new Promise((resolve) => {
-        resolve();
-      }),
-    },
-    {
-      browser: await puppeteer.launch(),
-      taken: new Promise((resolve) => {
-        resolve();
-      }),
-    },
-    {
-      browser: await puppeteer.launch(),
-      taken: new Promise((resolve) => {
-        resolve();
-      }),
-    },
-    {
-      browser: await puppeteer.launch(),
-      taken: new Promise((resolve) => {
-        resolve();
-      }),
-    },
-    {
-      browser: await puppeteer.launch(),
-      taken: new Promise((resolve) => {
-        resolve();
-      }),
-    },
-  ];
+const urls = [
+  sinkUrl,
+  `${sinkUrl}&contexts=Global%20Theming=Enabled%20-%20Light%20Mode`,
+  // Dark mode has lots of errors. It is still very WIP so ignore for now
+  // `${sinkUrl}&contexts=Global%20Theming=Enabled%20-%20Dark%20Mode`,
+];
 
-  await browsers.forEach(async (instance) => {
-    // eslint-disable-next-line require-atomic-updates
-    instance.page = await instance.browser.newPage();
-  });
+const printTitle = ({type, message}) => {
+  switch (type) {
+    case 'error':
+      return `${chalk.red('Error:')} ${message}`;
+    case 'warning':
+      return `${chalk.yellow('Warning:')} ${message}`;
+    case 'notice':
+      return `${chalk.blue('Notice:')} ${message}`;
+  }
+};
 
-  let browserIndex = 0;
+const allowedErrors = [
+  'Duplicate id attribute value "AppFrameMain" found on the web page.',
+  'Duplicate id attribute value "AppFrameMainContent" found on the web page.',
+];
 
-  const results = [];
+const testUrls = async (urls) => {
+  const browser = await puppeteer.launch();
 
-  const setupBrowser = browsers[0].browser;
-  const page = await setupBrowser.newPage();
+  const testPage = async (url) => {
+    const page = await browser.newPage();
+    const result = await pa11y(url, {browser});
+    await page.close();
+    return result;
+  };
 
-  // eslint-disable-next-line node/no-path-concat
-  const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
+  const testPages = urls.map((url) => testPage(url));
+  const pageResults = await Promise.all(testPages);
 
-  const stories = await page
-    .goto(iframePath)
-    .then(() => page.evaluate(() => window.__STORYBOOK_CLIENT_API__.raw()));
+  await browser.close();
 
-  const storyQueryStrings = stories.reduce((memo, story) => {
-    // There is no need to test the Playground, or the "All Examples" stories
-    const isSkippedStory =
-      story.kind === 'Playground/Playground' || story.name === 'All Examples';
-
-    if (!isSkippedStory) {
-      const idParam = `id=${encodeURIComponent(story.id)}`;
-      memo.push(
-        idParam,
-        `${idParam}&contexts=Global%20Theming=Enabled%20-%20Light%20Mode`,
-        // Dark mode has lots of errors. It is still very WIP so ignore for now
-        // `${idParam}&contexts=Global%20Theming=Enabled%20-%20Dark%20Mode`,
-      );
-    }
-    return memo;
-  }, []);
-
-  storyQueryStrings.forEach((queryString) => {
-    const currentBrowser = browsers[browserIndex % NUMBER_OF_BROWSERS];
-    browserIndex++;
-    currentBrowser.taken = currentBrowser.taken.then(async () => {
-      console.log('Testing ', queryString);
-      const result = await pa11y(`${iframePath}?${queryString}`, {
-        browser: currentBrowser.browser,
-        ignore: [
-          // Missing lang attribute on <html> tag
-          // Storybook does not include this property so ignore it
-          'WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2',
-        ],
-      });
-      result.exampleID = queryString;
-      delete result.pageUrl;
-      results.push(result);
-    });
-  });
-
-  await Promise.all(browsers.map((instance) => instance.taken));
-  await Promise.all(browsers.map((instance) => instance.browser.close()));
-  return results;
-}
+  const issues = [].concat.apply(
+    [],
+    pageResults.map((result) => result.issues),
+  );
+  return issues
+    .filter((issue) => !allowedErrors.includes(issue.message))
+    .map((issue) => `${chalk.bold(printTitle(issue))}\n${issue.context}`);
+};
 
 (async () => {
-  let rawResults;
-  try {
-    rawResults = await runPa11y();
-
-    if (rawResults.length === 0) {
-      throw new Error('Component URLs could not be crawled');
-    }
-  } catch (error) {
-    console.log(error);
-    process.exit(1);
-  }
-
-  const results = rawResults.filter((result) => result.issues.length);
+  const results = await testUrls(urls);
 
   if (results.length) {
-    console.log(
-      `
-
-========================================================================
-The following issues were discovered and need to be fixed before this code can be merged
-========================================================================
-`,
-    );
-
-    results.forEach((result) => {
-      console.log(
-        '------------------------------------------------------------------------',
-      );
-      console.log(result.exampleID);
-      console.log(
-        '------------------------------------------------------------------------',
-      );
-      console.log(JSON.stringify(result.issues, null, 2));
-    });
-  } else {
-    console.log(
-      `
-
-========================================================================
-No issues were discovered!
-========================================================================
-`,
-    );
-  }
-
-  if (results.length) {
+    console.log(results.join('\n\n'));
+    console.log(chalk.bold(`\nFound ${results.length} issues testing URLs:`));
+    console.log(`- ${urls.join('\n -')}`);
     process.exit(1);
   }
+  console.log(`${chalk.bold.green('Success: ')} No issues were discovered!`);
   process.exit(0);
 })();

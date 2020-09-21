@@ -61,15 +61,15 @@ Use to direct the focus state from the control to the spinner, to the content.
 function SpinnerWithFocusManagement() {
   const tabs = useRef([
     {
-      id: 'all-customers',
+      id: 'all-customers1',
       content: 'All',
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content',
+      panelID: 'all-customers-content1',
     },
     {
-      id: 'accepts-marketing',
+      id: 'accepts-marketing1',
       content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content',
+      panelID: 'accepts-marketing-content1',
     },
   ]);
 

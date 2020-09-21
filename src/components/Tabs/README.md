@@ -85,15 +85,15 @@ function TabsExample() {
 
   const tabs = [
     {
-      id: 'all-customers',
+      id: 'all-customers2',
       content: 'All',
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content',
+      panelID: 'all-customers-content2',
     },
     {
-      id: 'accepts-marketing',
+      id: 'accepts-marketing2',
       content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content',
+      panelID: 'accepts-marketing-content2',
     },
     {
       id: 'repeat-customers',
@@ -146,15 +146,15 @@ function FittedTabsExample() {
 
   const tabs = [
     {
-      id: 'all-customers-fitted',
+      id: 'all-customers-fitted1',
       content: 'All',
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-fitted-content',
+      panelID: 'all-customers-fitted-content1',
     },
     {
-      id: 'accepts-marketing-fitted',
+      id: 'accepts-marketing-fitted1',
       content: 'Accepts marketing',
-      panelID: 'accepts-marketing-fitted-Ccontent',
+      panelID: 'accepts-marketing-fitted-Content1',
     },
   ];
 
@@ -199,23 +199,23 @@ function TabsWithBadgeExample() {
 
   const tabs = [
     {
-      id: 'all-customers-fitted',
+      id: 'all-customers-fitted2',
       content: (
         <span>
           All <Badge status="new">10+</Badge>
         </span>
       ),
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-fitted-content',
+      panelID: 'all-customers-fitted-content2',
     },
     {
-      id: 'accepts-marketing-fitted',
+      id: 'accepts-marketing-fitted2',
       content: (
         <span>
           Accepts marketing <Badge status="new">4</Badge>
         </span>
       ),
-      panelID: 'accepts-marketing-fitted-Ccontent',
+      panelID: 'accepts-marketing-fitted-Content2',
     },
   ];
 

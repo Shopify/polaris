@@ -112,8 +112,8 @@ Use to create a ½ + ½ layout. Can be used to display content of equal importan
           resourceName={{singular: 'product', plural: 'products'}}
           items={[
             {
-              id: 341,
-              url: 'produdcts/341',
+              id: 336,
+              url: 'produdcts/336',
               name: 'Black & orange scarf',
               sku: '9234194023',
               quantity: '254',
@@ -125,8 +125,8 @@ Use to create a ½ + ½ layout. Can be used to display content of equal importan
               ),
             },
             {
-              id: 256,
-              url: 'produdcts/256',
+              id: 263,
+              url: 'produdcts/263',
               name: 'Tucan scarf',
               sku: '9234194010',
               quantity: '201',
@@ -237,8 +237,8 @@ Use to create a ⅓ + ⅓ + ⅓ layout. Can be used to display content of equal 
           resourceName={{singular: 'product', plural: 'products'}}
           items={[
             {
-              id: 343,
-              url: 'produdcts/343',
+              id: 339,
+              url: 'produdcts/339',
               name: 'Black & orange scarf',
               sku: '9234194023',
               quantity: '254',
