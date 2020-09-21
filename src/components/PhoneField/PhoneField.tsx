@@ -56,8 +56,6 @@ export function PhoneField({
   const [validPhoneNumber, setValidPhoneNumber] = useState(true);
   const [popoverActive, setPopoverActive] = useState(false);
   const [clicked, setClicked] = useState(false);
-
-  // Conduct research on which country appears first
   const [searchBarText, setSearchBarText] = useState('');
   const allCountries = countries.map(
     ({countryName, image, countryCode}, index) => ({
@@ -116,11 +114,9 @@ export function PhoneField({
 
   // Given a countryArr, where the countryCodes are the same, and we are retrieving the area codes
   function retrieveAreaCodeMatches(countryArr: Country[], phoneNum: string) {
-    // If we have pass in '+120255, we obtain '202'
-    // If we have pass in '+120', we obtain '20'
-    // If we have pass in '+1202', we obtain '202'
-    // console.log('This is the country array being passed in');
-    // console.log(countryArr);
+    // If we have pass in '+120255', we obtain '202' as the area code
+    // If we have pass in '+120', we obtain '20' as the area code
+    // If we have pass in '+1202', we obtain '202' as the area code
     const retrieveAreaCodeFromPhoneNum =
       countryArr[0].countryCode.length + countryArr[0].displayFormat[0] <=
       phoneNum.length
@@ -164,7 +160,7 @@ export function PhoneField({
   );
 
   /* This function is responsible for identifying the country flag for a phone number */
-  const phoneNumberFormatter = useCallback(
+  const identifyPhoneNumberCountry = useCallback(
     (countryArr: Country[], phoneNumber) => {
       const numberStr = extractNumberFormat(phoneNumber);
       setPhoneNumber(numberStr);
@@ -180,7 +176,7 @@ export function PhoneField({
         return numberStr;
       }
 
-      // Selected Country Object (default)
+      // A default country object
       let selectedCountryObj = maxCountryPopulationObj(filteredCountries);
 
       if (filteredCountries.length === 1) {
@@ -199,12 +195,9 @@ export function PhoneField({
             (countryObj) => 'areaCodes' in countryObj,
           );
 
-          // If it is not equal to [] (there is a country with a area code)
-          // Else, we pick the first one (Line 246)
+          // If the filteredCountryArr is greater than 0...
           if (filteredCountryArr.length > 0) {
-            // Then, we check if the area code in the numberStr matches one of the
-            // area codes in the list
-            // If not, then we pick first one (Line 246)
+            // ... Then, we check if the area code in the numberStr matches one of the area codes in the list
             if (
               retrieveAreaCodeMatches(filteredCountryArr, numberStr).length !==
               0
@@ -247,8 +240,8 @@ export function PhoneField({
   /** Callback function for handling when the text in the phone number changes */
   const handleTextChange = useCallback(
     (newValue) =>
-      setFormattedPhoneNumber(phoneNumberFormatter(countries, newValue)),
-    [phoneNumberFormatter, countries],
+      setFormattedPhoneNumber(identifyPhoneNumberCountry(countries, newValue)),
+    [identifyPhoneNumberCountry, countries],
   );
 
   /** Callback function for handling the selected country */
