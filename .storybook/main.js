@@ -11,7 +11,7 @@ const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 module.exports = {
   stories: ['../playground/stories.tsx', '../src/components/**/*/README.md'],
   addons: [
-    '@storybook/addon-essentials',
+    {name: '@storybook/addon-essentials', options: {docs: false}},
     '@storybook/addon-a11y',
     '@storybook/addon-contexts',
     '@storybook/addon-knobs',
