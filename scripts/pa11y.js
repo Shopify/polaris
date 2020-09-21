@@ -40,24 +40,24 @@ const testPages = async (urls) => {
     return result;
   };
 
-  const testPages = urls.map((url) => testPage(url));
-  const pageResults = await Promise.all(testPages);
+  const pagePromises = urls.map((url) => testPage(url));
+  const pageResults = await Promise.all(pagePromises);
 
   await browser.close();
 
-  const issues = [...pageResults.map((result) => result.issues)];
+  const issues = [].concat(...pageResults.map((result) => result.issues));
   return issues
     .filter((issue) => !allowedErrors.includes(issue.message))
     .map((issue) => `${chalk.bold(printTitle(issue))}\n${issue.context}`);
 };
 
 (async () => {
-  const results = await testPages(urls);
+  const results = await testPages(testUrls);
 
   if (results.length) {
     console.log(results.join('\n\n'));
     console.log(chalk.bold(`\nFound ${results.length} issues testing URLs:`));
-    console.log(`- ${urls.join('\n -')}`);
+    console.log(`- ${testUrls.join('\n -')}`);
     process.exit(1);
   }
   console.log(`${chalk.bold.green('Success: ')} No issues were discovered!`);
