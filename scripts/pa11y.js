@@ -1,151 +1,97 @@
 /* eslint-disable no-console */
 const puppeteer = require('puppeteer');
-const pa11y = require('pa11y');
+const pAll = require('p-all');
 
-const NUMBER_OF_BROWSERS = 5;
+// eslint-disable-next-line node/no-path-concat
+const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
 
-async function runPa11y() {
-  const browsers = [
-    {
-      browser: await puppeteer.launch(),
-      taken: new Promise((resolve) => {
-        resolve();
-      }),
-    },
-    {
-      browser: await puppeteer.launch(),
-      taken: new Promise((resolve) => {
-        resolve();
-      }),
-    },
-    {
-      browser: await puppeteer.launch(),
-      taken: new Promise((resolve) => {
-        resolve();
-      }),
-    },
-    {
-      browser: await puppeteer.launch(),
-      taken: new Promise((resolve) => {
-        resolve();
-      }),
-    },
-    {
-      browser: await puppeteer.launch(),
-      taken: new Promise((resolve) => {
-        resolve();
-      }),
-    },
-  ];
-
-  await browsers.forEach(async (instance) => {
-    // eslint-disable-next-line require-atomic-updates
-    instance.page = await instance.browser.newPage();
-  });
-
-  let browserIndex = 0;
-
-  const results = [];
-
-  const setupBrowser = browsers[0].browser;
-  const page = await setupBrowser.newPage();
-
-  // eslint-disable-next-line node/no-path-concat
-  const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
-
-  const stories = await page
-    .goto(iframePath)
-    .then(() => page.evaluate(() => window.__STORYBOOK_CLIENT_API__.raw()));
-
-  const storyQueryStrings = stories.reduce((memo, story) => {
-    // There is no need to test the Playground, or the "All Examples" stories
-    const isSkippedStory =
-      story.kind === 'Playground/Playground' || story.name === 'All Examples';
-
-    if (!isSkippedStory) {
-      const idParam = `id=${encodeURIComponent(story.id)}`;
-      memo.push(
-        idParam,
-        `${idParam}&contexts=Global%20Theming=Enabled%20-%20Light%20Mode`,
-        // Dark mode has lots of errors. It is still very WIP so ignore for now
-        // `${idParam}&contexts=Global%20Theming=Enabled%20-%20Dark%20Mode`,
-      );
-    }
-    return memo;
-  }, []);
-
-  storyQueryStrings.forEach((queryString) => {
-    const currentBrowser = browsers[browserIndex % NUMBER_OF_BROWSERS];
-    browserIndex++;
-    currentBrowser.taken = currentBrowser.taken.then(async () => {
-      console.log('Testing ', queryString);
-      const result = await pa11y(`${iframePath}?${queryString}`, {
-        browser: currentBrowser.browser,
-        ignore: [
-          // Missing lang attribute on <html> tag
-          // Storybook does not include this property so ignore it
-          'WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2',
-        ],
-      });
-      result.exampleID = queryString;
-      delete result.pageUrl;
-      results.push(result);
-    });
-  });
-
-  await Promise.all(browsers.map((instance) => instance.taken));
-  await Promise.all(browsers.map((instance) => instance.browser.close()));
-  return results;
-}
-
-(async () => {
-  let rawResults;
+(async function run() {
   try {
-    rawResults = await runPa11y();
+    const browser = await puppeteer.launch();
+    const initialPage = await browser.newPage();
 
-    if (rawResults.length === 0) {
+    await initialPage.goto(iframePath);
+    const stories = await initialPage.evaluate(() => {
+      return window.__STORYBOOK_CLIENT_API__.raw();
+    });
+
+    await initialPage.close();
+
+    const storyUrls = stories.reduce((memo, story) => {
+      // There is no need to test the Playground, or the "All Examples" stories
+      const isSkippedStory =
+        story.kind === 'Playground/Playground' || story.name === 'All Examples';
+
+      if (!isSkippedStory) {
+        const idParam = `id=${encodeURIComponent(story.id)}`;
+        memo.push(
+          idParam,
+          `${idParam}&contexts=Global%20Theming=Enabled%20-%20Light%20Mode`,
+          // Dark mode has lots of errors. It is still very WIP so ignore for now
+          // `${idParam}&contexts=Global%20Theming=Enabled%20-%20Dark%20Mode`,
+        );
+      }
+      return memo;
+    }, []);
+
+    const testPage = (url) => async () => {
+      try {
+        console.log(`Testing: ${url}`);
+        const page = await browser.newPage();
+        await page.goto(`${iframePath}?${url}`);
+
+        const result = await page.evaluate(() => {
+          return window.axe.run(document.getElementById('root'), {});
+        });
+
+        await page.close();
+
+        if (result.violations.length === 0) {
+          return Promise.resolve({type: 'PASS', url});
+        }
+
+        // Format me better
+        return Promise.resolve({
+          type: 'FAIL',
+          url,
+          error: JSON.stringify(result.violations, null, 2),
+        });
+      } catch (error) {
+        return Promise.resolve({
+          type: 'ERROR',
+          url,
+          error: JSON.stringify(error, null, 2),
+        });
+      }
+    };
+
+    const testPages = storyUrls.map((url) => testPage(url));
+
+    const results = await pAll(testPages, {concurrency: 8});
+
+    await browser.close();
+
+    if (results.length === 0) {
       throw new Error('Component URLs could not be crawled');
     }
-  } catch (error) {
-    console.log(error);
-    process.exit(1);
-  }
 
-  const results = rawResults.filter((result) => result.issues.length);
+    const resultsWithIssues = results.filter(({type}) => type !== 'PASS');
+    const issueCount = resultsWithIssues.length;
 
-  if (results.length) {
-    console.log(
-      `
+    if (issueCount === 0) {
+      console.log('No Errors Reported!');
+      return;
+    }
 
-========================================================================
-The following issues were discovered and need to be fixed before this code can be merged
-========================================================================
-`,
-    );
+    console.log(`There were ${issueCount} Errors Reported!`);
 
-    results.forEach((result) => {
-      console.log(
-        '------------------------------------------------------------------------',
-      );
-      console.log(result.exampleID);
-      console.log(
-        '------------------------------------------------------------------------',
-      );
-      console.log(JSON.stringify(result.issues, null, 2));
+    resultsWithIssues.forEach((result) => {
+      console.log(`${result.type} ${result.url}: \n${result.error}`);
     });
-  } else {
-    console.log(
-      `
 
-========================================================================
-No issues were discovered!
-========================================================================
-`,
-    );
-  }
-
-  if (results.length) {
+    process.exit(1);
+  } catch (err) {
+    console.log(err);
     process.exit(1);
   }
-  process.exit(0);
 })();
