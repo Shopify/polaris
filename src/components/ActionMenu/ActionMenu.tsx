@@ -7,7 +7,7 @@ import type {
   MenuGroupDescriptor,
 } from '../../types';
 
-import {RollupActions, Actions} from './components';
+import {Actions, RollupActions} from './components';
 import styles from './ActionMenu.scss';
 
 export interface ActionMenuProps {

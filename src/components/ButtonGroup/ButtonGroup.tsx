@@ -6,11 +6,13 @@ import {elementChildren} from '../../utilities/components';
 import {Item} from './components';
 import styles from './ButtonGroup.scss';
 
+type Spacing = 'extraTight' | 'tight' | 'loose';
+
 export interface ButtonGroupProps {
+  /** Determines the space between button group items */
+  spacing?: Spacing;
   /** Join buttons as segmented group */
   segmented?: boolean;
-  /** Force buttons to render in a row */
-  noWrap?: boolean;
   /** Buttons will stretch/shrink to occupy the full width */
   fullWidth?: boolean;
   /** Remove top left and right border radius */
@@ -21,14 +23,14 @@ export interface ButtonGroupProps {
 
 export function ButtonGroup({
   children,
+  spacing,
   segmented,
-  noWrap,
   fullWidth,
   connectedTop,
 }: ButtonGroupProps) {
   const className = classNames(
     styles.ButtonGroup,
-    noWrap && styles.noWrap,
+    spacing && styles[spacing],
     segmented && styles.segmented,
     fullWidth && styles.fullWidth,
   );

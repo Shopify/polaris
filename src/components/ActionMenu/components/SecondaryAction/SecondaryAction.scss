@@ -3,12 +3,11 @@
 $breakpoint: 1080px;
 
 .SecondaryAction {
-  // Hacks
-  // Eventually pull in button-base and modify
   // stylelint-disable declaration-no-important
   button {
     background: transparent !important;
     box-shadow: none !important;
+    border-radius: var(--p-border-radius-base) !important;
 
     &:hover {
       background: var(--p-surface-hovered) !important;

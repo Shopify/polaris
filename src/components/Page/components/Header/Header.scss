@@ -17,6 +17,16 @@ $action-menu-rollup-computed-width: rem(40px);
   @include visually-hidden;
 }
 
+.TitleWrapper {
+  .newDesignLanguage & {
+    margin-top: spacing(extra-tight);
+
+    @include breakpoint-after(468px) {
+      margin-top: 0;
+    }
+  }
+}
+
 ///
 /// Navigation
 
@@ -47,6 +57,15 @@ $action-menu-rollup-computed-width: rem(40px);
   flex: 0 0 auto;
   margin-left: auto;
   line-height: 1;
+
+  .newDesignLanguage & {
+    margin-left: spacing(extra-tight);
+    // stylelint-disable-next-line selector-max-combinators
+    button {
+      border: 1px solid var(--p-border-neutral-subdued);
+      box-shadow: none;
+    }
+  }
 }
 
 .AdditionalNavigationWrapper {
@@ -89,6 +108,11 @@ $action-menu-rollup-computed-width: rem(40px);
     margin-top: spacing();
   }
 
+  .newDesignLanguage & {
+    margin-left: spacing(extra-tight);
+    margin-top: 0;
+  }
+
   @include print-hidden;
 }
 
@@ -123,6 +147,10 @@ $action-menu-rollup-computed-width: rem(40px);
   display: flex;
   justify-content: space-between;
 
+  .newDesignLanguage & {
+    position: relative;
+  }
+
   + .Row {
     margin-top: spacing();
     // stylelint-disable-next-line selector-max-combinators, selector-max-class
@@ -143,7 +171,17 @@ $action-menu-rollup-computed-width: rem(40px);
   align-items: center;
 
   .newDesignLanguage & {
-    flex: 1;
+    align-items: flex-start;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+
+    @include breakpoint-after(468px) {
+      flex-wrap: nowrap;
+    }
+
+    @include breakpoint-after(layout-width(page-with-nav)) {
+      flex-basis: 50%;
+    }
   }
 }
 
@@ -154,6 +192,38 @@ $action-menu-rollup-computed-width: rem(40px);
   margin-left: spacing(tight);
 
   .newDesignLanguage & {
-    flex: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    flex: 0 1 auto;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    @include breakpoint-after(468px) {
+      position: static;
+    }
+
+    @include breakpoint-after(layout-width(page-with-nav)) {
+      flex-basis: 50%;
+    }
+  }
+}
+
+.AdditionalMetaData {
+  .newDesignLanguage & {
+    @include breakpoint-after(468px) {
+      margin-left: spacing(loose) * 2 + spacing(tight) + spacing(extra-tight);
+    }
+  }
+}
+
+.Actions {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+
+  > :first-child {
+    flex: 1;
   }
 }

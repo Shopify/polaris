@@ -35,6 +35,7 @@ export function RollupActions({items = [], sections = []}: RollupActionsProps) {
     <div className={styles.RollupActivator}>
       <Button
         plain={!newDesignLanguage}
+        outline={newDesignLanguage}
         icon={HorizontalDotsMinor}
         accessibilityLabel={i18n.translate(
           'Polaris.ActionMenu.RollupActions.rollupButton',

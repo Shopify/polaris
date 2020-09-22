@@ -1,12 +1,15 @@
 import React, {useEffect, useCallback, useRef, useState} from 'react';
+import debounce from 'lodash/debounce';
 
 import {sortAndOverrideActionOrder} from '../../utilities';
 import {useFeatures} from '../../../../utilities/features';
+import {classNames} from '../../../../utilities/css';
 import type {
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../../../types';
 import {ButtonGroup} from '../../../ButtonGroup';
+import {EventListener} from '../../../EventListener';
 import {MenuGroup} from '../MenuGroup';
 import {MenuAction} from '../MenuAction';
 import {SecondaryAction} from '../SecondaryAction';
@@ -20,23 +23,25 @@ interface Props {
   groups?: MenuGroupDescriptor[];
 }
 
-interface DividedActions {
-  secondaryActions: MenuActionDescriptor[];
-  menuGroups: MenuGroupDescriptor[];
-}
+const ACTION_SPACING = 4;
 
 export function Actions({actions = [], groups = []}: Props) {
   const {newDesignLanguage} = useFeatures();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
   const menuGroupRef = useRef<HTMLDivElement>(null);
+  const menuGroupWidthRef = useRef<number>(0);
   const [actionWidths, setActionWidths] = useState<number[]>([]);
+  const [availableWidth, setAvailableWidth] = useState<number>(0);
   const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
     undefined,
   );
-  const [
-    showableActions,
-    setShowableActions,
-  ] = useState<DividedActions | null>();
+  const [showableActions, setShowableActions] = useState<
+    MenuActionDescriptor[] | null
+  >(null);
+  const [hiddenActions, setHiddenActions] = useState<MenuActionDescriptor[]>(
+    [],
+  );
+
   const handleOffsetWidth = useCallback(
     (width: number) =>
       setActionWidths((actionWidths) => [...actionWidths, width]),
@@ -47,43 +52,66 @@ export function Actions({actions = [], groups = []}: Props) {
     [activeMenuGroup],
   );
 
-  useEffect(() => {
-    // We may not want this check 🤔
-    if (actionWidths.length === 0) return;
-    const overriddenActions = sortAndOverrideActionOrder([
-      ...actions,
-      ...groups,
-    ]);
-    setShowableActions([{content: 'sup'}]);
-    console.log({overriddenActions, showableActions});
-    const showable = [];
-    const additional = [];
-    overriddenActions.forEach((action, index) => {
-      if ('title' in action) return null;
-
-      if (index === 0) {
-        showable.push(action);
-      }
-      if (index === 1) {
-        additional.push(action);
-      }
-      console.log('hide / show stuff');
-      console.log({actionWidths, showable, additional});
-      console.log(actionsLayoutRef?.current?.offsetWidth);
-      console.log(menuGroupRef?.current?.offsetWidth);
-      // if title push to menu group
-      // if action and fittable push to secondary
-      console.log({action});
-    });
-  }, [actions, actionsLayoutRef, actionWidths, groups, menuGroupRef]);
-
   const handleMenuGroupClose = useCallback(
     () => setActiveMenuGroup(undefined),
     [],
   );
 
-  const menuActions = [...actions, ...groups];
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleResize = useCallback(
+    debounce(
+      () => {
+        if (!newDesignLanguage || !actionsLayoutRef.current) return;
+        setAvailableWidth(actionsLayoutRef.current.offsetWidth);
+      },
+      20,
+      {leading: false, trailing: true, maxWait: 40},
+    ),
+    [actionsLayoutRef],
+  );
 
+  useEffect(() => {
+    if (!actionsLayoutRef.current) return;
+    setAvailableWidth(actionsLayoutRef.current.offsetWidth);
+  }, [actionsLayoutRef]);
+
+  useEffect(() => {
+    if (!menuGroupRef.current) return;
+    menuGroupWidthRef.current = menuGroupRef.current?.offsetWidth;
+  }, [menuGroupRef]);
+
+  useEffect(() => {
+    if (!newDesignLanguage || actionWidths.length === 0 || availableWidth === 0)
+      return;
+
+    let currentAvailableWidth = availableWidth;
+    setShowableActions([]);
+    setHiddenActions([]);
+
+    actions.forEach((action, index) => {
+      if (
+        actionWidths[index] + menuGroupWidthRef.current + ACTION_SPACING <=
+        currentAvailableWidth
+      ) {
+        currentAvailableWidth -= actionWidths[index];
+        setShowableActions((showableActions) => [
+          ...(showableActions || []),
+          action,
+        ]);
+      } else {
+        currentAvailableWidth = 0;
+        setHiddenActions((hiddenActions) => [...hiddenActions, action]);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [availableWidth]);
+
+  const className = classNames(
+    styles.ActionsLayout,
+    newDesignLanguage && styles.newDesignLanguage,
+  );
+
+  const menuActions = [...actions, ...groups];
   const overriddenActions = sortAndOverrideActionOrder(menuActions);
 
   const actionMarkup = overriddenActions.map((action, index) => {
@@ -95,7 +123,7 @@ export function Actions({actions = [], groups = []}: Props) {
           <MenuGroup
             title={title}
             active={title === activeMenuGroup}
-            actions={actions}
+            actions={[...hiddenActions, ...actions]}
             {...rest}
             onOpen={handleMenuGroupToggle}
             onClose={handleMenuGroupClose}
@@ -103,7 +131,7 @@ export function Actions({actions = [], groups = []}: Props) {
         </div>
       ) : null;
     }
-
+    if (showableActions && showableActions.length >= 0) return null;
     const {content, onAction, ...rest} = action;
     return newDesignLanguage ? (
       <SecondaryAction
@@ -125,19 +153,26 @@ export function Actions({actions = [], groups = []}: Props) {
   });
 
   return (
-    <div className={styles.ActionsLayout} ref={actionsLayoutRef}>
+    <div className={className} ref={actionsLayoutRef}>
       {newDesignLanguage ? (
-        <ButtonGroup noWrap={newDesignLanguage}>
-          {showableActions?.secondaryActions?.map((action) => (
-            <SecondaryAction key={action.content} {...action}>
-              {action.content}
-            </SecondaryAction>
-          ))}
+        <ButtonGroup spacing="extraTight">
+          {showableActions && showableActions.length > 0
+            ? showableActions.map((action) => (
+                <SecondaryAction
+                  key={action.content}
+                  {...action}
+                  getOffsetWidth={handleOffsetWidth}
+                >
+                  {action.content}
+                </SecondaryAction>
+              ))
+            : null}
           {actionMarkup}
         </ButtonGroup>
       ) : (
         actionMarkup
       )}
+      <EventListener event="resize" handler={handleResize} />
     </div>
   );
 }

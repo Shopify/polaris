@@ -116,12 +116,14 @@ export function Header({
     ) : null;
 
   const pageTitleMarkup = (
-    <Title
-      title={title}
-      subtitle={subtitle}
-      titleMetadata={titleMetadata}
-      thumbnail={thumbnail}
-    />
+    <div className={styles.TitleWrapper}>
+      <Title
+        title={title}
+        subtitle={subtitle}
+        titleMetadata={titleMetadata}
+        thumbnail={thumbnail}
+      />
+    </div>
   );
 
   const primaryActionMarkup = primaryAction ? (
@@ -137,7 +139,10 @@ export function Header({
         )}
       >
         <ActionMenu
-          actions={secondaryActions}
+          actions={[
+            ...secondaryActions,
+            (newDesignLanguage && primaryAction) || {},
+          ]}
           groups={actionGroups}
           rollup={isNavigationCollapsed}
         />
@@ -145,7 +150,9 @@ export function Header({
     ) : null;
 
   const additionalMetaDataMarkup = additionalMetaData ? (
-    <TextStyle variation="subdued">{additionalMetaData}</TextStyle>
+    <div className={styles.AdditionalMetaData}>
+      <TextStyle variation="subdued">{additionalMetaData}</TextStyle>
+    </div>
   ) : null;
 
   const headerClassNames = classNames(
@@ -184,11 +191,13 @@ export function Header({
               <div className={styles.RightAlign}>
                 <ConditionalWrapper
                   condition={[slot3, slot4].every(notNull)}
-                  wrapper={(children) => (
-                    <ButtonGroup noWrap={newDesignLanguage}>
-                      {children}
-                    </ButtonGroup>
-                  )}
+                  wrapper={(children) =>
+                    newDesignLanguage ? (
+                      <div className={styles.Actions}>{children}</div>
+                    ) : (
+                      <ButtonGroup>{children}</ButtonGroup>
+                    )
+                  }
                 >
                   {slot3}
                   {slot4}
@@ -249,16 +258,7 @@ function PrimaryActionMarkup({
     );
   }
 
-  return (
-    <ConditionalWrapper
-      condition={newDesignLanguage === false}
-      wrapper={(children) => (
-        <div className={styles.PrimaryActionWrapper}>{children}</div>
-      )}
-    >
-      {content}
-    </ConditionalWrapper>
-  );
+  return <div className={styles.PrimaryActionWrapper}>{content}</div>;
 }
 
 function shouldShowIconOnly(
