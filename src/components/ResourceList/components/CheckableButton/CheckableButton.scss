@@ -34,8 +34,11 @@ $chekbox-label-margin: rem(20px);
 
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon-on-interactive));
-    background: var(--p-action-secondary);
-    color: var(--p-text);
+    background: var(--p-surface);
+    box-shadow: var(--p-button-drop-shadow);
+    border: 1px solid var(--p-border-neutral-subdued);
+    border-top-color: var(--p-border-subdued);
+    border-bottom-color: var(--p-border-shadow-subdued);
 
     &:hover {
       background: var(--p-action-secondary-hovered);
