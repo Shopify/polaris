@@ -145,7 +145,9 @@ export function Header({
     ) : null;
 
   const additionalMetaDataMarkup = additionalMetaData ? (
-    <TextStyle variation="subdued">{additionalMetaData}</TextStyle>
+    <div className={styles.AdditionalMetaData}>
+      <TextStyle variation="subdued">{additionalMetaData}</TextStyle>
+    </div>
   ) : null;
 
   const headerClassNames = classNames(
@@ -184,11 +186,13 @@ export function Header({
               <div className={styles.RightAlign}>
                 <ConditionalWrapper
                   condition={[slot3, slot4].every(notNull)}
-                  wrapper={(children) => (
-                    <ButtonGroup noWrap={newDesignLanguage}>
-                      {children}
-                    </ButtonGroup>
-                  )}
+                  wrapper={(children) =>
+                    newDesignLanguage ? (
+                      <div className={styles.Actions}>{children}</div>
+                    ) : (
+                      <ButtonGroup>{children}</ButtonGroup>
+                    )
+                  }
                 >
                   {slot3}
                   {slot4}

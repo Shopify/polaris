@@ -148,7 +148,12 @@ $action-menu-rollup-computed-width: rem(40px);
   align-items: center;
 
   .newDesignLanguage & {
-    flex: 1;
+    align-items: flex-start;
+    flex: 1 1 auto;
+
+    @include page-content-when-not-partially-condensed {
+      flex: 1 0 50%;
+    }
   }
 }
 
@@ -159,6 +164,32 @@ $action-menu-rollup-computed-width: rem(40px);
   margin-left: spacing(tight);
 
   .newDesignLanguage & {
-    flex: 0;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    @include page-content-when-not-partially-condensed {
+      flex: 1 0 50%;
+    }
+  }
+}
+
+.AdditionalMetaData {
+  .newDesignLanguage & {
+    margin-left: spacing(loose) + spacing();
+  }
+}
+
+.Actions {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+
+  > :first-child {
+    flex: 1;
+  }
+
+  > :not(:first-child) {
+    margin-left: spacing(tight);
   }
 }

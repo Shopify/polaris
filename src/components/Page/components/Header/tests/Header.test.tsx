@@ -346,7 +346,7 @@ describe('<Header />', () => {
           mediaQuery: {isNavigationCollapsed: true},
         },
       );
-      expect(header.find('.Row')).toHaveLength(2);
+      expect(header.find('.Row')).toHaveLength(1);
     });
 
     it('renders a default desktop layout', () => {
@@ -357,7 +357,7 @@ describe('<Header />', () => {
           mediaQuery: {isNavigationCollapsed: false},
         },
       );
-      expect(header.find('.Row')).toHaveLength(2);
+      expect(header.find('.Row')).toHaveLength(1);
     });
 
     it('wraps the secondary activator and primary buttons in a ButtonGroup', () => {
@@ -372,7 +372,7 @@ describe('<Header />', () => {
           mediaQuery: {isNavigationCollapsed: true},
         },
       );
-      expect(header.find(ButtonGroup)).toHaveLength(1);
+      expect(header.find(ButtonGroup)).toHaveLength(0);
     });
   });
 });

@@ -1,8 +1,10 @@
-import React, {useCallback, useRef, useState, SVGProps} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {
   CirclePlusMinor,
+  ClockMinor,
   DuplicateMinor,
   PrintMinor,
+  ProfileMinor,
   ViewMinor,
 } from '@shopify/polaris-icons';
 
@@ -464,7 +466,7 @@ export function DetailsPage() {
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
       title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
       titleMetadata={<Badge status="success">Success badge</Badge>}
-      // additionalMetaData="May 8, 2020 at 7:31 am from Developer Tools (via import)"
+      additionalMetaData="May 8, 2020 at 7:31 am from Developer Tools (via import)"
       secondaryActions={[
         {
           content: 'Print',
@@ -473,6 +475,14 @@ export function DetailsPage() {
         {
           content: 'View',
           icon: ViewMinor,
+        },
+        {
+          content: 'Me',
+          icon: ProfileMinor,
+        },
+        {
+          content: 'Whats up',
+          icon: ClockMinor,
         },
         {
           content: 'Duplicate',
