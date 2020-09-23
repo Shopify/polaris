@@ -21,6 +21,7 @@ $range-end-border-radius: rem(30px);
 
 .Month {
   flex: 1 1 auto;
+  width: 100%;
   margin-top: spacing();
   margin-left: spacing();
   max-width: calc(100% - #{spacing()});
