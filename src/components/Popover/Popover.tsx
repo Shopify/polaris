@@ -61,7 +61,7 @@ export interface PopoverProps {
   fixed?: boolean;
   /** Used to illustrate the type of popover element */
   ariaHaspopup?: AriaAttributes['aria-haspopup'];
-  /** Allow the popover overaly to be hidden when printing */
+  /** Allow the popover overlay to be hidden when printing */
   hideOnPrint?: boolean;
   /** Callback when popover is closed */
   onClose(source: PopoverCloseSource): void;
