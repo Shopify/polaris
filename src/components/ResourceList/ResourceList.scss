@@ -203,13 +203,11 @@ $item-wrapper-loading-height: rem(64px);
   list-style: none;
 }
 
-.ItemWrapper {
+.ListItem {
   position: relative;
   z-index: resource-list(list-stacking-order);
-  overflow: hidden;
-  max-width: 100%;
 
-  + .ItemWrapper {
+  + .ListItem {
     border-top: border();
   }
 }

@@ -401,7 +401,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     const id = idForItem(item, index);
 
     return (
-      <li key={id} className={styles.ItemWrapper}>
+      <li key={id} className={styles.ListItem}>
         {renderItem(item, id, index)}
       </li>
     );

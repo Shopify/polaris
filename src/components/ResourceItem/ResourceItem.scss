@@ -75,6 +75,11 @@ $resource-list-item-variables: (
   }
 }
 
+.ItemWrapper {
+  overflow: hidden;
+  max-width: 100%;
+}
+
 .selected:not(.newDesignLanguage) {
   background-image: linear-gradient(
     rgba(179, 188, 245, 0.15),
@@ -318,19 +323,6 @@ $resource-list-item-variables: (
 }
 
 .newDesignLanguage {
-  @include focus-ring;
-
-  // stylelint-disable selector-max-specificity
-  &.focused:not(:active):not(.focusedInner) {
-    @include breakpoint-after(resource-list-item(breakpoint-small)) {
-      @include focus-ring($style: 'focused');
-    }
-
-    @include breakpoint-before(resource-list-item(breakpoint-small), false) {
-      box-shadow: inset 0.2rem 0 0 var(--p-focused);
-    }
-  }
-
   &.selected {
     background-color: var(--p-surface-selected);
   }
@@ -342,4 +334,9 @@ $resource-list-item-variables: (
   &:active {
     background-color: var(--p-surface-selected-pressed);
   }
+}
+
+.FocusParent {
+  @include focus-ring();
+  z-index: resource-list-item(clickable-stacking-order);
 }
