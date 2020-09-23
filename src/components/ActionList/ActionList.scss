@@ -24,7 +24,11 @@ $active-indicator-width: rem(3px);
   border-top: border();
 
   &.newDesignLanguage {
-    padding: spacing(tight) spacing(tight) 0 spacing(tight);
+    padding: 0 spacing(tight);
+
+    .Title + & {
+      padding-top: spacing(tight);
+    }
   }
 }
 
