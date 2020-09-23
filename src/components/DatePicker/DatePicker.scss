@@ -20,8 +20,7 @@ $range-end-border-radius: rem(30px);
 }
 
 .Month {
-  flex: 1 1 auto;
-  width: 100%;
+  flex: 1 1 rem(230px);
   margin-top: spacing();
   margin-left: spacing();
   max-width: calc(100% - #{spacing()});
