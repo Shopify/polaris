@@ -12,7 +12,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Bug fixes
 
-- Add position relative back to FrameContent [#3259](https://github.com/Shopify/polaris-react/pull/3259)
+- Add position relative back to FrameContent ([#3259](https://github.com/Shopify/polaris-react/pull/3259))
 
 ## 5.3.0 - 2020-09-15
 
