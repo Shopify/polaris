@@ -8,8 +8,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Add subNavigationItems to the Navigation example ([3295](https://github.com/Shopify/polaris-react/pull/3295))
-
 ### Bug fixes
 
 ### Documentation
