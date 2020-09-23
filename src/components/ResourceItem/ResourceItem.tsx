@@ -217,7 +217,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     const focusClassName = classNames(
       styles.FocusParent,
-      focused && styles.focused,
+      focused && !focusedInner && styles.focused,
       newDesignLanguage && styles.newDesignLanguage,
     );
 
