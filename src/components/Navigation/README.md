@@ -178,13 +178,13 @@ Use to present a navigation menu in the [frame](https://polaris.shopify.com/comp
         icon: HomeMajorMonotone,
       },
       {
-        url: '#',
+        url: '/',
         label: 'Orders',
         icon: OrdersMajorTwotone,
         badge: '15',
         subNavigationItems: [
           {
-            url: '#',
+            url: '/',
             label: 'Orders',
           },
           {
