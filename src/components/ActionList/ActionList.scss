@@ -15,7 +15,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 }
 
 .Section-withoutTitle:not(:first-child) {
-  border-top: border();
+  border-top: border('divider');
   margin-top: spacing(tight);
   padding-top: spacing(tight);
 }
@@ -24,7 +24,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: border();
+  border-top: border('divider');
 }
 
 .ActionList,

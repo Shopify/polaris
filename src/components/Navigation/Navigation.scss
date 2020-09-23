@@ -450,7 +450,7 @@ $secondary-item-font-size: rem(15px);
 }
 
 .Section-withSeparator {
-  border-top: var(--p-thin-border-subdued, border());
+  border-top: border('divider');
 }
 
 .SectionHeading {

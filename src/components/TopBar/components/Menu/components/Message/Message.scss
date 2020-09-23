@@ -6,5 +6,5 @@ $section-max-width: rem(325px);
   max-width: $section-max-width;
   margin-top: spacing(tight);
   padding-top: spacing(tight);
-  border-top: border();
+  border-top: border('divider');
 }
