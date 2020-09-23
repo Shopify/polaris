@@ -336,7 +336,7 @@ $resource-list-item-variables: (
   }
 }
 
-.FocusParent {
+.FocusParent.newDesignLanguage {
   @include focus-ring($border-width: rem(1px));
   z-index: 10;
 
