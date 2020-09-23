@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const puppeteer = require('puppeteer');
-const pAll = require('p-all');
+const pMap = require('p-map');
 
 // eslint-disable-next-line node/no-path-concat
 const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
@@ -34,7 +34,7 @@ const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
       return memo;
     }, []);
 
-    const testPage = (url) => async () => {
+    const testPage = async (url) => {
       try {
         console.log(`Testing: ${url}`);
         const page = await browser.newPage();
@@ -50,7 +50,6 @@ const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
           return Promise.resolve({type: 'PASS', url});
         }
 
-        // Format me better
         return Promise.resolve({
           type: 'FAIL',
           url,
@@ -65,9 +64,7 @@ const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
       }
     };
 
-    const testPages = storyUrls.map((url) => testPage(url));
-
-    const results = await pAll(testPages, {concurrency: 8});
+    const results = await pMap(storyUrls, testPage, {concurrency: 8});
 
     await browser.close();
 
