@@ -35,13 +35,6 @@ $range-end-border-radius: rem(30px);
   font-weight: 700;
 }
 
-// .Week,
-// .WeekHeadings {
-//   + .Week {
-//     margin-top: -1px;
-//   }
-// }
-
 .DayCell {
   width: (100% / 7);
   background: transparent;
@@ -49,11 +42,6 @@ $range-end-border-radius: rem(30px);
   padding: 0;
   border: border();
   border-radius: 0;
-
-  // + .DayCell,
-  // + .EmptyDayCell {
-  //   margin-left: -1px;
-  // }
 }
 
 .DayCell-inRange {
@@ -139,11 +127,6 @@ $range-end-border-radius: rem(30px);
   margin: 0;
   padding: 0;
   border: border();
-
-  + .EmptyDayCell,
-  + .DayCell {
-    margin-left: -1px;
-  }
 }
 
 .Weekday {
@@ -153,10 +136,6 @@ $range-end-border-radius: rem(30px);
   font-weight: 400;
   color: color('ink', 'lighter');
   text-align: center;
-
-  + .Weekday {
-    margin-left: -1px;
-  }
 }
 
 .Weekday-current {
