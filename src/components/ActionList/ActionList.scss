@@ -212,7 +212,7 @@ $active-indicator-width: rem(3px);
     }
 
     // Only show when the button is selected, not active
-    [aria-selected='true'] > &:before {
+    [aria-selected='true'] > &::before {
       content: '';
       position: absolute;
       top: 0;
