@@ -178,10 +178,24 @@ Use to present a navigation menu in the [frame](https://polaris.shopify.com/comp
         icon: HomeMajorMonotone,
       },
       {
-        url: '/path/to/place',
+        url: '#',
         label: 'Orders',
         icon: OrdersMajorTwotone,
         badge: '15',
+        subNavigationItems: [
+          {
+            url: '#',
+            label: 'Orders',
+          },
+          {
+            url: '/path/to/place',
+            label: 'Drafts',
+          },
+          {
+            url: '/path/to/place',
+            label: 'Abandoned checkouts',
+          },
+        ],
       },
       {
         url: '/path/to/place',
