@@ -26,6 +26,7 @@ $active-indicator-width: rem(3px);
   &.newDesignLanguage {
     padding: 0 spacing(tight);
 
+    // stylelint-disable-next-line selector-max-class
     .Title + & {
       padding-top: spacing(tight);
     }
