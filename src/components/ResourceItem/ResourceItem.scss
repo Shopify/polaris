@@ -336,6 +336,7 @@ $resource-list-item-variables: (
   }
 }
 
+// stylelint-disable-next-line selector-max-class
 .FocusParent.newDesignLanguage {
   @include focus-ring($border-width: rem(1px));
   z-index: 10;
