@@ -97,7 +97,7 @@ describe('<DatePicker />', () => {
         />,
       );
       const day = datePicker.find(Day);
-      day.first().simulate('click');
+      day.first().find('button').simulate('click');
       expect(spy).toHaveBeenCalled();
     });
 
@@ -121,7 +121,7 @@ describe('<DatePicker />', () => {
         <DatePicker month={3} year={2018} />,
       );
       const dateObject = new Date('2018-04-01T00:00:00');
-      datePicker.find(Day).first().simulate('focus');
+      datePicker.find(Day).first().find('button').simulate('focus');
       expect(datePicker.find(Month).prop('focusedDate')).toStrictEqual(
         dateObject,
       );
@@ -156,7 +156,7 @@ describe('<DatePicker />', () => {
       />,
     );
 
-    datePicker.find(Day).first().simulate('click');
+    datePicker.find(Day).find('button').first().simulate('click');
 
     expect(datePicker.find(Day).first().prop('focused')).toBe(true);
 
