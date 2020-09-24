@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.4.0 - 2020-09-24
+
+### Enhancements
+
+- Hide `ActionMenu`, `Actions`, `RollupActions` menu popover overlays when printing ([#3277](https://github.com/Shopify/polaris-react/pull/3277))
+
 ## 5.3.1 - 2020-09-16
 
 ### Bug fixes
