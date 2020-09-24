@@ -9,7 +9,7 @@ $icon-size: rem(16px);
   align-items: center;
   min-height: $height;
   padding: 0 spacing(tight);
-  background-color: var(--p-action-secondary, color('sky'));
+  background-color: var(--p-background, color('sky'));
   border-radius: border-radius();
   color: var(--p-text, color('ink'));
 
