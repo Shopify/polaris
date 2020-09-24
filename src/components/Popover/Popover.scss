@@ -88,7 +88,7 @@ $content-max-width: rem(400px);
   max-width: 100%;
 
   + .Pane {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 
@@ -101,7 +101,7 @@ $content-max-width: rem(400px);
   padding: spacing();
 
   + .Section {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 

@@ -12,7 +12,7 @@ $active-indicator-width: rem(3px);
 }
 
 .Section-withoutTitle:not(:first-child) {
-  border-top: border();
+  border-top: border('divider');
   margin-top: spacing(tight);
   padding-top: spacing(tight);
 }
@@ -21,7 +21,7 @@ $active-indicator-width: rem(3px);
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: border();
+  border-top: border('divider');
 
   &.newDesignLanguage {
     padding: 0 spacing(tight);
