@@ -25,7 +25,7 @@ jobs:
 
     - name: 'Accessibility Tests'
       script:
-        - yarn run storybook:build --quiet
+        - STORYBOOK_DISABLE_DOCS=1 yarn run storybook:build --quiet
         - node ./scripts/pa11y.js
 
     # Travis builds on commit and for PR builds (where Travis merges your last

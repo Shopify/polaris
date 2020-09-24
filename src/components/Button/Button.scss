@@ -197,6 +197,13 @@ $stacking-order: (
 
   &.disabled {
     @include button-filled-disabled(color('indigo'));
+    // stylelint-disable-next-line selector-max-class
+    &.newDesignLanguage {
+      @include recolor-icon(var(--p-icon-disabled));
+      background: var(--p-action-primary-disabled);
+      color: var(--p-text-disabled);
+      border-color: transparent;
+    }
   }
 
   &.pressed {
@@ -220,6 +227,13 @@ $stacking-order: (
 
   &.disabled {
     @include button-filled-disabled(color('red'));
+    // stylelint-disable-next-line selector-max-class
+    &.newDesignLanguage {
+      @include recolor-icon(var(--p-icon-disabled));
+      background: var(--p-action-critical-disabled);
+      color: var(--p-text-disabled);
+      border-color: transparent;
+    }
   }
 
   &.pressed {
@@ -659,6 +673,7 @@ $stacking-order: (
   &.outline {
     position: relative;
     border-color: currentColor;
+    // stylelint-disable selector-max-class
 
     &::before {
       content: '';
@@ -673,12 +688,10 @@ $stacking-order: (
       z-index: 0;
     }
 
-    // stylelint-disable-next-line selector-max-class
     &.pressed {
       background: transparent;
       box-shadow: none;
 
-      // stylelint-disable selector-max-class
       &::before {
         opacity: 0.05;
       }
@@ -700,6 +713,7 @@ $stacking-order: (
 
     &.newDesignLanguage {
       @include focus-ring($border-width: border-width('base'));
+      border-color: currentColor;
       box-shadow: 0 0 0 border-width('base') currentColor;
 
       &:focus {

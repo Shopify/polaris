@@ -8,10 +8,16 @@ const postcssShopify = require('@shopify/postcss-plugin');
 // eslint-disable-next-line node/no-extraneous-require, import/no-extraneous-dependencies
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 
+// Enabling docs means the preview panel takes an extra 2ish seconds to load
+// This usually isn't a big deal, except when we're running all of our stories
+// through our a11y tests, and a 2s delay over several hundred stories adds up.
+// This is an escape hatch to disable docs only wheile we're running a11y tests
+const enableDocs = !parseInt(process.env.STORYBOOK_DISABLE_DOCS || '0', 10);
+
 module.exports = {
   stories: ['../playground/stories.tsx', '../src/components/**/*/README.md'],
   addons: [
-    '@storybook/addon-essentials',
+    {name: '@storybook/addon-essentials', options: {docs: enableDocs}},
     '@storybook/addon-a11y',
     '@storybook/addon-contexts',
     '@storybook/addon-knobs',

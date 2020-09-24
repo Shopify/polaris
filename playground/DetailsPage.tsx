@@ -143,6 +143,7 @@ export function DetailsPage() {
       }}
       discardAction={{
         onAction: handleDiscard,
+        discardConfirmationModal: true,
       }}
     />
   ) : null;

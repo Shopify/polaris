@@ -44,7 +44,7 @@ $item-spacing: spacing(tight);
     margin-left: 0;
 
     &:not(:first-child) {
-      margin-left: var(--p-button-group-item-spacing, -1 * border-width());
+      margin-left: -1 * border-width();
     }
   }
 

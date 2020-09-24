@@ -38,7 +38,7 @@ export const Tokens = {
   textFieldSpinnerOffset: rem('2px'),
   textFieldFocusRingOffset: rem('-4px'),
   textFieldFocusRingBorderRadius: rem('7px'),
-  buttonGroupItemSpacing: rem('2px'),
+  buttonGroupItemSpacing: rem('-1px'),
   contextualSaveBarHeight: '64px',
   duration100: '100ms',
   duration150: '150ms',

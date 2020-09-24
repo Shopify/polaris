@@ -254,7 +254,7 @@ function ActionListWithDestructiveItemExample() {
             {
               title: 'File options',
               items: [
-                {content: 'Import file', icon: ImportMinor},
+                {content: 'Import file', icon: ImportMinor, active: true},
                 {content: 'Export file', icon: ExportMinor},
                 {
                   destructive: true,

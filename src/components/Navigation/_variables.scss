@@ -47,6 +47,22 @@ $nav-animation-variables: (
     line-height: $item-line-height-large;
     padding-left: spacing() - spacing(extra-tight);
     padding-right: spacing(extra-tight);
+
+    @include breakpoint-before(nav-min-window-corrected()) {
+      // stylelint-disable-next-line selector-max-combinators
+      .Icon {
+        margin-top: nav(mobile-spacing);
+        margin-bottom: nav(mobile-spacing);
+      }
+
+      // stylelint-disable-next-line selector-max-combinators
+      .Text {
+        margin-top: nav(mobile-spacing);
+        margin-bottom: nav(mobile-spacing);
+        font-size: rem(15px);
+        line-height: rem(19px);
+      }
+    }
   }
 
   &:hover {

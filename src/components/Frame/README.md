@@ -312,7 +312,7 @@ function FrameExample() {
   const theme = {
     colors: {
       topBar: {
-        background: '#357997',
+        background: '#225062',
       },
     },
     logo: {
@@ -655,7 +655,7 @@ function FrameExample() {
   const theme = {
     colors: {
       topBar: {
-        background: '#357997',
+        background: '#225062',
       },
     },
     frameOffset: 60,
