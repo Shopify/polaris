@@ -103,6 +103,7 @@
       box-shadow: var(--p-button-pressed-inner-shadow);
       color: var(--p-text-on-primary);
       border-color: var(--p-border-depressed);
+      @include recolor-icon(currentColor);
     }
 
     @media (-ms-high-contrast: active) {
