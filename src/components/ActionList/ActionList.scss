@@ -311,7 +311,7 @@ $active-indicator-width: rem(3px);
   align-items: center;
 }
 
-.Image {
+.Prefix {
   @include recolor-icon(color('ink', 'light'), color('white'));
   display: flex;
   flex: 0 0 auto;
