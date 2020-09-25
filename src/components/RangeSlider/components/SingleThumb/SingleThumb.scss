@@ -182,6 +182,21 @@ $range-thumb-shadow-focus: var(
       background: var(--p-border-disabled, color('white'));
     }
   }
+
+  &.newDesignLanguage {
+    @include range-thumb-selectors {
+      content: ' ';
+      box-shadow: 0 0 0 0 var(--p-focused);
+      transition: box-shadow duration(fast) var(--p-ease);
+    }
+
+    &:focus {
+      @include range-thumb-selectors {
+        box-shadow: 0 0 0 rem(2px) var(--p-surface),
+          0 0 0 rem(4px) var(--p-focused);
+      }
+    }
+  }
 }
 
 ///
