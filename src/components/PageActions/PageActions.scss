@@ -3,7 +3,7 @@
 .PageActions {
   margin: 0 auto;
   padding: spacing(loose);
-  border-top: border();
+  border-top: border('divider');
 
   @include page-content-when-not-fully-condensed {
     padding: spacing(loose) 0;

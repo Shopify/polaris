@@ -10,12 +10,7 @@ $action-menu-rollup-computed-width: rem(40px);
 
 .separator {
   padding-bottom: spacing();
-  border-bottom: border();
-
-  &.newDesignLanguage {
-    padding-bottom: spacing();
-    border-bottom: border();
-  }
+  border-bottom: var(--p-override-none, border());
 }
 
 .titleHidden {

@@ -80,5 +80,5 @@ $activator-variables: (
 .Section {
   margin-top: spacing(tight);
   padding-top: spacing(tight);
-  border-top: border();
+  border-top: border('divider');
 }

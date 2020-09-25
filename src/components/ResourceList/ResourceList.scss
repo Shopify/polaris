@@ -24,7 +24,7 @@ $item-wrapper-loading-height: rem(64px);
   }
 
   + .ResourceList {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 
@@ -34,7 +34,7 @@ $item-wrapper-loading-height: rem(64px);
   z-index: resource-list(header-outer-wrapper-stacking-order);
 
   + .ResourceList {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 
@@ -201,6 +201,17 @@ $item-wrapper-loading-height: rem(64px);
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.ItemWrapper {
+  position: relative;
+  z-index: resource-list(list-stacking-order);
+  overflow: hidden;
+  max-width: 100%;
+
+  + .ItemWrapper {
+    border-top: border('divider');
+  }
 }
 
 .ItemWrapper-isLoading {
