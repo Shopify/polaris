@@ -18,10 +18,9 @@ export function setActivatorAttributes(
     activator.tabIndex = activator.tabIndex || 0;
   }
 
-  activator.setAttribute('aria-controls', id);
-  activator.setAttribute('aria-owns', id);
+  const activatorType = activator.getAttribute('type');
 
-  if (activator.tagName !== 'input' && activator.getAttribute('type') !== 'text') {
+  if (activator.tagName !== 'input' && activatorType && activatorType !== 'text') {
     activator.setAttribute('aria-expanded', String(active));
   }
 
