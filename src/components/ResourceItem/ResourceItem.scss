@@ -351,6 +351,6 @@ $resource-list-item-variables: (
 
   // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
   * + ul > &:first-of-type.focused::after {
-    top: 0.1rem;
+    top: rem(1px);
   }
 }
