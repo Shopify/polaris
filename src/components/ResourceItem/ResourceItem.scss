@@ -337,20 +337,23 @@ $resource-list-item-variables: (
 }
 
 .ListItem {
-  position: relative;
-  @include focus-ring($border-width: 0, $size: 'wide');
-
-  &.focused {
-    @include focus-ring($style: 'focused');
-    z-index: resource-list-item(clickable-stacking-order);
-  }
-
   .ListItem + & {
     border-top: border('divider');
   }
 
-  // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
-  * + ul > &:first-of-type.focused::after {
-    top: 0.1rem;
+  &.newDesignLanguage {
+    position: relative;
+    @include focus-ring($size: 'wide');
+
+    // stylelint-disable-next-line selector-max-class
+    &.focused {
+      @include focus-ring($style: 'focused');
+      z-index: resource-list-item(clickable-stacking-order);
+    }
+
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
+    * + ul > &:first-of-type.focused::after {
+      top: 0.1rem;
+    }
   }
 }
