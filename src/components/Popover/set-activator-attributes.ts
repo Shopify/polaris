@@ -20,7 +20,10 @@ export function setActivatorAttributes(
 
   activator.setAttribute('aria-controls', id);
   activator.setAttribute('aria-owns', id);
-  activator.setAttribute('aria-expanded', String(active));
+
+  if (activator.tagName !== 'input' && activator.getAttribute('type') !== 'text') {
+    activator.setAttribute('aria-expanded', String(active));
+  }
 
   if (ariaHaspopup != null) {
     activator.setAttribute('aria-haspopup', String(ariaHaspopup));
