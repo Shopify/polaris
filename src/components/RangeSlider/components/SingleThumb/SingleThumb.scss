@@ -186,13 +186,14 @@ $range-thumb-shadow-focus: var(
   &.newDesignLanguage {
     @include range-thumb-selectors {
       box-shadow: 0 0 0 0 var(--p-focused);
+      border: 1px solid transparent;
       transition: box-shadow duration(fast) var(--p-ease);
     }
 
     &:focus {
       @include range-thumb-selectors {
-        box-shadow: 0 0 0 rem(1px) var(--p-surface),
-          0 0 0 rem(3px) var(--p-focused);
+        border-color: var(--p-surface);
+        box-shadow: 0 0 0 rem(2px) var(--p-focused);
       }
     }
   }
