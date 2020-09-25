@@ -87,7 +87,6 @@ function PhoneFieldExample() {
     <PhoneField
       labelName="Mobile Phone Number"
       countries={allCountries}
-      // validator={checkValidPhoneNumber}
       searchBar
     />
   );

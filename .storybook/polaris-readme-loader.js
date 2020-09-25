@@ -99,7 +99,7 @@ AllExamples.parameters = {
   return `
 import React, {${hooks}} from 'react';
 import {withA11y} from '@storybook/addon-a11y';
-import {allCountries} from 'testashwin';
+import allCountries from 'testashwin/index.json';
 import {
   AccountConnection,
   ActionList,

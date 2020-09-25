@@ -18826,6 +18826,11 @@ test-exclude@^6.0.0:
     glob "^7.1.4"
     minimatch "^3.0.4"
 
+testashwin@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/testashwin/-/testashwin-3.0.0.tgz#4e71efc968de0409e30e186f3ec73c1b3b937277"
+  integrity sha512-Yd9732SmzrpmbDouOvJ9HcV1Pgd6i5tIGQ4AVXWb8e7lp8vTpy1v39IkBr4g8tvgsI7la3yNNROiJr8gTnxLQA==
+
 text-table@0.2.0, text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
