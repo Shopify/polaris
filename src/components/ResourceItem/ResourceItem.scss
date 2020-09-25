@@ -346,7 +346,7 @@ $resource-list-item-variables: (
   }
 
   & + .ListItem {
-    border-top: border();
+    border-top: border('divider');
   }
 
   * + ul > &:first-of-type.focused:after {
