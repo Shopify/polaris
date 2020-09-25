@@ -338,18 +338,19 @@ $resource-list-item-variables: (
 
 .ListItem {
   position: relative;
-  @include focus-ring($border-width: rem(0px), $size: 'wide');
+  @include focus-ring($border-width: 0, $size: 'wide');
 
   &.focused {
     @include focus-ring($style: 'focused');
     z-index: resource-list-item(clickable-stacking-order);
   }
 
-  & + .ListItem {
+  .ListItem + & {
     border-top: border('divider');
   }
 
-  * + ul > &:first-of-type.focused:after {
+  // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
+  * + ul > &:first-of-type.focused::after {
     top: 0.1rem;
   }
 }

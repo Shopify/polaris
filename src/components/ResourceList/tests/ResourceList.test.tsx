@@ -62,9 +62,7 @@ describe('<ResourceList />', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderCustomMarkup} />,
       );
-      expect(resourceList.find('li').first().children().html()).toBe(
-        '<p>title 1</p>',
-      );
+      expect(resourceList.find('li').first().text()).toBe('title 1');
     });
   });
 
@@ -1289,7 +1287,7 @@ function idForItem(item: any) {
 }
 
 function renderCustomMarkup(item: any) {
-  return <p>{item.title}</p>;
+  return <li key={item.id}>{item.title}</li>;
 }
 
 function renderItem(item: any, id: any, index: number) {
