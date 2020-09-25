@@ -137,6 +137,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
   render() {
     const {
+      id,
       children,
       url,
       external,
@@ -215,8 +216,8 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       focusedInner && styles.focusedInner,
     );
 
-    const focusClassName = classNames(
-      styles.FocusParent,
+    const listItemClassName = classNames(
+      styles.ListItem,
       focused && !focusedInner && styles.focused,
       newDesignLanguage && styles.newDesignLanguage,
     );
@@ -327,7 +328,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     );
 
     return (
-      <div className={focusClassName}>
+      <li key={id} className={listItemClassName}>
         <div className={styles.ItemWrapper}>
           <div
             ref={this.setNode}
@@ -344,7 +345,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             {containerMarkup}
           </div>
         </div>
-      </div>
+      </li>
     );
   }
 

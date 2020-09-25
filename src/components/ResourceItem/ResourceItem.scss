@@ -336,12 +336,20 @@ $resource-list-item-variables: (
   }
 }
 
-// stylelint-disable-next-line selector-max-class
-.FocusParent.newDesignLanguage {
-  @include focus-ring($border-width: rem(1px));
-  z-index: 10;
+.ListItem {
+  position: relative;
+  @include focus-ring($border-width: rem(0px), $size: 'wide');
 
   &.focused {
     @include focus-ring($style: 'focused');
+    z-index: resource-list-item(clickable-stacking-order);
+  }
+
+  & + .ListItem {
+    border-top: border();
+  }
+
+  * + ul > &:first-of-type.focused:after {
+    top: 0.1rem;
   }
 }

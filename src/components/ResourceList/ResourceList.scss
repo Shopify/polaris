@@ -203,15 +203,6 @@ $item-wrapper-loading-height: rem(64px);
   list-style: none;
 }
 
-.ListItem {
-  position: relative;
-  z-index: resource-list(list-stacking-order);
-
-  + .ListItem {
-    border-top: border();
-  }
-}
-
 .ItemWrapper-isLoading {
   min-height: $item-wrapper-loading-height;
 }
