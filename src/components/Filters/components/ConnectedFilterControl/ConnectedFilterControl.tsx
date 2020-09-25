@@ -133,9 +133,9 @@ export class ConnectedFilterControl extends Component<
       >
         {rightPopoverableActions.map((action) => (
           <div key={action.key} data-key={action.key}>
-            {this.activatorButtonFrom(action)}
-          </div>
-        ))}
+            {this.activatorButtonFrom(action, true)}
+          </div>)
+        )}
       </div>
     ) : null;
 
@@ -222,13 +222,13 @@ export class ConnectedFilterControl extends Component<
     return actionsToReturn;
   }
 
-  private activatorButtonFrom(action: PopoverableAction): React.ReactElement {
+  private activatorButtonFrom(action: PopoverableAction, omitId = false): React.ReactElement {
     return (
       <Button
         onClick={action.onAction}
         disclosure
         disabled={this.props.disabled || action.disabled}
-        id={`Activator-${action.key}`}
+        id={omitId ? undefined : `Activator-${action.key}`}
       >
         {action.content}
       </Button>
