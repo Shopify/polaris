@@ -21,6 +21,8 @@ export function setActivatorAttributes(
   const activatorType = activator.getAttribute('type');
 
   if (activator.tagName !== 'input' && activatorType && activatorType !== 'text') {
+    activator.setAttribute('aria-controls', id);
+    activator.setAttribute('aria-owns', id);
     activator.setAttribute('aria-expanded', String(active));
   }
 
