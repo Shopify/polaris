@@ -140,6 +140,15 @@ $range-thumb-shadow-focus: var(
     );
     box-shadow: $range-thumb-shadow-error;
   }
+
+  &.newDesignLanguage {
+    @include focus-ring($size: 'wide', $border-width: border-width());
+    position: absolute;
+
+    &:focus {
+      @include focus-ring($style: 'focused');
+    }
+  }
 }
 
 $range-output-size: rem(32px);
