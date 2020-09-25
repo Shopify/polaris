@@ -161,11 +161,17 @@ export class DualThumb extends Component<DualThumbProps, State> {
       styles.Thumbs,
       styles.ThumbLower,
       disabled && styles.disabled,
+      this.context &&
+        this.context.newDesignLanguage &&
+        styles.newDesignLanguage,
     );
     const thumbUpperClassName = classNames(
       styles.Thumbs,
       styles.ThumbUpper,
       disabled && styles.disabled,
+      this.context &&
+        this.context.newDesignLanguage &&
+        styles.newDesignLanguage,
     );
 
     const trackWidth = this.state.trackWidth;

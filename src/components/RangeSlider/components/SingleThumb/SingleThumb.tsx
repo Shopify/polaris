@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {useFeatures} from '../../../../utilities/features';
 import {classNames} from '../../../../utilities/css';
 import {clamp} from '../../../../utilities/clamp';
 import {Labelled, helpTextID} from '../../../Labelled';
@@ -35,6 +36,7 @@ export function SingleThumb(props: SingleThumbProps) {
     onBlur,
     onFocus,
   } = props;
+  const {newDesignLanguage} = useFeatures();
   const clampedValue = clamp(value, min, max);
   const describedBy: string[] = [];
 
@@ -79,6 +81,11 @@ export function SingleThumb(props: SingleThumbProps) {
     disabled && styles.disabled,
   );
 
+  const inputClassNames = classNames(
+    styles.Input,
+    newDesignLanguage && styles.newDesignLanguage,
+  );
+
   return (
     <Labelled
       id={id}
@@ -93,7 +100,7 @@ export function SingleThumb(props: SingleThumbProps) {
         <div className={styles.InputWrapper}>
           <input
             type="range"
-            className={styles.Input}
+            className={inputClassNames}
             id={id}
             name={id}
             min={min}
