@@ -7,11 +7,11 @@ import React, {
 } from 'react';
 import {
   CancelSmallMinor,
-  CircleTickMajorTwotone,
-  FlagMajorTwotone,
-  CircleAlertMajorTwotone,
-  CircleDisabledMajorTwotone,
-  CircleInformationMajorTwotone,
+  CircleTickMajor,
+  FlagMajor,
+  CircleAlertMajor,
+  CircleDisabledMajor,
+  CircleInformationMajor,
   CircleInformationMajorFilled,
   CircleTickMajorFilled,
   CircleAlertMajorFilled,
@@ -213,7 +213,7 @@ function useBannerAttributes(
       return {
         defaultIcon: newDesignLanguage
           ? CircleTickMajorFilled
-          : CircleTickMajorTwotone,
+          : CircleTickMajor,
         iconColor: newDesignLanguage ? 'success' : 'greenDark',
         ariaRoleType: 'status',
       };
@@ -222,7 +222,7 @@ function useBannerAttributes(
       return {
         defaultIcon: newDesignLanguage
           ? CircleInformationMajorFilled
-          : CircleInformationMajorTwotone,
+          : CircleInformationMajor,
         iconColor: newDesignLanguage ? 'highlight' : 'tealDark',
         ariaRoleType: 'status',
       };
@@ -231,7 +231,7 @@ function useBannerAttributes(
       return {
         defaultIcon: newDesignLanguage
           ? CircleAlertMajorFilled
-          : CircleAlertMajorTwotone,
+          : CircleAlertMajor,
         iconColor: newDesignLanguage ? 'warning' : 'yellowDark',
         ariaRoleType: 'alert',
       };
@@ -240,7 +240,7 @@ function useBannerAttributes(
       return {
         defaultIcon: newDesignLanguage
           ? CircleDisabledMajorFilled
-          : CircleDisabledMajorTwotone,
+          : CircleDisabledMajor,
         iconColor: newDesignLanguage ? 'critical' : 'redDark',
         ariaRoleType: 'alert',
       };
@@ -249,7 +249,7 @@ function useBannerAttributes(
       return {
         defaultIcon: newDesignLanguage
           ? CircleInformationMajorFilled
-          : FlagMajorTwotone,
+          : FlagMajor,
         iconColor: newDesignLanguage ? 'base' : 'inkLighter',
         ariaRoleType: 'status',
       };
