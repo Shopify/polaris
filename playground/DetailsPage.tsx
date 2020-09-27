@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState, SVGProps} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {
   CirclePlusMinor,
   DuplicateMinor,
