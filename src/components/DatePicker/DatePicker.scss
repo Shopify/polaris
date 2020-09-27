@@ -7,6 +7,7 @@ $font-size: rem(12px);
 $in-range-border-color: #9ca6de;
 
 $range-end-border-radius: rem(30px);
+$month-width: rem(240px);
 
 .DatePicker {
   position: relative;
@@ -14,21 +15,22 @@ $range-end-border-radius: rem(30px);
 
 .MonthContainer {
   display: flex;
-  flex-wrap: wrap;
   margin-top: -1 * spacing();
-  margin-left: -1 * spacing();
 }
 
 .Month {
-  flex: 1 1 rem(230px);
+  flex: 1 1 $month-width;
   margin-top: spacing();
-  margin-left: spacing();
   max-width: calc(100% - #{spacing()});
-  min-width: rem(230px);
+  min-width: $month-width;
   table-layout: fixed;
   border-collapse: collapse;
   border: none;
   border-spacing: 0;
+}
+
+.Month + .Month {
+  margin-left: spacing();
 }
 
 .Month-current {
