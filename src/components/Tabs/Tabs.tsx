@@ -21,6 +21,8 @@ export interface TabsProps {
   tabs: TabDescriptor[];
   /** Fit tabs to container */
   fitted?: boolean;
+  /** Text to replace disclosures horizontal dots */
+  disclosureText?: string;
   /** Callback when tab is selected */
   onSelect?(selectedTabIndex: number): void;
 }
@@ -69,7 +71,15 @@ class TabsInner extends PureComponent<CombinedProps, State> {
   };
 
   render() {
-    const {tabs, selected, fitted, children, i18n, features} = this.props;
+    const {
+      tabs,
+      selected,
+      fitted,
+      children,
+      i18n,
+      features,
+      disclosureText,
+    } = this.props;
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
     const {newDesignLanguage} = features;
@@ -118,17 +128,33 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       disclosureActivatorVisible && styles['DisclosureTab-visible'],
     );
 
-    const activator = (
+    const disclosureActivatorClassName = classNames(
+      styles.TabContainer,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
+    const disclosureButtonClassName = classNames(
+      styles.DisclosureActivator,
+      disclosureText && styles.Tab,
+    );
+
+    const disclosureButton = (
       <button
         type="button"
-        className={styles.DisclosureActivator}
+        className={disclosureButtonClassName}
         onClick={this.handleDisclosureActivatorClick}
         aria-label={i18n.translate('Polaris.Tabs.toggleTabsLabel')}
       >
         <span className={styles.Title}>
-          <Icon source={HorizontalDotsMinor} />
+          {disclosureText || <Icon source={HorizontalDotsMinor} />}
         </span>
       </button>
+    );
+
+    const activator = disclosureText ? (
+      <div className={disclosureActivatorClassName}>{disclosureButton}</div>
+    ) : (
+      disclosureButton
     );
 
     return (
