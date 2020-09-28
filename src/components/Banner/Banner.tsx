@@ -211,32 +211,28 @@ function useBannerAttributes(
   switch (status) {
     case 'success':
       return {
-        defaultIcon: newDesignLanguage ? CircleTickMajor : CircleTickMajor,
+        defaultIcon: CircleTickMajor,
         iconColor: newDesignLanguage ? 'success' : 'greenDark',
         ariaRoleType: 'status',
       };
 
     case 'info':
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleInformationMajor
-          : CircleInformationMajor,
+        defaultIcon: CircleInformationMajor,
         iconColor: newDesignLanguage ? 'highlight' : 'tealDark',
         ariaRoleType: 'status',
       };
 
     case 'warning':
       return {
-        defaultIcon: newDesignLanguage ? CircleAlertMajor : CircleAlertMajor,
+        defaultIcon: CircleAlertMajor,
         iconColor: newDesignLanguage ? 'warning' : 'yellowDark',
         ariaRoleType: 'alert',
       };
 
     case 'critical':
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleDisabledMajor
-          : CircleDisabledMajor,
+        defaultIcon: CircleDisabledMajor,
         iconColor: newDesignLanguage ? 'critical' : 'redDark',
         ariaRoleType: 'alert',
       };
