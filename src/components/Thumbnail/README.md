@@ -109,7 +109,7 @@ Use when a thumbnail is a major focal point. Avoid this size in lists of like it
 Use when a thumbnail uses a component inside of it.
 
 ```jsx
-<Thumbnail source={NoteMinor} size="large" alt="Black choker necklace" />
+<Thumbnail source={NoteMinor} size="large" alt="Small document" />
 ```
 
 <!-- content-for: android -->
