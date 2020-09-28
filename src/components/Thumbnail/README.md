@@ -60,10 +60,16 @@ For thumbnails, we recommend using a format that describes what will show in the
 Use as the default size.
 
 ```jsx
-<Thumbnail
-  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
-  alt="Black choker necklace"
-/>
+<Stack>
+  <Thumbnail
+    source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_100x@2x.jpg"
+    alt="Black choker necklace"
+  />
+  <Thumbnail
+    source="https://burst.shopifycdn.com/photos/lion-standing-on-edge-looking-down_100x@2x.jpg"
+    alt="Black choker necklace"
+  />
+</Stack>
 ```
 
 <!-- content-for: android -->
@@ -86,7 +92,7 @@ Use when the default size is too large for the layout, or when the thumbnail has
 
 ```jsx
 <Thumbnail
-  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_100x@2x.jpg"
   size="small"
   alt="Black choker necklace"
 />
@@ -98,10 +104,18 @@ Use when a thumbnail is a major focal point. Avoid this size in lists of like it
 
 ```jsx
 <Thumbnail
-  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_100x@2x.jpg"
   size="large"
   alt="Black choker necklace"
 />
+```
+
+### Thumbnail with component source
+
+Use when a thumbnail uses a component inside of it.
+
+```jsx
+<Thumbnail source={NoteMinor} size="large" alt="Black choker necklace" />
 ```
 
 <!-- content-for: android -->
