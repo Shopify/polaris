@@ -51,14 +51,11 @@ $Backdrop-opacity: 0.88;
   border: none;
   appearance: none;
   background: transparent;
-  fill: var(--p-icon, color('white'));
+  color: currentColor;
+  @include recolor-icon(currentColor);
   cursor: pointer;
 
   &:focus {
     outline: none;
-  }
-
-  @media (-ms-high-contrast: active) {
-    fill: ms-high-contrast-color('text');
   }
 }

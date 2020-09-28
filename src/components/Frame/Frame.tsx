@@ -10,6 +10,7 @@ import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {EventListener} from '../EventListener';
 import {Backdrop} from '../Backdrop';
+import {Button} from '../Button';
 import {TrapFocus} from '../TrapFocus';
 import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/set-root-property';
@@ -230,15 +231,14 @@ class FrameInner extends PureComponent<CombinedProps, State> {
 
     const skipMarkup = (
       <div className={skipClassName}>
-        <a
-          href={`#${skipTarget}`}
+        <Button
+          url={`#${skipTarget}`}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
-          className={styles.SkipAnchor}
         >
           {i18n.translate('Polaris.Frame.skipToContent')}
-        </a>
+        </Button>
       </div>
     );
 
