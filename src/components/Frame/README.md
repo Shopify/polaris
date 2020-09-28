@@ -212,12 +212,12 @@ function FrameExample() {
         items={[
           {
             label: 'Dashboard',
-            icon: HomeMajorMonotone,
+            icon: HomeMajor,
             onClick: toggleIsLoading,
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersMajorTwotone,
+            icon: OrdersMajor,
             onClick: toggleIsLoading,
           },
         ]}
@@ -555,12 +555,12 @@ function FrameExample() {
         items={[
           {
             label: 'Dashboard',
-            icon: HomeMajorMonotone,
+            icon: HomeMajor,
             onClick: toggleIsLoading,
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersMajorTwotone,
+            icon: OrdersMajor,
             onClick: toggleIsLoading,
           },
         ]}
