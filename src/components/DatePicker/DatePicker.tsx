@@ -245,7 +245,7 @@ export function DatePicker({
           onClick={() => handleMonthChangeClick(showNextMonth, showNextYear)}
         />
       </div>
-      <div className={styles.MonthContainer}>
+      <div className={styles.MonthLayout}>
         <Month
           onFocus={handleFocus}
           focusedDate={focusDate}

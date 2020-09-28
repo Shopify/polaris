@@ -142,15 +142,17 @@ export function Month({
   ));
 
   return (
-    <table role="grid" className={styles.Month}>
-      <caption className={className}>
-        {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)} {year}
-      </caption>
-      <thead>
-        <tr className={styles.WeekHeadings}>{weekdays}</tr>
-      </thead>
-      <tbody>{weeksMarkup}</tbody>
-    </table>
+    <div className={styles.MonthContainer}>
+      <table role="grid" className={styles.Month}>
+        <caption className={className}>
+          {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)} {year}
+        </caption>
+        <thead>
+          <tr className={styles.WeekHeadings}>{weekdays}</tr>
+        </thead>
+        <tbody>{weeksMarkup}</tbody>
+      </table>
+    </div>
   );
 }
 
