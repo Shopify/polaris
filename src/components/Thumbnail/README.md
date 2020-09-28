@@ -60,16 +60,10 @@ For thumbnails, we recommend using a format that describes what will show in the
 Use as the default size.
 
 ```jsx
-<Stack>
-  <Thumbnail
-    source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_100x@2x.jpg"
-    alt="Black choker necklace"
-  />
-  <Thumbnail
-    source="https://burst.shopifycdn.com/photos/lion-standing-on-edge-looking-down_100x@2x.jpg"
-    alt="Black choker necklace"
-  />
-</Stack>
+<Thumbnail
+  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+  alt="Black choker necklace"
+/>
 ```
 
 <!-- content-for: android -->
