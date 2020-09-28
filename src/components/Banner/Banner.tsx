@@ -7,13 +7,9 @@ import React, {
 } from 'react';
 import {
   CancelSmallMinor,
-  CircleTickMajor,
   FlagMajor,
-  CircleAlertMajor,
-  CircleDisabledMajor,
-  CircleInformationMajor,
-  CircleInformationMajor,
   CircleTickMajor,
+  CircleInformationMajor,
   CircleAlertMajor,
   CircleDisabledMajor,
 } from '@shopify/polaris-icons';
