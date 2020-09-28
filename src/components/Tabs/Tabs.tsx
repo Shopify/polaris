@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {HorizontalDotsMinor} from '@shopify/polaris-icons';
+import {HorizontalDotsMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
@@ -110,6 +110,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       .map((tabIndex) => this.renderTabMarkup(tabs[tabIndex], tabIndex));
 
     const disclosureActivatorVisible = visibleTabs.length < tabs.length;
+    const hasCustomDisclosure = Boolean(disclosureText);
 
     const classname = classNames(
       styles.Tabs,
@@ -135,7 +136,21 @@ class TabsInner extends PureComponent<CombinedProps, State> {
 
     const disclosureButtonClassName = classNames(
       styles.DisclosureActivator,
-      disclosureText && styles.Tab,
+      hasCustomDisclosure && styles.Tab,
+    );
+
+    const disclosureButtonContentWrapperClassName = classNames(
+      styles.Title,
+      hasCustomDisclosure && styles.titleWithIcon,
+    );
+
+    const disclosureButtonContent = hasCustomDisclosure ? (
+      <>
+        {disclosureText}
+        <Icon source={CaretDownMinor} color="inkLighter" />
+      </>
+    ) : (
+      <Icon source={HorizontalDotsMinor} />
     );
 
     const disclosureButton = (
@@ -145,8 +160,8 @@ class TabsInner extends PureComponent<CombinedProps, State> {
         onClick={this.handleDisclosureActivatorClick}
         aria-label={i18n.translate('Polaris.Tabs.toggleTabsLabel')}
       >
-        <span className={styles.Title}>
-          {disclosureText || <Icon source={HorizontalDotsMinor} />}
+        <span className={disclosureButtonContentWrapperClassName}>
+          {disclosureButtonContent}
         </span>
       </button>
     );
