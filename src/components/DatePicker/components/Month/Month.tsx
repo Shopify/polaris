@@ -145,7 +145,8 @@ export function Month({
     <div className={styles.MonthContainer}>
       <table role="grid" className={styles.Month}>
         <caption className={className}>
-          {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)} {year}
+          {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)}{' '}
+          {year}
         </caption>
         <thead>
           <tr className={styles.WeekHeadings}>{weekdays}</tr>
