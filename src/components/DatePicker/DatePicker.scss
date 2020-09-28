@@ -12,19 +12,23 @@ $range-end-border-radius: rem(30px);
   position: relative;
 }
 
-.MonthContainer {
+.MonthLayout {
   display: flex;
   flex-wrap: wrap;
   margin-top: -1 * spacing();
   margin-left: -1 * spacing();
 }
 
-.Month {
+.MonthContainer {
   flex: 1 1 rem(230px);
   margin-top: spacing();
   margin-left: spacing();
   max-width: calc(100% - #{spacing()});
   min-width: rem(230px);
+}
+
+.Month {
+  width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
   border: none;
