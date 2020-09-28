@@ -86,7 +86,7 @@ Use when the default size is too large for the layout, or when the thumbnail has
 
 ```jsx
 <Thumbnail
-  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_100x@2x.jpg"
+  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
   size="small"
   alt="Black choker necklace"
 />
@@ -98,7 +98,7 @@ Use when a thumbnail is a major focal point. Avoid this size in lists of like it
 
 ```jsx
 <Thumbnail
-  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_100x@2x.jpg"
+  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
   size="large"
   alt="Black choker necklace"
 />
