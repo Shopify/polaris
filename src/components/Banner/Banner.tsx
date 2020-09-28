@@ -12,10 +12,10 @@ import {
   CircleAlertMajor,
   CircleDisabledMajor,
   CircleInformationMajor,
-  CircleInformationMajorFilled,
-  CircleTickMajorFilled,
-  CircleAlertMajorFilled,
-  CircleDisabledMajorFilled,
+  CircleInformationMajor,
+  CircleTickMajor,
+  CircleAlertMajor,
+  CircleDisabledMajor,
 } from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
@@ -211,9 +211,7 @@ function useBannerAttributes(
   switch (status) {
     case 'success':
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleTickMajorFilled
-          : CircleTickMajor,
+        defaultIcon: newDesignLanguage ? CircleTickMajor : CircleTickMajor,
         iconColor: newDesignLanguage ? 'success' : 'greenDark',
         ariaRoleType: 'status',
       };
@@ -221,7 +219,7 @@ function useBannerAttributes(
     case 'info':
       return {
         defaultIcon: newDesignLanguage
-          ? CircleInformationMajorFilled
+          ? CircleInformationMajor
           : CircleInformationMajor,
         iconColor: newDesignLanguage ? 'highlight' : 'tealDark',
         ariaRoleType: 'status',
@@ -229,9 +227,7 @@ function useBannerAttributes(
 
     case 'warning':
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleAlertMajorFilled
-          : CircleAlertMajor,
+        defaultIcon: newDesignLanguage ? CircleAlertMajor : CircleAlertMajor,
         iconColor: newDesignLanguage ? 'warning' : 'yellowDark',
         ariaRoleType: 'alert',
       };
@@ -239,7 +235,7 @@ function useBannerAttributes(
     case 'critical':
       return {
         defaultIcon: newDesignLanguage
-          ? CircleDisabledMajorFilled
+          ? CircleDisabledMajor
           : CircleDisabledMajor,
         iconColor: newDesignLanguage ? 'critical' : 'redDark',
         ariaRoleType: 'alert',
@@ -247,9 +243,7 @@ function useBannerAttributes(
 
     default:
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleInformationMajorFilled
-          : FlagMajor,
+        defaultIcon: newDesignLanguage ? CircleInformationMajor : FlagMajor,
         iconColor: newDesignLanguage ? 'base' : 'inkLighter',
         ariaRoleType: 'status',
       };

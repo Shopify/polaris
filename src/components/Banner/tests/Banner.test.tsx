@@ -6,10 +6,10 @@ import {
   CircleTickMajor,
   CircleInformationMajor,
   FlagMajor,
-  CircleTickMajorFilled,
-  CircleInformationMajorFilled,
-  CircleAlertMajorFilled,
-  CircleDisabledMajorFilled,
+  CircleTickMajor,
+  CircleInformationMajor,
+  CircleAlertMajor,
+  CircleDisabledMajor,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'test-utilities/react-testing';
 // eslint-disable-next-line no-restricted-imports
@@ -219,35 +219,20 @@ describe('<Banner />', () => {
 
   describe('Icon', () => {
     it.each([
-      [
-        'Banner has a default status',
-        null,
-        'base',
-        CircleInformationMajorFilled,
-      ],
-      [
-        'Banner has a success status',
-        'success',
-        'success',
-        CircleTickMajorFilled,
-      ],
+      ['Banner has a default status', null, 'base', CircleInformationMajor],
+      ['Banner has a success status', 'success', 'success', CircleTickMajor],
       [
         'Banner has an info status',
         'info',
         'highlight',
-        CircleInformationMajorFilled,
+        CircleInformationMajor,
       ],
-      [
-        'Banner has a warning status',
-        'warning',
-        'warning',
-        CircleAlertMajorFilled,
-      ],
+      ['Banner has a warning status', 'warning', 'warning', CircleAlertMajor],
       [
         'Banner has a critical status',
         'critical',
         'critical',
-        CircleDisabledMajorFilled,
+        CircleDisabledMajor,
       ],
     ])(
       'Sets Icon props when: %s',
