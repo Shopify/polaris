@@ -49,6 +49,8 @@ export interface BulkActionsProps {
   onToggleAll?(): void;
   /** Callback when selectable state of list is changed */
   onSelectModeToggle?(selectMode: boolean): void;
+  /** Callback when more actions button is toggled */
+  onMoreActionPopoverToggle?(isOpen: boolean): void;
 }
 
 type CombinedProps = BulkActionsProps & {
@@ -276,6 +278,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
                 'Polaris.ResourceList.BulkActions.actionsActivatorLabel',
               )}
               disabled={disabled}
+              indicator={this.isNewBadgeInBadgeActions()}
             />
           }
           onClose={this.toggleSmallScreenPopover}
@@ -340,6 +343,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
                 onAction={this.toggleLargeScreenPopover}
                 content={activatorLabel}
                 disabled={disabled}
+                indicator={this.isNewBadgeInBadgeActions()}
               />
             }
             onClose={this.toggleLargeScreenPopover}
@@ -461,6 +465,19 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
     );
   }
 
+  private isNewBadgeInBadgeActions() {
+    const actions = this.actionSections();
+    if (!actions) return false;
+
+    for (const action of actions) {
+      for (const item of action.items) {
+        if (item.badge?.status === 'new') return true;
+      }
+    }
+
+    return false;
+  }
+
   private setLargeScreenButtonsNode = (node: HTMLElement | null) => {
     this.largeScreenButtonsNode = node;
   };
@@ -481,12 +498,24 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
   };
 
   private toggleSmallScreenPopover = () => {
+    if (this.props.onMoreActionPopoverToggle) {
+      this.props.onMoreActionPopoverToggle(
+        this.state.smallScreenPopoverVisible,
+      );
+    }
+
     this.setState(({smallScreenPopoverVisible}) => ({
       smallScreenPopoverVisible: !smallScreenPopoverVisible,
     }));
   };
 
   private toggleLargeScreenPopover = () => {
+    if (this.props.onMoreActionPopoverToggle) {
+      this.props.onMoreActionPopoverToggle(
+        this.state.largeScreenPopoverVisible,
+      );
+    }
+
     this.setState(({largeScreenPopoverVisible}) => ({
       largeScreenPopoverVisible: !largeScreenPopoverVisible,
     }));
