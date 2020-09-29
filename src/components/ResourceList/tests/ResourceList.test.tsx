@@ -18,7 +18,8 @@ import {
 } from 'test-utilities/legacy';
 import {SELECT_ALL_ITEMS} from 'utilities/resource-list';
 
-import {BulkActions, CheckableButton} from '../components';
+import {BulkActions} from '../../BulkActions';
+import {CheckableButton} from '../../CheckableButton';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];

@@ -1,5 +1,4 @@
-@import '../../../../styles/common';
-@import '../../variables';
+@import '../../styles/common';
 
 $bulk-actions-button-stacking-order: (
   focused: 20,
@@ -40,7 +39,7 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
 }
 
 .Group-smallScreen {
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @include page-after-resource-list-small {
     display: none;
   }
 }
@@ -48,7 +47,7 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
 .Group-largeScreen {
   display: none;
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @include page-after-resource-list-small {
     display: flex;
 
     &.Group-exiting {
@@ -67,14 +66,14 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   max-width: 100%;
 
   // We need the first item of button group on small screen to fill the space
-  @include breakpoint-before(resource-list(breakpoint-small)) {
+  @include page-before-resource-list-small {
     // stylelint-disable-next-line selector-max-specificity, selector-max-class, selector-max-combinators, selector-max-type
     > div > div:first-child {
       flex: 1 1 auto;
     }
   }
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @include page-after-resource-list-small {
     width: auto;
     justify-content: flex-start;
     margin-right: spacing(tight);

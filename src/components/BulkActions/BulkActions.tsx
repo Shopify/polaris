@@ -3,18 +3,14 @@ import debounce from 'lodash/debounce';
 import {durationBase} from '@shopify/polaris-tokens';
 import {CSSTransition, Transition} from 'react-transition-group';
 
-import {classNames} from '../../../../utilities/css';
-import {useI18n} from '../../../../utilities/i18n';
-import type {
-  DisableableAction,
-  Action,
-  ActionListSection,
-} from '../../../../types';
-import {ActionList} from '../../../ActionList';
-import {Popover} from '../../../Popover';
-import {Button} from '../../../Button';
-import {ButtonGroup} from '../../../ButtonGroup';
-import {EventListener} from '../../../EventListener';
+import {classNames} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
+import type {DisableableAction, Action, ActionListSection} from '../../types';
+import {ActionList} from '../ActionList';
+import {Popover} from '../Popover';
+import {Button} from '../Button';
+import {ButtonGroup} from '../ButtonGroup';
+import {EventListener} from '../EventListener';
 import {CheckableButton} from '../CheckableButton';
 
 import {BulkActionButton} from './components';

@@ -1,8 +1,8 @@
 import React, {useRef} from 'react';
 
-import type {DisableableAction} from '../../../../../../types';
-import {Button} from '../../../../../Button';
-import {useComponentDidMount} from '../../../../../../utilities/use-component-did-mount';
+import type {DisableableAction} from '../../../../types';
+import {Button} from '../../../Button';
+import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
 import styles from '../../BulkActions.scss';
 
 export type BulkActionButtonProps = {

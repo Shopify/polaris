@@ -27,8 +27,9 @@ import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
+import {BulkActions, BulkActionsProps} from '../BulkActions';
+import {CheckableButton} from '../CheckableButton';
 
-import {BulkActions, BulkActionsProps, CheckableButton} from './components';
 import styles from './ResourceList.scss';
 
 const SMALL_SCREEN_WIDTH = 458;
