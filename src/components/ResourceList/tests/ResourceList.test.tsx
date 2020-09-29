@@ -66,8 +66,7 @@ describe('<ResourceList />', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderCustomMarkup} />,
       );
-      expect(resourceList.find('li').first().children().html()).toBe(
-        '<p>title 1</p>',
+      expect(resourceList.find('li').first().text()).toBe('title 1');
       expect(warningSpy).toHaveBeenCalledWith(
         '<ResourceList /> renderItem function should return a <ResourceItem />.',
       );
