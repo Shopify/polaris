@@ -32,10 +32,8 @@ export type {BannerProps, BannerStatus} from './Banner';
 export {Breadcrumbs} from './Breadcrumbs';
 export type {BreadcrumbsProps} from './Breadcrumbs';
 
-// eslint-disable-next-line @typescript-eslint/camelcase
-export {BulkActions as _SECRET_INTERNAL_BulkActions} from './BulkActions';
-// eslint-disable-next-line @typescript-eslint/camelcase
-export type {BulkActionsProps as _SECRET_INTERNAL_BulkActionsProps} from './BulkActions';
+export {BulkActions as UnstableBulkActions} from './BulkActions';
+export type {BulkActionsProps as UnstableBulkActionsProps} from './BulkActions';
 
 export {Button, buttonFrom, buttonsFrom} from './Button';
 export type {ButtonProps} from './Button';

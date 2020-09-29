@@ -101,7 +101,9 @@ $chekbox-label-margin: rem(20px);
     color: var(--p-text, color('indigo'));
 
     @include page-after-resource-list-small {
-      border-color: color('sky', 'dark');
+      &:not(.newDesignLanguage) {
+        border-color: color('sky', 'dark');
+      }
     }
   }
 }
