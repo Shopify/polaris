@@ -8,6 +8,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Moved `li` wrapper on `ResourceList` to `ResourceListItem` ([#3302](https://github.com/Shopify/polaris-react/pull/3302))
 - Remove `button-base` mixin from `Frame` SkipAnchor ([#3303](https://github.com/Shopify/polaris-react/pull/3303))
 - Updated `Toast` to use `currentColor` for the close icon ([#3324](https://github.com/Shopify/polaris-react/pull/3324)).
 
