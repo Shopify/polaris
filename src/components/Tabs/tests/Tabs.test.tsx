@@ -458,6 +458,15 @@ describe('<Tabs />', () => {
   });
 
   describe('<Popover />', () => {
+    it('renders disclosureText when provided', () => {
+      const disclosureText = 'More views';
+      const wrapper = mountWithApp(
+        <Tabs {...mockProps} disclosureText={disclosureText} />,
+      );
+
+      expect(wrapper).toContainReactText(disclosureText);
+    });
+
     it('passes preferredPosition below to the Popover', () => {
       const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
       const tabMeasurer = tabs.find(TabMeasurer);
