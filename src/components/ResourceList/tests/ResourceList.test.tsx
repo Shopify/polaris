@@ -1296,7 +1296,7 @@ function idForItem(item: any) {
 }
 
 function renderCustomMarkup(item: any) {
-  return <li key={item.id}>{item.title}</li>;
+  return <p key={item.id}>{item.title}</p>;
 }
 
 function renderItem(item: any, id: any, index: number) {
