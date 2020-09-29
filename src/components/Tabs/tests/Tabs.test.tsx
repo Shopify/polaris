@@ -9,6 +9,13 @@ import {getVisibleAndHiddenTabIndices} from '../utilities';
 import {FeaturesContext} from '../../../utilities/features';
 import {Popover} from '../../Popover';
 
+jest.mock('../../Portal', () => ({
+  ...(jest.requireActual('../../Portal') as any),
+  Portal() {
+    return null;
+  },
+}));
+
 describe('<Tabs />', () => {
   const tabs: TabsProps['tabs'] = [
     {content: 'Tab 1', id: 'tab-1'},
