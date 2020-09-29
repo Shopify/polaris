@@ -2018,12 +2018,10 @@
   dependencies:
     tslib "^1.9.3"
 
-"@shopify/polaris-icons@^4.0.0-rc.2":
-  version "4.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.0.0-rc.2.tgz#16d33640ec28b6344af3a438d201d09b7231c6f3"
-  integrity sha512-EvgS73R4GpJ+TonKuJlqaPk5F0BvXyZlepQsBJGg8yFOrfCObPZc3v5wSkJXAaI1HePa4FBKPW8Ymjh/IOl6ig==
-  dependencies:
-    renamer-case "^1.0.0"
+"@shopify/polaris-icons@^4.0.0-rc.3":
+  version "4.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.0.0-rc.3.tgz#5c81790141ccf617bc41a708118fdd1277555a1b"
+  integrity sha512-6JJjP0FJGgkl5VGaRgxj3BeKUEMGqK9zG3KQFGX65ishAUZMbnuhugmf6ZuF11VxgzwCICkwT7MCn/Pdy6zuDg==
 
 "@shopify/polaris-tokens@^2.12.9":
   version "2.12.9"
@@ -16628,13 +16626,6 @@ remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"
   integrity sha1-wkvOKig62tW8P1jg1IJJuSN52O8=
-
-renamer-case@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/renamer-case/-/renamer-case-1.0.0.tgz#7cd139910c2ad393718cad3ba26f9a308b146025"
-  integrity sha512-LvxJ67KGxulBEycRJzo8/G6deMpRkHELde/z+cta6AJWTnvvH7IlHOl1T8joVu432m8N1hpLbVMwIPa+ovCwsg==
-  dependencies:
-    lodash "^4.17.10"
 
 renderkid@^2.0.1:
   version "2.0.3"
