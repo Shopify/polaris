@@ -407,6 +407,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
       process.env.NODE_ENV === 'development' &&
       !isElementOfType(itemContent, ResourceItem)
     ) {
+      // eslint-disable-next-line no-console
       console.warn(
         '<ResourceList /> renderItem function should return a <ResourceItem />.',
       );

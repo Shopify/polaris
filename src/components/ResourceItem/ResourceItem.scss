@@ -349,6 +349,7 @@ $resource-list-item-variables: (
       border-radius: rem(2px);
     }
 
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity
     &:last-of-type.focused::after {
       border-bottom-left-radius: var(--p-border-radius-wide);
       border-bottom-right-radius: var(--p-border-radius-wide);
