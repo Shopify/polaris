@@ -343,7 +343,16 @@ $resource-list-item-variables: (
 
   &.newDesignLanguage {
     position: relative;
-    @include focus-ring($size: 'wide');
+    @include focus-ring($border-width: rem(-1px));
+
+    &::after {
+      border-radius: rem(2px);
+    }
+
+    &:last-of-type.focused::after {
+      border-bottom-left-radius: var(--p-border-radius-wide);
+      border-bottom-right-radius: var(--p-border-radius-wide);
+    }
 
     // stylelint-disable-next-line selector-max-class
     &.focused {
