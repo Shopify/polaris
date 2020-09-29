@@ -58,7 +58,7 @@ describe('<ResourceList />', () => {
       expect(resourceList.find('li')).toHaveLength(3);
     });
 
-    it.only('renders custom markup and warns user', () => {
+    it('renders custom markup and warns user', () => {
       process.env.NODE_ENV = 'development';
       const warningSpy = jest
         .spyOn(console, 'warn')
