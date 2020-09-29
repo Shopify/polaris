@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from 'react';
-import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
+import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
@@ -161,7 +161,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
               )}
               tabIndex={tabIndex}
             >
-              <Icon source={MobileCancelMajorMonotone} />
+              <Icon source={MobileCancelMajor} />
             </button>
           </div>
         </CSSTransition>

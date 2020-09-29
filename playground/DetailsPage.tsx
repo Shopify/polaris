@@ -1,8 +1,17 @@
-import React, {useCallback, useRef, useState, SVGProps} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {
   CirclePlusMinor,
   DuplicateMinor,
   ViewMinor,
+  HomeMajor,
+  OrdersMajor,
+  ProductsMajor,
+  CustomersMajor,
+  AnalyticsMajor,
+  MarketingMajor,
+  DiscountsMajor,
+  AppsMajor,
+  SettingsMajor,
 } from '@shopify/polaris-icons';
 
 import {
@@ -32,17 +41,6 @@ import {
   Thumbnail,
 } from '../src';
 
-import {
-  HomeMajorMonotone,
-  OrdersMajorMonotone,
-  ProductsMajorMonotone,
-  CustomersMajorMonotone,
-  AnalyticsMajorMonotone,
-  MarketingMajorMonotone,
-  DiscountsMajorMonotone,
-  AppsMajorMonotone,
-  SettingsMajorMonotone,
-} from './images';
 import styles from './DetailsPage.scss';
 
 export function DetailsPage() {
@@ -223,7 +221,7 @@ export function DetailsPage() {
         items={[
           {
             label: 'Home',
-            icon: HomeMajorMonotone,
+            icon: HomeMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('home');
@@ -233,7 +231,7 @@ export function DetailsPage() {
           },
           {
             label: 'Orders',
-            icon: OrdersMajorMonotone,
+            icon: OrdersMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('orders');
@@ -243,7 +241,7 @@ export function DetailsPage() {
           },
           {
             label: 'Products',
-            icon: ProductsMajorMonotone,
+            icon: ProductsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('products');
@@ -282,7 +280,7 @@ export function DetailsPage() {
           },
           {
             label: 'Customers',
-            icon: CustomersMajorMonotone,
+            icon: CustomersMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('customers');
@@ -292,7 +290,7 @@ export function DetailsPage() {
           },
           {
             label: 'Analytics',
-            icon: AnalyticsMajorMonotone,
+            icon: AnalyticsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('analytics');
@@ -302,7 +300,7 @@ export function DetailsPage() {
           },
           {
             label: 'Marketing',
-            icon: MarketingMajorMonotone,
+            icon: MarketingMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('marketing');
@@ -312,7 +310,7 @@ export function DetailsPage() {
           },
           {
             label: 'Discounts',
-            icon: DiscountsMajorMonotone,
+            icon: DiscountsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('discounts');
@@ -322,7 +320,7 @@ export function DetailsPage() {
           },
           {
             label: 'Apps',
-            icon: AppsMajorMonotone,
+            icon: AppsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('apps');
@@ -385,7 +383,7 @@ export function DetailsPage() {
       <Navigation.Section
         items={[
           {
-            icon: SettingsMajorMonotone,
+            icon: SettingsMajor,
             label: 'Settings',
             onClick: toggleModalActive,
           },

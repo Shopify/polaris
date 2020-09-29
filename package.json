@@ -80,7 +80,7 @@
     "postcolordocs": "yarn run format"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "^3.10.0",
+    "@shopify/polaris-icons": "^4.0.0-rc.4",
     "@shopify/polaris-tokens": "^2.12.9",
     "@types/react": "^16.9.12",
     "@types/react-dom": "^16.9.4",

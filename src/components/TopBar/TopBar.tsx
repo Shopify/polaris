@@ -1,5 +1,5 @@
 import React from 'react';
-import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
+import {MobileHamburgerMajor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
@@ -85,7 +85,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       onBlur={forceFalseFocused}
       aria-label={i18n.translate('Polaris.TopBar.toggleMenuLabel')}
     >
-      <Icon source={MobileHamburgerMajorMonotone} />
+      <Icon source={MobileHamburgerMajor} />
     </button>
   ) : null;
 

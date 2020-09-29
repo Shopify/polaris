@@ -1,5 +1,5 @@
 import React from 'react';
-import {QuestionMarkMajorTwotone, InfoMinor} from '@shopify/polaris-icons';
+import {QuestionMarkMajor, InfoMinor} from '@shopify/polaris-icons';
 
 import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
@@ -21,7 +21,7 @@ export function FooterHelp({children}: FooterHelpProps) {
   );
 
   const iconProps: IconProps = {
-    source: newDesignLanguage ? InfoMinor : QuestionMarkMajorTwotone,
+    source: newDesignLanguage ? InfoMinor : QuestionMarkMajor,
     color: newDesignLanguage ? 'highlight' : 'teal',
     backdrop: !newDesignLanguage,
   };

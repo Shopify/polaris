@@ -1,15 +1,11 @@
 import React, {useEffect, useRef} from 'react';
 import {
+  FlagMajor,
   CirclePlusMinor,
-  CircleAlertMajorTwotone,
-  CircleDisabledMajorTwotone,
-  CircleTickMajorTwotone,
-  CircleInformationMajorTwotone,
-  FlagMajorTwotone,
-  CircleTickMajorFilled,
-  CircleInformationMajorFilled,
-  CircleAlertMajorFilled,
-  CircleDisabledMajorFilled,
+  CircleTickMajor,
+  CircleInformationMajor,
+  CircleAlertMajor,
+  CircleDisabledMajor,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'test-utilities/react-testing';
 // eslint-disable-next-line no-restricted-imports
@@ -38,37 +34,35 @@ describe('<Banner />', () => {
 
   it('uses a greenDark circleCheckMark if status is success and sets a status aria role', () => {
     const banner = mountWithAppProvider(<Banner status="success" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleTickMajorTwotone);
+    expect(banner.find(Icon).prop('source')).toBe(CircleTickMajor);
     expect(banner.find(Icon).prop('color')).toBe('greenDark');
     expect(banner.find('div').first().prop('role')).toBe('status');
   });
 
   it('uses a tealDark circleInformation if status is info and sets a status aria role', () => {
     const banner = mountWithAppProvider(<Banner status="info" />);
-    expect(banner.find(Icon).prop('source')).toBe(
-      CircleInformationMajorTwotone,
-    );
+    expect(banner.find(Icon).prop('source')).toBe(CircleInformationMajor);
     expect(banner.find(Icon).prop('color')).toBe('tealDark');
     expect(banner.find('div').first().prop('role')).toBe('status');
   });
 
   it('uses a yellowDark circleAlert if status is warning and sets an alert aria role', () => {
     const banner = mountWithAppProvider(<Banner status="warning" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleAlertMajorTwotone);
+    expect(banner.find(Icon).prop('source')).toBe(CircleAlertMajor);
     expect(banner.find(Icon).prop('color')).toBe('yellowDark');
     expect(banner.find('div').first().prop('role')).toBe('alert');
   });
 
   it('uses a redDark circleBarred if status is critical and sets an alert aria role', () => {
     const banner = mountWithAppProvider(<Banner status="critical" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleDisabledMajorTwotone);
+    expect(banner.find(Icon).prop('source')).toBe(CircleDisabledMajor);
     expect(banner.find(Icon).prop('color')).toBe('redDark');
     expect(banner.find('div').first().prop('role')).toBe('alert');
   });
 
   it('uses a default icon and aria role', () => {
     const banner = mountWithAppProvider(<Banner />);
-    expect(banner.find(Icon).prop('source')).toBe(FlagMajorTwotone);
+    expect(banner.find(Icon).prop('source')).toBe(FlagMajor);
     expect(banner.find(Icon).prop('color')).toBe('inkLighter');
     expect(banner.find('div').first().prop('role')).toBe('status');
   });
@@ -221,35 +215,20 @@ describe('<Banner />', () => {
 
   describe('Icon', () => {
     it.each([
-      [
-        'Banner has a default status',
-        null,
-        'base',
-        CircleInformationMajorFilled,
-      ],
-      [
-        'Banner has a success status',
-        'success',
-        'success',
-        CircleTickMajorFilled,
-      ],
+      ['Banner has a default status', null, 'base', CircleInformationMajor],
+      ['Banner has a success status', 'success', 'success', CircleTickMajor],
       [
         'Banner has an info status',
         'info',
         'highlight',
-        CircleInformationMajorFilled,
+        CircleInformationMajor,
       ],
-      [
-        'Banner has a warning status',
-        'warning',
-        'warning',
-        CircleAlertMajorFilled,
-      ],
+      ['Banner has a warning status', 'warning', 'warning', CircleAlertMajor],
       [
         'Banner has a critical status',
         'critical',
         'critical',
-        CircleDisabledMajorFilled,
+        CircleDisabledMajor,
       ],
     ])(
       'Sets Icon props when: %s',

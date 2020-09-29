@@ -1,5 +1,5 @@
 import React from 'react';
-import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
+import {MobileCancelMajor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
@@ -26,7 +26,7 @@ export function CloseButton({title = true, onClick}: CloseButtonProps) {
       className={className}
       aria-label={i18n.translate('Polaris.Common.close')}
     >
-      <Icon source={MobileCancelMajorMonotone} color="inkLighter" />
+      <Icon source={MobileCancelMajor} color="inkLighter" />
     </button>
   );
 }
