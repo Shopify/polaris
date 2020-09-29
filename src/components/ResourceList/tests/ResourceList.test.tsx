@@ -58,11 +58,20 @@ describe('<ResourceList />', () => {
       expect(resourceList.find('li')).toHaveLength(3);
     });
 
-    it('renders custom markup', () => {
+    it.only('renders custom markup and warns user', () => {
+      process.env.NODE_ENV = 'development';
+      const warningSpy = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(() => {});
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderCustomMarkup} />,
       );
       expect(resourceList.find('li').first().text()).toBe('title 1');
+      expect(warningSpy).toHaveBeenCalledWith(
+        '<ResourceList /> renderItem function should return a <ResourceItem />.',
+      );
+      warningSpy.mockRestore();
+      delete process.env.NODE_ENV;
     });
   });
 

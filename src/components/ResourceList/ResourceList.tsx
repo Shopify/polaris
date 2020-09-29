@@ -11,6 +11,7 @@ import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
 import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
+import {isElementOfType} from '../../utilities/components';
 import {Button} from '../Button';
 import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
@@ -102,7 +103,7 @@ export interface ResourceListProps<ItemType = any> {
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
   onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
-  /** Function to render each list item   */
+  /** Function to render each list item, must return a ResourceItem component */
   renderItem(item: ItemType, id: string, index: number): React.ReactNode;
   /** Function to customize the unique ID for each item */
   idForItem?(item: ItemType, index: number): string;
@@ -400,7 +401,18 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const renderItemWithId = (item: ItemType, index: number) => {
     const id = idForItem(item, index);
 
-    return renderItem(item, id, index);
+    const itemContent = renderItem(item, id, index);
+
+    if (
+      process.env.NODE_ENV === 'development' &&
+      !isElementOfType(itemContent, ResourceItem)
+    ) {
+      console.warn(
+        '<ResourceList /> renderItem function should return a <ResourceItem />.',
+      );
+    }
+
+    return itemContent;
   };
 
   const handleMultiSelectionChange = (
