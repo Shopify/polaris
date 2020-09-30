@@ -204,6 +204,9 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .hasDismiss {
+  &.newDesignLanguage {
+    padding-right: spacing() + spacing(extra-tight) + control-height();
+  }
   padding-right: spacing() + spacing(extra-tight) + control-height();
 }
 
