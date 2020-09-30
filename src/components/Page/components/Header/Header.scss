@@ -64,6 +64,12 @@ $action-menu-rollup-computed-width: rem(40px);
     button {
       border: 1px solid var(--p-border-neutral-subdued);
       box-shadow: none;
+      // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
+      &:hover,
+      &:active,
+      &:focus {
+        border: 1px solid var(--p-border-neutral-subdued);
+      }
     }
   }
 }
