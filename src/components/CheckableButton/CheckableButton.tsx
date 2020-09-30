@@ -1,13 +1,13 @@
 import React, {useContext, useRef, useEffect} from 'react';
 
-import type {CheckboxHandles} from '../../../../types';
-import {useFeatures} from '../../../../utilities/features';
-import {classNames} from '../../../../utilities/css';
-import {Checkbox} from '../../../Checkbox';
+import type {CheckboxHandles} from '../../types';
+import {useFeatures} from '../../utilities/features';
+import {classNames} from '../../utilities/css';
+import {Checkbox} from '../Checkbox';
 import {
   ResourceListContext,
   CheckableButtonKey,
-} from '../../../../utilities/resource-list';
+} from '../../utilities/resource-list';
 
 import styles from './CheckableButton.scss';
 

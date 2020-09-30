@@ -1,9 +1,9 @@
-@import '../../../../styles/common';
-@import '../../variables';
+@import '../../styles/common';
 
-$button-vertical-padding: (
-    resource-list(button-min-height) - line-height(body) - rem(2px)
-  ) / 2;
+$button-min-height: control-height();
+
+$button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) /
+  2;
 $control-size: rem(16px);
 $chekbox-label-margin: rem(20px);
 
@@ -11,8 +11,8 @@ $chekbox-label-margin: rem(20px);
   @include text-style-button;
   display: flex;
   align-items: center;
-  min-height: resource-list(button-min-height);
-  min-width: resource-list(button-min-height);
+  min-height: $button-min-height;
+  min-width: $button-min-height;
   margin: 0;
   padding: $button-vertical-padding spacing();
   line-height: 1;
@@ -69,7 +69,7 @@ $chekbox-label-margin: rem(20px);
     }
   }
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @include page-after-resource-list-small {
     flex: 0 1 auto;
   }
 
@@ -100,8 +100,10 @@ $chekbox-label-margin: rem(20px);
   &.CheckableButton-selected {
     color: var(--p-text, color('indigo'));
 
-    @include breakpoint-after(resource-list(breakpoint-small)) {
-      border-color: color('sky', 'dark');
+    @include page-after-resource-list-small {
+      &:not(.newDesignLanguage) {
+        border-color: color('sky', 'dark');
+      }
     }
   }
 }
