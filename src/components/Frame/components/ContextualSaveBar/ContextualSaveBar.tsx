@@ -117,13 +117,15 @@ export function ContextualSaveBar({
       <ThemeProvider theme={{colorScheme: 'inverse'}}>
         <div className={contexualSaveBarClassName}>
           {logoMarkup}
-          <div className={contentsClassName}>
-            <h2 className={styles.Message}>{message}</h2>
-            <div className={styles.ActionContainer}>
-              <Stack spacing="tight" wrap={false}>
-                {discardActionMarkup}
-                {saveActionMarkup}
-              </Stack>
+          <div className={styles.ContentsWrapper}>
+            <div className={contentsClassName}>
+              <h2 className={styles.Message}>{message}</h2>
+              <div className={styles.ActionContainer}>
+                <Stack spacing="tight" wrap={false}>
+                  {discardActionMarkup}
+                  {saveActionMarkup}
+                </Stack>
+              </div>
             </div>
           </div>
         </div>

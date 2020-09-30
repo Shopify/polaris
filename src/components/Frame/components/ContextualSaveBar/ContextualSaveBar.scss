@@ -6,7 +6,7 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 .ContextualSaveBar {
   display: flex;
   height: top-bar-height();
-  background-color: color('white');
+  background-color: var(--p-override-transparent, color('white'));
   box-shadow: $shadow;
 
   &::after {
@@ -32,9 +32,12 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 }
 
+.ContentsWrapper {
+  flex: 1 1 auto;
+}
+
 .Contents {
   display: flex;
-  flex: 1 1 auto;
   align-items: center;
   justify-content: space-between;
   min-width: 1px;
@@ -73,7 +76,13 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .newDesignLanguage {
-  background: var(--p-surface);
+  .LogoContainer {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .ContentsWrapper {
+    background: var(--p-surface);
+  }
 
   .Message {
     color: var(--p-text);
