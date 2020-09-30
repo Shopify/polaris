@@ -91,7 +91,6 @@ $stacking-order: (
   }
 }
 
-// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
 .Content {
   @include text-style-button;
   position: relative;
@@ -790,3 +789,4 @@ $stacking-order: (
     @include button-full-width;
   }
 }
+// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
