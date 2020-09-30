@@ -458,14 +458,12 @@ $stacking-order: (
     &:hover {
       @include recolor-icon(var(--p-interactive-hovered));
       color: var(--p-interactive-hovered);
-      text-decoration: underline;
     }
 
     &:focus {
       @include recolor-icon(var(--p-interactive));
       color: var(--p-interactive);
       @include no-focus-ring;
-      text-decoration: underline;
     }
 
     &:active {
