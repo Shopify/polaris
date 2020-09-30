@@ -126,6 +126,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   padding: spacing(tight) $intermediate-spacing;
 
   &.newDesignLanguage {
+    --p-banner-border: none;
     $newDesignLanguageSpacing: rem(14px);
     $newDesignLanguageOffset: $newDesignLanguageSpacing - spacing();
     padding: spacing() spacing() $newDesignLanguageSpacing;
