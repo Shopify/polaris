@@ -55,7 +55,7 @@ describe('<Filters />', () => {
 
   it('renders WithinFilterContext with a value of true', () => {
     WithinFilterContext;
-    const filters = mountWithAppProvider(<Filters {...mockProps} />);
+    const filters = mountWithApp(<Filters {...mockProps} />);
 
     expect(filters).toContainReactComponentTimes(
       WithinFilterContext.Provider,
