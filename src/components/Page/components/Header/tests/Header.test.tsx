@@ -293,7 +293,7 @@ describe('<Header />', () => {
           features: {newDesignLanguage: true},
         },
       );
-      expect(header.find('.PrimaryActionWrapper')).toHaveLength(0);
+      expect(header.find('.PrimaryActionWrapper')).toHaveLength(1);
       expect(header.find('.ActionMenuWrapper')).toHaveLength(0);
     });
 

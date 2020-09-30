@@ -139,10 +139,7 @@ export function Header({
         )}
       >
         <ActionMenu
-          actions={[
-            ...secondaryActions,
-            (newDesignLanguage && primaryAction) || {},
-          ]}
+          actions={secondaryActions}
           groups={actionGroups}
           rollup={isNavigationCollapsed}
         />
