@@ -14,6 +14,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Updated `Toast` to use `currentColor` for the close icon ([#3324](https://github.com/Shopify/polaris-react/pull/3324))
 - Added `disclosureText` to `Tabs` ([#3331](https://github.com/Shopify/polaris-react/pull/3331))
 - Added underline to links on focus and active ([#3335](https://github.com/Shopify/polaris-react/pull/3335))
+- Removes border from `Banner` when it's in card ([#3345](https://github.com/Shopify/polaris-react/pull/3345))
 
 ### Bug fixes
 
