@@ -21,8 +21,6 @@ $partially-condensed-min-page: $partially-condensed-content +
 $nav-size: em(layout-width(nav));
 $nav-min-window: em(layout-width(page-with-nav));
 
-$resource-list-small: 458px;
-
 @function breakpoint($value, $adjustment: 0) {
   $adjusted-value: em($adjustment);
 
@@ -190,18 +188,6 @@ $resource-list-small: 458px;
 
 @mixin frame-when-nav-hidden() {
   @include breakpoint-before(layout-width(page-with-nav), false) {
-    @content;
-  }
-}
-
-@mixin page-before-resource-list-small() {
-  @include breakpoint-before($resource-list-small) {
-    @content;
-  }
-}
-
-@mixin page-after-resource-list-small() {
-  @include breakpoint-after($resource-list-small) {
     @content;
   }
 }
