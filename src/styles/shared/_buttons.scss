@@ -247,24 +247,24 @@
     background: transparent;
     @include focus-ring($border-width: border-width('base'));
     border: none;
-    border: border-width() solid var(--p-border-subdued);
+    border: border-width() solid var(--p-border);
     box-shadow: none;
     color: var(--p-text);
 
     &:hover {
-      border: border-width() solid var(--p-border-subdued);
+      border: border-width() solid var(--p-border);
       box-shadow: none;
       background: var(--p-surface-hovered);
     }
 
     &:focus {
-      border: border-width() solid var(--p-border-subdued);
+      border: border-width() solid var(--p-border);
       box-shadow: none;
       @include focus-ring($style: 'focused');
     }
 
     &:active {
-      border: border-width() solid var(--p-border-subdued);
+      border: border-width() solid var(--p-border);
       box-shadow: none;
       background: var(--p-surface-pressed);
       &::after {
@@ -274,7 +274,7 @@
 
     &.pressed {
       background: var(--p-action-secondary-pressed);
-      border: border-width() solid var(--p-border-subdued);
+      border: border-width() solid var(--p-border);
       box-shadow: none;
       color: var(--p-button-text);
     }
