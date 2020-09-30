@@ -57,7 +57,7 @@ $actions-vertical-spacing: spacing(tight);
   padding: spacing(loose) spacing(loose) 0;
 
   &.newDesignLanguage {
-    padding: spacing() spacing(loose) 0;
+    padding: spacing() spacing() 0;
   }
 
   @include page-content-when-not-fully-condensed {

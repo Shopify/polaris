@@ -135,6 +135,7 @@ export function Pagination({
 
   const prev = newDesignLanguage ? (
     <Button
+      outline
       icon={ChevronLeftMinor}
       accessibilityLabel={i18n.translate('Polaris.Pagination.previous')}
       url={previousURL}
@@ -156,6 +157,7 @@ export function Pagination({
 
   const next = newDesignLanguage ? (
     <Button
+      outline
       icon={ChevronRightMinor}
       accessibilityLabel={i18n.translate('Polaris.Pagination.next')}
       url={nextURL}

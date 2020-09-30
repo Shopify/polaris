@@ -2,6 +2,7 @@ export const Tokens = {
   // Border Radiuses
   borderRadiusBase: rem('4px'),
   borderRadiusWide: rem('8px'),
+  borderRadiusFull: '50%',
 
   // Shadows
   cardShadow:
