@@ -103,8 +103,7 @@ export function Actions({actions = [], groups = []}: Props) {
         setHiddenActions((hiddenActions) => [...hiddenActions, action]);
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [availableWidth]);
+  }, [actionWidths, actions, availableWidth, newDesignLanguage]);
 
   const className = classNames(
     styles.ActionsLayout,
