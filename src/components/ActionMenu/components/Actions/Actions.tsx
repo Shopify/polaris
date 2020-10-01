@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import debounce from 'lodash/debounce';
 
 import {sortAndOverrideActionOrder} from '../../utilities';
@@ -57,17 +57,17 @@ export function Actions({actions = [], groups = []}: Props) {
     [],
   );
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleResize = useCallback(
-    debounce(
-      () => {
-        if (!newDesignLanguage || !actionsLayoutRef.current) return;
-        setAvailableWidth(actionsLayoutRef.current.offsetWidth);
-      },
-      20,
-      {leading: false, trailing: true, maxWait: 40},
-    ),
-    [actionsLayoutRef],
+  const handleResize = useMemo(
+    () =>
+      debounce(
+        () => {
+          if (!newDesignLanguage || !actionsLayoutRef.current) return;
+          setAvailableWidth(actionsLayoutRef.current.offsetWidth);
+        },
+        20,
+        {leading: false, trailing: true, maxWait: 40},
+      ),
+    [newDesignLanguage],
   );
 
   useEffect(() => {
