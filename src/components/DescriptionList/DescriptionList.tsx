@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {classNames} from '../../utilities/css';
+
 import styles from './DescriptionList.scss';
 
 interface Item {
@@ -12,9 +14,14 @@ interface Item {
 export interface DescriptionListProps {
   /** Collection of items for list */
   items: Item[];
+  /** Determines the spacing between list items */
+  spacing: 'tight' | 'loose';
 }
 
-export function DescriptionList({items}: DescriptionListProps) {
+export function DescriptionList({
+  items,
+  spacing = 'loose',
+}: DescriptionListProps) {
   // There's no good key to give React so using the index is a last resport.
   // we can't use the term/description value as it may be a react component
   // which can't be stringified
@@ -31,5 +38,10 @@ export function DescriptionList({items}: DescriptionListProps) {
     [],
   );
 
-  return <dl className={styles.DescriptionList}>{terms}</dl>;
+  const className = classNames(
+    styles.DescriptionList,
+    spacing === 'tight' && styles.spacingTight,
+  );
+
+  return <dl className={className}>{terms}</dl>;
 }
