@@ -15,7 +15,7 @@ export interface DescriptionListProps {
   /** Collection of items for list */
   items: Item[];
   /** Determines the spacing between list items */
-  spacing: 'tight' | 'loose';
+  spacing?: 'tight' | 'loose';
 }
 
 export function DescriptionList({
