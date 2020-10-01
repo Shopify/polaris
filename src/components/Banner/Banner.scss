@@ -125,16 +125,29 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 .withinContentContainer {
   padding: spacing(tight) $intermediate-spacing;
 
+  // stylelint-disable selector-max-specificity
   &.newDesignLanguage {
     $newDesignLanguageSpacing: rem(14px);
     $newDesignLanguageOffset: $newDesignLanguageSpacing - spacing();
     padding: spacing() spacing() $newDesignLanguageSpacing;
 
-    // stylelint-disable-next-line selector-max-class
+    &.hasDismiss {
+      padding-right: calc(#{2 * spacing()} + var(--p-icon-size));
+    }
+
     .ContentWrapper {
       margin-top: $newDesignLanguageOffset;
     }
+
+    .Dismiss {
+      top: spacing();
+    }
+
+    .Ribbon {
+      padding-right: spacing();
+    }
   }
+  // stylelint-enable selector-max-specificity
 
   @include banner-variants;
 
