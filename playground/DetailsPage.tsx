@@ -2,6 +2,7 @@ import React, {useCallback, useRef, useState} from 'react';
 import {
   CirclePlusMinor,
   DuplicateMinor,
+  PrintMinor,
   ViewMinor,
   HomeMajor,
   OrdersMajor,
@@ -459,8 +460,9 @@ export function DetailsPage() {
   const actualPageMarkup = (
     <Page
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
-      title="M60-A"
+      title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
       titleMetadata={<Badge status="success">Success badge</Badge>}
+      additionalMetaData="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
       secondaryActions={[
         {
           content: 'Duplicate',
@@ -470,12 +472,12 @@ export function DetailsPage() {
           content: 'View',
           icon: ViewMinor,
         },
+        {
+          content: 'Print',
+          icon: PrintMinor,
+        },
       ]}
       actionGroups={[
-        {
-          title: 'Promote',
-          actions: [{content: 'Share on Facebook'}],
-        },
         {
           title: 'More actions',
           actions: [{content: 'Embed on a website'}],
