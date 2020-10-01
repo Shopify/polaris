@@ -2,6 +2,7 @@ export const Tokens = {
   // Border Radiuses
   borderRadiusBase: rem('4px'),
   borderRadiusWide: rem('8px'),
+  borderRadiusFull: '50%',
 
   // Shadows
   cardShadow:
@@ -38,8 +39,7 @@ export const Tokens = {
   textFieldSpinnerOffset: rem('2px'),
   textFieldFocusRingOffset: rem('-4px'),
   textFieldFocusRingBorderRadius: rem('7px'),
-  buttonGroupItemSpacing: rem('2px'),
-  contextualSaveBarHeight: '64px',
+  buttonGroupItemSpacing: rem('-1px'),
   duration100: '100ms',
   duration150: '150ms',
   easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',

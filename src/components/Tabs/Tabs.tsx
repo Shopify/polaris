@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {HorizontalDotsMinor} from '@shopify/polaris-icons';
+import {HorizontalDotsMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
@@ -21,6 +21,8 @@ export interface TabsProps {
   tabs: TabDescriptor[];
   /** Fit tabs to container */
   fitted?: boolean;
+  /** Text to replace disclosures horizontal dots */
+  disclosureText?: string;
   /** Callback when tab is selected */
   onSelect?(selectedTabIndex: number): void;
 }
@@ -69,7 +71,15 @@ class TabsInner extends PureComponent<CombinedProps, State> {
   };
 
   render() {
-    const {tabs, selected, fitted, children, i18n, features} = this.props;
+    const {
+      tabs,
+      selected,
+      fitted,
+      children,
+      i18n,
+      features,
+      disclosureText,
+    } = this.props;
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
     const {newDesignLanguage} = features;
@@ -100,6 +110,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       .map((tabIndex) => this.renderTabMarkup(tabs[tabIndex], tabIndex));
 
     const disclosureActivatorVisible = visibleTabs.length < tabs.length;
+    const hasCustomDisclosure = Boolean(disclosureText);
 
     const classname = classNames(
       styles.Tabs,
@@ -118,17 +129,47 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       disclosureActivatorVisible && styles['DisclosureTab-visible'],
     );
 
-    const activator = (
+    const disclosureActivatorClassName = classNames(
+      styles.TabContainer,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
+    const disclosureButtonClassName = classNames(
+      styles.DisclosureActivator,
+      hasCustomDisclosure && styles.Tab,
+    );
+
+    const disclosureButtonContentWrapperClassName = classNames(
+      styles.Title,
+      hasCustomDisclosure && styles.titleWithIcon,
+    );
+
+    const disclosureButtonContent = hasCustomDisclosure ? (
+      <>
+        {disclosureText}
+        <Icon source={CaretDownMinor} color="inkLighter" />
+      </>
+    ) : (
+      <Icon source={HorizontalDotsMinor} />
+    );
+
+    const disclosureButton = (
       <button
         type="button"
-        className={styles.DisclosureActivator}
+        className={disclosureButtonClassName}
         onClick={this.handleDisclosureActivatorClick}
         aria-label={i18n.translate('Polaris.Tabs.toggleTabsLabel')}
       >
-        <span className={styles.Title}>
-          <Icon source={HorizontalDotsMinor} />
+        <span className={disclosureButtonContentWrapperClassName}>
+          {disclosureButtonContent}
         </span>
       </button>
+    );
+
+    const activator = disclosureText ? (
+      <div className={disclosureActivatorClassName}>{disclosureButton}</div>
+    ) : (
+      disclosureButton
     );
 
     return (

@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from 'react';
-import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
+import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
@@ -10,6 +10,7 @@ import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {EventListener} from '../EventListener';
 import {Backdrop} from '../Backdrop';
+import {Button} from '../Button';
 import {TrapFocus} from '../TrapFocus';
 import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/set-root-property';
@@ -160,7 +161,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
               )}
               tabIndex={tabIndex}
             >
-              <Icon source={MobileCancelMajorMonotone} />
+              <Icon source={MobileCancelMajor} />
             </button>
           </div>
         </CSSTransition>
@@ -174,16 +175,11 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         </div>
       ) : null;
 
-    const contextualSaveBarClassName = classNames(
-      styles.ContextualSaveBar,
-      newDesignLanguage && styles['ContextualSaveBar-newDesignLanguage'],
-    );
-
     const contextualSaveBarMarkup = (
       <CSSAnimation
         in={showContextualSaveBar}
-        className={contextualSaveBarClassName}
-        type={newDesignLanguage ? 'fadeUp' : 'fade'}
+        className={styles.ContextualSaveBar}
+        type="fade"
       >
         <ContextualSaveBar {...this.contextualSaveBar} />
       </CSSAnimation>
@@ -230,15 +226,14 @@ class FrameInner extends PureComponent<CombinedProps, State> {
 
     const skipMarkup = (
       <div className={skipClassName}>
-        <a
-          href={`#${skipTarget}`}
+        <Button
+          url={`#${skipTarget}`}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
-          className={styles.SkipAnchor}
         >
           {i18n.translate('Polaris.Frame.skipToContent')}
-        </a>
+        </Button>
       </div>
     );
 

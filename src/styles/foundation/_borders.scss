@@ -2,6 +2,7 @@ $borders-data: (
   base: border-width() solid var(--p-border-subdued, color('sky')),
   dark: border-width() solid var(--p-border, color('sky', 'dark')),
   transparent: border-width() solid transparent,
+  divider: border-width() solid var(--p-divider, color('sky')),
 );
 
 /// Returns the default border.

@@ -230,3 +230,57 @@ function TabsWithBadgeExample() {
   );
 }
 ```
+
+### Tabs with custom disclosure
+
+Use to provide information about the popover contents
+
+```jsx
+function TabsWithCustomDisclosureExample() {
+  const [selected, setSelected] = useState(0);
+
+  const handleTabChange = useCallback(
+    (selectedTabIndex) => setSelected(selectedTabIndex),
+    [],
+  );
+
+  const tabs = [
+    {
+      id: 'all-customers',
+      content: 'All',
+      accessibilityLabel: 'All customers',
+      panelID: 'all-customers-content',
+    },
+    {
+      id: 'accepts-marketing',
+      content: 'Accepts marketing',
+      panelID: 'accepts-marketing-content',
+    },
+    {
+      id: 'repeat-customers',
+      content: 'Repeat customers',
+      panelID: 'repeat-customers-content',
+    },
+    {
+      id: 'prospects',
+      content: 'Prospects',
+      panelID: 'prospects-content',
+    },
+  ];
+
+  return (
+    <Card>
+      <Tabs
+        tabs={tabs}
+        selected={selected}
+        onSelect={handleTabChange}
+        disclosureText="More views"
+      >
+        <Card.Section title={tabs[selected].content}>
+          <p>Tab {selected} selected</p>
+        </Card.Section>
+      </Tabs>
+    </Card>
+  );
+}
+```

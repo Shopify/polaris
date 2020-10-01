@@ -194,7 +194,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       positioning === 'above' && styles.positionedAbove,
       fullWidth && styles.fullWidth,
       measuring && styles.measuring,
-      hideOnPrint && styles.hideOnPrint,
+      hideOnPrint && styles['PopoverOverlay-hideOnPrint'],
     );
 
     const contentStyles = measuring ? undefined : {height: desiredHeight};

@@ -512,7 +512,7 @@ Banners inside of the navigation render with less spacing and a pared-back desig
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: HomeMajorMonotone,
+        icon: HomeMajor,
       },
     ]}
   />

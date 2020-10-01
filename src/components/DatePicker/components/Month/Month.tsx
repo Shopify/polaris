@@ -136,20 +136,23 @@ export function Month({
   }
 
   const weeksMarkup = weeks.map((week, index) => (
-    <div role="row" className={styles.Week} key={index}>
+    <tr className={styles.Week} key={index}>
       {week.map(renderWeek)}
-    </div>
+    </tr>
   ));
 
   return (
-    <div role="grid" className={styles.Month}>
-      <div className={className}>
-        {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)} {year}
-      </div>
-      <div role="rowheader" className={styles.WeekHeadings}>
-        {weekdays}
-      </div>
-      {weeksMarkup}
+    <div className={styles.MonthContainer}>
+      <table role="grid" className={styles.Month}>
+        <caption className={className}>
+          {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)}{' '}
+          {year}
+        </caption>
+        <thead>
+          <tr className={styles.WeekHeadings}>{weekdays}</tr>
+        </thead>
+        <tbody>{weeksMarkup}</tbody>
+      </table>
     </div>
   );
 }

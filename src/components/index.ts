@@ -32,6 +32,9 @@ export type {BannerProps, BannerStatus} from './Banner';
 export {Breadcrumbs} from './Breadcrumbs';
 export type {BreadcrumbsProps} from './Breadcrumbs';
 
+export {BulkActions as UnstableBulkActions} from './BulkActions';
+export type {BulkActionsProps as UnstableBulkActionsProps} from './BulkActions';
+
 export {Button, buttonFrom, buttonsFrom} from './Button';
 export type {ButtonProps} from './Button';
 

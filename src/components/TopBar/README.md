@@ -180,7 +180,7 @@ function TopBarExample() {
   const theme = {
     colors: {
       topBar: {
-        background: '#357997',
+        background: '#225062',
       },
     },
     logo: {
@@ -234,7 +234,7 @@ function TopBarExample() {
     <TopBar.Menu
       activatorContent={
         <span>
-          <Icon source={QuestionMarkMajorTwotone} />
+          <Icon source={QuestionMarkMajor} />
           <VisuallyHidden>Secondary menu</VisuallyHidden>
         </span>
       }

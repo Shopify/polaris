@@ -18,7 +18,8 @@ import {
 } from 'test-utilities/legacy';
 import {SELECT_ALL_ITEMS} from 'utilities/resource-list';
 
-import {BulkActions, CheckableButton} from '../components';
+import {BulkActions} from '../../BulkActions';
+import {CheckableButton} from '../../CheckableButton';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
@@ -58,13 +59,20 @@ describe('<ResourceList />', () => {
       expect(resourceList.find('li')).toHaveLength(3);
     });
 
-    it('renders custom markup', () => {
+    it('renders custom markup and warns user', () => {
+      process.env.NODE_ENV = 'development';
+      const warningSpy = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(() => {});
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderCustomMarkup} />,
       );
-      expect(resourceList.find('li').first().children().html()).toBe(
-        '<p>title 1</p>',
+      expect(resourceList.find('li').first().text()).toBe('title 1');
+      expect(warningSpy).toHaveBeenCalledWith(
+        '<ResourceList /> renderItem function should return a <ResourceItem />.',
       );
+      warningSpy.mockRestore();
+      delete process.env.NODE_ENV;
     });
   });
 
@@ -1289,7 +1297,7 @@ function idForItem(item: any) {
 }
 
 function renderCustomMarkup(item: any) {
-  return <p>{item.title}</p>;
+  return <li key={item.id}>{item.title}</li>;
 }
 
 function renderItem(item: any, id: any, index: number) {

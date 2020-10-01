@@ -91,42 +91,6 @@ $stacking-order: (
   }
 }
 
-// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
-[data-buttongroup-segmented='true'] {
-  .Button,
-  .Button::after {
-    border-radius: 0;
-  }
-  > :first-child .Button,
-  > :first-child .Button::after {
-    border-top-left-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
-  }
-  > :last-child .Button,
-  > :last-child .Button::after {
-    border-top-right-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
-  }
-}
-
-[data-buttongroup-connected-top='true'] {
-  > :first-child .Button,
-  > :first-child .Button::after {
-    border-top-left-radius: 0;
-  }
-
-  > :last-child .Button,
-  > :last-child .Button::after {
-    border-top-right-radius: 0;
-  }
-}
-
-[data-buttongroup-full-width='true'] {
-  .Button {
-    @include button-full-width;
-  }
-}
-// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
 .Content {
   @include text-style-button;
   position: relative;
@@ -197,6 +161,13 @@ $stacking-order: (
 
   &.disabled {
     @include button-filled-disabled(color('indigo'));
+    // stylelint-disable-next-line selector-max-class
+    &.newDesignLanguage {
+      @include recolor-icon(var(--p-icon-disabled));
+      background: var(--p-action-primary-disabled);
+      color: var(--p-text-disabled);
+      border-color: transparent;
+    }
   }
 
   &.pressed {
@@ -220,6 +191,13 @@ $stacking-order: (
 
   &.disabled {
     @include button-filled-disabled(color('red'));
+    // stylelint-disable-next-line selector-max-class
+    &.newDesignLanguage {
+      @include recolor-icon(var(--p-icon-disabled));
+      background: var(--p-action-critical-disabled);
+      color: var(--p-text-disabled);
+      border-color: transparent;
+    }
   }
 
   &.pressed {
@@ -444,14 +422,12 @@ $stacking-order: (
     &:hover {
       @include recolor-icon(var(--p-interactive-hovered));
       color: var(--p-interactive-hovered);
-      text-decoration: underline;
     }
 
     &:focus {
       @include recolor-icon(var(--p-interactive));
       color: var(--p-interactive);
       @include no-focus-ring;
-      text-decoration: underline;
     }
 
     &:active {
@@ -659,6 +635,7 @@ $stacking-order: (
   &.outline {
     position: relative;
     border-color: currentColor;
+    // stylelint-disable selector-max-class
 
     &::before {
       content: '';
@@ -673,12 +650,10 @@ $stacking-order: (
       z-index: 0;
     }
 
-    // stylelint-disable-next-line selector-max-class
     &.pressed {
       background: transparent;
       box-shadow: none;
 
-      // stylelint-disable selector-max-class
       &::before {
         opacity: 0.05;
       }
@@ -700,6 +675,7 @@ $stacking-order: (
 
     &.newDesignLanguage {
       @include focus-ring($border-width: border-width('base'));
+      border-color: currentColor;
       box-shadow: 0 0 0 border-width('base') currentColor;
 
       &:focus {
@@ -774,3 +750,41 @@ $stacking-order: (
     }
   }
 }
+// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+[data-buttongroup-segmented='true'] {
+  .Button,
+  .Button::after {
+    border-radius: 0;
+  }
+  > :first-child .Button,
+  > :first-child .Button::after {
+    border-radius: 0;
+    border-top-left-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  }
+  > :last-child .Button,
+  > :last-child .Button::after {
+    border-radius: 0;
+    border-top-right-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
+  }
+}
+
+[data-buttongroup-connected-top='true'] {
+  > :first-child .Button,
+  > :first-child .Button::after {
+    border-top-left-radius: 0;
+  }
+
+  > :last-child .Button,
+  > :last-child .Button::after {
+    border-top-right-radius: 0;
+  }
+}
+
+[data-buttongroup-full-width='true'] {
+  .Button {
+    @include button-full-width;
+  }
+}
+// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity

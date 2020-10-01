@@ -212,12 +212,12 @@ function FrameExample() {
         items={[
           {
             label: 'Dashboard',
-            icon: HomeMajorMonotone,
+            icon: HomeMajor,
             onClick: toggleIsLoading,
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersMajorTwotone,
+            icon: OrdersMajor,
             onClick: toggleIsLoading,
           },
         ]}
@@ -312,7 +312,7 @@ function FrameExample() {
   const theme = {
     colors: {
       topBar: {
-        background: '#357997',
+        background: '#225062',
       },
     },
     logo: {
@@ -555,12 +555,12 @@ function FrameExample() {
         items={[
           {
             label: 'Dashboard',
-            icon: HomeMajorMonotone,
+            icon: HomeMajor,
             onClick: toggleIsLoading,
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersMajorTwotone,
+            icon: OrdersMajor,
             onClick: toggleIsLoading,
           },
         ]}
@@ -655,7 +655,7 @@ function FrameExample() {
   const theme = {
     colors: {
       topBar: {
-        background: '#357997',
+        background: '#225062',
       },
     },
     frameOffset: 60,

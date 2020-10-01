@@ -12,6 +12,7 @@ import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
 import {useFeatures} from '../../utilities/features';
 import {focusFirstFocusableNode} from '../../utilities/focus';
+import {WithinFilterContext} from '../../utilities/within-filter-context';
 import {Button} from '../Button';
 import {DisplayText} from '../DisplayText';
 import {Collapsible} from '../Collapsible';
@@ -416,14 +417,16 @@ class FiltersInner extends Component<CombinedProps, State> {
     ) : null;
 
     return (
-      <div className={styles.Filters}>
-        {filtersControlMarkup}
-        {filtersContainerMarkup}
-        {tagsMarkup}
-        {helpTextMarkup}
-        {backdropMarkup}
-        <KeypressListener keyCode={Key.Escape} handler={this.closeFilters} />
-      </div>
+      <WithinFilterContext.Provider value>
+        <div className={styles.Filters}>
+          {filtersControlMarkup}
+          {filtersContainerMarkup}
+          {tagsMarkup}
+          {helpTextMarkup}
+          {backdropMarkup}
+          <KeypressListener keyCode={Key.Escape} handler={this.closeFilters} />
+        </div>
+      </WithinFilterContext.Provider>
     );
   }
 
