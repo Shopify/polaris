@@ -32,7 +32,7 @@ export interface ContextualSaveBarProps {
   discardAction?: ContextualSaveBarCombinedActionProps;
   /** Remove the normal max-width on the contextual save bar */
   fullWidth?: boolean;
-  /** Accepts a component that is ideally used to help users switch between different contexts */
+  /** Accepts a component that is used to help users switch between different contexts */
   contextControl?: React.ReactNode;
 }
 
