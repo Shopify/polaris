@@ -27,8 +27,8 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     align-items: center;
     height: 100%;
     padding: 0 spacing();
-    border-right: 1px solid $off-white-border;
-    background-color: $off-white;
+    border-right: var(--p-override-none, 1px solid $off-white-border);
+    background-color: var(--p-override-transparent, $off-white);
   }
 }
 
@@ -72,11 +72,17 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-left: spacing(tight);
 }
 
+.ContextControl {
+  display: none;
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: block;
+    width: layout-width(nav);
+  }
+}
+
 .newDesignLanguage {
   background: var(--p-surface);
-  height: var(--p-contextual-save-bar-height);
-  margin: spacing(tight);
-  border-radius: var(--p-border-radius-wide);
 
   &::after {
     border-bottom: none;
@@ -87,21 +93,12 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .LogoContainer {
-    display: none;
+    border-right: none;
   }
 
-  .Contents {
-    margin: 0;
-    padding: 0 spacing();
-    max-width: 100%;
-
-    @include page-content-when-not-fully-condensed {
-      padding: 0 spacing();
-    }
-
-    @include page-content-when-not-partially-condensed {
-      padding: 0 spacing();
-    }
+  .ContextControl {
+    opacity: 0.3;
+    // pointer-events: none;
   }
 
   .Message {

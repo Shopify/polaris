@@ -282,7 +282,6 @@ Used to decorate elements where color does convey a specific meaning in componen
 | `--p-text-field-focus-ring-offset`        | `-0.4rem`                                                                                                    |
 | `--p-text-field-focus-ring-border-radius` | `0.7rem`                                                                                                     |
 | `--p-button-group-item-spacing`           | `-0.1rem`                                                                                                    |
-| `--p-contextual-save-bar-height`          | `64px`                                                                                                       |
 | `--p-duration-1-0-0`                      | `100ms`                                                                                                      |
 | `--p-duration-1-5-0`                      | `150ms`                                                                                                      |
 | `--p-ease-in`                             | `cubic-bezier(0.5, 0.1, 1, 1)`                                                                               |
