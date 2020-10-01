@@ -125,7 +125,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 .withinContentContainer {
   padding: spacing(tight) $intermediate-spacing;
 
-  // stylelint-disable selector-max-specificity
+  // stylelint-disable selector-max-class
   &.newDesignLanguage {
     $newDesignLanguageSpacing: rem(14px);
     $newDesignLanguageOffset: $newDesignLanguageSpacing - spacing();
@@ -147,7 +147,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
       padding-right: spacing();
     }
   }
-  // stylelint-enable selector-max-specificity
+  // stylelint-enable selector-max-class
 
   @include banner-variants;
 
