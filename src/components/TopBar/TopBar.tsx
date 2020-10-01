@@ -24,7 +24,7 @@ export interface TopBarProps {
   userMenu?: React.ReactNode;
   /** Accepts a menu component that is made available as a static member of the top bar component */
   secondaryMenu?: React.ReactNode;
-  /** Accepts a component that is ideally used to help users switch between different contexts */
+  /** Accepts a component that is used to help users switch between different contexts */
   contextControl?: React.ReactNode;
   /** Accepts a search field component that is made available as a `TextField` static member of the top bar component */
   searchField?: React.ReactNode;

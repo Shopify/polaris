@@ -175,16 +175,11 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         </div>
       ) : null;
 
-    const contextualSaveBarClassName = classNames(
-      styles.ContextualSaveBar,
-      newDesignLanguage && styles['ContextualSaveBar-newDesignLanguage'],
-    );
-
     const contextualSaveBarMarkup = (
       <CSSAnimation
         in={showContextualSaveBar}
-        className={contextualSaveBarClassName}
-        type={newDesignLanguage ? 'fadeUp' : 'fade'}
+        className={styles.ContextualSaveBar}
+        type="fade"
       >
         <ContextualSaveBar {...this.contextualSaveBar} />
       </CSSAnimation>
