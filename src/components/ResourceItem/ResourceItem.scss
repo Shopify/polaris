@@ -49,8 +49,8 @@ $resource-list-item-variables: (
   &:hover {
     &:not(.newDesignLanguage) {
       background-image: linear-gradient(
-        rgba(223, 227, 232, 0.3),
-        rgba(223, 227, 232, 0.3)
+        rgba(color('indigo', 'lighter'), 0.3),
+        rgba(color('indigo', 'lighter'), 0.3)
       );
     }
 
@@ -69,78 +69,99 @@ $resource-list-item-variables: (
 
   &:active:not(.newDesignLanguage) {
     background-image: linear-gradient(
-      rgba(179, 188, 245, 0.1),
-      rgba(179, 188, 245, 0.1)
+      rgba(color('indigo', 'light'), 0.1),
+      rgba(color('indigo', 'light'), 0.1)
     );
   }
 }
 
 .selected:not(.newDesignLanguage) {
   background-image: linear-gradient(
-    rgba(179, 188, 245, 0.15),
-    rgba(179, 188, 245, 0.15)
+    rgba(color('indigo', 'light'), 0.15),
+    rgba(color('indigo', 'light'), 0.15)
   );
 
   &.focused {
     box-shadow: inset 0.2rem 0 0 color('indigo');
     background-image: linear-gradient(
-        rgba(179, 188, 245, 0.15),
-        rgba(179, 188, 245, 0.15)
+        rgba(color('indigo', 'light'), 0.15),
+        rgba(color('indigo', 'light'), 0.15)
       ),
-      linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
+      linear-gradient(
+        rgba(color('indigo', 'lighter'), 0.3),
+        rgba(color('indigo', 'lighter'), 0.3)
+      );
 
     // stylelint-disable-next-line selector-max-specificity
     &:hover {
       box-shadow: inset 0.2rem 0 0 color('indigo');
       background-image: linear-gradient(
-          rgba(179, 188, 245, 0.15),
-          rgba(179, 188, 245, 0.15)
+          rgba(color('indigo', 'light'), 0.15),
+          rgba(color('indigo', 'light'), 0.15)
         ),
-        linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3)),
-        linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
+        linear-gradient(
+          rgba(color('indigo', 'lighter'), 0.3),
+          rgba(color('indigo', 'lighter'), 0.3)
+        ),
+        linear-gradient(
+          rgba(color('indigo', 'lighter'), 0.3),
+          rgba(color('indigo', 'lighter'), 0.3)
+        );
     }
   }
 
   &:hover {
     background-image: linear-gradient(
-        rgba(179, 188, 245, 0.15),
-        rgba(179, 188, 245, 0.15)
+        rgba(color('indigo', 'light'), 0.15),
+        rgba(color('indigo', 'light'), 0.15)
       ),
-      linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
+      linear-gradient(
+        rgba(color('indigo', 'lighter'), 0.3),
+        rgba(color('indigo', 'lighter'), 0.3)
+      );
   }
 
   &:active {
     background-image: linear-gradient(
-        rgba(179, 188, 245, 0.15),
-        rgba(179, 188, 245, 0.15)
+        rgba(color('indigo', 'light'), 0.15),
+        rgba(color('indigo', 'light'), 0.15)
       ),
-      linear-gradient(rgba(179, 188, 245, 0.1), rgba(179, 188, 245, 0.1));
+      linear-gradient(
+        rgba(color('indigo', 'light'), 0.1),
+        rgba(color('indigo', 'light'), 0.1)
+      );
   }
 }
 
 .focused:not(.newDesignLanguage) {
   box-shadow: inset 0.2rem 0 0 color('indigo');
   background-image: linear-gradient(
-    rgba(223, 227, 232, 0.3),
-    rgba(223, 227, 232, 0.3)
+    rgba(color('indigo', 'lighter'), 0.3),
+    rgba(color('indigo', 'lighter'), 0.3)
   );
 
   &:hover {
     box-shadow: inset 0.2rem 0 0 color('indigo');
     background-image: linear-gradient(
-        rgba(223, 227, 232, 0.3),
-        rgba(223, 227, 232, 0.3)
+        rgba(color('indigo', 'lighter'), 0.3),
+        rgba(color('indigo', 'lighter'), 0.3)
       ),
-      linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
+      linear-gradient(
+        rgba(color('indigo', 'lighter'), 0.3),
+        rgba(color('indigo', 'lighter'), 0.3)
+      );
   }
 
   &:active {
     box-shadow: inset 0.2rem 0 0 color('indigo');
     background-image: linear-gradient(
-        rgba(223, 227, 232, 0.3),
-        rgba(223, 227, 232, 0.3)
+        rgba(color('indigo', 'lighter'), 0.3),
+        rgba(color('indigo', 'lighter'), 0.3)
       ),
-      linear-gradient(rgba(179, 188, 245, 0.1), rgba(179, 188, 245, 0.1));
+      linear-gradient(
+        rgba(color('indigo', 'light'), 0.1),
+        rgba(color('indigo', 'light'), 0.1)
+      );
   }
 }
 
