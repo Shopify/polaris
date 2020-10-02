@@ -1,4 +1,10 @@
-import React, {PureComponent, createRef} from 'react';
+import React, {
+  forwardRef,
+  useRef,
+  useState,
+  useContext,
+  useImperativeHandle,
+} from 'react';
 import {
   CancelSmallMinor,
   CircleTickMajorTwotone,
@@ -12,9 +18,10 @@ import {
   CircleDisabledMajorFilled,
 } from '@shopify/polaris-icons';
 
-import {FeaturesContext} from '../../utilities/features';
-import {BannerContext} from '../../utilities/banner-context';
 import {classNames, variationName} from '../../utilities/css';
+import {BannerContext} from '../../utilities/banner-context';
+import {useFeatures} from '../../utilities/features';
+import {useUniqueId} from '../../utilities/unique-id';
 import type {
   Action,
   DisableableAction,
@@ -31,10 +38,6 @@ import {WithinContentContext} from '../../utilities/within-content-context';
 import styles from './Banner.scss';
 
 export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
-
-interface State {
-  showFocus: boolean;
-}
 
 export interface BannerProps {
   /** Title content for the banner. */
@@ -55,202 +58,127 @@ export interface BannerProps {
   stopAnnouncements?: boolean;
 }
 
-export class Banner extends PureComponent<BannerProps, State> {
-  static contextType = FeaturesContext;
-  context!: React.ContextType<typeof FeaturesContext>;
+export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
+  {
+    icon,
+    action,
+    secondaryAction,
+    title,
+    children,
+    status,
+    onDismiss,
+    stopAnnouncements,
+  }: BannerProps,
+  bannerRef,
+) {
+  const {newDesignLanguage} = useFeatures();
+  const withinContentContainer = useContext(WithinContentContext);
+  const buttonSizeValue = withinContentContainer ? 'slim' : undefined;
+  const id = useUniqueId('Banner');
+  const {
+    wrapperRef,
+    handleKeyUp,
+    handleBlur,
+    handleMouseUp,
+    shouldShowFocus,
+  } = useBannerFocus(bannerRef);
+  const {defaultIcon, iconColor, ariaRoleType} = useBannerAttributes(
+    status,
+    newDesignLanguage,
+  );
+  const iconName = icon || defaultIcon;
+  const className = classNames(
+    styles.Banner,
+    status && styles[variationName('status', status)],
+    onDismiss && styles.hasDismiss,
+    shouldShowFocus && styles.keyFocused,
+    withinContentContainer ? styles.withinContentContainer : styles.withinPage,
+    newDesignLanguage && styles.newDesignLanguage,
+  );
 
-  state: State = {
-    showFocus: false,
-  };
+  let headingMarkup: React.ReactNode = null;
+  let headingID: string | undefined;
 
-  private wrapper = createRef<HTMLDivElement>();
-
-  public focus() {
-    this.wrapper.current && this.wrapper.current.focus();
-    this.setState({showFocus: true});
-  }
-
-  render() {
-    const {newDesignLanguage} = this.context || {};
-    const {showFocus} = this.state;
-
-    const handleKeyUp = (evt: React.KeyboardEvent<HTMLDivElement>) => {
-      if (evt.target === this.wrapper.current) {
-        this.setState({showFocus: true});
-      }
-    };
-
-    const handleBlur = () => {
-      this.setState({showFocus: false});
-    };
-
-    const handleMouseUp = ({
-      currentTarget,
-    }: React.MouseEvent<HTMLDivElement>) => {
-      const {showFocus} = this.state;
-      currentTarget.blur();
-      showFocus && this.setState({showFocus: false});
-    };
-
-    return (
-      <BannerContext.Provider value>
-        <WithinContentContext.Consumer>
-          {(withinContentContainer) => {
-            const {
-              icon,
-              action,
-              secondaryAction,
-              title,
-              children,
-              status,
-              onDismiss,
-              stopAnnouncements,
-            } = this.props;
-            let color: IconProps['color'];
-            let defaultIcon: IconProps['source'];
-            let ariaRoleType = 'status';
-
-            switch (status) {
-              case 'success':
-                color = newDesignLanguage ? 'success' : 'greenDark';
-                defaultIcon = newDesignLanguage
-                  ? CircleTickMajorFilled
-                  : CircleTickMajorTwotone;
-                break;
-              case 'info':
-                color = newDesignLanguage ? 'highlight' : 'tealDark';
-                defaultIcon = newDesignLanguage
-                  ? CircleInformationMajorFilled
-                  : CircleInformationMajorTwotone;
-                break;
-              case 'warning':
-                color = newDesignLanguage ? 'warning' : 'yellowDark';
-                defaultIcon = newDesignLanguage
-                  ? CircleAlertMajorFilled
-                  : CircleAlertMajorTwotone;
-                ariaRoleType = 'alert';
-                break;
-              case 'critical':
-                color = newDesignLanguage ? 'critical' : 'redDark';
-                defaultIcon = newDesignLanguage
-                  ? CircleDisabledMajorFilled
-                  : CircleDisabledMajorTwotone;
-                ariaRoleType = 'alert';
-                break;
-              default:
-                color = newDesignLanguage ? 'base' : 'inkLighter';
-                defaultIcon = newDesignLanguage
-                  ? CircleInformationMajorFilled
-                  : FlagMajorTwotone;
-            }
-            const className = classNames(
-              styles.Banner,
-              status && styles[variationName('status', status)],
-              onDismiss && styles.hasDismiss,
-              showFocus && styles.keyFocused,
-              withinContentContainer
-                ? styles.withinContentContainer
-                : styles.withinPage,
-              newDesignLanguage && styles.newDesignLanguage,
-            );
-
-            const id = uniqueID();
-            const iconName = icon || defaultIcon;
-
-            let headingMarkup: React.ReactNode = null;
-            let headingID: string | undefined;
-
-            if (title) {
-              headingID = `${id}Heading`;
-              headingMarkup = (
-                <div className={styles.Heading} id={headingID}>
-                  <Heading element="p">{title}</Heading>
-                </div>
-              );
-            }
-
-            const buttonSizeValue = withinContentContainer ? 'slim' : undefined;
-
-            const secondaryActionMarkup = secondaryAction
-              ? secondaryActionFrom(secondaryAction)
-              : null;
-
-            const actionMarkup = action ? (
-              <div className={styles.Actions}>
-                <ButtonGroup>
-                  <div className={styles.PrimaryAction}>
-                    {buttonFrom(action, {outline: true, size: buttonSizeValue})}
-                  </div>
-                  {secondaryActionMarkup}
-                </ButtonGroup>
-              </div>
-            ) : null;
-
-            let contentMarkup = null;
-            let contentID: string | undefined;
-
-            if (children || actionMarkup) {
-              contentID = `${id}Content`;
-              contentMarkup = (
-                <div className={styles.Content} id={contentID}>
-                  {children}
-                  {actionMarkup}
-                </div>
-              );
-            }
-
-            const dismissButton = onDismiss ? (
-              <div className={styles.Dismiss}>
-                <Button
-                  plain
-                  icon={CancelSmallMinor}
-                  onClick={onDismiss}
-                  accessibilityLabel="Dismiss notification"
-                />
-              </div>
-            ) : null;
-
-            return (
-              <div
-                className={className}
-                // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-                tabIndex={0}
-                ref={this.wrapper}
-                role={ariaRoleType}
-                aria-live={stopAnnouncements ? 'off' : 'polite'}
-                onMouseUp={handleMouseUp}
-                onKeyUp={handleKeyUp}
-                onBlur={handleBlur}
-                aria-labelledby={headingID}
-                aria-describedby={contentID}
-              >
-                {dismissButton}
-                <div className={styles.Ribbon}>
-                  <Icon
-                    source={iconName}
-                    color={color}
-                    backdrop={!newDesignLanguage}
-                  />
-                </div>
-                <div className={styles.ContentWrapper}>
-                  {headingMarkup}
-                  {contentMarkup}
-                </div>
-              </div>
-            );
-          }}
-        </WithinContentContext.Consumer>
-      </BannerContext.Provider>
+  if (title) {
+    headingID = `${id}Heading`;
+    headingMarkup = (
+      <div className={styles.Heading} id={headingID}>
+        <Heading element="p">{title}</Heading>
+      </div>
     );
   }
-}
 
-let index = 1;
-function uniqueID() {
-  return `Banner${index++}`;
-}
+  const actionMarkup = action && (
+    <div className={styles.Actions}>
+      <ButtonGroup>
+        <div className={styles.PrimaryAction}>
+          {buttonFrom(action, {outline: true, size: buttonSizeValue})}
+        </div>
 
-function secondaryActionFrom(action: Action) {
+        {secondaryAction && <SecondaryActionFrom action={secondaryAction} />}
+      </ButtonGroup>
+    </div>
+  );
+
+  let contentMarkup: React.ReactNode = null;
+  let contentID: string | undefined;
+
+  if (children || actionMarkup) {
+    contentID = `${id}Content`;
+    contentMarkup = (
+      <div className={styles.Content} id={contentID}>
+        {children}
+        {actionMarkup}
+      </div>
+    );
+  }
+
+  const dismissButton = onDismiss && (
+    <div className={styles.Dismiss}>
+      <Button
+        plain
+        icon={CancelSmallMinor}
+        onClick={onDismiss}
+        accessibilityLabel="Dismiss notification"
+      />
+    </div>
+  );
+
+  return (
+    <BannerContext.Provider value>
+      <div
+        className={className}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={0}
+        ref={wrapperRef}
+        role={ariaRoleType}
+        aria-live={stopAnnouncements ? 'off' : 'polite'}
+        onMouseUp={handleMouseUp}
+        onKeyUp={handleKeyUp}
+        onBlur={handleBlur}
+        aria-labelledby={headingID}
+        aria-describedby={contentID}
+      >
+        {dismissButton}
+
+        <div className={styles.Ribbon}>
+          <Icon
+            source={iconName}
+            color={iconColor}
+            backdrop={!newDesignLanguage}
+          />
+        </div>
+
+        <div className={styles.ContentWrapper}>
+          {headingMarkup}
+          {contentMarkup}
+        </div>
+      </div>
+    </BannerContext.Provider>
+  );
+});
+
+function SecondaryActionFrom({action}: {action: Action}) {
   if (action.url) {
     return (
       <UnstyledLink
@@ -268,4 +196,98 @@ function secondaryActionFrom(action: Action) {
       <span className={styles.Text}>{action.content}</span>
     </button>
   );
+}
+
+interface BannerAttributes {
+  iconColor: IconProps['color'];
+  defaultIcon: IconProps['source'];
+  ariaRoleType: 'status' | 'alert';
+}
+
+function useBannerAttributes(
+  status: BannerProps['status'],
+  newDesignLanguage: boolean,
+): BannerAttributes {
+  switch (status) {
+    case 'success':
+      return {
+        defaultIcon: newDesignLanguage
+          ? CircleTickMajorFilled
+          : CircleTickMajorTwotone,
+        iconColor: newDesignLanguage ? 'success' : 'greenDark',
+        ariaRoleType: 'status',
+      };
+
+    case 'info':
+      return {
+        defaultIcon: newDesignLanguage
+          ? CircleInformationMajorFilled
+          : CircleInformationMajorTwotone,
+        iconColor: newDesignLanguage ? 'highlight' : 'tealDark',
+        ariaRoleType: 'status',
+      };
+
+    case 'warning':
+      return {
+        defaultIcon: newDesignLanguage
+          ? CircleAlertMajorFilled
+          : CircleAlertMajorTwotone,
+        iconColor: newDesignLanguage ? 'warning' : 'yellowDark',
+        ariaRoleType: 'alert',
+      };
+
+    case 'critical':
+      return {
+        defaultIcon: newDesignLanguage
+          ? CircleDisabledMajorFilled
+          : CircleDisabledMajorTwotone,
+        iconColor: newDesignLanguage ? 'critical' : 'redDark',
+        ariaRoleType: 'alert',
+      };
+
+    default:
+      return {
+        defaultIcon: newDesignLanguage
+          ? CircleInformationMajorFilled
+          : FlagMajorTwotone,
+        iconColor: newDesignLanguage ? 'base' : 'inkLighter',
+        ariaRoleType: 'status',
+      };
+  }
+}
+
+export interface BannerHandles {
+  focus(): void;
+}
+
+function useBannerFocus(bannerRef: React.Ref<BannerHandles>) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [shouldShowFocus, setShouldShowFocus] = useState(false);
+
+  useImperativeHandle(bannerRef, () => ({
+    focus: () => {
+      wrapperRef.current?.focus();
+      setShouldShowFocus(true);
+    },
+  }));
+
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.target === wrapperRef.current) {
+      setShouldShowFocus(true);
+    }
+  };
+
+  const handleBlur = () => setShouldShowFocus(false);
+  const handleMouseUp = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.currentTarget.blur();
+    setShouldShowFocus(false);
+  };
+
+  return {
+    wrapperRef,
+    handleKeyUp,
+    handleBlur,
+    handleMouseUp,
+    shouldShowFocus,
+  };
 }

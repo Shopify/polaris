@@ -20,8 +20,8 @@ export const Weekday = memo(function Weekday({
   );
 
   return (
-    <div aria-label={label} className={className}>
+    <th aria-label={label} scope="col" className={className}>
       {title}
-    </div>
+    </th>
   );
 });

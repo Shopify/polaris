@@ -6,18 +6,18 @@ const postcssShopify = require('@shopify/postcss-plugin');
 // Use the version of webpack-bundle-analyzer (and other plugins/loaders) from
 // sewing-kit in order avoid a bunch of duplication in our devDependencies
 // eslint-disable-next-line node/no-extraneous-require, import/no-extraneous-dependencies
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 
-const ICON_PATH_REGEX = /icons\//;
-const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
+// Enabling docs means the preview panel takes an extra 2ish seconds to load
+// This usually isn't a big deal, except when we're running all of our stories
+// through our a11y tests, and a 2s delay over several hundred stories adds up.
+// This is an escape hatch to disable docs only wheile we're running a11y tests
+const enableDocs = !parseInt(process.env.STORYBOOK_DISABLE_DOCS || '0', 10);
 
 module.exports = {
   stories: ['../playground/stories.tsx', '../src/components/**/*/README.md'],
   addons: [
-    '@storybook/addon-viewport',
-    '@storybook/addon-actions',
-    '@storybook/addon-notes',
+    {name: '@storybook/addon-essentials', options: {docs: enableDocs}},
     '@storybook/addon-a11y',
     '@storybook/addon-contexts',
     '@storybook/addon-knobs',
@@ -29,8 +29,6 @@ module.exports = {
     // Without this there will be lots of "add 1 file and removed 1 file" notices.
     config.output.filename = '[name]-[hash].js';
 
-    const cacheDir = path.resolve(__dirname, '../build/cache/storybook');
-
     const extraRules = [
       {
         test: /src\/components\/.+\/README\.md$/,
@@ -38,37 +36,14 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: `${cacheDir}/markdown`,
+              cacheDirectory: path.resolve(
+                __dirname,
+                '../build/cache/storybook/markdown',
+              ),
             },
           },
           {
             loader: `${__dirname}/polaris-readme-loader.js`,
-          },
-        ],
-      },
-      {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: `${cacheDir}/typescript`,
-            },
-          },
-        ],
-      },
-      {
-        test(resource) {
-          return (
-            IMAGE_PATH_REGEX.test(resource) && !ICON_PATH_REGEX.test(resource)
-          );
-        },
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-            },
           },
         ],
       },
@@ -116,8 +91,6 @@ module.exports = {
       },
     });
 
-    config.module.rules = [config.module.rules[0], ...extraRules];
-
     if (isProduction) {
       config.plugins.push(
         new BundleAnalyzerPlugin({
@@ -136,7 +109,14 @@ module.exports = {
       );
     }
 
-    config.resolve.extensions.push('.ts', '.tsx');
+    config.module.rules = [
+      // Strip out existing rules that apply to md files
+      ...config.module.rules.filter(
+        (rule) => rule.test.toString() !== '/\\.md$/',
+      ),
+      ...extraRules,
+    ];
+
     config.resolve.alias = {
       ...config.resolve.alias,
       '@shopify/polaris': path.resolve(__dirname, '..', 'src'),

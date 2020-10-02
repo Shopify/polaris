@@ -7,6 +7,7 @@ import type {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {FeaturesContext} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
+import {VisuallyHidden} from '../VisuallyHidden';
 
 import styles from './Breadcrumbs.scss';
 
@@ -36,7 +37,9 @@ export class Breadcrumbs extends PureComponent<BreadcrumbsProps, never> {
             source={newDesignLanguage ? ArrowLeftMinor : ChevronLeftMinor}
           />
         </span>
-        {newDesignLanguage ? null : (
+        {newDesignLanguage ? (
+          <VisuallyHidden>{content}</VisuallyHidden>
+        ) : (
           <span className={styles.Content}>{content}</span>
         )}
       </span>

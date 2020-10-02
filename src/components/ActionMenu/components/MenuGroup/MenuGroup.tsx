@@ -68,6 +68,7 @@ export function MenuGroup({
       activator={popoverActivator}
       preferredAlignment="left"
       onClose={handleClose}
+      hideOnPrint
     >
       <ActionList items={actions} onActionAnyItem={handleClose} />
       {details && <div className={styles.Details}>{details}</div>}

@@ -61,7 +61,7 @@ $relative-size: $primary-basis / $secondary-basis;
   + .AnnotatedSection {
     @include page-content-when-not-fully-condensed {
       padding-top: spacing(loose);
-      border-top: border();
+      border-top: border('divider');
       // stylelint-disable-next-line selector-max-combinators, selector-max-class
       .newDesignLanguage & {
         padding-top: spacing();

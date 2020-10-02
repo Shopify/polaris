@@ -46,7 +46,7 @@
   }
 
   + .Section {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 
@@ -83,7 +83,7 @@
   }
 
   .Header + & {
-    border-top: border();
+    border-top: border('divider');
     margin-top: spacing(loose);
   }
 }
@@ -106,7 +106,7 @@
   + .Subsection {
     margin-top: spacing();
     padding-top: spacing();
-    border-top: border();
+    border-top: border('divider');
   }
 }
 
@@ -124,7 +124,7 @@
   }
 
   .Section-subdued + & {
-    border-top: border();
+    border-top: border('divider');
     padding: spacing(loose);
   }
 }

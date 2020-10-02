@@ -50,6 +50,7 @@ export function RollupActions({items = [], sections = []}: RollupActionsProps) {
       activator={activatorMarkup}
       preferredAlignment="right"
       onClose={toggleRollupOpen}
+      hideOnPrint
     >
       <ActionList
         items={items}

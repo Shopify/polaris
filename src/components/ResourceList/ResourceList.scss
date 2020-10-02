@@ -30,7 +30,7 @@ $item-wrapper-loading-height: rem(64px);
   }
 
   + .ResourceList {
-    border-top: border();
+    border-top: border('divider');
   }
 
   + .SubHeaderWrapper {
@@ -44,7 +44,7 @@ $item-wrapper-loading-height: rem(64px);
   z-index: resource-list(header-outer-wrapper-stacking-order);
 
   + .ResourceList {
-    border-top: border();
+    border-top: border('divider');
   }
 
   + .SubHeaderWrapper {
@@ -262,7 +262,7 @@ $item-wrapper-loading-height: rem(64px);
   max-width: 100%;
 
   + .ItemWrapper {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 

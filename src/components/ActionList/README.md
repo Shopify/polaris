@@ -158,6 +158,42 @@ function ActionListWithMediaExample() {
 }
 ```
 
+### Action list with an icon and a suffix
+
+Use when the items benefit from an associated action or image, such as a list of products.
+
+```jsx
+function ActionListWithSuffixExample() {
+  const [active, setActive] = useState(true);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
+
+  return (
+    <div style={{height: '200px'}}>
+      <Popover active={active} activator={activator} onClose={toggleActive}>
+        <ActionList
+          items={[
+            {
+              content: 'Import file',
+              icon: ImportMinor,
+              suffix: <Icon source={TickSmallMinor} />,
+              active: true,
+            },
+            {content: 'Export file', icon: ExportMinor},
+          ]}
+        />
+      </Popover>
+    </div>
+  );
+}
+```
+
 ### Sectioned action list
 
 Use when the items benefit from sections to help differentiate actions.
@@ -218,7 +254,7 @@ function ActionListWithDestructiveItemExample() {
             {
               title: 'File options',
               items: [
-                {content: 'Import file', icon: ImportMinor},
+                {content: 'Import file', icon: ImportMinor, active: true},
                 {content: 'Export file', icon: ExportMinor},
                 {
                   destructive: true,

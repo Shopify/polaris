@@ -24,7 +24,7 @@ $breakpoint: 550px;
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
     .Description + & + .Description {
-      border-top: border();
+      border-top: border('divider');
     }
   }
 }
@@ -34,7 +34,7 @@ $breakpoint: 550px;
   padding: 0 0 spacing();
 
   + .Term {
-    border-top: border();
+    border-top: border('divider');
   }
 
   @include page-content-breakpoint-after($breakpoint) {
@@ -43,7 +43,7 @@ $breakpoint: 550px;
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
     + .Term + .Description {
-      border-top: border();
+      border-top: border('divider');
     }
   }
 }

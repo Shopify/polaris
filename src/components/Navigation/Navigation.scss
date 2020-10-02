@@ -14,7 +14,7 @@ $nav-max-width: rem(360px);
   max-width: $nav-max-width;
   height: 100%;
   min-height: 100%;
-  background-color: var(--p-surface, color('sky', 'light'));
+  background-color: var(--p-background, color('sky', 'light'));
   -webkit-overflow-scrolling: touch;
 
   @include safe-area-for(padding-bottom, 0, bottom);
@@ -34,22 +34,15 @@ $nav-max-width: rem(360px);
   }
 }
 
-.Navigation-noMedia {
-  padding-top: spacing();
-}
-
 .UserMenu {
   flex: 0 0 auto;
 }
 
-@include breakpoint-after(nav-min-window-corrected()) {
-  .ContextControl {
-    display: none;
+.ContextControl {
+  min-height: top-bar-height();
 
-    .Navigation-newDesignLanguage & {
-      display: block;
-      min-height: var(--p-top-bar-height);
-    }
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: none;
   }
 }
 
@@ -60,17 +53,23 @@ $nav-max-width: rem(360px);
   flex-direction: column;
   align-items: stretch;
   max-width: 100%;
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    .Navigation-newDesignLanguage & {
+      padding-top: rem(12px);
+    }
+  }
 }
 
 .LogoContainer {
   display: none;
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-before(nav-min-window-corrected()) {
     display: flex;
-    flex: 0 0 var(--p-top-bar-height);
+    flex: 0 0 top-bar-height();
     align-items: center;
-    height: 100%;
+    height: top-bar-height();
     padding: 0 spacing(tight) 0 spacing(base);
-    @include safe-area-for(flex-basis, var(--p-top-bar-height), left);
+    @include safe-area-for(flex-basis, top-bar-height(), left);
     @include safe-area-for(padding-left, spacing(), left);
   }
 }
@@ -191,7 +190,7 @@ $disabled-fade: 0.6;
     &:not(:first-child) {
       // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
       .Item {
-        border-top: 1px solid var(--p-surface);
+        border-top: 1px solid var(--p-background);
       }
     }
   }
@@ -230,6 +229,14 @@ $disabled-fade: 0.6;
     height: nav(desktop-height);
   }
 
+  .Navigation-newDesignLanguage & {
+    @include recolor-icon(
+      var(--p-icon-subdued, color('ink', 'lightest')),
+      var(--p-override-transparent, color('white')),
+      filter('icon')
+    );
+  }
+
   &:hover {
     @include recolor-icon(
       var(--p-action-primary, color('indigo')),
@@ -241,6 +248,14 @@ $disabled-fade: 0.6;
       linear-gradient(color(state, hover), color(state, hover))
     );
     background-color: var(--p-surface-hovered);
+
+    .Navigation-newDesignLanguage & {
+      @include recolor-icon(
+        var(--p-action-primary, color('indigo')),
+        var(--p-override-transparent, color('white')),
+        filter('action')
+      );
+    }
   }
 
   @include focus-ring;
@@ -255,6 +270,13 @@ $disabled-fade: 0.6;
       --p-override-none,
       linear-gradient(color(state, hover), color(state, hover))
     );
+    .Navigation-newDesignLanguage & {
+      @include recolor-icon(
+        var(--p-icon-subdued, color('indigo')),
+        var(--p-override-transparent, color('white')),
+        filter('icon')
+      );
+    }
     @include focus-ring($style: 'focused');
   }
 
@@ -264,6 +286,14 @@ $disabled-fade: 0.6;
       var(--p-override-transparent, color('white')),
       filter('indigo')
     );
+    // stylelint-disable-next-line selector-max-specificity
+    .Navigation-newDesignLanguage & {
+      @include recolor-icon(
+        var(--p-action-primary, color('indigo')),
+        var(--p-override-transparent, color('white')),
+        filter('action')
+      );
+    }
   }
 
   &:active {
@@ -278,6 +308,14 @@ $disabled-fade: 0.6;
     );
     @include no-focus-ring;
     background-color: var(--p-surface-pressed);
+    // stylelint-disable-next-line selector-max-specificity
+    .Navigation-newDesignLanguage & {
+      @include recolor-icon(
+        var(--p-action-primary, color('indigo')),
+        var(--p-override-transparent, color('white')),
+        filter('action')
+      );
+    }
   }
 
   &:focus,
@@ -315,7 +353,7 @@ $secondary-item-font-size: rem(15px);
     .Navigation-newDesignLanguage & {
       @include focus-ring;
       font-weight: 500;
-      padding-left: nav(icon-size) + spacing(extra-loose);
+      padding-left: nav(icon-size) + spacing(extra-loose) - spacing(extra-tight);
 
       @include breakpoint-after(nav-min-window-corrected()) {
         font-size: $item-font-size-small;
@@ -412,7 +450,7 @@ $secondary-item-font-size: rem(15px);
 }
 
 .Section-withSeparator {
-  border-top: var(--p-thin-border-subdued, border());
+  border-top: border('divider');
 }
 
 .SectionHeading {
@@ -448,6 +486,14 @@ $secondary-item-font-size: rem(15px);
     @include breakpoint-after(nav-min-window-corrected()) {
       height: nav(desktop-nav-height);
     }
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class
+    .Navigation-newDesignLanguage & {
+      @include recolor-icon(
+        var(--p-icon-subdued, color('ink', 'lightest')),
+        var(--p-override-transparent, color('white')),
+        filter('icon')
+      );
+    }
 
     &:hover {
       @include recolor-icon(
@@ -460,6 +506,14 @@ $secondary-item-font-size: rem(15px);
         linear-gradient(color(state, hover), color(state, hover))
       );
       background-color: var(--p-surface-hovered);
+      // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+      .Navigation-newDesignLanguage & {
+        @include recolor-icon(
+          var(--p-action-primary, color('indigo')),
+          var(--p-override-transparent, color('white')),
+          filter('action')
+        );
+      }
     }
 
     @include focus-ring;
@@ -475,6 +529,14 @@ $secondary-item-font-size: rem(15px);
         linear-gradient(color(state, hover), color(state, hover))
       );
       @include focus-ring($style: 'focused');
+      // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+      .Navigation-newDesignLanguage & {
+        @include recolor-icon(
+          var(--p-icon-subdued, color('indigo')),
+          var(--p-override-transparent, color('white')),
+          filter('icon')
+        );
+      }
     }
 
     // stylelint-disable-next-line selector-max-specificity
@@ -484,6 +546,14 @@ $secondary-item-font-size: rem(15px);
         var(--p-override-transparent, color('white')),
         filter('indigo')
       );
+      // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+      .Navigation-newDesignLanguage & {
+        @include recolor-icon(
+          var(--p-action-primary, color('indigo')),
+          var(--p-override-transparent, color('white')),
+          filter('action')
+        );
+      }
     }
 
     &:active {
@@ -498,6 +568,14 @@ $secondary-item-font-size: rem(15px);
       );
       @include no-focus-ring;
       background-color: var(--p-surface-pressed);
+      // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+      .Navigation-newDesignLanguage & {
+        @include recolor-icon(
+          var(--p-action-primary, color('indigo')),
+          var(--p-override-transparent, color('white')),
+          filter('action')
+        );
+      }
     }
 
     &:focus,
@@ -518,6 +596,14 @@ $secondary-item-font-size: rem(15px);
       filter('indigo')
     );
     color: var(--p-action-primary, color('indigo'));
+
+    .Navigation-newDesignLanguage & {
+      @include recolor-icon(
+        var(--p-action-primary, color('indigo')),
+        null,
+        filter('action')
+      );
+    }
   }
 
   &:focus {

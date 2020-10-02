@@ -8,6 +8,40 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.4.0 - 2020-09-24
+
+### Enhancements
+
+- Hide `ActionMenu`, `Actions`, `RollupActions` menu popover overlays when printing ([#3277](https://github.com/Shopify/polaris-react/pull/3277))
+
+## 5.3.1 - 2020-09-16
+
+### Bug fixes
+
+- Add position relative back to FrameContent [#3259](https://github.com/Shopify/polaris-react/pull/3259)
+
+## 5.3.0 - 2020-09-15
+
+### Enhancements
+
+- Vertically center tag text in `Tag` ([#3206](https://github.com/Shopify/polaris-react/pull/3206))
+- Update `EmptySearchResult` illustration ([#3185](https://github.com/Shopify/polaris-react/pull/3185)).
+- Update `ActionList` to allow the items to have a suffix ([#3216](https://github.com/Shopify/polaris-react/pull/3216)).
+- Added support for the `inputMode` attribute on the `TextField` component ([#3222](https://github.com/Shopify/polaris-react/pull/3222)).
+- Added `expandOnPrint` prop to `Collapsible` for print support ([#3231](https://github.com/Shopify/polaris-react/pull/3231))
+- Added `hideOnPrint` prop to `Popover` to allow hiding the overlay when printing ([#3242](https://github.com/Shopify/polaris-react/pull/3242))
+
+### Bug fixes
+
+- Fix `Button` css in a `connectedTop` or `fullWidth` `ButtonGroup` ([#3215](https://github.com/Shopify/polaris-react/pull/3215)).
+- Fixed `Banner`’s `id` being mismatched on server VS client ([#3199](https://github.com/Shopify/polaris-react/pull/3199)).
+- Fixed the border and pip fill colors on the `Badge` to show when printing ([#3226](https://github.com/Shopify/polaris-react/pull/3226)).
+
+### Code quality
+
+- Updated Storybook to v6 ([#3184](https://github.com/Shopify/polaris-react/pull/3184))
+- Converted `ActionMenu` to functional component ([#3139](https://github.com/Shopify/polaris-react/pull/3193))
+
 ## 5.2.1 - 2020-08-18
 
 ### Enhancements

@@ -37,11 +37,9 @@ $skip-vertical-offset: rem(10px);
     left: var(--p-frame-offset);
     display: flex;
 
-    &:not(.Navigation-newDesignLanguage) {
-      .hasTopBar & {
-        top: top-bar-height();
-        height: calc(100% - #{top-bar-height()});
-      }
+    .hasTopBar & {
+      top: top-bar-height();
+      height: calc(100% - #{top-bar-height()});
     }
   }
 
@@ -139,16 +137,6 @@ $skip-vertical-offset: rem(10px);
     left: var(--p-frame-offset);
     width: calc(100% - var(--p-frame-offset));
   }
-
-  &.TopBar-newDesignLanguage {
-    @include frame-when-nav-displayed {
-      // stylelint-disable-next-line selector-max-class
-      .hasNav & {
-        left: calc(#{layout-width(nav)} + var(--p-frame-offset));
-        width: calc(100% - #{layout-width(nav)} - var(--p-frame-offset));
-      }
-    }
-  }
 }
 
 .ContextualSaveBar {
@@ -164,14 +152,6 @@ $skip-vertical-offset: rem(10px);
   }
 }
 
-.ContextualSaveBar-newDesignLanguage {
-  @include frame-when-nav-displayed {
-    .hasNav & {
-      left: calc(#{layout-width(nav)} + var(--p-frame-offset));
-      max-width: calc(100% - #{layout-width(nav)} - var(--p-frame-offset));
-    }
-  }
-}
 .Main {
   flex: 1;
   display: flex;
@@ -203,7 +183,6 @@ $skip-vertical-offset: rem(10px);
 
 .Main-newDesignLanguage {
   .hasTopBar & {
-    padding-top: var(--p-top-bar-height);
     @include when-printing {
       padding-top: 0;
     }
