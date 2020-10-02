@@ -20,6 +20,7 @@ $action-menu-rollup-computed-width: rem(40px);
 .TitleWrapper {
   .newDesignLanguage & {
     margin-top: spacing(extra-tight);
+    align-self: center;
 
     @include breakpoint-after(468px) {
       margin-top: 0;
