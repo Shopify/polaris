@@ -86,6 +86,11 @@ $stacking-order: (
   text-overflow: ellipsis;
 }
 
+.OptionIcon {
+  padding-right: spacing('tight');
+  height: rem(16px);
+}
+
 .Icon {
   @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
 }

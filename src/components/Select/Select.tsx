@@ -6,7 +6,7 @@ import {useFeatures} from '../../utilities/features';
 import {useUniqueId} from '../../utilities/unique-id';
 import {Labelled, LabelledProps, helpTextID} from '../Labelled';
 import {Icon} from '../Icon';
-import type {Error} from '../../types';
+import type {Error, IconSource} from '../../types';
 
 import styles from './Select.scss';
 
@@ -17,6 +17,8 @@ interface StrictOption {
   label: string;
   /** Option will be visible, but not selectable */
   disabled?: boolean;
+  /** Icon to display to the left of the option label. Does not show in the dropdown. */
+  iconSource?: IconSource;
 }
 
 interface HideableStrictOption extends StrictOption {
@@ -133,10 +135,17 @@ export function Select({
 
   const selectedOption = getSelectedOption(normalizedOptions, value);
 
+  const optionIconMarkup = selectedOption.iconSource && (
+    <div className={styles.OptionIcon}>
+      <Icon source={selectedOption.iconSource} />
+    </div>
+  );
+
   const contentMarkup = (
     <div className={styles.Content} aria-hidden aria-disabled={disabled}>
       {inlineLabelMarkup}
-      <span className={styles.SelectedOption}>{selectedOption}</span>
+      {optionIconMarkup}
+      <span className={styles.SelectedOption}>{selectedOption.label}</span>
       <span className={styles.Icon}>
         <Icon source={SelectMinor} />
       </span>
@@ -223,7 +232,7 @@ function normalizeOption(
 function getSelectedOption(
   options: (HideableStrictOption | StrictGroup)[],
   value: string,
-): string {
+): HideableStrictOption {
   const flatOptions = flattenOptions(options);
   let selectedOption = flatOptions.find((option) => value === option.value);
 
@@ -232,7 +241,7 @@ function getSelectedOption(
     selectedOption = flatOptions.find((option) => !option.hidden);
   }
 
-  return selectedOption ? selectedOption.label : '';
+  return selectedOption || {value: '', label: ''};
 }
 
 /**

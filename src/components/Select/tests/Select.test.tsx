@@ -1,8 +1,12 @@
 import React from 'react';
-import {InlineError} from 'components';
+import {InlineError, Icon} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
+import {
+  CircleTickOutlineMinor,
+  CircleDisableMinor,
+} from '@shopify/polaris-icons';
 
 import {Select} from '../Select';
 
@@ -200,6 +204,25 @@ describe('<Select />', () => {
         <Select label="Select" disabled={false} options={[]} onChange={noop} />,
       );
       expect(select.find('select').prop('disabled')).toBeFalsy();
+    });
+  });
+
+  describe('iconSource', () => {
+    it('shows an icon beside the option label if an icon is specified', () => {
+      const options = [
+        {value: 'one', label: 'One', iconSource: CircleTickOutlineMinor},
+      ];
+      const select = mountWithAppProvider(
+        <Select label="Select" options={options} onChange={noop} />,
+      );
+
+      expect(
+        select
+          .find(Icon)
+          .filterWhere(
+            (icon) => icon.prop('source') === CircleTickOutlineMinor,
+          ),
+      ).toHaveLength(1);
     });
   });
 
