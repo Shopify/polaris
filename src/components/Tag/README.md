@@ -41,7 +41,7 @@ Use to allow merchants to add attributes to, and remove attributes from, an obje
 
 ### Remove tag
 
-Use to allow merchants to add attributes to an object.
+Use to allow merchants to remove attributes from an object.
 
 ```jsx
 <Tag onRemove={() => {}}>Wholesale</Tag>
