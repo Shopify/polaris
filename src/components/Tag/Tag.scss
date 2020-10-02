@@ -48,7 +48,7 @@ $icon-size: rem(16px);
     // stylelint-disable selector-max-class
 
     &.newDesignLanguage {
-      background-color: var(--p-action-secondary);
+      background-color: var(--p-surface-neutral);
 
       &:hover {
         background: var(--p-action-secondary-hovered);
