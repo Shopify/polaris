@@ -42,6 +42,12 @@ describe('<Item />', () => {
     expect(item).toContainReactComponent(Suffix);
   });
 
+  it('renders a prefix when the prefix prop is defined', () => {
+    const Prefix = () => <div>Prefix</div>;
+    const item = mountWithApp(<Item prefix={<Prefix />} />);
+    expect(item).toContainReactComponent(Prefix);
+  });
+
   it('does not render a label when content is undefined and ellipsis is true', () => {
     const item = mountWithAppProvider(<Item ellipsis />);
     expect(item.text()).toBe('');

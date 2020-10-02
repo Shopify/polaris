@@ -17,6 +17,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added `spacing` prop to `ButtonGroup` ([#3308](https://github.com/Shopify/polaris-react/pull/3308))
 - Added `contextControl` prop to `ContextualSaveBar` ([#3357](https://github.com/Shopify/polaris-react/pull/3357))
 - Added `spacing` prop to `DescriptionList` ([#3359](https://github.com/Shopify/polaris-react/pull/3359))
+- Added `prefix` prop to `ActionList` items ([#3313](https://github.com/Shopify/polaris-react/pull/3313))
 
 ### Bug fixes
 
