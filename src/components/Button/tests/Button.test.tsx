@@ -170,7 +170,7 @@ describe('<Button />', () => {
 
     it('does not render the markup for the icon if none is provided', () => {
       const button = mountWithAppProvider(<Button />);
-      expect(button.find('svg').exists()).toBe(false);
+      expect(button.find(Icon).exists()).toBe(false);
     });
   });
 
