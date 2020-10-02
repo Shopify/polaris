@@ -27,7 +27,7 @@ export {Badge} from './Badge';
 export type {BadgeProps} from './Badge';
 
 export {Banner} from './Banner';
-export type {BannerProps, BannerStatus} from './Banner';
+export type {BannerProps, BannerStatus, BannerHandles} from './Banner';
 
 export {Breadcrumbs} from './Breadcrumbs';
 export type {BreadcrumbsProps} from './Breadcrumbs';
