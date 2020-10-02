@@ -706,7 +706,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
       aria-busy={loading}
     >
       {loadingOverlay}
-      {items.map(renderItemWithId)}
+      {React.Children.toArray(items.map(renderItemWithId))}
     </ul>
   ) : null;
 
