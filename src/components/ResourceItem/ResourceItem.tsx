@@ -137,7 +137,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
   render() {
     const {
-      id,
       children,
       url,
       external,
@@ -328,7 +327,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     );
 
     return (
-      <li key={id} className={listItemClassName}>
+      <li className={listItemClassName}>
         <div className={styles.ItemWrapper}>
           <div
             ref={this.setNode}
