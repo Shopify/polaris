@@ -49,8 +49,8 @@ $resource-list-item-variables: (
   &:hover {
     &:not(.newDesignLanguage) {
       background-image: linear-gradient(
-        rgba(color('indigo', 'lighter'), 0.3),
-        rgba(color('indigo', 'lighter'), 0.3)
+        rgba(color('indigo', 'light'), 0.2),
+        rgba(color('indigo', 'light'), 0.2)
       );
     }
 
@@ -88,8 +88,8 @@ $resource-list-item-variables: (
         rgba(color('indigo', 'light'), 0.15)
       ),
       linear-gradient(
-        rgba(color('indigo', 'lighter'), 0.3),
-        rgba(color('indigo', 'lighter'), 0.3)
+        rgba(color('indigo', 'light'), 0.2),
+        rgba(color('indigo', 'light'), 0.2)
       );
 
     // stylelint-disable-next-line selector-max-specificity
@@ -100,12 +100,12 @@ $resource-list-item-variables: (
           rgba(color('indigo', 'light'), 0.15)
         ),
         linear-gradient(
-          rgba(color('indigo', 'lighter'), 0.3),
-          rgba(color('indigo', 'lighter'), 0.3)
+          rgba(color('indigo', 'light'), 0.2),
+          rgba(color('indigo', 'light'), 0.2)
         ),
         linear-gradient(
-          rgba(color('indigo', 'lighter'), 0.3),
-          rgba(color('indigo', 'lighter'), 0.3)
+          rgba(color('indigo', 'light'), 0.2),
+          rgba(color('indigo', 'light'), 0.2)
         );
     }
   }
@@ -116,8 +116,8 @@ $resource-list-item-variables: (
         rgba(color('indigo', 'light'), 0.15)
       ),
       linear-gradient(
-        rgba(color('indigo', 'lighter'), 0.3),
-        rgba(color('indigo', 'lighter'), 0.3)
+        rgba(color('indigo', 'light'), 0.2),
+        rgba(color('indigo', 'light'), 0.2)
       );
   }
 
@@ -136,27 +136,27 @@ $resource-list-item-variables: (
 .focused:not(.newDesignLanguage) {
   box-shadow: inset 0.2rem 0 0 color('indigo');
   background-image: linear-gradient(
-    rgba(color('indigo', 'lighter'), 0.3),
-    rgba(color('indigo', 'lighter'), 0.3)
+    rgba(color('indigo', 'light'), 0.2),
+    rgba(color('indigo', 'light'), 0.2)
   );
 
   &:hover {
     box-shadow: inset 0.2rem 0 0 color('indigo');
     background-image: linear-gradient(
-        rgba(color('indigo', 'lighter'), 0.3),
-        rgba(color('indigo', 'lighter'), 0.3)
+        rgba(color('indigo', 'light'), 0.2),
+        rgba(color('indigo', 'light'), 0.2)
       ),
       linear-gradient(
-        rgba(color('indigo', 'lighter'), 0.3),
-        rgba(color('indigo', 'lighter'), 0.3)
+        rgba(color('indigo', 'light'), 0.2),
+        rgba(color('indigo', 'light'), 0.2)
       );
   }
 
   &:active {
     box-shadow: inset 0.2rem 0 0 color('indigo');
     background-image: linear-gradient(
-        rgba(color('indigo', 'lighter'), 0.3),
-        rgba(color('indigo', 'lighter'), 0.3)
+        rgba(color('indigo', 'light'), 0.2),
+        rgba(color('indigo', 'light'), 0.2)
       ),
       linear-gradient(
         rgba(color('indigo', 'light'), 0.1),
