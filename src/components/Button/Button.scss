@@ -540,9 +540,12 @@ $stacking-order: (
   padding: $slim-vertical-padding spacing(base-tight);
 
   &.newDesignLanguage {
-    // Local override for slim button height.
+    // Local override for slim button height and padding
     $slim-min-height: rem(28px);
+    $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) /
+      2;
     min-height: $slim-min-height;
+    padding: $slim-vertical-padding spacing(base-tight);
   }
 }
 
