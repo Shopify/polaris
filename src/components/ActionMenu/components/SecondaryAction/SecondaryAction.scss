@@ -4,6 +4,7 @@ $breakpoint: 1080px;
 
 .SecondaryAction {
   // stylelint-disable declaration-no-important
+  a,
   button {
     background: transparent !important;
     box-shadow: none !important;
