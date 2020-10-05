@@ -138,6 +138,10 @@ $stacking-order: (
   }
 }
 
+.Hidden {
+  visibility: hidden;
+}
+
 .Spinner {
   position: absolute;
   top: 50%;
