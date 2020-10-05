@@ -159,7 +159,7 @@ function SheetExample() {
             <Heading>Manage sales channels</Heading>
             <Button
               accessibilityLabel="Cancel"
-              icon={MobileCancelMajorMonotone}
+              icon={MobileCancelMajor}
               onClick={toggleSheetActive}
               plain
             />

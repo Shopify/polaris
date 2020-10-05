@@ -655,7 +655,7 @@ describe('<ResourceItem />', () => {
           <ResourceItem id={itemId} url={url} />
         </ResourceListContext.Provider>,
       );
-      const wrapperDiv = resourceItem.find('div');
+      const wrapperDiv = resourceItem.find('div', {'data-href': url} as any);
 
       wrapperDiv!.trigger('onFocus', {
         target: wrapperDiv!.domNode as HTMLDivElement,

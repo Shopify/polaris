@@ -152,7 +152,6 @@
     );
     border-color: $border-color;
     color: color('white');
-    text-decoration: none;
   }
 
   &:focus {
@@ -247,22 +246,25 @@
   &.newDesignLanguage {
     background: transparent;
     @include focus-ring($border-width: border-width('base'));
-    border: none;
-    box-shadow: 0 0 0 border-width('base') var(--p-border);
+    border: border-width() solid var(--p-border);
+    box-shadow: none;
     color: var(--p-text);
 
     &:hover {
-      box-shadow: 0 0 0 border-width('base') var(--p-border);
+      border: border-width() solid var(--p-border);
+      box-shadow: none;
       background: var(--p-surface-hovered);
     }
 
     &:focus {
-      box-shadow: 0 0 0 border-width('base') var(--p-border);
+      border: border-width() solid var(--p-border);
+      box-shadow: none;
       @include focus-ring($style: 'focused');
     }
 
     &:active {
-      box-shadow: 0 0 0 border-width('base') var(--p-border);
+      border: border-width() solid var(--p-border);
+      box-shadow: none;
       background: var(--p-surface-pressed);
       &::after {
         box-shadow: none;
@@ -271,40 +273,47 @@
 
     &.pressed {
       background: var(--p-action-secondary-pressed);
-      box-shadow: 0 0 0 border-width('base') var(--p-border);
+      border: border-width() solid var(--p-border);
+      box-shadow: none;
       color: var(--p-button-text);
     }
 
     &.disabled {
-      box-shadow: 0 0 0 border-width('base') var(--p-border-disabled);
+      border: border-width('base') solid var(--p-border-disabled);
+      box-shadow: none;
       background: transparent;
       color: var(--p-text-disabled);
     }
 
     &.destructive {
       background: transparent;
-      box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+      border: border-width('base') solid var(--p-border-critical);
+      box-shadow: none;
       color: var(--p-interactive-critical);
       @include recolor-icon(var(--p-icon-critical));
 
       &:hover {
-        box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+        border: border-width('base') solid var(--p-border-critical);
+        box-shadow: none;
         background: var(--p-surface-critical-subdued);
       }
 
       &:focus {
-        box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+        border: border-width('base') solid var(--p-border-critical);
+        box-shadow: none;
         @include focus-ring($style: 'focused');
       }
 
       &:active {
-        box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+        border: border-width('base') solid var(--p-border-critical);
+        box-shadow: none;
         background: var(--p-surface-critical-subdued);
       }
 
       // stylelint-disable-next-line selector-max-class
       &.disabled {
-        box-shadow: 0 0 0 border-width('base') var(--p-border-critical-disabled);
+        border: border-width('base') solid var(--p-border-critical-disabled);
+        box-shadow: none;
         background: transparent;
         color: var(--p-interactive-critical-disabled);
       }
@@ -312,7 +321,8 @@
       // stylelint-disable-next-line selector-max-class
       &.pressed {
         background: var(--p-surface-critical-subdued);
-        box-shadow: 0 0 0 border-width('base') var(--p-border-critical);
+        box-shadow: border-width('base') solid var(--p-border-critical);
+        box-shadow: none;
         color: var(--p-interactive-critical);
       }
     }

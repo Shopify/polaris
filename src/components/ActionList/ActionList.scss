@@ -192,7 +192,7 @@ $active-indicator-width: rem(3px);
     pointer-events: none;
 
     // stylelint-disable-next-line selector-max-class
-    .Image,
+    .Prefix,
     .Suffix {
       @include recolor-icon(color('ink', 'lightest'), color('white'));
     }
@@ -308,7 +308,7 @@ $active-indicator-width: rem(3px);
     &.disabled {
       background-image: none;
       color: var(--p-text-disabled);
-      .Image,
+      .Prefix,
       .Suffix {
         @include recolor-icon(var(--p-icon-disabled));
       }
@@ -323,7 +323,7 @@ $active-indicator-width: rem(3px);
   align-items: center;
 }
 
-.Image {
+.Prefix {
   @include recolor-icon(color('ink', 'light'), color('white'));
   display: flex;
   flex: 0 0 auto;

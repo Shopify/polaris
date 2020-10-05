@@ -234,7 +234,7 @@ function TopBarExample() {
     <TopBar.Menu
       activatorContent={
         <span>
-          <Icon source={QuestionMarkMajorTwotone} />
+          <Icon source={QuestionMarkMajor} />
           <VisuallyHidden>Secondary menu</VisuallyHidden>
         </span>
       }

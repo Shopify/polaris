@@ -75,6 +75,11 @@ $resource-list-item-variables: (
   }
 }
 
+.ItemWrapper {
+  overflow: hidden;
+  max-width: 100%;
+}
+
 .selected:not(.newDesignLanguage) {
   background-image: linear-gradient(
     rgba(color('indigo', 'light'), 0.15),
@@ -339,19 +344,6 @@ $resource-list-item-variables: (
 }
 
 .newDesignLanguage {
-  @include focus-ring;
-
-  // stylelint-disable selector-max-specificity
-  &.focused:not(:active):not(.focusedInner) {
-    @include breakpoint-after(resource-list-item(breakpoint-small)) {
-      @include focus-ring($style: 'focused');
-    }
-
-    @include breakpoint-before(resource-list-item(breakpoint-small), false) {
-      box-shadow: inset 0.2rem 0 0 var(--p-focused);
-    }
-  }
-
   &.selected {
     background-color: var(--p-surface-selected);
   }
@@ -362,5 +354,37 @@ $resource-list-item-variables: (
 
   &:active {
     background-color: var(--p-surface-selected-pressed);
+  }
+}
+
+.ListItem {
+  .ListItem + & {
+    border-top: border('divider');
+  }
+
+  &.newDesignLanguage {
+    position: relative;
+    @include focus-ring($border-width: rem(-1px));
+
+    &::after {
+      border-radius: rem(2px);
+    }
+
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity
+    &:last-of-type.focused::after {
+      border-bottom-left-radius: var(--p-border-radius-wide);
+      border-bottom-right-radius: var(--p-border-radius-wide);
+    }
+
+    // stylelint-disable-next-line selector-max-class
+    &.focused {
+      @include focus-ring($style: 'focused');
+      z-index: resource-list-item(clickable-stacking-order);
+    }
+
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
+    * + ul > &:first-of-type.focused::after {
+      top: rem(1px);
+    }
   }
 }

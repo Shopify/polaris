@@ -7,15 +7,11 @@ import React, {
 } from 'react';
 import {
   CancelSmallMinor,
-  CircleTickMajorTwotone,
-  FlagMajorTwotone,
-  CircleAlertMajorTwotone,
-  CircleDisabledMajorTwotone,
-  CircleInformationMajorTwotone,
-  CircleInformationMajorFilled,
-  CircleTickMajorFilled,
-  CircleAlertMajorFilled,
-  CircleDisabledMajorFilled,
+  FlagMajor,
+  CircleTickMajor,
+  CircleInformationMajor,
+  CircleAlertMajor,
+  CircleDisabledMajor,
 } from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
@@ -211,45 +207,35 @@ function useBannerAttributes(
   switch (status) {
     case 'success':
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleTickMajorFilled
-          : CircleTickMajorTwotone,
+        defaultIcon: CircleTickMajor,
         iconColor: newDesignLanguage ? 'success' : 'greenDark',
         ariaRoleType: 'status',
       };
 
     case 'info':
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleInformationMajorFilled
-          : CircleInformationMajorTwotone,
+        defaultIcon: CircleInformationMajor,
         iconColor: newDesignLanguage ? 'highlight' : 'tealDark',
         ariaRoleType: 'status',
       };
 
     case 'warning':
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleAlertMajorFilled
-          : CircleAlertMajorTwotone,
+        defaultIcon: CircleAlertMajor,
         iconColor: newDesignLanguage ? 'warning' : 'yellowDark',
         ariaRoleType: 'alert',
       };
 
     case 'critical':
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleDisabledMajorFilled
-          : CircleDisabledMajorTwotone,
+        defaultIcon: CircleDisabledMajor,
         iconColor: newDesignLanguage ? 'critical' : 'redDark',
         ariaRoleType: 'alert',
       };
 
     default:
       return {
-        defaultIcon: newDesignLanguage
-          ? CircleInformationMajorFilled
-          : FlagMajorTwotone,
+        defaultIcon: newDesignLanguage ? CircleInformationMajor : FlagMajor,
         iconColor: newDesignLanguage ? 'base' : 'inkLighter',
         ariaRoleType: 'status',
       };

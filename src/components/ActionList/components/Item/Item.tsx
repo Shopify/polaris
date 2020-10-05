@@ -22,6 +22,7 @@ export function Item({
   onAction,
   icon,
   image,
+  prefix,
   suffix,
   disabled,
   external,
@@ -39,19 +40,21 @@ export function Item({
     newDesignLanguage && styles.newDesignLanguage,
   );
 
-  let imageElement: React.ReactNode | null = null;
+  let prefixMarkup: React.ReactNode | null = null;
 
-  if (icon) {
-    imageElement = (
-      <div className={styles.Image}>
+  if (prefix) {
+    prefixMarkup = <div className={styles.Prefix}>{prefix}</div>;
+  } else if (icon) {
+    prefixMarkup = (
+      <div className={styles.Prefix}>
         <Icon source={icon} />
       </div>
     );
   } else if (image) {
-    imageElement = (
+    prefixMarkup = (
       <div
         role="presentation"
-        className={styles.Image}
+        className={styles.Prefix}
         style={{backgroundImage: `url(${image}`}}
       />
     );
@@ -78,15 +81,11 @@ export function Item({
     <span className={styles.Suffix}>{suffix}</span>
   );
 
-  const textMarkup = imageElement ? (
-    <div className={styles.Text}>{contentMarkup}</div>
-  ) : (
-    contentMarkup
-  );
+  const textMarkup = <div className={styles.Text}>{contentMarkup}</div>;
 
   const contentElement = (
     <div className={styles.Content}>
-      {imageElement}
+      {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
       {suffixMarkup}

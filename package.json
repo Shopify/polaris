@@ -1,7 +1,7 @@
 {
   "name": "@endearhq/polaris",
   "description": "Shopify’s product component library",
-  "version": "5.4.0-fork.3",
+  "version": "5.5.0-fork.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Endear <dev@endearhq.com>",
@@ -83,8 +83,8 @@
     "postcolordocs": "yarn run format"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "^3.10.0",
-    "@shopify/polaris-tokens": "^2.12.9",
+    "@shopify/polaris-icons": "^4.0.0",
+    "@shopify/polaris-tokens": "^2.14.0",
     "@types/react": "^16.9.12",
     "@types/react-dom": "^16.9.4",
     "@types/react-transition-group": "^4.4.0",

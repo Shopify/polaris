@@ -5,12 +5,14 @@ import React, {
   useReducer,
   useRef,
   useState,
+  Children,
 } from 'react';
 import debounce from 'lodash/debounce';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
 import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
+import {isElementOfType} from '../../utilities/components';
 import {Button} from '../Button';
 import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
@@ -27,8 +29,9 @@ import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
+import {BulkActions, BulkActionsProps} from '../BulkActions';
+import {CheckableButton} from '../CheckableButton';
 
-import {BulkActions, BulkActionsProps, CheckableButton} from './components';
 import styles from './ResourceList.scss';
 
 const SMALL_SCREEN_WIDTH = 458;
@@ -122,7 +125,7 @@ export interface ResourceListProps<ItemType = any> {
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
   onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
-  /** Function to render each list item   */
+  /** Function to render each list item, must return a ResourceItem component */
   renderItem(item: ItemType, id: string, index: number): React.ReactNode;
   /** Function to render each section header	 */
   renderSectionHeader?(
@@ -440,11 +443,19 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const renderItemWithId = (item: ItemType, index: number) => {
     const id = idForItem(item, index);
 
-    return (
-      <li key={id} className={styles.ItemWrapper}>
-        {renderItem(item, id, index)}
-      </li>
-    );
+    const itemContent = renderItem(item, id, index);
+
+    if (
+      process.env.NODE_ENV === 'development' &&
+      !isElementOfType(itemContent, ResourceItem)
+    ) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        '<ResourceList /> renderItem function should return a <ResourceItem />.',
+      );
+    }
+
+    return itemContent;
   };
 
   const renderSectionWithId = (section: ResourceSection, index: number) => {
@@ -781,8 +792,8 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     >
       {loadingOverlay}
       {sections
-        ? sections.map(renderSectionWithId)
-        : items.map(renderItemWithId)}
+        ? Children.toArray(sections.map(renderSectionWithId))
+        : Children.toArray(items.map(renderItemWithId))}
     </ul>
   ) : null;
 

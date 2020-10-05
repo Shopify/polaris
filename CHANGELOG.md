@@ -8,11 +8,36 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.5.0 - 2020-10-02
+
+### Enhancements
+
+- Update `@shopify/polaris-icons` to version 4.0.0 ([#3327](https://github.com/Shopify/polaris-react/pull/3327))
+- Moved `li` wrapper on `ResourceList` to `ResourceListItem` ([#3302](https://github.com/Shopify/polaris-react/pull/3302))
+- Remove `button-base` mixin from `Frame` SkipAnchor ([#3303](https://github.com/Shopify/polaris-react/pull/3303))
+- Updated `Toast` to use `currentColor` for the close icon ([#3324](https://github.com/Shopify/polaris-react/pull/3324))
+- Added `disclosureText` to `Tabs` ([#3331](https://github.com/Shopify/polaris-react/pull/3331))
+- Added underline to links on focus and active ([#3335](https://github.com/Shopify/polaris-react/pull/3335))
+- Added `spacing` prop to `ButtonGroup` ([#3308](https://github.com/Shopify/polaris-react/pull/3308))
+- Added `contextControl` prop to `ContextualSaveBar` ([#3357](https://github.com/Shopify/polaris-react/pull/3357))
+- Added `spacing` prop to `DescriptionList` ([#3359](https://github.com/Shopify/polaris-react/pull/3359))
+- Export `BannerHandles` from `Banner` ([#3368](https://github.com/Shopify/polaris-react/pull/3368))
+- Added `prefix` prop to `ActionList` items ([#3313](https://github.com/Shopify/polaris-react/pull/3313))
+
+### Bug fixes
+
+- Fixes `Badge` when it becomes 2 lines due to small viewport ([#3315](https://github.com/Shopify/polaris-react/pull/3315))
+- Update `DatePicker` layout so that `Popover` can calculate the width correctly ([#3330](https://github.com/Shopify/polaris-react/pull/3330))
+
 ## 5.4.0 - 2020-09-24
 
 ### Enhancements
 
 - Hide `ActionMenu`, `Actions`, `RollupActions` menu popover overlays when printing ([#3277](https://github.com/Shopify/polaris-react/pull/3277))
+  <<<<<<< HEAD
+  =======
+- Updated `DatePicker` component to use semantic HTML table structure ([#3303](https://github.com/Shopify/polaris-react/pull/3303))
+  > > > > > > > 9a167d3565573739b4f2dfa8e516bc8a13a0f179
 
 ## 5.3.1 - 2020-09-16
 

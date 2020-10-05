@@ -91,42 +91,6 @@ $stacking-order: (
   }
 }
 
-// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
-[data-buttongroup-segmented='true'] {
-  .Button,
-  .Button::after {
-    border-radius: 0;
-  }
-  > :first-child .Button,
-  > :first-child .Button::after {
-    border-top-left-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
-  }
-  > :last-child .Button,
-  > :last-child .Button::after {
-    border-top-right-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
-  }
-}
-
-[data-buttongroup-connected-top='true'] {
-  > :first-child .Button,
-  > :first-child .Button::after {
-    border-top-left-radius: 0;
-  }
-
-  > :last-child .Button,
-  > :last-child .Button::after {
-    border-top-right-radius: 0;
-  }
-}
-
-[data-buttongroup-full-width='true'] {
-  .Button {
-    @include button-full-width;
-  }
-}
-// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
 .Content {
   @include text-style-button;
   position: relative;
@@ -598,14 +562,12 @@ $stacking-order: (
     &:hover {
       @include recolor-icon(var(--p-interactive-hovered));
       color: var(--p-interactive-hovered);
-      text-decoration: underline;
     }
 
     &:focus {
       @include recolor-icon(var(--p-interactive));
       color: var(--p-interactive);
       @include no-focus-ring;
-      text-decoration: underline;
     }
 
     &:active {
@@ -928,3 +890,41 @@ $stacking-order: (
     }
   }
 }
+// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+[data-buttongroup-segmented='true'] {
+  .Button,
+  .Button::after {
+    border-radius: 0;
+  }
+  > :first-child .Button,
+  > :first-child .Button::after {
+    border-radius: 0;
+    border-top-left-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  }
+  > :last-child .Button,
+  > :last-child .Button::after {
+    border-radius: 0;
+    border-top-right-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
+  }
+}
+
+[data-buttongroup-connected-top='true'] {
+  > :first-child .Button,
+  > :first-child .Button::after {
+    border-top-left-radius: 0;
+  }
+
+  > :last-child .Button,
+  > :last-child .Button::after {
+    border-top-right-radius: 0;
+  }
+}
+
+[data-buttongroup-full-width='true'] {
+  .Button {
+    @include button-full-width;
+  }
+}
+// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity

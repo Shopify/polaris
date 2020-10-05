@@ -34,9 +34,7 @@ function validateStandardBuild() {
   // Standard build css contains namespaced classes
   const cssContent = fs.readFileSync('./dist/styles.css', 'utf-8');
   assert.ok(cssContent.includes('.Polaris-Avatar{'));
-  assert.ok(
-    cssContent.includes('.Polaris-ResourceList-BulkActions__BulkActionButton{'),
-  );
+  assert.ok(cssContent.includes('.Polaris-BulkActions__BulkActionButton{'));
 }
 
 function validateEsNextBuild() {

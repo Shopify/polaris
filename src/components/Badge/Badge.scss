@@ -2,7 +2,9 @@
 
 $height: rem(20px);
 $small-height: rem(18px);
+$extra-small-height: rem(16px);
 $horizontal-padding: spacing(tight);
+$vertical-padding: rem(3px);
 
 $pip-size: rem(10px);
 $pip-spacing: ($height - $pip-size) / 2;
@@ -17,12 +19,12 @@ $pip-spacing: ($height - $pip-size) / 2;
   @include pip-color(var(--p-icon, color('ink', 'lightest')));
   display: inline-flex;
   align-items: center;
-  padding: 0 $horizontal-padding;
+  padding: $vertical-padding $horizontal-padding;
   background-color: var(--p-surface-neutral, color('sky'));
   border: border-width(thick) solid var(--p-surface, color('white'));
   border-radius: $height;
   font-size: rem(13px);
-  line-height: $height;
+  line-height: $extra-small-height;
   color: var(--p-text, color('ink', 'light'));
   font-weight: var(--p-badge-font-weight, 400);
 
@@ -80,6 +82,7 @@ $pip-spacing: ($height - $pip-size) / 2;
   margin: 0 spacing(extra-tight) 0 ($pip-spacing - $horizontal-padding);
   border: border-width(thick) solid currentColor;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .progressIncomplete {
@@ -127,4 +130,8 @@ $pip-spacing: ($height - $pip-size) / 2;
       box-shadow: 0 0 0 $pip-size currentColor inset;
     }
   }
+}
+
+.withinFilter {
+  border-radius: var(--p-border-radius-base, $height);
 }
