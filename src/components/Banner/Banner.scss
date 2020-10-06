@@ -10,7 +10,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 @mixin banner-attributes($highlight, $background, $in-page, $tint) {
   transition: box-shadow duration() easing();
   transition-delay: duration(fast);
-  box-shadow: var(--p-banner-border, none);
 
   @media (-ms-high-contrast: active) {
     outline: 1px solid;
@@ -29,6 +28,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     );
     @include focus-ring('wide');
   } @else {
+    box-shadow: var(--p-banner-border, none);
     border-radius: var(--p-border-radius-base, border-radius());
     @include focus-ring('base');
   }
