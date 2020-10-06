@@ -1,7 +1,6 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import debounce from 'lodash/debounce';
 
-import {sortAndOverrideActionOrder} from '../../utilities';
 import {useFeatures} from '../../../../utilities/features';
 import {classNames} from '../../../../utilities/css';
 import type {
@@ -111,9 +110,8 @@ export function Actions({actions = [], groups = []}: Props) {
   );
 
   const menuActions = [...actions, ...groups];
-  const overriddenActions = sortAndOverrideActionOrder(menuActions);
 
-  const actionMarkup = overriddenActions.map((action, index) => {
+  const actionMarkup = menuActions.map((action, index) => {
     if ('title' in action) {
       const {title, actions, ...rest} = action;
 

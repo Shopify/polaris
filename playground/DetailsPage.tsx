@@ -3,6 +3,7 @@ import {
   CirclePlusMinor,
   DuplicateMinor,
   PrintMinor,
+  ExternalMinor,
   ViewMinor,
   HomeMajor,
   OrdersMajor,
@@ -485,6 +486,11 @@ export function DetailsPage() {
         },
       ]}
       actionGroups={[
+        {
+          title: 'Promote',
+          icon: ExternalMinor,
+          actions: [{content: 'Promote'}],
+        },
         {
           title: 'More actions',
           actions: [{content: 'Embed on a website'}],
