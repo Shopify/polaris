@@ -119,11 +119,9 @@ $stacking-order: (
 .Icon {
   transition: color duration() easing();
 
-  &:first-child {
-    // This compensates for the typical icon used in buttons being
-    // inset within its bounding box.
-    margin-left: -(spacing(extra-tight));
-  }
+  // This compensates for the typical icon used in buttons being
+  // inset within its bounding box.
+  margin-left: -(spacing(extra-tight));
 
   &:last-child {
     // This compensates for the disclosure icon, which is substantially
