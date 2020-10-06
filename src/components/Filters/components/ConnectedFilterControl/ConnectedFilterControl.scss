@@ -59,7 +59,7 @@ $stacking-order: (
 .newDesignLanguage {
   .CenterContainer + .RightContainer,
   .CenterContainer + .MoreFiltersButtonContainer {
-    margin-left: spacing(extra-tight) / 2;
+    margin-left: spacing(tight);
   }
 }
 

@@ -312,6 +312,39 @@ function ActionListWithHelpTextExample() {
 }
 ```
 
+### Action list with a prefix and a suffix
+
+Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
+
+```jsx
+function ActionListWithPrefixSuffixExample() {
+  return (
+    <div style={{height: '250px', maxWidth: '350px'}}>
+      <ActionList
+        items={[
+          {
+            content: 'Go here',
+            prefix: (
+              <Thumbnail
+                source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                size="small"
+                alt="Black leather pet collar"
+              />
+            ),
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+          {
+            content: 'Or there',
+            prefix: <Avatar customer name="Farrah" size="small" />,
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+        ]}
+      />
+    </div>
+  );
+}
+```
+
 ---
 
 ## Related components

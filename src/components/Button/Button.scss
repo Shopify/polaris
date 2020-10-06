@@ -91,42 +91,6 @@ $stacking-order: (
   }
 }
 
-// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
-[data-buttongroup-segmented='true'] {
-  .Button,
-  .Button::after {
-    border-radius: 0;
-  }
-  > :first-child .Button,
-  > :first-child .Button::after {
-    border-top-left-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
-  }
-  > :last-child .Button,
-  > :last-child .Button::after {
-    border-top-right-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
-  }
-}
-
-[data-buttongroup-connected-top='true'] {
-  > :first-child .Button,
-  > :first-child .Button::after {
-    border-top-left-radius: 0;
-  }
-
-  > :last-child .Button,
-  > :last-child .Button::after {
-    border-top-right-radius: 0;
-  }
-}
-
-[data-buttongroup-full-width='true'] {
-  .Button {
-    @include button-full-width;
-  }
-}
-// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
 .Content {
   @include text-style-button;
   position: relative;
@@ -172,6 +136,10 @@ $stacking-order: (
   + *:not(.Icon) {
     margin-left: spacing(extra-tight);
   }
+}
+
+.Hidden {
+  visibility: hidden;
 }
 
 .Spinner {
@@ -458,14 +426,12 @@ $stacking-order: (
     &:hover {
       @include recolor-icon(var(--p-interactive-hovered));
       color: var(--p-interactive-hovered);
-      text-decoration: underline;
     }
 
     &:focus {
       @include recolor-icon(var(--p-interactive));
       color: var(--p-interactive);
       @include no-focus-ring;
-      text-decoration: underline;
     }
 
     &:active {
@@ -574,9 +540,12 @@ $stacking-order: (
   padding: $slim-vertical-padding spacing(base-tight);
 
   &.newDesignLanguage {
-    // Local override for slim button height.
+    // Local override for slim button height and padding
     $slim-min-height: rem(28px);
+    $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) /
+      2;
     min-height: $slim-min-height;
+    padding: $slim-vertical-padding spacing(base-tight);
   }
 }
 
@@ -788,3 +757,41 @@ $stacking-order: (
     }
   }
 }
+// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+[data-buttongroup-segmented='true'] {
+  .Button,
+  .Button::after {
+    border-radius: 0;
+  }
+  > :first-child .Button,
+  > :first-child .Button::after {
+    border-radius: 0;
+    border-top-left-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  }
+  > :last-child .Button,
+  > :last-child .Button::after {
+    border-radius: 0;
+    border-top-right-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
+  }
+}
+
+[data-buttongroup-connected-top='true'] {
+  > :first-child .Button,
+  > :first-child .Button::after {
+    border-top-left-radius: 0;
+  }
+
+  > :last-child .Button,
+  > :last-child .Button::after {
+    border-top-right-radius: 0;
+  }
+}
+
+[data-buttongroup-full-width='true'] {
+  .Button {
+    @include button-full-width;
+  }
+}
+// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity

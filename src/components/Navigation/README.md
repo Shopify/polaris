@@ -175,18 +175,18 @@ Use to present a navigation menu in the [frame](https://polaris.shopify.com/comp
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: HomeMajorMonotone,
+        icon: HomeMajor,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: OrdersMajorTwotone,
+        icon: OrdersMajor,
         badge: '15',
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: ProductsMajorTwotone,
+        icon: ProductsMajor,
       },
     ]}
   />
@@ -204,17 +204,17 @@ Use to present a secondary action, related to a section and to title the section
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: HomeMajorMonotone,
+        icon: HomeMajor,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: OrdersMajorTwotone,
+        icon: OrdersMajor,
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: ProductsMajorTwotone,
+        icon: ProductsMajor,
       },
     ]}
   />
@@ -224,7 +224,7 @@ Use to present a secondary action, related to a section and to title the section
       {
         url: '/path/to/place',
         label: 'Online Store',
-        icon: OnlineStoreMajorTwotone,
+        icon: OnlineStoreMajor,
       },
     ]}
     action={{
@@ -247,12 +247,12 @@ Use to add a different action for an item than the main action, like to view or 
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: HomeMajorMonotone,
+        icon: HomeMajor,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: OrdersMajorTwotone,
+        icon: OrdersMajor,
         secondaryAction: {
           url: '/admin/orders/add',
           accessibilityLabel: 'Add an order',
@@ -262,7 +262,7 @@ Use to add a different action for an item than the main action, like to view or 
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: ProductsMajorTwotone,
+        icon: ProductsMajor,
       },
     ]}
   />
@@ -280,17 +280,17 @@ Use to show a limited number of items in a section with an option to expand the 
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: HomeMajorMonotone,
+        icon: HomeMajor,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: OrdersMajorTwotone,
+        icon: OrdersMajor,
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: ProductsMajorTwotone,
+        icon: ProductsMajor,
       },
     ]}
     rollup={{
@@ -314,17 +314,17 @@ Use to add a horizontal line below the section.
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: HomeMajorMonotone,
+        icon: HomeMajor,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: OrdersMajorTwotone,
+        icon: OrdersMajor,
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: ProductsMajorTwotone,
+        icon: ProductsMajor,
       },
     ]}
   />
@@ -333,7 +333,7 @@ Use to add a horizontal line below the section.
       {
         url: '/path/to/place',
         label: 'Online Store',
-        icon: OnlineStoreMajorTwotone,
+        icon: OnlineStoreMajor,
       },
     ]}
     separator

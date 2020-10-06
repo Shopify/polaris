@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from 'react';
-import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
+import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
@@ -161,7 +161,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
               )}
               tabIndex={tabIndex}
             >
-              <Icon source={MobileCancelMajorMonotone} />
+              <Icon source={MobileCancelMajor} />
             </button>
           </div>
         </CSSTransition>
@@ -175,16 +175,11 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         </div>
       ) : null;
 
-    const contextualSaveBarClassName = classNames(
-      styles.ContextualSaveBar,
-      newDesignLanguage && styles['ContextualSaveBar-newDesignLanguage'],
-    );
-
     const contextualSaveBarMarkup = (
       <CSSAnimation
         in={showContextualSaveBar}
-        className={contextualSaveBarClassName}
-        type={newDesignLanguage ? 'fadeUp' : 'fade'}
+        className={styles.ContextualSaveBar}
+        type="fade"
       >
         <ContextualSaveBar {...this.contextualSaveBar} />
       </CSSAnimation>

@@ -5,7 +5,7 @@ import {mountWithApp} from 'test-utilities';
 import {Checkbox} from 'components';
 
 import {CheckableButton} from '../CheckableButton';
-import {Key} from '../../../../../types';
+import {Key} from '../../../types';
 
 const CheckableButtonProps = {
   label: 'Test-Label',

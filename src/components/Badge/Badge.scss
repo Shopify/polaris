@@ -131,3 +131,7 @@ $pip-spacing: ($height - $pip-size) / 2;
     }
   }
 }
+
+.withinFilter {
+  border-radius: var(--p-border-radius-base, $height);
+}

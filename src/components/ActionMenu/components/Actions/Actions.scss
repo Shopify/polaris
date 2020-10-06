@@ -8,4 +8,8 @@
   > * {
     flex: 0 0 auto;
   }
+
+  &.newDesignLanguage {
+    justify-content: flex-end;
+  }
 }

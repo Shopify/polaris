@@ -215,6 +215,12 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       focusedInner && styles.focusedInner,
     );
 
+    const listItemClassName = classNames(
+      styles.ListItem,
+      focused && !focusedInner && styles.focused,
+      newDesignLanguage && styles.newDesignLanguage,
+    );
+
     let actionsMarkup: React.ReactNode | null = null;
     let disclosureMarkup: React.ReactNode | null = null;
 
@@ -321,20 +327,24 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     );
 
     return (
-      <div
-        ref={this.setNode}
-        className={className}
-        onClick={this.handleClick}
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}
-        onKeyUp={this.handleKeyUp}
-        onMouseOut={this.handleMouseOut}
-        testID="Item-Wrapper"
-        data-href={url}
-      >
-        {accessibleMarkup}
-        {containerMarkup}
-      </div>
+      <li className={listItemClassName}>
+        <div className={styles.ItemWrapper}>
+          <div
+            ref={this.setNode}
+            className={className}
+            onClick={this.handleClick}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onKeyUp={this.handleKeyUp}
+            onMouseOut={this.handleMouseOut}
+            testID="Item-Wrapper"
+            data-href={url}
+          >
+            {accessibleMarkup}
+            {containerMarkup}
+          </div>
+        </div>
+      </li>
     );
   }
 

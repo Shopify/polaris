@@ -327,21 +327,6 @@ describe('<Frame />', () => {
       });
     });
 
-    it('renders a ContextualSaveBar with a newDesignLanguage class when newDesignLanguage is true', () => {
-      const frame = mountWithApp(
-        <Frame topBar={<div />}>
-          <PolarisLoading />
-        </Frame>,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(frame).toContainReactComponent('div', {
-        className:
-          'ContextualSaveBar ContextualSaveBar-newDesignLanguage startFadeUp',
-      });
-    });
-
     it('renders a GlobalRibbon container with a newDesignLanguage class when newDesignLanguage is true', () => {
       const frame = mountWithApp(
         <Frame globalRibbon={<div />}>

@@ -30,7 +30,7 @@ $nav-max-width: rem(360px);
   }
 
   &.Navigation-newDesignLanguage {
-    border-right: 1px solid var(--p-border-subdued);
+    border-right: border('divider');
   }
 }
 

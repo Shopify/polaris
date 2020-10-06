@@ -134,6 +134,10 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   min-width: $item-min-width;
 }
 
+.titleWithIcon {
+  display: flex;
+}
+
 .Panel {
   display: block;
 
