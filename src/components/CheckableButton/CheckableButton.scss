@@ -117,7 +117,9 @@ $chekbox-label-margin: rem(20px);
   .newDesignLanguage & {
     height: var(--p-choice-size);
     width: var(--p-choice-size);
-    margin-left: calc(-1 * #{spacing(tight)} - var(--p-control-border-width));
+    margin-left: calc(
+      -1 * #{spacing(tight) + rem(1px)} - var(--p-control-border-width)
+    ); // 1px accounts for border
   }
 }
 
