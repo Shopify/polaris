@@ -170,7 +170,7 @@ export function Button({
         className={classNames(
           styles.DisclosureIcon,
           disclosure === 'up' && styles.DisclosureIconFacingUp,
-          loading && styles.Hidden
+          loading && styles.Hidden,
         )}
       >
         {disclosureIcon}
