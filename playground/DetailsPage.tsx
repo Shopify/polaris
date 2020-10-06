@@ -467,7 +467,7 @@ export function DetailsPage() {
       additionalMetaData="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
       secondaryActions={[
         {
-          content: 'Duplicate',
+          content: 'Dupe',
           icon: DuplicateMinor,
           // eslint-disable-next-line no-console
           onAction: () => console.log('duplicate'),
@@ -484,16 +484,37 @@ export function DetailsPage() {
           // eslint-disable-next-line no-console
           onAction: () => console.log('print'),
         },
+        {
+          content: 'Print2',
+          icon: PrintMinor,
+          // eslint-disable-next-line no-console
+          onAction: () => console.log('print2'),
+        },
+        {
+          content: 'Print3',
+          icon: PrintMinor,
+          // eslint-disable-next-line no-console
+          onAction: () => console.log('print3'),
+        },
       ]}
       actionGroups={[
         {
           title: 'Promote',
           icon: ExternalMinor,
-          actions: [{content: 'Promote'}],
+          actions: [
+            // eslint-disable-next-line no-console
+            {content: 'Promote', onAction: () => console.log('promote')},
+          ],
         },
         {
-          title: 'More actions',
-          actions: [{content: 'Embed on a website'}],
+          title: 'More',
+          actions: [
+            {
+              content: 'Embed on a website',
+              // eslint-disable-next-line no-console
+              onAction: () => console.log('embed'),
+            },
+          ],
         },
       ]}
       pagination={{

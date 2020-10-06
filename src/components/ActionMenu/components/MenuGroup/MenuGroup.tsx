@@ -45,10 +45,10 @@ export function MenuGroup({
 
   const handleOffsetWidth = useCallback(
     (width: number) => {
-      if (!getOffsetWidth) return;
+      if (!newDesignLanguage || !getOffsetWidth) return;
       getOffsetWidth(width);
     },
-    [getOffsetWidth],
+    [getOffsetWidth, newDesignLanguage],
   );
 
   const popoverActivator = newDesignLanguage ? (
