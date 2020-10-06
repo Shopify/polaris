@@ -170,6 +170,7 @@ export function Button({
         className={classNames(
           styles.DisclosureIcon,
           disclosure === 'up' && styles.DisclosureIconFacingUp,
+          loading && styles.Hidden,
         )}
       >
         {disclosureIcon}
@@ -208,9 +209,7 @@ export function Button({
         )}
       />
     </span>
-  ) : (
-    <span />
-  );
+  ) : null;
 
   const content =
     iconMarkup || disclosureIconMarkup ? (
