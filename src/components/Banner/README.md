@@ -261,8 +261,8 @@ Use when you want merchants to take an action after reading the banner.
 <Banner
   title="Some of your product variants are missing weights"
   status="warning"
-  action={{content: 'Edit variant weights', url: '#'}}
-  secondary={{content: 'Learn more', url: '#'}}
+  action={{content: 'Edit variant weights', url: ''}}
+  secondary={{content: 'Learn more', url: ''}}
   onDismiss={() => {}}
 >
   <p>
@@ -291,7 +291,7 @@ Use to update merchants about a change or give them advice.
 ```jsx
 <Banner
   title="USPS has updated their rates"
-  action={{content: 'Update rates', url: '#some-link'}}
+  action={{content: 'Update rates', url: ''}}
   secondaryAction={{content: 'Learn more'}}
   status="info"
   onDismiss={() => {}}
