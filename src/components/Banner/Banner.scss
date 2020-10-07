@@ -4,6 +4,9 @@ $accent-height: 3px;
 $heading-offset: rem(2px);
 $intermediate-spacing: spacing(base-tight);
 $ribbon-flex-basis: rem(32px);
+$action-min-height: control-height();
+$action-vertical-padding: ($action-min-height - line-height(body) - rem(2px)) /
+  2;
 $secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
 $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
@@ -275,9 +278,17 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   transition: box-shadow duration() easing();
 }
 
+.Button {
+  @include button-base;
+  @include text-style-button;
+  border: border();
+  border-radius: var(--p-border-radius-base, border-radius());
+  padding: $action-vertical-padding spacing(tight);
+}
+
 .newDesignLanguage {
   // stylelint-disable selector-max-class, selector-max-combinators
-  &.statusCritical .PrimaryAction > button {
+  &.statusCritical .PrimaryAction .Button {
     border-color: var(--p-border-critical-subdued);
     background: var(--p-surface-critical-subdued);
 
@@ -297,7 +308,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     }
   }
 
-  &.statusWarning .PrimaryAction > button {
+  &.statusWarning .PrimaryAction .Button {
     border-color: var(--p-border-warning-subdued);
     background: var(--p-surface-warning-subdued);
 
@@ -317,7 +328,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     }
   }
 
-  &.statusInfo .PrimaryAction > button {
+  &.statusInfo .PrimaryAction .Button {
     border-color: var(--p-border-highlight-subdued);
     background: var(--p-surface-highlight-subdued);
 
@@ -337,7 +348,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     }
   }
 
-  &.statusSuccess .PrimaryAction > button {
+  &.statusSuccess .PrimaryAction .Button {
     border-color: var(--p-border-success-subdued);
     background: var(--p-surface-success-subdued);
 
