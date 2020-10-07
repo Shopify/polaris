@@ -3,10 +3,7 @@ import {InlineError, Icon} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
-import {
-  CircleTickOutlineMinor,
-  CircleDisableMinor,
-} from '@shopify/polaris-icons';
+import {CircleTickOutlineMinor} from '@shopify/polaris-icons';
 
 import {Select} from '../Select';
 
@@ -207,10 +204,14 @@ describe('<Select />', () => {
     });
   });
 
-  describe('iconSource', () => {
-    it('shows an icon beside the option label if an icon is specified', () => {
+  describe('prefix', () => {
+    it('shows the prefix element beside the option label if specified', () => {
       const options = [
-        {value: 'one', label: 'One', iconSource: CircleTickOutlineMinor},
+        {
+          value: 'one',
+          label: 'One',
+          prefix: <Icon source={CircleTickOutlineMinor} />,
+        },
       ];
       const select = mountWithAppProvider(
         <Select label="Select" options={options} onChange={noop} />,

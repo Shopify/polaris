@@ -6,7 +6,7 @@ import {useFeatures} from '../../utilities/features';
 import {useUniqueId} from '../../utilities/unique-id';
 import {Labelled, LabelledProps, helpTextID} from '../Labelled';
 import {Icon} from '../Icon';
-import type {Error, IconSource} from '../../types';
+import type {Error} from '../../types';
 
 import styles from './Select.scss';
 
@@ -17,8 +17,8 @@ interface StrictOption {
   label: string;
   /** Option will be visible, but not selectable */
   disabled?: boolean;
-  /** Icon to display to the left of the option label. Does not show in the dropdown. */
-  iconSource?: IconSource;
+  /** Element to display to the left of the option label. Does not show in the dropdown. */
+  prefix?: React.ReactNode;
 }
 
 interface HideableStrictOption extends StrictOption {
@@ -135,10 +135,8 @@ export function Select({
 
   const selectedOption = getSelectedOption(normalizedOptions, value);
 
-  const optionIconMarkup = selectedOption.iconSource && (
-    <div className={styles.OptionIcon}>
-      <Icon source={selectedOption.iconSource} />
-    </div>
+  const optionIconMarkup = selectedOption.prefix && (
+    <div className={styles.Prefix}>{selectedOption.prefix}</div>
   );
 
   const contentMarkup = (
@@ -264,7 +262,7 @@ function flattenOptions(
 }
 
 function renderSingleOption(option: HideableStrictOption): React.ReactNode {
-  const {value, label, ...rest} = option;
+  const {value, label, prefix: _prefix, ...rest} = option;
   return (
     <option key={value} value={value} {...rest}>
       {label}
