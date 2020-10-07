@@ -8,7 +8,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Added `OutlineableAction` to the `ComplexActions` type ([#3405](https://github.com/Shopify/polaris-react/pull/3405))
+- Added `OutlineableAction` to the `ComplexAction` type ([#3405](https://github.com/Shopify/polaris-react/pull/3405))
 
 ### Bug fixes
 
