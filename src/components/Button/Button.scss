@@ -261,7 +261,7 @@ $stacking-order: (
   }
 }
 
-// stylelint-disable-next-line selector-max-class selector-max-specificity
+// stylelint-disable-next-line selector-max-class, selector-max-specificity
 .newDesignLanguage.loading.disabled svg {
   fill: var(--p-icon-subdued);
 }
