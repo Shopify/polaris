@@ -23,6 +23,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Added `spacing` prop to `DescriptionList` ([#3359](https://github.com/Shopify/polaris-react/pull/3359))
 - Export `BannerHandles` from `Banner` ([#3368](https://github.com/Shopify/polaris-react/pull/3368))
 - Added `prefix` prop to `ActionList` items ([#3313](https://github.com/Shopify/polaris-react/pull/3313))
+- Added `OutlineableAction` to the `ComplexActions` type ([#3405](https://github.com/Shopify/polaris-react/pull/3405))
 
 ### Bug fixes
 

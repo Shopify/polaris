@@ -160,7 +160,7 @@ export interface LoadableAction extends Action {
 }
 
 export interface OutlineableAction extends Action {
-  /** Should a outline be displayed */
+  /** Should action be displayed as an outlined button */
   outline?: boolean;
 }
 
