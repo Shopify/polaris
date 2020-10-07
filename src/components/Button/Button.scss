@@ -261,6 +261,10 @@ $stacking-order: (
   }
 }
 
+.newDesignLanguage.loading.disabled svg {
+  fill: var(--p-icon-subdued);
+}
+
 .pressed {
   background: color(sky);
   border-color: $pressed-border-color;
