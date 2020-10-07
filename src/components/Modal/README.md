@@ -704,7 +704,7 @@ function ModalExample() {
 
 <!-- example-for: web -->
 
-Use an external activator when technical limitations prevent you from passing the activator as element or a ref. Make sure to focus the activator on close when choosing this approach.
+Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach.
 See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 
 ```jsx
