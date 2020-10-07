@@ -1,5 +1,5 @@
 @import '../../styles/common';
 
-.UnstyledButton {
+[data-polaris-unstyled-button] {
   @include unstyled-button;
 }

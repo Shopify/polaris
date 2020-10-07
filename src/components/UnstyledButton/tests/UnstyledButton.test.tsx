@@ -1,5 +1,4 @@
 import React from 'react';
-
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';

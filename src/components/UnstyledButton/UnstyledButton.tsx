@@ -1,10 +1,9 @@
 import React, {useRef} from 'react';
 
-import {classNames} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {UnstyledLink} from '../UnstyledLink';
 
-import styles from './UnstyledButton.scss';
+import './UnstyledButton.scss';
 
 export interface UnstyledButtonProps {
   /** The content to display inside the button */
@@ -89,11 +88,6 @@ export function UnstyledButton({
     hasGivenDeprecationWarning.current = true;
   }
 
-  const buttonClassName = classNames(
-    styles.UnstyledButton,
-    className && className,
-  );
-
   const type = submit ? 'submit' : 'button';
   const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
 
@@ -104,7 +98,12 @@ export function UnstyledButton({
       // Render an `<a>` so toggling disabled/enabled state changes only the
       // `href` attribute instead of replacing the whole element.
       // eslint-disable-next-line jsx-a11y/anchor-is-valid
-      <a id={id} className={buttonClassName} aria-label={accessibilityLabel}>
+      <a
+        id={id}
+        className={className}
+        aria-label={accessibilityLabel}
+        data-polaris-unstyled-button
+      >
         {children}
       </a>
     ) : (
@@ -119,8 +118,9 @@ export function UnstyledButton({
         onMouseUp={handleMouseUpByBlurring}
         onMouseEnter={onMouseEnter}
         onTouchStart={onTouchStart}
-        className={buttonClassName}
+        className={className}
         aria-label={accessibilityLabel}
+        data-polaris-unstyled-button
         {...rest}
       >
         {children}
@@ -140,12 +140,13 @@ export function UnstyledButton({
         onMouseUp={handleMouseUpByBlurring}
         onMouseEnter={onMouseEnter}
         onTouchStart={onTouchStart}
-        className={buttonClassName}
+        className={className}
         disabled={disabled}
         aria-label={accessibilityLabel}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         aria-pressed={ariaPressedStatus}
+        data-polaris-unstyled-button
         {...rest}
       >
         {children}
