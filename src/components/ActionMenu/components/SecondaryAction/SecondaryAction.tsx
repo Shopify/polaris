@@ -7,11 +7,13 @@ import {useFeatures} from '../../../../utilities/features';
 import styles from './SecondaryAction.scss';
 
 interface SecondaryAction extends ButtonProps {
+  onAction?(): void;
   getOffsetWidth?(width: number): void;
 }
 
 export function SecondaryAction({
   children,
+  onAction,
   getOffsetWidth,
   ...rest
 }: SecondaryAction) {
@@ -27,7 +29,9 @@ export function SecondaryAction({
 
   return (
     <span className={styles.SecondaryAction} ref={secondaryActionsRef}>
-      <Button {...rest}>{children}</Button>
+      <Button onClick={onAction} {...rest}>
+        {children}
+      </Button>
     </span>
   );
 }
