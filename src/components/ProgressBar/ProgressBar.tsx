@@ -6,6 +6,7 @@ import {useI18n} from '../../utilities/i18n';
 import styles from './ProgressBar.scss';
 
 type Size = 'small' | 'medium' | 'large';
+type Color = 'highlight' | 'primary' | 'success';
 
 export interface ProgressBarProps {
   /**
@@ -18,14 +19,24 @@ export interface ProgressBarProps {
    * @default 'medium'
    */
   size?: Size;
+  /**
+   * Size of progressbar
+   * @default 'highlight'
+   */
+  color?: Color;
 }
 
-export function ProgressBar({progress = 0, size = 'medium'}: ProgressBarProps) {
+export function ProgressBar({
+  progress = 0,
+  size = 'medium',
+  color = 'highlight',
+}: ProgressBarProps) {
   const i18n = useI18n();
 
   const className = classNames(
     styles.ProgressBar,
     size && styles[variationName('size', size)],
+    color && styles[variationName('color', color)],
   );
 
   const warningMessage = i18n.translate(

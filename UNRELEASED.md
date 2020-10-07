@@ -8,6 +8,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added new `color` prop to ProgressBar
+
 ### Bug fixes
 
 ### Documentation
