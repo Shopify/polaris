@@ -8,7 +8,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Added `RefOject` as a possible type for the `activator` prop on `Modal` ([#3395](https://github.com/Shopify/polaris-react/pull/3395))
 - Added `OutlineableAction` to the `ComplexActions` type ([#3405](https://github.com/Shopify/polaris-react/pull/3405))
 
 ### Bug fixes
