@@ -261,6 +261,11 @@ $stacking-order: (
   }
 }
 
+// stylelint-disable-next-line selector-max-class selector-max-specificity
+.newDesignLanguage.loading.disabled svg {
+  fill: var(--p-icon-subdued);
+}
+
 .pressed {
   background: color(sky);
   border-color: $pressed-border-color;
