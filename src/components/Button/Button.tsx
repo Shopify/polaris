@@ -5,12 +5,12 @@ import {classNames, variationName} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
-import {UnstyledLink} from '../UnstyledLink';
 import {Icon} from '../Icon';
 import type {IconProps, ConnectedDisclosure} from '../../types';
 import {Spinner} from '../Spinner';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
+import {UnstyledButton} from '../UnstyledButton';
 
 import styles from './Button.scss';
 
@@ -300,7 +300,7 @@ export function Button({
         {content}
       </a>
     ) : (
-      <UnstyledLink
+      <UnstyledButton
         id={id}
         url={url}
         external={external}
@@ -315,11 +315,11 @@ export function Button({
         aria-label={accessibilityLabel}
       >
         {content}
-      </UnstyledLink>
+      </UnstyledButton>
     );
   } else {
     buttonMarkup = (
-      <button
+      <UnstyledButton
         id={id}
         type={type}
         onClick={onClick}
@@ -341,7 +341,7 @@ export function Button({
         aria-busy={loading ? true : undefined}
       >
         {content}
-      </button>
+      </UnstyledButton>
     );
   }
 
