@@ -545,40 +545,22 @@ function ConnectedFieldsExample() {
   const handleSelectChange = useCallback((value) => setSelectValue(value), []);
 
   return (
-    <>
-      <TextField
-        label="Weight"
-        type="number"
-        value={textFieldValue}
-        onChange={handleTextFieldChange}
-        connectedLeft={
-          <Select
-            value={selectValue}
-            label="Weight unit"
-            onChange={handleSelectChange}
-            labelHidden
-            options={['kg', 'lb']}
-          />
-        }
-        connectedRight={<Button>Submit</Button>}
-      />
-      <TextField
-        label="Weight"
-        type="number"
-        value={textFieldValue}
-        onChange={handleTextFieldChange}
-        connectedLeft={
-          <Select
-            value={selectValue}
-            label="Weight unit"
-            onChange={handleSelectChange}
-            labelHidden
-            options={['kg', 'lb']}
-          />
-        }
-        connectedRight={<Button icon={PlusMinor}>Submit</Button>}
-      />
-    </>
+    <TextField
+      label="Weight"
+      type="number"
+      value={textFieldValue}
+      onChange={handleTextFieldChange}
+      connectedLeft={
+        <Select
+          value={selectValue}
+          label="Weight unit"
+          onChange={handleSelectChange}
+          labelHidden
+          options={['kg', 'lb']}
+        />
+      }
+      connectedRight={<Button>Submit</Button>}
+    />
   );
 }
 ```
