@@ -2,8 +2,10 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import debounce from 'lodash/debounce';
 
 import {useFeatures} from '../../../../utilities/features';
+import {useI18n} from '../../../../utilities/i18n';
 import {classNames} from '../../../../utilities/css';
 import type {
+  ActionListItemDescriptor,
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../../../types';
@@ -25,6 +27,7 @@ interface Props {
 const ACTION_SPACING = 4;
 
 export function Actions({actions = [], groups = []}: Props) {
+  const i18n = useI18n();
   const {newDesignLanguage} = useFeatures();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
   const menuGroupWidthRef = useRef<number>(0);
@@ -39,13 +42,17 @@ export function Actions({actions = [], groups = []}: Props) {
   const [rolledUpActions, setRolledUpActions] = useState<
     (MenuActionDescriptor | MenuGroupDescriptor)[]
   >([]);
+  const defaultRollupGroup: MenuGroupDescriptor = {
+    title: i18n.translate('Polaris.Actions.moreActions'),
+    actions: [],
+  };
   const lastMenuGroup = [...groups].pop();
-  const lastMenuGroupWidth = lastMenuGroup ? [...actionWidths].pop() : 0;
-  const handleActionsOffsetWidth = useCallback(
-    (width: number) =>
-      setActionWidths((actionWidths) => [...actionWidths, width]),
-    [],
-  );
+  const lastMenuGroupWidth = [...actionWidths].pop() || 0;
+
+  const handleActionsOffsetWidth = useCallback((width: number) => {
+    setActionWidths((actionWidths) => [...actionWidths, width]);
+  }, []);
+
   const handleMenuGroupToggle = useCallback(
     (group: string) => setActiveMenuGroup(activeMenuGroup ? undefined : group),
     [activeMenuGroup],
@@ -115,12 +122,13 @@ export function Actions({actions = [], groups = []}: Props) {
     newDesignLanguage && styles.newDesignLanguage,
   );
 
-  const actionsMarkup = actions.map((action, index) => {
-    if (showableActions && showableActions.length >= 0) return null;
+  const actionsMarkup = actions.map((action) => {
+    if (newDesignLanguage && showableActions.length >= 0) return null;
+
     const {content, onAction, ...rest} = action;
     return newDesignLanguage ? (
       <SecondaryAction
-        key={index}
+        key={content}
         onClick={onAction}
         {...rest}
         getOffsetWidth={handleActionsOffsetWidth}
@@ -129,34 +137,58 @@ export function Actions({actions = [], groups = []}: Props) {
       </SecondaryAction>
     ) : (
       <MenuAction
-        key={`MenuAction-${index}`}
+        key={content}
         content={content}
         onAction={onAction}
         {...rest}
       />
     );
   });
-  // Map over default group (will need translations) if group.length === 0 and rollup actions > 0
-  const groupsMarkup = groups
-    .filter((group) => {
-      // Make sure no hidden groups render
-      // Return true if group is lastMenu group or group doesn't exist in rolledup
-      return group === lastMenuGroup || !rolledUpActions.includes(group);
-    })
-    .map((action, index) => {
-      // Always render final group with default title if need be
-      const {title, actions, ...rest} = action;
-      const finalRolledUpActions = rolledUpActions
-        .map((action) => (isMenuGroup(action) ? action.actions : action))
-        // VS Code doesn't recognize .flat()
-        .flat();
 
-      return actions.length > 0 ? (
+  const rollUppableActionsMarkup =
+    showableActions.length > 0
+      ? showableActions.map(
+          (action) =>
+            action.content && (
+              <SecondaryAction
+                key={action.content}
+                {...action}
+                getOffsetWidth={handleActionsOffsetWidth}
+              >
+                {action.content}
+              </SecondaryAction>
+            ),
+        )
+      : null;
+
+  const groupsMarkup = [...groups, defaultRollupGroup]
+    .filter((group) => {
+      return groups.length === 0 && group === defaultRollupGroup
+        ? group
+        : group === lastMenuGroup ||
+            (group !== defaultRollupGroup && !rolledUpActions.includes(group));
+    })
+    .map((group) => {
+      const {title, actions: groupActions, ...rest} = group;
+      const finalRolledUpActions = rolledUpActions.reduce((memo, action) => {
+        memo.push(...(isMenuGroup(action) ? action.actions : [action]));
+
+        return memo;
+      }, [] as ActionListItemDescriptor[]);
+
+      const isDefaultGroup = group === defaultRollupGroup;
+
+      return (!isDefaultGroup && finalRolledUpActions.length === 0) ||
+        groupActions.length ||
+        actions.length ? (
         <MenuGroup
-          key={`MenuGroup-${index}`}
+          key={title}
           title={title}
           active={title === activeMenuGroup}
-          actions={[...finalRolledUpActions, ...actions]}
+          actions={[
+            ...(finalRolledUpActions || actions),
+            ...(!isDefaultGroup ? groupActions : []),
+          ]}
           {...rest}
           onOpen={handleMenuGroupToggle}
           onClose={handleMenuGroupClose}
@@ -165,34 +197,22 @@ export function Actions({actions = [], groups = []}: Props) {
       ) : null;
     });
 
+  const groupedActionsMarkup = newDesignLanguage ? (
+    <ButtonGroup spacing="extraTight">
+      {rollUppableActionsMarkup}
+      {actionsMarkup}
+      {groupsMarkup}
+    </ButtonGroup>
+  ) : (
+    <>
+      {actionsMarkup}
+      {groupsMarkup}
+    </>
+  );
+
   return (
     <div className={className} ref={actionsLayoutRef}>
-      {newDesignLanguage ? (
-        <ButtonGroup spacing="extraTight">
-          {showableActions && showableActions.length > 0
-            ? showableActions.map((action) => {
-                return (
-                  !isMenuGroup(action) && (
-                    <SecondaryAction
-                      key={action.content}
-                      {...action}
-                      getOffsetWidth={handleActionsOffsetWidth}
-                    >
-                      {action.content}
-                    </SecondaryAction>
-                  )
-                );
-              })
-            : null}
-          {groupsMarkup}
-          {actionsMarkup}
-        </ButtonGroup>
-      ) : (
-        <>
-          {groupsMarkup}
-          {actionsMarkup}
-        </>
-      )}
+      {groupedActionsMarkup}
       <EventListener event="resize" handler={handleResize} />
     </div>
   );

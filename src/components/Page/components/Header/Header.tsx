@@ -180,12 +180,17 @@ export function Header({
       title,
     });
 
+    const className = classNames(
+      styles.Row,
+      newDesignLanguage && styles.RowCondensed,
+    );
+
     return (
       <div className={headerClassNames}>
         <ConditionalRender
           condition={[slot1, slot2, slot3, slot4].some(notNull)}
         >
-          <div className={styles.Row}>
+          <div className={className}>
             <div className={styles.LeftAlign}>
               {slot1}
               {slot2}
@@ -350,7 +355,7 @@ function determineLayout({
       slots: {
         slot1: breadcrumbMarkup,
         slot2: pageTitleMarkup,
-        slot3: null,
+        slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetaDataMarkup,
         slot6: additionalNavigationMarkup,

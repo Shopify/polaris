@@ -12,6 +12,7 @@ import {
   OrdersMajor,
   PrintMinor,
   ProductsMajor,
+  SaveMinor,
   SettingsMajor,
   ViewMinor,
 } from '@shopify/polaris-icons';
@@ -462,14 +463,22 @@ export function DetailsPage() {
   // ---- Page markup ----
   const actualPageMarkup = (
     <Page
+      fullWidth
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
       title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
+      // title="Order #1001"
       titleMetadata={<Badge status="success">Success badge</Badge>}
       additionalNavigation={<Avatar initials="JD" />}
+      primaryAction={{
+        content: 'Save this page',
+        icon: SaveMinor,
+        // eslint-disable-next-line no-console
+        onAction: () => console.log('save'),
+      }}
       additionalMetaData="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
       secondaryActions={[
         {
-          content: 'Dupe',
+          content: 'Duplicate',
           icon: DuplicateMinor,
           // eslint-disable-next-line no-console
           onAction: () => console.log('duplicate'),
@@ -485,18 +494,6 @@ export function DetailsPage() {
           icon: PrintMinor,
           // eslint-disable-next-line no-console
           onAction: () => console.log('print'),
-        },
-        {
-          content: 'Print2',
-          icon: PrintMinor,
-          // eslint-disable-next-line no-console
-          onAction: () => console.log('print2'),
-        },
-        {
-          content: 'Print3',
-          icon: PrintMinor,
-          // eslint-disable-next-line no-console
-          onAction: () => console.log('print3'),
         },
       ]}
       actionGroups={[
@@ -515,6 +512,11 @@ export function DetailsPage() {
               content: 'Embed on a website',
               // eslint-disable-next-line no-console
               onAction: () => console.log('embed'),
+            },
+            {
+              content: 'Share',
+              // eslint-disable-next-line no-console
+              onAction: () => console.log('share'),
             },
           ],
         },
