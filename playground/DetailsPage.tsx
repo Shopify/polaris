@@ -1,25 +1,30 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {
-  CirclePlusMinor,
-  DuplicateMinor,
-  PrintMinor,
-  ExternalMinor,
-  ViewMinor,
-  HomeMajor,
-  OrdersMajor,
-  ProductsMajor,
-  CustomersMajor,
   AnalyticsMajor,
-  MarketingMajor,
-  DiscountsMajor,
   AppsMajor,
+  CirclePlusMinor,
+  CustomersMajor,
+  DiscountsMajor,
+  DuplicateMinor,
+  ExternalMinor,
+  HomeMajor,
+  MarketingMajor,
+  OrdersMajor,
+  PrintMinor,
+  ProductsMajor,
   SettingsMajor,
+  ViewMinor,
 } from '@shopify/polaris-icons';
 
 import {
   ActionList,
+  Avatar,
+  Badge,
+  Caption,
   Card,
   ContextualSaveBar,
+  DropZone,
+  DropZoneProps,
   FormLayout,
   Frame,
   Layout,
@@ -27,20 +32,16 @@ import {
   Modal,
   Navigation,
   Page,
+  Select,
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
+  Stack,
   TextContainer,
   TextField,
+  Thumbnail,
   Toast,
   TopBar,
-  Badge,
-  Select,
-  DropZone,
-  DropZoneProps,
-  Stack,
-  Caption,
-  Thumbnail,
 } from '../src';
 
 import styles from './DetailsPage.scss';
@@ -464,6 +465,7 @@ export function DetailsPage() {
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
       title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
       titleMetadata={<Badge status="success">Success badge</Badge>}
+      additionalNavigation={<Avatar initials="JD" />}
       additionalMetaData="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
       secondaryActions={[
         {

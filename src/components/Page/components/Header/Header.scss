@@ -89,6 +89,10 @@ $action-menu-rollup-computed-width: rem(40px);
   @include page-content-when-not-fully-condensed {
     margin: 0 spacing(extra-loose);
   }
+
+  .newDesignLanguage & {
+    margin-right: 0;
+  }
 }
 
 ///
