@@ -304,6 +304,9 @@ export type {TrapFocusProps} from './TrapFocus';
 export {Truncate} from './Truncate';
 export type {TruncateProps} from './Truncate';
 
+export {UnstyledButton, unstyledButtonFrom} from './UnstyledButton';
+export type {UnstyledButtonProps} from './UnstyledButton';
+
 export {UnstyledLink} from './UnstyledLink';
 export type {UnstyledLinkProps} from './UnstyledLink';
 

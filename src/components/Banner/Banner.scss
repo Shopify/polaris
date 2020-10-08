@@ -275,9 +275,20 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   transition: box-shadow duration() easing();
 }
 
+.Button {
+  @include button-base;
+  @include text-style-button;
+  @include focus-ring($border-width: rem(2px));
+  color: var(--p-text);
+
+  &:focus {
+    @include focus-ring($style: 'focused');
+  }
+}
+
 .newDesignLanguage {
   // stylelint-disable selector-max-class, selector-max-combinators
-  &.statusCritical .PrimaryAction > button {
+  &.statusCritical .PrimaryAction .Button {
     border-color: var(--p-border-critical-subdued);
     background: var(--p-surface-critical-subdued);
 
@@ -297,7 +308,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     }
   }
 
-  &.statusWarning .PrimaryAction > button {
+  &.statusWarning .PrimaryAction .Button {
     border-color: var(--p-border-warning-subdued);
     background: var(--p-surface-warning-subdued);
 
@@ -317,7 +328,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     }
   }
 
-  &.statusInfo .PrimaryAction > button {
+  &.statusInfo .PrimaryAction .Button {
     border-color: var(--p-border-highlight-subdued);
     background: var(--p-surface-highlight-subdued);
 
@@ -337,7 +348,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     }
   }
 
-  &.statusSuccess .PrimaryAction > button {
+  &.statusSuccess .PrimaryAction .Button {
     border-color: var(--p-border-success-subdued);
     background: var(--p-surface-success-subdued);
 
