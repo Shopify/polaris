@@ -56,7 +56,7 @@ $stacking-order: (
 
 .Input:focus {
   ~ .Backdrop {
-    background-color: var(--p-action-secondary, color('white'));
+    background-color: var(--p-surface-neutral, color('white'));
   }
 
   ~ .BackdropShowFocusBorder {
@@ -70,7 +70,7 @@ $stacking-order: (
 
 .focused {
   .Backdrop {
-    background-color: var(--p-action-secondary, color('white'));
+    background-color: var(--p-surface-neutral, color('white'));
   }
 
   .BackdropShowFocusBorder {
@@ -165,10 +165,7 @@ $stacking-order: (
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(
-    --p-on-surface-background,
-    var(--top-bar-background-lighter)
-  );
+  background-color: var(--p-surface-neutral, var(--top-bar-background-lighter));
   will-change: background-color;
   transition: background-color duration() easing();
   border-radius: var(--p-border-radius-base, border-radius());
@@ -178,7 +175,7 @@ $stacking-order: (
 @keyframes toLightBackground {
   to {
     background-color: var(
-      --p-action-secondary,
+      --p-surface-neutral,
       var(--top-bar-background-lighter)
     );
   }
