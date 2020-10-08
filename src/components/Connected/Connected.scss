@@ -26,6 +26,7 @@ $stacking-order: (
 // TextField.scss has a dependency due to this override.
 // stylelint-disable declaration-no-important
 
+// stylelint-disable-next-line selector-max-combinators, selector-max-specificity
 .Connected:not(.newDesignLanguage) .Item-primary {
   z-index: z-index(primary, $stacking-order);
   flex: 1 1 auto;
@@ -41,6 +42,7 @@ $stacking-order: (
   }
 }
 
+// stylelint-disable-next-line selector-max-combinators, selector-max-specificity
 .Connected:not(.newDesignLanguage) .Item-connection {
   &:first-child * {
     border-top-right-radius: 0 !important;
