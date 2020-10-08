@@ -26,38 +26,42 @@ $stacking-order: (
 // TextField.scss has a dependency due to this override.
 // stylelint-disable declaration-no-important
 
-// stylelint-disable-next-line selector-max-combinators, selector-max-specificity
 .Connected:not(.newDesignLanguage) .Item-primary {
   z-index: z-index(primary, $stacking-order);
   flex: 1 1 auto;
 
+  // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
   &:not(:first-child) * {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
   }
 
+  // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
   &:not(:last-child) * {
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
   }
 }
 
-// stylelint-disable-next-line selector-max-combinators, selector-max-specificity
 .Connected:not(.newDesignLanguage) .Item-connection {
+  // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
   &:first-child * {
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
 
+    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
     &::after {
       border-top-right-radius: 0 !important;
       border-bottom-right-radius: 0 !important;
     }
   }
 
+  // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
   &:last-child * {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
 
+    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
     &::after {
       border-top-left-radius: 0 !important;
       border-bottom-left-radius: 0 !important;
