@@ -8,6 +8,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added support for a contrast logo to appear on the mobile navigation
+
 ### Bug fixes
 
 ### Documentation
