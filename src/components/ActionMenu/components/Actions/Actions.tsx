@@ -123,9 +123,14 @@ export function Actions({actions = [], groups = []}: Props) {
   );
 
   const actionsMarkup = actions.map((action) => {
-    if (newDesignLanguage && showableActions.length >= 0) return null;
+    if (
+      (newDesignLanguage && showableActions.length > 0) ||
+      rolledUpActions.includes(action)
+    )
+      return null;
 
     const {content, onAction, ...rest} = action;
+
     return newDesignLanguage ? (
       <SecondaryAction
         key={content}
@@ -178,23 +183,46 @@ export function Actions({actions = [], groups = []}: Props) {
 
       const isDefaultGroup = group === defaultRollupGroup;
 
-      return (!isDefaultGroup && finalRolledUpActions.length === 0) ||
-        groupActions.length ||
-        actions.length ? (
-        <MenuGroup
-          key={title}
-          title={title}
-          active={title === activeMenuGroup}
-          actions={[
-            ...(finalRolledUpActions || actions),
-            ...(!isDefaultGroup ? groupActions : []),
-          ]}
-          {...rest}
-          onOpen={handleMenuGroupToggle}
-          onClose={handleMenuGroupClose}
-          getOffsetWidth={handleActionsOffsetWidth}
-        />
-      ) : null;
+      if (
+        isDefaultGroup &&
+        groups.length === 0 &&
+        finalRolledUpActions.length > 0
+      ) {
+        return (
+          <MenuGroup
+            key={title}
+            title={title}
+            active={title === activeMenuGroup}
+            actions={[
+              ...(finalRolledUpActions || actions),
+              ...(!isDefaultGroup ? groupActions : []),
+            ]}
+            {...rest}
+            onOpen={handleMenuGroupToggle}
+            onClose={handleMenuGroupClose}
+            getOffsetWidth={handleActionsOffsetWidth}
+          />
+        );
+      } else if (
+        !isDefaultGroup &&
+        (groups.length > 0 || groupActions.length || actions.length)
+      ) {
+        return (
+          <MenuGroup
+            key={title}
+            title={title}
+            active={title === activeMenuGroup}
+            actions={[
+              ...(finalRolledUpActions || actions),
+              ...(!isDefaultGroup ? groupActions : []),
+            ]}
+            {...rest}
+            onOpen={handleMenuGroupToggle}
+            onClose={handleMenuGroupClose}
+            getOffsetWidth={handleActionsOffsetWidth}
+          />
+        );
+      }
     });
 
   const groupedActionsMarkup = newDesignLanguage ? (

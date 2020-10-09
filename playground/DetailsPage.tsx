@@ -466,7 +466,6 @@ export function DetailsPage() {
       fullWidth
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
       title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
-      // title="Order #1001"
       titleMetadata={<Badge status="success">Success badge</Badge>}
       additionalNavigation={<Avatar initials="JD" />}
       primaryAction={{
@@ -506,7 +505,7 @@ export function DetailsPage() {
           ],
         },
         {
-          title: 'More',
+          title: 'More actions',
           actions: [
             {
               content: 'Embed on a website',
