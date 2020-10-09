@@ -185,6 +185,7 @@ export function DetailsPage() {
       initials="D"
       open={userMenuActive}
       onToggle={toggleUserMenuActive}
+      colorScheme="dark"
     />
   );
 
