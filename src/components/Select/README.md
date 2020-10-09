@@ -214,14 +214,14 @@ function PrefixExample() {
 
   const options = [
     {
-      label: 'enabled',
-      value: 'enabled',
-      prefix: <Icon source={CircleTickOutlineMinor} />,
+      label: 'Increase',
+      value: 'Increase',
+      prefix: <Icon source={CaretUpMinor} />,
     },
     {
-      label: 'disabled',
-      value: 'disabled',
-      prefix: <Icon source={CircleDisableMinor} />,
+      label: 'Decrease',
+      value: 'Decrease',
+      prefix: <Icon source={CaretDownMinor} />,
     },
   ];
 

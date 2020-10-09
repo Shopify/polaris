@@ -222,7 +222,6 @@ import {
   ConversationMinor,
   DeleteMinor,
   CircleDisableMinor,
-  CircleTickOutlineMinor,
   DisputeMinor,
   DuplicateMinor,
   EmbedMinor,
