@@ -3,8 +3,6 @@ import React, {useRef} from 'react';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {UnstyledLink} from '../UnstyledLink';
 
-import './UnstyledButton.scss';
-
 export interface UnstyledButtonProps {
   /** The content to display inside the button */
   children?: React.ReactNode;
@@ -146,7 +144,6 @@ export function UnstyledButton({
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         aria-pressed={ariaPressedStatus}
-        data-polaris-unstyled-button
         {...rest}
       >
         {children}
