@@ -361,11 +361,13 @@ $stacking-order: (
   }
 
   &.disabled {
-    color: var(--p-text-disabled);
+    .Input {
+      color: var(--p-text-disabled);
+    }
 
     > .Backdrop {
-      background-color: var(--p-action-secondary-disabled);
-      border-top-color: var(--p-border-neutral-subdued);
+      background-color: var(--p-surface-disabled);
+      border-top-color: var(--p-border-disabled);
     }
 
     svg {
