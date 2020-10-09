@@ -415,16 +415,16 @@ $stacking-order: (
     --p-text-field-spinner-border-radius: calc(
       var(--p-border-radius-base) - var(--p-text-field-spinner-offset)
     );
-    background: var(--p-action-secondary);
+    background: var(--p-surface-neutral);
     border-radius: var(--p-text-field-spinner-border-radius);
     border-left: var(--p-override-none);
 
     &:hover {
-      background: var(--p-action-secondary-hovered);
+      background: var(--p-surface-neutral-hovered);
     }
 
     &:active {
-      background: var(--p-action-secondary-pressed);
+      background: var(--p-surface-neutral-pressed);
       box-shadow: none;
     }
 
