@@ -7,7 +7,7 @@ import React, {
   AriaAttributes,
 } from 'react';
 
-import {InversableColorScheme, ThemeProvider} from '../ThemeProvider';
+import type {InversableColorScheme} from '../ThemeProvider';
 import {
   findFirstFocusableNodeIncludingDisabled,
   focusNextFocusableNode,
@@ -175,6 +175,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
         onClose={handleClose}
         active={active}
         fixed={fixed}
+        colorScheme={colorScheme}
         {...rest}
       >
         {children}
@@ -185,7 +186,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
   return (
     <WrapperComponent ref={activatorContainer}>
       {Children.only(activator)}
-      <ThemeProvider theme={{colorScheme}}>{portal}</ThemeProvider>
+      {portal}
     </WrapperComponent>
   );
 };
