@@ -1,5 +1,8 @@
 {
   "Polaris": {
+    "Actions": {
+      "moreActions": "More actions"
+    },
     "Avatar": {
       "label": "Avatar",
       "labelWithInitials": "Avatar with initials {initials}"
