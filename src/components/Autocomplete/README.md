@@ -77,7 +77,7 @@ function AutocompleteExample() {
 
     setSelectedOptions(selected);
     setInputValue(selectedValue);
-  }, []);
+  }, [options]);
 
   const textField = (
     <Autocomplete.TextField
