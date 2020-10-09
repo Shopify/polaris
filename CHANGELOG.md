@@ -8,6 +8,13 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.7.0 - 2020-10-09
+
+### Enhancements
+
+- Added `OutlineableAction` to the `ComplexAction` type ([#3405](https://github.com/Shopify/polaris-react/pull/3405))
+- Added `UnstyledButton` component and refactored `Banner` to use it ([#32326](https://github.com/Shopify/polaris-react/pull/32326))
+
 ## 5.6.1 - 2020-10-09
 
 ### Bug fixes
