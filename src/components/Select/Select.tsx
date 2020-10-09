@@ -135,14 +135,14 @@ export function Select({
 
   const selectedOption = getSelectedOption(normalizedOptions, value);
 
-  const optionIconMarkup = selectedOption.prefix && (
+  const prefixMarkup = selectedOption.prefix && (
     <div className={styles.Prefix}>{selectedOption.prefix}</div>
   );
 
   const contentMarkup = (
     <div className={styles.Content} aria-hidden aria-disabled={disabled}>
       {inlineLabelMarkup}
-      {optionIconMarkup}
+      {prefixMarkup}
       <span className={styles.SelectedOption}>{selectedOption.label}</span>
       <span className={styles.Icon}>
         <Icon source={SelectMinor} />

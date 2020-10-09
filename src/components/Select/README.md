@@ -200,6 +200,42 @@ Use for selections that aren’t currently available. The surrounding interface 
 
 <!-- /content-for -->
 
+### Select with prefix
+
+<!-- example-for: web -->
+
+Renders any React element to the left of individual select options. Does not show in the dropdown.
+
+```jsx
+function PrefixExample() {
+  const [selected, setSelected] = useState('enabled');
+
+  const handleSelectChange = useCallback((value) => setSelected(value), []);
+
+  const options = [
+    {
+      label: 'enabled',
+      value: 'enabled',
+      prefix: <Icon source={CircleTickOutlineMinor} />,
+    },
+    {
+      label: 'disabled',
+      value: 'disabled',
+      prefix: <Icon source={CircleDisableMinor} />,
+    },
+  ];
+
+  return (
+    <Select
+      label="Permission"
+      options={options}
+      onChange={handleSelectChange}
+      value={selected}
+    />
+  );
+}
+```
+
 ### Select with validation error
 
 <!-- example-for: web -->
