@@ -78,7 +78,7 @@ $stacking-order: (
   }
 
   .Icon {
-    @include recolor-icon(var(--p-icon color('ink', 'lightest')));
+    @include recolor-icon(var(--p-icon, color('ink', 'lightest')));
   }
 }
 
