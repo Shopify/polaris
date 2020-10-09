@@ -237,7 +237,7 @@ function AutocompleteExample() {
         setLoading(false);
       }, 300);
     },
-    [deselectedOptions],
+    [deselectedOptions, options, loading],
   );
 
   const updateSelection = useCallback((selected) => {
@@ -249,7 +249,7 @@ function AutocompleteExample() {
     });
     setSelectedOptions(selected);
     setInputValue(selectedText);
-  }, []);
+  }, [options]);
 
   const textField = (
     <Autocomplete.TextField
@@ -297,7 +297,7 @@ function AutoCompleteLazyLoadExample() {
     if (nextVisibleOptionIndex <= options.length - 1) {
       setVisibleOptionIndex(nextVisibleOptionIndex);
     }
-  }, [visibleOptionIndex]);
+  }, [visibleOptionIndex, options.length]);
 
   const removeTag = useCallback(
     (tag) => () => {
@@ -328,7 +328,7 @@ function AutoCompleteLazyLoadExample() {
       }
       setOptions(resultOptions);
     },
-    [deselectedOptions],
+    [deselectedOptions, options],
   );
 
   const textField = (
