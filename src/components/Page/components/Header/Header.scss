@@ -56,6 +56,8 @@ $action-menu-rollup-computed-width: rem(40px);
   &.newDesignLanguage {
     margin-right: spacing();
   }
+
+  @include print-hidden;
 }
 
 .PaginationWrapper {
@@ -79,6 +81,8 @@ $action-menu-rollup-computed-width: rem(40px);
       }
     }
   }
+
+  @include print-hidden;
 }
 
 .AdditionalNavigationWrapper {
@@ -94,6 +98,8 @@ $action-menu-rollup-computed-width: rem(40px);
   .newDesignLanguage & {
     margin-right: 0;
   }
+
+  @include print-hidden;
 }
 
 ///
@@ -263,6 +269,11 @@ $action-menu-rollup-computed-width: rem(40px);
   .noBreadcrumbs.newDesignLanguage & {
     margin-left: 0;
   }
+
+  @include when-printing {
+    // stylelint-disable-next-line declaration-no-important
+    margin-left: 0 !important;
+  }
 }
 
 .Actions {
@@ -279,4 +290,8 @@ $action-menu-rollup-computed-width: rem(40px);
   > :first-child {
     flex: 1;
   }
+}
+
+.HideFromPrint {
+  @include print-hidden;
 }
