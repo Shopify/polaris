@@ -271,7 +271,7 @@ describe('<Header />', () => {
         features: {newDesignLanguage: true},
       });
       expect(header.find('div').first().prop('className')).toBe(
-        'Header newDesignLanguage',
+        'Header noBreadcrumbs newDesignLanguage shortTitle',
       );
     });
 
@@ -279,7 +279,9 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(<Header title="Hello, world!" />, {
         features: {newDesignLanguage: false},
       });
-      expect(header.find('div').first().prop('className')).toBe('Header');
+      expect(header.find('div').first().prop('className')).toBe(
+        'Header noBreadcrumbs shortTitle',
+      );
     });
 
     it('removes primary and secondary action wrapper divs', () => {

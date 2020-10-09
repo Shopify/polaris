@@ -11,6 +11,11 @@ $backdrop-color: rgba(color('ink'), 0.4);
   right: 0;
   z-index: z-index(nav-backdrop, $fixed-element-stacking-order);
   height: calc(100vh - #{top-bar-height()});
+
+  &.newDesignLanguage {
+    top: 0;
+    height: 100%;
+  }
 }
 
 .visible {
