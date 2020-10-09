@@ -63,6 +63,9 @@ export function isPrimaryAction(
   return !isValidElement(x) && x !== undefined;
 }
 
+const SHORT_TITLE = 20;
+const REALLY_SHORT_TITLE = 8;
+
 export function Header({
   title,
   subtitle,
@@ -159,7 +162,9 @@ export function Header({
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
+    !breadcrumbs.length && styles.noBreadcrumbs,
     newDesignLanguage && styles.newDesignLanguage,
+    title && title.length <= SHORT_TITLE && styles.shortTitle,
   );
 
   if (newDesignLanguage) {
@@ -304,9 +309,6 @@ function determineLayout({
   primaryActionMarkup: MaybeJSX;
   isNavigationCollapsed: boolean;
 }) {
-  const shortTitle = 20;
-  const reallyShortTitle = 8;
-
   //    Header Layout
   // |----------------------------------------------------|
   // | slot1 | slot2 |                    | slot3 | slot4 |
@@ -328,7 +330,7 @@ function determineLayout({
         isNavigationCollapsed &&
         breadcrumbMarkup == null &&
         title != null &&
-        title.length <= reallyShortTitle,
+        title.length <= REALLY_SHORT_TITLE,
     },
     mobileDefault: {
       slots: {
@@ -355,7 +357,7 @@ function determineLayout({
         paginationMarkup == null &&
         actionMenuMarkup == null &&
         title != null &&
-        title.length <= shortTitle,
+        title.length <= SHORT_TITLE,
     },
     desktopDefault: {
       slots: {

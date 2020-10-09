@@ -5,7 +5,6 @@ $icon-size: rem(20px);
 $input-height: rem(34px);
 $new-input-height: rem(36px);
 $clear-button-width: $icon-size + spacing();
-$new-search-max-width: rem(580px);
 
 $stacking-order: (
   backdrop: 1,
@@ -25,6 +24,7 @@ $stacking-order: (
 }
 
 .SearchField-newDesignLanguage {
+  z-index: z-index(modal, $fixed-element-stacking-order);
   max-width: $new-search-max-width;
 
   .Backdrop {
