@@ -7,6 +7,7 @@ import React, {
   AriaAttributes,
 } from 'react';
 
+import {InversableColorScheme, ThemeProvider} from '../ThemeProvider';
 import {
   findFirstFocusableNodeIncludingDisabled,
   focusNextFocusableNode,
@@ -65,6 +66,8 @@ export interface PopoverProps {
   hideOnPrint?: boolean;
   /** Callback when popover is closed */
   onClose(source: PopoverCloseSource): void;
+  /** Accepts a color scheme for the contents of the popover */
+  colorScheme?: InversableColorScheme;
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -84,6 +87,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
   fixed,
   ariaHaspopup,
   preferInputActivator = true,
+  colorScheme,
   ...rest
 }: PopoverProps) {
   const [activatorNode, setActivatorNode] = useState<HTMLElement>();
@@ -181,7 +185,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
   return (
     <WrapperComponent ref={activatorContainer}>
       {Children.only(activator)}
-      {portal}
+      <ThemeProvider theme={{colorScheme}}>{portal}</ThemeProvider>
     </WrapperComponent>
   );
 };

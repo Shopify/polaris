@@ -12,7 +12,7 @@ import {useFeatures} from '../../utilities/features';
 
 type OriginalColorScheme = Required<ThemeConfig['colorScheme']>;
 type Inverse = 'inverse';
-type InversableColorScheme = OriginalColorScheme | Inverse;
+export type InversableColorScheme = OriginalColorScheme | Inverse;
 
 // TS 3.5+ includes the built-in Omit type which does the same thing. But if we
 // use that then we break consumers on older versions of TS. Consider removing
