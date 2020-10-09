@@ -70,7 +70,7 @@ describe('<ActionMenu />', () => {
       });
     });
 
-    it('only renders a group when it has one or more actions', () => {
+    it('always renders a group if passed in', () => {
       const groups: MenuGroupDescriptor[] = [
         {
           title: 'Mock group 2',
@@ -80,7 +80,7 @@ describe('<ActionMenu />', () => {
 
       const wrapper = mountWithAppProvider(<ActionMenu groups={groups} />);
 
-      expect(wrapper.find(MenuGroup)).toHaveLength(0);
+      expect(wrapper.find(MenuGroup)).toHaveLength(1);
     });
   });
 
@@ -108,24 +108,6 @@ describe('<ActionMenu />', () => {
   describe('<MenuGroup />', () => {
     it('does not render when there are no `groups`', () => {
       const wrapper = mountWithAppProvider(<ActionMenu {...mockProps} />);
-
-      expect(wrapper.find(MenuGroup)).toHaveLength(0);
-    });
-
-    it('does not render when there are `groups` with no `actions`', () => {
-      const mockGroupsWithoutActions: ActionMenuProps['groups'] = [
-        {
-          title: 'First group',
-          actions: [],
-        },
-        {
-          title: 'Second group',
-          actions: [],
-        },
-      ];
-      const wrapper = mountWithAppProvider(
-        <ActionMenu groups={mockGroupsWithoutActions} />,
-      );
 
       expect(wrapper.find(MenuGroup)).toHaveLength(0);
     });
