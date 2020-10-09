@@ -9,6 +9,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Added `iconSource` field to `options` prop on `Select` ([#3373](https://github.com/Shopify/polaris-react/pull/3373))
+- Added `OutlineableAction` to the `ComplexAction` type ([#3405](https://github.com/Shopify/polaris-react/pull/3405))
+- Added `UnstyledButton` component and refactored `Banner` to use it ([#32326](https://github.com/Shopify/polaris-react/pull/32326))
 
 ### Bug fixes
 

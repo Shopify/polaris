@@ -141,7 +141,7 @@ Use for less important or less commonly used actions since they’re less promin
 Use for less important or less commonly used actions where matching the current text color is desired. For example in the InlineError component.
 
 ```jsx
-<div style={{color: '#bf0711'}}>
+<div>
   Could not retrieve data.{' '}
   <Button plain monochrome>
     Try again

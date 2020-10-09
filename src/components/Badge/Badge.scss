@@ -21,7 +21,8 @@ $pip-spacing: ($height - $pip-size) / 2;
   align-items: center;
   padding: $vertical-padding $horizontal-padding;
   background-color: var(--p-surface-neutral, color('sky'));
-  border: border-width(thick) solid var(--p-surface, color('white'));
+  border: border-width(thick) solid
+    var(--p-override-transparent, color('white'));
   border-radius: $height;
   font-size: rem(13px);
   line-height: $extra-small-height;

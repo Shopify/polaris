@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.6.1 - 2020-10-09
+
+### Bug fixes
+
+- Fixed `BulkActions` from hiding child actions ([#3450](https://github.com/Shopify/polaris-react/pull/3450))
+
 ## 5.6.0 - 2020-10-03
 
 ### Bug fixes

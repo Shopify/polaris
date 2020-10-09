@@ -159,6 +159,11 @@ export interface LoadableAction extends Action {
   loading?: boolean;
 }
 
+export interface OutlineableAction extends Action {
+  /** Should action be displayed as an outlined button */
+  outline?: boolean;
+}
+
 export interface ActionListItemDescriptor
   extends IconableAction,
     DisableableAction,
@@ -194,6 +199,7 @@ export interface ComplexAction
     DisableableAction,
     DestructableAction,
     IconableAction,
+    OutlineableAction,
     LoadableAction {}
 
 export interface MenuActionDescriptor extends ComplexAction {

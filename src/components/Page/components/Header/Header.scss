@@ -1,6 +1,7 @@
 @import '../../../../styles/common';
 
 $mobile-layout: 468px;
+$desktop-layout: 1080px;
 $individual-action-padding-x: (1.5 * spacing(tight));
 $action-menu-rollup-computed-width: rem(40px);
 
@@ -89,6 +90,10 @@ $action-menu-rollup-computed-width: rem(40px);
   @include page-content-when-not-fully-condensed {
     margin: 0 spacing(extra-loose);
   }
+
+  .newDesignLanguage & {
+    margin-right: 0;
+  }
 }
 
 ///
@@ -159,10 +164,6 @@ $action-menu-rollup-computed-width: rem(40px);
   display: flex;
   justify-content: space-between;
 
-  .newDesignLanguage & {
-    position: relative;
-  }
-
   + .Row {
     margin-top: spacing();
     // stylelint-disable-next-line selector-max-combinators, selector-max-class
@@ -181,20 +182,6 @@ $action-menu-rollup-computed-width: rem(40px);
   display: flex;
   align-content: flex-start;
   align-items: center;
-
-  .newDesignLanguage & {
-    align-items: flex-start;
-    flex: 1 1 auto;
-    flex-wrap: wrap;
-
-    @include breakpoint-after(468px) {
-      flex-wrap: nowrap;
-    }
-
-    @include breakpoint-after(layout-width(page-with-nav)) {
-      flex-basis: 50%;
-    }
-  }
 }
 
 .RightAlign {
@@ -202,14 +189,45 @@ $action-menu-rollup-computed-width: rem(40px);
   align-content: flex-end;
   align-items: center;
   margin-left: spacing(tight);
+}
 
-  .newDesignLanguage & {
+.RowCondensed {
+  position: relative;
+
+  .noBreadcrumbs & {
+    @include breakpoint-before($mobile-layout) {
+      flex-wrap: wrap-reverse;
+    }
+  }
+
+  .LeftAlign {
+    align-items: flex-start;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+
+    @include breakpoint-after($mobile-layout) {
+      flex-wrap: nowrap;
+    }
+
+    @include breakpoint-after(layout-width(page-with-nav)) {
+      flex-basis: 50%;
+    }
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators
+    .shortTitle & {
+      @include breakpoint-after(layout-width(page-with-nav)) {
+        flex-basis: 40%;
+      }
+    }
+  }
+
+  .RightAlign {
     position: absolute;
     top: 0;
     right: 0;
-    flex: 0 1 auto;
+    flex: 1 1 auto;
     align-items: flex-start;
     justify-content: flex-end;
+    width: min-content;
 
     @include breakpoint-after($mobile-layout) {
       position: static;
@@ -217,6 +235,20 @@ $action-menu-rollup-computed-width: rem(40px);
 
     @include breakpoint-after(layout-width(page-with-nav)) {
       flex-basis: 50%;
+    }
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators
+    .shortTitle & {
+      @include breakpoint-after(layout-width(page-with-nav)) {
+        flex-basis: 60%;
+      }
+    }
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators
+    .noBreadcrumbs & {
+      position: static;
+      @include breakpoint-before($mobile-layout) {
+        flex-grow: 1;
+        margin-left: 0;
+      }
     }
   }
 }
@@ -227,6 +259,10 @@ $action-menu-rollup-computed-width: rem(40px);
       margin-left: spacing(loose) * 2 + spacing(tight) + spacing(extra-tight);
     }
   }
+  // stylelint-disable-next-line selector-max-class
+  .noBreadcrumbs.newDesignLanguage & {
+    margin-left: 0;
+  }
 }
 
 .Actions {
@@ -234,6 +270,11 @@ $action-menu-rollup-computed-width: rem(40px);
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-end;
+  text-align: right;
+
+  @include breakpoint-before($desktop-layout) {
+    min-width: max-content;
+  }
 
   > :first-child {
     flex: 1;

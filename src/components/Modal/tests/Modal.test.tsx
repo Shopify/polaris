@@ -412,7 +412,7 @@ describe('<Modal>', () => {
 
       modal.find(Dialog)!.trigger('onExited');
 
-      expect(document.activeElement).toBe(modal.find(Button)!.domNode);
+      expect(document.activeElement).toBe(modal.find('button')!.domNode);
       expect(focusSpy).toHaveBeenCalledTimes(3);
     });
 
@@ -441,7 +441,7 @@ describe('<Modal>', () => {
 
       expect(document.activeElement).toBe(
         testHarness.findWhere(
-          (wrap) => wrap.is(Button) && wrap.prop('id') === buttonId,
+          (wrap) => wrap.is('button') && wrap.prop('id') === buttonId,
         )!.domNode,
       );
     });
