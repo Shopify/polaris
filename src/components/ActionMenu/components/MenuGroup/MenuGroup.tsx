@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback} from 'react';
 
 import type {MenuGroupDescriptor} from '../../../../types';
 import {useFeatures} from '../../../../utilities/features';
