@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {
@@ -365,12 +365,34 @@ describe('<Modal>', () => {
       rafSpy.mockRestore();
     });
 
-    it('renders the element that is passed in', () => {
+    it('renders the element if an element is passed in', () => {
       const modal = mountWithAppProvider(
         <Modal onClose={noop} open={false} activator={<Button />} />,
       );
 
       expect(modal.find(Button).exists()).toBe(true);
+    });
+
+    it('does not render the element if a ref object is passed in', () => {
+      const TestHarness = () => {
+        const buttonRef = useRef<HTMLDivElement>(null);
+        const button = (
+          <div ref={buttonRef}>
+            <Button />
+          </div>
+        );
+
+        return (
+          <div>
+            <Modal onClose={noop} open={false} activator={buttonRef} />
+            {button}
+          </div>
+        );
+      };
+
+      const testHarness = mountWithApp(<TestHarness />);
+
+      expect(testHarness.find(Modal)).not.toContainReactComponent(Button);
     });
 
     it('does not throw an error when no activator is passed in', () => {
@@ -381,7 +403,7 @@ describe('<Modal>', () => {
       }).not.toThrow();
     });
 
-    it('focuses the activator when the modal is closed', () => {
+    it('focuses the activator when the activator is an element on close', () => {
       const focusSpy = jest.spyOn(focusUtils, 'focusFirstFocusableNode');
 
       const modal = mountWithApp(
@@ -392,6 +414,36 @@ describe('<Modal>', () => {
 
       expect(document.activeElement).toBe(modal.find(Button)!.domNode);
       expect(focusSpy).toHaveBeenCalledTimes(3);
+    });
+
+    it('focuses the activator when the activator a ref on close', () => {
+      const buttonId = 'buttonId';
+      const TestHarness = () => {
+        const buttonRef = useRef<HTMLDivElement>(null);
+
+        const button = (
+          <div ref={buttonRef}>
+            <Button id={buttonId} />
+          </div>
+        );
+
+        return (
+          <div>
+            <Modal onClose={noop} open activator={buttonRef} />
+            {button}
+          </div>
+        );
+      };
+
+      const testHarness = mountWithApp(<TestHarness />);
+
+      testHarness.find(Modal)!.find(Dialog)!.trigger('onExited');
+
+      expect(document.activeElement).toBe(
+        testHarness.findWhere(
+          (wrap) => wrap.is(Button) && wrap.prop('id') === buttonId,
+        )!.domNode,
+      );
     });
   });
 });

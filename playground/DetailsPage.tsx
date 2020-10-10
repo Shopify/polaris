@@ -468,14 +468,20 @@ export function DetailsPage() {
         {
           content: 'Duplicate',
           icon: DuplicateMinor,
+          // eslint-disable-next-line no-console
+          onAction: () => console.log('duplicate'),
         },
         {
           content: 'View',
           icon: ViewMinor,
+          // eslint-disable-next-line no-console
+          onAction: () => console.log('view'),
         },
         {
           content: 'Print',
           icon: PrintMinor,
+          // eslint-disable-next-line no-console
+          onAction: () => console.log('print'),
         },
       ]}
       actionGroups={[

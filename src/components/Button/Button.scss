@@ -119,11 +119,9 @@ $stacking-order: (
 .Icon {
   transition: color duration() easing();
 
-  &:first-child {
-    // This compensates for the typical icon used in buttons being
-    // inset within its bounding box.
-    margin-left: -(spacing(extra-tight));
-  }
+  // This compensates for the typical icon used in buttons being
+  // inset within its bounding box.
+  margin-left: -(spacing(extra-tight));
 
   &:last-child {
     // This compensates for the disclosure icon, which is substantially
@@ -136,6 +134,10 @@ $stacking-order: (
   + *:not(.Icon) {
     margin-left: spacing(extra-tight);
   }
+}
+
+.Hidden {
+  visibility: hidden;
 }
 
 .Spinner {
@@ -397,6 +399,11 @@ $stacking-order: (
   &.disabled {
     color: transparent;
   }
+}
+
+// stylelint-disable-next-line selector-max-class, selector-max-specificity
+.newDesignLanguage.loading.disabled svg {
+  fill: var(--p-icon-subdued);
 }
 
 .pressed {
@@ -676,9 +683,12 @@ $stacking-order: (
   padding: $slim-vertical-padding spacing(base-tight);
 
   &.newDesignLanguage {
-    // Local override for slim button height.
+    // Local override for slim button height and padding
     $slim-min-height: rem(28px);
+    $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) /
+      2;
     min-height: $slim-min-height;
+    padding: $slim-vertical-padding spacing(base-tight);
   }
 }
 

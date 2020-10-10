@@ -10,7 +10,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 @mixin banner-attributes($highlight, $background, $in-page, $tint) {
   transition: box-shadow duration() easing();
   transition-delay: duration(fast);
-  box-shadow: var(--p-banner-border, none);
 
   @media (-ms-high-contrast: active) {
     outline: 1px solid;
@@ -29,6 +28,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     );
     @include focus-ring('wide');
   } @else {
+    box-shadow: var(--p-banner-border, none);
     border-radius: var(--p-border-radius-base, border-radius());
     @include focus-ring('base');
   }
@@ -131,10 +131,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     $newDesignLanguageOffset: $newDesignLanguageSpacing - spacing();
     padding: spacing() spacing() $newDesignLanguageSpacing;
 
-    &.hasDismiss {
-      padding-right: calc(#{2 * spacing()} + var(--p-icon-size));
-    }
-
     .ContentWrapper {
       margin-top: $newDesignLanguageOffset;
     }
@@ -157,11 +153,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
   .Ribbon {
     padding-right: $intermediate-spacing;
-
-    // stylelint-disable-next-line selector-max-combinators, selector-max-class
-    .newDesignLanguage & {
-      padding-right: spacing();
-    }
   }
 
   .Actions {
@@ -218,6 +209,10 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 .hasDismiss {
   padding-right: spacing() + spacing(extra-tight) + control-height();
+
+  &.newDesignLanguage {
+    padding-right: calc(#{2 * spacing()} + var(--p-icon-size));
+  }
 }
 
 .Heading {

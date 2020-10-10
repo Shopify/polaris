@@ -186,6 +186,7 @@ export function Button({
         className={classNames(
           styles.DisclosureIcon,
           disclosure === 'up' && styles.DisclosureIconFacingUp,
+          loading && styles.Hidden,
         )}
       >
         {disclosureIcon}
@@ -201,7 +202,11 @@ export function Button({
     ) : (
       icon
     );
-    iconMarkup = <span className={styles.Icon}>{iconInner}</span>;
+    iconMarkup = (
+      <span className={classNames(styles.Icon, loading && styles.Hidden)}>
+        {iconInner}
+      </span>
+    );
   }
 
   const childMarkup = children ? (

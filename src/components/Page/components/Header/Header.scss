@@ -63,6 +63,8 @@ $action-menu-rollup-computed-width: rem(40px);
   line-height: 1;
 
   .newDesignLanguage & {
+    display: flex;
+    justify-content: flex-end;
     margin-left: spacing(extra-tight);
     // stylelint-disable-next-line selector-max-combinators
     button {
