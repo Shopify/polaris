@@ -45,7 +45,7 @@ const NEW_DESIGN_LANGUAGE_COLORS = [
   'success',
   'primary',
 ];
-type NewDesignLanguageColor =
+export type NewDesignLanguageColor =
   | 'base'
   | 'subdued'
   | 'critical'
