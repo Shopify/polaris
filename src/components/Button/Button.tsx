@@ -82,7 +82,7 @@ export interface ButtonProps {
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
   /** Callback when clicked */
-  onClick?(): void;
+  onClick?(event: React.MouseEvent<HTMLButtonElement>): void;
   /** Callback when button becomes focussed */
   onFocus?(): void;
   /** Callback when focus leaves button */
