@@ -291,7 +291,3 @@ $action-menu-rollup-computed-width: rem(40px);
     flex: 1;
   }
 }
-
-.HideFromPrint {
-  @include print-hidden;
-}
