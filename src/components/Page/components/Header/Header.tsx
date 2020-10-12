@@ -141,13 +141,11 @@ export function Header({
           <div className={styles.ActionMenuWrapper}>{children}</div>
         )}
       >
-        <div className={styles.HideFromPrint}>
-          <ActionMenu
-            actions={secondaryActions}
-            groups={actionGroups}
-            rollup={isNavigationCollapsed}
-          />
-        </div>
+        <ActionMenu
+          actions={secondaryActions}
+          groups={actionGroups}
+          rollup={isNavigationCollapsed}
+        />
       </ConditionalWrapper>
     ) : null;
 
