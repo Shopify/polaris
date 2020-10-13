@@ -65,6 +65,7 @@ export function isPrimaryAction(
 
 const SHORT_TITLE = 20;
 const REALLY_SHORT_TITLE = 8;
+const REALLY_LONG_TITLE = 42;
 
 export function Header({
   title,
@@ -164,7 +165,7 @@ export function Header({
     isNavigationCollapsed && styles.mobileView,
     !breadcrumbs.length && styles.noBreadcrumbs,
     newDesignLanguage && styles.newDesignLanguage,
-    title && title.length <= SHORT_TITLE && styles.shortTitle,
+    title && title.length >= REALLY_LONG_TITLE && styles.longTitle,
   );
 
   if (newDesignLanguage) {
@@ -191,10 +192,8 @@ export function Header({
           condition={[slot1, slot2, slot3, slot4].some(notNull)}
         >
           <div className={className}>
-            <div className={styles.LeftAlign}>
-              {slot1}
-              {slot2}
-            </div>
+            {slot1}
+            {slot2}
             <ConditionalRender condition={[slot3, slot4].some(notNull)}>
               <div className={styles.RightAlign}>
                 <ConditionalWrapper

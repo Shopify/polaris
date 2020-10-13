@@ -461,7 +461,8 @@ export function DetailsPage() {
     <Page
       fullWidth
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
-      title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
+      // title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
+      title="Customers"
       titleMetadata={<Badge status="success">Success badge</Badge>}
       additionalNavigation={<Avatar initials="JD" />}
       primaryAction={{
