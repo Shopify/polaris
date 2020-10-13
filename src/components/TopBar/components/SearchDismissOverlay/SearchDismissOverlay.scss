@@ -23,8 +23,8 @@ $backdrop-color: rgba(color('ink'), 0.4);
   animation: fade-in duration() $entry-iterations forwards;
 
   &.newDesignLanguage {
+    background-color: transparent;
     animation: none;
-    background: transparent;
   }
 }
 
