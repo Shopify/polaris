@@ -290,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "更多動作"
     }
   }
 }
