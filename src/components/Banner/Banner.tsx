@@ -277,12 +277,16 @@ function useBannerFocus(bannerRef: React.Ref<BannerHandles>) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [shouldShowFocus, setShouldShowFocus] = useState(false);
 
-  useImperativeHandle(bannerRef, () => ({
-    focus: () => {
-      wrapperRef.current?.focus();
-      setShouldShowFocus(true);
-    },
-  }));
+  useImperativeHandle(
+    bannerRef,
+    () => ({
+      focus: () => {
+        wrapperRef.current?.focus();
+        setShouldShowFocus(true);
+      },
+    }),
+    [],
+  );
 
   const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.target === wrapperRef.current) {
