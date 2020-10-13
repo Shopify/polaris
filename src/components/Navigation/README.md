@@ -193,6 +193,49 @@ Use to present a navigation menu in the [frame](https://polaris.shopify.com/comp
 </Navigation>
 ```
 
+### Navigation with an active secondary navigation item
+
+Use to present a secondary action, related to a section and to title the section.
+
+```jsx
+<Navigation location="/">
+  <Navigation.Section
+    items={[
+      {
+        url: '/path/to/place',
+        label: 'Home',
+        icon: HomeMajor,
+      },
+      {
+        url: '/path/to/place',
+        label: 'Orders',
+        icon: OrdersMajor,
+        badge: '15',
+      },
+      {
+        url: '/admin/products',
+        label: 'Products',
+        icon: ProductsMajor,
+        selected: true,
+        subNavigationItems: [
+          {
+            url: '/admin/products',
+            disabled: false,
+            selected: true,
+            label: 'All products',
+          },
+          {
+            url: '/admin/products/inventory',
+            disabled: false,
+            label: 'Inventory',
+          },
+        ],
+      },
+    ]}
+  />
+</Navigation>
+```
+
 ### Navigation with a secondary action for a section and a section title
 
 Use to present a secondary action, related to a section and to title the section.

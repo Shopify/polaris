@@ -47,22 +47,6 @@ $nav-animation-variables: (
     line-height: $item-line-height-large;
     padding-left: spacing() - spacing(extra-tight);
     padding-right: spacing(extra-tight);
-
-    @include breakpoint-before(nav-min-window-corrected()) {
-      // stylelint-disable-next-line selector-max-combinators
-      .Icon {
-        margin-top: nav(mobile-spacing);
-        margin-bottom: nav(mobile-spacing);
-      }
-
-      // stylelint-disable-next-line selector-max-combinators
-      .Text {
-        margin-top: nav(mobile-spacing);
-        margin-bottom: nav(mobile-spacing);
-        font-size: rem(15px);
-        line-height: rem(19px);
-      }
-    }
   }
 
   &:hover {
@@ -202,8 +186,6 @@ $nav-animation-variables: (
     margin-bottom: nav(desktop-spacing);
   }
   .Navigation-newDesignLanguage & {
-    margin-top: spacing(tight);
-    margin-bottom: spacing(tight);
     margin-right: spacing();
     @include recolor-icon(
       var(--p-icon, color('ink', 'lightest')),
@@ -270,9 +252,12 @@ $nav-animation-variables: (
   }
 
   .Navigation-newDesignLanguage & {
-    margin-top: spacing(tight);
-    margin-bottom: spacing(tight);
     font-size: $item-font-size-small;
+
+    @include breakpoint-before(nav-min-window-corrected()) {
+      font-size: rem(15px);
+      line-height: rem(19px);
+    }
   }
 }
 
