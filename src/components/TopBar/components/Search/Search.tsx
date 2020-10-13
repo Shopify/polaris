@@ -35,24 +35,26 @@ export function Search({
   ) : null;
 
   return (
-    <div
-      className={classNames(
-        styles.Search,
-        visible && styles.visible,
-        newDesignLanguage && styles.newDesignLanguage,
-      )}
-    >
-      <ThemeProvider theme={{colorScheme: 'dark'}}>
-        <div
-          className={classNames(
-            styles.SearchContent,
-            newDesignLanguage && styles.newDesignLanguage,
-          )}
-        >
-          {overlayMarkup}
-          <div className={styles.Results}>{children}</div>
-        </div>
-      </ThemeProvider>
-    </div>
+    <>
+      {overlayMarkup}
+      <div
+        className={classNames(
+          styles.Search,
+          visible && styles.visible,
+          newDesignLanguage && styles.newDesignLanguage,
+        )}
+      >
+        <ThemeProvider theme={{colorScheme: 'dark'}}>
+          <div
+            className={classNames(
+              styles.SearchContent,
+              newDesignLanguage && styles.newDesignLanguage,
+            )}
+          >
+            <div className={styles.Results}>{children}</div>
+          </div>
+        </ThemeProvider>
+      </div>
+    </>
   );
 }

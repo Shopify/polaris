@@ -210,6 +210,7 @@ export function DetailsPage() {
       onSearchResultsDismiss={handleSearchResultsDismiss}
       onNavigationToggle={toggleMobileNavigationActive}
       contextControl={contextControlMarkup}
+      searchResultsOverlayVisible
     />
   );
   // ---- Navigation ----
