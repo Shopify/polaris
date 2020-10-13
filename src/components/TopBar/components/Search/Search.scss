@@ -4,6 +4,7 @@
 .Search {
   position: fixed;
   visibility: hidden;
+  z-index: z-index(nav, $fixed-element-stacking-order);
   pointer-events: none;
   top: top-bar-height();
   left: 0;
@@ -39,7 +40,6 @@
 
 .Results {
   position: relative;
-  z-index: z-index(nav, $fixed-element-stacking-order);
   display: flex;
   flex-direction: column;
   max-height: calc(100vh - #{top-bar-height()});
