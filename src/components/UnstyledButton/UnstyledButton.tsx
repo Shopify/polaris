@@ -6,20 +6,20 @@ import {UnstyledLink} from '../UnstyledLink';
 export interface UnstyledButtonProps {
   /** The content to display inside the button */
   children?: React.ReactNode;
-  /** A destination to link to, rendered in the href attribute of a link */
-  url?: string;
   /** A unique identifier for the button */
   id?: string;
   /** A custom class name to apply styles to button */
   className?: string;
-  /** Disables the button, disallowing merchant interaction */
-  disabled?: boolean;
-  /** Allows the button to submit a form */
-  submit?: boolean;
+  /** A destination to link to, rendered in the href attribute of a link */
+  url?: string;
   /** Forces url to open in a new tab */
   external?: boolean;
   /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value */
   download?: string | boolean;
+  /** Allows the button to submit a form */
+  submit?: boolean;
+  /** Disables the button, disallowing merchant interaction */
+  disabled?: boolean;
   /** Sets the button in a pressed state */
   pressed?: boolean;
   /** Visually hidden text for screen readers */
@@ -54,10 +54,13 @@ export interface UnstyledButtonProps {
 
 export function UnstyledButton({
   id,
-  url,
-  disabled,
   children,
   className,
+  url,
+  external,
+  download,
+  submit,
+  disabled,
   pressed,
   accessibilityLabel,
   ariaControls,
@@ -71,9 +74,6 @@ export function UnstyledButton({
   onKeyUp,
   onMouseEnter,
   onTouchStart,
-  external,
-  download,
-  submit,
   ...rest
 }: UnstyledButtonProps) {
   const hasGivenDeprecationWarning = useRef(false);
@@ -86,38 +86,38 @@ export function UnstyledButton({
     hasGivenDeprecationWarning.current = true;
   }
 
-  const type = submit ? 'submit' : 'button';
   const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
 
   let buttonMarkup;
+
+  const commonProps = {
+    id,
+    className,
+    'aria-label': accessibilityLabel,
+  };
+  const interactiveProps = {
+    ...commonProps,
+    onClick,
+    onFocus,
+    onBlur,
+    onMouseUp: handleMouseUpByBlurring,
+    onMouseEnter,
+    onTouchStart,
+  };
 
   if (url) {
     buttonMarkup = disabled ? (
       // Render an `<a>` so toggling disabled/enabled state changes only the
       // `href` attribute instead of replacing the whole element.
-      // eslint-disable-next-line jsx-a11y/anchor-is-valid
-      <a
-        id={id}
-        className={className}
-        aria-label={accessibilityLabel}
-        data-polaris-unstyled-button
-      >
+      <a {...commonProps} data-polaris-unstyled-button>
         {children}
       </a>
     ) : (
       <UnstyledLink
-        id={id}
+        {...interactiveProps}
         url={url}
         external={external}
         download={download}
-        onClick={onClick}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onMouseUp={handleMouseUpByBlurring}
-        onMouseEnter={onMouseEnter}
-        onTouchStart={onTouchStart}
-        className={className}
-        aria-label={accessibilityLabel}
         data-polaris-unstyled-button
         {...rest}
       >
@@ -127,23 +127,15 @@ export function UnstyledButton({
   } else {
     buttonMarkup = (
       <button
-        id={id}
-        type={type}
-        onClick={onClick}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onKeyPress={onKeyPress}
-        onMouseUp={handleMouseUpByBlurring}
-        onMouseEnter={onMouseEnter}
-        onTouchStart={onTouchStart}
-        className={className}
+        {...interactiveProps}
+        type={submit ? 'submit' : 'button'}
         disabled={disabled}
-        aria-label={accessibilityLabel}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         aria-pressed={ariaPressedStatus}
+        onKeyDown={onKeyDown}
+        onKeyUp={onKeyUp}
+        onKeyPress={onKeyPress}
         {...rest}
       >
         {children}

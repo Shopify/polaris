@@ -2,7 +2,10 @@ import React, {useRef, useState, useCallback} from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
-import {handleMouseUpByBlurring} from '../../utilities/focus';
+import {
+  handleMouseUpByBlurring,
+  MouseUpBlurHandler,
+} from '../../utilities/focus';
 import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
@@ -91,14 +94,37 @@ export interface ButtonProps {
   onTouchStart?(): void;
 }
 
+interface CommonButtonProps {
+  id: ButtonProps['id'];
+  className: string;
+}
+
+interface InteractiveButtonProps
+  extends CommonButtonProps,
+    Pick<
+      ButtonProps,
+      | 'accessibilityLabel'
+      | 'onClick'
+      | 'onFocus'
+      | 'onBlur'
+      | 'onMouseEnter'
+      | 'onTouchStart'
+    > {
+  onMouseUp: MouseUpBlurHandler;
+}
+
 const DEFAULT_SIZE = 'medium';
 
 export function Button({
   id,
+  children,
   url,
   disabled,
+  external,
+  download,
+  submit,
   loading,
-  children,
+  pressed,
   accessibilityLabel,
   ariaControls,
   ariaExpanded,
@@ -111,8 +137,6 @@ export function Button({
   onKeyUp,
   onMouseEnter,
   onTouchStart,
-  external,
-  download,
   icon,
   primary,
   outline,
@@ -120,11 +144,9 @@ export function Button({
   disclosure,
   plain,
   monochrome,
-  submit,
   size = DEFAULT_SIZE,
   textAlign,
   fullWidth,
-  pressed,
   connectedDisclosure,
 }: ButtonProps) {
   const {newDesignLanguage} = useFeatures();
@@ -226,7 +248,6 @@ export function Button({
       </span>
     );
 
-  const type = submit ? 'submit' : 'button';
   const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
 
   const [disclosureActive, setDisclosureActive] = useState(false);
@@ -291,28 +312,34 @@ export function Button({
 
   let buttonMarkup;
 
+  const commonProps: CommonButtonProps = {
+    id,
+    className,
+  };
+  const interactiveProps: InteractiveButtonProps = {
+    ...commonProps,
+    accessibilityLabel,
+    onClick,
+    onFocus,
+    onBlur,
+    onMouseUp: handleMouseUpByBlurring,
+    onMouseEnter,
+    onTouchStart,
+  };
+
   if (url) {
     buttonMarkup = isDisabled ? (
       // Render an `<a>` so toggling disabled/enabled state changes only the
       // `href` attribute instead of replacing the whole element.
-      // eslint-disable-next-line jsx-a11y/anchor-is-valid
-      <a id={id} className={className} aria-label={accessibilityLabel}>
+      <a {...commonProps} aria-label={accessibilityLabel}>
         {content}
       </a>
     ) : (
       <UnstyledButton
-        id={id}
+        {...interactiveProps}
         url={url}
         external={external}
         download={download}
-        onClick={onClick}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onMouseUp={handleMouseUpByBlurring}
-        onMouseEnter={onMouseEnter}
-        onTouchStart={onTouchStart}
-        className={className}
-        aria-label={accessibilityLabel}
       >
         {content}
       </UnstyledButton>
@@ -320,23 +347,15 @@ export function Button({
   } else {
     buttonMarkup = (
       <UnstyledButton
-        id={id}
-        type={type}
-        onClick={onClick}
-        onFocus={onFocus}
-        onBlur={onBlur}
+        {...interactiveProps}
+        submit={submit}
+        disabled={isDisabled}
+        ariaControls={ariaControls}
+        ariaExpanded={ariaExpanded}
+        ariaPressed={ariaPressedStatus}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}
-        onMouseUp={handleMouseUpByBlurring}
-        onMouseEnter={onMouseEnter}
-        onTouchStart={onTouchStart}
-        className={className}
-        disabled={isDisabled}
-        aria-label={accessibilityLabel}
-        aria-controls={ariaControls}
-        aria-expanded={ariaExpanded}
-        aria-pressed={ariaPressedStatus}
         role={loading ? 'alert' : undefined}
         aria-busy={loading ? true : undefined}
       >
