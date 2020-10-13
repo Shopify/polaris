@@ -43,6 +43,7 @@ type InputMode =
   | 'text'
   | 'decimal'
   | 'numeric'
+  | 'numeric-no-spinner'
   | 'tel'
   | 'search'
   | 'email'
@@ -340,7 +341,10 @@ export function TextField({
   );
 
   const spinnerMarkup =
-    type === 'number' && !disabled && !readOnly ? (
+    type === 'number' &&
+    inputType !== 'numeric-no-spinner' &&
+    !disabled &&
+    !readOnly ? (
       <Spinner
         onChange={handleNumberChange}
         onMouseDown={handleButtonPress}
