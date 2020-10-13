@@ -4,6 +4,16 @@
   @include text-breakword;
 }
 
+.newDesignLanguageTitle {
+  @include text-emphasis-strong;
+  font-size: rem(24px);
+  line-height: rem(28px);
+
+  @include when-typography-not-condensed {
+    font-size: rem(20px);
+  }
+}
+
 .SubTitle {
   margin-top: spacing(tight);
   color: var(--p-text-subdued, inherit);
