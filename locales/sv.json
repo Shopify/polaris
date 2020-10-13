@@ -290,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Fler åtgärder"
     }
   }
 }

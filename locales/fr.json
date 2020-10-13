@@ -290,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Autres opérations"
     }
   }
 }
