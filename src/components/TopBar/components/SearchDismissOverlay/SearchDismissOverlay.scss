@@ -21,6 +21,11 @@ $backdrop-color: rgba(color('ink'), 0.4);
 .visible {
   background-color: var(--p-backdrop, $backdrop-color);
   animation: fade-in duration() $entry-iterations forwards;
+
+  &.newDesignLanguage {
+    background-color: transparent;
+    animation: none;
+  }
 }
 
 @keyframes fade-in {
