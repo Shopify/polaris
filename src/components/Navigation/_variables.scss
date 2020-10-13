@@ -67,11 +67,7 @@ $nav-animation-variables: (
       background-image: var(--p-override-none);
       // stylelint-disable-next-line selector-max-combinators
       .Icon {
-        @include recolor-icon(
-          var(--p-icon, color('indigo')),
-          var(--p-override-transparent, color('white')),
-          filter('icon')
-        );
+        @include recolor-icon($filter-color: filter('icon'));
       }
     }
   }
@@ -99,11 +95,7 @@ $nav-animation-variables: (
       background-image: var(--p-override-none);
       // stylelint-disable-next-line selector-max-combinators
       .Icon {
-        @include recolor-icon(
-          var(--p-icon, color('indigo')),
-          var(--p-override-transparent, color('white')),
-          filter('icon')
-        );
+        @include recolor-icon($filter-color: filter('icon'));
       }
     }
   }
@@ -119,11 +111,7 @@ $nav-animation-variables: (
       );
       // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
       .Navigation-newDesignLanguage & {
-        @include recolor-icon(
-          var(--p-icon, color('indigo')),
-          var(--p-override-transparent, color('white')),
-          filter('icon')
-        );
+        @include recolor-icon($filter-color: filter('icon'));
       }
     }
   }
@@ -142,11 +130,7 @@ $nav-animation-variables: (
       );
       // stylelint-disable-next-line selector-max-specificity, selector-max-combinators
       .Navigation-newDesignLanguage & {
-        @include recolor-icon(
-          var(--p-icon, color('indigo')),
-          var(--p-override-transparent, color('white')),
-          filter('icon')
-        );
+        @include recolor-icon($filter-color: filter('icon'));
       }
     }
   }
@@ -187,11 +171,7 @@ $nav-animation-variables: (
   }
   .Navigation-newDesignLanguage & {
     margin-right: spacing();
-    @include recolor-icon(
-      var(--p-icon, color('ink', 'lightest')),
-      var(--p-override-transparent, color('white')),
-      filter('icon')
-    );
+    @include recolor-icon($filter-color: filter('icon'));
   }
   .Item-selected &,
   .Item-selected:hover &,
@@ -206,13 +186,11 @@ $nav-animation-variables: (
     );
     // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
     .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('action')
-      );
+      @include recolor-icon($filter-color: filter('action'));
     }
-  } // The regular nav items are wrapped in polaris icon components which add
+  }
+
+  // The regular nav items are wrapped in polaris icon components which add
   // the styles we're missing which causes the channel items to shift down
   svg {
     display: block;

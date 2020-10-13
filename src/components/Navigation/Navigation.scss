@@ -230,11 +230,7 @@ $disabled-fade: 0.6;
   }
 
   .Navigation-newDesignLanguage & {
-    @include recolor-icon(
-      var(--p-icon-subdued, color('ink', 'lightest')),
-      var(--p-override-transparent, color('white')),
-      filter('icon')
-    );
+    @include recolor-icon($filter-color: filter('icon'));
   }
 
   &:hover {
@@ -250,11 +246,7 @@ $disabled-fade: 0.6;
     background-color: var(--p-surface-hovered);
 
     .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('action')
-      );
+      @include recolor-icon($filter-color: filter('action'));
     }
   }
 
@@ -271,11 +263,7 @@ $disabled-fade: 0.6;
       linear-gradient(color(state, hover), color(state, hover))
     );
     .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-icon-subdued, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('icon')
-      );
+      @include recolor-icon($filter-color: filter('icon'));
     }
     @include focus-ring($style: 'focused');
   }
@@ -288,11 +276,7 @@ $disabled-fade: 0.6;
     );
     // stylelint-disable-next-line selector-max-specificity
     .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('action')
-      );
+      @include recolor-icon($filter-color: filter('action'));
     }
   }
 
@@ -310,11 +294,7 @@ $disabled-fade: 0.6;
     background-color: var(--p-surface-pressed);
     // stylelint-disable-next-line selector-max-specificity
     .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('action')
-      );
+      @include recolor-icon($filter-color: filter('action'));
     }
   }
 
@@ -488,11 +468,7 @@ $secondary-item-font-size: rem(15px);
     }
     // stylelint-disable-next-line selector-max-combinators, selector-max-class
     .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-icon-subdued, color('ink', 'lightest')),
-        var(--p-override-transparent, color('white')),
-        filter('icon')
-      );
+      @include recolor-icon($filter-color: filter('icon'));
     }
 
     &:hover {
@@ -508,11 +484,7 @@ $secondary-item-font-size: rem(15px);
       background-color: var(--p-surface-hovered);
       // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
       .Navigation-newDesignLanguage & {
-        @include recolor-icon(
-          var(--p-action-primary, color('indigo')),
-          var(--p-override-transparent, color('white')),
-          filter('action')
-        );
+        @include recolor-icon($filter-color: filter('action'));
       }
     }
 
@@ -531,11 +503,7 @@ $secondary-item-font-size: rem(15px);
       @include focus-ring($style: 'focused');
       // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
       .Navigation-newDesignLanguage & {
-        @include recolor-icon(
-          var(--p-icon-subdued, color('indigo')),
-          var(--p-override-transparent, color('white')),
-          filter('icon')
-        );
+        @include recolor-icon($filter-color: filter('icon'));
       }
     }
 
@@ -548,11 +516,7 @@ $secondary-item-font-size: rem(15px);
       );
       // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
       .Navigation-newDesignLanguage & {
-        @include recolor-icon(
-          var(--p-action-primary, color('indigo')),
-          var(--p-override-transparent, color('white')),
-          filter('action')
-        );
+        @include recolor-icon($filter-color: filter('action'));
       }
     }
 
@@ -570,11 +534,7 @@ $secondary-item-font-size: rem(15px);
       background-color: var(--p-surface-pressed);
       // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
       .Navigation-newDesignLanguage & {
-        @include recolor-icon(
-          var(--p-action-primary, color('indigo')),
-          var(--p-override-transparent, color('white')),
-          filter('action')
-        );
+        @include recolor-icon($filter-color: filter('action'));
       }
     }
 
@@ -598,11 +558,7 @@ $secondary-item-font-size: rem(15px);
     color: var(--p-action-primary, color('indigo'));
 
     .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        null,
-        filter('action')
-      );
+      @include recolor-icon($filter-color: filter('action'));
     }
   }
 
