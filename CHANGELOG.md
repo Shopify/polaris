@@ -13,7 +13,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 ### Enhancements
 
 - Added `OutlineableAction` to the `ComplexAction` type ([#3405](https://github.com/Shopify/polaris-react/pull/3405))
-- Added `UnstyledButton` component and refactored `Banner` to use it ([#32326](https://github.com/Shopify/polaris-react/pull/32326))
+- Added `UnstyledButton` component and refactored `Banner` to use it ([#3406](https://github.com/Shopify/polaris-react/pull/3406))
 - Added `prefix` field to `options` prop on `Select` ([#3373](https://github.com/Shopify/polaris-react/pull/3373))
 
 ## 5.6.1 - 2020-10-09
