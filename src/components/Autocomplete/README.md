@@ -67,17 +67,20 @@ function AutocompleteExample() {
     [deselectedOptions],
   );
 
-  const updateSelection = useCallback((selected) => {
-    const selectedValue = selected.map((selectedItem) => {
-      const matchedOption = options.find((option) => {
-        return option.value.match(selectedItem);
+  const updateSelection = useCallback(
+    (selected) => {
+      const selectedValue = selected.map((selectedItem) => {
+        const matchedOption = options.find((option) => {
+          return option.value.match(selectedItem);
+        });
+        return matchedOption && matchedOption.label;
       });
-      return matchedOption && matchedOption.label;
-    });
 
-    setSelectedOptions(selected);
-    setInputValue(selectedValue);
-  }, [options]);
+      setSelectedOptions(selected);
+      setInputValue(selectedValue);
+    },
+    [options],
+  );
 
   const textField = (
     <Autocomplete.TextField
@@ -240,16 +243,19 @@ function AutocompleteExample() {
     [deselectedOptions, options, loading],
   );
 
-  const updateSelection = useCallback((selected) => {
-    const selectedText = selected.map((selectedItem) => {
-      const matchedOption = options.find((option) => {
-        return option.value.match(selectedItem);
+  const updateSelection = useCallback(
+    (selected) => {
+      const selectedText = selected.map((selectedItem) => {
+        const matchedOption = options.find((option) => {
+          return option.value.match(selectedItem);
+        });
+        return matchedOption && matchedOption.label;
       });
-      return matchedOption && matchedOption.label;
-    });
-    setSelectedOptions(selected);
-    setInputValue(selectedText);
-  }, [options]);
+      setSelectedOptions(selected);
+      setInputValue(selectedText);
+    },
+    [options],
+  );
 
   const textField = (
     <Autocomplete.TextField
