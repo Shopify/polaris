@@ -342,7 +342,7 @@ export function TextField({
 
   const spinnerMarkup =
     type === 'number' &&
-    inputType !== 'numeric-no-spinner' &&
+    inputMode !== 'numeric-no-spinner' &&
     !disabled &&
     !readOnly ? (
       <Spinner
