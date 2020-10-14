@@ -65,7 +65,7 @@ export function isPrimaryAction(
 
 const SHORT_TITLE = 20;
 const REALLY_SHORT_TITLE = 8;
-const REALLY_LONG_TITLE = 34;
+const LONG_TITLE = 34;
 
 export function Header({
   title,
@@ -165,8 +165,8 @@ export function Header({
     isNavigationCollapsed && styles.mobileView,
     !breadcrumbs.length && styles.noBreadcrumbs,
     newDesignLanguage && styles.newDesignLanguage,
-    title && title.length <= SHORT_TITLE && styles.shortTitle,
-    title && title.length >= REALLY_LONG_TITLE && styles.longTitle,
+    title && title.length < LONG_TITLE && styles.mediumTitle,
+    title && title.length > LONG_TITLE && styles.longTitle,
   );
 
   if (newDesignLanguage) {

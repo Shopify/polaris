@@ -1,6 +1,7 @@
 @import '../../../../styles/common';
 
 $mobile-layout: 468px;
+$medium-layout: 860px;
 $desktop-layout: 1080px;
 $individual-action-padding-x: (1.5 * spacing(tight));
 $action-menu-rollup-computed-width: rem(40px);
@@ -242,14 +243,9 @@ $action-menu-rollup-computed-width: rem(40px);
     }
 
     @include breakpoint-after(layout-width(page-with-nav)) {
-      flex-basis: 50%;
+      flex-basis: 60%;
     }
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators
-    .shortTitle & {
-      @include breakpoint-after(layout-width(page-with-nav)) {
-        flex-basis: 60%;
-      }
-    }
+
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
     .noBreadcrumbs & {
       position: static;
@@ -286,17 +282,27 @@ $action-menu-rollup-computed-width: rem(40px);
   text-align: right;
 }
 
+@mixin condensed-layout {
+  .AdditionalMetaData {
+    margin-left: 0;
+  }
+
+  .RowCondensed {
+    display: grid;
+    gap: spacing(tight) spacing();
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 'breadcrumbs actions' 'title title';
+  }
+}
+
 .longTitle {
   @include breakpoint-before($desktop-layout) {
-    .AdditionalMetaData {
-      margin-left: 0;
-    }
+    @include condensed-layout;
+  }
+}
 
-    .RowCondensed {
-      display: grid;
-      gap: spacing(tight) spacing();
-      grid-template-columns: auto 1fr;
-      grid-template-areas: 'breadcrumbs actions' 'title title';
-    }
+.mediumTitle {
+  @include breakpoint-before($medium-layout) {
+    @include condensed-layout;
   }
 }
