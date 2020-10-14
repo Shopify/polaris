@@ -84,6 +84,11 @@ export function Header({
 }: HeaderProps) {
   const {isNavigationCollapsed} = useMediaQuery();
   const {newDesignLanguage} = useFeatures();
+  const isSingleRow =
+    !primaryAction &&
+    !pagination &&
+    !secondaryActions.length &&
+    !actionGroups.length;
 
   const breadcrumbMarkup =
     breadcrumbs.length > 0 ? (
@@ -158,8 +163,9 @@ export function Header({
 
   const headerClassNames = classNames(
     styles.Header,
-    titleHidden && styles.titleHidden,
     separator && styles.separator,
+    isSingleRow && styles.isSingleRow,
+    titleHidden && styles.titleHidden,
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,

@@ -199,58 +199,19 @@ $action-menu-rollup-computed-width: rem(40px);
   align-items: center;
   margin-left: spacing(tight);
 }
-
+// Single row styles for new design language
 .RowCondensed {
-  position: relative;
-
-  .noBreadcrumbs & {
-    @include breakpoint-before($mobile-layout) {
-      flex-wrap: wrap-reverse;
-    }
-  }
-
-  .LeftAlign {
-    align-items: flex-start;
-    flex: 1 1 auto;
-    flex-wrap: wrap;
-
-    @include breakpoint-after($mobile-layout) {
-      flex-wrap: nowrap;
-    }
-
-    @include breakpoint-after(layout-width(page-with-nav)) {
-      flex-basis: 50%;
-    }
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators
-    .shortTitle & {
-      @include breakpoint-after(layout-width(page-with-nav)) {
-        flex-basis: 40%;
-      }
-    }
-  }
-
   .RightAlign {
     grid-area: actions;
-    position: absolute;
-    top: 0;
-    right: 0;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     align-items: flex-start;
     justify-content: flex-end;
-
-    @include breakpoint-after($mobile-layout) {
-      position: static;
-    }
-
-    @include breakpoint-after(layout-width(page-with-nav)) {
-      flex-basis: 60%;
-    }
+    // Necessary for flex to realize this container doesn't want to wrap
+    white-space: nowrap;
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
     .noBreadcrumbs & {
-      position: static;
       @include breakpoint-before($mobile-layout) {
-        flex-grow: 1;
         margin-left: 0;
       }
     }
@@ -277,7 +238,6 @@ $action-menu-rollup-computed-width: rem(40px);
 .Actions {
   width: 100%;
   display: flex;
-  flex-wrap: nowrap;
   justify-content: flex-end;
   text-align: right;
 }
@@ -305,4 +265,8 @@ $action-menu-rollup-computed-width: rem(40px);
   @include breakpoint-before($medium-layout) {
     @include condensed-layout;
   }
+}
+
+.isSingleRow .RowCondensed {
+  gap: 0;
 }
