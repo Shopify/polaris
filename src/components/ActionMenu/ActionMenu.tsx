@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 
 import {classNames} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 import type {
   ActionListSection,
   MenuActionDescriptor,
@@ -24,6 +25,12 @@ export function ActionMenu({
   groups = [],
   rollup,
 }: ActionMenuProps) {
+  const {newDesignLanguage} = useFeatures();
+  const [shouldRollUp, setShouldRollup] = useState(false);
+  const handleShouldRollup = useCallback((value: boolean) => {
+    setShouldRollup(value);
+  }, []);
+
   if (actions.length === 0 && groups.length === 0) {
     return null;
   }
@@ -37,10 +44,14 @@ export function ActionMenu({
 
   return (
     <div className={actionMenuClassNames}>
-      {rollup ? (
+      {rollup || (newDesignLanguage && shouldRollUp) ? (
         <RollupActions items={actions} sections={rollupSections} />
       ) : (
-        <Actions actions={actions} groups={groups} />
+        <Actions
+          actions={actions}
+          groups={groups}
+          shouldRollUp={handleShouldRollup}
+        />
       )}
     </div>
   );

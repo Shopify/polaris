@@ -22,11 +22,12 @@ interface Props {
   actions?: MenuActionDescriptor[];
   /** Collection of page-level action groups */
   groups?: MenuGroupDescriptor[];
+  shouldRollUp?(value: boolean): void;
 }
 
 const ACTION_SPACING = 4;
 
-export function Actions({actions = [], groups = []}: Props) {
+export function Actions({actions = [], groups = [], shouldRollUp}: Props) {
   const i18n = useI18n();
   const {newDesignLanguage} = useFeatures();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
@@ -103,10 +104,19 @@ export function Actions({actions = [], groups = []}: Props) {
       } else {
         // Find last group if it exists and always render it as a rolled up action below
         if (action === lastMenuGroup) return;
+
         currentAvailableWidth = 0;
         setRolledUpActions((rolledUpActions) => [...rolledUpActions, action]);
       }
     });
+    if (shouldRollUp) {
+      console.log(
+        'rollup',
+
+        {availableWidth, lastMenuGroupWidth},
+      );
+      shouldRollUp(availableWidth < lastMenuGroupWidth);
+    }
   }, [
     actions,
     actionWidths,
@@ -115,6 +125,7 @@ export function Actions({actions = [], groups = []}: Props) {
     lastMenuGroup,
     lastMenuGroupWidth,
     newDesignLanguage,
+    shouldRollUp,
   ]);
 
   const className = classNames(

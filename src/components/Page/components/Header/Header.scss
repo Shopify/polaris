@@ -227,6 +227,8 @@ $action-menu-rollup-computed-width: rem(40px);
 
 .Actions {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-end;
@@ -234,12 +236,14 @@ $action-menu-rollup-computed-width: rem(40px);
 }
 
 .newDesignLanguage.longTitle {
+  // stylelint-disable-next-line selector-max-class
   .AdditionalMetaData {
     margin-left: 0;
     @include breakpoint-after($desktop-layout) {
       margin-left: spacing(loose) * 2 + spacing(tight) + spacing(extra-tight);
     }
   }
+  // stylelint-disable-next-line selector-max-class
   .RowCondensed {
     grid-template-rows: auto auto;
     grid-template-columns: auto 1fr;

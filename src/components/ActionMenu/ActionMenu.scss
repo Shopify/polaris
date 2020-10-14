@@ -5,6 +5,8 @@
   @include print-hidden;
   // Needed for JS calculations
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
 
   &:not(.rollup) {
     margin-left: var(--p-override-zero, -$menu-action-padding-x);

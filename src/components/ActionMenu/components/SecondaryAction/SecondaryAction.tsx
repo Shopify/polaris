@@ -18,7 +18,7 @@ export function SecondaryAction({
   ...rest
 }: SecondaryAction) {
   const {newDesignLanguage} = useFeatures();
-  const secondaryActionsRef = useRef<HTMLSpanElement>(null);
+  const secondaryActionsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!getOffsetWidth || !secondaryActionsRef.current || !newDesignLanguage)
@@ -28,10 +28,10 @@ export function SecondaryAction({
   }, [getOffsetWidth, newDesignLanguage]);
 
   return (
-    <span className={styles.SecondaryAction} ref={secondaryActionsRef}>
+    <div className={styles.SecondaryAction} ref={secondaryActionsRef}>
       <Button onClick={onAction} {...rest}>
         {children}
       </Button>
-    </span>
+    </div>
   );
 }
