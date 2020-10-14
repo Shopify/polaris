@@ -72,11 +72,7 @@ export function Actions({actions = [], groups = []}: Props) {
       return;
     }
 
-    console.log('measuring...');
-
     let currentAvailableWidth = availableWidthRef.current;
-
-    console.log(currentAvailableWidth);
 
     let newShowableActions: MenuActionDescriptor[] = [];
     let newRolledUpActions: (MenuActionDescriptor | MenuGroupDescriptor)[] = [];
