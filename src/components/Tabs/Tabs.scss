@@ -15,7 +15,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 }
 
 .Wrapper {
-  border-bottom: border();
+  border-bottom: border('divider');
 
   &.newDesignLanguage {
     padding: 0 spacing(tight);
