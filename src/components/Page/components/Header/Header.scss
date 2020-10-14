@@ -21,13 +21,13 @@ $action-menu-rollup-computed-width: rem(40px);
 
 .TitleWrapper {
   .newDesignLanguage & {
+    grid-area: title;
     margin-top: spacing(extra-tight);
     align-self: center;
-    flex-basis: 100%;
+    flex: 1 1 auto;
 
     @include breakpoint-after($mobile-layout) {
       margin-top: 0;
-      flex-basis: auto;
     }
   }
 }
@@ -54,6 +54,8 @@ $action-menu-rollup-computed-width: rem(40px);
   max-width: 100%;
 
   &.newDesignLanguage {
+    grid-area: breadcrumbs;
+    flex: 0 0 auto;
     margin-right: spacing();
   }
 
@@ -227,13 +229,13 @@ $action-menu-rollup-computed-width: rem(40px);
   }
 
   .RightAlign {
+    grid-area: actions;
     position: absolute;
     top: 0;
     right: 0;
-    flex: 1 1 auto;
+    flex: 1 0 auto;
     align-items: flex-start;
     justify-content: flex-end;
-    width: min-content;
 
     @include breakpoint-after($mobile-layout) {
       position: static;
@@ -282,12 +284,19 @@ $action-menu-rollup-computed-width: rem(40px);
   flex-wrap: nowrap;
   justify-content: flex-end;
   text-align: right;
+}
 
+.longTitle {
   @include breakpoint-before($desktop-layout) {
-    min-width: max-content;
-  }
+    .AdditionalMetaData {
+      margin-left: 0;
+    }
 
-  > :first-child {
-    flex: 1;
+    .RowCondensed {
+      display: grid;
+      gap: spacing(tight) spacing();
+      grid-template-columns: auto 1fr;
+      grid-template-areas: 'breadcrumbs actions' 'title title';
+    }
   }
 }
