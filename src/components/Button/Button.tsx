@@ -350,14 +350,13 @@ export function Button({
         {...interactiveProps}
         submit={submit}
         disabled={isDisabled}
+        loading={loading}
         ariaControls={ariaControls}
         ariaExpanded={ariaExpanded}
         ariaPressed={ariaPressedStatus}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}
-        role={loading ? 'alert' : undefined}
-        aria-busy={loading ? true : undefined}
       >
         {content}
       </UnstyledButton>

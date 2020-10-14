@@ -20,6 +20,8 @@ export interface UnstyledButtonProps {
   submit?: boolean;
   /** Disables the button, disallowing merchant interaction */
   disabled?: boolean;
+  /** Replaces button text with a spinner while a background action is being performed */
+  loading?: boolean;
   /** Sets the button in a pressed state */
   pressed?: boolean;
   /** Visually hidden text for screen readers */
@@ -61,6 +63,7 @@ export function UnstyledButton({
   download,
   submit,
   disabled,
+  loading,
   pressed,
   accessibilityLabel,
   ariaControls,
@@ -130,6 +133,8 @@ export function UnstyledButton({
         {...interactiveProps}
         type={submit ? 'submit' : 'button'}
         disabled={disabled}
+        role={loading ? 'alert' : undefined}
+        aria-busy={loading ? true : undefined}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         aria-pressed={ariaPressedStatus}
