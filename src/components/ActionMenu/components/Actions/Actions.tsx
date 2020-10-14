@@ -31,8 +31,8 @@ export function Actions({actions = [], groups = []}: Props) {
   const {newDesignLanguage} = useFeatures();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
   const menuGroupWidthRef = useRef<number>(0);
-  const [actionWidths, setActionWidths] = useState<number[]>([]);
-  const [availableWidth, setAvailableWidth] = useState<number>(0);
+  const actionWidthsRef = useRef<number[]>([]);
+  const availableWidthRef = useRef<number>(0);
   const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
     undefined,
   );
@@ -47,10 +47,10 @@ export function Actions({actions = [], groups = []}: Props) {
     actions: [],
   };
   const lastMenuGroup = [...groups].pop();
-  const lastMenuGroupWidth = [...actionWidths].pop() || 0;
+  const lastMenuGroupWidth = [...actionWidthsRef.current].pop() || 0;
 
   const handleActionsOffsetWidth = useCallback((width: number) => {
-    setActionWidths((actionWidths) => [...actionWidths, width]);
+    actionWidthsRef.current = [...actionWidthsRef.current, width];
   }, []);
 
   const handleMenuGroupToggle = useCallback(
@@ -63,59 +63,68 @@ export function Actions({actions = [], groups = []}: Props) {
     [],
   );
 
-  const handleResize = useMemo(
-    () =>
-      debounce(
-        () => {
-          if (!newDesignLanguage || !actionsLayoutRef.current) return;
-          setAvailableWidth(actionsLayoutRef.current.offsetWidth);
-        },
-        20,
-        {leading: false, trailing: true, maxWait: 40},
-      ),
-    [newDesignLanguage],
-  );
-
-  useEffect(() => {
-    if (!actionsLayoutRef.current) return;
-    setAvailableWidth(actionsLayoutRef.current.offsetWidth);
-  }, [actionsLayoutRef]);
-
-  useEffect(() => {
-    if (!newDesignLanguage || actionWidths.length === 0 || availableWidth === 0)
+  const measureActions = useCallback(() => {
+    if (
+      !newDesignLanguage ||
+      actionWidthsRef.current.length === 0 ||
+      availableWidthRef.current === 0
+    ) {
       return;
+    }
 
-    let currentAvailableWidth = availableWidth;
+    console.log('measuring...');
 
-    setShowableActions([]);
-    setRolledUpActions([]);
+    let currentAvailableWidth = availableWidthRef.current;
+
+    console.log(currentAvailableWidth);
+
+    let newShowableActions: MenuActionDescriptor[] = [];
+    let newRolledUpActions: (MenuActionDescriptor | MenuGroupDescriptor)[] = [];
 
     [...actions, ...groups].forEach((action, index) => {
       if (
-        actionWidths[index] +
+        actionWidthsRef.current[index] +
           menuGroupWidthRef.current +
           ACTION_SPACING +
           lastMenuGroupWidth <=
         currentAvailableWidth
       ) {
-        currentAvailableWidth -= actionWidths[index];
-        setShowableActions((showableActions) => [...showableActions, action]);
+        currentAvailableWidth -= actionWidthsRef.current[index];
+        newShowableActions = [...newShowableActions, action];
       } else {
         // Find last group if it exists and always render it as a rolled up action below
         if (action === lastMenuGroup) return;
         currentAvailableWidth = 0;
-        setRolledUpActions((rolledUpActions) => [...rolledUpActions, action]);
+        newRolledUpActions = [...newRolledUpActions, action];
       }
     });
-  }, [
-    actions,
-    actionWidths,
-    availableWidth,
-    groups,
-    lastMenuGroup,
-    lastMenuGroupWidth,
-    newDesignLanguage,
-  ]);
+
+    setShowableActions(newShowableActions);
+    setRolledUpActions(newRolledUpActions);
+  }, [actions, groups, lastMenuGroup, lastMenuGroupWidth, newDesignLanguage]);
+
+  const handleResize = useMemo(
+    () =>
+      debounce(
+        () => {
+          if (!newDesignLanguage || !actionsLayoutRef.current) return;
+          availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
+          measureActions();
+        },
+        20,
+        {leading: false, trailing: true, maxWait: 40},
+      ),
+    [newDesignLanguage, measureActions],
+  );
+
+  useEffect(() => {
+    if (!actionsLayoutRef.current) {
+      return;
+    }
+
+    availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
+    measureActions();
+  }, [measureActions]);
 
   const className = classNames(
     styles.ActionsLayout,
