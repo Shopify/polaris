@@ -10,3 +10,8 @@
     margin-left: var(--p-override-zero, -$menu-action-padding-x);
   }
 }
+
+.newDesignLanguage {
+  display: flex;
+  justify-content: flex-end;
+}
