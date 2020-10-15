@@ -78,13 +78,14 @@ export function Actions({actions = [], groups = []}: Props) {
     let newRolledUpActions: (MenuActionDescriptor | MenuGroupDescriptor)[] = [];
 
     [...actions, ...groups].forEach((action, index) => {
-      if (
+      const canFitAction =
         actionWidthsRef.current[index] +
           menuGroupWidthRef.current +
           ACTION_SPACING +
           lastMenuGroupWidth <=
-        currentAvailableWidth
-      ) {
+        currentAvailableWidth;
+
+      if (canFitAction) {
         currentAvailableWidth -= actionWidthsRef.current[index];
         newShowableActions = [...newShowableActions, action];
       } else {
