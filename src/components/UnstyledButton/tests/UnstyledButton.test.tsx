@@ -73,11 +73,6 @@ describe('<Button />', () => {
   describe('url', () => {
     const mockUrl = 'https://google.com';
 
-    it('renders a UnstyledLink when present', () => {
-      const button = mountWithAppProvider(<UnstyledButton url={mockUrl} />);
-      expect(button.find(UnstyledLink).prop('url')).toBe(mockUrl);
-    });
-
     it('renders a link without an `href` when `disabled`', () => {
       const button = mountWithAppProvider(
         <UnstyledButton url={mockUrl} disabled />,
@@ -87,14 +82,41 @@ describe('<Button />', () => {
 
     it('renders a button when not present', () => {
       const button = mountWithAppProvider(<UnstyledButton />);
-      expect(button.find('button').exists()).toBeTruthy();
+      expect(button.find('button').prop('href')).toBeUndefined();
+    });
+
+    it('omits subset of props when provided a `url`', () => {
+      // Not including `disabled` or `loading`,
+      // as that leads to a different code path.
+      const mockUnpassedProps = {
+        submit: true,
+        ariaControls: 'mock aria controls',
+        ariaExpanded: true,
+        onKeyDown: noop,
+        onKeyUp: noop,
+        onKeyPress: noop,
+      };
+      const button = mountWithAppProvider(
+        <UnstyledButton url={mockUrl} {...mockUnpassedProps} />,
+      );
+
+      expect(button.find(UnstyledLink).prop('url')).toBe(mockUrl);
+
+      expect(button.find(UnstyledLink).prop('submit')).toBeUndefined();
+      expect(button.find(UnstyledLink).prop('ariaControls')).toBeUndefined();
+      expect(button.find(UnstyledLink).prop('ariaExpanded')).toBeUndefined();
+      expect(button.find(UnstyledLink).prop('onKeyDown')).toBeUndefined();
+      expect(button.find(UnstyledLink).prop('onKeyUp')).toBeUndefined();
+      expect(button.find(UnstyledLink).prop('onKeyPress')).toBeUndefined();
     });
   });
 
   describe('external', () => {
-    it('gets passed into the link', () => {
+    const mockUrl = 'https://google.com';
+
+    it('gets passed into the UnstyledLink', () => {
       const button = mountWithAppProvider(
-        <UnstyledButton url="https://google.com" external />,
+        <UnstyledButton url={mockUrl} external />,
       );
       expect(button.find(UnstyledLink).prop('external')).toBeTruthy();
     });
@@ -105,9 +127,23 @@ describe('<Button />', () => {
       );
       expect(button.find(UnstyledLink).prop('external')).toBeFalsy();
     });
+
+    it('is not passed when `url` is missing', () => {
+      const button = mountWithAppProvider(<UnstyledButton external />);
+      expect(button.find('button').prop('external')).toBeUndefined();
+    });
+
+    it('is not passed when `url + disabled`', () => {
+      const button = mountWithAppProvider(
+        <UnstyledButton url={mockUrl} external disabled />,
+      );
+      expect(button.find('a').prop('external')).toBeUndefined();
+    });
   });
 
   describe('download', () => {
+    const mockUrl = 'https://google.com';
+
     it('gets passed into the link as a boolean', () => {
       const button = mountWithAppProvider(
         <UnstyledButton url="/foo" download />,
@@ -123,10 +159,20 @@ describe('<Button />', () => {
     });
 
     it('is false when not set', () => {
-      const button = mountWithAppProvider(
-        <UnstyledButton url="https://google.com" />,
-      );
+      const button = mountWithAppProvider(<UnstyledButton url={mockUrl} />);
       expect(button.find(UnstyledLink).prop('download')).toBeFalsy();
+    });
+
+    it('is not passed when `url` is missing', () => {
+      const button = mountWithAppProvider(<UnstyledButton download />);
+      expect(button.find('button').prop('download')).toBeUndefined();
+    });
+
+    it('is not passed when `url + disabled`', () => {
+      const button = mountWithAppProvider(
+        <UnstyledButton url={mockUrl} download disabled />,
+      );
+      expect(button.find('a').prop('download')).toBeUndefined();
     });
   });
 
@@ -143,9 +189,18 @@ describe('<Button />', () => {
   });
 
   describe('disabled', () => {
+    const mockUrl = 'https://google.com';
+
     it('passes to `button`', () => {
       const button = mountWithAppProvider(<UnstyledButton disabled />);
       expect(button.find('button').prop('disabled')).toBeTruthy();
+    });
+
+    it('does not pass to link', () => {
+      const button = mountWithAppProvider(
+        <UnstyledButton url={mockUrl} disabled />,
+      );
+      expect(button.find('a').prop('disabled')).toBeUndefined();
     });
   });
 
@@ -188,11 +243,15 @@ describe('<Button />', () => {
         <UnstyledButton
           accessibilityLabel={accessibilityLabel}
           url="https://google.com"
+          disabled
         />,
       );
-      expect(button.find(UnstyledLink).prop('aria-label')).toBe(
-        accessibilityLabel,
-      );
+      expect(
+        button
+          .find('a')
+          .findWhere((node) => node.prop('href') === undefined)
+          .prop('aria-label'),
+      ).toBe(accessibilityLabel);
     });
   });
 
@@ -380,3 +439,5 @@ describe('<Button />', () => {
     });
   });
 });
+
+function noop() {}

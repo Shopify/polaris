@@ -74,24 +74,35 @@ export interface ButtonProps
   connectedDisclosure?: ConnectedDisclosure;
 }
 
-interface CommonButtonProps {
-  id: ButtonProps['id'];
-  className: string;
-}
-
-interface InteractiveButtonProps
-  extends CommonButtonProps,
-    Pick<
-      ButtonProps,
-      | 'accessibilityLabel'
-      | 'onClick'
-      | 'onFocus'
-      | 'onBlur'
-      | 'onMouseEnter'
-      | 'onTouchStart'
-    > {
+interface CommonButtonProps
+  extends Pick<
+    ButtonProps,
+    | 'id'
+    | 'accessibilityLabel'
+    | 'onClick'
+    | 'onFocus'
+    | 'onBlur'
+    | 'onMouseEnter'
+    | 'onTouchStart'
+  > {
+  className: UnstyledButtonProps['className'];
   onMouseUp: MouseUpBlurHandler;
 }
+
+type LinkButtonProps = Pick<ButtonProps, 'url' | 'external' | 'download'>;
+
+type ActionButtonProps = Pick<
+  ButtonProps,
+  | 'submit'
+  | 'disabled'
+  | 'loading'
+  | 'ariaControls'
+  | 'ariaExpanded'
+  | 'ariaPressed'
+  | 'onKeyDown'
+  | 'onKeyUp'
+  | 'onKeyPress'
+>;
 
 const DEFAULT_SIZE = 'medium';
 
@@ -290,14 +301,9 @@ export function Button({
     );
   }
 
-  let buttonMarkup;
-
   const commonProps: CommonButtonProps = {
     id,
     className,
-  };
-  const interactiveProps: InteractiveButtonProps = {
-    ...commonProps,
     accessibilityLabel,
     onClick,
     onFocus,
@@ -306,42 +312,28 @@ export function Button({
     onMouseEnter,
     onTouchStart,
   };
+  const linkProps: LinkButtonProps = {
+    url,
+    external,
+    download,
+  };
+  const actionProps: ActionButtonProps = {
+    submit,
+    disabled: isDisabled,
+    loading,
+    ariaControls,
+    ariaExpanded,
+    ariaPressed: ariaPressedStatus,
+    onKeyDown,
+    onKeyUp,
+    onKeyPress,
+  };
 
-  if (url) {
-    buttonMarkup = isDisabled ? (
-      // Render an `<a>` so toggling disabled/enabled state changes only the
-      // `href` attribute instead of replacing the whole element.
-      <a {...commonProps} aria-label={accessibilityLabel}>
-        {content}
-      </a>
-    ) : (
-      <UnstyledButton
-        {...interactiveProps}
-        url={url}
-        external={external}
-        download={download}
-      >
-        {content}
-      </UnstyledButton>
-    );
-  } else {
-    buttonMarkup = (
-      <UnstyledButton
-        {...interactiveProps}
-        submit={submit}
-        disabled={isDisabled}
-        loading={loading}
-        ariaControls={ariaControls}
-        ariaExpanded={ariaExpanded}
-        ariaPressed={ariaPressedStatus}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onKeyPress={onKeyPress}
-      >
-        {content}
-      </UnstyledButton>
-    );
-  }
+  const buttonMarkup = (
+    <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
+      {content}
+    </UnstyledButton>
+  );
 
   return connectedDisclosureMarkup ? (
     <div className={styles.ConnectedDisclosureWrapper}>

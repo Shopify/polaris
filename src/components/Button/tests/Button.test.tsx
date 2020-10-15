@@ -10,9 +10,8 @@ import en from '../../../../locales/en.json';
 
 describe('<Button />', () => {
   describe('children', () => {
-    const mockChildren = 'mock children';
-
     it('passes prop', () => {
+      const mockChildren = 'mock children';
       const button = mountWithAppProvider(<Button>{mockChildren}</Button>);
       expect(button.find(UnstyledButton).text()).toContain(mockChildren);
     });
@@ -27,76 +26,34 @@ describe('<Button />', () => {
   });
 
   describe('url', () => {
-    const mockUrl = 'https://google.com';
-    // Not including `disabled` or `loading`,
-    // as that leads to a different code path.
-    const mockUnpassedProps = {
-      submit: true,
-      ariaControls: 'mock aria controls',
-      ariaExpanded: true,
-      onKeyDown: noop,
-      onKeyUp: noop,
-      onKeyPress: noop,
-    };
-
-    it('omits subset of props when provided a `url`', () => {
-      const button = mountWithAppProvider(
-        <Button url={mockUrl} {...mockUnpassedProps} />,
-      );
-
+    it('passes prop', () => {
+      const mockUrl = 'https://google.com';
+      const button = mountWithAppProvider(<Button url={mockUrl} />);
       expect(button.find(UnstyledButton).prop('url')).toBe(mockUrl);
-
-      expect(button.find(UnstyledButton).prop('submit')).toBeUndefined();
-      expect(button.find(UnstyledButton).prop('ariaControls')).toBeUndefined();
-      expect(button.find(UnstyledButton).prop('ariaExpanded')).toBeUndefined();
-      expect(button.find(UnstyledButton).prop('onKeyDown')).toBeUndefined();
-      expect(button.find(UnstyledButton).prop('onKeyUp')).toBeUndefined();
-      expect(button.find(UnstyledButton).prop('onKeyPress')).toBeUndefined();
     });
   });
 
   describe('external', () => {
-    const mockUrl = 'https://google.com';
-
-    it('gets passed alongside url', () => {
-      const button = mountWithAppProvider(<Button url={mockUrl} external />);
-      expect(button.find(UnstyledButton).prop('external')).toBeTruthy();
-    });
-
-    it('is false by default', () => {
-      const button = mountWithAppProvider(<Button url={mockUrl} />);
-      expect(button.find(UnstyledButton).prop('external')).toBeFalsy();
-    });
-
-    it('is not passed when url is not provided', () => {
+    it('passes prop', () => {
       const button = mountWithAppProvider(<Button external />);
-      expect(button.find(UnstyledButton).prop('external')).toBeFalsy();
+      expect(button.find(UnstyledButton).prop('external')).toBe(true);
     });
   });
 
   describe('download', () => {
-    const mockUrl = 'https://google.com';
-
-    it('gets passed into the link as a boolean', () => {
-      const button = mountWithAppProvider(<Button url={mockUrl} download />);
+    it('gets passed as a boolean', () => {
+      const button = mountWithAppProvider(<Button download />);
       expect(button.find(UnstyledButton).prop('download')).toBe(true);
     });
 
-    it('gets passed into the link as a string', () => {
+    it('gets passed as a string', () => {
+      const mockDownload = 'file.txt';
+      const mockUrl = 'https://google.com';
+
       const button = mountWithAppProvider(
-        <Button url={mockUrl} download="file.txt" />,
+        <Button url={mockUrl} download={mockDownload} />,
       );
-      expect(button.find(UnstyledButton).prop('download')).toBe('file.txt');
-    });
-
-    it('is false when not set', () => {
-      const button = mountWithAppProvider(<Button url={mockUrl} />);
-      expect(button.find(UnstyledButton).prop('download')).toBeUndefined();
-    });
-
-    it('is not passed when no `url` is provided', () => {
-      const button = mountWithAppProvider(<Button download />);
-      expect(button.find(UnstyledButton).prop('download')).toBeUndefined();
+      expect(button.find(UnstyledButton).prop('download')).toBe(mockDownload);
     });
   });
 
@@ -115,17 +72,9 @@ describe('<Button />', () => {
   });
 
   describe('loading', () => {
-    it('renders <UnstyledButton /> when url is not passed', () => {
+    it('passes prop', () => {
       const button = mountWithAppProvider(<Button loading />);
-      expect(button.find(UnstyledButton).prop('disabled')).toBe(true);
       expect(button.find(UnstyledButton).prop('loading')).toBe(true);
-    });
-
-    it('renders <a> without an href when url is passed', () => {
-      const button = mountWithAppProvider(
-        <Button loading url="https://google.com" />,
-      );
-      expect(button.find('a').prop('href')).toBeFalsy();
     });
 
     it('renders a spinner into the button', () => {
@@ -147,7 +96,7 @@ describe('<Button />', () => {
   });
 
   describe('submit', () => {
-    it('is passed', () => {
+    it('passes prop', () => {
       const button = mountWithAppProvider(<Button submit />);
       expect(button.find(UnstyledButton).prop('submit')).toBe(true);
     });
@@ -172,37 +121,14 @@ describe('<Button />', () => {
   });
 
   describe('accessibilityLabel', () => {
-    const mockAccessibilityLabel = 'mock accessibility label';
-    const mockUrl = 'https://google.com';
-
-    it('passes without `url`', () => {
+    it('passes prop', () => {
+      const mockAccessibilityLabel = 'mock accessibility label';
       const button = mountWithAppProvider(
         <Button accessibilityLabel={mockAccessibilityLabel} />,
       );
       expect(button.find(UnstyledButton).prop('accessibilityLabel')).toBe(
         mockAccessibilityLabel,
       );
-    });
-
-    it('passes with `url`', () => {
-      const button = mountWithAppProvider(
-        <Button accessibilityLabel={mockAccessibilityLabel} url={mockUrl} />,
-      );
-      expect(button.find(UnstyledButton).prop('accessibilityLabel')).toBe(
-        mockAccessibilityLabel,
-      );
-    });
-
-    // Should also test for `loading`
-    it('passes to `aria-label` when `url` and `disabled`', () => {
-      const button = mountWithAppProvider(
-        <Button
-          accessibilityLabel={mockAccessibilityLabel}
-          url={mockUrl}
-          disabled
-        />,
-      );
-      expect(button.find('a').prop('aria-label')).toBe(mockAccessibilityLabel);
     });
   });
 
@@ -352,15 +278,6 @@ describe('<Button />', () => {
       trigger(button.find(UnstyledButton), 'onClick');
       expect(onClickSpy).toHaveBeenCalledTimes(1);
     });
-
-    it('is called when the link is clicked', () => {
-      const onClickSpy = jest.fn();
-      const button = mountWithAppProvider(
-        <Button onClick={onClickSpy} url="https://google.com" />,
-      );
-      trigger(button.find(UnstyledButton), 'onClick');
-      expect(onClickSpy).toHaveBeenCalledTimes(1);
-    });
   });
 
   describe('onMouseEnter()', () => {
@@ -368,15 +285,6 @@ describe('<Button />', () => {
       const onMouseEnterSpy = jest.fn();
       const button = mountWithAppProvider(
         <Button onMouseEnter={onMouseEnterSpy} />,
-      );
-      trigger(button.find(UnstyledButton), 'onMouseEnter');
-      expect(onMouseEnterSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it('is called when the mouse enters link', () => {
-      const onMouseEnterSpy = jest.fn();
-      const button = mountWithAppProvider(
-        <Button onMouseEnter={onMouseEnterSpy} url="https://google.com" />,
       );
       trigger(button.find(UnstyledButton), 'onMouseEnter');
       expect(onMouseEnterSpy).toHaveBeenCalledTimes(1);
@@ -392,15 +300,6 @@ describe('<Button />', () => {
       trigger(button.find(UnstyledButton), 'onTouchStart');
       expect(onTouchStartSpy).toHaveBeenCalledTimes(1);
     });
-
-    it('is called when link is pressed', () => {
-      const onTouchStartSpy = jest.fn();
-      const button = mountWithAppProvider(
-        <Button onTouchStart={onTouchStartSpy} url="https://google.com" />,
-      );
-      trigger(button.find(UnstyledButton), 'onTouchStart');
-      expect(onTouchStartSpy).toHaveBeenCalledTimes(1);
-    });
   });
 
   describe('onFocus()', () => {
@@ -410,30 +309,12 @@ describe('<Button />', () => {
       trigger(button.find(UnstyledButton), 'onFocus');
       expect(onFocusSpy).toHaveBeenCalledTimes(1);
     });
-
-    it('is called when the link is focussed', () => {
-      const onFocusSpy = jest.fn();
-      const button = mountWithAppProvider(
-        <Button onFocus={onFocusSpy} url="https://google.com" />,
-      );
-      trigger(button.find(UnstyledButton), 'onFocus');
-      expect(onFocusSpy).toHaveBeenCalledTimes(1);
-    });
   });
 
   describe('onBlur()', () => {
     it('is called when the button is blurred', () => {
       const onBlurSpy = jest.fn();
       const button = mountWithAppProvider(<Button onBlur={onBlurSpy} />);
-      trigger(button.find(UnstyledButton), 'onBlur');
-      expect(onBlurSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it('is called when the link is blurred', () => {
-      const onBlurSpy = jest.fn();
-      const button = mountWithAppProvider(
-        <Button onBlur={onBlurSpy} url="https://google.com" />,
-      );
       trigger(button.find(UnstyledButton), 'onBlur');
       expect(onBlurSpy).toHaveBeenCalledTimes(1);
     });
@@ -552,5 +433,3 @@ describe('<Button />', () => {
     });
   });
 });
-
-function noop() {}
