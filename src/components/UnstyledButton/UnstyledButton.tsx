@@ -112,16 +112,13 @@ export function UnstyledButton({
     buttonMarkup = disabled ? (
       // Render an `<a>` so toggling disabled/enabled state changes only the
       // `href` attribute instead of replacing the whole element.
-      <a {...commonProps} data-polaris-unstyled-button>
-        {children}
-      </a>
+      <a {...commonProps}>{children}</a>
     ) : (
       <UnstyledLink
         {...interactiveProps}
         url={url}
         external={external}
         download={download}
-        data-polaris-unstyled-button
         {...rest}
       >
         {children}
