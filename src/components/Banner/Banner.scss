@@ -134,6 +134,11 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     .ContentWrapper {
       margin-top: $newDesignLanguageOffset;
     }
+
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class
+    .Dismiss {
+      top: spacing();
+    }
   }
 
   @include banner-variants;
@@ -205,6 +210,10 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 .hasDismiss {
   padding-right: spacing() + spacing(extra-tight) + control-height();
+
+  &.newDesignLanguage {
+    padding-right: spacing() + spacing(extra-tight) + control-height();
+  }
 }
 
 .Heading {
