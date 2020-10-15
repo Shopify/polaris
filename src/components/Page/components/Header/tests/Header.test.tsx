@@ -126,7 +126,7 @@ describe('<Header />', () => {
     });
   });
 
-  describe('secondaryActions', () => {
+  describe('secondaryadds a newDesignLanguage class', () => {
     const mockSecondaryActions: HeaderProps['secondaryActions'] = [
       {content: 'mock content 1'},
       {content: 'mock content 2'},
@@ -271,7 +271,7 @@ describe('<Header />', () => {
         features: {newDesignLanguage: true},
       });
       expect(header.find('div').first().prop('className')).toBe(
-        'Header noBreadcrumbs newDesignLanguage shortTitle',
+        'Header isSingleRow noBreadcrumbs newDesignLanguage mediumTitle',
       );
     });
 
@@ -280,7 +280,7 @@ describe('<Header />', () => {
         features: {newDesignLanguage: false},
       });
       expect(header.find('div').first().prop('className')).toBe(
-        'Header noBreadcrumbs shortTitle',
+        'Header isSingleRow noBreadcrumbs mediumTitle',
       );
     });
 
