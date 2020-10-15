@@ -62,27 +62,22 @@ $nav-animation-variables: (
 
   &.keyFocused {
     @include focus-ring($style: 'focused');
-  }
-
-  &:focus {
-    background-image: linear-gradient(color(state, hover), color(state, hover));
+    background: var(
+      --p-background-hovered,
+      linear-gradient(color(state, hover), color(state, hover))
+    );
     color: var(--p-text, color('indigo', 'dark'));
     text-decoration: none;
-
-    .Navigation-newDesignLanguage & {
-      background: var(--p-background-hovered);
-    }
-  }
-
-  &:focus:hover {
-    color: var(--p-text, color('indigo', 'dark'));
   }
 
   &:active,
   &:active:hover {
     color: var(--p-text, color('indigo', 'dark'));
-    background-color: var(--p-surface-pressed);
     @include no-focus-ring;
+
+    .Navigation-newDesignLanguage & {
+      background-color: var(--p-background-pressed);
+    }
   }
 
   @include breakpoint-after(nav-min-window-corrected()) {
@@ -125,10 +120,10 @@ $nav-animation-variables: (
   }
 
   .Item:hover &,
-  .Item:focus & {
+  .Item.keyFocused & {
     @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
 
-    // stylelint-disable-next-line selector-max-combinators
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class
     .Navigation-newDesignLanguage & {
       @include recolor-icon(var(--p-icon), transparent, filter('icon'));
     }
@@ -138,11 +133,10 @@ $nav-animation-variables: (
   .Item-selected:hover &,
   .subNavigationActive &,
   .subNavigationActive:hover &,
-  .subNavigationActive:focus &,
-  .subNavigationActive:focus:hover & {
+  .Item-selected.keyFocused & {
     @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
 
-    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
+    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity, selector-max-class
     .Navigation-newDesignLanguage & {
       @include recolor-icon(
         var(--p-action-primary),
