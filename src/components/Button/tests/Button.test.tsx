@@ -399,20 +399,6 @@ describe('<Button />', () => {
     });
   });
 
-  describe('deprecations', () => {
-    it('warns the ariaPressed prop has been replaced', () => {
-      const warningSpy = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {});
-      mountWithApp(<Button ariaPressed />);
-
-      expect(warningSpy).toHaveBeenCalledWith(
-        'Deprecation: The ariaPressed prop has been replaced with pressed',
-      );
-      warningSpy.mockRestore();
-    });
-  });
-
   describe('newDesignLanguage', () => {
     it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const button = mountWithApp(<Button />, {

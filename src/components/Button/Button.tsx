@@ -1,4 +1,4 @@
-import React, {useRef, useState, useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
@@ -141,16 +141,6 @@ export function Button({
   connectedDisclosure,
 }: ButtonProps) {
   const {newDesignLanguage} = useFeatures();
-  const hasGivenDeprecationWarning = useRef(false);
-
-  if (ariaPressed && !hasGivenDeprecationWarning.current) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The ariaPressed prop has been replaced with pressed',
-    );
-    hasGivenDeprecationWarning.current = true;
-  }
-
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;
