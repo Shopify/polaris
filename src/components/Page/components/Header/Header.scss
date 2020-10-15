@@ -278,6 +278,9 @@ $action-menu-rollup-computed-width: rem(40px);
   // stylelint-disable-next-line selector-max-class
   .RowCondensed {
     flex-wrap: wrap-reverse;
+    @include breakpoint-after(layout-width(page-with-nav)) {
+      flex-wrap: nowrap;
+    }
   }
 }
 
