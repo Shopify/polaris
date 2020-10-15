@@ -235,6 +235,15 @@ $disabled-fade: 0.6;
       --p-background-hovered,
       linear-gradient(color(state, hover), color(state, hover))
     );
+
+    .Navigation-newDesignLanguage & {
+      @media (-ms-high-contrast: active) {
+        @include recolor-icon(
+          $fill-color: color('white'),
+          $filter-color: filter('white')
+        );
+      }
+    }
   }
 
   @include focus-ring;
@@ -425,6 +434,13 @@ $secondary-item-font-size: rem(15px);
         var(--p-icon-hovered, color('indigo')),
         var(--p-override-transparent, color('white'))
       );
+
+      @media (-ms-high-contrast: active) {
+        @include recolor-icon(
+          $fill-color: color('white'),
+          $filter-color: filter('white')
+        );
+      }
     }
 
     &:hover {
