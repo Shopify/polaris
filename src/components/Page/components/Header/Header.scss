@@ -261,9 +261,23 @@ $action-menu-rollup-computed-width: rem(40px);
   }
 }
 
-.mediumTitle {
+.mediumTitle:not(.noBreadcrumbs) {
   @include breakpoint-before($medium-layout) {
     @include condensed-layout;
+  }
+}
+.mediumTitle.noBreadcrumbs {
+  // stylelint-disable-next-line selector-max-class
+  .TitleWrapper {
+    margin-top: 0;
+  }
+  // stylelint-disable-next-line selector-max-class
+  .RightAlign {
+    margin-bottom: spacing(extra-tight);
+  }
+  // stylelint-disable-next-line selector-max-class
+  .RowCondensed {
+    flex-wrap: wrap-reverse;
   }
 }
 
