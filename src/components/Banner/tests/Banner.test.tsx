@@ -14,7 +14,7 @@ import {BannerContext} from 'utilities/banner-context';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
-import {Banner} from '../Banner';
+import {Banner, BannerHandles} from '../Banner';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -134,7 +134,7 @@ describe('<Banner />', () => {
   describe('focus', () => {
     it('exposes a function that allows the banner to be programmatically focused', () => {
       function Test() {
-        const banner = useRef<Banner>(null);
+        const banner = useRef<BannerHandles>(null);
 
         useEffect(() => {
           banner.current && banner.current.focus();
