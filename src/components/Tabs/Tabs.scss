@@ -327,6 +327,14 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .Tab {
     padding: spacing(tight) spacing(extra-tight);
+
+    &:focus .Title::before {
+      background: var(--p-border-hovered);
+    }
+
+    &:active .Title::before {
+      background: var(--p-surface-primary-selected-pressed);
+    }
   }
 
   .DisclosureActivator {
@@ -337,14 +345,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   .Tab-selected {
     .Title {
       color: var(--p-text);
-
-      &:hover::before {
-        background: var(--p-surface-primary-selected-pressed);
-      }
-
-      &:active::before {
-        background: var(--p-action-primary);
-      }
 
       &::before {
         background: var(--p-action-primary);
