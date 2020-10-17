@@ -23,6 +23,8 @@ export interface CardProps {
   subdued?: boolean;
   /** Auto wrap content in section */
   sectioned?: boolean;
+  /** Hide overflow content */
+  hideOverflow?: boolean;
   /** Card header actions */
   actions?: DisableableAction[];
   /** Primary action in the card footer */
@@ -49,6 +51,7 @@ export const Card: React.FunctionComponent<CardProps> & {
   title,
   subdued,
   sectioned,
+  hideOverflow,
   actions,
   primaryFooterAction,
   secondaryFooterActions,
@@ -65,6 +68,7 @@ export const Card: React.FunctionComponent<CardProps> & {
   const className = classNames(
     styles.Card,
     subdued && styles.subdued,
+    hideOverflow && styles.hideOverflow,
     newDesignLanguage && styles.newDesignLanguage,
   );
 

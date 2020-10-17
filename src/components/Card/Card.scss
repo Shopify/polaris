@@ -25,6 +25,10 @@
   background-color: var(--p-surface-subdued, color('sky', 'lighter'));
 }
 
+.hideOverflow {
+  overflow: hidden;
+}
+
 .Header {
   padding: spacing() spacing() 0;
 
