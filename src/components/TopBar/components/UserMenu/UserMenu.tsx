@@ -1,6 +1,6 @@
-import type {InversableColorScheme} from 'components/ThemeProvider';
 import React from 'react';
 
+import type {InversableColorScheme} from '../../../ThemeProvider';
 import type {IconableAction} from '../../../../types';
 import {Avatar, AvatarProps} from '../../../Avatar';
 import {MessageIndicator} from '../../../MessageIndicator';
