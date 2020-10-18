@@ -219,7 +219,7 @@ $active-indicator-width: rem(3px);
     }
 
     &:active {
-      background-color: var(--p-surface-selected);
+      background-color: var(--p-surface-pressed);
     }
 
     &.active {
