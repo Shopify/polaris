@@ -202,6 +202,8 @@ $active-indicator-width: rem(3px);
     &:hover {
       background-image: none;
       background-color: var(--p-surface-hovered);
+      color: inherit;
+      text-decoration: none;
 
       @media (-ms-high-contrast: active) {
         outline: 1px solid ms-high-contrast-color('text');
