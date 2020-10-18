@@ -213,8 +213,15 @@ $active-indicator-width: rem(3px);
     &.active,
     &:active {
       background-image: none;
-      background-color: var(--p-surface-selected);
       @include recolor-icon(var(--p-interactive));
+    }
+
+    &:active {
+      background-color: var(--p-surface-selected);
+    }
+
+    &.active {
+      background-color: var(--p-surface-selected);
     }
 
     // Only show when the button is selected, not active
