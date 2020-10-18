@@ -213,7 +213,7 @@ $active-indicator-width: rem(3px);
     &.active,
     &:active {
       background-image: none;
-      background-color: var(--p-surface-selected);
+      background-color: var(--p-surface-pressed);
       @include recolor-icon(var(--p-interactive));
     }
 
