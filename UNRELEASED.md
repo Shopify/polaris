@@ -8,6 +8,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Allow type override for components, ex: StackItem...
+
 ### Bug fixes
 
 ### Documentation
