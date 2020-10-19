@@ -209,7 +209,7 @@ $stacking-order: (
   position: relative;
   z-index: z-index(contents, $stacking-order);
   flex: 0 0 auto;
-  color: var(--p-text-subdued);
+  color: var(--p-text-subdued, currentColor);
   user-select: none;
 }
 
