@@ -96,8 +96,18 @@ export function DetailsPage() {
   }, []);
   const handleSearchFieldChange = useCallback((value) => {
     setSearchValue(value);
-    setSearchActive(value.length > 0);
   }, []);
+  const handleSearchFieldFocus = useCallback(() => {
+    setSearchActive(true);
+  }, []);
+  const handleSearchFieldBlur = useCallback(() => {
+    // setSearchActive(false);
+  }, []);
+
+  React.useEffect(() => {
+    console.log(searchActive);
+  }, [searchActive]);
+
   const toggleToastActive = useCallback(
     () => setToastActive((toastActive) => !toastActive),
     [],
@@ -193,8 +203,11 @@ export function DetailsPage() {
   const searchFieldMarkup = (
     <TopBar.SearchField
       onChange={handleSearchFieldChange}
+      onFocus={handleSearchFieldFocus}
+      onBlur={handleSearchFieldBlur}
       value={searchValue}
       placeholder="Search"
+      searchResultsVisible={searchActive}
     />
   );
 
