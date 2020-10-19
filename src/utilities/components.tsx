@@ -44,7 +44,9 @@ export function isElementOfType<P>(
     return false;
   }
 
-  const {type} = element;
+  const {type: defaultType} = element;
+  const overrideType = element.props?.__type__;
+  const type = overrideType || defaultType;
   const Components = Array.isArray(Component) ? Component : [Component];
 
   return Components.some(
