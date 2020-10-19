@@ -95,7 +95,6 @@ describe('<Resizer />', () => {
       const contentsNode = findByTestID(resizer, 'ContentsNode');
       expect(contentsNode.html()).toContain(contents);
     });
-
   });
 
   describe('minimumLines', () => {

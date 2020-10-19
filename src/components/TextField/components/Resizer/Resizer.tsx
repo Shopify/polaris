@@ -89,7 +89,7 @@ const ENTITIES_TO_REPLACE = {
   '>': '&gt;',
   '\n': '<br>',
   '\r': '',
-  ',': ','
+  ',': ',',
 };
 
 const REPLACE_REGEX = new RegExp(
