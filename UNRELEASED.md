@@ -8,8 +8,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Added `step='0'` check to `Textfield` to disable spinner with input type 'number' ([#3477](https://github.com/Shopify/polaris-react/pull/3477))
-
+ Updated `Textfield` with a `type` of `number` to not render a spinner if step is set to `0` ([#3477](https://github.com/Shopify/polaris-react/pull/3477))
+ 
 ### Bug fixes
 
 ### Documentation
