@@ -1,4 +1,5 @@
 import React, {useMemo, useEffect, useContext} from 'react';
+import {now} from '@shopify/performance';
 import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
 
 import {
@@ -34,11 +35,13 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
+  const start = now();
   const {newDesignLanguage} = useFeatures();
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
   const processedThemeConfig = useMemo(() => {
+    console.log('trigger processedThemeConfig');
     const parentColorScheme =
       parentContext && parentContext.colorScheme && parentContext.colorScheme;
     const parentColors =
@@ -57,11 +60,14 @@ export function ThemeProvider({
     };
   }, [parentContext, themeConfig, isParentThemeProvider]);
 
-  const customProperties = useMemo(
-    () =>
-      buildCustomProperties(processedThemeConfig, newDesignLanguage, Tokens),
-    [processedThemeConfig, newDesignLanguage],
-  );
+  const customProperties = useMemo(() => {
+    console.log('trigger buildCustomProperties');
+    return buildCustomProperties(
+      processedThemeConfig,
+      newDesignLanguage,
+      Tokens,
+    );
+  }, [processedThemeConfig, newDesignLanguage]);
 
   const theme = useMemo(
     () =>
@@ -85,7 +91,8 @@ export function ThemeProvider({
   }, [backgroundColor, color, isParentThemeProvider]);
 
   const style = {...customProperties, ...(!isParentThemeProvider && {color})};
-
+  const end = now();
+  console.log(`Rendering ThemeProvider took ${end - start} milliseconds.`);
   return (
     <ThemeContext.Provider value={{...theme, textColor: color}}>
       <div style={style}>{children}</div>

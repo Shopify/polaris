@@ -1,4 +1,5 @@
 import tokens from '@shopify/polaris-tokens';
+import {now} from '@shopify/performance';
 import {colorFactory} from '@shopify/polaris-tokens/dist-modern';
 import {mergeConfigs} from '@shopify/polaris-tokens/dist-modern/utils';
 import {config as base} from '@shopify/polaris-tokens/dist-modern/configs/base';
@@ -26,10 +27,11 @@ export function buildCustomProperties(
   newDesignLanguage: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
+  const start = now();
   const {colors = {}, colorScheme, config, frameOffset = 0} = themeConfig;
   const mergedConfig = mergeConfigs(base, config || {});
 
-  return newDesignLanguage
+  const properties = newDesignLanguage
     ? customPropertyTransformer({
         ...colorFactory(colors, colorScheme, mergedConfig),
         ...tokens,
@@ -39,6 +41,9 @@ export function buildCustomProperties(
         ...buildLegacyColors(themeConfig),
         ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
       };
+  const end = now();
+  console.log(`customPropertyTransformer took ${end - start} milliseconds.`);
+  return properties;
 }
 
 export function buildThemeContext(
