@@ -41,11 +41,31 @@ export function HardCodedThemeProvider({
 }: ThemeProviderProps) {
   const {newDesignLanguage} = useFeatures();
 
-  const theme = themeConfig.colorScheme === 'light' ? lightTheme : darkTheme;
+  let theme;
+  if (newDesignLanguage) {
+    theme = themeConfig.colorScheme === 'dark' ? darkTheme : lightTheme;
+  }
   const {colorScheme, frameOffset = 0, ...rest} = themeConfig;
 
+  const parentContext = useContext(ThemeContext);
+  const isParentThemeProvider = parentContext === undefined;
+
+  const backgroundColor = theme ? theme['--p-background'] : '';
+  const color = theme ? theme['--p-text'] : '';
+
+  useEffect(() => {
+    if (isParentThemeProvider && newDesignLanguage) {
+      document.body.style.backgroundColor = backgroundColor;
+      document.body.style.color = color;
+    }
+  }, [backgroundColor, color, isParentThemeProvider, newDesignLanguage]);
+
   const style = newDesignLanguage
-    ? {...customPropertyTransformer(Tokens), ...theme}
+    ? {
+        ...customPropertyTransformer(Tokens),
+        ...(!isParentThemeProvider && {color}),
+        ...theme,
+      }
     : {
         ...buildLegacyColors({...rest}),
         ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
