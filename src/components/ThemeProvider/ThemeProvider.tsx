@@ -49,7 +49,9 @@ export function ThemeProvider({
     //   isParentThemeProvider,
     // );
 
-    console.log('trigger processedThemeConfig');
+    console.log(
+      `${newDesignLanguage ? 'ndl -' : ''} trigger processedThemeConfig`,
+    );
 
     const parentColorScheme =
       parentContext && parentContext.colorScheme && parentContext.colorScheme;
@@ -70,7 +72,9 @@ export function ThemeProvider({
   }, [parentContext, themeConfig, isParentThemeProvider]);
 
   const customProperties = useMemo(() => {
-    console.log('trigger buildCustomProperties');
+    console.log(
+      `${newDesignLanguage ? 'ndl -' : ''} trigger buildCustomProperties`,
+    );
 
     return buildCustomProperties(
       processedThemeConfig,
@@ -105,7 +109,11 @@ export function ThemeProvider({
 
   const style = {...customProperties, ...(!isParentThemeProvider && {color})};
   const end = now();
-  console.log(`Rendering ThemeProvider took ${end - start} milliseconds.`);
+  console.log(
+    `${newDesignLanguage ? 'ndl -' : ''} Rendering ThemeProvider took ${
+      end - start
+    } milliseconds.`,
+  );
 
   return (
     <ThemeContext.Provider value={theme}>
