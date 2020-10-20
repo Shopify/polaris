@@ -98,10 +98,10 @@ ReactDOM.render(app, domContainerNode);
 Include the CSS stylesheet in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
 
 ```html
-<link rel="stylesheet" <<<<<<< HEAD
-href="https://unpkg.com/@shopify/polaris@5.8.7-beta.3/dist/styles.css" =======
-href="https://unpkg.com/@shopify/polaris@5.8.7-beta.3/dist/styles.css" >>>>>>>
-theme-provider-memo-wut />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@shopify/polaris@5.8.7-beta.3/dist/styles.css"
+/>
 ```
 
 Add the appropriate classes to your HTML elements:
