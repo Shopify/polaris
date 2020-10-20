@@ -1,5 +1,6 @@
 import React, {useMemo, useEffect, useContext} from 'react';
 import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
+import {now} from '@shopify/performance';
 
 import {
   ThemeContext,
@@ -34,46 +35,66 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
+  const start = now();
   const {newDesignLanguage} = useFeatures();
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
-  const parentColorScheme =
-    parentContext && parentContext.colorScheme && parentContext.colorScheme;
-  const parentColors =
-    parentContext && parentContext.colors && parentContext.colors;
 
-  const {colors, colorScheme, ...rest} = themeConfig;
+  const processedThemeConfig = useMemo(() => {
+    // console.log(
+    //   'trigger processedThemeConfig',
+    //   parentContext,
+    //   themeConfig,
+    //   isParentThemeProvider,
+    // );
 
-  const processedThemeConfig = {
-    ...rest,
-    ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
-    colors: {
-      ...(isParentThemeProvider && DefaultThemeColors),
-      ...(parentColors != null && parentColors),
-      ...colors,
-    },
-  };
+    console.log('trigger processedThemeConfig');
 
-  const customProperties = useMemo(
-    () =>
-      buildCustomProperties(processedThemeConfig, newDesignLanguage, Tokens),
-    [processedThemeConfig, newDesignLanguage],
-  );
+    const parentColorScheme =
+      parentContext && parentContext.colorScheme && parentContext.colorScheme;
+    const parentColors =
+      parentContext && parentContext.colors && parentContext.colors;
 
-  const theme = useMemo(
-    () =>
-      buildThemeContext(
-        processedThemeConfig,
-        newDesignLanguage ? customProperties : undefined,
-      ),
-    [customProperties, processedThemeConfig, newDesignLanguage],
-  );
+    const {colors, colorScheme, ...rest} = themeConfig;
+
+    return {
+      ...rest,
+      ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
+      colors: {
+        ...(isParentThemeProvider && DefaultThemeColors),
+        ...(parentColors != null && parentColors),
+        ...colors,
+      },
+    };
+  }, [parentContext, themeConfig, isParentThemeProvider]);
+
+  const customProperties = useMemo(() => {
+    console.log('trigger buildCustomProperties');
+
+    return buildCustomProperties(
+      processedThemeConfig,
+      newDesignLanguage,
+      Tokens,
+    );
+  }, [processedThemeConfig, newDesignLanguage]);
 
   // We want these values to be empty string instead of `undefined` when not set.
   // Otherwise, setting a style property to `undefined` does not remove it from the DOM.
   const backgroundColor = customProperties['--p-background'] || '';
   const color = customProperties['--p-text'] || '';
+
+  const theme = useMemo(() => {
+    // console.log('trigger buildThemeContext');
+
+    return {
+      ...buildThemeContext(
+        processedThemeConfig,
+        newDesignLanguage ? customProperties : undefined,
+      ),
+      textColor: color,
+    };
+  }, [customProperties, processedThemeConfig, newDesignLanguage, color]);
 
   useEffect(() => {
     if (isParentThemeProvider) {
@@ -83,9 +104,11 @@ export function ThemeProvider({
   }, [backgroundColor, color, isParentThemeProvider]);
 
   const style = {...customProperties, ...(!isParentThemeProvider && {color})};
+  const end = now();
+  console.log(`Rendering ThemeProvider took ${end - start} milliseconds.`);
 
   return (
-    <ThemeContext.Provider value={{...theme, textColor: color}}>
+    <ThemeContext.Provider value={theme}>
       <div style={style}>{children}</div>
     </ThemeContext.Provider>
   );

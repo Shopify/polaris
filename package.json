@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "5.8.5-rc.1",
+  "version": "5.8.7-rc.2",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -80,6 +80,7 @@
     "postcolordocs": "yarn run format"
   },
   "dependencies": {
+    "@shopify/performance": "^1.2.9",
     "@shopify/polaris-icons": "^4.0.0",
     "@shopify/polaris-tokens": "^2.15.0",
     "@types/react": "^16.9.12",

@@ -2,6 +2,7 @@ import tokens from '@shopify/polaris-tokens';
 import {colorFactory} from '@shopify/polaris-tokens/dist-modern';
 import {mergeConfigs} from '@shopify/polaris-tokens/dist-modern/utils';
 import {config as base} from '@shopify/polaris-tokens/dist-modern/configs/base';
+import {now} from '@shopify/performance';
 
 import type {HSLColor, HSLAColor} from '../color-types';
 import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
@@ -26,10 +27,11 @@ export function buildCustomProperties(
   newDesignLanguage: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
+  const start = now();
   const {colors = {}, colorScheme, config, frameOffset = 0} = themeConfig;
   const mergedConfig = mergeConfigs(base, config || {});
 
-  return newDesignLanguage
+  const properties = newDesignLanguage
     ? customPropertyTransformer({
         ...colorFactory(colors, colorScheme, mergedConfig),
         ...tokens,
@@ -39,6 +41,11 @@ export function buildCustomProperties(
         ...buildLegacyColors(themeConfig),
         ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
       };
+
+  const end = now();
+  console.log(`customPropertyTransformer took ${end - start} milliseconds.`);
+
+  return properties;
 }
 
 export function buildThemeContext(
@@ -68,6 +75,7 @@ function toString(obj?: CustomPropertiesLike) {
 function customPropertyTransformer(
   properties: Record<string, HSLAColor | string>,
 ) {
+  console.log('Transforming custom properties');
   return Object.entries(properties).reduce(
     (transformed, [key, value]) => ({
       ...transformed,
