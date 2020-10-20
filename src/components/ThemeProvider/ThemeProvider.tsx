@@ -100,7 +100,7 @@ export function ThemeProvider({
     //   isParentThemeProvider,
     // );
 
-    console.log('trigger processedThemeConfig');
+    console.log('ndl - trigger processedThemeConfig');
 
     const parentColorScheme =
       parentContext && parentContext.colorScheme && parentContext.colorScheme;
@@ -156,7 +156,9 @@ export function ThemeProvider({
 
   const style = {...customProperties, ...(!isParentThemeProvider && {color})};
   const end = now();
-  console.log(`Rendering ThemeProvider took ${end - start} milliseconds.`);
+  console.log(
+    `ndl - Rendering ThemeProvider took ${end - start} milliseconds.`,
+  );
 
   return (
     <ThemeContext.Provider value={theme}>
