@@ -56,9 +56,7 @@ export function HardCodedThemeProvider({
 
   return (
     <ThemeContext.Provider value={{}}>
-      <div data-stupid style={style}>
-        {children}
-      </div>
+      <div style={style}>{children}</div>
     </ThemeContext.Provider>
   );
 }
