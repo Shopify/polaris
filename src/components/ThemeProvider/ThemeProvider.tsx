@@ -8,8 +8,13 @@ import {
   buildThemeContext,
   buildCustomProperties,
   Tokens,
+  buildLegacyColors,
+  customPropertyTransformer,
+  toString,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
+
+import {lightTheme, darkTheme} from './themes';
 
 type OriginalColorScheme = Required<ThemeConfig['colorScheme']>;
 type Inverse = 'inverse';
@@ -29,6 +34,52 @@ interface ThemeProviderProps {
   theme: ThemeProviderThemeConfig;
   /** The content to display */
   children?: React.ReactNode;
+}
+
+export function HardCodedThemeProvider({
+  theme: themeConfig,
+  children,
+}: ThemeProviderProps) {
+  const {newDesignLanguage} = useFeatures();
+
+  let theme;
+  if (newDesignLanguage) {
+    theme = themeConfig.colorScheme === 'dark' ? darkTheme : lightTheme;
+  }
+  const {colorScheme, frameOffset = 0, ...rest} = themeConfig;
+
+  const parentContext = useContext(ThemeContext);
+  const isParentThemeProvider = parentContext === undefined;
+
+  const backgroundColor = theme ? theme['--p-background'] : '';
+  const color = theme ? theme['--p-text'] : '';
+
+  useEffect(() => {
+    if (isParentThemeProvider && newDesignLanguage) {
+      document.body.style.backgroundColor = backgroundColor;
+      document.body.style.color = color;
+    }
+  }, [backgroundColor, color, isParentThemeProvider, newDesignLanguage]);
+
+  const style = newDesignLanguage
+    ? {
+        ...theme,
+        ...customPropertyTransformer(Tokens),
+        ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
+        ...(!isParentThemeProvider && {color}),
+      }
+    : {
+        ...buildLegacyColors({...rest}),
+        ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
+      };
+
+  return (
+    <ThemeContext.Provider
+      value={{cssCustomProperties: toString(theme), ...rest}}
+    >
+      <div style={style}>{children}</div>
+    </ThemeContext.Provider>
+  );
 }
 
 export function ThemeProvider({

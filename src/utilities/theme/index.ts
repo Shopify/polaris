@@ -8,6 +8,9 @@ export {
   buildCustomProperties,
   buildThemeContext,
   toCssCustomPropertySyntax,
+  buildLegacyColors,
+  customPropertyTransformer,
+  toString,
 } from './utils';
 
 export * from './tokens';

@@ -62,7 +62,7 @@ export function buildThemeContext(
   };
 }
 
-function toString(obj?: CustomPropertiesLike) {
+export function toString(obj?: CustomPropertiesLike) {
   if (obj) {
     return Object.entries(obj)
       .map((pair) => pair.join(':'))
@@ -72,7 +72,7 @@ function toString(obj?: CustomPropertiesLike) {
   }
 }
 
-function customPropertyTransformer(
+export function customPropertyTransformer(
   properties: Record<string, HSLAColor | string>,
 ) {
   console.log('Transforming custom properties');
@@ -89,7 +89,7 @@ export function toCssCustomPropertySyntax(camelCase: string) {
   return `--p-${camelCase.replace(/([A-Z0-9])/g, '-$1').toLowerCase()}`;
 }
 
-function buildLegacyColors(theme?: ThemeConfig): CustomPropertiesLike {
+export function buildLegacyColors(theme?: ThemeConfig): CustomPropertiesLike {
   let colorPairs;
   const colors =
     theme && theme.colors && theme.colors.topBar
