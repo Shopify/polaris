@@ -212,13 +212,13 @@ function parseColors([baseName, colors]: [
 }
 
 function memoize(fnToMemoize: Function) {
-  const cache: {[key: string]: any} = {};
+  const cache: Map<string, any> = new Map();
   return function (...args: any[]) {
-    const key = [fnToMemoize.name, JSON.stringify(args)].join('|');
-    if (!cache[key]) {
-      cache[key] = fnToMemoize(...args);
+    const key = JSON.stringify([fnToMemoize.name, args]);
+    if (cache.get(key) === undefined) {
+      cache.set(key, fnToMemoize(...args));
     }
-    return cache[key];
+    return cache.get(key);
   };
 }
 
