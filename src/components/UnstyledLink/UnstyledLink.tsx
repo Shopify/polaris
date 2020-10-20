@@ -31,7 +31,7 @@ export const UnstyledLink = memo(
       );
     }
 
-    const {external, url, ...rest} = props;
+    const {children, external, url, ...rest} = props;
     const target = external ? '_blank' : undefined;
     const rel = external ? 'noopener noreferrer' : undefined;
     return (
