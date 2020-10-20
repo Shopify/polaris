@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
-import {Button, Image, ThemeProvider} from 'components';
+import {Button, Image, HardCodedThemeProvider} from 'components';
 import {mountWithApp} from 'test-utilities';
 
 import {ContextualSaveBar} from '../ContextualSaveBar';
@@ -279,9 +279,12 @@ describe('<ContextualSaveBar />', () => {
       const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
         features: {newDesignLanguage: true},
       });
-      expect(contextualSaveBar).toContainReactComponent(ThemeProvider, {
-        theme: {colorScheme: 'inverse'},
-      });
+      expect(contextualSaveBar).toContainReactComponent(
+        HardCodedThemeProvider,
+        {
+          theme: {colorScheme: 'inverse'},
+        },
+      );
     });
 
     it('renders a container with a newDesignLanguage className', () => {
