@@ -705,12 +705,14 @@ describe('<TextField />', () => {
       });
 
       it('removes spinner buttons when type is number and step is 0', () => {
+        const spy = jest.fn();
         const element = mountWithAppProvider(
           <TextField
             id="MyNumberField"
             label="NumberField"
             type="number"
             step={0}
+            onChange={spy}
           />,
         );
         expect(element.find(Spinner)).toHaveLength(0);
