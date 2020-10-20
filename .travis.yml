@@ -7,7 +7,9 @@ jobs:
   include:
     - name: 'Type Check and Build'
       script:
-        # Includes running type checking and build validation tests
+        # Run `type-check` separately as the TypeScript compile that generates
+        # d.ts files in `build` does not run against test files
+        - yarn run type-check
         - yarn run build
 
     - name: 'Lint'

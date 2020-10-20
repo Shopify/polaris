@@ -8,6 +8,16 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.8.0 - 2020-10-15
+
+### Bug fixes
+
+- Fixed alignment of badges in navigation items ([#3440](https://github.com/Shopify/polaris-react/pull/3440))
+
+### Documentation
+
+- The Details Page in Storybook now renders the `SearchDismissOverlay` when typing in the search field. ([#3471](https://github.com/Shopify/polaris-react/pull/3471))
+
 ## 5.7.0 - 2020-10-09
 
 ### Enhancements

@@ -25,6 +25,7 @@ $active-indicator-width: rem(3px);
 
   &.newDesignLanguage {
     padding: 0 spacing(tight);
+    border-color: var(--p-surface-neutral);
 
     // stylelint-disable-next-line selector-max-class
     .Title + & {
@@ -201,6 +202,8 @@ $active-indicator-width: rem(3px);
     &:hover {
       background-image: none;
       background-color: var(--p-surface-hovered);
+      color: inherit;
+      text-decoration: none;
 
       @media (-ms-high-contrast: active) {
         outline: 1px solid ms-high-contrast-color('text');
@@ -212,8 +215,15 @@ $active-indicator-width: rem(3px);
     &.active,
     &:active {
       background-image: none;
-      background-color: var(--p-surface-selected);
       @include recolor-icon(var(--p-interactive));
+    }
+
+    &:active {
+      background-color: var(--p-surface-pressed);
+    }
+
+    &.active {
+      background-color: var(--p-surface-selected);
     }
 
     // Only show when the button is selected, not active
@@ -326,11 +336,19 @@ $active-indicator-width: rem(3px);
   margin: (-0.5 * $image-size) spacing() (-0.5 * $image-size) 0;
   background-size: cover;
   background-position: center center;
+
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-icon));
+  }
 }
 
 .Suffix {
   @include recolor-icon(color('ink', 'light'), color('white'));
   margin-left: spacing();
+
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-icon));
+  }
 }
 
 .Text {

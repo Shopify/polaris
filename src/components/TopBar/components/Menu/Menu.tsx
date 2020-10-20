@@ -1,6 +1,6 @@
-import type {InversableColorScheme} from 'components/ThemeProvider';
 import React from 'react';
 
+import type {InversableColorScheme} from '../../../ThemeProvider';
 import {ActionList, ActionListProps} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 

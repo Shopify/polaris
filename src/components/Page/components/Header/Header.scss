@@ -1,6 +1,7 @@
 @import '../../../../styles/common';
 
 $mobile-layout: 468px;
+$medium-layout: 860px;
 $desktop-layout: 1080px;
 $individual-action-padding-x: (1.5 * spacing(tight));
 $action-menu-rollup-computed-width: rem(40px);
@@ -21,13 +22,13 @@ $action-menu-rollup-computed-width: rem(40px);
 
 .TitleWrapper {
   .newDesignLanguage & {
+    grid-area: title;
     margin-top: spacing(extra-tight);
     align-self: center;
-    flex-basis: 100%;
+    flex: 1 1 auto;
 
     @include breakpoint-after($mobile-layout) {
       margin-top: 0;
-      flex-basis: auto;
     }
   }
 }
@@ -54,6 +55,8 @@ $action-menu-rollup-computed-width: rem(40px);
   max-width: 100%;
 
   &.newDesignLanguage {
+    grid-area: breadcrumbs;
+    flex: 0 0 auto;
     margin-right: spacing();
   }
 
@@ -196,63 +199,19 @@ $action-menu-rollup-computed-width: rem(40px);
   align-items: center;
   margin-left: spacing(tight);
 }
-
+// Single row styles for new design language
 .RowCondensed {
-  position: relative;
-
-  .noBreadcrumbs & {
-    @include breakpoint-before($mobile-layout) {
-      flex-wrap: wrap-reverse;
-    }
-  }
-
-  .LeftAlign {
-    align-items: flex-start;
-    flex: 1 1 auto;
-    flex-wrap: wrap;
-
-    @include breakpoint-after($mobile-layout) {
-      flex-wrap: nowrap;
-    }
-
-    @include breakpoint-after(layout-width(page-with-nav)) {
-      flex-basis: 50%;
-    }
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators
-    .shortTitle & {
-      @include breakpoint-after(layout-width(page-with-nav)) {
-        flex-basis: 40%;
-      }
-    }
-  }
-
   .RightAlign {
-    position: absolute;
-    top: 0;
-    right: 0;
+    grid-area: actions;
     flex: 1 1 auto;
     align-items: flex-start;
     justify-content: flex-end;
-    width: min-content;
+    // Necessary for flex to realize this container doesn't want to wrap
+    white-space: nowrap;
 
-    @include breakpoint-after($mobile-layout) {
-      position: static;
-    }
-
-    @include breakpoint-after(layout-width(page-with-nav)) {
-      flex-basis: 50%;
-    }
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators
-    .shortTitle & {
-      @include breakpoint-after(layout-width(page-with-nav)) {
-        flex-basis: 60%;
-      }
-    }
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
     .noBreadcrumbs & {
-      position: static;
       @include breakpoint-before($mobile-layout) {
-        flex-grow: 1;
         margin-left: 0;
       }
     }
@@ -279,15 +238,52 @@ $action-menu-rollup-computed-width: rem(40px);
 .Actions {
   width: 100%;
   display: flex;
-  flex-wrap: nowrap;
   justify-content: flex-end;
   text-align: right;
+}
 
+@mixin condensed-layout {
+  .AdditionalMetaData {
+    margin-left: 0;
+  }
+
+  .RowCondensed {
+    display: grid;
+    gap: spacing(tight) spacing();
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 'breadcrumbs actions' 'title title';
+  }
+}
+
+.longTitle {
   @include breakpoint-before($desktop-layout) {
-    min-width: max-content;
+    @include condensed-layout;
   }
+}
 
-  > :first-child {
-    flex: 1;
+.mediumTitle:not(.noBreadcrumbs) {
+  @include breakpoint-before($medium-layout) {
+    @include condensed-layout;
   }
+}
+.mediumTitle.noBreadcrumbs {
+  // stylelint-disable-next-line selector-max-class
+  .TitleWrapper {
+    margin-top: 0;
+  }
+  // stylelint-disable-next-line selector-max-class
+  .RightAlign {
+    margin-bottom: spacing(extra-tight);
+  }
+  // stylelint-disable-next-line selector-max-class
+  .RowCondensed {
+    flex-wrap: wrap-reverse;
+    @include breakpoint-after(layout-width(page-with-nav)) {
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+.isSingleRow .RowCondensed {
+  gap: 0;
 }
