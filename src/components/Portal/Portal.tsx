@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {useState, useRef, useContext, useEffect} from 'react';
 import {createPortal} from 'react-dom';
 
 import {ThemeContext} from '../../utilities/theme';
@@ -11,91 +11,87 @@ export interface PortalProps {
   onPortalCreated?(): void;
 }
 
-interface State {
-  isMounted: boolean;
-}
-
 export const UNIQUE_CONTAINER_ID = 'polaris-portal-container';
 
 const getUniqueID = globalIdGeneratorFactory('portal-');
 
-export class Portal extends PureComponent<PortalProps, State> {
-  static defaultProps = {idPrefix: ''};
-  static contextType = ThemeContext;
-  context!: React.ContextType<typeof ThemeContext>;
+export function Portal({
+  children,
+  idPrefix = '',
+  onPortalCreated = noop,
+}: PortalProps) {
+  const [isMounted, setIsMounted] = useState(false);
+  const portalNode = useRef<HTMLElement | null>(null);
+  const portalsContainerNode = useRef<HTMLElement | null>(null);
+  const context = useContext(ThemeContext);
 
-  state: State = {isMounted: false};
+  const portalId =
+    idPrefix !== '' ? `${idPrefix}-${getUniqueID()}` : getUniqueID();
 
-  private portalNode: HTMLElement | null = null;
+  useEffect(() => {
+    const containerNode = document.getElementById(UNIQUE_CONTAINER_ID);
 
-  private portalContainerNode: HTMLElement | null = null;
+    portalsContainerNode.current =
+      containerNode || document.createElement('div');
 
-  private portalId =
-    this.props.idPrefix !== ''
-      ? `${this.props.idPrefix}-${getUniqueID()}`
-      : getUniqueID();
+    if (!containerNode)
+      portalsContainerNode.current.setAttribute('id', UNIQUE_CONTAINER_ID);
+    portalNode.current = document.createElement('div');
+    portalNode.current.setAttribute(portal.props[0], portalId);
 
-  componentDidMount() {
-    const constainerNode = document.getElementById(UNIQUE_CONTAINER_ID);
-
-    this.portalContainerNode = constainerNode || document.createElement('div');
-
-    if (!constainerNode)
-      this.portalContainerNode.setAttribute('id', UNIQUE_CONTAINER_ID);
-    this.portalNode = document.createElement('div');
-    this.portalNode.setAttribute(portal.props[0], this.portalId);
-
-    if (this.context != null && !constainerNode) {
-      const {cssCustomProperties} = this.context;
+    if (context != null && !containerNode) {
+      const {cssCustomProperties} = context;
       if (cssCustomProperties != null) {
-        this.portalContainerNode.setAttribute('style', cssCustomProperties);
+        portalsContainerNode.current.setAttribute('style', cssCustomProperties);
       } else {
-        this.portalContainerNode.removeAttribute('style');
+        portalsContainerNode.current.removeAttribute('style');
       }
     }
 
-    if (!constainerNode) {
-      document.body.appendChild(this.portalContainerNode);
+    if (!containerNode) {
+      document.body.appendChild(portalsContainerNode.current);
     }
 
-    this.portalContainerNode.appendChild(this.portalNode);
+    portalsContainerNode.current.appendChild(portalNode.current);
 
-    this.setState({isMounted: true});
-  }
+    setIsMounted(true);
+  }, [isMounted, context, portalId]);
 
-  componentDidUpdate(_: PortalProps, prevState: State) {
-    const {onPortalCreated = noop} = this.props;
-
-    if (this.portalContainerNode && this.context != null) {
-      const {cssCustomProperties, textColor} = this.context;
+  useEffect(() => {
+    if (isMounted && portalsContainerNode.current && context != null) {
+      const {cssCustomProperties, textColor} = context;
       if (cssCustomProperties != null) {
         const style = textColor
           ? `${cssCustomProperties};color:${textColor};`
           : `${cssCustomProperties}`;
-        this.portalContainerNode.setAttribute('style', style);
+        const currentStyle = portalsContainerNode.current.getAttribute('style');
+        if (style !== currentStyle) {
+          portalsContainerNode.current.setAttribute('style', style);
+        }
       } else {
-        this.portalContainerNode.removeAttribute('style');
+        portalsContainerNode.current.removeAttribute('style');
       }
     }
-    if (!prevState.isMounted && this.state.isMounted) {
+
+    return function cleanup() {
+      if (portalNode.current && portalsContainerNode.current) {
+        portalsContainerNode.current.removeChild(portalNode.current);
+        if (portalsContainerNode.current.childElementCount === 0) {
+          document.body.removeChild(portalsContainerNode.current);
+        }
+      }
+    };
+  }, [isMounted, context]);
+
+  useEffect(() => {
+    if (isMounted) {
       onPortalCreated();
     }
-  }
+  }, [isMounted, onPortalCreated]);
 
-  componentWillUnmount() {
-    if (this.portalNode && this.portalContainerNode) {
-      this.portalContainerNode.removeChild(this.portalNode);
-      if (this.portalContainerNode.childElementCount === 0) {
-        document.body.removeChild(this.portalContainerNode);
-      }
-    }
-  }
-
-  render() {
-    return this.portalNode && this.state.isMounted
-      ? createPortal(this.props.children, this.portalNode)
-      : null;
-  }
+  return portalNode.current && isMounted
+    ? createPortal(children, portalNode.current)
+    : null;
 }
 
 function noop() {}
