@@ -64,6 +64,7 @@ export function HardCodedThemeProvider({
     ? {
         ...theme,
         ...customPropertyTransformer(Tokens),
+        ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
         ...(!isParentThemeProvider && {color}),
       }
     : {
@@ -72,7 +73,9 @@ export function HardCodedThemeProvider({
       };
 
   return (
-    <ThemeContext.Provider value={{cssCustomProperties: toString(theme)}}>
+    <ThemeContext.Provider
+      value={{cssCustomProperties: toString(theme), ...rest}}
+    >
       <div style={style}>{children}</div>
     </ThemeContext.Provider>
   );
