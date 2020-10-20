@@ -9,6 +9,7 @@ import {
   Tokens,
   buildLegacyColors,
   customPropertyTransformer,
+  toString,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
 
@@ -34,28 +35,24 @@ interface ThemeProviderProps {
   children?: React.ReactNode;
 }
 
-// CustomPropertiesConfig
-//   const {colors = {}, colorScheme, config, frameOffset = 0} = themeConfig;
-
 export function HardCodedThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
-  // const parentContext = useContext(ThemeContext);
   const {newDesignLanguage} = useFeatures();
 
   const theme = themeConfig.colorScheme === 'light' ? lightTheme : darkTheme;
   const {colorScheme, frameOffset = 0, ...rest} = themeConfig;
 
   const style = newDesignLanguage
-    ? {...theme, ...customPropertyTransformer(Tokens)}
+    ? {...customPropertyTransformer(Tokens), ...theme}
     : {
         ...buildLegacyColors({...rest}),
         ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
       };
 
   return (
-    <ThemeContext.Provider value={{}}>
+    <ThemeContext.Provider value={{cssCustomProperties: toString(theme)}}>
       <div style={style}>{children}</div>
     </ThemeContext.Provider>
   );

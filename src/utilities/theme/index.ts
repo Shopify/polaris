@@ -10,6 +10,7 @@ export {
   toCssCustomPropertySyntax,
   buildLegacyColors,
   customPropertyTransformer,
+  toString,
 } from './utils';
 
 export * from './tokens';
