@@ -26,10 +26,11 @@ export function buildCustomProperties(
   newDesignLanguage: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
+  const t0 = Date.now();
   const {colors = {}, colorScheme, config, frameOffset = 0} = themeConfig;
   const mergedConfig = mergeConfigs(base, config || {});
 
-  return newDesignLanguage
+  const properties = newDesignLanguage
     ? customPropertyTransformer({
         ...colorFactory(colors, colorScheme, mergedConfig),
         ...tokens,
@@ -39,6 +40,11 @@ export function buildCustomProperties(
         ...buildLegacyColors(themeConfig),
         ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
       };
+
+  const t1 = Date.now();
+  console.log(`Call to colorFactory took ${t1 - t0} milliseconds.`);
+
+  return properties;
 }
 
 export function buildThemeContext(
@@ -68,6 +74,7 @@ function toString(obj?: CustomPropertiesLike) {
 function customPropertyTransformer(
   properties: Record<string, HSLAColor | string>,
 ) {
+  console.log('Transforming custom properties');
   return Object.entries(properties).reduce(
     (transformed, [key, value]) => ({
       ...transformed,
