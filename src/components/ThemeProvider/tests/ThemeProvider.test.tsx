@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {createMount} from 'test-utilities';
 
-import {ThemeProvider} from '../ThemeProvider';
+import {HardCodedThemeProvider} from '../ThemeProvider';
 import {ThemeContext, useTheme} from '../../../utilities/theme';
 import {FeaturesContext} from '../../../utilities/features';
 import {colorToHsla} from '../../../utilities/color-transformers';
@@ -22,12 +22,12 @@ const mountWithNewDesignLanguage = createMount<
   },
 });
 
-describe('<ThemeProvider />', () => {
+describe('<HardCodedThemeProvider />', () => {
   it('mounts', () => {
     const themeProvider = mountWithNewDesignLanguage(
-      <ThemeProvider theme={{logo: {}}}>
+      <HardCodedThemeProvider theme={{logo: {}}}>
         <p>Hello</p>
-      </ThemeProvider>,
+      </HardCodedThemeProvider>,
     );
     expect(themeProvider).not.toBeNull();
   });
@@ -39,7 +39,7 @@ describe('<ThemeProvider />', () => {
     };
 
     const themeProvider = mountWithNewDesignLanguage(
-      <ThemeProvider
+      <HardCodedThemeProvider
         theme={{
           logo: {
             width: 104,
@@ -51,7 +51,7 @@ describe('<ThemeProvider />', () => {
         }}
       >
         <Child />
-      </ThemeProvider>,
+      </HardCodedThemeProvider>,
     );
 
     expect(themeProvider.find(Child)).toContainReactComponent('div');
@@ -59,9 +59,9 @@ describe('<ThemeProvider />', () => {
 
   it('has a default theme', () => {
     const themeProvider = mountWithNewDesignLanguage(
-      <ThemeProvider theme={{}}>
+      <HardCodedThemeProvider theme={{}}>
         <p />
-      </ThemeProvider>,
+      </HardCodedThemeProvider>,
     );
 
     expect(themeProvider.find('div')).toHaveReactProps({
@@ -75,7 +75,7 @@ describe('<ThemeProvider />', () => {
 
   it('sets a provided theme', () => {
     const themeProvider = mountWithNewDesignLanguage(
-      <ThemeProvider
+      <HardCodedThemeProvider
         theme={{
           colors: {
             topBar: {
@@ -85,7 +85,7 @@ describe('<ThemeProvider />', () => {
         }}
       >
         <p />
-      </ThemeProvider>,
+      </HardCodedThemeProvider>,
     );
 
     expect(themeProvider.find('div')).toHaveReactProps({
@@ -100,7 +100,7 @@ describe('<ThemeProvider />', () => {
 
   it('updates themes', () => {
     const themeProvider = mountWithNewDesignLanguage(
-      <ThemeProvider
+      <HardCodedThemeProvider
         theme={{
           colors: {
             topBar: {
@@ -110,7 +110,7 @@ describe('<ThemeProvider />', () => {
         }}
       >
         <p />
-      </ThemeProvider>,
+      </HardCodedThemeProvider>,
     );
 
     themeProvider.setProps({
@@ -135,9 +135,9 @@ describe('<ThemeProvider />', () => {
 
   it('sets color system properties in context when newDesignLanguage is enabled', () => {
     mountWithNewDesignLanguage(
-      <ThemeProvider theme={{}}>
+      <HardCodedThemeProvider theme={{}}>
         <Child />
-      </ThemeProvider>,
+      </HardCodedThemeProvider>,
       {newDesignLanguage: true},
     );
 
@@ -150,9 +150,9 @@ describe('<ThemeProvider />', () => {
 
   it('does not set color system properties in context when newDesignLanguage is disabled', () => {
     mountWithNewDesignLanguage(
-      <ThemeProvider theme={{}}>
+      <HardCodedThemeProvider theme={{}}>
         <Child />
-      </ThemeProvider>,
+      </HardCodedThemeProvider>,
       {newDesignLanguage: false},
     );
 
@@ -165,9 +165,9 @@ describe('<ThemeProvider />', () => {
 
   it('sets defaults with newDesignLanguage enabled', () => {
     const themeProvider = mountWithNewDesignLanguage(
-      <ThemeProvider theme={{}}>
+      <HardCodedThemeProvider theme={{}}>
         <p>Hello</p>
-      </ThemeProvider>,
+      </HardCodedThemeProvider>,
       {newDesignLanguage: true},
     );
 
@@ -191,11 +191,11 @@ describe('<ThemeProvider />', () => {
   describe('when nested', () => {
     it('sets a default theme', () => {
       const themeProvider = mountWithNewDesignLanguage(
-        <ThemeProvider theme={{}}>
-          <ThemeProvider theme={{}}>
+        <HardCodedThemeProvider theme={{}}>
+          <HardCodedThemeProvider theme={{}}>
             <p>Hello</p>
-          </ThemeProvider>
-        </ThemeProvider>,
+          </HardCodedThemeProvider>
+        </HardCodedThemeProvider>,
         {newDesignLanguage: true},
       );
 
@@ -217,19 +217,19 @@ describe('<ThemeProvider />', () => {
 
     it('adds css custom properties for color roles provided', () => {
       const themeProvider = mountWithNewDesignLanguage(
-        <ThemeProvider
+        <HardCodedThemeProvider
           theme={{
             colors: {surface: '#FFFFFF'},
           }}
         >
-          <ThemeProvider
+          <HardCodedThemeProvider
             theme={{
               colors: {surface: '#000000'},
             }}
           >
             <p>Hello</p>
-          </ThemeProvider>
-        </ThemeProvider>,
+          </HardCodedThemeProvider>
+        </HardCodedThemeProvider>,
         {newDesignLanguage: true},
       );
 
@@ -323,11 +323,11 @@ describe('<ThemeProvider />', () => {
       'Inherits color scheme from parent where: %s',
       (_: any, topLevelTheme: any, childTheme: any, expectedIsDark: any) => {
         const themeProvider = mountWithNewDesignLanguage(
-          <ThemeProvider theme={topLevelTheme}>
-            <ThemeProvider theme={childTheme}>
+          <HardCodedThemeProvider theme={topLevelTheme}>
+            <HardCodedThemeProvider theme={childTheme}>
               <p>Hello</p>
-            </ThemeProvider>
-          </ThemeProvider>,
+            </HardCodedThemeProvider>
+          </HardCodedThemeProvider>,
           {newDesignLanguage: true},
         );
 

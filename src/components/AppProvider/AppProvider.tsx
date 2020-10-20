@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import type {ThemeConfig} from '../../utilities/theme';
-import {ThemeProvider} from '../ThemeProvider';
+import {HardCodedThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
@@ -97,11 +97,11 @@ export class AppProvider extends Component<AppProviderProps, State> {
             <StickyManagerContext.Provider value={this.stickyManager}>
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
-                  <ThemeProvider theme={theme}>
+                  <HardCodedThemeProvider theme={theme}>
                     <MediaQueryProvider>
                       <FocusManager>{children}</FocusManager>
                     </MediaQueryProvider>
-                  </ThemeProvider>
+                  </HardCodedThemeProvider>
                 </LinkContext.Provider>
               </UniqueIdFactoryContext.Provider>
             </StickyManagerContext.Provider>

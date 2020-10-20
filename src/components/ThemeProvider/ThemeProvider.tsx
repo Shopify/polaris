@@ -7,8 +7,12 @@ import {
   buildThemeContext,
   buildCustomProperties,
   Tokens,
+  buildLegacyColors,
+  customPropertyTransformer,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
+
+import {lightTheme, darkTheme} from './themes';
 
 type OriginalColorScheme = Required<ThemeConfig['colorScheme']>;
 type Inverse = 'inverse';
@@ -28,6 +32,35 @@ interface ThemeProviderProps {
   theme: ThemeProviderThemeConfig;
   /** The content to display */
   children?: React.ReactNode;
+}
+
+// CustomPropertiesConfig
+//   const {colors = {}, colorScheme, config, frameOffset = 0} = themeConfig;
+
+export function HardCodedThemeProvider({
+  theme: themeConfig,
+  children,
+}: ThemeProviderProps) {
+  // const parentContext = useContext(ThemeContext);
+  const {newDesignLanguage} = useFeatures();
+
+  const theme = themeConfig.colorScheme === 'light' ? lightTheme : darkTheme;
+  const {colorScheme, frameOffset = 0, ...rest} = themeConfig;
+
+  const style = newDesignLanguage
+    ? {...theme, ...customPropertyTransformer(Tokens)}
+    : {
+        ...buildLegacyColors({...rest}),
+        ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
+      };
+
+  return (
+    <ThemeContext.Provider value={{}}>
+      <div data-stupid style={style}>
+        {children}
+      </div>
+    </ThemeContext.Provider>
+  );
 }
 
 export function ThemeProvider({

@@ -1,7 +1,10 @@
 import React, {PureComponent, Children, createRef} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
 
-import {InversableColorScheme, ThemeProvider} from '../../../ThemeProvider';
+import {
+  InversableColorScheme,
+  HardCodedThemeProvider,
+} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
@@ -231,9 +234,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <ThemeProvider theme={{colorScheme}}>
+        <HardCodedThemeProvider theme={{colorScheme}}>
           <div className={styles.Wrapper}>{content}</div>
-        </ThemeProvider>
+        </HardCodedThemeProvider>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
