@@ -197,12 +197,12 @@ $active-indicator-width: rem(3px);
     padding: $item-vertical-padding spacing(tight);
     border-radius: var(--p-border-radius-base);
     border-top: 1px solid var(--p-surface);
+    color: var(--p-text);
     // States
     // Hovered (:hover)
     &:hover {
       background-image: none;
       background-color: var(--p-surface-hovered);
-      color: inherit;
       text-decoration: none;
 
       @media (-ms-high-contrast: active) {
