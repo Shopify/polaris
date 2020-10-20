@@ -38,22 +38,24 @@ export function ThemeProvider({
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
-  const parentColorScheme =
-    parentContext && parentContext.colorScheme && parentContext.colorScheme;
-  const parentColors =
-    parentContext && parentContext.colors && parentContext.colors;
+  const processedThemeConfig = useMemo(() => {
+    const parentColorScheme =
+      parentContext && parentContext.colorScheme && parentContext.colorScheme;
+    const parentColors =
+      parentContext && parentContext.colors && parentContext.colors;
 
-  const {colors, colorScheme, ...rest} = themeConfig;
+    const {colors, colorScheme, ...rest} = themeConfig;
 
-  const processedThemeConfig = {
-    ...rest,
-    ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
-    colors: {
-      ...(isParentThemeProvider && DefaultThemeColors),
-      ...(parentColors != null && parentColors),
-      ...colors,
-    },
-  };
+    return {
+      ...rest,
+      ...{colorScheme: getColorScheme(colorScheme, parentColorScheme)},
+      colors: {
+        ...(isParentThemeProvider && DefaultThemeColors),
+        ...(parentColors != null && parentColors),
+        ...colors,
+      },
+    };
+  }, [parentContext, themeConfig, isParentThemeProvider]);
 
   const customProperties = useMemo(
     () =>
