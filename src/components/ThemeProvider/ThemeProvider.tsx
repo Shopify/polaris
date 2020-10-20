@@ -62,9 +62,9 @@ export function HardCodedThemeProvider({
 
   const style = newDesignLanguage
     ? {
+        ...theme,
         ...customPropertyTransformer(Tokens),
         ...(!isParentThemeProvider && {color}),
-        ...theme,
       }
     : {
         ...buildLegacyColors({...rest}),
