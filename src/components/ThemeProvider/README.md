@@ -131,7 +131,7 @@ A theme provider can be nested within the theme provider rendered by the app pro
         </List>
       </Card.Section>
     </Card>
-    <ThemeProvivder theme={{colorScheme: 'dark'}}>
+    <ThemeProvider theme={{colorScheme: 'dark'}}>
       <Card
         title="Shipment 1234"
         secondaryFooterActions={[{content: 'Edit shipment'}]}
@@ -144,7 +144,7 @@ A theme provider can be nested within the theme provider rendered by the app pro
           </List>
         </Card.Section>
       </Card>
-    </ThemeProvivder>
+    </ThemeProvider>
   </TextContainer>
 </AppProvider>
 ```
@@ -172,9 +172,9 @@ A theme provider can be nested within the theme provider rendered by the app pro
           This setting is <TextStyle variation="strong">disabled</TextStyle>.
         </Stack.Item>
         <Stack.Item>
-          <ThemeProvivder theme={{colors: {primary: '#3b5998'}}}>
+          <ThemeProvider theme={{colors: {primary: '#3b5998'}}}>
             <Button primary>Enable</Button>
-          </ThemeProvivder>
+          </ThemeProvider>
         </Stack.Item>
       </Stack>
     </Card.Section>
@@ -225,9 +225,9 @@ To create contrast with surrounding elements, some components render themselves 
 
 ```jsx
 return (
-  <ThemeProvivder theme={{colorScheme: 'inverse'}}>
+  <ThemeProvider theme={{colorScheme: 'inverse'}}>
     <div className="InverseComponent">Component content</div>
-  </ThemeProvivder>
+  </ThemeProvider>
 );
 ```
 
