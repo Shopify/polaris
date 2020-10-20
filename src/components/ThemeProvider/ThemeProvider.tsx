@@ -1,5 +1,6 @@
 import React, {useMemo, useEffect, useContext} from 'react';
 import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
+import {now} from '@shopify/performance';
 
 import {
   ThemeContext,
@@ -34,11 +35,22 @@ export function ThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
+  const start = now();
   const {newDesignLanguage} = useFeatures();
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
+
   const processedThemeConfig = useMemo(() => {
+    // console.log(
+    //   'trigger processedThemeConfig',
+    //   parentContext,
+    //   themeConfig,
+    //   isParentThemeProvider,
+    // );
+
+    console.log('trigger processedThemeConfig');
+
     const parentColorScheme =
       parentContext && parentContext.colorScheme && parentContext.colorScheme;
     const parentColors =
@@ -57,25 +69,32 @@ export function ThemeProvider({
     };
   }, [parentContext, themeConfig, isParentThemeProvider]);
 
-  const customProperties = useMemo(
-    () =>
-      buildCustomProperties(processedThemeConfig, newDesignLanguage, Tokens),
-    [processedThemeConfig, newDesignLanguage],
-  );
+  const customProperties = useMemo(() => {
+    console.log('trigger buildCustomProperties');
 
-  const theme = useMemo(
-    () =>
-      buildThemeContext(
-        processedThemeConfig,
-        newDesignLanguage ? customProperties : undefined,
-      ),
-    [customProperties, processedThemeConfig, newDesignLanguage],
-  );
+    return buildCustomProperties(
+      processedThemeConfig,
+      newDesignLanguage,
+      Tokens,
+    );
+  }, [processedThemeConfig, newDesignLanguage]);
 
   // We want these values to be empty string instead of `undefined` when not set.
   // Otherwise, setting a style property to `undefined` does not remove it from the DOM.
   const backgroundColor = customProperties['--p-background'] || '';
   const color = customProperties['--p-text'] || '';
+
+  const theme = useMemo(() => {
+    // console.log('trigger buildThemeContext');
+
+    return {
+      ...buildThemeContext(
+        processedThemeConfig,
+        newDesignLanguage ? customProperties : undefined,
+      ),
+      textColor: color,
+    };
+  }, [customProperties, processedThemeConfig, newDesignLanguage, color]);
 
   useEffect(() => {
     if (isParentThemeProvider) {
@@ -85,9 +104,11 @@ export function ThemeProvider({
   }, [backgroundColor, color, isParentThemeProvider]);
 
   const style = {...customProperties, ...(!isParentThemeProvider && {color})};
+  const end = now();
+  console.log(`Rendering ThemeProvider took ${end - start} milliseconds.`);
 
   return (
-    <ThemeContext.Provider value={{...theme, textColor: color}}>
+    <ThemeContext.Provider value={theme}>
       <div style={style}>{children}</div>
     </ThemeContext.Provider>
   );

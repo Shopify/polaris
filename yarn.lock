@@ -2018,6 +2018,11 @@
   dependencies:
     tslib "^1.9.3"
 
+"@shopify/performance@^1.2.9":
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/@shopify/performance/-/performance-1.2.9.tgz#21d79792cc16536e7c6d2b69cb19ec10e60c5c95"
+  integrity sha512-SlguWoUAQ4y+4u9LCTrlKYrHkfJfgpEagQK+EiFhXfu0+LM69MwdywhipKx0AaAgdXMbOQlrzM1J7YL598uNdg==
+
 "@shopify/polaris-icons@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-4.0.0.tgz#a4fda8d009d94aff19b1c65e3e27f64f3f3977ad"
