@@ -43,7 +43,7 @@ export function buildCustomPropertiesNoMemo(
       };
 
   const end = now();
-  console.log(`customPropertyTransformer took ${end - start} milliseconds.`);
+  console.log(`buildCustomProperties took ${end - start} milliseconds.`);
 
   return properties;
 }
