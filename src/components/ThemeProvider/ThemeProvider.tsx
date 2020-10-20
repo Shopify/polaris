@@ -45,7 +45,7 @@ export function HardCodedThemeProvider({
   if (newDesignLanguage) {
     theme = themeConfig.colorScheme === 'dark' ? darkTheme : lightTheme;
   }
-  const {colorScheme, frameOffset = 0, ...rest} = themeConfig;
+  const {colors, colorScheme, frameOffset = 0, ...rest} = themeConfig;
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
@@ -72,9 +72,20 @@ export function HardCodedThemeProvider({
         ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
       };
 
+  const parentColors =
+    parentContext && parentContext.colors && parentContext.colors;
+
   return (
     <ThemeContext.Provider
-      value={{cssCustomProperties: toString(theme), ...rest}}
+      value={{
+        cssCustomProperties: toString(theme),
+        ...rest,
+        colors: {
+          ...(isParentThemeProvider && DefaultThemeColors),
+          ...(parentColors != null && parentColors),
+          ...colors,
+        },
+      }}
     >
       <div style={style}>{children}</div>
     </ThemeContext.Provider>
