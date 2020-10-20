@@ -12,6 +12,8 @@ Updated `Textfield` with a `type` of `number` to not render a spinner if step is
 
 ### Bug fixes
 
+Fixed `Filters` overflow ([#3532](https://github.com/Shopify/polaris-react/pull/3532))
+
 ### Documentation
 
 ### Development workflow
