@@ -43,9 +43,7 @@ export function buildCustomProperties(
       };
 
   const end = now();
-  console.log(
-    `ndl - customPropertyTransformer took ${end - start} milliseconds.`,
-  );
+  console.log(`customPropertyTransformer took ${end - start} milliseconds.`);
 
   return properties;
 }
@@ -77,7 +75,7 @@ export function toString(obj?: CustomPropertiesLike) {
 export function customPropertyTransformer(
   properties: Record<string, HSLAColor | string>,
 ) {
-  console.log('ndl - Transforming custom properties');
+  console.log('Transforming custom properties');
   return Object.entries(properties).reduce(
     (transformed, [key, value]) => ({
       ...transformed,

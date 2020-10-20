@@ -100,7 +100,9 @@ export function ThemeProvider({
     //   isParentThemeProvider,
     // );
 
-    console.log('ndl - trigger processedThemeConfig');
+    console.log(
+      `${newDesignLanguage ? 'ndl' : ''} - trigger processedThemeConfig`,
+    );
 
     const parentColorScheme =
       parentContext && parentContext.colorScheme && parentContext.colorScheme;
@@ -157,7 +159,9 @@ export function ThemeProvider({
   const style = {...customProperties, ...(!isParentThemeProvider && {color})};
   const end = now();
   console.log(
-    `ndl - Rendering ThemeProvider took ${end - start} milliseconds.`,
+    `${newDesignLanguage ? 'ndl' : ''} - Rendering ThemeProvider took ${
+      end - start
+    } milliseconds.`,
   );
 
   return (
