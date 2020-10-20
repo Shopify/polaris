@@ -2,6 +2,7 @@ import tokens from '@shopify/polaris-tokens';
 import {colorFactory} from '@shopify/polaris-tokens/dist-modern';
 import {mergeConfigs} from '@shopify/polaris-tokens/dist-modern/utils';
 import {config as base} from '@shopify/polaris-tokens/dist-modern/configs/base';
+import {now} from '@shopify/performance';
 
 import type {HSLColor, HSLAColor} from '../color-types';
 import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
@@ -26,7 +27,7 @@ export function buildCustomProperties(
   newDesignLanguage: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
-  const t0 = Date.now();
+  const start = now();
   const {colors = {}, colorScheme, config, frameOffset = 0} = themeConfig;
   const mergedConfig = mergeConfigs(base, config || {});
 
@@ -41,8 +42,8 @@ export function buildCustomProperties(
         ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
       };
 
-  const t1 = Date.now();
-  console.log(`Call to colorFactory took ${t1 - t0} milliseconds.`);
+  const end = now();
+  console.log(`customPropertyTransformer took ${end - start} milliseconds.`);
 
   return properties;
 }
