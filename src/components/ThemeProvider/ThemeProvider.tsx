@@ -38,7 +38,15 @@ export function ThemeProvider({
 
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
+
   const processedThemeConfig = useMemo(() => {
+    console.log(
+      'trigger processedThemeConfig',
+      parentContext,
+      themeConfig,
+      isParentThemeProvider,
+    );
+
     const parentColorScheme =
       parentContext && parentContext.colorScheme && parentContext.colorScheme;
     const parentColors =
@@ -57,25 +65,32 @@ export function ThemeProvider({
     };
   }, [parentContext, themeConfig, isParentThemeProvider]);
 
-  const customProperties = useMemo(
-    () =>
-      buildCustomProperties(processedThemeConfig, newDesignLanguage, Tokens),
-    [processedThemeConfig, newDesignLanguage],
-  );
+  const customProperties = useMemo(() => {
+    console.log('trigger buildCustomProperties');
 
-  const theme = useMemo(
-    () =>
-      buildThemeContext(
-        processedThemeConfig,
-        newDesignLanguage ? customProperties : undefined,
-      ),
-    [customProperties, processedThemeConfig, newDesignLanguage],
-  );
+    return buildCustomProperties(
+      processedThemeConfig,
+      newDesignLanguage,
+      Tokens,
+    );
+  }, [processedThemeConfig, newDesignLanguage]);
 
   // We want these values to be empty string instead of `undefined` when not set.
   // Otherwise, setting a style property to `undefined` does not remove it from the DOM.
   const backgroundColor = customProperties['--p-background'] || '';
   const color = customProperties['--p-text'] || '';
+
+  const theme = useMemo(() => {
+    console.log('trigger buildThemeContext');
+
+    return {
+      ...buildThemeContext(
+        processedThemeConfig,
+        newDesignLanguage ? customProperties : undefined,
+      ),
+      textColor: color,
+    };
+  }, [customProperties, processedThemeConfig, newDesignLanguage, color]);
 
   useEffect(() => {
     if (isParentThemeProvider) {
@@ -87,7 +102,7 @@ export function ThemeProvider({
   const style = {...customProperties, ...(!isParentThemeProvider && {color})};
 
   return (
-    <ThemeContext.Provider value={{...theme, textColor: color}}>
+    <ThemeContext.Provider value={theme}>
       <div style={style}>{children}</div>
     </ThemeContext.Provider>
   );
