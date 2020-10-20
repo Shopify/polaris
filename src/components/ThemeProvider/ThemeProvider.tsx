@@ -41,13 +41,20 @@ export function HardCodedThemeProvider({
 }: ThemeProviderProps) {
   const {newDesignLanguage} = useFeatures();
 
+  const parentContext = useContext(ThemeContext);
   let theme;
   if (newDesignLanguage) {
-    theme = themeConfig.colorScheme === 'dark' ? darkTheme : lightTheme;
+    const inverseTheme =
+      parentContext?.colorScheme === 'dark' ? lightTheme : darkTheme;
+    const themeMap = new Map([
+      ['light', lightTheme],
+      ['dark', darkTheme],
+      ['inverse', inverseTheme],
+      [undefined, lightTheme],
+    ]);
+    theme = themeMap.get(themeConfig.colorScheme);
   }
   const {colors, colorScheme, frameOffset = 0, ...rest} = themeConfig;
-
-  const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
 
   const backgroundColor = theme ? theme['--p-background'] : '';
@@ -68,7 +75,7 @@ export function HardCodedThemeProvider({
         ...(!isParentThemeProvider && {color}),
       }
     : {
-        ...buildLegacyColors({...rest}),
+        ...buildLegacyColors({colors, ...rest}),
         ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
       };
 
