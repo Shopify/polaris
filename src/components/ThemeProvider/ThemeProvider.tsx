@@ -40,12 +40,12 @@ export function ThemeProvider({
   const isParentThemeProvider = parentContext === undefined;
 
   const processedThemeConfig = useMemo(() => {
-    console.log(
-      'trigger processedThemeConfig',
-      parentContext,
-      themeConfig,
-      isParentThemeProvider,
-    );
+    // console.log(
+    //   'trigger processedThemeConfig',
+    //   parentContext,
+    //   themeConfig,
+    //   isParentThemeProvider,
+    // );
 
     const parentColorScheme =
       parentContext && parentContext.colorScheme && parentContext.colorScheme;
@@ -66,7 +66,7 @@ export function ThemeProvider({
   }, [parentContext, themeConfig, isParentThemeProvider]);
 
   const customProperties = useMemo(() => {
-    console.log('trigger buildCustomProperties');
+    // console.log('trigger buildCustomProperties');
 
     return buildCustomProperties(
       processedThemeConfig,
@@ -81,7 +81,7 @@ export function ThemeProvider({
   const color = customProperties['--p-text'] || '';
 
   const theme = useMemo(() => {
-    console.log('trigger buildThemeContext');
+    // console.log('trigger buildThemeContext');
 
     return {
       ...buildThemeContext(
