@@ -15,6 +15,7 @@ import {
 } from '../../utilities/sticky-manager';
 import {LinkContext, LinkLikeComponent} from '../../utilities/link';
 import {FeaturesConfig, FeaturesContext} from '../../utilities/features';
+import {ConditionalWrapper} from '../../utilities/components';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -85,10 +86,31 @@ export class AppProvider extends Component<AppProviderProps, State> {
   }
 
   render() {
-    const {theme = {}, children} = this.props;
+    const {theme, children} = this.props;
 
     const {intl, link} = this.state;
     const features = {newDesignLanguage: false, ...this.props.features};
+
+    const mediaQueryChildrenMarkup = (
+      <MediaQueryProvider>
+        <FocusManager>{children}</FocusManager>
+      </MediaQueryProvider>
+    );
+
+    const themeProviderChildrenMarkup = (
+      <ConditionalWrapper
+        condition={Boolean(theme)}
+        wrapper={() =>
+          theme && (
+            <ThemeProvider theme={theme}>
+              {mediaQueryChildrenMarkup}
+            </ThemeProvider>
+          )
+        }
+      >
+        {mediaQueryChildrenMarkup}
+      </ConditionalWrapper>
+    );
 
     return (
       <FeaturesContext.Provider value={features}>
@@ -97,11 +119,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
             <StickyManagerContext.Provider value={this.stickyManager}>
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
-                  <ThemeProvider theme={theme}>
-                    <MediaQueryProvider>
-                      <FocusManager>{children}</FocusManager>
-                    </MediaQueryProvider>
-                  </ThemeProvider>
+                  {themeProviderChildrenMarkup}
                 </LinkContext.Provider>
               </UniqueIdFactoryContext.Provider>
             </StickyManagerContext.Provider>
