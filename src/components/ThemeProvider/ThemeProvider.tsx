@@ -26,12 +26,18 @@ interface ThemeProviderThemeConfig extends Discard<ThemeConfig, 'colorScheme'> {
 interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
   theme: ThemeProviderThemeConfig;
+  /**
+   * Render custom properties to the DOM
+   * @default true
+   */
+  renderCustomProperties?: boolean;
   /** The content to display */
   children?: React.ReactNode;
 }
 
 export function ThemeProvider({
   theme: themeConfig,
+  renderCustomProperties = true,
   children,
 }: ThemeProviderProps) {
   const {newDesignLanguage} = useFeatures();
@@ -84,7 +90,10 @@ export function ThemeProvider({
     }
   }, [backgroundColor, color, isParentThemeProvider]);
 
-  const style = {...customProperties, ...(!isParentThemeProvider && {color})};
+  const style = {
+    ...(renderCustomProperties && customProperties),
+    ...(!isParentThemeProvider && {color}),
+  };
 
   return (
     <ThemeContext.Provider value={{...theme, textColor: color}}>
