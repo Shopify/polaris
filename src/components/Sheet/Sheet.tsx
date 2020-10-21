@@ -96,7 +96,7 @@ export function Sheet({
           {...overlay.props}
           ref={container}
         >
-          <TrapFocus trapping={open}>
+          <TrapFocus trapping={open && !minimized}>
             <div
               role="dialog"
               tabIndex={-1}
@@ -113,9 +113,7 @@ export function Sheet({
           </TrapFocus>
         </div>
       </CSSTransition>
-      {type !== 'bottomSheet' ? (
-        <KeypressListener keyCode={Key.Escape} handler={onClose} />
-      ) : null}
+      <KeypressListener keyCode={Key.Escape} handler={onClose} />
       {open && type !== 'bottomSheet' && (
         <Backdrop transparent={transparentBackdrop} onClick={onClose} />
       )}
