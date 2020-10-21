@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.9.0 - 2020-10-21
+
+### Enhancements
+
+- Updated `Textfield` with a `type` of `number` to not render a spinner if step is set to `0` ([#3477](https://github.com/Shopify/polaris-react/pull/3477))
+
 ## 5.8.0 - 2020-10-15
 
 ### Bug fixes
