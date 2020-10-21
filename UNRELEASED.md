@@ -13,6 +13,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+Fixed `Filters` overflow ([#3532](https://github.com/Shopify/polaris-react/pull/3532))
+
 ### Documentation
 
 ### Development workflow
