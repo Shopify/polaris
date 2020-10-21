@@ -11,6 +11,7 @@ import {TrapFocus} from '../../../TrapFocus';
 import styles from './Dialog.scss';
 
 interface BaseDialogProps {
+  id?: string;
   labelledBy?: string;
   instant?: boolean;
   children?: React.ReactNode;
@@ -24,6 +25,7 @@ interface BaseDialogProps {
 export type DialogProps = BaseDialogProps & AnimationProps;
 
 export function Dialog({
+  id,
   instant,
   labelledBy,
   children,
@@ -59,6 +61,7 @@ export function Dialog({
       onExited={onExited}
     >
       <div
+        id={id}
         className={styles.Container}
         data-polaris-layer
         data-polaris-overlay
