@@ -1,10 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
-import {
-  mountWithAppProvider,
-  findByTestID,
-  ReactWrapper,
-} from 'test-utilities/legacy';
+import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Tooltip, TextField} from 'components';
 
@@ -17,6 +13,13 @@ import {ButtonGroup} from '../../ButtonGroup';
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
 }
+
+jest.mock('../../Portal', () => ({
+  ...(jest.requireActual('../../Portal') as any),
+  Portal() {
+    return null;
+  },
+}));
 
 const listenerMap: HandlerMap = {};
 
@@ -47,12 +50,10 @@ describe('<Pagination />', () => {
 
   describe('tooltip', () => {
     it('renders a tooltip if nextTooltip is provided and hasNext is true', () => {
-      const pagination = mountWithAppProvider(
-        <Pagination nextTooltip="k" hasNext />,
-      );
-      pagination.find(Tooltip).simulate('focus');
-
-      expect(findByTestID(pagination, 'TooltipOverlayLabel').text()).toBe('k');
+      const pagination = mountWithApp(<Pagination nextTooltip="k" hasNext />);
+      expect(pagination).toContainReactComponent(Tooltip, {
+        content: 'k',
+      });
     });
 
     it('does not render a tooltip if nextTooltip is provided and hasNext is false', () => {
@@ -63,12 +64,12 @@ describe('<Pagination />', () => {
     });
 
     it('renders a tooltip if previousToolTip is provided and hasPrevious is true', () => {
-      const pagination = mountWithAppProvider(
+      const pagination = mountWithApp(
         <Pagination previousTooltip="j" hasPrevious />,
       );
-      pagination.find(Tooltip).simulate('focus');
-
-      expect(findByTestID(pagination, 'TooltipOverlayLabel').text()).toBe('j');
+      expect(pagination).toContainReactComponent(Tooltip, {
+        content: 'j',
+      });
     });
 
     it('does not render  tooltip if previousToolTip is provided and hasPrevious is false', () => {

@@ -1,9 +1,9 @@
 import React, {createRef} from 'react';
-import {mount} from 'test-utilities';
+import {mount, mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
-import {Portal} from '../Portal';
+import {Portal, UNIQUE_CONTAINER_ID} from '../Portal';
 import {portal} from '../../shared';
 
 jest.mock('react-dom', () => ({
@@ -22,6 +22,45 @@ function lastSpyCall(spy: jest.Mock) {
 describe('<Portal />', () => {
   beforeEach(() => {
     createPortalSpy.mockImplementation(() => null);
+  });
+
+  afterEach(() => {
+    createPortalSpy.mockRestore();
+  });
+
+  describe('container', () => {
+    it('creates a portal container with the UNIQUE_CONTAINER_ID', () => {
+      const appendChildSpy = jest.spyOn(document.body, 'appendChild');
+      mountWithApp(<Portal />);
+      expect(appendChildSpy).toHaveBeenLastCalledWith(
+        expect.objectContaining({
+          id: UNIQUE_CONTAINER_ID,
+        }),
+      );
+      appendChildSpy.mockReset();
+    });
+
+    it('sets CSS custom properties on the portal node', () => {
+      const setSpy = jest.spyOn(Element.prototype, 'setAttribute');
+      const portal = mountWithAppProvider(<Portal />, {
+        features: {newDesignLanguage: true},
+        theme: {
+          colors: {surface: '#000000'},
+        },
+      });
+
+      expect(setSpy).toHaveBeenLastCalledWith(
+        'style',
+        portal.context().cssCustomProperties,
+      );
+      setSpy.mockRestore();
+    });
+
+    it('removes CSS custom properties from the portal node', () => {
+      const removeSpy = jest.spyOn(Element.prototype, 'removeAttribute');
+      mountWithAppProvider(<Portal />);
+      expect(removeSpy).toHaveBeenCalledWith('style');
+    });
   });
 
   describe('children', () => {
@@ -99,25 +138,5 @@ describe('<Portal />', () => {
     expect(() => {
       mount(<Portal />);
     }).not.toThrow();
-  });
-
-  it('sets CSS custom properties on the portal node', () => {
-    const setSpy = jest.spyOn(Element.prototype, 'setAttribute');
-    const portal = mountWithAppProvider(<Portal />, {
-      features: {newDesignLanguage: true},
-      theme: {
-        colors: {surface: '#000000'},
-      },
-    });
-    expect(setSpy).toHaveBeenCalledWith(
-      'style',
-      portal.context().cssCustomProperties,
-    );
-  });
-
-  it('removes CSS custom properties from the portal node', () => {
-    const removeSpy = jest.spyOn(Element.prototype, 'removeAttribute');
-    mountWithAppProvider(<Portal />);
-    expect(removeSpy).toHaveBeenCalledWith('style');
   });
 });
