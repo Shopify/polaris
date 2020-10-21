@@ -21,7 +21,7 @@ interface CustomPropertiesConfig extends ThemeConfig {
   colorScheme: ColorScheme;
 }
 
-export function buildCustomProperties(
+export function buildCustomPropertiesNoMemo(
   themeConfig: CustomPropertiesConfig,
   newDesignLanguage: boolean,
   tokens?: Record<string, string>,
@@ -210,3 +210,16 @@ function parseColors([baseName, colors]: [
 
   return colorPairs;
 }
+
+function memoize(fnToMemoize: Function) {
+  const cache: Map<string, any> = new Map();
+  return function (...args: any[]) {
+    const key = JSON.stringify([fnToMemoize.name, args]);
+    if (cache.get(key) === undefined) {
+      cache.set(key, fnToMemoize(...args));
+    }
+    return cache.get(key);
+  };
+}
+
+export const buildCustomProperties = memoize(buildCustomPropertiesNoMemo);
