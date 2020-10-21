@@ -104,10 +104,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
                   <ThemeProvider theme={theme}>
                     <MediaQueryProvider>
                       <PortalsManagerProvider>
-                        <FocusManager>
-                          {children}
-                          <PortalsContainer />
-                        </FocusManager>
+                        <FocusManager>{children}</FocusManager>
+                        <PortalsContainer />
                       </PortalsManagerProvider>
                     </MediaQueryProvider>
                   </ThemeProvider>

@@ -1,7 +1,9 @@
-import React, {useState, useRef, useContext, useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {createPortal} from 'react-dom';
 
 import {PortalsManagerContext} from '../../utilities/portals';
+import {globalIdGeneratorFactory} from '../../utilities/unique-id';
+import {useIsMountedRef} from '../../utilities/use-is-mounted-ref';
 
 export interface PortalProps {
   children?: React.ReactNode;
@@ -9,28 +11,30 @@ export interface PortalProps {
   onPortalCreated?(): void;
 }
 
-export const UNIQUE_CONTAINER_ID = 'polaris-portal-container';
+const getUniqueID = globalIdGeneratorFactory('portal-');
 
-export function Portal({children, onPortalCreated = noop}: PortalProps) {
-  const [isMounted, setIsMounted] = useState(false);
+export function Portal({
+  children,
+  idPrefix = '',
+  onPortalCreated = noop,
+}: PortalProps) {
+  const isMounted = useIsMountedRef();
   const portalsContext = useContext(PortalsManagerContext);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const portalId =
+    idPrefix !== '' ? `${idPrefix}-${getUniqueID()}` : getUniqueID();
 
   useEffect(() => {
     if (isMounted) {
       onPortalCreated();
     }
-  }, [isMounted, onPortalCreated]);
+  }, [onPortalCreated, isMounted]);
 
-  if (!portalsContext) {
-    return;
-  }
-
-  return portalsContext.portalsContainerRef && isMounted
-    ? createPortal(children, portalsContext.portalsContainerRef)
+  return portalsContext && portalsContext.portalsContainerRef
+    ? createPortal(
+        <div data-portal-id={portalId}>{children}</div>,
+        portalsContext.portalsContainerRef,
+      )
     : null;
 }
 
