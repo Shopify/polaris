@@ -918,6 +918,11 @@ $stacking-order: (
     border-top-right-radius: var(--p-border-radius-base, border-radius());
     border-bottom-right-radius: var(--p-border-radius-base, border-radius());
   }
+
+  > :last-child:first-child .Button,
+  > :last-child:first-child .Button::after {
+    border-radius: var(--p-border-radius-base, border-radius());
+  }
 }
 
 [data-buttongroup-connected-top='true'] {

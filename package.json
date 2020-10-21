@@ -1,7 +1,7 @@
 {
   "name": "@endearhq/polaris",
   "description": "Shopify’s product component library",
-  "version": "5.6.1-fork.0",
+  "version": "5.8.0-fork.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Endear <dev@endearhq.com>",

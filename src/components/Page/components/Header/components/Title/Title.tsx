@@ -6,7 +6,6 @@ import type {AvatarProps} from '../../../../../Avatar';
 import type {ThumbnailProps} from '../../../../../Thumbnail';
 import {classNames} from '../../../../../../utilities/css';
 import {useFeatures} from '../../../../../../utilities/features';
-import {useMediaQuery} from '../../../../../../utilities/media-query';
 
 import styles from './Title.scss';
 
@@ -25,32 +24,29 @@ export interface TitleProps {
 
 export function Title({title, subtitle, titleMetadata, thumbnail}: TitleProps) {
   const {newDesignLanguage} = useFeatures();
-  const {isNavigationCollapsed} = useMediaQuery();
-  const displaySize = isNavigationCollapsed ? 'large' : 'small';
+
+  const titleElement = newDesignLanguage ? (
+    <h1 className={styles.newDesignLanguageTitle}>{title}</h1>
+  ) : (
+    <DisplayText size="large" element="h1">
+      <TextStyle variation="strong">{title}</TextStyle>
+    </DisplayText>
+  );
   const titleMarkup = title ? (
-    <div className={styles.Title}>
-      <DisplayText
-        size={newDesignLanguage ? displaySize : 'large'}
-        element="h1"
-      >
-        <TextStyle variation="strong">{title}</TextStyle>
-      </DisplayText>
-    </div>
+    <div className={styles.Title}>{titleElement}</div>
   ) : null;
 
   const titleMetadataMarkup = titleMetadata ? (
-    <div
-      className={classNames(
-        styles.TitleMetadata,
-        newDesignLanguage && styles.newDesignLanguage,
-      )}
-    >
-      {titleMetadata}
-    </div>
+    <div className={styles.TitleMetadata}>{titleMetadata}</div>
   ) : null;
 
   const wrappedTitleMarkup = titleMetadata ? (
-    <div className={styles.TitleWithMetadataWrapper}>
+    <div
+      className={classNames(
+        styles.TitleWithMetadataWrapper,
+        newDesignLanguage && styles.newDesignLanguage,
+      )}
+    >
       {titleMarkup}
       {titleMetadataMarkup}
     </div>

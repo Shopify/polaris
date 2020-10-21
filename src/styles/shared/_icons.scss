@@ -2,19 +2,18 @@
   @return rem(20px);
 }
 
-@mixin recolor-icon($fill-color, $secondary-color: null, $filter-color: null) {
+@mixin recolor-icon(
+  $fill-color: null,
+  $secondary-color: null,
+  $filter-color: null
+) {
   svg {
     fill: $fill-color;
-
-    @if $secondary-color {
-      color: $secondary-color;
-    }
+    color: $secondary-color;
   }
 
-  @if $filter-color {
-    img {
-      filter: $filter-color;
-    }
+  img {
+    filter: $filter-color;
   }
 }
 

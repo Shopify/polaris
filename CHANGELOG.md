@@ -8,6 +8,24 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.8.0 - 2020-10-15
+
+### Bug fixes
+
+- Fixed alignment of badges in navigation items ([#3440](https://github.com/Shopify/polaris-react/pull/3440))
+
+### Documentation
+
+- The Details Page in Storybook now renders the `SearchDismissOverlay` when typing in the search field. ([#3471](https://github.com/Shopify/polaris-react/pull/3471))
+
+## 5.7.0 - 2020-10-09
+
+### Enhancements
+
+- Added `OutlineableAction` to the `ComplexAction` type ([#3405](https://github.com/Shopify/polaris-react/pull/3405))
+- Added `UnstyledButton` component and refactored `Banner` to use it ([#3406](https://github.com/Shopify/polaris-react/pull/3406))
+- Added `prefix` field to `options` prop on `Select` ([#3373](https://github.com/Shopify/polaris-react/pull/3373))
+
 ## 5.6.1 - 2020-10-09
 
 ### Bug fixes

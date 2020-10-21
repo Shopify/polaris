@@ -2,24 +2,26 @@
 
 $breakpoint: 1080px;
 
-.SecondaryAction {
+.SecondaryAction.newDesignLanguage {
   // stylelint-disable declaration-no-important
   a,
   button {
+    @include focus-ring($border-width: rem(1px));
     background: transparent !important;
     box-shadow: none !important;
     border-radius: var(--p-border-radius-base) !important;
-
+    // stylelint-disable-next-line selector-max-specificity
     &:hover {
       background: var(--p-surface-hovered) !important;
     }
-
+    // stylelint-disable-next-line selector-max-specificity
     &:active {
       background: var(--p-surface-pressed) !important;
     }
 
     @include breakpoint-after($breakpoint) {
       border: none !important;
+      @include focus-ring($border-width: rem(0));
     }
   }
 }

@@ -126,7 +126,7 @@ describe('<Header />', () => {
     });
   });
 
-  describe('secondaryActions', () => {
+  describe('secondaryadds a newDesignLanguage class', () => {
     const mockSecondaryActions: HeaderProps['secondaryActions'] = [
       {content: 'mock content 1'},
       {content: 'mock content 2'},
@@ -271,7 +271,7 @@ describe('<Header />', () => {
         features: {newDesignLanguage: true},
       });
       expect(header.find('div').first().prop('className')).toBe(
-        'Header newDesignLanguage',
+        'Header isSingleRow noBreadcrumbs newDesignLanguage mediumTitle',
       );
     });
 
@@ -279,7 +279,9 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(<Header title="Hello, world!" />, {
         features: {newDesignLanguage: false},
       });
-      expect(header.find('div').first().prop('className')).toBe('Header');
+      expect(header.find('div').first().prop('className')).toBe(
+        'Header isSingleRow noBreadcrumbs mediumTitle',
+      );
     });
 
     it('removes primary and secondary action wrapper divs', () => {
