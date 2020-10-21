@@ -34,7 +34,7 @@ export interface UnstyledButtonProps {
    */
   ariaPressed?: boolean;
   /** Callback when clicked */
-  onClick?(): void;
+  onClick?(event: React.MouseEvent<HTMLButtonElement>): void;
   /** Callback when button becomes focussed */
   onFocus?(): void;
   /** Callback when focus leaves button */

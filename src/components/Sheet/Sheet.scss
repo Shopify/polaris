@@ -38,6 +38,21 @@ $sheet-large-max-desktop-width: rem(1200px);
       max-width: $sheet-large-max-desktop-width;
     }
   }
+
+  &.bottomSheet {
+    @include frame-when-nav-displayed {
+      top: auto;
+      right: 5rem;
+      height: 65rem;
+      max-height: calc(100vh - 5.6rem - 2rem);
+      border-top-left-radius: var(--p-border-radius-wide, border-radius(large));
+      border-top-right-radius: var(
+        --p-border-radius-wide,
+        border-radius(large)
+      );
+      overflow: hidden;
+    }
+  }
 }
 
 .Container {
@@ -65,12 +80,27 @@ $sheet-large-max-desktop-width: rem(1200px);
       max-width: $sheet-large-max-desktop-width;
     }
   }
+
+  &.bottomSheet {
+    @include frame-when-nav-displayed {
+      top: auto;
+      right: 5rem;
+      height: 65rem;
+      max-height: calc(100vh - 5.6rem - 2rem);
+    }
+  }
 }
 
 .Bottom {
   will-change: transform;
   transition: transform duration('slow') easing('base');
   transform-origin: bottom;
+
+  &.bottomSheet {
+    @include frame-when-nav-displayed {
+      right: 0;
+    }
+  }
 }
 .enterBottom {
   transform: translateY(100%);

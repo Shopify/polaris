@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
+import type {CSSTransitionClassNames} from 'react-transition-group/CSSTransition';
 
 import {useMediaQuery} from '../../utilities/media-query';
 import {classNames} from '../../utilities/css';
@@ -42,6 +43,8 @@ export interface SheetProps {
   size?: 'small' | 'medium' | 'large';
   /** Show a transparent backdrop */
   transparentBackdrop?: boolean;
+  /** Renders as a full sheet or a bottom sheet */
+  type?: 'fullSheet' | 'bottomSheet';
 }
 
 export function Sheet({
@@ -51,18 +54,26 @@ export function Sheet({
   onEntered,
   onExit,
   transparentBackdrop = true,
+  type = 'fullSheet',
   size = 'small',
 }: SheetProps) {
   const {isNavigationCollapsed} = useMediaQuery();
   const container = useRef<HTMLDivElement>(null);
 
+  let transitionClasses: CSSTransitionClassNames;
+  if (type === 'bottomSheet') {
+    transitionClasses = BOTTOM_CLASS_NAMES;
+  } else {
+    transitionClasses = isNavigationCollapsed
+      ? BOTTOM_CLASS_NAMES
+      : RIGHT_CLASS_NAMES;
+  }
+
   return (
     <Portal idPrefix="sheet">
       <CSSTransition
         nodeRef={container}
-        classNames={
-          isNavigationCollapsed ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES
-        }
+        classNames={transitionClasses}
         timeout={durationSlow}
         in={open}
         mountOnEnter
@@ -75,6 +86,7 @@ export function Sheet({
             styles.Container,
             size === 'large' && styles.sizeLarge,
             size === 'medium' && styles.sizeMedium,
+            type === 'bottomSheet' && styles.bottomSheet,
           )}
           {...layer.props}
           {...overlay.props}
@@ -88,6 +100,7 @@ export function Sheet({
                 styles.Sheet,
                 size === 'large' && styles.sizeLarge,
                 size === 'medium' && styles.sizeMedium,
+                type === 'bottomSheet' && styles.bottomSheet,
               )}
             >
               {children}
@@ -95,8 +108,12 @@ export function Sheet({
           </TrapFocus>
         </div>
       </CSSTransition>
-      <KeypressListener keyCode={Key.Escape} handler={onClose} />
-      {open && <Backdrop transparent={transparentBackdrop} onClick={onClose} />}
+      {type !== 'bottomSheet' ? (
+        <KeypressListener keyCode={Key.Escape} handler={onClose} />
+      ) : null}
+      {open && type !== 'bottomSheet' && (
+        <Backdrop transparent={transparentBackdrop} onClick={onClose} />
+      )}
     </Portal>
   );
 }

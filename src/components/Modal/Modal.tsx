@@ -25,8 +25,6 @@ const IFRAME_LOADING_HEIGHT = 200;
 const DEFAULT_IFRAME_CONTENT_HEIGHT = 400;
 
 export interface ModalProps extends FooterProps {
-  /** A unique id for the modal */
-  id?: string;
   /** Whether the modal is open or not */
   open: boolean;
   /** The url that will be loaded as the content of the modal */
@@ -64,7 +62,6 @@ export interface ModalProps extends FooterProps {
 export const Modal: React.FunctionComponent<ModalProps> & {
   Section: typeof Section;
 } = function Modal({
-  id,
   children,
   title,
   src,
@@ -185,7 +182,6 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 
     dialog = (
       <Dialog
-        id={id}
         instant={instant}
         labelledBy={labelledBy}
         onClose={onClose}
