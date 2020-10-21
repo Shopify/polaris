@@ -7,8 +7,13 @@ import {
   buildThemeContext,
   buildCustomProperties,
   Tokens,
+  buildLegacyColors,
+  customPropertyTransformer,
+  toString,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
+
+import {lightTheme, darkTheme} from './themes';
 
 type OriginalColorScheme = Required<ThemeConfig['colorScheme']>;
 type Inverse = 'inverse';
@@ -28,6 +33,70 @@ interface ThemeProviderProps {
   theme: ThemeProviderThemeConfig;
   /** The content to display */
   children?: React.ReactNode;
+}
+
+export function HardCodedThemeProvider({
+  theme: themeConfig,
+  children,
+}: ThemeProviderProps) {
+  const {newDesignLanguage} = useFeatures();
+
+  const parentContext = useContext(ThemeContext);
+  let theme;
+  if (newDesignLanguage) {
+    const inverseTheme =
+      parentContext?.colorScheme === 'dark' ? lightTheme : darkTheme;
+    const themeMap = new Map([
+      ['light', lightTheme],
+      ['dark', darkTheme],
+      ['inverse', inverseTheme],
+      [undefined, lightTheme],
+    ]);
+    theme = themeMap.get(themeConfig.colorScheme);
+  }
+  const {colors, colorScheme, frameOffset = 0, ...rest} = themeConfig;
+  const isParentThemeProvider = parentContext === undefined;
+
+  const backgroundColor = theme ? theme['--p-background'] : '';
+  const color = theme ? theme['--p-text'] : '';
+
+  useEffect(() => {
+    if (isParentThemeProvider && newDesignLanguage) {
+      document.body.style.backgroundColor = backgroundColor;
+      document.body.style.color = color;
+    }
+  }, [backgroundColor, color, isParentThemeProvider, newDesignLanguage]);
+
+  const style = newDesignLanguage
+    ? {
+        ...theme,
+        ...customPropertyTransformer(Tokens),
+        ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
+        ...(!isParentThemeProvider && {color}),
+      }
+    : {
+        ...buildLegacyColors({colors, ...rest}),
+        ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
+      };
+
+  const parentColors =
+    parentContext && parentContext.colors && parentContext.colors;
+
+  return (
+    <ThemeContext.Provider
+      value={{
+        cssCustomProperties: toString(theme),
+        ...rest,
+        colors: {
+          ...(isParentThemeProvider && DefaultThemeColors),
+          ...(parentColors != null && parentColors),
+          ...colors,
+        },
+      }}
+    >
+      <div style={style}>{children}</div>
+    </ThemeContext.Provider>
+  );
 }
 
 export function ThemeProvider({
