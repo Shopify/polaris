@@ -74,10 +74,13 @@ export function Portal({
     }
 
     return function cleanup() {
-      if (portalNode.current && portalsContainerNode.current) {
-        portalsContainerNode.current.removeChild(portalNode.current);
-        if (portalsContainerNode.current.childElementCount === 0) {
-          document.body.removeChild(portalsContainerNode.current);
+      const containerNode = portalsContainerNode.current
+        ? portalsContainerNode.current
+        : document.getElementById(UNIQUE_CONTAINER_ID);
+      if (portalNode.current && containerNode) {
+        containerNode.removeChild(portalNode.current);
+        if (containerNode && containerNode.childElementCount === 0) {
+          document.body.removeChild(containerNode);
         }
       }
     };
