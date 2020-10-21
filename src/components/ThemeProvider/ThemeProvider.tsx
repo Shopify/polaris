@@ -1,5 +1,4 @@
 import React, {useMemo, useEffect, useContext} from 'react';
-import {now} from '@shopify/performance';
 import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
 
 import {
@@ -40,7 +39,6 @@ export function HardCodedThemeProvider({
   theme: themeConfig,
   children,
 }: ThemeProviderProps) {
-  const start = now();
   const {newDesignLanguage} = useFeatures();
 
   const parentContext = useContext(ThemeContext);
@@ -83,11 +81,6 @@ export function HardCodedThemeProvider({
 
   const parentColors =
     parentContext && parentContext.colors && parentContext.colors;
-
-  const end = now();
-  console.log(
-    `Rendering HardCodedThemeProvider took ${end - start} milliseconds.`,
-  );
 
   return (
     <ThemeContext.Provider
