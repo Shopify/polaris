@@ -53,6 +53,12 @@ $sheet-large-max-desktop-width: rem(1200px);
       overflow: hidden;
     }
   }
+
+  &.minimized {
+    @include frame-when-nav-displayed {
+      height: 5.6rem;
+    }
+  }
 }
 
 .Container {
@@ -87,6 +93,12 @@ $sheet-large-max-desktop-width: rem(1200px);
       right: 5rem;
       height: 65rem;
       max-height: calc(100vh - 5.6rem - 2rem);
+    }
+  }
+
+  &.minimized {
+    @include frame-when-nav-displayed {
+      height: 5.6rem;
     }
   }
 }

@@ -31,6 +31,8 @@ const RIGHT_CLASS_NAMES = {
 export interface SheetProps {
   /** Whether or not the sheet is open */
   open: boolean;
+  /** Whether or not the sheet is minimized (must be type 'bottomSheet') */
+  minimized?: boolean;
   /** The child elements to render in the sheet */
   children: React.ReactNode;
   /** Callback when the backdrop is clicked or `ESC` is pressed */
@@ -50,6 +52,7 @@ export interface SheetProps {
 export function Sheet({
   children,
   open,
+  minimized = false,
   onClose,
   onEntered,
   onExit,
@@ -87,6 +90,7 @@ export function Sheet({
             size === 'large' && styles.sizeLarge,
             size === 'medium' && styles.sizeMedium,
             type === 'bottomSheet' && styles.bottomSheet,
+            type === 'bottomSheet' && minimized && styles.minimized,
           )}
           {...layer.props}
           {...overlay.props}
@@ -101,6 +105,7 @@ export function Sheet({
                 size === 'large' && styles.sizeLarge,
                 size === 'medium' && styles.sizeMedium,
                 type === 'bottomSheet' && styles.bottomSheet,
+                type === 'bottomSheet' && minimized && styles.minimized,
               )}
             >
               {children}
