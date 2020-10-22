@@ -1,9 +1,14 @@
 /* eslint-disable no-console */
+const os = require('os');
+
 const puppeteer = require('puppeteer');
 const pMap = require('p-map');
 
 // eslint-disable-next-line node/no-path-concat
 const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
+
+const concurrentCount = os.cpus().length;
+console.log(`Running ${concurrentCount} concurrent pages at a time`);
 
 (async function run() {
   try {
@@ -64,7 +69,9 @@ const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
       }
     };
 
-    const results = await pMap(storyUrls, testPage, {concurrency: 8});
+    const results = await pMap(storyUrls, testPage, {
+      concurrency: concurrentCount,
+    });
 
     await browser.close();
 
