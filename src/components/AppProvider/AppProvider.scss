@@ -47,6 +47,13 @@ body {
   margin: 0;
   padding: 0;
   background-color: color('sky', 'light');
+
+  @include when-printing {
+    // AppProvider sets styles on the body. These needs to
+    // be overridden using !important.
+    // stylelint-disable-next-line declaration-no-important
+    background-color: transparent !important;
+  }
 }
 
 *,
