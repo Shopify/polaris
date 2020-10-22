@@ -188,6 +188,21 @@ describe('<ThemeProvider />', () => {
     });
   });
 
+  it('does not render custom properties when renderCustomProperties is false', () => {
+    const themeProvider = mountWithNewDesignLanguage(
+      <ThemeProvider theme={{}} renderCustomProperties={false}>
+        <p>Hello</p>
+      </ThemeProvider>,
+      {newDesignLanguage: true},
+    );
+
+    expect(themeProvider.find('div')).not.toHaveReactProps({
+      style: expect.objectContaining({
+        '--p-background': expect.any(String),
+      }),
+    });
+  });
+
   describe('when nested', () => {
     it('sets a default theme', () => {
       const themeProvider = mountWithNewDesignLanguage(
