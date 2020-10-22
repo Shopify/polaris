@@ -1,6 +1,8 @@
 import React from 'react';
-import {Heading, Popover, Button, ActionList} from 'components';
+import {Heading, Popover, Button, ActionList, Badge} from 'components';
 import {mountWithApp} from 'test-utilities';
+// eslint-disable-next-line no-restricted-imports
+import {mountWithAppProvider} from 'test-utilities/legacy';
 
 import {MediaCard} from '../MediaCard';
 
@@ -20,6 +22,25 @@ describe('<MediaCard>', () => {
     const videoCard = mountWithApp(<MediaCard {...mockProps} title={title} />);
 
     expect(videoCard).toContainReactComponent(Heading, {children: title});
+  });
+
+  it('title can have any valid react elemen', () => {
+    const titleString = 'Online store';
+    const badgeString = 'I am a badge';
+    const title = (
+      <h2>
+        {titleString}
+        <Badge>{badgeString}</Badge>
+      </h2>
+    );
+    const videoCard = mountWithAppProvider(
+      <MediaCard {...mockProps} title={title} />,
+    );
+
+    const headerMarkup = videoCard.find('h2');
+
+    expect(headerMarkup.text()).toContain(titleString);
+    expect(headerMarkup.find('Badge').text()).toBe(badgeString);
   });
 
   it('renders the description as a paragraph', () => {
