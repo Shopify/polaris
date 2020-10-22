@@ -7,7 +7,7 @@ const pMap = require('p-map');
 // eslint-disable-next-line node/no-path-concat
 const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
 
-const concurrentCount = os.cpus().length;
+const concurrentCount = os.cpus().length * 2;
 console.log(`Running ${concurrentCount} concurrent pages at a time`);
 
 (async function run() {
