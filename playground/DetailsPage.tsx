@@ -35,6 +35,7 @@ import {
   Stack,
   TextContainer,
   TextField,
+  ThemeProvider,
   Thumbnail,
   Toast,
   TopBar,
@@ -610,19 +611,21 @@ export function DetailsPage() {
   );
 
   return (
-    <Frame
-      topBar={topBarMarkup}
-      navigation={navigationMarkup}
-      showMobileNavigation={mobileNavigationActive}
-      onNavigationDismiss={toggleMobileNavigationActive}
-      skipToContentTarget={skipToContentRef}
-    >
-      {contextualSaveBarMarkup}
-      {loadingMarkup}
-      {pageMarkup}
-      {toastMarkup}
-      {modalMarkup}
-    </Frame>
+    <ThemeProvider theme={{colorScheme: 'light'}}>
+      <Frame
+        topBar={topBarMarkup}
+        navigation={navigationMarkup}
+        showMobileNavigation={mobileNavigationActive}
+        onNavigationDismiss={toggleMobileNavigationActive}
+        skipToContentTarget={skipToContentRef}
+      >
+        {contextualSaveBarMarkup}
+        {loadingMarkup}
+        {pageMarkup}
+        {toastMarkup}
+        {modalMarkup}
+      </Frame>
+    </ThemeProvider>
   );
 }
 

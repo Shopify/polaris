@@ -6,6 +6,7 @@ import {
   ThemeConfig,
   buildThemeContext,
   buildCustomProperties,
+  toString,
   Tokens,
 } from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
@@ -84,7 +85,18 @@ export function ThemeProvider({
     }
   }, [backgroundColor, color, isParentThemeProvider]);
 
-  const style = {...customProperties, ...(!isParentThemeProvider && {color})};
+  let style;
+
+  if (isParentThemeProvider) {
+    style = customProperties;
+  } else if (
+    !isParentThemeProvider &&
+    parentContext!.cssCustomProperties !== toString(customProperties)
+  ) {
+    style = {...customProperties, ...{color}};
+  } else {
+    style = {color};
+  }
 
   return (
     <ThemeContext.Provider value={{...theme, textColor: color}}>
