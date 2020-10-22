@@ -26,10 +26,8 @@
     outline: var(--p-override-none, $chrome-default-outline);
   }
 
-  @include focus-ring;
-
   &:focus:not(:active) {
-    @include focus-ring($style: 'focused');
+    outline: var(--p-focused) auto 1px;
   }
 
   &:active {
