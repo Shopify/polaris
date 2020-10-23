@@ -101,8 +101,7 @@ export function ThemeProvider({
     !isParentThemeProvider &&
     parentContext!.cssCustomProperties !== toString(customProperties)
   ) {
-    customProperties.color = color;
-    style = customProperties;
+    style = {...customProperties, ...{color}};
   } else {
     style = {color};
   }
