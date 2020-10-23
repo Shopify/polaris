@@ -24,7 +24,7 @@ describe('<MediaCard>', () => {
     expect(videoCard).toContainReactComponent(Heading, {children: title});
   });
 
-  it('title can have any valid react elemen', () => {
+  it('title can have any valid react element', () => {
     const titleString = 'Online store';
     const badgeString = 'I am a badge';
     const title = (
