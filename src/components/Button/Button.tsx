@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
 
+import type {BaseButton, ConnectedDisclosure, IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
 import {
   handleMouseUpByBlurring,
@@ -9,7 +10,6 @@ import {
 import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
-import type {IconProps, ConnectedDisclosure} from '../../types';
 import {Spinner} from '../Spinner';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
@@ -17,34 +17,7 @@ import {UnstyledButton, UnstyledButtonProps} from '../UnstyledButton';
 
 import styles from './Button.scss';
 
-type Size = 'slim' | 'medium' | 'large';
-type TextAlign = 'left' | 'right' | 'center';
-type IconSource = IconProps['source'];
-
-export interface ButtonProps
-  extends Pick<
-    UnstyledButtonProps,
-    | 'id'
-    | 'url'
-    | 'external'
-    | 'download'
-    | 'submit'
-    | 'disabled'
-    | 'loading'
-    | 'pressed'
-    | 'accessibilityLabel'
-    | 'ariaControls'
-    | 'ariaExpanded'
-    | 'ariaPressed'
-    | 'onClick'
-    | 'onFocus'
-    | 'onBlur'
-    | 'onKeyPress'
-    | 'onKeyUp'
-    | 'onKeyDown'
-    | 'onMouseEnter'
-    | 'onTouchStart'
-  > {
+export interface ButtonProps extends BaseButton {
   /** The content to display inside the button */
   children?: string | string[];
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
@@ -55,9 +28,9 @@ export interface ButtonProps
    * Changes the size of the button, giving it more or less padding
    * @default 'medium'
    */
-  size?: Size;
+  size?: 'slim' | 'medium' | 'large';
   /** Changes the inner text alignment of the button */
-  textAlign?: TextAlign;
+  textAlign?: 'left' | 'right' | 'center';
   /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
   outline?: boolean;
   /** Allows the button to grow to the width of its container */
