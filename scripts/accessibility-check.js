@@ -83,6 +83,34 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     // A list of ids with a count of known, expected failures
     // Ideally this shouldn't exist for long as we fix issues
     const expectedErrors = {
+      // 'id=all-components-action-list--action-list-with-an-icon-and-a-suffix': 1,
+      // 'id=all-components-action-list--action-list-with-an-icon-and-a-suffix&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      // 'id=all-components-action-list--action-list-with-destructive-item': 1,
+      // 'id=all-components-action-list--action-list-with-destructive-item&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-autocomplete--basic-autocomplete': 1,
+      'id=all-components-autocomplete--basic-autocomplete&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-autocomplete--multiple-tags-autocomplete': 1,
+      'id=all-components-autocomplete--multiple-tags-autocomplete&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-autocomplete--autocomplete-with-loading': 1,
+      'id=all-components-autocomplete--autocomplete-with-loading&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-autocomplete--autocomplete-with-lazy-loading': 1,
+      'id=all-components-autocomplete--autocomplete-with-lazy-loading&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-autocomplete--autocomplete-with-empty-state': 1,
+      'id=all-components-autocomplete--autocomplete-with-empty-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-button--loading-state': 2,
+      'id=all-components-button--loading-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 2,
+      'id=all-components-filters--filtering-with-a-resource-list': 1,
+      'id=all-components-filters--filtering-with-a-resource-list&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-filters--filtering-with-a-data-table': 1,
+      'id=all-components-filters--filtering-with-a-data-table&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-filters--filters-with-children-content': 1,
+      'id=all-components-filters--filters-with-children-content&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-filters--all-filters-disabled': 1,
+      'id=all-components-filters--all-filters-disabled&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-filters--some-filters-disabled': 2,
+      'id=all-components-filters--some-filters-disabled&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 2,
+      'id=all-components-filters--filters-with-help-text': 1,
+      'id=all-components-filters--filters-with-help-text&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-form-layout--field-group': 1,
       'id=all-components-form-layout--field-group&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-option-list--multiple-option-list': 1,
@@ -93,6 +121,12 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       'id=all-components-range-slider--dual-thumb-range-slider&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 2,
       'id=all-components-resource-list--resource-list-with-loading-state': 1,
       'id=all-components-resource-list--resource-list-with-loading-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-resource-list--resource-list-with-filtering': 1,
+      'id=all-components-resource-list--resource-list-with-filtering&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-resource-list--resource-list-with-a-custom-empty-search-result-state': 1,
+      'id=all-components-resource-list--resource-list-with-a-custom-empty-search-result-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-resource-list--resource-list-with-all-of-its-elements': 1,
+      'id=all-components-resource-list--resource-list-with-all-of-its-elements&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-scrollable--default-scrollable-container': 1,
       'id=all-components-scrollable--default-scrollable-container&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-select--select-with-separate-validation-error': 1,
@@ -115,62 +149,71 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       'id=all-components-text-field--text-field-with-prefix-or-suffix&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-text-field--text-field-with-connected-fields': 1,
       'id=all-components-text-field--text-field-with-connected-fields&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-theme-provider--theme-provider-with-color-scheme-rendered-by-the-app-provider': 1,
-      'id=all-components-theme-provider--theme-provider-with-color-scheme-rendered-by-the-app-provider&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      // 'id=all-components-theme-provider--theme-provider-with-color-scheme-rendered-by-the-app-provider': 1,
+      // 'id=all-components-theme-provider--theme-provider-with-color-scheme-rendered-by-the-app-provider&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
     };
 
     const {
-      resultsWithUnexpectedIssues,
-      resultsWithExpectedIssues,
+      resultsWithErrors,
+      resultsWithUnexpectedViolations,
+      resultsWithExpectedViolations,
     } = results.reduce(
       (memo, resultItem) => {
-        if (resultItem.type !== 'PASS') {
+        if (resultItem.type === 'ERROR') {
+          memo.resultsWithErrors.push(resultItem);
+        } else if (resultItem.type === 'FAIL') {
           if (resultItem.errorCount === expectedErrors[resultItem.url]) {
-            memo.resultsWithExpectedIssues.push(resultItem);
+            memo.resultsWithExpectedViolations.push(resultItem);
             // Delete items once we fine them, so we know what items haven't
             // been triggered, so we can tell people they should be removed from
             // the list
             delete expectedErrors[resultItem.url];
           } else {
-            memo.resultsWithUnexpectedIssues.push(resultItem);
+            memo.resultsWithUnexpectedViolations.push(resultItem);
           }
         }
 
         return memo;
       },
       {
-        resultsWithUnexpectedIssues: [],
-        resultsWithExpectedIssues: [],
+        resultsWithErrors: [],
+        resultsWithUnexpectedViolations: [],
+        resultsWithExpectedViolations: [],
       },
     );
 
-    const unexpectedIssueCount = resultsWithUnexpectedIssues.length;
-    const expectedIssueCount = resultsWithExpectedIssues.length;
-    const totalIssueCount = unexpectedIssueCount + expectedIssueCount;
+    const errorCount = resultsWithErrors.length;
+
+    const unexpectedViolationsCount = resultsWithUnexpectedViolations.length;
+    const expectedViolationsCount = resultsWithExpectedViolations.length;
+    const totalViolationsCount =
+      unexpectedViolationsCount + expectedViolationsCount;
 
     const untriggeredExpectedIssues = Object.entries(expectedErrors);
-    const untriggeredExpectedIssueCount = untriggeredExpectedIssues.length;
+    const untriggeredExpectedViolationsCount = untriggeredExpectedIssues.length;
 
     console.log(
-      `There were ${totalIssueCount} Issues reported! ${expectedIssueCount} Issues were expected. ${untriggeredExpectedIssueCount} Expected Issues were absent`,
+      `There were ${totalViolationsCount} Issues reported! ${expectedViolationsCount} Issues were expected. ${untriggeredExpectedViolationsCount} Expected Issues were absent`,
     );
 
-    if (unexpectedIssueCount === 0 && untriggeredExpectedIssueCount === 0) {
+    if (
+      unexpectedViolationsCount === 0 &&
+      untriggeredExpectedViolationsCount === 0
+    ) {
       return;
     }
 
-    if (unexpectedIssueCount) {
-      console.log('Unexpected Issues:');
-      resultsWithUnexpectedIssues.forEach((result) => {
+    if (unexpectedViolationsCount) {
+      console.log('---\n\nUnexpected Issues:');
+      resultsWithUnexpectedViolations.forEach((result) => {
         console.log(
           `${result.type} ${result.url} (${result.errorCount}): \n${result.error}`,
         );
       });
-      console.log('---\n\n');
     }
 
-    if (untriggeredExpectedIssueCount) {
-      console.log('Expected Issues that were not triggerd:');
+    if (untriggeredExpectedViolationsCount) {
+      console.log('---\n\nExpected Issues that were not triggerd:');
       untriggeredExpectedIssues.forEach(([url, expectedViolationCount]) => {
         const actualViolationCount = (
           results.find((result) => result.url === url) || {errorCount: 0}
@@ -178,6 +221,16 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
         console.log(
           `${url}: Expected ${expectedViolationCount} issues, got ${actualViolationCount}.`,
         );
+      });
+    }
+
+    if (errorCount.length) {
+      console.log(
+        '---\n\nPages triggered an ERROR when trying to identify violations (you should rerun too see if this goes away):',
+      );
+
+      resultsWithErrors.forEach((result) => {
+        console.log(`${result.type} ${result.url}: \n${result.error}`);
       });
     }
 
