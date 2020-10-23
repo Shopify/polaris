@@ -101,13 +101,14 @@ export function ThemeProvider({
     !isParentThemeProvider &&
     parentContext!.cssCustomProperties !== toString(customProperties)
   ) {
-    style = {...customProperties, ...{color}};
+    customProperties.color = color;
+    style = customProperties;
   } else {
     style = {color};
   }
 
   return (
-    <ThemeContext.Provider value={{...theme}}>
+    <ThemeContext.Provider value={theme}>
       <div style={style}>{children}</div>
     </ThemeContext.Provider>
   );
