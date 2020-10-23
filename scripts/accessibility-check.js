@@ -58,6 +58,7 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
         return Promise.resolve({
           type: 'FAIL',
           url,
+          errorCount: result.violations.length,
           error: JSON.stringify(result.violations, null, 2),
         });
       } catch (error) {
@@ -79,19 +80,106 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       throw new Error('Component URLs could not be crawled');
     }
 
-    const resultsWithIssues = results.filter(({type}) => type !== 'PASS');
-    const issueCount = resultsWithIssues.length;
+    // A list of ids with a count of known, expected failures
+    // Ideally this shouldn't exist for long as we fix issues
+    const expectedErrors = {
+      'id=all-components-form-layout--field-group': 1,
+      'id=all-components-form-layout--field-group&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-option-list--multiple-option-list': 1,
+      'id=all-components-option-list--multiple-option-list&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-option-list--option-list-with-sections': 1,
+      'id=all-components-option-list--option-list-with-sections&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-range-slider--dual-thumb-range-slider': 2,
+      'id=all-components-range-slider--dual-thumb-range-slider&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 2,
+      'id=all-components-resource-list--resource-list-with-loading-state': 1,
+      'id=all-components-resource-list--resource-list-with-loading-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-scrollable--default-scrollable-container': 1,
+      'id=all-components-scrollable--default-scrollable-container&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-select--select-with-separate-validation-error': 1,
+      'id=all-components-select--select-with-separate-validation-error&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-spinner--spinner-with-focus-management': 1,
+      'id=all-components-spinner--spinner-with-focus-management&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-tabs--default-tabs': 1,
+      'id=all-components-tabs--default-tabs&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-tabs--fitted-tabs': 1,
+      'id=all-components-tabs--fitted-tabs&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-tabs--tabs-with-badge-content': 1,
+      'id=all-components-tabs--tabs-with-badge-content&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-tabs--tabs-with-custom-disclosure': 1,
+      'id=all-components-tabs--tabs-with-custom-disclosure&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-text-field--number-field': 1,
+      'id=all-components-text-field--number-field&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-text-field--text-field-with-hidden-label': 1,
+      'id=all-components-text-field--text-field-with-hidden-label&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-text-field--text-field-with-prefix-or-suffix': 1,
+      'id=all-components-text-field--text-field-with-prefix-or-suffix&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-text-field--text-field-with-connected-fields': 1,
+      'id=all-components-text-field--text-field-with-connected-fields&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-theme-provider--theme-provider-with-color-scheme-rendered-by-the-app-provider': 1,
+      'id=all-components-theme-provider--theme-provider-with-color-scheme-rendered-by-the-app-provider&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+    };
 
-    if (issueCount === 0) {
-      console.log('No Errors Reported!');
+    const {
+      resultsWithUnexpectedIssues,
+      resultsWithExpectedIssues,
+    } = results.reduce(
+      (memo, resultItem) => {
+        if (resultItem.type !== 'PASS') {
+          if (resultItem.errorCount === expectedErrors[resultItem.url]) {
+            memo.resultsWithExpectedIssues.push(resultItem);
+            // Delete items once we fine them, so we know what items haven't
+            // been triggered, so we can tell people they should be removed from
+            // the list
+            delete expectedErrors[resultItem.url];
+          } else {
+            memo.resultsWithUnexpectedIssues.push(resultItem);
+          }
+        }
+
+        return memo;
+      },
+      {
+        resultsWithUnexpectedIssues: [],
+        resultsWithExpectedIssues: [],
+      },
+    );
+
+    const unexpectedIssueCount = resultsWithUnexpectedIssues.length;
+    const expectedIssueCount = resultsWithExpectedIssues.length;
+    const totalIssueCount = unexpectedIssueCount + expectedIssueCount;
+
+    const untriggeredExpectedIssues = Object.entries(expectedErrors);
+    const untriggeredExpectedIssueCount = untriggeredExpectedIssues.length;
+
+    console.log(
+      `There were ${totalIssueCount} Issues reported! ${expectedIssueCount} Issues were expected. ${untriggeredExpectedIssueCount} Expected Issues were absent`,
+    );
+
+    if (unexpectedIssueCount === 0 && untriggeredExpectedIssueCount === 0) {
       return;
     }
 
-    console.log(`There were ${issueCount} Errors Reported!`);
+    if (unexpectedIssueCount) {
+      console.log('Unexpected Issues:');
+      resultsWithUnexpectedIssues.forEach((result) => {
+        console.log(
+          `${result.type} ${result.url} (${result.errorCount}): \n${result.error}`,
+        );
+      });
+      console.log('---\n\n');
+    }
 
-    resultsWithIssues.forEach((result) => {
-      console.log(`${result.type} ${result.url}: \n${result.error}`);
-    });
+    if (untriggeredExpectedIssueCount) {
+      console.log('Expected Issues that were not triggerd:');
+      untriggeredExpectedIssues.forEach(([url, expectedViolationCount]) => {
+        const actualViolationCount = (
+          results.find((result) => result.url === url) || {errorCount: 0}
+        ).errorCount;
+        console.log(
+          `${url}: Expected ${expectedViolationCount} issues, got ${actualViolationCount}.`,
+        );
+      });
+    }
 
     process.exit(1);
   } catch (err) {
