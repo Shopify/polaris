@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.9.1 - 2020-10-23
+
+### Bug fixes
+
+- Fixed Button connected disclosure height when button text has more than 2 lines ([#3536](https://github.com/Shopify/polaris-react/pull/3536))
+
 ## 5.9.0 - 2020-10-22
 
 ### Enhancements
