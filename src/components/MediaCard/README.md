@@ -287,7 +287,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-The `title` prop gives the media card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users. It can also accept a ReactNode.
+The required `title` prop gives the media card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users. It can also accept a ReactNode.
 
 Use [actionable language](https://polaris.shopify.com/content/actionable-language#navigation) to ensure that the purpose of the media card is clear to all merchants, including those with issues related to reading and language.
 
