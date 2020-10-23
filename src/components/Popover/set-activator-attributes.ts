@@ -18,13 +18,9 @@ export function setActivatorAttributes(
     activator.tabIndex = activator.tabIndex || 0;
   }
 
-  const activatorType = activator.getAttribute('type');
-
-  if (activator.tagName !== 'input' && activatorType && activatorType !== 'text') {
-    activator.setAttribute('aria-controls', id);
-    activator.setAttribute('aria-owns', id);
-    activator.setAttribute('aria-expanded', String(active));
-  }
+  activator.setAttribute('aria-controls', id);
+  activator.setAttribute('aria-owns', id);
+  activator.setAttribute('aria-expanded', String(active));
 
   if (ariaHaspopup != null) {
     activator.setAttribute('aria-haspopup', String(ariaHaspopup));

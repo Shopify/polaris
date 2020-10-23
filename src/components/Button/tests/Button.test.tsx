@@ -100,6 +100,11 @@ describe('<Button />', () => {
       expect(button.find(Spinner).exists()).toBeTruthy();
     });
 
+    it('sets an alert role on the button', () => {
+      const button = mountWithAppProvider(<Button loading />);
+      expect(button.find('button').prop('role')).toBe('alert');
+    });
+
     it('sets aria-busy on the button', () => {
       const button = mountWithAppProvider(<Button loading />);
       expect(button.find('button').prop('aria-busy')).toBeTruthy();
