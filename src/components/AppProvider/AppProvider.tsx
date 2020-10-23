@@ -20,6 +20,10 @@ import {
   UniqueIdFactoryContext,
   globalIdGeneratorFactory,
 } from '../../utilities/unique-id';
+import {
+  PortalsManagerProvider,
+  PortalsContainer,
+} from '../../utilities/portals';
 
 import './AppProvider.scss';
 
@@ -99,7 +103,10 @@ export class AppProvider extends Component<AppProviderProps, State> {
                 <LinkContext.Provider value={link}>
                   <ThemeProvider theme={theme}>
                     <MediaQueryProvider>
-                      <FocusManager>{children}</FocusManager>
+                      <PortalsManagerProvider>
+                        <FocusManager>{children}</FocusManager>
+                        <PortalsContainer />
+                      </PortalsManagerProvider>
                     </MediaQueryProvider>
                   </ThemeProvider>
                 </LinkContext.Provider>

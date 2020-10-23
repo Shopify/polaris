@@ -41,7 +41,7 @@ describe('PolarisTestProvider', () => {
     it('allows isNavigationCollapsed to be overwritten', () => {
       function Component() {
         const {isNavigationCollapsed} = useMediaQuery();
-        return isNavigationCollapsed ? <div /> : null;
+        return isNavigationCollapsed ? <span /> : null;
       }
 
       const polarisTestProvider = mountWithApp(
@@ -50,7 +50,7 @@ describe('PolarisTestProvider', () => {
         </PolarisTestProvider>,
       );
 
-      expect(polarisTestProvider).toContainReactComponentTimes('div', 1);
+      expect(polarisTestProvider).toContainReactComponentTimes('span', 1);
     });
   });
 });
