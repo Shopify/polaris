@@ -8,8 +8,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Updated `MediaCard` to accept ReactNode as title
-- Updated `MediaCard` to make `primaryAction` optional
+- Updated `MediaCard` to accept ReactNode as title and make `primaryAction` optional ([#3552](https://github.com/Shopify/polaris-react/pull/3552))
 
 ### Bug fixes
 
