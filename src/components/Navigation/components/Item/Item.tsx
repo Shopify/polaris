@@ -53,7 +53,7 @@ export interface ItemProps extends ItemURLDetails {
   new?: boolean;
   subNavigationItems?: SubNavigationItem[];
   secondaryAction?: SecondaryAction;
-  onClick?(): void;
+  onClick?(event: MouseEvent<HTMLElement>): void;
 }
 
 enum MatchState {
@@ -244,14 +244,20 @@ export function Item({
       <div className={SecondaryNavigationClassName}>
         <Secondary expanded={showExpanded}>
           {subNavigationItems.map((item) => {
-            const {label, ...rest} = item;
+            const {label, onClick, ...rest} = item;
+
+            const clickHandler = (event: MouseEvent<HTMLElement>): void => {
+              if (onClick) onClick(event);
+              if (onNavigationDismiss) onNavigationDismiss();
+            };
+
             return (
               <Item
                 {...rest}
                 key={label}
                 label={label}
                 matches={item === longestMatch}
-                onClick={onNavigationDismiss}
+                onClick={clickHandler}
               />
             );
           })}
@@ -304,13 +310,13 @@ export function Item({
       } else if (onNavigationDismiss) {
         onNavigationDismiss();
         if (onClick && onClick !== onNavigationDismiss) {
-          onClick();
+          onClick(event);
         }
         return;
       }
 
       if (onClick) {
-        onClick();
+        onClick(event);
       }
     };
   }
