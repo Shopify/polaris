@@ -86,10 +86,10 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     // A list of urls with a count of known, expected failures
     // Ideally this shouldn't exist for long as we fix issues
     const expectedIssues = {
-      // 'id=all-components-action-list--action-list-with-an-icon-and-a-suffix': 1,
-      // 'id=all-components-action-list--action-list-with-an-icon-and-a-suffix&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      // 'id=all-components-action-list--action-list-with-destructive-item': 1,
-      // 'id=all-components-action-list--action-list-with-destructive-item&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-action-list--action-list-with-an-icon-and-a-suffix': 1,
+      'id=all-components-action-list--action-list-with-an-icon-and-a-suffix&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-action-list--action-list-with-destructive-item': 1,
+      'id=all-components-action-list--action-list-with-destructive-item&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-autocomplete--basic-autocomplete': 1,
       'id=all-components-autocomplete--basic-autocomplete&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-autocomplete--multiple-tags-autocomplete': 1,
@@ -116,6 +116,8 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       'id=all-components-filters--filters-with-help-text&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-form-layout--field-group': 1,
       'id=all-components-form-layout--field-group&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-modal--modal-with-scroll-listener': 1,
+      'id=all-components-modal--modal-with-scroll-listener&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-option-list--multiple-option-list': 1,
       'id=all-components-option-list--multiple-option-list&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-option-list--option-list-with-sections': 1,
@@ -152,8 +154,6 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       'id=all-components-text-field--text-field-with-prefix-or-suffix&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-text-field--text-field-with-connected-fields': 1,
       'id=all-components-text-field--text-field-with-connected-fields&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      // 'id=all-components-theme-provider--theme-provider-with-color-scheme-rendered-by-the-app-provider': 1,
-      // 'id=all-components-theme-provider--theme-provider-with-color-scheme-rendered-by-the-app-provider&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
     };
 
     const {
