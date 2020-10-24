@@ -39,6 +39,9 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       return memo;
     }, []);
 
+    /**
+     * @param {string} url
+     */
     const testPage = async (url) => {
       try {
         console.log(`Testing: ${url}`);
@@ -52,7 +55,7 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
         await page.close();
 
         if (result.violations.length === 0) {
-          return Promise.resolve({type: 'PASS', url});
+          return Promise.resolve({type: 'PASS', url, errorCount: 0});
         }
 
         return Promise.resolve({
@@ -80,9 +83,9 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       throw new Error('Component URLs could not be crawled');
     }
 
-    // A list of ids with a count of known, expected failures
+    // A list of urls with a count of known, expected failures
     // Ideally this shouldn't exist for long as we fix issues
-    const expectedErrors = {
+    const expectedIssues = {
       // 'id=all-components-action-list--action-list-with-an-icon-and-a-suffix': 1,
       // 'id=all-components-action-list--action-list-with-an-icon-and-a-suffix&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       // 'id=all-components-action-list--action-list-with-destructive-item': 1,
@@ -162,12 +165,12 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
         if (resultItem.type === 'ERROR') {
           memo.resultsWithErrors.push(resultItem);
         } else if (resultItem.type === 'FAIL') {
-          if (resultItem.errorCount === expectedErrors[resultItem.url]) {
+          if (resultItem.errorCount === expectedIssues[resultItem.url]) {
             memo.resultsWithExpectedViolations.push(resultItem);
             // Delete items once we fine them, so we know what items haven't
             // been triggered, so we can tell people they should be removed from
             // the list
-            delete expectedErrors[resultItem.url];
+            delete expectedIssues[resultItem.url];
           } else {
             memo.resultsWithUnexpectedViolations.push(resultItem);
           }
@@ -189,7 +192,7 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     const totalViolationsCount =
       unexpectedViolationsCount + expectedViolationsCount;
 
-    const untriggeredExpectedIssues = Object.entries(expectedErrors);
+    const untriggeredExpectedIssues = Object.entries(expectedIssues);
     const untriggeredExpectedViolationsCount = untriggeredExpectedIssues.length;
 
     console.log(
@@ -215,12 +218,17 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     if (untriggeredExpectedViolationsCount) {
       console.log('---\n\nExpected Issues that were not triggerd:');
       untriggeredExpectedIssues.forEach(([url, expectedViolationCount]) => {
-        const actualViolationCount = (
-          results.find((result) => result.url === url) || {errorCount: 0}
-        ).errorCount;
-        console.log(
-          `${url}: Expected ${expectedViolationCount} issues, got ${actualViolationCount}.`,
-        );
+        const result = results.find((resultItem) => resultItem.url === url);
+
+        if (!result) {
+          console.log(
+            `${url}: No matching story, remove this url from the expectedIssues array`,
+          );
+        } else if (result.type !== 'ERROR') {
+          console.log(
+            `${url}: Expected ${expectedViolationCount} issues, got ${result.errorCount}.`,
+          );
+        }
       });
     }
 
