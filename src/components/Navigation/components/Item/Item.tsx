@@ -244,12 +244,7 @@ export function Item({
       <div className={SecondaryNavigationClassName}>
         <Secondary expanded={showExpanded}>
           {subNavigationItems.map((item) => {
-            const {label, onClick, ...rest} = item;
-
-            const clickHandler = (event: MouseEvent<HTMLElement>): void => {
-              if (onClick) onClick(event);
-              if (onNavigationDismiss) onNavigationDismiss();
-            };
+            const {label, ...rest} = item;
 
             return (
               <Item
@@ -257,7 +252,6 @@ export function Item({
                 key={label}
                 label={label}
                 matches={item === longestMatch}
-                onClick={clickHandler}
               />
             );
           })}
@@ -309,7 +303,7 @@ export function Item({
         setExpanded(!expanded);
       } else if (onNavigationDismiss) {
         onNavigationDismiss();
-        if (onClick && onClick !== onNavigationDismiss) {
+        if (onClick) {
           onClick(event);
         }
         return;
