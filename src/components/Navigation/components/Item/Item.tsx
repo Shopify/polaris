@@ -53,7 +53,7 @@ export interface ItemProps extends ItemURLDetails {
   new?: boolean;
   subNavigationItems?: SubNavigationItem[];
   secondaryAction?: SecondaryAction;
-  onClick?(event: MouseEvent<HTMLElement>): void;
+  onClick?(event?: MouseEvent<HTMLElement>): void;
 }
 
 enum MatchState {
