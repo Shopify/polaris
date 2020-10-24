@@ -44,7 +44,11 @@ export function isElementOfType<P>(
     return false;
   }
 
-  const {type} = element;
+  const {type: defaultType} = element;
+  // Type override allows components to bypass default wrapping behavior. Ex: Stack, ResourceList...
+  // See https://github.com/Shopify/app-extension-libs/issues/996#issuecomment-710437088
+  const overrideType = element.props?.__type__;
+  const type = overrideType || defaultType;
   const Components = Array.isArray(Component) ? Component : [Component];
 
   return Components.some(

@@ -203,9 +203,9 @@ $range-end-border-radius: rem(30px);
     }
   }
 
-  .Day-selected {
-    background: var(--p-interactive);
-    color: var(--p-text-on-interactive);
+  .Day-inRange {
+    border-radius: 0;
+    background: var(--p-surface-selected);
 
     @media (-ms-high-contrast: active) {
       -ms-high-contrast-adjust: none;
@@ -220,9 +220,9 @@ $range-end-border-radius: rem(30px);
     }
   }
 
-  .Day-inRange {
-    border-radius: 0;
-    background: var(--p-surface-selected);
+  .Day-selected {
+    background: var(--p-interactive);
+    color: var(--p-text-on-interactive);
 
     @media (-ms-high-contrast: active) {
       -ms-high-contrast-adjust: none;

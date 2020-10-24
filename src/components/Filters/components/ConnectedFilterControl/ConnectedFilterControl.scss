@@ -26,6 +26,7 @@ $stacking-order: (
   width: 100%;
   height: 0;
   visibility: hidden;
+  overflow: hidden;
 
   > * {
     flex-shrink: 0;
