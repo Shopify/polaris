@@ -26,17 +26,24 @@ $context-control-expand-after: 1400px;
   box-shadow: var(--p-top-bar-shadow);
 }
 
-.LogoContainer {
+.LogoDisplayControl {
   display: none;
   @include breakpoint-after(nav-min-window-corrected()) {
     display: flex;
-    flex: 0 0 layout-width(nav);
-    align-items: center;
-    height: 100%;
-    padding: 0 spacing(tight) 0 spacing(base);
-    @include safe-area-for(flex-basis, layout-width(nav), left);
-    @include safe-area-for(padding-left, spacing(), left);
   }
+}
+
+.LogoDisplayContainer {
+  display: flex;
+}
+
+.LogoContainer {
+  flex: 0 0 layout-width(nav);
+  align-items: center;
+  height: 100%;
+  padding: 0 spacing(tight) 0 spacing(base);
+  @include safe-area-for(flex-basis, layout-width(nav), left);
+  @include safe-area-for(padding-left, spacing(), left);
 }
 
 .Logo,
