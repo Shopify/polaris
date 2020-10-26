@@ -132,7 +132,7 @@ $disabled-fade: 0.6;
 
   &:active,
   &:active:hover {
-    color: var(--p-text, color('indigo', 'dark'));
+    color: var(--p-action-primary, color('indigo', 'dark'));
     @include no-focus-ring;
 
     // stylelint-disable-next-line selector-max-specificity
@@ -354,7 +354,7 @@ $secondary-item-font-size: rem(15px);
       color: var(--p-action-primary, color('indigo', 'dark'));
     }
     &:active {
-      color: var(--p-action-primary-pressed, color('indigo', 'dark'));
+      color: var(--p-action-primary, color('indigo', 'dark'));
       @include no-focus-ring;
     }
   }
