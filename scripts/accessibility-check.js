@@ -201,7 +201,8 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
 
     if (
       unexpectedViolationsCount === 0 &&
-      untriggeredExpectedViolationsCount === 0
+      untriggeredExpectedViolationsCount === 0 &&
+      errorCount === 0
     ) {
       return;
     }
