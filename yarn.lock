@@ -8146,13 +8146,13 @@ dotenv@^8.0.0, dotenv@^8.2.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
   integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
-downlevel-dts@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/downlevel-dts/-/downlevel-dts-0.4.0.tgz#43f9f649c8b137373d76b4ee396d5a0227c10ddb"
-  integrity sha512-nh5vM3n2pRhPwZqh0iWo5gpItPAYEGEWw9yd0YpI+lO60B7A3A6iJlxDbt7kKVNbqBXKsptL+jwE/Yg5Go66WQ==
+downlevel-dts@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/downlevel-dts/-/downlevel-dts-0.6.0.tgz#1e52db9fa3ad9e3919a36545412f0b41a44289d1"
+  integrity sha512-Jy3ZZcXWPzTn5jJRW5WpdEtIq8+UowWWi5TEBgHHvzw320kouV//2KgVhfcuOpP93KS3UAokTxnZKU4L75kRSQ==
   dependencies:
     shelljs "^0.8.3"
-    typescript "^3.8.0-dev.20200111"
+    typescript "^4.1.0-dev.20200804"
 
 download@^6.2.2:
   version "6.2.5"
@@ -19360,10 +19360,20 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.7.2, typescript@^3.8.0-dev.20200111, typescript@~3.9.2:
+typescript@^3.7.2:
   version "3.9.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.2.tgz#64e9c8e9be6ea583c54607677dd4680a1cf35db9"
   integrity sha512-q2ktq4n/uLuNNShyayit+DTobV2ApPEo/6so68JaD5ojvc/6GClBipedB9zNWYxRSAlZXAe405Rlijzl6qDiSw==
+
+typescript@^4.1.0-dev.20200804:
+  version "4.1.0-dev.20201026"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.0-dev.20201026.tgz#81ebe09a926688ba69dcb26e987b34993bcea145"
+  integrity sha512-eeu0PiTyVU+obXKWYUAOVkPjKFzQOdLYGbGvd5TbcQ/CH7c5N7Q3VBuVdO8/rUhau8vw7Mc3EWzCnw7WUG0Img==
+
+typescript@~4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.3.tgz#153bbd468ef07725c1df9c77e8b453f8d36abba5"
+  integrity sha512-tEu6DGxGgRJPb/mVPIZ48e69xCn2yRmCgYmDugAVwmJ6o+0u1RI18eO7E7WBTLYLaEVVOhwQmcdhQHweux/WPg==
 
 unbzip2-stream@^1.0.9:
   version "1.4.3"
