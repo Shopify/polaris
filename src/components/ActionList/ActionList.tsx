@@ -1,8 +1,6 @@
 import React from 'react';
 
 import type {ActionListItemDescriptor, ActionListSection} from '../../types';
-import {useFeatures} from '../../utilities/features';
-import {classNames} from '../../utilities/css';
 
 import {Section} from './components';
 import styles from './ActionList.scss';
@@ -32,12 +30,6 @@ export function ActionList({
     finalSections = sections;
   }
 
-  const {newDesignLanguage} = useFeatures();
-  const className = classNames(
-    styles.ActionList,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
-
   const hasMultipleSections = finalSections.length > 1;
   const Element = hasMultipleSections ? 'ul' : 'div';
   const sectionMarkup = finalSections.map((section, index) => {
@@ -52,5 +44,5 @@ export function ActionList({
     ) : null;
   });
 
-  return <Element className={className}>{sectionMarkup}</Element>;
+  return <Element className={styles.ActionList}>{sectionMarkup}</Element>;
 }
