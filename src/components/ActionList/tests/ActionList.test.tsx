@@ -141,24 +141,4 @@ describe('<ActionList />', () => {
       status: 'new',
     });
   });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const actionList = mountWithApp(<ActionList />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(actionList).toContainReactComponent('div', {
-        className: 'ActionList newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const actionList = mountWithApp(<ActionList />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(actionList).not.toContainReactComponent('div', {
-        className: 'ActionList newDesignLanguage',
-      });
-    });
-  });
 });
