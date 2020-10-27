@@ -35,6 +35,7 @@ describe('<ThemeProvider />', () => {
   it('passes context', () => {
     const Child: React.SFC = () => {
       const polarisTheme = useContext(ThemeContext);
+      // eslint-disable-next-line jest/no-if
       return polarisTheme && polarisTheme.logo ? <div /> : null;
     };
 
