@@ -5,7 +5,7 @@ import {
   CircleTickMajor,
   CircleInformationMajor,
   CircleAlertMajor,
-  CircleDisabledMajor,
+  DiamondAlertMajor,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'test-utilities/react-testing';
 // eslint-disable-next-line no-restricted-imports
@@ -55,7 +55,7 @@ describe('<Banner />', () => {
 
   it('uses a redDark circleBarred if status is critical and sets an alert aria role', () => {
     const banner = mountWithAppProvider(<Banner status="critical" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleDisabledMajor);
+    expect(banner.find(Icon).prop('source')).toBe(DiamondAlertMajor);
     expect(banner.find(Icon).prop('color')).toBe('redDark');
     expect(banner.find('div').first().prop('role')).toBe('alert');
   });
@@ -228,7 +228,7 @@ describe('<Banner />', () => {
         'Banner has a critical status',
         'critical',
         'critical',
-        CircleDisabledMajor,
+        DiamondAlertMajor,
       ],
     ])(
       'Sets Icon props when: %s',
