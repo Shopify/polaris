@@ -106,7 +106,7 @@ Use when a thumbnail is a major focal point. Avoid this size in lists of like it
 
 ### Thumbnail with component source
 
-Use when a thumbnail uses a component inside of it.
+Use to render an icon inside of thumbnail.
 
 ```jsx
 <Thumbnail source={NoteMinor} size="large" alt="Small document" />
