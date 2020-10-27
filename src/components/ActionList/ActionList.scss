@@ -101,22 +101,6 @@ $active-indicator-width: rem(3px);
     transform: translateX(-100%);
   }
 
-  // Active, hovered, focused (:active:hover:focus)
-  // stylelint-disable-next-line selector-max-specificity
-  &:active:hover:focus {
-    box-shadow: none;
-  }
-
-  // Hovered, focused (:hover:focus)
-  &:hover:focus {
-    box-shadow: none;
-  }
-
-  // Focused (:focus)
-  &:focus {
-    box-shadow: none;
-  }
-
   @include focus-ring;
 
   &:focus:not(:active) {
@@ -139,23 +123,6 @@ $active-indicator-width: rem(3px);
   &.destructive.active,
   &.destructive:active {
     background-color: var(--p-surface-critical-subdued-pressed);
-  }
-
-  // Destructive, active, hovered, focused (.destructive:active:hover:focus)
-  // stylelint-disable-next-line selector-max-specificity
-  &.destructive:active:hover:focus {
-    box-shadow: none;
-  }
-
-  // Destructive, hovered, focused (.destructive:hover:focus)
-  // stylelint-disable-next-line selector-max-specificity
-  &.destructive:hover:focus {
-    box-shadow: none;
-  }
-
-  // Destructive, focused (.destructive:focus)
-  &.destructive:focus {
-    box-shadow: none;
   }
 
   // Disabled (.disabled)
