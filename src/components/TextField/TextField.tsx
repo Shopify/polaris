@@ -18,7 +18,7 @@ import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
 
-import {Resizer, Spinner} from './components';
+import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
 
 type Type =
@@ -315,15 +315,15 @@ export function TextField({
     clearTimeout(buttonPressTimer.current);
   }, []);
 
-  const handleButtonPress = useCallback(
-    (onChange: Function) => {
+  const handleButtonPress: SpinnerProps['onMouseDown'] = useCallback(
+    (onChange) => {
       const minInterval = 50;
       const decrementBy = 10;
       let interval = 200;
 
       const onChangeInterval = () => {
         if (interval > minInterval) interval -= decrementBy;
-        onChange();
+        onChange(0);
         buttonPressTimer.current = window.setTimeout(
           onChangeInterval,
           interval,

@@ -4,6 +4,9 @@
     "baseUrl": "./src",
     "rootDir": "./",
     "noEmit": true,
+    "incremental": true,
+    "outDir": "dist/types/latest",
+    "declarationMap": false,
     "isolatedModules": true,
     "importsNotUsedAsValues": "error",
     "strictFunctionTypes": false

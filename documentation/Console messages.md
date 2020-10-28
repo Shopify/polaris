@@ -7,7 +7,7 @@ A console message provides developers with information that helps with debugging
 It’s important to write console messages consistently and succinctly so it’s easy for developers to scan and understand quickly. To do this, follow this general content formula (fill in the blanks):
 
 ```js
-console.[type]('[prefix] message [url]');
+console.type('[prefix] message [url]');
 ```
 
 Pro tip: Always mention the affected component.
