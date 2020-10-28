@@ -20,15 +20,7 @@ export const UnstyledLink = memo(
     const i18n = useI18n();
     const LinkComponent = useLink();
     if (LinkComponent) {
-      return (
-        <LinkComponent
-          {...unstyled.props}
-          {...props}
-          newWindowHint={i18n.translate(
-            'Polaris.Common.newWindowAccessibilityHint',
-          )}
-        />
-      );
+      return <LinkComponent {...unstyled.props} {...props} />;
     }
 
     const {children, external, url, ...rest} = props;
