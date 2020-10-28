@@ -519,3 +519,7 @@ $secondary-item-font-size: rem(15px);
   height: rem(10px);
   width: rem(10px);
 }
+// stylelint-disable-next-line selector-max-combinators, selector-max-class
+.Navigation-newDesignLanguage .SecondaryNavigation-noIcon .Item {
+  padding-left: spacing();
+}
