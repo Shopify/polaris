@@ -33,6 +33,7 @@ export function Actions({actions = [], groups = []}: Props) {
   const menuGroupWidthRef = useRef<number>(0);
   const actionWidthsRef = useRef<number[]>([]);
   const availableWidthRef = useRef<number>(0);
+  const windowWidthRef = useRef<number>(0);
   const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
     undefined,
   );
@@ -104,7 +105,15 @@ export function Actions({actions = [], groups = []}: Props) {
     () =>
       debounce(
         () => {
-          if (!newDesignLanguage || !actionsLayoutRef.current) return;
+          if (
+            !newDesignLanguage ||
+            !actionsLayoutRef.current ||
+            (typeof window !== 'undefined' &&
+              windowWidthRef.current === window.innerWidth)
+          )
+            return;
+
+          windowWidthRef.current = window.innerWidth;
           availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
           measureActions();
         },
@@ -118,7 +127,7 @@ export function Actions({actions = [], groups = []}: Props) {
     if (!actionsLayoutRef.current) {
       return;
     }
-
+    windowWidthRef.current = window.innerWidth;
     availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
     measureActions();
   }, [measureActions]);
