@@ -24,7 +24,7 @@ interface Props {
   groups?: MenuGroupDescriptor[];
 }
 
-const ACTION_SPACING = 4;
+const ACTION_SPACING = 8;
 
 export function Actions({actions = [], groups = []}: Props) {
   const i18n = useI18n();
