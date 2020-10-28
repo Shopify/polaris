@@ -521,5 +521,5 @@ $secondary-item-font-size: rem(15px);
 }
 // stylelint-disable-next-line selector-max-combinators, selector-max-class
 .Navigation-newDesignLanguage .SecondaryNavigation-noIcon .Item {
-  padding-left: spacing();
+  padding-left: spacing(tight) + spacing(extra-tight);
 }
