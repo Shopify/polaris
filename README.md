@@ -1,6 +1,6 @@
 # [Polaris React](https://polaris.shopify.com/)
 
-[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) [![Travis build status](https://travis-ci.com/Shopify/polaris-react.svg?branch=master)](https://travis-ci.com/Shopify/polaris-react) [![codecov](https://codecov.io/gh/Shopify/polaris-react/branch/master/graph/badge.svg?token=IKyeKcpRs1)](https://codecov.io/gh/Shopify/polaris-react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md#your-first-pull-request)
+[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) ![Continuous integration](https://github.com/shopify/polaris-react/workflows/Continuous%20integration/badge.svg) [![codecov](https://codecov.io/gh/Shopify/polaris-react/branch/master/graph/badge.svg?token=IKyeKcpRs1)](https://codecov.io/gh/Shopify/polaris-react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md#your-first-pull-request)
 
 Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
 

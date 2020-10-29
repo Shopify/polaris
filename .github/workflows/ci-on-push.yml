@@ -1,0 +1,71 @@
+name: Continuous integration
+
+on: push
+
+jobs:
+  test_lint_deploy:
+    name: 'Test, lint and deploy'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - uses: actions/cache@v2
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+    - run: yarn --prefer-offline
+    - run: yarn run type-check && yarn run build
+    - run: yarn run lint
+    - run: yarn run check:custom-properties
+    - run: yarn run test --coverage && yarn run codecov
+    - run: node ./scripts/build-shrink-ray.js
+    - env:
+        CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
+      run: yarn run chromatic publish --build-script-name='storybook:build'
+
+  a11y_tests:
+    name: 'Accessibility Tests'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - uses: actions/cache@v2
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+    - run: yarn --prefer-offline
+    - env:
+        STORYBOOK_DISABLE_DOCS: 1
+      run: |
+        yarn run storybook:build --quiet
+        node ./scripts/accessibility-check.js
+
+  visual_regression:
+    name: 'Visual regression test'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - uses: actions/cache@v2
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+    - run: yarn --prefer-offline
+    - env:
+        PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+      run: yarn run storybook:build --quiet && yarn run percy-storybook --build_dir=build/storybook/static

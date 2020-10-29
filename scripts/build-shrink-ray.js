@@ -8,16 +8,20 @@ process.on('unhandledRejection', (reason) => {
   throw reason;
 });
 
+const githubUrl = process.env.GITHUB_SERVER_URL;
+const githubRepo = process.env.GITHUB_REPOSITORY;
+const runId = process.env.GITHUB_RUN_ID;
+
 startShrinkRayBuild({
   masterBranchName: 'master',
   repo: 'polaris-react',
-  sha: process.env.TRAVIS_COMMIT,
+  sha: process.env.GITHUB_SHA,
   reportPath: resolve(
     __dirname,
     '..',
     'build/storybook/bundle-analysis/report.html',
   ),
-  buildUrl: process.env.TRAVIS_JOB_WEB_URL,
+  buildUrl: `${githubUrl}/${githubRepo}/runs/${runId}`,
   skip: [Check.Entrypoints],
 });
 
