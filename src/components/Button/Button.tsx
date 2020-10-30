@@ -69,6 +69,7 @@ type ActionButtonProps = Pick<
   | 'submit'
   | 'disabled'
   | 'loading'
+  | 'role'
   | 'ariaControls'
   | 'ariaExpanded'
   | 'ariaPressed'
@@ -90,6 +91,7 @@ export function Button({
   loading,
   pressed,
   accessibilityLabel,
+  role,
   ariaControls,
   ariaExpanded,
   ariaPressed,
@@ -285,6 +287,7 @@ export function Button({
     submit,
     disabled: isDisabled,
     loading,
+    role,
     ariaControls,
     ariaExpanded,
     ariaPressed: ariaPressedStatus,

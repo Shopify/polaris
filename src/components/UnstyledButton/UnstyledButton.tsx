@@ -24,6 +24,7 @@ export function UnstyledButton({
   loading,
   pressed,
   accessibilityLabel,
+  role,
   ariaControls,
   ariaExpanded,
   ariaPressed,
@@ -88,7 +89,7 @@ export function UnstyledButton({
         {...interactiveProps}
         type={submit ? 'submit' : 'button'}
         disabled={disabled}
-        role={loading ? 'alert' : undefined}
+        role={loading ? 'alert' : role}
         aria-busy={loading ? true : undefined}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}

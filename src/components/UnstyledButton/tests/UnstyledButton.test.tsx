@@ -212,7 +212,15 @@ describe('<Button />', () => {
 
     it('sets aria-busy on the button', () => {
       const button = mountWithAppProvider(<UnstyledButton loading />);
-      expect(button.find('button').prop('aria-busy')).toBeTruthy();
+      expect(button.find('button').prop('aria-busy')).toBe(true);
+    });
+
+    it('does not pass any aria state when `url`', () => {
+      const button = mountWithAppProvider(
+        <UnstyledButton url="https://google.com" loading />,
+      );
+      expect(button.find(UnstyledLink).prop('role')).toBeUndefined();
+      expect(button.find(UnstyledLink).prop('aria-busy')).toBeUndefined();
     });
   });
 
@@ -252,6 +260,34 @@ describe('<Button />', () => {
           .findWhere((node) => node.prop('href') === undefined)
           .prop('aria-label'),
       ).toBe(accessibilityLabel);
+    });
+  });
+
+  describe('role', () => {
+    const mockRole = 'menuitem';
+
+    it('is `undefined` by default', () => {
+      const button = mountWithAppProvider(<UnstyledButton />);
+      expect(button.find('button').prop('role')).toBeUndefined();
+    });
+
+    it('passes to button when `loading` is `false`', () => {
+      const button = mountWithAppProvider(<UnstyledButton role={mockRole} />);
+      expect(button.find('button').prop('role')).toBe(mockRole);
+    });
+
+    it('forgoes custom `role` in favour of `loading`', () => {
+      const button = mountWithAppProvider(
+        <UnstyledButton role={mockRole} loading />,
+      );
+      expect(button.find('button').prop('role')).toBe('alert');
+    });
+
+    it('does not pass when `url`', () => {
+      const button = mountWithAppProvider(
+        <UnstyledButton role={mockRole} url="https://google.com" />,
+      );
+      expect(button.find(UnstyledLink).prop('role')).toBeUndefined();
     });
   });
 
