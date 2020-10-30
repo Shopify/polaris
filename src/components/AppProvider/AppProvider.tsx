@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import type {ThemeConfig} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
+import {ClickTrackerProvider} from '../ClickTrackerProvider';
 import {FocusManager} from '../FocusManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
 import {
@@ -102,12 +103,14 @@ export class AppProvider extends Component<AppProviderProps, State> {
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
                   <ThemeProvider theme={theme}>
-                    <MediaQueryProvider>
-                      <PortalsManagerProvider>
-                        <FocusManager>{children}</FocusManager>
-                        <PortalsContainer />
-                      </PortalsManagerProvider>
-                    </MediaQueryProvider>
+                    <ClickTrackerProvider>
+                      <MediaQueryProvider>
+                        <PortalsManagerProvider>
+                          <FocusManager>{children}</FocusManager>
+                          <PortalsContainer />
+                        </PortalsManagerProvider>
+                      </MediaQueryProvider>
+                    </ClickTrackerProvider>
                   </ThemeProvider>
                 </LinkContext.Provider>
               </UniqueIdFactoryContext.Provider>
