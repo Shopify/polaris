@@ -19,6 +19,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Fixed `SkeletonPage` to make the title font size consistent with the `Page` component ([#3449](https://github.com/Shopify/polaris-react/pull/3449))
 - Removed `Navigation.Item` color change when focused ([#3562](https://github.com/Shopify/polaris-react/pull/3562))
+- Adds monochrome styling to `connectedDisclosure` prop on `Button` component and fix spacing issue ([#3588](https://github.com/Shopify/polaris-react/pull/3588)
 
 ### Documentation
 

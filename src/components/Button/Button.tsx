@@ -222,6 +222,7 @@ export function Button({
       connectedDisclosure.disabled && styles.disabled,
       styles.iconOnly,
       styles.ConnectedDisclosure,
+      monochrome && styles.monochrome,
       newDesignLanguage && styles.newDesignLanguage,
     );
 
