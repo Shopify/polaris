@@ -901,6 +901,7 @@ describe('<TextField />', () => {
           onChange={noop}
           multiline={false}
           ariaOwns="Aria owns"
+          ariaExpanded
           ariaActiveDescendant="Aria active descendant"
           ariaAutocomplete="Aria autocomplete"
           ariaControls="Aria controls"
@@ -908,6 +909,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField.find('input').prop('aria-owns')).toBe('Aria owns');
+      expect(textField.find('input').prop('aria-expanded')).toBe(true);
       expect(textField.find('input').prop('aria-activedescendant')).toBe(
         'Aria active descendant',
       );
