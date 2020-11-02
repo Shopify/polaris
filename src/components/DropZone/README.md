@@ -104,7 +104,7 @@ function DropZoneExample() {
             source={
               validImageTypes.indexOf(file.type) > 0
                 ? window.URL.createObjectURL(file)
-                : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+                : NoteMinor
             }
           />
           <div>
@@ -222,7 +222,7 @@ function DropZoneExample() {
         source={
           validImageTypes.indexOf(file.type) > 0
             ? window.URL.createObjectURL(file)
-            : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+            : NoteMinor
         }
       />
       <div>
@@ -266,7 +266,7 @@ function DropZoneWithDropOnPageExample() {
             source={
               validImageTypes.indexOf(file.type) > 0
                 ? window.URL.createObjectURL(file)
-                : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+                : NoteMinor
             }
           />
           <div>
@@ -392,7 +392,7 @@ function NestedDropZoneExample() {
             source={
               validImageTypes.indexOf(file.type) > 0
                 ? window.URL.createObjectURL(file)
-                : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+                : NoteMinor
             }
           />
           <div>
@@ -471,7 +471,7 @@ function DropZoneWithCustomFileDialogExample() {
             source={
               validImageTypes.indexOf(file.type) > 0
                 ? window.URL.createObjectURL(file)
-                : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+                : NoteMinor
             }
           />
           <div>
