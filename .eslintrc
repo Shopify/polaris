@@ -38,6 +38,7 @@
     "@shopify/jsx-prefer-fragment-wrappers": "off",
     "@shopify/no-ancestor-directory-import": "error",
     "@shopify/react-prefer-private-members": "off",
+    "@typescript-eslint/array-type": ["error", {"defaultOption": "array"}],
     "jsx-a11y/label-has-for": [
       2,
       {

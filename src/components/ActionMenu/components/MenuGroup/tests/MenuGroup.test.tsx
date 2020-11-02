@@ -21,13 +21,6 @@ describe('<MenuGroup />', () => {
   };
 
   describe('<MenuAction />', () => {
-    it('does not render <MenuGroup /> when no actions are passed', () => {
-      const wrapper = mountWithAppProvider(
-        <MenuGroup {...mockProps} actions={[]} />,
-      );
-      expect(wrapper.find(MenuAction)).toHaveLength(0);
-    });
-
     it('passes `title` as the `content` for the <Popover /> activator', () => {
       const mockTitle = 'mock title';
       const wrapper = mountWithAppProvider(

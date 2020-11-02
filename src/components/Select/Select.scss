@@ -86,6 +86,10 @@ $stacking-order: (
   text-overflow: ellipsis;
 }
 
+.Prefix {
+  padding-right: spacing('tight');
+}
+
 .Icon {
   @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
 }
@@ -155,7 +159,7 @@ $stacking-order: (
     right: 0;
     bottom: 0;
     left: 0;
-    border: border-width() solid var(--p-border-neutral-subdued);
+    border: border-width() solid var(--p-border-subdued);
     border-bottom-color: var(--p-border-shadow-subdued);
     border-radius: var(--p-border-radius-base);
     background-color: var(--p-surface);

@@ -3,6 +3,7 @@
 $action-text-spacing: rem(24px);
 $primary-action-button-height: rem(36px);
 $primary-action-button-width: rem(100px);
+$skeleton-display-text-max-width: rem(120px);
 
 .Page {
   @include page-layout;
@@ -46,6 +47,23 @@ $primary-action-button-width: rem(100px);
 
 .Title {
   flex: 1 1 0%;
+}
+
+.newDesignLanguageTitle {
+  @include text-emphasis-strong;
+  font-size: rem(24px);
+  line-height: rem(28px);
+
+  @include when-typography-not-condensed {
+    font-size: rem(20px);
+  }
+}
+
+.newDesignLanguageSkeletonTitle {
+  @include skeleton-shimmer;
+  @include skeleton-content;
+  max-width: $skeleton-display-text-max-width;
+  height: rem(28px);
 }
 
 .PrimaryAction {

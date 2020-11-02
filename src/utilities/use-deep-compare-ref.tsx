@@ -1,7 +1,7 @@
 import {useRef} from 'react';
 import isEqual from 'lodash/isEqual';
 
-type DependencyList = ReadonlyArray<unknown>;
+type DependencyList = readonly unknown[];
 type Comparator = (a: DependencyList, b: DependencyList) => boolean;
 
 /**

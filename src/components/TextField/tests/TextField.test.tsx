@@ -704,6 +704,20 @@ describe('<TextField />', () => {
         expect(element.find(Spinner)).toHaveLength(0);
       });
 
+      it('removes spinner buttons when type is number and step is 0', () => {
+        const spy = jest.fn();
+        const element = mountWithAppProvider(
+          <TextField
+            id="MyNumberField"
+            label="NumberField"
+            type="number"
+            step={0}
+            onChange={spy}
+          />,
+        );
+        expect(element.find(Spinner)).toHaveLength(0);
+      });
+
       it('increments by step when value, step, or both are float numbers', () => {
         const spy = jest.fn();
         const element = mountWithAppProvider(
@@ -887,6 +901,7 @@ describe('<TextField />', () => {
           onChange={noop}
           multiline={false}
           ariaOwns="Aria owns"
+          ariaExpanded
           ariaActiveDescendant="Aria active descendant"
           ariaAutocomplete="Aria autocomplete"
           ariaControls="Aria controls"
@@ -894,6 +909,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField.find('input').prop('aria-owns')).toBe('Aria owns');
+      expect(textField.find('input').prop('aria-expanded')).toBe(true);
       expect(textField.find('input').prop('aria-activedescendant')).toBe(
         'Aria active descendant',
       );

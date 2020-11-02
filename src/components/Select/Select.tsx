@@ -17,6 +17,8 @@ interface StrictOption {
   label: string;
   /** Option will be visible, but not selectable */
   disabled?: boolean;
+  /** Element to display to the left of the option label. Does not show in the dropdown. */
+  prefix?: React.ReactNode;
 }
 
 interface HideableStrictOption extends StrictOption {
@@ -133,10 +135,15 @@ export function Select({
 
   const selectedOption = getSelectedOption(normalizedOptions, value);
 
+  const prefixMarkup = selectedOption.prefix && (
+    <div className={styles.Prefix}>{selectedOption.prefix}</div>
+  );
+
   const contentMarkup = (
     <div className={styles.Content} aria-hidden aria-disabled={disabled}>
       {inlineLabelMarkup}
-      <span className={styles.SelectedOption}>{selectedOption}</span>
+      {prefixMarkup}
+      <span className={styles.SelectedOption}>{selectedOption.label}</span>
       <span className={styles.Icon}>
         <Icon source={SelectMinor} />
       </span>
@@ -223,7 +230,7 @@ function normalizeOption(
 function getSelectedOption(
   options: (HideableStrictOption | StrictGroup)[],
   value: string,
-): string {
+): HideableStrictOption {
   const flatOptions = flattenOptions(options);
   let selectedOption = flatOptions.find((option) => value === option.value);
 
@@ -232,7 +239,7 @@ function getSelectedOption(
     selectedOption = flatOptions.find((option) => !option.hidden);
   }
 
-  return selectedOption ? selectedOption.label : '';
+  return selectedOption || {value: '', label: ''};
 }
 
 /**
@@ -255,7 +262,7 @@ function flattenOptions(
 }
 
 function renderSingleOption(option: HideableStrictOption): React.ReactNode {
-  const {value, label, ...rest} = option;
+  const {value, label, prefix: _prefix, ...rest} = option;
   return (
     <option key={value} value={value} {...rest}>
       {label}

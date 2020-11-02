@@ -1,6 +1,9 @@
 @import '../../../../styles/common';
 
 $mobile-layout: 468px;
+$button-style-breakpoint: 768px;
+$medium-layout: 860px;
+$desktop-layout: 1080px;
 $individual-action-padding-x: (1.5 * spacing(tight));
 $action-menu-rollup-computed-width: rem(40px);
 
@@ -20,13 +23,13 @@ $action-menu-rollup-computed-width: rem(40px);
 
 .TitleWrapper {
   .newDesignLanguage & {
+    grid-area: title;
     margin-top: spacing(extra-tight);
     align-self: center;
-    flex-basis: 100%;
+    flex: 1 1 auto;
 
     @include breakpoint-after($mobile-layout) {
       margin-top: 0;
-      flex-basis: auto;
     }
   }
 }
@@ -53,8 +56,12 @@ $action-menu-rollup-computed-width: rem(40px);
   max-width: 100%;
 
   &.newDesignLanguage {
+    grid-area: breadcrumbs;
+    flex: 0 0 auto;
     margin-right: spacing();
   }
+
+  @include print-hidden;
 }
 
 .PaginationWrapper {
@@ -63,6 +70,8 @@ $action-menu-rollup-computed-width: rem(40px);
   line-height: 1;
 
   .newDesignLanguage & {
+    display: flex;
+    justify-content: flex-end;
     margin-left: spacing(extra-tight);
     // stylelint-disable-next-line selector-max-combinators
     button {
@@ -76,6 +85,8 @@ $action-menu-rollup-computed-width: rem(40px);
       }
     }
   }
+
+  @include print-hidden;
 }
 
 .AdditionalNavigationWrapper {
@@ -87,6 +98,12 @@ $action-menu-rollup-computed-width: rem(40px);
   @include page-content-when-not-fully-condensed {
     margin: 0 spacing(extra-loose);
   }
+
+  .newDesignLanguage & {
+    margin-right: 0;
+  }
+
+  @include print-hidden;
 }
 
 ///
@@ -119,8 +136,12 @@ $action-menu-rollup-computed-width: rem(40px);
   }
 
   .newDesignLanguage & {
-    margin-left: spacing(extra-tight);
     margin-top: 0;
+    margin-left: spacing(extra-tight);
+
+    @include breakpoint-after($button-style-breakpoint) {
+      margin-left: spacing();
+    }
   }
 
   @include print-hidden;
@@ -157,10 +178,6 @@ $action-menu-rollup-computed-width: rem(40px);
   display: flex;
   justify-content: space-between;
 
-  .newDesignLanguage & {
-    position: relative;
-  }
-
   + .Row {
     margin-top: spacing();
     // stylelint-disable-next-line selector-max-combinators, selector-max-class
@@ -179,20 +196,6 @@ $action-menu-rollup-computed-width: rem(40px);
   display: flex;
   align-content: flex-start;
   align-items: center;
-
-  .newDesignLanguage & {
-    align-items: flex-start;
-    flex: 1 1 auto;
-    flex-wrap: wrap;
-
-    @include breakpoint-after(468px) {
-      flex-wrap: nowrap;
-    }
-
-    @include breakpoint-after(layout-width(page-with-nav)) {
-      flex-basis: 50%;
-    }
-  }
 }
 
 .RightAlign {
@@ -200,21 +203,23 @@ $action-menu-rollup-computed-width: rem(40px);
   align-content: flex-end;
   align-items: center;
   margin-left: spacing(tight);
-
-  .newDesignLanguage & {
-    position: absolute;
-    top: 0;
-    right: 0;
-    flex: 0 1 auto;
+}
+// Single row styles for new design language
+.RowCondensed {
+  .RightAlign {
+    grid-area: actions;
+    flex: 1 1 auto;
     align-items: flex-start;
     justify-content: flex-end;
+    margin-left: spacing();
+    // Necessary for flex to realize this container doesn't want to wrap
+    white-space: nowrap;
 
-    @include breakpoint-after($mobile-layout) {
-      position: static;
-    }
-
-    @include breakpoint-after(layout-width(page-with-nav)) {
-      flex-basis: 50%;
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators
+    .noBreadcrumbs & {
+      @include breakpoint-before($mobile-layout) {
+        margin-left: 0;
+      }
     }
   }
 }
@@ -225,15 +230,66 @@ $action-menu-rollup-computed-width: rem(40px);
       margin-left: spacing(loose) * 2 + spacing(tight) + spacing(extra-tight);
     }
   }
+  // stylelint-disable-next-line selector-max-class
+  .noBreadcrumbs.newDesignLanguage & {
+    margin-left: 0;
+  }
+
+  @include when-printing {
+    // stylelint-disable-next-line declaration-no-important
+    margin-left: 0 !important;
+  }
 }
 
 .Actions {
   width: 100%;
   display: flex;
-  flex-wrap: nowrap;
   justify-content: flex-end;
+  text-align: right;
+}
 
-  > :first-child {
-    flex: 1;
+@mixin condensed-layout {
+  .AdditionalMetaData {
+    margin-left: 0;
   }
+
+  .RowCondensed {
+    display: grid;
+    gap: spacing(tight) spacing();
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 'breadcrumbs actions' 'title title';
+  }
+}
+
+.longTitle {
+  @include breakpoint-before($desktop-layout) {
+    @include condensed-layout;
+  }
+}
+
+.mediumTitle:not(.noBreadcrumbs) {
+  @include breakpoint-before($medium-layout) {
+    @include condensed-layout;
+  }
+}
+.mediumTitle.noBreadcrumbs {
+  // stylelint-disable-next-line selector-max-class
+  .TitleWrapper {
+    margin-top: 0;
+  }
+  // stylelint-disable-next-line selector-max-class
+  .RightAlign {
+    margin-bottom: spacing(extra-tight);
+  }
+  // stylelint-disable-next-line selector-max-class
+  .RowCondensed {
+    flex-wrap: wrap-reverse;
+    @include breakpoint-after(layout-width(page-with-nav)) {
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+.isSingleRow .RowCondensed {
+  gap: 0;
 }

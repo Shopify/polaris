@@ -11,7 +11,7 @@ import {
   CircleTickMajor,
   CircleInformationMajor,
   CircleAlertMajor,
-  CircleDisabledMajor,
+  DiamondAlertMajor,
 } from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
@@ -27,6 +27,7 @@ import type {
 import {Button, buttonFrom} from '../Button';
 import {Heading} from '../Heading';
 import {ButtonGroup} from '../ButtonGroup';
+import {UnstyledButton, unstyledButtonFrom} from '../UnstyledButton';
 import {UnstyledLink} from '../UnstyledLink';
 import {Icon} from '../Icon';
 import {WithinContentContext} from '../../utilities/within-content-context';
@@ -104,17 +105,40 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     );
   }
 
-  const actionMarkup = action && (
-    <div className={styles.Actions}>
-      <ButtonGroup>
-        <div className={styles.PrimaryAction}>
-          {buttonFrom(action, {outline: true, size: buttonSizeValue})}
-        </div>
+  let actionMarkup;
+  if (action) {
+    if (newDesignLanguage) {
+      actionMarkup = (
+        <div className={styles.Actions}>
+          <ButtonGroup>
+            <div className={styles.PrimaryAction}>
+              {unstyledButtonFrom(action, {
+                className: styles.Button,
+              })}
+            </div>
 
-        {secondaryAction && <SecondaryActionFrom action={secondaryAction} />}
-      </ButtonGroup>
-    </div>
-  );
+            {secondaryAction && (
+              <SecondaryActionFrom action={secondaryAction} />
+            )}
+          </ButtonGroup>
+        </div>
+      );
+    } else {
+      actionMarkup = (
+        <div className={styles.Actions}>
+          <ButtonGroup>
+            <div className={styles.PrimaryAction}>
+              {buttonFrom(action, {outline: true, size: buttonSizeValue})}
+            </div>
+
+            {secondaryAction && (
+              <SecondaryActionFrom action={secondaryAction} />
+            )}
+          </ButtonGroup>
+        </div>
+      );
+    }
+  }
 
   let contentMarkup: React.ReactNode = null;
   let contentID: string | undefined;
@@ -188,9 +212,12 @@ function SecondaryActionFrom({action}: {action: Action}) {
   }
 
   return (
-    <button className={styles.SecondaryAction} onClick={action.onAction}>
+    <UnstyledButton
+      className={styles.SecondaryAction}
+      onClick={action.onAction}
+    >
       <span className={styles.Text}>{action.content}</span>
-    </button>
+    </UnstyledButton>
   );
 }
 
@@ -228,7 +255,7 @@ function useBannerAttributes(
 
     case 'critical':
       return {
-        defaultIcon: CircleDisabledMajor,
+        defaultIcon: DiamondAlertMajor,
         iconColor: newDesignLanguage ? 'critical' : 'redDark',
         ariaRoleType: 'alert',
       };

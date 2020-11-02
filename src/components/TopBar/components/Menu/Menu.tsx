@@ -1,5 +1,6 @@
 import React from 'react';
 
+import type {InversableColorScheme} from '../../../ThemeProvider';
 import {ActionList, ActionListProps} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 
@@ -19,10 +20,22 @@ export interface MenuProps {
   onOpen(): void;
   /** A callback function to handle closing the menu popover */
   onClose(): void;
+  /** A callback function to handle closing the menu popover */
+  onClose(): void;
+  /** Accepts a color scheme for the contents of the menu */
+  colorScheme?: InversableColorScheme;
 }
 
 export function Menu(props: MenuProps) {
-  const {actions, onOpen, onClose, open, activatorContent, message} = props;
+  const {
+    actions,
+    onOpen,
+    onClose,
+    open,
+    activatorContent,
+    message,
+    colorScheme,
+  } = props;
 
   const badgeProps = message &&
     message.badge && {
@@ -58,6 +71,7 @@ export function Menu(props: MenuProps) {
       fixed
       fullHeight={isFullHeight}
       preferredAlignment="right"
+      colorScheme={colorScheme}
     >
       <ActionList onActionAnyItem={onClose} sections={actions} />
       {messageMarkup}

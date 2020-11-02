@@ -292,6 +292,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Więcej czynności"
     }
   }
 }
