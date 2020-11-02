@@ -205,9 +205,17 @@ describe('<Button />', () => {
   });
 
   describe('loading', () => {
-    it('sets an alert role on the button', () => {
+    it('sets `role="alert"` on the button', () => {
       const button = mountWithAppProvider(<UnstyledButton loading />);
       expect(button.find('button').prop('role')).toBe('alert');
+    });
+
+    it('adds `alert` to an existing `role`', () => {
+      const mockRole = 'menuitem link';
+      const button = mountWithAppProvider(
+        <UnstyledButton role={mockRole} loading />,
+      );
+      expect(button.find('button').prop('role')).toBe('alert menuitem link');
     });
 
     it('sets aria-busy on the button', () => {
@@ -271,16 +279,16 @@ describe('<Button />', () => {
       expect(button.find('button').prop('role')).toBeUndefined();
     });
 
-    it('passes to button when `loading` is `false`', () => {
+    it('passes to button', () => {
       const button = mountWithAppProvider(<UnstyledButton role={mockRole} />);
       expect(button.find('button').prop('role')).toBe(mockRole);
     });
 
-    it('forgoes custom `role` in favour of `loading`', () => {
+    it('does not duplicate `alert` if included in `role` value and `loading`', () => {
       const button = mountWithAppProvider(
-        <UnstyledButton role={mockRole} loading />,
+        <UnstyledButton role="menuitem alert link" loading />,
       );
-      expect(button.find('button').prop('role')).toBe('alert');
+      expect(button.find('button').prop('role')).toBe('alert menuitem link');
     });
 
     it('does not pass when `url`', () => {

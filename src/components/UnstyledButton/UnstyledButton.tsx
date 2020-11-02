@@ -12,6 +12,8 @@ export interface UnstyledButtonProps extends BaseButton {
   [key: string]: any;
 }
 
+const ARIA_ROLE_ALERT = 'alert';
+
 export function UnstyledButton({
   id,
   children,
@@ -51,6 +53,9 @@ export function UnstyledButton({
   const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
 
   let buttonMarkup;
+  const buttonRole = loading
+    ? [...new Set([ARIA_ROLE_ALERT, ...(role?.split(' ') || [])])].join(' ')
+    : role;
 
   const commonProps = {
     id,
@@ -89,7 +94,7 @@ export function UnstyledButton({
         {...interactiveProps}
         type={submit ? 'submit' : 'button'}
         disabled={disabled}
-        role={loading ? 'alert' : role}
+        role={buttonRole}
         aria-busy={loading ? true : undefined}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
