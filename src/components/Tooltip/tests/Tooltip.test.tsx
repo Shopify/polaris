@@ -1,10 +1,12 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Link} from 'components';
 
 import {Tooltip} from '../Tooltip';
 import {TooltipOverlay} from '../components';
+import {Key} from '../../../types';
 
 describe('<Tooltip />', () => {
   const tooltip = mountWithAppProvider(
@@ -63,5 +65,22 @@ describe('<Tooltip />', () => {
   it('unrenders its children on mouseLeave', () => {
     wrapperComponent.simulate('mouseLeave');
     expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(false);
+  });
+
+  it('closes itself when escapse is press on keyup', () => {
+    const tooltip = mountWithApp(
+      <Tooltip active content="This order has shipping labels.">
+        <div>Order #1001</div>
+      </Tooltip>,
+    );
+
+    (tooltip.children[0] as {
+      trigger(val: 'onKeyUp', values: {keyCode: Key}): void;
+    }).trigger('onKeyUp', {
+      keyCode: Key.Escape,
+    });
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: false,
+    });
   });
 });
