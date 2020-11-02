@@ -150,7 +150,7 @@ export type {KeypressListenerProps} from './KeypressListener';
 export {KonamiCode} from './KonamiCode';
 export type {KonamiCodeProps} from './KonamiCode';
 
-export {Label} from './Label';
+export {Label, labelID} from './Label';
 export type {LabelProps} from './Label';
 
 export {Labelled} from './Labelled';
