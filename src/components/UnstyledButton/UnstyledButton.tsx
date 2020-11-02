@@ -53,9 +53,6 @@ export function UnstyledButton({
   const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
 
   let buttonMarkup;
-  const buttonRole = loading
-    ? [...new Set([ARIA_ROLE_ALERT, ...(role?.split(' ') || [])])].join(' ')
-    : role;
 
   const commonProps = {
     id,
@@ -64,6 +61,9 @@ export function UnstyledButton({
   };
   const interactiveProps = {
     ...commonProps,
+    role: loading
+      ? [...new Set([ARIA_ROLE_ALERT, ...(role?.split(' ') || [])])].join(' ')
+      : role,
     onClick,
     onFocus,
     onBlur,
@@ -94,7 +94,6 @@ export function UnstyledButton({
         {...interactiveProps}
         type={submit ? 'submit' : 'button'}
         disabled={disabled}
-        role={buttonRole}
         aria-busy={loading ? true : undefined}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
