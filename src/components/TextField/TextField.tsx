@@ -111,6 +111,8 @@ interface NonMutuallyExclusiveProps {
   spellCheck?: boolean;
   /** Indicates the id of a component owned by the input */
   ariaOwns?: string;
+  /** Indicates whether or not a Popover is displayed */
+  ariaExpanded?: boolean;
   /** Indicates the id of a component controlled by the input */
   ariaControls?: string;
   /** Indicates the id of a related component’s visually focused element to the input */
@@ -171,6 +173,7 @@ export function TextField({
   spellCheck,
   ariaOwns,
   ariaControls,
+  ariaExpanded,
   ariaActiveDescendant,
   ariaAutocomplete,
   showCharacterCount,
@@ -428,6 +431,7 @@ export function TextField({
     'aria-autocomplete': ariaAutocomplete,
     'aria-controls': ariaControls,
     'aria-multiline': normalizeAriaMultiline(multiline),
+    'aria-expanded': ariaExpanded,
   });
 
   const backdropClassName = classNames(
