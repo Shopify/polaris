@@ -36,16 +36,7 @@ export type Color =
   | 'redDark'
   | 'purple';
 
-const NEW_DESIGN_LANGUAGE_COLORS = [
-  'base',
-  'subdued',
-  'critical',
-  'warning',
-  'highlight',
-  'success',
-  'primary',
-];
-type NewDesignLanguageColor =
+export type NewDesignLanguageColor =
   | 'base'
   | 'subdued'
   | 'critical'
@@ -53,12 +44,6 @@ type NewDesignLanguageColor =
   | 'highlight'
   | 'success'
   | 'primary';
-
-export function isNewDesignLanguageColor(
-  color: Color | NewDesignLanguageColor,
-): color is NewDesignLanguageColor {
-  return NEW_DESIGN_LANGUAGE_COLORS.includes(color as NewDesignLanguageColor);
-}
 
 export type IconSource =
   | React.SFC<React.SVGProps<SVGSVGElement>>
