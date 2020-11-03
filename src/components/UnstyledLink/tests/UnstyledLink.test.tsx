@@ -15,6 +15,16 @@ describe('<UnstyledLink />', () => {
       expect(anchorElement).toHaveLength(1);
     });
 
+    it('converts url prop to href', () => {
+      const CustomLinkComponent = () => <div />;
+      const anchorElement = mountWithAppProvider(
+        <UnstyledLink url="https://shopify.com" />,
+        {link: CustomLinkComponent},
+      ).find(CustomLinkComponent);
+
+      expect(anchorElement.prop('href')).toBe('https://shopify.com');
+    });
+
     it('doesn’t have polaris prop', () => {
       const CustomLinkComponent = () => <div />;
       const anchorElement = mountWithAppProvider(
