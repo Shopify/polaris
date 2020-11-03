@@ -12,8 +12,6 @@ export interface UnstyledButtonProps extends BaseButton {
   [key: string]: any;
 }
 
-const ARIA_ROLE_ALERT = 'alert';
-
 export function UnstyledButton({
   id,
   children,
@@ -61,9 +59,7 @@ export function UnstyledButton({
   };
   const interactiveProps = {
     ...commonProps,
-    role: loading
-      ? [...new Set([ARIA_ROLE_ALERT, ...(role?.split(' ') || [])])].join(' ')
-      : role,
+    role,
     onClick,
     onFocus,
     onBlur,

@@ -52,6 +52,7 @@ interface CommonButtonProps
     ButtonProps,
     | 'id'
     | 'accessibilityLabel'
+    | 'role'
     | 'onClick'
     | 'onFocus'
     | 'onBlur'
@@ -69,7 +70,6 @@ type ActionButtonProps = Pick<
   | 'submit'
   | 'disabled'
   | 'loading'
-  | 'role'
   | 'ariaControls'
   | 'ariaExpanded'
   | 'ariaPressed'
@@ -271,6 +271,7 @@ export function Button({
     id,
     className,
     accessibilityLabel,
+    role,
     onClick,
     onFocus,
     onBlur,
@@ -287,7 +288,6 @@ export function Button({
     submit,
     disabled: isDisabled,
     loading,
-    role,
     ariaControls,
     ariaExpanded,
     ariaPressed: ariaPressedStatus,
