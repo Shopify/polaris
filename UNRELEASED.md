@@ -15,6 +15,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added `disclosureText` to `Tabs` ([#3331](https://github.com/Shopify/polaris-react/pull/3331))
 - Added underline to links on focus and active ([#3335](https://github.com/Shopify/polaris-react/pull/3335))
 - Added `spacing` prop to `ButtonGroup` ([#3308](https://github.com/Shopify/polaris-react/pull/3308))
+- Added a `dismissOnMouseOut` prop to `Tooltip` to dismiss Tooltip once pointer is no longer over children ([#3086](https://github.com/Shopify/polaris-react/pull/3086))
+- Added the ability to hide the clear filter button on the filter component ([#3049](https://github.com/Shopify/polaris-react/pull/3049))
 
 ### Bug fixes
 
