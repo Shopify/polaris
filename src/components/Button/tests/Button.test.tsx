@@ -132,6 +132,14 @@ describe('<Button />', () => {
     });
   });
 
+  describe('role', () => {
+    it('passes prop', () => {
+      const mockRole = 'menuitem';
+      const button = mountWithAppProvider(<Button role={mockRole} />);
+      expect(button.find(UnstyledButton).prop('role')).toBe(mockRole);
+    });
+  });
+
   describe('ariaControls', () => {
     it('passes prop', () => {
       const id = 'mockId';

@@ -8,12 +8,12 @@ describe('<Thumbnail />', () => {
   describe('source', () => {
     it('allows icon for source', () => {
       const thumbnail = mountWithApp(<Thumbnail alt="" source={NoteMajor} />);
-      thumbnail.find(NoteMajor);
+      expect(thumbnail.find(NoteMajor)).toBeTruthy();
     });
 
     it('creates an image tag when a string is provided', () => {
       const thumbnail = mountWithApp(<Thumbnail alt="" source="abc.jpg" />);
-      thumbnail.find('img');
+      expect(thumbnail.find('img')).toBeTruthy();
     });
   });
 });
