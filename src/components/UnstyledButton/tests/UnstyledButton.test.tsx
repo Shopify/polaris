@@ -205,14 +205,16 @@ describe('<Button />', () => {
   });
 
   describe('loading', () => {
-    it('sets an alert role on the button', () => {
-      const button = mountWithAppProvider(<UnstyledButton loading />);
-      expect(button.find('button').prop('role')).toBe('alert');
-    });
-
     it('sets aria-busy on the button', () => {
       const button = mountWithAppProvider(<UnstyledButton loading />);
-      expect(button.find('button').prop('aria-busy')).toBeTruthy();
+      expect(button.find('button').prop('aria-busy')).toBe(true);
+    });
+
+    it('does not set aria-busy when `url`', () => {
+      const button = mountWithAppProvider(
+        <UnstyledButton url="https://google.com" loading />,
+      );
+      expect(button.find(UnstyledLink).prop('aria-busy')).toBeUndefined();
     });
   });
 
@@ -252,6 +254,27 @@ describe('<Button />', () => {
           .findWhere((node) => node.prop('href') === undefined)
           .prop('aria-label'),
       ).toBe(accessibilityLabel);
+    });
+  });
+
+  describe('role', () => {
+    const mockRole = 'menuitem';
+
+    it('is `undefined` by default', () => {
+      const button = mountWithAppProvider(<UnstyledButton />);
+      expect(button.find('button').prop('role')).toBeUndefined();
+    });
+
+    it('passes to button', () => {
+      const button = mountWithAppProvider(<UnstyledButton role={mockRole} />);
+      expect(button.find('button').prop('role')).toBe(mockRole);
+    });
+
+    it('passes to link', () => {
+      const button = mountWithAppProvider(
+        <UnstyledButton role={mockRole} url="https://google.com" />,
+      );
+      expect(button.find(UnstyledLink).prop('role')).toBe(mockRole);
     });
   });
 

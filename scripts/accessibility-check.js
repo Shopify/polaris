@@ -100,8 +100,6 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       'id=all-components-autocomplete--autocomplete-with-lazy-loading&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-autocomplete--autocomplete-with-empty-state': 1,
       'id=all-components-autocomplete--autocomplete-with-empty-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-button--loading-state': 2,
-      'id=all-components-button--loading-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 2,
       'id=all-components-filters--filtering-with-a-resource-list': 1,
       'id=all-components-filters--filtering-with-a-resource-list&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-filters--filtering-with-a-data-table': 1,
