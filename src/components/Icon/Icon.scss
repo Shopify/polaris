@@ -369,6 +369,10 @@
   @include recolor-icon(var(--p-icon));
 }
 
+.colorDisabled {
+  @include recolor-icon(var(--p-icon-disabled));
+}
+
 .colorSubdued {
   @include recolor-icon(var(--p-icon-subdued));
 }

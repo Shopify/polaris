@@ -8,6 +8,7 @@ const NEW_DESIGN_LANGUAGE_COLORS = [
   'highlight',
   'success',
   'primary',
+  'disabled',
 ];
 
 export function isNewDesignLanguageColor(

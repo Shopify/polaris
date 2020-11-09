@@ -43,7 +43,8 @@ export type NewDesignLanguageColor =
   | 'warning'
   | 'highlight'
   | 'success'
-  | 'primary';
+  | 'primary'
+  | 'disabled';
 
 export type IconSource =
   | React.SFC<React.SVGProps<SVGSVGElement>>
