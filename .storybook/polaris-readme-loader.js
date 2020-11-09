@@ -71,6 +71,7 @@ ${example.storyName}.parameters = {
     minHeight: '720px',
     borderBottom: '1px solid #000',
     marginBottom: '8px',
+    padding: '10px',
   }}>
   <Heading>${example.name}</Heading>
   <${example.storyName}Component />
