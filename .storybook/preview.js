@@ -12,7 +12,6 @@ export const parameters = {
     skip: true,
     widths: [375, 1280],
   },
-  layout: 'fullscreen'
 };
 
 function StrictModeToggle({isStrict = false, children}) {
