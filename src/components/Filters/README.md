@@ -933,6 +933,9 @@ function DisableSomeFiltersExample() {
 function Playground() {
   const [taggedWith, setTaggedWith] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
+  const [selected, setSelected] = useState(['hidden']);
+
+  const handleChange = useCallback(value => setSelected(value), []);
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -956,11 +959,22 @@ function Playground() {
       key: 'taggedWith',
       label: 'Tagged with',
       filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleTaggedWithChange}
-          labelHidden
+        // <TextField
+        //   label="Tagged with"
+        //   value={taggedWith}
+        //   onChange={handleTaggedWithChange}
+        //   labelHidden
+        // />
+        <ChoiceList
+          title="Company name"
+          choices={[
+            {label: 'Hidden', value: 'hidden'},
+            {label: 'Optional', value: 'optional'},
+            {label: 'Required', value: 'required'},
+          ]}
+          selected={selected}
+          onChange={handleChange}
+          // allowMultiple
         />
       ),
       shortcut: true,

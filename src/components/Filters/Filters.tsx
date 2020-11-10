@@ -540,9 +540,20 @@ class FiltersInner extends Component<CombinedProps, State> {
 
   private generateFilterMarkup(filter: FilterInterface) {
     const i18n = this.props.i18n;
-    const filterType = filter === undefined ? "" : filter.filter.type.name;
+    const isChoicelist = filter.filter.type.name == "ChoiceList";
+    const hasAllowMultiple = filter.filter.props.allowMultiple;
+    let isClearButtonShown = true;
 
-    const isClearButtonShown = (filterType === "ChoiceList") ? true : false;
+    if (isChoicelist) {
+      if (!hasAllowMultiple) {
+        isClearButtonShown = false;
+      }
+    }
+
+    // choicelist & allowMultiple == true => show clear button
+    // choicelist & allowMultiple == false => don't show clear button 
+    // anything else => show clear button 
+    console.log(isClearButtonShown);
     const removeCallback = this.getAppliedFilterRemoveHandler(filter.key);
     const removeHandler =
       removeCallback == null
