@@ -36,6 +36,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added a `alwaysRenderCustomProperties` to `ThemeProvider` for elements that render outside of the DOM tree to their parent context ([#3652](https://github.com/Shopify/polaris-react/pull/3652))
 - Fixed keyboard interactions for the `Tab` component ([#3650](https://github.com/Shopify/polaris-react/pull/3650))
 - Fixed keyboard interaction when selected Tab was focused and rendering the wrong `::before` colour ([#3669](https://github.com/Shopify/polaris-react/pull/3669))
+- **`ActionList`:** aligns `::before` 'indicator' to edge of container ([#3619](https://github.com/Shopify/polaris-react/pull/3619))
 
 ### Documentation
 
