@@ -24,6 +24,11 @@ interface Props {
   groups?: MenuGroupDescriptor[];
 }
 
+interface MeasuredActions {
+  showable: MenuActionDescriptor[];
+  rolledUp: (MenuActionDescriptor | MenuGroupDescriptor)[];
+}
+
 const ACTION_SPACING = 8;
 
 export function Actions({actions = [], groups = []}: Props) {
@@ -36,12 +41,10 @@ export function Actions({actions = [], groups = []}: Props) {
   const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
     undefined,
   );
-  const [showableActions, setShowableActions] = useState<
-    MenuActionDescriptor[]
-  >([]);
-  const [rolledUpActions, setRolledUpActions] = useState<
-    (MenuActionDescriptor | MenuGroupDescriptor)[]
-  >([]);
+  const [measuredActions, setMeasuredActions] = useState<MeasuredActions>({
+    showable: [],
+    rolledUp: [],
+  });
   const defaultRollupGroup: MenuGroupDescriptor = {
     title: i18n.translate('Polaris.Actions.moreActions'),
     actions: [],
@@ -67,8 +70,7 @@ export function Actions({actions = [], groups = []}: Props) {
     if (
       !newDesignLanguage ||
       actionWidthsRef.current.length === 0 ||
-      availableWidthRef.current === 0 ||
-      (showableActions.length !== 0 && rolledUpActions.length !== 0)
+      availableWidthRef.current === 0
     ) {
       return;
     }
@@ -76,7 +78,7 @@ export function Actions({actions = [], groups = []}: Props) {
     const actionsAndGroups = [...actions, ...groups];
 
     if (actionsAndGroups.length === 1) {
-      setShowableActions(actionsAndGroups);
+      setMeasuredActions({showable: actionsAndGroups, rolledUp: []});
       return;
     }
 
@@ -103,18 +105,11 @@ export function Actions({actions = [], groups = []}: Props) {
         newRolledUpActions = [...newRolledUpActions, action];
       }
     });
-
-    setShowableActions(newShowableActions);
-    setRolledUpActions(newRolledUpActions);
-  }, [
-    actions,
-    groups,
-    lastMenuGroup,
-    lastMenuGroupWidth,
-    newDesignLanguage,
-    rolledUpActions.length,
-    showableActions.length,
-  ]);
+    setMeasuredActions({
+      showable: newShowableActions,
+      rolledUp: newRolledUpActions,
+    });
+  }, [actions, groups, lastMenuGroup, lastMenuGroupWidth, newDesignLanguage]);
 
   const handleResize = useMemo(
     () =>
@@ -122,12 +117,10 @@ export function Actions({actions = [], groups = []}: Props) {
         () => {
           if (!newDesignLanguage || !actionsLayoutRef.current) return;
           availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
-          setShowableActions([]);
-          setRolledUpActions([]);
           measureActions();
         },
-        20,
-        {leading: false, trailing: true, maxWait: 40},
+        50,
+        {leading: false, trailing: true},
       ),
     [newDesignLanguage, measureActions],
   );
@@ -148,8 +141,8 @@ export function Actions({actions = [], groups = []}: Props) {
 
   const actionsMarkup = actions.map((action) => {
     if (
-      (newDesignLanguage && showableActions.length > 0) ||
-      rolledUpActions.includes(action)
+      (newDesignLanguage && measuredActions.showable.length > 0) ||
+      measuredActions.rolledUp.includes(action)
     )
       return null;
 
@@ -175,8 +168,8 @@ export function Actions({actions = [], groups = []}: Props) {
   });
 
   const rollUppableActionsMarkup =
-    showableActions.length > 0
-      ? showableActions.map(
+    measuredActions.showable.length > 0
+      ? measuredActions.showable.map(
           (action) =>
             action.content && (
               <SecondaryAction
@@ -195,7 +188,7 @@ export function Actions({actions = [], groups = []}: Props) {
       return groups.length === 0 && group === defaultRollupGroup
         ? group
         : group === lastMenuGroup ||
-            !rolledUpActions.some(
+            !measuredActions.rolledUp.some(
               (rolledUpGroup) =>
                 isMenuGroup(rolledUpGroup) &&
                 rolledUpGroup.title === group.title,
@@ -203,11 +196,14 @@ export function Actions({actions = [], groups = []}: Props) {
     })
     .map((group) => {
       const {title, actions: groupActions, ...rest} = group;
-      const finalRolledUpActions = rolledUpActions.reduce((memo, action) => {
-        memo.push(...(isMenuGroup(action) ? action.actions : [action]));
+      const finalRolledUpActions = measuredActions.rolledUp.reduce(
+        (memo, action) => {
+          memo.push(...(isMenuGroup(action) ? action.actions : [action]));
 
-        return memo;
-      }, [] as ActionListItemDescriptor[]);
+          return memo;
+        },
+        [] as ActionListItemDescriptor[],
+      );
 
       const isDefaultGroup = group === defaultRollupGroup;
 
