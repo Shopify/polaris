@@ -170,7 +170,7 @@ function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
   return {
     hue: clamp(hue, 0, 360) || 0,
     saturation: parseFloat(clamp(saturation, 0, 1).toFixed(2)),
-    brightness: parseFloat(clamp(largestComponent, 0, 1).toFixed(2)),
+    brightness: parseFloat(clamp(largestComponent, 0, 1).toFixed(4)),
     lightness: parseFloat(lightness.toFixed(2)),
     alpha: parseFloat(alpha.toFixed(2)),
   };

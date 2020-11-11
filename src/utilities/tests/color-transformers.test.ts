@@ -105,6 +105,32 @@ describe('colorUtilities', () => {
       expect(saturation).toBe(1);
       expect(brightness).toBe(1);
     });
+
+    // test for an issue where Hex colours were losing precision during the conversion because we limit rounding to two decimal places
+    // https://github.com/Shopify/shopify/issues/265949
+    it('returns 0/0/0.5333 hsb value with four decimals of brightness precision when passed rgb(136, 136, 136)', () => {
+      const {hue, saturation, brightness} = rgbToHsb({
+        red: 136,
+        green: 136,
+        blue: 136,
+      });
+      expect(hue).toBe(0);
+      expect(saturation).toBe(0);
+      expect(brightness).toBe(0.5333);
+    });
+
+    // test for an issue where Hex colours were losing precision during the conversion because we limit rounding to two decimal places
+    // https://github.com/Shopify/shopify/issues/265949
+    it('returns 0/0/0.5294 hsb value when passed rgb(135, 135, 135)', () => {
+      const {hue, saturation, brightness} = rgbToHsb({
+        red: 135,
+        green: 135,
+        blue: 135,
+      });
+      expect(hue).toBe(0);
+      expect(saturation).toBe(0);
+      expect(brightness).toBe(0.5294);
+    });
   });
 
   describe('colorToHsla', () => {
