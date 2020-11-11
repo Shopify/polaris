@@ -57,6 +57,7 @@ export function DetailsPage() {
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [navItemActive, setNavItemActive] = useState('');
+  const [previewValue, setPreviewValue] = useState('');
   const [nameFieldValue, setNameFieldValue] = useState(
     defaultState.current.nameFieldValue,
   );
@@ -416,7 +417,10 @@ export function DetailsPage() {
     {label: 'Last 7 days', value: 'lastWeek'},
   ];
 
-  const handleChange = useCallback((newValue) => setValue(newValue), []);
+  const handleChange = useCallback((newValue) => {
+    setValue(newValue);
+    setPreviewValue(newValue);
+  }, []);
 
   // ---- Dropzone ----
   const [files, setFiles] = useState<File[]>([]);
@@ -475,7 +479,7 @@ export function DetailsPage() {
         {
           content: 'View',
           // eslint-disable-next-line no-console
-          onAction: () => console.log('view'),
+          onAction: () => console.log(previewValue),
         },
         {
           content: 'Print',

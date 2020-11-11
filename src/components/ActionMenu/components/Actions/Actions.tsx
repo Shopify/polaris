@@ -67,7 +67,8 @@ export function Actions({actions = [], groups = []}: Props) {
     if (
       !newDesignLanguage ||
       actionWidthsRef.current.length === 0 ||
-      availableWidthRef.current === 0
+      availableWidthRef.current === 0 ||
+      (showableActions.length !== 0 && rolledUpActions.length !== 0)
     ) {
       return;
     }
@@ -92,19 +93,28 @@ export function Actions({actions = [], groups = []}: Props) {
         currentAvailableWidth;
 
       if (canFitAction) {
-        currentAvailableWidth -= actionWidthsRef.current[index];
+        currentAvailableWidth -=
+          actionWidthsRef.current[index] + ACTION_SPACING * 2;
         newShowableActions = [...newShowableActions, action];
       } else {
+        currentAvailableWidth = 0;
         // Find last group if it exists and always render it as a rolled up action below
         if (action === lastMenuGroup) return;
-        currentAvailableWidth = 0;
         newRolledUpActions = [...newRolledUpActions, action];
       }
     });
 
     setShowableActions(newShowableActions);
     setRolledUpActions(newRolledUpActions);
-  }, [actions, groups, lastMenuGroup, lastMenuGroupWidth, newDesignLanguage]);
+  }, [
+    actions,
+    groups,
+    lastMenuGroup,
+    lastMenuGroupWidth,
+    newDesignLanguage,
+    rolledUpActions.length,
+    showableActions.length,
+  ]);
 
   const handleResize = useMemo(
     () =>
@@ -112,6 +122,8 @@ export function Actions({actions = [], groups = []}: Props) {
         () => {
           if (!newDesignLanguage || !actionsLayoutRef.current) return;
           availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
+          setShowableActions([]);
+          setRolledUpActions([]);
           measureActions();
         },
         20,
@@ -183,7 +195,11 @@ export function Actions({actions = [], groups = []}: Props) {
       return groups.length === 0 && group === defaultRollupGroup
         ? group
         : group === lastMenuGroup ||
-            (group !== defaultRollupGroup && !rolledUpActions.includes(group));
+            !rolledUpActions.some(
+              (rolledUpGroup) =>
+                isMenuGroup(rolledUpGroup) &&
+                rolledUpGroup.title === group.title,
+            );
     })
     .map((group) => {
       const {title, actions: groupActions, ...rest} = group;
