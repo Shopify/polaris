@@ -24,3 +24,16 @@
   }
   background-image: $backgrounds;
 }
+
+@mixin list-single-selection-state {
+  background: var(--p-interactive);
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -1 * spacing(tight);
+  height: 100%;
+  display: block;
+  width: rem(3px);
+  border-top-right-radius: var(--p-border-radius-base);
+  border-bottom-right-radius: var(--p-border-radius-base);
+}

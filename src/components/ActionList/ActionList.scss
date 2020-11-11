@@ -228,17 +228,7 @@ $active-indicator-width: rem(3px);
 
     // Only show when the button is selected, not active
     [aria-selected='true'] > &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: -1 * spacing(extra-tight);
-      height: 100%;
-      width: $active-indicator-width;
-      background-color: var(--p-interactive);
-      border-top-right-radius: var(--p-border-radius-base);
-      border-bottom-right-radius: var(--p-border-radius-base);
-      transform: translateX(-100%);
+      @include list-single-selection-state;
     }
 
     // Active, hovered, focused (:active:hover:focus)
