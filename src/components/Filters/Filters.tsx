@@ -291,7 +291,7 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const filtersDesktopHeaderMarkup = (
       <div className={filtersContainerHeaderClassname}>
-        <DisplayText size="small" element="h2">
+        <DisplayText size="small" element="h3">
           {moreFiltersLabel}
         </DisplayText>
         <Button
