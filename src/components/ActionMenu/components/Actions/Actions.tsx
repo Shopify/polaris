@@ -36,8 +36,9 @@ export function Actions({actions = [], groups = []}: Props) {
   const {newDesignLanguage} = useFeatures();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
   const menuGroupWidthRef = useRef<number>(0);
-  const actionWidthsRef = useRef<number[]>([]);
   const availableWidthRef = useRef<number>(0);
+  const hasMeasured = useRef<boolean>(false);
+  const actionWidthsRef = useRef<number[]>([]);
   const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
     undefined,
   );
@@ -70,7 +71,8 @@ export function Actions({actions = [], groups = []}: Props) {
     if (
       !newDesignLanguage ||
       actionWidthsRef.current.length === 0 ||
-      availableWidthRef.current === 0
+      availableWidthRef.current === 0 ||
+      hasMeasured.current
     ) {
       return;
     }
@@ -105,10 +107,14 @@ export function Actions({actions = [], groups = []}: Props) {
         newRolledUpActions = [...newRolledUpActions, action];
       }
     });
+
     setMeasuredActions({
       showable: newShowableActions,
       rolledUp: newRolledUpActions,
     });
+
+    // Set hasMeasured to true to prevent re-renders until viewport has been resized
+    hasMeasured.current = true;
   }, [actions, groups, lastMenuGroup, lastMenuGroupWidth, newDesignLanguage]);
 
   const handleResize = useMemo(
@@ -117,6 +123,8 @@ export function Actions({actions = [], groups = []}: Props) {
         () => {
           if (!newDesignLanguage || !actionsLayoutRef.current) return;
           availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
+          // Set hasMeasured to false to allow re-measuring
+          hasMeasured.current = false;
           measureActions();
         },
         50,
