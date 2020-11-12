@@ -20,7 +20,7 @@ jest.mock('react-transition-group', () => {
   }
 
   return {
-    ...(require.requireActual('react-transition-group') as any),
+    ...(jest.requireActual('react-transition-group') as any),
     TransitionGroup: ChildGroup,
     TransitionChild: ChildGroup,
     CSSTransition: ChildGroup,

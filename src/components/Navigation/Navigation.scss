@@ -87,6 +87,15 @@ $disabled-fade: 0.6;
 
   .Navigation-newDesignLanguage & {
     position: relative;
+  }
+}
+
+.Item-selected {
+  font-weight: 600;
+  color: var(--p-action-primary, color('indigo', 'dark'));
+  background-color: var(--p-background-selected, $item-selected-background);
+
+  .Navigation-newDesignLanguage & {
     &::before {
       content: '';
       position: absolute;
@@ -98,19 +107,6 @@ $disabled-fade: 0.6;
       background-color: var(--p-action-primary);
       border-top-right-radius: var(--p-border-radius-base);
       border-bottom-right-radius: var(--p-border-radius-base);
-      transform: translateX(-100%);
-    }
-  }
-}
-
-.Item-selected {
-  font-weight: 600;
-  color: var(--p-action-primary, color('indigo', 'dark'));
-  background-color: var(--p-background-selected, $item-selected-background);
-
-  .Navigation-newDesignLanguage & {
-    &::before {
-      transform: translateX(0);
     }
   }
 
@@ -132,7 +128,7 @@ $disabled-fade: 0.6;
 
   &:active,
   &:active:hover {
-    color: var(--p-text, color('indigo', 'dark'));
+    color: var(--p-action-primary, color('indigo', 'dark'));
     @include no-focus-ring;
 
     // stylelint-disable-next-line selector-max-specificity
@@ -300,8 +296,7 @@ $secondary-item-font-size: rem(15px);
       }
     }
 
-    &:hover,
-    &:focus {
+    &:hover {
       color: var(--p-text-subdued, color('indigo', 'dark'));
     }
 
@@ -317,7 +312,7 @@ $secondary-item-font-size: rem(15px);
     }
 
     &:active {
-      color: var(--p-text, color('indigo', 'dark'));
+      color: var(--p-action-primary, color('indigo', 'dark'));
     }
 
     @include breakpoint-after(nav-min-window-corrected()) {
@@ -354,7 +349,7 @@ $secondary-item-font-size: rem(15px);
       color: var(--p-action-primary, color('indigo', 'dark'));
     }
     &:active {
-      color: var(--p-action-primary-pressed, color('indigo', 'dark'));
+      color: var(--p-action-primary, color('indigo', 'dark'));
       @include no-focus-ring;
     }
   }
@@ -519,4 +514,8 @@ $secondary-item-font-size: rem(15px);
   display: inline-block;
   height: rem(10px);
   width: rem(10px);
+}
+// stylelint-disable-next-line selector-max-combinators, selector-max-class
+.Navigation-newDesignLanguage .SecondaryNavigation-noIcon .Item {
+  padding-left: spacing(tight) + spacing(extra-tight);
 }

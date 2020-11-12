@@ -23,10 +23,8 @@
     text-decoration: underline;
   }
 
-  @include focus-ring;
-
   &:focus:not(:active) {
-    @include focus-ring($style: 'focused');
+    outline: var(--p-focused) auto 1px;
   }
 
   &:active {

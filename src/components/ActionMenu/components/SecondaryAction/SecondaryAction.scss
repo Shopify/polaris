@@ -1,6 +1,7 @@
 @import '../../../../styles/common';
 
-$breakpoint: 1080px;
+$breakpoint: 768px;
+$button-spacing: rem(12px);
 
 .SecondaryAction.newDesignLanguage {
   // stylelint-disable declaration-no-important
@@ -10,13 +11,15 @@ $breakpoint: 1080px;
     background: transparent !important;
     box-shadow: none !important;
     border-radius: var(--p-border-radius-base) !important;
+    padding-left: $button-spacing;
+    padding-right: $button-spacing;
     // stylelint-disable-next-line selector-max-specificity
     &:hover {
-      background: var(--p-surface-hovered) !important;
+      background: var(--p-background-hovered) !important;
     }
     // stylelint-disable-next-line selector-max-specificity
     &:active {
-      background: var(--p-surface-pressed) !important;
+      background: var(--p-background-pressed) !important;
     }
 
     @include breakpoint-after($breakpoint) {

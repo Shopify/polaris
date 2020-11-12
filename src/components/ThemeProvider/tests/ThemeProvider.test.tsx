@@ -35,6 +35,7 @@ describe('<ThemeProvider />', () => {
   it('passes context', () => {
     const Child: React.SFC = () => {
       const polarisTheme = useContext(ThemeContext);
+      // eslint-disable-next-line jest/no-if
       return polarisTheme && polarisTheme.logo ? <div /> : null;
     };
 
@@ -189,7 +190,7 @@ describe('<ThemeProvider />', () => {
   });
 
   describe('when nested', () => {
-    it('sets a default theme', () => {
+    it('does not render custom properties if themes are identical', () => {
       const themeProvider = mountWithNewDesignLanguage(
         <ThemeProvider theme={{}}>
           <ThemeProvider theme={{}}>
@@ -200,7 +201,7 @@ describe('<ThemeProvider />', () => {
       );
 
       expect(themeProvider.findAll('div')[1]).toHaveReactProps({
-        style: expect.objectContaining({
+        style: expect.not.objectContaining({
           '--p-background': expect.any(String),
           '--p-text': expect.any(String),
           '--p-interactive': expect.any(String),
@@ -234,7 +235,7 @@ describe('<ThemeProvider />', () => {
       );
 
       expect(themeProvider.findAll('div')[1]).toHaveReactProps({
-        style: expect.objectContaining({
+        style: expect.not.objectContaining({
           '--p-surface': 'rgba(255, 255, 255, 1)',
         }),
       });

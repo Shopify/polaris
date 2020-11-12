@@ -18,7 +18,7 @@ import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
 
-import {Resizer, Spinner} from './components';
+import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
 
 type Type =
@@ -111,6 +111,8 @@ interface NonMutuallyExclusiveProps {
   spellCheck?: boolean;
   /** Indicates the id of a component owned by the input */
   ariaOwns?: string;
+  /** Indicates whether or not a Popover is displayed */
+  ariaExpanded?: boolean;
   /** Indicates the id of a component controlled by the input */
   ariaControls?: string;
   /** Indicates the id of a related component’s visually focused element to the input */
@@ -171,6 +173,7 @@ export function TextField({
   spellCheck,
   ariaOwns,
   ariaControls,
+  ariaExpanded,
   ariaActiveDescendant,
   ariaAutocomplete,
   showCharacterCount,
@@ -315,15 +318,15 @@ export function TextField({
     clearTimeout(buttonPressTimer.current);
   }, []);
 
-  const handleButtonPress = useCallback(
-    (onChange: Function) => {
+  const handleButtonPress: SpinnerProps['onMouseDown'] = useCallback(
+    (onChange) => {
       const minInterval = 50;
       const decrementBy = 10;
       let interval = 200;
 
       const onChangeInterval = () => {
         if (interval > minInterval) interval -= decrementBy;
-        onChange();
+        onChange(0);
         buttonPressTimer.current = window.setTimeout(
           onChangeInterval,
           interval,
@@ -428,6 +431,7 @@ export function TextField({
     'aria-autocomplete': ariaAutocomplete,
     'aria-controls': ariaControls,
     'aria-multiline': normalizeAriaMultiline(multiline),
+    'aria-expanded': ariaExpanded,
   });
 
   const backdropClassName = classNames(

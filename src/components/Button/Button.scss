@@ -890,9 +890,20 @@ $stacking-order: (
   }
 
   &.newDesignLanguage {
-    margin-left: rem(1px);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+
+    // stylelint-disable selector-max-class, selector-max-specificity
+    &.primary,
+    &.destructive {
+      margin-left: rem(1px);
+
+      &.outline {
+        margin-left: 0;
+        border-left: 0;
+      }
+    }
+    // stylelint-enable selector-max-class, selector-max-specificity
 
     &::after {
       border-top-left-radius: 0;

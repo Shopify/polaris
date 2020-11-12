@@ -4,7 +4,6 @@ owners:
 classification: library
 slack_channels:
   - polaris
-  - polaris-help
 oncall_url: https://shopify.pagerduty.com/services/PQNFXB1
 security:
   data_management:

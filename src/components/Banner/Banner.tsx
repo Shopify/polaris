@@ -11,7 +11,7 @@ import {
   CircleTickMajor,
   CircleInformationMajor,
   CircleAlertMajor,
-  CircleDisabledMajor,
+  DiamondAlertMajor,
 } from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
@@ -255,7 +255,7 @@ function useBannerAttributes(
 
     case 'critical':
       return {
-        defaultIcon: CircleDisabledMajor,
+        defaultIcon: DiamondAlertMajor,
         iconColor: newDesignLanguage ? 'critical' : 'redDark',
         ariaRoleType: 'alert',
       };
