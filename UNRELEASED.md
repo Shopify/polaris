@@ -14,6 +14,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Added escape keybind to `Tooltip` ([#3627](https://github.com/Shopify/polaris-react/pull/3627))
 - Fixed alignment of `Page` and `TopBar` so the search aligns to the page. ([#3610](https://github.com/Shopify/polaris-react/pull/3610))
 - Removed extra bottom border on the `DataTable` and added curved edges to footers ([#3571](https://github.com/Shopify/polaris-react/pull/3571))
 - **`Button`:** `loading` no longer sets the invalid `role="alert"` ([#3590](https://github.com/Shopify/polaris-react/pull/3590))
@@ -21,7 +22,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed `Modal` header border color ([#3616](https://github.com/Shopify/polaris-react/pull/3616))
 - Fixed `TopBar` search clear button alignment on iOS ([#3618](https://github.com/Shopify/polaris-react/pull/3618))
 - Fixed HSB brightness conversion by increasing precision from 2 decimals to 4
-Fixed `Filters` overflow ([#3532](https://github.com/Shopify/polaris-react/pull/3532))
+  Fixed `Filters` overflow ([#3532](https://github.com/Shopify/polaris-react/pull/3532))
 
 ### Documentation
 
