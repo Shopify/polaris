@@ -22,7 +22,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed `Modal` header border color ([#3616](https://github.com/Shopify/polaris-react/pull/3616))
 - Fixed `TopBar` search clear button alignment on iOS ([#3618](https://github.com/Shopify/polaris-react/pull/3618))
 - Fixed HSB brightness conversion by increasing precision from 2 decimals to 4
-  Fixed `Filters` overflow ([#3532](https://github.com/Shopify/polaris-react/pull/3532))
 
 ### Documentation
 
