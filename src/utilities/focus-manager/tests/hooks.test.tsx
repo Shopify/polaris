@@ -11,7 +11,9 @@ import {
 let consoleErrorSpy: jest.SpyInstance;
 
 const Component = () =>
-  typeof useFocusManager().canSafelyFocus === 'boolean' ? <div /> : null;
+  typeof useFocusManager({trapping: true}).canSafelyFocus === 'boolean' ? (
+    <div />
+  ) : null;
 
 describe('useFocusManager', () => {
   beforeEach(() => {
