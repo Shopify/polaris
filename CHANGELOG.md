@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.8.8 - 2020-11-16
+
+### Bug fixes
+
+- Fixed HSB brightness conversion by increasing precision from 2 decimals to 4
+
 ## 5.8.0 - 2020-10-15
 
 ### Bug fixes
