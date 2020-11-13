@@ -1,0 +1,11 @@
+{
+  "emptySearchTitle": "Geen {resourceNamePlural} gevonden",
+  "emptySearchDescription": "Probeer de filters of zoekterm te wijzigen",
+  "newBadgeText": "nieuw",
+  "resourceLoadingAccessibilityLabel": "{resourceNamePlural} worden geladen",
+  "selectAllLabel": "Selecteer alle {resourceNamePlural}",
+  "onboardingBadgeText": "Nieuw",
+  "selected": "{selectedItemsCount} geselecteerd",
+  "undo": "Ongedaan maken",
+  "selectAllItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in uw winkel"
+}

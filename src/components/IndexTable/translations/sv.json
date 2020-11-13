@@ -1,0 +1,11 @@
+{
+  "emptySearchTitle": "Inga {resourceNamePlural} hittades",
+  "emptySearchDescription": "Prova att byta filter eller sökord",
+  "newBadgeText": "ny",
+  "resourceLoadingAccessibilityLabel": "{resourceNamePlural} laddas",
+  "selectAllLabel": "Välj alla {resourceNamePlural}",
+  "onboardingBadgeText": "Ny",
+  "selected": "{selectedItemsCount} har valts",
+  "undo": "Ångra",
+  "selectAllItems": "Välj alla {itemsLength}+ {resourceNamePlural} i din butik"
+}

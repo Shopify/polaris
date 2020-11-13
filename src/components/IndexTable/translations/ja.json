@@ -1,0 +1,11 @@
+{
+  "emptySearchTitle": "{resourceNamePlural}が見つかりませんでした",
+  "emptySearchDescription": "絞り込みや検索語を変更してください",
+  "newBadgeText": "新規",
+  "resourceLoadingAccessibilityLabel": "{resourceNamePlural}を読み込んでいます",
+  "selectAllLabel": "すべての{resourceNamePlural}を選択する",
+  "onboardingBadgeText": "New",
+  "selected": "{selectedItemsCount}を選択済",
+  "undo": "元に戻す",
+  "selectAllItems": "ストアにあるすべての{itemsLength} + {resourceNamePlural}を選択する"
+}

@@ -1,0 +1,11 @@
+{
+  "emptySearchTitle": "找不到 {resourceNamePlural}",
+  "emptySearchDescription": "嘗試變更篩選條件或搜尋詞彙",
+  "newBadgeText": "新增",
+  "resourceLoadingAccessibilityLabel": "正在載入 {resourceNamePlural}",
+  "selectAllLabel": "選擇所有 {resourceNamePlural}",
+  "onboardingBadgeText": "新增",
+  "selected": "已選擇 {selectedItemsCount}",
+  "undo": "復原",
+  "selectAllItems": "選擇您商店中全部 {itemsLength}+ {resourceNamePlural}"
+}

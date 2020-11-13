@@ -1,0 +1,12 @@
+{
+  "emptySearchTitle": "No {resourceNamePlural} found",
+  "emptySearchDescription": "Try changing the filters or search term",
+  "onboardingBadgeText": "New",
+  "resourceLoadingAccessibilityLabel": "Loading {resourceNamePlural}…",
+  "selectAllLabel": "Select all {resourceNamePlural}",
+  "selected": "{selectedItemsCount} selected",
+  "undo": "Undo",
+  "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural} in your store",
+  "selectItem": "Select {resourceName}",
+  "selectButtonText": "Select"
+}

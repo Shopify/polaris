@@ -1,0 +1,10 @@
+{
+  "defaultItemSingular": "Artículo",
+  "defaultItemPlural": "Artículos",
+  "allItemsSelected": "Todos {itemsLength}+ {resourceNamePlural} en tu tienda están seleccionados.",
+  "selected": "{selectedItemsCount} seleccionado(s)",
+  "a11yCheckboxDeselectAllSingle": "Deseleccionar {resourceNameSingular}",
+  "a11yCheckboxSelectAllSingle": "Seleccionar {resourceNameSingular}",
+  "a11yCheckboxDeselectAllMultiple": "Deseleccionar todos los {itemsLength} {resourceNamePlural}",
+  "a11yCheckboxSelectAllMultiple": "Seleccionar todos los {itemsLength} {resourceNamePlural}"
+}

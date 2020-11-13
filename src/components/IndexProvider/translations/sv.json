@@ -1,0 +1,10 @@
+{
+  "defaultItemSingular": "Artikel",
+  "defaultItemPlural": "Varor",
+  "allItemsSelected": "Alla {itemsLength}+ {resourceNamePlural} i din butik har valts.",
+  "selected": "{selectedItemsCount} har valts",
+  "a11yCheckboxDeselectAllSingle": "Avmarkera {resourceNameSingular}",
+  "a11yCheckboxSelectAllSingle": "Markera {resourceNameSingular}",
+  "a11yCheckboxDeselectAllMultiple": "Avmarkera alla {itemsLength} {resourceNamePlural}",
+  "a11yCheckboxSelectAllMultiple": "Markera alla {itemsLength} {resourceNamePlural}"
+}
