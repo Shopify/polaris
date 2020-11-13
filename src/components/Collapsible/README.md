@@ -57,9 +57,9 @@ Use for a basic “show more” interaction when you need to display more conten
 
 ```jsx
 function CollapsibleExample() {
-  const [active, setActive] = useState(true);
+  const [open, setOpen] = useState(false);
 
-  const handleToggle = useCallback(() => setActive((active) => !active), []);
+  const handleToggle = useCallback(() => setOpen((open) => !open), []);
 
   return (
     <div style={{height: '200px'}}>
@@ -67,21 +67,86 @@ function CollapsibleExample() {
         <Stack vertical>
           <Button
             onClick={handleToggle}
-            ariaExpanded={active}
+            ariaExpanded={open}
             ariaControls="basic-collapsible"
           >
             Toggle
           </Button>
           <Collapsible
-            open={active}
+            open={open}
             id="basic-collapsible"
             transition={{duration: '150ms', timingFunction: 'ease'}}
+            expandOnPrint
           >
             <TextContainer>
               Your mailing list lets you contact customers or visitors who have
               shown an interest in your store. Reach out to them with exclusive
               offers or updates about your products.
             </TextContainer>
+          </Collapsible>
+        </Stack>
+      </Card>
+    </div>
+  );
+}
+```
+
+### Nested collapsible
+
+When you have multiple collapsibles inside each other. This should be avoided as it causes the user to open multiple collapsible areas.
+
+```jsx
+function CollapsibleExample() {
+  const [open, setOpen] = useState(true);
+  const [innerOpen, setInnerOpen] = useState(false);
+
+  const handleToggle = useCallback(() => setOpen((open) => !open), []);
+  const handleInnerToggle = useCallback(
+    () => setInnerOpen((open) => !open),
+    [],
+  );
+
+  return (
+    <div style={{height: '200px'}}>
+      <Card sectioned>
+        <Stack vertical>
+          <Button
+            onClick={handleToggle}
+            ariaExpanded={open}
+            ariaControls="basic-collapsible"
+          >
+            Toggle
+          </Button>
+          <Collapsible
+            open={open}
+            id="basic-collapsible"
+            transition={{duration: '500ms', timingFunction: 'ease'}}
+            expandOnPrint
+          >
+            <TextContainer>
+              Your mailing list lets you contact customers or visitors who have
+              shown an interest in your store. Reach out to them with exclusive
+              offers or updates about your products.
+            </TextContainer>
+            <Button
+              onClick={handleInnerToggle}
+              ariaExpanded={innerOpen}
+              ariaControls="basic-collapsible"
+            >
+              Toggle inner
+            </Button>
+            <Collapsible
+              open={innerOpen}
+              id="basic-inner-collapsible"
+              transition={{duration: '500ms', timingFunction: 'ease-out'}}
+              expandOnPrint
+            >
+              <TextContainer>
+                Your mailing list lets you contact customers or visitors who
+                have shown an interest in your store. Reach out to them with
+                exclusive offers or updates about your products.
+              </TextContainer>
+            </Collapsible>
           </Collapsible>
         </Stack>
       </Card>
