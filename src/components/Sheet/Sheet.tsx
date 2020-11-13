@@ -37,10 +37,14 @@ export interface SheetProps {
   children: React.ReactNode;
   /** Callback when the backdrop is clicked or `ESC` is pressed */
   onClose(): void;
+  /** Callback when the sheet has started to enter */
+  onEnter?(): void;
   /** Callback when the sheet has completed entering */
   onEntered?(): void;
   /** Callback when the sheet has started to exit */
   onExit?(): void;
+  /** Callback when the sheet has completed exiting */
+  onExited?(): void;
   /** Show a different sized sheet */
   size?: 'small' | 'medium' | 'large';
   /** Show a transparent backdrop */
@@ -54,8 +58,10 @@ export function Sheet({
   open,
   minimized = false,
   onClose,
+  onEnter,
   onEntered,
   onExit,
+  onExited,
   transparentBackdrop = true,
   type = 'fullSheet',
   size = 'small',
@@ -81,8 +87,10 @@ export function Sheet({
         in={open}
         mountOnEnter
         unmountOnExit
+        onEnter={onEnter}
         onEntered={onEntered}
         onExit={onExit}
+        onExited={onExited}
       >
         <div
           className={classNames(
