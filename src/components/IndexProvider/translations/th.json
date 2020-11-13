@@ -1,0 +1,10 @@
+{
+  "defaultItemSingular": "สินค้า",
+  "defaultItemPlural": "สินค้า",
+  "allItemsSelected": "เลือก {itemsLength}+ {resourceNamePlural} ทั้งหมดในร้านค้าของคุณแล้ว",
+  "selected": "{selectedItemsCount} รายการที่เลือก",
+  "a11yCheckboxDeselectAllSingle": "ยกเลิกการเลือก {resourceNameSingular}",
+  "a11yCheckboxSelectAllSingle": "เลือก {resourceNameSingular}",
+  "a11yCheckboxDeselectAllMultiple": "ยกเลิกการเลือก {itemsLength} {resourceNamePlural} ทั้งหมด",
+  "a11yCheckboxSelectAllMultiple": "เลือก {itemsLength} {resourceNamePlural} ทั้งหมด"
+}

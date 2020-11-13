@@ -1,0 +1,11 @@
+{
+  "emptySearchTitle": "No se encontraron {resourceNamePlural}",
+  "emptySearchDescription": "Intenta cambiar los filtros o el término de búsqueda",
+  "newBadgeText": "nuevo",
+  "resourceLoadingAccessibilityLabel": "{resourceNamePlural} se están cargando",
+  "selectAllLabel": "Seleccionar todos {resourceNamePlural}",
+  "onboardingBadgeText": "Nuevo",
+  "selected": "{selectedItemsCount} seleccionado(s)",
+  "undo": "Deshacer",
+  "selectAllItems": "Seleccionar todos {itemsLength}+ {resourceNamePlural} en tu tienda"
+}

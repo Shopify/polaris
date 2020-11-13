@@ -1,0 +1,11 @@
+{
+  "newBadgeText": "Nowe",
+  "emptySearchTitle": "Nie znaleziono {resourceNamePlural}",
+  "emptySearchDescription": "Spróbuj zmienić filtry lub szukany termin",
+  "resourceLoadingAccessibilityLabel": "{resourceNamePlural} są ładowane",
+  "selectAllLabel": "Wybierz wszystkie {resourceNamePlural}",
+  "onboardingBadgeText": "Nowe",
+  "selected": "Wybrano {selectedItemsCount}",
+  "undo": "Cofnij",
+  "selectAllItems": "Zaznacz wszystkie {itemsLength}+ {resourceNamePlural} w Twoim sklepie"
+}

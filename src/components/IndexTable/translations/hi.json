@@ -1,0 +1,11 @@
+{
+  "emptySearchTitle": "कोई {resourceNamePlural} नहीं मिला",
+  "emptySearchDescription": "फ़िल्टर या खोज शब्द बदलने का प्रयास करें",
+  "newBadgeText": "नया",
+  "resourceLoadingAccessibilityLabel": "{resourceNamePlural} लोड हो रहे हैं",
+  "selectAllLabel": "सभी {resourceNamePlural} चुनें",
+  "onboardingBadgeText": "नया",
+  "selected": "{selectedItemsCount} चयनित",
+  "undo": "पूर्ववत करें",
+  "selectAllItems": "आपके स्टोर के सभी {itemsLength}+ {resourceNamePlural} चुनें"
+}

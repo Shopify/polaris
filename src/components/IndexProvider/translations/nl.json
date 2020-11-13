@@ -1,0 +1,10 @@
+{
+  "defaultItemSingular": "Artikel",
+  "defaultItemPlural": "Items",
+  "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in uw winkel zijn geselecteerd.",
+  "selected": "{selectedItemsCount} geselecteerd",
+  "a11yCheckboxDeselectAllSingle": "Selectie {resourceNameSingular} opheffen",
+  "a11yCheckboxSelectAllSingle": "Selecteer {resourceNameSingular}",
+  "a11yCheckboxDeselectAllMultiple": "Alle selecties {itemsLength} {resourceNamePlural} opheffen",
+  "a11yCheckboxSelectAllMultiple": "Selecteer alle {itemsLength} {resourceNamePlural}"
+}

@@ -1,0 +1,11 @@
+{
+  "newBadgeText": "ny",
+  "emptySearchTitle": "Fant ingen {resourceNamePlural}",
+  "emptySearchDescription": "Prøv å endre filtrene eller søkeord",
+  "resourceLoadingAccessibilityLabel": "{resourceNamePlural} laster",
+  "selectAllLabel": "Velg alle {resourceNamePlural}",
+  "onboardingBadgeText": "Ny",
+  "selected": "{selectedItemsCount} er valgt",
+  "undo": "Angre",
+  "selectAllItems": "Velg alle {itemsLength}+ {resourceNamePlural} i butikken din"
+}
