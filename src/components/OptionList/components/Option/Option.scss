@@ -4,6 +4,7 @@ $min-height: control-height();
 $control-size: rem(16px);
 $control-vertical-adjustment: rem(2px);
 $selected-option-identifier-width: rem(3px);
+$active-indicator-width: rem(3px);
 
 .Option {
   @include unstyled-button;
@@ -158,9 +159,27 @@ $selected-option-identifier-width: rem(3px);
   .SingleSelectOption {
     @include focus-ring;
 
-    &.active,
     &.focused:not(:active) {
       @include focus-ring($style: 'focused');
+    }
+
+    &.active {
+      background: var(--p-surface-selected);
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -1 * spacing(extra-tight);
+        height: 100%;
+        width: $active-indicator-width;
+        background-color: var(--p-interactive);
+        border-top-right-radius: var(--p-border-radius-base);
+        border-bottom-right-radius: var(--p-border-radius-base);
+        transform: translateX(-100%);
+      }
     }
 
     &.select::before {
