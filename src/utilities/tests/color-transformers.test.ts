@@ -161,7 +161,7 @@ describe('colorUtilities', () => {
         alpha: 1,
         hue: 4.15,
         lightness: 26.27,
-        saturation: 97.00999999999999,
+        saturation: 97.01,
       });
     });
 
@@ -179,7 +179,7 @@ describe('colorUtilities', () => {
         alpha: 1,
         hue: 4.15,
         lightness: 26.27,
-        saturation: 97.00999999999999,
+        saturation: 97.01,
       });
     });
 

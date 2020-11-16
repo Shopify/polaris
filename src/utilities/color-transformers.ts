@@ -8,6 +8,7 @@ import type {
   HSLAColor,
   HSBLAColor,
 } from './color-types';
+import {roundNumberToDecimalPlaces} from './roundNumberToDecimalPlaces';
 
 export function rgbString(color: RGBColor | RGBAColor) {
   const {red, green, blue} = color;
@@ -169,11 +170,11 @@ function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
   const clampedHue = clamp(hue, 0, 360);
 
   return {
-    hue: clampedHue ? parseFloat(clampedHue.toFixed(2)) : 0,
-    saturation: parseFloat(clamp(saturation, 0, 1).toFixed(4)),
-    brightness: parseFloat(clamp(largestComponent, 0, 1).toFixed(4)),
-    lightness: parseFloat(lightness.toFixed(4)),
-    alpha: parseFloat(alpha.toFixed(4)),
+    hue: clampedHue ? roundNumberToDecimalPlaces(clampedHue, 2) : 0,
+    saturation: roundNumberToDecimalPlaces(clamp(saturation, 0, 1), 4),
+    brightness: roundNumberToDecimalPlaces(clamp(largestComponent, 0, 1), 4),
+    lightness: roundNumberToDecimalPlaces(lightness, 4),
+    alpha: roundNumberToDecimalPlaces(alpha, 4),
   };
 }
 
@@ -191,8 +192,10 @@ export function rgbToHsl(color: RGBAColor): HSLAColor {
     lightness: rawLightness,
     alpha = 1,
   } = rgbToHsbl(color, 'l');
-  const saturation = rawSaturation * 100;
-  const lightness = rawLightness * 100;
+
+  const saturation = roundNumberToDecimalPlaces(rawSaturation * 100, 2);
+  const lightness = roundNumberToDecimalPlaces(rawLightness * 100, 2);
+
   return {hue, saturation, lightness, alpha};
 }
 
