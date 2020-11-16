@@ -105,40 +105,29 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     );
   }
 
-  let actionMarkup;
-  if (action) {
-    if (newDesignLanguage) {
-      actionMarkup = (
-        <div className={styles.Actions}>
-          <ButtonGroup>
-            <div className={styles.PrimaryAction}>
-              {unstyledButtonFrom(action, {
-                className: styles.Button,
-              })}
-            </div>
+  const primaryActionMarkup = action ? (
+    <div className={styles.PrimaryAction}>
+      {newDesignLanguage
+        ? unstyledButtonFrom(action, {
+            className: styles.Button,
+          })
+        : buttonFrom(action, {outline: true, size: buttonSizeValue})}
+    </div>
+  ) : null;
 
-            {secondaryAction && (
-              <SecondaryActionFrom action={secondaryAction} />
-            )}
-          </ButtonGroup>
-        </div>
-      );
-    } else {
-      actionMarkup = (
-        <div className={styles.Actions}>
-          <ButtonGroup>
-            <div className={styles.PrimaryAction}>
-              {buttonFrom(action, {outline: true, size: buttonSizeValue})}
-            </div>
+  const secondaryActionMarkup = secondaryAction ? (
+    <SecondaryActionFrom action={secondaryAction} />
+  ) : null;
 
-            {secondaryAction && (
-              <SecondaryActionFrom action={secondaryAction} />
-            )}
-          </ButtonGroup>
-        </div>
-      );
-    }
-  }
+  const actionMarkup =
+    action || secondaryAction ? (
+      <div className={styles.Actions}>
+        <ButtonGroup>
+          {primaryActionMarkup}
+          {secondaryActionMarkup}
+        </ButtonGroup>
+      </div>
+    ) : null;
 
   let contentMarkup: React.ReactNode = null;
   let contentID: string | undefined;
