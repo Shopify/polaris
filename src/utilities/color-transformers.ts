@@ -165,14 +165,15 @@ function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
       huePercentage = (red - green) / delta + 4;
   }
 
-  const hue = Math.round((huePercentage / 6) * 360);
+  const hue = (huePercentage / 6) * 360;
+  const clampedHue = clamp(hue, 0, 360);
 
   return {
-    hue: clamp(hue, 0, 360) || 0,
-    saturation: parseFloat(clamp(saturation, 0, 1).toFixed(2)),
+    hue: clampedHue ? parseFloat(clampedHue.toFixed(2)) : 0,
+    saturation: parseFloat(clamp(saturation, 0, 1).toFixed(4)),
     brightness: parseFloat(clamp(largestComponent, 0, 1).toFixed(4)),
-    lightness: parseFloat(lightness.toFixed(2)),
-    alpha: parseFloat(alpha.toFixed(2)),
+    lightness: parseFloat(lightness.toFixed(4)),
+    alpha: parseFloat(alpha.toFixed(4)),
   };
 }
 
@@ -281,9 +282,9 @@ function hslToObject(color: string): HSLAColor {
 
   const [hue, saturation, lightness, alpha] = colorMatch[1].split(',');
   const objColor = {
-    hue: parseInt(hue, 10),
-    saturation: parseInt(saturation, 10),
-    lightness: parseInt(lightness, 10),
+    hue: parseFloat(hue),
+    saturation: parseFloat(saturation),
+    lightness: parseFloat(lightness),
     alpha: parseFloat(alpha) || 1,
   };
   return objColor;
