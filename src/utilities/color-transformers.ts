@@ -246,7 +246,16 @@ export function hslToString(hslColor: HSLColor | HSLAColor | string) {
 
   const alpha = 'alpha' in hslColor ? hslColor.alpha : 1;
   const {hue, lightness, saturation} = hslColor;
-  return `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
+  return `hsla(${roundNumberToDecimalPlaces(
+    hue,
+    2,
+  )}, ${roundNumberToDecimalPlaces(
+    saturation,
+    2,
+  )}%, ${roundNumberToDecimalPlaces(
+    lightness,
+    2,
+  )}%, ${roundNumberToDecimalPlaces(alpha, 2)})`;
 }
 
 function rgbToObject(color: string): RGBAColor {
@@ -285,10 +294,10 @@ function hslToObject(color: string): HSLAColor {
 
   const [hue, saturation, lightness, alpha] = colorMatch[1].split(',');
   const objColor = {
-    hue: parseFloat(hue),
-    saturation: parseFloat(saturation),
-    lightness: parseFloat(lightness),
-    alpha: parseFloat(alpha) || 1,
+    hue: roundNumberToDecimalPlaces(parseFloat(hue), 2),
+    saturation: roundNumberToDecimalPlaces(parseFloat(saturation), 2),
+    lightness: roundNumberToDecimalPlaces(parseFloat(lightness), 2),
+    alpha: roundNumberToDecimalPlaces(parseFloat(alpha), 2) || 1,
   };
   return objColor;
 }
