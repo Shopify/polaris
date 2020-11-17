@@ -67,16 +67,14 @@ describe('<Tooltip />', () => {
     expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(false);
   });
 
-  it('closes itself when escapse is press on keyup', () => {
+  it('closes itself when escape is pressed on keyup', () => {
     const tooltip = mountWithApp(
       <Tooltip active content="This order has shipping labels.">
         <div>Order #1001</div>
       </Tooltip>,
     );
 
-    (tooltip.children[0] as {
-      trigger(val: 'onKeyUp', values: {keyCode: Key}): void;
-    }).trigger('onKeyUp', {
+    tooltip.find('span')!.trigger('onKeyUp', {
       keyCode: Key.Escape,
     });
     expect(tooltip).toContainReactComponent(TooltipOverlay, {
