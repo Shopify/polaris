@@ -3,7 +3,6 @@
 $image-size: rem(20px);
 $item-min-height: rem(40px);
 $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
-$active-indicator-width: rem(3px);
 
 .ActionList {
   list-style: none;
@@ -228,7 +227,7 @@ $active-indicator-width: rem(3px);
 
     // Only show when the button is selected, not active
     [aria-selected='true'] > &::before {
-      @include list-single-selection-state;
+      @include list-selected-indicator;
     }
 
     // Active, hovered, focused (:active:hover:focus)

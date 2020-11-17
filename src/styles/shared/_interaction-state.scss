@@ -25,15 +25,15 @@
   background-image: $backgrounds;
 }
 
-@mixin list-single-selection-state {
-  background: var(--p-interactive);
+@mixin list-selected-indicator($offset: spacing(tight)) {
   content: '';
+  background-color: var(--p-interactive);
   position: absolute;
   top: 0;
-  left: -1 * spacing(tight);
+  left: -1 * $offset;
   height: 100%;
   display: block;
-  width: rem(3px);
+  width: border-width(thicker);
   border-top-right-radius: var(--p-border-radius-base);
   border-bottom-right-radius: var(--p-border-radius-base);
 }

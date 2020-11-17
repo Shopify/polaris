@@ -3,7 +3,6 @@
 $min-height: control-height();
 $control-size: rem(16px);
 $control-vertical-adjustment: rem(2px);
-$selected-option-identifier-width: rem(3px);
 
 .Option {
   @include unstyled-button;
@@ -164,7 +163,7 @@ $selected-option-identifier-width: rem(3px);
     }
 
     &.select::before {
-      @include list-single-selection-state;
+      @include list-selected-indicator;
     }
   }
 }
