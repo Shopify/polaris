@@ -8,6 +8,14 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.10.1 - 2020-11-13
+
+### Bug fixes
+
+- Fixed alignment of `Page` and `TopBar` so the search aligns to the page. ([#3610](https://github.com/Shopify/polaris-react/pull/3610))
+- Fixed `TopBar` search clear button alignment on iOS ([#3618](https://github.com/Shopify/polaris-react/pull/3618))
+- Fixed HSB brightness conversion by increasing precision from 2 decimals to 4 ([#3621](https://github.com/Shopify/polaris-react/pull/3621))
+
 ## 5.10.0 - 2020-10-30
 
 ### Enhancements
