@@ -3,15 +3,18 @@ import React, {useEffect, useRef} from 'react';
 import {Button} from '../../../Button';
 import type {ButtonProps} from '../../../Button';
 import {useFeatures} from '../../../../utilities/features';
+import {classNames} from '../../../../utilities/css';
 
 import styles from './SecondaryAction.scss';
 
 interface SecondaryAction extends ButtonProps {
+  onAction?(): void;
   getOffsetWidth?(width: number): void;
 }
 
 export function SecondaryAction({
   children,
+  onAction,
   getOffsetWidth,
   ...rest
 }: SecondaryAction) {
@@ -26,8 +29,13 @@ export function SecondaryAction({
   }, [getOffsetWidth, newDesignLanguage]);
 
   return (
-    <span className={styles.SecondaryAction} ref={secondaryActionsRef}>
-      <Button {...rest}>{children}</Button>
+    <span
+      className={classNames(styles.SecondaryAction, styles.newDesignLanguage)}
+      ref={secondaryActionsRef}
+    >
+      <Button onClick={onAction} {...rest}>
+        {children}
+      </Button>
     </span>
   );
 }

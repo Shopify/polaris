@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {
@@ -20,7 +20,7 @@ jest.mock('react-transition-group', () => {
   }
 
   return {
-    ...(require.requireActual('react-transition-group') as any),
+    ...(jest.requireActual('react-transition-group') as any),
     TransitionGroup: ChildGroup,
     TransitionChild: ChildGroup,
     CSSTransition: ChildGroup,
@@ -62,13 +62,12 @@ describe('<Modal>', () => {
     );
   });
 
-  it('focuses the next focusable node on mount', () => {
-    const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
-    const focusedNode = focusUtils.findFirstFocusableNode(
-      modal.find(Dialog).getDOMNode(),
+  it('focuses the dialog node on mount', () => {
+    const modal = mountWithAppProvider(
+      <Modal onClose={jest.fn()} open instant />,
     );
 
-    expect(document.activeElement).toBe(focusedNode);
+    expect(document.activeElement).toBe(modal.find(Dialog).getDOMNode());
   });
 
   describe('src', () => {
@@ -198,14 +197,14 @@ describe('<Modal>', () => {
   });
 
   describe('open', () => {
-    it('renders <Portal /> with idPrefix modal', () => {
+    it('renders <Portal />', () => {
       const modal = mountWithAppProvider(
         <Modal onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Portal).prop('idPrefix')).toBe('modal');
+      expect(modal.find(Portal)).toHaveLength(1);
     });
   });
 
@@ -365,12 +364,34 @@ describe('<Modal>', () => {
       rafSpy.mockRestore();
     });
 
-    it('renders the element that is passed in', () => {
+    it('renders the element if an element is passed in', () => {
       const modal = mountWithAppProvider(
         <Modal onClose={noop} open={false} activator={<Button />} />,
       );
 
       expect(modal.find(Button).exists()).toBe(true);
+    });
+
+    it('does not render the element if a ref object is passed in', () => {
+      const TestHarness = () => {
+        const buttonRef = useRef<HTMLDivElement>(null);
+        const button = (
+          <div ref={buttonRef}>
+            <Button />
+          </div>
+        );
+
+        return (
+          <div>
+            <Modal onClose={noop} open={false} activator={buttonRef} />
+            {button}
+          </div>
+        );
+      };
+
+      const testHarness = mountWithApp(<TestHarness />);
+
+      expect(testHarness.find(Modal)).not.toContainReactComponent(Button);
     });
 
     it('does not throw an error when no activator is passed in', () => {
@@ -381,7 +402,7 @@ describe('<Modal>', () => {
       }).not.toThrow();
     });
 
-    it('focuses the activator when the modal is closed', () => {
+    it('focuses the activator when the activator is an element on close', () => {
       const focusSpy = jest.spyOn(focusUtils, 'focusFirstFocusableNode');
 
       const modal = mountWithApp(
@@ -390,8 +411,38 @@ describe('<Modal>', () => {
 
       modal.find(Dialog)!.trigger('onExited');
 
-      expect(document.activeElement).toBe(modal.find(Button)!.domNode);
+      expect(document.activeElement).toBe(modal.find('button')!.domNode);
       expect(focusSpy).toHaveBeenCalledTimes(3);
+    });
+
+    it('focuses the activator when the activator a ref on close', () => {
+      const buttonId = 'buttonId';
+      const TestHarness = () => {
+        const buttonRef = useRef<HTMLDivElement>(null);
+
+        const button = (
+          <div ref={buttonRef}>
+            <Button id={buttonId} />
+          </div>
+        );
+
+        return (
+          <div>
+            <Modal onClose={noop} open activator={buttonRef} />
+            {button}
+          </div>
+        );
+      };
+
+      const testHarness = mountWithApp(<TestHarness />);
+
+      testHarness.find(Modal)!.find(Dialog)!.trigger('onExited');
+
+      expect(document.activeElement).toBe(
+        testHarness.findWhere(
+          (wrap) => wrap.is('button') && wrap.prop('id') === buttonId,
+        )!.domNode,
+      );
     });
   });
 });

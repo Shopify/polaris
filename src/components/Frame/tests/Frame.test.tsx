@@ -15,7 +15,6 @@ import {
   ContextualSaveBar as FrameContextualSavebar,
   Loading as FrameLoading,
 } from '../components';
-import {Button} from '../../Button';
 
 window.matchMedia =
   window.matchMedia ||
@@ -55,7 +54,7 @@ describe('<Frame />', () => {
 
     it('sets focus to the main content target anchor element when the skip to content link is clicked', () => {
       const frame = mountWithApp(<Frame />);
-      const skipLink = frame.find(Button, {children: 'Skip to content'});
+      const skipLink = frame.find('a', {children: 'Skip to content'});
 
       skipLink!.trigger('onClick');
       expect(document.activeElement).toBe(
@@ -324,21 +323,6 @@ describe('<Frame />', () => {
       );
       expect(frame).toContainReactComponent('div', {
         className: 'TopBar TopBar-newDesignLanguage',
-      });
-    });
-
-    it('renders a ContextualSaveBar with a newDesignLanguage class when newDesignLanguage is true', () => {
-      const frame = mountWithApp(
-        <Frame topBar={<div />}>
-          <PolarisLoading />
-        </Frame>,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(frame).toContainReactComponent('div', {
-        className:
-          'ContextualSaveBar ContextualSaveBar-newDesignLanguage startFadeUp',
       });
     });
 

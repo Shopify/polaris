@@ -1,24 +1,26 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {
+  AnalyticsMajor,
+  AppsMajor,
   CirclePlusMinor,
-  DuplicateMinor,
-  PrintMinor,
-  ViewMinor,
+  CustomersMajor,
+  DiscountsMajor,
   HomeMajor,
+  MarketingMajor,
   OrdersMajor,
   ProductsMajor,
-  CustomersMajor,
-  AnalyticsMajor,
-  MarketingMajor,
-  DiscountsMajor,
-  AppsMajor,
   SettingsMajor,
 } from '@shopify/polaris-icons';
 
 import {
   ActionList,
+  Avatar,
+  Badge,
+  Caption,
   Card,
   ContextualSaveBar,
+  DropZone,
+  DropZoneProps,
   FormLayout,
   Frame,
   Layout,
@@ -26,20 +28,16 @@ import {
   Modal,
   Navigation,
   Page,
+  Select,
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
+  Stack,
   TextContainer,
   TextField,
+  Thumbnail,
   Toast,
   TopBar,
-  Badge,
-  Select,
-  DropZone,
-  DropZoneProps,
-  Stack,
-  Caption,
-  Thumbnail,
 } from '../src';
 
 import styles from './DetailsPage.scss';
@@ -59,6 +57,7 @@ export function DetailsPage() {
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [navItemActive, setNavItemActive] = useState('');
+  const [previewValue, setPreviewValue] = useState('');
   const [nameFieldValue, setNameFieldValue] = useState(
     defaultState.current.nameFieldValue,
   );
@@ -134,49 +133,6 @@ export function DetailsPage() {
     },
   ];
 
-  const contextualSaveBarMarkup = isDirty ? (
-    <ContextualSaveBar
-      message="Unsaved changes"
-      saveAction={{
-        onAction: handleSave,
-      }}
-      discardAction={{
-        onAction: handleDiscard,
-        discardConfirmationModal: true,
-      }}
-    />
-  ) : null;
-
-  const userMenuMarkup = (
-    <TopBar.UserMenu
-      actions={userMenuActions}
-      name="Dharma"
-      detail={storeName}
-      initials="D"
-      open={userMenuActive}
-      onToggle={toggleUserMenuActive}
-    />
-  );
-
-  const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
-  );
-
-  const searchFieldMarkup = (
-    <TopBar.SearchField
-      onChange={handleSearchFieldChange}
-      value={searchValue}
-      placeholder="Search"
-    />
-  );
-
   const contextControlMarkup = (
     <div className={styles.ContextControl}>
       <svg
@@ -203,6 +159,46 @@ export function DetailsPage() {
     </div>
   );
 
+  const contextualSaveBarMarkup = isDirty ? (
+    <ContextualSaveBar
+      message="Unsaved changes"
+      saveAction={{
+        onAction: handleSave,
+      }}
+      discardAction={{
+        onAction: handleDiscard,
+        discardConfirmationModal: true,
+      }}
+      contextControl={contextControlMarkup}
+    />
+  ) : null;
+
+  const userMenuMarkup = (
+    <TopBar.UserMenu
+      actions={userMenuActions}
+      name="Dharma"
+      detail={storeName}
+      initials="D"
+      open={userMenuActive}
+      onToggle={toggleUserMenuActive}
+      colorScheme="dark"
+    />
+  );
+
+  const searchResultsMarkup = (
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
+  );
+
+  const searchFieldMarkup = (
+    <TopBar.SearchField
+      onChange={handleSearchFieldChange}
+      value={searchValue}
+      placeholder="Search"
+    />
+  );
+
   const topBarMarkup = (
     <TopBar
       showNavigationToggle
@@ -213,6 +209,7 @@ export function DetailsPage() {
       onSearchResultsDismiss={handleSearchResultsDismiss}
       onNavigationToggle={toggleMobileNavigationActive}
       contextControl={contextControlMarkup}
+      searchResultsOverlayVisible
     />
   );
   // ---- Navigation ----
@@ -420,7 +417,10 @@ export function DetailsPage() {
     {label: 'Last 7 days', value: 'lastWeek'},
   ];
 
-  const handleChange = useCallback((newValue) => setValue(newValue), []);
+  const handleChange = useCallback((newValue) => {
+    setValue(newValue);
+    setPreviewValue(newValue);
+  }, []);
 
   // ---- Dropzone ----
   const [files, setFiles] = useState<File[]>([]);
@@ -459,28 +459,56 @@ export function DetailsPage() {
   // ---- Page markup ----
   const actualPageMarkup = (
     <Page
+      fullWidth
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
       title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
       titleMetadata={<Badge status="success">Success badge</Badge>}
+      additionalNavigation={<Avatar initials="JD" />}
+      primaryAction={{
+        content: 'Save this page',
+        // eslint-disable-next-line no-console
+        onAction: () => console.log('save'),
+      }}
       additionalMetaData="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
       secondaryActions={[
         {
           content: 'Duplicate',
-          icon: DuplicateMinor,
+          // eslint-disable-next-line no-console
+          onAction: () => console.log('duplicate'),
         },
         {
           content: 'View',
-          icon: ViewMinor,
+          // eslint-disable-next-line no-console
+          onAction: () => console.log(previewValue),
         },
         {
           content: 'Print',
-          icon: PrintMinor,
+          // eslint-disable-next-line no-console
+          onAction: () => console.log('print'),
         },
       ]}
       actionGroups={[
         {
+          title: 'Promote',
+          actions: [
+            // eslint-disable-next-line no-console
+            {content: 'Promote', onAction: () => console.log('promote')},
+          ],
+        },
+        {
           title: 'More actions',
-          actions: [{content: 'Embed on a website'}],
+          actions: [
+            {
+              content: 'Embed on a website',
+              // eslint-disable-next-line no-console
+              onAction: () => console.log('embed'),
+            },
+            {
+              content: 'Share',
+              // eslint-disable-next-line no-console
+              onAction: () => console.log('share'),
+            },
+          ],
         },
       ]}
       pagination={{

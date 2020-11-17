@@ -450,8 +450,8 @@ class FiltersInner extends Component<CombinedProps, State> {
     return filter == null ? undefined : filter.label;
   }
 
-  private getAppliedFilterRemoveHandler(key: string): Function | undefined {
-    const { appliedFilters } = this.props;
+  private getAppliedFilterRemoveHandler(key: string) {
+    const {appliedFilters} = this.props;
 
     if (!appliedFilters) {
       return undefined;

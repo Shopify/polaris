@@ -29,7 +29,7 @@
     "Common": {
       "checkbox": "afkrydsningsfelt",
       "undo": "Fortryd",
-      "cancel": "Annullér",
+      "cancel": "Annuller",
       "newWindowAccessibilityHint": "(åbner et nyt vindue)",
       "clear": "Ryd",
       "close": "Luk",
@@ -290,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Flere handlinger"
     }
   }
 }

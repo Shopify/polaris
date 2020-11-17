@@ -1,6 +1,7 @@
 import React, {PureComponent, Children, createRef} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
 
+import {InversableColorScheme, ThemeProvider} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
@@ -47,6 +48,7 @@ export interface PopoverOverlayProps {
   fixed?: boolean;
   hideOnPrint?: boolean;
   onClose(source: PopoverCloseSource): void;
+  colorScheme?: InversableColorScheme;
 }
 
 interface State {
@@ -187,6 +189,8 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       fullHeight,
       fluidContent,
       hideOnPrint,
+      colorScheme,
+      preventAutofocus,
     } = this.props;
 
     const className = classNames(
@@ -208,7 +212,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     const content = (
       <div
         id={id}
-        tabIndex={-1}
+        tabIndex={preventAutofocus ? undefined : -1}
         className={contentClassNames}
         style={contentStyles}
         ref={this.contentNode}
@@ -228,7 +232,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <div className={styles.Wrapper}>{content}</div>
+        <ThemeProvider theme={{colorScheme}}>
+          <div className={styles.Wrapper}>{content}</div>
+        </ThemeProvider>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex

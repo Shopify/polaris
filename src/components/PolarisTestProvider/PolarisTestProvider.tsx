@@ -26,6 +26,10 @@ import {
   UniqueIdFactoryContext,
   globalIdGeneratorFactory,
 } from '../../utilities/unique-id';
+import {
+  PortalsManagerProvider,
+  PortalsContainer,
+} from '../../utilities/portals';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
 type MediaQueryContextType = NonNullable<
@@ -100,11 +104,14 @@ export function PolarisTestProvider({
                 <LinkContext.Provider value={link}>
                   <ThemeContext.Provider value={mergedTheme}>
                     <MediaQueryContext.Provider value={mergedMediaQuery}>
-                      <FocusManager>
-                        <FrameContext.Provider value={mergedFrame}>
-                          {children}
-                        </FrameContext.Provider>
-                      </FocusManager>
+                      <PortalsManagerProvider>
+                        <FocusManager>
+                          <FrameContext.Provider value={mergedFrame}>
+                            {children}
+                          </FrameContext.Provider>
+                        </FocusManager>
+                        <PortalsContainer />
+                      </PortalsManagerProvider>
                     </MediaQueryContext.Provider>
                   </ThemeContext.Provider>
                 </LinkContext.Provider>

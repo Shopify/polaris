@@ -5,7 +5,7 @@ import {useStickyManager} from '../../utilities/sticky-manager';
 
 interface State {
   isSticky: boolean;
-  style: object;
+  style: Record<string, unknown>;
 }
 
 export type StickyProps = {
@@ -119,6 +119,8 @@ class StickyInner extends Component<CombinedProps, State> {
   };
 }
 
+// This should have a typeguard instead of using Function
+// eslint-disable-next-line @typescript-eslint/ban-types
 function isFunction(arg: any): arg is Function {
   return typeof arg === 'function';
 }

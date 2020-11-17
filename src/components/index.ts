@@ -27,7 +27,7 @@ export {Badge} from './Badge';
 export type {BadgeProps} from './Badge';
 
 export {Banner} from './Banner';
-export type {BannerProps, BannerStatus} from './Banner';
+export type {BannerProps, BannerStatus, BannerHandles} from './Banner';
 
 export {Breadcrumbs} from './Breadcrumbs';
 export type {BreadcrumbsProps} from './Breadcrumbs';
@@ -150,7 +150,7 @@ export type {KeypressListenerProps} from './KeypressListener';
 export {KonamiCode} from './KonamiCode';
 export type {KonamiCodeProps} from './KonamiCode';
 
-export {Label} from './Label';
+export {Label, labelID} from './Label';
 export type {LabelProps} from './Label';
 
 export {Labelled} from './Labelled';
@@ -222,10 +222,8 @@ export type {ResourceListProps} from './ResourceList';
 // We want to delete this component, but there's one place in web
 // that still relies on it so we have to keep it.
 // We don't want anyone else using it though, use the Filters component instead
-/* eslint-disable @typescript-eslint/camelcase */
 export {FilterControl as _SECRET_INTERNAL_FilterControl} from './ResourceList';
 export type {FilterControlProps as _SECRET_INTERNAL_FilterControlProps} from './ResourceList';
-/* eslint-enable @typescript-eslint/camelcase */
 
 export type {ResourceListSelectedItems} from '../utilities/resource-list';
 
@@ -303,6 +301,9 @@ export type {TrapFocusProps} from './TrapFocus';
 
 export {Truncate} from './Truncate';
 export type {TruncateProps} from './Truncate';
+
+export {UnstyledButton, unstyledButtonFrom} from './UnstyledButton';
+export type {UnstyledButtonProps} from './UnstyledButton';
 
 export {UnstyledLink} from './UnstyledLink';
 export type {UnstyledLinkProps} from './UnstyledLink';

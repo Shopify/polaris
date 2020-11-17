@@ -5,6 +5,7 @@ import React, {
   useReducer,
   useRef,
   useState,
+  Children,
 } from 'react';
 import debounce from 'lodash/debounce';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
@@ -706,7 +707,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
       aria-busy={loading}
     >
       {loadingOverlay}
-      {items.map(renderItemWithId)}
+      {Children.toArray(items.map(renderItemWithId))}
     </ul>
   ) : null;
 

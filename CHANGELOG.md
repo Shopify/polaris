@@ -8,6 +8,111 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.10.1 - 2020-11-13
+
+### Bug fixes
+
+- Fixed alignment of `Page` and `TopBar` so the search aligns to the page. ([#3610](https://github.com/Shopify/polaris-react/pull/3610))
+- Fixed `TopBar` search clear button alignment on iOS ([#3618](https://github.com/Shopify/polaris-react/pull/3618))
+- Fixed HSB brightness conversion by increasing precision from 2 decimals to 4 ([#3621](https://github.com/Shopify/polaris-react/pull/3621))
+
+## 5.10.0 - 2020-10-30
+
+### Enhancements
+
+- Added `ariaExpanded` prop to `TextField` ([#3589](https://github.com/Shopify/polaris-react/pull/3589))
+- Updated `MediaCard` to accept ReactNode as title and make `primaryAction` optional (thanks to [@devchris](https://github.com/devchris) for the [pull request](https://github.com/Shopify/polaris-react/pull/3552))
+- **`UnstyledButton`:** Added `loading` prop to apply `role` and `aria-busy` attributes ([#3494](https://github.com/Shopify/polaris-react/pull/3494))
+- Optimized `ThemeProvider` to only output its custom properties in nested `ThemeProvider`s when they differ from the parent context ([#3550](https://github.com/Shopify/polaris-react/pull/3550))
+- Generalized Tooltip's `content` prop's type to not only accept string, but any `React.Node`. ([#3559](https://github.com/Shopify/polaris-react/pull/3559))
+- Updated `TopBar` to show the logo when there is no navigation or search fields ([#3523](https://github.com/Shopify/polaris-react/pull/3523))
+- Updated critical `Banner` icon to be a diamond ([#3567](https://github.com/Shopify/polaris-react/pull/3567))
+
+### Bug fixes
+
+- Fixed `SkeletonPage` to make the title font size consistent with the `Page` component ([#3449](https://github.com/Shopify/polaris-react/pull/3449))
+- Removed `Navigation.Item` color change when focused ([#3562](https://github.com/Shopify/polaris-react/pull/3562))
+- Adds monochrome styling to `connectedDisclosure` prop on `Button` component and fix spacing issue ([#3588](https://github.com/Shopify/polaris-react/pull/3588)
+
+### Development workflow
+
+- Updated our CI accessibility checks to use the axe runnner provided by Storybook's a11y addon. Now now errors match between CI and local runs in Storybook ([#3284](https://github.com/Shopify/polaris-react/pull/3284))
+- Updated sewing-kit to 0.140.0 and TypeScript to 4.0.0 ([#3566](https://github.com/Shopify/polaris-react/pull/3566))
+
+### Code quality
+
+- **`Button`:** Reduced redundant code repeated within `UnstyledButton` ([#3494](https://github.com/Shopify/polaris-react/pull/3494))
+
+## 5.9.1 - 2020-10-23
+
+### Bug fixes
+
+- Fixed Button connected disclosure height when button text has more than 2 lines ([#3536](https://github.com/Shopify/polaris-react/pull/3536))
+
+## 5.9.0 - 2020-10-22
+
+### Enhancements
+
+- Updated `Textfield` with a type of number to not render a spinner if step is set to 0 ([#3477](https://github.com/Shopify/polaris-react/pull/3477))
+
+### Bug fixes
+
+- Fixed `Filters` overflow ([#3532](https://github.com/Shopify/polaris-react/pull/3532))
+- Refactored `Portal` to render all `Portals` in a single container ([#3544](https://github.com/Shopify/polaris-react/pull/3544))
+- Fixed `Filters` overflow ([#3532](https://github.com/Shopify/polaris-react/pull/3532))
+
+## 5.8.0 - 2020-10-15
+
+### Bug fixes
+
+- Fixed alignment of badges in navigation items ([#3440](https://github.com/Shopify/polaris-react/pull/3440))
+
+### Documentation
+
+- The Details Page in Storybook now renders the `SearchDismissOverlay` when typing in the search field. ([#3471](https://github.com/Shopify/polaris-react/pull/3471))
+
+## 5.7.0 - 2020-10-09
+
+### Enhancements
+
+- Added `OutlineableAction` to the `ComplexAction` type ([#3405](https://github.com/Shopify/polaris-react/pull/3405))
+- Added `UnstyledButton` component and refactored `Banner` to use it ([#3406](https://github.com/Shopify/polaris-react/pull/3406))
+- Added `prefix` field to `options` prop on `Select` ([#3373](https://github.com/Shopify/polaris-react/pull/3373))
+
+## 5.6.1 - 2020-10-09
+
+### Bug fixes
+
+- Fixed `BulkActions` from hiding child actions ([#3450](https://github.com/Shopify/polaris-react/pull/3450))
+
+## 5.6.0 - 2020-10-03
+
+### Bug fixes
+
+- Added `RefOject` as a possible type for the `activator` prop on `Modal` ([#3395](https://github.com/Shopify/polaris-react/pull/3395))
+- Fixed `Button` from flashing an icon and changing its width when loading ([#3370](https://github.com/Shopify/polaris-react/pull/3370))
+
+## 5.5.0 - 2020-10-02
+
+### Enhancements
+
+- Update `@shopify/polaris-icons` to version 4.0.0 ([#3327](https://github.com/Shopify/polaris-react/pull/3327))
+- Moved `li` wrapper on `ResourceList` to `ResourceListItem` ([#3302](https://github.com/Shopify/polaris-react/pull/3302))
+- Remove `button-base` mixin from `Frame` SkipAnchor ([#3303](https://github.com/Shopify/polaris-react/pull/3303))
+- Updated `Toast` to use `currentColor` for the close icon ([#3324](https://github.com/Shopify/polaris-react/pull/3324))
+- Added `disclosureText` to `Tabs` ([#3331](https://github.com/Shopify/polaris-react/pull/3331))
+- Added underline to links on focus and active ([#3335](https://github.com/Shopify/polaris-react/pull/3335))
+- Added `spacing` prop to `ButtonGroup` ([#3308](https://github.com/Shopify/polaris-react/pull/3308))
+- Added `contextControl` prop to `ContextualSaveBar` ([#3357](https://github.com/Shopify/polaris-react/pull/3357))
+- Added `spacing` prop to `DescriptionList` ([#3359](https://github.com/Shopify/polaris-react/pull/3359))
+- Export `BannerHandles` from `Banner` ([#3368](https://github.com/Shopify/polaris-react/pull/3368))
+- Added `prefix` prop to `ActionList` items ([#3313](https://github.com/Shopify/polaris-react/pull/3313))
+
+### Bug fixes
+
+- Fixes `Badge` when it becomes 2 lines due to small viewport ([#3315](https://github.com/Shopify/polaris-react/pull/3315))
+- Update `DatePicker` layout so that `Popover` can calculate the width correctly ([#3330](https://github.com/Shopify/polaris-react/pull/3330))
+
 ## 5.4.0 - 2020-09-24
 
 ### Enhancements

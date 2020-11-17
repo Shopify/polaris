@@ -10,7 +10,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 @mixin banner-attributes($highlight, $background, $in-page, $tint) {
   transition: box-shadow duration() easing();
   transition-delay: duration(fast);
-  box-shadow: var(--p-banner-border, none);
 
   @media (-ms-high-contrast: active) {
     outline: 1px solid;
@@ -29,6 +28,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     );
     @include focus-ring('wide');
   } @else {
+    box-shadow: var(--p-banner-border, none);
     border-radius: var(--p-border-radius-base, border-radius());
     @include focus-ring('base');
   }
@@ -125,16 +125,25 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 .withinContentContainer {
   padding: spacing(tight) $intermediate-spacing;
 
+  // stylelint-disable selector-max-class
   &.newDesignLanguage {
     $newDesignLanguageSpacing: rem(14px);
     $newDesignLanguageOffset: $newDesignLanguageSpacing - spacing();
     padding: spacing() spacing() $newDesignLanguageSpacing;
 
-    // stylelint-disable-next-line selector-max-class
     .ContentWrapper {
       margin-top: $newDesignLanguageOffset;
     }
+
+    .Dismiss {
+      top: spacing();
+    }
+
+    .Ribbon {
+      padding-right: spacing();
+    }
   }
+  // stylelint-enable selector-max-class
 
   @include banner-variants;
 
@@ -144,11 +153,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
   .Ribbon {
     padding-right: $intermediate-spacing;
-
-    // stylelint-disable-next-line selector-max-combinators, selector-max-class
-    .newDesignLanguage & {
-      padding-right: spacing();
-    }
   }
 
   .Actions {
@@ -205,6 +209,10 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 .hasDismiss {
   padding-right: spacing() + spacing(extra-tight) + control-height();
+
+  &.newDesignLanguage {
+    padding-right: calc(#{2 * spacing()} + var(--p-icon-size));
+  }
 }
 
 .Heading {
@@ -267,9 +275,20 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   transition: box-shadow duration() easing();
 }
 
+.Button {
+  @include button-base;
+  @include text-style-button;
+  @include focus-ring($border-width: rem(2px));
+  color: var(--p-text);
+
+  &:focus {
+    @include focus-ring($style: 'focused');
+  }
+}
+
 .newDesignLanguage {
   // stylelint-disable selector-max-class, selector-max-combinators
-  &.statusCritical .PrimaryAction > button {
+  &.statusCritical .PrimaryAction .Button {
     border-color: var(--p-border-critical-subdued);
     background: var(--p-surface-critical-subdued);
 
@@ -289,7 +308,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     }
   }
 
-  &.statusWarning .PrimaryAction > button {
+  &.statusWarning .PrimaryAction .Button {
     border-color: var(--p-border-warning-subdued);
     background: var(--p-surface-warning-subdued);
 
@@ -309,7 +328,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     }
   }
 
-  &.statusInfo .PrimaryAction > button {
+  &.statusInfo .PrimaryAction .Button {
     border-color: var(--p-border-highlight-subdued);
     background: var(--p-surface-highlight-subdued);
 
@@ -329,7 +348,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     }
   }
 
-  &.statusSuccess .PrimaryAction > button {
+  &.statusSuccess .PrimaryAction .Button {
     border-color: var(--p-border-success-subdued);
     background: var(--p-surface-success-subdued);
 

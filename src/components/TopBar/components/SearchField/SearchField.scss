@@ -4,8 +4,7 @@
 $icon-size: rem(20px);
 $input-height: rem(34px);
 $new-input-height: rem(36px);
-$clear-button-width: $icon-size + spacing();
-$new-search-max-width: rem(580px);
+$search-icon-width: $icon-size + spacing();
 
 $stacking-order: (
   backdrop: 1,
@@ -25,6 +24,7 @@ $stacking-order: (
 }
 
 .SearchField-newDesignLanguage {
+  z-index: z-index(modal, $fixed-element-stacking-order);
   max-width: $new-search-max-width;
 
   .Backdrop {
@@ -56,7 +56,7 @@ $stacking-order: (
 
 .Input:focus {
   ~ .Backdrop {
-    background-color: var(--p-action-secondary, color('white'));
+    background-color: var(--p-on-surface-background, color('white'));
   }
 
   ~ .BackdropShowFocusBorder {
@@ -64,13 +64,13 @@ $stacking-order: (
   }
 
   ~ .Icon {
-    @include recolor-icon(var(--p-icon-subdued, color('ink', 'lightest')));
+    @include recolor-icon(var(--p-icon, color('ink', 'lightest')));
   }
 }
 
 .focused {
   .Backdrop {
-    background-color: var(--p-action-secondary, color('white'));
+    background-color: var(--p-on-surface-background, color('white'));
   }
 
   .BackdropShowFocusBorder {
@@ -78,16 +78,16 @@ $stacking-order: (
   }
 
   .Icon {
-    @include recolor-icon(var(--p-icon-subdued, color('ink', 'lightest')));
+    @include recolor-icon(var(--p-icon, color('ink', 'lightest')));
   }
 }
 
 .Input {
   @include text-style-input;
   z-index: z-index(input, $stacking-order);
-  width: calc(100% - #{$clear-button-width});
+  width: calc(100% - #{$search-icon-width});
   height: $input-height;
-  padding: 0 0 0 $clear-button-width;
+  padding: 0 0 0 $search-icon-width;
   border: none;
   background-color: transparent;
   outline: none;
@@ -133,11 +133,10 @@ $stacking-order: (
   @include focus-ring($size: 'wide');
   position: relative;
   z-index: z-index(action, $stacking-order);
-  align-self: stretch;
   border: none;
   appearance: none;
   background: transparent;
-  width: $clear-button-width;
+  padding: spacing(tight);
 
   &:focus,
   &:hover {
@@ -178,7 +177,7 @@ $stacking-order: (
 @keyframes toLightBackground {
   to {
     background-color: var(
-      --p-action-secondary,
+      --p-surface-neutral,
       var(--top-bar-background-lighter)
     );
   }

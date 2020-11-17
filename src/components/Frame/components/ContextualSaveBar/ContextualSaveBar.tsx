@@ -21,6 +21,7 @@ export function ContextualSaveBar({
   saveAction,
   discardAction,
   fullWidth,
+  contextControl,
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
   const {logo} = useTheme();
@@ -96,11 +97,16 @@ export function ContextualSaveBar({
     <Image style={{width}} source={logo.contextualSaveBarSource || ''} alt="" />
   );
 
-  const logoMarkup = alignContentFlush ? null : (
-    <div className={styles.LogoContainer} style={{width}}>
-      {imageMarkup}
-    </div>
-  );
+  const logoMarkup =
+    alignContentFlush || contextControl ? null : (
+      <div className={styles.LogoContainer} style={{width}}>
+        {imageMarkup}
+      </div>
+    );
+
+  const contextControlMarkup = contextControl ? (
+    <div className={styles.ContextControl}>{contextControl}</div>
+  ) : null;
 
   const contexualSaveBarClassName = classNames(
     styles.ContextualSaveBar,
@@ -116,6 +122,7 @@ export function ContextualSaveBar({
     <>
       <ThemeProvider theme={{colorScheme: 'inverse'}}>
         <div className={contexualSaveBarClassName}>
+          {contextControlMarkup}
           {logoMarkup}
           <div className={contentsClassName}>
             <h2 className={styles.Message}>{message}</h2>

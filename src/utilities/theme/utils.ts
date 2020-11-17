@@ -21,7 +21,7 @@ interface CustomPropertiesConfig extends ThemeConfig {
   colorScheme: ColorScheme;
 }
 
-export function buildCustomProperties(
+export function buildCustomPropertiesNoMemo(
   themeConfig: CustomPropertiesConfig,
   newDesignLanguage: boolean,
   tokens?: Record<string, string>,
@@ -55,7 +55,7 @@ export function buildThemeContext(
   };
 }
 
-function toString(obj?: CustomPropertiesLike) {
+export function toString(obj?: CustomPropertiesLike) {
   if (obj) {
     return Object.entries(obj)
       .map((pair) => pair.join(':'))
@@ -210,3 +210,17 @@ function parseColors([baseName, colors]: [
 
   return colorPairs;
 }
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+function memoize(fnToMemoize: Function) {
+  const cache: Map<string, any> = new Map();
+  return function (...args: any[]) {
+    const key = JSON.stringify([fnToMemoize.name, args]);
+    if (cache.get(key) === undefined) {
+      cache.set(key, fnToMemoize(...args));
+    }
+    return cache.get(key);
+  };
+}
+
+export const buildCustomProperties = memoize(buildCustomPropertiesNoMemo);

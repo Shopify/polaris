@@ -119,11 +119,9 @@ $stacking-order: (
 .Icon {
   transition: color duration() easing();
 
-  &:first-child {
-    // This compensates for the typical icon used in buttons being
-    // inset within its bounding box.
-    margin-left: -(spacing(extra-tight));
-  }
+  // This compensates for the typical icon used in buttons being
+  // inset within its bounding box.
+  margin-left: -(spacing(extra-tight));
 
   &:last-child {
     // This compensates for the disclosure icon, which is substantially
@@ -136,6 +134,10 @@ $stacking-order: (
   + *:not(.Icon) {
     margin-left: spacing(extra-tight);
   }
+}
+
+.Hidden {
+  visibility: hidden;
 }
 
 .Spinner {
@@ -257,6 +259,11 @@ $stacking-order: (
   &.disabled {
     color: transparent;
   }
+}
+
+// stylelint-disable-next-line selector-max-class, selector-max-specificity
+.newDesignLanguage.loading.disabled svg {
+  fill: var(--p-icon-subdued);
 }
 
 .pressed {
@@ -536,9 +543,12 @@ $stacking-order: (
   padding: $slim-vertical-padding spacing(base-tight);
 
   &.newDesignLanguage {
-    // Local override for slim button height.
+    // Local override for slim button height and padding
     $slim-min-height: rem(28px);
+    $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) /
+      2;
     min-height: $slim-min-height;
+    padding: $slim-vertical-padding spacing(base-tight);
   }
 }
 
@@ -720,7 +730,6 @@ $stacking-order: (
 
 .ConnectedDisclosureWrapper {
   display: flex;
-  align-items: center;
 }
 
 .ConnectedDisclosure {
@@ -728,6 +737,7 @@ $stacking-order: (
   margin-left: -(border-width());
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  height: 100%;
 
   // Because the outline border color has a 40% opacity, the left border appears darker than the rest of the borders because they are layered over one another. Reducing the opacity to zero for the connected disclosure when not focused gives us the expected border color.
   &.outline:not(:focus) {
@@ -740,9 +750,20 @@ $stacking-order: (
   }
 
   &.newDesignLanguage {
-    margin-left: rem(1px);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+
+    // stylelint-disable selector-max-class, selector-max-specificity
+    &.primary,
+    &.destructive {
+      margin-left: rem(1px);
+
+      &.outline {
+        margin-left: 0;
+        border-left: 0;
+      }
+    }
+    // stylelint-enable selector-max-class, selector-max-specificity
 
     &::after {
       border-top-left-radius: 0;
@@ -767,6 +788,11 @@ $stacking-order: (
     border-radius: 0;
     border-top-right-radius: var(--p-border-radius-base, border-radius());
     border-bottom-right-radius: var(--p-border-radius-base, border-radius());
+  }
+
+  > :last-child:first-child .Button,
+  > :last-child:first-child .Button::after {
+    border-radius: var(--p-border-radius-base, border-radius());
   }
 }
 

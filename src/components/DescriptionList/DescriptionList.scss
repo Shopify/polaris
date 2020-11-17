@@ -18,9 +18,17 @@ $breakpoint: 550px;
   @include text-emphasis-strong;
   padding: spacing() 0 spacing(tight);
 
+  .spacingTight & {
+    padding: spacing(tight) 0 spacing(extra-tight);
+  }
+
   @include page-content-breakpoint-after($breakpoint) {
     flex: 0 1 25%;
     padding: spacing() spacing() spacing() 0;
+
+    .spacingTight & {
+      padding: spacing(tight) spacing(tight) spacing(tight) 0;
+    }
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
     .Description + & + .Description {
@@ -33,6 +41,10 @@ $breakpoint: 550px;
   margin-left: 0;
   padding: 0 0 spacing();
 
+  .spacingTight & {
+    padding: 0 0 spacing(tight);
+  }
+
   + .Term {
     border-top: border('divider');
   }
@@ -40,6 +52,10 @@ $breakpoint: 550px;
   @include page-content-breakpoint-after($breakpoint) {
     flex: 1 1 51%;
     padding: spacing() 0;
+
+    .spacingTight & {
+      padding: spacing(tight) 0;
+    }
 
     // stylelint-disable-next-line selector-max-class, selector-max-combinators
     + .Term + .Description {
