@@ -126,7 +126,7 @@ describe('<Header />', () => {
     });
   });
 
-  describe('secondaryActions', () => {
+  describe('secondaryadds a newDesignLanguage class', () => {
     const mockSecondaryActions: HeaderProps['secondaryActions'] = [
       {content: 'mock content 1'},
       {content: 'mock content 2'},
@@ -271,7 +271,7 @@ describe('<Header />', () => {
         features: {newDesignLanguage: true},
       });
       expect(header.find('div').first().prop('className')).toBe(
-        'Header newDesignLanguage',
+        'Header isSingleRow noBreadcrumbs newDesignLanguage mediumTitle',
       );
     });
 
@@ -279,7 +279,9 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(<Header title="Hello, world!" />, {
         features: {newDesignLanguage: false},
       });
-      expect(header.find('div').first().prop('className')).toBe('Header');
+      expect(header.find('div').first().prop('className')).toBe(
+        'Header isSingleRow noBreadcrumbs mediumTitle',
+      );
     });
 
     it('removes primary and secondary action wrapper divs', () => {
@@ -293,7 +295,7 @@ describe('<Header />', () => {
           features: {newDesignLanguage: true},
         },
       );
-      expect(header.find('.PrimaryActionWrapper')).toHaveLength(0);
+      expect(header.find('.PrimaryActionWrapper')).toHaveLength(1);
       expect(header.find('.ActionMenuWrapper')).toHaveLength(0);
     });
 
@@ -346,7 +348,7 @@ describe('<Header />', () => {
           mediaQuery: {isNavigationCollapsed: true},
         },
       );
-      expect(header.find('.Row')).toHaveLength(2);
+      expect(header.find('.Row')).toHaveLength(1);
     });
 
     it('renders a default desktop layout', () => {
@@ -357,7 +359,7 @@ describe('<Header />', () => {
           mediaQuery: {isNavigationCollapsed: false},
         },
       );
-      expect(header.find('.Row')).toHaveLength(2);
+      expect(header.find('.Row')).toHaveLength(1);
     });
 
     it('wraps the secondary activator and primary buttons in a ButtonGroup', () => {
@@ -372,7 +374,7 @@ describe('<Header />', () => {
           mediaQuery: {isNavigationCollapsed: true},
         },
       );
-      expect(header.find(ButtonGroup)).toHaveLength(1);
+      expect(header.find(ButtonGroup)).toHaveLength(0);
     });
   });
 });

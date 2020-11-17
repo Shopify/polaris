@@ -1,4 +1,4 @@
-import React, {createRef} from 'react';
+import React, {Component, createRef} from 'react';
 import {
   SearchMinor,
   ChevronUpMinor,
@@ -12,6 +12,7 @@ import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
 import {useFeatures} from '../../utilities/features';
 import {focusFirstFocusableNode} from '../../utilities/focus';
+import {WithinFilterContext} from '../../utilities/within-filter-context';
 import {Button} from '../Button';
 import {DisplayText} from '../DisplayText';
 import {Collapsible} from '../Collapsible';
@@ -108,7 +109,7 @@ enum Suffix {
   Shortcut = 'Shortcut',
 }
 
-class FiltersInner extends React.Component<CombinedProps, State> {
+class FiltersInner extends Component<CombinedProps, State> {
   static contextType = ResourceListContext;
 
   state: State = {
@@ -143,14 +144,14 @@ class FiltersInner extends React.Component<CombinedProps, State> {
     const {open, readyForFocus} = this.state;
 
     const backdropMarkup = open ? (
-      <React.Fragment>
+      <>
         <ScrollLock />
         <div
           className={styles.Backdrop}
           onClick={this.closeFilters}
           testID="Backdrop"
         />
-      </React.Fragment>
+      </>
     ) : null;
 
     const filtersContentMarkup = filters.map((filter, index) => {
@@ -420,14 +421,16 @@ class FiltersInner extends React.Component<CombinedProps, State> {
     ) : null;
 
     return (
-      <div className={styles.Filters}>
-        {filtersControlMarkup}
-        {filtersContainerMarkup}
-        {tagsMarkup}
-        {helpTextMarkup}
-        {backdropMarkup}
-        <KeypressListener keyCode={Key.Escape} handler={this.closeFilters} />
-      </div>
+      <WithinFilterContext.Provider value>
+        <div className={styles.Filters}>
+          {filtersControlMarkup}
+          {filtersContainerMarkup}
+          {tagsMarkup}
+          {helpTextMarkup}
+          {backdropMarkup}
+          <KeypressListener keyCode={Key.Escape} handler={this.closeFilters} />
+        </div>
+      </WithinFilterContext.Provider>
     );
   }
 
@@ -451,7 +454,7 @@ class FiltersInner extends React.Component<CombinedProps, State> {
     return filter == null ? undefined : filter.label;
   }
 
-  private getAppliedFilterRemoveHandler(key: string): Function | undefined {
+  private getAppliedFilterRemoveHandler(key: string) {
     const {appliedFilters} = this.props;
 
     if (!appliedFilters) {

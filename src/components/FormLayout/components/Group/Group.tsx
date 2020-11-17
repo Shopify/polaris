@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Children} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
@@ -41,7 +41,7 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
     );
   }
 
-  const itemsMarkup = React.Children.map(children, (child) =>
+  const itemsMarkup = Children.map(children, (child) =>
     wrapWithComponent(child, Item, {}),
   );
 

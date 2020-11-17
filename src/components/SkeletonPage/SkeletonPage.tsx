@@ -1,8 +1,10 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {DisplayText} from '../DisplayText';
+import {TextStyle} from '../TextStyle';
 import {SkeletonDisplayText} from '../SkeletonDisplayText';
 import {SkeletonBodyText} from '../SkeletonBodyText';
 
@@ -35,11 +37,13 @@ export function SkeletonPage({
   breadcrumbs,
 }: SkeletonPageProps) {
   const i18n = useI18n();
+  const {newDesignLanguage} = useFeatures();
 
   const className = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,
     narrowWidth && styles.narrowWidth,
+    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const headerClassName = classNames(
@@ -48,7 +52,11 @@ export function SkeletonPage({
     secondaryActions && styles['Header-hasSecondaryActions'],
   );
 
-  const titleMarkup = title !== null ? renderTitle(title) : null;
+  const titleMarkup = (
+    <div className={styles.Title}>
+      <SkeletonPageTitle title={title} newDesignLanguage={newDesignLanguage} />
+    </div>
+  );
 
   const primaryActionMarkup = primaryAction ? (
     <div className={styles.PrimaryAction}>
@@ -98,14 +106,26 @@ function renderSecondaryActions(actionCount: number) {
   return <div className={styles.Actions}>{actions}</div>;
 }
 
-function renderTitle(title: string) {
-  const titleContent =
-    title === '' ? (
-      <SkeletonDisplayText size="large" />
+function SkeletonPageTitle({
+  title = '',
+  newDesignLanguage = false,
+}: {
+  title?: string;
+  newDesignLanguage?: boolean;
+}) {
+  if (title) {
+    return newDesignLanguage ? (
+      <h1 className={styles.newDesignLanguageTitle}>{title}</h1>
     ) : (
       <DisplayText size="large" element="h1">
-        {title}
+        <TextStyle variation="strong">{title}</TextStyle>
       </DisplayText>
     );
-  return <div className={styles.Title}>{titleContent}</div>;
+  }
+
+  if (newDesignLanguage) {
+    return <div className={styles.newDesignLanguageSkeletonTitle} />;
+  }
+
+  return <SkeletonDisplayText size="large" />;
 }

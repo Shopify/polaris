@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import {getRectForNode} from '../../utilities/geometry';
 import {useStickyManager} from '../../utilities/sticky-manager';
 
 interface State {
   isSticky: boolean;
-  style: object;
+  style: Record<string, unknown>;
 }
 
 export type StickyProps = {
@@ -24,7 +24,7 @@ type CombinedProps = StickyProps & {
   stickyManager: ReturnType<typeof useStickyManager>;
 };
 
-class StickyInner extends React.Component<CombinedProps, State> {
+class StickyInner extends Component<CombinedProps, State> {
   state: State = {
     isSticky: false,
     style: {},
@@ -119,6 +119,8 @@ class StickyInner extends React.Component<CombinedProps, State> {
   };
 }
 
+// This should have a typeguard instead of using Function
+// eslint-disable-next-line @typescript-eslint/ban-types
 function isFunction(arg: any): arg is Function {
   return typeof arg === 'function';
 }

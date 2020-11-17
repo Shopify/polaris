@@ -1,4 +1,4 @@
-import React from 'react';
+import {PureComponent} from 'react';
 
 interface BaseEventProps {
   event: string;
@@ -11,10 +11,7 @@ export interface EventListenerProps extends BaseEventProps {
 }
 
 // see https://github.com/oliviertassinari/react-event-listener/
-export class EventListener extends React.PureComponent<
-  EventListenerProps,
-  never
-> {
+export class EventListener extends PureComponent<EventListenerProps, never> {
   componentDidMount() {
     this.attachListener();
   }

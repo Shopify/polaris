@@ -180,7 +180,7 @@ function TopBarExample() {
   const theme = {
     colors: {
       topBar: {
-        background: '#357997',
+        background: '#225062',
       },
     },
     logo: {
@@ -211,14 +211,9 @@ function TopBarExample() {
   );
 
   const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
   );
 
   const searchFieldMarkup = (
@@ -234,7 +229,7 @@ function TopBarExample() {
     <TopBar.Menu
       activatorContent={
         <span>
-          <Icon source={QuestionMarkMajorTwotone} />
+          <Icon source={QuestionMarkMajor} />
           <VisuallyHidden>Secondary menu</VisuallyHidden>
         </span>
       }
@@ -357,14 +352,9 @@ function TopBarExample() {
   );
 
   const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
   );
 
   const searchFieldMarkup = (
@@ -500,14 +490,9 @@ function TopBarExample() {
   );
 
   const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
   );
 
   const searchFieldMarkup = (

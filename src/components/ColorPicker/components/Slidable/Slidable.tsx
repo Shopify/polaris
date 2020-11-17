@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import {isServer} from '../../../../utilities/target';
 import {EventListener} from '../../../EventListener';
@@ -41,7 +41,7 @@ if (!isServer) {
   );
 }
 
-export class Slidable extends React.PureComponent<SlidableProps, State> {
+export class Slidable extends PureComponent<SlidableProps, State> {
   state: State = {
     dragging: false,
   };

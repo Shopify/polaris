@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {Component, createRef, useContext} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import isEqual from 'lodash/isEqual';
 
@@ -88,7 +88,7 @@ const getUniqueCheckboxID = globalIdGeneratorFactory(
 );
 const getUniqueOverlayID = globalIdGeneratorFactory('ResourceListItemOverlay');
 
-class BaseResourceItem extends React.Component<CombinedProps, State> {
+class BaseResourceItem extends Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
     const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
 
@@ -109,7 +109,7 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
   private node: HTMLDivElement | null = null;
   private checkboxId = getUniqueCheckboxID();
   private overlayId = getUniqueOverlayID();
-  private buttonOverlay = React.createRef<HTMLButtonElement>();
+  private buttonOverlay = createRef<HTMLButtonElement>();
 
   shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
     const {
@@ -213,6 +213,12 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
       selectMode && styles.selectMode,
       persistActions && styles.persistActions,
       focusedInner && styles.focusedInner,
+    );
+
+    const listItemClassName = classNames(
+      styles.ListItem,
+      focused && !focusedInner && styles.focused,
+      newDesignLanguage && styles.newDesignLanguage,
     );
 
     let actionsMarkup: React.ReactNode | null = null;
@@ -321,20 +327,24 @@ class BaseResourceItem extends React.Component<CombinedProps, State> {
     );
 
     return (
-      <div
-        ref={this.setNode}
-        className={className}
-        onClick={this.handleClick}
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}
-        onKeyUp={this.handleKeyUp}
-        onMouseOut={this.handleMouseOut}
-        testID="Item-Wrapper"
-        data-href={url}
-      >
-        {accessibleMarkup}
-        {containerMarkup}
-      </div>
+      <li className={listItemClassName}>
+        <div className={styles.ItemWrapper}>
+          <div
+            ref={this.setNode}
+            className={className}
+            onClick={this.handleClick}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onKeyUp={this.handleKeyUp}
+            onMouseOut={this.handleMouseOut}
+            testID="Item-Wrapper"
+            data-href={url}
+          >
+            {accessibleMarkup}
+            {containerMarkup}
+          </div>
+        </div>
+      </li>
     );
   }
 

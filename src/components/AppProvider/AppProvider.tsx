@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import type {ThemeConfig} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
@@ -20,6 +20,10 @@ import {
   UniqueIdFactoryContext,
   globalIdGeneratorFactory,
 } from '../../utilities/unique-id';
+import {
+  PortalsManagerProvider,
+  PortalsContainer,
+} from '../../utilities/portals';
 
 import './AppProvider.scss';
 
@@ -41,7 +45,7 @@ export interface AppProviderProps {
   children?: React.ReactNode;
 }
 
-export class AppProvider extends React.Component<AppProviderProps, State> {
+export class AppProvider extends Component<AppProviderProps, State> {
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
   private uniqueIdFactory: UniqueIdFactory;
@@ -99,7 +103,10 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
                 <LinkContext.Provider value={link}>
                   <ThemeProvider theme={theme}>
                     <MediaQueryProvider>
-                      <FocusManager>{children}</FocusManager>
+                      <PortalsManagerProvider>
+                        <FocusManager>{children}</FocusManager>
+                        <PortalsContainer />
+                      </PortalsManagerProvider>
                     </MediaQueryProvider>
                   </ThemeProvider>
                 </LinkContext.Provider>

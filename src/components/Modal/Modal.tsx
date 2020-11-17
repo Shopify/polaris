@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useRef} from 'react';
 import {TransitionGroup} from 'react-transition-group';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
@@ -55,8 +55,8 @@ export interface ModalProps extends FooterProps {
   onTransitionEnd?(): void;
   /** Callback when the bottom of the modal content is reached */
   onScrolledToBottom?(): void;
-  /** The element to activate the Modal */
-  activator?: React.ReactElement;
+  /** The element or the RefObject that activates the Modal */
+  activator?: React.RefObject<HTMLElement> | React.ReactElement;
 }
 
 export const Modal: React.FunctionComponent<ModalProps> & {
@@ -84,7 +84,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
 
   const headerId = useUniqueId('modal-header');
-  const activatorRef = React.useRef<HTMLDivElement>(null);
+  const activatorRef = useRef<HTMLDivElement>(null);
 
   const i18n = useI18n();
   const iframeTitle = i18n.translate('Polaris.Modal.iFrameTitle');
@@ -101,11 +101,14 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   const handleExited = useCallback(() => {
     setIframeHeight(IFRAME_LOADING_HEIGHT);
 
-    const activatorElement = activatorRef.current;
+    const activatorElement =
+      activator && isRef(activator)
+        ? activator && activator.current
+        : activatorRef.current;
     if (activatorElement) {
       requestAnimationFrame(() => focusFirstFocusableNode(activatorElement));
     }
-  }, []);
+  }, [activator]);
 
   const handleIFrameLoad = useCallback(
     (evt: React.SyntheticEvent<HTMLIFrameElement>) => {
@@ -198,9 +201,14 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 
   const animated = !instant;
 
+  const activatorMarkup =
+    activator && !isRef(activator) ? (
+      <div ref={activatorRef}>{activator}</div>
+    ) : null;
+
   return (
     <WithinContentContext.Provider value>
-      {activator && <div ref={activatorRef}>{activator}</div>}
+      {activatorMarkup}
       <Portal idPrefix="modal">
         <TransitionGroup appear={animated} enter={animated} exit={animated}>
           {dialog}
@@ -210,5 +218,11 @@ export const Modal: React.FunctionComponent<ModalProps> & {
     </WithinContentContext.Provider>
   );
 };
+
+function isRef(
+  ref: React.RefObject<HTMLElement> | React.ReactElement,
+): ref is React.RefObject<HTMLElement> {
+  return Object.prototype.hasOwnProperty.call(ref, 'current');
+}
 
 Modal.Section = Section;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'test-utilities';
@@ -54,8 +54,9 @@ describe('<Frame />', () => {
 
     it('sets focus to the main content target anchor element when the skip to content link is clicked', () => {
       const frame = mountWithApp(<Frame />);
+      const skipLink = frame.find('a', {children: 'Skip to content'});
 
-      frame.find('a', {children: 'Skip to content'})!.trigger('onClick');
+      skipLink!.trigger('onClick');
       expect(document.activeElement).toBe(
         frame.find('a', {id: 'AppFrameMainContent'})!.domNode,
       );
@@ -63,7 +64,7 @@ describe('<Frame />', () => {
 
     it('sets focus to target element when the skip to content link is clicked', () => {
       const targetId = 'SkipToContentTarget';
-      const targetRef = React.createRef<HTMLAnchorElement>();
+      const targetRef = createRef<HTMLAnchorElement>();
 
       const skipToContentTarget = (
         // eslint-disable-next-line jsx-a11y/anchor-is-valid
@@ -322,21 +323,6 @@ describe('<Frame />', () => {
       );
       expect(frame).toContainReactComponent('div', {
         className: 'TopBar TopBar-newDesignLanguage',
-      });
-    });
-
-    it('renders a ContextualSaveBar with a newDesignLanguage class when newDesignLanguage is true', () => {
-      const frame = mountWithApp(
-        <Frame topBar={<div />}>
-          <PolarisLoading />
-        </Frame>,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(frame).toContainReactComponent('div', {
-        className:
-          'ContextualSaveBar ContextualSaveBar-newDesignLanguage startFadeUp',
       });
     });
 

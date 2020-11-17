@@ -76,9 +76,10 @@ export function styles({
 
   function generateBundleStandalone(rollup, generateOptions, bundle) {
     // generateBundle gets called once per call to bundle.write(). We call
-    // that twice - one for the cjs build (index.js), one for the esm build
-    // (index.es.js). We only want to do perform this logic once though
-    if (!generateOptions.file.endsWith('/index.js')) {
+    // that twice - once for the commonjs build (the index.js file), once for
+    // the esm build (the esm folder). We only want to do perform this logic
+    // once in the commonjs build
+    if (!(generateOptions.file && generateOptions.format === 'cjs')) {
       return;
     }
 

@@ -213,7 +213,9 @@
           "on_or_after": "jälkeen {date}"
         }
       },
-      "showingTotalCount": "Näytetään {itemsCount}/{totalItemsCount} {resource}"
+      "showingTotalCount": "Näytetään {itemsCount}/{totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Kaikki tämän suodattimen {itemsLength}+ {resourceNamePlural} on valittu.",
+      "selectAllFilteredItems": "Valitse kaikki tämän suodattimen {itemsLength}+ {resourceNamePlural}"
     },
     "SkeletonPage": {
       "loadingLabel": "Sivu latautuu"
@@ -288,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Lisää toimintoja"
     }
   }
 }

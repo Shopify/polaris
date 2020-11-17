@@ -213,7 +213,9 @@
           "on_or_after": "หลัง {date}"
         }
       },
-      "showingTotalCount": "แสดง {itemsCount} ของ {totalItemsCount} {resource}"
+      "showingTotalCount": "แสดง {itemsCount} ของ {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "เลือก {itemsLength} + {resourceNamePlural} ทั้งหมดในตัวกรองนี้แล้ว",
+      "selectAllFilteredItems": "เลือก {itemsLength} + {resourceNamePlural} ทั้งหมดในตัวกรองนี้"
     },
     "SkeletonPage": {
       "loadingLabel": "กำลังโหลดหน้า"
@@ -288,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "การดำเนินการเพิ่มเติม"
     }
   }
 }

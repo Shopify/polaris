@@ -213,7 +213,9 @@
           "on_or_after": "etter {date}"
         }
       },
-      "showingTotalCount": "Viser {itemsCount} av {totalItemsCount} {resource}"
+      "showingTotalCount": "Viser {itemsCount} av {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} i dette filteret er valgt.",
+      "selectAllFilteredItems": "Velg alle {itemsLength}+ {resourceNamePlural} i dette filteret"
     },
     "SkeletonPage": {
       "loadingLabel": "Siden laster"
@@ -288,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Flere handlinger"
     }
   }
 }

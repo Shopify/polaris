@@ -13,6 +13,10 @@ $relative-size: $primary-basis / $secondary-basis;
   align-items: flex-start;
   margin-top: -1 * spacing(loose);
   margin-left: -1 * spacing(loose);
+
+  &.newDesignLanguage {
+    margin-top: -1 * spacing();
+  }
 }
 
 .Section {
@@ -50,10 +54,18 @@ $relative-size: $primary-basis / $secondary-basis;
   margin-top: spacing(loose);
   margin-left: spacing(loose);
 
+  .newDesignLanguage & {
+    margin-top: spacing();
+  }
+
   + .AnnotatedSection {
     @include page-content-when-not-fully-condensed {
       padding-top: spacing(loose);
-      border-top: border();
+      border-top: border('divider');
+      // stylelint-disable-next-line selector-max-combinators, selector-max-class
+      .newDesignLanguage & {
+        padding-top: spacing();
+      }
     }
   }
 }
@@ -63,6 +75,10 @@ $relative-size: $primary-basis / $secondary-basis;
   flex-wrap: wrap;
   margin-top: -1 * spacing(loose);
   margin-left: -1 * spacing(loose);
+
+  .newDesignLanguage & {
+    margin-top: -1 * spacing();
+  }
 }
 
 .AnnotationContent {
@@ -88,6 +104,10 @@ $relative-size: $primary-basis / $secondary-basis;
   max-width: calc(100% - #{spacing(loose)});
   margin-top: spacing(loose);
   margin-left: spacing(loose);
+
+  .newDesignLanguage & {
+    margin-top: spacing();
+  }
 }
 
 .AnnotationDescription {

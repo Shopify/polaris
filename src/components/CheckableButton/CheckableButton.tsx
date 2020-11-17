@@ -1,13 +1,13 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useContext, useRef, useEffect} from 'react';
 
-import type {CheckboxHandles} from '../../../../types';
-import {useFeatures} from '../../../../utilities/features';
-import {classNames} from '../../../../utilities/css';
-import {Checkbox} from '../../../Checkbox';
+import type {CheckboxHandles} from '../../types';
+import {useFeatures} from '../../utilities/features';
+import {classNames} from '../../utilities/css';
+import {Checkbox} from '../Checkbox';
 import {
   ResourceListContext,
   CheckableButtonKey,
-} from '../../../../utilities/resource-list';
+} from '../../utilities/resource-list';
 
 import styles from './CheckableButton.scss';
 
@@ -37,7 +37,7 @@ export function CheckableButton({
   const checkBoxRef = useRef<CheckboxHandles>(null);
   const {newDesignLanguage} = useFeatures();
 
-  const {registerCheckableButtons} = React.useContext(ResourceListContext);
+  const {registerCheckableButtons} = useContext(ResourceListContext);
 
   let currentKey: CheckableButtonKey = 'bulkLg';
 

@@ -2,16 +2,16 @@ import {useEffect} from 'react';
 
 import {useDeepCompareRef} from './use-deep-compare-ref';
 
-type DependencyList = ReadonlyArray<unknown>;
+type DependencyList = readonly unknown[];
 
 type Comparator = (a: DependencyList, b: DependencyList) => boolean;
 
 /**
- * A replacement for React.useEffect that'll allow for custom and deep
+ * A replacement for React's useEffect that'll allow for custom and deep
  * compares of the dependency list.
  * @see {@link https://reactjs.org/docs/hooks-reference.html#useeffect}
- * @param callback Accepts a callback that's forwarded to React.useEffect
- * @param dependencies A dependency array similar to React.useEffect however it utilizes a deep compare
+ * @param callback Accepts a callback that's forwarded to React's useEffect
+ * @param dependencies A dependency array similar to React's useEffect however it utilizes a deep compare
  * @param customCompare Opportunity to provide a custom compare function
  * @example
  * function ComponentExample() {

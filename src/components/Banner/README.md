@@ -43,7 +43,7 @@ Banners should:
   - Banners relevant to an entire page should be placed at the top of that page, below the page header. They should occupy the full width of the content area.
   - Banners related to a section of a page (like a card,
     popover, or modal) should be placed inside that section, below any section heading. These banners have less spacing and a pared-back design to fit within a content context.
-  - Banners related to an element more specific that a section should be placed immediately above or below that element.
+  - Banners related to an element more specific than a section should be placed immediately above or below that element.
 - Focus on a single theme, piece of information, or required action to avoid
   overwhelming merchants.
 - Be dismissible unless they contain critical information or an important step merchants need to take.
@@ -261,7 +261,8 @@ Use when you want merchants to take an action after reading the banner.
 <Banner
   title="Some of your product variants are missing weights"
   status="warning"
-  action={{content: 'Edit variant weights'}}
+  action={{content: 'Edit variant weights', url: ''}}
+  secondary={{content: 'Learn more', url: ''}}
   onDismiss={() => {}}
 >
   <p>
@@ -290,7 +291,8 @@ Use to update merchants about a change or give them advice.
 ```jsx
 <Banner
   title="USPS has updated their rates"
-  action={{content: 'Learn more'}}
+  action={{content: 'Update rates', url: ''}}
+  secondaryAction={{content: 'Learn more'}}
   status="info"
   onDismiss={() => {}}
 >
@@ -512,7 +514,7 @@ Banners inside of the navigation render with less spacing and a pared-back desig
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: HomeMajorMonotone,
+        icon: HomeMajor,
       },
     ]}
   />

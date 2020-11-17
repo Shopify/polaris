@@ -12,7 +12,7 @@ export interface TooltipProps {
   /** The element that will activate to tooltip */
   children?: React.ReactNode;
   /** The content to display within the tooltip */
-  content: string;
+  content: React.ReactNode;
   /** Display tooltip with a light background */
   light?: boolean;
   /** Toggle whether the tooltip is visible */

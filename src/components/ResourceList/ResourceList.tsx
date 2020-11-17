@@ -5,12 +5,14 @@ import React, {
   useReducer,
   useRef,
   useState,
+  Children,
 } from 'react';
 import debounce from 'lodash/debounce';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
 import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
+import {isElementOfType} from '../../utilities/components';
 import {Button} from '../Button';
 import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
@@ -27,8 +29,9 @@ import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
+import {BulkActions, BulkActionsProps} from '../BulkActions';
+import {CheckableButton} from '../CheckableButton';
 
-import {BulkActions, BulkActionsProps, CheckableButton} from './components';
 import styles from './ResourceList.scss';
 
 const SMALL_SCREEN_WIDTH = 458;
@@ -80,6 +83,8 @@ export interface ResourceListProps<ItemType = any> {
   bulkActions?: BulkActionsProps['actions'];
   /** Collection of IDs for the currently selected items */
   selectedItems?: ResourceListSelectedItems;
+  /** Whether or not the list has filter(s) applied */
+  isFiltered?: boolean;
   /** Renders a Select All button at the top of the list and checkboxes in front of each list item. For use when bulkActions aren't provided. **/
   selectable?: boolean;
   /** Whether or not there are more items than currently set on the items prop. Determines whether or not to set the paginatedSelectAllAction and paginatedSelectAllText props on the BulkActions component. */
@@ -100,7 +105,7 @@ export interface ResourceListProps<ItemType = any> {
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
   onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
-  /** Function to render each list item   */
+  /** Function to render each list item, must return a ResourceItem component */
   renderItem(item: ItemType, id: string, index: number): React.ReactNode;
   /** Function to customize the unique ID for each item */
   idForItem?(item: ItemType, index: number): string;
@@ -123,6 +128,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   promotedBulkActions,
   bulkActions,
   selectedItems = [],
+  isFiltered,
   selectable,
   hasMoreItems,
   loading,
@@ -291,10 +297,15 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     }
 
     if (selectedItems === SELECT_ALL_ITEMS) {
-      return i18n.translate('Polaris.ResourceList.allItemsSelected', {
-        itemsLength: items.length,
-        resourceNamePlural: resourceName.plural,
-      });
+      return i18n.translate(
+        isFiltered
+          ? 'Polaris.ResourceList.allFilteredItemsSelected'
+          : 'Polaris.ResourceList.allItemsSelected',
+        {
+          itemsLength: items.length,
+          resourceNamePlural: resourceName.plural,
+        },
+      );
     }
   };
 
@@ -306,10 +317,15 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
     const actionText =
       selectedItems === SELECT_ALL_ITEMS
         ? i18n.translate('Polaris.Common.undo')
-        : i18n.translate('Polaris.ResourceList.selectAllItems', {
-            itemsLength: items.length,
-            resourceNamePlural: resourceName.plural,
-          });
+        : i18n.translate(
+            isFiltered
+              ? 'Polaris.ResourceList.selectAllFilteredItems'
+              : 'Polaris.ResourceList.selectAllItems',
+            {
+              itemsLength: items.length,
+              resourceNamePlural: resourceName.plural,
+            },
+          );
 
     return {
       content: actionText,
@@ -387,11 +403,19 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const renderItemWithId = (item: ItemType, index: number) => {
     const id = idForItem(item, index);
 
-    return (
-      <li key={id} className={styles.ItemWrapper}>
-        {renderItem(item, id, index)}
-      </li>
-    );
+    const itemContent = renderItem(item, id, index);
+
+    if (
+      process.env.NODE_ENV === 'development' &&
+      !isElementOfType(itemContent, ResourceItem)
+    ) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        '<ResourceList /> renderItem function should return a <ResourceItem />.',
+      );
+    }
+
+    return itemContent;
   };
 
   const handleMultiSelectionChange = (
@@ -650,12 +674,12 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const spinnerSize = items.length < 2 ? 'small' : 'large';
 
   const loadingOverlay = loading ? (
-    <React.Fragment>
+    <>
       <div className={styles.SpinnerContainer} style={spinnerStyle}>
         <Spinner size={spinnerSize} accessibilityLabel="Items are loading" />
       </div>
       <div className={styles.LoadingOverlay} />
-    </React.Fragment>
+    </>
   ) : null;
 
   const className = classNames(
@@ -683,7 +707,7 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
       aria-busy={loading}
     >
       {loadingOverlay}
-      {items.map(renderItemWithId)}
+      {Children.toArray(items.map(renderItemWithId))}
     </ul>
   ) : null;
 

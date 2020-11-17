@@ -1,17 +1,14 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 import type {
   ActionListSection,
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../types';
-import {FeaturesContext} from '../../utilities/features';
-import {Button} from '../Button';
-import {ButtonGroup} from '../ButtonGroup';
 
-import {sortAndOverrideActionOrder} from './utilities';
-import {MenuAction, MenuGroup, RollupActions} from './components';
+import {Actions, RollupActions} from './components';
 import styles from './ActionMenu.scss';
 
 export interface ActionMenuProps {
@@ -23,104 +20,33 @@ export interface ActionMenuProps {
   rollup?: boolean;
 }
 
-interface State {
-  activeMenuGroup?: string;
-}
-
-export class ActionMenu extends React.PureComponent<ActionMenuProps, State> {
-  static contextType = FeaturesContext;
-  context!: React.ContextType<typeof FeaturesContext>;
-
-  state: State = {
-    activeMenuGroup: undefined,
-  };
-
-  render() {
-    const {actions = [], groups = [], rollup} = this.props;
-
-    if (actions.length === 0 && groups.length === 0) {
-      return null;
-    }
-
-    const actionMenuClassNames = classNames(
-      styles.ActionMenu,
-      rollup && styles.rollup,
-    );
-
-    const rollupSections = groups.map((group) => convertGroupToSection(group));
-
-    return (
-      <div className={actionMenuClassNames}>
-        {rollup ? (
-          <RollupActions items={actions} sections={rollupSections} />
-        ) : (
-          this.renderActions()
-        )}
-      </div>
-    );
+export function ActionMenu({
+  actions = [],
+  groups = [],
+  rollup,
+}: ActionMenuProps) {
+  const {newDesignLanguage} = useFeatures();
+  if (actions.length === 0 && groups.length === 0) {
+    return null;
   }
 
-  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
-  private renderActions = () => {
-    const {newDesignLanguage} = this.context || {};
-    const {actions = [], groups = []} = this.props;
-    const {activeMenuGroup} = this.state;
-    const menuActions = [...actions, ...groups];
+  const actionMenuClassNames = classNames(
+    styles.ActionMenu,
+    rollup && styles.rollup,
+    newDesignLanguage && styles.newDesignLanguage,
+  );
 
-    const overriddenActions = sortAndOverrideActionOrder(menuActions);
+  const rollupSections = groups.map((group) => convertGroupToSection(group));
 
-    const actionMarkup = overriddenActions.map((action, index) => {
-      if ('title' in action) {
-        const {title, actions, ...rest} = action;
-
-        return actions.length > 0 ? (
-          <MenuGroup
-            key={`MenuGroup-${index}`}
-            title={title}
-            active={title === activeMenuGroup}
-            actions={actions}
-            {...rest}
-            onOpen={this.handleMenuGroupToggle}
-            onClose={this.handleMenuGroupClose}
-          />
-        ) : null;
-      }
-
-      const {content, onAction, ...rest} = action;
-      return newDesignLanguage ? (
-        <Button key={index} onClick={onAction} {...rest}>
-          {content}
-        </Button>
+  return (
+    <div className={actionMenuClassNames}>
+      {rollup ? (
+        <RollupActions items={actions} sections={rollupSections} />
       ) : (
-        <MenuAction
-          key={`MenuAction-${index}`}
-          content={content}
-          onAction={onAction}
-          {...rest}
-        />
-      );
-    });
-
-    return (
-      <div className={styles.ActionsLayout}>
-        {newDesignLanguage ? (
-          <ButtonGroup>{actionMarkup}</ButtonGroup>
-        ) : (
-          actionMarkup
-        )}
-      </div>
-    );
-  };
-
-  private handleMenuGroupToggle = (group: string) => {
-    this.setState(({activeMenuGroup}) => ({
-      activeMenuGroup: activeMenuGroup ? undefined : group,
-    }));
-  };
-
-  private handleMenuGroupClose = () => {
-    this.setState({activeMenuGroup: undefined});
-  };
+        <Actions actions={actions} groups={groups} />
+      )}
+    </div>
+  );
 }
 
 export function hasGroupsWithActions(groups: ActionMenuProps['groups'] = []) {

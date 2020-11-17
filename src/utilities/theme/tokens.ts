@@ -1,9 +1,10 @@
-const BorderRadius = {
+export const Tokens = {
+  // Border Radiuses
   borderRadiusBase: rem('4px'),
   borderRadiusWide: rem('8px'),
-};
+  borderRadiusFull: '50%',
 
-const Shadow = {
+  // Shadows
   cardShadow:
     '0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light)',
   popoverShadow:
@@ -11,9 +12,11 @@ const Shadow = {
   modalShadow:
     '0px 26px 80px var(--p-shadow-from-dim-light), 0px 0px 1px var(--p-shadow-from-dim-light)',
   topBarShadow: '0 2px 2px -1px var(--p-shadow-from-direct-light)',
-};
+  buttonDropShadow: '0 1px 0 rgba(0, 0, 0, 0.05)',
+  buttonInnerShadow: 'inset 0 -1px 0 rgba(0, 0, 0, 0.2)',
+  buttonPressedInnerShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.15)',
 
-const Overrides = {
+  // Overrides
   overrideNone: 'none',
   overrideTransparent: 'transparent',
   overrideOne: '1',
@@ -36,9 +39,7 @@ const Overrides = {
   textFieldSpinnerOffset: rem('2px'),
   textFieldFocusRingOffset: rem('-4px'),
   textFieldFocusRingBorderRadius: rem('7px'),
-  buttonGroupItemSpacing: rem('2px'),
-  topBarHeight: '68px',
-  contextualSaveBarHeight: '64px',
+  buttonGroupItemSpacing: rem('-1px'),
   duration100: '100ms',
   duration150: '150ms',
   easeIn: 'cubic-bezier(0.5, 0.1, 1, 1)',
@@ -46,13 +47,7 @@ const Overrides = {
   rangeSliderThumbSizeBase: rem('16px'),
   rangeSliderThumbSizeActive: rem('24px'),
   rangeSliderThumbScale: '1.5',
-  badgeFontWeight: '500',
-};
-
-export const Tokens = {
-  ...BorderRadius,
-  ...Shadow,
-  ...Overrides,
+  badgeFontWeight: '400',
 };
 
 function rem(px: string) {

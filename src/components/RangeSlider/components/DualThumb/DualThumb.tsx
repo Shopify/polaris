@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, createRef} from 'react';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 
@@ -36,7 +36,7 @@ enum Control {
   Upper,
 }
 
-export class DualThumb extends React.Component<DualThumbProps, State> {
+export class DualThumb extends Component<DualThumbProps, State> {
   static contextType = FeaturesContext;
 
   static getDerivedStateFromProps(props: DualThumbProps, state: State) {
@@ -72,10 +72,10 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
     trackLeft: 0,
   };
 
-  private track = React.createRef<HTMLDivElement>();
-  private trackWrapper = React.createRef<HTMLDivElement>();
-  private thumbLower = React.createRef<HTMLButtonElement>();
-  private thumbUpper = React.createRef<HTMLButtonElement>();
+  private track = createRef<HTMLDivElement>();
+  private trackWrapper = createRef<HTMLDivElement>();
+  private thumbLower = createRef<HTMLButtonElement>();
+  private thumbUpper = createRef<HTMLButtonElement>();
 
   private setTrackPosition = debounce(
     () => {
@@ -161,11 +161,17 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
       styles.Thumbs,
       styles.ThumbLower,
       disabled && styles.disabled,
+      this.context &&
+        this.context.newDesignLanguage &&
+        styles.newDesignLanguage,
     );
     const thumbUpperClassName = classNames(
       styles.Thumbs,
       styles.ThumbUpper,
       disabled && styles.disabled,
+      this.context &&
+        this.context.newDesignLanguage &&
+        styles.newDesignLanguage,
     );
 
     const trackWidth = this.state.trackWidth;
@@ -220,7 +226,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
     );
 
     return (
-      <React.Fragment>
+      <>
         <Labelled
           id={id}
           label={label}
@@ -295,7 +301,7 @@ export class DualThumb extends React.Component<DualThumbProps, State> {
           </div>
         </Labelled>
         <EventListener event="resize" handler={this.setTrackPosition} />
-      </React.Fragment>
+      </>
     );
   }
 

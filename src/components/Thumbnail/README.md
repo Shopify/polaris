@@ -104,6 +104,14 @@ Use when a thumbnail is a major focal point. Avoid this size in lists of like it
 />
 ```
 
+### Thumbnail with component source
+
+Use to render an icon inside of thumbnail.
+
+```jsx
+<Thumbnail source={NoteMinor} size="large" alt="Small document" />
+```
+
 <!-- content-for: android -->
 
 ![Large thumbnail](/public_images/components/Thumbnail/android/large@2x.png)

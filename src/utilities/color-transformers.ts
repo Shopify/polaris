@@ -129,11 +129,11 @@ export function hslToRgb(color: HSLAColor): RGBAColor {
 
 // ref https://en.wikipedia.org/wiki/HSL_and_HSV
 function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
-  const {red: r, green: g, blue: b, alpha = 1} = color;
+  const {alpha = 1} = color;
 
-  const red = r / 255;
-  const green = g / 255;
-  const blue = b / 255;
+  const red = color.red / 255;
+  const green = color.green / 255;
+  const blue = color.blue / 255;
 
   const largestComponent = Math.max(red, green, blue);
   const smallestComponent = Math.min(red, green, blue);
@@ -170,7 +170,7 @@ function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
   return {
     hue: clamp(hue, 0, 360) || 0,
     saturation: parseFloat(clamp(saturation, 0, 1).toFixed(2)),
-    brightness: parseFloat(clamp(largestComponent, 0, 1).toFixed(2)),
+    brightness: parseFloat(clamp(largestComponent, 0, 1).toFixed(4)),
     lightness: parseFloat(lightness.toFixed(2)),
     alpha: parseFloat(alpha.toFixed(2)),
   };

@@ -183,3 +183,104 @@ Also known as [Segmented controls](https://developer.apple.com/design/human-inte
 ![Fixed tabs on iOS](/public_images/components/Tabs/ios/fixed@2x.png)
 
 <!-- /content-for -->
+
+### Tabs with badge content
+
+Use to inform a piece of information about the tabs.
+
+```jsx
+function TabsWithBadgeExample() {
+  const [selected, setSelected] = useState(0);
+
+  const handleTabChange = useCallback(
+    (selectedTabIndex) => setSelected(selectedTabIndex),
+    [],
+  );
+
+  const tabs = [
+    {
+      id: 'all-customers-fitted',
+      content: (
+        <span>
+          All <Badge status="new">10+</Badge>
+        </span>
+      ),
+      accessibilityLabel: 'All customers',
+      panelID: 'all-customers-fitted-content',
+    },
+    {
+      id: 'accepts-marketing-fitted',
+      content: (
+        <span>
+          Accepts marketing <Badge status="new">4</Badge>
+        </span>
+      ),
+      panelID: 'accepts-marketing-fitted-Ccontent',
+    },
+  ];
+
+  return (
+    <Card>
+      <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
+        <Card.Section title={tabs[selected].content}>
+          <p>Tab {selected} selected</p>
+        </Card.Section>
+      </Tabs>
+    </Card>
+  );
+}
+```
+
+### Tabs with custom disclosure
+
+Use to provide information about the popover contents
+
+```jsx
+function TabsWithCustomDisclosureExample() {
+  const [selected, setSelected] = useState(0);
+
+  const handleTabChange = useCallback(
+    (selectedTabIndex) => setSelected(selectedTabIndex),
+    [],
+  );
+
+  const tabs = [
+    {
+      id: 'all-customers',
+      content: 'All',
+      accessibilityLabel: 'All customers',
+      panelID: 'all-customers-content',
+    },
+    {
+      id: 'accepts-marketing',
+      content: 'Accepts marketing',
+      panelID: 'accepts-marketing-content',
+    },
+    {
+      id: 'repeat-customers',
+      content: 'Repeat customers',
+      panelID: 'repeat-customers-content',
+    },
+    {
+      id: 'prospects',
+      content: 'Prospects',
+      panelID: 'prospects-content',
+    },
+  ];
+
+  return (
+    <Card>
+      <Tabs
+        tabs={tabs}
+        selected={selected}
+        onSelect={handleTabChange}
+        disclosureText="More views"
+      >
+        <Card.Section title={tabs[selected].content}>
+          <p>Tab {selected} selected</p>
+        </Card.Section>
+      </Tabs>
+    </Card>
+  );
+}
+```

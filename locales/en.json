@@ -1,5 +1,8 @@
 {
   "Polaris": {
+    "Actions": {
+      "moreActions": "More actions"
+    },
     "Avatar": {
       "label": "Avatar",
       "labelWithInitials": "Avatar with initials {initials}"
@@ -152,7 +155,9 @@
       "loading": "Loading {resource}",
       "selected": "{selectedItemsCount} selected",
       "allItemsSelected": "All {itemsLength}+ {resourceNamePlural} in your store are selected.",
+      "allFilteredItemsSelected": "All {itemsLength}+ {resourceNamePlural} in this filter are selected.",
       "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural} in your store",
+      "selectAllFilteredItems": "Select all {itemsLength}+ {resourceNamePlural} in this filter",
       "emptySearchResultTitle": "No {resourceNamePlural} found",
       "emptySearchResultDescription": "Try changing the filters or search term",
       "selectButtonText": "Select",

@@ -213,7 +213,9 @@
           "on_or_after": "{date} 후"
         }
       },
-      "showingTotalCount": "{totalItemsCount} {resource}의 {itemsCount} 표시"
+      "showingTotalCount": "{totalItemsCount} {resource}의 {itemsCount} 표시",
+      "allFilteredItemsSelected": "이 필터의 모든 {itemsLength}+ {resourceNamePlural}이(가) 선택됩니다.",
+      "selectAllFilteredItems": "이 필터의 모든 {itemsLength}+ {resourceNamePlural} 선택"
     },
     "SkeletonPage": {
       "loadingLabel": "페이지 로딩"
@@ -288,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "기타 작업"
     }
   }
 }

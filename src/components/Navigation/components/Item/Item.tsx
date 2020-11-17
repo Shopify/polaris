@@ -4,7 +4,6 @@ import React, {
   useState,
   MouseEvent,
   ReactNode,
-  Fragment,
   useCallback,
 } from 'react';
 
@@ -148,14 +147,14 @@ export function Item({
     );
 
   const itemContentMarkup = (
-    <Fragment>
+    <>
       {iconMarkup}
       <span className={styles.Text}>
         {label}
         {indicatorMarkup}
       </span>
       {wrappedBadgeMarkup}
-    </Fragment>
+    </>
   );
 
   if (url == null) {

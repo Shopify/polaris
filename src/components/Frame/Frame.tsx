@@ -1,5 +1,5 @@
-import React, {createRef} from 'react';
-import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
+import React, {PureComponent, createRef} from 'react';
+import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
@@ -71,7 +71,7 @@ const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 
-class FrameInner extends React.PureComponent<CombinedProps, State> {
+class FrameInner extends PureComponent<CombinedProps, State> {
   state: State = {
     skipFocused: false,
     globalRibbonHeight: 0,
@@ -84,7 +84,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
   private globalRibbonContainer: HTMLDivElement | null = null;
   private navigationNode = createRef<HTMLDivElement>();
   private skipToMainContentTargetNode =
-    this.props.skipToContentTarget || React.createRef<HTMLAnchorElement>();
+    this.props.skipToContentTarget || createRef<HTMLAnchorElement>();
 
   componentDidMount() {
     this.handleResize();
@@ -160,7 +160,7 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
               )}
               tabIndex={tabIndex}
             >
-              <Icon source={MobileCancelMajorMonotone} color="white" />
+              <Icon source={MobileCancelMajor} />
             </button>
           </div>
         </CSSTransition>
@@ -174,16 +174,11 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
         </div>
       ) : null;
 
-    const contextualSaveBarClassName = classNames(
-      styles.ContextualSaveBar,
-      newDesignLanguage && styles['ContextualSaveBar-newDesignLanguage'],
-    );
-
     const contextualSaveBarMarkup = (
       <CSSAnimation
         in={showContextualSaveBar}
-        className={contextualSaveBarClassName}
-        type={newDesignLanguage ? 'fadeUp' : 'fade'}
+        className={styles.ContextualSaveBar}
+        type="fade"
       >
         <ContextualSaveBar {...this.contextualSaveBar} />
       </CSSAnimation>
@@ -224,8 +219,8 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
       skipFocused && styles.focused,
     );
 
-    const skipTarget = skipToContentTarget
-      ? (skipToContentTarget.current && skipToContentTarget.current.id) || ''
+    const skipTarget = skipToContentTarget?.current
+      ? skipToContentTarget.current.id
       : APP_FRAME_MAIN_ANCHOR_TARGET;
 
     const skipMarkup = (
@@ -235,7 +230,6 @@ class FrameInner extends React.PureComponent<CombinedProps, State> {
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
-          className={styles.SkipAnchor}
         >
           {i18n.translate('Polaris.Frame.skipToContent')}
         </a>

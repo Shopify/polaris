@@ -53,7 +53,7 @@ export default [
     input: `${root}/src/index.ts`,
     output: [
       {format: 'cjs', file: `${root}/dist/index.js`},
-      {format: 'esm', file: `${root}/dist/index.es.js`},
+      {format: 'esm', dir: `${root}/dist/esm`, preserveModules: true},
     ],
     plugins: plugins({
       // Not specifying a browserslist config here to use the default as

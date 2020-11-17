@@ -45,76 +45,38 @@ $nav-animation-variables: (
   .Navigation-newDesignLanguage & {
     font-weight: 600;
     line-height: $item-line-height-large;
-    padding-left: spacing();
+    padding-left: spacing() - spacing(extra-tight);
+    padding-right: spacing(extra-tight);
   }
 
   &:hover {
-    background-image: linear-gradient(color(state, hover), color(state, hover));
-    background-color: var(--p-surface-hovered);
+    background: var(
+      --p-background-hovered,
+      linear-gradient(color(state, hover), color(state, hover))
+    );
     color: var(--p-text, color('indigo', 'dark'));
     text-decoration: none;
-
-    .Icon {
-      @include recolor-icon(
-        var(--p-icon, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
-      );
-    }
-
-    .Navigation-newDesignLanguage & {
-      background-image: var(--p-override-none);
-    }
   }
 
   @include focus-ring;
 
   &.keyFocused {
     @include focus-ring($style: 'focused');
-  }
-
-  &:focus {
-    background-image: linear-gradient(color(state, hover), color(state, hover));
+    background: var(
+      --p-background-hovered,
+      linear-gradient(color(state, hover), color(state, hover))
+    );
     color: var(--p-text, color('indigo', 'dark'));
     text-decoration: none;
-
-    .Icon {
-      @include recolor-icon(
-        var(--p-icon, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
-      );
-    }
-
-    .Navigation-newDesignLanguage & {
-      background-image: var(--p-override-none);
-    }
-  }
-
-  &:focus:hover {
-    color: var(--p-text, color('indigo', 'dark'));
-
-    .Icon {
-      @include recolor-icon(
-        var(--p-icon, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
-      );
-    }
   }
 
   &:active,
   &:active:hover {
     color: var(--p-text, color('indigo', 'dark'));
-    background-color: var(--p-surface-pressed);
     @include no-focus-ring;
 
-    .Icon {
-      @include recolor-icon(
-        var(--p-icon, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
-      );
+    .Navigation-newDesignLanguage & {
+      background-color: var(--p-background-pressed);
     }
   }
 
@@ -153,20 +115,38 @@ $nav-animation-variables: (
     margin-bottom: nav(desktop-spacing);
   }
   .Navigation-newDesignLanguage & {
-    margin-top: spacing(tight);
-    margin-bottom: spacing(tight);
+    margin-right: spacing();
+    @include recolor-icon($filter-color: filter('icon'));
   }
+
+  .Item:hover &,
+  .Item.keyFocused & {
+    @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
+
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class
+    .Navigation-newDesignLanguage & {
+      @include recolor-icon(var(--p-icon), transparent, filter('icon'));
+    }
+  }
+
   .Item-selected &,
   .Item-selected:hover &,
   .subNavigationActive &,
   .subNavigationActive:hover &,
-  .subNavigationActive:focus & {
-    @include recolor-icon(
-      var(--p-action-primary, color('indigo')),
-      var(--p-override-transparent, color('white')),
-      filter('indigo')
-    );
-  } // The regular nav items are wrapped in polaris icon components which add
+  .Item-selected.keyFocused & {
+    @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
+
+    // stylelint-disable-next-line selector-max-combinators, selector-max-specificity, selector-max-class
+    .Navigation-newDesignLanguage & {
+      @include recolor-icon(
+        var(--p-action-primary),
+        transparent,
+        filter('action')
+      );
+    }
+  }
+
+  // The regular nav items are wrapped in polaris icon components which add
   // the styles we're missing which causes the channel items to shift down
   svg {
     display: block;
@@ -206,8 +186,12 @@ $nav-animation-variables: (
   }
 
   .Navigation-newDesignLanguage & {
-    margin-top: spacing(tight);
-    margin-bottom: spacing(tight);
+    font-size: $item-font-size-small;
+
+    @include breakpoint-before(nav-min-window-corrected()) {
+      font-size: rem(15px);
+      line-height: rem(19px);
+    }
   }
 }
 

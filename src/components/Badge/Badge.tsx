@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
+import {WithinFilterContext} from '../../utilities/within-filter-context';
 import {VisuallyHidden} from '../VisuallyHidden';
 
 import styles from './Badge.scss';
@@ -48,12 +49,14 @@ export function Badge({
   size = DEFAULT_SIZE,
 }: BadgeProps) {
   const i18n = useI18n();
+  const withinFilter = useContext(WithinFilterContext);
 
   const className = classNames(
     styles.Badge,
     status && styles[variationName('status', status)],
     progress && styles[variationName('progress', progress)],
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
+    withinFilter && styles.withinFilter,
   );
 
   let progressMarkup;

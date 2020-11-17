@@ -27,7 +27,7 @@ export const Focus = memo(function Focus({
     focusFirstFocusableNode(node, false);
   }, [disabled, root]);
 
-  return <React.Fragment>{children}</React.Fragment>;
+  return <>{children}</>;
 });
 
 function isRef(

@@ -5,3 +5,17 @@
     margin: 0;
   }
 }
+
+.newDesignLanguage {
+  text-align: right;
+  // stylelint-disable-next-line selector-no-qualifying-type
+  button[type='button'] {
+    border: 1px solid var(--p-border-neutral-subdued);
+    // stylelint-disable-next-line selector-max-specificity
+    &:hover,
+    &:active,
+    &:focus {
+      border: 1px solid var(--p-border-neutral-subdued);
+    }
+  }
+}

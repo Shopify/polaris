@@ -7,7 +7,7 @@
   width: 100%;
   min-height: spacing() * 4;
   padding: spacing();
-  border-top: var(--p-thin-border-subdued, border());
+  border-top: border('divider');
 }
 
 .FooterContent {

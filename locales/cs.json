@@ -213,7 +213,9 @@
           "on_or_after": "po {date}"
         }
       },
-      "showingTotalCount": "Zobrazuje se {itemsCount} z {totalItemsCount} {resource}"
+      "showingTotalCount": "Zobrazuje se {itemsCount} z {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Jsou vybrány všechny položky ({itemsLength} + {resourceNamePlural}) v tomto filtru.",
+      "selectAllFilteredItems": "Vyberte všechny položky ({itemsLength} + {resourceNamePlural}) v tomto filtru."
     },
     "SkeletonPage": {
       "loadingLabel": "Načítání stránky"
@@ -290,6 +292,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Další akce"
     }
   }
 }

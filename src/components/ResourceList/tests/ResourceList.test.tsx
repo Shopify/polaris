@@ -16,8 +16,10 @@ import {
   mountWithAppProvider,
   trigger,
 } from 'test-utilities/legacy';
+import {SELECT_ALL_ITEMS} from 'utilities/resource-list';
 
-import {BulkActions, CheckableButton} from '../components';
+import {BulkActions} from '../../BulkActions';
+import {CheckableButton} from '../../CheckableButton';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
@@ -57,13 +59,20 @@ describe('<ResourceList />', () => {
       expect(resourceList.find('li')).toHaveLength(3);
     });
 
-    it('renders custom markup', () => {
+    it('renders custom markup and warns user', () => {
+      process.env.NODE_ENV = 'development';
+      const warningSpy = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(() => {});
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderCustomMarkup} />,
       );
-      expect(resourceList.find('li').first().children().html()).toBe(
-        '<p>title 1</p>',
+      expect(resourceList.find('li').first().text()).toBe('title 1');
+      expect(warningSpy).toHaveBeenCalledWith(
+        '<ResourceList /> renderItem function should return a <ResourceItem />.',
       );
+      warningSpy.mockRestore();
+      delete process.env.NODE_ENV;
     });
   });
 
@@ -313,35 +322,6 @@ describe('<ResourceList />', () => {
       );
       expect(resourceList.find(BulkActions).prop('accessibilityLabel')).toBe(
         'Select all 3 items',
-      );
-    });
-  });
-
-  describe('idForItem()', () => {
-    it('generates a key using the index if there’s no idForItem prop and no ID in data', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList items={itemsNoID} renderItem={renderItem} />,
-      );
-      expect(resourceList.find('li').first().key()).toBe('0');
-    });
-
-    it('generates a key using the ID if there’s no idForItem prop but there and ID key in the data', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList items={itemsWithID} renderItem={renderItem} />,
-      );
-      expect(resourceList.find('li').first().key()).toBe('5');
-    });
-
-    it('generates a key using the idForItem prop callback when one is provided', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList
-          idForItem={idForItem}
-          items={itemsWithID}
-          renderItem={renderItem}
-        />,
-      );
-      expect(resourceList.find('li').first().key()).toBe(
-        idForItem(itemsWithID[0]),
       );
     });
   });
@@ -1197,16 +1177,94 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(BulkActions).prop('selectMode')).toBe(false);
     });
   });
+
+  describe('isFiltered', () => {
+    it('renders `selectAllFilteredItems` label if true', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsNoID}
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          hasMoreItems
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          isFiltered
+        />,
+      );
+
+      expect(
+        resourceList.find(BulkActions).prop('paginatedSelectAllAction'),
+      ).toStrictEqual({
+        content: 'Select all 2+ customers in this filter',
+        onAction: expect.any(Function),
+      });
+    });
+
+    it('renders `allFilteredItemsSelected` label if true and all items are selected', () => {
+      const resourceList = mountWithApp(
+        <ResourceList
+          items={itemsNoID}
+          selectedItems={SELECT_ALL_ITEMS}
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          hasMoreItems
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectable
+          isFiltered
+        />,
+      );
+
+      resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
+
+      expect(
+        resourceList.find(BulkActions)!.prop('paginatedSelectAllText'),
+      ).toBe('All 2+ customers in this filter are selected.');
+    });
+
+    it('renders `selectAllItems` label if not passed', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsNoID}
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          hasMoreItems
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+        />,
+      );
+
+      expect(
+        resourceList.find(BulkActions).prop('paginatedSelectAllAction'),
+      ).toStrictEqual({
+        content: 'Select all 2+ customers in your store',
+        onAction: expect.any(Function),
+      });
+    });
+
+    it('renders `allItemsSelected` label if not passed and all items are selected', () => {
+      const resourceList = mountWithApp(
+        <ResourceList
+          items={itemsNoID}
+          selectedItems={SELECT_ALL_ITEMS}
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          hasMoreItems
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectable
+        />,
+      );
+
+      resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
+
+      expect(
+        resourceList.find(BulkActions)!.prop('paginatedSelectAllText'),
+      ).toBe('All 2+ customers in your store are selected.');
+    });
+  });
 });
 
 function noop() {}
 
-function idForItem(item: any) {
-  return JSON.stringify(item);
-}
-
 function renderCustomMarkup(item: any) {
-  return <p>{item.title}</p>;
+  return <li key={item.id}>{item.title}</li>;
 }
 
 function renderItem(item: any, id: any, index: number) {

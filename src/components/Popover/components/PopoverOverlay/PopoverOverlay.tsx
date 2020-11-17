@@ -1,6 +1,7 @@
-import React, {createRef} from 'react';
+import React, {PureComponent, Children, createRef} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
 
+import {InversableColorScheme, ThemeProvider} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
@@ -45,17 +46,16 @@ export interface PopoverOverlayProps {
   preventAutofocus?: boolean;
   sectioned?: boolean;
   fixed?: boolean;
+  hideOnPrint?: boolean;
   onClose(source: PopoverCloseSource): void;
+  colorScheme?: InversableColorScheme;
 }
 
 interface State {
   transitionStatus: TransitionStatus;
 }
 
-export class PopoverOverlay extends React.PureComponent<
-  PopoverOverlayProps,
-  State
-> {
+export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   state: State = {
     transitionStatus: this.props.active
       ? TransitionStatus.Entering
@@ -188,6 +188,9 @@ export class PopoverOverlay extends React.PureComponent<
       fullWidth,
       fullHeight,
       fluidContent,
+      hideOnPrint,
+      colorScheme,
+      preventAutofocus,
     } = this.props;
 
     const className = classNames(
@@ -195,6 +198,7 @@ export class PopoverOverlay extends React.PureComponent<
       positioning === 'above' && styles.positionedAbove,
       fullWidth && styles.fullWidth,
       measuring && styles.measuring,
+      hideOnPrint && styles['PopoverOverlay-hideOnPrint'],
     );
 
     const contentStyles = measuring ? undefined : {height: desiredHeight};
@@ -208,7 +212,7 @@ export class PopoverOverlay extends React.PureComponent<
     const content = (
       <div
         id={id}
-        tabIndex={-1}
+        tabIndex={preventAutofocus ? undefined : -1}
         className={contentClassNames}
         style={contentStyles}
         ref={this.contentNode}
@@ -228,7 +232,9 @@ export class PopoverOverlay extends React.PureComponent<
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <div className={styles.Wrapper}>{content}</div>
+        <ThemeProvider theme={{colorScheme}}>
+          <div className={styles.Wrapper}>{content}</div>
+        </ThemeProvider>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
@@ -280,7 +286,7 @@ function renderPopoverContent(
   children: React.ReactNode,
   props?: Partial<PaneProps>,
 ) {
-  const childrenArray = React.Children.toArray(children);
+  const childrenArray = Children.toArray(children);
   if (isElementOfType(childrenArray[0], Pane)) {
     return childrenArray;
   }

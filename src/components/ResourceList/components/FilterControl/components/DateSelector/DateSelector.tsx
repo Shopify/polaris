@@ -190,7 +190,7 @@ export const DateSelector = memo(function DateSelector({
     dateFilterOption === DateFilterOption.OnOrAfter;
 
   const datePredicateMarkup = showDatePredicate && (
-    <React.Fragment>
+    <>
       <div className={styles.DateTextField}>
         <TextField
           label={i18n.translate(
@@ -216,7 +216,7 @@ export const DateSelector = memo(function DateSelector({
           onMonthChange={handleDatePickerMonthChange}
         />
       </div>
-    </React.Fragment>
+    </>
   );
 
   const dateOptionTypes = {
@@ -230,7 +230,7 @@ export const DateSelector = memo(function DateSelector({
   };
 
   return (
-    <React.Fragment>
+    <>
       <Select
         label={i18n.translate(
           'Polaris.ResourceList.DateSelector.SelectOptions.dateFilterLabel',
@@ -248,7 +248,7 @@ export const DateSelector = memo(function DateSelector({
         onChange={handleDateFilterOptionsChange}
       />
       {datePredicateMarkup}
-    </React.Fragment>
+    </>
   );
 
   function getDateComparatorOptions() {

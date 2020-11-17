@@ -43,14 +43,14 @@ export function Link({
     );
 
     childrenMarkup = (
-      <React.Fragment>
+      <>
         {children}
         <span className={styles.IconLockup}>
           <span className={styles.IconLayout}>
             <Icon accessibilityLabel={iconLabel} source={ExternalSmallMinor} />
           </span>
         </span>
-      </React.Fragment>
+      </>
     );
   }
 

@@ -2,6 +2,7 @@ import React, {
   createContext,
   createRef,
   TransitionEvent,
+  Component,
   ComponentClass,
 } from 'react';
 
@@ -19,6 +20,8 @@ interface Transition {
 export interface CollapsibleProps {
   /** Assign a unique ID to the collapsible. For accessibility, pass this ID as the value of the triggering component’s aria-controls prop. */
   id: string;
+  /** Option to show collapsible content when printing */
+  expandOnPrint?: boolean;
   /** Toggle whether the collapsible is expanded or not. */
   open: boolean;
   /** Assign transition properties to the collapsible */
@@ -43,7 +46,7 @@ interface State {
 
 const ParentCollapsibleExpandingContext = createContext(false);
 
-class CollapsibleInner extends React.Component<CollapsibleProps, State> {
+class CollapsibleInner extends Component<CollapsibleProps, State> {
   static contextType = ParentCollapsibleExpandingContext;
 
   static getDerivedStateFromProps(
@@ -113,7 +116,7 @@ class CollapsibleInner extends React.Component<CollapsibleProps, State> {
   }
 
   render() {
-    const {id, open, children, transition} = this.props;
+    const {id, expandOnPrint, open, children, transition} = this.props;
     const {animationState, height} = this.state;
     const parentCollapsibleExpanding = this.context;
 
@@ -124,11 +127,12 @@ class CollapsibleInner extends React.Component<CollapsibleProps, State> {
       open && styles.open,
       animating && styles.animating,
       !animating && open && styles.fullyOpen,
+      expandOnPrint && styles.expandOnPrint,
     );
 
     const displayHeight = collapsibleHeight(open, animationState, height);
 
-    const content = animating || open ? children : null;
+    const content = animating || open || expandOnPrint ? children : null;
 
     const transitionProperties = transition
       ? {

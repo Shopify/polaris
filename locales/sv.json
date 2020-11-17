@@ -213,7 +213,9 @@
           "on_or_after": "efter {date}"
         }
       },
-      "showingTotalCount": "Visar {itemsCount} av {totalItemsCount} {resource}"
+      "showingTotalCount": "Visar {itemsCount} av {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Alla {itemsLength} + {resourceNamePlural} i detta filter är valda.",
+      "selectAllFilteredItems": "Välj alla {itemsLength} + {resourceNamePlural} i det här filtret"
     },
     "SkeletonPage": {
       "loadingLabel": "Sidan laddar"
@@ -288,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Fler åtgärder"
     }
   }
 }

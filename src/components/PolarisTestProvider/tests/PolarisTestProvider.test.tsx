@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {StrictMode} from 'react';
 import {mount, mountWithApp} from 'test-utilities';
 import {MediaQueryContext, useMediaQuery} from 'utilities/media-query';
 
@@ -12,7 +12,7 @@ describe('PolarisTestProvider', () => {
       </PolarisTestProvider>,
     );
 
-    expect(polarisTestProvider).not.toContainReactComponent(React.StrictMode);
+    expect(polarisTestProvider).not.toContainReactComponent(StrictMode);
   });
 
   it('renders in strict mode with strict', () => {
@@ -22,7 +22,7 @@ describe('PolarisTestProvider', () => {
       </PolarisTestProvider>,
     );
 
-    expect(polarisTestProvider).toContainReactComponent(React.StrictMode);
+    expect(polarisTestProvider).toContainReactComponent(StrictMode);
   });
 
   describe('MediaQueryContext', () => {
@@ -41,7 +41,8 @@ describe('PolarisTestProvider', () => {
     it('allows isNavigationCollapsed to be overwritten', () => {
       function Component() {
         const {isNavigationCollapsed} = useMediaQuery();
-        return isNavigationCollapsed ? <div /> : null;
+        // eslint-disable-next-line jest/no-if
+        return isNavigationCollapsed ? <span /> : null;
       }
 
       const polarisTestProvider = mountWithApp(
@@ -50,7 +51,7 @@ describe('PolarisTestProvider', () => {
         </PolarisTestProvider>,
       );
 
-      expect(polarisTestProvider).toContainReactComponentTimes('div', 1);
+      expect(polarisTestProvider).toContainReactComponentTimes('span', 1);
     });
   });
 });

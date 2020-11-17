@@ -50,6 +50,40 @@ function searchCheckableButton(
 
 describe('<BulkActions />', () => {
   describe('actions', () => {
+    it('indicator is passed to BulkActionButton when actions contain a new status for badge', () => {
+      const bulkActions = mountWithApp(
+        <BulkActions
+          {...bulkActionProps}
+          promotedActions={[]}
+          actions={[
+            {content: 'Action', badge: {status: 'new', content: 'Badge'}},
+          ]}
+        />,
+      );
+
+      bulkActions.find(BulkActionButton)?.trigger('onAction');
+
+      expect(bulkActions).toContainReactComponent(BulkActionButton, {
+        indicator: true,
+      });
+    });
+
+    it('indicator is not passed to BulkActionButton when actions does not contain a new status for badge', () => {
+      const bulkActions = mountWithApp(
+        <BulkActions
+          {...bulkActionProps}
+          promotedActions={[]}
+          actions={[{content: 'Action'}]}
+        />,
+      );
+
+      bulkActions.find(BulkActionButton)?.trigger('onAction');
+
+      expect(bulkActions).toContainReactComponent(BulkActionButton, {
+        indicator: false,
+      });
+    });
+
     it('promotedActions render in the last position on initial load', () => {
       const {promotedActions} = bulkActionProps;
       const bulkActions = mountWithAppProvider(
@@ -335,6 +369,41 @@ describe('<BulkActions />', () => {
         );
         findByTestID(bulkActions, 'paginated-action').simulate('click');
         expect(spy).toHaveBeenCalled();
+      });
+    });
+
+    describe('onMoreActionPopoverToggle', () => {
+      it('is invoked when the small screen popover is toggled', () => {
+        const spy = jest.fn();
+        const bulkActions = mountWithApp(
+          <BulkActions
+            {...bulkActionProps}
+            actions={[{content: 'Action'}]}
+            smallScreen
+            promotedActions={[]}
+            onMoreActionPopoverToggle={spy}
+          />,
+        );
+
+        bulkActions.find(BulkActionButton)?.trigger('onAction');
+
+        expect(spy).toHaveBeenCalledTimes(1);
+      });
+
+      it('is invoked when the large screen popover is toggled', () => {
+        const spy = jest.fn();
+        const bulkActions = mountWithApp(
+          <BulkActions
+            {...bulkActionProps}
+            actions={[{content: 'Action'}]}
+            promotedActions={[]}
+            onMoreActionPopoverToggle={spy}
+          />,
+        );
+
+        bulkActions.find(BulkActionButton)?.trigger('onAction');
+
+        expect(spy).toHaveBeenCalledTimes(1);
       });
     });
 

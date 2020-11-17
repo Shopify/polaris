@@ -213,7 +213,9 @@
           "on_or_after": "na {date}"
         }
       },
-      "showingTotalCount": "{itemsCount} weergeven van {totalItemsCount} {resource}"
+      "showingTotalCount": "{itemsCount} weergeven van {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in dit filter zijn geselecteerd.",
+      "selectAllFilteredItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in dit filter."
     },
     "SkeletonPage": {
       "loadingLabel": "Pagina is aan het laden"
@@ -288,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Meer acties"
     }
   }
 }

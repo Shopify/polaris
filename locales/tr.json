@@ -213,7 +213,9 @@
           "on_or_after": "{date} tarihinden sonra"
         }
       },
-      "showingTotalCount": "{resource} için {totalItemsCount} üründen {itemsCount} tanesi gösteriliyor"
+      "showingTotalCount": "{resource} için {totalItemsCount} üründen {itemsCount} tanesi gösteriliyor",
+      "allFilteredItemsSelected": "Bu filtredeki tüm {itemsLength} + {resourceNamePlural} seçildi.",
+      "selectAllFilteredItems": "Bu filtredeki tüm {itemsLength} + {resourceNamePlural} öğelerini seç"
     },
     "SkeletonPage": {
       "loadingLabel": "Sayfa yükleniyor"
@@ -288,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Diğer işlemler"
     }
   }
 }

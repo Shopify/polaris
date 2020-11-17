@@ -5,7 +5,6 @@ import {
   isDateBefore,
   isDateAfter,
   isSameDay,
-  isSameDate,
   getWeeksForMonth,
   dateIsInRange,
   dateIsSelected,
@@ -101,15 +100,14 @@ export function Month({
     const isLastSelectedDay =
       allowRange &&
       selected &&
-      ((!isSameDate(selected.start, selected.end) &&
-        isDateEnd(day, selected)) ||
+      ((!isSameDay(selected.start, selected.end) && isDateEnd(day, selected)) ||
         (hoverDate &&
-          isSameDate(selected.start, selected.end) &&
+          isSameDay(selected.start, selected.end) &&
           isDateAfter(hoverDate, selected.start) &&
           isSameDay(day, hoverDate) &&
           !isFirstSelectedDay));
     const rangeIsDifferent = !(
-      selected && isSameDate(selected.start, selected.end)
+      selected && isSameDay(selected.start, selected.end)
     );
     const isHoveringRight = hoverDate && isDateBefore(day, hoverDate);
 
@@ -138,20 +136,23 @@ export function Month({
   }
 
   const weeksMarkup = weeks.map((week, index) => (
-    <div role="row" className={styles.Week} key={index}>
+    <tr className={styles.Week} key={index}>
       {week.map(renderWeek)}
-    </div>
+    </tr>
   ));
 
   return (
-    <div role="grid" className={styles.Month}>
-      <div className={className}>
-        {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)} {year}
-      </div>
-      <div role="rowheader" className={styles.WeekHeadings}>
-        {weekdays}
-      </div>
-      {weeksMarkup}
+    <div className={styles.MonthContainer}>
+      <table role="grid" className={styles.Month}>
+        <caption className={className}>
+          {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)}{' '}
+          {year}
+        </caption>
+        <thead>
+          <tr className={styles.WeekHeadings}>{weekdays}</tr>
+        </thead>
+        <tbody>{weeksMarkup}</tbody>
+      </table>
     </div>
   );
 }

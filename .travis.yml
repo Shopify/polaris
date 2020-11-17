@@ -7,7 +7,9 @@ jobs:
   include:
     - name: 'Type Check and Build'
       script:
-        # Includes running type checking and build validation tests
+        # Run `type-check` separately as the TypeScript compile that generates
+        # d.ts files in `build` does not run against test files
+        - yarn run type-check
         - yarn run build
 
     - name: 'Lint'
@@ -25,8 +27,8 @@ jobs:
 
     - name: 'Accessibility Tests'
       script:
-        - yarn run storybook:build --quiet
-        - node ./scripts/pa11y.js
+        - STORYBOOK_DISABLE_DOCS=1 yarn run storybook:build --quiet
+        - node ./scripts/accessibility-check.js
 
     # Travis builds on commit and for PR builds (where Travis merges your last
     # commit in a PR into the base branch). There isn't much value uploading info

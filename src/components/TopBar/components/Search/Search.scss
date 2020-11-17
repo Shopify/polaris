@@ -4,21 +4,33 @@
 .Search {
   position: fixed;
   visibility: hidden;
+  z-index: z-index(nav, $fixed-element-stacking-order);
   pointer-events: none;
   top: top-bar-height();
   left: 0;
   right: 0;
+  box-shadow: var(--p-modal-shadow, shadow());
+  overflow: hidden;
 
   @include page-content-when-not-fully-condensed {
     position: absolute;
     top: 100%;
     max-width: $search-max-width;
     margin: spacing(extra-tight) spacing(loose) 0;
+    border-radius: var(--p-border-radius-wide, border-radius());
+
+    &.newDesignLanguage {
+      max-width: $new-search-max-width;
+    }
   }
 
   @include page-content-when-not-partially-condensed {
     margin: spacing(extra-tight) spacing(extra-loose) 0;
   }
+}
+
+.SearchContent {
+  background-color: var(--p-surface, color('white'));
 }
 
 .visible {
@@ -28,7 +40,6 @@
 
 .Results {
   position: relative;
-  z-index: z-index(nav, $fixed-element-stacking-order);
   display: flex;
   flex-direction: column;
   max-height: calc(100vh - #{top-bar-height()});

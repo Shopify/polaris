@@ -65,7 +65,7 @@ $content-max-width: rem(400px);
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: border-radius();
+  border-radius: var(--p-border-radius-base, border-radius());
   max-width: $content-max-width;
   max-height: $content-max-height;
 
@@ -88,7 +88,7 @@ $content-max-width: rem(400px);
   max-width: 100%;
 
   + .Pane {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 
@@ -101,10 +101,14 @@ $content-max-width: rem(400px);
   padding: spacing();
 
   + .Section {
-    border-top: border();
+    border-top: border('divider');
   }
 }
 
 .FocusTracker {
   @include visually-hidden;
+}
+
+.PopoverOverlay-hideOnPrint {
+  @include hidden-when-printing;
 }

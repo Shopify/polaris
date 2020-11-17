@@ -213,7 +213,9 @@
           "on_or_after": "{date}以後"
         }
       },
-      "showingTotalCount": "{totalItemsCount}件の{resource}中、{itemsCount}件を表示中"
+      "showingTotalCount": "{totalItemsCount}件の{resource}中、{itemsCount}件を表示中",
+      "allFilteredItemsSelected": "この絞り込みの{itemsLength}と{resourceNamePlural}がすべて選択されます。",
+      "selectAllFilteredItems": "この絞り込みの{itemsLength}と{resourceNamePlural}をすべて選択する"
     },
     "SkeletonPage": {
       "loadingLabel": "ページの読み込み中"
@@ -288,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "その他の操作"
     }
   }
 }

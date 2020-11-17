@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment, StrictMode} from 'react';
 
 import {FocusManager} from '../FocusManager';
 import {merge} from '../../utilities/merge';
@@ -26,6 +26,10 @@ import {
   UniqueIdFactoryContext,
   globalIdGeneratorFactory,
 } from '../../utilities/unique-id';
+import {
+  PortalsManagerProvider,
+  PortalsContainer,
+} from '../../utilities/portals';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
 type MediaQueryContextType = NonNullable<
@@ -68,7 +72,7 @@ export function PolarisTestProvider({
   features: featuresProp = {},
   frame,
 }: PolarisTestProviderProps) {
-  const Wrapper = strict ? React.StrictMode : React.Fragment;
+  const Wrapper = strict ? StrictMode : Fragment;
   const intl = new I18n(i18n || {});
   const scrollLockManager = new ScrollLockManager();
 
@@ -100,11 +104,14 @@ export function PolarisTestProvider({
                 <LinkContext.Provider value={link}>
                   <ThemeContext.Provider value={mergedTheme}>
                     <MediaQueryContext.Provider value={mergedMediaQuery}>
-                      <FocusManager>
-                        <FrameContext.Provider value={mergedFrame}>
-                          {children}
-                        </FrameContext.Provider>
-                      </FocusManager>
+                      <PortalsManagerProvider>
+                        <FocusManager>
+                          <FrameContext.Provider value={mergedFrame}>
+                            {children}
+                          </FrameContext.Provider>
+                        </FocusManager>
+                        <PortalsContainer />
+                      </PortalsManagerProvider>
                     </MediaQueryContext.Provider>
                   </ThemeContext.Provider>
                 </LinkContext.Provider>

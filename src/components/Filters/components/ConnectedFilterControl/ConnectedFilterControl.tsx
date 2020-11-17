@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, createRef} from 'react';
 import debounce from 'lodash/debounce';
 
 import {classNames} from '../../../../utilities/css';
@@ -39,7 +39,7 @@ interface State {
 
 const FILTER_FIELD_MIN_WIDTH = 150;
 
-export class ConnectedFilterControl extends React.Component<
+export class ConnectedFilterControl extends Component<
   ConnectedFilterControlProps,
   State
 > {
@@ -51,9 +51,9 @@ export class ConnectedFilterControl extends React.Component<
     proxyButtonsWidth: {},
   };
 
-  private container = React.createRef<HTMLDivElement>();
-  private proxyButtonContainer = React.createRef<HTMLDivElement>();
-  private moreFiltersButtonContainer = React.createRef<HTMLDivElement>();
+  private container = createRef<HTMLDivElement>();
+  private proxyButtonContainer = createRef<HTMLDivElement>();
+  private moreFiltersButtonContainer = createRef<HTMLDivElement>();
 
   private handleResize = debounce(
     () => {
@@ -144,7 +144,7 @@ export class ConnectedFilterControl extends React.Component<
     ) : null;
 
     return (
-      <React.Fragment>
+      <>
         {proxyButtonMarkup}
         <div className={styles.Wrapper}>
           <div className={className} ref={this.container}>
@@ -157,7 +157,7 @@ export class ConnectedFilterControl extends React.Component<
           </div>
           {auxMarkup}
         </div>
-      </React.Fragment>
+      </>
     );
   }
 

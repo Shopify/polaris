@@ -9,6 +9,13 @@ import {getVisibleAndHiddenTabIndices} from '../utilities';
 import {FeaturesContext} from '../../../utilities/features';
 import {Popover} from '../../Popover';
 
+jest.mock('../../Portal', () => ({
+  ...(jest.requireActual('../../Portal') as any),
+  Portal() {
+    return null;
+  },
+}));
+
 describe('<Tabs />', () => {
   const tabs: TabsProps['tabs'] = [
     {content: 'Tab 1', id: 'tab-1'},
@@ -180,6 +187,29 @@ describe('<Tabs />', () => {
       const tabsWithContent = [
         {content: 'Tab 1', id: 'tab-1'},
         {content: 'Tab 2', id: 'tab-2'},
+      ];
+      const wrapper = mountWithAppProvider(
+        <Tabs {...mockProps} tabs={tabsWithContent} />,
+      );
+
+      tabsWithContent.forEach((tab, index) => {
+        expect(wrapper.find(Tab).at(index).prop('children')).toStrictEqual(
+          tab.content,
+        );
+      });
+    });
+
+    it('sets the content correctly if given React nodes', () => {
+      const tabsWithContent = [
+        {content: <span>Tab 1</span>, id: 'tab-1'},
+        {
+          content: (
+            <span>
+              Tab <b>2</b>
+            </span>
+          ),
+          id: 'tab-2',
+        },
       ];
       const wrapper = mountWithAppProvider(
         <Tabs {...mockProps} tabs={tabsWithContent} />,
@@ -435,6 +465,15 @@ describe('<Tabs />', () => {
   });
 
   describe('<Popover />', () => {
+    it('renders disclosureText when provided', () => {
+      const disclosureText = 'More views';
+      const wrapper = mountWithApp(
+        <Tabs {...mockProps} disclosureText={disclosureText} />,
+      );
+
+      expect(wrapper).toContainReactText(disclosureText);
+    });
+
     it('passes preferredPosition below to the Popover', () => {
       const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
       const tabMeasurer = tabs.find(TabMeasurer);

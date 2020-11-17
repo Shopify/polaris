@@ -166,14 +166,9 @@ function FrameExample() {
   );
 
   const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
   );
 
   const searchFieldMarkup = (
@@ -212,12 +207,12 @@ function FrameExample() {
         items={[
           {
             label: 'Dashboard',
-            icon: HomeMajorMonotone,
+            icon: HomeMajor,
             onClick: toggleIsLoading,
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersMajorTwotone,
+            icon: OrdersMajor,
             onClick: toggleIsLoading,
           },
         ]}
@@ -312,7 +307,7 @@ function FrameExample() {
   const theme = {
     colors: {
       topBar: {
-        background: '#357997',
+        background: '#225062',
       },
     },
     logo: {
@@ -509,14 +504,9 @@ function FrameExample() {
   );
 
   const searchResultsMarkup = (
-    <Card>
-      <ActionList
-        items={[
-          {content: 'Shopify help center'},
-          {content: 'Community forums'},
-        ]}
-      />
-    </Card>
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
   );
 
   const searchFieldMarkup = (
@@ -555,12 +545,12 @@ function FrameExample() {
         items={[
           {
             label: 'Dashboard',
-            icon: HomeMajorMonotone,
+            icon: HomeMajor,
             onClick: toggleIsLoading,
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersMajorTwotone,
+            icon: OrdersMajor,
             onClick: toggleIsLoading,
           },
         ]}
@@ -655,7 +645,7 @@ function FrameExample() {
   const theme = {
     colors: {
       topBar: {
-        background: '#357997',
+        background: '#225062',
       },
     },
     frameOffset: 60,

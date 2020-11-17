@@ -10,6 +10,7 @@ import {
 } from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
+import {WithinFilterContext} from '../../../utilities/within-filter-context';
 import {Filters, FiltersProps} from '../Filters';
 import {ConnectedFilterControl} from '../components';
 
@@ -50,6 +51,19 @@ describe('<Filters />', () => {
 
   afterEach(() => {
     matchMedia.restore();
+  });
+
+  it('renders WithinFilterContext with a value of true', () => {
+    WithinFilterContext;
+    const filters = mountWithApp(<Filters {...mockProps} />);
+
+    expect(filters).toContainReactComponentTimes(
+      WithinFilterContext.Provider,
+      1,
+      {
+        value: true,
+      },
+    );
   });
 
   it('calls the onQueryFocus callback when the query field is focused', () => {

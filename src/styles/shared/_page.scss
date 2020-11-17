@@ -28,6 +28,14 @@ $actions-vertical-spacing: spacing(tight);
   @include page-content-when-not-partially-condensed {
     margin-top: spacing(loose);
   }
+
+  .newDesignLanguage & {
+    margin: spacing() 0;
+
+    @include page-content-when-not-partially-condensed {
+      margin-top: spacing();
+    }
+  }
 }
 
 @mixin page-title-layout {
@@ -65,14 +73,19 @@ $actions-vertical-spacing: spacing(tight);
   @include page-content-when-not-partially-condensed {
     padding-top: spacing(extra-loose);
 
+    .newDesignLanguage &,
     &.newDesignLanguage {
-      padding-top: spacing(extra-loose);
+      padding-top: spacing();
     }
   }
 }
 
 @mixin page-header-has-navigation {
   padding-top: rem(32px);
+
+  &.newDesignLanguage {
+    padding-top: spacing();
+  }
 }
 
 @mixin page-header-without-navigation {
@@ -81,6 +94,10 @@ $actions-vertical-spacing: spacing(tight);
 
 @mixin page-header-has-secondary-actions {
   padding-top: rem(24px);
+
+  &.newDesignLanguage {
+    padding-top: spacing();
+  }
 }
 
 @mixin page-actions-layout {

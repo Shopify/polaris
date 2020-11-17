@@ -209,7 +209,7 @@ $stacking-order: (
   position: relative;
   z-index: z-index(contents, $stacking-order);
   flex: 0 0 auto;
-  color: currentColor;
+  color: var(--p-text-subdued, currentColor);
   user-select: none;
 }
 
@@ -361,10 +361,13 @@ $stacking-order: (
   }
 
   &.disabled {
-    color: var(--p-text-disabled);
+    .Input {
+      color: var(--p-text-disabled);
+    }
 
     > .Backdrop {
-      background-color: var(--p-action-secondary-disabled);
+      background-color: var(--p-surface-disabled);
+      border-top-color: var(--p-border-disabled);
     }
 
     svg {
@@ -393,20 +396,13 @@ $stacking-order: (
     @include focus-ring($border-width: border-width());
     background-color: var(--p-surface);
     position: absolute;
+    border: 1px solid var(--p-border-subdued);
+    border-top-color: var(--p-border-shadow);
+    box-shadow: none;
 
     &::after {
       opacity: 1;
     }
-  }
-
-  .Backdrop-connectedLeft::after {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .Backdrop-connectedRight::after {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
   }
 
   .Spinner {
@@ -421,16 +417,16 @@ $stacking-order: (
     --p-text-field-spinner-border-radius: calc(
       var(--p-border-radius-base) - var(--p-text-field-spinner-offset)
     );
-    background: var(--p-action-secondary);
+    background: var(--p-surface-neutral);
     border-radius: var(--p-text-field-spinner-border-radius);
     border-left: var(--p-override-none);
 
     &:hover {
-      background: var(--p-action-secondary-hovered);
+      background: var(--p-surface-neutral-hovered);
     }
 
     &:active {
-      background: var(--p-action-secondary-pressed);
+      background: var(--p-surface-neutral-pressed);
       box-shadow: none;
     }
 

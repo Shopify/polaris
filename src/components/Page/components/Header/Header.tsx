@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {isValidElement} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {buttonsFrom} from '../../../Button';
+import {TextStyle} from '../../../TextStyle';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import {useFeatures} from '../../../../utilities/features';
 import {
@@ -52,18 +53,25 @@ export interface HeaderProps extends TitleProps {
   actionGroups?: MenuGroupDescriptor[];
   /** Additional navigation markup */
   additionalNavigation?: React.ReactNode;
+  // Additional meta data
+  additionalMetaData?: React.ReactNode | string;
 }
 
 export function isPrimaryAction(
   x: PrimaryAction | React.ReactNode,
 ): x is PrimaryAction {
-  return !React.isValidElement(x) && x !== undefined;
+  return !isValidElement(x) && x !== undefined;
 }
+
+const SHORT_TITLE = 20;
+const REALLY_SHORT_TITLE = 8;
+const LONG_TITLE = 34;
 
 export function Header({
   title,
   subtitle,
   titleMetadata,
+  additionalMetaData,
   thumbnail,
   titleHidden = false,
   separator,
@@ -76,6 +84,11 @@ export function Header({
 }: HeaderProps) {
   const {isNavigationCollapsed} = useMediaQuery();
   const {newDesignLanguage} = useFeatures();
+  const isSingleRow =
+    !primaryAction &&
+    !pagination &&
+    !secondaryActions.length &&
+    !actionGroups.length;
 
   const breadcrumbMarkup =
     breadcrumbs.length > 0 ? (
@@ -112,12 +125,14 @@ export function Header({
     ) : null;
 
   const pageTitleMarkup = (
-    <Title
-      title={title}
-      subtitle={subtitle}
-      titleMetadata={titleMetadata}
-      thumbnail={thumbnail}
-    />
+    <div className={styles.TitleWrapper}>
+      <Title
+        title={title}
+        subtitle={subtitle}
+        titleMetadata={titleMetadata}
+        thumbnail={thumbnail}
+      />
+    </div>
   );
 
   const primaryActionMarkup = primaryAction ? (
@@ -140,42 +155,63 @@ export function Header({
       </ConditionalWrapper>
     ) : null;
 
+  const additionalMetaDataMarkup = additionalMetaData ? (
+    <div className={styles.AdditionalMetaData}>
+      <TextStyle variation="subdued">{additionalMetaData}</TextStyle>
+    </div>
+  ) : null;
+
   const headerClassNames = classNames(
     styles.Header,
-    titleHidden && styles.titleHidden,
     separator && styles.separator,
+    isSingleRow && styles.isSingleRow,
+    titleHidden && styles.titleHidden,
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
+    !breadcrumbs.length && styles.noBreadcrumbs,
     newDesignLanguage && styles.newDesignLanguage,
+    title && title.length < LONG_TITLE && styles.mediumTitle,
+    title && title.length > LONG_TITLE && styles.longTitle,
   );
 
   if (newDesignLanguage) {
     const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
+      actionMenuMarkup,
+      additionalMetaDataMarkup,
+      additionalNavigationMarkup,
       breadcrumbMarkup,
+      isNavigationCollapsed,
       pageTitleMarkup,
       paginationMarkup,
-      actionMenuMarkup,
       primaryActionMarkup,
       title,
-      isNavigationCollapsed,
     });
+
+    const className = classNames(
+      styles.Row,
+      newDesignLanguage && styles.RowCondensed,
+    );
 
     return (
       <div className={headerClassNames}>
         <ConditionalRender
           condition={[slot1, slot2, slot3, slot4].some(notNull)}
         >
-          <div className={styles.Row}>
-            <div className={styles.LeftAlign}>
-              {slot1}
-              {slot2}
-            </div>
+          <div className={className}>
+            {slot1}
+            {slot2}
             <ConditionalRender condition={[slot3, slot4].some(notNull)}>
               <div className={styles.RightAlign}>
                 <ConditionalWrapper
                   condition={[slot3, slot4].every(notNull)}
-                  wrapper={(children) => <ButtonGroup>{children}</ButtonGroup>}
+                  wrapper={(children) =>
+                    newDesignLanguage ? (
+                      <div className={styles.Actions}>{children}</div>
+                    ) : (
+                      <ButtonGroup>{children}</ButtonGroup>
+                    )
+                  }
                 >
                   {slot3}
                   {slot4}
@@ -236,16 +272,7 @@ function PrimaryActionMarkup({
     );
   }
 
-  return (
-    <ConditionalWrapper
-      condition={newDesignLanguage === false}
-      wrapper={(children) => (
-        <div className={styles.PrimaryActionWrapper}>{children}</div>
-      )}
-    >
-      {content}
-    </ConditionalWrapper>
-  );
+  return <div className={styles.PrimaryActionWrapper}>{content}</div>;
 }
 
 function shouldShowIconOnly(
@@ -276,25 +303,26 @@ function notNull(value: any) {
 }
 
 function determineLayout({
-  breadcrumbMarkup,
-  pageTitleMarkup,
-  title,
-  paginationMarkup,
   actionMenuMarkup,
-  primaryActionMarkup,
+  additionalMetaDataMarkup,
+  additionalNavigationMarkup,
+  breadcrumbMarkup,
   isNavigationCollapsed,
+  pageTitleMarkup,
+  paginationMarkup,
+  primaryActionMarkup,
+  title,
 }: {
-  breadcrumbMarkup: MaybeJSX;
-  pageTitleMarkup: JSX.Element;
-  title?: string;
-  paginationMarkup: MaybeJSX;
   actionMenuMarkup: MaybeJSX;
-  primaryActionMarkup: MaybeJSX;
+  additionalMetaDataMarkup: MaybeJSX;
+  additionalNavigationMarkup: MaybeJSX;
+  breadcrumbMarkup: MaybeJSX;
   isNavigationCollapsed: boolean;
+  pageTitleMarkup: JSX.Element;
+  paginationMarkup: MaybeJSX;
+  primaryActionMarkup: MaybeJSX;
+  title?: string;
 }) {
-  const shortTitle = 20;
-  const reallyShortTitle = 8;
-
   //    Header Layout
   // |----------------------------------------------------|
   // | slot1 | slot2 |                    | slot3 | slot4 |
@@ -309,23 +337,23 @@ function determineLayout({
         slot2: pageTitleMarkup,
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
-        slot5: null,
-        slot6: null,
+        slot5: additionalMetaDataMarkup,
+        slot6: additionalNavigationMarkup,
       },
       condition:
         isNavigationCollapsed &&
         breadcrumbMarkup == null &&
         title != null &&
-        title.length <= reallyShortTitle,
+        title.length <= REALLY_SHORT_TITLE,
     },
     mobileDefault: {
       slots: {
         slot1: breadcrumbMarkup,
-        slot2: null,
+        slot2: pageTitleMarkup,
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
-        slot5: pageTitleMarkup,
-        slot6: null,
+        slot5: additionalMetaDataMarkup,
+        slot6: additionalNavigationMarkup,
       },
       condition: isNavigationCollapsed,
     },
@@ -333,26 +361,31 @@ function determineLayout({
       slots: {
         slot1: breadcrumbMarkup,
         slot2: pageTitleMarkup,
-        slot3: null,
+        slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
-        slot5: null,
-        slot6: null,
+        slot5: additionalMetaDataMarkup,
+        slot6: additionalNavigationMarkup,
       },
       condition:
         !isNavigationCollapsed &&
         paginationMarkup == null &&
         actionMenuMarkup == null &&
         title != null &&
-        title.length <= shortTitle,
+        title.length <= SHORT_TITLE,
     },
     desktopDefault: {
       slots: {
         slot1: breadcrumbMarkup,
         slot2: pageTitleMarkup,
-        slot3: null,
+        slot3: (
+          <>
+            {actionMenuMarkup}
+            {primaryActionMarkup}
+          </>
+        ),
         slot4: paginationMarkup,
-        slot5: actionMenuMarkup,
-        slot6: primaryActionMarkup,
+        slot5: additionalMetaDataMarkup,
+        slot6: additionalNavigationMarkup,
       },
       condition: !isNavigationCollapsed,
     },

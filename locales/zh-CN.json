@@ -65,13 +65,13 @@
         "december": "十二月"
       },
       "daysAbbreviated": {
-        "monday": "星期一",
-        "tuesday": "星期二",
-        "wednesday": "星期三",
-        "thursday": "星期四",
-        "friday": "周五",
-        "saturday": "星期六",
-        "sunday": "星期日"
+        "monday": "一",
+        "tuesday": "二",
+        "wednesday": "三",
+        "thursday": "四",
+        "friday": "五",
+        "saturday": "六",
+        "sunday": "日"
       },
       "days": {
         "monday": "星期一",
@@ -213,7 +213,9 @@
           "on_or_after": "{date} 之后"
         }
       },
-      "showingTotalCount": "显示 {itemsCount} 项 {resource}（共 {totalItemsCount} 项）"
+      "showingTotalCount": "显示 {itemsCount} 项 {resource}（共 {totalItemsCount} 项）",
+      "allFilteredItemsSelected": "已选择此筛选器中的所有 {itemsLength}+ 个{resourceNamePlural}。",
+      "selectAllFilteredItems": "选择此筛选器中的所有 {itemsLength}+ 个 {resourceNamePlural}"
     },
     "SkeletonPage": {
       "loadingLabel": "页面加载"
@@ -288,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "其他操作"
     }
   }
 }

@@ -573,7 +573,7 @@ Use to render custom content such as icons, links, or buttons in a card sectionâ
   <Card.Section
     title={
       <Stack>
-        <Icon source={ProductsMajorTwotone} />
+        <Icon source={ProductsMajor} />
         <Subheading>New Products</Subheading>
       </Stack>
     }

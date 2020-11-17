@@ -1,4 +1,5 @@
 import React, {
+  createRef,
   useState,
   useRef,
   useCallback,
@@ -8,10 +9,7 @@ import React, {
   Component,
 } from 'react';
 import debounce from 'lodash/debounce';
-import {
-  DragDropMajorMonotone,
-  CircleAlertMajorMonotone,
-} from '@shopify/polaris-icons';
+import {DragDropMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
@@ -349,12 +347,12 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     (active || dragging) &&
     (!internalError || !error) &&
     overlay &&
-    overlayMarkup(DragDropMajorMonotone, 'indigo', overlayTextWithDefault);
+    overlayMarkup(DragDropMajor, 'indigo', overlayTextWithDefault);
 
   const dragErrorOverlay =
     dragging &&
     (internalError || error) &&
-    overlayMarkup(CircleAlertMajorMonotone, 'red', errorOverlayTextWithDefault);
+    overlayMarkup(CircleAlertMajor, 'red', errorOverlayTextWithDefault);
 
   const labelValue =
     label || i18n.translate('Polaris.DropZone.FileUpload.label');
@@ -463,7 +461,7 @@ interface DropZoneInputProps {
 // Due to security reasons, browsers do not allow file inputs to be opened artificially.
 // For example `useEffect(() => { ref.click() })`. Oddly enough react class-based components bi-pass this.
 class DropZoneInput extends Component<DropZoneInputProps, never> {
-  private fileInputNode = React.createRef<HTMLInputElement>();
+  private fileInputNode = createRef<HTMLInputElement>();
 
   componentDidMount() {
     this.props.openFileDialog && this.triggerFileDialog();

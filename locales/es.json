@@ -213,7 +213,9 @@
           "on_or_after": "después de {date}"
         }
       },
-      "showingTotalCount": "Mostrando {itemsCount} de {totalItemsCount} {resource}"
+      "showingTotalCount": "Mostrando {itemsCount} de {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Los {itemsLength}+ {resourceNamePlural} en este filtro están seleccionados.",
+      "selectAllFilteredItems": "Seleccionar los {itemsLength}+ {resourceNamePlural} en este filtro"
     },
     "SkeletonPage": {
       "loadingLabel": "Cargando página"
@@ -288,6 +290,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Más acciones"
     }
   }
 }

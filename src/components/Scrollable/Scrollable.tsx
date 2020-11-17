@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import debounce from 'lodash/debounce';
 
 import {classNames} from '../../utilities/css';
@@ -40,7 +40,7 @@ interface State {
   canScroll: boolean;
 }
 
-export class Scrollable extends React.Component<ScrollableProps, State> {
+export class Scrollable extends Component<ScrollableProps, State> {
   static ScrollTo = ScrollTo;
   static forNode(node: HTMLElement): HTMLElement | Document {
     const closestElement = node.closest(scrollable.selector);

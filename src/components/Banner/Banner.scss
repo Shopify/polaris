@@ -10,7 +10,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 @mixin banner-attributes($highlight, $background, $in-page, $tint) {
   transition: box-shadow duration() easing();
   transition-delay: duration(fast);
-  box-shadow: var(--p-banner-border, none);
 
   @media (-ms-high-contrast: active) {
     outline: 1px solid;
@@ -27,8 +26,11 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
       inset shadow(transparent),
       shadow()
     );
+    @include focus-ring('wide');
   } @else {
+    box-shadow: var(--p-banner-border, none);
     border-radius: var(--p-border-radius-base, border-radius());
+    @include focus-ring('base');
   }
 
   @if $tint {
@@ -36,8 +38,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   } @else {
     background-color: var(--p-banner-background, $background);
   }
-
-  @include focus-ring('wide');
 
   &:focus {
     outline: none;
@@ -123,19 +123,27 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .withinContentContainer {
-  border-radius: var(--p-border-radius-wide, border-radius());
   padding: spacing(tight) $intermediate-spacing;
 
+  // stylelint-disable selector-max-class
   &.newDesignLanguage {
     $newDesignLanguageSpacing: rem(14px);
     $newDesignLanguageOffset: $newDesignLanguageSpacing - spacing();
     padding: spacing() spacing() $newDesignLanguageSpacing;
 
-    // stylelint-disable-next-line selector-max-class
     .ContentWrapper {
       margin-top: $newDesignLanguageOffset;
     }
+
+    .Dismiss {
+      top: spacing();
+    }
+
+    .Ribbon {
+      padding-right: spacing();
+    }
   }
+  // stylelint-enable selector-max-class
 
   @include banner-variants;
 
@@ -145,11 +153,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
   .Ribbon {
     padding-right: $intermediate-spacing;
-
-    // stylelint-disable-next-line selector-max-combinators, selector-max-class
-    .newDesignLanguage & {
-      padding-right: spacing();
-    }
   }
 
   .Actions {
@@ -206,6 +209,10 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 .hasDismiss {
   padding-right: spacing() + spacing(extra-tight) + control-height();
+
+  &.newDesignLanguage {
+    padding-right: calc(#{2 * spacing()} + var(--p-icon-size));
+  }
 }
 
 .Heading {
@@ -266,4 +273,98 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   box-shadow: 0 -2px 0 0 rgba(var(--p-rgb-text), 0.25) inset;
   will-change: box-shadow;
   transition: box-shadow duration() easing();
+}
+
+.Button {
+  @include button-base;
+  @include text-style-button;
+  @include focus-ring($border-width: rem(2px));
+  color: var(--p-text);
+
+  &:focus {
+    @include focus-ring($style: 'focused');
+  }
+}
+
+.newDesignLanguage {
+  // stylelint-disable selector-max-class, selector-max-combinators
+  &.statusCritical .PrimaryAction .Button {
+    border-color: var(--p-border-critical-subdued);
+    background: var(--p-surface-critical-subdued);
+
+    &:hover {
+      border-color: var(--p-border-critical-subdued);
+      background: var(--p-surface-critical-subdued-hovered);
+    }
+
+    &:active {
+      border-color: var(--p-border-critical-subdued);
+      background: var(--p-surface-critical-subdued-pressed);
+    }
+
+    &:focus:not(:active) {
+      border-color: var(--p-border-critical-subdued);
+      background: var(--p-surface-critical-subdued);
+    }
+  }
+
+  &.statusWarning .PrimaryAction .Button {
+    border-color: var(--p-border-warning-subdued);
+    background: var(--p-surface-warning-subdued);
+
+    &:hover {
+      border-color: var(--p-border-warning-subdued);
+      background: var(--p-surface-warning-subdued-hovered);
+    }
+
+    &:active {
+      border-color: var(--p-border-warning-subdued);
+      background: var(--p-surface-warning-subdued-pressed);
+    }
+
+    &:focus:not(:active) {
+      border-color: var(--p-border-warning-subdued);
+      background: var(--p-surface-warning-subdued);
+    }
+  }
+
+  &.statusInfo .PrimaryAction .Button {
+    border-color: var(--p-border-highlight-subdued);
+    background: var(--p-surface-highlight-subdued);
+
+    &:hover {
+      border-color: var(--p-border-highlight-subdued);
+      background: var(--p-surface-highlight-subdued-hovered);
+    }
+
+    &:active {
+      border-color: var(--p-border-highlight-subdued);
+      background: var(--p-surface-highlight-subdued-pressed);
+    }
+
+    &:focus:not(:active) {
+      border-color: var(--p-border-highlight-subdued);
+      background: var(--p-surface-highlight-subdued);
+    }
+  }
+
+  &.statusSuccess .PrimaryAction .Button {
+    border-color: var(--p-border-success-subdued);
+    background: var(--p-surface-success-subdued);
+
+    &:hover {
+      border-color: var(--p-border-success-subdued);
+      background: var(--p-surface-success-subdued-hovered);
+    }
+
+    &:active {
+      border-color: var(--p-border-success-subdued);
+      background: var(--p-surface-success-subdued-pressed);
+    }
+
+    &:focus:not(:active) {
+      border-color: var(--p-border-success-subdued);
+      background: var(--p-surface-success-subdued);
+    }
+  }
 }
