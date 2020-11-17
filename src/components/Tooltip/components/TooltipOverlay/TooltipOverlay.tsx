@@ -6,6 +6,7 @@ import {
   PositionedOverlayProps,
   PositionedOverlay,
 } from '../../../PositionedOverlay';
+import {useI18n} from '../../../../utilities/i18n';
 import styles from '../../Tooltip.scss';
 
 export interface TooltipOverlayProps {
@@ -16,10 +17,15 @@ export interface TooltipOverlayProps {
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   children?: React.ReactNode;
   activator: HTMLElement;
+  accessibilityLabel?: string;
   onClose(): void;
 }
 
-export class TooltipOverlay extends PureComponent<TooltipOverlayProps, never> {
+type CombinedProps = TooltipOverlayProps & {
+  i18n: ReturnType<typeof useI18n>;
+};
+
+class TooltipOverlayInner extends PureComponent<CombinedProps, never> {
   render() {
     const markup = this.props.active ? this.renderOverlay() : null;
 
@@ -52,7 +58,7 @@ export class TooltipOverlay extends PureComponent<TooltipOverlayProps, never> {
   ) => {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
-    const {id, children, light} = this.props;
+    const {id, children, light, accessibilityLabel, i18n} = this.props;
 
     const containerClassName = classNames(
       styles.Tooltip,
@@ -71,6 +77,13 @@ export class TooltipOverlay extends PureComponent<TooltipOverlayProps, never> {
             role="tooltip"
             className={styles.Content}
             style={contentStyles}
+            aria-label={
+              accessibilityLabel
+                ? i18n.translate('Polaris.TooltipOverlay.accessibilityLabel', {
+                    label: accessibilityLabel,
+                  })
+                : undefined
+            }
           >
             {children}
           </div>
@@ -78,4 +91,10 @@ export class TooltipOverlay extends PureComponent<TooltipOverlayProps, never> {
       </div>
     );
   };
+}
+
+export function TooltipOverlay(props: TooltipOverlayProps) {
+  const i18n = useI18n();
+
+  return <TooltipOverlayInner {...props} i18n={i18n} />;
 }
