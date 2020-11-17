@@ -8,13 +8,17 @@
   padding: spacing(tight);
   border-radius: border-radius(large);
 
-  &:focus,
-  &:active {
+  &:hover {
+    background: var(--p-surface-hovered, transparent);
+    @include recolor-icon(var(--p-icon-hovered, color('ink', 'lighter')));
+  }
+
+  &:focus {
     background: var(--p-override-transparent, plain-button-background());
   }
 
-  &:hover {
-    @include recolor-icon(var(--p-icon-hovered, color('ink', 'lighter')));
+  &:active {
+    background: var(--surface-pressed, plain-button-background());
   }
 
   &:focus:not(:active) {
