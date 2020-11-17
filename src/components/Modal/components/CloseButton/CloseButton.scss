@@ -18,7 +18,7 @@
   }
 
   &:active {
-    background: var(--surface-pressed, plain-button-background());
+    background: var(--p-surface-pressed, plain-button-background());
   }
 
   &:focus:not(:active) {
