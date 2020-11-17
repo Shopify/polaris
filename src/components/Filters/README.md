@@ -964,7 +964,7 @@ function Playground() {
         />
       ),
       shortcut: true,
-      clearButton: false,
+      hideClearButton: true,
     },
   ];
 
