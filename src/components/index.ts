@@ -136,6 +136,12 @@ export type {IconProps} from './Icon';
 export {Image} from './Image';
 export type {ImageProps} from './Image';
 
+export {IndexProvider} from './IndexProvider';
+export type {IndexProviderProps} from './IndexProvider';
+
+export {IndexTable} from './IndexTable';
+export type {IndexTableProps} from './IndexTable';
+
 export {Indicator} from './Indicator';
 export type {IndicatorProps} from './Indicator';
 
