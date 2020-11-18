@@ -51,7 +51,7 @@ export const Cell = memo(function Cell({
 
   const checkboxClassName = classNames(
     styles.TableCell,
-    styles['TableCell--first'],
+    styles['TableCell-first'],
   );
 
   const checkboxMarkup =
@@ -63,9 +63,9 @@ export const Cell = memo(function Cell({
 
   const cellClassName = classNames(
     styles.TableCell,
-    checkboxMarkup && styles['TableCell--second'],
-    last && styles['TableCell--last'],
-    noPadding && styles['TableCell--noPadding'],
+    checkboxMarkup && styles['TableCell-second'],
+    last && styles['TableCell-last'],
+    noPadding && styles['TableCell-noPadding'],
   );
 
   const stickyPositioningStyle = checkboxMarkup

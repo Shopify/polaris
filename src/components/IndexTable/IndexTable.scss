@@ -79,25 +79,25 @@ $loading-panel-height: rem(53px);
   border-collapse: collapse;
 }
 
-.Table--scrolling {
-  .TableCell--first,
-  .TableCell--second,
-  .TableHeading--first,
-  .TableHeading--second {
+.Table-scrolling {
+  .TableCell-first,
+  .TableCell-second,
+  .TableHeading-first,
+  .TableHeading-second {
     visibility: visible;
     background-color: var(--p-surface, color('white'));
   }
 
-  .TableCell--first,
-  .TableHeading--first {
+  .TableCell-first,
+  .TableHeading-first {
     box-shadow: rem(1px) rem(-1px) 0 0 var(--p-divider, color('sky'));
     @include breakpoint-after($breakpoint-small) {
       box-shadow: 0 rem(-1px) 0 0 var(--p-divider, color('sky'));
     }
   }
 
-  .TableCell--second,
-  .TableHeading--second {
+  .TableCell-second,
+  .TableHeading-second {
     @include breakpoint-after($breakpoint-small) {
       box-shadow: rem(1px) rem(-1px) 0 0 var(--p-divider, color('sky'));
     }
@@ -109,31 +109,31 @@ $loading-panel-height: rem(53px);
   cursor: pointer;
 }
 
-.TableRow--hovered {
+.TableRow-hovered {
   background-color: var(--p-surface-selected-hovered, color('sky', 'lighter'));
 }
 
 .SubTableRow {
   background-color: var(--p-surface-subdued, color('sky', 'lighter'));
 
-  .TableCell--first,
-  .TableCell--second {
+  .TableCell-first,
+  .TableCell-second {
     background-color: var(--p-surface-subdued, color('sky', 'lighter'));
   }
 }
 
-.TableRow--selected {
+.TableRow-selected {
   background-color: var(--p-surface-selected, color('indigo', 'lighter'));
 
-  .TableHeading--first,
-  .TableHeading--second,
-  .TableCell--first,
-  .TableCell--second {
+  .TableHeading-first,
+  .TableHeading-second,
+  .TableCell-first,
+  .TableCell-second {
     background-color: var(--p-surface-selected, color('indigo', 'lighter'));
   }
 }
 
-.TableRow--subdued {
+.TableRow-subdued {
   color: var(--p-text-subdued, color('ink', 'lighter'));
 }
 
@@ -145,7 +145,7 @@ $loading-panel-height: rem(53px);
   border: 0;
 }
 
-.TableHeading--first {
+.TableHeading-first {
   position: sticky;
   left: 0;
 
@@ -160,7 +160,7 @@ $loading-panel-height: rem(53px);
   padding-right: $small-checkbox-offset;
 }
 
-.TableHeading--second {
+.TableHeading-second {
   padding-left: 0;
 
   @include breakpoint-after($breakpoint-small) {
@@ -168,7 +168,7 @@ $loading-panel-height: rem(53px);
   }
 }
 
-.TableHeading--last {
+.TableHeading-last {
   position: sticky;
   right: 0;
 }
@@ -181,18 +181,18 @@ $loading-panel-height: rem(53px);
   box-shadow: 0 rem(-1px) 0 0 var(--p-divider, color('sky'));
 }
 
-.TableCell--noPadding {
+.TableCell-noPadding {
   padding: 0;
 }
 
-.TableCell--first {
+.TableCell-first {
   position: sticky;
   left: 0;
   z-index: z-index(sticky-cell, $index-table-stacking-order);
   padding: 0;
 }
 
-.TableCell--second {
+.TableCell-second {
   padding-left: 0;
 
   @include breakpoint-after($breakpoint-small) {
@@ -202,7 +202,7 @@ $loading-panel-height: rem(53px);
   }
 }
 
-.TableCell--last {
+.TableCell-last {
   position: sticky;
   right: 0;
   z-index: z-index(sticky-cell, $index-table-stacking-order);
@@ -229,7 +229,7 @@ $loading-panel-height: rem(53px);
   flex: 0 0 auto;
 }
 
-.StickyTableColumnHeader--isScrolling {
+.StickyTableColumnHeader-isScrolling {
   box-shadow: 1px 1px 0 0 var(--p-divider, color('sky')),
     1px 0 1px 1px rgba(63, 63, 68, 0.05), 1px 0 3px 0 rgba(63, 63, 68, 0.15);
 }
@@ -240,7 +240,7 @@ $loading-panel-height: rem(53px);
   display: flex;
 }
 
-.StickyTableHeading--second {
+.StickyTableHeading-second {
   padding-left: 0;
 
   @include breakpoint-after($breakpoint-small) {
@@ -248,7 +248,7 @@ $loading-panel-height: rem(53px);
   }
 }
 
-.StickyTableHeading--second--scrolling {
+.StickyTableHeading-second-scrolling {
   padding: 0 rem(0.6px) 0 spacing();
   display: none;
 
@@ -257,7 +257,7 @@ $loading-panel-height: rem(53px);
   }
 }
 
-.StickyTableHeader--isSticky {
+.StickyTableHeader-isSticky {
   visibility: visible;
   background-color: var(--p-surface, color('white'));
   box-shadow: shadow();
@@ -273,7 +273,7 @@ $loading-panel-height: rem(53px);
   }
 }
 
-.IndexTable .ScrollRight--onboarding {
+.IndexTable .ScrollRight-onboarding {
   display: block;
 }
 
@@ -383,10 +383,10 @@ $scroll-bar-border-radius: rem(4px);
   box-shadow: shadow();
 }
 
-.StickyTable--condensed {
+.StickyTable-condensed {
   visibility: visible;
 }
 
-.StickyTableHeader--condensed {
+.StickyTableHeader-condensed {
   padding: 1.6rem spacing() 0.8rem;
 }

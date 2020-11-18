@@ -40,9 +40,9 @@ export const Row = memo(function Row({
   const rowClassName = classNames(
     styles.TableRow,
     condensed && styles.condensedRow,
-    selected && styles['TableRow--selected'],
-    subdued && styles['TableRow--subdued'],
-    hovered && styles['TableRow--hovered'],
+    selected && styles['TableRow-selected'],
+    subdued && styles['TableRow-subdued'],
+    hovered && styles['TableRow-hovered'],
   );
 
   const handleInteraction = useCallback(
