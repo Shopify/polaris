@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 $index-table-stacking-order: (
   cell: 1,
   sticky-cell: 30,
@@ -10,7 +12,7 @@ $breakpoint-small: 458px;
 $table-header-offset: rem(52px);
 $spacing-loose: rem(12px);
 $spacing-extra-loose: $spacing-loose + spacing(extra-tight);
-$translate-offset: rem(48px) - $spacing-extra-loose;
+$translate-offset: rem(50px) - $spacing-extra-loose;
 $checkbox-offset-left: rem(14px);
 $checkbox-offset-right: rem(18px);
 $small-checkbox-offset: rem(2px);
@@ -345,6 +347,7 @@ $scroll-bar-border-radius: rem(4px);
 
 .selectMode {
   transform: translateY(-$table-header-offset);
+  margin-bottom: -$table-header-offset;
 }
 
 .EmptySearchResultWrapper {

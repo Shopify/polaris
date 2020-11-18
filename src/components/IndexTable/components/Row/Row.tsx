@@ -7,7 +7,6 @@ import {
   useIndexSelectionChange,
 } from '../../../IndexProvider';
 import {classNames} from '../../../../utilities/css';
-
 import styles from '../../IndexTable.scss';
 
 import {RowContext, RowHoveredContext} from './context';

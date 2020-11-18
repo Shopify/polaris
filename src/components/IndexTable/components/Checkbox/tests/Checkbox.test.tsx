@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
-import {ThenType} from '@shopify/useful-types';
+import type {ThenType} from '@shopify/useful-types';
 import {mountWithApp} from 'test-utilities';
 
 import {IndexProvider, IndexProviderProps} from '../../../../IndexProvider';
