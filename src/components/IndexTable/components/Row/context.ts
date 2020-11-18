@@ -1,4 +1,4 @@
-import React from 'react';
+import {createContext} from 'react';
 
 interface RowContextType {
   itemId?: string;
@@ -6,8 +6,6 @@ interface RowContextType {
   onInteraction?: (event: React.MouseEvent | React.KeyboardEvent) => void;
 }
 
-export const RowContext = React.createContext<RowContextType>({});
+export const RowContext = createContext<RowContextType>({});
 
-export const RowHoveredContext = React.createContext<boolean | undefined>(
-  undefined,
-);
+export const RowHoveredContext = createContext<boolean | undefined>(undefined);

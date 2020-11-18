@@ -1,6 +1,6 @@
 import React, {useMemo, memo, useRef, useCallback} from 'react';
-import {useToggle} from '@shopify/react-hooks';
 
+import {useToggle} from '../../../../utilities/use-toggle';
 import {
   useIndexRow,
   SelectionType,

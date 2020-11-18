@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-import throttle from 'lodash/throttle';
+import debounce from 'lodash/debounce';
 
 import styles from './ScrollContainer.scss';
 
@@ -21,20 +21,24 @@ export function ScrollContainer({
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = useCallback(
-    throttle(() => {
-      if (!scrollableContainerRef.current) {
-        return;
-      }
+    debounce(
+      () => {
+        if (!scrollableContainerRef.current) {
+          return;
+        }
 
-      const availableScrollAmount =
-        scrollableContainerRef.current.scrollWidth -
-        scrollableContainerRef.current.offsetWidth;
+        const availableScrollAmount =
+          scrollableContainerRef.current.scrollWidth -
+          scrollableContainerRef.current.offsetWidth;
 
-      const canScrollLeft = scrollableContainerRef.current.scrollLeft > 0;
-      const canScrollRight =
-        scrollableContainerRef.current.scrollLeft < availableScrollAmount;
-      onScroll(canScrollLeft, canScrollRight);
-    }, 20),
+        const canScrollLeft = scrollableContainerRef.current.scrollLeft > 0;
+        const canScrollRight =
+          scrollableContainerRef.current.scrollLeft < availableScrollAmount;
+        onScroll(canScrollLeft, canScrollRight);
+      },
+      40,
+      {trailing: true, leading: true, maxWait: 40},
+    ),
     [onScroll, scrollableContainerRef],
   );
 
