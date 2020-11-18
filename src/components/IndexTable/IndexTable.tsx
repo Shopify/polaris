@@ -247,7 +247,7 @@ export function IndexTable({
         >
           {renderCheckboxContent()}
         </div>
-        <div className={styles['StickyTableHeading--second--scrolling']}>
+        <div className={styles['StickyTableHeading-second-scrolling']}>
           {renderHeadingContent(headings[0])}
         </div>
       </Stack>
@@ -302,7 +302,7 @@ export function IndexTable({
 
   const stickyTableClassNames = classNames(
     styles.StickyTable,
-    condensed && styles['StickyTable--condensed'],
+    condensed && styles['StickyTable-condensed'],
   );
 
   const shouldShowBulkActions =
@@ -314,13 +314,13 @@ export function IndexTable({
         {(isSticky: boolean) => {
           const stickyHeaderClassNames = classNames(
             styles.StickyTableHeader,
-            isSticky && styles['StickyTableHeader--isSticky'],
+            isSticky && styles['StickyTableHeader-isSticky'],
           );
 
           const bulkActionClassNames = classNames(
             styles.BulkActionsWrapper,
-            condensed && styles['StickyTableHeader--condensed'],
-            isSticky && styles['StickyTableHeader--isSticky'],
+            condensed && styles['StickyTableHeader-condensed'],
+            isSticky && styles['StickyTableHeader-isSticky'],
           );
 
           const bulkActionsMarkup = shouldShowBulkActions ? (
@@ -349,8 +349,7 @@ export function IndexTable({
 
           const stickyColumnHeaderClassNames = classNames(
             styles.StickyTableColumnHeader,
-            hasMoreLeftColumns &&
-              styles['StickyTableColumnHeader--isScrolling'],
+            hasMoreLeftColumns && styles['StickyTableColumnHeader-isScrolling'],
           );
 
           const headerMarkup = condensed ? (
@@ -418,7 +417,7 @@ export function IndexTable({
 
   const tableClassNames = classNames(
     styles.Table,
-    hasMoreLeftColumns && styles['Table--scrolling'],
+    hasMoreLeftColumns && styles['Table-scrolling'],
     selectMode && styles.disableTextSelection,
     selectMode && styles.selectMode,
   );
@@ -488,7 +487,7 @@ export function IndexTable({
     const isSecond = index === 0;
     const headingContentClassName = classNames(
       styles.TableHeading,
-      isSecond && styles['TableHeading--second'],
+      isSecond && styles['TableHeading-second'],
     );
 
     const stickyPositioningStyle =
@@ -513,7 +512,7 @@ export function IndexTable({
 
     const checkboxClassName = classNames(
       styles.TableHeading,
-      index === 0 && styles['TableHeading--first'],
+      index === 0 && styles['TableHeading-first'],
       index === 0 && newDesignLanguage && styles.newDesignLanguage,
     );
 
@@ -576,7 +575,7 @@ export function IndexTable({
     const headingContent = renderHeadingContent(heading);
     const stickyHeadingClassName = classNames(
       styles.TableHeading,
-      index === 0 && styles['StickyTableHeading--second'],
+      index === 0 && styles['StickyTableHeading-second'],
     );
 
     return (
