@@ -34,8 +34,8 @@ export function IndexProvider({
   const lastSelected = useRef<number | null>(null);
 
   const defaultResourceName = {
-    singular: i18n.translate('Polaris.IndexTable.defaultItemSingular'),
-    plural: i18n.translate('Polaris.IndexTable.defaultItemPlural'),
+    singular: i18n.translate('Polaris.IndexProvider.defaultItemSingular'),
+    plural: i18n.translate('Polaris.IndexProvider.defaultItemPlural'),
   };
 
   const selectMode = selectedItemsCount === 'All' || selectedItemsCount > 0;
@@ -149,7 +149,7 @@ export function IndexProvider({
     }
 
     if (selectedItemsCount === SELECT_ALL_ITEMS) {
-      return i18n.translate('Polaris.IndexTable.allItemsSelected', {
+      return i18n.translate('Polaris.IndexProvider.allItemsSelected', {
         itemsLength: itemCount,
         resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
       });
@@ -162,7 +162,7 @@ export function IndexProvider({
         ? `${itemCount}+`
         : selectedItemsCount;
 
-    return i18n.translate('Polaris.IndexTable.selected', {
+    return i18n.translate('Polaris.IndexProvider.selected', {
       selectedItemsCount: selectedItemsCountLabel,
     });
   }
@@ -173,18 +173,21 @@ export function IndexProvider({
 
     if (totalItemsCount === 1 && allSelected) {
       return i18n.translate(
-        'Polaris.IndexTable.a11yCheckboxDeselectAllSingle',
+        'Polaris.IndexProvider.a11yCheckboxDeselectAllSingle',
         {
           resourceNameSingular: resourceName.singular,
         },
       );
     } else if (totalItemsCount === 1) {
-      return i18n.translate('Polaris.IndexTable.a11yCheckboxSelectAllSingle', {
-        resourceNameSingular: resourceName.singular,
-      });
+      return i18n.translate(
+        'Polaris.IndexProvider.a11yCheckboxSelectAllSingle',
+        {
+          resourceNameSingular: resourceName.singular,
+        },
+      );
     } else if (allSelected) {
       return i18n.translate(
-        'Polaris.IndexTable.a11yCheckboxDeselectAllMultiple',
+        'Polaris.IndexProvider.a11yCheckboxDeselectAllMultiple',
         {
           itemsLength: itemCount,
           resourceNamePlural: resourceName.plural,
@@ -192,7 +195,7 @@ export function IndexProvider({
       );
     } else {
       return i18n.translate(
-        'Polaris.IndexTable.a11yCheckboxSelectAllMultiple',
+        'Polaris.IndexProvider.a11yCheckboxSelectAllMultiple',
         {
           itemsLength: itemCount,
           resourceNamePlural: resourceName.plural,
