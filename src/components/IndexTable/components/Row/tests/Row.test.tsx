@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
-import {mountWithAppContext} from 'tests/modern';
-import {DeepPartial, ThenType} from '@shopify/useful-types';
+import {mountWithApp} from 'test-utilities';
+import type {DeepPartial, ThenType} from '@shopify/useful-types';
 
 import {IndexProvider, IndexProviderProps} from '../../../../IndexProvider';
 import {IndexTable, IndexTableProps} from '../../../IndexTable';
@@ -39,8 +39,8 @@ describe('<Row />', () => {
     windowOpenSpy.mockRestore();
   });
 
-  it('renders a RowHoveredContext provider', async () => {
-    const row = await mountWithTable(
+  it('renders a RowHoveredContext provider', () => {
+    const row = mountWithTable(
       <table>
         <tbody>
           <Row id="id" selected position={1}>
@@ -53,9 +53,9 @@ describe('<Row />', () => {
     expect(row).toContainReactComponent(RowHoveredContext.Provider);
   });
 
-  it(`dispatches a mouse event when the row is clicked and selectMode is false`, async () => {
+  it(`dispatches a mouse event when the row is clicked and selectMode is false`, () => {
     const spy = jest.fn();
-    const row = await mountWithTable(
+    const row = mountWithTable(
       <Row {...defaultProps}>
         <th>
           <a href="/" data-primary-link>
@@ -74,9 +74,9 @@ describe('<Row />', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it(`does not dispatch a mouse event when the row is clicked if selectMode is true`, async () => {
+  it(`does not dispatch a mouse event when the row is clicked if selectMode is true`, () => {
     const spy = jest.fn();
-    const row = await mountWithTable(
+    const row = mountWithTable(
       <Row {...defaultProps}>
         <th>
           <a href="/" data-primary-link>
@@ -96,9 +96,9 @@ describe('<Row />', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it(`opens the primary link elements url in a new tab when ctrl + clicked`, async () => {
+  it(`opens the primary link elements url in a new tab when ctrl + clicked`, () => {
     const href = '/root';
-    const row = await mountWithTable(
+    const row = mountWithTable(
       <Row {...defaultProps}>
         <th>
           <a href={href} data-primary-link>
@@ -111,14 +111,14 @@ describe('<Row />', () => {
     triggerOnClick(row, 1, {...defaultEvent, nativeEvent: {ctrlKey: true}});
 
     expect(windowOpenSpy).toHaveBeenCalledWith(
-      `https://shop1.myshopify.io${href}`,
+      `http://localhost${href}`,
       '_blank',
     );
   });
 
-  it(`opens the primary link elements url in a new tab when cmd + clicked`, async () => {
+  it(`opens the primary link elements url in a new tab when cmd + clicked`, () => {
     const href = '/root';
-    const row = await mountWithTable(
+    const row = mountWithTable(
       <Row {...defaultProps}>
         <th>
           <a href={href} data-primary-link>
@@ -131,14 +131,14 @@ describe('<Row />', () => {
     triggerOnClick(row, 1, {...defaultEvent, nativeEvent: {metaKey: true}});
 
     expect(windowOpenSpy).toHaveBeenCalledWith(
-      `https://shop1.myshopify.io${href}`,
+      `http://localhost${href}`,
       '_blank',
     );
   });
 
-  it('can open the same ctrl/cmd + clicked link multiple times', async () => {
+  it('can open the same ctrl/cmd + clicked link multiple times', () => {
     const href = '/root';
-    const row = await mountWithTable(
+    const row = mountWithTable(
       <Row {...defaultProps}>
         <th>
           <a href={href} data-primary-link>
@@ -153,9 +153,9 @@ describe('<Row />', () => {
     expect(windowOpenSpy).toHaveBeenCalledTimes(2);
   });
 
-  it('calls onNavigation when opening a new tab', async () => {
+  it('calls onNavigation when opening a new tab', () => {
     const onNavigationSpy = jest.fn();
-    const row = await mountWithTable(
+    const row = mountWithTable(
       <Row {...defaultProps} onNavigation={onNavigationSpy}>
         <th>
           <a href="/" data-primary-link>
@@ -170,9 +170,9 @@ describe('<Row />', () => {
     expect(onNavigationSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('calls onNavigation when clicked', async () => {
+  it('calls onNavigation when clicked', () => {
     const onNavigationSpy = jest.fn();
-    const row = await mountWithTable(
+    const row = mountWithTable(
       <Row {...defaultProps} onNavigation={onNavigationSpy}>
         <th>
           <a href="/" data-primary-link>
@@ -202,7 +202,7 @@ function triggerOnClick(
   }
 }
 
-async function mountWithTable(
+function mountWithTable(
   children: ReactElement,
   props: {
     indexProviderProps?: IndexProviderProps;
@@ -210,7 +210,7 @@ async function mountWithTable(
   } = {},
 ) {
   const {indexProviderProps, indexTableProps} = props;
-  const table = await mountWithAppContext(
+  const table = mountWithApp(
     <IndexProvider {...defaultIndexProviderProps} {...indexProviderProps}>
       <IndexTable {...defaultIndexTableProps} {...indexTableProps}>
         {children}

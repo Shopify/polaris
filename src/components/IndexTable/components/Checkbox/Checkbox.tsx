@@ -1,17 +1,15 @@
 import React, {useContext, memo} from 'react';
-import {Checkbox as PolarisCheckbox} from '@shopify/polaris';
-import {classNames} from '@shopify/css-utilities';
-import {useI18n} from '@shopify/react-i18n';
 
+import {useI18n} from '../../../../utilities/i18n';
+import {classNames} from '../../../../utilities/css';
 import {RowContext} from '../Row';
 import {useIndexValue} from '../../../IndexProvider';
+import {Checkbox as PolarisCheckbox} from '../../../Checkbox';
 
 import styles from './Checkbox.scss';
 
-export interface CheckboxProps {}
-
 export const Checkbox = memo(function Checkbox() {
-  const [i18n] = useI18n();
+  const i18n = useI18n();
   const {resourceName, condensed} = useIndexValue();
   const {itemId, selected, onInteraction} = useContext(RowContext);
 
@@ -30,7 +28,7 @@ export const Checkbox = memo(function Checkbox() {
       >
         <PolarisCheckbox
           id={itemId}
-          label={i18n.translate('selectItem', {
+          label={i18n.translate('Polaris.IndexTable.selectItem', {
             resourceName: resourceName.singular,
           })}
           labelHidden

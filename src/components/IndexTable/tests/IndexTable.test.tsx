@@ -1,12 +1,11 @@
 import React from 'react';
-import {
-  EmptySearchResult,
-  Spinner,
-  Button,
-  UnstableBulkActions as BulkActions,
-} from '@shopify/polaris';
-import {mountWithAppContext as mountWithAppContextLegacy} from '@shopify/polaris-next/test-utilities/legacy';
-import {mountWithAppContext} from '@shopify/polaris-next/test-utilities';
+
+import {EmptySearchResult} from '../../EmptySearchResult';
+import {Spinner} from '../../Spinner';
+import {Button} from '../../Button';
+import {BulkActions} from '../../BulkActions';
+import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {IndexTable} from '../IndexTable';
 import {IndexProvider} from '../../IndexProvider';
@@ -37,18 +36,18 @@ const mockRenderRow = (item: any) => {
 };
 
 describe('<IndexTable>', () => {
-  it('renders an <EmptySearchResult /> if no items are passed', async () => {
-    const index = await mountWithAppContextLegacy(
+  it('renders an <EmptySearchResult /> if no items are passed', () => {
+    const index = mountWithApp(
       <IndexProvider itemCount={0} selectedItemsCount={0}>
         <IndexTable headings={mockTableHeadings} />
       </IndexProvider>,
     );
 
-    expect(index).toContainComponent(EmptySearchResult);
+    expect(index).toContainReactComponent(EmptySearchResult);
   });
 
-  it('renders a row for each item using renderItem', async () => {
-    const index = await mountWithAppContextLegacy(
+  it('renders a row for each item using renderItem', () => {
+    const index = mountWithAppProvider(
       <IndexProvider itemCount={mockTableItems.length} selectedItemsCount={0}>
         <IndexTable headings={mockTableHeadings}>
           {mockTableItems.map(mockRenderRow)}
@@ -59,8 +58,8 @@ describe('<IndexTable>', () => {
     expect(index.find(Component)).toHaveLength(2);
   });
 
-  it('renders a spinner if loading is passed', async () => {
-    const index = await mountWithAppContextLegacy(
+  it('renders a spinner if loading is passed', () => {
+    const index = mountWithApp(
       <IndexProvider
         itemCount={mockTableItems.length}
         selectedItemsCount={0}
@@ -72,7 +71,7 @@ describe('<IndexTable>', () => {
       </IndexProvider>,
     );
 
-    expect(index).toContainComponent(Spinner);
+    expect(index).toContainReactComponent(Spinner);
   });
 
   describe('condensed', () => {
@@ -88,8 +87,8 @@ describe('<IndexTable>', () => {
       headings: mockTableHeadings,
     };
 
-    it('renders bulk actions when selectable', async () => {
-      const index = await mountWithAppContext(
+    it('renders bulk actions when selectable', () => {
+      const index = mountWithApp(
         <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
           <IndexTable {...defaultIndexTableProps}>
             {mockTableItems.map(mockRenderRow)}
@@ -104,8 +103,8 @@ describe('<IndexTable>', () => {
       });
     });
 
-    it('does not render bulk actions with onSelectModeToggle when condensed is false', async () => {
-      const index = await mountWithAppContext(
+    it('does not render bulk actions with onSelectModeToggle when condensed is false', () => {
+      const index = mountWithApp(
         <IndexProvider {...someSelectionIndexProviderProps}>
           <IndexTable
             {...defaultIndexTableProps}
@@ -121,8 +120,8 @@ describe('<IndexTable>', () => {
       });
     });
 
-    it('toggles selectable state when the bulk action button is triggered', async () => {
-      const index = await mountWithAppContext(
+    it('toggles selectable state when the bulk action button is triggered', () => {
+      const index = mountWithApp(
         <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
           <IndexTable {...defaultIndexTableProps}>
             {mockTableItems.map(mockRenderRow)}
@@ -136,9 +135,9 @@ describe('<IndexTable>', () => {
       expect(index).not.toContainReactComponent(BulkActions);
     });
 
-    it('renders sort markup', async () => {
+    it('renders sort markup', () => {
       const id = 'sort';
-      const index = await mountWithAppContext(
+      const index = mountWithApp(
         <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
           <IndexTable {...defaultIndexTableProps} sort={<div id={id} />}>
             {mockTableItems.map(mockRenderRow)}
@@ -149,8 +148,8 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('div', {id});
     });
 
-    it('renders as a list', async () => {
-      const index = await mountWithAppContext(
+    it('renders as a list', () => {
+      const index = mountWithApp(
         <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
           <IndexTable {...defaultIndexTableProps}>
             {mockTableItems.map(mockRenderRow)}
@@ -161,8 +160,8 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('ul');
     });
 
-    it('leaves small screen select mode when going from condensed to regular', async () => {
-      const index = await mountWithAppContext(
+    it('leaves small screen select mode when going from condensed to regular', () => {
+      const index = mountWithApp(
         <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
           <IndexTable {...defaultIndexTableProps}>
             {mockTableItems.map(mockRenderRow)}

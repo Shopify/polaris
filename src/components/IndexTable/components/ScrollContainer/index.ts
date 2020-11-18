@@ -1,1 +1,1 @@
-export {ScrollContainer, ScrollContainerProps} from './ScrollContainer';
+export * from './ScrollContainer';

@@ -2,24 +2,21 @@ import React, {useRef, useState, useEffect, useCallback} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import debounce from 'lodash/debounce';
 import {CSSTransition} from 'react-transition-group';
-import {useI18n} from '@shopify/react-i18n';
+import {useI18n} from '../../utilities/i18n';
 import {durationFast} from '@shopify/polaris-tokens';
-import {
-  Badge,
-  Checkbox as PolarisCheckbox,
-  EmptySearchResult,
-  EventListener,
-  Stack,
-  Sticky,
-  Spinner,
-  VisuallyHidden,
-  Button,
-  UnstableBulkActions as BulkActions,
-  UnstableBulkActionsProps as BulkActionsProps,
-} from '@shopify/polaris';
-import {classNames} from '@shopify/css-utilities';
+import {Badge} from '../Badge';
+import {Checkbox as PolarisCheckbox} from '../Checkbox';
+import {EmptySearchResult} from '../EmptySearchResult';
+import {EventListener} from '../EventListener';
+import {Stack} from '../Stack';
+import {Sticky} from '../Sticky';
+import {Spinner} from '../Spinner';
+import {VisuallyHidden} from '../VisuallyHidden';
+import {Button} from '../Button';
+import {BulkActions, BulkActionsProps} from '../BulkActions';
+import {classNames} from '../../utilities/css';
 import {useToggle} from '@shopify/react-hooks';
-import {useNewDesignLanguage} from '@web-utilities/new-design-language';
+import {useFeatures} from '../../utilities/features';
 
 import {
   useIndexValue,
@@ -77,8 +74,8 @@ export function IndexTable({
     condensed,
   } = useIndexValue();
   const handleSelectionChange = useIndexSelectionChange();
-  const [newDesignLanguage] = useNewDesignLanguage();
-  const [i18n, ShareTranslations] = useI18n();
+  const {newDesignLanguage} = useFeatures();
+  const i18n = useI18n();
 
   const {
     value: hasMoreLeftColumns,
@@ -220,7 +217,9 @@ export function IndexTable({
       (bulkActions && bulkActions.length > 0),
   );
 
-  const headingsMarkup = headings.flatMap(renderHeading);
+  const headingsMarkup = headings
+    .map(renderHeading)
+    .reduce<JSX.Element[]>((acc, heading) => acc.concat(heading), []);
 
   const bulkActionsSelectable = Boolean(
     promotedBulkActions.length > 0 || bulkActions.length > 0,
@@ -289,9 +288,12 @@ export function IndexTable({
         <div className={styles.LoadingPanelRow}>
           <Spinner size="small" />
           <span className={styles.LoadingPanelText}>
-            {i18n.translate('resourceLoadingAccessibilityLabel', {
-              resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-            })}
+            {i18n.translate(
+              'Polaris.IndexTable.resourceLoadingAccessibilityLabel',
+              {
+                resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
+              },
+            )}
           </span>
         </div>
       </div>
@@ -326,7 +328,7 @@ export function IndexTable({
               {loadingMarkup}
               <BulkActions
                 smallScreen={condensed}
-                label={i18n.translate('selected', {
+                label={i18n.translate('Polaris.IndexTable.selected', {
                   selectedItemsCount: selectedItemsCountLabel,
                 })}
                 accessibilityLabel={bulkActionsAccessibilityLabel}
@@ -359,7 +361,7 @@ export function IndexTable({
                 icon={EnableSelectionMinor}
                 onClick={toggleIsSmallScreenSelectable}
               >
-                {i18n.translate('selectButtonText')}
+                {i18n.translate('Polaris.IndexTable.selectButtonText')}
               </Button>
             </div>
           ) : (
@@ -425,10 +427,10 @@ export function IndexTable({
     emptyState
   ) : (
     <EmptySearchResult
-      title={i18n.translate('emptySearchTitle', {
+      title={i18n.translate('Polaris.IndexTable.emptySearchTitle', {
         resourceNamePlural: resourceName.plural,
       })}
-      description={i18n.translate('emptySearchDescription')}
+      description={i18n.translate('Polaris.IndexTable.emptySearchDescription')}
       withIllustration
     />
   );
@@ -473,13 +475,13 @@ export function IndexTable({
     );
 
   return (
-    <ShareTranslations>
+    <>
       <div className={styles.IndexTable}>
         {!shouldShowBulkActions && !condensed && loadingMarkup}
         {tableContentMarkup}
       </div>
       {scrollBarMarkup}
-    </ShareTranslations>
+    </>
   );
 
   function renderHeading(heading: IndexTableHeading, index: number) {
@@ -531,7 +533,7 @@ export function IndexTable({
   function renderCheckboxContent() {
     return (
       <PolarisCheckbox
-        label={i18n.translate('selectAllLabel', {
+        label={i18n.translate('Polaris.IndexTable.selectAllLabel', {
           resourceNamePlural: resourceName.plural,
         })}
         labelHidden
@@ -547,7 +549,9 @@ export function IndexTable({
       headingContent = (
         <Stack wrap={false} alignment="center">
           <span>{heading.title}</span>
-          <Badge status="new">{i18n.translate('onboardingBadgeText')}</Badge>
+          <Badge status="new">
+            {i18n.translate('Polaris.IndexTable.onboardingBadgeText')}
+          </Badge>
         </Stack>
       );
     } else if (heading.hidden) {
@@ -593,8 +597,8 @@ export function IndexTable({
 
     const actionText =
       selectedItemsCount === SELECT_ALL_ITEMS
-        ? i18n.translate('undo')
-        : i18n.translate('selectAllItems', {
+        ? i18n.translate('Polaris.IndexTable.undo')
+        : i18n.translate('Polaris.IndexTable.selectAllItems', {
             itemsLength: itemCount,
             resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
           });
