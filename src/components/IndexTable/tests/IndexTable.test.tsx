@@ -1,12 +1,12 @@
 import React from 'react';
+// eslint-disable-next-line no-restricted-imports
+import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {EmptySearchResult} from '../../EmptySearchResult';
 import {Spinner} from '../../Spinner';
 import {Button} from '../../Button';
 import {BulkActions} from '../../BulkActions';
-import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
-
 import {IndexTable} from '../IndexTable';
 import {IndexProvider} from '../../IndexProvider';
 

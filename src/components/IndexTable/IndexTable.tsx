@@ -3,8 +3,8 @@ import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import debounce from 'lodash/debounce';
 import {CSSTransition} from 'react-transition-group';
 import {durationFast} from '@shopify/polaris-tokens';
-import {useToggle} from '@shopify/react-hooks';
 
+import {useToggle} from '../../utilities/use-toggle';
 import {useI18n} from '../../utilities/i18n';
 import {Badge} from '../Badge';
 import {Checkbox as PolarisCheckbox} from '../Checkbox';

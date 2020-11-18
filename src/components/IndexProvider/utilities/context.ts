@@ -1,4 +1,4 @@
-import React from 'react';
+import {createContext} from 'react';
 
 import type {SelectionType, SELECT_ALL_ITEMS} from './types';
 
@@ -19,11 +19,11 @@ export interface IndexContextType {
   condensed?: boolean;
 }
 
-export const IndexContext = React.createContext<IndexContextType | undefined>(
+export const IndexContext = createContext<IndexContextType | undefined>(
   undefined,
 );
 
-export const IndexSelectionChangeContext = React.createContext<
+export const IndexSelectionChangeContext = createContext<
   | ((
       selectionType: SelectionType,
       toggleType: boolean,
@@ -38,6 +38,6 @@ export interface IndexRowContextType {
   condensed?: boolean;
 }
 
-export const IndexRowContext = React.createContext<
-  IndexRowContextType | undefined
->(undefined);
+export const IndexRowContext = createContext<IndexRowContextType | undefined>(
+  undefined,
+);

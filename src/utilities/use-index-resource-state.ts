@@ -7,7 +7,9 @@ enum SelectionType {
   Single = 'single',
 }
 type Range = [number, number];
-type ResourceIDResolver<T extends object> = (resource: T) => string;
+type ResourceIDResolver<T extends Record<string, unknown>> = (
+  resource: T,
+) => string;
 
 function defaultResourceIDResolver(resource: {[key: string]: any}): string {
   if ('id' in resource) {
@@ -19,7 +21,7 @@ function defaultResourceIDResolver(resource: {[key: string]: any}): string {
   );
 }
 
-export function useIndexResourceState<T extends {}>(
+export function useIndexResourceState<T extends Record<string, unknown>>(
   resources: T[],
   {
     selectedResources: initSelectedResources = [],
