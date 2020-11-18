@@ -1,5 +1,4 @@
 import React, {useMemo, memo, useRef, useCallback} from 'react';
-import {classNames} from '@shopify/css-utilities';
 import {useToggle} from '@shopify/react-hooks';
 
 import {
@@ -7,6 +6,8 @@ import {
   SelectionType,
   useIndexSelectionChange,
 } from '../../../IndexProvider';
+import {classNames} from '../../../../utilities/css';
+
 import styles from '../../IndexTable.scss';
 
 import {RowContext, RowHoveredContext} from './context';

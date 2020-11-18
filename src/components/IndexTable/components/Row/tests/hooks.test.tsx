@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppContext} from 'tests/modern';
+import {mountWithApp} from 'test-utilities';
 
 import {IndexProvider} from '../../../../IndexProvider';
 import {Row} from '../Row';
@@ -18,8 +18,8 @@ const defaultIndexProviderProps = {
 };
 
 describe('useRowHovered', () => {
-  it('returns true when the Row is hovered', async () => {
-    const component = await mountWithAppContext(
+  it('returns true when the Row is hovered', () => {
+    const component = mountWithApp(
       <IndexProvider {...defaultIndexProviderProps}>
         <table>
           <tbody>
@@ -36,8 +36,8 @@ describe('useRowHovered', () => {
     expect(component).toContainReactText('In');
   });
 
-  it('returns false when the Row is not hovered', async () => {
-    const component = await mountWithAppContext(
+  it('returns false when the Row is not hovered', () => {
+    const component = mountWithApp(
       <IndexProvider {...defaultIndexProviderProps}>
         <table>
           <tbody>

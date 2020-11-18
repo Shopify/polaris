@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {SelectionType, SELECT_ALL_ITEMS} from './types';
+import type {SelectionType, SELECT_ALL_ITEMS} from './types';
 
 export interface IndexContextType {
   loading?: boolean;

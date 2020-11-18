@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppContext, mount} from 'tests/modern';
+import {mountWithApp, mount} from 'test-utilities';
 
 import {IndexProvider, useIndexRow} from '../IndexProvider';
 
@@ -9,7 +9,7 @@ describe('useIndexRow', () => {
     selectedItemsCount: 0,
   };
 
-  it('returns selectMode', async () => {
+  it('returns selectMode', () => {
     const spy = jest.fn();
 
     function MockComponent() {
@@ -18,7 +18,7 @@ describe('useIndexRow', () => {
       return null;
     }
 
-    await mountWithAppContext(
+    mountWithApp(
       <IndexProvider {...defaultIndexProviderProps}>
         <MockComponent />
       </IndexProvider>,

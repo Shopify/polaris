@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../../../utilities/css';
 
 import {Checkbox} from '../Checkbox';
 import styles from '../../IndexTable.scss';

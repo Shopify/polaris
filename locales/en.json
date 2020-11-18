@@ -117,6 +117,18 @@
     "Icon": {
       "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
     },
+    "IndexTable": {
+      "emptySearchTitle": "No {resourceNamePlural} found",
+      "emptySearchDescription": "Try changing the filters or search term",
+      "onboardingBadgeText": "New",
+      "resourceLoadingAccessibilityLabel": "Loading {resourceNamePlural}…",
+      "selectAllLabel": "Select all {resourceNamePlural}",
+      "selected": "{selectedItemsCount} selected",
+      "undo": "Undo",
+      "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural} in your store",
+      "selectItem": "Select {resourceName}",
+      "selectButtonText": "Select"
+    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Actions"

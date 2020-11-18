@@ -1,5 +1,5 @@
 import React, {useContext, useRef, useMemo, useCallback} from 'react';
-import {useI18n} from '@shopify/react-i18n';
+import {useI18n} from '../../utilities/i18n';
 
 import {
   IndexContext,
@@ -30,12 +30,12 @@ export function IndexProvider({
 }: IndexProviderProps) {
   const selectable = Boolean(selectedItemsCount);
 
-  const [i18n] = useI18n();
+  const i18n = useI18n();
   const lastSelected = useRef<number | null>(null);
 
   const defaultResourceName = {
-    singular: i18n.translate('defaultItemSingular'),
-    plural: i18n.translate('defaultItemPlural'),
+    singular: i18n.translate('Polaris.IndexTable.defaultItemSingular'),
+    plural: i18n.translate('Polaris.IndexTable.defaultItemPlural'),
   };
 
   const selectMode = selectedItemsCount === 'All' || selectedItemsCount > 0;
@@ -149,7 +149,7 @@ export function IndexProvider({
     }
 
     if (selectedItemsCount === SELECT_ALL_ITEMS) {
-      return i18n.translate('allItemsSelected', {
+      return i18n.translate('Polaris.IndexTable.allItemsSelected', {
         itemsLength: itemCount,
         resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
       });
@@ -162,7 +162,7 @@ export function IndexProvider({
         ? `${itemCount}+`
         : selectedItemsCount;
 
-    return i18n.translate('selected', {
+    return i18n.translate('Polaris.IndexTable.selected', {
       selectedItemsCount: selectedItemsCountLabel,
     });
   }
@@ -172,23 +172,32 @@ export function IndexProvider({
     const allSelected = selectedItemsCount === totalItemsCount;
 
     if (totalItemsCount === 1 && allSelected) {
-      return i18n.translate('a11yCheckboxDeselectAllSingle', {
-        resourceNameSingular: resourceName.singular,
-      });
+      return i18n.translate(
+        'Polaris.IndexTable.a11yCheckboxDeselectAllSingle',
+        {
+          resourceNameSingular: resourceName.singular,
+        },
+      );
     } else if (totalItemsCount === 1) {
-      return i18n.translate('a11yCheckboxSelectAllSingle', {
+      return i18n.translate('Polaris.IndexTable.a11yCheckboxSelectAllSingle', {
         resourceNameSingular: resourceName.singular,
       });
     } else if (allSelected) {
-      return i18n.translate('a11yCheckboxDeselectAllMultiple', {
-        itemsLength: itemCount,
-        resourceNamePlural: resourceName.plural,
-      });
+      return i18n.translate(
+        'Polaris.IndexTable.a11yCheckboxDeselectAllMultiple',
+        {
+          itemsLength: itemCount,
+          resourceNamePlural: resourceName.plural,
+        },
+      );
     } else {
-      return i18n.translate('a11yCheckboxSelectAllMultiple', {
-        itemsLength: itemCount,
-        resourceNamePlural: resourceName.plural,
-      });
+      return i18n.translate(
+        'Polaris.IndexTable.a11yCheckboxSelectAllMultiple',
+        {
+          itemsLength: itemCount,
+          resourceNamePlural: resourceName.plural,
+        },
+      );
     }
   }
 }

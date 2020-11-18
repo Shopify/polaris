@@ -1,1 +1,1 @@
-export {SubRow, SubRowProps} from './SubRow';
+export * from './SubRow';
