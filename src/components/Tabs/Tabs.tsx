@@ -184,7 +184,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
             onKeyUp={this.handleKeyPress}
           >
             {tabsMarkup}
-            <li className={disclosureTabClassName}>
+            <li className={disclosureTabClassName} role="presentation">
               <Popover
                 preferredPosition="below"
                 activator={activator}

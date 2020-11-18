@@ -3,6 +3,7 @@
 Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to format new entries. 💜
 
 - Fixes keyboard interactions for the `Tab` component ([#3650](https://github.com/Shopify/polaris-react/pull/3650))
+- Adds `role="presentational"` to list items for `Tabs` ([#3647](https://github.com/Shopify/polaris-react/pull/3647))
 
 ### Breaking changes
 
