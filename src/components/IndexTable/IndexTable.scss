@@ -72,7 +72,7 @@ $loading-panel-height: rem(53px);
 
 .LoadingPanelText {
   margin-left: rem(12px);
-  color: var(--p-text-highlight, color('teal', 'dark'));
+  color: var(--p-text, color('teal', 'darker'));
 }
 
 .Table {
