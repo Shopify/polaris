@@ -188,7 +188,7 @@ class FiltersInner extends Component<CombinedProps, State> {
             aria-expanded={filterIsOpen}
           >
             <div className={styles.FilterTriggerLabelContainer}>
-              <h2 className={styles.FilterTriggerTitle}>
+              <h3 className={styles.FilterTriggerTitle}>
                 <TextStyle
                   variation={
                     this.props.disabled || filter.disabled
@@ -198,7 +198,7 @@ class FiltersInner extends Component<CombinedProps, State> {
                 >
                   {filter.label}
                 </TextStyle>
-              </h2>
+              </h3>
               <span className={styles.FilterTriggerIcon}>
                 <Icon source={icon} color="inkLightest" />
               </span>
@@ -292,7 +292,9 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const filtersDesktopHeaderMarkup = (
       <div className={filtersContainerHeaderClassname}>
-        <DisplayText size="small">{moreFiltersLabel}</DisplayText>
+        <DisplayText size="small" element="h3">
+          {moreFiltersLabel}
+        </DisplayText>
         <Button
           icon={CancelSmallMinor}
           plain
@@ -310,7 +312,9 @@ class FiltersInner extends Component<CombinedProps, State> {
           accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
         />
-        <DisplayText size="small">{moreFiltersLabel}</DisplayText>
+        <DisplayText size="small" element="h3">
+          {moreFiltersLabel}
+        </DisplayText>
         <Button onClick={this.closeFilters} primary>
           {i18n.translate('Polaris.Filters.done')}
         </Button>
