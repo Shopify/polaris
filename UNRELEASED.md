@@ -49,6 +49,11 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Increased contrast of navigation text color ([#3742](https://github.com/Shopify/polaris-react/pull/3742))
 - Removed `-ms-high-contrast` media query from `ms-high-contrast-outline` as it is non-standard and updated the outline color from `windowText` to `transparent` ([#3775](https://github.com/Shopify/polaris-react/pull/3775)).
 - Fixed `Collapsible` expand and collapse animation ([#3779](https://github.com/Shopify/polaris-react/pull/3779))
+- Removed extra bottom border on the `DataTable` and added curved edges to footers ([#3571](https://github.com/Shopify/polaris-react/pull/3571))
+- **`Button`:** `loading` no longer sets the invalid `role="alert"` ([#3590](https://github.com/Shopify/polaris-react/pull/3590))
+- Removed `tabIndex=-1` from `Popover` when `preventAutoFocus` is true ([#3595](https://github.com/Shopify/polaris-react/pull/3595))
+- Fixed `Modal` header border color ([#3616](https://github.com/Shopify/polaris-react/pull/3616))
+- Fixed a bug in page actions where actions would not re-render when needed ([#3641](https://github.com/Shopify/polaris-react/pull/3641))
 
 ### Documentation
 
