@@ -1,9 +1,10 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useRef, useCallback} from 'react';
 
 import {Portal} from '../Portal';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
+import {Key} from '../../types';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
@@ -62,6 +63,14 @@ export function Tooltip({
     accessibilityNode.setAttribute('aria-describedby', id);
   }, [id, children]);
 
+  const handleKeyUp = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.keyCode !== Key.Escape) return;
+      handleBlur();
+    },
+    [handleBlur],
+  );
+
   const portal = activatorNode ? (
     <Portal idPrefix="tooltip">
       <TooltipOverlay
@@ -88,6 +97,7 @@ export function Tooltip({
       onMouseLeave={handleMouseLeave}
       onMouseOver={handleMouseEnterFix}
       ref={setActivator}
+      onKeyUp={handleKeyUp}
     >
       {children}
       {portal}

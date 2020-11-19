@@ -1,4 +1,4 @@
-import React, {Component, createRef} from 'react';
+import React, {Component, createRef, Fragment} from 'react';
 import {
   SearchMinor,
   ChevronUpMinor,
@@ -26,6 +26,7 @@ import {Badge} from '../Badge';
 import {Focus} from '../Focus';
 import {Sheet} from '../Sheet';
 import {Stack} from '../Stack';
+import {VisuallyHidden} from '../VisuallyHidden';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
 
@@ -352,10 +353,13 @@ class FiltersInner extends Component<CombinedProps, State> {
       </div>
     );
 
-    const tagsMarkup =
-      !hideTags && appliedFilters && appliedFilters.length ? (
-        <div className={styles.TagsContainer}>
-          {appliedFilters.map((filter) => {
+    const shouldHideTagsContainer =
+      !appliedFilters || appliedFilters.length < 1;
+    const TagsWrapper = shouldHideTagsContainer ? VisuallyHidden : Fragment;
+    const tagsMarkup = !hideTags ? (
+      <TagsWrapper>
+        <div className={styles.TagsContainer} aria-live="polite">
+          {(appliedFilters || []).map((filter) => {
             return (
               <Tag
                 key={filter.key}
@@ -369,7 +373,8 @@ class FiltersInner extends Component<CombinedProps, State> {
             );
           })}
         </div>
-      ) : null;
+      </TagsWrapper>
+    ) : null;
 
     const filtersMobileContainerContentClassName = classNames(
       styles.FiltersMobileContainerContent,
