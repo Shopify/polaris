@@ -297,6 +297,9 @@
     },
     "Loading": {
       "label": "Barra di caricamento della pagina"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Suggerimento: {label}"
     }
   }
 }
