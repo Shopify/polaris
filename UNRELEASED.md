@@ -2,7 +2,7 @@
 
 Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to format new entries. 💜
 
----
+- Fixes keyboard interactions for the `Tab` component ([#3650](https://github.com/Shopify/polaris-react/pull/3650))
 
 ### Breaking changes
 
