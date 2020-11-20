@@ -301,7 +301,7 @@
       "label": "Pasek ładowania strony"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Podpowiedź: {label}"
+      "accessibilitylabel": "Etykietka narzędzia: {label}"
     }
   }
 }
