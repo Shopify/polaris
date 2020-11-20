@@ -85,6 +85,7 @@ export function ThemeProvider({
   // Otherwise, setting a style property to `undefined` does not remove it from the DOM.
   const backgroundColor = customProperties['--p-background'] || '';
   const color = customProperties['--p-text'] || '';
+  const {rendersOutsideOfContext} = themeConfig;
 
   useEffect(() => {
     if (isParentThemeProvider) {
@@ -98,8 +99,9 @@ export function ThemeProvider({
   if (isParentThemeProvider) {
     style = customProperties;
   } else if (
-    !isParentThemeProvider &&
-    parentContext!.cssCustomProperties !== toString(customProperties)
+    rendersOutsideOfContext ||
+    (!isParentThemeProvider &&
+      parentContext!.cssCustomProperties !== toString(customProperties))
   ) {
     style = {...customProperties, ...{color}};
   } else {
