@@ -52,9 +52,6 @@ export interface ThemeConfig {
   colors?: Partial<RoleColors> & LegacyColors;
   colorScheme?: ColorScheme;
   config?: Config;
-  /** For use in components such as portals which render outside of parent context */
-  /** Forces the render of custom properties */
-  rendersOutsideOfContext?: boolean;
   frameOffset?: number;
 }
 

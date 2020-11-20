@@ -232,7 +232,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <ThemeProvider theme={{colorScheme, rendersOutsideOfContext: true}}>
+        <ThemeProvider rendersOutsideOfAppFrame theme={{colorScheme}}>
           <div className={styles.Wrapper}>{content}</div>
         </ThemeProvider>
         <div

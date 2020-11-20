@@ -27,12 +27,18 @@ interface ThemeProviderThemeConfig extends Discard<ThemeConfig, 'colorScheme'> {
 interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
   theme: ThemeProviderThemeConfig;
+  /**
+   * For use in components such as portals which render outside of parent context
+   * Forces the render of custom properties
+   */
+  rendersOutsideOfAppFrame?: boolean;
   /** The content to display */
   children?: React.ReactNode;
 }
 
 export function ThemeProvider({
   theme: themeConfig,
+  rendersOutsideOfAppFrame,
   children,
 }: ThemeProviderProps) {
   const {newDesignLanguage} = useFeatures();
@@ -85,7 +91,6 @@ export function ThemeProvider({
   // Otherwise, setting a style property to `undefined` does not remove it from the DOM.
   const backgroundColor = customProperties['--p-background'] || '';
   const color = customProperties['--p-text'] || '';
-  const {rendersOutsideOfContext} = themeConfig;
 
   useEffect(() => {
     if (isParentThemeProvider) {
@@ -99,7 +104,7 @@ export function ThemeProvider({
   if (isParentThemeProvider) {
     style = customProperties;
   } else if (
-    rendersOutsideOfContext ||
+    rendersOutsideOfAppFrame ||
     (!isParentThemeProvider &&
       parentContext!.cssCustomProperties !== toString(customProperties))
   ) {
