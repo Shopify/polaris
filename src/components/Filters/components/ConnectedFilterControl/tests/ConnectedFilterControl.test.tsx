@@ -206,10 +206,6 @@ describe('<ConnectedFilterControl />', () => {
 
 function noop() {}
 
-function findById(wrapper: ReactWrapper, id: string) {
-  return wrapper.find(`#${id}`).first();
-}
-
 function findActions(wrapper: ReactWrapper) {
   // this omits the invisible proxy actions used for measuring width
   return wrapper.find('.Wrapper Button');
