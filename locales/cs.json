@@ -299,6 +299,9 @@
     },
     "Loading": {
       "label": "Panel načítání stránky"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Tip s vysvětlením: {label}"
     }
   }
 }
