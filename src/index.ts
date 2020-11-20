@@ -26,7 +26,7 @@ export {
 
 export {isNewDesignLanguageColor} from './utilities/color-new-design-language';
 
-export {useIndexResourceState} from './utilities/use-index-resource-state';
+export {useIndexResourceState as useIndexResourceStateUnstable} from './utilities/use-index-resource-state';
 
 export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT} from './utilities/scroll-lock-manager';
 export {WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT} from './utilities/within-content-context';
