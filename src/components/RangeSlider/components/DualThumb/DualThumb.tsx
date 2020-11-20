@@ -256,11 +256,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
                 style={{
                   left: `${leftPositionThumbLower}px`,
                 }}
-                role="slider"
                 aria-disabled={disabled}
-                aria-valuemin={min}
-                aria-valuemax={max}
-                aria-valuenow={value[0]}
                 aria-invalid={Boolean(error)}
                 aria-describedby={ariaDescribedBy}
                 aria-labelledby={labelID(id)}
@@ -279,11 +275,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
                 style={{
                   left: `${leftPositionThumbUpper}px`,
                 }}
-                role="slider"
                 aria-disabled={disabled}
-                aria-valuemin={min}
-                aria-valuemax={max}
-                aria-valuenow={value[1]}
                 aria-invalid={Boolean(error)}
                 aria-describedby={ariaDescribedBy}
                 aria-labelledby={labelID(id)}

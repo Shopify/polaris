@@ -37,4 +37,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Fixed up some automated accessibility tests which includes improvements to some components ([#3653](https://github.com/Shopify/polaris-react/pull/3653))
+
 ### Deprecations

@@ -430,8 +430,10 @@ export function TextField({
     'aria-activedescendant': ariaActiveDescendant,
     'aria-autocomplete': ariaAutocomplete,
     'aria-controls': ariaControls,
-    'aria-multiline': normalizeAriaMultiline(multiline),
     'aria-expanded': ariaExpanded,
+    ...(normalizeAriaMultiline(multiline) && {
+      'aria-multiline': normalizeAriaMultiline(multiline),
+    }),
   });
 
   const backdropClassName = classNames(
