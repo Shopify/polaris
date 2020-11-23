@@ -103,19 +103,19 @@ export function Badge({
     statusLabel,
   });
 
-  const accessibilityMarkup = (progress || status) && (
+  let accessibilityMarkup = (progress || status) && (
     <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
   );
 
-  const contentClassNames = classNames(progressLabel && styles.Pip);
-
-  const contentMarkup = accessibilityLabel && (
-    <span className={contentClassNames}>{accessibilityMarkup}</span>
-  );
+  if (progressLabel) {
+    accessibilityMarkup = (
+      <span className={styles.Pip}>{accessibilityMarkup}</span>
+    );
+  }
 
   return (
     <span className={className}>
-      {contentMarkup}
+      {accessibilityMarkup}
       {children}
     </span>
   );
