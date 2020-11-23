@@ -59,59 +59,63 @@ export function Badge({
     withinFilter && styles.withinFilter,
   );
 
-  let progressMarkup;
+  let progressLabel = '';
   switch (progress) {
     case PROGRESS_LABELS.incomplete:
-      progressMarkup = i18n.translate(
+      progressLabel = i18n.translate(
         'Polaris.Badge.PROGRESS_LABELS.incomplete',
       );
       break;
     case PROGRESS_LABELS.partiallyComplete:
-      progressMarkup = i18n.translate(
+      progressLabel = i18n.translate(
         'Polaris.Badge.PROGRESS_LABELS.partiallyComplete',
       );
       break;
     case PROGRESS_LABELS.complete:
-      progressMarkup = i18n.translate('Polaris.Badge.PROGRESS_LABELS.complete');
+      progressLabel = i18n.translate('Polaris.Badge.PROGRESS_LABELS.complete');
       break;
   }
 
-  const pipMarkup = progress ? (
-    <span className={styles.Pip}>
-      <VisuallyHidden>{progressMarkup}</VisuallyHidden>
-    </span>
-  ) : null;
-
-  let statusMarkup;
+  let statusLabel = '';
   switch (status) {
     case STATUS_LABELS.info:
-      statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.info');
+      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.info');
       break;
     case STATUS_LABELS.success:
-      statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.success');
+      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.success');
       break;
     case STATUS_LABELS.warning:
-      statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.warning');
+      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.warning');
       break;
     case STATUS_LABELS.critical:
-      statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.critical');
+      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.critical');
       break;
     case STATUS_LABELS.attention:
-      statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.attention');
+      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.attention');
       break;
     case STATUS_LABELS.new:
-      statusMarkup = i18n.translate('Polaris.Badge.STATUS_LABELS.new');
+      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.new');
       break;
   }
 
-  const statusLabelMarkup = status ? (
-    <VisuallyHidden>{statusMarkup}</VisuallyHidden>
-  ) : null;
+  const accessibilityLabel = i18n.translate('Polaris.Badge.progressAndStatus', {
+    progressLabel,
+    statusLabel,
+  });
+
+  const accessibilityMarkup = (progress || status) && (
+    <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
+  );
+
+  const contentClassNames = classNames(progressLabel && styles.Pip);
+
+  const contentMarkup = accessibilityLabel && (
+    <span className={contentClassNames}>{accessibilityMarkup}</span>
+  );
 
   return (
     <span className={className}>
-      {statusLabelMarkup}
-      {pipMarkup}
+      {contentMarkup}
       {children}
     </span>
   );
