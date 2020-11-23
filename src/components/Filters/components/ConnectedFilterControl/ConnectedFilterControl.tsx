@@ -133,7 +133,7 @@ export class ConnectedFilterControl extends Component<
       >
         {rightPopoverableActions.map((action) => (
           <div key={action.key} data-key={action.key}>
-            {this.activatorButtonFrom({...action, proxy: true})}
+            {this.activatorButtonFrom(action, {proxy: true})}
           </div>
         ))}
       </div>
@@ -223,9 +223,10 @@ export class ConnectedFilterControl extends Component<
   }
 
   private activatorButtonFrom(
-    action: PopoverableAction & {proxy?: boolean},
+    action: PopoverableAction,
+    options?: {proxy?: boolean},
   ): React.ReactElement {
-    const id = action.proxy ? undefined : `Activator-${action.key}`;
+    const id = options?.proxy ? undefined : `Activator-${action.key}`;
     return (
       <Button
         onClick={action.onAction}
