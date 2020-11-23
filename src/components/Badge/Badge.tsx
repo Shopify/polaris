@@ -103,7 +103,7 @@ export function Badge({
     statusLabel,
   });
 
-  let accessibilityMarkup = (progress || status) && (
+  let accessibilityMarkup = (progressLabel || statusLabel) && (
     <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
   );
 
