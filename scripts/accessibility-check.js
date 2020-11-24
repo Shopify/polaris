@@ -100,14 +100,12 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       'id=all-components-autocomplete--autocomplete-with-lazy-loading&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-autocomplete--autocomplete-with-empty-state': 1,
       'id=all-components-autocomplete--autocomplete-with-empty-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-form-layout--field-group': 1,
-      'id=all-components-form-layout--field-group&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-modal--modal-with-scroll-listener': 1,
-      'id=all-components-modal--modal-with-scroll-listener&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-option-list--multiple-option-list': 1,
       'id=all-components-option-list--multiple-option-list&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-option-list--option-list-with-sections': 1,
       'id=all-components-option-list--option-list-with-sections&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-range-slider--dual-thumb-range-slider': 1,
+      'id=all-components-range-slider--dual-thumb-range-slider&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
     };
 
     const {
