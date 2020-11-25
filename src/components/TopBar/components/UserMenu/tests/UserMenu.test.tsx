@@ -2,6 +2,7 @@ import React from 'react';
 import {ViewMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {UserMenu} from '../UserMenu';
 
@@ -12,6 +13,7 @@ describe('<UserMenu />', () => {
     initials: '',
     open: false,
     onToggle: noop,
+    accessibilityLabel: 'User menu',
   };
 
   it('renders with the given props', () => {

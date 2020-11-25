@@ -182,6 +182,7 @@ export function DetailsPage() {
       open={userMenuActive}
       onToggle={toggleUserMenuActive}
       colorScheme="dark"
+      accessibilityLabel="User menu"
     />
   );
 
