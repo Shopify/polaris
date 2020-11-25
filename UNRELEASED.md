@@ -26,7 +26,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added focus styles to `CloseButton` in `Modal` ([#3628](https://github.com/Shopify/polaris-react/pull/3628))
 - Fixed `Filters` duplicated `ConnectedFilter` ids ([#3651](https://github.com/Shopify/polaris-react/pull/3651))
 - Fixed `Banner` `secondaryAction` only rendering if `action` is set ([#2949](https://github.com/Shopify/polaris-react/pull/2949))
-- Added a `rendersOutsideOfContext` to `ThemeProvider` for elements that render outside of parent context ([#3652](https://github.com/Shopify/polaris-react/pull/3652))
+- Added a `rendersOutsideOfAppFrame` to `ThemeProvider` for elements that render outside of the DOM tree to their parent context ([#3652](https://github.com/Shopify/polaris-react/pull/3652))
 
 ### Documentation
 

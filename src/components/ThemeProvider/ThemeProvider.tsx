@@ -38,7 +38,7 @@ interface ThemeProviderProps {
 
 export function ThemeProvider({
   theme: themeConfig,
-  rendersOutsideOfAppFrame,
+  rendersOutsideOfAppFrame = false,
   children,
 }: ThemeProviderProps) {
   const {newDesignLanguage} = useFeatures();
