@@ -397,7 +397,7 @@ $stacking-order: (
     background-color: var(--p-surface);
     position: absolute;
     border: 1px solid var(--p-border-subdued);
-    border-top-color: #8c959b;
+    border-top-color: var(--p-border-shadow);
     box-shadow: none;
 
     &::after {
