@@ -216,6 +216,35 @@ describe('<ThemeProvider />', () => {
       });
     });
 
+    it('renders custom properties if themes are identical but alwaysRenderCustomProperties is true', () => {
+      const themeProvider = mountWithNewDesignLanguage(
+        <ThemeProvider theme={{colorScheme: 'dark'}}>
+          <ThemeProvider
+            theme={{colorScheme: 'dark'}}
+            alwaysRenderCustomProperties
+          >
+            <p>Hello</p>
+          </ThemeProvider>
+        </ThemeProvider>,
+        {newDesignLanguage: true},
+      );
+
+      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
+        style: expect.objectContaining({
+          '--p-background': expect.any(String),
+          '--p-text': expect.any(String),
+          '--p-interactive': expect.any(String),
+          '--p-action-secondary': expect.any(String),
+          '--p-action-primary': expect.any(String),
+          '--p-action-critical': expect.any(String),
+          '--p-surface-warning': expect.any(String),
+          '--p-surface-highlight': expect.any(String),
+          '--p-surface-success': expect.any(String),
+          '--p-decorative-one-text': expect.any(String),
+        }),
+      });
+    });
+
     it('adds css custom properties for color roles provided', () => {
       const themeProvider = mountWithNewDesignLanguage(
         <ThemeProvider
