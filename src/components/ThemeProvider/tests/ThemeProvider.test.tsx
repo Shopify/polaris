@@ -216,10 +216,13 @@ describe('<ThemeProvider />', () => {
       });
     });
 
-    it('renders custom properties if themes are identical but rendersOutsideOfAppFrame is true', () => {
+    it('renders custom properties if themes are identical but alwaysRenderCustomProperties is true', () => {
       const themeProvider = mountWithNewDesignLanguage(
         <ThemeProvider theme={{colorScheme: 'dark'}}>
-          <ThemeProvider theme={{colorScheme: 'dark'}} rendersOutsideOfAppFrame>
+          <ThemeProvider
+            theme={{colorScheme: 'dark'}}
+            alwaysRenderCustomProperties
+          >
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,

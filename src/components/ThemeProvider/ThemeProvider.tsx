@@ -31,14 +31,14 @@ interface ThemeProviderProps {
    * For use in components such as portals which render outside of parent context
    * Forces the render of custom properties
    */
-  rendersOutsideOfAppFrame?: boolean;
+  alwaysRenderCustomProperties?: boolean;
   /** The content to display */
   children?: React.ReactNode;
 }
 
 export function ThemeProvider({
   theme: themeConfig,
-  rendersOutsideOfAppFrame = false,
+  alwaysRenderCustomProperties = false,
   children,
 }: ThemeProviderProps) {
   const {newDesignLanguage} = useFeatures();
@@ -104,7 +104,7 @@ export function ThemeProvider({
   if (isParentThemeProvider) {
     style = customProperties;
   } else if (
-    rendersOutsideOfAppFrame ||
+    alwaysRenderCustomProperties ||
     (!isParentThemeProvider &&
       parentContext!.cssCustomProperties !== toString(customProperties))
   ) {
