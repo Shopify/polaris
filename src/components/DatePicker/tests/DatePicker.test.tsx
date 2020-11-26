@@ -14,6 +14,7 @@ describe('<DatePicker />', () => {
   const hoverDate = selected.end;
   const month = 0;
   const year = 2017;
+  const defaultProps = {month, year};
 
   it('renders Sunday as first day of the week by default', () => {
     const datePicker = mountWithAppProvider(
@@ -22,6 +23,32 @@ describe('<DatePicker />', () => {
 
     const weekday = datePicker.find(Weekday);
     expect(weekday.first().text()).toStrictEqual('Su');
+  });
+
+  describe('accessibility label', () => {
+    it('passes dayAccessibilityLabelPrefix to Month', () => {
+      const accessibilityLabel = 'accessibilityLabel';
+      const datePicker = mountWithApp(
+        <DatePicker
+          {...defaultProps}
+          dayAccessibilityLabelPrefix={accessibilityLabel}
+        />,
+      );
+
+      expect(datePicker).toContainReactComponent(Month, {
+        accessibilityLabelPrefixes: ['accessibilityLabel', 'End of range'],
+      });
+    });
+
+    it('passes default accessibility labels to Month components when allowRange is true', () => {
+      const datePicker = mountWithApp(
+        <DatePicker {...defaultProps} allowRange />,
+      );
+
+      expect(datePicker).toContainReactComponent(Month, {
+        accessibilityLabelPrefixes: ['Start of range ', 'End of range'],
+      });
+    });
   });
 
   describe('when weekStartsOn is passed', () => {
@@ -87,6 +114,7 @@ describe('<DatePicker />', () => {
       const spy = jest.fn();
       const datePicker = mountWithAppProvider(
         <Month
+          accessibilityLabelPrefixes={['start', 'end']}
           focusedDate={new Date()}
           selected={selected}
           hoverDate={hoverDate}
