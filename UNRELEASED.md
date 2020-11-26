@@ -12,7 +12,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - **`Button`:** New `role` prop for `<button />` ([#3590](https://github.com/Shopify/polaris-react/pull/3590))
 - Added `preventFocusOnClose` to `Popover` ([#3595](https://github.com/Shopify/polaris-react/pull/3595))
 - Added color fallback values to `focus-ring` mixin ([#3626](https://github.com/Shopify/polaris-react/pull/3626))
-- Added `roundNumberToDecimalPlaces` to accurately round numbers to a number of decimal places (https://github.com/Shopify/polaris-react/pull/3640)
 
 ### Bug fixes
 
