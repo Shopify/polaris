@@ -32,8 +32,21 @@ export function TooltipOverlay({
   accessibilityLabel,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
+  const markup = active ? (
+    <PositionedOverlay
+      active={active}
+      activator={activator}
+      preferredPosition={preferredPosition}
+      preventInteraction={preventInteraction}
+      render={renderTooltip}
+    />
+  ) : null;
 
-  const renderTooltip: PositionedOverlayProps['render'] = (overlayDetails) => {
+  return markup;
+
+  function renderTooltip(
+    overlayDetails: Parameters<PositionedOverlayProps['render']>[0],
+  ) {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
     const containerClassName = classNames(
@@ -65,22 +78,6 @@ export function TooltipOverlay({
           </div>
         </div>
       </div>
-    );
-  };
-
-  const markup = active ? renderOverlay() : null;
-
-  return markup;
-
-  function renderOverlay() {
-    return (
-      <PositionedOverlay
-        active={active}
-        activator={activator}
-        preferredPosition={preferredPosition}
-        preventInteraction={preventInteraction}
-        render={renderTooltip}
-      />
     );
   }
 }
