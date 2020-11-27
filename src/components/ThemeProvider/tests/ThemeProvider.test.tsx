@@ -92,7 +92,7 @@ describe('<ThemeProvider />', () => {
     expect(themeProvider.find('div')).toHaveReactProps({
       style: expect.objectContaining({
         '--top-bar-background': '#108043',
-        '--top-bar-background-lighter': 'hsla(147, 63%, 43%, 1)',
+        '--top-bar-background-lighter': 'hsla(147.32, 62.78%, 43.24%, 1)',
         '--top-bar-color': 'rgb(255, 255, 255)',
         '--top-bar-border': 'rgb(196, 205, 213)',
       }),
@@ -127,7 +127,7 @@ describe('<ThemeProvider />', () => {
     expect(themeProvider.find('div')).toHaveReactProps({
       style: expect.objectContaining({
         '--top-bar-background': '#021123',
-        '--top-bar-background-lighter': 'hsla(213, 74%, 22%, 1)',
+        '--top-bar-background-lighter': 'hsla(212.73, 74.19%, 22.25%, 1)',
         '--top-bar-color': 'rgb(255, 255, 255)',
         '--top-bar-border': 'rgb(196, 205, 213)',
       }),
