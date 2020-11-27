@@ -57,5 +57,17 @@ describe('<UnstyledLink />', () => {
       ).find('a');
       expect(anchorElement.prop('download')).toBeFalsy();
     });
+
+    describe('accessibilityLabel', () => {
+      it('passes prop', () => {
+        const mockAccessibilityLabel = 'mock accessibility label';
+        const anchorElement = mountWithAppProvider(
+          <UnstyledLink accessibilityLabel={mockAccessibilityLabel} />,
+        );
+        expect(anchorElement.find('a').prop('aria-label')).toBe(
+          mockAccessibilityLabel,
+        );
+      });
+    });
   });
 });
