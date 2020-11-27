@@ -162,6 +162,38 @@ describe('<Nav.Item />', () => {
 
       expect(item).toContainReactComponent(Secondary, {expanded: false});
     });
+
+    it('sets aria labels', () => {
+      const item = itemForLocation('/admin/notARealRoute');
+
+      expect(item).toContainReactComponent('a', {
+        'aria-expanded': false,
+        'aria-controls': 'PolarisSecondaryNavigation1',
+      });
+    });
+
+    it('sets aria-expanded to true when item with subNavItems is expanded', () => {
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="/admin/orders"
+          subNavigationItems={[
+            {
+              url: '/admin/draft_orders',
+              disabled: false,
+              label: 'draft orders',
+            },
+          ]}
+        />,
+        {
+          location: '/admin/orders',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledLink, {
+        'aria-expanded': true,
+      });
+    });
   });
 
   describe('with exactMatch true', () => {
