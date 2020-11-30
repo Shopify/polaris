@@ -327,12 +327,14 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .Tab {
     padding: spacing(tight) spacing(extra-tight);
-
-    &:focus .Title::before {
-      background: var(--p-border-hovered);
+    &.Tab-selected .Title::before {
+      background: var(--p-action-primary);
     }
 
     &:active .Title::before {
+      background: var(--p-action-primary-pressed);
+    }
+    &:focus .Title::before {
       background: var(--p-surface-primary-selected-pressed);
     }
   }
