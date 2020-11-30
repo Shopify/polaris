@@ -27,7 +27,7 @@ export const UnstyledLink = memo(
       <a
         target={target}
         {...rest}
-        aria-label={accessibilityLabel}
+        aria-label={accessibilityLabel || props['aria-label']}
         href={url}
         rel={rel}
         {...unstyled.props}
