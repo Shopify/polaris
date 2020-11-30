@@ -314,6 +314,33 @@ function DisclosureButtion() {
 }
 ```
 
+### Stretched disclosure button
+
+<!-- example-for: web -->
+
+Stretch disclosure button content its full width for a dropdown look
+
+```jsx
+function StretchedDisclosureButton() {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div style={{width: '200px'}}>
+      <Button
+        disclosure={expanded ? 'up' : 'down'}
+        fullWidth
+        stretchContent
+        onClick={() => {
+          setExpanded(!expanded);
+        }}
+      >
+        {expanded ? 'Show less' : 'Show more'}
+      </Button>
+    </div>
+  );
+}
+```
+
 ### Split button
 
 <!-- example-for: web -->
