@@ -43,6 +43,8 @@ export interface ButtonProps extends BaseButton {
   monochrome?: boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactElement | IconSource;
+  /** Position of the Icon, defaults to left */
+  iconPosition?: 'left' | 'right';
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
 }
@@ -104,6 +106,7 @@ export function Button({
   onMouseEnter,
   onTouchStart,
   icon,
+  iconPosition = 'left',
   primary,
   outline,
   destructive,
@@ -193,8 +196,9 @@ export function Button({
     iconMarkup || disclosureIconMarkup ? (
       <span className={styles.Content}>
         {spinnerSVGMarkup}
-        {iconMarkup}
+        {iconPosition === 'left' && iconMarkup}
         {childMarkup}
+        {iconPosition === 'right' && !disclosureIconMarkup && iconMarkup}
         {disclosureIconMarkup}
       </span>
     ) : (
