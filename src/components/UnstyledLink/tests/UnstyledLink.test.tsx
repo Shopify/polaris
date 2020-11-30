@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {UnstyledLink} from 'components/UnstyledLink';
 
 describe('<UnstyledLink />', () => {
@@ -61,12 +62,13 @@ describe('<UnstyledLink />', () => {
     describe('accessibilityLabel', () => {
       it('passes prop', () => {
         const mockAccessibilityLabel = 'mock accessibility label';
-        const anchorElement = mountWithAppProvider(
+        const anchorElement = mountWithApp(
           <UnstyledLink accessibilityLabel={mockAccessibilityLabel} />,
         );
-        expect(anchorElement.find('a').prop('aria-label')).toBe(
-          mockAccessibilityLabel,
-        );
+
+        expect(anchorElement).toContainReactComponent('a', {
+          'aria-label': mockAccessibilityLabel,
+        });
       });
     });
   });

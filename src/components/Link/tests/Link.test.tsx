@@ -5,7 +5,7 @@ import {mountWithApp} from 'test-utilities';
 import {Banner, UnstyledLink, Icon} from 'components';
 
 import en from '../../../../locales/en.json';
-import {Link} from '../Link';
+import {Link, LinkProps} from '../Link';
 
 describe('<Link />', () => {
   it('calls onClick when clicking', () => {
@@ -127,28 +127,26 @@ describe('<Link />', () => {
   describe('accessibilityLabel', () => {
     it('passes prop to the button url is not provided', () => {
       const mockAccessibilityLabel = 'mock accessibility label';
-      const link = mountWithAppProvider(
+      const link = mountWithApp(
         <Link accessibilityLabel={mockAccessibilityLabel} />,
       );
 
-      expect(link.find('button').prop('aria-label')).toBe(
-        mockAccessibilityLabel,
-      );
+      expect(link).toContainReactComponent('button', {
+        'aria-label': mockAccessibilityLabel,
+      });
     });
 
     it('passes prop', () => {
       const mockAccessibilityLabel = 'mock accessibility label';
 
-      const link = mountWithAppProvider(
+      const link = mountWithApp<LinkProps>(
         <Link
           url="https://shopify.com"
           accessibilityLabel={mockAccessibilityLabel}
         />,
       );
 
-      expect(link.find(Link).prop('accessibilityLabel')).toBe(
-        mockAccessibilityLabel,
-      );
+      expect(link.prop('accessibilityLabel')).toBe(mockAccessibilityLabel);
     });
   });
 });
