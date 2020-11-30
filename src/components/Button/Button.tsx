@@ -139,6 +139,7 @@ export function Button({
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
     connectedDisclosure && styles.connectedDisclosure,
+    disclosure && styles.disclosure,
   );
 
   const disclosureIcon = (
