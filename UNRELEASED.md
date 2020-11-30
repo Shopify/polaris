@@ -5,6 +5,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixes keyboard interactions for the `Tab` component ([#3650](https://github.com/Shopify/polaris-react/pull/3650))
 - Adds `role="presentational"` to list items for `Tabs` ([#3647](https://github.com/Shopify/polaris-react/pull/3647))
 
+- Adds `accessibilityLabel` to `Link` component ([#3668](https://github.com/Shopify/polaris-react/pull/3668))
+
 ### Breaking changes
 
 ### Enhancements
