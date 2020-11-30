@@ -330,9 +330,7 @@ function StretchedDisclosureButton() {
         disclosure={expanded ? 'up' : 'down'}
         fullWidth
         stretchContent
-        onClick={() => {
-          setExpanded(!expanded);
-        }}
+        onClick={() => setExpanded(!expanded)}
       >
         {expanded ? 'Show less' : 'Show more'}
       </Button>
