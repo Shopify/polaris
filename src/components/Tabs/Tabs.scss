@@ -332,7 +332,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
       background: var(--p-action-primary-pressed);
     }
     &:focus .Title::before {
-      background: var(--p-surface-primary-selected-pressed);
+      background: var(--p-border-hovered);
     }
   }
 
