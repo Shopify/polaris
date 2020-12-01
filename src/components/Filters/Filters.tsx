@@ -87,6 +87,8 @@ export interface FiltersProps {
   helpText?: string | React.ReactNode;
   /** Hide tags for applied filters */
   hideTags?: boolean;
+  /** Hide the query field */
+  hideQueryField?: boolean;
 }
 
 type CombinedProps = FiltersProps & {
@@ -133,6 +135,7 @@ class FiltersInner extends Component<CombinedProps, State> {
       disabled = false,
       helpText,
       hideTags,
+      hideQueryField,
       features: {newDesignLanguage},
       i18n,
       mediaQuery: {isNavigationCollapsed},
@@ -253,35 +256,38 @@ class FiltersInner extends Component<CombinedProps, State> {
         auxiliary={children}
         disabled={disabled}
         forceShowMorefiltersButton={filters.length > transformedFilters.length}
+        queryFieldHidden={hideQueryField}
       >
-        <TextField
-          placeholder={
-            queryPlaceholder ||
-            i18n.translate('Polaris.Filters.filter', {
-              resourceName: filterResourceName.plural,
-            })
-          }
-          onChange={onQueryChange}
-          onBlur={onQueryBlur}
-          onFocus={onQueryFocus}
-          value={queryValue}
-          focused={focused}
-          label={
-            queryPlaceholder ||
-            i18n.translate('Polaris.Filters.filter', {
-              resourceName: filterResourceName.plural,
-            })
-          }
-          labelHidden
-          prefix={
-            <span className={styles.SearchIcon}>
-              <Icon source={SearchMinor} />
-            </span>
-          }
-          clearButton
-          onClearButtonClick={onQueryClear}
-          disabled={disabled}
-        />
+        {hideQueryField ? null : (
+          <TextField
+            placeholder={
+              queryPlaceholder ||
+              i18n.translate('Polaris.Filters.filter', {
+                resourceName: filterResourceName.plural,
+              })
+            }
+            onChange={onQueryChange}
+            onBlur={onQueryBlur}
+            onFocus={onQueryFocus}
+            value={queryValue}
+            focused={focused}
+            label={
+              queryPlaceholder ||
+              i18n.translate('Polaris.Filters.filter', {
+                resourceName: filterResourceName.plural,
+              })
+            }
+            labelHidden
+            prefix={
+              <span className={styles.SearchIcon}>
+                <Icon source={SearchMinor} />
+              </span>
+            }
+            clearButton
+            onClearButtonClick={onQueryClear}
+            disabled={disabled}
+          />
+        )}
       </ConnectedFilterControl>
     );
 

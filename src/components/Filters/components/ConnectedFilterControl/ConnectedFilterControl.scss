@@ -78,6 +78,19 @@ $stacking-order: (
   }
 }
 
+.RightContainer.queryFieldHidden {
+  .Item:first-of-type > * > * {
+    border-top-left-radius: var(
+      --p-border-radius-base,
+      border-radius()
+    ) !important;
+    border-bottom-left-radius: var(
+      --p-border-radius-base,
+      border-radius()
+    ) !important;
+  }
+}
+
 .RightContainerWithoutMoreFilters {
   .Item:last-child > * > * {
     border-top-right-radius: var(

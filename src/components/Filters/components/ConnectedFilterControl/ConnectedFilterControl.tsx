@@ -26,6 +26,7 @@ export interface ConnectedFilterControlProps {
   auxiliary?: React.ReactNode;
   disabled?: boolean;
   forceShowMorefiltersButton?: boolean;
+  queryFieldHidden?: boolean;
 }
 
 interface ComputedProperty {
@@ -76,6 +77,7 @@ export class ConnectedFilterControl extends Component<
       rightAction,
       auxiliary,
       forceShowMorefiltersButton = true,
+      queryFieldHidden,
     } = this.props;
 
     const actionsToRender =
@@ -97,6 +99,7 @@ export class ConnectedFilterControl extends Component<
     const RightContainerClassName = classNames(
       styles.RightContainer,
       !shouldRenderMoreFiltersButton && styles.RightContainerWithoutMoreFilters,
+      queryFieldHidden && styles.queryFieldHidden,
     );
 
     const rightMarkup =
@@ -148,9 +151,11 @@ export class ConnectedFilterControl extends Component<
         {proxyButtonMarkup}
         <div className={styles.Wrapper}>
           <div className={className} ref={this.container}>
-            <div className={styles.CenterContainer}>
-              <Item>{children}</Item>
-            </div>
+            {children ? (
+              <div className={styles.CenterContainer}>
+                <Item>{children}</Item>
+              </div>
+            ) : null}
             {rightMarkup}
             {rightActionMarkup}
             <EventListener event="resize" handler={this.handleResize} />
