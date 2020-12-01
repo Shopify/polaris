@@ -342,6 +342,8 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   }
 
   .Tab-selected {
+    outline: 3px solid transparent;
+
     &:focus .Title::before {
       background: var(--p-action-primary);
     }
