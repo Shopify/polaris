@@ -20,7 +20,8 @@
         "attention": "Observera",
         "new": "Ny",
         "critical": "Kritisk"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Laddar",
