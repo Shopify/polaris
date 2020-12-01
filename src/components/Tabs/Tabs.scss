@@ -331,6 +331,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     &:active .Title::before {
       background: var(--p-action-primary-pressed);
     }
+
     &:focus .Title::before {
       background: var(--p-border-hovered);
     }
@@ -345,6 +346,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     &:focus .Title::before {
       background: var(--p-action-primary);
     }
+
     .Title {
       color: var(--p-text);
 
@@ -353,7 +355,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
       }
 
       @media (-ms-high-contrast: active) {
-        outline: 3px solid ms-high-contrast-color('text');
+        outline: rem(3px) solid ms-high-contrast-color('text');
         // stylelint-disable-next-line max-nesting-depth
         &::before {
           display: none;
