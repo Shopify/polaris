@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.10.2 - 2020-12-01
+
+### Bug fixes
+
+- Increased precision of hue, saturation, lightness, and alpha in HSBLA `color-transformers` (https://github.com/Shopify/polaris-react/pull/3640)
+
 ## 5.10.1 - 2020-11-13
 
 ### Bug fixes
