@@ -123,7 +123,7 @@ $stacking-order: (
 }
 
 .MoreFiltersButtonContainer.onlyButtonVisible * {
-  border-radius: var(--p-border-radius-base) !important;
+  border-radius: var(--p-border-radius-base, border-radius()) !important;
 }
 
 .Wrapper {
