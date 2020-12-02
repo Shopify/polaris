@@ -119,7 +119,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
         color('indigo');
 
       @media (-ms-high-contrast: active) {
-        outline: 1px solid;
+        outline: rem(3px) solid ms-high-contrast-color('text');
       }
     }
   }
@@ -236,6 +236,10 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   border-radius: var(--p-border-radius-base);
   &:hover {
     background-color: var(--p-surface-hovered);
+
+    @media (-ms-high-contrast: active) {
+      outline: rem(1px) solid ms-high-contrast-color('text');
+    }
   }
   &:active {
     background-color: var(--p-surface-pressed);
@@ -327,6 +331,14 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .Tab {
     padding: spacing(tight) spacing(extra-tight);
+    &:hover .Title {
+      @media (-ms-high-contrast: active) {
+        outline: rem(1px) solid ms-high-contrast-color('text');
+        &::before {
+          display: none;
+        }
+      }
+    }
 
     &:focus .Title::before {
       background: var(--p-border-hovered);
@@ -338,13 +350,55 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   }
 
   .DisclosureActivator {
-    margin: 1px 0 -1px;
-    padding: spacing(tight) spacing(tight) spacing(tight) 0;
+    &:hover .Title {
+      &::before {
+        background: var(--p-border-hovered);
+      }
+      @media (-ms-high-contrast: active) {
+        outline: rem(1px) solid ms-high-contrast-color('text');
+        // stylelint-disable-next-line max-nesting-depth
+        &::before {
+          display: none;
+        }
+      }
+    }
+
+    &:focus .Title {
+      @include focus-ring($style: 'focused');
+
+      &::before {
+        background: var(--p-border-hovered);
+      }
+    }
+
+    &:active .Title::before {
+      background: var(--p-surface-primary-selected-pressed);
+    }
   }
 
   .Tab-selected {
-    &:focus .Title::before {
-      background: var(--p-action-primary);
+    &:hover .Title {
+      @media (-ms-high-contrast: active) {
+        outline: rem(3px) solid ms-high-contrast-color('text');
+        // stylelint-disable-next-line max-nesting-depth
+        &::before {
+          display: none;
+        }
+      }
+    }
+
+    &:focus .Title {
+      @media (-ms-high-contrast: active) {
+        outline: rem(3px) solid ms-high-contrast-color('text');
+        // stylelint-disable-next-line max-nesting-depth
+        &::before {
+          display: none;
+        }
+      }
+
+      &::before {
+        background: var(--p-action-primary);
+      }
     }
 
     .Title {

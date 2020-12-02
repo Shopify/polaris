@@ -134,10 +134,9 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       newDesignLanguage && styles.newDesignLanguage,
     );
 
-    const disclosureButtonClassName = classNames(
-      styles.DisclosureActivator,
-      hasCustomDisclosure && styles.Tab,
-    );
+    const disclosureButtonClassName = hasCustomDisclosure
+      ? classNames(hasCustomDisclosure && styles.Tab)
+      : classNames(styles.DisclosureActivator);
 
     const disclosureButtonContentWrapperClassName = classNames(
       styles.Title,
