@@ -115,7 +115,7 @@ export class ConnectedFilterControl extends Component<
     const moreFiltersButtonContainerClassname = classNames(
       styles.MoreFiltersButtonContainer,
       actionsToRender.length === 0 &&
-        newDesignLanguage &&
+        (newDesignLanguage || queryFieldHidden) &&
         styles.onlyButtonVisible,
     );
 
@@ -197,9 +197,13 @@ export class ConnectedFilterControl extends Component<
         .width;
       const filtersActionWidth = 0;
 
+      const filterFieldMinWidth = this.props.queryFieldHidden
+        ? 0
+        : FILTER_FIELD_MIN_WIDTH;
+
       const availableWidth =
         containerWidth -
-        FILTER_FIELD_MIN_WIDTH -
+        filterFieldMinWidth -
         moreFiltersButtonWidth -
         filtersActionWidth;
 
