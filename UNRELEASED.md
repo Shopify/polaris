@@ -37,9 +37,9 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed keyboard interactions for the `Tab` component ([#3650](https://github.com/Shopify/polaris-react/pull/3650))
 - Fixed keyboard interaction when selected Tab was focused and rendering the wrong `::before` colour ([#3669](https://github.com/Shopify/polaris-react/pull/3669))
 
-### Documentation
+### Bug fixes
 
-- Fixed `preventAutoFocus` prop description for `Popover` ([#3595](https://github.com/Shopify/polaris-react/pull/3595))
+### Documentation
 
 ### Development workflow
 
