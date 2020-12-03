@@ -2,6 +2,7 @@ import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import {Image} from '../Image';
+import {Icon} from '../Icon';
 
 import styles from './Thumbnail.scss';
 
@@ -14,7 +15,7 @@ export interface ThumbnailProps {
    */
   size?: Size;
   /** URL for the image */
-  source: string;
+  source: string | React.SFC<React.SVGProps<SVGSVGElement>>;
   /** Alt text for the thumbnail image */
   alt: string;
 }
@@ -25,9 +26,12 @@ export function Thumbnail({source, alt, size = 'medium'}: ThumbnailProps) {
     size && styles[variationName('size', size)],
   );
 
-  return (
-    <span className={className}>
-      <Image alt={alt} source={source} className={styles.Image} />
-    </span>
-  );
+  const content =
+    typeof source === 'string' ? (
+      <Image alt={alt} source={source} />
+    ) : (
+      <Icon accessibilityLabel={alt} source={source} />
+    );
+
+  return <span className={className}>{content}</span>;
 }

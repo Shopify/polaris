@@ -5,7 +5,7 @@
   align-items: flex-start;
   flex-shrink: 0;
   padding: spacing() spacing(loose);
-  border-bottom: var(--p-thin-border-subdued, border());
+  border-bottom: border('divider');
 }
 
 .Title {

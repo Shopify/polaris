@@ -48,8 +48,10 @@ export interface PopoverProps {
    * @default 'div'
    */
   activatorWrapper?: string;
-  /** Prevent automatic focus of the first field on activation */
+  /** Prevent automatic focus of the popover on activation */
   preventAutofocus?: boolean;
+  /** Prevents focusing the activator or the next focusable element when the popover is deactivated */
+  preventFocusOnClose?: boolean;
   /** Automatically add wrap content in a section */
   sectioned?: boolean;
   /** Allow popover to stretch to the full width of its activator */
@@ -83,6 +85,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
   children,
   onClose,
   activator,
+  preventFocusOnClose,
   active,
   fixed,
   ariaHaspopup,
@@ -120,8 +123,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
 
   const handleClose = (source: PopoverCloseSource) => {
     onClose(source);
-
-    if (activatorContainer.current == null) {
+    if (activatorContainer.current == null || preventFocusOnClose) {
       return;
     }
 

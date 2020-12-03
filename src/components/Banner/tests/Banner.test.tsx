@@ -11,7 +11,7 @@ import {mountWithApp} from 'test-utilities/react-testing';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {BannerContext} from 'utilities/banner-context';
-import {Button, Icon, UnstyledLink, Heading} from 'components';
+import {Button, Icon, UnstyledButton, UnstyledLink, Heading} from 'components';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {Banner, BannerHandles} from '../Banner';
@@ -77,6 +77,92 @@ describe('<Banner />', () => {
       .find('div')
       .filterWhere((element) => element.prop('aria-live') === 'off');
     expect(quietBanner).toBeTruthy();
+  });
+
+  describe('action', () => {
+    it('renders an outline button', () => {
+      const bannerWithAction = mountWithAppProvider(
+        <Banner
+          title="Test"
+          action={{
+            content: 'Primary action',
+          }}
+        >
+          Hello World
+        </Banner>,
+      );
+
+      const bannerAction = bannerWithAction.find(Button);
+
+      expect(bannerAction.exists()).toBeTruthy();
+      expect(bannerAction.text()).toBe('Primary action');
+    });
+
+    it('renders an unstyled button when newDesignLanguage is true', () => {
+      const bannerWithAction = mountWithAppProvider(
+        <Banner
+          title="Test"
+          action={{
+            content: 'Primary action',
+          }}
+        >
+          Hello World
+        </Banner>,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+
+      const bannerAction = bannerWithAction.find(UnstyledButton);
+
+      expect(bannerAction.exists()).toBeTruthy();
+      expect(bannerAction.text()).toBe('Primary action');
+    });
+  });
+
+  describe('secondaryAction', () => {
+    it('renders when a primary action is provided', () => {
+      const bannerWithActions = mountWithAppProvider(
+        <Banner
+          title="Test"
+          action={{
+            content: 'Primary action',
+          }}
+          secondaryAction={{
+            content: 'Secondary external link',
+            url: 'https://test.com',
+            external: true,
+          }}
+        >
+          Hello World
+        </Banner>,
+      );
+
+      const bannerSecondaryAction = bannerWithActions.find(UnstyledLink);
+
+      expect(bannerSecondaryAction.exists()).toBeTruthy();
+      expect(bannerSecondaryAction.text()).toBe('Secondary external link');
+    });
+
+    it('renders when a primary action is not provided', () => {
+      const bannerWithActions = mountWithAppProvider(
+        <Banner
+          title="Test"
+          secondaryAction={{
+            content: 'Secondary external link',
+            url: 'https://test.com',
+            external: true,
+          }}
+        >
+          Hello World
+        </Banner>,
+      );
+
+      const bannerSecondaryAction = bannerWithActions.find(UnstyledLink);
+
+      expect(bannerSecondaryAction.exists()).toBeTruthy();
+      expect(bannerSecondaryAction.text()).toBe('Secondary external link');
+    });
   });
 
   describe('onDismiss()', () => {

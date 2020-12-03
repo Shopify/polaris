@@ -52,6 +52,7 @@ interface CommonButtonProps
     ButtonProps,
     | 'id'
     | 'accessibilityLabel'
+    | 'role'
     | 'onClick'
     | 'onFocus'
     | 'onBlur'
@@ -90,6 +91,7 @@ export function Button({
   loading,
   pressed,
   accessibilityLabel,
+  role,
   ariaControls,
   ariaExpanded,
   ariaPressed,
@@ -269,6 +271,7 @@ export function Button({
     id,
     className,
     accessibilityLabel,
+    role,
     onClick,
     onFocus,
     onBlur,

@@ -22,7 +22,7 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
   const [shouldFocusSelf, setFocusSelf] = useState<boolean | undefined>(
     undefined,
   );
-  const {canSafelyFocus} = useFocusManager();
+  const {canSafelyFocus} = useFocusManager({trapping});
   const focusTrapWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

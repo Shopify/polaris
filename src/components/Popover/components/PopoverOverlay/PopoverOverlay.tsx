@@ -190,6 +190,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       fluidContent,
       hideOnPrint,
       colorScheme,
+      preventAutofocus,
     } = this.props;
 
     const className = classNames(
@@ -211,7 +212,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     const content = (
       <div
         id={id}
-        tabIndex={-1}
+        tabIndex={preventAutofocus ? undefined : -1}
         className={contentClassNames}
         style={contentStyles}
         ref={this.contentNode}
@@ -231,7 +232,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <ThemeProvider theme={{colorScheme}}>
+        <ThemeProvider alwaysRenderCustomProperties theme={{colorScheme}}>
           <div className={styles.Wrapper}>{content}</div>
         </ThemeProvider>
         <div

@@ -169,6 +169,26 @@ describe('<PopoverOverlay />', () => {
     ).toBe(false);
   });
 
+  it("doesn't include a tabindex prop when preventAutofocus is true", () => {
+    const popoverOverlay = mountWithAppProvider(
+      <PopoverOverlay
+        active
+        id="PopoverOverlay-1"
+        activator={activator}
+        onClose={noop}
+        fixed
+        preventAutofocus
+        preferInputActivator={false}
+      >
+        {children}
+      </PopoverOverlay>,
+    );
+
+    expect(
+      popoverOverlay.find(PositionedOverlay).prop('preferInputActivator'),
+    ).toBe(false);
+  });
+
   it('calls the onClose callback when the escape key is pressed', () => {
     const spy = jest.fn();
 
