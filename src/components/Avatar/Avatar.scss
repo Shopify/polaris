@@ -10,7 +10,7 @@ $large-size: rem(60px);
   overflow: hidden;
   min-width: $small-size;
   max-width: 100%;
-  background: var(--p-action-secondary, color('sky'));
+  background: var(--p-surface-neutral, color('sky'));
   color: var(--p-icon-subdued, color('ink', 'lightest'));
   border-radius: $large-size / 2;
   user-select: none;

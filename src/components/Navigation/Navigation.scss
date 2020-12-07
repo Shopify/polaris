@@ -87,6 +87,15 @@ $disabled-fade: 0.6;
 
   .Navigation-newDesignLanguage & {
     position: relative;
+  }
+}
+
+.Item-selected {
+  font-weight: 600;
+  color: var(--p-action-primary, color('indigo', 'dark'));
+  background-color: var(--p-background-selected, $item-selected-background);
+
+  .Navigation-newDesignLanguage & {
     &::before {
       content: '';
       position: absolute;
@@ -98,60 +107,33 @@ $disabled-fade: 0.6;
       background-color: var(--p-action-primary);
       border-top-right-radius: var(--p-border-radius-base);
       border-bottom-right-radius: var(--p-border-radius-base);
-      transform: translateX(-100%);
-    }
-  }
-}
-
-.Item-selected {
-  font-weight: 600;
-  color: var(--p-action-primary, color('indigo', 'dark'));
-  background-color: var(--p-surface-hovered, $item-selected-background);
-
-  .Navigation-newDesignLanguage & {
-    &::before {
-      transform: translateX(0);
     }
   }
 
   @media (-ms-high-contrast: active) {
     outline: 1px solid ms-high-contrast-color('text');
   }
-  // stylelint-disable selector-max-specificity
-  .Icon,
-  &:focus .Icon {
-    @include recolor-icon(
-      var(--p-action-primary, color('indigo')),
-      var(--p-override-transparent, color('white'))
-    );
-  }
-  // stylelint-enable selector-max-specificity
-  &:hover {
-    background-color: var(--p-surface-hovered, $item-selected-background);
-    color: var(--p-action-primary-hovered, color('indigo', 'dark'));
-  }
 
   @include focus-ring;
 
-  &:focus {
+  &:hover,
+  &.keyFocused {
+    background-color: var(--p-background-hovered, $item-selected-background);
+    color: var(--p-action-primary-hovered, color('indigo', 'dark'));
+  }
+
+  .keyFocused {
+    @include focus-ring($style: 'focused');
+  }
+
+  &:active,
+  &:active:hover {
     color: var(--p-action-primary, color('indigo', 'dark'));
-  }
-  &:focus:active {
     @include no-focus-ring;
-    color: color('indigo', 'dark');
-    background-color: $item-selected-background;
+
     // stylelint-disable-next-line selector-max-specificity
     .Navigation-newDesignLanguage & {
-      @include recolor-icon(var(--p-action-primary-pressed));
-      color: var(--p-action-primary-pressed);
-      background-color: var(--p-surface-pressed);
-    }
-  }
-  &:focus:hover {
-    // stylelint-disable-next-line selector-max-specificity
-    .Navigation-newDesignLanguage & {
-      @include recolor-icon(var(--p-action-primary));
-      color: var(--p-action-primary, color('indigo', 'dark'));
+      background-color: var(--p-background-pressed);
     }
   }
 }
@@ -159,13 +141,16 @@ $disabled-fade: 0.6;
 .Item-disabled {
   color: var(--p-text-disabled, color('ink', 'lightest'));
   pointer-events: none;
-  opacity: var(--p-override-one, $disabled-fade);
+  opacity: $disabled-fade;
 
-  .Icon {
-    @include recolor-icon(
-      var(--p-icon-disabled, color('ink', 'lightest')),
-      var(--p-override-transparent, color('white'))
-    );
+  .Navigation-newDesignLanguage & {
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators
+    .Icon {
+      // Re-apply another layer of opacity fade,
+      // as the new filled icons have a stronger visual presence
+      // than the old outlined ones.
+      opacity: $disabled-fade;
+    }
   }
 }
 
@@ -214,9 +199,8 @@ $disabled-fade: 0.6;
 
 .SecondaryAction {
   @include recolor-icon(
-    var(--p-icon-subdued, color('ink', 'lightest')),
-    var(--p-override-transparent, color('white')),
-    filter('ink', 'lightest')
+    var(--p-icon, color('ink', 'lightest')),
+    var(--p-override-transparent, color('white'))
   );
   display: flex;
   align-items: center;
@@ -229,92 +213,41 @@ $disabled-fade: 0.6;
     height: nav(desktop-height);
   }
 
-  .Navigation-newDesignLanguage & {
+  &:hover,
+  &:focus,
+  &:active {
     @include recolor-icon(
-      var(--p-icon-subdued, color('ink', 'lightest')),
-      var(--p-override-transparent, color('white')),
-      filter('icon')
-    );
-  }
-
-  &:hover {
-    @include recolor-icon(
-      var(--p-action-primary, color('indigo')),
+      var(--p-icon-hovered, color('indigo')),
       var(--p-override-transparent, color('white')),
       filter('indigo')
     );
-    background-image: var(
-      --p-override-none,
+    background: var(
+      --p-background-hovered,
       linear-gradient(color(state, hover), color(state, hover))
     );
-    background-color: var(--p-surface-hovered);
 
     .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('action')
-      );
+      @media (-ms-high-contrast: active) {
+        @include recolor-icon(
+          $fill-color: color('white'),
+          $filter-color: filter('white')
+        );
+      }
     }
   }
 
   @include focus-ring;
 
   &:focus {
-    @include recolor-icon(
-      var(--p-icon-subdued, color('indigo')),
-      var(--p-override-transparent, color('white')),
-      filter('indigo')
-    );
-    background-image: var(
-      --p-override-none,
-      linear-gradient(color(state, hover), color(state, hover))
-    );
-    .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-icon-subdued, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('icon')
-      );
-    }
     @include focus-ring($style: 'focused');
   }
 
-  &:focus:hover {
-    @include recolor-icon(
-      var(--p-action-primary, color('indigo')),
-      var(--p-override-transparent, color('white')),
-      filter('indigo')
-    );
-    // stylelint-disable-next-line selector-max-specificity
-    .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('action')
-      );
-    }
-  }
-
   &:active {
-    @include recolor-icon(
-      var(--p-action-primary, color('indigo')),
-      var(--p-override-transparent, color('white')),
-      filter('indigo')
-    );
-    background-image: var(
-      --p-override-none,
-      linear-gradient(color(state, hover), color(state, hover))
-    );
     @include no-focus-ring;
-    background-color: var(--p-surface-pressed);
-    // stylelint-disable-next-line selector-max-specificity
+
     .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('action')
-      );
+      background: var(--p-background-pressed);
+      @include recolor-icon(var(--p-icon-pressed));
     }
   }
 
@@ -351,7 +284,6 @@ $secondary-item-font-size: rem(15px);
     color: var(--p-text-subdued, color('ink', 'light'));
     // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, selector-max-class
     .Navigation-newDesignLanguage & {
-      @include focus-ring;
       font-weight: 500;
       padding-left: nav(icon-size) + spacing(extra-loose) - spacing(extra-tight);
 
@@ -368,19 +300,21 @@ $secondary-item-font-size: rem(15px);
       color: var(--p-text-subdued, color('indigo', 'dark'));
     }
 
-    &:focus {
+    // stylelint-disable-next-line selector-max-class
+    &.keyFocused {
       color: var(--p-text, color('indigo', 'dark'));
     }
-    // stylelint-disable selector-max-specificity
-    &:focus:hover {
-      color: var(--p-action-primary, color('indigo', 'dark'));
-    }
+
+    // stylelint-disable-next-line selector-max-specificity
     &:active,
     &:active:hover {
-      color: var(--p-text, color('indigo', 'dark'));
       @include no-focus-ring;
     }
-    // stylelint-enable selector-max-specificity
+
+    &:active {
+      color: var(--p-action-primary, color('indigo', 'dark'));
+    }
+
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: rem(14px);
       line-height: rem(28px);
@@ -410,11 +344,12 @@ $secondary-item-font-size: rem(15px);
     &:hover {
       color: var(--p-action-primary-hovered, color('indigo', 'dark'));
     }
-    &:focus {
+    // stylelint-disable-next-line selector-max-class
+    &.keyFocused {
       color: var(--p-action-primary, color('indigo', 'dark'));
     }
     &:active {
-      color: var(--p-action-primary-pressed, color('indigo', 'dark'));
+      color: var(--p-action-primary, color('indigo', 'dark'));
       @include no-focus-ring;
     }
   }
@@ -472,9 +407,8 @@ $secondary-item-font-size: rem(15px);
   .Action {
     @include unstyled-button;
     @include recolor-icon(
-      var(--p-icon-subdued, color('ink', 'lightest')),
-      var(--p-override-transparent, color('white')),
-      filter('ink', 'lightest')
+      var(--p-icon, color('ink', 'lightest')),
+      var(--p-override-transparent, color('white'))
     );
     display: flex;
     align-items: center;
@@ -486,96 +420,59 @@ $secondary-item-font-size: rem(15px);
     @include breakpoint-after(nav-min-window-corrected()) {
       height: nav(desktop-nav-height);
     }
-    // stylelint-disable-next-line selector-max-combinators, selector-max-class
-    .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-icon-subdued, color('ink', 'lightest')),
-        var(--p-override-transparent, color('white')),
-        filter('icon')
-      );
-    }
-
-    &:hover {
-      @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
-      );
-      background-image: var(
-        --p-override-none,
-        linear-gradient(color(state, hover), color(state, hover))
-      );
-      background-color: var(--p-surface-hovered);
-      // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
-      .Navigation-newDesignLanguage & {
-        @include recolor-icon(
-          var(--p-action-primary, color('indigo')),
-          var(--p-override-transparent, color('white')),
-          filter('action')
-        );
-      }
-    }
 
     @include focus-ring;
 
+    &:hover,
     &:focus {
-      @include recolor-icon(
-        var(--p-icon-subdued, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
-      );
-      background-image: var(
-        --p-override-none,
+      background: var(
+        --p-background-hovered,
         linear-gradient(color(state, hover), color(state, hover))
       );
-      @include focus-ring($style: 'focused');
-      // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
-      .Navigation-newDesignLanguage & {
+      @include recolor-icon(
+        var(--p-icon-hovered, color('indigo')),
+        var(--p-override-transparent, color('white'))
+      );
+
+      @media (-ms-high-contrast: active) {
         @include recolor-icon(
-          var(--p-icon-subdued, color('indigo')),
-          var(--p-override-transparent, color('white')),
-          filter('icon')
+          $fill-color: color('white'),
+          $filter-color: filter('white')
         );
       }
+    }
+
+    &:hover {
+      // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+      .Navigation-newDesignLanguage & {
+        @include recolor-icon($filter-color: filter('action'));
+      }
+    }
+
+    &:focus {
+      @include focus-ring($style: 'focused');
     }
 
     // stylelint-disable-next-line selector-max-specificity
     &:focus:hover {
       @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
+        var(--p-icon-hovered, color('indigo')),
+        var(--p-override-transparent, color('white'))
       );
-      // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
-      .Navigation-newDesignLanguage & {
-        @include recolor-icon(
-          var(--p-action-primary, color('indigo')),
-          var(--p-override-transparent, color('white')),
-          filter('action')
-        );
-      }
     }
 
-    &:active {
+    // stylelint-disable-next-line selector-max-specificity
+    &:active,
+    &:active:hover {
       @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
+        var(--p-icon-pressed, color('indigo')),
+        var(--p-override-transparent, color('white'))
       );
-      background-image: var(
-        --p-override-none,
+      background: var(
+        --p-background-pressed,
         linear-gradient(color(state, hover), color(state, hover))
       );
       @include no-focus-ring;
-      background-color: var(--p-surface-pressed);
-      // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
-      .Navigation-newDesignLanguage & {
-        @include recolor-icon(
-          var(--p-action-primary, color('indigo')),
-          var(--p-override-transparent, color('white')),
-          filter('action')
-        );
-      }
     }
 
     &:focus,
@@ -598,11 +495,7 @@ $secondary-item-font-size: rem(15px);
     color: var(--p-action-primary, color('indigo'));
 
     .Navigation-newDesignLanguage & {
-      @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        null,
-        filter('action')
-      );
+      @include recolor-icon($filter-color: filter('action'));
     }
   }
 
@@ -621,4 +514,8 @@ $secondary-item-font-size: rem(15px);
   display: inline-block;
   height: rem(10px);
   width: rem(10px);
+}
+// stylelint-disable-next-line selector-max-combinators, selector-max-class
+.Navigation-newDesignLanguage .SecondaryNavigation-noIcon .Item {
+  padding-left: spacing(tight) + spacing(extra-tight);
 }

@@ -105,6 +105,45 @@ describe('colorUtilities', () => {
       expect(saturation).toBe(1);
       expect(brightness).toBe(1);
     });
+
+    // test for an issue where Hex colours were losing precision during the conversion because we limit rounding to two decimal places
+    // https://github.com/Shopify/shopify/issues/265949
+    it('returns 0/0/0.5333 hsb value with four decimals of brightness precision when passed rgb(136, 136, 136)', () => {
+      const {hue, saturation, brightness} = rgbToHsb({
+        red: 136,
+        green: 136,
+        blue: 136,
+      });
+      expect(hue).toBe(0);
+      expect(saturation).toBe(0);
+      expect(brightness).toBe(0.5333);
+    });
+
+    // test for an issue where Hex colours were losing precision during the conversion because we limit rounding to two decimal places
+    // https://github.com/Shopify/shopify/issues/265949
+    it('returns 0/0/0.5294 hsb value when passed rgb(135, 135, 135)', () => {
+      const {hue, saturation, brightness} = rgbToHsb({
+        red: 135,
+        green: 135,
+        blue: 135,
+      });
+      expect(hue).toBe(0);
+      expect(saturation).toBe(0);
+      expect(brightness).toBe(0.5294);
+    });
+
+    // test for an issue where Hex colours were losing precision, due to hue rounding
+    // https://github.com/Shopify/shopify/issues/265949
+    it('returns 16.5517/0.521/0.6549 hsb value when passed rgb(167, 104, 80)', () => {
+      const {hue, saturation, brightness} = rgbToHsb({
+        red: 167,
+        green: 104,
+        blue: 80,
+      });
+      expect(hue).toBe(16.55);
+      expect(saturation).toBe(0.521);
+      expect(brightness).toBe(0.6549);
+    });
   });
 
   describe('colorToHsla', () => {
@@ -112,7 +151,7 @@ describe('colorUtilities', () => {
       expect(colorToHsla('#dddddd')).toStrictEqual({
         alpha: 1,
         hue: 0,
-        lightness: 87,
+        lightness: 86.67,
         saturation: 0,
       });
     });
@@ -120,9 +159,9 @@ describe('colorUtilities', () => {
     it('returns the hsla color for rgb', () => {
       expect(colorToHsla('rgb(132, 11, 2)')).toStrictEqual({
         alpha: 1,
-        hue: 4,
-        lightness: 26,
-        saturation: 97,
+        hue: 4.15,
+        lightness: 26.27,
+        saturation: 97.01,
       });
     });
 
@@ -138,9 +177,9 @@ describe('colorUtilities', () => {
     it('returns the hsla color for rgba', () => {
       expect(colorToHsla('rgb(132, 11, 2, 0.2)')).toStrictEqual({
         alpha: 1,
-        hue: 4,
-        lightness: 26,
-        saturation: 97,
+        hue: 4.15,
+        lightness: 26.27,
+        saturation: 97.01,
       });
     });
 

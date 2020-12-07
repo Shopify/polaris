@@ -74,7 +74,7 @@ describe('<Title />', () => {
         features: {newDesignLanguage: true},
       });
       expect(title).toContainReactComponent('div', {
-        className: 'TitleMetadata newDesignLanguage',
+        className: 'TitleWithMetadataWrapper newDesignLanguage',
       });
     });
 
@@ -83,7 +83,7 @@ describe('<Title />', () => {
         features: {newDesignLanguage: false},
       });
       expect(title).toContainReactComponent('div', {
-        className: 'TitleMetadata',
+        className: 'TitleWithMetadataWrapper',
       });
     });
   });

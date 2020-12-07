@@ -24,15 +24,15 @@ interface Props {
   groups?: MenuGroupDescriptor[];
 }
 
-const ACTION_SPACING = 4;
+const ACTION_SPACING = 8;
 
 export function Actions({actions = [], groups = []}: Props) {
   const i18n = useI18n();
   const {newDesignLanguage} = useFeatures();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
   const menuGroupWidthRef = useRef<number>(0);
-  const [actionWidths, setActionWidths] = useState<number[]>([]);
-  const [availableWidth, setAvailableWidth] = useState<number>(0);
+  const actionWidthsRef = useRef<number[]>([]);
+  const availableWidthRef = useRef<number>(0);
   const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
     undefined,
   );
@@ -47,10 +47,10 @@ export function Actions({actions = [], groups = []}: Props) {
     actions: [],
   };
   const lastMenuGroup = [...groups].pop();
-  const lastMenuGroupWidth = [...actionWidths].pop() || 0;
+  const lastMenuGroupWidth = [...actionWidthsRef.current].pop() || 0;
 
   const handleActionsOffsetWidth = useCallback((width: number) => {
-    setActionWidths((actionWidths) => [...actionWidths, width]);
+    actionWidthsRef.current = [...actionWidthsRef.current, width];
   }, []);
 
   const handleMenuGroupToggle = useCallback(
@@ -63,59 +63,71 @@ export function Actions({actions = [], groups = []}: Props) {
     [],
   );
 
+  const measureActions = useCallback(() => {
+    if (
+      !newDesignLanguage ||
+      actionWidthsRef.current.length === 0 ||
+      availableWidthRef.current === 0
+    ) {
+      return;
+    }
+
+    const actionsAndGroups = [...actions, ...groups];
+
+    if (actionsAndGroups.length === 1) {
+      setShowableActions(actionsAndGroups);
+      return;
+    }
+
+    let currentAvailableWidth = availableWidthRef.current;
+    let newShowableActions: MenuActionDescriptor[] = [];
+    let newRolledUpActions: (MenuActionDescriptor | MenuGroupDescriptor)[] = [];
+
+    actionsAndGroups.forEach((action, index) => {
+      const canFitAction =
+        actionWidthsRef.current[index] +
+          menuGroupWidthRef.current +
+          ACTION_SPACING +
+          lastMenuGroupWidth <=
+        currentAvailableWidth;
+
+      if (canFitAction) {
+        currentAvailableWidth -= actionWidthsRef.current[index];
+        newShowableActions = [...newShowableActions, action];
+      } else {
+        // Find last group if it exists and always render it as a rolled up action below
+        if (action === lastMenuGroup) return;
+        currentAvailableWidth = 0;
+        newRolledUpActions = [...newRolledUpActions, action];
+      }
+    });
+
+    setShowableActions(newShowableActions);
+    setRolledUpActions(newRolledUpActions);
+  }, [actions, groups, lastMenuGroup, lastMenuGroupWidth, newDesignLanguage]);
+
   const handleResize = useMemo(
     () =>
       debounce(
         () => {
           if (!newDesignLanguage || !actionsLayoutRef.current) return;
-          setAvailableWidth(actionsLayoutRef.current.offsetWidth);
+          availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
+          measureActions();
         },
         20,
         {leading: false, trailing: true, maxWait: 40},
       ),
-    [newDesignLanguage],
+    [newDesignLanguage, measureActions],
   );
 
   useEffect(() => {
-    if (!actionsLayoutRef.current) return;
-    setAvailableWidth(actionsLayoutRef.current.offsetWidth);
-  }, [actionsLayoutRef]);
-
-  useEffect(() => {
-    if (!newDesignLanguage || actionWidths.length === 0 || availableWidth === 0)
+    if (!actionsLayoutRef.current) {
       return;
+    }
 
-    let currentAvailableWidth = availableWidth;
-
-    setShowableActions([]);
-    setRolledUpActions([]);
-
-    [...actions, ...groups].forEach((action, index) => {
-      if (
-        actionWidths[index] +
-          menuGroupWidthRef.current +
-          ACTION_SPACING +
-          lastMenuGroupWidth <=
-        currentAvailableWidth
-      ) {
-        currentAvailableWidth -= actionWidths[index];
-        setShowableActions((showableActions) => [...showableActions, action]);
-      } else {
-        // Find last group if it exists and always render it as a rolled up action below
-        if (action === lastMenuGroup) return;
-        currentAvailableWidth = 0;
-        setRolledUpActions((rolledUpActions) => [...rolledUpActions, action]);
-      }
-    });
-  }, [
-    actions,
-    actionWidths,
-    availableWidth,
-    groups,
-    lastMenuGroup,
-    lastMenuGroupWidth,
-    newDesignLanguage,
-  ]);
+    availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
+    measureActions();
+  }, [measureActions]);
 
   const className = classNames(
     styles.ActionsLayout,

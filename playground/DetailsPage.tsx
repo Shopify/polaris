@@ -5,16 +5,11 @@ import {
   CirclePlusMinor,
   CustomersMajor,
   DiscountsMajor,
-  DuplicateMinor,
-  ExternalMinor,
   HomeMajor,
   MarketingMajor,
   OrdersMajor,
-  PrintMinor,
   ProductsMajor,
-  SaveMinor,
   SettingsMajor,
-  ViewMinor,
 } from '@shopify/polaris-icons';
 
 import {
@@ -467,7 +462,6 @@ export function DetailsPage() {
       additionalNavigation={<Avatar initials="JD" />}
       primaryAction={{
         content: 'Save this page',
-        icon: SaveMinor,
         // eslint-disable-next-line no-console
         onAction: () => console.log('save'),
       }}
@@ -475,19 +469,16 @@ export function DetailsPage() {
       secondaryActions={[
         {
           content: 'Duplicate',
-          icon: DuplicateMinor,
           // eslint-disable-next-line no-console
           onAction: () => console.log('duplicate'),
         },
         {
           content: 'View',
-          icon: ViewMinor,
           // eslint-disable-next-line no-console
           onAction: () => console.log('view'),
         },
         {
           content: 'Print',
-          icon: PrintMinor,
           // eslint-disable-next-line no-console
           onAction: () => console.log('print'),
         },
@@ -495,7 +486,6 @@ export function DetailsPage() {
       actionGroups={[
         {
           title: 'Promote',
-          icon: ExternalMinor,
           actions: [
             // eslint-disable-next-line no-console
             {content: 'Promote', onAction: () => console.log('promote')},

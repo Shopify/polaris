@@ -1,6 +1,14 @@
 import React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {Button, Popover, Sheet, Tag, TextField, TextStyle} from 'components';
+import {
+  Button,
+  Popover,
+  Sheet,
+  Tag,
+  TextField,
+  TextStyle,
+  VisuallyHidden,
+} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {
   mountWithAppProvider,
@@ -365,6 +373,19 @@ describe('<Filters />', () => {
         />,
       );
       expect(resourceFilters.find(Tag)).toHaveLength(0);
+    });
+
+    it('renders visually hidden if applied filters are not provided', () => {
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
+      expect(resourceFilters).toContainReactComponentTimes(VisuallyHidden, 1);
+    });
+
+    it('renders applied filters container with aria live', () => {
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
+      expect(resourceFilters).toContainReactComponent('div', {
+        className: 'TagsContainer',
+        'aria-live': 'polite',
+      });
     });
 
     it('applied filter count is shown if hideTags prop is given', () => {

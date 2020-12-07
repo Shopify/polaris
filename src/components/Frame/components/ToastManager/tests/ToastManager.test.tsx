@@ -38,8 +38,7 @@ describe('<ToastManager />', () => {
         toastMessages={[{id: '1', content: 'Hello', onDismiss: noop}]}
       />,
     );
-
-    expect(toastManager.find('div').at(0).prop('aria-live')).toBe('polite');
+    expect(toastManager.find('[aria-live]').prop('aria-live')).toBe('polite');
   });
 });
 

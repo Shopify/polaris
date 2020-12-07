@@ -37,18 +37,16 @@ export function Title({title, subtitle, titleMetadata, thumbnail}: TitleProps) {
   ) : null;
 
   const titleMetadataMarkup = titleMetadata ? (
-    <div
-      className={classNames(
-        styles.TitleMetadata,
-        newDesignLanguage && styles.newDesignLanguage,
-      )}
-    >
-      {titleMetadata}
-    </div>
+    <div className={styles.TitleMetadata}>{titleMetadata}</div>
   ) : null;
 
   const wrappedTitleMarkup = titleMetadata ? (
-    <div className={styles.TitleWithMetadataWrapper}>
+    <div
+      className={classNames(
+        styles.TitleWithMetadataWrapper,
+        newDesignLanguage && styles.newDesignLanguage,
+      )}
+    >
       {titleMarkup}
       {titleMetadataMarkup}
     </div>

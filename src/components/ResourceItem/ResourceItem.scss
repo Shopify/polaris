@@ -325,20 +325,38 @@ $resource-list-item-variables: (
 .newDesignLanguage {
   &.selected {
     background-color: var(--p-surface-selected);
+
+    &:hover {
+      background-color: var(--p-surface-selected-hovered);
+    }
+
+    &:active {
+      background-color: var(--p-surface-selected-pressed);
+    }
   }
 
   &:hover {
-    background-color: var(--p-surface-selected-hovered);
+    background-color: var(--p-surface-hovered);
   }
 
   &:active {
-    background-color: var(--p-surface-selected-pressed);
+    background-color: var(--p-surface-pressed);
   }
 }
 
 .ListItem {
   .ListItem + & {
     border-top: border('divider');
+  }
+
+  &:last-of-type {
+    border-bottom-left-radius: var(--p-border-radius-wide, border-radius());
+    border-bottom-right-radius: var(--p-border-radius-wide, border-radius());
+
+    .ItemWrapper {
+      border-bottom-left-radius: var(--p-border-radius-wide, border-radius());
+      border-bottom-right-radius: var(--p-border-radius-wide, border-radius());
+    }
   }
 
   &.newDesignLanguage {

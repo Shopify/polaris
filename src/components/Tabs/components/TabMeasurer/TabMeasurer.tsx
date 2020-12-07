@@ -16,7 +16,7 @@ interface TabMeasurements {
 export interface TabMeasurerProps {
   tabToFocus: number;
   siblingTabHasFocus: boolean;
-  activator: React.ReactElement<{}>;
+  activator: React.ReactElement;
   selected: number;
   tabs: TabDescriptor[];
   handleMeasurement(measurements: TabMeasurements): void;

@@ -1,5 +1,6 @@
 import React, {Fragment, StrictMode} from 'react';
 
+import {PortalsManager} from '../PortalsManager';
 import {FocusManager} from '../FocusManager';
 import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
@@ -100,11 +101,13 @@ export function PolarisTestProvider({
                 <LinkContext.Provider value={link}>
                   <ThemeContext.Provider value={mergedTheme}>
                     <MediaQueryContext.Provider value={mergedMediaQuery}>
-                      <FocusManager>
-                        <FrameContext.Provider value={mergedFrame}>
-                          {children}
-                        </FrameContext.Provider>
-                      </FocusManager>
+                      <PortalsManager>
+                        <FocusManager>
+                          <FrameContext.Provider value={mergedFrame}>
+                            {children}
+                          </FrameContext.Provider>
+                        </FocusManager>
+                      </PortalsManager>
                     </MediaQueryContext.Provider>
                   </ThemeContext.Provider>
                 </LinkContext.Provider>

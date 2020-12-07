@@ -15,7 +15,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 }
 
 .Wrapper {
-  border-bottom: border();
+  border-bottom: border('divider');
 
   &.newDesignLanguage {
     padding: 0 spacing(tight);
@@ -75,15 +75,19 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
     .Title {
       @include text-emphasis-normal;
-      background-color: var(--p-surface-hovered, transparent);
+      background-color: transparent;
       border-bottom: var(--p-override-none, $underline-height) solid
         color('sky');
+      // stylelint-disable-next-line selector-max-specificity
+      &::before {
+        background-color: var(--p-border-hovered);
+      }
     }
   }
 
   &:active {
     .Title {
-      background-color: var(--p-surface-pressed, transparent);
+      background-color: transparent;
     }
   }
 
@@ -306,8 +310,8 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
 .newDesignLanguage {
   .Title {
+    color: var(--p-text-subdued);
     padding: spacing(tight) spacing();
-    font-weight: var(--p-button-font-weight);
 
     &::before {
       content: '';
@@ -324,12 +328,12 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   .Tab {
     padding: spacing(tight) spacing(extra-tight);
 
-    &:hover,
-    &:active,
-    &:focus {
-      .Title {
-        font-weight: var(--p-button-font-weight);
-      }
+    &:active .Title::before {
+      background: var(--p-action-primary-pressed);
+    }
+
+    &:focus .Title::before {
+      background: var(--p-border-hovered);
     }
   }
 
@@ -339,15 +343,19 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   }
 
   .Tab-selected {
+    &:focus .Title::before {
+      background: var(--p-action-primary);
+    }
+
     .Title {
-      background-color: var(--p-surface-primary-selected);
-      color: var(--p-action-primary);
+      color: var(--p-text);
 
       &::before {
         background: var(--p-action-primary);
       }
 
       @media (-ms-high-contrast: active) {
+        outline: rem(3px) solid ms-high-contrast-color('text');
         // stylelint-disable-next-line max-nesting-depth
         &::before {
           display: none;

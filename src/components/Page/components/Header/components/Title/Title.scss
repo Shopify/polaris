@@ -45,11 +45,16 @@
   .TitleMetadata {
     margin-top: spacing(tight);
     display: inline-block;
+  }
+}
 
-    // stylelint-disable-next-line selector-max-class
-    &.newDesignLanguage {
-      margin-top: spacing(extra-tight);
-      vertical-align: bottom;
-    }
+.newDesignLanguage.TitleWithMetadataWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  // stylelint-disable-next-line selector-max-class
+  .TitleMetadata {
+    margin-top: 0;
+    vertical-align: bottom;
   }
 }

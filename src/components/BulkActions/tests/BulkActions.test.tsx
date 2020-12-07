@@ -55,7 +55,9 @@ describe('<BulkActions />', () => {
         <BulkActions
           {...bulkActionProps}
           promotedActions={[]}
-          actions={[{content: 'Action', badge: {status: 'new'}}]}
+          actions={[
+            {content: 'Action', badge: {status: 'new', content: 'Badge'}},
+          ]}
         />,
       );
 

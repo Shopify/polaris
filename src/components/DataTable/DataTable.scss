@@ -59,10 +59,15 @@ $breakpoint: 768px;
   }
 }
 
+// stylelint-disable selector-max-class, selector-max-combinators
+.TableRow + .TableRow {
+  .Cell {
+    border-top: border('divider');
+  }
+}
+
 .Cell {
   padding: spacing();
-  border-bottom: border-width() solid
-    var(--p-border-subdued, color('sky', 'light'));
   white-space: nowrap;
   text-align: left;
   transition: background-color 0.2s ease-in-out;
@@ -161,6 +166,8 @@ $breakpoint: 768px;
 .Cell-total-footer {
   border-top: border('divider');
   border-bottom: none;
+  border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  border-bottom-right-radius: var(--p-border-radius-base, border-radius());
 }
 
 .Footer {
@@ -168,4 +175,7 @@ $breakpoint: 768px;
   background: var(--p-surface-subdued, color('sky', 'light'));
   color: var(--p-text-subdued, color('ink', 'lighter'));
   text-align: center;
+  border-top: border('divider');
+  border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  border-bottom-right-radius: var(--p-border-radius-base, border-radius());
 }
