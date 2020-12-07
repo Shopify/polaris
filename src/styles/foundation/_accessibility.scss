@@ -1,5 +1,15 @@
-@mixin high-contrast-outline {
+@mixin ms-high-contrast-outline($border-width: border-width()) {
   @media (-ms-high-contrast: active) {
-    outline: 1px solid ms-high-contrast-color('text');
+    outline: $border-width solid ms-high-contrast-color('text');
+  }
+}
+
+@mixin focus-ring-ms-high-contrast($border-width: border-width()) {
+  @media (-ms-high-contrast: active) {
+    outline: $border-width solid ms-high-contrast-color('text');
+
+    &::before {
+      content: none;
+    }
   }
 }

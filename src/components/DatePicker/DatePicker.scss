@@ -185,7 +185,7 @@ $range-end-border-radius: rem(30px);
     &:hover {
       background: var(--p-interactive-hovered);
       color: var(--p-text-on-interactive);
-      @include high-contrast-outline;
+      @include ms-high-contrast-outline($border-width: rem(1px));
     }
 
     @include focus-ring;

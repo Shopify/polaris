@@ -118,9 +118,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
       border-bottom: var(--p-override-none, $underline-height) solid
         color('indigo');
 
-      @media (-ms-high-contrast: active) {
-        outline: rem(3px) solid ms-high-contrast-color('text');
-      }
+      @include ms-high-contrast-outline($border-width: rem(3px));
     }
   }
 }
@@ -237,9 +235,11 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   &:hover {
     background-color: var(--p-surface-hovered);
 
-    @media (-ms-high-contrast: active) {
-      outline: rem(1px) solid ms-high-contrast-color('text');
-    }
+    @include ms-high-contrast-outline(
+      $border-width: (
+        rem(1px),
+      )
+    );
   }
   &:active {
     background-color: var(--p-surface-primary-selected-pressed);
@@ -326,17 +326,17 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .Tab {
     padding: spacing(tight) spacing(extra-tight);
+
     &:hover .Title {
-      @media (-ms-high-contrast: active) {
-        outline: rem(1px) solid ms-high-contrast-color('text');
-        &::before {
-          display: none;
-        }
-      }
+      @include focus-ring-ms-high-contrast($border-width: rem(1px));
     }
 
-    &:focus .Title::before {
-      background: var(--p-border-hovered);
+    &:focus .Title {
+      @include focus-ring-ms-high-contrast($border-width: rem(1px));
+
+      &::before {
+        background: var(--p-border-hovered);
+      }
     }
 
     &:active .Title::before {
@@ -346,35 +346,22 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .DisclosureActivator {
     &:hover .Title {
+      @include focus-ring-ms-high-contrast($border-width: rem(1px));
+
       background: none;
 
       &::before {
         background: var(--p-border-hovered);
       }
-
-      @media (-ms-high-contrast: active) {
-        outline: rem(1px) solid ms-high-contrast-color('text');
-
-        // stylelint-disable-next-line max-nesting-depth
-        &::before {
-          display: none;
-        }
-      }
     }
 
     &:focus .Title {
+      @include focus-ring-ms-high-contrast($border-width: rem(1px));
       @include focus-ring($style: 'focused');
+      @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
 
       &::before {
         background: var(--p-border-hovered);
-      }
-      @media (-ms-high-contrast: active) {
-        outline: rem(1px) solid ms-high-contrast-color('text');
-
-        // stylelint-disable-next-line max-nesting-depth
-        &::before {
-          display: none;
-        }
       }
     }
 
@@ -385,25 +372,13 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .Tab-selected {
     &:hover .Title {
-      @media (-ms-high-contrast: active) {
-        outline: rem(3px) solid ms-high-contrast-color('text');
-
-        // stylelint-disable-next-line max-nesting-depth
-        &::before {
-          display: none;
-        }
-      }
+      @include focus-ring-ms-high-contrast(
+        $border-width: border-width(thicker)
+      );
     }
 
     &:focus .Title {
-      @media (-ms-high-contrast: active) {
-        outline: rem(3px) solid ms-high-contrast-color('text');
-
-        // stylelint-disable-next-line max-nesting-depth
-        &::before {
-          display: none;
-        }
-      }
+      @include ms-high-contrast-outline($border-width: border-width(thicker));
 
       &::before {
         background: var(--p-action-primary);
@@ -411,18 +386,11 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     }
 
     .Title {
+      @include ms-high-contrast-outline($border-width: border-width(thicker));
       color: var(--p-text);
 
       &::before {
         background: var(--p-action-primary);
-      }
-
-      @media (-ms-high-contrast: active) {
-        outline: rem(3px) solid ms-high-contrast-color('text');
-        // stylelint-disable-next-line max-nesting-depth
-        &::before {
-          display: none;
-        }
       }
     }
   }
