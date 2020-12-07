@@ -8,6 +8,8 @@ export interface LinkLikeComponentProps
   external?: boolean;
   /** Makes the browser download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value. */
   download?: string | boolean;
+  /** Descriptive text to be read to screenreaders */
+  accessibilityLabel?: string;
   [key: string]: any;
 }
 
