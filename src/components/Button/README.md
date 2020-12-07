@@ -314,6 +314,51 @@ function DisclosureButtion() {
 }
 ```
 
+### Button with icon
+
+<!-- example-for: web -->
+
+Adds an icon before the button content
+
+```jsx
+function IconButtonBefore() {
+  return (
+    <Button
+      icon={() => (
+        <svg viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+          <path d="M15 2a1 1 0 0 1 1 1v13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 4 16.5V3a1 1 0 1 1 2 0v1a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V3a1 1 0 0 1 1-1zm-4 2H9a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2z"></path>
+        </svg>
+      )}
+    >
+      Paste
+    </Button>
+  );
+}
+```
+
+### Button with icon after content
+
+<!-- example-for: web -->
+
+Adds an icon after the button content
+
+```jsx
+function IconButtonAfter() {
+  return (
+    <Button
+      icon={() => (
+        <svg viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+          <path d="M15 2a1 1 0 0 1 1 1v13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 4 16.5V3a1 1 0 1 1 2 0v1a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V3a1 1 0 0 1 1-1zm-4 2H9a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2z"></path>
+        </svg>
+      )}
+      iconPosition="after"
+    >
+      Paste
+    </Button>
+  );
+}
+```
+
 ### Split button
 
 <!-- example-for: web -->
