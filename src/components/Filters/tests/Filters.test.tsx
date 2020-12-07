@@ -85,7 +85,7 @@ describe('<Filters />', () => {
     expect(onQueryFocus).toHaveBeenCalledTimes(1);
   });
 
-  it('hides the TextField when "hideQueryField" is "true"', () => {
+  it('does not render the TextField when "hideQueryField" is "true"', () => {
     const filters = mountWithAppProvider(
       <Filters {...mockProps} hideQueryField />,
     );
@@ -93,7 +93,7 @@ describe('<Filters />', () => {
     expect(filters.find(TextField).exists()).toBe(false);
   });
 
-  it('shows the TextField when "hideQueryField" is falsy', () => {
+  it('renders the TextField when "hideQueryField" is false', () => {
     const filters = mountWithAppProvider(<Filters {...mockProps} />);
 
     expect(filters.find(TextField).exists()).toBe(true);
