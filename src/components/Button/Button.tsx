@@ -41,10 +41,10 @@ export interface ButtonProps extends BaseButton {
   plain?: boolean;
   /** Makes `plain` and `outline` Button colors (text, borders, icons) the same as the current text color. Also adds an underline to `plain` Buttons */
   monochrome?: boolean;
-  /** Icon to display to the left of the button content */
+  /** Icon to display before or after the button content */
   icon?: React.ReactElement | IconSource;
-  /** Position of the Icon, defaults to left */
-  iconPosition?: 'left' | 'right';
+  /** Icon position relative to button content, defaults to before */
+  iconPosition?: 'before' | 'after';
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
 }
@@ -106,7 +106,7 @@ export function Button({
   onMouseEnter,
   onTouchStart,
   icon,
-  iconPosition = 'left',
+  iconPosition = 'before',
   primary,
   outline,
   destructive,
@@ -146,7 +146,7 @@ export function Button({
   );
 
   const disclosureIconMarkup = disclosure ? (
-    <span className={styles.Icon}>
+    <span className={classNames(styles.Icon, !plain && styles.insetIcon)}>
       <div
         className={classNames(
           styles.DisclosureIcon,
@@ -196,9 +196,9 @@ export function Button({
     iconMarkup || disclosureIconMarkup ? (
       <span className={styles.Content}>
         {spinnerSVGMarkup}
-        {iconPosition === 'left' && iconMarkup}
+        {iconPosition === 'before' && iconMarkup}
         {childMarkup}
-        {iconPosition === 'right' && !disclosureIconMarkup && iconMarkup}
+        {iconPosition === 'after' && !disclosureIconMarkup && iconMarkup}
         {disclosureIconMarkup}
       </span>
     ) : (

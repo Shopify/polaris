@@ -124,11 +124,15 @@ $stacking-order: (
   margin-left: -(spacing(extra-tight));
 
   &:last-child {
-    // This compensates for the disclosure icon, which is substantially
-    // inset within the viewbox (and makes it look like there is too much
-    // spacing on the right of the button)
-    margin-right: -(spacing(tight));
+    margin-right: -(spacing(extra-tight));
     margin-left: spacing(extra-tight);
+
+    &.insetIcon {
+      // This compensates for the disclosure icon, which is substantially
+      // inset within the viewbox (and makes it look like there is too much
+      // spacing on the right of the button)
+      margin-right: -(spacing(tight));
+    }
   }
 
   + *:not(.Icon) {
