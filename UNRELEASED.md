@@ -35,6 +35,18 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed `aria-multiselectable` from OptionList ([#3729](https://github.com/Shopify/polaris-react/pull/3729))
 - Replaced `button` with `div` in `RangeSlider` for correct semantics when using `role="slider"` ([#3730](https://github.com/Shopify/polaris-react/pull/3730))
 - Replaced `React.Fragment` with `li` in `ResourceList` spinner for valid markup ([#3732](https://github.com/Shopify/polaris-react/pull/3732))
+- Replace `button` with `div` in `RangeSlider` for correct semantics when using `role="slider"` ([#3730](https://github.com/Shopify/polaris-react/pull/3730))
+- Added `flush` prop to `Card.Section` ([#3645](https://github.com/Shopify/polaris-react/pull/3645))
+- Added `stretchContent` prop for `Button` ([#3664](https://github.com/Shopify/polaris-react/pull/3664))
+- Extracted `TagsWrapper` from `Filters` for testability ([#3688](https://github.com/Shopify/polaris-react/pull/3688))
+
+### Bug fixes
+
+- Fixed `ClearButton` in `TextField` unintentionally closing `Popover` when clicked ([#3688](https://github.com/Shopify/polaris-react/pull/3688))
+- Added focus styles to `ClearButton` in `TextField` ([#3688](https://github.com/Shopify/polaris-react/pull/3688))
+- Added dependency list to useImperativeHandle in `Banner` ([#3478](https://github.com/Shopify/polaris-react/pull/3478))
+- Internationalize `Badge` labels ([#3655](https://github.com/Shopify/polaris-react/pull/3655))
+- Aligned the `::before` 'indicator' to edge of container for `ActionList` ([#3619](https://github.com/Shopify/polaris-react/pull/3619))
 
 ### Documentation
 

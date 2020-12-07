@@ -1068,7 +1068,7 @@ describe('<TextField />', () => {
       expect(findByTestID(textField, 'clearButton').exists()).toBeTruthy();
     });
 
-    it('does not render in inputs without a value', () => {
+    it('renders a visually hidden clear button in inputs without a value', () => {
       const textField = mountWithAppProvider(
         <TextField
           id="MyTextField"
@@ -1078,7 +1078,10 @@ describe('<TextField />', () => {
           clearButton
         />,
       );
-      expect(findByTestID(textField, 'clearButton').exists()).toBeFalsy();
+
+      const clearButton = findByTestID(textField, 'clearButton');
+      expect(clearButton.hasClass('ClearButton-hidden')).toBeTruthy();
+      expect(clearButton.prop('tabIndex')).toBe(-1);
     });
 
     it('calls onClearButtonClicked() with an id when the clear button is clicked', () => {
