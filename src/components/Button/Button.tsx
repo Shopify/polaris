@@ -45,6 +45,8 @@ export interface ButtonProps extends BaseButton {
   icon?: React.ReactElement | IconSource;
   /** Icon position relative to button content, defaults to before */
   iconPosition?: 'before' | 'after';
+  /** Stretch the content (text + icon) from side to side */
+  stretchContent?: boolean;
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
 }
@@ -117,6 +119,7 @@ export function Button({
   textAlign,
   fullWidth,
   connectedDisclosure,
+  stretchContent,
 }: ButtonProps) {
   const {newDesignLanguage} = useFeatures();
   const i18n = useI18n();
@@ -139,6 +142,7 @@ export function Button({
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
     connectedDisclosure && styles.connectedDisclosure,
+    stretchContent && styles.stretchContent,
   );
 
   const disclosureIcon = (

@@ -13,6 +13,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added `role="presentational"` to list items for `Tabs` ([#3647](https://github.com/Shopify/polaris-react/pull/3647))
 - Allowed consumers to set custom container element on `PortalsManager` ([#3644](https://github.com/Shopify/polaris-react/pull/3644))
 - **`Button`:** New `iconPosition` prop for `<button />` ([#3666](https://github.com/Shopify/polaris-react/pull/3666))
+- **`Button`:** New `stretchContent` prop for `<button />` ([#3664](https://github.com/Shopify/polaris-react/pull/3664))
 
 ### Bug fixes
 
