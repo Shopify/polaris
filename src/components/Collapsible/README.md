@@ -96,7 +96,7 @@ function CollapsibleExample() {
 When you have multiple collapsibles inside each other. This should be avoided as it causes the user to open multiple collapsible areas.
 
 ```jsx
-function CollapsibleExample() {
+function NestedCollapsibleExample() {
   const [open, setOpen] = useState(true);
   const [innerOpen, setInnerOpen] = useState(false);
 
