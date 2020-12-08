@@ -5,7 +5,7 @@ import {mountWithApp} from 'test-utilities';
 import {Banner, UnstyledLink, Icon} from 'components';
 
 import en from '../../../../locales/en.json';
-import {Link, LinkProps} from '../Link';
+import {Link} from '../Link';
 
 describe('<Link />', () => {
   it('calls onClick when clicking', () => {
