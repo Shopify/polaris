@@ -347,7 +347,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   .DisclosureActivator {
     &:hover .Title {
       @include focus-ring-ms-high-contrast($border-width: rem(1px));
-
       background: none;
 
       &::before {
