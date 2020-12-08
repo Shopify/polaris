@@ -146,7 +146,9 @@ describe('<Link />', () => {
         />,
       );
 
-      expect(link.prop('accessibilityLabel')).toBe(mockAccessibilityLabel);
+      expect(link).toContainReactComponent('a', {
+        'aria-label': mockAccessibilityLabel,
+      });
     });
   });
 });
