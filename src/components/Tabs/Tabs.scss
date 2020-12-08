@@ -6,6 +6,18 @@ $item-vertical-padding: $item-min-height / 2;
 $underline-height: border-width(thicker);
 $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
+@mixin reset-before-pseudo-content {
+  &::before {
+    content: none;
+  }
+}
+
+@mixin focus-ring-override {
+  @include ms-high-contrast-outline {
+    @include reset-before-pseudo-content;
+  }
+}
+
 .Tabs {
   display: flex;
   flex-wrap: wrap;
@@ -118,7 +130,9 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
       border-bottom: var(--p-override-none, $underline-height) solid
         color('indigo');
 
-      @include ms-high-contrast-outline($border-width: rem(3px));
+      @include ms-high-contrast-outline($border-width: border-width(thicker)) {
+        @include reset-before-pseudo-content;
+      }
     }
   }
 }
@@ -233,14 +247,10 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 .Item.newDesignLanguage {
   border-radius: var(--p-border-radius-base);
   &:hover {
+    @include focus-ring-override;
     background-color: var(--p-surface-hovered);
-
-    @include ms-high-contrast-outline(
-      $border-width: (
-        rem(1px),
-      )
-    );
   }
+
   &:active {
     background-color: var(--p-surface-primary-selected-pressed);
   }
@@ -328,11 +338,13 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     padding: spacing(tight) spacing(extra-tight);
 
     &:hover .Title {
-      @include focus-ring-ms-high-contrast($border-width: rem(1px));
+      @include focus-ring-override;
     }
 
     &:focus .Title {
-      @include focus-ring-ms-high-contrast($border-width: rem(1px));
+      @media (-ms-high-contrast: active) {
+        @include reset-before-pseudo-content;
+      }
 
       &::before {
         background: var(--p-border-hovered);
@@ -346,7 +358,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .DisclosureActivator {
     &:hover .Title {
-      @include focus-ring-ms-high-contrast($border-width: rem(1px));
+      @include focus-ring-override;
       background: none;
 
       &::before {
@@ -355,12 +367,15 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     }
 
     &:focus .Title {
-      @include focus-ring-ms-high-contrast($border-width: rem(1px));
       @include focus-ring($style: 'focused');
       @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
 
       &::before {
         background: var(--p-border-hovered);
+      }
+
+      @media (-ms-high-contrast: active) {
+        @include reset-before-pseudo-content;
       }
     }
 
@@ -371,9 +386,9 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .Tab-selected {
     &:hover .Title {
-      @include focus-ring-ms-high-contrast(
-        $border-width: border-width(thicker)
-      );
+      @include ms-high-contrast-outline($border-width: border-width(thicker)) {
+        @include reset-before-pseudo-content;
+      }
     }
 
     &:focus .Title {

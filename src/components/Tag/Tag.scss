@@ -116,7 +116,7 @@ $icon-size: rem(16px);
 
     &:hover {
       background: var(--p-surface-neutral-hovered);
-      @include ms-high-contrast-outline($border-width: rem(1px));
+      @include ms-high-contrast-outline;
     }
 
     &:focus {

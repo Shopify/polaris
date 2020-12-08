@@ -37,7 +37,7 @@
   } @else if $style == 'focused' {
     &::after {
       box-shadow: 0 0 0 $stroke var(--p-focused, color('indigo'));
-      @include ms-high-contrast-outline($border-width: rem(1px));
+      @include ms-high-contrast-outline;
     }
   }
 }
