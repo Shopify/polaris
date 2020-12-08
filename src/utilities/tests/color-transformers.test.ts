@@ -131,6 +131,19 @@ describe('colorUtilities', () => {
       expect(saturation).toBe(0);
       expect(brightness).toBe(0.5294);
     });
+
+    // test for an issue where Hex colours were losing precision, due to hue rounding
+    // https://github.com/Shopify/shopify/issues/265949
+    it('returns 16.5517/0.521/0.6549 hsb value when passed rgb(167, 104, 80)', () => {
+      const {hue, saturation, brightness} = rgbToHsb({
+        red: 167,
+        green: 104,
+        blue: 80,
+      });
+      expect(hue).toBe(16.55);
+      expect(saturation).toBe(0.521);
+      expect(brightness).toBe(0.6549);
+    });
   });
 
   describe('colorToHsla', () => {
@@ -138,7 +151,7 @@ describe('colorUtilities', () => {
       expect(colorToHsla('#dddddd')).toStrictEqual({
         alpha: 1,
         hue: 0,
-        lightness: 87,
+        lightness: 86.67,
         saturation: 0,
       });
     });
@@ -146,9 +159,9 @@ describe('colorUtilities', () => {
     it('returns the hsla color for rgb', () => {
       expect(colorToHsla('rgb(132, 11, 2)')).toStrictEqual({
         alpha: 1,
-        hue: 4,
-        lightness: 26,
-        saturation: 97,
+        hue: 4.15,
+        lightness: 26.27,
+        saturation: 97.01,
       });
     });
 
@@ -164,9 +177,9 @@ describe('colorUtilities', () => {
     it('returns the hsla color for rgba', () => {
       expect(colorToHsla('rgb(132, 11, 2, 0.2)')).toStrictEqual({
         alpha: 1,
-        hue: 4,
-        lightness: 26,
-        saturation: 97,
+        hue: 4.15,
+        lightness: 26.27,
+        saturation: 97.01,
       });
     });
 

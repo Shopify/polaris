@@ -1,8 +1,9 @@
 import {createContext} from 'react';
 
+import type {PortalsContainerElement} from './types';
+
 export interface PortalsManager {
-  portalsContainerRef: HTMLDivElement | null;
-  setContainerNode(node: HTMLDivElement): void;
+  container: PortalsContainerElement;
 }
 
 export const PortalsManagerContext = createContext<PortalsManager | undefined>(

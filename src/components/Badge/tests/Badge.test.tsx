@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {VisuallyHidden} from 'components';
 
 import {Badge} from '../Badge';
@@ -19,5 +20,31 @@ describe('<Badge />', () => {
   it('accepts a progress prop and renders a visually hidden label', () => {
     const badge = mountWithAppProvider(<Badge progress="incomplete" />);
     expect(badge.find(VisuallyHidden).exists()).toBe(true);
+  });
+
+  it('renders progress and status labels in the same element', () => {
+    const badge = mountWithApp(
+      <Badge progress="incomplete" status="attention" />,
+    );
+
+    expect(badge).toContainReactComponentTimes(VisuallyHidden, 1, {
+      children: 'Attention Incomplete',
+    });
+  });
+
+  it('does not add pip styles when progress is not provided', () => {
+    const badge = mountWithApp(<Badge status="attention" />);
+
+    expect(badge).not.toContainReactComponent('span', {
+      className: 'Pip',
+    });
+  });
+
+  it('renders with pip styles when progress is provided', () => {
+    const badge = mountWithApp(<Badge progress="incomplete" />);
+
+    expect(badge).toContainReactComponent('span', {
+      className: 'Pip',
+    });
   });
 });

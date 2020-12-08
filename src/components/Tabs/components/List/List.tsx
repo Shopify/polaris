@@ -61,12 +61,7 @@ function noop() {}
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
-  if (
-    key === 'ArrowUp' ||
-    key === 'ArrowDown' ||
-    key === 'ArrowLeft' ||
-    key === 'ArrowRight'
-  ) {
+  if (key === 'ArrowLeft' || key === 'ArrowRight') {
     event.preventDefault();
     event.stopPropagation();
   }
