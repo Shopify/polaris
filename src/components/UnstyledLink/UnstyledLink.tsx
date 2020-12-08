@@ -20,7 +20,7 @@ export const UnstyledLink = memo(
       return <LinkComponent {...unstyled.props} {...props} />;
     }
 
-    const {external, url, accessibilityLabel, ...rest} = props;
+    const {external, url, ...rest} = props;
     const target = external ? '_blank' : undefined;
     const rel = external ? 'noopener noreferrer' : undefined;
     return (
