@@ -58,18 +58,5 @@ describe('<UnstyledLink />', () => {
       ).find('a');
       expect(anchorElement.prop('download')).toBeFalsy();
     });
-
-    describe('accessibilityLabel', () => {
-      it('passes prop', () => {
-        const mockAccessibilityLabel = 'mock accessibility label';
-        const anchorElement = mountWithApp(
-          <UnstyledLink accessibilityLabel={mockAccessibilityLabel} />,
-        );
-
-        expect(anchorElement).toContainReactComponent('a', {
-          'aria-label': mockAccessibilityLabel,
-        });
-      });
-    });
   });
 });

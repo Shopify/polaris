@@ -75,7 +75,7 @@ export function Link({
             url={url}
             external={external}
             id={id}
-            accessibilityLabel={accessibilityLabel}
+            aria-label={accessibilityLabel}
           >
             {childrenMarkup}
           </UnstyledLink>

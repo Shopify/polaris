@@ -24,14 +24,7 @@ export const UnstyledLink = memo(
     const target = external ? '_blank' : undefined;
     const rel = external ? 'noopener noreferrer' : undefined;
     return (
-      <a
-        target={target}
-        {...rest}
-        aria-label={accessibilityLabel || props['aria-label']}
-        href={url}
-        rel={rel}
-        {...unstyled.props}
-      />
+      <a target={target} {...rest} href={url} rel={rel} {...unstyled.props} />
     );
   }),
 );
