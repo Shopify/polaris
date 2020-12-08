@@ -136,7 +136,7 @@ describe('<Link />', () => {
       });
     });
 
-    it('passes prop', () => {
+    it('passes the accessibilityLabel to UnstyledLink when url is present', () => {
       const mockAccessibilityLabel = 'mock accessibility label';
 
       const link = mountWithApp(
