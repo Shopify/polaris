@@ -1,6 +1,5 @@
 @import '../../../../styles/common';
 
-// stylelint-disable declaration-no-important
 // stylelint-disable selector-max-class
 // stylelint-disable selector-max-combinators
 // stylelint-disable selector-max-specificity
@@ -45,15 +44,15 @@ $stacking-order: (
 
   &.right {
     .CenterContainer * {
-      border-top-right-radius: 0 !important;
-      border-bottom-right-radius: 0 !important;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 
   &.right.newDesignLanguage {
     .CenterContainer * {
-      border-top-right-radius: var(--p-border-radius-base) !important;
-      border-bottom-right-radius: var(--p-border-radius-base) !important;
+      border-top-right-radius: var(--p-border-radius-base); // check
+      border-bottom-right-radius: var(--p-border-radius-base); // check
     }
   }
 }
@@ -71,7 +70,7 @@ $stacking-order: (
   .Item > div > button {
     margin-right: var(--p-button-group-item-spacing, 0);
     margin-left: var(--p-override-none, -1px);
-    border-radius: 0 !important;
+    border-radius: 0;
   }
 
   .Item {
@@ -81,50 +80,41 @@ $stacking-order: (
 
 .RightContainer.queryFieldHidden {
   .Item:first-of-type > div > button {
-    border-top-left-radius: var(
-      --p-border-radius-base,
-      border-radius()
-    ) !important;
-    border-bottom-left-radius: var(
-      --p-border-radius-base,
-      border-radius()
-    ) !important;
+    border-top-left-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
   }
 }
 
 .RightContainerWithoutMoreFilters {
   .Item:last-child > div > button {
-    border-top-right-radius: var(
-      --p-border-radius-base,
-      border-radius()
-    ) !important;
-    border-bottom-right-radius: var(
-      --p-border-radius-base,
-      border-radius()
-    ) !important;
+    border-top-right-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
   }
 }
 
 .newDesignLanguage .RightContainer {
   .Item:first-of-type > div > button {
-    border-top-left-radius: var(--p-border-radius-base) !important;
-    border-bottom-left-radius: var(--p-border-radius-base) !important;
+    border-top-left-radius: var(--p-border-radius-base); // check
+    border-bottom-left-radius: var(--p-border-radius-base); // check
   }
 }
 
-.MoreFiltersButtonContainer * {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-  flex-shrink: 0;
-  white-space: nowrap;
-
+.MoreFiltersButtonContainer {
   > div {
     margin-left: var(--p-override-none, -1px);
   }
+
+  .Item > div > button {
+    white-space: nowrap;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }
 
-.MoreFiltersButtonContainer.onlyButtonVisible * {
-  border-radius: var(--p-border-radius-base, border-radius()) !important;
+.MoreFiltersButtonContainer.onlyButtonVisible {
+  .Item > div > button {
+    border-radius: var(--p-border-radius-base, border-radius());
+  }
 }
 
 .Wrapper {
@@ -138,5 +128,4 @@ $stacking-order: (
 // stylelint-enable selector-max-combinators
 // stylelint-enable selector-max-class
 // stylelint-enable selector-max-type
-// stylelint-enable declaration-no-important
 // stylelint-enable selector-max-compound-selectors
