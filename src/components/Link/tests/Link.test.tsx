@@ -146,7 +146,7 @@ describe('<Link />', () => {
         />,
       );
 
-      expect(link).toContainReactComponent('a', {
+      expect(link).toContainReactComponent(UnstyledLink, {
         'aria-label': mockAccessibilityLabel,
       });
     });
