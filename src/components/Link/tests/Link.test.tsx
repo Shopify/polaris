@@ -139,7 +139,7 @@ describe('<Link />', () => {
     it('passes prop', () => {
       const mockAccessibilityLabel = 'mock accessibility label';
 
-      const link = mountWithApp<LinkProps>(
+      const link = mountWithApp(
         <Link
           url="https://shopify.com"
           accessibilityLabel={mockAccessibilityLabel}
