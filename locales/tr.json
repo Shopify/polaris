@@ -20,7 +20,8 @@
         "attention": "Dikkat",
         "new": "Yeni",
         "critical": "Kritik"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Yükleniyor",

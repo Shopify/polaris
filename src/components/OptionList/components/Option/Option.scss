@@ -3,7 +3,6 @@
 $min-height: control-height();
 $control-size: rem(16px);
 $control-vertical-adjustment: rem(2px);
-$selected-option-identifier-width: rem(3px);
 
 .Option {
   @include unstyled-button;
@@ -164,16 +163,7 @@ $selected-option-identifier-width: rem(3px);
     }
 
     &.select::before {
-      background: var(--p-interactive);
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -1 * spacing(tight);
-      height: 100%;
-      display: block;
-      width: $selected-option-identifier-width;
-      border-top-right-radius: var(--p-border-radius-base);
-      border-bottom-right-radius: var(--p-border-radius-base);
+      @include list-selected-indicator;
     }
   }
 }

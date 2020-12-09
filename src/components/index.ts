@@ -201,6 +201,9 @@ export type {PopoverProps} from './Popover';
 export {Portal} from './Portal';
 export type {PortalProps} from './Portal';
 
+export {PortalsManager} from './PortalsManager';
+export type {PortalsManagerProps} from './PortalsManager';
+
 export {PositionedOverlay} from './PositionedOverlay';
 export type {PositionedOverlayProps} from './PositionedOverlay';
 
