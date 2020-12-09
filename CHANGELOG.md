@@ -13,7 +13,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 ### Enhancements
 
 - Allowed `Thumbnail` `source` property to support `icons` ([#3328](https://github.com/Shopify/polaris-react/pull/3328))
-- **`Button`:** New `role` prop for `<button />` ([#3590](https://github.com/Shopify/polaris-react/pull/3590))
+- Added `role` prop for `Button` ([#3590](https://github.com/Shopify/polaris-react/pull/3590))
 - Added `preventFocusOnClose` to `Popover` ([#3595](https://github.com/Shopify/polaris-react/pull/3595))
 - Added color fallback values to `focus-ring` mixin ([#3626](https://github.com/Shopify/polaris-react/pull/3626))
 - Added `role="presentational"` to list items for `Tabs` ([#3647](https://github.com/Shopify/polaris-react/pull/3647))
@@ -24,7 +24,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Fixed `FocusManager` from tracking inactive items that prevented trap focusing([#3630](https://github.com/Shopify/polaris-react/pull/3630))
 - Added escape keybind to `Tooltip` ([#3627](https://github.com/Shopify/polaris-react/pull/3627))
 - Removed extra bottom border on the `DataTable` and added curved edges to footers ([#3571](https://github.com/Shopify/polaris-react/pull/3571))
-- **`Button`:** `loading` no longer sets the invalid `role="alert"` ([#3590](https://github.com/Shopify/polaris-react/pull/3590))
+- Fixed `loading` no longer sets the invalid `role="alert"` for `Button` ([#3590](https://github.com/Shopify/polaris-react/pull/3590))
 - Added semantic headers to `Filters` ([#3629](https://github.com/Shopify/polaris-react/pull/3629))
 - Fixed `Filters` not announcing applied filters ([#3632](https://github.com/Shopify/polaris-react/pull/3632))
 - Removed `tabIndex=-1` from `Popover` when `preventAutoFocus` is true ([#3595](https://github.com/Shopify/polaris-react/pull/3595))
