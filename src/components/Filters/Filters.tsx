@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react';
+import React, {Component, createRef} from 'react';
 import {
   SearchMinor,
   ChevronUpMinor,
@@ -6,28 +6,28 @@ import {
   CancelSmallMinor,
 } from '@shopify/polaris-icons';
 
-import { classNames } from '../../utilities/css';
-import { ResourceListContext } from '../../utilities/resource-list';
-import { useI18n } from '../../utilities/i18n';
-import { useMediaQuery } from '../../utilities/media-query';
-import { useFeatures } from '../../utilities/features';
-import { focusFirstFocusableNode } from '../../utilities/focus';
-import { WithinFilterContext } from '../../utilities/within-filter-context';
-import { Button } from '../Button';
-import { DisplayText } from '../DisplayText';
-import { Collapsible } from '../Collapsible';
-import { Scrollable } from '../Scrollable';
-import { ScrollLock } from '../ScrollLock';
-import { Icon } from '../Icon';
-import { TextField } from '../TextField';
-import { Tag } from '../Tag';
-import { TextStyle } from '../TextStyle';
-import { Badge } from '../Badge';
-import { Focus } from '../Focus';
-import { Sheet } from '../Sheet';
-import { Stack } from '../Stack';
-import { Key } from '../../types';
-import { KeypressListener } from '../KeypressListener';
+import {classNames} from '../../utilities/css';
+import {ResourceListContext} from '../../utilities/resource-list';
+import {useI18n} from '../../utilities/i18n';
+import {useMediaQuery} from '../../utilities/media-query';
+import {useFeatures} from '../../utilities/features';
+import {focusFirstFocusableNode} from '../../utilities/focus';
+import {WithinFilterContext} from '../../utilities/within-filter-context';
+import {Button} from '../Button';
+import {DisplayText} from '../DisplayText';
+import {Collapsible} from '../Collapsible';
+import {Scrollable} from '../Scrollable';
+import {ScrollLock} from '../ScrollLock';
+import {Icon} from '../Icon';
+import {TextField} from '../TextField';
+import {Tag} from '../Tag';
+import {TextStyle} from '../TextStyle';
+import {Badge} from '../Badge';
+import {Focus} from '../Focus';
+import {Sheet} from '../Sheet';
+import {Stack} from '../Stack';
+import {Key} from '../../types';
+import {KeypressListener} from '../KeypressListener';
 
 import {
   ConnectedFilterControl,
@@ -56,7 +56,7 @@ export interface FilterInterface {
   /** Whether or not the filter is disabled */
   disabled?: boolean;
   /**
-   * @default true
+   * @default false
    * Whether or not the clear button is displayed */
   hideClearButton?: boolean;
 }
@@ -136,12 +136,12 @@ class FiltersInner extends Component<CombinedProps, State> {
       disabled = false,
       helpText,
       hideTags,
-      features: { newDesignLanguage },
+      features: {newDesignLanguage},
       i18n,
-      mediaQuery: { isNavigationCollapsed },
+      mediaQuery: {isNavigationCollapsed},
     } = this.props;
-    const { resourceName } = this.context;
-    const { open, readyForFocus } = this.state;
+    const {resourceName} = this.context;
+    const {open, readyForFocus} = this.state;
 
     const backdropMarkup = open ? (
       <>
@@ -435,7 +435,7 @@ class FiltersInner extends Component<CombinedProps, State> {
   }
 
   private hasAppliedFilters(): boolean {
-    const { appliedFilters, queryValue } = this.props;
+    const {appliedFilters, queryValue} = this.props;
     const filtersApplied = Boolean(appliedFilters && appliedFilters.length > 0);
     const queryApplied = Boolean(queryValue && queryValue !== '');
 
@@ -443,7 +443,7 @@ class FiltersInner extends Component<CombinedProps, State> {
   }
 
   private getAppliedFilterContent(key: string): string | undefined {
-    const { appliedFilters } = this.props;
+    const {appliedFilters} = this.props;
 
     if (!appliedFilters) {
       return undefined;
@@ -455,7 +455,7 @@ class FiltersInner extends Component<CombinedProps, State> {
   }
 
   private getAppliedFilterRemoveHandler(key: string) {
-    const { appliedFilters } = this.props;
+    const {appliedFilters} = this.props;
 
     if (!appliedFilters) {
       return undefined;
@@ -467,11 +467,11 @@ class FiltersInner extends Component<CombinedProps, State> {
   }
 
   private openFilters() {
-    this.setState({ open: true });
+    this.setState({open: true});
   }
 
   private closeFilters = () => {
-    this.setState({ open: false }, () => {
+    this.setState({open: false}, () => {
       if (this.moreFiltersButtonContainer.current) {
         focusFirstFocusableNode(this.moreFiltersButtonContainer.current, false);
       }
@@ -487,15 +487,15 @@ class FiltersInner extends Component<CombinedProps, State> {
   };
 
   private setReadyForFocus = (newState: boolean) => () => {
-    this.setState({ readyForFocus: newState });
+    this.setState({readyForFocus: newState});
   };
 
   private openFilter(key: string) {
-    this.setState({ [`${key}${Suffix.Filter}`]: true });
+    this.setState({[`${key}${Suffix.Filter}`]: true});
   }
 
   private closeFilter(key: string) {
-    this.setState({ [`${key}${Suffix.Filter}`]: false });
+    this.setState({[`${key}${Suffix.Filter}`]: false});
   }
 
   private toggleFilter(key: string) {
@@ -507,11 +507,11 @@ class FiltersInner extends Component<CombinedProps, State> {
   }
 
   private openFilterShortcut(key: string) {
-    this.setState({ [`${key}${Suffix.Shortcut}`]: true });
+    this.setState({[`${key}${Suffix.Shortcut}`]: true});
   }
 
   private closeFilterShortcut(key: string) {
-    this.setState({ [`${key}${Suffix.Shortcut}`]: false });
+    this.setState({[`${key}${Suffix.Shortcut}`]: false});
   }
 
   private toggleFilterShortcut(key: string) {
@@ -528,7 +528,7 @@ class FiltersInner extends Component<CombinedProps, State> {
     > = [];
 
     getShortcutFilters(filters).forEach((filter) => {
-      const { key, label, disabled } = filter;
+      const {key, label, disabled} = filter;
 
       transformedActions.push({
         popoverContent: this.generateFilterMarkup(filter),
@@ -545,7 +545,7 @@ class FiltersInner extends Component<CombinedProps, State> {
   private generateFilterMarkup(filter: FilterInterface) {
     const i18n = this.props.i18n;
     const isClearButtonShown =
-      filter.hideClearButton === undefined ? true : !filter.hideClearButton;
+      filter.hideClearButton === undefined ? true : false;
     const removeCallback = this.getAppliedFilterRemoveHandler(filter.key);
     const removeHandler =
       removeCallback == null
