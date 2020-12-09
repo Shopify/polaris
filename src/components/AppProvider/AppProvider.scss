@@ -62,6 +62,29 @@ body {
   box-sizing: border-box;
 }
 
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 rem(2px) var(--p-focused, color('indigo'));
+  border-radius: var(--p-border-radius-base);
+}
+
+[data-js-focus-visible] {
+  :focus:not([data-focus-visible-added]) {
+    outline: none;
+  }
+
+  // stylelint-disable-next-line selector-max-attribute
+  [data-focus-visible-added] {
+    outline: none;
+    box-shadow: 0 0 0 rem(2px) var(--p-focused, color('indigo'));
+    border-radius: var(--p-border-radius-base);
+  }
+}
+
 h1,
 h2,
 h3,
