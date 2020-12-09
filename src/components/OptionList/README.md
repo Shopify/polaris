@@ -178,9 +178,9 @@ function OptionListInPopoverExample() {
           title="Inventory Location"
           onChange={setSelected}
           options={[
-            {value: 'byward_market', label: 'Byward Market'},
+            {value: 'byward_market', label: 'Byward Market', active: true},
             {value: 'centretown', label: 'Centretown'},
-            {value: 'hintonburg', label: 'Hintonburg'},
+            {value: 'hintonburg', label: 'Hintonburg', active: true},
             {value: 'westboro', label: 'Westboro'},
             {value: 'downtown', label: 'Downtown'},
           ]}

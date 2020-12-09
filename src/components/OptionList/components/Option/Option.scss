@@ -163,7 +163,6 @@ $control-vertical-adjustment: rem(2px);
 
     &.active {
       background: var(--p-surface-selected);
-      position: relative;
     }
 
     &.active::before,
