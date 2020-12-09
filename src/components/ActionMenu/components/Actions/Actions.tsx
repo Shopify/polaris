@@ -24,11 +24,6 @@ interface Props {
   groups?: MenuGroupDescriptor[];
 }
 
-interface MeasuredActions {
-  showable: MenuActionDescriptor[];
-  rolledUp: (MenuActionDescriptor | MenuGroupDescriptor)[];
-}
-
 const ACTION_SPACING = 8;
 
 export function Actions({actions = [], groups = []}: Props) {
@@ -36,16 +31,17 @@ export function Actions({actions = [], groups = []}: Props) {
   const {newDesignLanguage} = useFeatures();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
   const menuGroupWidthRef = useRef<number>(0);
-  const availableWidthRef = useRef<number>(0);
-  const hasMeasured = useRef<boolean>(false);
   const actionWidthsRef = useRef<number[]>([]);
+  const availableWidthRef = useRef<number>(0);
   const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
     undefined,
   );
-  const [measuredActions, setMeasuredActions] = useState<MeasuredActions>({
-    showable: [],
-    rolledUp: [],
-  });
+  const [showableActions, setShowableActions] = useState<
+    MenuActionDescriptor[]
+  >([]);
+  const [rolledUpActions, setRolledUpActions] = useState<
+    (MenuActionDescriptor | MenuGroupDescriptor)[]
+  >([]);
   const defaultRollupGroup: MenuGroupDescriptor = {
     title: i18n.translate('Polaris.Actions.moreActions'),
     actions: [],
@@ -71,8 +67,7 @@ export function Actions({actions = [], groups = []}: Props) {
     if (
       !newDesignLanguage ||
       actionWidthsRef.current.length === 0 ||
-      availableWidthRef.current === 0 ||
-      hasMeasured.current
+      availableWidthRef.current === 0
     ) {
       return;
     }
@@ -80,7 +75,7 @@ export function Actions({actions = [], groups = []}: Props) {
     const actionsAndGroups = [...actions, ...groups];
 
     if (actionsAndGroups.length === 1) {
-      setMeasuredActions({showable: actionsAndGroups, rolledUp: []});
+      setShowableActions(actionsAndGroups);
       return;
     }
 
@@ -97,24 +92,18 @@ export function Actions({actions = [], groups = []}: Props) {
         currentAvailableWidth;
 
       if (canFitAction) {
-        currentAvailableWidth -=
-          actionWidthsRef.current[index] + ACTION_SPACING * 2;
+        currentAvailableWidth -= actionWidthsRef.current[index];
         newShowableActions = [...newShowableActions, action];
       } else {
-        currentAvailableWidth = 0;
         // Find last group if it exists and always render it as a rolled up action below
         if (action === lastMenuGroup) return;
+        currentAvailableWidth = 0;
         newRolledUpActions = [...newRolledUpActions, action];
       }
     });
 
-    setMeasuredActions({
-      showable: newShowableActions,
-      rolledUp: newRolledUpActions,
-    });
-
-    // Set hasMeasured to true to prevent re-renders until viewport has been resized
-    hasMeasured.current = true;
+    setShowableActions(newShowableActions);
+    setRolledUpActions(newRolledUpActions);
   }, [actions, groups, lastMenuGroup, lastMenuGroupWidth, newDesignLanguage]);
 
   const handleResize = useMemo(
@@ -123,12 +112,10 @@ export function Actions({actions = [], groups = []}: Props) {
         () => {
           if (!newDesignLanguage || !actionsLayoutRef.current) return;
           availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
-          // Set hasMeasured to false to allow re-measuring
-          hasMeasured.current = false;
           measureActions();
         },
-        50,
-        {leading: false, trailing: true},
+        20,
+        {leading: false, trailing: true, maxWait: 40},
       ),
     [newDesignLanguage, measureActions],
   );
@@ -149,8 +136,8 @@ export function Actions({actions = [], groups = []}: Props) {
 
   const actionsMarkup = actions.map((action) => {
     if (
-      (newDesignLanguage && measuredActions.showable.length > 0) ||
-      measuredActions.rolledUp.includes(action)
+      (newDesignLanguage && showableActions.length > 0) ||
+      rolledUpActions.includes(action)
     )
       return null;
 
@@ -176,8 +163,8 @@ export function Actions({actions = [], groups = []}: Props) {
   });
 
   const rollUppableActionsMarkup =
-    measuredActions.showable.length > 0
-      ? measuredActions.showable.map(
+    showableActions.length > 0
+      ? showableActions.map(
           (action) =>
             action.content && (
               <SecondaryAction
@@ -196,22 +183,15 @@ export function Actions({actions = [], groups = []}: Props) {
       return groups.length === 0 && group === defaultRollupGroup
         ? group
         : group === lastMenuGroup ||
-            !measuredActions.rolledUp.some(
-              (rolledUpGroup) =>
-                isMenuGroup(rolledUpGroup) &&
-                rolledUpGroup.title === group.title,
-            );
+            (group !== defaultRollupGroup && !rolledUpActions.includes(group));
     })
     .map((group) => {
       const {title, actions: groupActions, ...rest} = group;
-      const finalRolledUpActions = measuredActions.rolledUp.reduce(
-        (memo, action) => {
-          memo.push(...(isMenuGroup(action) ? action.actions : [action]));
+      const finalRolledUpActions = rolledUpActions.reduce((memo, action) => {
+        memo.push(...(isMenuGroup(action) ? action.actions : [action]));
 
-          return memo;
-        },
-        [] as ActionListItemDescriptor[],
-      );
+        return memo;
+      }, [] as ActionListItemDescriptor[]);
 
       const isDefaultGroup = group === defaultRollupGroup;
 
