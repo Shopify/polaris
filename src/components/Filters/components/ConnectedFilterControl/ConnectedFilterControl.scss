@@ -51,8 +51,8 @@ $stacking-order: (
 
   &.right.newDesignLanguage {
     .CenterContainer * {
-      border-top-right-radius: var(--p-border-radius-base); // check
-      border-bottom-right-radius: var(--p-border-radius-base); // check
+      border-top-right-radius: var(--p-border-radius-base);
+      border-bottom-right-radius: var(--p-border-radius-base);
     }
   }
 }
@@ -94,8 +94,8 @@ $stacking-order: (
 
 .newDesignLanguage .RightContainer {
   .Item:first-of-type > div > button {
-    border-top-left-radius: var(--p-border-radius-base); // check
-    border-bottom-left-radius: var(--p-border-radius-base); // check
+    border-top-left-radius: var(--p-border-radius-base);
+    border-bottom-left-radius: var(--p-border-radius-base);
   }
 }
 
