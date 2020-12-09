@@ -8,6 +8,19 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 5.12.0 - 2020-12-09
+
+### Enhancements
+
+- Added `flush` prop to `Card.Section` ([#3645](https://github.com/Shopify/polaris-react/pull/3645))
+- Added `stretchContent` prop for `Button` ([#3664](https://github.com/Shopify/polaris-react/pull/3664))
+
+### Bug fixes
+
+- Added dependency list to useImperativeHandle in `Banner` ([#3478](https://github.com/Shopify/polaris-react/pull/3478))
+- Internationalized `Badge` labels ([#3655](https://github.com/Shopify/polaris-react/pull/3655))
+- Aligned the `::before` 'indicator' to edge of container for `ActionList` ([#3619](https://github.com/Shopify/polaris-react/pull/3619))
+
 ## 5.11.0 - 2020-12-03
 
 ### Enhancements
