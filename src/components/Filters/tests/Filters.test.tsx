@@ -105,7 +105,7 @@ describe('<Filters />', () => {
       });
 
       it('renders a sheet on mobile size with bottom origin', () => {
-        matchMedia.setMedia(() => ({ matches: true }));
+        matchMedia.setMedia(() => ({matches: true}));
         const resourceFilters = mountWithAppProvider(
           <Filters {...mockProps} />,
         );
