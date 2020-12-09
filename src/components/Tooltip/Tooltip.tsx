@@ -60,6 +60,7 @@ export function Tooltip({
 
     accessibilityNode.tabIndex = 0;
     accessibilityNode.setAttribute('aria-describedby', id);
+    accessibilityNode.setAttribute('data-polaris-tooltip-activator', 'true');
   }, [id, children]);
 
   const handleKeyUp = useCallback(
