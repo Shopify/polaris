@@ -124,6 +124,10 @@ $stacking-order: (
 .Icon {
   transition: color duration() easing();
 
+  .newDesignLanguage & {
+    transition: none;
+  }
+
   // This compensates for the typical icon used in buttons being
   // inset within its bounding box.
   margin-left: -(spacing(extra-tight));

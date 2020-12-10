@@ -31,7 +31,7 @@
   cursor: pointer;
   user-select: none;
   text-decoration: none;
-  transition-property: background, border, box-shadow;
+  transition-property: color, background, border, box-shadow;
   transition-duration: var(--p-override-none, duration());
   transition-timing-function: var(--p-override-none, easing());
   -webkit-tap-highlight-color: transparent;
