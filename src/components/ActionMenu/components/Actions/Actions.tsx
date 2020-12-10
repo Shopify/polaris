@@ -133,7 +133,6 @@ export function Actions({actions = [], groups = []}: Props) {
       rolledUp: newRolledUpActions,
     });
 
-    // Set timesMeasured to true to prevent re-renders until viewport has been resized or props change
     timesMeasured.current += 1;
     actionsAndGroupsLengthRef.current = actionsAndGroups.length;
   }, [actions, groups, lastMenuGroup, lastMenuGroupWidth, newDesignLanguage]);
@@ -144,7 +143,7 @@ export function Actions({actions = [], groups = []}: Props) {
         () => {
           if (!newDesignLanguage || !actionsLayoutRef.current) return;
           availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
-          // Set timesMeasured to false to allow re-measuring
+          // Set timesMeasured to 0 to allow re-measuring
           timesMeasured.current = 0;
           measureActions();
         },
@@ -161,7 +160,7 @@ export function Actions({actions = [], groups = []}: Props) {
 
     availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
     if (
-      // Allow re-measuring twice
+      // Allow measuring twice
       // This accounts for the initial paint and re-flow
       timesMeasured.current >= 2 &&
       [...actions, ...groups].length === actionsAndGroupsLengthRef.current

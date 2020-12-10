@@ -90,7 +90,7 @@ describe('<Actions />', () => {
       expect(wrapper.findAll(MenuGroup)).toHaveLength(1);
     });
 
-    it('updates actions when their props change', () => {
+    it('updates actions when they change', () => {
       function ActionsWithToggle() {
         const initialActions: ActionMenuProps['actions'] = [
           {content: 'initial'},
@@ -117,6 +117,38 @@ describe('<Actions />', () => {
       wrapper.find('button')!.trigger('onClick');
       expect(wrapper).toContainReactComponent(SecondaryAction, {
         children: 'updated',
+      });
+    });
+
+    it('updates groups when they change', () => {
+      function ActionsWithToggle() {
+        const initialGroups: ActionMenuProps['groups'] = [
+          {title: 'initial', actions: [{content: 'initial'}]},
+        ];
+
+        const [groups, setGroups] = useState(initialGroups);
+        const handleActivatorClick = useCallback(
+          () =>
+            setGroups([{title: 'updated', actions: [{content: 'updated'}]}]),
+          [],
+        );
+
+        return (
+          <>
+            <button onClick={handleActivatorClick}>Activator</button>
+            <Actions groups={groups} />
+          </>
+        );
+      }
+
+      const wrapper = mountWithApp(<ActionsWithToggle />, {
+        features: {newDesignLanguage: true},
+      });
+
+      wrapper.find('button')!.trigger('onClick');
+      expect(wrapper).toContainReactComponent(MenuGroup, {
+        title: 'updated',
+        actions: [{content: 'updated'}],
       });
     });
 
