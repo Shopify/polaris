@@ -8,8 +8,9 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed file type detection error in `DropZone` documents([ #3700 ](https://github.com/Shopify/polaris-react/issues/3700))
+
 ### Documentation
-Fix: File type detection error bug in DropZone documents
 
 ### Development workflow
 
