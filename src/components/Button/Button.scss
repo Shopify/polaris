@@ -500,6 +500,10 @@ $stacking-order: (
     &.disabled {
       color: var(--p-text-disabled);
       background: none;
+
+      &.loading {
+        color: transparent;
+      }
     }
 
     &.iconOnly {
