@@ -9,6 +9,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Bug fixes
 
 ### Documentation
+Fix: File type detection error bug in DropZone documents
 
 ### Development workflow
 
