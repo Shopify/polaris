@@ -196,10 +196,13 @@ export {PolarisTestProvider} from './PolarisTestProvider';
 export type {WithPolarisTestProviderOptions} from './PolarisTestProvider';
 
 export {Popover, PopoverCloseSource} from './Popover';
-export type {PopoverProps} from './Popover';
+export type {PopoverProps, PopoverAutofocusTarget} from './Popover';
 
 export {Portal} from './Portal';
 export type {PortalProps} from './Portal';
+
+export {PortalsManager} from './PortalsManager';
+export type {PortalsManagerProps} from './PortalsManager';
 
 export {PositionedOverlay} from './PositionedOverlay';
 export type {PositionedOverlayProps} from './PositionedOverlay';

@@ -27,12 +27,19 @@ interface ThemeProviderThemeConfig extends Discard<ThemeConfig, 'colorScheme'> {
 interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
   theme: ThemeProviderThemeConfig;
+  /**
+   * By default, Polaris avoids re-declaring custom properties within the same React tree
+   * This prop ensures that the CSS custom properties are always rendered. This is useful
+   * for components such as portals that render outside of the root DOM node
+   */
+  alwaysRenderCustomProperties?: boolean;
   /** The content to display */
   children?: React.ReactNode;
 }
 
 export function ThemeProvider({
   theme: themeConfig,
+  alwaysRenderCustomProperties = false,
   children,
 }: ThemeProviderProps) {
   const {newDesignLanguage} = useFeatures();
@@ -98,8 +105,9 @@ export function ThemeProvider({
   if (isParentThemeProvider) {
     style = customProperties;
   } else if (
-    !isParentThemeProvider &&
-    parentContext!.cssCustomProperties !== toString(customProperties)
+    alwaysRenderCustomProperties ||
+    (!isParentThemeProvider &&
+      parentContext!.cssCustomProperties !== toString(customProperties))
   ) {
     style = {...customProperties, ...{color}};
   } else {

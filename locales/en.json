@@ -23,7 +23,8 @@
         "critical": "Critical",
         "attention": "Attention",
         "new": "New"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Loading",
