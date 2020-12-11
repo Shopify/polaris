@@ -118,6 +118,8 @@ Merchants generally expect links to navigate, and not to submit data or take act
 
 Give links text that clearly describes their purpose.
 
+The `accessibilityLabel` prop adds an `aria-label` attribute to the link, which can be accessed by assistive technologies like screen readers. Typically, this label text replaces the visible text on the link for merchants who use assistive technology.
+
 To provide consistency and clarity:
 
 - Use the same text for links that navigate to the same content

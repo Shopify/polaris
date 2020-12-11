@@ -55,6 +55,8 @@ function AppProviderWithKnobs(
   );
 }
 
+const preferredTheme = process.env.STORYBOOK_NEWDESIGNLANGUAGE || 'purpler';
+
 const withContextsDecorator = withContexts([
   {
     title: 'Strict Mode',
@@ -65,20 +67,16 @@ const withContextsDecorator = withContexts([
     ],
   },
   {
-    title: 'New Design Language',
+    title: 'Color scheme',
     components: [AppProviderWithKnobs],
     params: [
       {
-        name: 'Disabled',
         default: true,
-        props: {newDesignLanguage: false},
-      },
-      {
-        name: 'Enabled - Light Mode',
+        name: 'Light Mode',
         props: {newDesignLanguage: true, colorScheme: 'light'},
       },
       {
-        name: 'Enabled - Dark Mode',
+        name: 'Dark Mode',
         props: {newDesignLanguage: true, colorScheme: 'dark'},
       },
     ],

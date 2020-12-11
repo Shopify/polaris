@@ -20,7 +20,8 @@
         "attention": "Bemærk",
         "new": "Nye",
         "critical": "Kritisk"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Indlæser",
@@ -29,7 +30,7 @@
     "Common": {
       "checkbox": "afkrydsningsfelt",
       "undo": "Fortryd",
-      "cancel": "Annullér",
+      "cancel": "Annuller",
       "newWindowAccessibilityHint": "(åbner et nyt vindue)",
       "clear": "Ryd",
       "close": "Luk",

@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount, mountWithApp} from 'test-utilities';
+import {mountWithApp} from 'test-utilities';
 
 import {Portal} from '../Portal';
 import {portal} from '../../shared';
@@ -56,11 +56,5 @@ describe('<Portal />', () => {
     const spy = jest.fn();
     mountWithApp(<Portal onPortalCreated={spy} />);
     expect(spy).toHaveBeenCalledTimes(1);
-  });
-
-  it('renders okay when theme context is undefined', () => {
-    expect(() => {
-      mount(<Portal />);
-    }).not.toThrow();
   });
 });

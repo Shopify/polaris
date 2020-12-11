@@ -105,40 +105,29 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     );
   }
 
-  let actionMarkup;
-  if (action) {
-    if (newDesignLanguage) {
-      actionMarkup = (
-        <div className={styles.Actions}>
-          <ButtonGroup>
-            <div className={styles.PrimaryAction}>
-              {unstyledButtonFrom(action, {
-                className: styles.Button,
-              })}
-            </div>
+  const primaryActionMarkup = action ? (
+    <div className={styles.PrimaryAction}>
+      {newDesignLanguage
+        ? unstyledButtonFrom(action, {
+            className: styles.Button,
+          })
+        : buttonFrom(action, {outline: true, size: buttonSizeValue})}
+    </div>
+  ) : null;
 
-            {secondaryAction && (
-              <SecondaryActionFrom action={secondaryAction} />
-            )}
-          </ButtonGroup>
-        </div>
-      );
-    } else {
-      actionMarkup = (
-        <div className={styles.Actions}>
-          <ButtonGroup>
-            <div className={styles.PrimaryAction}>
-              {buttonFrom(action, {outline: true, size: buttonSizeValue})}
-            </div>
+  const secondaryActionMarkup = secondaryAction ? (
+    <SecondaryActionFrom action={secondaryAction} />
+  ) : null;
 
-            {secondaryAction && (
-              <SecondaryActionFrom action={secondaryAction} />
-            )}
-          </ButtonGroup>
-        </div>
-      );
-    }
-  }
+  const actionMarkup =
+    action || secondaryAction ? (
+      <div className={styles.Actions}>
+        <ButtonGroup>
+          {primaryActionMarkup}
+          {secondaryActionMarkup}
+        </ButtonGroup>
+      </div>
+    ) : null;
 
   let contentMarkup: React.ReactNode = null;
   let contentID: string | undefined;
@@ -277,12 +266,16 @@ function useBannerFocus(bannerRef: React.Ref<BannerHandles>) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [shouldShowFocus, setShouldShowFocus] = useState(false);
 
-  useImperativeHandle(bannerRef, () => ({
-    focus: () => {
-      wrapperRef.current?.focus();
-      setShouldShowFocus(true);
-    },
-  }));
+  useImperativeHandle(
+    bannerRef,
+    () => ({
+      focus: () => {
+        wrapperRef.current?.focus();
+        setShouldShowFocus(true);
+      },
+    }),
+    [],
+  );
 
   const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.target === wrapperRef.current) {
