@@ -7,7 +7,7 @@ import {
 } from '../../../utilities/focus-manager';
 
 const Component = ({id}: {id: string}) =>
-  useFocusManager().canSafelyFocus ? <div id={id} /> : null;
+  useFocusManager({trapping: true}).canSafelyFocus ? <div id={id} /> : null;
 
 describe('FocusManager', () => {
   it('allows the first component added to be safely focused', () => {

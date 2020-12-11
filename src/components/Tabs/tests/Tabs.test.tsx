@@ -366,37 +366,6 @@ describe('<Tabs />', () => {
       });
     });
 
-    describe('ArrowDown', () => {
-      it('shifts focus to the next tab when pressing ArrowDown', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-      });
-
-      it('shifts focus to the first tab when pressing ArrowDown on the last tab', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-      });
-    });
-
     describe('ArrowLeft', () => {
       it('shifts focus to the last tab when pressing ArrowLeft', () => {
         const tabs = mountWithAppProvider(
@@ -406,34 +375,6 @@ describe('<Tabs />', () => {
           key: 'ArrowLeft',
         });
         expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(2);
-      });
-    });
-
-    describe('ArrowUp', () => {
-      it('shifts focus to the last tab when pressing ArrowUp', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} selected={0} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowUp',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(2);
-      });
-
-      it('shifts focus to the first tab when pressing ArrowUp on the second tab', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowLeft',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
       });
     });
   });

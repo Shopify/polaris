@@ -123,4 +123,32 @@ describe('<Link />', () => {
       });
     });
   });
+
+  describe('accessibilityLabel', () => {
+    it('passes prop to the button url is not provided', () => {
+      const mockAccessibilityLabel = 'mock accessibility label';
+      const link = mountWithApp(
+        <Link accessibilityLabel={mockAccessibilityLabel} />,
+      );
+
+      expect(link).toContainReactComponent('button', {
+        'aria-label': mockAccessibilityLabel,
+      });
+    });
+
+    it('passes the accessibilityLabel to UnstyledLink when url is present', () => {
+      const mockAccessibilityLabel = 'mock accessibility label';
+
+      const link = mountWithApp(
+        <Link
+          url="https://shopify.com"
+          accessibilityLabel={mockAccessibilityLabel}
+        />,
+      );
+
+      expect(link).toContainReactComponent(UnstyledLink, {
+        'aria-label': mockAccessibilityLabel,
+      });
+    });
+  });
 });

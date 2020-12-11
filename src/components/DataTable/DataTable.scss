@@ -59,10 +59,15 @@ $breakpoint: 768px;
   }
 }
 
+// stylelint-disable selector-max-class, selector-max-combinators
+.TableRow + .TableRow {
+  .Cell {
+    border-top: border('divider');
+  }
+}
+
 .Cell {
   padding: spacing();
-  border-bottom: border-width() solid
-    var(--p-border-subdued, color('sky', 'light'));
   white-space: nowrap;
   text-align: left;
   transition: background-color 0.2s ease-in-out;
@@ -120,6 +125,7 @@ $breakpoint: 768px;
 
 .Heading {
   @include unstyled-button;
+  @include focus-ring;
   position: relative;
   display: inline-flex;
   justify-content: flex-end;
@@ -127,17 +133,21 @@ $breakpoint: 768px;
   @include recolor-icon(var(--p-icon));
   color: var(--p-text, color(ink));
   transition: color duration() easing();
-  padding: spacing();
   cursor: pointer;
+  padding: spacing(tight);
+  margin: spacing(tight);
 
-  &:hover,
-  &:focus {
+  &:hover {
     @include recolor-icon(var(--p-interactive-hovered, color('indigo')));
     color: var(--p-interactive-hovered, color('indigo'));
 
     .Icon {
       opacity: 1;
     }
+  }
+
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
   }
 }
 
@@ -161,6 +171,8 @@ $breakpoint: 768px;
 .Cell-total-footer {
   border-top: border('divider');
   border-bottom: none;
+  border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  border-bottom-right-radius: var(--p-border-radius-base, border-radius());
 }
 
 .Footer {
@@ -168,4 +180,7 @@ $breakpoint: 768px;
   background: var(--p-surface-subdued, color('sky', 'light'));
   color: var(--p-text-subdued, color('ink', 'lighter'));
   text-align: center;
+  border-top: border('divider');
+  border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  border-bottom-right-radius: var(--p-border-radius-base, border-radius());
 }

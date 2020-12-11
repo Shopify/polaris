@@ -2,8 +2,7 @@
 @import './variables';
 
 $icon-size: rem(20px);
-$page-left-alignment-breakpoint-max: 1268px;
-$context-control-extra-spacing: rem(40px);
+$page-left-alignment-breakpoint-max: 1238px;
 $context-control-expand-after: 1400px;
 
 .TopBar {
@@ -117,12 +116,6 @@ $context-control-expand-after: 1400px;
   margin: 0;
   max-width: none;
   margin-left: calc((100% - #{$page-max-width}) / 2);
-
-  @include breakpoint-after($context-control-expand-after) {
-    margin-left: calc(
-      (100% - #{$page-max-width + $context-control-extra-spacing}) / 2
-    );
-  }
 
   @media (max-width: $page-left-alignment-breakpoint-max) {
     margin-left: 0;

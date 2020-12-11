@@ -55,6 +55,8 @@ function AppProviderWithKnobs(
   );
 }
 
+const preferredTheme = process.env.STORYBOOK_NEWDESIGNLANGUAGE || 'purpler';
+
 const withContextsDecorator = withContexts([
   {
     title: 'Strict Mode',
