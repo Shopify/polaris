@@ -68,7 +68,7 @@ interface NonMutuallyExclusiveProps {
   /** Disable the input */
   disabled?: boolean;
   /** Show a clear text button in the input */
-  clearButton?: boolean;
+  hideClearButton?: boolean;
   /** Disable editing of the input */
   readOnly?: boolean;
   /** Automatically focus the input */
@@ -150,7 +150,7 @@ export function TextField({
   labelAction,
   labelHidden,
   disabled,
-  clearButton,
+  hideClearButton,
   readOnly,
   autoFocus,
   focused,
@@ -272,7 +272,7 @@ export function TextField({
   }
 
   const clearButtonMarkup =
-    clearButton && normalizedValue !== '' ? (
+    !hideClearButton && normalizedValue !== '' ? (
       <button
         type="button"
         testID="clearButton"
@@ -394,7 +394,7 @@ export function TextField({
     styles.Input,
     align && styles[variationName('Input-align', align)],
     suffix && styles['Input-suffixed'],
-    clearButton && styles['Input-hasClearButton'],
+    !hideClearButton && styles['Input-hasClearButton'],
   );
 
   const input = createElement(multiline ? 'textarea' : 'input', {
