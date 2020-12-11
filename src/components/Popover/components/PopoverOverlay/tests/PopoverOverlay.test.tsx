@@ -5,6 +5,7 @@ import {
   ReactWrapper,
   trigger,
 } from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities/react-testing';
 import {TextContainer, TextField, EventListener} from 'components';
 
 import {Key} from '../../../../../types';
@@ -363,6 +364,70 @@ describe('<PopoverOverlay />', () => {
 
       expect(focusSpy).toHaveBeenCalledTimes(1);
       expect(focusSpy).toHaveBeenCalledWith({preventScroll: true});
+    });
+
+    it('focuses the container when autofocusTarget is not set', () => {
+      const id = 'PopoverOverlay-1';
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay active id={id} activator={activator} onClose={noop} />,
+      );
+
+      const focusTarget = popoverOverlay.find('div', {id})!.domNode;
+      expect(document.activeElement).toBe(focusTarget);
+    });
+
+    it('focuses the container when autofocusTarget is set to Container', () => {
+      const id = 'PopoverOverlay-1';
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id={id}
+          activator={activator}
+          onClose={noop}
+          autofocusTarget="container"
+        />,
+      );
+
+      const focusTarget = popoverOverlay.find('div', {id})!.domNode;
+      expect(document.activeElement).toBe(focusTarget);
+    });
+
+    it('focuses the first focusbale node when autofocusTarget is set to FirstNode', () => {
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={noop}
+          autofocusTarget="first-node"
+        >
+          <input type="text" />
+        </PopoverOverlay>,
+      );
+
+      const focusTarget = popoverOverlay.find('input', {})!.domNode;
+      expect(document.activeElement).toBe(focusTarget);
+    });
+
+    it('does not focus when autofocusTarget is set to None', () => {
+      const id = 'PopoverOverlay-1';
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id={id}
+          activator={activator}
+          onClose={noop}
+          autofocusTarget="none"
+        >
+          <input type="text" />
+        </PopoverOverlay>,
+      );
+
+      const focusTargetContainer = popoverOverlay.find('div', {id})!.domNode;
+      const focusTargetFirstNode = popoverOverlay.find('input', {})!.domNode;
+
+      expect(document.activeElement).not.toBe(focusTargetContainer);
+      expect(document.activeElement).not.toBe(focusTargetFirstNode);
     });
   });
 });
