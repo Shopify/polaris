@@ -134,20 +134,15 @@ $control-vertical-adjustment: rem(2px);
   }
 
   .SingleSelectOption {
-    // stylelint-disable-next-line selector-max-combinators, selector-max-compound-selectors
-    [type='radio'] + label {
-      @include focus-ring;
+    position: relative;
+    @include focus-ring;
 
-      // stylelint-disable-next-line selector-max-combinators, selector-max-compound-selectors
-      &.select::before {
-        @include list-selected-indicator;
-      }
-    }
-
-    // stylelint-disable-next-line selector-max-combinators, selector-max-compound-selectors
-    [type='radio'].active + label,
-    [type='radio']:focus:not(:active) + label {
+    &:focus-within {
       @include focus-ring($style: 'focused');
+    }
+    // stylelint-disable-next-line selector-max-combinators, selector-max-compound-selectors
+    &.select::before {
+      @include list-selected-indicator;
     }
   }
 }

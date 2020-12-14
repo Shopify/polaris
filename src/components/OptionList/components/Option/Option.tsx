@@ -54,20 +54,21 @@ export function Option({
     <div className={styles.Media}>{media}</div>
   ) : null;
 
-  const singleSelectClassName = classNames(styles.SingleSelectOption);
-
-  const singleSelectLabelClassName = classNames(
+  const labelClassName = classNames(
     styles.Label,
-    select && styles.select,
     disabled && styles.disabled,
     active && styles.active,
   );
 
   const multiSelectClassName = classNames(
-    styles.Label,
-    disabled && styles.disabled,
-    active && styles.active,
+    labelClassName,
     newDesignLanguage && select && styles.select,
+  );
+
+  const singleSelectClassName = classNames(
+    labelClassName,
+    styles.SingleSelectOption,
+    select && styles.select,
   );
 
   const optionRole = role === 'option' ? 'presentation' : undefined;
@@ -89,7 +90,7 @@ export function Option({
       {label}
     </label>
   ) : (
-    <div className={singleSelectClassName}>
+    <label htmlFor={id} className={singleSelectClassName}>
       <RadioButton
         id={id}
         value={value}
@@ -99,11 +100,9 @@ export function Option({
         onChange={handleClick}
         role={optionRole}
       />
-      <label htmlFor={id} className={singleSelectLabelClassName}>
-        {mediaMarkup}
-        {label}
-      </label>
-    </div>
+      {mediaMarkup}
+      {label}
+    </label>
   );
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
