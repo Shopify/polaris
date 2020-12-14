@@ -5,7 +5,6 @@ import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './Tag.scss';
 
@@ -28,24 +27,19 @@ export type TagProps = NonMutuallyExclusiveProps &
 
 export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
 
   const className = classNames(
     styles.Tag,
     disabled && styles.disabled,
     onClick && styles.clickable,
     onRemove && styles.removable,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const ariaLabel = i18n.translate('Polaris.Tag.ariaLabel', {
     children: children || '',
   });
 
-  const buttonClassName = classNames(
-    styles.Button,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
+  const buttonClassName = classNames(styles.Button);
 
   const removeButton = onRemove ? (
     <button
