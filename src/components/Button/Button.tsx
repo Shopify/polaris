@@ -151,7 +151,7 @@ export function Button({
   const disclosureIconMarkup = disclosure ? (
     <span className={styles.Icon}>
       <div
-        className={classNames(styles.DisclosureIcon, loading && styles.Hidden)}
+        className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
       >
         {disclosureIcon}
       </div>
@@ -164,7 +164,7 @@ export function Button({
     icon
   );
   const iconMarkup = iconSource ? (
-    <span className={classNames(styles.Icon, loading && styles.Hidden)}>
+    <span className={classNames(styles.Icon, loading && styles.hidden)}>
       {iconSource}
     </span>
   ) : null;
