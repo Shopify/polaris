@@ -162,20 +162,16 @@ export function Button({
     </span>
   ) : null;
 
-  let iconMarkup;
-
-  if (icon) {
-    const iconInner = isIconSource(icon) ? (
-      <Icon source={loading ? 'placeholder' : icon} />
-    ) : (
-      icon
-    );
-    iconMarkup = (
-      <span className={classNames(styles.Icon, loading && styles.Hidden)}>
-        {iconInner}
-      </span>
-    );
-  }
+  const iconSource = isIconSource(icon) ? (
+    <Icon source={loading ? 'placeholder' : icon} />
+  ) : (
+    icon
+  );
+  const iconMarkup = iconSource ? (
+    <span className={classNames(styles.Icon, loading && styles.Hidden)}>
+      {iconSource}
+    </span>
+  ) : null;
 
   const childMarkup = children ? (
     <span className={styles.Text}>{children}</span>
@@ -194,21 +190,6 @@ export function Button({
       />
     </span>
   ) : null;
-
-  const content =
-    iconMarkup || disclosureIconMarkup ? (
-      <span className={styles.Content}>
-        {spinnerSVGMarkup}
-        {iconMarkup}
-        {childMarkup}
-        {disclosureIconMarkup}
-      </span>
-    ) : (
-      <span className={styles.Content}>
-        {spinnerSVGMarkup}
-        {childMarkup}
-      </span>
-    );
 
   const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
 
@@ -306,7 +287,12 @@ export function Button({
 
   const buttonMarkup = (
     <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
-      {content}
+      <span className={styles.Content}>
+        {spinnerSVGMarkup}
+        {iconMarkup}
+        {childMarkup}
+        {disclosureIconMarkup}
+      </span>
     </UnstyledButton>
   );
 
