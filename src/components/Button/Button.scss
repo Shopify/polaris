@@ -98,12 +98,17 @@ $stacking-order: (
   justify-content: center;
   align-items: center;
   min-width: 1px;
+  width: 100%;
   min-height: 1px;
 }
 
 .textAlignLeft {
   justify-content: flex-start;
   text-align: left;
+
+  .Content {
+    justify-content: flex-start;
+  }
 }
 
 .textAlignCenter {
@@ -114,11 +119,14 @@ $stacking-order: (
 .textAlignRight {
   justify-content: flex-end;
   text-align: right;
+
+  .Content {
+    justify-content: flex-end;
+  }
 }
 
-.stretchContent:not(.loading) > .Content {
+.stretchContent > .Content {
   justify-content: space-between;
-  width: 100%;
 }
 
 .Icon {
@@ -138,6 +146,11 @@ $stacking-order: (
     // spacing on the right of the button)
     margin-right: -(spacing(tight));
     margin-left: spacing(extra-tight);
+  }
+
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity
+  .fullWidth.textAlignLeft:not(.stretchContent) &:last-child {
+    margin-left: auto;
   }
 
   + *:not(.Icon) {
