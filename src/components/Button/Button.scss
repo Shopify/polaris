@@ -731,16 +731,6 @@ $stacking-order: (
 }
 // stylelint-enable selector-max-specificity
 
-.DisclosureIcon {
-  transition-property: transform;
-  transition-duration: duration(slow);
-  transition-timing-function: easing(out);
-}
-
-.DisclosureIconFacingUp {
-  transform: rotate(-180deg);
-}
-
 .ConnectedDisclosureWrapper {
   display: flex;
 }

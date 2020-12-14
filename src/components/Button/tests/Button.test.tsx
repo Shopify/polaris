@@ -1,5 +1,5 @@
 import React from 'react';
-import {PlusMinor, CaretDownMinor} from '@shopify/polaris-icons';
+import {PlusMinor, CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
@@ -398,20 +398,20 @@ describe('<Button />', () => {
   describe('disclosure', () => {
     it('assumes "down" if set to true', () => {
       const button = mountWithAppProvider(<Button disclosure />);
-      const disclosureIcon = button.find('.DisclosureIcon');
-      expect(disclosureIcon!.hasClass('DisclosureIconFacingUp')).toBe(false);
+      const disclosureIcon = button.find('.DisclosureIcon').find(Icon);
+      expect(disclosureIcon.props().source).toBe(CaretDownMinor);
     });
 
     it('is facing down if set to "down"', () => {
       const button = mountWithAppProvider(<Button disclosure="down" />);
-      const disclosureIcon = button.find('.DisclosureIcon');
-      expect(disclosureIcon!.hasClass('DisclosureIconFacingUp')).toBe(false);
+      const disclosureIcon = button.find('.DisclosureIcon').find(Icon);
+      expect(disclosureIcon.props().source).toBe(CaretDownMinor);
     });
 
     it('is facing up if set to "up"', () => {
       const button = mountWithAppProvider(<Button disclosure="up" />);
-      const disclosureIcon = button.find('.DisclosureIcon');
-      expect(disclosureIcon!.hasClass('DisclosureIconFacingUp')).toBe(true);
+      const disclosureIcon = button.find('.DisclosureIcon').find(Icon);
+      expect(disclosureIcon.props().source).toBe(CaretUpMinor);
     });
   });
 

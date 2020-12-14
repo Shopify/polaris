@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import {CaretDownMinor} from '@shopify/polaris-icons';
+import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
 
 import type {BaseButton, ConnectedDisclosure, IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
@@ -145,17 +145,13 @@ export function Button({
   );
 
   const disclosureIcon = (
-    <Icon source={loading ? 'placeholder' : CaretDownMinor} />
+    <Icon source={getDisclosureIconSource({loading, disclosure})} />
   );
 
   const disclosureIconMarkup = disclosure ? (
     <span className={styles.Icon}>
       <div
-        className={classNames(
-          styles.DisclosureIcon,
-          disclosure === 'up' && styles.DisclosureIconFacingUp,
-          loading && styles.Hidden,
-        )}
+        className={classNames(styles.DisclosureIcon, loading && styles.Hidden)}
       >
         {disclosureIcon}
       </div>
@@ -312,4 +308,15 @@ function isIconSource(x: any): x is IconSource {
     (typeof x === 'object' && x.body) ||
     typeof x === 'function'
   );
+}
+
+function getDisclosureIconSource({
+  loading,
+  disclosure,
+}: Pick<ButtonProps, 'loading' | 'disclosure'>) {
+  if (loading) {
+    return 'placeholder';
+  }
+
+  return disclosure === 'up' ? CaretUpMinor : CaretDownMinor;
 }
