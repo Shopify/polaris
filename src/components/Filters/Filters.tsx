@@ -58,7 +58,8 @@ export interface FilterInterface {
   disabled?: boolean;
   /**
    * @default false
-   * Whether or not the clear button is displayed */
+   * Whether or not the clear button is displayed
+   */
   hideClearButton?: boolean;
 }
 
@@ -227,8 +228,8 @@ class FiltersInner extends Component<CombinedProps, State> {
     const moreFiltersLabel =
       hideTags && appliedFiltersCount > 0
         ? i18n.translate('Polaris.Filters.moreFiltersWithCount', {
-          count: appliedFiltersCount,
-        })
+            count: appliedFiltersCount,
+          })
         : i18n.translate('Polaris.Filters.moreFilters');
 
     const rightActionMarkup = (
@@ -282,7 +283,7 @@ class FiltersInner extends Component<CombinedProps, State> {
               <Icon source={SearchMinor} />
             </span>
           }
-          hideClearButton
+          clearButton
           onClearButtonClick={onQueryClear}
           disabled={disabled}
         />
@@ -348,12 +349,12 @@ class FiltersInner extends Component<CombinedProps, State> {
             {i18n.translate('Polaris.Filters.clearAllFilters')}
           </Button>
         ) : (
-            <div className={styles.EmptyFooterState}>
-              <TextStyle variation="subdued">
-                <p>{i18n.translate('Polaris.Filters.noFiltersApplied')}</p>
-              </TextStyle>
-            </div>
-          )}
+          <div className={styles.EmptyFooterState}>
+            <TextStyle variation="subdued">
+              <p>{i18n.translate('Polaris.Filters.noFiltersApplied')}</p>
+            </TextStyle>
+          </div>
+        )}
       </div>
     );
 
@@ -404,24 +405,24 @@ class FiltersInner extends Component<CombinedProps, State> {
         </Scrollable>
       </Sheet>
     ) : (
-        <Sheet
-          open={open}
-          onClose={this.closeFilters}
-          onEntered={this.setReadyForFocus(true)}
-          onExit={this.setReadyForFocus(false)}
-        >
-          <div className={styles.FiltersContainer}>
-            {filtersDesktopHeaderMarkup}
-            <Scrollable
-              className={filtersDesktopContainerContentClassName}
-              shadow
-            >
-              {filtersContentMarkup}
-            </Scrollable>
-            {filtersDesktopFooterMarkup}
-          </div>
-        </Sheet>
-      );
+      <Sheet
+        open={open}
+        onClose={this.closeFilters}
+        onEntered={this.setReadyForFocus(true)}
+        onExit={this.setReadyForFocus(false)}
+      >
+        <div className={styles.FiltersContainer}>
+          {filtersDesktopHeaderMarkup}
+          <Scrollable
+            className={filtersDesktopContainerContentClassName}
+            shadow
+          >
+            {filtersContentMarkup}
+          </Scrollable>
+          {filtersDesktopFooterMarkup}
+        </div>
+      </Sheet>
+    );
 
     const helpTextMarkup = helpText ? (
       <div id="FiltersHelpText" className={styles.HelpText}>
@@ -553,17 +554,15 @@ class FiltersInner extends Component<CombinedProps, State> {
 
   private generateFilterMarkup(filter: FilterInterface) {
     const i18n = this.props.i18n;
-    const isClearButtonShown =
-      filter.hideClearButton === undefined ? true : false;
     const removeCallback = this.getAppliedFilterRemoveHandler(filter.key);
     const removeHandler =
       removeCallback == null
         ? undefined
         : () => {
-          removeCallback(filter.key);
-        };
+            removeCallback(filter.key);
+          };
 
-    const clearButtonMarkup = isClearButtonShown && (
+    const clearButtonMarkup = !filter.hideClearButton && (
       <Button
         plain
         disabled={removeHandler == null}
