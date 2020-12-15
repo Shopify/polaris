@@ -363,7 +363,7 @@ describe('<Filters />', () => {
 
     it('renders a clear button when clearButton is not provided', () => {
       const filters = [
-        { key: 'filterOne', label: 'foo', onRemove: () => { }, filter: null },
+        {key: 'filterOne', label: 'foo', onRemove: () => { }, filter: null},
       ];
 
       const resourceFilters = mountWithAppProvider(
@@ -383,7 +383,7 @@ describe('<Filters />', () => {
           hideClearButton: true,
           key: 'filterOne',
           label: 'foo',
-          onRemove: () => { },
+          onRemove: () => {},
           filter: null,
         },
       ];
