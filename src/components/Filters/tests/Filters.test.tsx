@@ -361,6 +361,44 @@ describe('<Filters />', () => {
       expect(spy).toHaveBeenCalledWith('filterOne');
     });
 
+    it('renders a clear button when clearButton is not provided', () => {
+      const filters = [
+        {key: 'filterOne', label: 'foo', onRemove: () => {}, filter: null},
+      ];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} filters={filters} />,
+      );
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
+      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
+
+      expect(collapsible.text().toLowerCase()).toContain('clear');
+    });
+
+    it("doesn't renders a clear button when clearButton is not provided", () => {
+      const filters = [
+        {
+          hideClearButton: true,
+          key: 'filterOne',
+          label: 'foo',
+          onRemove: () => {},
+          filter: null,
+        },
+      ];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} filters={filters} />,
+      );
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
+      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
+
+      expect(collapsible.text().toLowerCase()).not.toContain('clear');
+    });
+
     it('tags are not shown if hideTags prop is given', () => {
       const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: noop}];
 
