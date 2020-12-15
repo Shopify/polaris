@@ -1,5 +1,9 @@
 import React, {useCallback, useState} from 'react';
-import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
+import {
+  CaretDownMinor,
+  CaretUpMinor,
+  SelectMinor,
+} from '@shopify/polaris-icons';
 
 import type {BaseButton, ConnectedDisclosure, IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
@@ -36,7 +40,7 @@ export interface ButtonProps extends BaseButton {
   /** Allows the button to grow to the width of its container */
   fullWidth?: boolean;
   /** Displays the button with a disclosure icon. Defaults to `down` when set to true */
-  disclosure?: 'down' | 'up' | boolean;
+  disclosure?: 'down' | 'up' | 'select' | boolean;
   /** Renders a button that looks like a link */
   plain?: boolean;
   /** Makes `plain` and `outline` Button colors (text, borders, icons) the same as the current text color. Also adds an underline to `plain` Buttons */
@@ -144,16 +148,14 @@ export function Button({
     stretchContent && styles.stretchContent,
   );
 
-  const disclosureIcon = (
-    <Icon source={getDisclosureIconSource({loading, disclosure})} />
-  );
-
-  const disclosureIconMarkup = disclosure ? (
+  const disclosureMarkup = disclosure ? (
     <span className={styles.Icon}>
       <div
         className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
       >
-        {disclosureIcon}
+        <Icon
+          source={loading ? 'placeholder' : getDisclosureIconSource(disclosure)}
+        />
       </div>
     </span>
   ) : null;
@@ -287,7 +289,7 @@ export function Button({
         {spinnerSVGMarkup}
         {iconMarkup}
         {childMarkup}
-        {disclosureIconMarkup}
+        {disclosureMarkup}
       </span>
     </UnstyledButton>
   );
@@ -310,12 +312,11 @@ function isIconSource(x: any): x is IconSource {
   );
 }
 
-function getDisclosureIconSource({
-  loading,
-  disclosure,
-}: Pick<ButtonProps, 'loading' | 'disclosure'>) {
-  if (loading) {
-    return 'placeholder';
+function getDisclosureIconSource(
+  disclosure: NonNullable<ButtonProps['disclosure']>,
+) {
+  if (disclosure === 'select') {
+    return SelectMinor;
   }
 
   return disclosure === 'up' ? CaretUpMinor : CaretDownMinor;

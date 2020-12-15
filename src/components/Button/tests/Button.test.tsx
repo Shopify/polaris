@@ -1,5 +1,10 @@
 import React from 'react';
-import {PlusMinor, CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
+import {
+  CaretDownMinor,
+  CaretUpMinor,
+  PlusMinor,
+  SelectMinor,
+} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
@@ -412,6 +417,12 @@ describe('<Button />', () => {
       const button = mountWithAppProvider(<Button disclosure="up" />);
       const disclosureIcon = button.find('.DisclosureIcon').find(Icon);
       expect(disclosureIcon.props().source).toBe(CaretUpMinor);
+    });
+
+    it('is double-arrow if set to "select"', () => {
+      const button = mountWithAppProvider(<Button disclosure="select" />);
+      const disclosureIcon = button.find('.DisclosureIcon').find(Icon);
+      expect(disclosureIcon.props().source).toBe(SelectMinor);
     });
   });
 

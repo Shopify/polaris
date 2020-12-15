@@ -339,6 +339,20 @@ function StretchedDisclosureButton() {
 }
 ```
 
+### Select disclosure button
+
+<!-- example-for: web -->
+
+Use to indicate that multiple options are available from this control, similar to a `<select />` HTML element.
+
+```jsx
+<div style={{height: '100px'}}>
+  <Button disclosure="select" onClick={() => console.log('Open Popover')}>
+    Select options
+  </Button>
+</div>
+```
+
 ### Split button
 
 <!-- example-for: web -->
