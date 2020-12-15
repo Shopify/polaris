@@ -56,6 +56,11 @@ export interface FilterInterface {
   shortcut?: boolean;
   /** Whether or not the filter is disabled */
   disabled?: boolean;
+  /**
+   * @default false
+   * Whether or not the clear button is displayed
+   */
+  hideClearButton?: boolean;
 }
 
 export interface FiltersProps {
@@ -562,20 +567,25 @@ class FiltersInner extends Component<CombinedProps, State> {
         : () => {
             removeCallback(filter.key);
           };
+
+    const clearButtonMarkup = !filter.hideClearButton && (
+      <Button
+        plain
+        disabled={removeHandler == null}
+        onClick={removeHandler}
+        accessibilityLabel={i18n.translate('Polaris.Filters.clearLabel', {
+          filterName: filter.label,
+        })}
+      >
+        {i18n.translate('Polaris.Filters.clear')}
+      </Button>
+    );
+
     return (
       <div ref={this.focusNode}>
         <Stack vertical spacing="tight">
           {filter.filter}
-          <Button
-            plain
-            disabled={removeHandler == null}
-            onClick={removeHandler}
-            accessibilityLabel={i18n.translate('Polaris.Filters.clearLabel', {
-              filterName: filter.label,
-            })}
-          >
-            {i18n.translate('Polaris.Filters.clear')}
-          </Button>
+          {clearButtonMarkup}
         </Stack>
       </div>
     );
