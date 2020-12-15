@@ -31,9 +31,6 @@
   cursor: pointer;
   user-select: none;
   text-decoration: none;
-  transition-property: color, background, border, box-shadow;
-  transition-duration: var(--p-override-none, duration());
-  transition-timing-function: var(--p-override-none, easing());
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
@@ -54,7 +51,6 @@
   }
 
   &:active {
-    // Same color gradient is necessary for background transitions
     background: linear-gradient(
       to bottom,
       color('sky', 'light'),
@@ -76,6 +72,9 @@
     border: 1px solid var(--p-border-neutral-subdued);
     border-top-color: var(--p-border-subdued);
     border-bottom-color: var(--p-border-shadow-subdued);
+    transition-property: color, background, border, box-shadow;
+    transition-duration: duration();
+    transition-timing-function: easing();
 
     &:hover {
       background: var(--p-action-secondary-hovered);
@@ -114,7 +113,6 @@
 
 @mixin base-button-disabled {
   @include recolor-icon(color('ink', 'lightest'));
-  transition: none;
   background: linear-gradient(
     to bottom,
     color('sky', 'light'),
@@ -244,8 +242,8 @@
   }
 
   &.newDesignLanguage {
-    background: transparent;
     @include focus-ring($border-width: border-width('base'));
+    background: transparent;
     border: border-width() solid var(--p-border);
     box-shadow: none;
     color: var(--p-text);

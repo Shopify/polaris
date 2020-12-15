@@ -50,7 +50,6 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 
   &:focus,
   &:hover {
-    transition-duration: duration(fast);
     background: linear-gradient(to bottom, $color-light, $color-light);
     border-color: $color-dark;
     box-shadow: $partial-button-filled-pressed-box-shadow $color-dark;
@@ -130,12 +129,6 @@ $stacking-order: (
 }
 
 .Icon {
-  transition: color duration() easing();
-
-  .newDesignLanguage & {
-    transition: none;
-  }
-
   // This compensates for the typical icon used in buttons being
   // inset within its bounding box.
   margin-left: -(spacing(extra-tight));
@@ -155,6 +148,13 @@ $stacking-order: (
 
   + *:not(.Icon) {
     margin-left: spacing(extra-tight);
+  }
+
+  .newDesignLanguage & {
+    // stylelint-disable-next-line selector-max-combinators
+    svg {
+      transition: fill duration() easing();
+    }
   }
 }
 
@@ -273,7 +273,6 @@ $stacking-order: (
 .loading,
 .newDesignLanguage.loading {
   position: relative;
-  transition: border-color duration() easing();
 
   // stylelint-disable-next-line selector-max-class
   &,
@@ -294,7 +293,6 @@ $stacking-order: (
   @include pressed-box-shadow;
 
   &:hover {
-    transition-duration: duration(fast);
     background: $pressed-hover-background;
     border-color: $pressed-border-color;
     @include pressed-box-shadow;
