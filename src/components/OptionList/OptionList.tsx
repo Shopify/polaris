@@ -143,7 +143,6 @@ export function OptionList({
               className={styles.Options}
               id={`${id}-${sectionIndex}`}
               role={role}
-              aria-multiselectable={allowMultiple}
             >
               {optionsMarkup}
             </ul>
