@@ -27,6 +27,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed keyboard interaction when selected Tab was focused and rendering the wrong `::before` colour ([#3669](https://github.com/Shopify/polaris-react/pull/3669))
 - Added focus ring to disclosure tab when tabbing with keyboard([#3675](https://github.com/Shopify/polaris-react/pull/3675))
 - Fixed windows high contrast mode on hover within disclosure menu and displaying active state upon click for `::before` ([#3675](https://github.com/Shopify/polaris-react/pull/3675))
+- Fix `ActionList` missing aria roles for children with aria-selected ([#3724](https://github.com/Shopify/polaris-react/pull/3724))
 
 ### Documentation
 
