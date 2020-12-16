@@ -312,7 +312,6 @@ export function ComboBox({
         onClick={activatePopover}
         onKeyDown={activatePopover}
         role="combobox"
-        aria-expanded={popoverActive}
         aria-owns={id}
         aria-controls={id}
         aria-haspopup
