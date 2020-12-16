@@ -12,8 +12,6 @@ export interface ActionListProps {
   items?: ActionListItemDescriptor[];
   /** Collection of sectioned action items */
   sections?: ActionListSection[];
-  /** Defines a role attribute for the list */
-  role?: string;
   /** Defines a specific role attribute for each action in the list */
   actionRole?: string;
   /** Callback when any item is clicked or keypressed */
@@ -23,7 +21,6 @@ export interface ActionListProps {
 export function ActionList({
   items,
   sections = [],
-  role,
   actionRole,
   onActionAnyItem,
 }: ActionListProps) {
@@ -55,9 +52,5 @@ export function ActionList({
     ) : null;
   });
 
-  return (
-    <Element role={role} className={className}>
-      {sectionMarkup}
-    </Element>
-  );
+  return <Element className={className}>{sectionMarkup}</Element>;
 }

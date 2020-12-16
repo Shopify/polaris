@@ -110,16 +110,13 @@ function ActionListInPopoverExample() {
     <div style={{height: '250px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
-          role="listbox"
           items={[
             {
               content: 'Import file',
-              role: 'option',
               onAction: handleImportedAction,
             },
             {
               content: 'Export file',
-              role: 'option',
               onAction: handleExportedAction,
             },
           ]}
@@ -150,18 +147,9 @@ function ActionListWithMediaExample() {
     <div style={{height: '200px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
-          role="listbox"
           items={[
-            {
-              role: 'option',
-              content: 'Import file',
-              icon: ImportMinor,
-            },
-            {
-              role: 'option',
-              content: 'Export file',
-              icon: ExportMinor,
-            },
+            {content: 'Import file', icon: ImportMinor},
+            {content: 'Export file', icon: ExportMinor},
           ]}
         />
       </Popover>
@@ -190,20 +178,14 @@ function ActionListWithSuffixExample() {
     <div style={{height: '200px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
-          role="listbox"
           items={[
             {
-              role: 'option',
               content: 'Import file',
               icon: ImportMinor,
               suffix: <Icon source={TickSmallMinor} />,
               active: true,
             },
-            {
-              role: 'option',
-              content: 'Export file',
-              icon: ExportMinor,
-            },
+            {content: 'Export file', icon: ExportMinor},
           ]}
         />
       </Popover>
@@ -232,10 +214,8 @@ function SectionedActionListExample() {
     <div style={{height: '250px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
-          role="listbox"
           sections={[
             {
-              role: 'option',
               title: 'File options',
               items: [
                 {content: 'Import file', icon: ImportMinor},
@@ -270,24 +250,13 @@ function ActionListWithDestructiveItemExample() {
     <div style={{height: '250px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
-          role="listbox"
           sections={[
             {
               title: 'File options',
               items: [
+                {content: 'Import file', icon: ImportMinor, active: true},
+                {content: 'Export file', icon: ExportMinor},
                 {
-                  role: 'option',
-                  content: 'Import file',
-                  icon: ImportMinor,
-                  active: true,
-                },
-                {
-                  role: 'option',
-                  content: 'Export file',
-                  icon: ExportMinor,
-                },
-                {
-                  role: 'option',
                   destructive: true,
                   content: 'Delete file',
                   icon: DeleteMinor,
@@ -322,17 +291,14 @@ function ActionListWithHelpTextExample() {
     <div style={{height: '250px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
-          role="listbox"
           sections={[
             {
               items: [
                 {
-                  role: 'option',
                   content: 'Blog posts',
                   helpText: 'Manage your blog articles',
                 },
                 {
-                  role: 'option',
                   content: 'Blogs',
                   helpText: 'Manage blogs published to your Online Store',
                 },
