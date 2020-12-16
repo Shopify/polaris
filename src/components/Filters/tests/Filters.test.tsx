@@ -85,6 +85,20 @@ describe('<Filters />', () => {
     expect(onQueryFocus).toHaveBeenCalledTimes(1);
   });
 
+  it('does not render the TextField when "hideQueryField" is "true"', () => {
+    const filters = mountWithAppProvider(
+      <Filters {...mockProps} hideQueryField />,
+    );
+
+    expect(filters.find(TextField).exists()).toBe(false);
+  });
+
+  it('renders the TextField when "hideQueryField" is false', () => {
+    const filters = mountWithAppProvider(<Filters {...mockProps} />);
+
+    expect(filters.find(TextField).exists()).toBe(true);
+  });
+
   describe('toggleFilters()', () => {
     it('opens the sheet on toggle button click', () => {
       const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />);
@@ -238,6 +252,16 @@ describe('<Filters />', () => {
         resourceFilters.find(ConnectedFilterControl).props()
           .rightPopoverableActions,
       ).toHaveLength(2);
+    });
+
+    it('receives the expected props when the query field is hidden', () => {
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockPropsWithShortcuts} hideQueryField />,
+      );
+
+      expect(
+        resourceFilters.find(ConnectedFilterControl).props().queryFieldHidden,
+      ).toBe(true);
     });
 
     it('forces showing the "More Filters" button if there are filters without shortcuts', () => {
