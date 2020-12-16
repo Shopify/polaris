@@ -115,8 +115,8 @@ export function Option({
       key={id}
       className={optionClassName}
       tabIndex={-1}
-      aria-selected={active}
       role={role}
+      aria-selected={active}
     >
       {scrollMarkup}
       {optionMarkup}

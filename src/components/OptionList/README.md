@@ -175,14 +175,25 @@ function OptionListInPopoverExample() {
         onClose={togglePopoverActive}
       >
         <OptionList
+          role="listbox"
           title="Inventory Location"
           onChange={setSelected}
           options={[
-            {value: 'byward_market', label: 'Byward Market'},
-            {value: 'centretown', label: 'Centretown'},
-            {value: 'hintonburg', label: 'Hintonburg'},
-            {value: 'westboro', label: 'Westboro'},
-            {value: 'downtown', label: 'Downtown'},
+            {
+              value: 'byward_market',
+              label: 'Byward Market',
+              active: true,
+              role: 'option',
+            },
+            {value: 'centretown', label: 'Centretown', role: 'option'},
+            {
+              value: 'hintonburg',
+              label: 'Hintonburg',
+              active: true,
+              role: 'option',
+            },
+            {value: 'westboro', label: 'Westboro', role: 'option'},
+            {value: 'downtown', label: 'Downtown', role: 'option'},
           ]}
           selected={selected}
         />

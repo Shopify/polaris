@@ -44,7 +44,7 @@ export interface OptionListProps {
   /** Collection of options to be listed */
   options?: OptionDescriptor[];
   /** Defines a specific role attribute for the list itself */
-  role?: string;
+  role?: 'listbox' | 'combobox' | string;
   /** Defines a specific role attribute for each option in the list */
   optionRole?: string;
   /** Sections containing a header and related options */
