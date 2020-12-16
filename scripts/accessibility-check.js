@@ -175,12 +175,6 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       return;
     }
 
-    console.log('UH OH', {
-      unexpectedViolationsCount,
-      untriggeredExpectedViolationsCount,
-      errorCount,
-    });
-
     if (unexpectedViolationsCount) {
       console.log('---\n\nUnexpected Issues:');
       resultsWithUnexpectedViolations.forEach((result) => {
