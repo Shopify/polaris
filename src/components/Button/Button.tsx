@@ -121,6 +121,11 @@ export function Button({
   const {newDesignLanguage} = useFeatures();
   const i18n = useI18n();
 
+  const [disclosureActive, setDisclosureActive] = useState(false);
+  const toggleDisclosureActive = useCallback(() => {
+    setDisclosureActive((disclosureActive) => !disclosureActive);
+  }, []);
+
   const isDisabled = disabled || loading;
 
   const className = classNames(
@@ -141,6 +146,57 @@ export function Button({
     connectedDisclosure && styles.connectedDisclosure,
     stretchContent && styles.stretchContent,
   );
+
+  const commonProps: CommonButtonProps = {
+    id,
+    className,
+    accessibilityLabel,
+    role,
+    onClick,
+    onFocus,
+    onBlur,
+    onMouseUp: handleMouseUpByBlurring,
+    onMouseEnter,
+    onTouchStart,
+  };
+
+  const linkProps: LinkButtonProps = {
+    url,
+    external,
+    download,
+  };
+
+  const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
+
+  const actionProps: ActionButtonProps = {
+    submit,
+    disabled: isDisabled,
+    loading,
+    ariaControls,
+    ariaExpanded,
+    ariaPressed: ariaPressedStatus,
+    onKeyDown,
+    onKeyUp,
+    onKeyPress,
+  };
+
+  const isBasicButton =
+    children &&
+    !disclosure &&
+    !connectedDisclosure &&
+    !icon &&
+    !url &&
+    !loading;
+
+  if (isBasicButton) {
+    return (
+      <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
+        <span className={styles.Content}>
+          <span className={styles.Text}>{children}</span>
+        </span>
+      </UnstyledButton>
+    );
+  }
 
   let disclosureIconMarkup;
 
@@ -212,13 +268,6 @@ export function Button({
       </span>
     );
 
-  const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
-
-  const [disclosureActive, setDisclosureActive] = useState(false);
-  const toggleDisclosureActive = useCallback(() => {
-    setDisclosureActive((disclosureActive) => !disclosureActive);
-  }, []);
-
   let connectedDisclosureMarkup;
 
   if (connectedDisclosure) {
@@ -274,35 +323,6 @@ export function Button({
       </Popover>
     );
   }
-
-  const commonProps: CommonButtonProps = {
-    id,
-    className,
-    accessibilityLabel,
-    role,
-    onClick,
-    onFocus,
-    onBlur,
-    onMouseUp: handleMouseUpByBlurring,
-    onMouseEnter,
-    onTouchStart,
-  };
-  const linkProps: LinkButtonProps = {
-    url,
-    external,
-    download,
-  };
-  const actionProps: ActionButtonProps = {
-    submit,
-    disabled: isDisabled,
-    loading,
-    ariaControls,
-    ariaExpanded,
-    ariaPressed: ariaPressedStatus,
-    onKeyDown,
-    onKeyUp,
-    onKeyPress,
-  };
 
   const buttonMarkup = (
     <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
