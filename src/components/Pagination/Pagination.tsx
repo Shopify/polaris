@@ -47,7 +47,7 @@ export interface PaginationDescriptor {
   hasPrevious?: boolean;
   /** Accessible label for the pagination */
   accessibilityLabel?: string;
-  /** Accessible labels for the pagination buttons */
+  /** Accessible labels for the buttons and UnstyledLinks */
   accessibilityLabels?: AccessibilityLabels;
   /** Callback when next button is clicked */
   onNext?(): void;
