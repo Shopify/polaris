@@ -142,23 +142,27 @@ export function Button({
     stretchContent && styles.stretchContent,
   );
 
-  const disclosureIcon = (
-    <Icon source={loading ? 'placeholder' : CaretDownMinor} />
-  );
+  let disclosureIconMarkup;
 
-  const disclosureIconMarkup = disclosure ? (
-    <span className={styles.Icon}>
-      <div
-        className={classNames(
-          styles.DisclosureIcon,
-          disclosure === 'up' && styles.DisclosureIconFacingUp,
-          loading && styles.Hidden,
-        )}
-      >
-        {disclosureIcon}
-      </div>
-    </span>
-  ) : null;
+  if (disclosure) {
+    const disclosureIcon = (
+      <Icon source={loading ? 'placeholder' : CaretDownMinor} />
+    );
+
+    disclosureIconMarkup = (
+      <span className={styles.Icon}>
+        <div
+          className={classNames(
+            styles.DisclosureIcon,
+            disclosure === 'up' && styles.DisclosureIconFacingUp,
+            loading && styles.Hidden,
+          )}
+        >
+          {disclosureIcon}
+        </div>
+      </span>
+    );
+  }
 
   let iconMarkup;
 

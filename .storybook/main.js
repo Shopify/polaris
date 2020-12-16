@@ -17,6 +17,7 @@ const enableDocs = !parseInt(process.env.STORYBOOK_DISABLE_DOCS || '0', 10);
 module.exports = {
   stories: ['../playground/stories.tsx', '../src/components/**/*/README.md'],
   addons: [
+    'storybook-addon-performance/register',
     {name: '@storybook/addon-essentials', options: {docs: enableDocs}},
     '@storybook/addon-a11y',
     '@storybook/addon-contexts',

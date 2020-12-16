@@ -1,5 +1,5 @@
 import React from 'react';
-import {addParameters, addDecorator} from '@storybook/react';
+import {withPerformance} from 'storybook-addon-performance';
 import {withContexts} from '@storybook/addon-contexts/react';
 import {color, withKnobs} from '@storybook/addon-knobs';
 import DefaultThemeColors from '@shopify/polaris-tokens/dist-modern/theme/base.json';
@@ -89,7 +89,7 @@ const withContextsDecorator = withContexts([
   },
 ]);
 
-export const decorators = [withContextsDecorator];
+export const decorators = [withContextsDecorator, withPerformance];
 
 function strToHex(str) {
   if (str.charAt(0) === '#') return str;
