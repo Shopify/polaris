@@ -86,10 +86,6 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     // A list of urls with a count of known, expected failures
     // Ideally this shouldn't exist for long as we fix issues
     const expectedIssues = {
-      'id=all-components-action-list--action-list-with-an-icon-and-a-suffix': 1,
-      'id=all-components-action-list--action-list-with-an-icon-and-a-suffix&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-action-list--action-list-with-destructive-item': 1,
-      'id=all-components-action-list--action-list-with-destructive-item&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-autocomplete--basic-autocomplete': 1,
       'id=all-components-autocomplete--basic-autocomplete&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-autocomplete--multiple-tags-autocomplete': 1,
@@ -108,6 +104,8 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       'id=all-components-option-list--multiple-option-list&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-option-list--option-list-with-sections': 1,
       'id=all-components-option-list--option-list-with-sections&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
+      'id=all-components-option-list--option-list-in-a-popover': 4,
+      'id=all-components-option-list--option-list-in-a-popover&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 4,
       'id=all-components-range-slider--dual-thumb-range-slider': 2,
       'id=all-components-range-slider--dual-thumb-range-slider&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 2,
       'id=all-components-resource-list--resource-list-with-loading-state': 1,
@@ -166,7 +164,7 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     const untriggeredExpectedViolationsCount = untriggeredExpectedIssues.length;
 
     console.log(
-      `There were ${totalViolationsCount} Issues reported! ${expectedViolationsCount} Issues were expected. ${untriggeredExpectedViolationsCount} Expected Issues were absent`,
+      `There were ${totalViolationsCount} Issues reported! ${expectedViolationsCount} Issues were expected. ${untriggeredExpectedViolationsCount} Expected Issues were absent. There were ${errorCount} errors`,
     );
 
     if (
@@ -203,7 +201,7 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       });
     }
 
-    if (errorCount.length) {
+    if (errorCount) {
       console.log(
         '---\n\nPages triggered an ERROR when trying to identify violations (you should rerun too see if this goes away):',
       );
