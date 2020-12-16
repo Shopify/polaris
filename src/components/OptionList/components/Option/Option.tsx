@@ -111,7 +111,13 @@ export function Option({
   );
 
   return (
-    <li key={id} className={optionClassName} tabIndex={-1} role={role}>
+    <li
+      key={id}
+      className={optionClassName}
+      tabIndex={-1}
+      role={role}
+      aria-selected={active}
+    >
       {scrollMarkup}
       {optionMarkup}
     </li>
