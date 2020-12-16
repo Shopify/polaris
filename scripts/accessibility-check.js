@@ -86,10 +86,6 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     // A list of urls with a count of known, expected failures
     // Ideally this shouldn't exist for long as we fix issues
     const expectedIssues = {
-      'id=all-components-action-list--action-list-with-an-icon-and-a-suffix': 1,
-      'id=all-components-action-list--action-list-with-an-icon-and-a-suffix&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-action-list--action-list-with-destructive-item': 1,
-      'id=all-components-action-list--action-list-with-destructive-item&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-autocomplete--basic-autocomplete': 1,
       'id=all-components-autocomplete--basic-autocomplete&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-autocomplete--multiple-tags-autocomplete': 1,
@@ -166,7 +162,7 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     const untriggeredExpectedViolationsCount = untriggeredExpectedIssues.length;
 
     console.log(
-      `There were ${totalViolationsCount} Issues reported! ${expectedViolationsCount} Issues were expected. ${untriggeredExpectedViolationsCount} Expected Issues were absent`,
+      `There were ${totalViolationsCount} Issues reported! ${expectedViolationsCount} Issues were expected. ${untriggeredExpectedViolationsCount} Expected Issues were absent. There were ${errorCount} errors`,
     );
 
     if (
@@ -176,6 +172,12 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     ) {
       return;
     }
+
+    console.log('UH OH', {
+      unexpectedViolationsCount,
+      untriggeredExpectedViolationsCount,
+      errorCount,
+    });
 
     if (unexpectedViolationsCount) {
       console.log('---\n\nUnexpected Issues:');
@@ -203,7 +205,7 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       });
     }
 
-    if (errorCount.length) {
+    if (errorCount) {
       console.log(
         '---\n\nPages triggered an ERROR when trying to identify violations (you should rerun too see if this goes away):',
       );
