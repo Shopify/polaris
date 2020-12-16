@@ -113,13 +113,9 @@ describe('<Pagination />', () => {
       },
     };
 
-    it('inserts prop as aria-label on UnstyledLink', () => {
+    it('passes accessibilityLabels to UnstyledLinks', () => {
       const pagination = mountWithApp(
-        <Pagination
-          {...defaultProps}
-          previousURL="Previous URL"
-          nextURL="Next URL"
-        />,
+        <Pagination {...defaultProps} previousURL="prev" nextURL="next" />,
       );
 
       expect(pagination).toContainReactComponent(UnstyledLink, {
@@ -131,7 +127,21 @@ describe('<Pagination />', () => {
       });
     });
 
-    it('inserts prop as aria-label on button', () => {
+    it('renders default accessibilityLabels on UnstyledLink', () => {
+      const pagination = mountWithApp(
+        <Pagination previousURL="prev" nextURL="next" />,
+      );
+
+      expect(pagination).toContainReactComponent(UnstyledLink, {
+        'aria-label': en.Polaris.Pagination.previous,
+      });
+
+      expect(pagination).toContainReactComponent(UnstyledLink, {
+        'aria-label': en.Polaris.Pagination.next,
+      });
+    });
+
+    it('passes accessibilityLabels to buttons', () => {
       const pagination = mountWithApp(<Pagination {...defaultProps} />);
 
       expect(pagination).toContainReactComponent('button', {
@@ -143,7 +153,7 @@ describe('<Pagination />', () => {
       });
     });
 
-    it('renders a default aria-label on button', () => {
+    it('renders default accessibilityLabels on button', () => {
       const pagination = mountWithApp(<Pagination />);
 
       expect(pagination).toContainReactComponent('button', {
