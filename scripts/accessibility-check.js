@@ -86,36 +86,14 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     // A list of urls with a count of known, expected failures
     // Ideally this shouldn't exist for long as we fix issues
     const expectedIssues = {
-      'id=all-components-autocomplete--basic-autocomplete': 1,
-      'id=all-components-autocomplete--basic-autocomplete&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-autocomplete--multiple-tags-autocomplete': 1,
-      'id=all-components-autocomplete--multiple-tags-autocomplete&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-autocomplete--autocomplete-with-loading': 1,
-      'id=all-components-autocomplete--autocomplete-with-loading&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-autocomplete--autocomplete-with-lazy-loading': 1,
-      'id=all-components-autocomplete--autocomplete-with-lazy-loading&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-autocomplete--autocomplete-with-empty-state': 1,
-      'id=all-components-autocomplete--autocomplete-with-empty-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-form-layout--field-group': 1,
-      'id=all-components-form-layout--field-group&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-modal--modal-with-scroll-listener': 1,
       'id=all-components-modal--modal-with-scroll-listener&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-range-slider--dual-thumb-range-slider': 2,
-      'id=all-components-range-slider--dual-thumb-range-slider&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 2,
+      'id=all-components-range-slider--dual-thumb-range-slider': 1,
+      'id=all-components-range-slider--dual-thumb-range-slider&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-resource-list--resource-list-with-loading-state': 1,
       'id=all-components-resource-list--resource-list-with-loading-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-scrollable--default-scrollable-container': 1,
       'id=all-components-scrollable--default-scrollable-container&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-select--select-with-separate-validation-error': 1,
-      'id=all-components-select--select-with-separate-validation-error&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-text-field--number-field': 1,
-      'id=all-components-text-field--number-field&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-text-field--text-field-with-hidden-label': 1,
-      'id=all-components-text-field--text-field-with-hidden-label&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-text-field--text-field-with-prefix-or-suffix': 1,
-      'id=all-components-text-field--text-field-with-prefix-or-suffix&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-text-field--text-field-with-connected-fields': 1,
-      'id=all-components-text-field--text-field-with-connected-fields&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
     };
 
     const {
