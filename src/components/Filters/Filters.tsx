@@ -56,6 +56,11 @@ export interface FilterInterface {
   shortcut?: boolean;
   /** Whether or not the filter is disabled */
   disabled?: boolean;
+  /**
+   * @default false
+   * Whether or not the clear button is displayed
+   */
+  hideClearButton?: boolean;
 }
 
 export interface FiltersProps {
@@ -87,6 +92,8 @@ export interface FiltersProps {
   helpText?: string | React.ReactNode;
   /** Hide tags for applied filters */
   hideTags?: boolean;
+  /** Hide the query field */
+  hideQueryField?: boolean;
 }
 
 type CombinedProps = FiltersProps & {
@@ -133,6 +140,7 @@ class FiltersInner extends Component<CombinedProps, State> {
       disabled = false,
       helpText,
       hideTags,
+      hideQueryField,
       features: {newDesignLanguage},
       i18n,
       mediaQuery: {isNavigationCollapsed},
@@ -253,35 +261,38 @@ class FiltersInner extends Component<CombinedProps, State> {
         auxiliary={children}
         disabled={disabled}
         forceShowMorefiltersButton={filters.length > transformedFilters.length}
+        queryFieldHidden={hideQueryField}
       >
-        <TextField
-          placeholder={
-            queryPlaceholder ||
-            i18n.translate('Polaris.Filters.filter', {
-              resourceName: filterResourceName.plural,
-            })
-          }
-          onChange={onQueryChange}
-          onBlur={onQueryBlur}
-          onFocus={onQueryFocus}
-          value={queryValue}
-          focused={focused}
-          label={
-            queryPlaceholder ||
-            i18n.translate('Polaris.Filters.filter', {
-              resourceName: filterResourceName.plural,
-            })
-          }
-          labelHidden
-          prefix={
-            <span className={styles.SearchIcon}>
-              <Icon source={SearchMinor} />
-            </span>
-          }
-          clearButton
-          onClearButtonClick={onQueryClear}
-          disabled={disabled}
-        />
+        {hideQueryField ? null : (
+          <TextField
+            placeholder={
+              queryPlaceholder ||
+              i18n.translate('Polaris.Filters.filter', {
+                resourceName: filterResourceName.plural,
+              })
+            }
+            onChange={onQueryChange}
+            onBlur={onQueryBlur}
+            onFocus={onQueryFocus}
+            value={queryValue}
+            focused={focused}
+            label={
+              queryPlaceholder ||
+              i18n.translate('Polaris.Filters.filter', {
+                resourceName: filterResourceName.plural,
+              })
+            }
+            labelHidden
+            prefix={
+              <span className={styles.SearchIcon}>
+                <Icon source={SearchMinor} />
+              </span>
+            }
+            clearButton
+            onClearButtonClick={onQueryClear}
+            disabled={disabled}
+          />
+        )}
       </ConnectedFilterControl>
     );
 
@@ -556,20 +567,25 @@ class FiltersInner extends Component<CombinedProps, State> {
         : () => {
             removeCallback(filter.key);
           };
+
+    const clearButtonMarkup = !filter.hideClearButton && (
+      <Button
+        plain
+        disabled={removeHandler == null}
+        onClick={removeHandler}
+        accessibilityLabel={i18n.translate('Polaris.Filters.clearLabel', {
+          filterName: filter.label,
+        })}
+      >
+        {i18n.translate('Polaris.Filters.clear')}
+      </Button>
+    );
+
     return (
       <div ref={this.focusNode}>
         <Stack vertical spacing="tight">
           {filter.filter}
-          <Button
-            plain
-            disabled={removeHandler == null}
-            onClick={removeHandler}
-            accessibilityLabel={i18n.translate('Polaris.Filters.clearLabel', {
-              filterName: filter.label,
-            })}
-          >
-            {i18n.translate('Polaris.Filters.clear')}
-          </Button>
+          {clearButtonMarkup}
         </Stack>
       </div>
     );
