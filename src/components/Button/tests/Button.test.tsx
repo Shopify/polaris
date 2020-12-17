@@ -445,4 +445,19 @@ describe('<Button />', () => {
       });
     });
   });
+
+  describe('stretchContent', () => {
+    it('sets variant class', () => {
+      const warningSpy = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(() => {});
+
+      const button = mountWithApp(<Button stretchContent />);
+      expect(button).toContainReactComponent(UnstyledButton, {
+        className: 'Button stretchContent',
+      });
+
+      warningSpy.mockRestore();
+    });
+  });
 });

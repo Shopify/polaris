@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {
   CaretDownMinor,
   CaretUpMinor,
@@ -47,10 +47,13 @@ export interface ButtonProps extends BaseButton {
   monochrome?: boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactElement | IconSource;
-  /** Stretch the content (text + icon) from side to side */
-  stretchContent?: boolean;
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
+  /**
+   * @deprecated As of release 5.13.0, replaced by {@link https://polaris.shopify.com/components/actions/button/textAlign}
+   * Stretch the content (text + icon) from side to side
+   */
+  stretchContent?: boolean;
 }
 
 interface CommonButtonProps
@@ -126,6 +129,15 @@ export function Button({
 }: ButtonProps) {
   const {newDesignLanguage} = useFeatures();
   const i18n = useI18n();
+  const hasGivenDeprecationWarning = useRef(false);
+
+  if (stretchContent && !hasGivenDeprecationWarning.current) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `stretchContent` prop has been replaced with `textAlign="left"`',
+    );
+    hasGivenDeprecationWarning.current = true;
+  }
 
   const isDisabled = disabled || loading;
 
