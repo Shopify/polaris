@@ -90,8 +90,6 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       'id=all-components-modal--modal-with-scroll-listener&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-resource-list--resource-list-with-loading-state': 1,
       'id=all-components-resource-list--resource-list-with-loading-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-scrollable--default-scrollable-container': 1,
-      'id=all-components-scrollable--default-scrollable-container&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
     };
 
     const {
