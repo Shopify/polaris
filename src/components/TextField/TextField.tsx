@@ -430,8 +430,8 @@ export function TextField({
     'aria-activedescendant': ariaActiveDescendant,
     'aria-autocomplete': ariaAutocomplete,
     'aria-controls': ariaControls,
+    'aria-multiline': normalizeAriaMultiline(multiline),
     'aria-expanded': ariaExpanded,
-    ...normalizeAriaMultiline(multiline),
   });
 
   const backdropClassName = classNames(
@@ -524,9 +524,12 @@ function normalizeAutoComplete(autoComplete?: boolean | string) {
 }
 
 function normalizeAriaMultiline(multiline?: boolean | number) {
-  if (!multiline) return undefined;
-
-  return Boolean(multiline) || multiline > 0
-    ? {'aria-multiline': true}
-    : undefined;
+  switch (typeof multiline) {
+    case 'undefined':
+      return false;
+    case 'boolean':
+      return multiline;
+    case 'number':
+      return Boolean(multiline > 0);
+  }
 }

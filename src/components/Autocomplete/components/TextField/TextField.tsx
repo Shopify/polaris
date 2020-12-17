@@ -10,7 +10,6 @@ export function TextField(props: TextFieldProps) {
       {({selectedOptionId, comboBoxId}) => (
         <BaseTextField
           {...props}
-          role="combobox"
           autoComplete={false}
           ariaAutocomplete="list"
           ariaActiveDescendant={selectedOptionId}

@@ -840,7 +840,12 @@ describe('<TextField />', () => {
   describe('multiline', () => {
     it('does not render a resizer if `multiline` is false', () => {
       const textField = mountWithAppProvider(
-        <TextField label="TextField" id="MyField" onChange={noop} />,
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          multiline={false}
+        />,
       );
       expect(textField.find(Resizer).exists()).toBe(false);
     });
@@ -894,6 +899,7 @@ describe('<TextField />', () => {
           label="TextField"
           id="MyField"
           onChange={noop}
+          multiline={false}
           ariaOwns="Aria owns"
           ariaExpanded
           ariaActiveDescendant="Aria active descendant"
@@ -931,7 +937,7 @@ describe('<TextField />', () => {
       expect(textField.find('textarea').prop('aria-multiline')).toBe(true);
     });
 
-    it('renders an input element without `aria-multiline` if multiline is equal to 0', () => {
+    it('renders an input element with `aria-multiline` set to false if multiline is equal to 0', () => {
       const textField = mountWithAppProvider(
         <TextField
           label="TextField"
@@ -944,10 +950,10 @@ describe('<TextField />', () => {
           ariaControls="Aria controls"
         />,
       );
-      expect(textField.find('input').prop('aria-multiline')).toBeUndefined();
+      expect(textField.find('input').prop('aria-multiline')).toBe(false);
     });
 
-    it('renders an input element without `aria-multiline` if multiline is undefined', () => {
+    it('renders an input element with `aria-multiline` set to false if multiline is undefined', () => {
       const textField = mountWithAppProvider(
         <TextField
           label="TextField"
@@ -959,7 +965,7 @@ describe('<TextField />', () => {
           ariaControls="Aria controls"
         />,
       );
-      expect(textField.find('input').prop('aria-multiline')).toBeUndefined();
+      expect(textField.find('input').prop('aria-multiline')).toBe(false);
     });
   });
 
