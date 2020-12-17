@@ -97,6 +97,7 @@ export function Option({
       disabled={disabled}
       onFocus={toggleFocused}
       onBlur={toggleFocused}
+      aria-pressed={active}
     >
       {mediaMarkup}
       {label}
@@ -111,13 +112,7 @@ export function Option({
   );
 
   return (
-    <li
-      key={id}
-      className={optionClassName}
-      tabIndex={-1}
-      role={role}
-      aria-selected={active}
-    >
+    <li key={id} className={optionClassName} tabIndex={-1}>
       {scrollMarkup}
       {optionMarkup}
     </li>
