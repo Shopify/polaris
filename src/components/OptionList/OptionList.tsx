@@ -110,9 +110,7 @@ export function OptionList({
   const optionsMarkup = optionsExist
     ? normalizedOptions.map(({title, options}, sectionIndex) => {
         const titleMarkup = title ? (
-          <p className={styles.Title} role={role}>
-            {title}
-          </p>
+          <p className={styles.Title}>{title}</p>
         ) : null;
         const optionsMarkup =
           options &&
