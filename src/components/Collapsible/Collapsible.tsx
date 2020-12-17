@@ -53,6 +53,12 @@ export function Collapsible({
     }),
   };
 
+  // When animation is complete clean up
+  const handleCompleteAnimation = () => {
+    setHeight(null);
+    setIsOpen(open);
+  };
+
   // Measure the child height for open and close
   useEffect(() => {
     if (open === isOpen || !collapisbleContainer.current) {
@@ -68,15 +74,15 @@ export function Collapsible({
       return;
     }
 
+    // If it is currently animating put it back to zero
+    if (height !== collapisbleContainer.current.scrollHeight) {
+      setHeight(0);
+      return;
+    }
+
     getComputedStyle(collapisbleContainer.current).height;
     setHeight(0);
   }, [height, open]);
-
-  // When animation is complete clean up
-  const handleCompleteAnimation = () => {
-    setHeight(null);
-    setIsOpen(open);
-  };
 
   return (
     <div
@@ -85,7 +91,7 @@ export function Collapsible({
       className={wrapperClassName}
       onTransitionEnd={() => handleCompleteAnimation()}
       ref={collapisbleContainer}
-      aria-hidden={!open && !isOpen}
+      // aria-hidden={!open && !isOpen}
     >
       {children}
     </div>

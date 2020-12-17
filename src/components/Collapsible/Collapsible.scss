@@ -17,9 +17,9 @@
 }
 
 // Stop children from being focused when aria-hidden
-.Collapsible[aria-hidden='true'] {
-  display: none;
-}
+// .Collapsible[aria-hidden='true'] {
+//   display: none;
+// }
 
 .expandOnPrint {
   @include when-printing {
