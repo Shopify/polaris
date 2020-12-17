@@ -131,7 +131,7 @@ export function Item({
   );
 
   return (
-    <li role={role} aria-selected={active}>
+    <li role={role}>
       {scrollMarkup}
       {control}
     </li>
