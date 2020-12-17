@@ -33,3 +33,15 @@ export {
   toCssCustomPropertySyntax as UNSTABLE_toCssCustomPropertySyntax,
   Tokens as UNSTABLE_Tokens,
 } from './utilities/theme';
+
+export {
+  findFirstFocusableNode,
+  findFirstFocusableNodeIncludingDisabled,
+  findFirstKeyboardFocusableNode,
+  findLastKeyboardFocusableNode,
+  focusFirstFocusableNode,
+  focusFirstKeyboardFocusableNode,
+  focusLastKeyboardFocusableNode,
+  focusNextFocusableNode,
+  nextFocusableNode,
+} from './utilities/focus';
