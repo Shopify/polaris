@@ -67,22 +67,16 @@ const withContextsDecorator = withContexts([
     ],
   },
   {
-    title: 'New Design Language',
+    title: 'Color scheme',
     components: [AppProviderWithKnobs],
     params: [
       {
-        name: 'Disabled',
-        default: preferredTheme === 'purpler',
-        props: {newDesignLanguage: false},
-      },
-      {
-        name: 'Enabled - Light Mode',
-        default: preferredTheme === 'light',
+        default: true,
+        name: 'Light Mode',
         props: {newDesignLanguage: true, colorScheme: 'light'},
       },
       {
-        name: 'Enabled - Dark Mode',
-        default: preferredTheme === 'dark',
+        name: 'Dark Mode',
         props: {newDesignLanguage: true, colorScheme: 'dark'},
       },
     ],
