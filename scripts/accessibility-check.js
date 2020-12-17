@@ -88,8 +88,6 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     const expectedIssues = {
       'id=all-components-modal--modal-with-scroll-listener': 1,
       'id=all-components-modal--modal-with-scroll-listener&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-range-slider--dual-thumb-range-slider': 1,
-      'id=all-components-range-slider--dual-thumb-range-slider&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-resource-list--resource-list-with-loading-state': 1,
       'id=all-components-resource-list--resource-list-with-loading-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-scrollable--default-scrollable-container': 1,
