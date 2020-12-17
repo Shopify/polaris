@@ -97,8 +97,11 @@ $stacking-order: (
   justify-content: center;
   align-items: center;
   min-width: 1px;
-  width: 100%;
   min-height: 1px;
+
+  .Button:not(.plain) & {
+    width: 100%;
+  }
 }
 
 .textAlignLeft {
