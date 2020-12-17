@@ -141,8 +141,7 @@ $stacking-order: (
     margin-left: spacing(extra-tight);
   }
 
-  // stylelint-disable-next-line selector-max-class, selector-max-specificity
-  .fullWidth.textAlignLeft:not(.stretchContent) &:last-child {
+  .textAlignLeft &:last-child {
     margin-left: auto;
   }
 
@@ -607,7 +606,7 @@ $stacking-order: (
     margin-right: rem(-4px);
   }
   // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
-  .Icon + .Icon:last-child {
+  &:not(.textAlignLeft) .Icon + .Icon:last-child {
     margin-left: 0;
   }
   // stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
