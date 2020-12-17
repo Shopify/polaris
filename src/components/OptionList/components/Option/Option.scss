@@ -157,11 +157,15 @@ $control-vertical-adjustment: rem(2px);
   .SingleSelectOption {
     @include focus-ring;
 
-    &.active,
     &.focused:not(:active) {
       @include focus-ring($style: 'focused');
     }
 
+    &.active {
+      background: var(--p-surface-selected);
+    }
+
+    &.active::before,
     &.select::before {
       @include list-selected-indicator;
     }

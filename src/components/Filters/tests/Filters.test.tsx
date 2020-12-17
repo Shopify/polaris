@@ -85,6 +85,20 @@ describe('<Filters />', () => {
     expect(onQueryFocus).toHaveBeenCalledTimes(1);
   });
 
+  it('does not render the TextField when "hideQueryField" is "true"', () => {
+    const filters = mountWithAppProvider(
+      <Filters {...mockProps} hideQueryField />,
+    );
+
+    expect(filters.find(TextField).exists()).toBe(false);
+  });
+
+  it('renders the TextField when "hideQueryField" is false', () => {
+    const filters = mountWithAppProvider(<Filters {...mockProps} />);
+
+    expect(filters.find(TextField).exists()).toBe(true);
+  });
+
   describe('toggleFilters()', () => {
     it('opens the sheet on toggle button click', () => {
       const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />);
@@ -240,6 +254,16 @@ describe('<Filters />', () => {
       ).toHaveLength(2);
     });
 
+    it('receives the expected props when the query field is hidden', () => {
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockPropsWithShortcuts} hideQueryField />,
+      );
+
+      expect(
+        resourceFilters.find(ConnectedFilterControl).props().queryFieldHidden,
+      ).toBe(true);
+    });
+
     it('forces showing the "More Filters" button if there are filters without shortcuts', () => {
       const resourceFilters = mountWithAppProvider(
         <Filters {...mockPropsWithShortcuts} />,
@@ -359,6 +383,44 @@ describe('<Filters />', () => {
 
       expect(spy).toHaveBeenCalledTimes(1);
       expect(spy).toHaveBeenCalledWith('filterOne');
+    });
+
+    it('renders a clear button when clearButton is not provided', () => {
+      const filters = [
+        {key: 'filterOne', label: 'foo', onRemove: () => {}, filter: null},
+      ];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} filters={filters} />,
+      );
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
+      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
+
+      expect(collapsible.text().toLowerCase()).toContain('clear');
+    });
+
+    it("doesn't renders a clear button when clearButton is not provided", () => {
+      const filters = [
+        {
+          hideClearButton: true,
+          key: 'filterOne',
+          label: 'foo',
+          onRemove: () => {},
+          filter: null,
+        },
+      ];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} filters={filters} />,
+      );
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
+      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
+
+      expect(collapsible.text().toLowerCase()).not.toContain('clear');
     });
 
     it('tags are not shown if hideTags prop is given', () => {
