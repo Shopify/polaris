@@ -98,7 +98,6 @@ export function Option({
       onFocus={toggleFocused}
       onBlur={toggleFocused}
       aria-pressed={active}
-      role={role}
     >
       {mediaMarkup}
       {label}
