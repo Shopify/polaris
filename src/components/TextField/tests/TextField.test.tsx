@@ -840,12 +840,7 @@ describe('<TextField />', () => {
   describe('multiline', () => {
     it('does not render a resizer if `multiline` is false', () => {
       const textField = mountWithAppProvider(
-        <TextField
-          label="TextField"
-          id="MyField"
-          onChange={noop}
-          multiline={false}
-        />,
+        <TextField label="TextField" id="MyField" onChange={noop} />,
       );
       expect(textField.find(Resizer).exists()).toBe(false);
     });
@@ -899,7 +894,6 @@ describe('<TextField />', () => {
           label="TextField"
           id="MyField"
           onChange={noop}
-          multiline={false}
           ariaOwns="Aria owns"
           ariaExpanded
           ariaActiveDescendant="Aria active descendant"
@@ -937,7 +931,7 @@ describe('<TextField />', () => {
       expect(textField.find('textarea').prop('aria-multiline')).toBe(true);
     });
 
-    it('renders an input element with `aria-multiline` set to false if multiline is equal to 0', () => {
+    it('renders an input element without `aria-multiline` if multiline is equal to 0', () => {
       const textField = mountWithAppProvider(
         <TextField
           label="TextField"
@@ -950,10 +944,10 @@ describe('<TextField />', () => {
           ariaControls="Aria controls"
         />,
       );
-      expect(textField.find('input').prop('aria-multiline')).toBe(false);
+      expect(textField.find('input').prop('aria-multiline')).toBeUndefined();
     });
 
-    it('renders an input element with `aria-multiline` set to false if multiline is undefined', () => {
+    it('renders an input element without `aria-multiline` if multiline is undefined', () => {
       const textField = mountWithAppProvider(
         <TextField
           label="TextField"
@@ -965,7 +959,7 @@ describe('<TextField />', () => {
           ariaControls="Aria controls"
         />,
       );
-      expect(textField.find('input').prop('aria-multiline')).toBe(false);
+      expect(textField.find('input').prop('aria-multiline')).toBeUndefined();
     });
   });
 

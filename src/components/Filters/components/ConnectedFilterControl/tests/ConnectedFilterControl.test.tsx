@@ -202,6 +202,24 @@ describe('<ConnectedFilterControl />', () => {
       disabled: true,
     });
   });
+
+  it('does not render CenterContainer when no child element is "null"', () => {
+    const connectedFilterControl = mountWithAppProvider(
+      <ConnectedFilterControl>{null}</ConnectedFilterControl>,
+    );
+
+    expect(connectedFilterControl.find('.CenterContainer')).toHaveLength(0);
+  });
+
+  it('renders CenterContainer when no child element is not "null"', () => {
+    const connectedFilterControl = mountWithAppProvider(
+      <ConnectedFilterControl>
+        <MockChild />
+      </ConnectedFilterControl>,
+    );
+
+    expect(connectedFilterControl.find('.CenterContainer')).toHaveLength(1);
+  });
 });
 
 function noop() {}
