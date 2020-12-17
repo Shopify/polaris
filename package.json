@@ -127,7 +127,7 @@
     "chalk": "^2.4.2",
     "change-case": "^3.1.0",
     "chromatic": "^5.0.0",
-    "codecov": "^3.5.0",
+    "codecov": "^3.8.1",
     "commander": "^4.1.0",
     "copyfiles": "^2.1.1",
     "core-js": "^3.6.5",
