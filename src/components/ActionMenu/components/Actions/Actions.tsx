@@ -72,12 +72,18 @@ export function Actions({actions = [], groups = []}: Props) {
       return;
     }
 
-    let currentAvailableWidth = availableWidthRef.current;
+    const actionsAndGroups = [...actions, ...groups];
 
+    if (actionsAndGroups.length === 1) {
+      setShowableActions(actionsAndGroups);
+      return;
+    }
+
+    let currentAvailableWidth = availableWidthRef.current;
     let newShowableActions: MenuActionDescriptor[] = [];
     let newRolledUpActions: (MenuActionDescriptor | MenuGroupDescriptor)[] = [];
 
-    [...actions, ...groups].forEach((action, index) => {
+    actionsAndGroups.forEach((action, index) => {
       const canFitAction =
         actionWidthsRef.current[index] +
           menuGroupWidthRef.current +

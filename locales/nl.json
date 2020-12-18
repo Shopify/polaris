@@ -20,7 +20,8 @@
         "attention": "Attentie",
         "new": "Nieuw",
         "critical": "Kritiek"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Laden",

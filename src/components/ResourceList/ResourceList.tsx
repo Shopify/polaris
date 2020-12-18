@@ -674,12 +674,12 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
   const spinnerSize = items.length < 2 ? 'small' : 'large';
 
   const loadingOverlay = loading ? (
-    <>
+    <li>
       <div className={styles.SpinnerContainer} style={spinnerStyle}>
         <Spinner size={spinnerSize} accessibilityLabel="Items are loading" />
       </div>
       <div className={styles.LoadingOverlay} />
-    </>
+    </li>
   ) : null;
 
   const className = classNames(

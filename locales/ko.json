@@ -20,7 +20,8 @@
         "attention": "주의",
         "new": "신규",
         "critical": "중요"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "로드 중",

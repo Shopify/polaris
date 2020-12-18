@@ -43,6 +43,8 @@ export interface ButtonProps extends BaseButton {
   monochrome?: boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactElement | IconSource;
+  /** Stretch the content (text + icon) from side to side */
+  stretchContent?: boolean;
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
 }
@@ -52,6 +54,7 @@ interface CommonButtonProps
     ButtonProps,
     | 'id'
     | 'accessibilityLabel'
+    | 'role'
     | 'onClick'
     | 'onFocus'
     | 'onBlur'
@@ -90,6 +93,7 @@ export function Button({
   loading,
   pressed,
   accessibilityLabel,
+  role,
   ariaControls,
   ariaExpanded,
   ariaPressed,
@@ -112,6 +116,7 @@ export function Button({
   textAlign,
   fullWidth,
   connectedDisclosure,
+  stretchContent,
 }: ButtonProps) {
   const {newDesignLanguage} = useFeatures();
   const i18n = useI18n();
@@ -134,6 +139,7 @@ export function Button({
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
     connectedDisclosure && styles.connectedDisclosure,
+    stretchContent && styles.stretchContent,
   );
 
   const disclosureIcon = (
@@ -222,6 +228,7 @@ export function Button({
       connectedDisclosure.disabled && styles.disabled,
       styles.iconOnly,
       styles.ConnectedDisclosure,
+      monochrome && styles.monochrome,
       newDesignLanguage && styles.newDesignLanguage,
     );
 
@@ -268,6 +275,7 @@ export function Button({
     id,
     className,
     accessibilityLabel,
+    role,
     onClick,
     onFocus,
     onBlur,

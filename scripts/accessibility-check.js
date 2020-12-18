@@ -86,74 +86,10 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     // A list of urls with a count of known, expected failures
     // Ideally this shouldn't exist for long as we fix issues
     const expectedIssues = {
-      'id=all-components-action-list--action-list-with-an-icon-and-a-suffix': 1,
-      'id=all-components-action-list--action-list-with-an-icon-and-a-suffix&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-action-list--action-list-with-destructive-item': 1,
-      'id=all-components-action-list--action-list-with-destructive-item&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-autocomplete--basic-autocomplete': 1,
-      'id=all-components-autocomplete--basic-autocomplete&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-autocomplete--multiple-tags-autocomplete': 1,
-      'id=all-components-autocomplete--multiple-tags-autocomplete&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-autocomplete--autocomplete-with-loading': 1,
-      'id=all-components-autocomplete--autocomplete-with-loading&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-autocomplete--autocomplete-with-lazy-loading': 1,
-      'id=all-components-autocomplete--autocomplete-with-lazy-loading&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-autocomplete--autocomplete-with-empty-state': 1,
-      'id=all-components-autocomplete--autocomplete-with-empty-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-button--loading-state': 2,
-      'id=all-components-button--loading-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 2,
-      'id=all-components-filters--filtering-with-a-resource-list': 1,
-      'id=all-components-filters--filtering-with-a-resource-list&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-filters--filtering-with-a-data-table': 1,
-      'id=all-components-filters--filtering-with-a-data-table&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-filters--filters-with-children-content': 1,
-      'id=all-components-filters--filters-with-children-content&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-filters--all-filters-disabled': 1,
-      'id=all-components-filters--all-filters-disabled&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-filters--some-filters-disabled': 2,
-      'id=all-components-filters--some-filters-disabled&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 2,
-      'id=all-components-filters--filters-with-help-text': 1,
-      'id=all-components-filters--filters-with-help-text&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-form-layout--field-group': 1,
-      'id=all-components-form-layout--field-group&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-modal--modal-with-scroll-listener': 1,
       'id=all-components-modal--modal-with-scroll-listener&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-option-list--multiple-option-list': 1,
-      'id=all-components-option-list--multiple-option-list&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-option-list--option-list-with-sections': 1,
-      'id=all-components-option-list--option-list-with-sections&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-range-slider--dual-thumb-range-slider': 2,
-      'id=all-components-range-slider--dual-thumb-range-slider&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 2,
-      'id=all-components-resource-list--resource-list-with-loading-state': 1,
-      'id=all-components-resource-list--resource-list-with-loading-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-resource-list--resource-list-with-filtering': 1,
-      'id=all-components-resource-list--resource-list-with-filtering&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-resource-list--resource-list-with-a-custom-empty-search-result-state': 1,
-      'id=all-components-resource-list--resource-list-with-a-custom-empty-search-result-state&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-resource-list--resource-list-with-all-of-its-elements': 1,
-      'id=all-components-resource-list--resource-list-with-all-of-its-elements&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
       'id=all-components-scrollable--default-scrollable-container': 1,
       'id=all-components-scrollable--default-scrollable-container&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-select--select-with-separate-validation-error': 1,
-      'id=all-components-select--select-with-separate-validation-error&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-spinner--spinner-with-focus-management': 1,
-      'id=all-components-spinner--spinner-with-focus-management&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-tabs--default-tabs': 1,
-      'id=all-components-tabs--default-tabs&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-tabs--fitted-tabs': 1,
-      'id=all-components-tabs--fitted-tabs&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-tabs--tabs-with-badge-content': 1,
-      'id=all-components-tabs--tabs-with-badge-content&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-tabs--tabs-with-custom-disclosure': 1,
-      'id=all-components-tabs--tabs-with-custom-disclosure&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-text-field--number-field': 1,
-      'id=all-components-text-field--number-field&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-text-field--text-field-with-hidden-label': 1,
-      'id=all-components-text-field--text-field-with-hidden-label&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-text-field--text-field-with-prefix-or-suffix': 1,
-      'id=all-components-text-field--text-field-with-prefix-or-suffix&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
-      'id=all-components-text-field--text-field-with-connected-fields': 1,
-      'id=all-components-text-field--text-field-with-connected-fields&contexts=Global%20Theming=Enabled%20-%20Light%20Mode': 1,
     };
 
     const {
@@ -196,7 +132,7 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
     const untriggeredExpectedViolationsCount = untriggeredExpectedIssues.length;
 
     console.log(
-      `There were ${totalViolationsCount} Issues reported! ${expectedViolationsCount} Issues were expected. ${untriggeredExpectedViolationsCount} Expected Issues were absent`,
+      `There were ${totalViolationsCount} Issues reported! ${expectedViolationsCount} Issues were expected. ${untriggeredExpectedViolationsCount} Expected Issues were absent. There were ${errorCount} errors`,
     );
 
     if (
@@ -233,7 +169,7 @@ console.log(`Running ${concurrentCount} concurrent pages at a time`);
       });
     }
 
-    if (errorCount.length) {
+    if (errorCount) {
       console.log(
         '---\n\nPages triggered an ERROR when trying to identify violations (you should rerun too see if this goes away):',
       );

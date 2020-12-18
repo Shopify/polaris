@@ -36,16 +36,7 @@ export type Color =
   | 'redDark'
   | 'purple';
 
-const NEW_DESIGN_LANGUAGE_COLORS = [
-  'base',
-  'subdued',
-  'critical',
-  'warning',
-  'highlight',
-  'success',
-  'primary',
-];
-type NewDesignLanguageColor =
+export type NewDesignLanguageColor =
   | 'base'
   | 'subdued'
   | 'critical'
@@ -53,12 +44,6 @@ type NewDesignLanguageColor =
   | 'highlight'
   | 'success'
   | 'primary';
-
-export function isNewDesignLanguageColor(
-  color: Color | NewDesignLanguageColor,
-): color is NewDesignLanguageColor {
-  return NEW_DESIGN_LANGUAGE_COLORS.includes(color as NewDesignLanguageColor);
-}
 
 export type IconSource =
   | React.SFC<React.SVGProps<SVGSVGElement>>
@@ -102,6 +87,8 @@ export interface BaseButton {
   pressed?: boolean;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** A valid WAI-ARIA role to define the semantic value of this element */
+  role?: string;
   /** Id of the element the button controls */
   ariaControls?: string;
   /** Tells screen reader the controlled element is expanded */
