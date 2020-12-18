@@ -10,7 +10,9 @@ process.on('unhandledRejection', (reason) => {
 
 const githubUrl = process.env.GITHUB_SERVER_URL;
 const githubRepo = process.env.GITHUB_REPOSITORY;
-const runId = process.env.GITHUB_RUN_ID;
+const runId = process.env.GITHUB_ACTION;
+
+console.log(JSON.stringify(process.env, null, 2));
 
 startShrinkRayBuild({
   masterBranchName: 'master',
