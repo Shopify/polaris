@@ -30,7 +30,9 @@ jobs:
       - run: yarn run lint
       - run: yarn run check:custom-properties
       - run: yarn run test --coverage && yarn run codecov
-      - run: node ./scripts/build-shrink-ray.js
+      - env:
+          SHRINK_RAY_API_KEY: ${{ secrets.SHRINK_RAY_API_KEY }}
+        run: node ./scripts/build-shrink-ray.js
       - env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
         run: yarn run chromatic publish --build-script-name='storybook:build'
