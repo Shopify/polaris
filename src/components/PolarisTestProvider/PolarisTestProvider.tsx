@@ -1,5 +1,6 @@
 import React, {Fragment, StrictMode} from 'react';
 
+import {PortalsManager} from '../PortalsManager';
 import {FocusManager} from '../FocusManager';
 import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
@@ -26,10 +27,6 @@ import {
   UniqueIdFactoryContext,
   globalIdGeneratorFactory,
 } from '../../utilities/unique-id';
-import {
-  PortalsManagerProvider,
-  PortalsContainer,
-} from '../../utilities/portals';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
 type MediaQueryContextType = NonNullable<
@@ -104,14 +101,13 @@ export function PolarisTestProvider({
                 <LinkContext.Provider value={link}>
                   <ThemeContext.Provider value={mergedTheme}>
                     <MediaQueryContext.Provider value={mergedMediaQuery}>
-                      <PortalsManagerProvider>
+                      <PortalsManager>
                         <FocusManager>
                           <FrameContext.Provider value={mergedFrame}>
                             {children}
                           </FrameContext.Provider>
                         </FocusManager>
-                        <PortalsContainer />
-                      </PortalsManagerProvider>
+                      </PortalsManager>
                     </MediaQueryContext.Provider>
                   </ThemeContext.Provider>
                 </LinkContext.Provider>

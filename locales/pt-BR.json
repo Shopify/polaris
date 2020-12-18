@@ -20,7 +20,8 @@
         "attention": "Atenção",
         "new": "Novo",
         "critical": "Crítico"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Carregando",
@@ -164,7 +165,7 @@
       "Item": {
         "actionsDropdownLabel": "Ações para {accessibilityLabel}",
         "actionsDropdown": "Menu suspenso Ações",
-        "viewItem": "Visualizar informações de {itemName}"
+        "viewItem": "Ver informações de {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Ações",

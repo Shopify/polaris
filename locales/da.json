@@ -20,7 +20,8 @@
         "attention": "Bemærk",
         "new": "Nye",
         "critical": "Kritisk"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Indlæser",
