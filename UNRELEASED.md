@@ -6,10 +6,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Allow `Thumbnail` `source` property to support `icons` ([#3328](https://github.com/Shopify/polaris-react/pull/3328))
-- **`Button`:** New `role` prop for `<button />` ([#3590](https://github.com/Shopify/polaris-react/pull/3590))
-- Added `preventFocusOnClose` to `Popover` ([#3595](https://github.com/Shopify/polaris-react/pull/3595))
-- Added color fallback values to `focus-ring` mixin ([#3626](https://github.com/Shopify/polaris-react/pull/3626))
 - Update `OptionList` selected styles ([#3633](https://github.com/Shopify/polaris-react/pull/3633))
 - Added the ability to hide the clear filter button on the filter component ([#3049](https://github.com/Shopify/polaris-react/pull/3049))
 - **`OptionList`:** Export `OptionListOptionDescriptor` and `OptionListSectionDescriptor` ([#3741](https://github.com/Shopify/polaris-react/pull/3741))
