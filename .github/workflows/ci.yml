@@ -112,7 +112,8 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn --frozen-lockfile
-      - run: yarn run chromatic --exit-zero-on-changes --auto-accept-changes=master --exit-once-uploaded --build-script-name='storybook:build'
+      - run: yarn storybook:build
+      - run: yarn run chromatic --exit-zero-on-changes --auto-accept-changes=master --exit-once-uploaded --storybook-build-dir=build/storybook/static
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
       - run: yarn run percy-storybook --build_dir=build/storybook/static
