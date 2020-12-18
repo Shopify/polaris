@@ -10,7 +10,7 @@ process.on('unhandledRejection', (reason) => {
 
 const githubUrl = process.env.GITHUB_SERVER_URL;
 const githubRepo = process.env.GITHUB_REPOSITORY;
-const runId = process.env.GITHUB_ACTION;
+const runId = process.env.GITHUB_RUN_ID;
 
 startShrinkRayBuild({
   masterBranchName: 'master',
@@ -21,12 +21,9 @@ startShrinkRayBuild({
     '..',
     'build/storybook/bundle-analysis/report.html',
   ),
-  buildUrl: `${githubUrl}/${githubRepo}/runs/${runId}`,
+  buildUrl: `${githubUrl}/${githubRepo}/actions/runs/${runId}`,
   skip: [Check.Entrypoints],
 });
-
-// eslint-disable-next-line no-console
-console.log(JSON.stringify(process.env, null, 2));
 
 async function startShrinkRayBuild({
   masterBranchName,
