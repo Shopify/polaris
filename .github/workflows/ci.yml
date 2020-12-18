@@ -118,4 +118,3 @@ jobs:
       - run: yarn run percy-storybook --build_dir=build/storybook/static
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-
