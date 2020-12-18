@@ -42,6 +42,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Replace travis with GitHub actions ([#3739](https://github.com/Shopify/polaris-react/pull/3739))
+
 ### Dependency upgrades
 
 ### Code quality

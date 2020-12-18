@@ -73,7 +73,7 @@ ${prodAssetChecklist}
 ---
 
 <details>
-<summary>🚨 What to do if you see “Your tests failed on Travis”?</summary>
+<summary>🚨 What to do if you see your checks fail?</summary>
 
 If tests fail, you may have to troubleshoot the problem locally.
 
