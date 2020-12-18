@@ -10,7 +10,6 @@ import {TextContainer, TextField, EventListener} from 'components';
 
 import {Key} from '../../../../../types';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
-import {Scrollable} from '../../../../Scrollable';
 import {PopoverOverlay} from '../PopoverOverlay';
 
 interface HandlerMap {
