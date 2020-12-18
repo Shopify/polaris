@@ -38,6 +38,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Replaced `React.Fragment` with `li` in `ResourceList` spinner for valid markup ([#3732](https://github.com/Shopify/polaris-react/pull/3732))
 - Fixed clear button in `TextField` unintentionally closing `Popover` when clicked ([#3688](https://github.com/Shopify/polaris-react/pull/3688))
 - Added focus styles to the clear button in `TextField` ([#3688](https://github.com/Shopify/polaris-react/pull/3688))
+- Increase contrast of navigation text color ([#3742](https://github.com/Shopify/polaris-react/pull/3742))
 
 ### Documentation
 
