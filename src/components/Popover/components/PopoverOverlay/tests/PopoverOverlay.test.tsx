@@ -10,6 +10,7 @@ import {TextContainer, TextField, EventListener} from 'components';
 
 import {Key} from '../../../../../types';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
+import {Scrollable} from '../../../../Scrollable';
 import {PopoverOverlay} from '../PopoverOverlay';
 
 interface HandlerMap {
@@ -392,8 +393,8 @@ describe('<PopoverOverlay />', () => {
       expect(document.activeElement).toBe(focusTarget);
     });
 
-    it('focuses the first focusbale node when autofocusTarget is set to FirstNode', () => {
-      const popoverOverlay = mountWithApp(
+    it.only('focuses the first focusbale node when autofocusTarget is set to FirstNode', () => {
+      mountWithApp(
         <PopoverOverlay
           active
           id="PopoverOverlay-1"
@@ -401,12 +402,13 @@ describe('<PopoverOverlay />', () => {
           onClose={noop}
           autofocusTarget="first-node"
         >
-          <input type="text" />
+          <p>Hello world</p>
         </PopoverOverlay>,
       );
 
-      const focusTarget = popoverOverlay.find('input', {})!.domNode;
-      expect(document.activeElement).toBe(focusTarget);
+      expect(document.activeElement?.className).toBe(
+        'Pane Scrollable vertical',
+      );
     });
 
     it('does not focus when autofocusTarget is set to None', () => {
