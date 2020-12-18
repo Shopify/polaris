@@ -393,7 +393,7 @@ describe('<PopoverOverlay />', () => {
       expect(document.activeElement).toBe(focusTarget);
     });
 
-    it.only('focuses the first focusbale node when autofocusTarget is set to FirstNode', () => {
+    it('focuses the first focusbale node when autofocusTarget is set to FirstNode', () => {
       mountWithApp(
         <PopoverOverlay
           active
