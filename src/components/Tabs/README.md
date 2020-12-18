@@ -85,25 +85,25 @@ function TabsExample() {
 
   const tabs = [
     {
-      id: 'all-customers',
+      id: 'all-customers-1',
       content: 'All',
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content',
+      panelID: 'all-customers-content-1',
     },
     {
-      id: 'accepts-marketing',
+      id: 'accepts-marketing-1',
       content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content',
+      panelID: 'accepts-marketing-content-1',
     },
     {
-      id: 'repeat-customers',
+      id: 'repeat-customers-1',
       content: 'Repeat customers',
-      panelID: 'repeat-customers-content',
+      panelID: 'repeat-customers-content-1',
     },
     {
-      id: 'prospects',
+      id: 'prospects-1',
       content: 'Prospects',
-      panelID: 'prospects-content',
+      panelID: 'prospects-content-1',
     },
   ];
 
@@ -146,15 +146,15 @@ function FittedTabsExample() {
 
   const tabs = [
     {
-      id: 'all-customers-fitted',
+      id: 'all-customers-fitted-2',
       content: 'All',
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-fitted-content',
+      panelID: 'all-customers-fitted-content-2',
     },
     {
-      id: 'accepts-marketing-fitted',
+      id: 'accepts-marketing-fitted-2',
       content: 'Accepts marketing',
-      panelID: 'accepts-marketing-fitted-Ccontent',
+      panelID: 'accepts-marketing-fitted-Ccontent-2',
     },
   ];
 
@@ -199,23 +199,23 @@ function TabsWithBadgeExample() {
 
   const tabs = [
     {
-      id: 'all-customers-fitted',
+      id: 'all-customers-fitted-3',
       content: (
         <span>
           All <Badge status="new">10+</Badge>
         </span>
       ),
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-fitted-content',
+      panelID: 'all-customers-fitted-content-3',
     },
     {
-      id: 'accepts-marketing-fitted',
+      id: 'accepts-marketing-fitted-3',
       content: (
         <span>
           Accepts marketing <Badge status="new">4</Badge>
         </span>
       ),
-      panelID: 'accepts-marketing-fitted-Ccontent',
+      panelID: 'accepts-marketing-fitted-content-3',
     },
   ];
 
@@ -246,25 +246,25 @@ function TabsWithCustomDisclosureExample() {
 
   const tabs = [
     {
-      id: 'all-customers',
+      id: 'all-customers-4',
       content: 'All',
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content',
+      panelID: 'all-customers-content-4',
     },
     {
-      id: 'accepts-marketing',
+      id: 'accepts-marketing-4',
       content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content',
+      panelID: 'accepts-marketing-content-4',
     },
     {
-      id: 'repeat-customers',
+      id: 'repeat-customers-4',
       content: 'Repeat customers',
-      panelID: 'repeat-customers-content',
+      panelID: 'repeat-customers-content-4',
     },
     {
-      id: 'prospects',
+      id: 'prospects-4',
       content: 'Prospects',
-      panelID: 'prospects-content',
+      panelID: 'prospects-content-4',
     },
   ];
 
