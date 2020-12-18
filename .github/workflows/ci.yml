@@ -3,8 +3,8 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  test_lint_deploy:
-    name: 'Test, lint and deploy'
+  test:
+    name: 'Test'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -30,15 +30,15 @@ jobs:
       - run: yarn run lint
       - run: yarn run check:custom-properties
       - run: yarn run test --coverage && yarn run codecov
-      - env:
+      - run: node ./scripts/build-shrink-ray.js
+        env:
           SHRINK_RAY_API_KEY: ${{ secrets.SHRINK_RAY_API_KEY }}
-        run: node ./scripts/build-shrink-ray.js
-      - env:
+      - run: yarn run chromatic publish --build-script-name='storybook:build'
+        env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
-        run: yarn run chromatic publish --build-script-name='storybook:build'
 
-  a11y_tests:
-    name: 'Accessibility tests'
+  accessibility_test:
+    name: 'Accessibility test'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -60,13 +60,14 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn --frozen-lockfile
-      - env:
-          STORYBOOK_DISABLE_DOCS: 1
-        run: |
+      - run: |
           yarn run storybook:build --quiet
           node ./scripts/accessibility-check.js
+        env:
+          STORYBOOK_DISABLE_DOCS: 1
 
-  visual_regression:
+
+  visual_regression_test:
     name: 'Visual regression test'
     runs-on: ubuntu-latest
     steps:
@@ -89,6 +90,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn --frozen-lockfile
-      - env:
+      - run: yarn run storybook:build --quiet && yarn run percy-storybook --build_dir=build/storybook/static
+        env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-        run: yarn run storybook:build --quiet && yarn run percy-storybook --build_dir=build/storybook/static
+

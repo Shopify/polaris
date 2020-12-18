@@ -1,7 +1,7 @@
 ci:
   require:
-    - 'Test, lint and deploy'
-    - 'Accessibility Tests'
+    - 'Test'
+    - 'Accessibility test'
     - 'Visual regression test'
   hide:
     - shrink-ray
@@ -14,8 +14,8 @@ ci:
 
 merge:
   require:
-    - 'Test, lint and deploy'
-    - 'Accessibility Tests'
+    - 'Test'
+    - 'Accessibility test'
   ignore:
     - codecov/patch
 
