@@ -37,6 +37,10 @@ const getUrls = async (browser) => {
   return urls;
 };
 
+const formatFailure = (fail) => {
+  return ` - ${fail.failureSummary.split('\n  ')[1]}\n   ${fail.html}`;
+};
+
 const formatMessage = (id, violations) => {
   const url = chalk.underline.blue(
     `http://localhost:6006/iframe.html?id=all-components-${id}`,
@@ -44,7 +48,7 @@ const formatMessage = (id, violations) => {
   return violations
     .map((fail) => {
       const message = fail.nodes
-        .map((e) => ` - ${e.failureSummary.split('\n  ')[1]}\n   ${e.html}`)
+        .map((error) => formatFailure(error))
         .join('\n');
       return `${chalk.red(fail.impact)} => ${url}\n${message}`;
     })
