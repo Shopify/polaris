@@ -54,8 +54,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn --frozen-lockfile
-      - run: |
-          yarn run storybook:build --quiet
-          node ./scripts/accessibility-check.js
+      - run: yarn run storybook:build --quiet
+      - run: node ./scripts/accessibility-check.js
         env:
           STORYBOOK_DISABLE_DOCS: 1
