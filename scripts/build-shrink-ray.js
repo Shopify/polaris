@@ -35,8 +35,6 @@ async function startShrinkRayBuild({
 }) {
   const logger = new Logger();
 
-  logger.header(JSON.stringify(process.env, null, 2));
-
   if (!sha) {
     throw new Error('sha was not found.');
   }

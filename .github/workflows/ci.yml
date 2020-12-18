@@ -30,12 +30,6 @@ jobs:
       - run: yarn run lint
       - run: yarn run check:custom-properties
       - run: yarn run test --coverage && yarn run codecov
-      - run: node ./scripts/build-shrink-ray.js
-        env:
-          SHRINK_RAY_API_KEY: ${{ secrets.SHRINK_RAY_API_KEY }}
-      - run: yarn run chromatic publish --build-script-name='storybook:build'
-        env:
-          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
 
   accessibility_test:
     name: 'Accessibility test'
@@ -66,10 +60,10 @@ jobs:
         env:
           STORYBOOK_DISABLE_DOCS: 1
 
-
-  visual_regression_test:
-    name: 'Visual regression test'
+  shrink_ray:
+    name: 'Shrink ray'
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
     steps:
       - uses: actions/checkout@v2
 
@@ -90,7 +84,38 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn --frozen-lockfile
-      - run: yarn run storybook:build --quiet && yarn run percy-storybook --build_dir=build/storybook/static
+      - run: node ./scripts/build-shrink-ray.js
+        env:
+          SHRINK_RAY_API_KEY: ${{ secrets.SHRINK_RAY_API_KEY }}
+
+  visual_regression_test:
+    name: 'Visual regression test'
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '10.15.0'
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn --frozen-lockfile
+      - run: yarn run chromatic --exit-zero-on-changes --auto-accept-changes=master --exit-once-uploaded --build-script-name='storybook:build'
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
+      - run: yarn run percy-storybook --build_dir=build/storybook/static
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
