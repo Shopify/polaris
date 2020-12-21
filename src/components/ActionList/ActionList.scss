@@ -89,6 +89,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
       background-color: var(--p-surface-critical-subdued-hovered);
     }
 
+    // stylelint-disable-next-line selector-max-class
     &:active,
     &.active {
       background-color: var(--p-surface-critical-subdued-pressed);
@@ -98,6 +99,8 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   &.disabled {
     background-image: none;
     color: var(--p-text-disabled);
+
+    // stylelint-disable-next-line selector-max-class
     .Prefix,
     .Suffix {
       @include recolor-icon(var(--p-icon-disabled));
