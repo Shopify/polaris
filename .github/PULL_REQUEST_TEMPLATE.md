@@ -56,19 +56,18 @@ export function Playground() {
     </Page>
   );
 }
-
 ```
 
 </details>
 
 ### 🎩 checklist
 
-* [ ] Tested on [mobile](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting.md#cross-browser-testing)
-* [ ] Tested on [multiple browsers](https://help.shopify.com/en/manual/intro-to-shopify/shopify-admin/supported-browsers)
-* [ ] Tested for [accessibility](https://github.com/Shopify/polaris-react/blob/master/documentation/Accessibility%20testing.md)
-* [ ] Updated the component's `README.md` with documentation changes
-* [ ] [Tophatted documentation](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting%20documentation.md) changes in the style guide
-* [ ] For visual design changes, pinged one of @ HYPD, @ mirualves, @ sarahill, or @ ry5n to update the Polaris UI kit
+- [ ] Tested on [mobile](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting.md#cross-browser-testing)
+- [ ] Tested on [multiple browsers](https://help.shopify.com/en/manual/intro-to-shopify/shopify-admin/supported-browsers)
+- [ ] Tested for [accessibility](https://github.com/Shopify/polaris-react/blob/master/documentation/Accessibility%20testing.md)
+- [ ] Updated the component's `README.md` with documentation changes
+- [ ] [Tophatted documentation](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting%20documentation.md) changes in the style guide
+- [ ] For visual design changes, pinged one of @ HYPD, @ mirualves, @ sarahill, or @ ry5n to update the Polaris UI kit
 
 <!--
   When tophatting, please check the UNRELEASED entry for consistency, as per the [guidelines](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md).
