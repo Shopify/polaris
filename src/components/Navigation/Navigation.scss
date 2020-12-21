@@ -92,7 +92,7 @@ $disabled-fade: 0.6;
 
 .Item-selected {
   font-weight: 600;
-  color: var(--p-action-primary, color('indigo', 'dark'));
+  color: var(--p-text-primary, color('indigo', 'dark'));
   background-color: var(--p-background-selected, $item-selected-background);
 
   .Navigation-newDesignLanguage & {
@@ -119,7 +119,7 @@ $disabled-fade: 0.6;
   &:hover,
   &.keyFocused {
     background-color: var(--p-background-hovered, $item-selected-background);
-    color: var(--p-action-primary-hovered, color('indigo', 'dark'));
+    color: var(--p-text-primary-hovered, color('indigo', 'dark'));
   }
 
   .keyFocused {
@@ -128,7 +128,7 @@ $disabled-fade: 0.6;
 
   &:active,
   &:active:hover {
-    color: var(--p-action-primary, color('indigo', 'dark'));
+    color: var(--p-text-primary, color('indigo', 'dark'));
     @include no-focus-ring;
 
     // stylelint-disable-next-line selector-max-specificity
@@ -312,7 +312,7 @@ $secondary-item-font-size: rem(15px);
     }
 
     &:active {
-      color: var(--p-action-primary, color('indigo', 'dark'));
+      color: var(--p-text-primary, color('indigo', 'dark'));
     }
 
     @include breakpoint-after(nav-min-window-corrected()) {
@@ -338,18 +338,18 @@ $secondary-item-font-size: rem(15px);
 
   .Item-selected {
     font-weight: 600;
-    color: var(--p-action-primary, color('indigo', 'dark'));
+    color: var(--p-text-primary, color('indigo', 'dark'));
     @include focus-ring;
 
     &:hover {
-      color: var(--p-action-primary-hovered, color('indigo', 'dark'));
+      color: var(--p-text-primary-hovered, color('indigo', 'dark'));
     }
     // stylelint-disable-next-line selector-max-class
     &.keyFocused {
-      color: var(--p-action-primary, color('indigo', 'dark'));
+      color: var(--p-text-primary, color('indigo', 'dark'));
     }
     &:active {
-      color: var(--p-action-primary, color('indigo', 'dark'));
+      color: var(--p-text-primary, color('indigo', 'dark'));
       @include no-focus-ring;
     }
   }
@@ -488,11 +488,11 @@ $secondary-item-font-size: rem(15px);
 
   &:hover {
     @include recolor-icon(
-      var(--p-action-primary, color('indigo')),
+      var(--p-text-primary, color('indigo')),
       null,
       filter('indigo')
     );
-    color: var(--p-action-primary, color('indigo'));
+    color: var(--p-text-primary, color('indigo'));
 
     .Navigation-newDesignLanguage & {
       @include recolor-icon($filter-color: filter('action'));
