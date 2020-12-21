@@ -1,5 +1,5 @@
 import React from 'react';
-import {QuestionMarkMajor} from '@shopify/polaris-icons';
+import {InfoMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Icon} from 'components';
@@ -20,7 +20,6 @@ describe('<FooterHelp />', () => {
   });
 
   it('renders the help icon', () => {
-    expect(footerHelp.find(Icon).prop('source')).toBe(QuestionMarkMajor);
+    expect(footerHelp.find(Icon).prop('source')).toBe(InfoMinor);
   });
-      expect(footerHelp).not.toContainReactComponent('div', {
 });
