@@ -27,7 +27,7 @@ export interface OptionDescriptor {
   media?: React.ReactElement<IconProps | ThumbnailProps | AvatarProps>;
 }
 
-export interface SectionDescriptor {
+interface SectionDescriptor {
   /** Collection of options within the section */
   options: OptionDescriptor[];
   /** Section title */
