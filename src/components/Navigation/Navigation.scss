@@ -104,7 +104,7 @@ $disabled-fade: 0.6;
       left: -1 * spacing(tight);
       height: 100%;
       width: $active-indicator-width;
-      background-color: var(--p-text-primary);
+      background-color: var(--p-action-primary);
       border-top-right-radius: var(--p-border-radius-base);
       border-bottom-right-radius: var(--p-border-radius-base);
     }
