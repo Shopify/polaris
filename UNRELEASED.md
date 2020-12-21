@@ -6,7 +6,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Update `OptionList` selected styles ([#3633](https://github.com/Shopify/polaris-react/pull/3633))
+- Updated `OptionList` selected styles ([#3633](https://github.com/Shopify/polaris-react/pull/3633))
 - Added the ability to hide the clear filter button on the filter component ([#3049](https://github.com/Shopify/polaris-react/pull/3049))
 - **`OptionList`:** Export `OptionListOptionDescriptor` and `OptionListSectionDescriptor` ([#3741](https://github.com/Shopify/polaris-react/pull/3741))
 - **`Popover`:** New `autofocusTarget` prop to enhance autofocus options ([#3600](https://github.com/Shopify/polaris-react/pull/3600))
@@ -39,13 +39,13 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Replaced `React.Fragment` with `li` in `ResourceList` spinner for valid markup ([#3732](https://github.com/Shopify/polaris-react/pull/3732))
 - Fixed clear button in `TextField` unintentionally closing `Popover` when clicked ([#3688](https://github.com/Shopify/polaris-react/pull/3688))
 - Added focus styles to the clear button in `TextField` ([#3688](https://github.com/Shopify/polaris-react/pull/3688))
-- Increase contrast of navigation text color ([#3742](https://github.com/Shopify/polaris-react/pull/3742))
+- Increased contrast of navigation text color ([#3742](https://github.com/Shopify/polaris-react/pull/3742))
 
 ### Documentation
 
 ### Development workflow
 
-- Replace travis with GitHub actions ([#3739](https://github.com/Shopify/polaris-react/pull/3739))
+- Replaced Travis with GitHub actions ([#3739](https://github.com/Shopify/polaris-react/pull/3739))
 
 ### Dependency upgrades
 
