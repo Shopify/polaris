@@ -20,7 +20,8 @@
         "attention": "ระวัง",
         "new": "ใหม่",
         "critical": "ร้ายแรง"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "กำลังโหลด",
@@ -72,6 +73,15 @@
         "friday": "ศ.",
         "saturday": "ส.",
         "sunday": "อา."
+      },
+      "days": {
+        "monday": "วันจันทร์",
+        "tuesday": "วันอังคาร",
+        "wednesday": "วันพุธ",
+        "thursday": "วันพฤหัสบดี",
+        "friday": "วันศุกร์",
+        "saturday": "วันเสาร์",
+        "sunday": "วันอาทิตย์"
       }
     },
     "DiscardConfirmationModal": {
@@ -122,7 +132,7 @@
       "moreFiltersWithCount": "ตัวกรองเพิ่มเติม ({count})"
     },
     "Modal": {
-      "iFrameTitle": "การแสดงผลเนื้อหา",
+      "iFrameTitle": "มาร์กอัปเนื้อหา",
       "modalWarning": "คุณสมบัติที่กำหนดเหล่านี้ไม่มีอยู่ใน Modal: {missingProps}"
     },
     "Pagination": {
@@ -204,7 +214,9 @@
           "on_or_after": "หลัง {date}"
         }
       },
-      "showingTotalCount": "แสดง {itemsCount} ของ {totalItemsCount} {resource}"
+      "showingTotalCount": "แสดง {itemsCount} ของ {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "เลือก {itemsLength} + {resourceNamePlural} ทั้งหมดในตัวกรองนี้แล้ว",
+      "selectAllFilteredItems": "เลือก {itemsLength} + {resourceNamePlural} ทั้งหมดในตัวกรองนี้"
     },
     "SkeletonPage": {
       "loadingLabel": "กำลังโหลดหน้า"
@@ -279,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "การดำเนินการเพิ่มเติม"
     }
   }
 }

@@ -8,7 +8,6 @@ import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
 import {isLight} from '../color-validation';
 import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
-import {compose} from '../compose';
 
 import {needsVariantList} from './config';
 import type {
@@ -22,7 +21,7 @@ interface CustomPropertiesConfig extends ThemeConfig {
   colorScheme: ColorScheme;
 }
 
-export function buildCustomProperties(
+export function buildCustomPropertiesNoMemo(
   themeConfig: CustomPropertiesConfig,
   newDesignLanguage: boolean,
   tokens?: Record<string, string>,
@@ -56,7 +55,7 @@ export function buildThemeContext(
   };
 }
 
-function toString(obj?: CustomPropertiesLike) {
+export function toString(obj?: CustomPropertiesLike) {
   if (obj) {
     return Object.entries(obj)
       .map((pair) => pair.join(':'))
@@ -110,11 +109,13 @@ export function needsVariant(name: string) {
   return needsVariantList.includes(name);
 }
 
-const lightenToString: (
+function lightenToString(
   color: HSLColor | string,
   lightness: number,
   saturation: number,
-) => string = compose(hslToString, createLightColor);
+): string {
+  return hslToString(createLightColor(color, lightness, saturation));
+}
 
 export function setTextColor(
   name: string,
@@ -209,3 +210,17 @@ function parseColors([baseName, colors]: [
 
   return colorPairs;
 }
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+function memoize(fnToMemoize: Function) {
+  const cache: Map<string, any> = new Map();
+  return function (...args: any[]) {
+    const key = JSON.stringify([fnToMemoize.name, args]);
+    if (cache.get(key) === undefined) {
+      cache.set(key, fnToMemoize(...args));
+    }
+    return cache.get(key);
+  };
+}
+
+export const buildCustomProperties = memoize(buildCustomPropertiesNoMemo);

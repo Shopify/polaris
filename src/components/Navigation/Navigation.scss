@@ -4,7 +4,7 @@
 // Base Navigation styles
 $active-indicator-width: rem(3px);
 $nav-max-width: rem(360px);
-$new-nav-max-width: rem(258px);
+
 .Navigation {
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@ $new-nav-max-width: rem(258px);
   max-width: $nav-max-width;
   height: 100%;
   min-height: 100%;
-  background-color: var(--p-surface, color('sky', 'light'));
+  background-color: var(--p-background, color('sky', 'light'));
   -webkit-overflow-scrolling: touch;
 
   @include safe-area-for(padding-bottom, 0, bottom);
@@ -30,27 +30,19 @@ $new-nav-max-width: rem(258px);
   }
 
   &.Navigation-newDesignLanguage {
-    max-width: $new-nav-max-width;
-    border-right: 1px solid var(--p-border-subdued);
+    border-right: border('divider');
   }
-}
-
-.Navigation-noMedia {
-  padding-top: spacing();
 }
 
 .UserMenu {
   flex: 0 0 auto;
 }
 
-@include breakpoint-after(nav-min-window-corrected()) {
-  .ContextControl {
-    display: none;
+.ContextControl {
+  min-height: top-bar-height();
 
-    .Navigation-newDesignLanguage & {
-      display: block;
-      min-height: new-top-bar-height();
-    }
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: none;
   }
 }
 
@@ -61,17 +53,23 @@ $new-nav-max-width: rem(258px);
   flex-direction: column;
   align-items: stretch;
   max-width: 100%;
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    .Navigation-newDesignLanguage & {
+      padding-top: rem(12px);
+    }
+  }
 }
 
 .LogoContainer {
   display: none;
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-before(nav-min-window-corrected()) {
     display: flex;
-    flex: 0 0 new-top-bar-height();
+    flex: 0 0 top-bar-height();
     align-items: center;
-    height: 100%;
+    height: top-bar-height();
     padding: 0 spacing(tight) 0 spacing(base);
-    @include safe-area-for(flex-basis, new-top-bar-height(), left);
+    @include safe-area-for(flex-basis, top-bar-height(), left);
     @include safe-area-for(padding-left, spacing(), left);
   }
 }
@@ -89,6 +87,15 @@ $disabled-fade: 0.6;
 
   .Navigation-newDesignLanguage & {
     position: relative;
+  }
+}
+
+.Item-selected {
+  font-weight: 600;
+  color: var(--p-text-primary, color('indigo', 'dark'));
+  background-color: var(--p-background-selected, $item-selected-background);
+
+  .Navigation-newDesignLanguage & {
     &::before {
       content: '';
       position: absolute;
@@ -100,60 +107,33 @@ $disabled-fade: 0.6;
       background-color: var(--p-action-primary);
       border-top-right-radius: var(--p-border-radius-base);
       border-bottom-right-radius: var(--p-border-radius-base);
-      transform: translateX(-100%);
-      transition: transform var(--p-duration-1-5-0) var(--p-ease);
-    }
-  }
-}
-
-.Item-selected {
-  font-weight: 600;
-  color: var(--p-action-primary, color('indigo', 'dark'));
-  background-color: var(
-    --p-surface-primary-selected,
-    $item-selected-background
-  );
-
-  .Navigation-newDesignLanguage & {
-    &::before {
-      transform: translateX(0);
     }
   }
 
   @media (-ms-high-contrast: active) {
     outline: 1px solid ms-high-contrast-color('text');
   }
-  // stylelint-disable selector-max-specificity
-  .Icon,
-  &:focus .Icon {
-    @include recolor-icon(
-      var(--p-action-primary, color('indigo')),
-      var(--p-override-transparent, color('white'))
-    );
-  }
-  // stylelint-enable selector-max-specificity
-  &:hover {
-    background-color: var(
-      --p-surface-primary-selected-hovered,
-      $item-selected-background
-    );
-    color: var(--p-action-primary-hovered, color('indigo', 'dark'));
-  }
 
   @include focus-ring;
 
-  &:focus {
-    color: var(--p-action-primary, color('indigo', 'dark'));
+  &:hover,
+  &.keyFocused {
+    background-color: var(--p-background-hovered, $item-selected-background);
+    color: var(--p-text-primary-hovered, color('indigo', 'dark'));
   }
-  &:focus:active {
+
+  .keyFocused {
+    @include focus-ring($style: 'focused');
+  }
+
+  &:active,
+  &:active:hover {
+    color: var(--p-text-primary, color('indigo', 'dark'));
     @include no-focus-ring;
-    color: color('indigo', 'dark');
-    background-color: $item-selected-background;
+
     // stylelint-disable-next-line selector-max-specificity
     .Navigation-newDesignLanguage & {
-      @include recolor-icon(var(--p-action-primary-pressed));
-      color: var(--p-action-primary-pressed);
-      background-color: var(--p-surface-primary-selected-pressed);
+      background-color: var(--p-background-pressed);
     }
   }
 }
@@ -161,23 +141,26 @@ $disabled-fade: 0.6;
 .Item-disabled {
   color: var(--p-text-disabled, color('ink', 'lightest'));
   pointer-events: none;
-  opacity: var(--p-override-one, $disabled-fade);
+  opacity: $disabled-fade;
 
-  .Icon {
-    @include recolor-icon(
-      var(--p-icon-disabled, color('ink', 'lightest')),
-      var(--p-override-transparent, color('white'))
-    );
+  .Navigation-newDesignLanguage & {
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators
+    .Icon {
+      // Re-apply another layer of opacity fade,
+      // as the new filled icons have a stronger visual presence
+      // than the old outlined ones.
+      opacity: $disabled-fade;
+    }
   }
 }
 
 .Badge {
   margin-left: spacing(tight);
   display: inline-flex;
-  margin-top: spacing(base-tight);
+  margin-top: spacing(tight);
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    margin-top: spacing(tight);
+    margin-top: spacing(extra-tight);
   }
 }
 
@@ -187,6 +170,15 @@ $disabled-fade: 0.6;
 
 .ListItem {
   @include nav-listitem-attributes;
+
+  .Navigation-newDesignLanguage & {
+    &:not(:first-child) {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
+      .Item {
+        border-top: 1px solid var(--p-background);
+      }
+    }
+  }
 }
 
 .ListItem-hasAction .Item {
@@ -207,9 +199,8 @@ $disabled-fade: 0.6;
 
 .SecondaryAction {
   @include recolor-icon(
-    var(--p-icon-subdued, color('ink', 'lightest')),
-    var(--p-override-transparent, color('white')),
-    filter('ink', 'lightest')
+    var(--p-icon, color('ink', 'lightest')),
+    var(--p-override-transparent, color('white'))
   );
   display: flex;
   align-items: center;
@@ -222,54 +213,42 @@ $disabled-fade: 0.6;
     height: nav(desktop-height);
   }
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
     @include recolor-icon(
-      var(--p-action-primary, color('indigo')),
+      var(--p-icon-hovered, color('indigo')),
       var(--p-override-transparent, color('white')),
       filter('indigo')
     );
-    background-image: var(
-      --p-override-none,
+    background: var(
+      --p-background-hovered,
       linear-gradient(color(state, hover), color(state, hover))
     );
-    background-color: var(--p-surface-hovered);
+
+    .Navigation-newDesignLanguage & {
+      @media (-ms-high-contrast: active) {
+        @include recolor-icon(
+          $fill-color: color('white'),
+          $filter-color: filter('white')
+        );
+      }
+    }
   }
 
   @include focus-ring;
 
   &:focus {
-    @include recolor-icon(
-      var(--p-icon-subdued, color('indigo')),
-      var(--p-override-transparent, color('white')),
-      filter('indigo')
-    );
-    background-image: var(
-      --p-override-none,
-      linear-gradient(color(state, hover), color(state, hover))
-    );
     @include focus-ring($style: 'focused');
   }
 
-  &:focus:hover {
-    @include recolor-icon(
-      var(--p-action-primary, color('indigo')),
-      var(--p-override-transparent, color('white')),
-      filter('indigo')
-    );
-  }
-
   &:active {
-    @include recolor-icon(
-      var(--p-action-primary, color('indigo')),
-      var(--p-override-transparent, color('white')),
-      filter('indigo')
-    );
-    background-image: var(
-      --p-override-none,
-      linear-gradient(color(state, hover), color(state, hover))
-    );
     @include no-focus-ring;
-    background-color: var(--p-surface-pressed);
+
+    .Navigation-newDesignLanguage & {
+      background: var(--p-background-pressed);
+      @include recolor-icon(var(--p-icon-pressed));
+    }
   }
 
   &:focus,
@@ -305,9 +284,8 @@ $secondary-item-font-size: rem(15px);
     color: var(--p-text-subdued, color('ink', 'light'));
     // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, selector-max-class
     .Navigation-newDesignLanguage & {
-      @include focus-ring;
       font-weight: 500;
-      padding-left: nav(icon-size) + spacing(extra-loose);
+      padding-left: nav(icon-size) + spacing(extra-loose) - spacing(extra-tight);
 
       @include breakpoint-after(nav-min-window-corrected()) {
         font-size: $item-font-size-small;
@@ -319,22 +297,24 @@ $secondary-item-font-size: rem(15px);
     }
 
     &:hover {
-      color: var(--p-action-primary, color('indigo', 'dark'));
+      color: var(--p-text-subdued, color('indigo', 'dark'));
     }
 
-    &:focus {
+    // stylelint-disable-next-line selector-max-class
+    &.keyFocused {
       color: var(--p-text, color('indigo', 'dark'));
     }
-    // stylelint-disable selector-max-specificity
-    &:focus:hover {
-      color: var(--p-action-primary, color('indigo', 'dark'));
-    }
+
+    // stylelint-disable-next-line selector-max-specificity
     &:active,
     &:active:hover {
-      color: var(--p-action-primary-pressed, color('indigo', 'dark'));
       @include no-focus-ring;
     }
-    // stylelint-enable selector-max-specificity
+
+    &:active {
+      color: var(--p-text-primary, color('indigo', 'dark'));
+    }
+
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: rem(14px);
       line-height: rem(28px);
@@ -358,17 +338,18 @@ $secondary-item-font-size: rem(15px);
 
   .Item-selected {
     font-weight: 600;
-    color: var(--p-action-primary, color('indigo', 'dark'));
+    color: var(--p-text-primary, color('indigo', 'dark'));
     @include focus-ring;
 
     &:hover {
-      color: var(--p-action-primary-hovered, color('indigo', 'dark'));
+      color: var(--p-text-primary-hovered, color('indigo', 'dark'));
     }
-    &:focus {
-      color: var(--p-action-primary, color('indigo', 'dark'));
+    // stylelint-disable-next-line selector-max-class
+    &.keyFocused {
+      color: var(--p-text-primary, color('indigo', 'dark'));
     }
     &:active {
-      color: var(--p-action-primary-pressed, color('indigo', 'dark'));
+      color: var(--p-text-primary, color('indigo', 'dark'));
       @include no-focus-ring;
     }
   }
@@ -404,7 +385,7 @@ $secondary-item-font-size: rem(15px);
 }
 
 .Section-withSeparator {
-  border-top: var(--p-thin-border-subdued, border());
+  border-top: border('divider');
 }
 
 .SectionHeading {
@@ -413,14 +394,21 @@ $secondary-item-font-size: rem(15px);
   align-items: center;
   min-height: nav(desktop-nav-height);
   padding-left: spacing();
-  color: var(--p-text-subdued, color('ink', 'lighter'));
+
+  .Text {
+    font-size: font-size(subheading);
+    color: var(--p-text-subdued, color('ink', 'lighter'));
+
+    @include when-typography-not-condensed {
+      font-size: font-size(subheading, large-screen);
+    }
+  }
 
   .Action {
     @include unstyled-button;
     @include recolor-icon(
-      var(--p-icon-subdued, color('ink', 'lightest')),
-      var(--p-override-transparent, color('white')),
-      filter('ink', 'lightest')
+      var(--p-icon, color('ink', 'lightest')),
+      var(--p-override-transparent, color('white'))
     );
     display: flex;
     align-items: center;
@@ -433,55 +421,58 @@ $secondary-item-font-size: rem(15px);
       height: nav(desktop-nav-height);
     }
 
-    &:hover {
-      @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
-      );
-      background-image: var(
-        --p-override-none,
-        linear-gradient(color(state, hover), color(state, hover))
-      );
-      background-color: var(--p-surface-hovered);
-    }
-
     @include focus-ring;
 
+    &:hover,
     &:focus {
-      @include recolor-icon(
-        var(--p-icon-subdued, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
-      );
-      background-image: var(
-        --p-override-none,
+      background: var(
+        --p-background-hovered,
         linear-gradient(color(state, hover), color(state, hover))
       );
+      @include recolor-icon(
+        var(--p-icon-hovered, color('indigo')),
+        var(--p-override-transparent, color('white'))
+      );
+
+      @media (-ms-high-contrast: active) {
+        @include recolor-icon(
+          $fill-color: color('white'),
+          $filter-color: filter('white')
+        );
+      }
+    }
+
+    &:hover {
+      // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+      .Navigation-newDesignLanguage & {
+        @include recolor-icon($filter-color: filter('action'));
+      }
+    }
+
+    &:focus {
       @include focus-ring($style: 'focused');
     }
 
     // stylelint-disable-next-line selector-max-specificity
     &:focus:hover {
       @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
+        var(--p-icon-hovered, color('indigo')),
+        var(--p-override-transparent, color('white'))
       );
     }
 
-    &:active {
+    // stylelint-disable-next-line selector-max-specificity
+    &:active,
+    &:active:hover {
       @include recolor-icon(
-        var(--p-action-primary, color('indigo')),
-        var(--p-override-transparent, color('white')),
-        filter('indigo')
+        var(--p-icon-pressed, color('indigo')),
+        var(--p-override-transparent, color('white'))
       );
-      background-image: var(
-        --p-override-none,
+      background: var(
+        --p-background-pressed,
         linear-gradient(color(state, hover), color(state, hover))
       );
       @include no-focus-ring;
-      background-color: var(--p-surface-pressed);
     }
 
     &:focus,
@@ -497,11 +488,15 @@ $secondary-item-font-size: rem(15px);
 
   &:hover {
     @include recolor-icon(
-      var(--p-action-primary, color('indigo')),
+      var(--p-text-primary, color('indigo')),
       null,
       filter('indigo')
     );
-    color: var(--p-action-primary, color('indigo'));
+    color: var(--p-text-primary, color('indigo'));
+
+    .Navigation-newDesignLanguage & {
+      @include recolor-icon($filter-color: filter('action'));
+    }
   }
 
   &:focus {
@@ -519,4 +514,8 @@ $secondary-item-font-size: rem(15px);
   display: inline-block;
   height: rem(10px);
   width: rem(10px);
+}
+// stylelint-disable-next-line selector-max-combinators, selector-max-class
+.Navigation-newDesignLanguage .SecondaryNavigation-noIcon .Item {
+  padding-left: spacing(tight) + spacing(extra-tight);
 }

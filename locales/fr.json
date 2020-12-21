@@ -20,7 +20,8 @@
         "attention": "Attention",
         "new": "Nouveau",
         "critical": "Critique"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Chargement",
@@ -72,6 +73,15 @@
         "friday": "Ven",
         "saturday": "Sam",
         "sunday": "Dim"
+      },
+      "days": {
+        "monday": "Lundi",
+        "tuesday": "Mardi",
+        "wednesday": "Mercredi",
+        "thursday": "Jeudi",
+        "friday": "Vendredi",
+        "saturday": "Samedi",
+        "sunday": "Dimanche"
       }
     },
     "DiscardConfirmationModal": {
@@ -204,7 +214,9 @@
           "on_or_after": "après le {date}"
         }
       },
-      "showingTotalCount": "Afficher {itemsCount} sur {totalItemsCount} {resource}"
+      "showingTotalCount": "Afficher {itemsCount} sur {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Tous les éléments {resourceNamePlural} de plus de {itemsLength} de ce filtre sont sélectionnés.",
+      "selectAllFilteredItems": "Sélectionner tous les éléments {resourceNamePlural} de plus de {itemsLength} de ce filtre"
     },
     "SkeletonPage": {
       "loadingLabel": "Chargement de page"
@@ -279,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Autres opérations"
     }
   }
 }

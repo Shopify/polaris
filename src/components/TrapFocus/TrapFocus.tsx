@@ -1,11 +1,11 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {Key} from '../../types';
 import {EventListener} from '../EventListener';
 import {KeypressListener} from '../KeypressListener';
 import {Focus} from '../Focus';
 import {
+  focusFirstFocusableNode,
   findFirstKeyboardFocusableNode,
   focusFirstKeyboardFocusableNode,
   findLastKeyboardFocusableNode,
@@ -22,7 +22,7 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
   const [shouldFocusSelf, setFocusSelf] = useState<boolean | undefined>(
     undefined,
   );
-  const {canSafelyFocus} = useFocusManager();
+  const {canSafelyFocus} = useFocusManager({trapping});
   const focusTrapWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

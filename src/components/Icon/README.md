@@ -76,7 +76,7 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 - Review our [alternative text](https://polaris.shopify.com/content/alternative-text) guidelines to make sure your use of icon works for all merchants
 
 ```jsx
-<Icon source={OrdersMajorTwotone} />
+<Icon source={OrdersMajor} />
 <p>No orders yet</p>
 ```
 

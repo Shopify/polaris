@@ -138,6 +138,17 @@ $stacking-order: (
       margin: 0;
     }
   }
+
+  &:-webkit-autofill {
+    border-radius: var(--p-border-radius-base, border-radius());
+  }
+
+  // stylelint-disable-next-line selector-max-specificity
+  &:-webkit-autofill ~ .Backdrop,
+  &:-webkit-autofill:hover ~ .Backdrop,
+  &:-webkit-autofill:focus ~ .Backdrop {
+    box-shadow: 0 0 0 border-width() color('sky');
+  }
 }
 
 .Input-hasClearButton {
@@ -198,7 +209,7 @@ $stacking-order: (
   position: relative;
   z-index: z-index(contents, $stacking-order);
   flex: 0 0 auto;
-  color: currentColor;
+  color: var(--p-text-subdued, currentColor);
   user-select: none;
 }
 
@@ -227,6 +238,7 @@ $stacking-order: (
 }
 
 .ClearButton {
+  @include focus-ring;
   @include unstyled-button;
   z-index: z-index(contents, $stacking-order);
   margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
@@ -236,8 +248,16 @@ $stacking-order: (
     @include color-icon('ink', 'lighter');
   }
 
+  &:focus:enabled {
+    @include focus-ring($style: 'focused');
+  }
+
   &:disabled {
     cursor: default;
+  }
+
+  &.ClearButton-hidden {
+    @include visually-hidden;
   }
 }
 
@@ -350,10 +370,13 @@ $stacking-order: (
   }
 
   &.disabled {
-    color: var(--p-text-disabled);
+    .Input {
+      color: var(--p-text-disabled);
+    }
 
     > .Backdrop {
-      background-color: var(--p-action-secondary-disabled);
+      background-color: var(--p-surface-disabled);
+      border-top-color: var(--p-border-disabled);
     }
 
     svg {
@@ -382,20 +405,13 @@ $stacking-order: (
     @include focus-ring($border-width: border-width());
     background-color: var(--p-surface);
     position: absolute;
+    border: 1px solid var(--p-border-subdued);
+    border-top-color: var(--p-border-shadow);
+    box-shadow: none;
 
     &::after {
       opacity: 1;
     }
-  }
-
-  .Backdrop-connectedLeft::after {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .Backdrop-connectedRight::after {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
   }
 
   .Spinner {
@@ -410,16 +426,16 @@ $stacking-order: (
     --p-text-field-spinner-border-radius: calc(
       var(--p-border-radius-base) - var(--p-text-field-spinner-offset)
     );
-    background: var(--p-action-secondary);
+    background: var(--p-surface-neutral);
     border-radius: var(--p-text-field-spinner-border-radius);
     border-left: var(--p-override-none);
 
     &:hover {
-      background: var(--p-action-secondary-hovered);
+      background: var(--p-surface-neutral-hovered);
     }
 
     &:active {
-      background: var(--p-action-secondary-pressed);
+      background: var(--p-surface-neutral-pressed);
       box-shadow: none;
     }
 

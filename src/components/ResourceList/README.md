@@ -50,13 +50,13 @@ A resource list with simple items and no bulk actions, sorting, or filtering.
     resourceName={{singular: 'customer', plural: 'customers'}}
     items={[
       {
-        id: 341,
+        id: 100,
         url: 'customers/341',
         name: 'Mae Jemison',
         location: 'Decatur, USA',
       },
       {
-        id: 256,
+        id: 200,
         url: 'customers/256',
         name: 'Ellen Ochoa',
         location: 'Los Angeles, USA',
@@ -84,7 +84,60 @@ A resource list with simple items and no bulk actions, sorting, or filtering.
 </Card>
 ```
 
-### Resource List with selection and no bulk actions
+### Resource list with empty state
+
+Use to explain the purpose of a list of resources when no resources exist yet. This allows a smooth transition from a list in a loading state to a list where zero, one, or many resources exist.
+
+```jsx
+function ResourceListWithEmptyStateExample() {
+  const items = [];
+  const appliedFilters = [];
+  const filters = [];
+
+  const filterControl = (
+    <Filters
+      disabled={!items.length}
+      queryValue=""
+      filters={filters}
+      appliedFilters={appliedFilters}
+    />
+  );
+
+  const emptyStateMarkup =
+    !appliedFilters.length && !items.length ? (
+      <EmptyState
+        heading="Upload a file to get started"
+        action={{content: 'Upload files'}}
+        image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
+      >
+        <p>
+          You can use the Files section to upload images, videos, and other
+          documents
+        </p>
+      </EmptyState>
+    ) : undefined;
+
+  return (
+    <Page title="Files">
+      <Layout>
+        <Layout.Section>
+          <Card>
+            <ResourceList
+              emptyState={emptyStateMarkup}
+              items={items}
+              renderItem={() => {}}
+              filterControl={filterControl}
+              resourceName={{singular: 'file', plural: 'files'}}
+            />
+          </Card>
+        </Layout.Section>
+      </Layout>
+    </Page>
+  );
+}
+```
+
+### Resource list with selection and no bulk actions
 
 A resource list with simple items and selection.
 
@@ -99,13 +152,13 @@ function ResourceListWithSelectionExample() {
 
   const items = [
     {
-      id: 341,
+      id: 101,
       url: 'customers/341',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 256,
+      id: 201,
       url: 'customers/256',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -161,13 +214,13 @@ function ResourceListWithBulkActionsExample() {
 
   const items = [
     {
-      id: 341,
+      id: 103,
       url: 'customers/341',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 256,
+      id: 203,
       url: 'customers/256',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -246,13 +299,13 @@ function ResourceListWithLoadingExample() {
 
   const items = [
     {
-      id: 341,
+      id: 104,
       url: 'customers/341',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 256,
+      id: 204,
       url: 'customers/256',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -329,13 +382,13 @@ function ResourceListWithTotalItemsCount() {
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
-            id: 341,
+            id: 105,
             url: 'customers/341',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
           },
           {
-            id: 256,
+            id: 205,
             url: 'customers/256',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
@@ -382,13 +435,13 @@ function ResourceListWithSortingExample() {
 
   const items = [
     {
-      id: 341,
+      id: 106,
       url: 'customers/341',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 256,
+      id: 206,
       url: 'customers/256',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -448,13 +501,13 @@ function ResourceListWithAlternateToolExample() {
 
   const items = [
     {
-      id: 341,
+      id: 107,
       url: 'customers/341',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 256,
+      id: 207,
       url: 'customers/256',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -520,13 +573,13 @@ function ResourceListWithFilteringExample() {
 
   const items = [
     {
-      id: 341,
+      id: 108,
       url: 'customers/341',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 256,
+      id: 208,
       url: 'customers/256',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -535,7 +588,7 @@ function ResourceListWithFilteringExample() {
 
   const filters = [
     {
-      key: 'taggedWith',
+      key: 'taggedWith1',
       label: 'Tagged with',
       filter: (
         <TextField
@@ -552,8 +605,8 @@ function ResourceListWithFilteringExample() {
   const appliedFilters = !isEmpty(taggedWith)
     ? [
         {
-          key: 'taggedWith',
-          label: disambiguateLabel('taggedWith', taggedWith),
+          key: 'taggedWith1',
+          label: disambiguateLabel('taggedWith1', taggedWith),
           onRemove: handleTaggedWithRemove,
         },
       ]
@@ -601,7 +654,7 @@ function ResourceListWithFilteringExample() {
 
   function disambiguateLabel(key, value) {
     switch (key) {
-      case 'taggedWith':
+      case 'taggedWith1':
         return `Tagged with ${value}`;
       default:
         return value;
@@ -650,7 +703,7 @@ function ResourceListWithFilteringExample() {
 
   const filters = [
     {
-      key: 'taggedWith',
+      key: 'taggedWith2',
       label: 'Tagged with',
       filter: (
         <TextField
@@ -667,8 +720,8 @@ function ResourceListWithFilteringExample() {
   const appliedFilters = !isEmpty(taggedWith)
     ? [
         {
-          key: 'taggedWith',
-          label: disambiguateLabel('taggedWith', taggedWith),
+          key: 'taggedWith2',
+          label: disambiguateLabel('taggedWith2', taggedWith),
           onRemove: handleTaggedWithRemove,
         },
       ]
@@ -717,7 +770,7 @@ function ResourceListWithFilteringExample() {
 
   function disambiguateLabel(key, value) {
     switch (key) {
-      case 'taggedWith':
+      case 'taggedWith2':
         return `Tagged with ${value}`;
       default:
         return value;
@@ -744,14 +797,14 @@ Shortcut actions are intended to provide quick access to popular actions from th
     resourceName={{singular: 'customer', plural: 'customers'}}
     items={[
       {
-        id: 341,
+        id: 109,
         url: 'customers/341',
         name: 'Mae Jemison',
         location: 'Decatur, USA',
         latestOrderUrl: 'orders/1456',
       },
       {
-        id: 256,
+        id: 209,
         url: 'customers/256',
         name: 'Ellen Ochoa',
         location: 'Los Angeles, USA',
@@ -800,14 +853,14 @@ Use persistent shortcut actions in rare cases when the action cannot be made ava
     resourceName={{singular: 'customer', plural: 'customers'}}
     items={[
       {
-        id: 341,
+        id: 110,
         url: 'customers/341',
         name: 'Mae Jemison',
         location: 'Decatur, USA',
         latestOrderUrl: 'orders/1456',
       },
       {
-        id: 256,
+        id: 210,
         url: 'customers/256',
         name: 'Ellen Ochoa',
         location: 'Los Angeles, USA',
@@ -862,37 +915,37 @@ function ResourceListExample() {
 
   const items = [
     {
-      id: 231,
+      id: 111,
       url: 'customers/231',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 246,
+      id: 211,
       url: 'customers/246',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
     {
-      id: 276,
+      id: 311,
       url: 'customers/276',
       name: 'Joe Smith',
       location: 'Arizona, USA',
     },
     {
-      id: 349,
+      id: 411,
       url: 'customers/349',
       name: 'Haden Jerado',
       location: 'Decatur, USA',
     },
     {
-      id: 419,
+      id: 511,
       url: 'customers/419',
       name: 'Tom Thommas',
       location: 'Florida, USA',
     },
     {
-      id: 516,
+      id: 611,
       url: 'customers/516',
       name: 'Emily Amrak',
       location: 'Texas, USA',
@@ -995,14 +1048,14 @@ function ResourceListExample() {
 
   const items = [
     {
-      id: 341,
+      id: 112,
       url: 'customers/341',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       latestOrderUrl: 'orders/1456',
     },
     {
-      id: 256,
+      id: 212,
       url: 'customers/256',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -1034,7 +1087,7 @@ function ResourceListExample() {
 
   const filters = [
     {
-      key: 'taggedWith',
+      key: 'taggedWith3',
       label: 'Tagged with',
       filter: (
         <TextField
@@ -1051,8 +1104,8 @@ function ResourceListExample() {
   const appliedFilters = !isEmpty(taggedWith)
     ? [
         {
-          key: 'taggedWith',
-          label: disambiguateLabel('taggedWith', taggedWith),
+          key: 'taggedWith3',
+          label: disambiguateLabel('taggedWith3', taggedWith),
           onRemove: handleTaggedWithRemove,
         },
       ]
@@ -1122,7 +1175,7 @@ function ResourceListExample() {
 
   function disambiguateLabel(key, value) {
     switch (key) {
-      case 'taggedWith':
+      case 'taggedWith3':
         return `Tagged with ${value}`;
       default:
         return value;

@@ -8,14 +8,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   list-style: none;
   margin: 0;
   padding: spacing(tight) 0;
-
-  &.newDesignLanguage {
-    padding: spacing(tight);
-  }
 }
 
 .Section-withoutTitle:not(:first-child) {
-  border-top: border();
+  border-top: border('divider');
   margin-top: spacing(tight);
   padding-top: spacing(tight);
 }
@@ -24,7 +20,17 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: border();
+  border-top: border('divider');
+
+  &.newDesignLanguage {
+    padding: 0 spacing(tight);
+    border-color: var(--p-surface-neutral);
+
+    // stylelint-disable-next-line selector-max-class
+    .Title + & {
+      padding-top: spacing(tight);
+    }
+  }
 }
 
 .ActionList,
@@ -174,7 +180,8 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     pointer-events: none;
 
     // stylelint-disable-next-line selector-max-class
-    .Image {
+    .Prefix,
+    .Suffix {
       @include recolor-icon(color('ink', 'lightest'), color('white'));
     }
   }
@@ -188,11 +195,14 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   &.newDesignLanguage {
     padding: $item-vertical-padding spacing(tight);
     border-radius: var(--p-border-radius-base);
+    border-top: 1px solid var(--p-surface);
     // States
     // Hovered (:hover)
     &:hover {
       background-image: none;
       background-color: var(--p-surface-hovered);
+      color: inherit;
+      text-decoration: none;
 
       @media (-ms-high-contrast: active) {
         outline: 1px solid ms-high-contrast-color('text');
@@ -204,7 +214,20 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     &.active,
     &:active {
       background-image: none;
+      @include recolor-icon(var(--p-interactive));
+    }
+
+    &:active {
       background-color: var(--p-surface-pressed);
+    }
+
+    &.active {
+      background-color: var(--p-surface-selected);
+    }
+
+    // Only show when the button is selected, not active
+    &.active > &::before {
+      @include list-selected-indicator;
     }
 
     // Active, hovered, focused (:active:hover:focus)
@@ -272,7 +295,8 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     &.disabled {
       background-image: none;
       color: var(--p-text-disabled);
-      .Image {
+      .Prefix,
+      .Suffix {
         @include recolor-icon(var(--p-icon-disabled));
       }
     }
@@ -286,7 +310,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   align-items: center;
 }
 
-.Image {
+.Prefix {
   @include recolor-icon(color('ink', 'light'), color('white'));
   display: flex;
   flex: 0 0 auto;
@@ -301,13 +325,22 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   margin: (-0.5 * $image-size) spacing() (-0.5 * $image-size) 0;
   background-size: cover;
   background-position: center center;
+
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-icon));
+  }
+}
+
+.Suffix {
+  @include recolor-icon(color('ink', 'light'), color('white'));
+  margin-left: spacing();
+
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-icon));
+  }
 }
 
 .Text {
   @include layout-flex-fix;
   flex: 1 1 auto;
-}
-
-.BadgeWrapper {
-  margin-left: spacing();
 }

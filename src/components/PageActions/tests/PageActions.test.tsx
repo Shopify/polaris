@@ -5,11 +5,10 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 import {ButtonGroup} from '../../ButtonGroup';
 import {Stack} from '../../Stack';
 import {buttonsFrom} from '../../Button';
-
-import {PageActions} from '..';
+import {PageActions} from '../PageActions';
 
 jest.mock('../../Button', () => ({
-  ...jest.requireActual('../../Button'),
+  ...(jest.requireActual('../../Button') as any),
   buttonsFrom: jest.fn(),
 }));
 
@@ -53,7 +52,14 @@ describe('<PageActions />', () => {
   });
 
   describe('secondaryActions', () => {
-    const mockActions = [{content: 'Delete'}];
+    const mockActions = [
+      {
+        content: 'Delete',
+        destructive: true,
+        outline: true,
+      },
+    ];
+
     it('renders buttons for each secondaryAction', () => {
       mountWithAppProvider(<PageActions secondaryActions={mockActions} />);
       expect(buttonsFrom).toHaveBeenCalledWith(mockActions);

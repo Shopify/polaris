@@ -1,11 +1,12 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import * as geometry from '@shopify/javascript-utilities/geometry';
 
 import {EventListener} from '../../EventListener';
 import {PositionedOverlay} from '../PositionedOverlay';
 import * as mathModule from '../utilities/math';
+import * as geometry from '../../../utilities/geometry';
+import styles from '../PositionedOverlay.scss';
 
 describe('<PositionedOverlay />', () => {
   const mockProps = {
@@ -96,6 +97,26 @@ describe('<PositionedOverlay />', () => {
 
       expect((positionedOverlay.find('div').prop('style') as any).width).toBe(
         0,
+      );
+    });
+  });
+
+  describe('preventInteraction', () => {
+    it('passes preventInteraction to PositionedOverlay when preventInteraction is true', () => {
+      const positionedOverlay = mountWithAppProvider(
+        <PositionedOverlay {...mockProps} preventInteraction />,
+      );
+      expect(positionedOverlay.find('div').prop('className')).toContain(
+        styles.preventInteraction,
+      );
+    });
+
+    it('does not pass preventInteraction to PositionedOverlay by default', () => {
+      const positionedOverlay = mountWithAppProvider(
+        <PositionedOverlay {...mockProps} />,
+      );
+      expect(positionedOverlay.find('div').prop('className')).not.toContain(
+        styles.preventInteraction,
       );
     });
   });

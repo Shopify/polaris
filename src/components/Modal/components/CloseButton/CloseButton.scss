@@ -2,18 +2,32 @@
 
 .CloseButton {
   @include unstyled-button;
+  @include focus-ring;
   margin-left: spacing(loose);
   margin-right: -1 * spacing(tight);
   padding: spacing(tight);
+  border-radius: border-radius(large);
 
-  &:focus,
+  &:hover {
+    background: var(--p-surface-hovered, transparent);
+    @include recolor-icon(var(--p-icon-hovered, color('ink', 'lighter')));
+  }
+
+  &:focus {
+    background: var(--p-override-transparent, plain-button-background());
+  }
+
   &:active {
-    border-radius: border-radius(large);
-    background: plain-button-background();
+    background: var(--p-surface-pressed, plain-button-background());
+  }
+
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
   }
 }
 
 .withoutTitle {
   position: absolute;
   right: spacing(tight);
+  z-index: 1;
 }

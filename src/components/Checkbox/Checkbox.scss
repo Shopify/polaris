@@ -76,11 +76,10 @@
         @include control-backdrop(active, $global-theming: true);
       }
       ~ .Icon {
-        transition-timing-function: var(--p-ease-in);
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
         transition: opacity var(--p-duration-1-5-0) var(--p-ease),
           transform var(--p-duration-1-5-0) var(--p-ease);
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
       }
     }
 

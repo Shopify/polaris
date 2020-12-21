@@ -1,11 +1,11 @@
 {
   "extends": [
-    "plugin:shopify/typescript",
-    "plugin:shopify/react",
-    "plugin:shopify/jest",
-    "plugin:shopify/node",
-    "plugin:shopify/polaris",
-    "plugin:shopify/prettier"
+    "plugin:@shopify/typescript",
+    "plugin:@shopify/react",
+    "plugin:@shopify/jest",
+    "plugin:@shopify/node",
+    "plugin:@shopify/polaris",
+    "plugin:@shopify/prettier"
   ],
   "settings": {
     "react": {
@@ -33,12 +33,12 @@
     "import/no-default-export": ["error"],
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
-    "react/jsx-fragments": ["error", "element"],
     "react/no-unsafe": ["error", {"checkAliases": true}],
-    "shopify/jsx-no-complex-expressions": "off",
-    "shopify/jsx-prefer-fragment-wrappers": "off",
-    "shopify/no-ancestor-directory-import": "error",
-    "shopify/react-prefer-private-members": "off",
+    "@shopify/jsx-no-complex-expressions": "off",
+    "@shopify/jsx-prefer-fragment-wrappers": "off",
+    "@shopify/no-ancestor-directory-import": "error",
+    "@shopify/react-prefer-private-members": "off",
+    "@typescript-eslint/array-type": ["error", {"defaultOption": "array"}],
     "jsx-a11y/label-has-for": [
       2,
       {
@@ -71,7 +71,7 @@
   "overrides": [
     {
       "files": ["src/**/*.{ts,tsx}"],
-      "extends": ["plugin:shopify/typescript-type-checking"],
+      "extends": ["plugin:@shopify/typescript-type-checking"],
       "parserOptions": {
         "project": "./tsconfig.json"
       },
@@ -85,7 +85,7 @@
       "files": ["**/*.test.{ts,tsx}"],
       "rules": {
         "jest/no-truthy-falsy": "off",
-        "shopify/no-ancestor-directory-import": "off"
+        "@shopify/no-ancestor-directory-import": "off"
       }
     },
     {
@@ -94,15 +94,21 @@
         "import/no-extraneous-dependencies": "off",
         "import/no-unresolved": "off",
         "react/prop-types": "off",
-        "shopify/jsx-no-hardcoded-content": "off"
+        "@shopify/jsx-no-hardcoded-content": "off"
+      }
+    },
+    {
+      "files": ["esnext/index.js"],
+      "rules": {
+        "import/no-unresolved": "off"
       }
     },
     {
       "files": ["playground/Playground.tsx"],
       "rules": {
         "react/prefer-stateless-function": "off",
-        "shopify/jsx-no-hardcoded-content": "off",
-        "shopify/react-initialize-state": "off"
+        "@shopify/jsx-no-hardcoded-content": "off",
+        "@shopify/react-initialize-state": "off"
       }
     }
   ]

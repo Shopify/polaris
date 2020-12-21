@@ -20,7 +20,8 @@
         "attention": "注意",
         "new": "新增",
         "critical": "重要"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "載入中",
@@ -65,6 +66,15 @@
         "december": "十二月"
       },
       "daysAbbreviated": {
+        "monday": "星期一",
+        "tuesday": "星期二",
+        "wednesday": "星期三",
+        "thursday": "星期四",
+        "friday": "星期五",
+        "saturday": "星期六",
+        "sunday": "星期日"
+      },
+      "days": {
         "monday": "星期一",
         "tuesday": "星期二",
         "wednesday": "星期三",
@@ -204,7 +214,9 @@
           "on_or_after": "{date} 之後"
         }
       },
-      "showingTotalCount": "顯示第 {itemsCount} 個 {resource}，共 {totalItemsCount} 個"
+      "showingTotalCount": "顯示第 {itemsCount} 個 {resource}，共 {totalItemsCount} 個",
+      "allFilteredItemsSelected": "已選取套用此篩選條件後顯示的全部 {itemsLength}+ 個 {resourceNamePlural}。",
+      "selectAllFilteredItems": "選取套用此篩選條件後顯示的全部 {itemsLength}+ 個 {resourceNamePlural}"
     },
     "SkeletonPage": {
       "loadingLabel": "頁面載入中"
@@ -279,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "更多動作"
     }
   }
 }

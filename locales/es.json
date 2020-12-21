@@ -20,7 +20,8 @@
         "attention": "Atención",
         "new": "Nuevo",
         "critical": "Crítico"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Cargando",
@@ -72,6 +73,15 @@
         "friday": "VI",
         "saturday": "SA",
         "sunday": "DO"
+      },
+      "days": {
+        "monday": "lunes",
+        "tuesday": "martes",
+        "wednesday": "miércoles",
+        "thursday": "jueves",
+        "friday": "viernes",
+        "saturday": "sábado",
+        "sunday": "domingo"
       }
     },
     "DiscardConfirmationModal": {
@@ -204,7 +214,9 @@
           "on_or_after": "después de {date}"
         }
       },
-      "showingTotalCount": "Mostrando {itemsCount} de {totalItemsCount} {resource}"
+      "showingTotalCount": "Mostrando {itemsCount} de {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Los {itemsLength}+ {resourceNamePlural} en este filtro están seleccionados.",
+      "selectAllFilteredItems": "Seleccionar los {itemsLength}+ {resourceNamePlural} en este filtro"
     },
     "SkeletonPage": {
       "loadingLabel": "Cargando página"
@@ -279,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Más acciones"
     }
   }
 }

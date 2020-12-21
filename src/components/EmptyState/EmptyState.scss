@@ -1,6 +1,8 @@
 @import '../../styles/common';
 
-$detail-width: rem(336px);
+$within-page-detail-width: rem(336px);
+$detail-width: rem(400px);
+
 $stacking-order: (
   illustration: 0,
   details: 10,
@@ -62,16 +64,17 @@ $centered-illustration-width: rem(226px);
   }
 }
 
+.newDesignLanguage,
 .withinContentContainer {
+  margin: 0 auto;
+  padding-top: spacing(loose);
+  padding-bottom: spacing(loose) * 3;
+
   .Section {
     position: unset;
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
-  }
-
-  .DetailsContainer {
-    padding-top: spacing();
   }
 
   .Details {
@@ -101,7 +104,7 @@ $centered-illustration-width: rem(226px);
     position: relative;
     z-index: z-index(details, $stacking-order);
     padding: 0 spacing();
-    width: $detail-width;
+    width: $within-page-detail-width;
 
     @include page-content-when-not-fully-condensed {
       padding: 0;
@@ -138,27 +141,9 @@ $centered-illustration-width: rem(226px);
   }
 }
 
-.centeredLayout {
-  .Section {
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .ImageContainer,
-  .DetailsContainer {
-    flex: 0;
-  }
-
-  .Image {
-    margin: unset;
-    width: $centered-illustration-width;
-    max-width: 100%;
-  }
-
+.fullWidth {
   .Details {
-    text-align: center;
-    width: 100%;
+    max-width: 100%;
   }
 }
 

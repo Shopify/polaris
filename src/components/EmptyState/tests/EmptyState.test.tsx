@@ -177,26 +177,26 @@ describe('<EmptyState />', () => {
     });
   });
 
-  describe('centeredLayout', () => {
+  describe('newDesignLanguage', () => {
     it('adds a classname to the root component', () => {
-      const emptyState = mountWithApp(
-        <EmptyState centeredLayout image={imgSrc} />,
-      );
+      const emptyState = mountWithApp(<EmptyState image={imgSrc} />, {
+        features: {newDesignLanguage: true},
+      });
       expect(emptyState).toContainReactComponent('div', {
-        className: 'EmptyState centeredLayout withinPage',
+        className: 'EmptyState newDesignLanguage withinPage',
       });
     });
 
     it('does not render a plain link as a secondaryAction', () => {
       const emptyState = mountWithApp(
         <EmptyState
-          centeredLayout
           image={imgSrc}
           secondaryAction={{
             content: 'Learn more',
             url: 'https://help.shopify.com',
           }}
         />,
+        {features: {newDesignLanguage: true}},
       );
 
       expect(emptyState).toContainReactComponent(UnstyledLink, {
@@ -206,11 +206,8 @@ describe('<EmptyState />', () => {
 
     it('renders a medium size primary button', () => {
       const emptyState = mountWithApp(
-        <EmptyState
-          centeredLayout
-          image={imgSrc}
-          action={{content: 'Add transfer'}}
-        />,
+        <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
+        {features: {newDesignLanguage: true}},
       );
 
       expect(emptyState).toContainReactComponent(Button, {
@@ -219,41 +216,15 @@ describe('<EmptyState />', () => {
       });
     });
 
-    it('changes the spacing to "tight" on TextContainer', () => {
-      const emptyState = mountWithApp(
-        <EmptyState centeredLayout image={imgSrc}>
-          Children
-        </EmptyState>,
-      );
-
-      expect(emptyState).toContainReactComponent(TextContainer, {
-        spacing: 'tight',
-      });
-    });
-
     it('adds center distribution and tight spacing to Stack', () => {
       const emptyState = mountWithApp(
-        <EmptyState
-          centeredLayout
-          image={imgSrc}
-          action={{content: 'Add transfer'}}
-        />,
+        <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
+        {features: {newDesignLanguage: true}},
       );
 
       expect(emptyState).toContainReactComponent(Stack, {
         spacing: 'tight',
         distribution: 'center',
-      });
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a centeredLayout classname to the root component', () => {
-      const emptyState = mountWithApp(<EmptyState image={imgSrc} />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(emptyState).toContainReactComponent('div', {
-        className: 'EmptyState centeredLayout withinPage',
       });
     });
   });

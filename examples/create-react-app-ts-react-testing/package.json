@@ -3,15 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@shopify/polaris": "^4.13.1",
+    "@shopify/polaris": "^5.1.0",
     "@types/jest": "24.0.19",
     "@types/node": "13.7.0",
     "@types/react": "16.9.19",
     "@types/react-dom": "16.9.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.1",
+    "react-scripts": "3.4.1",
     "typescript": "3.7.3"
+  },
+  "devDependencies": {
+    "@shopify/react-testing": "^2.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,8 +33,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@shopify/react-testing": "^1.8.8"
   }
 }

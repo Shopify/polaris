@@ -1,11 +1,10 @@
 import React, {memo} from 'react';
-import {Weekdays} from '@shopify/javascript-utilities/dates';
 
 import {classNames} from '../../../../utilities/css';
 import styles from '../../DatePicker.scss';
 
 export interface WeekdayProps {
-  label: Weekdays;
+  label: string;
   title: string;
   current: boolean;
 }
@@ -21,8 +20,8 @@ export const Weekday = memo(function Weekday({
   );
 
   return (
-    <div aria-label={Weekdays[label]} className={className}>
+    <th aria-label={label} scope="col" className={className}>
       {title}
-    </div>
+    </th>
   );
 });

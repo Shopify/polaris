@@ -2,7 +2,9 @@
 
 $activator-variables: (
   min-width: rem(36px),
-  transition: background-color 0.1s,
+  transition: (
+    background-color 0.1s,
+  ),
   focus-opacity: 0.85,
 );
 
@@ -78,5 +80,5 @@ $activator-variables: (
 .Section {
   margin-top: spacing(tight);
   padding-top: spacing(tight);
-  border-top: border();
+  border-top: border('divider');
 }

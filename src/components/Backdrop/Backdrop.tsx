@@ -22,7 +22,7 @@ export function Backdrop(props: BackdropProps) {
   );
 
   return (
-    <React.Fragment>
+    <>
       <ScrollLock />
       <div
         className={className}
@@ -30,6 +30,6 @@ export function Backdrop(props: BackdropProps) {
         testID="Backdrop"
         onTouchStart={onTouchStart}
       />
-    </React.Fragment>
+    </>
   );
 }

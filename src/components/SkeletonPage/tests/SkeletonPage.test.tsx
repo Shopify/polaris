@@ -33,22 +33,23 @@ describe('<SkeletonPage />', () => {
   });
 
   describe('title', () => {
-    it('renders title when a title is provided', () => {
+    it('renders title as DisplayText instead of SkeletonDisplayText when a title is provided', () => {
       const skeletonPage = mountWithAppProvider(
-        <SkeletonPage title="Products" />,
+        <SkeletonPage title="Products" narrowWidth />,
       );
       const displayText = skeletonPage.find(DisplayText);
       expect(displayText).toHaveLength(1);
       expect(displayText.text()).toBe('Products');
+      expect(skeletonPage.find(SkeletonDisplayText)).toHaveLength(0);
     });
 
-    it('does not render a title when a title is not provided', () => {
-      const skeletonPage = mountWithAppProvider(<SkeletonPage />);
-      const displayText = skeletonPage.find(DisplayText);
-      expect(displayText).toHaveLength(0);
+    it('renders SkeletonDisplayText instead of DisplayText when a title is not provided', () => {
+      const skeletonPage = mountWithAppProvider(<SkeletonPage fullWidth />);
+      expect(skeletonPage.find(DisplayText)).toHaveLength(0);
+      expect(skeletonPage.find(SkeletonDisplayText)).toHaveLength(1);
     });
 
-    it('passes large to the size prop of DisplayText', () => {
+    it('passes large to the size prop of DisplayText by default', () => {
       const skeletonPage = mountWithAppProvider(
         <SkeletonPage title="Products" />,
       );
@@ -64,15 +65,52 @@ describe('<SkeletonPage />', () => {
       expect(displayText.prop('element')).toBe('h1');
     });
 
-    it('renders a SkeletonDisplayText when the title is an empty string', () => {
+    it('renders a SkeletonDisplayText instead of DisplayText when the title is an empty string', () => {
       const skeletonPage = mountWithAppProvider(<SkeletonPage title="" />);
       expect(skeletonPage.find(SkeletonDisplayText)).toHaveLength(1);
+      expect(skeletonPage.find(DisplayText)).toHaveLength(0);
     });
 
-    it('passes large to the size prop of SkeletonDisplayText', () => {
+    it('passes large to the size prop of SkeletonDisplayText by default', () => {
       const skeletonPage = mountWithAppProvider(<SkeletonPage title="" />);
       const skeletonDisplayText = skeletonPage.find(SkeletonDisplayText);
       expect(skeletonDisplayText.prop('size')).toBe('large');
+    });
+
+    describe('when the new design language is enabled', () => {
+      it('renders an h1 with the newDesignLanguageTitle class instead of DisplayText when a title is defined', () => {
+        const skeletonPage = mountWithAppProvider(
+          <SkeletonPage title="Products" />,
+          {
+            features: {newDesignLanguage: true},
+          },
+        );
+
+        expect(skeletonPage.find('h1.newDesignLanguageTitle')).toHaveLength(1);
+        expect(skeletonPage.find(DisplayText)).toHaveLength(0);
+      });
+
+      it('renders newDesignLanguageSkeletonTitle when a title not defined', () => {
+        const skeletonPage = mountWithAppProvider(<SkeletonPage />, {
+          features: {newDesignLanguage: true},
+        });
+
+        expect(skeletonPage.find('h1.newDesignLanguageTitle')).toHaveLength(0);
+        expect(
+          skeletonPage.find('.newDesignLanguageSkeletonTitle'),
+        ).toHaveLength(1);
+      });
+
+      it('renders newDesignLanguageSkeletonTitle when title is an empty string', () => {
+        const skeletonPage = mountWithAppProvider(<SkeletonPage title="" />, {
+          features: {newDesignLanguage: true},
+        });
+
+        expect(skeletonPage.find('h1.newDesignLanguageTitle')).toHaveLength(0);
+        expect(
+          skeletonPage.find('.newDesignLanguageSkeletonTitle'),
+        ).toHaveLength(1);
+      });
     });
   });
 
@@ -94,21 +132,6 @@ describe('<SkeletonPage />', () => {
         <SkeletonPage title="Title" primaryAction />,
       );
       expect(skeletonPage.find(SkeletonDisplayText)).toHaveLength(1);
-    });
-  });
-
-  describe('deprecations', () => {
-    it('warns the singleColumn prop has been renamed', () => {
-      const warningSpy = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {});
-
-      mountWithAppProvider(<SkeletonPage title="title" singleColumn />);
-
-      expect(warningSpy).toHaveBeenCalledWith(
-        'Deprecation: The singleColumn prop has been renamed to narrowWidth to better represents its use and will be removed in v5.0.',
-      );
-      warningSpy.mockRestore();
     });
   });
 });

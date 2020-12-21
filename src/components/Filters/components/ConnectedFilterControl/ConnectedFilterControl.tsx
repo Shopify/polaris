@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, createRef} from 'react';
 import debounce from 'lodash/debounce';
 
 import {classNames} from '../../../../utilities/css';
@@ -26,6 +26,7 @@ export interface ConnectedFilterControlProps {
   auxiliary?: React.ReactNode;
   disabled?: boolean;
   forceShowMorefiltersButton?: boolean;
+  queryFieldHidden?: boolean;
 }
 
 interface ComputedProperty {
@@ -39,7 +40,7 @@ interface State {
 
 const FILTER_FIELD_MIN_WIDTH = 150;
 
-export class ConnectedFilterControl extends React.Component<
+export class ConnectedFilterControl extends Component<
   ConnectedFilterControlProps,
   State
 > {
@@ -51,9 +52,9 @@ export class ConnectedFilterControl extends React.Component<
     proxyButtonsWidth: {},
   };
 
-  private container = React.createRef<HTMLDivElement>();
-  private proxyButtonContainer = React.createRef<HTMLDivElement>();
-  private moreFiltersButtonContainer = React.createRef<HTMLDivElement>();
+  private container = createRef<HTMLDivElement>();
+  private proxyButtonContainer = createRef<HTMLDivElement>();
+  private moreFiltersButtonContainer = createRef<HTMLDivElement>();
 
   private handleResize = debounce(
     () => {
@@ -76,6 +77,7 @@ export class ConnectedFilterControl extends React.Component<
       rightAction,
       auxiliary,
       forceShowMorefiltersButton = true,
+      queryFieldHidden,
     } = this.props;
 
     const actionsToRender =
@@ -97,6 +99,7 @@ export class ConnectedFilterControl extends React.Component<
     const RightContainerClassName = classNames(
       styles.RightContainer,
       !shouldRenderMoreFiltersButton && styles.RightContainerWithoutMoreFilters,
+      queryFieldHidden && styles.queryFieldHidden,
     );
 
     const rightMarkup =
@@ -112,7 +115,7 @@ export class ConnectedFilterControl extends React.Component<
     const moreFiltersButtonContainerClassname = classNames(
       styles.MoreFiltersButtonContainer,
       actionsToRender.length === 0 &&
-        newDesignLanguage &&
+        (newDesignLanguage || queryFieldHidden) &&
         styles.onlyButtonVisible,
     );
 
@@ -133,7 +136,7 @@ export class ConnectedFilterControl extends React.Component<
       >
         {rightPopoverableActions.map((action) => (
           <div key={action.key} data-key={action.key}>
-            {this.activatorButtonFrom(action)}
+            {this.activatorButtonFrom(action, {proxy: true})}
           </div>
         ))}
       </div>
@@ -144,20 +147,22 @@ export class ConnectedFilterControl extends React.Component<
     ) : null;
 
     return (
-      <React.Fragment>
+      <>
         {proxyButtonMarkup}
         <div className={styles.Wrapper}>
           <div className={className} ref={this.container}>
-            <div className={styles.CenterContainer}>
-              <Item>{children}</Item>
-            </div>
+            {children ? (
+              <div className={styles.CenterContainer}>
+                <Item>{children}</Item>
+              </div>
+            ) : null}
             {rightMarkup}
             {rightActionMarkup}
             <EventListener event="resize" handler={this.handleResize} />
           </div>
           {auxMarkup}
         </div>
-      </React.Fragment>
+      </>
     );
   }
 
@@ -192,9 +197,13 @@ export class ConnectedFilterControl extends React.Component<
         .width;
       const filtersActionWidth = 0;
 
+      const filterFieldMinWidth = this.props.queryFieldHidden
+        ? 0
+        : FILTER_FIELD_MIN_WIDTH;
+
       const availableWidth =
         containerWidth -
-        FILTER_FIELD_MIN_WIDTH -
+        filterFieldMinWidth -
         moreFiltersButtonWidth -
         filtersActionWidth;
 
@@ -222,13 +231,17 @@ export class ConnectedFilterControl extends React.Component<
     return actionsToReturn;
   }
 
-  private activatorButtonFrom(action: PopoverableAction): React.ReactElement {
+  private activatorButtonFrom(
+    action: PopoverableAction,
+    options?: {proxy?: boolean},
+  ): React.ReactElement {
+    const id = options?.proxy ? undefined : `Activator-${action.key}`;
     return (
       <Button
         onClick={action.onAction}
         disclosure
         disabled={this.props.disabled || action.disabled}
-        id={`Activator-${action.key}`}
+        id={id}
       >
         {action.content}
       </Button>

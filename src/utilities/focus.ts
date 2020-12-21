@@ -1,17 +1,17 @@
-import {FOCUSABLE_SELECTOR} from '@shopify/javascript-utilities/focus';
-
 import {isElementInViewport} from './is-element-in-viewport';
 
 type Filter = (element: Element) => void;
+export type MouseUpBlurHandler = (
+  event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+) => void;
 
+const FOCUSABLE_SELECTOR =
+  'a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled),*[tabindex]';
 const KEYBOARD_FOCUSABLE_SELECTORS =
   'a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled),*[tabindex]:not([tabindex="-1"])';
 
-export function handleMouseUpByBlurring({
-  currentTarget,
-}: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+export const handleMouseUpByBlurring: MouseUpBlurHandler = ({currentTarget}) =>
   currentTarget.blur();
-}
 
 export function nextFocusableNode(
   node: HTMLElement,
@@ -35,9 +35,19 @@ export function nextFocusableNode(
   return null;
 }
 
-// Popover needs to be able to find its activator even if it is disabled, which FOCUSABLE_SELECTOR doesn't support.
-
 export function findFirstFocusableNode(
+  element: HTMLElement,
+  onlyDescendants = true,
+): HTMLElement | null {
+  if (!onlyDescendants && matches(element, FOCUSABLE_SELECTOR)) {
+    return element;
+  }
+
+  return element.querySelector(FOCUSABLE_SELECTOR);
+}
+
+// Popover needs to be able to find its activator even if it is disabled, which FOCUSABLE_SELECTOR doesn't support.
+export function findFirstFocusableNodeIncludingDisabled(
   element: HTMLElement,
 ): HTMLElement | null {
   const focusableSelector = `a,button,frame,iframe,input:not([type=hidden]),select,textarea,*[tabindex]`;
@@ -47,6 +57,13 @@ export function findFirstFocusableNode(
   }
 
   return element.querySelector(focusableSelector);
+}
+
+export function focusFirstFocusableNode(
+  element: HTMLElement,
+  onlyDescendants = true,
+) {
+  findFirstFocusableNode(element, onlyDescendants)?.focus();
 }
 
 export function focusNextFocusableNode(node: HTMLElement, filter?: Filter) {
@@ -59,7 +76,6 @@ export function focusNextFocusableNode(node: HTMLElement, filter?: Filter) {
   return false;
 }
 
-// https://github.com/Shopify/javascript-utilities/blob/1e705564643d6fe7ffea5ebfbbf3e6b759a66c9b/src/focus.ts
 export function findFirstKeyboardFocusableNode(
   element: HTMLElement,
   onlyDescendants = true,

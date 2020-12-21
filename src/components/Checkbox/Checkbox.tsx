@@ -1,4 +1,4 @@
-import React, {useRef, useImperativeHandle, useState} from 'react';
+import React, {forwardRef, useRef, useImperativeHandle, useState} from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -41,7 +41,7 @@ export interface CheckboxProps {
   onBlur?(): void;
 }
 
-export const Checkbox = React.forwardRef<CheckboxHandles, CheckboxProps>(
+export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
   function Checkbox(
     {
       ariaDescribedBy: ariaDescribedByProp,

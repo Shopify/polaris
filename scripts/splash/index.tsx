@@ -79,7 +79,7 @@ const Component = ({pathname, filename, dependencies}) => (
 );
 
 const Components = ({components, status}) => (
-  <React.Fragment>
+  <>
     {status === 'loading' && (
       <Box marginLeft={4} marginBottom={1}>
         ⏳ Please wait during compilation… Beep boop beep 🤖
@@ -95,7 +95,7 @@ const Components = ({components, status}) => (
           dependencies={dependencies}
         />
       ))}
-  </React.Fragment>
+  </>
 );
 
 const Summary = ({
@@ -157,7 +157,7 @@ const App = () => {
   }, [setData, stagedFiles]);
 
   return (
-    <React.Fragment>
+    <>
       <Box marginBottom={1} flexDirection="column">
         <Box>
           <Box width={3}>💦</Box>
@@ -209,7 +209,7 @@ const App = () => {
           </Color>
         </Box>
       )}
-    </React.Fragment>
+    </>
   );
 };
 

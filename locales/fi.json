@@ -20,7 +20,8 @@
         "attention": "Huomio",
         "new": "Uusi",
         "critical": "Kriittinen"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Ladataan",
@@ -72,6 +73,15 @@
         "friday": "Pe",
         "saturday": "La",
         "sunday": "Su"
+      },
+      "days": {
+        "monday": "Maanantai",
+        "tuesday": "Tiistai",
+        "wednesday": "Keskiviikko",
+        "thursday": "Torstai",
+        "friday": "Perjantai",
+        "saturday": "Lauantai",
+        "sunday": "Sunnuntai"
       }
     },
     "DiscardConfirmationModal": {
@@ -154,7 +164,7 @@
       "ariaLivePlural": "{itemsLength} tuotteet",
       "Item": {
         "actionsDropdownLabel": "Kohdetta {accessibilityLabel} koskevat toimenpiteet",
-        "actionsDropdown": "Toiminnat-alasvetovalikko",
+        "actionsDropdown": "Toiminnat-pudotusvalikko",
         "viewItem": "Näytä tiedot kohteesta {itemName}"
       },
       "BulkActions": {
@@ -204,7 +214,9 @@
           "on_or_after": "jälkeen {date}"
         }
       },
-      "showingTotalCount": "Näytetään {itemsCount}/{totalItemsCount} {resource}"
+      "showingTotalCount": "Näytetään {itemsCount}/{totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Kaikki tämän suodattimen {itemsLength}+ {resourceNamePlural} on valittu.",
+      "selectAllFilteredItems": "Valitse kaikki tämän suodattimen {itemsLength}+ {resourceNamePlural}"
     },
     "SkeletonPage": {
       "loadingLabel": "Sivu latautuu"
@@ -279,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Lisää toimintoja"
     }
   }
 }

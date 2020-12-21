@@ -211,7 +211,7 @@ export function ComboBox({
     resetVisuallySelectedOptions();
   }, [forcePopoverActiveFalse, resetVisuallySelectedOptions]);
 
-  const handleClick = useCallback(() => {
+  const activatePopover = useCallback(() => {
     !popoverActive && forcePopoverActiveTrue();
   }, [forcePopoverActiveTrue, popoverActive]);
 
@@ -309,14 +309,15 @@ export function ComboBox({
   return (
     <ComboBoxContext.Provider value={context}>
       <div
-        onClick={handleClick}
-        role="combobox"
+        onClick={activatePopover}
+        onKeyDown={activatePopover}
         aria-expanded={popoverActive}
         aria-owns={id}
         aria-controls={id}
         aria-haspopup
         onFocus={forcePopoverActiveTrue}
         onBlur={handleBlur}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={options.length === 0 ? -1 : 0}
       >
         <KeypressListener keyCode={Key.DownArrow} handler={selectNextOption} />

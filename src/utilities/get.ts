@@ -1,9 +1,7 @@
-import type {GeneralObject} from '../types';
-
 const OBJECT_NOTATION_MATCHER = /\[(.*?)\]|(\w+)/g;
 
 export function get<T>(
-  obj: GeneralObject | undefined,
+  obj: Record<string, any> | undefined,
   keypath: string | string[],
   defaultValue?: T,
 ): T | any {

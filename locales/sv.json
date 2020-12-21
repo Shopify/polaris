@@ -20,7 +20,8 @@
         "attention": "Observera",
         "new": "Ny",
         "critical": "Kritisk"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Laddar",
@@ -72,6 +73,15 @@
         "friday": "fre",
         "saturday": "lör",
         "sunday": "sön"
+      },
+      "days": {
+        "monday": "Måndag",
+        "tuesday": "Tisdag",
+        "wednesday": "Onsdag",
+        "thursday": "Torsdag",
+        "friday": "Fredag",
+        "saturday": "Lördag",
+        "sunday": "Söndag"
       }
     },
     "DiscardConfirmationModal": {
@@ -204,7 +214,9 @@
           "on_or_after": "efter {date}"
         }
       },
-      "showingTotalCount": "Visar {itemsCount} av {totalItemsCount} {resource}"
+      "showingTotalCount": "Visar {itemsCount} av {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Alla {itemsLength} + {resourceNamePlural} i detta filter är valda.",
+      "selectAllFilteredItems": "Välj alla {itemsLength} + {resourceNamePlural} i det här filtret"
     },
     "SkeletonPage": {
       "loadingLabel": "Sidan laddar"
@@ -279,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Fler åtgärder"
     }
   }
 }

@@ -1,13 +1,9 @@
 import debounce from 'lodash/debounce';
-import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
-import tokens from '@shopify/polaris-tokens';
+import {spacingLoose} from '@shopify/polaris-tokens';
 
 import {dataPolarisTopBar, scrollable} from '../../components/shared';
 import {stackedContent} from '../breakpoints';
+import {getRectForNode, Rect} from '../geometry';
 
 interface StickyItem {
   /** Node of the sticky element */
@@ -73,15 +69,15 @@ export class StickyManager {
     if (isDocument(el)) {
       this.setTopBarOffset(el);
     }
-    addEventListener(this.container, 'scroll', this.handleScroll);
-    addEventListener(window, 'resize', this.handleResize);
+    this.container.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('resize', this.handleResize);
     this.manageStickyItems();
   }
 
   removeScrollListener() {
     if (this.container) {
-      removeEventListener(this.container, 'scroll', this.handleScroll);
-      removeEventListener(window, 'resize', this.handleResize);
+      this.container.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('resize', this.handleResize);
     }
   }
 
@@ -136,7 +132,7 @@ export class StickyManager {
     }
 
     const stickyOffset = offset
-      ? this.getOffset(stickyNode) + parseInt(tokens.spacingLoose, 10)
+      ? this.getOffset(stickyNode) + parseInt(spacingLoose, 10)
       : this.getOffset(stickyNode);
 
     const scrollPosition = scrollTop + stickyOffset;

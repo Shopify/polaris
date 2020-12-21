@@ -1,6 +1,5 @@
-import React, {useState, useCallback} from 'react';
-import debounce from 'lodash/debounce';
-import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
+import React from 'react';
+import {MobileHamburgerMajor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
@@ -8,20 +7,12 @@ import {useI18n} from '../../utilities/i18n';
 import {useTheme} from '../../utilities/theme';
 import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
-import {EventListener} from '../EventListener';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
 
-import {
-  SearchField,
-  SearchFieldProps,
-  UserMenu,
-  UserMenuProps,
-  Search,
-  SearchProps,
-  Menu,
-} from './components';
+import {SearchField, UserMenu, Search, Menu} from './components';
+import type {SearchFieldProps, UserMenuProps, SearchProps} from './components';
 import styles from './TopBar.scss';
 
 export type {UserMenuProps, SearchFieldProps};
@@ -33,7 +24,7 @@ export interface TopBarProps {
   userMenu?: React.ReactNode;
   /** Accepts a menu component that is made available as a static member of the top bar component */
   secondaryMenu?: React.ReactNode;
-  /** Accepts a component that is ideally used to help users switch between different contexts */
+  /** Accepts a component that is used to help users switch between different contexts */
   contextControl?: React.ReactNode;
   /** Accepts a search field component that is made available as a `TextField` static member of the top bar component */
   searchField?: React.ReactNode;
@@ -72,7 +63,6 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
 }: TopBarProps) {
   const i18n = useI18n();
   const {logo} = useTheme();
-  const [scrolled, setScrolled] = useState(false);
   const {newDesignLanguage} = useFeatures();
 
   const {
@@ -80,20 +70,6 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     setTrue: forceTrueFocused,
     setFalse: forceFalseFocused,
   } = useToggle(false);
-
-  const handleScroll = useCallback(
-    debounce(() => {
-      const scrollDistance = window.scrollY;
-      const isScrolled = scrollDistance >= 1;
-
-      if (scrolled && isScrolled) {
-        return;
-      }
-
-      window.requestAnimationFrame(() => setScrolled(Boolean(isScrolled)));
-    }, 20),
-    [],
-  );
 
   const iconClassName = classNames(
     styles.NavigationIcon,
@@ -109,22 +85,29 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       onBlur={forceFalseFocused}
       aria-label={i18n.translate('Polaris.TopBar.toggleMenuLabel')}
     >
-      <Icon source={MobileHamburgerMajorMonotone} />
+      <Icon source={MobileHamburgerMajor} />
     </button>
   ) : null;
 
   const width = getWidth(logo, 104);
   let contextMarkup;
 
-  if (contextControl && !newDesignLanguage) {
+  if (contextControl) {
     contextMarkup = (
       <div testID="ContextControl" className={styles.ContextControl}>
         {contextControl}
       </div>
     );
-  } else if (logo && !newDesignLanguage) {
+  } else if (logo) {
+    const className = classNames(
+      styles.LogoContainer,
+      showNavigationToggle || searchField
+        ? styles.LogoDisplayControl
+        : styles.LogoDisplayContainer,
+    );
+
     contextMarkup = (
-      <div className={styles.LogoContainer}>
+      <div className={className}>
         <UnstyledLink
           url={logo.url || ''}
           className={styles.LogoLink}
@@ -142,7 +125,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   }
 
   const searchMarkup = searchField ? (
-    <React.Fragment>
+    <>
       {searchField}
       <Search
         visible={searchResultsVisible}
@@ -151,17 +134,12 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       >
         {searchResults}
       </Search>
-    </React.Fragment>
-  ) : null;
-
-  const scrollListenerMarkup = newDesignLanguage ? (
-    <EventListener event="scroll" handler={handleScroll} passive />
+    </>
   ) : null;
 
   const className = classNames(
     styles.TopBar,
     newDesignLanguage && styles['TopBar-newDesignLanguage'],
-    scrolled && styles.isScrolled,
   );
 
   return (
@@ -173,7 +151,6 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
         <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
         {userMenu}
       </div>
-      {scrollListenerMarkup}
     </div>
   );
 };

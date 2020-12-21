@@ -1,4 +1,4 @@
-import React from 'react';
+import {memo, useEffect} from 'react';
 
 import {
   ContextualSaveBarProps as ContextualSaveBarProps1,
@@ -11,20 +11,24 @@ import {
 // is generated correctly.
 export interface ContextualSaveBarProps extends ContextualSaveBarProps1 {}
 
-export const ContextualSaveBar = React.memo(function ContextualSaveBar({
+export const ContextualSaveBar = memo(function ContextualSaveBar({
   message,
   saveAction,
   discardAction,
   alignContentFlush,
+  fullWidth,
+  contextControl,
 }: ContextualSaveBarProps) {
   const {setContextualSaveBar, removeContextualSaveBar} = useFrame();
 
-  React.useEffect(() => {
+  useEffect(() => {
     setContextualSaveBar({
       message,
       saveAction,
       discardAction,
       alignContentFlush,
+      fullWidth,
+      contextControl,
     });
   }, [
     message,
@@ -32,9 +36,11 @@ export const ContextualSaveBar = React.memo(function ContextualSaveBar({
     discardAction,
     alignContentFlush,
     setContextualSaveBar,
+    fullWidth,
+    contextControl,
   ]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     return removeContextualSaveBar;
   }, [removeContextualSaveBar]);
 

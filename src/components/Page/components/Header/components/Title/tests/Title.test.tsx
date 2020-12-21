@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
@@ -74,7 +74,7 @@ describe('<Title />', () => {
         features: {newDesignLanguage: true},
       });
       expect(title).toContainReactComponent('div', {
-        className: 'TitleMetadata newDesignLanguage',
+        className: 'TitleWithMetadataWrapper newDesignLanguage',
       });
     });
 
@@ -83,7 +83,7 @@ describe('<Title />', () => {
         features: {newDesignLanguage: false},
       });
       expect(title).toContainReactComponent('div', {
-        className: 'TitleMetadata',
+        className: 'TitleWithMetadataWrapper',
       });
     });
   });

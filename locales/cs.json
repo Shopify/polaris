@@ -20,7 +20,8 @@
         "attention": "Upozornění",
         "new": "Nové",
         "critical": "Kritický"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Načítání",
@@ -72,6 +73,15 @@
         "friday": "Pá",
         "saturday": "So",
         "sunday": "Ne"
+      },
+      "days": {
+        "monday": "Pondělí",
+        "tuesday": "Úterý",
+        "wednesday": "Středa",
+        "thursday": "Čtvrtek",
+        "friday": "Pátek",
+        "saturday": "Sobota",
+        "sunday": "Neděle"
       }
     },
     "DiscardConfirmationModal": {
@@ -204,7 +214,9 @@
           "on_or_after": "po {date}"
         }
       },
-      "showingTotalCount": "Zobrazuje se {itemsCount} z {totalItemsCount} {resource}"
+      "showingTotalCount": "Zobrazuje se {itemsCount} z {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Jsou vybrány všechny položky ({itemsLength} + {resourceNamePlural}) v tomto filtru.",
+      "selectAllFilteredItems": "Vyberte všechny položky ({itemsLength} + {resourceNamePlural}) v tomto filtru."
     },
     "SkeletonPage": {
       "loadingLabel": "Načítání stránky"
@@ -275,10 +287,15 @@
           },
           "seconds": {
             "other": "{secondCount} s",
-            "one": "{secondCount} s"
+            "one": "{secondCount} s",
+            "few": "{secondCount} s",
+            "many": "{secondCount} s"
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Další akce"
     }
   }
 }

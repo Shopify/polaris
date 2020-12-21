@@ -1,68 +1,57 @@
 import React, {useRef, useState, useEffect} from 'react';
-// eslint-disable-next-line no-restricted-imports
-import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Focus, FocusProps} from '../Focus';
 
 describe('<Focus />', () => {
-  it('mounts', () => {
-    const focus = mountWithAppProvider(<FocusTestWrapper />);
-
-    expect(focus.exists()).toBe(true);
-  });
-
   it('will not focus any element if none are natively focusable', () => {
-    mountWithAppProvider(
+    mountWithApp(
       <FocusTestWrapper>
         <span />
       </FocusTestWrapper>,
     );
 
-    expect(document.body).toBe(document.activeElement);
+    expect(document.activeElement).toBe(document.body);
   });
 
   it('will focus first focusable node when passing current node', () => {
-    const focus = mountWithAppProvider(
+    const focus = mountWithApp(
       <FocusTestWrapper>
         <input />
       </FocusTestWrapper>,
     );
 
-    const input = focus.find('input').getDOMNode();
-    expect(input).toBe(document.activeElement);
+    expect(document.activeElement).toBe(focus.find('input')!.domNode);
   });
 
   it('will focus first focusable node when passing ref', () => {
-    const focus = mountWithAppProvider(
+    const focus = mountWithApp(
       <FocusTestWrapperRootReference>
         <input />
       </FocusTestWrapperRootReference>,
     );
 
-    const input = focus.find('input').getDOMNode();
-    expect(input).toBe(document.activeElement);
+    expect(document.activeElement).toBe(focus.find('input')!.domNode);
   });
 
   it('will not focus the first focusable node if `disabled` is true', () => {
-    const focus = mountWithAppProvider(
+    const focus = mountWithApp(
       <FocusTestWrapper disabled>
         <input />
       </FocusTestWrapper>,
     );
 
-    const input = focus.find('input').getDOMNode();
-    expect(input).not.toBe(document.activeElement);
+    expect(document.activeElement).not.toBe(focus.find('input')!.domNode);
   });
 
   it('will not focus if there is no node', () => {
-    const focus = mountWithAppProvider(
+    const focus = mountWithApp(
       <FocusTestWrapperNoNode>
         <input />
       </FocusTestWrapperNoNode>,
     );
 
-    const input = focus.find('input').getDOMNode();
-    expect(input).not.toBe(document.activeElement);
+    expect(document.activeElement).not.toBe(focus.find('input')!.domNode);
   });
 });
 

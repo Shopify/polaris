@@ -4,10 +4,12 @@ import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
 import {Icon} from '../../../Icon';
 import styles from '../../TextField.scss';
 
+type HandleStepFn = (step: number) => void;
+
 export interface SpinnerProps {
-  onChange(delta: number): void;
+  onChange: HandleStepFn;
   onClick?(): void;
-  onMouseDown(onChange: Function): void;
+  onMouseDown(onChange: HandleStepFn): void;
   onMouseUp(): void;
 }
 
@@ -21,7 +23,7 @@ export function Spinner({
     return () => onChange(step);
   }
 
-  function handleMouseDown(onChange: Function) {
+  function handleMouseDown(onChange: HandleStepFn) {
     return (event: React.MouseEvent) => {
       if (event.button !== 0) return;
       onMouseDown(onChange);

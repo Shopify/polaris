@@ -25,3 +25,8 @@
   color: var(--p-text, var(--top-bar-color));
   text-align: left;
 }
+
+.Name,
+.Detail {
+  transition: (duration() - 33ms) color easing() 33ms;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+
+import {classNames} from '../../utilities/css';
 
 import styles from './DescriptionList.scss';
 
@@ -13,24 +14,34 @@ interface Item {
 export interface DescriptionListProps {
   /** Collection of items for list */
   items: Item[];
+  /** Determines the spacing between list items */
+  spacing?: 'tight' | 'loose';
 }
 
-const getUniqueTermKey = createUniqueIDFactory(`Term`);
-const getUniqueDescriptionKey = createUniqueIDFactory(`Description`);
-
-export function DescriptionList({items}: DescriptionListProps) {
+export function DescriptionList({
+  items,
+  spacing = 'loose',
+}: DescriptionListProps) {
+  // There's no good key to give React so using the index is a last resport.
+  // we can't use the term/description value as it may be a react component
+  // which can't be stringified
   const terms = items.reduce(
-    (allTerms, {term, description}) => [
+    (allTerms, {term, description}, index) => [
       ...allTerms,
-      <dt key={getUniqueTermKey()} className={styles.Term}>
+      <dt key={`dt${index}`} className={styles.Term}>
         {term}
       </dt>,
-      <dd key={getUniqueDescriptionKey()} className={styles.Description}>
+      <dd key={`dd${index}`} className={styles.Description}>
         {description}
       </dd>,
     ],
     [],
   );
 
-  return <dl className={styles.DescriptionList}>{terms}</dl>;
+  const className = classNames(
+    styles.DescriptionList,
+    spacing === 'tight' && styles.spacingTight,
+  );
+
+  return <dl className={className}>{terms}</dl>;
 }

@@ -15,15 +15,17 @@ import {Stack} from '../Stack';
 
 import styles from './MediaCard.scss';
 
+type Size = 'small' | 'medium';
+
 interface MediaCardProps {
   /** The visual media to display in the card */
   children: React.ReactNode;
   /** Heading content */
-  title: string;
+  title: React.ReactNode;
   /** Body content */
   description: string;
   /** Main call to action, rendered as a basic button */
-  primaryAction: Action;
+  primaryAction?: Action;
   /** Secondary call to action, rendered as a plain button */
   secondaryAction?: Action;
   /** Action list items to render in ellipsis popover */
@@ -32,6 +34,10 @@ interface MediaCardProps {
    * @default false
    */
   portrait?: boolean;
+  /** Size of the visual media in the card
+   * @default 'medium'
+   */
+  size?: Size;
 }
 
 export function MediaCard({
@@ -42,9 +48,17 @@ export function MediaCard({
   description,
   popoverActions = [],
   portrait = false,
+  size = 'medium',
 }: MediaCardProps) {
   const i18n = useI18n();
   const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
+
+  let headerMarkup = null;
+  if (title) {
+    const headerContent =
+      typeof title === 'string' ? <Heading>{title}</Heading> : title;
+    headerMarkup = <div className={styles.Heading}>{headerContent}</div>;
+  }
 
   const popoverActivator = (
     <Button
@@ -74,9 +88,9 @@ export function MediaCard({
       </div>
     ) : null;
 
-  const primaryActionMarkup = (
+  const primaryActionMarkup = primaryAction ? (
     <div className={styles.PrimaryAction}>{buttonFrom(primaryAction)}</div>
-  );
+  ) : null;
 
   const secondaryActionMarkup = secondaryAction ? (
     <div className={styles.SecondaryAction}>
@@ -106,11 +120,13 @@ export function MediaCard({
   const mediaContainerClassName = classNames(
     styles.MediaContainer,
     portrait && styles.portrait,
+    size === 'small' && styles.sizeSmall,
   );
 
   const infoContainerClassName = classNames(
     styles.InfoContainer,
     portrait && styles.portrait,
+    size === 'small' && styles.sizeSmall,
   );
 
   return (
@@ -121,9 +137,7 @@ export function MediaCard({
           <Card.Section>
             {popoverActionsMarkup}
             <Stack vertical spacing="tight">
-              <div className={styles.Heading}>
-                <Heading>{title}</Heading>
-              </div>
+              {headerMarkup}
               <p className={styles.Description}>{description}</p>
               {actionMarkup}
             </Stack>

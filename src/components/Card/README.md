@@ -573,7 +573,7 @@ Use to render custom content such as icons, links, or buttons in a card sectionâ
   <Card.Section
     title={
       <Stack>
-        <Icon source={ProductsMajorTwotone} />
+        <Icon source={ProductsMajor} />
         <Subheading>New Products</Subheading>
       </Stack>
     }
@@ -664,6 +664,29 @@ Use as a broad example that includes most props available to card.
     <TextContainer>
       The sales reports are available only if your store is on the Shopify plan
       or higher.
+    </TextContainer>
+  </Card.Section>
+</Card>
+```
+
+### Card with flushed sections
+
+<!-- example-for: web -->
+
+Use when you need further control over the spacing of your card sections.
+
+```jsx
+<Card>
+  <Card.Section flush>
+    <Image
+      source="https://polaris.shopify.com/bundles/bc7087219578918d62ac40bf4b4f99ce.png"
+      alt="turtle illustration centered with body text and a button"
+    />
+  </Card.Section>
+  <Card.Section subdued>
+    <TextContainer>
+      You can use sales reports to see information about your customersâ€™ orders
+      based on criteria such as sales over time, by channel, or by staff.
     </TextContainer>
   </Card.Section>
 </Card>

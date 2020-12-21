@@ -7,16 +7,19 @@ import {
   ResourceItem,
   EventListener,
   Button,
+  EmptyState,
 } from 'components';
+import {mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {
   findByTestID,
   mountWithAppProvider,
   trigger,
-  ReactWrapper,
 } from 'test-utilities/legacy';
+import {SELECT_ALL_ITEMS} from 'utilities/resource-list';
 
-import {BulkActions, CheckableButton} from '../components';
+import {BulkActions} from '../../BulkActions';
+import {CheckableButton} from '../../CheckableButton';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
@@ -27,6 +30,7 @@ const itemsWithID = [
   {id: '6', name: 'item 2', url: 'www.test.com', title: 'title 2'},
   {id: '7', name: 'item 3', url: 'www.test.com', title: 'title 3'},
 ];
+
 const allSelectedIDs = ['5', '6', '7'];
 const promotedBulkActions = [{content: 'action'}, {content: 'action 2'}];
 const bulkActions = [{content: 'action 3'}, {content: 'action 4'}];
@@ -55,13 +59,20 @@ describe('<ResourceList />', () => {
       expect(resourceList.find('li')).toHaveLength(3);
     });
 
-    it('renders custom markup', () => {
+    it('renders custom markup and warns user', () => {
+      process.env.NODE_ENV = 'development';
+      const warningSpy = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(() => {});
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderCustomMarkup} />,
       );
-      expect(resourceList.find('li').first().children().html()).toBe(
-        '<p>title 1</p>',
+      expect(resourceList.find('li').first().text()).toBe('title 1');
+      expect(warningSpy).toHaveBeenCalledWith(
+        '<ResourceList /> renderItem function should return a <ResourceItem />.',
       );
+      warningSpy.mockRestore();
+      delete process.env.NODE_ENV;
     });
   });
 
@@ -88,6 +99,7 @@ describe('<ResourceList />', () => {
           promotedBulkActions={promotedBulkActions}
         />,
       );
+
       expect(resourceList.find(BulkActions).exists()).toBe(true);
     });
 
@@ -314,35 +326,6 @@ describe('<ResourceList />', () => {
     });
   });
 
-  describe('idForItem()', () => {
-    it('generates a key using the index if there’s no idForItem prop and no ID in data', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList items={itemsNoID} renderItem={renderItem} />,
-      );
-      expect(resourceList.find('li').first().key()).toBe('0');
-    });
-
-    it('generates a key using the ID if there’s no idForItem prop but there and ID key in the data', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList items={itemsWithID} renderItem={renderItem} />,
-      );
-      expect(resourceList.find('li').first().key()).toBe('5');
-    });
-
-    it('generates a key using the idForItem prop callback when one is provided', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList
-          idForItem={idForItem}
-          items={itemsWithID}
-          renderItem={renderItem}
-        />,
-      );
-      expect(resourceList.find('li').first().key()).toBe(
-        idForItem(itemsWithID[0]),
-      );
-    });
-  });
-
   describe('onSelectionChange()', () => {
     it('calls onSelectionChange() when an item is clicked', () => {
       const onSelectionChange = jest.fn();
@@ -371,10 +354,25 @@ describe('<ResourceList />', () => {
       );
     });
 
+    it('doesn’t render header markup if the list is selectable but the showHeader prop is false', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          showHeader={false}
+          selectable
+          items={itemsWithID}
+          renderItem={renderItem}
+        />,
+      );
+      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
+        false,
+      );
+    });
+
     it('does not render when items is empty', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList items={[]} renderItem={renderItem} />,
       );
+
       expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
         false,
       );
@@ -472,7 +470,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('filterControl', () => {
-    it('renders when exist', () => {
+    it('renders when exists', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsNoID}
@@ -484,7 +482,85 @@ describe('<ResourceList />', () => {
     });
   });
 
-  describe('emptySearchResult', () => {
+  describe('emptyState', () => {
+    it('renders when exists', () => {
+      const emptyState = (
+        <EmptyState
+          heading="Upload a file to get started"
+          action={{content: 'Upload files'}}
+          image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+        >
+          <p>
+            You can use the Files section to upload images, videos, and other
+            documents
+          </p>
+        </EmptyState>
+      );
+
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={[]}
+          renderItem={renderItem}
+          emptyState={emptyState}
+        />,
+      );
+
+      expect(resourceList.find(EmptyState)).toHaveLength(1);
+    });
+
+    it('does not render when exists but items are provided', () => {
+      const emptyState = (
+        <EmptyState
+          heading="Upload a file to get started"
+          action={{content: 'Upload files'}}
+          image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+        >
+          <p>
+            You can use the Files section to upload images, videos, and other
+            documents
+          </p>
+        </EmptyState>
+      );
+
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsNoID}
+          renderItem={renderItem}
+          emptyState={emptyState}
+        />,
+      );
+
+      expect(resourceList.find(EmptyState)).toHaveLength(0);
+    });
+
+    it('does not render when exists, items is empty, but loading is true', () => {
+      const emptyState = (
+        <EmptyState
+          heading="Upload a file to get started"
+          action={{content: 'Upload files'}}
+          image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+        >
+          <p>
+            You can use the Files section to upload images, videos, and other
+            documents
+          </p>
+        </EmptyState>
+      );
+
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          loading
+          items={[]}
+          renderItem={renderItem}
+          emptyState={emptyState}
+        />,
+      );
+
+      expect(resourceList.find(EmptyState)).toHaveLength(0);
+    });
+  });
+
+  describe('<EmptySearchResult />', () => {
     it('renders when filterControl exists and items is empty', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
@@ -523,6 +599,32 @@ describe('<ResourceList />', () => {
           loading
         />,
       );
+      expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
+    });
+
+    it('does not render when filterControl exists, items is empty, and emptyState is set', () => {
+      const emptyStateMarkup = (
+        <EmptyState
+          heading="Upload a file to get started"
+          action={{content: 'Upload files'}}
+          image="https://cdn.shopify.com/s/files/1/2376/3301/products/file-upload-empty-state.png"
+        >
+          <p>
+            You can use the Files section to upload images, videos, and other
+            documents
+          </p>
+        </EmptyState>
+      );
+
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={[]}
+          renderItem={renderItem}
+          filterControl={<div>fake filterControl</div>}
+          emptyState={emptyStateMarkup}
+        />,
+      );
+
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
     });
 
@@ -817,7 +919,7 @@ describe('<ResourceList />', () => {
 
       describe('large screen', () => {
         it('focuses the checkbox in the bulk action when the plain CheckableButton is clicked', () => {
-          const resourceList = mountWithAppProvider(
+          const resourceList = mountWithApp(
             <ResourceList
               items={itemsWithID}
               renderItem={renderItem}
@@ -825,19 +927,20 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          const selectAllCheckableButton = plainCheckableButton(resourceList);
+          resourceList
+            .find(CheckableButton, {plain: true})!
+            .trigger('onToggleAll');
 
-          trigger(selectAllCheckableButton, 'onToggleAll');
+          const deselectAllCheckbox = resourceList
+            .findAll(CheckableButton)
+            .find((ele) => !ele.prop('plain'))!
+            .find('input', {type: 'checkbox'})!;
 
-          const deselectAllCheckbox = bulkActionsCheckableButton(
-            resourceList,
-          ).find('input[type="checkbox"]');
-
-          expect(deselectAllCheckbox.getDOMNode()).toBe(document.activeElement);
+          expect(document.activeElement).toBe(deselectAllCheckbox.domNode);
         });
 
-        it('focuses the plain CheckableButton checkbox when items are selected and the deselect Checkable button the is clicked', () => {
-          const resourceList = mountWithAppProvider(
+        it('focuses the plain CheckableButton checkbox when items are selected and the deselect Checkable button is clicked', () => {
+          const resourceList = mountWithApp(
             <ResourceList
               items={itemsWithID}
               renderItem={renderItem}
@@ -846,18 +949,17 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          const deselectAllCheckableButton = bulkActionsCheckableButton(
-            resourceList,
-          );
+          resourceList
+            .findAll(CheckableButton)
+            .find((ele) => !ele.prop('plain'))!
+            .trigger('onToggleAll');
 
-          trigger(deselectAllCheckableButton, 'onToggleAll');
+          const selectAllCheckableCheckbox = resourceList
+            .find(CheckableButton, {plain: true})!
+            .find('input', {type: 'checkbox'})!;
 
-          const selectAllCheckableCheckbox = plainCheckableButton(
-            resourceList,
-          ).find('input[type="checkbox"]');
-
-          expect(selectAllCheckableCheckbox.getDOMNode()).toBe(
-            document.activeElement,
+          expect(document.activeElement).toBe(
+            selectAllCheckableCheckbox.domNode,
           );
         });
       });
@@ -870,7 +972,7 @@ describe('<ResourceList />', () => {
         it('keeps focus on the CheckableButton checkbox when selecting', () => {
           setSmallScreen();
 
-          const resourceList = mountWithAppProvider(
+          const resourceList = mountWithApp(
             <ResourceList
               items={itemsWithID}
               renderItem={renderItem}
@@ -878,25 +980,25 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          trigger(resourceList.find(Button).first(), 'onClick');
+          resourceList.find(Button)!.trigger('onClick');
 
-          const selectAllCheckableButton = bulkActionsCheckableButton(
-            resourceList,
-          );
+          const selectAllCheckableButton = resourceList
+            .findAll(CheckableButton)
+            .find((ele) => !ele.prop('plain'))!;
 
-          trigger(selectAllCheckableButton, 'onToggleAll');
+          selectAllCheckableButton.trigger('onToggleAll');
 
-          const checkBox = selectAllCheckableButton.find(
-            'input[type="checkbox"]',
-          );
+          const checkBox = selectAllCheckableButton.find('input', {
+            type: 'checkbox',
+          })!;
 
-          expect(checkBox.getDOMNode()).toBe(document.activeElement);
+          expect(document.activeElement).toBe(checkBox.domNode);
         });
 
         it('keeps focus on the CheckableButton checkbox when deselecting', () => {
           setSmallScreen();
 
-          const resourceList = mountWithAppProvider(
+          const resourceList = mountWithApp(
             <ResourceList
               items={itemsWithID}
               selectedItems={allSelectedIDs}
@@ -905,17 +1007,17 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          const deselectAllCheckableButton = bulkActionsCheckableButton(
-            resourceList,
-          );
+          const deselectAllCheckableButton = resourceList
+            .findAll(CheckableButton)
+            .find((ele) => !ele.prop('plain'))!;
 
-          trigger(deselectAllCheckableButton, 'onToggleAll');
+          deselectAllCheckableButton.trigger('onToggleAll');
 
-          const checkBox = deselectAllCheckableButton.find(
-            'input[type="checkbox"]',
-          );
+          const checkBox = deselectAllCheckableButton.find('input', {
+            type: 'checkbox',
+          })!;
 
-          expect(checkBox.getDOMNode()).toBe(document.activeElement);
+          expect(document.activeElement).toBe(checkBox.domNode);
         });
       });
     });
@@ -1075,16 +1177,94 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(BulkActions).prop('selectMode')).toBe(false);
     });
   });
+
+  describe('isFiltered', () => {
+    it('renders `selectAllFilteredItems` label if true', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsNoID}
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          hasMoreItems
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          isFiltered
+        />,
+      );
+
+      expect(
+        resourceList.find(BulkActions).prop('paginatedSelectAllAction'),
+      ).toStrictEqual({
+        content: 'Select all 2+ customers in this filter',
+        onAction: expect.any(Function),
+      });
+    });
+
+    it('renders `allFilteredItemsSelected` label if true and all items are selected', () => {
+      const resourceList = mountWithApp(
+        <ResourceList
+          items={itemsNoID}
+          selectedItems={SELECT_ALL_ITEMS}
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          hasMoreItems
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectable
+          isFiltered
+        />,
+      );
+
+      resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
+
+      expect(
+        resourceList.find(BulkActions)!.prop('paginatedSelectAllText'),
+      ).toBe('All 2+ customers in this filter are selected.');
+    });
+
+    it('renders `selectAllItems` label if not passed', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsNoID}
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          hasMoreItems
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+        />,
+      );
+
+      expect(
+        resourceList.find(BulkActions).prop('paginatedSelectAllAction'),
+      ).toStrictEqual({
+        content: 'Select all 2+ customers in your store',
+        onAction: expect.any(Function),
+      });
+    });
+
+    it('renders `allItemsSelected` label if not passed and all items are selected', () => {
+      const resourceList = mountWithApp(
+        <ResourceList
+          items={itemsNoID}
+          selectedItems={SELECT_ALL_ITEMS}
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          hasMoreItems
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectable
+        />,
+      );
+
+      resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
+
+      expect(
+        resourceList.find(BulkActions)!.prop('paginatedSelectAllText'),
+      ).toBe('All 2+ customers in your store are selected.');
+    });
+  });
 });
 
 function noop() {}
 
-function idForItem(item: any) {
-  return JSON.stringify(item);
-}
-
 function renderCustomMarkup(item: any) {
-  return <p>{item.title}</p>;
+  return <li key={item.id}>{item.title}</li>;
 }
 
 function renderItem(item: any, id: any, index: number) {
@@ -1115,16 +1295,4 @@ function setDefaultScreen() {
     writable: true,
     value: defaultWindowWidth,
   });
-}
-
-function bulkActionsCheckableButton(wrapper: ReactWrapper) {
-  return wrapper.findWhere(
-    (wrap) => wrap.is(CheckableButton) && !wrap.prop('plain'),
-  );
-}
-
-function plainCheckableButton(wrapper: ReactWrapper) {
-  return wrapper.findWhere(
-    (wrap) => wrap.is(CheckableButton) && wrap.prop('plain'),
-  );
 }

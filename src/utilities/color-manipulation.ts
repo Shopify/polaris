@@ -1,7 +1,8 @@
-import {clamp} from '@shopify/javascript-utilities/math';
-
+import {clamp} from './clamp';
 import type {HSLColor, HSBColor} from './color-types';
 
+export function lightenColor(color: string, lighten: number): string;
+export function lightenColor(color: HSLColor, lighten: number): HSLColor;
 export function lightenColor(color: HSLColor | string, lighten = 0) {
   if (typeof color === 'string') {
     return color;
@@ -13,6 +14,8 @@ export function lightenColor(color: HSLColor | string, lighten = 0) {
   return {...color, lightness: clamp(nextLightness, 0, 100)};
 }
 
+export function darkenColor(color: string, lighten: number): string;
+export function darkenColor(color: HSLColor, lighten: number): HSLColor;
 export function darkenColor(color: HSLColor | string, lighten = 0) {
   if (typeof color === 'string') {
     return color;
@@ -24,6 +27,9 @@ export function darkenColor(color: HSLColor | string, lighten = 0) {
   return {...color, lightness: clamp(nextLightness, 0, 100)};
 }
 
+export function saturateColor(color: string, lighten: number): string;
+export function saturateColor(color: HSLColor, lighten: number): HSLColor;
+export function saturateColor(color: HSBColor, lighten: number): HSBColor;
 export function saturateColor(
   color: HSLColor | HSBColor | string,
   saturate = 0,
@@ -43,6 +49,10 @@ export function createDarkColor(
   darkness: number,
   saturation: number,
 ) {
+  if (typeof color === 'string') {
+    return color;
+  }
+
   const darkenedColor = darkenColor(color, darkness);
   const saturatedColor = saturateColor(darkenedColor, saturation);
 
@@ -54,6 +64,10 @@ export function createLightColor(
   lightness: number,
   saturation: number,
 ) {
+  if (typeof color === 'string') {
+    return color;
+  }
+
   const lightenedColor = lightenColor(color, lightness);
   const saturatedColor = saturateColor(lightenedColor, -saturation);
 

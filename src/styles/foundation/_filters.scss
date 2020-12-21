@@ -29,16 +29,6 @@ $color-filter-palette-data: $polaris-color-filters;
   @if type-of($fetched-color) == list {
     @return $fetched-color;
   } @else {
-    // stylelint-disable string-no-newline
-    $error: "
-Filter `#{$hue}, #{$value}` not found. Make sure arguments are strings.
-GOOD: filter('yellow')
-BAD: filter(yellow)
-
-Available options: #{available-names($color-filter-palette-data)}
-";
-    // stylelint-enable
-
-    @error $error;
+    @error "Filter `#{$hue}, #{$value}` not found.\a Make sure arguments are strings.\a GOOD: `filter('yellow')`.\a BAD: `filter(yellow)`.\a\a Available options: #{available-names($color-filter-palette-data)}";
   }
 }

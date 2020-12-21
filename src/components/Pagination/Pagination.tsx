@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import {
   ArrowLeftMinor,
   ArrowRightMinor,
@@ -73,7 +73,7 @@ export function Pagination({
   const i18n = useI18n();
   const {newDesignLanguage} = useFeatures();
 
-  const node: React.RefObject<HTMLElement> = React.createRef();
+  const node: React.RefObject<HTMLElement> = createRef();
 
   const navLabel =
     accessibilityLabel || i18n.translate('Polaris.Pagination.pagination');
@@ -135,6 +135,7 @@ export function Pagination({
 
   const prev = newDesignLanguage ? (
     <Button
+      outline
       icon={ChevronLeftMinor}
       accessibilityLabel={i18n.translate('Polaris.Pagination.previous')}
       url={previousURL}
@@ -156,6 +157,7 @@ export function Pagination({
 
   const next = newDesignLanguage ? (
     <Button
+      outline
       icon={ChevronRightMinor}
       accessibilityLabel={i18n.translate('Polaris.Pagination.next')}
       url={nextURL}

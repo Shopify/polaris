@@ -1,8 +1,7 @@
 @import '../../styles/common';
 
-$list-filters-header-height: rem(56px);
+$list-filters-header-height: top-bar-height();
 $list-filters-footer-height: rem(70px);
-$seperator-color: var(--p-border-subdued, color('sky'));
 
 .Filters {
   position: relative;
@@ -20,7 +19,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   top: 0;
   width: 100%;
   padding: spacing(base) spacing(loose);
-  border-bottom: rem(1px) solid $seperator-color;
+  border-bottom: border('divider');
   height: $list-filters-header-height;
   box-sizing: border-box;
   display: flex;
@@ -28,7 +27,6 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   justify-content: space-between;
 
   &.newDesignLanguage {
-    height: new-top-bar-height();
     padding: spacing(base) rem(26px);
   }
 }
@@ -40,10 +38,6 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   );
 
   &.newDesignLanguage {
-    height: calc(
-      100% - #{$list-filters-footer-height} - #{new-top-bar-height()}
-    );
-
     padding: spacing(tight);
   }
 }
@@ -53,7 +47,6 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   height: calc(100% - #{$list-filters-header-height});
 
   &.newDesignLanguage {
-    height: calc(100% - #{new-top-bar-height()});
     padding: spacing(tight);
   }
 }
@@ -63,7 +56,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
   bottom: 0;
   width: 100%;
   padding: rem(14px) spacing(base);
-  border-top: rem(1px) solid $seperator-color;
+  border-top: border('divider');
   height: $list-filters-footer-height;
   box-sizing: border-box;
   display: flex;
@@ -86,7 +79,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
 }
 
 .EmptyFooterState {
-  border-top: border();
+  border-top: border('divider');
   padding-top: rem(14px);
   width: 100%;
   display: flex;
@@ -142,7 +135,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
     }
 
     &:hover {
-      @include high-contrast-outline;
+      @include ms-high-contrast-outline;
     }
   }
 }
@@ -175,7 +168,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
     left: spacing(base);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
-    background-color: $seperator-color;
+    background-color: var(--p-surface-subdued);
     display: block;
   }
 
@@ -196,7 +189,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
     left: spacing(base);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
-    background-color: $seperator-color;
+    background-color: var(--p-surface-subdued);
     display: block;
   }
 
@@ -219,7 +212,7 @@ $seperator-color: var(--p-border-subdued, color('sky'));
     left: spacing(base);
     width: calc(100% - #{rem(32px)});
     height: rem(1px);
-    background-color: $seperator-color;
+    background-color: var(--p-surface-subdued);
     display: block;
   }
 

@@ -146,6 +146,10 @@
 .colorBlueDark {
   @include color-icon('blue', 'dark');
 
+  &::before {
+    background-color: var(--p-surface-highlight, color('blue', 'light'));
+  }
+
   &.newDesignLanguage {
     @include recolor-icon(var(--p-icon));
   }

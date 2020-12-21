@@ -5,8 +5,7 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 
 import {Toast} from '../../Toast';
 import {Frame} from '../../../Frame';
-
-import {ToastManager} from '..';
+import {ToastManager} from '../ToastManager';
 
 window.matchMedia =
   window.matchMedia ||
@@ -39,8 +38,7 @@ describe('<ToastManager />', () => {
         toastMessages={[{id: '1', content: 'Hello', onDismiss: noop}]}
       />,
     );
-
-    expect(toastManager.find('div').at(0).prop('aria-live')).toBe('polite');
+    expect(toastManager.find('[aria-live]').prop('aria-live')).toBe('polite');
   });
 });
 

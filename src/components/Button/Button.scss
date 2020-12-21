@@ -91,42 +91,6 @@ $stacking-order: (
   }
 }
 
-// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
-[data-buttongroup-segmented='true'] {
-  .Button,
-  .Button::after {
-    border-radius: 0;
-  }
-  > :first-child .Button,
-  > :first-child .Button::after {
-    border-top-left-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
-  }
-  > :last-child .Button,
-  > :last-child .Button::after {
-    border-top-right-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
-  }
-}
-
-[data-buttongroup-connected-top] {
-  > :first-child .Button,
-  > :first-child .Button::after {
-    border-top-left-radius: 0;
-  }
-
-  > :last-child .Button,
-  > :last-child .Button::after {
-    border-top-right-radius: 0;
-  }
-}
-
-[data-buttongroup-full-width] {
-  .Button {
-    @include button-full-width;
-  }
-}
-// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
 .Content {
   @include text-style-button;
   position: relative;
@@ -152,14 +116,17 @@ $stacking-order: (
   text-align: right;
 }
 
+.stretchContent:not(.loading) > .Content {
+  justify-content: space-between;
+  width: 100%;
+}
+
 .Icon {
   transition: color duration() easing();
 
-  &:first-child {
-    // This compensates for the typical icon used in buttons being
-    // inset within its bounding box.
-    margin-left: -(spacing(extra-tight));
-  }
+  // This compensates for the typical icon used in buttons being
+  // inset within its bounding box.
+  margin-left: -(spacing(extra-tight));
 
   &:last-child {
     // This compensates for the disclosure icon, which is substantially
@@ -172,6 +139,10 @@ $stacking-order: (
   + *:not(.Icon) {
     margin-left: spacing(extra-tight);
   }
+}
+
+.Hidden {
+  visibility: hidden;
 }
 
 .Spinner {
@@ -197,6 +168,13 @@ $stacking-order: (
 
   &.disabled {
     @include button-filled-disabled(color('indigo'));
+    // stylelint-disable-next-line selector-max-class
+    &.newDesignLanguage {
+      @include recolor-icon(var(--p-icon-disabled));
+      background: var(--p-action-primary-disabled);
+      color: var(--p-text-disabled);
+      border-color: transparent;
+    }
   }
 
   &.pressed {
@@ -220,6 +198,13 @@ $stacking-order: (
 
   &.disabled {
     @include button-filled-disabled(color('red'));
+    // stylelint-disable-next-line selector-max-class
+    &.newDesignLanguage {
+      @include recolor-icon(var(--p-icon-disabled));
+      background: var(--p-action-critical-disabled);
+      color: var(--p-text-disabled);
+      border-color: transparent;
+    }
   }
 
   &.pressed {
@@ -279,6 +264,11 @@ $stacking-order: (
   &.disabled {
     color: transparent;
   }
+}
+
+// stylelint-disable-next-line selector-max-class, selector-max-specificity
+.newDesignLanguage.loading.disabled svg {
+  fill: var(--p-icon-subdued);
 }
 
 .pressed {
@@ -364,6 +354,7 @@ $stacking-order: (
   }
 
   &.destructive {
+    @include recolor-icon(color('red', 'dark'));
     color: var(--p-action-critical, color('red', 'dark'));
     &:focus,
     &:active {
@@ -443,14 +434,12 @@ $stacking-order: (
     &:hover {
       @include recolor-icon(var(--p-interactive-hovered));
       color: var(--p-interactive-hovered);
-      text-decoration: underline;
     }
 
     &:focus {
       @include recolor-icon(var(--p-interactive));
       color: var(--p-interactive);
       @include no-focus-ring;
-      text-decoration: underline;
     }
 
     &:active {
@@ -559,9 +548,12 @@ $stacking-order: (
   padding: $slim-vertical-padding spacing(base-tight);
 
   &.newDesignLanguage {
-    // Local override for slim button height.
+    // Local override for slim button height and padding
     $slim-min-height: rem(28px);
+    $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) /
+      2;
     min-height: $slim-min-height;
+    padding: $slim-vertical-padding spacing(base-tight);
   }
 }
 
@@ -658,6 +650,7 @@ $stacking-order: (
   &.outline {
     position: relative;
     border-color: currentColor;
+    // stylelint-disable selector-max-class
 
     &::before {
       content: '';
@@ -672,12 +665,10 @@ $stacking-order: (
       z-index: 0;
     }
 
-    // stylelint-disable-next-line selector-max-class
     &.pressed {
       background: transparent;
       box-shadow: none;
 
-      // stylelint-disable selector-max-class
       &::before {
         opacity: 0.05;
       }
@@ -699,6 +690,7 @@ $stacking-order: (
 
     &.newDesignLanguage {
       @include focus-ring($border-width: border-width('base'));
+      border-color: currentColor;
       box-shadow: 0 0 0 border-width('base') currentColor;
 
       &:focus {
@@ -743,7 +735,6 @@ $stacking-order: (
 
 .ConnectedDisclosureWrapper {
   display: flex;
-  align-items: center;
 }
 
 .ConnectedDisclosure {
@@ -751,6 +742,7 @@ $stacking-order: (
   margin-left: -(border-width());
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  height: 100%;
 
   // Because the outline border color has a 40% opacity, the left border appears darker than the rest of the borders because they are layered over one another. Reducing the opacity to zero for the connected disclosure when not focused gives us the expected border color.
   &.outline:not(:focus) {
@@ -763,9 +755,20 @@ $stacking-order: (
   }
 
   &.newDesignLanguage {
-    margin-left: rem(1px);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+
+    // stylelint-disable selector-max-class, selector-max-specificity
+    &.primary,
+    &.destructive {
+      margin-left: rem(1px);
+
+      &.outline {
+        margin-left: 0;
+        border-left: 0;
+      }
+    }
+    // stylelint-enable selector-max-class, selector-max-specificity
 
     &::after {
       border-top-left-radius: 0;
@@ -773,3 +776,46 @@ $stacking-order: (
     }
   }
 }
+// stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+[data-buttongroup-segmented='true'] {
+  .Button,
+  .Button::after {
+    border-radius: 0;
+  }
+  > :first-child .Button,
+  > :first-child .Button::after {
+    border-radius: 0;
+    border-top-left-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  }
+  > :last-child .Button,
+  > :last-child .Button::after {
+    border-radius: 0;
+    border-top-right-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
+  }
+
+  > :last-child:first-child .Button,
+  > :last-child:first-child .Button::after {
+    border-radius: var(--p-border-radius-base, border-radius());
+  }
+}
+
+[data-buttongroup-connected-top='true'] {
+  > :first-child .Button,
+  > :first-child .Button::after {
+    border-top-left-radius: 0;
+  }
+
+  > :last-child .Button,
+  > :last-child .Button::after {
+    border-top-right-radius: 0;
+  }
+}
+
+[data-buttongroup-full-width='true'] {
+  .Button {
+    @include button-full-width;
+  }
+}
+// stylelint-enable selector-max-combinators, selector-max-compound-selectors, selector-max-specificity

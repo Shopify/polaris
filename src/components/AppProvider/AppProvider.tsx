@@ -1,19 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import type {ThemeConfig} from '../../utilities/theme';
 import {ThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
+import {PortalsManager} from '../PortalsManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
 } from '../../utilities/scroll-lock-manager';
-import {
-  createAppBridge,
-  AppBridgeContext,
-  AppBridgeOptions,
-} from '../../utilities/app-bridge';
 import {
   StickyManager,
   StickyManagerContext,
@@ -26,14 +22,15 @@ import {
   globalIdGeneratorFactory,
 } from '../../utilities/unique-id';
 
+import './AppProvider.scss';
+
 interface State {
   intl: I18n;
-  appBridge: ReturnType<typeof createAppBridge>;
   link: LinkLikeComponent | undefined;
 }
 
-export interface AppProviderProps extends AppBridgeOptions {
-  /** A locale object or array of locale objects that overrides default translations. If specifying an array then your fallback language dictionaries should come first, followed by your primary language dictionary */
+export interface AppProviderProps {
+  /** A locale object or array of locale objects that overrides default translations. If specifying an array then your primary language dictionary should come first, followed by your fallback language dictionaries */
   i18n: ConstructorParameters<typeof I18n>[0];
   /** A custom component to use for all links used by Polaris components */
   linkComponent?: LinkLikeComponent;
@@ -45,7 +42,7 @@ export interface AppProviderProps extends AppBridgeOptions {
   children?: React.ReactNode;
 }
 
-export class AppProvider extends React.Component<AppProviderProps, State> {
+export class AppProvider extends Component<AppProviderProps, State> {
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
   private uniqueIdFactory: UniqueIdFactory;
@@ -56,13 +53,12 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
     this.scrollLockManager = new ScrollLockManager();
     this.uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-    const {i18n, apiKey, shopOrigin, forceRedirect, linkComponent} = this.props;
+    const {i18n, linkComponent} = this.props;
 
     // eslint-disable-next-line react/state-in-constructor
     this.state = {
       link: linkComponent,
       intl: new I18n(i18n),
-      appBridge: createAppBridge({shopOrigin, apiKey, forceRedirect}),
     };
   }
 
@@ -75,19 +71,10 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
   componentDidUpdate({
     i18n: prevI18n,
     linkComponent: prevLinkComponent,
-    apiKey: prevApiKey,
-    shopOrigin: prevShopOrigin,
-    forceRedirect: prevForceRedirect,
   }: AppProviderProps) {
-    const {i18n, linkComponent, apiKey, shopOrigin, forceRedirect} = this.props;
+    const {i18n, linkComponent} = this.props;
 
-    if (
-      i18n === prevI18n &&
-      linkComponent === prevLinkComponent &&
-      apiKey === prevApiKey &&
-      shopOrigin === prevShopOrigin &&
-      forceRedirect === prevForceRedirect
-    ) {
+    if (i18n === prevI18n && linkComponent === prevLinkComponent) {
       return;
     }
 
@@ -95,14 +82,13 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
     this.setState({
       link: linkComponent,
       intl: new I18n(i18n),
-      appBridge: createAppBridge({shopOrigin, apiKey, forceRedirect}),
     });
   }
 
   render() {
     const {theme = {}, children} = this.props;
 
-    const {intl, appBridge, link} = this.state;
+    const {intl, link} = this.state;
     const features = {newDesignLanguage: false, ...this.props.features};
 
     return (
@@ -111,15 +97,15 @@ export class AppProvider extends React.Component<AppProviderProps, State> {
           <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
             <StickyManagerContext.Provider value={this.stickyManager}>
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
-                <AppBridgeContext.Provider value={appBridge}>
-                  <LinkContext.Provider value={link}>
-                    <ThemeProvider theme={theme}>
-                      <MediaQueryProvider>
+                <LinkContext.Provider value={link}>
+                  <ThemeProvider theme={theme}>
+                    <MediaQueryProvider>
+                      <PortalsManager>
                         <FocusManager>{children}</FocusManager>
-                      </MediaQueryProvider>
-                    </ThemeProvider>
-                  </LinkContext.Provider>
-                </AppBridgeContext.Provider>
+                      </PortalsManager>
+                    </MediaQueryProvider>
+                  </ThemeProvider>
+                </LinkContext.Provider>
               </UniqueIdFactoryContext.Provider>
             </StickyManagerContext.Provider>
           </ScrollLockManagerContext.Provider>

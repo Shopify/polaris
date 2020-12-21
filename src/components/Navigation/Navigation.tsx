@@ -11,12 +11,10 @@ import {getWidth} from '../../utilities/get-width';
 
 import {NavigationContext} from './context';
 import {Section, Item} from './components';
-import type {SectionType} from './types';
 import styles from './Navigation.scss';
 
 export interface NavigationProps {
   location: string;
-  sections?: SectionType[];
   children?: React.ReactNode;
   contextControl?: React.ReactNode;
   onDismiss?(): void;
@@ -35,23 +33,22 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   const {newDesignLanguage} = useFeatures();
   const width = getWidth(logo, 104);
 
-  const logoMarkup =
-    logo && newDesignLanguage ? (
-      <div className={styles.LogoContainer}>
-        <UnstyledLink
-          url={logo.url || ''}
-          className={styles.LogoLink}
+  const logoMarkup = logo ? (
+    <div className={styles.LogoContainer}>
+      <UnstyledLink
+        url={logo.url || ''}
+        className={styles.LogoLink}
+        style={{width}}
+      >
+        <Image
+          source={logo.topBarSource || ''}
+          alt={logo.accessibilityLabel || ''}
+          className={styles.Logo}
           style={{width}}
-        >
-          <Image
-            source={logo.topBarSource || ''}
-            alt={logo.accessibilityLabel || ''}
-            className={styles.Logo}
-            style={{width}}
-          />
-        </UnstyledLink>
-      </div>
-    ) : null;
+        />
+      </UnstyledLink>
+    </div>
+  ) : null;
 
   const mediaMarkup = contextControl ? (
     <div className={styles.ContextControl}>{contextControl}</div>
@@ -61,7 +58,6 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
 
   const className = classNames(
     styles.Navigation,
-    !mediaMarkup && newDesignLanguage && styles['Navigation-noMedia'],
     newDesignLanguage && styles['Navigation-newDesignLanguage'],
   );
 

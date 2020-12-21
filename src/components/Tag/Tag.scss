@@ -9,14 +9,14 @@ $icon-size: rem(16px);
   align-items: center;
   min-height: $height;
   padding: 0 spacing(tight);
-  background-color: var(--p-action-secondary, color('sky'));
-  border-radius: border-radius();
+  background-color: var(--p-surface-neutral, color('sky'));
+  border-radius: var(--p-border-radius-base, border-radius());
   color: var(--p-text, color('ink'));
 
   &.disabled {
     @include recolor-icon(var(--p-icon-disabled, color('ink', 'lightest')));
     transition: none;
-    background: var(--p-action-secondary-disabled, color('sky', 'light'));
+    background: var(--p-surface-neutral-disabled, color('sky', 'light'));
     color: var(--p-text-disabled, color('ink', 'lightest'));
   }
 
@@ -48,10 +48,10 @@ $icon-size: rem(16px);
     // stylelint-disable selector-max-class
 
     &.newDesignLanguage {
-      background-color: var(--p-action-secondary);
+      background-color: var(--p-surface-neutral);
 
       &:hover {
-        background: var(--p-action-secondary-hovered);
+        background: var(--p-surface-neutral-hovered);
       }
 
       @include focus-ring;
@@ -61,11 +61,11 @@ $icon-size: rem(16px);
       }
 
       &:active {
-        background: var(--p-action-secondary-pressed);
+        background: var(--p-surface-neutral-pressed);
       }
 
       &:disabled {
-        background: var(--p-action-secondary-disabled);
+        background: var(--p-surface-neutral-disabled);
       }
       // stylelint-enable
     }
@@ -76,6 +76,7 @@ $icon-size: rem(16px);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
 @media (-ms-high-contrast: active) {
@@ -114,8 +115,8 @@ $icon-size: rem(16px);
     @include recolor-icon(var(--p-icon));
 
     &:hover {
-      background: var(--p-action-secondary-hovered);
-      @include high-contrast-outline;
+      background: var(--p-surface-neutral-hovered);
+      @include ms-high-contrast-outline;
     }
 
     &:focus {
@@ -129,7 +130,7 @@ $icon-size: rem(16px);
     }
 
     &:active {
-      background: var(--p-action-secondary-pressed);
+      background: var(--p-surface-neutral-pressed);
     }
 
     &:disabled {

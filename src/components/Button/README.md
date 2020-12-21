@@ -141,7 +141,7 @@ Use for less important or less commonly used actions since they’re less promin
 Use for less important or less commonly used actions where matching the current text color is desired. For example in the InlineError component.
 
 ```jsx
-<div style={{color: '#bf0711'}}>
+<div>
   Could not retrieve data.{' '}
   <Button plain monochrome>
     Try again
@@ -314,6 +314,31 @@ function DisclosureButtion() {
 }
 ```
 
+### Stretched disclosure button
+
+<!-- example-for: web -->
+
+Stretch disclosure button content its full width for a dropdown look
+
+```jsx
+function StretchedDisclosureButton() {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div style={{width: '200px'}}>
+      <Button
+        disclosure={expanded ? 'up' : 'down'}
+        fullWidth
+        stretchContent
+        onClick={() => setExpanded(!expanded)}
+      >
+        {expanded ? 'Show less' : 'Show more'}
+      </Button>
+    </div>
+  );
+}
+```
+
 ### Split button
 
 <!-- example-for: web -->
@@ -339,7 +364,29 @@ Use when there is only one primary action but other related actions can be taken
 Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it.
 
 ```jsx
-<Button disabled>Buy shipping label</Button>
+<ButtonGroup>
+  <Button disabled>Buy shipping label</Button>
+  <Button primary disabled>
+    Buy shipping label
+  </Button>
+  <Button destructive disabled>
+    Buy shipping label
+  </Button>
+  <Button outline disabled>
+    Buy shipping label
+  </Button>
+  <span style={{color: '#bf0711'}}>
+    <Button outline monochrome disabled>
+      Buy shipping label
+    </Button>
+  </span>
+  <Button plain disabled>
+    Buy shipping label
+  </Button>
+  <Button plain destructive disabled>
+    Buy shipping label
+  </Button>
+</ButtonGroup>
 ```
 
 <!-- content-for: android -->

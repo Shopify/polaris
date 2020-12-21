@@ -1,20 +1,12 @@
 import React from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
+import {mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
 
 import {SearchField} from '../SearchField';
 
-describe('<TextField />', () => {
-  it('mounts', () => {
-    const textField = mountWithAppProvider(
-      <SearchField value="" onChange={noop} />,
-    );
-
-    expect(textField.exists()).toBe(true);
-  });
-
+describe('<SearchField />', () => {
   it('passes the placeholder prop to input', () => {
     const textField = mountWithAppProvider(
       <SearchField value="" onChange={noop} placeholder="hello polaris" />,
@@ -25,33 +17,31 @@ describe('<TextField />', () => {
 
   describe('focused', () => {
     it('will give input focus when the focused prop is true', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <SearchField value="" onChange={noop} focused />,
       );
 
-      expect(findInput(textField).getDOMNode()).toBe(document.activeElement);
+      expect(document.activeElement).toBe(textField.find('input')!.domNode);
     });
 
     it('will give input focus if focus has been toggled', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <SearchField value="" onChange={noop} focused={false} />,
       );
-      expect(findInput(textField).getDOMNode()).not.toBe(
-        document.activeElement,
-      );
+
+      expect(document.activeElement).not.toBe(textField.find('input')!.domNode);
+
       textField.setProps({value: '', onChange: noop, focused: true});
-      expect(findInput(textField).getDOMNode()).toBe(document.activeElement);
+      expect(document.activeElement).toBe(textField.find('input')!.domNode);
     });
 
     it('will blur input if focused has been toggled', () => {
-      const textField = mountWithAppProvider(
+      const textField = mountWithApp(
         <SearchField value="" onChange={noop} focused />,
       );
 
       textField.setProps({value: '', onChange: noop, focused: false});
-      expect(findInput(textField).getDOMNode()).not.toBe(
-        document.activeElement,
-      );
+      expect(document.activeElement).not.toBe(textField.find('input')!.domNode);
     });
   });
 

@@ -20,7 +20,8 @@
         "attention": "Attentie",
         "new": "Nieuw",
         "critical": "Kritiek"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Laden",
@@ -72,6 +73,15 @@
         "friday": "vr.",
         "saturday": "za.",
         "sunday": "zo."
+      },
+      "days": {
+        "monday": "maandag",
+        "tuesday": "dinsdag",
+        "wednesday": "woensdag",
+        "thursday": "donderdag",
+        "friday": "vrijdag",
+        "saturday": "zaterdag",
+        "sunday": "zondag"
       }
     },
     "DiscardConfirmationModal": {
@@ -122,7 +132,7 @@
       "moreFiltersWithCount": "Meer filters ({count})"
     },
     "Modal": {
-      "iFrameTitle": "opmaak platte tekst",
+      "iFrameTitle": "opmaak hoofdtekst",
       "modalWarning": "Deze verplichte onderdelen ontbreken ophet modale venster: {missingProps}"
     },
     "Pagination": {
@@ -204,7 +214,9 @@
           "on_or_after": "na {date}"
         }
       },
-      "showingTotalCount": "{itemsCount} weergeven van {totalItemsCount} {resource}"
+      "showingTotalCount": "{itemsCount} weergeven van {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in dit filter zijn geselecteerd.",
+      "selectAllFilteredItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in dit filter."
     },
     "SkeletonPage": {
       "loadingLabel": "Pagina is aan het laden"
@@ -279,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Meer acties"
     }
   }
 }

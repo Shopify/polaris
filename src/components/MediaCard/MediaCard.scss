@@ -20,6 +20,10 @@ $portrait-breakpoint: 804px;
 .MediaContainer {
   &:not(.portrait) {
     flex-basis: 40%;
+
+    &.sizeSmall {
+      flex-basis: 33%;
+    }
   }
 
   @include breakpoint-after($portrait-breakpoint, inclusive) {
@@ -42,6 +46,10 @@ $portrait-breakpoint: 804px;
 
   &:not(.portrait) {
     flex-basis: 60%;
+
+    &.sizeSmall {
+      flex-basis: 67%;
+    }
   }
 }
 

@@ -2,17 +2,16 @@
 @import './variables';
 
 .ActionMenu {
+  @include print-hidden;
+  // Needed for JS calculations
+  width: 100%;
+
   &:not(.rollup) {
     margin-left: var(--p-override-zero, -$menu-action-padding-x);
   }
 }
 
-.ActionsLayout {
+.newDesignLanguage {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
-  > * {
-    flex: 0 0 auto;
-  }
+  justify-content: flex-end;
 }

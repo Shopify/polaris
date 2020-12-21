@@ -1,12 +1,4 @@
 node_modules
 /build
-/build-intermediate
-/docs
-/esnext
-/types
-/index.*
-/styles.css
-/styles.min.css
-/styles.scss
-/styles
+/dist
 /src/styles/polaris-tokens

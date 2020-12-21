@@ -1,4 +1,5 @@
 import React, {
+  createRef,
   useState,
   useRef,
   useCallback,
@@ -8,14 +9,7 @@ import React, {
   Component,
 } from 'react';
 import debounce from 'lodash/debounce';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
-import {
-  DragDropMajorMonotone,
-  CircleAlertMajorMonotone,
-} from '@shopify/polaris-icons';
+import {DragDropMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
@@ -145,6 +139,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   const node = useRef<HTMLDivElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const adjustSize = useCallback(
     debounce(
       () => {
@@ -288,18 +283,18 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
     if (!dropNode) return;
 
-    addEventListener(dropNode, 'drop', handleDrop);
-    addEventListener(dropNode, 'dragover', handleDragOver);
-    addEventListener(dropNode, 'dragenter', handleDragEnter);
-    addEventListener(dropNode, 'dragleave', handleDragLeave);
-    addEventListener(window, 'resize', adjustSize);
+    dropNode.addEventListener('drop', handleDrop);
+    dropNode.addEventListener('dragover', handleDragOver);
+    dropNode.addEventListener('dragenter', handleDragEnter);
+    dropNode.addEventListener('dragleave', handleDragLeave);
+    window.addEventListener('resize', adjustSize);
 
     return () => {
-      removeEventListener(dropNode, 'drop', handleDrop);
-      removeEventListener(dropNode, 'dragover', handleDragOver);
-      removeEventListener(dropNode, 'dragenter', handleDragEnter);
-      removeEventListener(dropNode, 'dragleave', handleDragLeave);
-      removeEventListener(window, 'resize', adjustSize);
+      dropNode.removeEventListener('drop', handleDrop);
+      dropNode.removeEventListener('dragover', handleDragOver);
+      dropNode.removeEventListener('dragenter', handleDragEnter);
+      dropNode.removeEventListener('dragleave', handleDragLeave);
+      window.removeEventListener('resize', adjustSize);
     };
   }, [
     dropOnPage,
@@ -352,12 +347,12 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     (active || dragging) &&
     (!internalError || !error) &&
     overlay &&
-    overlayMarkup(DragDropMajorMonotone, 'indigo', overlayTextWithDefault);
+    overlayMarkup(DragDropMajor, 'indigo', overlayTextWithDefault);
 
   const dragErrorOverlay =
     dragging &&
     (internalError || error) &&
-    overlayMarkup(CircleAlertMajorMonotone, 'red', errorOverlayTextWithDefault);
+    overlayMarkup(CircleAlertMajor, 'red', errorOverlayTextWithDefault);
 
   const labelValue =
     label || i18n.translate('Polaris.DropZone.FileUpload.label');
@@ -466,7 +461,7 @@ interface DropZoneInputProps {
 // Due to security reasons, browsers do not allow file inputs to be opened artificially.
 // For example `useEffect(() => { ref.click() })`. Oddly enough react class-based components bi-pass this.
 class DropZoneInput extends Component<DropZoneInputProps, never> {
-  private fileInputNode = React.createRef<HTMLInputElement>();
+  private fileInputNode = createRef<HTMLInputElement>();
 
   componentDidMount() {
     this.props.openFileDialog && this.triggerFileDialog();

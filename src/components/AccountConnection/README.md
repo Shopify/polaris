@@ -111,7 +111,6 @@ function AccountConnectionExample() {
   const accountName = connected ? 'Jane Appleseed' : '';
 
   const handleAction = useCallback(() => {
-    const newConnected = !connected;
     setConnected((connected) => !connected);
   }, [connected]);
 

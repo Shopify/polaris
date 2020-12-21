@@ -20,7 +20,8 @@
         "attention": "注意",
         "new": "新規",
         "critical": "クリティカル"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "読み込んでいます",
@@ -72,6 +73,15 @@
         "friday": "金",
         "saturday": "土",
         "sunday": "日"
+      },
+      "days": {
+        "monday": "月曜日",
+        "tuesday": "火曜日",
+        "wednesday": "水曜日",
+        "thursday": "木曜日",
+        "friday": "金曜日",
+        "saturday": "土曜日",
+        "sunday": "日曜日"
       }
     },
     "DiscardConfirmationModal": {
@@ -122,7 +132,7 @@
       "moreFiltersWithCount": "詳細な絞り込み ({count})"
     },
     "Modal": {
-      "iFrameTitle": "ボディのマークアップ",
+      "iFrameTitle": "ボディマークアップ",
       "modalWarning": "これらの必要なプロパティがモーダルにありません: {missingProps}"
     },
     "Pagination": {
@@ -141,8 +151,8 @@
       "showing": "{itemsCount}個の{resource}を表示しています",
       "loading": "{resource}を読み込んでいます",
       "selected": "{selectedItemsCount}個を選択済",
-      "allItemsSelected": "ストアにあるすべての{itemsLength}{resourceNamePlural}が選択されています。",
-      "selectAllItems": "ストアにあるすべての{itemsLength}{resourceNamePlural}を選択する",
+      "allItemsSelected": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}が選択されています。",
+      "selectAllItems": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}を選択する",
       "emptySearchResultTitle": "{resourceNamePlural}が見つかりませんでした",
       "emptySearchResultDescription": "絞り込みや検索語を変更してください",
       "selectButtonText": "選択する",
@@ -204,7 +214,9 @@
           "on_or_after": "{date}以後"
         }
       },
-      "showingTotalCount": "{totalItemsCount}件の{resource}中、{itemsCount}件を表示中"
+      "showingTotalCount": "{totalItemsCount}件の{resource}中、{itemsCount}件を表示中",
+      "allFilteredItemsSelected": "この絞り込みの{itemsLength}と{resourceNamePlural}がすべて選択されます。",
+      "selectAllFilteredItems": "この絞り込みの{itemsLength}と{resourceNamePlural}をすべて選択する"
     },
     "SkeletonPage": {
       "loadingLabel": "ページの読み込み中"
@@ -279,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "その他の操作"
     }
   }
 }

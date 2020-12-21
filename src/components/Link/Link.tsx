@@ -23,6 +23,8 @@ export interface LinkProps {
   monochrome?: boolean;
   /** Callback when a link is clicked */
   onClick?(): void;
+  /** Descriptive text to be read to screenreaders */
+  accessibilityLabel?: string;
 }
 
 export function Link({
@@ -32,6 +34,7 @@ export function Link({
   external,
   id,
   monochrome,
+  accessibilityLabel,
 }: LinkProps) {
   const i18n = useI18n();
   let childrenMarkup = children;
@@ -43,14 +46,14 @@ export function Link({
     );
 
     childrenMarkup = (
-      <React.Fragment>
+      <>
         {children}
         <span className={styles.IconLockup}>
           <span className={styles.IconLayout}>
             <Icon accessibilityLabel={iconLabel} source={ExternalSmallMinor} />
           </span>
         </span>
-      </React.Fragment>
+      </>
     );
   }
 
@@ -72,11 +75,18 @@ export function Link({
             url={url}
             external={external}
             id={id}
+            aria-label={accessibilityLabel}
           >
             {childrenMarkup}
           </UnstyledLink>
         ) : (
-          <button type="button" onClick={onClick} className={className} id={id}>
+          <button
+            type="button"
+            onClick={onClick}
+            className={className}
+            id={id}
+            aria-label={accessibilityLabel}
+          >
             {childrenMarkup}
           </button>
         );

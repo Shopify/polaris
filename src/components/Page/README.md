@@ -23,9 +23,6 @@ keywords:
   - outer wrapper
   - page actions
   - page layouts
-  - easdk
-  - shopify app bridge
-  - embedded app
   - android
   - ios
 ---
@@ -33,53 +30,6 @@ keywords:
 # Page
 
 Use to build the outer wrapper of a page, including the page title and associated actions.
-
----
-
-## Use in an embedded application (deprecated)
-
-Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the page component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
-
-Note in the props table that a number of properties are only available in stand-alone applications, and won’t work in an embedded context. Configure your application’s icon and navigation in the [Shopify Partner Dashboard](https://partners.shopify.com) app setup section. To help visualize the page component in an embedded application, we’ve provided the following screenshot.
-
-![Screenshot of page component in an embedded application](/public_images/embedded/page/page@2x.jpg)
-
-```jsx
-ReactDOM.render(
-  <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
-    <Page
-      breadcrumbs={[{content: 'Products'}]}
-      title="Product reviews"
-      primaryAction={{
-        content: 'Save',
-        disabled: true,
-      }}
-      secondaryActions={[{content: 'Duplicate'}, {content: 'Upgrade'}]}
-      actionGroups={[
-        {
-          title: 'Promote',
-          actions: [
-            {
-              content: 'Share on Facebook',
-              onAction: this.performFacebookShare,
-            },
-            {
-              content: 'Share on Pinterest',
-              onAction: this.performPinterestShare,
-            },
-          ],
-        },
-      ]}
-    >
-      <p>Page content</p>
-    </Page>
-  </AppProvider>,
-);
-```
-
-#### Deprecation rationale
-
-As of v3.17.0, using `Page` to render an embedded app title bar is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`TitleBar`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/titlebar) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) combined with `Page` instead.
 
 ---
 
@@ -199,8 +149,12 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
     {
       content: 'Duplicate',
       accessibilityLabel: 'Secondary action label',
+      onAction: () => alert('Duplicate action'),
     },
-    {content: 'View on your store'},
+    {
+      content: 'View on your store',
+      onAction: () => alert('View on your store action'),
+    },
   ]}
   actionGroups={[
     {
@@ -210,7 +164,7 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
         {
           content: 'Share on Facebook',
           accessibilityLabel: 'Individual action label',
-          onAction: () => {},
+          onAction: () => alert('Share on Facebook action'),
         },
       ],
     },
@@ -247,6 +201,32 @@ Use for building any page on iOS.
 ![Page on iOS](/public_images/components/Page/ios/with-header@2x.png)
 
 <!-- /content-for -->
+
+### Page with custom primary action
+
+<!-- example-for: web -->
+
+Use to create a custom primary action.
+
+```jsx
+<Page
+  breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+  title="General"
+  primaryAction={
+    <Button
+      primary
+      connectedDisclosure={{
+        accessibilityLabel: 'Other save actions',
+        actions: [{content: 'Save as new'}],
+      }}
+    >
+      Save
+    </Button>
+  }
+>
+  <p>Page content</p>
+</Page>
+```
 
 ### Page without primary action in header
 
@@ -495,4 +475,3 @@ Title metadata appears immediately after the page’s title. Use it to communica
 - To lay out the content within a page, use the [layout component](https://polaris.shopify.com/components/structure/layout)
 - To add pagination within the context of a list or other page content, use the [pagination component](https://polaris.shopify.com/components/navigation/pagination)
 - To add primary and secondary calls to action at the bottom of a page, see the [page actions component](https://polaris.shopify.com/components/structure/page-actions)
-- When you use the page component within an [embedded app](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md), the [app provider component](https://polaris.shopify.com/components/structure/app-provider) delegates rendering to the Shopify App Bridge

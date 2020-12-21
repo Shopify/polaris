@@ -5,16 +5,12 @@ import {
   ReactWrapper,
   trigger,
 } from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities/react-testing';
 import {TextContainer, TextField, EventListener} from 'components';
 
 import {Key} from '../../../../../types';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
-
-jest.mock('@shopify/javascript-utilities/fastdom', () => ({
-  ...jest.requireActual('@shopify/javascript-utilities/fastdom'),
-  write: jest.fn((callback) => callback()),
-}));
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -26,6 +22,8 @@ describe('<PopoverOverlay />', () => {
   let addEventListener: jest.SpyInstance;
   let removeEventListener: jest.SpyInstance;
 
+  let rafSpy: jest.SpyInstance;
+
   beforeEach(() => {
     addEventListener = jest.spyOn(document, 'addEventListener');
     addEventListener.mockImplementation((event, callback) => {
@@ -36,6 +34,9 @@ describe('<PopoverOverlay />', () => {
     removeEventListener.mockImplementation((event) => {
       listenerMap[event] = noop;
     });
+
+    rafSpy = jest.spyOn(window, 'requestAnimationFrame');
+    rafSpy.mockImplementation((callback) => callback());
   });
 
   afterEach(() => {
@@ -45,6 +46,8 @@ describe('<PopoverOverlay />', () => {
 
     addEventListener.mockRestore();
     removeEventListener.mockRestore();
+
+    rafSpy.mockRestore();
   });
 
   const activator = document.createElement('button');
@@ -156,6 +159,26 @@ describe('<PopoverOverlay />', () => {
         activator={activator}
         onClose={noop}
         fixed
+        preferInputActivator={false}
+      >
+        {children}
+      </PopoverOverlay>,
+    );
+
+    expect(
+      popoverOverlay.find(PositionedOverlay).prop('preferInputActivator'),
+    ).toBe(false);
+  });
+
+  it("doesn't include a tabindex prop when preventAutofocus is true", () => {
+    const popoverOverlay = mountWithAppProvider(
+      <PopoverOverlay
+        active
+        id="PopoverOverlay-1"
+        activator={activator}
+        onClose={noop}
+        fixed
+        preventAutofocus
         preferInputActivator={false}
       >
         {children}
@@ -341,6 +364,71 @@ describe('<PopoverOverlay />', () => {
 
       expect(focusSpy).toHaveBeenCalledTimes(1);
       expect(focusSpy).toHaveBeenCalledWith({preventScroll: true});
+    });
+
+    it('focuses the container when autofocusTarget is not set', () => {
+      const id = 'PopoverOverlay-1';
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay active id={id} activator={activator} onClose={noop} />,
+      );
+
+      const focusTarget = popoverOverlay.find('div', {id})!.domNode;
+      expect(document.activeElement).toBe(focusTarget);
+    });
+
+    it('focuses the container when autofocusTarget is set to Container', () => {
+      const id = 'PopoverOverlay-1';
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id={id}
+          activator={activator}
+          onClose={noop}
+          autofocusTarget="container"
+        />,
+      );
+
+      const focusTarget = popoverOverlay.find('div', {id})!.domNode;
+      expect(document.activeElement).toBe(focusTarget);
+    });
+
+    it('focuses the first focusbale node when autofocusTarget is set to FirstNode', () => {
+      mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={noop}
+          autofocusTarget="first-node"
+        >
+          <p>Hello world</p>
+        </PopoverOverlay>,
+      );
+
+      expect(document.activeElement?.className).toBe(
+        'Pane Scrollable vertical',
+      );
+    });
+
+    it('does not focus when autofocusTarget is set to None', () => {
+      const id = 'PopoverOverlay-1';
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id={id}
+          activator={activator}
+          onClose={noop}
+          autofocusTarget="none"
+        >
+          <input type="text" />
+        </PopoverOverlay>,
+      );
+
+      const focusTargetContainer = popoverOverlay.find('div', {id})!.domNode;
+      const focusTargetFirstNode = popoverOverlay.find('input', {})!.domNode;
+
+      expect(document.activeElement).not.toBe(focusTargetContainer);
+      expect(document.activeElement).not.toBe(focusTargetFirstNode);
     });
   });
 });

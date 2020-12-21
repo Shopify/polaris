@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {isValidElement} from 'react';
 
 import type {DisableableAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
@@ -18,7 +18,7 @@ export function Header({children, title, actions}: HeaderProps) {
     <ButtonGroup>{buttonsFrom(actions, {plain: true})}</ButtonGroup>
   ) : null;
 
-  const titleMarkup = React.isValidElement(title) ? (
+  const titleMarkup = isValidElement(title) ? (
     title
   ) : (
     <Heading>{title}</Heading>

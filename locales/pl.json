@@ -20,7 +20,8 @@
         "attention": "Uwaga",
         "new": "Nowe",
         "critical": "Krytyczny"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Ładowanie",
@@ -72,6 +73,15 @@
         "friday": "Pt",
         "saturday": "Sb",
         "sunday": "Nd"
+      },
+      "days": {
+        "monday": "Poniedziałek",
+        "tuesday": "Wtorek",
+        "wednesday": "Środa",
+        "thursday": "Czwartek",
+        "friday": "Piątek",
+        "saturday": "Sobota",
+        "sunday": "Niedziela"
       }
     },
     "DiscardConfirmationModal": {
@@ -182,7 +192,7 @@
         "SelectOptions": {
           "PastWeek": "w ostatnim tygodniu",
           "PastMonth": "w ostatnim miesiącu",
-          "PastQuarter": "w ostatnich 3 miesiącach",
+          "PastQuarter": "w ciągu ostatnich 3 miesięcy",
           "PastYear": "w ostatnim roku",
           "ComingWeek": "w następnym tygodniu",
           "ComingMonth": "w następnym miesiącu",
@@ -194,7 +204,7 @@
         "FilterLabelForValue": {
           "past_week": "w ostatnim tygodniu",
           "past_month": "w ostatnim miesiącu",
-          "past_quarter": "w ostatnich 3 miesiącach",
+          "past_quarter": "w ciągu ostatnich 3 miesięcy",
           "past_year": "w ostatnim roku",
           "coming_week": "w następnym tygodniu",
           "coming_month": "w następnym miesiącu",
@@ -204,7 +214,9 @@
           "on_or_after": "po {date}"
         }
       },
-      "showingTotalCount": "Wyświetlanie {itemsCount} z {totalItemsCount} {resource}"
+      "showingTotalCount": "Wyświetlanie {itemsCount} z {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze są zaznaczone.",
+      "selectAllFilteredItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze"
     },
     "SkeletonPage": {
       "loadingLabel": "Ładowanie strony"
@@ -275,10 +287,15 @@
           },
           "seconds": {
             "other": "Liczba sekund: {secondCount}",
-            "one": "{secondCount} sekunda"
+            "one": "{secondCount} sekunda",
+            "few": "Liczba sekund: {secondCount}",
+            "many": "Liczba sekund: {secondCount}"
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Więcej czynności"
     }
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {createMount} from 'test-utilities';
 
 import {ThemeProvider} from '../ThemeProvider';
@@ -34,7 +34,8 @@ describe('<ThemeProvider />', () => {
 
   it('passes context', () => {
     const Child: React.SFC = () => {
-      const polarisTheme = React.useContext(ThemeContext);
+      const polarisTheme = useContext(ThemeContext);
+      // eslint-disable-next-line jest/no-if
       return polarisTheme && polarisTheme.logo ? <div /> : null;
     };
 
@@ -91,7 +92,7 @@ describe('<ThemeProvider />', () => {
     expect(themeProvider.find('div')).toHaveReactProps({
       style: expect.objectContaining({
         '--top-bar-background': '#108043',
-        '--top-bar-background-lighter': 'hsla(147, 63%, 43%, 1)',
+        '--top-bar-background-lighter': 'hsla(147.32, 62.78%, 43.24%, 1)',
         '--top-bar-color': 'rgb(255, 255, 255)',
         '--top-bar-border': 'rgb(196, 205, 213)',
       }),
@@ -126,7 +127,7 @@ describe('<ThemeProvider />', () => {
     expect(themeProvider.find('div')).toHaveReactProps({
       style: expect.objectContaining({
         '--top-bar-background': '#021123',
-        '--top-bar-background-lighter': 'hsla(213, 74%, 22%, 1)',
+        '--top-bar-background-lighter': 'hsla(212.73, 74.19%, 22.25%, 1)',
         '--top-bar-color': 'rgb(255, 255, 255)',
         '--top-bar-border': 'rgb(196, 205, 213)',
       }),
@@ -189,10 +190,39 @@ describe('<ThemeProvider />', () => {
   });
 
   describe('when nested', () => {
-    it('sets a default theme', () => {
+    it('does not render custom properties if themes are identical', () => {
       const themeProvider = mountWithNewDesignLanguage(
         <ThemeProvider theme={{}}>
           <ThemeProvider theme={{}}>
+            <p>Hello</p>
+          </ThemeProvider>
+        </ThemeProvider>,
+        {newDesignLanguage: true},
+      );
+
+      expect(themeProvider.findAll('div')[1]).toHaveReactProps({
+        style: expect.not.objectContaining({
+          '--p-background': expect.any(String),
+          '--p-text': expect.any(String),
+          '--p-interactive': expect.any(String),
+          '--p-action-secondary': expect.any(String),
+          '--p-action-primary': expect.any(String),
+          '--p-action-critical': expect.any(String),
+          '--p-surface-warning': expect.any(String),
+          '--p-surface-highlight': expect.any(String),
+          '--p-surface-success': expect.any(String),
+          '--p-decorative-one-text': expect.any(String),
+        }),
+      });
+    });
+
+    it('renders custom properties if themes are identical but alwaysRenderCustomProperties is true', () => {
+      const themeProvider = mountWithNewDesignLanguage(
+        <ThemeProvider theme={{colorScheme: 'dark'}}>
+          <ThemeProvider
+            theme={{colorScheme: 'dark'}}
+            alwaysRenderCustomProperties
+          >
             <p>Hello</p>
           </ThemeProvider>
         </ThemeProvider>,
@@ -234,7 +264,7 @@ describe('<ThemeProvider />', () => {
       );
 
       expect(themeProvider.findAll('div')[1]).toHaveReactProps({
-        style: expect.objectContaining({
+        style: expect.not.objectContaining({
           '--p-surface': 'rgba(255, 255, 255, 1)',
         }),
       });

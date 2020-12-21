@@ -20,7 +20,8 @@
         "attention": "Bemærk",
         "new": "Nye",
         "critical": "Kritisk"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Indlæser",
@@ -29,7 +30,7 @@
     "Common": {
       "checkbox": "afkrydsningsfelt",
       "undo": "Fortryd",
-      "cancel": "Annullér",
+      "cancel": "Annuller",
       "newWindowAccessibilityHint": "(åbner et nyt vindue)",
       "clear": "Ryd",
       "close": "Luk",
@@ -72,6 +73,15 @@
         "friday": "Fr",
         "saturday": "Lø",
         "sunday": "Sø"
+      },
+      "days": {
+        "monday": "Mandag",
+        "tuesday": "Tirsdag",
+        "wednesday": "Onsdag",
+        "thursday": "Torsdag",
+        "friday": "Fredag",
+        "saturday": "Lørdag",
+        "sunday": "Søndag"
       }
     },
     "DiscardConfirmationModal": {
@@ -204,7 +214,9 @@
           "on_or_after": "efter {date}"
         }
       },
-      "showingTotalCount": "Viser {itemsCount} af {totalItemsCount} {resource}"
+      "showingTotalCount": "Viser {itemsCount} af {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} i dette filter er valgt.",
+      "selectAllFilteredItems": "Vælg alle mere end {itemsLength} {resourceNamePlural} i dette filter"
     },
     "SkeletonPage": {
       "loadingLabel": "Indlæser side"
@@ -279,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Flere handlinger"
     }
   }
 }

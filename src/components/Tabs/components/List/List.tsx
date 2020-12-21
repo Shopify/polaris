@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
@@ -13,7 +13,7 @@ export interface ListProps {
   onKeyPress?(event: React.KeyboardEvent<HTMLElement>): void;
 }
 
-export class List extends React.PureComponent<ListProps, never> {
+export class List extends PureComponent<ListProps, never> {
   static contextType = FeaturesContext;
   context!: React.ContextType<typeof FeaturesContext>;
 
@@ -61,12 +61,7 @@ function noop() {}
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
-  if (
-    key === 'ArrowUp' ||
-    key === 'ArrowDown' ||
-    key === 'ArrowLeft' ||
-    key === 'ArrowRight'
-  ) {
+  if (key === 'ArrowLeft' || key === 'ArrowRight') {
     event.preventDefault();
     event.stopPropagation();
   }

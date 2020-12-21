@@ -1,13 +1,15 @@
 import React from 'react';
 
-import {useFeatures} from '../../utilities/features';
 import {classNames, variationName} from '../../utilities/css';
+import {isNewDesignLanguageColor} from '../../utilities/color-new-design-language';
+import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
-import {IconProps, isNewDesignLanguageColor} from '../../types';
+import type {IconProps} from '../../types';
 
 import styles from './Icon.scss';
 
 const COLORS_WITH_BACKDROPS = [
+  'blueDark',
   'teal',
   'tealDark',
   'greenDark',
@@ -41,6 +43,13 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
         color,
         colorsWithBackDrops: COLORS_WITH_BACKDROPS.join(', '),
       }),
+    );
+  }
+
+  if (color && !newDesignLanguage && isNewDesignLanguageColor(color)) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'You have selected a color meant to be used in the new design language but new design language is not enabled.',
     );
   }
 

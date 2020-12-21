@@ -17,12 +17,11 @@ $thumbnail-sizes: (
 }
 
 @mixin skeleton-shimmer {
-  :global {
-    // This is a global animation, defined in /src/styles/global.scss
-    // stylelint-disable-next-line no-unknown-animations
-    animation: polaris-SkeletonShimmerAnimation $skeleton-shimmer-duration
-      linear infinite alternate;
-  }
+  // This is a global animation, defined in /src/components/AppProvider/AppProvider.scss
+  // See that file for why this is referenced as a custom property instead of
+  // by name
+  animation: var(--polaris-animation-skeleton-shimmer)
+    $skeleton-shimmer-duration linear infinite alternate;
   will-change: opacity;
 }
 

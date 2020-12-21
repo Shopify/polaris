@@ -1,25 +1,20 @@
 import React, {useEffect, useRef} from 'react';
 import {
+  FlagMajor,
   CirclePlusMinor,
-  CircleAlertMajorTwotone,
-  CircleDisabledMajorTwotone,
-  CircleTickMajorTwotone,
-  CircleInformationMajorTwotone,
-  FlagMajorTwotone,
-  CircleTickMajorFilled,
-  CircleInformationMajorFilled,
-  CircleAlertMajorFilled,
-  CircleDisabledMajorFilled,
+  CircleTickMajor,
+  CircleInformationMajor,
+  CircleAlertMajor,
+  DiamondAlertMajor,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'test-utilities/react-testing';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {BannerContext} from 'utilities/banner-context';
-import {Button, Icon, UnstyledLink, Heading} from 'components';
+import {Button, Icon, UnstyledButton, UnstyledLink, Heading} from 'components';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
-
-import {Banner} from '..';
+import {Banner, BannerHandles} from '../Banner';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -37,24 +32,39 @@ describe('<Banner />', () => {
     expect(banner.find(Icon).prop('source')).toBe(CirclePlusMinor);
   });
 
-  it('uses a greenDark circleCheckMark if status is success', () => {
+  it('uses a greenDark circleCheckMark if status is success and sets a status aria role', () => {
     const banner = mountWithAppProvider(<Banner status="success" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleTickMajorTwotone);
+    expect(banner.find(Icon).prop('source')).toBe(CircleTickMajor);
     expect(banner.find(Icon).prop('color')).toBe('greenDark');
+    expect(banner.find('div').first().prop('role')).toBe('status');
   });
 
-  it('uses a tealDark circleInformation if status is info', () => {
+  it('uses a tealDark circleInformation if status is info and sets a status aria role', () => {
     const banner = mountWithAppProvider(<Banner status="info" />);
-    expect(banner.find(Icon).prop('source')).toBe(
-      CircleInformationMajorTwotone,
-    );
+    expect(banner.find(Icon).prop('source')).toBe(CircleInformationMajor);
     expect(banner.find(Icon).prop('color')).toBe('tealDark');
+    expect(banner.find('div').first().prop('role')).toBe('status');
   });
 
-  it('uses a yellowDark circleAlert if status is warning', () => {
+  it('uses a yellowDark circleAlert if status is warning and sets an alert aria role', () => {
     const banner = mountWithAppProvider(<Banner status="warning" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleAlertMajorTwotone);
+    expect(banner.find(Icon).prop('source')).toBe(CircleAlertMajor);
     expect(banner.find(Icon).prop('color')).toBe('yellowDark');
+    expect(banner.find('div').first().prop('role')).toBe('alert');
+  });
+
+  it('uses a redDark circleBarred if status is critical and sets an alert aria role', () => {
+    const banner = mountWithAppProvider(<Banner status="critical" />);
+    expect(banner.find(Icon).prop('source')).toBe(DiamondAlertMajor);
+    expect(banner.find(Icon).prop('color')).toBe('redDark');
+    expect(banner.find('div').first().prop('role')).toBe('alert');
+  });
+
+  it('uses a default icon and aria role', () => {
+    const banner = mountWithAppProvider(<Banner />);
+    expect(banner.find(Icon).prop('source')).toBe(FlagMajor);
+    expect(banner.find(Icon).prop('color')).toBe('inkLighter');
+    expect(banner.find('div').first().prop('role')).toBe('status');
   });
 
   it('disables aria-live when stopAnnouncements is enabled', () => {
@@ -69,16 +79,90 @@ describe('<Banner />', () => {
     expect(quietBanner).toBeTruthy();
   });
 
-  it('uses a redDark circleBarred if status is critical', () => {
-    const banner = mountWithAppProvider(<Banner status="critical" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleDisabledMajorTwotone);
-    expect(banner.find(Icon).prop('color')).toBe('redDark');
+  describe('action', () => {
+    it('renders an outline button', () => {
+      const bannerWithAction = mountWithAppProvider(
+        <Banner
+          title="Test"
+          action={{
+            content: 'Primary action',
+          }}
+        >
+          Hello World
+        </Banner>,
+      );
+
+      const bannerAction = bannerWithAction.find(Button);
+
+      expect(bannerAction.exists()).toBeTruthy();
+      expect(bannerAction.text()).toBe('Primary action');
+    });
+
+    it('renders an unstyled button when newDesignLanguage is true', () => {
+      const bannerWithAction = mountWithAppProvider(
+        <Banner
+          title="Test"
+          action={{
+            content: 'Primary action',
+          }}
+        >
+          Hello World
+        </Banner>,
+        {
+          features: {newDesignLanguage: true},
+        },
+      );
+
+      const bannerAction = bannerWithAction.find(UnstyledButton);
+
+      expect(bannerAction.exists()).toBeTruthy();
+      expect(bannerAction.text()).toBe('Primary action');
+    });
   });
 
-  it('uses a default icon', () => {
-    const banner = mountWithAppProvider(<Banner />);
-    expect(banner.find(Icon).prop('source')).toBe(FlagMajorTwotone);
-    expect(banner.find(Icon).prop('color')).toBe('inkLighter');
+  describe('secondaryAction', () => {
+    it('renders when a primary action is provided', () => {
+      const bannerWithActions = mountWithAppProvider(
+        <Banner
+          title="Test"
+          action={{
+            content: 'Primary action',
+          }}
+          secondaryAction={{
+            content: 'Secondary external link',
+            url: 'https://test.com',
+            external: true,
+          }}
+        >
+          Hello World
+        </Banner>,
+      );
+
+      const bannerSecondaryAction = bannerWithActions.find(UnstyledLink);
+
+      expect(bannerSecondaryAction.exists()).toBeTruthy();
+      expect(bannerSecondaryAction.text()).toBe('Secondary external link');
+    });
+
+    it('renders when a primary action is not provided', () => {
+      const bannerWithActions = mountWithAppProvider(
+        <Banner
+          title="Test"
+          secondaryAction={{
+            content: 'Secondary external link',
+            url: 'https://test.com',
+            external: true,
+          }}
+        >
+          Hello World
+        </Banner>,
+      );
+
+      const bannerSecondaryAction = bannerWithActions.find(UnstyledLink);
+
+      expect(bannerSecondaryAction.exists()).toBeTruthy();
+      expect(bannerSecondaryAction.text()).toBe('Secondary external link');
+    });
   });
 
   describe('onDismiss()', () => {
@@ -136,7 +220,7 @@ describe('<Banner />', () => {
   describe('focus', () => {
     it('exposes a function that allows the banner to be programmatically focused', () => {
       function Test() {
-        const banner = useRef<Banner>(null);
+        const banner = useRef<BannerHandles>(null);
 
         useEffect(() => {
           banner.current && banner.current.focus();
@@ -145,11 +229,11 @@ describe('<Banner />', () => {
         return <Banner ref={banner} status="critical" />;
       }
 
-      const div = mountWithAppProvider(<Test />)
-        .find('div')
-        .filterWhere((element) => element.prop('tabIndex') === 0);
+      const testComponent = mountWithApp(<Test />);
 
-      expect(div.getDOMNode()).toBe(document.activeElement);
+      expect(document.activeElement).toBe(
+        testComponent.find('div', {tabIndex: 0})!.domNode,
+      );
     });
 
     describe('Focus className', () => {
@@ -217,35 +301,20 @@ describe('<Banner />', () => {
 
   describe('Icon', () => {
     it.each([
-      [
-        'Banner has a default status',
-        null,
-        'base',
-        CircleInformationMajorFilled,
-      ],
-      [
-        'Banner has a success status',
-        'success',
-        'success',
-        CircleTickMajorFilled,
-      ],
+      ['Banner has a default status', null, 'base', CircleInformationMajor],
+      ['Banner has a success status', 'success', 'success', CircleTickMajor],
       [
         'Banner has an info status',
         'info',
         'highlight',
-        CircleInformationMajorFilled,
+        CircleInformationMajor,
       ],
-      [
-        'Banner has a warning status',
-        'warning',
-        'warning',
-        CircleAlertMajorFilled,
-      ],
+      ['Banner has a warning status', 'warning', 'warning', CircleAlertMajor],
       [
         'Banner has a critical status',
         'critical',
         'critical',
-        CircleDisabledMajorFilled,
+        DiamondAlertMajor,
       ],
     ])(
       'Sets Icon props when: %s',

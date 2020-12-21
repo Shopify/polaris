@@ -49,7 +49,30 @@ Use as a play button for a video player within a media card.
 >
   <VideoThumbnail
     videoLength={80}
-    thumbnailUrl="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+    thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+  />
+</MediaCard>
+```
+
+### Video thumbnail with progress
+
+Use to indicate the video’s play progress in relation to its duration.
+
+```jsx
+<MediaCard
+  title="Turn your side-project into a business"
+  primaryAction={{
+    content: 'Learn more',
+    onAction: () => {},
+  }}
+  description={`In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.`}
+  popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
+>
+  <VideoThumbnail
+    videoLength={80}
+    videoProgress={45}
+    showVideoProgress
+    thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
   />
 </MediaCard>
 ```

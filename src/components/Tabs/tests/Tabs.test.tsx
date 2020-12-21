@@ -9,6 +9,13 @@ import {getVisibleAndHiddenTabIndices} from '../utilities';
 import {FeaturesContext} from '../../../utilities/features';
 import {Popover} from '../../Popover';
 
+jest.mock('../../Portal', () => ({
+  ...(jest.requireActual('../../Portal') as any),
+  Portal() {
+    return null;
+  },
+}));
+
 describe('<Tabs />', () => {
   const tabs: TabsProps['tabs'] = [
     {content: 'Tab 1', id: 'tab-1'},
@@ -191,6 +198,29 @@ describe('<Tabs />', () => {
         );
       });
     });
+
+    it('sets the content correctly if given React nodes', () => {
+      const tabsWithContent = [
+        {content: <span>Tab 1</span>, id: 'tab-1'},
+        {
+          content: (
+            <span>
+              Tab <b>2</b>
+            </span>
+          ),
+          id: 'tab-2',
+        },
+      ];
+      const wrapper = mountWithAppProvider(
+        <Tabs {...mockProps} tabs={tabsWithContent} />,
+      );
+
+      tabsWithContent.forEach((tab, index) => {
+        expect(wrapper.find(Tab).at(index).prop('children')).toStrictEqual(
+          tab.content,
+        );
+      });
+    });
   });
 
   describe('selected', () => {
@@ -336,37 +366,6 @@ describe('<Tabs />', () => {
       });
     });
 
-    describe('ArrowDown', () => {
-      it('shifts focus to the next tab when pressing ArrowDown', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-      });
-
-      it('shifts focus to the first tab when pressing ArrowDown on the last tab', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-      });
-    });
-
     describe('ArrowLeft', () => {
       it('shifts focus to the last tab when pressing ArrowLeft', () => {
         const tabs = mountWithAppProvider(
@@ -376,34 +375,6 @@ describe('<Tabs />', () => {
           key: 'ArrowLeft',
         });
         expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(2);
-      });
-    });
-
-    describe('ArrowUp', () => {
-      it('shifts focus to the last tab when pressing ArrowUp', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} selected={0} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowUp',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(2);
-      });
-
-      it('shifts focus to the first tab when pressing ArrowUp on the second tab', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowLeft',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
       });
     });
   });
@@ -435,6 +406,15 @@ describe('<Tabs />', () => {
   });
 
   describe('<Popover />', () => {
+    it('renders disclosureText when provided', () => {
+      const disclosureText = 'More views';
+      const wrapper = mountWithApp(
+        <Tabs {...mockProps} disclosureText={disclosureText} />,
+      );
+
+      expect(wrapper).toContainReactText(disclosureText);
+    });
+
     it('passes preferredPosition below to the Popover', () => {
       const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
       const tabMeasurer = tabs.find(TabMeasurer);

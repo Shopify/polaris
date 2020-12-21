@@ -1,7 +1,11 @@
 @import '../../../../styles/common';
 
+$mobile-layout: 468px;
+$button-style-breakpoint: 768px;
+$medium-layout: 860px;
+$desktop-layout: 1080px;
 $individual-action-padding-x: (1.5 * spacing(tight));
-$action-menu-rollup-computed-width: icon-size();
+$action-menu-rollup-computed-width: rem(40px);
 
 .Header {
   @include page-header-layout;
@@ -10,16 +14,24 @@ $action-menu-rollup-computed-width: icon-size();
 
 .separator {
   padding-bottom: spacing();
-  border-bottom: border();
-
-  &.newDesignLanguage {
-    padding-bottom: spacing();
-    border-bottom: border();
-  }
+  border-bottom: var(--p-override-none, border());
 }
 
 .titleHidden {
   @include visually-hidden;
+}
+
+.TitleWrapper {
+  .newDesignLanguage & {
+    grid-area: title;
+    margin-top: spacing(extra-tight);
+    align-self: center;
+    flex: 1 1 auto;
+
+    @include breakpoint-after($mobile-layout) {
+      margin-top: 0;
+    }
+  }
 }
 
 ///
@@ -44,14 +56,37 @@ $action-menu-rollup-computed-width: icon-size();
   max-width: 100%;
 
   &.newDesignLanguage {
+    grid-area: breadcrumbs;
+    flex: 0 0 auto;
     margin-right: spacing();
   }
+
+  @include print-hidden;
 }
 
 .PaginationWrapper {
   flex: 0 0 auto;
   margin-left: auto;
   line-height: 1;
+
+  .newDesignLanguage & {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: spacing(extra-tight);
+    // stylelint-disable-next-line selector-max-combinators
+    button {
+      border: 1px solid var(--p-border-neutral-subdued);
+      box-shadow: none;
+      // stylelint-disable-next-line selector-max-combinators, selector-max-specificity
+      &:hover,
+      &:active,
+      &:focus {
+        border: 1px solid var(--p-border-neutral-subdued);
+      }
+    }
+  }
+
+  @include print-hidden;
 }
 
 .AdditionalNavigationWrapper {
@@ -63,6 +98,12 @@ $action-menu-rollup-computed-width: icon-size();
   @include page-content-when-not-fully-condensed {
     margin: 0 spacing(extra-loose);
   }
+
+  .newDesignLanguage & {
+    margin-right: 0;
+  }
+
+  @include print-hidden;
 }
 
 ///
@@ -94,6 +135,15 @@ $action-menu-rollup-computed-width: icon-size();
     margin-top: spacing();
   }
 
+  .newDesignLanguage & {
+    margin-top: 0;
+    margin-left: spacing(extra-tight);
+
+    @include breakpoint-after($button-style-breakpoint) {
+      margin-left: spacing();
+    }
+  }
+
   @include print-hidden;
 }
 
@@ -104,7 +154,7 @@ $action-menu-rollup-computed-width: icon-size();
   .mobileView & {
     position: absolute;
     top: spacing(loose) + (control-height() / 4);
-    right: 0;
+    right: spacing(loose);
     margin-top: 0;
 
     @include page-content-when-not-fully-condensed {
@@ -130,6 +180,10 @@ $action-menu-rollup-computed-width: icon-size();
 
   + .Row {
     margin-top: spacing();
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class
+    .newDesignLanguage & {
+      margin-top: spacing(extra-tight);
+    }
 
     // stylelint-disable-next-line selector-max-combinators, selector-max-class
     .mobileView & {
@@ -149,4 +203,93 @@ $action-menu-rollup-computed-width: icon-size();
   align-content: flex-end;
   align-items: center;
   margin-left: spacing(tight);
+}
+// Single row styles for new design language
+.RowCondensed {
+  .RightAlign {
+    grid-area: actions;
+    flex: 1 1 auto;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin-left: spacing();
+    // Necessary for flex to realize this container doesn't want to wrap
+    white-space: nowrap;
+
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators
+    .noBreadcrumbs & {
+      @include breakpoint-before($mobile-layout) {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.AdditionalMetaData {
+  .newDesignLanguage & {
+    @include breakpoint-after($mobile-layout) {
+      margin-left: spacing(loose) * 2 + spacing(tight) + spacing(extra-tight);
+    }
+  }
+  // stylelint-disable-next-line selector-max-class
+  .noBreadcrumbs.newDesignLanguage & {
+    margin-left: 0;
+  }
+
+  @include when-printing {
+    // stylelint-disable-next-line declaration-no-important
+    margin-left: 0 !important;
+  }
+}
+
+.Actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+@mixin condensed-layout {
+  .AdditionalMetaData {
+    margin-left: 0;
+  }
+
+  .RowCondensed {
+    display: grid;
+    gap: spacing(tight) spacing();
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 'breadcrumbs actions' 'title title';
+  }
+}
+
+.longTitle {
+  @include breakpoint-before($desktop-layout) {
+    @include condensed-layout;
+  }
+}
+
+.mediumTitle:not(.noBreadcrumbs) {
+  @include breakpoint-before($medium-layout) {
+    @include condensed-layout;
+  }
+}
+.mediumTitle.noBreadcrumbs {
+  // stylelint-disable-next-line selector-max-class
+  .TitleWrapper {
+    margin-top: 0;
+  }
+  // stylelint-disable-next-line selector-max-class
+  .RightAlign {
+    margin-bottom: spacing(extra-tight);
+  }
+  // stylelint-disable-next-line selector-max-class
+  .RowCondensed {
+    flex-wrap: wrap-reverse;
+    @include breakpoint-after(layout-width(page-with-nav)) {
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+.isSingleRow .RowCondensed {
+  gap: 0;
 }

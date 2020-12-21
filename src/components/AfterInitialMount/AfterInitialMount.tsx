@@ -11,5 +11,5 @@ export function AfterInitialMount({children, fallback = null}: Props) {
   const isMounted = useIsAfterInitialMount();
   const content = isMounted ? children : fallback;
 
-  return <React.Fragment>{content}</React.Fragment>;
+  return <>{content}</>;
 }

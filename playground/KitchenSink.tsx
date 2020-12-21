@@ -33,7 +33,7 @@ function filterExports([exportName]: [string, any]) {
 
 function StoryWithWrapper({children}: {children: React.ReactNode}) {
   return (
-    <React.Fragment>
+    <>
       {children}
       <hr
         style={{
@@ -41,6 +41,6 @@ function StoryWithWrapper({children}: {children: React.ReactNode}) {
           margin: 10,
         }}
       />
-    </React.Fragment>
+    </>
   );
 }

@@ -20,7 +20,8 @@
         "attention": "Atenção",
         "new": "Novo",
         "critical": "Crítico"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Carregando",
@@ -47,8 +48,8 @@
       "totalRowHeading": "total"
     },
     "DatePicker": {
-      "previousMonth": "Mostrar mês anterior, {previousMonthName} {showPreviousYear}",
-      "nextMonth": "Mostrar o próximo mês, {nextMonth} {nextYear}",
+      "previousMonth": "Exibir mês anterior, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Exibir o próximo mês, {nextMonth} {nextYear}",
       "today": "Hoje ",
       "months": {
         "january": "Janeiro",
@@ -72,6 +73,15 @@
         "friday": "Sex",
         "saturday": "Sáb",
         "sunday": "Dom"
+      },
+      "days": {
+        "monday": "Segunda",
+        "tuesday": "Terça",
+        "wednesday": "Quarta",
+        "thursday": "Quinta",
+        "friday": "Sexta",
+        "saturday": "Sábado",
+        "sunday": "Domingo"
       }
     },
     "DiscardConfirmationModal": {
@@ -155,7 +165,7 @@
       "Item": {
         "actionsDropdownLabel": "Ações para {accessibilityLabel}",
         "actionsDropdown": "Menu suspenso Ações",
-        "viewItem": "Visualizar informações de {itemName}"
+        "viewItem": "Ver informações de {itemName}"
       },
       "BulkActions": {
         "actionsActivatorLabel": "Ações",
@@ -204,7 +214,9 @@
           "on_or_after": "depois de {date}"
         }
       },
-      "showingTotalCount": "Mostrando {itemsCount} de {totalItemsCount} {resource}"
+      "showingTotalCount": "Mostrando {itemsCount} de {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Todos os {itemsLength} + {resourceNamePlural} neste filtro estão selecionados.",
+      "selectAllFilteredItems": "Selecionar todos os {itemsLength} + {resourceNamePlural} neste filtro"
     },
     "SkeletonPage": {
       "loadingLabel": "Página carregando"
@@ -279,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Mais ações"
     }
   }
 }

@@ -158,6 +158,42 @@ function ActionListWithMediaExample() {
 }
 ```
 
+### Action list with an icon and a suffix
+
+Use when the items benefit from an associated action or image, such as a list of products.
+
+```jsx
+function ActionListWithSuffixExample() {
+  const [active, setActive] = useState(true);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
+
+  return (
+    <div style={{height: '200px'}}>
+      <Popover active={active} activator={activator} onClose={toggleActive}>
+        <ActionList
+          items={[
+            {
+              content: 'Import file',
+              icon: ImportMinor,
+              suffix: <Icon source={TickSmallMinor} />,
+              active: true,
+            },
+            {content: 'Export file', icon: ExportMinor},
+          ]}
+        />
+      </Popover>
+    </div>
+  );
+}
+```
+
 ### Sectioned action list
 
 Use when the items benefit from sections to help differentiate actions.
@@ -218,7 +254,7 @@ function ActionListWithDestructiveItemExample() {
             {
               title: 'File options',
               items: [
-                {content: 'Import file', icon: ImportMinor},
+                {content: 'Import file', icon: ImportMinor, active: true},
                 {content: 'Export file', icon: ExportMinor},
                 {
                   destructive: true,
@@ -271,6 +307,39 @@ function ActionListWithHelpTextExample() {
           ]}
         />
       </Popover>
+    </div>
+  );
+}
+```
+
+### Action list with a prefix and a suffix
+
+Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
+
+```jsx
+function ActionListWithPrefixSuffixExample() {
+  return (
+    <div style={{height: '250px', maxWidth: '350px'}}>
+      <ActionList
+        items={[
+          {
+            content: 'Go here',
+            prefix: (
+              <Thumbnail
+                source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                size="small"
+                alt="Black leather pet collar"
+              />
+            ),
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+          {
+            content: 'Or there',
+            prefix: <Avatar customer name="Farrah" size="small" />,
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+        ]}
+      />
     </div>
   );
 }

@@ -1,14 +1,5 @@
 node_modules
 /examples
 /build
-/build-intermediate
-/docs
-/esnext
-/types
-/index.*
-/styles.css
-/styles.min.css
-/styles.scss
-/styles
+/dist
 /src/styles/polaris-tokens
-/scripts/analyze-custom-properties/dist

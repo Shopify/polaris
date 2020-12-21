@@ -1,6 +1,4 @@
-import React from 'react';
-import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
-import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+import React, {useRef} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 // eslint-disable-next-line no-restricted-imports
 import {
@@ -8,16 +6,26 @@ import {
   mountWithAppProvider,
   trigger,
 } from 'test-utilities/legacy';
-import {Badge, Spinner, Portal, Scrollable} from 'components';
+import {mountWithApp} from 'test-utilities';
+import {Badge, Button, Spinner, Portal, Scrollable} from 'components';
 
 import {Footer, Dialog} from '../components';
 import {Modal} from '../Modal';
+import * as focusUtils from '../../../utilities/focus';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
-jest.mock('../../../utilities/app-bridge-transformers', () => ({
-  ...jest.requireActual('../../../utilities/app-bridge-transformers'),
-  transformActions: jest.fn((...args) => args),
-}));
+jest.mock('react-transition-group', () => {
+  function ChildGroup({children}: {children: React.ReactNode}) {
+    return <div>{children}</div>;
+  }
+
+  return {
+    ...(jest.requireActual('react-transition-group') as any),
+    TransitionGroup: ChildGroup,
+    TransitionChild: ChildGroup,
+    CSSTransition: ChildGroup,
+  };
+});
 
 describe('<Modal>', () => {
   let scrollSpy: jest.SpyInstance;
@@ -54,11 +62,12 @@ describe('<Modal>', () => {
     );
   });
 
-  it('focuses the next focusable node on mount', () => {
-    const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
-    const focusedNode = findFirstFocusableNode(modal.find(Dialog).getDOMNode());
+  it('focuses the dialog node on mount', () => {
+    const modal = mountWithAppProvider(
+      <Modal onClose={jest.fn()} open instant />,
+    );
 
-    expect(focusedNode).toBe(document.activeElement);
+    expect(document.activeElement).toBe(modal.find(Dialog).getDOMNode());
   });
 
   describe('src', () => {
@@ -188,14 +197,14 @@ describe('<Modal>', () => {
   });
 
   describe('open', () => {
-    it('renders <Portal /> with idPrefix modal', () => {
+    it('renders <Portal />', () => {
       const modal = mountWithAppProvider(
         <Modal onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Portal).prop('idPrefix')).toBe('modal');
+      expect(modal.find(Portal)).toHaveLength(1);
     });
   });
 
@@ -343,191 +352,99 @@ describe('<Modal>', () => {
     });
   });
 
-  describe('with app bridge', () => {
-    let AppBridgeModalCreate: jest.SpyInstance;
-    const appBridgeModalMock = {
-      set: jest.fn(),
-      subscribe: jest.fn(),
-      unsubscribe: jest.fn(),
-      dispatch: jest.fn(),
-    };
+  describe('activator', () => {
+    let rafSpy: jest.SpyInstance;
 
     beforeEach(() => {
-      AppBridgeModalCreate = jest.spyOn(AppBridgeModal, 'create');
-      AppBridgeModalCreate.mockReturnValue(appBridgeModalMock);
+      rafSpy = jest.spyOn(window, 'requestAnimationFrame');
+      rafSpy.mockImplementation((callback) => callback());
     });
 
     afterEach(() => {
-      jest.clearAllMocks();
+      rafSpy.mockRestore();
     });
 
-    it('creates an app bridge modal', () => {
-      const primaryAction = {
-        content: 'Foo',
-        url: '/foo',
+    it('renders the element if an element is passed in', () => {
+      const modal = mountWithAppProvider(
+        <Modal onClose={noop} open={false} activator={<Button />} />,
+      );
+
+      expect(modal.find(Button).exists()).toBe(true);
+    });
+
+    it('does not render the element if a ref object is passed in', () => {
+      const TestHarness = () => {
+        const buttonRef = useRef<HTMLDivElement>(null);
+        const button = (
+          <div ref={buttonRef}>
+            <Button />
+          </div>
+        );
+
+        return (
+          <div>
+            <Modal onClose={noop} open={false} activator={buttonRef} />
+            {button}
+          </div>
+        );
       };
 
-      const secondaryActions = [
-        {
-          content: 'Bar',
-          onAction: noop,
-        },
-      ];
+      const testHarness = mountWithApp(<TestHarness />);
 
-      const {appBridge} = mountWithAppBridge(
-        <Modal
-          title="Hello world!"
-          open
-          message="Body content"
-          primaryAction={primaryAction}
-          secondaryActions={secondaryActions}
-          onClose={noop}
-        />,
+      expect(testHarness.find(Modal)).not.toContainReactComponent(Button);
+    });
+
+    it('does not throw an error when no activator is passed in', () => {
+      const modal = mountWithAppProvider(<Modal onClose={noop} open />);
+
+      expect(() => {
+        modal.setProps({open: false});
+      }).not.toThrow();
+    });
+
+    it('focuses the activator when the activator is an element on close', () => {
+      const focusSpy = jest.spyOn(focusUtils, 'focusFirstFocusableNode');
+
+      const modal = mountWithApp(
+        <Modal onClose={noop} open activator={<Button />} />,
       );
 
-      expect(AppBridgeModalCreate).toHaveBeenCalledTimes(1);
-      expect(AppBridgeModalCreate).toHaveBeenCalledWith(appBridge, {
-        title: 'Hello world!',
-        message: 'Body content',
-        size: undefined,
-        footer: {
-          buttons: [appBridge, {primaryAction, secondaryActions}],
-        },
-      });
-      expect(appBridgeModalMock.subscribe).toHaveBeenCalledTimes(1);
-      expect(appBridgeModalMock.subscribe).toHaveBeenCalledWith(
-        AppBridgeModal.Action.CLOSE,
-        noop,
+      modal.find(Dialog)!.trigger('onExited');
+
+      expect(document.activeElement).toBe(modal.find('button')!.domNode);
+      expect(focusSpy).toHaveBeenCalledTimes(3);
+    });
+
+    it('focuses the activator when the activator a ref on close', () => {
+      const buttonId = 'buttonId';
+      const TestHarness = () => {
+        const buttonRef = useRef<HTMLDivElement>(null);
+
+        const button = (
+          <div ref={buttonRef}>
+            <Button id={buttonId} />
+          </div>
+        );
+
+        return (
+          <div>
+            <Modal onClose={noop} open activator={buttonRef} />
+            {button}
+          </div>
+        );
+      };
+
+      const testHarness = mountWithApp(<TestHarness />);
+
+      testHarness.find(Modal)!.find(Dialog)!.trigger('onExited');
+
+      expect(document.activeElement).toBe(
+        testHarness.findWhere(
+          (wrap) => wrap.is('button') && wrap.prop('id') === buttonId,
+        )!.domNode,
       );
-      expect(appBridgeModalMock.dispatch).toHaveBeenCalledTimes(1);
-      expect(appBridgeModalMock.dispatch).toHaveBeenCalledWith(
-        AppBridgeModal.Action.OPEN,
-      );
-    });
-
-    it('does not dispatch an open action if open is false', () => {
-      mountWithAppBridge(<Modal open={false} onClose={noop} />);
-
-      expect(appBridgeModalMock.dispatch).not.toHaveBeenCalled();
-    });
-
-    it('accepts an undefined title', () => {
-      const {appBridge} = mountWithAppBridge(
-        <Modal title={undefined} open onClose={noop} />,
-      );
-
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
-        title: undefined,
-        message: undefined,
-        size: undefined,
-        footer: {
-          buttons: [appBridge, {}],
-        },
-      });
-    });
-
-    it('accepts a size prop', () => {
-      const {appBridge} = mountWithAppBridge(
-        <Modal size="Large" open onClose={noop} />,
-      );
-
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
-        title: undefined,
-        message: undefined,
-        size: AppBridgeModal.Size.Large,
-        footer: {
-          buttons: [appBridge, {}],
-        },
-      });
-    });
-
-    it('converts a src prop to a url prop', () => {
-      const {appBridge} = mountWithAppBridge(
-        <Modal src="https://shopify.com" open onClose={noop} />,
-      );
-
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
-        title: undefined,
-        message: undefined,
-        size: undefined,
-        url: 'https://shopify.com',
-        footer: {
-          buttons: [appBridge, {}],
-        },
-      });
-    });
-
-    it('converts a src prop to a path prop', () => {
-      const {appBridge} = mountWithAppBridge(
-        <Modal src="/test" open onClose={noop} />,
-      );
-
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(appBridge, {
-        title: undefined,
-        message: undefined,
-        size: undefined,
-        path: '/test',
-        footer: {
-          buttons: [appBridge, {}],
-        },
-      });
-    });
-
-    it('calls set when props change', () => {
-      const {modal} = mountWithAppBridge(<Modal open onClose={noop} />);
-
-      modal.setProps({title: 'New Title'});
-      expect(appBridgeModalMock.set).toHaveBeenCalledTimes(1);
-      modal.setProps({src: '/test'});
-      expect(appBridgeModalMock.set).toHaveBeenCalledTimes(2);
-    });
-
-    it('does not call set when props do not change', () => {
-      const {modal} = mountWithAppBridge(<Modal open onClose={noop} />);
-
-      modal.setProps({title: 'New Title'});
-      expect(appBridgeModalMock.set).toHaveBeenCalledTimes(1);
-      modal.setProps({title: 'New Title'});
-      expect(appBridgeModalMock.set).toHaveBeenCalledTimes(1);
-    });
-
-    it('closes the modal when the open prop is set to false', () => {
-      const {modal} = mountWithAppBridge(<Modal open onClose={noop} />);
-
-      // dispatch is called to open the modal when it mounts, so let us clear that
-      jest.clearAllMocks();
-
-      modal.setProps({open: false});
-      expect(appBridgeModalMock.dispatch).toHaveBeenCalledTimes(1);
-      expect(appBridgeModalMock.dispatch).toHaveBeenCalledWith(
-        AppBridgeModal.Action.CLOSE,
-      );
-    });
-
-    it('opens the modal when the open prop is set to true', () => {
-      const {modal} = mountWithAppBridge(<Modal open={false} onClose={noop} />);
-
-      modal.setProps({open: true});
-      expect(appBridgeModalMock.dispatch).toHaveBeenCalledTimes(1);
-      expect(appBridgeModalMock.dispatch).toHaveBeenCalledWith(
-        AppBridgeModal.Action.OPEN,
-      );
-    });
-
-    it('unsubscribes on unmount', () => {
-      const {modal} = mountWithAppBridge(<Modal open onClose={noop} />);
-
-      modal.unmount();
-      expect(appBridgeModalMock.unsubscribe).toHaveBeenCalledTimes(1);
     });
   });
 });
-
-function mountWithAppBridge(element: React.ReactElement) {
-  const appBridge = {};
-  const modal = mountWithAppProvider(element, {appBridge});
-
-  return {modal, appBridge};
-}
 
 function noop() {}

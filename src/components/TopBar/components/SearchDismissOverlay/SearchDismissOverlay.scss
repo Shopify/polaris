@@ -2,7 +2,7 @@
 @import '../../variables';
 
 $entry-iterations: 1;
-$backdrop-color: rgba(33, 43, 54, 0.4);
+$backdrop-color: rgba(color('ink'), 0.4);
 
 .SearchDismissOverlay {
   position: fixed;
@@ -11,11 +11,21 @@ $backdrop-color: rgba(33, 43, 54, 0.4);
   right: 0;
   z-index: z-index(nav-backdrop, $fixed-element-stacking-order);
   height: calc(100vh - #{top-bar-height()});
+
+  &.newDesignLanguage {
+    top: 0;
+    height: 100%;
+  }
 }
 
 .visible {
   background-color: var(--p-backdrop, $backdrop-color);
   animation: fade-in duration() $entry-iterations forwards;
+
+  &.newDesignLanguage {
+    background-color: transparent;
+    animation: none;
+  }
 }
 
 @keyframes fade-in {

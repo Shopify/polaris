@@ -22,6 +22,8 @@ export function Item({
   onAction,
   icon,
   image,
+  prefix,
+  suffix,
   disabled,
   external,
   destructive,
@@ -38,19 +40,26 @@ export function Item({
     newDesignLanguage && styles.newDesignLanguage,
   );
 
-  let imageElement = null;
+  let prefixMarkup: React.ReactNode | null = null;
 
-  if (icon) {
-    imageElement = (
-      <div className={styles.Image}>
+  if (prefix) {
+    prefixMarkup = <div className={styles.Prefix}>{prefix}</div>;
+  } else if (icon) {
+    prefixMarkup = (
+      <div
+        className={classNames(
+          styles.Prefix,
+          newDesignLanguage && styles.newDesignLanguage,
+        )}
+      >
         <Icon source={icon} />
       </div>
     );
   } else if (image) {
-    imageElement = (
+    prefixMarkup = (
       <div
         role="presentation"
-        className={styles.Image}
+        className={styles.Prefix}
         style={{backgroundImage: `url(${image}`}}
       />
     );
@@ -68,22 +77,30 @@ export function Item({
   );
 
   const badgeMarkup = badge && (
-    <span className={styles.BadgeWrapper}>
+    <span className={styles.Suffix}>
       <Badge status={badge.status}>{badge.content}</Badge>
     </span>
   );
 
-  const textMarkup = imageElement ? (
-    <div className={styles.Text}>{contentMarkup}</div>
-  ) : (
-    contentMarkup
+  const suffixMarkup = suffix && (
+    <span
+      className={classNames(
+        styles.Suffix,
+        newDesignLanguage && styles.newDesignLanguage,
+      )}
+    >
+      {suffix}
+    </span>
   );
+
+  const textMarkup = <div className={styles.Text}>{contentMarkup}</div>;
 
   const contentElement = (
     <div className={styles.Content}>
-      {imageElement}
+      {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
+      {suffixMarkup}
     </div>
   );
 
@@ -114,7 +131,7 @@ export function Item({
   );
 
   return (
-    <li role={role} aria-selected={active}>
+    <li role={role}>
       {scrollMarkup}
       {control}
     </li>

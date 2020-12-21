@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import {Slidable, SlidableProps} from '../Slidable';
 import type {HSBColor} from '../../../../utilities/color-types';
@@ -18,7 +18,7 @@ export interface AlphaPickerProps {
   onChange(hue: number): void;
 }
 
-export class AlphaPicker extends React.PureComponent<AlphaPickerProps, State> {
+export class AlphaPicker extends PureComponent<AlphaPickerProps, State> {
   state: State = {
     sliderHeight: 0,
     draggerHeight: 0,

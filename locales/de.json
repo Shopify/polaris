@@ -20,7 +20,8 @@
         "attention": "Prüfung erforderlich",
         "new": "Neu",
         "critical": "Kritisch"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Wird geladen",
@@ -72,11 +73,20 @@
         "friday": "Fr",
         "saturday": "Sa",
         "sunday": "So"
+      },
+      "days": {
+        "monday": "Montag",
+        "tuesday": "Dienstag",
+        "wednesday": "Mittwoch",
+        "thursday": "Donnerstag",
+        "friday": "Freitag",
+        "saturday": "Samstag",
+        "sunday": "Sonntag"
       }
     },
     "DiscardConfirmationModal": {
-      "title": "Verwerfen Sie alle nicht gespeicherten Änderungen",
-      "message": "Wenn Sie Änderungen verwerfen, werden alle Änderungen gelöscht, die Sie seit dem letzten Speichern vorgenommen haben.",
+      "title": "Verwirf alle nicht gespeicherten Änderungen",
+      "message": "Wenn du Änderungen verwirfst, werden alle Änderungen gelöscht, die du seit dem letzten Speichern vorgenommen hast.",
       "primaryAction": "Änderungen verwerfen",
       "secondaryAction": "Weiter bearbeiten"
     },
@@ -141,10 +151,10 @@
       "showing": "{itemsCount} {resource} werden angezeigt",
       "loading": "{resource} wird geladen",
       "selected": "{selectedItemsCount} ausgewählt",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in Ihrem Shop sind ausgewählt.",
-      "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} in Ihrem Shop auswählen",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in deinem Shop sind ausgewählt.",
+      "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} in deinem Shop auswählen",
       "emptySearchResultTitle": "Keine {resourceNamePlural} gefunden",
-      "emptySearchResultDescription": "Versuchen Sie, die Filter oder den Suchbegriff zu ändern",
+      "emptySearchResultDescription": "Versuche, die Filter oder den Suchbegriff zu ändern",
       "selectButtonText": "Auswählen",
       "a11yCheckboxDeselectAllSingle": "Auswahl für {resourceNameSingular} aufheben",
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} auswählen",
@@ -204,7 +214,9 @@
           "on_or_after": "nach {date}"
         }
       },
-      "showingTotalCount": "{itemsCount} von {totalItemsCount} {resource} werden angezeigt"
+      "showingTotalCount": "{itemsCount} von {totalItemsCount} {resource} werden angezeigt",
+      "allFilteredItemsSelected": "Alle {itemsLength} und {resourceNamePlural} in diesem Filter sind ausgewählt.",
+      "selectAllFilteredItems": "Alle {itemsLength} und {resourceNamePlural} in diesem Filter auswählen"
     },
     "SkeletonPage": {
       "loadingLabel": "Seite wird geladen"
@@ -279,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Weitere Aktionen"
     }
   }
 }

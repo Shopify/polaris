@@ -20,7 +20,8 @@
         "attention": "Dikkat",
         "new": "Yeni",
         "critical": "Kritik"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Yükleniyor",
@@ -72,6 +73,15 @@
         "friday": "Cu",
         "saturday": "Ct",
         "sunday": "Pz"
+      },
+      "days": {
+        "monday": "Pazartesi",
+        "tuesday": "Salı",
+        "wednesday": "Çarşamba",
+        "thursday": "Perşembe",
+        "friday": "Cuma",
+        "saturday": "Cumartesi",
+        "sunday": "Pazar"
       }
     },
     "DiscardConfirmationModal": {
@@ -204,7 +214,9 @@
           "on_or_after": "{date} tarihinden sonra"
         }
       },
-      "showingTotalCount": "{resource} için {totalItemsCount} üründen {itemsCount} tanesi gösteriliyor"
+      "showingTotalCount": "{resource} için {totalItemsCount} üründen {itemsCount} tanesi gösteriliyor",
+      "allFilteredItemsSelected": "Bu filtredeki tüm {itemsLength} + {resourceNamePlural} seçildi.",
+      "selectAllFilteredItems": "Bu filtredeki tüm {itemsLength} + {resourceNamePlural} öğelerini seç"
     },
     "SkeletonPage": {
       "loadingLabel": "Sayfa yükleniyor"
@@ -279,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Diğer işlemler"
     }
   }
 }

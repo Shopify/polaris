@@ -1,4 +1,4 @@
-import {clamp} from '@shopify/javascript-utilities/math';
+import {clamp} from '../../../../utilities/clamp';
 
 const VERTICAL_PADDING = 13;
 

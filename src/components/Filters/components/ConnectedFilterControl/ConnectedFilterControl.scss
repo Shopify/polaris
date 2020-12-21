@@ -1,10 +1,10 @@
 @import '../../../../styles/common';
 
-// stylelint-disable declaration-no-important
 // stylelint-disable selector-max-class
 // stylelint-disable selector-max-combinators
 // stylelint-disable selector-max-specificity
 // stylelint-disable selector-max-compound-selectors
+// stylelint-disable selector-max-type
 // 🐦🐀
 $stacking-order: (
   item: 10,
@@ -26,6 +26,7 @@ $stacking-order: (
   width: 100%;
   height: 0;
   visibility: hidden;
+  overflow: hidden;
 
   > * {
     flex-shrink: 0;
@@ -43,32 +44,33 @@ $stacking-order: (
 
   &.right {
     .CenterContainer * {
-      border-top-right-radius: 0 !important;
-      border-bottom-right-radius: 0 !important;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 
   &.right.newDesignLanguage {
     .CenterContainer * {
-      border-top-right-radius: var(--p-border-radius-base) !important;
-      border-bottom-right-radius: var(--p-border-radius-base) !important;
+      border-top-right-radius: var(--p-border-radius-base);
+      border-bottom-right-radius: var(--p-border-radius-base);
     }
   }
 }
 
 .newDesignLanguage {
-  .CenterContainer + .RightContainer {
-    margin-left: spacing(extra-tight);
+  .CenterContainer + .RightContainer,
+  .CenterContainer + .MoreFiltersButtonContainer {
+    margin-left: spacing(tight);
   }
 }
 
 .RightContainer {
   display: flex;
 
-  .Item > * > * {
+  .Item > div > button {
     margin-right: var(--p-button-group-item-spacing, 0);
     margin-left: var(--p-override-none, -1px);
-    border-radius: 0 !important;
+    border-radius: 0;
   }
 
   .Item {
@@ -76,39 +78,43 @@ $stacking-order: (
   }
 }
 
+.RightContainer.queryFieldHidden {
+  .Item:first-of-type > div > button {
+    border-top-left-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+  }
+}
+
 .RightContainerWithoutMoreFilters {
-  .Item:last-child > * > * {
-    border-top-right-radius: var(
-      --p-border-radius-base,
-      border-radius()
-    ) !important;
-    border-bottom-right-radius: var(
-      --p-border-radius-base,
-      border-radius()
-    ) !important;
+  .Item:last-child > div > button {
+    border-top-right-radius: var(--p-border-radius-base, border-radius());
+    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
   }
 }
 
 .newDesignLanguage .RightContainer {
-  .Item:first-of-type > * > * {
-    border-top-left-radius: var(--p-border-radius-base) !important;
-    border-bottom-left-radius: var(--p-border-radius-base) !important;
+  .Item:first-of-type > div > button {
+    border-top-left-radius: var(--p-border-radius-base);
+    border-bottom-left-radius: var(--p-border-radius-base);
   }
 }
 
-.MoreFiltersButtonContainer * {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-  flex-shrink: 0;
-  white-space: nowrap;
-
+.MoreFiltersButtonContainer {
   > div {
     margin-left: var(--p-override-none, -1px);
   }
+
+  .Item > div > button {
+    white-space: nowrap;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }
 
-.MoreFiltersButtonContainer.onlyButtonVisible * {
-  border-radius: var(--p-border-radius-base) !important;
+.MoreFiltersButtonContainer.onlyButtonVisible {
+  .Item > div > button {
+    border-radius: var(--p-border-radius-base, border-radius());
+  }
 }
 
 .Wrapper {
@@ -121,5 +127,5 @@ $stacking-order: (
 // stylelint-enable selector-max-specificity
 // stylelint-enable selector-max-combinators
 // stylelint-enable selector-max-class
-// stylelint-enable declaration-no-important
+// stylelint-enable selector-max-type
 // stylelint-enable selector-max-compound-selectors

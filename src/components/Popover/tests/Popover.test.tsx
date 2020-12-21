@@ -241,10 +241,10 @@ describe('<Popover />', () => {
       const handleActivatorClick = useCallback(() => setActive(true), []);
 
       return (
-        <React.Fragment>
+        <>
           <button onClick={handleActivatorClick}>Activator</button>
           <Popover active={active} activator={<div />} onClose={onCloseSpy} />
-        </React.Fragment>
+        </>
       );
     }
 
@@ -265,12 +265,12 @@ describe('<Popover />', () => {
     const id = 'focus-target';
     function PopoverTest() {
       return (
-        <React.Fragment>
+        <>
           <div>
             <Popover active activator={<div />} onClose={noop} />
           </div>
           <button id={id} />
-        </React.Fragment>
+        </>
       );
     }
 
@@ -286,9 +286,9 @@ describe('<Popover />', () => {
     const id = 'activator';
     function PopoverTest() {
       return (
-        <React.Fragment>
+        <>
           <Popover active activator={<button id={id} />} onClose={noop} />
-        </React.Fragment>
+        </>
       );
     }
 
@@ -298,6 +298,36 @@ describe('<Popover />', () => {
     const focusTarget = popover.find('button', {id})!.domNode;
 
     expect(document.activeElement).toBe(focusTarget);
+  });
+
+  it("doesn't focuses the activator or another focusable element when the popover is closed", () => {
+    const activatorId = 'activator1';
+    const nextElementId = 'activator2';
+    function PopoverTest() {
+      return (
+        <>
+          <div>
+            <Popover
+              active
+              activator={<button id={activatorId} />}
+              preventFocusOnClose
+              onClose={noop}
+            />
+          </div>
+          <button id={nextElementId} />
+        </>
+      );
+    }
+
+    const popover = mountWithApp(<PopoverTest />);
+
+    popover.find(PopoverOverlay)!.trigger('onClose');
+    const activatorTarget = popover.find('button', {id: activatorId})!.domNode;
+    const nextElementTarget = popover.find('button', {id: nextElementId})!
+      .domNode;
+
+    expect(document.activeElement).not.toBe(activatorTarget);
+    expect(document.activeElement).not.toBe(nextElementTarget);
   });
 });
 

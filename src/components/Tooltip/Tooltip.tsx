@@ -1,9 +1,10 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+import React, {useEffect, useState, useRef, useCallback} from 'react';
 
 import {Portal} from '../Portal';
+import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
+import {Key} from '../../types';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
@@ -12,11 +13,13 @@ export interface TooltipProps {
   /** The element that will activate to tooltip */
   children?: React.ReactNode;
   /** The content to display within the tooltip */
-  content: string;
+  content: React.ReactNode;
   /** Display tooltip with a light background */
   light?: boolean;
   /** Toggle whether the tooltip is visible */
   active?: boolean;
+  /** Dismiss tooltip when not interacting with its children */
+  dismissOnMouseOut?: TooltipOverlayProps['preventInteraction'];
   /**
    * The direction the tooltip tries to display
    * @default 'below'
@@ -33,6 +36,7 @@ export function Tooltip({
   children,
   content,
   light,
+  dismissOnMouseOut,
   active: originalActive,
   preferredPosition = 'below',
   activatorWrapper = 'span',
@@ -59,6 +63,14 @@ export function Tooltip({
     accessibilityNode.setAttribute('aria-describedby', id);
   }, [id, children]);
 
+  const handleKeyUp = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.keyCode !== Key.Escape) return;
+      handleBlur();
+    },
+    [handleBlur],
+  );
+
   const portal = activatorNode ? (
     <Portal idPrefix="tooltip">
       <TooltipOverlay
@@ -68,6 +80,7 @@ export function Tooltip({
         active={active}
         onClose={noop}
         light={light}
+        preventInteraction={dismissOnMouseOut}
       >
         <div className={styles.Label} testID="TooltipOverlayLabel">
           {content}
@@ -84,6 +97,7 @@ export function Tooltip({
       onMouseLeave={handleMouseLeave}
       onMouseOver={handleMouseEnterFix}
       ref={setActivator}
+      onKeyUp={handleKeyUp}
     >
       {children}
       {portal}
