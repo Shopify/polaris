@@ -10,7 +10,6 @@ labels: Feature request
 Write a short description of the feature here ↓
 -->
 
-
 ## Rationale
 
 <!--
