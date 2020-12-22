@@ -7,8 +7,7 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 $large-min-height: rem(44px);
 $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 $spinner-size: rem(20px);
-// darken(color(sky, dark), 4%)
-$pressed-border-color: rgb(184, 195, 205);
+
 // darken(color(sky), 2%)
 $pressed-hover-background: rgb(217, 222, 228);
 // darken(color(sky), 4%)
@@ -273,13 +272,12 @@ $stacking-order: (
 
 .pressed {
   background: color(sky);
-  border-color: $pressed-border-color;
   @include pressed-box-shadow;
 
   &:hover {
     transition-duration: duration(fast);
     background: $pressed-hover-background;
-    border-color: $pressed-border-color;
+
     @include pressed-box-shadow;
   }
 
@@ -290,7 +288,7 @@ $stacking-order: (
 
   &:active {
     background: $pressed-active-background;
-    border-color: $pressed-border-color;
+
     @include pressed-box-shadow;
   }
 
