@@ -1,5 +1,6 @@
 import React from 'react';
 
+import type {InversableColorScheme} from '../../../ThemeProvider';
 import type {IconableAction} from '../../../../types';
 import {Avatar, AvatarProps} from '../../../Avatar';
 import {MessageIndicator} from '../../../MessageIndicator';
@@ -24,6 +25,8 @@ export interface UserMenuProps {
   open: boolean;
   /** A callback function to handle opening and closing the user menu */
   onToggle(): void;
+  /** Accepts a color scheme for the contents of the user menu */
+  colorScheme?: InversableColorScheme;
 }
 
 export function UserMenu({
@@ -35,6 +38,7 @@ export function UserMenu({
   message,
   onToggle,
   open,
+  colorScheme,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
 
@@ -62,6 +66,7 @@ export function UserMenu({
       onClose={onToggle}
       actions={actions}
       message={message}
+      colorScheme={colorScheme}
     />
   );
 }

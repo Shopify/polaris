@@ -46,7 +46,12 @@ export function Item({
     prefixMarkup = <div className={styles.Prefix}>{prefix}</div>;
   } else if (icon) {
     prefixMarkup = (
-      <div className={styles.Prefix}>
+      <div
+        className={classNames(
+          styles.Prefix,
+          newDesignLanguage && styles.newDesignLanguage,
+        )}
+      >
         <Icon source={icon} />
       </div>
     );
@@ -78,7 +83,14 @@ export function Item({
   );
 
   const suffixMarkup = suffix && (
-    <span className={styles.Suffix}>{suffix}</span>
+    <span
+      className={classNames(
+        styles.Suffix,
+        newDesignLanguage && styles.newDesignLanguage,
+      )}
+    >
+      {suffix}
+    </span>
   );
 
   const textMarkup = <div className={styles.Text}>{contentMarkup}</div>;
@@ -119,7 +131,7 @@ export function Item({
   );
 
   return (
-    <li role={role} aria-selected={active}>
+    <li role={role}>
       {scrollMarkup}
       {control}
     </li>

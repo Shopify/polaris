@@ -39,7 +39,6 @@ export const ToastManager = memo(function ToastManager({
 
   useDeepEffect(() => {
     updateToasts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toastMessages]);
 
   const toastsMarkup = toastMessages.map((toast, index) => {
@@ -61,7 +60,7 @@ export const ToastManager = memo(function ToastManager({
   });
 
   return (
-    <Portal idPrefix="toast-manager">
+    <Portal>
       <EventListener event="resize" handler={updateToasts} />
       <div className={styles.ToastManager} aria-live="polite">
         <TransitionGroup component={null}>{toastsMarkup}</TransitionGroup>

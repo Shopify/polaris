@@ -1,5 +1,8 @@
 {
   "Polaris": {
+    "Actions": {
+      "moreActions": "More actions"
+    },
     "Avatar": {
       "label": "Avatar",
       "labelWithInitials": "Avatar with initials {initials}"
@@ -20,7 +23,8 @@
         "critical": "Critical",
         "attention": "Attention",
         "new": "New"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Loading",

@@ -556,7 +556,7 @@ function fireEvent({
   element: ReactWrapper;
   eventType?: string;
   spy?: jest.Mock;
-  testFiles?: object[];
+  testFiles?: Record<string, unknown>[];
 }) {
   act(() => {
     if (spy) {

@@ -1,6 +1,8 @@
 import React, {PureComponent, Children, createRef} from 'react';
 import {durationBase} from '@shopify/polaris-tokens';
 
+import {findFirstFocusableNode} from '../../../../utilities/focus';
+import {InversableColorScheme, ThemeProvider} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
@@ -23,6 +25,8 @@ export enum PopoverCloseSource {
   FocusOut,
   ScrollOut,
 }
+
+export type PopoverAutofocusTarget = 'none' | 'first-node' | 'container';
 
 enum TransitionStatus {
   Entering = 'entering',
@@ -47,6 +51,8 @@ export interface PopoverOverlayProps {
   fixed?: boolean;
   hideOnPrint?: boolean;
   onClose(source: PopoverCloseSource): void;
+  colorScheme?: InversableColorScheme;
+  autofocusTarget?: PopoverAutofocusTarget;
 }
 
 interface State {
@@ -155,10 +161,20 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   }
 
   private focusContent() {
-    if (this.props.preventAutofocus) {
-      return;
+    const {autofocusTarget = 'container', preventAutofocus} = this.props;
+
+    if (preventAutofocus) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: The preventAutofocus prop has been deprecated. Use autofocusTarget: "none" instead. Read more at [https://github.com/Shopify/polaris-react/issues/3602]',
+      );
     }
-    if (this.contentNode == null) {
+
+    if (
+      preventAutofocus ||
+      autofocusTarget === 'none' ||
+      this.contentNode == null
+    ) {
       return;
     }
 
@@ -167,9 +183,17 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         return;
       }
 
-      this.contentNode.current.focus({
-        preventScroll: process.env.NODE_ENV === 'development',
-      });
+      const focusableChild = findFirstFocusableNode(this.contentNode.current);
+
+      if (focusableChild && autofocusTarget === 'first-node') {
+        focusableChild.focus({
+          preventScroll: process.env.NODE_ENV === 'development',
+        });
+      } else {
+        this.contentNode.current.focus({
+          preventScroll: process.env.NODE_ENV === 'development',
+        });
+      }
     });
   }
 
@@ -187,6 +211,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       fullHeight,
       fluidContent,
       hideOnPrint,
+      colorScheme,
+      preventAutofocus,
+      autofocusTarget,
     } = this.props;
 
     const className = classNames(
@@ -208,7 +235,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     const content = (
       <div
         id={id}
-        tabIndex={-1}
+        tabIndex={
+          preventAutofocus || autofocusTarget === 'none' ? undefined : -1
+        }
         className={contentClassNames}
         style={contentStyles}
         ref={this.contentNode}
@@ -228,7 +257,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <div className={styles.Wrapper}>{content}</div>
+        <ThemeProvider alwaysRenderCustomProperties theme={{colorScheme}}>
+          <div className={styles.Wrapper}>{content}</div>
+        </ThemeProvider>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex

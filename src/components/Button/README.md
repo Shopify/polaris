@@ -141,7 +141,7 @@ Use for less important or less commonly used actions since they’re less promin
 Use for less important or less commonly used actions where matching the current text color is desired. For example in the InlineError component.
 
 ```jsx
-<div style={{color: '#bf0711'}}>
+<div>
   Could not retrieve data.{' '}
   <Button plain monochrome>
     Try again
@@ -310,6 +310,31 @@ function DisclosureButtion() {
     >
       {expanded ? 'Show less' : 'Show more'}
     </Button>
+  );
+}
+```
+
+### Stretched disclosure button
+
+<!-- example-for: web -->
+
+Stretch disclosure button content its full width for a dropdown look
+
+```jsx
+function StretchedDisclosureButton() {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div style={{width: '200px'}}>
+      <Button
+        disclosure={expanded ? 'up' : 'down'}
+        fullWidth
+        stretchContent
+        onClick={() => setExpanded(!expanded)}
+      >
+        {expanded ? 'Show less' : 'Show more'}
+      </Button>
+    </div>
   );
 }
 ```

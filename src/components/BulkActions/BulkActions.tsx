@@ -5,7 +5,13 @@ import {CSSTransition, Transition} from 'react-transition-group';
 
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import type {DisableableAction, Action, ActionListSection} from '../../types';
+import {clamp} from '../../utilities/clamp';
+import type {
+  BadgeAction,
+  DisableableAction,
+  Action,
+  ActionListSection,
+} from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
 import {Button} from '../Button';
@@ -16,7 +22,7 @@ import {CheckableButton} from '../CheckableButton';
 import {BulkActionButton} from './components';
 import styles from './BulkActions.scss';
 
-type BulkAction = DisableableAction;
+type BulkAction = DisableableAction & BadgeAction;
 
 type BulkActionListSection = ActionListSection;
 
@@ -141,7 +147,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       }
     }
 
-    return counter;
+    return clamp(counter, 0, promotedActions.length);
   }
 
   private hasActions() {

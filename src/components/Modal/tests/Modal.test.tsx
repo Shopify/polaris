@@ -20,7 +20,7 @@ jest.mock('react-transition-group', () => {
   }
 
   return {
-    ...(require.requireActual('react-transition-group') as any),
+    ...(jest.requireActual('react-transition-group') as any),
     TransitionGroup: ChildGroup,
     TransitionChild: ChildGroup,
     CSSTransition: ChildGroup,
@@ -62,13 +62,12 @@ describe('<Modal>', () => {
     );
   });
 
-  it('focuses the next focusable node on mount', () => {
-    const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
-    const focusedNode = focusUtils.findFirstFocusableNode(
-      modal.find(Dialog).getDOMNode(),
+  it('focuses the dialog node on mount', () => {
+    const modal = mountWithAppProvider(
+      <Modal onClose={jest.fn()} open instant />,
     );
 
-    expect(document.activeElement).toBe(focusedNode);
+    expect(document.activeElement).toBe(modal.find(Dialog).getDOMNode());
   });
 
   describe('src', () => {
@@ -198,14 +197,14 @@ describe('<Modal>', () => {
   });
 
   describe('open', () => {
-    it('renders <Portal /> with idPrefix modal', () => {
+    it('renders <Portal />', () => {
       const modal = mountWithAppProvider(
         <Modal onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal.find(Portal).prop('idPrefix')).toBe('modal');
+      expect(modal.find(Portal)).toHaveLength(1);
     });
   });
 
@@ -412,7 +411,7 @@ describe('<Modal>', () => {
 
       modal.find(Dialog)!.trigger('onExited');
 
-      expect(document.activeElement).toBe(modal.find(Button)!.domNode);
+      expect(document.activeElement).toBe(modal.find('button')!.domNode);
       expect(focusSpy).toHaveBeenCalledTimes(3);
     });
 
@@ -441,7 +440,7 @@ describe('<Modal>', () => {
 
       expect(document.activeElement).toBe(
         testHarness.findWhere(
-          (wrap) => wrap.is(Button) && wrap.prop('id') === buttonId,
+          (wrap) => wrap.is('button') && wrap.prop('id') === buttonId,
         )!.domNode,
       );
     });

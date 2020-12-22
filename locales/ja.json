@@ -20,7 +20,8 @@
         "attention": "注意",
         "new": "新規",
         "critical": "クリティカル"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "読み込んでいます",
@@ -150,8 +151,8 @@
       "showing": "{itemsCount}個の{resource}を表示しています",
       "loading": "{resource}を読み込んでいます",
       "selected": "{selectedItemsCount}個を選択済",
-      "allItemsSelected": "ストアにあるすべての{itemsLength}{resourceNamePlural}が選択されています。",
-      "selectAllItems": "ストアにあるすべての{itemsLength}{resourceNamePlural}を選択する",
+      "allItemsSelected": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}が選択されています。",
+      "selectAllItems": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}を選択する",
       "emptySearchResultTitle": "{resourceNamePlural}が見つかりませんでした",
       "emptySearchResultDescription": "絞り込みや検索語を変更してください",
       "selectButtonText": "選択する",
@@ -290,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "その他の操作"
     }
   }
 }

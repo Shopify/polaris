@@ -299,6 +299,36 @@ describe('<Popover />', () => {
 
     expect(document.activeElement).toBe(focusTarget);
   });
+
+  it("doesn't focuses the activator or another focusable element when the popover is closed", () => {
+    const activatorId = 'activator1';
+    const nextElementId = 'activator2';
+    function PopoverTest() {
+      return (
+        <>
+          <div>
+            <Popover
+              active
+              activator={<button id={activatorId} />}
+              preventFocusOnClose
+              onClose={noop}
+            />
+          </div>
+          <button id={nextElementId} />
+        </>
+      );
+    }
+
+    const popover = mountWithApp(<PopoverTest />);
+
+    popover.find(PopoverOverlay)!.trigger('onClose');
+    const activatorTarget = popover.find('button', {id: activatorId})!.domNode;
+    const nextElementTarget = popover.find('button', {id: nextElementId})!
+      .domNode;
+
+    expect(document.activeElement).not.toBe(activatorTarget);
+    expect(document.activeElement).not.toBe(nextElementTarget);
+  });
 });
 
 function noop() {}

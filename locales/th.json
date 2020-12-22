@@ -20,7 +20,8 @@
         "attention": "ระวัง",
         "new": "ใหม่",
         "critical": "ร้ายแรง"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "กำลังโหลด",
@@ -290,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "การดำเนินการเพิ่มเติม"
     }
   }
 }

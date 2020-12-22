@@ -20,7 +20,8 @@
         "attention": "Attenzione",
         "new": "Nuovi",
         "critical": "Critico"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Caricamento",
@@ -290,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Altre azioni"
     }
   }
 }

@@ -10,7 +10,7 @@ $skip-vertical-offset: rem(10px);
   background-color: var(--p-background, color('sky', 'light'));
 
   @include when-printing {
-    background-color: none;
+    background-color: transparent;
   }
 
   @include frame-when-nav-displayed {
@@ -258,5 +258,20 @@ $skip-vertical-offset: rem(10px);
   &.focused {
     pointer-events: all;
     opacity: 1;
+    > a {
+      @include focus-ring($style: 'focused');
+    }
+  }
+
+  > a {
+    @include button-base;
+    @include text-style-button;
+    @include focus-ring($border-width: rem(1px));
+    color: var(--p-text);
+
+    &:focus {
+      border-color: none;
+      box-shadow: none;
+    }
   }
 }

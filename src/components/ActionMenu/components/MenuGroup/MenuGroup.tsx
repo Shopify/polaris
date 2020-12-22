@@ -18,6 +18,8 @@ export interface MenuGroupProps extends MenuGroupDescriptor {
   onOpen(title: string): void;
   /** Callback for closing the MenuGroup by title */
   onClose(title: string): void;
+  /** Callback for getting the offsetWidth of the MenuGroup */
+  getOffsetWidth?(width: number): void;
 }
 
 export function MenuGroup({
@@ -29,8 +31,10 @@ export function MenuGroup({
   icon,
   onClose,
   onOpen,
+  getOffsetWidth,
 }: MenuGroupProps) {
   const {newDesignLanguage} = useFeatures();
+
   const handleClose = useCallback(() => {
     onClose(title);
   }, [onClose, title]);
@@ -39,9 +43,13 @@ export function MenuGroup({
     onOpen(title);
   }, [onOpen, title]);
 
-  if (!actions.length) {
-    return null;
-  }
+  const handleOffsetWidth = useCallback(
+    (width: number) => {
+      if (!newDesignLanguage || !getOffsetWidth) return;
+      getOffsetWidth(width);
+    },
+    [getOffsetWidth, newDesignLanguage],
+  );
 
   const popoverActivator = newDesignLanguage ? (
     <SecondaryAction
@@ -49,6 +57,7 @@ export function MenuGroup({
       icon={icon}
       accessibilityLabel={accessibilityLabel}
       onClick={handleOpen}
+      getOffsetWidth={handleOffsetWidth}
     >
       {title}
     </SecondaryAction>

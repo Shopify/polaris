@@ -63,6 +63,10 @@ export function isPrimaryAction(
   return !isValidElement(x) && x !== undefined;
 }
 
+const SHORT_TITLE = 20;
+const REALLY_SHORT_TITLE = 8;
+const LONG_TITLE = 34;
+
 export function Header({
   title,
   subtitle,
@@ -80,6 +84,11 @@ export function Header({
 }: HeaderProps) {
   const {isNavigationCollapsed} = useMediaQuery();
   const {newDesignLanguage} = useFeatures();
+  const isSingleRow =
+    !primaryAction &&
+    !pagination &&
+    !secondaryActions.length &&
+    !actionGroups.length;
 
   const breadcrumbMarkup =
     breadcrumbs.length > 0 ? (
@@ -154,36 +163,44 @@ export function Header({
 
   const headerClassNames = classNames(
     styles.Header,
-    titleHidden && styles.titleHidden,
     separator && styles.separator,
+    isSingleRow && styles.isSingleRow,
+    titleHidden && styles.titleHidden,
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
+    !breadcrumbs.length && styles.noBreadcrumbs,
     newDesignLanguage && styles.newDesignLanguage,
+    title && title.length < LONG_TITLE && styles.mediumTitle,
+    title && title.length > LONG_TITLE && styles.longTitle,
   );
 
   if (newDesignLanguage) {
     const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
-      breadcrumbMarkup,
-      pageTitleMarkup,
-      additionalMetaDataMarkup,
-      paginationMarkup,
       actionMenuMarkup,
+      additionalMetaDataMarkup,
+      additionalNavigationMarkup,
+      breadcrumbMarkup,
+      isNavigationCollapsed,
+      pageTitleMarkup,
+      paginationMarkup,
       primaryActionMarkup,
       title,
-      isNavigationCollapsed,
     });
+
+    const className = classNames(
+      styles.Row,
+      newDesignLanguage && styles.RowCondensed,
+    );
 
     return (
       <div className={headerClassNames}>
         <ConditionalRender
           condition={[slot1, slot2, slot3, slot4].some(notNull)}
         >
-          <div className={styles.Row}>
-            <div className={styles.LeftAlign}>
-              {slot1}
-              {slot2}
-            </div>
+          <div className={className}>
+            {slot1}
+            {slot2}
             <ConditionalRender condition={[slot3, slot4].some(notNull)}>
               <div className={styles.RightAlign}>
                 <ConditionalWrapper
@@ -286,27 +303,26 @@ function notNull(value: any) {
 }
 
 function determineLayout({
-  breadcrumbMarkup,
-  pageTitleMarkup,
-  title,
-  additionalMetaDataMarkup,
-  paginationMarkup,
   actionMenuMarkup,
-  primaryActionMarkup,
+  additionalMetaDataMarkup,
+  additionalNavigationMarkup,
+  breadcrumbMarkup,
   isNavigationCollapsed,
+  pageTitleMarkup,
+  paginationMarkup,
+  primaryActionMarkup,
+  title,
 }: {
-  breadcrumbMarkup: MaybeJSX;
-  pageTitleMarkup: JSX.Element;
-  title?: string;
-  additionalMetaDataMarkup: MaybeJSX;
-  paginationMarkup: MaybeJSX;
   actionMenuMarkup: MaybeJSX;
-  primaryActionMarkup: MaybeJSX;
+  additionalMetaDataMarkup: MaybeJSX;
+  additionalNavigationMarkup: MaybeJSX;
+  breadcrumbMarkup: MaybeJSX;
   isNavigationCollapsed: boolean;
+  pageTitleMarkup: JSX.Element;
+  paginationMarkup: MaybeJSX;
+  primaryActionMarkup: MaybeJSX;
+  title?: string;
 }) {
-  const shortTitle = 20;
-  const reallyShortTitle = 8;
-
   //    Header Layout
   // |----------------------------------------------------|
   // | slot1 | slot2 |                    | slot3 | slot4 |
@@ -322,13 +338,13 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetaDataMarkup,
-        slot6: null,
+        slot6: additionalNavigationMarkup,
       },
       condition:
         isNavigationCollapsed &&
         breadcrumbMarkup == null &&
         title != null &&
-        title.length <= reallyShortTitle,
+        title.length <= REALLY_SHORT_TITLE,
     },
     mobileDefault: {
       slots: {
@@ -337,7 +353,7 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetaDataMarkup,
-        slot6: null,
+        slot6: additionalNavigationMarkup,
       },
       condition: isNavigationCollapsed,
     },
@@ -345,17 +361,17 @@ function determineLayout({
       slots: {
         slot1: breadcrumbMarkup,
         slot2: pageTitleMarkup,
-        slot3: null,
+        slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetaDataMarkup,
-        slot6: null,
+        slot6: additionalNavigationMarkup,
       },
       condition:
         !isNavigationCollapsed &&
         paginationMarkup == null &&
         actionMenuMarkup == null &&
         title != null &&
-        title.length <= shortTitle,
+        title.length <= SHORT_TITLE,
     },
     desktopDefault: {
       slots: {
@@ -369,7 +385,7 @@ function determineLayout({
         ),
         slot4: paginationMarkup,
         slot5: additionalMetaDataMarkup,
-        slot6: null,
+        slot6: additionalNavigationMarkup,
       },
       condition: !isNavigationCollapsed,
     },

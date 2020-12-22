@@ -3,7 +3,6 @@
 $image-size: rem(20px);
 $item-min-height: rem(40px);
 $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
-$active-indicator-width: rem(3px);
 
 .ActionList {
   list-style: none;
@@ -25,6 +24,7 @@ $active-indicator-width: rem(3px);
 
   &.newDesignLanguage {
     padding: 0 spacing(tight);
+    border-color: var(--p-surface-neutral);
 
     // stylelint-disable-next-line selector-max-class
     .Title + & {
@@ -201,6 +201,8 @@ $active-indicator-width: rem(3px);
     &:hover {
       background-image: none;
       background-color: var(--p-surface-hovered);
+      color: inherit;
+      text-decoration: none;
 
       @media (-ms-high-contrast: active) {
         outline: 1px solid ms-high-contrast-color('text');
@@ -212,23 +214,20 @@ $active-indicator-width: rem(3px);
     &.active,
     &:active {
       background-image: none;
-      background-color: var(--p-surface-selected);
       @include recolor-icon(var(--p-interactive));
     }
 
+    &:active {
+      background-color: var(--p-surface-pressed);
+    }
+
+    &.active {
+      background-color: var(--p-surface-selected);
+    }
+
     // Only show when the button is selected, not active
-    [aria-selected='true'] > &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: -1 * spacing(extra-tight);
-      height: 100%;
-      width: $active-indicator-width;
-      background-color: var(--p-interactive);
-      border-top-right-radius: var(--p-border-radius-base);
-      border-bottom-right-radius: var(--p-border-radius-base);
-      transform: translateX(-100%);
+    &.active > &::before {
+      @include list-selected-indicator;
     }
 
     // Active, hovered, focused (:active:hover:focus)
@@ -326,11 +325,19 @@ $active-indicator-width: rem(3px);
   margin: (-0.5 * $image-size) spacing() (-0.5 * $image-size) 0;
   background-size: cover;
   background-position: center center;
+
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-icon));
+  }
 }
 
 .Suffix {
   @include recolor-icon(color('ink', 'light'), color('white'));
   margin-left: spacing();
+
+  &.newDesignLanguage {
+    @include recolor-icon(var(--p-icon));
+  }
 }
 
 .Text {

@@ -2,6 +2,7 @@ import React from 'react';
 import {Popover, Button} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {
   ConnectedFilterControl,
@@ -164,7 +165,7 @@ describe('<ConnectedFilterControl />', () => {
   });
 
   it('only disables activators of inactive rightPopoverableActions', () => {
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl
         rightPopoverableActions={[
           mockRightOpenPopoverableAction,
@@ -175,18 +176,10 @@ describe('<ConnectedFilterControl />', () => {
       </ConnectedFilterControl>,
     );
 
-    const inactiveActivator = findById(
-      connectedFilterControl,
-      `Activator-closedAction`,
-    );
-
-    const activeActivator = findById(
-      connectedFilterControl,
-      `Activator-openAction`,
-    );
-
-    expect(inactiveActivator.props()).toHaveProperty('disabled', true);
-    expect(activeActivator.prop('disabled')).toBeUndefined();
+    expect(connectedFilterControl).toContainReactComponentTimes(Button, 1, {
+      disclosure: true,
+      disabled: true,
+    });
   });
 
   it('disables each activator buttons when prop disabled is passed', () => {
@@ -195,7 +188,7 @@ describe('<ConnectedFilterControl />', () => {
       mockRightOpenPopoverableAction,
     ];
 
-    const connectedFilterControl = mountWithAppProvider(
+    const connectedFilterControl = mountWithApp(
       <ConnectedFilterControl
         rightPopoverableActions={rightPopoverableActions}
         disabled
@@ -204,22 +197,32 @@ describe('<ConnectedFilterControl />', () => {
       </ConnectedFilterControl>,
     );
 
-    rightPopoverableActions.forEach((action) => {
-      const activator = findById(
-        connectedFilterControl,
-        `Activator-${action.key}`,
-      );
-
-      expect(activator.prop('disabled')).toBe(true);
+    expect(connectedFilterControl).toContainReactComponentTimes(Button, 2, {
+      disclosure: true,
+      disabled: true,
     });
+  });
+
+  it('does not render CenterContainer when no child element is "null"', () => {
+    const connectedFilterControl = mountWithAppProvider(
+      <ConnectedFilterControl>{null}</ConnectedFilterControl>,
+    );
+
+    expect(connectedFilterControl.find('.CenterContainer')).toHaveLength(0);
+  });
+
+  it('renders CenterContainer when no child element is not "null"', () => {
+    const connectedFilterControl = mountWithAppProvider(
+      <ConnectedFilterControl>
+        <MockChild />
+      </ConnectedFilterControl>,
+    );
+
+    expect(connectedFilterControl.find('.CenterContainer')).toHaveLength(1);
   });
 });
 
 function noop() {}
-
-function findById(wrapper: ReactWrapper, id: string) {
-  return wrapper.find(`#${id}`).first();
-}
 
 function findActions(wrapper: ReactWrapper) {
   // this omits the invisible proxy actions used for measuring width

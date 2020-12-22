@@ -20,7 +20,8 @@
         "attention": "Prüfung erforderlich",
         "new": "Neu",
         "critical": "Kritisch"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Wird geladen",
@@ -290,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Weitere Aktionen"
     }
   }
 }

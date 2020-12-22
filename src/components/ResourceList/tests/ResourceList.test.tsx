@@ -1263,10 +1263,6 @@ describe('<ResourceList />', () => {
 
 function noop() {}
 
-function idForItem(item: any) {
-  return JSON.stringify(item);
-}
-
 function renderCustomMarkup(item: any) {
   return <li key={item.id}>{item.title}</li>;
 }

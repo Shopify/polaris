@@ -20,7 +20,8 @@
         "attention": "Huomio",
         "new": "Uusi",
         "critical": "Kriittinen"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Ladataan",
@@ -290,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Lisää toimintoja"
     }
   }
 }

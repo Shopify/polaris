@@ -20,7 +20,8 @@
         "attention": "注意",
         "new": "新建",
         "critical": "重要信息"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "正在加载",
@@ -290,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "其他操作"
     }
   }
 }

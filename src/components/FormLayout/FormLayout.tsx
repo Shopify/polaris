@@ -24,7 +24,7 @@ export const FormLayout = memo(function FormLayout({
 
 FormLayout.Group = Group;
 
-function wrapChildren(child: React.ReactElement<{}>, index: number) {
+function wrapChildren(child: React.ReactElement, index: number) {
   if (isElementOfType(child, Group)) {
     return child;
   }

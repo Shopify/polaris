@@ -143,7 +143,9 @@ describe('<ResourceItem />', () => {
         item
           .find(Button)
           .findWhere(
-            (node) => node.prop('accessibilityLabel') === expectedLabel,
+            (node) =>
+              node.prop('plain') &&
+              node.prop('accessibilityLabel') === expectedLabel,
           ),
       ).toHaveLength(1);
     });

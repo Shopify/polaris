@@ -20,7 +20,8 @@
         "attention": "Obs",
         "new": "Ny",
         "critical": "Kritisk"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Laster inn",
@@ -290,6 +291,9 @@
           }
         }
       }
+    },
+    "Actions": {
+      "moreActions": "Flere handlinger"
     }
   }
 }
