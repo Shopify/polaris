@@ -1,5 +1,4 @@
-@import '../../../../styles/common';
-
-.EmptyState {
-  padding: spacing(tight) spacing();
+.ListBox {
+  padding: spacing(extra-tight) 0;
+  overflow: visible;
 }

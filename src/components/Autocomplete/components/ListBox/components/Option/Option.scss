@@ -1,0 +1,12 @@
+.Option {
+  margin: 0;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.divider {
+  border-bottom: border('divider');
+}
