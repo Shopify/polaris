@@ -52,6 +52,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
       - run: yarn --frozen-lockfile
       - run: yarn storybook:build
       - run: yarn run chromatic --exit-zero-on-changes --auto-accept-changes=master --exit-once-uploaded --storybook-build-dir=build/storybook/static
@@ -61,11 +64,3 @@ jobs:
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
           PERCY_TARGET_BRANCH: ${{ secrets.PERCY_TOKEN }}
-
-  print_branch:
-    name: 'Step that prints name of pull request's base branch'
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "$GITHUB_CONTEXT"
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
