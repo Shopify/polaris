@@ -8,60 +8,6 @@ $large-min-height: rem(44px);
 $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 $spinner-size: rem(20px);
 
-// darken(color(sky), 2%)
-$pressed-hover-background: rgb(217, 222, 228);
-// darken(color(sky), 4%)
-$pressed-active-background: rgb(211, 217, 223);
-// darken(color('indigo'), 10%)
-$primary-pressed-lightest: rgb(63, 78, 174);
-// darken(color('indigo'), 12%)
-$primary-pressed-light: rgb(60, 75, 167);
-// darken(color('indigo', 'dark'), 15%)
-$primary-pressed-dark: rgb(16, 23, 60);
-// darken(color('indigo', 'dark'), 20%)
-$primary-pressed-darkest: rgb(11, 15, 39);
-// darken(color('red'), 10%)
-$destructive-pressed-lightest: rgb(176, 43, 19);
-// darken(color('red'), 12%)
-$destructive-pressed-light: rgb(167, 41, 18);
-// darken(color('red', 'dark'), 15%)
-$destructive-pressed-dark: rgb(117, 4, 10);
-// darken(color('red', 'dark'), 20%)
-$destructive-pressed-darkest: rgb(93, 3, 8);
-$partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
-  inset 0 1px 1px 0 rgba(22, 29, 37, 0.05), inset 0 0 3px 0;
-
-@mixin pressed-box-shadow($color: transparent) {
-  box-shadow: 0 0 0 1px $color,
-    inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
-    inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.1);
-}
-
-@mixin button-filled-pressed(
-  $color-lightest,
-  $color-light,
-  $color-dark,
-  $color-darkest
-) {
-  background: linear-gradient(to bottom, $color-lightest, $color-lightest);
-  border-color: $color-dark;
-  box-shadow: $partial-button-filled-pressed-box-shadow $color-dark;
-
-  &:focus,
-  &:hover {
-    transition-duration: duration(fast);
-    background: linear-gradient(to bottom, $color-light, $color-light);
-    border-color: $color-dark;
-    box-shadow: $partial-button-filled-pressed-box-shadow $color-dark;
-  }
-
-  &:active {
-    background: linear-gradient(to bottom, $color-lightest, $color-lightest);
-    border-color: $color-dark;
-    box-shadow: $partial-button-filled-pressed-box-shadow $color-darkest;
-  }
-}
-
 $stacking-order: (
   segment: 10,
   focused: 20,
@@ -69,10 +15,6 @@ $stacking-order: (
 
 .Button {
   @include button-base;
-
-  &.disabled {
-    @include base-button-disabled;
-  }
 
   &.connectedDisclosure {
     z-index: z-index(segment, $stacking-order);
@@ -158,32 +100,8 @@ $stacking-order: (
   --p-button-color-hover: var(--p-action-primary-hovered);
   --p-button-color-active: var(--p-action-primary-pressed);
   --p-button-color-depressed: var(--p-action-primary-depressed);
-  @include button-filled(color('indigo'), color('indigo', 'dark'));
-  @include recolor-icon(color('white'));
-
-  &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon-on-primary));
-  }
-
-  &.disabled {
-    @include button-filled-disabled(color('indigo'));
-    // stylelint-disable-next-line selector-max-class
-    &.newDesignLanguage {
-      @include recolor-icon(var(--p-icon-disabled));
-      background: var(--p-action-primary-disabled);
-      color: var(--p-text-disabled);
-      border-color: transparent;
-    }
-  }
-
-  &.pressed {
-    @include button-filled-pressed(
-      $primary-pressed-lightest,
-      $primary-pressed-light,
-      $primary-pressed-dark,
-      $primary-pressed-darkest
-    );
-  }
+  @include button-filled;
+  @include recolor-icon(var(--p-icon-on-primary));
 }
 
 .destructive {
@@ -192,53 +110,16 @@ $stacking-order: (
   --p-button-color-hover: var(--p-action-critical-hovered);
   --p-button-color-active: var(--p-action-critical-pressed);
   --p-button-color-depressed: var(--p-action-critical-depressed);
-  @include button-filled(color('red'), color('red', 'dark'));
-  @include recolor-icon(color('white'));
-
-  &.disabled {
-    @include button-filled-disabled(color('red'));
-    // stylelint-disable-next-line selector-max-class
-    &.newDesignLanguage {
-      @include recolor-icon(var(--p-icon-disabled));
-      background: var(--p-action-critical-disabled);
-      color: var(--p-text-disabled);
-      border-color: transparent;
-    }
-  }
-
-  &.pressed {
-    @include button-filled-pressed(
-      $destructive-pressed-lightest,
-      $destructive-pressed-light,
-      $destructive-pressed-dark,
-      $destructive-pressed-darkest
-    );
-  }
-
-  &.newDesignLanguage {
-    @include recolor-icon(var(--p-icon-on-critical));
-  }
+  @include button-filled;
+  @include recolor-icon(var(--p-icon-on-critical));
 }
 
 .outline {
-  @include button-outline(color('ink', 'lighter'));
-
-  &.disabled {
-    @include button-outline-disabled(color('ink', 'lighter'));
-  }
+  @include button-outline;
 }
 
 .destructive.outline {
-  @include button-outline(color('red'));
-
-  // stylelint-disable-next-line selector-max-class
-  &.pressed {
-    @include button-outline(
-      color('red', 'dark'),
-      rgba(color('red', 'dark'), 0.03)
-    );
-    @include recolor-icon(color('red', 'darker'));
-  }
+  @include button-outline;
 }
 
 .disabled {
@@ -252,8 +133,7 @@ $stacking-order: (
   }
 }
 
-.loading,
-.newDesignLanguage.loading {
+.loading {
   position: relative;
   transition: border-color duration() easing();
 
@@ -263,38 +143,9 @@ $stacking-order: (
   &.disabled {
     color: transparent;
   }
-}
 
-// stylelint-disable-next-line selector-max-class, selector-max-specificity
-.newDesignLanguage.loading.disabled svg {
-  fill: var(--p-icon-subdued);
-}
-
-.pressed {
-  background: color(sky);
-  @include pressed-box-shadow;
-
-  &:hover {
-    transition-duration: duration(fast);
-    background: $pressed-hover-background;
-
-    @include pressed-box-shadow;
-  }
-
-  &:focus {
-    border-color: color('indigo');
-    @include pressed-box-shadow(color('indigo'));
-  }
-
-  &:active {
-    background: $pressed-active-background;
-
-    @include pressed-box-shadow;
-  }
-
-  @media (-ms-high-contrast: active) {
-    color: ms-high-contrast-color('button-text');
-    background: ms-high-contrast-color('button-text-background');
+  &.disabled svg {
+    fill: var(--p-icon-subdued);
   }
 }
 
@@ -304,46 +155,22 @@ $stacking-order: (
 // stylelint-disable selector-max-specificity
 
 .plain {
-  @include recolor-icon(color('blue'));
+  // redeclaring these styles here for specificity
+  @include recolor-icon(var(--p-interactive));
+  color: var(--p-interactive);
   margin: (-1 * $vertical-padding) rem(-8px);
   padding-left: spacing(tight);
   padding-right: spacing(tight);
   background: transparent;
   border: 0;
-  box-shadow: none;
-  color: color('blue');
-
-  &.pressed,
-  &:hover,
-  &:focus,
-  &:active {
-    @include recolor-icon(color('blue', 'dark'));
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    color: color('blue', 'dark');
-    text-decoration: underline;
-  }
 
   &.pressed,
   &:focus {
     @include high-contrast-button-outline(none);
   }
 
-  &:focus > .Content {
-    @include high-contrast-button-outline;
-  }
-
-  // stylelint-disable-next-line selector-max-class
-  &.pressed > .Content {
-    @include plain-button-backdrop(rgba(color('ink', 'lighter'), 0.1));
-  }
-
-  // stylelint-disable-next-line selector-max-class
-  &.pressed:hover:not(.iconOnly) > .Content,
-  &.pressed:active:not(.iconOnly) > .Content,
-  &:focus:not(.iconOnly) > .Content {
-    @include plain-button-backdrop;
+  > .Content {
+    @include focus-ring;
   }
 
   &.fullWidth {
@@ -405,25 +232,6 @@ $stacking-order: (
 
   // stylelint-disable selector-max-class
   &.newDesignLanguage {
-    // redeclaring these styles here for specificity
-    @include recolor-icon(var(--p-interactive));
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    color: var(--p-interactive);
-
-    &::after {
-      content: none;
-    }
-
-    &:hover,
-    &:focus,
-    &:active {
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-    }
-
     > .Content {
       font-weight: 400;
       @include focus-ring;
@@ -459,14 +267,6 @@ $stacking-order: (
 
     &:focus:not(.iconOnly) > .Content {
       background: none;
-    }
-
-    &:active:not(.iconOnly) > .Content {
-      @include plain-button-backdrop(var(--p-action-secondary));
-    }
-
-    &.pressed:not(.iconOnly) > .Content {
-      @include plain-button-backdrop(var(--p-action-secondary));
     }
 
     &.destructive {
@@ -783,19 +583,19 @@ $stacking-order: (
   > :first-child .Button,
   > :first-child .Button::after {
     border-radius: 0;
-    border-top-left-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-left-radius: var(--p-border-radius-base, border-radius());
+    border-top-left-radius: var(--p-border-radius-base);
+    border-bottom-left-radius: var(--p-border-radius-base);
   }
   > :last-child .Button,
   > :last-child .Button::after {
     border-radius: 0;
-    border-top-right-radius: var(--p-border-radius-base, border-radius());
-    border-bottom-right-radius: var(--p-border-radius-base, border-radius());
+    border-top-right-radius: var(--p-border-radius-base);
+    border-bottom-right-radius: var(--p-border-radius-base);
   }
 
   > :last-child:first-child .Button,
   > :last-child:first-child .Button::after {
-    border-radius: var(--p-border-radius-base, border-radius());
+    border-radius: var(--p-border-radius-base);
   }
 }
 

@@ -93,12 +93,6 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   flex: 1 1 0;
 }
 
-.disabled {
-  @include base-button-disabled;
-  cursor: default;
-  pointer-events: none;
-}
-
 .PaginatedSelectAll {
   padding: spacing(extra-tight) 0;
 }

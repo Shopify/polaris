@@ -24,12 +24,6 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 .Button {
   @include button-base;
 
-  &.disabled {
-    @include base-button-disabled;
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-
   &.focused {
     border-color: color('indigo');
     outline: 0;

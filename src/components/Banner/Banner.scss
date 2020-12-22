@@ -263,7 +263,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   }
 
   &:focus > .Text {
-    @include plain-button-backdrop;
     @include high-contrast-button-outline;
     box-shadow: none;
   }
