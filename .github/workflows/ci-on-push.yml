@@ -64,7 +64,8 @@ jobs:
 
   print_branch:
     name: 'Step that prints name of pull request's base branch'
-    env:
-      GITHUB_CONTEXT: ${{ toJson(github) }}
-    run: |
-      echo "$GITHUB_CONTEXT"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
