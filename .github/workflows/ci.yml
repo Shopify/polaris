@@ -114,6 +114,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
       - run: yarn --frozen-lockfile
       - run: yarn storybook:build
       - run: yarn run chromatic --exit-zero-on-changes --auto-accept-changes=master --exit-once-uploaded --storybook-build-dir=build/storybook/static
@@ -122,4 +125,4 @@ jobs:
       - run: yarn run percy-storybook --build_dir=build/storybook/static
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_TARGET_BRANCH: ${{ github.base_ref }}
+          PERCY_TARGET_COMMIT: ${{ github.base_ref }}
