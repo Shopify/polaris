@@ -4,11 +4,14 @@ import React, {
   useEffect,
   useRef,
   useCallback,
+  useContext,
 } from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {VisuallyHidden} from '../VisuallyHidden';
+import {ComboBoxTextField} from '../Autocomplete';
 import {classNames, variationName} from '../../utilities/css';
+import {WithinComboBoxContext} from '../../utilities/combo-box';
 import {useI18n} from '../../utilities/i18n';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
@@ -139,7 +142,7 @@ export type TextFieldProps = NonMutuallyExclusiveProps &
     | {onChange(value: string, id: string): void}
   );
 
-export function TextField({
+export function BaseTextField({
   prefix,
   suffix,
   placeholder,
@@ -529,4 +532,14 @@ function normalizeAriaMultiline(multiline?: boolean | number) {
   return Boolean(multiline) || multiline > 0
     ? {'aria-multiline': true}
     : undefined;
+}
+
+export function TextField(props: TextFieldProps) {
+  const withinComboBox = useContext(WithinComboBoxContext);
+
+  return withinComboBox ? (
+    <ComboBoxTextField {...props} />
+  ) : (
+    <BaseTextField {...props} />
+  );
 }

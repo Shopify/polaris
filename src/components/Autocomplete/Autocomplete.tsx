@@ -1,23 +1,29 @@
-import React from 'react';
+import React, {useMemo, useCallback} from 'react';
 
-import {useI18n} from '../../utilities/i18n';
 import type {ActionListItemDescriptor} from '../../types';
-import {Spinner} from '../Spinner';
+import type {PopoverProps} from '../Popover';
+import {useI18n} from '../../utilities/i18n';
 
-import {TextField, ComboBox, ComboBoxProps} from './components';
-import styles from './Autocomplete.scss';
+import {
+  ComboBox,
+  ComboBoxOld,
+  ComboBoxOldProps,
+  ListBox,
+  MappedOption,
+  MappedAction,
+} from './components';
 
 export interface AutocompleteProps {
   /** A unique identifier for the Autocomplete */
   id?: string;
   /** Collection of options to be listed */
-  options: ComboBoxProps['options'];
+  options: ComboBoxOldProps['options'];
   /** The selected options */
   selected: string[];
   /** The text field component attached to the list of options */
   textField: React.ReactElement;
   /** The preferred direction to open the popover */
-  preferredPosition?: ComboBoxProps['preferredPosition'];
+  preferredPosition?: PopoverProps['preferredPosition'];
   /** Title of the list of options */
   listTitle?: string;
   /** Allow more than one option to be selected */
@@ -42,10 +48,9 @@ export interface AutocompleteProps {
 // generated *.d.ts files.
 
 export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
-  ComboBox: typeof ComboBox;
-  TextField: typeof TextField;
+  ComboBox: typeof ComboBoxOld;
+  TextField: typeof ComboBox.TextField;
 } = function Autocomplete({
-  id,
   options,
   selected,
   textField,
@@ -61,38 +66,90 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
 }: AutocompleteProps) {
   const i18n = useI18n();
 
-  const spinnerMarkup = loading ? (
-    <div className={styles.Loading}>
-      <Spinner
-        size="small"
-        accessibilityLabel={i18n.translate(
-          'Polaris.Autocomplete.spinnerAccessibilityLabel',
-        )}
-      />
-    </div>
+  const optionsMarkup = useMemo(() => {
+    const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
+    const optionList =
+      conditionalOptions.length > 0
+        ? conditionalOptions.map((option) => (
+            <MappedOption
+              {...option}
+              key={option.id || option.value}
+              selected={selected.includes(option.value)}
+              singleSelection={!allowMultiple}
+            />
+          ))
+        : null;
+
+    if (listTitle) {
+      return (
+        <ListBox.Section
+          divider={false}
+          title={<ListBox.Header>{listTitle}</ListBox.Header>}
+        >
+          {optionList}
+        </ListBox.Section>
+      );
+    }
+
+    return optionList;
+  }, [
+    listTitle,
+    loading,
+    options,
+    willLoadMoreResults,
+    allowMultiple,
+    selected,
+  ]);
+
+  const loadingMarkup = loading ? (
+    <ListBox.Loading
+      accessibilityLabel={i18n.translate(
+        'Polaris.Autocomplete.spinnerAccessibilityLabel',
+      )}
+    />
   ) : null;
 
-  const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
-  const conditionalAction =
-    actionBefore && actionBefore !== [] ? [actionBefore] : undefined;
+  const updateSelection = useCallback(
+    (newSelection: string) => {
+      if (allowMultiple) {
+        if (selected.includes(newSelection)) {
+          onSelect(selected.filter((option) => option !== newSelection));
+        } else {
+          onSelect([...selected, newSelection]);
+        }
+      } else {
+        onSelect([newSelection]);
+      }
+    },
+    [allowMultiple, onSelect, selected],
+  );
+
+  const actionMarkup = actionBefore && <MappedAction {...actionBefore} />;
+
+  const emptyStateMarkup = emptyState && options.length < 1 && !loading && (
+    <div role="status">{emptyState}</div>
+  );
 
   return (
     <ComboBox
-      id={id}
-      options={conditionalOptions}
-      selected={selected}
-      textField={textField}
-      preferredPosition={preferredPosition}
-      listTitle={listTitle}
+      activator={textField}
       allowMultiple={allowMultiple}
-      contentAfter={spinnerMarkup}
-      actionsBefore={conditionalAction}
-      onSelect={onSelect}
-      onEndReached={onLoadMoreResults}
-      emptyState={emptyState}
-    />
+      onScrolledToBottom={onLoadMoreResults}
+      preferredPosition={preferredPosition}
+    >
+      {actionMarkup || optionsMarkup || loadingMarkup || emptyStateMarkup ? (
+        <ListBox onSelect={updateSelection}>
+          {actionMarkup}
+          {optionsMarkup && (!loading || willLoadMoreResults)
+            ? optionsMarkup
+            : null}
+          {loadingMarkup}
+          {emptyStateMarkup}
+        </ListBox>
+      ) : null}
+    </ComboBox>
   );
 };
 
-Autocomplete.ComboBox = ComboBox;
-Autocomplete.TextField = TextField;
+Autocomplete.ComboBox = ComboBoxOld;
+Autocomplete.TextField = ComboBox.TextField;
