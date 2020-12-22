@@ -67,7 +67,6 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   bannerRef,
 ) {
   const withinContentContainer = useContext(WithinContentContext);
-  const buttonSizeValue = withinContentContainer ? 'slim' : undefined;
   const id = useUniqueId('Banner');
   const {
     wrapperRef,
