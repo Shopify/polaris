@@ -117,7 +117,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   position: relative;
   display: flex;
 
-  // stylelint-disable selector-max-class, selector-max-combinators
+  // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
   &.statusCritical .PrimaryAction .Button {
     border-color: var(--p-border-critical-subdued);
     background: var(--p-surface-critical-subdued);
@@ -197,6 +197,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
       background: var(--p-surface-success-subdued);
     }
   }
+  // stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
 }
 
 .ContentWrapper {
