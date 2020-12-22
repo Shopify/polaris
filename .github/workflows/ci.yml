@@ -123,7 +123,7 @@ jobs:
       - run: yarn run chromatic --exit-zero-on-changes --auto-accept-changes=master --exit-once-uploaded --storybook-build-dir=build/storybook/static
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
-      - run: yarn run percy-storybook --build_dir=build/storybook/static
+      - run: yarn run percy-storybook --build_dir=build/storybook/static --debug
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
           PERCY_TARGET_COMMIT: ${{ github.event.pull_request.base.sha }}
