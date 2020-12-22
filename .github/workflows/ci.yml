@@ -122,3 +122,4 @@ jobs:
       - uses: percy/storybook-action@v0.1.6
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_TARGET_COMMIT: ${{ github.event.pull_request.base.sha }}
