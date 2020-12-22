@@ -123,4 +123,4 @@ jobs:
       - uses: percy/storybook-action@v0.1.6
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_TARGET_COMMIT: ${{ github.base_ref }}
+          PERCY_TARGET_BRANCH: ${{ github.base_ref }}
