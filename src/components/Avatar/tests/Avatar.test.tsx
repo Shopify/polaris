@@ -110,22 +110,4 @@ describe('<Avatar />', () => {
       );
     });
   });
-
-  describe('styleClass', () => {
-    it('renders a sixth style when newDesignLanguage is false', () => {
-      const avatar = mountWithApp(<Avatar name="e" />, {
-        features: {newDesignLanguage: false},
-      });
-
-      expect(avatar.domNodes[0].classList).toContain('styleSix');
-    });
-
-    it('does not render a sixth style when newDesignLanguage is true', () => {
-      const avatar = mountWithApp(<Avatar name="e" />, {
-        features: {newDesignLanguage: true},
-      });
-
-      expect(avatar.domNodes[0].classList).not.toContain('styleSix');
-    });
-  });
 });
