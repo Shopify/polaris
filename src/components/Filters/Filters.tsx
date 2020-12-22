@@ -122,6 +122,7 @@ class FiltersInner extends Component<CombinedProps, State> {
   };
 
   private moreFiltersButtonContainer = createRef<HTMLDivElement>();
+  private moreFiltersDoneButtonContainer = createRef<HTMLDivElement>();
   private focusNode = createRef<HTMLDivElement>();
 
   render() {
@@ -339,12 +340,17 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const filtersDesktopFooterMarkup = (
       <div className={filtersDesktopFooterClassname}>
-        <Button onClick={onClearAll} disabled={!this.hasAppliedFilters()}>
+        <Button
+          onClick={this.handleClearAll}
+          disabled={!this.hasAppliedFilters()}
+        >
           {i18n.translate('Polaris.Filters.clearAllFilters')}
         </Button>
-        <Button onClick={this.closeFilters} primary>
-          {i18n.translate('Polaris.Filters.done')}
-        </Button>
+        <div ref={this.moreFiltersDoneButtonContainer}>
+          <Button onClick={this.closeFilters} primary>
+            {i18n.translate('Polaris.Filters.done')}
+          </Button>
+        </div>
       </div>
     );
 
@@ -589,6 +595,16 @@ class FiltersInner extends Component<CombinedProps, State> {
       </div>
     );
   }
+
+  private handleClearAll = () => {
+    this.props.onClearAll();
+
+    this.moreFiltersDoneButtonContainer.current &&
+      focusFirstFocusableNode(
+        this.moreFiltersDoneButtonContainer.current,
+        false,
+      );
+  };
 }
 
 function getShortcutFilters(filters: FilterInterface[]) {
