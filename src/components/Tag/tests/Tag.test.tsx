@@ -37,24 +37,4 @@ describe('<Tag />', () => {
       expect(spy).not.toHaveBeenCalled();
     });
   });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const tag = mountWithApp(<Tag onRemove={() => null} />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(tag).toContainReactComponent('button', {
-        className: 'Button newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const tag = mountWithApp(<Tag />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(tag).not.toContainReactComponent('button', {
-        className: 'Button newDesignLanguage',
-      });
-    });
-  });
 });
