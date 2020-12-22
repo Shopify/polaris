@@ -1,6 +1,5 @@
 import React, {useEffect, useRef} from 'react';
 import {
-  FlagMajor,
   CirclePlusMinor,
   CircleTickMajor,
   CircleInformationMajor,
