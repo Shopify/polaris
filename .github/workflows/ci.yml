@@ -125,4 +125,4 @@ jobs:
       - run: yarn run percy-storybook --build_dir=build/storybook/static
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_TARGET_COMMIT: ${{ github.base_ref }}
+          PERCY_TARGET_COMMIT: ${{ github.event.pull_request.base.sha }}
