@@ -114,6 +114,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - run: echo "${{ github.base_ref }}"
       - run: yarn --frozen-lockfile
       - run: yarn storybook:build
       - run: yarn run chromatic --exit-zero-on-changes --auto-accept-changes=master --exit-once-uploaded --storybook-build-dir=build/storybook/static
