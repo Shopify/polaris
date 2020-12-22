@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import {
   CancelSmallMinor,
-  FlagMajor,
   CircleTickMajor,
   CircleInformationMajor,
   CircleAlertMajor,
@@ -16,7 +15,6 @@ import {
 
 import {classNames, variationName} from '../../utilities/css';
 import {BannerContext} from '../../utilities/banner-context';
-import {useFeatures} from '../../utilities/features';
 import {useUniqueId} from '../../utilities/unique-id';
 import type {
   Action,
@@ -24,7 +22,7 @@ import type {
   LoadableAction,
   IconProps,
 } from '../../types';
-import {Button, buttonFrom} from '../Button';
+import {Button} from '../Button';
 import {Heading} from '../Heading';
 import {ButtonGroup} from '../ButtonGroup';
 import {UnstyledButton, unstyledButtonFrom} from '../UnstyledButton';
@@ -68,7 +66,6 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   }: BannerProps,
   bannerRef,
 ) {
-  const {newDesignLanguage} = useFeatures();
   const withinContentContainer = useContext(WithinContentContext);
   const buttonSizeValue = withinContentContainer ? 'slim' : undefined;
   const id = useUniqueId('Banner');
@@ -79,10 +76,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     handleMouseUp,
     shouldShowFocus,
   } = useBannerFocus(bannerRef);
-  const {defaultIcon, iconColor, ariaRoleType} = useBannerAttributes(
-    status,
-    newDesignLanguage,
-  );
+  const {defaultIcon, iconColor, ariaRoleType} = useBannerAttributes(status);
   const iconName = icon || defaultIcon;
   const className = classNames(
     styles.Banner,
@@ -90,7 +84,6 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     onDismiss && styles.hasDismiss,
     shouldShowFocus && styles.keyFocused,
     withinContentContainer ? styles.withinContentContainer : styles.withinPage,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   let headingMarkup: React.ReactNode = null;
@@ -107,11 +100,9 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
 
   const primaryActionMarkup = action ? (
     <div className={styles.PrimaryAction}>
-      {newDesignLanguage
-        ? unstyledButtonFrom(action, {
-            className: styles.Button,
-          })
-        : buttonFrom(action, {outline: true, size: buttonSizeValue})}
+      {unstyledButtonFrom(action, {
+        className: styles.Button,
+      })}
     </div>
   ) : null;
 
@@ -171,11 +162,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
         {dismissButton}
 
         <div className={styles.Ribbon}>
-          <Icon
-            source={iconName}
-            color={iconColor}
-            backdrop={!newDesignLanguage}
-          />
+          <Icon source={iconName} color={iconColor} />
         </div>
 
         <div className={styles.ContentWrapper}>
@@ -216,43 +203,40 @@ interface BannerAttributes {
   ariaRoleType: 'status' | 'alert';
 }
 
-function useBannerAttributes(
-  status: BannerProps['status'],
-  newDesignLanguage: boolean,
-): BannerAttributes {
+function useBannerAttributes(status: BannerProps['status']): BannerAttributes {
   switch (status) {
     case 'success':
       return {
         defaultIcon: CircleTickMajor,
-        iconColor: newDesignLanguage ? 'success' : 'greenDark',
+        iconColor: 'success',
         ariaRoleType: 'status',
       };
 
     case 'info':
       return {
         defaultIcon: CircleInformationMajor,
-        iconColor: newDesignLanguage ? 'highlight' : 'tealDark',
+        iconColor: 'highlight',
         ariaRoleType: 'status',
       };
 
     case 'warning':
       return {
         defaultIcon: CircleAlertMajor,
-        iconColor: newDesignLanguage ? 'warning' : 'yellowDark',
+        iconColor: 'warning',
         ariaRoleType: 'alert',
       };
 
     case 'critical':
       return {
         defaultIcon: DiamondAlertMajor,
-        iconColor: newDesignLanguage ? 'critical' : 'redDark',
+        iconColor: 'critical',
         ariaRoleType: 'alert',
       };
 
     default:
       return {
-        defaultIcon: newDesignLanguage ? CircleInformationMajor : FlagMajor,
-        iconColor: newDesignLanguage ? 'base' : 'inkLighter',
+        defaultIcon: CircleInformationMajor,
+        iconColor: 'base',
         ariaRoleType: 'status',
       };
   }
