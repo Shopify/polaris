@@ -20,7 +20,7 @@ export interface ProgressBarProps {
    */
   size?: Size;
   /**
-   * Size of progressbar
+   * Color of progressbar
    * @default 'highlight'
    */
   color?: Color;
