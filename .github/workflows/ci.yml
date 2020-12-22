@@ -119,6 +119,6 @@ jobs:
       - run: yarn run chromatic --exit-zero-on-changes --auto-accept-changes=master --exit-once-uploaded --storybook-build-dir=build/storybook/static
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
-      - uses: percy/storybook-action@v0.1.1
+      - uses: percy/storybook-action@v0.1.6
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
