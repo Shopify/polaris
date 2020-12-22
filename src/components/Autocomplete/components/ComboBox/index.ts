@@ -1,1 +1,2 @@
-export * from './ComboBox';
+export {ComboBox} from './ComboBox';
+export * from './utilities';
