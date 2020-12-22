@@ -60,3 +60,11 @@ jobs:
       - run: yarn run percy-storybook --build_dir=build/storybook/static
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_TARGET_BRANCH: ${{ secrets.PERCY_TOKEN }}
+
+  print_branch:
+    name: 'Step that prints name of pull request's base branch'
+    env:
+      GITHUB_CONTEXT: ${{ toJson(github) }}
+    run: |
+      echo "$GITHUB_CONTEXT"
