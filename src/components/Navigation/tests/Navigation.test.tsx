@@ -75,31 +75,4 @@ describe('<Navigation />', () => {
       expect(navigation.contains(contextControl)).toBe(true);
     });
   });
-
-  describe('newDesignLanguage', () => {
-    it('renders an image if newDesignLanguage is true and a logo from the theme provider is present', () => {
-      const navigation = mountWithApp(<Navigation location="/" />, {
-        theme: {logo: {url: 'https://shopify.com/logo'}},
-        features: {newDesignLanguage: true},
-      });
-      expect(navigation).toContainReactComponent(Image);
-    });
-
-    it('does not render a nav element with newDesignLanguage className if newDesignLanguage is undefined', () => {
-      const navigation = mountWithApp(<Navigation location="/" />);
-      expect(navigation).not.toContainReactComponent('nav', {
-        className: 'Navigation Navigation-newDesignLanguage',
-      });
-    });
-
-    it('renders a nav element with newDesignLanguage className if newDesignLanguage is true', () => {
-      const navigation = mountWithApp(<Navigation location="/" />, {
-        features: {newDesignLanguage: true},
-        theme: {logo: {}},
-      });
-      expect(navigation).toContainReactComponent('nav', {
-        className: 'Navigation Navigation-newDesignLanguage',
-      });
-    });
-  });
 });
