@@ -14,8 +14,9 @@ $nav-max-width: rem(360px);
   max-width: $nav-max-width;
   height: 100%;
   min-height: 100%;
-  background-color: var(--p-background, color('sky', 'light'));
+  background-color: var(--p-background);
   -webkit-overflow-scrolling: touch;
+  border-right: border('divider');
 
   @include safe-area-for(padding-bottom, 0, bottom);
 
@@ -25,12 +26,8 @@ $nav-max-width: rem(360px);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     max-width: layout-width(nav);
-    border-right: var(--p-override-none, border());
+    border-right: var(--p-override-none);
     @include safe-area-for(max-width, layout-width(nav), left);
-  }
-
-  &.Navigation-newDesignLanguage {
-    border-right: border('divider');
   }
 }
 
@@ -55,9 +52,7 @@ $nav-max-width: rem(360px);
   max-width: 100%;
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    .Navigation-newDesignLanguage & {
-      padding-top: rem(12px);
-    }
+    padding-top: rem(12px);
   }
 }
 
@@ -84,30 +79,25 @@ $disabled-fade: 0.6;
 
 .Item {
   @include nav-item-attributes;
-
-  .Navigation-newDesignLanguage & {
-    position: relative;
-  }
+  position: relative;
 }
 
 .Item-selected {
   font-weight: 600;
-  color: var(--p-text-primary, color('indigo', 'dark'));
-  background-color: var(--p-background-selected, $item-selected-background);
+  color: var(--p-text-primary);
+  background-color: var(--p-background-selected);
 
-  .Navigation-newDesignLanguage & {
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: -1 * spacing(tight);
-      height: 100%;
-      width: $active-indicator-width;
-      background-color: var(--p-action-primary);
-      border-top-right-radius: var(--p-border-radius-base);
-      border-bottom-right-radius: var(--p-border-radius-base);
-    }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1 * spacing(tight);
+    height: 100%;
+    width: $active-indicator-width;
+    background-color: var(--p-action-primary);
+    border-top-right-radius: var(--p-border-radius-base);
+    border-bottom-right-radius: var(--p-border-radius-base);
   }
 
   @media (-ms-high-contrast: active) {
@@ -118,8 +108,8 @@ $disabled-fade: 0.6;
 
   &:hover,
   &.keyFocused {
-    background-color: var(--p-background-hovered, $item-selected-background);
-    color: var(--p-text-primary-hovered, color('indigo', 'dark'));
+    background-color: var(--p-background-hovered);
+    color: var(--p-text-primary-hovered);
   }
 
   .keyFocused {
@@ -128,29 +118,25 @@ $disabled-fade: 0.6;
 
   &:active,
   &:active:hover {
-    color: var(--p-text-primary, color('indigo', 'dark'));
+    color: var(--p-text-primary);
     @include no-focus-ring;
 
     // stylelint-disable-next-line selector-max-specificity
-    .Navigation-newDesignLanguage & {
-      background-color: var(--p-background-pressed);
-    }
+    background-color: var(--p-background-pressed);
   }
 }
 
 .Item-disabled {
-  color: var(--p-text-disabled, color('ink', 'lightest'));
+  color: var(--p-text-disabled);
   pointer-events: none;
   opacity: $disabled-fade;
 
-  .Navigation-newDesignLanguage & {
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators
-    .Icon {
-      // Re-apply another layer of opacity fade,
-      // as the new filled icons have a stronger visual presence
-      // than the old outlined ones.
-      opacity: $disabled-fade;
-    }
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
+  .Icon {
+    // Re-apply another layer of opacity fade,
+    // as the new filled icons have a stronger visual presence
+    // than the old outlined ones.
+    opacity: $disabled-fade;
   }
 }
 
@@ -169,14 +155,12 @@ $disabled-fade: 0.6;
 }
 
 .ListItem {
-  @include nav-listitem-attributes;
+  @include nav-list-item-attributes;
 
-  .Navigation-newDesignLanguage & {
-    &:not(:first-child) {
-      // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
-      .Item {
-        border-top: 1px solid var(--p-background);
-      }
+  &:not(:first-child) {
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
+    .Item {
+      border-top: 1px solid var(--p-background);
     }
   }
 }
@@ -198,16 +182,13 @@ $disabled-fade: 0.6;
 }
 
 .SecondaryAction {
-  @include recolor-icon(
-    var(--p-icon, color('ink', 'lightest')),
-    var(--p-override-transparent, color('white'))
-  );
+  @include recolor-icon(var(--p-icon), var(--p-override-transparent));
   display: flex;
   align-items: center;
   height: nav(mobile-height);
   margin-right: spacing(extra-tight);
   padding: spacing(extra-tight) spacing();
-  border-radius: var(--p-border-radius-base, border-radius());
+  border-radius: var(--p-border-radius-base);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     height: nav(desktop-height);
@@ -216,23 +197,14 @@ $disabled-fade: 0.6;
   &:hover,
   &:focus,
   &:active {
-    @include recolor-icon(
-      var(--p-icon-hovered, color('indigo')),
-      var(--p-override-transparent, color('white')),
-      filter('indigo')
-    );
-    background: var(
-      --p-background-hovered,
-      linear-gradient(color(state, hover), color(state, hover))
-    );
+    @include recolor-icon(var(--p-icon-hovered), var(--p-override-transparent));
+    background: var(--p-background-hovered);
 
-    .Navigation-newDesignLanguage & {
-      @media (-ms-high-contrast: active) {
-        @include recolor-icon(
-          $fill-color: color('white'),
-          $filter-color: filter('white')
-        );
-      }
+    @media (-ms-high-contrast: active) {
+      @include recolor-icon(
+        $fill-color: color('white'),
+        $filter-color: filter('white')
+      );
     }
   }
 
@@ -244,11 +216,8 @@ $disabled-fade: 0.6;
 
   &:active {
     @include no-focus-ring;
-
-    .Navigation-newDesignLanguage & {
-      background: var(--p-background-pressed);
-      @include recolor-icon(var(--p-icon-pressed));
-    }
+    @include recolor-icon(var(--p-icon-pressed));
+    background: var(--p-background-pressed);
   }
 
   &:focus,
@@ -262,12 +231,8 @@ $secondary-item-font-size: rem(15px);
 .SecondaryNavigation {
   flex-basis: 100%;
   margin-bottom: spacing(tight);
-  margin-left: nav(icon-size) + spacing(loose);
+  margin-left: 0;
   overflow-x: var(--p-override-visible, hidden);
-
-  .Navigation-newDesignLanguage & {
-    margin-left: 0;
-  }
 
   @include breakpoint-after(nav-min-window-corrected()) {
     margin-left: nav(icon-size) + spacing();
@@ -279,30 +244,19 @@ $secondary-item-font-size: rem(15px);
 
   .Item {
     font-size: $secondary-item-font-size;
-    font-weight: 400;
+    font-weight: 500;
     line-height: nav(item-line-height);
-    color: var(--p-text-subdued, color('ink', 'light'));
-    // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, selector-max-class
-    .Navigation-newDesignLanguage & {
-      font-weight: 500;
-      padding-left: nav(icon-size) + spacing(extra-loose) - spacing(extra-tight);
-
-      @include breakpoint-after(nav-min-window-corrected()) {
-        font-size: $item-font-size-small;
-      }
-      // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, selector-max-class
-      &.keyFocused {
-        @include focus-ring($style: 'focused');
-      }
-    }
+    color: var(--p-text-subdued);
+    padding-left: nav(icon-size) + spacing(extra-loose) - spacing(extra-tight);
 
     &:hover {
-      color: var(--p-text-subdued, color('indigo', 'dark'));
+      color: var(--p-text-subdued);
     }
 
     // stylelint-disable-next-line selector-max-class
     &.keyFocused {
-      color: var(--p-text, color('indigo', 'dark'));
+      @include focus-ring($style: 'focused');
+      color: var(--p-text);
     }
 
     // stylelint-disable-next-line selector-max-specificity
@@ -312,50 +266,45 @@ $secondary-item-font-size: rem(15px);
     }
 
     &:active {
-      color: var(--p-text-primary, color('indigo', 'dark'));
+      color: var(--p-text-primary);
     }
 
     @include breakpoint-after(nav-min-window-corrected()) {
-      font-size: rem(14px);
+      font-size: $item-font-size-small;
       line-height: rem(28px);
     }
   }
 
   .Text {
-    margin-top: nav(mobile-spacing);
-    margin-bottom: nav(mobile-spacing);
+    margin-top: rem(6px);
+    margin-bottom: rem(6px);
     line-height: rem(20px);
     @include breakpoint-after(nav-min-window-corrected()) {
       margin-top: spacing(extra-tight);
       margin-bottom: spacing(extra-tight);
     }
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators
-    .Navigation-newDesignLanguage & {
-      margin-top: rem(6px);
-      margin-bottom: rem(6px);
-    }
   }
 
   .Item-selected {
     font-weight: 600;
-    color: var(--p-text-primary, color('indigo', 'dark'));
+    color: var(--p-text-primary);
     @include focus-ring;
 
     &:hover {
-      color: var(--p-text-primary-hovered, color('indigo', 'dark'));
+      color: var(--p-text-primary-hovered);
     }
     // stylelint-disable-next-line selector-max-class
     &.keyFocused {
-      color: var(--p-text-primary, color('indigo', 'dark'));
+      color: var(--p-text-primary);
     }
     &:active {
-      color: var(--p-text-primary, color('indigo', 'dark'));
+      color: var(--p-text-primary);
       @include no-focus-ring;
     }
   }
   .Item-disabled {
     font-weight: 400;
-    color: var(--p-text-disabled, color('ink', 'lightest'));
+    color: var(--p-text-disabled);
   }
 }
 
@@ -368,11 +317,8 @@ $secondary-item-font-size: rem(15px);
   @include unstyled-list;
   flex: 0 0 auto;
   padding: spacing() 0;
+  padding-top: 0;
   @include safe-area-for(padding-left, 0, left);
-
-  .Navigation-newDesignLanguage & {
-    padding-top: 0;
-  }
 
   + .Section {
     padding-top: spacing(extra-tight);
@@ -397,25 +343,22 @@ $secondary-item-font-size: rem(15px);
 
   .Text {
     font-size: font-size(subheading);
-    color: var(--p-text-subdued, color('ink', 'lighter'));
+    color: var(--p-text-subdued);
 
     @include when-typography-not-condensed {
-      font-size: font-size(subheading, large-screen);
+      font-size: font-size(subheading);
     }
   }
 
   .Action {
     @include unstyled-button;
-    @include recolor-icon(
-      var(--p-icon, color('ink', 'lightest')),
-      var(--p-override-transparent, color('white'))
-    );
+    @include recolor-icon(var(--p-icon), var(--p-override-transparent));
     display: flex;
     align-items: center;
     height: nav(mobile-nav-height);
     margin-right: spacing(extra-tight);
     padding: spacing(extra-tight) spacing();
-    border-radius: var(--p-border-radius-base, border-radius());
+    border-radius: var(--p-border-radius-base);
 
     @include breakpoint-after(nav-min-window-corrected()) {
       height: nav(desktop-nav-height);
@@ -425,13 +368,10 @@ $secondary-item-font-size: rem(15px);
 
     &:hover,
     &:focus {
-      background: var(
-        --p-background-hovered,
-        linear-gradient(color(state, hover), color(state, hover))
-      );
+      background: var(--p-background-hovered);
       @include recolor-icon(
-        var(--p-icon-hovered, color('indigo')),
-        var(--p-override-transparent, color('white'))
+        var(--p-icon-hovered),
+        var(--p-override-transparent)
       );
 
       @media (-ms-high-contrast: active) {
@@ -443,10 +383,7 @@ $secondary-item-font-size: rem(15px);
     }
 
     &:hover {
-      // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
-      .Navigation-newDesignLanguage & {
-        @include recolor-icon($filter-color: filter('action'));
-      }
+      @include recolor-icon($filter-color: filter('action'));
     }
 
     &:focus {
@@ -456,8 +393,8 @@ $secondary-item-font-size: rem(15px);
     // stylelint-disable-next-line selector-max-specificity
     &:focus:hover {
       @include recolor-icon(
-        var(--p-icon-hovered, color('indigo')),
-        var(--p-override-transparent, color('white'))
+        var(--p-icon-hovered),
+        var(--p-override-transparent)
       );
     }
 
@@ -465,13 +402,10 @@ $secondary-item-font-size: rem(15px);
     &:active,
     &:active:hover {
       @include recolor-icon(
-        var(--p-icon-pressed, color('indigo')),
-        var(--p-override-transparent, color('white'))
+        var(--p-icon-pressed),
+        var(--p-override-transparent)
       );
-      background: var(
-        --p-background-pressed,
-        linear-gradient(color(state, hover), color(state, hover))
-      );
+      background: var(--p-background-pressed);
       @include no-focus-ring;
     }
 
@@ -487,16 +421,8 @@ $secondary-item-font-size: rem(15px);
   @include text-emphasis-subdued;
 
   &:hover {
-    @include recolor-icon(
-      var(--p-text-primary, color('indigo')),
-      null,
-      filter('indigo')
-    );
-    color: var(--p-text-primary, color('indigo'));
-
-    .Navigation-newDesignLanguage & {
-      @include recolor-icon($filter-color: filter('action'));
-    }
+    @include recolor-icon($filter-color: filter('action'));
+    color: var(--p-text-primary);
   }
 
   &:focus {
@@ -515,7 +441,7 @@ $secondary-item-font-size: rem(15px);
   height: rem(10px);
   width: rem(10px);
 }
-// stylelint-disable-next-line selector-max-combinators, selector-max-class
-.Navigation-newDesignLanguage .SecondaryNavigation-noIcon .Item {
+
+.SecondaryNavigation-noIcon .Item {
   padding-left: spacing(tight) + spacing(extra-tight);
 }

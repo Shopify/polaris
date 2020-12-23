@@ -3,7 +3,6 @@ import React from 'react';
 import {Scrollable} from '../Scrollable';
 import {classNames} from '../../utilities/css';
 import {useTheme} from '../../utilities/theme';
-import {useFeatures} from '../../utilities/features';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
@@ -30,7 +29,6 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   onDismiss,
 }: NavigationProps) {
   const {logo} = useTheme();
-  const {newDesignLanguage} = useFeatures();
   const width = getWidth(logo, 104);
 
   const logoMarkup = logo ? (
@@ -56,10 +54,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
     logoMarkup
   );
 
-  const className = classNames(
-    styles.Navigation,
-    newDesignLanguage && styles['Navigation-newDesignLanguage'],
-  );
+  const className = classNames(styles.Navigation);
 
   const context = {
     location,
