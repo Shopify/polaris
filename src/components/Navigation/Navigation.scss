@@ -26,7 +26,7 @@ $nav-max-width: rem(360px);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     max-width: layout-width(nav);
-    border-right: var(--p-override-none);
+    // border-right: var(--p-override-none);
     @include safe-area-for(max-width, layout-width(nav), left);
   }
 }
@@ -197,7 +197,11 @@ $disabled-fade: 0.6;
   &:hover,
   &:focus,
   &:active {
-    @include recolor-icon(var(--p-icon-hovered), var(--p-override-transparent));
+    @include recolor-icon(
+      var(--p-icon-hovered),
+      var(--p-override-transparent),
+      $filter-color: filter('action')
+    );
     background: var(--p-background-hovered);
 
     @media (-ms-high-contrast: active) {
@@ -233,10 +237,6 @@ $secondary-item-font-size: rem(15px);
   margin-bottom: spacing(tight);
   margin-left: 0;
   overflow-x: var(--p-override-visible, hidden);
-
-  @include breakpoint-after(nav-min-window-corrected()) {
-    margin-left: nav(icon-size) + spacing();
-  }
 
   .List {
     @include unstyled-list;
@@ -279,14 +279,9 @@ $secondary-item-font-size: rem(15px);
     margin-top: rem(6px);
     margin-bottom: rem(6px);
     line-height: rem(20px);
-    @include breakpoint-after(nav-min-window-corrected()) {
-      margin-top: spacing(extra-tight);
-      margin-bottom: spacing(extra-tight);
-    }
   }
 
   .Item-selected {
-    font-weight: 600;
     color: var(--p-text-primary);
     @include focus-ring;
 
@@ -303,7 +298,7 @@ $secondary-item-font-size: rem(15px);
     }
   }
   .Item-disabled {
-    font-weight: 400;
+    font-weight: 500;
     color: var(--p-text-disabled);
   }
 }
@@ -346,7 +341,7 @@ $secondary-item-font-size: rem(15px);
     color: var(--p-text-subdued);
 
     @include when-typography-not-condensed {
-      font-size: font-size(subheading);
+      font-size: font-size(subheading, large-screen);
     }
   }
 
@@ -421,7 +416,11 @@ $secondary-item-font-size: rem(15px);
   @include text-emphasis-subdued;
 
   &:hover {
-    @include recolor-icon($filter-color: filter('action'));
+    @include recolor-icon(
+      var(--p-action-primary),
+      null,
+      $filter-color: filter('action')
+    );
     color: var(--p-text-primary);
   }
 

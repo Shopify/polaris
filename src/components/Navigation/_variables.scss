@@ -77,7 +77,7 @@ $nav-animation-variables: (
 }
 
 @mixin nav-item-icon-attributes {
-  @include recolor-icon($filter-color: filter('icon'));
+  @include recolor-icon(var(--p-icon), transparent, filter('icon'));
   flex-shrink: 0;
   align-self: flex-start;
   width: nav(icon-size);
