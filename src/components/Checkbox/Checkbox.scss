@@ -5,6 +5,7 @@
   margin: var(--p-choice-margin, 0);
 }
 
+// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
 .Input {
   @include visually-hidden;
 
@@ -43,6 +44,7 @@
     }
   }
 }
+// stylelint-enable selector-max-specificity, selector-max-class,  selector-max-combinators, max-nesting-depth
 
 .Backdrop {
   @include control-backdrop($global-theming: true);
