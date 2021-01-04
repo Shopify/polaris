@@ -1,8 +1,6 @@
 import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
-import {isNewDesignLanguageColor} from '../../utilities/color-new-design-language';
-import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import type {IconProps} from '../../types';
 
@@ -25,7 +23,6 @@ interface Props extends IconProps {}
 
 export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
 
   let sourceType: 'function' | 'placeholder' | 'external';
   if (typeof source === 'function') {
@@ -46,31 +43,11 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
     );
   }
 
-  if (color && !newDesignLanguage && isNewDesignLanguageColor(color)) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'You have selected a color meant to be used in the new design language but new design language is not enabled.',
-    );
-  }
-
-  if (
-    color &&
-    sourceType === 'external' &&
-    newDesignLanguage === true &&
-    isNewDesignLanguageColor(color)
-  ) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Recoloring external SVGs is not supported with colors in the new design language. Set the intended color on your SVG instead.',
-    );
-  }
-
   const className = classNames(
     styles.Icon,
     color && styles[variationName('color', color)],
     color && color !== 'white' && styles.isColored,
     backdrop && styles.hasBackdrop,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const SourceComponent = source;
