@@ -1,11 +1,9 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
 
 import {Navigation} from '../Navigation';
 import {NavigationContext} from '../context';
-import {Image} from '../../Image';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
 describe('<Navigation />', () => {
