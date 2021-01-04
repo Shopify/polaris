@@ -345,43 +345,41 @@ $resource-list-item-variables: (
 }
 
 .ListItem {
+  position: relative;
+  @include focus-ring($border-width: rem(-1px));
+
   .ListItem + & {
     border-top: border('divider');
   }
 
-  &:last-of-type {
-    border-bottom-left-radius: var(--p-border-radius-wide, border-radius());
-    border-bottom-right-radius: var(--p-border-radius-wide, border-radius());
-
-    .ItemWrapper {
-      border-bottom-left-radius: var(--p-border-radius-wide, border-radius());
-      border-bottom-right-radius: var(--p-border-radius-wide, border-radius());
-    }
+  &::after {
+    border-radius: rem(2px);
   }
 
-  &.newDesignLanguage {
-    position: relative;
-    @include focus-ring($border-width: rem(-1px));
+  &:last-of-type {
+    border-bottom-left-radius: var(--p-border-radius-wide);
+    border-bottom-right-radius: var(--p-border-radius-wide);
 
-    &::after {
-      border-radius: rem(2px);
-    }
-
-    // stylelint-disable-next-line selector-max-class, selector-max-specificity
-    &:last-of-type.focused::after {
+    .ItemWrapper {
       border-bottom-left-radius: var(--p-border-radius-wide);
       border-bottom-right-radius: var(--p-border-radius-wide);
     }
+  }
 
-    // stylelint-disable-next-line selector-max-class
-    &.focused {
-      @include focus-ring($style: 'focused');
-      z-index: resource-list-item(clickable-stacking-order);
-    }
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity
+  &:last-of-type.focused::after {
+    border-bottom-left-radius: var(--p-border-radius-wide);
+    border-bottom-right-radius: var(--p-border-radius-wide);
+  }
 
-    // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
-    * + ul > &:first-of-type.focused::after {
-      top: rem(1px);
-    }
+  // stylelint-disable-next-line selector-max-class
+  &.focused {
+    @include focus-ring($style: 'focused');
+    z-index: resource-list-item(clickable-stacking-order);
+  }
+
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
+  * + ul > &:first-of-type.focused::after {
+    top: rem(1px);
   }
 }
