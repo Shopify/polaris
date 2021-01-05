@@ -53,7 +53,7 @@
       "previousMonth": "Show previous month, {previousMonthName} {showPreviousYear}",
       "nextMonth": "Show next month, {nextMonth} {nextYear}",
       "today": "Today ",
-      "start": "Start of range ",
+      "start": "Start of range",
       "end": "End of range",
       "months": {
         "january": "January",
