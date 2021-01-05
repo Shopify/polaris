@@ -57,7 +57,6 @@ export function DetailsPage() {
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [navItemActive, setNavItemActive] = useState('');
-  const [previewValue, setPreviewValue] = useState('');
   const [nameFieldValue, setNameFieldValue] = useState(
     defaultState.current.nameFieldValue,
   );
@@ -182,6 +181,7 @@ export function DetailsPage() {
       open={userMenuActive}
       onToggle={toggleUserMenuActive}
       colorScheme="dark"
+      accessibilityLabel="User menu"
     />
   );
 
@@ -417,10 +417,7 @@ export function DetailsPage() {
     {label: 'Last 7 days', value: 'lastWeek'},
   ];
 
-  const handleChange = useCallback((newValue) => {
-    setValue(newValue);
-    setPreviewValue(newValue);
-  }, []);
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
 
   // ---- Dropzone ----
   const [files, setFiles] = useState<File[]>([]);
@@ -479,7 +476,7 @@ export function DetailsPage() {
         {
           content: 'View',
           // eslint-disable-next-line no-console
-          onAction: () => console.log(previewValue),
+          onAction: () => console.log('view'),
         },
         {
           content: 'Print',

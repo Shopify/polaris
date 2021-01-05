@@ -20,7 +20,8 @@
         "attention": "Upozornění",
         "new": "Nové",
         "critical": "Kritický"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Načítání",
