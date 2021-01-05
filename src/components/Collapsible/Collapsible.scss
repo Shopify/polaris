@@ -3,23 +3,18 @@
 .Collapsible {
   padding-top: 0;
   padding-bottom: 0;
-  height: 0;
+  max-height: 0;
   overflow: hidden;
-  will-change: height;
-  transition-property: height;
+  will-change: max-height;
+  transition-property: max-height;
   transition-duration: duration(fast);
   transition-timing-function: easing(out);
 }
 
-.open {
-  height: auto;
-  overflow: visible;
+// Stop children from being focused when fully closed
+.isFullyClosed {
+  display: none;
 }
-
-// Stop children from being focused when aria-hidden
-// .Collapsible[aria-hidden='true'] {
-//   display: none;
-// }
 
 .expandOnPrint {
   @include when-printing {

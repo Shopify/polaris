@@ -6,7 +6,7 @@ import {Tokens} from 'utilities/theme';
 import {Collapsible} from '../Collapsible';
 
 describe('<Collapsible />', () => {
-  const ariaHiddenSelector = '[aria-hidden=true]';
+  const ariaExpandedSelector = '[aria-expanded=false]';
 
   it('does not render its children and indicates hidden with aria-hidden', () => {
     const collapsible = mountWithAppProvider(
@@ -15,7 +15,7 @@ describe('<Collapsible />', () => {
       </Collapsible>,
     );
 
-    const hidden = collapsible.find(ariaHiddenSelector);
+    const hidden = collapsible.find(ariaExpandedSelector);
     expect(hidden.exists()).toBe(true);
   });
 
@@ -26,7 +26,7 @@ describe('<Collapsible />', () => {
       </Collapsible>,
     );
 
-    const hidden = collapsible.find(ariaHiddenSelector);
+    const hidden = collapsible.find(ariaExpandedSelector);
     expect(hidden.exists()).toBe(false);
     expect(collapsible.contains('content')).toBe(true);
   });

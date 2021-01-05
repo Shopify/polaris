@@ -75,13 +75,16 @@ function CollapsibleExample() {
           <Collapsible
             open={open}
             id="basic-collapsible"
-            transition={{duration: '1000ms', timingFunction: 'ease'}}
+            transition={{duration: '500ms', timingFunction: 'ease-in-out'}}
             expandOnPrint
           >
             <TextContainer>
-              Your mailing list lets you contact customers or visitors who have
-              shown an interest in your store. Reach out to them with exclusive
-              offers or updates about your products.
+              <p>
+                Your mailing list lets you contact customers or visitors who have
+                shown an interest in your store. Reach out to them with exclusive
+                offers or updates about your products.
+              </p>
+              <Link url="#">Test link</Link>
             </TextContainer>
           </Collapsible>
         </Stack>
@@ -120,13 +123,16 @@ function NestedCollapsibleExample() {
           <Collapsible
             open={open}
             id="basic-collapsible"
-            transition={{duration: '500ms', timingFunction: 'ease'}}
+            transition={{duration: '500ms', timingFunction: 'ease-in-out'}}
             expandOnPrint
           >
             <TextContainer>
-              Your mailing list lets you contact customers or visitors who have
-              shown an interest in your store. Reach out to them with exclusive
-              offers or updates about your products.
+              <p>
+                Your mailing list lets you contact customers or visitors who have
+                shown an interest in your store. Reach out to them with exclusive
+                offers or updates about your products.
+              </p>
+              <Link url="#">Test link</Link>
             </TextContainer>
             <Button
               onClick={handleInnerToggle}
@@ -138,7 +144,7 @@ function NestedCollapsibleExample() {
             <Collapsible
               open={innerOpen}
               id="basic-inner-collapsible"
-              transition={{duration: '500ms', timingFunction: 'ease-out'}}
+              transition={{duration: '500ms', timingFunction: 'ease-in-out'}}
               expandOnPrint
             >
               <TextContainer>
