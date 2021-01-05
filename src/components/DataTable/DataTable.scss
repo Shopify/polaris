@@ -125,6 +125,7 @@ $breakpoint: 768px;
 
 .Heading {
   @include unstyled-button;
+  @include focus-ring;
   position: relative;
   display: inline-flex;
   justify-content: flex-end;
@@ -132,17 +133,21 @@ $breakpoint: 768px;
   @include recolor-icon(var(--p-icon));
   color: var(--p-text, color(ink));
   transition: color duration() easing();
-  padding: spacing();
   cursor: pointer;
+  padding: spacing(tight);
+  margin: spacing(tight);
 
-  &:hover,
-  &:focus {
+  &:hover {
     @include recolor-icon(var(--p-interactive-hovered, color('indigo')));
     color: var(--p-interactive-hovered, color('indigo'));
 
     .Icon {
       opacity: 1;
     }
+  }
+
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
   }
 }
 

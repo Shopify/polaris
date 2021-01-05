@@ -150,7 +150,7 @@ Use to surface educational information about a feature or opportunity.
       objectFit: 'cover',
       objectPosition: 'center',
     }}
-    src="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+    src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
   />
 </MediaCard>
 ```
@@ -178,7 +178,7 @@ Use when there are limited vertical space, or when the card should be less promi
       objectFit: 'cover',
       objectPosition: 'center',
     }}
-    src="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+    src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
   />
 </MediaCard>
 ```
@@ -206,7 +206,7 @@ Use when there are two distinct actions merchants can take on the information in
     width="100%"
     height="100%"
     style={{objectFit: 'cover', objectPosition: 'center'}}
-    src="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+    src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
   />
 </MediaCard>
 ```
@@ -227,7 +227,7 @@ Use to provide a consistent layout for contextual learning content. Use to wrap 
 >
   <VideoThumbnail
     videoLength={80}
-    thumbnailUrl="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+    thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
   />
 </MediaCard>
 ```
@@ -249,7 +249,7 @@ Use when vertical screen space is not limited or when the video card is the page
 >
   <VideoThumbnail
     videoLength={80}
-    thumbnailUrl="https://burst.shopifycdn.com/photos/smiling-businesswoman-in-office.jpg?width=1850"
+    thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
   />
 </MediaCard>
 ```
