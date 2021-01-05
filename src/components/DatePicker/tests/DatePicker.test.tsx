@@ -46,7 +46,7 @@ describe('<DatePicker />', () => {
       );
 
       expect(datePicker).toContainReactComponent(Month, {
-        accessibilityLabelPrefixes: ['Start of range ', 'End of range'],
+        accessibilityLabelPrefixes: ['Start of range', 'End of range'],
       });
     });
   });
