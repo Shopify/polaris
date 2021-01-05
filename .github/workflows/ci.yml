@@ -6,7 +6,8 @@ on:
       - '**'
   push:
     branches:
-      - master
+      - 'master'
+      - 'version-6.0.0'
 
 jobs:
   test:
