@@ -14,7 +14,7 @@ $height: rem(3px);
   height: 100%;
   transform-origin: 0;
   background-color: var(--p-icon-success, color('teal'));
-  transition: transform duration(slowest) easing(out);
+  transition: transform duration(slowest) easing(out) 15ms;
 
   @media screen and (-ms-high-contrast: active) {
     background-color: ms-high-contrast-color('selected-text-background');

@@ -1,79 +1,41 @@
-import React, {Component} from 'react';
-import debounce from 'lodash/debounce';
+import React, {useEffect, useState} from 'react';
+
+import {useI18n} from '../../../../utilities/i18n';
 
 import styles from './Loading.scss';
-
-export interface LoadingProps {}
-
-interface State {
-  progress: number;
-  step: number;
-  animation: number | null;
-}
 
 const INITIAL_STEP = 10;
 const STUCK_THRESHOLD = 99;
 
-export class Loading extends Component<LoadingProps, State> {
-  state: State = {
-    progress: 0,
-    step: INITIAL_STEP,
-    animation: null,
-  };
+export function Loading() {
+  const i18n = useI18n();
 
-  private ariaValuenow = debounce(() => {
-    const {progress} = this.state;
-    return Math.floor(progress / 10) * 10;
-  }, 15);
+  const [progress, setProgress] = useState(0);
+  const [step, setStep] = useState(INITIAL_STEP);
 
-  componentDidMount() {
-    this.increment();
-  }
-
-  componentWillUnmount() {
-    const {animation} = this.state;
-
-    if (animation != null) {
-      cancelAnimationFrame(animation);
-    }
-  }
-
-  render() {
-    const {progress} = this.state;
-
-    const customStyles = {
-      transform: `scaleX(${Math.floor(progress) / 100})`,
-    };
-
-    const ariaValuenow = this.ariaValuenow();
-
-    return (
-      <div className={styles.Loading}>
-        <div
-          className={styles.Level}
-          style={customStyles}
-          aria-valuenow={ariaValuenow}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          role="progressbar"
-        />
-      </div>
-    );
-  }
-
-  private increment() {
-    const {progress, step} = this.state;
-
+  useEffect(() => {
     if (progress >= STUCK_THRESHOLD) {
       return;
     }
 
-    const animation = requestAnimationFrame(() => this.increment());
+    setProgress(Math.min(progress + step, 100));
+    setStep(INITIAL_STEP ** -(progress / 25));
+  }, [progress, step]);
 
-    this.setState({
-      progress: Math.min(progress + step, 100),
-      step: INITIAL_STEP ** -(progress / 25),
-      animation,
-    });
-  }
+  const customStyles = {
+    transform: `scaleX(${Math.floor(progress) / 100})`,
+  };
+
+  return (
+    <div
+      className={styles.Loading}
+      aria-valuenow={progress}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      role="progressbar"
+      aria-label={i18n.translate('Polaris.Loading.label')}
+    >
+      <div className={styles.Level} style={customStyles} />
+    </div>
+  );
 }
