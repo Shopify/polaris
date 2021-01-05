@@ -98,7 +98,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0 # Chromatic git history to  track changes
+          fetch-depth: 0 # Chromatic git history to track changes
 
       - uses: actions/setup-node@v2
         with:
@@ -128,7 +128,8 @@ jobs:
           exitZeroOnChanges: true
           exitOnceUploaded: true
 
-      - run: yarn run percy-storybook --build_dir=build/storybook/static
+      - uses: percy/storybook-action@v0.1.6
+        with:
+          custom-command: 'yarn run percy-storybook --build_dir=build/storybook/static'
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_TARGET_BRANCH: ${{ github.base_ref }}
