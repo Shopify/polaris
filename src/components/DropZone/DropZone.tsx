@@ -412,7 +412,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     return (
       <div className={overlayClass}>
         <Stack vertical spacing="tight">
-          <Icon source={icon} color={color} />
+          <Icon source={icon} />
           {size === 'extraLarge' && (
             <DisplayText size="small" element="p">
               {text}

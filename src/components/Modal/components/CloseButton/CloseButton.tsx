@@ -26,7 +26,7 @@ export function CloseButton({title = true, onClick}: CloseButtonProps) {
       className={className}
       aria-label={i18n.translate('Polaris.Common.close')}
     >
-      <Icon source={MobileCancelMajor} color="inkLighter" />
+      <Icon source={MobileCancelMajor} />
     </button>
   );
 }

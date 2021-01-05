@@ -283,7 +283,7 @@ export function TextField({
         <VisuallyHidden>
           {i18n.translate('Polaris.Common.clear')}
         </VisuallyHidden>
-        <Icon source={CircleCancelMinor} color="inkLightest" />
+        <Icon source={CircleCancelMinor} />
       </button>
     ) : null;
 

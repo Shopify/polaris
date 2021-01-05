@@ -115,9 +115,6 @@
         "closeMobileNavigationLabel": "Close navigation"
       }
     },
-    "Icon": {
-      "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
-    },
     "ActionMenu": {
       "RollupActions": {
         "rollupButton": "Actions"
@@ -223,9 +220,6 @@
     },
     "SkeletonPage": {
       "loadingLabel": "Page loading"
-    },
-    "Spinner": {
-      "warningMessage": "The color {color} is not meant to be used on {size} spinners. The colors available on large spinners are: {colors}"
     },
     "Tabs": {
       "toggleTabsLabel": "More tabs"
