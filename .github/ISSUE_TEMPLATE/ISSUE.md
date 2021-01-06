@@ -12,13 +12,11 @@ labels: 🐛Bug
 Write a short description of the issue here ↓
 -->
 
-
 ## Expected behavior
 
 <!--
 What do you think should happen?
 -->
-
 
 ## Actual behavior
 
@@ -35,7 +33,6 @@ If you include an animated gif showing your issue, wrapping it in a details tag 
     </details>
 
 -->
-
 
 ## Steps to reproduce the problem
 
@@ -54,7 +51,6 @@ The best way to get your bug fixed is to provide a reduced test case. This [Code
 - Browser:
 - Device:
 - Operating System:
-
 
 Or run `npx envinfo --system --binaries --browsers --npmPackages react,react-dom,@shopify/polaris` to provide specifications on your environment including version numbers, browser, device, and operating system.
 

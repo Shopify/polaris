@@ -1,14 +1,6 @@
 import React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {
-  Button,
-  Popover,
-  Sheet,
-  Tag,
-  TextField,
-  TextStyle,
-  VisuallyHidden,
-} from 'components';
+import {Button, Popover, Sheet, Tag, TextField, TextStyle} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {
   mountWithAppProvider,
@@ -20,7 +12,7 @@ import {mountWithApp} from 'test-utilities';
 
 import {WithinFilterContext} from '../../../utilities/within-filter-context';
 import {Filters, FiltersProps} from '../Filters';
-import {ConnectedFilterControl} from '../components';
+import {ConnectedFilterControl, TagsWrapper} from '../components';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;
 const MockChild = () => <div />;
@@ -437,9 +429,11 @@ describe('<Filters />', () => {
       expect(resourceFilters.find(Tag)).toHaveLength(0);
     });
 
-    it('renders visually hidden if applied filters are not provided', () => {
+    it('hides the tags container when applied filters are not provided', () => {
       const resourceFilters = mountWithApp(<Filters {...mockProps} />);
-      expect(resourceFilters).toContainReactComponentTimes(VisuallyHidden, 1);
+      expect(resourceFilters).toContainReactComponent(TagsWrapper, {
+        hidden: true,
+      });
     });
 
     it('renders applied filters container with aria live', () => {
@@ -599,15 +593,14 @@ describe('<Filters />', () => {
 
   describe('newDesignLanguage', () => {
     it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const filters = mountWithApp(<Filters {...mockProps} disabled />, {
+      const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />, {
         features: {newDesignLanguage: true},
       });
 
-      filters.find('button', {disabled: true})!.trigger('onClick');
-
-      expect(filters).toContainReactComponent('button', {
-        className: 'FilterTrigger newDesignLanguage',
-      });
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      expect(
+        findById(resourceFilters, 'filterOneToggleButton').exists(),
+      ).toBeTruthy();
     });
 
     it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {

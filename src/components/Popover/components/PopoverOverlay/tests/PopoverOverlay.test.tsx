@@ -393,7 +393,7 @@ describe('<PopoverOverlay />', () => {
     });
 
     it('focuses the first focusbale node when autofocusTarget is set to FirstNode', () => {
-      const popoverOverlay = mountWithApp(
+      mountWithApp(
         <PopoverOverlay
           active
           id="PopoverOverlay-1"
@@ -401,12 +401,13 @@ describe('<PopoverOverlay />', () => {
           onClose={noop}
           autofocusTarget="first-node"
         >
-          <input type="text" />
+          <p>Hello world</p>
         </PopoverOverlay>,
       );
 
-      const focusTarget = popoverOverlay.find('input', {})!.domNode;
-      expect(document.activeElement).toBe(focusTarget);
+      expect(document.activeElement?.className).toBe(
+        'Pane Scrollable vertical',
+      );
     });
 
     it('does not focus when autofocusTarget is set to None', () => {
