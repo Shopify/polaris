@@ -80,9 +80,9 @@ function CollapsibleExample() {
           >
             <TextContainer>
               <p>
-                Your mailing list lets you contact customers or visitors who have
-                shown an interest in your store. Reach out to them with exclusive
-                offers or updates about your products.
+                Your mailing list lets you contact customers or visitors who
+                have shown an interest in your store. Reach out to them with
+                exclusive offers or updates about your products.
               </p>
               <Link url="#">Test link</Link>
             </TextContainer>
@@ -128,9 +128,9 @@ function NestedCollapsibleExample() {
           >
             <TextContainer>
               <p>
-                Your mailing list lets you contact customers or visitors who have
-                shown an interest in your store. Reach out to them with exclusive
-                offers or updates about your products.
+                Your mailing list lets you contact customers or visitors who
+                have shown an interest in your store. Reach out to them with
+                exclusive offers or updates about your products.
               </p>
               <Link url="#">Test link</Link>
             </TextContainer>
