@@ -47,6 +47,7 @@ $resource-list-item-variables: (
   }
 
   &:hover {
+    background-color: var(--p-surface-hovered);
     &:not(.persistActions) {
       // stylelint-disable-next-line selector-max-specificity
       .Actions {
@@ -58,6 +59,10 @@ $resource-list-item-variables: (
         }
       }
     }
+  }
+
+  &:active {
+    background-color: var(--p-surface-pressed);
   }
 }
 
@@ -249,14 +254,6 @@ $resource-list-item-variables: (
   &:active {
     background-color: var(--p-surface-selected-pressed);
   }
-}
-
-:hover {
-  background-color: var(--p-surface-hovered);
-}
-
-:active {
-  background-color: var(--p-surface-pressed);
 }
 
 .ListItem {
