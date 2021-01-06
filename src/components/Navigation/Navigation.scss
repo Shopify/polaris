@@ -26,7 +26,6 @@ $nav-max-width: rem(360px);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     max-width: layout-width(nav);
-    // border-right: var(--p-override-none);
     @include safe-area-for(max-width, layout-width(nav), left);
   }
 }
@@ -118,10 +117,8 @@ $disabled-fade: 0.6;
 
   &:active,
   &:active:hover {
-    color: var(--p-text-primary);
     @include no-focus-ring;
-
-    // stylelint-disable-next-line selector-max-specificity
+    color: var(--p-text-primary);
     background-color: var(--p-background-pressed);
   }
 }
@@ -131,7 +128,6 @@ $disabled-fade: 0.6;
   pointer-events: none;
   opacity: $disabled-fade;
 
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .Icon {
     // Re-apply another layer of opacity fade,
     // as the new filled icons have a stronger visual presence
@@ -158,7 +154,6 @@ $disabled-fade: 0.6;
   @include nav-list-item-attributes;
 
   &:not(:first-child) {
-    // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
     .Item {
       border-top: 1px solid var(--p-background);
     }
@@ -347,7 +342,7 @@ $secondary-item-font-size: rem(15px);
 
   .Action {
     @include unstyled-button;
-    @include recolor-icon(var(--p-icon), var(--p-override-transparent));
+    @include recolor-icon(var(--p-icon));
     display: flex;
     align-items: center;
     height: nav(mobile-nav-height);
@@ -387,10 +382,7 @@ $secondary-item-font-size: rem(15px);
 
     // stylelint-disable-next-line selector-max-specificity
     &:focus:hover {
-      @include recolor-icon(
-        var(--p-icon-hovered),
-        var(--p-override-transparent)
-      );
+      @include recolor-icon(var(--p-icon-hovered));
     }
 
     // stylelint-disable-next-line selector-max-specificity

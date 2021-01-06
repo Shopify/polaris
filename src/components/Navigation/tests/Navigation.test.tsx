@@ -1,15 +1,24 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Navigation} from '../Navigation';
 import {NavigationContext} from '../context';
+import {Image} from '../../Image';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 
 describe('<Navigation />', () => {
   it('mounts', () => {
     const navigation = mountWithAppProvider(<Navigation location="/" />);
     expect(navigation.exists()).toBe(true);
+  });
+
+  it('renders an image if the theme provider is present', () => {
+    const navigation = mountWithApp(<Navigation location="/" />, {
+      theme: {logo: {url: 'https://shopify.com/logo'}},
+    });
+    expect(navigation).toContainReactComponent(Image);
   });
 
   describe('context', () => {

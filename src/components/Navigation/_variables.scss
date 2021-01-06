@@ -122,7 +122,6 @@ $nav-animation-variables: (
   .RollupSection &,
   .SecondaryNavigation & {
     opacity: 1;
-    animation: none;
   }
   @for $i from 1 through nav-animation(items-to-stagger) {
     &:nth-child(#{$i}) {

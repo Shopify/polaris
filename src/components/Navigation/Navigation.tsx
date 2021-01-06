@@ -54,8 +54,6 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
     logoMarkup
   );
 
-  const className = classNames(styles.Navigation);
-
   const context = {
     location,
     onNavigationDismiss: onDismiss,
@@ -64,7 +62,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   return (
     <NavigationContext.Provider value={context}>
       <WithinContentContext.Provider value>
-        <nav className={className}>
+        <nav className={styles.Navigation}>
           {mediaMarkup}
           <Scrollable className={styles.PrimaryNavigation}>
             {children}
