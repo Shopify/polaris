@@ -56,7 +56,7 @@
 }
 
 .Icon {
-  @include recolor-icon(var(--p-icon-on-interactive, color('indigo')));
+  @include recolor-icon(var(--p-icon-on-interactive));
   position: absolute;
   top: 50%;
   left: 50%;
@@ -76,7 +76,7 @@
 // stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
 .error {
   .Icon {
-    @include recolor-icon(var(--p-icon-on-critical, color('red', 'dark')));
+    @include recolor-icon(var(--p-icon-on-critical));
   }
 
   .Backdrop {
