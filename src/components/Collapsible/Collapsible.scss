@@ -19,7 +19,8 @@
 .expandOnPrint {
   @include when-printing {
     // stylelint-disable-next-line declaration-no-important
-    height: auto !important;
+    max-height: none !important;
     overflow: visible;
+    display: block;
   }
 }

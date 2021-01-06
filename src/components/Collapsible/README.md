@@ -57,7 +57,7 @@ Use for a basic “show more” interaction when you need to display more conten
 
 ```jsx
 function CollapsibleExample() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const handleToggle = useCallback(() => setOpen((open) => !open), []);
 

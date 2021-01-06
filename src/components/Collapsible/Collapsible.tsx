@@ -69,12 +69,12 @@ export function Collapsible({
     }
   }, [open, isOpen]);
 
-  // If collapsible defaults to open, set an initial height
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!open || !collapisbleContainer.current) return;
+    // If collapsible defaults to open, set an initial height
     setHeight(collapisbleContainer.current.scrollHeight);
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (!collapisbleContainer.current) return;
