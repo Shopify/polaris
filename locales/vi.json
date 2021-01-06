@@ -294,6 +294,9 @@
           }
         }
       }
+    },
+    "Loading": {
+      "label": "Thanh tải trang"
     }
   }
 }
