@@ -82,7 +82,9 @@
         "friday": "星期五",
         "saturday": "星期六",
         "sunday": "星期日"
-      }
+      },
+      "start": "範圍起始點",
+      "end": "範圍終點"
     },
     "DiscardConfirmationModal": {
       "title": "捨棄所有尚未儲存的變更內容",
