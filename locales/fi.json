@@ -82,7 +82,9 @@
         "friday": "Perjantai",
         "saturday": "Lauantai",
         "sunday": "Sunnuntai"
-      }
+      },
+      "start": "Alueen alku",
+      "end": "Alueen loppu"
     },
     "DiscardConfirmationModal": {
       "title": "Hylkää kaikki tallentamattomat muutokset",
