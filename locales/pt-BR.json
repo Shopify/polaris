@@ -82,7 +82,9 @@
         "friday": "Sexta",
         "saturday": "Sábado",
         "sunday": "Domingo"
-      }
+      },
+      "start": "Início do intervalo",
+      "end": "Final do intervalo"
     },
     "DiscardConfirmationModal": {
       "title": "Descartar todas as alterações não salvas",
