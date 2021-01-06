@@ -4,6 +4,8 @@ import {useI18n} from '../../../../utilities/i18n';
 
 import styles from './Loading.scss';
 
+const STUCK_THRESHOLD = 99;
+
 export function Loading() {
   const i18n = useI18n();
 
@@ -11,12 +13,12 @@ export function Loading() {
   const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
-    if (progress >= 100 || animating) {
+    if (progress >= STUCK_THRESHOLD || animating) {
       return;
     }
 
     requestAnimationFrame(() => {
-      const step = Math.max((100 - progress) / 10, 1);
+      const step = Math.max((STUCK_THRESHOLD - progress) / 10, 1);
       setAnimating(true);
       setProgress(progress + step);
     });
