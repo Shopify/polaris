@@ -73,7 +73,7 @@
     border-top-color: var(--p-border-subdued);
     border-bottom-color: var(--p-border-shadow-subdued);
     transition-property: color, background, border, box-shadow;
-    transition-duration: duration();
+    transition-duration: duration(fast);
     transition-timing-function: easing();
 
     &:hover {
@@ -349,7 +349,7 @@
   margin: -2px -5px;
   background: $background-color;
   border-radius: border-radius();
-  transition: opacity duration() easing();
+  transition: opacity duration(fast) easing();
 }
 
 @mixin unstyled-button() {

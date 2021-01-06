@@ -155,7 +155,7 @@ $stacking-order: (
   .newDesignLanguage & {
     // stylelint-disable-next-line selector-max-combinators
     svg {
-      transition: fill duration() easing();
+      transition: fill duration(fast) easing();
     }
   }
 }
@@ -675,7 +675,7 @@ $stacking-order: (
 
     &::before {
       content: '';
-      transition: opacity duration() easing();
+      transition: opacity duration(fast) easing();
       position: absolute;
       top: 0;
       right: 0;
