@@ -40,7 +40,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed clear button in `TextField` unintentionally closing `Popover` when clicked ([#3688](https://github.com/Shopify/polaris-react/pull/3688))
 - Added focus styles to the clear button in `TextField` ([#3688](https://github.com/Shopify/polaris-react/pull/3688))
 - Increased contrast of navigation text color ([#3742](https://github.com/Shopify/polaris-react/pull/3742))
-- Removed `-ms-high-contrast` media query from `ms-high-contrast-outline` as it is non-standard and updated the outline color from `windowText` to `tranpsarent` ([#3775](https://github.com/Shopify/polaris-react/pull/3775)).
+- Removed `-ms-high-contrast` media query from `ms-high-contrast-outline` as it is non-standard and updated the outline color from `windowText` to `transparent` ([#3775](https://github.com/Shopify/polaris-react/pull/3775)).
 
 ### Documentation
 
