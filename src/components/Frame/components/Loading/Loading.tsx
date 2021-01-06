@@ -4,28 +4,23 @@ import {useI18n} from '../../../../utilities/i18n';
 
 import styles from './Loading.scss';
 
-const INITIAL_STEP = 10;
-const STUCK_THRESHOLD = 99;
-
 export function Loading() {
   const i18n = useI18n();
 
   const [progress, setProgress] = useState(0);
-  const [step, setStep] = useState(INITIAL_STEP);
   const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
-    if (progress >= STUCK_THRESHOLD || animating) {
+    if (progress >= 100 || animating) {
       return;
     }
 
     requestAnimationFrame(() => {
-      const newProgress = Math.min(progress + step, 100);
+      const step = Math.max((100 - progress) / 10, 1);
       setAnimating(true);
-      setProgress(newProgress);
-      setStep(10);
+      setProgress(progress + step);
     });
-  }, [progress, step, animating]);
+  }, [progress, animating]);
 
   const customStyles = {
     transform: `scaleX(${Math.floor(progress) / 100})`,
