@@ -24,6 +24,8 @@ export interface MenuProps {
   onClose(): void;
   /** Accepts a color scheme for the contents of the menu */
   colorScheme?: InversableColorScheme;
+  /** A string that provides the accessibility labeling */
+  accessibilityLabel?: string;
 }
 
 export function Menu(props: MenuProps) {
@@ -35,6 +37,7 @@ export function Menu(props: MenuProps) {
     activatorContent,
     message,
     colorScheme,
+    accessibilityLabel,
   } = props;
 
   const badgeProps = message &&
@@ -61,7 +64,12 @@ export function Menu(props: MenuProps) {
     <Popover
       activator={
         <div className={styles.ActivatorWrapper}>
-          <button type="button" className={styles.Activator} onClick={onOpen}>
+          <button
+            type="button"
+            className={styles.Activator}
+            onClick={onOpen}
+            aria-label={accessibilityLabel}
+          >
             {activatorContent}
           </button>
         </div>

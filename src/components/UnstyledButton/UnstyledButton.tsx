@@ -27,6 +27,7 @@ export function UnstyledButton({
   role,
   ariaControls,
   ariaExpanded,
+  ariaDescribedBy,
   ariaPressed,
   onClick,
   onFocus,
@@ -93,6 +94,7 @@ export function UnstyledButton({
         aria-busy={loading ? true : undefined}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
+        aria-describedby={ariaDescribedBy}
         aria-pressed={ariaPressedStatus}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
