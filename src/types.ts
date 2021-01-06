@@ -93,6 +93,8 @@ export interface BaseButton {
   ariaControls?: string;
   /** Tells screen reader the controlled element is expanded */
   ariaExpanded?: boolean;
+  /** Indicates the ID of the element that describes the button */
+  ariaDescribedBy?: string;
   /**
    * @deprecated As of release 4.7.0, replaced by {@link https://polaris.shopify.com/components/structure/page#props-pressed}
    * Tells screen reader the element is pressed
