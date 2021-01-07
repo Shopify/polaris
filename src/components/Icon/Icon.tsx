@@ -28,8 +28,8 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
 
   const className = classNames(
     styles.Icon,
-    backdrop && styles.hasBackdrop,
     color && styles[variationName('color', color)],
+    backdrop && styles.hasBackdrop,
   );
 
   const SourceComponent = source;
