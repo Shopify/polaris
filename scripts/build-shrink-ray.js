@@ -12,10 +12,16 @@ const githubUrl = process.env.GITHUB_SERVER_URL;
 const githubRepo = process.env.GITHUB_REPOSITORY;
 const runId = process.env.GITHUB_RUN_ID;
 
+console.log({
+  GITHUB_BASE_REF: process.env.GITHUB_BASE_REF,
+  GITHUB_HEAD_REF: process.env.GITHUB_HEAD_REF,
+  GITHUB_SHA: process.env.GITHUB_SHA,
+});
+
 startShrinkRayBuild({
-  masterBranchName: 'master',
+  masterBranchName: process.env.GITHUB_BASE_REF || 'master',
   repo: 'polaris-react',
-  sha: process.env.GITHUB_SHA,
+  sha: process.env.GITHUB_HEAD_REF || process.env.GITHUB_SHA,
   reportPath: resolve(
     __dirname,
     '..',
@@ -41,14 +47,13 @@ async function startShrinkRayBuild({
 
   logger.header('Running shrink-ray prebuild script...');
 
-  // fetch latest in pipeline. Travis does a shallow clone by default,
-  // --unshallow makes sure we can fetch the master commit in case it is not
-  // included in the initial shallow clone
-  execSync('git fetch --unshallow origin master:refs/remotes/origin/master');
-
   const masterSha = execSync(`git merge-base HEAD origin/${masterBranchName}`, {
     encoding: 'utf8',
   }).trim();
+
+  logger.header(
+    `sha: ${sha}, masterBranch:${masterBranchName}, masterSha: ${masterSha}`,
+  );
 
   const shrinkRay = new ShrinkRayAPI();
   const build = new Build({
