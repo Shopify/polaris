@@ -294,6 +294,9 @@
     },
     "Actions": {
       "moreActions": "Weitere Aktionen"
+    },
+    "Loading": {
+      "label": "Seiten-Ladeleiste"
     }
   }
 }

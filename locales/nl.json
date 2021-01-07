@@ -294,6 +294,9 @@
     },
     "Actions": {
       "moreActions": "Meer acties"
+    },
+    "Loading": {
+      "label": "Pagina laadbalk"
     }
   }
 }
