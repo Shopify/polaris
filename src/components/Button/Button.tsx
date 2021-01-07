@@ -181,13 +181,10 @@ export function Button({
     <span className={styles.Text}>{children}</span>
   ) : null;
 
-  const spinnerColor = primary || destructive ? 'white' : 'inkLightest';
-
   const spinnerSVGMarkup = loading ? (
     <span className={styles.Spinner}>
       <Spinner
         size="small"
-        color={spinnerColor}
         accessibilityLabel={i18n.translate(
           'Polaris.Button.spinnerAccessibilityLabel',
         )}
