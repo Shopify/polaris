@@ -12,8 +12,6 @@ const githubUrl = process.env.GITHUB_SERVER_URL;
 const githubRepo = process.env.GITHUB_REPOSITORY;
 const runId = process.env.GITHUB_RUN_ID;
 
-console.log(process.env);
-
 startShrinkRayBuild({
   repo: 'polaris-react',
   baseSha: process.env.GH_BASE_SHA || process.env.GITHUB_SHA,
@@ -42,8 +40,6 @@ async function startShrinkRayBuild({
   }
 
   logger.header('Running shrink-ray prebuild script...');
-
-  logger.header(`sha: ${sha}, masterSha: ${baseSha}`);
 
   const shrinkRay = new ShrinkRayAPI();
   const build = new Build({
