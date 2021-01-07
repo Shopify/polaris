@@ -6,6 +6,19 @@ import {Loading} from '../Loading';
 
 describe('<Loading />', () => {
   const loading = mountWithAppProvider(<Loading />);
+  let requestAnimationFrameSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    requestAnimationFrameSpy = jest.spyOn(window, 'requestAnimationFrame');
+    requestAnimationFrameSpy.mockImplementation((cb: () => number) => {
+      cb();
+      return 1;
+    });
+  });
+
+  afterEach(() => {
+    requestAnimationFrameSpy.mockRestore();
+  });
 
   it('mounts', () => {
     expect(loading.exists()).toBe(true);
@@ -15,5 +28,10 @@ describe('<Loading />', () => {
     expect(() => {
       loading.unmount();
     }).not.toThrow();
+  });
+
+  it('calls requestAnimationFrame', () => {
+    mountWithAppProvider(<Loading />);
+    expect(requestAnimationFrameSpy).toHaveBeenCalledTimes(1);
   });
 });

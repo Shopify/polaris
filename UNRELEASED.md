@@ -12,6 +12,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added ability to hide query text field in `Filters` component using `hideQueryField` prop ([#3674](https://github.com/Shopify/polaris-react/pull/3674))
 - Added `tabIndex` to `Scrollable` for keyboard focus ([#3744](https://github.com/Shopify/polaris-react/pull/3744))
 - Added accessibility label prop to `UserMenu` and `Menu` subcomponents in `TopBar` ([#3659](https://github.com/Shopify/polaris-react/pull/3659))
+- Add `aria-label` to the `Loading` bar in `Frame` ([#3770](https://github.com/Shopify/polaris-react/pull/3770))
 - **`Button`:** New `ariaDescribedBy` prop for `<button />` ([#3664](https://github.com/Shopify/polaris-react/pull/3686))
 - Updated `Collapsible` to be a functional component ([#3779](https://github.com/Shopify/polaris-react/pull/3779))
 

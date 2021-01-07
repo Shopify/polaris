@@ -294,6 +294,9 @@
     },
     "Actions": {
       "moreActions": "Flere handlinger"
+    },
+    "Loading": {
+      "label": "Statuslinje for sideindlæsning"
     }
   }
 }
