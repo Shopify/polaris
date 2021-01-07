@@ -297,6 +297,9 @@
     },
     "Loading": {
       "label": "Sivun latautumisen palkki"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Työkaluvihje: {label}"
     }
   }
 }

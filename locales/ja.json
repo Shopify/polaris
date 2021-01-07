@@ -297,6 +297,9 @@
     },
     "Loading": {
       "label": "ページの読み込み表示バー"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "ツールチップ: {label}"
     }
   }
 }

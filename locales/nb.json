@@ -297,6 +297,9 @@
     },
     "Loading": {
       "label": "Sidelastingslinje"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Verktøytips: {label}"
     }
   }
 }

@@ -297,6 +297,9 @@
     },
     "Loading": {
       "label": "Pagina laadbalk"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Knopinfo: {label}"
     }
   }
 }

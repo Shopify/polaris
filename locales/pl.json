@@ -299,6 +299,9 @@
     },
     "Loading": {
       "label": "Pasek ładowania strony"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Etykietka narzędzia: {label}"
     }
   }
 }
