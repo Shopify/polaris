@@ -152,13 +152,6 @@ $stacking-order: (
   + *:not(.Icon) {
     margin-left: spacing(extra-tight);
   }
-
-  .newDesignLanguage & {
-    // stylelint-disable-next-line selector-max-combinators
-    svg {
-      transition: fill duration(fast) easing();
-    }
-  }
 }
 
 .hidden {
@@ -671,7 +664,6 @@ $stacking-order: (
 
     &::before {
       content: '';
-      transition: opacity duration(fast) easing();
       position: absolute;
       top: 0;
       right: 0;
