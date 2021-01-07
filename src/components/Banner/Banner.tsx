@@ -171,7 +171,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
         {dismissButton}
 
         <div className={styles.Ribbon}>
-          <Icon source={iconName} backdrop={!newDesignLanguage} />
+          <Icon source={iconName} color={iconColor} />
         </div>
 
         <div className={styles.ContentWrapper}>

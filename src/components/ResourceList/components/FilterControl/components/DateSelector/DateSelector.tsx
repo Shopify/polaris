@@ -201,7 +201,7 @@ export const DateSelector = memo(function DateSelector({
           )}
           value={dateTextFieldValue}
           error={userInputDateError}
-          prefix={<Icon source={CalendarMinor} />}
+          prefix={<Icon source={CalendarMinor} color="subdued" />}
           autoComplete={false}
           onChange={handleDateFieldChange}
           onBlur={handleDateBlur}

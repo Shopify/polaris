@@ -39,3 +39,31 @@
   padding-bottom: 100%;
   background: currentColor;
 }
+
+.colorBase {
+  @include recolor-icon(var(--p-icon));
+}
+
+.colorSubdued {
+  @include recolor-icon(var(--p-icon-subdued));
+}
+
+.colorCritical {
+  @include recolor-icon(var(--p-icon-critical));
+}
+
+.colorWarning {
+  @include recolor-icon(var(--p-icon-warning));
+}
+
+.colorHighlight {
+  @include recolor-icon(var(--p-icon-highlight));
+}
+
+.colorSuccess {
+  @include recolor-icon(var(--p-icon-success));
+}
+
+.colorPrimary {
+  @include recolor-icon(var(--p-action-primary));
+}

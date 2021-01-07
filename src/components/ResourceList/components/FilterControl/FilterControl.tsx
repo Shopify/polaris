@@ -153,7 +153,7 @@ export function FilterControl({
         label={textFieldLabel}
         labelHidden
         placeholder={textFieldLabel}
-        prefix={<Icon source={SearchMinor} />}
+        prefix={<Icon source={SearchMinor} color="subdued" />}
         value={searchValue}
         onChange={onSearchChange}
         onBlur={onSearchBlur}

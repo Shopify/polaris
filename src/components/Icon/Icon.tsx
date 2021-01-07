@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {classNames} from '../../utilities/css';
+import {classNames, variationName} from '../../utilities/css';
 import type {IconProps} from '../../types';
 
 import styles from './Icon.scss';
@@ -9,7 +9,7 @@ import styles from './Icon.scss';
 // styleguide to generate the props explorer
 interface Props extends IconProps {}
 
-export function Icon({source, backdrop, accessibilityLabel}: Props) {
+export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
   let sourceType: 'function' | 'placeholder' | 'external';
   if (typeof source === 'function') {
     sourceType = 'function';
@@ -19,7 +19,18 @@ export function Icon({source, backdrop, accessibilityLabel}: Props) {
     sourceType = 'external';
   }
 
-  const className = classNames(styles.Icon, backdrop && styles.hasBackdrop);
+  if (color && sourceType === 'external') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Recoloring external SVGs is not supported. Set the intended color on your SVG instead.',
+    );
+  }
+
+  const className = classNames(
+    styles.Icon,
+    backdrop && styles.hasBackdrop,
+    color && styles[variationName('color', color)],
+  );
 
   const SourceComponent = source;
   const contentMarkup = {

@@ -347,12 +347,12 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     (active || dragging) &&
     (!internalError || !error) &&
     overlay &&
-    overlayMarkup(DragDropMajor, 'indigo', overlayTextWithDefault);
+    overlayMarkup(DragDropMajor, 'primary', overlayTextWithDefault);
 
   const dragErrorOverlay =
     dragging &&
     (internalError || error) &&
-    overlayMarkup(CircleAlertMajor, 'red', errorOverlayTextWithDefault);
+    overlayMarkup(CircleAlertMajor, 'critical', errorOverlayTextWithDefault);
 
   const labelValue =
     label || i18n.translate('Polaris.DropZone.FileUpload.label');
@@ -401,7 +401,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
   function overlayMarkup(
     icon: FunctionComponent,
-    color: 'red' | 'indigo',
+    color: 'critical' | 'primary',
     text: string,
   ) {
     const overlayClass = classNames(
@@ -412,7 +412,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     return (
       <div className={overlayClass}>
         <Stack vertical spacing="tight">
-          <Icon source={icon} />
+          <Icon source={icon} color={color} />
           {size === 'extraLarge' && (
             <DisplayText size="small" element="p">
               {text}
