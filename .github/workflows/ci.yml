@@ -92,6 +92,8 @@ jobs:
       - run: node ./scripts/build-shrink-ray.js
         env:
           SHRINK_RAY_API_KEY: ${{ secrets.SHRINK_RAY_API_KEY }}
+          GH_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          GH_BASE_SHA: ${{ github.event.pull_request.base.sha }}
 
   visual_regression_test:
     name: 'Visual regression test'
