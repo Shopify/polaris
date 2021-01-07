@@ -294,6 +294,9 @@
     },
     "Actions": {
       "moreActions": "更多動作"
+    },
+    "Loading": {
+      "label": "頁面載入進度條"
     }
   }
 }

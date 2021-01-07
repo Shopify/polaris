@@ -1,42 +1,4 @@
 export type Color =
-  | 'white'
-  | 'black'
-  | 'skyLighter'
-  | 'skyLight'
-  | 'sky'
-  | 'skyDark'
-  | 'inkLightest'
-  | 'inkLighter'
-  | 'inkLight'
-  | 'ink'
-  | 'blueLighter'
-  | 'blueLight'
-  | 'blue'
-  | 'blueDark'
-  | 'blueDarker'
-  | 'indigoLighter'
-  | 'indigoLight'
-  | 'indigo'
-  | 'indigoDark'
-  | 'indigoDarker'
-  | 'tealLighter'
-  | 'tealLight'
-  | 'teal'
-  | 'tealDark'
-  | 'tealDarker'
-  | 'greenLighter'
-  | 'green'
-  | 'greenDark'
-  | 'yellowLighter'
-  | 'yellow'
-  | 'yellowDark'
-  | 'orange'
-  | 'redLighter'
-  | 'red'
-  | 'redDark'
-  | 'purple';
-
-export type NewDesignLanguageColor =
   | 'base'
   | 'subdued'
   | 'critical'
@@ -54,7 +16,7 @@ export interface IconProps {
   /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
   source: IconSource;
   /** Set the color for the SVG fill */
-  color?: Color | NewDesignLanguageColor;
+  color?: Color;
   /** Show a backdrop behind the icon */
   backdrop?: boolean;
   /** Descriptive text to be read to screenreaders */
@@ -93,6 +55,8 @@ export interface BaseButton {
   ariaControls?: string;
   /** Tells screen reader the controlled element is expanded */
   ariaExpanded?: boolean;
+  /** Indicates the ID of the element that describes the button */
+  ariaDescribedBy?: string;
   /**
    * @deprecated As of release 4.7.0, replaced by {@link https://polaris.shopify.com/components/structure/page#props-pressed}
    * Tells screen reader the element is pressed

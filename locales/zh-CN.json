@@ -294,6 +294,9 @@
     },
     "Actions": {
       "moreActions": "其他操作"
+    },
+    "Loading": {
+      "label": "页面加载条"
     }
   }
 }

@@ -23,6 +23,11 @@ import {ConditionalWrapper} from '../../utilities/components';
 
 import styles from './Pagination.scss';
 
+interface AccessibilityLabels {
+  previous: string;
+  next: string;
+}
+
 export interface PaginationDescriptor {
   /** Keyboard shortcuts for the next button */
   nextKeys?: Key[];
@@ -42,6 +47,8 @@ export interface PaginationDescriptor {
   hasPrevious?: boolean;
   /** Accessible label for the pagination */
   accessibilityLabel?: string;
+  /** Accessible labels for the buttons and UnstyledLinks */
+  accessibilityLabels: AccessibilityLabels;
   /** Callback when next button is clicked */
   onNext?(): void;
   /** Callback when previous button is clicked */
@@ -68,6 +75,7 @@ export function Pagination({
   previousKeys,
   plain,
   accessibilityLabel,
+  accessibilityLabels,
   label,
 }: PaginationProps) {
   const i18n = useI18n();
@@ -77,6 +85,13 @@ export function Pagination({
 
   const navLabel =
     accessibilityLabel || i18n.translate('Polaris.Pagination.pagination');
+
+  const previousLabel =
+    accessibilityLabels.previous ||
+    i18n.translate('Polaris.Pagination.previous');
+
+  const nextLabel =
+    accessibilityLabels.next || i18n.translate('Polaris.Pagination.next');
 
   const className = classNames(styles.Pagination, plain && styles.plain);
 
@@ -92,7 +107,7 @@ export function Pagination({
       className={previousClassName}
       url={previousURL}
       onMouseUp={handleMouseUpByBlurring}
-      aria-label={i18n.translate('Polaris.Pagination.previous')}
+      aria-label={previousLabel}
       id="previousURL"
     >
       <Icon source={ArrowLeftMinor} />
@@ -103,7 +118,7 @@ export function Pagination({
       type="button"
       onMouseUp={handleMouseUpByBlurring}
       className={previousClassName}
-      aria-label={i18n.translate('Polaris.Pagination.previous')}
+      aria-label={previousLabel}
       disabled={!hasPrevious}
     >
       <Icon source={ArrowLeftMinor} />
@@ -115,7 +130,7 @@ export function Pagination({
       className={nextClassName}
       url={nextURL}
       onMouseUp={handleMouseUpByBlurring}
-      aria-label={i18n.translate('Polaris.Pagination.next')}
+      aria-label={nextLabel}
       id="nextURL"
     >
       <Icon source={ArrowRightMinor} />
@@ -126,7 +141,7 @@ export function Pagination({
       type="button"
       onMouseUp={handleMouseUpByBlurring}
       className={nextClassName}
-      aria-label={i18n.translate('Polaris.Pagination.next')}
+      aria-label={nextLabel}
       disabled={!hasNext}
     >
       <Icon source={ArrowRightMinor} />
@@ -137,7 +152,7 @@ export function Pagination({
     <Button
       outline
       icon={ChevronLeftMinor}
-      accessibilityLabel={i18n.translate('Polaris.Pagination.previous')}
+      accessibilityLabel={previousLabel}
       url={previousURL}
       onClick={onPrevious}
       disabled={!hasPrevious}
@@ -159,7 +174,7 @@ export function Pagination({
     <Button
       outline
       icon={ChevronRightMinor}
-      accessibilityLabel={i18n.translate('Polaris.Pagination.next')}
+      accessibilityLabel={nextLabel}
       url={nextURL}
       onClick={onNext}
       disabled={!hasNext}

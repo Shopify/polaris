@@ -9,6 +9,7 @@ import {Pagination} from '../Pagination';
 import {UnstyledLink} from '../../UnstyledLink';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
+import en from '../../../../locales/en.json';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -101,6 +102,67 @@ describe('<Pagination />', () => {
       expect(pagination.find('nav').prop('aria-label')).toStrictEqual(
         'Pagination',
       );
+    });
+  });
+
+  describe('accessibilityLabels', () => {
+    const defaultProps = {
+      accessibilityLabels: {
+        previous: 'Previous orders page',
+        next: 'Next orders page',
+      },
+    };
+
+    it('passes accessibilityLabels to UnstyledLinks', () => {
+      const pagination = mountWithApp(
+        <Pagination {...defaultProps} previousURL="prev" nextURL="next" />,
+      );
+
+      expect(pagination).toContainReactComponent(UnstyledLink, {
+        'aria-label': defaultProps.accessibilityLabels.previous,
+      });
+
+      expect(pagination).toContainReactComponent(UnstyledLink, {
+        'aria-label': defaultProps.accessibilityLabels.next,
+      });
+    });
+
+    it('renders default accessibilityLabels on UnstyledLink', () => {
+      const pagination = mountWithApp(
+        <Pagination previousURL="prev" nextURL="next" />,
+      );
+
+      expect(pagination).toContainReactComponent(UnstyledLink, {
+        'aria-label': en.Polaris.Pagination.previous,
+      });
+
+      expect(pagination).toContainReactComponent(UnstyledLink, {
+        'aria-label': en.Polaris.Pagination.next,
+      });
+    });
+
+    it('passes accessibilityLabels to buttons', () => {
+      const pagination = mountWithApp(<Pagination {...defaultProps} />);
+
+      expect(pagination).toContainReactComponent('button', {
+        'aria-label': defaultProps.accessibilityLabels.previous,
+      });
+
+      expect(pagination).toContainReactComponent('button', {
+        'aria-label': defaultProps.accessibilityLabels.next,
+      });
+    });
+
+    it('renders default accessibilityLabels on button', () => {
+      const pagination = mountWithApp(<Pagination />);
+
+      expect(pagination).toContainReactComponent('button', {
+        'aria-label': en.Polaris.Pagination.previous,
+      });
+
+      expect(pagination).toContainReactComponent('button', {
+        'aria-label': en.Polaris.Pagination.next,
+      });
     });
   });
 
