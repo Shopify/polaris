@@ -134,6 +134,9 @@
       "clear": "Clear",
       "clearLabel": "Clear {filterName}"
     },
+    "Loading": {
+      "label": "Page loading bar"
+    },
     "Modal": {
       "iFrameTitle": "body markup",
       "modalWarning": "These required properties are missing from Modal: {missingProps}"
