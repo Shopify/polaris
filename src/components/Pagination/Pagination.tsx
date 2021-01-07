@@ -48,7 +48,7 @@ export interface PaginationDescriptor {
   /** Accessible label for the pagination */
   accessibilityLabel?: string;
   /** Accessible labels for the buttons and UnstyledLinks */
-  accessibilityLabels: AccessibilityLabels;
+  accessibilityLabels?: AccessibilityLabels;
   /** Callback when next button is clicked */
   onNext?(): void;
   /** Callback when previous button is clicked */
@@ -87,11 +87,11 @@ export function Pagination({
     accessibilityLabel || i18n.translate('Polaris.Pagination.pagination');
 
   const previousLabel =
-    accessibilityLabels.previous ||
+    accessibilityLabels?.previous ||
     i18n.translate('Polaris.Pagination.previous');
 
   const nextLabel =
-    accessibilityLabels.next || i18n.translate('Polaris.Pagination.next');
+    accessibilityLabels?.next || i18n.translate('Polaris.Pagination.next');
 
   const className = classNames(styles.Pagination, plain && styles.plain);
 
