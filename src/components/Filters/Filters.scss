@@ -135,7 +135,7 @@ $list-filters-footer-height: rem(70px);
     }
 
     &:hover {
-      @include ms-high-contrast-outline;
+      @include high-contrast-outline;
     }
   }
 }

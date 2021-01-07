@@ -79,7 +79,7 @@
 
     &:hover {
       background: var(--p-action-secondary-hovered);
-      @include ms-high-contrast-outline;
+      @include high-contrast-outline;
     }
 
     &:focus {
