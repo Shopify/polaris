@@ -90,7 +90,7 @@ describe('<TrapFocus />', () => {
     expect(trapFocus).toContainReactComponent(Focus, {disabled: false});
   });
 
-  it(`does not track focus while navigating inside a portal`, () => {
+  it(`does not trap focus while navigating inside a portal`, () => {
     const id = 'focusable';
     const trapFocus = mountWithApp(
       <TrapFocus>
