@@ -4,8 +4,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Breaking changes
 
-- Pagination accessibility labels are now required ([#3633](https://github.com/Shopify/polaris-react/pull/3633))
-
 ### Enhancements
 
 - Updated `OptionList` selected styles ([#3633](https://github.com/Shopify/polaris-react/pull/3633))
