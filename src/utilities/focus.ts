@@ -1,17 +1,17 @@
 import {isElementInViewport} from './is-element-in-viewport';
 
 type Filter = (element: Element) => void;
+export type MouseUpBlurHandler = (
+  event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+) => void;
 
 const FOCUSABLE_SELECTOR =
   'a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled),*[tabindex]';
 const KEYBOARD_FOCUSABLE_SELECTORS =
   'a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled),*[tabindex]:not([tabindex="-1"])';
 
-export function handleMouseUpByBlurring({
-  currentTarget,
-}: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+export const handleMouseUpByBlurring: MouseUpBlurHandler = ({currentTarget}) =>
   currentTarget.blur();
-}
 
 export function nextFocusableNode(
   node: HTMLElement,

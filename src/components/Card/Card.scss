@@ -63,6 +63,14 @@
   }
 }
 
+.Section-flush {
+  padding: spacing(none);
+
+  @include page-content-when-not-fully-condensed {
+    padding: spacing(none);
+  }
+}
+
 .Section-subdued {
   background-color: var(--p-surface-subdued, color('sky', 'lighter'));
 

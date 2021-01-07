@@ -18,7 +18,7 @@ import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
 
-import {Resizer, Spinner} from './components';
+import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
 
 type Type =
@@ -111,6 +111,8 @@ interface NonMutuallyExclusiveProps {
   spellCheck?: boolean;
   /** Indicates the id of a component owned by the input */
   ariaOwns?: string;
+  /** Indicates whether or not a Popover is displayed */
+  ariaExpanded?: boolean;
   /** Indicates the id of a component controlled by the input */
   ariaControls?: string;
   /** Indicates the id of a related component’s visually focused element to the input */
@@ -171,6 +173,7 @@ export function TextField({
   spellCheck,
   ariaOwns,
   ariaControls,
+  ariaExpanded,
   ariaActiveDescendant,
   ariaAutocomplete,
   showCharacterCount,
@@ -268,21 +271,25 @@ export function TextField({
     );
   }
 
-  const clearButtonMarkup =
-    clearButton && normalizedValue !== '' ? (
-      <button
-        type="button"
-        testID="clearButton"
-        className={styles.ClearButton}
-        onClick={handleClearButtonPress}
-        disabled={disabled}
-      >
-        <VisuallyHidden>
-          {i18n.translate('Polaris.Common.clear')}
-        </VisuallyHidden>
-        <Icon source={CircleCancelMinor} color="inkLightest" />
-      </button>
-    ) : null;
+  const clearButtonVisible = normalizedValue !== '';
+  const clearButtonClassName = classNames(
+    styles.ClearButton,
+    !clearButtonVisible && styles['ClearButton-hidden'],
+  );
+
+  const clearButtonMarkup = clearButton ? (
+    <button
+      type="button"
+      testID="clearButton"
+      className={clearButtonClassName}
+      onClick={handleClearButtonPress}
+      disabled={disabled}
+      tabIndex={clearButtonVisible ? 0 : -1}
+    >
+      <VisuallyHidden>{i18n.translate('Polaris.Common.clear')}</VisuallyHidden>
+      <Icon source={CircleCancelMinor} color="inkLightest" />
+    </button>
+  ) : null;
 
   const handleNumberChange = useCallback(
     (steps: number) => {
@@ -315,15 +322,15 @@ export function TextField({
     clearTimeout(buttonPressTimer.current);
   }, []);
 
-  const handleButtonPress = useCallback(
-    (onChange: Function) => {
+  const handleButtonPress: SpinnerProps['onMouseDown'] = useCallback(
+    (onChange) => {
       const minInterval = 50;
       const decrementBy = 10;
       let interval = 200;
 
       const onChangeInterval = () => {
         if (interval > minInterval) interval -= decrementBy;
-        onChange();
+        onChange(0);
         buttonPressTimer.current = window.setTimeout(
           onChangeInterval,
           interval,
@@ -427,7 +434,8 @@ export function TextField({
     'aria-activedescendant': ariaActiveDescendant,
     'aria-autocomplete': ariaAutocomplete,
     'aria-controls': ariaControls,
-    'aria-multiline': normalizeAriaMultiline(multiline),
+    'aria-expanded': ariaExpanded,
+    ...normalizeAriaMultiline(multiline),
   });
 
   const backdropClassName = classNames(
@@ -520,12 +528,9 @@ function normalizeAutoComplete(autoComplete?: boolean | string) {
 }
 
 function normalizeAriaMultiline(multiline?: boolean | number) {
-  switch (typeof multiline) {
-    case 'undefined':
-      return false;
-    case 'boolean':
-      return multiline;
-    case 'number':
-      return Boolean(multiline > 0);
-  }
+  if (!multiline) return undefined;
+
+  return Boolean(multiline) || multiline > 0
+    ? {'aria-multiline': true}
+    : undefined;
 }

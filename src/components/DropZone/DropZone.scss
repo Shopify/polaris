@@ -184,7 +184,7 @@ $dropzone-stacking-order: (
     }
 
     &:hover {
-      @include high-contrast-outline;
+      @include ms-high-contrast-outline;
     }
   }
 

@@ -12,7 +12,7 @@ import {mountWithApp} from 'test-utilities';
 
 import {WithinFilterContext} from '../../../utilities/within-filter-context';
 import {Filters, FiltersProps} from '../Filters';
-import {ConnectedFilterControl} from '../components';
+import {ConnectedFilterControl, TagsWrapper} from '../components';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;
 const MockChild = () => <div />;
@@ -75,6 +75,20 @@ describe('<Filters />', () => {
     trigger(filters.find(TextField), 'onFocus');
 
     expect(onQueryFocus).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not render the TextField when "hideQueryField" is "true"', () => {
+    const filters = mountWithAppProvider(
+      <Filters {...mockProps} hideQueryField />,
+    );
+
+    expect(filters.find(TextField).exists()).toBe(false);
+  });
+
+  it('renders the TextField when "hideQueryField" is false', () => {
+    const filters = mountWithAppProvider(<Filters {...mockProps} />);
+
+    expect(filters.find(TextField).exists()).toBe(true);
   });
 
   describe('toggleFilters()', () => {
@@ -232,6 +246,16 @@ describe('<Filters />', () => {
       ).toHaveLength(2);
     });
 
+    it('receives the expected props when the query field is hidden', () => {
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockPropsWithShortcuts} hideQueryField />,
+      );
+
+      expect(
+        resourceFilters.find(ConnectedFilterControl).props().queryFieldHidden,
+      ).toBe(true);
+    });
+
     it('forces showing the "More Filters" button if there are filters without shortcuts', () => {
       const resourceFilters = mountWithAppProvider(
         <Filters {...mockPropsWithShortcuts} />,
@@ -353,6 +377,44 @@ describe('<Filters />', () => {
       expect(spy).toHaveBeenCalledWith('filterOne');
     });
 
+    it('renders a clear button when clearButton is not provided', () => {
+      const filters = [
+        {key: 'filterOne', label: 'foo', onRemove: () => {}, filter: null},
+      ];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} filters={filters} />,
+      );
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
+      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
+
+      expect(collapsible.text().toLowerCase()).toContain('clear');
+    });
+
+    it("doesn't renders a clear button when clearButton is not provided", () => {
+      const filters = [
+        {
+          hideClearButton: true,
+          key: 'filterOne',
+          label: 'foo',
+          onRemove: () => {},
+          filter: null,
+        },
+      ];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} filters={filters} />,
+      );
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
+      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
+
+      expect(collapsible.text().toLowerCase()).not.toContain('clear');
+    });
+
     it('tags are not shown if hideTags prop is given', () => {
       const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: noop}];
 
@@ -365,6 +427,21 @@ describe('<Filters />', () => {
         />,
       );
       expect(resourceFilters.find(Tag)).toHaveLength(0);
+    });
+
+    it('hides the tags container when applied filters are not provided', () => {
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
+      expect(resourceFilters).toContainReactComponent(TagsWrapper, {
+        hidden: true,
+      });
+    });
+
+    it('renders applied filters container with aria live', () => {
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
+      expect(resourceFilters).toContainReactComponent('div', {
+        className: 'TagsContainer',
+        'aria-live': 'polite',
+      });
     });
 
     it('applied filter count is shown if hideTags prop is given', () => {
@@ -516,15 +593,14 @@ describe('<Filters />', () => {
 
   describe('newDesignLanguage', () => {
     it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const filters = mountWithApp(<Filters {...mockProps} disabled />, {
+      const resourceFilters = mountWithAppProvider(<Filters {...mockProps} />, {
         features: {newDesignLanguage: true},
       });
 
-      filters.find('button', {disabled: true})!.trigger('onClick');
-
-      expect(filters).toContainReactComponent('button', {
-        className: 'FilterTrigger newDesignLanguage',
-      });
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      expect(
+        findById(resourceFilters, 'filterOneToggleButton').exists(),
+      ).toBeTruthy();
     });
 
     it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {

@@ -6,6 +6,18 @@ $item-vertical-padding: $item-min-height / 2;
 $underline-height: border-width(thicker);
 $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
+@mixin reset-before-pseudo-content {
+  &::before {
+    content: none;
+  }
+}
+
+@mixin focus-ring-override {
+  @include ms-high-contrast-outline {
+    @include reset-before-pseudo-content;
+  }
+}
+
 .Tabs {
   display: flex;
   flex-wrap: wrap;
@@ -118,8 +130,8 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
       border-bottom: var(--p-override-none, $underline-height) solid
         color('indigo');
 
-      @media (-ms-high-contrast: active) {
-        outline: 1px solid;
+      @include ms-high-contrast-outline($border-width: border-width(thicker)) {
+        @include reset-before-pseudo-content;
       }
     }
   }
@@ -235,10 +247,12 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 .Item.newDesignLanguage {
   border-radius: var(--p-border-radius-base);
   &:hover {
+    @include focus-ring-override;
     background-color: var(--p-surface-hovered);
   }
+
   &:active {
-    background-color: var(--p-surface-pressed);
+    background-color: var(--p-surface-primary-selected-pressed);
   }
 
   @include focus-ring;
@@ -272,13 +286,10 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   outline: none;
   text-align: center;
 
-  &:hover {
-    .Title {
-      @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
-      background-color: var(--p-surface-hovered, transparent);
-      border-bottom: var(--p-override-none, $underline-height) solid
-        color('sky');
-    }
+  &:hover .Title {
+    @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
+    background-color: var(--p-surface-hovered, transparent);
+    border-bottom: var(--p-override-none, $underline-height) solid color('sky');
   }
 
   &:focus {
@@ -294,10 +305,8 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     }
   }
 
-  &:active {
-    .Title {
-      background-color: var(--p-surface-pressed, transparent);
-    }
+  &:active .Title {
+    background-color: var(--p-surface-pressed, transparent);
   }
 }
 
@@ -328,8 +337,18 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   .Tab {
     padding: spacing(tight) spacing(extra-tight);
 
-    &:focus .Title::before {
-      background: var(--p-border-hovered);
+    &:hover .Title {
+      @include focus-ring-override;
+    }
+
+    &:focus .Title {
+      @media (-ms-high-contrast: active) {
+        @include reset-before-pseudo-content;
+      }
+
+      &::before {
+        background: var(--p-border-hovered);
+      }
     }
 
     &:active .Title::before {
@@ -338,23 +357,54 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   }
 
   .DisclosureActivator {
-    margin: 1px 0 -1px;
-    padding: spacing(tight) spacing(tight) spacing(tight) 0;
+    &:hover .Title {
+      @include focus-ring-override;
+      background: none;
+
+      &::before {
+        background: var(--p-border-hovered);
+      }
+    }
+
+    &:focus .Title {
+      @include focus-ring($style: 'focused');
+      @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
+
+      &::before {
+        background: var(--p-border-hovered);
+      }
+
+      @media (-ms-high-contrast: active) {
+        @include reset-before-pseudo-content;
+      }
+    }
+
+    &:active .Title::before {
+      background: var(--p-surface-primary-selected-pressed);
+    }
   }
 
   .Tab-selected {
-    .Title {
-      color: var(--p-text);
+    &:hover .Title {
+      @include ms-high-contrast-outline($border-width: border-width(thicker)) {
+        @include reset-before-pseudo-content;
+      }
+    }
+
+    &:focus .Title {
+      @include ms-high-contrast-outline($border-width: border-width(thicker));
 
       &::before {
         background: var(--p-action-primary);
       }
+    }
 
-      @media (-ms-high-contrast: active) {
-        // stylelint-disable-next-line max-nesting-depth
-        &::before {
-          display: none;
-        }
+    .Title {
+      @include ms-high-contrast-outline($border-width: border-width(thicker));
+      color: var(--p-text);
+
+      &::before {
+        background: var(--p-action-primary);
       }
     }
   }

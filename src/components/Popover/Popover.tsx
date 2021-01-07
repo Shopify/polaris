@@ -19,6 +19,7 @@ import {useUniqueId} from '../../utilities/unique-id';
 
 import {
   PopoverCloseSource,
+  PopoverAutofocusTarget,
   Pane,
   PopoverOverlay,
   PopoverOverlayProps,
@@ -27,6 +28,7 @@ import {
 import {setActivatorAttributes} from './set-activator-attributes';
 
 export {PopoverCloseSource};
+export type {PopoverAutofocusTarget};
 
 export interface PopoverProps {
   /** The content to display inside the popover */
@@ -49,8 +51,13 @@ export interface PopoverProps {
    * @default 'div'
    */
   activatorWrapper?: string;
-  /** Prevent automatic focus of the first field on activation */
+  /**
+   * Prevent automatic focus of the popover on activation
+   * @deprecated Use autofocusTarget: 'none' instead.
+   * */
   preventAutofocus?: boolean;
+  /** Prevents focusing the activator or the next focusable element when the popover is deactivated */
+  preventFocusOnClose?: boolean;
   /** Automatically add wrap content in a section */
   sectioned?: boolean;
   /** Allow popover to stretch to the full width of its activator */
@@ -69,6 +76,11 @@ export interface PopoverProps {
   onClose(source: PopoverCloseSource): void;
   /** Accepts a color scheme for the contents of the popover */
   colorScheme?: InversableColorScheme;
+  /**
+   * The preferred auto focus target defaulting to the popover container
+   * @default 'container'
+   */
+  autofocusTarget?: PopoverAutofocusTarget;
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -84,6 +96,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
   children,
   onClose,
   activator,
+  preventFocusOnClose,
   active,
   fixed,
   ariaHaspopup,
@@ -127,8 +140,7 @@ export const Popover: React.FunctionComponent<PopoverProps> & {
 
   const handleClose = (source: PopoverCloseSource) => {
     onClose(source);
-
-    if (activatorContainer.current == null) {
+    if (activatorContainer.current == null || preventFocusOnClose) {
       return;
     }
 

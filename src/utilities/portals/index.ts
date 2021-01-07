@@ -1,6 +1,3 @@
 export * from './context';
-
 export * from './hooks';
-
-export * from './PortalsContainer';
-export * from './PortalsManagerProvider';
+export type {PortalsContainerElement} from './types';

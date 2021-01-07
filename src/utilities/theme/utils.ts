@@ -55,7 +55,7 @@ export function buildThemeContext(
   };
 }
 
-function toString(obj?: CustomPropertiesLike) {
+export function toString(obj?: CustomPropertiesLike) {
   if (obj) {
     return Object.entries(obj)
       .map((pair) => pair.join(':'))
@@ -211,6 +211,7 @@ function parseColors([baseName, colors]: [
   return colorPairs;
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 function memoize(fnToMemoize: Function) {
   const cache: Map<string, any> = new Map();
   return function (...args: any[]) {

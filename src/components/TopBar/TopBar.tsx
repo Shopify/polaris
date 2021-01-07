@@ -99,8 +99,15 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       </div>
     );
   } else if (logo) {
+    const className = classNames(
+      styles.LogoContainer,
+      showNavigationToggle || searchField
+        ? styles.LogoDisplayControl
+        : styles.LogoDisplayContainer,
+    );
+
     contextMarkup = (
-      <div className={styles.LogoContainer}>
+      <div className={className}>
         <UnstyledLink
           url={logo.url || ''}
           className={styles.LogoLink}

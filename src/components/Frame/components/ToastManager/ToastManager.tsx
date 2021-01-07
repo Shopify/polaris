@@ -39,7 +39,6 @@ export const ToastManager = memo(function ToastManager({
 
   useDeepEffect(() => {
     updateToasts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toastMessages]);
 
   const toastsMarkup = toastMessages.map((toast, index) => {

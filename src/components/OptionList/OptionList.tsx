@@ -44,7 +44,7 @@ export interface OptionListProps {
   /** Collection of options to be listed */
   options?: OptionDescriptor[];
   /** Defines a specific role attribute for the list itself */
-  role?: string;
+  role?: 'listbox' | 'combobox' | string;
   /** Defines a specific role attribute for each option in the list */
   optionRole?: string;
   /** Sections containing a header and related options */
@@ -110,9 +110,7 @@ export function OptionList({
   const optionsMarkup = optionsExist
     ? normalizedOptions.map(({title, options}, sectionIndex) => {
         const titleMarkup = title ? (
-          <p className={styles.Title} role={role}>
-            {title}
-          </p>
+          <p className={styles.Title}>{title}</p>
         ) : null;
         const optionsMarkup =
           options &&
@@ -143,7 +141,6 @@ export function OptionList({
               className={styles.Options}
               id={`${id}-${sectionIndex}`}
               role={role}
-              aria-multiselectable={allowMultiple}
             >
               {optionsMarkup}
             </ul>

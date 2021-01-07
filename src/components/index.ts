@@ -152,7 +152,7 @@ export type {KeypressListenerProps} from './KeypressListener';
 export {KonamiCode} from './KonamiCode';
 export type {KonamiCodeProps} from './KonamiCode';
 
-export {Label} from './Label';
+export {Label, labelID} from './Label';
 export type {LabelProps} from './Label';
 
 export {Labelled} from './Labelled';
@@ -198,10 +198,13 @@ export {PolarisTestProvider} from './PolarisTestProvider';
 export type {WithPolarisTestProviderOptions} from './PolarisTestProvider';
 
 export {Popover, PopoverCloseSource} from './Popover';
-export type {PopoverProps} from './Popover';
+export type {PopoverProps, PopoverAutofocusTarget} from './Popover';
 
 export {Portal} from './Portal';
 export type {PortalProps} from './Portal';
+
+export {PortalsManager} from './PortalsManager';
+export type {PortalsManagerProps} from './PortalsManager';
 
 export {PositionedOverlay} from './PositionedOverlay';
 export type {PositionedOverlayProps} from './PositionedOverlay';
@@ -224,10 +227,8 @@ export type {ResourceListProps} from './ResourceList';
 // We want to delete this component, but there's one place in web
 // that still relies on it so we have to keep it.
 // We don't want anyone else using it though, use the Filters component instead
-/* eslint-disable @typescript-eslint/camelcase */
 export {FilterControl as _SECRET_INTERNAL_FilterControl} from './ResourceList';
 export type {FilterControlProps as _SECRET_INTERNAL_FilterControlProps} from './ResourceList';
-/* eslint-enable @typescript-eslint/camelcase */
 
 export type {ResourceListSelectedItems} from '../utilities/resource-list';
 

@@ -10,7 +10,6 @@ import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {EventListener} from '../EventListener';
 import {Backdrop} from '../Backdrop';
-import {Button} from '../Button';
 import {TrapFocus} from '../TrapFocus';
 import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/set-root-property';
@@ -220,20 +219,20 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       skipFocused && styles.focused,
     );
 
-    const skipTarget = skipToContentTarget
-      ? (skipToContentTarget.current && skipToContentTarget.current.id) || ''
+    const skipTarget = skipToContentTarget?.current
+      ? skipToContentTarget.current.id
       : APP_FRAME_MAIN_ANCHOR_TARGET;
 
     const skipMarkup = (
       <div className={skipClassName}>
-        <Button
-          url={`#${skipTarget}`}
+        <a
+          href={`#${skipTarget}`}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
         >
           {i18n.translate('Polaris.Frame.skipToContent')}
-        </Button>
+        </a>
       </div>
     );
 

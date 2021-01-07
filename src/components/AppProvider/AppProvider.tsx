@@ -5,6 +5,7 @@ import {ThemeProvider} from '../ThemeProvider';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {ClickTrackerProvider} from '../ClickTrackerProvider';
 import {FocusManager} from '../FocusManager';
+import {PortalsManager} from '../PortalsManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
 import {
   ScrollLockManager,
@@ -21,10 +22,6 @@ import {
   UniqueIdFactoryContext,
   globalIdGeneratorFactory,
 } from '../../utilities/unique-id';
-import {
-  PortalsManagerProvider,
-  PortalsContainer,
-} from '../../utilities/portals';
 
 import './AppProvider.scss';
 
@@ -105,10 +102,9 @@ export class AppProvider extends Component<AppProviderProps, State> {
                   <ThemeProvider theme={theme}>
                     <ClickTrackerProvider>
                       <MediaQueryProvider>
-                        <PortalsManagerProvider>
+                        <PortalsManager>
                           <FocusManager>{children}</FocusManager>
-                          <PortalsContainer />
-                        </PortalsManagerProvider>
+                        </PortalsManager>
                       </MediaQueryProvider>
                     </ClickTrackerProvider>
                   </ThemeProvider>

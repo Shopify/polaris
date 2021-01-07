@@ -1,6 +1,6 @@
 # [Polaris React](https://polaris.shopify.com/)
 
-[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) [![Travis build status](https://travis-ci.com/Shopify/polaris-react.svg?branch=master)](https://travis-ci.com/Shopify/polaris-react) [![codecov](https://codecov.io/gh/Shopify/polaris-react/branch/master/graph/badge.svg?token=IKyeKcpRs1)](https://codecov.io/gh/Shopify/polaris-react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md#your-first-pull-request)
+[![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris) ![CI](https://github.com/shopify/polaris-react/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/Shopify/polaris-react/branch/master/graph/badge.svg?token=IKyeKcpRs1)](https://codecov.io/gh/Shopify/polaris-react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md#your-first-pull-request)
 
 Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
 
@@ -39,7 +39,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@5.8.7-rc.2/dist/styles.css"
+  href="https://unpkg.com/@shopify/polaris@5.12.0/dist/styles.css"
 />
 ```
 
@@ -76,7 +76,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@5.8.7-rc.2/dist/styles.css"
+  href="https://unpkg.com/@shopify/polaris@5.12.0/dist/styles.css"
 />
 ```
 
@@ -99,6 +99,26 @@ We have created example applications to document some of the ways you could incl
 ## Development
 
 We use Storybook to create a simple, hot-reloading playground for development on these components. You can edit the `playground/Playground.tsx` file to import the components you are working on, and run `yarn dev` in order to start the development server. Please do not commit your work on the playground so that it remains pristine for other developers to work on.
+
+### Testing the new design language
+
+Old design language (default):
+
+```bash
+yarn dev
+```
+
+New design language (light mode):
+
+```bash
+STORYBOOK_NEWDESIGNLANGUAGE=light yarn dev
+```
+
+New design language (dark mode):
+
+```bash
+STORYBOOK_NEWDESIGNLANGUAGE=dark yarn dev
+```
 
 ### Testing on mobile or a virtual machine
 
