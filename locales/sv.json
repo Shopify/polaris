@@ -294,6 +294,9 @@
     },
     "Actions": {
       "moreActions": "Fler åtgärder"
+    },
+    "Loading": {
+      "label": "Fält för att ladda sida"
     }
   }
 }
