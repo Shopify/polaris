@@ -87,7 +87,7 @@ function AutocompleteExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="inkLighter" />}
+      prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
     />
   );
@@ -262,7 +262,7 @@ function AutocompleteExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="inkLighter" />}
+      prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
     />
   );
@@ -454,7 +454,7 @@ function AutocompleteExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="inkLighter" />}
+      prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
     />
   );

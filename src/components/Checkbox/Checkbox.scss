@@ -5,147 +5,80 @@
   margin: var(--p-choice-margin, 0);
 }
 
+// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
 .Input {
   @include visually-hidden;
-}
-// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
-.Checkbox:not(.newDesignLanguage) {
-  .Input {
-    &:focus,
-    &:active,
-    &:checked,
-    &.Input-indeterminate {
-      + .Backdrop {
-        background: color('indigo');
-        &::after {
-          background: color('white');
-        }
-      }
-    }
-    &:checked,
-    &.Input-indeterminate {
-      ~ .Icon {
-        transform: translate(-50%, -50%) scale(1);
-      }
-    }
 
-    &:focus,
-    &:active {
-      + .Backdrop {
-        @include control-backdrop(focused);
-      }
-    }
-    &:disabled {
-      + .Backdrop {
-        @include control-backdrop(disabled);
-      }
-      ~ .Icon {
-        @include recolor-icon(color('ink', 'lightest'));
-      }
+  &.keyFocused {
+    + .Backdrop {
+      @include focus-ring($style: 'focused');
     }
   }
 
-  .Backdrop {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    @include control-backdrop;
+  &:active:not(:disabled),
+  &:checked,
+  &.Input-indeterminate {
+    + .Backdrop {
+      @include control-backdrop(active, $global-theming: true);
+    }
+    ~ .Icon {
+      transition: opacity var(--p-duration-1-5-0) var(--p-ease),
+        transform var(--p-duration-1-5-0) var(--p-ease);
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
   }
 
-  .Icon {
-    transition: control-icon-transition();
-    transform: translate(-50%, -50%) scale(0);
+  &:disabled {
+    + .Backdrop {
+      @include control-backdrop(disabled, $global-theming: true);
+    }
   }
-}
 
-.Checkbox.newDesignLanguage {
-  .Input {
-    &.keyFocused {
-      + .Backdrop {
-        @include focus-ring($style: 'focused');
-      }
-    }
-
-    &:active:not(:disabled),
-    &:checked,
-    &.Input-indeterminate {
-      + .Backdrop {
-        @include control-backdrop(active, $global-theming: true);
-      }
-      ~ .Icon {
-        transition: opacity var(--p-duration-1-5-0) var(--p-ease),
-          transform var(--p-duration-1-5-0) var(--p-ease);
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-      }
-    }
-
-    &:disabled {
-      + .Backdrop {
-        @include control-backdrop(disabled, $global-theming: true);
-      }
-    }
-
-    &:disabled:checked {
-      + .Backdrop {
+  &:disabled:checked {
+    + .Backdrop {
+      background: var(--p-border-disabled);
+      &::before {
         background: var(--p-border-disabled);
-        &::before {
-          background: var(--p-border-disabled);
-        }
       }
     }
   }
+}
+// stylelint-enable selector-max-specificity, selector-max-class,  selector-max-combinators, max-nesting-depth
 
-  .Backdrop {
-    @include control-backdrop($global-theming: true);
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    @include focus-ring($border-width: var(--p-control-border-width));
-  }
-
-  .Icon {
-    transform: translate(-50%, -50%) scale(0.25);
-    opacity: 0;
-    transition: opacity var(--p-duration-1-0-0) var(--p-ease),
-      transform var(--p-duration-1-0-0) var(--p-ease);
-  }
+.Backdrop {
+  @include control-backdrop($global-theming: true);
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  @include focus-ring($border-width: var(--p-control-border-width));
 }
 
 .Icon {
-  @include recolor-icon(var(--p-icon-on-interactive, color('indigo')));
+  @include recolor-icon(var(--p-icon-on-interactive));
   position: absolute;
   top: 50%;
   left: 50%;
   transform-origin: 50% 50%;
   pointer-events: none;
 
+  transform: translate(-50%, -50%) scale(0.25);
+  opacity: 0;
+  transition: opacity var(--p-duration-1-0-0) var(--p-ease),
+    transform var(--p-duration-1-0-0) var(--p-ease);
+
   @media (-ms-high-contrast: active) {
     fill: ms-high-contrast-color('text');
   }
 }
 
-.error:not(.newDesignLanguage) {
-  // The basic checked styles have more specificity than this, so need to
-  // basically duplicate that selector here, too.
-  .Input:checked + .Backdrop,
-  .Input.Input-indeterminate + .Backdrop,
-  .Backdrop {
-    @include control-backdrop(error);
+// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
+.error {
+  .Icon {
+    @include recolor-icon(var(--p-icon-on-critical));
   }
 
-  // We need to know if the input is focusing to change the border color.
-  .Input:focus + .Backdrop,
-  .Input:active + .Backdrop {
-    @include control-backdrop(focused-error);
-  }
-}
-
-.error.newDesignLanguage {
   .Backdrop {
     @include control-backdrop(error, $global-theming: true);
   }
@@ -155,12 +88,6 @@
     + .Backdrop::before {
       background-color: var(--p-border-critical);
     }
-  }
-}
-
-.error {
-  .Icon {
-    @include recolor-icon(var(--p-icon-on-critical, color('red', 'dark')));
   }
 }
 // stylelint-enable selector-max-specificity, selector-max-class,  selector-max-combinators, max-nesting-depth
