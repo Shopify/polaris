@@ -6,7 +6,8 @@ on:
       - '**'
   push:
     branches:
-      - master
+      - 'master'
+      - 'version-6.0.0'
 
 jobs:
   test:
@@ -91,12 +92,16 @@ jobs:
       - run: node ./scripts/build-shrink-ray.js
         env:
           SHRINK_RAY_API_KEY: ${{ secrets.SHRINK_RAY_API_KEY }}
+          GH_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          GH_BASE_SHA: ${{ github.event.pull_request.base.sha }}
 
   visual_regression_test:
     name: 'Visual regression test'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Chromatic git history to track changes
 
       - uses: actions/setup-node@v2
         with:
@@ -116,10 +121,18 @@ jobs:
 
       - run: yarn --frozen-lockfile
       - run: yarn storybook:build
-      - run: yarn run chromatic --exit-zero-on-changes --auto-accept-changes=master --exit-once-uploaded --storybook-build-dir=build/storybook/static
-        env:
-          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
-      - run: yarn run percy-storybook --build_dir=build/storybook/static
+
+      - uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
+          storybookBuildDir: 'build/storybook/static'
+          autoAcceptChanges: 'master'
+          exitZeroOnChanges: true
+          exitOnceUploaded: true
+
+      - uses: percy/storybook-action@v0.1.6
+        with:
+          custom-command: 'yarn run percy-storybook --build_dir=build/storybook/static'
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_TARGET_BRANCH: ${{ github.base_ref }}

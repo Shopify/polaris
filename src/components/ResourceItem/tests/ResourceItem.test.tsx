@@ -624,32 +624,6 @@ describe('<ResourceItem />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const resourceItem = mountWithApp(
-        <ResourceItem id={itemId} url={url} />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(resourceItem).toContainReactComponent('div', {
-        className: 'ResourceItem newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const resourceItem = mountWithApp(
-        <ResourceItem id={itemId} url={url} />,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-      expect(resourceItem).not.toContainReactComponent('div', {
-        className: 'ResourceItem newDesignLanguage',
-      });
-    });
-  });
-
   describe('focused', () => {
     it('removes the focus state when mousing out a focused item', () => {
       const resourceItem = mountWithApp(
