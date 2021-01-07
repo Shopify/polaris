@@ -294,6 +294,9 @@
     },
     "Actions": {
       "moreActions": "Altre azioni"
+    },
+    "Loading": {
+      "label": "Barra di caricamento della pagina"
     }
   }
 }
