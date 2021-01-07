@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 
 import {Header, HeaderProps} from './components';
 import styles from './Page.scss';
@@ -16,12 +15,10 @@ export interface PageProps extends HeaderProps {
 }
 
 export function Page({children, fullWidth, narrowWidth, ...rest}: PageProps) {
-  const {newDesignLanguage} = useFeatures();
   const className = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,
     narrowWidth && styles.narrowWidth,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const hasHeaderContent =

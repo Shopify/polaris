@@ -2,9 +2,6 @@
 
 .Title {
   @include text-breakword;
-}
-
-.newDesignLanguageTitle {
   @include text-emphasis-strong;
   font-size: rem(24px);
   line-height: rem(28px);
