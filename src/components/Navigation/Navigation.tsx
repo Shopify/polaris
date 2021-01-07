@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {Scrollable} from '../Scrollable';
-import {classNames} from '../../utilities/css';
 import {useTheme} from '../../utilities/theme';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {Image} from '../Image';
