@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {ActionList, Popover} from 'components';
 
 import {Menu} from '../Menu';
@@ -128,6 +129,18 @@ describe('<Menu />', () => {
       const menu = mountWithAppProvider(<Menu {...defaultProps} open />);
 
       expect(menu.find(Popover).prop('fullHeight')).toBe(true);
+    });
+  });
+
+  describe('accessibilityLabel', () => {
+    it('passes accessibilityLabel to the popover activator', () => {
+      const menu = mountWithApp(
+        <Menu {...defaultProps} accessibilityLabel="User menu" />,
+      );
+
+      expect(menu).toContainReactComponent('button', {
+        'aria-label': 'User menu',
+      });
     });
   });
 });

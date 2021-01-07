@@ -296,6 +296,9 @@
     },
     "Actions": {
       "moreActions": "Další akce"
+    },
+    "Loading": {
+      "label": "Panel načítání stránky"
     }
   }
 }

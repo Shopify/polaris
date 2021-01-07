@@ -54,6 +54,7 @@ interface CommonButtonProps
     ButtonProps,
     | 'id'
     | 'accessibilityLabel'
+    | 'ariaDescribedBy'
     | 'role'
     | 'onClick'
     | 'onFocus'
@@ -96,6 +97,7 @@ export function Button({
   role,
   ariaControls,
   ariaExpanded,
+  ariaDescribedBy,
   ariaPressed,
   onClick,
   onFocus,
@@ -244,6 +246,7 @@ export function Button({
         className={connectedDisclosureClassName}
         disabled={disabled}
         aria-label={disclosureLabel}
+        aria-describedby={ariaDescribedBy}
         onClick={toggleDisclosureActive}
         onMouseUp={handleMouseUpByBlurring}
       >
@@ -272,6 +275,7 @@ export function Button({
     id,
     className,
     accessibilityLabel,
+    ariaDescribedBy,
     role,
     onClick,
     onFocus,
