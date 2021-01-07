@@ -294,6 +294,9 @@
     },
     "Actions": {
       "moreActions": "Lisää toimintoja"
+    },
+    "Loading": {
+      "label": "Sivun latautumisen palkki"
     }
   }
 }

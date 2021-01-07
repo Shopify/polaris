@@ -294,6 +294,9 @@
     },
     "Actions": {
       "moreActions": "その他の操作"
+    },
+    "Loading": {
+      "label": "ページの読み込み表示バー"
     }
   }
 }
