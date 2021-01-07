@@ -107,9 +107,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
 
     const tabsMarkup = visibleTabs
       .sort((tabA, tabB) => tabA - tabB)
-      .map((tabIndex) =>
-        this.renderTabMarkup(tabs[tabIndex], tabIndex, children),
-      );
+      .map((tabIndex) => this.renderTabMarkup(tabs[tabIndex], tabIndex));
 
     const disclosureActivatorVisible = visibleTabs.length < tabs.length;
     const hasCustomDisclosure = Boolean(disclosureText);
@@ -247,12 +245,8 @@ class TabsInner extends PureComponent<CombinedProps, State> {
   };
 
   // eslint-disable-next-line @shopify/react-no-multiple-render-methods
-  private renderTabMarkup = (
-    tab: TabDescriptor,
-    index: number,
-    children: React.ReactNode,
-  ) => {
-    const {selected} = this.props;
+  private renderTabMarkup = (tab: TabDescriptor, index: number) => {
+    const {selected, children} = this.props;
     const {tabToFocus} = this.state;
     const tabPanelID = tab.panelID || `${tab.id}-panel`;
 
