@@ -14,6 +14,14 @@ import {Button} from '../Button';
 import en from '../../../../locales/en.json';
 
 describe('<Button />', () => {
+  let warnSpy: jest.SpyInstance | null = null;
+
+  beforeEach(() => {
+    warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+  });
+
+  afterEach(() => warnSpy?.mockRestore());
+
   describe('children', () => {
     it('passes prop', () => {
       const mockChildren = 'mock children';
@@ -170,14 +178,8 @@ describe('<Button />', () => {
 
   describe('ariaPressed', () => {
     it('passes prop', () => {
-      const warningSpy = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {});
-
       const button = mountWithAppProvider(<Button ariaPressed />);
       expect(button.find(UnstyledButton).prop('ariaPressed')).toBeTruthy();
-
-      warningSpy.mockRestore();
     });
   });
 
@@ -448,16 +450,10 @@ describe('<Button />', () => {
 
   describe('stretchContent', () => {
     it('sets variant class', () => {
-      const warningSpy = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {});
-
       const button = mountWithApp(<Button stretchContent />);
       expect(button).toContainReactComponent(UnstyledButton, {
         className: 'Button stretchContent',
       });
-
-      warningSpy.mockRestore();
     });
   });
 });

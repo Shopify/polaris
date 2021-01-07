@@ -144,7 +144,8 @@ $stacking-order: (
     margin-left: spacing(extra-tight);
   }
 
-  .textAlignLeft &:last-child {
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity
+  .fullWidth.textAlignLeft &:last-child:not(:only-child) {
     margin-left: auto;
   }
 
@@ -608,11 +609,6 @@ $stacking-order: (
   .Icon:last-child {
     margin-right: rem(-4px);
   }
-  // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
-  &:not(.textAlignLeft) .Icon + .Icon:last-child {
-    margin-left: 0;
-  }
-  // stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
 
   .Icon:only-child {
     margin-right: 0;
