@@ -83,12 +83,7 @@ $action-menu-rollup-computed-width: rem(40px);
 .AdditionalNavigationWrapper {
   display: flex;
   flex: 1 0 auto;
-  margin: 0 spacing(tight) 0 0;
   justify-content: flex-end;
-
-  @include page-content-when-not-fully-condensed {
-    margin: 0 spacing(extra-loose);
-  }
 
   @include print-hidden;
 }
@@ -157,10 +152,13 @@ $action-menu-rollup-computed-width: rem(40px);
 
   + .Row {
     margin-top: spacing(extra-tight);
-
     // stylelint-disable-next-line selector-max-combinators, selector-max-class
     .mobileView & {
       margin-top: spacing(tight);
+    }
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class
+    .RightAlign {
+      margin-left: 0;
     }
   }
 }
@@ -222,6 +220,10 @@ $action-menu-rollup-computed-width: rem(40px);
     gap: spacing(tight) spacing();
     grid-template-columns: auto 1fr;
     grid-template-areas: 'breadcrumbs actions' 'title title';
+
+    + .Row {
+      gap: 0;
+    }
   }
 }
 
