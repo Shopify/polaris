@@ -31,12 +31,15 @@ describe('<EmptyState />', () => {
       expect(emptyState.find('button').contains('Add transfer')).toBe(false);
     });
 
-    it('renders a large button by default', () => {
-      const emptyState = mountWithAppProvider(
-        <EmptyState image={imgSrc} action={{content: 'Upload files'}} />,
+    it('renders a medium size primary button by default', () => {
+      const emptyState = mountWithApp(
+        <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
       );
 
-      expect(emptyState.find(Button).prop('size')).toBe('large');
+      expect(emptyState).toContainReactComponent(Button, {
+        size: 'medium',
+        primary: true,
+      });
     });
 
     it('renders a medium button when in a content context', () => {
@@ -49,6 +52,33 @@ describe('<EmptyState />', () => {
       expect(emptyStateInContentContext.find(Button).prop('size')).toBe(
         'medium',
       );
+    });
+
+    it('adds center distribution and tight spacing to Stack', () => {
+      const emptyState = mountWithApp(
+        <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
+      );
+
+      expect(emptyState).toContainReactComponent(Stack, {
+        spacing: 'tight',
+        distribution: 'center',
+      });
+    });
+
+    it('does not render a plain link as a secondaryAction', () => {
+      const emptyState = mountWithApp(
+        <EmptyState
+          image={imgSrc}
+          secondaryAction={{
+            content: 'Learn more',
+            url: 'https://help.shopify.com',
+          }}
+        />,
+      );
+
+      expect(emptyState).toContainReactComponent(UnstyledLink, {
+        plain: undefined,
+      });
     });
   });
 
@@ -174,58 +204,6 @@ describe('<EmptyState />', () => {
       const emptyState = mountWithAppProvider(<EmptyState image={imgSrc} />);
 
       expect(emptyState.find(TextContainer)).toHaveLength(0);
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a classname to the root component', () => {
-      const emptyState = mountWithApp(<EmptyState image={imgSrc} />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(emptyState).toContainReactComponent('div', {
-        className: 'EmptyState newDesignLanguage withinPage',
-      });
-    });
-
-    it('does not render a plain link as a secondaryAction', () => {
-      const emptyState = mountWithApp(
-        <EmptyState
-          image={imgSrc}
-          secondaryAction={{
-            content: 'Learn more',
-            url: 'https://help.shopify.com',
-          }}
-        />,
-        {features: {newDesignLanguage: true}},
-      );
-
-      expect(emptyState).toContainReactComponent(UnstyledLink, {
-        plain: undefined,
-      });
-    });
-
-    it('renders a medium size primary button', () => {
-      const emptyState = mountWithApp(
-        <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
-        {features: {newDesignLanguage: true}},
-      );
-
-      expect(emptyState).toContainReactComponent(Button, {
-        size: 'medium',
-        primary: true,
-      });
-    });
-
-    it('adds center distribution and tight spacing to Stack', () => {
-      const emptyState = mountWithApp(
-        <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
-        {features: {newDesignLanguage: true}},
-      );
-
-      expect(emptyState).toContainReactComponent(Stack, {
-        spacing: 'tight',
-        distribution: 'center',
-      });
     });
   });
 });

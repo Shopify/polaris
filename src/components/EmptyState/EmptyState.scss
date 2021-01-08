@@ -30,23 +30,41 @@ $centered-illustration-width: rem(226px);
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: spacing(loose) auto 0 auto;
+  margin: 0 auto;
   padding: spacing(loose) 0;
+  padding-top: spacing(loose);
+  padding-bottom: spacing(loose) * 3;
   max-width: $page-max-width;
 }
 
 .Section {
-  position: relative;
+  position: unset;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   flex: 1 1 auto;
   width: 100%;
+  align-items: center;
+  justify-content: center;
 
   @include page-content-when-not-partially-condensed {
     left: spacing(loose);
-    flex-direction: row;
-    align-items: center;
   }
+}
+
+.Details {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+
+  @include page-content-when-not-fully-condensed {
+    max-width: $detail-width;
+  }
+}
+
+.Image {
+  margin: 0;
+  width: initial;
 }
 
 .ImageContainer,
@@ -64,7 +82,6 @@ $centered-illustration-width: rem(226px);
   }
 }
 
-.newDesignLanguage,
 .withinContentContainer {
   margin: 0 auto;
   padding-top: spacing(loose);
@@ -148,8 +165,9 @@ $centered-illustration-width: rem(226px);
 }
 
 .Content {
-  @include text-style-display-small;
+  @include text-style-body;
   @include text-emphasis-subdued;
+  padding-bottom: spacing(tight);
 }
 
 .Actions {
