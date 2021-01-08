@@ -47,11 +47,13 @@ export function SkeletonPage({
     secondaryActions && styles['Header-hasSecondaryActions'],
   );
 
-  const titleMarkup = (
-    <div className={styles.TitleWrapper}>
-      <SkeletonPageTitle title={title} />
-    </div>
+  const titleContent = title ? (
+    <h1 className={styles.Title}>{title}</h1>
+  ) : (
+    <div className={styles.SkeletonTitle} />
   );
+
+  const titleMarkup = <div className={styles.TitleWrapper}>{titleContent}</div>;
 
   const primaryActionMarkup = primaryAction ? (
     <div className={styles.PrimaryAction}>
@@ -99,12 +101,4 @@ function renderSecondaryActions(actionCount: number) {
     );
   }
   return <div className={styles.Actions}>{actions}</div>;
-}
-
-function SkeletonPageTitle({title = ''}) {
-  if (title) {
-    return <h1 className={styles.Title}>{title}</h1>;
-  }
-
-  return <div className={styles.SkeletonTitle} />;
 }
