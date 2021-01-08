@@ -33,7 +33,7 @@
     text-decoration: underline;
 
     &::before {
-      content: var(--p-non-null-content);
+      content: '';
       position: absolute;
       z-index: -1;
       // this mimics the box model of the plain button backdrop
