@@ -296,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Diğer işlemler"
+    },
+    "Loading": {
+      "label": "Sayfa yüklenme çubuğu"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "İpucu: {label}"
     }
   }
 }

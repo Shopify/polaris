@@ -296,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Meer acties"
+    },
+    "Loading": {
+      "label": "Pagina laadbalk"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Knopinfo: {label}"
     }
   }
 }

@@ -298,6 +298,12 @@
     },
     "Actions": {
       "moreActions": "Další akce"
+    },
+    "Loading": {
+      "label": "Panel načítání stránky"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Tip s vysvětlením: {label}"
     }
   }
 }

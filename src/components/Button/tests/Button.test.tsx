@@ -155,6 +155,14 @@ describe('<Button />', () => {
     });
   });
 
+  describe('ariaDescribedBy', () => {
+    it('passes prop', () => {
+      const id = 'mockId';
+      const button = mountWithAppProvider(<Button ariaDescribedBy={id} />);
+      expect(button.find(UnstyledButton).prop('ariaDescribedBy')).toBe(id);
+    });
+  });
+
   describe('ariaPressed', () => {
     it('passes prop', () => {
       const warningSpy = jest

@@ -296,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "기타 작업"
+    },
+    "Loading": {
+      "label": "페이지 로딩 표시줄"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "툴팁: {label}"
     }
   }
 }

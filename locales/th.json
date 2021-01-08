@@ -296,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "การดำเนินการเพิ่มเติม"
+    },
+    "Loading": {
+      "label": "แถบแสดงการโหลดหน้า"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "เคล็ดลับเกี่ยวกับเครื่องมือ: {label}"
     }
   }
 }

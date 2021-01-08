@@ -136,6 +136,9 @@
       "clear": "Clear",
       "clearLabel": "Clear {filterName}"
     },
+    "Loading": {
+      "label": "Page loading bar"
+    },
     "Modal": {
       "iFrameTitle": "body markup",
       "modalWarning": "These required properties are missing from Modal: {missingProps}"
@@ -238,6 +241,9 @@
     "TextField": {
       "characterCount": "{count} characters",
       "characterCountWithMaxLength": "{count} of {limit} characters used"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Tooltip: {label}"
     },
     "TopBar": {
       "toggleMenuLabel": "Toggle menu",

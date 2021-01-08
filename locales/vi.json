@@ -296,6 +296,12 @@
           }
         }
       }
+    },
+    "Loading": {
+      "label": "Thanh tải trang"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Chú giải công cụ: {label}"
     }
   }
 }

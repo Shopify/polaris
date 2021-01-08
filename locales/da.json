@@ -296,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Flere handlinger"
+    },
+    "Loading": {
+      "label": "Statuslinje for sideindlæsning"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Værktøjstip: {label}"
     }
   }
 }

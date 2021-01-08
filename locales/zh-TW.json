@@ -296,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "更多動作"
+    },
+    "Loading": {
+      "label": "頁面載入進度條"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "工具提示：{label}"
     }
   }
 }

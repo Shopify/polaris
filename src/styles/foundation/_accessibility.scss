@@ -1,7 +1,4 @@
 @mixin ms-high-contrast-outline($border-width: border-width()) {
-  @media (-ms-high-contrast: active) {
-    outline: $border-width solid ms-high-contrast-color('text');
-
-    @content;
-  }
+  outline: $border-width solid transparent;
+  @content;
 }

@@ -296,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Weitere Aktionen"
+    },
+    "Loading": {
+      "label": "Seiten-Ladeleiste"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Tooltip: {label}"
     }
   }
 }

@@ -296,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Más acciones"
+    },
+    "Loading": {
+      "label": "Barra de \"cargando página\""
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Descripción emergente: {label}"
     }
   }
 }
