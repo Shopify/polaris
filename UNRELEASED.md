@@ -11,6 +11,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Updated `OptionList` selected styles ([#3633](https://github.com/Shopify/polaris-react/pull/3633))
 - Added the ability to hide the clear filter button on the filter component ([#3049](https://github.com/Shopify/polaris-react/pull/3049))
 - **`Popover`:** New `autofocusTarget` prop to enhance autofocus options ([#3600](https://github.com/Shopify/polaris-react/pull/3600))
+- Conveyed `DatePicker` more clearly to screen readers ([#3660](https://github.com/Shopify/polaris-react/pull/3660))
 - Added `accessibilityLabels` prop to `Pagination` ([#3667] (https://github.com/Shopify/polaris-react/pull/3667))
 - Added ability to hide query text field in `Filters` component using `hideQueryField` prop ([#3674](https://github.com/Shopify/polaris-react/pull/3674))
 - Added `tabIndex` to `Scrollable` for keyboard focus ([#3744](https://github.com/Shopify/polaris-react/pull/3744))

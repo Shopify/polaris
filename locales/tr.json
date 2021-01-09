@@ -82,7 +82,9 @@
         "friday": "Cuma",
         "saturday": "Cumartesi",
         "sunday": "Pazar"
-      }
+      },
+      "start": "Aralık başlangıcı",
+      "end": "Aralık bitişi"
     },
     "DiscardConfirmationModal": {
       "title": "Kaydedilmemiş tüm değişiklikleri at",
