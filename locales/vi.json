@@ -85,7 +85,9 @@
         "friday": "T6",
         "saturday": "T7",
         "sunday": "CN"
-      }
+      },
+      "start": "Bắt đầu phạm vi",
+      "end": "Kết thúc phạm vi"
     },
     "DiscardConfirmationModal": {
       "title": "Bỏ tất cả thay đổi chưa lưu",
@@ -297,6 +299,9 @@
     },
     "Loading": {
       "label": "Thanh tải trang"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Chú giải công cụ: {label}"
     }
   }
 }
