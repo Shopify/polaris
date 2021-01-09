@@ -82,7 +82,9 @@
         "friday": "Fredag",
         "saturday": "Lørdag",
         "sunday": "Søndag"
-      }
+      },
+      "start": "Start af interval",
+      "end": "Slutning af interval"
     },
     "DiscardConfirmationModal": {
       "title": "Fortryd alle ændringer, der ikke er gemt",
@@ -294,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Flere handlinger"
+    },
+    "Loading": {
+      "label": "Statuslinje for sideindlæsning"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Værktøjstip: {label}"
     }
   }
 }

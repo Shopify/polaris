@@ -82,7 +82,9 @@
         "friday": "Pátek",
         "saturday": "Sobota",
         "sunday": "Neděle"
-      }
+      },
+      "start": "Začátek rozsahu",
+      "end": "Konec rozsahu"
     },
     "DiscardConfirmationModal": {
       "title": "Zahodit všechny neuložené změny",
@@ -296,6 +298,12 @@
     },
     "Actions": {
       "moreActions": "Další akce"
+    },
+    "Loading": {
+      "label": "Panel načítání stránky"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Tip s vysvětlením: {label}"
     }
   }
 }

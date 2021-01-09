@@ -82,7 +82,9 @@
         "friday": "Freitag",
         "saturday": "Samstag",
         "sunday": "Sonntag"
-      }
+      },
+      "start": "Beginn des Bereichs",
+      "end": "Ende des Bereichs"
     },
     "DiscardConfirmationModal": {
       "title": "Verwirf alle nicht gespeicherten Änderungen",
@@ -294,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Weitere Aktionen"
+    },
+    "Loading": {
+      "label": "Seiten-Ladeleiste"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Tooltip: {label}"
     }
   }
 }

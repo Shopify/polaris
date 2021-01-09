@@ -2,7 +2,6 @@ import React, {forwardRef, useRef, useImperativeHandle, useState} from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
 import {useUniqueId} from '../../utilities/unique-id';
 import {Choice, helpTextID} from '../Choice';
@@ -61,7 +60,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     ref,
   ) {
     const inputNode = useRef<HTMLInputElement>(null);
-    const {newDesignLanguage} = useFeatures();
     const id = useUniqueId('Checkbox', idProp);
     const {
       value: mouseOver,
@@ -113,11 +111,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       ? describedBy.join(' ')
       : undefined;
 
-    const wrapperClassName = classNames(
-      styles.Checkbox,
-      error && styles.error,
-      newDesignLanguage && styles.newDesignLanguage,
-    );
+    const wrapperClassName = classNames(styles.Checkbox, error && styles.error);
 
     const backdropClassName = classNames(
       styles.Backdrop,
@@ -136,7 +130,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     const inputClassName = classNames(
       styles.Input,
       isIndeterminate && styles['Input-indeterminate'],
-      newDesignLanguage && keyFocused && styles.keyFocused,
+      keyFocused && styles.keyFocused,
     );
 
     return (

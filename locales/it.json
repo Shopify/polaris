@@ -82,7 +82,9 @@
         "friday": "venerdì",
         "saturday": "sabato",
         "sunday": "domenica"
-      }
+      },
+      "start": "Inizio intervallo",
+      "end": "Fine intervallo"
     },
     "DiscardConfirmationModal": {
       "title": "Rimuovi tutte le modifiche non salvate",
@@ -294,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Altre azioni"
+    },
+    "Loading": {
+      "label": "Barra di caricamento della pagina"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Suggerimento: {label}"
     }
   }
 }

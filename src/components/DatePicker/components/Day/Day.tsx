@@ -18,6 +18,8 @@ export interface DayProps {
   isFirstSelectedDay?: boolean;
   isHoveringRight?: boolean;
   rangeIsDifferent?: boolean;
+  weekday?: string;
+  selectedAccessibilityLabelPrefix?: string;
   onClick?(day: Date): void;
   onHover?(day?: Date): void;
   onFocus?(day: Date): void;
@@ -38,6 +40,8 @@ export const Day = memo(function Day({
   isFirstSelectedDay,
   isHoveringRight,
   rangeIsDifferent,
+  weekday,
+  selectedAccessibilityLabelPrefix,
 }: DayProps) {
   const i18n = useI18n();
   const dayNode = useRef<HTMLButtonElement>(null);
@@ -87,7 +91,11 @@ export const Day = memo(function Day({
     (focused || selected || today || date === 1) && !disabled ? 0 : -1;
 
   const ariaLabel = [
+    selected && selectedAccessibilityLabelPrefix
+      ? `${selectedAccessibilityLabelPrefix} `
+      : '',
     `${today ? i18n.translate('Polaris.DatePicker.today') : ''}`,
+    `${weekday ? weekday : ''} `,
     `${i18n.translate(
       `Polaris.DatePicker.months.${monthName(day.getMonth())}`,
     )} `,

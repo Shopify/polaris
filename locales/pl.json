@@ -82,7 +82,9 @@
         "friday": "Piątek",
         "saturday": "Sobota",
         "sunday": "Niedziela"
-      }
+      },
+      "start": "Początek zakresu",
+      "end": "Koniec zakresu"
     },
     "DiscardConfirmationModal": {
       "title": "Odrzuć wszystkie niezapisane zmiany",
@@ -296,6 +298,12 @@
     },
     "Actions": {
       "moreActions": "Więcej czynności"
+    },
+    "Loading": {
+      "label": "Pasek ładowania strony"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Etykietka narzędzia: {label}"
     }
   }
 }

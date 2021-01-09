@@ -6,7 +6,7 @@ import {Tokens} from 'utilities/theme';
 import {Collapsible} from '../Collapsible';
 
 describe('<Collapsible />', () => {
-  const ariaHiddenSelector = '[aria-hidden=true]';
+  const ariaExpandedSelector = '[aria-expanded=false]';
 
   it('does not render its children and indicates hidden with aria-hidden', () => {
     const collapsible = mountWithAppProvider(
@@ -15,24 +15,8 @@ describe('<Collapsible />', () => {
       </Collapsible>,
     );
 
-    const hidden = collapsible.find(ariaHiddenSelector);
+    const hidden = collapsible.find(ariaExpandedSelector);
     expect(hidden.exists()).toBe(true);
-    expect(collapsible.contains('content')).toBe(false);
-  });
-
-  it('does not render its children when going from open to closed', () => {
-    const Child = () => null;
-
-    const collapsible = mountWithAppProvider(
-      <Collapsible id="test-collapsible" open>
-        <Child />
-      </Collapsible>,
-    );
-
-    expect(collapsible.find(Child)).toHaveLength(1);
-    collapsible.setProps({open: false});
-    collapsible.simulate('transitionEnd');
-    expect(collapsible.find(Child)).toHaveLength(0);
   });
 
   it('renders its children and does not render aria-hidden when open', () => {
@@ -42,7 +26,7 @@ describe('<Collapsible />', () => {
       </Collapsible>,
     );
 
-    const hidden = collapsible.find(ariaHiddenSelector);
+    const hidden = collapsible.find(ariaExpandedSelector);
     expect(hidden.exists()).toBe(false);
     expect(collapsible.contains('content')).toBe(true);
   });

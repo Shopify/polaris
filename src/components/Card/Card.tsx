@@ -2,7 +2,6 @@ import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {ButtonGroup} from '../ButtonGroup';
@@ -56,17 +55,12 @@ export const Card: React.FunctionComponent<CardProps> & {
   footerActionAlignment = 'right',
 }: CardProps) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
   const {
     value: secondaryActionsPopoverOpen,
     toggle: toggleSecondaryActionsPopoverOpen,
   } = useToggle(false);
 
-  const className = classNames(
-    styles.Card,
-    subdued && styles.subdued,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
+  const className = classNames(styles.Card, subdued && styles.subdued);
 
   const headerMarkup =
     title || actions ? <Header actions={actions} title={title} /> : null;

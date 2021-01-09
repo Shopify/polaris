@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  createRef,
-  TransitionEvent,
-  Component,
-  ComponentClass,
-} from 'react';
+import React, {useState, useRef, useEffect, useCallback} from 'react';
 
 import {classNames} from '../../utilities/css';
 
@@ -30,165 +24,83 @@ export interface CollapsibleProps {
   children?: React.ReactNode;
 }
 
-type AnimationState =
-  | 'idle'
-  | 'measuring'
-  | 'closingStart'
-  | 'closing'
-  | 'openingStart'
-  | 'opening';
+type AnimationState = 'idle' | 'measuring' | 'animating';
 
-interface State {
-  height?: number | null;
-  animationState: AnimationState;
-  open: boolean;
-}
+export function Collapsible({
+  id,
+  expandOnPrint,
+  open,
+  transition,
+  children,
+}: CollapsibleProps) {
+  const [height, setHeight] = useState(0);
+  const [isOpen, setIsOpen] = useState(open);
+  const [animationState, setAnimationState] = useState<AnimationState>('idle');
+  const collapisbleContainer = useRef<HTMLDivElement>(null);
 
-const ParentCollapsibleExpandingContext = createContext(false);
+  const isFullyOpen = animationState === 'idle' && open && isOpen;
+  const isFullyClosed = animationState === 'idle' && !open && !isOpen;
 
-class CollapsibleInner extends Component<CollapsibleProps, State> {
-  static contextType = ParentCollapsibleExpandingContext;
+  const wrapperClassName = classNames(
+    styles.Collapsible,
+    isFullyClosed && styles.isFullyClosed,
+    expandOnPrint && styles.expandOnPrint,
+  );
 
-  static getDerivedStateFromProps(
-    {open: willOpen}: CollapsibleProps,
-    {open, animationState: prevAnimationState}: State,
-  ) {
-    let nextAnimationState = prevAnimationState;
-    if (open !== willOpen) {
-      nextAnimationState = 'measuring';
-    }
-
-    return {
-      animationState: nextAnimationState,
-      open: willOpen,
-    };
-  }
-
-  context!: React.ContextType<typeof ParentCollapsibleExpandingContext>;
-
-  state: State = {
-    height: null,
-    animationState: 'idle',
-    // eslint-disable-next-line react/no-unused-state
-    open: this.props.open,
+  const collapsibleStyles = {
+    ...(transition && {
+      transitionDuration: `${transition.duration}`,
+      transitionTimingFunction: `${transition.timingFunction}`,
+    }),
+    ...{
+      maxHeight: isFullyOpen ? 'none' : `${height}px`,
+      overflow: isFullyOpen ? 'visible' : 'hidden',
+    },
   };
 
-  private node = createRef<HTMLDivElement>();
-  private heightNode = createRef<HTMLDivElement>();
+  const handleCompleteAnimation = useCallback(() => {
+    setAnimationState('idle');
+    setIsOpen(open);
+  }, [open]);
 
-  componentDidUpdate({open: wasOpen}: CollapsibleProps) {
-    const {animationState} = this.state;
-    const parentCollapsibleExpanding = this.context;
-
-    if (parentCollapsibleExpanding && animationState !== 'idle') {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        animationState: 'idle',
-      });
-
-      return;
+  useEffect(() => {
+    if (open !== isOpen) {
+      setAnimationState('measuring');
     }
+  }, [open, isOpen]);
 
-    requestAnimationFrame(() => {
-      const heightNode = this.heightNode.current;
-      switch (animationState) {
-        case 'idle':
-          break;
-        case 'measuring':
-          this.setState({
-            animationState: wasOpen ? 'closingStart' : 'openingStart',
-            height: wasOpen && heightNode ? heightNode.scrollHeight : 0,
-          });
-          break;
-        case 'closingStart':
-          this.setState({
-            animationState: 'closing',
-            height: 0,
-          });
-          break;
-        case 'openingStart':
-          this.setState({
-            animationState: 'opening',
-            height: heightNode ? heightNode.scrollHeight : 0,
-          });
-      }
-    });
-  }
+  useEffect(() => {
+    if (!open || !collapisbleContainer.current) return;
+    // If collapsible defaults to open, set an initial height
+    setHeight(collapisbleContainer.current.scrollHeight);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  render() {
-    const {id, expandOnPrint, open, children, transition} = this.props;
-    const {animationState, height} = this.state;
-    const parentCollapsibleExpanding = this.context;
+  useEffect(() => {
+    if (!collapisbleContainer.current) return;
 
-    const animating = animationState !== 'idle';
-
-    const wrapperClassName = classNames(
-      styles.Collapsible,
-      open && styles.open,
-      animating && styles.animating,
-      !animating && open && styles.fullyOpen,
-      expandOnPrint && styles.expandOnPrint,
-    );
-
-    const displayHeight = collapsibleHeight(open, animationState, height);
-
-    const content = animating || open || expandOnPrint ? children : null;
-
-    const transitionProperties = transition
-      ? {
-          transitionDuration: `${transition.duration}`,
-          transitionTimingFunction: `${transition.timingFunction}`,
-        }
-      : null;
-
-    return (
-      <ParentCollapsibleExpandingContext.Provider
-        value={
-          parentCollapsibleExpanding || (open && animationState !== 'idle')
-        }
-      >
-        <div
-          id={id}
-          aria-hidden={!open}
-          style={{
-            maxHeight: `${displayHeight}`,
-            ...transitionProperties,
-          }}
-          className={wrapperClassName}
-          ref={this.node}
-          onTransitionEnd={this.handleTransitionEnd}
-        >
-          <div ref={this.heightNode}>{content}</div>
-        </div>
-      </ParentCollapsibleExpandingContext.Provider>
-    );
-  }
-
-  private handleTransitionEnd = (event: TransitionEvent) => {
-    const {target} = event;
-    if (target === this.node.current) {
-      this.setState({animationState: 'idle', height: null});
+    switch (animationState) {
+      case 'idle':
+        break;
+      case 'measuring':
+        setHeight(collapisbleContainer.current.scrollHeight);
+        setAnimationState('animating');
+        break;
+      case 'animating':
+        setHeight(open ? collapisbleContainer.current.scrollHeight : 0);
     }
-  };
+  }, [animationState, open, isOpen]);
+
+  return (
+    <div
+      id={id}
+      style={collapsibleStyles}
+      ref={collapisbleContainer}
+      className={wrapperClassName}
+      onTransitionEnd={handleCompleteAnimation}
+      aria-expanded={open}
+    >
+      {children}
+    </div>
+  );
 }
-
-function collapsibleHeight(
-  open: boolean,
-  animationState: AnimationState,
-  height?: number | null,
-) {
-  if (animationState === 'idle' && open) {
-    return open ? 'none' : undefined;
-  }
-
-  if (animationState === 'measuring') {
-    return open ? undefined : 'none';
-  }
-
-  return `${height || 0}px`;
-}
-
-export const Collapsible = CollapsibleInner as ComponentClass<
-  CollapsibleProps
-> &
-  typeof CollapsibleInner;

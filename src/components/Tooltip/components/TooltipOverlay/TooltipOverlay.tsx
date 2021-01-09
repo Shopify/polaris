@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {layer} from '../../../shared';
@@ -6,6 +6,7 @@ import {
   PositionedOverlayProps,
   PositionedOverlay,
 } from '../../../PositionedOverlay';
+import {useI18n} from '../../../../utilities/i18n';
 import styles from '../../Tooltip.scss';
 
 export interface TooltipOverlayProps {
@@ -16,43 +17,37 @@ export interface TooltipOverlayProps {
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   children?: React.ReactNode;
   activator: HTMLElement;
+  accessibilityLabel?: string;
   onClose(): void;
 }
 
-export class TooltipOverlay extends PureComponent<TooltipOverlayProps, never> {
-  render() {
-    const markup = this.props.active ? this.renderOverlay() : null;
+export function TooltipOverlay({
+  active,
+  activator,
+  preferredPosition = 'below',
+  preventInteraction,
+  id,
+  children,
+  light,
+  accessibilityLabel,
+}: TooltipOverlayProps) {
+  const i18n = useI18n();
+  const markup = active ? (
+    <PositionedOverlay
+      active={active}
+      activator={activator}
+      preferredPosition={preferredPosition}
+      preventInteraction={preventInteraction}
+      render={renderTooltip}
+    />
+  ) : null;
 
-    return markup;
-  }
+  return markup;
 
-  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
-  private renderOverlay = () => {
-    const {
-      active,
-      activator,
-      preferredPosition = 'below',
-      preventInteraction,
-    } = this.props;
-
-    return (
-      <PositionedOverlay
-        active={active}
-        activator={activator}
-        preferredPosition={preferredPosition}
-        preventInteraction={preventInteraction}
-        render={this.renderTooltip}
-      />
-    );
-  };
-
-  // eslint-disable-next-line @shopify/react-no-multiple-render-methods
-  private renderTooltip: PositionedOverlayProps['render'] = (
-    overlayDetails,
-  ) => {
+  function renderTooltip(
+    overlayDetails: Parameters<PositionedOverlayProps['render']>[0],
+  ) {
     const {measuring, desiredHeight, positioning} = overlayDetails;
-
-    const {id, children, light} = this.props;
 
     const containerClassName = classNames(
       styles.Tooltip,
@@ -71,11 +66,18 @@ export class TooltipOverlay extends PureComponent<TooltipOverlayProps, never> {
             role="tooltip"
             className={styles.Content}
             style={contentStyles}
+            aria-label={
+              accessibilityLabel
+                ? i18n.translate('Polaris.TooltipOverlay.accessibilityLabel', {
+                    label: accessibilityLabel,
+                  })
+                : undefined
+            }
           >
             {children}
           </div>
         </div>
       </div>
     );
-  };
+  }
 }
