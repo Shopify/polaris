@@ -185,26 +185,6 @@ describe('<DatePicker />', () => {
 
     expect(datePicker).toContainReactComponent(Day, {isLastSelectedDay: true});
   });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const datePicker = mountWithApp(<DatePicker month={1} year={2020} />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(datePicker).toContainReactComponent('div', {
-        className: 'DatePicker newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const datePicker = mountWithApp(<DatePicker month={1} year={2020} />, {
-        features: {newDesignLanguage: false},
-      });
-      expect(datePicker).not.toContainReactComponent('div', {
-        className: 'DatePicker newDesignLanguage',
-      });
-    });
-  });
 });
 
 function noop() {}

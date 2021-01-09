@@ -13,7 +13,6 @@ import {
 } from '../../utilities/dates';
 import type {Range} from '../../utilities/dates';
 import {useI18n} from '../../utilities/i18n';
-import {useFeatures} from '../../utilities/features';
 
 import {monthName} from './utilities';
 import {Month} from './components';
@@ -63,7 +62,6 @@ export function DatePicker({
   onChange = noop,
 }: DatePickerProps) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
   const [hoverDate, setHoverDate] = useState<Date | undefined>(undefined);
   const [focusDate, setFocusDate] = useState<Date | undefined>(undefined);
 
@@ -208,10 +206,7 @@ export function DatePicker({
     />
   ) : null;
 
-  const datePickerClassName = classNames(
-    styles.DatePicker,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
+  const datePickerClassName = classNames(styles.DatePicker);
 
   return (
     <div
