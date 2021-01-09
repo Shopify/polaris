@@ -6,12 +6,16 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Update `OptionList` selected styles ([#3633](https://github.com/Shopify/polaris-react/pull/3633))
+- Updated `OptionList` selected styles ([#3633](https://github.com/Shopify/polaris-react/pull/3633))
 - Added the ability to hide the clear filter button on the filter component ([#3049](https://github.com/Shopify/polaris-react/pull/3049))
-- **`OptionList`:** Export `OptionListOptionDescriptor` and `OptionListSectionDescriptor` ([#3741](https://github.com/Shopify/polaris-react/pull/3741))
 - **`Popover`:** New `autofocusTarget` prop to enhance autofocus options ([#3600](https://github.com/Shopify/polaris-react/pull/3600))
+- Added `accessibilityLabels` prop to `Pagination` ([#3667] (https://github.com/Shopify/polaris-react/pull/3667))
 - Added ability to hide query text field in `Filters` component using `hideQueryField` prop ([#3674](https://github.com/Shopify/polaris-react/pull/3674))
 - Added `tabIndex` to `Scrollable` for keyboard focus ([#3744](https://github.com/Shopify/polaris-react/pull/3744))
+- Added accessibility label prop to `UserMenu` and `Menu` subcomponents in `TopBar` ([#3659](https://github.com/Shopify/polaris-react/pull/3659))
+- Add `aria-label` to the `Loading` bar in `Frame` ([#3770](https://github.com/Shopify/polaris-react/pull/3770))
+- **`Button`:** New `ariaDescribedBy` prop for `<button />` ([#3664](https://github.com/Shopify/polaris-react/pull/3686))
+- Updated `Collapsible` to be a functional component ([#3779](https://github.com/Shopify/polaris-react/pull/3779))
 
 ### Bug fixes
 
@@ -39,13 +43,15 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Replaced `React.Fragment` with `li` in `ResourceList` spinner for valid markup ([#3732](https://github.com/Shopify/polaris-react/pull/3732))
 - Fixed clear button in `TextField` unintentionally closing `Popover` when clicked ([#3688](https://github.com/Shopify/polaris-react/pull/3688))
 - Added focus styles to the clear button in `TextField` ([#3688](https://github.com/Shopify/polaris-react/pull/3688))
-- Increase contrast of navigation text color ([#3742](https://github.com/Shopify/polaris-react/pull/3742))
+- Increased contrast of navigation text color ([#3742](https://github.com/Shopify/polaris-react/pull/3742))
+- Removed `-ms-high-contrast` media query from `ms-high-contrast-outline` as it is non-standard and updated the outline color from `windowText` to `transparent` ([#3775](https://github.com/Shopify/polaris-react/pull/3775)).
+- Fixed `Collapsible` expand and collapse animation ([#3779](https://github.com/Shopify/polaris-react/pull/3779))
 
 ### Documentation
 
 ### Development workflow
 
-- Replace travis with GitHub actions ([#3739](https://github.com/Shopify/polaris-react/pull/3739))
+- Replaced Travis with GitHub actions ([#3739](https://github.com/Shopify/polaris-react/pull/3739))
 
 ### Dependency upgrades
 

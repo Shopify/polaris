@@ -147,7 +147,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     const disclosureButtonContent = hasCustomDisclosure ? (
       <>
         {disclosureText}
-        <Icon source={CaretDownMinor} color="inkLighter" />
+        <Icon source={CaretDownMinor} color="base" />
       </>
     ) : (
       <Icon source={HorizontalDotsMinor} />

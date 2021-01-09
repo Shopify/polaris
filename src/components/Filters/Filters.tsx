@@ -208,7 +208,7 @@ class FiltersInner extends Component<CombinedProps, State> {
                 </TextStyle>
               </h3>
               <span className={styles.FilterTriggerIcon}>
-                <Icon source={icon} color="inkLightest" />
+                <Icon source={icon} color="base" />
               </span>
             </div>
             {appliedFilterBadgeMarkup}
