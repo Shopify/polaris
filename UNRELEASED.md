@@ -6,6 +6,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Breaking changes
 
+- Required `title` property accessibility label, added `hideTitle` property to `Modal` ([#3803](https://github.com/Shopify/polaris-react/pull/3803)) ([#3803](https://github.com/Shopify/polaris-react/pull/3803))
+
 ### Enhancements
 
 - Updated `OptionList` selected styles ([#3633](https://github.com/Shopify/polaris-react/pull/3633))
