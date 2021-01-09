@@ -113,17 +113,6 @@ describe('<Link />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled, and sets a default color', () => {
-      const link = mountWithApp(<Link url="MyThing" />, {
-        features: {newDesignLanguage: true},
-      });
-      expect(link).toContainReactComponent('a', {
-        className: 'Link newDesignLanguage',
-      });
-    });
-  });
-
   describe('accessibilityLabel', () => {
     it('passes prop to the button url is not provided', () => {
       const mockAccessibilityLabel = 'mock accessibility label';
