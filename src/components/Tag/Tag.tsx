@@ -39,13 +39,11 @@ export function Tag({children, disabled = false, onClick, onRemove}: TagProps) {
     children: children || '',
   });
 
-  const buttonClassName = classNames(styles.Button);
-
   const removeButton = onRemove ? (
     <button
       type="button"
       aria-label={ariaLabel}
-      className={buttonClassName}
+      className={styles.Button}
       onClick={onRemove}
       onMouseUp={handleMouseUpByBlurring}
       disabled={disabled}
