@@ -1,5 +1,4 @@
 const {resolve} = require('path');
-const {execSync} = require('child_process');
 
 const {readFileSync} = require('fs-extra');
 const {Logger, Build, ShrinkRayAPI, Check} = require('@shopify/shrink-ray');
@@ -55,11 +54,6 @@ async function startShrinkRayBuild({
 
     logger.header('Initializing check(s) on GitHub');
     await shrinkRay.create({...build, buildUrl, skip});
-
-    logger.header('Running storybook build...');
-    execSync('yarn run storybook:build --quiet', {
-      stdio: 'inherit',
-    });
 
     logger.header(`Uploading build report to Shrink-Ray`);
     await shrinkRay.report(build, bundleAnalyzerReport(reportPath));

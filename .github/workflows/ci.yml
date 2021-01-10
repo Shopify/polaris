@@ -6,19 +6,18 @@ on:
       - '**'
   push:
     branches:
-      - 'master'
-      - 'version-6.0.0'
+      - master
+      - version-6.0.0
 
 jobs:
-  test:
-    name: 'Test'
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
       - uses: actions/setup-node@v2
         with:
-          node-version: '10.15.0'
+          node-version: 10.15.0
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -33,62 +32,61 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn --frozen-lockfile
-      - run: yarn run type-check && yarn run build
+      - run: yarn run build | yarn run storybook:build --quiet
+
+      - run: tar -czf bundle.tar.gz node_modules dist build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build-and-dependencies
+          path: bundle.tar.gz
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 10.15.0
+      - uses: actions/download-artifact@v2
+      - run: tar -xvzf bundle.tar.gz
+      - run: yarn run type-check
       - run: yarn run lint
       - run: yarn run check:custom-properties
-      - run: yarn run test --coverage && yarn run codecov
+      - run: yarn run test --coverage
+      - run: yarn run codecov
 
   accessibility_test:
-    name: 'Accessibility test'
+    name: Accessibility test
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - uses: actions/checkout@v2
-
       - uses: actions/setup-node@v2
         with:
-          node-version: '10.15.0'
+          node-version: 10.15.0
+      - uses: actions/download-artifact@v2
+      - run: tar -xvzf bundle.tar.gz
+      - name: Display structure of downloaded files
+        run: ls -R
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - uses: actions/cache@v2
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - run: yarn --frozen-lockfile
-      - run: yarn run storybook:build --quiet
       - run: node ./scripts/accessibility-check.js
         env:
           STORYBOOK_DISABLE_DOCS: 1
 
   shrink_ray:
-    name: 'Shrink ray'
+    name: Shrink ray
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - uses: actions/checkout@v2
-
       - uses: actions/setup-node@v2
         with:
           node-version: '10.15.0'
+      - uses: actions/download-artifact@v2
+      - run: tar -xvzf bundle.tar.gz
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - uses: actions/cache@v2
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - run: yarn --frozen-lockfile
       - run: node ./scripts/build-shrink-ray.js
         env:
           SHRINK_RAY_API_KEY: ${{ secrets.SHRINK_RAY_API_KEY }}
@@ -96,43 +94,40 @@ jobs:
           GH_BASE_SHA: ${{ github.event.pull_request.base.sha }}
 
   visual_regression_test:
-    name: 'Visual regression test'
+    name: Visual regression test
     runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 10.15.0
+      - uses: actions/download-artifact@v2
+      - run: tar -xvzf bundle.tar.gz
+
+      - uses: percy/storybook-action@v0.1.6
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+
+  deploy_chroma:
+    name: Deploy chroma
+    runs-on: ubuntu-latest
+    needs: build
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # Chromatic git history to track changes
-
       - uses: actions/setup-node@v2
         with:
-          node-version: '10.15.0'
-
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - uses: actions/cache@v2
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - run: yarn --frozen-lockfile
-      - run: yarn storybook:build
+          node-version: 10.15.0
+      - uses: actions/download-artifact@v2
+      - run: tar -xvzf bundle.tar.gz
 
       - uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_TOKEN }}
-          storybookBuildDir: 'build/storybook/static'
-          autoAcceptChanges: 'master'
+          storybookBuildDir: build/storybook/static
+          autoAcceptChanges: master
           exitZeroOnChanges: true
           exitOnceUploaded: true
-
-      - uses: percy/storybook-action@v0.1.6
-        with:
-          custom-command: 'yarn run percy-storybook --build_dir=build/storybook/static'
-        env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
