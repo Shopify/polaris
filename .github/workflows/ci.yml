@@ -106,7 +106,7 @@ jobs:
       - uses: actions/download-artifact@v2
       - run: tar -xvzf build-and-dependencies/bundle.tar.gz
 
-      - run: yarn run percy-storybook
+      - run: yarn run percy-storybook --build_dir=build/storybook/static
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
