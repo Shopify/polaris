@@ -59,6 +59,7 @@ $action-menu-rollup-computed-width: rem(40px);
 }
 
 .PaginationWrapper {
+  flex: 0 0 auto;
   display: flex;
   justify-content: flex-end;
   margin-left: spacing(extra-tight);
