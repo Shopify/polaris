@@ -50,7 +50,10 @@ jobs:
         with:
           node-version: 10.15.0
       - uses: actions/download-artifact@v2
-      - run: tar -xvzf bundle.tar.gz
+      - name: Display structure of downloaded files
+        run: ls -R
+      - run: tar -xvzf build-and-dependencies/bundle.tar.gz
+
       - run: yarn run type-check
       - run: yarn run lint
       - run: yarn run check:custom-properties
@@ -67,9 +70,7 @@ jobs:
         with:
           node-version: 10.15.0
       - uses: actions/download-artifact@v2
-      - run: tar -xvzf bundle.tar.gz
-      - name: Display structure of downloaded files
-        run: ls -R
+      - run: tar -xvzf build-and-dependencies/bundle.tar.gz
 
       - run: node ./scripts/accessibility-check.js
         env:
@@ -85,7 +86,7 @@ jobs:
         with:
           node-version: '10.15.0'
       - uses: actions/download-artifact@v2
-      - run: tar -xvzf bundle.tar.gz
+      - run: tar -xvzf build-and-dependencies/bundle.tar.gz
 
       - run: node ./scripts/build-shrink-ray.js
         env:
@@ -103,7 +104,7 @@ jobs:
         with:
           node-version: 10.15.0
       - uses: actions/download-artifact@v2
-      - run: tar -xvzf bundle.tar.gz
+      - run: tar -xvzf build-and-dependencies/bundle.tar.gz
 
       - uses: percy/storybook-action@v0.1.6
         env:
@@ -116,12 +117,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0 # Chromatic git history to track changes
+          # Chromatic git history to track changes
+          fetch-depth: 0
       - uses: actions/setup-node@v2
         with:
           node-version: 10.15.0
       - uses: actions/download-artifact@v2
-      - run: tar -xvzf bundle.tar.gz
+      - run: tar -xvzf build-and-dependencies/bundle.tar.gz
 
       - uses: chromaui/action@v1
         with:
