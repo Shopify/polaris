@@ -11,17 +11,11 @@ $stacking-order: (
 );
 
 @mixin checkers {
-  background-image: linear-gradient(
-      45deg,
-      var(--p-surface) 25%,
-      transparent 25%
-    ),
-    linear-gradient(-45deg, var(--p-surface) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--p-surface) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--p-surface) 75%);
-  background-size: spacing() spacing();
-  background-position: 0 0, 0 spacing(tight), spacing(tight) -1 * spacing(tight),
-    -1 * spacing(tight) 0;
+  background: repeating-conic-gradient(
+      var(--p-surface) 0% 25%,
+      var(--p-surface-neutral) 0% 50%
+    )
+    50% / #{spacing() spacing()};
 }
 
 .ColorPicker {
