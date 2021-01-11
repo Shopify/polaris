@@ -13,7 +13,7 @@ $stacking-order: (
 @mixin checkers {
   background: repeating-conic-gradient(
       var(--p-surface) 0% 25%,
-      var(--p-surface-neutral) 0% 50%
+      var(--p-surface-neutral-subdued) 0% 50%
     )
     50% / #{spacing() spacing()};
 }
