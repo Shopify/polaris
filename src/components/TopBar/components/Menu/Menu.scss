@@ -21,7 +21,7 @@ $activator-variables: (
 .Activator {
   @include unstyled-button;
   @include focus-ring;
-  color: var(--p-text, var(--top-bar-color));
+  color: var(--p-text);
   position: relative;
   display: flex;
   justify-content: center;
@@ -36,26 +36,17 @@ $activator-variables: (
 
   &:focus {
     @include focus-ring($style: 'focused');
-    background-color: var(
-      --top-bar-background-lighter,
-      var(--p-override-transparent, rgba(color('white'), 0.16))
-    );
+    background-color: var(--top-bar-background-lighter);
     outline: none;
   }
 
   &:hover {
-    background-color: var(
-      --top-bar-background-lighter,
-      var(--p-surface-hovered, rgba(color('white'), 0.08))
-    );
+    background-color: var(--top-bar-background-lighter);
   }
 
   &:active,
   &[aria-expanded='true'] {
-    background-color: var(
-      --top-bar-background-darker,
-      var(--p-surface-pressed, rgba(color('black'), 0.28))
-    );
+    background-color: var(--top-bar-background-darker);
     outline: none;
     transition: none;
 

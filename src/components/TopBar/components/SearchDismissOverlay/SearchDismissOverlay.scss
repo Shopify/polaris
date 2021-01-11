@@ -2,7 +2,6 @@
 @import '../../variables';
 
 $entry-iterations: 1;
-$backdrop-color: rgba(color('ink'), 0.4);
 
 .SearchDismissOverlay {
   position: fixed;
@@ -19,7 +18,7 @@ $backdrop-color: rgba(color('ink'), 0.4);
 }
 
 .visible {
-  background-color: var(--p-backdrop, $backdrop-color);
+  background-color: var(--p-backdrop);
   animation: fade-in duration() $entry-iterations forwards;
 
   &.newDesignLanguage {

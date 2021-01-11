@@ -251,26 +251,6 @@ describe('<TopBar />', () => {
       expect(findByTestID(topBar, 'ContextControl').exists()).toBe(false);
     });
   });
-
-  describe('newDesignLanguage', () => {
-    it('does not render a div with newDesignLanguage className when newDesignLanguage is undefined', () => {
-      const topBar = mountWithApp(<TopBar />);
-
-      expect(topBar).not.toContainReactComponent('div', {
-        className: 'TopBar TopBar-newDesignLanguage',
-      });
-    });
-
-    it('renders a div with newDesignLanguage className when newDesignLanguage is enabled', () => {
-      const topBar = mountWithApp(<TopBar />, {
-        features: {newDesignLanguage: true},
-      });
-
-      expect(topBar).toContainReactComponent('div', {
-        className: 'TopBar TopBar-newDesignLanguage',
-      });
-    });
-  });
 });
 
 function noop() {}
