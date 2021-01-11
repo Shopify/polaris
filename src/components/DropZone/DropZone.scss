@@ -2,27 +2,22 @@
 
 $dropzone-padding: rem(15px);
 $dropzone-border-style: dashed;
-$dropzone-border-color: var(--p-border, color('ink', 'lightest'));
-$dropzone-border-color-disabled: var(--p-border-disabled, color('sky'));
-$dropzone-border-radius: var(--p-border-radius-base, border-radius());
-$dropzone-background: var(--p-surface, color('white'));
+$dropzone-border-color: var(--p-border);
+$dropzone-border-color-disabled: var(--p-border-disabled);
+$dropzone-border-radius: var(--p-border-radius-base);
+$dropzone-background: var(--p-surface);
 $dropzone-min-height-extra-large: rem(205px);
 $dropzone-min-height-large: rem(160px);
 $dropzone-min-height-medium: rem(100px);
 $dropzone-min-height-small: rem(50px);
 
-$dropzone-overlay-text-color: var(--p-text, color('indigo'));
-$dropzone-overlay-text-color-error: var(--p-text-critical, color('red'));
-$dropzone-overlay-border-color: var(--p-border, color('indigo'));
-$dropzone-overlay-border-color-error: var(--p-border-critical, color('red'));
-$dropzone-overlay-background: var(
-  --p-surface-hovered,
-  color('indigo', 'lighter')
-);
-$dropzone-overlay-background-error: var(
-  --p-surface-critical-subdued,
-  color('red', 'lighter')
-);
+$dropzone-overlay-text-color: var(--p-text);
+$dropzone-overlay-text-color-error: var(--p-text-critical);
+$dropzone-overlay-border-color: var(--p-border);
+$dropzone-overlay-border-color-error: var(--p-border-critical);
+$dropzone-overlay-background: var(--p-surface-hovered);
+$dropzone-overlay-background-error: var(--p-surface-critical-subdued);
+
 $dropzone-stacking-order: (
   outline: 29,
   overlay: 30,
@@ -57,6 +52,17 @@ $dropzone-stacking-order: (
     border-radius: $dropzone-border-radius;
     pointer-events: none;
   }
+
+  &:not(.focused) {
+    // stylelint-disable-next-line selector-max-specificity
+    &::after {
+      @include reset-after;
+    }
+  }
+
+  &:hover {
+    @include ms-high-contrast-outline;
+  }
 }
 
 .hasOutline {
@@ -71,27 +77,14 @@ $dropzone-stacking-order: (
       cursor: pointer;
       background-color: $dropzone-overlay-background;
     }
-
-    // stylelint-disable-next-line selector-max-specificity
-    &:hover:not(.newDesignLanguage)::after {
-      border-color: $dropzone-overlay-border-color;
-    }
   }
-}
 
-.focused:not(.newDesignLanguage) {
-  &:not(.isDisabled) {
-    background-color: $dropzone-overlay-background;
-
+  // stylelint-disable-next-line selector-max-specificity
+  &:not(.focused) {
     // stylelint-disable-next-line selector-max-specificity
     &::after {
-      border: border-width(thick) $dropzone-border-style
-        $dropzone-overlay-border-color;
-
-      @media (-ms-high-contrast: active) {
-        border-style: solid;
-        border-color: ms-high-contrast-color('selected-text-background');
-      }
+      @include reset-after;
+      border-color: $dropzone-border-color;
     }
   }
 }
@@ -99,13 +92,6 @@ $dropzone-stacking-order: (
 .isDragging {
   &:not(.isDisabled) {
     background-color: $dropzone-overlay-background;
-
-    &:not(.newDesignLanguage) {
-      // stylelint-disable-next-line selector-max-specificity
-      &::after {
-        border-color: $dropzone-overlay-border-color;
-      }
-    }
   }
 }
 
@@ -142,6 +128,7 @@ $dropzone-stacking-order: (
 }
 
 .Container {
+  @include focus-ring($border-width: border-width(thick));
   flex: 1;
 }
 
@@ -158,7 +145,9 @@ $dropzone-stacking-order: (
   padding: $dropzone-padding;
   border: border-width(thick) $dropzone-border-style
     $dropzone-overlay-border-color;
-  border-radius: $dropzone-border-radius;
+  border-radius: calc(
+    var(--p-border-radius-base) + #{border-width(thick)} + #{rem(1px)}
+  );
   text-align: center;
   color: $dropzone-overlay-text-color;
   background-color: $dropzone-overlay-background;
@@ -174,48 +163,11 @@ $dropzone-stacking-order: (
   }
 }
 
-.newDesignLanguage {
-  &.DropZone {
-    &:not(.focused) {
-      // stylelint-disable-next-line selector-max-specificity
-      &::after {
-        @include reset-after;
-      }
-    }
-
-    &:hover {
-      @include ms-high-contrast-outline;
-    }
-  }
-
-  .Container {
-    @include focus-ring($border-width: border-width(thick));
-  }
-
-  &.Overlay {
-    // Same calculation used for focus-ring
-    border-radius: calc(
-      var(--p-border-radius-base) + #{border-width(thick)} + #{rem(1px)}
-    );
-  }
-
-  &.hasOutline {
-    // stylelint-disable-next-line selector-max-specificity
-    &:not(.focused) {
-      // stylelint-disable-next-line selector-max-specificity
-      &::after {
-        @include reset-after;
-        border-color: $dropzone-border-color;
-      }
-    }
-  }
-
-  &.focused {
-    &:not(.isDisabled) {
-      // stylelint-disable-next-line selector-max-specificity, selector-max-class
-      .Container {
-        @include focus-ring($style: 'focused');
-      }
+.focused {
+  &:not(.isDisabled) {
+    // stylelint-disable-next-line selector-max-specificity, selector-max-class
+    .Container {
+      @include focus-ring($style: 'focused');
     }
   }
 }
