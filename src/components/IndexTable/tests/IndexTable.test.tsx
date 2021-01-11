@@ -23,16 +23,31 @@ const mockTableItems = [
 
 const mockTableHeadings = [{title: 'Title'}];
 
-function Component({id, title}: {id: string; title: string}) {
+function Component({
+  id,
+  title,
+  condensed,
+}: {
+  id: string;
+  title: string;
+  condensed?: boolean;
+}) {
+  const Wrapper = condensed ? 'li' : 'tr';
+  const Child = condensed ? 'div' : 'td';
+
   return (
-    <tr key={id}>
-      <td>{title}</td>
-    </tr>
+    <Wrapper key={id}>
+      <Child>{title}</Child>
+    </Wrapper>
   );
 }
 
 const mockRenderRow = (item: any) => {
   return <Component {...item} key={item.id} />;
+};
+
+const mockRenderCondensedRow = (item: any) => {
+  return <Component {...item} key={item.id} condensed />;
 };
 
 describe('<IndexTable>', () => {
@@ -91,7 +106,7 @@ describe('<IndexTable>', () => {
       const index = mountWithApp(
         <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
           <IndexTable {...defaultIndexTableProps}>
-            {mockTableItems.map(mockRenderRow)}
+            {mockTableItems.map(mockRenderCondensedRow)}
           </IndexTable>
         </IndexProvider>,
       );
@@ -124,7 +139,7 @@ describe('<IndexTable>', () => {
       const index = mountWithApp(
         <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
           <IndexTable {...defaultIndexTableProps}>
-            {mockTableItems.map(mockRenderRow)}
+            {mockTableItems.map(mockRenderCondensedRow)}
           </IndexTable>
         </IndexProvider>,
       );
@@ -140,7 +155,7 @@ describe('<IndexTable>', () => {
       const index = mountWithApp(
         <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
           <IndexTable {...defaultIndexTableProps} sort={<div id={id} />}>
-            {mockTableItems.map(mockRenderRow)}
+            {mockTableItems.map(mockRenderCondensedRow)}
           </IndexTable>
         </IndexProvider>,
       );
@@ -152,7 +167,7 @@ describe('<IndexTable>', () => {
       const index = mountWithApp(
         <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
           <IndexTable {...defaultIndexTableProps}>
-            {mockTableItems.map(mockRenderRow)}
+            {mockTableItems.map(mockRenderCondensedRow)}
           </IndexTable>
         </IndexProvider>,
       );
@@ -164,7 +179,7 @@ describe('<IndexTable>', () => {
       const index = mountWithApp(
         <IndexProvider {...zeroSelectionIndexProviderProps} condensed>
           <IndexTable {...defaultIndexTableProps}>
-            {mockTableItems.map(mockRenderRow)}
+            {mockTableItems.map(mockRenderCondensedRow)}
           </IndexTable>
         </IndexProvider>,
       );
