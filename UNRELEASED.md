@@ -23,6 +23,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Updated `Collapsible` to be a functional component ([#3779](https://github.com/Shopify/polaris-react/pull/3779))
 - Coverted `TooltipOverlay` to a functional component ([#3631](https://github.com/Shopify/polaris-react/pull/3631))
 - New `ariaDescribedBy` prop for `Button` ([#3664](https://github.com/Shopify/polaris-react/pull/3686))
+- Changed the way sub navigation menus are rendered for improved accessibility ([#3661](https://github.com/Shopify/polaris-react/pull/3661))
 
 ### Bug fixes
 

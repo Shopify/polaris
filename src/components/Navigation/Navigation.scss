@@ -265,9 +265,12 @@ $disabled-fade: 0.6;
 $secondary-item-font-size: rem(15px);
 .SecondaryNavigation {
   flex-basis: 100%;
-  margin-bottom: spacing(tight);
   margin-left: nav(icon-size) + spacing(loose);
   overflow-x: var(--p-override-visible, hidden);
+
+  &.isExpanded {
+    margin-bottom: spacing(tight);
+  }
 
   .Navigation-newDesignLanguage & {
     margin-left: 0;
