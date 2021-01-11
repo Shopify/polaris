@@ -54,6 +54,10 @@ $nav-max-width: rem(360px);
   align-items: stretch;
   max-width: 100%;
 
+  &:focus {
+    outline: none;
+  }
+
   @include breakpoint-after(nav-min-window-corrected()) {
     .Navigation-newDesignLanguage & {
       padding-top: rem(12px);
