@@ -26,6 +26,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed `Tags` invalid css to work with ms-high-contrast media active ([#3810](https://github.com/Shopify/polaris-react/pull/3810))
 - `plain` variant `children` no longer remain visible while `loading` for `Button` ([#3709](https://github.com/Shopify/polaris-react/pull/3709))
 - No longer spin `disclosure` 180deg when toggling between `up` and `down` on `Button` ([#3709](https://github.com/Shopify/polaris-react/pull/3709))
 - Prevent layout shift when toggling “filled” variants on `Button` ([#3709](https://github.com/Shopify/polaris-react/pull/3709))
