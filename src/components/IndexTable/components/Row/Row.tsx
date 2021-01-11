@@ -6,6 +6,7 @@ import {
   SelectionType,
   useIndexSelectionChange,
 } from '../../../IndexProvider';
+import {Checkbox} from '../Checkbox';
 import {classNames} from '../../../../utilities/css';
 import styles from '../../IndexTable.scss';
 
@@ -121,6 +122,7 @@ export const Row = memo(function Row({
           onClick={handleRowClick}
           ref={tableRowRef}
         >
+          <Checkbox />
           {children}
         </RowWrapper>
       </RowHoveredContext.Provider>

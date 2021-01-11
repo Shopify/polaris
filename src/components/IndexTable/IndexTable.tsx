@@ -26,7 +26,7 @@ import {
 } from '../IndexProvider';
 import {AfterInitialMount} from '../AfterInitialMount';
 
-import {ScrollContainer, Cell, Row, Checkbox} from './components';
+import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
 
 export interface IndexTableHeading {
@@ -616,4 +616,3 @@ export function IndexTable({
 
 IndexTable.Cell = Cell;
 IndexTable.Row = Row;
-IndexTable.Checkbox = Checkbox;

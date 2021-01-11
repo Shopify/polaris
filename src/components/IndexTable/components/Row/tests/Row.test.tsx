@@ -41,13 +41,9 @@ describe('<Row />', () => {
 
   it('renders a RowHoveredContext provider', () => {
     const row = mountWithTable(
-      <table>
-        <tbody>
-          <Row id="id" selected position={1}>
-            <td />
-          </Row>
-        </tbody>
-      </table>,
+      <Row id="id" selected position={1}>
+        <td />
+      </Row>,
     );
 
     expect(row).toContainReactComponent(RowHoveredContext.Provider);

@@ -1,11 +1,21 @@
-import React, {useContext, memo} from 'react';
+import React, {
+  useContext,
+  memo,
+  useEffect,
+  useRef,
+  useCallback,
+  Fragment,
+  ReactNode,
+} from 'react';
 
 import {useI18n} from '../../../../utilities/i18n';
 import {classNames} from '../../../../utilities/css';
 import {RowContext} from '../Row';
 import {useIndexValue} from '../../../IndexProvider';
 import {Checkbox as PolarisCheckbox} from '../../../Checkbox';
+import {setRootProperty} from '../../../../utilities/set-root-property';
 
+import sharedStyles from '../../IndexTable.scss';
 import styles from './Checkbox.scss';
 
 export const Checkbox = memo(function Checkbox() {
@@ -18,26 +28,69 @@ export const Checkbox = memo(function Checkbox() {
     condensed ? styles.condensed : styles.expanded,
   );
 
+  const Wrapper = condensed ? Fragment : CheckboxWrapper;
+
   return (
-    <div className={styles.TableCellContentContainer}>
-      <div
-        className={wrapperClassName}
-        onClick={onInteraction}
-        onKeyUp={onInteraction}
-        onChange={stopPropagation}
-      >
-        <PolarisCheckbox
-          id={itemId}
-          label={i18n.translate('Polaris.IndexTable.selectItem', {
-            resourceName: resourceName.singular,
-          })}
-          labelHidden
-          checked={selected}
-        />
+    <Wrapper>
+      <div className={styles.TableCellContentContainer}>
+        <div
+          className={wrapperClassName}
+          onClick={onInteraction}
+          onKeyUp={onInteraction}
+          onChange={stopPropagation}
+        >
+          <PolarisCheckbox
+            id={itemId}
+            label={i18n.translate('Polaris.IndexTable.selectItem', {
+              resourceName: resourceName.singular,
+            })}
+            labelHidden
+            checked={selected}
+          />
+        </div>
       </div>
-    </div>
+    </Wrapper>
   );
 });
+
+interface CheckboxWrapperProps {
+  children: ReactNode;
+}
+
+export function CheckboxWrapper({children}: CheckboxWrapperProps) {
+  const checkboxNode = useRef<HTMLTableDataCellElement>(null);
+
+  const handleResize = useCallback(() => {
+    if (!checkboxNode.current) return;
+
+    const {width} = checkboxNode.current.getBoundingClientRect();
+    setRootProperty('--p-checkbox-offset', `${width}px`, null);
+  }, []);
+
+  useEffect(() => {
+    handleResize();
+  }, [handleResize]);
+
+  useEffect(() => {
+    if (!checkboxNode.current) return;
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [handleResize]);
+
+  const checkboxClassName = classNames(
+    sharedStyles.TableCell,
+    sharedStyles['TableCell-first'],
+  );
+
+  return (
+    <td className={checkboxClassName} ref={checkboxNode}>
+      {children}
+    </td>
+  );
+}
 
 function stopPropagation(
   event: React.MouseEvent | React.KeyboardEvent | React.FormEvent,

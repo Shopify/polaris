@@ -1,17 +1,35 @@
 import React, {ReactElement} from 'react';
 import type {ThenType} from '@shopify/useful-types';
 import {mountWithApp} from 'test-utilities';
+import type {Element as ElementType} from '@shopify/react-testing';
 
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
 import {IndexProvider, IndexProviderProps} from '../../../../IndexProvider';
 import {IndexTable, IndexTableProps} from '../../../IndexTable';
 import {Row, RowProps} from '../../Row';
-import {Cell} from '../../Cell';
-import {Checkbox} from '../Checkbox';
+import {Checkbox, CheckboxWrapper} from '../Checkbox';
+import * as setRootPropertyModule from '../../../../../utilities/set-root-property';
 
 const defaultId = 'id';
 
-describe('<Cell />', () => {
+describe('<Checkbox />', () => {
+  let getBoundingClientRectSpy: jest.SpyInstance;
+  let setRootPropertySpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    getBoundingClientRectSpy = jest.spyOn(
+      Element.prototype,
+      'getBoundingClientRect',
+    );
+    setGetBoundingClientRect(0);
+    setRootPropertySpy = jest.spyOn(setRootPropertyModule, 'setRootProperty');
+  });
+
+  afterEach(() => {
+    getBoundingClientRectSpy.mockRestore();
+    setRootPropertySpy.mockRestore();
+  });
+
   it('renders a Checkbox with a id', () => {
     const id = 'id';
     const checkbox = mountWithTable(<Checkbox />, {rowProps: {id}});
@@ -79,6 +97,76 @@ describe('<Cell />', () => {
 
     expect(onSelectionChange).toHaveBeenCalledWith('single', false, defaultId);
   });
+
+  describe('CheckboxWrapper', () => {
+    describe('small screen', () => {
+      const defaultTableProps = {
+        providerProps: {condensed: true},
+      };
+
+      it('does not render', () => {
+        const checkbox = mountWithTable(<Checkbox />, defaultTableProps);
+
+        expect(checkbox).not.toContainReactComponent(CheckboxWrapper);
+      });
+    });
+
+    describe('large screen', () => {
+      const defaultTableProps = {
+        providerProps: {condensed: false},
+      };
+
+      it('renders', () => {
+        const checkbox = mountWithTable(<Checkbox />, defaultTableProps);
+
+        expect(checkbox).toContainReactComponent(CheckboxWrapper);
+      });
+
+      it('sets `--p-checkbox-offset` custom property', () => {
+        mountWithTable(<Checkbox />, defaultTableProps);
+
+        expect(setRootPropertySpy).toHaveBeenLastCalledWith(
+          '--p-checkbox-offset',
+          '0px',
+          null,
+        );
+      });
+
+      it('updates `--p-checkbox-offset` custom property on resize', () => {
+        mountWithTable(<Checkbox />, defaultTableProps);
+        setGetBoundingClientRect(200);
+        window.dispatchEvent(new Event('resize'));
+
+        expect(setRootPropertySpy).toHaveBeenLastCalledWith(
+          '--p-checkbox-offset',
+          '200px',
+          null,
+        );
+      });
+
+      it('renders table data', () => {
+        const checkbox = mountWithTable(<Checkbox />, defaultTableProps);
+
+        expect(checkbox.find(Checkbox)).toContainReactComponent('td');
+      });
+    });
+  });
+
+  function setGetBoundingClientRect(width: number) {
+    getBoundingClientRectSpy.mockImplementation(() => {
+      return {
+        width,
+        height: 0,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        x: 0,
+        y: 0,
+        toJSON() {},
+      };
+    });
+  }
 });
 
 function triggerCheckboxEvent(
@@ -86,14 +174,15 @@ function triggerCheckboxEvent(
   eventType: any,
   event: {[key: string]: any},
 ) {
-  checkbox
+  (checkbox
     // We're looking for the Checkbox without the table wrapper to avoid deep filtering
     .find(Checkbox)
-    ?.findAll('div')[1]
-    ?.trigger(eventType, {
-      stopPropagation: () => {},
-      ...event,
-    });
+    ?.findWhere((el: any) =>
+      el.prop('className')?.includes('Wrapper'),
+    ) as ElementType<any>)?.trigger(eventType, {
+    stopPropagation: () => {},
+    ...event,
+  });
 }
 
 const defaultProviderProps = {
@@ -121,7 +210,7 @@ function mountWithTable(
     <IndexProvider {...defaultProviderProps} {...providerProps}>
       <IndexTable {...defaultIndexProps} {...indexProps}>
         <Row {...defaultRowProps} {...rowProps}>
-          <Cell>{children}</Cell>
+          {children}
         </Row>
       </IndexTable>
     </IndexProvider>,

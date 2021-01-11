@@ -88,7 +88,7 @@ function SimpleIndexTableExample() {
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <IndexTable.Cell first>
+        <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
@@ -167,7 +167,6 @@ function SimpleSmallScreenIndexTableExample() {
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <IndexTable.Checkbox />
         <div style={{padding: '1.2rem 1.6rem'}}>
           <p>
             <TextStyle variation="strong">{name}</TextStyle>
@@ -243,7 +242,7 @@ function IndexTableWithCustomEmptyStateExample() {
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <IndexTable.Cell first>
+        <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
@@ -344,7 +343,7 @@ function IndexTableWithBulkActionsExample() {
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <IndexTable.Cell first>
+        <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
@@ -446,7 +445,7 @@ function IndexTableWithBulkActionsAndSelectionAcrossPagesExample() {
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <IndexTable.Cell first>
+        <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
@@ -528,7 +527,7 @@ function IndexTableWithLoadingExample() {
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <IndexTable.Cell first>
+        <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
@@ -655,7 +654,7 @@ function IndexTableWithFilteringExample() {
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <IndexTable.Cell first>
+        <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
@@ -840,7 +839,7 @@ function IndexTableWithAllElementsExample() {
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <IndexTable.Cell first>
+        <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
@@ -1028,7 +1027,6 @@ function SmallScreenIndexTableWithAllElementsExample() {
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <IndexTable.Checkbox />
         <div style={{padding: '1.2rem 1.6rem'}}>
           <p>
             <TextStyle variation="strong">{name}</TextStyle>
@@ -1226,14 +1224,11 @@ An `IndexTableRow` is used to render a row representing an item within an `Index
 
 An `IndexTableCell` is used to render a single cell within an `IndexTableRow`
 
-### IndexTableRow properties
+### IndexTableCell properties
 
-| Prop      | Type    | Description                                                                      |
-| --------- | ------- | -------------------------------------------------------------------------------- |
-| first     | boolean | A boolean property indicating whether it is the first cell in the row            |
-| last      | boolean | A boolean property indicating whether it is the last cell in the row             |
-| sub       | boolean | A boolean property indicating whether it is the first cell in a subrow           |
-| noPadding | boolean | A boolean property indicating whether the cell should remove the default padding |
+| Prop  | Type    | Description                                                                      |
+| ----- | ------- | -------------------------------------------------------------------------------- |
+| flush | boolean | A boolean property indicating whether the cell should remove the default padding |
 
 ---
 

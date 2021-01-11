@@ -82,8 +82,9 @@ $loading-panel-height: rem(53px);
 }
 
 .Table-scrolling {
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .TableCell-first,
-  .TableCell-second,
+  .TableCell-first + .TableCell,
   .TableHeading-first,
   .TableHeading-second {
     visibility: visible;
@@ -98,7 +99,8 @@ $loading-panel-height: rem(53px);
     }
   }
 
-  .TableCell-second,
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
+  .TableCell-first + .TableCell,
   .TableHeading-second {
     @include breakpoint-after($breakpoint-small) {
       box-shadow: rem(1px) rem(-1px) 0 0 var(--p-divider, color('sky'));
@@ -118,8 +120,9 @@ $loading-panel-height: rem(53px);
 .SubTableRow {
   background-color: var(--p-surface-subdued, color('sky', 'lighter'));
 
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .TableCell-first,
-  .TableCell-second {
+  .TableCell-first + .TableCell {
     background-color: var(--p-surface-subdued, color('sky', 'lighter'));
   }
 }
@@ -127,10 +130,11 @@ $loading-panel-height: rem(53px);
 .TableRow-selected {
   background-color: var(--p-surface-selected, color('indigo', 'lighter'));
 
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .TableHeading-first,
   .TableHeading-second,
   .TableCell-first,
-  .TableCell-second {
+  .TableCell-first + .TableCell {
     background-color: var(--p-surface-selected, color('indigo', 'lighter'));
   }
 }
@@ -183,7 +187,7 @@ $loading-panel-height: rem(53px);
   box-shadow: 0 rem(-1px) 0 0 var(--p-divider, color('sky'));
 }
 
-.TableCell-noPadding {
+.TableCell-flush {
   padding: 0;
 }
 
@@ -194,7 +198,8 @@ $loading-panel-height: rem(53px);
   padding: 0;
 }
 
-.TableCell-second {
+.TableCell-first + .TableCell {
+  left: var(--p-checkbox-offset);
   padding-left: 0;
 
   @include breakpoint-after($breakpoint-small) {
@@ -202,14 +207,6 @@ $loading-panel-height: rem(53px);
     z-index: z-index(sticky-cell, $index-table-stacking-order);
     padding: 0;
   }
-}
-
-.TableCell-last {
-  position: sticky;
-  right: 0;
-  z-index: z-index(sticky-cell, $index-table-stacking-order);
-  box-shadow: rem(-1px) rem(-1px) 0 0 var(--p-divider, color('sky'));
-  background-color: var(--p-surface, color('white'));
 }
 
 .StickyTable {
