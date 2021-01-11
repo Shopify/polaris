@@ -42,7 +42,6 @@ export interface IndexTableProps {
   children?: React.ReactNode;
   emptyState?: React.ReactNode;
   sort?: React.ReactNode;
-  onMoreActionPopoverToggle?(isOpen: boolean): void;
 }
 
 export interface TableHeadingRect {
@@ -58,7 +57,6 @@ export function IndexTable({
   promotedBulkActions = [],
   children,
   emptyState,
-  onMoreActionPopoverToggle,
   sort,
 }: IndexTableProps) {
   const {
@@ -335,7 +333,6 @@ export function IndexTable({
                 selected={bulkSelectState}
                 selectMode={selectMode || isSmallScreenSelectable}
                 onToggleAll={handleTogglePage}
-                onMoreActionPopoverToggle={onMoreActionPopoverToggle}
                 promotedActions={promotedBulkActions}
                 actions={bulkActions}
                 paginatedSelectAllText={paginatedSelectAllText}
