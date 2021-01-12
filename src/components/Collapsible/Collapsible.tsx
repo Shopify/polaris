@@ -40,6 +40,7 @@ export function Collapsible({
 
   const isFullyOpen = animationState === 'idle' && open && isOpen;
   const isFullyClosed = animationState === 'idle' && !open && !isOpen;
+  const content = expandOnPrint || !isFullyClosed ? children : null;
 
   const wrapperClassName = classNames(
     styles.Collapsible,
@@ -100,7 +101,7 @@ export function Collapsible({
       onTransitionEnd={handleCompleteAnimation}
       aria-expanded={open}
     >
-      {children}
+      {content}
     </div>
   );
 }
