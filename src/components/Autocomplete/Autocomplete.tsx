@@ -27,7 +27,7 @@ export interface AutocompleteProps {
   /** Indicates if more results will load dynamically */
   willLoadMoreResults?: boolean;
   /** Is rendered when there are no options */
-  emptyState?: React.ReactNode; // TODO handle
+  emptyState?: React.ReactNode;
   /** Callback when the selection of options is changed */
   onSelect(selected: string[]): void;
   /** Callback when the end of the list is reached */
@@ -113,12 +113,11 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
       onScrolledToBottom={onLoadMoreResults}
       preferredPosition={preferredPosition}
     >
-      {options.length > 0 ? (
-        <ListBox onSelect={updateSelection}>
-          {optionsMarkup && !loading ? optionsMarkup : null}
-          {loadingMarkup}
-        </ListBox>
-      ) : null}
+      <ListBox onSelect={updateSelection}>
+        {optionsMarkup && !loading ? optionsMarkup : null}
+        {loadingMarkup}
+        {options.length < 1 && !loading && emptyState}
+      </ListBox>
     </ComboBox>
   );
 };
