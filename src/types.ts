@@ -373,3 +373,5 @@ export enum Key {
 export interface CheckboxHandles {
   focus(): void;
 }
+
+export type ArrayElement<T> = T extends (infer U)[] ? U : never;
