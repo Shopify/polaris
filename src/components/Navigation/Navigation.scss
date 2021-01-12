@@ -177,7 +177,7 @@ $disabled-fade: 0.6;
 }
 
 .SecondaryAction {
-  @include recolor-icon(var(--p-icon), var(--p-override-transparent));
+  @include recolor-icon(var(--p-icon));
   display: flex;
   align-items: center;
   height: nav(mobile-height);
@@ -388,10 +388,7 @@ $secondary-item-font-size: rem(15px);
     // stylelint-disable-next-line selector-max-specificity
     &:active,
     &:active:hover {
-      @include recolor-icon(
-        var(--p-icon-pressed),
-        var(--p-override-transparent)
-      );
+      @include recolor-icon(var(--p-icon-pressed));
       background: var(--p-background-pressed);
       @include no-focus-ring;
     }
