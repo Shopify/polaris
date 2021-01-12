@@ -6,7 +6,6 @@ import {mountWithApp} from 'test-utilities';
 import {Tab, Panel, TabMeasurer} from '../components';
 import {Tabs, TabsProps} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
-import {FeaturesContext} from '../../../utilities/features';
 import {Popover} from '../../Popover';
 
 jest.mock('../../Portal', () => ({
