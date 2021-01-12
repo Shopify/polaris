@@ -190,6 +190,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
                 activator={activator}
                 active={disclosureActivatorVisible && showDisclosure}
                 onClose={this.handleClose}
+                autofocusTarget="first-node"
               >
                 <List
                   focusIndex={hiddenTabs.indexOf(tabToFocus)}
