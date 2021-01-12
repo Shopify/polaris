@@ -54,6 +54,8 @@
       "previousMonth": "Show previous month, {previousMonthName} {showPreviousYear}",
       "nextMonth": "Show next month, {nextMonth} {nextYear}",
       "today": "Today ",
+      "start": "Start of range",
+      "end": "End of range",
       "months": {
         "january": "January",
         "february": "February",
@@ -233,6 +235,9 @@
     "TextField": {
       "characterCount": "{count} characters",
       "characterCountWithMaxLength": "{count} of {limit} characters used"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Tooltip: {label}"
     },
     "TopBar": {
       "toggleMenuLabel": "Toggle menu",

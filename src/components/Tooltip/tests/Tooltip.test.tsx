@@ -81,4 +81,21 @@ describe('<Tooltip />', () => {
       active: false,
     });
   });
+
+  it('passes accessibility label to TooltipOverlay', () => {
+    const accessibilityLabel = 'accessibility label';
+
+    const tooltip = mountWithApp(
+      <Tooltip
+        accessibilityLabel={accessibilityLabel}
+        content="Inner content"
+        active
+      >
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      accessibilityLabel,
+    });
+  });
 });
