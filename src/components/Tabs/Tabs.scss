@@ -333,10 +333,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .DisclosureActivator {
     &:hover .Title {
-<<<<<<< HEAD
-      // @include focus-ring-override;
-=======
->>>>>>> 9228d6ebfb71adc1adece221ae4fd56963820801
       background: none;
 
       &::before {
