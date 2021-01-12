@@ -8,6 +8,16 @@
   border-bottom: border('divider');
 }
 
+.withoutTitle {
+  position: absolute;
+  right: spacing(tight);
+  z-index: 1;
+
+  .Title {
+    display: none;
+  }
+}
+
 .Title {
   @include text-breakword;
   flex: 1;
