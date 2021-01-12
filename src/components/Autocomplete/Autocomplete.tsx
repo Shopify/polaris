@@ -3,13 +3,15 @@ import React, {useMemo} from 'react';
 import type {ActionListItemDescriptor} from '../../types';
 import type {PopoverProps} from '../Popover';
 
-import {ComboBox, ListBox} from './components';
+import {ComboBox, ListBox, MappedOption} from './components';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import type {ComboBoxProps as ComboBoxOldProps} from './components/ComboBoxOld';
 
 export interface AutocompleteProps {
   /** A unique identifier for the Autocomplete */
   id?: string; // TODO use on combobox and propagate to options
   /** Collection of options to be listed */
-  options: any; // TODO map to ListBoxOptionProps['options'] which will need to map to old ComboBoxProps['option']
+  options: ComboBoxOldProps['options'];
   /** The selected options */
   selected: string[];
   /** The text field component attached to the list of options */
@@ -61,21 +63,14 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
     const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
     const optionList =
       conditionalOptions.length > 0
-        ? conditionalOptions.map((option) => {
-            const {label, value} = option;
-            const isSelected = selected.includes(value);
-
-            return (
-              <ListBox.Option
-                accessibilityLabel={label}
-                key={`${value}`}
-                selected={isSelected}
-                value={value}
-              >
-                {label}
-              </ListBox.Option>
-            );
-          })
+        ? conditionalOptions.map((option) => (
+            <MappedOption
+              {...option}
+              key={option.id}
+              selected={selected.includes(option.value)}
+              singleSelection={!allowMultiple}
+            />
+          ))
         : null;
 
     if (listTitle) {
@@ -90,7 +85,14 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
     }
 
     return optionList;
-  }, [selected, listTitle, loading, options, willLoadMoreResults]);
+  }, [
+    selected,
+    listTitle,
+    loading,
+    options,
+    willLoadMoreResults,
+    allowMultiple,
+  ]);
 
   const loadingMarkup = loading ? <ListBox.Loading /> : null;
 
