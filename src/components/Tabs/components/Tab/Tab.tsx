@@ -1,7 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {useFeatures} from '../../../../utilities/features';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {
   focusFirstFocusableNode,
@@ -37,7 +36,6 @@ export function Tab({
   const wasSelected = useRef(selected);
   const panelFocused = useRef(false);
   const node = useRef<HTMLLIElement | null>(null);
-  const {newDesignLanguage} = useFeatures();
 
   // A tab can start selected when it is moved from the disclosure dropdown
   // into the main list, so we need to send focus from the tab to the panel
@@ -86,13 +84,9 @@ export function Tab({
   const tabContainerClassNames = classNames(
     styles.TabContainer,
     selected && styles.Underline,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
-  const tabTitleClassNames = classNames(
-    styles.Title,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
+  const tabTitleClassNames = classNames(styles.Title);
 
   const markup = url ? (
     <UnstyledLink

@@ -16,10 +16,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
 .Wrapper {
   border-bottom: border('divider');
-
-  &.newDesignLanguage {
-    padding: 0 spacing(tight);
-  }
+  padding: 0 spacing(tight);
 }
 
 .fitted {
@@ -27,10 +24,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .TabContainer {
     flex: 1 1 100%;
-  }
-
-  .Tab {
-    padding: 0;
   }
 
   .Title {
@@ -56,14 +49,14 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   @include unstyled-button;
   @include text-style-body;
   @include text-emphasis-subdued;
-  color: var(--p-text, color('ink', 'lighter'));
+  color: var(--p-text);
   position: relative;
   justify-content: center;
   width: 100%;
   min-width: 100%; // IE11 fix for overflowing flex items from parent container
   margin-top: 1px;
   margin-bottom: -1px;
-  padding: 0 spacing();
+  padding: spacing(tight) spacing(extra-tight);
   outline: none;
   text-align: center;
   white-space: nowrap;
@@ -76,8 +69,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     .Title {
       @include text-emphasis-normal;
       background-color: transparent;
-      border-bottom: var(--p-override-none, $underline-height) solid
-        color('sky');
       // stylelint-disable-next-line selector-max-specificity
       &::before {
         background-color: var(--p-border-hovered);
@@ -88,50 +79,70 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   &:active {
     .Title {
       background-color: transparent;
-    }
-  }
-
-  &:focus {
-    box-shadow: var(
-      --p-override-none,
-      inset 0 0 2px 0 $focus-state-box-shadow-color,
-      0 0 2px 0 $focus-state-box-shadow-color
-    );
-
-    .Title {
-      @include text-emphasis-normal;
-      border-bottom: var(--p-override-none, $underline-height) solid
-        color('indigo', 'light');
-    }
-
-    &:not(:active) {
-      // stylelint-disable-next-line  selector-max-specificity
-      .Title {
-        @include focus-ring($style: 'focused');
+      // stylelint-disable-next-line selector-max-specificity
+      &::before {
+        background: var(--p-surface-primary-selected-pressed);
       }
     }
   }
 
-  &.Tab-selected {
-    // stylelint-disable-next-line selector-max-class
+  &:focus {
     .Title {
-      border-bottom: var(--p-override-none, $underline-height) solid
-        color('indigo');
+      @include text-emphasis-normal;
+      // stylelint-disable-next-line selector-max-specificity
+      &::before {
+        background: var(--p-border-hovered);
+      }
+    }
+
+    &:not(:active) {
+      // stylelint-disable-next-line selector-max-specificity
+      .Title {
+        @include focus-ring($style: 'focused');
+      }
     }
   }
 }
 
 .Tab-selected {
   @include text-emphasis-normal;
+  &:focus .Title {
+    @include ms-high-contrast-outline($border-width: border-width(thicker));
+    // stylelint-disable-next-line  selector-max-specificity
+    &::before {
+      background: var(--p-action-primary);
+    }
+  }
+
+  .Title {
+    @include ms-high-contrast-outline($border-width: border-width(thicker));
+    color: var(--p-text);
+
+    &::before {
+      background: var(--p-action-primary);
+    }
+  }
 }
 
 .Title {
   @include focus-ring;
-  border-radius: var(--p-border-radius-base, 0);
+  border-radius: var(--p-border-radius-base);
   display: block;
-  padding: spacing() 0 (spacing() - border-width(thicker)) 0;
-  border-bottom: var(--p-override-none, $underline-height) solid transparent;
+  padding: spacing(tight) spacing();
   min-width: $item-min-width;
+
+  color: var(--p-text-subdued);
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -1 * spacing(tight);
+    left: 0;
+    right: 0;
+    height: $underline-height;
+    border-top-left-radius: var(--p-border-radius-base);
+    border-top-right-radius: var(--p-border-radius-base);
+  }
 }
 
 .titleWithIcon {
@@ -153,83 +164,25 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 .List {
   list-style: none;
   margin: 0;
-  padding: spacing(tight) 0;
-
-  &.newDesignLanguage {
-    padding: spacing(tight);
-  }
+  padding: spacing(tight);
 }
 
 .Item {
   @include unstyled-link;
   @include unstyled-button;
+  @include focus-ring;
   display: block;
   width: 100%;
   min-height: $item-min-height;
   padding: $item-vertical-padding spacing();
   text-align: left;
   cursor: pointer;
+  border-radius: var(--p-border-radius-base);
 
   &::-moz-focus-inner {
     border: none;
   }
-}
 
-.Item:not(.newDesignLanguage) {
-  &:active {
-    background-image: linear-gradient(
-      rgba(179, 188, 245, 0.1),
-      rgba(179, 188, 245, 0.1)
-    );
-    // stylelint-disable-next-line selector-max-specificity
-    &:hover {
-      background-image: linear-gradient(
-          rgba(179, 188, 245, 0.1),
-          rgba(179, 188, 245, 0.1)
-        ),
-        linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
-
-      // stylelint-disable-next-line selector-max-specificity
-      &:focus {
-        box-shadow: inset 0.2rem 0 0 color('indigo');
-        background-image: linear-gradient(
-            rgba(179, 188, 245, 0.1),
-            rgba(179, 188, 245, 0.1)
-          ),
-          linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3)),
-          linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
-      }
-    }
-  }
-
-  &:hover {
-    background-image: linear-gradient(
-      rgba(223, 227, 232, 0.3),
-      rgba(223, 227, 232, 0.3)
-    );
-
-    // stylelint-disable-next-line selector-max-specificity
-    &:focus {
-      box-shadow: inset 0.2rem 0 0 color('indigo');
-      background-image: linear-gradient(
-          rgba(223, 227, 232, 0.3),
-          rgba(223, 227, 232, 0.3)
-        ),
-        linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
-    }
-  }
-
-  &:focus {
-    box-shadow: inset 0.2rem 0 0 color('indigo');
-    background-image: linear-gradient(
-      rgba(223, 227, 232, 0.3),
-      rgba(223, 227, 232, 0.3)
-    );
-  }
-}
-
-.Item.newDesignLanguage {
-  border-radius: var(--p-border-radius-base);
   &:hover {
     background-color: var(--p-surface-hovered);
   }
@@ -237,8 +190,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   &:active {
     background-color: var(--p-surface-primary-selected-pressed);
   }
-
-  @include focus-ring;
 
   // stylelint-disable-next-line selector-max-specificity
   &:focus:not(:active) {
@@ -255,7 +206,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 }
 
 .DisclosureActivator {
-  @include recolor-icon(var(--p-icon-subdued, color('ink', 'lighter')));
+  @include recolor-icon(var(--p-icon-subdued));
   position: relative;
   display: block;
   justify-content: center;
@@ -270,26 +221,30 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   text-align: center;
 
   &:hover .Title {
-    @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
-    background-color: var(--p-surface-hovered, transparent);
-    border-bottom: var(--p-override-none, $underline-height) solid color('sky');
+    @include recolor-icon(var(--p-icon));
+    // stylelint-disable-next-line selector-max-specificity
+    &::before {
+      background: var(--p-border-hovered);
+    }
   }
 
   &:focus {
-    box-shadow: var(
-      --p-override-none,
-      inset 0 0 2px 0 $focus-state-box-shadow-color,
-      0 0 2px 0 $focus-state-box-shadow-color
-    );
-
     .Title {
-      border-bottom: var(--p-override-none, $underline-height) solid
-        color('indigo', 'light');
+      @include focus-ring($style: 'focused');
+      @include recolor-icon(var(--p-icon));
+      // stylelint-disable-next-line selector-max-specificity
+      &::before {
+        background: var(--p-border-hovered);
+      }
     }
   }
 
   &:active .Title {
-    background-color: var(--p-surface-pressed, transparent);
+    background-color: var(--p-surface-pressed);
+    // stylelint-disable-next-line selector-max-specificity
+    &::before {
+      background: var(--p-surface-primary-selected-pressed);
+    }
   }
 }
 
@@ -298,79 +253,3 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   visibility: hidden;
   height: 0;
 }
-
-// stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
-.newDesignLanguage {
-  .Title {
-    color: var(--p-text-subdued);
-    padding: spacing(tight) spacing();
-
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: -1 * spacing(tight);
-      left: 0;
-      right: 0;
-      height: $underline-height;
-      border-top-left-radius: var(--p-border-radius-base);
-      border-top-right-radius: var(--p-border-radius-base);
-    }
-  }
-
-  .Tab {
-    padding: spacing(tight) spacing(extra-tight);
-
-    &:focus .Title {
-      &::before {
-        background: var(--p-border-hovered);
-      }
-    }
-
-    &:active .Title::before {
-      background: var(--p-surface-primary-selected-pressed);
-    }
-  }
-
-  .DisclosureActivator {
-    &:hover .Title {
-      background: none;
-
-      &::before {
-        background: var(--p-border-hovered);
-      }
-    }
-
-    &:focus .Title {
-      @include focus-ring($style: 'focused');
-      @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
-
-      &::before {
-        background: var(--p-border-hovered);
-      }
-    }
-
-    &:active .Title::before {
-      background: var(--p-surface-primary-selected-pressed);
-    }
-  }
-
-  .Tab-selected {
-    &:focus .Title {
-      @include ms-high-contrast-outline($border-width: border-width(thicker));
-
-      &::before {
-        background: var(--p-action-primary);
-      }
-    }
-
-    .Title {
-      @include ms-high-contrast-outline($border-width: border-width(thicker));
-      color: var(--p-text);
-
-      &::before {
-        background: var(--p-action-primary);
-      }
-    }
-  }
-}
-// stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
