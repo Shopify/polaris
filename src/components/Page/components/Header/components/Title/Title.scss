@@ -2,9 +2,6 @@
 
 .Title {
   @include text-breakword;
-}
-
-.newDesignLanguageTitle {
   @include text-emphasis-strong;
   font-size: rem(24px);
   line-height: rem(28px);
@@ -32,6 +29,10 @@
 }
 
 .TitleWithMetadataWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
   .Title {
     display: inline;
     margin-right: spacing(tight);
@@ -42,17 +43,6 @@
     }
   }
 
-  .TitleMetadata {
-    margin-top: spacing(tight);
-    display: inline-block;
-  }
-}
-
-.newDesignLanguage.TitleWithMetadataWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  // stylelint-disable-next-line selector-max-class
   .TitleMetadata {
     margin-top: 0;
     vertical-align: bottom;
