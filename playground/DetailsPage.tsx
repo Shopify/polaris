@@ -239,6 +239,35 @@ export function DetailsPage() {
             },
             matches: navItemActive === 'orders',
             url: '#',
+            subNavigationItems: [
+              {
+                label: 'All orders',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('all-orders');
+                },
+                matches: navItemActive.includes('orders'),
+                url: '#',
+              },
+              {
+                url: '#',
+                label: 'Drafts',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('drafts');
+                },
+                matches: navItemActive === 'drafts',
+              },
+              {
+                url: '#',
+                label: 'Abandoned checkouts',
+                onClick: () => {
+                  toggleIsLoading();
+                  setNavItemActive('abandoned');
+                },
+                matches: navItemActive === 'abandoned',
+              },
+            ],
           },
           {
             label: 'Products',
@@ -261,21 +290,21 @@ export function DetailsPage() {
               },
               {
                 url: '#',
-                label: 'Drafts',
+                label: 'Inventory',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('drafts');
+                  setNavItemActive('inventory');
                 },
-                matches: navItemActive === 'drafts',
+                matches: navItemActive === 'inventory',
               },
               {
                 url: '#',
-                label: 'Abandoned checkouts',
+                label: 'Transfers',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('abandoned');
+                  setNavItemActive('transfers');
                 },
-                matches: navItemActive === 'abandoned',
+                matches: navItemActive === 'transfers',
               },
             ],
           },

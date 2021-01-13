@@ -31,6 +31,16 @@ describe('<Collapsible />', () => {
     expect(collapsible.contains('content')).toBe(true);
   });
 
+  it('does not render its children when closed', () => {
+    const collapsible = mountWithAppProvider(
+      <Collapsible id="test-collapsible" open={false}>
+        content
+      </Collapsible>,
+    );
+
+    expect(collapsible.contains('content')).toBe(false);
+  });
+
   it('renders its children when expandOnPrint is true and open is false', () => {
     const collapsible = mountWithAppProvider(
       <Collapsible id="test-collapsible" open={false} expandOnPrint>

@@ -50,7 +50,7 @@ $dropzone-stacking-order: (
   }
 
   &:hover {
-    @include ms-high-contrast-outline;
+    @include high-contrast-outline;
   }
 }
 
