@@ -240,10 +240,6 @@ $secondary-item-font-size: rem(15px);
     margin-bottom: spacing(tight);
   }
 
-  @include breakpoint-after(nav-min-window-corrected()) {
-    margin-left: nav(icon-size) + spacing();
-  }
-
   .List {
     @include unstyled-list;
   }
