@@ -32,7 +32,6 @@ $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
   }
 
   &.focused {
-    border-color: transparent;
     outline: 0;
     box-shadow: none;
 
