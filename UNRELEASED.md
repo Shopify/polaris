@@ -2,30 +2,11 @@
 
 Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to format new entries. 💜
 
-- Updated `Tabs` to prevent `aria-valid-attr-value` a11y error ([#3777](https://github.com/Shopify/polaris-react/pull/3777))
-
 ### Breaking changes
 
 - Made `title` property required in `Modal` for accessibility label, added `hideTitle` property ([#3803](https://github.com/Shopify/polaris-react/pull/3803)) ([#3803](https://github.com/Shopify/polaris-react/pull/3803))
 
 ### Enhancements
-
-- Updated `OptionList` selected styles ([#3633](https://github.com/Shopify/polaris-react/pull/3633))
-- Added the ability to hide the clear filter button on the filter component ([#3049](https://github.com/Shopify/polaris-react/pull/3049))
-- Right-align `disclosure` when using `textAlignLeft` for `Button` ([#3709](https://github.com/Shopify/polaris-react/pull/3709))
-- Remove all transitions from `Button` ([#3709](https://github.com/Shopify/polaris-react/pull/3709))
-- New `select` option for `disclosure` in `Button` ([#3709](https://github.com/Shopify/polaris-react/pull/3709))
-- Conveyed `DatePicker` more clearly to screen readers ([#3660](https://github.com/Shopify/polaris-react/pull/3660))
-- Added `accessibilityLabels` prop to `Pagination` ([#3667](https://github.com/Shopify/polaris-react/pull/3667))
-- New `autofocusTarget` prop to enhance autofocus options on `Popover` ([#3600](https://github.com/Shopify/polaris-react/pull/3600))
-- Added ability to hide query text field in `Filters` component using `hideQueryField` prop ([#3674](https://github.com/Shopify/polaris-react/pull/3674))
-- Added `tabIndex` to `Scrollable` for keyboard focus ([#3744](https://github.com/Shopify/polaris-react/pull/3744))
-- Added accessibility label prop to `UserMenu` and `Menu` subcomponents in `TopBar` ([#3659](https://github.com/Shopify/polaris-react/pull/3659))
-- Add `aria-label` to the `Loading` bar in `Frame` ([#3770](https://github.com/Shopify/polaris-react/pull/3770))
-- Updated `Collapsible` to be a functional component ([#3779](https://github.com/Shopify/polaris-react/pull/3779))
-- Coverted `TooltipOverlay` to a functional component ([#3631](https://github.com/Shopify/polaris-react/pull/3631))
-- New `ariaDescribedBy` prop for `Button` ([#3664](https://github.com/Shopify/polaris-react/pull/3686))
-- Changed the way sub navigation menus are rendered for improved accessibility ([#3661](https://github.com/Shopify/polaris-react/pull/3661))
 
 ### Bug fixes
 
@@ -69,16 +50,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
-- Replaced Travis with GitHub actions ([#3739](https://github.com/Shopify/polaris-react/pull/3739))
-
 ### Dependency upgrades
 
 ### Code quality
 
-- Removed skipped accessibility tests and fixes component accessibility issues ([#3721](https://github.com/Shopify/polaris-react/pull/3721))
-- Extracted `TagsWrapper` from `Filters` for testability ([#3688](https://github.com/Shopify/polaris-react/pull/3688))
-
 ### Deprecations
-
-- `stretchContent` has been replaced by `textAlign="left" + fullWidth` for `Button` ([#3709](https://github.com/Shopify/polaris-react/pull/3709))
-- Deprecated `Popover`'s prop `preventAutofocus`. Use `autofocusTarget` instead ([#3602](https://github.com/Shopify/polaris-react/issues/3602))
