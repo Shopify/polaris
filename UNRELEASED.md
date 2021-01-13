@@ -10,6 +10,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fix the `Button` focus state offset ([#3832](https://github.com/Shopify/polaris-react/pull/3832))
+
 ### Documentation
 
 ### Development workflow
