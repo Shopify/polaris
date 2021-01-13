@@ -85,6 +85,7 @@ export function Pagination({
       url={previousURL}
       onClick={onPrevious}
       disabled={!hasPrevious}
+      id="previousURL"
     />
   );
   const constructedPrevious =
@@ -104,6 +105,7 @@ export function Pagination({
       url={nextURL}
       onClick={onNext}
       disabled={!hasNext}
+      id="nextURL"
     />
   );
   const constructedNext =

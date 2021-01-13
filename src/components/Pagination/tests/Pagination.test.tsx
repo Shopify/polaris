@@ -6,10 +6,10 @@ import {Tooltip, TextField} from 'components';
 
 import {Key} from '../../../types';
 import {Pagination} from '../Pagination';
-import {UnstyledLink} from '../../UnstyledLink';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
 import en from '../../../../locales/en.json';
+import {TextStyle} from 'components/TextStyle';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -113,55 +113,31 @@ describe('<Pagination />', () => {
       },
     };
 
-    it('passes accessibilityLabels to UnstyledLinks', () => {
+    it('passes accessibilityLabels to Button', () => {
       const pagination = mountWithApp(
         <Pagination {...defaultProps} previousURL="prev" nextURL="next" />,
       );
 
-      expect(pagination).toContainReactComponent(UnstyledLink, {
-        'aria-label': defaultProps.accessibilityLabels.previous,
+      expect(pagination).toContainReactComponent(Button, {
+        accessibilityLabel: defaultProps.accessibilityLabels.previous,
       });
 
-      expect(pagination).toContainReactComponent(UnstyledLink, {
-        'aria-label': defaultProps.accessibilityLabels.next,
+      expect(pagination).toContainReactComponent(Button, {
+        accessibilityLabel: defaultProps.accessibilityLabels.next,
       });
     });
 
-    it('renders default accessibilityLabels on UnstyledLink', () => {
+    it('renders default accessibilityLabels on Button', () => {
       const pagination = mountWithApp(
         <Pagination previousURL="prev" nextURL="next" />,
       );
 
-      expect(pagination).toContainReactComponent(UnstyledLink, {
-        'aria-label': en.Polaris.Pagination.previous,
+      expect(pagination).toContainReactComponent(Button, {
+        accessibilityLabel: en.Polaris.Pagination.previous,
       });
 
-      expect(pagination).toContainReactComponent(UnstyledLink, {
-        'aria-label': en.Polaris.Pagination.next,
-      });
-    });
-
-    it('passes accessibilityLabels to buttons', () => {
-      const pagination = mountWithApp(<Pagination {...defaultProps} />);
-
-      expect(pagination).toContainReactComponent('button', {
-        'aria-label': defaultProps.accessibilityLabels.previous,
-      });
-
-      expect(pagination).toContainReactComponent('button', {
-        'aria-label': defaultProps.accessibilityLabels.next,
-      });
-    });
-
-    it('renders default accessibilityLabels on button', () => {
-      const pagination = mountWithApp(<Pagination />);
-
-      expect(pagination).toContainReactComponent('button', {
-        'aria-label': en.Polaris.Pagination.previous,
-      });
-
-      expect(pagination).toContainReactComponent('button', {
-        'aria-label': en.Polaris.Pagination.next,
+      expect(pagination).toContainReactComponent(Button, {
+        accessibilityLabel: en.Polaris.Pagination.next,
       });
     });
   });
@@ -174,9 +150,9 @@ describe('<Pagination />', () => {
 
     it('has subdued text without next and previous pages', () => {
       const pagination = mountWithAppProvider(<Pagination label="test" />);
-      expect(
-        pagination.find('.Label').children().prop('variation'),
-      ).toStrictEqual('subdued');
+      expect(pagination.find(TextStyle).prop('variation')).toStrictEqual(
+        'subdued',
+      );
     });
   });
 
@@ -252,7 +228,6 @@ describe('<Pagination />', () => {
           previousURL="https://www.google.com"
         />,
       );
-
       const anchor = pagination.find('a').getDOMNode() as HTMLAnchorElement;
       anchor.click = spy;
       listenerMap.keyup({keyCode: Key.KeyJ});
@@ -279,53 +254,25 @@ describe('<Pagination />', () => {
     });
   });
 
-  describe('newDesignLanguage', () => {
-    it('uses Button and ButtonGroup as subcomponents', () => {
-      const pagination = mountWithApp(
-        <Pagination nextURL="/next" previousURL="/prev" />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
+  it('uses Button and ButtonGroup as subcomponents', () => {
+    const pagination = mountWithApp(
+      <Pagination nextURL="/next" previousURL="/prev" />,
+    );
 
-      expect(pagination).toContainReactComponent(ButtonGroup, {
-        segmented: true,
-      });
-      expect(pagination).toContainReactComponent(Button, {url: '/prev'});
-      expect(pagination).toContainReactComponent(Button, {url: '/next'});
+    expect(pagination).toContainReactComponent(ButtonGroup, {
+      segmented: true,
     });
+    expect(pagination).toContainReactComponent(Button, {url: '/prev'});
+    expect(pagination).toContainReactComponent(Button, {url: '/next'});
+  });
 
-    it('the ButtonGroup is not segmented when there is a label', () => {
-      const pagination = mountWithApp(
-        <Pagination
-          nextURL="/next"
-          previousURL="/prev"
-          label="Hello, world!"
-        />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
+  it('the ButtonGroup is not segmented when there is a label', () => {
+    const pagination = mountWithApp(
+      <Pagination nextURL="/next" previousURL="/prev" label="Hello, world!" />,
+    );
 
-      expect(pagination).toContainReactComponent(ButtonGroup, {
-        segmented: false,
-      });
-    });
-
-    it('does not use Button and ButtonGroup as subcomponents when disabled', () => {
-      const pagination = mountWithApp(
-        <Pagination nextURL="/" previousURL="/" />,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-
-      expect(pagination).toContainReactComponent(UnstyledLink, {
-        className: 'Button NextButton',
-      });
-      expect(pagination).toContainReactComponent(UnstyledLink, {
-        className: 'Button PreviousButton',
-      });
+    expect(pagination).toContainReactComponent(ButtonGroup, {
+      segmented: false,
     });
   });
 });
