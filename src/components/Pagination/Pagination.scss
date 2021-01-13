@@ -62,11 +62,6 @@ $stacking-order: (
     &:focus {
       border: none;
       box-shadow: none;
-
-      // stylelint-disable-next-line selector-max-specificity
-      &::after:not(.newDesignLanguage) {
-        background: plain-button-background();
-      }
     }
 
     &:disabled {
@@ -74,22 +69,6 @@ $stacking-order: (
       background: transparent;
       border: none;
       box-shadow: none;
-    }
-
-    // stylelint-disable-next-line selector-max-specificity
-    &::after:not(.newDesignLanguage) {
-      content: '';
-      position: absolute;
-      top: 0.5 * $difference-between-touch-area-and-backdrop;
-      right: 0;
-      left: 0;
-      display: block;
-      height: control-slim-height();
-      border-radius: border-radius();
-      will-change: background;
-      transition-property: background;
-      transition-duration: duration();
-      transition-timing-function: easing();
     }
   }
 
@@ -104,22 +83,19 @@ $stacking-order: (
 }
 
 .Button {
-  @include recolor-icon(var(--p-icon, color('ink', 'lighter')));
+  @include recolor-icon(var(--p-icon));
   position: relative;
   z-index: z-index(item, $stacking-order);
   display: inline-block;
   min-width: $min-height;
   margin: 0;
   padding: $vertical-padding spacing(tight);
-  background: var(
-    --p-action-secondary,
-    linear-gradient(to bottom, color('white'), color('sky', 'lighter'))
-  );
+  background: var(--p-action-secondary);
   border: border(dark);
   border-radius: border-radius();
 
   line-height: 1;
-  color: var(--p-text, color('ink'));
+  color: var(--p-text);
   text-align: center;
   cursor: pointer;
   user-select: none;
@@ -127,45 +103,6 @@ $stacking-order: (
   transition-property: color, background, border, box-shadow;
   transition-duration: duration();
   transition-timing-function: easing();
-
-  // Delete - Below me during newDesignLanguage rollout
-  &:hover {
-    background: linear-gradient(
-      to bottom,
-      color('sky', 'lighter'),
-      color('sky', 'light')
-    );
-    border-color: color('sky', 'dark');
-  }
-
-  &:focus {
-    z-index: z-index(focused, $stacking-order);
-    border-color: color('indigo');
-    outline: 0;
-    box-shadow: 0 0 0 1px color('indigo');
-  }
-
-  &:active {
-    // Same color gradient is necessary for background transitions
-    background: linear-gradient(
-      to bottom,
-      color('sky', 'light'),
-      color('sky', 'light')
-    );
-    border-color: color('sky', 'dark');
-    box-shadow: 0 0 0 0 transparent,
-      inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
-      inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2);
-  }
-
-  &:disabled {
-    @include recolor-icon(color('ink', 'lightest'));
-    background: color('sky', 'light');
-    color: color('ink', 'lightest');
-    cursor: default;
-    box-shadow: none;
-  }
-  // Delete above me during newDesignLanguage rollout
 }
 
 .PreviousButton {
