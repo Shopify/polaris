@@ -50,7 +50,6 @@ $partial-button-filled-pressed-box-shadow: inset 0 0 0 0 transparent,
 
   &:focus,
   &:hover {
-    transition-duration: duration(fast);
     background: linear-gradient(to bottom, $color-light, $color-light);
     border-color: $color-dark;
     box-shadow: $partial-button-filled-pressed-box-shadow $color-dark;
@@ -99,11 +98,19 @@ $stacking-order: (
   align-items: center;
   min-width: 1px;
   min-height: 1px;
+
+  .Button:not(.plain) & {
+    width: 100%;
+  }
 }
 
 .textAlignLeft {
   justify-content: flex-start;
   text-align: left;
+
+  .Content {
+    justify-content: flex-start;
+  }
 }
 
 .textAlignCenter {
@@ -114,16 +121,17 @@ $stacking-order: (
 .textAlignRight {
   justify-content: flex-end;
   text-align: right;
+
+  .Content {
+    justify-content: flex-end;
+  }
 }
 
-.stretchContent:not(.loading) > .Content {
+.stretchContent > .Content {
   justify-content: space-between;
-  width: 100%;
 }
 
 .Icon {
-  transition: color duration() easing();
-
   // This compensates for the typical icon used in buttons being
   // inset within its bounding box.
   margin-left: -(spacing(extra-tight));
@@ -136,12 +144,17 @@ $stacking-order: (
     margin-left: spacing(extra-tight);
   }
 
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity
+  .fullWidth.textAlignLeft &:last-child:not(:only-child) {
+    margin-left: auto;
+  }
+
   + *:not(.Icon) {
     margin-left: spacing(extra-tight);
   }
 }
 
-.Hidden {
+.hidden {
   visibility: hidden;
 }
 
@@ -256,7 +269,6 @@ $stacking-order: (
 .loading,
 .newDesignLanguage.loading {
   position: relative;
-  transition: border-color duration() easing();
 
   // stylelint-disable-next-line selector-max-class
   &,
@@ -277,7 +289,6 @@ $stacking-order: (
   @include pressed-box-shadow;
 
   &:hover {
-    transition-duration: duration(fast);
     background: $pressed-hover-background;
     border-color: $pressed-border-color;
     @include pressed-box-shadow;
@@ -496,6 +507,10 @@ $stacking-order: (
     &.disabled {
       color: var(--p-text-disabled);
       background: none;
+
+      &.loading {
+        color: transparent;
+      }
     }
 
     &.iconOnly {
@@ -587,11 +602,6 @@ $stacking-order: (
   .Icon:last-child {
     margin-right: rem(-4px);
   }
-  // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
-  .Icon + .Icon:last-child {
-    margin-left: 0;
-  }
-  // stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
 
   .Icon:only-child {
     margin-right: 0;
@@ -654,7 +664,6 @@ $stacking-order: (
 
     &::before {
       content: '';
-      transition: opacity duration() easing();
       position: absolute;
       top: 0;
       right: 0;
@@ -722,16 +731,6 @@ $stacking-order: (
   }
 }
 // stylelint-enable selector-max-specificity
-
-.DisclosureIcon {
-  transition-property: transform;
-  transition-duration: duration(slow);
-  transition-timing-function: easing(out);
-}
-
-.DisclosureIconFacingUp {
-  transform: rotate(-180deg);
-}
 
 .ConnectedDisclosureWrapper {
   display: flex;

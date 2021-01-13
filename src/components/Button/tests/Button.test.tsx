@@ -1,5 +1,10 @@
 import React from 'react';
-import {PlusMinor, CaretDownMinor} from '@shopify/polaris-icons';
+import {
+  CaretDownMinor,
+  CaretUpMinor,
+  PlusMinor,
+  SelectMinor,
+} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
@@ -9,6 +14,14 @@ import {Button} from '../Button';
 import en from '../../../../locales/en.json';
 
 describe('<Button />', () => {
+  let warnSpy: jest.SpyInstance | null = null;
+
+  beforeEach(() => {
+    warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+  });
+
+  afterEach(() => warnSpy?.mockRestore());
+
   describe('children', () => {
     it('passes prop', () => {
       const mockChildren = 'mock children';
@@ -165,14 +178,8 @@ describe('<Button />', () => {
 
   describe('ariaPressed', () => {
     it('passes prop', () => {
-      const warningSpy = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {});
-
       const button = mountWithAppProvider(<Button ariaPressed />);
       expect(button.find(UnstyledButton).prop('ariaPressed')).toBeTruthy();
-
-      warningSpy.mockRestore();
     });
   });
 
@@ -398,20 +405,26 @@ describe('<Button />', () => {
   describe('disclosure', () => {
     it('assumes "down" if set to true', () => {
       const button = mountWithAppProvider(<Button disclosure />);
-      const disclosureIcon = button.find('.DisclosureIcon');
-      expect(disclosureIcon!.hasClass('DisclosureIconFacingUp')).toBe(false);
+      const disclosureIcon = button.find('.DisclosureIcon').find(Icon);
+      expect(disclosureIcon.props().source).toBe(CaretDownMinor);
     });
 
     it('is facing down if set to "down"', () => {
       const button = mountWithAppProvider(<Button disclosure="down" />);
-      const disclosureIcon = button.find('.DisclosureIcon');
-      expect(disclosureIcon!.hasClass('DisclosureIconFacingUp')).toBe(false);
+      const disclosureIcon = button.find('.DisclosureIcon').find(Icon);
+      expect(disclosureIcon.props().source).toBe(CaretDownMinor);
     });
 
     it('is facing up if set to "up"', () => {
       const button = mountWithAppProvider(<Button disclosure="up" />);
-      const disclosureIcon = button.find('.DisclosureIcon');
-      expect(disclosureIcon!.hasClass('DisclosureIconFacingUp')).toBe(true);
+      const disclosureIcon = button.find('.DisclosureIcon').find(Icon);
+      expect(disclosureIcon.props().source).toBe(CaretUpMinor);
+    });
+
+    it('is double-arrow if set to "select"', () => {
+      const button = mountWithAppProvider(<Button disclosure="select" />);
+      const disclosureIcon = button.find('.DisclosureIcon').find(Icon);
+      expect(disclosureIcon.props().source).toBe(SelectMinor);
     });
   });
 
@@ -431,6 +444,15 @@ describe('<Button />', () => {
       });
       expect(button).not.toContainReactComponent(UnstyledButton, {
         className: 'Button newDesignLanguage',
+      });
+    });
+  });
+
+  describe('stretchContent', () => {
+    it('sets variant class', () => {
+      const button = mountWithApp(<Button stretchContent />);
+      expect(button).toContainReactComponent(UnstyledButton, {
+        className: 'Button stretchContent',
       });
     });
   });
