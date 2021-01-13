@@ -97,7 +97,7 @@ export function Header({
   const paginationMarkup =
     pagination && !isNavigationCollapsed ? (
       <div className={styles.PaginationWrapper}>
-        <Pagination {...pagination} plain />
+        <Pagination {...pagination} />
       </div>
     ) : null;
 
