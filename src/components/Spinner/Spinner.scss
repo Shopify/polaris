@@ -14,15 +14,9 @@ $large-size: rem(44px);
   width: $size;
 }
 
-@mixin animationColor($color) {
-  svg {
-    animation: loading duration(slowest) linear infinite;
-    fill: $color;
-  }
-}
-
-.Spinner {
-  color: transparent;
+.Spinner svg {
+  animation: loading duration(slowest) linear infinite;
+  fill: var(--p-border-highlight);
 }
 
 .sizeSmall svg {
@@ -31,17 +25,4 @@ $large-size: rem(44px);
 
 .sizeLarge svg {
   @include spinnerSize($large-size);
-}
-
-.colorWhite {
-  @include animationColor(var(--p-border-highlight, color('white')));
-}
-
-.colorTeal,
-.colorHighlight {
-  @include animationColor(var(--p-border-highlight, color('teal')));
-}
-
-.colorInkLightest {
-  @include animationColor(var(--p-border-highlight, color('ink', 'lightest')));
 }

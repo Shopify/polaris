@@ -6,8 +6,8 @@ $content-max-width: rem(200px);
 .Tooltip {
   margin: $offset-from-activator spacing() spacing();
   opacity: 1;
-  box-shadow: var(--p-popover-shadow, shadow(deep));
-  border-radius: var(--p-border-radius-base, border-radius());
+  box-shadow: var(--p-popover-shadow);
+  border-radius: var(--p-border-radius-base);
   pointer-events: none;
   will-change: opacity, left, top;
   transition: opacity duration() easing(in) duration(fast);
@@ -27,17 +27,17 @@ $content-max-width: rem(200px);
 
 .light {
   .Wrapper {
-    background: var(--p-surface, color('white'));
-    color: var(--p-text, color('ink'));
+    background: var(--p-surface);
+    color: var(--p-text);
   }
 }
 
 .Wrapper {
   position: relative;
   display: flex;
-  background-color: var(--p-surface, color('ink'));
-  border-radius: var(--p-border-radius-base, border-radius());
-  color: var(--p-text, color('white'));
+  background-color: var(--p-surface);
+  border-radius: var(--p-border-radius-base);
+  color: var(--p-text);
 }
 
 .Content {

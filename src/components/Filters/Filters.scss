@@ -86,27 +86,16 @@ $list-filters-footer-height: rem(70px);
   width: 100%;
   margin: 0;
   padding: rem(14px) spacing(loose);
-  border: none;
-  background: none;
   color: var(--p-text);
   border-radius: var(--p-border-radius-base);
 
   &:hover {
     cursor: pointer;
-    background-image: linear-gradient(
-      rgba(223, 227, 232, 0.3),
-      rgba(223, 227, 232, 0.3)
-    );
     background-color: var(--p-surface-hovered);
   }
 
   &:focus {
     outline: none;
-    box-shadow: inset 0.2rem 0 0 var(--p-override-none);
-    background-image: linear-gradient(
-      rgba(223, 227, 232, 0.3),
-      rgba(223, 227, 232, 0.3)
-    );
   }
 }
 
