@@ -43,10 +43,7 @@ export interface PaginationDescriptor {
   label?: React.ReactNode;
 }
 
-export interface PaginationProps extends PaginationDescriptor {
-  /** A more subdued control for use in headers */
-  plain?: boolean;
-}
+export interface PaginationProps extends PaginationDescriptor {}
 
 export function Pagination({
   hasNext,
