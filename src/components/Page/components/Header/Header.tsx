@@ -17,7 +17,7 @@ import type {
   IconableAction,
 } from '../../../../types';
 import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
-import {Pagination, PaginationDescriptor} from '../../../Pagination';
+import {Pagination, PaginationProps} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 
 import {Title, TitleProps} from './components';
@@ -42,7 +42,7 @@ export interface HeaderProps extends TitleProps {
   /** Primary page-level action */
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
-  pagination?: PaginationDescriptor;
+  pagination?: PaginationProps;
   /** Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
   /** Collection of secondary page-level actions */
