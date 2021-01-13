@@ -534,6 +534,7 @@ export function DetailsPage() {
         ...actions,
         {
           content: 'View',
+          destructive: true,
           onAction: () => {
             // eslint-disable-next-line no-console
             console.log(previewValue);
