@@ -32,26 +32,20 @@ $list-filters-footer-height: rem(70px);
   height: calc(
     100% - #{$list-filters-footer-height} - #{$list-filters-header-height}
   );
-
-  &:focus {
-    outline: none;
-  }
+  padding: spacing(tight);
 }
 
 .FiltersMobileContainerContent {
   width: 100%;
   height: calc(100% - #{$list-filters-header-height});
-
-  &:focus {
-    outline: none;
-  }
+  padding: spacing(tight);
 }
 
 .FiltersContainerFooter {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: rem(14px) spacing(base);
+  padding: rem(14px) spacing(loose);
   border-top: border('divider');
   height: $list-filters-footer-height;
   box-sizing: border-box;
@@ -88,14 +82,23 @@ $list-filters-footer-height: rem(70px);
   padding: rem(14px) spacing(loose);
   color: var(--p-text);
   border-radius: var(--p-border-radius-base);
+  background: none;
+  border: none;
+  outline: none;
+  @include focus-ring;
+
+  &:focus {
+    box-shadow: none;
+  }
 
   &:hover {
     cursor: pointer;
     background-color: var(--p-surface-hovered);
+    @include high-contrast-outline;
   }
 
-  &:focus {
-    outline: none;
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
   }
 }
 
