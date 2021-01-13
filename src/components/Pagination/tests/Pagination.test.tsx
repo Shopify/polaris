@@ -3,13 +3,13 @@ import React from 'react';
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 import {Tooltip, TextField} from 'components';
+import {TextStyle} from 'components/TextStyle';
 
 import {Key} from '../../../types';
 import {Pagination} from '../Pagination';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
 import en from '../../../../locales/en.json';
-import {TextStyle} from 'components/TextStyle';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;

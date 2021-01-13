@@ -1,5 +1,6 @@
 import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
 import React, {createRef} from 'react';
+
 import type {Key} from '../../types';
 import {useI18n} from '../../utilities/i18n';
 import {isInputFocused} from '../../utilities/is-input-focused';
@@ -14,7 +15,7 @@ interface AccessibilityLabels {
   next: string;
 }
 
-export interface PaginationDescriptor {
+export interface PaginationProps {
   /** Keyboard shortcuts for the next button */
   nextKeys?: Key[];
   /** Keyboard shortcuts for the previous button */
@@ -42,8 +43,6 @@ export interface PaginationDescriptor {
   /** Text to provide more context in between the arrow buttons */
   label?: React.ReactNode;
 }
-
-export interface PaginationProps extends PaginationDescriptor {}
 
 export function Pagination({
   hasNext,
