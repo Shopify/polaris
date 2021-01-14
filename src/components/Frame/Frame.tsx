@@ -5,7 +5,6 @@ import {CSSTransition} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
-import {useFeatures} from '../../utilities/features';
 import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {EventListener} from '../EventListener';
@@ -50,7 +49,6 @@ export interface FrameProps {
 type CombinedProps = FrameProps & {
   i18n: ReturnType<typeof useI18n>;
   mediaQuery: ReturnType<typeof useMediaQuery>;
-  features: ReturnType<typeof useFeatures>;
 };
 
 interface State {
@@ -116,12 +114,10 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       skipToContentTarget,
       i18n,
       mediaQuery: {isNavigationCollapsed},
-      features: {newDesignLanguage},
     } = this.props;
     const navClassName = classNames(
       styles.Navigation,
       showMobileNavigation && styles['Navigation-visible'],
-      newDesignLanguage && styles['Navigation-newDesignLanguage'],
     );
 
     const mobileNavHidden = isNavigationCollapsed && !showMobileNavigation;
@@ -184,14 +180,9 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       </CSSAnimation>
     );
 
-    const topBarClassName = classNames(
-      styles.TopBar,
-      newDesignLanguage && styles['TopBar-newDesignLanguage'],
-    );
-
     const topBarMarkup = topBar ? (
       <div
-        className={topBarClassName}
+        className={styles.TopBar}
         {...layer.props}
         {...dataPolarisTopBar.props}
         id={APP_FRAME_TOP_BAR}
@@ -200,14 +191,9 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
-    const globalRibbonClassName = classNames(
-      styles.GlobalRibbonContainer,
-      newDesignLanguage && styles['GlobalRibbonContainer-newDesignLanguage'],
-    );
-
     const globalRibbonMarkup = globalRibbon ? (
       <div
-        className={globalRibbonClassName}
+        className={styles.GlobalRibbonContainer}
         ref={this.setGlobalRibbonContainer}
       >
         {globalRibbon}
@@ -246,11 +232,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       styles.Frame,
       navigation && styles.hasNav,
       topBar && styles.hasTopBar,
-    );
-
-    const mainClassName = classNames(
-      styles.Main,
-      newDesignLanguage && styles['Main-newDesignLanguage'],
     );
 
     const navigationOverlayMarkup =
@@ -294,7 +275,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           {loadingMarkup}
           {navigationOverlayMarkup}
           <main
-            className={mainClassName}
+            className={styles.Main}
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
           >
@@ -430,14 +411,6 @@ const navTransitionClasses = {
 export function Frame(props: FrameProps) {
   const i18n = useI18n();
   const mediaQuery = useMediaQuery();
-  const features = useFeatures();
 
-  return (
-    <FrameInner
-      {...props}
-      i18n={i18n}
-      mediaQuery={mediaQuery}
-      features={features}
-    />
-  );
+  return <FrameInner {...props} i18n={i18n} mediaQuery={mediaQuery} />;
 }

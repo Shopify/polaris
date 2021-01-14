@@ -6,15 +6,24 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 .ContextualSaveBar {
   display: flex;
   height: top-bar-height();
-  background-color: color('white');
+  background: var(--p-surface);
   box-shadow: $shadow;
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    border-bottom: 1px solid transparent;
+  .LogoContainer {
+    border-right: none;
+  }
+
+  .ContextControl {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .Message {
+    color: var(--p-text);
+  }
+
+  @media (-ms-high-contrast: active) {
+    border: 1px solid ms-high-contrast-color('text');
   }
 }
 
@@ -27,8 +36,7 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     align-items: center;
     height: 100%;
     padding: 0 spacing();
-    border-right: var(--p-override-none, 1px solid $off-white-border);
-    background-color: var(--p-override-transparent, $off-white);
+    background-color: transparent;
   }
 }
 
@@ -78,30 +86,5 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   @include breakpoint-after(nav-min-window-corrected()) {
     display: block;
     width: layout-width(nav);
-  }
-}
-
-.newDesignLanguage {
-  background: var(--p-surface);
-
-  &::after {
-    border-bottom: none;
-  }
-
-  @media (-ms-high-contrast: active) {
-    border: 1px solid ms-high-contrast-color('text');
-  }
-
-  .LogoContainer {
-    border-right: none;
-  }
-
-  .ContextControl {
-    opacity: 0.3;
-    pointer-events: none;
-  }
-
-  .Message {
-    color: var(--p-text);
   }
 }
