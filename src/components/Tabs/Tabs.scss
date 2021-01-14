@@ -207,43 +207,14 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
 .DisclosureActivator {
   @include recolor-icon(var(--p-icon-subdued));
-  position: relative;
-  display: block;
-  justify-content: center;
-  height: 100%;
-  margin: 1px 1px -1px 0;
-  padding: 0 spacing();
-
-  background-color: transparent;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  text-align: center;
 
   &:hover .Title {
     @include recolor-icon(var(--p-icon));
-    // stylelint-disable-next-line selector-max-specificity
-    &::before {
-      background: var(--p-border-hovered);
-    }
   }
 
   &:focus {
     .Title {
-      @include focus-ring($style: 'focused');
       @include recolor-icon(var(--p-icon));
-      // stylelint-disable-next-line selector-max-specificity
-      &::before {
-        background: var(--p-border-hovered);
-      }
-    }
-  }
-
-  &:active .Title {
-    background-color: var(--p-surface-pressed);
-    // stylelint-disable-next-line selector-max-specificity
-    &::before {
-      background: var(--p-surface-primary-selected-pressed);
     }
   }
 }
