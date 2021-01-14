@@ -301,7 +301,7 @@
       "label": "Statuslinje for sideindlæsning"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Værktøjstip: {label}"
+      "accessibilityLabel": "Værktøjstip: {label}"
     }
   }
 }
