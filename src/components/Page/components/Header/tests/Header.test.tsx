@@ -120,9 +120,7 @@ describe('<Header />', () => {
         <Header {...mockProps} pagination={pagination} />,
       );
 
-      expect(
-        header.contains(<Pagination {...pagination} plain />),
-      ).toBeTruthy();
+      expect(header.contains(<Pagination {...pagination} />)).toBeTruthy();
     });
   });
 
