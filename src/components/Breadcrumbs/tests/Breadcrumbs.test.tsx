@@ -108,6 +108,12 @@ describe('<Breadcrumbs />', () => {
 
     expect(wrapper.find(VisuallyHidden).text()).toStrictEqual('Products');
   });
+
+  it('renders nothing when empty', () => {
+    const wrapper = mountWithAppProvider(<Breadcrumbs breadcrumbs={[]} />);
+
+    expect(wrapper.isEmptyRender()).toBeTruthy();
+  });
 });
 
 function noop() {}
