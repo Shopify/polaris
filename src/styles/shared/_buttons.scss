@@ -166,6 +166,7 @@
     background: var(--p-button-color);
     box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     color: var(--p-button-text);
+    @include focus-ring;
     border: none;
 
     &:hover {
