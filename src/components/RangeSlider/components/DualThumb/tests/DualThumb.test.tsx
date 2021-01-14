@@ -14,7 +14,7 @@ describe('<DualThumb />', () => {
     id: 'RangeSlider',
     value: [0, 1],
     min: 0,
-    max: 50,
+    max: 100,
     step: 1,
     output: false,
     disabled: false,
@@ -567,7 +567,7 @@ describe('<DualThumb />', () => {
       expect(onChangeSpy).not.toHaveBeenCalled();
     });
 
-    it('moves the lower thumb when the track is clicked closer to it than the upper thumb', () => {
+    it.only('moves the lower thumb when the track is clicked closer to it than the upper thumb', () => {
       const onChangeSpy = jest.fn();
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} value={[5, 40]} onChange={onChangeSpy} />,

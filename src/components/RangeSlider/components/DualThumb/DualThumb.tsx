@@ -83,6 +83,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
         const thumbSize = 16;
 
         const {width, left} = this.track.current.getBoundingClientRect();
+        console.log('🔎', width, left);
         const adjustedTrackWidth = width - thumbSize;
         const adjustedTrackLeft = left + thumbSize / 2;
 
@@ -449,7 +450,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     } = this;
 
     const sanitizedValue = sanitizeValue(dirtyValue, min, max, step, control);
-
+    // console.log('sanitizedValue', sanitizedValue);
     if (isEqual(sanitizedValue, value) === false) {
       this.setState(
         {
@@ -464,6 +465,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     if (event.button !== 0 || this.props.disabled) return;
     event.preventDefault();
     const clickXPosition = this.actualXPosition(event.clientX);
+    console.log('🐭', clickXPosition, event.clientX);
     const {value} = this.state;
     const distanceFromLowerThumb = Math.abs(value[0] - clickXPosition);
     const distanceFromUpperThumb = Math.abs(value[1] - clickXPosition);
@@ -489,6 +491,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
     if (this.props.disabled) return;
     event.preventDefault();
     const clickXPosition = this.actualXPosition(event.touches[0].clientX);
+    // console.log('👉', clickXPosition, event.touches[0].clientX);
     const {value} = this.state;
     const distanceFromLowerThumb = Math.abs(value[0] - clickXPosition);
     const distanceFromUpperThumb = Math.abs(value[1] - clickXPosition);
@@ -515,8 +518,26 @@ export class DualThumb extends Component<DualThumbProps, State> {
       const {min, max} = this.props;
       const {trackLeft, trackWidth} = this.state;
 
+      console.log(
+        '💁‍♀️ trackLeft',
+        trackLeft,
+        'trackWidth',
+        trackWidth,
+        'dirtyXPosition',
+        dirtyXPosition,
+      );
+
       const relativeX = dirtyXPosition - trackLeft;
       const percentageOfTrack = relativeX / trackWidth;
+
+      console.log(
+        '🧩 relativeX',
+        relativeX,
+        'trackWidth',
+        trackWidth,
+        '%',
+        percentageOfTrack,
+      );
       return percentageOfTrack * (max - min);
     } else {
       return 0;
@@ -556,7 +577,8 @@ function sanitizeValue(
 ): DualValue {
   let upperValue = inBoundsUpper(roundedToStep(value[1]));
   let lowerValue = inBoundsLower(roundedToStep(value[0]));
-
+  // console.log('value0', value[0], roundedToStep(value[0]), lowerValue, step);
+  // console.log('value1', value[1], roundedToStep(value[1]), upperValue, step);
   const maxLowerValue = upperValue - step;
   const minUpperValue = lowerValue + step;
 
