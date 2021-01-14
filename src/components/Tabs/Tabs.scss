@@ -107,7 +107,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 .Tab-selected {
   @include text-emphasis-normal;
   &:focus .Title {
-    @include ms-high-contrast-outline($border-width: border-width(thicker));
+    @include high-contrast-outline($border-width: border-width(thicker));
     // stylelint-disable-next-line  selector-max-specificity
     &::before {
       background: var(--p-action-primary);
@@ -115,7 +115,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   }
 
   .Title {
-    @include ms-high-contrast-outline($border-width: border-width(thicker));
+    @include high-contrast-outline($border-width: border-width(thicker));
     color: var(--p-text);
 
     &::before {
