@@ -7,7 +7,7 @@ export type RangeSliderValue = number | DualValue;
 
 export interface RangeSliderProps {
   /** Label for the range input */
-  label: string;
+  label: React.ReactNode;
   /** Adds an action to the label */
   labelAction?: LabelledProps['action'];
   /** Visually hide the label */

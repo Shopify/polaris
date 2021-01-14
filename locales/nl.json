@@ -301,7 +301,7 @@
       "label": "Pagina laadbalk"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Knopinfo: {label}"
+      "accessibilityLabel": "Knopinfo: {label}"
     }
   }
 }
