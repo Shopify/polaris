@@ -86,8 +86,6 @@ export function Tab({
     selected && styles.Underline,
   );
 
-  const tabTitleClassNames = classNames(styles.Title);
-
   const markup = url ? (
     <UnstyledLink
       id={id}
@@ -101,7 +99,7 @@ export function Tab({
       aria-label={accessibilityLabel}
       onMouseUp={handleMouseUpByBlurring}
     >
-      <span className={tabTitleClassNames}>{children}</span>
+      <span className={styles.Title}>{children}</span>
     </UnstyledLink>
   ) : (
     <button
@@ -116,7 +114,7 @@ export function Tab({
       aria-label={accessibilityLabel}
       onMouseUp={handleMouseUpByBlurring}
     >
-      <span className={tabTitleClassNames}>{children}</span>
+      <span className={styles.Title}>{children}</span>
     </button>
   );
 
