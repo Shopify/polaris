@@ -163,7 +163,6 @@
   }
 
   &.newDesignLanguage {
-    @include focus-ring($border-width: 0);
     background: var(--p-button-color);
     border-color: transparent;
     box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
@@ -238,7 +237,6 @@
   }
 
   &.newDesignLanguage {
-    @include focus-ring($border-width: border-width('base'));
     background: transparent;
     border: border-width() solid var(--p-border);
     box-shadow: none;
@@ -295,7 +293,6 @@
       &:focus {
         border: border-width('base') solid var(--p-border-critical);
         box-shadow: none;
-        @include focus-ring($style: 'focused');
       }
 
       &:active {
