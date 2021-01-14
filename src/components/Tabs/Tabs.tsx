@@ -109,14 +109,10 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       disclosureActivatorVisible && styles.fillSpace,
     );
 
-    const wrapperClassName = classNames(styles.Wrapper);
-
     const disclosureTabClassName = classNames(
       styles.DisclosureTab,
       disclosureActivatorVisible && styles['DisclosureTab-visible'],
     );
-
-    const disclosureActivatorClassName = classNames(styles.TabContainer);
 
     const disclosureButtonClassName = classNames(
       styles.DisclosureActivator,
@@ -151,14 +147,14 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     );
 
     const activator = disclosureText ? (
-      <div className={disclosureActivatorClassName}>{disclosureButton}</div>
+      <div className={styles.TabContainer}>{disclosureButton}</div>
     ) : (
       disclosureButton
     );
 
     return (
       <div>
-        <div className={wrapperClassName}>
+        <div className={styles.Wrapper}>
           <ul
             role="tablist"
             className={classname}
