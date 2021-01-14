@@ -243,7 +243,7 @@
       "characterCountWithMaxLength": "{count} of {limit} characters used"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Tooltip: {label}"
+      "accessibilityLabel": "Tooltip: {label}"
     },
     "TopBar": {
       "toggleMenuLabel": "Toggle menu",

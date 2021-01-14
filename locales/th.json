@@ -301,7 +301,7 @@
       "label": "แถบแสดงการโหลดหน้า"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "เคล็ดลับเกี่ยวกับเครื่องมือ: {label}"
+      "accessibilityLabel": "เคล็ดลับเกี่ยวกับเครื่องมือ: {label}"
     }
   }
 }

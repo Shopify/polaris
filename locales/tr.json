@@ -301,7 +301,7 @@
       "label": "Sayfa yüklenme çubuğu"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "İpucu: {label}"
+      "accessibilityLabel": "İpucu: {label}"
     }
   }
 }
