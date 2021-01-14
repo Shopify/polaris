@@ -301,7 +301,7 @@
       "label": "Seiten-Ladeleiste"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Tooltip: {label}"
+      "accessibilityLabel": "Tooltip: {label}"
     }
   }
 }

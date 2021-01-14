@@ -301,7 +301,7 @@
       "label": "Sivun latautumisen palkki"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Työkaluvihje: {label}"
+      "accessibilityLabel": "Työkaluvihje: {label}"
     }
   }
 }

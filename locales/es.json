@@ -301,7 +301,7 @@
       "label": "Barra de \"cargando página\""
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Descripción emergente: {label}"
+      "accessibilityLabel": "Descripción emergente: {label}"
     }
   }
 }

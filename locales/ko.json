@@ -301,7 +301,7 @@
       "label": "페이지 로딩 표시줄"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "툴팁: {label}"
+      "accessibilityLabel": "툴팁: {label}"
     }
   }
 }
