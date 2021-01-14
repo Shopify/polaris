@@ -289,7 +289,7 @@ describe('<DualThumb />', () => {
 
       const expected = {
         '--Polaris-RangeSlider-progress-lower': '0px',
-        '--Polaris-RangeSlider-progress-upper': '-0.48px',
+        '--Polaris-RangeSlider-progress-upper': '-0.32px',
       };
       const track = findByTestID(dualThumb, 'track');
       const actual = track.find('[style]').prop('style');
