@@ -80,9 +80,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
   private setTrackPosition = debounce(
     () => {
       if (this.track.current) {
-        const newDesignLanguage =
-          this.context && this.context.newDesignLanguage;
-        const thumbSize = newDesignLanguage ? 16 : 24;
+        const thumbSize = 16;
 
         const {width, left} = this.track.current.getBoundingClientRect();
         const adjustedTrackWidth = width - thumbSize;
@@ -161,17 +159,11 @@ export class DualThumb extends Component<DualThumbProps, State> {
       styles.Thumbs,
       styles.ThumbLower,
       disabled && styles.disabled,
-      this.context &&
-        this.context.newDesignLanguage &&
-        styles.newDesignLanguage,
     );
     const thumbUpperClassName = classNames(
       styles.Thumbs,
       styles.ThumbUpper,
       disabled && styles.disabled,
-      this.context &&
-        this.context.newDesignLanguage &&
-        styles.newDesignLanguage,
     );
 
     const trackWidth = this.state.trackWidth;
