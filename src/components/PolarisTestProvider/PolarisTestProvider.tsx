@@ -77,14 +77,12 @@ export function PolarisTestProvider({
 
   const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-  const features = {newDesignLanguage: false, ...featuresProp};
+  const features = {...featuresProp};
 
-  const customProperties = features.newDesignLanguage
-    ? buildCustomProperties(
-        {...theme, colorScheme: 'light'},
-        features.newDesignLanguage,
-      )
-    : undefined;
+  const customProperties = buildCustomProperties({
+    ...theme,
+    colorScheme: 'light',
+  });
   const mergedTheme = buildThemeContext(theme, customProperties);
 
   const mergedFrame = createFrameContext(frame);
