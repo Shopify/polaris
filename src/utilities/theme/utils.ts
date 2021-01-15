@@ -23,22 +23,16 @@ interface CustomPropertiesConfig extends ThemeConfig {
 
 export function buildCustomPropertiesNoMemo(
   themeConfig: CustomPropertiesConfig,
-  newDesignLanguage: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
   const {colors = {}, colorScheme, config, frameOffset = 0} = themeConfig;
   const mergedConfig = mergeConfigs(base, config || {});
 
-  return newDesignLanguage
-    ? customPropertyTransformer({
-        ...colorFactory(colors, colorScheme, mergedConfig),
-        ...tokens,
-        frameOffset: `${frameOffset}px`,
-      })
-    : {
-        ...buildLegacyColors(themeConfig),
-        ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
-      };
+  return customPropertyTransformer({
+    ...colorFactory(colors, colorScheme, mergedConfig),
+    ...tokens,
+    frameOffset: `${frameOffset}px`,
+  });
 }
 
 export function buildThemeContext(
@@ -46,11 +40,11 @@ export function buildThemeContext(
   cssCustomProperties?: CustomPropertiesLike,
 ): Theme {
   const {logo, colors = {}, colorScheme} = themeConfig;
-  const {topBar, ...newDesignLanguageColors} = colors;
+  const {...colorValues} = colors;
   return {
     logo,
     cssCustomProperties: toString(cssCustomProperties),
-    colors: newDesignLanguageColors,
+    colors: colorValues,
     colorScheme,
   };
 }
@@ -79,30 +73,6 @@ function customPropertyTransformer(
 
 export function toCssCustomPropertySyntax(camelCase: string) {
   return `--p-${camelCase.replace(/([A-Z0-9])/g, '-$1').toLowerCase()}`;
-}
-
-function buildLegacyColors(theme?: ThemeConfig): CustomPropertiesLike {
-  let colorPairs;
-  const colors =
-    theme && theme.colors && theme.colors.topBar
-      ? theme.colors.topBar
-      : {background: '#00848e', backgroundLighter: '#1d9ba4', color: '#f9fafb'};
-
-  const colorKey = 'topBar';
-  const colorKeys = Object.keys(colors);
-
-  if (colorKeys.length > 1) {
-    colorPairs = colorKeys.map((key) => {
-      return [constructColorName(colorKey, key), colors[key]];
-    });
-  } else {
-    colorPairs = parseColors([colorKey, colors]);
-  }
-
-  return colorPairs.reduce(
-    (state, [key, value]) => ({...state, [key]: value}),
-    {},
-  );
 }
 
 export function needsVariant(name: string) {
