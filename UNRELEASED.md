@@ -4,6 +4,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Breaking changes
 
+- Remove `light` property from `Tooltip` as it now defaults to a light background ([#3803](https://github.com/Shopify/polaris-react/pull/3803)) ([#3803](https://github.com/Shopify/polaris-react/pull/3803))
+
 ### Enhancements
 
 - Changed `Label` and `Labelled`’s `label` prop type to `React.ReactNode` instead of `string` ([#3787](https://github.com/Shopify/polaris-react/pull/3787))
