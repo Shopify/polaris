@@ -4,8 +4,7 @@ import {mergeConfigs} from '@shopify/polaris-tokens/dist-modern/utils';
 import {config as base} from '@shopify/polaris-tokens/dist-modern/configs/base';
 
 import type {HSLColor, HSLAColor} from '../color-types';
-import {colorToHsla, hslToString, hslToRgb} from '../color-transformers';
-import {isLight} from '../color-validation';
+import {hslToString} from '../color-transformers';
 import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
 
@@ -147,35 +146,6 @@ export function setTheme(
 
       break;
     default:
-  }
-
-  return colorPairs;
-}
-
-function parseColors([baseName, colors]: [
-  string,
-  {[key: string]: string},
-]): string[][] {
-  const keys = Object.keys(colors);
-  const colorPairs = [];
-  for (const key of keys) {
-    colorPairs.push([constructColorName(baseName, key), colors[key]]);
-
-    if (needsVariant(baseName)) {
-      const hslColor = colorToHsla(colors[key]);
-
-      if (typeof hslColor === 'string') {
-        return colorPairs;
-      }
-
-      const rgbColor = hslToRgb(hslColor);
-
-      if (isLight(rgbColor)) {
-        colorPairs.push(...setTheme(hslColor, baseName, key, 'light'));
-      } else {
-        colorPairs.push(...setTheme(hslColor, baseName, key, 'dark'));
-      }
-    }
   }
 
   return colorPairs;
