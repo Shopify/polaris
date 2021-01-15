@@ -2,7 +2,6 @@ import React from 'react';
 import {InlineError, Icon} from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, ReactWrapper} from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
 import {CircleTickOutlineMinor} from '@shopify/polaris-icons';
 
 import {Select} from '../Select';
@@ -358,32 +357,6 @@ describe('<Select />', () => {
       );
 
       expect(select.find(InlineError)).toHaveLength(0);
-    });
-  });
-
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
-      const select = mountWithApp(
-        <Select label="Select" options={[]} onChange={noop} />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(select).toContainReactComponent('div', {
-        className: 'Select newDesignLanguage',
-      });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const select = mountWithApp(
-        <Select label="Select" options={[]} onChange={noop} />,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-      expect(select).not.toContainReactComponent('div', {
-        className: 'Select newDesignLanguage',
-      });
     });
   });
 });
