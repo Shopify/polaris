@@ -18888,15 +18888,10 @@ tryer@^1.0.1:
   resolved "https://registry.yarnpkg.com/tryer/-/tryer-1.0.1.tgz#f2c85406800b9b0f74c9f7465b81eaad241252f8"
   integrity sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==
 
-ts-dedent@^1.1.0:
+ts-dedent@^1.1.0, ts-dedent@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ts-dedent/-/ts-dedent-1.1.1.tgz#68fad040d7dbd53a90f545b450702340e17d18f3"
   integrity sha512-UGTRZu1evMw4uTPyYF66/KFd22XiU+jMaIuHrkIHQ2GivAXVlLV0v/vHrpOuTRf9BmpNHi/SO7Vd0rLu0y57jg==
-
-ts-dedent@^1.1.1:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/ts-dedent/-/ts-dedent-1.2.0.tgz#6aa2229d837159bb6d635b6b233002423b91e0b0"
-  integrity sha512-6zSJp23uQI+Txyz5LlXMXAHpUhY4Hi0oluXny0OgIR7g/Cromq4vDBnhtbBdyIV34g0pgwxUvnvg+jLJe4c1NA==
 
 ts-essentials@^2.0.3:
   version "2.0.12"
