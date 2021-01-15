@@ -25,13 +25,6 @@ $content-max-width: rem(200px);
   margin: spacing() spacing() $offset-from-activator;
 }
 
-.light {
-  .Wrapper {
-    background: var(--p-surface);
-    color: var(--p-text);
-  }
-}
-
 .Wrapper {
   position: relative;
   display: flex;
