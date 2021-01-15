@@ -138,7 +138,11 @@ function SheetExample() {
       >
         {salesChannelsCardMarkup}
       </Card>
-      <Sheet open={sheetActive} onClose={toggleSheetActive}>
+      <Sheet
+        open={sheetActive}
+        onClose={toggleSheetActive}
+        ariaLabel="Manage sales channels"
+      >
         <div
           style={{
             display: 'flex',
