@@ -25,7 +25,6 @@ $stacking-order: (
   }
 
   .Icon {
-    opacity: var(--p-override-one);
     @include recolor-icon(var(--p-icon-disabled));
   }
 
