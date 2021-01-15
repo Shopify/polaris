@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 
-import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
 import {Item} from '../Item';
 import type {TabDescriptor} from '../../types';
@@ -18,7 +17,6 @@ export class List extends PureComponent<ListProps, never> {
   context!: React.ContextType<typeof FeaturesContext>;
 
   render() {
-    const {newDesignLanguage} = this.context || {};
     const {focusIndex, disclosureTabs, onClick = noop} = this.props;
     const tabs = disclosureTabs.map(({id, content, ...tabProps}, index) => {
       return (
@@ -34,14 +32,9 @@ export class List extends PureComponent<ListProps, never> {
       );
     });
 
-    const classname = classNames(
-      styles.List,
-      newDesignLanguage && styles.newDesignLanguage,
-    );
-
     return (
       <ul
-        className={classname}
+        className={styles.List}
         onKeyDown={handleKeyDown}
         onKeyUp={this.handleKeypress}
       >
