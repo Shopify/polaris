@@ -5,7 +5,6 @@ import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useI18n} from '../../utilities/i18n';
 import {useTheme} from '../../utilities/theme';
-import {useFeatures} from '../../utilities/features';
 import {useToggle} from '../../utilities/use-toggle';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
@@ -63,7 +62,6 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
 }: TopBarProps) {
   const i18n = useI18n();
   const {logo} = useTheme();
-  const {newDesignLanguage} = useFeatures();
 
   const {
     value: focused,
@@ -137,13 +135,8 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     </>
   ) : null;
 
-  const className = classNames(
-    styles.TopBar,
-    newDesignLanguage && styles['TopBar-newDesignLanguage'],
-  );
-
   return (
-    <div className={className}>
+    <div className={styles.TopBar}>
       {navigationButtonMarkup}
       {contextMarkup}
       <div className={styles.Contents}>

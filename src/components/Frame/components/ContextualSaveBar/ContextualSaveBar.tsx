@@ -5,7 +5,6 @@ import {Image} from '../../../Image';
 import {Stack} from '../../../Stack';
 import {ThemeProvider} from '../../../ThemeProvider';
 import {classNames} from '../../../../utilities/css';
-import {useFeatures} from '../../../../utilities/features';
 import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
@@ -25,7 +24,6 @@ export function ContextualSaveBar({
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
   const {logo} = useTheme();
-  const {newDesignLanguage = false} = useFeatures();
   const {
     value: discardConfirmationModalVisible,
     toggle: toggleDiscardConfirmationModal,
@@ -108,11 +106,6 @@ export function ContextualSaveBar({
     <div className={styles.ContextControl}>{contextControl}</div>
   ) : null;
 
-  const contexualSaveBarClassName = classNames(
-    styles.ContextualSaveBar,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
-
   const contentsClassName = classNames(
     styles.Contents,
     fullWidth && styles.fullWidth,
@@ -121,7 +114,7 @@ export function ContextualSaveBar({
   return (
     <>
       <ThemeProvider theme={{colorScheme: 'inverse'}}>
-        <div className={contexualSaveBarClassName}>
+        <div className={styles.ContextualSaveBar}>
           {contextControlMarkup}
           {logoMarkup}
           <div className={contentsClassName}>
