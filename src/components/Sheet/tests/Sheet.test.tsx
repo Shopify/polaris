@@ -10,7 +10,7 @@ describe('<Sheet />', () => {
   const mockProps = {
     open: true,
     onClose: noop,
-    accessibilityLabel: 'abc',
+    accessibilityLabel: 'More filters',
   };
 
   it('renders its children', () => {
@@ -63,6 +63,18 @@ describe('<Sheet />', () => {
       exit: 'Right exitRight',
       exitActive: 'Right exitRightActive',
     });
+  });
+
+  it('renders an aria label', () => {
+    const children = <div>Content</div>;
+
+    const sheet = mountWithAppProvider(
+      <Sheet {...mockProps}>{children}</Sheet>,
+    );
+
+    expect(sheet.find('div[role="dialog"]').prop('aria-label')).toBe(
+      mockProps.accessibilityLabel,
+    );
   });
 });
 

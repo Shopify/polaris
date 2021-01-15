@@ -390,6 +390,7 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const filtersContainerMarkup = isNavigationCollapsed ? (
       <Sheet
+        accessibilityLabel={moreFiltersLabel}
         open={open}
         onClose={this.closeFilters}
         onEntered={this.setReadyForFocus(true)}
@@ -403,6 +404,7 @@ class FiltersInner extends Component<CombinedProps, State> {
       </Sheet>
     ) : (
       <Sheet
+        accessibilityLabel={moreFiltersLabel}
         open={open}
         onClose={this.closeFilters}
         onEntered={this.setReadyForFocus(true)}
