@@ -3,7 +3,6 @@ import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
-import {useFeatures} from '../../../../utilities/features';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {Icon} from '../../../Icon';
 import {VisuallyHidden} from '../../../VisuallyHidden';
@@ -44,7 +43,6 @@ export function SearchField({
 }: SearchFieldProps) {
   const i18n = useI18n();
   const [forceActive, setForceActive] = useState(false);
-  const {newDesignLanguage} = useFeatures();
 
   const input = useRef<HTMLInputElement>(null);
   const searchId = useUniqueId('SearchField');
@@ -106,7 +104,6 @@ export function SearchField({
   const className = classNames(
     styles.SearchField,
     (focused || active || forceActive) && styles.focused,
-    newDesignLanguage && styles['SearchField-newDesignLanguage'],
   );
 
   return (

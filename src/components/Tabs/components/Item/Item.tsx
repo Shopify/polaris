@@ -49,12 +49,7 @@ export class Item extends PureComponent<ItemProps, never> {
       onClick = noop,
     } = this.props;
 
-    const {newDesignLanguage} = this.context || {};
-
-    const classname = classNames(
-      styles.Item,
-      newDesignLanguage && styles.newDesignLanguage,
-    );
+    const classname = classNames(styles.Item);
 
     const sharedProps = {
       id,

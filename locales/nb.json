@@ -301,7 +301,7 @@
       "label": "Sidelastingslinje"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Verktøytips: {label}"
+      "accessibilityLabel": "Verktøytips: {label}"
     }
   }
 }

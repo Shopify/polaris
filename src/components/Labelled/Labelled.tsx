@@ -14,7 +14,7 @@ export interface LabelledProps {
   /** A unique identifier for the label */
   id: LabelProps['id'];
   /** Text for the label */
-  label: string;
+  label: React.ReactNode;
   /** Error to display beneath the label */
   error?: Error | boolean;
   /** An action */

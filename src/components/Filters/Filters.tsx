@@ -141,7 +141,6 @@ class FiltersInner extends Component<CombinedProps, State> {
       helpText,
       hideTags,
       hideQueryField,
-      features: {newDesignLanguage},
       i18n,
       mediaQuery: {isNavigationCollapsed},
     } = this.props;
@@ -180,10 +179,7 @@ class FiltersInner extends Component<CombinedProps, State> {
 
       const collapsibleID = `${filter.key}Collapsible`;
 
-      const buttonClassName = classNames(
-        styles.FilterTrigger,
-        newDesignLanguage && styles.newDesignLanguage,
-      );
+      const buttonClassName = classNames(styles.FilterTrigger);
 
       return (
         <div key={filter.key} className={className}>
@@ -298,7 +294,6 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const filtersContainerHeaderClassname = classNames(
       styles.FiltersContainerHeader,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const filtersDesktopHeaderMarkup = (
@@ -334,7 +329,6 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const filtersDesktopFooterClassname = classNames(
       styles.FiltersContainerFooter,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const filtersDesktopFooterMarkup = (
@@ -388,16 +382,15 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const filtersMobileContainerContentClassName = classNames(
       styles.FiltersMobileContainerContent,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const filtersDesktopContainerContentClassName = classNames(
       styles.FiltersDesktopContainerContent,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const filtersContainerMarkup = isNavigationCollapsed ? (
       <Sheet
+        accessibilityLabel={moreFiltersLabel}
         open={open}
         onClose={this.closeFilters}
         onEntered={this.setReadyForFocus(true)}
@@ -411,6 +404,7 @@ class FiltersInner extends Component<CombinedProps, State> {
       </Sheet>
     ) : (
       <Sheet
+        accessibilityLabel={moreFiltersLabel}
         open={open}
         onClose={this.closeFilters}
         onEntered={this.setReadyForFocus(true)}
