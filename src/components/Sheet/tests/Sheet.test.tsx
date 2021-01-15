@@ -64,6 +64,18 @@ describe('<Sheet />', () => {
       exitActive: 'Right exitRightActive',
     });
   });
+
+  it('renders an aria label', () => {
+    const children = <div>Content</div>;
+
+    const sheet = mountWithAppProvider(
+      <Sheet {...mockProps}>{children}</Sheet>,
+    );
+
+    expect(sheet.find('div[role="dialog"]').prop('aria-label')).toBe(
+      mockProps.accessibilityLabel,
+    );
+  });
 });
 
 function noop() {}
