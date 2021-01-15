@@ -181,11 +181,7 @@ export type {
 } from './Navigation';
 
 export {OptionList} from './OptionList';
-export type {
-  OptionListProps,
-  OptionDescriptor as OptionListOptionDescriptor,
-  SectionDescriptor as OptionListSectionDescriptor,
-} from './OptionList';
+export type {OptionListProps} from './OptionList';
 
 export {Page} from './Page';
 export type {PageProps} from './Page';

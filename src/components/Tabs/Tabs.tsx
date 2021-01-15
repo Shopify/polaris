@@ -190,6 +190,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
                 activator={activator}
                 active={disclosureActivatorVisible && showDisclosure}
                 onClose={this.handleClose}
+                autofocusTarget="first-node"
               >
                 <List
                   focusIndex={hiddenTabs.indexOf(tabToFocus)}
@@ -246,8 +247,9 @@ class TabsInner extends PureComponent<CombinedProps, State> {
 
   // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderTabMarkup = (tab: TabDescriptor, index: number) => {
-    const {selected} = this.props;
+    const {selected, children} = this.props;
     const {tabToFocus} = this.state;
+    const tabPanelID = tab.panelID || `${tab.id}-panel`;
 
     return (
       <Tab
@@ -257,7 +259,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
         focused={index === tabToFocus}
         selected={index === selected}
         onClick={this.handleTabClick}
-        panelID={tab.panelID || `${tab.id}-panel`}
+        panelID={children ? tabPanelID : undefined}
         accessibilityLabel={tab.accessibilityLabel}
         url={tab.url}
       >

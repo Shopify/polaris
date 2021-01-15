@@ -82,7 +82,9 @@
         "friday": "Sexta",
         "saturday": "Sábado",
         "sunday": "Domingo"
-      }
+      },
+      "start": "Início do intervalo",
+      "end": "Final do intervalo"
     },
     "DiscardConfirmationModal": {
       "title": "Descartar todas as alterações não salvas",
@@ -294,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Mais ações"
+    },
+    "Loading": {
+      "label": "Barra de carregamento de página"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Dica de ferramenta: {label}"
     }
   }
 }

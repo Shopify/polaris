@@ -134,8 +134,11 @@ describe('<Tabs />', () => {
         {...tabs[0], panelID: 'panel-1'},
         {...tabs[1], panelID: 'panel-2'},
       ];
+      const content = <p>Panel contents</p>;
       const wrapper = mountWithAppProvider(
-        <Tabs {...mockProps} tabs={panelIDedTabs} />,
+        <Tabs {...mockProps} tabs={panelIDedTabs}>
+          {content}
+        </Tabs>,
       );
 
       panelIDedTabs.forEach((tab, index) => {
@@ -144,12 +147,24 @@ describe('<Tabs />', () => {
     });
 
     it('uses an auto-generated panelID if none is provided', () => {
-      const wrapper = mountWithAppProvider(<Tabs {...mockProps} />);
+      const content = <p>Panel contents</p>;
+      const wrapper = mountWithAppProvider(
+        <Tabs {...mockProps}>{content}</Tabs>,
+      );
 
       tabs.forEach((_, index) => {
         const panelID = wrapper.find(Tab).at(index).prop('panelID');
         expect(typeof panelID).toBe('string');
         expect(panelID).not.toBe('');
+      });
+    });
+
+    it('sets the panelID to undefined when the tab does not have an associated panel (child)', () => {
+      const wrapper = mountWithAppProvider(<Tabs {...mockProps} />);
+
+      tabs.forEach((_, index) => {
+        const panelID = wrapper.find(Tab).at(index).prop('panelID');
+        expect(panelID).toBeUndefined();
       });
     });
 

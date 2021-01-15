@@ -1,5 +1,9 @@
-import React, {useCallback, useState} from 'react';
-import {CaretDownMinor} from '@shopify/polaris-icons';
+import React, {useCallback, useRef, useState} from 'react';
+import {
+  CaretDownMinor,
+  CaretUpMinor,
+  SelectMinor,
+} from '@shopify/polaris-icons';
 
 import type {BaseButton, ConnectedDisclosure, IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
@@ -36,17 +40,20 @@ export interface ButtonProps extends BaseButton {
   /** Allows the button to grow to the width of its container */
   fullWidth?: boolean;
   /** Displays the button with a disclosure icon. Defaults to `down` when set to true */
-  disclosure?: 'down' | 'up' | boolean;
+  disclosure?: 'down' | 'up' | 'select' | boolean;
   /** Renders a button that looks like a link */
   plain?: boolean;
   /** Makes `plain` and `outline` Button colors (text, borders, icons) the same as the current text color. Also adds an underline to `plain` Buttons */
   monochrome?: boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactElement | IconSource;
-  /** Stretch the content (text + icon) from side to side */
-  stretchContent?: boolean;
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
+  /**
+   * @deprecated As of release 5.13.0, replaced by {@link https://polaris.shopify.com/components/actions/button/textAlign}
+   * Stretch the content (text + icon) from side to side
+   */
+  stretchContent?: boolean;
 }
 
 interface CommonButtonProps
@@ -54,6 +61,7 @@ interface CommonButtonProps
     ButtonProps,
     | 'id'
     | 'accessibilityLabel'
+    | 'ariaDescribedBy'
     | 'role'
     | 'onClick'
     | 'onFocus'
@@ -96,6 +104,7 @@ export function Button({
   role,
   ariaControls,
   ariaExpanded,
+  ariaDescribedBy,
   ariaPressed,
   onClick,
   onFocus,
@@ -120,6 +129,15 @@ export function Button({
 }: ButtonProps) {
   const {newDesignLanguage} = useFeatures();
   const i18n = useI18n();
+  const hasGivenDeprecationWarning = useRef(false);
+
+  if (stretchContent && !hasGivenDeprecationWarning.current) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `stretchContent` prop has been replaced with `textAlign="left"`',
+    );
+    hasGivenDeprecationWarning.current = true;
+  }
 
   const isDisabled = disabled || loading;
 
@@ -142,38 +160,28 @@ export function Button({
     stretchContent && styles.stretchContent,
   );
 
-  const disclosureIcon = (
-    <Icon source={loading ? 'placeholder' : CaretDownMinor} />
-  );
-
-  const disclosureIconMarkup = disclosure ? (
+  const disclosureMarkup = disclosure ? (
     <span className={styles.Icon}>
       <div
-        className={classNames(
-          styles.DisclosureIcon,
-          disclosure === 'up' && styles.DisclosureIconFacingUp,
-          loading && styles.Hidden,
-        )}
+        className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
       >
-        {disclosureIcon}
+        <Icon
+          source={loading ? 'placeholder' : getDisclosureIconSource(disclosure)}
+        />
       </div>
     </span>
   ) : null;
 
-  let iconMarkup;
-
-  if (icon) {
-    const iconInner = isIconSource(icon) ? (
-      <Icon source={loading ? 'placeholder' : icon} />
-    ) : (
-      icon
-    );
-    iconMarkup = (
-      <span className={classNames(styles.Icon, loading && styles.Hidden)}>
-        {iconInner}
-      </span>
-    );
-  }
+  const iconSource = isIconSource(icon) ? (
+    <Icon source={loading ? 'placeholder' : icon} />
+  ) : (
+    icon
+  );
+  const iconMarkup = iconSource ? (
+    <span className={classNames(styles.Icon, loading && styles.hidden)}>
+      {iconSource}
+    </span>
+  ) : null;
 
   const childMarkup = children ? (
     <span className={styles.Text}>{children}</span>
@@ -192,21 +200,6 @@ export function Button({
       />
     </span>
   ) : null;
-
-  const content =
-    iconMarkup || disclosureIconMarkup ? (
-      <span className={styles.Content}>
-        {spinnerSVGMarkup}
-        {iconMarkup}
-        {childMarkup}
-        {disclosureIconMarkup}
-      </span>
-    ) : (
-      <span className={styles.Content}>
-        {spinnerSVGMarkup}
-        {childMarkup}
-      </span>
-    );
 
   const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
 
@@ -247,6 +240,7 @@ export function Button({
         className={connectedDisclosureClassName}
         disabled={disabled}
         aria-label={disclosureLabel}
+        aria-describedby={ariaDescribedBy}
         onClick={toggleDisclosureActive}
         onMouseUp={handleMouseUpByBlurring}
       >
@@ -275,6 +269,7 @@ export function Button({
     id,
     className,
     accessibilityLabel,
+    ariaDescribedBy,
     role,
     onClick,
     onFocus,
@@ -302,7 +297,12 @@ export function Button({
 
   const buttonMarkup = (
     <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
-      {content}
+      <span className={styles.Content}>
+        {spinnerSVGMarkup}
+        {iconMarkup}
+        {childMarkup}
+        {disclosureMarkup}
+      </span>
     </UnstyledButton>
   );
 
@@ -322,4 +322,14 @@ function isIconSource(x: any): x is IconSource {
     (typeof x === 'object' && x.body) ||
     typeof x === 'function'
   );
+}
+
+function getDisclosureIconSource(
+  disclosure: NonNullable<ButtonProps['disclosure']>,
+) {
+  if (disclosure === 'select') {
+    return SelectMinor;
+  }
+
+  return disclosure === 'up' ? CaretUpMinor : CaretDownMinor;
 }

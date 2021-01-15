@@ -6,6 +6,7 @@ import {
   TextContainer,
   TextField,
   Button,
+  Portal,
 } from 'components';
 
 import * as focusUtils from '../../../utilities/focus';
@@ -87,6 +88,25 @@ describe('<TrapFocus />', () => {
     );
 
     expect(trapFocus).toContainReactComponent(Focus, {disabled: false});
+  });
+
+  it(`does not trap focus while navigating inside a portal`, () => {
+    const id = 'focusable';
+    const trapFocus = mountWithApp(
+      <TrapFocus>
+        <Portal>
+          <button id={id} />
+        </Portal>
+        <button />
+      </TrapFocus>,
+    );
+    const focusableButton = trapFocus.find('button', {id})?.domNode;
+    focusableButton?.focus();
+    trapFocus
+      .find(EventListener, {event: 'focusin'})
+      ?.trigger('handler', {target: focusableButton});
+
+    expect(document.activeElement).toBe(focusableButton);
   });
 
   it('keeps focus on nodes contained inside trap focus during mount', () => {

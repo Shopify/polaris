@@ -54,6 +54,10 @@ $nav-max-width: rem(360px);
   align-items: stretch;
   max-width: 100%;
 
+  &:focus {
+    outline: none;
+  }
+
   @include breakpoint-after(nav-min-window-corrected()) {
     .Navigation-newDesignLanguage & {
       padding-top: rem(12px);
@@ -104,7 +108,7 @@ $disabled-fade: 0.6;
       left: -1 * spacing(tight);
       height: 100%;
       width: $active-indicator-width;
-      background-color: var(--p-action-primary);
+      background-color: var(--p-text-primary);
       border-top-right-radius: var(--p-border-radius-base);
       border-bottom-right-radius: var(--p-border-radius-base);
     }
@@ -261,9 +265,12 @@ $disabled-fade: 0.6;
 $secondary-item-font-size: rem(15px);
 .SecondaryNavigation {
   flex-basis: 100%;
-  margin-bottom: spacing(tight);
   margin-left: nav(icon-size) + spacing(loose);
   overflow-x: var(--p-override-visible, hidden);
+
+  &.isExpanded {
+    margin-bottom: spacing(tight);
+  }
 
   .Navigation-newDesignLanguage & {
     margin-left: 0;
