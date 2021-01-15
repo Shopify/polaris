@@ -89,7 +89,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {theme = {}, children} = this.props;
 
     const {intl, link} = this.state;
-    const features = {newDesignLanguage: false, ...this.props.features};
+    const features = {...this.props.features};
 
     return (
       <FeaturesContext.Provider value={features}>
