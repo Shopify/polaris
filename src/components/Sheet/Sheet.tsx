@@ -38,6 +38,8 @@ export interface SheetProps {
   onEntered?(): void;
   /** Callback when the sheet has started to exit */
   onExit?(): void;
+  /** ARIA label for sheet */
+  accessibilityLabel: string;
 }
 
 export function Sheet({
@@ -46,6 +48,7 @@ export function Sheet({
   onClose,
   onEntered,
   onExit,
+  accessibilityLabel,
 }: SheetProps) {
   const {isNavigationCollapsed} = useMediaQuery();
   const container = useRef<HTMLDivElement>(null);
@@ -71,7 +74,12 @@ export function Sheet({
           ref={container}
         >
           <TrapFocus trapping={open}>
-            <div role="dialog" tabIndex={-1} className={styles.Sheet}>
+            <div
+              role="dialog"
+              tabIndex={-1}
+              className={styles.Sheet}
+              aria-label={accessibilityLabel}
+            >
               {children}
             </div>
           </TrapFocus>
