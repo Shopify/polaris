@@ -210,7 +210,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   border: none;
   outline: none;
   margin: 1px 1px -1px 0;
-  padding: 0 spacing();
 
   &:hover,
   &:focus {
@@ -221,7 +220,8 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     @include focus-ring($style: 'focused');
   }
 
-  &:hover .Title:before {
+  // stylelint-disable-next-line selector-max-specificity
+  &:hover .Title::before {
     background-color: var(--p-border-hovered);
   }
 }
