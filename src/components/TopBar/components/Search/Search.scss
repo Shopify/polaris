@@ -9,7 +9,7 @@
   top: top-bar-height();
   left: 0;
   right: 0;
-  box-shadow: var(--p-modal-shadow, shadow());
+  box-shadow: var(--p-modal-shadow);
   overflow: hidden;
 
   @include page-content-when-not-fully-condensed {
@@ -17,11 +17,7 @@
     top: 100%;
     max-width: $search-max-width;
     margin: spacing(extra-tight) spacing(loose) 0;
-    border-radius: var(--p-border-radius-wide, border-radius());
-
-    &.newDesignLanguage {
-      max-width: $new-search-max-width;
-    }
+    border-radius: var(--p-border-radius-wide);
   }
 
   @include page-content-when-not-partially-condensed {
@@ -30,7 +26,7 @@
 }
 
 .SearchContent {
-  background-color: var(--p-surface, color('white'));
+  background-color: var(--p-surface);
 }
 
 .visible {

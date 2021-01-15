@@ -4,6 +4,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Breaking changes
 
+- Remove `light` property from `Tooltip` as it now defaults to a light background ([#3803](https://github.com/Shopify/polaris-react/pull/3803)) ([#3803](https://github.com/Shopify/polaris-react/pull/3803))
 - Made `title` property required in `Modal` for accessibility label, added `hideTitle` property ([#3803](https://github.com/Shopify/polaris-react/pull/3803)) ([#3803](https://github.com/Shopify/polaris-react/pull/3803))
 
 ### Enhancements
@@ -49,6 +50,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed `ColorPicker` checker background to remain visible on a white background ([#3812](https://github.com/Shopify/polaris-react/pull/3812))
 - Fixed an incorrect translation key for `accessibilityLabel` in `Tooltip`([#3843](https://github.com/Shopify/polaris-react/pull/3843))
 - Fix shadows on filled `Button`s not touching the bottom edge ([#3841](https://github.com/Shopify/polaris-react/pull/3841))
+- Adjust `Thumbnail` icon color to be subdued ([#3846](https://github.com/Shopify/polaris-react/pull/3846))
 
 ### Documentation
 

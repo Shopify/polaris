@@ -14,8 +14,6 @@ export interface TooltipProps {
   children?: React.ReactNode;
   /** The content to display within the tooltip */
   content: React.ReactNode;
-  /** Display tooltip with a light background */
-  light?: boolean;
   /** Toggle whether the tooltip is visible */
   active?: boolean;
   /** Dismiss tooltip when not interacting with its children */
@@ -37,7 +35,6 @@ export interface TooltipProps {
 export function Tooltip({
   children,
   content,
-  light,
   dismissOnMouseOut,
   active: originalActive,
   preferredPosition = 'below',
@@ -83,7 +80,6 @@ export function Tooltip({
         active={active}
         accessibilityLabel={accessibilityLabel}
         onClose={noop}
-        light={light}
         preventInteraction={dismissOnMouseOut}
       >
         <div className={styles.Label} testID="TooltipOverlayLabel">
