@@ -10,6 +10,7 @@ describe('<Sheet />', () => {
   const mockProps = {
     open: true,
     onClose: noop,
+    accessibilityLabel: 'abc',
   };
 
   it('renders its children', () => {

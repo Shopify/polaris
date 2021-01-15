@@ -130,29 +130,6 @@ describe('<SearchField />', () => {
       'Backdrop BackdropShowFocusBorder',
     );
   });
-
-  describe('newDesignLanguage', () => {
-    it('does not render a container with newDesignLanguage className by default', () => {
-      const textField = mountWithApp(
-        <SearchField value="hello polaris" onChange={noop} />,
-      );
-      expect(textField).not.toContainReactComponent('div', {
-        className: 'SearchField SearchField-newDesignLanguage',
-      });
-    });
-
-    it('renders a container with newDesignLanguage className when newDesignLanguage is true', () => {
-      const textField = mountWithApp(
-        <SearchField value="hello polaris" onChange={noop} />,
-        {
-          features: {newDesignLanguage: true},
-        },
-      );
-      expect(textField).toContainReactComponent('div', {
-        className: 'SearchField SearchField-newDesignLanguage',
-      });
-    });
-  });
 });
 
 function noop() {}

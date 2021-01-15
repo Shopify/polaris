@@ -2,7 +2,6 @@ import React, {useCallback, useRef} from 'react';
 
 import {ScrollLock} from '../../../ScrollLock';
 import {classNames} from '../../../../utilities/css';
-import {useFeatures} from '../../../../utilities/features';
 
 import styles from './SearchDismissOverlay.scss';
 
@@ -15,7 +14,6 @@ interface Props {
 
 export function SearchDismissOverlay({onDismiss, visible}: Props) {
   const node = useRef<HTMLDivElement>(null);
-  const {newDesignLanguage} = useFeatures();
 
   const handleDismiss = useCallback(
     ({target}: React.MouseEvent<HTMLDivElement>) => {
@@ -34,7 +32,6 @@ export function SearchDismissOverlay({onDismiss, visible}: Props) {
         className={classNames(
           styles.SearchDismissOverlay,
           visible && styles.visible,
-          newDesignLanguage && styles.newDesignLanguage,
         )}
         onClick={handleDismiss}
       />
