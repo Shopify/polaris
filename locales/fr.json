@@ -82,7 +82,9 @@
         "friday": "Vendredi",
         "saturday": "Samedi",
         "sunday": "Dimanche"
-      }
+      },
+      "start": "Début de la fourchette",
+      "end": "Fin de la fourchette"
     },
     "DiscardConfirmationModal": {
       "title": "Annuler toutes les modifications non enregistrées",
@@ -297,6 +299,9 @@
     },
     "Loading": {
       "label": "Barre de chargement de la page"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Info-bulle : {label}"
     }
   }
 }

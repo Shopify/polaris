@@ -82,7 +82,9 @@
         "friday": "Fredag",
         "saturday": "Lördag",
         "sunday": "Söndag"
-      }
+      },
+      "start": "Intervallets början",
+      "end": "Intervallets slut"
     },
     "DiscardConfirmationModal": {
       "title": "Ignorera alla ändringar som inte sparats",
@@ -297,6 +299,9 @@
     },
     "Loading": {
       "label": "Fält för att ladda sida"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Verktygstips: {label}"
     }
   }
 }

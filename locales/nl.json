@@ -82,7 +82,9 @@
         "friday": "vrijdag",
         "saturday": "zaterdag",
         "sunday": "zondag"
-      }
+      },
+      "start": "Begin van reeks",
+      "end": "Einde van reeks"
     },
     "DiscardConfirmationModal": {
       "title": "Verwijder alle niet-opgeslagen wijzigingen",
@@ -297,6 +299,9 @@
     },
     "Loading": {
       "label": "Pagina laadbalk"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Knopinfo: {label}"
     }
   }
 }

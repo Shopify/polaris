@@ -6,7 +6,7 @@ import styles from './Label.scss';
 
 export interface LabelProps {
   /** Label content */
-  children?: string;
+  children?: React.ReactNode;
   /** A unique identifier for the label */
   id: string;
   /** Visually hide the label */

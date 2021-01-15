@@ -1,34 +1,21 @@
+import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
 import React, {createRef} from 'react';
-import {
-  ArrowLeftMinor,
-  ArrowRightMinor,
-  ChevronLeftMinor,
-  ChevronRightMinor,
-} from '@shopify/polaris-icons';
 
-import {TextStyle} from '../TextStyle';
-import {classNames} from '../../utilities/css';
+import type {Key} from '../../types';
 import {useI18n} from '../../utilities/i18n';
 import {isInputFocused} from '../../utilities/is-input-focused';
-import {Icon} from '../Icon';
-import {UnstyledLink} from '../UnstyledLink';
-import {Tooltip} from '../Tooltip';
-import {KeypressListener} from '../KeypressListener';
-import type {Key} from '../../types';
-import {handleMouseUpByBlurring} from '../../utilities/focus';
-import {useFeatures} from '../../utilities/features';
 import {Button} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
-import {ConditionalWrapper} from '../../utilities/components';
-
-import styles from './Pagination.scss';
+import {KeypressListener} from '../KeypressListener';
+import {TextStyle} from '../TextStyle';
+import {Tooltip} from '../Tooltip';
 
 interface AccessibilityLabels {
   previous: string;
   next: string;
 }
 
-export interface PaginationDescriptor {
+export interface PaginationProps {
   /** Keyboard shortcuts for the next button */
   nextKeys?: Key[];
   /** Keyboard shortcuts for the previous button */
@@ -57,11 +44,6 @@ export interface PaginationDescriptor {
   label?: React.ReactNode;
 }
 
-export interface PaginationProps extends PaginationDescriptor {
-  /** A more subdued control for use in headers */
-  plain?: boolean;
-}
-
 export function Pagination({
   hasNext,
   hasPrevious,
@@ -73,13 +55,11 @@ export function Pagination({
   previousTooltip,
   nextKeys,
   previousKeys,
-  plain,
   accessibilityLabel,
   accessibilityLabels,
   label,
 }: PaginationProps) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
 
   const node: React.RefObject<HTMLElement> = createRef();
 
@@ -93,62 +73,7 @@ export function Pagination({
   const nextLabel =
     accessibilityLabels?.next || i18n.translate('Polaris.Pagination.next');
 
-  const className = classNames(styles.Pagination, plain && styles.plain);
-
-  const previousClassName = classNames(
-    styles.Button,
-    !label && styles.PreviousButton,
-  );
-
-  const nextClassName = classNames(styles.Button, !label && styles.NextButton);
-
-  const previousButton = previousURL ? (
-    <UnstyledLink
-      className={previousClassName}
-      url={previousURL}
-      onMouseUp={handleMouseUpByBlurring}
-      aria-label={previousLabel}
-      id="previousURL"
-    >
-      <Icon source={ArrowLeftMinor} />
-    </UnstyledLink>
-  ) : (
-    <button
-      onClick={onPrevious}
-      type="button"
-      onMouseUp={handleMouseUpByBlurring}
-      className={previousClassName}
-      aria-label={previousLabel}
-      disabled={!hasPrevious}
-    >
-      <Icon source={ArrowLeftMinor} />
-    </button>
-  );
-
-  const nextButton = nextURL ? (
-    <UnstyledLink
-      className={nextClassName}
-      url={nextURL}
-      onMouseUp={handleMouseUpByBlurring}
-      aria-label={nextLabel}
-      id="nextURL"
-    >
-      <Icon source={ArrowRightMinor} />
-    </UnstyledLink>
-  ) : (
-    <button
-      onClick={onNext}
-      type="button"
-      onMouseUp={handleMouseUpByBlurring}
-      className={nextClassName}
-      aria-label={nextLabel}
-      disabled={!hasNext}
-    >
-      <Icon source={ArrowRightMinor} />
-    </button>
-  );
-
-  const prev = newDesignLanguage ? (
+  const prev = (
     <Button
       outline
       icon={ChevronLeftMinor}
@@ -156,11 +81,9 @@ export function Pagination({
       url={previousURL}
       onClick={onPrevious}
       disabled={!hasPrevious}
+      id="previousURL"
     />
-  ) : (
-    previousButton
   );
-
   const constructedPrevious =
     previousTooltip && hasPrevious ? (
       <Tooltip activatorWrapper="span" content={previousTooltip}>
@@ -170,7 +93,7 @@ export function Pagination({
       prev
     );
 
-  const next = newDesignLanguage ? (
+  const next = (
     <Button
       outline
       icon={ChevronRightMinor}
@@ -178,11 +101,9 @@ export function Pagination({
       url={nextURL}
       onClick={onNext}
       disabled={!hasNext}
+      id="nextURL"
     />
-  ) : (
-    nextButton
   );
-
   const constructedNext =
     nextTooltip && hasNext ? (
       <Tooltip activatorWrapper="span" content={nextTooltip}>
@@ -234,32 +155,18 @@ export function Pagination({
     );
 
   const labelMarkup = label ? (
-    <div
-      className={newDesignLanguage ? undefined : styles.Label}
-      aria-live="polite"
-    >
-      {labelTextMarkup}
-    </div>
+    <div aria-live="polite">{labelTextMarkup}</div>
   ) : null;
 
   return (
-    <nav
-      className={newDesignLanguage ? undefined : className}
-      aria-label={navLabel}
-      ref={node}
-    >
+    <nav aria-label={navLabel} ref={node}>
       {previousButtonEvents}
       {nextButtonEvents}
-      <ConditionalWrapper
-        condition={Boolean(newDesignLanguage)}
-        wrapper={(children) => (
-          <ButtonGroup segmented={!label}>{children}</ButtonGroup>
-        )}
-      >
+      <ButtonGroup segmented={!label}>
         {constructedPrevious}
         {labelMarkup}
         {constructedNext}
-      </ConditionalWrapper>
+      </ButtonGroup>
     </nav>
   );
 }

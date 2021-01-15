@@ -52,6 +52,10 @@ $icon-size: rem(16px);
       pointer-events: none;
     }
   }
+
+  @media (-ms-high-contrast: active) {
+    outline: 1px solid ms-high-contrast-color('text');
+  }
 }
 
 .TagText {
@@ -59,10 +63,6 @@ $icon-size: rem(16px);
   text-overflow: ellipsis;
   white-space: nowrap;
   vertical-align: middle;
-}
-
-@media (-ms-high-contrast: active) {
-  outline: 1px solid ms-high-contrast-color('text');
 }
 
 .Button {

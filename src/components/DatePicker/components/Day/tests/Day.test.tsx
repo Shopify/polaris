@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 
 import {Day} from '../Day';
 
@@ -90,6 +91,38 @@ describe('<Day />', () => {
       );
       day.find('button').simulate('focus');
       expect(spy).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('aria-label', () => {
+    it('includes weekeday', () => {
+      const weekday = 'Monday';
+      const currentDay = new Date();
+      const day = mountWithApp(
+        <MockTable>
+          <Day day={currentDay} weekday={weekday} />
+        </MockTable>,
+      );
+
+      const ariaLabel = day.find('button')?.prop('aria-label');
+      expect(ariaLabel).toContain(weekday);
+    });
+
+    it('includes selectedAccessibilityLabelPrefix when provided', () => {
+      const selectedAccessibilityLabelPrefix = 'Start';
+      const currentDay = new Date();
+      const day = mountWithApp(
+        <MockTable>
+          <Day
+            selected
+            day={currentDay}
+            selectedAccessibilityLabelPrefix={selectedAccessibilityLabelPrefix}
+          />
+        </MockTable>,
+      );
+
+      const ariaLabel = day.find('button')?.prop('aria-label');
+      expect(ariaLabel).toContain(selectedAccessibilityLabelPrefix);
     });
   });
 });

@@ -6,18 +6,6 @@ $item-vertical-padding: $item-min-height / 2;
 $underline-height: border-width(thicker);
 $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
-@mixin reset-before-pseudo-content {
-  &::before {
-    content: none;
-  }
-}
-
-@mixin focus-ring-override {
-  @include ms-high-contrast-outline {
-    @include reset-before-pseudo-content;
-  }
-}
-
 .Tabs {
   display: flex;
   flex-wrap: wrap;
@@ -129,10 +117,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     .Title {
       border-bottom: var(--p-override-none, $underline-height) solid
         color('indigo');
-
-      @include ms-high-contrast-outline($border-width: border-width(thicker)) {
-        @include reset-before-pseudo-content;
-      }
     }
   }
 }
@@ -247,7 +231,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 .Item.newDesignLanguage {
   border-radius: var(--p-border-radius-base);
   &:hover {
-    @include focus-ring-override;
     background-color: var(--p-surface-hovered);
   }
 
@@ -337,15 +320,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   .Tab {
     padding: spacing(tight) spacing(extra-tight);
 
-    &:hover .Title {
-      @include focus-ring-override;
-    }
-
     &:focus .Title {
-      @media (-ms-high-contrast: active) {
-        @include reset-before-pseudo-content;
-      }
-
       &::before {
         background: var(--p-border-hovered);
       }
@@ -358,7 +333,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
 
   .DisclosureActivator {
     &:hover .Title {
-      @include focus-ring-override;
       background: none;
 
       &::before {
@@ -373,10 +347,6 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
       &::before {
         background: var(--p-border-hovered);
       }
-
-      @media (-ms-high-contrast: active) {
-        @include reset-before-pseudo-content;
-      }
     }
 
     &:active .Title::before {
@@ -385,14 +355,8 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
   }
 
   .Tab-selected {
-    &:hover .Title {
-      @include ms-high-contrast-outline($border-width: border-width(thicker)) {
-        @include reset-before-pseudo-content;
-      }
-    }
-
     &:focus .Title {
-      @include ms-high-contrast-outline($border-width: border-width(thicker));
+      @include high-contrast-outline($border-width: border-width(thicker));
 
       &::before {
         background: var(--p-action-primary);
@@ -400,7 +364,7 @@ $focus-state-box-shadow-color: rgba(0, 0, 0, 0.8);
     }
 
     .Title {
-      @include ms-high-contrast-outline($border-width: border-width(thicker));
+      @include high-contrast-outline($border-width: border-width(thicker));
       color: var(--p-text);
 
       &::before {

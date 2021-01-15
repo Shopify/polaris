@@ -82,7 +82,9 @@
         "friday": "viernes",
         "saturday": "sábado",
         "sunday": "domingo"
-      }
+      },
+      "start": "Inicio del intervalo",
+      "end": "Fin del intervalo"
     },
     "DiscardConfirmationModal": {
       "title": "Descartar todos los cambios no guardados",
@@ -107,7 +109,7 @@
       "altText": "Resultados de búsqueda vacíos"
     },
     "Frame": {
-      "skipToContent": "Saltar al contenido",
+      "skipToContent": "Ir directamente al contenido",
       "Navigation": {
         "closeMobileNavigationLabel": "Cerrar la navegación"
       }
@@ -297,6 +299,9 @@
     },
     "Loading": {
       "label": "Barra de \"cargando página\""
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Descripción emergente: {label}"
     }
   }
 }
