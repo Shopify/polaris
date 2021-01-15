@@ -163,39 +163,34 @@
   }
 
   &.newDesignLanguage {
-    @include focus-ring($border-width: 0);
     background: var(--p-button-color);
-    border-color: transparent;
     box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     color: var(--p-button-text);
+    @include focus-ring;
+    border: none;
 
     &:hover {
       background: var(--p-button-color-hover);
-      border-color: transparent;
       color: var(--p-button-text);
     }
 
     &:focus {
-      border-color: transparent;
       box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     }
 
     &:active {
       background: var(--p-button-color-active);
-      border-color: transparent;
       box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     }
 
     &.pressed {
       color: var(--p-button-text);
       background: var(--p-button-color-depressed);
-      border-color: transparent;
       box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
 
       &:hover,
       &:focus {
         background: var(--p-button-color-depressed);
-        border-color: transparent;
         box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
       }
     }
@@ -238,7 +233,6 @@
   }
 
   &.newDesignLanguage {
-    @include focus-ring($border-width: border-width('base'));
     background: transparent;
     border: border-width() solid var(--p-border);
     box-shadow: none;
@@ -295,7 +289,6 @@
       &:focus {
         border: border-width('base') solid var(--p-border-critical);
         box-shadow: none;
-        @include focus-ring($style: 'focused');
       }
 
       &:active {

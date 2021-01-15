@@ -301,7 +301,7 @@
       "label": "Fält för att ladda sida"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Verktygstips: {label}"
+      "accessibilityLabel": "Verktygstips: {label}"
     }
   }
 }

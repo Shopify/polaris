@@ -698,9 +698,9 @@ $stacking-order: (
     }
 
     &.newDesignLanguage {
-      @include focus-ring($border-width: border-width('base'));
       border-color: currentColor;
       box-shadow: 0 0 0 border-width('base') currentColor;
+      @include focus-ring($border-width: rem(2px));
 
       &:focus {
         @include focus-ring($style: 'focused');

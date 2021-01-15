@@ -109,7 +109,7 @@
       "altText": "Resultados de búsqueda vacíos"
     },
     "Frame": {
-      "skipToContent": "Saltar al contenido",
+      "skipToContent": "Ir directamente al contenido",
       "Navigation": {
         "closeMobileNavigationLabel": "Cerrar la navegación"
       }
@@ -301,7 +301,7 @@
       "label": "Barra de \"cargando página\""
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Descripción emergente: {label}"
+      "accessibilityLabel": "Descripción emergente: {label}"
     }
   }
 }

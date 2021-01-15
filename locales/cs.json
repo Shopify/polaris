@@ -303,7 +303,7 @@
       "label": "Panel načítání stránky"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Tip s vysvětlením: {label}"
+      "accessibilityLabel": "Tip s vysvětlením: {label}"
     }
   }
 }

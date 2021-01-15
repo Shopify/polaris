@@ -35,7 +35,7 @@ type Type = 'file' | 'image';
 
 export interface DropZoneProps {
   /** Label for the file input */
-  label?: string;
+  label?: React.ReactNode;
   /** Adds an action to the label */
   labelAction?: LabelledProps['action'];
   /** Visually hide the label */
