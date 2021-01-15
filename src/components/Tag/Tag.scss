@@ -72,7 +72,7 @@ $icon-size: rem(16px);
   }
 
   @media (-ms-high-contrast: active) {
-    outline: 1px solid ms-high-contrast-color('text');
+    outline: 1px solid high-contrast-color('text');
   }
 }
 
