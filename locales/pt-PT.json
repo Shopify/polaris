@@ -301,7 +301,7 @@
       "label": "Barra de carregamento da página"
     },
     "TooltipOverlay": {
-      "accessibilitylabel": "Descrição: {label}"
+      "accessibilityLabel": "Descrição: {label}"
     }
   }
 }

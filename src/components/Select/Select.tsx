@@ -43,7 +43,7 @@ export interface SelectProps {
   /** List of options or option groups to choose from */
   options?: (SelectOption | SelectGroup)[];
   /** Label for the select */
-  label: string;
+  label: React.ReactNode;
   /** Adds an action to the label */
   labelAction?: LabelledProps['action'];
   /** Visually hide the label */
