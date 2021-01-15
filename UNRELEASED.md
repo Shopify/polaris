@@ -4,6 +4,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Breaking changes
 
+- Remove `light` property from `Tooltip` as it now defaults to a light background ([#3803](https://github.com/Shopify/polaris-react/pull/3803)) ([#3803](https://github.com/Shopify/polaris-react/pull/3803))
 - Made `title` property required in `Modal` for accessibility label, added `hideTitle` property ([#3803](https://github.com/Shopify/polaris-react/pull/3803)) ([#3803](https://github.com/Shopify/polaris-react/pull/3803))
 
 ### Enhancements
