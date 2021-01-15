@@ -40,16 +40,11 @@ export type Role = keyof RoleColors;
 
 export type ColorScheme = 'light' | 'dark';
 
-export interface LegacyColors {
-  /** Sets the background color of the top bar component. Complimentary and typography colors are determined programmatically */
-  topBar?: Record<string, string>;
-}
-
 // The value that is passed into the ThemeProvider
 export interface ThemeConfig {
   /** Sets the logo for the top bar and contextual save bar components*/
   logo?: ThemeLogo;
-  colors?: Partial<RoleColors> & LegacyColors;
+  colors?: Partial<RoleColors>;
   colorScheme?: ColorScheme;
   config?: Config;
   frameOffset?: number;

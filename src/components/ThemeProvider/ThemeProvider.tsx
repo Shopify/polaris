@@ -9,7 +9,6 @@ import {
   toString,
   Tokens,
 } from '../../utilities/theme';
-import {useFeatures} from '../../utilities/features';
 
 type OriginalColorScheme = Required<ThemeConfig['colorScheme']>;
 type Inverse = 'inverse';
@@ -26,7 +25,7 @@ interface ThemeProviderThemeConfig extends Discard<ThemeConfig, 'colorScheme'> {
 
 interface ThemeProviderProps {
   /** Custom logos and colors provided to select components */
-  theme: ThemeProviderThemeConfig;
+  theme?: ThemeProviderThemeConfig;
   /**
    * By default, Polaris avoids re-declaring custom properties within the same React tree
    * This prop ensures that the CSS custom properties are always rendered. This is useful
@@ -38,12 +37,10 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({
-  theme: themeConfig,
+  theme: themeConfig = {colorScheme: 'light'},
   alwaysRenderCustomProperties = false,
   children,
 }: ThemeProviderProps) {
-  const {newDesignLanguage} = useFeatures();
-
   const parentContext = useContext(ThemeContext);
   const isParentThemeProvider = parentContext === undefined;
 
@@ -67,26 +64,16 @@ export function ThemeProvider({
 
     const customProperties = buildCustomProperties(
       processedThemeConfig,
-      newDesignLanguage,
       Tokens,
     );
 
     const theme = {
-      ...buildThemeContext(
-        processedThemeConfig,
-        newDesignLanguage ? customProperties : undefined,
-      ),
+      ...buildThemeContext(processedThemeConfig, customProperties),
       textColor: customProperties['--p-text'] || '',
     };
 
     return [customProperties, theme];
-  }, [
-    isParentThemeProvider,
-    newDesignLanguage,
-    parentColorScheme,
-    parentColors,
-    themeConfig,
-  ]);
+  }, [isParentThemeProvider, parentColorScheme, parentColors, themeConfig]);
 
   // We want these values to be empty string instead of `undefined` when not set.
   // Otherwise, setting a style property to `undefined` does not remove it from the DOM.
