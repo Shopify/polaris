@@ -1,7 +1,7 @@
 {
   "name": "@endearhq/polaris",
   "description": "Shopify’s product component library",
-  "version": "5.13.1-fork.0",
+  "version": "5.13.1-fork.2",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Endear <dev@endearhq.com>",
@@ -68,8 +68,7 @@
     "copy-polaris-tokens": "rimraf ./src/styles/polaris-tokens && shx cp -r ./node_modules/@shopify/polaris-tokens/dist ./src/styles/polaris-tokens && yarn run copy-polaris-tokens-map",
     "copy-polaris-tokens-map": "rimraf ./src/styles/polaris-tokens/colors.color-map.scss && shx cp -r ./src/styles/_colors.color-map.scss ./src/styles/polaris-tokens/colors.color-map.scss",
     "prepublish": "in-publish && yarn run build || :",
-    "_postpublish": "in-publish && npm-run-all new-version-pr-generator",
-    "postpublish": "in-publish",
+    "_postpublish": "in-publish",
     "dev": "npm-run-all copy-polaris-tokens storybook",
     "start": "serve -l ${PORT} -c .storybook/serve.json",
     "heroku-postbuild": "yarn run storybook:build",
