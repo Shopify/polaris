@@ -15,7 +15,6 @@ export interface SectionProps {
   flush?: boolean;
   fullWidth?: boolean;
   actions?: ComplexAction[];
-  flush?: boolean;
 }
 
 export function Section({
@@ -25,14 +24,12 @@ export function Section({
   flush,
   fullWidth,
   actions,
-  flush,
 }: SectionProps) {
   const className = classNames(
     styles.Section,
     flush && styles['Section-flush'],
     subdued && styles['Section-subdued'],
     fullWidth && styles['Section-fullWidth'],
-    flush && styles['Section-flush'],
   );
 
   const actionMarkup = actions ? (
