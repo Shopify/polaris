@@ -70,6 +70,7 @@
 
 .Section-flush {
   padding: spacing(none);
+
   @include page-content-when-not-fully-condensed {
     padding: spacing(none);
   }

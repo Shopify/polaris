@@ -20,7 +20,8 @@
         "attention": "Huomio",
         "new": "Uusi",
         "critical": "Kriittinen"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Ladataan",
@@ -81,7 +82,9 @@
         "friday": "Perjantai",
         "saturday": "Lauantai",
         "sunday": "Sunnuntai"
-      }
+      },
+      "start": "Alueen alku",
+      "end": "Alueen loppu"
     },
     "DiscardConfirmationModal": {
       "title": "Hylkää kaikki tallentamattomat muutokset",
@@ -293,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Lisää toimintoja"
+    },
+    "Loading": {
+      "label": "Sivun latautumisen palkki"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Työkaluvihje: {label}"
     }
   }
 }

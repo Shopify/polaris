@@ -1,7 +1,7 @@
 {
   "name": "@endearhq/polaris",
   "description": "Shopify’s product component library",
-  "version": "5.10.0-fork.1",
+  "version": "5.13.1-fork.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Endear <dev@endearhq.com>",
@@ -84,7 +84,7 @@
   },
   "dependencies": {
     "@shopify/polaris-icons": "^4.1.0",
-    "@shopify/polaris-tokens": "^2.15.0",
+    "@shopify/polaris-tokens": "^2.16.0",
     "@types/react": "^16.9.12",
     "@types/react-dom": "^16.9.4",
     "@types/react-transition-group": "^4.4.0",
@@ -98,7 +98,7 @@
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/node": "^7.6.1",
-    "@google-cloud/storage": "^4.3.1",
+    "@google-cloud/storage": "^5.7.0",
     "@octokit/rest": "^16.36.0",
     "@percy/storybook": "^3.3.0",
     "@rollup/plugin-babel": "^5.1.0",
@@ -129,8 +129,7 @@
     "babel-preset-shopify": "^21.0.0",
     "chalk": "^2.4.2",
     "change-case": "^3.1.0",
-    "chromatic": "^5.0.0",
-    "codecov": "^3.5.0",
+    "codecov": "^3.8.1",
     "commander": "^4.1.0",
     "copyfiles": "^2.1.1",
     "core-js": "^3.6.5",

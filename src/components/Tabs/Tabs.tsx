@@ -184,12 +184,13 @@ class TabsInner extends PureComponent<CombinedProps, State> {
             onKeyUp={this.handleKeyPress}
           >
             {tabsMarkup}
-            <li className={disclosureTabClassName}>
+            <li className={disclosureTabClassName} role="presentation">
               <Popover
                 preferredPosition="below"
                 activator={activator}
                 active={disclosureActivatorVisible && showDisclosure}
                 onClose={this.handleClose}
+                autofocusTarget="first-node"
               >
                 <List
                   focusIndex={hiddenTabs.indexOf(tabToFocus)}
@@ -223,7 +224,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
 
     let newFocus = tabsArrayInOrder.indexOf(tabToFocus);
 
-    if (key === 'ArrowRight' || key === 'ArrowDown') {
+    if (key === 'ArrowRight') {
       newFocus += 1;
 
       if (newFocus === tabsArrayInOrder.length) {
@@ -231,7 +232,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       }
     }
 
-    if (key === 'ArrowLeft' || key === 'ArrowUp') {
+    if (key === 'ArrowLeft') {
       if (newFocus === -1 || newFocus === 0) {
         newFocus = tabsArrayInOrder.length - 1;
       } else {
@@ -246,8 +247,9 @@ class TabsInner extends PureComponent<CombinedProps, State> {
 
   // eslint-disable-next-line @shopify/react-no-multiple-render-methods
   private renderTabMarkup = (tab: TabDescriptor, index: number) => {
-    const {selected} = this.props;
+    const {selected, children} = this.props;
     const {tabToFocus} = this.state;
+    const tabPanelID = tab.panelID || `${tab.id}-panel`;
 
     if (!tab) {
       return null;
@@ -261,7 +263,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
         focused={index === tabToFocus}
         selected={index === selected}
         onClick={this.handleTabClick}
-        panelID={tab.panelID || `${tab.id}-panel`}
+        panelID={children ? tabPanelID : undefined}
         accessibilityLabel={tab.accessibilityLabel}
         url={tab.url}
       >
@@ -395,12 +397,7 @@ function noop() {}
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
-  if (
-    key === 'ArrowUp' ||
-    key === 'ArrowDown' ||
-    key === 'ArrowLeft' ||
-    key === 'ArrowRight'
-  ) {
+  if (key === 'ArrowLeft' || key === 'ArrowRight') {
     event.preventDefault();
     event.stopPropagation();
   }

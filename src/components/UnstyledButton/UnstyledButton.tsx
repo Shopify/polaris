@@ -24,8 +24,10 @@ export function UnstyledButton({
   loading,
   pressed,
   accessibilityLabel,
+  role,
   ariaControls,
   ariaExpanded,
+  ariaDescribedBy,
   ariaPressed,
   onClick,
   onFocus,
@@ -58,6 +60,7 @@ export function UnstyledButton({
   };
   const interactiveProps = {
     ...commonProps,
+    role,
     onClick,
     onFocus,
     onBlur,
@@ -88,10 +91,10 @@ export function UnstyledButton({
         {...interactiveProps}
         type={submit ? 'submit' : 'button'}
         disabled={disabled}
-        role={loading ? 'alert' : undefined}
         aria-busy={loading ? true : undefined}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
+        aria-describedby={ariaDescribedBy}
         aria-pressed={ariaPressedStatus}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}

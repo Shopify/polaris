@@ -1,10 +1,12 @@
 import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Link} from 'components';
 
 import {Tooltip} from '../Tooltip';
 import {TooltipOverlay} from '../components';
+import {Key} from '../../../types';
 
 describe('<Tooltip />', () => {
   const tooltip = mountWithAppProvider(
@@ -63,5 +65,37 @@ describe('<Tooltip />', () => {
   it('unrenders its children on mouseLeave', () => {
     wrapperComponent.simulate('mouseLeave');
     expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(false);
+  });
+
+  it('closes itself when escape is pressed on keyup', () => {
+    const tooltip = mountWithApp(
+      <Tooltip active content="This order has shipping labels.">
+        <div>Order #1001</div>
+      </Tooltip>,
+    );
+
+    tooltip.find('span')!.trigger('onKeyUp', {
+      keyCode: Key.Escape,
+    });
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: false,
+    });
+  });
+
+  it('passes accessibility label to TooltipOverlay', () => {
+    const accessibilityLabel = 'accessibility label';
+
+    const tooltip = mountWithApp(
+      <Tooltip
+        accessibilityLabel={accessibilityLabel}
+        content="Inner content"
+        active
+      >
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      accessibilityLabel,
+    });
   });
 });

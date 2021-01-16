@@ -20,7 +20,8 @@
         "attention": "Atenção",
         "new": "Novo",
         "critical": "Crítico"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Carregar",
@@ -81,7 +82,9 @@
         "friday": "Sexta-feira",
         "saturday": "Sábado",
         "sunday": "Domingo"
-      }
+      },
+      "start": "Início do intervalo",
+      "end": "Fim do intervalo"
     },
     "DiscardConfirmationModal": {
       "title": "Descartar todas as alterações não guardadas",
@@ -293,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Mais ações"
+    },
+    "Loading": {
+      "label": "Barra de carregamento da página"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Descrição: {label}"
     }
   }
 }

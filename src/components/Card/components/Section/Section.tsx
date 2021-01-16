@@ -12,6 +12,7 @@ export interface SectionProps {
   title?: React.ReactNode;
   children?: React.ReactNode;
   subdued?: boolean;
+  flush?: boolean;
   fullWidth?: boolean;
   actions?: ComplexAction[];
   flush?: boolean;
@@ -21,12 +22,14 @@ export function Section({
   children,
   title,
   subdued,
+  flush,
   fullWidth,
   actions,
   flush,
 }: SectionProps) {
   const className = classNames(
     styles.Section,
+    flush && styles['Section-flush'],
     subdued && styles['Section-subdued'],
     fullWidth && styles['Section-fullWidth'],
     flush && styles['Section-flush'],

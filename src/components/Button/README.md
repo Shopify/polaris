@@ -314,6 +314,45 @@ function DisclosureButtion() {
 }
 ```
 
+### Right-aligned disclosure
+
+<!-- example-for: web -->
+
+When working with `fullWidth + textAlign="left"`, the `disclosure` will align itself to the far right.
+
+```jsx
+function RightAlignedDisclosureButton() {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div style={{width: '200px'}}>
+      <Button
+        fullWidth
+        textAlign="left"
+        disclosure={expanded ? 'up' : 'down'}
+        onClick={() => setExpanded(!expanded)}
+      >
+        {expanded ? 'Show less' : 'Show more'}
+      </Button>
+    </div>
+  );
+}
+```
+
+### Select disclosure button
+
+<!-- example-for: web -->
+
+Use to indicate that multiple options are available from this control, similar to a `<select />` HTML element.
+
+```jsx
+<div style={{height: '100px'}}>
+  <Button disclosure="select" onClick={() => console.log('Open Popover')}>
+    Select options
+  </Button>
+</div>
+```
+
 ### Split button
 
 <!-- example-for: web -->

@@ -20,7 +20,8 @@
         "attention": "Attentie",
         "new": "Nieuw",
         "critical": "Kritiek"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Laden",
@@ -81,7 +82,9 @@
         "friday": "vrijdag",
         "saturday": "zaterdag",
         "sunday": "zondag"
-      }
+      },
+      "start": "Begin van reeks",
+      "end": "Einde van reeks"
     },
     "DiscardConfirmationModal": {
       "title": "Verwijder alle niet-opgeslagen wijzigingen",
@@ -293,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Meer acties"
+    },
+    "Loading": {
+      "label": "Pagina laadbalk"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "Knopinfo: {label}"
     }
   }
 }

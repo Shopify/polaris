@@ -20,7 +20,8 @@
         "attention": "주의",
         "new": "신규",
         "critical": "중요"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "로드 중",
@@ -81,7 +82,9 @@
         "friday": "금요일",
         "saturday": "토요일",
         "sunday": "일요일"
-      }
+      },
+      "start": "시작 범위",
+      "end": "끝 범위"
     },
     "DiscardConfirmationModal": {
       "title": "저장되지 않은 모든 변경 사항 버리기",
@@ -293,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "기타 작업"
+    },
+    "Loading": {
+      "label": "페이지 로딩 표시줄"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "툴팁: {label}"
     }
   }
 }

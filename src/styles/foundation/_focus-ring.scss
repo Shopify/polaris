@@ -30,13 +30,13 @@
       left: $negative-offset;
       display: block;
       pointer-events: none;
-      box-shadow: 0 0 0 $negative-offset var(--p-focused);
+      box-shadow: 0 0 0 $negative-offset var(--p-focused, color('indigo'));
       transition: box-shadow duration(fast) var(--p-ease);
       border-radius: calc(#{$border-radius} + #{rem(1px)});
     }
   } @else if $style == 'focused' {
     &::after {
-      box-shadow: 0 0 0 $stroke var(--p-focused);
+      box-shadow: 0 0 0 $stroke var(--p-focused, color('indigo'));
       @include high-contrast-outline;
     }
   }

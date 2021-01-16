@@ -2,8 +2,6 @@
 
 Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to format new entries. 💜
 
----
-
 ### Breaking changes
 
 ### Enhancements
@@ -21,21 +19,12 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
-- Fixed `SkeletonPage` to make the title font size consistent with the `Page` component ([#3449](https://github.com/Shopify/polaris-react/pull/3449))
-- Removed `Navigation.Item` color change when focused ([#3562](https://github.com/Shopify/polaris-react/pull/3562))
-- Adds monochrome styling to `connectedDisclosure` prop on `Button` component and fix spacing issue ([#3588](https://github.com/Shopify/polaris-react/pull/3588)
-
 ### Documentation
 
 ### Development workflow
 
-- Updated our CI accessibility checks to use the axe runnner provided by Storybook's a11y addon. Now now errors match between CI and local runs in Storybook ([#3284](https://github.com/Shopify/polaris-react/pull/3284))
-- Updated sewing-kit to 0.140.0 and TypeScript to 4.0.0 ([#3566](https://github.com/Shopify/polaris-react/pull/3566))
-
 ### Dependency upgrades
 
 ### Code quality
-
-- **`Button`:** Reduced redundant code repeated within `UnstyledButton` ([#3494](https://github.com/Shopify/polaris-react/pull/3494))
 
 ### Deprecations

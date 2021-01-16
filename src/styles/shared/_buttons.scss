@@ -31,9 +31,6 @@
   cursor: pointer;
   user-select: none;
   text-decoration: none;
-  transition-property: background, border, box-shadow;
-  transition-duration: var(--p-override-none, duration());
-  transition-timing-function: var(--p-override-none, easing());
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
@@ -54,7 +51,6 @@
   }
 
   &:active {
-    // Same color gradient is necessary for background transitions
     background: linear-gradient(
       to bottom,
       color('sky', 'light'),
@@ -114,7 +110,6 @@
 
 @mixin base-button-disabled {
   @include recolor-icon(color('ink', 'lightest'));
-  transition: none;
   background: linear-gradient(
     to bottom,
     color('sky', 'light'),
@@ -168,9 +163,7 @@
   }
 
   &.newDesignLanguage {
-    @include focus-ring($border-width: 0);
     background: var(--p-button-color);
-    border-width: 0;
     border-color: transparent;
     box-shadow: var(--p-button-drop-shadow), var(--p-button-inner-shadow);
     color: var(--p-button-text);
@@ -245,7 +238,6 @@
 
   &.newDesignLanguage {
     background: transparent;
-    @include focus-ring($border-width: border-width('base'));
     border: border-width() solid var(--p-border);
     box-shadow: none;
     color: var(--p-text);
@@ -301,7 +293,6 @@
       &:focus {
         border: border-width('base') solid var(--p-border-critical);
         box-shadow: none;
-        @include focus-ring($style: 'focused');
       }
 
       &:active {
@@ -352,7 +343,6 @@
   margin: -2px -5px;
   background: $background-color;
   border-radius: border-radius();
-  transition: opacity duration() easing();
 }
 
 @mixin unstyled-button() {

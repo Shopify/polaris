@@ -758,10 +758,10 @@ export const ResourceList: ResourceListType = function ResourceList<ItemType>({
 
   const loadingOverlay = loading ? (
     <>
-      <div className={styles.SpinnerContainer} style={spinnerStyle}>
+      <li className={styles.SpinnerContainer} style={spinnerStyle}>
         <Spinner size={spinnerSize} accessibilityLabel="Items are loading" />
-      </div>
-      <div className={styles.LoadingOverlay} />
+      </li>
+      <li className={styles.LoadingOverlay} />
     </>
   ) : null;
 

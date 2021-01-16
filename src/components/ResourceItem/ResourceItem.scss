@@ -370,6 +370,16 @@ $resource-list-item-variables: (
     border-top: border('divider');
   }
 
+  &:last-of-type {
+    border-bottom-left-radius: var(--p-border-radius-wide, border-radius());
+    border-bottom-right-radius: var(--p-border-radius-wide, border-radius());
+
+    .ItemWrapper {
+      border-bottom-left-radius: var(--p-border-radius-wide, border-radius());
+      border-bottom-right-radius: var(--p-border-radius-wide, border-radius());
+    }
+  }
+
   &.newDesignLanguage {
     position: relative;
     @include focus-ring($border-width: rem(-1px));

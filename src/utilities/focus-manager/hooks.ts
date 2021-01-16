@@ -5,7 +5,11 @@ import {MissingAppProviderError} from '../errors';
 
 import {FocusManagerContext} from './context';
 
-export function useFocusManager() {
+interface Options {
+  trapping: boolean;
+}
+
+export function useFocusManager({trapping}: Options) {
   const focusManager = useContext(FocusManagerContext);
   const id = useUniqueId();
 
@@ -19,14 +23,16 @@ export function useFocusManager() {
     remove: removeFocusItem,
   } = focusManager;
   const canSafelyFocus = trapFocusList[0] === id;
+
   const value = useMemo(() => ({canSafelyFocus}), [canSafelyFocus]);
 
   useEffect(() => {
+    if (!trapping) return;
     addFocusItem(id);
     return () => {
       removeFocusItem(id);
     };
-  }, [addFocusItem, id, removeFocusItem]);
+  }, [addFocusItem, id, removeFocusItem, trapping]);
 
   return value;
 }

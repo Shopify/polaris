@@ -20,7 +20,8 @@
         "attention": "ระวัง",
         "new": "ใหม่",
         "critical": "ร้ายแรง"
-      }
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
     },
     "Button": {
       "spinnerAccessibilityLabel": "กำลังโหลด",
@@ -81,7 +82,9 @@
         "friday": "วันศุกร์",
         "saturday": "วันเสาร์",
         "sunday": "วันอาทิตย์"
-      }
+      },
+      "start": "จุดเริ่มของช่วง",
+      "end": "จุดสิ้นสุดของช่วง"
     },
     "DiscardConfirmationModal": {
       "title": "ละทิ้งการเปลี่ยนแปลงที่ไม่ได้บันทึกทั้งหมด",
@@ -293,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "การดำเนินการเพิ่มเติม"
+    },
+    "Loading": {
+      "label": "แถบแสดงการโหลดหน้า"
+    },
+    "TooltipOverlay": {
+      "accessibilitylabel": "เคล็ดลับเกี่ยวกับเครื่องมือ: {label}"
     }
   }
 }
