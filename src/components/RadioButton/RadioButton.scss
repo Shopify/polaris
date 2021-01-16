@@ -8,72 +8,8 @@
 .Input {
   @include visually-hidden;
 }
-// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
-.RadioButton:not(.newDesignLanguage) {
-  .Input {
-    &:focus,
-    &:active,
-    &:checked {
-      + .Backdrop {
-        background: color('indigo');
-      }
-    }
 
-    &:checked {
-      ~ .Icon {
-        transform: translate(-50%, -50%) scale(1);
-      }
-    }
-
-    &:focus,
-    &:active {
-      + .Backdrop {
-        @include control-backdrop(focused);
-      }
-    }
-
-    &:disabled {
-      + .Backdrop {
-        @include control-backdrop(disabled);
-      }
-      ~ .Icon {
-        background-color: color('sky', 'dark');
-      }
-    }
-  }
-
-  .Backdrop {
-    @include control-backdrop;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 50%;
-    &::after {
-      border-radius: 50%;
-    }
-  }
-
-  .Icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transform-origin: 50% 50%;
-    height: 50%;
-    width: 50%;
-    background: var(--p-icon-on-interactive, color('indigo'));
-    border-radius: 50%;
-    transition: control-icon-transition();
-
-    @media (-ms-high-contrast: active) {
-      background: ms-high-contrast-color('text');
-    }
-  }
-}
-
-.RadioButton.newDesignLanguage {
+.RadioButton {
   margin: var(--p-choice-margin, 0);
 
   .Backdrop {
