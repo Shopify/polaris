@@ -10,6 +10,10 @@ $shadow-top: inset 0 $shadow-size $shadow-size (-1 * $shadow-size)
 .Scrollable {
   -webkit-overflow-scrolling: touch;
   position: relative;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .horizontal {

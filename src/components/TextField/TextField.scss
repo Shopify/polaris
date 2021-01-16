@@ -238,6 +238,7 @@ $stacking-order: (
 }
 
 .ClearButton {
+  @include focus-ring;
   @include unstyled-button;
   z-index: z-index(contents, $stacking-order);
   margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
@@ -247,8 +248,16 @@ $stacking-order: (
     @include color-icon('ink', 'lighter');
   }
 
+  &:focus:enabled {
+    @include focus-ring($style: 'focused');
+  }
+
   &:disabled {
     cursor: default;
+  }
+
+  &.ClearButton-hidden {
+    @include visually-hidden;
   }
 }
 

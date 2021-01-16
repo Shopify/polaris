@@ -127,7 +127,7 @@ export function Tab({
   );
 
   return (
-    <li className={tabContainerClassNames} role="presentation" ref={node}>
+    <li className={tabContainerClassNames} ref={node} role="presentation">
       {markup}
     </li>
   );

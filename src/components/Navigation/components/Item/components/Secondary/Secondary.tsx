@@ -7,12 +7,17 @@ import styles from '../../../../Navigation.scss';
 interface SecondaryProps {
   expanded: boolean;
   children?: React.ReactNode;
+  id?: string;
 }
 
-export function Secondary({children, expanded}: SecondaryProps) {
-  const id = useUniqueId('SecondaryNavigation');
+export function Secondary({id, children, expanded}: SecondaryProps) {
+  const uid = useUniqueId('SecondaryNavigation');
   return (
-    <Collapsible id={id} open={expanded}>
+    <Collapsible
+      id={id || uid}
+      open={expanded}
+      transition={{duration: '0ms', timingFunction: 'linear'}}
+    >
       <ul className={styles.List}>{children}</ul>
     </Collapsible>
   );

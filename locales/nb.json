@@ -82,7 +82,9 @@
         "friday": "Fredag",
         "saturday": "Lørdag",
         "sunday": "Søndag"
-      }
+      },
+      "start": "Start av intervall",
+      "end": "Slutt på intervall"
     },
     "DiscardConfirmationModal": {
       "title": "Forkast alle ulagrede endringer",
@@ -294,6 +296,12 @@
     },
     "Actions": {
       "moreActions": "Flere handlinger"
+    },
+    "Loading": {
+      "label": "Sidelastingslinje"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Verktøytips: {label}"
     }
   }
 }
