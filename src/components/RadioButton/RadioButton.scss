@@ -1,15 +1,43 @@
 @import '../../styles/common';
 
-.RadioButton {
-  position: relative;
-  margin: var(--p-choice-margin, 0);
-}
-
+// stylelint-disable selector-max-specificity, selector-max-class
 .Input {
   @include visually-hidden;
+
+  &.keyFocused + .Backdrop {
+    @include focus-ring($style: 'focused');
+    &::after {
+      border-radius: 50%;
+    }
+  }
+
+  &:checked + .Backdrop {
+    border-color: var(--p-interactive);
+
+    &::before {
+      transition: opacity var(--p-duration-1-5-0) var(--p-ease),
+        transform var(--p-duration-1-5-0) var(--p-ease);
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  &:disabled + .Backdrop {
+    border-color: var(--p-border-disabled);
+
+    &::before {
+      background-color: var(--p-border-disabled);
+    }
+
+    &.hover,
+    &:hover {
+      cursor: default;
+    }
+  }
 }
 
 .RadioButton {
+  position: relative;
   margin: var(--p-choice-margin, 0);
 
   .Backdrop {
@@ -57,44 +85,4 @@
       border-color: var(--p-border-hovered);
     }
   }
-
-  .Input {
-    &.keyFocused {
-      + .Backdrop {
-        @include focus-ring($style: 'focused');
-        &::after {
-          border-radius: 50%;
-        }
-      }
-    }
-
-    &:checked {
-      + .Backdrop {
-        border-color: var(--p-interactive);
-
-        &::before {
-          transition: opacity var(--p-duration-1-5-0) var(--p-ease),
-            transform var(--p-duration-1-5-0) var(--p-ease);
-          opacity: 1;
-          transform: translate(-50%, -50%) scale(1);
-        }
-      }
-    }
-
-    &:disabled {
-      + .Backdrop {
-        border-color: var(--p-border-disabled);
-
-        &::before {
-          background-color: var(--p-border-disabled);
-        }
-
-        &.hover,
-        &:hover {
-          cursor: default;
-        }
-      }
-    }
-  }
 }
-// stylelint-enable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
