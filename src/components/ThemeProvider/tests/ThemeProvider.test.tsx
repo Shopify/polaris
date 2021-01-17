@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {mountWithApp} from 'test-utilities/react-testing';
+import {mountWithApp} from 'test-utilities';
 
 import {ThemeProvider} from '../ThemeProvider';
 import {ThemeContext} from '../../../utilities/theme';
