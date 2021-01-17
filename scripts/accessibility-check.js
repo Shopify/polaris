@@ -26,7 +26,7 @@ const getUrls = async (browser) => {
       memo.push(
         url,
         // Dark mode has lots of errors. It is still very WIP so ignore for now
-        // `${url}&contexts=New%20Design%20Language%3DEnabled%20-%20Dark%20Mode`,
+        // `${url}&contexts=Color%20scheme%3DDark%20Mode`,
       );
     }
 
