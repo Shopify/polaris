@@ -66,7 +66,7 @@ export function PolarisTestProvider({
   link,
   theme = {},
   mediaQuery,
-  features: featuresProp = {},
+  features,
   frame,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? StrictMode : Fragment;
@@ -76,8 +76,6 @@ export function PolarisTestProvider({
   const stickyManager = new StickyManager();
 
   const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
-
-  const features = {...featuresProp};
 
   const customProperties = buildCustomProperties({
     ...theme,

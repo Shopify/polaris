@@ -39,11 +39,10 @@ export function buildThemeContext(
   cssCustomProperties?: CustomPropertiesLike,
 ): Theme {
   const {logo, colors = {}, colorScheme} = themeConfig;
-  const {...colorValues} = colors;
   return {
     logo,
     cssCustomProperties: toString(cssCustomProperties),
-    colors: colorValues,
+    colors,
     colorScheme,
   };
 }
