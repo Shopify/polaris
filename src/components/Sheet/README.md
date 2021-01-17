@@ -141,7 +141,7 @@ function SheetExample() {
       <Sheet
         open={sheetActive}
         onClose={toggleSheetActive}
-        ariaLabel="Manage sales channels"
+        accessibilityLabel="Manage sales channels"
       >
         <div
           style={{
