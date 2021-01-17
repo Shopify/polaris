@@ -2,43 +2,9 @@ import React from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
-import {FeaturesContext} from '../../../../../utilities/features';
 import {Tab} from '../Tab';
 
 describe('<Tab />', () => {
-  const tab = <Tab id="my-tab">Tab</Tab>;
-
-  const tabsWithoutDesignLanguage = mountWithAppProvider(tab);
-  const tabsWithDesignLanguage = mountWithAppProvider(
-    <FeaturesContext.Provider value={{newDesignLanguage: true}}>
-      {tab}
-    </FeaturesContext.Provider>,
-  );
-
-  it('newDesignLanguage class is present on li element', () => {
-    expect(tabsWithDesignLanguage.find('li')).toHaveLength(1);
-
-    expect(
-      tabsWithoutDesignLanguage.find('li').prop('className'),
-    ).not.toContain('newDesignLanguage');
-
-    expect(tabsWithDesignLanguage.find('li').prop('className')).toContain(
-      'newDesignLanguage',
-    );
-  });
-
-  it('newDesignLanguage class is present on title element', () => {
-    expect(tabsWithDesignLanguage.find('span')).toHaveLength(1);
-
-    expect(
-      tabsWithoutDesignLanguage.find('span').prop('className'),
-    ).not.toContain('newDesignLanguage');
-
-    expect(tabsWithDesignLanguage.find('span').prop('className')).toContain(
-      'newDesignLanguage',
-    );
-  });
-
   it('has the tab role', () => {
     const tab = mountWithAppProvider(<Tab id="my-tab">Tab</Tab>);
     expect(tab.find('button').prop('role')).toBe('tab');

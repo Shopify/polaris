@@ -71,18 +71,9 @@ class TabsInner extends PureComponent<CombinedProps, State> {
   };
 
   render() {
-    const {
-      tabs,
-      selected,
-      fitted,
-      children,
-      i18n,
-      features,
-      disclosureText,
-    } = this.props;
+    const {tabs, selected, fitted, children, i18n, disclosureText} = this.props;
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
-    const {newDesignLanguage} = features;
 
     const panelMarkup = children
       ? tabs.map((_tab, index) => {
@@ -116,22 +107,11 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       styles.Tabs,
       fitted && styles.fitted,
       disclosureActivatorVisible && styles.fillSpace,
-      newDesignLanguage && styles.newDesignLanguage,
-    );
-
-    const wrapperClassName = classNames(
-      styles.Wrapper,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const disclosureTabClassName = classNames(
       styles.DisclosureTab,
       disclosureActivatorVisible && styles['DisclosureTab-visible'],
-    );
-
-    const disclosureActivatorClassName = classNames(
-      styles.TabContainer,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const disclosureButtonClassName = classNames(
@@ -167,14 +147,14 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     );
 
     const activator = disclosureText ? (
-      <div className={disclosureActivatorClassName}>{disclosureButton}</div>
+      <div className={styles.TabContainer}>{disclosureButton}</div>
     ) : (
       disclosureButton
     );
 
     return (
       <div>
-        <div className={wrapperClassName}>
+        <div className={styles.Wrapper}>
           <ul
             role="tablist"
             className={classname}
