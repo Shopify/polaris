@@ -25,7 +25,6 @@ const getUrls = async (browser) => {
       const url = `${iframePath}?id=${story.id}`;
       memo.push(
         url,
-        `${url}&contexts=New%20Design%20Language%3DEnabled%20-%20Light%20Mode`,
         // Dark mode has lots of errors. It is still very WIP so ignore for now
         // `${url}&contexts=New%20Design%20Language%3DEnabled%20-%20Dark%20Mode`,
       );
