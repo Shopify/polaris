@@ -498,6 +498,7 @@ describe('<Filters />', () => {
 
       expect(clearAllButton.prop('disabled')).toBeTruthy();
       expect(focusSpy).toHaveBeenCalled();
+      focusSpy.mockRestore();
     });
   });
 
