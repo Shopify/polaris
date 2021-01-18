@@ -19,7 +19,7 @@
   &:checked,
   &.Input-indeterminate {
     + .Backdrop {
-      @include control-backdrop(active, $global-theming: true);
+      @include control-backdrop(active);
     }
     ~ .Icon {
       transition: opacity var(--p-duration-1-5-0) var(--p-ease),
@@ -31,7 +31,7 @@
 
   &:disabled {
     + .Backdrop {
-      @include control-backdrop(disabled, $global-theming: true);
+      @include control-backdrop(disabled);
     }
   }
 
@@ -47,7 +47,7 @@
 // stylelint-enable selector-max-specificity, selector-max-class,  selector-max-combinators, max-nesting-depth
 
 .Backdrop {
-  @include control-backdrop($global-theming: true);
+  @include control-backdrop();
   position: relative;
   display: block;
   width: 100%;
@@ -80,7 +80,7 @@
   }
 
   .Backdrop {
-    @include control-backdrop(error, $global-theming: true);
+    @include control-backdrop(error);
   }
   .Input:checked,
   .Input:active,

@@ -3,74 +3,14 @@
 .Checkbox {
   position: relative;
   width: 100%;
-  margin: var(--p-choice-margin, 0);
+  margin: var(--p-choice-margin);
 }
 
 .Input {
   @include visually-hidden;
 }
-// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators, max-nesting-depth
-.Checkbox:not(.newDesignLanguage) {
-  .Input {
-    &:focus,
-    &:active,
-    &:checked {
-      + .Backdrop {
-        background: color('indigo');
-      }
-    }
 
-    &:checked {
-      ~ .Icon {
-        transform: translate(-50%, -50%) scale(1);
-      }
-    }
-
-    &:focus,
-    &:active {
-      + .Backdrop {
-        @include control-backdrop(focused);
-      }
-    }
-
-    &:disabled {
-      + .Backdrop {
-        @include control-backdrop(disabled);
-      }
-
-      ~ .Icon {
-        @include recolor-icon(color('ink', 'lightest'));
-      }
-    }
-  }
-
-  &.active {
-    .Backdrop {
-      @include control-backdrop(focused);
-    }
-  }
-
-  .Backdrop {
-    @include control-backdrop;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-
-  .Icon {
-    @include recolor-icon(color('indigo'));
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transform-origin: 50% 50%;
-    transition: control-icon-transition();
-  }
-}
-
-.Checkbox.newDesignLanguage {
+.Checkbox {
   .Input {
     &.keyFocused {
       + .Backdrop {
@@ -82,7 +22,7 @@
     &:checked,
     &.Input-indeterminate {
       + .Backdrop {
-        @include control-backdrop(active, $global-theming: true);
+        @include control-backdrop(active);
       }
       ~ .Icon {
         transform: translate(-50%, -50%) scale(1);
@@ -94,7 +34,7 @@
 
     &:disabled {
       + .Backdrop {
-        @include control-backdrop(disabled, $global-theming: true);
+        @include control-backdrop(disabled);
       }
     }
 
@@ -115,7 +55,7 @@
   }
 
   .Backdrop {
-    @include control-backdrop($global-theming: true);
+    @include control-backdrop();
     position: relative;
     display: block;
     width: 100%;
@@ -132,7 +72,7 @@
 }
 
 .Icon {
-  @include recolor-icon(var(--p-icon-on-interactive, color('indigo')));
+  @include recolor-icon(var(--p-icon-on-interactive));
   position: absolute;
   top: 50%;
   left: 50%;
