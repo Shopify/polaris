@@ -134,7 +134,7 @@ export class Scrollable extends Component<ScrollableProps, State> {
             {...rest}
             ref={this.setScrollArea}
             // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-            tabIndex={focusable ? 0 : -1}
+            tabIndex={focusable ? 0 : undefined}
           >
             {children}
           </div>
