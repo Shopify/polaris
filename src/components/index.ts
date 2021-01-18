@@ -131,6 +131,7 @@ export {Heading} from './Heading';
 export type {HeadingProps} from './Heading';
 
 export {Icon} from './Icon';
+export type {IconProps} from './Icon';
 
 export {Image} from './Image';
 export type {ImageProps} from './Image';

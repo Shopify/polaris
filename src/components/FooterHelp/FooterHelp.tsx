@@ -2,8 +2,7 @@ import React from 'react';
 import {InfoMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import type {IconProps} from '../../types';
-import {Icon} from '../Icon';
+import {Icon, IconProps} from '../Icon';
 
 import styles from './FooterHelp.scss';
 

@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import {classNames} from '../../../../utilities/css';
-import type {IconProps} from '../../../../types';
+import type {IconProps} from '../../../Icon';
 import type {ThumbnailProps} from '../../../Thumbnail';
 import type {AvatarProps} from '../../../Avatar';
 import {Scrollable} from '../../../Scrollable';

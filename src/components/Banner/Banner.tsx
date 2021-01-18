@@ -16,18 +16,13 @@ import {
 import {classNames, variationName} from '../../utilities/css';
 import {BannerContext} from '../../utilities/banner-context';
 import {useUniqueId} from '../../utilities/unique-id';
-import type {
-  Action,
-  DisableableAction,
-  LoadableAction,
-  IconProps,
-} from '../../types';
+import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Button} from '../Button';
 import {Heading} from '../Heading';
 import {ButtonGroup} from '../ButtonGroup';
 import {UnstyledButton, unstyledButtonFrom} from '../UnstyledButton';
 import {UnstyledLink} from '../UnstyledLink';
-import {Icon} from '../Icon';
+import {Icon, IconProps} from '../Icon';
 import {WithinContentContext} from '../../utilities/within-content-context';
 
 import styles from './Banner.scss';

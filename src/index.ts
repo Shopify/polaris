@@ -1,15 +1,11 @@
 import './configure';
 
 export type {
-  Color,
   IconSource,
-  IconProps,
   HeadingTagName,
   Error,
   BaseButton,
-  BaseAction,
   Action,
-  AnimationProps,
   LinkAction,
   BadgeAction,
   BaseCallbackAction,
