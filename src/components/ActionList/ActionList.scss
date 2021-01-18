@@ -226,7 +226,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     }
 
     // Only show when the button is selected, not active
-    &.active > &::before {
+    &.active::before {
       @include list-selected-indicator;
     }
 
