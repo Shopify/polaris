@@ -79,8 +79,6 @@ export function SingleThumb(props: SingleThumbProps) {
     disabled && styles.disabled,
   );
 
-  const inputClassNames = classNames(styles.Input);
-
   return (
     <Labelled
       id={id}
@@ -95,7 +93,7 @@ export function SingleThumb(props: SingleThumbProps) {
         <div className={styles.InputWrapper}>
           <input
             type="range"
-            className={inputClassNames}
+            className={styles.Input}
             id={id}
             name={id}
             min={min}
