@@ -8,7 +8,6 @@ import {
 import {Key} from 'types';
 
 import {DualThumb, DualThumbProps} from '../DualThumb';
-import {FeaturesContext} from '../../../../../utilities/features';
 
 describe('<DualThumb />', () => {
   const mockProps: DualThumbProps = {
@@ -22,29 +21,6 @@ describe('<DualThumb />', () => {
     onChange: noop,
     label: 'Dual thumb range slider',
   };
-
-  it('has a different track width and left value when the design system is used', () => {
-    const dualThumbWithDesignLanguage = mountWithAppProvider(
-      <FeaturesContext.Provider value={{newDesignLanguage: true}}>
-        <DualThumb {...mockProps} />
-      </FeaturesContext.Provider>,
-    );
-
-    const dualThumbWithoutDesignLanguage = mountWithAppProvider(
-      <DualThumb {...mockProps} />,
-    );
-
-    const stateWithDesignLanguage = dualThumbWithDesignLanguage.state();
-    const stateWithoutDesignLanguage = dualThumbWithoutDesignLanguage.state();
-
-    expect(stateWithDesignLanguage.trackWidth).not.toStrictEqual(
-      stateWithoutDesignLanguage.trackWidth,
-    );
-    expect(stateWithDesignLanguage.trackLeft).not.toStrictEqual(
-      stateWithoutDesignLanguage.trackLeft,
-    );
-  });
-
   describe('id', () => {
     it('is used on the lower thumb', () => {
       const id = 'MyNewID';
@@ -313,7 +289,7 @@ describe('<DualThumb />', () => {
 
       const expected = {
         '--Polaris-RangeSlider-progress-lower': '0px',
-        '--Polaris-RangeSlider-progress-upper': '-0.48px',
+        '--Polaris-RangeSlider-progress-upper': '-0.32px',
       };
       const track = findByTestID(dualThumb, 'track');
       const actual = track.find('[style]').prop('style');
@@ -1055,10 +1031,10 @@ function mockGetBoundingClientRect(): ReturnType<
   Element['getBoundingClientRect']
 > {
   return {
-    width: 124,
+    width: 116,
     height: 0,
     top: 0,
-    left: -12,
+    left: -8,
     bottom: 0,
     right: 0,
     x: 0,

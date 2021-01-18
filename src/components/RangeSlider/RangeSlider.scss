@@ -1,8 +1,8 @@
 $range-track-height: rem(4px);
-$range-thumb-size: var(--p-range-slider-thumb-size-base, rem(24px));
+$range-thumb-size: var(--p-range-slider-thumb-size-base);
 
 @mixin track-dashed {
-  $borderRadius: var(--p-border-radius-base, border-radius());
+  $borderRadius: var(--p-border-radius-base);
   $dashedTrackColor: var(--p-border);
   content: '';
   position: absolute;
