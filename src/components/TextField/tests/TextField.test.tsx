@@ -1113,48 +1113,19 @@ describe('<TextField />', () => {
       );
       expect(findByTestID(textField, 'clearButton').exists()).toBeFalsy();
     });
-  });
 
-  describe('newDesignLanguage', () => {
-    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+    it('adds a connected left and right class when a connected element is present', () => {
       const textField = mountWithApp(
-        <TextField label="TextField" onChange={noop} />,
-        {
-          features: {newDesignLanguage: true},
-        },
+        <TextField
+          label="TextField"
+          onChange={noop}
+          connectedLeft={<div />}
+          connectedRight={<div />}
+        />,
       );
       expect(textField).toContainReactComponent('div', {
-        className: 'TextField newDesignLanguage',
+        className: 'Backdrop Backdrop-connectedLeft Backdrop-connectedRight',
       });
-    });
-
-    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
-      const textField = mountWithApp(
-        <TextField label="TextField" onChange={noop} />,
-        {
-          features: {newDesignLanguage: false},
-        },
-      );
-      expect(textField).not.toContainReactComponent('div', {
-        className: 'TextField newDesignLanguage',
-      });
-    });
-  });
-
-  it('adds a connected left and right class when a connected element is present', () => {
-    const textField = mountWithApp(
-      <TextField
-        label="TextField"
-        onChange={noop}
-        connectedLeft={<div />}
-        connectedRight={<div />}
-      />,
-      {
-        features: {newDesignLanguage: true},
-      },
-    );
-    expect(textField).toContainReactComponent('div', {
-      className: 'Backdrop Backdrop-connectedLeft Backdrop-connectedRight',
     });
   });
 });

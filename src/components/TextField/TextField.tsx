@@ -9,7 +9,6 @@ import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
@@ -201,8 +200,6 @@ export function TextField({
     focused ? input.focus() : input.blur();
   }, [focused]);
 
-  const {newDesignLanguage} = useFeatures();
-
   // Use a typeof check here as Typescript mostly protects us from non-stringy
   // values but overzealous usage of `any` in consuming apps means people have
   // been known to pass a number in, so make it clear that doesn't work.
@@ -220,7 +217,6 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && styles.focus,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const inputType = type === 'currency' ? 'text' : type;
@@ -440,8 +436,8 @@ export function TextField({
 
   const backdropClassName = classNames(
     styles.Backdrop,
-    newDesignLanguage && connectedLeft && styles['Backdrop-connectedLeft'],
-    newDesignLanguage && connectedRight && styles['Backdrop-connectedRight'],
+    connectedLeft && styles['Backdrop-connectedLeft'],
+    connectedRight && styles['Backdrop-connectedRight'],
   );
 
   return (
