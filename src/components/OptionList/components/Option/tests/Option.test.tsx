@@ -108,16 +108,6 @@ describe('<Option />', () => {
       className: 'Label select',
     });
   });
-
-  it('does not add a `select` class to the label when `allowMultiple` is true', () => {
-    const option = mountWithApp(
-      <Option {...defaultProps} select allowMultiple />,
-    );
-
-    expect(option).toContainReactComponent('label', {
-      className: 'Label',
-    });
-  });
 });
 
 function noop() {}
