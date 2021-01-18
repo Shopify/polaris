@@ -1,6 +1,56 @@
 @import '../../styles/common';
 
-// stylelint-disable selector-max-specificity, selector-max-class
+.RadioButton {
+  position: relative;
+  margin: var(--p-choice-margin, 0);
+}
+
+.Backdrop {
+  // ::before is the selected dot, ::after the focus-ring
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: var(--p-control-border-width) solid var(--p-border);
+  border-radius: 50%;
+  background-color: var(--p-surface);
+  transition: border-color var(--p-duration-1-0-0) var(--p-ease);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.1);
+    transform-origin: 50% 50%;
+    height: var(--p-icon-size);
+    width: var(--p-icon-size);
+    background-color: var(--p-interactive);
+    border-radius: 50%;
+    transition: opacity var(--p-duration-1-0-0) var(--p-ease),
+      transform var(--p-duration-1-0-0) var(--p-ease);
+
+    @media (-ms-high-contrast: active) {
+      border: rem(5px) solid ms-high-contrast-color('text');
+    }
+  }
+
+  @include focus-ring($border-width: var(--p-control-border-width));
+
+  &::after {
+    border-radius: 50%;
+  }
+
+  &.hover,
+  &:hover {
+    cursor: pointer;
+    border-color: var(--p-border-hovered);
+  }
+}
+
 .Input {
   @include visually-hidden;
 
@@ -32,57 +82,6 @@
     &.hover,
     &:hover {
       cursor: default;
-    }
-  }
-}
-
-.RadioButton {
-  position: relative;
-  margin: var(--p-choice-margin, 0);
-
-  .Backdrop {
-    // ::before is the selected dot, ::after the focus-ring
-    position: relative;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    border: var(--p-control-border-width) solid var(--p-border);
-    border-radius: 50%;
-    background-color: var(--p-surface);
-    transition: border-color var(--p-duration-1-0-0) var(--p-ease);
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.1);
-      transform-origin: 50% 50%;
-      height: var(--p-icon-size);
-      width: var(--p-icon-size);
-      background-color: var(--p-interactive);
-      border-radius: 50%;
-      transition: opacity var(--p-duration-1-0-0) var(--p-ease),
-        transform var(--p-duration-1-0-0) var(--p-ease);
-
-      @media (-ms-high-contrast: active) {
-        border: rem(5px) solid ms-high-contrast-color('text');
-      }
-    }
-
-    @include focus-ring($border-width: var(--p-control-border-width));
-
-    &::after {
-      border-radius: 50%;
-    }
-
-    &.hover,
-    &:hover {
-      cursor: pointer;
-      border-color: var(--p-border-hovered);
     }
   }
 }
