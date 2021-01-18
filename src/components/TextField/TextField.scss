@@ -62,6 +62,7 @@ $stacking-order: (
     background-color: var(--p-surface-critical-subdued);
     border-color: var(--p-border-critical);
 
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
     &::after {
       border-color: var(--p-focused);
     }
@@ -238,14 +239,13 @@ $stacking-order: (
   --p-text-field-spinner-offset-large: calc(
     var(--p-text-field-spinner-offset) + #{border-width()}
   );
+  z-index: z-index(contents, $stacking-order);
   margin: var(--p-text-field-spinner-offset-large);
   color: var(--p-icon);
-  z-index: z-index(contents, $stacking-order);
   display: flex;
   align-self: stretch;
   flex-direction: column;
   width: rem(22px);
-  margin: 1px;
   cursor: pointer;
 }
 
@@ -308,5 +308,3 @@ $stacking-order: (
     margin-top: 0;
   }
 }
-
-// stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors
