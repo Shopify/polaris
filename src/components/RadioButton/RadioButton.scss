@@ -8,10 +8,11 @@
 .Input {
   @include visually-hidden;
 
+  // stylelint-disable-next-line selector-max-class
   &.keyFocused + .Backdrop {
     @include focus-ring($style: 'focused');
 
-    // stylelint-disable-next-line selector-max-class
+    // stylelint-disable-next-line selector-max-specificity, selector-max-class
     &::after {
       border-radius: 50%;
     }
@@ -20,7 +21,7 @@
   &:checked + .Backdrop {
     border-color: var(--p-interactive);
 
-    // stylelint-disable-next-line selector-max-class
+    // stylelint-disable-next-line selector-max-specificity
     &::before {
       transition: opacity var(--p-duration-1-5-0) var(--p-ease),
         transform var(--p-duration-1-5-0) var(--p-ease);
@@ -31,15 +32,11 @@
 
   &:disabled + .Backdrop {
     border-color: var(--p-border-disabled);
+    cursor: default;
 
-    // stylelint-disable-next-line selector-max-class
+    // stylelint-disable-next-line selector-max-specificity
     &::before {
       background-color: var(--p-border-disabled);
-    }
-
-    &.hover,
-    &:hover {
-      cursor: default;
     }
   }
 }
