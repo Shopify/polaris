@@ -5,6 +5,45 @@
   margin: var(--p-choice-margin, 0);
 }
 
+.Input {
+  @include visually-hidden;
+
+  &.keyFocused + .Backdrop {
+    @include focus-ring($style: 'focused');
+
+    // stylelint-disable-next-line selector-max-class
+    &::after {
+      border-radius: 50%;
+    }
+  }
+
+  &:checked + .Backdrop {
+    border-color: var(--p-interactive);
+
+    // stylelint-disable-next-line selector-max-class
+    &::before {
+      transition: opacity var(--p-duration-1-5-0) var(--p-ease),
+        transform var(--p-duration-1-5-0) var(--p-ease);
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  &:disabled + .Backdrop {
+    border-color: var(--p-border-disabled);
+
+    // stylelint-disable-next-line selector-max-class
+    &::before {
+      background-color: var(--p-border-disabled);
+    }
+
+    &.hover,
+    &:hover {
+      cursor: default;
+    }
+  }
+}
+
 .Backdrop {
   // ::before is the selected dot, ::after the focus-ring
   position: relative;
@@ -48,40 +87,5 @@
   &:hover {
     cursor: pointer;
     border-color: var(--p-border-hovered);
-  }
-}
-
-.Input {
-  @include visually-hidden;
-
-  &.keyFocused + .Backdrop {
-    @include focus-ring($style: 'focused');
-    &::after {
-      border-radius: 50%;
-    }
-  }
-
-  &:checked + .Backdrop {
-    border-color: var(--p-interactive);
-
-    &::before {
-      transition: opacity var(--p-duration-1-5-0) var(--p-ease),
-        transform var(--p-duration-1-5-0) var(--p-ease);
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-  }
-
-  &:disabled + .Backdrop {
-    border-color: var(--p-border-disabled);
-
-    &::before {
-      background-color: var(--p-border-disabled);
-    }
-
-    &.hover,
-    &:hover {
-      cursor: default;
-    }
   }
 }
