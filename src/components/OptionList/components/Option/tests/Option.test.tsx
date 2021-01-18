@@ -4,6 +4,7 @@ import {mountWithAppProvider} from 'test-utilities/legacy';
 import {mountWithApp} from 'test-utilities';
 
 import {Checkbox} from '../../Checkbox';
+import {Scrollable} from '../../../../Scrollable';
 import {Option, OptionProps} from '../Option';
 
 describe('<Option />', () => {
@@ -106,6 +107,17 @@ describe('<Option />', () => {
 
     expect(option).toContainReactComponent('label', {
       className: 'Label select',
+    });
+  });
+
+  it('active option has scrollable markup and active label', () => {
+    const option = mountWithApp(
+      <Option {...defaultProps} allowMultiple active />,
+    );
+
+    expect(option).toContainReactComponent(Scrollable.ScrollTo);
+    expect(option).toContainReactComponent('label', {
+      className: 'Label active',
     });
   });
 });
