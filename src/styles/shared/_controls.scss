@@ -14,148 +14,63 @@
   @return transform duration(fast) easing(in);
 }
 
-@mixin control-backdrop($style: base, $global-theming: false) {
-  // original purpler
-  @if $global-theming == false {
-    @if $style == base {
-      background-color: color('sky', 'dark');
-      border: border(transparent);
-      box-shadow: 0 0 0 1px transparent, shadow(faint);
-      border-radius: border-radius();
-      transition-property: box-shadow, background-color;
-      transition-duration: duration();
-      transition-timing-function: easing();
+@mixin control-backdrop($style: base) {
+  @if $style == base {
+    position: relative;
+    border: var(--p-control-border-width) solid var(--p-border);
+    background-color: var(--p-surface);
+    border-radius: var(--p-border-radius-base);
 
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        display: block;
-        background: linear-gradient(
-          to bottom,
-          color('white'),
-          color('sky', 'lighter')
-        );
-        border-radius: border-radius() - 1px;
-      }
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(-1 * var(--p-control-border-width));
+      right: calc(-1 * var(--p-control-border-width));
+      bottom: calc(-1 * var(--p-control-border-width));
+      left: calc(-1 * var(--p-control-border-width));
+      border-radius: var(--p-border-radius-base);
+      background-color: var(--p-interactive);
+      opacity: 0;
+      transform: scale(0.25);
+      transition: opacity var(--p-duration-1-0-0) var(--p-ease),
+        transform var(--p-duration-1-0-0) var(--p-ease);
+    }
 
+    &.hover,
+    &:hover {
+      cursor: pointer;
+      border-color: var(--p-border-hovered);
+    }
+  } @else if $style == active {
+    border-color: var(--p-interactive);
+    &::before {
+      opacity: 1;
+      transform: scale(1);
       @media (-ms-high-contrast: active) {
-        background: transparent;
-        border: 2px solid ms-high-contrast-color('button-text');
-        transition: none;
-        color: color('state', 'hover');
-
-        &::after {
-          top: -4px;
-          right: -4px;
-          bottom: -4px;
-          left: -4px;
-          background: none;
-          border-radius: border-radius() + 1px;
-        }
-      }
-    } @else if $style == focused {
-      background: color('indigo');
-      box-shadow: 0 0 0 1px color('indigo'), shadow(transparent);
-      border-color: transparent;
-
-      &::after {
-        background: color('white');
-      }
-
-      @media (-ms-high-contrast: active) {
-        &::after {
-          border: 1px dashed ms-high-contrast-color('button-text');
-        }
-      }
-    } @else if $style == error {
-      background: color('red', 'dark');
-      box-shadow: 0 0 0 1px transparent;
-
-      &::after {
-        background: color('red', 'lighter');
-      }
-    } @else if $style == disabled {
-      background: color('sky');
-      box-shadow: none;
-
-      &::after {
-        background: color('sky', 'lighter');
-      }
-
-      @media (-ms-high-contrast: active) {
-        color: ms-high-contrast-color('disabled-text');
-      }
-    } @else if $style == focused-error {
-      background: color('indigo');
-      box-shadow: 0 0 0 1px color('indigo');
-
-      &::after {
-        background: color('red', 'lighter');
+        border: 2px solid ms-high-contrast-color('text');
       }
     }
-    // design-language
-  } @else if $global-theming == true {
-    @if $style == base {
-      position: relative;
-      border: var(--p-control-border-width) solid var(--p-border);
-      background-color: var(--p-surface);
-      border-radius: var(--p-border-radius-base);
+  } @else if $style == disabled {
+    border-color: var(--p-border-disabled);
 
-      &::before {
-        content: '';
-        position: absolute;
-        top: calc(-1 * var(--p-control-border-width));
-        right: calc(-1 * var(--p-control-border-width));
-        bottom: calc(-1 * var(--p-control-border-width));
-        left: calc(-1 * var(--p-control-border-width));
-        border-radius: var(--p-border-radius-base);
-        background-color: var(--p-interactive);
-        opacity: 0;
-        transform: scale(0.25);
-        transition: opacity var(--p-duration-1-0-0) var(--p-ease),
-          transform var(--p-duration-1-0-0) var(--p-ease);
-      }
+    &::before {
+      background-color: var(--p-action-secondary-disabled);
+    }
 
-      &.hover,
-      &:hover {
-        cursor: pointer;
-        border-color: var(--p-border-hovered);
-      }
-    } @else if $style == active {
-      border-color: var(--p-interactive);
-      &::before {
-        opacity: 1;
-        transform: scale(1);
-        @media (-ms-high-contrast: active) {
-          border: 2px solid ms-high-contrast-color('text');
-        }
-      }
-    } @else if $style == disabled {
-      border-color: var(--p-border-disabled);
+    &:hover {
+      cursor: default;
+    }
+  } @else if $style == error {
+    border-color: var(--p-border-critical);
+    background-color: var(--p-surface-critical);
 
-      &::before {
-        background-color: var(--p-action-secondary-disabled);
-      }
-
-      &:hover {
-        cursor: default;
-      }
-    } @else if $style == error {
+    &.hover,
+    &:hover {
       border-color: var(--p-border-critical);
-      background-color: var(--p-surface-critical);
+    }
 
-      &.hover,
-      &:hover {
-        border-color: var(--p-border-critical);
-      }
-
-      &::before {
-        background-color: var(--p-border-critical);
-      }
+    &::before {
+      background-color: var(--p-border-critical);
     }
   }
 }
