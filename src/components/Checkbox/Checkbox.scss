@@ -47,7 +47,7 @@
 // stylelint-enable selector-max-specificity, selector-max-class,  selector-max-combinators, max-nesting-depth
 
 .Backdrop {
-  @include control-backdrop();
+  @include control-backdrop;
   position: relative;
   display: block;
   width: 100%;
