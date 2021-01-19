@@ -28,7 +28,6 @@ export function TooltipOverlay({
   preventInteraction,
   id,
   children,
-  light,
   accessibilityLabel,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
@@ -51,7 +50,6 @@ export function TooltipOverlay({
 
     const containerClassName = classNames(
       styles.Tooltip,
-      light && styles.light,
       measuring && styles.measuring,
       positioning === 'above' && styles.positionedAbove,
     );
@@ -60,22 +58,20 @@ export function TooltipOverlay({
 
     return (
       <div className={containerClassName} {...layer.props}>
-        <div className={styles.Wrapper}>
-          <div
-            id={id}
-            role="tooltip"
-            className={styles.Content}
-            style={contentStyles}
-            aria-label={
-              accessibilityLabel
-                ? i18n.translate('Polaris.TooltipOverlay.accessibilityLabel', {
-                    label: accessibilityLabel,
-                  })
-                : undefined
-            }
-          >
-            {children}
-          </div>
+        <div
+          id={id}
+          role="tooltip"
+          className={styles.Content}
+          style={contentStyles}
+          aria-label={
+            accessibilityLabel
+              ? i18n.translate('Polaris.TooltipOverlay.accessibilityLabel', {
+                  label: accessibilityLabel,
+                })
+              : undefined
+          }
+        >
+          {children}
         </div>
       </div>
     );

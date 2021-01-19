@@ -25,21 +25,12 @@ $content-max-width: rem(200px);
   margin: spacing() spacing() $offset-from-activator;
 }
 
-.Wrapper {
-  position: relative;
-  display: flex;
-  background-color: var(--p-surface);
-  border-radius: var(--p-border-radius-base);
-  color: var(--p-text);
-}
-
 .Content {
   position: relative;
   border-radius: border-radius();
+  background-color: var(--p-surface);
+  color: var(--p-text);
   max-width: $content-max-width;
-}
-
-.Label {
   padding: spacing(extra-tight) spacing(tight);
   word-break: break-word;
 }
