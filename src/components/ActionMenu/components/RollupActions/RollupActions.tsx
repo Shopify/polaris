@@ -7,8 +7,6 @@ import type {
 } from '../../../../types';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
-import {useFeatures} from '../../../../utilities/features';
-import {classNames} from '../../../../utilities/css';
 import {ActionList} from '../../../ActionList';
 import {Button} from '../../../Button';
 import {Popover} from '../../../Popover';
@@ -24,11 +22,6 @@ export interface RollupActionsProps {
 
 export function RollupActions({items = [], sections = []}: RollupActionsProps) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
-  const classname = classNames(
-    styles.RollupActivator,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
 
   const {value: rollupOpen, toggle: toggleRollupOpen} = useToggle(false);
 
@@ -37,10 +30,9 @@ export function RollupActions({items = [], sections = []}: RollupActionsProps) {
   }
 
   const activatorMarkup = (
-    <div className={classname}>
+    <div className={styles.RollupActivator}>
       <Button
-        plain={!newDesignLanguage}
-        outline={newDesignLanguage}
+        outline
         icon={HorizontalDotsMinor}
         accessibilityLabel={i18n.translate(
           'Polaris.ActionMenu.RollupActions.rollupButton',
