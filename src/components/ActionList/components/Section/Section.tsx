@@ -6,7 +6,6 @@ import type {
   ActionListSection,
 } from '../../../../types';
 import styles from '../../ActionList.scss';
-import {classNames} from '../../../../utilities/css';
 
 export interface SectionProps {
   /** Section of action items */
