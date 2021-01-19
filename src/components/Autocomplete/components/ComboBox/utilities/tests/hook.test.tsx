@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppContext} from 'tests/modern';
+import {mountWithApp} from 'test-utilities';
 
 import {useComboBoxTextField, ComboBoxTextFieldContext} from '../combo-box';
 
@@ -10,25 +10,25 @@ function TextFieldComponent() {
 }
 
 describe('textFieldContent', () => {
-  it('throws if not wrapped in ComboBoxTextFieldContext', async () => {
+  it('throws if not wrapped in ComboBoxTextFieldContext', () => {
     const consoleErrorSpy = jest
       .spyOn(console, 'error')
       .mockImplementation(() => {});
 
-    expect(() => mountWithAppContext(<TextFieldComponent />)).toThrow(
+    expect(() => mountWithApp(<TextFieldComponent />)).toThrow(
       'No ComboBox was provided. Your component must be wrapped in a <ComboBox> component.',
     );
 
     consoleErrorSpy.mockRestore();
   });
 
-  it('does not throw if wrapped in a ComboBoxTextFieldContext provide', async () => {
+  it('does not throw if wrapped in a ComboBoxTextFieldContext provide', () => {
     const consoleErrorSpy = jest
       .spyOn(console, 'error')
       .mockImplementation(() => {});
 
     expect(() =>
-      mountWithAppContext(
+      mountWithApp(
         <ComboBoxTextFieldContext.Provider value={{}}>
           <TextFieldComponent />
         </ComboBoxTextFieldContext.Provider>,

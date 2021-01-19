@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {createMount} from '@shopify/react-testing';
-import {PolarisTestProvider} from '@shopify/polaris';
-import {mountWithAppContext} from 'tests/modern';
+import {PolarisTestProvider} from 'components';
+import {mountWithApp} from 'test-utilities';
 
 import {ComboBoxListBoxContext, ComboBoxListBoxType} from '../../ComboBox';
 import {ListBoxContext} from '../utilities/context/list-box';
@@ -35,7 +35,7 @@ export function mountWithComboBoxListContext(
   listbox: ReactElement,
   context: ComboBoxListBoxType = {},
 ) {
-  const comboxBox = mountWithAppContext(
+  const comboxBox = mountWithApp(
     <ComboBoxListBoxContext.Provider
       value={{
         setActiveOptionId: () => null,

@@ -1,7 +1,8 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useCallback} from 'react';
 
 import type {ActionListItemDescriptor} from '../../types';
 import type {PopoverProps} from '../Popover';
+import {useI18n} from '../../utilities/i18n';
 
 import {ComboBox, ListBox, MappedOption} from './components';
 // eslint-disable-next-line @shopify/strict-component-boundaries
@@ -9,7 +10,7 @@ import type {ComboBoxProps as ComboBoxOldProps} from './components/ComboBoxOld';
 
 export interface AutocompleteProps {
   /** A unique identifier for the Autocomplete */
-  id?: string; // TODO use on combobox and propagate to options
+  id?: string;
   /** Collection of options to be listed */
   options: ComboBoxOldProps['options'];
   /** The selected options */
@@ -45,7 +46,6 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   ComboBox: typeof ComboBox;
   TextField: typeof ComboBox.TextField; // TODO is this correct?
 } = function Autocomplete({
-  id,
   options,
   selected,
   textField,
@@ -59,6 +59,8 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   onSelect,
   onLoadMoreResults,
 }: AutocompleteProps) {
+  const i18n = useI18n();
+
   const optionsMarkup = useMemo(() => {
     const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
     const optionList =
@@ -86,27 +88,36 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
 
     return optionList;
   }, [
-    selected,
     listTitle,
     loading,
     options,
     willLoadMoreResults,
     allowMultiple,
+    selected,
   ]);
 
-  const loadingMarkup = loading ? <ListBox.Loading /> : null;
+  const loadingMarkup = loading ? (
+    <ListBox.Loading
+      accessibilityLabel={i18n.translate(
+        'Polaris.Autocomplete.spinnerAccessibilityLabel',
+      )}
+    />
+  ) : null;
 
-  const updateSelection = (newSelection: string) => {
-    if (allowMultiple) {
-      if (selected.includes(newSelection)) {
-        onSelect(selected.filter((option) => option !== newSelection));
+  const updateSelection = useCallback(
+    (newSelection: string) => {
+      if (allowMultiple) {
+        if (selected.includes(newSelection)) {
+          onSelect(selected.filter((option) => option !== newSelection));
+        } else {
+          onSelect([...selected, newSelection]);
+        }
       } else {
-        onSelect([...selected, newSelection]);
+        onSelect([newSelection]);
       }
-    } else {
-      onSelect([newSelection]);
-    }
-  };
+    },
+    [allowMultiple, onSelect, selected],
+  );
 
   return (
     <ComboBox
@@ -116,7 +127,9 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
       preferredPosition={preferredPosition}
     >
       <ListBox onSelect={updateSelection}>
-        {optionsMarkup && !loading ? optionsMarkup : null}
+        {optionsMarkup && (!loading || willLoadMoreResults)
+          ? optionsMarkup
+          : null}
         {loadingMarkup}
         {options.length < 1 && !loading && emptyState}
       </ListBox>

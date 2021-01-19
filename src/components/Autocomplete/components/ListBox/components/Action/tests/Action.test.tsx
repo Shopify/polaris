@@ -1,5 +1,5 @@
 import React from 'react';
-import {Icon} from '@shopify/polaris';
+import {Icon} from 'components';
 import {CirclePlusMinor, AddMajor} from '@shopify/polaris-icons';
 
 import {Action} from '../Action';

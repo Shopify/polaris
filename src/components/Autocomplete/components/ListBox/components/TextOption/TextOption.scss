@@ -2,6 +2,7 @@
 
 .TextOption {
   margin: spacing(extra-tight) spacing(tight);
+  flex: 1;
   border-radius: var(--p-border-radius-base);
   padding: spacing(tight) spacing();
   cursor: pointer;

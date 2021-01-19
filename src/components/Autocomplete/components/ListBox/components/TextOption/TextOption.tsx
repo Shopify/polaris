@@ -22,7 +22,6 @@ export const TextOption = memo(function TextOption({
     selected && styles.selected,
     disabled && styles.disabled,
   );
-  console.log('textOption');
   return (
     <div className={textOptionClassName}>
       <div className={styles.Content}>{children}</div>

@@ -11,9 +11,7 @@ const IGNORE_ERROR_REGEXES = [
   /React does not recognize the `%s` prop on a DOM element/,
 ];
 
-const IGNORE_WARN_REGEXES: RegExp[] = [
-  /Deprecation: <FilterControl \/> is deprecated\. This is a private component, do not use it\. This component might be removed in a minor version update\. Use <Filters \/> instead\./,
-];
+const IGNORE_WARN_REGEXES: RegExp[] = [/Deprecation:.*/];
 
 // eslint-disable-next-line no-console
 const originalConsoleError = console.error.bind(console);

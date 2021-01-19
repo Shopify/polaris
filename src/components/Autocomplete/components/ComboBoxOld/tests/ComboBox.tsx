@@ -4,7 +4,7 @@ import {mountWithApp} from 'test-utilities';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider, act} from 'test-utilities/legacy';
 
-import {TextField} from '../../TextField';
+import {TextField} from '../../ComboBox';
 import {Key} from '../../../../../types';
 import {ComboBox} from '../ComboBox';
 

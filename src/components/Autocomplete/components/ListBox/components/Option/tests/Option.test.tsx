@@ -1,22 +1,13 @@
 import React from 'react';
-import {noop} from '@web-utilities/other';
-import {mount} from 'tests/modern';
+import {mount} from 'test-utilities';
 
 import {mountWithListBoxProvider} from '../../../tests/utilities';
-import {ListBoxContext} from '../../../utilities/context/list-box';
+import type {ListBoxContext} from '../../../utilities/context/list-box';
 import {Option} from '../Option';
 import {TextOption} from '../../TextOption';
 
-const expectedId = 'optionDomId';
-
-jest.mock('@shopify/javascript-utilities/other', () => ({
-  createUniqueIDFactory() {
-    return () => 'optionDomId';
-  },
-}));
-
-jest.mock('@shopify/polaris', () => ({
-  ...jest.requireActual('@shopify/polaris'),
+jest.mock('components', () => ({
+  ...jest.requireActual('components'),
   Icon() {
     return null;
   },
@@ -50,7 +41,7 @@ describe('Option', () => {
 
   it('renders a li with a the necessary attributes', () => {
     const expectedProps = {
-      id: expectedId,
+      id: expect.any(String),
       role: 'option',
       'data-listbox-option-value': defaultProps.value,
       onMouseDown: expect.any(Function),
@@ -77,15 +68,16 @@ describe('Option', () => {
       ...context,
     });
 
-    option
-      .find('li', {
-        role: 'option',
-      })!
-      .trigger('onClick', {preventDefault: () => {}});
+    const optionElement = option.find('li', {
+      role: 'option',
+    });
+    const domId = optionElement?.prop('id');
+
+    optionElement!.trigger('onClick', {preventDefault: () => {}});
 
     expect(onOptionSelectSpy).toHaveBeenCalledTimes(1);
     expect(onOptionSelectSpy).toHaveBeenCalledWith({
-      domId: expectedId,
+      domId,
       value: defaultProps.value,
       element: expect.any(Object),
       disabled: false,
@@ -140,6 +132,22 @@ describe('Option', () => {
     expect(option).toContainReactComponent(TextOption, {
       children,
     });
+  });
+
+  it('prevents default on mouse down', () => {
+    const preventDefaultSpy = jest.fn();
+    const option = mountWithListBoxProvider(
+      <Option {...defaultProps}>{defaultProps.accessibilityLabel}</Option>,
+      {
+        ...defaultContext,
+      },
+    );
+
+    option
+      .find('li', {role: 'option'})!
+      .trigger('onMouseDown', {preventDefault: preventDefaultSpy});
+
+    expect(preventDefaultSpy).toHaveBeenCalledTimes(1);
   });
 
   describe('selected', () => {
@@ -244,3 +252,5 @@ describe('Option', () => {
     });
   });
 });
+
+function noop() {}

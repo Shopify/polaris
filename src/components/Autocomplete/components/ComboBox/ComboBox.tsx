@@ -3,7 +3,6 @@ import React, {useState, useCallback, useMemo} from 'react';
 import {Popover} from '../../../Popover';
 import type {PopoverProps} from '../../../Popover';
 import type {TextFieldProps} from '../../../TextField';
-
 import type {ListBoxProps} from '../ListBox';
 
 import * as styles from './ComboBox.scss';
@@ -20,7 +19,7 @@ export interface ComboBoxProps {
   activator: React.ReactElement<TextFieldProps>;
   allowMultiple?: boolean;
   onScrolledToBottom?(): void;
-  preferredPosition: PopoverProps['preferredPosition'];
+  preferredPosition?: PopoverProps['preferredPosition'];
 }
 
 export function ComboBox({
@@ -28,7 +27,7 @@ export function ComboBox({
   activator,
   allowMultiple,
   onScrolledToBottom,
-  preferredPosition,
+  preferredPosition = 'below',
 }: ComboBoxProps) {
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();

@@ -1,7 +1,6 @@
 import React from 'react';
-import {mountWithAppContext} from 'tests/modern';
-import {Popover, TextField} from '@shopify/polaris';
-import {noop} from '@web-utilities/other';
+import {mountWithApp} from 'test-utilities';
+import {Popover, TextField} from 'components';
 
 import {ComboBox} from '../ComboBox';
 import {ListBox} from '../../ListBox';
@@ -18,8 +17,8 @@ describe('<ComboBox />', () => {
     </ListBox>
   );
 
-  it('renders a Popover in the providers', async () => {
-    const combobox = await mountWithAppContext(
+  it('renders a Popover in the providers', () => {
+    const combobox = mountWithApp(
       <ComboBox activator={activator}>{listBox}</ComboBox>,
     );
 
@@ -32,8 +31,8 @@ describe('<ComboBox />', () => {
     });
   });
 
-  it('renders the activator in ComboBoxTextFieldContext provider', async () => {
-    const combobox = await mountWithAppContext(
+  it('renders the activator in ComboBoxTextFieldContext provider', () => {
+    const combobox = mountWithApp(
       <ComboBox activator={activator}>{listBox}</ComboBox>,
     );
 
@@ -42,8 +41,8 @@ describe('<ComboBox />', () => {
     });
   });
 
-  it('renders the popover children in a ComboBoxListBoxContext provider', async () => {
-    const combobox = await mountWithAppContext(
+  it('renders the popover children in a ComboBoxListBoxContext provider', () => {
+    const combobox = mountWithApp(
       <ComboBox activator={activator}>{listBox}</ComboBox>,
     );
 
@@ -54,10 +53,8 @@ describe('<ComboBox />', () => {
     ).toContainReactComponent(ListBox);
   });
 
-  it('does not open Popover when the ComboBoxTextFieldContext onTextFieldFocus and there are no children', async () => {
-    const combobox = await mountWithAppContext(
-      <ComboBox activator={activator} />,
-    );
+  it('does not open Popover when the ComboBoxTextFieldContext onTextFieldFocus and there are no children', () => {
+    const combobox = mountWithApp(<ComboBox activator={activator} />);
 
     triggerFocus(combobox);
 
@@ -66,8 +63,8 @@ describe('<ComboBox />', () => {
     });
   });
 
-  it('renders an active Popover when the activator is focused and there are children', async () => {
-    const combobox = await mountWithAppContext(
+  it('renders an active Popover when the activator is focused and there are children', () => {
+    const combobox = mountWithApp(
       <ComboBox activator={activator}>
         <ListBox>
           <ListBox.Option accessibilityLabel="Option 1" value="option1" />
@@ -82,8 +79,8 @@ describe('<ComboBox />', () => {
     });
   });
 
-  it('closes the Popover when onOptionSelected is triggered and allowMultiple is false', async () => {
-    const combobox = await mountWithAppContext(
+  it('closes the Popover when onOptionSelected is triggered and allowMultiple is false', () => {
+    const combobox = mountWithApp(
       <ComboBox activator={activator}>
         <ListBox>
           <ListBox.Option accessibilityLabel="Option 1" value="option1" />
@@ -104,8 +101,8 @@ describe('<ComboBox />', () => {
     });
   });
 
-  it('does not close the Popover when onOptionSelected is triggered and allowMultiple is true and there are children', async () => {
-    const combobox = await mountWithAppContext(
+  it('does not close the Popover when onOptionSelected is triggered and allowMultiple is true and there are children', () => {
+    const combobox = mountWithApp(
       <ComboBox activator={activator} allowMultiple>
         <ListBox>
           <ListBox.Option accessibilityLabel="Option 1" value="option1" />
@@ -128,9 +125,9 @@ describe('<ComboBox />', () => {
     });
   });
 
-  it('calls the onScrolledToBottom when the Popovers onScrolledToBottom is triggered', async () => {
+  it('calls the onScrolledToBottom when the Popovers onScrolledToBottom is triggered', () => {
     const onScrolledToBottomSpy = jest.fn();
-    const combobox = await mountWithAppContext(
+    const combobox = mountWithApp(
       <ComboBox
         onScrolledToBottom={onScrolledToBottomSpy}
         activator={activator}
@@ -149,9 +146,61 @@ describe('<ComboBox />', () => {
     expect(onScrolledToBottomSpy).toHaveBeenCalled();
   });
 
+  it('closes the Popover when onClose is called', () => {
+    const combobox = mountWithApp(
+      <ComboBox activator={activator}>
+        <ListBox>
+          <ListBox.Option accessibilityLabel="Option 1" value="option1" />
+        </ListBox>
+      </ComboBox>,
+    );
+
+    triggerFocus(combobox);
+    combobox.find(Popover)?.trigger('onClose');
+
+    expect(combobox).toContainReactComponent(Popover, {
+      active: false,
+    });
+  });
+
+  it('opens the Popover when the TextField activator is changed', () => {
+    const activator = <ComboBox.TextField onChange={noop} label="" value="" />;
+    const combobox = mountWithApp(
+      <ComboBox activator={activator}>
+        <ListBox>
+          <ListBox.Option accessibilityLabel="Option 1" value="option1" />
+        </ListBox>
+      </ComboBox>,
+    );
+
+    combobox.find(TextField)?.trigger('onChange');
+
+    expect(combobox).toContainReactComponent(Popover, {
+      active: true,
+    });
+  });
+
+  it('closes the Popover when TextField is blurred', () => {
+    const activator = <ComboBox.TextField onChange={noop} label="" value="" />;
+    const combobox = mountWithApp(
+      <ComboBox activator={activator}>
+        <ListBox>
+          <ListBox.Option accessibilityLabel="Option 1" value="option1" />
+        </ListBox>
+      </ComboBox>,
+    );
+
+    triggerFocus(combobox);
+    combobox.find(TextField)?.trigger('onBlur');
+
+    expect(combobox).toContainReactComponent(Popover, {
+      active: false,
+    });
+  });
+
   describe('Context', () => {
-    it('sets expanded to true on the ComboBoxTextFieldContext when the popover is active', async () => {
-      const combobox = await mountWithAppContext(
+    it('sets expanded to true on the ComboBoxTextFieldContext when the popover is active', () => {
+      const combobox = mountWithApp(
         <ComboBox activator={activator}>
           <ListBox>
             <ListBox.Option accessibilityLabel="Option 1" value="option1" />
@@ -164,11 +213,11 @@ describe('<ComboBox />', () => {
       expect(
         combobox.find(ComboBoxTextFieldContext.Provider)!.prop('value')!
           .expanded,
-      ).toBeTrue();
+      ).toBe(true);
     });
 
-    it('sets expanded to false on the ComboBoxTextFieldContext when the popover is not active', async () => {
-      const combobox = await mountWithAppContext(
+    it('sets expanded to false on the ComboBoxTextFieldContext when the popover is not active', () => {
+      const combobox = mountWithApp(
         <ComboBox activator={activator}>
           <ListBox>
             <ListBox.Option accessibilityLabel="Option 1" value="option1" />
@@ -185,11 +234,11 @@ describe('<ComboBox />', () => {
       expect(
         combobox.find(ComboBoxTextFieldContext.Provider)!.prop('value')!
           .expanded,
-      ).toBeFalse();
+      ).toBe(false);
     });
 
-    it('sets the activeOptionId on the ComboBoxTextFieldContext to undefined the popover is not closed', async () => {
-      const combobox = await mountWithAppContext(
+    it('sets the activeOptionId on the ComboBoxTextFieldContext to undefined the popover is not closed', () => {
+      const combobox = mountWithApp(
         <ComboBox activator={activator}>
           <ListBox>
             <ListBox.Option accessibilityLabel="Option 1" value="option1" />
@@ -229,3 +278,5 @@ function triggerOptionSelected(combobox: any) {
     .find(ComboBoxListBoxContext.Provider)!
     .triggerKeypath('value.onOptionSelected');
 }
+
+function noop() {}
