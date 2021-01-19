@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {useFeatures} from '../../../../utilities/features';
 import type {ActionListItemDescriptor} from '../../../../types';
 import {Scrollable} from '../../../Scrollable';
 import {Icon} from '../../../Icon';
@@ -31,13 +30,11 @@ export function Item({
   active,
   role,
 }: ItemProps) {
-  const {newDesignLanguage} = useFeatures();
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,
     destructive && styles.destructive,
     active && styles.active,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   let prefixMarkup: React.ReactNode | null = null;
@@ -46,12 +43,7 @@ export function Item({
     prefixMarkup = <div className={styles.Prefix}>{prefix}</div>;
   } else if (icon) {
     prefixMarkup = (
-      <div
-        className={classNames(
-          styles.Prefix,
-          newDesignLanguage && styles.newDesignLanguage,
-        )}
-      >
+      <div className={styles.Prefix}>
         <Icon source={icon} />
       </div>
     );
@@ -83,14 +75,7 @@ export function Item({
   );
 
   const suffixMarkup = suffix && (
-    <span
-      className={classNames(
-        styles.Suffix,
-        newDesignLanguage && styles.newDesignLanguage,
-      )}
-    >
-      {suffix}
-    </span>
+    <span className={styles.Suffix}>{suffix}</span>
   );
 
   const textMarkup = <div className={styles.Text}>{contentMarkup}</div>;
