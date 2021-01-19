@@ -5,7 +5,6 @@ import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {Popover} from '../Popover';
 import {useI18n} from '../../utilities/i18n';
-import {useFeatures} from '../../utilities/features';
 
 import type {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
@@ -29,7 +28,6 @@ export interface TabsProps {
 
 type CombinedProps = TabsProps & {
   i18n: ReturnType<typeof useI18n>;
-  features: ReturnType<typeof useFeatures>;
 };
 
 interface State {
@@ -381,7 +379,6 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
 
 export function Tabs(props: TabsProps) {
   const i18n = useI18n();
-  const features = useFeatures();
 
-  return <TabsInner {...props} i18n={i18n} features={features} />;
+  return <TabsInner {...props} i18n={i18n} />;
 }
