@@ -2,7 +2,6 @@ import React, {Component, createRef} from 'react';
 import debounce from 'lodash/debounce';
 
 import {classNames} from '../../../../utilities/css';
-import {FeaturesContext} from '../../../../utilities/features';
 import type {DisableableAction} from '../../../../types';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
@@ -44,9 +43,6 @@ export class ConnectedFilterControl extends Component<
   ConnectedFilterControlProps,
   State
 > {
-  static contextType = FeaturesContext;
-  context!: React.ContextType<typeof FeaturesContext>;
-
   state: State = {
     availableWidth: 0,
     proxyButtonsWidth: {},
@@ -70,7 +66,6 @@ export class ConnectedFilterControl extends Component<
   }
 
   render() {
-    const {newDesignLanguage} = this.context || {};
     const {
       children,
       rightPopoverableActions,
@@ -88,7 +83,6 @@ export class ConnectedFilterControl extends Component<
     const className = classNames(
       styles.ConnectedFilterControl,
       rightPopoverableActions && styles.right,
-      newDesignLanguage && styles.newDesignLanguage,
     );
 
     const shouldRenderMoreFiltersButton =
@@ -115,7 +109,7 @@ export class ConnectedFilterControl extends Component<
     const moreFiltersButtonContainerClassname = classNames(
       styles.MoreFiltersButtonContainer,
       actionsToRender.length === 0 &&
-        (newDesignLanguage || queryFieldHidden) &&
+        queryFieldHidden &&
         styles.onlyButtonVisible,
     );
 
