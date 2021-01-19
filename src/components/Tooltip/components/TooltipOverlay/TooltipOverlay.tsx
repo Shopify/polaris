@@ -7,12 +7,12 @@ import {
   PositionedOverlay,
 } from '../../../PositionedOverlay';
 import {useI18n} from '../../../../utilities/i18n';
-import styles from '../../Tooltip.scss';
+
+import styles from './TooltipOverlay.scss';
 
 export interface TooltipOverlayProps {
   id: string;
   active: boolean;
-  light?: boolean;
   preventInteraction?: PositionedOverlayProps['preventInteraction'];
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   children?: React.ReactNode;
@@ -28,7 +28,6 @@ export function TooltipOverlay({
   preventInteraction,
   id,
   children,
-  light,
   accessibilityLabel,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
@@ -50,8 +49,7 @@ export function TooltipOverlay({
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
     const containerClassName = classNames(
-      styles.Tooltip,
-      light && styles.light,
+      styles.TooltipOverlay,
       measuring && styles.measuring,
       positioning === 'above' && styles.positionedAbove,
     );
@@ -60,22 +58,20 @@ export function TooltipOverlay({
 
     return (
       <div className={containerClassName} {...layer.props}>
-        <div className={styles.Wrapper}>
-          <div
-            id={id}
-            role="tooltip"
-            className={styles.Content}
-            style={contentStyles}
-            aria-label={
-              accessibilityLabel
-                ? i18n.translate('Polaris.TooltipOverlay.accessibilityLabel', {
-                    label: accessibilityLabel,
-                  })
-                : undefined
-            }
-          >
-            {children}
-          </div>
+        <div
+          id={id}
+          role="tooltip"
+          className={styles.Content}
+          style={contentStyles}
+          aria-label={
+            accessibilityLabel
+              ? i18n.translate('Polaris.TooltipOverlay.accessibilityLabel', {
+                  label: accessibilityLabel,
+                })
+              : undefined
+          }
+        >
+          {children}
         </div>
       </div>
     );
