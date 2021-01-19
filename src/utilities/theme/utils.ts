@@ -9,21 +9,14 @@ import {constructColorName} from '../color-names';
 import {createLightColor} from '../color-manipulation';
 
 import {needsVariantList} from './config';
-import type {
-  ThemeConfig,
-  Theme,
-  CustomPropertiesLike,
-  ColorScheme,
-} from './types';
+import type {Theme, ProcessedThemeConfig} from './types';
 
-interface CustomPropertiesConfig extends ThemeConfig {
-  colorScheme: ColorScheme;
-}
+type CustomPropertiesObject = Record<string, string>;
 
 export function buildCustomPropertiesNoMemo(
-  themeConfig: CustomPropertiesConfig,
+  themeConfig: ProcessedThemeConfig,
   tokens?: Record<string, string>,
-): CustomPropertiesLike {
+): CustomPropertiesObject {
   const {colors = {}, colorScheme, config, frameOffset = 0} = themeConfig;
   const mergedConfig = mergeConfigs(base, config || {});
 
@@ -35,8 +28,8 @@ export function buildCustomPropertiesNoMemo(
 }
 
 export function buildThemeContext(
-  themeConfig: ThemeConfig,
-  cssCustomProperties?: CustomPropertiesLike,
+  themeConfig: ProcessedThemeConfig,
+  cssCustomProperties?: CustomPropertiesObject,
 ): Theme {
   const {logo, colors = {}, colorScheme} = themeConfig;
   return {
@@ -47,13 +40,13 @@ export function buildThemeContext(
   };
 }
 
-export function toString(obj?: CustomPropertiesLike) {
+export function toString(obj?: CustomPropertiesObject) {
   if (obj) {
     return Object.entries(obj)
       .map((pair) => pair.join(':'))
       .join(';');
   } else {
-    return undefined;
+    return '';
   }
 }
 

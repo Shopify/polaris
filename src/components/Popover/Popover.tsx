@@ -7,7 +7,6 @@ import React, {
   AriaAttributes,
 } from 'react';
 
-import type {InversableColorScheme} from '../ThemeProvider';
 import {
   findFirstFocusableNodeIncludingDisabled,
   focusNextFocusableNode,
@@ -74,7 +73,7 @@ export interface PopoverProps {
   /** Callback when popover is closed */
   onClose(source: PopoverCloseSource): void;
   /** Accepts a color scheme for the contents of the popover */
-  colorScheme?: InversableColorScheme;
+  colorScheme?: PopoverOverlayProps['colorScheme'];
   /**
    * The preferred auto focus target defaulting to the popover container
    * @default 'container'

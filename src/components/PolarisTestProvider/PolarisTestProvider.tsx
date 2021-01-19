@@ -66,7 +66,7 @@ export function PolarisTestProvider({
   link,
   theme = {},
   mediaQuery,
-  features,
+  features = {},
   frame,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? StrictMode : Fragment;
@@ -77,11 +77,10 @@ export function PolarisTestProvider({
 
   const uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
-  const customProperties = buildCustomProperties({
-    ...theme,
-    colorScheme: 'light',
-  });
-  const mergedTheme = buildThemeContext(theme, customProperties);
+  const processedThemeConfig = {...theme, colorScheme: 'light' as const};
+
+  const customProperties = buildCustomProperties(processedThemeConfig);
+  const mergedTheme = buildThemeContext(processedThemeConfig, customProperties);
 
   const mergedFrame = createFrameContext(frame);
 

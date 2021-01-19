@@ -9,9 +9,9 @@ import {
   buildThemeContext,
   buildCustomProperties,
 } from '../utils';
-import type {ColorScheme, RoleColors} from '../types';
+import type {ProcessedThemeConfig, RoleColors} from '../types';
 
-const DefaultColorScheme: ColorScheme = 'light';
+const DefaultColorScheme: ProcessedThemeConfig['colorScheme'] = 'light';
 
 describe('setTextColor', () => {
   it('sets a css variable to white if the variant is dark', () => {
@@ -154,12 +154,15 @@ describe('buildCustomProperties', () => {
 describe('buildThemeContext', () => {
   it('reduces theme config down to a theme', () => {
     expect(
-      buildThemeContext({colors: {}, logo: {}}, {foo: 'bar'}),
+      buildThemeContext(
+        {colors: {}, logo: {}, colorScheme: 'light'},
+        {foo: 'bar'},
+      ),
     ).toStrictEqual({
       logo: {},
       cssCustomProperties: 'foo:bar',
       colors: {},
-      colorScheme: undefined,
+      colorScheme: 'light',
     });
   });
 });
