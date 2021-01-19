@@ -6,7 +6,6 @@ import {Key} from 'types';
 
 import {ListBox} from '../ListBox';
 import {ListBoxContext} from '../utilities/context/list-box';
-import {useListBox} from '../utilities/hooks/useListBox';
 
 import {
   mountWithComboBoxListContext,
