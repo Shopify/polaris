@@ -49,11 +49,6 @@ export interface PopoverProps {
    * @default 'div'
    */
   activatorWrapper?: string;
-  /**
-   * Prevent automatic focus of the popover on activation
-   * @deprecated Use autofocusTarget: 'none' instead.
-   * */
-  preventAutofocus?: boolean;
   /** Prevents focusing the activator or the next focusable element when the popover is deactivated */
   preventFocusOnClose?: boolean;
   /** Automatically add wrap content in a section */

@@ -127,10 +127,6 @@ $stacking-order: (
   }
 }
 
-.stretchContent > .Content {
-  justify-content: space-between;
-}
-
 .Icon {
   // This compensates for the typical icon used in buttons being
   // inset within its bounding box.

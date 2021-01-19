@@ -52,7 +52,7 @@ export interface ThemeConfig {
   colors?: Partial<RoleColors>;
   colorScheme?: 'light' | 'dark' | 'inverse';
   config?: Config;
-  frameOffset?: number;
+  frameOffset?: string;
 }
 
 // An intermediate state of transforming the ThemeConfig into a Theme

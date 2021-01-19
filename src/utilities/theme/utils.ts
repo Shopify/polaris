@@ -17,13 +17,13 @@ export function buildCustomPropertiesNoMemo(
   themeConfig: ProcessedThemeConfig,
   tokens?: Record<string, string>,
 ): CustomPropertiesObject {
-  const {colors = {}, colorScheme, config, frameOffset = 0} = themeConfig;
+  const {colors = {}, colorScheme, config, frameOffset = '0px'} = themeConfig;
   const mergedConfig = mergeConfigs(base, config || {});
 
   return customPropertyTransformer({
     ...colorFactory(colors, colorScheme, mergedConfig),
     ...tokens,
-    frameOffset: `${frameOffset}px`,
+    frameOffset,
   });
 }
 

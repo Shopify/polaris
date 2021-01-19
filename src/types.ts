@@ -37,11 +37,6 @@ export interface BaseButton {
   ariaExpanded?: boolean;
   /** Indicates the ID of the element that describes the button */
   ariaDescribedBy?: string;
-  /**
-   * @deprecated As of release 4.7.0, replaced by {@link https://polaris.shopify.com/components/actions/button#prop-pressed}
-   * Tells screen reader the element is pressed
-   */
-  ariaPressed?: boolean;
   /** Callback when clicked */
   onClick?(): void;
   /** Callback when button becomes focussed */

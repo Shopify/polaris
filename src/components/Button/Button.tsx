@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {
   CaretDownMinor,
   CaretUpMinor,
@@ -49,11 +49,6 @@ export interface ButtonProps extends BaseButton {
   icon?: React.ReactElement | IconSource;
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
-  /**
-   * @deprecated As of release 5.13.0, replaced by {@link https://polaris.shopify.com/components/actions/button/textAlign}
-   * Stretch the content (text + icon) from side to side
-   */
-  stretchContent?: boolean;
 }
 
 interface CommonButtonProps
@@ -82,7 +77,7 @@ type ActionButtonProps = Pick<
   | 'loading'
   | 'ariaControls'
   | 'ariaExpanded'
-  | 'ariaPressed'
+  | 'pressed'
   | 'onKeyDown'
   | 'onKeyUp'
   | 'onKeyPress'
@@ -105,7 +100,6 @@ export function Button({
   ariaControls,
   ariaExpanded,
   ariaDescribedBy,
-  ariaPressed,
   onClick,
   onFocus,
   onBlur,
@@ -125,19 +119,9 @@ export function Button({
   textAlign,
   fullWidth,
   connectedDisclosure,
-  stretchContent,
 }: ButtonProps) {
   const {newDesignLanguage} = useFeatures();
   const i18n = useI18n();
-  const hasGivenDeprecationWarning = useRef(false);
-
-  if (stretchContent && !hasGivenDeprecationWarning.current) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The `stretchContent` prop has been replaced with `textAlign="left"`',
-    );
-    hasGivenDeprecationWarning.current = true;
-  }
 
   const isDisabled = disabled || loading;
 
@@ -157,7 +141,6 @@ export function Button({
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
     connectedDisclosure && styles.connectedDisclosure,
-    stretchContent && styles.stretchContent,
   );
 
   const disclosureMarkup = disclosure ? (
@@ -197,8 +180,6 @@ export function Button({
       />
     </span>
   ) : null;
-
-  const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
 
   const [disclosureActive, setDisclosureActive] = useState(false);
   const toggleDisclosureActive = useCallback(() => {
@@ -286,7 +267,7 @@ export function Button({
     loading,
     ariaControls,
     ariaExpanded,
-    ariaPressed: ariaPressedStatus,
+    pressed,
     onKeyDown,
     onKeyUp,
     onKeyPress,
