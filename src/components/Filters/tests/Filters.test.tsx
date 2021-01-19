@@ -13,6 +13,7 @@ import {mountWithApp} from 'test-utilities';
 import {WithinFilterContext} from '../../../utilities/within-filter-context';
 import {Filters, FiltersProps} from '../Filters';
 import {ConnectedFilterControl, TagsWrapper} from '../components';
+import * as focusUtils from '../../../utilities/focus';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;
 const MockChild = () => <div />;
@@ -463,6 +464,41 @@ describe('<Filters />', () => {
         'SheetToggleButton',
       );
       expect(rightActionButton.text()).toBe('More filters (2)');
+    });
+
+    it('calls clear all callback and shifts focus when clear all filters is clicked to prevent visual loss of focus', () => {
+      const focusSpy = jest.spyOn(focusUtils, 'focusFirstFocusableNode');
+      const spy = jest.fn();
+      const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: spy}];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} appliedFilters={appliedFilters} />,
+      );
+      resourceFilters.setProps({
+        onClearAll: () => {
+          resourceFilters.setProps({
+            appliedFilters: [],
+          });
+        },
+      });
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+
+      let clearAllButton = resourceFilters
+        .findWhere((node) => node.prop('children') === 'Clear all filters')
+        .first();
+
+      expect(clearAllButton.prop('disabled')).toBeFalsy();
+
+      trigger(clearAllButton, 'onClick');
+
+      clearAllButton = resourceFilters
+        .findWhere((node) => node.prop('children') === 'Clear all filters')
+        .first();
+
+      expect(clearAllButton.prop('disabled')).toBeTruthy();
+      expect(focusSpy).toHaveBeenCalled();
+      focusSpy.mockRestore();
     });
   });
 

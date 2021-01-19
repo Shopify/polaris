@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 import type {
   ActionListSection,
   MenuActionDescriptor,
@@ -25,7 +24,6 @@ export function ActionMenu({
   groups = [],
   rollup,
 }: ActionMenuProps) {
-  const {newDesignLanguage} = useFeatures();
   if (actions.length === 0 && groups.length === 0) {
     return null;
   }
@@ -33,7 +31,6 @@ export function ActionMenu({
   const actionMenuClassNames = classNames(
     styles.ActionMenu,
     rollup && styles.rollup,
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const rollupSections = groups.map((group) => convertGroupToSection(group));

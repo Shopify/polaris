@@ -7,7 +7,6 @@ import {useToggle} from '../../utilities/use-toggle';
 import {Key} from '../../types';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
-import styles from './Tooltip.scss';
 
 export interface TooltipProps {
   /** The element that will activate to tooltip */
@@ -82,9 +81,7 @@ export function Tooltip({
         onClose={noop}
         preventInteraction={dismissOnMouseOut}
       >
-        <div className={styles.Label} testID="TooltipOverlayLabel">
-          {content}
-        </div>
+        {content}
       </TooltipOverlay>
     </Portal>
   ) : null;

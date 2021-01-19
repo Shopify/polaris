@@ -1,9 +1,7 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import debounce from 'lodash/debounce';
 
-import {useFeatures} from '../../../../utilities/features';
 import {useI18n} from '../../../../utilities/i18n';
-import {classNames} from '../../../../utilities/css';
 import type {
   ActionListItemDescriptor,
   MenuActionDescriptor,
@@ -12,7 +10,6 @@ import type {
 import {ButtonGroup} from '../../../ButtonGroup';
 import {EventListener} from '../../../EventListener';
 import {MenuGroup} from '../MenuGroup';
-import {MenuAction} from '../MenuAction';
 import {SecondaryAction} from '../SecondaryAction';
 
 import styles from './Actions.scss';
@@ -33,7 +30,6 @@ const ACTION_SPACING = 8;
 
 export function Actions({actions = [], groups = []}: Props) {
   const i18n = useI18n();
-  const {newDesignLanguage} = useFeatures();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
   const menuGroupWidthRef = useRef<number>(0);
   const availableWidthRef = useRef<number>(0);
@@ -90,7 +86,6 @@ export function Actions({actions = [], groups = []}: Props) {
 
   const measureActions = useCallback(() => {
     if (
-      !newDesignLanguage ||
       actionWidthsRef.current.length === 0 ||
       availableWidthRef.current === 0
     ) {
@@ -135,13 +130,13 @@ export function Actions({actions = [], groups = []}: Props) {
 
     timesMeasured.current += 1;
     actionsAndGroupsLengthRef.current = actionsAndGroups.length;
-  }, [actions, groups, lastMenuGroup, lastMenuGroupWidth, newDesignLanguage]);
+  }, [actions, groups, lastMenuGroup, lastMenuGroupWidth]);
 
   const handleResize = useMemo(
     () =>
       debounce(
         () => {
-          if (!newDesignLanguage || !actionsLayoutRef.current) return;
+          if (!actionsLayoutRef.current) return;
           availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
           // Set timesMeasured to 0 to allow re-measuring
           timesMeasured.current = 0;
@@ -150,7 +145,7 @@ export function Actions({actions = [], groups = []}: Props) {
         50,
         {leading: false, trailing: true},
       ),
-    [newDesignLanguage, measureActions],
+    [measureActions],
   );
 
   useEffect(() => {
@@ -171,21 +166,16 @@ export function Actions({actions = [], groups = []}: Props) {
     measureActions();
   }, [actions, groups, measureActions, updateActions]);
 
-  const className = classNames(
-    styles.ActionsLayout,
-    newDesignLanguage && styles.newDesignLanguage,
-  );
-
   const actionsMarkup = actions.map((action) => {
     if (
-      (newDesignLanguage && measuredActions.showable.length > 0) ||
+      measuredActions.showable.length > 0 ||
       measuredActions.rolledUp.includes(action)
     )
       return null;
 
     const {content, onAction, ...rest} = action;
 
-    return newDesignLanguage ? (
+    return (
       <SecondaryAction
         key={content}
         onClick={onAction}
@@ -194,13 +184,6 @@ export function Actions({actions = [], groups = []}: Props) {
       >
         {content}
       </SecondaryAction>
-    ) : (
-      <MenuAction
-        key={content}
-        content={content}
-        onAction={onAction}
-        {...rest}
-      />
     );
   });
 
@@ -291,21 +274,16 @@ export function Actions({actions = [], groups = []}: Props) {
     }
   });
 
-  const groupedActionsMarkup = newDesignLanguage ? (
+  const groupedActionsMarkup = (
     <ButtonGroup spacing="extraTight">
       {rollUppableActionsMarkup}
       {actionsMarkup}
       {groupsMarkup}
     </ButtonGroup>
-  ) : (
-    <>
-      {actionsMarkup}
-      {groupsMarkup}
-    </>
   );
 
   return (
-    <div className={className} ref={actionsLayoutRef}>
+    <div className={styles.ActionsLayout} ref={actionsLayoutRef}>
       {groupedActionsMarkup}
       <EventListener event="resize" handler={handleResize} />
     </div>

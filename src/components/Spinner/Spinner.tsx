@@ -3,7 +3,6 @@ import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './Spinner.scss';
 
@@ -26,13 +25,11 @@ export function Spinner({
   accessibilityLabel,
   hasFocusableParent,
 }: SpinnerProps) {
-  const {newDesignLanguage} = useFeatures();
   const isAfterInitialMount = useIsAfterInitialMount();
 
   const className = classNames(
     styles.Spinner,
     size && styles[variationName('size', size)],
-    newDesignLanguage && styles.newDesignLanguage,
   );
 
   const spinnerSVGMarkup =
