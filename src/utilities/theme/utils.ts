@@ -26,18 +26,18 @@ export function buildCustomPropertiesNoMemo(
   newDesignLanguage: boolean,
   tokens?: Record<string, string>,
 ): CustomPropertiesLike {
-  const {colors = {}, colorScheme, config, frameOffset = 0} = themeConfig;
+  const {colors = {}, colorScheme, config, frameOffset = '0px'} = themeConfig;
   const mergedConfig = mergeConfigs(base, config || {});
 
   return newDesignLanguage
     ? customPropertyTransformer({
         ...colorFactory(colors, colorScheme, mergedConfig),
         ...tokens,
-        frameOffset: `${frameOffset}px`,
+        frameOffset,
       })
     : {
         ...buildLegacyColors(themeConfig),
-        ...customPropertyTransformer({frameOffset: `${frameOffset}px`}),
+        ...customPropertyTransformer({frameOffset}),
       };
 }
 
