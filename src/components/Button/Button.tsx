@@ -82,7 +82,7 @@ type ActionButtonProps = Pick<
   | 'loading'
   | 'ariaControls'
   | 'ariaExpanded'
-  | 'ariaPressed'
+  | 'pressed'
   | 'onKeyDown'
   | 'onKeyUp'
   | 'onKeyPress'
@@ -105,7 +105,6 @@ export function Button({
   ariaControls,
   ariaExpanded,
   ariaDescribedBy,
-  ariaPressed,
   onClick,
   onFocus,
   onBlur,
@@ -198,8 +197,6 @@ export function Button({
     </span>
   ) : null;
 
-  const ariaPressedStatus = pressed !== undefined ? pressed : ariaPressed;
-
   const [disclosureActive, setDisclosureActive] = useState(false);
   const toggleDisclosureActive = useCallback(() => {
     setDisclosureActive((disclosureActive) => !disclosureActive);
@@ -286,7 +283,7 @@ export function Button({
     loading,
     ariaControls,
     ariaExpanded,
-    ariaPressed: ariaPressedStatus,
+    pressed,
     onKeyDown,
     onKeyUp,
     onKeyPress,

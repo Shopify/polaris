@@ -176,13 +176,6 @@ describe('<Button />', () => {
     });
   });
 
-  describe('ariaPressed', () => {
-    it('passes prop', () => {
-      const button = mountWithAppProvider(<Button ariaPressed />);
-      expect(button.find(UnstyledButton).prop('ariaPressed')).toBeTruthy();
-    });
-  });
-
   describe('connectedDisclosure', () => {
     it('connects a disclosure icon button to the button', () => {
       const disclosure = {
